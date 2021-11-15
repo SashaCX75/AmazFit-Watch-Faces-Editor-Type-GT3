@@ -97,6 +97,15 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Выбор файла настроек предпросмотра.
+        /// </summary>
+        internal static string Dialog_Title_PreviewStates {
+            get {
+                return ResourceManager.GetString("Dialog_Title_PreviewStates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Selecting a watch image file.
         /// </summary>
         internal static string Dialog_Title_WatchSkin {
@@ -178,7 +187,25 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Preview.
+        ///   Ищет локализованную строку, похожую на Следовать за часами.
+        /// </summary>
+        internal static string FollowMinute {
+            get {
+                return ResourceManager.GetString("FollowMinute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Следовать за минутами.
+        /// </summary>
+        internal static string FollowSecond {
+            get {
+                return ResourceManager.GetString("FollowSecond", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Предпросмотр.
         /// </summary>
         internal static string Form_Preview {
             get {
@@ -187,7 +214,7 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Preview [X =.
+        ///   Ищет локализованную строку, похожую на Предпросмотр [X =.
         /// </summary>
         internal static string Form_PreviewX {
             get {
@@ -237,6 +264,33 @@ namespace Watch_Face_Editor.Properties {
         internal static string Message_JsonError_Text {
             get {
                 return ResourceManager.GetString("Message_JsonError_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ошибка чтения JSON файла..
+        /// </summary>
+        internal static string Message_JsonReadError_Text {
+            get {
+                return ResourceManager.GetString("Message_JsonReadError_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Загрузка настроек предпросмотра.
+        /// </summary>
+        internal static string Message_LoadPreviewStates_Caption {
+            get {
+                return ResourceManager.GetString("Message_LoadPreviewStates_Caption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Загрузить имеющийся файл с набором параметров предпросмотра PreviewStates.json?.
+        /// </summary>
+        internal static string Message_LoadPreviewStates_Text {
+            get {
+                return ResourceManager.GetString("Message_LoadPreviewStates_Text", resourceCulture);
             }
         }
         
@@ -300,6 +354,15 @@ namespace Watch_Face_Editor.Properties {
         internal static string Message_Save_new_JSON {
             get {
                 return ResourceManager.GetString("Message_Save_new_JSON", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Для сохранения предустановленных параметром установите хотябы в одном поле &quot;Калории&quot; значение отличное от &quot;1234&quot;..
+        /// </summary>
+        internal static string Message_SaveOnly1234_Text {
+            get {
+                return ResourceManager.GetString("Message_SaveOnly1234_Text", resourceCulture);
             }
         }
         

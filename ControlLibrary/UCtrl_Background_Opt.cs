@@ -123,7 +123,7 @@ namespace ControlLibrary
             if (comboBox_Background_image.SelectedIndex < 0) comboBox_Background_image.Text = "";
         }
 
-        /// <summary>Возвращает номер выбранной картинки, в случае ошибки возвращает -1</summary>
+        /// <summary>Возвращает название выбранной картинки</summary>
         public string GetBackground()
         {
             if (comboBox_Background_image.SelectedIndex < 0) return "";
@@ -261,8 +261,8 @@ namespace ControlLibrary
             int count = ListImages.Count;
             if (count == 0) 
             {
-                comboBox_Background_image.DropDownHeight = 0;
-                comboBox_Preview_image.DropDownHeight = 0;
+                comboBox_Background_image.DropDownHeight = 1;
+                comboBox_Preview_image.DropDownHeight = 1;
             } 
             else if (count < 5)
             {
@@ -285,6 +285,7 @@ namespace ControlLibrary
 
             comboBox_Background_image.Text = null;
             comboBox_Preview_image.Text = null;
+            radioButton_Background_color.Checked = true;
 
             setValue = false;
         }

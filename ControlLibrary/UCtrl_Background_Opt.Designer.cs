@@ -54,6 +54,7 @@ namespace ControlLibrary
             // radioButton_Background_color
             // 
             this.radioButton_Background_color.AutoSize = true;
+            this.radioButton_Background_color.Checked = true;
             this.radioButton_Background_color.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.radioButton_Background_color.Location = new System.Drawing.Point(141, 3);
             this.radioButton_Background_color.Name = "radioButton_Background_color";
@@ -66,13 +67,11 @@ namespace ControlLibrary
             // radioButton_Background_image
             // 
             this.radioButton_Background_image.AutoSize = true;
-            this.radioButton_Background_image.Checked = true;
             this.radioButton_Background_image.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.radioButton_Background_image.Location = new System.Drawing.Point(6, 3);
             this.radioButton_Background_image.Name = "radioButton_Background_image";
             this.radioButton_Background_image.Size = new System.Drawing.Size(95, 17);
             this.radioButton_Background_image.TabIndex = 60;
-            this.radioButton_Background_image.TabStop = true;
             this.radioButton_Background_image.Text = "Изображение";
             this.radioButton_Background_image.UseVisualStyleBackColor = true;
             this.radioButton_Background_image.CheckedChanged += new System.EventHandler(this.radioButton_Background_image_CheckedChanged);
@@ -81,7 +80,6 @@ namespace ControlLibrary
             // 
             this.comboBox_Background_color.BackColor = System.Drawing.Color.DarkOrange;
             this.comboBox_Background_color.DropDownHeight = 1;
-            this.comboBox_Background_color.Enabled = false;
             this.comboBox_Background_color.FormattingEnabled = true;
             this.comboBox_Background_color.IntegralHeight = false;
             this.comboBox_Background_color.Location = new System.Drawing.Point(141, 23);
@@ -111,6 +109,7 @@ namespace ControlLibrary
             // 
             this.comboBox_Background_image.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_Background_image.DropDownWidth = 135;
+            this.comboBox_Background_image.Enabled = false;
             this.comboBox_Background_image.FormattingEnabled = true;
             this.comboBox_Background_image.Location = new System.Drawing.Point(6, 23);
             this.comboBox_Background_image.MaxDropDownItems = 25;

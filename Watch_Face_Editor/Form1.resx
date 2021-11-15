@@ -174,6 +174,63 @@
   <data name="&gt;&gt;button_OpenDir.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="pictureBox_IconBackground.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
+  </data>
+  <data name="pictureBox_IconBackground.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pictureBox_IconBackground.Location" type="System.Drawing.Point, System.Drawing">
+    <value>352, 25</value>
+  </data>
+  <data name="pictureBox_IconBackground.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
+  </data>
+  <data name="pictureBox_IconBackground.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="pictureBox_IconBackground.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;pictureBox_IconBackground.Name" xml:space="preserve">
+    <value>pictureBox_IconBackground</value>
+  </data>
+  <data name="&gt;&gt;pictureBox_IconBackground.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox_IconBackground.Parent" xml:space="preserve">
+    <value>groupBox_AddElemets</value>
+  </data>
+  <data name="&gt;&gt;pictureBox_IconBackground.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="comboBox_AddBackground.Items" xml:space="preserve">
+    <value>Фон</value>
+  </data>
+  <data name="comboBox_AddBackground.Location" type="System.Drawing.Point, System.Drawing">
+    <value>376, 24</value>
+  </data>
+  <data name="comboBox_AddBackground.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 21</value>
+  </data>
+  <data name="comboBox_AddBackground.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="comboBox_AddBackground.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;comboBox_AddBackground.Name" xml:space="preserve">
+    <value>comboBox_AddBackground</value>
+  </data>
+  <data name="&gt;&gt;comboBox_AddBackground.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBox_AddBackground.Parent" xml:space="preserve">
+    <value>groupBox_AddElemets</value>
+  </data>
+  <data name="&gt;&gt;comboBox_AddBackground.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="pictureBox_IconDate.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Center</value>
   </data>
@@ -199,7 +256,7 @@
     <value>groupBox_AddElemets</value>
   </data>
   <data name="&gt;&gt;pictureBox_IconDate.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="pictureBox_IconAir.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Center</value>
@@ -226,7 +283,7 @@
     <value>groupBox_AddElemets</value>
   </data>
   <data name="&gt;&gt;pictureBox_IconAir.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="pictureBox_IconSystem.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Center</value>
@@ -253,7 +310,7 @@
     <value>groupBox_AddElemets</value>
   </data>
   <data name="&gt;&gt;pictureBox_IconSystem.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="pictureBox_IconTime.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Center</value>
@@ -280,7 +337,7 @@
     <value>groupBox_AddElemets</value>
   </data>
   <data name="&gt;&gt;pictureBox_IconTime.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="pictureBox_IconActivity.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Center</value>
@@ -307,7 +364,7 @@
     <value>groupBox_AddElemets</value>
   </data>
   <data name="&gt;&gt;pictureBox_IconActivity.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="comboBox_AddSystem.Items" xml:space="preserve">
     <value>Система</value>
@@ -337,7 +394,7 @@
     <value>groupBox_AddElemets</value>
   </data>
   <data name="&gt;&gt;comboBox_AddSystem.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="comboBox_AddAir.Items" xml:space="preserve">
     <value>Атмосфера</value>
@@ -379,7 +436,7 @@
     <value>groupBox_AddElemets</value>
   </data>
   <data name="&gt;&gt;comboBox_AddAir.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>8</value>
   </data>
   <data name="comboBox_AddActivity.Items" xml:space="preserve">
     <value>Активности</value>
@@ -430,7 +487,7 @@
     <value>groupBox_AddElemets</value>
   </data>
   <data name="&gt;&gt;comboBox_AddActivity.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>9</value>
   </data>
   <data name="comboBox_AddDate.Items" xml:space="preserve">
     <value>Дата</value>
@@ -466,7 +523,7 @@
     <value>groupBox_AddElemets</value>
   </data>
   <data name="&gt;&gt;comboBox_AddDate.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>10</value>
   </data>
   <data name="comboBox_AddTime.Items" xml:space="preserve">
     <value>Время</value>
@@ -496,7 +553,7 @@
     <value>groupBox_AddElemets</value>
   </data>
   <data name="&gt;&gt;comboBox_AddTime.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>11</value>
   </data>
   <data name="groupBox_AddElemets.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
@@ -537,38 +594,38 @@
   <data name="panel_UC_DigitalTime.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="uCtrl_DigitalTime_Elm1.AutoSize" type="System.Boolean, mscorlib">
+  <data name="uCtrl_DigitalTime_Elm.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="uCtrl_DigitalTime_Elm1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="uCtrl_DigitalTime_Elm.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="uCtrl_DigitalTime_Elm1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="uCtrl_DigitalTime_Elm.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="uCtrl_DigitalTime_Elm1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="uCtrl_DigitalTime_Elm.Size" type="System.Drawing.Size, System.Drawing">
     <value>242, 28</value>
   </data>
-  <data name="uCtrl_DigitalTime_Elm1.TabIndex" type="System.Int32, mscorlib">
+  <data name="uCtrl_DigitalTime_Elm.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;uCtrl_DigitalTime_Elm1.Name" xml:space="preserve">
-    <value>uCtrl_DigitalTime_Elm1</value>
+  <data name="&gt;&gt;uCtrl_DigitalTime_Elm.Name" xml:space="preserve">
+    <value>uCtrl_DigitalTime_Elm</value>
   </data>
-  <data name="&gt;&gt;uCtrl_DigitalTime_Elm1.Type" xml:space="preserve">
+  <data name="&gt;&gt;uCtrl_DigitalTime_Elm.Type" xml:space="preserve">
     <value>ControlLibrary.UCtrl_DigitalTime_Elm, ControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;uCtrl_DigitalTime_Elm1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;uCtrl_DigitalTime_Elm.Parent" xml:space="preserve">
     <value>panel_UC_DigitalTime</value>
   </data>
-  <data name="&gt;&gt;uCtrl_DigitalTime_Elm1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;uCtrl_DigitalTime_Elm.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="panel_UC_DigitalTime.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
   <data name="panel_UC_DigitalTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 303</value>
+    <value>3, 278</value>
   </data>
   <data name="panel_UC_DigitalTime.Size" type="System.Drawing.Size, System.Drawing">
     <value>242, 44</value>
@@ -594,31 +651,31 @@
   <data name="panel_UC_Background.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="uCtrl_Background_Elm1.AutoSize" type="System.Boolean, mscorlib">
+  <data name="uCtrl_Background_Elm.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="uCtrl_Background_Elm1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="uCtrl_Background_Elm.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="uCtrl_Background_Elm1.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="uCtrl_Background_Elm.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="uCtrl_Background_Elm1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="uCtrl_Background_Elm.Size" type="System.Drawing.Size, System.Drawing">
     <value>242, 28</value>
   </data>
-  <data name="uCtrl_Background_Elm1.TabIndex" type="System.Int32, mscorlib">
+  <data name="uCtrl_Background_Elm.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;uCtrl_Background_Elm1.Name" xml:space="preserve">
-    <value>uCtrl_Background_Elm1</value>
+  <data name="&gt;&gt;uCtrl_Background_Elm.Name" xml:space="preserve">
+    <value>uCtrl_Background_Elm</value>
   </data>
-  <data name="&gt;&gt;uCtrl_Background_Elm1.Type" xml:space="preserve">
+  <data name="&gt;&gt;uCtrl_Background_Elm.Type" xml:space="preserve">
     <value>ControlLibrary.UCtrl_Background_Elm, ControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;uCtrl_Background_Elm1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;uCtrl_Background_Elm.Parent" xml:space="preserve">
     <value>panel_UC_Background</value>
   </data>
-  <data name="&gt;&gt;uCtrl_Background_Elm1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;uCtrl_Background_Elm.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="panel_UC_Background.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -628,7 +685,7 @@
     <value>3, 3</value>
   </data>
   <data name="panel_UC_Background.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 44</value>
+    <value>242, 28</value>
   </data>
   <data name="panel_UC_Background.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -649,7 +706,7 @@
     <value>1</value>
   </data>
   <data name="panel5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 253</value>
+    <value>3, 228</value>
   </data>
   <data name="panel5.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 35</value>
@@ -670,7 +727,7 @@
     <value>2</value>
   </data>
   <data name="panel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 203</value>
+    <value>3, 178</value>
   </data>
   <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 35</value>
@@ -691,7 +748,7 @@
     <value>3</value>
   </data>
   <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 153</value>
+    <value>3, 128</value>
   </data>
   <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 35</value>
@@ -712,7 +769,7 @@
     <value>4</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 53</value>
+    <value>3, 37</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 35</value>
@@ -733,7 +790,7 @@
     <value>5</value>
   </data>
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 103</value>
+    <value>3, 78</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 35</value>
@@ -763,7 +820,7 @@
     <value>7</value>
   </data>
   <data name="tableLayoutPanel_ElemetsWatchFace.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 350</value>
+    <value>248, 325</value>
   </data>
   <data name="tableLayoutPanel_ElemetsWatchFace.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -781,7 +838,7 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel_ElemetsWatchFace.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="panel_UC_DigitalTime" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_UC_Background" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel5" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel4" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel3" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel1" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel2" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Absolute,50,Absolute,50,Absolute,50,Absolute,50,Absolute,50,Absolute,50,Absolute,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="panel_UC_DigitalTime" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_UC_Background" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel5" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel4" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel3" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel1" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel2" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,Absolute,50,Absolute,50,Absolute,50,Absolute,50,Absolute,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="panel_WatchfaceElements.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 3</value>
@@ -807,6 +864,9 @@
   <data name="panel_ElementsOpt.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="uCtrl_Text_Opt.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="uCtrl_Text_Opt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
@@ -817,7 +877,7 @@
     <value>0, 169</value>
   </data>
   <data name="uCtrl_Text_Opt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 270</value>
+    <value>241, 329</value>
   </data>
   <data name="uCtrl_Text_Opt.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1025,6 +1085,9 @@
   </data>
   <data name="&gt;&gt;tabPage_Edit_Elements.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="panel_set.AutoScroll" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="userCtrl_Set12.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1630,7 +1693,7 @@
     <value>№</value>
   </data>
   <data name="Number.Width" type="System.Int32, mscorlib">
-    <value>30</value>
+    <value>25</value>
   </data>
   <metadata name="NameFile.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1645,7 +1708,7 @@
     <value>Картинка</value>
   </data>
   <data name="ColumnImage.Width" type="System.Int32, mscorlib">
-    <value>90</value>
+    <value>80</value>
   </data>
   <metadata name="Column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -1654,7 +1717,7 @@
     <value>Картинка</value>
   </data>
   <data name="Column1.Width" type="System.Int32, mscorlib">
-    <value>90</value>
+    <value>80</value>
   </data>
   <data name="dataGridView_ImagesList.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 32</value>
@@ -2402,7 +2465,7 @@
     <value>395, 115</value>
   </data>
   <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>385, 90</value>
+    <value>385, 95</value>
   </data>
   <data name="groupBox6.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
@@ -2516,7 +2579,7 @@
     <value>395, 10</value>
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>385, 90</value>
+    <value>385, 95</value>
   </data>
   <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
@@ -2630,7 +2693,7 @@
     <value>3, 10</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>385, 90</value>
+    <value>385, 95</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>41</value>
@@ -3338,66 +3401,66 @@
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACi
-        DQAAAk1TRnQBSQFMAgEBBgIAASMBAAEjARABAAEQAQAE/wEJAQAI/wFCAU0BNgEEBgABNgEEAgABKAMA
-        AUADAAEgAwABAQEAAQgGAAEIGAABgAIAAYADAAKAAQABgAMAAYABAAGAAQACgAIAA8ABAAHAAdwBwAEA
-        AfABygGmAQABMwUAATMBAAEzAQABMwEAAjMCAAMWAQADHAEAAyIBAAMpAQADVQEAA00BAANCAQADOQEA
-        AYABfAH/AQACUAH/AQABkwEAAdYBAAH/AewBzAEAAcYB1gHvAQAB1gLnAQABkAGpAa0CAAH/ATMDAAFm
-        AwABmQMAAcwCAAEzAwACMwIAATMBZgIAATMBmQIAATMBzAIAATMB/wIAAWYDAAFmATMCAAJmAgABZgGZ
-        AgABZgHMAgABZgH/AgABmQMAAZkBMwIAAZkBZgIAApkCAAGZAcwCAAGZAf8CAAHMAwABzAEzAgABzAFm
-        AgABzAGZAgACzAIAAcwB/wIAAf8BZgIAAf8BmQIAAf8BzAEAATMB/wIAAf8BAAEzAQABMwEAAWYBAAEz
-        AQABmQEAATMBAAHMAQABMwEAAf8BAAH/ATMCAAMzAQACMwFmAQACMwGZAQACMwHMAQACMwH/AQABMwFm
-        AgABMwFmATMBAAEzAmYBAAEzAWYBmQEAATMBZgHMAQABMwFmAf8BAAEzAZkCAAEzAZkBMwEAATMBmQFm
-        AQABMwKZAQABMwGZAcwBAAEzAZkB/wEAATMBzAIAATMBzAEzAQABMwHMAWYBAAEzAcwBmQEAATMCzAEA
-        ATMBzAH/AQABMwH/ATMBAAEzAf8BZgEAATMB/wGZAQABMwH/AcwBAAEzAv8BAAFmAwABZgEAATMBAAFm
-        AQABZgEAAWYBAAGZAQABZgEAAcwBAAFmAQAB/wEAAWYBMwIAAWYCMwEAAWYBMwFmAQABZgEzAZkBAAFm
-        ATMBzAEAAWYBMwH/AQACZgIAAmYBMwEAA2YBAAJmAZkBAAJmAcwBAAFmAZkCAAFmAZkBMwEAAWYBmQFm
-        AQABZgKZAQABZgGZAcwBAAFmAZkB/wEAAWYBzAIAAWYBzAEzAQABZgHMAZkBAAFmAswBAAFmAcwB/wEA
-        AWYB/wIAAWYB/wEzAQABZgH/AZkBAAFmAf8BzAEAAcwBAAH/AQAB/wEAAcwBAAKZAgABmQEzAZkBAAGZ
-        AQABmQEAAZkBAAHMAQABmQMAAZkCMwEAAZkBAAFmAQABmQEzAcwBAAGZAQAB/wEAAZkBZgIAAZkBZgEz
-        AQABmQEzAWYBAAGZAWYBmQEAAZkBZgHMAQABmQEzAf8BAAKZATMBAAKZAWYBAAOZAQACmQHMAQACmQH/
-        AQABmQHMAgABmQHMATMBAAFmAcwBZgEAAZkBzAGZAQABmQLMAQABmQHMAf8BAAGZAf8CAAGZAf8BMwEA
-        AZkBzAFmAQABmQH/AZkBAAGZAf8BzAEAAZkC/wEAAcwDAAGZAQABMwEAAcwBAAFmAQABzAEAAZkBAAHM
-        AQABzAEAAZkBMwIAAcwCMwEAAcwBMwFmAQABzAEzAZkBAAHMATMBzAEAAcwBMwH/AQABzAFmAgABzAFm
-        ATMBAAGZAmYBAAHMAWYBmQEAAcwBZgHMAQABmQFmAf8BAAHMAZkCAAHMAZkBMwEAAcwBmQFmAQABzAKZ
-        AQABzAGZAcwBAAHMAZkB/wEAAswCAALMATMBAALMAWYBAALMAZkBAAPMAQACzAH/AQABzAH/AgABzAH/
-        ATMBAAGZAf8BZgEAAcwB/wGZAQABzAH/AcwBAAHMAv8BAAHMAQABMwEAAf8BAAFmAQAB/wEAAZkBAAHM
-        ATMCAAH/AjMBAAH/ATMBZgEAAf8BMwGZAQAB/wEzAcwBAAH/ATMB/wEAAf8BZgIAAf8BZgEzAQABzAJm
-        AQAB/wFmAZkBAAH/AWYBzAEAAcwBZgH/AQAB/wGZAgAB/wGZATMBAAH/AZkBZgEAAf8CmQEAAf8BmQHM
-        AQAB/wGZAf8BAAH/AcwCAAH/AcwBMwEAAf8BzAFmAQAB/wHMAZkBAAH/AswBAAH/AcwB/wEAAv8BMwEA
-        AcwB/wFmAQAC/wGZAQAC/wHMAQACZgH/AQABZgH/AWYBAAFmAv8BAAH/AmYBAAH/AWYB/wEAAv8BZgEA
-        ASEBAAGlAQADXwEAA3cBAAOGAQADlgEAA8sBAAOyAQAD1wEAA90BAAPjAQAD6gEAA/EBAAP4AQAB8AH7
-        Af8BAAGkAqABAAOAAwAB/wIAAf8DAAL/AQAB/wMAAf8BAAH/AQAC/wIAA/8JAAH/AQ4B/zsAAW0CAAEU
-        AQcBAAFtCQABDgIAAfIBDgHwKgABDgHrBAABEAETBAAB8gHxAQAB9AMAAewBFAEAAfEoAAETCA4B9wIA
-        AfECAAETAQ4BEAIAAewBAAERAf8nAAEPAQ4H7AFtAQABEwEAAREBQwH/AREB7AH/AgAB9AH/AQ4B8SQA
-        Af8MAAH/AgAB/wEAAfEDAAH/KQABQwEOAgABvAwAAQ4B8AEAAW0JAAEOIgABDwHsAUMBAAEOBwAB8gEA
-        AQ4BAAEOAQAB8QEAAf8BAAHwAgAB9AIAARUlAAFtBgAB7wEOAQ8BAAHtBAABbQEUBAAB/wIAAf8iAAIQ
-        AZIEAAG8AwABDgEQAW0B9AIAAQ4B6gEAAe8BDgIAAf8CAAH/AQ8BAAEOIQACbQG8AwAB7wEAARIBkgEO
-        BgAB8gEAAfQBAAIOARQBAAFtAQAB6wEPAfQlAAIOAewBDgHtAQ8BDgESBwABDgHvAgAB7wFtAfECAAEQ
-        ARIkAAH/AQAB9wETAQ4CbQEOCAABbQEOAQAB7wH0AwABvAHwAf8BAAHxIwACQwUAAQ4BbQcAAewBAAEP
-        AQ4BAAESAQACDgEAAUMBAAHyNAAB7AHqAQAB8wEOAwAB/wERAfEoAAHsEgABDjsAAQcBbQFDAg8BQwFt
-        AQcEAAHxEgABEAEAAfADAAH0Ag4B/wsAAf8JAAHzAW0B6gG8BP8BvAHqAW0B8wMAAfcRAAEPAZIBDgH/
-        AgABDwHvAQ4B/wQAAf8IAAH/BgAB8wESAe8B/wHwAewCFQHsAfAB/wHvARIB8wIAAe8EAAEHAQABFQoA
-        AfIBDgHtARABAAHsAUMB7AEUBQAC/wcAAv8FAAFtAe8B8gESBBACDwESAfIB7wFtAgAB7xIAAewBFQEP
-        Ae8BDgHzAQ4B/wYAAv8HAAL/AwABBwHqAf8BEgQQAQ8BDgHsAQ8BEwH/AeoBBwEAAe8FAAEHAQAB7wsA
-        AQ4BBwEAAfcBEQH3CAAC/wcAAv8CAAFtArwBDwMQAQ8BDgHsAQAB7AEPArwBbQEAAe8TAAERAW0BEAEH
-        AQ8KAAL/BwAC/wEAAUMB/wHrAQ8CEAEPAQ4B7AEAAewCDwHrAf8BQwEAAe8GAAEHAQAB9AgAAewBAAES
-        AQAB9AEOAfMBAAHyAe8IAAL/BwAB/wEAAQ4B/wEQBA8B7AEAAewDDwEQAf8BDgEAAe8IAAEQCAAB6gIR
-        ARABAAEOAe0CDgEAAfMIAAL/CAABDgH/ARADDwEOAQABEAQPARAB/wEOAQAB7wQABPIB8wgAAe8BQwIO
-        AQABEAEOAREBDgFtCgAC/wcAAREB/wFtAQ4CDwEOAQABFQMPAQ4BbQH/AREBAAHvEQAB9AEOAQ8CAAFt
-        AQ4BEg0AAv8GAAFtArwCDgEPAQ4BAAHsAg8CDgK8AW0UAAEUAREBbQH/AbwBAAH/BgAB/wEAAf8FAAL/
-        BQABBwHqAf8BFAMOAewBFQMOARQB/wHqAQcVAAHrAQ4B7wITCAAB/wcAAv8FAAFtAe8B8gEVBg4BFQHy
-        Ae8BbQQAAeoB9AGSBQAC/wkAAQcBEAEAAW0IAAL/AQAB/wUAAv8EAAHzARMB7wH/AbwBbQIPAW0BvAH/
-        Ae8BEwHzAQAB7AIAAfQGAAEPAUMB7QoAAQ4B7wEVAW0IAAL/BwAC/wQAAfMBbQESAbwE/wG8ARIBbQHz
-        AwAB8AH3Af8CAAT3Ae8BQwHtAvcB/wcAAQ4BAAEHAREZAAEHAW0BEAIOARABbQEHCAABDgYAAfcB8AoA
-        AeoCDgHxBQABQgFNAT4HAAE+AwABKAMAAUADAAEgAwABAQEAAQEGAAEBFgAD/wEAAf8BHwH/BQAB/QGX
-        AfwBDgQAAfwB8wHJAQYEAAH4AQEBgQEGBAAB8AEAAYEBBgQAAbcB/AGOBQABkwH+AcgFAAHBAfwBEQEh
-        BAAB5QHgAXMBmQQAAQwB4QETASEEAAEMAQ8BiAEjBAAB4AEfAcwBZwQAAYABfwGTAYMEAAGbAT8BgQED
-        BAAB+wH/AckBRwQAAfsB/wH8AX8GAAHwAQ8CAAHjAYcBNgFaAcABAwE/Af4B4QGHARsBTAGAAQEBPAF+
-        AeEBDwENAYYBgAEBAT4BfgHwAQ8BBgHCAgACPgH4AR8BQwFgAQABIAE/AT4B+AE/AWEBsAEAAUABPwEe
-        AeABJwEwAdgBAAGAATwBHgHhAQMBWAFsAQEBAAE8AR4B4QEHAWwBNgEBAQABPwH+AeEBHwE2ARoBAQMA
-        AfABHwELAQwEAAH4AT8BTQGGAYABAQIAAfwBPwECAcIBgAEBAQQBAAH+AR8BQwFgAcABAwGEAQAB/gGf
-        AgAB8AEPAfcB5wH+AR8L
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
+        DQAAAk1TRnQBSQFMAgEBBgEAAaABJAGgASQBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
+        AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
+        AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
+        AWYDAAGZAwABzAIAATMDAAIzAgABMwFmAgABMwGZAgABMwHMAgABMwH/AgABZgMAAWYBMwIAAmYCAAFm
+        AZkCAAFmAcwCAAFmAf8CAAGZAwABmQEzAgABmQFmAgACmQIAAZkBzAIAAZkB/wIAAcwDAAHMATMCAAHM
+        AWYCAAHMAZkCAALMAgABzAH/AgAB/wFmAgAB/wGZAgAB/wHMAQABMwH/AgAB/wEAATMBAAEzAQABZgEA
+        ATMBAAGZAQABMwEAAcwBAAEzAQAB/wEAAf8BMwIAAzMBAAIzAWYBAAIzAZkBAAIzAcwBAAIzAf8BAAEz
+        AWYCAAEzAWYBMwEAATMCZgEAATMBZgGZAQABMwFmAcwBAAEzAWYB/wEAATMBmQIAATMBmQEzAQABMwGZ
+        AWYBAAEzApkBAAEzAZkBzAEAATMBmQH/AQABMwHMAgABMwHMATMBAAEzAcwBZgEAATMBzAGZAQABMwLM
+        AQABMwHMAf8BAAEzAf8BMwEAATMB/wFmAQABMwH/AZkBAAEzAf8BzAEAATMC/wEAAWYDAAFmAQABMwEA
+        AWYBAAFmAQABZgEAAZkBAAFmAQABzAEAAWYBAAH/AQABZgEzAgABZgIzAQABZgEzAWYBAAFmATMBmQEA
+        AWYBMwHMAQABZgEzAf8BAAJmAgACZgEzAQADZgEAAmYBmQEAAmYBzAEAAWYBmQIAAWYBmQEzAQABZgGZ
+        AWYBAAFmApkBAAFmAZkBzAEAAWYBmQH/AQABZgHMAgABZgHMATMBAAFmAcwBmQEAAWYCzAEAAWYBzAH/
+        AQABZgH/AgABZgH/ATMBAAFmAf8BmQEAAWYB/wHMAQABzAEAAf8BAAH/AQABzAEAApkCAAGZATMBmQEA
+        AZkBAAGZAQABmQEAAcwBAAGZAwABmQIzAQABmQEAAWYBAAGZATMBzAEAAZkBAAH/AQABmQFmAgABmQFm
+        ATMBAAGZATMBZgEAAZkBZgGZAQABmQFmAcwBAAGZATMB/wEAApkBMwEAApkBZgEAA5kBAAKZAcwBAAKZ
+        Af8BAAGZAcwCAAGZAcwBMwEAAWYBzAFmAQABmQHMAZkBAAGZAswBAAGZAcwB/wEAAZkB/wIAAZkB/wEz
+        AQABmQHMAWYBAAGZAf8BmQEAAZkB/wHMAQABmQL/AQABzAMAAZkBAAEzAQABzAEAAWYBAAHMAQABmQEA
+        AcwBAAHMAQABmQEzAgABzAIzAQABzAEzAWYBAAHMATMBmQEAAcwBMwHMAQABzAEzAf8BAAHMAWYCAAHM
+        AWYBMwEAAZkCZgEAAcwBZgGZAQABzAFmAcwBAAGZAWYB/wEAAcwBmQIAAcwBmQEzAQABzAGZAWYBAAHM
+        ApkBAAHMAZkBzAEAAcwBmQH/AQACzAIAAswBMwEAAswBZgEAAswBmQEAA8wBAALMAf8BAAHMAf8CAAHM
+        Af8BMwEAAZkB/wFmAQABzAH/AZkBAAHMAf8BzAEAAcwC/wEAAcwBAAEzAQAB/wEAAWYBAAH/AQABmQEA
+        AcwBMwIAAf8CMwEAAf8BMwFmAQAB/wEzAZkBAAH/ATMBzAEAAf8BMwH/AQAB/wFmAgAB/wFmATMBAAHM
+        AmYBAAH/AWYBmQEAAf8BZgHMAQABzAFmAf8BAAH/AZkCAAH/AZkBMwEAAf8BmQFmAQAB/wKZAQAB/wGZ
+        AcwBAAH/AZkB/wEAAf8BzAIAAf8BzAEzAQAB/wHMAWYBAAH/AcwBmQEAAf8CzAEAAf8BzAH/AQAC/wEz
+        AQABzAH/AWYBAAL/AZkBAAL/AcwBAAJmAf8BAAFmAf8BZgEAAWYC/wEAAf8CZgEAAf8BZgH/AQAC/wFm
+        AQABIQEAAaUBAANfAQADdwEAA4YBAAOWAQADywEAA7IBAAPXAQAD3QEAA+MBAAPqAQAD8QEAA/gBAAHw
+        AfsB/wEAAaQCoAEAA4ADAAH/AgAB/wMAAv8BAAH/AwAB/wEAAf8BAAL/AgAD/wkAAf8BDgH/OwABbQIA
+        ARQBBwEAAW0JAAEOAgAB8gEOAfAqAAEOAesEAAEQARMEAAHyAfEBAAH0AwAB7AEUAQAB8SgAARMIDgH3
+        AgAB8QIAARMBDgEQAgAB7AEAAREB/ycAAQ8BDgfsAW0BAAETAQABEQFDAf8BEQHsAf8CAAH0Af8BDgHx
+        JAAB/wwAAf8CAAH/AQAB8QMAAf8pAAFDAQ4CAAG8DAABDgHwAQABbQkAAQ4iAAEPAewBQwEAAQ4HAAHy
+        AQABDgEAAQ4BAAHxAQAB/wEAAfACAAH0AgABFSUAAW0GAAHvAQ4BDwEAAe0EAAFtARQEAAH/AgAB/yIA
+        AhABkgQAAbwDAAEOARABbQH0AgABDgHqAQAB7wEOAgAB/wIAAf8BDwEAAQ4hAAJtAbwDAAHvAQABEgGS
+        AQ4GAAHyAQAB9AEAAg4BFAEAAW0BAAHrAQ8B9CUAAg4B7AEOAe0BDwEOARIHAAEOAe8CAAHvAW0B8QIA
+        ARABEiQAAf8BAAH3ARMBDgJtAQ4IAAFtAQ4BAAHvAfQDAAG8AfAB/wEAAfEjAAJDBQABDgFtBwAB7AEA
+        AQ8BDgEAARIBAAIOAQABQwEAAfI0AAHsAeoBAAHzAQ4DAAH/AREB8SgAAewSAAEOOwABBwFtAUMCDwFD
+        AW0BBwQAAfESAAEQAQAB8AMAAfQCDgH/CwAB/wkAAfMBbQHqAbwE/wG8AeoBbQHzAwAB9xEAAQ8BkgEO
+        Af8CAAEPAe8BDgH/BAAB/wgAAf8GAAHzARIB7wH/AfAB7AIVAewB8AH/Ae8BEgHzAgAB7wQAAQcBAAEV
+        CgAB8gEOAe0BEAEAAewBQwHsARQFAAL/BwAC/wUAAW0B7wHyARIEEAIPARIB8gHvAW0CAAHvEgAB7AEV
+        AQ8B7wEOAfMBDgH/BgAC/wcAAv8DAAEHAeoB/wESBBABDwEOAewBDwETAf8B6gEHAQAB7wUAAQcBAAHv
+        CwABDgEHAQAB9wERAfcIAAL/BwAC/wIAAW0CvAEPAxABDwEOAewBAAHsAQ8CvAFtAQAB7xMAAREBbQEQ
+        AQcBDwoAAv8HAAL/AQABQwH/AesBDwIQAQ8BDgHsAQAB7AIPAesB/wFDAQAB7wYAAQcBAAH0CAAB7AEA
+        ARIBAAH0AQ4B8wEAAfIB7wgAAv8HAAH/AQABDgH/ARAEDwHsAQAB7AMPARAB/wEOAQAB7wgAARAIAAHq
+        AhEBEAEAAQ4B7QIOAQAB8wgAAv8IAAEOAf8BEAMPAQ4BAAEQBA8BEAH/AQ4BAAHvBAAE8gHzCAAB7wFD
+        Ag4BAAEQAQ4BEQEOAW0KAAL/BwABEQH/AW0BDgIPAQ4BAAEVAw8BDgFtAf8BEQEAAe8RAAH0AQ4BDwIA
+        AW0BDgESDQAC/wYAAW0CvAIOAQ8BDgEAAewCDwIOArwBbRQAARQBEQFtAf8BvAEAAf8GAAH/AQAB/wUA
+        Av8FAAEHAeoB/wEUAw4B7AEVAw4BFAH/AeoBBxUAAesBDgHvAhMIAAH/BwAC/wUAAW0B7wHyARUGDgEV
+        AfIB7wFtBAAB6gH0AZIFAAL/CQABBwEQAQABbQgAAv8BAAH/BQAC/wQAAfMBEwHvAf8BvAFtAg8BbQG8
+        Af8B7wETAfMBAAHsAgAB9AYAAQ8BQwHtCgABDgHvARUBbQgAAv8HAAL/BAAB8wFtARIBvAT/AbwBEgFt
+        AfMDAAHwAfcB/wIABPcB7wFDAe0C9wH/BwABDgEAAQcBERkAAQcBbQEQAg4BEAFtAQcIAAEOBgAB9wHw
+        CgAB6gIOAfEFAAFCAU0BPgcAAT4DAAEoAwABQAMAASADAAEBAQABAQYAAQEWAAP/AQAB/wEfAf8FAAH9
+        AZcB/AEOBAAB/AHzAckBBgQAAfgBAQGBAQYEAAHwAQABgQEGBAABtwH8AY4FAAGTAf4ByAUAAcEB/AER
+        ASEEAAHlAeABcwGZBAABDAHhARMBIQQAAQwBDwGIASMEAAHgAR8BzAFnBAABgAF/AZMBgwQAAZsBPwGB
+        AQMEAAH7Af8ByQFHBAAB+wH/AfwBfwYAAfABDwIAAeMBhwE2AVoBwAEDAT8B/gHhAYcBGwFMAYABAQE8
+        AX4B4QEPAQ0BhgGAAQEBPgF+AfABDwEGAcICAAI+AfgBHwFDAWABAAEgAT8BPgH4AT8BYQGwAQABQAE/
+        AR4B4AEnATAB2AEAAYABPAEeAeEBAwFYAWwBAQEAATwBHgHhAQcBbAE2AQEBAAE/Af4B4QEfATYBGgEB
+        AwAB8AEfAQsBDAQAAfgBPwFNAYYBgAEBAgAB/AE/AQIBwgGAAQEBBAEAAf4BHwFDAWABwAEDAYQBAAH+
+        AZ8CAAHwAQ8B9wHnAf4BHws=
 </value>
   </data>
   <data name="pictureBox_Preview.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">

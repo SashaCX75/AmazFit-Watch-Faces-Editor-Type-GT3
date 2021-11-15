@@ -72,14 +72,14 @@ namespace Watch_Face_Editor
         /// <summary>Видимость элемента</summary>
         public bool visible = true;
 
-        public hmUI_widget_IMG_TIME_hour hour { get; set; }
-        public hmUI_widget_IMG_TIME_minute minute { get; set; }
-        public hmUI_widget_IMG_TIME_second second { get; set; }
-        public hmUI_widget_IMG_TIME_am_pm am_pm { get; set; }
+        public hmUI_widget_IMG_NUMBER Hour { get; set; }
+        public hmUI_widget_IMG_NUMBER Minute { get; set; }
+        public hmUI_widget_IMG_NUMBER Second { get; set; }
+        public hmUI_widget_IMG_TIME_am_pm AmPm { get; set; }
 
 
-        public hmUI_widget_TEXT_TIME_hour hour_text { get; set; }
-        public hmUI_widget_TEXT_TIME_minute minute_text { get; set; }
-        public hmUI_widget_TEXT_TIME_second second_text { get; set; }
+        public hmUI_widget_TEXT Hour_Font { get; set; }
+        public hmUI_widget_TEXT Minute_Font { get; set; }
+        public hmUI_widget_TEXT Second_Font { get; set; }
     }
 }

@@ -32,9 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Cornmanthe3rd-Plex-Android-Clock.ico</ApplicationIcon>
+    <ApplicationIcon>AppIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Magick.NET-Q16-AnyCPU, Version=7.17.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec, processorArchitecture=MSIL">
+      <HintPath>..\packages\Magick.NET-Q16-AnyCPU.7.17.0.1\lib\net40\Magick.NET-Q16-AnyCPU.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -73,6 +76,7 @@
     <Compile Include="Preview_main_screen.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Classes\Prewiev_States_Json.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Classes\Program_Settings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,11 +84,12 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.ru.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormPreview.resx">
       <DependentUpon>FormPreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\FormStrings.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FormStrings.en.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\FormStrings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -95,6 +100,11 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <Compile Include="Properties\FormStrings.en.Designer.cs">
+      <DependentUpon>FormStrings.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Properties\FormStrings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -127,8 +137,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Cornmanthe3rd-Plex-Android-Clock.ico" />
-    <Content Include="Kyo-Tux-Soft-Clock.ico" />
+    <Content Include="AppIcon.ico" />
     <Content Include="Mask\mask_gtr_3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -138,6 +147,7 @@
     <Content Include="Mask\mask_gts_3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Background-icon.png" />
     <None Include="Resources\Logos-Administrative-Tools_16.png" />
     <None Include="Resources\Weather-Partly-Cloudy-Rain_16.png" />
     <None Include="Resources\Sports-Walking_16.png" />

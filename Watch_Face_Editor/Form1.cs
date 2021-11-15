@@ -22,7 +22,7 @@ namespace Watch_Face_Editor
     {
         WATCH_FACE Watch_Face;
         Watch_Face_Preview_Set WatchFacePreviewSet;
-        List<string> ListImages = new List<string>(); // перечень имен файлов с картинками
+        List<string> ListImages = new List<string>(); // перечень имен файлов с картинками без раширений
         List<string> ListImagesFullName = new List<string>(); // перечень путей к файлам с картинками
         public bool PreviewView; // включает прорисовку предпросмотра
         bool Settings_Load; // включать при обновлении настроек для выключения перерисовки
@@ -33,6 +33,7 @@ namespace Watch_Face_Editor
         string StartFileNameJson; // имя файла из параметров запуска
         string StartFileNameZip; // имя файла из параметров запуска
         float currentDPI; // масштаб экрана
+        Point cursorPos = new Point(0, 0); // положение курсора при начале перетягивания элементов
 
         Form_Preview formPreview;
 
@@ -72,7 +73,7 @@ namespace Watch_Face_Editor
                     string language = System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
                     //int language = System.Globalization.CultureInfo.CurrentCulture.LCID;
                     //ProgramSettings.language = "Русский";
-                    //ProgramSettings.language = "English";
+                    ProgramSettings.language = "English";
                     Logger.WriteLine("language = " + language);
                     if (language == "ru")
                     {
@@ -170,6 +171,7 @@ namespace Watch_Face_Editor
 
             PreviewView = false;
 
+            comboBox_AddBackground.SelectedIndex = 0;
             comboBox_AddTime.SelectedIndex = 0;
             comboBox_AddDate.SelectedIndex = 0;
             comboBox_AddActivity.SelectedIndex = 0;
@@ -186,6 +188,11 @@ namespace Watch_Face_Editor
             {
                 radioButton_GTR3_Pro.Checked = true;
                 textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_3_Pro;
+            }
+            else if (ProgramSettings.Model_GTS3)
+            {
+                radioButton_GTS3.Checked = true;
+                textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_3;
             }
             checkBox_WatchSkin_Use.Checked = ProgramSettings.WatchSkin_Use;
 
@@ -237,9 +244,6 @@ namespace Watch_Face_Editor
             label_version.Text = "v " +
                 System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Major.ToString() + "." +
                 System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Minor.ToString();
-            //label_version_help.Text =
-            //    System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Major.ToString() + "." +
-            //    System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Minor.ToString();
 
             Logger.WriteLine("Set Settings");
             Settings_Load = true;
@@ -270,9 +274,10 @@ namespace Watch_Face_Editor
 
 
             Settings_Load = false;
+            JSON_Modified = false;
 
 
-            //StartJsonPreview();
+            StartJsonPreview();
             SetPreferences(userCtrl_Set1);
             PreviewView = true;
             Logger.WriteLine("* Form1_Load (end)");
@@ -412,12 +417,14 @@ namespace Watch_Face_Editor
 
             ProgramSettings.Model_GTR3 = radioButton_GTR3.Checked;
             ProgramSettings.Model_GTR3_Pro = radioButton_GTR3_Pro.Checked;
+            ProgramSettings.Model_GTS3 = radioButton_GTS3.Checked;
 
             if (radioButton_GTR3.Checked) ProgramSettings.WatchSkin_GTR_3 = textBox_WatchSkin_Path.Text;
             if (radioButton_GTR3_Pro.Checked) ProgramSettings.WatchSkin_GTR_3_Pro = textBox_WatchSkin_Path.Text;
+            if (radioButton_GTS3.Checked) ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
 
 
-            
+
             string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
             {
                 //DefaultValueHandling = DefaultValueHandling.Ignore,
@@ -467,6 +474,10 @@ namespace Watch_Face_Editor
             else if (radioButton_GTR3_Pro.Checked)
             {
                 FormName = "GTR 3 Pro watch face editor";
+            }
+            else if (radioButton_GTS3.Checked)
+            {
+                FormName = "GTS 3 watch face editor";
             }
 
             if (FormNameSufix.Length == 0)
@@ -553,6 +564,10 @@ namespace Watch_Face_Editor
                 else if (radioButton_GTR3_Pro.Checked)
                 {
                     ProgramSettings.WatchSkin_GTR_3_Pro = textBox_WatchSkin_Path.Text;
+                }
+                else if (radioButton_GTS3.Checked)
+                {
+                    ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
                 }
 
                 string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
@@ -688,7 +703,7 @@ namespace Watch_Face_Editor
         private void userCtrl_Set1_Collapse(object sender, EventArgs eventArgs, int setNumber)
         {
             SetPreferences(userCtrl_Set1);
-            //PreviewImage();
+            PreviewImage();
             userCtrl_Set2.Collapsed = true;
             userCtrl_Set3.Collapsed = true;
             userCtrl_Set4.Collapsed = true;
@@ -706,7 +721,7 @@ namespace Watch_Face_Editor
         private void userCtrl_Set2_Collapse(object sender, EventArgs eventArgs, int setNumber)
         {
             SetPreferences(userCtrl_Set2);
-            //PreviewImage();
+            PreviewImage();
             userCtrl_Set1.Collapsed = true;
             userCtrl_Set3.Collapsed = true;
             userCtrl_Set4.Collapsed = true;
@@ -724,7 +739,7 @@ namespace Watch_Face_Editor
         private void userCtrl_Set3_Collapse(object sender, EventArgs eventArgs, int setNumber)
         {
             SetPreferences(userCtrl_Set3);
-            //PreviewImage();
+            PreviewImage();
             userCtrl_Set1.Collapsed = true;
             userCtrl_Set2.Collapsed = true;
             userCtrl_Set4.Collapsed = true;
@@ -742,7 +757,7 @@ namespace Watch_Face_Editor
         private void userCtrl_Set4_Collapse(object sender, EventArgs eventArgs, int setNumber)
         {
             SetPreferences(userCtrl_Set4);
-            //PreviewImage();
+            PreviewImage();
             userCtrl_Set1.Collapsed = true;
             userCtrl_Set2.Collapsed = true;
             userCtrl_Set3.Collapsed = true;
@@ -760,7 +775,7 @@ namespace Watch_Face_Editor
         private void userCtrl_Set5_Collapse(object sender, EventArgs eventArgs, int setNumber)
         {
             SetPreferences(userCtrl_Set5);
-            //PreviewImage();
+            PreviewImage();
             userCtrl_Set1.Collapsed = true;
             userCtrl_Set2.Collapsed = true;
             userCtrl_Set3.Collapsed = true;
@@ -778,7 +793,7 @@ namespace Watch_Face_Editor
         private void userCtrl_Set6_Collapse(object sender, EventArgs eventArgs, int setNumber)
         {
             SetPreferences(userCtrl_Set6);
-            //PreviewImage();
+            PreviewImage();
             userCtrl_Set1.Collapsed = true;
             userCtrl_Set2.Collapsed = true;
             userCtrl_Set3.Collapsed = true;
@@ -796,7 +811,7 @@ namespace Watch_Face_Editor
         private void userCtrl_Set7_Collapse(object sender, EventArgs eventArgs, int setNumber)
         {
             SetPreferences(userCtrl_Set7);
-            //PreviewImage();
+            PreviewImage();
             userCtrl_Set1.Collapsed = true;
             userCtrl_Set2.Collapsed = true;
             userCtrl_Set3.Collapsed = true;
@@ -814,7 +829,7 @@ namespace Watch_Face_Editor
         private void userCtrl_Set8_Collapse(object sender, EventArgs eventArgs, int setNumber)
         {
             SetPreferences(userCtrl_Set8);
-            //PreviewImage();
+            PreviewImage();
             userCtrl_Set1.Collapsed = true;
             userCtrl_Set2.Collapsed = true;
             userCtrl_Set3.Collapsed = true;
@@ -832,7 +847,7 @@ namespace Watch_Face_Editor
         private void userCtrl_Set9_Collapse(object sender, EventArgs eventArgs, int setNumber)
         {
             SetPreferences(userCtrl_Set9);
-            //PreviewImage();
+            PreviewImage();
             userCtrl_Set1.Collapsed = true;
             userCtrl_Set2.Collapsed = true;
             userCtrl_Set3.Collapsed = true;
@@ -850,7 +865,7 @@ namespace Watch_Face_Editor
         private void userCtrl_Set10_Collapse(object sender, EventArgs eventArgs, int setNumber)
         {
             SetPreferences(userCtrl_Set10);
-            //PreviewImage();
+            PreviewImage();
             userCtrl_Set1.Collapsed = true;
             userCtrl_Set2.Collapsed = true;
             userCtrl_Set3.Collapsed = true;
@@ -868,7 +883,7 @@ namespace Watch_Face_Editor
         private void userCtrl_Set11_Collapse(object sender, EventArgs eventArgs, int setNumber)
         {
             SetPreferences(userCtrl_Set11);
-            //PreviewImage();
+            PreviewImage();
             userCtrl_Set1.Collapsed = true;
             userCtrl_Set2.Collapsed = true;
             userCtrl_Set3.Collapsed = true;
@@ -886,7 +901,7 @@ namespace Watch_Face_Editor
         private void userCtrl_Set12_Collapse(object sender, EventArgs eventArgs, int setNumber)
         {
             SetPreferences(userCtrl_Set12);
-            //PreviewImage();
+            PreviewImage();
             userCtrl_Set1.Collapsed = true;
             userCtrl_Set2.Collapsed = true;
             userCtrl_Set3.Collapsed = true;
@@ -908,7 +923,11 @@ namespace Watch_Face_Editor
         {
             Control UControl = (Control)sender;
             Panel panel = (Panel)UControl.Parent;
-            if (panel != null) panel.Tag = new object();
+            if (panel != null) 
+            { 
+                panel.Tag = new object();
+                cursorPos = Cursor.Position;
+            }
         }
 
         private void Control_MouseMove(object sender, MouseEventArgs e)
@@ -916,7 +935,14 @@ namespace Watch_Face_Editor
             Control UControl = (Control)sender;
             Panel panel = (Panel)UControl.Parent;
             if (panel != null && panel.Tag != null)
-                panel.DoDragDrop(sender, DragDropEffects.Move);
+            {
+                int cursorX = Cursor.Position.X;
+                int cursorY = Cursor.Position.Y;
+                int dX = Math.Abs(cursorX - cursorPos.X);
+                int dY = Math.Abs(cursorY - cursorPos.Y);
+                if (dX > 5 || dY > 5)
+                    panel.DoDragDrop(sender, DragDropEffects.Move); 
+            }
         }
 
         private void Control_MouseUp(object sender, MouseEventArgs e)
@@ -1006,23 +1032,29 @@ namespace Watch_Face_Editor
         private void ShowElemenrOptions(string optionsName)
         {
             bool AOD = radioButton_ScreenIdle.Checked;
+            HideAllElemenrOptions();
             switch (optionsName)
             {
                 case "Background":
                     userCtrl_Background_Options.Visible = true;
                     userCtrl_Background_Options.AOD = AOD;
-                    uCtrl_Text_Opt.Visible = false;
                     break;
                 case "Text":
-                    userCtrl_Background_Options.Visible = false;
                     uCtrl_Text_Opt.Visible = true;
                     break;
             }
         }
 
-        private void uCtrl_Background_Elm1_SelectChanged(object sender, EventArgs eventArgs)
+        /// <summary>Скрывает все панели с настройками элементов</summary>
+        private void HideAllElemenrOptions()
         {
-            uCtrl_DigitalTime_Elm1.ResetHighlightState();
+            userCtrl_Background_Options.Visible = false;
+            uCtrl_Text_Opt.Visible = false;
+        }
+
+        private void uCtrl_Background_Elm_SelectChanged(object sender, EventArgs eventArgs)
+        {
+            uCtrl_DigitalTime_Elm.ResetHighlightState();
 
             string preview = "";
             if (Watch_Face != null && Watch_Face.WatchFace_Info != null) preview = Watch_Face.WatchFace_Info.Preview;
@@ -1041,9 +1073,71 @@ namespace Watch_Face_Editor
             ShowElemenrOptions("Background");
         }
 
-        private void uCtrl_DigitalTime_Elm1_SelectChanged(object sender, EventArgs eventArgs, string selectElement)
+        private void uCtrl_DigitalTime_Elm1_SelectChanged(object sender, EventArgs eventArgs)
         {
-            uCtrl_Background_Elm1.ResetHighlightState();
+            string selectElement = uCtrl_DigitalTime_Elm.selectedElement;
+            if(selectElement.Length == 0) HideAllElemenrOptions();
+            uCtrl_Background_Elm.ResetHighlightState();
+
+            ElementDigitalTime digitalTime = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    //bool exists = Elements.Exists(e => e.GetType().Name == "ElementDigitalTime");
+                    digitalTime = (ElementDigitalTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDigitalTime");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null) 
+                {
+                    digitalTime = (ElementDigitalTime)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementDigitalTime");
+                }
+            }
+            if (digitalTime != null)
+            {
+                string selectedElement = uCtrl_DigitalTime_Elm.selectedElement;
+                hmUI_widget_IMG_NUMBER img_number = null;
+
+                switch (selectedElement)
+                {
+                    case "Hour":
+                        if (uCtrl_DigitalTime_Elm.checkBox_Hours.Checked)
+                        {
+                            img_number = digitalTime.Hour;
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                            ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Minute":
+                        if (uCtrl_DigitalTime_Elm.checkBox_Minutes.Checked)
+                        {
+                            img_number = digitalTime.Minute;
+                            Read_ImgNumber_Options(img_number, false, true, Properties.FormStrings.FollowMinute, false, false, true);
+                            ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Second":
+                        if (uCtrl_DigitalTime_Elm.checkBox_Seconds.Checked)
+                        {
+                            img_number = digitalTime.Second;
+                            Read_ImgNumber_Options(img_number, false, true, Properties.FormStrings.FollowSecond, false, false, true);
+                            ShowElemenrOptions("Text"); 
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                }
+
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
         }
 
         private void button_JSON_Click(object sender, EventArgs e)
@@ -1069,25 +1163,13 @@ namespace Watch_Face_Editor
                 FullFileDir = Path.GetDirectoryName(openFileDialog.FileName);
 
                 Logger.WriteLine("* JSON_Click");
-                string fullfilename = openFileDialog.FileName;
-                string dirName = Path.GetDirectoryName(fullfilename) + @"\assets\";
+                string newFullName = openFileDialog.FileName;
+                string dirName = Path.GetDirectoryName(newFullName) + @"\assets\";
                 button_Add_Images.Enabled = true;
 
-                string text = File.ReadAllText(fullfilename);
+                string text = File.ReadAllText(newFullName);
                 Watch_Face = TextToJson(text);
-                //try
-                //{
-                //    Watch_Face = JsonConvert.DeserializeObject<WATCH_FACE>(text, new JsonSerializerSettings
-                //    {
-                //        DefaultValueHandling = DefaultValueHandling.Ignore,
-                //        NullValueHandling = NullValueHandling.Ignore
-                //    });
-                //}
-                //catch (Exception ex)
-                //{
-                //    MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
-                //        Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //}
+                
                 // отображение кнопок создания картинки предпросмотра
                 if (Watch_Face != null && Watch_Face.WatchFace_Info != null && Watch_Face.WatchFace_Info.Preview != null)
                 {
@@ -1107,11 +1189,49 @@ namespace Watch_Face_Editor
                     }
                 }
 
-                LoadImage(dirName);
+                PreviewView = false;
+                // устанавливаем настройки для предпросмотра
+                newFullName = Path.Combine(dirName, "Preview.States");
+                if (File.Exists(newFullName))
+                {
+                    Logger.WriteLine("Load Preview.States");
+                    if (ProgramSettings.Settings_Open_Download)
+                    {
+                        JsonPreview_Read(newFullName);
+                    }
+                    else if (ProgramSettings.Settings_Open_Dialog)
+                    {
+                        if (MessageBox.Show(Properties.FormStrings.Message_LoadPreviewStates_Text,
+                            Properties.FormStrings.Message_LoadPreviewStates_Caption,
+                            MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            JsonPreview_Read(newFullName);
+                        }
+                    }
+                }
+                else StartJsonPreview();
+
+                LoadImage(dirName); 
                 ShowElemetsWatchFace();
+                if (Watch_Face != null && Watch_Face.WatchFace_Info != null && Watch_Face.WatchFace_Info.DeviceName != null)
+                {
+                    switch (Watch_Face.WatchFace_Info.DeviceName)
+                    {
+                        case "GTR3":
+                            radioButton_GTR3.Checked = true;
+                            break;
+                        case "GTR3_Pro":
+                            radioButton_GTR3_Pro.Checked = true;
+                            break;
+                        case "GTS3":
+                            radioButton_GTS3.Checked = true;
+                            break;
+                    }
+                }
+                PreviewView = true;
 
+                JSON_Modified = false;
                 PreviewImage();
-
                 FormText();
             }
             Logger.WriteLine("* JSON (end)");
@@ -1131,7 +1251,8 @@ namespace Watch_Face_Editor
             //FileInfo[] Images;
             //Images = Folder.GetFiles("*.png").OrderBy(p => Path.GetFileNameWithoutExtension(p.Name)).ToArray();
             FileInfo[] Images = Folder.GetFiles("*.png");
-            Array.Sort(Images, new MyCustomComparer());
+            Images = FileInfoSort(Images);
+            //Array.Sort(Images, new MyCustomComparer()); выдает ошибку
             Image loadedImage = null; 
             int count = 1;
             foreach (FileInfo file in Images)
@@ -1233,7 +1354,6 @@ namespace Watch_Face_Editor
                 Random rnd = new Random();
                 int rndID = rnd.Next(1000, 10000000);
                 Watch_Face.WatchFace_Info.WatchFaceId = rndID;
-                if (radioButton_GTR3_Pro.Checked) Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
 
                 Watch_Face.ScreenNormal = new ScreenNormal();
                 Watch_Face.ScreenNormal.Background = new Background();
@@ -1257,8 +1377,19 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
                     Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
                     Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
+                    Watch_Face.ScreenNormal.Background.BackgroundColor.h = 480;
+                    Watch_Face.ScreenNormal.Background.BackgroundColor.w = 480;
+                }
+                else if (radioButton_GTS3.Checked)
+                {
+                    Watch_Face.WatchFace_Info.DeviceName = "GTS3";
+
+                    Watch_Face.ScreenNormal.Background.BackgroundColor.show_level = "ONLY_NORMAL";
+                    Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                    Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                    Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                    Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
+                    Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
                 }
 
                 string JSON_String = JsonConvert.SerializeObject(Watch_Face, Formatting.Indented, new JsonSerializerSettings
@@ -1270,7 +1401,11 @@ namespace Watch_Face_Editor
                 button_Add_Images.Enabled = true;
                 Directory.CreateDirectory(dirName);
                 LoadImage(dirName);
+                PreviewView = false;
+                ShowElemetsWatchFace();
+                PreviewView = true;
 
+                PreviewImage();
                 FormText();
             }
             Logger.WriteLine("* New_Project (end)");
@@ -1299,6 +1434,7 @@ namespace Watch_Face_Editor
                 foreach(string fileFullName in openFileDialog.FileNames)
                 {
                     string fileName = Path.GetFileName(fileFullName);
+                    fileName = fileName.Replace(" ", "_");
                     string newFileName = dirName + fileName;
                     if (File.Exists(newFileName))
                     {
@@ -1394,7 +1530,7 @@ namespace Watch_Face_Editor
             }
             else if (radioButton_GTS3.Checked)
             {
-                bitmap = new Bitmap(Convert.ToInt32(348), Convert.ToInt32(442), PixelFormat.Format32bppArgb);
+                bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
             }
             Graphics gPanel = Graphics.FromImage(bitmap);
             #endregion
@@ -1472,7 +1608,7 @@ namespace Watch_Face_Editor
                     }
                     if (radioButton_GTS3.Checked)
                     {
-                        bitmapPreviewResize = new Bitmap(Convert.ToInt32(348), Convert.ToInt32(442), PixelFormat.Format32bppArgb);
+                        bitmapPreviewResize = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
                     }
                     Graphics gPanelPreviewResize = Graphics.FromImage(bitmapPreviewResize);
                     #endregion
@@ -1495,6 +1631,12 @@ namespace Watch_Face_Editor
                 {
                     this.Form1_KeyDown(senderKeyDown, eKeyDown);
                 };
+
+                formPreview.pictureBox_Preview.MouseDoubleClick += (object senderDoubleClick, MouseEventArgs eDoubleClick) =>
+                {
+                    uCtrl_Text_Opt.SetMouseСoordinates(MouseClickСoordinates.X, MouseClickСoordinates.Y);
+
+                };
             }
 
             if (Form_Preview.Model_Wath.model_GTR3 != radioButton_GTR3.Checked)
@@ -1514,7 +1656,7 @@ namespace Watch_Face_Editor
             }
             if (radioButton_GTS3.Checked)
             {
-                bitmap = new Bitmap(Convert.ToInt32(348), Convert.ToInt32(442), PixelFormat.Format32bppArgb);
+                bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
             }
             Graphics gPanel = Graphics.FromImage(bitmap);
             #endregion
@@ -1590,13 +1732,15 @@ namespace Watch_Face_Editor
 
         private void comboBox_AddTime_DropDownClosed(object sender, EventArgs e)
         {
-            if (comboBox_AddTime.SelectedIndex == 1) comboBox_AddDigitalTime();
+            if (comboBox_AddTime.SelectedIndex == 1) AddDigitalTime();
             PreviewView = false;
             //if (comboBox_AddTime.SelectedIndex >= 0) MessageBox.Show(comboBox_AddTime.Text);
             comboBox_AddTime.Items.Insert(0, Properties.FormStrings.Elemet_Time);
             comboBox_AddTime.SelectedIndex = 0;
             ShowElemetsWatchFace();
             PreviewView = true;
+            JSON_Modified = true;
+            FormText();
         }
 
         private void comboBox_AddDate_DropDownClosed(object sender, EventArgs e)
@@ -1701,8 +1845,95 @@ namespace Watch_Face_Editor
             }
         }
 
+        /// <summary>Добавляем фон в циферблат</summary>
+        private void AddBackground()
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) Watch_Face = new WATCH_FACE();
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face.ScreenNormal == null) Watch_Face.ScreenNormal = new ScreenNormal();
+                Watch_Face.ScreenNormal.Background = new Background();
+                Watch_Face.ScreenNormal.Background.BackgroundColor = new hmUI_widget_FILL_RECT();
+                if (radioButton_GTR3.Checked)
+                {
+                    //Watch_Face.WatchFace_Info.DeviceName = "GTR3";
+
+                    Watch_Face.ScreenNormal.Background.BackgroundColor.show_level = "ONLY_NORMAL";
+                    Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                    Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                    Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                    Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
+                    Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
+                }
+                else if (radioButton_GTR3_Pro.Checked)
+                {
+                    //Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
+
+                    Watch_Face.ScreenNormal.Background.BackgroundColor.show_level = "ONLY_NORMAL";
+                    Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                    Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                    Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                    Watch_Face.ScreenNormal.Background.BackgroundColor.h = 480;
+                    Watch_Face.ScreenNormal.Background.BackgroundColor.w = 480;
+                }
+                else if (radioButton_GTS3.Checked)
+                {
+                    //Watch_Face.WatchFace_Info.DeviceName = "GTS3";
+
+                    Watch_Face.ScreenNormal.Background.BackgroundColor.show_level = "ONLY_NORMAL";
+                    Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                    Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                    Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                    Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
+                    Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
+                }
+                Watch_Face.ScreenNormal.Background.visible = true;
+            }
+            else
+            {
+                if (Watch_Face.ScreenAOD == null) Watch_Face.ScreenAOD = new ScreenAOD();
+                Watch_Face.ScreenAOD.Background = new Background();
+                Watch_Face.ScreenAOD.Background.BackgroundColor = new hmUI_widget_FILL_RECT();
+                if (radioButton_GTR3.Checked)
+                {
+                    //Watch_Face.WatchFace_Info.DeviceName = "GTR3";
+
+                    Watch_Face.ScreenAOD.Background.BackgroundColor.show_level = "ONLY_NORMAL";
+                    Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
+                    Watch_Face.ScreenAOD.Background.BackgroundColor.x = 0;
+                    Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
+                    Watch_Face.ScreenAOD.Background.BackgroundColor.h = 454;
+                    Watch_Face.ScreenAOD.Background.BackgroundColor.w = 454;
+                }
+                else if (radioButton_GTR3_Pro.Checked)
+                {
+                    //Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
+
+                    Watch_Face.ScreenAOD.Background.BackgroundColor.show_level = "ONLY_NORMAL";
+                    Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
+                    Watch_Face.ScreenAOD.Background.BackgroundColor.x = 0;
+                    Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
+                    Watch_Face.ScreenAOD.Background.BackgroundColor.h = 480;
+                    Watch_Face.ScreenAOD.Background.BackgroundColor.w = 480;
+                }
+                else if (radioButton_GTS3.Checked)
+                {
+                    //Watch_Face.WatchFace_Info.DeviceName = "GTS3";
+
+                    Watch_Face.ScreenAOD.Background.BackgroundColor.show_level = "ONLY_NORMAL";
+                    Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
+                    Watch_Face.ScreenAOD.Background.BackgroundColor.x = 0;
+                    Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
+                    Watch_Face.ScreenAOD.Background.BackgroundColor.h = 450;
+                    Watch_Face.ScreenAOD.Background.BackgroundColor.w = 390;
+                }
+                Watch_Face.ScreenAOD.Background.visible = true;
+            }
+        }
+
         /// <summary>Добавляем цифровое время в циферблат</summary>
-        private void comboBox_AddDigitalTime()
+        private void AddDigitalTime()
         {
             if (!PreviewView) return;
             List<object> Elements = new List<object>();
@@ -1726,38 +1957,113 @@ namespace Watch_Face_Editor
             ElementDigitalTime digitalTime = new ElementDigitalTime();
             digitalTime.visible = true;
             //digitalTime.position = Elements.Count;
-            Elements.Add(digitalTime);
+            bool exists = Elements.Exists(e => e.GetType().Name== "ElementDigitalTime"); // проверяем что такого элемента нет
+            if(!exists) Elements.Add(digitalTime);
+            uCtrl_DigitalTime_Elm.SettingsClear();
         }
 
         /// <summary>Отображаем элемынты в соответствии с json файлом</summary>
         private void ShowElemetsWatchFace()
         {
+            HideAllElemenrOptions();
+            uCtrl_Background_Elm.ResetHighlightState();
+            uCtrl_DigitalTime_Elm.ResetHighlightState();
+
             panel_UC_Background.Visible = false;
             panel_UC_DigitalTime.Visible = false;
+
+
             //int count = tableLayoutPanel_ElemetsWatchFace.RowCount;
 
             if (Watch_Face == null) return;
             if (radioButton_ScreenNormal.Checked)
             {
                 if (Watch_Face.ScreenNormal == null) return;
-                if (Watch_Face.ScreenNormal.Background != null) panel_UC_Background.Visible = true;
-                if(Watch_Face.ScreenNormal.Elements!= null && Watch_Face.ScreenNormal.Elements.Count > 0)
+                if (Watch_Face.ScreenNormal.Background != null) 
                 {
-                    for (int i = 0; i < Watch_Face.ScreenNormal.Elements.Count; i++)
+                    uCtrl_Background_Elm.Visible_ShowDel(false);
+                    panel_UC_Background.Visible = true;
+                }
+            }
+            else
+            {
+                if (Watch_Face.ScreenAOD == null) return;
+                if (Watch_Face.ScreenAOD.Background != null)
+                {
+                    uCtrl_Background_Elm.Visible_ShowDel(true);
+                    uCtrl_Background_Elm.SetVisibilityElementStatus(Watch_Face.ScreenAOD.Background.visible);
+                    panel_UC_Background.Visible = true;
+                }
+            }
+
+            List<object> elements = new List<object>();
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face.ScreenNormal.Elements != null && Watch_Face.ScreenNormal.Elements.Count > 0)
+                    elements = Watch_Face.ScreenNormal.Elements;
+            }
+            else
+            {
+                if (Watch_Face.ScreenAOD.Elements != null && Watch_Face.ScreenAOD.Elements.Count > 0)
+                    elements = Watch_Face.ScreenAOD.Elements;
+            }
+
+            if (elements.Count > 0)
+            {
+                for (int i = 0; i < elements.Count; i++)
+                {
+                    Object element = elements[i];
+                    //string elementStr = element.ToString();
+                    //string type = GetTypeFromSring(elementStr);
+                    string type = element.GetType().Name;
+                    switch (type)
                     {
-                        Object element = Watch_Face.ScreenNormal.Elements[i];
-                        //string elementStr = element.ToString();
-                        //string type = GetTypeFromSring(elementStr);
-                        string type = element.GetType().Name;
-                        switch (type)
-                        {
-                            case "ElementDigitalTime":
-                                panel_UC_DigitalTime.Visible = true;
-                                //SetElementPositionInGUI(type, count - i - 2);
-                                SetElementPositionInGUI(type, i + 1);
-                                ElementDigitalTime DigitalTime = (ElementDigitalTime)element;
-                                break;
-                        }
+                        case "ElementDigitalTime":
+                            ElementDigitalTime DigitalTime = (ElementDigitalTime)element;
+                            uCtrl_DigitalTime_Elm.SetVisibilityElementStatus(DigitalTime.visible);
+                            Dictionary<int, string> elementOptions = new Dictionary<int, string>();
+                            if (DigitalTime.Hour != null)
+                            {
+                                uCtrl_DigitalTime_Elm.checkBox_Hours.Checked = DigitalTime.Hour.visible;
+                                elementOptions.Add(DigitalTime.Hour.position, "Hour");
+                            }
+                            if (DigitalTime.Minute != null)
+                            {
+                                uCtrl_DigitalTime_Elm.checkBox_Minutes.Checked = DigitalTime.Minute.visible;
+                                elementOptions.Add(DigitalTime.Minute.position, "Minute");
+                            }
+                            if (DigitalTime.Second != null)
+                            {
+                                uCtrl_DigitalTime_Elm.checkBox_Seconds.Checked = DigitalTime.Second.visible;
+                                elementOptions.Add(DigitalTime.Second.position, "Second");
+                            }
+                            if (DigitalTime.Hour_Font != null)
+                            {
+                                uCtrl_DigitalTime_Elm.checkBox_Hours_Font.Checked = DigitalTime.Hour_Font.visible;
+                                elementOptions.Add(DigitalTime.Hour_Font.position, "Hour_Font");
+                            }
+                            if (DigitalTime.Minute_Font != null)
+                            {
+                                uCtrl_DigitalTime_Elm.checkBox_Minutes_Font.Checked = DigitalTime.Minute_Font.visible;
+                                elementOptions.Add(DigitalTime.Minute_Font.position, "Minute_Font");
+                            }
+                            if (DigitalTime.Second_Font != null)
+                            {
+                                uCtrl_DigitalTime_Elm.checkBox_Seconds_Font.Checked = DigitalTime.Second_Font.visible;
+                                elementOptions.Add(DigitalTime.Second_Font.position, "Second_Font");
+                            }
+                            if (DigitalTime.AmPm != null)
+                            {
+                                uCtrl_DigitalTime_Elm.checkBox_AmPm.Checked = DigitalTime.AmPm.visible;
+                                elementOptions.Add(DigitalTime.AmPm.position, "AmPm");
+                            }
+                                
+                            uCtrl_DigitalTime_Elm.SetOptionsPosition(elementOptions);
+
+                            panel_UC_DigitalTime.Visible = true;
+                            //SetElementPositionInGUI(type, count - i - 2);
+                            SetElementPositionInGUI(type, i + 1);
+                            break;
                     }
                 }
             }
@@ -1798,10 +2104,1277 @@ namespace Watch_Face_Editor
                 }
             }
         }
+
+        private void radioButton_ScreenNormal_CheckedChanged(object sender, EventArgs e)
+        {
+            PreviewView = false;
+            comboBox_AddBackground.Visible = !radioButton_ScreenNormal.Checked;
+            pictureBox_IconBackground.Visible = !radioButton_ScreenNormal.Checked;
+            ShowElemetsWatchFace(); 
+            PreviewView = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void checkBox_VisibleSettings_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Settings_Load) return;
+            ProgramSettings.Settings_AfterUnpack_Dialog = radioButton_Settings_AfterUnpack_Dialog.Checked;
+            ProgramSettings.Settings_AfterUnpack_DoNothing = radioButton_Settings_AfterUnpack_DoNothing.Checked;
+            ProgramSettings.Settings_AfterUnpack_Download = radioButton_Settings_AfterUnpack_Download.Checked;
+
+            ProgramSettings.Settings_Open_Dialog = radioButton_Settings_Open_Dialog.Checked;
+            ProgramSettings.Settings_Open_DoNotning = radioButton_Settings_Open_DoNotning.Checked;
+            ProgramSettings.Settings_Open_Download = radioButton_Settings_Open_Download.Checked;
+
+            ProgramSettings.Settings_Pack_Dialog = radioButton_Settings_Pack_Dialog.Checked;
+            ProgramSettings.Settings_Pack_DoNotning = radioButton_Settings_Pack_DoNotning.Checked;
+            ProgramSettings.Settings_Pack_GoToFile = radioButton_Settings_Pack_GoToFile.Checked;
+
+            ProgramSettings.Settings_Unpack_Dialog = radioButton_Settings_Unpack_Dialog.Checked;
+            ProgramSettings.Settings_Unpack_Replace = radioButton_Settings_Unpack_Replace.Checked;
+            ProgramSettings.Settings_Unpack_Save = radioButton_Settings_Unpack_Save.Checked;
+
+            ProgramSettings.ShowIn12hourFormat = checkBox_ShowIn12hourFormat.Checked;
+            ProgramSettings.WatchSkin_Use = checkBox_WatchSkin_Use.Checked;
+            ProgramSettings.DrawAllWidgets = checkBox_AllWidgetsInGif.Checked;
+            ProgramSettings.Shortcuts_Area = checkBox_Shortcuts_Area.Checked;
+            ProgramSettings.Shortcuts_Border = checkBox_Shortcuts_Border.Checked;
+
+            ProgramSettings.ShowBorder = checkBox_border.Checked;
+            ProgramSettings.Crop = checkBox_crop.Checked;
+            ProgramSettings.Show_CircleScale_Area = checkBox_CircleScaleImage.Checked;
+            ProgramSettings.Shortcuts_Center_marker = checkBox_center_marker.Checked;
+            ProgramSettings.Show_Widgets_Area = checkBox_WidgetsArea.Checked;
+            ProgramSettings.Show_Shortcuts = checkBox_Show_Shortcuts.Checked;
+
+            ProgramSettings.language = comboBox_Language.Text;
+
+            ProgramSettings.Model_GTR3 = radioButton_GTR3.Checked;
+            ProgramSettings.Model_GTR3_Pro = radioButton_GTR3_Pro.Checked;
+            ProgramSettings.Model_GTS3 = radioButton_GTS3.Checked;
+
+            if (radioButton_GTR3.Checked) ProgramSettings.WatchSkin_GTR_3 = textBox_WatchSkin_Path.Text;
+            if (radioButton_GTR3_Pro.Checked) ProgramSettings.WatchSkin_GTR_3_Pro = textBox_WatchSkin_Path.Text;
+            if (radioButton_GTS3.Checked) ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
+
+
+
+            string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
+            {
+                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                NullValueHandling = NullValueHandling.Ignore
+            });
+            File.WriteAllText(Application.StartupPath + @"\Settings.json", JSON_String, Encoding.UTF8);
+
+            PreviewImage();
+            FormText();
+        }
+
+        private void checkBox_UnvisibleSettings_CheckedChanged(object sender, EventArgs e)
+        {
+            if (Settings_Load) return;
+            ProgramSettings.Settings_AfterUnpack_Dialog = radioButton_Settings_AfterUnpack_Dialog.Checked;
+            ProgramSettings.Settings_AfterUnpack_DoNothing = radioButton_Settings_AfterUnpack_DoNothing.Checked;
+            ProgramSettings.Settings_AfterUnpack_Download = radioButton_Settings_AfterUnpack_Download.Checked;
+
+            ProgramSettings.Settings_Open_Dialog = radioButton_Settings_Open_Dialog.Checked;
+            ProgramSettings.Settings_Open_DoNotning = radioButton_Settings_Open_DoNotning.Checked;
+            ProgramSettings.Settings_Open_Download = radioButton_Settings_Open_Download.Checked;
+
+            ProgramSettings.Settings_Pack_Dialog = radioButton_Settings_Pack_Dialog.Checked;
+            ProgramSettings.Settings_Pack_DoNotning = radioButton_Settings_Pack_DoNotning.Checked;
+            ProgramSettings.Settings_Pack_GoToFile = radioButton_Settings_Pack_GoToFile.Checked;
+
+            ProgramSettings.Settings_Unpack_Dialog = radioButton_Settings_Unpack_Dialog.Checked;
+            ProgramSettings.Settings_Unpack_Replace = radioButton_Settings_Unpack_Replace.Checked;
+            ProgramSettings.Settings_Unpack_Save = radioButton_Settings_Unpack_Save.Checked;
+
+            ProgramSettings.ShowIn12hourFormat = checkBox_ShowIn12hourFormat.Checked;
+            ProgramSettings.WatchSkin_Use = checkBox_WatchSkin_Use.Checked;
+            ProgramSettings.DrawAllWidgets = checkBox_AllWidgetsInGif.Checked;
+            ProgramSettings.Shortcuts_Area = checkBox_Shortcuts_Area.Checked;
+            ProgramSettings.Shortcuts_Border = checkBox_Shortcuts_Border.Checked;
+
+            ProgramSettings.ShowBorder = checkBox_border.Checked;
+            ProgramSettings.Crop = checkBox_crop.Checked;
+            ProgramSettings.Show_CircleScale_Area = checkBox_CircleScaleImage.Checked;
+            ProgramSettings.Shortcuts_Center_marker = checkBox_center_marker.Checked;
+            ProgramSettings.Show_Widgets_Area = checkBox_WidgetsArea.Checked;
+            ProgramSettings.Show_Shortcuts = checkBox_Show_Shortcuts.Checked;
+
+            ProgramSettings.language = comboBox_Language.Text;
+
+            ProgramSettings.Model_GTR3 = radioButton_GTR3.Checked;
+            ProgramSettings.Model_GTR3_Pro = radioButton_GTR3_Pro.Checked;
+            ProgramSettings.Model_GTS3 = radioButton_GTS3.Checked;
+
+            if (radioButton_GTR3.Checked) ProgramSettings.WatchSkin_GTR_3 = textBox_WatchSkin_Path.Text;
+            if (radioButton_GTR3_Pro.Checked) ProgramSettings.WatchSkin_GTR_3_Pro = textBox_WatchSkin_Path.Text;
+            if (radioButton_GTS3.Checked) ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
+
+
+
+            string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
+            {
+                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                NullValueHandling = NullValueHandling.Ignore
+            });
+            File.WriteAllText(Application.StartupPath + @"\Settings.json", JSON_String, Encoding.UTF8);
+        }
+
+        private void checkBox_WebW_CheckedChanged(object sender, EventArgs e)
+        {
+            PreviewImage();
+        }
+
+        private void comboBox_AddBackground_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!PreviewView) return;
+            AddBackground();
+            PreviewView = false;
+            ShowElemetsWatchFace();
+            PreviewView = true;
+            JSON_Modified = true;
+        }
+
+        private void uCtrl_Background_Elm_VisibleElemenChanged(object sender, EventArgs eventArgs, bool visible)
+        {
+            Background background = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Background != null) background = Watch_Face.ScreenNormal.Background;
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Background != null) background = Watch_Face.ScreenAOD.Background;
+            }
+            if(background != null) background.visible = visible;
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Background_Elm_DelElement(object sender, EventArgs eventArgs)
+        {
+            PreviewView = false;
+            if (Watch_Face != null && Watch_Face.ScreenAOD != null)
+                Watch_Face.ScreenAOD.Background = null;
+            JSON_Modified = true;
+            ShowElemetsWatchFace(); 
+            PreviewView = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_DigitalTime_Elm_VisibleOptionsChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementDigitalTime digitalTime = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementDigitalTime");
+                    //digitalTime = (ElementDigitalTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDigitalTime");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementDigitalTime());
+                    digitalTime = (ElementDigitalTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDigitalTime");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementDigitalTime");
+                    //digitalTime = (ElementDigitalTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDigitalTime");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementDigitalTime());
+                    digitalTime = (ElementDigitalTime)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementDigitalTime");
+                }
+            }
+
+            if (digitalTime != null)
+            {
+                if (digitalTime.Hour == null) digitalTime.Hour = new hmUI_widget_IMG_NUMBER();
+                if (digitalTime.Minute == null) digitalTime.Minute = new hmUI_widget_IMG_NUMBER();
+                if (digitalTime.Second == null) digitalTime.Second = new hmUI_widget_IMG_NUMBER();
+                if (digitalTime.Hour_Font == null) digitalTime.Hour_Font = new hmUI_widget_TEXT();
+                if (digitalTime.Minute_Font == null) digitalTime.Minute_Font = new hmUI_widget_TEXT();
+                if (digitalTime.Second_Font == null) digitalTime.Second_Font = new hmUI_widget_TEXT();
+                if (digitalTime.AmPm == null) digitalTime.AmPm = new hmUI_widget_IMG_TIME_am_pm();
+
+                Dictionary<string, int> elementOptions = uCtrl_DigitalTime_Elm.GetOptionsPosition();
+                if (elementOptions.ContainsKey("Hour")) digitalTime.Hour.position = elementOptions["Hour"];
+                if (elementOptions.ContainsKey("Minute")) digitalTime.Minute.position = elementOptions["Minute"];
+                if (elementOptions.ContainsKey("Second")) digitalTime.Second.position = elementOptions["Second"];
+                if (elementOptions.ContainsKey("Hour_Font")) digitalTime.Hour_Font.position = elementOptions["Hour_Font"];
+                if (elementOptions.ContainsKey("Minute_Font")) digitalTime.Minute_Font.position = elementOptions["Minute_Font"];
+                if (elementOptions.ContainsKey("Second_Font")) digitalTime.Second_Font.position = elementOptions["Second_Font"];
+                if (elementOptions.ContainsKey("AmPm")) digitalTime.AmPm.position = elementOptions["AmPm"];
+
+                CheckBox checkBox = (CheckBox)sender;
+                string name = checkBox.Name;
+                switch (name)
+                {
+                    case "checkBox_Hours":
+                        digitalTime.Hour.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Minutes":
+                        digitalTime.Minute.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Seconds":
+                        digitalTime.Second.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Hours_Font":
+                        digitalTime.Hour_Font.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Minutes_Font":
+                        digitalTime.Minute_Font.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Seconds_Font":
+                        digitalTime.Second_Font.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_AmPm":
+                        digitalTime.AmPm.visible = checkBox.Checked;
+                        break;
+                }
+
+            }
+
+            uCtrl_DigitalTime_Elm1_SelectChanged(sender, eventArgs);
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_DigitalTime_Elm_OptionsMoved(object sender, EventArgs eventArgs, Dictionary<string, int> elementOptions)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementDigitalTime digitalTime = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementDigitalTime");
+                    //digitalTime = (ElementDigitalTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDigitalTime");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementDigitalTime());
+                    digitalTime = (ElementDigitalTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDigitalTime");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementDigitalTime");
+                    //digitalTime = (ElementDigitalTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDigitalTime");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementDigitalTime());
+                    digitalTime = (ElementDigitalTime)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementDigitalTime");
+                }
+            }
+
+            if (digitalTime != null)
+            {
+                if (digitalTime.Hour == null) digitalTime.Hour = new hmUI_widget_IMG_NUMBER();
+                if (digitalTime.Minute == null) digitalTime.Minute = new hmUI_widget_IMG_NUMBER();
+                if (digitalTime.Second == null) digitalTime.Second = new hmUI_widget_IMG_NUMBER();
+                if (digitalTime.Hour_Font == null) digitalTime.Hour_Font = new hmUI_widget_TEXT();
+                if (digitalTime.Minute_Font == null) digitalTime.Minute_Font = new hmUI_widget_TEXT();
+                if (digitalTime.Second_Font == null) digitalTime.Second_Font = new hmUI_widget_TEXT();
+                if (digitalTime.AmPm == null) digitalTime.AmPm = new hmUI_widget_IMG_TIME_am_pm();
+
+                //Dictionary<string, int> elementOptions = uCtrl_DigitalTime_Elm.GetOptionsPosition();
+                if (elementOptions.ContainsKey("Hour")) digitalTime.Hour.position = elementOptions["Hour"];
+                if (elementOptions.ContainsKey("Minute")) digitalTime.Minute.position = elementOptions["Minute"];
+                if (elementOptions.ContainsKey("Second")) digitalTime.Second.position = elementOptions["Second"];
+                if (elementOptions.ContainsKey("Hour_Font")) digitalTime.Hour_Font.position = elementOptions["Hour_Font"];
+                if (elementOptions.ContainsKey("Minute_Font")) digitalTime.Minute_Font.position = elementOptions["Minute_Font"];
+                if (elementOptions.ContainsKey("Second_Font")) digitalTime.Second_Font.position = elementOptions["Second_Font"];
+                if (elementOptions.ContainsKey("AmPm")) digitalTime.AmPm.position = elementOptions["AmPm"];
+
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_DigitalTime_Elm_VisibleElementChanged(object sender, EventArgs eventArgs, bool visible)
+        {
+            ElementDigitalTime digitalTime = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    //bool exists = Elements.Exists(e => e.GetType().Name == "ElementDigitalTime");
+                    digitalTime = (ElementDigitalTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDigitalTime");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    digitalTime = (ElementDigitalTime)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementDigitalTime");
+                }
+            }
+            if (digitalTime != null)
+            {
+                digitalTime.visible = visible;
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_DigitalTime_Elm_DelElement(object sender, EventArgs eventArgs)
+        {
+            List<object> Elements = new List<object>();
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    Elements = Watch_Face.ScreenNormal.Elements;
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    Elements = Watch_Face.ScreenAOD.Elements;
+                }
+            }
+
+            bool exists = Elements.Exists(e => e.GetType().Name == "ElementDigitalTime");
+            if (exists)
+            {
+                int index = Elements.FindIndex(e => e.GetType().Name == "ElementDigitalTime");
+                Elements.RemoveAt(index);
+
+                PreviewView = false;
+                ShowElemetsWatchFace();
+                PreviewView = true;
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private FileInfo[] FileInfoSort(FileInfo[] fileInfo)
+        {
+            if (fileInfo.Length < 2) return fileInfo;
+            for (int i = 0; i < fileInfo.Length - 1; i++)
+            {
+                for (int j = i + 1; j < fileInfo.Length; j++)
+                {
+                    int compare = FileInfoCompare(fileInfo[i], fileInfo[j]);
+                    if (compare > 0)
+                    {
+                        FileInfo temp = fileInfo[i];
+                        fileInfo[i] = fileInfo[j];
+                        fileInfo[j] = temp;
+                    }
+                }
+            }
+            return fileInfo;
+        }
+
+        public int FileInfoCompare(FileInfo fileInfo1, FileInfo fileInfo2)
+        {
+            // разделяем на блоки
+            string name1 = fileInfo1.Name;
+            string name2 = fileInfo2.Name;
+            name1 = Path.GetFileNameWithoutExtension(name1);
+            name2 = Path.GetFileNameWithoutExtension(name2);
+            string[] parts1 = name1.Split(new char[] { '-', '_', '.' });
+            string[] parts2 = name2.Split(new char[] { '-', '_', '.' });
+
+            // приводим цифровые блоки к одной длине
+            for (int i = 0; i < parts1.Length; i++)
+            {
+                int ruselt;
+                if (Int32.TryParse(parts1[i], out ruselt))
+                {
+                    int toPad = 10 - parts1[i].Length;
+                    if (toPad < 0) toPad = 0;
+                    parts1[i] = parts1[i].Insert(0, new String('0', toPad));
+                }
+            }
+            for (int i = 0; i < parts1.Length; i++)
+            {
+                int ruselt;
+                if (Int32.TryParse(parts2[i], out ruselt))
+                {
+                    int toPad = 10 - parts2[i].Length;
+                    if (toPad < 0) toPad = 0;
+                    parts2[i] = parts2[i].Insert(0, new String('0', toPad));
+                }
+            }
+
+            // объединяем обратно в строку
+            string toCompare1 = string.Join("", parts1);
+            string toCompare2 = string.Join("", parts2);
+
+            // сравниваем строки
+            int ret = toCompare1.CompareTo(toCompare2);
+            Console.WriteLine("Compare1=" + toCompare1);
+            Console.WriteLine("Compare2=" + toCompare2);
+            Console.WriteLine("return=" + ret.ToString());
+            Console.WriteLine(" ");
+
+            return toCompare1.CompareTo(toCompare2);
+        }
+
+        private void userCtrl_Set_ValueChanged(object sender, EventArgs eventArgs, int setNumber)
+        {
+            switch (setNumber)
+            {
+                case 1:
+                    SetPreferences(userCtrl_Set1);
+                    break;
+                case 2:
+                    SetPreferences(userCtrl_Set2);
+                    break;
+                case 3:
+                    SetPreferences(userCtrl_Set3);
+                    break;
+                case 4:
+                    SetPreferences(userCtrl_Set4);
+                    break;
+                case 5:
+                    SetPreferences(userCtrl_Set5);
+                    break;
+                case 6:
+                    SetPreferences(userCtrl_Set6);
+                    break;
+                case 7:
+                    SetPreferences(userCtrl_Set7);
+                    break;
+                case 8:
+                    SetPreferences(userCtrl_Set8);
+                    break;
+                case 9:
+                    SetPreferences(userCtrl_Set9);
+                    break;
+                case 10:
+                    SetPreferences(userCtrl_Set10);
+                    break;
+                case 11:
+                    SetPreferences(userCtrl_Set11);
+                    break;
+                case 12:
+                    SetPreferences(userCtrl_Set12);
+                    break;
+            }
+
+            PreviewImage();
+        }
+
+        private void button_RandomPreview_Click(object sender, EventArgs e)
+        {
+            DateTime now = DateTime.Now;
+            Random rnd = new Random();
+            int year = now.Year;
+            int month = rnd.Next(0, 12) + 1;
+            int day = rnd.Next(0, 28) + 1;
+            int weekDay = rnd.Next(0, 7) + 1;
+            int hour = rnd.Next(0, 24);
+            int min = rnd.Next(0, 60);
+            int sec = rnd.Next(0, 60);
+            int battery = rnd.Next(0, 101);
+            int calories = rnd.Next(0, 2500);
+            int pulse = rnd.Next(45, 150);
+            int distance = rnd.Next(0, 15000);
+            int steps = rnd.Next(0, 15000);
+            int goal = rnd.Next(0, 15000);
+            int pai = rnd.Next(0, 150);
+            int standUp = rnd.Next(0, 13);
+            int stress = rnd.Next(0, 13);
+            int fatBurning = rnd.Next(0, 13);
+            bool bluetooth = rnd.Next(2) == 0 ? false : true;
+            bool alarm = rnd.Next(2) == 0 ? false : true;
+            bool unlocked = rnd.Next(2) == 0 ? false : true;
+            bool dnd = rnd.Next(2) == 0 ? false : true;
+
+            int temperature = rnd.Next(-25, 35);
+            int temperatureMax = rnd.Next(-25, 35);
+            int temperatureMin = temperatureMax - rnd.Next(3, 10);
+            int temperatureIcon = rnd.Next(0, 29);
+            bool showTemperature = rnd.Next(7) == 0 ? false : true;
+
+            int airPressure = rnd.Next(800, 1200);
+            int airQuality = rnd.Next(0, 650);
+            int altitude = rnd.Next(0, 100);
+            int humidity = rnd.Next(0, 100);
+            int UVindex = rnd.Next(0, 13);
+            int windForce = rnd.Next(0, 13);
+
+            WatchFacePreviewSet.Date.Year = year;
+            WatchFacePreviewSet.Date.Month = month;
+            WatchFacePreviewSet.Date.Day = day;
+            WatchFacePreviewSet.Date.WeekDay = weekDay;
+
+            WatchFacePreviewSet.Time.Hours = hour;
+            WatchFacePreviewSet.Time.Minutes = min;
+            WatchFacePreviewSet.Time.Seconds = sec;
+
+            WatchFacePreviewSet.Battery = battery;
+            WatchFacePreviewSet.Activity.Steps = steps;
+            WatchFacePreviewSet.Activity.StepsGoal = goal;
+            WatchFacePreviewSet.Activity.Calories = calories;
+            WatchFacePreviewSet.Activity.HeartRate = pulse;
+            WatchFacePreviewSet.Activity.PAI = pai;
+            WatchFacePreviewSet.Activity.Distance = distance;
+            WatchFacePreviewSet.Activity.StandUp = standUp;
+            WatchFacePreviewSet.Activity.Stress = stress;
+            WatchFacePreviewSet.Activity.FatBurning = fatBurning;
+
+            WatchFacePreviewSet.Status.Bluetooth = bluetooth;
+            WatchFacePreviewSet.Status.Alarm = alarm;
+            WatchFacePreviewSet.Status.Lock = unlocked;
+            WatchFacePreviewSet.Status.DoNotDisturb = dnd;
+
+            WatchFacePreviewSet.Weather.Temperature = temperature;
+            WatchFacePreviewSet.Weather.TemperatureMin = temperatureMin;
+            WatchFacePreviewSet.Weather.TemperatureMax = temperatureMax;
+            WatchFacePreviewSet.Weather.Icon = temperatureIcon;
+            WatchFacePreviewSet.Weather.showTemperature = showTemperature;
+
+            WatchFacePreviewSet.Weather.AirPressure = airPressure;
+            WatchFacePreviewSet.Weather.AirQuality = airQuality;
+            WatchFacePreviewSet.Weather.Altitude = altitude;
+            WatchFacePreviewSet.Weather.Humidity = humidity;
+            WatchFacePreviewSet.Weather.UVindex = UVindex;
+            WatchFacePreviewSet.Weather.WindForce = windForce;
+            PreviewImage();
+        }
+
+        private void StartJsonPreview()
+        {
+            Random rnd = new Random();
+            userCtrl_Set1.RandomValue(rnd);
+            userCtrl_Set2.RandomValue(rnd);
+            userCtrl_Set3.RandomValue(rnd);
+            userCtrl_Set4.RandomValue(rnd);
+            userCtrl_Set5.RandomValue(rnd);
+            userCtrl_Set6.RandomValue(rnd);
+            userCtrl_Set7.RandomValue(rnd);
+            userCtrl_Set8.RandomValue(rnd);
+            userCtrl_Set9.RandomValue(rnd);
+            userCtrl_Set10.RandomValue(rnd);
+            userCtrl_Set11.RandomValue(rnd);
+            userCtrl_Set12.RandomValue(rnd);
+
+            for (int i = 1; i < 13; i++)
+            {
+                DateTime date = DateTime.Now;
+                int year;
+                int month;
+                int day;
+                int weekDay;
+                int offsetDay;
+
+                switch (i)
+                {
+                    case 1:
+                        date = userCtrl_Set1.dateTimePicker_Date_Set.Value;
+                        break;
+                    case 2:
+                        date = userCtrl_Set2.dateTimePicker_Date_Set.Value;
+                        break;
+                    case 3:
+                        date = userCtrl_Set3.dateTimePicker_Date_Set.Value;
+                        break;
+                    case 4:
+                        date = userCtrl_Set5.dateTimePicker_Date_Set.Value;
+                        break;
+                    case 5:
+                        date = userCtrl_Set5.dateTimePicker_Date_Set.Value;
+                        break;
+                    case 6:
+                        date = userCtrl_Set6.dateTimePicker_Date_Set.Value;
+                        break;
+                    case 7:
+                        date = userCtrl_Set7.dateTimePicker_Date_Set.Value;
+                        break;
+                    case 8:
+                        date = userCtrl_Set8.dateTimePicker_Date_Set.Value;
+                        break;
+                    case 9:
+                        date = userCtrl_Set9.dateTimePicker_Date_Set.Value;
+                        break;
+                    case 10:
+                        date = userCtrl_Set10.dateTimePicker_Date_Set.Value;
+                        break;
+                    case 11:
+                        date = userCtrl_Set11.dateTimePicker_Date_Set.Value;
+                        break;
+                    case 12:
+                        date = userCtrl_Set12.dateTimePicker_Date_Set.Value;
+                        break;
+                }
+
+
+                year = date.Year;
+                month = i;
+                //int month = date.Month;
+                day = date.Day;
+                date = new DateTime(year, month, day);
+                weekDay = (int)date.DayOfWeek;
+                offsetDay = i - weekDay;
+                day = day + offsetDay;
+                while (day < 1)
+                {
+                    day = day + 7;
+                }
+                while (day > 28)
+                {
+                    day = day - 7;
+                }
+                date = new DateTime(year, month, day);
+
+                switch (i)
+                {
+                    case 1:
+                        userCtrl_Set1.dateTimePicker_Date_Set.Value = date;
+                        break;
+                    case 2:
+                        userCtrl_Set2.dateTimePicker_Date_Set.Value = date;
+                        break;
+                    case 3:
+                        userCtrl_Set3.dateTimePicker_Date_Set.Value = date;
+                        break;
+                    case 4:
+                        userCtrl_Set4.dateTimePicker_Date_Set.Value = date;
+                        break;
+                    case 5:
+                        userCtrl_Set5.dateTimePicker_Date_Set.Value = date;
+                        break;
+                    case 6:
+                        userCtrl_Set6.dateTimePicker_Date_Set.Value = date;
+                        break;
+                    case 7:
+                        userCtrl_Set7.dateTimePicker_Date_Set.Value = date;
+                        break;
+                    case 8:
+                        userCtrl_Set8.dateTimePicker_Date_Set.Value = date;
+                        break;
+                    case 9:
+                        userCtrl_Set9.dateTimePicker_Date_Set.Value = date;
+                        break;
+                    case 10:
+                        userCtrl_Set10.dateTimePicker_Date_Set.Value = date;
+                        break;
+                    case 11:
+                        userCtrl_Set11.dateTimePicker_Date_Set.Value = date;
+                        break;
+                    case 12:
+                        userCtrl_Set12.dateTimePicker_Date_Set.Value = date;
+                        break;
+                }
+            }
+
+            SetPreferences(userCtrl_Set12);
+            if (!userCtrl_Set1.Collapsed) SetPreferences(userCtrl_Set1);
+            if (!userCtrl_Set2.Collapsed) SetPreferences(userCtrl_Set2);
+            if (!userCtrl_Set3.Collapsed) SetPreferences(userCtrl_Set3);
+            if (!userCtrl_Set4.Collapsed) SetPreferences(userCtrl_Set4);
+            if (!userCtrl_Set5.Collapsed) SetPreferences(userCtrl_Set5);
+            if (!userCtrl_Set6.Collapsed) SetPreferences(userCtrl_Set6);
+            if (!userCtrl_Set7.Collapsed) SetPreferences(userCtrl_Set7);
+            if (!userCtrl_Set8.Collapsed) SetPreferences(userCtrl_Set8);
+            if (!userCtrl_Set9.Collapsed) SetPreferences(userCtrl_Set9);
+            if (!userCtrl_Set10.Collapsed) SetPreferences(userCtrl_Set10);
+            if (!userCtrl_Set11.Collapsed) SetPreferences(userCtrl_Set11);
+        }
+
+        // считываем параметры из JsonPreview
+         void JsonPreview_Read(string fullfilename)
+        {
+            string text = File.ReadAllText(fullfilename);
+
+            PreviewView = false;
+            Prewiev_States_Json ps = new Prewiev_States_Json();
+            try
+            {
+                var objson = JsonConvert.DeserializeObject<object[]>(text);
+
+                int count = objson.Count();
+
+                string JSON_Text = JsonConvert.SerializeObject(objson, Formatting.Indented, new JsonSerializerSettings
+                {
+                    //DefaultValueHandling = DefaultValueHandling.Ignore,
+                    NullValueHandling = NullValueHandling.Ignore
+                });
+                //richTextBox_JsonText.Text = JSON_Text;
+
+                if (count == 0) return;
+                if (count > 12) count = 12;
+                for (int i = 0; i < count; i++)
+                {
+                    ps = JsonConvert.DeserializeObject<Prewiev_States_Json>(objson[i].ToString(), new JsonSerializerSettings
+                    {
+                        //DefaultValueHandling = DefaultValueHandling.Ignore,
+                        NullValueHandling = NullValueHandling.Ignore
+                    });
+
+                    Dictionary<string, int> Activity = new Dictionary<string, int>();
+                    Dictionary<string, int> Air = new Dictionary<string, int>();
+                    Dictionary<string, bool> checkValue = new Dictionary<string, bool>();
+
+                    Activity.Add("Year", ps.Time.Year);
+                    Activity.Add("Month", ps.Time.Month);
+                    Activity.Add("Day", ps.Time.Day);
+
+                    Activity.Add("Hour", ps.Time.Hour);
+                    Activity.Add("Minute", ps.Time.Minute);
+                    Activity.Add("Second", ps.Time.Second);
+
+                    Activity.Add("Battery", ps.BatteryLevel);
+                    Activity.Add("Calories", ps.Calories);
+                    Activity.Add("HeartRate", ps.Pulse);
+                    Activity.Add("Distance", ps.Distance);
+                    Activity.Add("Steps", ps.Steps);
+                    Activity.Add("StepsGoal", ps.Goal);
+
+                    Activity.Add("PAI", ps.PAI);
+                    Activity.Add("StandUp", ps.Stand);
+                    Activity.Add("Stress", ps.Stress);
+                    //Activity.Add("ActivityGoal", ps.ActivityGoal);
+                    Activity.Add("FatBurning", ps.FatBurning);
+
+
+                    Air.Add("Weather_Icon", ps.CurrentWeather);
+                    Air.Add("Temperature", ps.CurrentTemperature);
+                    Air.Add("TemperatureMax", ps.TemperatureMax);
+                    Air.Add("TemperatureMin", ps.TemperatureMin);
+
+                    Air.Add("UVindex", ps.UVindex);
+                    Air.Add("AirQuality", ps.AirQuality);
+                    Air.Add("Humidity", ps.Humidity);
+                    Air.Add("WindForce", ps.WindForce);
+                    Air.Add("Altitude", ps.Altitude);
+                    Air.Add("AirPressure", ps.AirPressure);
+
+
+                    checkValue.Add("Bluetooth", ps.Bluetooth);
+                    checkValue.Add("Alarm", ps.Alarm);
+                    checkValue.Add("Lock", ps.Unlocked);
+                    checkValue.Add("DND", ps.DoNotDisturb);
+
+                    checkValue.Add("ShowTemperature", ps.ShowTemperature);
+
+                    switch (i)
+                    {
+                        case 0:
+                            userCtrl_Set1.SetValue(Activity, Air, checkValue);
+                            break;
+                        case 1:
+                            userCtrl_Set2.SetValue(Activity, Air, checkValue);
+                            break;
+                        case 2:
+                            userCtrl_Set3.SetValue(Activity, Air, checkValue);
+                            break;
+                        case 3:
+                            userCtrl_Set4.SetValue(Activity, Air, checkValue);
+                            break;
+                        case 4:
+                            userCtrl_Set5.SetValue(Activity, Air, checkValue);
+                            break;
+                        case 5:
+                            userCtrl_Set6.SetValue(Activity, Air, checkValue);
+                            break;
+                        case 6:
+                            userCtrl_Set7.SetValue(Activity, Air, checkValue);
+                            break;
+                        case 7:
+                            userCtrl_Set8.SetValue(Activity, Air, checkValue);
+                            break;
+                        case 8:
+                            userCtrl_Set9.SetValue(Activity, Air, checkValue);
+                            break;
+                        case 9:
+                            userCtrl_Set10.SetValue(Activity, Air, checkValue);
+                            break;
+                        case 10:
+                            userCtrl_Set11.SetValue(Activity, Air, checkValue);
+                            break;
+                        case 11:
+                            userCtrl_Set12.SetValue(Activity, Air, checkValue);
+                            break;
+                    }
+                }
+
+                switch (count)
+                {
+                    case 1:
+                        SetPreferences(userCtrl_Set1);
+                        break;
+                    case 2:
+                        SetPreferences(userCtrl_Set2);
+                        break;
+                    case 3:
+                        SetPreferences(userCtrl_Set3);
+                        break;
+                    case 4:
+                        SetPreferences(userCtrl_Set4);
+                        break;
+                    case 5:
+                        SetPreferences(userCtrl_Set5);
+                        break;
+                    case 6:
+                        SetPreferences(userCtrl_Set6);
+                        break;
+                    case 7:
+                        SetPreferences(userCtrl_Set7);
+                        break;
+                    case 8:
+                        SetPreferences(userCtrl_Set8);
+                        break;
+                    case 9:
+                        SetPreferences(userCtrl_Set9);
+                        break;
+                    case 10:
+                        SetPreferences(userCtrl_Set10);
+                        break;
+                    case 11:
+                        SetPreferences(userCtrl_Set11);
+                        break;
+                    case 12:
+                        SetPreferences(userCtrl_Set12);
+                        break;
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show(Properties.FormStrings.Message_JsonReadError_Text, Properties.FormStrings.Message_Error_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+            SetPreferences(userCtrl_Set12);
+            if (!userCtrl_Set1.Collapsed) SetPreferences(userCtrl_Set1);
+            if (!userCtrl_Set2.Collapsed) SetPreferences(userCtrl_Set2);
+            if (!userCtrl_Set3.Collapsed) SetPreferences(userCtrl_Set3);
+            if (!userCtrl_Set4.Collapsed) SetPreferences(userCtrl_Set4);
+            if (!userCtrl_Set5.Collapsed) SetPreferences(userCtrl_Set5);
+            if (!userCtrl_Set6.Collapsed) SetPreferences(userCtrl_Set6);
+            if (!userCtrl_Set7.Collapsed) SetPreferences(userCtrl_Set7);
+            if (!userCtrl_Set8.Collapsed) SetPreferences(userCtrl_Set8);
+            if (!userCtrl_Set9.Collapsed) SetPreferences(userCtrl_Set9);
+            if (!userCtrl_Set10.Collapsed) SetPreferences(userCtrl_Set10);
+            if (!userCtrl_Set11.Collapsed) SetPreferences(userCtrl_Set11);
+
+            PreviewView = true;
+            //PreviewImage();
+        }
+
+        // записываем параметры в JsonPreview
+        private void button_JsonPreview_Write_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            //openFileDialog.InitialDirectory = subPath;
+            //saveFileDialog.Filter = Properties.FormStrings.FilterJson;
+            saveFileDialog.FileName = "Preview.States";
+            saveFileDialog.Filter = "PreviewStates file | *.States";
+            saveFileDialog.RestoreDirectory = true;
+            saveFileDialog.Title = Properties.FormStrings.Dialog_Title_PreviewStates;
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                object[] objson = new object[] { };
+                int count = 0;
+                for (int i = 0; i < 12; i++)
+                {
+                    Prewiev_States_Json ps = new Prewiev_States_Json();
+                    ps.Time = new TimePreview();
+                    Dictionary<string, int> Activity = new Dictionary<string, int>();
+                    Dictionary<string, int> Air = new Dictionary<string, int>();
+                    Dictionary<string, bool> checkValue = new Dictionary<string, bool>();
+                    switch (i)
+                    {
+                        case 0:
+                            userCtrl_Set1.GetValue(out Activity, out Air, out checkValue);
+                            break;
+                        case 1:
+                            userCtrl_Set2.GetValue(out Activity, out Air, out checkValue);
+                            break;
+                        case 2:
+                            userCtrl_Set3.GetValue(out Activity, out Air, out checkValue);
+                            break;
+                        case 3:
+                            userCtrl_Set4.GetValue(out Activity, out Air, out checkValue);
+                            break;
+                        case 4:
+                            userCtrl_Set5.GetValue(out Activity, out Air, out checkValue);
+                            break;
+                        case 5:
+                            userCtrl_Set6.GetValue(out Activity, out Air, out checkValue);
+                            break;
+                        case 6:
+                            userCtrl_Set7.GetValue(out Activity, out Air, out checkValue);
+                            break;
+                        case 7:
+                            userCtrl_Set8.GetValue(out Activity, out Air, out checkValue);
+                            break;
+                        case 8:
+                            userCtrl_Set9.GetValue(out Activity, out Air, out checkValue);
+                            break;
+                        case 9:
+                            userCtrl_Set10.GetValue(out Activity, out Air, out checkValue);
+                            break;
+                        case 10:
+                            userCtrl_Set11.GetValue(out Activity, out Air, out checkValue);
+                            break;
+                        case 11:
+                            userCtrl_Set12.GetValue(out Activity, out Air, out checkValue);
+                            break;
+                    }
+
+                    ps.Time.Year = Activity["Year"];
+                    ps.Time.Month = Activity["Month"];
+                    ps.Time.Day = Activity["Day"];
+
+                    ps.Time.Hour = Activity["Hour"];
+                    ps.Time.Minute = Activity["Minute"];
+                    ps.Time.Second = Activity["Second"];
+
+                    ps.BatteryLevel = Activity["Battery"];
+                    ps.Calories = Activity["Calories"];
+                    ps.Pulse = Activity["HeartRate"];
+                    ps.Distance = Activity["Distance"];
+                    ps.Steps = Activity["Steps"];
+                    ps.Goal = Activity["StepsGoal"];
+
+                    ps.PAI = Activity["PAI"];
+                    ps.Stand = Activity["StandUp"];
+                    ps.Stress = Activity["Stress"];
+                    //ps.ActivityGoal = Activity["ActivityGoal"];
+                    ps.FatBurning = Activity["FatBurning"];
+
+
+                    ps.CurrentWeather = Air["Weather_Icon"];
+                    ps.CurrentTemperature = Air["Temperature"];
+                    ps.TemperatureMax = Air["TemperatureMax"];
+                    ps.TemperatureMin = Air["TemperatureMin"];
+
+                    ps.UVindex = Air["UVindex"];
+                    ps.AirQuality = Air["AirQuality"];
+                    ps.Humidity = Air["Humidity"];
+                    ps.WindForce = Air["WindForce"];
+                    ps.Altitude = Air["Altitude"];
+                    ps.AirPressure = Air["AirPressure"];
+
+
+                    ps.Bluetooth = checkValue["Bluetooth"];
+                    ps.Alarm = checkValue["Alarm"];
+                    ps.Unlocked = checkValue["Lock"];
+                    ps.DoNotDisturb = checkValue["DND"];
+
+                    ps.ShowTemperature = checkValue["ShowTemperature"];
+
+                    if (ps.Calories != 1234)
+                    {
+                        Array.Resize(ref objson, objson.Length + 1);
+                        objson[count] = ps;
+                        count++;
+                    }
+                }
+
+                string string_json_temp = JsonConvert.SerializeObject(objson, Formatting.None, new JsonSerializerSettings
+                {
+                    //DefaultValueHandling = DefaultValueHandling.Ignore,
+                    NullValueHandling = NullValueHandling.Ignore
+                });
+                var objsontemp = JsonConvert.DeserializeObject<object[]>(string_json_temp);
+
+                string formatted = JsonConvert.SerializeObject(objsontemp, Formatting.Indented);
+                //richTextBox_JsonText.Text = formatted;
+
+
+                if (formatted.Length < 10)
+                {
+                    MessageBox.Show(Properties.FormStrings.Message_SaveOnly1234_Text);
+                    return;
+                }
+                //text = text.Replace(@"\", "");
+                //text = text.Replace("\"{", "{");
+                //text = text.Replace("}\"", "}");
+                //text = text.Replace(",", ",\r\n");
+                //text = text.Replace(":", ": ");
+                //text = text.Replace(": {", ": {\r\n");
+                //string formatted = JsonConvert.SerializeObject(text, Formatting.Indented);
+
+                string fullfilename = saveFileDialog.FileName;
+                //richTextBox_JsonText.Text = formatted;
+                File.WriteAllText(fullfilename, formatted, Encoding.UTF8);
+            }
+        }
+
+        private void button_JsonPreview_Read_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.InitialDirectory = FullFileDir;
+            //openFileDialog.Filter = Properties.FormStrings.FilterJson;
+            openFileDialog.FileName = "Preview.States";
+            openFileDialog.Filter = "PreviewStates file | *.States|Json files (*.json) | *.json";
+            openFileDialog.RestoreDirectory = true;
+            openFileDialog.Multiselect = false;
+            openFileDialog.Title = Properties.FormStrings.Dialog_Title_PreviewStates;
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string fullfilename = openFileDialog.FileName;
+                JsonPreview_Read(fullfilename);
+                PreviewImage();
+            }
+        }
+
+        private void button_JsonPreview_Write_Click_1(object sender, EventArgs e)
+        {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            //openFileDialog.InitialDirectory = subPath;
+            //saveFileDialog.Filter = Properties.FormStrings.FilterJson;
+            saveFileDialog.FileName = "Preview.States";
+            saveFileDialog.Filter = "PreviewStates file | *.States";
+            saveFileDialog.RestoreDirectory = true;
+            saveFileDialog.Title = Properties.FormStrings.Dialog_Title_PreviewStates;
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                object[] objson = new object[] { };
+                int count = 0;
+                for (int i = 0; i < 12; i++)
+                {
+                    Prewiev_States_Json ps = new Prewiev_States_Json();
+                    ps.Time = new TimePreview();
+                    Dictionary<string, int> Activity = new Dictionary<string, int>();
+                    Dictionary<string, int> Air = new Dictionary<string, int>();
+                    Dictionary<string, bool> checkValue = new Dictionary<string, bool>();
+                    switch (i)
+                    {
+                        case 0:
+                            userCtrl_Set1.GetValue(out Activity, out Air, out checkValue);
+                            break;
+                        case 1:
+                            userCtrl_Set2.GetValue(out Activity, out Air, out checkValue);
+                            break;
+                        case 2:
+                            userCtrl_Set3.GetValue(out Activity, out Air, out checkValue);
+                            break;
+                        case 3:
+                            userCtrl_Set4.GetValue(out Activity, out Air, out checkValue);
+                            break;
+                        case 4:
+                            userCtrl_Set5.GetValue(out Activity, out Air, out checkValue);
+                            break;
+                        case 5:
+                            userCtrl_Set6.GetValue(out Activity, out Air, out checkValue);
+                            break;
+                        case 6:
+                            userCtrl_Set7.GetValue(out Activity, out Air, out checkValue);
+                            break;
+                        case 7:
+                            userCtrl_Set8.GetValue(out Activity, out Air, out checkValue);
+                            break;
+                        case 8:
+                            userCtrl_Set9.GetValue(out Activity, out Air, out checkValue);
+                            break;
+                        case 9:
+                            userCtrl_Set10.GetValue(out Activity, out Air, out checkValue);
+                            break;
+                        case 10:
+                            userCtrl_Set11.GetValue(out Activity, out Air, out checkValue);
+                            break;
+                        case 11:
+                            userCtrl_Set12.GetValue(out Activity, out Air, out checkValue);
+                            break;
+                    }
+
+                    ps.Time.Year = Activity["Year"];
+                    ps.Time.Month = Activity["Month"];
+                    ps.Time.Day = Activity["Day"];
+
+                    ps.Time.Hour = Activity["Hour"];
+                    ps.Time.Minute = Activity["Minute"];
+                    ps.Time.Second = Activity["Second"];
+
+                    ps.BatteryLevel = Activity["Battery"];
+                    ps.Calories = Activity["Calories"];
+                    ps.Pulse = Activity["HeartRate"];
+                    ps.Distance = Activity["Distance"];
+                    ps.Steps = Activity["Steps"];
+                    ps.Goal = Activity["StepsGoal"];
+
+                    ps.PAI = Activity["PAI"];
+                    ps.Stand = Activity["StandUp"];
+                    ps.Stress = Activity["Stress"];
+                    //ps.ActivityGoal = Activity["ActivityGoal"];
+                    ps.FatBurning = Activity["FatBurning"];
+
+
+                    ps.CurrentWeather = Air["Weather_Icon"];
+                    ps.CurrentTemperature = Air["Temperature"];
+                    ps.TemperatureMax = Air["TemperatureMax"];
+                    ps.TemperatureMin = Air["TemperatureMin"];
+
+                    ps.UVindex = Air["UVindex"];
+                    ps.AirQuality = Air["AirQuality"];
+                    ps.Humidity = Air["Humidity"];
+                    ps.WindForce = Air["WindForce"];
+                    ps.Altitude = Air["Altitude"];
+                    ps.AirPressure = Air["AirPressure"];
+
+
+                    ps.Bluetooth = checkValue["Bluetooth"];
+                    ps.Alarm = checkValue["Alarm"];
+                    ps.Unlocked = checkValue["Lock"];
+                    ps.DoNotDisturb = checkValue["DND"];
+
+                    ps.ShowTemperature = checkValue["ShowTemperature"];
+
+                    if (ps.Calories != 1234)
+                    {
+                        Array.Resize(ref objson, objson.Length + 1);
+                        objson[count] = ps;
+                        count++;
+                    }
+                }
+
+                string string_json_temp = JsonConvert.SerializeObject(objson, Formatting.None, new JsonSerializerSettings
+                {
+                    //DefaultValueHandling = DefaultValueHandling.Ignore,
+                    NullValueHandling = NullValueHandling.Ignore
+                });
+                var objsontemp = JsonConvert.DeserializeObject<object[]>(string_json_temp);
+
+                string formatted = JsonConvert.SerializeObject(objsontemp, Formatting.Indented);
+                //richTextBox_JsonText.Text = formatted;
+
+
+                if (formatted.Length < 10)
+                {
+                    MessageBox.Show(Properties.FormStrings.Message_SaveOnly1234_Text);
+                    return;
+                }
+                //text = text.Replace(@"\", "");
+                //text = text.Replace("\"{", "{");
+                //text = text.Replace("}\"", "}");
+                //text = text.Replace(",", ",\r\n");
+                //text = text.Replace(":", ": ");
+                //text = text.Replace(": {", ": {\r\n");
+                //string formatted = JsonConvert.SerializeObject(text, Formatting.Indented);
+
+                string fullfilename = saveFileDialog.FileName;
+                //richTextBox_JsonText.Text = formatted;
+                File.WriteAllText(fullfilename, formatted, Encoding.UTF8);
+            }
+        }
+
+        private void button_JsonPreview_Random_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            userCtrl_Set1.RandomValue(rnd);
+            userCtrl_Set2.RandomValue(rnd);
+            userCtrl_Set3.RandomValue(rnd);
+            userCtrl_Set4.RandomValue(rnd);
+            userCtrl_Set5.RandomValue(rnd);
+            userCtrl_Set6.RandomValue(rnd);
+            userCtrl_Set7.RandomValue(rnd);
+            userCtrl_Set8.RandomValue(rnd);
+            userCtrl_Set9.RandomValue(rnd);
+            userCtrl_Set10.RandomValue(rnd);
+            userCtrl_Set11.RandomValue(rnd);
+            userCtrl_Set12.RandomValue(rnd);
+
+            //PreviewImage();
+            SetPreferences(userCtrl_Set12);
+            if (!userCtrl_Set1.Collapsed) SetPreferences(userCtrl_Set1);
+            if (!userCtrl_Set2.Collapsed) SetPreferences(userCtrl_Set2);
+            if (!userCtrl_Set3.Collapsed) SetPreferences(userCtrl_Set3);
+            if (!userCtrl_Set4.Collapsed) SetPreferences(userCtrl_Set4);
+            if (!userCtrl_Set5.Collapsed) SetPreferences(userCtrl_Set5);
+            if (!userCtrl_Set6.Collapsed) SetPreferences(userCtrl_Set6);
+            if (!userCtrl_Set7.Collapsed) SetPreferences(userCtrl_Set7);
+            if (!userCtrl_Set8.Collapsed) SetPreferences(userCtrl_Set8);
+            if (!userCtrl_Set9.Collapsed) SetPreferences(userCtrl_Set9);
+            if (!userCtrl_Set10.Collapsed) SetPreferences(userCtrl_Set10);
+            if (!userCtrl_Set11.Collapsed) SetPreferences(userCtrl_Set11);
+            //PreviewView = true;
+            PreviewImage();
+        }
+
+        private void radioButton_Model_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton radioButton = sender as RadioButton;
+            if (radioButton != null && !radioButton.Checked) return;
+            if (radioButton_GTR3.Checked)
+            {
+                pictureBox_Preview.Size = new Size((int)(230 * currentDPI), (int)(230 * currentDPI));
+            }
+            else if (radioButton_GTR3_Pro.Checked)
+            {
+                //pictureBox_Preview.Size = new Size((int)(243 * currentDPI), (int)(243 * currentDPI));
+                pictureBox_Preview.Size = new Size((int)(230 * currentDPI), (int)(230 * currentDPI));
+            }
+            else if (radioButton_GTS3.Checked)
+            {
+                pictureBox_Preview.Size = new Size((int)(198 * currentDPI), (int)(228 * currentDPI));
+            }
+
+            // изменяем размер панели для предпросмотра если она не влазит
+            if (pictureBox_Preview.Top + pictureBox_Preview.Height > radioButton_GTR3.Top)
+            {
+                float newHeight = radioButton_GTR3.Top - pictureBox_Preview.Top;
+                float scale = newHeight / pictureBox_Preview.Height;
+                pictureBox_Preview.Size = new Size((int)(pictureBox_Preview.Width * scale), (int)(pictureBox_Preview.Height * scale));
+            }
+
+            if ((formPreview != null) && (formPreview.Visible))
+            {
+                if (Form_Preview.Model_Wath.model_GTR3 != radioButton_GTR3.Checked)
+                    Form_Preview.Model_Wath.model_GTR3 = radioButton_GTR3.Checked;
+                if (Form_Preview.Model_Wath.model_GTR3_Pro != radioButton_GTR3_Pro.Checked)
+                    Form_Preview.Model_Wath.model_GTR3_Pro = radioButton_GTR3_Pro.Checked;
+                if (Form_Preview.Model_Wath.model_GTS3 != radioButton_GTS3.Checked)
+                    Form_Preview.Model_Wath.model_GTS3 = radioButton_GTS3.Checked;
+                formPreview.radioButton_CheckedChanged(sender, e);
+            }
+
+            if (Settings_Load) return;
+
+            ProgramSettings.Model_GTR3 = radioButton_GTR3.Checked;
+            ProgramSettings.Model_GTR3_Pro = radioButton_GTR3_Pro.Checked;
+            ProgramSettings.Model_GTS3 = radioButton_GTS3.Checked;
+
+            string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
+            {
+                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                NullValueHandling = NullValueHandling.Ignore
+            });
+            File.WriteAllText(Application.StartupPath + @"\Settings.json", JSON_String, Encoding.UTF8);
+
+            PreviewImage();
+            JSON_Modified = true;
+            FormText();
+
+            //JSON_write();
+            //PreviewImage();
+        }
     }
 }
 
-public static class MouseСoordinates
+public static class MouseClickСoordinates
 {
     //public static int X { get; set; }
     //public static int Y { get; set; }
@@ -1857,25 +3430,59 @@ public class MyCustomComparer : IComparer<FileInfo>
     public int Compare(FileInfo x, FileInfo y)
     {
         // split filename
-        string[] parts1 = x.Name.Split('-');
-        string[] parts2 = y.Name.Split('-');
+        //string[] parts1 = x.Name.Split('_');
+        //string[] parts2 = y.Name.Split('_');
+        string name1 = x.Name;
+        string name2 = y.Name;
+        name1 = Path.GetFileNameWithoutExtension(name1);
+        name2 = Path.GetFileNameWithoutExtension(name2);
 
-        // calculate how much leading zeros we need
-        int toPad1 = 10 - parts1[0].Length;
-        int toPad2 = 10 - parts2[0].Length;
+        string[] parts1 = name1.Split(new char[] { '-', '_', '.' });
+        string[] parts2 = name2.Split(new char[] { '-', '_', '.' });
 
-        if (toPad1 < 0) toPad1 = 0;
-        if (toPad2 < 0) toPad2 = 0;
+        //// calculate how much leading zeros we need
+        //int toPad1 = 10 - parts1[0].Length;
+        //int toPad2 = 10 - parts2[0].Length;
 
-        // add the zeros, only for sorting
-        parts1[0] = parts1[0].Insert(0, new String('0', toPad1));
-        parts2[0] = parts2[0].Insert(0, new String('0', toPad2));
+        //if (toPad1 < 0) toPad1 = 0;
+        //if (toPad2 < 0) toPad2 = 0;
+
+        //// add the zeros, only for sorting
+        //parts1[0] = parts1[0].Insert(0, new String('0', toPad1));
+        //parts2[0] = parts2[0].Insert(0, new String('0', toPad2));
+
+        for (int i = 0; i < parts1.Length; i++)
+        {
+            int ruselt;
+            if (Int32.TryParse(parts1[i], out ruselt))
+            {
+                int toPad = 10 - parts1[i].Length;
+                if (toPad < 0) toPad = 0;
+                parts1[i] = parts1[i].Insert(0, new String('0', toPad)); 
+            }
+        }
+        for (int i = 0; i < parts1.Length; i++)
+        {
+            int ruselt;
+            if (Int32.TryParse(parts2[i], out ruselt))
+            {
+                int toPad = 10 - parts2[i].Length;
+                if (toPad < 0) toPad = 0;
+                parts2[i] = parts2[i].Insert(0, new String('0', toPad)); 
+            }
+        }
 
         // create the comparable string
         string toCompare1 = string.Join("", parts1);
         string toCompare2 = string.Join("", parts2);
 
         // compare
+        int ret = toCompare1.CompareTo(toCompare2);
+        Console.WriteLine("Compare1=" + toCompare1);
+        Console.WriteLine("Compare2=" + toCompare2);
+        Console.WriteLine("return=" + ret.ToString());
+        Console.WriteLine(" ");
+
         return toCompare1.CompareTo(toCompare2);
     }
 }

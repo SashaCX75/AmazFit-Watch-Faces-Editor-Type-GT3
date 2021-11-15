@@ -110,6 +110,7 @@ namespace ControlLibrary
             // 
             // numericUpDown_imageX
             // 
+            this.numericUpDown_imageX.ContextMenuStrip = this.contextMenuStrip_X;
             this.numericUpDown_imageX.Location = new System.Drawing.Point(120, 34);
             this.numericUpDown_imageX.Maximum = new decimal(new int[] {
             999,
@@ -129,6 +130,7 @@ namespace ControlLibrary
             // 
             // numericUpDown_imageY
             // 
+            this.numericUpDown_imageY.ContextMenuStrip = this.contextMenuStrip_Y;
             this.numericUpDown_imageY.Location = new System.Drawing.Point(193, 34);
             this.numericUpDown_imageY.Maximum = new decimal(new int[] {
             999,
@@ -148,6 +150,7 @@ namespace ControlLibrary
             // 
             // numericUpDown_iconX
             // 
+            this.numericUpDown_iconX.ContextMenuStrip = this.contextMenuStrip_X;
             this.numericUpDown_iconX.Location = new System.Drawing.Point(120, 97);
             this.numericUpDown_iconX.Maximum = new decimal(new int[] {
             999,
@@ -167,6 +170,7 @@ namespace ControlLibrary
             // 
             // numericUpDown_iconY
             // 
+            this.numericUpDown_iconY.ContextMenuStrip = this.contextMenuStrip_Y;
             this.numericUpDown_iconY.Location = new System.Drawing.Point(193, 97);
             this.numericUpDown_iconY.Maximum = new decimal(new int[] {
             999,
@@ -289,8 +293,8 @@ namespace ControlLibrary
             this.comboBox_alignment.FormattingEnabled = true;
             this.comboBox_alignment.Items.AddRange(new object[] {
             "По левому краю",
-            "По праваму краю",
-            "По центру"});
+            "По центру",
+            "По праваму краю"});
             this.comboBox_alignment.Location = new System.Drawing.Point(6, 223);
             this.comboBox_alignment.Name = "comboBox_alignment";
             this.comboBox_alignment.Size = new System.Drawing.Size(127, 21);
@@ -462,6 +466,7 @@ namespace ControlLibrary
             this.вставитьToolStripMenuItemX});
             this.contextMenuStrip_X.Name = "contextMenuStrip_X";
             this.contextMenuStrip_X.Size = new System.Drawing.Size(204, 82);
+            this.contextMenuStrip_X.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_X_Opening);
             // 
             // вставитьКоординатуХToolStripMenuItem
             // 
@@ -496,6 +501,7 @@ namespace ControlLibrary
             this.вставитьToolStripMenuItemY});
             this.contextMenuStrip_Y.Name = "contextMenuStrip_X";
             this.contextMenuStrip_Y.Size = new System.Drawing.Size(204, 82);
+            this.contextMenuStrip_Y.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Y_Opening);
             // 
             // вставитьКоординатуYToolStripMenuItem
             // 
@@ -571,10 +577,6 @@ namespace ControlLibrary
 
         private System.Windows.Forms.ComboBox comboBox_image;
         private System.Windows.Forms.ComboBox comboBox_icon;
-        internal System.Windows.Forms.NumericUpDown numericUpDown_imageX;
-        internal System.Windows.Forms.NumericUpDown numericUpDown_imageY;
-        internal System.Windows.Forms.NumericUpDown numericUpDown_iconX;
-        internal System.Windows.Forms.NumericUpDown numericUpDown_iconY;
         private System.Windows.Forms.Label label01;
         protected System.Windows.Forms.Label label02;
         protected System.Windows.Forms.Label label04;
@@ -588,7 +590,6 @@ namespace ControlLibrary
         protected System.Windows.Forms.Label label08;
         private System.Windows.Forms.Label label09;
         protected System.Windows.Forms.ComboBox comboBox_unit_miles;
-        internal System.Windows.Forms.NumericUpDown numericUpDown_spacing;
         public System.Windows.Forms.CheckBox checkBox_addZero;
         protected System.Windows.Forms.ComboBox comboBox_imageError;
         protected System.Windows.Forms.ComboBox comboBox_imageDecimalPoint;
@@ -605,5 +606,10 @@ namespace ControlLibrary
         private System.Windows.Forms.ToolStripMenuItem вставитьКоординатуYToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem копироватьToolStripMenuItemY;
         private System.Windows.Forms.ToolStripMenuItem вставитьToolStripMenuItemY;
+        public System.Windows.Forms.NumericUpDown numericUpDown_imageX;
+        public System.Windows.Forms.NumericUpDown numericUpDown_imageY;
+        public System.Windows.Forms.NumericUpDown numericUpDown_iconX;
+        public System.Windows.Forms.NumericUpDown numericUpDown_iconY;
+        public System.Windows.Forms.NumericUpDown numericUpDown_spacing;
     }
 }

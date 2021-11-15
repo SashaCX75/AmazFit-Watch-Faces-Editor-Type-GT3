@@ -129,6 +129,9 @@
   <data name="Dialog_Title_Open" xml:space="preserve">
     <value>Selecting a watch face settings file</value>
   </data>
+  <data name="Dialog_Title_PreviewStates" xml:space="preserve">
+    <value>Выбор файла настроек предпросмотра</value>
+  </data>
   <data name="Dialog_Title_WatchSkin" xml:space="preserve">
     <value>Selecting a watch image file</value>
   </data>
@@ -156,11 +159,17 @@
   <data name="FilterPng" xml:space="preserve">
     <value>PNG Files (*.png)|*.png</value>
   </data>
+  <data name="FollowMinute" xml:space="preserve">
+    <value>Следовать за часами</value>
+  </data>
+  <data name="FollowSecond" xml:space="preserve">
+    <value>Следовать за минутами</value>
+  </data>
   <data name="Form_Preview" xml:space="preserve">
-    <value>Preview</value>
+    <value>Предпросмотр</value>
   </data>
   <data name="Form_PreviewX" xml:space="preserve">
-    <value>Preview [X =</value>
+    <value>Предпросмотр [X =</value>
   </data>
   <data name="Message_CopyCoord" xml:space="preserve">
     <value>Coordinates copied</value>
@@ -177,6 +186,15 @@
   <data name="Message_JsonError_Text" xml:space="preserve">
     <value>Invalid JSON file.</value>
   </data>
+  <data name="Message_JsonReadError_Text" xml:space="preserve">
+    <value>Ошибка чтения JSON файла.</value>
+  </data>
+  <data name="Message_LoadPreviewStates_Caption" xml:space="preserve">
+    <value>Загрузка настроек предпросмотра</value>
+  </data>
+  <data name="Message_LoadPreviewStates_Text" xml:space="preserve">
+    <value>Загрузить имеющийся файл с набором параметров предпросмотра PreviewStates.json?</value>
+  </data>
   <data name="Message_Restart_Caption" xml:space="preserve">
     <value>Reboot</value>
   </data>
@@ -185,6 +203,9 @@
   </data>
   <data name="Message_Restart_Text2" xml:space="preserve">
     <value>Restart the program?</value>
+  </data>
+  <data name="Message_SaveOnly1234_Text" xml:space="preserve">
+    <value>Для сохранения предустановленных параметром установите хотябы в одном поле "Калории" значение отличное от "1234".</value>
   </data>
   <data name="Message_Save_JSON_Modified_Caption" xml:space="preserve">
     <value>Save the project</value>

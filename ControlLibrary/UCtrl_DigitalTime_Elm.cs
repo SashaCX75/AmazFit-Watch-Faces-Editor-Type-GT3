@@ -12,6 +12,7 @@ namespace ControlLibrary
 {
     public partial class UCtrl_DigitalTime_Elm : UserControl
     {
+        private bool setValue; // режим задания параметров
         bool highlight_hours = false;
         bool highlight_minutes = false;
         bool highlight_seconds = false;
@@ -26,9 +27,14 @@ namespace ControlLibrary
         bool visibilityElement = true; // элемент оторажается на предпросмотре
 
         public int position = -1; // позиция в наборе элеменетов
+        public string selectedElement; // название выбраного элемента
+
+        Point cursorPos = new Point(0, 0);
+
         public UCtrl_DigitalTime_Elm()
         {
             InitializeComponent();
+            setValue = false;
 
             button_ElementName.Controls.Add(pictureBox_Arrow_Right);
             button_ElementName.Controls.Add(pictureBox_Arrow_Down);
@@ -51,14 +57,29 @@ namespace ControlLibrary
         }
 
         [Browsable(true)]
-        [Description("Происходит при изменении параметров")]
-        public event ValueChangedHandler ValueChanged;
-        public delegate void ValueChangedHandler(object sender, EventArgs eventArgs);
+        [Description("Происходит при изменении видимости элемента")]
+        public event VisibleElementChangedHandler VisibleElementChanged;
+        public delegate void VisibleElementChangedHandler(object sender, EventArgs eventArgs, bool visible);
+
+        [Browsable(true)]
+        [Description("Происходит при изменении видимости отдельного параметра в элементе")]
+        public event VisibleOptionsChangedHandler VisibleOptionsChanged;
+        public delegate void VisibleOptionsChangedHandler(object sender, EventArgs eventArgs);
+
+        [Browsable(true)]
+        [Description("Происходит при изменении положения параметров в элементе")]
+        public event OptionsMovedHandler OptionsMoved;
+        public delegate void OptionsMovedHandler(object sender, EventArgs eventArgs, Dictionary<string, int> elementOptions);
 
         [Browsable(true)]
         [Description("Происходит при изменении выбора элемента")]
         public event SelectChangedHandler SelectChanged;
-        public delegate void SelectChangedHandler(object sender, EventArgs eventArgs, string selectElement);
+        public delegate void SelectChangedHandler(object sender, EventArgs eventArgs);
+
+        [Browsable(true)]
+        [Description("Происходит при удалении элемента")]
+        public event DelElementHandler DelElement;
+        public delegate void DelElementHandler(object sender, EventArgs eventArgs);
 
         private void button_ElementName_Click(object sender, EventArgs e)
         {
@@ -78,6 +99,8 @@ namespace ControlLibrary
 
         public void ResetHighlightState()
         {
+            selectedElement = "";
+
             highlight_hours = false;
             highlight_minutes = false;
             highlight_seconds = false;
@@ -169,6 +192,8 @@ namespace ControlLibrary
 
         private void panel_Hours_Click(object sender, EventArgs e)
         {
+            selectedElement = "Hour";
+
             highlight_hours = true;
             highlight_minutes = false;
             highlight_seconds = false;
@@ -274,12 +299,14 @@ namespace ControlLibrary
             if (SelectChanged != null)
             {
                 EventArgs eventArgs = new EventArgs();
-                SelectChanged(this, eventArgs, "hour");
+                SelectChanged(this, eventArgs);
             }
         }
 
         private void panel_Minutes_Click(object sender, EventArgs e)
         {
+            selectedElement = "Minute";
+
             highlight_hours = false;
             highlight_minutes = true;
             highlight_seconds = false;
@@ -385,12 +412,14 @@ namespace ControlLibrary
             if (SelectChanged != null)
             {
                 EventArgs eventArgs = new EventArgs();
-                SelectChanged(this, eventArgs, "minute");
+                SelectChanged(this, eventArgs);
             }
         }
 
         private void panel_Seconds_Click(object sender, EventArgs e)
         {
+            selectedElement = "Second";
+
             highlight_hours = false;
             highlight_minutes = false;
             highlight_seconds = true;
@@ -496,12 +525,14 @@ namespace ControlLibrary
             if (SelectChanged != null)
             {
                 EventArgs eventArgs = new EventArgs();
-                SelectChanged(this, eventArgs, "second");
+                SelectChanged(this, eventArgs);
             }
         }
 
         private void panel_Hours_Font_Click(object sender, EventArgs e)
         {
+            selectedElement = "Hour_Font";
+
             highlight_hours = false;
             highlight_minutes = false;
             highlight_seconds = false;
@@ -607,12 +638,14 @@ namespace ControlLibrary
             if (SelectChanged != null)
             {
                 EventArgs eventArgs = new EventArgs();
-                SelectChanged(this, eventArgs, "hours_font");
+                SelectChanged(this, eventArgs);
             }
         }
 
         private void panel_Minutes_Font_Click(object sender, EventArgs e)
         {
+            selectedElement = "Minute_Font";
+
             highlight_hours = false;
             highlight_minutes = false;
             highlight_seconds = false;
@@ -718,12 +751,14 @@ namespace ControlLibrary
             if (SelectChanged != null)
             {
                 EventArgs eventArgs = new EventArgs();
-                SelectChanged(this, eventArgs, "minutes_font");
+                SelectChanged(this, eventArgs);
             }
         }
 
         private void panel_Seconds_Font_Click(object sender, EventArgs e)
         {
+            selectedElement = "Second_Font";
+
             highlight_hours = false;
             highlight_minutes = false;
             highlight_seconds = false;
@@ -829,12 +864,14 @@ namespace ControlLibrary
             if (SelectChanged != null)
             {
                 EventArgs eventArgs = new EventArgs();
-                SelectChanged(this, eventArgs, "seconds_font");
+                SelectChanged(this, eventArgs);
             }
         }
 
         private void panel_AmPm_Click(object sender, EventArgs e)
         {
+            selectedElement = "AmPm";
+
             highlight_hours = false;
             highlight_minutes = false;
             highlight_seconds = false;
@@ -940,7 +977,7 @@ namespace ControlLibrary
             if (SelectChanged != null)
             {
                 EventArgs eventArgs = new EventArgs();
-                SelectChanged(this, eventArgs, "seconds_font");
+                SelectChanged(this, eventArgs);
             }
         }
 
@@ -952,7 +989,10 @@ namespace ControlLibrary
             Panel panel;
             if (control.GetType().Name == "Panel") panel = (Panel)sender;
             else panel = (Panel)control.Parent;
-            if (panel != null) panel.Tag = new object();
+            if (panel != null) { 
+                panel.Tag = new object();
+                cursorPos = Cursor.Position;
+            }
 
             //((Control)sender).Tag = new object();
         }
@@ -964,7 +1004,15 @@ namespace ControlLibrary
             if (control.GetType().Name == "Panel") panel = (Panel)sender;
             else panel = (Panel)control.Parent;
             if (panel != null && panel.Tag != null)
-                panel.DoDragDrop(sender, DragDropEffects.Move);
+            {
+                int cursorX = Cursor.Position.X;
+                int cursorY = Cursor.Position.Y;
+                int dX = Math.Abs(cursorX - cursorPos.X);
+                int dY = Math.Abs(cursorY - cursorPos.Y);
+                if (dX > 5 || dY > 5) 
+                    panel.DoDragDrop(sender, DragDropEffects.Move);
+                //panel.DoDragDrop(sender, DragDropEffects.Move);
+            }
 
             //Control control = (Control)sender;
             //if (control.Tag != null)
@@ -1004,20 +1052,10 @@ namespace ControlLibrary
             {
                 var pos = tableLayoutPanel1.GetPositionFromControl(control);
                 var posOld = tableLayoutPanel1.GetPositionFromControl(draggedPanel);
-                if (pos.Row == 6) return;
+                //if (pos.Row == 6) return;
                 //tableLayoutPanel1.Controls.Add(draggedButton, pos.Column, pos.Row);
 
-                if (pos != posOld)
-                {
-                    if (pt.Y < control.Location.Y + draggedPanel.Height * 0.9)
-                    {
-                        tableLayoutPanel1.SetRow(draggedPanel, pos.Row);
-                        if (pos.Row < posOld.Row) tableLayoutPanel1.SetRow(control, pos.Row + 1);
-                        else tableLayoutPanel1.SetRow(control, pos.Row - 1);
-                    }
-                }
-
-                //if (pos != posOld && pos.Row < posOld.Row)
+                //if (pos != posOld)
                 //{
                 //    if (pt.Y < control.Location.Y + draggedPanel.Height * 0.9)
                 //    {
@@ -1026,16 +1064,44 @@ namespace ControlLibrary
                 //        else tableLayoutPanel1.SetRow(control, pos.Row - 1);
                 //    }
                 //}
-                //if (pos != posOld && pos.Row > posOld.Row)
-                //{
-                //    if (pt.Y > control.Location.Y + control.Height * 0.6)
-                //    {
-                //        tableLayoutPanel1.SetRow(draggedPanel, pos.Row);
-                //        if (pos.Row < posOld.Row) tableLayoutPanel1.SetRow(control, pos.Row + 1);
-                //        else tableLayoutPanel1.SetRow(control, pos.Row - 1);
-                //    }
-                //}
+
+                if (pos != posOld && pos.Row < posOld.Row)
+                {
+                    if (pt.Y < control.Location.Y + draggedPanel.Height * 0.4)
+                    {
+                        tableLayoutPanel1.SetRow(draggedPanel, pos.Row);
+                        tableLayoutPanel1.SetRow(control, pos.Row + 1);
+                        //if (pos.Row < posOld.Row) tableLayoutPanel1.SetRow(control, pos.Row + 1);
+                        //else tableLayoutPanel1.SetRow(control, pos.Row - 1);
+                    }
+                }
+                if (pos != posOld && pos.Row > posOld.Row)
+                {
+                    if (pt.Y > control.Location.Y + control.Height * 0.6)
+                    {
+                        tableLayoutPanel1.SetRow(control, pos.Row - 1);
+                        tableLayoutPanel1.SetRow(draggedPanel, pos.Row);
+                        //if (pos.Row < posOld.Row) tableLayoutPanel1.SetRow(control, pos.Row + 1);
+                        //else tableLayoutPanel1.SetRow(control, pos.Row - 1);
+                    }
+                }
                 draggedPanel.Tag = null;
+            }
+        }
+
+        private void tableLayoutPanel1_DragDrop(object sender, DragEventArgs e)
+        {
+            int cursorX = Cursor.Position.X;
+            int cursorY = Cursor.Position.Y;
+            int dX = Math.Abs(cursorX - cursorPos.X);
+            int dY = Math.Abs(cursorY - cursorPos.Y);
+            if (dX > 5 || dY > 5)
+            {
+                if (OptionsMoved != null)
+                {
+                    EventArgs eventArgs = new EventArgs();
+                    OptionsMoved(this, eventArgs, GetOptionsPosition());
+                }
             }
         }
 
@@ -1070,24 +1136,209 @@ namespace ControlLibrary
             pictureBox_Show.Visible = false;
             pictureBox_NotShow.Visible = true;
 
-            if (ValueChanged != null)
+            if (VisibleElementChanged != null)
             {
                 EventArgs eventArgs = new EventArgs();
-                ValueChanged(this, eventArgs);
+                VisibleElementChanged(this, eventArgs, visibilityElement);
             }
         }
 
         private void pictureBox_NotShow_Click(object sender, EventArgs e)
         {
-            visibilityElement = false;
+            visibilityElement = true;
             pictureBox_Show.Visible = true;
             pictureBox_NotShow.Visible = false;
 
-            if (ValueChanged != null)
+            if (VisibleElementChanged != null)
             {
                 EventArgs eventArgs = new EventArgs();
-                ValueChanged(this, eventArgs);
+                VisibleElementChanged(this, eventArgs, visibilityElement);
             }
+        }
+
+        private void pictureBox_Del_Click(object sender, EventArgs e)
+        {
+            if (DelElement != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                DelElement(this, eventArgs);
+            }
+        }
+
+        private void checkBox_Hours_CheckedChanged(object sender, EventArgs e)
+        {
+            if (VisibleOptionsChanged != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                VisibleOptionsChanged(sender, eventArgs);
+            }
+        }
+
+        /// <summary>Устанавливаем статус видимости для всего элемента</summary>
+        public void SetVisibilityElementStatus(bool status)
+        {
+            visibilityElement = status;
+            pictureBox_NotShow.Visible = !visibilityElement;
+            pictureBox_Show.Visible = visibilityElement;
+
+        }
+
+        /// <summary>Устанавливаем статус вкл/выкл для отдельной опции в элементе</summary>
+        public void SetVisibilityOptionsStatus(string name, bool status)
+        {
+            setValue = true;
+            switch (name)
+            {
+                case "Hour":
+                    checkBox_Hours.Checked = status;
+                    break;
+                case "Minute":
+                    checkBox_Minutes.Checked = status;
+                    break;
+                case "Second":
+                    checkBox_Seconds.Checked = status;
+                    break;
+                case "Hour_Font":
+                    checkBox_Hours_Font.Checked = status;
+                    break;
+                case "Minute_Font":
+                    checkBox_Minutes_Font.Checked = status;
+                    break;
+                case "Second_Font":
+                    checkBox_Seconds_Font.Checked = status;
+                    break;
+                case "AmPm":
+                    checkBox_AmPm.Checked = status;
+                    break;
+            }
+            setValue = false;
+        }
+
+        /// <summary>Устанавливаем порядок опций в элементе</summary>
+        public void SetOptionsPosition(Dictionary<int, string> elementOptions)
+        {
+            for (int key = 0; key < 7; key++)
+            {
+                Control panel = null;
+                if (elementOptions.ContainsKey(key))
+                {
+                    string name = elementOptions[key];
+                    switch (name)
+                    {
+                        case "Hour":
+                            panel = panel_Hours;
+                            break;
+                        case "Minute":
+                            panel = panel_Minutes;
+                            break;
+                        case "Second":
+                            panel = panel_Seconds;
+                            break;
+                        case "Hour_Font":
+                            panel = panel_Hours_Font;
+                            break;
+                        case "Minute_Font":
+                            panel = panel_Minutes_Font;
+                            break;
+                        case "Second_Font":
+                            panel = panel_Seconds_Font;
+                            break;
+                        case "AmPm":
+                            panel = panel_AmPm;
+                            break;
+                    }
+                }
+                position = key;
+                if (panel == null) 
+                    continue;
+                int realPos = tableLayoutPanel1.GetRow(panel);
+                if (realPos == position) 
+                    continue;
+                if (realPos < position)
+                {
+                    for (int i = realPos; i < position; i++)
+                    {
+                        Control panel2 = tableLayoutPanel1.GetControlFromPosition(0, i + 1);
+                        if (panel2 == null) return;
+                        tableLayoutPanel1.SetRow(panel2, i);
+                        tableLayoutPanel1.SetRow(panel, i + 1);
+                    }
+                }
+                else
+                {
+                    for (int i = realPos; i > position; i--)
+                    {
+                        Control panel2 = tableLayoutPanel1.GetControlFromPosition(0, i - 1);
+                        if (panel2 == null) 
+                            return;
+                        tableLayoutPanel1.SetRow(panel, i - 1);
+                        tableLayoutPanel1.SetRow(panel2, i);
+                    }
+                }
+            }
+        }
+
+        /// <summary>Получаем порядок опций в элементе</summary>
+        public Dictionary<string, int> GetOptionsPosition()
+        {
+            Dictionary<string, int> elementOptions = new Dictionary<string, int>();
+            for (int i = 0; i < tableLayoutPanel1.RowCount; i++)
+            {
+                TableLayoutRowStyleCollection www = tableLayoutPanel1.RowStyles;
+                Control panel = tableLayoutPanel1.GetControlFromPosition(0, i);
+                switch (panel.Name)
+                {
+                    case "panel_Hours":
+                        elementOptions.Add("Hour", i);
+                        break;
+                    case "panel_Minutes":
+                        elementOptions.Add("Minute", i);
+                        break;
+                    case "panel_Seconds":
+                        elementOptions.Add("Second", i);
+                        break;
+
+                    case "panel_Hours_Font":
+                        elementOptions.Add("Hour_Font", i);
+                        break;
+                    case "panel_Minutes_Font":
+                        elementOptions.Add("Minute_Font", i);
+                        break;
+                    case "panel_Seconds_Font":
+                        elementOptions.Add("Second_Font", i);
+                        break;
+
+                    case "panel_AmPm":
+                        elementOptions.Add("AmPm", i);
+                        break;
+                }
+            }
+            return elementOptions;
+        }
+
+        public void SettingsClear()
+        {
+            setValue = true;
+
+            Dictionary<int, string> elementOptions = new Dictionary<int, string>();
+            elementOptions.Add(0, "Hour");
+            elementOptions.Add(1, "Minute");
+            elementOptions.Add(2, "Second");
+            elementOptions.Add(3, "Hour_Font");
+            elementOptions.Add(4, "Minute_Font");
+            elementOptions.Add(5, "Second_Font");
+            elementOptions.Add(6, "AmPm");
+            SetOptionsPosition(elementOptions);
+
+            checkBox_Hours.Checked = false;
+            checkBox_Minutes.Checked = false;
+            checkBox_Seconds.Checked = false;
+            checkBox_Hours_Font.Checked = false;
+            checkBox_Minutes_Font.Checked = false;
+            checkBox_Seconds_Font.Checked = false;
+            checkBox_AmPm.Checked = false;
+
+            setValue = false;
         }
     }
 }

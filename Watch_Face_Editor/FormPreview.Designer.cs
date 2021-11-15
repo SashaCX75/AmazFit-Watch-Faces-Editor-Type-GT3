@@ -48,11 +48,14 @@ namespace Watch_Face_Editor
             this.pictureBox_Preview.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox_Preview.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pictureBox_Preview.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.pictureBox_Preview.Location = new System.Drawing.Point(3, -3);
+            this.pictureBox_Preview.Location = new System.Drawing.Point(3, 3);
             this.pictureBox_Preview.Name = "pictureBox_Preview";
             this.pictureBox_Preview.Size = new System.Drawing.Size(456, 456);
             this.pictureBox_Preview.TabIndex = 4;
             this.pictureBox_Preview.TabStop = false;
+            this.pictureBox_Preview.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox_Preview_MouseDoubleClick);
+            this.pictureBox_Preview.MouseLeave += new System.EventHandler(this.pictureBox_Preview_MouseLeave);
+            this.pictureBox_Preview.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_Preview_MouseMove);
             // 
             // panel1
             // 
@@ -76,6 +79,7 @@ namespace Watch_Face_Editor
             this.radioButton_xxlarge.TabIndex = 4;
             this.radioButton_xxlarge.Text = "x2,5";
             this.radioButton_xxlarge.UseVisualStyleBackColor = true;
+            this.radioButton_xxlarge.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // radioButton_xlarge
             // 
@@ -86,6 +90,7 @@ namespace Watch_Face_Editor
             this.radioButton_xlarge.TabIndex = 3;
             this.radioButton_xlarge.Text = "x2";
             this.radioButton_xlarge.UseVisualStyleBackColor = true;
+            this.radioButton_xlarge.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // radioButton_large
             // 
@@ -96,6 +101,7 @@ namespace Watch_Face_Editor
             this.radioButton_large.TabIndex = 2;
             this.radioButton_large.Text = "x1,5";
             this.radioButton_large.UseVisualStyleBackColor = true;
+            this.radioButton_large.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // radioButton_normal
             // 
@@ -108,6 +114,7 @@ namespace Watch_Face_Editor
             this.radioButton_normal.TabStop = true;
             this.radioButton_normal.Text = "x1";
             this.radioButton_normal.UseVisualStyleBackColor = true;
+            this.radioButton_normal.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // radioButton_small
             // 
@@ -118,6 +125,7 @@ namespace Watch_Face_Editor
             this.radioButton_small.TabIndex = 0;
             this.radioButton_small.Text = "x0,5";
             this.radioButton_small.UseVisualStyleBackColor = true;
+            this.radioButton_small.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // toolTip1
             // 
@@ -130,6 +138,7 @@ namespace Watch_Face_Editor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(462, 485);
             this.Controls.Add(this.pictureBox_Preview);
             this.Controls.Add(this.panel1);
@@ -137,7 +146,9 @@ namespace Watch_Face_Editor
             this.MaximizeBox = false;
             this.Name = "Form_Preview";
             this.ShowInTaskbar = false;
-            this.Text = "FormPreview";
+            this.Text = "Предпросмотр";
+            this.Load += new System.EventHandler(this.Form_Preview_Load);
+            this.SizeChanged += new System.EventHandler(this.Form_Preview_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Preview)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

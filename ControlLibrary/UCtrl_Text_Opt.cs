@@ -16,150 +16,139 @@ namespace ControlLibrary
         private bool setValue; // режим задания параметров
         private bool ImageError_mode;
         private bool OptionalSymbol_mode;
-        private bool PaddingZero;
+        private bool Padding_zero;
         private bool Follow_mode;
         private bool Distance_mode;
 
-        private Point location_unit;
+        //private Point location_unit;
         private Point location_unit_miles;
         private Point location_imageDecimalPoint;
-        private Point location_unit_label;
+        //private Point location_unit_label;
         private Point location_unit_miles_label;
         private Point location_imageDecimalPoint_label;
         private String unit_label_text;
         private List<string> ListImagesFullName = new List<string>(); // перечень путей к файлам с картинками
+        public Object _ElementWithText;
 
         public UCtrl_Text_Opt()
         {
             InitializeComponent();
             comboBox_alignment.SelectedIndex = 0;
 
-            location_unit = comboBox_unit.Location;
+            //location_unit = comboBox_unit.Location;
             location_unit_miles = comboBox_unit_miles.Location;
             location_imageDecimalPoint = comboBox_imageDecimalPoint.Location;
-            location_unit_label = label08.Location; // km
+            //location_unit_label = label08.Location; // km
             location_unit_miles_label = label10.Location; // ml
             location_imageDecimalPoint_label = label07.Location; // десятичный разделитель
             unit_label_text = label08.Text;
         }
 
 
-        public void comboBoxSetImage(int value)
+        public void SetImage(string value)
         {
-            comboBox_image.Text = value.ToString();
+            comboBox_image.Text = value;
             if (comboBox_image.SelectedIndex < 0) comboBox_image.Text = "";
         }
 
-        /// <summary>Возвращает номер выбранной картинки, в случае ошибки возвращает -1</summary>
-        public int comboBoxGetImage()
+        /// <summary>Возвращает название выбранной картинки</summary>
+        public string GetImage()
         {
-            if (comboBox_image.SelectedIndex < 0) return -1;
-            int value = -1;
-            Int32.TryParse(comboBox_image.Text, out value);
-            return value;
+            if (comboBox_image.SelectedIndex < 0) return "";
+            return comboBox_image.Text;
         }
 
         /// <summary>Возвращает SelectedIndex выпадающего списка</summary>
-        public int comboBoxGetSelectedIndexImage()
+        public int GetSelectedIndexImage()
         {
             return comboBox_image.SelectedIndex;
         }
 
-        public void comboBoxSetIcon(int value)
+        public void SetIcon(string value)
         {
-            comboBox_icon.Text = value.ToString();
+            comboBox_icon.Text = value;
             if (comboBox_icon.SelectedIndex < 0) comboBox_icon.Text = "";
         }
 
-        /// <summary>Возвращает номер выбранной картинки, в случае ошибки возвращает -1</summary>
-        public int comboBoxGetIcon()
+        /// <summary>Возвращает название выбранной картинки</summary>
+        public string GetIcon()
         {
-            if (comboBox_icon.SelectedIndex < 0) return -1;
-            int value = -1;
-            Int32.TryParse(comboBox_icon.Text, out value);
-            return value;
+            if (comboBox_icon.SelectedIndex < 0) return "";
+            return comboBox_icon.Text;
         }
         /// <summary>Возвращает SelectedIndex выпадающего списка</summary>
-        public int comboBoxGetSelectedIndexIcon()
+        public int GetSelectedIndexIcon()
         {
             return comboBox_icon.SelectedIndex;
         }
 
-        public void comboBoxSetUnit(int value)
+        public void SetUnit(string value)
         {
-            comboBox_unit.Text = value.ToString();
+            comboBox_unit.Text = value;
             if (comboBox_unit.SelectedIndex < 0) comboBox_unit.Text = "";
         }
 
-        /// <summary>Возвращает номер выбранной картинки, в случае ошибки возвращает -1</summary>
-        public int comboBoxGetUnit()
+        /// <summary>Возвращает название выбранной картинки</summary>
+        public string GetUnit()
         {
-            if (comboBox_unit.SelectedIndex < 0) return -1;
-            int value = -1;
-            Int32.TryParse(comboBox_unit.Text, out value);
-            return value;
+            if (comboBox_unit.SelectedIndex < 0) return "";
+            return comboBox_unit.Text;
         }
         /// <summary>Возвращает SelectedIndex выпадающего списка</summary>
-        public int comboBoxGetSelectedIndexUnit()
+        public int GetSelectedIndexUnit()
         {
             return comboBox_unit.SelectedIndex;
         }
 
-        public void comboBoxSetUnitMile(int value)
+        public void SetUnitMile(string value)
         {
-            comboBox_unit_miles.Text = value.ToString();
+            comboBox_unit_miles.Text = value;
             if (comboBox_unit_miles.SelectedIndex < 0) comboBox_unit_miles.Text = "";
         }
-        /// <summary>Возвращает номер выбранной картинки, в случае ошибки возвращает -1</summary>
-        public int comboBoxGetUnitMile()
+        /// <summary>Возвращает название выбранной картинки</summary>
+        public string GetUnitMile()
         {
-            if (comboBox_unit_miles.SelectedIndex < 0) return -1;
-            int value = -1;
-            Int32.TryParse(comboBox_unit_miles.Text, out value);
-            return value;
+            if (comboBox_unit_miles.SelectedIndex < 0) return "";
+            return comboBox_unit_miles.Text;
         }
         /// <summary>Возвращает SelectedIndex выпадающего списка</summary>
-        public int comboBoxGetSelectedIndexUnitMile()
+        public int GetSelectedIndexUnitMile()
         {
             return comboBox_unit_miles.SelectedIndex;
         }
 
-        public void comboBoxSetImageError(int value)
+        public void SetImageError(string value)
         {
-            comboBox_imageError.Text = value.ToString();
+            comboBox_imageError.Text = value;
             if (comboBox_imageError.SelectedIndex < 0) comboBox_imageError.Text = "";
         }
 
-        /// <summary>Возвращает номер выбранной картинки, в случае ошибки возвращает -1</summary>
-        public int comboBoxGetImageError()
+        /// <summary>Возвращает название выбранной картинки</summary>
+        public string GetImageError()
         {
-            if (comboBox_imageError.SelectedIndex < 0) return -1;
-            int value = -1;
-            Int32.TryParse(comboBox_imageError.Text, out value);
-            return value;
+            if (comboBox_imageError.SelectedIndex < 0) return "";
+            return comboBox_imageError.Text;
         }
 
-        public void comboBoxSetImageDecimalPointOrMinus(int value)
+        public void SetImageDecimalPointOrMinus(string value)
         {
-            comboBox_imageDecimalPoint.Text = value.ToString();
+            comboBox_imageDecimalPoint.Text = value;
             if (comboBox_imageDecimalPoint.SelectedIndex < 0) comboBox_imageDecimalPoint.Text = "";
         }
 
-        /// <summary>Возвращает номер выбранной картинки, в случае ошибки возвращает -1</summary>
-        public int comboBoxGetImageDecimalPointOrMinus()
+        /// <summary>Возвращает название выбранной картинки</summary>
+        public string GetImageDecimalPointOrMinus()
         {
-            if (comboBox_imageDecimalPoint.SelectedIndex < 0) return -1;
-            int value = -1;
-            Int32.TryParse(comboBox_imageDecimalPoint.Text, out value);
-            return value;
+            if (comboBox_imageDecimalPoint.SelectedIndex < 0) return "";
+            return comboBox_imageDecimalPoint.Text;
         }
         /// <summary>Возвращает SelectedIndex выпадающего списка</summary>
-        public int comboBoxGetSelectedIndexImageDecimalPointOrMinus()
+        public int GetSelectedIndexImageDecimalPointOrMinus()
         {
             return comboBox_imageDecimalPoint.SelectedIndex;
         }
 
-        public void comboBoxSetAlignment(string alignment)
+        public void SetAlignment(string alignment)
         {
             int result;
             switch (alignment)
@@ -167,10 +156,10 @@ namespace ControlLibrary
                 case "Left":
                     result = 0;
                     break;
-                case "Right":
+                case "Center":
                     result = 1;
                     break;
-                case "Center":
+                case "Right":
                     result = 2;
                     break;
 
@@ -183,7 +172,7 @@ namespace ControlLibrary
         }
 
         /// <summary>Возвращает выравнивание строкой "Left", "Right", "Center"</summary>
-        public string comboBoxGetAlignment()
+        public string GetAlignment()
         {
             string result;
             switch (comboBox_alignment.SelectedIndex)
@@ -192,10 +181,10 @@ namespace ControlLibrary
                     result = "Left";
                     break;
                 case 1:
-                    result = "Right";
+                    result = "Center";
                     break;
                 case 2:
-                    result = "Center";
+                    result = "Right";
                     break;
 
                 default:
@@ -206,12 +195,13 @@ namespace ControlLibrary
             return result;
         }
         /// <summary>Возвращает SelectedIndex выпадающего списка</summary>
-        public int comboBoxGetSelectedIndexAlignment()
+        public int GetSelectedIndexAlignment()
         {
             return comboBox_alignment.SelectedIndex;
         }
 
         /// <summary>Отображение поля изображения при ошибке</summary>
+        [Description("Отображение поля изображения при ошибке")]
         public virtual bool ImageError
         {
             get
@@ -227,6 +217,7 @@ namespace ControlLibrary
         }
 
         /// <summary>Отображение поля изображения десятичного разделителя</summary>
+        [Description("Отображение поля изображения десятичного разделителя")]
         public virtual bool OptionalSymbol
         {
             get
@@ -242,20 +233,22 @@ namespace ControlLibrary
         }
 
         /// <summary>Отображение чекбокса добавления нулей в начале</summary>
-        public virtual bool Padding_zero
+        [Description("Отображение чекбокса добавления нулей в начале")]
+        public virtual bool PaddingZero
         {
             get
             {
-                return PaddingZero;
+                return Padding_zero;
             }
             set
             {
-                PaddingZero = value;
-                checkBox_addZero.Visible = PaddingZero;
+                Padding_zero = value;
+                checkBox_addZero.Visible = Padding_zero;
             }
         }
 
         /// <summary>Режим для дистанции</summary>
+        [Description("Режим для дистанции")]
         public virtual bool Distance
         {
             get
@@ -269,41 +262,40 @@ namespace ControlLibrary
                 label10.Visible = Distance_mode;
                 if (Distance_mode)
                 {
-                    //Point location1 = comboBox_unit.Location;
-                    //Point location2 = comboBox_unit_miles.Location;
-                    //Point location3 = comboBox_imageDecimalPoint.Location;
-                    //Point location1t = label08.Location; // km
-                    //Point location2t = label10.Location; // ml
-                    //Point location3t = label07.Location; // десятичный разделитель
+                    //comboBox_imageDecimalPoint.Location = location_unit;
+                    //comboBox_unit_miles.Location = location_imageDecimalPoint;
+                    //comboBox_unit.Location = location_unit_miles;
+                    //label07.Location = location_unit_label;
+                    //label10.Location = location_imageDecimalPoint_label;
+                    //label08.Location = location_unit_miles_label;
 
-                    comboBox_imageDecimalPoint.Location = location_unit;
+                    comboBox_imageDecimalPoint.Location = location_unit_miles;
                     comboBox_unit_miles.Location = location_imageDecimalPoint;
-                    comboBox_unit.Location = location_unit_miles;
-                    label07.Location = location_unit_label;
+                    label07.Location = location_unit_miles_label;
                     label10.Location = location_imageDecimalPoint_label;
-                    label08.Location = location_unit_miles_label;
 
                     label08.Text = unit_label_text + " (km)";
-                    label08.TextAlign = ContentAlignment.BottomCenter;
-                    label07.TextAlign = ContentAlignment.BottomLeft;
+                    //label08.TextAlign = ContentAlignment.BottomCenter;
+                    //label07.TextAlign = ContentAlignment.BottomLeft;
                 }
                 else
                 {
                     comboBox_imageDecimalPoint.Location = location_imageDecimalPoint;
                     comboBox_unit_miles.Location = location_unit_miles;
-                    comboBox_unit.Location = location_unit;
+                    //comboBox_unit.Location = location_unit;
                     label07.Location = location_imageDecimalPoint_label;
                     label10.Location = location_unit_miles_label;
-                    label08.Location = location_unit_label;
+                    //label08.Location = location_unit_label;
 
                     label08.Text = unit_label_text;
-                    label08.TextAlign = ContentAlignment.BottomLeft;
-                    label07.TextAlign = ContentAlignment.BottomCenter;
+                    //label08.TextAlign = ContentAlignment.BottomLeft;
+                    //label07.TextAlign = ContentAlignment.BottomCenter;
                 }
             }
         }
 
-        /// <summary>Отображение чекбокса следовать за</summary>
+        /// <summary>Отображение чекбокса "Следовать за..."</summary>
+        [Description("Отображение чекбокса \"Следовать за...\"")]
         public virtual bool Follow
         {
             get
@@ -317,8 +309,9 @@ namespace ControlLibrary
             }
         }
 
-        /// <summary>Устанавливает надпись "Следовать за ..."</summary>
+        /// <summary>Устанавливает надпись "Следовать за..."</summary>
         [Localizable(true)]
+        [Description("Устанавливает надпись \"Следовать за...\"")]
         public string FollowText
         {
             get
@@ -445,12 +438,12 @@ namespace ControlLibrary
             int count = ListImages.Count;
             if (count == 0)
             {
-                comboBox_image.DropDownHeight = 0;
-                comboBox_icon.DropDownHeight = 0;
-                comboBox_unit.DropDownHeight = 0;
-                comboBox_unit_miles.DropDownHeight = 0;
-                comboBox_imageError.DropDownHeight = 0;
-                comboBox_imageDecimalPoint.DropDownHeight = 0;
+                comboBox_image.DropDownHeight = 1;
+                comboBox_icon.DropDownHeight = 1;
+                comboBox_unit.DropDownHeight = 1;
+                comboBox_unit_miles.DropDownHeight = 1;
+                comboBox_imageError.DropDownHeight = 1;
+                comboBox_imageDecimalPoint.DropDownHeight = 1;
             }
             else if (count < 5)
             {
@@ -667,6 +660,12 @@ namespace ControlLibrary
             label1085.Enabled = b;
             numericUpDown_imageX.Enabled = b;
             numericUpDown_imageY.Enabled = b;
+        }
+
+        public void SetMouseСoordinates(int x, int y)
+        {
+            MouseСoordinates.X = x;
+            MouseСoordinates.Y = y;
         }
     }
 }

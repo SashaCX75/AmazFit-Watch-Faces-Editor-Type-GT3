@@ -12,17 +12,40 @@ namespace ControlLibrary
 {
     public partial class UCtrl_Background_Elm : UserControl
     {
+        private bool setValue; // режим задания параметров
         bool highlight_element = false;
+        bool visibilityElement = true; // элемент оторажается на предпросмотре
+        bool visible_ShowDel = false;
 
         public UCtrl_Background_Elm()
         {
             InitializeComponent();
+            setValue = false;
+
+            button_ElementName.Controls.Add(pictureBox_NotShow);
+            button_ElementName.Controls.Add(pictureBox_Show);
+            button_ElementName.Controls.Add(pictureBox_Del);
+
+            pictureBox_NotShow.BackColor = Color.Transparent;
+            pictureBox_Show.BackColor = Color.Transparent;
+
+            pictureBox_Del.BackColor = Color.Transparent;
         }
 
         [Browsable(true)]
         [Description("Происходит при изменении выбора элемента")]
         public event SelectChangedHandler SelectChanged;
         public delegate void SelectChangedHandler(object sender, EventArgs eventArgs);
+
+        [Browsable(true)]
+        [Description("Происходит при изменении видимости элемента")]
+        public event VisibleElementChangedHandler VisibleElementChanged;
+        public delegate void VisibleElementChangedHandler(object sender, EventArgs eventArgs, bool visible);
+
+        [Browsable(true)]
+        [Description("Происходит при удалении элемента")]
+        public event DelElementHandler DelElement;
+        public delegate void DelElementHandler(object sender, EventArgs eventArgs);
 
         private void button_ElementName_Click(object sender, EventArgs e)
         {
@@ -49,6 +72,22 @@ namespace ControlLibrary
             else button_ElementName.BackColor = SystemColors.Control;
         }
 
+        public void Visible_ShowDel(bool visible)
+        {
+            visible_ShowDel = visible;
+            if (visible_ShowDel)
+            {
+                pictureBox_NotShow.Visible = !visibilityElement;
+                pictureBox_Show.Visible = visibilityElement;
+                pictureBox_Del.Visible = true;
+            }
+            else
+            {
+                pictureBox_NotShow.Visible = false;
+                pictureBox_Show.Visible = false;
+                pictureBox_Del.Visible = false;
+            }
+        }
         private void button_ElementName_MouseDown(object sender, MouseEventArgs e)
         {
             base.OnMouseDown(e);
@@ -62,6 +101,63 @@ namespace ControlLibrary
         private void button_ElementName_MouseUp(object sender, MouseEventArgs e)
         {
             base.OnMouseUp(e);
+        }
+
+        private void button_ElementName_SizeChanged(object sender, EventArgs e)
+        {
+            pictureBox_NotShow.Location = new Point(button_ElementName.Width - pictureBox_Show.Width * 2 - 6, 2);
+            pictureBox_Show.Location = new Point(button_ElementName.Width - pictureBox_Show.Width * 2 - 6, 2);
+
+            pictureBox_Del.Location = new Point(button_ElementName.Width - pictureBox_Del.Width - 4, 2);
+        }
+
+        private void pictureBox_Show_Click(object sender, EventArgs e)
+        {
+            visibilityElement = !visibilityElement;
+            if (visible_ShowDel)
+            {
+                pictureBox_NotShow.Visible = !visibilityElement;
+                pictureBox_Show.Visible = visibilityElement;
+                pictureBox_Del.Visible = true;
+            }
+            else
+            {
+                pictureBox_NotShow.Visible = false;
+                pictureBox_Show.Visible = false;
+                pictureBox_Del.Visible = false;
+            }
+
+            if (VisibleElementChanged != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                VisibleElementChanged(this, eventArgs, visibilityElement);
+            }
+        }
+
+        public void SetVisibilityElementStatus(bool status)
+        {
+            visibilityElement = status;
+            if (visible_ShowDel)
+            {
+                pictureBox_NotShow.Visible = !visibilityElement;
+                pictureBox_Show.Visible = visibilityElement;
+                pictureBox_Del.Visible = true;
+            }
+            else
+            {
+                pictureBox_NotShow.Visible = false;
+                pictureBox_Show.Visible = false;
+                pictureBox_Del.Visible = false;
+            }
+        }
+
+        private void pictureBox_Del_Click(object sender, EventArgs e)
+        {
+            if (DelElement != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                DelElement(this, eventArgs);
+            }
         }
     }
 }

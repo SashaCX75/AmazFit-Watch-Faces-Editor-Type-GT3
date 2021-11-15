@@ -25,7 +25,8 @@ namespace Watch_Face_Editor
         public bool Settings_Open_DoNotning = false;
 
         public bool Model_GTR3 = true;
-        public bool Model_GTR3_Pro = true;
+        public bool Model_GTR3_Pro = false;
+        public bool Model_GTS3 = false;
 
         public bool ShowBorder = false;
         public bool Crop = true;
@@ -48,8 +49,9 @@ namespace Watch_Face_Editor
 
         public int Splitter_Pos = 0;
 
-        public string WatchSkin_GTR_3 = @"Skin\WatchSkin_GTR_2e.json";
-        public string WatchSkin_GTR_3_Pro = @"Skin\WatchSkin_GTR_2.json";
+        public string WatchSkin_GTR_3 = @"Skin\WatchSkin_GTR_3.json";
+        public string WatchSkin_GTR_3_Pro = @"Skin\WatchSkin_GTR_3_Pro.json";
+        public string WatchSkin_GTS_3 = @"Skin\WatchSkin_GTS_3.json";
         public bool WatchSkin_Use = false;
     }
 }

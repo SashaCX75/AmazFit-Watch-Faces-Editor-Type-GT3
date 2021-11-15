@@ -100,9 +100,6 @@
     <EmbeddedResource Include="UCtrl_Set.resx">
       <DependentUpon>UCtrl_Set.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCtrl_Set.ru.resx">
-      <DependentUpon>UCtrl_Set.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Text_Opt.resx">
       <DependentUpon>UCtrl_Text_Opt.cs</DependentUpon>
     </EmbeddedResource>
