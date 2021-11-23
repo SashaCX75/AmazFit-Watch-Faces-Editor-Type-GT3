@@ -35,6 +35,9 @@
     <ApplicationIcon>AppIcon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotNetZip, Version=1.16.0.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
+      <HintPath>..\packages\DotNetZip.1.16.0\lib\net40\DotNetZip.dll</HintPath>
+    </Reference>
     <Reference Include="Magick.NET-Q16-AnyCPU, Version=7.17.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec, processorArchitecture=MSIL">
       <HintPath>..\packages\Magick.NET-Q16-AnyCPU.7.17.0.1\lib\net40\Magick.NET-Q16-AnyCPU.dll</HintPath>
     </Reference>
@@ -43,6 +46,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,15 +59,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\App_WatchFace.cs" />
     <Compile Include="Classes\WatchFace\Elements.cs" />
     <Compile Include="Classes\WatchFace\ElementsTime.cs" />
     <Compile Include="Classes\WatchFace\Enum.cs" />
     <Compile Include="Classes\WatchFace\WATCH_FACE.cs" />
+    <Compile Include="Classes\ConvertingImages\ColorMap.cs" />
+    <Compile Include="Classes\ConvertingImages\Footer.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormFileExists.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFileExists.Designer.cs">
+      <DependentUpon>FormFileExists.cs</DependentUpon>
     </Compile>
     <Compile Include="FormPreview.cs">
       <SubType>Form</SubType>
@@ -70,6 +84,9 @@
     <Compile Include="FormPreview.Designer.cs">
       <DependentUpon>FormPreview.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classes\ConvertingImages\Header.cs" />
+    <Compile Include="Classes\ConvertingImages\ImageDescription.cs" />
+    <Compile Include="Classes\ConvertingImages\Image_data.cs" />
     <Compile Include="Options_ReadWrite.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,8 +98,14 @@
     <Compile Include="Classes\Program_Settings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\Watch_Face_Preview_Set.cs" />
+    <Compile Include="ReadWriteJson.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFileExists.resx">
+      <DependentUpon>FormFileExists.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPreview.resx">
       <DependentUpon>FormPreview.cs</DependentUpon>
@@ -115,6 +138,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="File_templates\app.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -138,6 +164,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="AppIcon.ico" />
+    <Content Include="File_templates\app.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="File_templates\index.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Mask\mask_gtr_3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -147,6 +179,7 @@
     <Content Include="Mask\mask_gts_3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\clock-icon.png" />
     <None Include="Resources\Background-icon.png" />
     <None Include="Resources\Logos-Administrative-Tools_16.png" />
     <None Include="Resources\Weather-Partly-Cloudy-Rain_16.png" />
@@ -168,4 +201,9 @@ move "$(TargetDir)*.dll" "$(TargetDir)\Libs"
 move "$(TargetDir)*.xml" "$(TargetDir)\Libs"
 del /q $(TargetDir)*.pdb"</PostBuildEvent>
   </PropertyGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties file_3templates_4app_1json__JsonSchema="https://json.schemastore.org/global.json" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

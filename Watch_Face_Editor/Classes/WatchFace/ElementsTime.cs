@@ -70,7 +70,7 @@ namespace Watch_Face_Editor
 
 
         /// <summary>Основной экран или AOD</summary>
-        public string show_level { get; set; }
+        //public string show_level { get; set; }
     }
 
 
@@ -119,7 +119,7 @@ namespace Watch_Face_Editor
         public bool follow { get; set; }
 
         /// <summary>Основной экран или AOD</summary>
-        public string show_level { get; set; }
+        //public string show_level { get; set; }
     }
 
 
@@ -198,7 +198,7 @@ namespace Watch_Face_Editor
     //    public string show_level { get; set; }
     //}
 
-    /// <summary>Цифровое время шрифтом (минуты)</summary>
+    /// <summary>Цифровое время шрифтом</summary>
     public class hmUI_widget_TEXT
     {
         /// <summary>Позиция в наборе элементов</summary>
@@ -208,31 +208,31 @@ namespace Watch_Face_Editor
         public bool visible = false;
 
         /// <summary>X координата секунд</summary>
-        public int minute_startX { get; set; }
+        public int startX { get; set; }
 
         /// <summary>Y координата секунд</summary>
-        public int minute_startY { get; set; }
+        public int startY { get; set; }
 
         /// <summary>Отступы</summary>
-        public int minute_space { get; set; }
+        public int space { get; set; }
 
         /// <summary>Отображение ведущих нулей. 0-не отображать; 1-отображать</summary>
-        public int minute_zero { get; set; }
+        public int zero { get; set; }
 
         /// <summary>Выравнивание</summary>
-        public string minute_align { get; set; }
+        public string align { get; set; }
 
         /// <summary>Цвет шрифта</summary>
-        public string minute_color { get; set; }
+        public string color { get; set; }
 
         /// <summary>Размер шрифта</summary>
-        public int minute_font_size { get; set; }
+        public int font_size { get; set; }
 
         /// <summary>Следовать за минутами. 0-не следовать; 1-следовать</summary>
-        public int minute_follow { get; set; }
+        public int follow { get; set; }
 
         /// <summary>Основной экран или AOD</summary>
-        public string show_level { get; set; }
+        //public string show_level { get; set; }
     }
 
     /// <summary>Цифровое время шрифтом (секунды)</summary>

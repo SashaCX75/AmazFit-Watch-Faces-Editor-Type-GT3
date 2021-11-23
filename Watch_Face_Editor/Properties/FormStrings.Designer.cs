@@ -106,6 +106,15 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Выбор файла циферблата.
+        /// </summary>
+        internal static string Dialog_Title_Unpack {
+            get {
+                return ResourceManager.GetString("Dialog_Title_Unpack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Selecting a watch image file.
         /// </summary>
         internal static string Dialog_Title_WatchSkin {
@@ -187,6 +196,15 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Zip файл циферблата (*.zip) | *.zip.
+        /// </summary>
+        internal static string FilterZip {
+            get {
+                return ResourceManager.GetString("FilterZip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Следовать за часами.
         /// </summary>
         internal static string FollowMinute {
@@ -255,6 +273,60 @@ namespace Watch_Face_Editor.Properties {
         internal static string Message_Error_Image_Text2 {
             get {
                 return ResourceManager.GetString("Message_Error_Image_Text2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Не удалось распознать структуру циферблата.
+        /// </summary>
+        internal static string Message_ErrorReadJS {
+            get {
+                return ResourceManager.GetString("Message_ErrorReadJS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Перейти к файлу.
+        /// </summary>
+        internal static string Message_GoToFile_Caption {
+            get {
+                return ResourceManager.GetString("Message_GoToFile_Caption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Перейти к файлу?.
+        /// </summary>
+        internal static string Message_GoToFile_Text {
+            get {
+                return ResourceManager.GetString("Message_GoToFile_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Изображение не должно быть монохромным и должно быть в формате 32bit.
+        /// </summary>
+        internal static string Message_Image32bit {
+            get {
+                return ResourceManager.GetString("Message_Image32bit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Выбранные изображения выходят за диапазон имеющихся изображений..
+        /// </summary>
+        internal static string Message_ImageCount_Error {
+            get {
+                return ResourceManager.GetString("Message_ImageCount_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ошибка конвертации изображения.
+        /// </summary>
+        internal static string Message_ImageFix_Error {
+            get {
+                return ResourceManager.GetString("Message_ImageFix_Error", resourceCulture);
             }
         }
         
@@ -394,7 +466,7 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Warning.
+        ///   Ищет локализованную строку, похожую на Предупреждение.
         /// </summary>
         internal static string Message_Warning_Caption {
             get {
@@ -421,11 +493,47 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Information.
+        ///   Ищет локализованную строку, похожую на Информация.
         /// </summary>
         internal static string Message_Warning_Information {
             get {
                 return ResourceManager.GetString("Message_Warning_Information", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Размеры изображения для Preview отличаются от стандартных..
+        /// </summary>
+        internal static string Message_WarningPreview_Text1 {
+            get {
+                return ResourceManager.GetString("Message_WarningPreview_Text1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Использовать существующие размеры?.
+        /// </summary>
+        internal static string Message_WarningPreview_Text2 {
+            get {
+                return ResourceManager.GetString("Message_WarningPreview_Text2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Не верный формат исходного изображения.
+        /// </summary>
+        internal static string Message_Wrong_Original_Image {
+            get {
+                return ResourceManager.GetString("Message_Wrong_Original_Image", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Не удалось создать изображение предпросмотра. Возможно такое изображение уже имеется..
+        /// </summary>
+        internal static string Message_Wrong_Preview_Exists {
+            get {
+                return ResourceManager.GetString("Message_Wrong_Preview_Exists", resourceCulture);
             }
         }
     }

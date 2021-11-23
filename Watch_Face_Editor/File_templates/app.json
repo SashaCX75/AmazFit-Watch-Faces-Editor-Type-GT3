@@ -1,0 +1,74 @@
+{
+  "configVersion": "v1",
+  "app": {
+    "appId": 12345678,
+    "appName": "New_Project",
+    "appType": "watchface",
+    "version": {
+      "code": 1,
+      "name": "1.0"
+    },
+    "icon": "preview.png",
+    "vender": "huami",
+    "description": "息屏表盘2"
+  },
+  "permissions": [
+    "gps"
+  ],
+  "runtime": {
+    "apiVersion": {
+      "compatible": "1.0.0",
+      "target": "1.0.1",
+      "minVersion": "1.0.0"
+    }
+  },
+  "device": {
+    "targets": [
+      "gts"
+    ],
+    "platforms": [
+      "nxp"
+    ]
+  },
+  "module": {
+    "page": {
+      "pages": [
+        "pages/index"
+      ],
+      "window": {
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "倒计时",
+        "backgroundColor": "#eeeeee",
+        "backgroundTextStyle": "light"
+      }
+    },
+    "app-widget": {
+      "widgets": [
+        "app-widget/index"
+      ]
+    },
+    "watch-widget": {
+      "widgets": []
+    },
+    "watchface": {
+      "path": "watchface/index",
+      "main": 1,
+      "editable": 0,
+      "lockscrreen": 1
+    },
+    "app-side": {
+      "path": "app-side/index"
+    },
+    "setting": {
+      "path": "setting/index"
+    }
+  },
+  "i18n": {
+    "en-US": {
+      "name": "zepp"
+    }
+  },
+  "defaultLanguage": "en-US"
+}
+  

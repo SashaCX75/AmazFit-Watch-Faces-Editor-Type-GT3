@@ -18,6 +18,7 @@ namespace ControlLibrary
         private List<string> ListImagesFullName = new List<string>(); // перечень путей к файлам с картинками
         private bool AODmode;
         public Object _Background;
+        private int ID;
 
         [Description("Отображается на экране AOD")]
         public bool AOD
@@ -49,15 +50,37 @@ namespace ControlLibrary
         private void button_GenerateID_Click(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            int rndID = rnd.Next(1000, 10000000);
-            label_ID.Text = rndID.ToString();
+            ID = rnd.Next(1000, 10000000);
+            label_ID.Text = ID.ToString();
+
+            if (ValueChanged != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                ValueChanged(this, eventArgs);
+            }
         }
 
         public void GenerateID()
         {
             Random rnd = new Random();
-            int rndID = rnd.Next(1000, 10000000);
-            label_ID.Text = rndID.ToString();
+            ID = rnd.Next(1000, 10000000);
+            label_ID.Text = ID.ToString();
+        }
+
+        /// <summary>Получаем ID</summary>
+        public int GetID()
+        {
+            return ID;
+        }
+
+        /// <summary>Устанавливаем ID</summary>
+        public void SetID(int id)
+        {
+            if (id > 999 && id < 10000000)
+            {
+                ID = id;
+                label_ID.Text = ID.ToString();
+            }
         }
 
         private void radioButton_Background_image_CheckedChanged(object sender, EventArgs e)
@@ -286,6 +309,8 @@ namespace ControlLibrary
             comboBox_Background_image.Text = null;
             comboBox_Preview_image.Text = null;
             radioButton_Background_color.Checked = true;
+            ID = 0;
+            label_ID.Text = "";
 
             setValue = false;
         }

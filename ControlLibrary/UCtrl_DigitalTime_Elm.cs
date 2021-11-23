@@ -17,10 +17,6 @@ namespace ControlLibrary
         bool highlight_minutes = false;
         bool highlight_seconds = false;
 
-        bool highlight_hours_font = false;
-        bool highlight_minutes_font = false;
-        bool highlight_seconds_font = false;
-
         bool highlight_am_pm = false;
 
         bool visibility_elements = false; // развернут список с элементами
@@ -92,8 +88,6 @@ namespace ControlLibrary
         public bool GetHighlightState()
         {
             bool highlight = highlight_hours || highlight_minutes || highlight_seconds;
-            bool highlight_font = highlight_hours_font || highlight_minutes_font || highlight_seconds_font;
-            highlight = highlight || highlight_font;
             return highlight;
         }
 
@@ -104,103 +98,6 @@ namespace ControlLibrary
             highlight_hours = false;
             highlight_minutes = false;
             highlight_seconds = false;
-
-            highlight_hours_font = false;
-            highlight_minutes_font = false;
-            highlight_seconds_font = false;
-
-
-            if (highlight_hours)
-            {
-                panel_Hours.BackColor = SystemColors.ActiveCaption;
-                button_Hours.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Hours.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Hours.BackColor = SystemColors.Control;
-                button_Hours.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Hours.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_minutes)
-            {
-                panel_Minutes.BackColor = SystemColors.ActiveCaption;
-                button_Minutes.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Minutes.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Minutes.BackColor = SystemColors.Control;
-                button_Minutes.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Minutes.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_seconds)
-            {
-                panel_Seconds.BackColor = SystemColors.ActiveCaption;
-                button_Seconds.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Seconds.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Seconds.BackColor = SystemColors.Control;
-                button_Seconds.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Seconds.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-
-            if (highlight_hours_font)
-            {
-                panel_Hours_Font.BackColor = SystemColors.ActiveCaption;
-                button_Hours_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Hours_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Hours_Font.BackColor = SystemColors.Control;
-                button_Hours_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Hours_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_minutes_font)
-            {
-                panel_Minutes_Font.BackColor = SystemColors.ActiveCaption;
-                button_Minutes_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Minutes_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Minutes_Font.BackColor = SystemColors.Control;
-                button_Minutes_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Minutes_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_seconds_font)
-            {
-                panel_Seconds_Font.BackColor = SystemColors.ActiveCaption;
-                button_Seconds_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Seconds_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Seconds_Font.BackColor = SystemColors.Control;
-                button_Seconds_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Seconds_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-        }
-
-        private void panel_Hours_Click(object sender, EventArgs e)
-        {
-            selectedElement = "Hour";
-
-            highlight_hours = true;
-            highlight_minutes = false;
-            highlight_seconds = false;
-
-            highlight_hours_font = false;
-            highlight_minutes_font = false;
-            highlight_seconds_font = false;
 
             highlight_am_pm = false;
 
@@ -243,44 +140,67 @@ namespace ControlLibrary
                 button_Seconds.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
-
-            if (highlight_hours_font)
+            if (highlight_am_pm)
             {
-                panel_Hours_Font.BackColor = SystemColors.ActiveCaption;
-                button_Hours_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Hours_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+                panel_AmPm.BackColor = SystemColors.ActiveCaption;
+                button_AmPm.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_AmPm.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
             }
             else
             {
-                panel_Hours_Font.BackColor = SystemColors.Control;
-                button_Hours_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Hours_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+                panel_AmPm.BackColor = SystemColors.Control;
+                button_AmPm.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_AmPm.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
+        }
 
-            if (highlight_minutes_font)
+        private void panel_Hours_Click(object sender, EventArgs e)
+        {
+            selectedElement = "Hour";
+
+            highlight_hours = true;
+            highlight_minutes = false;
+            highlight_seconds = false;
+
+            highlight_am_pm = false;
+
+            if (highlight_hours)
             {
-                panel_Minutes_Font.BackColor = SystemColors.ActiveCaption;
-                button_Minutes_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Minutes_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+                panel_Hours.BackColor = SystemColors.ActiveCaption;
+                button_Hours.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Hours.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
             }
             else
             {
-                panel_Minutes_Font.BackColor = SystemColors.Control;
-                button_Minutes_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Minutes_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+                panel_Hours.BackColor = SystemColors.Control;
+                button_Hours.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Hours.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
-            if (highlight_seconds_font)
+            if (highlight_minutes)
             {
-                panel_Seconds_Font.BackColor = SystemColors.ActiveCaption;
-                button_Seconds_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Seconds_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+                panel_Minutes.BackColor = SystemColors.ActiveCaption;
+                button_Minutes.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Minutes.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
             }
             else
             {
-                panel_Seconds_Font.BackColor = SystemColors.Control;
-                button_Seconds_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Seconds_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+                panel_Minutes.BackColor = SystemColors.Control;
+                button_Minutes.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Minutes.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_seconds)
+            {
+                panel_Seconds.BackColor = SystemColors.ActiveCaption;
+                button_Seconds.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Seconds.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Seconds.BackColor = SystemColors.Control;
+                button_Seconds.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Seconds.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
             if (highlight_am_pm)
@@ -311,10 +231,6 @@ namespace ControlLibrary
             highlight_minutes = true;
             highlight_seconds = false;
 
-            highlight_hours_font = false;
-            highlight_minutes_font = false;
-            highlight_seconds_font = false;
-
             highlight_am_pm = false;
 
             if (highlight_hours)
@@ -354,46 +270,6 @@ namespace ControlLibrary
                 panel_Seconds.BackColor = SystemColors.Control;
                 button_Seconds.FlatAppearance.MouseOverBackColor = SystemColors.Control;
                 button_Seconds.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-
-            if (highlight_hours_font)
-            {
-                panel_Hours_Font.BackColor = SystemColors.ActiveCaption;
-                button_Hours_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Hours_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Hours_Font.BackColor = SystemColors.Control;
-                button_Hours_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Hours_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_minutes_font)
-            {
-                panel_Minutes_Font.BackColor = SystemColors.ActiveCaption;
-                button_Minutes_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Minutes_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Minutes_Font.BackColor = SystemColors.Control;
-                button_Minutes_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Minutes_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_seconds_font)
-            {
-                panel_Seconds_Font.BackColor = SystemColors.ActiveCaption;
-                button_Seconds_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Seconds_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Seconds_Font.BackColor = SystemColors.Control;
-                button_Seconds_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Seconds_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
             if (highlight_am_pm)
@@ -424,10 +300,6 @@ namespace ControlLibrary
             highlight_minutes = false;
             highlight_seconds = true;
 
-            highlight_hours_font = false;
-            highlight_minutes_font = false;
-            highlight_seconds_font = false;
-
             highlight_am_pm = false;
 
             if (highlight_hours)
@@ -467,385 +339,6 @@ namespace ControlLibrary
                 panel_Seconds.BackColor = SystemColors.Control;
                 button_Seconds.FlatAppearance.MouseOverBackColor = SystemColors.Control;
                 button_Seconds.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-
-            if (highlight_hours_font)
-            {
-                panel_Hours_Font.BackColor = SystemColors.ActiveCaption;
-                button_Hours_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Hours_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Hours_Font.BackColor = SystemColors.Control;
-                button_Hours_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Hours_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_minutes_font)
-            {
-                panel_Minutes_Font.BackColor = SystemColors.ActiveCaption;
-                button_Minutes_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Minutes_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Minutes_Font.BackColor = SystemColors.Control;
-                button_Minutes_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Minutes_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_seconds_font)
-            {
-                panel_Seconds_Font.BackColor = SystemColors.ActiveCaption;
-                button_Seconds_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Seconds_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Seconds_Font.BackColor = SystemColors.Control;
-                button_Seconds_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Seconds_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_am_pm)
-            {
-                panel_AmPm.BackColor = SystemColors.ActiveCaption;
-                button_AmPm.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_AmPm.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_AmPm.BackColor = SystemColors.Control;
-                button_AmPm.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_AmPm.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (SelectChanged != null)
-            {
-                EventArgs eventArgs = new EventArgs();
-                SelectChanged(this, eventArgs);
-            }
-        }
-
-        private void panel_Hours_Font_Click(object sender, EventArgs e)
-        {
-            selectedElement = "Hour_Font";
-
-            highlight_hours = false;
-            highlight_minutes = false;
-            highlight_seconds = false;
-
-            highlight_hours_font = true;
-            highlight_minutes_font = false;
-            highlight_seconds_font = false;
-
-            highlight_am_pm = false;
-
-            if (highlight_hours)
-            {
-                panel_Hours.BackColor = SystemColors.ActiveCaption;
-                button_Hours.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Hours.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Hours.BackColor = SystemColors.Control;
-                button_Hours.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Hours.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_minutes)
-            {
-                panel_Minutes.BackColor = SystemColors.ActiveCaption;
-                button_Minutes.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Minutes.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Minutes.BackColor = SystemColors.Control;
-                button_Minutes.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Minutes.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_seconds)
-            {
-                panel_Seconds.BackColor = SystemColors.ActiveCaption;
-                button_Seconds.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Seconds.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Seconds.BackColor = SystemColors.Control;
-                button_Seconds.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Seconds.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-
-            if (highlight_hours_font)
-            {
-                panel_Hours_Font.BackColor = SystemColors.ActiveCaption;
-                button_Hours_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Hours_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Hours_Font.BackColor = SystemColors.Control;
-                button_Hours_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Hours_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_minutes_font)
-            {
-                panel_Minutes_Font.BackColor = SystemColors.ActiveCaption;
-                button_Minutes_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Minutes_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Minutes_Font.BackColor = SystemColors.Control;
-                button_Minutes_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Minutes_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_seconds_font)
-            {
-                panel_Seconds_Font.BackColor = SystemColors.ActiveCaption;
-                button_Seconds_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Seconds_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Seconds_Font.BackColor = SystemColors.Control;
-                button_Seconds_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Seconds_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_am_pm)
-            {
-                panel_AmPm.BackColor = SystemColors.ActiveCaption;
-                button_AmPm.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_AmPm.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_AmPm.BackColor = SystemColors.Control;
-                button_AmPm.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_AmPm.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (SelectChanged != null)
-            {
-                EventArgs eventArgs = new EventArgs();
-                SelectChanged(this, eventArgs);
-            }
-        }
-
-        private void panel_Minutes_Font_Click(object sender, EventArgs e)
-        {
-            selectedElement = "Minute_Font";
-
-            highlight_hours = false;
-            highlight_minutes = false;
-            highlight_seconds = false;
-
-            highlight_hours_font = false;
-            highlight_minutes_font = true;
-            highlight_seconds_font = false;
-
-            highlight_am_pm = false;
-
-            if (highlight_hours)
-            {
-                panel_Hours.BackColor = SystemColors.ActiveCaption;
-                button_Hours.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Hours.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Hours.BackColor = SystemColors.Control;
-                button_Hours.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Hours.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_minutes)
-            {
-                panel_Minutes.BackColor = SystemColors.ActiveCaption;
-                button_Minutes.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Minutes.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Minutes.BackColor = SystemColors.Control;
-                button_Minutes.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Minutes.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_seconds)
-            {
-                panel_Seconds.BackColor = SystemColors.ActiveCaption;
-                button_Seconds.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Seconds.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Seconds.BackColor = SystemColors.Control;
-                button_Seconds.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Seconds.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-
-            if (highlight_hours_font)
-            {
-                panel_Hours_Font.BackColor = SystemColors.ActiveCaption;
-                button_Hours_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Hours_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Hours_Font.BackColor = SystemColors.Control;
-                button_Hours_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Hours_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_minutes_font)
-            {
-                panel_Minutes_Font.BackColor = SystemColors.ActiveCaption;
-                button_Minutes_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Minutes_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Minutes_Font.BackColor = SystemColors.Control;
-                button_Minutes_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Minutes_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_seconds_font)
-            {
-                panel_Seconds_Font.BackColor = SystemColors.ActiveCaption;
-                button_Seconds_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Seconds_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Seconds_Font.BackColor = SystemColors.Control;
-                button_Seconds_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Seconds_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_am_pm)
-            {
-                panel_AmPm.BackColor = SystemColors.ActiveCaption;
-                button_AmPm.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_AmPm.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_AmPm.BackColor = SystemColors.Control;
-                button_AmPm.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_AmPm.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (SelectChanged != null)
-            {
-                EventArgs eventArgs = new EventArgs();
-                SelectChanged(this, eventArgs);
-            }
-        }
-
-        private void panel_Seconds_Font_Click(object sender, EventArgs e)
-        {
-            selectedElement = "Second_Font";
-
-            highlight_hours = false;
-            highlight_minutes = false;
-            highlight_seconds = false;
-
-            highlight_hours_font = false;
-            highlight_minutes_font = false;
-            highlight_seconds_font = true;
-
-            highlight_am_pm = false;
-
-            if (highlight_hours)
-            {
-                panel_Hours.BackColor = SystemColors.ActiveCaption;
-                button_Hours.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Hours.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Hours.BackColor = SystemColors.Control;
-                button_Hours.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Hours.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_minutes)
-            {
-                panel_Minutes.BackColor = SystemColors.ActiveCaption;
-                button_Minutes.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Minutes.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Minutes.BackColor = SystemColors.Control;
-                button_Minutes.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Minutes.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_seconds)
-            {
-                panel_Seconds.BackColor = SystemColors.ActiveCaption;
-                button_Seconds.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Seconds.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Seconds.BackColor = SystemColors.Control;
-                button_Seconds.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Seconds.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-
-            if (highlight_hours_font)
-            {
-                panel_Hours_Font.BackColor = SystemColors.ActiveCaption;
-                button_Hours_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Hours_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Hours_Font.BackColor = SystemColors.Control;
-                button_Hours_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Hours_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_minutes_font)
-            {
-                panel_Minutes_Font.BackColor = SystemColors.ActiveCaption;
-                button_Minutes_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Minutes_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Minutes_Font.BackColor = SystemColors.Control;
-                button_Minutes_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Minutes_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_seconds_font)
-            {
-                panel_Seconds_Font.BackColor = SystemColors.ActiveCaption;
-                button_Seconds_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Seconds_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Seconds_Font.BackColor = SystemColors.Control;
-                button_Seconds_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Seconds_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
             if (highlight_am_pm)
@@ -875,10 +368,6 @@ namespace ControlLibrary
             highlight_hours = false;
             highlight_minutes = false;
             highlight_seconds = false;
-
-            highlight_hours_font = false;
-            highlight_minutes_font = false;
-            highlight_seconds_font = false;
 
             highlight_am_pm = true;
 
@@ -919,46 +408,6 @@ namespace ControlLibrary
                 panel_Seconds.BackColor = SystemColors.Control;
                 button_Seconds.FlatAppearance.MouseOverBackColor = SystemColors.Control;
                 button_Seconds.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-
-            if (highlight_hours_font)
-            {
-                panel_Hours_Font.BackColor = SystemColors.ActiveCaption;
-                button_Hours_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Hours_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Hours_Font.BackColor = SystemColors.Control;
-                button_Hours_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Hours_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_minutes_font)
-            {
-                panel_Minutes_Font.BackColor = SystemColors.ActiveCaption;
-                button_Minutes_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Minutes_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Minutes_Font.BackColor = SystemColors.Control;
-                button_Minutes_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Minutes_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_seconds_font)
-            {
-                panel_Seconds_Font.BackColor = SystemColors.ActiveCaption;
-                button_Seconds_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Seconds_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Seconds_Font.BackColor = SystemColors.Control;
-                button_Seconds_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Seconds_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
             if (highlight_am_pm)
@@ -1198,15 +647,6 @@ namespace ControlLibrary
                 case "Second":
                     checkBox_Seconds.Checked = status;
                     break;
-                case "Hour_Font":
-                    checkBox_Hours_Font.Checked = status;
-                    break;
-                case "Minute_Font":
-                    checkBox_Minutes_Font.Checked = status;
-                    break;
-                case "Second_Font":
-                    checkBox_Seconds_Font.Checked = status;
-                    break;
                 case "AmPm":
                     checkBox_AmPm.Checked = status;
                     break;
@@ -1217,12 +657,13 @@ namespace ControlLibrary
         /// <summary>Устанавливаем порядок опций в элементе</summary>
         public void SetOptionsPosition(Dictionary<int, string> elementOptions)
         {
-            for (int key = 0; key < 7; key++)
+            int elementCount = tableLayoutPanel1.RowCount;
+            for (int key = 0; key < elementCount; key++)
             {
                 Control panel = null;
-                if (elementOptions.ContainsKey(key))
+                if (elementOptions.ContainsKey(elementCount - key))
                 {
-                    string name = elementOptions[key];
+                    string name = elementOptions[elementCount - key];
                     switch (name)
                     {
                         case "Hour":
@@ -1233,15 +674,6 @@ namespace ControlLibrary
                             break;
                         case "Second":
                             panel = panel_Seconds;
-                            break;
-                        case "Hour_Font":
-                            panel = panel_Hours_Font;
-                            break;
-                        case "Minute_Font":
-                            panel = panel_Minutes_Font;
-                            break;
-                        case "Second_Font":
-                            panel = panel_Seconds_Font;
                             break;
                         case "AmPm":
                             panel = panel_AmPm;
@@ -1282,34 +714,34 @@ namespace ControlLibrary
         public Dictionary<string, int> GetOptionsPosition()
         {
             Dictionary<string, int> elementOptions = new Dictionary<string, int>();
+            int count = tableLayoutPanel1.RowCount;
             for (int i = 0; i < tableLayoutPanel1.RowCount; i++)
             {
-                TableLayoutRowStyleCollection www = tableLayoutPanel1.RowStyles;
                 Control panel = tableLayoutPanel1.GetControlFromPosition(0, i);
                 switch (panel.Name)
                 {
                     case "panel_Hours":
-                        elementOptions.Add("Hour", i);
+                        elementOptions.Add("Hour", count - i);
                         break;
                     case "panel_Minutes":
-                        elementOptions.Add("Minute", i);
+                        elementOptions.Add("Minute", count - i);
                         break;
                     case "panel_Seconds":
-                        elementOptions.Add("Second", i);
+                        elementOptions.Add("Second", count - i);
                         break;
 
                     case "panel_Hours_Font":
-                        elementOptions.Add("Hour_Font", i);
+                        elementOptions.Add("Hour_Font", count - i);
                         break;
                     case "panel_Minutes_Font":
-                        elementOptions.Add("Minute_Font", i);
+                        elementOptions.Add("Minute_Font", count - i);
                         break;
                     case "panel_Seconds_Font":
-                        elementOptions.Add("Second_Font", i);
+                        elementOptions.Add("Second_Font", count - i);
                         break;
 
                     case "panel_AmPm":
-                        elementOptions.Add("AmPm", i);
+                        elementOptions.Add("AmPm", count - i);
                         break;
                 }
             }
@@ -1321,21 +753,15 @@ namespace ControlLibrary
             setValue = true;
 
             Dictionary<int, string> elementOptions = new Dictionary<int, string>();
-            elementOptions.Add(0, "Hour");
-            elementOptions.Add(1, "Minute");
-            elementOptions.Add(2, "Second");
-            elementOptions.Add(3, "Hour_Font");
-            elementOptions.Add(4, "Minute_Font");
-            elementOptions.Add(5, "Second_Font");
-            elementOptions.Add(6, "AmPm");
+            elementOptions.Add(4, "Second");
+            elementOptions.Add(3, "Minute");
+            elementOptions.Add(2, "Hour");
+            elementOptions.Add(1, "AmPm");
             SetOptionsPosition(elementOptions);
 
             checkBox_Hours.Checked = false;
             checkBox_Minutes.Checked = false;
             checkBox_Seconds.Checked = false;
-            checkBox_Hours_Font.Checked = false;
-            checkBox_Minutes_Font.Checked = false;
-            checkBox_Seconds_Font.Checked = false;
             checkBox_AmPm.Checked = false;
 
             setValue = false;

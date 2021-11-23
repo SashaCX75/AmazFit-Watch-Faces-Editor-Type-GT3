@@ -131,16 +131,18 @@ namespace Watch_Face_Editor
         }
 
         /// <summary>Читаем настройки для фона</summary>
-        private void Read_Background_Options(Background background, string preview = "")
+        private void Read_Background_Options(Background background, string preview = "", int id = 0)
         {
             PreviewView = false;
+            userCtrl_Background_Options.SettingsClear();
+
             if (preview != null && preview.Length > 0) userCtrl_Background_Options.SetPreview(preview);
+            if (id > 999 && id < 10000000) userCtrl_Background_Options.SetID(id);
             if (background == null) 
             {
                 PreviewView = true;
                 return;
             }
-            userCtrl_Background_Options.SettingsClear();
             userCtrl_Background_Options.Visible = true;
             if (background == null)
             {

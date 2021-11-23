@@ -50,6 +50,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="UCtrl_AmPm_Opt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCtrl_AmPm_Opt.Designer.cs">
+      <DependentUpon>UCtrl_AmPm_Opt.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCtrl_Background_Elm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -88,6 +94,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_AmPm_Opt.resx">
+      <DependentUpon>UCtrl_AmPm_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Background_Elm.resx">
       <DependentUpon>UCtrl_Background_Elm.cs</DependentUpon>
     </EmbeddedResource>
@@ -99,6 +108,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Set.resx">
       <DependentUpon>UCtrl_Set.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Text_Opt.resx">
       <DependentUpon>UCtrl_Text_Opt.cs</DependentUpon>

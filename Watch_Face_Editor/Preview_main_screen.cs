@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -72,8 +73,8 @@ namespace Watch_Face_Editor
             }
             if (background != null)
             {
-                if (background.BackgroundImage != null && background.BackgroundImage.src.Length > 0 &&
-                    background.visible)
+                if (background.BackgroundImage != null && background.BackgroundImage.src != null && 
+                    background.BackgroundImage.src.Length > 0 && background.visible)
                 {
                     src = OpenFileStream(background.BackgroundImage.src);
                     int x = background.BackgroundImage.x;
@@ -115,135 +116,142 @@ namespace Watch_Face_Editor
                     {
                         case "ElementDigitalTime":
                             ElementDigitalTime DigitalTime = (ElementDigitalTime)element;
+                            if(!DigitalTime.visible) continue;
                             int time_offsetX = -1;
                             int time_offsetY = -1;
                             int time_spasing = 0;
                             bool _pm = false;
 
-                            if (DigitalTime.Hour != null && DigitalTime.Hour.img_First != null
-                                && DigitalTime.Hour.img_First.Length > 0 && DigitalTime.Hour.visible)
+                            for (int index = 1; index <= 4; index++)
                             {
-                                int imageIndex = ListImages.IndexOf(DigitalTime.Hour.img_First);
-                                int x = DigitalTime.Hour.imageX;
-                                int y = DigitalTime.Hour.imageY;
-                                time_offsetY = y;
-                                int spasing = DigitalTime.Hour.space;
-                                time_spasing = spasing;
-                                int alignment = AlignmentToInt(DigitalTime.Hour.align);
-                                bool addZero = DigitalTime.Hour.zero;
-                                //addZero = true;
-                                int value = WatchFacePreviewSet.Time.Hours;
-                                int separator_index = -1;
-                                if (DigitalTime.Hour.unit != null && DigitalTime.Hour.unit.Length > 0)
-                                    separator_index = ListImages.IndexOf(DigitalTime.Hour.unit);
-
-                                if (ProgramSettings.ShowIn12hourFormat && DigitalTime.AmPm != null)
+                                if (DigitalTime.Hour != null && DigitalTime.Hour.img_First != null
+                                    && DigitalTime.Hour.img_First.Length > 0 &&
+                                    index == DigitalTime.Hour.position && DigitalTime.Hour.visible)
                                 {
-                                    if (DigitalTime.AmPm.am_img != null && DigitalTime.AmPm.am_img.Length > 0 &&
-                                        DigitalTime.AmPm.pm_img != null && DigitalTime.AmPm.pm_img.Length > 0)
+                                    int imageIndex = ListImages.IndexOf(DigitalTime.Hour.img_First);
+                                    int x = DigitalTime.Hour.imageX;
+                                    int y = DigitalTime.Hour.imageY;
+                                    time_offsetY = y;
+                                    int spasing = DigitalTime.Hour.space;
+                                    time_spasing = spasing;
+                                    int alignment = AlignmentToInt(DigitalTime.Hour.align);
+                                    bool addZero = DigitalTime.Hour.zero;
+                                    //addZero = true;
+                                    int value = WatchFacePreviewSet.Time.Hours;
+                                    int separator_index = -1;
+                                    if (DigitalTime.Hour.unit != null && DigitalTime.Hour.unit.Length > 0)
+                                        separator_index = ListImages.IndexOf(DigitalTime.Hour.unit);
+
+                                    if (ProgramSettings.ShowIn12hourFormat && DigitalTime.AmPm != null)
                                     {
-                                        if (value > 11)
+                                        if (DigitalTime.AmPm.am_img != null && DigitalTime.AmPm.am_img.Length > 0 &&
+                                            DigitalTime.AmPm.pm_img != null && DigitalTime.AmPm.pm_img.Length > 0)
                                         {
-                                            _pm = true;
-                                            value -= 12;
+                                            if (value > 11)
+                                            {
+                                                _pm = true;
+                                                value -= 12;
+                                            }
+                                            if (value == 0) value = 12;
                                         }
-                                        if (value == 0) value = 12; 
+                                    }
+
+                                    time_offsetX = Draw_dagital_text(gPanel, imageIndex, x, y,
+                                                        spasing, alignment, value, addZero, 2, separator_index, BBorder);
+
+                                    if (DigitalTime.Hour.icon != null && DigitalTime.Hour.icon.Length > 0)
+                                    {
+                                        imageIndex = ListImages.IndexOf(DigitalTime.Hour.icon);
+                                        x = DigitalTime.Hour.iconPosX;
+                                        y = DigitalTime.Hour.iconPosY;
+
+                                        src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                        gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                                     }
                                 }
 
-                                time_offsetX = Draw_dagital_text(gPanel, imageIndex, x, y,
-                                                    spasing, alignment, value, addZero, 2, separator_index, BBorder);
-
-                                if (DigitalTime.Hour.icon.Length > 0)
+                                if (DigitalTime.Minute != null && DigitalTime.Minute.img_First != null
+                                    && DigitalTime.Minute.img_First.Length > 0 &&
+                                    index == DigitalTime.Minute.position && DigitalTime.Minute.visible)
                                 {
-                                    imageIndex = ListImages.IndexOf(DigitalTime.Hour.icon);
-                                    x = DigitalTime.Hour.iconPosX;
-                                    y = DigitalTime.Hour.iconPosY;
+                                    int imageIndex = ListImages.IndexOf(DigitalTime.Minute.img_First);
+                                    int x = DigitalTime.Minute.imageX;
+                                    int y = DigitalTime.Minute.imageY;
+                                    int spasing = DigitalTime.Minute.space;
+                                    time_spasing = spasing;
+                                    int alignment = AlignmentToInt(DigitalTime.Minute.align);
+                                    bool addZero = DigitalTime.Minute.zero;
+                                    //addZero = true;
+                                    if (DigitalTime.Minute.follow && time_offsetX > -1 &&
+                                        DigitalTime.Minute.position > DigitalTime.Hour.position)
+                                    {
+                                        x = time_offsetX;
+                                        alignment = 0;
+                                        y = time_offsetY;
+                                        spasing = time_spasing;
+                                    }
+                                    time_offsetY = y;
+                                    int value = WatchFacePreviewSet.Time.Minutes;
+                                    int separator_index = -1;
+                                    if (DigitalTime.Minute.unit != null && DigitalTime.Minute.unit.Length > 0)
+                                        separator_index = ListImages.IndexOf(DigitalTime.Minute.unit);
 
-                                    src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                    gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+
+                                    time_offsetX = Draw_dagital_text(gPanel, imageIndex, x, y,
+                                                        spasing, alignment, value, addZero, 2, separator_index, BBorder);
+
+                                    if (DigitalTime.Minute.icon != null && DigitalTime.Minute.icon.Length > 0)
+                                    {
+                                        imageIndex = ListImages.IndexOf(DigitalTime.Minute.icon);
+                                        x = DigitalTime.Minute.iconPosX;
+                                        y = DigitalTime.Minute.iconPosY;
+
+                                        src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                        gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                                    }
                                 }
-                            }
+                                else time_offsetX = -1;
 
-                            if (DigitalTime.Minute != null && DigitalTime.Minute.img_First != null
-                                && DigitalTime.Minute.img_First.Length > 0 && DigitalTime.Minute.visible)
-                            {
-                                int imageIndex = ListImages.IndexOf(DigitalTime.Minute.img_First);
-                                int x = DigitalTime.Minute.imageX;
-                                int y = DigitalTime.Minute.imageY;
-                                int spasing = DigitalTime.Minute.space;
-                                time_spasing = spasing;
-                                int alignment = AlignmentToInt(DigitalTime.Minute.align);
-                                bool addZero = DigitalTime.Minute.zero;
-                                //addZero = true;
-                                if (DigitalTime.Minute.follow && time_offsetX > -1 &&
-                                    DigitalTime.Minute.position > DigitalTime.Hour.position)
+                                if (DigitalTime.Second != null && DigitalTime.Second.img_First != null
+                                    && DigitalTime.Second.img_First.Length > 0 &&
+                                    index == DigitalTime.Second.position && DigitalTime.Second.visible)
                                 {
-                                    x = time_offsetX;
-                                    alignment = 0;
-                                    y = time_offsetY;
-                                    spasing = time_spasing;
-                                }
-                                time_offsetY = y;
-                                int value = WatchFacePreviewSet.Time.Minutes;
-                                int separator_index = -1;
-                                if (DigitalTime.Minute.unit != null && DigitalTime.Minute.unit.Length > 0)
-                                    separator_index = ListImages.IndexOf(DigitalTime.Minute.unit);
+                                    int imageIndex = ListImages.IndexOf(DigitalTime.Second.img_First);
+                                    int x = DigitalTime.Second.imageX;
+                                    int y = DigitalTime.Second.imageY;
+                                    int spasing = DigitalTime.Second.space;
+                                    time_spasing = spasing;
+                                    int alignment = AlignmentToInt(DigitalTime.Second.align);
+                                    bool addZero = DigitalTime.Second.zero;
+                                    //addZero = true;
+                                    if (DigitalTime.Second.follow && time_offsetX > -1 &&
+                                        DigitalTime.Second.position > DigitalTime.Minute.position)
+                                    {
+                                        x = time_offsetX;
+                                        alignment = 0;
+                                        y = time_offsetY;
+                                        spasing = time_spasing;
+                                    }
+                                    time_offsetY = y;
+                                    int value = WatchFacePreviewSet.Time.Seconds;
+                                    int separator_index = -1;
+                                    if (DigitalTime.Second.unit != null && DigitalTime.Second.unit.Length > 0)
+                                        separator_index = ListImages.IndexOf(DigitalTime.Second.unit);
 
 
-                                time_offsetX = Draw_dagital_text(gPanel, imageIndex, x, y,
-                                                    spasing, alignment, value, addZero, 2, separator_index, BBorder);
+                                    time_offsetX = Draw_dagital_text(gPanel, imageIndex, x, y,
+                                                        spasing, alignment, value, addZero, 2, separator_index, BBorder);
 
-                                if (DigitalTime.Minute.icon.Length > 0)
-                                {
-                                    imageIndex = ListImages.IndexOf(DigitalTime.Minute.icon);
-                                    x = DigitalTime.Minute.iconPosX;
-                                    y = DigitalTime.Minute.iconPosY;
+                                    if (DigitalTime.Second.icon != null && DigitalTime.Second.icon.Length > 0)
+                                    {
+                                        imageIndex = ListImages.IndexOf(DigitalTime.Second.icon);
+                                        x = DigitalTime.Second.iconPosX;
+                                        y = DigitalTime.Second.iconPosY;
 
-                                    src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                    gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
-                                }
-                            }
-                            else time_offsetX = -1;
-
-                            if (DigitalTime.Second != null && DigitalTime.Second.img_First != null
-                                && DigitalTime.Second.img_First.Length > 0 && DigitalTime.Second.visible)
-                            {
-                                int imageIndex = ListImages.IndexOf(DigitalTime.Second.img_First);
-                                int x = DigitalTime.Second.imageX;
-                                int y = DigitalTime.Second.imageY;
-                                int spasing = DigitalTime.Second.space;
-                                time_spasing = spasing;
-                                int alignment = AlignmentToInt(DigitalTime.Second.align);
-                                bool addZero = DigitalTime.Second.zero;
-                                //addZero = true;
-                                if (DigitalTime.Second.follow && time_offsetX > -1 &&
-                                    DigitalTime.Second.position > DigitalTime.Minute.position)
-                                {
-                                    x = time_offsetX;
-                                    alignment = 0;
-                                    y = time_offsetY;
-                                    spasing = time_spasing;
-                                }
-                                time_offsetY = y;
-                                int value = WatchFacePreviewSet.Time.Minutes;
-                                int separator_index = -1;
-                                if (DigitalTime.Second.unit != null && DigitalTime.Second.unit.Length > 0)
-                                    separator_index = ListImages.IndexOf(DigitalTime.Second.unit);
-
-
-                                time_offsetX = Draw_dagital_text(gPanel, imageIndex, x, y,
-                                                    spasing, alignment, value, addZero, 2, separator_index, BBorder);
-
-                                if (DigitalTime.Second.icon.Length > 0)
-                                {
-                                    imageIndex = ListImages.IndexOf(DigitalTime.Second.icon);
-                                    x = DigitalTime.Second.iconPosX;
-                                    y = DigitalTime.Second.iconPosY;
-
-                                    src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                    gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
-                                }
+                                        src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                        gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                                    }
+                                } 
                             }
 
                             break;
@@ -311,7 +319,7 @@ namespace Watch_Face_Editor
                 {
                     mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_3.png");
                 }
-                mask = AplyMask(mask);
+                mask = FormColor(mask);
                 gPanel.DrawImage(mask, new Rectangle(0, 0, mask.Width, mask.Height));
                 mask.Dispose();
             }
@@ -839,7 +847,8 @@ namespace Watch_Face_Editor
             return src;
         }
 
-        private Bitmap AplyMask(Bitmap bitmap)
+        /// <summary>Имитируем обрезку изображения, заливая контур цветом фона</summary>
+        private Bitmap FormColor(Bitmap bitmap)
         {
             Logger.WriteLine("* FormColor");
             //int[] bgColors = { 203, 255, 240 };
@@ -856,18 +865,31 @@ namespace Watch_Face_Editor
             return image.ToBitmap();
         }
 
+        /// <summary>Обрезаим изображение по маске</summary>
+        public Bitmap ApplyMask(Bitmap inputImage, Bitmap mask)
+        {
+            Logger.WriteLine("* ApplyMask");
+            ImageMagick.MagickImage image = new ImageMagick.MagickImage(inputImage);
+            ImageMagick.MagickImage combineMask = new ImageMagick.MagickImage(mask);
+
+            image.Composite(combineMask, ImageMagick.CompositeOperator.In, ImageMagick.Channels.Alpha);
+
+            Logger.WriteLine("* ApplyMask (end)");
+            return image.ToBitmap();
+        }
+
         private int AlignmentToInt(string alignment)
         {
             int result;
             switch (alignment)
             {
-                case "Left":
+                case "LEFT":
                     result = 0;
                     break;
-                case "Center":
+                case "CENTER_H":
                     result = 1;
                     break;
-                case "Right":
+                case "RIGHT":
                     result = 2;
                     break;
 
@@ -877,6 +899,38 @@ namespace Watch_Face_Editor
 
             }
             return result;
+        }
+
+        /// <summary>Масштабирование изображения</summary>
+        /// <param name="image">Исходное изображение</param>
+        /// <param name="scale">Масштаб</param>
+        /// <returns>The resized image.</returns>
+        public static Bitmap ResizeImage(Image image, float scale)
+        {
+            if (scale <= 0) return new Bitmap(image);
+            int width = (int)Math.Round(image.Width * scale);
+            int height = (int)Math.Round(image.Height * scale);
+            var destRect = new Rectangle(0, 0, width, height);
+            var destImage = new Bitmap(width, height);
+
+            destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+
+            using (var graphics = Graphics.FromImage(destImage))
+            {
+                graphics.CompositingMode = CompositingMode.SourceCopy;
+                graphics.CompositingQuality = CompositingQuality.HighQuality;
+                graphics.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
+                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+                using (var wrapMode = new ImageAttributes())
+                {
+                    wrapMode.SetWrapMode(WrapMode.TileFlipXY);
+                    graphics.DrawImage(image, destRect, 0, 0, image.Width, image.Height, GraphicsUnit.Pixel, wrapMode);
+                }
+            }
+
+            return destImage;
         }
     }
 }

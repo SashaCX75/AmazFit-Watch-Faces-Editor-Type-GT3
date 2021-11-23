@@ -153,13 +153,13 @@ namespace ControlLibrary
             int result;
             switch (alignment)
             {
-                case "Left":
+                case "LEFT":
                     result = 0;
                     break;
-                case "Center":
+                case "CENTER_H":
                     result = 1;
                     break;
-                case "Right":
+                case "RIGHT":
                     result = 2;
                     break;
 
@@ -171,20 +171,20 @@ namespace ControlLibrary
             comboBox_alignment.SelectedIndex = result;
         }
 
-        /// <summary>Возвращает выравнивание строкой "Left", "Right", "Center"</summary>
+        /// <summary>Возвращает выравнивание строкой "LEFT", "RIGHT", "CENTER_H"</summary>
         public string GetAlignment()
         {
             string result;
             switch (comboBox_alignment.SelectedIndex)
             {
                 case 0:
-                    result = "Left";
+                    result = "LEFT";
                     break;
                 case 1:
-                    result = "Center";
+                    result = "CENTER_H";
                     break;
                 case 2:
-                    result = "Right";
+                    result = "RIGHT";
                     break;
 
                 default:

@@ -28,7 +28,7 @@ namespace Watch_Face_Editor
         public string src { get; set; }
 
         /// <summary>Основной экран или AOD</summary>
-        public string show_level { get; set; }
+        //public string show_level { get; set; }
     }
 
     /// <summary>Заливка фона цветом</summary>
@@ -53,7 +53,7 @@ namespace Watch_Face_Editor
         public string color { get; set; }
 
         /// <summary>Основной экран или AOD</summary>
-        public string show_level { get; set; }
+        //public string show_level { get; set; }
     }
 
 

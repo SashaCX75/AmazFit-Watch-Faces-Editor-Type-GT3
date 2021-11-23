@@ -30,27 +30,18 @@ namespace ControlLibrary
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel_AmPm = new System.Windows.Forms.Panel();
-            this.button_AmPm = new System.Windows.Forms.Button();
-            this.checkBox_AmPm = new System.Windows.Forms.CheckBox();
-            this.panel_Seconds_Font = new System.Windows.Forms.Panel();
-            this.button_Seconds_Font = new System.Windows.Forms.Button();
-            this.checkBox_Seconds_Font = new System.Windows.Forms.CheckBox();
-            this.panel_Seconds = new System.Windows.Forms.Panel();
-            this.button_Seconds = new System.Windows.Forms.Button();
-            this.checkBox_Seconds = new System.Windows.Forms.CheckBox();
             this.panel_Minutes = new System.Windows.Forms.Panel();
             this.button_Minutes = new System.Windows.Forms.Button();
             this.checkBox_Minutes = new System.Windows.Forms.CheckBox();
+            this.panel_AmPm = new System.Windows.Forms.Panel();
+            this.button_AmPm = new System.Windows.Forms.Button();
+            this.checkBox_AmPm = new System.Windows.Forms.CheckBox();
             this.panel_Hours = new System.Windows.Forms.Panel();
             this.checkBox_Hours = new System.Windows.Forms.CheckBox();
             this.button_Hours = new System.Windows.Forms.Button();
-            this.panel_Hours_Font = new System.Windows.Forms.Panel();
-            this.checkBox_Hours_Font = new System.Windows.Forms.CheckBox();
-            this.button_Hours_Font = new System.Windows.Forms.Button();
-            this.panel_Minutes_Font = new System.Windows.Forms.Panel();
-            this.button_Minutes_Font = new System.Windows.Forms.Button();
-            this.checkBox_Minutes_Font = new System.Windows.Forms.CheckBox();
+            this.panel_Seconds = new System.Windows.Forms.Panel();
+            this.button_Seconds = new System.Windows.Forms.Button();
+            this.checkBox_Seconds = new System.Windows.Forms.CheckBox();
             this.pictureBox_NotShow = new System.Windows.Forms.PictureBox();
             this.pictureBox_Arrow_Right = new System.Windows.Forms.PictureBox();
             this.pictureBox_Show = new System.Windows.Forms.PictureBox();
@@ -58,13 +49,10 @@ namespace ControlLibrary
             this.pictureBox_Arrow_Down = new System.Windows.Forms.PictureBox();
             this.button_ElementName = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
-            this.panel_AmPm.SuspendLayout();
-            this.panel_Seconds_Font.SuspendLayout();
-            this.panel_Seconds.SuspendLayout();
             this.panel_Minutes.SuspendLayout();
+            this.panel_AmPm.SuspendLayout();
             this.panel_Hours.SuspendLayout();
-            this.panel_Hours_Font.SuspendLayout();
-            this.panel_Minutes_Font.SuspendLayout();
+            this.panel_Seconds.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_NotShow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Arrow_Right)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Show)).BeginInit();
@@ -79,167 +67,23 @@ namespace ControlLibrary
             this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.panel_AmPm, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.panel_Seconds_Font, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.panel_Seconds, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel_Minutes, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.panel_Hours, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel_Hours_Font, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.panel_Minutes_Font, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.panel_AmPm, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Hours, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Seconds, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 28);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 7;
+            this.tableLayoutPanel1.RowCount = 4;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(220, 176);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(220, 101);
             this.tableLayoutPanel1.TabIndex = 3;
             this.tableLayoutPanel1.Visible = false;
             this.tableLayoutPanel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragDrop);
             this.tableLayoutPanel1.DragOver += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragOver);
-            // 
-            // panel_AmPm
-            // 
-            this.panel_AmPm.BackColor = System.Drawing.SystemColors.Control;
-            this.panel_AmPm.Controls.Add(this.button_AmPm);
-            this.panel_AmPm.Controls.Add(this.checkBox_AmPm);
-            this.panel_AmPm.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_AmPm.Location = new System.Drawing.Point(1, 151);
-            this.panel_AmPm.Margin = new System.Windows.Forms.Padding(0);
-            this.panel_AmPm.Name = "panel_AmPm";
-            this.panel_AmPm.Size = new System.Drawing.Size(218, 24);
-            this.panel_AmPm.TabIndex = 6;
-            this.panel_AmPm.Click += new System.EventHandler(this.panel_AmPm_Click);
-            this.panel_AmPm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
-            this.panel_AmPm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
-            this.panel_AmPm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
-            // 
-            // button_AmPm
-            // 
-            this.button_AmPm.FlatAppearance.BorderSize = 0;
-            this.button_AmPm.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-            this.button_AmPm.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            this.button_AmPm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_AmPm.Image = global::ControlLibrary.Properties.Resources.outline_image_black_18;
-            this.button_AmPm.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_AmPm.Location = new System.Drawing.Point(33, 0);
-            this.button_AmPm.Name = "button_AmPm";
-            this.button_AmPm.Size = new System.Drawing.Size(155, 24);
-            this.button_AmPm.TabIndex = 4;
-            this.button_AmPm.Text = "Am/Pm";
-            this.button_AmPm.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button_AmPm.UseVisualStyleBackColor = true;
-            this.button_AmPm.Click += new System.EventHandler(this.panel_AmPm_Click);
-            this.button_AmPm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
-            this.button_AmPm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
-            this.button_AmPm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
-            // 
-            // checkBox_AmPm
-            // 
-            this.checkBox_AmPm.AutoSize = true;
-            this.checkBox_AmPm.Location = new System.Drawing.Point(20, 5);
-            this.checkBox_AmPm.Name = "checkBox_AmPm";
-            this.checkBox_AmPm.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_AmPm.TabIndex = 0;
-            this.checkBox_AmPm.UseVisualStyleBackColor = true;
-            this.checkBox_AmPm.CheckedChanged += new System.EventHandler(this.checkBox_Hours_CheckedChanged);
-            // 
-            // panel_Seconds_Font
-            // 
-            this.panel_Seconds_Font.BackColor = System.Drawing.SystemColors.Control;
-            this.panel_Seconds_Font.Controls.Add(this.button_Seconds_Font);
-            this.panel_Seconds_Font.Controls.Add(this.checkBox_Seconds_Font);
-            this.panel_Seconds_Font.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_Seconds_Font.Location = new System.Drawing.Point(1, 126);
-            this.panel_Seconds_Font.Margin = new System.Windows.Forms.Padding(0);
-            this.panel_Seconds_Font.Name = "panel_Seconds_Font";
-            this.panel_Seconds_Font.Size = new System.Drawing.Size(218, 24);
-            this.panel_Seconds_Font.TabIndex = 5;
-            this.panel_Seconds_Font.Click += new System.EventHandler(this.panel_Seconds_Font_Click);
-            this.panel_Seconds_Font.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
-            this.panel_Seconds_Font.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
-            this.panel_Seconds_Font.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
-            // 
-            // button_Seconds_Font
-            // 
-            this.button_Seconds_Font.FlatAppearance.BorderSize = 0;
-            this.button_Seconds_Font.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-            this.button_Seconds_Font.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            this.button_Seconds_Font.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Seconds_Font.Image = global::ControlLibrary.Properties.Resources.text_rotation_18;
-            this.button_Seconds_Font.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_Seconds_Font.Location = new System.Drawing.Point(33, 0);
-            this.button_Seconds_Font.Name = "button_Seconds_Font";
-            this.button_Seconds_Font.Size = new System.Drawing.Size(155, 24);
-            this.button_Seconds_Font.TabIndex = 4;
-            this.button_Seconds_Font.Text = "Секунды (шрифтом)";
-            this.button_Seconds_Font.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button_Seconds_Font.UseVisualStyleBackColor = true;
-            this.button_Seconds_Font.Click += new System.EventHandler(this.panel_Seconds_Font_Click);
-            this.button_Seconds_Font.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
-            this.button_Seconds_Font.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
-            this.button_Seconds_Font.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
-            // 
-            // checkBox_Seconds_Font
-            // 
-            this.checkBox_Seconds_Font.AutoSize = true;
-            this.checkBox_Seconds_Font.Location = new System.Drawing.Point(20, 5);
-            this.checkBox_Seconds_Font.Name = "checkBox_Seconds_Font";
-            this.checkBox_Seconds_Font.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_Seconds_Font.TabIndex = 0;
-            this.checkBox_Seconds_Font.UseVisualStyleBackColor = true;
-            this.checkBox_Seconds_Font.CheckedChanged += new System.EventHandler(this.checkBox_Hours_CheckedChanged);
-            // 
-            // panel_Seconds
-            // 
-            this.panel_Seconds.BackColor = System.Drawing.SystemColors.Control;
-            this.panel_Seconds.Controls.Add(this.button_Seconds);
-            this.panel_Seconds.Controls.Add(this.checkBox_Seconds);
-            this.panel_Seconds.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_Seconds.Location = new System.Drawing.Point(1, 51);
-            this.panel_Seconds.Margin = new System.Windows.Forms.Padding(0);
-            this.panel_Seconds.Name = "panel_Seconds";
-            this.panel_Seconds.Size = new System.Drawing.Size(218, 24);
-            this.panel_Seconds.TabIndex = 2;
-            this.panel_Seconds.Click += new System.EventHandler(this.panel_Seconds_Click);
-            this.panel_Seconds.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
-            this.panel_Seconds.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
-            this.panel_Seconds.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
-            // 
-            // button_Seconds
-            // 
-            this.button_Seconds.FlatAppearance.BorderSize = 0;
-            this.button_Seconds.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-            this.button_Seconds.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            this.button_Seconds.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Seconds.Image = global::ControlLibrary.Properties.Resources.text_icon;
-            this.button_Seconds.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_Seconds.Location = new System.Drawing.Point(33, 0);
-            this.button_Seconds.Name = "button_Seconds";
-            this.button_Seconds.Size = new System.Drawing.Size(125, 24);
-            this.button_Seconds.TabIndex = 4;
-            this.button_Seconds.Text = "Секунды";
-            this.button_Seconds.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button_Seconds.UseVisualStyleBackColor = true;
-            this.button_Seconds.Click += new System.EventHandler(this.panel_Seconds_Click);
-            this.button_Seconds.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
-            this.button_Seconds.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
-            this.button_Seconds.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
-            // 
-            // checkBox_Seconds
-            // 
-            this.checkBox_Seconds.AutoSize = true;
-            this.checkBox_Seconds.Location = new System.Drawing.Point(20, 5);
-            this.checkBox_Seconds.Name = "checkBox_Seconds";
-            this.checkBox_Seconds.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_Seconds.TabIndex = 0;
-            this.checkBox_Seconds.UseVisualStyleBackColor = true;
-            this.checkBox_Seconds.CheckedChanged += new System.EventHandler(this.checkBox_Hours_CheckedChanged);
             // 
             // panel_Minutes
             // 
@@ -287,13 +131,59 @@ namespace ControlLibrary
             this.checkBox_Minutes.UseVisualStyleBackColor = true;
             this.checkBox_Minutes.CheckedChanged += new System.EventHandler(this.checkBox_Hours_CheckedChanged);
             // 
+            // panel_AmPm
+            // 
+            this.panel_AmPm.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_AmPm.Controls.Add(this.button_AmPm);
+            this.panel_AmPm.Controls.Add(this.checkBox_AmPm);
+            this.panel_AmPm.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel_AmPm.Location = new System.Drawing.Point(1, 76);
+            this.panel_AmPm.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_AmPm.Name = "panel_AmPm";
+            this.panel_AmPm.Size = new System.Drawing.Size(218, 24);
+            this.panel_AmPm.TabIndex = 6;
+            this.panel_AmPm.Click += new System.EventHandler(this.panel_AmPm_Click);
+            this.panel_AmPm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.panel_AmPm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.panel_AmPm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // button_AmPm
+            // 
+            this.button_AmPm.FlatAppearance.BorderSize = 0;
+            this.button_AmPm.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.button_AmPm.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.button_AmPm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_AmPm.Image = global::ControlLibrary.Properties.Resources.outline_image_black_18;
+            this.button_AmPm.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_AmPm.Location = new System.Drawing.Point(33, 0);
+            this.button_AmPm.Name = "button_AmPm";
+            this.button_AmPm.Size = new System.Drawing.Size(155, 24);
+            this.button_AmPm.TabIndex = 4;
+            this.button_AmPm.Text = "Am/Pm";
+            this.button_AmPm.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button_AmPm.UseVisualStyleBackColor = true;
+            this.button_AmPm.Click += new System.EventHandler(this.panel_AmPm_Click);
+            this.button_AmPm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.button_AmPm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.button_AmPm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // checkBox_AmPm
+            // 
+            this.checkBox_AmPm.AutoSize = true;
+            this.checkBox_AmPm.Location = new System.Drawing.Point(20, 5);
+            this.checkBox_AmPm.Name = "checkBox_AmPm";
+            this.checkBox_AmPm.Size = new System.Drawing.Size(15, 14);
+            this.checkBox_AmPm.TabIndex = 0;
+            this.checkBox_AmPm.UseVisualStyleBackColor = true;
+            this.checkBox_AmPm.CheckedChanged += new System.EventHandler(this.checkBox_Hours_CheckedChanged);
+            // 
             // panel_Hours
             // 
             this.panel_Hours.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Hours.Controls.Add(this.checkBox_Hours);
             this.panel_Hours.Controls.Add(this.button_Hours);
             this.panel_Hours.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_Hours.Location = new System.Drawing.Point(1, 1);
+            this.panel_Hours.Location = new System.Drawing.Point(1, 51);
             this.panel_Hours.Margin = new System.Windows.Forms.Padding(0);
             this.panel_Hours.Name = "panel_Hours";
             this.panel_Hours.Size = new System.Drawing.Size(218, 24);
@@ -333,97 +223,51 @@ namespace ControlLibrary
             this.button_Hours.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
             this.button_Hours.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
             // 
-            // panel_Hours_Font
+            // panel_Seconds
             // 
-            this.panel_Hours_Font.BackColor = System.Drawing.SystemColors.Control;
-            this.panel_Hours_Font.Controls.Add(this.checkBox_Hours_Font);
-            this.panel_Hours_Font.Controls.Add(this.button_Hours_Font);
-            this.panel_Hours_Font.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_Hours_Font.Location = new System.Drawing.Point(1, 76);
-            this.panel_Hours_Font.Margin = new System.Windows.Forms.Padding(0);
-            this.panel_Hours_Font.Name = "panel_Hours_Font";
-            this.panel_Hours_Font.Size = new System.Drawing.Size(218, 24);
-            this.panel_Hours_Font.TabIndex = 3;
-            this.panel_Hours_Font.Click += new System.EventHandler(this.panel_Hours_Font_Click);
-            this.panel_Hours_Font.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
-            this.panel_Hours_Font.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
-            this.panel_Hours_Font.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            this.panel_Seconds.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_Seconds.Controls.Add(this.button_Seconds);
+            this.panel_Seconds.Controls.Add(this.checkBox_Seconds);
+            this.panel_Seconds.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel_Seconds.Location = new System.Drawing.Point(1, 1);
+            this.panel_Seconds.Margin = new System.Windows.Forms.Padding(0);
+            this.panel_Seconds.Name = "panel_Seconds";
+            this.panel_Seconds.Size = new System.Drawing.Size(218, 24);
+            this.panel_Seconds.TabIndex = 2;
+            this.panel_Seconds.Click += new System.EventHandler(this.panel_Seconds_Click);
+            this.panel_Seconds.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.panel_Seconds.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.panel_Seconds.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
             // 
-            // checkBox_Hours_Font
+            // button_Seconds
             // 
-            this.checkBox_Hours_Font.AutoSize = true;
-            this.checkBox_Hours_Font.Location = new System.Drawing.Point(20, 5);
-            this.checkBox_Hours_Font.Name = "checkBox_Hours_Font";
-            this.checkBox_Hours_Font.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_Hours_Font.TabIndex = 0;
-            this.checkBox_Hours_Font.UseVisualStyleBackColor = true;
-            this.checkBox_Hours_Font.CheckedChanged += new System.EventHandler(this.checkBox_Hours_CheckedChanged);
+            this.button_Seconds.FlatAppearance.BorderSize = 0;
+            this.button_Seconds.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.button_Seconds.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.button_Seconds.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_Seconds.Image = global::ControlLibrary.Properties.Resources.text_icon;
+            this.button_Seconds.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button_Seconds.Location = new System.Drawing.Point(33, 0);
+            this.button_Seconds.Name = "button_Seconds";
+            this.button_Seconds.Size = new System.Drawing.Size(125, 24);
+            this.button_Seconds.TabIndex = 4;
+            this.button_Seconds.Text = "Секунды";
+            this.button_Seconds.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button_Seconds.UseVisualStyleBackColor = true;
+            this.button_Seconds.Click += new System.EventHandler(this.panel_Seconds_Click);
+            this.button_Seconds.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.button_Seconds.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.button_Seconds.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
             // 
-            // button_Hours_Font
+            // checkBox_Seconds
             // 
-            this.button_Hours_Font.FlatAppearance.BorderSize = 0;
-            this.button_Hours_Font.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-            this.button_Hours_Font.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            this.button_Hours_Font.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Hours_Font.Image = global::ControlLibrary.Properties.Resources.text_rotation_18;
-            this.button_Hours_Font.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_Hours_Font.Location = new System.Drawing.Point(33, 0);
-            this.button_Hours_Font.Name = "button_Hours_Font";
-            this.button_Hours_Font.Size = new System.Drawing.Size(155, 24);
-            this.button_Hours_Font.TabIndex = 2;
-            this.button_Hours_Font.Text = "Часы (шрифтом)";
-            this.button_Hours_Font.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button_Hours_Font.UseVisualStyleBackColor = true;
-            this.button_Hours_Font.Click += new System.EventHandler(this.panel_Hours_Font_Click);
-            this.button_Hours_Font.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
-            this.button_Hours_Font.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
-            this.button_Hours_Font.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
-            // 
-            // panel_Minutes_Font
-            // 
-            this.panel_Minutes_Font.BackColor = System.Drawing.SystemColors.Control;
-            this.panel_Minutes_Font.Controls.Add(this.button_Minutes_Font);
-            this.panel_Minutes_Font.Controls.Add(this.checkBox_Minutes_Font);
-            this.panel_Minutes_Font.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_Minutes_Font.Location = new System.Drawing.Point(1, 101);
-            this.panel_Minutes_Font.Margin = new System.Windows.Forms.Padding(0);
-            this.panel_Minutes_Font.Name = "panel_Minutes_Font";
-            this.panel_Minutes_Font.Size = new System.Drawing.Size(218, 24);
-            this.panel_Minutes_Font.TabIndex = 4;
-            this.panel_Minutes_Font.Click += new System.EventHandler(this.panel_Minutes_Font_Click);
-            this.panel_Minutes_Font.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
-            this.panel_Minutes_Font.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
-            this.panel_Minutes_Font.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
-            // 
-            // button_Minutes_Font
-            // 
-            this.button_Minutes_Font.FlatAppearance.BorderSize = 0;
-            this.button_Minutes_Font.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-            this.button_Minutes_Font.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            this.button_Minutes_Font.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_Minutes_Font.Image = global::ControlLibrary.Properties.Resources.text_rotation_18;
-            this.button_Minutes_Font.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button_Minutes_Font.Location = new System.Drawing.Point(33, 0);
-            this.button_Minutes_Font.Name = "button_Minutes_Font";
-            this.button_Minutes_Font.Size = new System.Drawing.Size(155, 24);
-            this.button_Minutes_Font.TabIndex = 3;
-            this.button_Minutes_Font.Text = "Минуты (шрифтом)";
-            this.button_Minutes_Font.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button_Minutes_Font.UseVisualStyleBackColor = true;
-            this.button_Minutes_Font.Click += new System.EventHandler(this.panel_Minutes_Font_Click);
-            this.button_Minutes_Font.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
-            this.button_Minutes_Font.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
-            this.button_Minutes_Font.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
-            // 
-            // checkBox_Minutes_Font
-            // 
-            this.checkBox_Minutes_Font.AutoSize = true;
-            this.checkBox_Minutes_Font.Location = new System.Drawing.Point(20, 5);
-            this.checkBox_Minutes_Font.Name = "checkBox_Minutes_Font";
-            this.checkBox_Minutes_Font.Size = new System.Drawing.Size(15, 14);
-            this.checkBox_Minutes_Font.TabIndex = 0;
-            this.checkBox_Minutes_Font.UseVisualStyleBackColor = true;
-            this.checkBox_Minutes_Font.CheckedChanged += new System.EventHandler(this.checkBox_Hours_CheckedChanged);
+            this.checkBox_Seconds.AutoSize = true;
+            this.checkBox_Seconds.Location = new System.Drawing.Point(20, 5);
+            this.checkBox_Seconds.Name = "checkBox_Seconds";
+            this.checkBox_Seconds.Size = new System.Drawing.Size(15, 14);
+            this.checkBox_Seconds.TabIndex = 0;
+            this.checkBox_Seconds.UseVisualStyleBackColor = true;
+            this.checkBox_Seconds.CheckedChanged += new System.EventHandler(this.checkBox_Hours_CheckedChanged);
             // 
             // pictureBox_NotShow
             // 
@@ -517,22 +361,16 @@ namespace ControlLibrary
             this.Controls.Add(this.pictureBox_Arrow_Down);
             this.Controls.Add(this.button_ElementName);
             this.Name = "UCtrl_DigitalTime_Elm";
-            this.Size = new System.Drawing.Size(220, 331);
+            this.Size = new System.Drawing.Size(220, 227);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.panel_AmPm.ResumeLayout(false);
-            this.panel_AmPm.PerformLayout();
-            this.panel_Seconds_Font.ResumeLayout(false);
-            this.panel_Seconds_Font.PerformLayout();
-            this.panel_Seconds.ResumeLayout(false);
-            this.panel_Seconds.PerformLayout();
             this.panel_Minutes.ResumeLayout(false);
             this.panel_Minutes.PerformLayout();
+            this.panel_AmPm.ResumeLayout(false);
+            this.panel_AmPm.PerformLayout();
             this.panel_Hours.ResumeLayout(false);
             this.panel_Hours.PerformLayout();
-            this.panel_Hours_Font.ResumeLayout(false);
-            this.panel_Hours_Font.PerformLayout();
-            this.panel_Minutes_Font.ResumeLayout(false);
-            this.panel_Minutes_Font.PerformLayout();
+            this.panel_Seconds.ResumeLayout(false);
+            this.panel_Seconds.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_NotShow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Arrow_Right)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Show)).EndInit();
@@ -558,20 +396,11 @@ namespace ControlLibrary
         private System.Windows.Forms.Button button_Seconds;
         private System.Windows.Forms.Button button_Minutes;
         private System.Windows.Forms.PictureBox pictureBox_NotShow;
-        private System.Windows.Forms.Panel panel_Hours_Font;
-        private System.Windows.Forms.Button button_Hours_Font;
-        private System.Windows.Forms.Panel panel_Seconds_Font;
-        private System.Windows.Forms.Button button_Seconds_Font;
-        private System.Windows.Forms.Panel panel_Minutes_Font;
-        private System.Windows.Forms.Button button_Minutes_Font;
         private System.Windows.Forms.Panel panel_AmPm;
         private System.Windows.Forms.Button button_AmPm;
         public System.Windows.Forms.CheckBox checkBox_Seconds;
         public System.Windows.Forms.CheckBox checkBox_Minutes;
         public System.Windows.Forms.CheckBox checkBox_Hours;
-        public System.Windows.Forms.CheckBox checkBox_Hours_Font;
-        public System.Windows.Forms.CheckBox checkBox_Seconds_Font;
-        public System.Windows.Forms.CheckBox checkBox_Minutes_Font;
         public System.Windows.Forms.CheckBox checkBox_AmPm;
     }
 }

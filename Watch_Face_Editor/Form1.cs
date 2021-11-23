@@ -1,4 +1,5 @@
 ﻿using ControlLibrary;
+using ImageMagick;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Drawing.Imaging;
 using System.Drawing.Text;
 using System.Globalization;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -34,6 +36,8 @@ namespace Watch_Face_Editor
         string StartFileNameZip; // имя файла из параметров запуска
         float currentDPI; // масштаб экрана
         Point cursorPos = new Point(0, 0); // положение курсора при начале перетягивания элементов
+        List<Color> colorMapList = new List<Color>(); // карта цветов для конвертации изображений
+        int ImageWidth; // ширина изображения для конвертации изображений
 
         Form_Preview formPreview;
 
@@ -134,7 +138,7 @@ namespace Watch_Face_Editor
             AddFontMemResourceEx(fontPtr, (uint)Properties.Resources.OpenSans_Regular.Length, IntPtr.Zero, ref dummy);
             System.Runtime.InteropServices.Marshal.FreeCoTaskMem(fontPtr);
             #endregion
-            //Logger.WriteLine("Создали переменные");
+            Logger.WriteLine("Создали переменные");
 
             if (args.Length == 1)
             {
@@ -143,13 +147,13 @@ namespace Watch_Face_Editor
                 {
                     Logger.WriteLine("args[0] - *.json");
                     StartFileNameJson = fileName;
-                    //Logger.WriteLine("Программа запущена с аргументом: " + fileName);
+                    Logger.WriteLine("Программа запущена с аргументом: " + fileName);
                 }
                 if ((File.Exists(fileName)) && (Path.GetExtension(fileName) == ".zip"))
                 {
                     Logger.WriteLine("args[0] - *.zip");
                     StartFileNameZip = fileName;
-                    //Logger.WriteLine("Программа запущена с аргументом: " + fileName);
+                    Logger.WriteLine("Программа запущена с аргументом: " + fileName);
                 }
             }
             Logger.WriteLine("* Form1 (end)");
@@ -167,7 +171,7 @@ namespace Watch_Face_Editor
             //}
 
 
-            //Logger.WriteLine("Form1_Load");
+            Logger.WriteLine("Form1_Load");
 
             PreviewView = false;
 
@@ -177,6 +181,7 @@ namespace Watch_Face_Editor
             comboBox_AddActivity.SelectedIndex = 0;
             comboBox_AddAir.SelectedIndex = 0;
             comboBox_AddSystem.SelectedIndex = 0;
+            progressBar1.Width = (int)(650 * currentDPI);
 
             Logger.WriteLine("Set Model_Watch");
             if (ProgramSettings.Model_GTR3)
@@ -286,13 +291,16 @@ namespace Watch_Face_Editor
         private void Form1_Shown(object sender, EventArgs e)
         {
             Logger.WriteLine("* Form1_Shown");
-            ////Logger.WriteLine("Загружаем файл из значения аргумента " + StartFileNameJson);
-            //if ((StartFileNameJson != null) && (StartFileNameJson.Length > 0))
-            //{
-            //    Logger.WriteLine("Загружаем Json файл из значения аргумента " + StartFileNameJson);
-            //    LoadJsonAndImage(StartFileNameJson);
-            //    StartFileNameJson = "";
-            //}
+            Logger.WriteLine("Загружаем файл из значения аргумента " + StartFileNameJson);
+            if ((StartFileNameJson != null) && (StartFileNameJson.Length > 0))
+            {
+                Logger.WriteLine("Загружаем Json файл из значения аргумента " + StartFileNameJson);
+                FileName = Path.GetFileName(StartFileNameJson);
+                FullFileDir = Path.GetDirectoryName(StartFileNameJson);
+                button_Add_Images.Enabled = true;
+                LoadJson(StartFileNameJson);
+                StartFileNameJson = "";
+            }
             //else if ((StartFileNameBin != null) && (StartFileNameBin.Length > 0))
             //{
             //    Logger.WriteLine("Загружаем bin файл из значения аргумента " + StartFileNameBin);
@@ -310,6 +318,9 @@ namespace Watch_Face_Editor
                 float scale = newHeight / pictureBox_Preview.Height;
                 pictureBox_Preview.Size = new Size((int)(pictureBox_Preview.Width * scale), (int)(pictureBox_Preview.Height * scale));
             }
+
+            userCtrl_Background_Options.AutoSize = true;
+            uCtrl_Text_Opt.AutoSize = true;
 
             button_CreatePreview.Location = new Point(5, 563);
             Logger.WriteLine("* Form1_Shown(end)");
@@ -1057,7 +1068,12 @@ namespace Watch_Face_Editor
             uCtrl_DigitalTime_Elm.ResetHighlightState();
 
             string preview = "";
-            if (Watch_Face != null && Watch_Face.WatchFace_Info != null) preview = Watch_Face.WatchFace_Info.Preview;
+            int id = 0;
+            if (Watch_Face != null && Watch_Face.WatchFace_Info != null) 
+            {
+                preview = Watch_Face.WatchFace_Info.Preview;
+                id = Watch_Face.WatchFace_Info.WatchFaceId;
+            }
             Background background = null;
             if (radioButton_ScreenNormal.Checked)
             {
@@ -1069,7 +1085,7 @@ namespace Watch_Face_Editor
                 if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
                     Watch_Face.ScreenAOD.Background != null) background = Watch_Face.ScreenAOD.Background;
             }
-            Read_Background_Options(background, preview);
+            Read_Background_Options(background, preview, id);
             ShowElemenrOptions("Background");
         }
 
@@ -1164,79 +1180,88 @@ namespace Watch_Face_Editor
 
                 Logger.WriteLine("* JSON_Click");
                 string newFullName = openFileDialog.FileName;
-                string dirName = Path.GetDirectoryName(newFullName) + @"\assets\";
+                //string dirName = Path.GetDirectoryName(newFullName) + @"\assets\";
                 button_Add_Images.Enabled = true;
 
-                string text = File.ReadAllText(newFullName);
-                Watch_Face = TextToJson(text);
-                
-                // отображение кнопок создания картинки предпросмотра
-                if (Watch_Face != null && Watch_Face.WatchFace_Info != null && Watch_Face.WatchFace_Info.Preview != null)
-                {
-                    button_RefreshPreview.Visible = true;
-                    button_CreatePreview.Visible = false;
-                }
-                else
-                {
-                    button_RefreshPreview.Visible = false;
-                    if (FileName != null && FullFileDir != null)
-                    {
-                        button_CreatePreview.Visible = true;
-                    }
-                    else
-                    {
-                        button_CreatePreview.Visible = false;
-                    }
-                }
+                LoadJson(newFullName);
 
-                PreviewView = false;
-                // устанавливаем настройки для предпросмотра
-                newFullName = Path.Combine(dirName, "Preview.States");
-                if (File.Exists(newFullName))
-                {
-                    Logger.WriteLine("Load Preview.States");
-                    if (ProgramSettings.Settings_Open_Download)
-                    {
-                        JsonPreview_Read(newFullName);
-                    }
-                    else if (ProgramSettings.Settings_Open_Dialog)
-                    {
-                        if (MessageBox.Show(Properties.FormStrings.Message_LoadPreviewStates_Text,
-                            Properties.FormStrings.Message_LoadPreviewStates_Caption,
-                            MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                        {
-                            JsonPreview_Read(newFullName);
-                        }
-                    }
-                }
-                else StartJsonPreview();
-
-                LoadImage(dirName); 
-                ShowElemetsWatchFace();
-                if (Watch_Face != null && Watch_Face.WatchFace_Info != null && Watch_Face.WatchFace_Info.DeviceName != null)
-                {
-                    switch (Watch_Face.WatchFace_Info.DeviceName)
-                    {
-                        case "GTR3":
-                            radioButton_GTR3.Checked = true;
-                            break;
-                        case "GTR3_Pro":
-                            radioButton_GTR3_Pro.Checked = true;
-                            break;
-                        case "GTS3":
-                            radioButton_GTS3.Checked = true;
-                            break;
-                    }
-                }
-                PreviewView = true;
-
-                JSON_Modified = false;
-                PreviewImage();
-                FormText();
             }
             Logger.WriteLine("* JSON (end)");
         }
 
+        private void LoadJson(string fileName)
+        {
+            string text = File.ReadAllText(fileName);
+            Watch_Face = TextToJson(text);
+
+            // отображение кнопок создания картинки предпросмотра
+            if (Watch_Face != null && Watch_Face.WatchFace_Info != null && Watch_Face.WatchFace_Info.Preview != null)
+            {
+                button_RefreshPreview.Visible = true;
+                button_CreatePreview.Visible = false;
+            }
+            else
+            {
+                button_RefreshPreview.Visible = false;
+                if (FileName != null && FullFileDir != null)
+                {
+                    button_CreatePreview.Visible = true;
+                }
+                else
+                {
+                    button_CreatePreview.Visible = false;
+                }
+            }
+
+            PreviewView = false;
+            string dirName = Path.GetDirectoryName(fileName) + @"\assets\";
+            // устанавливаем настройки для предпросмотра
+            fileName = Path.Combine(dirName, "Preview.States");
+            if (File.Exists(fileName))
+            {
+                Logger.WriteLine("Load Preview.States");
+                if (ProgramSettings.Settings_Open_Download)
+                {
+                    JsonPreview_Read(fileName);
+                }
+                else if (ProgramSettings.Settings_Open_Dialog)
+                {
+                    if (MessageBox.Show(Properties.FormStrings.Message_LoadPreviewStates_Text,
+                        Properties.FormStrings.Message_LoadPreviewStates_Caption,
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        JsonPreview_Read(fileName);
+                    }
+                }
+            }
+            else StartJsonPreview();
+
+            LoadImage(dirName);
+            ShowElemetsWatchFace();
+            if (Watch_Face != null && Watch_Face.WatchFace_Info != null && Watch_Face.WatchFace_Info.DeviceName != null)
+            {
+                switch (Watch_Face.WatchFace_Info.DeviceName)
+                {
+                    case "GTR3":
+                        radioButton_GTR3.Checked = true;
+                        break;
+                    case "GTR3_Pro":
+                        radioButton_GTR3_Pro.Checked = true;
+                        break;
+                    case "GTS3":
+                        radioButton_GTS3.Checked = true;
+                        break;
+                }
+            }
+            PreviewView = true;
+
+            JSON_Modified = false;
+            PreviewImage();
+            FormText();
+        }
+
+        /// <summary>Загружаем файлы изображений в проект и в выпадающие списки</summary>
+        /// <param name="dirName">Папка с изображениями</param>
         private void LoadImage(string dirName)
         {
             Logger.WriteLine("* LoadImage");
@@ -1362,7 +1387,7 @@ namespace Watch_Face_Editor
                 {
                     Watch_Face.WatchFace_Info.DeviceName = "GTR3";
 
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.show_level = "ONLY_NORMAL";
+                    //Watch_Face.ScreenNormal.Background.BackgroundColor.show_level = "ONLY_NORMAL";
                     Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
                     Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
                     Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
@@ -1373,7 +1398,7 @@ namespace Watch_Face_Editor
                 {
                     Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
 
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.show_level = "ONLY_NORMAL";
+                    //Watch_Face.ScreenNormal.Background.BackgroundColor.show_level = "ONLY_NORMAL";
                     Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
                     Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
                     Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
@@ -1384,7 +1409,7 @@ namespace Watch_Face_Editor
                 {
                     Watch_Face.WatchFace_Info.DeviceName = "GTS3";
 
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.show_level = "ONLY_NORMAL";
+                    //Watch_Face.ScreenNormal.Background.BackgroundColor.show_level = "ONLY_NORMAL";
                     Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
                     Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
                     Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
@@ -1853,13 +1878,14 @@ namespace Watch_Face_Editor
             if (radioButton_ScreenNormal.Checked)
             {
                 if (Watch_Face.ScreenNormal == null) Watch_Face.ScreenNormal = new ScreenNormal();
+                if(Watch_Face.ScreenNormal.Background != null) return;
                 Watch_Face.ScreenNormal.Background = new Background();
                 Watch_Face.ScreenNormal.Background.BackgroundColor = new hmUI_widget_FILL_RECT();
                 if (radioButton_GTR3.Checked)
                 {
                     //Watch_Face.WatchFace_Info.DeviceName = "GTR3";
 
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.show_level = "ONLY_NORMAL";
+                    //Watch_Face.ScreenNormal.Background.BackgroundColor.show_level = "ONLY_NORMAL";
                     Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
                     Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
                     Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
@@ -1870,7 +1896,7 @@ namespace Watch_Face_Editor
                 {
                     //Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
 
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.show_level = "ONLY_NORMAL";
+                    //Watch_Face.ScreenNormal.Background.BackgroundColor.show_level = "ONLY_NORMAL";
                     Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
                     Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
                     Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
@@ -1881,7 +1907,7 @@ namespace Watch_Face_Editor
                 {
                     //Watch_Face.WatchFace_Info.DeviceName = "GTS3";
 
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.show_level = "ONLY_NORMAL";
+                    //Watch_Face.ScreenNormal.Background.BackgroundColor.show_level = "ONLY_NORMAL";
                     Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
                     Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
                     Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
@@ -1889,17 +1915,19 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
                 }
                 Watch_Face.ScreenNormal.Background.visible = true;
+                JSON_Modified = true;
             }
             else
             {
                 if (Watch_Face.ScreenAOD == null) Watch_Face.ScreenAOD = new ScreenAOD();
+                if (Watch_Face.ScreenAOD.Background != null) return;
                 Watch_Face.ScreenAOD.Background = new Background();
                 Watch_Face.ScreenAOD.Background.BackgroundColor = new hmUI_widget_FILL_RECT();
                 if (radioButton_GTR3.Checked)
                 {
                     //Watch_Face.WatchFace_Info.DeviceName = "GTR3";
 
-                    Watch_Face.ScreenAOD.Background.BackgroundColor.show_level = "ONLY_NORMAL";
+                    //Watch_Face.ScreenAOD.Background.BackgroundColor.show_level = "ONLY_NORMAL";
                     Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
                     Watch_Face.ScreenAOD.Background.BackgroundColor.x = 0;
                     Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
@@ -1910,7 +1938,7 @@ namespace Watch_Face_Editor
                 {
                     //Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
 
-                    Watch_Face.ScreenAOD.Background.BackgroundColor.show_level = "ONLY_NORMAL";
+                    //Watch_Face.ScreenAOD.Background.BackgroundColor.show_level = "ONLY_NORMAL";
                     Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
                     Watch_Face.ScreenAOD.Background.BackgroundColor.x = 0;
                     Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
@@ -1921,7 +1949,7 @@ namespace Watch_Face_Editor
                 {
                     //Watch_Face.WatchFace_Info.DeviceName = "GTS3";
 
-                    Watch_Face.ScreenAOD.Background.BackgroundColor.show_level = "ONLY_NORMAL";
+                    //Watch_Face.ScreenAOD.Background.BackgroundColor.show_level = "ONLY_NORMAL";
                     Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
                     Watch_Face.ScreenAOD.Background.BackgroundColor.x = 0;
                     Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
@@ -1929,6 +1957,7 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Background.BackgroundColor.w = 390;
                 }
                 Watch_Face.ScreenAOD.Background.visible = true;
+                JSON_Modified = true;
             }
         }
 
@@ -1957,8 +1986,9 @@ namespace Watch_Face_Editor
             ElementDigitalTime digitalTime = new ElementDigitalTime();
             digitalTime.visible = true;
             //digitalTime.position = Elements.Count;
-            bool exists = Elements.Exists(e => e.GetType().Name== "ElementDigitalTime"); // проверяем что такого элемента нет
-            if(!exists) Elements.Add(digitalTime);
+            bool exists = Elements.Exists(e => e.GetType().Name == "ElementDigitalTime"); // проверяем что такого элемента нет
+            //if (!exists) Elements.Add(digitalTime);
+            if (!exists) Elements.Insert(0, digitalTime);
             uCtrl_DigitalTime_Elm.SettingsClear();
         }
 
@@ -1973,7 +2003,7 @@ namespace Watch_Face_Editor
             panel_UC_DigitalTime.Visible = false;
 
 
-            //int count = tableLayoutPanel_ElemetsWatchFace.RowCount;
+            int count = tableLayoutPanel_ElemetsWatchFace.RowCount;
 
             if (Watch_Face == null) return;
             if (radioButton_ScreenNormal.Checked)
@@ -2022,35 +2052,20 @@ namespace Watch_Face_Editor
                             ElementDigitalTime DigitalTime = (ElementDigitalTime)element;
                             uCtrl_DigitalTime_Elm.SetVisibilityElementStatus(DigitalTime.visible);
                             Dictionary<int, string> elementOptions = new Dictionary<int, string>();
-                            if (DigitalTime.Hour != null)
+                            if (DigitalTime.Second != null)
                             {
-                                uCtrl_DigitalTime_Elm.checkBox_Hours.Checked = DigitalTime.Hour.visible;
-                                elementOptions.Add(DigitalTime.Hour.position, "Hour");
+                                uCtrl_DigitalTime_Elm.checkBox_Seconds.Checked = DigitalTime.Second.visible;
+                                elementOptions.Add(DigitalTime.Second.position, "Second");
                             }
                             if (DigitalTime.Minute != null)
                             {
                                 uCtrl_DigitalTime_Elm.checkBox_Minutes.Checked = DigitalTime.Minute.visible;
                                 elementOptions.Add(DigitalTime.Minute.position, "Minute");
                             }
-                            if (DigitalTime.Second != null)
+                            if (DigitalTime.Hour != null)
                             {
-                                uCtrl_DigitalTime_Elm.checkBox_Seconds.Checked = DigitalTime.Second.visible;
-                                elementOptions.Add(DigitalTime.Second.position, "Second");
-                            }
-                            if (DigitalTime.Hour_Font != null)
-                            {
-                                uCtrl_DigitalTime_Elm.checkBox_Hours_Font.Checked = DigitalTime.Hour_Font.visible;
-                                elementOptions.Add(DigitalTime.Hour_Font.position, "Hour_Font");
-                            }
-                            if (DigitalTime.Minute_Font != null)
-                            {
-                                uCtrl_DigitalTime_Elm.checkBox_Minutes_Font.Checked = DigitalTime.Minute_Font.visible;
-                                elementOptions.Add(DigitalTime.Minute_Font.position, "Minute_Font");
-                            }
-                            if (DigitalTime.Second_Font != null)
-                            {
-                                uCtrl_DigitalTime_Elm.checkBox_Seconds_Font.Checked = DigitalTime.Second_Font.visible;
-                                elementOptions.Add(DigitalTime.Second_Font.position, "Second_Font");
+                                uCtrl_DigitalTime_Elm.checkBox_Hours.Checked = DigitalTime.Hour.visible;
+                                elementOptions.Add(DigitalTime.Hour.position, "Hour");
                             }
                             if (DigitalTime.AmPm != null)
                             {
@@ -2061,8 +2076,8 @@ namespace Watch_Face_Editor
                             uCtrl_DigitalTime_Elm.SetOptionsPosition(elementOptions);
 
                             panel_UC_DigitalTime.Visible = true;
-                            //SetElementPositionInGUI(type, count - i - 2);
-                            SetElementPositionInGUI(type, i + 1);
+                            SetElementPositionInGUI(type, count - i - 2);
+                            //SetElementPositionInGUI(type, i + 1);
                             break;
                     }
                 }
@@ -2235,7 +2250,7 @@ namespace Watch_Face_Editor
             PreviewView = false;
             ShowElemetsWatchFace();
             PreviewView = true;
-            JSON_Modified = true;
+            FormText();
         }
 
         private void uCtrl_Background_Elm_VisibleElemenChanged(object sender, EventArgs eventArgs, bool visible)
@@ -2303,18 +2318,12 @@ namespace Watch_Face_Editor
                 if (digitalTime.Hour == null) digitalTime.Hour = new hmUI_widget_IMG_NUMBER();
                 if (digitalTime.Minute == null) digitalTime.Minute = new hmUI_widget_IMG_NUMBER();
                 if (digitalTime.Second == null) digitalTime.Second = new hmUI_widget_IMG_NUMBER();
-                if (digitalTime.Hour_Font == null) digitalTime.Hour_Font = new hmUI_widget_TEXT();
-                if (digitalTime.Minute_Font == null) digitalTime.Minute_Font = new hmUI_widget_TEXT();
-                if (digitalTime.Second_Font == null) digitalTime.Second_Font = new hmUI_widget_TEXT();
                 if (digitalTime.AmPm == null) digitalTime.AmPm = new hmUI_widget_IMG_TIME_am_pm();
 
                 Dictionary<string, int> elementOptions = uCtrl_DigitalTime_Elm.GetOptionsPosition();
                 if (elementOptions.ContainsKey("Hour")) digitalTime.Hour.position = elementOptions["Hour"];
                 if (elementOptions.ContainsKey("Minute")) digitalTime.Minute.position = elementOptions["Minute"];
                 if (elementOptions.ContainsKey("Second")) digitalTime.Second.position = elementOptions["Second"];
-                if (elementOptions.ContainsKey("Hour_Font")) digitalTime.Hour_Font.position = elementOptions["Hour_Font"];
-                if (elementOptions.ContainsKey("Minute_Font")) digitalTime.Minute_Font.position = elementOptions["Minute_Font"];
-                if (elementOptions.ContainsKey("Second_Font")) digitalTime.Second_Font.position = elementOptions["Second_Font"];
                 if (elementOptions.ContainsKey("AmPm")) digitalTime.AmPm.position = elementOptions["AmPm"];
 
                 CheckBox checkBox = (CheckBox)sender;
@@ -2329,15 +2338,6 @@ namespace Watch_Face_Editor
                         break;
                     case "checkBox_Seconds":
                         digitalTime.Second.visible = checkBox.Checked;
-                        break;
-                    case "checkBox_Hours_Font":
-                        digitalTime.Hour_Font.visible = checkBox.Checked;
-                        break;
-                    case "checkBox_Minutes_Font":
-                        digitalTime.Minute_Font.visible = checkBox.Checked;
-                        break;
-                    case "checkBox_Seconds_Font":
-                        digitalTime.Second_Font.visible = checkBox.Checked;
                         break;
                     case "checkBox_AmPm":
                         digitalTime.AmPm.visible = checkBox.Checked;
@@ -2387,18 +2387,12 @@ namespace Watch_Face_Editor
                 if (digitalTime.Hour == null) digitalTime.Hour = new hmUI_widget_IMG_NUMBER();
                 if (digitalTime.Minute == null) digitalTime.Minute = new hmUI_widget_IMG_NUMBER();
                 if (digitalTime.Second == null) digitalTime.Second = new hmUI_widget_IMG_NUMBER();
-                if (digitalTime.Hour_Font == null) digitalTime.Hour_Font = new hmUI_widget_TEXT();
-                if (digitalTime.Minute_Font == null) digitalTime.Minute_Font = new hmUI_widget_TEXT();
-                if (digitalTime.Second_Font == null) digitalTime.Second_Font = new hmUI_widget_TEXT();
                 if (digitalTime.AmPm == null) digitalTime.AmPm = new hmUI_widget_IMG_TIME_am_pm();
 
                 //Dictionary<string, int> elementOptions = uCtrl_DigitalTime_Elm.GetOptionsPosition();
                 if (elementOptions.ContainsKey("Hour")) digitalTime.Hour.position = elementOptions["Hour"];
                 if (elementOptions.ContainsKey("Minute")) digitalTime.Minute.position = elementOptions["Minute"];
                 if (elementOptions.ContainsKey("Second")) digitalTime.Second.position = elementOptions["Second"];
-                if (elementOptions.ContainsKey("Hour_Font")) digitalTime.Hour_Font.position = elementOptions["Hour_Font"];
-                if (elementOptions.ContainsKey("Minute_Font")) digitalTime.Minute_Font.position = elementOptions["Minute_Font"];
-                if (elementOptions.ContainsKey("Second_Font")) digitalTime.Second_Font.position = elementOptions["Second_Font"];
                 if (elementOptions.ContainsKey("AmPm")) digitalTime.AmPm.position = elementOptions["AmPm"];
 
             }
@@ -2514,7 +2508,7 @@ namespace Watch_Face_Editor
                     parts1[i] = parts1[i].Insert(0, new String('0', toPad));
                 }
             }
-            for (int i = 0; i < parts1.Length; i++)
+            for (int i = 0; i < parts2.Length; i++)
             {
                 int ruselt;
                 if (Int32.TryParse(parts2[i], out ruselt))
@@ -3370,6 +3364,773 @@ namespace Watch_Face_Editor
 
             //JSON_write();
             //PreviewImage();
+        }
+
+        private void button_pack_zip_Click(object sender, EventArgs e)
+        {
+            // сохранение если файл не сохранен
+            SaveRequest();
+
+            if (FullFileDir == null) return;
+            string tempDir = Application.StartupPath + @"\Temp";
+            string templatesFileDir = Application.StartupPath + @"\File_templates";
+            //goto link;
+            //if (Directory.Exists(tempDir)) Directory.Delete(tempDir, true);
+            if (Directory.Exists(tempDir)) DeleteDirectory(tempDir);
+            Directory.CreateDirectory(tempDir);
+            Directory.CreateDirectory(tempDir + @"\assets");
+            Directory.CreateDirectory(tempDir + @"\watchface");
+
+            string imagesFolder = FullFileDir + @"\assets";
+            DirectoryInfo Folder;
+            Folder = new DirectoryInfo(imagesFolder);
+            //FileInfo[] Images;
+            FileInfo[] Images = Folder.GetFiles("*.png");
+
+            progressBar1.Value = 0;
+            progressBar1.Maximum = Images.Length;
+            progressBar1.Visible = true;
+            foreach (FileInfo file in Images)
+            {
+                progressBar1.Value++;
+                string fileNameFull = PngToTga(file.FullName, tempDir + @"\assets");
+                if (fileNameFull != null) ImageFix(fileNameFull);
+            }
+
+            string appText = File.ReadAllText(templatesFileDir + @"\app.json");
+            appText = appText.Replace("\"appName\": \"New_Project\"", 
+                "\"appName\": \"" + Path.GetFileNameWithoutExtension(FileName) + "\"");
+            if (Watch_Face != null && Watch_Face.WatchFace_Info != null)
+            {
+                if (Watch_Face.WatchFace_Info.WatchFaceId > 999 && Watch_Face.WatchFace_Info.WatchFaceId < 10000000)
+                {
+                    appText = appText.Replace("\"appId\": 12345678",
+                                    "\"appId\": " + Watch_Face.WatchFace_Info.WatchFaceId.ToString());
+                }
+                if (Watch_Face.WatchFace_Info.Preview != null && Watch_Face.WatchFace_Info.Preview.Length > 0)
+                {
+                    appText = appText.Replace("\"icon\": \"preview.png\"",
+                                    "\"icon\": \"" + Watch_Face.WatchFace_Info.Preview + ".png\"");
+                }
+            }
+            File.WriteAllText(tempDir + @"\app.json", appText, Encoding.UTF8);
+            File.Copy(templatesFileDir + @"\app.js", tempDir + @"\app.js");
+
+            string variables = "";
+            string items = "";
+            JsonToJS(out variables, out items);
+
+            string indexText = File.ReadAllText(templatesFileDir + @"\index.js");
+            string versionText = "v " +
+                System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Major.ToString() + "." +
+                System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Minor.ToString();
+            indexText = indexText.Replace("* Watch_Face_Editor tool v1.x", "* Watch_Face_Editor tool " + versionText);
+
+            if (variables.Length>0) indexText = indexText.Replace("//Variable declaration section", variables);
+            if (items.Length > 0) indexText = indexText.Replace("//Item description section", items);
+            indexText = indexText.Replace("\r", "");
+
+            File.WriteAllText(tempDir + @"\watchface\index.js", indexText, Encoding.UTF8);
+            //link:
+            // объединяем все в архив
+            string startPath = tempDir;
+            string zipPath = FullFileDir + @"\" + Path.GetFileNameWithoutExtension(FileName) + ".zip";
+            if (File.Exists(zipPath)) File.Delete(zipPath);
+            using (Ionic.Zip.ZipFile zip = new Ionic.Zip.ZipFile())
+            {
+                zip.AddDirectory(startPath);
+                zip.CompressionLevel = Ionic.Zlib.CompressionLevel.BestCompression;
+                zip.Save(zipPath);
+            }
+
+            // открываем файл если создали его
+            if (File.Exists(zipPath))
+            {
+                if (ProgramSettings.Settings_Pack_Dialog)
+                {
+                    if (MessageBox.Show(Properties.FormStrings.Message_GoToFile_Text,
+                    Properties.FormStrings.Message_GoToFile_Caption,
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        Process.Start(new ProcessStartInfo("explorer.exe", " /select, " + zipPath));
+                    }
+                }
+                else if (ProgramSettings.Settings_Pack_GoToFile)
+                {
+                    Process.Start(new ProcessStartInfo("explorer.exe", " /select, " + zipPath));
+                } 
+            }
+
+            //if (Directory.Exists(tempDir)) Directory.Delete(tempDir, true);
+            //if (Directory.Exists(tempDir)) DeleteDirectory(tempDir);
+            progressBar1.Visible = false;
+        }
+
+        /// <summary>Преобразуем Png в Tga</summary>
+        private string PngToTga(string fileNameFull, string targetFolder)
+        {
+            if (File.Exists(fileNameFull))
+            {
+                colorMapList.Clear();
+                try
+                {
+                    string fileName = Path.GetFileNameWithoutExtension(fileNameFull);
+                    //string path = Path.GetDirectoryName(fileNameFull);
+                    ImageMagick.MagickImage image = new ImageMagick.MagickImage(fileNameFull);
+                    ImageMagick.MagickImage image_temp = new ImageMagick.MagickImage(fileNameFull);
+                    ImageWidth = image.Width;
+                    int newWidth = ImageWidth;
+                    int newHeight = image.Height;
+                    while (newWidth % 16 != 0)
+                    {
+                        newWidth++;
+                    }
+
+                    if (ImageWidth != newWidth)
+                    {
+                        Bitmap bitmap = image.ToBitmap();
+                        Bitmap bitmapNew = new Bitmap(newWidth, newHeight);
+                        Graphics gfx = Graphics.FromImage(bitmapNew);
+                        gfx.DrawImage(bitmap, 0, 0, bitmap.Width, bitmap.Height);
+                        image = new ImageMagick.MagickImage(bitmapNew);
+                        image_temp = new ImageMagick.MagickImage(bitmapNew);
+                    }
+                    image.ColorType = ImageMagick.ColorType.Palette;
+                    if (image.ColorSpace != ImageMagick.ColorSpace.sRGB)
+                    {
+                        image = image_temp;
+                        ImageMagick.Pixel pixel = image.GetPixels().GetPixel(0, 0);
+                        ushort[] p;
+                        if (pixel[2] > 256)
+                        {
+                            if (pixel.Channels == 4) p = new ushort[] { pixel[0], pixel[1], (ushort)(pixel[2] - 256), pixel[3] };
+                            else p = new ushort[] { pixel[0], pixel[1], (ushort)(pixel[2] - 256) };
+                        }
+                        else
+                        {
+                            if (pixel.Channels == 4) p = new ushort[] { pixel[0], pixel[1], (ushort)(pixel[2] + 256), pixel[3] };
+                            else p = new ushort[] { pixel[0], pixel[1], (ushort)(pixel[2] + 256) };
+                        }
+                        image.GetPixels().SetPixel(0, 0, p);
+                        pixel = image.GetPixels().GetPixel(0, 0);
+                        image.ColorType = ImageMagick.ColorType.Palette;
+                        pixel = image.GetPixels().GetPixel(0, 0);
+                        if (image.ColorSpace != ImageMagick.ColorSpace.sRGB)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_Image32bit +
+                                Environment.NewLine + fileNameFull, Properties.FormStrings.Message_Warning_Caption,
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return null;
+                        }
+                    }
+
+                    for (int i = 0; i < image.ColormapSize; i++)
+                    {
+
+                        colorMapList.Add(image.GetColormap(i));
+                    }
+                    if (!Directory.Exists(targetFolder))
+                    {
+                        Directory.CreateDirectory(targetFolder);
+                    }
+                    string newFileName = Path.Combine(targetFolder, fileName + ".tga");
+                    image.Write(newFileName, ImageMagick.MagickFormat.Tga);
+                    return newFileName;
+
+                }
+                catch (Exception exp)
+                {
+                    MessageBox.Show(Properties.FormStrings.Message_Wrong_Original_Image + Environment.NewLine + exp);
+                }
+            }
+            return null;
+        }
+
+        private void ImageFix(string fileNameFull)
+        {
+            if (File.Exists(fileNameFull))
+            {
+                try
+                {
+                    byte[] _streamBuffer;
+                    string fileName = Path.GetFileNameWithoutExtension(fileNameFull);
+                    string path = Path.GetDirectoryName(fileNameFull);
+                    //fileName = Path.Combine(path, fileName);
+
+                    //ImageMagick.MagickImage image = new ImageMagick.MagickImage(fileNameFull, ImageMagick.MagickFormat.Tga);
+
+                    // читаем картинку в массив
+                    using (var fileStream = File.OpenRead(fileNameFull))
+                    {
+                        _streamBuffer = new byte[fileStream.Length];
+                        fileStream.Read(_streamBuffer, 0, (int)fileStream.Length);
+
+                        Header header = new Header(_streamBuffer);
+                        ImageDescription imageDescription = new ImageDescription(_streamBuffer, header.GetImageIDLength());
+
+                        int ColorMapCount = header.GetColorMapCount(); // количество цветов в карте
+                        byte ColorMapEntrySize = header.GetColorMapEntrySize(); // битность цвета
+                        byte ImageIDLength = header.GetImageIDLength(); // длина описания
+                        ColorMap ColorMap = new ColorMap(_streamBuffer, ColorMapCount, ColorMapEntrySize, 18 + ImageIDLength);
+
+                        int ColorMapLength = ColorMap._colorMap.Length;
+                        Image_data imageData = new Image_data(_streamBuffer, 18 + ImageIDLength + ColorMapLength);
+
+                        Footer footer = new Footer();
+
+                        #region fix
+                        header.SetImageIDLength(46);
+                        imageDescription.SetSize(46, ImageWidth);
+                        //imageDescription.SetSize(46, header.Width);
+
+                        int colorMapCount = ColorMap.ColorMapCount;
+                        //if (checkBox_Color256.Checked && !checkBox_32bit.Checked)
+                        //{
+                        //    colorMapCount = 256;
+                        //    header.SetColorMapCount(colorMapCount);
+                        //    if (!checkBox_32bit.Checked) ColorMap.SetColorCount(colorMapCount);
+                        //}
+                        bool argb_brga = true;
+                        colorMapCount = 256;
+                        header.SetColorMapCount(colorMapCount);
+                        byte colorMapEntrySize = 32;
+
+                        ColorMap.RestoreColor(colorMapList);
+                        ColorMap.ColorsFix(argb_brga, colorMapCount, colorMapEntrySize);
+                        header.SetColorMapEntrySize(32);
+                        #endregion
+
+                        int newLength = 18 + header.GetImageIDLength() + ColorMap._colorMap.Length + imageData._imageData.Length;
+                        //if (checkBox_Footer.Checked) newLength = newLength + footer._footer.Length;
+                        byte[] newTGA = new byte[newLength];
+
+                        header._header.CopyTo(newTGA, 0);
+                        int offset = header._header.Length;
+
+                        imageDescription._imageDescription.CopyTo(newTGA, offset);
+                        offset = offset + imageDescription._imageDescription.Length;
+
+                        ColorMap._colorMap.CopyTo(newTGA, offset);
+                        offset = offset + ColorMap._colorMap.Length;
+
+                        imageData._imageData.CopyTo(newTGA, offset);
+                        offset = offset + imageData._imageData.Length;
+
+                        //if (checkBox_Footer.Checked) footer._footer.CopyTo(newTGA, offset);
+
+                        if (newTGA != null && newTGA.Length > 0)
+                        {
+                            string newFileName = Path.Combine(path, fileName + ".png");
+
+                            using (var fileStreamTGA = File.OpenWrite(newFileName))
+                            {
+                                fileStreamTGA.Write(newTGA, 0, newTGA.Length);
+                                fileStreamTGA.Flush();
+                            }
+                        }
+                    }
+
+                    try
+                    {
+                        File.Delete(fileNameFull);
+                    }
+                    catch (Exception)
+                    {
+                    }
+
+                }
+                catch (Exception exp)
+                {
+                    MessageBox.Show(Properties.FormStrings.Message_ImageFix_Error + Environment.NewLine + exp, 
+                        Properties.FormStrings.Message_Warning_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
+
+        private void button_RefreshPreview_Click(object sender, EventArgs e)
+        {
+            if (FileName == null || FullFileDir == null) return;
+            if (Watch_Face == null || Watch_Face.WatchFace_Info == null || Watch_Face.WatchFace_Info.Preview == null) return;
+            if (Watch_Face.WatchFace_Info.Preview != null && Watch_Face.WatchFace_Info.Preview.Length > 0)
+            {
+                string preview = FullFileDir + @"\assets\" + Watch_Face.WatchFace_Info.Preview + ".png";
+                Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
+                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
+                int PreviewHeight = 306;
+                if (radioButton_GTR3_Pro.Checked)
+                {
+                    bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
+                    mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png.png");
+                    PreviewHeight = 324;
+                }
+                if (radioButton_GTS3.Checked)
+                {
+                    bitmap = new Bitmap(Convert.ToInt32(348), Convert.ToInt32(442), PixelFormat.Format32bppArgb);
+                    mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
+                    PreviewHeight = 306;
+                }
+                Graphics gPanel = Graphics.FromImage(bitmap);
+                int link = radioButton_ScreenNormal.Checked ? 0 : 1;
+                Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, true, false, false, false, link);
+                if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
+
+;
+                Image loadedImage = null;
+                using (FileStream stream = new FileStream(preview, FileMode.Open, FileAccess.Read))
+                {
+                    loadedImage = Image.FromStream(stream);
+                }
+                float scale = (float)PreviewHeight / bitmap.Height;
+                if (loadedImage.Height != PreviewHeight)
+                {
+                    DialogResult ResultDialog = MessageBox.Show(Properties.FormStrings.Message_WarningPreview_Text1 +
+                        Environment.NewLine + Properties.FormStrings.Message_WarningPreview_Text2,
+                        Properties.FormStrings.Message_Warning_Caption, MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                    if (ResultDialog == DialogResult.Yes) scale = (float)loadedImage.Height / bitmap.Height;
+                }
+                bitmap = ResizeImage(bitmap, scale);
+                bitmap.Save(preview, ImageFormat.Png);
+
+                bitmap.Dispose();
+                loadedImage.Dispose();
+            }
+        }
+
+        private void button_CreatePreview_Click(object sender, EventArgs e)
+        {
+            if (Watch_Face != null && Watch_Face.WatchFace_Info != null && Watch_Face.WatchFace_Info.Preview != null) return;
+            if (FileName != null && FullFileDir != null) // проект уже сохранен
+            {
+                // формируем картинку для предпросмотра
+                Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
+                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
+                int PreviewHeight = 306;
+                if (radioButton_GTR3_Pro.Checked)
+                {
+                    bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
+                    mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png.png");
+                    PreviewHeight = 324;
+                }
+                if (radioButton_GTS3.Checked)
+                {
+                    bitmap = new Bitmap(Convert.ToInt32(348), Convert.ToInt32(442), PixelFormat.Format32bppArgb);
+                    mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
+                    PreviewHeight = 306;
+                }
+                Graphics gPanel = Graphics.FromImage(bitmap);
+                int link = radioButton_ScreenNormal.Checked ? 0 : 1;
+                Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, true, false, false, false, link);
+                if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
+
+                float scale = (float)PreviewHeight / bitmap.Height;
+                bitmap = ResizeImage(bitmap, scale);
+                //bitmap.Save(ListImagesFullName[i], ImageFormat.Png);
+
+                // определяем имя файла для сохранения и сохраняем файл
+                int i = 1;
+                string NamePreview = "Preview.png";
+                string PathPreview = FullFileDir + @"\assets\" + NamePreview;
+                while (File.Exists(PathPreview) && i < 10)
+                {
+                    NamePreview = "Preview" + i.ToString() + ".png";
+                    PathPreview = FullFileDir + @"\assets\" + NamePreview;
+                    i ++;
+                    if (i > 9)
+                    {
+                        MessageBox.Show(Properties.FormStrings.Message_Wrong_Preview_Exists,
+                            Properties.FormStrings.Message_Warning_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+                bitmap.Save(PathPreview, ImageFormat.Png);
+                string fileNameOnly = Path.GetFileNameWithoutExtension(PathPreview);
+
+                PreviewView = false;
+
+                LoadImage(Path.GetDirectoryName(PathPreview));
+                //ListImages.Add(fileNameOnly);
+                //ListImagesFullName.Add(PathPreview);
+
+                //// добавляем строки в таблицу
+                ////Image PreviewImage = Image.FromHbitmap(bitmap.GetHbitmap());
+                //Image PreviewImage = null;
+                //using (FileStream stream = new FileStream(PathPreview, FileMode.Open, FileAccess.Read))
+                //{
+                //    PreviewImage = Image.FromStream(stream);
+                //}
+                //i = dataGridView_ImagesList.Rows.Count + 1;
+                //var RowNew = new DataGridViewRow();
+                //DataGridViewImageCellLayout ZoomType = DataGridViewImageCellLayout.Zoom;
+                //if ((bitmap.Height < 45) && (bitmap.Width < 110))
+                //    ZoomType = DataGridViewImageCellLayout.Normal;
+                //RowNew.Cells.Add(new DataGridViewTextBoxCell() { Value = i.ToString() });
+                //RowNew.Cells.Add(new DataGridViewTextBoxCell() { Value = fileNameOnly });
+                //RowNew.Cells.Add(new DataGridViewImageCell()
+                //{
+                //    Value = PreviewImage,
+                //    ImageLayout = ZoomType
+                //});
+                //RowNew.Height = 45;
+                //dataGridView_ImagesList.Rows.Add(RowNew);
+
+                if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
+                Watch_Face.WatchFace_Info.Preview = fileNameOnly;
+                //userCtrl_Background_Options.ComboBoxAddItems(ListImages, ListImagesFullName);
+                userCtrl_Background_Options.SetPreview(fileNameOnly);
+                PreviewView = true;
+                JSON_Modified = true;
+                FormText();
+
+                bitmap.Dispose();
+
+            }
+        }
+
+        private void button_unpack_zip_Click(object sender, EventArgs e)
+        {
+
+            // сохранение если файл не сохранен
+            SaveRequest();
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            //openFileDialog.Filter = "Binary File (*.bin)|*.bin";
+            openFileDialog.Filter = Properties.FormStrings.FilterZip;
+            openFileDialog.RestoreDirectory = true;
+            openFileDialog.Multiselect = false;
+            openFileDialog.Title = Properties.FormStrings.Dialog_Title_Unpack;
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string fullfilename = openFileDialog.FileName;
+                Unpack_Zip(fullfilename);
+            }
+        }
+
+        private void Unpack_Zip(string fullFileName)
+        {
+            if (!File.Exists(fullFileName)) return;
+            string tempDir = Application.StartupPath + @"\Temp";
+            //if (Directory.Exists(tempDir)) Directory.Delete(tempDir, true);
+            if (Directory.Exists(tempDir)) DeleteDirectory(tempDir);
+            Directory.CreateDirectory(tempDir);
+            string watchFacePath = Application.StartupPath + @"\Watch_face\";
+            if (!Directory.Exists(watchFacePath)) Directory.CreateDirectory(watchFacePath);
+
+            string projectName = Path.GetFileNameWithoutExtension(fullFileName);
+            projectName = projectName.Replace(" ", "_");
+            string projectPath = watchFacePath + projectName;
+            // если файл существует
+            if (Directory.Exists(projectPath))
+            {
+                string folderName = Path.GetFileNameWithoutExtension(projectPath);
+                string path = Path.GetDirectoryName(projectPath);
+                string newFullPath = projectPath;
+                if (ProgramSettings.Settings_Unpack_Dialog)
+                {
+                    Logger.WriteLine("File.Exists");
+                    FormFileExists f = new FormFileExists();
+                    f.ShowDialog();
+                    int dialogResult = f.Data;
+
+                    switch (dialogResult)
+                    {
+                        case 0:
+                            return;
+                        //break;
+                        case 1:
+                            Logger.WriteLine("File.Copy");
+                            newFullPath = Path.Combine(path, folderName);
+                            //if (Directory.Exists(newFullPath)) Directory.Delete(newFullPath, true); 
+                            if (Directory.Exists(newFullPath)) DeleteDirectory(newFullPath);
+                            break;
+                        case 2:
+                            Logger.WriteLine("newFileName.Copy");
+                            int count = 1;
+
+                            while (Directory.Exists(newFullPath))
+                            {
+                                string tempFolderName = string.Format("{0}({1})", folderName, count++);
+                                newFullPath = Path.Combine(path, tempFolderName);
+                            }
+                            break;
+                    }
+                }
+                else if (ProgramSettings.Settings_Unpack_Save)
+                {
+                    Logger.WriteLine("newFileName.Copy");
+                    int count = 1;
+
+                    while (Directory.Exists(newFullPath))
+                    {
+                        string tempFolderName = string.Format("{0}({1})", folderName, count++);
+                        newFullPath = Path.Combine(path, tempFolderName);
+                    }
+                }
+                else if (ProgramSettings.Settings_Unpack_Replace)
+                {
+                    Logger.WriteLine("File.Copy");
+                    newFullPath = Path.Combine(path, folderName);
+                    //if (Directory.Exists(newFullPath)) Directory.Delete(newFullPath, true);
+                    if (Directory.Exists(newFullPath)) DeleteDirectory(newFullPath);
+                }
+                projectPath = newFullPath;
+            }
+            //ZipFile.OpenRead(fullFileName);
+            //ZipFile.ExtractToDirectory(fullFileName, tempDir);
+            using (Ionic.Zip.ZipFile zip = Ionic.Zip.ZipFile.Read(fullFileName))
+            {
+                zip.ExtractAll(tempDir);
+            }
+
+            if (Directory.Exists(tempDir + @"\assets"))
+            {
+                //string[] allfiles = Directory.GetFiles(tempDir + @"\assets", "*.png", SearchOption.AllDirectories);
+                //foreach (string fileNames in allfiles)
+                //{
+                //    Console.WriteLine(fileNames);
+                //}
+                progressBar1.Value = 0;
+                progressBar1.Visible = true;
+
+                List<string> allDirs = GetRecursDirectories(tempDir + @"\assets", 5, tempDir + @"\assets");
+                Directory.CreateDirectory(projectPath);
+                Directory.CreateDirectory(projectPath + @"\assets");
+                foreach (string dirNames in allDirs)
+                {
+                    //Console.WriteLine(dirNames);
+                    Directory.CreateDirectory(projectPath + @"\assets" + dirNames);
+                }
+
+                List<string> allFiles = GetRecursFiles(tempDir + @"\assets", "*.png", 5, tempDir + @"\assets");
+
+                progressBar1.Maximum = allFiles.Count;
+                int progress = 0;
+                foreach (string fileNames in allFiles)
+                {
+                    //Console.WriteLine(fileNames);
+                    TgaToPng(tempDir + @"\assets" + fileNames, projectPath + @"\assets" + fileNames);
+                    progress++;
+                    progressBar1.Value = progress;
+                }
+
+                JSToJson(tempDir + @"\watchface\index.js"); // создаем новый json файл циферблата
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null)
+                {
+                    if (File.Exists(tempDir + @"\app.json"))
+                    {
+                        string appText = File.ReadAllText(tempDir + @"\app.json");
+                        try
+                        {
+                            App_WatchFace appJson = JsonConvert.DeserializeObject<App_WatchFace>(appText, new JsonSerializerSettings
+                            {
+                                DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                            if(appJson != null && appJson.app != null)
+                            {
+                                if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
+                                if (appJson.app.appId > 1000) Watch_Face.WatchFace_Info.WatchFaceId = appJson.app.appId;
+                                else
+                                {
+                                    Random rnd = new Random();
+                                    int ID = rnd.Next(1000, 10000000);
+                                    Watch_Face.WatchFace_Info.WatchFaceId = ID;
+                                }
+                                if (appJson.app.icon != null && appJson.app.icon.Length > 3)
+                                    Watch_Face.WatchFace_Info.Preview = appJson.app.icon;
+
+                                if (appJson.app.appName != null && appJson.app.appName.Length > 0)
+                                    projectName = appJson.app.appName;
+
+                                int width = 0;
+
+                                if (Watch_Face.ScreenNormal == null && Watch_Face.ScreenNormal.Background != null)
+                                {
+                                    if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
+                                        width = Watch_Face.ScreenNormal.Background.BackgroundColor.w;
+                                    if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
+                                        width = Watch_Face.ScreenNormal.Background.BackgroundImage.w;
+                                }
+
+                                if (Watch_Face.ScreenAOD == null && Watch_Face.ScreenAOD.Background != null)
+                                {
+                                    if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
+                                        width = Watch_Face.ScreenAOD.Background.BackgroundColor.w;
+                                    if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
+                                        width = Watch_Face.ScreenAOD.Background.BackgroundImage.w;
+                                }
+
+                                switch (width)
+                                {
+                                    case 454:
+                                        Watch_Face.WatchFace_Info.DeviceName = "GTR3";
+                                        break;
+                                    case 480:
+                                        Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
+                                        break;
+                                    case 390:
+                                        Watch_Face.WatchFace_Info.DeviceName = "GTS3";
+                                        break;
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            
+                        }
+                    }
+                    string Watch_Face_String = JsonConvert.SerializeObject(Watch_Face, Formatting.Indented, new JsonSerializerSettings
+                    {
+                        //DefaultValueHandling = DefaultValueHandling.Ignore,
+                        NullValueHandling = NullValueHandling.Ignore
+                    });
+                    string fullProjectName = Path.Combine(projectPath, projectName + ".json");
+                    File.WriteAllText(fullProjectName, Watch_Face_String, Encoding.UTF8);
+
+                    FileName = Path.GetFileName(fullProjectName);
+                    FullFileDir = Path.GetDirectoryName(fullProjectName);
+                    LoadJson(fullProjectName);
+                }
+                else MessageBox.Show(Properties.FormStrings.Message_ErrorReadJS, Properties.FormStrings.Message_Error_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                progressBar1.Visible = false;
+
+                //FileName = Path.GetFileName(openFileDialog.FileName);
+                FullFileDir = projectPath;
+            }
+        }
+
+        private void TgaToPng(string file, string targetFile)
+        {
+            try
+            {
+                //string fileNameFull = openFileDialog.FileName;
+                string fileNameFull = file;
+                string fileName = Path.GetFileNameWithoutExtension(fileNameFull);
+                string path = Path.GetDirectoryName(fileNameFull);
+                //fileName = Path.Combine(path, fileName);
+                //using (FileStream stream = new FileStream(fileNameFull, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
+                //{
+                //    Image tempImg = Image.FromStream(stream);
+                //}
+                int RealWidth = -1;
+                using (var fileStream = File.OpenRead(fileNameFull))
+                {
+                    byte[] _streamBuffer;
+                    _streamBuffer = new byte[fileStream.Length];
+                    fileStream.Read(_streamBuffer, 0, (int)fileStream.Length);
+
+                    Header header = new Header(_streamBuffer);
+                    ImageDescription imageDescription = new ImageDescription(_streamBuffer, header.GetImageIDLength());
+                    RealWidth = imageDescription.GetRealWidth();
+                }
+
+                ImageMagick.MagickImage image = new ImageMagick.MagickImage(fileNameFull, ImageMagick.MagickFormat.Tga);
+                image.Format = ImageMagick.MagickFormat.Png32;
+                if (RealWidth > 0 && RealWidth != image.Width)
+                {
+                    int height = image.Height;
+                    image = (ImageMagick.MagickImage)image.Clone(RealWidth, height);
+                }
+
+                ImageMagick.IMagickImage Blue = image.Separate(ImageMagick.Channels.Blue).First();
+                ImageMagick.IMagickImage Red = image.Separate(ImageMagick.Channels.Red).First();
+                image.Composite(Red, ImageMagick.CompositeOperator.Replace, ImageMagick.Channels.Blue);
+                image.Composite(Blue, ImageMagick.CompositeOperator.Replace, ImageMagick.Channels.Red);
+
+                //image.ColorType = ImageMagick.ColorType.Palette;
+                //string newFileName = Path.Combine(path, fileName + ".png");
+                image.Write(targetFile);
+                //Bitmap bitmap = image.ToBitmap();
+                //panel1.BackgroundImage = bitmap;
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show("Не верный формат исходного файла" + Environment.NewLine +
+                    exp);
+            }
+        }
+
+        /// <summary>Получаем список файлов в папке</summary>
+        /// <param name="start_path">Начальная папка для просмотра</param>
+        /// <param name="mask">Маска для поиска файлов</param>
+        /// <param name="depth">Глубина просмотра подкаталогов</param>
+        /// <param name="relative_path">Начальная папка? относительно которой будут возвращатся пути файлов</param>
+        private List<string> GetRecursFiles(string start_path, string mask, int depth, string relative_path)
+        {
+            List<string> listFiles = new List<string>();
+            if (depth < 0) return listFiles;
+            depth--;
+            try
+            {
+                string[] folders = Directory.GetDirectories(start_path);
+                foreach (string folder in folders)
+                {
+                    //ls.Add("Папка: " + folder);
+                    listFiles.AddRange(GetRecursFiles(folder, mask, depth, relative_path));
+                }
+                string[] files = Directory.GetFiles(start_path, mask);
+                foreach (string fileName in files)
+                {
+                    if (relative_path.Length > 3) listFiles.Add(fileName.Replace(relative_path, ""));
+                    else listFiles.Add(fileName);
+                }
+            }
+            catch (System.Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            return listFiles;
+        }
+
+        /// <summary>Получаем список файлов в папке</summary>
+        /// <param name="start_path">Начальная папка для просмотра</param>
+        /// <param name="depth">Глубина просмотра подкаталогов</param>
+        /// <param name="relative_path">Начальная папка? относительно которой будут возвращатся пути файлов</param>
+        private List<string> GetRecursDirectories(string start_path, int depth, string relative_path)
+        {
+            List<string> listFiles = new List<string>();
+            if (depth < 0) return listFiles;
+            depth--;
+            try
+            {
+                string[] folders = Directory.GetDirectories(start_path);
+                foreach (string folder in folders)
+                {
+                    if (relative_path.Length > 3) listFiles.Add(folder.Replace(relative_path, ""));
+                    else listFiles.Add(folder);
+                    listFiles.AddRange(GetRecursDirectories(folder, depth, relative_path));
+                }
+                //string[] files = Directory.GetFiles(start_path);
+                //foreach (string fileName in files)
+                //{
+                //    if (relative_path) listFiles.Add(fileName.Replace(start_path, ""));
+                //    else listFiles.Add(fileName);
+                //}
+            }
+            catch (System.Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
+            return listFiles;
+        }
+
+        /// <summary>Рекурсивно удаляем все файлы и подпапки к каталоге</summary>
+        public static void DeleteDirectory(string target_dir)
+        {
+            foreach (string file in Directory.GetFiles(target_dir))
+            {
+                File.Delete(file);
+            }
+
+            foreach (string subDir in Directory.GetDirectories(target_dir))
+            {
+                DeleteDirectory(subDir);
+            }
+
+            Thread.Sleep(1); // This makes the difference between whether it works or not. Sleep(0) is not enough.
+            Directory.Delete(target_dir);
         }
     }
 }
