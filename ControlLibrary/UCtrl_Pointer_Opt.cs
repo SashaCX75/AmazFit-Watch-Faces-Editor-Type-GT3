@@ -11,69 +11,99 @@ using System.Windows.Forms;
 
 namespace ControlLibrary
 {
-    public partial class UCtrl_AmPm_Opt : UserControl
+    public partial class UCtrl_Pointer_Opt : UserControl
     {
         private bool setValue; // режим задания параметров
-        public Object _AmPm;
-        private List<string> ListImagesFullName = new List<string>(); // перечень путей к файлам с картинками
+        private bool showBackground;
 
-        public UCtrl_AmPm_Opt()
+        private List<string> ListImagesFullName = new List<string>(); // перечень путей к файлам с картинками
+        public Object _ElementWithPointer;
+
+        public UCtrl_Pointer_Opt()
         {
             InitializeComponent();
         }
 
 
-        public void Set_AM_Image(string value)
+        /// <summary>Задает название выбранной картинки</summary>
+        public void SetPointerImage(string value)
         {
-            comboBox_AM_image.Text = value;
-            if (comboBox_AM_image.SelectedIndex < 0) comboBox_AM_image.Text = "";
+            comboBox_pointer_image.Text = value;
+            if (comboBox_pointer_image.SelectedIndex < 0) comboBox_pointer_image.Text = "";
         }
-
-        /// <summary>Возвращает название выбранной картинки</summary>
-        public string Get_AM_Image()
+        /// <summary>Возвращает номер выбранной картинки, в случае ошибки возвращает -1</summary>
+        public string GetPointerImage()
         {
-            if (comboBox_AM_image.SelectedIndex < 0) return "";
-            return comboBox_AM_image.Text;
+            if (comboBox_pointer_image.SelectedIndex < 0) return "";
+            return comboBox_pointer_image.Text;
         }
-
         /// <summary>Возвращает SelectedIndex выпадающего списка</summary>
-        public int GetSelectedIndex_AM_Image()
+        public int GetSelectedIndexPointerImage()
         {
-            return comboBox_AM_image.SelectedIndex;
+            return comboBox_pointer_image.SelectedIndex;
         }
 
-        public void Set_PM_Image(string value)
+        public void SetPointerImageCentr(string value)
         {
-            comboBox_PM_image.Text = value;
-            if (comboBox_PM_image.SelectedIndex < 0) comboBox_PM_image.Text = "";
+            comboBox_pointer_imageCentr.Text = value;
+            if (comboBox_pointer_imageCentr.SelectedIndex < 0) comboBox_pointer_imageCentr.Text = "";
         }
-
-        /// <summary>Возвращает название выбранной картинки</summary>
-        public string Get_PM_Image()
+        /// <summary>Возвращает номер выбранной картинки, в случае ошибки возвращает -1</summary>
+        public string GetPointerImageCentr()
         {
-            if (comboBox_PM_image.SelectedIndex < 0) return "";
-            return comboBox_PM_image.Text;
+            if (comboBox_pointer_imageCentr.SelectedIndex < 0) return "";
+            return comboBox_pointer_imageCentr.Text;
         }
-
         /// <summary>Возвращает SelectedIndex выпадающего списка</summary>
-        public int GetSelectedIndex_PM_Image()
+        public int GetSelectedIndexPointerImageCentr()
         {
-            return comboBox_PM_image.SelectedIndex;
+            return comboBox_pointer_imageCentr.SelectedIndex;
+        }
+
+        public void SetPointerImageBackground(string value)
+        {
+            comboBox_pointer_imageBackground.Text = value;
+            if (comboBox_pointer_imageBackground.SelectedIndex < 0) comboBox_pointer_imageBackground.Text = "";
+        }
+
+        /// <summary>Возвращает номер выбранной картинки, в случае ошибки возвращает -1</summary>
+        public string GetPointerImageBackground()
+        {
+            if (comboBox_pointer_imageBackground.SelectedIndex < 0) return "";
+            return comboBox_pointer_imageBackground.Text;
+        }
+        /// <summary>Возвращает SelectedIndex выпадающего списка</summary>
+        public int GetSelectedIndexPointerImageBackground()
+        {
+            return comboBox_pointer_imageBackground.SelectedIndex;
+        }
+
+        /// <summary>Отображение поля изображения при ошибке</summary>
+        [Description("Отображение поля настройки фонового изображения")]
+        public virtual bool ShowBackground
+        {
+            get
+            {
+                return showBackground;
+            }
+            set
+            {
+                showBackground = value;
+                comboBox_pointer_imageBackground.Visible = showBackground;
+                numericUpDown_pointer_background_X.Visible = showBackground;
+                numericUpDown_pointer_background_Y.Visible = showBackground;
+
+                label14.Visible = showBackground;
+                label15.Visible = showBackground;
+                label16.Visible = showBackground;
+                label17.Visible = showBackground;
+            }
         }
 
         [Browsable(true)]
         [Description("Происходит при изменении выбора элемента")]
         public event ValueChangedHandler ValueChanged;
         public delegate void ValueChangedHandler(object sender, EventArgs eventArgs);
-
-        private void checkBox_Click(object sender, EventArgs e)
-        {
-            if (ValueChanged != null && !setValue)
-            {
-                EventArgs eventArgs = new EventArgs();
-                ValueChanged(this, eventArgs);
-            }
-        }
 
         #region Standard events
         private void comboBox_KeyDown(object sender, KeyEventArgs e)
@@ -155,28 +185,34 @@ namespace ControlLibrary
         /// <summary>Добавляет ссылки на картинки в выпадающие списки</summary>
         public void ComboBoxAddItems(List<string> ListImages, List<string> _ListImagesFullName)
         {
-            comboBox_AM_image.Items.Clear();
-            comboBox_PM_image.Items.Clear();
+            comboBox_pointer_image.Items.Clear();
+            comboBox_pointer_imageCentr.Items.Clear();
+            comboBox_pointer_imageBackground.Items.Clear();
 
-            comboBox_AM_image.Items.AddRange(ListImages.ToArray());
-            comboBox_PM_image.Items.AddRange(ListImages.ToArray());
+            comboBox_pointer_image.Items.AddRange(ListImages.ToArray());
+            comboBox_pointer_imageCentr.Items.AddRange(ListImages.ToArray());
+            comboBox_pointer_imageBackground.Items.AddRange(ListImages.ToArray());
+
             ListImagesFullName = _ListImagesFullName;
 
             int count = ListImages.Count;
             if (count == 0)
             {
-                comboBox_AM_image.DropDownHeight = 1;
-                comboBox_PM_image.DropDownHeight = 1;
+                comboBox_pointer_image.DropDownHeight = 1;
+                comboBox_pointer_imageCentr.DropDownHeight = 1;
+                comboBox_pointer_imageBackground.DropDownHeight = 1;
             }
             else if (count < 5)
             {
-                comboBox_AM_image.DropDownHeight = 35 * count + 1;
-                comboBox_PM_image.DropDownHeight = 35 * count + 1;
+                comboBox_pointer_image.DropDownHeight = 35 * count + 1;
+                comboBox_pointer_imageCentr.DropDownHeight = 35 * count + 1;
+                comboBox_pointer_imageBackground.DropDownHeight = 35 * count + 1;
             }
             else
             {
-                comboBox_AM_image.DropDownHeight = 106;
-                comboBox_PM_image.DropDownHeight = 106;
+                comboBox_pointer_image.DropDownHeight = 106;
+                comboBox_pointer_imageCentr.DropDownHeight = 106;
+                comboBox_pointer_imageBackground.DropDownHeight = 106;
             }
         }
 
@@ -185,14 +221,24 @@ namespace ControlLibrary
         {
             setValue = true;
 
-            comboBox_AM_image.Text = null;
-            comboBox_PM_image.Text = null;
+            comboBox_pointer_image.Text = null;
+            comboBox_pointer_imageCentr.Text = null;
+            comboBox_pointer_imageBackground.Text = null;
 
-            numericUpDown_AM_X.Value = 0;
-            numericUpDown_AM_Y.Value = 0;
+            numericUpDown_pointer_X.Value = 0;
+            numericUpDown_pointer_Y.Value = 0;
 
-            numericUpDown_PM_X.Value = 0;
-            numericUpDown_PM_Y.Value = 0;
+            numericUpDown_pointer_centr_X.Value = 0;
+            numericUpDown_pointer_centr_Y.Value = 0;
+
+            numericUpDown_pointer_background_X.Value = 0;
+            numericUpDown_pointer_background_Y.Value = 0;
+
+            numericUpDown_pointer_offset_X.Value = 0;
+            numericUpDown_pointer_offset_Y.Value = 0;
+
+            numericUpDown_pointer_startAngle.Value = 0;
+            numericUpDown_pointer_endAngle.Value = 360;
 
             setValue = false;
         }
@@ -359,19 +405,5 @@ namespace ControlLibrary
 
         #endregion
 
-        public void SetMouseСoordinates(int x, int y)
-        {
-            MouseСoordinates.X = x;
-            MouseСoordinates.Y = y;
-        }
     }
-}
-
-
-public static class MouseСoordinates
-{
-    //public static int X { get; set; }
-    //public static int Y { get; set; }
-    public static int X = -1;
-    public static int Y = -1;
 }

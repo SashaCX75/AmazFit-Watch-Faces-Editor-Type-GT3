@@ -56,6 +56,12 @@
     <Compile Include="UCtrl_AmPm_Opt.Designer.cs">
       <DependentUpon>UCtrl_AmPm_Opt.cs</DependentUpon>
     </Compile>
+    <Compile Include="UCtrl_AnalogTime_Elm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCtrl_AnalogTime_Elm.Designer.cs">
+      <DependentUpon>UCtrl_AnalogTime_Elm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCtrl_Background_Elm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -68,11 +74,29 @@
     <Compile Include="UCtrl_Background_Opt.Designer.cs">
       <DependentUpon>UCtrl_Background_Opt.cs</DependentUpon>
     </Compile>
+    <Compile Include="UCtrl_DateDay_Elm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCtrl_DateDay_Elm.Designer.cs">
+      <DependentUpon>UCtrl_DateDay_Elm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCtrl_DateMonth_Elm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCtrl_DateMonth_Elm.Designer.cs">
+      <DependentUpon>UCtrl_DateMonth_Elm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCtrl_DigitalTime_Elm.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UCtrl_DigitalTime_Elm.Designer.cs">
       <DependentUpon>UCtrl_DigitalTime_Elm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCtrl_Pointer_Opt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCtrl_Pointer_Opt.Designer.cs">
+      <DependentUpon>UCtrl_Pointer_Opt.cs</DependentUpon>
     </Compile>
     <Compile Include="UCtrl_Set.cs">
       <SubType>UserControl</SubType>
@@ -97,14 +121,26 @@
     <EmbeddedResource Include="UCtrl_AmPm_Opt.resx">
       <DependentUpon>UCtrl_AmPm_Opt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_AnalogTime_Elm.resx">
+      <DependentUpon>UCtrl_AnalogTime_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Background_Elm.resx">
       <DependentUpon>UCtrl_Background_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Background_Opt.resx">
       <DependentUpon>UCtrl_Background_Opt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_DateDay_Elm.resx">
+      <DependentUpon>UCtrl_DateDay_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_DateMonth_Elm.resx">
+      <DependentUpon>UCtrl_DateMonth_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_DigitalTime_Elm.resx">
       <DependentUpon>UCtrl_DigitalTime_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Pointer_Opt.resx">
+      <DependentUpon>UCtrl_Pointer_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Set.resx">
       <DependentUpon>UCtrl_Set.cs</DependentUpon>
@@ -146,6 +182,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\outline_image_black_18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\analog_time_18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pointer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Very-Basic-Calendar_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calendar_month_18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images_18.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

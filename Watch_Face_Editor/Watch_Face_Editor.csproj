@@ -179,6 +179,7 @@
     <Content Include="Mask\mask_gts_3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\gtr_3.png" />
     <None Include="Resources\clock-icon.png" />
     <None Include="Resources\Background-icon.png" />
     <None Include="Resources\Logos-Administrative-Tools_16.png" />

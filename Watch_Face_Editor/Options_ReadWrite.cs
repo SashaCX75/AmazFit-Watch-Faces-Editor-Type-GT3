@@ -41,33 +41,8 @@ namespace Watch_Face_Editor
                 if (Watch_Face_temp.ScreenNormal.Elements != null)
                 {
                     Watch_Face_return.ScreenNormal.Elements = new List<object>();
-                    List<object> NewElements = Watch_Face_return.ScreenNormal.Elements;
-                    // пребираем все элементы и преобразуем их в нужный тип
-                    foreach (object element in Watch_Face_temp.ScreenNormal.Elements)
-                    {
-                        string elementStr = element.ToString();
-                        string type = GetTypeFromSring(elementStr);
-                        switch (type)
-                        {
-                            case "DigitalTime":
-                                ElementDigitalTime DigitalTime = null;
-                                try
-                                {
-                                    DigitalTime = JsonConvert.DeserializeObject<ElementDigitalTime>(elementStr, new JsonSerializerSettings
-                                    {
-                                        //DefaultValueHandling = DefaultValueHandling.Ignore,
-                                        NullValueHandling = NullValueHandling.Ignore
-                                    });
-                                }
-                                catch (Exception ex)
-                                {
-                                    MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
-                                        Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                }
-                                if (DigitalTime != null) NewElements.Add(DigitalTime);
-                                break;
-                        }
-                    }
+                    List<object> NewElements = ObjectsToElements(Watch_Face_temp.ScreenNormal.Elements);
+                    Watch_Face_return.ScreenNormal.Elements = NewElements;
                 }
             }
 
@@ -79,39 +54,67 @@ namespace Watch_Face_Editor
                 if (Watch_Face_temp.ScreenAOD.Elements != null)
                 {
                     Watch_Face_return.ScreenAOD.Elements = new List<object>();
-                    List<object> NewElements = Watch_Face_return.ScreenAOD.Elements;
-                    // пребираем все элементы и преобразуем их в нужный тип
-                    foreach (object element in Watch_Face_temp.ScreenAOD.Elements)
-                    {
-                        string elementStr = element.ToString();
-                        string type = GetTypeFromSring(elementStr);
-                        switch (type)
-                        {
-                            case "DigitalTime":
-                                ElementDigitalTime DigitalTime = null;
-                                try
-                                {
-                                    DigitalTime = JsonConvert.DeserializeObject<ElementDigitalTime>(elementStr, new JsonSerializerSettings
-                                    {
-                                        //DefaultValueHandling = DefaultValueHandling.Ignore,
-                                        NullValueHandling = NullValueHandling.Ignore
-                                    });
-                                }
-                                catch (Exception ex)
-                                {
-                                    MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
-                                        Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                }
-                                if (DigitalTime != null) NewElements.Add(DigitalTime);
-                                break;
-                        }
-                    }
+                    List<object> NewElements = ObjectsToElements(Watch_Face_temp.ScreenAOD.Elements);
+                    Watch_Face_return.ScreenAOD.Elements = NewElements;
                 }
             }
 
             return Watch_Face_return;
         }
 
+        private List<object> ObjectsToElements(List<object> elements)
+        {
+            List<object> NewElements = new List<object>();
+            foreach (object element in elements)
+            {
+                string elementStr = element.ToString();
+                string type = GetTypeFromSring(elementStr);
+                switch (type)
+                {
+                    #region DigitalTime
+                    case "DigitalTime":
+                        ElementDigitalTime DigitalTime = null;
+                        try
+                        {
+                            DigitalTime = JsonConvert.DeserializeObject<ElementDigitalTime>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (DigitalTime != null) NewElements.Add(DigitalTime);
+                        break;
+                    #endregion
+
+
+                    #region AnalogTime
+                    case "AnalogTime":
+                        ElementAnalogTime AnalogTime = null;
+                        try
+                        {
+                            AnalogTime = JsonConvert.DeserializeObject<ElementAnalogTime>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (AnalogTime != null) NewElements.Add(AnalogTime);
+                        break;
+                        #endregion
+                }
+            }
+            return NewElements;
+        }
         /// <summary>Выделяем тип элемента из строки с параметрами</summary>
         private string GetTypeFromSring(string str)
         {
@@ -164,7 +167,7 @@ namespace Watch_Face_Editor
             PreviewView = true;
         }
 
-        /// <summary>Читаем настройки для фона</summary>
+        /// <summary>Читаем настройки для отображения числа картинками</summary>
         private void Read_ImgNumber_Options(hmUI_widget_IMG_NUMBER img_number, bool _dastance, bool _follow, string _followText,
             bool _imageError, bool _optionalSymbol, bool _padingZero)
         {
@@ -180,7 +183,7 @@ namespace Watch_Face_Editor
             uCtrl_Text_Opt.PaddingZero = _padingZero;
             uCtrl_Text_Opt.Visible = true;
 
-            userCtrl_Background_Options.SettingsClear();
+            //userCtrl_Background_Options.SettingsClear();
 
             if (img_number == null)
             {
@@ -209,6 +212,76 @@ namespace Watch_Face_Editor
             //uCtrl_Text_Opt.SetUnitMile
 
             uCtrl_Text_Opt._ElementWithText = img_number;
+
+            PreviewView = true;
+        }
+
+        /// <summary>Читаем настройки для отображения числа картинками</summary>
+        private void Read_ImgPointer_Options(hmUI_widget_IMG_POINTER img_pointer, bool _showBackground)
+        {
+            PreviewView = false;
+
+            uCtrl_Pointer_Opt.SettingsClear();
+
+            uCtrl_Pointer_Opt.ShowBackground = _showBackground;
+            uCtrl_Pointer_Opt.Visible = true;
+
+            //userCtrl_Background_Options.SettingsClear();
+
+            if (img_pointer == null)
+            {
+                PreviewView = true;
+                return;
+            }
+            if (img_pointer.src != null)
+                uCtrl_Pointer_Opt.SetPointerImage(img_pointer.src);
+            uCtrl_Pointer_Opt.numericUpDown_pointer_X.Value = img_pointer.center_x;
+            uCtrl_Pointer_Opt.numericUpDown_pointer_Y.Value = img_pointer.center_y;
+            uCtrl_Pointer_Opt.numericUpDown_pointer_offset_X.Value = img_pointer.pos_x;
+            uCtrl_Pointer_Opt.numericUpDown_pointer_offset_Y.Value = img_pointer.pos_y;
+
+            if (img_pointer.cover_path != null)
+                uCtrl_Pointer_Opt.SetPointerImageCentr(img_pointer.cover_path);
+            uCtrl_Pointer_Opt.numericUpDown_pointer_centr_X.Value = img_pointer.cover_x;
+            uCtrl_Pointer_Opt.numericUpDown_pointer_centr_Y.Value = img_pointer.cover_y;
+
+            if (img_pointer.scale != null)
+                uCtrl_Pointer_Opt.SetPointerImageBackground(img_pointer.scale);
+            uCtrl_Pointer_Opt.numericUpDown_pointer_background_X.Value = img_pointer.scale_x;
+            uCtrl_Pointer_Opt.numericUpDown_pointer_background_Y.Value = img_pointer.scale_y;
+
+            uCtrl_Pointer_Opt.numericUpDown_pointer_startAngle.Value = img_pointer.start_angle;
+            uCtrl_Pointer_Opt.numericUpDown_pointer_endAngle.Value = img_pointer.end_angle;
+
+
+            uCtrl_Pointer_Opt._ElementWithPointer = img_pointer;
+
+            PreviewView = true;
+        }
+
+        /// <summary>Читаем настройки для отображения AM PM</summary>
+        private void Read_AM_PM_Options(hmUI_widget_IMG_TIME_am_pm am_pm)
+        {
+            PreviewView = false;
+
+            uCtrl_AmPm_Opt.SettingsClear();
+
+            if (am_pm == null)
+            {
+                PreviewView = true;
+                return;
+            }
+            if (am_pm.am_img != null)
+                uCtrl_AmPm_Opt.Set_AM_Image(am_pm.am_img);
+            uCtrl_AmPm_Opt.numericUpDown_AM_X.Value = am_pm.am_x;
+            uCtrl_AmPm_Opt.numericUpDown_AM_Y.Value = am_pm.am_y;
+
+            if (am_pm.pm_img != null)
+                uCtrl_AmPm_Opt.Set_PM_Image(am_pm.pm_img);
+            uCtrl_AmPm_Opt.numericUpDown_PM_X.Value = am_pm.pm_x;
+            uCtrl_AmPm_Opt.numericUpDown_PM_Y.Value = am_pm.pm_y;
+
+            uCtrl_AmPm_Opt._AmPm = am_pm;
 
             PreviewView = true;
         }
@@ -309,7 +382,6 @@ namespace Watch_Face_Editor
 
         private void uCtrl_Text_Opt_ValueChanged(object sender, EventArgs eventArgs)
         {
-
             if (!PreviewView) return;
             if (Watch_Face == null) return;
             hmUI_widget_IMG_NUMBER img_number = (hmUI_widget_IMG_NUMBER)uCtrl_Text_Opt._ElementWithText;
@@ -326,6 +398,57 @@ namespace Watch_Face_Editor
             img_number.space = (int)uCtrl_Text_Opt.numericUpDown_spacing.Value;
             img_number.unit = uCtrl_Text_Opt.GetUnit();
             img_number.zero = uCtrl_Text_Opt.checkBox_addZero.Checked;
+
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_AmPm_Opt_ValueChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            hmUI_widget_IMG_TIME_am_pm am_pm = (hmUI_widget_IMG_TIME_am_pm)uCtrl_AmPm_Opt._AmPm;
+            if (am_pm == null) return;
+
+            am_pm.am_img = uCtrl_AmPm_Opt.Get_AM_Image();
+            am_pm.am_x = (int)uCtrl_AmPm_Opt.numericUpDown_AM_X.Value;
+            am_pm.am_y = (int)uCtrl_AmPm_Opt.numericUpDown_AM_Y.Value;
+
+            am_pm.pm_img = uCtrl_AmPm_Opt.Get_PM_Image();
+            am_pm.pm_x = (int)uCtrl_AmPm_Opt.numericUpDown_PM_X.Value;
+            am_pm.pm_y = (int)uCtrl_AmPm_Opt.numericUpDown_PM_Y.Value;
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Pointer_Opt_ValueChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            hmUI_widget_IMG_POINTER img_pointer = (hmUI_widget_IMG_POINTER)uCtrl_Pointer_Opt._ElementWithPointer;
+            if (img_pointer == null) return;
+
+            img_pointer.src = uCtrl_Pointer_Opt.GetPointerImage();
+            img_pointer.center_x = (int)uCtrl_Pointer_Opt.numericUpDown_pointer_X.Value;
+            img_pointer.center_y = (int)uCtrl_Pointer_Opt.numericUpDown_pointer_Y.Value;
+
+            img_pointer.pos_x = (int)uCtrl_Pointer_Opt.numericUpDown_pointer_offset_X.Value;
+            img_pointer.pos_y = (int)uCtrl_Pointer_Opt.numericUpDown_pointer_offset_Y.Value;
+
+            img_pointer.start_angle = (int)uCtrl_Pointer_Opt.numericUpDown_pointer_startAngle.Value;
+            img_pointer.end_angle = (int)uCtrl_Pointer_Opt.numericUpDown_pointer_endAngle.Value;
+
+            img_pointer.cover_path = uCtrl_Pointer_Opt.GetPointerImageCentr();
+            img_pointer.cover_x = (int)uCtrl_Pointer_Opt.numericUpDown_pointer_centr_X.Value;
+            img_pointer.cover_y = (int)uCtrl_Pointer_Opt.numericUpDown_pointer_centr_Y.Value;
+
+            img_pointer.scale = uCtrl_Pointer_Opt.GetPointerImageBackground();
+            img_pointer.scale_x = (int)uCtrl_Pointer_Opt.numericUpDown_pointer_background_X.Value;
+            img_pointer.scale_y = (int)uCtrl_Pointer_Opt.numericUpDown_pointer_background_Y.Value;
 
 
             JSON_Modified = true;

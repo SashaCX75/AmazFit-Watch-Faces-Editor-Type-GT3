@@ -142,7 +142,7 @@
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_SaveJson.Parent" xml:space="preserve">
-    <value>tabPage_Show</value>
+    <value>tabPage_Edit</value>
   </data>
   <data name="&gt;&gt;button_SaveJson.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -169,7 +169,7 @@
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_OpenDir.Parent" xml:space="preserve">
-    <value>tabPage_Show</value>
+    <value>tabPage_Edit</value>
   </data>
   <data name="&gt;&gt;button_OpenDir.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -592,7 +592,7 @@
     <value>1</value>
   </data>
   <data name="panel5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 253</value>
+    <value>3, 212</value>
   </data>
   <data name="panel5.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 35</value>
@@ -613,7 +613,7 @@
     <value>0</value>
   </data>
   <data name="panel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 203</value>
+    <value>3, 171</value>
   </data>
   <data name="panel4.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 35</value>
@@ -633,29 +633,8 @@
   <data name="&gt;&gt;panel4.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 53</value>
-  </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 35</value>
-  </data>
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
-    <value>tableLayoutPanel_ElemetsWatchFace</value>
-  </data>
-  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 103</value>
+    <value>3, 71</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 35</value>
@@ -673,7 +652,7 @@
     <value>tableLayoutPanel_ElemetsWatchFace</value>
   </data>
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="panel_UC_DigitalTime.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -692,6 +671,9 @@
   </data>
   <data name="uCtrl_DigitalTime_Elm.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="uCtrl_DigitalTime_Elm.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;uCtrl_DigitalTime_Elm.Name" xml:space="preserve">
     <value>uCtrl_DigitalTime_Elm</value>
@@ -712,13 +694,10 @@
     <value>3, 3</value>
   </data>
   <data name="panel_UC_DigitalTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 44</value>
+    <value>242, 28</value>
   </data>
   <data name="panel_UC_DigitalTime.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
-  </data>
-  <data name="panel_UC_DigitalTime.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="&gt;&gt;panel_UC_DigitalTime.Name" xml:space="preserve">
     <value>panel_UC_DigitalTime</value>
@@ -730,10 +709,10 @@
     <value>tableLayoutPanel_ElemetsWatchFace</value>
   </data>
   <data name="&gt;&gt;panel_UC_DigitalTime.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 153</value>
+    <value>3, 121</value>
   </data>
   <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 35</value>
@@ -751,7 +730,7 @@
     <value>tableLayoutPanel_ElemetsWatchFace</value>
   </data>
   <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="panel_UC_Background.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -771,6 +750,9 @@
   <data name="uCtrl_Background_Elm.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="uCtrl_Background_Elm.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;uCtrl_Background_Elm.Name" xml:space="preserve">
     <value>uCtrl_Background_Elm</value>
   </data>
@@ -787,16 +769,13 @@
     <value>Fill</value>
   </data>
   <data name="panel_UC_Background.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 294</value>
+    <value>3, 253</value>
   </data>
   <data name="panel_UC_Background.Size" type="System.Drawing.Size, System.Drawing">
     <value>242, 44</value>
   </data>
   <data name="panel_UC_Background.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
-  </data>
-  <data name="panel_UC_Background.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="&gt;&gt;panel_UC_Background.Name" xml:space="preserve">
     <value>panel_UC_Background</value>
@@ -808,6 +787,63 @@
     <value>tableLayoutPanel_ElemetsWatchFace</value>
   </data>
   <data name="&gt;&gt;panel_UC_Background.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="panel_UC_AnalogTime.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="uCtrl_AnalogTime_Elm.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="uCtrl_AnalogTime_Elm.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="uCtrl_AnalogTime_Elm.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="uCtrl_AnalogTime_Elm.Size" type="System.Drawing.Size, System.Drawing">
+    <value>242, 28</value>
+  </data>
+  <data name="uCtrl_AnalogTime_Elm.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="uCtrl_AnalogTime_Elm.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_AnalogTime_Elm.Name" xml:space="preserve">
+    <value>uCtrl_AnalogTime_Elm</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_AnalogTime_Elm.Type" xml:space="preserve">
+    <value>ControlLibrary.UCtrl_AnalogTime_Elm, ControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_AnalogTime_Elm.Parent" xml:space="preserve">
+    <value>panel_UC_AnalogTime</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_AnalogTime_Elm.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel_UC_AnalogTime.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panel_UC_AnalogTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 37</value>
+  </data>
+  <data name="panel_UC_AnalogTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>242, 28</value>
+  </data>
+  <data name="panel_UC_AnalogTime.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;panel_UC_AnalogTime.Name" xml:space="preserve">
+    <value>panel_UC_AnalogTime</value>
+  </data>
+  <data name="&gt;&gt;panel_UC_AnalogTime.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_UC_AnalogTime.Parent" xml:space="preserve">
+    <value>tableLayoutPanel_ElemetsWatchFace</value>
+  </data>
+  <data name="&gt;&gt;panel_UC_AnalogTime.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
   <data name="tableLayoutPanel_ElemetsWatchFace.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -820,7 +856,7 @@
     <value>7</value>
   </data>
   <data name="tableLayoutPanel_ElemetsWatchFace.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 341</value>
+    <value>248, 300</value>
   </data>
   <data name="tableLayoutPanel_ElemetsWatchFace.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -838,7 +874,7 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel_ElemetsWatchFace.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="panel5" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel4" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel1" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel2" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_UC_DigitalTime" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel3" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_UC_Background" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="Absolute,50,Absolute,50,Absolute,50,Absolute,50,Absolute,50,AutoSize,0,Absolute,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="panel5" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel4" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel2" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_UC_DigitalTime" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel3" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_UC_Background" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_UC_AnalogTime" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,Absolute,50,Absolute,50,AutoSize,0,AutoSize,0,Absolute,50" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="panel_WatchfaceElements.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 3</value>
@@ -864,32 +900,56 @@
   <data name="panel_ElementsOpt.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="uCtrl_AmPm_Opt1.AutoSize" type="System.Boolean, mscorlib">
+  <data name="uCtrl_Pointer_Opt.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="uCtrl_AmPm_Opt1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="uCtrl_Pointer_Opt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="uCtrl_AmPm_Opt1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 20</value>
+  <data name="uCtrl_Pointer_Opt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 60</value>
   </data>
-  <data name="uCtrl_AmPm_Opt1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 105</value>
+  <data name="uCtrl_Pointer_Opt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>258, 248</value>
   </data>
-  <data name="uCtrl_AmPm_Opt1.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="uCtrl_Pointer_Opt.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="&gt;&gt;uCtrl_AmPm_Opt1.Name" xml:space="preserve">
-    <value>uCtrl_AmPm_Opt1</value>
+  <data name="&gt;&gt;uCtrl_Pointer_Opt.Name" xml:space="preserve">
+    <value>uCtrl_Pointer_Opt</value>
   </data>
-  <data name="&gt;&gt;uCtrl_AmPm_Opt1.Type" xml:space="preserve">
-    <value>ControlLibrary.UCtrl_AmPm_Opt, ControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;uCtrl_Pointer_Opt.Type" xml:space="preserve">
+    <value>ControlLibrary.UCtrl_Pointer_Opt, ControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;uCtrl_AmPm_Opt1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;uCtrl_Pointer_Opt.Parent" xml:space="preserve">
     <value>panel_ElementsOpt</value>
   </data>
-  <data name="&gt;&gt;uCtrl_AmPm_Opt1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;uCtrl_Pointer_Opt.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="uCtrl_AmPm_Opt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="uCtrl_AmPm_Opt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 40</value>
+  </data>
+  <data name="uCtrl_AmPm_Opt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>258, 20</value>
+  </data>
+  <data name="uCtrl_AmPm_Opt.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_AmPm_Opt.Name" xml:space="preserve">
+    <value>uCtrl_AmPm_Opt</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_AmPm_Opt.Type" xml:space="preserve">
+    <value>ControlLibrary.UCtrl_AmPm_Opt, ControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_AmPm_Opt.Parent" xml:space="preserve">
+    <value>panel_ElementsOpt</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_AmPm_Opt.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="uCtrl_Text_Opt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -898,10 +958,10 @@
     <value>Следовать за</value>
   </data>
   <data name="uCtrl_Text_Opt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 10</value>
+    <value>0, 20</value>
   </data>
   <data name="uCtrl_Text_Opt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 10</value>
+    <value>258, 20</value>
   </data>
   <data name="uCtrl_Text_Opt.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -919,7 +979,7 @@
     <value>panel_ElementsOpt</value>
   </data>
   <data name="&gt;&gt;uCtrl_Text_Opt.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="userCtrl_Background_Options.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -928,7 +988,7 @@
     <value>0, 0</value>
   </data>
   <data name="userCtrl_Background_Options.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 10</value>
+    <value>258, 20</value>
   </data>
   <data name="userCtrl_Background_Options.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -946,7 +1006,7 @@
     <value>panel_ElementsOpt</value>
   </data>
   <data name="&gt;&gt;userCtrl_Background_Options.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="panel_ElementsOpt.Location" type="System.Drawing.Point, System.Drawing">
     <value>262, 3</value>
@@ -1615,7 +1675,7 @@
     <value>1</value>
   </data>
   <data name="tabPage_Show_Set.Text" xml:space="preserve">
-    <value>Обзор</value>
+    <value>Данные для предпросмотра</value>
   </data>
   <data name="&gt;&gt;tabPage_Show_Set.Name" xml:space="preserve">
     <value>tabPage_Show_Set</value>
@@ -1645,7 +1705,7 @@
     <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;tabControl_Edit_SetShow.Parent" xml:space="preserve">
-    <value>tabPage_Show</value>
+    <value>tabPage_Edit</value>
   </data>
   <data name="&gt;&gt;tabControl_Edit_SetShow.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -1675,7 +1735,7 @@
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_Add_Images.Parent" xml:space="preserve">
-    <value>tabPage_Show</value>
+    <value>tabPage_Edit</value>
   </data>
   <data name="&gt;&gt;button_Add_Images.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -1702,7 +1762,7 @@
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_New_Project.Parent" xml:space="preserve">
-    <value>tabPage_Show</value>
+    <value>tabPage_Edit</value>
   </data>
   <data name="&gt;&gt;button_New_Project.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -1756,7 +1816,7 @@
     <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;dataGridView_ImagesList.Parent" xml:space="preserve">
-    <value>tabPage_Show</value>
+    <value>tabPage_Edit</value>
   </data>
   <data name="&gt;&gt;dataGridView_ImagesList.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -1783,37 +1843,10 @@
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_JSON.Parent" xml:space="preserve">
-    <value>tabPage_Show</value>
+    <value>tabPage_Edit</value>
   </data>
   <data name="&gt;&gt;button_JSON.ZOrder" xml:space="preserve">
     <value>6</value>
-  </data>
-  <data name="tabPage_Show.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 22</value>
-  </data>
-  <data name="tabPage_Show.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="tabPage_Show.Size" type="System.Drawing.Size, System.Drawing">
-    <value>833, 644</value>
-  </data>
-  <data name="tabPage_Show.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="tabPage_Show.Text" xml:space="preserve">
-    <value>Обзор</value>
-  </data>
-  <data name="&gt;&gt;tabPage_Show.Name" xml:space="preserve">
-    <value>tabPage_Show</value>
-  </data>
-  <data name="&gt;&gt;tabPage_Show.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPage_Show.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;tabPage_Show.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="tabPage_Edit.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -1825,7 +1858,7 @@
     <value>833, 644</value>
   </data>
   <data name="tabPage_Edit.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="tabPage_Edit.Text" xml:space="preserve">
     <value>Редактирование</value>
@@ -1840,7 +1873,7 @@
     <value>tabControl1</value>
   </data>
   <data name="&gt;&gt;tabPage_Edit.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="tabPageConverting.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -1864,10 +1897,10 @@
     <value>tabControl1</value>
   </data>
   <data name="&gt;&gt;tabPageConverting.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="numericUpDown_Gif_Speed.Location" type="System.Drawing.Point, System.Drawing">
-    <value>577, 290</value>
+    <value>580, 188</value>
   </data>
   <data name="numericUpDown_Gif_Speed.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 20</value>
@@ -1894,7 +1927,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBox_AllWidgetsInGif.Location" type="System.Drawing.Point, System.Drawing">
-    <value>402, 316</value>
+    <value>412, 213</value>
   </data>
   <data name="checkBox_AllWidgetsInGif.Size" type="System.Drawing.Size, System.Drawing">
     <value>269, 30</value>
@@ -2003,7 +2036,7 @@
     <value>2</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>395, 215</value>
+    <value>405, 85</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>385, 70</value>
@@ -2033,7 +2066,7 @@
     <value>NoControl</value>
   </data>
   <data name="label355.Location" type="System.Drawing.Point, System.Drawing">
-    <value>399, 292</value>
+    <value>409, 189</value>
   </data>
   <data name="label355.Size" type="System.Drawing.Size, System.Drawing">
     <value>172, 13</value>
@@ -2063,7 +2096,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBox_ShowIn12hourFormat.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 213</value>
+    <value>412, 165</value>
   </data>
   <data name="checkBox_ShowIn12hourFormat.Size" type="System.Drawing.Size, System.Drawing">
     <value>328, 17</value>
@@ -2147,7 +2180,7 @@
     <value>1</value>
   </data>
   <data name="groupBox8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>395, 376</value>
+    <value>405, 10</value>
   </data>
   <data name="groupBox8.Size" type="System.Drawing.Size, System.Drawing">
     <value>385, 65</value>
@@ -2157,9 +2190,6 @@
   </data>
   <data name="groupBox8.Text" xml:space="preserve">
     <value>Тип выделения ярлыков</value>
-  </data>
-  <data name="groupBox8.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="&gt;&gt;groupBox8.Name" xml:space="preserve">
     <value>groupBox8</value>
@@ -2180,7 +2210,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBox_JsonWarnings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 382</value>
+    <value>305, 457</value>
   </data>
   <data name="checkBox_JsonWarnings.Size" type="System.Drawing.Size, System.Drawing">
     <value>323, 17</value>
@@ -2228,7 +2258,7 @@
     <value>Magyar</value>
   </data>
   <data name="comboBox_Language.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 269</value>
+    <value>450, 299</value>
   </data>
   <data name="comboBox_Language.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 21</value>
@@ -2255,7 +2285,7 @@
     <value>NoControl</value>
   </data>
   <data name="label356.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 272</value>
+    <value>409, 302</value>
   </data>
   <data name="label356.Size" type="System.Drawing.Size, System.Drawing">
     <value>35, 13</value>
@@ -2378,7 +2408,7 @@
     <value>45</value>
   </data>
   <data name="groupBox7.Text" xml:space="preserve">
-    <value>Действие после запаковки проекта или сжатия в .bin файл</value>
+    <value>Действие после создания циферблата</value>
   </data>
   <data name="&gt;&gt;groupBox7.Name" xml:space="preserve">
     <value>groupBox7</value>
@@ -2483,7 +2513,7 @@
     <value>2</value>
   </data>
   <data name="groupBox6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>395, 115</value>
+    <value>3, 325</value>
   </data>
   <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
     <value>385, 95</value>
@@ -2597,7 +2627,7 @@
     <value>2</value>
   </data>
   <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>395, 10</value>
+    <value>3, 220</value>
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
     <value>385, 95</value>
@@ -2606,7 +2636,7 @@
     <value>42</value>
   </data>
   <data name="groupBox5.Text" xml:space="preserve">
-    <value>Действие после распаковки .bin файла</value>
+    <value>Действие после распаковки циферблата</value>
   </data>
   <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
     <value>groupBox5</value>
@@ -2720,7 +2750,7 @@
     <value>41</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
-    <value>Действие при совпадении имен распаковываемых файлов</value>
+    <value>Действие при совпадении имен распаковываемых циферблатов</value>
   </data>
   <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
     <value>groupBox1</value>
@@ -2756,7 +2786,388 @@
     <value>tabControl1</value>
   </data>
   <data name="&gt;&gt;tabPage_Settings.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label_TranslateHelp.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label_TranslateHelp.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="label_TranslateHelp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label_TranslateHelp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 245</value>
+  </data>
+  <data name="label_TranslateHelp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 78</value>
+  </data>
+  <data name="label_TranslateHelp.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="label_TranslateHelp.Text" xml:space="preserve">
+    <value>Chinese - kyle208
+English - eliasf
+Español - Relojinteligente
+French - joebar78
+Italiano - arlemm
+Magyar - kamillo67</value>
+  </data>
+  <data name="label_TranslateHelp.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;label_TranslateHelp.Name" xml:space="preserve">
+    <value>label_TranslateHelp</value>
+  </data>
+  <data name="&gt;&gt;label_TranslateHelp.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_TranslateHelp.Parent" xml:space="preserve">
+    <value>tabPage_About</value>
+  </data>
+  <data name="&gt;&gt;label_TranslateHelp.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label415.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label415.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label415.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 230</value>
+  </data>
+  <data name="label415.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 13</value>
+  </data>
+  <data name="label415.TabIndex" type="System.Int32, mscorlib">
+    <value>27</value>
+  </data>
+  <data name="label415.Text" xml:space="preserve">
+    <value>С переводом помогали:</value>
+  </data>
+  <data name="&gt;&gt;label415.Name" xml:space="preserve">
+    <value>label415</value>
+  </data>
+  <data name="&gt;&gt;label415.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label415.Parent" xml:space="preserve">
+    <value>tabPage_About</value>
+  </data>
+  <data name="&gt;&gt;label415.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label414.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label414.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="label414.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label414.Location" type="System.Drawing.Point, System.Drawing">
+    <value>235, 210</value>
+  </data>
+  <data name="label414.Size" type="System.Drawing.Size, System.Drawing">
+    <value>236, 13</value>
+  </data>
+  <data name="label414.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
+  </data>
+  <data name="label414.Text" xml:space="preserve">
+    <value>stemcell, -GAMER-, kartoris82, pulse750</value>
+  </data>
+  <data name="label414.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;label414.Name" xml:space="preserve">
+    <value>label414</value>
+  </data>
+  <data name="&gt;&gt;label414.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label414.Parent" xml:space="preserve">
+    <value>tabPage_About</value>
+  </data>
+  <data name="&gt;&gt;label414.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label412.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label412.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label412.Location" type="System.Drawing.Point, System.Drawing">
+    <value>235, 195</value>
+  </data>
+  <data name="label412.Size" type="System.Drawing.Size, System.Drawing">
+    <value>253, 13</value>
+  </data>
+  <data name="label412.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="label412.Text" xml:space="preserve">
+    <value>В тестировании программы принимали участие:</value>
+  </data>
+  <data name="&gt;&gt;label412.Name" xml:space="preserve">
+    <value>label412</value>
+  </data>
+  <data name="&gt;&gt;label412.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label412.Parent" xml:space="preserve">
+    <value>tabPage_About</value>
+  </data>
+  <data name="&gt;&gt;label412.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="label413.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label413.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label413.Location" type="System.Drawing.Point, System.Drawing">
+    <value>235, 150</value>
+  </data>
+  <data name="label413.Size" type="System.Drawing.Size, System.Drawing">
+    <value>460, 13</value>
+  </data>
+  <data name="label413.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="label413.Text" xml:space="preserve">
+    <value>Утилита для преобразования изображений из циферблатов в нормальный PNG формат:</value>
+  </data>
+  <data name="&gt;&gt;label413.Name" xml:space="preserve">
+    <value>label413</value>
+  </data>
+  <data name="&gt;&gt;label413.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label413.Parent" xml:space="preserve">
+    <value>tabPage_About</value>
+  </data>
+  <data name="&gt;&gt;label413.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="linkLabel_py_amazfit_tools.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="linkLabel_py_amazfit_tools.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="linkLabel_py_amazfit_tools.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="linkLabel_py_amazfit_tools.Location" type="System.Drawing.Point, System.Drawing">
+    <value>235, 165</value>
+  </data>
+  <data name="linkLabel_py_amazfit_tools.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 13</value>
+  </data>
+  <data name="linkLabel_py_amazfit_tools.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="linkLabel_py_amazfit_tools.Text" xml:space="preserve">
+    <value>ImageToGTR3</value>
+  </data>
+  <data name="&gt;&gt;linkLabel_py_amazfit_tools.Name" xml:space="preserve">
+    <value>linkLabel_py_amazfit_tools</value>
+  </data>
+  <data name="&gt;&gt;linkLabel_py_amazfit_tools.Type" xml:space="preserve">
+    <value>System.Windows.Forms.LinkLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;linkLabel_py_amazfit_tools.Parent" xml:space="preserve">
+    <value>tabPage_About</value>
+  </data>
+  <data name="&gt;&gt;linkLabel_py_amazfit_tools.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="label409.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label409.Location" type="System.Drawing.Point, System.Drawing">
+    <value>235, 60</value>
+  </data>
+  <data name="label409.Size" type="System.Drawing.Size, System.Drawing">
+    <value>345, 44</value>
+  </data>
+  <data name="label409.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="label409.Text" xml:space="preserve">
+    <value>Программа является редактором циферблатов GTR 3, GTS 3. Так как циферблаты являются почти полноценными программами, то в этом редакторе невозможно реализовать весь доступный для циферблатов функционал. Редактор должен распознавать большинство циферблатов созданных в нем или на сайте dev.huami.com. Но он не может распознавать циферблаты из приложения Zepp.
+</value>
+  </data>
+  <data name="&gt;&gt;label409.Name" xml:space="preserve">
+    <value>label409</value>
+  </data>
+  <data name="&gt;&gt;label409.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label409.Parent" xml:space="preserve">
+    <value>tabPage_About</value>
+  </data>
+  <data name="&gt;&gt;label409.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="label408.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label408.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="label408.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label408.Location" type="System.Drawing.Point, System.Drawing">
+    <value>273, 35</value>
+  </data>
+  <data name="label408.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 13</value>
+  </data>
+  <data name="label408.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="label408.Text" xml:space="preserve">
+    <value>SashaCX75</value>
+  </data>
+  <data name="&gt;&gt;label408.Name" xml:space="preserve">
+    <value>label408</value>
+  </data>
+  <data name="&gt;&gt;label408.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label408.Parent" xml:space="preserve">
+    <value>tabPage_About</value>
+  </data>
+  <data name="&gt;&gt;label408.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="label407.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label407.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label407.Location" type="System.Drawing.Point, System.Drawing">
+    <value>235, 35</value>
+  </data>
+  <data name="label407.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 13</value>
+  </data>
+  <data name="label407.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="label407.Text" xml:space="preserve">
+    <value>Автор:</value>
+  </data>
+  <data name="&gt;&gt;label407.Name" xml:space="preserve">
+    <value>label407</value>
+  </data>
+  <data name="&gt;&gt;label407.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label407.Parent" xml:space="preserve">
+    <value>tabPage_About</value>
+  </data>
+  <data name="&gt;&gt;label407.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="label_version_help.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label_version_help.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
+  <data name="label_version_help.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label_version_help.Location" type="System.Drawing.Point, System.Drawing">
+    <value>280, 10</value>
+  </data>
+  <data name="label_version_help.Size" type="System.Drawing.Size, System.Drawing">
+    <value>25, 13</value>
+  </data>
+  <data name="label_version_help.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="label_version_help.Text" xml:space="preserve">
+    <value>0.0</value>
+  </data>
+  <data name="&gt;&gt;label_version_help.Name" xml:space="preserve">
+    <value>label_version_help</value>
+  </data>
+  <data name="&gt;&gt;label_version_help.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_version_help.Parent" xml:space="preserve">
+    <value>tabPage_About</value>
+  </data>
+  <data name="&gt;&gt;label_version_help.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="label406.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label406.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label406.Location" type="System.Drawing.Point, System.Drawing">
+    <value>235, 10</value>
+  </data>
+  <data name="label406.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 13</value>
+  </data>
+  <data name="label406.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="label406.Text" xml:space="preserve">
+    <value>Версия:</value>
+  </data>
+  <data name="&gt;&gt;label406.Name" xml:space="preserve">
+    <value>label406</value>
+  </data>
+  <data name="&gt;&gt;label406.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label406.Parent" xml:space="preserve">
+    <value>tabPage_About</value>
+  </data>
+  <data name="&gt;&gt;label406.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="pictureBox2.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Zoom</value>
+  </data>
+  <data name="pictureBox2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pictureBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="pictureBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>227, 227</value>
+  </data>
+  <data name="pictureBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="&gt;&gt;pictureBox2.Name" xml:space="preserve">
+    <value>pictureBox2</value>
+  </data>
+  <data name="&gt;&gt;pictureBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBox2.Parent" xml:space="preserve">
+    <value>tabPage_About</value>
+  </data>
+  <data name="&gt;&gt;pictureBox2.ZOrder" xml:space="preserve">
+    <value>11</value>
   </data>
   <data name="tabPage_About.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -2780,7 +3191,7 @@
     <value>tabControl1</value>
   </data>
   <data name="&gt;&gt;tabPage_About.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
     <value>238, 5</value>
@@ -2802,6 +3213,9 @@
   </data>
   <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="progressBar1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="progressBar1.Location" type="System.Drawing.Point, System.Drawing">
     <value>217, 330</value>
@@ -2924,7 +3338,7 @@
     <value>85</value>
   </data>
   <data name="button_unpack_zip.Text" xml:space="preserve">
-    <value>Распаковать сжатый bin</value>
+    <value>Распаковать циферблат</value>
   </data>
   <data name="&gt;&gt;button_unpack_zip.Name" xml:space="preserve">
     <value>button_unpack_zip</value>
@@ -3447,7 +3861,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
-        DQAAAk1TRnQBSQFMAgEBBgEAAfABJAHwASQBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAAfgBJQH4ASUBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA

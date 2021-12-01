@@ -82,4 +82,21 @@ namespace Watch_Face_Editor
         //public hmUI_widget_TEXT Minute_Font { get; set; }
         //public hmUI_widget_TEXT Hour_Font { get; set; }
     }
+
+    public class ElementAnalogTime
+    {
+        public string elementName = "AnalogTime";
+
+        ///// <summary>Позиция в наборе элементов</summary>
+        //public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = true;
+
+        public hmUI_widget_IMG_POINTER Second { get; set; }
+        public hmUI_widget_IMG_POINTER Minute { get; set; }
+        public hmUI_widget_IMG_POINTER Hour { get; set; }
+    }
 }
+
+

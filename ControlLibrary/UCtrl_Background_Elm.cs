@@ -159,5 +159,16 @@ namespace ControlLibrary
                 DelElement(this, eventArgs);
             }
         }
+
+        public void SettingsClear()
+        {
+            setValue = true;
+
+            visibilityElement = true; 
+            pictureBox_NotShow.Visible = !visibilityElement;
+            pictureBox_Show.Visible = visibilityElement;
+
+            setValue = false;
+        }
     }
 }

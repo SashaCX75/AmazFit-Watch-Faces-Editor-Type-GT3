@@ -29,12 +29,13 @@ namespace ControlLibrary
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrl_AmPm_Opt));
-            this.contextMenuStrip_Y = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenuStrip_Y = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.вставитьКоординатуYToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.копироватьToolStripMenuItemY = new System.Windows.Forms.ToolStripMenuItem();
             this.вставитьToolStripMenuItemY = new System.Windows.Forms.ToolStripMenuItem();
-            this.contextMenuStrip_X = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenuStrip_X = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.вставитьКоординатуХToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.копироватьToolStripMenuItemX = new System.Windows.Forms.ToolStripMenuItem();
             this.вставитьToolStripMenuItemX = new System.Windows.Forms.ToolStripMenuItem();
@@ -133,7 +134,7 @@ namespace ControlLibrary
             // numericUpDown_AM_Y
             // 
             this.numericUpDown_AM_Y.ContextMenuStrip = this.contextMenuStrip_Y;
-            this.numericUpDown_AM_Y.Location = new System.Drawing.Point(183, 20);
+            this.numericUpDown_AM_Y.Location = new System.Drawing.Point(183, 24);
             this.numericUpDown_AM_Y.Maximum = new decimal(new int[] {
             999,
             0,
@@ -154,7 +155,7 @@ namespace ControlLibrary
             // 
             this.label6.AutoSize = true;
             this.label6.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label6.Location = new System.Drawing.Point(93, 63);
+            this.label6.Location = new System.Drawing.Point(93, 67);
             this.label6.Margin = new System.Windows.Forms.Padding(3);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(88, 13);
@@ -165,7 +166,7 @@ namespace ControlLibrary
             // 
             this.label3.AutoSize = true;
             this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(93, 22);
+            this.label3.Location = new System.Drawing.Point(93, 26);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(17, 13);
             this.label3.TabIndex = 116;
@@ -174,7 +175,7 @@ namespace ControlLibrary
             // numericUpDown_AM_X
             // 
             this.numericUpDown_AM_X.ContextMenuStrip = this.contextMenuStrip_X;
-            this.numericUpDown_AM_X.Location = new System.Drawing.Point(110, 20);
+            this.numericUpDown_AM_X.Location = new System.Drawing.Point(110, 24);
             this.numericUpDown_AM_X.Maximum = new decimal(new int[] {
             999,
             0,
@@ -195,7 +196,7 @@ namespace ControlLibrary
             // 
             this.label8.AutoSize = true;
             this.label8.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label8.Location = new System.Drawing.Point(166, 84);
+            this.label8.Location = new System.Drawing.Point(166, 88);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(17, 13);
             this.label8.TabIndex = 122;
@@ -205,7 +206,7 @@ namespace ControlLibrary
             // 
             this.label4.AutoSize = true;
             this.label4.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label4.Location = new System.Drawing.Point(166, 22);
+            this.label4.Location = new System.Drawing.Point(166, 26);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(17, 13);
             this.label4.TabIndex = 117;
@@ -214,9 +215,9 @@ namespace ControlLibrary
             // comboBox_PM_image
             // 
             this.comboBox_PM_image.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.comboBox_PM_image.DropDownWidth = 75;
+            this.comboBox_PM_image.DropDownWidth = 135;
             this.comboBox_PM_image.FormattingEnabled = true;
-            this.comboBox_PM_image.Location = new System.Drawing.Point(3, 81);
+            this.comboBox_PM_image.Location = new System.Drawing.Point(6, 85);
             this.comboBox_PM_image.MaxDropDownItems = 25;
             this.comboBox_PM_image.Name = "comboBox_PM_image";
             this.comboBox_PM_image.Size = new System.Drawing.Size(56, 21);
@@ -231,7 +232,7 @@ namespace ControlLibrary
             // 
             this.label2.AutoSize = true;
             this.label2.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label2.Location = new System.Drawing.Point(93, 1);
+            this.label2.Location = new System.Drawing.Point(93, 5);
             this.label2.Margin = new System.Windows.Forms.Padding(3);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 13);
@@ -242,7 +243,7 @@ namespace ControlLibrary
             // 
             this.label5.AutoSize = true;
             this.label5.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label5.Location = new System.Drawing.Point(3, 65);
+            this.label5.Location = new System.Drawing.Point(6, 69);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(23, 13);
             this.label5.TabIndex = 114;
@@ -252,7 +253,7 @@ namespace ControlLibrary
             // 
             this.label7.AutoSize = true;
             this.label7.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label7.Location = new System.Drawing.Point(93, 84);
+            this.label7.Location = new System.Drawing.Point(93, 88);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(17, 13);
             this.label7.TabIndex = 121;
@@ -261,7 +262,7 @@ namespace ControlLibrary
             // numericUpDown_PM_X
             // 
             this.numericUpDown_PM_X.ContextMenuStrip = this.contextMenuStrip_X;
-            this.numericUpDown_PM_X.Location = new System.Drawing.Point(110, 82);
+            this.numericUpDown_PM_X.Location = new System.Drawing.Point(110, 86);
             this.numericUpDown_PM_X.Maximum = new decimal(new int[] {
             999,
             0,
@@ -281,9 +282,9 @@ namespace ControlLibrary
             // comboBox_AM_image
             // 
             this.comboBox_AM_image.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.comboBox_AM_image.DropDownWidth = 75;
+            this.comboBox_AM_image.DropDownWidth = 135;
             this.comboBox_AM_image.FormattingEnabled = true;
-            this.comboBox_AM_image.Location = new System.Drawing.Point(3, 19);
+            this.comboBox_AM_image.Location = new System.Drawing.Point(6, 23);
             this.comboBox_AM_image.MaxDropDownItems = 25;
             this.comboBox_AM_image.Name = "comboBox_AM_image";
             this.comboBox_AM_image.Size = new System.Drawing.Size(56, 21);
@@ -298,7 +299,7 @@ namespace ControlLibrary
             // 
             this.label1.AutoSize = true;
             this.label1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label1.Location = new System.Drawing.Point(3, 3);
+            this.label1.Location = new System.Drawing.Point(6, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(23, 13);
             this.label1.TabIndex = 112;
@@ -307,7 +308,7 @@ namespace ControlLibrary
             // numericUpDown_PM_Y
             // 
             this.numericUpDown_PM_Y.ContextMenuStrip = this.contextMenuStrip_Y;
-            this.numericUpDown_PM_Y.Location = new System.Drawing.Point(183, 82);
+            this.numericUpDown_PM_Y.Location = new System.Drawing.Point(183, 86);
             this.numericUpDown_PM_Y.Maximum = new decimal(new int[] {
             999,
             0,

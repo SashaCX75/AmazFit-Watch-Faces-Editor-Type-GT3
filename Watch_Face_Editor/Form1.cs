@@ -249,6 +249,9 @@ namespace Watch_Face_Editor
             label_version.Text = "v " +
                 System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Major.ToString() + "." +
                 System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Minor.ToString();
+            label_version_help.Text =
+                System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Major.ToString() + "." +
+                System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Minor.ToString();
 
             Logger.WriteLine("Set Settings");
             Settings_Load = true;
@@ -321,6 +324,8 @@ namespace Watch_Face_Editor
 
             userCtrl_Background_Options.AutoSize = true;
             uCtrl_Text_Opt.AutoSize = true;
+            uCtrl_AmPm_Opt.AutoSize = true;
+            uCtrl_Pointer_Opt.AutoSize = true;
 
             button_CreatePreview.Location = new Point(5, 563);
             Logger.WriteLine("* Form1_Shown(end)");
@@ -952,7 +957,7 @@ namespace Watch_Face_Editor
                 int dX = Math.Abs(cursorX - cursorPos.X);
                 int dY = Math.Abs(cursorY - cursorPos.Y);
                 if (dX > 5 || dY > 5)
-                    panel.DoDragDrop(sender, DragDropEffects.Move); 
+                    panel.DoDragDrop(sender, DragDropEffects.Move);
             }
         }
 
@@ -966,8 +971,9 @@ namespace Watch_Face_Editor
         private void tableLayoutPanel1_DragOver(object sender, DragEventArgs e)
         {
             bool typeReturn = true;
-            if (e.Data.GetDataPresent(typeof(UCtrl_Background_Elm))) typeReturn = false;
+            //if (e.Data.GetDataPresent(typeof(UCtrl_Background_Elm))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(UCtrl_DigitalTime_Elm))) typeReturn = false;
+            if (e.Data.GetDataPresent(typeof(UCtrl_AnalogTime_Elm))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(Button))) typeReturn = false;
             if (typeReturn) return;
 
@@ -985,9 +991,9 @@ namespace Watch_Face_Editor
                     UCtrl_DigitalTime_Elm draggedUCtrl_Background_Elm = (UCtrl_DigitalTime_Elm)e.Data.GetData(typeof(UCtrl_DigitalTime_Elm));
                     if (draggedUCtrl_Background_Elm != null) draggedPanel = (Panel)draggedUCtrl_Background_Elm.Parent;
                 }
-                else if (e.Data.GetDataPresent(typeof(Button)))
+                else if (e.Data.GetDataPresent(typeof(UCtrl_AnalogTime_Elm)))
                 {
-                    Button draggedUCtrl_Background_Elm = (Button)e.Data.GetData(typeof(Button));
+                    UCtrl_AnalogTime_Elm draggedUCtrl_Background_Elm = (UCtrl_AnalogTime_Elm)e.Data.GetData(typeof(UCtrl_AnalogTime_Elm));
                     if (draggedUCtrl_Background_Elm != null) draggedPanel = (Panel)draggedUCtrl_Background_Elm.Parent;
                 }
             }
@@ -996,11 +1002,13 @@ namespace Watch_Face_Editor
             Point pt = tableLayoutPanel_ElemetsWatchFace.PointToClient(new Point(e.X, e.Y));
             Control control = tableLayoutPanel_ElemetsWatchFace.GetChildAtPoint(pt);
 
-
             if (control != null)
             {
+                if (control.Name == "panel_UC_Background") return;
                 var pos = tableLayoutPanel_ElemetsWatchFace.GetPositionFromControl(control);
                 var posOld = tableLayoutPanel_ElemetsWatchFace.GetPositionFromControl(draggedPanel);
+
+                Console.WriteLine("pos.Row = " + pos.Row.ToString() + "     posOld.Row = " + posOld.Row.ToString());
                 //tableLayoutPanel1.Controls.Add(draggedButton, pos.Column, pos.Row);
 
                 if (pos != posOld)
@@ -1010,34 +1018,199 @@ namespace Watch_Face_Editor
                         tableLayoutPanel_ElemetsWatchFace.SetRow(draggedPanel, pos.Row);
                         if (pos.Row < posOld.Row) tableLayoutPanel_ElemetsWatchFace.SetRow(control, pos.Row + 1);
                         else tableLayoutPanel_ElemetsWatchFace.SetRow(control, pos.Row - 1);
+
+                        DragDropElements(sender, e);
                     }
                 }
 
                 //if (pos != posOld && pos.Row < posOld.Row)
                 //{
-                //    if (pt.Y < control.Location.Y +control.Height * 0.4)
+                //    if (pt.Y < control.Location.Y + control.Height * 0.4)
                 //    {
-                //        tableLayoutPanel1.SetRow(draggedPanel, pos.Row);
-                //        if (pos.Row < posOld.Row) tableLayoutPanel1.SetRow(control, pos.Row + 1);
-                //        else tableLayoutPanel1.SetRow(control, pos.Row - 1);
+                //        tableLayoutPanel_ElemetsWatchFace.SetRow(draggedPanel, pos.Row);
+                //        if (pos.Row < posOld.Row) tableLayoutPanel_ElemetsWatchFace.SetRow(control, pos.Row + 1);
+                //        else tableLayoutPanel_ElemetsWatchFace.SetRow(control, pos.Row - 1);
                 //    }
                 //}
                 //if (pos != posOld && pos.Row > posOld.Row)
                 //{
                 //    if (pt.Y > control.Location.Y + control.Height * 0.6)
                 //    {
-                //        tableLayoutPanel1.SetRow(draggedPanel, pos.Row);
-                //        if (pos.Row < posOld.Row) tableLayoutPanel1.SetRow(control, pos.Row + 1);
-                //        else tableLayoutPanel1.SetRow(control, pos.Row - 1);
+                //        tableLayoutPanel_ElemetsWatchFace.SetRow(draggedPanel, pos.Row);
+                //        if (pos.Row < posOld.Row) tableLayoutPanel_ElemetsWatchFace.SetRow(control, pos.Row + 1);
+                //        else tableLayoutPanel_ElemetsWatchFace.SetRow(control, pos.Row - 1);
                 //    }
                 //}
                 draggedPanel.Tag = null;
             }
         }
 
+        private void DragDropElements(object sender, DragEventArgs e)
+        {
+            string[] objectName = e.Data.GetFormats();
+            //object o = e.Data.GetData(e.Data.GetFormats()[0]);
+            if (objectName.Length > 0)
+            {
+                List<object> Elements = new List<object>();
+                int index = -1;
+                if (radioButton_ScreenNormal.Checked)
+                {
+                    if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Elements != null)
+                        Elements = Watch_Face.ScreenNormal.Elements;
+                }
+                else
+                {
+                    if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                        Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
+                }
+                if (Elements.Count < 2) return;
+
+                //ElementAnalogTime analogTime = new ElementAnalogTime();
+                //analogTime.visible = true;
+                ////digitalTime.position = Elements.Count;
+                //Elements.f
+                //bool exists = Elements.Exists(e1 => e1.GetType().Name == "ElementAnalogTime");
+                //digitalTime = (ElementDigitalTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDigitalTime");
+                switch (objectName[0])
+                {
+                    case "ControlLibrary.UCtrl_DigitalTime_Elm":
+                        ElementDigitalTime digitalTime =
+                            (ElementDigitalTime)Elements.Find(e1 => e1.GetType().Name == "ElementDigitalTime");
+                        index = Elements.IndexOf(digitalTime);
+                        break;
+                    case "ControlLibrary.UCtrl_AnalogTime_Elm":
+                        ElementAnalogTime analogTime =
+                            (ElementAnalogTime)Elements.Find(e1 => e1.GetType().Name == "ElementAnalogTime");
+                        index = Elements.IndexOf(analogTime);
+                        break;
+                }
+
+                Panel draggedPanel = (Panel)e.Data.GetData(typeof(Panel));
+                if (draggedPanel == null)
+                {
+                    if (e.Data.GetDataPresent(typeof(UCtrl_Background_Elm)))
+                    {
+                        UCtrl_Background_Elm draggedUCtrl_Background_Elm = (UCtrl_Background_Elm)e.Data.GetData(typeof(UCtrl_Background_Elm));
+                        if (draggedUCtrl_Background_Elm != null) draggedPanel = (Panel)draggedUCtrl_Background_Elm.Parent;
+                    }
+                    else if (e.Data.GetDataPresent(typeof(UCtrl_DigitalTime_Elm)))
+                    {
+                        UCtrl_DigitalTime_Elm draggedUCtrl_Background_Elm = (UCtrl_DigitalTime_Elm)e.Data.GetData(typeof(UCtrl_DigitalTime_Elm));
+                        if (draggedUCtrl_Background_Elm != null) draggedPanel = (Panel)draggedUCtrl_Background_Elm.Parent;
+                    }
+                    else if (e.Data.GetDataPresent(typeof(UCtrl_AnalogTime_Elm)))
+                    {
+                        UCtrl_AnalogTime_Elm draggedUCtrl_Background_Elm = (UCtrl_AnalogTime_Elm)e.Data.GetData(typeof(UCtrl_AnalogTime_Elm));
+                        if (draggedUCtrl_Background_Elm != null) draggedPanel = (Panel)draggedUCtrl_Background_Elm.Parent;
+                    }
+                }
+                if (draggedPanel == null) return;
+                var pos = tableLayoutPanel_ElemetsWatchFace.GetPositionFromControl(draggedPanel);
+                int indexNew = tableLayoutPanel_ElemetsWatchFace.RowCount - 2 - pos.Row;
+                if (indexNew >= 0 && indexNew < Elements.Count && index >= 0 && index < Elements.Count && indexNew != index)
+                {
+                    if (indexNew > index)
+                    {
+                        Elements.Insert(indexNew + 1, Elements[index]);
+                        Elements.RemoveAt(index);
+                    }
+                    else
+                    {
+                        Elements.Insert(indexNew, Elements[index]);
+                        Elements.RemoveAt(index + 1);
+                        //object temp = Elements[index];
+                        //Elements.RemoveAt(index);
+                        //Elements.Insert(indexNew, temp);
+                    }
+                    JSON_Modified = true;
+                    PreviewImage();
+                    FormText();
+                }
+            }
+        }
+
         private void tableLayoutPanel1_DragDrop(object sender, DragEventArgs e)
         {
+            string[] objectName = e.Data.GetFormats();
+            //object o = e.Data.GetData(e.Data.GetFormats()[0]);
+            if (objectName.Length > 0)
+            {
+                List<object> Elements = new List<object>();
+                int index = -1;
+                if (radioButton_ScreenNormal.Checked)
+                {
+                    if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Elements != null)
+                        Elements = Watch_Face.ScreenNormal.Elements;
+                }
+                else
+                {
+                    if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                        Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
+                }
+                if (Elements.Count < 2) return;
 
+                //ElementAnalogTime analogTime = new ElementAnalogTime();
+                //analogTime.visible = true;
+                ////digitalTime.position = Elements.Count;
+                //Elements.f
+                //bool exists = Elements.Exists(e1 => e1.GetType().Name == "ElementAnalogTime");
+                //digitalTime = (ElementDigitalTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDigitalTime");
+                switch (objectName[0])
+                {
+                    case "ControlLibrary.UCtrl_DigitalTime_Elm":
+                        ElementDigitalTime digitalTime = 
+                            (ElementDigitalTime)Elements.Find(e1 => e1.GetType().Name == "ElementDigitalTime");
+                        index = Elements.IndexOf(digitalTime);
+                        break;
+                    case "ControlLibrary.UCtrl_AnalogTime_Elm":
+                        ElementAnalogTime analogTime =
+                            (ElementAnalogTime)Elements.Find(e1 => e1.GetType().Name == "ElementAnalogTime");
+                        index = Elements.IndexOf(analogTime);
+                        break;
+                }
+
+                Panel draggedPanel = (Panel)e.Data.GetData(typeof(Panel));
+                if (draggedPanel == null)
+                {
+                    if (e.Data.GetDataPresent(typeof(UCtrl_Background_Elm)))
+                    {
+                        UCtrl_Background_Elm draggedUCtrl_Background_Elm = (UCtrl_Background_Elm)e.Data.GetData(typeof(UCtrl_Background_Elm));
+                        if (draggedUCtrl_Background_Elm != null) draggedPanel = (Panel)draggedUCtrl_Background_Elm.Parent;
+                    }
+                    else if (e.Data.GetDataPresent(typeof(UCtrl_DigitalTime_Elm)))
+                    {
+                        UCtrl_DigitalTime_Elm draggedUCtrl_Background_Elm = (UCtrl_DigitalTime_Elm)e.Data.GetData(typeof(UCtrl_DigitalTime_Elm));
+                        if (draggedUCtrl_Background_Elm != null) draggedPanel = (Panel)draggedUCtrl_Background_Elm.Parent;
+                    }
+                    else if (e.Data.GetDataPresent(typeof(UCtrl_AnalogTime_Elm)))
+                    {
+                        UCtrl_AnalogTime_Elm draggedUCtrl_Background_Elm = (UCtrl_AnalogTime_Elm)e.Data.GetData(typeof(UCtrl_AnalogTime_Elm));
+                        if (draggedUCtrl_Background_Elm != null) draggedPanel = (Panel)draggedUCtrl_Background_Elm.Parent;
+                    }
+                }
+                if (draggedPanel == null) return;
+                var pos = tableLayoutPanel_ElemetsWatchFace.GetPositionFromControl(draggedPanel);
+                int indexNew = tableLayoutPanel_ElemetsWatchFace.RowCount - 2 - pos.Row;
+                if(indexNew >= 0 && indexNew < Elements.Count && index >= 0 && index < Elements.Count && indexNew != index)
+                {
+                    if(indexNew > index)
+                    {
+                        Elements.Insert(indexNew + 1, Elements[index]);
+                        Elements.RemoveAt(index);
+                    }
+                    else
+                    {
+                        Elements.Insert(indexNew, Elements[index]);
+                        Elements.RemoveAt(index + 1);
+                        //object temp = Elements[index];
+                        //Elements.RemoveAt(index);
+                        //Elements.Insert(indexNew, temp);
+                    }
+                    JSON_Modified = true;
+                    PreviewImage();
+                    FormText();
+                }
+            }
         }
 
         private void ShowElemenrOptions(string optionsName)
@@ -1053,6 +1226,12 @@ namespace Watch_Face_Editor
                 case "Text":
                     uCtrl_Text_Opt.Visible = true;
                     break;
+                case "AmPm":
+                    uCtrl_AmPm_Opt.Visible = true;
+                    break;
+                case "Pointer":
+                    uCtrl_Pointer_Opt.Visible = true;
+                    break;
             }
         }
 
@@ -1061,11 +1240,27 @@ namespace Watch_Face_Editor
         {
             userCtrl_Background_Options.Visible = false;
             uCtrl_Text_Opt.Visible = false;
+            uCtrl_AmPm_Opt.Visible = false;
+            uCtrl_Pointer_Opt.Visible = false;
+        }
+
+        private void ResetHighlightState(string selectElementName)
+        {
+            if (selectElementName != "Background") uCtrl_Background_Elm.ResetHighlightState();
+            if (selectElementName != "DigitalTime") uCtrl_DigitalTime_Elm.ResetHighlightState();
+            if (selectElementName != "AnalogTime") uCtrl_AnalogTime_Elm.ResetHighlightState();
+        }
+
+        private void ClearAllElemenrOptions()
+        {
+            uCtrl_Background_Elm.SettingsClear();
+            uCtrl_DigitalTime_Elm.SettingsClear();
+            uCtrl_AnalogTime_Elm.SettingsClear();
         }
 
         private void uCtrl_Background_Elm_SelectChanged(object sender, EventArgs eventArgs)
         {
-            uCtrl_DigitalTime_Elm.ResetHighlightState();
+            ResetHighlightState("Background");
 
             string preview = "";
             int id = 0;
@@ -1089,11 +1284,11 @@ namespace Watch_Face_Editor
             ShowElemenrOptions("Background");
         }
 
-        private void uCtrl_DigitalTime_Elm1_SelectChanged(object sender, EventArgs eventArgs)
+        private void uCtrl_DigitalTime_Elm_SelectChanged(object sender, EventArgs eventArgs)
         {
             string selectElement = uCtrl_DigitalTime_Elm.selectedElement;
             if(selectElement.Length == 0) HideAllElemenrOptions();
-            uCtrl_Background_Elm.ResetHighlightState();
+            ResetHighlightState("DigitalTime");
 
             ElementDigitalTime digitalTime = null;
             if (radioButton_ScreenNormal.Checked)
@@ -1147,13 +1342,85 @@ namespace Watch_Face_Editor
                         }
                         else HideAllElemenrOptions();
                         break;
+                    case "AmPm":
+                        if (uCtrl_DigitalTime_Elm.checkBox_AmPm.Checked)
+                        {
+                            hmUI_widget_IMG_TIME_am_pm am_pm = digitalTime.AmPm;
+                            Read_AM_PM_Options(am_pm);
+                            ShowElemenrOptions("AmPm");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
                 }
 
             }
 
-            JSON_Modified = true;
-            PreviewImage();
-            FormText();
+            //JSON_Modified = true;
+            //PreviewImage();
+            //FormText();
+        }
+
+        private void uCtrl_AnalogTime_Elm_SelectChanged(object sender, EventArgs eventArgs)
+        {
+            string selectElement = uCtrl_AnalogTime_Elm.selectedElement;
+            if (selectElement.Length == 0) HideAllElemenrOptions();
+            ResetHighlightState("AnalogTime");
+
+            ElementAnalogTime analogTime = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    //bool exists = Elements.Exists(e => e.GetType().Name == "ElementDigitalTime");
+                    analogTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    analogTime = (ElementAnalogTime)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                }
+            }
+            if (analogTime != null)
+            {
+                string selectedElement = uCtrl_AnalogTime_Elm.selectedElement;
+                hmUI_widget_IMG_POINTER img_pointer = null;
+
+                switch (selectedElement)
+                {
+                    case "Hour":
+                        if (uCtrl_AnalogTime_Elm.checkBox_Hours.Checked)
+                        {
+                            img_pointer = analogTime.Hour;
+                            Read_ImgPointer_Options(img_pointer, false);
+                            ShowElemenrOptions("Pointer");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Minute":
+                        if (uCtrl_AnalogTime_Elm.checkBox_Minutes.Checked)
+                        {
+                            img_pointer = analogTime.Minute;
+                            Read_ImgPointer_Options(img_pointer, false);
+                            ShowElemenrOptions("Pointer");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Second":
+                        if (uCtrl_AnalogTime_Elm.checkBox_Seconds.Checked)
+                        {
+                            img_pointer = analogTime.Second;
+                            Read_ImgPointer_Options(img_pointer, false);
+                            ShowElemenrOptions("Pointer");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                }
+
+            }
         }
 
         private void button_JSON_Click(object sender, EventArgs e)
@@ -1327,6 +1594,8 @@ namespace Watch_Face_Editor
 
             userCtrl_Background_Options.ComboBoxAddItems(ListImages, ListImagesFullName);
             uCtrl_Text_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
+            uCtrl_AmPm_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
+            uCtrl_Pointer_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
         }
 
         private void comboBox_AddElements_Click(object sender, EventArgs e)
@@ -1659,7 +1928,8 @@ namespace Watch_Face_Editor
 
                 formPreview.pictureBox_Preview.MouseDoubleClick += (object senderDoubleClick, MouseEventArgs eDoubleClick) =>
                 {
-                    uCtrl_Text_Opt.SetMouseСoordinates(MouseClickСoordinates.X, MouseClickСoordinates.Y);
+                    //uCtrl_Text_Opt.SetMouseСoordinates(MouseClickСoordinates.X, MouseClickСoordinates.Y);
+                    uCtrl_AmPm_Opt.SetMouseСoordinates(MouseClickСoordinates.X, MouseClickСoordinates.Y);
 
                 };
             }
@@ -1757,15 +2027,25 @@ namespace Watch_Face_Editor
 
         private void comboBox_AddTime_DropDownClosed(object sender, EventArgs e)
         {
-            if (comboBox_AddTime.SelectedIndex == 1) AddDigitalTime();
+            if (comboBox_AddTime.SelectedIndex == 0)
+            {
+                AddAnalogTime();
+                ShowElemetsWatchFace();
+                JSON_Modified = true;
+                FormText();
+            }
+            if (comboBox_AddTime.SelectedIndex == 1)
+            {
+                AddDigitalTime();
+                ShowElemetsWatchFace();
+                JSON_Modified = true;
+                FormText();
+            }
             PreviewView = false;
             //if (comboBox_AddTime.SelectedIndex >= 0) MessageBox.Show(comboBox_AddTime.Text);
             comboBox_AddTime.Items.Insert(0, Properties.FormStrings.Elemet_Time);
             comboBox_AddTime.SelectedIndex = 0;
-            ShowElemetsWatchFace();
             PreviewView = true;
-            JSON_Modified = true;
-            FormText();
         }
 
         private void comboBox_AddDate_DropDownClosed(object sender, EventArgs e)
@@ -1987,20 +2267,52 @@ namespace Watch_Face_Editor
             digitalTime.visible = true;
             //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementDigitalTime"); // проверяем что такого элемента нет
-            //if (!exists) Elements.Add(digitalTime);
-            if (!exists) Elements.Insert(0, digitalTime);
+            if (!exists) Elements.Add(digitalTime);
+            //if (!exists) Elements.Insert(0, digitalTime);
             uCtrl_DigitalTime_Elm.SettingsClear();
+        }
+
+        /// <summary>Добавляем аналогового  время в циферблат</summary>
+        private void AddAnalogTime()
+        {
+            if (!PreviewView) return;
+            List<object> Elements = new List<object>();
+            if (Watch_Face == null) Watch_Face = new WATCH_FACE();
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face.ScreenNormal == null) Watch_Face.ScreenNormal = new ScreenNormal();
+                if (Watch_Face.ScreenNormal.Elements == null) Watch_Face.ScreenNormal.Elements = new List<object>();
+                Elements = Watch_Face.ScreenNormal.Elements;
+            }
+            else
+            {
+                if (Watch_Face.ScreenAOD == null) Watch_Face.ScreenAOD = new ScreenAOD();
+                if (Watch_Face.ScreenAOD.Elements == null) Watch_Face.ScreenAOD.Elements = new List<object>();
+                Elements = Watch_Face.ScreenAOD.Elements;
+
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
+            }
+
+            ElementAnalogTime analogTime = new ElementAnalogTime();
+            analogTime.visible = true;
+            //digitalTime.position = Elements.Count;
+            bool exists = Elements.Exists(e => e.GetType().Name == "ElementAnalogTime"); // проверяем что такого элемента нет
+            if (!exists) Elements.Add(analogTime);
+            //if (!exists) Elements.Insert(0, analogTime);
+            uCtrl_AnalogTime_Elm.SettingsClear();
         }
 
         /// <summary>Отображаем элемынты в соответствии с json файлом</summary>
         private void ShowElemetsWatchFace()
         {
             HideAllElemenrOptions();
-            uCtrl_Background_Elm.ResetHighlightState();
-            uCtrl_DigitalTime_Elm.ResetHighlightState();
+            ResetHighlightState("");
+            ClearAllElemenrOptions();
 
-            panel_UC_Background.Visible = false;
-            panel_UC_DigitalTime.Visible = false;
+            uCtrl_Background_Elm.Visible = false;
+            uCtrl_DigitalTime_Elm.Visible = false;
+            uCtrl_AnalogTime_Elm.Visible = false;
 
 
             int count = tableLayoutPanel_ElemetsWatchFace.RowCount;
@@ -2012,7 +2324,7 @@ namespace Watch_Face_Editor
                 if (Watch_Face.ScreenNormal.Background != null) 
                 {
                     uCtrl_Background_Elm.Visible_ShowDel(false);
-                    panel_UC_Background.Visible = true;
+                    uCtrl_Background_Elm.Visible = true;
                 }
             }
             else
@@ -2038,6 +2350,7 @@ namespace Watch_Face_Editor
                     elements = Watch_Face.ScreenAOD.Elements;
             }
 
+            Dictionary<int, string> elementOptions;
             if (elements.Count > 0)
             {
                 for (int i = 0; i < elements.Count; i++)
@@ -2048,10 +2361,11 @@ namespace Watch_Face_Editor
                     string type = element.GetType().Name;
                     switch (type)
                     {
+                        #region ElementDigitalTime
                         case "ElementDigitalTime":
                             ElementDigitalTime DigitalTime = (ElementDigitalTime)element;
                             uCtrl_DigitalTime_Elm.SetVisibilityElementStatus(DigitalTime.visible);
-                            Dictionary<int, string> elementOptions = new Dictionary<int, string>();
+                            elementOptions = new Dictionary<int, string>();
                             if (DigitalTime.Second != null)
                             {
                                 uCtrl_DigitalTime_Elm.checkBox_Seconds.Checked = DigitalTime.Second.visible;
@@ -2075,10 +2389,40 @@ namespace Watch_Face_Editor
                                 
                             uCtrl_DigitalTime_Elm.SetOptionsPosition(elementOptions);
 
-                            panel_UC_DigitalTime.Visible = true;
+                            uCtrl_DigitalTime_Elm.Visible = true;
                             SetElementPositionInGUI(type, count - i - 2);
                             //SetElementPositionInGUI(type, i + 1);
                             break;
+                        #endregion
+                        
+                        #region ElementAnalogTime
+                        case "ElementAnalogTime":
+                            ElementAnalogTime AnalogTime = (ElementAnalogTime)element;
+                            uCtrl_AnalogTime_Elm.SetVisibilityElementStatus(AnalogTime.visible);
+                            elementOptions = new Dictionary<int, string>();
+                            if (AnalogTime.Second != null)
+                            {
+                                uCtrl_AnalogTime_Elm.checkBox_Seconds.Checked = AnalogTime.Second.visible;
+                                elementOptions.Add(AnalogTime.Second.position, "Second");
+                            }
+                            if (AnalogTime.Minute != null)
+                            {
+                                uCtrl_AnalogTime_Elm.checkBox_Minutes.Checked = AnalogTime.Minute.visible;
+                                elementOptions.Add(AnalogTime.Minute.position, "Minute");
+                            }
+                            if (AnalogTime.Hour != null)
+                            {
+                                uCtrl_AnalogTime_Elm.checkBox_Hours.Checked = AnalogTime.Hour.visible;
+                                elementOptions.Add(AnalogTime.Hour.position, "Hour");
+                            }
+
+                            uCtrl_AnalogTime_Elm.SetOptionsPosition(elementOptions);
+
+                            uCtrl_AnalogTime_Elm.Visible = true;
+                            SetElementPositionInGUI(type, count - i - 2);
+                            //SetElementPositionInGUI(type, i + 1);
+                            break;
+                            #endregion
                     }
                 }
             }
@@ -2091,6 +2435,9 @@ namespace Watch_Face_Editor
             Control panel = null;
             switch (type)
             {
+                case "ElementAnalogTime":
+                    panel = panel_UC_AnalogTime;
+                    break;
                 case "ElementDigitalTime":
                     panel = panel_UC_DigitalTime;
                     break;
@@ -2346,7 +2693,7 @@ namespace Watch_Face_Editor
 
             }
 
-            uCtrl_DigitalTime_Elm1_SelectChanged(sender, eventArgs);
+            uCtrl_DigitalTime_Elm_SelectChanged(sender, eventArgs);
 
             JSON_Modified = true;
             PreviewImage();
@@ -3358,12 +3705,58 @@ namespace Watch_Face_Editor
             });
             File.WriteAllText(Application.StartupPath + @"\Settings.json", JSON_String, Encoding.UTF8);
 
+            if (Watch_Face != null && Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
+                ChangSizeBackground(Watch_Face.ScreenNormal.Background);
+
+            if (Watch_Face != null && Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
+                ChangSizeBackground(Watch_Face.ScreenAOD.Background);
+
             PreviewImage();
             JSON_Modified = true;
             FormText();
 
             //JSON_write();
             //PreviewImage();
+        }
+
+        private void ChangSizeBackground(Background background)
+        {
+            if(background.BackgroundColor != null)
+            {
+                if (radioButton_GTR3.Checked)
+                {
+                    background.BackgroundColor.h = 454;
+                    background.BackgroundColor.w = 454;
+                }
+                else if (radioButton_GTR3_Pro.Checked)
+                {
+                    background.BackgroundColor.h = 480;
+                    background.BackgroundColor.w = 480;
+                }
+                else if (radioButton_GTS3.Checked)
+                {
+                    background.BackgroundColor.h = 450;
+                    background.BackgroundColor.w = 390;
+                }
+            }
+            if (background.BackgroundImage != null)
+            {
+                if (radioButton_GTR3.Checked)
+                {
+                    background.BackgroundImage.h = 454;
+                    background.BackgroundImage.w = 454;
+                }
+                else if (radioButton_GTR3_Pro.Checked)
+                {
+                    background.BackgroundImage.h = 480;
+                    background.BackgroundImage.w = 480;
+                }
+                else if (radioButton_GTS3.Checked)
+                {
+                    background.BackgroundImage.h = 450;
+                    background.BackgroundImage.w = 390;
+                }
+            }
         }
 
         private void button_pack_zip_Click(object sender, EventArgs e)
@@ -3416,6 +3809,7 @@ namespace Watch_Face_Editor
             File.WriteAllText(tempDir + @"\app.json", appText, Encoding.UTF8);
             File.Copy(templatesFileDir + @"\app.js", tempDir + @"\app.js");
 
+            // преобразуем настройки в текстовый файл
             string variables = "";
             string items = "";
             JsonToJS(out variables, out items);
@@ -3913,6 +4307,7 @@ namespace Watch_Face_Editor
                     progressBar1.Value = progress;
                 }
 
+                // читаем данные из текста и преобразуем их в json
                 JSToJson(tempDir + @"\watchface\index.js"); // создаем новый json файл циферблата
                 if (Watch_Face != null && Watch_Face.ScreenNormal != null)
                 {
@@ -3948,16 +4343,18 @@ namespace Watch_Face_Editor
                                 {
                                     if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
                                         width = Watch_Face.ScreenNormal.Background.BackgroundColor.w;
-                                    if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
-                                        width = Watch_Face.ScreenNormal.Background.BackgroundImage.w;
+                                    if (Watch_Face.ScreenNormal.Background.BackgroundImage != null &&
+                                        Watch_Face.ScreenNormal.Background.BackgroundImage.w != null)
+                                        width = (int)Watch_Face.ScreenNormal.Background.BackgroundImage.w;
                                 }
 
                                 if (Watch_Face.ScreenAOD == null && Watch_Face.ScreenAOD.Background != null)
                                 {
                                     if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
                                         width = Watch_Face.ScreenAOD.Background.BackgroundColor.w;
-                                    if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
-                                        width = Watch_Face.ScreenAOD.Background.BackgroundImage.w;
+                                    if (Watch_Face.ScreenAOD.Background.BackgroundImage != null &&
+                                        Watch_Face.ScreenAOD.Background.BackgroundImage.w != null)
+                                        width = (int)Watch_Face.ScreenAOD.Background.BackgroundImage.w;
                                 }
 
                                 switch (width)
@@ -3976,7 +4373,7 @@ namespace Watch_Face_Editor
                         }
                         catch (Exception ex)
                         {
-                            
+                            MessageBox.Show(ex.Message);
                         }
                     }
                     string Watch_Face_String = JsonConvert.SerializeObject(Watch_Face, Formatting.Indented, new JsonSerializerSettings
@@ -4132,6 +4529,184 @@ namespace Watch_Face_Editor
             Thread.Sleep(1); // This makes the difference between whether it works or not. Sleep(0) is not enough.
             Directory.Delete(target_dir);
         }
+
+        private void uCtrl_AnalogTime_Elm_VisibleOptionsChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementAnalogTime analogTime = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementAnalogTime");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementAnalogTime());
+                    analogTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementAnalogTime");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementAnalogTime());
+                    analogTime = (ElementAnalogTime)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                }
+            }
+
+            if (analogTime != null)
+            {
+                if (analogTime.Hour == null) analogTime.Hour = new hmUI_widget_IMG_POINTER();
+                if (analogTime.Minute == null) analogTime.Minute = new hmUI_widget_IMG_POINTER();
+                if (analogTime.Second == null) analogTime.Second = new hmUI_widget_IMG_POINTER();
+
+                Dictionary<string, int> elementOptions = uCtrl_AnalogTime_Elm.GetOptionsPosition();
+                if (elementOptions.ContainsKey("Hour")) analogTime.Hour.position = elementOptions["Hour"];
+                if (elementOptions.ContainsKey("Minute")) analogTime.Minute.position = elementOptions["Minute"];
+                if (elementOptions.ContainsKey("Second")) analogTime.Second.position = elementOptions["Second"];
+
+                CheckBox checkBox = (CheckBox)sender;
+                string name = checkBox.Name;
+                switch (name)
+                {
+                    case "checkBox_Hours":
+                        analogTime.Hour.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Minutes":
+                        analogTime.Minute.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Seconds":
+                        analogTime.Second.visible = checkBox.Checked;
+                        break;
+                }
+
+            }
+
+            uCtrl_AnalogTime_Elm_SelectChanged(sender, eventArgs);
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_AnalogTime_Elm_DelElement(object sender, EventArgs eventArgs)
+        {
+            List<object> Elements = new List<object>();
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    Elements = Watch_Face.ScreenNormal.Elements;
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    Elements = Watch_Face.ScreenAOD.Elements;
+                }
+            }
+
+            bool exists = Elements.Exists(e => e.GetType().Name == "ElementAnalogTime");
+            if (exists)
+            {
+                int index = Elements.FindIndex(e => e.GetType().Name == "ElementAnalogTime");
+                Elements.RemoveAt(index);
+
+                PreviewView = false;
+                ShowElemetsWatchFace();
+                PreviewView = true;
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_AnalogTime_Elm_OptionsMoved(object sender, EventArgs eventArgs, Dictionary<string, int> elementOptions)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementAnalogTime analogTime = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementAnalogTime");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementAnalogTime());
+                    analogTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementAnalogTime");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementAnalogTime());
+                    analogTime = (ElementAnalogTime)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                }
+            }
+
+            if (analogTime != null)
+            {
+                if (analogTime.Hour == null) analogTime.Hour = new hmUI_widget_IMG_POINTER();
+                if (analogTime.Minute == null) analogTime.Minute = new hmUI_widget_IMG_POINTER();
+                if (analogTime.Second == null) analogTime.Second = new hmUI_widget_IMG_POINTER();
+
+                //Dictionary<string, int> elementOptions = uCtrl_AnalogTime_Elm.GetOptionsPosition();
+                if (elementOptions.ContainsKey("Hour")) analogTime.Hour.position = elementOptions["Hour"];
+                if (elementOptions.ContainsKey("Minute")) analogTime.Minute.position = elementOptions["Minute"];
+                if (elementOptions.ContainsKey("Second")) analogTime.Second.position = elementOptions["Second"];
+
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_AnalogTime_Elm_VisibleElementChanged(object sender, EventArgs eventArgs, bool visible)
+        {
+            ElementAnalogTime analogTime = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    //bool exists = Elements.Exists(e => e.GetType().Name == "ElementAnalogTime");
+                    analogTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    analogTime = (ElementAnalogTime)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                }
+            }
+            if (analogTime != null)
+            {
+                analogTime.visible = visible;
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
     }
 }
 

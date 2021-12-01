@@ -27,6 +27,7 @@ namespace ControlLibrary
         private Point location_unit_miles_label;
         private Point location_imageDecimalPoint_label;
         private String unit_label_text;
+
         private List<string> ListImagesFullName = new List<string>(); // перечень путей к файлам с картинками
         public Object _ElementWithText;
 
@@ -45,6 +46,7 @@ namespace ControlLibrary
         }
 
 
+        /// <summary>Задает название выбранной картинки</summary>
         public void SetImage(string value)
         {
             comboBox_image.Text = value;
@@ -662,19 +664,19 @@ namespace ControlLibrary
             numericUpDown_imageY.Enabled = b;
         }
 
-        public void SetMouseСoordinates(int x, int y)
-        {
-            MouseСoordinates.X = x;
-            MouseСoordinates.Y = y;
-        }
+        //public void SetMouseСoordinates(int x, int y)
+        //{
+        //    MouseСoordinates.X = x;
+        //    MouseСoordinates.Y = y;
+        //}
     }
 }
 
 
-public static class MouseСoordinates
-{
-    //public static int X { get; set; }
-    //public static int Y { get; set; }
-    public static int X = -1;
-    public static int Y = -1;
-}
+//public static class MouseСoordinates
+//{
+//    //public static int X { get; set; }
+//    //public static int Y { get; set; }
+//    public static int X = -1;
+//    public static int Y = -1;
+//}

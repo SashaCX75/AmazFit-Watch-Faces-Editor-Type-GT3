@@ -55,7 +55,8 @@ namespace Watch_Face_Editor
             }
             offSet_X = src.Width / 2;
             offSet_Y = src.Height / 2;
-            gPanel.DrawImage(src, new Rectangle(0, 0, src.Width, src.Height));
+            gPanel.DrawImage(src, 0, 0);
+            //gPanel.DrawImage(src, new Rectangle(0, 0, src.Width, src.Height));
             //src.Dispose();
             #endregion
 
@@ -79,17 +80,17 @@ namespace Watch_Face_Editor
                     src = OpenFileStream(background.BackgroundImage.src);
                     int x = background.BackgroundImage.x;
                     int y = background.BackgroundImage.y;
-                    int w = background.BackgroundImage.w;
-                    int h = background.BackgroundImage.h;
-                    gPanel.DrawImage(src, new Rectangle(x, y, w, h));
+                    //int w = background.BackgroundImage.w;
+                    //int h = background.BackgroundImage.h;
+                    gPanel.DrawImage(src, x, y);
                 }
                 if (background.BackgroundColor != null && background.visible)
                 {
                     Color color = StringToColor(background.BackgroundColor.color);
-                    int x = background.BackgroundColor.x;
-                    int y = background.BackgroundColor.y;
-                    int w = background.BackgroundColor.w;
-                    int h = background.BackgroundColor.h;
+                    //int x = background.BackgroundColor.x;
+                    //int y = background.BackgroundColor.y;
+                    //int w = background.BackgroundColor.w;
+                    //int h = background.BackgroundColor.h;
                     gPanel.Clear(color);
                 }
             }
@@ -114,13 +115,20 @@ namespace Watch_Face_Editor
                     string type = element.GetType().Name;
                     switch (type)
                     {
+                        #region ElementDigitalTime
                         case "ElementDigitalTime":
                             ElementDigitalTime DigitalTime = (ElementDigitalTime)element;
                             if(!DigitalTime.visible) continue;
                             int time_offsetX = -1;
                             int time_offsetY = -1;
                             int time_spasing = 0;
-                            bool _pm = false;
+                            bool am_pm = false;
+
+                            // определяем формат времени fm/pm
+                            if (DigitalTime.AmPm != null && DigitalTime.AmPm.am_img != null
+                                    && DigitalTime.AmPm.am_img.Length > 0 && DigitalTime.AmPm.pm_img != null
+                                    && DigitalTime.AmPm.pm_img.Length > 0 &&
+                                    DigitalTime.AmPm.visible && checkBox_ShowIn12hourFormat.Checked) am_pm = true;
 
                             for (int index = 1; index <= 4; index++)
                             {
@@ -144,14 +152,9 @@ namespace Watch_Face_Editor
 
                                     if (ProgramSettings.ShowIn12hourFormat && DigitalTime.AmPm != null)
                                     {
-                                        if (DigitalTime.AmPm.am_img != null && DigitalTime.AmPm.am_img.Length > 0 &&
-                                            DigitalTime.AmPm.pm_img != null && DigitalTime.AmPm.pm_img.Length > 0)
+                                        if (am_pm)
                                         {
-                                            if (value > 11)
-                                            {
-                                                _pm = true;
-                                                value -= 12;
-                                            }
+                                            if (value > 11) value -= 12;
                                             if (value == 0) value = 12;
                                         }
                                     }
@@ -166,7 +169,8 @@ namespace Watch_Face_Editor
                                         y = DigitalTime.Hour.iconPosY;
 
                                         src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                        gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                                        gPanel.DrawImage(src, x, y);
+                                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                                     }
                                 }
 
@@ -207,7 +211,8 @@ namespace Watch_Face_Editor
                                         y = DigitalTime.Minute.iconPosY;
 
                                         src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                        gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                                        gPanel.DrawImage(src, x, y);
+                                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                                     }
                                 }
                                 else time_offsetX = -1;
@@ -249,12 +254,124 @@ namespace Watch_Face_Editor
                                         y = DigitalTime.Second.iconPosY;
 
                                         src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                        gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                                        gPanel.DrawImage(src, x, y);
+                                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                                     }
-                                } 
+                                }
+
+                                if (am_pm && index == DigitalTime.AmPm.position)
+                                {
+                                    if(WatchFacePreviewSet.Time.Hours > 11)
+                                    {
+                                        int imageIndex = ListImages.IndexOf(DigitalTime.AmPm.pm_img);
+                                        int x = DigitalTime.AmPm.pm_x;
+                                        int y = DigitalTime.AmPm.pm_y;
+
+                                        src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                        gPanel.DrawImage(src, x, y);
+                                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                                    }
+                                    else
+                                    {
+                                        int imageIndex = ListImages.IndexOf(DigitalTime.AmPm.am_img);
+                                        int x = DigitalTime.AmPm.am_x;
+                                        int y = DigitalTime.AmPm.am_y;
+
+                                        src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                        gPanel.DrawImage(src, x, y);
+                                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                                    }
+                                }
                             }
 
                             break;
+                        #endregion
+
+                        #region ElementAnalogTime
+                        case "ElementAnalogTime":
+                            ElementAnalogTime AnalogTime = (ElementAnalogTime)element;
+                            if (!AnalogTime.visible) continue;
+
+                            for (int index = 1; index <= 3; index++)
+                            {
+                                if (AnalogTime.Hour != null && AnalogTime.Hour.src != null
+                                    && AnalogTime.Hour.src.Length > 0 &&
+                                    index == AnalogTime.Hour.position && AnalogTime.Hour.visible)
+                                {
+                                    int x = AnalogTime.Hour.center_x;
+                                    int y = AnalogTime.Hour.center_y;
+                                    int offsetX = AnalogTime.Hour.pos_x;
+                                    int offsetY = AnalogTime.Hour.pos_y;
+                                    int image_index = ListImages.IndexOf(AnalogTime.Hour.src);
+                                    int hour = WatchFacePreviewSet.Time.Hours;
+                                    int min = WatchFacePreviewSet.Time.Minutes;
+                                    //int sec = Watch_Face_Preview_Set.TimeW.Seconds;
+                                    if (hour >= 12) hour = hour - 12;
+                                    float angle = 360 * hour / 12 + 360 * min / (60 * 12);
+                                    DrawAnalogClock(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+
+                                    if (AnalogTime.Hour.cover_path != null && AnalogTime.Hour.cover_path.Length > 0)
+                                    {
+                                        image_index = ListImages.IndexOf(AnalogTime.Hour.cover_path);
+                                        x = AnalogTime.Hour.cover_x;
+                                        y = AnalogTime.Hour.cover_y;
+
+                                        src = OpenFileStream(ListImagesFullName[image_index]);
+                                        gPanel.DrawImage(src, x, y);
+                                    }
+                                }
+
+                                if (AnalogTime.Minute != null && AnalogTime.Minute.src != null
+                                    && AnalogTime.Minute.src.Length > 0 &&
+                                    index == AnalogTime.Minute.position && AnalogTime.Minute.visible)
+                                {
+                                    int x = AnalogTime.Minute.center_x;
+                                    int y = AnalogTime.Minute.center_y;
+                                    int offsetX = AnalogTime.Minute.pos_x;
+                                    int offsetY = AnalogTime.Minute.pos_y;
+                                    int image_index = ListImages.IndexOf(AnalogTime.Minute.src);
+                                    int min = WatchFacePreviewSet.Time.Minutes;
+                                    float angle = 360 * min / 60;
+                                    DrawAnalogClock(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+
+                                    if (AnalogTime.Minute.cover_path != null && AnalogTime.Minute.cover_path.Length > 0)
+                                    {
+                                        image_index = ListImages.IndexOf(AnalogTime.Minute.cover_path);
+                                        x = AnalogTime.Minute.cover_x;
+                                        y = AnalogTime.Minute.cover_y;
+
+                                        src = OpenFileStream(ListImagesFullName[image_index]);
+                                        gPanel.DrawImage(src, x, y);
+                                    }
+                                }
+
+                                if (AnalogTime.Second != null && AnalogTime.Second.src != null
+                                    && AnalogTime.Second.src.Length > 0 &&
+                                    index == AnalogTime.Second.position && AnalogTime.Second.visible)
+                                {
+                                    int x = AnalogTime.Second.center_x;
+                                    int y = AnalogTime.Second.center_y;
+                                    int offsetX = AnalogTime.Second.pos_x;
+                                    int offsetY = AnalogTime.Second.pos_y;
+                                    int image_index = ListImages.IndexOf(AnalogTime.Second.src);
+                                    int sec = WatchFacePreviewSet.Time.Seconds;
+                                    float angle = 360 * sec / 60;
+                                    DrawAnalogClock(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+
+                                    if (AnalogTime.Second.cover_path != null && AnalogTime.Second.cover_path.Length > 0)
+                                    {
+                                        image_index = ListImages.IndexOf(AnalogTime.Second.cover_path);
+                                        x = AnalogTime.Second.cover_x;
+                                        y = AnalogTime.Second.cover_y;
+
+                                        src = OpenFileStream(ListImagesFullName[image_index]);
+                                        gPanel.DrawImage(src, x, y);
+                                    }
+                                }
+                            }
+
+                            break;
+                            #endregion
                     }
                 }
             }
@@ -320,10 +437,70 @@ namespace Watch_Face_Editor
                     mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_3.png");
                 }
                 mask = FormColor(mask);
-                gPanel.DrawImage(mask, new Rectangle(0, 0, mask.Width, mask.Height));
+                gPanel.DrawImage(mask, 0, 0);
+                //gPanel.DrawImage(mask, new Rectangle(0, 0, mask.Width, mask.Height));
                 mask.Dispose();
             }
         }
+
+        /// <summary>Рисует стрелки</summary>
+        /// <param name="graphics">Поверхность для рисования</param>
+        /// <param name="x">Центр стрелки X</param>
+        /// <param name="y">Центр стрелки Y</param>
+        /// <param name="offsetX">Смещение от центра по X</param>
+        /// <param name="offsetY">Смещение от центра по Y</param>
+        /// <param name="image_index">Номер изображения</param>
+        /// <param name="angle">Угол поворота стрелки в градусах</param>
+        /// <param name="center_marker">Отображать маркер на точке вращения</param>
+        public void DrawAnalogClock(Graphics graphics, int x, int y, int offsetX, int offsetY, int image_index, float angle, bool showCentrHend)
+        {
+            //int centerX = 227;
+            //int centerY = 227;
+            //if (radioButton_GTS2.Checked)
+            //{
+            //    centerX = 174;
+            //    centerY = 221;
+            //}
+            //if (radioButton_TRex_pro.Checked)
+            //{
+            //    centerX = 180;
+            //    centerY = 180;
+            //}
+            //if (radioButton_ZeppE.Checked)
+            //{
+            //    centerX = 208;
+            //    centerY = 208;
+            //}
+            //if (x == 0) x = centerX;
+            //if (y == 0) y = centerY;
+
+            Logger.WriteLine("* DrawAnalogClock");
+            Bitmap src = OpenFileStream(ListImagesFullName[image_index]);
+            graphics.TranslateTransform(x, y);
+            graphics.RotateTransform(angle);
+            graphics.DrawImage(src, new Rectangle(-offsetX, -offsetY, src.Width, src.Height));
+            graphics.RotateTransform(-angle);
+            graphics.TranslateTransform(-x, -y);
+            src.Dispose();
+
+            if (showCentrHend)
+            {
+                Logger.WriteLine("Draw showCentrHend");
+                using (Pen pen1 = new Pen(Color.White, 1))
+                {
+                    graphics.DrawLine(pen1, new Point(x - 5, y), new Point(x + 5, y));
+                    graphics.DrawLine(pen1, new Point(x, y - 5), new Point(x, y + 5));
+                }
+                using (Pen pen2 = new Pen(Color.Black, 1))
+                {
+                    pen2.DashStyle = DashStyle.Dot;
+                    graphics.DrawLine(pen2, new Point(x - 5, y), new Point(x + 5, y));
+                    graphics.DrawLine(pen2, new Point(x, y - 5), new Point(x, y + 5));
+                }
+            }
+            Logger.WriteLine("* DrawAnalogClock (end)");
+        }
+
 
         /// <summary>Рисует число набором картинок</summary>
         /// <param name="graphics">Поверхность для рисования</param>
@@ -436,7 +613,8 @@ namespace Watch_Face_Editor
             if (separator_index > -1)
             {
                 src = OpenFileStream(ListImagesFullName[separator_index]);
-                graphics.DrawImage(src, new Rectangle(PointX, PointY, src.Width, src.Height));
+                graphics.DrawImage(src, PointX, PointY);
+                //graphics.DrawImage(src, new Rectangle(PointX, PointY, src.Width, src.Height));
                 result = result + src.Width + spacing;
             }
             src.Dispose();
@@ -777,7 +955,8 @@ namespace Watch_Face_Editor
                     {
                         //src = new Bitmap(ListImagesFullName[i]);
                         src = OpenFileStream(ListImagesFullName[i]);
-                        graphics.DrawImage(src, new Rectangle(PointX, PointY, src.Width, src.Height));
+                        graphics.DrawImage(src, PointX, PointY);
+                        //graphics.DrawImage(src, new Rectangle(PointX, PointY, src.Width, src.Height));
                         PointX = PointX + src.Width + spacing;
                         //src.Dispose();
                     }
@@ -788,7 +967,8 @@ namespace Watch_Face_Editor
                     {
                         //src = new Bitmap(ListImagesFullName[dec]);
                         src = OpenFileStream(ListImagesFullName[decimalPoint_index]);
-                        graphics.DrawImage(src, new Rectangle(PointX, PointY, src.Width, src.Height));
+                        graphics.DrawImage(src, PointX, PointY);
+                        //graphics.DrawImage(src, new Rectangle(PointX, PointY, src.Width, src.Height));
                         PointX = PointX + src.Width + spacing;
                         //src.Dispose();
                     }

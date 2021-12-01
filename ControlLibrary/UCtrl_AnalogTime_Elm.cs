@@ -10,14 +10,12 @@ using System.Windows.Forms;
 
 namespace ControlLibrary
 {
-    public partial class UCtrl_DigitalTime_Elm : UserControl
+    public partial class UCtrl_AnalogTime_Elm : UserControl
     {
         private bool setValue; // режим задания параметров
         bool highlight_hours = false;
         bool highlight_minutes = false;
         bool highlight_seconds = false;
-
-        bool highlight_am_pm = false;
 
         bool visibility_elements = false; // развернут список с элементами
         bool visibilityElement = true; // элемент оторажается на предпросмотре
@@ -27,7 +25,7 @@ namespace ControlLibrary
 
         Point cursorPos = new Point(0, 0);
 
-        public UCtrl_DigitalTime_Elm()
+        public UCtrl_AnalogTime_Elm()
         {
             InitializeComponent();
             setValue = false;
@@ -36,7 +34,7 @@ namespace ControlLibrary
             button_ElementName.Controls.Add(pictureBox_Arrow_Down);
             button_ElementName.Controls.Add(pictureBox_NotShow);
             button_ElementName.Controls.Add(pictureBox_Show);
-            button_ElementName.Controls.Add(pictureBox_Del); 
+            button_ElementName.Controls.Add(pictureBox_Del);
 
             pictureBox_Arrow_Right.Location = new Point(1, 2);
             pictureBox_Arrow_Right.BackColor = Color.Transparent;
@@ -87,7 +85,7 @@ namespace ControlLibrary
 
         public bool GetHighlightState()
         {
-            bool highlight = highlight_hours || highlight_minutes || highlight_seconds || highlight_am_pm;
+            bool highlight = highlight_hours || highlight_minutes || highlight_seconds;
             return highlight;
         }
 
@@ -99,8 +97,6 @@ namespace ControlLibrary
             highlight_minutes = false;
             highlight_seconds = false;
 
-            highlight_am_pm = false;
-
             if (highlight_hours)
             {
                 panel_Hours.BackColor = SystemColors.ActiveCaption;
@@ -138,19 +134,6 @@ namespace ControlLibrary
                 panel_Seconds.BackColor = SystemColors.Control;
                 button_Seconds.FlatAppearance.MouseOverBackColor = SystemColors.Control;
                 button_Seconds.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_am_pm)
-            {
-                panel_AmPm.BackColor = SystemColors.ActiveCaption;
-                button_AmPm.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_AmPm.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_AmPm.BackColor = SystemColors.Control;
-                button_AmPm.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_AmPm.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
         }
 
@@ -162,8 +145,6 @@ namespace ControlLibrary
             highlight_minutes = false;
             highlight_seconds = false;
 
-            highlight_am_pm = false;
-
             if (highlight_hours)
             {
                 panel_Hours.BackColor = SystemColors.ActiveCaption;
@@ -201,19 +182,6 @@ namespace ControlLibrary
                 panel_Seconds.BackColor = SystemColors.Control;
                 button_Seconds.FlatAppearance.MouseOverBackColor = SystemColors.Control;
                 button_Seconds.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_am_pm)
-            {
-                panel_AmPm.BackColor = SystemColors.ActiveCaption;
-                button_AmPm.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_AmPm.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_AmPm.BackColor = SystemColors.Control;
-                button_AmPm.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_AmPm.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
             if (SelectChanged != null)
@@ -231,8 +199,6 @@ namespace ControlLibrary
             highlight_minutes = true;
             highlight_seconds = false;
 
-            highlight_am_pm = false;
-
             if (highlight_hours)
             {
                 panel_Hours.BackColor = SystemColors.ActiveCaption;
@@ -270,19 +236,6 @@ namespace ControlLibrary
                 panel_Seconds.BackColor = SystemColors.Control;
                 button_Seconds.FlatAppearance.MouseOverBackColor = SystemColors.Control;
                 button_Seconds.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_am_pm)
-            {
-                panel_AmPm.BackColor = SystemColors.ActiveCaption;
-                button_AmPm.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_AmPm.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_AmPm.BackColor = SystemColors.Control;
-                button_AmPm.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_AmPm.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
             if (SelectChanged != null)
@@ -300,8 +253,6 @@ namespace ControlLibrary
             highlight_minutes = false;
             highlight_seconds = true;
 
-            highlight_am_pm = false;
-
             if (highlight_hours)
             {
                 panel_Hours.BackColor = SystemColors.ActiveCaption;
@@ -339,88 +290,6 @@ namespace ControlLibrary
                 panel_Seconds.BackColor = SystemColors.Control;
                 button_Seconds.FlatAppearance.MouseOverBackColor = SystemColors.Control;
                 button_Seconds.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_am_pm)
-            {
-                panel_AmPm.BackColor = SystemColors.ActiveCaption;
-                button_AmPm.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_AmPm.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_AmPm.BackColor = SystemColors.Control;
-                button_AmPm.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_AmPm.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (SelectChanged != null)
-            {
-                EventArgs eventArgs = new EventArgs();
-                SelectChanged(this, eventArgs);
-            }
-        }
-
-        private void panel_AmPm_Click(object sender, EventArgs e)
-        {
-            selectedElement = "AmPm";
-
-            highlight_hours = false;
-            highlight_minutes = false;
-            highlight_seconds = false;
-
-            highlight_am_pm = true;
-
-            if (highlight_hours)
-            {
-                panel_Hours.BackColor = SystemColors.ActiveCaption;
-                button_Hours.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Hours.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Hours.BackColor = SystemColors.Control;
-                button_Hours.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Hours.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_minutes)
-            {
-                panel_Minutes.BackColor = SystemColors.ActiveCaption;
-                button_Minutes.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Minutes.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Minutes.BackColor = SystemColors.Control;
-                button_Minutes.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Minutes.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_seconds)
-            {
-                panel_Seconds.BackColor = SystemColors.ActiveCaption;
-                button_Seconds.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Seconds.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Seconds.BackColor = SystemColors.Control;
-                button_Seconds.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Seconds.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_am_pm)
-            {
-                panel_AmPm.BackColor = SystemColors.ActiveCaption;
-                button_AmPm.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_AmPm.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_AmPm.BackColor = SystemColors.Control;
-                button_AmPm.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_AmPm.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
             if (SelectChanged != null)
@@ -438,12 +307,11 @@ namespace ControlLibrary
             Panel panel;
             if (control.GetType().Name == "Panel") panel = (Panel)sender;
             else panel = (Panel)control.Parent;
-            if (panel != null) { 
+            if (panel != null)
+            {
                 panel.Tag = new object();
                 cursorPos = Cursor.Position;
             }
-
-            //((Control)sender).Tag = new object();
         }
 
         private void Control_MouseMove(object sender, MouseEventArgs e)
@@ -458,14 +326,10 @@ namespace ControlLibrary
                 int cursorY = Cursor.Position.Y;
                 int dX = Math.Abs(cursorX - cursorPos.X);
                 int dY = Math.Abs(cursorY - cursorPos.Y);
-                if (dX > 5 || dY > 5) 
+                if (dX > 5 || dY > 5)
                     panel.DoDragDrop(sender, DragDropEffects.Move);
                 //panel.DoDragDrop(sender, DragDropEffects.Move);
             }
-
-            //Control control = (Control)sender;
-            //if (control.Tag != null)
-            //    control.DoDragDrop(sender, DragDropEffects.Move);
         }
 
         private void Control_MouseUp(object sender, MouseEventArgs e)
@@ -486,7 +350,7 @@ namespace ControlLibrary
 
             e.Effect = e.AllowedEffect;
             Panel draggedPanel = (Panel)e.Data.GetData(typeof(Panel));
-            if(draggedPanel == null)
+            if (draggedPanel == null)
             {
                 Button draggedButton = (Button)e.Data.GetData(typeof(Button));
                 if (draggedButton != null) draggedPanel = (Panel)draggedButton.Parent;
@@ -495,25 +359,12 @@ namespace ControlLibrary
 
             Point pt = tableLayoutPanel1.PointToClient(new Point(e.X, e.Y));
             Control control = tableLayoutPanel1.GetChildAtPoint(pt);
-           
+
 
             if (control != null)
             {
                 var pos = tableLayoutPanel1.GetPositionFromControl(control);
                 var posOld = tableLayoutPanel1.GetPositionFromControl(draggedPanel);
-                //if (pos.Row == 6) return;
-                //tableLayoutPanel1.Controls.Add(draggedButton, pos.Column, pos.Row);
-
-                //if (pos != posOld)
-                //{
-                //    if (pt.Y < control.Location.Y + draggedPanel.Height * 0.9)
-                //    {
-                //        tableLayoutPanel1.SetRow(draggedPanel, pos.Row);
-                //        if (pos.Row < posOld.Row) tableLayoutPanel1.SetRow(control, pos.Row + 1);
-                //        else tableLayoutPanel1.SetRow(control, pos.Row - 1);
-                //    }
-                //}
-
                 if (pos != posOld && pos.Row < posOld.Row)
                 {
                     if (pt.Y < control.Location.Y + draggedPanel.Height * 0.4)
@@ -582,8 +433,8 @@ namespace ControlLibrary
         private void pictureBox_Show_Click(object sender, EventArgs e)
         {
             visibilityElement = false;
-            pictureBox_Show.Visible = visibilityElement;
-            pictureBox_NotShow.Visible = !visibilityElement;
+            pictureBox_Show.Visible = false;
+            pictureBox_NotShow.Visible = true;
 
             if (VisibleElementChanged != null)
             {
@@ -595,8 +446,8 @@ namespace ControlLibrary
         private void pictureBox_NotShow_Click(object sender, EventArgs e)
         {
             visibilityElement = true;
-            pictureBox_Show.Visible = visibilityElement;
-            pictureBox_NotShow.Visible = !visibilityElement;
+            pictureBox_Show.Visible = true;
+            pictureBox_NotShow.Visible = false;
 
             if (VisibleElementChanged != null)
             {
@@ -647,9 +498,6 @@ namespace ControlLibrary
                 case "Second":
                     checkBox_Seconds.Checked = status;
                     break;
-                case "AmPm":
-                    checkBox_AmPm.Checked = status;
-                    break;
             }
             setValue = false;
         }
@@ -675,16 +523,13 @@ namespace ControlLibrary
                         case "Second":
                             panel = panel_Seconds;
                             break;
-                        case "AmPm":
-                            panel = panel_AmPm;
-                            break;
                     }
                 }
                 position = key;
-                if (panel == null) 
+                if (panel == null)
                     continue;
                 int realPos = tableLayoutPanel1.GetRow(panel);
-                if (realPos == position) 
+                if (realPos == position)
                     continue;
                 if (realPos < position)
                 {
@@ -701,7 +546,7 @@ namespace ControlLibrary
                     for (int i = realPos; i > position; i--)
                     {
                         Control panel2 = tableLayoutPanel1.GetControlFromPosition(0, i - 1);
-                        if (panel2 == null) 
+                        if (panel2 == null)
                             return;
                         tableLayoutPanel1.SetRow(panel, i - 1);
                         tableLayoutPanel1.SetRow(panel2, i);
@@ -729,20 +574,6 @@ namespace ControlLibrary
                     case "panel_Seconds":
                         elementOptions.Add("Second", count - i);
                         break;
-
-                    case "panel_Hours_Font":
-                        elementOptions.Add("Hour_Font", count - i);
-                        break;
-                    case "panel_Minutes_Font":
-                        elementOptions.Add("Minute_Font", count - i);
-                        break;
-                    case "panel_Seconds_Font":
-                        elementOptions.Add("Second_Font", count - i);
-                        break;
-
-                    case "panel_AmPm":
-                        elementOptions.Add("AmPm", count - i);
-                        break;
                 }
             }
             return elementOptions;
@@ -753,17 +584,15 @@ namespace ControlLibrary
             setValue = true;
 
             Dictionary<int, string> elementOptions = new Dictionary<int, string>();
-            elementOptions.Add(4, "Second");
-            elementOptions.Add(3, "Minute");
-            elementOptions.Add(2, "Hour");
-            elementOptions.Add(1, "AmPm");
+            elementOptions.Add(3, "Second");
+            elementOptions.Add(2, "Minute");
+            elementOptions.Add(1, "Hour");
             SetOptionsPosition(elementOptions);
 
             checkBox_Hours.Checked = false;
             checkBox_Minutes.Checked = false;
             checkBox_Seconds.Checked = false;
-            checkBox_AmPm.Checked = false; 
-            
+
             visibility_elements = false;
             tableLayoutPanel1.Visible = visibility_elements;
             pictureBox_Arrow_Down.Visible = visibility_elements;
