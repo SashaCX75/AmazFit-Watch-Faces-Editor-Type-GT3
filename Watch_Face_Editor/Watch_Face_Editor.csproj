@@ -101,8 +101,14 @@
     <Compile Include="ReadWriteJson.cs">
       <SubType>Form</SubType>
     </Compile>
+    <EmbeddedResource Include="Form1.en.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFileExists.en.resx">
+      <DependentUpon>FormFileExists.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormFileExists.resx">
       <DependentUpon>FormFileExists.cs</DependentUpon>

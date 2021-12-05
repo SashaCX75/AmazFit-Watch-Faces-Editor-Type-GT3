@@ -117,70 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Dialog_Title_Dial_Settings" xml:space="preserve">
-    <value>Select a dial settings file</value>
+  <data name="button_GenerateID.Text" xml:space="preserve">
+    <value>Generate</value>
   </data>
-  <data name="Dialog_Title_Image" xml:space="preserve">
-    <value>Select image files</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="radioButton_Background_color.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 17</value>
   </data>
-  <data name="Dialog_Title_New_Project" xml:space="preserve">
-    <value>Creating a new project</value>
+  <data name="radioButton_Background_color.Text" xml:space="preserve">
+    <value>Colour</value>
   </data>
-  <data name="Dialog_Title_WatchSkin" xml:space="preserve">
-    <value>Selecting a watch image file</value>
+  <data name="radioButton_Background_image.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 17</value>
   </data>
-  <data name="FilterGif" xml:space="preserve">
-    <value>GIF Files (*.gif)|*.gif</value>
+  <data name="radioButton_Background_image.Text" xml:space="preserve">
+    <value>Image</value>
   </data>
-  <data name="FilterJson" xml:space="preserve">
-    <value>Json files (*.json) | *.json</value>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 13</value>
   </data>
-  <data name="FilterPng" xml:space="preserve">
-    <value>PNG Files (*.png)|*.png</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Watch face ID:</value>
   </data>
-  <data name="Form_Preview" xml:space="preserve">
-    <value>Preview</value>
-  </data>
-  <data name="Form_PreviewX" xml:space="preserve">
-    <value>Preview [X =</value>
-  </data>
-  <data name="Message_CopyCoord" xml:space="preserve">
-    <value>Coordinates copied</value>
-  </data>
-  <data name="Message_Error_Caption" xml:space="preserve">
-    <value>Error</value>
-  </data>
-  <data name="Message_Error_Image_Text1" xml:space="preserve">
-    <value>Unable to open image:</value>
-  </data>
-  <data name="Message_Error_Image_Text2" xml:space="preserve">
-    <value>. You do not have permission to read the file, or the image is damaged.</value>
-  </data>
-  <data name="Message_JsonError_Text" xml:space="preserve">
-    <value>Invalid JSON file.</value>
-  </data>
-  <data name="Message_Restart_Caption" xml:space="preserve">
-    <value>Reboot</value>
-  </data>
-  <data name="Message_Restart_Text1" xml:space="preserve">
-    <value>To apply the settings, you must restart the program.</value>
-  </data>
-  <data name="Message_Restart_Text2" xml:space="preserve">
-    <value>Restart the program?</value>
-  </data>
-  <data name="Message_Save_JSON_Modified_Caption" xml:space="preserve">
-    <value>Save the project</value>
-  </data>
-  <data name="Message_Save_JSON_Modified_Text1" xml:space="preserve">
-    <value>Do You want save changes of project </value>
-  </data>
-  <data name="Message_Save_new_JSON" xml:space="preserve">
-    <value>The current project has not yet been saved. Do you want to save it?</value>
-  </data>
-  <data name="Message_Warning_Caption" xml:space="preserve">
-    <value>Warning</value>
-  </data>
-  <data name="Message_Warning_Information" xml:space="preserve">
-    <value>Information</value>
+  <data name="label_ID.Location" type="System.Drawing.Point, System.Drawing">
+    <value>84, 127</value>
   </data>
 </root>

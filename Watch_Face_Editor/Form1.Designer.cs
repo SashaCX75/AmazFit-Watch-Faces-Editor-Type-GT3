@@ -31,8 +31,8 @@ namespace Watch_Face_Editor
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage_Edit = new System.Windows.Forms.TabPage();
             this.button_SaveJson = new System.Windows.Forms.Button();
@@ -64,10 +64,6 @@ namespace Watch_Face_Editor
             this.uCtrl_DateMonth_Elm = new ControlLibrary.UCtrl_DateMonth_Elm();
             this.panel_UC_DateYear = new System.Windows.Forms.Panel();
             this.uCtrl_DateYear_Elm = new ControlLibrary.UCtrl_DateYear_Elm();
-            this.panel06 = new System.Windows.Forms.Panel();
-            this.panel05 = new System.Windows.Forms.Panel();
-            this.panel04 = new System.Windows.Forms.Panel();
-            this.panel03 = new System.Windows.Forms.Panel();
             this.panel_UC_Background = new System.Windows.Forms.Panel();
             this.uCtrl_Background_Elm = new ControlLibrary.UCtrl_Background_Elm();
             this.panel_UC_DateWeek = new System.Windows.Forms.Panel();
@@ -79,6 +75,7 @@ namespace Watch_Face_Editor
             this.uCtrl_Text_Opt = new ControlLibrary.UCtrl_Text_Opt();
             this.userCtrl_Background_Options = new ControlLibrary.UCtrl_Background_Opt();
             this.panel_MainScreen_AOD = new System.Windows.Forms.Panel();
+            this.button_CopyAOD = new System.Windows.Forms.Button();
             this.button_RandomPreview = new System.Windows.Forms.Button();
             this.radioButton_ScreenIdle = new System.Windows.Forms.RadioButton();
             this.radioButton_ScreenNormal = new System.Windows.Forms.RadioButton();
@@ -349,7 +346,8 @@ namespace Watch_Face_Editor
             this.comboBox_AddSystem.Items.AddRange(new object[] {
             resources.GetString("comboBox_AddSystem.Items"),
             resources.GetString("comboBox_AddSystem.Items1"),
-            resources.GetString("comboBox_AddSystem.Items2")});
+            resources.GetString("comboBox_AddSystem.Items2"),
+            resources.GetString("comboBox_AddSystem.Items3")});
             resources.ApplyResources(this.comboBox_AddSystem, "comboBox_AddSystem");
             this.comboBox_AddSystem.Name = "comboBox_AddSystem";
             this.comboBox_AddSystem.DropDownClosed += new System.EventHandler(this.comboBox_AddSystem_DropDownClosed);
@@ -436,11 +434,7 @@ namespace Watch_Face_Editor
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateDay, 0, 2);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateMonth, 0, 3);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateYear, 0, 4);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel06, 0, 6);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel05, 0, 7);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel04, 0, 8);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel03, 0, 9);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Background, 0, 10);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Background, 0, 6);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateWeek, 0, 5);
             this.tableLayoutPanel_ElemetsWatchFace.Name = "tableLayoutPanel_ElemetsWatchFace";
             this.tableLayoutPanel_ElemetsWatchFace.DragOver += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragOver);
@@ -538,30 +532,6 @@ namespace Watch_Face_Editor
             this.uCtrl_DateYear_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
             this.uCtrl_DateYear_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
             // 
-            // panel06
-            // 
-            this.panel06.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            resources.ApplyResources(this.panel06, "panel06");
-            this.panel06.Name = "panel06";
-            // 
-            // panel05
-            // 
-            this.panel05.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            resources.ApplyResources(this.panel05, "panel05");
-            this.panel05.Name = "panel05";
-            // 
-            // panel04
-            // 
-            this.panel04.BackColor = System.Drawing.Color.Lime;
-            resources.ApplyResources(this.panel04, "panel04");
-            this.panel04.Name = "panel04";
-            // 
-            // panel03
-            // 
-            this.panel03.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            resources.ApplyResources(this.panel03, "panel03");
-            this.panel03.Name = "panel03";
-            // 
             // panel_UC_Background
             // 
             resources.ApplyResources(this.panel_UC_Background, "panel_UC_Background");
@@ -650,11 +620,19 @@ namespace Watch_Face_Editor
             // panel_MainScreen_AOD
             // 
             this.panel_MainScreen_AOD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_MainScreen_AOD.Controls.Add(this.button_CopyAOD);
             this.panel_MainScreen_AOD.Controls.Add(this.button_RandomPreview);
             this.panel_MainScreen_AOD.Controls.Add(this.radioButton_ScreenIdle);
             this.panel_MainScreen_AOD.Controls.Add(this.radioButton_ScreenNormal);
             resources.ApplyResources(this.panel_MainScreen_AOD, "panel_MainScreen_AOD");
             this.panel_MainScreen_AOD.Name = "panel_MainScreen_AOD";
+            // 
+            // button_CopyAOD
+            // 
+            resources.ApplyResources(this.button_CopyAOD, "button_CopyAOD");
+            this.button_CopyAOD.Name = "button_CopyAOD";
+            this.button_CopyAOD.UseVisualStyleBackColor = true;
+            this.button_CopyAOD.Click += new System.EventHandler(this.button_CopyAOD_Click);
             // 
             // button_RandomPreview
             // 
@@ -872,8 +850,8 @@ namespace Watch_Face_Editor
             // Number
             // 
             this.Number.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Number.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Number.DefaultCellStyle = dataGridViewCellStyle1;
             resources.ApplyResources(this.Number, "Number");
             this.Number.Name = "Number";
             this.Number.ReadOnly = true;
@@ -896,11 +874,11 @@ namespace Watch_Face_Editor
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.NullValue = null;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.NullValue = null;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column1.FillWeight = 95F;
             resources.ApplyResources(this.Column1, "Column1");
             this.Column1.Name = "Column1";
@@ -1696,13 +1674,10 @@ namespace Watch_Face_Editor
         private System.Windows.Forms.Panel panel_UC_DateDay;
         private ControlLibrary.UCtrl_DateDay_Elm uCtrl_DateDay_Elm;
         private ControlLibrary.UCtrl_DateYear_Elm uCtrl_DateYear_Elm;
-        private System.Windows.Forms.Panel panel06;
-        private System.Windows.Forms.Panel panel05;
-        private System.Windows.Forms.Panel panel04;
-        private System.Windows.Forms.Panel panel03;
         private System.Windows.Forms.Panel panel_UC_DateWeek;
         private ControlLibrary.UCtrl_DateWeek_Elm uCtrl_DateWeek_Elm;
         private ControlLibrary.UCtrl_Images_Opt uCtrl_Images_Opt;
+        private System.Windows.Forms.Button button_CopyAOD;
     }
 }
 

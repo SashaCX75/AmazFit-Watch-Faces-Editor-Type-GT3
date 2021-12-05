@@ -117,17 +117,181 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="button2.Text" xml:space="preserve">
-    <value>Заменить</value>
+  <data name="button_SaveJson.Text" xml:space="preserve">
+    <value>Save Json</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Файл циферблата с таким именем уже существует.</value>
+  <data name="button_OpenDir.Text" xml:space="preserve">
+    <value>Open Folder</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="groupBox_AddElemets.Text" xml:space="preserve">
+    <value>Add items to watch face</value>
+  </data>
+  <data name="button_CopyAOD.Text" xml:space="preserve">
+    <value>Copy items to AOD</value>
+  </data>
+  <data name="button_RandomPreview.Text" xml:space="preserve">
+    <value>Random preview</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="radioButton_ScreenNormal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 17</value>
+  </data>
+  <data name="radioButton_ScreenNormal.Text" xml:space="preserve">
+    <value>Main screen</value>
+  </data>
+  <data name="tabPage_Edit_Elements.Text" xml:space="preserve">
+    <value>Editing</value>
+  </data>
+  <data name="button_JsonPreview_Random.Text" xml:space="preserve">
+    <value>Random value</value>
+  </data>
+  <data name="button_JsonPreview_Read.Text" xml:space="preserve">
+    <value>Load value</value>
+  </data>
+  <data name="button_JsonPreview_Write.Text" xml:space="preserve">
+    <value>Save Preview values</value>
+  </data>
+  <data name="tabPage_Show_Set.Text" xml:space="preserve">
+    <value>Data for preview</value>
+  </data>
+  <data name="button_Add_Images.Text" xml:space="preserve">
+    <value>Add images</value>
+  </data>
+  <data name="button_New_Project.Text" xml:space="preserve">
+    <value>Create a new project</value>
+  </data>
+  <data name="button_JSON.Text" xml:space="preserve">
+    <value>Open project</value>
+  </data>
+  <data name="tabPage_Edit.Text" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="tabPageConverting.Text" xml:space="preserve">
+    <value>Converting</value>
+  </data>
+  <data name="tabPage_Settings.Text" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="tabPage_About.Text" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="checkBox_WidgetsArea.Text" xml:space="preserve">
+    <value>Highlight editable zones</value>
+  </data>
+  <data name="checkBox_center_marker.Text" xml:space="preserve">
+    <value>Highlight the pointers rotation center</value>
+  </data>
+  <data name="button_unpack_zip.Text" xml:space="preserve">
+    <value>Unpack the dial</value>
+  </data>
+  <data name="button_pack_zip.Text" xml:space="preserve">
+    <value>Pack the dial</value>
+  </data>
+  <data name="button_CreatePreview.Text" xml:space="preserve">
+    <value>Generate preview</value>
+  </data>
+  <data name="button_RefreshPreview.Text" xml:space="preserve">
+    <value>Refresh Preview</value>
+  </data>
+  <data name="checkBox_CircleScaleImage.Text" xml:space="preserve">
+    <value>Highlight the entire space occupied by circle and line progress</value>
+  </data>
+  <data name="checkBox_Show_Shortcuts.Text" xml:space="preserve">
+    <value>Show shortcut area</value>
+  </data>
+  <data name="checkBox_crop.Text" xml:space="preserve">
+    <value>Crop image to fit the screen (may work slowly)</value>
+  </data>
+  <data name="checkBox_border.Text" xml:space="preserve">
+    <value>Border around aligned objects</value>
+  </data>
+  <data name="button_SaveGIF.Text" xml:space="preserve">
+    <value>Save GIF</value>
+  </data>
+  <data name="button_SavePNG.Text" xml:space="preserve">
+    <value>Save PNG</value>
+  </data>
+  <data name="checkBox_WebB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 17</value>
+  </data>
+  <data name="checkBox_WebB.Text" xml:space="preserve">
+    <value>Black grid</value>
+  </data>
+  <data name="checkBox_WebW.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 17</value>
+  </data>
+  <data name="checkBox_WebW.Text" xml:space="preserve">
+    <value>White grid</value>
+  </data>
+  <data name="button_PreviewBig.Text" xml:space="preserve">
+    <value>Enlarge</value>
+  </data>
+  <data name="imageList1.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
+        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
+        DQAAAk1TRnQBSQFMAgEBBgEAAaABJwGgAScBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
+        AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
+        AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
+        AWYDAAGZAwABzAIAATMDAAIzAgABMwFmAgABMwGZAgABMwHMAgABMwH/AgABZgMAAWYBMwIAAmYCAAFm
+        AZkCAAFmAcwCAAFmAf8CAAGZAwABmQEzAgABmQFmAgACmQIAAZkBzAIAAZkB/wIAAcwDAAHMATMCAAHM
+        AWYCAAHMAZkCAALMAgABzAH/AgAB/wFmAgAB/wGZAgAB/wHMAQABMwH/AgAB/wEAATMBAAEzAQABZgEA
+        ATMBAAGZAQABMwEAAcwBAAEzAQAB/wEAAf8BMwIAAzMBAAIzAWYBAAIzAZkBAAIzAcwBAAIzAf8BAAEz
+        AWYCAAEzAWYBMwEAATMCZgEAATMBZgGZAQABMwFmAcwBAAEzAWYB/wEAATMBmQIAATMBmQEzAQABMwGZ
+        AWYBAAEzApkBAAEzAZkBzAEAATMBmQH/AQABMwHMAgABMwHMATMBAAEzAcwBZgEAATMBzAGZAQABMwLM
+        AQABMwHMAf8BAAEzAf8BMwEAATMB/wFmAQABMwH/AZkBAAEzAf8BzAEAATMC/wEAAWYDAAFmAQABMwEA
+        AWYBAAFmAQABZgEAAZkBAAFmAQABzAEAAWYBAAH/AQABZgEzAgABZgIzAQABZgEzAWYBAAFmATMBmQEA
+        AWYBMwHMAQABZgEzAf8BAAJmAgACZgEzAQADZgEAAmYBmQEAAmYBzAEAAWYBmQIAAWYBmQEzAQABZgGZ
+        AWYBAAFmApkBAAFmAZkBzAEAAWYBmQH/AQABZgHMAgABZgHMATMBAAFmAcwBmQEAAWYCzAEAAWYBzAH/
+        AQABZgH/AgABZgH/ATMBAAFmAf8BmQEAAWYB/wHMAQABzAEAAf8BAAH/AQABzAEAApkCAAGZATMBmQEA
+        AZkBAAGZAQABmQEAAcwBAAGZAwABmQIzAQABmQEAAWYBAAGZATMBzAEAAZkBAAH/AQABmQFmAgABmQFm
+        ATMBAAGZATMBZgEAAZkBZgGZAQABmQFmAcwBAAGZATMB/wEAApkBMwEAApkBZgEAA5kBAAKZAcwBAAKZ
+        Af8BAAGZAcwCAAGZAcwBMwEAAWYBzAFmAQABmQHMAZkBAAGZAswBAAGZAcwB/wEAAZkB/wIAAZkB/wEz
+        AQABmQHMAWYBAAGZAf8BmQEAAZkB/wHMAQABmQL/AQABzAMAAZkBAAEzAQABzAEAAWYBAAHMAQABmQEA
+        AcwBAAHMAQABmQEzAgABzAIzAQABzAEzAWYBAAHMATMBmQEAAcwBMwHMAQABzAEzAf8BAAHMAWYCAAHM
+        AWYBMwEAAZkCZgEAAcwBZgGZAQABzAFmAcwBAAGZAWYB/wEAAcwBmQIAAcwBmQEzAQABzAGZAWYBAAHM
+        ApkBAAHMAZkBzAEAAcwBmQH/AQACzAIAAswBMwEAAswBZgEAAswBmQEAA8wBAALMAf8BAAHMAf8CAAHM
+        Af8BMwEAAZkB/wFmAQABzAH/AZkBAAHMAf8BzAEAAcwC/wEAAcwBAAEzAQAB/wEAAWYBAAH/AQABmQEA
+        AcwBMwIAAf8CMwEAAf8BMwFmAQAB/wEzAZkBAAH/ATMBzAEAAf8BMwH/AQAB/wFmAgAB/wFmATMBAAHM
+        AmYBAAH/AWYBmQEAAf8BZgHMAQABzAFmAf8BAAH/AZkCAAH/AZkBMwEAAf8BmQFmAQAB/wKZAQAB/wGZ
+        AcwBAAH/AZkB/wEAAf8BzAIAAf8BzAEzAQAB/wHMAWYBAAH/AcwBmQEAAf8CzAEAAf8BzAH/AQAC/wEz
+        AQABzAH/AWYBAAL/AZkBAAL/AcwBAAJmAf8BAAFmAf8BZgEAAWYC/wEAAf8CZgEAAf8BZgH/AQAC/wFm
+        AQABIQEAAaUBAANfAQADdwEAA4YBAAOWAQADywEAA7IBAAPXAQAD3QEAA+MBAAPqAQAD8QEAA/gBAAHw
+        AfsB/wEAAaQCoAEAA4ADAAH/AgAB/wMAAv8BAAH/AwAB/wEAAf8BAAL/AgAD/wkAAf8BDgH/OwABbQIA
+        ARQBBwEAAW0JAAEOAgAB8gEOAfAqAAEOAesEAAEQARMEAAHyAfEBAAH0AwAB7AEUAQAB8SgAARMIDgH3
+        AgAB8QIAARMBDgEQAgAB7AEAAREB/ycAAQ8BDgfsAW0BAAETAQABEQFDAf8BEQHsAf8CAAH0Af8BDgHx
+        JAAB/wwAAf8CAAH/AQAB8QMAAf8pAAFDAQ4CAAG8DAABDgHwAQABbQkAAQ4iAAEPAewBQwEAAQ4HAAHy
+        AQABDgEAAQ4BAAHxAQAB/wEAAfACAAH0AgABFSUAAW0GAAHvAQ4BDwEAAe0EAAFtARQEAAH/AgAB/yIA
+        AhABkgQAAbwDAAEOARABbQH0AgABDgHqAQAB7wEOAgAB/wIAAf8BDwEAAQ4hAAJtAbwDAAHvAQABEgGS
+        AQ4GAAHyAQAB9AEAAg4BFAEAAW0BAAHrAQ8B9CUAAg4B7AEOAe0BDwEOARIHAAEOAe8CAAHvAW0B8QIA
+        ARABEiQAAf8BAAH3ARMBDgJtAQ4IAAFtAQ4BAAHvAfQDAAG8AfAB/wEAAfEjAAJDBQABDgFtBwAB7AEA
+        AQ8BDgEAARIBAAIOAQABQwEAAfI0AAHsAeoBAAHzAQ4DAAH/AREB8SgAAewSAAEOOwABBwFtAUMCDwFD
+        AW0BBwQAAfESAAEQAQAB8AMAAfQCDgH/CwAB/wkAAfMBbQHqAbwE/wG8AeoBbQHzAwAB9xEAAQ8BkgEO
+        Af8CAAEPAe8BDgH/BAAB/wgAAf8GAAHzARIB7wH/AfAB7AIVAewB8AH/Ae8BEgHzAgAB7wQAAQcBAAEV
+        CgAB8gEOAe0BEAEAAewBQwHsARQFAAL/BwAC/wUAAW0B7wHyARIEEAIPARIB8gHvAW0CAAHvEgAB7AEV
+        AQ8B7wEOAfMBDgH/BgAC/wcAAv8DAAEHAeoB/wESBBABDwEOAewBDwETAf8B6gEHAQAB7wUAAQcBAAHv
+        CwABDgEHAQAB9wERAfcIAAL/BwAC/wIAAW0CvAEPAxABDwEOAewBAAHsAQ8CvAFtAQAB7xMAAREBbQEQ
+        AQcBDwoAAv8HAAL/AQABQwH/AesBDwIQAQ8BDgHsAQAB7AIPAesB/wFDAQAB7wYAAQcBAAH0CAAB7AEA
+        ARIBAAH0AQ4B8wEAAfIB7wgAAv8HAAH/AQABDgH/ARAEDwHsAQAB7AMPARAB/wEOAQAB7wgAARAIAAHq
+        AhEBEAEAAQ4B7QIOAQAB8wgAAv8IAAEOAf8BEAMPAQ4BAAEQBA8BEAH/AQ4BAAHvBAAE8gHzCAAB7wFD
+        Ag4BAAEQAQ4BEQEOAW0KAAL/BwABEQH/AW0BDgIPAQ4BAAEVAw8BDgFtAf8BEQEAAe8RAAH0AQ4BDwIA
+        AW0BDgESDQAC/wYAAW0CvAIOAQ8BDgEAAewCDwIOArwBbRQAARQBEQFtAf8BvAEAAf8GAAH/AQAB/wUA
+        Av8FAAEHAeoB/wEUAw4B7AEVAw4BFAH/AeoBBxUAAesBDgHvAhMIAAH/BwAC/wUAAW0B7wHyARUGDgEV
+        AfIB7wFtBAAB6gH0AZIFAAL/CQABBwEQAQABbQgAAv8BAAH/BQAC/wQAAfMBEwHvAf8BvAFtAg8BbQG8
+        Af8B7wETAfMBAAHsAgAB9AYAAQ8BQwHtCgABDgHvARUBbQgAAv8HAAL/BAAB8wFtARIBvAT/AbwBEgFt
+        AfMDAAHwAfcB/wIABPcB7wFDAe0C9wH/BwABDgEAAQcBERkAAQcBbQEQAg4BEAFtAQcIAAEOBgAB9wHw
+        CgAB6gIOAfEFAAFCAU0BPgcAAT4DAAEoAwABQAMAASADAAEBAQABAQYAAQEWAAP/AQAB/wEfAf8FAAH9
+        AZcB/AEOBAAB/AHzAckBBgQAAfgBAQGBAQYEAAHwAQABgQEGBAABtwH8AY4FAAGTAf4ByAUAAcEB/AER
+        ASEEAAHlAeABcwGZBAABDAHhARMBIQQAAQwBDwGIASMEAAHgAR8BzAFnBAABgAF/AZMBgwQAAZsBPwGB
+        AQMEAAH7Af8ByQFHBAAB+wH/AfwBfwYAAfABDwIAAeMBhwE2AVoBwAEDAT8B/gHhAYcBGwFMAYABAQE8
+        AX4B4QEPAQ0BhgGAAQEBPgF+AfABDwEGAcICAAI+AfgBHwFDAWABAAEgAT8BPgH4AT8BYQGwAQABQAE/
+        AR4B4AEnATAB2AEAAYABPAEeAeEBAwFYAWwBAQEAATwBHgHhAQcBbAE2AQEBAAE/Af4B4QEfATYBGgEB
+        AwAB8AEfAQsBDAQAAfgBPwFNAYYBgAEBAgAB/AE/AQIBwgGAAQEBBAEAAf4BHwFDAWABwAEDAYQBAAH+
+        AZ8CAAHwAQ8B9wHnAf4BHws=
+</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAUAYGAAAAEAIAColAAAVgAAAEhIAAABACAAiFQAAP6UAAAwMAAAAQAgAKglAACG6QAAICAAAAEA
@@ -1379,188 +1543,4 @@
         AACAAQAAgAEAAIABAAAAAAAAAAAAAAAAAAAAAAAAgAEAAIABAACAAQAAwAMAAOAHAAD8PwAA
 </value>
   </data>
-  <data name="&gt;&gt;button1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;button1.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;button2.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>FormFileExists</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;button2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 10pt</value>
-  </data>
-  <data name="button3.Text" xml:space="preserve">
-    <value>Сохранить оба</value>
-  </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>128, 128</value>
-  </data>
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterScreen</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 23</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>310, 17</value>
-  </data>
-  <data name="button2.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>137, 9</value>
-  </data>
-  <data name="panel1.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Zoom</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button3.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;button3.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>350, 108</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 17</value>
-  </data>
-  <data name="&gt;&gt;button1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="button1.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;button1.Name" xml:space="preserve">
-    <value>button1</value>
-  </data>
-  <data name="button2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;button2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="button1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="button3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="button2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>140, 108</value>
-  </data>
-  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Calibri, 10pt</value>
-  </data>
-  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="button3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>236, 108</value>
-  </data>
-  <data name="&gt;&gt;button3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Файл существует</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Заменить существующий файл?</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>137, 37</value>
-  </data>
-  <data name="button1.Text" xml:space="preserve">
-    <value>Отмена</value>
-  </data>
-  <data name="&gt;&gt;button2.Name" xml:space="preserve">
-    <value>button2</value>
-  </data>
-  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="button3.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="button3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 23</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>449, 137</value>
-  </data>
-  <data name="button2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>90, 23</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button3.Name" xml:space="preserve">
-    <value>button3</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
 </root>

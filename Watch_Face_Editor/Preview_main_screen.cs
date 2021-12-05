@@ -200,7 +200,6 @@ namespace Watch_Face_Editor
                                     if (DigitalTime.Minute.unit != null && DigitalTime.Minute.unit.Length > 0)
                                         separator_index = ListImages.IndexOf(DigitalTime.Minute.unit);
 
-
                                     time_offsetX = Draw_dagital_text(gPanel, imageIndex, x, y,
                                                         spasing, alignment, value, addZero, 2, separator_index, BBorder);
 
@@ -215,7 +214,6 @@ namespace Watch_Face_Editor
                                         //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                                     }
                                 }
-                                else time_offsetX = -1;
 
                                 if (DigitalTime.Second != null && DigitalTime.Second.img_First != null
                                     && DigitalTime.Second.img_First.Length > 0 &&
@@ -642,7 +640,7 @@ namespace Watch_Face_Editor
                                     int imageIndex = ListImages.IndexOf(DateWeek.Images.img_First);
                                     int x = DateWeek.Images.X;
                                     int y = DateWeek.Images.Y;
-                                    imageIndex = imageIndex + WatchFacePreviewSet.Date.Month - 1;
+                                    imageIndex = imageIndex + WatchFacePreviewSet.Date.WeekDay - 1;
 
                                     if (imageIndex < ListImagesFullName.Count)
                                     {

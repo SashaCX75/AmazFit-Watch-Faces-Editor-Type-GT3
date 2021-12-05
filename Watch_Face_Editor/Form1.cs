@@ -14,6 +14,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -1521,7 +1522,7 @@ namespace Watch_Face_Editor
             //openFileDialog.Filter = "Json files (*.json) | *.json";
             openFileDialog.RestoreDirectory = true;
             openFileDialog.Multiselect = false;
-            openFileDialog.Title = Properties.FormStrings.Dialog_Title_Open;
+            openFileDialog.Title = Properties.FormStrings.Dialog_Title_Dial_Settings;
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 FileName = Path.GetFileName(openFileDialog.FileName);
@@ -1800,7 +1801,7 @@ namespace Watch_Face_Editor
             //openFileDialog.Filter = "Json files (*.json) | *.json";
             openFileDialog.RestoreDirectory = true;
             openFileDialog.Multiselect = true;
-            openFileDialog.Title = Properties.FormStrings.Dialog_Title_Open;
+            openFileDialog.Title = Properties.FormStrings.Dialog_Title_Dial_Settings;
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 //FileName = Path.GetFileName(openFileDialog.FileName);
@@ -1860,7 +1861,7 @@ namespace Watch_Face_Editor
 
                     //openFileDialog.Filter = "Json files (*.json) | *.json";
                     saveFileDialog.RestoreDirectory = true;
-                    saveFileDialog.Title = Properties.FormStrings.Dialog_Title_Open;
+                    saveFileDialog.Title = Properties.FormStrings.Dialog_Title_Dial_Settings;
                     if (saveFileDialog.ShowDialog() == DialogResult.OK)
                     {
                         string fullfilename = saveFileDialog.FileName;
@@ -2263,7 +2264,7 @@ namespace Watch_Face_Editor
 
                         //openFileDialog.Filter = "Json files (*.json) | *.json";
                         saveFileDialog.RestoreDirectory = true;
-                        saveFileDialog.Title = Properties.FormStrings.Dialog_Title_Open;
+                        saveFileDialog.Title = Properties.FormStrings.Dialog_Title_Dial_Settings;
                         if (saveFileDialog.ShowDialog() == DialogResult.OK)
                         {
                             string fullfilename = saveFileDialog.FileName;
@@ -2843,6 +2844,7 @@ namespace Watch_Face_Editor
             PreviewView = false;
             comboBox_AddBackground.Visible = !radioButton_ScreenNormal.Checked;
             pictureBox_IconBackground.Visible = !radioButton_ScreenNormal.Checked;
+            button_CopyAOD.Visible = !radioButton_ScreenNormal.Checked;
             ShowElemetsWatchFace(); 
             PreviewView = true;
             PreviewImage();
@@ -4729,7 +4731,7 @@ namespace Watch_Face_Editor
                                     Watch_Face.WatchFace_Info.WatchFaceId = ID;
                                 }
                                 if (appJson.app.icon != null && appJson.app.icon.Length > 3)
-                                    Watch_Face.WatchFace_Info.Preview = appJson.app.icon;
+                                    Watch_Face.WatchFace_Info.Preview = Path.GetFileNameWithoutExtension(appJson.app.icon);
 
                                 if (appJson.app.appName != null && appJson.app.appName.Length > 0)
                                     projectName = appJson.app.appName;
@@ -4778,6 +4780,14 @@ namespace Watch_Face_Editor
                         //DefaultValueHandling = DefaultValueHandling.Ignore,
                         NullValueHandling = NullValueHandling.Ignore
                     });
+                    try
+                    {
+                        projectName = Regex.Replace(projectName, @"[^\w\.@-]", "-",
+                                        RegexOptions.None, TimeSpan.FromSeconds(1.5));
+                    }
+                    catch (Exception)
+                    {
+                    }
                     string fullProjectName = Path.Combine(projectPath, projectName + ".json");
                     File.WriteAllText(fullProjectName, Watch_Face_String, Encoding.UTF8);
 
@@ -5710,6 +5720,24 @@ namespace Watch_Face_Editor
             }
 
             JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void button_CopyAOD_Click(object sender, EventArgs e)
+        {
+            PreviewView = false;
+            if (Watch_Face != null && Watch_Face.ScreenNormal != null) 
+            {
+                Watch_Face.ScreenAOD = new ScreenAOD();
+                Background background = Watch_Face.ScreenNormal.Background;
+                List<object> elements = Watch_Face.ScreenNormal.Elements;
+                Watch_Face.ScreenAOD.Background = background;
+                Watch_Face.ScreenAOD.Elements = elements;
+            }
+            ShowElemetsWatchFace();
+            JSON_Modified = true;
+            PreviewView = true;
             PreviewImage();
             FormText();
         }

@@ -1617,14 +1617,14 @@ namespace Watch_Face_Editor
 
                 parametrName = str.Remove(firstIndex);
                 int stringStartIndex = parametrName.LastIndexOf("\n");
-                parametrName = parametrName.Remove(0, stringStartIndex);
+                if(stringStartIndex > 0) parametrName = parametrName.Remove(0, stringStartIndex);
                 parametrName = parametrName.Trim();
                 int i1 = str.IndexOf(Environment.NewLine);
                 //returnString = str.Substring(firstIndex + 1, lastIndex - firstIndex - 1);
-                int i = returnString.Length;
+                //int i = returnString.Length;
 
-                int i4 = new Regex("{").Matches(returnString).Count;
-                int i3 = new Regex("}").Matches(returnString).Count;
+                //int i4 = new Regex("{").Matches(returnString).Count;
+                //int i3 = new Regex("}").Matches(returnString).Count;
             }
             else returnString = "";
 
@@ -1695,12 +1695,15 @@ namespace Watch_Face_Editor
                 valueStr = valueStr.Trim();
                 valueStr = valueStr.TrimEnd(',');
                 startIndex = valueStr.IndexOf(":");
-                string valueName = valueStr.Substring(0, startIndex);
-                valueStr = valueStr.Remove(0, startIndex + 1);
-                valueStr = valueStr.Trim();
+                if (startIndex > 0)
+                {
+                    string valueName = valueStr.Substring(0, startIndex);
+                    valueStr = valueStr.Remove(0, startIndex + 1);
+                    valueStr = valueStr.Trim();
 
-                if (returnParametrs.ContainsKey(valueName)) returnParametrs.Remove(valueName);
-                returnParametrs.Add(valueName, valueStr);
+                    if (returnParametrs.ContainsKey(valueName)) returnParametrs.Remove(valueName);
+                    returnParametrs.Add(valueName, valueStr); 
+                }
 
                 str = str.Remove(0, endIndex);
                 str = str.TrimStart();

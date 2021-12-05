@@ -136,42 +136,81 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_AmPm_Opt.en.resx">
+      <DependentUpon>UCtrl_AmPm_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_AmPm_Opt.resx">
       <DependentUpon>UCtrl_AmPm_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_AnalogTime_Elm.en.resx">
+      <DependentUpon>UCtrl_AnalogTime_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_AnalogTime_Elm.resx">
       <DependentUpon>UCtrl_AnalogTime_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Background_Elm.en.resx">
+      <DependentUpon>UCtrl_Background_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Background_Elm.resx">
       <DependentUpon>UCtrl_Background_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Background_Opt.en.resx">
+      <DependentUpon>UCtrl_Background_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Background_Opt.resx">
       <DependentUpon>UCtrl_Background_Opt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_DateDay_Elm.en.resx">
+      <DependentUpon>UCtrl_DateDay_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_DateDay_Elm.resx">
       <DependentUpon>UCtrl_DateDay_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_DateMonth_Elm.en.resx">
+      <DependentUpon>UCtrl_DateMonth_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_DateMonth_Elm.resx">
       <DependentUpon>UCtrl_DateMonth_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_DateWeek_Elm.en.resx">
+      <DependentUpon>UCtrl_DateWeek_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_DateWeek_Elm.resx">
       <DependentUpon>UCtrl_DateWeek_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_DateYear_Elm.en.resx">
+      <DependentUpon>UCtrl_DateYear_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_DateYear_Elm.resx">
       <DependentUpon>UCtrl_DateYear_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_DigitalTime_Elm.en.resx">
+      <DependentUpon>UCtrl_DigitalTime_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_DigitalTime_Elm.resx">
       <DependentUpon>UCtrl_DigitalTime_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Images_Opt.en.resx">
+      <DependentUpon>UCtrl_Images_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Images_Opt.resx">
       <DependentUpon>UCtrl_Images_Opt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Pointer_Opt.en.resx">
+      <DependentUpon>UCtrl_Pointer_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Pointer_Opt.resx">
       <DependentUpon>UCtrl_Pointer_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Set.en.resx">
+      <DependentUpon>UCtrl_Set.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Set.resx">
       <DependentUpon>UCtrl_Set.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Text_Opt.en.resx">
+      <DependentUpon>UCtrl_Text_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Text_Opt.resx">
       <DependentUpon>UCtrl_Text_Opt.cs</DependentUpon>

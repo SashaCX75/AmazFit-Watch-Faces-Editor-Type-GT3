@@ -61,7 +61,7 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Select a dial settings file.
+        ///   Ищет локализованную строку, похожую на Выберите файл настроек циферблата.
         /// </summary>
         internal static string Dialog_Title_Dial_Settings {
             get {
@@ -70,7 +70,7 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Select image files.
+        ///   Ищет локализованную строку, похожую на Выберите файлы изображений.
         /// </summary>
         internal static string Dialog_Title_Image {
             get {
@@ -79,20 +79,11 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Creating a new project.
+        ///   Ищет локализованную строку, похожую на Создание нового проекта.
         /// </summary>
         internal static string Dialog_Title_New_Project {
             get {
                 return ResourceManager.GetString("Dialog_Title_New_Project", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Ищет локализованную строку, похожую на Selecting a watch face settings file.
-        /// </summary>
-        internal static string Dialog_Title_Open {
-            get {
-                return ResourceManager.GetString("Dialog_Title_Open", resourceCulture);
             }
         }
         
@@ -115,7 +106,7 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Selecting a watch image file.
+        ///   Ищет локализованную строку, похожую на Выбор файла изображения часов.
         /// </summary>
         internal static string Dialog_Title_WatchSkin {
             get {
@@ -169,7 +160,7 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на GIF Files (*.gif)|*.gif.
+        ///   Ищет локализованную строку, похожую на GIF файлы (*.gif)|*.gif.
         /// </summary>
         internal static string FilterGif {
             get {
@@ -178,7 +169,7 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Json files (*.json) | *.json.
+        ///   Ищет локализованную строку, похожую на Json файлы (*.json) | *.json.
         /// </summary>
         internal static string FilterJson {
             get {
@@ -187,7 +178,7 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на PNG Files (*.png)|*.png.
+        ///   Ищет локализованную строку, похожую на PNG файлы (*.png)|*.png.
         /// </summary>
         internal static string FilterPng {
             get {
@@ -241,7 +232,7 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Coordinates copied.
+        ///   Ищет локализованную строку, похожую на Координаты скопированны.
         /// </summary>
         internal static string Message_CopyCoord {
             get {
@@ -259,7 +250,7 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Unable to open image:.
+        ///   Ищет локализованную строку, похожую на Невозможно открыть изображение:.
         /// </summary>
         internal static string Message_Error_Image_Text1 {
             get {
@@ -268,7 +259,7 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на . You do not have permission to read the file, or the image is damaged..
+        ///   Ищет локализованную строку, похожую на . У Вас нет прав на чтение файла, или изображение повреждено..
         /// </summary>
         internal static string Message_Error_Image_Text2 {
             get {
@@ -367,7 +358,7 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Reboot.
+        ///   Ищет локализованную строку, похожую на Перезагрузка.
         /// </summary>
         internal static string Message_Restart_Caption {
             get {
@@ -376,7 +367,7 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на To apply the settings, you must restart the program..
+        ///   Ищет локализованную строку, похожую на Для применения настроек необходимо перезагрузить программу..
         /// </summary>
         internal static string Message_Restart_Text1 {
             get {
@@ -385,7 +376,7 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Restart the program?.
+        ///   Ищет локализованную строку, похожую на Перезапустить программу?.
         /// </summary>
         internal static string Message_Restart_Text2 {
             get {
@@ -394,7 +385,7 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Save the project.
+        ///   Ищет локализованную строку, похожую на Сохранение проекта.
         /// </summary>
         internal static string Message_Save_JSON_Modified_Caption {
             get {
@@ -403,7 +394,7 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Do You want save changes of project .
+        ///   Ищет локализованную строку, похожую на Вы хотите сохранить изменения в проекте.
         /// </summary>
         internal static string Message_Save_JSON_Modified_Text1 {
             get {
@@ -421,7 +412,7 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на The current project has not yet been saved. Do you want to save it?.
+        ///   Ищет локализованную строку, похожую на Текущий проект еще не сохранен. Вы хотите сохранить его?.
         /// </summary>
         internal static string Message_Save_new_JSON {
             get {

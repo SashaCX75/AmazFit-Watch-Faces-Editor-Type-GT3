@@ -118,16 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Dialog_Title_Dial_Settings" xml:space="preserve">
-    <value>Select a dial settings file</value>
+    <value>Выберите файл настроек циферблата</value>
   </data>
   <data name="Dialog_Title_Image" xml:space="preserve">
-    <value>Select image files</value>
+    <value>Выберите файлы изображений</value>
   </data>
   <data name="Dialog_Title_New_Project" xml:space="preserve">
-    <value>Creating a new project</value>
-  </data>
-  <data name="Dialog_Title_Open" xml:space="preserve">
-    <value>Selecting a watch face settings file</value>
+    <value>Создание нового проекта</value>
   </data>
   <data name="Dialog_Title_PreviewStates" xml:space="preserve">
     <value>Выбор файла настроек предпросмотра</value>
@@ -136,7 +133,7 @@
     <value>Выбор файла циферблата</value>
   </data>
   <data name="Dialog_Title_WatchSkin" xml:space="preserve">
-    <value>Selecting a watch image file</value>
+    <value>Выбор файла изображения часов</value>
   </data>
   <data name="Elemet_Activity" xml:space="preserve">
     <value>Активности</value>
@@ -154,13 +151,13 @@
     <value>Время</value>
   </data>
   <data name="FilterGif" xml:space="preserve">
-    <value>GIF Files (*.gif)|*.gif</value>
+    <value>GIF файлы (*.gif)|*.gif</value>
   </data>
   <data name="FilterJson" xml:space="preserve">
-    <value>Json files (*.json) | *.json</value>
+    <value>Json файлы (*.json) | *.json</value>
   </data>
   <data name="FilterPng" xml:space="preserve">
-    <value>PNG Files (*.png)|*.png</value>
+    <value>PNG файлы (*.png)|*.png</value>
   </data>
   <data name="FilterZip" xml:space="preserve">
     <value>Zip файл циферблата (*.zip) | *.zip</value>
@@ -178,7 +175,7 @@
     <value>Предпросмотр [X =</value>
   </data>
   <data name="Message_CopyCoord" xml:space="preserve">
-    <value>Coordinates copied</value>
+    <value>Координаты скопированны</value>
   </data>
   <data name="Message_ErrorReadJS" xml:space="preserve">
     <value>Не удалось распознать структуру циферблата</value>
@@ -187,10 +184,10 @@
     <value>Error</value>
   </data>
   <data name="Message_Error_Image_Text1" xml:space="preserve">
-    <value>Unable to open image:</value>
+    <value>Невозможно открыть изображение:</value>
   </data>
   <data name="Message_Error_Image_Text2" xml:space="preserve">
-    <value>. You do not have permission to read the file, or the image is damaged.</value>
+    <value>. У Вас нет прав на чтение файла, или изображение повреждено.</value>
   </data>
   <data name="Message_GoToFile_Caption" xml:space="preserve">
     <value>Перейти к файлу</value>
@@ -220,28 +217,28 @@
     <value>Загрузить имеющийся файл с набором параметров предпросмотра PreviewStates.json?</value>
   </data>
   <data name="Message_Restart_Caption" xml:space="preserve">
-    <value>Reboot</value>
+    <value>Перезагрузка</value>
   </data>
   <data name="Message_Restart_Text1" xml:space="preserve">
-    <value>To apply the settings, you must restart the program.</value>
+    <value>Для применения настроек необходимо перезагрузить программу.</value>
   </data>
   <data name="Message_Restart_Text2" xml:space="preserve">
-    <value>Restart the program?</value>
+    <value>Перезапустить программу?</value>
   </data>
   <data name="Message_SaveOnly1234_Text" xml:space="preserve">
     <value>Для сохранения предустановленных параметром установите хотябы в одном поле "Калории" значение отличное от "1234".</value>
   </data>
   <data name="Message_Save_JSON_Modified_Caption" xml:space="preserve">
-    <value>Save the project</value>
+    <value>Сохранение проекта</value>
   </data>
   <data name="Message_Save_JSON_Modified_Text1" xml:space="preserve">
-    <value>Do You want save changes of project </value>
+    <value>Вы хотите сохранить изменения в проекте</value>
   </data>
   <data name="Message_Save_JSON_Modified_Text2" xml:space="preserve">
     <value>?</value>
   </data>
   <data name="Message_Save_new_JSON" xml:space="preserve">
-    <value>The current project has not yet been saved. Do you want to save it?</value>
+    <value>Текущий проект еще не сохранен. Вы хотите сохранить его?</value>
   </data>
   <data name="Message_WarningPreview_Text1" xml:space="preserve">
     <value>Размеры изображения для Preview отличаются от стандартных.</value>

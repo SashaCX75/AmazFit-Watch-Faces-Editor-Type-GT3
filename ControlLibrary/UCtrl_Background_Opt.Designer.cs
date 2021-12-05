@@ -29,6 +29,7 @@ namespace ControlLibrary
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrl_Background_Opt));
             this.button_GenerateID = new System.Windows.Forms.Button();
             this.radioButton_Background_color = new System.Windows.Forms.RadioButton();
             this.radioButton_Background_image = new System.Windows.Forms.RadioButton();
@@ -42,63 +43,43 @@ namespace ControlLibrary
             // 
             // button_GenerateID
             // 
-            this.button_GenerateID.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.button_GenerateID.Location = new System.Drawing.Point(6, 143);
+            resources.ApplyResources(this.button_GenerateID, "button_GenerateID");
             this.button_GenerateID.Name = "button_GenerateID";
-            this.button_GenerateID.Size = new System.Drawing.Size(144, 23);
-            this.button_GenerateID.TabIndex = 64;
-            this.button_GenerateID.Text = "Сгенерировать";
             this.button_GenerateID.UseVisualStyleBackColor = true;
             this.button_GenerateID.Click += new System.EventHandler(this.button_GenerateID_Click);
             // 
             // radioButton_Background_color
             // 
-            this.radioButton_Background_color.AutoSize = true;
+            resources.ApplyResources(this.radioButton_Background_color, "radioButton_Background_color");
             this.radioButton_Background_color.Checked = true;
-            this.radioButton_Background_color.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.radioButton_Background_color.Location = new System.Drawing.Point(141, 3);
             this.radioButton_Background_color.Name = "radioButton_Background_color";
-            this.radioButton_Background_color.Size = new System.Drawing.Size(50, 17);
-            this.radioButton_Background_color.TabIndex = 61;
             this.radioButton_Background_color.TabStop = true;
-            this.radioButton_Background_color.Text = "Цвет";
             this.radioButton_Background_color.UseVisualStyleBackColor = true;
             // 
             // radioButton_Background_image
             // 
-            this.radioButton_Background_image.AutoSize = true;
-            this.radioButton_Background_image.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.radioButton_Background_image.Location = new System.Drawing.Point(6, 3);
+            resources.ApplyResources(this.radioButton_Background_image, "radioButton_Background_image");
             this.radioButton_Background_image.Name = "radioButton_Background_image";
-            this.radioButton_Background_image.Size = new System.Drawing.Size(95, 17);
-            this.radioButton_Background_image.TabIndex = 60;
-            this.radioButton_Background_image.Text = "Изображение";
             this.radioButton_Background_image.UseVisualStyleBackColor = true;
             this.radioButton_Background_image.CheckedChanged += new System.EventHandler(this.radioButton_Background_image_CheckedChanged);
             // 
             // comboBox_Background_color
             // 
+            resources.ApplyResources(this.comboBox_Background_color, "comboBox_Background_color");
             this.comboBox_Background_color.BackColor = System.Drawing.Color.DarkOrange;
             this.comboBox_Background_color.DropDownHeight = 1;
             this.comboBox_Background_color.FormattingEnabled = true;
-            this.comboBox_Background_color.IntegralHeight = false;
-            this.comboBox_Background_color.Location = new System.Drawing.Point(141, 23);
             this.comboBox_Background_color.Name = "comboBox_Background_color";
-            this.comboBox_Background_color.Size = new System.Drawing.Size(45, 21);
-            this.comboBox_Background_color.TabIndex = 59;
             this.comboBox_Background_color.Click += new System.EventHandler(this.comboBox_Background_color_Click);
             this.comboBox_Background_color.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_KeyPress);
             // 
             // comboBox_Preview_image
             // 
+            resources.ApplyResources(this.comboBox_Preview_image, "comboBox_Preview_image");
             this.comboBox_Preview_image.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_Preview_image.DropDownWidth = 135;
             this.comboBox_Preview_image.FormattingEnabled = true;
-            this.comboBox_Preview_image.Location = new System.Drawing.Point(6, 83);
-            this.comboBox_Preview_image.MaxDropDownItems = 25;
             this.comboBox_Preview_image.Name = "comboBox_Preview_image";
-            this.comboBox_Preview_image.Size = new System.Drawing.Size(76, 21);
-            this.comboBox_Preview_image.TabIndex = 58;
             this.comboBox_Preview_image.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
             this.comboBox_Preview_image.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
             this.comboBox_Preview_image.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
@@ -107,15 +88,11 @@ namespace ControlLibrary
             // 
             // comboBox_Background_image
             // 
+            resources.ApplyResources(this.comboBox_Background_image, "comboBox_Background_image");
             this.comboBox_Background_image.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_Background_image.DropDownWidth = 135;
-            this.comboBox_Background_image.Enabled = false;
             this.comboBox_Background_image.FormattingEnabled = true;
-            this.comboBox_Background_image.Location = new System.Drawing.Point(6, 23);
-            this.comboBox_Background_image.MaxDropDownItems = 25;
             this.comboBox_Background_image.Name = "comboBox_Background_image";
-            this.comboBox_Background_image.Size = new System.Drawing.Size(76, 21);
-            this.comboBox_Background_image.TabIndex = 57;
             this.comboBox_Background_image.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
             this.comboBox_Background_image.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
             this.comboBox_Background_image.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
@@ -124,35 +101,22 @@ namespace ControlLibrary
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label3.Location = new System.Drawing.Point(3, 65);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(48, 13);
-            this.label3.TabIndex = 56;
-            this.label3.Text = "Preview:";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 127);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(85, 13);
-            this.label1.TabIndex = 65;
-            this.label1.Text = "ID циферблата:";
             // 
             // label_ID
             // 
-            this.label_ID.AutoSize = true;
-            this.label_ID.Location = new System.Drawing.Point(92, 127);
+            resources.ApplyResources(this.label_ID, "label_ID");
             this.label_ID.Name = "label_ID";
-            this.label_ID.Size = new System.Drawing.Size(13, 13);
-            this.label_ID.TabIndex = 66;
-            this.label_ID.Text = "0";
             // 
             // UCtrl_Background_Opt
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.label_ID);
             this.Controls.Add(this.label1);
@@ -164,7 +128,6 @@ namespace ControlLibrary
             this.Controls.Add(this.comboBox_Background_image);
             this.Controls.Add(this.label3);
             this.Name = "UCtrl_Background_Opt";
-            this.Size = new System.Drawing.Size(255, 175);
             this.ResumeLayout(false);
             this.PerformLayout();
 
