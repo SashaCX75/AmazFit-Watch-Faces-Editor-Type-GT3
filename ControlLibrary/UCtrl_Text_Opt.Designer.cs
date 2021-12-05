@@ -346,7 +346,7 @@ namespace ControlLibrary
             this.comboBox_unit.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_unit.DropDownWidth = 135;
             this.comboBox_unit.FormattingEnabled = true;
-            this.comboBox_unit.Location = new System.Drawing.Point(6, 160);
+            this.comboBox_unit.Location = new System.Drawing.Point(3, 160);
             this.comboBox_unit.MaxDropDownItems = 25;
             this.comboBox_unit.Name = "comboBox_unit";
             this.comboBox_unit.Size = new System.Drawing.Size(76, 21);
@@ -365,7 +365,7 @@ namespace ControlLibrary
             "По левому краю",
             "По центру",
             "По праваму краю"});
-            this.comboBox_alignment.Location = new System.Drawing.Point(6, 223);
+            this.comboBox_alignment.Location = new System.Drawing.Point(3, 223);
             this.comboBox_alignment.Name = "comboBox_alignment";
             this.comboBox_alignment.Size = new System.Drawing.Size(127, 21);
             this.comboBox_alignment.TabIndex = 160;
@@ -374,7 +374,7 @@ namespace ControlLibrary
             // label08
             // 
             this.label08.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label08.Location = new System.Drawing.Point(6, 127);
+            this.label08.Location = new System.Drawing.Point(3, 127);
             this.label08.Margin = new System.Windows.Forms.Padding(3);
             this.label08.Name = "label08";
             this.label08.Size = new System.Drawing.Size(90, 30);
@@ -386,7 +386,7 @@ namespace ControlLibrary
             // 
             this.label09.AutoSize = true;
             this.label09.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label09.Location = new System.Drawing.Point(6, 206);
+            this.label09.Location = new System.Drawing.Point(3, 206);
             this.label09.Name = "label09";
             this.label09.Size = new System.Drawing.Size(82, 13);
             this.label09.TabIndex = 159;
@@ -430,7 +430,7 @@ namespace ControlLibrary
             // checkBox_addZero
             // 
             this.checkBox_addZero.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.checkBox_addZero.Location = new System.Drawing.Point(6, 250);
+            this.checkBox_addZero.Location = new System.Drawing.Point(3, 250);
             this.checkBox_addZero.Name = "checkBox_addZero";
             this.checkBox_addZero.Size = new System.Drawing.Size(145, 35);
             this.checkBox_addZero.TabIndex = 164;
@@ -473,7 +473,7 @@ namespace ControlLibrary
             // checkBox_follow
             // 
             this.checkBox_follow.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.checkBox_follow.Location = new System.Drawing.Point(6, 291);
+            this.checkBox_follow.Location = new System.Drawing.Point(3, 291);
             this.checkBox_follow.Name = "checkBox_follow";
             this.checkBox_follow.Size = new System.Drawing.Size(145, 35);
             this.checkBox_follow.TabIndex = 170;
@@ -486,7 +486,7 @@ namespace ControlLibrary
             // 
             this.label03.AutoSize = true;
             this.label03.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label03.Location = new System.Drawing.Point(190, 143);
+            this.label03.Location = new System.Drawing.Point(188, 143);
             this.label03.Margin = new System.Windows.Forms.Padding(3);
             this.label03.Name = "label03";
             this.label03.Size = new System.Drawing.Size(50, 13);

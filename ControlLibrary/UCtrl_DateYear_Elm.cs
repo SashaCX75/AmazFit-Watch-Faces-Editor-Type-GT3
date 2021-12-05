@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace ControlLibrary
 {
-    public partial class UCtrl_Background_Elm : UserControl
+    public partial class UCtrl_DateYear_Elm : UserControl
     {
         private bool setValue; // режим задания параметров
         bool highlight_element = false;
         bool visibilityElement = true; // элемент оторажается на предпросмотре
-        //bool visible_ShowDel = false;
+        bool visible_ShowDel = false;
 
-        public UCtrl_Background_Elm()
+        public UCtrl_DateYear_Elm()
         {
             InitializeComponent();
             setValue = false;
@@ -74,7 +74,8 @@ namespace ControlLibrary
 
         public void Visible_ShowDel(bool visible)
         {
-            pictureBox_Del.Visible = visible;
+            visible_ShowDel = visible;
+            pictureBox_Del.Visible = visible_ShowDel;
         }
         private void button_ElementName_MouseDown(object sender, MouseEventArgs e)
         {
@@ -102,8 +103,16 @@ namespace ControlLibrary
         private void pictureBox_Show_Click(object sender, EventArgs e)
         {
             visibilityElement = !visibilityElement;
-            pictureBox_NotShow.Visible = !visibilityElement;
-            pictureBox_Show.Visible = visibilityElement;
+            if (visible_ShowDel)
+            {
+                pictureBox_NotShow.Visible = !visibilityElement;
+                pictureBox_Show.Visible = visibilityElement;
+            }
+            else
+            {
+                pictureBox_NotShow.Visible = false;
+                pictureBox_Show.Visible = false;
+            }
 
             if (VisibleElementChanged != null && !setValue)
             {
@@ -114,6 +123,7 @@ namespace ControlLibrary
 
         public void SetVisibilityElementStatus(bool status)
         {
+            visibilityElement = status;
             pictureBox_NotShow.Visible = !visibilityElement;
             pictureBox_Show.Visible = visibilityElement;
         }
@@ -131,7 +141,7 @@ namespace ControlLibrary
         {
             setValue = true;
 
-            visibilityElement = true; 
+            visibilityElement = true;
             pictureBox_NotShow.Visible = !visibilityElement;
             pictureBox_Show.Visible = visibilityElement;
 

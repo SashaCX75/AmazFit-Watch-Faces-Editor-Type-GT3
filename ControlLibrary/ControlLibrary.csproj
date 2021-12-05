@@ -86,11 +86,29 @@
     <Compile Include="UCtrl_DateMonth_Elm.Designer.cs">
       <DependentUpon>UCtrl_DateMonth_Elm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UCtrl_DateWeek_Elm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCtrl_DateWeek_Elm.Designer.cs">
+      <DependentUpon>UCtrl_DateWeek_Elm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCtrl_DateYear_Elm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCtrl_DateYear_Elm.Designer.cs">
+      <DependentUpon>UCtrl_DateYear_Elm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCtrl_DigitalTime_Elm.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UCtrl_DigitalTime_Elm.Designer.cs">
       <DependentUpon>UCtrl_DigitalTime_Elm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCtrl_Images_Opt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCtrl_Images_Opt.Designer.cs">
+      <DependentUpon>UCtrl_Images_Opt.cs</DependentUpon>
     </Compile>
     <Compile Include="UCtrl_Pointer_Opt.cs">
       <SubType>UserControl</SubType>
@@ -136,8 +154,17 @@
     <EmbeddedResource Include="UCtrl_DateMonth_Elm.resx">
       <DependentUpon>UCtrl_DateMonth_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_DateWeek_Elm.resx">
+      <DependentUpon>UCtrl_DateWeek_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_DateYear_Elm.resx">
+      <DependentUpon>UCtrl_DateYear_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_DigitalTime_Elm.resx">
       <DependentUpon>UCtrl_DigitalTime_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Images_Opt.resx">
+      <DependentUpon>UCtrl_Images_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Pointer_Opt.resx">
       <DependentUpon>UCtrl_Pointer_Opt.cs</DependentUpon>
@@ -197,6 +224,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\images_18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\year_18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\week_18.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

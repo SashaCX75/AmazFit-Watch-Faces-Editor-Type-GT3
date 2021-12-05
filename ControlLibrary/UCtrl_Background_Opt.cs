@@ -34,6 +34,7 @@ namespace ControlLibrary
                 button_GenerateID.Visible = !AODmode;
                 label3.Visible = !AODmode;
                 label1.Visible = !AODmode;
+                label_ID.Visible = !AODmode;
             }
         }
         public UCtrl_Background_Opt()

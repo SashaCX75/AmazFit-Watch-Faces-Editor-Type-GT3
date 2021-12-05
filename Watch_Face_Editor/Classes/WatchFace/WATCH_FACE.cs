@@ -97,6 +97,62 @@ namespace Watch_Face_Editor
         public hmUI_widget_IMG_POINTER Minute { get; set; }
         public hmUI_widget_IMG_POINTER Hour { get; set; }
     }
+
+    public class ElementDateDay
+    {
+        public string elementName = "DateDay";
+
+        ///// <summary>Позиция в наборе элементов</summary>
+        //public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = true;
+
+        public hmUI_widget_IMG_POINTER Pointer { get; set; }
+        public hmUI_widget_IMG_NUMBER Number { get; set; }
+    }
+
+    public class ElementDateMonth
+    {
+        public string elementName = "DateMonth";
+
+        ///// <summary>Позиция в наборе элементов</summary>
+        //public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = true;
+
+        public hmUI_widget_IMG_POINTER Pointer { get; set; }
+        public hmUI_widget_IMG_NUMBER Number { get; set; }
+        public hmUI_widget_IMG_LEVEL Images { get; set; }
+    }
+
+    public class ElementDateYear
+    {
+        public string elementName = "DateYear";
+
+        ///// <summary>Позиция в наборе элементов</summary>
+        //public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = true;
+
+        public hmUI_widget_IMG_NUMBER Number { get; set; }
+    }
+
+    public class ElementDateWeek
+    {
+        public string elementName = "DateWeek";
+
+        ///// <summary>Позиция в наборе элементов</summary>
+        //public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = true;
+
+        public hmUI_widget_IMG_POINTER Pointer { get; set; }
+        public hmUI_widget_IMG_LEVEL Images { get; set; }
+    }
 }
 
 

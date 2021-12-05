@@ -146,8 +146,9 @@ namespace ControlLibrary
             this.label_ID.AutoSize = true;
             this.label_ID.Location = new System.Drawing.Point(92, 127);
             this.label_ID.Name = "label_ID";
-            this.label_ID.Size = new System.Drawing.Size(0, 13);
+            this.label_ID.Size = new System.Drawing.Size(13, 13);
             this.label_ID.TabIndex = 66;
+            this.label_ID.Text = "0";
             // 
             // UCtrl_Background_Opt
             // 

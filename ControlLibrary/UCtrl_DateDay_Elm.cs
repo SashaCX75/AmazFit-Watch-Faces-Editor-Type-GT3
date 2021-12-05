@@ -124,7 +124,42 @@ namespace ControlLibrary
 
         private void panel_Number_Click(object sender, EventArgs e)
         {
+            selectedElement = "Number";
 
+            highlight_number = true;
+            highlight_pointer = false;
+
+            if (highlight_number)
+            {
+                panel_Number.BackColor = SystemColors.ActiveCaption;
+                button_Number.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Number.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Number.BackColor = SystemColors.Control;
+                button_Number.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Number.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_pointer)
+            {
+                panel_Pointer.BackColor = SystemColors.ActiveCaption;
+                button_Pointer.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Pointer.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Pointer.BackColor = SystemColors.Control;
+                button_Pointer.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Pointer.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
         }
 
         private void panel_Pointer_Click(object sender, EventArgs e)
@@ -371,7 +406,7 @@ namespace ControlLibrary
         public void SetOptionsPosition(Dictionary<int, string> elementOptions)
         {
             int elementCount = tableLayoutPanel1.RowCount;
-            for (int key = 0; key < elementCount; key++)
+            for (int key = elementCount - 1; key >= 0; key--)
             {
                 Control panel = null;
                 if (elementOptions.ContainsKey(elementCount - key))

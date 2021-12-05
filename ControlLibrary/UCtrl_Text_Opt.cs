@@ -230,7 +230,29 @@ namespace ControlLibrary
             {
                 OptionalSymbol_mode = value;
                 comboBox_imageDecimalPoint.Visible = OptionalSymbol_mode;
-                label07.Visible = OptionalSymbol_mode;
+                label07.Visible = OptionalSymbol_mode; 
+                
+                int offsetPositionX = label03.Location.X - numericUpDown_spacing.Location.X;
+                if (!Distance_mode && !OptionalSymbol_mode)
+                {
+                    Point location = numericUpDown_spacing.Location;
+                    location.X = numericUpDown_iconX.Location.X;
+                    numericUpDown_spacing.Location = location;
+
+                    location = label03.Location;
+                    location.X = numericUpDown_iconX.Location.X + offsetPositionX;
+                    label03.Location = location;
+                }
+                else
+                {
+                    Point location = numericUpDown_spacing.Location;
+                    location.X = numericUpDown_iconY.Location.X;
+                    numericUpDown_spacing.Location = location;
+
+                    location = label03.Location;
+                    location.X = numericUpDown_iconY.Location.X + offsetPositionX;
+                    label03.Location = location;
+                }
             }
         }
 
@@ -292,6 +314,28 @@ namespace ControlLibrary
                     label08.Text = unit_label_text;
                     //label08.TextAlign = ContentAlignment.BottomLeft;
                     //label07.TextAlign = ContentAlignment.BottomCenter;
+                }
+
+                int offsetPositionX = label03.Location.X - numericUpDown_spacing.Location.X;
+                if (!Distance_mode && !OptionalSymbol_mode)
+                {
+                    Point location = numericUpDown_spacing.Location;
+                    location.X = numericUpDown_iconX.Location.X;
+                    numericUpDown_spacing.Location = location;
+
+                    location = label03.Location;
+                    location.X = numericUpDown_iconX.Location.X + offsetPositionX;
+                    label03.Location = location;
+                }
+                else
+                {
+                    Point location = numericUpDown_spacing.Location;
+                    location.X = numericUpDown_iconY.Location.X;
+                    numericUpDown_spacing.Location = location;
+
+                    location = label03.Location;
+                    location.X = numericUpDown_iconY.Location.X + offsetPositionX;
+                    label03.Location = location;
                 }
             }
         }

@@ -71,6 +71,8 @@ namespace ControlLibrary
             this.tableLayoutPanel1.Size = new System.Drawing.Size(220, 51);
             this.tableLayoutPanel1.TabIndex = 17;
             this.tableLayoutPanel1.Visible = false;
+            this.tableLayoutPanel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragDrop);
+            this.tableLayoutPanel1.DragOver += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragOver);
             // 
             // panel_Number
             // 

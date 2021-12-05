@@ -326,6 +326,7 @@ namespace Watch_Face_Editor
             uCtrl_Text_Opt.AutoSize = true;
             uCtrl_AmPm_Opt.AutoSize = true;
             uCtrl_Pointer_Opt.AutoSize = true;
+            uCtrl_Images_Opt.AutoSize = true;
 
             button_CreatePreview.Location = new Point(5, 563);
             Logger.WriteLine("* Form1_Shown(end)");
@@ -974,74 +975,187 @@ namespace Watch_Face_Editor
             //if (e.Data.GetDataPresent(typeof(UCtrl_Background_Elm))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(UCtrl_DigitalTime_Elm))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(UCtrl_AnalogTime_Elm))) typeReturn = false;
-            if (e.Data.GetDataPresent(typeof(Button))) typeReturn = false;
+            if (e.Data.GetDataPresent(typeof(UCtrl_DateDay_Elm))) typeReturn = false;
+            if (e.Data.GetDataPresent(typeof(UCtrl_DateMonth_Elm))) typeReturn = false;
+            if (e.Data.GetDataPresent(typeof(UCtrl_DateYear_Elm))) typeReturn = false;
+            if (e.Data.GetDataPresent(typeof(UCtrl_DateWeek_Elm))) typeReturn = false;
+            //if (e.Data.GetDataPresent(typeof(Button))) typeReturn = false;
             if (typeReturn) return;
 
             e.Effect = e.AllowedEffect;
-            Panel draggedPanel = (Panel)e.Data.GetData(typeof(Panel));
-            if (draggedPanel == null)
+            string[] objectName = e.Data.GetFormats();
+            Panel draggedPanel = null;
+            UserControl draggedUCtrl_Elm;
+            if (objectName.Length > 0)
             {
-                if (e.Data.GetDataPresent(typeof(UCtrl_Background_Elm)))
+                List<object> Elements = new List<object>();
+                int index = -1;
+                if (radioButton_ScreenNormal.Checked)
                 {
-                    UCtrl_Background_Elm draggedUCtrl_Background_Elm = (UCtrl_Background_Elm)e.Data.GetData(typeof(UCtrl_Background_Elm));
-                    if (draggedUCtrl_Background_Elm != null) draggedPanel = (Panel)draggedUCtrl_Background_Elm.Parent;
+                    if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Elements != null)
+                        Elements = Watch_Face.ScreenNormal.Elements;
                 }
-                else if (e.Data.GetDataPresent(typeof(UCtrl_DigitalTime_Elm)))
+                else
                 {
-                    UCtrl_DigitalTime_Elm draggedUCtrl_Background_Elm = (UCtrl_DigitalTime_Elm)e.Data.GetData(typeof(UCtrl_DigitalTime_Elm));
-                    if (draggedUCtrl_Background_Elm != null) draggedPanel = (Panel)draggedUCtrl_Background_Elm.Parent;
+                    if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Elements != null) 
+                        Elements = Watch_Face.ScreenAOD.Elements;
                 }
-                else if (e.Data.GetDataPresent(typeof(UCtrl_AnalogTime_Elm)))
+
+                switch (objectName[0])
                 {
-                    UCtrl_AnalogTime_Elm draggedUCtrl_Background_Elm = (UCtrl_AnalogTime_Elm)e.Data.GetData(typeof(UCtrl_AnalogTime_Elm));
-                    if (draggedUCtrl_Background_Elm != null) draggedPanel = (Panel)draggedUCtrl_Background_Elm.Parent;
+                    case "ControlLibrary.UCtrl_DigitalTime_Elm":
+                        ElementDigitalTime digitalTime =
+                            (ElementDigitalTime)Elements.Find(e1 => e1.GetType().Name == "ElementDigitalTime");
+                        index = Elements.IndexOf(digitalTime);
+                        draggedUCtrl_Elm = (UCtrl_DigitalTime_Elm)e.Data.GetData(typeof(UCtrl_DigitalTime_Elm));
+                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                        break;
+
+                    case "ControlLibrary.UCtrl_AnalogTime_Elm":
+                        ElementAnalogTime analogTime =
+                            (ElementAnalogTime)Elements.Find(e1 => e1.GetType().Name == "ElementAnalogTime");
+                        index = Elements.IndexOf(analogTime);
+                        draggedUCtrl_Elm = (UCtrl_AnalogTime_Elm)e.Data.GetData(typeof(UCtrl_AnalogTime_Elm));
+                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                        break;
+                        
+                    case "ControlLibrary.UCtrl_DateDay_Elm":
+                        ElementDateDay dateDay =
+                            (ElementDateDay)Elements.Find(e1 => e1.GetType().Name == "ElementDateDay");
+                        index = Elements.IndexOf(dateDay);
+                        draggedUCtrl_Elm = (UCtrl_DateDay_Elm)e.Data.GetData(typeof(UCtrl_DateDay_Elm));
+                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                        break;
+
+                    case "ControlLibrary.UCtrl_DateMonth_Elm":
+                        ElementDateMonth dateMonth =
+                            (ElementDateMonth)Elements.Find(e1 => e1.GetType().Name == "ElementDateMonth");
+                        index = Elements.IndexOf(dateMonth);
+                        draggedUCtrl_Elm = (UCtrl_DateMonth_Elm)e.Data.GetData(typeof(UCtrl_DateMonth_Elm));
+                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                        break;
+
+                    case "ControlLibrary.UCtrl_DateYear_Elm":
+                        ElementDateYear dateYear =
+                            (ElementDateYear)Elements.Find(e1 => e1.GetType().Name == "ElementDateYear");
+                        index = Elements.IndexOf(dateYear);
+                        draggedUCtrl_Elm = (UCtrl_DateYear_Elm)e.Data.GetData(typeof(UCtrl_DateYear_Elm));
+                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                        break;
+
+                    case "ControlLibrary.UCtrl_DateWeek_Elm":
+                        ElementDateWeek dateWeek =
+                            (ElementDateWeek)Elements.Find(e1 => e1.GetType().Name == "ElementDateWeek");
+                        index = Elements.IndexOf(dateWeek);
+                        draggedUCtrl_Elm = (UCtrl_DateWeek_Elm)e.Data.GetData(typeof(UCtrl_DateWeek_Elm));
+                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                        break;
                 }
-            }
-            if (draggedPanel == null) return;
 
-            Point pt = tableLayoutPanel_ElemetsWatchFace.PointToClient(new Point(e.X, e.Y));
-            Control control = tableLayoutPanel_ElemetsWatchFace.GetChildAtPoint(pt);
+                //if (e.Data.GetDataPresent(typeof(UCtrl_Background_Elm)))
+                //{
+                //    UCtrl_Background_Elm draggedUCtrl_Elm = (UCtrl_Background_Elm)e.Data.GetData(typeof(UCtrl_Background_Elm));
+                //    if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                //}
+                //else if (e.Data.GetDataPresent(typeof(UCtrl_DigitalTime_Elm)))
+                //{
+                //    UCtrl_DigitalTime_Elm draggedUCtrl_Elm = (UCtrl_DigitalTime_Elm)e.Data.GetData(typeof(UCtrl_DigitalTime_Elm));
+                //    if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                //}
+                //else if (e.Data.GetDataPresent(typeof(UCtrl_AnalogTime_Elm)))
+                //{
+                //    UCtrl_AnalogTime_Elm draggedUCtrl_Elm = (UCtrl_AnalogTime_Elm)e.Data.GetData(typeof(UCtrl_AnalogTime_Elm));
+                //    if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                //}
+                //else if (e.Data.GetDataPresent(typeof(UCtrl_DateDay_Elm)))
+                //{
+                //    UCtrl_DateDay_Elm draggedUCtrl_Elm = (UCtrl_DateDay_Elm)e.Data.GetData(typeof(UCtrl_DateDay_Elm));
+                //    if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                //}
+                //else if (e.Data.GetDataPresent(typeof(UCtrl_DateMonth_Elm)))
+                //{
+                //    UCtrl_DateMonth_Elm draggedUCtrl_Elm = (UCtrl_DateMonth_Elm)e.Data.GetData(typeof(UCtrl_DateMonth_Elm));
+                //    if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                //}
+                //else if (e.Data.GetDataPresent(typeof(UCtrl_DateYear_Elm)))
+                //{
+                //    UCtrl_DateYear_Elm draggedUCtrl_Elm = (UCtrl_DateYear_Elm)e.Data.GetData(typeof(UCtrl_DateYear_Elm));
+                //    if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                //}
+                //else if (e.Data.GetDataPresent(typeof(UCtrl_DateWeek_Elm)))
+                //{
+                //    UCtrl_DateWeek_Elm draggedUCtrl_Elm = (UCtrl_DateWeek_Elm)e.Data.GetData(typeof(UCtrl_DateWeek_Elm));
+                //    if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                //}
 
-            if (control != null)
-            {
-                if (control.Name == "panel_UC_Background") return;
-                var pos = tableLayoutPanel_ElemetsWatchFace.GetPositionFromControl(control);
-                var posOld = tableLayoutPanel_ElemetsWatchFace.GetPositionFromControl(draggedPanel);
 
-                Console.WriteLine("pos.Row = " + pos.Row.ToString() + "     posOld.Row = " + posOld.Row.ToString());
-                //tableLayoutPanel1.Controls.Add(draggedButton, pos.Column, pos.Row);
+                if (draggedPanel == null) return;
 
-                if (pos != posOld)
+                Point pt = tableLayoutPanel_ElemetsWatchFace.PointToClient(new Point(e.X, e.Y));
+                Control control = tableLayoutPanel_ElemetsWatchFace.GetChildAtPoint(pt);
+
+                if (control != null)
                 {
-                    if (pt.Y < control.Location.Y + draggedPanel.Height * 0.9)
+                    if (control.Name == "panel_UC_Background") return;
+                    var pos = tableLayoutPanel_ElemetsWatchFace.GetPositionFromControl(control);
+                    var posOld = tableLayoutPanel_ElemetsWatchFace.GetPositionFromControl(draggedPanel);
+                    int indexNew = tableLayoutPanel_ElemetsWatchFace.RowCount - 2 - pos.Row;
+
+                    Console.WriteLine("pos.Row = " + pos.Row.ToString() + "     posOld.Row = " + posOld.Row.ToString());
+                    //tableLayoutPanel1.Controls.Add(draggedButton, pos.Column, pos.Row);
+
+                    if (pos != posOld)
                     {
-                        tableLayoutPanel_ElemetsWatchFace.SetRow(draggedPanel, pos.Row);
-                        if (pos.Row < posOld.Row) tableLayoutPanel_ElemetsWatchFace.SetRow(control, pos.Row + 1);
-                        else tableLayoutPanel_ElemetsWatchFace.SetRow(control, pos.Row - 1);
+                        if (pt.Y < control.Location.Y + draggedPanel.Height * 0.9)
+                        {
+                            tableLayoutPanel_ElemetsWatchFace.SetRow(draggedPanel, pos.Row);
+                            if (pos.Row < posOld.Row) tableLayoutPanel_ElemetsWatchFace.SetRow(control, pos.Row + 1);
+                            else tableLayoutPanel_ElemetsWatchFace.SetRow(control, pos.Row - 1);
 
-                        DragDropElements(sender, e);
+                            //DragDropElements(sender, e);
+                            if (indexNew >= 0 && indexNew < Elements.Count && index >= 0 && index < Elements.Count && indexNew != index)
+                            {
+                                if (indexNew > index)
+                                {
+                                    Elements.Insert(indexNew + 1, Elements[index]);
+                                    Elements.RemoveAt(index);
+                                }
+                                else
+                                {
+                                    Elements.Insert(indexNew, Elements[index]);
+                                    Elements.RemoveAt(index + 1);
+                                    //object temp = Elements[index];
+                                    //Elements.RemoveAt(index);
+                                    //Elements.Insert(indexNew, temp);
+                                }
+                                JSON_Modified = true;
+                                PreviewImage();
+                                FormText();
+                                //WATCH_FACE www = Watch_Face;
+                            }
+                        }
                     }
-                }
 
-                //if (pos != posOld && pos.Row < posOld.Row)
-                //{
-                //    if (pt.Y < control.Location.Y + control.Height * 0.4)
-                //    {
-                //        tableLayoutPanel_ElemetsWatchFace.SetRow(draggedPanel, pos.Row);
-                //        if (pos.Row < posOld.Row) tableLayoutPanel_ElemetsWatchFace.SetRow(control, pos.Row + 1);
-                //        else tableLayoutPanel_ElemetsWatchFace.SetRow(control, pos.Row - 1);
-                //    }
-                //}
-                //if (pos != posOld && pos.Row > posOld.Row)
-                //{
-                //    if (pt.Y > control.Location.Y + control.Height * 0.6)
-                //    {
-                //        tableLayoutPanel_ElemetsWatchFace.SetRow(draggedPanel, pos.Row);
-                //        if (pos.Row < posOld.Row) tableLayoutPanel_ElemetsWatchFace.SetRow(control, pos.Row + 1);
-                //        else tableLayoutPanel_ElemetsWatchFace.SetRow(control, pos.Row - 1);
-                //    }
-                //}
-                draggedPanel.Tag = null;
+                    //if (pos != posOld && pos.Row < posOld.Row)
+                    //{
+                    //    if (pt.Y < control.Location.Y + control.Height * 0.4)
+                    //    {
+                    //        tableLayoutPanel_ElemetsWatchFace.SetRow(draggedPanel, pos.Row);
+                    //        if (pos.Row < posOld.Row) tableLayoutPanel_ElemetsWatchFace.SetRow(control, pos.Row + 1);
+                    //        else tableLayoutPanel_ElemetsWatchFace.SetRow(control, pos.Row - 1);
+                    //    }
+                    //}
+                    //if (pos != posOld && pos.Row > posOld.Row)
+                    //{
+                    //    if (pt.Y > control.Location.Y + control.Height * 0.6)
+                    //    {
+                    //        tableLayoutPanel_ElemetsWatchFace.SetRow(draggedPanel, pos.Row);
+                    //        if (pos.Row < posOld.Row) tableLayoutPanel_ElemetsWatchFace.SetRow(control, pos.Row + 1);
+                    //        else tableLayoutPanel_ElemetsWatchFace.SetRow(control, pos.Row - 1);
+                    //    }
+                    //}
+                    draggedPanel.Tag = null;
+                }
             }
         }
 
@@ -1083,6 +1197,26 @@ namespace Watch_Face_Editor
                             (ElementAnalogTime)Elements.Find(e1 => e1.GetType().Name == "ElementAnalogTime");
                         index = Elements.IndexOf(analogTime);
                         break;
+                    case "ControlLibrary.UCtrl_ElementDateDay_Elm":
+                        ElementDateDay dateDay =
+                            (ElementDateDay)Elements.Find(e1 => e1.GetType().Name == "ElementDateDay");
+                        index = Elements.IndexOf(dateDay);
+                        break;
+                    case "ControlLibrary.UCtrl_ElementDateMonth_Elm":
+                        ElementDateMonth dateMonth =
+                            (ElementDateMonth)Elements.Find(e1 => e1.GetType().Name == "ElementDateMonth");
+                        index = Elements.IndexOf(dateMonth);
+                        break;
+                    case "ControlLibrary.UCtrl_ElementDateYear_Elm":
+                        ElementDateYear dateYear =
+                            (ElementDateYear)Elements.Find(e1 => e1.GetType().Name == "ElementDateYear");
+                        index = Elements.IndexOf(dateYear);
+                        break;
+                    case "ControlLibrary.UCtrl_ElementDateWeek_Elm":
+                        ElementDateWeek dateWeek =
+                            (ElementDateWeek)Elements.Find(e1 => e1.GetType().Name == "ElementDateWeek");
+                        index = Elements.IndexOf(dateWeek);
+                        break;
                 }
 
                 Panel draggedPanel = (Panel)e.Data.GetData(typeof(Panel));
@@ -1090,18 +1224,38 @@ namespace Watch_Face_Editor
                 {
                     if (e.Data.GetDataPresent(typeof(UCtrl_Background_Elm)))
                     {
-                        UCtrl_Background_Elm draggedUCtrl_Background_Elm = (UCtrl_Background_Elm)e.Data.GetData(typeof(UCtrl_Background_Elm));
-                        if (draggedUCtrl_Background_Elm != null) draggedPanel = (Panel)draggedUCtrl_Background_Elm.Parent;
+                        UCtrl_Background_Elm draggedUCtrl_Elm = (UCtrl_Background_Elm)e.Data.GetData(typeof(UCtrl_Background_Elm));
+                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
                     }
                     else if (e.Data.GetDataPresent(typeof(UCtrl_DigitalTime_Elm)))
                     {
-                        UCtrl_DigitalTime_Elm draggedUCtrl_Background_Elm = (UCtrl_DigitalTime_Elm)e.Data.GetData(typeof(UCtrl_DigitalTime_Elm));
-                        if (draggedUCtrl_Background_Elm != null) draggedPanel = (Panel)draggedUCtrl_Background_Elm.Parent;
+                        UCtrl_DigitalTime_Elm draggedUCtrl_Elm = (UCtrl_DigitalTime_Elm)e.Data.GetData(typeof(UCtrl_DigitalTime_Elm));
+                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
                     }
                     else if (e.Data.GetDataPresent(typeof(UCtrl_AnalogTime_Elm)))
                     {
-                        UCtrl_AnalogTime_Elm draggedUCtrl_Background_Elm = (UCtrl_AnalogTime_Elm)e.Data.GetData(typeof(UCtrl_AnalogTime_Elm));
-                        if (draggedUCtrl_Background_Elm != null) draggedPanel = (Panel)draggedUCtrl_Background_Elm.Parent;
+                        UCtrl_AnalogTime_Elm draggedUCtrl_Elm = (UCtrl_AnalogTime_Elm)e.Data.GetData(typeof(UCtrl_AnalogTime_Elm));
+                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                    }
+                    else if (e.Data.GetDataPresent(typeof(UCtrl_DateDay_Elm)))
+                    {
+                        UCtrl_DateDay_Elm draggedUCtrl_Elm = (UCtrl_DateDay_Elm)e.Data.GetData(typeof(UCtrl_DateDay_Elm));
+                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                    }
+                    else if (e.Data.GetDataPresent(typeof(UCtrl_DateMonth_Elm)))
+                    {
+                        UCtrl_DateMonth_Elm draggedUCtrl_Elm = (UCtrl_DateMonth_Elm)e.Data.GetData(typeof(UCtrl_DateMonth_Elm));
+                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                    }
+                    else if (e.Data.GetDataPresent(typeof(UCtrl_DateYear_Elm)))
+                    {
+                        UCtrl_DateYear_Elm draggedUCtrl_Elm = (UCtrl_DateYear_Elm)e.Data.GetData(typeof(UCtrl_DateYear_Elm));
+                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                    }
+                    else if (e.Data.GetDataPresent(typeof(UCtrl_DateWeek_Elm)))
+                    {
+                        UCtrl_DateWeek_Elm draggedUCtrl_Elm = (UCtrl_DateWeek_Elm)e.Data.GetData(typeof(UCtrl_DateWeek_Elm));
+                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
                     }
                 }
                 if (draggedPanel == null) return;
@@ -1129,89 +1283,6 @@ namespace Watch_Face_Editor
             }
         }
 
-        private void tableLayoutPanel1_DragDrop(object sender, DragEventArgs e)
-        {
-            string[] objectName = e.Data.GetFormats();
-            //object o = e.Data.GetData(e.Data.GetFormats()[0]);
-            if (objectName.Length > 0)
-            {
-                List<object> Elements = new List<object>();
-                int index = -1;
-                if (radioButton_ScreenNormal.Checked)
-                {
-                    if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Elements != null)
-                        Elements = Watch_Face.ScreenNormal.Elements;
-                }
-                else
-                {
-                    if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
-                        Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
-                }
-                if (Elements.Count < 2) return;
-
-                //ElementAnalogTime analogTime = new ElementAnalogTime();
-                //analogTime.visible = true;
-                ////digitalTime.position = Elements.Count;
-                //Elements.f
-                //bool exists = Elements.Exists(e1 => e1.GetType().Name == "ElementAnalogTime");
-                //digitalTime = (ElementDigitalTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDigitalTime");
-                switch (objectName[0])
-                {
-                    case "ControlLibrary.UCtrl_DigitalTime_Elm":
-                        ElementDigitalTime digitalTime = 
-                            (ElementDigitalTime)Elements.Find(e1 => e1.GetType().Name == "ElementDigitalTime");
-                        index = Elements.IndexOf(digitalTime);
-                        break;
-                    case "ControlLibrary.UCtrl_AnalogTime_Elm":
-                        ElementAnalogTime analogTime =
-                            (ElementAnalogTime)Elements.Find(e1 => e1.GetType().Name == "ElementAnalogTime");
-                        index = Elements.IndexOf(analogTime);
-                        break;
-                }
-
-                Panel draggedPanel = (Panel)e.Data.GetData(typeof(Panel));
-                if (draggedPanel == null)
-                {
-                    if (e.Data.GetDataPresent(typeof(UCtrl_Background_Elm)))
-                    {
-                        UCtrl_Background_Elm draggedUCtrl_Background_Elm = (UCtrl_Background_Elm)e.Data.GetData(typeof(UCtrl_Background_Elm));
-                        if (draggedUCtrl_Background_Elm != null) draggedPanel = (Panel)draggedUCtrl_Background_Elm.Parent;
-                    }
-                    else if (e.Data.GetDataPresent(typeof(UCtrl_DigitalTime_Elm)))
-                    {
-                        UCtrl_DigitalTime_Elm draggedUCtrl_Background_Elm = (UCtrl_DigitalTime_Elm)e.Data.GetData(typeof(UCtrl_DigitalTime_Elm));
-                        if (draggedUCtrl_Background_Elm != null) draggedPanel = (Panel)draggedUCtrl_Background_Elm.Parent;
-                    }
-                    else if (e.Data.GetDataPresent(typeof(UCtrl_AnalogTime_Elm)))
-                    {
-                        UCtrl_AnalogTime_Elm draggedUCtrl_Background_Elm = (UCtrl_AnalogTime_Elm)e.Data.GetData(typeof(UCtrl_AnalogTime_Elm));
-                        if (draggedUCtrl_Background_Elm != null) draggedPanel = (Panel)draggedUCtrl_Background_Elm.Parent;
-                    }
-                }
-                if (draggedPanel == null) return;
-                var pos = tableLayoutPanel_ElemetsWatchFace.GetPositionFromControl(draggedPanel);
-                int indexNew = tableLayoutPanel_ElemetsWatchFace.RowCount - 2 - pos.Row;
-                if(indexNew >= 0 && indexNew < Elements.Count && index >= 0 && index < Elements.Count && indexNew != index)
-                {
-                    if(indexNew > index)
-                    {
-                        Elements.Insert(indexNew + 1, Elements[index]);
-                        Elements.RemoveAt(index);
-                    }
-                    else
-                    {
-                        Elements.Insert(indexNew, Elements[index]);
-                        Elements.RemoveAt(index + 1);
-                        //object temp = Elements[index];
-                        //Elements.RemoveAt(index);
-                        //Elements.Insert(indexNew, temp);
-                    }
-                    JSON_Modified = true;
-                    PreviewImage();
-                    FormText();
-                }
-            }
-        }
 
         private void ShowElemenrOptions(string optionsName)
         {
@@ -1232,6 +1303,9 @@ namespace Watch_Face_Editor
                 case "Pointer":
                     uCtrl_Pointer_Opt.Visible = true;
                     break;
+                case "Images":
+                    uCtrl_Images_Opt.Visible = true;
+                    break;
             }
         }
 
@@ -1242,6 +1316,7 @@ namespace Watch_Face_Editor
             uCtrl_Text_Opt.Visible = false;
             uCtrl_AmPm_Opt.Visible = false;
             uCtrl_Pointer_Opt.Visible = false;
+            uCtrl_Images_Opt.Visible = false;
         }
 
         private void ResetHighlightState(string selectElementName)
@@ -1249,6 +1324,10 @@ namespace Watch_Face_Editor
             if (selectElementName != "Background") uCtrl_Background_Elm.ResetHighlightState();
             if (selectElementName != "DigitalTime") uCtrl_DigitalTime_Elm.ResetHighlightState();
             if (selectElementName != "AnalogTime") uCtrl_AnalogTime_Elm.ResetHighlightState();
+            if (selectElementName != "DateDay") uCtrl_DateDay_Elm.ResetHighlightState();
+            if (selectElementName != "DateMonth") uCtrl_DateMonth_Elm.ResetHighlightState();
+            if (selectElementName != "DateYear") uCtrl_DateYear_Elm.ResetHighlightState();
+            if (selectElementName != "DateWeek") uCtrl_DateWeek_Elm.ResetHighlightState();
         }
 
         private void ClearAllElemenrOptions()
@@ -1256,6 +1335,11 @@ namespace Watch_Face_Editor
             uCtrl_Background_Elm.SettingsClear();
             uCtrl_DigitalTime_Elm.SettingsClear();
             uCtrl_AnalogTime_Elm.SettingsClear();
+
+            uCtrl_DateDay_Elm.SettingsClear();
+            uCtrl_DateMonth_Elm.SettingsClear();
+            uCtrl_DateYear_Elm.SettingsClear();
+            uCtrl_DateWeek_Elm.SettingsClear();
         }
 
         private void uCtrl_Background_Elm_SelectChanged(object sender, EventArgs eventArgs)
@@ -1310,10 +1394,9 @@ namespace Watch_Face_Editor
             }
             if (digitalTime != null)
             {
-                string selectedElement = uCtrl_DigitalTime_Elm.selectedElement;
                 hmUI_widget_IMG_NUMBER img_number = null;
 
-                switch (selectedElement)
+                switch (selectElement)
                 {
                     case "Hour":
                         if (uCtrl_DigitalTime_Elm.checkBox_Hours.Checked)
@@ -1386,10 +1469,9 @@ namespace Watch_Face_Editor
             }
             if (analogTime != null)
             {
-                string selectedElement = uCtrl_AnalogTime_Elm.selectedElement;
                 hmUI_widget_IMG_POINTER img_pointer = null;
 
-                switch (selectedElement)
+                switch (selectElement)
                 {
                     case "Hour":
                         if (uCtrl_AnalogTime_Elm.checkBox_Hours.Checked)
@@ -1596,6 +1678,7 @@ namespace Watch_Face_Editor
             uCtrl_Text_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
             uCtrl_AmPm_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
             uCtrl_Pointer_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
+            uCtrl_Images_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
         }
 
         private void comboBox_AddElements_Click(object sender, EventArgs e)
@@ -2033,6 +2116,10 @@ namespace Watch_Face_Editor
                 ShowElemetsWatchFace();
                 JSON_Modified = true;
                 FormText();
+
+                panel_WatchfaceElements.AutoScrollPosition = new Point(
+                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                    panel_WatchfaceElements.VerticalScroll.Maximum);
             }
             if (comboBox_AddTime.SelectedIndex == 1)
             {
@@ -2040,6 +2127,10 @@ namespace Watch_Face_Editor
                 ShowElemetsWatchFace();
                 JSON_Modified = true;
                 FormText();
+
+                panel_WatchfaceElements.AutoScrollPosition = new Point(
+                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                    panel_WatchfaceElements.VerticalScroll.Maximum);
             }
             PreviewView = false;
             //if (comboBox_AddTime.SelectedIndex >= 0) MessageBox.Show(comboBox_AddTime.Text);
@@ -2050,6 +2141,50 @@ namespace Watch_Face_Editor
 
         private void comboBox_AddDate_DropDownClosed(object sender, EventArgs e)
         {
+            if (comboBox_AddDate.SelectedIndex == 0)
+            {
+                AddDateDay();
+                ShowElemetsWatchFace();
+                JSON_Modified = true;
+                FormText();
+
+                panel_WatchfaceElements.AutoScrollPosition = new Point(
+                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                    panel_WatchfaceElements.VerticalScroll.Maximum);
+            }
+            if (comboBox_AddDate.SelectedIndex == 1)
+            {
+                AddDateMonth();
+                ShowElemetsWatchFace();
+                JSON_Modified = true;
+                FormText();
+
+                panel_WatchfaceElements.AutoScrollPosition = new Point(
+                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                    panel_WatchfaceElements.VerticalScroll.Maximum);
+            }
+            if (comboBox_AddDate.SelectedIndex == 2)
+            {
+                AddDateYear();
+                ShowElemetsWatchFace();
+                JSON_Modified = true;
+                FormText();
+
+                panel_WatchfaceElements.AutoScrollPosition = new Point(
+                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                    panel_WatchfaceElements.VerticalScroll.Maximum);
+            }
+            if (comboBox_AddDate.SelectedIndex == 3)
+            {
+                AddDateWeek();
+                ShowElemetsWatchFace();
+                JSON_Modified = true;
+                FormText();
+
+                panel_WatchfaceElements.AutoScrollPosition = new Point(
+                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                    panel_WatchfaceElements.VerticalScroll.Maximum);
+            }
             PreviewView = false;
             //if (comboBox_AddTime.SelectedIndex >= 0) MessageBox.Show(comboBox_AddTime.Text);
             comboBox_AddDate.Items.Insert(0, Properties.FormStrings.Elemet_Date);
@@ -2303,9 +2438,134 @@ namespace Watch_Face_Editor
             uCtrl_AnalogTime_Elm.SettingsClear();
         }
 
+        /// <summary>Добавляем дату в циферблат</summary>
+        private void AddDateDay()
+        {
+            if (!PreviewView) return;
+            List<object> Elements = new List<object>();
+            if (Watch_Face == null) Watch_Face = new WATCH_FACE();
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face.ScreenNormal == null) Watch_Face.ScreenNormal = new ScreenNormal();
+                if (Watch_Face.ScreenNormal.Elements == null) Watch_Face.ScreenNormal.Elements = new List<object>();
+                Elements = Watch_Face.ScreenNormal.Elements;
+            }
+            else
+            {
+                if (Watch_Face.ScreenAOD == null) Watch_Face.ScreenAOD = new ScreenAOD();
+                if (Watch_Face.ScreenAOD.Elements == null) Watch_Face.ScreenAOD.Elements = new List<object>();
+                Elements = Watch_Face.ScreenAOD.Elements;
+
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
+            }
+
+            ElementDateDay dateDay = new ElementDateDay();
+            dateDay.visible = true;
+            //digitalTime.position = Elements.Count;
+            bool exists = Elements.Exists(e => e.GetType().Name == "ElementDateDay"); // проверяем что такого элемента нет
+            //if (!exists) Elements.Add(dateDay);
+            if (!exists) Elements.Insert(0, dateDay);
+            uCtrl_DigitalTime_Elm.SettingsClear();
+        }
+
+        /// <summary>Добавляем месяц в циферблат</summary>
+        private void AddDateMonth()
+        {
+            if (!PreviewView) return;
+            List<object> Elements = new List<object>();
+            if (Watch_Face == null) Watch_Face = new WATCH_FACE();
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face.ScreenNormal == null) Watch_Face.ScreenNormal = new ScreenNormal();
+                if (Watch_Face.ScreenNormal.Elements == null) Watch_Face.ScreenNormal.Elements = new List<object>();
+                Elements = Watch_Face.ScreenNormal.Elements;
+            }
+            else
+            {
+                if (Watch_Face.ScreenAOD == null) Watch_Face.ScreenAOD = new ScreenAOD();
+                if (Watch_Face.ScreenAOD.Elements == null) Watch_Face.ScreenAOD.Elements = new List<object>();
+                Elements = Watch_Face.ScreenAOD.Elements;
+
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
+            }
+
+            ElementDateMonth dateMonth = new ElementDateMonth();
+            dateMonth.visible = true;
+            //digitalTime.position = Elements.Count;
+            bool exists = Elements.Exists(e => e.GetType().Name == "ElementDateMonth"); // проверяем что такого элемента нет
+            //if (!exists) Elements.Add(dateDay);
+            if (!exists) Elements.Insert(0, dateMonth);
+            uCtrl_DigitalTime_Elm.SettingsClear();
+        }
+
+        /// <summary>Добавляем год в циферблат</summary>
+        private void AddDateYear()
+        {
+            if (!PreviewView) return;
+            List<object> Elements = new List<object>();
+            if (Watch_Face == null) Watch_Face = new WATCH_FACE();
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face.ScreenNormal == null) Watch_Face.ScreenNormal = new ScreenNormal();
+                if (Watch_Face.ScreenNormal.Elements == null) Watch_Face.ScreenNormal.Elements = new List<object>();
+                Elements = Watch_Face.ScreenNormal.Elements;
+            }
+            else
+            {
+                if (Watch_Face.ScreenAOD == null) Watch_Face.ScreenAOD = new ScreenAOD();
+                if (Watch_Face.ScreenAOD.Elements == null) Watch_Face.ScreenAOD.Elements = new List<object>();
+                Elements = Watch_Face.ScreenAOD.Elements;
+
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
+            }
+
+            ElementDateYear dateYear = new ElementDateYear();
+            dateYear.visible = true;
+            //digitalTime.position = Elements.Count;
+            bool exists = Elements.Exists(e => e.GetType().Name == "ElementDateYear"); // проверяем что такого элемента нет
+            //if (!exists) Elements.Add(dateDay);
+            if (!exists) Elements.Insert(0, dateYear);
+            uCtrl_DigitalTime_Elm.SettingsClear();
+        }
+
+        /// <summary>Добавляем день недели в циферблат</summary>
+        private void AddDateWeek()
+        {
+            if (!PreviewView) return;
+            List<object> Elements = new List<object>();
+            if (Watch_Face == null) Watch_Face = new WATCH_FACE();
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face.ScreenNormal == null) Watch_Face.ScreenNormal = new ScreenNormal();
+                if (Watch_Face.ScreenNormal.Elements == null) Watch_Face.ScreenNormal.Elements = new List<object>();
+                Elements = Watch_Face.ScreenNormal.Elements;
+            }
+            else
+            {
+                if (Watch_Face.ScreenAOD == null) Watch_Face.ScreenAOD = new ScreenAOD();
+                if (Watch_Face.ScreenAOD.Elements == null) Watch_Face.ScreenAOD.Elements = new List<object>();
+                Elements = Watch_Face.ScreenAOD.Elements;
+
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
+            }
+
+            ElementDateWeek dateWeek = new ElementDateWeek();
+            dateWeek.visible = true;
+            //digitalTime.position = Elements.Count;
+            bool exists = Elements.Exists(e => e.GetType().Name == "ElementDateWeek"); // проверяем что такого элемента нет
+            //if (!exists) Elements.Add(dateDay);
+            if (!exists) Elements.Insert(0, dateWeek);
+            uCtrl_DigitalTime_Elm.SettingsClear();
+        }
+
         /// <summary>Отображаем элемынты в соответствии с json файлом</summary>
         private void ShowElemetsWatchFace()
         {
+            PreviewView = false;
             HideAllElemenrOptions();
             ResetHighlightState("");
             ClearAllElemenrOptions();
@@ -2313,17 +2573,26 @@ namespace Watch_Face_Editor
             uCtrl_Background_Elm.Visible = false;
             uCtrl_DigitalTime_Elm.Visible = false;
             uCtrl_AnalogTime_Elm.Visible = false;
+            uCtrl_DateDay_Elm.Visible = false;
+            uCtrl_DateMonth_Elm.Visible = false;
+            uCtrl_DateYear_Elm.Visible = false;
+            uCtrl_DateWeek_Elm.Visible = false;
 
 
             int count = tableLayoutPanel_ElemetsWatchFace.RowCount;
 
-            if (Watch_Face == null) return;
+            if (Watch_Face == null)
+            {
+                PreviewView = true;
+                return;
+            }
             if (radioButton_ScreenNormal.Checked)
             {
                 if (Watch_Face.ScreenNormal == null) return;
                 if (Watch_Face.ScreenNormal.Background != null) 
                 {
                     uCtrl_Background_Elm.Visible_ShowDel(false);
+                    uCtrl_Background_Elm.SetVisibilityElementStatus(Watch_Face.ScreenNormal.Background.visible);
                     uCtrl_Background_Elm.Visible = true;
                 }
             }
@@ -2334,7 +2603,7 @@ namespace Watch_Face_Editor
                 {
                     uCtrl_Background_Elm.Visible_ShowDel(true);
                     uCtrl_Background_Elm.SetVisibilityElementStatus(Watch_Face.ScreenAOD.Background.visible);
-                    panel_UC_Background.Visible = true;
+                    uCtrl_Background_Elm.Visible = true;
                 }
             }
 
@@ -2422,10 +2691,99 @@ namespace Watch_Face_Editor
                             SetElementPositionInGUI(type, count - i - 2);
                             //SetElementPositionInGUI(type, i + 1);
                             break;
+                        #endregion
+
+                        #region ElementDateDay
+                        case "ElementDateDay":
+                            ElementDateDay DateDay = (ElementDateDay)element;
+                            uCtrl_DateDay_Elm.SetVisibilityElementStatus(DateDay.visible);
+                            elementOptions = new Dictionary<int, string>();
+                            if (DateDay.Number != null)
+                            {
+                                uCtrl_DateDay_Elm.checkBox_Number.Checked = DateDay.Number.visible;
+                                elementOptions.Add(DateDay.Number.position, "Number");
+                            }
+                            if (DateDay.Pointer != null)
+                            {
+                                uCtrl_DateDay_Elm.checkBox_Pointer.Checked = DateDay.Pointer.visible;
+                                elementOptions.Add(DateDay.Pointer.position, "Pointer");
+                            }
+
+                            uCtrl_DateDay_Elm.SetOptionsPosition(elementOptions);
+
+                            uCtrl_DateDay_Elm.Visible = true;
+                            SetElementPositionInGUI(type, count - i - 2);
+                            //SetElementPositionInGUI(type, i + 1);
+                            break;
+                        #endregion
+
+                        #region ElementDateMonth
+                        case "ElementDateMonth":
+                            ElementDateMonth DateMonth = (ElementDateMonth)element;
+                            uCtrl_DateMonth_Elm.SetVisibilityElementStatus(DateMonth.visible);
+                            elementOptions = new Dictionary<int, string>();
+                            if (DateMonth.Number != null)
+                            {
+                                uCtrl_DateMonth_Elm.checkBox_Number.Checked = DateMonth.Number.visible;
+                                elementOptions.Add(DateMonth.Number.position, "Number");
+                            }
+                            if (DateMonth.Pointer != null)
+                            {
+                                uCtrl_DateMonth_Elm.checkBox_Pointer.Checked = DateMonth.Pointer.visible;
+                                elementOptions.Add(DateMonth.Pointer.position, "Pointer");
+                            }
+                            if (DateMonth.Images != null)
+                            {
+                                uCtrl_DateMonth_Elm.checkBox_Images.Checked = DateMonth.Images.visible;
+                                elementOptions.Add(DateMonth.Images.position, "Images");
+                            }
+
+                            uCtrl_DateMonth_Elm.SetOptionsPosition(elementOptions);
+
+                            uCtrl_DateMonth_Elm.Visible = true;
+                            SetElementPositionInGUI(type, count - i - 2);
+                            //SetElementPositionInGUI(type, i + 1);
+                            break;
+                        #endregion
+
+                        #region ElementDateYear
+                        case "ElementDateYear":
+                            ElementDateYear DateYear = (ElementDateYear)element;
+                            uCtrl_DateYear_Elm.SetVisibilityElementStatus(DateYear.visible);
+
+                            uCtrl_DateYear_Elm.Visible = true;
+                            SetElementPositionInGUI(type, count - i - 2);
+                            //SetElementPositionInGUI(type, i + 1);
+                            break;
+                        #endregion
+
+                        #region ElementDateWeek
+                        case "ElementDateWeek":
+                            ElementDateWeek DateWeek = (ElementDateWeek)element;
+                            uCtrl_DateWeek_Elm.SetVisibilityElementStatus(DateWeek.visible);
+                            elementOptions = new Dictionary<int, string>();
+                            if (DateWeek.Pointer != null)
+                            {
+                                uCtrl_DateWeek_Elm.checkBox_Pointer.Checked = DateWeek.Pointer.visible;
+                                elementOptions.Add(DateWeek.Pointer.position, "Pointer");
+                            }
+                            if (DateWeek.Images != null)
+                            {
+                                uCtrl_DateWeek_Elm.checkBox_Images.Checked = DateWeek.Images.visible;
+                                elementOptions.Add(DateWeek.Images.position, "Images");
+                            }
+
+                            uCtrl_DateWeek_Elm.SetOptionsPosition(elementOptions);
+
+                            uCtrl_DateWeek_Elm.Visible = true;
+                            SetElementPositionInGUI(type, count - i - 2);
+                            //SetElementPositionInGUI(type, i + 1);
+                            break;
                             #endregion
                     }
                 }
             }
+            PreviewView = true;
         }
 
         /// <summary>Перемещаем элемен в нужную позицию</summary>
@@ -2441,16 +2799,29 @@ namespace Watch_Face_Editor
                 case "ElementDigitalTime":
                     panel = panel_UC_DigitalTime;
                     break;
+                case "ElementDateDay":
+                    panel = panel_UC_DateDay;
+                    break;
+                case "ElementDateMonth":
+                    panel = panel_UC_DateMonth;
+                    break;
+                case "ElementDateYear":
+                    panel = panel_UC_DateYear;
+                    break;
+                case "ElementDateWeek":
+                    panel = panel_UC_DateWeek;
+                    break;
             }
             if (panel == null) return;
             int realPos = tableLayoutPanel_ElemetsWatchFace.GetRow(panel);
             if (realPos == position) return;
             if (realPos < position)
             {
-                for(int i= realPos;i< position; i++)
+                for (int i = realPos; i < position; i++)
                 {
                     Control panel2 = tableLayoutPanel_ElemetsWatchFace.GetControlFromPosition(0, i + 1);
                     if (panel2 == null) return;
+                    string n = panel2.Name;
                     tableLayoutPanel_ElemetsWatchFace.SetRow(panel2, i);
                     tableLayoutPanel_ElemetsWatchFace.SetRow(panel, i + 1);
                 }
@@ -2779,40 +3150,66 @@ namespace Watch_Face_Editor
             FormText();
         }
 
-        private void uCtrl_DigitalTime_Elm_DelElement(object sender, EventArgs eventArgs)
+        private void uCtrl_Elm_DelElement(object sender, EventArgs eventArgs)
         {
             List<object> Elements = new List<object>();
-            if (radioButton_ScreenNormal.Checked)
+            string objectName = "";
+            objectName = sender.GetType().Name;
+            switch (sender.GetType().Name)
             {
-                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
-                    Watch_Face.ScreenNormal.Elements != null)
+                case "UCtrl_DigitalTime_Elm":
+                    objectName = "ElementDigitalTime";
+                    break;
+                case "UCtrl_AnalogTime_Elm":
+                    objectName = "ElementAnalogTime";
+                    break;
+                case "UCtrl_DateDay_Elm":
+                    objectName = "ElementDateDay";
+                    break;
+                case "UCtrl_DateMonth_Elm":
+                    objectName = "ElementDateMonth";
+                    break;
+                case "UCtrl_DateYear_Elm":
+                    objectName = "ElementDateYear";
+                    break;
+                case "UCtrl_DateWeek_Elm":
+                    objectName = "ElementDateWeek";
+                    break;
+            }
+            if (objectName.Length > 0)
+            {
+                if (radioButton_ScreenNormal.Checked)
                 {
-                    Elements = Watch_Face.ScreenNormal.Elements;
+                    if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                        Watch_Face.ScreenNormal.Elements != null)
+                    {
+                        Elements = Watch_Face.ScreenNormal.Elements;
+                    }
                 }
-            }
-            else
-            {
-                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
-                    Watch_Face.ScreenAOD.Elements != null)
+                else
                 {
-                    Elements = Watch_Face.ScreenAOD.Elements;
+                    if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                        Watch_Face.ScreenAOD.Elements != null)
+                    {
+                        Elements = Watch_Face.ScreenAOD.Elements;
+                    }
                 }
+
+                bool exists = Elements.Exists(e => e.GetType().Name == objectName);
+                if (exists)
+                {
+                    int index = Elements.FindIndex(e => e.GetType().Name == objectName);
+                    Elements.RemoveAt(index);
+
+                    PreviewView = false;
+                    ShowElemetsWatchFace();
+                    PreviewView = true;
+                }
+
+                JSON_Modified = true;
+                PreviewImage();
+                FormText(); 
             }
-
-            bool exists = Elements.Exists(e => e.GetType().Name == "ElementDigitalTime");
-            if (exists)
-            {
-                int index = Elements.FindIndex(e => e.GetType().Name == "ElementDigitalTime");
-                Elements.RemoveAt(index);
-
-                PreviewView = false;
-                ShowElemetsWatchFace();
-                PreviewView = true;
-            }
-
-            JSON_Modified = true;
-            PreviewImage();
-            FormText();
         }
 
         private FileInfo[] FileInfoSort(FileInfo[] fileInfo)
@@ -4594,42 +4991,6 @@ namespace Watch_Face_Editor
             FormText();
         }
 
-        private void uCtrl_AnalogTime_Elm_DelElement(object sender, EventArgs eventArgs)
-        {
-            List<object> Elements = new List<object>();
-            if (radioButton_ScreenNormal.Checked)
-            {
-                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
-                    Watch_Face.ScreenNormal.Elements != null)
-                {
-                    Elements = Watch_Face.ScreenNormal.Elements;
-                }
-            }
-            else
-            {
-                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
-                    Watch_Face.ScreenAOD.Elements != null)
-                {
-                    Elements = Watch_Face.ScreenAOD.Elements;
-                }
-            }
-
-            bool exists = Elements.Exists(e => e.GetType().Name == "ElementAnalogTime");
-            if (exists)
-            {
-                int index = Elements.FindIndex(e => e.GetType().Name == "ElementAnalogTime");
-                Elements.RemoveAt(index);
-
-                PreviewView = false;
-                ShowElemetsWatchFace();
-                PreviewView = true;
-            }
-
-            JSON_Modified = true;
-            PreviewImage();
-            FormText();
-        }
-
         private void uCtrl_AnalogTime_Elm_OptionsMoved(object sender, EventArgs eventArgs, Dictionary<string, int> elementOptions)
         {
             if (!PreviewView) return;
@@ -4707,6 +5068,651 @@ namespace Watch_Face_Editor
             FormText();
         }
 
+        private void uCtrl_DateDay_Elm_VisibleElementChanged(object sender, EventArgs eventArgs, bool visible)
+        {
+            ElementDateDay dateDay = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    //bool exists = Elements.Exists(e => e.GetType().Name == "ElementAnalogTime");
+                    dateDay = (ElementDateDay)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDateDay");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    dateDay = (ElementDateDay)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementDateDay");
+                }
+            }
+            if (dateDay != null)
+            {
+                dateDay.visible = visible;
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_DateMonth_Elm_VisibleElementChanged(object sender, EventArgs eventArgs, bool visible)
+        {
+            ElementDateMonth dateMonth = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    //bool exists = Elements.Exists(e => e.GetType().Name == "ElementAnalogTime");
+                    dateMonth = (ElementDateMonth)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDateMonth");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    dateMonth = (ElementDateMonth)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementDateMonth");
+                }
+            }
+            if (dateMonth != null)
+            {
+                dateMonth.visible = visible;
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_DateYear_Elm_VisibleElementChanged(object sender, EventArgs eventArgs, bool visible)
+        {
+            ElementDateYear dateYear = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    //bool exists = Elements.Exists(e => e.GetType().Name == "ElementAnalogTime");
+                    dateYear = (ElementDateYear)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDateYear");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    dateYear = (ElementDateYear)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementDateYear");
+                }
+            }
+            if (dateYear != null)
+            {
+                dateYear.visible = visible;
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_DateWeek_Elm_VisibleElementChanged(object sender, EventArgs eventArgs, bool visible)
+        {
+            ElementDateWeek dateWeek = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    //bool exists = Elements.Exists(e => e.GetType().Name == "ElementAnalogTime");
+                    dateWeek = (ElementDateWeek)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDateWeek");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    dateWeek = (ElementDateWeek)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementDateWeek");
+                }
+            }
+            if (dateWeek != null)
+            {
+                dateWeek.visible = visible;
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_DateDay_Elm_SelectChanged(object sender, EventArgs eventArgs)
+        {
+            string selectElement = uCtrl_DateDay_Elm.selectedElement;
+            if (selectElement.Length == 0) HideAllElemenrOptions();
+            ResetHighlightState("DateDay");
+
+            ElementDateDay dateDay = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    //bool exists = Elements.Exists(e => e.GetType().Name == "ElementDigitalTime");
+                    dateDay = (ElementDateDay)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDateDay");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    dateDay = (ElementDateDay)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementDateDay");
+                }
+            }
+            if (dateDay != null)
+            {
+                hmUI_widget_IMG_POINTER img_pointer = null;
+                hmUI_widget_IMG_NUMBER img_number = null;
+
+                switch (selectElement)
+                {
+                    case "Number":
+                        if (uCtrl_DateDay_Elm.checkBox_Number.Checked)
+                        {
+                            img_number = dateDay.Number;
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                            ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Pointer":
+                        if (uCtrl_DateDay_Elm.checkBox_Pointer.Checked)
+                        {
+                            img_pointer = dateDay.Pointer;
+                            Read_ImgPointer_Options(img_pointer, false);
+                            ShowElemenrOptions("Pointer");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                }
+
+            }
+        }
+
+        private void uCtrl_DateMonth_Elm_SelectChanged(object sender, EventArgs eventArgs)
+        {
+            string selectElement = uCtrl_DateMonth_Elm.selectedElement;
+            if (selectElement.Length == 0) HideAllElemenrOptions();
+            ResetHighlightState("DateMonth");
+
+            ElementDateMonth dateMonth = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    //bool exists = Elements.Exists(e => e.GetType().Name == "ElementDigitalTime");
+                    dateMonth = (ElementDateMonth)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDateMonth");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    dateMonth = (ElementDateMonth)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementDateMonth");
+                }
+            }
+            if (dateMonth != null)
+            {
+                hmUI_widget_IMG_POINTER img_pointer = null;
+                hmUI_widget_IMG_NUMBER img_number = null;
+                hmUI_widget_IMG_LEVEL img_level = null;
+
+                switch (selectElement)
+                {
+                    case "Images":
+                        if (uCtrl_DateMonth_Elm.checkBox_Images.Checked)
+                        {
+                            img_level = dateMonth.Images;
+                            Read_ImgLevel_Options(img_level, 12, false);
+                            ShowElemenrOptions("Images");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number":
+                        if (uCtrl_DateMonth_Elm.checkBox_Number.Checked)
+                        {
+                            img_number = dateMonth.Number;
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                            ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Pointer":
+                        if (uCtrl_DateMonth_Elm.checkBox_Pointer.Checked)
+                        {
+                            img_pointer = dateMonth.Pointer;
+                            Read_ImgPointer_Options(img_pointer, false);
+                            ShowElemenrOptions("Pointer");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                }
+
+            }
+        }
+
+        private void uCtrl_DateYear_Elm_SelectChanged(object sender, EventArgs eventArgs)
+        {
+            HideAllElemenrOptions();
+            ResetHighlightState("DateYear");
+
+            ElementDateYear dateYear = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    //bool exists = Elements.Exists(e => e.GetType().Name == "ElementDigitalTime");
+                    dateYear = (ElementDateYear)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDateYear");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    dateYear = (ElementDateYear)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementDateYear");
+                }
+            }
+            if (dateYear != null)
+            {
+                string selectedElement = uCtrl_DateMonth_Elm.selectedElement;
+                hmUI_widget_IMG_NUMBER img_number = null;
+
+                img_number = dateYear.Number;
+                Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                ShowElemenrOptions("Text");
+
+            }
+        }
+
+        private void uCtrl_DateWeek_Elm_SelectChanged(object sender, EventArgs eventArgs)
+        {
+            string selectElement = uCtrl_DateWeek_Elm.selectedElement;
+            if (selectElement.Length == 0) HideAllElemenrOptions();
+            ResetHighlightState("DateWeek");
+
+            ElementDateWeek dateWeek = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    //bool exists = Elements.Exists(e => e.GetType().Name == "ElementDigitalTime");
+                    dateWeek = (ElementDateWeek)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDateWeek");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    dateWeek = (ElementDateWeek)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementDateWeek");
+                }
+            }
+            if (dateWeek != null)
+            {
+                hmUI_widget_IMG_POINTER img_pointer = null;
+                hmUI_widget_IMG_LEVEL img_level = null;
+
+                switch (selectElement)
+                {
+                    case "Images":
+                        if (uCtrl_DateWeek_Elm.checkBox_Images.Checked)
+                        {
+                            img_level = dateWeek.Images;
+                            Read_ImgLevel_Options(img_level, 12, false);
+                            ShowElemenrOptions("Images");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Pointer":
+                        if (uCtrl_DateWeek_Elm.checkBox_Pointer.Checked)
+                        {
+                            img_pointer = dateWeek.Pointer;
+                            Read_ImgPointer_Options(img_pointer, false);
+                            ShowElemenrOptions("Pointer");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                }
+
+            }
+        }
+
+        private void uCtrl_DateDay_Elm_VisibleOptionsChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementDateDay dateDay = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementDateDay");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementDateDay());
+                    dateDay = (ElementDateDay)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDateDay");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementDateDay");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementDateDay());
+                    dateDay = (ElementDateDay)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementDateDay");
+                }
+            }
+
+            if (dateDay != null)
+            {
+                if (dateDay.Number == null) dateDay.Number = new hmUI_widget_IMG_NUMBER();
+                if (dateDay.Pointer == null) dateDay.Pointer = new hmUI_widget_IMG_POINTER();
+
+                Dictionary<string, int> elementOptions = uCtrl_DateDay_Elm.GetOptionsPosition();
+                if (elementOptions.ContainsKey("Number")) dateDay.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Pointer")) dateDay.Pointer.position = elementOptions["Pointer"];
+
+                CheckBox checkBox = (CheckBox)sender;
+                string name = checkBox.Name;
+                switch (name)
+                {
+                    case "checkBox_Pointer":
+                        dateDay.Pointer.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number":
+                        dateDay.Number.visible = checkBox.Checked;
+                        break;
+                }
+
+            }
+
+            uCtrl_DateDay_Elm_SelectChanged(sender, eventArgs);
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_DateMonth_Elm_VisibleOptionsChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementDateMonth dateMonth = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementDateMonth");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementDateMonth());
+                    dateMonth = (ElementDateMonth)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDateMonth");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementDateMonth");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementDateMonth());
+                    dateMonth = (ElementDateMonth)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementDateMonth");
+                }
+            }
+
+            if (dateMonth != null)
+            {
+                if (dateMonth.Number == null) dateMonth.Number = new hmUI_widget_IMG_NUMBER();
+                if (dateMonth.Pointer == null) dateMonth.Pointer = new hmUI_widget_IMG_POINTER();
+                if (dateMonth.Images == null) dateMonth.Images = new hmUI_widget_IMG_LEVEL();
+
+                Dictionary<string, int> elementOptions = uCtrl_DateMonth_Elm.GetOptionsPosition();
+                if (elementOptions.ContainsKey("Number")) dateMonth.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Pointer")) dateMonth.Pointer.position = elementOptions["Pointer"];
+                if (elementOptions.ContainsKey("Images")) dateMonth.Images.position = elementOptions["Images"];
+
+                CheckBox checkBox = (CheckBox)sender;
+                string name = checkBox.Name;
+                switch (name)
+                {
+                    case "checkBox_Pointer":
+                        dateMonth.Pointer.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number":
+                        dateMonth.Number.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Images":
+                        dateMonth.Images.visible = checkBox.Checked;
+                        break;
+                }
+
+            }
+
+            uCtrl_DateMonth_Elm_SelectChanged(sender, eventArgs);
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_DateWeek_Elm_VisibleOptionsChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementDateWeek dateWeek = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementDateWeek");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementDateWeek());
+                    dateWeek = (ElementDateWeek)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDateWeek");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementDateWeek");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementDateWeek());
+                    dateWeek = (ElementDateWeek)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementDateWeek");
+                }
+            }
+
+            if (dateWeek != null)
+            {
+                if (dateWeek.Pointer == null) dateWeek.Pointer = new hmUI_widget_IMG_POINTER();
+                if (dateWeek.Images == null) dateWeek.Images = new hmUI_widget_IMG_LEVEL();
+
+                Dictionary<string, int> elementOptions = uCtrl_DateWeek_Elm.GetOptionsPosition();
+                if (elementOptions.ContainsKey("Pointer")) dateWeek.Pointer.position = elementOptions["Pointer"];
+                if (elementOptions.ContainsKey("Images")) dateWeek.Images.position = elementOptions["Images"];
+
+                CheckBox checkBox = (CheckBox)sender;
+                string name = checkBox.Name;
+                switch (name)
+                {
+                    case "checkBox_Pointer":
+                        dateWeek.Pointer.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Images":
+                        dateWeek.Images.visible = checkBox.Checked;
+                        break;
+                }
+
+            }
+
+            uCtrl_DateWeek_Elm_SelectChanged(sender, eventArgs);
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_DateDay_Elm_OptionsMoved(object sender, EventArgs eventArgs, Dictionary<string, int> elementOptions)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementDateDay dateDay = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementDateDay");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementDateDay());
+                    dateDay = (ElementDateDay)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDateDay");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementDateDay");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementDateDay());
+                    dateDay = (ElementDateDay)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementDateDay");
+                }
+            }
+
+            if (dateDay != null)
+            {
+                if (dateDay.Number == null) dateDay.Number = new hmUI_widget_IMG_NUMBER();
+                if (dateDay.Pointer == null) dateDay.Pointer = new hmUI_widget_IMG_POINTER();
+
+                //Dictionary<string, int> elementOptions = uCtrl_AnalogTime_Elm.GetOptionsPosition();
+                if (elementOptions.ContainsKey("Number")) dateDay.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Pointer")) dateDay.Pointer.position = elementOptions["Pointer"];
+
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_DateMonth_Elm_OptionsMoved(object sender, EventArgs eventArgs, Dictionary<string, int> elementOptions)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementDateMonth dateMonth = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementDateMonth");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementDateMonth());
+                    dateMonth = (ElementDateMonth)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDateMonth");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementDateMonth");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementDateMonth());
+                    dateMonth = (ElementDateMonth)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementDateMonth");
+                }
+            }
+
+            if (dateMonth != null)
+            {
+                if (dateMonth.Number == null) dateMonth.Number = new hmUI_widget_IMG_NUMBER();
+                if (dateMonth.Pointer == null) dateMonth.Pointer = new hmUI_widget_IMG_POINTER();
+                if (dateMonth.Images == null) dateMonth.Images = new hmUI_widget_IMG_LEVEL();
+
+                //Dictionary<string, int> elementOptions = uCtrl_AnalogTime_Elm.GetOptionsPosition();
+                if (elementOptions.ContainsKey("Number")) dateMonth.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Pointer")) dateMonth.Pointer.position = elementOptions["Pointer"];
+                if (elementOptions.ContainsKey("Images")) dateMonth.Images.position = elementOptions["Images"];
+
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_DateWeek_Elm_OptionsMoved(object sender, EventArgs eventArgs, Dictionary<string, int> elementOptions)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementDateWeek dateWeek = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementDateWeek");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementDateWeek());
+                    dateWeek = (ElementDateWeek)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDateWeek");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementDateWeek");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementDateWeek());
+                    dateWeek = (ElementDateWeek)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementDateWeek");
+                }
+            }
+
+            if (dateWeek != null)
+            {
+                if (dateWeek.Pointer == null) dateWeek.Pointer = new hmUI_widget_IMG_POINTER();
+                if (dateWeek.Images == null) dateWeek.Images = new hmUI_widget_IMG_LEVEL();
+
+                //Dictionary<string, int> elementOptions = uCtrl_AnalogTime_Elm.GetOptionsPosition();
+                if (elementOptions.ContainsKey("Pointer")) dateWeek.Pointer.position = elementOptions["Pointer"];
+                if (elementOptions.ContainsKey("Images")) dateWeek.Images.position = elementOptions["Images"];
+
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
     }
 }
 

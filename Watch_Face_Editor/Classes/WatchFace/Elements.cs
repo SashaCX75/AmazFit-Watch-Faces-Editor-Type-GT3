@@ -40,7 +40,7 @@ namespace Watch_Face_Editor
         //public string show_level { get; set; }
     }
 
-    /// <summary>Цифровое время</summary>
+    /// <summary>Данные цифрами</summary>
     public class hmUI_widget_IMG_NUMBER
     {
         /// <summary>Позиция в наборе элементов</summary>
@@ -65,7 +65,7 @@ namespace Watch_Face_Editor
         /// <summary>Выравнивание</summary>
         public string align { get; set; }
 
-        /// <summary>Набор картинок для цифр</summary>
+        /// <summary>Первая картинка из набора для отображения</summary>
         public string img_First { get; set; }
 
         /// <summary>Разделитель / единици измерения</summary>
@@ -92,6 +92,34 @@ namespace Watch_Face_Editor
 
         /// <summary>Основной экран или AOD</summary>
         //public string show_level { get; set; }
+
+        /// <summary>Тип активности</summary>
+        public string type { get; set; }
+    }
+
+    /// <summary>Данные набором изображения (отображается только одно изображение</summary>
+    public class hmUI_widget_IMG_LEVEL
+    {
+        /// <summary>Позиция в наборе элементов</summary>
+        public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = false;
+
+        /// <summary>X координата</summary>
+        public int X { get; set; }
+
+        /// <summary>Y координата</summary>
+        public int Y { get; set; }
+
+        /// <summary>Первая картинка из набора для отображения</summary>
+        public string img_First { get; set; }
+
+        /// <summary>Количество картинок в наборе</summary>
+        public int image_length { get; set; }
+
+        /// <summary>Тип активности</summary>
+        public string type { get; set; }
     }
 
     /// <summary>Фоновое изображение или иконка</summary>
@@ -171,7 +199,7 @@ namespace Watch_Face_Editor
         public int start_angle { get; set; }
 
         /// <summary>Конечный угол</summary>
-        public int end_angle { get; set; }
+        public int end_angle = 360;
 
         /// <summary>Центральное изображение</summary>
         public string cover_path { get; set; }
@@ -190,6 +218,9 @@ namespace Watch_Face_Editor
 
         /// <summary>Координата Y фонового изображения</summary>
         public int scale_y { get; set; }
+
+        /// <summary>Тип активности</summary>
+        public string type { get; set; }
 
     }
 

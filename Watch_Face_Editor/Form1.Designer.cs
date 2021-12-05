@@ -31,8 +31,8 @@ namespace Watch_Face_Editor
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage_Edit = new System.Windows.Forms.TabPage();
             this.button_SaveJson = new System.Windows.Forms.Button();
@@ -54,17 +54,26 @@ namespace Watch_Face_Editor
             this.comboBox_AddTime = new System.Windows.Forms.ComboBox();
             this.panel_WatchfaceElements = new System.Windows.Forms.Panel();
             this.tableLayoutPanel_ElemetsWatchFace = new System.Windows.Forms.TableLayoutPanel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.panel_UC_DigitalTime = new System.Windows.Forms.Panel();
             this.uCtrl_DigitalTime_Elm = new ControlLibrary.UCtrl_DigitalTime_Elm();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel_UC_Background = new System.Windows.Forms.Panel();
-            this.uCtrl_Background_Elm = new ControlLibrary.UCtrl_Background_Elm();
             this.panel_UC_AnalogTime = new System.Windows.Forms.Panel();
             this.uCtrl_AnalogTime_Elm = new ControlLibrary.UCtrl_AnalogTime_Elm();
+            this.panel_UC_DateDay = new System.Windows.Forms.Panel();
+            this.uCtrl_DateDay_Elm = new ControlLibrary.UCtrl_DateDay_Elm();
+            this.panel_UC_DateMonth = new System.Windows.Forms.Panel();
+            this.uCtrl_DateMonth_Elm = new ControlLibrary.UCtrl_DateMonth_Elm();
+            this.panel_UC_DateYear = new System.Windows.Forms.Panel();
+            this.uCtrl_DateYear_Elm = new ControlLibrary.UCtrl_DateYear_Elm();
+            this.panel06 = new System.Windows.Forms.Panel();
+            this.panel05 = new System.Windows.Forms.Panel();
+            this.panel04 = new System.Windows.Forms.Panel();
+            this.panel03 = new System.Windows.Forms.Panel();
+            this.panel_UC_Background = new System.Windows.Forms.Panel();
+            this.uCtrl_Background_Elm = new ControlLibrary.UCtrl_Background_Elm();
+            this.panel_UC_DateWeek = new System.Windows.Forms.Panel();
+            this.uCtrl_DateWeek_Elm = new ControlLibrary.UCtrl_DateWeek_Elm();
             this.panel_ElementsOpt = new System.Windows.Forms.Panel();
+            this.uCtrl_Images_Opt = new ControlLibrary.UCtrl_Images_Opt();
             this.uCtrl_Pointer_Opt = new ControlLibrary.UCtrl_Pointer_Opt();
             this.uCtrl_AmPm_Opt = new ControlLibrary.UCtrl_AmPm_Opt();
             this.uCtrl_Text_Opt = new ControlLibrary.UCtrl_Text_Opt();
@@ -182,8 +191,12 @@ namespace Watch_Face_Editor
             this.panel_WatchfaceElements.SuspendLayout();
             this.tableLayoutPanel_ElemetsWatchFace.SuspendLayout();
             this.panel_UC_DigitalTime.SuspendLayout();
-            this.panel_UC_Background.SuspendLayout();
             this.panel_UC_AnalogTime.SuspendLayout();
+            this.panel_UC_DateDay.SuspendLayout();
+            this.panel_UC_DateMonth.SuspendLayout();
+            this.panel_UC_DateYear.SuspendLayout();
+            this.panel_UC_Background.SuspendLayout();
+            this.panel_UC_DateWeek.SuspendLayout();
             this.panel_ElementsOpt.SuspendLayout();
             this.panel_MainScreen_AOD.SuspendLayout();
             this.tabPage_Show_Set.SuspendLayout();
@@ -418,33 +431,19 @@ namespace Watch_Face_Editor
             // 
             this.tableLayoutPanel_ElemetsWatchFace.AllowDrop = true;
             resources.ApplyResources(this.tableLayoutPanel_ElemetsWatchFace, "tableLayoutPanel_ElemetsWatchFace");
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel5, 0, 5);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel4, 0, 4);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel2, 0, 2);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DigitalTime, 0, 0);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel3, 0, 3);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Background, 0, 6);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_AnalogTime, 0, 1);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateDay, 0, 2);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateMonth, 0, 3);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateYear, 0, 4);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel06, 0, 6);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel05, 0, 7);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel04, 0, 8);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel03, 0, 9);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Background, 0, 10);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateWeek, 0, 5);
             this.tableLayoutPanel_ElemetsWatchFace.Name = "tableLayoutPanel_ElemetsWatchFace";
             this.tableLayoutPanel_ElemetsWatchFace.DragOver += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragOver);
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.Blue;
-            resources.ApplyResources(this.panel5, "panel5");
-            this.panel5.Name = "panel5";
-            // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            resources.ApplyResources(this.panel4, "panel4");
-            this.panel4.Name = "panel4";
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            resources.ApplyResources(this.panel2, "panel2");
-            this.panel2.Name = "panel2";
             // 
             // panel_UC_DigitalTime
             // 
@@ -460,30 +459,10 @@ namespace Watch_Face_Editor
             this.uCtrl_DigitalTime_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_DigitalTime_Elm.VisibleOptionsChangedHandler(this.uCtrl_DigitalTime_Elm_VisibleOptionsChanged);
             this.uCtrl_DigitalTime_Elm.OptionsMoved += new ControlLibrary.UCtrl_DigitalTime_Elm.OptionsMovedHandler(this.uCtrl_DigitalTime_Elm_OptionsMoved);
             this.uCtrl_DigitalTime_Elm.SelectChanged += new ControlLibrary.UCtrl_DigitalTime_Elm.SelectChangedHandler(this.uCtrl_DigitalTime_Elm_SelectChanged);
-            this.uCtrl_DigitalTime_Elm.DelElement += new ControlLibrary.UCtrl_DigitalTime_Elm.DelElementHandler(this.uCtrl_DigitalTime_Elm_DelElement);
+            this.uCtrl_DigitalTime_Elm.DelElement += new ControlLibrary.UCtrl_DigitalTime_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
             this.uCtrl_DigitalTime_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
             this.uCtrl_DigitalTime_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
             this.uCtrl_DigitalTime_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            resources.ApplyResources(this.panel3, "panel3");
-            this.panel3.Name = "panel3";
-            // 
-            // panel_UC_Background
-            // 
-            resources.ApplyResources(this.panel_UC_Background, "panel_UC_Background");
-            this.panel_UC_Background.Controls.Add(this.uCtrl_Background_Elm);
-            this.panel_UC_Background.Name = "panel_UC_Background";
-            // 
-            // uCtrl_Background_Elm
-            // 
-            resources.ApplyResources(this.uCtrl_Background_Elm, "uCtrl_Background_Elm");
-            this.uCtrl_Background_Elm.Name = "uCtrl_Background_Elm";
-            this.uCtrl_Background_Elm.SelectChanged += new ControlLibrary.UCtrl_Background_Elm.SelectChangedHandler(this.uCtrl_Background_Elm_SelectChanged);
-            this.uCtrl_Background_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_Background_Elm.VisibleElementChangedHandler(this.uCtrl_Background_Elm_VisibleElemenChanged);
-            this.uCtrl_Background_Elm.DelElement += new ControlLibrary.UCtrl_Background_Elm.DelElementHandler(this.uCtrl_Background_Elm_DelElement);
             // 
             // panel_UC_AnalogTime
             // 
@@ -499,20 +478,143 @@ namespace Watch_Face_Editor
             this.uCtrl_AnalogTime_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_AnalogTime_Elm.VisibleOptionsChangedHandler(this.uCtrl_AnalogTime_Elm_VisibleOptionsChanged);
             this.uCtrl_AnalogTime_Elm.OptionsMoved += new ControlLibrary.UCtrl_AnalogTime_Elm.OptionsMovedHandler(this.uCtrl_AnalogTime_Elm_OptionsMoved);
             this.uCtrl_AnalogTime_Elm.SelectChanged += new ControlLibrary.UCtrl_AnalogTime_Elm.SelectChangedHandler(this.uCtrl_AnalogTime_Elm_SelectChanged);
-            this.uCtrl_AnalogTime_Elm.DelElement += new ControlLibrary.UCtrl_AnalogTime_Elm.DelElementHandler(this.uCtrl_AnalogTime_Elm_DelElement);
+            this.uCtrl_AnalogTime_Elm.DelElement += new ControlLibrary.UCtrl_AnalogTime_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
             this.uCtrl_AnalogTime_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
             this.uCtrl_AnalogTime_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
             this.uCtrl_AnalogTime_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // panel_UC_DateDay
+            // 
+            resources.ApplyResources(this.panel_UC_DateDay, "panel_UC_DateDay");
+            this.panel_UC_DateDay.Controls.Add(this.uCtrl_DateDay_Elm);
+            this.panel_UC_DateDay.Name = "panel_UC_DateDay";
+            // 
+            // uCtrl_DateDay_Elm
+            // 
+            resources.ApplyResources(this.uCtrl_DateDay_Elm, "uCtrl_DateDay_Elm");
+            this.uCtrl_DateDay_Elm.Name = "uCtrl_DateDay_Elm";
+            this.uCtrl_DateDay_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_DateDay_Elm.VisibleElementChangedHandler(this.uCtrl_DateDay_Elm_VisibleElementChanged);
+            this.uCtrl_DateDay_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_DateDay_Elm.VisibleOptionsChangedHandler(this.uCtrl_DateDay_Elm_VisibleOptionsChanged);
+            this.uCtrl_DateDay_Elm.OptionsMoved += new ControlLibrary.UCtrl_DateDay_Elm.OptionsMovedHandler(this.uCtrl_DateDay_Elm_OptionsMoved);
+            this.uCtrl_DateDay_Elm.SelectChanged += new ControlLibrary.UCtrl_DateDay_Elm.SelectChangedHandler(this.uCtrl_DateDay_Elm_SelectChanged);
+            this.uCtrl_DateDay_Elm.DelElement += new ControlLibrary.UCtrl_DateDay_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
+            this.uCtrl_DateDay_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.uCtrl_DateDay_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.uCtrl_DateDay_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // panel_UC_DateMonth
+            // 
+            resources.ApplyResources(this.panel_UC_DateMonth, "panel_UC_DateMonth");
+            this.panel_UC_DateMonth.Controls.Add(this.uCtrl_DateMonth_Elm);
+            this.panel_UC_DateMonth.Name = "panel_UC_DateMonth";
+            // 
+            // uCtrl_DateMonth_Elm
+            // 
+            resources.ApplyResources(this.uCtrl_DateMonth_Elm, "uCtrl_DateMonth_Elm");
+            this.uCtrl_DateMonth_Elm.Name = "uCtrl_DateMonth_Elm";
+            this.uCtrl_DateMonth_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_DateMonth_Elm.VisibleElementChangedHandler(this.uCtrl_DateMonth_Elm_VisibleElementChanged);
+            this.uCtrl_DateMonth_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_DateMonth_Elm.VisibleOptionsChangedHandler(this.uCtrl_DateMonth_Elm_VisibleOptionsChanged);
+            this.uCtrl_DateMonth_Elm.OptionsMoved += new ControlLibrary.UCtrl_DateMonth_Elm.OptionsMovedHandler(this.uCtrl_DateMonth_Elm_OptionsMoved);
+            this.uCtrl_DateMonth_Elm.SelectChanged += new ControlLibrary.UCtrl_DateMonth_Elm.SelectChangedHandler(this.uCtrl_DateMonth_Elm_SelectChanged);
+            this.uCtrl_DateMonth_Elm.DelElement += new ControlLibrary.UCtrl_DateMonth_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
+            this.uCtrl_DateMonth_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.uCtrl_DateMonth_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.uCtrl_DateMonth_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // panel_UC_DateYear
+            // 
+            resources.ApplyResources(this.panel_UC_DateYear, "panel_UC_DateYear");
+            this.panel_UC_DateYear.Controls.Add(this.uCtrl_DateYear_Elm);
+            this.panel_UC_DateYear.Name = "panel_UC_DateYear";
+            // 
+            // uCtrl_DateYear_Elm
+            // 
+            resources.ApplyResources(this.uCtrl_DateYear_Elm, "uCtrl_DateYear_Elm");
+            this.uCtrl_DateYear_Elm.Name = "uCtrl_DateYear_Elm";
+            this.uCtrl_DateYear_Elm.SelectChanged += new ControlLibrary.UCtrl_DateYear_Elm.SelectChangedHandler(this.uCtrl_DateYear_Elm_SelectChanged);
+            this.uCtrl_DateYear_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_DateYear_Elm.VisibleElementChangedHandler(this.uCtrl_DateYear_Elm_VisibleElementChanged);
+            this.uCtrl_DateYear_Elm.DelElement += new ControlLibrary.UCtrl_DateYear_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
+            this.uCtrl_DateYear_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.uCtrl_DateYear_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.uCtrl_DateYear_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // panel06
+            // 
+            this.panel06.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            resources.ApplyResources(this.panel06, "panel06");
+            this.panel06.Name = "panel06";
+            // 
+            // panel05
+            // 
+            this.panel05.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            resources.ApplyResources(this.panel05, "panel05");
+            this.panel05.Name = "panel05";
+            // 
+            // panel04
+            // 
+            this.panel04.BackColor = System.Drawing.Color.Lime;
+            resources.ApplyResources(this.panel04, "panel04");
+            this.panel04.Name = "panel04";
+            // 
+            // panel03
+            // 
+            this.panel03.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            resources.ApplyResources(this.panel03, "panel03");
+            this.panel03.Name = "panel03";
+            // 
+            // panel_UC_Background
+            // 
+            resources.ApplyResources(this.panel_UC_Background, "panel_UC_Background");
+            this.panel_UC_Background.BackColor = System.Drawing.Color.Red;
+            this.panel_UC_Background.Controls.Add(this.uCtrl_Background_Elm);
+            this.panel_UC_Background.Name = "panel_UC_Background";
+            // 
+            // uCtrl_Background_Elm
+            // 
+            resources.ApplyResources(this.uCtrl_Background_Elm, "uCtrl_Background_Elm");
+            this.uCtrl_Background_Elm.BackColor = System.Drawing.SystemColors.Control;
+            this.uCtrl_Background_Elm.Name = "uCtrl_Background_Elm";
+            this.uCtrl_Background_Elm.SelectChanged += new ControlLibrary.UCtrl_Background_Elm.SelectChangedHandler(this.uCtrl_Background_Elm_SelectChanged);
+            this.uCtrl_Background_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_Background_Elm.VisibleElementChangedHandler(this.uCtrl_Background_Elm_VisibleElemenChanged);
+            this.uCtrl_Background_Elm.DelElement += new ControlLibrary.UCtrl_Background_Elm.DelElementHandler(this.uCtrl_Background_Elm_DelElement);
+            // 
+            // panel_UC_DateWeek
+            // 
+            resources.ApplyResources(this.panel_UC_DateWeek, "panel_UC_DateWeek");
+            this.panel_UC_DateWeek.Controls.Add(this.uCtrl_DateWeek_Elm);
+            this.panel_UC_DateWeek.Name = "panel_UC_DateWeek";
+            // 
+            // uCtrl_DateWeek_Elm
+            // 
+            resources.ApplyResources(this.uCtrl_DateWeek_Elm, "uCtrl_DateWeek_Elm");
+            this.uCtrl_DateWeek_Elm.Name = "uCtrl_DateWeek_Elm";
+            this.uCtrl_DateWeek_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_DateWeek_Elm.VisibleElementChangedHandler(this.uCtrl_DateWeek_Elm_VisibleElementChanged);
+            this.uCtrl_DateWeek_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_DateWeek_Elm.VisibleOptionsChangedHandler(this.uCtrl_DateWeek_Elm_VisibleOptionsChanged);
+            this.uCtrl_DateWeek_Elm.OptionsMoved += new ControlLibrary.UCtrl_DateWeek_Elm.OptionsMovedHandler(this.uCtrl_DateWeek_Elm_OptionsMoved);
+            this.uCtrl_DateWeek_Elm.SelectChanged += new ControlLibrary.UCtrl_DateWeek_Elm.SelectChangedHandler(this.uCtrl_DateWeek_Elm_SelectChanged);
+            this.uCtrl_DateWeek_Elm.DelElement += new ControlLibrary.UCtrl_DateWeek_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
+            this.uCtrl_DateWeek_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.uCtrl_DateWeek_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.uCtrl_DateWeek_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
             // 
             // panel_ElementsOpt
             // 
             resources.ApplyResources(this.panel_ElementsOpt, "panel_ElementsOpt");
             this.panel_ElementsOpt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_ElementsOpt.Controls.Add(this.uCtrl_Images_Opt);
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_Pointer_Opt);
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_AmPm_Opt);
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_Text_Opt);
             this.panel_ElementsOpt.Controls.Add(this.userCtrl_Background_Options);
             this.panel_ElementsOpt.Name = "panel_ElementsOpt";
+            // 
+            // uCtrl_Images_Opt
+            // 
+            resources.ApplyResources(this.uCtrl_Images_Opt, "uCtrl_Images_Opt");
+            this.uCtrl_Images_Opt.ImagesCount = 10;
+            this.uCtrl_Images_Opt.ImagesCountEnable = true;
+            this.uCtrl_Images_Opt.Name = "uCtrl_Images_Opt";
+            this.uCtrl_Images_Opt.ValueChanged += new ControlLibrary.UCtrl_Images_Opt.ValueChangedHandler(this.uCtrl_Images_Opt_ValueChanged);
             // 
             // uCtrl_Pointer_Opt
             // 
@@ -770,8 +872,8 @@ namespace Watch_Face_Editor
             // Number
             // 
             this.Number.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Number.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Number.DefaultCellStyle = dataGridViewCellStyle5;
             resources.ApplyResources(this.Number, "Number");
             this.Number.Name = "Number";
             this.Number.ReadOnly = true;
@@ -794,11 +896,11 @@ namespace Watch_Face_Editor
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.NullValue = null;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.NullValue = null;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle6;
             this.Column1.FillWeight = 95F;
             resources.ApplyResources(this.Column1, "Column1");
             this.Column1.Name = "Column1";
@@ -1411,12 +1513,19 @@ namespace Watch_Face_Editor
             this.tableLayoutPanel_ElemetsWatchFace.PerformLayout();
             this.panel_UC_DigitalTime.ResumeLayout(false);
             this.panel_UC_DigitalTime.PerformLayout();
-            this.panel_UC_Background.ResumeLayout(false);
-            this.panel_UC_Background.PerformLayout();
             this.panel_UC_AnalogTime.ResumeLayout(false);
             this.panel_UC_AnalogTime.PerformLayout();
+            this.panel_UC_DateDay.ResumeLayout(false);
+            this.panel_UC_DateDay.PerformLayout();
+            this.panel_UC_DateMonth.ResumeLayout(false);
+            this.panel_UC_DateMonth.PerformLayout();
+            this.panel_UC_DateYear.ResumeLayout(false);
+            this.panel_UC_DateYear.PerformLayout();
+            this.panel_UC_Background.ResumeLayout(false);
+            this.panel_UC_Background.PerformLayout();
+            this.panel_UC_DateWeek.ResumeLayout(false);
+            this.panel_UC_DateWeek.PerformLayout();
             this.panel_ElementsOpt.ResumeLayout(false);
-            this.panel_ElementsOpt.PerformLayout();
             this.panel_MainScreen_AOD.ResumeLayout(false);
             this.panel_MainScreen_AOD.PerformLayout();
             this.tabPage_Show_Set.ResumeLayout(false);
@@ -1558,9 +1667,6 @@ namespace Watch_Face_Editor
         private System.Windows.Forms.RadioButton radioButton_ScreenNormal;
         private System.Windows.Forms.Button button_SaveJson;
         private System.Windows.Forms.Button button_OpenDir;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox_IconBackground;
         private System.Windows.Forms.ComboBox comboBox_AddBackground;
         private System.Windows.Forms.DataGridViewTextBoxColumn Number;
@@ -1569,7 +1675,6 @@ namespace Watch_Face_Editor
         private System.Windows.Forms.DataGridViewImageColumn Column1;
         private System.Windows.Forms.ProgressBar progressBar1;
         private ControlLibrary.UCtrl_AmPm_Opt uCtrl_AmPm_Opt;
-        private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel_UC_AnalogTime;
         private ControlLibrary.UCtrl_AnalogTime_Elm uCtrl_AnalogTime_Elm;
         private ControlLibrary.UCtrl_Pointer_Opt uCtrl_Pointer_Opt;
@@ -1585,6 +1690,19 @@ namespace Watch_Face_Editor
         private System.Windows.Forms.Label label_version_help;
         private System.Windows.Forms.Label label406;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Panel panel_UC_DateYear;
+        private System.Windows.Forms.Panel panel_UC_DateMonth;
+        private ControlLibrary.UCtrl_DateMonth_Elm uCtrl_DateMonth_Elm;
+        private System.Windows.Forms.Panel panel_UC_DateDay;
+        private ControlLibrary.UCtrl_DateDay_Elm uCtrl_DateDay_Elm;
+        private ControlLibrary.UCtrl_DateYear_Elm uCtrl_DateYear_Elm;
+        private System.Windows.Forms.Panel panel06;
+        private System.Windows.Forms.Panel panel05;
+        private System.Windows.Forms.Panel panel04;
+        private System.Windows.Forms.Panel panel03;
+        private System.Windows.Forms.Panel panel_UC_DateWeek;
+        private ControlLibrary.UCtrl_DateWeek_Elm uCtrl_DateWeek_Elm;
+        private ControlLibrary.UCtrl_Images_Opt uCtrl_Images_Opt;
     }
 }
 

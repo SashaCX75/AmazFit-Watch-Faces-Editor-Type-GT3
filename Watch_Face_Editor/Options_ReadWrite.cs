@@ -62,6 +62,7 @@ namespace Watch_Face_Editor
             return Watch_Face_return;
         }
 
+        /// <summary>Распознаем конкретный тип объекта</summary>
         private List<object> ObjectsToElements(List<object> elements)
         {
             List<object> NewElements = new List<object>();
@@ -91,7 +92,6 @@ namespace Watch_Face_Editor
                         break;
                     #endregion
 
-
                     #region AnalogTime
                     case "AnalogTime":
                         ElementAnalogTime AnalogTime = null;
@@ -109,6 +109,86 @@ namespace Watch_Face_Editor
                                 Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                         if (AnalogTime != null) NewElements.Add(AnalogTime);
+                        break;
+                    #endregion
+
+                    #region DateDay
+                    case "DateDay":
+                        ElementDateDay DateDay = null;
+                        try
+                        {
+                            DateDay = JsonConvert.DeserializeObject<ElementDateDay>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (DateDay != null) NewElements.Add(DateDay);
+                        break;
+                    #endregion
+
+                    #region DateMonth
+                    case "DateMonth":
+                        ElementDateMonth DateMonth = null;
+                        try
+                        {
+                            DateMonth = JsonConvert.DeserializeObject<ElementDateMonth>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (DateMonth != null) NewElements.Add(DateMonth);
+                        break;
+                    #endregion
+
+                    #region DateYear
+                    case "DateYear":
+                        ElementDateYear DateYear = null;
+                        try
+                        {
+                            DateYear = JsonConvert.DeserializeObject<ElementDateYear>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (DateYear != null) NewElements.Add(DateYear);
+                        break;
+                    #endregion
+
+                    #region DateWeek
+                    case "DateWeek":
+                        ElementDateWeek DateWeek = null;
+                        try
+                        {
+                            DateWeek = JsonConvert.DeserializeObject<ElementDateWeek>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (DateWeek != null) NewElements.Add(DateWeek);
                         break;
                         #endregion
                 }
@@ -216,7 +296,7 @@ namespace Watch_Face_Editor
             PreviewView = true;
         }
 
-        /// <summary>Читаем настройки для отображения числа картинками</summary>
+        /// <summary>Читаем настройки для отображения стрелочного указателя</summary>
         private void Read_ImgPointer_Options(hmUI_widget_IMG_POINTER img_pointer, bool _showBackground)
         {
             PreviewView = false;
@@ -255,6 +335,35 @@ namespace Watch_Face_Editor
 
 
             uCtrl_Pointer_Opt._ElementWithPointer = img_pointer;
+
+            PreviewView = true;
+        }
+
+        /// <summary>Читаем настройки для отображения набора картинок</summary>
+        private void Read_ImgLevel_Options(hmUI_widget_IMG_LEVEL img_level, int imagesCount, bool imagesCountEnable)
+        {
+            PreviewView = false;
+
+            uCtrl_Images_Opt.SettingsClear();
+
+            uCtrl_Images_Opt.ImagesCount = imagesCount;
+            uCtrl_Images_Opt.ImagesCountEnable = imagesCountEnable;
+
+            uCtrl_Images_Opt.Visible = true;
+
+            //userCtrl_Background_Options.SettingsClear();
+
+            if (img_level == null)
+            {
+                PreviewView = true;
+                return;
+            }
+            if (img_level.img_First != null)
+                uCtrl_Images_Opt.SetImage(img_level.img_First);
+            uCtrl_Images_Opt.numericUpDown_imageX.Value = img_level.X;
+            uCtrl_Images_Opt.numericUpDown_imageY.Value = img_level.Y;
+
+            uCtrl_Images_Opt._ElementWithImages = img_level;
 
             PreviewView = true;
         }
@@ -450,6 +559,23 @@ namespace Watch_Face_Editor
             img_pointer.scale_x = (int)uCtrl_Pointer_Opt.numericUpDown_pointer_background_X.Value;
             img_pointer.scale_y = (int)uCtrl_Pointer_Opt.numericUpDown_pointer_background_Y.Value;
 
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Images_Opt_ValueChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            hmUI_widget_IMG_LEVEL img_level = (hmUI_widget_IMG_LEVEL)uCtrl_Images_Opt._ElementWithImages;
+            if (img_level == null) return;
+
+            img_level.img_First = uCtrl_Images_Opt.GetImage();
+            img_level.X = (int)uCtrl_Images_Opt.numericUpDown_imageX.Value;
+            img_level.Y = (int)uCtrl_Images_Opt.numericUpDown_imageY.Value;
+            img_level.image_length = (int)uCtrl_Images_Opt.numericUpDown_pictures_count.Value;
 
             JSON_Modified = true;
             PreviewImage();

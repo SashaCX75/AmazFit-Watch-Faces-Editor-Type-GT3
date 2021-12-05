@@ -507,7 +507,7 @@ namespace ControlLibrary
         public void SetOptionsPosition(Dictionary<int, string> elementOptions)
         {
             int elementCount = tableLayoutPanel1.RowCount;
-            for (int key = 0; key < elementCount; key++)
+            for (int key = elementCount - 1; key >= 0; key--)
             {
                 Control panel = null;
                 if (elementOptions.ContainsKey(elementCount - key))

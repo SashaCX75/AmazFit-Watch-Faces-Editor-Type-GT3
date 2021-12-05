@@ -371,6 +371,289 @@ namespace Watch_Face_Editor
                             }
 
                             break;
+                        #endregion
+
+                        #region ElementDateDay
+                        case "ElementDateDay":
+                            ElementDateDay DateDay = (ElementDateDay)element;
+                            if (!DateDay.visible) continue;
+
+                            for (int index = 1; index <= 2; index++)
+                            {
+                                if (DateDay.Number != null && DateDay.Number.img_First != null
+                                    && DateDay.Number.img_First.Length > 0 &&
+                                    index == DateDay.Number.position && DateDay.Number.visible)
+                                {
+                                    int imageIndex = ListImages.IndexOf(DateDay.Number.img_First);
+                                    int x = DateDay.Number.imageX;
+                                    int y = DateDay.Number.imageY;
+                                    int spasing = DateDay.Number.space;
+                                    time_spasing = spasing;
+                                    int alignment = AlignmentToInt(DateDay.Number.align);
+                                    bool addZero = DateDay.Number.zero;
+                                    //addZero = true;
+                                    int value = WatchFacePreviewSet.Date.Day;
+                                    int separator_index = -1;
+                                    if (DateDay.Number.unit != null && DateDay.Number.unit.Length > 0)
+                                        separator_index = ListImages.IndexOf(DateDay.Number.unit);
+
+                                    Draw_dagital_text(gPanel, imageIndex, x, y,
+                                        spasing, alignment, value, addZero, 2, separator_index, BBorder);
+
+                                    if (DateDay.Number.icon != null && DateDay.Number.icon.Length > 0)
+                                    {
+                                        imageIndex = ListImages.IndexOf(DateDay.Number.icon);
+                                        x = DateDay.Number.iconPosX;
+                                        y = DateDay.Number.iconPosY;
+
+                                        src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                        gPanel.DrawImage(src, x, y);
+                                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                                    }
+                                }
+
+                                if (DateDay.Pointer != null && DateDay.Pointer.src != null
+                                    && DateDay.Pointer.src.Length > 0 &&
+                                    index == DateDay.Pointer.position && DateDay.Pointer.visible)
+                                {
+                                    int x = DateDay.Pointer.center_x;
+                                    int y = DateDay.Pointer.center_y;
+                                    int offsetX = DateDay.Pointer.pos_x;
+                                    int offsetY = DateDay.Pointer.pos_y;
+                                    int startAngle = DateDay.Pointer.start_angle;
+                                    int endAngle = DateDay.Pointer.end_angle;
+                                    int image_index = ListImages.IndexOf(DateDay.Pointer.src);
+                                    int Day = WatchFacePreviewSet.Date.Day;
+                                    Day--;
+                                    float angle = startAngle + Day * (endAngle - startAngle) / 30f;
+
+                                    if (DateDay.Pointer.scale != null && DateDay.Pointer.scale.Length > 0)
+                                    {
+                                        image_index = ListImages.IndexOf(DateDay.Pointer.scale);
+                                        x = DateDay.Pointer.scale_x;
+                                        y = DateDay.Pointer.scale_y;
+
+                                        src = OpenFileStream(ListImagesFullName[image_index]);
+                                        gPanel.DrawImage(src, x, y);
+                                    }
+
+                                    DrawAnalogClock(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+
+                                    if (DateDay.Pointer.cover_path != null && DateDay.Pointer.cover_path.Length > 0)
+                                    {
+                                        image_index = ListImages.IndexOf(DateDay.Pointer.cover_path);
+                                        x = DateDay.Pointer.cover_x;
+                                        y = DateDay.Pointer.cover_y;
+
+                                        src = OpenFileStream(ListImagesFullName[image_index]);
+                                        gPanel.DrawImage(src, x, y);
+                                    }
+                                }
+                            }
+
+                            break;
+                        #endregion
+
+                        #region ElementDateMonth
+                        case "ElementDateMonth":
+                            ElementDateMonth DateMonth = (ElementDateMonth)element;
+                            if (!DateMonth.visible) continue;
+
+                            for (int index = 1; index <= 3; index++)
+                            {
+                                if (DateMonth.Number != null && DateMonth.Number.img_First != null
+                                    && DateMonth.Number.img_First.Length > 0 &&
+                                    index == DateMonth.Number.position && DateMonth.Number.visible)
+                                {
+                                    int imageIndex = ListImages.IndexOf(DateMonth.Number.img_First);
+                                    int x = DateMonth.Number.imageX;
+                                    int y = DateMonth.Number.imageY;
+                                    int spasing = DateMonth.Number.space;
+                                    int alignment = AlignmentToInt(DateMonth.Number.align);
+                                    bool addZero = DateMonth.Number.zero;
+                                    //addZero = true;
+                                    int value = WatchFacePreviewSet.Date.Month;
+                                    int separator_index = -1;
+                                    if (DateMonth.Number.unit != null && DateMonth.Number.unit.Length > 0)
+                                        separator_index = ListImages.IndexOf(DateMonth.Number.unit);
+
+                                    Draw_dagital_text(gPanel, imageIndex, x, y,
+                                        spasing, alignment, value, addZero, 2, separator_index, BBorder);
+
+                                    if (DateMonth.Number.icon != null && DateMonth.Number.icon.Length > 0)
+                                    {
+                                        imageIndex = ListImages.IndexOf(DateMonth.Number.icon);
+                                        x = DateMonth.Number.iconPosX;
+                                        y = DateMonth.Number.iconPosY;
+
+                                        src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                        gPanel.DrawImage(src, x, y);
+                                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                                    }
+                                }
+
+                                if (DateMonth.Pointer != null && DateMonth.Pointer.src != null
+                                    && DateMonth.Pointer.src.Length > 0 &&
+                                    index == DateMonth.Pointer.position && DateMonth.Pointer.visible)
+                                {
+                                    int x = DateMonth.Pointer.center_x;
+                                    int y = DateMonth.Pointer.center_y;
+                                    int offsetX = DateMonth.Pointer.pos_x;
+                                    int offsetY = DateMonth.Pointer.pos_y;
+                                    int startAngle = DateMonth.Pointer.start_angle;
+                                    int endAngle = DateMonth.Pointer.end_angle;
+                                    int image_index = ListImages.IndexOf(DateMonth.Pointer.src);
+                                    int Month = WatchFacePreviewSet.Date.Month;
+                                    Month--;
+                                    float angle = startAngle + Month * (endAngle - startAngle) / 11f;
+
+                                    if (DateMonth.Pointer.scale != null && DateMonth.Pointer.scale.Length > 0)
+                                    {
+                                        image_index = ListImages.IndexOf(DateMonth.Pointer.scale);
+                                        x = DateMonth.Pointer.scale_x;
+                                        y = DateMonth.Pointer.scale_y;
+
+                                        src = OpenFileStream(ListImagesFullName[image_index]);
+                                        gPanel.DrawImage(src, x, y);
+                                    }
+
+                                    DrawAnalogClock(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+
+                                    if (DateMonth.Pointer.cover_path != null && DateMonth.Pointer.cover_path.Length > 0)
+                                    {
+                                        image_index = ListImages.IndexOf(DateMonth.Pointer.cover_path);
+                                        x = DateMonth.Pointer.cover_x;
+                                        y = DateMonth.Pointer.cover_y;
+
+                                        src = OpenFileStream(ListImagesFullName[image_index]);
+                                        gPanel.DrawImage(src, x, y);
+                                    }
+                                }
+
+                                if (DateMonth.Images != null && DateMonth.Images.img_First != null
+                                    && DateMonth.Images.img_First.Length > 0 &&
+                                    index == DateMonth.Images.position && DateMonth.Images.visible)
+                                {
+                                    int imageIndex = ListImages.IndexOf(DateMonth.Images.img_First);
+                                    int x = DateMonth.Images.X;
+                                    int y = DateMonth.Images.Y;
+                                    imageIndex = imageIndex + WatchFacePreviewSet.Date.Month - 1;
+
+                                    if (imageIndex < ListImagesFullName.Count)
+                                    {
+                                        src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                        gPanel.DrawImage(src, x, y);
+                                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                                    }
+                                }
+
+                            }
+
+                            break;
+                        #endregion
+
+                        #region ElementDateYear
+                        case "ElementDateYear":
+                            ElementDateYear DateYear = (ElementDateYear)element;
+                            if (!DateYear.visible) continue;
+
+                            if (DateYear.Number != null && DateYear.Number.img_First != null
+                                    && DateYear.Number.img_First.Length > 0 && DateYear.Number.visible)
+                            {
+                                int imageIndex = ListImages.IndexOf(DateYear.Number.img_First);
+                                int x = DateYear.Number.imageX;
+                                int y = DateYear.Number.imageY;
+                                int spasing = DateYear.Number.space;
+                                int alignment = AlignmentToInt(DateYear.Number.align);
+                                bool addZero = DateYear.Number.zero;
+                                //addZero = true;
+                                int value = WatchFacePreviewSet.Date.Month;
+                                int separator_index = -1;
+                                if (DateYear.Number.unit != null && DateYear.Number.unit.Length > 0)
+                                    separator_index = ListImages.IndexOf(DateYear.Number.unit);
+
+                                Draw_dagital_text(gPanel, imageIndex, x, y,
+                                    spasing, alignment, value, addZero, 2, separator_index, BBorder);
+
+                                if (DateYear.Number.icon != null && DateYear.Number.icon.Length > 0)
+                                {
+                                    imageIndex = ListImages.IndexOf(DateYear.Number.icon);
+                                    x = DateYear.Number.iconPosX;
+                                    y = DateYear.Number.iconPosY;
+
+                                    src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                    gPanel.DrawImage(src, x, y);
+                                    //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                                }
+                            }
+
+                            break;
+                        #endregion
+
+                        #region ElementDateWeek
+                        case "ElementDateWeek":
+                            ElementDateWeek DateWeek = (ElementDateWeek)element;
+                            if (!DateWeek.visible) continue;
+
+                            for (int index = 1; index <= 2; index++)
+                            {
+                                if (DateWeek.Pointer != null && DateWeek.Pointer.src != null
+                                    && DateWeek.Pointer.src.Length > 0 &&
+                                    index == DateWeek.Pointer.position && DateWeek.Pointer.visible)
+                                {
+                                    int x = DateWeek.Pointer.center_x;
+                                    int y = DateWeek.Pointer.center_y;
+                                    int offsetX = DateWeek.Pointer.pos_x;
+                                    int offsetY = DateWeek.Pointer.pos_y;
+                                    int startAngle = DateWeek.Pointer.start_angle;
+                                    int endAngle = DateWeek.Pointer.end_angle;
+                                    int image_index = ListImages.IndexOf(DateWeek.Pointer.src);
+                                    int Month = WatchFacePreviewSet.Date.Month;
+                                    Month--;
+                                    float angle = startAngle + Month * (endAngle - startAngle) / 11f;
+
+                                    if (DateWeek.Pointer.scale != null && DateWeek.Pointer.scale.Length > 0)
+                                    {
+                                        image_index = ListImages.IndexOf(DateWeek.Pointer.scale);
+                                        x = DateWeek.Pointer.scale_x;
+                                        y = DateWeek.Pointer.scale_y;
+
+                                        src = OpenFileStream(ListImagesFullName[image_index]);
+                                        gPanel.DrawImage(src, x, y);
+                                    }
+
+                                    DrawAnalogClock(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+
+                                    if (DateWeek.Pointer.cover_path != null && DateWeek.Pointer.cover_path.Length > 0)
+                                    {
+                                        image_index = ListImages.IndexOf(DateWeek.Pointer.cover_path);
+                                        x = DateWeek.Pointer.cover_x;
+                                        y = DateWeek.Pointer.cover_y;
+
+                                        src = OpenFileStream(ListImagesFullName[image_index]);
+                                        gPanel.DrawImage(src, x, y);
+                                    }
+                                }
+
+                                if (DateWeek.Images != null && DateWeek.Images.img_First != null
+                                    && DateWeek.Images.img_First.Length > 0 &&
+                                    index == DateWeek.Images.position && DateWeek.Images.visible)
+                                {
+                                    int imageIndex = ListImages.IndexOf(DateWeek.Images.img_First);
+                                    int x = DateWeek.Images.X;
+                                    int y = DateWeek.Images.Y;
+                                    imageIndex = imageIndex + WatchFacePreviewSet.Date.Month - 1;
+
+                                    if (imageIndex < ListImagesFullName.Count)
+                                    {
+                                        src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                        gPanel.DrawImage(src, x, y);
+                                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                                    }
+                                }
+                            }
+
+                            break;
                             #endregion
                     }
                 }
@@ -568,7 +851,8 @@ namespace Watch_Face_Editor
             //int DateLenght = width * value_lenght + spacing * (value_lenght - 1);
             if (ActivityType == 17) value_lenght = 5;
             if (ActivityType == 11) value_lenght = 3;
-            int DateLenght = width * value_lenght + 1;
+            int DateLenght = width * value_lenght;
+            //int DateLenght = width * value_lenght + 1;
             if (spacing > 0) DateLenght = DateLenght + spacing * (value_lenght - 1);
             //else DateLenght = DateLenght - spacing;
 
