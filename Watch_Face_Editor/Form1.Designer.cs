@@ -1035,12 +1035,7 @@ namespace Watch_Face_Editor
             this.comboBox_Language.FormattingEnabled = true;
             this.comboBox_Language.Items.AddRange(new object[] {
             resources.GetString("comboBox_Language.Items"),
-            resources.GetString("comboBox_Language.Items1"),
-            resources.GetString("comboBox_Language.Items2"),
-            resources.GetString("comboBox_Language.Items3"),
-            resources.GetString("comboBox_Language.Items4"),
-            resources.GetString("comboBox_Language.Items5"),
-            resources.GetString("comboBox_Language.Items6")});
+            resources.GetString("comboBox_Language.Items1")});
             resources.ApplyResources(this.comboBox_Language, "comboBox_Language");
             this.comboBox_Language.Name = "comboBox_Language";
             this.comboBox_Language.SelectedIndexChanged += new System.EventHandler(this.comboBox_Language_SelectedIndexChanged);

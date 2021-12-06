@@ -117,6 +117,190 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Maximum temperature</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="numericUpDown_WeatherSet_Temp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>125, 50</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items" xml:space="preserve">
+    <value>Cloudy</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items1" xml:space="preserve">
+    <value>Chance of rain</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items2" xml:space="preserve">
+    <value>Chance of snow</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items3" xml:space="preserve">
+    <value>Sunny</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items4" xml:space="preserve">
+    <value>Overcast</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items5" xml:space="preserve">
+    <value>Light rain</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items6" xml:space="preserve">
+    <value>Light snow</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items7" xml:space="preserve">
+    <value>Moderate rain</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items8" xml:space="preserve">
+    <value>Moderate snow</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items9" xml:space="preserve">
+    <value>Heavy snowfall</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items10" xml:space="preserve">
+    <value>Heavy rain</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items11" xml:space="preserve">
+    <value>Sandstorm</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items12" xml:space="preserve">
+    <value>Sleet</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items13" xml:space="preserve">
+    <value>Fog</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items14" xml:space="preserve">
+    <value>Haze</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items15" xml:space="preserve">
+    <value>Thunderstorm</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items16" xml:space="preserve">
+    <value>Snowstorm</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items17" xml:space="preserve">
+    <value>Dusty</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items18" xml:space="preserve">
+    <value>Extreme rain</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items19" xml:space="preserve">
+    <value>Rain with hail</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items20" xml:space="preserve">
+    <value>Heavy rain with hail</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items21" xml:space="preserve">
+    <value>Rainstorm</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items22" xml:space="preserve">
+    <value>Dust storm</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items23" xml:space="preserve">
+    <value>Severe sandstorm</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items24" xml:space="preserve">
+    <value>Torrential rain</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items25" xml:space="preserve">
+    <value>Unknown weather</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items26" xml:space="preserve">
+    <value>Cloudy night</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items27" xml:space="preserve">
+    <value>Rainy night</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items28" xml:space="preserve">
+    <value>Clear night</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>80, 22</value>
+  </data>
+  <data name="checkBox_WeatherSet_Temp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>119, 17</value>
+  </data>
+  <data name="checkBox_WeatherSet_Temp.Text" xml:space="preserve">
+    <value>Current temperature</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Minimum temperature</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Air pressure</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>Altitude</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Wind force</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>Humidity</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>Air quality</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>UV index</value>
+  </data>
+  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 13</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Weather icon</value>
+  </data>
+  <data name="groupBox_Air.Text" xml:space="preserve">
+    <value>Atmosphere</value>
+  </data>
+  <data name="checkBox_DND_Set.Text" xml:space="preserve">
+    <value>DND</value>
+  </data>
+  <data name="checkBox_Lock_Set.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 18</value>
+  </data>
+  <data name="checkBox_Lock_Set.Text" xml:space="preserve">
+    <value>Lock</value>
+  </data>
+  <data name="checkBox_Alarm_Set.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 18</value>
+  </data>
+  <data name="checkBox_Alarm_Set.Text" xml:space="preserve">
+    <value>Alarm</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Fat burning</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Stress</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Stand up</value>
+  </data>
+  <data name="label08.Text" xml:space="preserve">
+    <value>Steps goal</value>
+  </data>
+  <data name="label07.Text" xml:space="preserve">
+    <value>Steps</value>
+  </data>
+  <data name="label06.Text" xml:space="preserve">
+    <value>Distance</value>
+  </data>
+  <data name="label05.Text" xml:space="preserve">
+    <value>Heart rate</value>
+  </data>
+  <data name="label04.Text" xml:space="preserve">
+    <value>Calories</value>
+  </data>
+  <data name="label03.Text" xml:space="preserve">
+    <value>Battery</value>
+  </data>
+  <data name="label02.Text" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="label01.Text" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="groupBox_Activity.Text" xml:space="preserve">
+    <value>Activitys</value>
+  </data>
   <data name="button_Set.Text" xml:space="preserve">
     <value>Values</value>
   </data>

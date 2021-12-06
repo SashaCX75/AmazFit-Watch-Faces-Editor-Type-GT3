@@ -63,7 +63,7 @@ namespace Watch_Face_Editor
         public bool zero { get; set; }
 
         /// <summary>Выравнивание</summary>
-        public string align { get; set; }
+        public string align = "LEFT";
 
         /// <summary>Первая картинка из набора для отображения</summary>
         public string img_First { get; set; }

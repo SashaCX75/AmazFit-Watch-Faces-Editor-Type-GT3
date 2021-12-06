@@ -268,7 +268,7 @@
     <value>Информация</value>
   </data>
   <data name="Message_Wrong_Original_Image" xml:space="preserve">
-    <value>Не верный формат исходного изображения</value>
+    <value>Неверный формат исходного изображения</value>
   </data>
   <data name="Message_Wrong_Preview_Exists" xml:space="preserve">
     <value>Не удалось создать изображение предпросмотра. Возможно такое изображение уже имеется.</value>

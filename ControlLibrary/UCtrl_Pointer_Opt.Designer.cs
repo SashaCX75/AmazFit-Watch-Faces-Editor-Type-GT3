@@ -34,8 +34,14 @@ namespace ControlLibrary
             this.comboBox_pointer_image = new System.Windows.Forms.ComboBox();
             this.numericUpDown_pointer_X = new System.Windows.Forms.NumericUpDown();
             this.contextMenuStrip_X = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.вставитьКоординатуХToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.копироватьToolStripMenuItemX = new System.Windows.Forms.ToolStripMenuItem();
+            this.вставитьToolStripMenuItemX = new System.Windows.Forms.ToolStripMenuItem();
             this.numericUpDown_pointer_Y = new System.Windows.Forms.NumericUpDown();
             this.contextMenuStrip_Y = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.вставитьКоординатуYToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.копироватьToolStripMenuItemY = new System.Windows.Forms.ToolStripMenuItem();
+            this.вставитьToolStripMenuItemY = new System.Windows.Forms.ToolStripMenuItem();
             this.label02 = new System.Windows.Forms.Label();
             this.label01 = new System.Windows.Forms.Label();
             this.label05 = new System.Windows.Forms.Label();
@@ -63,12 +69,6 @@ namespace ControlLibrary
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.вставитьКоординатуХToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.копироватьToolStripMenuItemX = new System.Windows.Forms.ToolStripMenuItem();
-            this.вставитьToolStripMenuItemX = new System.Windows.Forms.ToolStripMenuItem();
-            this.вставитьКоординатуYToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.копироватьToolStripMenuItemY = new System.Windows.Forms.ToolStripMenuItem();
-            this.вставитьToolStripMenuItemY = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_pointer_X)).BeginInit();
             this.contextMenuStrip_X.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_pointer_Y)).BeginInit();
@@ -125,6 +125,24 @@ namespace ControlLibrary
             this.contextMenuStrip_X.Name = "contextMenuStrip_X";
             this.contextMenuStrip_X.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_X_Opening);
             // 
+            // вставитьКоординатуХToolStripMenuItem
+            // 
+            resources.ApplyResources(this.вставитьКоординатуХToolStripMenuItem, "вставитьКоординатуХToolStripMenuItem");
+            this.вставитьКоординатуХToolStripMenuItem.Name = "вставитьКоординатуХToolStripMenuItem";
+            this.вставитьКоординатуХToolStripMenuItem.Click += new System.EventHandler(this.вставитьКоординатуХToolStripMenuItem_Click);
+            // 
+            // копироватьToolStripMenuItemX
+            // 
+            resources.ApplyResources(this.копироватьToolStripMenuItemX, "копироватьToolStripMenuItemX");
+            this.копироватьToolStripMenuItemX.Name = "копироватьToolStripMenuItemX";
+            this.копироватьToolStripMenuItemX.Click += new System.EventHandler(this.копироватьToolStripMenuItem_Click);
+            // 
+            // вставитьToolStripMenuItemX
+            // 
+            resources.ApplyResources(this.вставитьToolStripMenuItemX, "вставитьToolStripMenuItemX");
+            this.вставитьToolStripMenuItemX.Name = "вставитьToolStripMenuItemX";
+            this.вставитьToolStripMenuItemX.Click += new System.EventHandler(this.вставитьToolStripMenuItem_Click);
+            // 
             // numericUpDown_pointer_Y
             // 
             resources.ApplyResources(this.numericUpDown_pointer_Y, "numericUpDown_pointer_Y");
@@ -153,6 +171,24 @@ namespace ControlLibrary
             this.вставитьToolStripMenuItemY});
             this.contextMenuStrip_Y.Name = "contextMenuStrip_X";
             this.contextMenuStrip_Y.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Y_Opening);
+            // 
+            // вставитьКоординатуYToolStripMenuItem
+            // 
+            resources.ApplyResources(this.вставитьКоординатуYToolStripMenuItem, "вставитьКоординатуYToolStripMenuItem");
+            this.вставитьКоординатуYToolStripMenuItem.Name = "вставитьКоординатуYToolStripMenuItem";
+            this.вставитьКоординатуYToolStripMenuItem.Click += new System.EventHandler(this.вставитьКоординатуYToolStripMenuItem_Click);
+            // 
+            // копироватьToolStripMenuItemY
+            // 
+            resources.ApplyResources(this.копироватьToolStripMenuItemY, "копироватьToolStripMenuItemY");
+            this.копироватьToolStripMenuItemY.Name = "копироватьToolStripMenuItemY";
+            this.копироватьToolStripMenuItemY.Click += new System.EventHandler(this.копироватьToolStripMenuItem_Click);
+            // 
+            // вставитьToolStripMenuItemY
+            // 
+            resources.ApplyResources(this.вставитьToolStripMenuItemY, "вставитьToolStripMenuItemY");
+            this.вставитьToolStripMenuItemY.Name = "вставитьToolStripMenuItemY";
+            this.вставитьToolStripMenuItemY.Click += new System.EventHandler(this.вставитьToolStripMenuItem_Click);
             // 
             // label02
             // 
@@ -405,42 +441,6 @@ namespace ControlLibrary
             // 
             resources.ApplyResources(this.label14, "label14");
             this.label14.Name = "label14";
-            // 
-            // вставитьКоординатуХToolStripMenuItem
-            // 
-            resources.ApplyResources(this.вставитьКоординатуХToolStripMenuItem, "вставитьКоординатуХToolStripMenuItem");
-            this.вставитьКоординатуХToolStripMenuItem.Name = "вставитьКоординатуХToolStripMenuItem";
-            this.вставитьКоординатуХToolStripMenuItem.Click += new System.EventHandler(this.вставитьКоординатуХToolStripMenuItem_Click);
-            // 
-            // копироватьToolStripMenuItemX
-            // 
-            resources.ApplyResources(this.копироватьToolStripMenuItemX, "копироватьToolStripMenuItemX");
-            this.копироватьToolStripMenuItemX.Name = "копироватьToolStripMenuItemX";
-            this.копироватьToolStripMenuItemX.Click += new System.EventHandler(this.копироватьToolStripMenuItem_Click);
-            // 
-            // вставитьToolStripMenuItemX
-            // 
-            resources.ApplyResources(this.вставитьToolStripMenuItemX, "вставитьToolStripMenuItemX");
-            this.вставитьToolStripMenuItemX.Name = "вставитьToolStripMenuItemX";
-            this.вставитьToolStripMenuItemX.Click += new System.EventHandler(this.вставитьToolStripMenuItem_Click);
-            // 
-            // вставитьКоординатуYToolStripMenuItem
-            // 
-            resources.ApplyResources(this.вставитьКоординатуYToolStripMenuItem, "вставитьКоординатуYToolStripMenuItem");
-            this.вставитьКоординатуYToolStripMenuItem.Name = "вставитьКоординатуYToolStripMenuItem";
-            this.вставитьКоординатуYToolStripMenuItem.Click += new System.EventHandler(this.вставитьКоординатуYToolStripMenuItem_Click);
-            // 
-            // копироватьToolStripMenuItemY
-            // 
-            resources.ApplyResources(this.копироватьToolStripMenuItemY, "копироватьToolStripMenuItemY");
-            this.копироватьToolStripMenuItemY.Name = "копироватьToolStripMenuItemY";
-            this.копироватьToolStripMenuItemY.Click += new System.EventHandler(this.копироватьToolStripMenuItem_Click);
-            // 
-            // вставитьToolStripMenuItemY
-            // 
-            resources.ApplyResources(this.вставитьToolStripMenuItemY, "вставитьToolStripMenuItemY");
-            this.вставитьToolStripMenuItemY.Name = "вставитьToolStripMenuItemY";
-            this.вставитьToolStripMenuItemY.Click += new System.EventHandler(this.вставитьToolStripMenuItem_Click);
             // 
             // UCtrl_Pointer_Opt
             // 

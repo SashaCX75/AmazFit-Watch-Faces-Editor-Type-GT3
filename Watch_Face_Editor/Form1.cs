@@ -1608,6 +1608,8 @@ namespace Watch_Face_Editor
             JSON_Modified = false;
             PreviewImage();
             FormText();
+
+            groupBox_AddElemets.Enabled = true;
         }
 
         /// <summary>Загружаем файлы изображений в проект и в выпадающие списки</summary>
@@ -1782,6 +1784,7 @@ namespace Watch_Face_Editor
                 PreviewView = false;
                 ShowElemetsWatchFace();
                 PreviewView = true;
+                groupBox_AddElemets.Enabled = true;
 
                 PreviewImage();
                 FormText();
@@ -5741,6 +5744,7 @@ namespace Watch_Face_Editor
             PreviewImage();
             FormText();
         }
+
     }
 }
 

@@ -511,7 +511,7 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Не верный формат исходного изображения.
+        ///   Ищет локализованную строку, похожую на Неверный формат исходного изображения.
         /// </summary>
         internal static string Message_Wrong_Original_Image {
             get {

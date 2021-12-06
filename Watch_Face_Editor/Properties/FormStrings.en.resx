@@ -126,8 +126,29 @@
   <data name="Dialog_Title_New_Project" xml:space="preserve">
     <value>Creating a new project</value>
   </data>
+  <data name="Dialog_Title_PreviewStates" xml:space="preserve">
+    <value>Select a preview settings file</value>
+  </data>
+  <data name="Dialog_Title_Unpack" xml:space="preserve">
+    <value>Select a watch file</value>
+  </data>
   <data name="Dialog_Title_WatchSkin" xml:space="preserve">
     <value>Selecting a watch image file</value>
+  </data>
+  <data name="Elemet_Activity" xml:space="preserve">
+    <value>Activity</value>
+  </data>
+  <data name="Elemet_Air" xml:space="preserve">
+    <value>Air</value>
+  </data>
+  <data name="Elemet_Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Elemet_System" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="Elemet_Time" xml:space="preserve">
+    <value>Time</value>
   </data>
   <data name="FilterGif" xml:space="preserve">
     <value>GIF Files (*.gif)|*.gif</value>
@@ -138,6 +159,15 @@
   <data name="FilterPng" xml:space="preserve">
     <value>PNG Files (*.png)|*.png</value>
   </data>
+  <data name="FilterZip" xml:space="preserve">
+    <value>Zip file of the watch face (* .zip) | * .zip</value>
+  </data>
+  <data name="FollowMinute" xml:space="preserve">
+    <value>Follow the hours</value>
+  </data>
+  <data name="FollowSecond" xml:space="preserve">
+    <value>Follow the minutes</value>
+  </data>
   <data name="Form_Preview" xml:space="preserve">
     <value>Preview</value>
   </data>
@@ -146,6 +176,9 @@
   </data>
   <data name="Message_CopyCoord" xml:space="preserve">
     <value>Coordinates copied</value>
+  </data>
+  <data name="Message_ErrorReadJS" xml:space="preserve">
+    <value>Unable to recognize the structure of the watch face</value>
   </data>
   <data name="Message_Error_Caption" xml:space="preserve">
     <value>Error</value>
@@ -156,8 +189,32 @@
   <data name="Message_Error_Image_Text2" xml:space="preserve">
     <value>. You do not have permission to read the file, or the image is damaged.</value>
   </data>
+  <data name="Message_GoToFile_Caption" xml:space="preserve">
+    <value>Go to file</value>
+  </data>
+  <data name="Message_GoToFile_Text" xml:space="preserve">
+    <value>Go to file?</value>
+  </data>
+  <data name="Message_Image32bit" xml:space="preserve">
+    <value>The image must not be monochrome and must be in 32bit format</value>
+  </data>
+  <data name="Message_ImageCount_Error" xml:space="preserve">
+    <value>The selected images are out of the range of the available images.</value>
+  </data>
+  <data name="Message_ImageFix_Error" xml:space="preserve">
+    <value>Image conversion error</value>
+  </data>
   <data name="Message_JsonError_Text" xml:space="preserve">
     <value>Invalid JSON file.</value>
+  </data>
+  <data name="Message_JsonReadError_Text" xml:space="preserve">
+    <value>Error reading JSON file.</value>
+  </data>
+  <data name="Message_LoadPreviewStates_Caption" xml:space="preserve">
+    <value>Download preview settings</value>
+  </data>
+  <data name="Message_LoadPreviewStates_Text" xml:space="preserve">
+    <value>Download an existing file with a set of preview settings PreviewStates.json?</value>
   </data>
   <data name="Message_Restart_Caption" xml:space="preserve">
     <value>Reboot</value>
@@ -168,6 +225,9 @@
   <data name="Message_Restart_Text2" xml:space="preserve">
     <value>Restart the program?</value>
   </data>
+  <data name="Message_SaveOnly1234_Text" xml:space="preserve">
+    <value>To save pre-set parameters, set at least one field "Calories" to a value other than "1234".</value>
+  </data>
   <data name="Message_Save_JSON_Modified_Caption" xml:space="preserve">
     <value>Save the project</value>
   </data>
@@ -177,10 +237,37 @@
   <data name="Message_Save_new_JSON" xml:space="preserve">
     <value>The current project has not yet been saved. Do you want to save it?</value>
   </data>
+  <data name="Message_WarningPreview_Text1" xml:space="preserve">
+    <value>Preview image sizes are different from the standard</value>
+  </data>
+  <data name="Message_WarningPreview_Text2" xml:space="preserve">
+    <value>Use existing dimensions?</value>
+  </data>
+  <data name="Message_Warning_Assets_Exist1" xml:space="preserve">
+    <value>There is already a folder with images in this folder.</value>
+  </data>
+  <data name="Message_Warning_Assets_Exist2" xml:space="preserve">
+    <value>It is recommended to create a project in an empty folder.</value>
+  </data>
+  <data name="Message_Warning_Assets_Exist3" xml:space="preserve">
+    <value>Create a project in the selected folder?</value>
+  </data>
   <data name="Message_Warning_Caption" xml:space="preserve">
     <value>Warning</value>
   </data>
+  <data name="Message_Warning_Image_Exist1" xml:space="preserve">
+    <value>The project already has an image:</value>
+  </data>
+  <data name="Message_Warning_Image_Exist2" xml:space="preserve">
+    <value>Replace it with a new image?</value>
+  </data>
   <data name="Message_Warning_Information" xml:space="preserve">
     <value>Information</value>
+  </data>
+  <data name="Message_Wrong_Original_Image" xml:space="preserve">
+    <value>Invalid source image format</value>
+  </data>
+  <data name="Message_Wrong_Preview_Exists" xml:space="preserve">
+    <value>Failed to create preview image. Perhaps such an image is already available.</value>
   </data>
 </root>

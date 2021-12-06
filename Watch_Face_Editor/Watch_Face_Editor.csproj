@@ -201,8 +201,10 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>mkdir "$(TargetDir)\Libs"
+    <PostBuildEvent>rmdir /s /q $(TargetDir)\Language\en"
+mkdir "$(TargetDir)\Libs"
 mkdir "$(TargetDir)\Language"
+move /y "$(TargetDir)\en" "$(TargetDir)\Language"
 move /y "$(TargetDir)\ru" "$(TargetDir)\Language"
 move "$(TargetDir)*.dll" "$(TargetDir)\Libs"
 move "$(TargetDir)*.xml" "$(TargetDir)\Libs"

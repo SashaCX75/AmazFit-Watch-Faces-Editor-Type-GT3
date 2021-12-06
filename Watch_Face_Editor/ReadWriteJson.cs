@@ -53,6 +53,8 @@ namespace Watch_Face_Editor
                     }
                 }
             }
+
+            items = items + Environment.NewLine + Environment.NewLine; 
             if (Watch_Face.ScreenAOD != null)
             {
                 if (Watch_Face.ScreenAOD.Background != null && Watch_Face.ScreenAOD.Background.visible)
@@ -62,7 +64,7 @@ namespace Watch_Face_Editor
                         variables += TabInString(4) + "let idle_background_bg = ''" + Environment.NewLine;
                         hmUI_widget_FILL_RECT backgroundColor = Watch_Face.ScreenAOD.Background.BackgroundColor;
                         //if (backgroundColor.show_level == null) backgroundColor.show_level = "ONLY_NORMAL";
-                        options = FILL_RECT_Options(backgroundColor, "ONLY_NORMAL");
+                        options = FILL_RECT_Options(backgroundColor, "ONAL_AOD");
                         items += TabInString(6) + "idle_background_bg = hmUI.createWidget(hmUI.widget.FILL_RECT, {" +
                             options + TabInString(6) + "});" + Environment.NewLine;
                     }
@@ -71,7 +73,7 @@ namespace Watch_Face_Editor
                         variables += TabInString(4) + "let idle_background_bg_img = ''" + Environment.NewLine;
                         hmUI_widget_IMG backgroundImage = Watch_Face.ScreenAOD.Background.BackgroundImage;
                         //if (backgroundImage.show_level == null) backgroundImage.show_level = "ONLY_NORMAL";
-                        options = IMG_Options(backgroundImage, "ONLY_NORMAL");
+                        options = IMG_Options(backgroundImage, "ONAL_AOD");
                         items += TabInString(6) + "idle_background_bg_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                             options + TabInString(6) + "});" + Environment.NewLine;
                     }
@@ -148,7 +150,7 @@ namespace Watch_Face_Editor
 
                     for (int index = 1; index <= 4; index++)
                     {
-                        if (index == hourPosition && hourPosition + 1 == minutePosition && minutePosition + 1 == secondPosition)
+                        if (index == hourPosition && hourPosition < minutePosition && minutePosition < secondPosition)
                         {
                             if (optionsHour.Length > 5 && optionsMinute.Length > 5)
                             {
@@ -333,9 +335,9 @@ namespace Watch_Face_Editor
                         if (index == numberPositionDay && optionsNumberDay.Length > 5)
                         {
                             variables += TabInString(4) + "let " + optionNameStart +
-                                "date_img_date_month = ''" + Environment.NewLine;
+                                "date_img_date_day = ''" + Environment.NewLine;
                             items += Environment.NewLine + TabInString(6) +
-                                optionNameStart + "date_img_date_month = hmUI.createWidget(hmUI.widget.IMG_DATE, {" +
+                                optionNameStart + "date_img_date_day = hmUI.createWidget(hmUI.widget.IMG_DATE, {" +
                                     optionsNumberDay + TabInString(6) + "});" + Environment.NewLine;
 
                             if (optionsNumberDay_separator.Length > 5)
@@ -563,6 +565,7 @@ namespace Watch_Face_Editor
                 {
                     MessageBox.Show(Properties.FormStrings.Message_ImageCount_Error, Properties.FormStrings.Message_Warning_Caption,
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Console.WriteLine("IMG_NUMBER_Hour_Options");
                     return options;
                 }
                 string hour_array = "[";
@@ -610,6 +613,7 @@ namespace Watch_Face_Editor
                 {
                     MessageBox.Show(Properties.FormStrings.Message_ImageCount_Error, Properties.FormStrings.Message_Warning_Caption,
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Console.WriteLine("IMG_NUMBER_Minute_Options");
                     return options;
                 }
                 string minute_array = "[";
@@ -657,6 +661,7 @@ namespace Watch_Face_Editor
                 {
                     MessageBox.Show(Properties.FormStrings.Message_ImageCount_Error, Properties.FormStrings.Message_Warning_Caption,
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Console.WriteLine("IMG_NUMBER_Second_Options");
                     return options;
                 }
                 string second_array = "[";
@@ -855,31 +860,32 @@ namespace Watch_Face_Editor
                 {
                     MessageBox.Show(Properties.FormStrings.Message_ImageCount_Error, Properties.FormStrings.Message_Warning_Caption,
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Console.WriteLine("IMG_NUMBER_Day_Options");
                     return options;
                 }
-                string hour_array = "[";
+                string day_array = "[";
                 for (int i = imgPosition; i < imgPosition + 10; i++)
                 {
                     string file_name = "\"" + ListImages[i] + ".png" + "\"";
-                    hour_array += file_name;
-                    if (i < imgPosition + count - 1) hour_array += ",";
+                    day_array += file_name;
+                    if (i < imgPosition + count - 1) day_array += ",";
                 }
-                hour_array += "]";
+                day_array += "]";
                 options += TabInString(7) + "day_startX: " + img_number_day.imageX.ToString() + "," + Environment.NewLine;
                 options += TabInString(7) + "day_startY: " + img_number_day.imageY.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "day_sc_array: " + hour_array + "," + Environment.NewLine;
-                options += TabInString(7) + "day_tc_array: " + hour_array + "," + Environment.NewLine;
-                options += TabInString(7) + "day_en_array: " + hour_array + "," + Environment.NewLine;
+                options += TabInString(7) + "day_sc_array: " + day_array + "," + Environment.NewLine;
+                options += TabInString(7) + "day_tc_array: " + day_array + "," + Environment.NewLine;
+                options += TabInString(7) + "day_en_array: " + day_array + "," + Environment.NewLine;
 
                 if (img_number_day.zero) options += TabInString(7) + "day_zero: 1," + Environment.NewLine;
                 else options += TabInString(7) + "day_zero: 0," + Environment.NewLine;
                 options += TabInString(7) + "day_space: " + img_number_day.space.ToString() + "," + Environment.NewLine;
                 if (img_number_day.unit != null && img_number_day.unit.Length > 0)
                 {
-                    string hour_unit = "'" + img_number_day.unit + ".png'";
-                    options += TabInString(7) + "day_unit_sc: " + hour_unit + "," + Environment.NewLine;
-                    options += TabInString(7) + "day_unit_tc: " + hour_unit + "," + Environment.NewLine;
-                    options += TabInString(7) + "day_unit_en: " + hour_unit + "," + Environment.NewLine;
+                    string day_unit = "'" + img_number_day.unit + ".png'";
+                    options += TabInString(7) + "day_unit_sc: " + day_unit + "," + Environment.NewLine;
+                    options += TabInString(7) + "day_unit_tc: " + day_unit + "," + Environment.NewLine;
+                    options += TabInString(7) + "day_unit_en: " + day_unit + "," + Environment.NewLine;
                 }
                 options += TabInString(7) + "day_align: hmUI.align." + img_number_day.align.ToUpper() + "," + Environment.NewLine;
                 options += TabInString(7) + "day_is_character: false," + Environment.NewLine;
@@ -906,31 +912,32 @@ namespace Watch_Face_Editor
                 {
                     MessageBox.Show(Properties.FormStrings.Message_ImageCount_Error, Properties.FormStrings.Message_Warning_Caption,
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Console.WriteLine("IMG_NUMBER_Month_Options");
                     return options;
                 }
-                string hour_array = "[";
+                string month_array = "[";
                 for (int i = imgPosition; i < imgPosition + 10; i++)
                 {
                     string file_name = "\"" + ListImages[i] + ".png" + "\"";
-                    hour_array += file_name;
-                    if (i < imgPosition + count - 1) hour_array += ",";
+                    month_array += file_name;
+                    if (i < imgPosition + count - 1) month_array += ",";
                 }
-                hour_array += "]";
+                month_array += "]";
                 options += TabInString(7) + "month_startX: " + img_number_month.imageX.ToString() + "," + Environment.NewLine;
                 options += TabInString(7) + "month_startY: " + img_number_month.imageY.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "month_sc_array: " + hour_array + "," + Environment.NewLine;
-                options += TabInString(7) + "month_tc_array: " + hour_array + "," + Environment.NewLine;
-                options += TabInString(7) + "month_en_array: " + hour_array + "," + Environment.NewLine;
+                options += TabInString(7) + "month_sc_array: " + month_array + "," + Environment.NewLine;
+                options += TabInString(7) + "month_tc_array: " + month_array + "," + Environment.NewLine;
+                options += TabInString(7) + "month_en_array: " + month_array + "," + Environment.NewLine;
 
                 if (img_number_month.zero) options += TabInString(7) + "month_zero: 1," + Environment.NewLine;
                 else options += TabInString(7) + "month_zero: 0," + Environment.NewLine;
                 options += TabInString(7) + "month_space: " + img_number_month.space.ToString() + "," + Environment.NewLine;
                 if (img_number_month.unit != null && img_number_month.unit.Length > 0)
                 {
-                    string hour_unit = "'" + img_number_month.unit + ".png'";
-                    options += TabInString(7) + "month_unit_sc: " + hour_unit + "," + Environment.NewLine;
-                    options += TabInString(7) + "month_unit_tc: " + hour_unit + "," + Environment.NewLine;
-                    options += TabInString(7) + "month_unit_en: " + hour_unit + "," + Environment.NewLine;
+                    string month_unit = "'" + img_number_month.unit + ".png'";
+                    options += TabInString(7) + "month_unit_sc: " + month_unit + "," + Environment.NewLine;
+                    options += TabInString(7) + "month_unit_tc: " + month_unit + "," + Environment.NewLine;
+                    options += TabInString(7) + "month_unit_en: " + month_unit + "," + Environment.NewLine;
                 }
                 options += TabInString(7) + "month_align: hmUI.align." + img_number_month.align.ToUpper() + "," + Environment.NewLine;
                 options += TabInString(7) + "month_is_character: false," + Environment.NewLine;
@@ -957,31 +964,32 @@ namespace Watch_Face_Editor
                 {
                     MessageBox.Show(Properties.FormStrings.Message_ImageCount_Error, Properties.FormStrings.Message_Warning_Caption,
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Console.WriteLine("IMG_NUMBER_Year_Options");
                     return options;
                 }
-                string hour_array = "[";
+                string year_array = "[";
                 for (int i = imgPosition; i < imgPosition + 10; i++)
                 {
                     string file_name = "\"" + ListImages[i] + ".png" + "\"";
-                    hour_array += file_name;
-                    if (i < imgPosition + count - 1) hour_array += ",";
+                    year_array += file_name;
+                    if (i < imgPosition + count - 1) year_array += ",";
                 }
-                hour_array += "]";
+                year_array += "]";
                 options += TabInString(7) + "year_startX: " + img_number_year.imageX.ToString() + "," + Environment.NewLine;
                 options += TabInString(7) + "year_startY: " + img_number_year.imageY.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "year_sc_array: " + hour_array + "," + Environment.NewLine;
-                options += TabInString(7) + "year_tc_array: " + hour_array + "," + Environment.NewLine;
-                options += TabInString(7) + "year_en_array: " + hour_array + "," + Environment.NewLine;
+                options += TabInString(7) + "year_sc_array: " + year_array + "," + Environment.NewLine;
+                options += TabInString(7) + "year_tc_array: " + year_array + "," + Environment.NewLine;
+                options += TabInString(7) + "year_en_array: " + year_array + "," + Environment.NewLine;
 
                 if (img_number_year.zero) options += TabInString(7) + "year_zero: 1," + Environment.NewLine;
                 else options += TabInString(7) + "year_zero: 0," + Environment.NewLine;
                 options += TabInString(7) + "year_space: " + img_number_year.space.ToString() + "," + Environment.NewLine;
                 if (img_number_year.unit != null && img_number_year.unit.Length > 0)
                 {
-                    string hour_unit = "'" + img_number_year.unit + ".png'";
-                    options += TabInString(7) + "year_unit_sc: " + hour_unit + "," + Environment.NewLine;
-                    options += TabInString(7) + "year_unit_tc: " + hour_unit + "," + Environment.NewLine;
-                    options += TabInString(7) + "year_unit_en: " + hour_unit + "," + Environment.NewLine;
+                    string year_unit = "'" + img_number_year.unit + ".png'";
+                    options += TabInString(7) + "year_unit_sc: " + year_unit + "," + Environment.NewLine;
+                    options += TabInString(7) + "year_unit_tc: " + year_unit + "," + Environment.NewLine;
+                    options += TabInString(7) + "year_unit_en: " + year_unit + "," + Environment.NewLine;
                 }
                 options += TabInString(7) + "year_align: hmUI.align." + img_number_year.align.ToUpper() + "," + Environment.NewLine;
                 options += TabInString(7) + "year_is_character: false," + Environment.NewLine;
@@ -1008,6 +1016,7 @@ namespace Watch_Face_Editor
                 {
                     MessageBox.Show(Properties.FormStrings.Message_ImageCount_Error, Properties.FormStrings.Message_Warning_Caption,
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Console.WriteLine("IMG_IMAGES_Month_Options");
                     return options;
                 }
                 string month_array = "[";
@@ -1048,6 +1057,7 @@ namespace Watch_Face_Editor
                 {
                     MessageBox.Show(Properties.FormStrings.Message_ImageCount_Error, Properties.FormStrings.Message_Warning_Caption,
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Console.WriteLine("IMG_IMAGES_Week_Options");
                     return options;
                 }
                 string week_array = "[";

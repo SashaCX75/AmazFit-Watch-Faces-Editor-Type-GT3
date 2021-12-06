@@ -15,7 +15,6 @@ namespace ControlLibrary
         private bool setValue; // режим задания параметров
         bool highlight_element = false;
         bool visibilityElement = true; // элемент оторажается на предпросмотре
-        bool visible_ShowDel = false;
 
         public UCtrl_DateYear_Elm()
         {
@@ -72,11 +71,6 @@ namespace ControlLibrary
             else button_ElementName.BackColor = SystemColors.Control;
         }
 
-        public void Visible_ShowDel(bool visible)
-        {
-            visible_ShowDel = visible;
-            pictureBox_Del.Visible = visible_ShowDel;
-        }
         private void button_ElementName_MouseDown(object sender, MouseEventArgs e)
         {
             base.OnMouseDown(e);
@@ -103,16 +97,8 @@ namespace ControlLibrary
         private void pictureBox_Show_Click(object sender, EventArgs e)
         {
             visibilityElement = !visibilityElement;
-            if (visible_ShowDel)
-            {
-                pictureBox_NotShow.Visible = !visibilityElement;
-                pictureBox_Show.Visible = visibilityElement;
-            }
-            else
-            {
-                pictureBox_NotShow.Visible = false;
-                pictureBox_Show.Visible = false;
-            }
+            pictureBox_NotShow.Visible = !visibilityElement;
+            pictureBox_Show.Visible = visibilityElement;
 
             if (VisibleElementChanged != null && !setValue)
             {

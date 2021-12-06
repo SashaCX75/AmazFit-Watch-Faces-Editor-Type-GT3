@@ -32,7 +32,13 @@ namespace ControlLibrary
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrl_AmPm_Opt));
             this.contextMenuStrip_Y = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.вставитьКоординатуYToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.копироватьToolStripMenuItemY = new System.Windows.Forms.ToolStripMenuItem();
+            this.вставитьToolStripMenuItemY = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip_X = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.вставитьКоординатуХToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.копироватьToolStripMenuItemX = new System.Windows.Forms.ToolStripMenuItem();
+            this.вставитьToolStripMenuItemX = new System.Windows.Forms.ToolStripMenuItem();
             this.numericUpDown_AM_Y = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -47,12 +53,6 @@ namespace ControlLibrary
             this.comboBox_AM_image = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.numericUpDown_PM_Y = new System.Windows.Forms.NumericUpDown();
-            this.вставитьКоординатуYToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.копироватьToolStripMenuItemY = new System.Windows.Forms.ToolStripMenuItem();
-            this.вставитьToolStripMenuItemY = new System.Windows.Forms.ToolStripMenuItem();
-            this.вставитьКоординатуХToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.копироватьToolStripMenuItemX = new System.Windows.Forms.ToolStripMenuItem();
-            this.вставитьToolStripMenuItemX = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip_Y.SuspendLayout();
             this.contextMenuStrip_X.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_AM_Y)).BeginInit();
@@ -72,6 +72,24 @@ namespace ControlLibrary
             this.contextMenuStrip_Y.Name = "contextMenuStrip_X";
             this.contextMenuStrip_Y.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Y_Opening);
             // 
+            // вставитьКоординатуYToolStripMenuItem
+            // 
+            resources.ApplyResources(this.вставитьКоординатуYToolStripMenuItem, "вставитьКоординатуYToolStripMenuItem");
+            this.вставитьКоординатуYToolStripMenuItem.Name = "вставитьКоординатуYToolStripMenuItem";
+            this.вставитьКоординатуYToolStripMenuItem.Click += new System.EventHandler(this.вставитьКоординатуYToolStripMenuItem_Click);
+            // 
+            // копироватьToolStripMenuItemY
+            // 
+            resources.ApplyResources(this.копироватьToolStripMenuItemY, "копироватьToolStripMenuItemY");
+            this.копироватьToolStripMenuItemY.Name = "копироватьToolStripMenuItemY";
+            this.копироватьToolStripMenuItemY.Click += new System.EventHandler(this.копироватьToolStripMenuItem_Click);
+            // 
+            // вставитьToolStripMenuItemY
+            // 
+            resources.ApplyResources(this.вставитьToolStripMenuItemY, "вставитьToolStripMenuItemY");
+            this.вставитьToolStripMenuItemY.Name = "вставитьToolStripMenuItemY";
+            this.вставитьToolStripMenuItemY.Click += new System.EventHandler(this.вставитьToolStripMenuItem_Click);
+            // 
             // contextMenuStrip_X
             // 
             resources.ApplyResources(this.contextMenuStrip_X, "contextMenuStrip_X");
@@ -82,6 +100,24 @@ namespace ControlLibrary
             this.вставитьToolStripMenuItemX});
             this.contextMenuStrip_X.Name = "contextMenuStrip_X";
             this.contextMenuStrip_X.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_X_Opening);
+            // 
+            // вставитьКоординатуХToolStripMenuItem
+            // 
+            resources.ApplyResources(this.вставитьКоординатуХToolStripMenuItem, "вставитьКоординатуХToolStripMenuItem");
+            this.вставитьКоординатуХToolStripMenuItem.Name = "вставитьКоординатуХToolStripMenuItem";
+            this.вставитьКоординатуХToolStripMenuItem.Click += new System.EventHandler(this.вставитьКоординатуХToolStripMenuItem_Click);
+            // 
+            // копироватьToolStripMenuItemX
+            // 
+            resources.ApplyResources(this.копироватьToolStripMenuItemX, "копироватьToolStripMenuItemX");
+            this.копироватьToolStripMenuItemX.Name = "копироватьToolStripMenuItemX";
+            this.копироватьToolStripMenuItemX.Click += new System.EventHandler(this.копироватьToolStripMenuItem_Click);
+            // 
+            // вставитьToolStripMenuItemX
+            // 
+            resources.ApplyResources(this.вставитьToolStripMenuItemX, "вставитьToolStripMenuItemX");
+            this.вставитьToolStripMenuItemX.Name = "вставитьToolStripMenuItemX";
+            this.вставитьToolStripMenuItemX.Click += new System.EventHandler(this.вставитьToolStripMenuItem_Click);
             // 
             // numericUpDown_AM_Y
             // 
@@ -220,42 +256,6 @@ namespace ControlLibrary
             this.numericUpDown_PM_Y.Name = "numericUpDown_PM_Y";
             this.numericUpDown_PM_Y.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
             this.numericUpDown_PM_Y.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesY_MouseDoubleClick);
-            // 
-            // вставитьКоординатуYToolStripMenuItem
-            // 
-            resources.ApplyResources(this.вставитьКоординатуYToolStripMenuItem, "вставитьКоординатуYToolStripMenuItem");
-            this.вставитьКоординатуYToolStripMenuItem.Name = "вставитьКоординатуYToolStripMenuItem";
-            this.вставитьКоординатуYToolStripMenuItem.Click += new System.EventHandler(this.вставитьКоординатуYToolStripMenuItem_Click);
-            // 
-            // копироватьToolStripMenuItemY
-            // 
-            resources.ApplyResources(this.копироватьToolStripMenuItemY, "копироватьToolStripMenuItemY");
-            this.копироватьToolStripMenuItemY.Name = "копироватьToolStripMenuItemY";
-            this.копироватьToolStripMenuItemY.Click += new System.EventHandler(this.копироватьToolStripMenuItem_Click);
-            // 
-            // вставитьToolStripMenuItemY
-            // 
-            resources.ApplyResources(this.вставитьToolStripMenuItemY, "вставитьToolStripMenuItemY");
-            this.вставитьToolStripMenuItemY.Name = "вставитьToolStripMenuItemY";
-            this.вставитьToolStripMenuItemY.Click += new System.EventHandler(this.вставитьToolStripMenuItem_Click);
-            // 
-            // вставитьКоординатуХToolStripMenuItem
-            // 
-            resources.ApplyResources(this.вставитьКоординатуХToolStripMenuItem, "вставитьКоординатуХToolStripMenuItem");
-            this.вставитьКоординатуХToolStripMenuItem.Name = "вставитьКоординатуХToolStripMenuItem";
-            this.вставитьКоординатуХToolStripMenuItem.Click += new System.EventHandler(this.вставитьКоординатуХToolStripMenuItem_Click);
-            // 
-            // копироватьToolStripMenuItemX
-            // 
-            resources.ApplyResources(this.копироватьToolStripMenuItemX, "копироватьToolStripMenuItemX");
-            this.копироватьToolStripMenuItemX.Name = "копироватьToolStripMenuItemX";
-            this.копироватьToolStripMenuItemX.Click += new System.EventHandler(this.копироватьToolStripMenuItem_Click);
-            // 
-            // вставитьToolStripMenuItemX
-            // 
-            resources.ApplyResources(this.вставитьToolStripMenuItemX, "вставитьToolStripMenuItemX");
-            this.вставитьToolStripMenuItemX.Name = "вставитьToolStripMenuItemX";
-            this.вставитьToolStripMenuItemX.Click += new System.EventHandler(this.вставитьToolStripMenuItem_Click);
             // 
             // UCtrl_AmPm_Opt
             // 

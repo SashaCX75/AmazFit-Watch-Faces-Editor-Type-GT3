@@ -561,6 +561,9 @@
   <data name="groupBox_AddElemets.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
   </data>
+  <data name="groupBox_AddElemets.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="groupBox_AddElemets.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 494</value>
   </data>
@@ -1101,6 +1104,9 @@
   <data name="uCtrl_Images_Opt.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
+  <data name="uCtrl_Images_Opt.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;uCtrl_Images_Opt.Name" xml:space="preserve">
     <value>uCtrl_Images_Opt</value>
   </data>
@@ -1125,6 +1131,9 @@
   <data name="uCtrl_Pointer_Opt.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
+  <data name="uCtrl_Pointer_Opt.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;uCtrl_Pointer_Opt.Name" xml:space="preserve">
     <value>uCtrl_Pointer_Opt</value>
   </data>
@@ -1148,6 +1157,9 @@
   </data>
   <data name="uCtrl_AmPm_Opt.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
+  </data>
+  <data name="uCtrl_AmPm_Opt.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;uCtrl_AmPm_Opt.Name" xml:space="preserve">
     <value>uCtrl_AmPm_Opt</value>
@@ -2176,7 +2188,7 @@
     <value>53</value>
   </data>
   <data name="checkBox_AllWidgetsInGif.Text" xml:space="preserve">
-    <value>Отображать все элементы радактируемых зон 
+    <value>Отображать все элементы редактируемых зон 
 при сохранении gif файла</value>
   </data>
   <data name="&gt;&gt;checkBox_AllWidgetsInGif.Name" xml:space="preserve">
@@ -2481,21 +2493,6 @@
   </data>
   <data name="comboBox_Language.Items1" xml:space="preserve">
     <value>English</value>
-  </data>
-  <data name="comboBox_Language.Items2" xml:space="preserve">
-    <value>Español</value>
-  </data>
-  <data name="comboBox_Language.Items3" xml:space="preserve">
-    <value>Chinese/简体中文</value>
-  </data>
-  <data name="comboBox_Language.Items4" xml:space="preserve">
-    <value>French</value>
-  </data>
-  <data name="comboBox_Language.Items5" xml:space="preserve">
-    <value>Italiano</value>
-  </data>
-  <data name="comboBox_Language.Items6" xml:space="preserve">
-    <value>Magyar</value>
   </data>
   <data name="comboBox_Language.Location" type="System.Drawing.Point, System.Drawing">
     <value>450, 299</value>
@@ -3041,18 +3038,13 @@
     <value>1, 245</value>
   </data>
   <data name="label_TranslateHelp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 78</value>
+    <value>19, 13</value>
   </data>
   <data name="label_TranslateHelp.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
   </data>
   <data name="label_TranslateHelp.Text" xml:space="preserve">
-    <value>Chinese - kyle208
-English - eliasf
-Español - Relojinteligente
-French - joebar78
-Italiano - arlemm
-Magyar - kamillo67</value>
+    <value>---</value>
   </data>
   <data name="label_TranslateHelp.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -3112,13 +3104,13 @@ Magyar - kamillo67</value>
     <value>235, 210</value>
   </data>
   <data name="label414.Size" type="System.Drawing.Size, System.Drawing">
-    <value>236, 13</value>
+    <value>19, 13</value>
   </data>
   <data name="label414.TabIndex" type="System.Int32, mscorlib">
     <value>26</value>
   </data>
   <data name="label414.Text" xml:space="preserve">
-    <value>stemcell, -GAMER-, kartoris82, pulse750</value>
+    <value>---</value>
   </data>
   <data name="label414.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -4101,7 +4093,7 @@ Magyar - kamillo67</value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
-        DQAAAk1TRnQBSQFMAgEBBgEAAbABJwGwAScBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAAWwBKAFsASgBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
