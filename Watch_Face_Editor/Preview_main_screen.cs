@@ -556,7 +556,7 @@ namespace Watch_Face_Editor
                             if (!DateYear.visible) continue;
 
                             if (DateYear.Number != null && DateYear.Number.img_First != null
-                                    && DateYear.Number.img_First.Length > 0 && DateYear.Number.visible)
+                                    && DateYear.Number.img_First.Length > 0)
                             {
                                 int imageIndex = ListImages.IndexOf(DateYear.Number.img_First);
                                 int x = DateYear.Number.imageX;
@@ -564,14 +564,14 @@ namespace Watch_Face_Editor
                                 int spasing = DateYear.Number.space;
                                 int alignment = AlignmentToInt(DateYear.Number.align);
                                 bool addZero = DateYear.Number.zero;
-                                //addZero = true;
-                                int value = WatchFacePreviewSet.Date.Month;
+                                int value = WatchFacePreviewSet.Date.Year; 
+                                if (!addZero) value = value % 100;
                                 int separator_index = -1;
                                 if (DateYear.Number.unit != null && DateYear.Number.unit.Length > 0)
                                     separator_index = ListImages.IndexOf(DateYear.Number.unit);
 
                                 Draw_dagital_text(gPanel, imageIndex, x, y,
-                                    spasing, alignment, value, addZero, 2, separator_index, BBorder);
+                                    spasing, alignment, value, addZero, 4, separator_index, BBorder);
 
                                 if (DateYear.Number.icon != null && DateYear.Number.icon.Length > 0)
                                 {
@@ -652,6 +652,53 @@ namespace Watch_Face_Editor
                             }
 
                             break;
+                        #endregion
+
+                        #region ElementSteps
+                        case "ElementSteps":
+                            ElementSteps activityElement = (ElementSteps)element;
+                            if (!activityElement.visible) continue;
+
+                            hmUI_widget_IMG_LEVEL img_level = activityElement.Images;
+                            hmUI_widget_IMG_PROGRESS img_prorgess = activityElement.Segments;
+                            hmUI_widget_IMG_NUMBER img_number = activityElement.Number;
+                            hmUI_widget_IMG_NUMBER img_number_target = activityElement.Number_Target;
+                            hmUI_widget_IMG_POINTER img_pointer = activityElement.Pointer;
+                            Circle_Scale circle_scale = activityElement.Circle_Scale;
+                            Linear_Scale linear_scale = activityElement.Linear_Scale;
+                            hmUI_widget_IMG icon = activityElement.Icon;
+
+                            int elementValue = WatchFacePreviewSet.Activity.Steps;
+                            int value_lenght = 5;
+                            int goal = WatchFacePreviewSet.Activity.StepsGoal;
+                            float progress = (float)WatchFacePreviewSet.Activity.Steps / WatchFacePreviewSet.Activity.StepsGoal;
+                            
+                            int valueImgIndex = -1;
+                            int valueSegmentIndex = -1;
+                            int imgCount = 0;
+                            int segmentCount = 0;
+                            if(img_level != null && img_level.image_length > 0)
+                            {
+                                imgCount = img_level.image_length;
+                                valueImgIndex = (int)((imgCount - 1) * progress);
+                                if (progress < 0.01) valueImgIndex = -1;
+                                if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                            }
+                            if (img_prorgess != null && img_prorgess.image_length > 0)
+                            {
+                                segmentCount = img_prorgess.image_length;
+                                valueSegmentIndex = (int)((segmentCount - 1) * progress);
+                                if (progress < 0.01) valueSegmentIndex = -1;
+                                if (valueSegmentIndex >= segmentCount) valueImgIndex = (int)(segmentCount - 1);
+                            }
+
+                            DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                                img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                                progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                                showCentrHend, "ElementSteps");
+
+
+                            break;
                             #endregion
                     }
                 }
@@ -722,6 +769,159 @@ namespace Watch_Face_Editor
                 //gPanel.DrawImage(mask, new Rectangle(0, 0, mask.Width, mask.Height));
                 mask.Dispose();
             }
+        }
+
+        /// <summary>Рисуем все параметры элемента</summary>
+        /// <param name="gPanel">Поверхность для рисования</param>
+        /// <param name="images">Параметры для изображения</param>
+        /// <param name="segments">Параметры для сегментов</param>
+        /// <param name="pointer">Параметры для стрелочного указателя</param>
+        /// <param name="circleScale">Параметры для круговой шкалы</param>
+        /// <param name="linearScale">Параметры для линейной шкалы</param>
+        /// <param name="icon">Параметры для иконки</param>
+        /// <param name="value">Значение показателя</param>
+        /// <param name="value_lenght">Максимальная длина для отображения значения</param>
+        /// <param name="goal">Значение цели для показателя</param>
+        /// <param name="progress">Прогресс показателя</param>
+        /// <param name="valueImgIndex">Позиция картинки из заданного массива для отображения показателя картинками</param>
+        /// <param name="valueSegmentIndex">Позиция картинки из заданного массива для отображения показателя сегментами</param>
+        /// <param name="BBorder">Рисовать рамку по координатам, вокруг элементов с выравниванием</param>
+        /// <param name="showProgressArea">Подсвечивать круговую шкалу при наличии фонового изображения</param>
+        /// <param name="showCentrHend">Подсвечивать центр стрелки</param>
+        /// <param name="elementName">Имя отображаемого элемента</param>
+        /// <param name="ActivityGoal_Calories">Для активности отображаем шаги ли калории</param>
+        private void DrawActivity(Graphics gPanel, hmUI_widget_IMG_LEVEL images, hmUI_widget_IMG_PROGRESS segments,
+            hmUI_widget_IMG_NUMBER number, hmUI_widget_IMG_NUMBER numberTarget,
+            hmUI_widget_IMG_POINTER pointer, Circle_Scale circleScale, Linear_Scale linearScale,
+            hmUI_widget_IMG icon, float value, int value_lenght, int goal, float progress,
+            int valueImgIndex, int valueSegmentIndex, bool BBorder, bool showProgressArea, bool showCentrHend, string elementName,
+            bool ActivityGoal_Calories = false)
+        {
+            if (progress > 1) progress = 1;
+            Bitmap src = new Bitmap(1, 1);
+
+            for (int index = 1; index <= 10; index++)
+            {
+                if (images != null && images.img_First != null
+                    && images.img_First.Length > 0 &&
+                    index == images.position && images.visible)
+                {
+                    if (valueImgIndex >= 0)
+                    {
+                        int imageIndex = ListImages.IndexOf(images.img_First);
+                        int x = images.X;
+                        int y = images.Y;
+                        imageIndex = imageIndex + valueImgIndex;
+
+                        if (imageIndex < ListImagesFullName.Count)
+                        {
+                            src = OpenFileStream(ListImagesFullName[imageIndex]);
+                            gPanel.DrawImage(src, x, y);
+                            //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                        } 
+                    }
+                }
+
+                if (number != null && number.img_First != null
+                    && number.img_First.Length > 0 &&
+                    index == number.position && number.visible)
+                {
+                    int imageIndex = ListImages.IndexOf(number.img_First);
+                    int x = number.imageX;
+                    int y = number.imageY;
+                    int spasing = number.space;
+                    int alignment = AlignmentToInt(number.align);
+                    bool addZero = number.zero;
+                    int separator_index = -1;
+                    if (number.unit != null && number.unit.Length > 0)
+                        separator_index = ListImages.IndexOf(number.unit);
+
+                    Draw_dagital_text(gPanel, imageIndex, x, y,
+                        spasing, alignment, (int)value, addZero, value_lenght, separator_index, BBorder);
+
+                    if (number.icon != null && number.icon.Length > 0)
+                    {
+                        imageIndex = ListImages.IndexOf(number.icon);
+                        x = number.iconPosX;
+                        y = number.iconPosY;
+
+                        src = OpenFileStream(ListImagesFullName[imageIndex]);
+                        gPanel.DrawImage(src, x, y);
+                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                    }
+                }
+
+                if (numberTarget != null && numberTarget.img_First != null
+                    && numberTarget.img_First.Length > 0 &&
+                    index == numberTarget.position && numberTarget.visible)
+                {
+                    int imageIndex = ListImages.IndexOf(numberTarget.img_First);
+                    int x = numberTarget.imageX;
+                    int y = numberTarget.imageY;
+                    int spasing = numberTarget.space;
+                    int alignment = AlignmentToInt(numberTarget.align);
+                    bool addZero = numberTarget.zero;
+                    int separator_index = -1;
+                    if (numberTarget.unit != null && numberTarget.unit.Length > 0)
+                        separator_index = ListImages.IndexOf(numberTarget.unit);
+
+                    Draw_dagital_text(gPanel, imageIndex, x, y,
+                        spasing, alignment, (int)goal, addZero, value_lenght, separator_index, BBorder);
+
+                    if (numberTarget.icon != null && numberTarget.icon.Length > 0)
+                    {
+                        imageIndex = ListImages.IndexOf(numberTarget.icon);
+                        x = numberTarget.iconPosX;
+                        y = numberTarget.iconPosY;
+
+                        src = OpenFileStream(ListImagesFullName[imageIndex]);
+                        gPanel.DrawImage(src, x, y);
+                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                    }
+                }
+
+                if (pointer != null && pointer.src != null
+                    && pointer.src.Length > 0 &&
+                    index == pointer.position && pointer.visible)
+                {
+                    int x = pointer.center_x;
+                    int y = pointer.center_y;
+                    int offsetX = pointer.pos_x;
+                    int offsetY = pointer.pos_y;
+                    int startAngle = pointer.start_angle;
+                    int endAngle = pointer.end_angle;
+                    int image_index = ListImages.IndexOf(pointer.src);
+
+                    float angle = startAngle + progress * (endAngle - startAngle);
+
+                    if (pointer.scale != null && pointer.scale.Length > 0)
+                    {
+                        image_index = ListImages.IndexOf(pointer.scale);
+                        x = pointer.scale_x;
+                        y = pointer.scale_y;
+
+                        src = OpenFileStream(ListImagesFullName[image_index]);
+                        gPanel.DrawImage(src, x, y);
+                    }
+
+                    DrawAnalogClock(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+
+                    if (pointer.cover_path != null && pointer.cover_path.Length > 0)
+                    {
+                        image_index = ListImages.IndexOf(pointer.cover_path);
+                        x = pointer.cover_x;
+                        y = pointer.cover_y;
+
+                        src = OpenFileStream(ListImagesFullName[image_index]);
+                        gPanel.DrawImage(src, x, y);
+                    }
+                }
+
+                
+
+            }
+
+            src.Dispose();
         }
 
         /// <summary>Рисует стрелки</summary>

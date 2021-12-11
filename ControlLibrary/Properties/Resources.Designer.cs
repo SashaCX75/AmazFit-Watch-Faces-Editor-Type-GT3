@@ -63,6 +63,16 @@ namespace ControlLibrary.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Actions_insert_text_icon {
+            get {
+                object obj = ResourceManager.GetObject("Actions_insert_text_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap analog_time_18 {
             get {
                 object obj = ResourceManager.GetObject("analog_time_18", resourceCulture);
@@ -113,6 +123,16 @@ namespace ControlLibrary.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap circle_scale {
+            get {
+                object obj = ResourceManager.GetObject("circle_scale", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap digital_clock_icon {
             get {
                 object obj = ResourceManager.GetObject("digital-clock-icon", resourceCulture);
@@ -123,9 +143,39 @@ namespace ControlLibrary.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Files_Clipboard_icon {
+            get {
+                object obj = ResourceManager.GetObject("Files_Clipboard_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Files_Copy_File_icon {
+            get {
+                object obj = ResourceManager.GetObject("Files_Copy_File_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap images_18 {
             get {
                 object obj = ResourceManager.GetObject("images_18", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap linear_scale_18 {
+            get {
+                object obj = ResourceManager.GetObject("linear_scale_18", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,6 +233,36 @@ namespace ControlLibrary.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap segment_18 {
+            get {
+                object obj = ResourceManager.GetObject("segment_18", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap steps {
+            get {
+                object obj = ResourceManager.GetObject("steps", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap table_row_delete_icon {
+            get {
+                object obj = ResourceManager.GetObject("table_row_delete_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap text_icon {
             get {
                 object obj = ResourceManager.GetObject("text-icon", resourceCulture);
@@ -206,6 +286,16 @@ namespace ControlLibrary.Properties {
         internal static System.Drawing.Bitmap Very_Basic_Calendar_16 {
             get {
                 object obj = ResourceManager.GetObject("Very-Basic-Calendar_16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap wallpaper_18 {
+            get {
+                object obj = ResourceManager.GetObject("wallpaper_18", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

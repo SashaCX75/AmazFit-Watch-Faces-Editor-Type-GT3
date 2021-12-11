@@ -63,13 +63,13 @@ namespace ControlLibrary
             // 
             // contextMenuStrip_Y
             // 
-            resources.ApplyResources(this.contextMenuStrip_Y, "contextMenuStrip_Y");
             this.contextMenuStrip_Y.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip_Y.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вставитьКоординатуYToolStripMenuItem,
             this.копироватьToolStripMenuItemY,
             this.вставитьToolStripMenuItemY});
             this.contextMenuStrip_Y.Name = "contextMenuStrip_X";
+            resources.ApplyResources(this.contextMenuStrip_Y, "contextMenuStrip_Y");
             this.contextMenuStrip_Y.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Y_Opening);
             // 
             // вставитьКоординатуYToolStripMenuItem
@@ -92,13 +92,13 @@ namespace ControlLibrary
             // 
             // contextMenuStrip_X
             // 
-            resources.ApplyResources(this.contextMenuStrip_X, "contextMenuStrip_X");
             this.contextMenuStrip_X.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip_X.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вставитьКоординатуХToolStripMenuItem,
             this.копироватьToolStripMenuItemX,
             this.вставитьToolStripMenuItemX});
             this.contextMenuStrip_X.Name = "contextMenuStrip_X";
+            resources.ApplyResources(this.contextMenuStrip_X, "contextMenuStrip_X");
             this.contextMenuStrip_X.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_X_Opening);
             // 
             // вставитьКоординатуХToolStripMenuItem
@@ -121,8 +121,8 @@ namespace ControlLibrary
             // 
             // numericUpDown_AM_Y
             // 
-            resources.ApplyResources(this.numericUpDown_AM_Y, "numericUpDown_AM_Y");
             this.numericUpDown_AM_Y.ContextMenuStrip = this.contextMenuStrip_Y;
+            resources.ApplyResources(this.numericUpDown_AM_Y, "numericUpDown_AM_Y");
             this.numericUpDown_AM_Y.Maximum = new decimal(new int[] {
             999,
             0,
@@ -149,8 +149,8 @@ namespace ControlLibrary
             // 
             // numericUpDown_AM_X
             // 
-            resources.ApplyResources(this.numericUpDown_AM_X, "numericUpDown_AM_X");
             this.numericUpDown_AM_X.ContextMenuStrip = this.contextMenuStrip_X;
+            resources.ApplyResources(this.numericUpDown_AM_X, "numericUpDown_AM_X");
             this.numericUpDown_AM_X.Maximum = new decimal(new int[] {
             999,
             0,
@@ -177,10 +177,10 @@ namespace ControlLibrary
             // 
             // comboBox_PM_image
             // 
-            resources.ApplyResources(this.comboBox_PM_image, "comboBox_PM_image");
             this.comboBox_PM_image.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_PM_image.DropDownWidth = 135;
             this.comboBox_PM_image.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_PM_image, "comboBox_PM_image");
             this.comboBox_PM_image.Name = "comboBox_PM_image";
             this.comboBox_PM_image.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
             this.comboBox_PM_image.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
@@ -205,8 +205,8 @@ namespace ControlLibrary
             // 
             // numericUpDown_PM_X
             // 
-            resources.ApplyResources(this.numericUpDown_PM_X, "numericUpDown_PM_X");
             this.numericUpDown_PM_X.ContextMenuStrip = this.contextMenuStrip_X;
+            resources.ApplyResources(this.numericUpDown_PM_X, "numericUpDown_PM_X");
             this.numericUpDown_PM_X.Maximum = new decimal(new int[] {
             999,
             0,
@@ -223,10 +223,10 @@ namespace ControlLibrary
             // 
             // comboBox_AM_image
             // 
-            resources.ApplyResources(this.comboBox_AM_image, "comboBox_AM_image");
             this.comboBox_AM_image.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_AM_image.DropDownWidth = 135;
             this.comboBox_AM_image.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_AM_image, "comboBox_AM_image");
             this.comboBox_AM_image.Name = "comboBox_AM_image";
             this.comboBox_AM_image.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
             this.comboBox_AM_image.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
@@ -241,8 +241,8 @@ namespace ControlLibrary
             // 
             // numericUpDown_PM_Y
             // 
-            resources.ApplyResources(this.numericUpDown_PM_Y, "numericUpDown_PM_Y");
             this.numericUpDown_PM_Y.ContextMenuStrip = this.contextMenuStrip_Y;
+            resources.ApplyResources(this.numericUpDown_PM_Y, "numericUpDown_PM_Y");
             this.numericUpDown_PM_Y.Maximum = new decimal(new int[] {
             999,
             0,

@@ -56,16 +56,16 @@
     <Compile Include="UCtrl_AmPm_Opt.Designer.cs">
       <DependentUpon>UCtrl_AmPm_Opt.cs</DependentUpon>
     </Compile>
-    <Compile Include="UCtrl_AnalogTime_Elm.cs">
+    <Compile Include="Elements\UCtrl_AnalogTime_Elm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UCtrl_AnalogTime_Elm.Designer.cs">
+    <Compile Include="Elements\UCtrl_AnalogTime_Elm.Designer.cs">
       <DependentUpon>UCtrl_AnalogTime_Elm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UCtrl_Background_Elm.cs">
+    <Compile Include="Elements\UCtrl_Background_Elm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UCtrl_Background_Elm.Designer.cs">
+    <Compile Include="Elements\UCtrl_Background_Elm.Designer.cs">
       <DependentUpon>UCtrl_Background_Elm.cs</DependentUpon>
     </Compile>
     <Compile Include="UCtrl_Background_Opt.cs">
@@ -74,35 +74,47 @@
     <Compile Include="UCtrl_Background_Opt.Designer.cs">
       <DependentUpon>UCtrl_Background_Opt.cs</DependentUpon>
     </Compile>
-    <Compile Include="UCtrl_DateDay_Elm.cs">
+    <Compile Include="Elements\UCtrl_DateDay_Elm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UCtrl_DateDay_Elm.Designer.cs">
+    <Compile Include="Elements\UCtrl_DateDay_Elm.Designer.cs">
       <DependentUpon>UCtrl_DateDay_Elm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UCtrl_DateMonth_Elm.cs">
+    <Compile Include="Elements\UCtrl_DateMonth_Elm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UCtrl_DateMonth_Elm.Designer.cs">
+    <Compile Include="Elements\UCtrl_DateMonth_Elm.Designer.cs">
       <DependentUpon>UCtrl_DateMonth_Elm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UCtrl_DateWeek_Elm.cs">
+    <Compile Include="Elements\UCtrl_DateWeek_Elm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UCtrl_DateWeek_Elm.Designer.cs">
+    <Compile Include="Elements\UCtrl_DateWeek_Elm.Designer.cs">
       <DependentUpon>UCtrl_DateWeek_Elm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UCtrl_DateYear_Elm.cs">
+    <Compile Include="Elements\UCtrl_DateYear_Elm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UCtrl_DateYear_Elm.Designer.cs">
+    <Compile Include="Elements\UCtrl_DateYear_Elm.Designer.cs">
       <DependentUpon>UCtrl_DateYear_Elm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UCtrl_DigitalTime_Elm.cs">
+    <Compile Include="Elements\UCtrl_DigitalTime_Elm.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UCtrl_DigitalTime_Elm.Designer.cs">
+    <Compile Include="Elements\UCtrl_DigitalTime_Elm.Designer.cs">
       <DependentUpon>UCtrl_DigitalTime_Elm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCtrl_Circle_Scale_Opt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCtrl_Circle_Scale_Opt.Designer.cs">
+      <DependentUpon>UCtrl_Circle_Scale_Opt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCtrl_Icon_Opt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCtrl_Icon_Opt.Designer.cs">
+      <DependentUpon>UCtrl_Icon_Opt.cs</DependentUpon>
     </Compile>
     <Compile Include="UCtrl_Images_Opt.cs">
       <SubType>UserControl</SubType>
@@ -110,11 +122,23 @@
     <Compile Include="UCtrl_Images_Opt.Designer.cs">
       <DependentUpon>UCtrl_Images_Opt.cs</DependentUpon>
     </Compile>
+    <Compile Include="UCtrl_Linear_Scale_Opt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCtrl_Linear_Scale_Opt.Designer.cs">
+      <DependentUpon>UCtrl_Linear_Scale_Opt.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCtrl_Pointer_Opt.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UCtrl_Pointer_Opt.Designer.cs">
       <DependentUpon>UCtrl_Pointer_Opt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCtrl_Segments_Opt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCtrl_Segments_Opt.Designer.cs">
+      <DependentUpon>UCtrl_Segments_Opt.cs</DependentUpon>
     </Compile>
     <Compile Include="UCtrl_Set.cs">
       <SubType>UserControl</SubType>
@@ -123,6 +147,12 @@
       <DependentUpon>UCtrl_Set.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Elements\UCtrl_Steps_Elm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\UCtrl_Steps_Elm.Designer.cs">
+      <DependentUpon>UCtrl_Steps_Elm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCtrl_Text_Opt.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -142,16 +172,16 @@
     <EmbeddedResource Include="UCtrl_AmPm_Opt.resx">
       <DependentUpon>UCtrl_AmPm_Opt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCtrl_AnalogTime_Elm.en.resx">
+    <EmbeddedResource Include="Elements\UCtrl_AnalogTime_Elm.en.resx">
       <DependentUpon>UCtrl_AnalogTime_Elm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCtrl_AnalogTime_Elm.resx">
+    <EmbeddedResource Include="Elements\UCtrl_AnalogTime_Elm.resx">
       <DependentUpon>UCtrl_AnalogTime_Elm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCtrl_Background_Elm.en.resx">
+    <EmbeddedResource Include="Elements\UCtrl_Background_Elm.en.resx">
       <DependentUpon>UCtrl_Background_Elm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCtrl_Background_Elm.resx">
+    <EmbeddedResource Include="Elements\UCtrl_Background_Elm.resx">
       <DependentUpon>UCtrl_Background_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Background_Opt.en.resx">
@@ -160,35 +190,41 @@
     <EmbeddedResource Include="UCtrl_Background_Opt.resx">
       <DependentUpon>UCtrl_Background_Opt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCtrl_DateDay_Elm.en.resx">
+    <EmbeddedResource Include="Elements\UCtrl_DateDay_Elm.en.resx">
       <DependentUpon>UCtrl_DateDay_Elm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCtrl_DateDay_Elm.resx">
+    <EmbeddedResource Include="Elements\UCtrl_DateDay_Elm.resx">
       <DependentUpon>UCtrl_DateDay_Elm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCtrl_DateMonth_Elm.en.resx">
+    <EmbeddedResource Include="Elements\UCtrl_DateMonth_Elm.en.resx">
       <DependentUpon>UCtrl_DateMonth_Elm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCtrl_DateMonth_Elm.resx">
+    <EmbeddedResource Include="Elements\UCtrl_DateMonth_Elm.resx">
       <DependentUpon>UCtrl_DateMonth_Elm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCtrl_DateWeek_Elm.en.resx">
+    <EmbeddedResource Include="Elements\UCtrl_DateWeek_Elm.en.resx">
       <DependentUpon>UCtrl_DateWeek_Elm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCtrl_DateWeek_Elm.resx">
+    <EmbeddedResource Include="Elements\UCtrl_DateWeek_Elm.resx">
       <DependentUpon>UCtrl_DateWeek_Elm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCtrl_DateYear_Elm.en.resx">
+    <EmbeddedResource Include="Elements\UCtrl_DateYear_Elm.en.resx">
       <DependentUpon>UCtrl_DateYear_Elm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCtrl_DateYear_Elm.resx">
+    <EmbeddedResource Include="Elements\UCtrl_DateYear_Elm.resx">
       <DependentUpon>UCtrl_DateYear_Elm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCtrl_DigitalTime_Elm.en.resx">
+    <EmbeddedResource Include="Elements\UCtrl_DigitalTime_Elm.en.resx">
       <DependentUpon>UCtrl_DigitalTime_Elm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UCtrl_DigitalTime_Elm.resx">
+    <EmbeddedResource Include="Elements\UCtrl_DigitalTime_Elm.resx">
       <DependentUpon>UCtrl_DigitalTime_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Circle_Scale_Opt.resx">
+      <DependentUpon>UCtrl_Circle_Scale_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Icon_Opt.resx">
+      <DependentUpon>UCtrl_Icon_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Images_Opt.en.resx">
       <DependentUpon>UCtrl_Images_Opt.cs</DependentUpon>
@@ -196,11 +232,17 @@
     <EmbeddedResource Include="UCtrl_Images_Opt.resx">
       <DependentUpon>UCtrl_Images_Opt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Linear_Scale_Opt.resx">
+      <DependentUpon>UCtrl_Linear_Scale_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Pointer_Opt.en.resx">
       <DependentUpon>UCtrl_Pointer_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Pointer_Opt.resx">
       <DependentUpon>UCtrl_Pointer_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Segments_Opt.resx">
+      <DependentUpon>UCtrl_Segments_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Set.en.resx">
       <DependentUpon>UCtrl_Set.cs</DependentUpon>
@@ -208,6 +250,9 @@
     <EmbeddedResource Include="UCtrl_Set.resx">
       <DependentUpon>UCtrl_Set.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Steps_Elm.resx">
+      <DependentUpon>UCtrl_Steps_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Text_Opt.en.resx">
       <DependentUpon>UCtrl_Text_Opt.cs</DependentUpon>
@@ -269,6 +314,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\week_18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\segment_18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\steps.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\circle_scale.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\linear_scale_18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wallpaper_18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Actions_insert_text_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Files_Copy_File_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Files_Clipboard_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\table_row_delete_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

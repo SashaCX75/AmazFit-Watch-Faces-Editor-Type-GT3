@@ -68,7 +68,13 @@ namespace Watch_Face_Editor
             this.uCtrl_Background_Elm = new ControlLibrary.UCtrl_Background_Elm();
             this.panel_UC_DateWeek = new System.Windows.Forms.Panel();
             this.uCtrl_DateWeek_Elm = new ControlLibrary.UCtrl_DateWeek_Elm();
+            this.panel_UC_Steps = new System.Windows.Forms.Panel();
+            this.uCtrl_Steps_Elm = new ControlLibrary.UCtrl_Steps_Elm();
             this.panel_ElementsOpt = new System.Windows.Forms.Panel();
+            this.uCtrl_Segments_Opt = new ControlLibrary.UCtrl_Segments_Opt();
+            this.uCtrl_Icon_Opt = new ControlLibrary.UCtrl_Icon_Opt();
+            this.uCtrl_Linear_Scale_Opt = new ControlLibrary.UCtrl_Linear_Scale_Opt();
+            this.uCtrl_Circle_Scale_Opt = new ControlLibrary.UCtrl_Circle_Scale_Opt();
             this.uCtrl_Images_Opt = new ControlLibrary.UCtrl_Images_Opt();
             this.uCtrl_Pointer_Opt = new ControlLibrary.UCtrl_Pointer_Opt();
             this.uCtrl_AmPm_Opt = new ControlLibrary.UCtrl_AmPm_Opt();
@@ -194,6 +200,7 @@ namespace Watch_Face_Editor
             this.panel_UC_DateYear.SuspendLayout();
             this.panel_UC_Background.SuspendLayout();
             this.panel_UC_DateWeek.SuspendLayout();
+            this.panel_UC_Steps.SuspendLayout();
             this.panel_ElementsOpt.SuspendLayout();
             this.panel_MainScreen_AOD.SuspendLayout();
             this.tabPage_Show_Set.SuspendLayout();
@@ -434,8 +441,9 @@ namespace Watch_Face_Editor
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateDay, 0, 2);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateMonth, 0, 3);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateYear, 0, 4);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Background, 0, 6);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Background, 0, 7);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateWeek, 0, 5);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Steps, 0, 6);
             this.tableLayoutPanel_ElemetsWatchFace.Name = "tableLayoutPanel_ElemetsWatchFace";
             this.tableLayoutPanel_ElemetsWatchFace.DragOver += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragOver);
             // 
@@ -567,16 +575,65 @@ namespace Watch_Face_Editor
             this.uCtrl_DateWeek_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
             this.uCtrl_DateWeek_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
             // 
+            // panel_UC_Steps
+            // 
+            resources.ApplyResources(this.panel_UC_Steps, "panel_UC_Steps");
+            this.panel_UC_Steps.Controls.Add(this.uCtrl_Steps_Elm);
+            this.panel_UC_Steps.Name = "panel_UC_Steps";
+            // 
+            // uCtrl_Steps_Elm
+            // 
+            resources.ApplyResources(this.uCtrl_Steps_Elm, "uCtrl_Steps_Elm");
+            this.uCtrl_Steps_Elm.Name = "uCtrl_Steps_Elm";
+            this.uCtrl_Steps_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_Steps_Elm.VisibleElementChangedHandler(this.uCtrl_Steps_Elm_VisibleElementChanged);
+            this.uCtrl_Steps_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_Steps_Elm.VisibleOptionsChangedHandler(this.uCtrl_Steps_Elm_VisibleOptionsChanged);
+            this.uCtrl_Steps_Elm.OptionsMoved += new ControlLibrary.UCtrl_Steps_Elm.OptionsMovedHandler(this.uCtrl_Steps_Elm_OptionsMoved);
+            this.uCtrl_Steps_Elm.SelectChanged += new ControlLibrary.UCtrl_Steps_Elm.SelectChangedHandler(this.uCtrl_Steps_Elm_SelectChanged);
+            this.uCtrl_Steps_Elm.DelElement += new ControlLibrary.UCtrl_Steps_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
+            this.uCtrl_Steps_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.uCtrl_Steps_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.uCtrl_Steps_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
             // panel_ElementsOpt
             // 
             resources.ApplyResources(this.panel_ElementsOpt, "panel_ElementsOpt");
             this.panel_ElementsOpt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_ElementsOpt.Controls.Add(this.uCtrl_Segments_Opt);
+            this.panel_ElementsOpt.Controls.Add(this.uCtrl_Icon_Opt);
+            this.panel_ElementsOpt.Controls.Add(this.uCtrl_Linear_Scale_Opt);
+            this.panel_ElementsOpt.Controls.Add(this.uCtrl_Circle_Scale_Opt);
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_Images_Opt);
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_Pointer_Opt);
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_AmPm_Opt);
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_Text_Opt);
             this.panel_ElementsOpt.Controls.Add(this.userCtrl_Background_Options);
             this.panel_ElementsOpt.Name = "panel_ElementsOpt";
+            // 
+            // uCtrl_Segments_Opt
+            // 
+            resources.ApplyResources(this.uCtrl_Segments_Opt, "uCtrl_Segments_Opt");
+            this.uCtrl_Segments_Opt.FixedRowsCount = false;
+            this.uCtrl_Segments_Opt.ImagesCount = -1;
+            this.uCtrl_Segments_Opt.Name = "uCtrl_Segments_Opt";
+            this.uCtrl_Segments_Opt.ValueChanged += new ControlLibrary.UCtrl_Segments_Opt.ValueChangedHandler(this.uCtrl_Segments_Opt_ValueChanged);
+            // 
+            // uCtrl_Icon_Opt
+            // 
+            resources.ApplyResources(this.uCtrl_Icon_Opt, "uCtrl_Icon_Opt");
+            this.uCtrl_Icon_Opt.Name = "uCtrl_Icon_Opt";
+            this.uCtrl_Icon_Opt.ValueChanged += new ControlLibrary.UCtrl_Icon_Opt.ValueChangedHandler(this.uCtrl_Icon_Opt_ValueChanged);
+            // 
+            // uCtrl_Linear_Scale_Opt
+            // 
+            resources.ApplyResources(this.uCtrl_Linear_Scale_Opt, "uCtrl_Linear_Scale_Opt");
+            this.uCtrl_Linear_Scale_Opt.Name = "uCtrl_Linear_Scale_Opt";
+            this.uCtrl_Linear_Scale_Opt.ValueChanged += new ControlLibrary.UCtrl_Linear_Scale_Opt.ValueChangedHandler(this.uCtrl_Linear_Scale_Opt_ValueChanged);
+            // 
+            // uCtrl_Circle_Scale_Opt
+            // 
+            resources.ApplyResources(this.uCtrl_Circle_Scale_Opt, "uCtrl_Circle_Scale_Opt");
+            this.uCtrl_Circle_Scale_Opt.Name = "uCtrl_Circle_Scale_Opt";
+            this.uCtrl_Circle_Scale_Opt.ValueChanged += new ControlLibrary.UCtrl_Circle_Scale_Opt.ValueChangedHandler(this.uCtrl_Circle_Scale_Opt_ValueChanged);
             // 
             // uCtrl_Images_Opt
             // 
@@ -1498,6 +1555,8 @@ namespace Watch_Face_Editor
             this.panel_UC_Background.PerformLayout();
             this.panel_UC_DateWeek.ResumeLayout(false);
             this.panel_UC_DateWeek.PerformLayout();
+            this.panel_UC_Steps.ResumeLayout(false);
+            this.panel_UC_Steps.PerformLayout();
             this.panel_ElementsOpt.ResumeLayout(false);
             this.panel_MainScreen_AOD.ResumeLayout(false);
             this.panel_MainScreen_AOD.PerformLayout();
@@ -1673,6 +1732,12 @@ namespace Watch_Face_Editor
         private ControlLibrary.UCtrl_DateWeek_Elm uCtrl_DateWeek_Elm;
         private ControlLibrary.UCtrl_Images_Opt uCtrl_Images_Opt;
         private System.Windows.Forms.Button button_CopyAOD;
+        private System.Windows.Forms.Panel panel_UC_Steps;
+        private ControlLibrary.UCtrl_Steps_Elm uCtrl_Steps_Elm;
+        private ControlLibrary.UCtrl_Icon_Opt uCtrl_Icon_Opt;
+        private ControlLibrary.UCtrl_Linear_Scale_Opt uCtrl_Linear_Scale_Opt;
+        private ControlLibrary.UCtrl_Circle_Scale_Opt uCtrl_Circle_Scale_Opt;
+        private ControlLibrary.UCtrl_Segments_Opt uCtrl_Segments_Opt;
     }
 }
 

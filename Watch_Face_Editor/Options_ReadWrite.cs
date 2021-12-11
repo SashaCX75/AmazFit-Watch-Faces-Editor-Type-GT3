@@ -263,6 +263,8 @@ namespace Watch_Face_Editor
             uCtrl_Text_Opt.PaddingZero = _padingZero;
             uCtrl_Text_Opt.Visible = true;
 
+            uCtrl_Text_Opt._ElementWithText = img_number;
+
             //userCtrl_Background_Options.SettingsClear();
 
             if (img_number == null)
@@ -291,7 +293,30 @@ namespace Watch_Face_Editor
 
             //uCtrl_Text_Opt.SetUnitMile
 
-            uCtrl_Text_Opt._ElementWithText = img_number;
+            PreviewView = true;
+        }
+
+        /// <summary>Читаем настройки для отображения иконки</summary>
+        private void Read_Icon_Options(hmUI_widget_IMG img)
+        {
+            PreviewView = false;
+
+            uCtrl_Icon_Opt.SettingsClear();
+
+            uCtrl_Icon_Opt._Icon = img;
+
+            //userCtrl_Background_Options.SettingsClear();
+
+            if (img == null)
+            {
+                PreviewView = true;
+                return;
+            }
+
+            if (img.src != null)
+                uCtrl_Icon_Opt.SetIcon(img.src);
+            uCtrl_Icon_Opt.numericUpDown_iconX.Value = img.x;
+            uCtrl_Icon_Opt.numericUpDown_iconY.Value = img.y;
 
             PreviewView = true;
         }
@@ -305,6 +330,8 @@ namespace Watch_Face_Editor
 
             uCtrl_Pointer_Opt.ShowBackground = _showBackground;
             uCtrl_Pointer_Opt.Visible = true;
+
+            uCtrl_Pointer_Opt._ElementWithPointer = img_pointer;
 
             //userCtrl_Background_Options.SettingsClear();
 
@@ -333,8 +360,76 @@ namespace Watch_Face_Editor
             uCtrl_Pointer_Opt.numericUpDown_pointer_startAngle.Value = img_pointer.start_angle;
             uCtrl_Pointer_Opt.numericUpDown_pointer_endAngle.Value = img_pointer.end_angle;
 
+            PreviewView = true;
+        }
 
-            uCtrl_Pointer_Opt._ElementWithPointer = img_pointer;
+        /// <summary>Читаем настройки для отображения круговой шкалы</summary>
+        private void Read_CircleScale_Options(Circle_Scale circle_scale)
+        {
+            PreviewView = false;
+
+            uCtrl_Circle_Scale_Opt.SettingsClear();
+
+            uCtrl_Circle_Scale_Opt.Visible = true;
+
+            uCtrl_Circle_Scale_Opt._CircleScale = circle_scale;
+
+            if (circle_scale == null)
+            {
+                PreviewView = true;
+                return;
+            }
+            uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircleX.Value = circle_scale.center_x;
+            uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircleY.Value = circle_scale.center_y;
+            uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircle_radius.Value = circle_scale.radius;
+            uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircle_width.Value = circle_scale.line_width;
+
+            uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircle_startAngle.Value = circle_scale.start_angle;
+            uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircle_endAngle.Value = circle_scale.end_angle;
+
+            uCtrl_Circle_Scale_Opt.checkBox_direction.Checked = circle_scale.direction;
+            uCtrl_Circle_Scale_Opt.checkBox_inversion.Checked = circle_scale.inversion;
+
+            PreviewView = true;
+        }
+
+        /// <summary>Читаем настройки для отображения линейной шкалы</summary>
+        private void Read_LinearScale_Options(Linear_Scale linear_scale)
+        {
+            PreviewView = false;
+
+            uCtrl_Linear_Scale_Opt.SettingsClear();
+
+            uCtrl_Linear_Scale_Opt.Visible = true;
+
+            uCtrl_Linear_Scale_Opt._LinearScale = linear_scale;
+
+            if (linear_scale == null)
+            {
+                PreviewView = true;
+                return;
+            }
+
+            if (linear_scale.color != null)
+            {
+                uCtrl_Linear_Scale_Opt.SetColorScale(StringToColor(linear_scale.color));
+            }
+            if (linear_scale.pointer != null)
+            {
+                uCtrl_Linear_Scale_Opt.SetImagePointer(linear_scale.pointer);
+            }
+
+            uCtrl_Linear_Scale_Opt.numericUpDown_scaleLinearX.Value = linear_scale.start_x;
+            uCtrl_Linear_Scale_Opt.numericUpDown_scaleLinearY.Value = linear_scale.start_y;
+
+            uCtrl_Linear_Scale_Opt.numericUpDown_scaleLinear_length.Value = linear_scale.lenght;
+            uCtrl_Linear_Scale_Opt.numericUpDown_scaleLinear_width.Value = linear_scale.line_width;
+
+            uCtrl_Linear_Scale_Opt.checkBox_direction.Checked = linear_scale.direction;
+            uCtrl_Linear_Scale_Opt.checkBox_inversion.Checked = linear_scale.inversion;
+
+            uCtrl_Linear_Scale_Opt.radioButton_horizontal.Checked = !linear_scale.vertical;
+            uCtrl_Linear_Scale_Opt.radioButton_vertical.Checked = linear_scale.vertical;
 
             PreviewView = true;
         }
@@ -348,6 +443,8 @@ namespace Watch_Face_Editor
 
             uCtrl_Images_Opt.ImagesCount = imagesCount;
             uCtrl_Images_Opt.ImagesCountEnable = imagesCountEnable;
+
+            uCtrl_Images_Opt._ElementWithImages = img_level;
 
             uCtrl_Images_Opt.Visible = true;
 
@@ -363,7 +460,34 @@ namespace Watch_Face_Editor
             uCtrl_Images_Opt.numericUpDown_imageX.Value = img_level.X;
             uCtrl_Images_Opt.numericUpDown_imageY.Value = img_level.Y;
 
-            uCtrl_Images_Opt._ElementWithImages = img_level;
+            PreviewView = true;
+        }
+
+        /// <summary>Читаем настройки для отображения картинок сегментами</summary>
+        private void Read_ImgProrgess_Options(hmUI_widget_IMG_PROGRESS img_prorgess, int imagesCount, bool fixedRowsCount)
+        {
+            PreviewView = false;
+
+            uCtrl_Segments_Opt.SettingsClear();
+
+            uCtrl_Segments_Opt.ImagesCount = imagesCount;
+            uCtrl_Segments_Opt.FixedRowsCount = fixedRowsCount;
+
+            uCtrl_Segments_Opt._ElementWithSegments = img_prorgess;
+
+            uCtrl_Segments_Opt.Visible = true;
+
+            //userCtrl_Background_Options.SettingsClear();
+
+            if (img_prorgess == null)
+            {
+                PreviewView = true;
+                return;
+            }
+            if (img_prorgess.img_First != null)
+                uCtrl_Segments_Opt.SetImage(img_prorgess.img_First);
+
+            uCtrl_Segments_Opt.SetCoordinates(img_prorgess.X, img_prorgess.Y);
 
             PreviewView = true;
         }
@@ -374,6 +498,8 @@ namespace Watch_Face_Editor
             PreviewView = false;
 
             uCtrl_AmPm_Opt.SettingsClear();
+
+            uCtrl_AmPm_Opt._AmPm = am_pm;
 
             if (am_pm == null)
             {
@@ -389,8 +515,6 @@ namespace Watch_Face_Editor
                 uCtrl_AmPm_Opt.Set_PM_Image(am_pm.pm_img);
             uCtrl_AmPm_Opt.numericUpDown_PM_X.Value = am_pm.pm_x;
             uCtrl_AmPm_Opt.numericUpDown_PM_Y.Value = am_pm.pm_y;
-
-            uCtrl_AmPm_Opt._AmPm = am_pm;
 
             PreviewView = true;
         }
@@ -576,6 +700,93 @@ namespace Watch_Face_Editor
             img_level.X = (int)uCtrl_Images_Opt.numericUpDown_imageX.Value;
             img_level.Y = (int)uCtrl_Images_Opt.numericUpDown_imageY.Value;
             img_level.image_length = (int)uCtrl_Images_Opt.numericUpDown_pictures_count.Value;
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Segments_Opt_ValueChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            hmUI_widget_IMG_PROGRESS img_progress = (hmUI_widget_IMG_PROGRESS)uCtrl_Segments_Opt._ElementWithSegments;
+            if (img_progress == null) return;
+
+            img_progress.img_First = uCtrl_Segments_Opt.GetImage();
+
+            List<int> coordinatesX = new List<int>();
+            List<int> coordinatesY = new List<int>();
+            uCtrl_Segments_Opt.GetCoordinates(out coordinatesX, out coordinatesY);
+            img_progress.X = coordinatesX;
+            img_progress.Y = coordinatesY;
+            img_progress.image_length = coordinatesX.Count;
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Circle_Scale_Opt_ValueChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            Circle_Scale circle_scale = (Circle_Scale)uCtrl_Circle_Scale_Opt._CircleScale;
+            if (circle_scale == null) return;
+
+            circle_scale.center_x = (int)uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircleX.Value;
+            circle_scale.center_y = (int)uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircleY.Value;
+
+            circle_scale.radius = (int)uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircle_radius.Value;
+            circle_scale.line_width = (int)uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircle_width.Value;
+
+            circle_scale.start_angle = (int)uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircle_startAngle.Value;
+            circle_scale.end_angle = (int)uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircle_endAngle.Value;
+
+            circle_scale.direction = uCtrl_Circle_Scale_Opt.checkBox_direction.Checked;
+            circle_scale.inversion = uCtrl_Circle_Scale_Opt.checkBox_inversion.Checked;
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Linear_Scale_Opt_ValueChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            Linear_Scale linear_scale = (Linear_Scale)uCtrl_Linear_Scale_Opt._LinearScale;
+            if (linear_scale == null) return;
+
+            linear_scale.pointer = uCtrl_Linear_Scale_Opt.GetImagePointer();
+            linear_scale.color = ColorToString(uCtrl_Linear_Scale_Opt.GetColorScale());
+
+            linear_scale.start_x = (int)uCtrl_Linear_Scale_Opt.numericUpDown_scaleLinearX.Value;
+            linear_scale.start_y = (int)uCtrl_Linear_Scale_Opt.numericUpDown_scaleLinearY.Value;
+
+            linear_scale.lenght = (int)uCtrl_Linear_Scale_Opt.numericUpDown_scaleLinear_length.Value;
+            linear_scale.line_width = (int)uCtrl_Linear_Scale_Opt.numericUpDown_scaleLinear_width.Value;
+
+            linear_scale.vertical = uCtrl_Linear_Scale_Opt.radioButton_vertical.Checked;
+
+            linear_scale.direction = uCtrl_Linear_Scale_Opt.checkBox_direction.Checked;
+            linear_scale.inversion = uCtrl_Linear_Scale_Opt.checkBox_inversion.Checked;
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Icon_Opt_ValueChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            hmUI_widget_IMG icon = (hmUI_widget_IMG)uCtrl_Icon_Opt._Icon;
+            if (icon == null) return;
+
+            icon.src = uCtrl_Icon_Opt.GetIcon();
+            icon.x = (int)uCtrl_Icon_Opt.numericUpDown_iconX.Value;
+            icon.y = (int)uCtrl_Icon_Opt.numericUpDown_iconY.Value;
 
             JSON_Modified = true;
             PreviewImage();

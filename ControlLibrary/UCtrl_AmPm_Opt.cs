@@ -20,6 +20,7 @@ namespace ControlLibrary
         public UCtrl_AmPm_Opt()
         {
             InitializeComponent();
+            setValue = false;
         }
 
 

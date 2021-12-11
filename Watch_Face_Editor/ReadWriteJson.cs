@@ -430,12 +430,10 @@ namespace Watch_Face_Editor
                 case "ElementDateYear":
                     ElementDateYear DateYear = (ElementDateYear)element;
                     if (!DateYear.visible) return;
-                    int numberPositionYear = 99;
                     string optionsNumberYear = "";
                     string optionsNumberYear_separator = "";
-                    if (DateYear.Number != null && DateYear.Number.visible)
+                    if (DateYear.Number != null)
                     {
-                        numberPositionYear = DateYear.Number.position;
                         hmUI_widget_IMG_NUMBER img_number = DateYear.Number;
                         optionsNumberYear = IMG_NUMBER_Year_Options(img_number, show_level);
 
@@ -1126,13 +1124,13 @@ namespace Watch_Face_Editor
                             hmUI_widget_IMG img = Object_IMG(parametrs);
                             if (objectName.EndsWith("background_bg") || objectName.EndsWith("background_bg_img"))
                             {
-                                if (objectName.StartsWith("normal"))
+                                if (img.show_level == "ONLY_NORMAL" || objectName.StartsWith("normal"))
                                 {
                                     if (Watch_Face.ScreenNormal.Background == null)
                                         Watch_Face.ScreenNormal.Background = new Background();
                                     Watch_Face.ScreenNormal.Background.BackgroundImage = img;
                                 }
-                                else if (objectName.StartsWith("idle"))
+                                else if (img.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
                                 {
                                     if (Watch_Face.ScreenAOD.Background == null)
                                         Watch_Face.ScreenAOD.Background = new Background();
@@ -1142,19 +1140,19 @@ namespace Watch_Face_Editor
                             else
                             {
                                 elementsList = null;
-                                if (objectName.StartsWith("normal"))
+                                if (img.show_level == "ONLY_NORMAL" || objectName.StartsWith("normal"))
                                 {
                                     if (Watch_Face.ScreenNormal.Elements == null)
                                         Watch_Face.ScreenNormal.Elements = new List<object>();
                                     elementsList = Watch_Face.ScreenNormal.Elements;
                                 }
-                                else if (objectName.StartsWith("idle"))
+                                else if (img.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
                                 {
                                     if (Watch_Face.ScreenAOD.Elements == null)
                                         Watch_Face.ScreenAOD.Elements = new List<object>();
                                     elementsList = Watch_Face.ScreenAOD.Elements;
                                 }
-                                if (elementsList != null) elementsList.Add(img);
+                                //if (elementsList != null) elementsList.Add(img);
                             }
 
                             if (objectName.EndsWith("hour_separator_img"))
@@ -1238,13 +1236,13 @@ namespace Watch_Face_Editor
                             hmUI_widget_FILL_RECT fill_rect = Object_FILL_RECT(parametrs);
                             if (objectName.IndexOf("background") >= 0)
                             {
-                                if (objectName.StartsWith("normal"))
+                                if (fill_rect.show_level == "ONLY_NORMAL" || objectName.StartsWith("normal"))
                                 {
                                     if (Watch_Face.ScreenNormal.Background == null)
                                         Watch_Face.ScreenNormal.Background = new Background();
                                     Watch_Face.ScreenNormal.Background.BackgroundColor = fill_rect;
                                 }
-                                else if (objectName.StartsWith("idle"))
+                                else if (fill_rect.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
                                 {
                                     if (Watch_Face.ScreenAOD.Background == null)
                                         Watch_Face.ScreenAOD.Background = new Background();
@@ -1364,13 +1362,13 @@ namespace Watch_Face_Editor
                             List<hmUI_widget_IMG_NUMBER> img_number_list = Object_ImgDate(parametrs);
                             List<hmUI_widget_IMG_LEVEL> img_level_list = Object_ImgLevelDate(parametrs);
                             elementsList = null;
-                            if (objectName.StartsWith("normal"))
+                            if ((img_number_list.Count > 0 && img_number_list[0].show_level == "ONLY_NORMAL") || objectName.StartsWith("normal"))
                             {
                                 if (Watch_Face.ScreenNormal.Elements == null)
                                     Watch_Face.ScreenNormal.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenNormal.Elements;
                             }
-                            else if (objectName.StartsWith("idle"))
+                            else if ((img_number_list.Count > 0 && img_number_list[0].show_level == "ONAL_AOD") || objectName.StartsWith("idle"))
                             {
                                 if (Watch_Face.ScreenAOD.Elements == null)
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
@@ -1464,13 +1462,13 @@ namespace Watch_Face_Editor
                         case "DATE_POINTER":
                             hmUI_widget_IMG_POINTER img_pointer = Object_Pointer(parametrs);
                             elementsList = null;
-                            if (objectName.StartsWith("normal"))
+                            if (img_pointer.show_level == "ONLY_NORMAL" || img_pointer.show_level == "ONLY_NORMAL" || objectName.StartsWith("normal"))
                             {
                                 if (Watch_Face.ScreenNormal.Elements == null)
                                     Watch_Face.ScreenNormal.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenNormal.Elements;
                             }
-                            else if (objectName.StartsWith("idle"))
+                            else if (img_pointer.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
                             {
                                 if (Watch_Face.ScreenAOD.Elements == null)
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
@@ -1565,13 +1563,13 @@ namespace Watch_Face_Editor
                         case "IMG_WEEK":
                             hmUI_widget_IMG_LEVEL imgWeek = Object_IMG_WEEK(parametrs);
                             elementsList = null;
-                            if (objectName.StartsWith("normal"))
+                            if (imgWeek.show_level == "ONLY_NORMAL" || objectName.StartsWith("normal"))
                             {
                                 if (Watch_Face.ScreenNormal.Elements == null)
                                     Watch_Face.ScreenNormal.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenNormal.Elements;
                             }
-                            else if (objectName.StartsWith("idle"))
+                            else if (imgWeek.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
                             {
                                 if (Watch_Face.ScreenAOD.Elements == null)
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
@@ -1739,6 +1737,12 @@ namespace Watch_Face_Editor
                 if (parametrs.ContainsKey("y") && Int32.TryParse(parametrs["y"], out value)) img.y = value;
                 if (parametrs.ContainsKey("h") && Int32.TryParse(parametrs["h"], out value)) img.h = value;
                 if (parametrs.ContainsKey("w") && Int32.TryParse(parametrs["w"], out value)) img.w = value;
+
+                if (parametrs.ContainsKey("show_level"))
+                {
+                    imgName = parametrs["show_level"].Replace("hmUI.show_level.", "");
+                    img.show_level = imgName;
+                }
                 img.visible = true;
             }
 
@@ -1754,6 +1758,12 @@ namespace Watch_Face_Editor
             if (parametrs.ContainsKey("y") && Int32.TryParse(parametrs["y"], out value)) fill_rect.y = value;
             if (parametrs.ContainsKey("h") && Int32.TryParse(parametrs["h"], out value)) fill_rect.h = value;
             if (parametrs.ContainsKey("w") && Int32.TryParse(parametrs["w"], out value)) fill_rect.w = value;
+
+            if (parametrs.ContainsKey("show_level"))
+            {
+                string valueStr = parametrs["show_level"].Replace("hmUI.show_level.", "");
+                fill_rect.show_level = valueStr;
+            }
 
             return fill_rect;
         }
@@ -2062,6 +2072,12 @@ namespace Watch_Face_Editor
                     elementPointer.type = imgName;
                 }
 
+                if (parametrs.ContainsKey("show_level"))
+                {
+                    imgName = parametrs["show_level"].Replace("hmUI.show_level.", "");
+                    elementPointer.show_level = imgName;
+                }
+
                 elementPointer.visible = true;
                 elementPointer.position = 1;
                 //index++;
@@ -2102,6 +2118,12 @@ namespace Watch_Face_Editor
                         imgName = parametrs["day_unit_en"].Replace("'", "");
                         imgName = Path.GetFileNameWithoutExtension(imgName);
                         dayNumber.unit = imgName;
+                    }
+
+                    if (parametrs.ContainsKey("show_level"))
+                    {
+                        imgName = parametrs["show_level"].Replace("hmUI.show_level.", "");
+                        dayNumber.show_level = imgName;
                     }
                     dayNumber.visible = true;
                     dayNumber.position = index;
@@ -2208,6 +2230,12 @@ namespace Watch_Face_Editor
                         dayNumber.X = value;
                     if (parametrs.ContainsKey("day_startY") && Int32.TryParse(parametrs["day_startY"], out value))
                         dayNumber.Y = value;
+
+                    if (parametrs.ContainsKey("show_level"))
+                    {
+                        imgName = parametrs["show_level"].Replace("hmUI.show_level.", "");
+                        dayNumber.show_level = imgName;
+                    }
                     dayNumber.visible = true;
                     dayNumber.position = index;
                     dayNumber.type = "DAY";
@@ -2278,6 +2306,13 @@ namespace Watch_Face_Editor
 
                 if (parametrs.ContainsKey("x") && Int32.TryParse(parametrs["x"], out value)) imgWeek.X = value;
                 if (parametrs.ContainsKey("y") && Int32.TryParse(parametrs["y"], out value)) imgWeek.Y = value;
+
+                if (parametrs.ContainsKey("show_level"))
+                {
+                    imgName = parametrs["show_level"].Replace("hmUI.show_level.", "");
+                    imgWeek.show_level = imgName;
+                }
+
                 imgWeek.visible = true;
                 imgWeek.position = 1;
             }

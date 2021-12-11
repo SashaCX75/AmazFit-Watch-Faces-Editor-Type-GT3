@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,94 +12,89 @@ using System.Windows.Forms;
 
 namespace ControlLibrary
 {
-    public partial class UCtrl_Pointer_Opt : UserControl
+    public partial class UCtrl_Linear_Scale_Opt : UserControl
     {
         private bool setValue; // режим задания параметров
-        private bool showBackground;
-
         private List<string> ListImagesFullName = new List<string>(); // перечень путей к файлам с картинками
-        public Object _ElementWithPointer;
+        public Object _LinearScale;
 
-        public UCtrl_Pointer_Opt()
+        public UCtrl_Linear_Scale_Opt()
         {
             InitializeComponent();
             setValue = false;
         }
 
+        private void comboBox_scaleLinear_color_Click(object sender, EventArgs e)
+        {
+            Program_Settings ProgramSettings = new Program_Settings();
+            ColorDialog colorDialog = new ColorDialog();
+            ComboBox comboBox_color = sender as ComboBox;
+            colorDialog.Color = comboBox_color.BackColor;
+            colorDialog.FullOpen = true;
 
-        /// <summary>Задает название выбранной картинки</summary>
-        public void SetPointerImage(string value)
-        {
-            comboBox_pointer_image.Text = value;
-            if (comboBox_pointer_image.SelectedIndex < 0) comboBox_pointer_image.Text = "";
-        }
-        /// <summary>Возвращает номер выбранной картинки, в случае ошибки возвращает -1</summary>
-        public string GetPointerImage()
-        {
-            if (comboBox_pointer_image.SelectedIndex < 0) return "";
-            return comboBox_pointer_image.Text;
-        }
-        /// <summary>Возвращает SelectedIndex выпадающего списка</summary>
-        public int GetSelectedIndexPointerImage()
-        {
-            return comboBox_pointer_image.SelectedIndex;
-        }
-
-        public void SetPointerImageCentr(string value)
-        {
-            comboBox_pointer_imageCentr.Text = value;
-            if (comboBox_pointer_imageCentr.SelectedIndex < 0) comboBox_pointer_imageCentr.Text = "";
-        }
-        /// <summary>Возвращает номер выбранной картинки, в случае ошибки возвращает -1</summary>
-        public string GetPointerImageCentr()
-        {
-            if (comboBox_pointer_imageCentr.SelectedIndex < 0) return "";
-            return comboBox_pointer_imageCentr.Text;
-        }
-        /// <summary>Возвращает SelectedIndex выпадающего списка</summary>
-        public int GetSelectedIndexPointerImageCentr()
-        {
-            return comboBox_pointer_imageCentr.SelectedIndex;
-        }
-
-        public void SetPointerImageBackground(string value)
-        {
-            comboBox_pointer_imageBackground.Text = value;
-            if (comboBox_pointer_imageBackground.SelectedIndex < 0) comboBox_pointer_imageBackground.Text = "";
-        }
-
-        /// <summary>Возвращает номер выбранной картинки, в случае ошибки возвращает -1</summary>
-        public string GetPointerImageBackground()
-        {
-            if (comboBox_pointer_imageBackground.SelectedIndex < 0) return "";
-            return comboBox_pointer_imageBackground.Text;
-        }
-        /// <summary>Возвращает SelectedIndex выпадающего списка</summary>
-        public int GetSelectedIndexPointerImageBackground()
-        {
-            return comboBox_pointer_imageBackground.SelectedIndex;
-        }
-
-        /// <summary>Отображение поля изображения при ошибке</summary>
-        [Description("Отображение поля настройки фонового изображения")]
-        public virtual bool ShowBackground
-        {
-            get
+            // читаем пользовательские цвета из настроек
+            if (File.Exists(Application.StartupPath + @"\Settings.json"))
             {
-                return showBackground;
+                ProgramSettings = JsonConvert.DeserializeObject<Program_Settings>
+                            (File.ReadAllText(Application.StartupPath + @"\Settings.json"), new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
             }
-            set
-            {
-                showBackground = value;
-                comboBox_pointer_imageBackground.Visible = showBackground;
-                numericUpDown_pointer_background_X.Visible = showBackground;
-                numericUpDown_pointer_background_Y.Visible = showBackground;
+            colorDialog.CustomColors = ProgramSettings.CustomColors;
 
-                label14.Visible = showBackground;
-                label15.Visible = showBackground;
-                label16.Visible = showBackground;
-                label17.Visible = showBackground;
+
+            if (colorDialog.ShowDialog() == DialogResult.Cancel)
+                return;
+            // установка цвета формы
+            comboBox_color.BackColor = colorDialog.Color;
+            if (ProgramSettings.CustomColors != colorDialog.CustomColors)
+            {
+                ProgramSettings.CustomColors = colorDialog.CustomColors;
+
+                string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
+                {
+                    //DefaultValueHandling = DefaultValueHandling.Ignore,
+                    NullValueHandling = NullValueHandling.Ignore
+                });
+                File.WriteAllText(Application.StartupPath + @"\Settings.json", JSON_String, Encoding.UTF8);
             }
+
+            if (ValueChanged != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                ValueChanged(this, eventArgs);
+            }
+        }
+
+        public void SetImagePointer(string value)
+        {
+            comboBox_scaleLinear_image_pointer.Text = value;
+            if (comboBox_scaleLinear_image_pointer.SelectedIndex < 0) comboBox_scaleLinear_image_pointer.Text = "";
+        }
+
+        /// <summary>Возвращает название выбранной картинки</summary>
+        public string GetImagePointer()
+        {
+            if (comboBox_scaleLinear_image_pointer.SelectedIndex < 0) return "";
+            return comboBox_scaleLinear_image_pointer.Text;
+        }
+
+        /// <summary>Возвращает SelectedIndex выпадающего списка</summary>
+        public int comboBoxGetSelectedIndexImagePointer()
+        {
+            return comboBox_scaleLinear_image_pointer.SelectedIndex;
+        }
+
+        public void SetColorScale(Color color)
+        {
+            comboBox_scaleLinear_color.BackColor = color;
+        }
+
+        public Color GetColorScale()
+        {
+            return comboBox_scaleLinear_color.BackColor;
         }
 
         [Browsable(true)]
@@ -180,68 +176,23 @@ namespace ControlLibrary
                 ValueChanged(this, eventArgs);
             }
         }
-        #endregion
 
-        #region Settings Set/Clear
-        /// <summary>Добавляет ссылки на картинки в выпадающие списки</summary>
-        public void ComboBoxAddItems(List<string> ListImages, List<string> _ListImagesFullName)
+        private void radioButton_CheckedChanged(object sender, EventArgs e)
         {
-            comboBox_pointer_image.Items.Clear();
-            comboBox_pointer_imageCentr.Items.Clear();
-            comboBox_pointer_imageBackground.Items.Clear();
-
-            comboBox_pointer_image.Items.AddRange(ListImages.ToArray());
-            comboBox_pointer_imageCentr.Items.AddRange(ListImages.ToArray());
-            comboBox_pointer_imageBackground.Items.AddRange(ListImages.ToArray());
-
-            ListImagesFullName = _ListImagesFullName;
-
-            int count = ListImages.Count;
-            if (count == 0)
+            if (ValueChanged != null && !setValue)
             {
-                comboBox_pointer_image.DropDownHeight = 1;
-                comboBox_pointer_imageCentr.DropDownHeight = 1;
-                comboBox_pointer_imageBackground.DropDownHeight = 1;
-            }
-            else if (count < 5)
-            {
-                comboBox_pointer_image.DropDownHeight = 35 * count + 1;
-                comboBox_pointer_imageCentr.DropDownHeight = 35 * count + 1;
-                comboBox_pointer_imageBackground.DropDownHeight = 35 * count + 1;
-            }
-            else
-            {
-                comboBox_pointer_image.DropDownHeight = 106;
-                comboBox_pointer_imageCentr.DropDownHeight = 106;
-                comboBox_pointer_imageBackground.DropDownHeight = 106;
+                EventArgs eventArgs = new EventArgs();
+                ValueChanged(this, eventArgs);
             }
         }
 
-        /// <summary>Очищает выпадающие списки с картинками, сбрасывает данные на значения по умолчанию</summary>
-        public void SettingsClear()
+        private void checkBox_CheckedChanged(object sender, EventArgs e)
         {
-            setValue = true;
-
-            comboBox_pointer_image.Text = null;
-            comboBox_pointer_imageCentr.Text = null;
-            comboBox_pointer_imageBackground.Text = null;
-
-            numericUpDown_pointer_X.Value = 0;
-            numericUpDown_pointer_Y.Value = 0;
-
-            numericUpDown_pointer_centr_X.Value = 0;
-            numericUpDown_pointer_centr_Y.Value = 0;
-
-            numericUpDown_pointer_background_X.Value = 0;
-            numericUpDown_pointer_background_Y.Value = 0;
-
-            numericUpDown_pointer_offset_X.Value = 0;
-            numericUpDown_pointer_offset_Y.Value = 0;
-
-            numericUpDown_pointer_startAngle.Value = 0;
-            numericUpDown_pointer_endAngle.Value = 360;
-
-            setValue = false;
+            if (ValueChanged != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                ValueChanged(this, eventArgs);
+            }
         }
         #endregion
 
@@ -406,5 +357,52 @@ namespace ControlLibrary
 
         #endregion
 
+        #region Settings Set/Clear
+        /// <summary>Добавляет ссылки на картинки в выпадающие списки</summary>
+        public void ComboBoxAddItems(List<string> ListImages, List<string> _ListImagesFullName)
+        {
+            comboBox_scaleLinear_image_pointer.Items.Clear();
+
+            comboBox_scaleLinear_image_pointer.Items.AddRange(ListImages.ToArray());
+
+            ListImagesFullName = _ListImagesFullName;
+
+            int count = ListImages.Count;
+            if (count == 0)
+            {
+                comboBox_scaleLinear_image_pointer.DropDownHeight = 1;
+            }
+            else if (count < 5)
+            {
+                comboBox_scaleLinear_image_pointer.DropDownHeight = 35 * count + 1;
+            }
+            else
+            {
+                comboBox_scaleLinear_image_pointer.DropDownHeight = 106;
+            }
+        }
+
+        /// <summary>Очищает выпадающие списки с картинками, сбрасывает данные на значения по умолчанию</summary>
+        public void SettingsClear()
+        {
+            setValue = true;
+
+            comboBox_scaleLinear_image_pointer.Text = null;
+
+            numericUpDown_scaleLinearX.Value = 0;
+            numericUpDown_scaleLinearY.Value = 0;
+
+            numericUpDown_scaleLinear_length.Value = 100;
+            numericUpDown_scaleLinear_width.Value = 5;
+
+            radioButton_horizontal.Checked = true;
+            //radioButton_vertical.Checked = false;
+
+            checkBox_direction.Checked = false;
+            checkBox_inversion.Checked = false;
+
+            setValue = false;
+        }
+        #endregion
     }
 }

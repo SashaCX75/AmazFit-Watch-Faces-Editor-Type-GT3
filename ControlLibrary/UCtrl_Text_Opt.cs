@@ -34,7 +34,9 @@ namespace ControlLibrary
         public UCtrl_Text_Opt()
         {
             InitializeComponent();
+            setValue = true;
             comboBox_alignment.SelectedIndex = 0;
+            setValue = false;
 
             //location_unit = comboBox_unit.Location;
             location_unit_miles = comboBox_unit_miles.Location;

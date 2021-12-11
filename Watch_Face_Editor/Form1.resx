@@ -952,7 +952,7 @@
     <value>Fill</value>
   </data>
   <data name="panel_UC_Background.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 204</value>
+    <value>0, 238</value>
   </data>
   <data name="panel_UC_Background.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1038,6 +1038,63 @@
   <data name="&gt;&gt;panel_UC_DateWeek.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
+  <data name="panel_UC_Steps.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="uCtrl_Steps_Elm.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="uCtrl_Steps_Elm.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="uCtrl_Steps_Elm.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="uCtrl_Steps_Elm.Size" type="System.Drawing.Size, System.Drawing">
+    <value>242, 28</value>
+  </data>
+  <data name="uCtrl_Steps_Elm.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="uCtrl_Steps_Elm.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_Steps_Elm.Name" xml:space="preserve">
+    <value>uCtrl_Steps_Elm</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_Steps_Elm.Type" xml:space="preserve">
+    <value>ControlLibrary.UCtrl_Steps_Elm, ControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_Steps_Elm.Parent" xml:space="preserve">
+    <value>panel_UC_Steps</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_Steps_Elm.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel_UC_Steps.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panel_UC_Steps.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 207</value>
+  </data>
+  <data name="panel_UC_Steps.Size" type="System.Drawing.Size, System.Drawing">
+    <value>242, 28</value>
+  </data>
+  <data name="panel_UC_Steps.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="&gt;&gt;panel_UC_Steps.Name" xml:space="preserve">
+    <value>panel_UC_Steps</value>
+  </data>
+  <data name="&gt;&gt;panel_UC_Steps.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_UC_Steps.Parent" xml:space="preserve">
+    <value>tableLayoutPanel_ElemetsWatchFace</value>
+  </data>
+  <data name="&gt;&gt;panel_UC_Steps.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
   <data name="tableLayoutPanel_ElemetsWatchFace.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
@@ -1045,10 +1102,10 @@
     <value>0, 0</value>
   </data>
   <data name="tableLayoutPanel_ElemetsWatchFace.RowCount" type="System.Int32, mscorlib">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="tableLayoutPanel_ElemetsWatchFace.Size" type="System.Drawing.Size, System.Drawing">
-    <value>248, 238</value>
+    <value>248, 272</value>
   </data>
   <data name="tableLayoutPanel_ElemetsWatchFace.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1066,7 +1123,7 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel_ElemetsWatchFace.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="panel_UC_DigitalTime" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_UC_AnalogTime" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_UC_DateDay" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_UC_DateMonth" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_UC_DateYear" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_UC_Background" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_UC_DateWeek" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="panel_UC_DigitalTime" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_UC_AnalogTime" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_UC_DateDay" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_UC_DateMonth" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_UC_DateYear" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_UC_Background" Row="7" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_UC_DateWeek" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_UC_Steps" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="panel_WatchfaceElements.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 3</value>
@@ -1092,6 +1149,102 @@
   <data name="panel_ElementsOpt.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="uCtrl_Segments_Opt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="uCtrl_Segments_Opt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 160</value>
+  </data>
+  <data name="uCtrl_Segments_Opt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>258, 20</value>
+  </data>
+  <data name="uCtrl_Segments_Opt.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_Segments_Opt.Name" xml:space="preserve">
+    <value>uCtrl_Segments_Opt</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_Segments_Opt.Type" xml:space="preserve">
+    <value>ControlLibrary.UCtrl_Segments_Opt, ControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_Segments_Opt.Parent" xml:space="preserve">
+    <value>panel_ElementsOpt</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_Segments_Opt.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="uCtrl_Icon_Opt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="uCtrl_Icon_Opt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 140</value>
+  </data>
+  <data name="uCtrl_Icon_Opt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>258, 20</value>
+  </data>
+  <data name="uCtrl_Icon_Opt.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_Icon_Opt.Name" xml:space="preserve">
+    <value>uCtrl_Icon_Opt</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_Icon_Opt.Type" xml:space="preserve">
+    <value>ControlLibrary.UCtrl_Icon_Opt, ControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_Icon_Opt.Parent" xml:space="preserve">
+    <value>panel_ElementsOpt</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_Icon_Opt.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="uCtrl_Linear_Scale_Opt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="uCtrl_Linear_Scale_Opt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 120</value>
+  </data>
+  <data name="uCtrl_Linear_Scale_Opt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>258, 20</value>
+  </data>
+  <data name="uCtrl_Linear_Scale_Opt.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_Linear_Scale_Opt.Name" xml:space="preserve">
+    <value>uCtrl_Linear_Scale_Opt</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_Linear_Scale_Opt.Type" xml:space="preserve">
+    <value>ControlLibrary.UCtrl_Linear_Scale_Opt, ControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_Linear_Scale_Opt.Parent" xml:space="preserve">
+    <value>panel_ElementsOpt</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_Linear_Scale_Opt.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="uCtrl_Circle_Scale_Opt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="uCtrl_Circle_Scale_Opt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 100</value>
+  </data>
+  <data name="uCtrl_Circle_Scale_Opt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>258, 20</value>
+  </data>
+  <data name="uCtrl_Circle_Scale_Opt.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_Circle_Scale_Opt.Name" xml:space="preserve">
+    <value>uCtrl_Circle_Scale_Opt</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_Circle_Scale_Opt.Type" xml:space="preserve">
+    <value>ControlLibrary.UCtrl_Circle_Scale_Opt, ControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_Circle_Scale_Opt.Parent" xml:space="preserve">
+    <value>panel_ElementsOpt</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_Circle_Scale_Opt.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
   <data name="uCtrl_Images_Opt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
@@ -1099,7 +1252,7 @@
     <value>0, 80</value>
   </data>
   <data name="uCtrl_Images_Opt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 150</value>
+    <value>258, 20</value>
   </data>
   <data name="uCtrl_Images_Opt.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1117,7 +1270,7 @@
     <value>panel_ElementsOpt</value>
   </data>
   <data name="&gt;&gt;uCtrl_Images_Opt.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>4</value>
   </data>
   <data name="uCtrl_Pointer_Opt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -1144,7 +1297,7 @@
     <value>panel_ElementsOpt</value>
   </data>
   <data name="&gt;&gt;uCtrl_Pointer_Opt.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>5</value>
   </data>
   <data name="uCtrl_AmPm_Opt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -1171,7 +1324,7 @@
     <value>panel_ElementsOpt</value>
   </data>
   <data name="&gt;&gt;uCtrl_AmPm_Opt.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>6</value>
   </data>
   <data name="uCtrl_Text_Opt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -1201,7 +1354,7 @@
     <value>panel_ElementsOpt</value>
   </data>
   <data name="&gt;&gt;uCtrl_Text_Opt.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>7</value>
   </data>
   <data name="userCtrl_Background_Options.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -1228,7 +1381,7 @@
     <value>panel_ElementsOpt</value>
   </data>
   <data name="&gt;&gt;userCtrl_Background_Options.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>8</value>
   </data>
   <data name="panel_ElementsOpt.Location" type="System.Drawing.Point, System.Drawing">
     <value>262, 3</value>
@@ -4093,7 +4246,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
-        DQAAAk1TRnQBSQFMAgEBBgEAAWwBKAFsASgBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAASQBKQEkASkBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA

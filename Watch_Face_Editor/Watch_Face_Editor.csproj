@@ -87,6 +87,9 @@
     <Compile Include="Classes\ConvertingImages\Header.cs" />
     <Compile Include="Classes\ConvertingImages\ImageDescription.cs" />
     <Compile Include="Classes\ConvertingImages\Image_data.cs" />
+    <Compile Include="ImageConversion.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Options_ReadWrite.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -37,7 +37,7 @@ namespace Watch_Face_Editor
 
 
         /// <summary>Основной экран или AOD</summary>
-        //public string show_level { get; set; }
+        public string show_level = "";
     }
 
     /// <summary>Данные цифрами</summary>
@@ -91,7 +91,7 @@ namespace Watch_Face_Editor
         public bool follow { get; set; }
 
         /// <summary>Основной экран или AOD</summary>
-        //public string show_level { get; set; }
+        public string show_level = "";
 
         /// <summary>Тип активности</summary>
         public string type { get; set; }
@@ -120,6 +120,10 @@ namespace Watch_Face_Editor
 
         /// <summary>Тип активности</summary>
         public string type { get; set; }
+
+
+        /// <summary>Основной экран или AOD</summary>
+        public string show_level = "";
     }
 
     /// <summary>Фоновое изображение или иконка</summary>
@@ -144,7 +148,7 @@ namespace Watch_Face_Editor
         public string src { get; set; }
 
         /// <summary>Основной экран или AOD</summary>
-        //public string show_level { get; set; }
+        public string show_level = "";
     }
 
     /// <summary>Заливка фона цветом</summary>
@@ -169,7 +173,7 @@ namespace Watch_Face_Editor
         public string color { get; set; }
 
         /// <summary>Основной экран или AOD</summary>
-        //public string show_level { get; set; }
+        public string show_level = "";
     }
 
     public class hmUI_widget_IMG_POINTER
@@ -222,6 +226,123 @@ namespace Watch_Face_Editor
         /// <summary>Тип активности</summary>
         public string type { get; set; }
 
+
+        /// <summary>Основной экран или AOD</summary>
+        public string show_level = "";
+
+    }
+
+    public class hmUI_widget_IMG_PROGRESS 
+    {
+        /// <summary>Позиция в наборе элементов</summary>
+        public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = false;
+
+        /// <summary>X координата</summary>
+        public List<int> X { get; set; }
+
+        /// <summary>Y координата</summary>
+        public List<int> Y { get; set; }
+
+        /// <summary>Первая картинка из набора для отображения</summary>
+        public string img_First { get; set; }
+
+        /// <summary>Количество картинок в наборе</summary>
+        public int image_length { get; set; }
+
+        /// <summary>Тип активности</summary>
+        public string type { get; set; }
+
+
+        /// <summary>Основной экран или AOD</summary>
+        public string show_level = "";
+    }
+
+    public class Circle_Scale
+    {
+        /// <summary>Позиция в наборе элементов</summary>
+        public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = false;
+
+        /// <summary>Координата Х центра шкалы</summary>
+        public int center_x { get; set; }
+
+        /// <summary>Координата Y центра шкалы</summary>
+        public int center_y { get; set; }
+
+        /// <summary>Начальный угол</summary>
+        public int start_angle { get; set; }
+
+        /// <summary>Конечный угол</summary>
+        public int end_angle = 360;
+
+        /// <summary>Цвет</summary>
+        public string color { get; set; }
+
+        /// <summary>Радиус</summary>
+        public int radius { get; set; }
+
+        /// <summary>Толщина линии</summary>
+        public int line_width { get; set; }
+
+        /// <summary>Тип активности</summary>
+        public string type { get; set; }
+
+        /// <summary>Направление от центра</summary>
+        public bool direction { get; set; }
+
+        /// <summary>Инверсия шкалы</summary>
+        public bool inversion { get; set; }
+
+        /// <summary>Основной экран или AOD</summary>
+        public string show_level = "";
+
+    }
+
+    public class Linear_Scale
+    {
+        /// <summary>Позиция в наборе элементов</summary>
+        public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = false;
+
+        /// <summary>Координата Х начала шкалы</summary>
+        public int start_x { get; set; }
+
+        /// <summary>Координата Y начала шкалы</summary>
+        public int start_y { get; set; }
+
+        /// <summary>Цвет</summary>
+        public string color { get; set; }
+
+        /// <summary>Указатель на шкале</summary>
+        public string pointer { get; set; }
+
+        /// <summary>Длина шкалы</summary>
+        public int lenght { get; set; }
+
+        /// <summary>Толщина линии</summary>
+        public int line_width { get; set; }
+
+        /// <summary>Тип активности</summary>
+        public string type { get; set; }
+
+        /// <summary>Направление от центра</summary>
+        public bool direction { get; set; }
+
+        /// <summary>Инверсия шкалы</summary>
+        public bool inversion { get; set; }
+
+        /// <summary>Горизонтальная или вертикальная шкала</summary>
+        public bool vertical { get; set; }
+
+        /// <summary>Основной экран или AOD</summary>
+        public string show_level = "";
     }
 
 }

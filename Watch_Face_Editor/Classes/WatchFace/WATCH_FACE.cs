@@ -153,6 +153,26 @@ namespace Watch_Face_Editor
         public hmUI_widget_IMG_POINTER Pointer { get; set; }
         public hmUI_widget_IMG_LEVEL Images { get; set; }
     }
+
+    public class ElementSteps
+    {
+        public string elementName = "ElementSteps";
+
+        ///// <summary>Позиция в наборе элементов</summary>
+        //public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = true;
+
+        public hmUI_widget_IMG_LEVEL Images { get; set; }
+        public hmUI_widget_IMG_PROGRESS Segments { get; set; }
+        public hmUI_widget_IMG_NUMBER Number { get; set; }
+        public hmUI_widget_IMG_NUMBER Number_Target { get; set; }
+        public hmUI_widget_IMG_POINTER Pointer { get; set; }
+        public Circle_Scale Circle_Scale { get; set; }
+        public Linear_Scale Linear_Scale { get; set; }
+        public hmUI_widget_IMG Icon { get; set; }
+    }
 }
 
 
