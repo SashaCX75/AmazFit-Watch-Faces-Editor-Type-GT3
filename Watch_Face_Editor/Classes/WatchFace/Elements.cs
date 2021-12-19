@@ -71,6 +71,9 @@ namespace Watch_Face_Editor
         /// <summary>Разделитель / единици измерения</summary>
         public string unit { get; set; }
 
+        /// <summary>Разделитель / единици измерения (американские?)</summary>
+        public string imperial_unit { get; set; }
+
         /// <summary>Иконка / разделитель</summary>
         public string icon { get; set; }
 
@@ -85,6 +88,12 @@ namespace Watch_Face_Editor
 
         /// <summary>Ширина иконки</summary>
         //public int iconWidth { get; set; }
+
+        /// <summary>Символ "-"</summary>
+        public string negative_image { get; set; }
+
+        /// <summary>Десятичный разделитель</summary>
+        public string dot_path { get; set; }
 
         ///// <summary>Следовать за часами. 0-не следовать; 1-следовать</summary>
         /// <summary>Следовать за предшественником</summary>
@@ -278,22 +287,22 @@ namespace Watch_Face_Editor
         public int start_angle { get; set; }
 
         /// <summary>Конечный угол</summary>
-        public int end_angle = 360;
+        public int end_angle = 180;
 
         /// <summary>Цвет</summary>
         public string color { get; set; }
 
         /// <summary>Радиус</summary>
-        public int radius { get; set; }
+        public int radius = 100;
 
         /// <summary>Толщина линии</summary>
-        public int line_width { get; set; }
+        public int line_width = 5;
 
         /// <summary>Тип активности</summary>
         public string type { get; set; }
 
         /// <summary>Направление от центра</summary>
-        public bool direction { get; set; }
+        public bool mirror { get; set; }
 
         /// <summary>Инверсия шкалы</summary>
         public bool inversion { get; set; }
@@ -324,16 +333,16 @@ namespace Watch_Face_Editor
         public string pointer { get; set; }
 
         /// <summary>Длина шкалы</summary>
-        public int lenght { get; set; }
+        public int lenght = 100;
 
         /// <summary>Толщина линии</summary>
-        public int line_width { get; set; }
+        public int line_width = 5;
 
         /// <summary>Тип активности</summary>
         public string type { get; set; }
 
         /// <summary>Направление от центра</summary>
-        public bool direction { get; set; }
+        public bool mirror { get; set; }
 
         /// <summary>Инверсия шкалы</summary>
         public bool inversion { get; set; }

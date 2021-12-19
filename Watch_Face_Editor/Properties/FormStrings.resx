@@ -129,6 +129,12 @@
   <data name="Dialog_Title_PreviewStates" xml:space="preserve">
     <value>Выбор файла настроек предпросмотра</value>
   </data>
+  <data name="Dialog_Title_SaveGIF" xml:space="preserve">
+    <value>Сохранить анимированный предпросмотр</value>
+  </data>
+  <data name="Dialog_Title_SavePNG" xml:space="preserve">
+    <value>Сохранить предпросмотр</value>
+  </data>
   <data name="Dialog_Title_Unpack" xml:space="preserve">
     <value>Выбор файла циферблата</value>
   </data>
@@ -232,10 +238,10 @@
     <value>Сохранение проекта</value>
   </data>
   <data name="Message_Save_JSON_Modified_Text1" xml:space="preserve">
-    <value>Вы хотите сохранить изменения в проекте</value>
+    <value>Вы хотите сохранить изменения в проекте "</value>
   </data>
   <data name="Message_Save_JSON_Modified_Text2" xml:space="preserve">
-    <value>?</value>
+    <value>"?</value>
   </data>
   <data name="Message_Save_new_JSON" xml:space="preserve">
     <value>Текущий проект еще не сохранен. Вы хотите сохранить его?</value>

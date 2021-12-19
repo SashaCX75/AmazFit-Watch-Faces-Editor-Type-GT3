@@ -1,0 +1,21 @@
+{
+  "Background": {
+    "Path": "\\Skin\\Skin_GTR_3_Pro.png",
+    "ImageHeight": 500
+  },
+  "Image": {
+    "ImageHeight": 279,
+    "Position": {
+      "X": 32,
+      "Y": 99
+    }
+  },
+  "Foreground": {
+    "Path": "\\Skin\\FileName",
+    "ImageHeight": 100,
+    "Position": {
+      "X": 10,
+      "Y": 50
+    }
+  }
+}

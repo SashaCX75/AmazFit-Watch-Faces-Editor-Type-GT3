@@ -180,6 +180,7 @@ namespace Watch_Face_Editor
             this.label_version = new System.Windows.Forms.Label();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.pictureBox_Preview = new System.Windows.Forms.PictureBox();
+            this.button_Reset = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage_Edit.SuspendLayout();
             this.tabControl_Edit_SetShow.SuspendLayout();
@@ -665,6 +666,7 @@ namespace Watch_Face_Editor
             this.uCtrl_Text_Opt.Name = "uCtrl_Text_Opt";
             this.uCtrl_Text_Opt.OptionalSymbol = true;
             this.uCtrl_Text_Opt.PaddingZero = false;
+            this.uCtrl_Text_Opt.Year = false;
             this.uCtrl_Text_Opt.ValueChanged += new ControlLibrary.UCtrl_Text_Opt.ValueChangedHandler(this.uCtrl_Text_Opt_ValueChanged);
             // 
             // userCtrl_Background_Options
@@ -957,6 +959,7 @@ namespace Watch_Face_Editor
             // tabPage_Settings
             // 
             this.tabPage_Settings.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage_Settings.Controls.Add(this.button_Reset);
             this.tabPage_Settings.Controls.Add(this.numericUpDown_Gif_Speed);
             this.tabPage_Settings.Controls.Add(this.checkBox_AllWidgetsInGif);
             this.tabPage_Settings.Controls.Add(this.groupBox2);
@@ -1438,12 +1441,14 @@ namespace Watch_Face_Editor
             resources.ApplyResources(this.button_SaveGIF, "button_SaveGIF");
             this.button_SaveGIF.Name = "button_SaveGIF";
             this.button_SaveGIF.UseVisualStyleBackColor = true;
+            this.button_SaveGIF.Click += new System.EventHandler(this.button_SaveGIF_Click);
             // 
             // button_SavePNG
             // 
             resources.ApplyResources(this.button_SavePNG, "button_SavePNG");
             this.button_SavePNG.Name = "button_SavePNG";
             this.button_SavePNG.UseVisualStyleBackColor = true;
+            this.button_SavePNG.Click += new System.EventHandler(this.button_SavePNG_Click);
             // 
             // checkBox_WebB
             // 
@@ -1464,6 +1469,7 @@ namespace Watch_Face_Editor
             resources.ApplyResources(this.button_PreviewBig, "button_PreviewBig");
             this.button_PreviewBig.Name = "button_PreviewBig";
             this.button_PreviewBig.UseVisualStyleBackColor = true;
+            this.button_PreviewBig.Click += new System.EventHandler(this.pictureBox_Preview_Click);
             // 
             // label_version
             // 
@@ -1489,6 +1495,13 @@ namespace Watch_Face_Editor
             this.pictureBox_Preview.Name = "pictureBox_Preview";
             this.pictureBox_Preview.TabStop = false;
             this.pictureBox_Preview.Click += new System.EventHandler(this.pictureBox_Preview_Click);
+            // 
+            // button_Reset
+            // 
+            resources.ApplyResources(this.button_Reset, "button_Reset");
+            this.button_Reset.Name = "button_Reset";
+            this.button_Reset.UseVisualStyleBackColor = true;
+            this.button_Reset.Click += new System.EventHandler(this.button_Reset_Click);
             // 
             // Form1
             // 
@@ -1738,6 +1751,7 @@ namespace Watch_Face_Editor
         private ControlLibrary.UCtrl_Linear_Scale_Opt uCtrl_Linear_Scale_Opt;
         private ControlLibrary.UCtrl_Circle_Scale_Opt uCtrl_Circle_Scale_Opt;
         private ControlLibrary.UCtrl_Segments_Opt uCtrl_Segments_Opt;
+        private System.Windows.Forms.Button button_Reset;
     }
 }
 

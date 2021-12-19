@@ -16,6 +16,7 @@ namespace Watch_Face_Editor
         {
             variables = Environment.NewLine;
             items = Environment.NewLine;
+            string resume_call = "";
             string options = "";
             if (Watch_Face == null) return;
             if (Watch_Face.ScreenNormal != null)
@@ -47,9 +48,11 @@ namespace Watch_Face_Editor
                     {
                         string outVariables = "";
                         string outItems = "";
-                        AddElementToJS(element, "ONLY_NORMAL", out outVariables, out outItems);
+                        string out_resume_call = "";
+                        AddElementToJS(element, "ONLY_NORMAL", out outVariables, out outItems, out out_resume_call, resume_call);
                         variables += outVariables;
                         items += outItems;
+                        resume_call += out_resume_call;
                     }
                 }
             }
@@ -84,22 +87,68 @@ namespace Watch_Face_Editor
                     {
                         string outVariables = "";
                         string outItems = "";
-                        AddElementToJS(element, "ONAL_AOD", out outVariables, out outItems);
+                        string out_resume_call = "";
+                        AddElementToJS(element, "ONAL_AOD", out outVariables, out outItems, out out_resume_call, resume_call);
                         variables += outVariables;
                         items += outItems;
+                        resume_call += out_resume_call;
                     }
                 }
             }
+
+            if (resume_call.Length > 5)
+            {
+                items += Environment.NewLine + TabInString(6) +
+                    "const widgetDelegate = hmUI.createWidget(hmUI.widget.WIDGET_DELEGATE, {";
+                items += Environment.NewLine + TabInString(7) + "resume_call: (function () {";
+                items += Environment.NewLine + resume_call;
+                items += Environment.NewLine + TabInString(7) + "}),";
+                items += Environment.NewLine + TabInString(6) + "});";
+            }
+
+            if (items.IndexOf("let screenType = hmSetting.getScreenType();") > 0)
+            {
+                int firstPos = items.IndexOf("let screenType = hmSetting.getScreenType();");
+                int lastPos = items.LastIndexOf("let screenType = hmSetting.getScreenType();");
+                int lenghtRemove = "let screenType = hmSetting.getScreenType();".Length;
+                if (firstPos < lastPos) items = items.Remove(lastPos, lenghtRemove);
+            }
         }
 
-        private void AddElementToJS(Object element, string show_level, out string variables, out string items)
+        private void AddElementToJS(Object element, string show_level, out string variables, out string items,
+            out string resume_call,  string exist_resume_call)
         {
             string optionNameStart = "normal_";
             if (show_level == "ONAL_AOD") optionNameStart = "idle_";
             variables = "";
             items = "";
+            resume_call = "";
             string options = "";
             string type = element.GetType().Name;
+
+            int imagesPosition = 99;
+            int segmentsPosition = 99;
+            int numberPosition = 99;
+            int numberTargetPosition = 99;
+            int pointerPosition= 99;
+            int circleScalePosition = 99;
+            int linearScalePosition = 99;
+            int iconPosition = 99;
+
+            string imagesOptions = "";
+            string segmentsOptions = "";
+            string numberOptions = "";
+            string numberTargetOptions = "";
+            string pointerOptions = "";
+            string circleScaleOptions = "";
+            string linearScaleOptions = "";
+            Circle_Scale circle_scale = null;
+            Linear_Scale linear_scale = null;
+            string iconOptions = "";
+
+            string numberOptions_separator = "";
+            string numberTargetOptions_separator = "";
+
             switch (type)
             {
                 #region ElementDigitalTime
@@ -148,11 +197,12 @@ namespace Watch_Face_Editor
                         optionsAmPm = AmPm_Options(am_pm, show_level);
                     }
 
+                    bool fullTime = false;
                     for (int index = 1; index <= 4; index++)
                     {
                         if (index == hourPosition && hourPosition < minutePosition && minutePosition < secondPosition)
                         {
-                            if (optionsHour.Length > 5 && optionsMinute.Length > 5)
+                            if (optionsHour.Length > 5 && optionsMinute.Length > 5 && optionsSecond.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
                                                         "digital_clock_img_time = ''" + Environment.NewLine;
@@ -188,9 +238,11 @@ namespace Watch_Face_Editor
                                         optionNameStart + "digital_clock_second_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                             optionsSecond_separator + TabInString(6) + "});" + Environment.NewLine;
                                 }
+
+                                fullTime = true;
                             }
                         }
-                        else
+                        if(!fullTime)
                         {
                             if (index == hourPosition && optionsHour.Length > 5)
                             {
@@ -502,6 +554,306 @@ namespace Watch_Face_Editor
                         }
                     }
                     break;
+                #endregion
+
+                #region ElementSteps
+                case "ElementSteps":
+                    ElementSteps Steps = (ElementSteps)element;
+
+                    if (!Steps.visible) return;
+                    if (Steps.Images != null && Steps.Images.visible)
+                    {
+                        imagesPosition = Steps.Images.position;
+                        hmUI_widget_IMG_LEVEL img_images = Steps.Images;
+                        imagesOptions = IMG_IMAGES_Options(img_images, "STEP", show_level);
+                    }
+                    if (Steps.Segments != null && Steps.Segments.visible)
+                    {
+                        segmentsPosition = Steps.Segments.position;
+                        hmUI_widget_IMG_PROGRESS img_progress = Steps.Segments;
+                        segmentsOptions = IMG_PROGRESS_Options(img_progress, "STEP", show_level);
+                    }
+                    if (Steps.Number != null && Steps.Number.visible)
+                    {
+                        numberPosition = Steps.Number.position;
+                        hmUI_widget_IMG_NUMBER img_number = Steps.Number;
+                        numberOptions = IMG_NUMBER_Options(img_number, "STEP", show_level);
+
+                        numberOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (Steps.Number_Target != null && Steps.Number_Target.visible)
+                    {
+                        numberTargetPosition = Steps.Number_Target.position;
+                        hmUI_widget_IMG_NUMBER img_number = Steps.Number_Target;
+                        numberTargetOptions = IMG_NUMBER_Options(img_number, "STEP_TARGET", show_level);
+
+                        numberTargetOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (Steps.Pointer != null && Steps.Pointer.visible)
+                    {
+                        pointerPosition = Steps.Pointer.position;
+                        hmUI_widget_IMG_POINTER img_pointer = Steps.Pointer;
+                        pointerOptions = IMG_POINTER_Options(img_pointer, "STEP", show_level);
+                    }
+
+                    if (Steps.Circle_Scale != null && Steps.Circle_Scale.visible)
+                    {
+                        circleScalePosition = Steps.Circle_Scale.position;
+                        circle_scale = Steps.Circle_Scale;
+
+                        circleScaleOptions = Circle_Scale_Options(circle_scale, optionNameStart, "STEP", show_level);
+                        //circleScaleMirrorOptions = Circle_Scale_Options(linear_scale, true);
+                    }
+                    if (Steps.Linear_Scale != null && Steps.Linear_Scale.visible)
+                    {
+                        linearScalePosition = Steps.Linear_Scale.position;
+                        linear_scale = Steps.Linear_Scale;
+
+                        linearScaleOptions = Linear_Scale_Options(linear_scale, optionNameStart, "STEP", show_level);
+                    }
+
+
+
+                    if (Steps.Icon != null && Steps.Icon.visible)
+                    {
+                        iconPosition = Steps.Icon.position;
+                        hmUI_widget_IMG img_icon = Steps.Icon;
+                        iconOptions = IMG_Options(img_icon, show_level);
+                    }
+
+                    for (int index = 1; index <= 10; index++)
+                    {
+                        // Images
+                        if (index == imagesPosition && imagesOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "step_image_progress_img_level = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "step_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
+                                    imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Segments
+                        if (index == segmentsPosition && segmentsOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "step_image_progress_img_progress = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "step_image_progress_img_progress = hmUI.createWidget(hmUI.widget.IMG_PROGRESS, {" +
+                                    segmentsOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Number
+                        if (index == numberPosition && numberOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "step_current_text_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "step_current_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "step_current_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "step_current_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Number_Target
+                        if (index == numberTargetPosition && numberTargetOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "step_target_text_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "step_target_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberTargetOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberTargetOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "step_target_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "step_target_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberTargetOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Pointer
+                        if (index == pointerPosition && pointerOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "step_pointer_progress_img_pointer = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "step_pointer_progress_img_pointer = hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
+                                    pointerOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Circle_Scale
+                        if (index == circleScalePosition && circle_scale != null)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "step_circle_scale = ''" + Environment.NewLine;
+
+                            items += circleScaleOptions;
+
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (optionNameStart == "normal_")
+                                items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
+                            else items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type.AOD) {";
+
+                            //items += Environment.NewLine + TabInString(7) +
+                            //    optionNameStart + "step_circle_scale = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
+                            //        circleScaleOptions + TabInString(7) + "});" + Environment.NewLine;
+
+                            items += Environment.NewLine + TabInString(7) +
+                                optionNameStart + "step_circle_scale = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
+
+                            if (circle_scale.mirror)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                "step_circle_scale_mirror = ''" + Environment.NewLine;
+
+                                items += TabInString(7) + optionNameStart +
+                                    "step_circle_scale_mirror = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
+                            }
+
+                            items += TabInString(6) + "};" + Environment.NewLine;
+
+
+                            resume_call += Environment.NewLine + TabInString(8) + "console.log('ui resume');" + Environment.NewLine;
+                            if (resume_call.IndexOf("progressStep") < 0 && 
+                                exist_resume_call.IndexOf("const step = hmSensor.createSensor(hmSensor.id.STEP);") < 0)
+                            {
+                                resume_call += TabInString(8) + Environment.NewLine;
+                                resume_call += TabInString(8) + "const step = hmSensor.createSensor(hmSensor.id.STEP);" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let valueStep = step.current;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let targetStep = step.target;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let progressStep = valueStep/targetStep;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "if (progressStep > 1) progressStep = 1;" + Environment.NewLine;
+                            }
+                            if (circle_scale.inversion)
+                            {
+                                resume_call += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                "step = 1 - progressStep;" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_call += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                "step = progressStep;" + Environment.NewLine;
+                            }
+                            if (optionNameStart == "normal_")
+                            {
+                                resume_call += Environment.NewLine + TabInString(8) + 
+                                    "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                resume_call += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "step");
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_call += Environment.NewLine + TabInString(8) + 
+                                    "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                resume_call += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "step");
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
+                            }
+
+
+
+
+                        }
+
+                        // Linear_Scale
+                        if (index == linearScalePosition && linear_scale != null)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "step_linear_scale = ''" + Environment.NewLine;
+                            if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "step_linear_scale_pointer_img = ''" + Environment.NewLine;
+
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (optionNameStart == "normal_")
+                                items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
+                            else items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type.AOD) {";
+
+                            items += Environment.NewLine + TabInString(7) +
+                                optionNameStart + "step_linear_scale = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+
+                            if (linear_scale.mirror)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                "step_linear_scale_mirror = ''" + Environment.NewLine;
+                                if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
+                                    variables += TabInString(4) + "let " + optionNameStart +
+                                        "step_linear_scale_pointer_img_mirror = ''" + Environment.NewLine;
+
+                                items += TabInString(7) + optionNameStart +
+                                    "step_linear_scale_mirror = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+                            }
+
+                            items += TabInString(6) + "};" + Environment.NewLine;
+
+                            items += linearScaleOptions;
+
+
+                            resume_call += Environment.NewLine + TabInString(8) + "console.log('ui resume');" + Environment.NewLine;
+                            if (resume_call.IndexOf("progressStep") < 0 &&
+                                exist_resume_call.IndexOf("const step = hmSensor.createSensor(hmSensor.id.STEP);") < 0)
+                            {
+                                resume_call += TabInString(8) + Environment.NewLine;
+                                resume_call += TabInString(8) + "const step = hmSensor.createSensor(hmSensor.id.STEP);" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let valueStep = step.current;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let targetStep = step.target;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let progressStep = valueStep/targetStep;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "if (progressStep > 1) progressStep = 1;" + Environment.NewLine;
+                            }
+                            if (linear_scale.inversion)
+                            {
+                                resume_call += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                "step = 1 - progressStep;" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_call += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                "step = progressStep;" + Environment.NewLine;
+                            }
+                            if (optionNameStart == "normal_")
+                            {
+                                resume_call += Environment.NewLine + TabInString(8) + 
+                                    "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                resume_call += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "step", show_level);
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_call += Environment.NewLine + TabInString(8) + 
+                                    "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                resume_call += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "step", show_level);
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
+                            }
+
+
+
+
+                        }
+
+                        // Icon
+                        if (index == iconPosition && iconOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "step_icon_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "step_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    iconOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+
+                    }
+                    break;
                     #endregion
             }
         }
@@ -550,6 +902,60 @@ namespace Watch_Face_Editor
             return options;
         }
 
+        private string IMG_NUMBER_Options(hmUI_widget_IMG_NUMBER img_number, string type, string show_level)
+        {
+            string options = Environment.NewLine;
+            if (img_number == null) return options;
+            if (img_number.img_First == null) return options;
+            string img = img_number.img_First;
+            if (img.Length > 0)
+            {
+                int imgPosition = ListImages.IndexOf(img);
+                if (imgPosition + 10 > ListImages.Count)
+                {
+                    MessageBox.Show(Properties.FormStrings.Message_ImageCount_Error, Properties.FormStrings.Message_Warning_Caption,
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return options;
+                }
+                string img_array = "[";
+                for (int i = imgPosition; i < imgPosition + 10; i++)
+                {
+                    string file_name = "\"" + ListImages[i] + ".png" + "\"";
+                    img_array += file_name;
+                    if (i < imgPosition + 9) img_array += ",";
+                }
+                img_array += "]";
+                options += TabInString(7) + "x: " + img_number.imageX.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "y: " + img_number.imageY.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "font_array: " + img_array + "," + Environment.NewLine;
+                if (img_number.zero) options += TabInString(7) + "padding: true," + Environment.NewLine;
+                else options += TabInString(7) + "padding: false," + Environment.NewLine;
+
+                //options += TabInString(7) + "padding: " + img_number.zero.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "h_space: " + img_number.space.ToString() + "," + Environment.NewLine;
+                if (img_number.unit != null && img_number.unit.Length > 0)
+                {
+                    string unit = "'" + img_number.unit + ".png'";
+                    options += TabInString(7) + "unit_sc: " + unit + "," + Environment.NewLine;
+                    options += TabInString(7) + "unit_tc: " + unit + "," + Environment.NewLine;
+                    options += TabInString(7) + "unit_en: " + unit + "," + Environment.NewLine;
+                }
+                options += TabInString(7) + "align_h: hmUI.align." + img_number.align.ToUpper() + "," + Environment.NewLine;
+
+
+                if (type.Length > 0)
+                {
+                    options += TabInString(7) + "type: hmUI.data_type." + type + "," + Environment.NewLine;
+                }
+
+                if (show_level.Length > 0)
+                {
+                    options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+                }
+            }
+            return options;
+        }
+
         private string IMG_NUMBER_Hour_Options(hmUI_widget_IMG_NUMBER img_number_hour, string show_level)
         {
             string options = Environment.NewLine;
@@ -563,7 +969,6 @@ namespace Watch_Face_Editor
                 {
                     MessageBox.Show(Properties.FormStrings.Message_ImageCount_Error, Properties.FormStrings.Message_Warning_Caption,
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    Console.WriteLine("IMG_NUMBER_Hour_Options");
                     return options;
                 }
                 string hour_array = "[";
@@ -611,7 +1016,6 @@ namespace Watch_Face_Editor
                 {
                     MessageBox.Show(Properties.FormStrings.Message_ImageCount_Error, Properties.FormStrings.Message_Warning_Caption,
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    Console.WriteLine("IMG_NUMBER_Minute_Options");
                     return options;
                 }
                 string minute_array = "[";
@@ -659,7 +1063,6 @@ namespace Watch_Face_Editor
                 {
                     MessageBox.Show(Properties.FormStrings.Message_ImageCount_Error, Properties.FormStrings.Message_Warning_Caption,
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    Console.WriteLine("IMG_NUMBER_Second_Options");
                     return options;
                 }
                 string second_array = "[";
@@ -809,8 +1212,8 @@ namespace Watch_Face_Editor
                 options += TabInString(7) + "src: '" + img_pointer.src + ".png'," + Environment.NewLine;
                 options += TabInString(7) + "center_x: " + img_pointer.center_x.ToString() + "," + Environment.NewLine;
                 options += TabInString(7) + "center_y: " + img_pointer.center_y.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "posX: " + img_pointer.pos_x.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "posY: " + img_pointer.pos_y.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "x: " + img_pointer.pos_x.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "y: " + img_pointer.pos_y.ToString() + "," + Environment.NewLine;
                 options += TabInString(7) + "start_angle: " + img_pointer.start_angle.ToString() + "," + Environment.NewLine;
                 options += TabInString(7) + "end_angle: " + img_pointer.end_angle.ToString() + "," + Environment.NewLine;
 
@@ -829,10 +1232,16 @@ namespace Watch_Face_Editor
                     options += TabInString(7) + "cover_x: " + img_pointer.cover_x.ToString() + "," + Environment.NewLine;
                     options += TabInString(7) + "cover_y: " + img_pointer.cover_y.ToString() + "," + Environment.NewLine;
                 }
+                //else
+                //{
+                //    options += TabInString(7) + "cover_path: ''," + Environment.NewLine;
+                //    options += TabInString(7) + "cover_x: 0," + Environment.NewLine;
+                //    options += TabInString(7) + "cover_y: 0," + Environment.NewLine;
+                //}
 
                 if (type.Length > 0)
                 {
-                    options += TabInString(7) + "type: hmUI.date." + type + "," + Environment.NewLine;
+                    options += TabInString(7) + "type: hmUI.data_type." + type + "," + Environment.NewLine;
                 }
 
                 //options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
@@ -858,7 +1267,6 @@ namespace Watch_Face_Editor
                 {
                     MessageBox.Show(Properties.FormStrings.Message_ImageCount_Error, Properties.FormStrings.Message_Warning_Caption,
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    Console.WriteLine("IMG_NUMBER_Day_Options");
                     return options;
                 }
                 string day_array = "[";
@@ -910,7 +1318,6 @@ namespace Watch_Face_Editor
                 {
                     MessageBox.Show(Properties.FormStrings.Message_ImageCount_Error, Properties.FormStrings.Message_Warning_Caption,
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    Console.WriteLine("IMG_NUMBER_Month_Options");
                     return options;
                 }
                 string month_array = "[";
@@ -962,7 +1369,6 @@ namespace Watch_Face_Editor
                 {
                     MessageBox.Show(Properties.FormStrings.Message_ImageCount_Error, Properties.FormStrings.Message_Warning_Caption,
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    Console.WriteLine("IMG_NUMBER_Year_Options");
                     return options;
                 }
                 string year_array = "[";
@@ -1014,7 +1420,6 @@ namespace Watch_Face_Editor
                 {
                     MessageBox.Show(Properties.FormStrings.Message_ImageCount_Error, Properties.FormStrings.Message_Warning_Caption,
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    Console.WriteLine("IMG_IMAGES_Month_Options");
                     return options;
                 }
                 string month_array = "[";
@@ -1055,7 +1460,6 @@ namespace Watch_Face_Editor
                 {
                     MessageBox.Show(Properties.FormStrings.Message_ImageCount_Error, Properties.FormStrings.Message_Warning_Caption,
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    Console.WriteLine("IMG_IMAGES_Week_Options");
                     return options;
                 }
                 string week_array = "[";
@@ -1080,6 +1484,547 @@ namespace Watch_Face_Editor
             return options;
         }
 
+        private string IMG_IMAGES_Options(hmUI_widget_IMG_LEVEL img_level, string type, string show_level)
+        {
+            string options = Environment.NewLine;
+            if (img_level == null) return options;
+            if (img_level.img_First == null) return options;
+            string img = img_level.img_First;
+            int count = img_level.image_length;
+            if (img.Length > 0)
+            {
+                int imgPosition = ListImages.IndexOf(img);
+                if (imgPosition + count > ListImages.Count)
+                {
+                    MessageBox.Show(Properties.FormStrings.Message_ImageCount_Error, Properties.FormStrings.Message_Warning_Caption,
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return options;
+                }
+                string img_array = "[";
+                for (int i = imgPosition; i < imgPosition + count; i++)
+                {
+                    string file_name = "\"" + ListImages[i] + ".png" + "\"";
+                    img_array += file_name;
+                    if (i < imgPosition + count - 1) img_array += ",";
+                }
+                img_array += "]";
+                options += TabInString(7) + "x: " + img_level.X.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "y: " + img_level.Y.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "image_array: " + img_array + "," + Environment.NewLine;
+                options += TabInString(7) + "image_length: " + img_level.image_length.ToString() + "," + Environment.NewLine;
+
+                if (type.Length > 0)
+                {
+                    options += TabInString(7) + "type: hmUI.data_type." + type + "," + Environment.NewLine;
+                }
+
+                if (show_level.Length > 0)
+                {
+                    options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+                }
+            }
+            return options;
+        }
+
+        private string IMG_PROGRESS_Options(hmUI_widget_IMG_PROGRESS img_progress, string type, string show_level)
+        {
+            string options = Environment.NewLine;
+            if (img_progress == null) return options;
+            if (img_progress.img_First == null) return options;
+            if (img_progress.image_length == 0) return options;
+            string img = img_progress.img_First;
+            int count = img_progress.image_length;
+            if (count != img_progress.X.Count || count != img_progress.Y.Count) return options;
+            if (img.Length > 0)
+            {
+                int imgPosition = ListImages.IndexOf(img);
+                if (imgPosition + count > ListImages.Count)
+                {
+                    MessageBox.Show(Properties.FormStrings.Message_ImageCount_Error, Properties.FormStrings.Message_Warning_Caption,
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return options;
+                }
+
+                string img_array = "[";
+                for (int i = imgPosition; i < imgPosition + count; i++)
+                {
+                    string file_name = "\"" + ListImages[i] + ".png" + "\"";
+                    img_array += file_name;
+                    if (i < imgPosition + count - 1) img_array += ",";
+                }
+                img_array += "]";
+
+                string x_array = "[";
+                string y_array = "[";
+                for (int i = 0; i < count; i++)
+                {
+                    x_array += img_progress.X[i].ToString();
+                    y_array += img_progress.Y[i].ToString();
+                    if (i < count - 1)
+                    {
+                        x_array += ",";
+                        y_array += ",";
+                    }
+                }
+                x_array += "]";
+                y_array += "]";
+
+
+                options += TabInString(7) + "x: " + x_array + "," + Environment.NewLine;
+                options += TabInString(7) + "y: " + y_array + "," + Environment.NewLine;
+                options += TabInString(7) + "image_array: " + img_array + "," + Environment.NewLine;
+                options += TabInString(7) + "image_length: " + img_progress.image_length.ToString() + "," + Environment.NewLine;
+
+                if (type.Length > 0)
+                {
+                    options += TabInString(7) + "type: hmUI.data_type." + type + "," + Environment.NewLine;
+                }
+
+                if (show_level.Length > 0)
+                {
+                    options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+                }
+            }
+            return options;
+        }
+
+        private string Circle_Scale_Options(Circle_Scale circle_scale, string optionNameStart, string type, string show_level)
+        {
+            string options = Environment.NewLine;
+            options += TabInString(6) + "// " + optionNameStart + type.ToLower() + 
+                "_circle_scale = hmUI.createWidget(hmUI.widget.Circle_Scale, {" + Environment.NewLine;
+            options += TabInString(7) + "// center_x: " + circle_scale.center_x.ToString() + "," + Environment.NewLine;
+            options += TabInString(7) + "// center_y: " + circle_scale.center_y.ToString() + "," + Environment.NewLine;
+            options += TabInString(7) + "// radius: " + circle_scale.radius.ToString() + "," + Environment.NewLine;
+            options += TabInString(7) + "// line_width: " + circle_scale.line_width.ToString() + "," + Environment.NewLine;
+            options += TabInString(7) + "// color: " + circle_scale.color + "," + Environment.NewLine;
+            options += TabInString(7) + "// mirror: " + circle_scale.mirror.ToString() + "," + Environment.NewLine;
+            options += TabInString(7) + "// inversion: " + circle_scale.inversion.ToString() + "," + Environment.NewLine;
+            options += TabInString(7) + "// type: hmUI.data_type." + type.ToUpper() + "," + Environment.NewLine; 
+            options += TabInString(7) + "// show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+            options += TabInString(6) + "// });" + Environment.NewLine;
+
+            return options;
+        }
+
+        private string Linear_Scale_Options(Linear_Scale linear_scale, string optionNameStart, string type, string show_level)
+        {
+            string options = Environment.NewLine;
+            if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
+            {
+                options += TabInString(6) + "" + optionNameStart + type.ToLower() +
+                "_linear_scale_pointer_img = hmUI.createWidget(hmUI.widget.IMG);" + Environment.NewLine;
+                if (linear_scale.mirror)
+                {
+                    options += TabInString(6) + "" + optionNameStart + type.ToLower() +
+                "_linear_scale_pointer_img_mirror = hmUI.createWidget(hmUI.widget.IMG);" + Environment.NewLine;
+                }
+            }
+            options += TabInString(6) + "// " + optionNameStart + type.ToLower() +
+                "_linear_scale = hmUI.createWidget(hmUI.widget.Linear_Scale, {" + Environment.NewLine;
+            options += TabInString(7) + "// start_x: " + linear_scale.start_x.ToString() + "," + Environment.NewLine;
+            options += TabInString(7) + "// start_y: " + linear_scale.start_y.ToString() + "," + Environment.NewLine;
+            options += TabInString(7) + "// color: " + linear_scale.color + "," + Environment.NewLine;
+            if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
+                options += TabInString(7) + "// pointer: '" + linear_scale.pointer + ".png'," + Environment.NewLine;
+            options += TabInString(7) + "// lenght: " + linear_scale.lenght.ToString() + "," + Environment.NewLine;
+            options += TabInString(7) + "// line_width: " + linear_scale.line_width.ToString() + "," + Environment.NewLine;
+            options += TabInString(7) + "// vertical: " + linear_scale.vertical.ToString() + "," + Environment.NewLine;
+            options += TabInString(7) + "// mirror: " + linear_scale.mirror.ToString() + "," + Environment.NewLine;
+            options += TabInString(7) + "// inversion: " + linear_scale.inversion.ToString() + "," + Environment.NewLine;
+            options += TabInString(7) + "// type: hmUI.data_type." + type.ToUpper() + "," + Environment.NewLine;
+            options += TabInString(7) + "// show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+            options += TabInString(6) + "// });" + Environment.NewLine;
+
+            return options;
+        }
+
+        private string Circle_Scale_WidgetDelegate_Options(Circle_Scale circle_scale, string optionNameStart, string type)
+        {
+            string options = Environment.NewLine;
+            options += TabInString(8) + "// " + optionNameStart + type + "_circle_scale" + Environment.NewLine;
+
+            // исходные параметры
+            int start_angle = circle_scale.start_angle - 90;
+            int end_angle = circle_scale.end_angle - 90;
+            if (circle_scale.inversion)
+            {
+                start_angle = circle_scale.end_angle - 90;
+                end_angle = circle_scale.start_angle - 90;
+            }
+            int center_x = circle_scale.center_x;
+            int center_y = circle_scale.center_y;
+            int radius = circle_scale.radius;
+            int line_width = circle_scale.line_width;
+            string color = circle_scale.color;
+
+            options += TabInString(9) + "// initial parameters" + Environment.NewLine;
+            options += TabInString(9) + "let start_angle_" + optionNameStart + type + " = " +
+                start_angle.ToString() + ";" + Environment.NewLine;
+            options += TabInString(9) + "let end_angle_" + optionNameStart + type + " = " +
+                end_angle.ToString() + ";" + Environment.NewLine;
+            options += TabInString(9) + "let center_x_" + optionNameStart + type + " = " +
+                center_x.ToString() + ";" + Environment.NewLine;
+            options += TabInString(9) + "let center_y_" + optionNameStart + type + " = " +
+                center_y.ToString() + ";" + Environment.NewLine;
+            options += TabInString(9) + "let radius_" + optionNameStart + type + " = " +
+                radius.ToString() + ";" + Environment.NewLine;
+            options += TabInString(9) + "let line_width_cs_" + optionNameStart + type + " = " +
+                line_width.ToString() + ";" + Environment.NewLine;
+            options += TabInString(9) + "let color_cs_" + optionNameStart + type + " = " +
+                color + ";" + Environment.NewLine;
+
+            // расчетные параметры
+            options += TabInString(9) + Environment.NewLine;
+            options += TabInString(9) + "// calculated parameters" + Environment.NewLine;
+            options += TabInString(9) + "let arcX_" + optionNameStart + type + " = center_x_" + optionNameStart + 
+                type + " - radius_" + optionNameStart + type + ";" + Environment.NewLine;
+            options += TabInString(9) + "let arcY_" + optionNameStart + type + " = center_y_" + optionNameStart +
+                type + " - radius_" + optionNameStart + type + ";" + Environment.NewLine;
+            options += TabInString(9) + "let CircleWidth_" + optionNameStart + type + " = 2 * radius_" + 
+                optionNameStart + type + ";" + Environment.NewLine;
+
+            options += TabInString(9) + "let angle_offset_" + optionNameStart + type + " = end_angle_" + optionNameStart + 
+                type + " - start_angle_" + optionNameStart + type + ";" + Environment.NewLine;
+            options += TabInString(9) + "angle_offset_" + optionNameStart + type + " = angle_offset_" + optionNameStart + 
+                type + " * progress_cs_" + optionNameStart + type + ";" + Environment.NewLine;
+            options += TabInString(9) + "let end_angle_" + optionNameStart + type + "_draw = start_angle_" + optionNameStart + 
+                type + " + angle_offset_" + optionNameStart + type + ";" + Environment.NewLine;
+            options += TabInString(9) + Environment.NewLine;
+            options += TabInString(8) + optionNameStart + type + "_circle_scale.setProperty(hmUI.prop.MORE, {" + Environment.NewLine;
+            options += TabInString(10) + "x: arcX_" + optionNameStart + type + "," + Environment.NewLine;
+            options += TabInString(10) + "y: arcY_" + optionNameStart + type + "," + Environment.NewLine;
+            options += TabInString(10) + "w: CircleWidth_" + optionNameStart + type + "," + Environment.NewLine;
+            options += TabInString(10) + "h: CircleWidth_" + optionNameStart + type + "," + Environment.NewLine;
+            options += TabInString(10) + "start_angle: start_angle_" + optionNameStart + type + "," + Environment.NewLine;
+            options += TabInString(10) + "end_angle: end_angle_" + optionNameStart + type + "_draw," + Environment.NewLine;
+            options += TabInString(10) + "color: color_cs_" + optionNameStart + type + "," + Environment.NewLine;
+            options += TabInString(10) + "line_width: line_width_cs_" + optionNameStart + type + "," + Environment.NewLine;
+            options += TabInString(9) + "});" + Environment.NewLine;
+
+            if (circle_scale.mirror)
+            {
+                options += TabInString(9) + Environment.NewLine;
+                options += TabInString(9) + "// " + optionNameStart + type + "_circle_scale_mirror" + Environment.NewLine;
+
+                // исходные параметры
+                start_angle = circle_scale.start_angle - 90;
+                end_angle = circle_scale.end_angle - 90;
+                int anglOffset = end_angle - start_angle;
+                end_angle = start_angle - anglOffset;
+                if (circle_scale.inversion)
+                {
+                    int temp = start_angle;
+                    start_angle = end_angle;
+                    end_angle = temp;
+                }
+
+                options += TabInString(9) + "// initial parameters mirror" + Environment.NewLine;
+                options += TabInString(9) + "let start_angle_" + optionNameStart + type + "_mirror = " +
+                    start_angle.ToString() + ";" + Environment.NewLine;
+                options += TabInString(9) + "let end_angle_" + optionNameStart + type + "_mirror = " +
+                    end_angle.ToString() + ";" + Environment.NewLine;
+
+                // расчетные параметры
+                options += TabInString(9) + Environment.NewLine;
+                options += TabInString(9) + "// calculated parameters mirror" + Environment.NewLine;
+
+                options += TabInString(9) + "let angle_offset_" + optionNameStart + type + "_mirror = end_angle_" + 
+                    optionNameStart + type + "_mirror - start_angle_" + optionNameStart + type + "_mirror;" + 
+                    Environment.NewLine;
+                options += TabInString(9) + "angle_offset_" + optionNameStart + type + "_mirror = angle_offset_" + 
+                    optionNameStart + type + "_mirror * progress_cs_" + optionNameStart + type + ";" + Environment.NewLine;
+                options += TabInString(9) + "let end_angle_" + optionNameStart + type + "_draw_mirror = start_angle_" + 
+                    optionNameStart + type + "_mirror + angle_offset_" + optionNameStart + type + "_mirror;" + 
+                    Environment.NewLine;
+                options += TabInString(9) + Environment.NewLine;
+                options += TabInString(9) + optionNameStart + type + "_circle_scale_mirror.setProperty(hmUI.prop.MORE, {" + Environment.NewLine;
+                options += TabInString(10) + "x: arcX_" + optionNameStart + type + "," + Environment.NewLine;
+                options += TabInString(10) + "y: arcY_" + optionNameStart + type + "," + Environment.NewLine;
+                options += TabInString(10) + "w: CircleWidth_" + optionNameStart + type + "," + Environment.NewLine;
+                options += TabInString(10) + "h: CircleWidth_" + optionNameStart + type + "," + Environment.NewLine;
+                options += TabInString(10) + "start_angle: start_angle_" + optionNameStart + type + "_mirror," + Environment.NewLine;
+                options += TabInString(10) + "end_angle: end_angle_" + optionNameStart + type + "_draw_mirror," + Environment.NewLine;
+                options += TabInString(10) + "color: color_cs_" + optionNameStart + type + "," + Environment.NewLine;
+                options += TabInString(10) + "line_width: line_width_cs_" + optionNameStart + type + "," + Environment.NewLine;
+                options += TabInString(9) + "});" + Environment.NewLine;
+            }
+
+            return options;
+        }
+
+        private string Linear_Scale_WidgetDelegate_Options(Linear_Scale linear_scale, string optionNameStart, string type, string show_level)
+        {
+            string options = Environment.NewLine;
+            options += TabInString(8) + "// " + optionNameStart + type + "_linear_scale" + Environment.NewLine;
+
+            // исходные параметры
+            int start_x = linear_scale.start_x;
+            int start_y = linear_scale.start_y;
+            int lenght = linear_scale.lenght;
+            if (linear_scale.inversion)
+            {
+                if (linear_scale.vertical)
+                {
+                    start_y = start_y + lenght;
+                    lenght = -lenght;
+                }
+                else
+                {
+                    start_x = start_x + lenght;
+                    lenght = -lenght;
+                }
+            }
+            int line_width = linear_scale.line_width;
+            string color = linear_scale.color;
+
+            options += TabInString(9) + "// initial parameters" + Environment.NewLine;
+            options += TabInString(9) + "let start_x_" + optionNameStart + type + " = " +
+                start_x.ToString() + ";" + Environment.NewLine;
+            options += TabInString(9) + "let start_y_" + optionNameStart + type + " = " +
+                start_y.ToString() + ";" + Environment.NewLine;
+            options += TabInString(9) + "let lenght_ls_" + optionNameStart + type + " = " +
+                lenght.ToString() + ";" + Environment.NewLine;
+            options += TabInString(9) + "let line_width_ls_" + optionNameStart + type + " = " +
+                line_width.ToString() + ";" + Environment.NewLine;
+            options += TabInString(9) + "let color_ls_" + optionNameStart + type + " = " +
+                color + ";" + Environment.NewLine;
+
+            // расчетные параметры
+            options += TabInString(9) + Environment.NewLine;
+            options += TabInString(9) + "// calculated parameters" + Environment.NewLine;
+            options += TabInString(9) + "let start_x_" + optionNameStart + type +
+                "_draw = start_x_" + optionNameStart + type + ";" + Environment.NewLine;
+            options += TabInString(9) + "let start_y_" + optionNameStart + type +
+                "_draw = start_y_" + optionNameStart + type + ";" + Environment.NewLine;
+            options += TabInString(9) + "lenght_ls_" + optionNameStart + type +
+                " = lenght_ls_" + optionNameStart + type + " * progress_ls_" + optionNameStart + type + ";" + Environment.NewLine;
+
+            if (linear_scale.vertical)
+            {
+                options += TabInString(8) + "let lenght_ls_" + optionNameStart + type +
+                "_draw = line_width_ls_" + optionNameStart + type + ";" + Environment.NewLine;
+                options += TabInString(8) + "let line_width_ls_" + optionNameStart + type +
+                "_draw = lenght_ls_" + optionNameStart + type + ";" + Environment.NewLine;
+
+                options += TabInString(8) + "if (lenght_ls_" + optionNameStart + type + " < 0){" + Environment.NewLine;
+                options += TabInString(9) + "line_width_ls_" + optionNameStart + type + "_draw = -lenght_ls_" + 
+                    optionNameStart + type + ";" + Environment.NewLine;
+                options += TabInString(9) + "start_y_" + optionNameStart + type +
+                    "_draw = start_y_" + optionNameStart + type + "_draw - line_width_ls_" + 
+                    optionNameStart + type + "_draw;" + Environment.NewLine;
+                options += TabInString(8) + "};" + Environment.NewLine;
+            }
+            else
+            {
+                options += TabInString(8) + "let lenght_ls_" + optionNameStart + type +
+                    "_draw = lenght_ls_" + optionNameStart + type + ";" + Environment.NewLine;
+                options += TabInString(8) + "let line_width_ls_" + optionNameStart + type +
+                    "_draw = line_width_ls_" + optionNameStart + type + ";" + Environment.NewLine;
+
+                options += TabInString(8) + "if (lenght_ls_" + optionNameStart + type + " < 0){" + Environment.NewLine;
+                options += TabInString(9) + "lenght_ls_" + optionNameStart + type +
+                    "_draw = -lenght_ls_" + optionNameStart + type + ";" + Environment.NewLine;
+                options += TabInString(9) + "start_x_" + optionNameStart + type + "_draw = start_x_" + 
+                    optionNameStart + type + " - lenght_ls_" + optionNameStart + type + "_draw;" + Environment.NewLine;
+                options += TabInString(8) + "};" + Environment.NewLine;
+            }
+
+            options += TabInString(9) + Environment.NewLine;
+            options += TabInString(9) + optionNameStart + type + "_linear_scale.setProperty(hmUI.prop.MORE, {" + Environment.NewLine;
+            options += TabInString(10) + "x: start_x_" + optionNameStart + type + "_draw," + Environment.NewLine;
+            options += TabInString(10) + "y: start_y_" + optionNameStart + type + "_draw," + Environment.NewLine;
+            options += TabInString(10) + "w: lenght_ls_" + optionNameStart + type + "_draw," + Environment.NewLine;
+            options += TabInString(10) + "h: line_width_ls_" + optionNameStart + type + "_draw," + Environment.NewLine;
+            options += TabInString(10) + "color: color_ls_" + optionNameStart + type + "," + Environment.NewLine;
+            options += TabInString(9) + "});" + Environment.NewLine;
+
+
+            if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
+            {
+                int pointer_index = ListImages.IndexOf(linear_scale.pointer);
+                if (pointer_index >= 0)
+                {
+                    System.Drawing.Bitmap src = OpenFileStream(ListImagesFullName[pointer_index]);
+                    int pointer_offset_x = src.Width / 2;
+                    int pointer_offset_y = src.Height / 2;
+
+                    options += TabInString(8) + Environment.NewLine;
+                    options += TabInString(8) + "// pointers parameters" + Environment.NewLine;
+                    options += TabInString(8) + "let pointer_offset_x_ls_" + optionNameStart + type + " = " +
+                        pointer_offset_x.ToString() + ";" + Environment.NewLine;
+                    options += TabInString(8) + "let pointer_offset_y_ls_" + optionNameStart + type + " = " +
+                        pointer_offset_y.ToString() + ";" + Environment.NewLine;
+
+
+                    options += TabInString(8) + "" + optionNameStart + type +
+                        "_linear_scale_pointer_img.setProperty(hmUI.prop.MORE, {" + Environment.NewLine;
+                    if (linear_scale.vertical)
+                    {
+                        options += TabInString(9) + "x: start_x_" + optionNameStart + type + 
+                            "_draw + line_width_ls_" + optionNameStart + type + 
+                            " / 2 - pointer_offset_x_ls_" + optionNameStart + type + "," + Environment.NewLine;
+                        options += TabInString(9) + "y: start_y_" + optionNameStart + type +
+                            " + lenght_ls_" + optionNameStart + type + " - pointer_offset_y_ls_" + 
+                            optionNameStart + type + "," + Environment.NewLine;
+                    }
+                    else
+                    {
+
+                        options += TabInString(9) + "x: start_x_" + optionNameStart + type +
+                            " + lenght_ls_" + optionNameStart + type + " - pointer_offset_x_ls_" + 
+                            optionNameStart + type + "," + Environment.NewLine;
+                        options += TabInString(9) + "y: start_y_" + optionNameStart + type +
+                            "_draw + line_width_ls_" + optionNameStart + type + " / 2 - pointer_offset_y_ls_" + 
+                            optionNameStart + type + "," + Environment.NewLine;
+                    }
+                    options += TabInString(9) + "src: '" + linear_scale.pointer + ".png'," + Environment.NewLine;
+                    if (show_level.Length > 0)
+                    {
+                        options += TabInString(9) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+                    }
+                    options += TabInString(8) + "});" + Environment.NewLine;
+                }
+            }
+
+            // зеркальная шкала
+            if (linear_scale.mirror)
+            {
+                options += TabInString(9) + Environment.NewLine;
+                options += TabInString(9) + "// " + optionNameStart + type + "_linear_scale_mirror" + Environment.NewLine;
+
+                // исходные параметры
+                start_x = linear_scale.start_x;
+                start_y = linear_scale.start_y;
+                lenght = - linear_scale.lenght;
+                if (linear_scale.inversion)
+                {
+                    if (linear_scale.vertical)
+                    {
+                        start_y = start_y + lenght;
+                        lenght = -lenght;
+                    }
+                    else
+                    {
+                        start_x = start_x + lenght;
+                        lenght = -lenght;
+                    }
+                }
+                //line_width = linear_scale.line_width;
+                //color = linear_scale.color;
+
+                options += TabInString(9) + "// initial parameters" + Environment.NewLine;
+                options += TabInString(9) + "let start_x_" + optionNameStart + type + "_mirror = " +
+                    start_x.ToString() + ";" + Environment.NewLine;
+                options += TabInString(9) + "let start_y_" + optionNameStart + type + "_mirror = " +
+                    start_y.ToString() + ";" + Environment.NewLine;
+                options += TabInString(9) + "let lenght_ls_" + optionNameStart + type + "_mirror = " +
+                    lenght.ToString() + ";" + Environment.NewLine;
+                options += TabInString(9) + "let line_width_ls_" + optionNameStart + type + "_mirror ="  +
+                    line_width.ToString() + ";" + Environment.NewLine;
+                options += TabInString(9) + "let color_ls_" + optionNameStart + type + "_mirror = " +
+                    color + ";" + Environment.NewLine;
+
+                // расчетные параметры
+                options += TabInString(9) + Environment.NewLine;
+                options += TabInString(9) + "// calculated parameters" + Environment.NewLine;
+                options += TabInString(9) + "let start_x_" + optionNameStart + type +
+                    "_draw_mirror = start_x_" + optionNameStart + type + "_mirror;" + Environment.NewLine;
+                options += TabInString(9) + "let start_y_" + optionNameStart + type +
+                    "_draw_mirror = start_y_" + optionNameStart + type + "_mirror;" + Environment.NewLine;
+                options += TabInString(9) + "lenght_ls_" + optionNameStart + type +
+                    "_mirror = lenght_ls_" + optionNameStart + type + "_mirror * progress_ls_" + optionNameStart + type + ";" + Environment.NewLine;
+
+                if (linear_scale.vertical)
+                {
+                    options += TabInString(9) + "let lenght_ls_" + optionNameStart + type +
+                    "_draw_mirror = line_width_ls_" + optionNameStart + type + "_mirror;" + Environment.NewLine;
+                    options += TabInString(9) + "let line_width_ls_" + optionNameStart + type +
+                    "_draw_mirror = lenght_ls_" + optionNameStart + type + "_mirror;" + Environment.NewLine;
+
+                    options += TabInString(9) + "if (lenght_ls_" + optionNameStart + type + "_mirror < 0){" + Environment.NewLine;
+                    options += TabInString(10) + "line_width_ls_" + optionNameStart + type + "_draw_mirror = -lenght_ls_" +
+                        optionNameStart + type + "_mirror;" + Environment.NewLine;
+                    options += TabInString(10) + "start_y_" + optionNameStart + type +
+                        "_draw_mirror = start_y_" + optionNameStart + type + "_draw - line_width_ls_" +
+                        optionNameStart + type + "_draw_mirror;" + Environment.NewLine;
+                    options += TabInString(9) + "};" + Environment.NewLine;
+                }
+                else
+                {
+                    options += TabInString(9) + "let lenght_ls_" + optionNameStart + type +
+                        "_draw_mirror = lenght_ls_" + optionNameStart + type + "_mirror;" + Environment.NewLine;
+                    options += TabInString(9) + "let line_width_ls_" + optionNameStart + type +
+                        "_draw_mirror = line_width_ls_" + optionNameStart + type + "_mirror;" + Environment.NewLine;
+
+                    options += TabInString(9) + "if (lenght_ls_" + optionNameStart + type + "_mirror < 0){" + Environment.NewLine;
+                    options += TabInString(10) + "lenght_ls_" + optionNameStart + type +
+                        "_draw_mirror = -lenght_ls_" + optionNameStart + type + "_mirror;" + Environment.NewLine;
+                    options += TabInString(10) + "start_x_" + optionNameStart + type + "_draw_mirror = start_x_" +
+                        optionNameStart + type + " - lenght_ls_" + optionNameStart + type + "_draw_mirror;" + Environment.NewLine;
+                    options += TabInString(9) + "};" + Environment.NewLine;
+                }
+
+                options += TabInString(9) + Environment.NewLine;
+                options += TabInString(9) + optionNameStart + type + "_linear_scale_mirror.setProperty(hmUI.prop.MORE, {" + Environment.NewLine;
+                options += TabInString(10) + "x: start_x_" + optionNameStart + type + "_draw_mirror," + Environment.NewLine;
+                options += TabInString(10) + "y: start_y_" + optionNameStart + type + "_draw_mirror," + Environment.NewLine;
+                options += TabInString(10) + "w: lenght_ls_" + optionNameStart + type + "_draw_mirror," + Environment.NewLine;
+                options += TabInString(10) + "h: line_width_ls_" + optionNameStart + type + "_draw_mirror," + Environment.NewLine;
+                options += TabInString(10) + "color: color_ls_" + optionNameStart + type + "," + Environment.NewLine;
+                options += TabInString(9) + "});" + Environment.NewLine;
+
+
+                if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
+                {
+                    int pointer_index = ListImages.IndexOf(linear_scale.pointer);
+                    if (pointer_index >= 0)
+                    {
+                        System.Drawing.Bitmap src = OpenFileStream(ListImagesFullName[pointer_index]);
+                        int pointer_offset_x = src.Width / 2;
+                        int pointer_offset_y = src.Height / 2;
+
+                        options += TabInString(8) + Environment.NewLine;
+                        options += TabInString(8) + "// pointers parameters" + Environment.NewLine;
+                        options += TabInString(8) + "let pointer_offset_x_ls_" + optionNameStart + type + "_mirror = " +
+                            pointer_offset_x.ToString() + ";" + Environment.NewLine;
+                        options += TabInString(8) + "let pointer_offset_y_ls_" + optionNameStart + type + "_mirror = " +
+                            pointer_offset_y.ToString() + ";" + Environment.NewLine;
+
+
+                        options += TabInString(8) + "" + optionNameStart + type +
+                            "_linear_scale_pointer_img_mirror.setProperty(hmUI.prop.MORE, {" + Environment.NewLine;
+                        if (linear_scale.vertical)
+                        {
+                            options += TabInString(9) + "x: start_x_" + optionNameStart + type +
+                                "_draw_mirror + line_width_ls_" + optionNameStart + type +
+                                "_mirror / 2 - pointer_offset_x_ls_" + optionNameStart + type + "_mirror," + Environment.NewLine;
+                            options += TabInString(9) + "y: start_y_" + optionNameStart + type +
+                                "_mirror + lenght_ls_" + optionNameStart + type + "_mirror - pointer_offset_y_ls_" +
+                                optionNameStart + type + "_mirror," + Environment.NewLine;
+                        }
+                        else
+                        {
+
+                            options += TabInString(9) + "x: start_x_" + optionNameStart + type +
+                                "_mirror + lenght_ls_" + optionNameStart + type + "_mirror - pointer_offset_x_ls_" +
+                                optionNameStart + type + "_mirror," + Environment.NewLine;
+                            options += TabInString(9) + "y: start_y_" + optionNameStart + type +
+                                "_draw_mirror + line_width_ls_" + optionNameStart + type + "_mirror / 2 - pointer_offset_y_ls_" +
+                                optionNameStart + type + "_mirror," + Environment.NewLine;
+                        }
+                        options += TabInString(9) + "src: '" + linear_scale.pointer + ".png'," + Environment.NewLine;
+                        if (show_level.Length > 0)
+                        {
+                            options += TabInString(9) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+                        }
+                        options += TabInString(8) + "});" + Environment.NewLine;
+                    }
+                }
+            }
+
+            return options;
+        }
 
 
 
@@ -1155,80 +2100,138 @@ namespace Watch_Face_Editor
                                 //if (elementsList != null) elementsList.Add(img);
                             }
 
-                            if (objectName.EndsWith("hour_separator_img"))
+                            if (objectName.EndsWith("separator_img"))
                             {
-                                ElementDigitalTime digitalTime = null;
-                                digitalTime = (ElementDigitalTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDigitalTime");
-                                if(digitalTime != null && digitalTime.Hour != null)
+                                if (objectName.EndsWith("hour_separator_img"))
                                 {
-                                    digitalTime.Hour.icon = img.src;
-                                    digitalTime.Hour.iconPosX = img.x;
-                                    digitalTime.Hour.iconPosY = img.y;
+                                    ElementDigitalTime digitalTime = null;
+                                    digitalTime = (ElementDigitalTime)elementsList.Find(e => e.GetType().Name == "ElementDigitalTime");
+                                    if (digitalTime != null && digitalTime.Hour != null)
+                                    {
+                                        digitalTime.Hour.icon = img.src;
+                                        digitalTime.Hour.iconPosX = img.x;
+                                        digitalTime.Hour.iconPosY = img.y;
+                                    }
+                                }
+
+                                if (objectName.EndsWith("minute_separator_img"))
+                                {
+                                    ElementDigitalTime digitalTime = null;
+                                    digitalTime = (ElementDigitalTime)elementsList.Find(e => e.GetType().Name == "ElementDigitalTime");
+                                    if (digitalTime != null && digitalTime.Minute != null)
+                                    {
+                                        digitalTime.Minute.icon = img.src;
+                                        digitalTime.Minute.iconPosX = img.x;
+                                        digitalTime.Minute.iconPosY = img.y;
+                                    }
+                                }
+
+                                if (objectName.EndsWith("second_separator_img"))
+                                {
+                                    ElementDigitalTime digitalTime = null;
+                                    digitalTime = (ElementDigitalTime)elementsList.Find(e => e.GetType().Name == "ElementDigitalTime");
+                                    if (digitalTime != null && digitalTime.Second != null)
+                                    {
+                                        digitalTime.Second.icon = img.src;
+                                        digitalTime.Second.iconPosX = img.x;
+                                        digitalTime.Second.iconPosY = img.y;
+                                    }
+                                }
+
+                                if (objectName.EndsWith("day_separator_img"))
+                                {
+                                    ElementDateDay dateDay = null;
+                                    dateDay = (ElementDateDay)elementsList.Find(e => e.GetType().Name == "ElementDateDay");
+                                    if (dateDay != null && dateDay.Number != null)
+                                    {
+                                        dateDay.Number.icon = img.src;
+                                        dateDay.Number.iconPosX = img.x;
+                                        dateDay.Number.iconPosY = img.y;
+                                    }
+                                }
+
+                                if (objectName.EndsWith("month_separator_img"))
+                                {
+                                    ElementDateMonth dateMonth = null;
+                                    dateMonth = (ElementDateMonth)elementsList.Find(e => e.GetType().Name == "ElementDateMonth");
+                                    if (dateMonth != null && dateMonth.Number != null)
+                                    {
+                                        dateMonth.Number.icon = img.src;
+                                        dateMonth.Number.iconPosX = img.x;
+                                        dateMonth.Number.iconPosY = img.y;
+                                    }
+                                }
+
+                                if (objectName.EndsWith("year_separator_img"))
+                                {
+                                    ElementDateYear dateYear = null;
+                                    dateYear = (ElementDateYear)elementsList.Find(e => e.GetType().Name == "ElementDateYear");
+                                    if (dateYear != null && dateYear.Number != null)
+                                    {
+                                        dateYear.Number.icon = img.src;
+                                        dateYear.Number.iconPosX = img.x;
+                                        dateYear.Number.iconPosY = img.y;
+                                    }
+                                }
+
+                                if (objectName.EndsWith("step_current_separator_img"))
+                                {
+                                    ElementSteps steps = null;
+                                    steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
+                                    if (steps != null && steps.Number != null)
+                                    {
+                                        steps.Number.icon = img.src;
+                                        steps.Number.iconPosX = img.x;
+                                        steps.Number.iconPosY = img.y;
+                                    }
+                                }
+
+                                if (objectName.EndsWith("step_target_separator_img"))
+                                {
+                                    ElementSteps steps = null;
+                                    steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
+                                    if (steps != null && steps.Number_Target != null)
+                                    {
+                                        steps.Number_Target.icon = img.src;
+                                        steps.Number_Target.iconPosX = img.x;
+                                        steps.Number_Target.iconPosY = img.y;
+                                    }
                                 }
                             }
 
-                            if (objectName.EndsWith("minute_separator_img"))
+                            if (objectName.EndsWith("icon_img"))
                             {
-                                ElementDigitalTime digitalTime = null;
-                                digitalTime = (ElementDigitalTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDigitalTime");
-                                if (digitalTime != null && digitalTime.Minute != null)
+                                if (objectName.EndsWith("step_icon_img"))
                                 {
-                                    digitalTime.Minute.icon = img.src;
-                                    digitalTime.Minute.iconPosX = img.x;
-                                    digitalTime.Minute.iconPosY = img.y;
-                                }
-                            }
+                                    ElementSteps steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
+                                    if(steps == null)
+                                    {
+                                        elementsList.Add(new ElementSteps()); 
+                                        steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
+                                    }
+                                    if (steps != null)
+                                    {
+                                        int offset = 1;
+                                        if (steps.Images != null) offset++;
+                                        if (steps.Segments != null) offset++;
+                                        if (steps.Number != null) offset++;
+                                        if (steps.Number_Target != null) offset++;
+                                        if (steps.Pointer != null) offset++;
+                                        if (steps.Circle_Scale != null) offset++;
+                                        if (steps.Linear_Scale != null) offset++;
 
-                            if (objectName.EndsWith("second_separator_img"))
-                            {
-                                ElementDigitalTime digitalTime = null;
-                                digitalTime = (ElementDigitalTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDigitalTime");
-                                if (digitalTime != null && digitalTime.Second != null)
-                                {
-                                    digitalTime.Second.icon = img.src;
-                                    digitalTime.Second.iconPosX = img.x;
-                                    digitalTime.Second.iconPosY = img.y;
-                                }
-                            }
-
-                            if (objectName.EndsWith("day_separator_img"))
-                            {
-                                ElementDateDay dateDay = null;
-                                dateDay = (ElementDateDay)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDateDay");
-                                if (dateDay != null && dateDay.Number != null)
-                                {
-                                    dateDay.Number.icon = img.src;
-                                    dateDay.Number.iconPosX = img.x;
-                                    dateDay.Number.iconPosY = img.y;
-                                }
-                            }
-
-                            if (objectName.EndsWith("month_separator_img"))
-                            {
-                                ElementDateMonth dateMonth = null;
-                                dateMonth = (ElementDateMonth)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDateMonth");
-                                if (dateMonth != null && dateMonth.Number != null)
-                                {
-                                    dateMonth.Number.icon = img.src;
-                                    dateMonth.Number.iconPosX = img.x;
-                                    dateMonth.Number.iconPosY = img.y;
-                                }
-                            }
-
-                            if (objectName.EndsWith("year_separator_img"))
-                            {
-                                ElementDateYear dateYear = null;
-                                dateYear = (ElementDateYear)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDateYear");
-                                if (dateYear != null && dateYear.Number != null)
-                                {
-                                    dateYear.Number.icon = img.src;
-                                    dateYear.Number.iconPosX = img.x;
-                                    dateYear.Number.iconPosY = img.y;
+                                        steps.Icon = new hmUI_widget_IMG();
+                                        steps.Icon.src = img.src;
+                                        steps.Icon.x = img.x;
+                                        steps.Icon.y = img.y;
+                                        steps.Icon.visible = true;
+                                        steps.Icon.position = offset;
+                                    }
                                 }
                             }
 
 
-                            break;
+                        break;
                         #endregion
 
                         #region FILL_RECT
@@ -1526,36 +2529,6 @@ namespace Watch_Face_Editor
                                     //newPointer = dateWeek.Pointer;
                                 }
                             }
-
-                            //if (newPointer != null) 
-                            //{
-                            //    newPointer.src = img_pointer.src;
-                            //    newPointer.center_x = img_pointer.center_x;
-                            //    newPointer.center_y = img_pointer.center_y;
-                            //    newPointer.pos_x = img_pointer.pos_x;
-                            //    newPointer.pos_y = img_pointer.pos_y;
-
-                            //    newPointer.start_angle = img_pointer.start_angle;
-                            //    newPointer.end_angle = img_pointer.end_angle;
-
-                            //    newPointer.cover_path = img_pointer.cover_path;
-                            //    newPointer.cover_x = img_pointer.cover_x;
-                            //    newPointer.cover_y = img_pointer.cover_y;
-
-                            //    newPointer.scale = img_pointer.scale;
-                            //    newPointer.scale_x = img_pointer.scale_x;
-                            //    newPointer.scale_y = img_pointer.scale_y;
-
-                            //    newPointer.type = img_pointer.type;
-                            //    newPointer.position = offsetPointer;
-                            //    newPointer.visible = true;
-                            //}
-
-
-
-
-
-
                             break;
                         #endregion
 
@@ -1590,6 +2563,112 @@ namespace Watch_Face_Editor
                                     dateWeek.Images = imgWeek;
                                 }
                             }
+
+                            break;
+                        #endregion
+
+                        #region IMG_LEVEL
+                        case "IMG_LEVEL":
+                            hmUI_widget_IMG_LEVEL imgLevel = Object_IMG_LEVEL(parametrs);
+                            elementsList = null;
+                            if (imgLevel.show_level == "ONLY_NORMAL" || objectName.StartsWith("normal"))
+                            {
+                                if (Watch_Face.ScreenNormal.Elements == null)
+                                    Watch_Face.ScreenNormal.Elements = new List<object>();
+                                elementsList = Watch_Face.ScreenNormal.Elements;
+                            }
+                            else if (imgLevel.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
+                            {
+                                if (Watch_Face.ScreenAOD.Elements == null)
+                                    Watch_Face.ScreenAOD.Elements = new List<object>();
+                                elementsList = Watch_Face.ScreenAOD.Elements;
+                            }
+
+                            if (elementsList != null && imgLevel.type == "STEP")
+                                //if (objectName.EndsWith("step_image_progress_img_level"))
+                                {
+                                ElementSteps steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
+                                if (steps == null)
+                                {
+                                    elementsList.Add(new ElementSteps());
+                                    steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
+                                }
+                                if (steps != null)
+                                {
+                                    int offset = 1;
+                                    //if (steps.Images != null) offset++;
+                                    if (steps.Segments != null) offset++;
+                                    if (steps.Number != null) offset++;
+                                    if (steps.Number_Target != null) offset++;
+                                    if (steps.Pointer != null) offset++;
+                                    if (steps.Circle_Scale != null) offset++;
+                                    if (steps.Linear_Scale != null) offset++;
+                                    if (steps.Icon != null) offset++;
+
+                                    steps.Images = new hmUI_widget_IMG_LEVEL();
+                                    steps.Images.img_First = imgLevel.img_First;
+                                    steps.Images.image_length = imgLevel.image_length;
+                                    steps.Images.X = imgLevel.X;
+                                    steps.Images.Y = imgLevel.Y;
+                                    steps.Images.visible = true;
+                                    steps.Images.position = offset;
+                                }
+                            }
+
+
+
+                            break;
+                        #endregion
+
+                        #region IMG_PROGRESS
+                        case "IMG_PROGRESS":
+                            hmUI_widget_IMG_PROGRESS imgProgress = Object_IMG_PROGRESS(parametrs);
+                            elementsList = null;
+                            if (imgProgress.show_level == "ONLY_NORMAL" || objectName.StartsWith("normal"))
+                            {
+                                if (Watch_Face.ScreenNormal.Elements == null)
+                                    Watch_Face.ScreenNormal.Elements = new List<object>();
+                                elementsList = Watch_Face.ScreenNormal.Elements;
+                            }
+                            else if (imgProgress.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
+                            {
+                                if (Watch_Face.ScreenAOD.Elements == null)
+                                    Watch_Face.ScreenAOD.Elements = new List<object>();
+                                elementsList = Watch_Face.ScreenAOD.Elements;
+                            }
+
+                            if (elementsList != null && imgProgress.type == "STEP")
+                            //if (objectName.EndsWith("step_image_progress_img_level"))
+                            {
+                                ElementSteps steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
+                                if (steps == null)
+                                {
+                                    elementsList.Add(new ElementSteps());
+                                    steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
+                                }
+                                if (steps != null)
+                                {
+                                    int offset = 1;
+                                    if (steps.Images != null) offset++;
+                                    //if (steps.Segments != null) offset++;
+                                    if (steps.Number != null) offset++;
+                                    if (steps.Number_Target != null) offset++;
+                                    if (steps.Pointer != null) offset++;
+                                    if (steps.Circle_Scale != null) offset++;
+                                    if (steps.Linear_Scale != null) offset++;
+                                    if (steps.Icon != null) offset++;
+
+                                    steps.Segments = new hmUI_widget_IMG_PROGRESS();
+                                    steps.Segments.img_First = imgProgress.img_First;
+                                    steps.Segments.image_length = imgProgress.image_length;
+                                    steps.Segments.X = imgProgress.X;
+                                    steps.Segments.Y = imgProgress.Y;
+                                    steps.Segments.visible = true;
+                                    steps.Segments.position = offset;
+                                }
+                            }
+
+
 
                             break;
                             #endregion
@@ -2318,6 +3397,109 @@ namespace Watch_Face_Editor
             }
 
             return imgWeek;
+        }
+        private hmUI_widget_IMG_LEVEL Object_IMG_LEVEL(Dictionary<string, string> parametrs)
+        {
+            hmUI_widget_IMG_LEVEL imgLevel = new hmUI_widget_IMG_LEVEL();
+            int value;
+            if (parametrs.ContainsKey("image_array"))
+            {
+                string[] day__array = parametrs["image_array"].Split(',');
+                string imgName = day__array[0].Replace("\"", "").Replace("[", "").Replace("]", "");
+                imgName = Path.GetFileNameWithoutExtension(imgName);
+                imgLevel.img_First = imgName;
+
+                if (parametrs.ContainsKey("x") && Int32.TryParse(parametrs["x"], out value)) imgLevel.X = value;
+                if (parametrs.ContainsKey("y") && Int32.TryParse(parametrs["y"], out value)) imgLevel.Y = value;
+                if (parametrs.ContainsKey("image_length") && Int32.TryParse(parametrs["image_length"], out value)) imgLevel.image_length = value;
+
+                if (parametrs.ContainsKey("type"))
+                {
+                    imgName = parametrs["type"].Replace("hmUI.data_type.", "");
+                    imgLevel.type = imgName;
+                }
+
+                if (parametrs.ContainsKey("show_level"))
+                {
+                    imgName = parametrs["show_level"].Replace("hmUI.show_level.", "");
+                    imgLevel.show_level = imgName;
+                }
+
+                imgLevel.visible = true;
+                imgLevel.position = 1;
+            }
+
+            return imgLevel;
+        }
+        private hmUI_widget_IMG_PROGRESS Object_IMG_PROGRESS(Dictionary<string, string> parametrs)
+        {
+            hmUI_widget_IMG_PROGRESS imgProgress = new hmUI_widget_IMG_PROGRESS();
+            int value;
+            if (parametrs.ContainsKey("image_array"))
+            {
+                string[] day__array = parametrs["image_array"].Split(',');
+                string imgName = day__array[0].Replace("\"", "").Replace("[", "").Replace("]", "");
+                imgName = Path.GetFileNameWithoutExtension(imgName);
+                imgProgress.img_First = imgName;
+                if (parametrs.ContainsKey("image_length") && Int32.TryParse(parametrs["image_length"], out value)) imgProgress.image_length = value;
+
+                List<int> X = new List<int>();
+                if (parametrs.ContainsKey("x"))
+                {
+                    string[] x_array = parametrs["x"].Split(',');
+                    foreach (string valueStr in x_array)
+                    {
+                        string str = valueStr.Replace("[", "").Replace("]", "");
+                        if (Int32.TryParse(str, out value)) X.Add(value);
+                    }
+                }
+                List<int> Y = new List<int>();
+                if (parametrs.ContainsKey("y"))
+                {
+                    string[] y_array = parametrs["y"].Split(',');
+                    foreach (string valueStr in y_array)
+                    {
+                        string str = valueStr.Replace("[", "").Replace("]", "");
+                        if (Int32.TryParse(str, out value)) Y.Add(value);
+                    }
+                }
+
+                value = -1;
+                if (parametrs.ContainsKey("image_length")) Int32.TryParse(parametrs["image_length"], out value);
+                if (X.Count == 0) X.Add(0);
+                while (X.Count < value)
+                {
+                    int v = X[X.Count - 1];
+                    X.Add(v);
+                }
+                value = -1;
+                if (Y.Count == 0) Y.Add(0);
+                while (Y.Count < value)
+                {
+                    int v = Y[Y.Count - 1];
+                    Y.Add(v);
+                }
+
+                if (X.Count > 0) imgProgress.X = X;
+                if (Y.Count > 0) imgProgress.Y = Y;
+
+                if (parametrs.ContainsKey("type"))
+                {
+                    imgName = parametrs["type"].Replace("hmUI.data_type.", "");
+                    imgProgress.type = imgName;
+                }
+
+                if (parametrs.ContainsKey("show_level"))
+                {
+                    imgName = parametrs["show_level"].Replace("hmUI.show_level.", "");
+                    imgProgress.show_level = imgName;
+                }
+
+                imgProgress.visible = true;
+                imgProgress.position = 1;
+            }
+
+            return imgProgress;
         }
     }
 }

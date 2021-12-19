@@ -19,6 +19,7 @@ namespace ControlLibrary
         private bool Padding_zero;
         private bool Follow_mode;
         private bool Distance_mode;
+        private bool Year_mode = false;
 
         //private Point location_unit;
         private Point location_unit_miles;
@@ -342,6 +343,28 @@ namespace ControlLibrary
             }
         }
 
+        /// <summary>Режим для дистанции</summary>
+        [Description("Режим для дистанции")]
+        public virtual bool Year
+        {
+            get
+            {
+                return Year_mode;
+            }
+            set
+            {
+                Year_mode = value;
+                if (Year_mode)
+                {
+                    checkBox_addZero.Text = Properties.Strings.UCtrl_Text_Opt_Year_true;
+                }
+                else
+                {
+                    checkBox_addZero.Text = Properties.Strings.UCtrl_Text_Opt_Year_false;
+                }
+            }
+        }
+
         /// <summary>Отображение чекбокса "Следовать за..."</summary>
         [Description("Отображение чекбокса \"Следовать за...\"")]
         public virtual bool Follow
@@ -534,6 +557,8 @@ namespace ControlLibrary
 
             comboBox_alignment.SelectedIndex = 0;
             checkBox_addZero.Checked = false;
+
+            this.Year = false;
 
             setValue = false;
         }

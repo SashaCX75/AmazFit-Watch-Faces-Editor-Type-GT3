@@ -129,6 +129,12 @@
   <data name="Dialog_Title_PreviewStates" xml:space="preserve">
     <value>Select a preview settings file</value>
   </data>
+  <data name="Dialog_Title_SaveGIF" xml:space="preserve">
+    <value>Save the animated preview</value>
+  </data>
+  <data name="Dialog_Title_SavePNG" xml:space="preserve">
+    <value>Save preview</value>
+  </data>
   <data name="Dialog_Title_Unpack" xml:space="preserve">
     <value>Select a watch file</value>
   </data>
@@ -232,7 +238,7 @@
     <value>Save the project</value>
   </data>
   <data name="Message_Save_JSON_Modified_Text1" xml:space="preserve">
-    <value>Do You want save changes of project </value>
+    <value>Do You want save changes of project "</value>
   </data>
   <data name="Message_Save_new_JSON" xml:space="preserve">
     <value>The current project has not yet been saved. Do you want to save it?</value>

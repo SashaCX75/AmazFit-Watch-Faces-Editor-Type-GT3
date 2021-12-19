@@ -97,6 +97,24 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Сохранить анимированный предпросмотр.
+        /// </summary>
+        internal static string Dialog_Title_SaveGIF {
+            get {
+                return ResourceManager.GetString("Dialog_Title_SaveGIF", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Сохранить предпросмотр.
+        /// </summary>
+        internal static string Dialog_Title_SavePNG {
+            get {
+                return ResourceManager.GetString("Dialog_Title_SavePNG", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Выбор файла циферблата.
         /// </summary>
         internal static string Dialog_Title_Unpack {
@@ -394,7 +412,7 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Вы хотите сохранить изменения в проекте.
+        ///   Ищет локализованную строку, похожую на Вы хотите сохранить изменения в проекте &quot;.
         /// </summary>
         internal static string Message_Save_JSON_Modified_Text1 {
             get {
@@ -403,7 +421,7 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на ?.
+        ///   Ищет локализованную строку, похожую на &quot;?.
         /// </summary>
         internal static string Message_Save_JSON_Modified_Text2 {
             get {

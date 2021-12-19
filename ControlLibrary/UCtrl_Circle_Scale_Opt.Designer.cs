@@ -54,7 +54,9 @@ namespace ControlLibrary
             this.label07 = new System.Windows.Forms.Label();
             this.label02 = new System.Windows.Forms.Label();
             this.checkBox_inversion = new System.Windows.Forms.CheckBox();
-            this.checkBox_direction = new System.Windows.Forms.CheckBox();
+            this.checkBox_mirror = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBox_scaleCircle_color = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_scaleCircleX)).BeginInit();
             this.contextMenuStrip_X.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_scaleCircleY)).BeginInit();
@@ -67,8 +69,8 @@ namespace ControlLibrary
             // 
             // numericUpDown_scaleCircleX
             // 
+            resources.ApplyResources(this.numericUpDown_scaleCircleX, "numericUpDown_scaleCircleX");
             this.numericUpDown_scaleCircleX.ContextMenuStrip = this.contextMenuStrip_X;
-            this.numericUpDown_scaleCircleX.Location = new System.Drawing.Point(20, 23);
             this.numericUpDown_scaleCircleX.Maximum = new decimal(new int[] {
             999,
             0,
@@ -80,50 +82,42 @@ namespace ControlLibrary
             0,
             -2147483648});
             this.numericUpDown_scaleCircleX.Name = "numericUpDown_scaleCircleX";
-            this.numericUpDown_scaleCircleX.Size = new System.Drawing.Size(40, 20);
-            this.numericUpDown_scaleCircleX.TabIndex = 138;
             this.numericUpDown_scaleCircleX.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
             this.numericUpDown_scaleCircleX.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesX_MouseDoubleClick);
             // 
             // contextMenuStrip_X
             // 
+            resources.ApplyResources(this.contextMenuStrip_X, "contextMenuStrip_X");
             this.contextMenuStrip_X.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip_X.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вставитьКоординатуХToolStripMenuItem,
             this.копироватьToolStripMenuItemX,
             this.вставитьToolStripMenuItemX});
             this.contextMenuStrip_X.Name = "contextMenuStrip_X";
-            this.contextMenuStrip_X.Size = new System.Drawing.Size(204, 82);
             this.contextMenuStrip_X.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_X_Opening);
             // 
             // вставитьКоординатуХToolStripMenuItem
             // 
-            this.вставитьКоординатуХToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("вставитьКоординатуХToolStripMenuItem.Image")));
+            resources.ApplyResources(this.вставитьКоординатуХToolStripMenuItem, "вставитьКоординатуХToolStripMenuItem");
             this.вставитьКоординатуХToolStripMenuItem.Name = "вставитьКоординатуХToolStripMenuItem";
-            this.вставитьКоординатуХToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
-            this.вставитьКоординатуХToolStripMenuItem.Text = "Вставить координату Х";
             this.вставитьКоординатуХToolStripMenuItem.Click += new System.EventHandler(this.вставитьКоординатуХToolStripMenuItem_Click);
             // 
             // копироватьToolStripMenuItemX
             // 
-            this.копироватьToolStripMenuItemX.Image = ((System.Drawing.Image)(resources.GetObject("копироватьToolStripMenuItemX.Image")));
+            resources.ApplyResources(this.копироватьToolStripMenuItemX, "копироватьToolStripMenuItemX");
             this.копироватьToolStripMenuItemX.Name = "копироватьToolStripMenuItemX";
-            this.копироватьToolStripMenuItemX.Size = new System.Drawing.Size(203, 26);
-            this.копироватьToolStripMenuItemX.Text = "Копировать";
             this.копироватьToolStripMenuItemX.Click += new System.EventHandler(this.копироватьToolStripMenuItem_Click);
             // 
             // вставитьToolStripMenuItemX
             // 
-            this.вставитьToolStripMenuItemX.Image = ((System.Drawing.Image)(resources.GetObject("вставитьToolStripMenuItemX.Image")));
+            resources.ApplyResources(this.вставитьToolStripMenuItemX, "вставитьToolStripMenuItemX");
             this.вставитьToolStripMenuItemX.Name = "вставитьToolStripMenuItemX";
-            this.вставитьToolStripMenuItemX.Size = new System.Drawing.Size(203, 26);
-            this.вставитьToolStripMenuItemX.Text = "Вставить";
             this.вставитьToolStripMenuItemX.Click += new System.EventHandler(this.вставитьToolStripMenuItem_Click);
             // 
             // numericUpDown_scaleCircleY
             // 
+            resources.ApplyResources(this.numericUpDown_scaleCircleY, "numericUpDown_scaleCircleY");
             this.numericUpDown_scaleCircleY.ContextMenuStrip = this.contextMenuStrip_Y;
-            this.numericUpDown_scaleCircleY.Location = new System.Drawing.Point(93, 23);
             this.numericUpDown_scaleCircleY.Maximum = new decimal(new int[] {
             999,
             0,
@@ -135,49 +129,41 @@ namespace ControlLibrary
             0,
             -2147483648});
             this.numericUpDown_scaleCircleY.Name = "numericUpDown_scaleCircleY";
-            this.numericUpDown_scaleCircleY.Size = new System.Drawing.Size(40, 20);
-            this.numericUpDown_scaleCircleY.TabIndex = 139;
             this.numericUpDown_scaleCircleY.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
             this.numericUpDown_scaleCircleY.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesY_MouseDoubleClick);
             // 
             // contextMenuStrip_Y
             // 
+            resources.ApplyResources(this.contextMenuStrip_Y, "contextMenuStrip_Y");
             this.contextMenuStrip_Y.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip_Y.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вставитьКоординатуYToolStripMenuItem,
             this.копироватьToolStripMenuItemY,
             this.вставитьToolStripMenuItemY});
             this.contextMenuStrip_Y.Name = "contextMenuStrip_X";
-            this.contextMenuStrip_Y.Size = new System.Drawing.Size(204, 82);
             this.contextMenuStrip_Y.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Y_Opening);
             // 
             // вставитьКоординатуYToolStripMenuItem
             // 
-            this.вставитьКоординатуYToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("вставитьКоординатуYToolStripMenuItem.Image")));
+            resources.ApplyResources(this.вставитьКоординатуYToolStripMenuItem, "вставитьКоординатуYToolStripMenuItem");
             this.вставитьКоординатуYToolStripMenuItem.Name = "вставитьКоординатуYToolStripMenuItem";
-            this.вставитьКоординатуYToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
-            this.вставитьКоординатуYToolStripMenuItem.Text = "Вставить координату Y";
             this.вставитьКоординатуYToolStripMenuItem.Click += new System.EventHandler(this.вставитьКоординатуYToolStripMenuItem_Click);
             // 
             // копироватьToolStripMenuItemY
             // 
-            this.копироватьToolStripMenuItemY.Image = ((System.Drawing.Image)(resources.GetObject("копироватьToolStripMenuItemY.Image")));
+            resources.ApplyResources(this.копироватьToolStripMenuItemY, "копироватьToolStripMenuItemY");
             this.копироватьToolStripMenuItemY.Name = "копироватьToolStripMenuItemY";
-            this.копироватьToolStripMenuItemY.Size = new System.Drawing.Size(203, 26);
-            this.копироватьToolStripMenuItemY.Text = "Копировать";
             this.копироватьToolStripMenuItemY.Click += new System.EventHandler(this.копироватьToolStripMenuItem_Click);
             // 
             // вставитьToolStripMenuItemY
             // 
-            this.вставитьToolStripMenuItemY.Image = ((System.Drawing.Image)(resources.GetObject("вставитьToolStripMenuItemY.Image")));
+            resources.ApplyResources(this.вставитьToolStripMenuItemY, "вставитьToolStripMenuItemY");
             this.вставитьToolStripMenuItemY.Name = "вставитьToolStripMenuItemY";
-            this.вставитьToolStripMenuItemY.Size = new System.Drawing.Size(203, 26);
-            this.вставитьToolStripMenuItemY.Text = "Вставить";
             this.вставитьToolStripMenuItemY.Click += new System.EventHandler(this.вставитьToolStripMenuItem_Click);
             // 
             // numericUpDown_scaleCircle_radius
             // 
-            this.numericUpDown_scaleCircle_radius.Location = new System.Drawing.Point(169, 23);
+            resources.ApplyResources(this.numericUpDown_scaleCircle_radius, "numericUpDown_scaleCircle_radius");
             this.numericUpDown_scaleCircle_radius.Maximum = new decimal(new int[] {
             999,
             0,
@@ -189,8 +175,6 @@ namespace ControlLibrary
             0,
             -2147483648});
             this.numericUpDown_scaleCircle_radius.Name = "numericUpDown_scaleCircle_radius";
-            this.numericUpDown_scaleCircle_radius.Size = new System.Drawing.Size(40, 20);
-            this.numericUpDown_scaleCircle_radius.TabIndex = 141;
             this.numericUpDown_scaleCircle_radius.Value = new decimal(new int[] {
             100,
             0,
@@ -200,7 +184,7 @@ namespace ControlLibrary
             // 
             // numericUpDown_scaleCircle_width
             // 
-            this.numericUpDown_scaleCircle_width.Location = new System.Drawing.Point(169, 88);
+            resources.ApplyResources(this.numericUpDown_scaleCircle_width, "numericUpDown_scaleCircle_width");
             this.numericUpDown_scaleCircle_width.Maximum = new decimal(new int[] {
             999,
             0,
@@ -212,8 +196,6 @@ namespace ControlLibrary
             0,
             -2147483648});
             this.numericUpDown_scaleCircle_width.Name = "numericUpDown_scaleCircle_width";
-            this.numericUpDown_scaleCircle_width.Size = new System.Drawing.Size(40, 20);
-            this.numericUpDown_scaleCircle_width.TabIndex = 143;
             this.numericUpDown_scaleCircle_width.Value = new decimal(new int[] {
             5,
             0,
@@ -223,60 +205,32 @@ namespace ControlLibrary
             // 
             // label01
             // 
-            this.label01.AutoSize = true;
-            this.label01.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label01.Location = new System.Drawing.Point(3, 6);
-            this.label01.Margin = new System.Windows.Forms.Padding(3);
+            resources.ApplyResources(this.label01, "label01");
             this.label01.Name = "label01";
-            this.label01.Size = new System.Drawing.Size(139, 13);
-            this.label01.TabIndex = 140;
-            this.label01.Text = "Координаты ценра шкалы";
             // 
             // label04
             // 
-            this.label04.AutoSize = true;
-            this.label04.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label04.Location = new System.Drawing.Point(76, 25);
+            resources.ApplyResources(this.label04, "label04");
             this.label04.Name = "label04";
-            this.label04.Size = new System.Drawing.Size(17, 13);
-            this.label04.TabIndex = 137;
-            this.label04.Text = "Y:";
             // 
             // label03
             // 
-            this.label03.AutoSize = true;
-            this.label03.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label03.Location = new System.Drawing.Point(3, 25);
+            resources.ApplyResources(this.label03, "label03");
             this.label03.Name = "label03";
-            this.label03.Size = new System.Drawing.Size(17, 13);
-            this.label03.TabIndex = 136;
-            this.label03.Text = "X:";
             // 
             // label06
             // 
-            this.label06.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label06.Location = new System.Drawing.Point(150, 53);
-            this.label06.Margin = new System.Windows.Forms.Padding(3);
+            resources.ApplyResources(this.label06, "label06");
             this.label06.Name = "label06";
-            this.label06.Size = new System.Drawing.Size(78, 30);
-            this.label06.TabIndex = 144;
-            this.label06.Text = "Толщина шкалы";
-            this.label06.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // label05
             // 
-            this.label05.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label05.Location = new System.Drawing.Point(150, 6);
-            this.label05.Margin = new System.Windows.Forms.Padding(3);
+            resources.ApplyResources(this.label05, "label05");
             this.label05.Name = "label05";
-            this.label05.Size = new System.Drawing.Size(78, 13);
-            this.label05.TabIndex = 142;
-            this.label05.Text = "Радиус";
-            this.label05.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // numericUpDown_scaleCircle_startAngle
             // 
-            this.numericUpDown_scaleCircle_startAngle.Location = new System.Drawing.Point(20, 88);
+            resources.ApplyResources(this.numericUpDown_scaleCircle_startAngle, "numericUpDown_scaleCircle_startAngle");
             this.numericUpDown_scaleCircle_startAngle.Maximum = new decimal(new int[] {
             999,
             0,
@@ -288,13 +242,11 @@ namespace ControlLibrary
             0,
             -2147483648});
             this.numericUpDown_scaleCircle_startAngle.Name = "numericUpDown_scaleCircle_startAngle";
-            this.numericUpDown_scaleCircle_startAngle.Size = new System.Drawing.Size(40, 20);
-            this.numericUpDown_scaleCircle_startAngle.TabIndex = 145;
             this.numericUpDown_scaleCircle_startAngle.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
             // 
             // numericUpDown_scaleCircle_endAngle
             // 
-            this.numericUpDown_scaleCircle_endAngle.Location = new System.Drawing.Point(93, 88);
+            resources.ApplyResources(this.numericUpDown_scaleCircle_endAngle, "numericUpDown_scaleCircle_endAngle");
             this.numericUpDown_scaleCircle_endAngle.Maximum = new decimal(new int[] {
             999,
             0,
@@ -306,10 +258,8 @@ namespace ControlLibrary
             0,
             -2147483648});
             this.numericUpDown_scaleCircle_endAngle.Name = "numericUpDown_scaleCircle_endAngle";
-            this.numericUpDown_scaleCircle_endAngle.Size = new System.Drawing.Size(40, 20);
-            this.numericUpDown_scaleCircle_endAngle.TabIndex = 147;
             this.numericUpDown_scaleCircle_endAngle.Value = new decimal(new int[] {
-            360,
+            180,
             0,
             0,
             0});
@@ -317,67 +267,56 @@ namespace ControlLibrary
             // 
             // label08
             // 
-            this.label08.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label08.Location = new System.Drawing.Point(76, 53);
-            this.label08.Margin = new System.Windows.Forms.Padding(3);
+            resources.ApplyResources(this.label08, "label08");
             this.label08.Name = "label08";
-            this.label08.Size = new System.Drawing.Size(78, 30);
-            this.label08.TabIndex = 148;
-            this.label08.Text = "Конечный угол";
-            this.label08.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // label07
             // 
-            this.label07.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label07.Location = new System.Drawing.Point(3, 53);
-            this.label07.Margin = new System.Windows.Forms.Padding(3);
+            resources.ApplyResources(this.label07, "label07");
             this.label07.Name = "label07";
-            this.label07.Size = new System.Drawing.Size(78, 30);
-            this.label07.TabIndex = 146;
-            this.label07.Text = "Начальный угол";
-            this.label07.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // label02
             // 
-            this.label02.AutoSize = true;
-            this.label02.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label02.Location = new System.Drawing.Point(3, 170);
-            this.label02.Margin = new System.Windows.Forms.Padding(3);
+            resources.ApplyResources(this.label02, "label02");
             this.label02.Name = "label02";
-            this.label02.Size = new System.Drawing.Size(210, 39);
-            this.label02.TabIndex = 168;
-            this.label02.Text = "* При включенной инверсии шкалы при \r\nувеличении показаний размер шкалы \r\nбудет у" +
-    "меньшаться.";
             // 
             // checkBox_inversion
             // 
-            this.checkBox_inversion.AutoSize = true;
-            this.checkBox_inversion.Location = new System.Drawing.Point(6, 147);
+            resources.ApplyResources(this.checkBox_inversion, "checkBox_inversion");
             this.checkBox_inversion.Name = "checkBox_inversion";
-            this.checkBox_inversion.Size = new System.Drawing.Size(117, 17);
-            this.checkBox_inversion.TabIndex = 167;
-            this.checkBox_inversion.Text = "Инверсия шкалы*";
             this.checkBox_inversion.UseVisualStyleBackColor = true;
             this.checkBox_inversion.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
             // 
-            // checkBox_direction
+            // checkBox_mirror
             // 
-            this.checkBox_direction.AutoSize = true;
-            this.checkBox_direction.Location = new System.Drawing.Point(6, 124);
-            this.checkBox_direction.Name = "checkBox_direction";
-            this.checkBox_direction.Size = new System.Drawing.Size(146, 17);
-            this.checkBox_direction.TabIndex = 166;
-            this.checkBox_direction.Text = "Направление от центра";
-            this.checkBox_direction.UseVisualStyleBackColor = true;
-            this.checkBox_direction.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
+            resources.ApplyResources(this.checkBox_mirror, "checkBox_mirror");
+            this.checkBox_mirror.Name = "checkBox_mirror";
+            this.checkBox_mirror.UseVisualStyleBackColor = true;
+            this.checkBox_mirror.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // comboBox_scaleCircle_color
+            // 
+            resources.ApplyResources(this.comboBox_scaleCircle_color, "comboBox_scaleCircle_color");
+            this.comboBox_scaleCircle_color.BackColor = System.Drawing.Color.DarkOrange;
+            this.comboBox_scaleCircle_color.DropDownHeight = 1;
+            this.comboBox_scaleCircle_color.FormattingEnabled = true;
+            this.comboBox_scaleCircle_color.Name = "comboBox_scaleCircle_color";
+            this.comboBox_scaleCircle_color.Click += new System.EventHandler(this.comboBox_scaleLinear_color_Click);
             // 
             // UCtrl_Circle_Scale_Opt
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.comboBox_scaleCircle_color);
             this.Controls.Add(this.label02);
             this.Controls.Add(this.checkBox_inversion);
-            this.Controls.Add(this.checkBox_direction);
+            this.Controls.Add(this.checkBox_mirror);
             this.Controls.Add(this.numericUpDown_scaleCircle_startAngle);
             this.Controls.Add(this.numericUpDown_scaleCircle_endAngle);
             this.Controls.Add(this.label08);
@@ -392,7 +331,6 @@ namespace ControlLibrary
             this.Controls.Add(this.label06);
             this.Controls.Add(this.label05);
             this.Name = "UCtrl_Circle_Scale_Opt";
-            this.Size = new System.Drawing.Size(250, 274);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_scaleCircleX)).EndInit();
             this.contextMenuStrip_X.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_scaleCircleY)).EndInit();
@@ -430,6 +368,8 @@ namespace ControlLibrary
         public System.Windows.Forms.NumericUpDown numericUpDown_scaleCircle_startAngle;
         public System.Windows.Forms.NumericUpDown numericUpDown_scaleCircle_endAngle;
         public System.Windows.Forms.CheckBox checkBox_inversion;
-        public System.Windows.Forms.CheckBox checkBox_direction;
+        public System.Windows.Forms.CheckBox checkBox_mirror;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBox_scaleCircle_color;
     }
 }

@@ -398,7 +398,7 @@ namespace ControlLibrary
             radioButton_horizontal.Checked = true;
             //radioButton_vertical.Checked = false;
 
-            checkBox_direction.Checked = false;
+            checkBox_mirror.Checked = false;
             checkBox_inversion.Checked = false;
 
             setValue = false;

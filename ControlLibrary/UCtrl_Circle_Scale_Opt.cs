@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +22,60 @@ namespace ControlLibrary
         {
             InitializeComponent();
             setValue = false;
+        }
+
+        private void comboBox_scaleLinear_color_Click(object sender, EventArgs e)
+        {
+            Program_Settings ProgramSettings = new Program_Settings();
+            ColorDialog colorDialog = new ColorDialog();
+            ComboBox comboBox_color = sender as ComboBox;
+            colorDialog.Color = comboBox_color.BackColor;
+            colorDialog.FullOpen = true;
+
+            // читаем пользовательские цвета из настроек
+            if (File.Exists(Application.StartupPath + @"\Settings.json"))
+            {
+                ProgramSettings = JsonConvert.DeserializeObject<Program_Settings>
+                            (File.ReadAllText(Application.StartupPath + @"\Settings.json"), new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+            }
+            colorDialog.CustomColors = ProgramSettings.CustomColors;
+
+
+            if (colorDialog.ShowDialog() == DialogResult.Cancel)
+                return;
+            // установка цвета формы
+            comboBox_color.BackColor = colorDialog.Color;
+            if (ProgramSettings.CustomColors != colorDialog.CustomColors)
+            {
+                ProgramSettings.CustomColors = colorDialog.CustomColors;
+
+                string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
+                {
+                    //DefaultValueHandling = DefaultValueHandling.Ignore,
+                    NullValueHandling = NullValueHandling.Ignore
+                });
+                File.WriteAllText(Application.StartupPath + @"\Settings.json", JSON_String, Encoding.UTF8);
+            }
+
+            if (ValueChanged != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                ValueChanged(this, eventArgs);
+            }
+        }
+
+        public void SetColorScale(Color color)
+        {
+            comboBox_scaleCircle_color.BackColor = color;
+        }
+
+        public Color GetColorScale()
+        {
+            return comboBox_scaleCircle_color.BackColor;
         }
 
         [Browsable(true)]
@@ -214,9 +270,9 @@ namespace ControlLibrary
             numericUpDown_scaleCircle_width.Value = 5;
 
             numericUpDown_scaleCircle_startAngle.Value = 0;
-            numericUpDown_scaleCircle_endAngle.Value = 360;
+            numericUpDown_scaleCircle_endAngle.Value = 180;
 
-            checkBox_direction.Checked = false;
+            checkBox_mirror.Checked = false;
             checkBox_inversion.Checked = false;
 
             setValue = false;

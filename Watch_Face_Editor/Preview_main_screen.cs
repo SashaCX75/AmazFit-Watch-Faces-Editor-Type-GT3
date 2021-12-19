@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -98,7 +99,7 @@ namespace Watch_Face_Editor
 
             #region Elements
             List<Object> Elements = null;
-            if (radioButton_ScreenNormal.Checked)
+            if (link == 0)
             {
                 if (Watch_Face != null && Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Elements != null)
                     Elements = Watch_Face.ScreenNormal.Elements;
@@ -562,7 +563,8 @@ namespace Watch_Face_Editor
                                 int x = DateYear.Number.imageX;
                                 int y = DateYear.Number.imageY;
                                 int spasing = DateYear.Number.space;
-                                int alignment = AlignmentToInt(DateYear.Number.align);
+                                //int alignment = AlignmentToInt(DateYear.Number.align);
+                                int alignment = 0;
                                 bool addZero = DateYear.Number.zero;
                                 int value = WatchFacePreviewSet.Date.Year; 
                                 if (!addZero) value = value % 100;
@@ -680,14 +682,14 @@ namespace Watch_Face_Editor
                             if(img_level != null && img_level.image_length > 0)
                             {
                                 imgCount = img_level.image_length;
-                                valueImgIndex = (int)((imgCount - 1) * progress);
+                                valueImgIndex = (int)((imgCount) * progress);
                                 if (progress < 0.01) valueImgIndex = -1;
                                 if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
                             }
                             if (img_prorgess != null && img_prorgess.image_length > 0)
                             {
                                 segmentCount = img_prorgess.image_length;
-                                valueSegmentIndex = (int)((segmentCount - 1) * progress);
+                                valueSegmentIndex = (int)((segmentCount) * progress);
                                 if (progress < 0.01) valueSegmentIndex = -1;
                                 if (valueSegmentIndex >= segmentCount) valueImgIndex = (int)(segmentCount - 1);
                             }
@@ -802,8 +804,7 @@ namespace Watch_Face_Editor
 
             for (int index = 1; index <= 10; index++)
             {
-                if (images != null && images.img_First != null
-                    && images.img_First.Length > 0 &&
+                if (images != null && images.img_First != null && images.img_First.Length > 0 &&
                     index == images.position && images.visible)
                 {
                     if (valueImgIndex >= 0)
@@ -822,8 +823,29 @@ namespace Watch_Face_Editor
                     }
                 }
 
-                if (number != null && number.img_First != null
-                    && number.img_First.Length > 0 &&
+                if (segments != null && segments.img_First != null && segments.img_First.Length > 0 &&
+                    index == segments.position && segments.visible)
+                {
+                    if (valueSegmentIndex >= 0)
+                    {
+                        int imageIndex = ListImages.IndexOf(segments.img_First);
+                        for (int i = 0; i <= valueSegmentIndex; i++)
+                        {
+                            int imgIndex = imageIndex + i;
+
+                            if (imgIndex < ListImagesFullName.Count && i < segments.X.Count)
+                            {
+                                int x = segments.X[i];
+                                int y = segments.Y[i];
+                                src = OpenFileStream(ListImagesFullName[imgIndex]);
+                                gPanel.DrawImage(src, x, y);
+                                //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                            } 
+                        }
+                    }
+                }
+
+                if (number != null && number.img_First != null && number.img_First.Length > 0 &&
                     index == number.position && number.visible)
                 {
                     int imageIndex = ListImages.IndexOf(number.img_First);
@@ -851,8 +873,7 @@ namespace Watch_Face_Editor
                     }
                 }
 
-                if (numberTarget != null && numberTarget.img_First != null
-                    && numberTarget.img_First.Length > 0 &&
+                if (numberTarget != null && numberTarget.img_First != null && numberTarget.img_First.Length > 0 &&
                     index == numberTarget.position && numberTarget.visible)
                 {
                     int imageIndex = ListImages.IndexOf(numberTarget.img_First);
@@ -880,8 +901,7 @@ namespace Watch_Face_Editor
                     }
                 }
 
-                if (pointer != null && pointer.src != null
-                    && pointer.src.Length > 0 &&
+                if (pointer != null && pointer.src != null && pointer.src.Length > 0 &&
                     index == pointer.position && pointer.visible)
                 {
                     int x = pointer.center_x;
@@ -917,7 +937,63 @@ namespace Watch_Face_Editor
                     }
                 }
 
-                
+                if (circleScale != null && index == circleScale.position && circleScale.visible)
+                {
+                    int x = circleScale.center_x;
+                    int y = circleScale.center_y;
+                    int radius = circleScale.radius;
+                    int width = circleScale.line_width;
+                    int startAngle = circleScale.start_angle;
+                    int endAngle = circleScale.end_angle;
+                    bool mirror = circleScale.mirror;
+                    bool inversion = circleScale.inversion;
+                    Color color = StringToColor(circleScale.color);
+                    float fullAngle = endAngle - startAngle;
+
+                    DrawScaleCircle(gPanel, x, y, radius, width, 0, startAngle, fullAngle, progress,
+                        color, inversion, showProgressArea);
+
+                    if(mirror) DrawScaleCircle(gPanel, x, y, radius, width, 0, startAngle, -fullAngle, progress,
+                         color, inversion, showProgressArea);
+                }
+
+                if (linearScale != null && index == linearScale.position && linearScale.visible)
+                {
+                    int x = linearScale.start_x;
+                    int y = linearScale.start_y;
+                    int lenght = linearScale.lenght;
+                    int width = linearScale.line_width;
+                    bool mirror = linearScale.mirror;
+                    bool inversion = linearScale.inversion;
+                    bool vertical = linearScale.vertical;
+                    Color color = StringToColor(linearScale.color);
+                    int pointer_index = -1;
+                    if (linearScale.pointer != null && linearScale.pointer.Length > 0)
+                        pointer_index = ListImages.IndexOf(linearScale.pointer);
+
+                    DrawScaleLinear(gPanel, x, y, lenght, width, pointer_index, vertical, progress,
+                        color, inversion, showProgressArea);
+
+                    if (mirror) DrawScaleLinear(gPanel, x, y, -lenght, width, pointer_index, vertical, progress,
+                        color, inversion, showProgressArea);
+                }
+
+                if (icon != null && icon.src != null && icon.src.Length > 0 &&
+                    index == icon.position && icon.visible)
+                {
+                    int imageIndex = ListImages.IndexOf(icon.src);
+                    int x = icon.x;
+                    int y = icon.y;
+
+                    if (imageIndex < ListImagesFullName.Count)
+                    {
+                        src = OpenFileStream(ListImagesFullName[imageIndex]);
+                        gPanel.DrawImage(src, x, y);
+                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                    }
+                }
+
+
 
             }
 
@@ -1485,6 +1561,229 @@ namespace Watch_Face_Editor
             return result;
         }
 
+        /// <summary>круговая шкала</summary>
+        /// <param name="graphics">Поверхность для рисования</param>
+        /// <param name="x">Координата X</param>
+        /// <param name="y">Координата Y</param>
+        /// <param name="radius">Радиус</param>
+        /// <param name="width">Толщина линии</param>
+        /// <param name="lineCap">Тип окончания линии</param>
+        /// <param name="startAngle">Начальный угол</param>
+        /// <param name="fullAngle">Общий угол</param>
+        /// <param name="position">Отображаемая величина от 0 до 1</param>
+        /// <param name="color">Цвет шкалы</param>
+        /// <param name="inversion">Инверсия шкалы</param>
+        /// <param name="showProgressArea">Подсвечивать полную длину шкалы</param>
+        private void DrawScaleCircle(Graphics graphics, int x, int y, float radius, float width,
+            int lineCap, float startAngle, float fullAngle, float position, Color color,
+            bool inversion, bool showProgressArea)
+        {
+            Logger.WriteLine("* DrawScaleCircle");
+            startAngle = startAngle - 90;
+            if (position > 1) position = 1;
+            if (inversion)
+            {
+                startAngle = startAngle + fullAngle;
+                fullAngle = -fullAngle;
+                position = 1 - position;
+            }
+            float valueAngle = fullAngle * position;
+            //if (valueAngle == 0) return;
+            Pen pen = new Pen(color, width);
+
+            switch (lineCap)
+            {
+                case 1:
+                    pen.EndCap = LineCap.Triangle;
+                    pen.StartCap = LineCap.Triangle;
+                    break;
+                case 2:
+                    pen.EndCap = LineCap.Flat;
+                    pen.StartCap = LineCap.Flat;
+                    break;
+                case 90:
+                    pen.EndCap = LineCap.Triangle;
+                    pen.StartCap = LineCap.Triangle;
+                    break;
+                case 180:
+                    pen.EndCap = LineCap.Flat;
+                    pen.StartCap = LineCap.Flat;
+                    break;
+                default:
+                    pen.EndCap = LineCap.Round;
+                    pen.StartCap = LineCap.Round;
+                    break;
+            }
+
+            //int srcX = (int)Math.Round(x - radius - width / 2, MidpointRounding.AwayFromZero);
+            //int srcY = (int)Math.Round(y - radius - width / 2, MidpointRounding.AwayFromZero);
+            //int srcX = (int)(x - radius - width / 2);
+            //int srcY = (int)(y - radius - width / 2);
+            int srcX = (int)(x - radius);
+            int srcY = (int)(y - radius);
+            //int arcX = (int)(x - radius);
+            //int arcY = (int)(y - radius);
+            int arcX = (int)(x - radius + width / 2);
+            int arcY = (int)(y - radius + width / 2);
+            float CircleWidth = 2 * radius - width;
+
+            try
+            {
+                //graphics.DrawArc(pen, arcX, arcY, CircleWidth, CircleWidth, startAngle, valueAngle);
+                int s = Math.Sign(valueAngle);
+                graphics.DrawArc(pen, arcX, arcY, CircleWidth, CircleWidth,
+                    (float)(startAngle - 0.007 * s * width), (float)(valueAngle + 0.015 * s * width));
+                //TODO исправить отрисовку при большой толщине
+            }
+            catch (Exception)
+            {
+            }
+
+            //if (pointerIndex >= 0 && pointerIndex < ListImagesFullName.Count)
+            //{
+            //    src = OpenFileStream(ListImagesFullName[pointerIndex]);
+            //    graphics.DrawImage(src, new Rectangle(srcX, srcX, src.Width, src.Height));
+            //}
+
+            if (showProgressArea)
+            {
+                // подсвечивание шкалы заливкой
+                HatchBrush myHatchBrush = new HatchBrush(HatchStyle.Percent20, Color.White, Color.Transparent);
+                pen.Brush = myHatchBrush;
+                int s = Math.Sign(fullAngle);
+                //graphics.DrawArc(pen, arcX, arcY, CircleWidth, CircleWidth, startAngle, endAngle);
+                graphics.DrawArc(pen, arcX, arcY, CircleWidth, CircleWidth,
+                    (float)(startAngle - 0.007 * s * width), (float)(fullAngle + 0.015 * s * width));
+                myHatchBrush = new HatchBrush(HatchStyle.Percent10, Color.Black, Color.Transparent);
+                pen.Brush = myHatchBrush;
+                //graphics.DrawArc(pen, arcX, arcY, CircleWidth, CircleWidth, startAngle, endAngle);
+                graphics.DrawArc(pen, arcX, arcY, CircleWidth, CircleWidth,
+                    (float)(startAngle - 0.007 * s * width), (float)(fullAngle + 0.015 * s * width));
+
+                // подсвечивание внешней и внутреней дуги на шкале
+                using (Pen pen1 = new Pen(Color.White, 1))
+                {
+                    graphics.DrawArc(pen1, srcX, srcY, CircleWidth + width, CircleWidth + width, startAngle, fullAngle);
+                    int ArcWidth = (int)(CircleWidth - width);
+                    if (ArcWidth < 1) ArcWidth = 1;
+                    graphics.DrawArc(pen1, srcX + width, srcY + width, ArcWidth, ArcWidth, startAngle, fullAngle);
+                }
+                using (Pen pen2 = new Pen(Color.Black, 1))
+                {
+                    pen2.DashStyle = DashStyle.Dash;
+                    graphics.DrawArc(pen2, srcX, srcY, CircleWidth + width, CircleWidth + width, startAngle, fullAngle);
+                    int ArcWidth = (int)(CircleWidth - width);
+                    if (ArcWidth < 1) ArcWidth = 1;
+                    graphics.DrawArc(pen2, srcX + width, srcY + width, ArcWidth, ArcWidth, startAngle, fullAngle);
+                }
+            }
+            Logger.WriteLine("* DrawScaleCircle (end)");
+
+        }
+
+        /// <summary>Линейная шкала</summary>
+        /// <param name="graphics">Поверхность для рисования</param>
+        /// <param name="x">Координата X</param>
+        /// <param name="y">Координата Y</param>
+        /// <param name="lenght">Длина шкалы</param>
+        /// <param name="width">Толщина линии</param>
+        /// <param name="pointer">Изображение указателя</param>
+        /// <param name="vertical">Вертикальная или горизонтальная</param>
+        /// <param name="position">Отображаемая величина от 0 до 1</param>
+        /// <param name="color">Цвет шкалы</param>
+        /// <param name="inversion">Инверсия шкалы</param>
+        /// <param name="showProgressArea">Подсвечивать полную длину шкалы</param>
+        private void DrawScaleLinear(Graphics graphics, int x, int y, int lenght, int width, int pointer_index,
+            bool vertical, float position, Color color, bool inversion, bool showProgressArea)
+        {
+            Logger.WriteLine("* DrawScaleLinear");
+            var src = new Bitmap(1, 1);
+            if (position > 1) position = 1;
+            if (!vertical)
+            {
+                if (inversion)
+                {
+                    x = x + lenght;
+                    lenght = -lenght;
+                    position = 1 - position;
+                }
+                try
+                {
+                    int realLenght = (int)(lenght * position);
+                    Brush br = new SolidBrush(color);
+                    Rectangle rc = new Rectangle(x, y, realLenght, width);
+                    if (realLenght < 0) rc = new Rectangle(x + realLenght, y, -realLenght, width);
+                    graphics.FillRectangle(br, rc);
+
+                    if (pointer_index >= 0 && pointer_index < ListImagesFullName.Count)
+                    {
+                        src = OpenFileStream(ListImagesFullName[pointer_index]);
+                        int pos_x = x + realLenght - src.Width / 2;
+                        int pos_y = y + width/2 - src.Height / 2;
+                        graphics.DrawImage(src, pos_x, pos_y);
+                    }
+
+                    if (showProgressArea)
+                    {
+                        HatchBrush myHatchBrush = new HatchBrush(HatchStyle.Percent20, Color.White, Color.Transparent);
+
+                        rc = new Rectangle(x, y, lenght, width);
+                        if (lenght < 0) rc = new Rectangle(x + lenght, y, -lenght, width);
+                        graphics.FillRectangle(myHatchBrush, rc);
+
+                        myHatchBrush = new HatchBrush(HatchStyle.Percent10, Color.Black, Color.Transparent);
+                        graphics.FillRectangle(myHatchBrush, rc);
+                    }
+                }
+                catch (Exception)
+                {
+                }
+            }
+            else
+            {
+                if (inversion)
+                {
+                    y = y + lenght;
+                    lenght = -lenght;
+                    position = 1 - position;
+                }
+                try
+                {
+                    int realLenght = (int)(lenght * position);
+                    Brush br = new SolidBrush(color);
+                    Rectangle rc = new Rectangle(x, y, width, realLenght);
+                    if (realLenght < 0) rc = new Rectangle(x, y + realLenght, width, -realLenght);
+                    graphics.FillRectangle(br, rc);
+
+                    if (pointer_index >= 0 && pointer_index < ListImagesFullName.Count)
+                    {
+                        src = OpenFileStream(ListImagesFullName[pointer_index]);
+                        int pos_x = x + width / 2 - src.Width / 2;
+                        int pos_y = y + realLenght - src.Height / 2;
+                        graphics.DrawImage(src, pos_x, pos_y);
+                    }
+
+                    if (showProgressArea)
+                    {
+                        HatchBrush myHatchBrush = new HatchBrush(HatchStyle.Percent20, Color.White, Color.Transparent);
+
+                        rc = new Rectangle(x, y, width, lenght);
+                        if (lenght < 0) rc = new Rectangle(x, y + lenght, width, -lenght);
+                        graphics.FillRectangle(myHatchBrush, rc);
+
+                        myHatchBrush = new HatchBrush(HatchStyle.Percent10, Color.Black, Color.Transparent);
+                        graphics.FillRectangle(myHatchBrush, rc);
+                    }
+                }
+                catch (Exception)
+                {
+                }
+            }
+
+            Logger.WriteLine("* DrawScaleLinear (end)");
+
+        }
+
         private Bitmap OpenFileStream(string fileName)
         {
             Bitmap src = null;
@@ -1593,6 +1892,124 @@ namespace Watch_Face_Editor
             }
 
             return destImage;
+        }
+
+        public Bitmap ApplyWatchSkin(Bitmap bitmap)
+        {
+            string Watch_Skin_file_name = textBox_WatchSkin_Path.Text;
+            if (!File.Exists(Watch_Skin_file_name))
+                Watch_Skin_file_name = Application.StartupPath + Watch_Skin_file_name;
+
+            WatchSkin Watch_Skin = new WatchSkin();
+            if (File.Exists(Watch_Skin_file_name))
+            {
+                string text = File.ReadAllText(Watch_Skin_file_name);
+                try
+                {
+                    Watch_Skin = JsonConvert.DeserializeObject<WatchSkin>(text, new JsonSerializerSettings
+                    {
+                        DefaultValueHandling = DefaultValueHandling.Ignore,
+                        NullValueHandling = NullValueHandling.Ignore
+                    });
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                        Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return bitmap;
+                }
+            }
+            else return bitmap;
+
+            Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
+            if (radioButton_GTR3_Pro.Checked)
+            {
+                mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png.png");
+            }
+            if (radioButton_GTS3.Checked)
+            {
+                mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
+            }
+
+            bitmap = ApplyMask(bitmap, mask);
+            //Graphics gPanel = Graphics.FromImage(bitmap);
+
+            Bitmap BackgroundImage = null;
+            Bitmap ForegroundImage = null;
+
+            float BackgroundImageHeight = -1;
+            float ImageHeight = -1;
+            float ForegroundImageHeight = -1;
+
+            // Background
+            if (Watch_Skin.Background != null && Watch_Skin.Background.Path != null)
+            {
+                string file_name = Watch_Skin.Background.Path;
+                if (!File.Exists(file_name)) file_name = Application.StartupPath + file_name;
+                if (File.Exists(file_name))
+                {
+                    BackgroundImage = new Bitmap(file_name);
+                    if (Watch_Skin.Background.ImageHeight != null) BackgroundImageHeight =
+                            (int)Watch_Skin.Background.ImageHeight;
+                    float scale = BackgroundImageHeight / BackgroundImage.Height;
+                    BackgroundImage = ResizeImage(BackgroundImage, scale);
+                }
+            }
+
+            // Image
+            if (Watch_Skin.Image != null && Watch_Skin.Image.ImageHeight != null)
+            {
+                if (Watch_Skin.Image.ImageHeight != null) ImageHeight =
+                            (int)Watch_Skin.Image.ImageHeight;
+                float scale = ImageHeight / bitmap.Height;
+                bitmap = ResizeImage(bitmap, scale);
+            }
+
+            Bitmap returnBitmap;
+            if (BackgroundImage != null) returnBitmap = BackgroundImage;
+            else returnBitmap = bitmap;
+            Graphics gPanel = Graphics.FromImage(returnBitmap);
+
+            if (BackgroundImage != null)
+            {
+                int posX = (int)(BackgroundImage.Width / 2f - bitmap.Width / 2f);
+                int posY = (int)(BackgroundImage.Height / 2f - bitmap.Height / 2f);
+                if (Watch_Skin.Image != null && Watch_Skin.Image.Position != null)
+                {
+                    posX = Watch_Skin.Image.Position.X;
+                    posY = Watch_Skin.Image.Position.Y;
+                }
+                gPanel.DrawImage(bitmap, posX, posY, bitmap.Width, bitmap.Height);
+            }
+
+            // Foreground
+            if (Watch_Skin.Foreground != null && Watch_Skin.Foreground.Path != null)
+            {
+                string file_name = Watch_Skin.Foreground.Path;
+                if (!File.Exists(file_name)) file_name = Application.StartupPath + file_name;
+                if (File.Exists(file_name))
+                {
+                    ForegroundImage = new Bitmap(file_name);
+                    if (Watch_Skin.Foreground.ImageHeight != null) ForegroundImageHeight =
+                            (int)Watch_Skin.Foreground.ImageHeight;
+                    float scale = ForegroundImageHeight / ForegroundImage.Height;
+                    ForegroundImage = ResizeImage(ForegroundImage, scale);
+                }
+            }
+
+            if (ForegroundImage != null)
+            {
+                int posX = (int)(BackgroundImage.Width / 2f - ForegroundImage.Width / 2f);
+                int posY = (int)(BackgroundImage.Height / 2f - ForegroundImage.Height / 2f);
+                if (Watch_Skin.Image != null && Watch_Skin.Image.Position != null)
+                {
+                    posX = Watch_Skin.Foreground.Position.X;
+                    posY = Watch_Skin.Foreground.Position.Y;
+                }
+                gPanel.DrawImage(ForegroundImage, posX, posY, ForegroundImage.Width, ForegroundImage.Height);
+            }
+
+            return returnBitmap;
         }
     }
 }

@@ -50,6 +50,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Strings.en.Designer.cs">
+      <DependentUpon>Strings.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\Strings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Strings.resx</DependentUpon>
+    </Compile>
     <Compile Include="UCtrl_AmPm_Opt.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -162,9 +172,20 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Elements\UCtrl_Steps_Elm.en.resx">
+      <DependentUpon>UCtrl_Steps_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Strings.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Strings.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_AmPm_Opt.en.resx">
       <DependentUpon>UCtrl_AmPm_Opt.cs</DependentUpon>
@@ -220,8 +241,14 @@
     <EmbeddedResource Include="Elements\UCtrl_DigitalTime_Elm.resx">
       <DependentUpon>UCtrl_DigitalTime_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Circle_Scale_Opt.en.resx">
+      <DependentUpon>UCtrl_Circle_Scale_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Circle_Scale_Opt.resx">
       <DependentUpon>UCtrl_Circle_Scale_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Icon_Opt.en.resx">
+      <DependentUpon>UCtrl_Icon_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Icon_Opt.resx">
       <DependentUpon>UCtrl_Icon_Opt.cs</DependentUpon>
@@ -232,6 +259,9 @@
     <EmbeddedResource Include="UCtrl_Images_Opt.resx">
       <DependentUpon>UCtrl_Images_Opt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Linear_Scale_Opt.en.resx">
+      <DependentUpon>UCtrl_Linear_Scale_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Linear_Scale_Opt.resx">
       <DependentUpon>UCtrl_Linear_Scale_Opt.cs</DependentUpon>
     </EmbeddedResource>
@@ -240,6 +270,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Pointer_Opt.resx">
       <DependentUpon>UCtrl_Pointer_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Segments_Opt.en.resx">
+      <DependentUpon>UCtrl_Segments_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Segments_Opt.resx">
       <DependentUpon>UCtrl_Segments_Opt.cs</DependentUpon>

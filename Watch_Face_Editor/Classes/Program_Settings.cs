@@ -49,9 +49,9 @@ namespace Watch_Face_Editor
 
         public int Splitter_Pos = 0;
 
-        public string WatchSkin_GTR_3 = @"Skin\WatchSkin_GTR_3.json";
-        public string WatchSkin_GTR_3_Pro = @"Skin\WatchSkin_GTR_3_Pro.json";
-        public string WatchSkin_GTS_3 = @"Skin\WatchSkin_GTS_3.json";
+        public string WatchSkin_GTR_3 = @"\Skin\WatchSkin_GTR_3.json";
+        public string WatchSkin_GTR_3_Pro = @"\Skin\WatchSkin_GTR_3_Pro.json";
+        public string WatchSkin_GTS_3 = @"\Skin\WatchSkin_GTS_3.json";
         public bool WatchSkin_Use = false;
     }
 }

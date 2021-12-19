@@ -1161,6 +1161,9 @@
   <data name="uCtrl_Segments_Opt.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
+  <data name="uCtrl_Segments_Opt.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;uCtrl_Segments_Opt.Name" xml:space="preserve">
     <value>uCtrl_Segments_Opt</value>
   </data>
@@ -1184,6 +1187,9 @@
   </data>
   <data name="uCtrl_Icon_Opt.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
+  </data>
+  <data name="uCtrl_Icon_Opt.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;uCtrl_Icon_Opt.Name" xml:space="preserve">
     <value>uCtrl_Icon_Opt</value>
@@ -1209,6 +1215,9 @@
   <data name="uCtrl_Linear_Scale_Opt.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
+  <data name="uCtrl_Linear_Scale_Opt.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="&gt;&gt;uCtrl_Linear_Scale_Opt.Name" xml:space="preserve">
     <value>uCtrl_Linear_Scale_Opt</value>
   </data>
@@ -1232,6 +1241,9 @@
   </data>
   <data name="uCtrl_Circle_Scale_Opt.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
+  </data>
+  <data name="uCtrl_Circle_Scale_Opt.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;uCtrl_Circle_Scale_Opt.Name" xml:space="preserve">
     <value>uCtrl_Circle_Scale_Opt</value>
@@ -2304,6 +2316,33 @@
   <data name="&gt;&gt;tabPageConverting.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="button_Reset.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_Reset.Location" type="System.Drawing.Point, System.Drawing">
+    <value>715, 618</value>
+  </data>
+  <data name="button_Reset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>113, 23</value>
+  </data>
+  <data name="button_Reset.TabIndex" type="System.Int32, mscorlib">
+    <value>55</value>
+  </data>
+  <data name="button_Reset.Text" xml:space="preserve">
+    <value>Сброс настроек</value>
+  </data>
+  <data name="&gt;&gt;button_Reset.Name" xml:space="preserve">
+    <value>button_Reset</value>
+  </data>
+  <data name="&gt;&gt;button_Reset.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_Reset.Parent" xml:space="preserve">
+    <value>tabPage_Settings</value>
+  </data>
+  <data name="&gt;&gt;button_Reset.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="numericUpDown_Gif_Speed.Location" type="System.Drawing.Point, System.Drawing">
     <value>580, 188</value>
   </data>
@@ -2323,7 +2362,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;numericUpDown_Gif_Speed.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="checkBox_AllWidgetsInGif.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2354,7 +2393,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;checkBox_AllWidgetsInGif.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="button_WatchSkin_PathGet.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -2462,7 +2501,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="label355.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2492,7 +2531,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;label355.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="checkBox_ShowIn12hourFormat.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2522,7 +2561,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;checkBox_ShowIn12hourFormat.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="checkBox_Shortcuts_Border.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2606,7 +2645,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;groupBox8.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="checkBox_JsonWarnings.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2639,7 +2678,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;checkBox_JsonWarnings.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="comboBox_Language.Items" xml:space="preserve">
     <value>Русский</value>
@@ -2666,7 +2705,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;comboBox_Language.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="label356.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2696,7 +2735,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;label356.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="radioButton_Settings_Pack_DoNotning.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2810,7 +2849,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;groupBox7.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="radioButton_Settings_Open_DoNotning.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2924,7 +2963,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;groupBox6.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="radioButton_Settings_AfterUnpack_DoNothing.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3038,7 +3077,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="radioButton_Settings_Unpack_Replace.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3152,7 +3191,7 @@
     <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="tabPage_Settings.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
@@ -4246,7 +4285,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
-        DQAAAk1TRnQBSQFMAgEBBgEAASQBKQEkASkBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAAXwBKQF8ASkBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA

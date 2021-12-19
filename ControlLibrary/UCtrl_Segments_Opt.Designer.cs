@@ -30,13 +30,14 @@ namespace ControlLibrary
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrl_Segments_Opt));
             this.comboBox_image = new System.Windows.Forms.ComboBox();
             this.label01 = new System.Windows.Forms.Label();
             this.dataGridView_coordinates_set = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label02 = new System.Windows.Forms.Label();
             this.contextMenuStrip_XY_InTable = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.label02 = new System.Windows.Forms.Label();
             this.вставитьКоординатыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.копироватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.вставитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,14 +48,11 @@ namespace ControlLibrary
             // 
             // comboBox_image
             // 
+            resources.ApplyResources(this.comboBox_image, "comboBox_image");
             this.comboBox_image.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_image.DropDownWidth = 135;
             this.comboBox_image.FormattingEnabled = true;
-            this.comboBox_image.Location = new System.Drawing.Point(3, 34);
-            this.comboBox_image.MaxDropDownItems = 25;
             this.comboBox_image.Name = "comboBox_image";
-            this.comboBox_image.Size = new System.Drawing.Size(76, 21);
-            this.comboBox_image.TabIndex = 162;
             this.comboBox_image.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
             this.comboBox_image.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
             this.comboBox_image.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
@@ -63,29 +61,20 @@ namespace ControlLibrary
             // 
             // label01
             // 
-            this.label01.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label01.Location = new System.Drawing.Point(3, 0);
+            resources.ApplyResources(this.label01, "label01");
             this.label01.Name = "label01";
-            this.label01.Size = new System.Drawing.Size(80, 30);
-            this.label01.TabIndex = 161;
-            this.label01.Text = "Стартовое изображение";
-            this.label01.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // dataGridView_coordinates_set
             // 
+            resources.ApplyResources(this.dataGridView_coordinates_set, "dataGridView_coordinates_set");
             this.dataGridView_coordinates_set.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView_coordinates_set.ColumnHeadersHeight = 21;
             this.dataGridView_coordinates_set.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2});
             this.dataGridView_coordinates_set.ContextMenuStrip = this.contextMenuStrip_XY_InTable;
             this.dataGridView_coordinates_set.EnableHeadersVisualStyles = false;
-            this.dataGridView_coordinates_set.Location = new System.Drawing.Point(3, 86);
             this.dataGridView_coordinates_set.Name = "dataGridView_coordinates_set";
-            this.dataGridView_coordinates_set.RowHeadersWidth = 45;
             this.dataGridView_coordinates_set.RowTemplate.Height = 18;
-            this.dataGridView_coordinates_set.Size = new System.Drawing.Size(165, 213);
-            this.dataGridView_coordinates_set.TabIndex = 163;
             this.dataGridView_coordinates_set.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_coordinates_set_CellClick);
             this.dataGridView_coordinates_set.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_coordinates_set_CellEndEdit);
             this.dataGridView_coordinates_set.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView_coordinates_set_CellMouseDoubleClick);
@@ -98,30 +87,20 @@ namespace ControlLibrary
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn1.HeaderText = "X";
+            resources.ApplyResources(this.dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // dataGridViewTextBoxColumn2
             // 
             this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.HeaderText = "Y";
+            resources.ApplyResources(this.dataGridViewTextBoxColumn2, "dataGridViewTextBoxColumn2");
             this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             this.dataGridViewTextBoxColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
-            // label02
-            // 
-            this.label02.AutoSize = true;
-            this.label02.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label02.Location = new System.Drawing.Point(3, 68);
-            this.label02.Name = "label02";
-            this.label02.Size = new System.Drawing.Size(95, 13);
-            this.label02.TabIndex = 164;
-            this.label02.Text = "Набор координат";
-            this.label02.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            // 
             // contextMenuStrip_XY_InTable
             // 
+            resources.ApplyResources(this.contextMenuStrip_XY_InTable, "contextMenuStrip_XY_InTable");
             this.contextMenuStrip_XY_InTable.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip_XY_InTable.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вставитьКоординатыToolStripMenuItem,
@@ -129,51 +108,50 @@ namespace ControlLibrary
             this.вставитьToolStripMenuItem,
             this.удалитьСтрокуToolStripMenuItem});
             this.contextMenuStrip_XY_InTable.Name = "contextMenuStrip_XY_InTable";
-            this.contextMenuStrip_XY_InTable.Size = new System.Drawing.Size(197, 108);
             this.contextMenuStrip_XY_InTable.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_XY_InTable_Opening);
+            // 
+            // label02
+            // 
+            resources.ApplyResources(this.label02, "label02");
+            this.label02.Name = "label02";
             // 
             // вставитьКоординатыToolStripMenuItem
             // 
+            resources.ApplyResources(this.вставитьКоординатыToolStripMenuItem, "вставитьКоординатыToolStripMenuItem");
             this.вставитьКоординатыToolStripMenuItem.Image = global::ControlLibrary.Properties.Resources.Actions_insert_text_icon;
             this.вставитьКоординатыToolStripMenuItem.Name = "вставитьКоординатыToolStripMenuItem";
-            this.вставитьКоординатыToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
-            this.вставитьКоординатыToolStripMenuItem.Text = "Вставить координаты";
             this.вставитьКоординатыToolStripMenuItem.Click += new System.EventHandler(this.вставитьКоординатыToolStripMenuItem_Click);
             // 
             // копироватьToolStripMenuItem
             // 
+            resources.ApplyResources(this.копироватьToolStripMenuItem, "копироватьToolStripMenuItem");
             this.копироватьToolStripMenuItem.Image = global::ControlLibrary.Properties.Resources.Files_Copy_File_icon;
             this.копироватьToolStripMenuItem.Name = "копироватьToolStripMenuItem";
-            this.копироватьToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
-            this.копироватьToolStripMenuItem.Text = "Копировать";
             this.копироватьToolStripMenuItem.Click += new System.EventHandler(this.копироватьToolStripMenuItem_Click);
             // 
             // вставитьToolStripMenuItem
             // 
+            resources.ApplyResources(this.вставитьToolStripMenuItem, "вставитьToolStripMenuItem");
             this.вставитьToolStripMenuItem.Image = global::ControlLibrary.Properties.Resources.Files_Clipboard_icon;
             this.вставитьToolStripMenuItem.Name = "вставитьToolStripMenuItem";
-            this.вставитьToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
-            this.вставитьToolStripMenuItem.Text = "Вставить";
             this.вставитьToolStripMenuItem.Click += new System.EventHandler(this.вставитьToolStripMenuItem_Click);
             // 
             // удалитьСтрокуToolStripMenuItem
             // 
+            resources.ApplyResources(this.удалитьСтрокуToolStripMenuItem, "удалитьСтрокуToolStripMenuItem");
             this.удалитьСтрокуToolStripMenuItem.Image = global::ControlLibrary.Properties.Resources.table_row_delete_icon;
             this.удалитьСтрокуToolStripMenuItem.Name = "удалитьСтрокуToolStripMenuItem";
-            this.удалитьСтрокуToolStripMenuItem.Size = new System.Drawing.Size(196, 26);
-            this.удалитьСтрокуToolStripMenuItem.Text = "Удалить строку";
             this.удалитьСтрокуToolStripMenuItem.Click += new System.EventHandler(this.удалитьСтрокуToolStripMenuItem_Click);
             // 
             // UCtrl_Segments_Opt
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.dataGridView_coordinates_set);
             this.Controls.Add(this.label02);
             this.Controls.Add(this.comboBox_image);
             this.Controls.Add(this.label01);
             this.Name = "UCtrl_Segments_Opt";
-            this.Size = new System.Drawing.Size(250, 316);
             this.Load += new System.EventHandler(this.UCtrl_Segments_Opt_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_coordinates_set)).EndInit();
             this.contextMenuStrip_XY_InTable.ResumeLayout(false);

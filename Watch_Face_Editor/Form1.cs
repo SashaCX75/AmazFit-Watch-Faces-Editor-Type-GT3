@@ -175,6 +175,7 @@ namespace Watch_Face_Editor
             Logger.WriteLine("Form1_Load");
 
             PreviewView = false;
+            Settings_Load = true;
 
             comboBox_AddBackground.SelectedIndex = 0;
             comboBox_AddTime.SelectedIndex = 0;
@@ -255,7 +256,6 @@ namespace Watch_Face_Editor
                 System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Minor.ToString();
 
             Logger.WriteLine("Set Settings");
-            Settings_Load = true;
             radioButton_Settings_AfterUnpack_Dialog.Checked = ProgramSettings.Settings_AfterUnpack_Dialog;
             radioButton_Settings_AfterUnpack_DoNothing.Checked = ProgramSettings.Settings_AfterUnpack_DoNothing;
             radioButton_Settings_AfterUnpack_Download.Checked = ProgramSettings.Settings_AfterUnpack_Download;
@@ -435,7 +435,7 @@ namespace Watch_Face_Editor
             ProgramSettings.Show_Widgets_Area = checkBox_WidgetsArea.Checked;
             ProgramSettings.Show_Shortcuts = checkBox_Show_Shortcuts.Checked;
 
-            ProgramSettings.language = comboBox_Language.Text;
+            //ProgramSettings.language = comboBox_Language.Text;
 
             ProgramSettings.Model_GTR3 = radioButton_GTR3.Checked;
             ProgramSettings.Model_GTR3_Pro = radioButton_GTR3_Pro.Checked;
@@ -1371,6 +1371,8 @@ namespace Watch_Face_Editor
             uCtrl_DateMonth_Elm.SettingsClear();
             uCtrl_DateYear_Elm.SettingsClear();
             uCtrl_DateWeek_Elm.SettingsClear();
+
+            uCtrl_Steps_Elm.SettingsClear();
         }
 
         private void uCtrl_Background_Elm_SelectChanged(object sender, EventArgs eventArgs)
@@ -1596,7 +1598,7 @@ namespace Watch_Face_Editor
             PreviewView = false;
             string dirName = Path.GetDirectoryName(fileName) + @"\assets\";
             // устанавливаем настройки для предпросмотра
-            fileName = Path.Combine(dirName, "Preview.States");
+            fileName = Path.Combine(Path.GetDirectoryName(fileName), "Preview.States");
             if (File.Exists(fileName))
             {
                 Logger.WriteLine("Load Preview.States");
@@ -2716,22 +2718,26 @@ namespace Watch_Face_Editor
                             ElementDigitalTime DigitalTime = (ElementDigitalTime)element;
                             uCtrl_DigitalTime_Elm.SetVisibilityElementStatus(DigitalTime.visible);
                             elementOptions = new Dictionary<int, string>();
-                            if (DigitalTime.Second != null)
+                            if (DigitalTime.Second != null && !elementOptions.ContainsKey(DigitalTime.Second.position) && 
+                                !elementOptions.ContainsValue("Second"))
                             {
                                 uCtrl_DigitalTime_Elm.checkBox_Seconds.Checked = DigitalTime.Second.visible;
                                 elementOptions.Add(DigitalTime.Second.position, "Second");
                             }
-                            if (DigitalTime.Minute != null)
+                            if (DigitalTime.Minute != null && !elementOptions.ContainsKey(DigitalTime.Minute.position) &&
+                                !elementOptions.ContainsValue("Minute"))
                             {
                                 uCtrl_DigitalTime_Elm.checkBox_Minutes.Checked = DigitalTime.Minute.visible;
                                 elementOptions.Add(DigitalTime.Minute.position, "Minute");
                             }
-                            if (DigitalTime.Hour != null)
+                            if (DigitalTime.Hour != null && !elementOptions.ContainsKey(DigitalTime.Hour.position) &&
+                                !elementOptions.ContainsValue("Hour"))
                             {
                                 uCtrl_DigitalTime_Elm.checkBox_Hours.Checked = DigitalTime.Hour.visible;
                                 elementOptions.Add(DigitalTime.Hour.position, "Hour");
                             }
-                            if (DigitalTime.AmPm != null)
+                            if (DigitalTime.AmPm != null && !elementOptions.ContainsKey(DigitalTime.AmPm.position) &&
+                                !elementOptions.ContainsValue("AmPm"))
                             {
                                 uCtrl_DigitalTime_Elm.checkBox_AmPm.Checked = DigitalTime.AmPm.visible;
                                 elementOptions.Add(DigitalTime.AmPm.position, "AmPm");
@@ -3020,7 +3026,7 @@ namespace Watch_Face_Editor
             ProgramSettings.Show_Widgets_Area = checkBox_WidgetsArea.Checked;
             ProgramSettings.Show_Shortcuts = checkBox_Show_Shortcuts.Checked;
 
-            ProgramSettings.language = comboBox_Language.Text;
+            //ProgramSettings.language = comboBox_Language.Text;
 
             ProgramSettings.Model_GTR3 = radioButton_GTR3.Checked;
             ProgramSettings.Model_GTR3_Pro = radioButton_GTR3_Pro.Checked;
@@ -3075,7 +3081,7 @@ namespace Watch_Face_Editor
             ProgramSettings.Show_Widgets_Area = checkBox_WidgetsArea.Checked;
             ProgramSettings.Show_Shortcuts = checkBox_Show_Shortcuts.Checked;
 
-            ProgramSettings.language = comboBox_Language.Text;
+            //ProgramSettings.language = comboBox_Language.Text;
 
             ProgramSettings.Model_GTR3 = radioButton_GTR3.Checked;
             ProgramSettings.Model_GTR3_Pro = radioButton_GTR3_Pro.Checked;
@@ -4237,6 +4243,112 @@ namespace Watch_Face_Editor
             ProgramSettings.Model_GTR3_Pro = radioButton_GTR3_Pro.Checked;
             ProgramSettings.Model_GTS3 = radioButton_GTS3.Checked;
 
+            if (radioButton_GTR3.Checked)
+            {
+                textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_3;
+
+                if(Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
+                Watch_Face.WatchFace_Info.DeviceName = "GTR3";
+
+                if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
+                {
+                    if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
+                    {
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.w=454;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
+                    }
+                    if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
+                    {
+                        Watch_Face.ScreenNormal.Background.BackgroundImage.w = 454;
+                        Watch_Face.ScreenNormal.Background.BackgroundImage.h = 454;
+                    }
+                }
+
+                if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
+                {
+                    if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
+                    {
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.w = 454;
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.h = 454;
+                    }
+                    if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
+                    {
+                        Watch_Face.ScreenAOD.Background.BackgroundImage.w = 454;
+                        Watch_Face.ScreenAOD.Background.BackgroundImage.h = 454;
+                    }
+                }
+            }
+            else if (radioButton_GTR3_Pro.Checked)
+            {
+                textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_3_Pro;
+
+                if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
+                Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
+
+                if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
+                {
+                    if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
+                    {
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 490;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 490;
+                    }
+                    if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
+                    {
+                        Watch_Face.ScreenNormal.Background.BackgroundImage.w = 490;
+                        Watch_Face.ScreenNormal.Background.BackgroundImage.h = 490;
+                    }
+                }
+
+                if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
+                {
+                    if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
+                    {
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.w = 490;
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.h = 490;
+                    }
+                    if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
+                    {
+                        Watch_Face.ScreenAOD.Background.BackgroundImage.w = 490;
+                        Watch_Face.ScreenAOD.Background.BackgroundImage.h = 490;
+                    }
+                }
+            }
+            else if (radioButton_GTS3.Checked)
+            {
+                textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_3;
+
+                if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
+                Watch_Face.WatchFace_Info.DeviceName = "GTS3";
+
+                if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
+                {
+                    if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
+                    {
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 490;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 490;
+                    }
+                    if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
+                    {
+                        Watch_Face.ScreenNormal.Background.BackgroundImage.w = 490;
+                        Watch_Face.ScreenNormal.Background.BackgroundImage.h = 490;
+                    }
+                }
+
+                if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
+                {
+                    if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
+                    {
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.w = 390;
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.h = 450;
+                    }
+                    if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
+                    {
+                        Watch_Face.ScreenAOD.Background.BackgroundImage.w = 390;
+                        Watch_Face.ScreenAOD.Background.BackgroundImage.h = 450;
+                    }
+                }
+            }
+
             string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
             {
                 //DefaultValueHandling = DefaultValueHandling.Ignore,
@@ -4351,7 +4463,9 @@ namespace Watch_Face_Editor
             // преобразуем настройки в текстовый файл
             string variables = "";
             string items = "";
+            string widgetDelegate = "";
             JsonToJS(out variables, out items);
+
 
             string indexText = File.ReadAllText(templatesFileDir + @"\index.js");
             string versionText = "v " +
@@ -4395,7 +4509,9 @@ namespace Watch_Face_Editor
             }
 
             //if (Directory.Exists(tempDir)) Directory.Delete(tempDir, true);
-            //if (Directory.Exists(tempDir)) DeleteDirectory(tempDir);
+#if !DEBUG
+            if (Directory.Exists(tempDir)) DeleteDirectory(tempDir);
+#endif
             progressBar1.Visible = false;
         }
 
@@ -4598,7 +4714,7 @@ namespace Watch_Face_Editor
                 }
                 if (radioButton_GTS3.Checked)
                 {
-                    bitmap = new Bitmap(Convert.ToInt32(348), Convert.ToInt32(442), PixelFormat.Format32bppArgb);
+                    bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
                     mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
                     PreviewHeight = 306;
                 }
@@ -4646,7 +4762,7 @@ namespace Watch_Face_Editor
                 }
                 if (radioButton_GTS3.Checked)
                 {
-                    bitmap = new Bitmap(Convert.ToInt32(348), Convert.ToInt32(442), PixelFormat.Format32bppArgb);
+                    bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
                     mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
                     PreviewHeight = 306;
                 }
@@ -4878,7 +4994,7 @@ namespace Watch_Face_Editor
 
                                 int width = 0;
 
-                                if (Watch_Face.ScreenNormal == null && Watch_Face.ScreenNormal.Background != null)
+                                if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
                                 {
                                     if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
                                         width = Watch_Face.ScreenNormal.Background.BackgroundColor.w;
@@ -4887,7 +5003,7 @@ namespace Watch_Face_Editor
                                         width = (int)Watch_Face.ScreenNormal.Background.BackgroundImage.w;
                                 }
 
-                                if (Watch_Face.ScreenAOD == null && Watch_Face.ScreenAOD.Background != null)
+                                if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
                                 {
                                     if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
                                         width = Watch_Face.ScreenAOD.Background.BackgroundColor.w;
@@ -4943,6 +5059,9 @@ namespace Watch_Face_Editor
                 //FileName = Path.GetFileName(openFileDialog.FileName);
                 FullFileDir = projectPath;
             }
+#if !DEBUG
+            if (Directory.Exists(tempDir)) DeleteDirectory(tempDir);
+#endif
         }
 
         private void TgaToPng(string file)
@@ -5487,6 +5606,7 @@ namespace Watch_Face_Editor
                 if (dateYear.Number == null) dateYear.Number = new hmUI_widget_IMG_NUMBER();
                 img_number = dateYear.Number;
                 Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                uCtrl_Text_Opt.Year = true;
                 ShowElemenrOptions("Text");
 
             }
@@ -5986,8 +6106,65 @@ namespace Watch_Face_Editor
                 Watch_Face.ScreenAOD = new ScreenAOD();
                 Background background = Watch_Face.ScreenNormal.Background;
                 List<object> elements = Watch_Face.ScreenNormal.Elements;
-                Watch_Face.ScreenAOD.Background = background;
-                Watch_Face.ScreenAOD.Elements = elements;
+                Watch_Face.ScreenAOD.Background = (Background)background.Clone();
+                //Watch_Face.ScreenAOD.Elements = elements;
+                Watch_Face.ScreenAOD.Elements = new List<object>();
+                foreach (Object element in elements)
+                {
+                    string type = element.GetType().Name;
+                    switch (type)
+                    {
+                        #region ElementDigitalTime
+                        case "ElementDigitalTime":
+                            ElementDigitalTime DigitalTime = (ElementDigitalTime)element;
+                            Watch_Face.ScreenAOD.Elements.Add((ElementDigitalTime)DigitalTime.Clone());
+                            break;
+                        #endregion
+
+                        #region ElementAnalogTime
+                        case "ElementAnalogTime":
+                            ElementAnalogTime AnalogTime = (ElementAnalogTime)element;
+                            Watch_Face.ScreenAOD.Elements.Add((ElementAnalogTime)AnalogTime.Clone());
+                            break;
+                        #endregion
+
+                        #region ElementDateDay
+                        case "ElementDateDay":
+                            ElementDateDay DateDay = (ElementDateDay)element;
+                            Watch_Face.ScreenAOD.Elements.Add((ElementDateDay)DateDay.Clone());
+                            break;
+                        #endregion
+
+                        #region ElementDateMonth
+                        case "ElementDateMonth":
+                            ElementDateMonth DateMonth = (ElementDateMonth)element;
+                            Watch_Face.ScreenAOD.Elements.Add((ElementDateMonth)DateMonth.Clone());
+                            break;
+                        #endregion
+
+                        #region ElementDateYear
+                        case "ElementDateYear":
+                            ElementDateYear DateYear = (ElementDateYear)element;
+                            Watch_Face.ScreenAOD.Elements.Add((ElementDateYear)DateYear.Clone());
+                            break;
+                        #endregion
+
+                        #region ElementDateWeek
+                        case "ElementDateWeek":
+                            ElementDateWeek DateWeek = (ElementDateWeek)element;
+                            Watch_Face.ScreenAOD.Elements.Add((ElementDateWeek)DateWeek.Clone());
+                            break;
+                        #endregion
+
+                        #region ElementSteps
+                        case "ElementSteps":
+                            ElementSteps activityElement = (ElementSteps)element;
+                            Watch_Face.ScreenAOD.Elements.Add((ElementSteps)activityElement.Clone());
+                            break;
+                            #endregion
+                    }
+                }
+
             }
             ShowElemetsWatchFace();
             JSON_Modified = true;
@@ -6171,6 +6348,330 @@ namespace Watch_Face_Editor
             FormText();
         }
 
+        private void button_SavePNG_Click(object sender, EventArgs e)
+        {
+            Logger.WriteLine("* SavePNG");
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.InitialDirectory = FullFileDir;
+            saveFileDialog.Filter = Properties.FormStrings.FilterPng;
+            saveFileDialog.FileName = "Preview.png";
+            //openFileDialog.Filter = "PNG Files: (*.png)|*.png";
+            saveFileDialog.RestoreDirectory = true;
+            saveFileDialog.Title = Properties.FormStrings.Dialog_Title_SavePNG;
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
+                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
+                if (radioButton_GTR3_Pro.Checked)
+                {
+                    bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
+                    mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png.png");
+                }
+                if (radioButton_GTS3.Checked)
+                {
+                    bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
+                    mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
+                }
+                Graphics gPanel = Graphics.FromImage(bitmap);
+                int link = radioButton_ScreenNormal.Checked ? 0 : 1;
+                Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, true, false, false, false, link);
+                if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
+                else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
+                bitmap.Save(saveFileDialog.FileName, ImageFormat.Png);
+            }
+            Logger.WriteLine("* SavePNG(end)");
+        }
+
+        private void button_SaveGIF_Click(object sender, EventArgs e)
+        {
+            Logger.WriteLine("* SaveGIF");
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.InitialDirectory = FullFileDir;
+            saveFileDialog.Filter = Properties.FormStrings.FilterGif;
+            saveFileDialog.FileName = "Preview.gif";
+            //openFileDialog.Filter = "GIF Files: (*.gif)|*.gif";
+            saveFileDialog.RestoreDirectory = true;
+            saveFileDialog.Title = Properties.FormStrings.Dialog_Title_SaveGIF;
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
+                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
+                if (radioButton_GTR3_Pro.Checked)
+                {
+                    bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
+                    mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png.png");
+                }
+                if (radioButton_GTS3.Checked)
+                {
+                    bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
+                    mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
+                }
+                Bitmap bitmapTemp = new Bitmap(bitmap.Width, bitmap.Height, PixelFormat.Format32bppArgb);
+                Graphics gPanel = Graphics.FromImage(bitmap);
+                bool save = false;
+                Random rnd = new Random();
+                PreviewView = false;
+                int SetNumber = WatchFacePreviewSet.SetNumber;
+
+                using (MagickImageCollection collection = new MagickImageCollection())
+                {
+                    // основной экран
+                    //WidgetDrawIndex = 0;
+                    for (int i = 0; i < 13; i++)
+                    {
+                        save = false;
+                        switch (i)
+                        {
+                            case 0:
+                                //button_Set1.PerformClick();
+                                SetPreferences(userCtrl_Set1);
+                                save = true;
+                                break;
+                            case 1:
+                                if (userCtrl_Set2.numericUpDown_Calories_Set.Value != 1234)
+                                {
+                                    SetPreferences(userCtrl_Set2);
+                                    save = true;
+                                }
+                                break;
+                            case 2:
+                                if (userCtrl_Set3.numericUpDown_Calories_Set.Value != 1234)
+                                {
+                                    SetPreferences(userCtrl_Set3);
+                                    save = true;
+                                }
+                                break;
+                            case 3:
+                                if (userCtrl_Set4.numericUpDown_Calories_Set.Value != 1234)
+                                {
+                                    SetPreferences(userCtrl_Set4);
+                                    save = true;
+                                }
+                                break;
+                            case 4:
+                                if (userCtrl_Set5.numericUpDown_Calories_Set.Value != 1234)
+                                {
+                                    SetPreferences(userCtrl_Set5);
+                                    save = true;
+                                }
+                                break;
+                            case 5:
+                                if (userCtrl_Set6.numericUpDown_Calories_Set.Value != 1234)
+                                {
+                                    SetPreferences(userCtrl_Set6);
+                                    save = true;
+                                }
+                                break;
+                            case 6:
+                                if (userCtrl_Set7.numericUpDown_Calories_Set.Value != 1234)
+                                {
+                                    SetPreferences(userCtrl_Set7);
+                                    save = true;
+                                }
+                                break;
+                            case 7:
+                                if (userCtrl_Set8.numericUpDown_Calories_Set.Value != 1234)
+                                {
+                                    SetPreferences(userCtrl_Set8);
+                                    save = true;
+                                }
+                                break;
+                            case 8:
+                                if (userCtrl_Set9.numericUpDown_Calories_Set.Value != 1234)
+                                {
+                                    SetPreferences(userCtrl_Set9);
+                                    save = true;
+                                }
+                                break;
+                            case 9:
+                                if (userCtrl_Set10.numericUpDown_Calories_Set.Value != 1234)
+                                {
+                                    SetPreferences(userCtrl_Set10);
+                                    save = true;
+                                }
+                                break;
+                            case 10:
+                                if (userCtrl_Set11.numericUpDown_Calories_Set.Value != 1234)
+                                {
+                                    SetPreferences(userCtrl_Set11);
+                                    save = true;
+                                }
+                                break;
+                            case 11:
+                                if (userCtrl_Set12.numericUpDown_Calories_Set.Value != 1234)
+                                {
+                                    SetPreferences(userCtrl_Set12);
+                                    save = true;
+                                }
+                                break;
+                        }
+
+                        if (save)
+                        {
+                            bitmap = bitmapTemp;
+                            gPanel = Graphics.FromImage(bitmap);
+                            Logger.WriteLine("SaveGIF SetPreferences(" + i.ToString() + ")");
+
+                            //int link = radioButton_ScreenNormal.Checked ? 0 : 1;
+                            int link = 0;
+                            Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, true,
+                                false, false, false, link);
+                            //if (checkBox_crop.Checked) {
+                            //    bitmap = ApplyMask(bitmap, mask);
+                            //    gPanel = Graphics.FromImage(bitmap);
+                            //}
+                            if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
+                            else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
+                            // Add first image and set the animation delay to 100ms
+                            MagickImage item = new MagickImage(bitmap);
+                            //ExifProfile profile = item.GetExifProfile();
+                            collection.Add(item);
+                            //collection[collection.Count - 1].AnimationDelay = 100;
+                            collection[collection.Count - 1].AnimationDelay = (int)(100 * numericUpDown_Gif_Speed.Value);
+                            //WidgetDrawIndex++;
+                        }
+                    }
+
+                    //WidgetDrawIndex = -1;
+                    Logger.WriteLine("SaveGIF_AOD");
+                    // AOD
+                    if (Watch_Face.ScreenAOD != null)
+                    {
+
+                        bitmap = bitmapTemp;
+                        gPanel = Graphics.FromImage(bitmap);
+                        //int link = radioButton_ScreenNormal.Checked ? 0 : 1;
+                        int link_AOD = 1;
+                        Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, true,
+                            false, false, false, link_AOD);
+                        //if (checkBox_crop.Checked)
+                        //{
+                        //    bitmap = ApplyMask(bitmap, mask);
+                        //    gPanel = Graphics.FromImage(bitmap);
+                        //}
+                        if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
+                        else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
+                        // Add first image and set the animation delay to 100ms
+                        MagickImage item_AOD = new MagickImage(bitmap);
+                        //ExifProfile profile = item.GetExifProfile();
+                        collection.Add(item_AOD);
+                        //collection[collection.Count - 1].AnimationDelay = 100;
+                        collection[collection.Count - 1].AnimationDelay = (int)(100 * numericUpDown_Gif_Speed.Value);
+
+
+                        SetPreferences(userCtrl_Set1);
+                        bitmap = bitmapTemp;
+                        gPanel = Graphics.FromImage(bitmap);
+                        Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, true,
+                            false, false, false, link_AOD);
+                        //if (checkBox_crop.Checked)
+                        //{
+                        //    bitmap = ApplyMask(bitmap, mask);
+                        //    gPanel = Graphics.FromImage(bitmap);
+                        //}
+                        if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
+                        else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
+                        item_AOD = new MagickImage(bitmap);
+                        //ExifProfile profile = item.GetExifProfile();
+                        collection.Add(item_AOD);
+                        //collection[collection.Count - 1].AnimationDelay = 100;
+                        collection[collection.Count - 1].AnimationDelay = (int)(100 * numericUpDown_Gif_Speed.Value);
+                    }
+
+                    //if (Watch_Face != null && Watch_Face.Widgets != null && Watch_Face.Widgets.Widget != null)
+                    //{
+                    //    if (comboBox_WidgetNumber.Items.Count > 0)
+                    //    {
+                    //        for (int i = 0; i < comboBox_WidgetNumber.Items.Count; i++)
+                    //        {
+                    //            bitmap = bitmapTemp;
+                    //            gPanel = Graphics.FromImage(bitmap);
+                    //            DrawWidgetEditScreen(gPanel, false, false, i, true);
+
+                    //            if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
+                    //            else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
+                    //            MagickImage item = new MagickImage(bitmap);
+                    //            collection.Add(item);
+                    //            collection[collection.Count - 1].AnimationDelay = (int)(100 * numericUpDown_Gif_Speed.Value);
+                    //        }
+                    //    }
+                    //}
+
+                    // Optionally reduce colors
+                    QuantizeSettings settings = new QuantizeSettings();
+                    //settings.Colors = 256;
+                    //collection.Quantize(settings);
+
+                    // Optionally optimize the images (images should have the same size).
+                    collection.OptimizeTransparency();
+                    //collection.Optimize();
+
+                    // Save gif
+                    collection.Write(saveFileDialog.FileName);
+                }
+                switch (SetNumber)
+                {
+                    case 1:
+                        SetPreferences(userCtrl_Set1);
+                        break;
+                    case 2:
+                        SetPreferences(userCtrl_Set2);
+                        break;
+                    case 3:
+                        SetPreferences(userCtrl_Set3);
+                        break;
+                    case 4:
+                        SetPreferences(userCtrl_Set4);
+                        break;
+                    case 5:
+                        SetPreferences(userCtrl_Set5);
+                        break;
+                    case 6:
+                        SetPreferences(userCtrl_Set6);
+                        break;
+                    case 7:
+                        SetPreferences(userCtrl_Set7);
+                        break;
+                    case 8:
+                        SetPreferences(userCtrl_Set8);
+                        break;
+                    case 9:
+                        SetPreferences(userCtrl_Set9);
+                        break;
+                    case 10:
+                        SetPreferences(userCtrl_Set10);
+                        break;
+                    case 11:
+                        SetPreferences(userCtrl_Set11);
+                        break;
+                    case 12:
+                        SetPreferences(userCtrl_Set12);
+                        break;
+                    default:
+                        SetPreferences(userCtrl_Set12);
+                        break;
+                }
+                PreviewView = true;
+                mask.Dispose();
+                bitmapTemp.Dispose();
+                bitmap.Dispose();
+            }
+            Logger.WriteLine("* SaveGIF (end)");
+        }
+
+        private void button_Reset_Click(object sender, EventArgs e)
+        {
+            if (File.Exists(Application.StartupPath + @"\Settings.json"))
+            {
+                File.Delete(Application.StartupPath + @"\Settings.json");
+                if (MessageBox.Show(Properties.FormStrings.Message_Restart_Text1 + Environment.NewLine +
+                                Properties.FormStrings.Message_Restart_Text2, Properties.FormStrings.Message_Restart_Caption,
+                                MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    Application.Restart();
+                }
+            }
+        }
     }
 }
 
