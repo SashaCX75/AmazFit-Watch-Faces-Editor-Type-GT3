@@ -10,17 +10,13 @@ using System.Windows.Forms;
 
 namespace ControlLibrary
 {
-    public partial class UCtrl_Steps_Elm : UserControl
+    public partial class UCtrl_Statuses_Elm : UserControl
     {
         private bool setValue; // режим задания параметров
-        bool highlight_images = false;
-        bool highlight_segments = false;
-        bool highlight_number = false;
-        bool highlight_number_target = false;
-        bool highlight_pointer = false;
-        bool highlight_circle_scale = false;
-        bool highlight_linear_scale = false;
-        bool highlight_icon = false;
+        bool highlight_lock = false;
+        bool highlight_DND = false;
+        bool highlight_bluetooth = false;
+        bool highlight_alarm = false;
 
         bool visibility_elements = false; // развернут список с элементами
         bool visibilityElement = true; // элемент оторажается на предпросмотре
@@ -30,7 +26,7 @@ namespace ControlLibrary
 
         Point cursorPos = new Point(0, 0);
 
-        public UCtrl_Steps_Elm()
+        public UCtrl_Statuses_Elm()
         {
             InitializeComponent();
             setValue = false;
@@ -88,143 +84,135 @@ namespace ControlLibrary
             pictureBox_Arrow_Right.Visible = !visibility_elements;
         }
 
+        public bool GetHighlightState()
+        {
+            bool highlight = highlight_DND || highlight_bluetooth || highlight_alarm || highlight_lock;
+            return highlight;
+        }
+
         public void ResetHighlightState()
         {
             selectedElement = "";
 
-            highlight_images = false;
-            highlight_segments = false;
-            highlight_number = false;
-            highlight_number_target = false;
-            highlight_pointer = false;
-            highlight_circle_scale = false;
-            highlight_linear_scale = false;
-            highlight_icon = false;
+            highlight_lock = false;
+            highlight_DND = false;
+            highlight_bluetooth = false;
+            highlight_alarm = false;
 
-            SelectElement();
-        }
-
-        private void SelectElement()
-        {
-            if (highlight_images)
+            if (highlight_DND)
             {
-                panel_Images.BackColor = SystemColors.ActiveCaption;
-                button_Images.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Images.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+                panel_DND.BackColor = SystemColors.ActiveCaption;
+                button_DND.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_DND.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
             }
             else
             {
-                panel_Images.BackColor = SystemColors.Control;
-                button_Images.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Images.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+                panel_DND.BackColor = SystemColors.Control;
+                button_DND.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_DND.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
-            if (highlight_segments)
+            if (highlight_bluetooth)
             {
-                panel_Segments.BackColor = SystemColors.ActiveCaption;
-                button_Segments.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Segments.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+                panel_Bluetooth.BackColor = SystemColors.ActiveCaption;
+                button_Bluetooth.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Bluetooth.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
             }
             else
             {
-                panel_Segments.BackColor = SystemColors.Control;
-                button_Segments.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Segments.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+                panel_Bluetooth.BackColor = SystemColors.Control;
+                button_Bluetooth.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Bluetooth.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
-            if (highlight_number)
+            if (highlight_alarm)
             {
-                panel_Number.BackColor = SystemColors.ActiveCaption;
-                button_Number.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Number.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+                panel_Alarm.BackColor = SystemColors.ActiveCaption;
+                button_Alarm.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Alarm.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
             }
             else
             {
-                panel_Number.BackColor = SystemColors.Control;
-                button_Number.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Number.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+                panel_Alarm.BackColor = SystemColors.Control;
+                button_Alarm.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Alarm.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
-            if (highlight_number_target)
+            if (highlight_lock)
             {
-                panel_Number_Target.BackColor = SystemColors.ActiveCaption;
-                button_Number_Target.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Number_Target.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+                panel_Lock.BackColor = SystemColors.ActiveCaption;
+                button_Lock.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Lock.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
             }
             else
             {
-                panel_Number_Target.BackColor = SystemColors.Control;
-                button_Number_Target.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Number_Target.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_pointer)
-            {
-                panel_Pointer.BackColor = SystemColors.ActiveCaption;
-                button_Pointer.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Pointer.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Pointer.BackColor = SystemColors.Control;
-                button_Pointer.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Pointer.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_circle_scale)
-            {
-                panel_Circle_Scale.BackColor = SystemColors.ActiveCaption;
-                button_Circle_Scale.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Circle_Scale.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Circle_Scale.BackColor = SystemColors.Control;
-                button_Circle_Scale.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Circle_Scale.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_linear_scale)
-            {
-                panel_Linear_Scale.BackColor = SystemColors.ActiveCaption;
-                button_Linear_Scale.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Linear_Scale.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Linear_Scale.BackColor = SystemColors.Control;
-                button_Linear_Scale.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Linear_Scale.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_icon)
-            {
-                panel_Icon.BackColor = SystemColors.ActiveCaption;
-                button_Icon.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Icon.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Icon.BackColor = SystemColors.Control;
-                button_Icon.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Icon.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+                panel_Lock.BackColor = SystemColors.Control;
+                button_Lock.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Lock.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
         }
 
-        private void panel_Images_Click(object sender, EventArgs e)
+        private void panel_DND_Click(object sender, EventArgs e)
         {
-            selectedElement = "Images";
+            selectedElement = "DND";
 
-            highlight_images = true;
-            highlight_segments = false;
-            highlight_number = false;
-            highlight_number_target = false;
-            highlight_pointer = false;
-            highlight_circle_scale = false;
-            highlight_linear_scale = false;
-            highlight_icon = false;
+            highlight_DND = true;
+            highlight_bluetooth = false;
+            highlight_alarm = false;
 
-            SelectElement();
+            highlight_lock = false;
+
+            if (highlight_DND)
+            {
+                panel_DND.BackColor = SystemColors.ActiveCaption;
+                button_DND.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_DND.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_DND.BackColor = SystemColors.Control;
+                button_DND.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_DND.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_bluetooth)
+            {
+                panel_Bluetooth.BackColor = SystemColors.ActiveCaption;
+                button_Bluetooth.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Bluetooth.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Bluetooth.BackColor = SystemColors.Control;
+                button_Bluetooth.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Bluetooth.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_alarm)
+            {
+                panel_Alarm.BackColor = SystemColors.ActiveCaption;
+                button_Alarm.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Alarm.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Alarm.BackColor = SystemColors.Control;
+                button_Alarm.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Alarm.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_lock)
+            {
+                panel_Lock.BackColor = SystemColors.ActiveCaption;
+                button_Lock.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Lock.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Lock.BackColor = SystemColors.Control;
+                button_Lock.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Lock.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
 
             if (SelectChanged != null)
             {
@@ -233,20 +221,67 @@ namespace ControlLibrary
             }
         }
 
-        private void panel_Segments_Click(object sender, EventArgs e)
+        private void panel_Bluetooth_Click(object sender, EventArgs e)
         {
-            selectedElement = "Segments";
+            selectedElement = "Bluetooth";
 
-            highlight_images = false;
-            highlight_segments = true;
-            highlight_number = false;
-            highlight_number_target = false;
-            highlight_pointer = false;
-            highlight_circle_scale = false;
-            highlight_linear_scale = false;
-            highlight_icon = false;
+            highlight_DND = false;
+            highlight_bluetooth = true;
+            highlight_alarm = false;
 
-            SelectElement();
+            highlight_lock = false;
+
+            if (highlight_DND)
+            {
+                panel_DND.BackColor = SystemColors.ActiveCaption;
+                button_DND.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_DND.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_DND.BackColor = SystemColors.Control;
+                button_DND.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_DND.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_bluetooth)
+            {
+                panel_Bluetooth.BackColor = SystemColors.ActiveCaption;
+                button_Bluetooth.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Bluetooth.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Bluetooth.BackColor = SystemColors.Control;
+                button_Bluetooth.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Bluetooth.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_alarm)
+            {
+                panel_Alarm.BackColor = SystemColors.ActiveCaption;
+                button_Alarm.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Alarm.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Alarm.BackColor = SystemColors.Control;
+                button_Alarm.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Alarm.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_lock)
+            {
+                panel_Lock.BackColor = SystemColors.ActiveCaption;
+                button_Lock.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Lock.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Lock.BackColor = SystemColors.Control;
+                button_Lock.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Lock.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
 
             if (SelectChanged != null)
             {
@@ -255,20 +290,67 @@ namespace ControlLibrary
             }
         }
 
-        private void panel_Number_Click(object sender, EventArgs e)
+        private void panel_Alarm_Click(object sender, EventArgs e)
         {
-            selectedElement = "Number";
+            selectedElement = "Alarm";
 
-            highlight_images = false;
-            highlight_segments = false;
-            highlight_number = true;
-            highlight_number_target = false;
-            highlight_pointer = false;
-            highlight_circle_scale = false;
-            highlight_linear_scale = false;
-            highlight_icon = false;
+            highlight_DND = false;
+            highlight_bluetooth = false;
+            highlight_alarm = true;
 
-            SelectElement();
+            highlight_lock = false;
+
+            if (highlight_DND)
+            {
+                panel_DND.BackColor = SystemColors.ActiveCaption;
+                button_DND.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_DND.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_DND.BackColor = SystemColors.Control;
+                button_DND.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_DND.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_bluetooth)
+            {
+                panel_Bluetooth.BackColor = SystemColors.ActiveCaption;
+                button_Bluetooth.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Bluetooth.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Bluetooth.BackColor = SystemColors.Control;
+                button_Bluetooth.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Bluetooth.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_alarm)
+            {
+                panel_Alarm.BackColor = SystemColors.ActiveCaption;
+                button_Alarm.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Alarm.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Alarm.BackColor = SystemColors.Control;
+                button_Alarm.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Alarm.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_lock)
+            {
+                panel_Lock.BackColor = SystemColors.ActiveCaption;
+                button_Lock.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Lock.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Lock.BackColor = SystemColors.Control;
+                button_Lock.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Lock.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
 
             if (SelectChanged != null)
             {
@@ -277,108 +359,67 @@ namespace ControlLibrary
             }
         }
 
-        private void panel_Number_Target_Click(object sender, EventArgs e)
+        private void panel_Lock_Click(object sender, EventArgs e)
         {
-            selectedElement = "Number_Target";
+            selectedElement = "Lock";
 
-            highlight_images = false;
-            highlight_segments = false;
-            highlight_number = false;
-            highlight_number_target = true;
-            highlight_pointer = false;
-            highlight_circle_scale = false;
-            highlight_linear_scale = false;
-            highlight_icon = false;
+            highlight_DND = false;
+            highlight_bluetooth = false;
+            highlight_alarm = false;
 
-            SelectElement();
+            highlight_lock = true;
 
-            if (SelectChanged != null)
+            if (highlight_DND)
             {
-                EventArgs eventArgs = new EventArgs();
-                SelectChanged(this, eventArgs);
+                panel_DND.BackColor = SystemColors.ActiveCaption;
+                button_DND.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_DND.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
             }
-        }
-
-        private void panel_Pointer_Click(object sender, EventArgs e)
-        {
-            selectedElement = "Pointer";
-
-            highlight_images = false;
-            highlight_segments = false;
-            highlight_number = false;
-            highlight_number_target = false;
-            highlight_pointer = true;
-            highlight_circle_scale = false;
-            highlight_linear_scale = false;
-            highlight_icon = false;
-
-            SelectElement();
-
-            if (SelectChanged != null)
+            else
             {
-                EventArgs eventArgs = new EventArgs();
-                SelectChanged(this, eventArgs);
+                panel_DND.BackColor = SystemColors.Control;
+                button_DND.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_DND.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
-        }
 
-        private void panel_Circle_Scale_Click(object sender, EventArgs e)
-        {
-            selectedElement = "Circle_Scale";
-
-            highlight_images = false;
-            highlight_segments = false;
-            highlight_number = false;
-            highlight_number_target = false;
-            highlight_pointer = false;
-            highlight_circle_scale = true;
-            highlight_linear_scale = false;
-            highlight_icon = false;
-
-            SelectElement();
-
-            if (SelectChanged != null)
+            if (highlight_bluetooth)
             {
-                EventArgs eventArgs = new EventArgs();
-                SelectChanged(this, eventArgs);
+                panel_Bluetooth.BackColor = SystemColors.ActiveCaption;
+                button_Bluetooth.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Bluetooth.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
             }
-        }
-
-        private void panel_Linear_Scale_Click(object sender, EventArgs e)
-        {
-            selectedElement = "Linear_Scale";
-
-            highlight_images = false;
-            highlight_segments = false;
-            highlight_number = false;
-            highlight_number_target = false;
-            highlight_pointer = false;
-            highlight_circle_scale = false;
-            highlight_linear_scale = true;
-            highlight_icon = false;
-
-            SelectElement();
-
-            if (SelectChanged != null)
+            else
             {
-                EventArgs eventArgs = new EventArgs();
-                SelectChanged(this, eventArgs);
+                panel_Bluetooth.BackColor = SystemColors.Control;
+                button_Bluetooth.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Bluetooth.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
-        }
 
-        private void panel_Icon_Click(object sender, EventArgs e)
-        {
-            selectedElement = "Icon";
+            if (highlight_alarm)
+            {
+                panel_Alarm.BackColor = SystemColors.ActiveCaption;
+                button_Alarm.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Alarm.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Alarm.BackColor = SystemColors.Control;
+                button_Alarm.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Alarm.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
 
-            highlight_images = false;
-            highlight_segments = false;
-            highlight_number = false;
-            highlight_number_target = false;
-            highlight_pointer = false;
-            highlight_circle_scale = false;
-            highlight_linear_scale = false;
-            highlight_icon = true;
-
-            SelectElement();
+            if (highlight_lock)
+            {
+                panel_Lock.BackColor = SystemColors.ActiveCaption;
+                button_Lock.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Lock.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Lock.BackColor = SystemColors.Control;
+                button_Lock.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Lock.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
 
             if (SelectChanged != null)
             {
@@ -400,6 +441,8 @@ namespace ControlLibrary
                 panel.Tag = new object();
                 cursorPos = Cursor.Position;
             }
+
+            //((Control)sender).Tag = new object();
         }
 
         private void Control_MouseMove(object sender, MouseEventArgs e)
@@ -418,6 +461,10 @@ namespace ControlLibrary
                     panel.DoDragDrop(sender, DragDropEffects.Move);
                 //panel.DoDragDrop(sender, DragDropEffects.Move);
             }
+
+            //Control control = (Control)sender;
+            //if (control.Tag != null)
+            //    control.DoDragDrop(sender, DragDropEffects.Move);
         }
 
         private void Control_MouseUp(object sender, MouseEventArgs e)
@@ -453,6 +500,19 @@ namespace ControlLibrary
             {
                 var pos = tableLayoutPanel1.GetPositionFromControl(control);
                 var posOld = tableLayoutPanel1.GetPositionFromControl(draggedPanel);
+                //if (pos.Row == 6) return;
+                //tableLayoutPanel1.Controls.Add(draggedButton, pos.Column, pos.Row);
+
+                //if (pos != posOld)
+                //{
+                //    if (pt.Y < control.Location.Y + draggedPanel.Height * 0.9)
+                //    {
+                //        tableLayoutPanel1.SetRow(draggedPanel, pos.Row);
+                //        if (pos.Row < posOld.Row) tableLayoutPanel1.SetRow(control, pos.Row + 1);
+                //        else tableLayoutPanel1.SetRow(control, pos.Row - 1);
+                //    }
+                //}
+
                 if (pos != posOld && pos.Row < posOld.Row)
                 {
                     if (pt.Y < control.Location.Y + draggedPanel.Height * 0.4)
@@ -521,8 +581,8 @@ namespace ControlLibrary
         private void pictureBox_Show_Click(object sender, EventArgs e)
         {
             visibilityElement = false;
-            pictureBox_Show.Visible = false;
-            pictureBox_NotShow.Visible = true;
+            pictureBox_Show.Visible = visibilityElement;
+            pictureBox_NotShow.Visible = !visibilityElement;
 
             if (VisibleElementChanged != null)
             {
@@ -534,8 +594,8 @@ namespace ControlLibrary
         private void pictureBox_NotShow_Click(object sender, EventArgs e)
         {
             visibilityElement = true;
-            pictureBox_Show.Visible = true;
-            pictureBox_NotShow.Visible = false;
+            pictureBox_Show.Visible = visibilityElement;
+            pictureBox_NotShow.Visible = !visibilityElement;
 
             if (VisibleElementChanged != null)
             {
@@ -577,29 +637,17 @@ namespace ControlLibrary
             setValue = true;
             switch (name)
             {
-                case "Images":
-                    checkBox_Images.Checked = status;
+                case "DND":
+                    checkBox_DND.Checked = status;
                     break;
-                case "Segments":
-                    checkBox_Segments.Checked = status;
+                case "Bluetooth":
+                    checkBox_Bluetooth.Checked = status;
                     break;
-                case "Number":
-                    checkBox_Number.Checked = status;
+                case "Alarm":
+                    checkBox_Alarm.Checked = status;
                     break;
-                case "Number_Target":
-                    checkBox_Number_Target.Checked = status;
-                    break;
-                case "Pointer":
-                    checkBox_Pointer.Checked = status;
-                    break;
-                case "Circle_Scale":
-                    checkBox_Circle_Scale.Checked = status;
-                    break;
-                case "Linear_Scale":
-                    checkBox_Linear_Scale.Checked = status;
-                    break;
-                case "Icon":
-                    checkBox_Icon.Checked = status;
+                case "Lock":
+                    checkBox_Lock.Checked = status;
                     break;
             }
             setValue = false;
@@ -617,29 +665,17 @@ namespace ControlLibrary
                     string name = elementOptions[elementCount - key];
                     switch (name)
                     {
-                        case "Images":
-                            panel = panel_Images;
+                        case "DND":
+                            panel = panel_DND;
                             break;
-                        case "Segments":
-                            panel = panel_Segments;
+                        case "Bluetooth":
+                            panel = panel_Bluetooth;
                             break;
-                        case "Number":
-                            panel = panel_Number;
+                        case "Alarm":
+                            panel = panel_Alarm;
                             break;
-                        case "Number_Target":
-                            panel = panel_Number_Target;
-                            break;
-                        case "Pointer":
-                            panel = panel_Pointer;
-                            break;
-                        case "Circle_Scale":
-                            panel = panel_Circle_Scale;
-                            break;
-                        case "Linear_Scale":
-                            panel = panel_Linear_Scale;
-                            break;
-                        case "Icon":
-                            panel = panel_Icon;
+                        case "Lock":
+                            panel = panel_Lock;
                             break;
                     }
                 }
@@ -683,29 +719,17 @@ namespace ControlLibrary
                 Control panel = tableLayoutPanel1.GetControlFromPosition(0, i);
                 switch (panel.Name)
                 {
-                    case "panel_Images":
-                        elementOptions.Add("Images", count - i);
+                    case "panel_Alarm":
+                        elementOptions.Add("Alarm", count - i);
                         break;
-                    case "panel_Segments":
-                        elementOptions.Add("Segments", count - i);
+                    case "panel_Bluetooth":
+                        elementOptions.Add("Bluetooth", count - i);
                         break;
-                    case "panel_Number":
-                        elementOptions.Add("Number", count - i);
+                    case "panel_DND":
+                        elementOptions.Add("DND", count - i);
                         break;
-                    case "panel_Number_Target":
-                        elementOptions.Add("Number_Target", count - i);
-                        break;
-                    case "panel_Pointer":
-                        elementOptions.Add("Pointer", count - i);
-                        break;
-                    case "panel_Circle_Scale":
-                        elementOptions.Add("Circle_Scale", count - i);
-                        break;
-                    case "panel_Linear_Scale":
-                        elementOptions.Add("Linear_Scale", count - i);
-                        break;
-                    case "panel_Icon":
-                        elementOptions.Add("Icon", count - i);
+                    case "panel_Lock":
+                        elementOptions.Add("Lock", count - i);
                         break;
                 }
             }
@@ -717,24 +741,16 @@ namespace ControlLibrary
             setValue = true;
 
             Dictionary<int, string> elementOptions = new Dictionary<int, string>();
-            elementOptions.Add(1, "Icon");
-            elementOptions.Add(2, "Linear_Scale");
-            elementOptions.Add(3, "Circle_Scale");
-            elementOptions.Add(4, "Pointer");
-            elementOptions.Add(5, "Number_Target");
-            elementOptions.Add(6, "Number");
-            elementOptions.Add(7, "Segments");
-            elementOptions.Add(8, "Images");
+            elementOptions.Add(4, "Alarm");
+            elementOptions.Add(3, "Bluetooth");
+            elementOptions.Add(2, "DND");
+            elementOptions.Add(1, "Lock");
             SetOptionsPosition(elementOptions);
 
-            checkBox_Images.Checked = false;
-            checkBox_Segments.Checked = false;
-            checkBox_Number.Checked = false;
-            checkBox_Number_Target.Checked = false;
-            checkBox_Pointer.Checked = false;
-            checkBox_Circle_Scale.Checked = false;
-            checkBox_Linear_Scale.Checked = false;
-            checkBox_Icon.Checked = false;
+            checkBox_DND.Checked = false;
+            checkBox_Bluetooth.Checked = false;
+            checkBox_Alarm.Checked = false;
+            checkBox_Lock.Checked = false;
 
             visibility_elements = false;
             tableLayoutPanel1.Visible = visibility_elements;

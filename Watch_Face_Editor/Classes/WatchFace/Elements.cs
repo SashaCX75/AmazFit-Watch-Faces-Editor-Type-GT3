@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -349,6 +350,56 @@ namespace Watch_Face_Editor
 
         /// <summary>Горизонтальная или вертикальная шкала</summary>
         public bool vertical { get; set; }
+
+        /// <summary>Основной экран или AOD</summary>
+        public string show_level = "";
+    }
+
+    /// <summary>Статусы</summary>
+    public class hmUI_widget_IMG_STATUS
+    {
+        /// <summary>Позиция в наборе элементов</summary>
+        public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = false;
+
+        public int x { get; set; }
+        public int y { get; set; }
+
+        /// <summary>Изображение</summary>
+        public string src { get; set; }
+
+        /// <summary>Тип статуса</summary>
+        public string type { get; set; }
+
+        /// <summary>Основной экран или AOD</summary>
+        public string show_level = "";
+    }
+
+    /// <summary>Ярлык</summary>
+    public class hmUI_widget_IMG_CLICK
+    {
+        /// <summary>Позиция в наборе элементов</summary>
+        public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = false;
+
+        public int x { get; set; }
+        public int y { get; set; }
+
+        /// <summary>Ширина</summary>
+        public int w = 100;
+
+        /// <summary>Высота</summary>
+        public int h = 100;
+
+        /// <summary>Изображение</summary>
+        public string src { get; set; }
+
+        /// <summary>Тип ярлыка</summary>
+        public string type { get; set; }
 
         /// <summary>Основной экран или AOD</summary>
         public string show_level = "";

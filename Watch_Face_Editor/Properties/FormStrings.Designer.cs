@@ -250,6 +250,15 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Новый циферблат создан..
+        /// </summary>
+        internal static string Message_ConvertingCompleted_Text {
+            get {
+                return ResourceManager.GetString("Message_ConvertingCompleted_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Координаты скопированны.
         /// </summary>
         internal static string Message_CopyCoord {
@@ -448,6 +457,15 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Вы не можете добавлять ярлыки на экран AOD..
+        /// </summary>
+        internal static string Message_ShortcutsAOD_Text {
+            get {
+                return ResourceManager.GetString("Message_ShortcutsAOD_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на В этой папке уже существует папка с изображениями..
         /// </summary>
         internal static string Message_Warning_Assets_Exist1 {
@@ -507,6 +525,24 @@ namespace Watch_Face_Editor.Properties {
         internal static string Message_Warning_Information {
             get {
                 return ResourceManager.GetString("Message_Warning_Information", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Каталог .
+        /// </summary>
+        internal static string Message_WarningConverting_Text1 {
+            get {
+                return ResourceManager.GetString("Message_WarningConverting_Text1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на  уже существует. Заменить?.
+        /// </summary>
+        internal static string Message_WarningConverting_Text2 {
+            get {
+                return ResourceManager.GetString("Message_WarningConverting_Text2", resourceCulture);
             }
         }
         

@@ -180,6 +180,9 @@
   <data name="Form_PreviewX" xml:space="preserve">
     <value>Предпросмотр [X =</value>
   </data>
+  <data name="Message_ConvertingCompleted_Text" xml:space="preserve">
+    <value>Новый циферблат создан.</value>
+  </data>
   <data name="Message_CopyCoord" xml:space="preserve">
     <value>Координаты скопированны</value>
   </data>
@@ -245,6 +248,15 @@
   </data>
   <data name="Message_Save_new_JSON" xml:space="preserve">
     <value>Текущий проект еще не сохранен. Вы хотите сохранить его?</value>
+  </data>
+  <data name="Message_ShortcutsAOD_Text" xml:space="preserve">
+    <value>Вы не можете добавлять ярлыки на экран AOD.</value>
+  </data>
+  <data name="Message_WarningConverting_Text1" xml:space="preserve">
+    <value>Каталог </value>
+  </data>
+  <data name="Message_WarningConverting_Text2" xml:space="preserve">
+    <value> уже существует. Заменить?</value>
   </data>
   <data name="Message_WarningPreview_Text1" xml:space="preserve">
     <value>Размеры изображения для Preview отличаются от стандартных.</value>

@@ -632,6 +632,378 @@ namespace Watch_Face_Editor
         }
     }
 
+    public class ElementStatuses : ICloneable
+    {
+        public string elementName = "ElementStatuses";
+
+        ///// <summary>Позиция в наборе элементов</summary>
+        //public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = true;
+
+        public hmUI_widget_IMG_STATUS Alarm { get; set; }
+        public hmUI_widget_IMG_STATUS Bluetooth { get; set; }
+        public hmUI_widget_IMG_STATUS DND { get; set; }
+        public hmUI_widget_IMG_STATUS Lock { get; set; }
+
+        public object Clone()
+        {
+            hmUI_widget_IMG_STATUS Alarm = null;
+            if (this.Alarm != null)
+            {
+                Alarm = new hmUI_widget_IMG_STATUS
+                {
+                    x = this.Alarm.x,
+                    y = this.Alarm.y,
+                    src = this.Alarm.src,
+
+                    position = this.Alarm.position,
+                    visible = this.Alarm.visible,
+
+                    show_level = this.Alarm.show_level,
+                    type = this.Alarm.type,
+                };
+            }
+
+            hmUI_widget_IMG_STATUS Bluetooth = null;
+            if (this.Bluetooth != null)
+            {
+                Bluetooth = new hmUI_widget_IMG_STATUS
+                {
+                    x = this.Bluetooth.x,
+                    y = this.Bluetooth.y,
+                    src = this.Bluetooth.src,
+
+                    position = this.Bluetooth.position,
+                    visible = this.Bluetooth.visible,
+
+                    show_level = this.Bluetooth.show_level,
+                    type = this.Bluetooth.type,
+                };
+            }
+
+            hmUI_widget_IMG_STATUS DND = null;
+            if (this.DND != null)
+            {
+                DND = new hmUI_widget_IMG_STATUS
+                {
+                    x = this.DND.x,
+                    y = this.DND.y,
+                    src = this.DND.src,
+
+                    position = this.DND.position,
+                    visible = this.DND.visible,
+
+                    show_level = this.DND.show_level,
+                    type = this.DND.type,
+                };
+            }
+
+            hmUI_widget_IMG_STATUS Lock = null;
+            if (this.Lock != null)
+            {
+                Lock = new hmUI_widget_IMG_STATUS
+                {
+                    x = this.Lock.x,
+                    y = this.Lock.y,
+                    src = this.Lock.src,
+
+                    position = this.Lock.position,
+                    visible = this.Lock.visible,
+
+                    show_level = this.Lock.show_level,
+                    type = this.Lock.type,
+                };
+            }
+
+            return new ElementStatuses
+            {
+                elementName = this.elementName,
+                visible = this.visible,
+
+                Alarm = Alarm,
+                Bluetooth = Bluetooth,
+                DND = DND,
+                Lock = Lock,
+            };
+        }
+    }
+
+    public class ElementShortcuts : ICloneable
+    {
+        public string elementName = "ElementShortcuts";
+
+        ///// <summary>Позиция в наборе элементов</summary>
+        //public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = true;
+
+        public hmUI_widget_IMG_CLICK Step { get; set; }
+        public hmUI_widget_IMG_CLICK Heart { get; set; }
+        public hmUI_widget_IMG_CLICK SPO2 { get; set; }
+        public hmUI_widget_IMG_CLICK PAI { get; set; }
+        public hmUI_widget_IMG_CLICK Stress { get; set; }
+        public hmUI_widget_IMG_CLICK Weather { get; set; }
+        public hmUI_widget_IMG_CLICK Altimeter { get; set; }
+        public hmUI_widget_IMG_CLICK Sunrise { get; set; }
+        public hmUI_widget_IMG_CLICK Alarm { get; set; }
+        public hmUI_widget_IMG_CLICK Sleep { get; set; }
+        public hmUI_widget_IMG_CLICK Countdown { get; set; }
+        public hmUI_widget_IMG_CLICK Stopwatch { get; set; }
+
+        public object Clone()
+        {
+            hmUI_widget_IMG_CLICK Step = null;
+            if (this.Step != null)
+            {
+                Step = new hmUI_widget_IMG_CLICK
+                {
+                    x = this.Step.x,
+                    y = this.Step.y,
+                    w = this.Step.w,
+                    h = this.Step.h,
+                    src = this.Step.src,
+
+                    position = this.Step.position,
+                    visible = this.Step.visible,
+
+                    show_level = this.Step.show_level,
+                    type = this.Step.type,
+                };
+            }
+
+            hmUI_widget_IMG_CLICK Heart = null;
+            if (this.Heart != null)
+            {
+                Heart = new hmUI_widget_IMG_CLICK
+                {
+                    x = this.Heart.x,
+                    y = this.Heart.y,
+                    w = this.Heart.w,
+                    h = this.Heart.h,
+                    src = this.Heart.src,
+
+                    position = this.Heart.position,
+                    visible = this.Heart.visible,
+
+                    show_level = this.Heart.show_level,
+                    type = this.Heart.type,
+                };
+            }
+
+            hmUI_widget_IMG_CLICK SPO2 = null;
+            if (this.SPO2 != null)
+            {
+                SPO2 = new hmUI_widget_IMG_CLICK
+                {
+                    x = this.SPO2.x,
+                    y = this.SPO2.y,
+                    w = this.SPO2.w,
+                    h = this.SPO2.h,
+                    src = this.SPO2.src,
+
+                    position = this.SPO2.position,
+                    visible = this.SPO2.visible,
+
+                    show_level = this.SPO2.show_level,
+                    type = this.SPO2.type,
+                };
+            }
+
+            hmUI_widget_IMG_CLICK PAI = null;
+            if (this.PAI != null)
+            {
+                PAI = new hmUI_widget_IMG_CLICK
+                {
+                    x = this.PAI.x,
+                    y = this.PAI.y,
+                    w = this.PAI.w,
+                    h = this.PAI.h,
+                    src = this.PAI.src,
+
+                    position = this.PAI.position,
+                    visible = this.PAI.visible,
+
+                    show_level = this.PAI.show_level,
+                    type = this.PAI.type,
+                };
+            }
+
+            hmUI_widget_IMG_CLICK Stress = null;
+            if (this.Stress != null)
+            {
+                Stress = new hmUI_widget_IMG_CLICK
+                {
+                    x = this.Stress.x,
+                    y = this.Stress.y,
+                    w = this.Stress.w,
+                    h = this.Stress.h,
+                    src = this.Stress.src,
+
+                    position = this.Stress.position,
+                    visible = this.Stress.visible,
+
+                    show_level = this.Stress.show_level,
+                    type = this.Stress.type,
+                };
+            }
+
+            hmUI_widget_IMG_CLICK Weather = null;
+            if (this.Weather != null)
+            {
+                Weather = new hmUI_widget_IMG_CLICK
+                {
+                    x = this.Weather.x,
+                    y = this.Weather.y,
+                    w = this.Weather.w,
+                    h = this.Weather.h,
+                    src = this.Weather.src,
+
+                    position = this.Weather.position,
+                    visible = this.Weather.visible,
+
+                    show_level = this.Weather.show_level,
+                    type = this.Weather.type,
+                };
+            }
+
+            hmUI_widget_IMG_CLICK Altimeter = null;
+            if (this.Altimeter != null)
+            {
+                Altimeter = new hmUI_widget_IMG_CLICK
+                {
+                    x = this.Altimeter.x,
+                    y = this.Altimeter.y,
+                    w = this.Altimeter.w,
+                    h = this.Altimeter.h,
+                    src = this.Altimeter.src,
+
+                    position = this.Altimeter.position,
+                    visible = this.Altimeter.visible,
+
+                    show_level = this.Altimeter.show_level,
+                    type = this.Altimeter.type,
+                };
+            }
+
+            hmUI_widget_IMG_CLICK Sunrise = null;
+            if (this.Sunrise != null)
+            {
+                Sunrise = new hmUI_widget_IMG_CLICK
+                {
+                    x = this.Sunrise.x,
+                    y = this.Sunrise.y,
+                    w = this.Sunrise.w,
+                    h = this.Sunrise.h,
+                    src = this.Sunrise.src,
+
+                    position = this.Sunrise.position,
+                    visible = this.Sunrise.visible,
+
+                    show_level = this.Sunrise.show_level,
+                    type = this.Sunrise.type,
+                };
+            }
+
+            hmUI_widget_IMG_CLICK Alarm = null;
+            if (this.Alarm != null)
+            {
+                Alarm = new hmUI_widget_IMG_CLICK
+                {
+                    x = this.Alarm.x,
+                    y = this.Alarm.y,
+                    w = this.Alarm.w,
+                    h = this.Alarm.h,
+                    src = this.Alarm.src,
+
+                    position = this.Alarm.position,
+                    visible = this.Alarm.visible,
+
+                    show_level = this.Alarm.show_level,
+                    type = this.Alarm.type,
+                };
+            }
+
+            hmUI_widget_IMG_CLICK Sleep = null;
+            if (this.Sleep != null)
+            {
+                Sleep = new hmUI_widget_IMG_CLICK
+                {
+                    x = this.Sleep.x,
+                    y = this.Sleep.y,
+                    w = this.Sleep.w,
+                    h = this.Sleep.h,
+                    src = this.Sleep.src,
+
+                    position = this.Sleep.position,
+                    visible = this.Sleep.visible,
+
+                    show_level = this.Sleep.show_level,
+                    type = this.Sleep.type,
+                };
+            }
+
+            hmUI_widget_IMG_CLICK Countdown = null;
+            if (this.Countdown != null)
+            {
+                Countdown = new hmUI_widget_IMG_CLICK
+                {
+                    x = this.Countdown.x,
+                    y = this.Countdown.y,
+                    w = this.Countdown.w,
+                    h = this.Countdown.h,
+                    src = this.Countdown.src,
+
+                    position = this.Countdown.position,
+                    visible = this.Countdown.visible,
+
+                    show_level = this.Countdown.show_level,
+                    type = this.Countdown.type,
+                };
+            }
+
+            hmUI_widget_IMG_CLICK Stopwatch = null;
+            if (this.Stopwatch != null)
+            {
+                Stopwatch = new hmUI_widget_IMG_CLICK
+                {
+                    x = this.Stopwatch.x,
+                    y = this.Stopwatch.y,
+                    w = this.Stopwatch.w,
+                    h = this.Stopwatch.h,
+                    src = this.Stopwatch.src,
+
+                    position = this.Stopwatch.position,
+                    visible = this.Stopwatch.visible,
+
+                    show_level = this.Stopwatch.show_level,
+                    type = this.Stopwatch.type,
+                };
+            }
+
+            return new ElementShortcuts
+            {
+                elementName = this.elementName,
+                visible = this.visible,
+
+                Step = Step,
+                Heart = Heart,
+                SPO2 = SPO2,
+                PAI = PAI,
+                Stress = Stress,
+                Weather = Weather,
+                Altimeter = Altimeter,
+                Sunrise = Sunrise,
+                Alarm = Alarm,
+                Sleep = Sleep,
+                Countdown = Countdown,
+                Stopwatch = Stopwatch,
+            };
+        }
+    }
+
     public class ElementSteps : ICloneable
     {
         public string elementName = "ElementSteps";
@@ -670,7 +1042,6 @@ namespace Watch_Face_Editor
                     type = this.Images.type,
                 };
             }
-
 
             hmUI_widget_IMG_PROGRESS Segments = null;
             if (this.Segments != null)

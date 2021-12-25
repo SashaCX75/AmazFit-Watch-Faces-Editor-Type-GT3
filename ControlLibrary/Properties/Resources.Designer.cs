@@ -143,6 +143,16 @@ namespace ControlLibrary.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap edit_attributes {
+            get {
+                object obj = ResourceManager.GetObject("edit_attributes", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Files_Clipboard_icon {
             get {
                 object obj = ResourceManager.GetObject("Files_Clipboard_icon", resourceCulture);
@@ -173,9 +183,29 @@ namespace ControlLibrary.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap launch {
+            get {
+                object obj = ResourceManager.GetObject("launch", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap linear_scale_18 {
             get {
                 object obj = ResourceManager.GetObject("linear_scale_18", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap on_off {
+            get {
+                object obj = ResourceManager.GetObject("on_off", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -236,6 +266,16 @@ namespace ControlLibrary.Properties {
         internal static System.Drawing.Bitmap segment_18 {
             get {
                 object obj = ResourceManager.GetObject("segment_18", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shortcut {
+            get {
+                object obj = ResourceManager.GetObject("shortcut", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

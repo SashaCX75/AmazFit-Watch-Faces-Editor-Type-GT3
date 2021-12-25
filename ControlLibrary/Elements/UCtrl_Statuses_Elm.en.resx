@@ -117,53 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="gtr_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\gtr_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="button_Lock.Text" xml:space="preserve">
+    <value>Lock</value>
   </data>
-  <data name="Sports-Walking_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Sports-Walking_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="button_DND.Text" xml:space="preserve">
+    <value>Do not disturb</value>
   </data>
-  <data name="Very-Basic-Calendar_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Very-Basic-Calendar_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="button_Alarm.Text" xml:space="preserve">
+    <value>Alarm</value>
   </data>
-  <data name="Background-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Background-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="OpenSans_Regular" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\OpenSans-Regular.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="clock-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\clock-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Sidebar-Search_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Sidebar-Search_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Very-Basic-Calendar_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Very-Basic-Calendar_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Weather-Partly-Cloudy-Rain_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Weather-Partly-Cloudy-Rain_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Sidebar-Search_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Sidebar-Search_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Weather-Partly-Cloudy-Rain_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Weather-Partly-Cloudy-Rain_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="unpacking" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\unpacking.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Logos-Administrative-Tools_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Logos-Administrative-Tools_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Sports-Walking_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Sports-Walking_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Logos-Administrative-Tools_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Logos-Administrative-Tools_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="packaging" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\packaging.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="button_ElementName.Text" xml:space="preserve">
+    <value>Statuses</value>
   </data>
 </root>

@@ -172,19 +172,13 @@
     <value>Pulse</value>
   </data>
   <data name="comboBox_AddActivity.Items5" xml:space="preserve">
-    <value>Pulse</value>
-  </data>
-  <data name="comboBox_AddActivity.Items6" xml:space="preserve">
     <value>Distance</value>
   </data>
-  <data name="comboBox_AddActivity.Items7" xml:space="preserve">
+  <data name="comboBox_AddActivity.Items6" xml:space="preserve">
     <value>Stand up</value>
   </data>
-  <data name="comboBox_AddActivity.Items8" xml:space="preserve">
+  <data name="comboBox_AddActivity.Items7" xml:space="preserve">
     <value>Activity</value>
-  </data>
-  <data name="comboBox_AddActivity.Items9" xml:space="preserve">
-    <value>Fat burning</value>
   </data>
   <data name="comboBox_AddDate.Items" xml:space="preserve">
     <value>Date</value>
@@ -301,6 +295,51 @@
   <data name="tabPage_Edit.Text" xml:space="preserve">
     <value>Edit</value>
   </data>
+  <data name="label_ConvertingHelp03.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 13</value>
+  </data>
+  <data name="label_ConvertingHelp03.Text" xml:space="preserve">
+    <value>!!! Check the resulting dial after conversion !!!</value>
+  </data>
+  <data name="label_ConvertingHelp02.Size" type="System.Drawing.Size, System.Drawing">
+    <value>441, 13</value>
+  </data>
+  <data name="label_ConvertingHelp02.Text" xml:space="preserve">
+    <value>** Conversion will resize images, circle radius, line width, recalculating element´s coordinates.</value>
+  </data>
+  <data name="label_ConvertingHelp01.Size" type="System.Drawing.Size, System.Drawing">
+    <value>389, 13</value>
+  </data>
+  <data name="label_ConvertingHelp01.Text" xml:space="preserve">
+    <value>* A new directory will be created next to the existing directory for the resulting dial.</value>
+  </data>
+  <data name="label_ConvertingHelp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>260, 13</value>
+  </data>
+  <data name="label_ConvertingHelp.Text" xml:space="preserve">
+    <value>Open the desired watch face or save the current one.</value>
+  </data>
+  <data name="button_Converting.Text" xml:space="preserve">
+    <value>Convert</value>
+  </data>
+  <data name="radioButton_ConvertingOutput_Custom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>395, 19</value>
+  </data>
+  <data name="radioButton_ConvertingOutput_Custom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 17</value>
+  </data>
+  <data name="radioButton_ConvertingOutput_Custom.Text" xml:space="preserve">
+    <value>Custom size</value>
+  </data>
+  <data name="radioButton_ConvertingInput_Custom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>395, 19</value>
+  </data>
+  <data name="radioButton_ConvertingInput_Custom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>81, 17</value>
+  </data>
+  <data name="radioButton_ConvertingInput_Custom.Text" xml:space="preserve">
+    <value>Custom size</value>
+  </data>
   <data name="tabPageConverting.Text" xml:space="preserve">
     <value>Converting</value>
   </data>
@@ -372,10 +411,10 @@ when saving a gif file</value>
     <value>Do nothing</value>
   </data>
   <data name="radioButton_Settings_Pack_GoToFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 17</value>
+    <value>109, 17</value>
   </data>
   <data name="radioButton_Settings_Pack_GoToFile.Text" xml:space="preserve">
-    <value>Open created .bin</value>
+    <value>Open created .zip</value>
   </data>
   <data name="radioButton_Settings_Pack_Dialog.Size" type="System.Drawing.Size, System.Drawing">
     <value>95, 17</value>
@@ -485,12 +524,6 @@ when saving a gif file</value>
   <data name="checkBox_center_marker.Text" xml:space="preserve">
     <value>Highlight the pointers rotation center</value>
   </data>
-  <data name="button_unpack_zip.Text" xml:space="preserve">
-    <value>Unpack the dial</value>
-  </data>
-  <data name="button_pack_zip.Text" xml:space="preserve">
-    <value>Pack the dial</value>
-  </data>
   <data name="button_CreatePreview.Text" xml:space="preserve">
     <value>Generate preview</value>
   </data>
@@ -535,7 +568,7 @@ when saving a gif file</value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
-        DQAAAk1TRnQBSQFMAgEBBgEAAcQBJwHEAScBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAAdwBJwHcAScBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -595,6 +628,12 @@ when saving a gif file</value>
         AwAB8AEfAQsBDAQAAfgBPwFNAYYBgAEBAgAB/AE/AQIBwgGAAQEBBAEAAf4BHwFDAWABwAEDAYQBAAH+
         AZ8CAAHwAQ8B9wHnAf4BHws=
 </value>
+  </data>
+  <data name="button_pack_zip.Text" xml:space="preserve">
+    <value>Pack the dial</value>
+  </data>
+  <data name="button_unpack_zip.Text" xml:space="preserve">
+    <value>Unpack the dial</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1846,9 +1885,5 @@ when saving a gif file</value>
         AAAAAAAAAAAAAO+BPCbvgT1I74I+SO+BPSYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8PwAA4AcAAMAD
         AACAAQAAgAEAAIABAAAAAAAAAAAAAAAAAAAAAAAAgAEAAIABAACAAQAAwAMAAOAHAAD8PwAA
 </value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
 </root>

@@ -25,13 +25,15 @@ namespace Watch_Face_Editor
         /// <param name="showShortcuts">Подсвечивать область ярлыков</param>
         /// <param name="showShortcutsArea">Подсвечивать область ярлыков рамкой</param>
         /// <param name="showShortcutsBorder">Подсвечивать область ярлыков заливкой</param>
+        /// <param name="showShortcutsImage">Подсвечивать изображение, отображаемое при нажатии ярлыка</param>
         /// <param name="showAnimation">Показывать анимацию при предпросмотре</param>
         /// <param name="showProgressArea">Подсвечивать круговую шкалу при наличии фонового изображения</param>
         /// <param name="showCentrHend">Подсвечивать центр стрелки</param>
         /// <param name="showWidgetsArea">Подсвечивать область виджетов</param>
         /// <param name="link">0 - основной экран; 1 - AOD</param>
         public void Preview_screen(Graphics gPanel, float scale, bool crop, bool WMesh, bool BMesh, bool BBorder,
-            bool showShortcuts, bool showShortcutsArea, bool showShortcutsBorder, bool showAnimation, bool showProgressArea,
+            bool showShortcuts, bool showShortcutsArea, bool showShortcutsBorder, bool showShortcutsImage, 
+            bool showAnimation, bool showProgressArea,
             bool showCentrHend, bool showWidgetsArea, int link)
         {
             int offSet_X = 227;
@@ -63,7 +65,7 @@ namespace Watch_Face_Editor
 
             #region Background
             Background background = null;
-            if (radioButton_ScreenNormal.Checked)
+            if (link == 0)
             {
                 if (Watch_Face != null && Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
                     background = Watch_Face.ScreenNormal.Background;
@@ -656,6 +658,181 @@ namespace Watch_Face_Editor
                             break;
                         #endregion
 
+                        #region ElementStatuses
+                        case "ElementStatuses":
+                            ElementStatuses statusElement = (ElementStatuses)element;
+                            if (!statusElement.visible) continue;
+
+                            hmUI_widget_IMG_STATUS img_status_alarm = statusElement.Alarm;
+                            hmUI_widget_IMG_STATUS img_status_bluetooth = statusElement.Bluetooth;
+                            hmUI_widget_IMG_STATUS img_status_dnd = statusElement.DND;
+                            hmUI_widget_IMG_STATUS img_status_lock = statusElement.Lock;
+
+                            for (int index = 1; index <= 4; index++)
+                            {
+                                if (img_status_alarm != null && img_status_alarm.src != null &&
+                                img_status_alarm.src.Length > 0 && index == img_status_alarm.position &&
+                                img_status_alarm.visible)
+                                {
+                                    if (WatchFacePreviewSet.Status.Alarm)
+                                    {
+                                        int imageIndex = ListImages.IndexOf(img_status_alarm.src);
+                                        int x = img_status_alarm.x;
+                                        int y = img_status_alarm.y;
+
+                                        if (imageIndex < ListImagesFullName.Count)
+                                        {
+                                            src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                            gPanel.DrawImage(src, x, y);
+                                            //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                                        } 
+                                    }
+                                }
+
+                                if (img_status_bluetooth != null && img_status_bluetooth.src != null &&
+                                img_status_bluetooth.src.Length > 0 && index == img_status_bluetooth.position &&
+                                img_status_bluetooth.visible)
+                                {
+                                    if (!WatchFacePreviewSet.Status.Bluetooth)
+                                    {
+                                        int imageIndex = ListImages.IndexOf(img_status_bluetooth.src);
+                                        int x = img_status_bluetooth.x;
+                                        int y = img_status_bluetooth.y;
+
+                                        if (imageIndex < ListImagesFullName.Count)
+                                        {
+                                            src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                            gPanel.DrawImage(src, x, y);
+                                            //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                                        } 
+                                    }
+                                }
+
+                                if (img_status_dnd != null && img_status_dnd.src != null &&
+                                img_status_dnd.src.Length > 0 && index == img_status_dnd.position &&
+                                img_status_dnd.visible)
+                                {
+                                    if (WatchFacePreviewSet.Status.DoNotDisturb)
+                                    {
+                                        int imageIndex = ListImages.IndexOf(img_status_dnd.src);
+                                        int x = img_status_dnd.x;
+                                        int y = img_status_dnd.y;
+
+                                        if (imageIndex < ListImagesFullName.Count)
+                                        {
+                                            src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                            gPanel.DrawImage(src, x, y);
+                                            //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                                        } 
+                                    }
+                                }
+
+                                if (img_status_lock != null && img_status_lock.src != null &&
+                                img_status_lock.src.Length > 0 && index == img_status_lock.position &&
+                                img_status_lock.visible)
+                                {
+                                    if (WatchFacePreviewSet.Status.Lock)
+                                    {
+                                        int imageIndex = ListImages.IndexOf(img_status_lock.src);
+                                        int x = img_status_lock.x;
+                                        int y = img_status_lock.y;
+
+                                        if (imageIndex < ListImagesFullName.Count)
+                                        {
+                                            src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                            gPanel.DrawImage(src, x, y);
+                                            //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                                        } 
+                                    }
+                                }
+                            }
+                            break;
+                        #endregion
+
+                        #region ElementShortcuts
+                        case "ElementShortcuts":
+                            ElementShortcuts shortcutsElement = (ElementShortcuts)element;
+                            if (!shortcutsElement.visible || !showShortcuts) continue;
+
+                            hmUI_widget_IMG_CLICK img_click_step = shortcutsElement.Step;
+                            hmUI_widget_IMG_CLICK img_click_heart = shortcutsElement.Heart;
+                            hmUI_widget_IMG_CLICK img_click_spo2 = shortcutsElement.SPO2;
+                            hmUI_widget_IMG_CLICK img_click_pai = shortcutsElement.PAI;
+                            hmUI_widget_IMG_CLICK img_click_stress = shortcutsElement.Stress;
+                            hmUI_widget_IMG_CLICK img_click_weather = shortcutsElement.Weather;
+                            hmUI_widget_IMG_CLICK img_click_altimeter = shortcutsElement.Altimeter;
+                            hmUI_widget_IMG_CLICK img_click_sunrise = shortcutsElement.Sunrise;
+                            hmUI_widget_IMG_CLICK img_click_alarm = shortcutsElement.Alarm;
+                            hmUI_widget_IMG_CLICK img_click_sleep = shortcutsElement.Sleep;
+                            hmUI_widget_IMG_CLICK img_click_countdown = shortcutsElement.Countdown;
+                            hmUI_widget_IMG_CLICK img_click_stopwatch = shortcutsElement.Stopwatch;
+
+                            for (int index = 1; index <= 15; index++)
+                            {
+                                if (img_click_step != null && index == img_click_step.position)
+                                {
+                                    DrawShortcuts(gPanel, img_click_step, 
+                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage);
+                                }
+                                if (img_click_heart != null && index == img_click_heart.position)
+                                {
+                                    DrawShortcuts(gPanel, img_click_heart,
+                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage);
+                                }
+                                if (img_click_spo2 != null && index == img_click_spo2.position)
+                                {
+                                    DrawShortcuts(gPanel, img_click_spo2,
+                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage);
+                                }
+                                if (img_click_pai != null && index == img_click_pai.position)
+                                {
+                                    DrawShortcuts(gPanel, img_click_pai,
+                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage);
+                                }
+                                if (img_click_stress != null && index == img_click_stress.position)
+                                {
+                                    DrawShortcuts(gPanel, img_click_stress,
+                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage);
+                                }
+                                if (img_click_weather != null && index == img_click_weather.position)
+                                {
+                                    DrawShortcuts(gPanel, img_click_weather,
+                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage);
+                                }
+                                if (img_click_altimeter != null && index == img_click_altimeter.position)
+                                {
+                                    DrawShortcuts(gPanel, img_click_altimeter,
+                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage);
+                                }
+                                if (img_click_sunrise != null && index == img_click_sunrise.position)
+                                {
+                                    DrawShortcuts(gPanel, img_click_sunrise,
+                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage);
+                                }
+                                if (img_click_alarm != null && index == img_click_alarm.position)
+                                {
+                                    DrawShortcuts(gPanel, img_click_alarm,
+                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage);
+                                }
+                                if (img_click_sleep != null && index == img_click_sleep.position)
+                                {
+                                    DrawShortcuts(gPanel, img_click_sleep,
+                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage);
+                                }
+                                if (img_click_countdown != null && index == img_click_countdown.position)
+                                {
+                                    DrawShortcuts(gPanel, img_click_countdown,
+                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage);
+                                }
+                                if (img_click_stopwatch != null && index == img_click_stopwatch.position)
+                                {
+                                    DrawShortcuts(gPanel, img_click_stopwatch,
+                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage);
+                                }
+                            }
+                            break;
+                        #endregion
+
                         #region ElementSteps
                         case "ElementSteps":
                             ElementSteps activityElement = (ElementSteps)element;
@@ -674,22 +851,22 @@ namespace Watch_Face_Editor
                             int value_lenght = 5;
                             int goal = WatchFacePreviewSet.Activity.StepsGoal;
                             float progress = (float)WatchFacePreviewSet.Activity.Steps / WatchFacePreviewSet.Activity.StepsGoal;
-                            
+
                             int valueImgIndex = -1;
                             int valueSegmentIndex = -1;
                             int imgCount = 0;
                             int segmentCount = 0;
-                            if(img_level != null && img_level.image_length > 0)
+                            if (img_level != null && img_level.image_length > 0)
                             {
                                 imgCount = img_level.image_length;
-                                valueImgIndex = (int)((imgCount) * progress);
+                                valueImgIndex = (int)((imgCount-1) * progress);
                                 if (progress < 0.01) valueImgIndex = -1;
                                 if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
                             }
                             if (img_prorgess != null && img_prorgess.image_length > 0)
                             {
                                 segmentCount = img_prorgess.image_length;
-                                valueSegmentIndex = (int)((segmentCount) * progress);
+                                valueSegmentIndex = (int)((segmentCount-1) * progress);
                                 if (progress < 0.01) valueSegmentIndex = -1;
                                 if (valueSegmentIndex >= segmentCount) valueImgIndex = (int)(segmentCount - 1);
                             }
@@ -722,11 +899,11 @@ namespace Watch_Face_Editor
                 //if (panel_Preview.Height > 690) LineDistance = 10;
                 for (i = 0; i < 30; i++)
                 {
-                    gPanel.DrawLine(pen, new Point(offSet_X + i * LineDistance, 0), new Point(offSet_X + i * LineDistance, 454));
-                    gPanel.DrawLine(pen, new Point(offSet_X - i * LineDistance, 0), new Point(offSet_X - i * LineDistance, 454));
+                    gPanel.DrawLine(pen, new Point(offSet_X + i * LineDistance, 0), new Point(offSet_X + i * LineDistance, 480));
+                    gPanel.DrawLine(pen, new Point(offSet_X - i * LineDistance, 0), new Point(offSet_X - i * LineDistance, 480));
 
-                    gPanel.DrawLine(pen, new Point(0, offSet_Y + i * LineDistance), new Point(454, offSet_Y + i * LineDistance));
-                    gPanel.DrawLine(pen, new Point(0, offSet_Y - i * LineDistance), new Point(454, offSet_Y - i * LineDistance));
+                    gPanel.DrawLine(pen, new Point(0, offSet_Y + i * LineDistance), new Point(480, offSet_Y + i * LineDistance));
+                    gPanel.DrawLine(pen, new Point(0, offSet_Y - i * LineDistance), new Point(480, offSet_Y - i * LineDistance));
 
                     if (i == 0) pen.Width = pen.Width / 3f;
                 }
@@ -743,11 +920,11 @@ namespace Watch_Face_Editor
                 //if (panel_Preview.Height > 690) LineDistance = 10;
                 for (i = 0; i < 30; i++)
                 {
-                    gPanel.DrawLine(pen, new Point(offSet_X + i * LineDistance, 0), new Point(offSet_X + i * LineDistance, 454));
-                    gPanel.DrawLine(pen, new Point(offSet_X - i * LineDistance, 0), new Point(offSet_X - i * LineDistance, 454));
+                    gPanel.DrawLine(pen, new Point(offSet_X + i * LineDistance, 0), new Point(offSet_X + i * LineDistance, 480));
+                    gPanel.DrawLine(pen, new Point(offSet_X - i * LineDistance, 0), new Point(offSet_X - i * LineDistance, 480));
 
-                    gPanel.DrawLine(pen, new Point(0, offSet_Y + i * LineDistance), new Point(454, offSet_Y + i * LineDistance));
-                    gPanel.DrawLine(pen, new Point(0, offSet_Y - i * LineDistance), new Point(454, offSet_Y - i * LineDistance));
+                    gPanel.DrawLine(pen, new Point(0, offSet_Y + i * LineDistance), new Point(480, offSet_Y + i * LineDistance));
+                    gPanel.DrawLine(pen, new Point(0, offSet_Y - i * LineDistance), new Point(480, offSet_Y - i * LineDistance));
 
                     if (i == 0) pen.Width = pen.Width / 3f;
                 }
@@ -916,12 +1093,12 @@ namespace Watch_Face_Editor
 
                     if (pointer.scale != null && pointer.scale.Length > 0)
                     {
-                        image_index = ListImages.IndexOf(pointer.scale);
-                        x = pointer.scale_x;
-                        y = pointer.scale_y;
+                        int image_index_scale = ListImages.IndexOf(pointer.scale);
+                        int x_scale = pointer.scale_x;
+                        int y_scale = pointer.scale_y;
 
-                        src = OpenFileStream(ListImagesFullName[image_index]);
-                        gPanel.DrawImage(src, x, y);
+                        src = OpenFileStream(ListImagesFullName[image_index_scale]);
+                        gPanel.DrawImage(src, x_scale, y_scale);
                     }
 
                     DrawAnalogClock(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
@@ -1784,6 +1961,77 @@ namespace Watch_Face_Editor
 
         }
 
+        /// <summary>формируем изображение на панедли Graphics</summary>
+        /// <param name="graphics">Поверхность для рисования</param>
+        /// <param name="shortcut">Элемент с отображаемым ярлыклм</param>
+        /// <param name="showShortcutsArea">Подсвечивать область ярлыков рамкой</param>
+        /// <param name="showShortcutsBorder">Подсвечивать область ярлыков заливкой</param>
+        /// <param name="showShortcutsImage">Подсвечивать изображение, отображаемое при нажатии ярлыка</param>
+        private void DrawShortcuts(Graphics graphics, hmUI_widget_IMG_CLICK shortcut,
+             bool showShortcutsArea, bool showShortcutsBorder, bool showShortcutsImage)
+        {
+            if (shortcut != null && shortcut.src != null && shortcut.src.Length > 0 && shortcut.visible)
+            {
+                int imageIndex = ListImages.IndexOf(shortcut.src);
+                int x = shortcut.x;
+                int y = shortcut.y;
+                int width = shortcut.w;
+                int height = shortcut.h;
+
+                if (showShortcutsArea)
+                {
+                    HatchBrush myHatchBrush = new HatchBrush(HatchStyle.Percent10, Color.White, Color.Transparent);
+                    Rectangle rect = new Rectangle(x, y, width, height);
+                    graphics.FillRectangle(myHatchBrush, rect);
+                    myHatchBrush = new HatchBrush(HatchStyle.Percent05, Color.Black, Color.Transparent);
+                    graphics.FillRectangle(myHatchBrush, rect);
+                }
+                if (showShortcutsBorder)
+                {
+                    Rectangle rect = new Rectangle(x, y, width - 1, height - 1);
+                    using (Pen pen1 = new Pen(Color.White, 1))
+                    {
+                        graphics.DrawRectangle(pen1, rect);
+                    }
+                    using (Pen pen2 = new Pen(Color.Black, 1))
+                    {
+                        pen2.DashStyle = DashStyle.Dot;
+                        graphics.DrawRectangle(pen2, rect);
+                    }
+                }
+
+                if (showShortcutsImage)
+                {
+                    if (imageIndex < ListImagesFullName.Count)
+                    {
+                        Bitmap src = OpenFileStream(ListImagesFullName[imageIndex]);
+                        int pos_x = x + width / 2 - src.Width / 2;
+                        int pos_y = y + height / 2 - src.Height / 2;
+                        if (pos_x >= x && pos_y >= y) 
+                        {
+                            graphics.DrawImage(src, pos_x, pos_y);
+                        }
+                        else
+                        {
+                            Rectangle cropRect = new Rectangle(x - pos_x, y - pos_y, width, height);
+                            //Rectangle cropRect = new Rectangle(...);
+                            //Bitmap src = Image.FromFile(fileName) as Bitmap;
+                            Bitmap target = new Bitmap(cropRect.Width, cropRect.Height);
+
+                            using (Graphics g = Graphics.FromImage(target))
+                            {
+                                g.DrawImage(src, new Rectangle(0, 0, target.Width, target.Height),
+                                                 cropRect,
+                                                 GraphicsUnit.Pixel);
+                            }
+                            graphics.DrawImage(target, x, y);
+                        }
+                        src.Dispose();
+                    } 
+                }
+            }
+        }
+
         private Bitmap OpenFileStream(string fileName)
         {
             Bitmap src = null;
@@ -1924,7 +2172,7 @@ namespace Watch_Face_Editor
             Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
             if (radioButton_GTR3_Pro.Checked)
             {
-                mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png.png");
+                mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
             }
             if (radioButton_GTS3.Checked)
             {

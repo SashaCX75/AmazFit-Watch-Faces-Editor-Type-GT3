@@ -163,6 +163,24 @@
     <Compile Include="Elements\UCtrl_Steps_Elm.Designer.cs">
       <DependentUpon>UCtrl_Steps_Elm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Elements\UCtrl_Statuses_Elm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\UCtrl_Statuses_Elm.Designer.cs">
+      <DependentUpon>UCtrl_Statuses_Elm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Elements\UCtrl_Shortcuts_Elm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\UCtrl_Shortcuts_Elm.Designer.cs">
+      <DependentUpon>UCtrl_Shortcuts_Elm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCtrl_Shortcut_Opt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCtrl_Shortcut_Opt.Designer.cs">
+      <DependentUpon>UCtrl_Shortcut_Opt.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCtrl_Text_Opt.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -172,6 +190,9 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Elements\UCtrl_Statuses_Elm.en.resx">
+      <DependentUpon>UCtrl_Statuses_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Steps_Elm.en.resx">
       <DependentUpon>UCtrl_Steps_Elm.cs</DependentUpon>
     </EmbeddedResource>
@@ -287,6 +308,15 @@
     <EmbeddedResource Include="Elements\UCtrl_Steps_Elm.resx">
       <DependentUpon>UCtrl_Steps_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Statuses_Elm.resx">
+      <DependentUpon>UCtrl_Statuses_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Shortcuts_Elm.resx">
+      <DependentUpon>UCtrl_Shortcuts_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Shortcut_Opt.resx">
+      <DependentUpon>UCtrl_Shortcut_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Text_Opt.en.resx">
       <DependentUpon>UCtrl_Text_Opt.cs</DependentUpon>
     </EmbeddedResource>
@@ -374,6 +404,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\table_row_delete_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\on_off.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit_attributes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\launch.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\shortcut.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -61,7 +61,6 @@
   <ItemGroup>
     <Compile Include="Classes\App_WatchFace.cs" />
     <Compile Include="Classes\WatchFace\Elements.cs" />
-    <Compile Include="Classes\WatchFace\ElementsTime.cs" />
     <Compile Include="Classes\WatchFace\Enum.cs" />
     <Compile Include="Classes\WatchFace\WATCH_FACE.cs" />
     <Compile Include="Classes\ConvertingImages\ColorMap.cs" />
@@ -88,6 +87,9 @@
     <Compile Include="Classes\ConvertingImages\ImageDescription.cs" />
     <Compile Include="Classes\ConvertingImages\Image_data.cs" />
     <Compile Include="ImageConversion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JSON_Scale.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Options_ReadWrite.cs">
@@ -198,6 +200,8 @@
     <Content Include="Mask\mask_gts_3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\unpacking.png" />
+    <None Include="Resources\packaging.png" />
     <Content Include="Skin\Skin_GTR_3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -180,6 +180,9 @@
   <data name="Form_PreviewX" xml:space="preserve">
     <value>Preview [X =</value>
   </data>
+  <data name="Message_ConvertingCompleted_Text" xml:space="preserve">
+    <value>A new watch face has been created.</value>
+  </data>
   <data name="Message_CopyCoord" xml:space="preserve">
     <value>Coordinates copied</value>
   </data>
@@ -242,6 +245,15 @@
   </data>
   <data name="Message_Save_new_JSON" xml:space="preserve">
     <value>The current project has not yet been saved. Do you want to save it?</value>
+  </data>
+  <data name="Message_ShortcutsAOD_Text" xml:space="preserve">
+    <value>You cannot add shortcuts to the AOD screen.</value>
+  </data>
+  <data name="Message_WarningConverting_Text1" xml:space="preserve">
+    <value>Directory </value>
+  </data>
+  <data name="Message_WarningConverting_Text2" xml:space="preserve">
+    <value> already exists. Replace?</value>
   </data>
   <data name="Message_WarningPreview_Text1" xml:space="preserve">
     <value>Preview image sizes are different from the standard</value>

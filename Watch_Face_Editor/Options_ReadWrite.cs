@@ -192,6 +192,46 @@ namespace Watch_Face_Editor
                         break;
                     #endregion
 
+                    #region ElementStatuses
+                    case "ElementStatuses":
+                        ElementStatuses Statuses = null;
+                        try
+                        {
+                            Statuses = JsonConvert.DeserializeObject<ElementStatuses>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (Statuses != null) NewElements.Add(Statuses);
+                        break;
+                    #endregion
+
+                    #region ElementShortcuts
+                    case "ElementShortcuts":
+                        ElementShortcuts Shortcuts = null;
+                        try
+                        {
+                            Shortcuts = JsonConvert.DeserializeObject<ElementShortcuts>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (Shortcuts != null) NewElements.Add(Shortcuts);
+                        break;
+                    #endregion
+
                     #region ElementSteps
                     case "ElementSteps":
                         ElementSteps Steps = null;
@@ -342,6 +382,58 @@ namespace Watch_Face_Editor
             PreviewView = true;
         }
 
+        /// <summary>Читаем настройки для отображения статусов</summary>
+        private void Read_Statuses_Options(hmUI_widget_IMG_STATUS img_status)
+        {
+            PreviewView = false;
+
+            uCtrl_Icon_Opt.SettingsClear();
+
+            uCtrl_Icon_Opt._Icon = img_status;
+
+            //userCtrl_Background_Options.SettingsClear();
+
+            if (img_status == null)
+            {
+                PreviewView = true;
+                return;
+            }
+
+            if (img_status.src != null)
+                uCtrl_Icon_Opt.SetIcon(img_status.src);
+            uCtrl_Icon_Opt.numericUpDown_iconX.Value = img_status.x;
+            uCtrl_Icon_Opt.numericUpDown_iconY.Value = img_status.y;
+
+            PreviewView = true;
+        }
+
+        /// <summary>Читаем настройки для отображения статусов</summary>
+        private void Read_Shortcuts_Options(hmUI_widget_IMG_CLICK img_click)
+        {
+            PreviewView = false;
+
+            uCtrl_Shortcut_Opt.SettingsClear();
+
+            uCtrl_Shortcut_Opt._Shortcut = img_click;
+
+            //userCtrl_Background_Options.SettingsClear();
+
+            if (img_click == null)
+            {
+                PreviewView = true;
+                return;
+            }
+
+            if (img_click.src != null)
+                uCtrl_Shortcut_Opt.SetImage(img_click.src);
+            uCtrl_Shortcut_Opt.numericUpDown_imageX.Value = img_click.x;
+            uCtrl_Shortcut_Opt.numericUpDown_imageY.Value = img_click.y;
+            uCtrl_Shortcut_Opt.numericUpDown_height.Value = img_click.h;
+            uCtrl_Shortcut_Opt.numericUpDown_width.Value = img_click.w;
+
+            PreviewView = true;
+        }
+
         /// <summary>Читаем настройки для отображения стрелочного указателя</summary>
         private void Read_ImgPointer_Options(hmUI_widget_IMG_POINTER img_pointer, bool _showBackground)
         {
@@ -480,6 +572,8 @@ namespace Watch_Face_Editor
                 uCtrl_Images_Opt.SetImage(img_level.img_First);
             uCtrl_Images_Opt.numericUpDown_imageX.Value = img_level.X;
             uCtrl_Images_Opt.numericUpDown_imageY.Value = img_level.Y;
+            uCtrl_Images_Opt.numericUpDown_pictures_count.Value = img_level.image_length;
+            if (!imagesCountEnable) uCtrl_Images_Opt.numericUpDown_pictures_count.Value = imagesCount;
 
             PreviewView = true;
         }
@@ -824,12 +918,43 @@ namespace Watch_Face_Editor
         {
             if (!PreviewView) return;
             if (Watch_Face == null) return;
-            hmUI_widget_IMG icon = (hmUI_widget_IMG)uCtrl_Icon_Opt._Icon;
-            if (icon == null) return;
+            string type = uCtrl_Icon_Opt._Icon.GetType().Name;
+            if (type == "hmUI_widget_IMG")
+            {
+                hmUI_widget_IMG icon = (hmUI_widget_IMG)uCtrl_Icon_Opt._Icon;
+                if (icon == null) return;
 
-            icon.src = uCtrl_Icon_Opt.GetIcon();
-            icon.x = (int)uCtrl_Icon_Opt.numericUpDown_iconX.Value;
-            icon.y = (int)uCtrl_Icon_Opt.numericUpDown_iconY.Value;
+                icon.src = uCtrl_Icon_Opt.GetIcon();
+                icon.x = (int)uCtrl_Icon_Opt.numericUpDown_iconX.Value;
+                icon.y = (int)uCtrl_Icon_Opt.numericUpDown_iconY.Value; 
+            }
+            else if (type == "hmUI_widget_IMG_STATUS")
+            {
+                hmUI_widget_IMG_STATUS status = (hmUI_widget_IMG_STATUS)uCtrl_Icon_Opt._Icon;
+                if (status == null) return;
+
+                status.src = uCtrl_Icon_Opt.GetIcon();
+                status.x = (int)uCtrl_Icon_Opt.numericUpDown_iconX.Value;
+                status.y = (int)uCtrl_Icon_Opt.numericUpDown_iconY.Value;
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Shortcut_Opt_ValueChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            hmUI_widget_IMG_CLICK shortcut = (hmUI_widget_IMG_CLICK)uCtrl_Shortcut_Opt._Shortcut;
+            if (shortcut == null) return;
+
+            shortcut.src = uCtrl_Shortcut_Opt.GetImage();
+            shortcut.x = (int)uCtrl_Shortcut_Opt.numericUpDown_imageX.Value;
+            shortcut.y = (int)uCtrl_Shortcut_Opt.numericUpDown_imageY.Value;
+            shortcut.w = (int)uCtrl_Shortcut_Opt.numericUpDown_width.Value;
+            shortcut.h = (int)uCtrl_Shortcut_Opt.numericUpDown_height.Value;
 
             JSON_Modified = true;
             PreviewImage();
