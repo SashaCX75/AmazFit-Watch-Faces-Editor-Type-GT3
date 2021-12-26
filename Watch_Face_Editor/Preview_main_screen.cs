@@ -115,6 +115,25 @@ namespace Watch_Face_Editor
             {
                 foreach (Object element in Elements)
                 {
+                    hmUI_widget_IMG_LEVEL img_level = null;
+                    hmUI_widget_IMG_PROGRESS img_prorgess = null;
+                    hmUI_widget_IMG_NUMBER img_number = null;
+                    hmUI_widget_IMG_NUMBER img_number_target = null;
+                    hmUI_widget_IMG_POINTER img_pointer = null;
+                    Circle_Scale circle_scale = null;
+                    Linear_Scale linear_scale = null;
+                    hmUI_widget_IMG icon = null;
+
+                    int elementValue = 0;
+                    int value_lenght = 3;
+                    int goal = 10000;
+                    float progress = 0;
+
+                    int valueImgIndex = -1;
+                    int valueSegmentIndex = -1;
+                    int imgCount = 0;
+                    int segmentCount = 0;
+
                     string type = element.GetType().Name;
                     switch (type)
                     {
@@ -835,27 +854,23 @@ namespace Watch_Face_Editor
 
                         #region ElementSteps
                         case "ElementSteps":
-                            ElementSteps activityElement = (ElementSteps)element;
-                            if (!activityElement.visible) continue;
+                            ElementSteps activityElementSteps = (ElementSteps)element;
+                            if (!activityElementSteps.visible) continue;
 
-                            hmUI_widget_IMG_LEVEL img_level = activityElement.Images;
-                            hmUI_widget_IMG_PROGRESS img_prorgess = activityElement.Segments;
-                            hmUI_widget_IMG_NUMBER img_number = activityElement.Number;
-                            hmUI_widget_IMG_NUMBER img_number_target = activityElement.Number_Target;
-                            hmUI_widget_IMG_POINTER img_pointer = activityElement.Pointer;
-                            Circle_Scale circle_scale = activityElement.Circle_Scale;
-                            Linear_Scale linear_scale = activityElement.Linear_Scale;
-                            hmUI_widget_IMG icon = activityElement.Icon;
+                            img_level = activityElementSteps.Images;
+                            img_prorgess = activityElementSteps.Segments;
+                            img_number = activityElementSteps.Number;
+                            img_number_target = activityElementSteps.Number_Target;
+                            img_pointer = activityElementSteps.Pointer;
+                            circle_scale = activityElementSteps.Circle_Scale;
+                            linear_scale = activityElementSteps.Linear_Scale;
+                            icon = activityElementSteps.Icon;
 
-                            int elementValue = WatchFacePreviewSet.Activity.Steps;
-                            int value_lenght = 5;
-                            int goal = WatchFacePreviewSet.Activity.StepsGoal;
-                            float progress = (float)WatchFacePreviewSet.Activity.Steps / WatchFacePreviewSet.Activity.StepsGoal;
+                            elementValue = WatchFacePreviewSet.Activity.Steps;
+                            value_lenght = 5;
+                            goal = WatchFacePreviewSet.Activity.StepsGoal;
+                            progress = (float)WatchFacePreviewSet.Activity.Steps / WatchFacePreviewSet.Activity.StepsGoal;
 
-                            int valueImgIndex = -1;
-                            int valueSegmentIndex = -1;
-                            int imgCount = 0;
-                            int segmentCount = 0;
                             if (img_level != null && img_level.image_length > 0)
                             {
                                 imgCount = img_level.image_length;
@@ -878,7 +893,177 @@ namespace Watch_Face_Editor
 
 
                             break;
+                        #endregion
+
+                        #region ElementBattery
+                        case "ElementBattery":
+                            ElementBattery activityElementBattery = (ElementBattery)element;
+                            if (!activityElementBattery.visible) continue;
+
+                            img_level = activityElementBattery.Images;
+                            img_prorgess = activityElementBattery.Segments;
+                            img_number = activityElementBattery.Number;
+                            //img_number_target = activityElementBattery.Number_Target;
+                            img_pointer = activityElementBattery.Pointer;
+                            circle_scale = activityElementBattery.Circle_Scale;
+                            linear_scale = activityElementBattery.Linear_Scale;
+                            icon = activityElementBattery.Icon;
+
+                            elementValue = WatchFacePreviewSet.Battery;
+                            value_lenght = 3;
+                            goal = 100;
+                            progress = (float)WatchFacePreviewSet.Battery / 100f;
+
+                            if (img_level != null && img_level.image_length > 0)
+                            {
+                                imgCount = img_level.image_length;
+                                valueImgIndex = (int)(imgCount * progress);
+                                if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                            }
+                            if (img_prorgess != null && img_prorgess.image_length > 0)
+                            {
+                                segmentCount = img_prorgess.image_length;
+                                valueSegmentIndex = (int)(segmentCount * progress);
+                                if (valueSegmentIndex >= segmentCount) valueImgIndex = (int)(segmentCount - 1);
+                            }
+
+                            DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                                img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                                progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                                showCentrHend, "ElementBattery");
+
+
+                            break;
+                        #endregion
+
+                        #region ElementCalories
+                        case "ElementCalories":
+                            ElementCalories activityElementCalories = (ElementCalories)element;
+                            if (!activityElementCalories.visible) continue;
+
+                            img_level = activityElementCalories.Images;
+                            img_prorgess = activityElementCalories.Segments;
+                            img_number = activityElementCalories.Number;
+                            img_number_target = activityElementCalories.Number_Target;
+                            img_pointer = activityElementCalories.Pointer;
+                            circle_scale = activityElementCalories.Circle_Scale;
+                            linear_scale = activityElementCalories.Linear_Scale;
+                            icon = activityElementCalories.Icon;
+
+                            elementValue = WatchFacePreviewSet.Activity.Calories;
+                            value_lenght = 4;
+                            goal = 300;
+                            progress = (float)WatchFacePreviewSet.Activity.Calories / 300f;
+
+                            if (img_level != null && img_level.image_length > 0)
+                            {
+                                imgCount = img_level.image_length;
+                                valueImgIndex = (int)((imgCount - 1) * progress);
+                                if (progress < 0.01) valueImgIndex = -1;
+                                if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                            }
+                            if (img_prorgess != null && img_prorgess.image_length > 0)
+                            {
+                                segmentCount = img_prorgess.image_length;
+                                valueSegmentIndex = (int)((segmentCount - 1) * progress);
+                                if (progress < 0.01) valueSegmentIndex = -1;
+                                if (valueSegmentIndex >= segmentCount) valueImgIndex = (int)(segmentCount - 1);
+                            }
+
+                            DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                                img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                                progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                                showCentrHend, "ElementCalories");
+
+
+                            break;
+                        #endregion
+
+                        #region ElementHeart
+                        case "ElementHeart":
+                            ElementHeart activityElementHeart = (ElementHeart)element;
+                            if (!activityElementHeart.visible) continue;
+
+                            img_level = activityElementHeart.Images;
+                            img_prorgess = activityElementHeart.Segments;
+                            img_number = activityElementHeart.Number;
+                            img_pointer = activityElementHeart.Pointer;
+                            circle_scale = activityElementHeart.Circle_Scale;
+                            linear_scale = activityElementHeart.Linear_Scale;
+                            icon = activityElementHeart.Icon;
+
+                            elementValue = WatchFacePreviewSet.Activity.HeartRate;
+                            value_lenght = 3;
+                            goal = 200;
+                            progress = (float)WatchFacePreviewSet.Activity.HeartRate / 200f;
+
+                            if (img_level != null && img_level.image_length > 0)
+                            {
+                                imgCount = img_level.image_length;
+                                valueImgIndex = (int)((imgCount - 1) * progress);
+                                if (progress < 0.01) valueImgIndex = -1;
+                                if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                            }
+                            if (img_prorgess != null && img_prorgess.image_length > 0)
+                            {
+                                segmentCount = img_prorgess.image_length;
+                                valueSegmentIndex = (int)((segmentCount - 1) * progress);
+                                if (progress < 0.01) valueSegmentIndex = -1;
+                                if (valueSegmentIndex >= segmentCount) valueImgIndex = (int)(segmentCount - 1);
+                            }
+
+                            DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                                img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                                progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                                showCentrHend, "ElementHeart");
+
+
+                            break;
+                        #endregion
+
+                        #region ElementPAI
+                        case "ElementPAI":
+                            ElementPAI activityElementPAI = (ElementPAI)element;
+                            if (!activityElementPAI.visible) continue;
+
+                            img_level = activityElementPAI.Images;
+                            img_prorgess = activityElementPAI.Segments;
+                            img_number = activityElementPAI.Number;
+                            img_number_target = activityElementPAI.Number_Target;
+                            img_pointer = activityElementPAI.Pointer;
+                            circle_scale = activityElementPAI.Circle_Scale;
+                            linear_scale = activityElementPAI.Linear_Scale;
+                            icon = activityElementPAI.Icon;
+
+                            elementValue = WatchFacePreviewSet.Activity.PAI;
+                            value_lenght = 3;
+                            goal = 100;
+                            progress = (float)WatchFacePreviewSet.Activity.PAI / 100f;
+
+                            if (img_level != null && img_level.image_length > 0)
+                            {
+                                imgCount = img_level.image_length;
+                                valueImgIndex = (int)((imgCount - 1) * progress);
+                                if (progress < 0.01) valueImgIndex = -1;
+                                if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                            }
+                            if (img_prorgess != null && img_prorgess.image_length > 0)
+                            {
+                                segmentCount = img_prorgess.image_length;
+                                valueSegmentIndex = (int)((segmentCount - 1) * progress);
+                                if (progress < 0.01) valueSegmentIndex = -1;
+                                if (valueSegmentIndex >= segmentCount) valueImgIndex = (int)(segmentCount - 1);
+                            }
+
+                            DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                                img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                                progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                                showCentrHend, "ElementPAI");
+
+
+                            break;
                             #endregion
+
                     }
                 }
             }

@@ -374,6 +374,12 @@ when saving a gif file</value>
   <data name="checkBox_ShowIn12hourFormat.Text" xml:space="preserve">
     <value>If possible, display time in 12-hour format</value>
   </data>
+  <data name="checkBox_Shortcuts_Image.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 17</value>
+  </data>
+  <data name="checkBox_Shortcuts_Image.Text" xml:space="preserve">
+    <value>Show image displayed when clicked</value>
+  </data>
   <data name="checkBox_Shortcuts_Border.Size" type="System.Drawing.Size, System.Drawing">
     <value>115, 17</value>
   </data>
@@ -397,6 +403,9 @@ when saving a gif file</value>
   </data>
   <data name="comboBox_Language.Location" type="System.Drawing.Point, System.Drawing">
     <value>465, 299</value>
+  </data>
+  <data name="label356.Location" type="System.Drawing.Point, System.Drawing">
+    <value>409, 303</value>
   </data>
   <data name="label356.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 13</value>
@@ -503,6 +512,15 @@ when saving a gif file</value>
   <data name="label412.Text" xml:space="preserve">
     <value>The program was tested by:</value>
   </data>
+  <data name="label413.Size" type="System.Drawing.Size, System.Drawing">
+    <value>310, 13</value>
+  </data>
+  <data name="label413.Text" xml:space="preserve">
+    <value>Utility to convert images from watch faces to normal PNG format:</value>
+  </data>
+  <data name="label409.Text" xml:space="preserve">
+    <value>The program is an editor for dials GTR 3, GTS 3. Since dials are almost full-fledged programs, it is impossible to implement all the functionality available for dials in this editor. The editor should be able to recognize most of the watch faces created in him or on dev.huami.com. But it cannot recognize watch faces from Zepp app.</value>
+  </data>
   <data name="label407.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 13</value>
   </data>
@@ -568,7 +586,7 @@ when saving a gif file</value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
-        DQAAAk1TRnQBSQFMAgEBBgEAAdwBJwHcAScBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAAeQBJwHkAScBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA

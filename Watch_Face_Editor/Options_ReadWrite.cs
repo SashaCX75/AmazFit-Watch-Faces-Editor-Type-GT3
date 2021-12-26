@@ -250,6 +250,86 @@ namespace Watch_Face_Editor
                         }
                         if (Steps != null) NewElements.Add(Steps);
                         break;
+                    #endregion
+
+                    #region ElementBattery
+                    case "ElementBattery":
+                        ElementBattery Battery = null;
+                        try
+                        {
+                            Battery = JsonConvert.DeserializeObject<ElementBattery>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (Battery != null) NewElements.Add(Battery);
+                        break;
+                    #endregion
+
+                    #region ElementCalories
+                    case "ElementCalories":
+                        ElementCalories Calories = null;
+                        try
+                        {
+                            Calories = JsonConvert.DeserializeObject<ElementCalories>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (Calories != null) NewElements.Add(Calories);
+                        break;
+                    #endregion
+
+                    #region ElementHeart
+                    case "ElementHeart":
+                        ElementHeart Heart = null;
+                        try
+                        {
+                            Heart = JsonConvert.DeserializeObject<ElementHeart>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (Heart != null) NewElements.Add(Heart);
+                        break;
+                    #endregion
+
+                    #region ElementPAI
+                    case "ElementPAI":
+                        ElementPAI PAI = null;
+                        try
+                        {
+                            PAI = JsonConvert.DeserializeObject<ElementPAI>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (PAI != null) NewElements.Add(PAI);
+                        break;
                         #endregion
                 }
             }
@@ -428,8 +508,8 @@ namespace Watch_Face_Editor
                 uCtrl_Shortcut_Opt.SetImage(img_click.src);
             uCtrl_Shortcut_Opt.numericUpDown_imageX.Value = img_click.x;
             uCtrl_Shortcut_Opt.numericUpDown_imageY.Value = img_click.y;
-            uCtrl_Shortcut_Opt.numericUpDown_height.Value = img_click.h;
-            uCtrl_Shortcut_Opt.numericUpDown_width.Value = img_click.w;
+            uCtrl_Shortcut_Opt.numericUpDown_width.Value = img_click.h;
+            uCtrl_Shortcut_Opt.numericUpDown_height.Value = img_click.w;
 
             PreviewView = true;
         }
@@ -572,7 +652,8 @@ namespace Watch_Face_Editor
                 uCtrl_Images_Opt.SetImage(img_level.img_First);
             uCtrl_Images_Opt.numericUpDown_imageX.Value = img_level.X;
             uCtrl_Images_Opt.numericUpDown_imageY.Value = img_level.Y;
-            uCtrl_Images_Opt.numericUpDown_pictures_count.Value = img_level.image_length;
+            if (img_level.image_length > 0)
+                uCtrl_Images_Opt.numericUpDown_pictures_count.Value = img_level.image_length;
             if (!imagesCountEnable) uCtrl_Images_Opt.numericUpDown_pictures_count.Value = imagesCount;
 
             PreviewView = true;
@@ -587,6 +668,7 @@ namespace Watch_Face_Editor
 
             uCtrl_Segments_Opt.ImagesCount = imagesCount;
             uCtrl_Segments_Opt.FixedRowsCount = fixedRowsCount;
+            uCtrl_Segments_Opt.UpdateTable();
 
             uCtrl_Segments_Opt._ElementWithSegments = img_prorgess;
 
@@ -953,8 +1035,8 @@ namespace Watch_Face_Editor
             shortcut.src = uCtrl_Shortcut_Opt.GetImage();
             shortcut.x = (int)uCtrl_Shortcut_Opt.numericUpDown_imageX.Value;
             shortcut.y = (int)uCtrl_Shortcut_Opt.numericUpDown_imageY.Value;
-            shortcut.w = (int)uCtrl_Shortcut_Opt.numericUpDown_width.Value;
             shortcut.h = (int)uCtrl_Shortcut_Opt.numericUpDown_height.Value;
+            shortcut.w = (int)uCtrl_Shortcut_Opt.numericUpDown_width.Value;
 
             JSON_Modified = true;
             PreviewImage();

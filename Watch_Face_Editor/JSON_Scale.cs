@@ -135,6 +135,48 @@ namespace Watch_Face_Editor
                     Scale_Linear_Scale(elementSteps.Linear_Scale, scale);
                     Scale_IMG(elementSteps.Icon, scale);
                     break;
+                case "ElementBattery":
+                    ElementBattery elementBattery = (ElementBattery)elements;
+                    Scale_IMG_LEVEL(elementBattery.Images, scale);
+                    Scale_IMG_PROGRESS(elementBattery.Segments, scale);
+                    Scale_IMG_NUMBER(elementBattery.Number, scale);
+                    Scale_IMG_POINTER(elementBattery.Pointer, scale);
+                    Scale_Circle_Scale(elementBattery.Circle_Scale, scale);
+                    Scale_Linear_Scale(elementBattery.Linear_Scale, scale);
+                    Scale_IMG(elementBattery.Icon, scale);
+                    break;
+                case "ElementCalories":
+                    ElementCalories elementCalories = (ElementCalories)elements;
+                    Scale_IMG_LEVEL(elementCalories.Images, scale);
+                    Scale_IMG_PROGRESS(elementCalories.Segments, scale);
+                    Scale_IMG_NUMBER(elementCalories.Number, scale);
+                    Scale_IMG_NUMBER(elementCalories.Number_Target, scale);
+                    Scale_IMG_POINTER(elementCalories.Pointer, scale);
+                    Scale_Circle_Scale(elementCalories.Circle_Scale, scale);
+                    Scale_Linear_Scale(elementCalories.Linear_Scale, scale);
+                    Scale_IMG(elementCalories.Icon, scale);
+                    break;
+                case "ElementHeart":
+                    ElementHeart elementHeart = (ElementHeart)elements;
+                    Scale_IMG_LEVEL(elementHeart.Images, scale);
+                    Scale_IMG_PROGRESS(elementHeart.Segments, scale);
+                    Scale_IMG_NUMBER(elementHeart.Number, scale);
+                    Scale_IMG_POINTER(elementHeart.Pointer, scale);
+                    Scale_Circle_Scale(elementHeart.Circle_Scale, scale);
+                    Scale_Linear_Scale(elementHeart.Linear_Scale, scale);
+                    Scale_IMG(elementHeart.Icon, scale);
+                    break;
+                case "ElementPAI":
+                    ElementPAI elementPAI = (ElementPAI)elements;
+                    Scale_IMG_LEVEL(elementPAI.Images, scale);
+                    Scale_IMG_PROGRESS(elementPAI.Segments, scale);
+                    Scale_IMG_NUMBER(elementPAI.Number, scale);
+                    Scale_IMG_NUMBER(elementPAI.Number_Target, scale);
+                    Scale_IMG_POINTER(elementPAI.Pointer, scale);
+                    Scale_Circle_Scale(elementPAI.Circle_Scale, scale);
+                    Scale_Linear_Scale(elementPAI.Linear_Scale, scale);
+                    Scale_IMG(elementPAI.Icon, scale);
+                    break;
             }
         }
 
@@ -208,7 +250,7 @@ namespace Watch_Face_Editor
             img_number.imageX = (int)Math.Round(img_number.imageX * scale, MidpointRounding.AwayFromZero);
             img_number.imageY = (int)Math.Round(img_number.imageY * scale, MidpointRounding.AwayFromZero);
             img_number.iconPosX = (int)Math.Round((img_number.iconPosX * scale), MidpointRounding.AwayFromZero);
-            img_number.imageY = (int)Math.Round((img_number.imageY * scale), MidpointRounding.AwayFromZero);
+            img_number.iconPosY = (int)Math.Round((img_number.iconPosY * scale), MidpointRounding.AwayFromZero);
             img_number.space = (int)Math.Round((img_number.space * scale), MidpointRounding.AwayFromZero);
         }
 

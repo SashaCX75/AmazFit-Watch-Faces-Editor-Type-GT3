@@ -46,8 +46,8 @@ namespace ControlLibrary
             this.вставитьКоординатуYToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.копироватьToolStripMenuItemY = new System.Windows.Forms.ToolStripMenuItem();
             this.вставитьToolStripMenuItemY = new System.Windows.Forms.ToolStripMenuItem();
-            this.numericUpDown_height = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown_width = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_height = new System.Windows.Forms.NumericUpDown();
             this.label06 = new System.Windows.Forms.Label();
             this.label07 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -55,8 +55,8 @@ namespace ControlLibrary
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_imageY)).BeginInit();
             this.contextMenuStrip_X.SuspendLayout();
             this.contextMenuStrip_Y.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_height)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_width)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_height)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox_Image
@@ -225,33 +225,9 @@ namespace ControlLibrary
             this.вставитьToolStripMenuItemY.Text = "Вставить";
             this.вставитьToolStripMenuItemY.Click += new System.EventHandler(this.вставитьToolStripMenuItem_Click);
             // 
-            // numericUpDown_height
-            // 
-            this.numericUpDown_height.Location = new System.Drawing.Point(23, 90);
-            this.numericUpDown_height.Maximum = new decimal(new int[] {
-            999,
-            0,
-            0,
-            0});
-            this.numericUpDown_height.Minimum = new decimal(new int[] {
-            999,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDown_height.Name = "numericUpDown_height";
-            this.numericUpDown_height.Size = new System.Drawing.Size(40, 20);
-            this.numericUpDown_height.TabIndex = 140;
-            this.numericUpDown_height.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.numericUpDown_height.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
-            this.numericUpDown_height.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_length_MouseDoubleClick);
-            // 
             // numericUpDown_width
             // 
-            this.numericUpDown_width.Location = new System.Drawing.Point(96, 90);
+            this.numericUpDown_width.Location = new System.Drawing.Point(23, 90);
             this.numericUpDown_width.Maximum = new decimal(new int[] {
             999,
             0,
@@ -264,14 +240,38 @@ namespace ControlLibrary
             -2147483648});
             this.numericUpDown_width.Name = "numericUpDown_width";
             this.numericUpDown_width.Size = new System.Drawing.Size(40, 20);
-            this.numericUpDown_width.TabIndex = 142;
+            this.numericUpDown_width.TabIndex = 140;
             this.numericUpDown_width.Value = new decimal(new int[] {
             100,
             0,
             0,
             0});
             this.numericUpDown_width.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
-            this.numericUpDown_width.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_width_MouseDoubleClick);
+            this.numericUpDown_width.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_length_MouseDoubleClick);
+            // 
+            // numericUpDown_height
+            // 
+            this.numericUpDown_height.Location = new System.Drawing.Point(96, 90);
+            this.numericUpDown_height.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.numericUpDown_height.Minimum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown_height.Name = "numericUpDown_height";
+            this.numericUpDown_height.Size = new System.Drawing.Size(40, 20);
+            this.numericUpDown_height.TabIndex = 142;
+            this.numericUpDown_height.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.numericUpDown_height.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_height.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_width_MouseDoubleClick);
             // 
             // label06
             // 
@@ -309,8 +309,8 @@ namespace ControlLibrary
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.numericUpDown_height);
             this.Controls.Add(this.numericUpDown_width);
+            this.Controls.Add(this.numericUpDown_height);
             this.Controls.Add(this.label06);
             this.Controls.Add(this.label07);
             this.Controls.Add(this.comboBox_Image);
@@ -326,8 +326,8 @@ namespace ControlLibrary
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_imageY)).EndInit();
             this.contextMenuStrip_X.ResumeLayout(false);
             this.contextMenuStrip_Y.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_height)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_width)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_height)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -350,8 +350,8 @@ namespace ControlLibrary
         private System.Windows.Forms.ToolStripMenuItem вставитьКоординатуYToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem копироватьToolStripMenuItemY;
         private System.Windows.Forms.ToolStripMenuItem вставитьToolStripMenuItemY;
-        public System.Windows.Forms.NumericUpDown numericUpDown_height;
         public System.Windows.Forms.NumericUpDown numericUpDown_width;
+        public System.Windows.Forms.NumericUpDown numericUpDown_height;
         private System.Windows.Forms.Label label06;
         private System.Windows.Forms.Label label07;
         private System.Windows.Forms.Label label1;

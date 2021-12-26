@@ -156,8 +156,8 @@ namespace ControlLibrary
             numericUpDown_imageX.Value = 0;
             numericUpDown_imageY.Value = 0;
 
-            numericUpDown_height.Value = 100;
             numericUpDown_width.Value = 100;
+            numericUpDown_height.Value = 100;
 
             setValue = false;
         }

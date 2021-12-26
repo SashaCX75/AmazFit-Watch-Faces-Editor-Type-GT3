@@ -31,8 +31,8 @@ namespace Watch_Face_Editor
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage_Edit = new System.Windows.Forms.TabPage();
             this.button_SaveJson = new System.Windows.Forms.Button();
@@ -55,16 +55,44 @@ namespace Watch_Face_Editor
             this.panel_WatchfaceElements = new System.Windows.Forms.Panel();
             this.tableLayoutPanel_ElemetsWatchFace = new System.Windows.Forms.TableLayoutPanel();
             this.panel_UC_DigitalTime = new System.Windows.Forms.Panel();
+            this.uCtrl_DigitalTime_Elm = new ControlLibrary.UCtrl_DigitalTime_Elm();
             this.panel_UC_AnalogTime = new System.Windows.Forms.Panel();
+            this.uCtrl_AnalogTime_Elm = new ControlLibrary.UCtrl_AnalogTime_Elm();
             this.panel_UC_DateDay = new System.Windows.Forms.Panel();
+            this.uCtrl_DateDay_Elm = new ControlLibrary.UCtrl_DateDay_Elm();
             this.panel_UC_DateMonth = new System.Windows.Forms.Panel();
+            this.uCtrl_DateMonth_Elm = new ControlLibrary.UCtrl_DateMonth_Elm();
             this.panel_UC_DateYear = new System.Windows.Forms.Panel();
+            this.uCtrl_DateYear_Elm = new ControlLibrary.UCtrl_DateYear_Elm();
             this.panel_UC_Background = new System.Windows.Forms.Panel();
+            this.uCtrl_Background_Elm = new ControlLibrary.UCtrl_Background_Elm();
             this.panel_UC_DateWeek = new System.Windows.Forms.Panel();
+            this.uCtrl_DateWeek_Elm = new ControlLibrary.UCtrl_DateWeek_Elm();
             this.panel_UC_Steps = new System.Windows.Forms.Panel();
+            this.uCtrl_Steps_Elm = new ControlLibrary.UCtrl_Steps_Elm();
             this.panel_UC_Statuses = new System.Windows.Forms.Panel();
+            this.uCtrl_Statuses_Elm = new ControlLibrary.UCtrl_Statuses_Elm();
             this.panel_UC_Shortcuts = new System.Windows.Forms.Panel();
+            this.uCtrl_Shortcuts_Elm = new ControlLibrary.UCtrl_Shortcuts_Elm();
+            this.panel_UC_Battery = new System.Windows.Forms.Panel();
+            this.uCtrl_Battery_Elm = new ControlLibrary.UCtrl_Battery_Elm();
+            this.panel_UC_Heart = new System.Windows.Forms.Panel();
+            this.uCtrl_Heart_Elm = new ControlLibrary.UCtrl_Heart_Elm();
+            this.panel_UC_Calories = new System.Windows.Forms.Panel();
+            this.uCtrl_Calories_Elm = new ControlLibrary.UCtrl_Calories_Elm();
+            this.panel_UC_PAI = new System.Windows.Forms.Panel();
+            this.uCtrl_PAI_Elm = new ControlLibrary.UCtrl_PAI_Elm();
             this.panel_ElementsOpt = new System.Windows.Forms.Panel();
+            this.uCtrl_Shortcut_Opt = new ControlLibrary.UCtrl_Shortcut_Opt();
+            this.uCtrl_Segments_Opt = new ControlLibrary.UCtrl_Segments_Opt();
+            this.uCtrl_Icon_Opt = new ControlLibrary.UCtrl_Icon_Opt();
+            this.uCtrl_Linear_Scale_Opt = new ControlLibrary.UCtrl_Linear_Scale_Opt();
+            this.uCtrl_Circle_Scale_Opt = new ControlLibrary.UCtrl_Circle_Scale_Opt();
+            this.uCtrl_Images_Opt = new ControlLibrary.UCtrl_Images_Opt();
+            this.uCtrl_Pointer_Opt = new ControlLibrary.UCtrl_Pointer_Opt();
+            this.uCtrl_AmPm_Opt = new ControlLibrary.UCtrl_AmPm_Opt();
+            this.uCtrl_Text_Opt = new ControlLibrary.UCtrl_Text_Opt();
+            this.userCtrl_Background_Options = new ControlLibrary.UCtrl_Background_Opt();
             this.panel_MainScreen_AOD = new System.Windows.Forms.Panel();
             this.button_CopyAOD = new System.Windows.Forms.Button();
             this.button_RandomPreview = new System.Windows.Forms.Button();
@@ -72,6 +100,18 @@ namespace Watch_Face_Editor
             this.radioButton_ScreenNormal = new System.Windows.Forms.RadioButton();
             this.tabPage_Show_Set = new System.Windows.Forms.TabPage();
             this.panel_set = new System.Windows.Forms.Panel();
+            this.userCtrl_Set12 = new ControlLibrary.UCtrl_Set();
+            this.userCtrl_Set11 = new ControlLibrary.UCtrl_Set();
+            this.userCtrl_Set10 = new ControlLibrary.UCtrl_Set();
+            this.userCtrl_Set9 = new ControlLibrary.UCtrl_Set();
+            this.userCtrl_Set8 = new ControlLibrary.UCtrl_Set();
+            this.userCtrl_Set7 = new ControlLibrary.UCtrl_Set();
+            this.userCtrl_Set6 = new ControlLibrary.UCtrl_Set();
+            this.userCtrl_Set5 = new ControlLibrary.UCtrl_Set();
+            this.userCtrl_Set4 = new ControlLibrary.UCtrl_Set();
+            this.userCtrl_Set3 = new ControlLibrary.UCtrl_Set();
+            this.userCtrl_Set2 = new ControlLibrary.UCtrl_Set();
+            this.userCtrl_Set1 = new ControlLibrary.UCtrl_Set();
             this.panel_PreviewStates = new System.Windows.Forms.Panel();
             this.button_JsonPreview_Random = new System.Windows.Forms.Button();
             this.button_JsonPreview_Read = new System.Windows.Forms.Button();
@@ -172,38 +212,6 @@ namespace Watch_Face_Editor
             this.button_pack_zip = new System.Windows.Forms.Button();
             this.button_unpack_zip = new System.Windows.Forms.Button();
             this.pictureBox_Preview = new System.Windows.Forms.PictureBox();
-            this.uCtrl_DigitalTime_Elm = new ControlLibrary.UCtrl_DigitalTime_Elm();
-            this.uCtrl_AnalogTime_Elm = new ControlLibrary.UCtrl_AnalogTime_Elm();
-            this.uCtrl_DateDay_Elm = new ControlLibrary.UCtrl_DateDay_Elm();
-            this.uCtrl_DateMonth_Elm = new ControlLibrary.UCtrl_DateMonth_Elm();
-            this.uCtrl_DateYear_Elm = new ControlLibrary.UCtrl_DateYear_Elm();
-            this.uCtrl_Background_Elm = new ControlLibrary.UCtrl_Background_Elm();
-            this.uCtrl_DateWeek_Elm = new ControlLibrary.UCtrl_DateWeek_Elm();
-            this.uCtrl_Steps_Elm = new ControlLibrary.UCtrl_Steps_Elm();
-            this.uCtrl_Statuses_Elm = new ControlLibrary.UCtrl_Statuses_Elm();
-            this.uCtrl_Shortcuts_Elm = new ControlLibrary.UCtrl_Shortcuts_Elm();
-            this.uCtrl_Shortcut_Opt = new ControlLibrary.UCtrl_Shortcut_Opt();
-            this.uCtrl_Segments_Opt = new ControlLibrary.UCtrl_Segments_Opt();
-            this.uCtrl_Icon_Opt = new ControlLibrary.UCtrl_Icon_Opt();
-            this.uCtrl_Linear_Scale_Opt = new ControlLibrary.UCtrl_Linear_Scale_Opt();
-            this.uCtrl_Circle_Scale_Opt = new ControlLibrary.UCtrl_Circle_Scale_Opt();
-            this.uCtrl_Images_Opt = new ControlLibrary.UCtrl_Images_Opt();
-            this.uCtrl_Pointer_Opt = new ControlLibrary.UCtrl_Pointer_Opt();
-            this.uCtrl_AmPm_Opt = new ControlLibrary.UCtrl_AmPm_Opt();
-            this.uCtrl_Text_Opt = new ControlLibrary.UCtrl_Text_Opt();
-            this.userCtrl_Background_Options = new ControlLibrary.UCtrl_Background_Opt();
-            this.userCtrl_Set12 = new ControlLibrary.UCtrl_Set();
-            this.userCtrl_Set11 = new ControlLibrary.UCtrl_Set();
-            this.userCtrl_Set10 = new ControlLibrary.UCtrl_Set();
-            this.userCtrl_Set9 = new ControlLibrary.UCtrl_Set();
-            this.userCtrl_Set8 = new ControlLibrary.UCtrl_Set();
-            this.userCtrl_Set7 = new ControlLibrary.UCtrl_Set();
-            this.userCtrl_Set6 = new ControlLibrary.UCtrl_Set();
-            this.userCtrl_Set5 = new ControlLibrary.UCtrl_Set();
-            this.userCtrl_Set4 = new ControlLibrary.UCtrl_Set();
-            this.userCtrl_Set3 = new ControlLibrary.UCtrl_Set();
-            this.userCtrl_Set2 = new ControlLibrary.UCtrl_Set();
-            this.userCtrl_Set1 = new ControlLibrary.UCtrl_Set();
             this.tabControl1.SuspendLayout();
             this.tabPage_Edit.SuspendLayout();
             this.tabControl_Edit_SetShow.SuspendLayout();
@@ -227,6 +235,10 @@ namespace Watch_Face_Editor
             this.panel_UC_Steps.SuspendLayout();
             this.panel_UC_Statuses.SuspendLayout();
             this.panel_UC_Shortcuts.SuspendLayout();
+            this.panel_UC_Battery.SuspendLayout();
+            this.panel_UC_Heart.SuspendLayout();
+            this.panel_UC_Calories.SuspendLayout();
+            this.panel_UC_PAI.SuspendLayout();
             this.panel_ElementsOpt.SuspendLayout();
             this.panel_MainScreen_AOD.SuspendLayout();
             this.tabPage_Show_Set.SuspendLayout();
@@ -395,6 +407,7 @@ namespace Watch_Face_Editor
             // comboBox_AddAir
             // 
             this.comboBox_AddAir.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBox_AddAir, "comboBox_AddAir");
             this.comboBox_AddAir.FormattingEnabled = true;
             this.comboBox_AddAir.Items.AddRange(new object[] {
             resources.GetString("comboBox_AddAir.Items"),
@@ -404,7 +417,6 @@ namespace Watch_Face_Editor
             resources.GetString("comboBox_AddAir.Items4"),
             resources.GetString("comboBox_AddAir.Items5"),
             resources.GetString("comboBox_AddAir.Items6")});
-            resources.ApplyResources(this.comboBox_AddAir, "comboBox_AddAir");
             this.comboBox_AddAir.Name = "comboBox_AddAir";
             this.comboBox_AddAir.DropDownClosed += new System.EventHandler(this.comboBox_AddAir_DropDownClosed);
             this.comboBox_AddAir.Click += new System.EventHandler(this.comboBox_AddElements_Click);
@@ -471,11 +483,15 @@ namespace Watch_Face_Editor
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateDay, 0, 2);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateMonth, 0, 3);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateYear, 0, 4);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Background, 0, 9);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Background, 0, 13);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateWeek, 0, 5);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Steps, 0, 8);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Statuses, 0, 7);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Shortcuts, 0, 6);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Battery, 0, 9);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Heart, 0, 10);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Calories, 0, 11);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_PAI, 0, 12);
             this.tableLayoutPanel_ElemetsWatchFace.Name = "tableLayoutPanel_ElemetsWatchFace";
             this.tableLayoutPanel_ElemetsWatchFace.DragOver += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragOver);
             // 
@@ -485,11 +501,37 @@ namespace Watch_Face_Editor
             this.panel_UC_DigitalTime.Controls.Add(this.uCtrl_DigitalTime_Elm);
             this.panel_UC_DigitalTime.Name = "panel_UC_DigitalTime";
             // 
+            // uCtrl_DigitalTime_Elm
+            // 
+            resources.ApplyResources(this.uCtrl_DigitalTime_Elm, "uCtrl_DigitalTime_Elm");
+            this.uCtrl_DigitalTime_Elm.Name = "uCtrl_DigitalTime_Elm";
+            this.uCtrl_DigitalTime_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_DigitalTime_Elm.VisibleElementChangedHandler(this.uCtrl_DigitalTime_Elm_VisibleElementChanged);
+            this.uCtrl_DigitalTime_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_DigitalTime_Elm.VisibleOptionsChangedHandler(this.uCtrl_DigitalTime_Elm_VisibleOptionsChanged);
+            this.uCtrl_DigitalTime_Elm.OptionsMoved += new ControlLibrary.UCtrl_DigitalTime_Elm.OptionsMovedHandler(this.uCtrl_DigitalTime_Elm_OptionsMoved);
+            this.uCtrl_DigitalTime_Elm.SelectChanged += new ControlLibrary.UCtrl_DigitalTime_Elm.SelectChangedHandler(this.uCtrl_DigitalTime_Elm_SelectChanged);
+            this.uCtrl_DigitalTime_Elm.DelElement += new ControlLibrary.UCtrl_DigitalTime_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
+            this.uCtrl_DigitalTime_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.uCtrl_DigitalTime_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.uCtrl_DigitalTime_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
             // panel_UC_AnalogTime
             // 
             resources.ApplyResources(this.panel_UC_AnalogTime, "panel_UC_AnalogTime");
             this.panel_UC_AnalogTime.Controls.Add(this.uCtrl_AnalogTime_Elm);
             this.panel_UC_AnalogTime.Name = "panel_UC_AnalogTime";
+            // 
+            // uCtrl_AnalogTime_Elm
+            // 
+            resources.ApplyResources(this.uCtrl_AnalogTime_Elm, "uCtrl_AnalogTime_Elm");
+            this.uCtrl_AnalogTime_Elm.Name = "uCtrl_AnalogTime_Elm";
+            this.uCtrl_AnalogTime_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_AnalogTime_Elm.VisibleElementChangedHandler(this.uCtrl_AnalogTime_Elm_VisibleElementChanged);
+            this.uCtrl_AnalogTime_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_AnalogTime_Elm.VisibleOptionsChangedHandler(this.uCtrl_AnalogTime_Elm_VisibleOptionsChanged);
+            this.uCtrl_AnalogTime_Elm.OptionsMoved += new ControlLibrary.UCtrl_AnalogTime_Elm.OptionsMovedHandler(this.uCtrl_AnalogTime_Elm_OptionsMoved);
+            this.uCtrl_AnalogTime_Elm.SelectChanged += new ControlLibrary.UCtrl_AnalogTime_Elm.SelectChangedHandler(this.uCtrl_AnalogTime_Elm_SelectChanged);
+            this.uCtrl_AnalogTime_Elm.DelElement += new ControlLibrary.UCtrl_AnalogTime_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
+            this.uCtrl_AnalogTime_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.uCtrl_AnalogTime_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.uCtrl_AnalogTime_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
             // 
             // panel_UC_DateDay
             // 
@@ -497,17 +539,54 @@ namespace Watch_Face_Editor
             this.panel_UC_DateDay.Controls.Add(this.uCtrl_DateDay_Elm);
             this.panel_UC_DateDay.Name = "panel_UC_DateDay";
             // 
+            // uCtrl_DateDay_Elm
+            // 
+            resources.ApplyResources(this.uCtrl_DateDay_Elm, "uCtrl_DateDay_Elm");
+            this.uCtrl_DateDay_Elm.Name = "uCtrl_DateDay_Elm";
+            this.uCtrl_DateDay_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_DateDay_Elm.VisibleElementChangedHandler(this.uCtrl_DateDay_Elm_VisibleElementChanged);
+            this.uCtrl_DateDay_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_DateDay_Elm.VisibleOptionsChangedHandler(this.uCtrl_DateDay_Elm_VisibleOptionsChanged);
+            this.uCtrl_DateDay_Elm.OptionsMoved += new ControlLibrary.UCtrl_DateDay_Elm.OptionsMovedHandler(this.uCtrl_DateDay_Elm_OptionsMoved);
+            this.uCtrl_DateDay_Elm.SelectChanged += new ControlLibrary.UCtrl_DateDay_Elm.SelectChangedHandler(this.uCtrl_DateDay_Elm_SelectChanged);
+            this.uCtrl_DateDay_Elm.DelElement += new ControlLibrary.UCtrl_DateDay_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
+            this.uCtrl_DateDay_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.uCtrl_DateDay_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.uCtrl_DateDay_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
             // panel_UC_DateMonth
             // 
             resources.ApplyResources(this.panel_UC_DateMonth, "panel_UC_DateMonth");
             this.panel_UC_DateMonth.Controls.Add(this.uCtrl_DateMonth_Elm);
             this.panel_UC_DateMonth.Name = "panel_UC_DateMonth";
             // 
+            // uCtrl_DateMonth_Elm
+            // 
+            resources.ApplyResources(this.uCtrl_DateMonth_Elm, "uCtrl_DateMonth_Elm");
+            this.uCtrl_DateMonth_Elm.Name = "uCtrl_DateMonth_Elm";
+            this.uCtrl_DateMonth_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_DateMonth_Elm.VisibleElementChangedHandler(this.uCtrl_DateMonth_Elm_VisibleElementChanged);
+            this.uCtrl_DateMonth_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_DateMonth_Elm.VisibleOptionsChangedHandler(this.uCtrl_DateMonth_Elm_VisibleOptionsChanged);
+            this.uCtrl_DateMonth_Elm.OptionsMoved += new ControlLibrary.UCtrl_DateMonth_Elm.OptionsMovedHandler(this.uCtrl_DateMonth_Elm_OptionsMoved);
+            this.uCtrl_DateMonth_Elm.SelectChanged += new ControlLibrary.UCtrl_DateMonth_Elm.SelectChangedHandler(this.uCtrl_DateMonth_Elm_SelectChanged);
+            this.uCtrl_DateMonth_Elm.DelElement += new ControlLibrary.UCtrl_DateMonth_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
+            this.uCtrl_DateMonth_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.uCtrl_DateMonth_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.uCtrl_DateMonth_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
             // panel_UC_DateYear
             // 
             resources.ApplyResources(this.panel_UC_DateYear, "panel_UC_DateYear");
             this.panel_UC_DateYear.Controls.Add(this.uCtrl_DateYear_Elm);
             this.panel_UC_DateYear.Name = "panel_UC_DateYear";
+            // 
+            // uCtrl_DateYear_Elm
+            // 
+            resources.ApplyResources(this.uCtrl_DateYear_Elm, "uCtrl_DateYear_Elm");
+            this.uCtrl_DateYear_Elm.Name = "uCtrl_DateYear_Elm";
+            this.uCtrl_DateYear_Elm.SelectChanged += new ControlLibrary.UCtrl_DateYear_Elm.SelectChangedHandler(this.uCtrl_DateYear_Elm_SelectChanged);
+            this.uCtrl_DateYear_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_DateYear_Elm.VisibleElementChangedHandler(this.uCtrl_DateYear_Elm_VisibleElementChanged);
+            this.uCtrl_DateYear_Elm.DelElement += new ControlLibrary.UCtrl_DateYear_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
+            this.uCtrl_DateYear_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.uCtrl_DateYear_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.uCtrl_DateYear_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
             // 
             // panel_UC_Background
             // 
@@ -516,11 +595,33 @@ namespace Watch_Face_Editor
             this.panel_UC_Background.Controls.Add(this.uCtrl_Background_Elm);
             this.panel_UC_Background.Name = "panel_UC_Background";
             // 
+            // uCtrl_Background_Elm
+            // 
+            resources.ApplyResources(this.uCtrl_Background_Elm, "uCtrl_Background_Elm");
+            this.uCtrl_Background_Elm.BackColor = System.Drawing.SystemColors.Control;
+            this.uCtrl_Background_Elm.Name = "uCtrl_Background_Elm";
+            this.uCtrl_Background_Elm.SelectChanged += new ControlLibrary.UCtrl_Background_Elm.SelectChangedHandler(this.uCtrl_Background_Elm_SelectChanged);
+            this.uCtrl_Background_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_Background_Elm.VisibleElementChangedHandler(this.uCtrl_Background_Elm_VisibleElemenChanged);
+            this.uCtrl_Background_Elm.DelElement += new ControlLibrary.UCtrl_Background_Elm.DelElementHandler(this.uCtrl_Background_Elm_DelElement);
+            // 
             // panel_UC_DateWeek
             // 
             resources.ApplyResources(this.panel_UC_DateWeek, "panel_UC_DateWeek");
             this.panel_UC_DateWeek.Controls.Add(this.uCtrl_DateWeek_Elm);
             this.panel_UC_DateWeek.Name = "panel_UC_DateWeek";
+            // 
+            // uCtrl_DateWeek_Elm
+            // 
+            resources.ApplyResources(this.uCtrl_DateWeek_Elm, "uCtrl_DateWeek_Elm");
+            this.uCtrl_DateWeek_Elm.Name = "uCtrl_DateWeek_Elm";
+            this.uCtrl_DateWeek_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_DateWeek_Elm.VisibleElementChangedHandler(this.uCtrl_DateWeek_Elm_VisibleElementChanged);
+            this.uCtrl_DateWeek_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_DateWeek_Elm.VisibleOptionsChangedHandler(this.uCtrl_DateWeek_Elm_VisibleOptionsChanged);
+            this.uCtrl_DateWeek_Elm.OptionsMoved += new ControlLibrary.UCtrl_DateWeek_Elm.OptionsMovedHandler(this.uCtrl_DateWeek_Elm_OptionsMoved);
+            this.uCtrl_DateWeek_Elm.SelectChanged += new ControlLibrary.UCtrl_DateWeek_Elm.SelectChangedHandler(this.uCtrl_DateWeek_Elm_SelectChanged);
+            this.uCtrl_DateWeek_Elm.DelElement += new ControlLibrary.UCtrl_DateWeek_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
+            this.uCtrl_DateWeek_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.uCtrl_DateWeek_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.uCtrl_DateWeek_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
             // 
             // panel_UC_Steps
             // 
@@ -528,17 +629,132 @@ namespace Watch_Face_Editor
             this.panel_UC_Steps.Controls.Add(this.uCtrl_Steps_Elm);
             this.panel_UC_Steps.Name = "panel_UC_Steps";
             // 
+            // uCtrl_Steps_Elm
+            // 
+            resources.ApplyResources(this.uCtrl_Steps_Elm, "uCtrl_Steps_Elm");
+            this.uCtrl_Steps_Elm.Name = "uCtrl_Steps_Elm";
+            this.uCtrl_Steps_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_Steps_Elm.VisibleElementChangedHandler(this.uCtrl_Steps_Elm_VisibleElementChanged);
+            this.uCtrl_Steps_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_Steps_Elm.VisibleOptionsChangedHandler(this.uCtrl_Steps_Elm_VisibleOptionsChanged);
+            this.uCtrl_Steps_Elm.OptionsMoved += new ControlLibrary.UCtrl_Steps_Elm.OptionsMovedHandler(this.uCtrl_Steps_Elm_OptionsMoved);
+            this.uCtrl_Steps_Elm.SelectChanged += new ControlLibrary.UCtrl_Steps_Elm.SelectChangedHandler(this.uCtrl_Steps_Elm_SelectChanged);
+            this.uCtrl_Steps_Elm.DelElement += new ControlLibrary.UCtrl_Steps_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
+            this.uCtrl_Steps_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.uCtrl_Steps_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.uCtrl_Steps_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
             // panel_UC_Statuses
             // 
             resources.ApplyResources(this.panel_UC_Statuses, "panel_UC_Statuses");
             this.panel_UC_Statuses.Controls.Add(this.uCtrl_Statuses_Elm);
             this.panel_UC_Statuses.Name = "panel_UC_Statuses";
             // 
+            // uCtrl_Statuses_Elm
+            // 
+            resources.ApplyResources(this.uCtrl_Statuses_Elm, "uCtrl_Statuses_Elm");
+            this.uCtrl_Statuses_Elm.Name = "uCtrl_Statuses_Elm";
+            this.uCtrl_Statuses_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_Statuses_Elm.VisibleElementChangedHandler(this.uCtrl_Statuses_Elm_VisibleElementChanged);
+            this.uCtrl_Statuses_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_Statuses_Elm.VisibleOptionsChangedHandler(this.uCtrl_Statuses_Elm_VisibleOptionsChanged);
+            this.uCtrl_Statuses_Elm.OptionsMoved += new ControlLibrary.UCtrl_Statuses_Elm.OptionsMovedHandler(this.uCtrl_Statuses_Elm_OptionsMoved);
+            this.uCtrl_Statuses_Elm.SelectChanged += new ControlLibrary.UCtrl_Statuses_Elm.SelectChangedHandler(this.uCtrl_Statuses_Elm_SelectChanged);
+            this.uCtrl_Statuses_Elm.DelElement += new ControlLibrary.UCtrl_Statuses_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
+            this.uCtrl_Statuses_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.uCtrl_Statuses_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.uCtrl_Statuses_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
             // panel_UC_Shortcuts
             // 
             resources.ApplyResources(this.panel_UC_Shortcuts, "panel_UC_Shortcuts");
             this.panel_UC_Shortcuts.Controls.Add(this.uCtrl_Shortcuts_Elm);
             this.panel_UC_Shortcuts.Name = "panel_UC_Shortcuts";
+            // 
+            // uCtrl_Shortcuts_Elm
+            // 
+            resources.ApplyResources(this.uCtrl_Shortcuts_Elm, "uCtrl_Shortcuts_Elm");
+            this.uCtrl_Shortcuts_Elm.Name = "uCtrl_Shortcuts_Elm";
+            this.uCtrl_Shortcuts_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_Shortcuts_Elm.VisibleElementChangedHandler(this.uCtrl_Shortcuts_Elm_VisibleElementChanged);
+            this.uCtrl_Shortcuts_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_Shortcuts_Elm.VisibleOptionsChangedHandler(this.uCtrl_Shortcuts_Elm_VisibleOptionsChanged);
+            this.uCtrl_Shortcuts_Elm.OptionsMoved += new ControlLibrary.UCtrl_Shortcuts_Elm.OptionsMovedHandler(this.uCtrl_Shortcuts_Elm_OptionsMoved);
+            this.uCtrl_Shortcuts_Elm.SelectChanged += new ControlLibrary.UCtrl_Shortcuts_Elm.SelectChangedHandler(this.uCtrl_Shortcuts_Elm_SelectChanged);
+            this.uCtrl_Shortcuts_Elm.DelElement += new ControlLibrary.UCtrl_Shortcuts_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
+            this.uCtrl_Shortcuts_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.uCtrl_Shortcuts_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.uCtrl_Shortcuts_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // panel_UC_Battery
+            // 
+            resources.ApplyResources(this.panel_UC_Battery, "panel_UC_Battery");
+            this.panel_UC_Battery.Controls.Add(this.uCtrl_Battery_Elm);
+            this.panel_UC_Battery.Name = "panel_UC_Battery";
+            // 
+            // uCtrl_Battery_Elm
+            // 
+            resources.ApplyResources(this.uCtrl_Battery_Elm, "uCtrl_Battery_Elm");
+            this.uCtrl_Battery_Elm.Name = "uCtrl_Battery_Elm";
+            this.uCtrl_Battery_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_Battery_Elm.VisibleElementChangedHandler(this.uCtrl_Battery_Elm_VisibleElementChanged);
+            this.uCtrl_Battery_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_Battery_Elm.VisibleOptionsChangedHandler(this.uCtrl_Battery_Elm_VisibleOptionsChanged);
+            this.uCtrl_Battery_Elm.OptionsMoved += new ControlLibrary.UCtrl_Battery_Elm.OptionsMovedHandler(this.uCtrl_Battery_Elm_OptionsMoved);
+            this.uCtrl_Battery_Elm.SelectChanged += new ControlLibrary.UCtrl_Battery_Elm.SelectChangedHandler(this.uCtrl_Battery_Elm_SelectChanged);
+            this.uCtrl_Battery_Elm.DelElement += new ControlLibrary.UCtrl_Battery_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
+            this.uCtrl_Battery_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.uCtrl_Battery_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.uCtrl_Battery_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // panel_UC_Heart
+            // 
+            resources.ApplyResources(this.panel_UC_Heart, "panel_UC_Heart");
+            this.panel_UC_Heart.Controls.Add(this.uCtrl_Heart_Elm);
+            this.panel_UC_Heart.Name = "panel_UC_Heart";
+            // 
+            // uCtrl_Heart_Elm
+            // 
+            resources.ApplyResources(this.uCtrl_Heart_Elm, "uCtrl_Heart_Elm");
+            this.uCtrl_Heart_Elm.Name = "uCtrl_Heart_Elm";
+            this.uCtrl_Heart_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_Heart_Elm.VisibleElementChangedHandler(this.uCtrl_Heart_Elm_VisibleElementChanged);
+            this.uCtrl_Heart_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_Heart_Elm.VisibleOptionsChangedHandler(this.uCtrl_Heart_Elm_VisibleOptionsChanged);
+            this.uCtrl_Heart_Elm.OptionsMoved += new ControlLibrary.UCtrl_Heart_Elm.OptionsMovedHandler(this.uCtrl_Heart_Elm_OptionsMoved);
+            this.uCtrl_Heart_Elm.SelectChanged += new ControlLibrary.UCtrl_Heart_Elm.SelectChangedHandler(this.uCtrl_Heart_Elm_SelectChanged);
+            this.uCtrl_Heart_Elm.DelElement += new ControlLibrary.UCtrl_Heart_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
+            this.uCtrl_Heart_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.uCtrl_Heart_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.uCtrl_Heart_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // panel_UC_Calories
+            // 
+            resources.ApplyResources(this.panel_UC_Calories, "panel_UC_Calories");
+            this.panel_UC_Calories.Controls.Add(this.uCtrl_Calories_Elm);
+            this.panel_UC_Calories.Name = "panel_UC_Calories";
+            // 
+            // uCtrl_Calories_Elm
+            // 
+            resources.ApplyResources(this.uCtrl_Calories_Elm, "uCtrl_Calories_Elm");
+            this.uCtrl_Calories_Elm.Name = "uCtrl_Calories_Elm";
+            this.uCtrl_Calories_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_Calories_Elm.VisibleElementChangedHandler(this.uCtrl_Calories_Elm_VisibleElementChanged);
+            this.uCtrl_Calories_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_Calories_Elm.VisibleOptionsChangedHandler(this.uCtrl_Calories_Elm_VisibleOptionsChanged);
+            this.uCtrl_Calories_Elm.OptionsMoved += new ControlLibrary.UCtrl_Calories_Elm.OptionsMovedHandler(this.uCtrl_Calories_Elm_OptionsMoved);
+            this.uCtrl_Calories_Elm.SelectChanged += new ControlLibrary.UCtrl_Calories_Elm.SelectChangedHandler(this.uCtrl_Calories_Elm_SelectChanged);
+            this.uCtrl_Calories_Elm.DelElement += new ControlLibrary.UCtrl_Calories_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
+            this.uCtrl_Calories_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.uCtrl_Calories_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.uCtrl_Calories_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // panel_UC_PAI
+            // 
+            resources.ApplyResources(this.panel_UC_PAI, "panel_UC_PAI");
+            this.panel_UC_PAI.Controls.Add(this.uCtrl_PAI_Elm);
+            this.panel_UC_PAI.Name = "panel_UC_PAI";
+            // 
+            // uCtrl_PAI_Elm
+            // 
+            resources.ApplyResources(this.uCtrl_PAI_Elm, "uCtrl_PAI_Elm");
+            this.uCtrl_PAI_Elm.Name = "uCtrl_PAI_Elm";
+            this.uCtrl_PAI_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_PAI_Elm.VisibleElementChangedHandler(this.uCtrl_PAI_Elm_VisibleElementChanged);
+            this.uCtrl_PAI_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_PAI_Elm.VisibleOptionsChangedHandler(this.uCtrl_PAI_Elm_VisibleOptionsChanged);
+            this.uCtrl_PAI_Elm.OptionsMoved += new ControlLibrary.UCtrl_PAI_Elm.OptionsMovedHandler(this.uCtrl_PAI_Elm_OptionsMoved);
+            this.uCtrl_PAI_Elm.SelectChanged += new ControlLibrary.UCtrl_PAI_Elm.SelectChangedHandler(this.uCtrl_PAI_Elm_SelectChanged);
+            this.uCtrl_PAI_Elm.DelElement += new ControlLibrary.UCtrl_PAI_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
+            this.uCtrl_PAI_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.uCtrl_PAI_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.uCtrl_PAI_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
             // 
             // panel_ElementsOpt
             // 
@@ -555,6 +771,78 @@ namespace Watch_Face_Editor
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_Text_Opt);
             this.panel_ElementsOpt.Controls.Add(this.userCtrl_Background_Options);
             this.panel_ElementsOpt.Name = "panel_ElementsOpt";
+            // 
+            // uCtrl_Shortcut_Opt
+            // 
+            resources.ApplyResources(this.uCtrl_Shortcut_Opt, "uCtrl_Shortcut_Opt");
+            this.uCtrl_Shortcut_Opt.Name = "uCtrl_Shortcut_Opt";
+            this.uCtrl_Shortcut_Opt.ValueChanged += new ControlLibrary.UCtrl_Shortcut_Opt.ValueChangedHandler(this.uCtrl_Shortcut_Opt_ValueChanged);
+            // 
+            // uCtrl_Segments_Opt
+            // 
+            resources.ApplyResources(this.uCtrl_Segments_Opt, "uCtrl_Segments_Opt");
+            this.uCtrl_Segments_Opt.FixedRowsCount = false;
+            this.uCtrl_Segments_Opt.ImagesCount = -1;
+            this.uCtrl_Segments_Opt.Name = "uCtrl_Segments_Opt";
+            this.uCtrl_Segments_Opt.ValueChanged += new ControlLibrary.UCtrl_Segments_Opt.ValueChangedHandler(this.uCtrl_Segments_Opt_ValueChanged);
+            // 
+            // uCtrl_Icon_Opt
+            // 
+            resources.ApplyResources(this.uCtrl_Icon_Opt, "uCtrl_Icon_Opt");
+            this.uCtrl_Icon_Opt.Name = "uCtrl_Icon_Opt";
+            this.uCtrl_Icon_Opt.ValueChanged += new ControlLibrary.UCtrl_Icon_Opt.ValueChangedHandler(this.uCtrl_Icon_Opt_ValueChanged);
+            // 
+            // uCtrl_Linear_Scale_Opt
+            // 
+            resources.ApplyResources(this.uCtrl_Linear_Scale_Opt, "uCtrl_Linear_Scale_Opt");
+            this.uCtrl_Linear_Scale_Opt.Name = "uCtrl_Linear_Scale_Opt";
+            this.uCtrl_Linear_Scale_Opt.ValueChanged += new ControlLibrary.UCtrl_Linear_Scale_Opt.ValueChangedHandler(this.uCtrl_Linear_Scale_Opt_ValueChanged);
+            // 
+            // uCtrl_Circle_Scale_Opt
+            // 
+            resources.ApplyResources(this.uCtrl_Circle_Scale_Opt, "uCtrl_Circle_Scale_Opt");
+            this.uCtrl_Circle_Scale_Opt.Name = "uCtrl_Circle_Scale_Opt";
+            this.uCtrl_Circle_Scale_Opt.ValueChanged += new ControlLibrary.UCtrl_Circle_Scale_Opt.ValueChangedHandler(this.uCtrl_Circle_Scale_Opt_ValueChanged);
+            // 
+            // uCtrl_Images_Opt
+            // 
+            resources.ApplyResources(this.uCtrl_Images_Opt, "uCtrl_Images_Opt");
+            this.uCtrl_Images_Opt.ImagesCount = 10;
+            this.uCtrl_Images_Opt.ImagesCountEnable = true;
+            this.uCtrl_Images_Opt.Name = "uCtrl_Images_Opt";
+            this.uCtrl_Images_Opt.ValueChanged += new ControlLibrary.UCtrl_Images_Opt.ValueChangedHandler(this.uCtrl_Images_Opt_ValueChanged);
+            // 
+            // uCtrl_Pointer_Opt
+            // 
+            resources.ApplyResources(this.uCtrl_Pointer_Opt, "uCtrl_Pointer_Opt");
+            this.uCtrl_Pointer_Opt.Name = "uCtrl_Pointer_Opt";
+            this.uCtrl_Pointer_Opt.ShowBackground = false;
+            this.uCtrl_Pointer_Opt.ValueChanged += new ControlLibrary.UCtrl_Pointer_Opt.ValueChangedHandler(this.uCtrl_Pointer_Opt_ValueChanged);
+            // 
+            // uCtrl_AmPm_Opt
+            // 
+            resources.ApplyResources(this.uCtrl_AmPm_Opt, "uCtrl_AmPm_Opt");
+            this.uCtrl_AmPm_Opt.Name = "uCtrl_AmPm_Opt";
+            this.uCtrl_AmPm_Opt.ValueChanged += new ControlLibrary.UCtrl_AmPm_Opt.ValueChangedHandler(this.uCtrl_AmPm_Opt_ValueChanged);
+            // 
+            // uCtrl_Text_Opt
+            // 
+            this.uCtrl_Text_Opt.Distance = false;
+            resources.ApplyResources(this.uCtrl_Text_Opt, "uCtrl_Text_Opt");
+            this.uCtrl_Text_Opt.Follow = true;
+            this.uCtrl_Text_Opt.ImageError = true;
+            this.uCtrl_Text_Opt.Name = "uCtrl_Text_Opt";
+            this.uCtrl_Text_Opt.OptionalSymbol = true;
+            this.uCtrl_Text_Opt.PaddingZero = false;
+            this.uCtrl_Text_Opt.Year = false;
+            this.uCtrl_Text_Opt.ValueChanged += new ControlLibrary.UCtrl_Text_Opt.ValueChangedHandler(this.uCtrl_Text_Opt_ValueChanged);
+            // 
+            // userCtrl_Background_Options
+            // 
+            this.userCtrl_Background_Options.AOD = false;
+            resources.ApplyResources(this.userCtrl_Background_Options, "userCtrl_Background_Options");
+            this.userCtrl_Background_Options.Name = "userCtrl_Background_Options";
+            this.userCtrl_Background_Options.ValueChanged += new ControlLibrary.UCtrl_Background_Opt.ValueChangedHandler(this.userCtrl_Background_Options_ValueChanged);
             // 
             // panel_MainScreen_AOD
             // 
@@ -620,6 +908,114 @@ namespace Watch_Face_Editor
             this.panel_set.Controls.Add(this.userCtrl_Set1);
             this.panel_set.Name = "panel_set";
             // 
+            // userCtrl_Set12
+            // 
+            resources.ApplyResources(this.userCtrl_Set12, "userCtrl_Set12");
+            this.userCtrl_Set12.Collapsed = true;
+            this.userCtrl_Set12.Name = "userCtrl_Set12";
+            this.userCtrl_Set12.SetNumber = 12;
+            this.userCtrl_Set12.Collapse += new ControlLibrary.UCtrl_Set.CollapseHandler(this.userCtrl_Set12_Collapse);
+            this.userCtrl_Set12.ValueChanged += new ControlLibrary.UCtrl_Set.ValueChangedHandler(this.userCtrl_Set_ValueChanged);
+            // 
+            // userCtrl_Set11
+            // 
+            resources.ApplyResources(this.userCtrl_Set11, "userCtrl_Set11");
+            this.userCtrl_Set11.Collapsed = true;
+            this.userCtrl_Set11.Name = "userCtrl_Set11";
+            this.userCtrl_Set11.SetNumber = 11;
+            this.userCtrl_Set11.Collapse += new ControlLibrary.UCtrl_Set.CollapseHandler(this.userCtrl_Set11_Collapse);
+            this.userCtrl_Set11.ValueChanged += new ControlLibrary.UCtrl_Set.ValueChangedHandler(this.userCtrl_Set_ValueChanged);
+            // 
+            // userCtrl_Set10
+            // 
+            resources.ApplyResources(this.userCtrl_Set10, "userCtrl_Set10");
+            this.userCtrl_Set10.Collapsed = true;
+            this.userCtrl_Set10.Name = "userCtrl_Set10";
+            this.userCtrl_Set10.SetNumber = 10;
+            this.userCtrl_Set10.Collapse += new ControlLibrary.UCtrl_Set.CollapseHandler(this.userCtrl_Set10_Collapse);
+            this.userCtrl_Set10.ValueChanged += new ControlLibrary.UCtrl_Set.ValueChangedHandler(this.userCtrl_Set_ValueChanged);
+            // 
+            // userCtrl_Set9
+            // 
+            resources.ApplyResources(this.userCtrl_Set9, "userCtrl_Set9");
+            this.userCtrl_Set9.Collapsed = true;
+            this.userCtrl_Set9.Name = "userCtrl_Set9";
+            this.userCtrl_Set9.SetNumber = 9;
+            this.userCtrl_Set9.Collapse += new ControlLibrary.UCtrl_Set.CollapseHandler(this.userCtrl_Set9_Collapse);
+            this.userCtrl_Set9.ValueChanged += new ControlLibrary.UCtrl_Set.ValueChangedHandler(this.userCtrl_Set_ValueChanged);
+            // 
+            // userCtrl_Set8
+            // 
+            resources.ApplyResources(this.userCtrl_Set8, "userCtrl_Set8");
+            this.userCtrl_Set8.Collapsed = true;
+            this.userCtrl_Set8.Name = "userCtrl_Set8";
+            this.userCtrl_Set8.SetNumber = 8;
+            this.userCtrl_Set8.Collapse += new ControlLibrary.UCtrl_Set.CollapseHandler(this.userCtrl_Set8_Collapse);
+            this.userCtrl_Set8.ValueChanged += new ControlLibrary.UCtrl_Set.ValueChangedHandler(this.userCtrl_Set_ValueChanged);
+            // 
+            // userCtrl_Set7
+            // 
+            resources.ApplyResources(this.userCtrl_Set7, "userCtrl_Set7");
+            this.userCtrl_Set7.Collapsed = true;
+            this.userCtrl_Set7.Name = "userCtrl_Set7";
+            this.userCtrl_Set7.SetNumber = 7;
+            this.userCtrl_Set7.Collapse += new ControlLibrary.UCtrl_Set.CollapseHandler(this.userCtrl_Set7_Collapse);
+            this.userCtrl_Set7.ValueChanged += new ControlLibrary.UCtrl_Set.ValueChangedHandler(this.userCtrl_Set_ValueChanged);
+            // 
+            // userCtrl_Set6
+            // 
+            resources.ApplyResources(this.userCtrl_Set6, "userCtrl_Set6");
+            this.userCtrl_Set6.Collapsed = true;
+            this.userCtrl_Set6.Name = "userCtrl_Set6";
+            this.userCtrl_Set6.SetNumber = 6;
+            this.userCtrl_Set6.Collapse += new ControlLibrary.UCtrl_Set.CollapseHandler(this.userCtrl_Set6_Collapse);
+            this.userCtrl_Set6.ValueChanged += new ControlLibrary.UCtrl_Set.ValueChangedHandler(this.userCtrl_Set_ValueChanged);
+            // 
+            // userCtrl_Set5
+            // 
+            resources.ApplyResources(this.userCtrl_Set5, "userCtrl_Set5");
+            this.userCtrl_Set5.Collapsed = true;
+            this.userCtrl_Set5.Name = "userCtrl_Set5";
+            this.userCtrl_Set5.SetNumber = 5;
+            this.userCtrl_Set5.Collapse += new ControlLibrary.UCtrl_Set.CollapseHandler(this.userCtrl_Set5_Collapse);
+            this.userCtrl_Set5.ValueChanged += new ControlLibrary.UCtrl_Set.ValueChangedHandler(this.userCtrl_Set_ValueChanged);
+            // 
+            // userCtrl_Set4
+            // 
+            resources.ApplyResources(this.userCtrl_Set4, "userCtrl_Set4");
+            this.userCtrl_Set4.Collapsed = true;
+            this.userCtrl_Set4.Name = "userCtrl_Set4";
+            this.userCtrl_Set4.SetNumber = 4;
+            this.userCtrl_Set4.Collapse += new ControlLibrary.UCtrl_Set.CollapseHandler(this.userCtrl_Set4_Collapse);
+            this.userCtrl_Set4.ValueChanged += new ControlLibrary.UCtrl_Set.ValueChangedHandler(this.userCtrl_Set_ValueChanged);
+            // 
+            // userCtrl_Set3
+            // 
+            resources.ApplyResources(this.userCtrl_Set3, "userCtrl_Set3");
+            this.userCtrl_Set3.Collapsed = true;
+            this.userCtrl_Set3.Name = "userCtrl_Set3";
+            this.userCtrl_Set3.SetNumber = 3;
+            this.userCtrl_Set3.Collapse += new ControlLibrary.UCtrl_Set.CollapseHandler(this.userCtrl_Set3_Collapse);
+            this.userCtrl_Set3.ValueChanged += new ControlLibrary.UCtrl_Set.ValueChangedHandler(this.userCtrl_Set_ValueChanged);
+            // 
+            // userCtrl_Set2
+            // 
+            resources.ApplyResources(this.userCtrl_Set2, "userCtrl_Set2");
+            this.userCtrl_Set2.Collapsed = true;
+            this.userCtrl_Set2.Name = "userCtrl_Set2";
+            this.userCtrl_Set2.SetNumber = 2;
+            this.userCtrl_Set2.Collapse += new ControlLibrary.UCtrl_Set.CollapseHandler(this.userCtrl_Set2_Collapse);
+            this.userCtrl_Set2.ValueChanged += new ControlLibrary.UCtrl_Set.ValueChangedHandler(this.userCtrl_Set_ValueChanged);
+            // 
+            // userCtrl_Set1
+            // 
+            resources.ApplyResources(this.userCtrl_Set1, "userCtrl_Set1");
+            this.userCtrl_Set1.Collapsed = true;
+            this.userCtrl_Set1.Name = "userCtrl_Set1";
+            this.userCtrl_Set1.SetNumber = 1;
+            this.userCtrl_Set1.Collapse += new ControlLibrary.UCtrl_Set.CollapseHandler(this.userCtrl_Set1_Collapse);
+            this.userCtrl_Set1.ValueChanged += new ControlLibrary.UCtrl_Set.ValueChangedHandler(this.userCtrl_Set_ValueChanged);
+            // 
             // panel_PreviewStates
             // 
             this.panel_PreviewStates.Controls.Add(this.button_JsonPreview_Random);
@@ -681,8 +1077,8 @@ namespace Watch_Face_Editor
             // Number
             // 
             this.Number.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Number.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Number.DefaultCellStyle = dataGridViewCellStyle3;
             resources.ApplyResources(this.Number, "Number");
             this.Number.Name = "Number";
             this.Number.ReadOnly = true;
@@ -705,11 +1101,11 @@ namespace Watch_Face_Editor
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.NullValue = null;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.NullValue = null;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle4;
             this.Column1.FillWeight = 95F;
             resources.ApplyResources(this.Column1, "Column1");
             this.Column1.Name = "Column1";
@@ -1232,6 +1628,7 @@ namespace Watch_Face_Editor
             resources.ApplyResources(this.linkLabel_py_amazfit_tools, "linkLabel_py_amazfit_tools");
             this.linkLabel_py_amazfit_tools.Name = "linkLabel_py_amazfit_tools";
             this.linkLabel_py_amazfit_tools.TabStop = true;
+            this.linkLabel_py_amazfit_tools.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel_py_amazfit_tools_LinkClicked);
             // 
             // label409
             // 
@@ -1443,310 +1840,6 @@ namespace Watch_Face_Editor
             this.pictureBox_Preview.TabStop = false;
             this.pictureBox_Preview.Click += new System.EventHandler(this.pictureBox_Preview_Click);
             // 
-            // uCtrl_DigitalTime_Elm
-            // 
-            resources.ApplyResources(this.uCtrl_DigitalTime_Elm, "uCtrl_DigitalTime_Elm");
-            this.uCtrl_DigitalTime_Elm.Name = "uCtrl_DigitalTime_Elm";
-            this.uCtrl_DigitalTime_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_DigitalTime_Elm.VisibleElementChangedHandler(this.uCtrl_DigitalTime_Elm_VisibleElementChanged);
-            this.uCtrl_DigitalTime_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_DigitalTime_Elm.VisibleOptionsChangedHandler(this.uCtrl_DigitalTime_Elm_VisibleOptionsChanged);
-            this.uCtrl_DigitalTime_Elm.OptionsMoved += new ControlLibrary.UCtrl_DigitalTime_Elm.OptionsMovedHandler(this.uCtrl_DigitalTime_Elm_OptionsMoved);
-            this.uCtrl_DigitalTime_Elm.SelectChanged += new ControlLibrary.UCtrl_DigitalTime_Elm.SelectChangedHandler(this.uCtrl_DigitalTime_Elm_SelectChanged);
-            this.uCtrl_DigitalTime_Elm.DelElement += new ControlLibrary.UCtrl_DigitalTime_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
-            this.uCtrl_DigitalTime_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
-            this.uCtrl_DigitalTime_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
-            this.uCtrl_DigitalTime_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
-            // 
-            // uCtrl_AnalogTime_Elm
-            // 
-            resources.ApplyResources(this.uCtrl_AnalogTime_Elm, "uCtrl_AnalogTime_Elm");
-            this.uCtrl_AnalogTime_Elm.Name = "uCtrl_AnalogTime_Elm";
-            this.uCtrl_AnalogTime_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_AnalogTime_Elm.VisibleElementChangedHandler(this.uCtrl_AnalogTime_Elm_VisibleElementChanged);
-            this.uCtrl_AnalogTime_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_AnalogTime_Elm.VisibleOptionsChangedHandler(this.uCtrl_AnalogTime_Elm_VisibleOptionsChanged);
-            this.uCtrl_AnalogTime_Elm.OptionsMoved += new ControlLibrary.UCtrl_AnalogTime_Elm.OptionsMovedHandler(this.uCtrl_AnalogTime_Elm_OptionsMoved);
-            this.uCtrl_AnalogTime_Elm.SelectChanged += new ControlLibrary.UCtrl_AnalogTime_Elm.SelectChangedHandler(this.uCtrl_AnalogTime_Elm_SelectChanged);
-            this.uCtrl_AnalogTime_Elm.DelElement += new ControlLibrary.UCtrl_AnalogTime_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
-            this.uCtrl_AnalogTime_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
-            this.uCtrl_AnalogTime_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
-            this.uCtrl_AnalogTime_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
-            // 
-            // uCtrl_DateDay_Elm
-            // 
-            resources.ApplyResources(this.uCtrl_DateDay_Elm, "uCtrl_DateDay_Elm");
-            this.uCtrl_DateDay_Elm.Name = "uCtrl_DateDay_Elm";
-            this.uCtrl_DateDay_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_DateDay_Elm.VisibleElementChangedHandler(this.uCtrl_DateDay_Elm_VisibleElementChanged);
-            this.uCtrl_DateDay_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_DateDay_Elm.VisibleOptionsChangedHandler(this.uCtrl_DateDay_Elm_VisibleOptionsChanged);
-            this.uCtrl_DateDay_Elm.OptionsMoved += new ControlLibrary.UCtrl_DateDay_Elm.OptionsMovedHandler(this.uCtrl_DateDay_Elm_OptionsMoved);
-            this.uCtrl_DateDay_Elm.SelectChanged += new ControlLibrary.UCtrl_DateDay_Elm.SelectChangedHandler(this.uCtrl_DateDay_Elm_SelectChanged);
-            this.uCtrl_DateDay_Elm.DelElement += new ControlLibrary.UCtrl_DateDay_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
-            this.uCtrl_DateDay_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
-            this.uCtrl_DateDay_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
-            this.uCtrl_DateDay_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
-            // 
-            // uCtrl_DateMonth_Elm
-            // 
-            resources.ApplyResources(this.uCtrl_DateMonth_Elm, "uCtrl_DateMonth_Elm");
-            this.uCtrl_DateMonth_Elm.Name = "uCtrl_DateMonth_Elm";
-            this.uCtrl_DateMonth_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_DateMonth_Elm.VisibleElementChangedHandler(this.uCtrl_DateMonth_Elm_VisibleElementChanged);
-            this.uCtrl_DateMonth_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_DateMonth_Elm.VisibleOptionsChangedHandler(this.uCtrl_DateMonth_Elm_VisibleOptionsChanged);
-            this.uCtrl_DateMonth_Elm.OptionsMoved += new ControlLibrary.UCtrl_DateMonth_Elm.OptionsMovedHandler(this.uCtrl_DateMonth_Elm_OptionsMoved);
-            this.uCtrl_DateMonth_Elm.SelectChanged += new ControlLibrary.UCtrl_DateMonth_Elm.SelectChangedHandler(this.uCtrl_DateMonth_Elm_SelectChanged);
-            this.uCtrl_DateMonth_Elm.DelElement += new ControlLibrary.UCtrl_DateMonth_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
-            this.uCtrl_DateMonth_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
-            this.uCtrl_DateMonth_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
-            this.uCtrl_DateMonth_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
-            // 
-            // uCtrl_DateYear_Elm
-            // 
-            resources.ApplyResources(this.uCtrl_DateYear_Elm, "uCtrl_DateYear_Elm");
-            this.uCtrl_DateYear_Elm.Name = "uCtrl_DateYear_Elm";
-            this.uCtrl_DateYear_Elm.SelectChanged += new ControlLibrary.UCtrl_DateYear_Elm.SelectChangedHandler(this.uCtrl_DateYear_Elm_SelectChanged);
-            this.uCtrl_DateYear_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_DateYear_Elm.VisibleElementChangedHandler(this.uCtrl_DateYear_Elm_VisibleElementChanged);
-            this.uCtrl_DateYear_Elm.DelElement += new ControlLibrary.UCtrl_DateYear_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
-            this.uCtrl_DateYear_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
-            this.uCtrl_DateYear_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
-            this.uCtrl_DateYear_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
-            // 
-            // uCtrl_Background_Elm
-            // 
-            resources.ApplyResources(this.uCtrl_Background_Elm, "uCtrl_Background_Elm");
-            this.uCtrl_Background_Elm.BackColor = System.Drawing.SystemColors.Control;
-            this.uCtrl_Background_Elm.Name = "uCtrl_Background_Elm";
-            this.uCtrl_Background_Elm.SelectChanged += new ControlLibrary.UCtrl_Background_Elm.SelectChangedHandler(this.uCtrl_Background_Elm_SelectChanged);
-            this.uCtrl_Background_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_Background_Elm.VisibleElementChangedHandler(this.uCtrl_Background_Elm_VisibleElemenChanged);
-            this.uCtrl_Background_Elm.DelElement += new ControlLibrary.UCtrl_Background_Elm.DelElementHandler(this.uCtrl_Background_Elm_DelElement);
-            // 
-            // uCtrl_DateWeek_Elm
-            // 
-            resources.ApplyResources(this.uCtrl_DateWeek_Elm, "uCtrl_DateWeek_Elm");
-            this.uCtrl_DateWeek_Elm.Name = "uCtrl_DateWeek_Elm";
-            this.uCtrl_DateWeek_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_DateWeek_Elm.VisibleElementChangedHandler(this.uCtrl_DateWeek_Elm_VisibleElementChanged);
-            this.uCtrl_DateWeek_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_DateWeek_Elm.VisibleOptionsChangedHandler(this.uCtrl_DateWeek_Elm_VisibleOptionsChanged);
-            this.uCtrl_DateWeek_Elm.OptionsMoved += new ControlLibrary.UCtrl_DateWeek_Elm.OptionsMovedHandler(this.uCtrl_DateWeek_Elm_OptionsMoved);
-            this.uCtrl_DateWeek_Elm.SelectChanged += new ControlLibrary.UCtrl_DateWeek_Elm.SelectChangedHandler(this.uCtrl_DateWeek_Elm_SelectChanged);
-            this.uCtrl_DateWeek_Elm.DelElement += new ControlLibrary.UCtrl_DateWeek_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
-            this.uCtrl_DateWeek_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
-            this.uCtrl_DateWeek_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
-            this.uCtrl_DateWeek_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
-            // 
-            // uCtrl_Steps_Elm
-            // 
-            resources.ApplyResources(this.uCtrl_Steps_Elm, "uCtrl_Steps_Elm");
-            this.uCtrl_Steps_Elm.Name = "uCtrl_Steps_Elm";
-            this.uCtrl_Steps_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_Steps_Elm.VisibleElementChangedHandler(this.uCtrl_Steps_Elm_VisibleElementChanged);
-            this.uCtrl_Steps_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_Steps_Elm.VisibleOptionsChangedHandler(this.uCtrl_Steps_Elm_VisibleOptionsChanged);
-            this.uCtrl_Steps_Elm.OptionsMoved += new ControlLibrary.UCtrl_Steps_Elm.OptionsMovedHandler(this.uCtrl_Steps_Elm_OptionsMoved);
-            this.uCtrl_Steps_Elm.SelectChanged += new ControlLibrary.UCtrl_Steps_Elm.SelectChangedHandler(this.uCtrl_Steps_Elm_SelectChanged);
-            this.uCtrl_Steps_Elm.DelElement += new ControlLibrary.UCtrl_Steps_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
-            this.uCtrl_Steps_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
-            this.uCtrl_Steps_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
-            this.uCtrl_Steps_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
-            // 
-            // uCtrl_Statuses_Elm
-            // 
-            resources.ApplyResources(this.uCtrl_Statuses_Elm, "uCtrl_Statuses_Elm");
-            this.uCtrl_Statuses_Elm.Name = "uCtrl_Statuses_Elm";
-            this.uCtrl_Statuses_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_Statuses_Elm.VisibleElementChangedHandler(this.uCtrl_Statuses_Elm_VisibleElementChanged);
-            this.uCtrl_Statuses_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_Statuses_Elm.VisibleOptionsChangedHandler(this.uCtrl_Statuses_Elm_VisibleOptionsChanged);
-            this.uCtrl_Statuses_Elm.OptionsMoved += new ControlLibrary.UCtrl_Statuses_Elm.OptionsMovedHandler(this.uCtrl_Statuses_Elm_OptionsMoved);
-            this.uCtrl_Statuses_Elm.SelectChanged += new ControlLibrary.UCtrl_Statuses_Elm.SelectChangedHandler(this.uCtrl_Statuses_Elm_SelectChanged);
-            this.uCtrl_Statuses_Elm.DelElement += new ControlLibrary.UCtrl_Statuses_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
-            this.uCtrl_Statuses_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
-            this.uCtrl_Statuses_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
-            this.uCtrl_Statuses_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
-            // 
-            // uCtrl_Shortcuts_Elm
-            // 
-            resources.ApplyResources(this.uCtrl_Shortcuts_Elm, "uCtrl_Shortcuts_Elm");
-            this.uCtrl_Shortcuts_Elm.Name = "uCtrl_Shortcuts_Elm";
-            this.uCtrl_Shortcuts_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_Shortcuts_Elm.VisibleElementChangedHandler(this.uCtrl_Shortcuts_Elm_VisibleElementChanged);
-            this.uCtrl_Shortcuts_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_Shortcuts_Elm.VisibleOptionsChangedHandler(this.uCtrl_Shortcuts_Elm_VisibleOptionsChanged);
-            this.uCtrl_Shortcuts_Elm.OptionsMoved += new ControlLibrary.UCtrl_Shortcuts_Elm.OptionsMovedHandler(this.uCtrl_Shortcuts_Elm_OptionsMoved);
-            this.uCtrl_Shortcuts_Elm.SelectChanged += new ControlLibrary.UCtrl_Shortcuts_Elm.SelectChangedHandler(this.uCtrl_Shortcuts_Elm_SelectChanged);
-            this.uCtrl_Shortcuts_Elm.DelElement += new ControlLibrary.UCtrl_Shortcuts_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
-            this.uCtrl_Shortcuts_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
-            this.uCtrl_Shortcuts_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
-            this.uCtrl_Shortcuts_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
-            // 
-            // uCtrl_Shortcut_Opt
-            // 
-            resources.ApplyResources(this.uCtrl_Shortcut_Opt, "uCtrl_Shortcut_Opt");
-            this.uCtrl_Shortcut_Opt.Name = "uCtrl_Shortcut_Opt";
-            this.uCtrl_Shortcut_Opt.ValueChanged += new ControlLibrary.UCtrl_Shortcut_Opt.ValueChangedHandler(this.uCtrl_Shortcut_Opt_ValueChanged);
-            // 
-            // uCtrl_Segments_Opt
-            // 
-            resources.ApplyResources(this.uCtrl_Segments_Opt, "uCtrl_Segments_Opt");
-            this.uCtrl_Segments_Opt.FixedRowsCount = false;
-            this.uCtrl_Segments_Opt.ImagesCount = -1;
-            this.uCtrl_Segments_Opt.Name = "uCtrl_Segments_Opt";
-            this.uCtrl_Segments_Opt.ValueChanged += new ControlLibrary.UCtrl_Segments_Opt.ValueChangedHandler(this.uCtrl_Segments_Opt_ValueChanged);
-            // 
-            // uCtrl_Icon_Opt
-            // 
-            resources.ApplyResources(this.uCtrl_Icon_Opt, "uCtrl_Icon_Opt");
-            this.uCtrl_Icon_Opt.Name = "uCtrl_Icon_Opt";
-            this.uCtrl_Icon_Opt.ValueChanged += new ControlLibrary.UCtrl_Icon_Opt.ValueChangedHandler(this.uCtrl_Icon_Opt_ValueChanged);
-            // 
-            // uCtrl_Linear_Scale_Opt
-            // 
-            resources.ApplyResources(this.uCtrl_Linear_Scale_Opt, "uCtrl_Linear_Scale_Opt");
-            this.uCtrl_Linear_Scale_Opt.Name = "uCtrl_Linear_Scale_Opt";
-            this.uCtrl_Linear_Scale_Opt.ValueChanged += new ControlLibrary.UCtrl_Linear_Scale_Opt.ValueChangedHandler(this.uCtrl_Linear_Scale_Opt_ValueChanged);
-            // 
-            // uCtrl_Circle_Scale_Opt
-            // 
-            resources.ApplyResources(this.uCtrl_Circle_Scale_Opt, "uCtrl_Circle_Scale_Opt");
-            this.uCtrl_Circle_Scale_Opt.Name = "uCtrl_Circle_Scale_Opt";
-            this.uCtrl_Circle_Scale_Opt.ValueChanged += new ControlLibrary.UCtrl_Circle_Scale_Opt.ValueChangedHandler(this.uCtrl_Circle_Scale_Opt_ValueChanged);
-            // 
-            // uCtrl_Images_Opt
-            // 
-            resources.ApplyResources(this.uCtrl_Images_Opt, "uCtrl_Images_Opt");
-            this.uCtrl_Images_Opt.ImagesCount = 10;
-            this.uCtrl_Images_Opt.ImagesCountEnable = true;
-            this.uCtrl_Images_Opt.Name = "uCtrl_Images_Opt";
-            this.uCtrl_Images_Opt.ValueChanged += new ControlLibrary.UCtrl_Images_Opt.ValueChangedHandler(this.uCtrl_Images_Opt_ValueChanged);
-            // 
-            // uCtrl_Pointer_Opt
-            // 
-            resources.ApplyResources(this.uCtrl_Pointer_Opt, "uCtrl_Pointer_Opt");
-            this.uCtrl_Pointer_Opt.Name = "uCtrl_Pointer_Opt";
-            this.uCtrl_Pointer_Opt.ShowBackground = false;
-            this.uCtrl_Pointer_Opt.ValueChanged += new ControlLibrary.UCtrl_Pointer_Opt.ValueChangedHandler(this.uCtrl_Pointer_Opt_ValueChanged);
-            // 
-            // uCtrl_AmPm_Opt
-            // 
-            resources.ApplyResources(this.uCtrl_AmPm_Opt, "uCtrl_AmPm_Opt");
-            this.uCtrl_AmPm_Opt.Name = "uCtrl_AmPm_Opt";
-            this.uCtrl_AmPm_Opt.ValueChanged += new ControlLibrary.UCtrl_AmPm_Opt.ValueChangedHandler(this.uCtrl_AmPm_Opt_ValueChanged);
-            // 
-            // uCtrl_Text_Opt
-            // 
-            this.uCtrl_Text_Opt.Distance = false;
-            resources.ApplyResources(this.uCtrl_Text_Opt, "uCtrl_Text_Opt");
-            this.uCtrl_Text_Opt.Follow = true;
-            this.uCtrl_Text_Opt.ImageError = true;
-            this.uCtrl_Text_Opt.Name = "uCtrl_Text_Opt";
-            this.uCtrl_Text_Opt.OptionalSymbol = true;
-            this.uCtrl_Text_Opt.PaddingZero = false;
-            this.uCtrl_Text_Opt.Year = false;
-            this.uCtrl_Text_Opt.ValueChanged += new ControlLibrary.UCtrl_Text_Opt.ValueChangedHandler(this.uCtrl_Text_Opt_ValueChanged);
-            // 
-            // userCtrl_Background_Options
-            // 
-            this.userCtrl_Background_Options.AOD = false;
-            resources.ApplyResources(this.userCtrl_Background_Options, "userCtrl_Background_Options");
-            this.userCtrl_Background_Options.Name = "userCtrl_Background_Options";
-            this.userCtrl_Background_Options.ValueChanged += new ControlLibrary.UCtrl_Background_Opt.ValueChangedHandler(this.userCtrl_Background_Options_ValueChanged);
-            // 
-            // userCtrl_Set12
-            // 
-            resources.ApplyResources(this.userCtrl_Set12, "userCtrl_Set12");
-            this.userCtrl_Set12.Collapsed = true;
-            this.userCtrl_Set12.Name = "userCtrl_Set12";
-            this.userCtrl_Set12.SetNumber = 12;
-            this.userCtrl_Set12.Collapse += new ControlLibrary.UCtrl_Set.CollapseHandler(this.userCtrl_Set12_Collapse);
-            this.userCtrl_Set12.ValueChanged += new ControlLibrary.UCtrl_Set.ValueChangedHandler(this.userCtrl_Set_ValueChanged);
-            // 
-            // userCtrl_Set11
-            // 
-            resources.ApplyResources(this.userCtrl_Set11, "userCtrl_Set11");
-            this.userCtrl_Set11.Collapsed = true;
-            this.userCtrl_Set11.Name = "userCtrl_Set11";
-            this.userCtrl_Set11.SetNumber = 11;
-            this.userCtrl_Set11.Collapse += new ControlLibrary.UCtrl_Set.CollapseHandler(this.userCtrl_Set11_Collapse);
-            this.userCtrl_Set11.ValueChanged += new ControlLibrary.UCtrl_Set.ValueChangedHandler(this.userCtrl_Set_ValueChanged);
-            // 
-            // userCtrl_Set10
-            // 
-            resources.ApplyResources(this.userCtrl_Set10, "userCtrl_Set10");
-            this.userCtrl_Set10.Collapsed = true;
-            this.userCtrl_Set10.Name = "userCtrl_Set10";
-            this.userCtrl_Set10.SetNumber = 10;
-            this.userCtrl_Set10.Collapse += new ControlLibrary.UCtrl_Set.CollapseHandler(this.userCtrl_Set10_Collapse);
-            this.userCtrl_Set10.ValueChanged += new ControlLibrary.UCtrl_Set.ValueChangedHandler(this.userCtrl_Set_ValueChanged);
-            // 
-            // userCtrl_Set9
-            // 
-            resources.ApplyResources(this.userCtrl_Set9, "userCtrl_Set9");
-            this.userCtrl_Set9.Collapsed = true;
-            this.userCtrl_Set9.Name = "userCtrl_Set9";
-            this.userCtrl_Set9.SetNumber = 9;
-            this.userCtrl_Set9.Collapse += new ControlLibrary.UCtrl_Set.CollapseHandler(this.userCtrl_Set9_Collapse);
-            this.userCtrl_Set9.ValueChanged += new ControlLibrary.UCtrl_Set.ValueChangedHandler(this.userCtrl_Set_ValueChanged);
-            // 
-            // userCtrl_Set8
-            // 
-            resources.ApplyResources(this.userCtrl_Set8, "userCtrl_Set8");
-            this.userCtrl_Set8.Collapsed = true;
-            this.userCtrl_Set8.Name = "userCtrl_Set8";
-            this.userCtrl_Set8.SetNumber = 8;
-            this.userCtrl_Set8.Collapse += new ControlLibrary.UCtrl_Set.CollapseHandler(this.userCtrl_Set8_Collapse);
-            this.userCtrl_Set8.ValueChanged += new ControlLibrary.UCtrl_Set.ValueChangedHandler(this.userCtrl_Set_ValueChanged);
-            // 
-            // userCtrl_Set7
-            // 
-            resources.ApplyResources(this.userCtrl_Set7, "userCtrl_Set7");
-            this.userCtrl_Set7.Collapsed = true;
-            this.userCtrl_Set7.Name = "userCtrl_Set7";
-            this.userCtrl_Set7.SetNumber = 7;
-            this.userCtrl_Set7.Collapse += new ControlLibrary.UCtrl_Set.CollapseHandler(this.userCtrl_Set7_Collapse);
-            this.userCtrl_Set7.ValueChanged += new ControlLibrary.UCtrl_Set.ValueChangedHandler(this.userCtrl_Set_ValueChanged);
-            // 
-            // userCtrl_Set6
-            // 
-            resources.ApplyResources(this.userCtrl_Set6, "userCtrl_Set6");
-            this.userCtrl_Set6.Collapsed = true;
-            this.userCtrl_Set6.Name = "userCtrl_Set6";
-            this.userCtrl_Set6.SetNumber = 6;
-            this.userCtrl_Set6.Collapse += new ControlLibrary.UCtrl_Set.CollapseHandler(this.userCtrl_Set6_Collapse);
-            this.userCtrl_Set6.ValueChanged += new ControlLibrary.UCtrl_Set.ValueChangedHandler(this.userCtrl_Set_ValueChanged);
-            // 
-            // userCtrl_Set5
-            // 
-            resources.ApplyResources(this.userCtrl_Set5, "userCtrl_Set5");
-            this.userCtrl_Set5.Collapsed = true;
-            this.userCtrl_Set5.Name = "userCtrl_Set5";
-            this.userCtrl_Set5.SetNumber = 5;
-            this.userCtrl_Set5.Collapse += new ControlLibrary.UCtrl_Set.CollapseHandler(this.userCtrl_Set5_Collapse);
-            this.userCtrl_Set5.ValueChanged += new ControlLibrary.UCtrl_Set.ValueChangedHandler(this.userCtrl_Set_ValueChanged);
-            // 
-            // userCtrl_Set4
-            // 
-            resources.ApplyResources(this.userCtrl_Set4, "userCtrl_Set4");
-            this.userCtrl_Set4.Collapsed = true;
-            this.userCtrl_Set4.Name = "userCtrl_Set4";
-            this.userCtrl_Set4.SetNumber = 4;
-            this.userCtrl_Set4.Collapse += new ControlLibrary.UCtrl_Set.CollapseHandler(this.userCtrl_Set4_Collapse);
-            this.userCtrl_Set4.ValueChanged += new ControlLibrary.UCtrl_Set.ValueChangedHandler(this.userCtrl_Set_ValueChanged);
-            // 
-            // userCtrl_Set3
-            // 
-            resources.ApplyResources(this.userCtrl_Set3, "userCtrl_Set3");
-            this.userCtrl_Set3.Collapsed = true;
-            this.userCtrl_Set3.Name = "userCtrl_Set3";
-            this.userCtrl_Set3.SetNumber = 3;
-            this.userCtrl_Set3.Collapse += new ControlLibrary.UCtrl_Set.CollapseHandler(this.userCtrl_Set3_Collapse);
-            this.userCtrl_Set3.ValueChanged += new ControlLibrary.UCtrl_Set.ValueChangedHandler(this.userCtrl_Set_ValueChanged);
-            // 
-            // userCtrl_Set2
-            // 
-            resources.ApplyResources(this.userCtrl_Set2, "userCtrl_Set2");
-            this.userCtrl_Set2.Collapsed = true;
-            this.userCtrl_Set2.Name = "userCtrl_Set2";
-            this.userCtrl_Set2.SetNumber = 2;
-            this.userCtrl_Set2.Collapse += new ControlLibrary.UCtrl_Set.CollapseHandler(this.userCtrl_Set2_Collapse);
-            this.userCtrl_Set2.ValueChanged += new ControlLibrary.UCtrl_Set.ValueChangedHandler(this.userCtrl_Set_ValueChanged);
-            // 
-            // userCtrl_Set1
-            // 
-            resources.ApplyResources(this.userCtrl_Set1, "userCtrl_Set1");
-            this.userCtrl_Set1.Collapsed = true;
-            this.userCtrl_Set1.Name = "userCtrl_Set1";
-            this.userCtrl_Set1.SetNumber = 1;
-            this.userCtrl_Set1.Collapse += new ControlLibrary.UCtrl_Set.CollapseHandler(this.userCtrl_Set1_Collapse);
-            this.userCtrl_Set1.ValueChanged += new ControlLibrary.UCtrl_Set.ValueChangedHandler(this.userCtrl_Set_ValueChanged);
-            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
@@ -1818,6 +1911,14 @@ namespace Watch_Face_Editor
             this.panel_UC_Statuses.PerformLayout();
             this.panel_UC_Shortcuts.ResumeLayout(false);
             this.panel_UC_Shortcuts.PerformLayout();
+            this.panel_UC_Battery.ResumeLayout(false);
+            this.panel_UC_Battery.PerformLayout();
+            this.panel_UC_Heart.ResumeLayout(false);
+            this.panel_UC_Heart.PerformLayout();
+            this.panel_UC_Calories.ResumeLayout(false);
+            this.panel_UC_Calories.PerformLayout();
+            this.panel_UC_PAI.ResumeLayout(false);
+            this.panel_UC_PAI.PerformLayout();
             this.panel_ElementsOpt.ResumeLayout(false);
             this.panel_MainScreen_AOD.ResumeLayout(false);
             this.panel_MainScreen_AOD.PerformLayout();
@@ -2031,6 +2132,14 @@ namespace Watch_Face_Editor
         private ControlLibrary.UCtrl_Shortcuts_Elm uCtrl_Shortcuts_Elm;
         private ControlLibrary.UCtrl_Shortcut_Opt uCtrl_Shortcut_Opt;
         private System.Windows.Forms.CheckBox checkBox_Shortcuts_Image;
+        private System.Windows.Forms.Panel panel_UC_Battery;
+        private ControlLibrary.UCtrl_Battery_Elm uCtrl_Battery_Elm;
+        private System.Windows.Forms.Panel panel_UC_Heart;
+        private ControlLibrary.UCtrl_Heart_Elm uCtrl_Heart_Elm;
+        private System.Windows.Forms.Panel panel_UC_Calories;
+        private ControlLibrary.UCtrl_Calories_Elm uCtrl_Calories_Elm;
+        private System.Windows.Forms.Panel panel_UC_PAI;
+        private ControlLibrary.UCtrl_PAI_Elm uCtrl_PAI_Elm;
     }
 }
 

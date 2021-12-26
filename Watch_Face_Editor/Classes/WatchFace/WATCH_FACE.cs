@@ -1217,6 +1217,804 @@ namespace Watch_Face_Editor
             };
         }
     }
+
+    public class ElementBattery : ICloneable
+    {
+        public string elementName = "ElementBattery";
+
+        ///// <summary>Позиция в наборе элементов</summary>
+        //public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = true;
+
+        public hmUI_widget_IMG_LEVEL Images { get; set; }
+        public hmUI_widget_IMG_PROGRESS Segments { get; set; }
+        public hmUI_widget_IMG_NUMBER Number { get; set; }
+        public hmUI_widget_IMG_POINTER Pointer { get; set; }
+        public Circle_Scale Circle_Scale { get; set; }
+        public Linear_Scale Linear_Scale { get; set; }
+        public hmUI_widget_IMG Icon { get; set; }
+
+        public object Clone()
+        {
+
+            hmUI_widget_IMG_LEVEL Images = null;
+            if (this.Images != null)
+            {
+                Images = new hmUI_widget_IMG_LEVEL
+                {
+                    X = this.Images.X,
+                    Y = this.Images.Y,
+                    img_First = this.Images.img_First,
+                    image_length = this.Images.image_length,
+
+                    position = this.Images.position,
+                    visible = this.Images.visible,
+                    show_level = this.Images.show_level,
+                    type = this.Images.type,
+                };
+            }
+
+            hmUI_widget_IMG_PROGRESS Segments = null;
+            if (this.Segments != null)
+            {
+                Segments = new hmUI_widget_IMG_PROGRESS
+                {
+                    X = this.Segments.X,
+                    Y = this.Segments.Y,
+                    img_First = this.Segments.img_First,
+                    image_length = this.Segments.image_length,
+
+                    position = this.Segments.position,
+                    visible = this.Segments.visible,
+                    show_level = this.Segments.show_level,
+                    type = this.Number.type,
+                };
+            }
+
+            hmUI_widget_IMG_NUMBER Number = null;
+            if (this.Number != null)
+            {
+                Number = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Number.imageX,
+                    imageY = this.Number.imageY,
+                    space = this.Number.space,
+                    zero = this.Number.zero,
+                    align = this.Number.align,
+                    img_First = this.Number.img_First,
+                    unit = this.Number.unit,
+                    imperial_unit = this.Number.imperial_unit,
+                    icon = this.Number.icon,
+                    iconPosX = this.Number.iconPosX,
+                    iconPosY = this.Number.iconPosY,
+                    negative_image = this.Number.negative_image,
+                    dot_path = this.Number.dot_path,
+                    follow = this.Number.follow,
+
+                    position = this.Number.position,
+                    visible = this.Number.visible,
+                    show_level = this.Number.show_level,
+                    type = this.Number.type,
+                };
+            }
+
+            hmUI_widget_IMG_POINTER Pointer = null;
+            if (this.Pointer != null)
+            {
+                Pointer = new hmUI_widget_IMG_POINTER
+                {
+                    src = this.Pointer.src,
+                    center_x = this.Pointer.center_x,
+                    center_y = this.Pointer.center_y,
+                    pos_x = this.Pointer.pos_x,
+                    pos_y = this.Pointer.pos_y,
+                    start_angle = this.Pointer.start_angle,
+                    end_angle = this.Pointer.end_angle,
+                    cover_path = this.Pointer.cover_path,
+                    cover_x = this.Pointer.cover_x,
+                    cover_y = this.Pointer.cover_y,
+                    scale = this.Pointer.scale,
+                    scale_x = this.Pointer.scale_x,
+                    scale_y = this.Pointer.scale_y,
+
+                    position = this.Pointer.position,
+                    visible = this.Pointer.visible,
+                    show_level = this.Pointer.show_level,
+                    type = this.Pointer.type,
+                };
+            }
+
+            Circle_Scale Circle_Scale = null;
+            if (this.Circle_Scale != null)
+            {
+                Circle_Scale = new Circle_Scale
+                {
+                    center_x = this.Circle_Scale.center_x,
+                    center_y = this.Circle_Scale.center_y,
+                    start_angle = this.Circle_Scale.start_angle,
+                    end_angle = this.Circle_Scale.end_angle,
+                    color = this.Circle_Scale.color,
+                    radius = this.Circle_Scale.radius,
+                    line_width = this.Circle_Scale.line_width,
+                    mirror = this.Circle_Scale.mirror,
+                    inversion = this.Circle_Scale.inversion,
+
+                    position = this.Circle_Scale.position,
+                    visible = this.Circle_Scale.visible,
+                    show_level = this.Circle_Scale.show_level,
+                    type = this.Circle_Scale.type,
+                };
+            }
+
+            Linear_Scale Linear_Scale = null;
+            if (this.Linear_Scale != null)
+            {
+                Linear_Scale = new Linear_Scale
+                {
+                    start_x = this.Linear_Scale.start_x,
+                    start_y = this.Linear_Scale.start_y,
+                    color = this.Linear_Scale.color,
+                    pointer = this.Linear_Scale.pointer,
+                    lenght = this.Linear_Scale.lenght,
+                    line_width = this.Linear_Scale.line_width,
+                    mirror = this.Linear_Scale.mirror,
+                    inversion = this.Linear_Scale.inversion,
+                    vertical = this.Linear_Scale.vertical,
+
+                    position = this.Linear_Scale.position,
+                    visible = this.Linear_Scale.visible,
+                    show_level = this.Linear_Scale.show_level,
+                    type = this.Linear_Scale.type,
+                };
+            }
+
+            hmUI_widget_IMG Icon = null;
+            if (this.Icon != null)
+            {
+                Icon = new hmUI_widget_IMG
+                {
+                    x = this.Icon.x,
+                    y = this.Icon.y,
+                    w = this.Icon.w,
+                    h = this.Icon.h,
+                    src = this.Icon.src,
+
+                    position = this.Icon.position,
+                    visible = this.Icon.visible,
+                    show_level = this.Icon.show_level,
+                };
+            }
+
+            return new ElementBattery
+            {
+                elementName = this.elementName,
+                visible = this.visible,
+
+                Images = Images,
+                Segments = Segments,
+                Number = Number,
+                Pointer = Pointer,
+                Circle_Scale = Circle_Scale,
+                Linear_Scale = Linear_Scale,
+                Icon = Icon,
+            };
+        }
+    }
+
+    public class ElementCalories : ICloneable
+    {
+        public string elementName = "ElementCalories";
+
+        ///// <summary>Позиция в наборе элементов</summary>
+        //public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = true;
+
+        public hmUI_widget_IMG_LEVEL Images { get; set; }
+        public hmUI_widget_IMG_PROGRESS Segments { get; set; }
+        public hmUI_widget_IMG_NUMBER Number { get; set; }
+        public hmUI_widget_IMG_NUMBER Number_Target { get; set; }
+        public hmUI_widget_IMG_POINTER Pointer { get; set; }
+        public Circle_Scale Circle_Scale { get; set; }
+        public Linear_Scale Linear_Scale { get; set; }
+        public hmUI_widget_IMG Icon { get; set; }
+
+        public object Clone()
+        {
+
+            hmUI_widget_IMG_LEVEL Images = null;
+            if (this.Images != null)
+            {
+                Images = new hmUI_widget_IMG_LEVEL
+                {
+                    X = this.Images.X,
+                    Y = this.Images.Y,
+                    img_First = this.Images.img_First,
+                    image_length = this.Images.image_length,
+
+                    position = this.Images.position,
+                    visible = this.Images.visible,
+                    show_level = this.Images.show_level,
+                    type = this.Images.type,
+                };
+            }
+
+            hmUI_widget_IMG_PROGRESS Segments = null;
+            if (this.Segments != null)
+            {
+                Segments = new hmUI_widget_IMG_PROGRESS
+                {
+                    X = this.Segments.X,
+                    Y = this.Segments.Y,
+                    img_First = this.Segments.img_First,
+                    image_length = this.Segments.image_length,
+
+                    position = this.Segments.position,
+                    visible = this.Segments.visible,
+                    show_level = this.Segments.show_level,
+                    type = this.Number.type,
+                };
+            }
+
+            hmUI_widget_IMG_NUMBER Number = null;
+            if (this.Number != null)
+            {
+                Number = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Number.imageX,
+                    imageY = this.Number.imageY,
+                    space = this.Number.space,
+                    zero = this.Number.zero,
+                    align = this.Number.align,
+                    img_First = this.Number.img_First,
+                    unit = this.Number.unit,
+                    imperial_unit = this.Number.imperial_unit,
+                    icon = this.Number.icon,
+                    iconPosX = this.Number.iconPosX,
+                    iconPosY = this.Number.iconPosY,
+                    negative_image = this.Number.negative_image,
+                    dot_path = this.Number.dot_path,
+                    follow = this.Number.follow,
+
+                    position = this.Number.position,
+                    visible = this.Number.visible,
+                    show_level = this.Number.show_level,
+                    type = this.Number.type,
+                };
+            }
+
+            hmUI_widget_IMG_NUMBER Number_Target = null;
+            if (this.Number_Target != null)
+            {
+                Number_Target = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Number_Target.imageX,
+                    imageY = this.Number_Target.imageY,
+                    space = this.Number_Target.space,
+                    zero = this.Number_Target.zero,
+                    align = this.Number_Target.align,
+                    img_First = this.Number_Target.img_First,
+                    unit = this.Number_Target.unit,
+                    imperial_unit = this.Number_Target.imperial_unit,
+                    icon = this.Number_Target.icon,
+                    iconPosX = this.Number_Target.iconPosX,
+                    iconPosY = this.Number_Target.iconPosY,
+                    negative_image = this.Number_Target.negative_image,
+                    dot_path = this.Number_Target.dot_path,
+                    follow = this.Number_Target.follow,
+
+                    position = this.Number_Target.position,
+                    visible = this.Number_Target.visible,
+                    show_level = this.Number_Target.show_level,
+                    type = this.Number_Target.type,
+                };
+            }
+
+            hmUI_widget_IMG_POINTER Pointer = null;
+            if (this.Pointer != null)
+            {
+                Pointer = new hmUI_widget_IMG_POINTER
+                {
+                    src = this.Pointer.src,
+                    center_x = this.Pointer.center_x,
+                    center_y = this.Pointer.center_y,
+                    pos_x = this.Pointer.pos_x,
+                    pos_y = this.Pointer.pos_y,
+                    start_angle = this.Pointer.start_angle,
+                    end_angle = this.Pointer.end_angle,
+                    cover_path = this.Pointer.cover_path,
+                    cover_x = this.Pointer.cover_x,
+                    cover_y = this.Pointer.cover_y,
+                    scale = this.Pointer.scale,
+                    scale_x = this.Pointer.scale_x,
+                    scale_y = this.Pointer.scale_y,
+
+                    position = this.Pointer.position,
+                    visible = this.Pointer.visible,
+                    show_level = this.Pointer.show_level,
+                    type = this.Pointer.type,
+                };
+            }
+
+            Circle_Scale Circle_Scale = null;
+            if (this.Circle_Scale != null)
+            {
+                Circle_Scale = new Circle_Scale
+                {
+                    center_x = this.Circle_Scale.center_x,
+                    center_y = this.Circle_Scale.center_y,
+                    start_angle = this.Circle_Scale.start_angle,
+                    end_angle = this.Circle_Scale.end_angle,
+                    color = this.Circle_Scale.color,
+                    radius = this.Circle_Scale.radius,
+                    line_width = this.Circle_Scale.line_width,
+                    mirror = this.Circle_Scale.mirror,
+                    inversion = this.Circle_Scale.inversion,
+
+                    position = this.Circle_Scale.position,
+                    visible = this.Circle_Scale.visible,
+                    show_level = this.Circle_Scale.show_level,
+                    type = this.Circle_Scale.type,
+                };
+            }
+
+            Linear_Scale Linear_Scale = null;
+            if (this.Linear_Scale != null)
+            {
+                Linear_Scale = new Linear_Scale
+                {
+                    start_x = this.Linear_Scale.start_x,
+                    start_y = this.Linear_Scale.start_y,
+                    color = this.Linear_Scale.color,
+                    pointer = this.Linear_Scale.pointer,
+                    lenght = this.Linear_Scale.lenght,
+                    line_width = this.Linear_Scale.line_width,
+                    mirror = this.Linear_Scale.mirror,
+                    inversion = this.Linear_Scale.inversion,
+                    vertical = this.Linear_Scale.vertical,
+
+                    position = this.Linear_Scale.position,
+                    visible = this.Linear_Scale.visible,
+                    show_level = this.Linear_Scale.show_level,
+                    type = this.Linear_Scale.type,
+                };
+            }
+
+            hmUI_widget_IMG Icon = null;
+            if (this.Icon != null)
+            {
+                Icon = new hmUI_widget_IMG
+                {
+                    x = this.Icon.x,
+                    y = this.Icon.y,
+                    w = this.Icon.w,
+                    h = this.Icon.h,
+                    src = this.Icon.src,
+
+                    position = this.Icon.position,
+                    visible = this.Icon.visible,
+                    show_level = this.Icon.show_level,
+                };
+            }
+
+            return new ElementCalories
+            {
+                elementName = this.elementName,
+                visible = this.visible,
+
+                Images = Images,
+                Segments = Segments,
+                Number = Number,
+                Number_Target = Number_Target,
+                Pointer = Pointer,
+                Circle_Scale = Circle_Scale,
+                Linear_Scale = Linear_Scale,
+                Icon = Icon,
+            };
+        }
+    }
+
+    public class ElementHeart : ICloneable
+    {
+        public string elementName = "ElementHeart";
+
+        ///// <summary>Позиция в наборе элементов</summary>
+        //public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = true;
+
+        public hmUI_widget_IMG_LEVEL Images { get; set; }
+        public hmUI_widget_IMG_PROGRESS Segments { get; set; }
+        public hmUI_widget_IMG_NUMBER Number { get; set; }
+        public hmUI_widget_IMG_POINTER Pointer { get; set; }
+        public Circle_Scale Circle_Scale { get; set; }
+        public Linear_Scale Linear_Scale { get; set; }
+        public hmUI_widget_IMG Icon { get; set; }
+
+        public object Clone()
+        {
+
+            hmUI_widget_IMG_LEVEL Images = null;
+            if (this.Images != null)
+            {
+                Images = new hmUI_widget_IMG_LEVEL
+                {
+                    X = this.Images.X,
+                    Y = this.Images.Y,
+                    img_First = this.Images.img_First,
+                    image_length = this.Images.image_length,
+
+                    position = this.Images.position,
+                    visible = this.Images.visible,
+                    show_level = this.Images.show_level,
+                    type = this.Images.type,
+                };
+            }
+
+            hmUI_widget_IMG_PROGRESS Segments = null;
+            if (this.Segments != null)
+            {
+                Segments = new hmUI_widget_IMG_PROGRESS
+                {
+                    X = this.Segments.X,
+                    Y = this.Segments.Y,
+                    img_First = this.Segments.img_First,
+                    image_length = this.Segments.image_length,
+
+                    position = this.Segments.position,
+                    visible = this.Segments.visible,
+                    show_level = this.Segments.show_level,
+                    type = this.Number.type,
+                };
+            }
+
+            hmUI_widget_IMG_NUMBER Number = null;
+            if (this.Number != null)
+            {
+                Number = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Number.imageX,
+                    imageY = this.Number.imageY,
+                    space = this.Number.space,
+                    zero = this.Number.zero,
+                    align = this.Number.align,
+                    img_First = this.Number.img_First,
+                    unit = this.Number.unit,
+                    imperial_unit = this.Number.imperial_unit,
+                    icon = this.Number.icon,
+                    iconPosX = this.Number.iconPosX,
+                    iconPosY = this.Number.iconPosY,
+                    negative_image = this.Number.negative_image,
+                    dot_path = this.Number.dot_path,
+                    follow = this.Number.follow,
+
+                    position = this.Number.position,
+                    visible = this.Number.visible,
+                    show_level = this.Number.show_level,
+                    type = this.Number.type,
+                };
+            }
+
+            hmUI_widget_IMG_POINTER Pointer = null;
+            if (this.Pointer != null)
+            {
+                Pointer = new hmUI_widget_IMG_POINTER
+                {
+                    src = this.Pointer.src,
+                    center_x = this.Pointer.center_x,
+                    center_y = this.Pointer.center_y,
+                    pos_x = this.Pointer.pos_x,
+                    pos_y = this.Pointer.pos_y,
+                    start_angle = this.Pointer.start_angle,
+                    end_angle = this.Pointer.end_angle,
+                    cover_path = this.Pointer.cover_path,
+                    cover_x = this.Pointer.cover_x,
+                    cover_y = this.Pointer.cover_y,
+                    scale = this.Pointer.scale,
+                    scale_x = this.Pointer.scale_x,
+                    scale_y = this.Pointer.scale_y,
+
+                    position = this.Pointer.position,
+                    visible = this.Pointer.visible,
+                    show_level = this.Pointer.show_level,
+                    type = this.Pointer.type,
+                };
+            }
+
+            Circle_Scale Circle_Scale = null;
+            if (this.Circle_Scale != null)
+            {
+                Circle_Scale = new Circle_Scale
+                {
+                    center_x = this.Circle_Scale.center_x,
+                    center_y = this.Circle_Scale.center_y,
+                    start_angle = this.Circle_Scale.start_angle,
+                    end_angle = this.Circle_Scale.end_angle,
+                    color = this.Circle_Scale.color,
+                    radius = this.Circle_Scale.radius,
+                    line_width = this.Circle_Scale.line_width,
+                    mirror = this.Circle_Scale.mirror,
+                    inversion = this.Circle_Scale.inversion,
+
+                    position = this.Circle_Scale.position,
+                    visible = this.Circle_Scale.visible,
+                    show_level = this.Circle_Scale.show_level,
+                    type = this.Circle_Scale.type,
+                };
+            }
+
+            Linear_Scale Linear_Scale = null;
+            if (this.Linear_Scale != null)
+            {
+                Linear_Scale = new Linear_Scale
+                {
+                    start_x = this.Linear_Scale.start_x,
+                    start_y = this.Linear_Scale.start_y,
+                    color = this.Linear_Scale.color,
+                    pointer = this.Linear_Scale.pointer,
+                    lenght = this.Linear_Scale.lenght,
+                    line_width = this.Linear_Scale.line_width,
+                    mirror = this.Linear_Scale.mirror,
+                    inversion = this.Linear_Scale.inversion,
+                    vertical = this.Linear_Scale.vertical,
+
+                    position = this.Linear_Scale.position,
+                    visible = this.Linear_Scale.visible,
+                    show_level = this.Linear_Scale.show_level,
+                    type = this.Linear_Scale.type,
+                };
+            }
+
+            hmUI_widget_IMG Icon = null;
+            if (this.Icon != null)
+            {
+                Icon = new hmUI_widget_IMG
+                {
+                    x = this.Icon.x,
+                    y = this.Icon.y,
+                    w = this.Icon.w,
+                    h = this.Icon.h,
+                    src = this.Icon.src,
+
+                    position = this.Icon.position,
+                    visible = this.Icon.visible,
+                    show_level = this.Icon.show_level,
+                };
+            }
+
+            return new ElementHeart
+            {
+                elementName = this.elementName,
+                visible = this.visible,
+
+                Images = Images,
+                Segments = Segments,
+                Number = Number,
+                Pointer = Pointer,
+                Circle_Scale = Circle_Scale,
+                Linear_Scale = Linear_Scale,
+                Icon = Icon,
+            };
+        }
+    }
+
+    public class ElementPAI : ICloneable
+    {
+        public string elementName = "ElementPAI";
+
+        ///// <summary>Позиция в наборе элементов</summary>
+        //public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = true;
+
+        public hmUI_widget_IMG_LEVEL Images { get; set; }
+        public hmUI_widget_IMG_PROGRESS Segments { get; set; }
+        public hmUI_widget_IMG_NUMBER Number { get; set; }
+        public hmUI_widget_IMG_NUMBER Number_Target { get; set; }
+        public hmUI_widget_IMG_POINTER Pointer { get; set; }
+        public Circle_Scale Circle_Scale { get; set; }
+        public Linear_Scale Linear_Scale { get; set; }
+        public hmUI_widget_IMG Icon { get; set; }
+
+        public object Clone()
+        {
+
+            hmUI_widget_IMG_LEVEL Images = null;
+            if (this.Images != null)
+            {
+                Images = new hmUI_widget_IMG_LEVEL
+                {
+                    X = this.Images.X,
+                    Y = this.Images.Y,
+                    img_First = this.Images.img_First,
+                    image_length = this.Images.image_length,
+
+                    position = this.Images.position,
+                    visible = this.Images.visible,
+                    show_level = this.Images.show_level,
+                    type = this.Images.type,
+                };
+            }
+
+            hmUI_widget_IMG_PROGRESS Segments = null;
+            if (this.Segments != null)
+            {
+                Segments = new hmUI_widget_IMG_PROGRESS
+                {
+                    X = this.Segments.X,
+                    Y = this.Segments.Y,
+                    img_First = this.Segments.img_First,
+                    image_length = this.Segments.image_length,
+
+                    position = this.Segments.position,
+                    visible = this.Segments.visible,
+                    show_level = this.Segments.show_level,
+                    type = this.Number.type,
+                };
+            }
+
+            hmUI_widget_IMG_NUMBER Number = null;
+            if (this.Number != null)
+            {
+                Number = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Number.imageX,
+                    imageY = this.Number.imageY,
+                    space = this.Number.space,
+                    zero = this.Number.zero,
+                    align = this.Number.align,
+                    img_First = this.Number.img_First,
+                    unit = this.Number.unit,
+                    imperial_unit = this.Number.imperial_unit,
+                    icon = this.Number.icon,
+                    iconPosX = this.Number.iconPosX,
+                    iconPosY = this.Number.iconPosY,
+                    negative_image = this.Number.negative_image,
+                    dot_path = this.Number.dot_path,
+                    follow = this.Number.follow,
+
+                    position = this.Number.position,
+                    visible = this.Number.visible,
+                    show_level = this.Number.show_level,
+                    type = this.Number.type,
+                };
+            }
+
+            hmUI_widget_IMG_NUMBER Number_Target = null;
+            if (this.Number_Target != null)
+            {
+                Number_Target = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Number_Target.imageX,
+                    imageY = this.Number_Target.imageY,
+                    space = this.Number_Target.space,
+                    zero = this.Number_Target.zero,
+                    align = this.Number_Target.align,
+                    img_First = this.Number_Target.img_First,
+                    unit = this.Number_Target.unit,
+                    imperial_unit = this.Number_Target.imperial_unit,
+                    icon = this.Number_Target.icon,
+                    iconPosX = this.Number_Target.iconPosX,
+                    iconPosY = this.Number_Target.iconPosY,
+                    negative_image = this.Number_Target.negative_image,
+                    dot_path = this.Number_Target.dot_path,
+                    follow = this.Number_Target.follow,
+
+                    position = this.Number_Target.position,
+                    visible = this.Number_Target.visible,
+                    show_level = this.Number_Target.show_level,
+                    type = this.Number_Target.type,
+                };
+            }
+
+            hmUI_widget_IMG_POINTER Pointer = null;
+            if (this.Pointer != null)
+            {
+                Pointer = new hmUI_widget_IMG_POINTER
+                {
+                    src = this.Pointer.src,
+                    center_x = this.Pointer.center_x,
+                    center_y = this.Pointer.center_y,
+                    pos_x = this.Pointer.pos_x,
+                    pos_y = this.Pointer.pos_y,
+                    start_angle = this.Pointer.start_angle,
+                    end_angle = this.Pointer.end_angle,
+                    cover_path = this.Pointer.cover_path,
+                    cover_x = this.Pointer.cover_x,
+                    cover_y = this.Pointer.cover_y,
+                    scale = this.Pointer.scale,
+                    scale_x = this.Pointer.scale_x,
+                    scale_y = this.Pointer.scale_y,
+
+                    position = this.Pointer.position,
+                    visible = this.Pointer.visible,
+                    show_level = this.Pointer.show_level,
+                    type = this.Pointer.type,
+                };
+            }
+
+            Circle_Scale Circle_Scale = null;
+            if (this.Circle_Scale != null)
+            {
+                Circle_Scale = new Circle_Scale
+                {
+                    center_x = this.Circle_Scale.center_x,
+                    center_y = this.Circle_Scale.center_y,
+                    start_angle = this.Circle_Scale.start_angle,
+                    end_angle = this.Circle_Scale.end_angle,
+                    color = this.Circle_Scale.color,
+                    radius = this.Circle_Scale.radius,
+                    line_width = this.Circle_Scale.line_width,
+                    mirror = this.Circle_Scale.mirror,
+                    inversion = this.Circle_Scale.inversion,
+
+                    position = this.Circle_Scale.position,
+                    visible = this.Circle_Scale.visible,
+                    show_level = this.Circle_Scale.show_level,
+                    type = this.Circle_Scale.type,
+                };
+            }
+
+            Linear_Scale Linear_Scale = null;
+            if (this.Linear_Scale != null)
+            {
+                Linear_Scale = new Linear_Scale
+                {
+                    start_x = this.Linear_Scale.start_x,
+                    start_y = this.Linear_Scale.start_y,
+                    color = this.Linear_Scale.color,
+                    pointer = this.Linear_Scale.pointer,
+                    lenght = this.Linear_Scale.lenght,
+                    line_width = this.Linear_Scale.line_width,
+                    mirror = this.Linear_Scale.mirror,
+                    inversion = this.Linear_Scale.inversion,
+                    vertical = this.Linear_Scale.vertical,
+
+                    position = this.Linear_Scale.position,
+                    visible = this.Linear_Scale.visible,
+                    show_level = this.Linear_Scale.show_level,
+                    type = this.Linear_Scale.type,
+                };
+            }
+
+            hmUI_widget_IMG Icon = null;
+            if (this.Icon != null)
+            {
+                Icon = new hmUI_widget_IMG
+                {
+                    x = this.Icon.x,
+                    y = this.Icon.y,
+                    w = this.Icon.w,
+                    h = this.Icon.h,
+                    src = this.Icon.src,
+
+                    position = this.Icon.position,
+                    visible = this.Icon.visible,
+                    show_level = this.Icon.show_level,
+                };
+            }
+
+            return new ElementPAI
+            {
+                elementName = this.elementName,
+                visible = this.visible,
+
+                Images = Images,
+                Segments = Segments,
+                Number = Number,
+                Number_Target = Number_Target,
+                Pointer = Pointer,
+                Circle_Scale = Circle_Scale,
+                Linear_Scale = Linear_Scale,
+                Icon = Icon,
+            };
+        }
+    }
 }
 
 

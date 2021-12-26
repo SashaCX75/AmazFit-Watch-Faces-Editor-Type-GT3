@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ControlLibrary
 {
-    public partial class UCtrl_Steps_Elm : UserControl
+    public partial class UCtrl_PAI_Elm : UserControl
     {
         private bool setValue; // режим задания параметров
         bool highlight_images = false;
@@ -30,7 +30,7 @@ namespace ControlLibrary
 
         Point cursorPos = new Point(0, 0);
 
-        public UCtrl_Steps_Elm()
+        public UCtrl_PAI_Elm()
         {
             InitializeComponent();
             setValue = false;

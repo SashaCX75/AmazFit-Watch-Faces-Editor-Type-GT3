@@ -953,10 +953,8 @@ namespace Watch_Face_Editor
                         linearScalePosition = Steps.Linear_Scale.position;
                         linear_scale = Steps.Linear_Scale;
 
-                        linearScaleOptions = Linear_Scale_Options(linear_scale, optionNameStart, "STEP", show_level);
+                        linearScaleOptions = Linear_Scale_Options(linear_scale, optionNameStart, "STEP", "step", show_level);
                     }
-
-
 
                     if (Steps.Icon != null && Steps.Icon.visible)
                     {
@@ -1192,6 +1190,1144 @@ namespace Watch_Face_Editor
                                 "step_icon_img = ''" + Environment.NewLine;
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "step_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    iconOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+
+                    }
+                    break;
+                #endregion
+
+                #region ElementBattery
+                case "ElementBattery":
+                    ElementBattery Battery = (ElementBattery)element;
+
+                    if (!Battery.visible) return;
+                    if (Battery.Images != null && Battery.Images.visible)
+                    {
+                        imagesPosition = Battery.Images.position;
+                        hmUI_widget_IMG_LEVEL img_images = Battery.Images;
+                        imagesOptions = IMG_IMAGES_Options(img_images, "BATTERY", show_level);
+                    }
+                    if (Battery.Segments != null && Battery.Segments.visible)
+                    {
+                        segmentsPosition = Battery.Segments.position;
+                        hmUI_widget_IMG_PROGRESS img_progress = Battery.Segments;
+                        segmentsOptions = IMG_PROGRESS_Options(img_progress, "BATTERY", show_level);
+                    }
+                    if (Battery.Number != null && Battery.Number.visible)
+                    {
+                        numberPosition = Battery.Number.position;
+                        hmUI_widget_IMG_NUMBER img_number = Battery.Number;
+                        numberOptions = IMG_NUMBER_Options(img_number, "BATTERY", show_level);
+
+                        numberOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (Battery.Pointer != null && Battery.Pointer.visible)
+                    {
+                        pointerPosition = Battery.Pointer.position;
+                        hmUI_widget_IMG_POINTER img_pointer = Battery.Pointer;
+                        pointerOptions = IMG_POINTER_Options(img_pointer, "BATTERY", show_level);
+                    }
+
+                    if (Battery.Circle_Scale != null && Battery.Circle_Scale.visible)
+                    {
+                        circleScalePosition = Battery.Circle_Scale.position;
+                        circle_scale = Battery.Circle_Scale;
+
+                        circleScaleOptions = Circle_Scale_Options(circle_scale, optionNameStart, "BATTERY", show_level);
+                        //circleScaleMirrorOptions = Circle_Scale_Options(linear_scale, true);
+                    }
+                    if (Battery.Linear_Scale != null && Battery.Linear_Scale.visible)
+                    {
+                        linearScalePosition = Battery.Linear_Scale.position;
+                        linear_scale = Battery.Linear_Scale;
+
+                        linearScaleOptions = Linear_Scale_Options(linear_scale, optionNameStart, "BATTERY", "battery", show_level);
+                    }
+
+                    if (Battery.Icon != null && Battery.Icon.visible)
+                    {
+                        iconPosition = Battery.Icon.position;
+                        hmUI_widget_IMG img_icon = Battery.Icon;
+                        iconOptions = IMG_Options(img_icon, show_level);
+                    }
+
+                    for (int index = 1; index <= 10; index++)
+                    {
+                        // Images
+                        if (index == imagesPosition && imagesOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "battery_image_progress_img_level = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "battery_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
+                                    imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Segments
+                        if (index == segmentsPosition && segmentsOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "battery_image_progress_img_progress = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "battery_image_progress_img_progress = hmUI.createWidget(hmUI.widget.IMG_PROGRESS, {" +
+                                    segmentsOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Number
+                        if (index == numberPosition && numberOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "battery_text_text_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "battery_text_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "battery_text_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "battery_text_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Pointer
+                        if (index == pointerPosition && pointerOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "battery_pointer_progress_img_pointer = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "battery_pointer_progress_img_pointer = hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
+                                    pointerOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Circle_Scale
+                        if (index == circleScalePosition && circle_scale != null)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "battery_circle_scale = ''" + Environment.NewLine;
+
+                            items += circleScaleOptions;
+
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (optionNameStart == "normal_")
+                                items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
+                            else items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type.AOD) {";
+
+                            items += Environment.NewLine + TabInString(7) +
+                                optionNameStart + "battery_circle_scale = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
+
+                            if (circle_scale.mirror)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                "battery_circle_scale_mirror = ''" + Environment.NewLine;
+
+                                items += TabInString(7) + optionNameStart +
+                                    "battery_circle_scale_mirror = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
+                            }
+
+                            items += TabInString(6) + "};" + Environment.NewLine;
+
+
+                            resume_call += Environment.NewLine + TabInString(8) + "console.log('ui resume');" + Environment.NewLine;
+                            if (resume_call.IndexOf("progressBattery") < 0 &&
+                                exist_resume_call.IndexOf("const battery = hmSensor.createSensor(hmSensor.id.BATTERY);") < 0)
+                            {
+                                resume_call += TabInString(8) + Environment.NewLine;
+                                resume_call += TabInString(8) + "const battery = hmSensor.createSensor(hmSensor.id.BATTERY);" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let valueBattery = battery.current;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let targetBattery = 100;" + Environment.NewLine;
+                                //resume_call += TabInString(8) + "let targetBattery = battery.target;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let progressBattery = valueBattery/targetBattery;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "if (progressBattery > 1) progressBattery = 1;" + Environment.NewLine;
+                            }
+                            if (circle_scale.inversion)
+                            {
+                                resume_call += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                "battery = 1 - progressBattery;" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_call += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                "battery = progressBattery;" + Environment.NewLine;
+                            }
+                            if (optionNameStart == "normal_")
+                            {
+                                resume_call += Environment.NewLine + TabInString(8) +
+                                    "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                resume_call += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "battery");
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_call += Environment.NewLine + TabInString(8) +
+                                    "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                resume_call += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "battery");
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
+                            }
+
+
+
+
+                        }
+
+                        // Linear_Scale
+                        if (index == linearScalePosition && linear_scale != null)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "battery_linear_scale = ''" + Environment.NewLine;
+                            if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "battery_linear_scale_pointer_img = ''" + Environment.NewLine;
+
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (optionNameStart == "normal_")
+                                items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
+                            else items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type.AOD) {";
+
+                            items += Environment.NewLine + TabInString(7) +
+                                optionNameStart + "battery_linear_scale = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+
+                            if (linear_scale.mirror)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                "battery_linear_scale_mirror = ''" + Environment.NewLine;
+                                if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
+                                    variables += TabInString(4) + "let " + optionNameStart +
+                                        "battery_linear_scale_pointer_img_mirror = ''" + Environment.NewLine;
+
+                                items += TabInString(7) + optionNameStart +
+                                    "battery_linear_scale_mirror = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+                            }
+
+                            items += TabInString(6) + "};" + Environment.NewLine;
+
+                            items += linearScaleOptions;
+
+
+                            resume_call += Environment.NewLine + TabInString(8) + "console.log('ui resume');" + Environment.NewLine;
+                            if (resume_call.IndexOf("progressBattery") < 0 &&
+                                exist_resume_call.IndexOf("const battery = hmSensor.createSensor(hmSensor.id.BATTERY);") < 0)
+                            {
+                                resume_call += TabInString(8) + Environment.NewLine;
+                                resume_call += TabInString(8) + "const battery = hmSensor.createSensor(hmSensor.id.BATTERY);" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let valueBattery = battery.current;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let targetBattery = 100;" + Environment.NewLine;
+                                //resume_call += TabInString(8) + "let targetBattery = battery.target;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let progressBattery = valueBattery/targetBattery;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "if (progressBattery > 1) progressBattery = 1;" + Environment.NewLine;
+                            }
+                            if (linear_scale.inversion)
+                            {
+                                resume_call += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                "battery = 1 - progressBattery;" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_call += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                "battery = progressBattery;" + Environment.NewLine;
+                            }
+                            if (optionNameStart == "normal_")
+                            {
+                                resume_call += Environment.NewLine + TabInString(8) +
+                                    "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                resume_call += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "battery", show_level);
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_call += Environment.NewLine + TabInString(8) +
+                                    "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                resume_call += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "battery", show_level);
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
+                            }
+
+
+
+
+                        }
+
+                        // Icon
+                        if (index == iconPosition && iconOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "battery_icon_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "battery_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    iconOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+
+                    }
+                    break;
+                #endregion
+
+                #region ElementCalories
+                case "ElementCalories":
+                    ElementCalories Calories = (ElementCalories)element;
+
+                    if (!Calories.visible) return;
+                    if (Calories.Images != null && Calories.Images.visible)
+                    {
+                        imagesPosition = Calories.Images.position;
+                        hmUI_widget_IMG_LEVEL img_images = Calories.Images;
+                        imagesOptions = IMG_IMAGES_Options(img_images, "CAL", show_level);
+                    }
+                    if (Calories.Segments != null && Calories.Segments.visible)
+                    {
+                        segmentsPosition = Calories.Segments.position;
+                        hmUI_widget_IMG_PROGRESS img_progress = Calories.Segments;
+                        segmentsOptions = IMG_PROGRESS_Options(img_progress, "CAL", show_level);
+                    }
+                    if (Calories.Number != null && Calories.Number.visible)
+                    {
+                        numberPosition = Calories.Number.position;
+                        hmUI_widget_IMG_NUMBER img_number = Calories.Number;
+                        numberOptions = IMG_NUMBER_Options(img_number, "CAL", show_level);
+
+                        numberOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (Calories.Number_Target != null && Calories.Number_Target.visible)
+                    {
+                        numberTargetPosition = Calories.Number_Target.position;
+                        hmUI_widget_IMG_NUMBER img_number = Calories.Number_Target;
+                        numberTargetOptions = IMG_NUMBER_Options(img_number, "CAL_TARGET", show_level);
+
+                        numberTargetOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (Calories.Pointer != null && Calories.Pointer.visible)
+                    {
+                        pointerPosition = Calories.Pointer.position;
+                        hmUI_widget_IMG_POINTER img_pointer = Calories.Pointer;
+                        pointerOptions = IMG_POINTER_Options(img_pointer, "CAL", show_level);
+                    }
+
+                    if (Calories.Circle_Scale != null && Calories.Circle_Scale.visible)
+                    {
+                        circleScalePosition = Calories.Circle_Scale.position;
+                        circle_scale = Calories.Circle_Scale;
+
+                        circleScaleOptions = Circle_Scale_Options(circle_scale, optionNameStart, "CAL", show_level);
+                        //circleScaleMirrorOptions = Circle_Scale_Options(linear_scale, true);
+                    }
+                    if (Calories.Linear_Scale != null && Calories.Linear_Scale.visible)
+                    {
+                        linearScalePosition = Calories.Linear_Scale.position;
+                        linear_scale = Calories.Linear_Scale;
+
+                        linearScaleOptions = Linear_Scale_Options(linear_scale, optionNameStart, "CAL", "calorie", show_level);
+                    }
+
+                    if (Calories.Icon != null && Calories.Icon.visible)
+                    {
+                        iconPosition = Calories.Icon.position;
+                        hmUI_widget_IMG img_icon = Calories.Icon;
+                        iconOptions = IMG_Options(img_icon, show_level);
+                    }
+
+                    for (int index = 1; index <= 10; index++)
+                    {
+                        // Images
+                        if (index == imagesPosition && imagesOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "calorie_image_progress_img_level = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "calorie_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
+                                    imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Segments
+                        if (index == segmentsPosition && segmentsOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "calorie_image_progress_img_progress = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "calorie_image_progress_img_progress = hmUI.createWidget(hmUI.widget.IMG_PROGRESS, {" +
+                                    segmentsOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Number
+                        if (index == numberPosition && numberOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "calorie_current_text_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "calorie_current_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "calorie_current_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "calorie_current_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Number_Target
+                        if (index == numberTargetPosition && numberTargetOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "calorie_target_text_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "calorie_target_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberTargetOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberTargetOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "calorie_target_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "calorie_target_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberTargetOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Pointer
+                        if (index == pointerPosition && pointerOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "calorie_pointer_progress_img_pointer = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "calorie_pointer_progress_img_pointer = hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
+                                    pointerOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Circle_Scale
+                        if (index == circleScalePosition && circle_scale != null)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "calorie_circle_scale = ''" + Environment.NewLine;
+
+                            items += circleScaleOptions;
+
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (optionNameStart == "normal_")
+                                items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
+                            else items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type.AOD) {";
+
+                            items += Environment.NewLine + TabInString(7) +
+                                optionNameStart + "calorie_circle_scale = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
+
+                            if (circle_scale.mirror)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                "calorie_circle_scale_mirror = ''" + Environment.NewLine;
+
+                                items += TabInString(7) + optionNameStart +
+                                    "calorie_circle_scale_mirror = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
+                            }
+
+                            items += TabInString(6) + "};" + Environment.NewLine;
+
+
+                            resume_call += Environment.NewLine + TabInString(8) + "console.log('ui resume');" + Environment.NewLine;
+                            if (resume_call.IndexOf("progressCalories") < 0 &&
+                                exist_resume_call.IndexOf("const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);") < 0)
+                            {
+                                resume_call += TabInString(8) + Environment.NewLine;
+                                resume_call += TabInString(8) + "const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let valueCalories = calorie.current;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let targetCalories = calorie.target;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let progressCalories = valueCalories/targetCalories;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "if (progressCalories > 1) progressCalories = 1;" + Environment.NewLine;
+                            }
+                            if (circle_scale.inversion)
+                            {
+                                resume_call += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                "calorie = 1 - progressCalories;" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_call += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                "calorie = progressCalories;" + Environment.NewLine;
+                            }
+                            if (optionNameStart == "normal_")
+                            {
+                                resume_call += Environment.NewLine + TabInString(8) +
+                                    "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                resume_call += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "calorie");
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_call += Environment.NewLine + TabInString(8) +
+                                    "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                resume_call += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "calorie");
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
+                            }
+
+
+
+
+                        }
+
+                        // Linear_Scale
+                        if (index == linearScalePosition && linear_scale != null)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "calorie_linear_scale = ''" + Environment.NewLine;
+                            if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "calorie_linear_scale_pointer_img = ''" + Environment.NewLine;
+
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (optionNameStart == "normal_")
+                                items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
+                            else items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type.AOD) {";
+
+                            items += Environment.NewLine + TabInString(7) +
+                                optionNameStart + "calorie_linear_scale = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+
+                            if (linear_scale.mirror)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                "calorie_linear_scale_mirror = ''" + Environment.NewLine;
+                                if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
+                                    variables += TabInString(4) + "let " + optionNameStart +
+                                        "calorie_linear_scale_pointer_img_mirror = ''" + Environment.NewLine;
+
+                                items += TabInString(7) + optionNameStart +
+                                    "calorie_linear_scale_mirror = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+                            }
+
+                            items += TabInString(6) + "};" + Environment.NewLine;
+
+                            items += linearScaleOptions;
+
+
+                            resume_call += Environment.NewLine + TabInString(8) + "console.log('ui resume');" + Environment.NewLine;
+                            if (resume_call.IndexOf("progressCalories") < 0 &&
+                                exist_resume_call.IndexOf("const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);") < 0)
+                            {
+                                resume_call += TabInString(8) + Environment.NewLine;
+                                resume_call += TabInString(8) + "const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let valueCalories = calorie.current;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let targetCalories = calorie.target;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let progressCalories = valueCalories/targetCalories;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "if (progressCalories > 1) progressCalories = 1;" + Environment.NewLine;
+                            }
+                            if (linear_scale.inversion)
+                            {
+                                resume_call += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                "calorie = 1 - progressCalories;" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_call += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                "calorie = progressCalories;" + Environment.NewLine;
+                            }
+                            if (optionNameStart == "normal_")
+                            {
+                                resume_call += Environment.NewLine + TabInString(8) +
+                                    "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                resume_call += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "calorie", show_level);
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_call += Environment.NewLine + TabInString(8) +
+                                    "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                resume_call += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "calorie", show_level);
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
+                            }
+
+
+
+
+                        }
+
+                        // Icon
+                        if (index == iconPosition && iconOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "calorie_icon_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "calorie_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    iconOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+
+                    }
+                    break;
+                #endregion
+
+                #region ElementHeart
+                case "ElementHeart":
+                    ElementHeart Heart = (ElementHeart)element;
+
+                    if (!Heart.visible) return;
+                    if (Heart.Images != null && Heart.Images.visible)
+                    {
+                        imagesPosition = Heart.Images.position;
+                        hmUI_widget_IMG_LEVEL img_images = Heart.Images;
+                        imagesOptions = IMG_IMAGES_Options(img_images, "HEART", show_level);
+                    }
+                    if (Heart.Segments != null && Heart.Segments.visible)
+                    {
+                        segmentsPosition = Heart.Segments.position;
+                        hmUI_widget_IMG_PROGRESS img_progress = Heart.Segments;
+                        segmentsOptions = IMG_PROGRESS_Options(img_progress, "HEART", show_level);
+                    }
+                    if (Heart.Number != null && Heart.Number.visible)
+                    {
+                        numberPosition = Heart.Number.position;
+                        hmUI_widget_IMG_NUMBER img_number = Heart.Number;
+                        numberOptions = IMG_NUMBER_Options(img_number, "HEART", show_level);
+
+                        numberOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (Heart.Pointer != null && Heart.Pointer.visible)
+                    {
+                        pointerPosition = Heart.Pointer.position;
+                        hmUI_widget_IMG_POINTER img_pointer = Heart.Pointer;
+                        pointerOptions = IMG_POINTER_Options(img_pointer, "HEART", show_level);
+                    }
+
+                    if (Heart.Circle_Scale != null && Heart.Circle_Scale.visible)
+                    {
+                        circleScalePosition = Heart.Circle_Scale.position;
+                        circle_scale = Heart.Circle_Scale;
+
+                        circleScaleOptions = Circle_Scale_Options(circle_scale, optionNameStart, "HEART", show_level);
+                        //circleScaleMirrorOptions = Circle_Scale_Options(linear_scale, true);
+                    }
+                    if (Heart.Linear_Scale != null && Heart.Linear_Scale.visible)
+                    {
+                        linearScalePosition = Heart.Linear_Scale.position;
+                        linear_scale = Heart.Linear_Scale;
+
+                        linearScaleOptions = Linear_Scale_Options(linear_scale, optionNameStart, "HEART", "heart_rate", show_level);
+                    }
+
+                    if (Heart.Icon != null && Heart.Icon.visible)
+                    {
+                        iconPosition = Heart.Icon.position;
+                        hmUI_widget_IMG img_icon = Heart.Icon;
+                        iconOptions = IMG_Options(img_icon, show_level);
+                    }
+
+                    for (int index = 1; index <= 10; index++)
+                    {
+                        // Images
+                        if (index == imagesPosition && imagesOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "heart_rate_image_progress_img_level = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "heart_rate_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
+                                    imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Segments
+                        if (index == segmentsPosition && segmentsOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "heart_rate_image_progress_img_progress = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "heart_rate_image_progress_img_progress = hmUI.createWidget(hmUI.widget.IMG_PROGRESS, {" +
+                                    segmentsOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Number
+                        if (index == numberPosition && numberOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "heart_rate_text_text_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "heart_rate_text_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "heart_rate_text_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "heart_rate_text_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Pointer
+                        if (index == pointerPosition && pointerOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "heart_rate_pointer_progress_img_pointer = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "heart_rate_pointer_progress_img_pointer = hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
+                                    pointerOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Circle_Scale
+                        if (index == circleScalePosition && circle_scale != null)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "heart_rate_circle_scale = ''" + Environment.NewLine;
+
+                            items += circleScaleOptions;
+
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (optionNameStart == "normal_")
+                                items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
+                            else items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type.AOD) {";
+
+                            //items += Environment.NewLine + TabInString(7) +
+                            //    optionNameStart + "heart_rate_circle_scale = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
+                            //        circleScaleOptions + TabInString(7) + "});" + Environment.NewLine;
+
+                            items += Environment.NewLine + TabInString(7) +
+                                optionNameStart + "heart_rate_circle_scale = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
+
+                            if (circle_scale.mirror)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                "heart_rate_circle_scale_mirror = ''" + Environment.NewLine;
+
+                                items += TabInString(7) + optionNameStart +
+                                    "heart_rate_circle_scale_mirror = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
+                            }
+
+                            items += TabInString(6) + "};" + Environment.NewLine;
+
+
+                            resume_call += Environment.NewLine + TabInString(8) + "console.log('ui resume');" + Environment.NewLine;
+                            if (resume_call.IndexOf("progressHeartRate") < 0 &&
+                                exist_resume_call.IndexOf("const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);") < 0)
+                            {
+                                resume_call += TabInString(8) + Environment.NewLine;
+                                resume_call += TabInString(8) + "const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let valueHeartRate = heart_rate.last;" + Environment.NewLine;
+                                //resume_call += TabInString(8) + "let valueHeartRate = heart_rate.current;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let targetHeartRate = 200;" + Environment.NewLine;
+                                //resume_call += TabInString(8) + "let targetHeartRate = heart_rate.target;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let progressHeartRate = valueHeartRate/targetHeartRate;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "if (progressHeartRate > 1) progressHeartRate = 1;" + Environment.NewLine;
+                            }
+                            if (circle_scale.inversion)
+                            {
+                                resume_call += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                "heart_rate = 1 - progressHeartRate;" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_call += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                "heart_rate = progressHeartRate;" + Environment.NewLine;
+                            }
+                            if (optionNameStart == "normal_")
+                            {
+                                resume_call += Environment.NewLine + TabInString(8) +
+                                    "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                resume_call += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "heart_rate");
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_call += Environment.NewLine + TabInString(8) +
+                                    "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                resume_call += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "heart_rate");
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
+                            }
+
+
+
+
+                        }
+
+                        // Linear_Scale
+                        if (index == linearScalePosition && linear_scale != null)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "heart_rate_linear_scale = ''" + Environment.NewLine;
+                            if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "heart_rate_linear_scale_pointer_img = ''" + Environment.NewLine;
+
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (optionNameStart == "normal_")
+                                items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
+                            else items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type.AOD) {";
+
+                            items += Environment.NewLine + TabInString(7) +
+                                optionNameStart + "heart_rate_linear_scale = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+
+                            if (linear_scale.mirror)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                "heart_rate_linear_scale_mirror = ''" + Environment.NewLine;
+                                if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
+                                    variables += TabInString(4) + "let " + optionNameStart +
+                                        "heart_rate_linear_scale_pointer_img_mirror = ''" + Environment.NewLine;
+
+                                items += TabInString(7) + optionNameStart +
+                                    "heart_rate_linear_scale_mirror = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+                            }
+
+                            items += TabInString(6) + "};" + Environment.NewLine;
+
+                            items += linearScaleOptions;
+
+
+                            resume_call += Environment.NewLine + TabInString(8) + "console.log('ui resume');" + Environment.NewLine;
+                            if (resume_call.IndexOf("progressHeartRate") < 0 &&
+                                exist_resume_call.IndexOf("const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);") < 0)
+                            {
+                                resume_call += TabInString(8) + Environment.NewLine;
+                                resume_call += TabInString(8) + "const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let valueHeartRate = heart_rate.last;" + Environment.NewLine;
+                                //resume_call += TabInString(8) + "let valueHeartRate = heart_rate.current;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let targetHeartRate = 200;" + Environment.NewLine;
+                                //resume_call += TabInString(8) + "let targetHeartRate = heart_rate.target;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let progressHeartRate = valueHeartRate/targetHeartRate;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "if (progressHeartRate > 1) progressHeartRate = 1;" + Environment.NewLine;
+                            }
+                            if (linear_scale.inversion)
+                            {
+                                resume_call += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                "heart_rate = 1 - progressHeartRate;" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_call += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                "heart_rate = progressHeartRate;" + Environment.NewLine;
+                            }
+                            if (optionNameStart == "normal_")
+                            {
+                                resume_call += Environment.NewLine + TabInString(8) +
+                                    "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                resume_call += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "heart_rate", show_level);
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_call += Environment.NewLine + TabInString(8) +
+                                    "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                resume_call += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "heart_rate", show_level);
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
+                            }
+
+
+
+
+                        }
+
+                        // Icon
+                        if (index == iconPosition && iconOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "heart_rate_icon_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "heart_rate_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    iconOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+
+                    }
+                    break;
+                #endregion
+
+                #region ElementPAI
+                case "ElementPAI":
+                    ElementPAI PAI = (ElementPAI)element;
+
+                    if (!PAI.visible) return;
+                    if (PAI.Images != null && PAI.Images.visible)
+                    {
+                        imagesPosition = PAI.Images.position;
+                        hmUI_widget_IMG_LEVEL img_images = PAI.Images;
+                        imagesOptions = IMG_IMAGES_Options(img_images, "PAI_WEEKLY", show_level);
+                    }
+                    if (PAI.Segments != null && PAI.Segments.visible)
+                    {
+                        segmentsPosition = PAI.Segments.position;
+                        hmUI_widget_IMG_PROGRESS img_progress = PAI.Segments;
+                        segmentsOptions = IMG_PROGRESS_Options(img_progress, "PAI_WEEKLY", show_level);
+                    }
+                    if (PAI.Number != null && PAI.Number.visible)
+                    {
+                        numberPosition = PAI.Number.position;
+                        hmUI_widget_IMG_NUMBER img_number = PAI.Number;
+                        numberOptions = IMG_NUMBER_Options(img_number, "PAI_DAILY", show_level);
+
+                        numberOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (PAI.Number_Target != null && PAI.Number_Target.visible)
+                    {
+                        numberTargetPosition = PAI.Number_Target.position;
+                        hmUI_widget_IMG_NUMBER img_number = PAI.Number_Target;
+                        numberTargetOptions = IMG_NUMBER_Options(img_number, "PAI_WEEKLY", show_level);
+
+                        numberTargetOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (PAI.Pointer != null && PAI.Pointer.visible)
+                    {
+                        pointerPosition = PAI.Pointer.position;
+                        hmUI_widget_IMG_POINTER img_pointer = PAI.Pointer;
+                        pointerOptions = IMG_POINTER_Options(img_pointer, "PAI_WEEKLY", show_level);
+                    }
+
+                    if (PAI.Circle_Scale != null && PAI.Circle_Scale.visible)
+                    {
+                        circleScalePosition = PAI.Circle_Scale.position;
+                        circle_scale = PAI.Circle_Scale;
+
+                        circleScaleOptions = Circle_Scale_Options(circle_scale, optionNameStart, "PAI_WEEKLY", show_level);
+                        //circleScaleMirrorOptions = Circle_Scale_Options(linear_scale, true);
+                    }
+                    if (PAI.Linear_Scale != null && PAI.Linear_Scale.visible)
+                    {
+                        linearScalePosition = PAI.Linear_Scale.position;
+                        linear_scale = PAI.Linear_Scale;
+
+                        linearScaleOptions = Linear_Scale_Options(linear_scale, optionNameStart, "PAI_WEEKLY", "pai", show_level);
+                    }
+
+                    if (PAI.Icon != null && PAI.Icon.visible)
+                    {
+                        iconPosition = PAI.Icon.position;
+                        hmUI_widget_IMG img_icon = PAI.Icon;
+                        iconOptions = IMG_Options(img_icon, show_level);
+                    }
+
+                    for (int index = 1; index <= 10; index++)
+                    {
+                        // Images
+                        if (index == imagesPosition && imagesOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "pai_image_progress_img_level = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "pai_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
+                                    imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Segments
+                        if (index == segmentsPosition && segmentsOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "pai_image_progress_img_progress = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "pai_image_progress_img_progress = hmUI.createWidget(hmUI.widget.IMG_PROGRESS, {" +
+                                    segmentsOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Number
+                        if (index == numberPosition && numberOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "pai_day_text_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "pai_day_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "pai_day_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "pai_day_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Number_Target
+                        if (index == numberTargetPosition && numberTargetOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "pai_weekly_text_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "pai_weekly_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberTargetOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberTargetOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "pai_weekly_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "pai_weekly_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberTargetOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Pointer
+                        if (index == pointerPosition && pointerOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "pai_pointer_progress_img_pointer = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "pai_pointer_progress_img_pointer = hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
+                                    pointerOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Circle_Scale
+                        if (index == circleScalePosition && circle_scale != null)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "pai_circle_scale = ''" + Environment.NewLine;
+
+                            items += circleScaleOptions;
+
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (optionNameStart == "normal_")
+                                items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
+                            else items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type.AOD) {";
+
+                            //items += Environment.NewLine + TabInString(7) +
+                            //    optionNameStart + "pai_circle_scale = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
+                            //        circleScaleOptions + TabInString(7) + "});" + Environment.NewLine;
+
+                            items += Environment.NewLine + TabInString(7) +
+                                optionNameStart + "pai_circle_scale = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
+
+                            if (circle_scale.mirror)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                "pai_circle_scale_mirror = ''" + Environment.NewLine;
+
+                                items += TabInString(7) + optionNameStart +
+                                    "pai_circle_scale_mirror = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
+                            }
+
+                            items += TabInString(6) + "};" + Environment.NewLine;
+
+
+                            resume_call += Environment.NewLine + TabInString(8) + "console.log('ui resume');" + Environment.NewLine;
+                            if (resume_call.IndexOf("progressPAI") < 0 &&
+                                exist_resume_call.IndexOf("const pai = hmSensor.createSensor(hmSensor.id.PAI);") < 0)
+                            {
+                                resume_call += TabInString(8) + Environment.NewLine;
+                                resume_call += TabInString(8) + "const pai = hmSensor.createSensor(hmSensor.id.PAI);" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let valuePAI = pai.totalpai;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let targetPAI = 100;" + Environment.NewLine;
+                                //resume_call += TabInString(8) + "let targetPAI = pai.target;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let progressPAI = valuePAI/targetPAI;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "if (progressPAI > 1) progressPAI = 1;" + Environment.NewLine;
+                            }
+                            if (circle_scale.inversion)
+                            {
+                                resume_call += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                "pai = 1 - progressPAI;" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_call += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                "pai = progressPAI;" + Environment.NewLine;
+                            }
+                            if (optionNameStart == "normal_")
+                            {
+                                resume_call += Environment.NewLine + TabInString(8) +
+                                    "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                resume_call += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "pai");
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_call += Environment.NewLine + TabInString(8) +
+                                    "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                resume_call += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "pai");
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
+                            }
+
+
+
+
+                        }
+
+                        // Linear_Scale
+                        if (index == linearScalePosition && linear_scale != null)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "pai_linear_scale = ''" + Environment.NewLine;
+                            if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "pai_linear_scale_pointer_img = ''" + Environment.NewLine;
+
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (optionNameStart == "normal_")
+                                items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
+                            else items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type.AOD) {";
+
+                            items += Environment.NewLine + TabInString(7) +
+                                optionNameStart + "pai_linear_scale = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+
+                            if (linear_scale.mirror)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                "pai_linear_scale_mirror = ''" + Environment.NewLine;
+                                if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
+                                    variables += TabInString(4) + "let " + optionNameStart +
+                                        "pai_linear_scale_pointer_img_mirror = ''" + Environment.NewLine;
+
+                                items += TabInString(7) + optionNameStart +
+                                    "pai_linear_scale_mirror = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+                            }
+
+                            items += TabInString(6) + "};" + Environment.NewLine;
+
+                            items += linearScaleOptions;
+
+
+                            resume_call += Environment.NewLine + TabInString(8) + "console.log('ui resume');" + Environment.NewLine;
+                            if (resume_call.IndexOf("progressPAI") < 0 &&
+                                exist_resume_call.IndexOf("const pai = hmSensor.createSensor(hmSensor.id.PAI);") < 0)
+                            {
+                                resume_call += TabInString(8) + Environment.NewLine;
+                                resume_call += TabInString(8) + "const pai = hmSensor.createSensor(hmSensor.id.PAI);" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let valuePAI = pai.totalpai;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let targetPAI = 100;" + Environment.NewLine;
+                                //resume_call += TabInString(8) + "let targetPAI = pai.target;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let progressPAI = valuePAI/targetPAI;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "if (progressPAI > 1) progressPAI = 1;" + Environment.NewLine;
+                            }
+                            if (linear_scale.inversion)
+                            {
+                                resume_call += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                "pai = 1 - progressPAI;" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_call += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                "pai = progressPAI;" + Environment.NewLine;
+                            }
+                            if (optionNameStart == "normal_")
+                            {
+                                resume_call += Environment.NewLine + TabInString(8) +
+                                    "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                resume_call += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "pai", show_level);
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_call += Environment.NewLine + TabInString(8) +
+                                    "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                resume_call += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "pai", show_level);
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
+                            }
+
+
+
+
+                        }
+
+                        // Icon
+                        if (index == iconPosition && iconOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "pai_icon_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "pai_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(6) + "});" + Environment.NewLine;
                         }
 
@@ -1953,20 +3089,21 @@ namespace Watch_Face_Editor
             return options;
         }
 
-        private string Linear_Scale_Options(Linear_Scale linear_scale, string optionNameStart, string type, string show_level)
+        private string Linear_Scale_Options(Linear_Scale linear_scale, string optionNameStart, string type, 
+            string typeCaption, string show_level)
         {
             string options = Environment.NewLine;
             if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
             {
-                options += TabInString(6) + "" + optionNameStart + type.ToLower() +
+                options += TabInString(6) + "" + optionNameStart + typeCaption.ToLower() +
                 "_linear_scale_pointer_img = hmUI.createWidget(hmUI.widget.IMG);" + Environment.NewLine;
                 if (linear_scale.mirror)
                 {
-                    options += TabInString(6) + "" + optionNameStart + type.ToLower() +
+                    options += TabInString(6) + "" + optionNameStart + typeCaption.ToLower() +
                 "_linear_scale_pointer_img_mirror = hmUI.createWidget(hmUI.widget.IMG);" + Environment.NewLine;
                 }
             }
-            options += TabInString(6) + "// " + optionNameStart + type.ToLower() +
+            options += TabInString(6) + "// " + optionNameStart + typeCaption.ToLower() +
                 "_linear_scale = hmUI.createWidget(hmUI.widget.Linear_Scale, {" + Environment.NewLine;
             options += TabInString(7) + "// start_x: " + linear_scale.start_x.ToString() + "," + Environment.NewLine;
             options += TabInString(7) + "// start_y: " + linear_scale.start_y.ToString() + "," + Environment.NewLine;
@@ -2576,10 +3713,83 @@ namespace Watch_Face_Editor
                                         steps.Number_Target.iconPosY = img.y;
                                     }
                                 }
+
+                                if (objectName.EndsWith("battery_text_separator_img"))
+                                {
+                                    ElementBattery battery = null;
+                                    battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
+                                    if (battery != null && battery.Number != null)
+                                    {
+                                        battery.Number.icon = img.src;
+                                        battery.Number.iconPosX = img.x;
+                                        battery.Number.iconPosY = img.y;
+                                    }
+                                }
+
+                                if (objectName.EndsWith("calorie_current_separator_img"))
+                                {
+                                    ElementCalories calorie = null;
+                                    calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
+                                    if (calorie != null && calorie.Number != null)
+                                    {
+                                        calorie.Number.icon = img.src;
+                                        calorie.Number.iconPosX = img.x;
+                                        calorie.Number.iconPosY = img.y;
+                                    }
+                                }
+
+                                if (objectName.EndsWith("calorie_target_separator_img"))
+                                {
+                                    ElementCalories calorie = null;
+                                    calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
+                                    if (calorie != null && calorie.Number_Target != null)
+                                    {
+                                        calorie.Number_Target.icon = img.src;
+                                        calorie.Number_Target.iconPosX = img.x;
+                                        calorie.Number_Target.iconPosY = img.y;
+                                    }
+                                }
+
+                                if (objectName.EndsWith("heart_rate_text_separator_img"))
+                                {
+                                    ElementHeart heart = null;
+                                    heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
+                                    if (heart != null && heart.Number != null)
+                                    {
+                                        heart.Number.icon = img.src;
+                                        heart.Number.iconPosX = img.x;
+                                        heart.Number.iconPosY = img.y;
+                                    }
+                                }
+
+                                if (objectName.EndsWith("pai_day_separator_img"))
+                                {
+                                    ElementPAI pai_day = null;
+                                    pai_day = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
+                                    if (pai_day != null && pai_day.Number != null)
+                                    {
+                                        pai_day.Number.icon = img.src;
+                                        pai_day.Number.iconPosX = img.x;
+                                        pai_day.Number.iconPosY = img.y;
+                                    }
+                                }
+
+                                if (objectName.EndsWith("pai_weekly_separator_img"))
+                                {
+                                    ElementPAI pai_weekly = null;
+                                    pai_weekly = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
+                                    if (pai_weekly != null && pai_weekly.Number != null)
+                                    {
+                                        pai_weekly.Number.icon = img.src;
+                                        pai_weekly.Number.iconPosX = img.x;
+                                        pai_weekly.Number.iconPosY = img.y;
+                                    }
+                                }
                             }
 
                             if (objectName.EndsWith("icon_img"))
                             {
+
                                 if (objectName.EndsWith("step_icon_img"))
                                 {
                                     ElementSteps steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
@@ -2605,6 +3815,116 @@ namespace Watch_Face_Editor
                                         steps.Icon.y = img.y;
                                         steps.Icon.visible = true;
                                         steps.Icon.position = offset;
+                                    }
+                                }
+                                
+                                if (objectName.EndsWith("battery_icon_img"))
+                                {
+                                    ElementBattery battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
+                                    if (battery == null)
+                                    {
+                                        elementsList.Add(new ElementBattery());
+                                        battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
+                                    }
+                                    if (battery != null)
+                                    {
+                                        int offset = 1;
+                                        if (battery.Images != null) offset++;
+                                        if (battery.Segments != null) offset++;
+                                        if (battery.Number != null) offset++;
+                                        if (battery.Pointer != null) offset++;
+                                        if (battery.Circle_Scale != null) offset++;
+                                        if (battery.Linear_Scale != null) offset++;
+
+                                        battery.Icon = new hmUI_widget_IMG();
+                                        battery.Icon.src = img.src;
+                                        battery.Icon.x = img.x;
+                                        battery.Icon.y = img.y;
+                                        battery.Icon.visible = true;
+                                        battery.Icon.position = offset;
+                                    }
+                                }
+
+                                if (objectName.EndsWith("calorie_icon_img"))
+                                {
+                                    ElementCalories calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
+                                    if (calorie == null)
+                                    {
+                                        elementsList.Add(new ElementCalories());
+                                        calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
+                                    }
+                                    if (calorie != null)
+                                    {
+                                        int offset = 1;
+                                        if (calorie.Images != null) offset++;
+                                        if (calorie.Segments != null) offset++;
+                                        if (calorie.Number != null) offset++;
+                                        if (calorie.Number_Target != null) offset++;
+                                        if (calorie.Pointer != null) offset++;
+                                        if (calorie.Circle_Scale != null) offset++;
+                                        if (calorie.Linear_Scale != null) offset++;
+
+                                        calorie.Icon = new hmUI_widget_IMG();
+                                        calorie.Icon.src = img.src;
+                                        calorie.Icon.x = img.x;
+                                        calorie.Icon.y = img.y;
+                                        calorie.Icon.visible = true;
+                                        calorie.Icon.position = offset;
+                                    }
+                                }
+
+                                if (objectName.EndsWith("heart_rate_icon_img"))
+                                {
+                                    ElementHeart heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
+                                    if (heart == null)
+                                    {
+                                        elementsList.Add(new ElementHeart());
+                                        heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
+                                    }
+                                    if (heart != null)
+                                    {
+                                        int offset = 1;
+                                        if (heart.Images != null) offset++;
+                                        if (heart.Segments != null) offset++;
+                                        if (heart.Number != null) offset++;
+                                        if (heart.Pointer != null) offset++;
+                                        if (heart.Circle_Scale != null) offset++;
+                                        if (heart.Linear_Scale != null) offset++;
+
+                                        heart.Icon = new hmUI_widget_IMG();
+                                        heart.Icon.src = img.src;
+                                        heart.Icon.x = img.x;
+                                        heart.Icon.y = img.y;
+                                        heart.Icon.visible = true;
+                                        heart.Icon.position = offset;
+                                    }
+                                }
+
+                                if (objectName.EndsWith("pai_icon_img"))
+                                {
+                                    ElementPAI pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
+                                    if (pai == null)
+                                    {
+                                        elementsList.Add(new ElementPAI());
+                                        pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
+                                    }
+                                    if (pai != null)
+                                    {
+                                        int offset = 1;
+                                        if (pai.Images != null) offset++;
+                                        if (pai.Segments != null) offset++;
+                                        if (pai.Number != null) offset++;
+                                        if (pai.Number_Target != null) offset++;
+                                        if (pai.Pointer != null) offset++;
+                                        if (pai.Circle_Scale != null) offset++;
+                                        if (pai.Linear_Scale != null) offset++;
+
+                                        pai.Icon = new hmUI_widget_IMG();
+                                        pai.Icon.src = img.src;
+                                        pai.Icon.x = img.x;
+                                        pai.Icon.y = img.y;
+                                        pai.Icon.visible = true;
+                                        pai.Icon.position = offset;
                                     }
                                 }
                             }
@@ -2964,8 +4284,7 @@ namespace Watch_Face_Editor
                             }
 
                             if (elementsList != null && imgLevel.type == "STEP")
-                                //if (objectName.EndsWith("step_image_progress_img_level"))
-                                {
+                            {
                                 ElementSteps steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
                                 if (steps == null)
                                 {
@@ -2994,6 +4313,128 @@ namespace Watch_Face_Editor
                                 }
                             }
 
+                            if (elementsList != null && imgLevel.type == "BATTERY")
+                            //if (objectName.EndsWith("step_image_progress_img_level"))
+                            {
+                                ElementBattery battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
+                                if (battery == null)
+                                {
+                                    elementsList.Add(new ElementBattery());
+                                    battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
+                                }
+                                if (battery != null)
+                                {
+                                    int offset = 1;
+                                    //if (steps.Images != null) offset++;
+                                    if (battery.Segments != null) offset++;
+                                    if (battery.Number != null) offset++;
+                                    if (battery.Pointer != null) offset++;
+                                    if (battery.Circle_Scale != null) offset++;
+                                    if (battery.Linear_Scale != null) offset++;
+                                    if (battery.Icon != null) offset++;
+
+                                    battery.Images = new hmUI_widget_IMG_LEVEL();
+                                    battery.Images.img_First = imgLevel.img_First;
+                                    battery.Images.image_length = imgLevel.image_length;
+                                    battery.Images.X = imgLevel.X;
+                                    battery.Images.Y = imgLevel.Y;
+                                    battery.Images.visible = true;
+                                    battery.Images.position = offset;
+                                }
+                            }
+
+                            if (elementsList != null && imgLevel.type == "CAL")
+                            //if (objectName.EndsWith("step_image_progress_img_level"))
+                            {
+                                ElementCalories calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
+                                if (calorie == null)
+                                {
+                                    elementsList.Add(new ElementCalories());
+                                    calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
+                                }
+                                if (calorie != null)
+                                {
+                                    int offset = 1;
+                                    //if (steps.Images != null) offset++;
+                                    if (calorie.Segments != null) offset++;
+                                    if (calorie.Number != null) offset++;
+                                    if (calorie.Number_Target != null) offset++;
+                                    if (calorie.Pointer != null) offset++;
+                                    if (calorie.Circle_Scale != null) offset++;
+                                    if (calorie.Linear_Scale != null) offset++;
+                                    if (calorie.Icon != null) offset++;
+
+                                    calorie.Images = new hmUI_widget_IMG_LEVEL();
+                                    calorie.Images.img_First = imgLevel.img_First;
+                                    calorie.Images.image_length = imgLevel.image_length;
+                                    calorie.Images.X = imgLevel.X;
+                                    calorie.Images.Y = imgLevel.Y;
+                                    calorie.Images.visible = true;
+                                    calorie.Images.position = offset;
+                                }
+                            }
+
+                            if (elementsList != null && imgLevel.type == "HEART")
+                            //if (objectName.EndsWith("step_image_progress_img_level"))
+                            {
+                                ElementHeart heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
+                                if (heart == null)
+                                {
+                                    elementsList.Add(new ElementHeart());
+                                    heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
+                                }
+                                if (heart != null)
+                                {
+                                    int offset = 1;
+                                    //if (steps.Images != null) offset++;
+                                    if (heart.Segments != null) offset++;
+                                    if (heart.Number != null) offset++;
+                                    if (heart.Pointer != null) offset++;
+                                    if (heart.Circle_Scale != null) offset++;
+                                    if (heart.Linear_Scale != null) offset++;
+                                    if (heart.Icon != null) offset++;
+
+                                    heart.Images = new hmUI_widget_IMG_LEVEL();
+                                    heart.Images.img_First = imgLevel.img_First;
+                                    heart.Images.image_length = imgLevel.image_length;
+                                    heart.Images.X = imgLevel.X;
+                                    heart.Images.Y = imgLevel.Y;
+                                    heart.Images.visible = true;
+                                    heart.Images.position = offset;
+                                }
+                            }
+
+                            if (elementsList != null && imgLevel.type == "PAI_WEEKLY")
+                            //if (objectName.EndsWith("step_image_progress_img_level"))
+                            {
+                                ElementPAI pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
+                                if (pai == null)
+                                {
+                                    elementsList.Add(new ElementPAI());
+                                    pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
+                                }
+                                if (pai != null)
+                                {
+                                    int offset = 1;
+                                    //if (steps.Images != null) offset++;
+                                    if (pai.Segments != null) offset++;
+                                    if (pai.Number != null) offset++;
+                                    if (pai.Number_Target != null) offset++;
+                                    if (pai.Pointer != null) offset++;
+                                    if (pai.Circle_Scale != null) offset++;
+                                    if (pai.Linear_Scale != null) offset++;
+                                    if (pai.Icon != null) offset++;
+
+                                    pai.Images = new hmUI_widget_IMG_LEVEL();
+                                    pai.Images.img_First = imgLevel.img_First;
+                                    pai.Images.image_length = imgLevel.image_length;
+                                    pai.Images.X = imgLevel.X;
+                                    pai.Images.Y = imgLevel.Y;
+                                    pai.Images.visible = true;
+                                    pai.Images.position = offset;
+                                }
+                            }
+
 
 
                             break;
@@ -3017,7 +4458,6 @@ namespace Watch_Face_Editor
                             }
 
                             if (elementsList != null && imgProgress.type == "STEP")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
                             {
                                 ElementSteps steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
                                 if (steps == null)
@@ -3044,6 +4484,124 @@ namespace Watch_Face_Editor
                                     steps.Segments.Y = imgProgress.Y;
                                     steps.Segments.visible = true;
                                     steps.Segments.position = offset;
+                                }
+                            }
+
+                            if (elementsList != null && imgProgress.type == "BATTERY")
+                            {
+                                ElementBattery battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
+                                if (battery == null)
+                                {
+                                    elementsList.Add(new ElementBattery());
+                                    battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
+                                }
+                                if (battery != null)
+                                {
+                                    int offset = 1;
+                                    if (battery.Images != null) offset++;
+                                    //if (steps.Segments != null) offset++;
+                                    if (battery.Number != null) offset++;
+                                    if (battery.Pointer != null) offset++;
+                                    if (battery.Circle_Scale != null) offset++;
+                                    if (battery.Linear_Scale != null) offset++;
+                                    if (battery.Icon != null) offset++;
+
+                                    battery.Segments = new hmUI_widget_IMG_PROGRESS();
+                                    battery.Segments.img_First = imgProgress.img_First;
+                                    battery.Segments.image_length = imgProgress.image_length;
+                                    battery.Segments.X = imgProgress.X;
+                                    battery.Segments.Y = imgProgress.Y;
+                                    battery.Segments.visible = true;
+                                    battery.Segments.position = offset;
+                                }
+                            }
+
+                            if (elementsList != null && imgProgress.type == "CAL")
+                            {
+                                ElementCalories calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
+                                if (calorie == null)
+                                {
+                                    elementsList.Add(new ElementCalories());
+                                    calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
+                                }
+                                if (calorie != null)
+                                {
+                                    int offset = 1;
+                                    if (calorie.Images != null) offset++;
+                                    //if (steps.Segments != null) offset++;
+                                    if (calorie.Number != null) offset++;
+                                    if (calorie.Number_Target != null) offset++;
+                                    if (calorie.Pointer != null) offset++;
+                                    if (calorie.Circle_Scale != null) offset++;
+                                    if (calorie.Linear_Scale != null) offset++;
+                                    if (calorie.Icon != null) offset++;
+
+                                    calorie.Segments = new hmUI_widget_IMG_PROGRESS();
+                                    calorie.Segments.img_First = imgProgress.img_First;
+                                    calorie.Segments.image_length = imgProgress.image_length;
+                                    calorie.Segments.X = imgProgress.X;
+                                    calorie.Segments.Y = imgProgress.Y;
+                                    calorie.Segments.visible = true;
+                                    calorie.Segments.position = offset;
+                                }
+                            }
+
+                            if (elementsList != null && imgProgress.type == "HEART")
+                            {
+                                ElementHeart heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
+                                if (heart == null)
+                                {
+                                    elementsList.Add(new ElementHeart());
+                                    heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
+                                }
+                                if (heart != null)
+                                {
+                                    int offset = 1;
+                                    if (heart.Images != null) offset++;
+                                    //if (steps.Segments != null) offset++;
+                                    if (heart.Number != null) offset++;
+                                    if (heart.Pointer != null) offset++;
+                                    if (heart.Circle_Scale != null) offset++;
+                                    if (heart.Linear_Scale != null) offset++;
+                                    if (heart.Icon != null) offset++;
+
+                                    heart.Segments = new hmUI_widget_IMG_PROGRESS();
+                                    heart.Segments.img_First = imgProgress.img_First;
+                                    heart.Segments.image_length = imgProgress.image_length;
+                                    heart.Segments.X = imgProgress.X;
+                                    heart.Segments.Y = imgProgress.Y;
+                                    heart.Segments.visible = true;
+                                    heart.Segments.position = offset;
+                                }
+                            }
+
+                            if (elementsList != null && imgProgress.type == "PAI_WEEKLY")
+                            {
+                                ElementPAI pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
+                                if (pai == null)
+                                {
+                                    elementsList.Add(new ElementPAI());
+                                    pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
+                                }
+                                if (pai != null)
+                                {
+                                    int offset = 1;
+                                    if (pai.Images != null) offset++;
+                                    //if (steps.Segments != null) offset++;
+                                    if (pai.Number != null) offset++;
+                                    if (pai.Number_Target != null) offset++;
+                                    if (pai.Pointer != null) offset++;
+                                    if (pai.Circle_Scale != null) offset++;
+                                    if (pai.Linear_Scale != null) offset++;
+                                    if (pai.Icon != null) offset++;
+
+                                    pai.Segments = new hmUI_widget_IMG_PROGRESS();
+                                    pai.Segments.img_First = imgProgress.img_First;
+                                    pai.Segments.image_length = imgProgress.image_length;
+                                    pai.Segments.X = imgProgress.X;
+                                    pai.Segments.Y = imgProgress.Y;
+                                    pai.Segments.visible = true;
+                                    pai.Segments.position = offset;
                                 }
                             }
 
@@ -3143,6 +4701,226 @@ namespace Watch_Face_Editor
                                 }
                             }
 
+                            if (elementsList != null && imgNumber.type == "BATTERY")
+                            //if (objectName.EndsWith("step_image_progress_img_level"))
+                            {
+                                ElementBattery battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
+                                if (battery == null)
+                                {
+                                    elementsList.Add(new ElementBattery());
+                                    battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
+                                }
+                                if (battery != null)
+                                {
+                                    int offset = 1;
+                                    if (battery.Images != null) offset++;
+                                    if (battery.Segments != null) offset++;
+                                    //if (steps.Number != null) offset++;
+                                    if (battery.Pointer != null) offset++;
+                                    if (battery.Circle_Scale != null) offset++;
+                                    if (battery.Linear_Scale != null) offset++;
+                                    if (battery.Icon != null) offset++;
+
+                                    battery.Number = new hmUI_widget_IMG_NUMBER();
+                                    battery.Number.img_First = imgNumber.img_First;
+                                    battery.Number.imageX = imgNumber.imageX;
+                                    battery.Number.imageY = imgNumber.imageY;
+                                    battery.Number.space = imgNumber.space;
+                                    battery.Number.zero = imgNumber.zero;
+                                    battery.Number.unit = imgNumber.unit;
+                                    battery.Number.imperial_unit = imgNumber.imperial_unit;
+                                    battery.Number.negative_image = imgNumber.negative_image;
+                                    battery.Number.dot_path = imgNumber.dot_path;
+                                    battery.Number.align = imgNumber.align;
+                                    battery.Number.visible = true;
+                                    battery.Number.position = offset;
+                                }
+                            }
+
+                            if (elementsList != null && imgNumber.type == "CAL")
+                            //if (objectName.EndsWith("step_image_progress_img_level"))
+                            {
+                                ElementCalories calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
+                                if (calorie == null)
+                                {
+                                    elementsList.Add(new ElementCalories());
+                                    calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
+                                }
+                                if (calorie != null)
+                                {
+                                    int offset = 1;
+                                    if (calorie.Images != null) offset++;
+                                    if (calorie.Segments != null) offset++;
+                                    //if (steps.Number != null) offset++;
+                                    if (calorie.Number_Target != null) offset++;
+                                    if (calorie.Pointer != null) offset++;
+                                    if (calorie.Circle_Scale != null) offset++;
+                                    if (calorie.Linear_Scale != null) offset++;
+                                    if (calorie.Icon != null) offset++;
+
+                                    calorie.Number = new hmUI_widget_IMG_NUMBER();
+                                    calorie.Number.img_First = imgNumber.img_First;
+                                    calorie.Number.imageX = imgNumber.imageX;
+                                    calorie.Number.imageY = imgNumber.imageY;
+                                    calorie.Number.space = imgNumber.space;
+                                    calorie.Number.zero = imgNumber.zero;
+                                    calorie.Number.unit = imgNumber.unit;
+                                    calorie.Number.imperial_unit = imgNumber.imperial_unit;
+                                    calorie.Number.negative_image = imgNumber.negative_image;
+                                    calorie.Number.dot_path = imgNumber.dot_path;
+                                    calorie.Number.align = imgNumber.align;
+                                    calorie.Number.visible = true;
+                                    calorie.Number.position = offset;
+                                }
+                            }
+
+                            if (elementsList != null && imgNumber.type == "CAL_TARGET")
+                            //if (objectName.EndsWith("step_image_progress_img_level"))
+                            {
+                                ElementCalories calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
+                                if (calorie == null)
+                                {
+                                    elementsList.Add(new ElementCalories());
+                                    calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
+                                }
+                                if (calorie != null)
+                                {
+                                    int offset = 1;
+                                    if (calorie.Images != null) offset++;
+                                    if (calorie.Segments != null) offset++;
+                                    if (calorie.Number != null) offset++;
+                                    //if (steps.Number_Target != null) offset++;
+                                    if (calorie.Pointer != null) offset++;
+                                    if (calorie.Circle_Scale != null) offset++;
+                                    if (calorie.Linear_Scale != null) offset++;
+                                    if (calorie.Icon != null) offset++;
+
+                                    calorie.Number_Target = new hmUI_widget_IMG_NUMBER();
+                                    calorie.Number_Target.img_First = imgNumber.img_First;
+                                    calorie.Number_Target.imageX = imgNumber.imageX;
+                                    calorie.Number_Target.imageY = imgNumber.imageY;
+                                    calorie.Number_Target.space = imgNumber.space;
+                                    calorie.Number_Target.zero = imgNumber.zero;
+                                    calorie.Number_Target.unit = imgNumber.unit;
+                                    calorie.Number_Target.imperial_unit = imgNumber.imperial_unit;
+                                    calorie.Number_Target.negative_image = imgNumber.negative_image;
+                                    calorie.Number_Target.dot_path = imgNumber.dot_path;
+                                    calorie.Number_Target.align = imgNumber.align;
+                                    calorie.Number_Target.visible = true;
+                                    calorie.Number_Target.position = offset;
+                                }
+                            }
+
+                            if (elementsList != null && imgNumber.type == "HEART")
+                            //if (objectName.EndsWith("step_image_progress_img_level"))
+                            {
+                                ElementHeart heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
+                                if (heart == null)
+                                {
+                                    elementsList.Add(new ElementHeart());
+                                    heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
+                                }
+                                if (heart != null)
+                                {
+                                    int offset = 1;
+                                    if (heart.Images != null) offset++;
+                                    if (heart.Segments != null) offset++;
+                                    //if (steps.Number != null) offset++;
+                                    if (heart.Pointer != null) offset++;
+                                    if (heart.Circle_Scale != null) offset++;
+                                    if (heart.Linear_Scale != null) offset++;
+                                    if (heart.Icon != null) offset++;
+
+                                    heart.Number = new hmUI_widget_IMG_NUMBER();
+                                    heart.Number.img_First = imgNumber.img_First;
+                                    heart.Number.imageX = imgNumber.imageX;
+                                    heart.Number.imageY = imgNumber.imageY;
+                                    heart.Number.space = imgNumber.space;
+                                    heart.Number.zero = imgNumber.zero;
+                                    heart.Number.unit = imgNumber.unit;
+                                    heart.Number.imperial_unit = imgNumber.imperial_unit;
+                                    heart.Number.negative_image = imgNumber.negative_image;
+                                    heart.Number.dot_path = imgNumber.dot_path;
+                                    heart.Number.align = imgNumber.align;
+                                    heart.Number.visible = true;
+                                    heart.Number.position = offset;
+                                }
+                            }
+
+                            if (elementsList != null && imgNumber.type == "PAI_DAILY")
+                            //if (objectName.EndsWith("step_image_progress_img_level"))
+                            {
+                                ElementPAI pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
+                                if (pai == null)
+                                {
+                                    elementsList.Add(new ElementPAI());
+                                    pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
+                                }
+                                if (pai != null)
+                                {
+                                    int offset = 1;
+                                    if (pai.Images != null) offset++;
+                                    if (pai.Segments != null) offset++;
+                                    //if (steps.Number != null) offset++;
+                                    if (pai.Number_Target != null) offset++;
+                                    if (pai.Pointer != null) offset++;
+                                    if (pai.Circle_Scale != null) offset++;
+                                    if (pai.Linear_Scale != null) offset++;
+                                    if (pai.Icon != null) offset++;
+
+                                    pai.Number = new hmUI_widget_IMG_NUMBER();
+                                    pai.Number.img_First = imgNumber.img_First;
+                                    pai.Number.imageX = imgNumber.imageX;
+                                    pai.Number.imageY = imgNumber.imageY;
+                                    pai.Number.space = imgNumber.space;
+                                    pai.Number.zero = imgNumber.zero;
+                                    pai.Number.unit = imgNumber.unit;
+                                    pai.Number.imperial_unit = imgNumber.imperial_unit;
+                                    pai.Number.negative_image = imgNumber.negative_image;
+                                    pai.Number.dot_path = imgNumber.dot_path;
+                                    pai.Number.align = imgNumber.align;
+                                    pai.Number.visible = true;
+                                    pai.Number.position = offset;
+                                }
+                            }
+
+                            if (elementsList != null && imgNumber.type == "PAI_WEEKLY")
+                            //if (objectName.EndsWith("step_image_progress_img_level"))
+                            {
+                                ElementPAI pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
+                                if (pai == null)
+                                {
+                                    elementsList.Add(new ElementPAI());
+                                    pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
+                                }
+                                if (pai != null)
+                                {
+                                    int offset = 1;
+                                    if (pai.Images != null) offset++;
+                                    if (pai.Segments != null) offset++;
+                                    if (pai.Number != null) offset++;
+                                    //if (steps.Number_Target != null) offset++;
+                                    if (pai.Pointer != null) offset++;
+                                    if (pai.Circle_Scale != null) offset++;
+                                    if (pai.Linear_Scale != null) offset++;
+                                    if (pai.Icon != null) offset++;
+
+                                    pai.Number_Target = new hmUI_widget_IMG_NUMBER();
+                                    pai.Number_Target.img_First = imgNumber.img_First;
+                                    pai.Number_Target.imageX = imgNumber.imageX;
+                                    pai.Number_Target.imageY = imgNumber.imageY;
+                                    pai.Number_Target.space = imgNumber.space;
+                                    pai.Number_Target.zero = imgNumber.zero;
+                                    pai.Number_Target.unit = imgNumber.unit;
+                                    pai.Number_Target.imperial_unit = imgNumber.imperial_unit;
+                                    pai.Number_Target.negative_image = imgNumber.negative_image;
+                                    pai.Number_Target.dot_path = imgNumber.dot_path;
+                                    pai.Number_Target.align = imgNumber.align;
+                                    pai.Number_Target.visible = true;
+                                    pai.Number_Target.position = offset;
+                                }
+                            }
+
 
 
                             break;
@@ -3204,6 +4982,165 @@ namespace Watch_Face_Editor
                                     steps.Pointer.position = offset;
                                 }
                             }
+
+                            if (elementsList != null && imgPointer.type == "BATTERY")
+                            //if (objectName.EndsWith("step_image_progress_img_level"))
+                            {
+                                ElementBattery battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
+                                if (battery == null)
+                                {
+                                    elementsList.Add(new ElementBattery());
+                                    battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
+                                }
+                                if (battery != null)
+                                {
+                                    int offset = 1;
+                                    if (battery.Images != null) offset++;
+                                    if (battery.Segments != null) offset++;
+                                    if (battery.Number != null) offset++;
+                                    //if (steps.Pointer != null) offset++;
+                                    if (battery.Circle_Scale != null) offset++;
+                                    if (battery.Linear_Scale != null) offset++;
+                                    if (battery.Icon != null) offset++;
+
+                                    battery.Pointer = new hmUI_widget_IMG_POINTER();
+                                    battery.Pointer.src = imgPointer.src;
+                                    battery.Pointer.center_x = imgPointer.center_x;
+                                    battery.Pointer.center_y = imgPointer.center_y;
+                                    battery.Pointer.pos_x = imgPointer.pos_x;
+                                    battery.Pointer.pos_y = imgPointer.pos_y;
+                                    battery.Pointer.start_angle = imgPointer.start_angle;
+                                    battery.Pointer.end_angle = imgPointer.end_angle;
+                                    battery.Pointer.cover_path = imgPointer.cover_path;
+                                    battery.Pointer.cover_x = imgPointer.cover_x;
+                                    battery.Pointer.cover_y = imgPointer.cover_y;
+                                    battery.Pointer.scale = imgPointer.scale;
+                                    battery.Pointer.scale_x = imgPointer.scale_x;
+                                    battery.Pointer.scale_y = imgPointer.scale_y;
+                                    battery.Pointer.visible = true;
+                                    battery.Pointer.position = offset;
+                                }
+                            }
+
+                            if (elementsList != null && imgPointer.type == "CAL")
+                            //if (objectName.EndsWith("step_image_progress_img_level"))
+                            {
+                                ElementCalories calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
+                                if (calorie == null)
+                                {
+                                    elementsList.Add(new ElementCalories());
+                                    calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
+                                }
+                                if (calorie != null)
+                                {
+                                    int offset = 1;
+                                    if (calorie.Images != null) offset++;
+                                    if (calorie.Segments != null) offset++;
+                                    if (calorie.Number != null) offset++;
+                                    if (calorie.Number_Target != null) offset++;
+                                    //if (steps.Pointer != null) offset++;
+                                    if (calorie.Circle_Scale != null) offset++;
+                                    if (calorie.Linear_Scale != null) offset++;
+                                    if (calorie.Icon != null) offset++;
+
+                                    calorie.Pointer = new hmUI_widget_IMG_POINTER();
+                                    calorie.Pointer.src = imgPointer.src;
+                                    calorie.Pointer.center_x = imgPointer.center_x;
+                                    calorie.Pointer.center_y = imgPointer.center_y;
+                                    calorie.Pointer.pos_x = imgPointer.pos_x;
+                                    calorie.Pointer.pos_y = imgPointer.pos_y;
+                                    calorie.Pointer.start_angle = imgPointer.start_angle;
+                                    calorie.Pointer.end_angle = imgPointer.end_angle;
+                                    calorie.Pointer.cover_path = imgPointer.cover_path;
+                                    calorie.Pointer.cover_x = imgPointer.cover_x;
+                                    calorie.Pointer.cover_y = imgPointer.cover_y;
+                                    calorie.Pointer.scale = imgPointer.scale;
+                                    calorie.Pointer.scale_x = imgPointer.scale_x;
+                                    calorie.Pointer.scale_y = imgPointer.scale_y;
+                                    calorie.Pointer.visible = true;
+                                    calorie.Pointer.position = offset;
+                                }
+                            }
+
+                            if (elementsList != null && imgPointer.type == "HEART")
+                            //if (objectName.EndsWith("step_image_progress_img_level"))
+                            {
+                                ElementHeart heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
+                                if (heart == null)
+                                {
+                                    elementsList.Add(new ElementHeart());
+                                    heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
+                                }
+                                if (heart != null)
+                                {
+                                    int offset = 1;
+                                    if (heart.Images != null) offset++;
+                                    if (heart.Segments != null) offset++;
+                                    if (heart.Number != null) offset++;
+                                    //if (steps.Pointer != null) offset++;
+                                    if (heart.Circle_Scale != null) offset++;
+                                    if (heart.Linear_Scale != null) offset++;
+                                    if (heart.Icon != null) offset++;
+
+                                    heart.Pointer = new hmUI_widget_IMG_POINTER();
+                                    heart.Pointer.src = imgPointer.src;
+                                    heart.Pointer.center_x = imgPointer.center_x;
+                                    heart.Pointer.center_y = imgPointer.center_y;
+                                    heart.Pointer.pos_x = imgPointer.pos_x;
+                                    heart.Pointer.pos_y = imgPointer.pos_y;
+                                    heart.Pointer.start_angle = imgPointer.start_angle;
+                                    heart.Pointer.end_angle = imgPointer.end_angle;
+                                    heart.Pointer.cover_path = imgPointer.cover_path;
+                                    heart.Pointer.cover_x = imgPointer.cover_x;
+                                    heart.Pointer.cover_y = imgPointer.cover_y;
+                                    heart.Pointer.scale = imgPointer.scale;
+                                    heart.Pointer.scale_x = imgPointer.scale_x;
+                                    heart.Pointer.scale_y = imgPointer.scale_y;
+                                    heart.Pointer.visible = true;
+                                    heart.Pointer.position = offset;
+                                }
+                            }
+
+                            if (elementsList != null && imgPointer.type == "PAI_WEEKLY")
+                            //if (objectName.EndsWith("step_image_progress_img_level"))
+                            {
+                                ElementPAI pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
+                                if (pai == null)
+                                {
+                                    elementsList.Add(new ElementPAI());
+                                    pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
+                                }
+                                if (pai != null)
+                                {
+                                    int offset = 1;
+                                    if (pai.Images != null) offset++;
+                                    if (pai.Segments != null) offset++;
+                                    if (pai.Number != null) offset++;
+                                    if (pai.Number_Target != null) offset++;
+                                    //if (steps.Pointer != null) offset++;
+                                    if (pai.Circle_Scale != null) offset++;
+                                    if (pai.Linear_Scale != null) offset++;
+                                    if (pai.Icon != null) offset++;
+
+                                    pai.Pointer = new hmUI_widget_IMG_POINTER();
+                                    pai.Pointer.src = imgPointer.src;
+                                    pai.Pointer.center_x = imgPointer.center_x;
+                                    pai.Pointer.center_y = imgPointer.center_y;
+                                    pai.Pointer.pos_x = imgPointer.pos_x;
+                                    pai.Pointer.pos_y = imgPointer.pos_y;
+                                    pai.Pointer.start_angle = imgPointer.start_angle;
+                                    pai.Pointer.end_angle = imgPointer.end_angle;
+                                    pai.Pointer.cover_path = imgPointer.cover_path;
+                                    pai.Pointer.cover_x = imgPointer.cover_x;
+                                    pai.Pointer.cover_y = imgPointer.cover_y;
+                                    pai.Pointer.scale = imgPointer.scale;
+                                    pai.Pointer.scale_x = imgPointer.scale_x;
+                                    pai.Pointer.scale_y = imgPointer.scale_y;
+                                    pai.Pointer.visible = true;
+                                    pai.Pointer.position = offset;
+                                }
+                            }
+
                             break;
                         #endregion
 
@@ -3259,6 +5196,149 @@ namespace Watch_Face_Editor
                                     steps.Circle_Scale.position = offset;
                                 }
                             }
+
+                            if (elementsList != null && img_Circle_Scale.type == "BATTERY")
+                            //if (objectName.EndsWith("step_image_progress_img_level"))
+                            {
+                                ElementBattery battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
+                                if (battery == null)
+                                {
+                                    elementsList.Add(new ElementBattery());
+                                    battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
+                                }
+                                if (battery != null)
+                                {
+                                    int offset = 1;
+                                    if (battery.Images != null) offset++;
+                                    if (battery.Segments != null) offset++;
+                                    if (battery.Number != null) offset++;
+                                    if (battery.Pointer != null) offset++;
+                                    //if (steps.Circle_Scale != null) offset++;
+                                    if (battery.Linear_Scale != null) offset++;
+                                    if (battery.Icon != null) offset++;
+
+                                    battery.Circle_Scale = new Circle_Scale();
+                                    battery.Circle_Scale.center_x = img_Circle_Scale.center_x;
+                                    battery.Circle_Scale.center_y = img_Circle_Scale.center_y;
+                                    battery.Circle_Scale.start_angle = img_Circle_Scale.start_angle;
+                                    battery.Circle_Scale.end_angle = img_Circle_Scale.end_angle;
+                                    battery.Circle_Scale.color = img_Circle_Scale.color;
+                                    battery.Circle_Scale.radius = img_Circle_Scale.radius;
+                                    battery.Circle_Scale.line_width = img_Circle_Scale.line_width;
+                                    battery.Circle_Scale.mirror = img_Circle_Scale.mirror;
+                                    battery.Circle_Scale.inversion = img_Circle_Scale.inversion;
+                                    battery.Circle_Scale.visible = true;
+                                    battery.Circle_Scale.position = offset;
+                                }
+                            }
+
+                            if (elementsList != null && img_Circle_Scale.type == "CAL")
+                            //if (objectName.EndsWith("step_image_progress_img_level"))
+                            {
+                                ElementCalories calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
+                                if (calorie == null)
+                                {
+                                    elementsList.Add(new ElementCalories());
+                                    calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
+                                }
+                                if (calorie != null)
+                                {
+                                    int offset = 1;
+                                    if (calorie.Images != null) offset++;
+                                    if (calorie.Segments != null) offset++;
+                                    if (calorie.Number != null) offset++;
+                                    if (calorie.Number_Target != null) offset++;
+                                    if (calorie.Pointer != null) offset++;
+                                    //if (steps.Circle_Scale != null) offset++;
+                                    if (calorie.Linear_Scale != null) offset++;
+                                    if (calorie.Icon != null) offset++;
+
+                                    calorie.Circle_Scale = new Circle_Scale();
+                                    calorie.Circle_Scale.center_x = img_Circle_Scale.center_x;
+                                    calorie.Circle_Scale.center_y = img_Circle_Scale.center_y;
+                                    calorie.Circle_Scale.start_angle = img_Circle_Scale.start_angle;
+                                    calorie.Circle_Scale.end_angle = img_Circle_Scale.end_angle;
+                                    calorie.Circle_Scale.color = img_Circle_Scale.color;
+                                    calorie.Circle_Scale.radius = img_Circle_Scale.radius;
+                                    calorie.Circle_Scale.line_width = img_Circle_Scale.line_width;
+                                    calorie.Circle_Scale.mirror = img_Circle_Scale.mirror;
+                                    calorie.Circle_Scale.inversion = img_Circle_Scale.inversion;
+                                    calorie.Circle_Scale.visible = true;
+                                    calorie.Circle_Scale.position = offset;
+                                }
+                            }
+
+                            if (elementsList != null && img_Circle_Scale.type == "HEART")
+                            //if (objectName.EndsWith("step_image_progress_img_level"))
+                            {
+                                ElementHeart heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
+                                if (heart == null)
+                                {
+                                    elementsList.Add(new ElementHeart());
+                                    heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
+                                }
+                                if (heart != null)
+                                {
+                                    int offset = 1;
+                                    if (heart.Images != null) offset++;
+                                    if (heart.Segments != null) offset++;
+                                    if (heart.Number != null) offset++;
+                                    if (heart.Pointer != null) offset++;
+                                    //if (steps.Circle_Scale != null) offset++;
+                                    if (heart.Linear_Scale != null) offset++;
+                                    if (heart.Icon != null) offset++;
+
+                                    heart.Circle_Scale = new Circle_Scale();
+                                    heart.Circle_Scale.center_x = img_Circle_Scale.center_x;
+                                    heart.Circle_Scale.center_y = img_Circle_Scale.center_y;
+                                    heart.Circle_Scale.start_angle = img_Circle_Scale.start_angle;
+                                    heart.Circle_Scale.end_angle = img_Circle_Scale.end_angle;
+                                    heart.Circle_Scale.color = img_Circle_Scale.color;
+                                    heart.Circle_Scale.radius = img_Circle_Scale.radius;
+                                    heart.Circle_Scale.line_width = img_Circle_Scale.line_width;
+                                    heart.Circle_Scale.mirror = img_Circle_Scale.mirror;
+                                    heart.Circle_Scale.inversion = img_Circle_Scale.inversion;
+                                    heart.Circle_Scale.visible = true;
+                                    heart.Circle_Scale.position = offset;
+                                }
+                            }
+
+                            if (elementsList != null && img_Circle_Scale.type == "PAI_WEEKLY")
+                            //if (objectName.EndsWith("step_image_progress_img_level"))
+                            {
+                                ElementPAI pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
+                                if (pai == null)
+                                {
+                                    elementsList.Add(new ElementPAI());
+                                    pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
+                                }
+                                if (pai != null)
+                                {
+                                    int offset = 1;
+                                    if (pai.Images != null) offset++;
+                                    if (pai.Segments != null) offset++;
+                                    if (pai.Number != null) offset++;
+                                    if (pai.Number_Target != null) offset++;
+                                    if (pai.Pointer != null) offset++;
+                                    //if (steps.Circle_Scale != null) offset++;
+                                    if (pai.Linear_Scale != null) offset++;
+                                    if (pai.Icon != null) offset++;
+
+                                    pai.Circle_Scale = new Circle_Scale();
+                                    pai.Circle_Scale.center_x = img_Circle_Scale.center_x;
+                                    pai.Circle_Scale.center_y = img_Circle_Scale.center_y;
+                                    pai.Circle_Scale.start_angle = img_Circle_Scale.start_angle;
+                                    pai.Circle_Scale.end_angle = img_Circle_Scale.end_angle;
+                                    pai.Circle_Scale.color = img_Circle_Scale.color;
+                                    pai.Circle_Scale.radius = img_Circle_Scale.radius;
+                                    pai.Circle_Scale.line_width = img_Circle_Scale.line_width;
+                                    pai.Circle_Scale.mirror = img_Circle_Scale.mirror;
+                                    pai.Circle_Scale.inversion = img_Circle_Scale.inversion;
+                                    pai.Circle_Scale.visible = true;
+                                    pai.Circle_Scale.position = offset;
+                                }
+                            }
+
                             break;
                         #endregion
 
@@ -3314,6 +5394,149 @@ namespace Watch_Face_Editor
                                     steps.Linear_Scale.position = offset;
                                 }
                             }
+
+                            if (elementsList != null && img_Linear_Scale.type == "BATTERY")
+                            //if (objectName.EndsWith("step_image_progress_img_level"))
+                            {
+                                ElementBattery battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
+                                if (battery == null)
+                                {
+                                    elementsList.Add(new ElementBattery());
+                                    battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
+                                }
+                                if (battery != null)
+                                {
+                                    int offset = 1;
+                                    if (battery.Images != null) offset++;
+                                    if (battery.Segments != null) offset++;
+                                    if (battery.Number != null) offset++;
+                                    if (battery.Pointer != null) offset++;
+                                    if (battery.Circle_Scale != null) offset++;
+                                    //if (steps.Linear_Scale != null) offset++;
+                                    if (battery.Icon != null) offset++;
+
+                                    battery.Linear_Scale = new Linear_Scale();
+                                    battery.Linear_Scale.start_x = img_Linear_Scale.start_x;
+                                    battery.Linear_Scale.start_y = img_Linear_Scale.start_y;
+                                    battery.Linear_Scale.color = img_Linear_Scale.color;
+                                    battery.Linear_Scale.lenght = img_Linear_Scale.lenght;
+                                    battery.Linear_Scale.line_width = img_Linear_Scale.line_width;
+                                    battery.Linear_Scale.mirror = img_Linear_Scale.mirror;
+                                    battery.Linear_Scale.inversion = img_Linear_Scale.inversion;
+                                    battery.Linear_Scale.vertical = img_Linear_Scale.vertical;
+                                    battery.Linear_Scale.pointer = img_Linear_Scale.pointer;
+                                    battery.Linear_Scale.visible = true;
+                                    battery.Linear_Scale.position = offset;
+                                }
+                            }
+
+                            if (elementsList != null && img_Linear_Scale.type == "CAL")
+                            //if (objectName.EndsWith("step_image_progress_img_level"))
+                            {
+                                ElementCalories calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
+                                if (calorie == null)
+                                {
+                                    elementsList.Add(new ElementCalories());
+                                    calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
+                                }
+                                if (calorie != null)
+                                {
+                                    int offset = 1;
+                                    if (calorie.Images != null) offset++;
+                                    if (calorie.Segments != null) offset++;
+                                    if (calorie.Number != null) offset++;
+                                    if (calorie.Number_Target != null) offset++;
+                                    if (calorie.Pointer != null) offset++;
+                                    if (calorie.Circle_Scale != null) offset++;
+                                    //if (steps.Linear_Scale != null) offset++;
+                                    if (calorie.Icon != null) offset++;
+
+                                    calorie.Linear_Scale = new Linear_Scale();
+                                    calorie.Linear_Scale.start_x = img_Linear_Scale.start_x;
+                                    calorie.Linear_Scale.start_y = img_Linear_Scale.start_y;
+                                    calorie.Linear_Scale.color = img_Linear_Scale.color;
+                                    calorie.Linear_Scale.lenght = img_Linear_Scale.lenght;
+                                    calorie.Linear_Scale.line_width = img_Linear_Scale.line_width;
+                                    calorie.Linear_Scale.mirror = img_Linear_Scale.mirror;
+                                    calorie.Linear_Scale.inversion = img_Linear_Scale.inversion;
+                                    calorie.Linear_Scale.vertical = img_Linear_Scale.vertical;
+                                    calorie.Linear_Scale.pointer = img_Linear_Scale.pointer;
+                                    calorie.Linear_Scale.visible = true;
+                                    calorie.Linear_Scale.position = offset;
+                                }
+                            }
+
+                            if (elementsList != null && img_Linear_Scale.type == "HEART")
+                            //if (objectName.EndsWith("step_image_progress_img_level"))
+                            {
+                                ElementHeart heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
+                                if (heart == null)
+                                {
+                                    elementsList.Add(new ElementHeart());
+                                    heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
+                                }
+                                if (heart != null)
+                                {
+                                    int offset = 1;
+                                    if (heart.Images != null) offset++;
+                                    if (heart.Segments != null) offset++;
+                                    if (heart.Number != null) offset++;
+                                    if (heart.Pointer != null) offset++;
+                                    if (heart.Circle_Scale != null) offset++;
+                                    //if (steps.Linear_Scale != null) offset++;
+                                    if (heart.Icon != null) offset++;
+
+                                    heart.Linear_Scale = new Linear_Scale();
+                                    heart.Linear_Scale.start_x = img_Linear_Scale.start_x;
+                                    heart.Linear_Scale.start_y = img_Linear_Scale.start_y;
+                                    heart.Linear_Scale.color = img_Linear_Scale.color;
+                                    heart.Linear_Scale.lenght = img_Linear_Scale.lenght;
+                                    heart.Linear_Scale.line_width = img_Linear_Scale.line_width;
+                                    heart.Linear_Scale.mirror = img_Linear_Scale.mirror;
+                                    heart.Linear_Scale.inversion = img_Linear_Scale.inversion;
+                                    heart.Linear_Scale.vertical = img_Linear_Scale.vertical;
+                                    heart.Linear_Scale.pointer = img_Linear_Scale.pointer;
+                                    heart.Linear_Scale.visible = true;
+                                    heart.Linear_Scale.position = offset;
+                                }
+                            }
+
+                            if (elementsList != null && img_Linear_Scale.type == "PAI_WEEKLY")
+                            //if (objectName.EndsWith("step_image_progress_img_level"))
+                            {
+                                ElementPAI pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
+                                if (pai == null)
+                                {
+                                    elementsList.Add(new ElementPAI());
+                                    pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
+                                }
+                                if (pai != null)
+                                {
+                                    int offset = 1;
+                                    if (pai.Images != null) offset++;
+                                    if (pai.Segments != null) offset++;
+                                    if (pai.Number != null) offset++;
+                                    if (pai.Number_Target != null) offset++;
+                                    if (pai.Pointer != null) offset++;
+                                    if (pai.Circle_Scale != null) offset++;
+                                    //if (steps.Linear_Scale != null) offset++;
+                                    if (pai.Icon != null) offset++;
+
+                                    pai.Linear_Scale = new Linear_Scale();
+                                    pai.Linear_Scale.start_x = img_Linear_Scale.start_x;
+                                    pai.Linear_Scale.start_y = img_Linear_Scale.start_y;
+                                    pai.Linear_Scale.color = img_Linear_Scale.color;
+                                    pai.Linear_Scale.lenght = img_Linear_Scale.lenght;
+                                    pai.Linear_Scale.line_width = img_Linear_Scale.line_width;
+                                    pai.Linear_Scale.mirror = img_Linear_Scale.mirror;
+                                    pai.Linear_Scale.inversion = img_Linear_Scale.inversion;
+                                    pai.Linear_Scale.vertical = img_Linear_Scale.vertical;
+                                    pai.Linear_Scale.pointer = img_Linear_Scale.pointer;
+                                    pai.Linear_Scale.visible = true;
+                                    pai.Linear_Scale.position = offset;
+                                }
+                            }
+
                             break;
                         #endregion
 

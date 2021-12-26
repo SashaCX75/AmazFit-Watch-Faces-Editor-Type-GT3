@@ -114,11 +114,29 @@
     <Compile Include="Elements\UCtrl_DigitalTime_Elm.Designer.cs">
       <DependentUpon>UCtrl_DigitalTime_Elm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Elements\UCtrl_Battery_Elm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\UCtrl_Battery_Elm.Designer.cs">
+      <DependentUpon>UCtrl_Battery_Elm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Elements\UCtrl_Calories_Elm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\UCtrl_Calories_Elm.Designer.cs">
+      <DependentUpon>UCtrl_Calories_Elm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCtrl_Circle_Scale_Opt.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UCtrl_Circle_Scale_Opt.Designer.cs">
       <DependentUpon>UCtrl_Circle_Scale_Opt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Elements\UCtrl_Heart_Elm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\UCtrl_Heart_Elm.Designer.cs">
+      <DependentUpon>UCtrl_Heart_Elm.cs</DependentUpon>
     </Compile>
     <Compile Include="UCtrl_Icon_Opt.cs">
       <SubType>UserControl</SubType>
@@ -137,6 +155,12 @@
     </Compile>
     <Compile Include="UCtrl_Linear_Scale_Opt.Designer.cs">
       <DependentUpon>UCtrl_Linear_Scale_Opt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Elements\UCtrl_PAI_Elm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\UCtrl_PAI_Elm.Designer.cs">
+      <DependentUpon>UCtrl_PAI_Elm.cs</DependentUpon>
     </Compile>
     <Compile Include="UCtrl_Pointer_Opt.cs">
       <SubType>UserControl</SubType>
@@ -190,6 +214,18 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Elements\UCtrl_Battery_Elm.en.resx">
+      <DependentUpon>UCtrl_Battery_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Calories_Elm.en.resx">
+      <DependentUpon>UCtrl_Calories_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Heart_Elm.en.resx">
+      <DependentUpon>UCtrl_Heart_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_PAI_Elm.en.resx">
+      <DependentUpon>UCtrl_PAI_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Statuses_Elm.en.resx">
       <DependentUpon>UCtrl_Statuses_Elm.cs</DependentUpon>
     </EmbeddedResource>
@@ -262,11 +298,20 @@
     <EmbeddedResource Include="Elements\UCtrl_DigitalTime_Elm.resx">
       <DependentUpon>UCtrl_DigitalTime_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Battery_Elm.resx">
+      <DependentUpon>UCtrl_Battery_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Calories_Elm.resx">
+      <DependentUpon>UCtrl_Calories_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Circle_Scale_Opt.en.resx">
       <DependentUpon>UCtrl_Circle_Scale_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Circle_Scale_Opt.resx">
       <DependentUpon>UCtrl_Circle_Scale_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Heart_Elm.resx">
+      <DependentUpon>UCtrl_Heart_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Icon_Opt.en.resx">
       <DependentUpon>UCtrl_Icon_Opt.cs</DependentUpon>
@@ -285,6 +330,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Linear_Scale_Opt.resx">
       <DependentUpon>UCtrl_Linear_Scale_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_PAI_Elm.resx">
+      <DependentUpon>UCtrl_PAI_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Pointer_Opt.en.resx">
       <DependentUpon>UCtrl_Pointer_Opt.cs</DependentUpon>
@@ -416,6 +464,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\shortcut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\battery.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calories.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calories1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\calories2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\heart.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pai.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pai1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pai2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

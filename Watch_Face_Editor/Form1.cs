@@ -992,6 +992,10 @@ namespace Watch_Face_Editor
             if (e.Data.GetDataPresent(typeof(UCtrl_Statuses_Elm))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(UCtrl_Shortcuts_Elm))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(UCtrl_Steps_Elm))) typeReturn = false;
+            if (e.Data.GetDataPresent(typeof(UCtrl_Battery_Elm))) typeReturn = false;
+            if (e.Data.GetDataPresent(typeof(UCtrl_Calories_Elm))) typeReturn = false;
+            if (e.Data.GetDataPresent(typeof(UCtrl_Heart_Elm))) typeReturn = false;
+            if (e.Data.GetDataPresent(typeof(UCtrl_PAI_Elm))) typeReturn = false;
             //if (e.Data.GetDataPresent(typeof(Button))) typeReturn = false;
             if (typeReturn) return;
 
@@ -1087,6 +1091,38 @@ namespace Watch_Face_Editor
                         draggedUCtrl_Elm = (UCtrl_Steps_Elm)e.Data.GetData(typeof(UCtrl_Steps_Elm));
                         if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
                         break;
+
+                    case "ControlLibrary.UCtrl_Battery_Elm":
+                        ElementBattery battery =
+                            (ElementBattery)Elements.Find(e1 => e1.GetType().Name == "ElementBattery");
+                        index = Elements.IndexOf(battery);
+                        draggedUCtrl_Elm = (UCtrl_Battery_Elm)e.Data.GetData(typeof(UCtrl_Battery_Elm));
+                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                        break;
+
+                    case "ControlLibrary.UCtrl_Calories_Elm":
+                        ElementCalories calories =
+                            (ElementCalories)Elements.Find(e1 => e1.GetType().Name == "ElementCalories");
+                        index = Elements.IndexOf(calories);
+                        draggedUCtrl_Elm = (UCtrl_Calories_Elm)e.Data.GetData(typeof(UCtrl_Calories_Elm));
+                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                        break;
+
+                    case "ControlLibrary.UCtrl_Heart_Elm":
+                        ElementHeart heart =
+                            (ElementHeart)Elements.Find(e1 => e1.GetType().Name == "ElementHeart");
+                        index = Elements.IndexOf(heart);
+                        draggedUCtrl_Elm = (UCtrl_Heart_Elm)e.Data.GetData(typeof(UCtrl_Heart_Elm));
+                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                        break;
+
+                    case "ControlLibrary.UCtrl_PAI_Elm":
+                        ElementPAI pai =
+                            (ElementPAI)Elements.Find(e1 => e1.GetType().Name == "ElementPAI");
+                        index = Elements.IndexOf(pai);
+                        draggedUCtrl_Elm = (UCtrl_PAI_Elm)e.Data.GetData(typeof(UCtrl_PAI_Elm));
+                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                        break;
                 }
 
 
@@ -1160,131 +1196,6 @@ namespace Watch_Face_Editor
             }
         }
 
-        private void DragDropElements(object sender, DragEventArgs e)
-        {
-            string[] objectName = e.Data.GetFormats();
-            //object o = e.Data.GetData(e.Data.GetFormats()[0]);
-            if (objectName.Length > 0)
-            {
-                List<object> Elements = new List<object>();
-                int index = -1;
-                if (radioButton_ScreenNormal.Checked)
-                {
-                    if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Elements != null)
-                        Elements = Watch_Face.ScreenNormal.Elements;
-                }
-                else
-                {
-                    if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
-                        Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
-                }
-                if (Elements.Count < 2) return;
-
-                //ElementAnalogTime analogTime = new ElementAnalogTime();
-                //analogTime.visible = true;
-                ////digitalTime.position = Elements.Count;
-                //Elements.f
-                //bool exists = Elements.Exists(e1 => e1.GetType().Name == "ElementAnalogTime");
-                //digitalTime = (ElementDigitalTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDigitalTime");
-                switch (objectName[0])
-                {
-                    case "ControlLibrary.UCtrl_DigitalTime_Elm":
-                        ElementDigitalTime digitalTime =
-                            (ElementDigitalTime)Elements.Find(e1 => e1.GetType().Name == "ElementDigitalTime");
-                        index = Elements.IndexOf(digitalTime);
-                        break;
-                    case "ControlLibrary.UCtrl_AnalogTime_Elm":
-                        ElementAnalogTime analogTime =
-                            (ElementAnalogTime)Elements.Find(e1 => e1.GetType().Name == "ElementAnalogTime");
-                        index = Elements.IndexOf(analogTime);
-                        break;
-                    case "ControlLibrary.UCtrl_ElementDateDay_Elm":
-                        ElementDateDay dateDay =
-                            (ElementDateDay)Elements.Find(e1 => e1.GetType().Name == "ElementDateDay");
-                        index = Elements.IndexOf(dateDay);
-                        break;
-                    case "ControlLibrary.UCtrl_ElementDateMonth_Elm":
-                        ElementDateMonth dateMonth =
-                            (ElementDateMonth)Elements.Find(e1 => e1.GetType().Name == "ElementDateMonth");
-                        index = Elements.IndexOf(dateMonth);
-                        break;
-                    case "ControlLibrary.UCtrl_ElementDateYear_Elm":
-                        ElementDateYear dateYear =
-                            (ElementDateYear)Elements.Find(e1 => e1.GetType().Name == "ElementDateYear");
-                        index = Elements.IndexOf(dateYear);
-                        break;
-                    case "ControlLibrary.UCtrl_ElementDateWeek_Elm":
-                        ElementDateWeek dateWeek =
-                            (ElementDateWeek)Elements.Find(e1 => e1.GetType().Name == "ElementDateWeek");
-                        index = Elements.IndexOf(dateWeek);
-                        break;
-                }
-
-                Panel draggedPanel = (Panel)e.Data.GetData(typeof(Panel));
-                if (draggedPanel == null)
-                {
-                    if (e.Data.GetDataPresent(typeof(UCtrl_Background_Elm)))
-                    {
-                        UCtrl_Background_Elm draggedUCtrl_Elm = (UCtrl_Background_Elm)e.Data.GetData(typeof(UCtrl_Background_Elm));
-                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
-                    }
-                    else if (e.Data.GetDataPresent(typeof(UCtrl_DigitalTime_Elm)))
-                    {
-                        UCtrl_DigitalTime_Elm draggedUCtrl_Elm = (UCtrl_DigitalTime_Elm)e.Data.GetData(typeof(UCtrl_DigitalTime_Elm));
-                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
-                    }
-                    else if (e.Data.GetDataPresent(typeof(UCtrl_AnalogTime_Elm)))
-                    {
-                        UCtrl_AnalogTime_Elm draggedUCtrl_Elm = (UCtrl_AnalogTime_Elm)e.Data.GetData(typeof(UCtrl_AnalogTime_Elm));
-                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
-                    }
-                    else if (e.Data.GetDataPresent(typeof(UCtrl_DateDay_Elm)))
-                    {
-                        UCtrl_DateDay_Elm draggedUCtrl_Elm = (UCtrl_DateDay_Elm)e.Data.GetData(typeof(UCtrl_DateDay_Elm));
-                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
-                    }
-                    else if (e.Data.GetDataPresent(typeof(UCtrl_DateMonth_Elm)))
-                    {
-                        UCtrl_DateMonth_Elm draggedUCtrl_Elm = (UCtrl_DateMonth_Elm)e.Data.GetData(typeof(UCtrl_DateMonth_Elm));
-                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
-                    }
-                    else if (e.Data.GetDataPresent(typeof(UCtrl_DateYear_Elm)))
-                    {
-                        UCtrl_DateYear_Elm draggedUCtrl_Elm = (UCtrl_DateYear_Elm)e.Data.GetData(typeof(UCtrl_DateYear_Elm));
-                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
-                    }
-                    else if (e.Data.GetDataPresent(typeof(UCtrl_DateWeek_Elm)))
-                    {
-                        UCtrl_DateWeek_Elm draggedUCtrl_Elm = (UCtrl_DateWeek_Elm)e.Data.GetData(typeof(UCtrl_DateWeek_Elm));
-                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
-                    }
-                }
-                if (draggedPanel == null) return;
-                var pos = tableLayoutPanel_ElemetsWatchFace.GetPositionFromControl(draggedPanel);
-                int indexNew = tableLayoutPanel_ElemetsWatchFace.RowCount - 2 - pos.Row;
-                if (indexNew >= 0 && indexNew < Elements.Count && index >= 0 && index < Elements.Count && indexNew != index)
-                {
-                    if (indexNew > index)
-                    {
-                        Elements.Insert(indexNew + 1, Elements[index]);
-                        Elements.RemoveAt(index);
-                    }
-                    else
-                    {
-                        Elements.Insert(indexNew, Elements[index]);
-                        Elements.RemoveAt(index + 1);
-                        //object temp = Elements[index];
-                        //Elements.RemoveAt(index);
-                        //Elements.Insert(indexNew, temp);
-                    }
-                    JSON_Modified = true;
-                    PreviewImage();
-                    FormText();
-                }
-            }
-        }
-
-
         private void ShowElemenrOptions(string optionsName)
         {
             bool AOD = radioButton_ScreenIdle.Checked;
@@ -1352,6 +1263,10 @@ namespace Watch_Face_Editor
             if (selectElementName != "Shortcuts") uCtrl_Shortcuts_Elm.ResetHighlightState();
             if (selectElementName != "Statuses") uCtrl_Statuses_Elm.ResetHighlightState();
             if (selectElementName != "Steps") uCtrl_Steps_Elm.ResetHighlightState();
+            if (selectElementName != "Battery") uCtrl_Battery_Elm.ResetHighlightState();
+            if (selectElementName != "Calories") uCtrl_Calories_Elm.ResetHighlightState();
+            if (selectElementName != "Heart") uCtrl_Heart_Elm.ResetHighlightState();
+            if (selectElementName != "PAI") uCtrl_PAI_Elm.ResetHighlightState();
         }
 
         private void ClearAllElemenrOptions()
@@ -1369,6 +1284,10 @@ namespace Watch_Face_Editor
             uCtrl_Shortcuts_Elm.SettingsClear();
 
             uCtrl_Steps_Elm.SettingsClear();
+            uCtrl_Battery_Elm.SettingsClear();
+            uCtrl_Calories_Elm.SettingsClear();
+            uCtrl_Heart_Elm.SettingsClear();
+            uCtrl_PAI_Elm.SettingsClear();
         }
 
         private void uCtrl_Background_Elm_SelectChanged(object sender, EventArgs eventArgs)
@@ -2242,6 +2161,39 @@ namespace Watch_Face_Editor
                     Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
                     panel_WatchfaceElements.VerticalScroll.Maximum);
             }
+            if (comboBox_AddActivity.SelectedIndex == 1)
+            {
+                AddCalories();
+                ShowElemetsWatchFace();
+                JSON_Modified = true;
+                FormText();
+
+                panel_WatchfaceElements.AutoScrollPosition = new Point(
+                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                    panel_WatchfaceElements.VerticalScroll.Maximum);
+            }
+            if (comboBox_AddActivity.SelectedIndex == 2)
+            {
+                AddHeart();
+                ShowElemetsWatchFace();
+                JSON_Modified = true;
+                FormText();
+
+                panel_WatchfaceElements.AutoScrollPosition = new Point(
+                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                    panel_WatchfaceElements.VerticalScroll.Maximum);
+            }
+            if (comboBox_AddActivity.SelectedIndex == 3)
+            {
+                AddPAI();
+                ShowElemetsWatchFace();
+                JSON_Modified = true;
+                FormText();
+
+                panel_WatchfaceElements.AutoScrollPosition = new Point(
+                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                    panel_WatchfaceElements.VerticalScroll.Maximum);
+            }
 
             PreviewView = false;
             //if (comboBox_AddTime.SelectedIndex >= 0) MessageBox.Show(comboBox_AddTime.Text);
@@ -2261,6 +2213,17 @@ namespace Watch_Face_Editor
 
         private void comboBox_AddSystem_DropDownClosed(object sender, EventArgs e)
         {
+            if (comboBox_AddSystem.SelectedIndex == 0)
+            {
+                AddBattery();
+                ShowElemetsWatchFace();
+                JSON_Modified = true;
+                FormText();
+
+                panel_WatchfaceElements.AutoScrollPosition = new Point(
+                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                    panel_WatchfaceElements.VerticalScroll.Maximum);
+            }
             if (comboBox_AddSystem.SelectedIndex == 1)
             {
                 AddStatuses();
@@ -2732,6 +2695,130 @@ namespace Watch_Face_Editor
             uCtrl_Steps_Elm.SettingsClear();
         }
 
+        /// <summary>Добавляем заряд в циферблат</summary>
+        private void AddBattery()
+        {
+            if (!PreviewView) return;
+            List<object> Elements = new List<object>();
+            if (Watch_Face == null) Watch_Face = new WATCH_FACE();
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face.ScreenNormal == null) Watch_Face.ScreenNormal = new ScreenNormal();
+                if (Watch_Face.ScreenNormal.Elements == null) Watch_Face.ScreenNormal.Elements = new List<object>();
+                Elements = Watch_Face.ScreenNormal.Elements;
+            }
+            else
+            {
+                if (Watch_Face.ScreenAOD == null) Watch_Face.ScreenAOD = new ScreenAOD();
+                if (Watch_Face.ScreenAOD.Elements == null) Watch_Face.ScreenAOD.Elements = new List<object>();
+                Elements = Watch_Face.ScreenAOD.Elements;
+
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
+            }
+
+            ElementBattery battery = new ElementBattery();
+            battery.visible = true;
+            //digitalTime.position = Elements.Count;
+            bool exists = Elements.Exists(e => e.GetType().Name == "ElementBattery"); // проверяем что такого элемента нет
+            //if (!exists) Elements.Add(dateDay);
+            if (!exists) Elements.Insert(0, battery);
+            uCtrl_Battery_Elm.SettingsClear();
+        }
+
+        /// <summary>Добавляем калории в циферблат</summary>
+        private void AddCalories()
+        {
+            if (!PreviewView) return;
+            List<object> Elements = new List<object>();
+            if (Watch_Face == null) Watch_Face = new WATCH_FACE();
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face.ScreenNormal == null) Watch_Face.ScreenNormal = new ScreenNormal();
+                if (Watch_Face.ScreenNormal.Elements == null) Watch_Face.ScreenNormal.Elements = new List<object>();
+                Elements = Watch_Face.ScreenNormal.Elements;
+            }
+            else
+            {
+                if (Watch_Face.ScreenAOD == null) Watch_Face.ScreenAOD = new ScreenAOD();
+                if (Watch_Face.ScreenAOD.Elements == null) Watch_Face.ScreenAOD.Elements = new List<object>();
+                Elements = Watch_Face.ScreenAOD.Elements;
+
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
+            }
+
+            ElementCalories сalories = new ElementCalories();
+            сalories.visible = true;
+            //digitalTime.position = Elements.Count;
+            bool exists = Elements.Exists(e => e.GetType().Name == "ElementCalories"); // проверяем что такого элемента нет
+            //if (!exists) Elements.Add(dateDay);
+            if (!exists) Elements.Insert(0, сalories);
+            uCtrl_Calories_Elm.SettingsClear();
+        }
+
+        /// <summary>Добавляем пульс в циферблат</summary>
+        private void AddHeart()
+        {
+            if (!PreviewView) return;
+            List<object> Elements = new List<object>();
+            if (Watch_Face == null) Watch_Face = new WATCH_FACE();
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face.ScreenNormal == null) Watch_Face.ScreenNormal = new ScreenNormal();
+                if (Watch_Face.ScreenNormal.Elements == null) Watch_Face.ScreenNormal.Elements = new List<object>();
+                Elements = Watch_Face.ScreenNormal.Elements;
+            }
+            else
+            {
+                if (Watch_Face.ScreenAOD == null) Watch_Face.ScreenAOD = new ScreenAOD();
+                if (Watch_Face.ScreenAOD.Elements == null) Watch_Face.ScreenAOD.Elements = new List<object>();
+                Elements = Watch_Face.ScreenAOD.Elements;
+
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
+            }
+
+            ElementHeart heart = new ElementHeart();
+            heart.visible = true;
+            //digitalTime.position = Elements.Count;
+            bool exists = Elements.Exists(e => e.GetType().Name == "ElementHeart"); // проверяем что такого элемента нет
+            //if (!exists) Elements.Add(dateDay);
+            if (!exists) Elements.Insert(0, heart);
+            uCtrl_Heart_Elm.SettingsClear();
+        }
+
+        /// <summary>Добавляем PAI в циферблат</summary>
+        private void AddPAI()
+        {
+            if (!PreviewView) return;
+            List<object> Elements = new List<object>();
+            if (Watch_Face == null) Watch_Face = new WATCH_FACE();
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face.ScreenNormal == null) Watch_Face.ScreenNormal = new ScreenNormal();
+                if (Watch_Face.ScreenNormal.Elements == null) Watch_Face.ScreenNormal.Elements = new List<object>();
+                Elements = Watch_Face.ScreenNormal.Elements;
+            }
+            else
+            {
+                if (Watch_Face.ScreenAOD == null) Watch_Face.ScreenAOD = new ScreenAOD();
+                if (Watch_Face.ScreenAOD.Elements == null) Watch_Face.ScreenAOD.Elements = new List<object>();
+                Elements = Watch_Face.ScreenAOD.Elements;
+
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
+            }
+
+            ElementPAI pai = new ElementPAI();
+            pai.visible = true;
+            //digitalTime.position = Elements.Count;
+            bool exists = Elements.Exists(e => e.GetType().Name == "ElementPAI"); // проверяем что такого элемента нет
+            //if (!exists) Elements.Add(dateDay);
+            if (!exists) Elements.Insert(0, pai);
+            uCtrl_PAI_Elm.SettingsClear();
+        }
+
         /// <summary>Отображаем элемынты в соответствии с json файлом</summary>
         private void ShowElemetsWatchFace()
         {
@@ -2750,6 +2837,10 @@ namespace Watch_Face_Editor
             uCtrl_Shortcuts_Elm.Visible = false;
             uCtrl_Statuses_Elm.Visible = false;
             uCtrl_Steps_Elm.Visible = false;
+            uCtrl_Battery_Elm.Visible = false;
+            uCtrl_Calories_Elm.Visible = false;
+            uCtrl_Heart_Elm.Visible = false;
+            uCtrl_PAI_Elm.Visible = false;
 
 
             int count = tableLayoutPanel_ElemetsWatchFace.RowCount;
@@ -3116,6 +3207,212 @@ namespace Watch_Face_Editor
                             SetElementPositionInGUI(type, count - i - 2);
                             //SetElementPositionInGUI(type, i + 1);
                             break;
+                        #endregion
+
+                        #region ElementBattery
+                        case "ElementBattery":
+                            ElementBattery Battery = (ElementBattery)element;
+                            uCtrl_Battery_Elm.SetVisibilityElementStatus(Battery.visible);
+                            elementOptions = new Dictionary<int, string>();
+                            if (Battery.Images != null)
+                            {
+                                uCtrl_Battery_Elm.checkBox_Images.Checked = Battery.Images.visible;
+                                elementOptions.Add(Battery.Images.position, "Images");
+                            }
+                            if (Battery.Segments != null)
+                            {
+                                uCtrl_Battery_Elm.checkBox_Segments.Checked = Battery.Segments.visible;
+                                elementOptions.Add(Battery.Segments.position, "Segments");
+                            }
+                            if (Battery.Number != null)
+                            {
+                                uCtrl_Battery_Elm.checkBox_Number.Checked = Battery.Number.visible;
+                                elementOptions.Add(Battery.Number.position, "Number");
+                            }
+                            if (Battery.Pointer != null)
+                            {
+                                uCtrl_Battery_Elm.checkBox_Pointer.Checked = Battery.Pointer.visible;
+                                elementOptions.Add(Battery.Pointer.position, "Pointer");
+                            }
+                            if (Battery.Circle_Scale != null)
+                            {
+                                uCtrl_Battery_Elm.checkBox_Circle_Scale.Checked = Battery.Circle_Scale.visible;
+                                elementOptions.Add(Battery.Circle_Scale.position, "Circle_Scale");
+                            }
+                            if (Battery.Linear_Scale != null)
+                            {
+                                uCtrl_Battery_Elm.checkBox_Linear_Scale.Checked = Battery.Linear_Scale.visible;
+                                elementOptions.Add(Battery.Linear_Scale.position, "Linear_Scale");
+                            }
+                            if (Battery.Icon != null)
+                            {
+                                uCtrl_Battery_Elm.checkBox_Icon.Checked = Battery.Icon.visible;
+                                elementOptions.Add(Battery.Icon.position, "Icon");
+                            }
+
+                            uCtrl_Battery_Elm.SetOptionsPosition(elementOptions);
+
+                            uCtrl_Battery_Elm.Visible = true;
+                            SetElementPositionInGUI(type, count - i - 2);
+                            //SetElementPositionInGUI(type, i + 1);
+                            break;
+                        #endregion
+
+                        #region ElementCalories
+                        case "ElementCalories":
+                            ElementCalories Calories = (ElementCalories)element;
+                            uCtrl_Calories_Elm.SetVisibilityElementStatus(Calories.visible);
+                            elementOptions = new Dictionary<int, string>();
+                            if (Calories.Images != null)
+                            {
+                                uCtrl_Calories_Elm.checkBox_Images.Checked = Calories.Images.visible;
+                                elementOptions.Add(Calories.Images.position, "Images");
+                            }
+                            if (Calories.Segments != null)
+                            {
+                                uCtrl_Calories_Elm.checkBox_Segments.Checked = Calories.Segments.visible;
+                                elementOptions.Add(Calories.Segments.position, "Segments");
+                            }
+                            if (Calories.Number != null)
+                            {
+                                uCtrl_Calories_Elm.checkBox_Number.Checked = Calories.Number.visible;
+                                elementOptions.Add(Calories.Number.position, "Number");
+                            }
+                            if (Calories.Number_Target != null)
+                            {
+                                uCtrl_Calories_Elm.checkBox_Number_Target.Checked = Calories.Number_Target.visible;
+                                elementOptions.Add(Calories.Number_Target.position, "Number_Target");
+                            }
+                            if (Calories.Pointer != null)
+                            {
+                                uCtrl_Calories_Elm.checkBox_Pointer.Checked = Calories.Pointer.visible;
+                                elementOptions.Add(Calories.Pointer.position, "Pointer");
+                            }
+                            if (Calories.Circle_Scale != null)
+                            {
+                                uCtrl_Calories_Elm.checkBox_Circle_Scale.Checked = Calories.Circle_Scale.visible;
+                                elementOptions.Add(Calories.Circle_Scale.position, "Circle_Scale");
+                            }
+                            if (Calories.Linear_Scale != null)
+                            {
+                                uCtrl_Calories_Elm.checkBox_Linear_Scale.Checked = Calories.Linear_Scale.visible;
+                                elementOptions.Add(Calories.Linear_Scale.position, "Linear_Scale");
+                            }
+                            if (Calories.Icon != null)
+                            {
+                                uCtrl_Calories_Elm.checkBox_Icon.Checked = Calories.Icon.visible;
+                                elementOptions.Add(Calories.Icon.position, "Icon");
+                            }
+
+                            uCtrl_Calories_Elm.SetOptionsPosition(elementOptions);
+
+                            uCtrl_Calories_Elm.Visible = true;
+                            SetElementPositionInGUI(type, count - i - 2);
+                            //SetElementPositionInGUI(type, i + 1);
+                            break;
+                        #endregion
+
+                        #region ElementHeart
+                        case "ElementHeart":
+                            ElementHeart Heart = (ElementHeart)element;
+                            uCtrl_Heart_Elm.SetVisibilityElementStatus(Heart.visible);
+                            elementOptions = new Dictionary<int, string>();
+                            if (Heart.Images != null)
+                            {
+                                uCtrl_Heart_Elm.checkBox_Images.Checked = Heart.Images.visible;
+                                elementOptions.Add(Heart.Images.position, "Images");
+                            }
+                            if (Heart.Segments != null)
+                            {
+                                uCtrl_Heart_Elm.checkBox_Segments.Checked = Heart.Segments.visible;
+                                elementOptions.Add(Heart.Segments.position, "Segments");
+                            }
+                            if (Heart.Number != null)
+                            {
+                                uCtrl_Heart_Elm.checkBox_Number.Checked = Heart.Number.visible;
+                                elementOptions.Add(Heart.Number.position, "Number");
+                            }
+                            if (Heart.Pointer != null)
+                            {
+                                uCtrl_Heart_Elm.checkBox_Pointer.Checked = Heart.Pointer.visible;
+                                elementOptions.Add(Heart.Pointer.position, "Pointer");
+                            }
+                            if (Heart.Circle_Scale != null)
+                            {
+                                uCtrl_Heart_Elm.checkBox_Circle_Scale.Checked = Heart.Circle_Scale.visible;
+                                elementOptions.Add(Heart.Circle_Scale.position, "Circle_Scale");
+                            }
+                            if (Heart.Linear_Scale != null)
+                            {
+                                uCtrl_Heart_Elm.checkBox_Linear_Scale.Checked = Heart.Linear_Scale.visible;
+                                elementOptions.Add(Heart.Linear_Scale.position, "Linear_Scale");
+                            }
+                            if (Heart.Icon != null)
+                            {
+                                uCtrl_Heart_Elm.checkBox_Icon.Checked = Heart.Icon.visible;
+                                elementOptions.Add(Heart.Icon.position, "Icon");
+                            }
+
+                            uCtrl_Heart_Elm.SetOptionsPosition(elementOptions);
+
+                            uCtrl_Heart_Elm.Visible = true;
+                            SetElementPositionInGUI(type, count - i - 2);
+                            //SetElementPositionInGUI(type, i + 1);
+                            break;
+                        #endregion
+
+                        #region ElementPAI
+                        case "ElementPAI":
+                            ElementPAI PAI = (ElementPAI)element;
+                            uCtrl_PAI_Elm.SetVisibilityElementStatus(PAI.visible);
+                            elementOptions = new Dictionary<int, string>();
+                            if (PAI.Images != null)
+                            {
+                                uCtrl_PAI_Elm.checkBox_Images.Checked = PAI.Images.visible;
+                                elementOptions.Add(PAI.Images.position, "Images");
+                            }
+                            if (PAI.Segments != null)
+                            {
+                                uCtrl_PAI_Elm.checkBox_Segments.Checked = PAI.Segments.visible;
+                                elementOptions.Add(PAI.Segments.position, "Segments");
+                            }
+                            if (PAI.Number != null)
+                            {
+                                uCtrl_PAI_Elm.checkBox_Number.Checked = PAI.Number.visible;
+                                elementOptions.Add(PAI.Number.position, "Number");
+                            }
+                            if (PAI.Number_Target != null)
+                            {
+                                uCtrl_PAI_Elm.checkBox_Number_Target.Checked = PAI.Number_Target.visible;
+                                elementOptions.Add(PAI.Number_Target.position, "Number_Target");
+                            }
+                            if (PAI.Pointer != null)
+                            {
+                                uCtrl_PAI_Elm.checkBox_Pointer.Checked = PAI.Pointer.visible;
+                                elementOptions.Add(PAI.Pointer.position, "Pointer");
+                            }
+                            if (PAI.Circle_Scale != null)
+                            {
+                                uCtrl_PAI_Elm.checkBox_Circle_Scale.Checked = PAI.Circle_Scale.visible;
+                                elementOptions.Add(PAI.Circle_Scale.position, "Circle_Scale");
+                            }
+                            if (PAI.Linear_Scale != null)
+                            {
+                                uCtrl_PAI_Elm.checkBox_Linear_Scale.Checked = PAI.Linear_Scale.visible;
+                                elementOptions.Add(PAI.Linear_Scale.position, "Linear_Scale");
+                            }
+                            if (PAI.Icon != null)
+                            {
+                                uCtrl_PAI_Elm.checkBox_Icon.Checked = PAI.Icon.visible;
+                                elementOptions.Add(PAI.Icon.position, "Icon");
+                            }
+
+                            uCtrl_PAI_Elm.SetOptionsPosition(elementOptions);
+
+                            uCtrl_PAI_Elm.Visible = true;
+                            SetElementPositionInGUI(type, count - i - 2);
+                            //SetElementPositionInGUI(type, i + 1);
+                            break;
                             #endregion
                     }
                 }
@@ -3156,6 +3453,18 @@ namespace Watch_Face_Editor
                     break;
                 case "ElementSteps":
                     panel = panel_UC_Steps;
+                    break;
+                case "ElementBattery":
+                    panel = panel_UC_Battery;
+                    break;
+                case "ElementCalories":
+                    panel = panel_UC_Calories;
+                    break;
+                case "ElementHeart":
+                    panel = panel_UC_Heart;
+                    break;
+                case "ElementPAI":
+                    panel = panel_UC_PAI;
                     break;
             }
             if (panel == null) return;
@@ -3532,6 +3841,18 @@ namespace Watch_Face_Editor
                     break;
                 case "UCtrl_Steps_Elm":
                     objectName = "ElementSteps";
+                    break;
+                case "UCtrl_Battery_Elm":
+                    objectName = "ElementBattery";
+                    break;
+                case "UCtrl_Calories_Elm":
+                    objectName = "ElementCalories";
+                    break;
+                case "UCtrl_Heart_Elm":
+                    objectName = "ElementHeart";
+                    break;
+                case "UCtrl_PAI_Elm":
+                    objectName = "ElementPAI";
                     break;
             }
             if (objectName.Length > 0)
@@ -6101,6 +6422,7 @@ namespace Watch_Face_Editor
             }
         }
 
+        #region SelectChanged
         private void uCtrl_Steps_Elm_SelectChanged(object sender, EventArgs eventArgs)
         {
             string selectElement = uCtrl_Steps_Elm.selectedElement;
@@ -6213,6 +6535,442 @@ namespace Watch_Face_Editor
 
             }
         }
+
+        private void uCtrl_Battery_Elm_SelectChanged(object sender, EventArgs eventArgs)
+        {
+            string selectElement = uCtrl_Battery_Elm.selectedElement;
+            if (selectElement.Length == 0) HideAllElemenrOptions();
+            ResetHighlightState("Battery");
+
+            ElementBattery battery = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    //bool exists = Elements.Exists(e => e.GetType().Name == "ElementDigitalTime");
+                    battery = (ElementBattery)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementBattery");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    battery = (ElementBattery)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementBattery");
+                }
+            }
+            if (battery != null)
+            {
+                hmUI_widget_IMG_LEVEL img_level = null;
+                hmUI_widget_IMG_PROGRESS img_prorgess = null;
+                hmUI_widget_IMG_NUMBER img_number = null;
+                hmUI_widget_IMG_POINTER img_pointer = null;
+                Circle_Scale circle_scale = null;
+                Linear_Scale linear_scale = null;
+                hmUI_widget_IMG icon = null;
+
+                switch (selectElement)
+                {
+                    case "Images":
+                        if (uCtrl_Battery_Elm.checkBox_Images.Checked)
+                        {
+                            img_level = battery.Images;
+                            Read_ImgLevel_Options(img_level, 10, true);
+                            ShowElemenrOptions("Images");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Segments":
+                        if (uCtrl_Battery_Elm.checkBox_Segments.Checked)
+                        {
+                            img_prorgess = battery.Segments;
+                            Read_ImgProrgess_Options(img_prorgess, 10, false);
+                            ShowElemenrOptions("Segments");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number":
+                        if (uCtrl_Battery_Elm.checkBox_Number.Checked)
+                        {
+                            img_number = battery.Number;
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                            ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Pointer":
+                        if (uCtrl_Battery_Elm.checkBox_Pointer.Checked)
+                        {
+                            img_pointer = battery.Pointer;
+                            Read_ImgPointer_Options(img_pointer, true);
+                            ShowElemenrOptions("Pointer");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Circle_Scale":
+                        if (uCtrl_Battery_Elm.checkBox_Circle_Scale.Checked)
+                        {
+                            circle_scale = battery.Circle_Scale;
+                            Read_CircleScale_Options(circle_scale);
+                            ShowElemenrOptions("Circle_Scale");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Linear_Scale":
+                        if (uCtrl_Battery_Elm.checkBox_Linear_Scale.Checked)
+                        {
+                            linear_scale = battery.Linear_Scale;
+                            Read_LinearScale_Options(linear_scale);
+                            ShowElemenrOptions("Linear_Scale");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Icon":
+                        if (uCtrl_Battery_Elm.checkBox_Icon.Checked)
+                        {
+                            icon = battery.Icon;
+                            Read_Icon_Options(icon);
+                            ShowElemenrOptions("Icon");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                }
+
+            }
+        }
+
+        private void uCtrl_Heart_Elm_SelectChanged(object sender, EventArgs eventArgs)
+        {
+            string selectElement = uCtrl_Heart_Elm.selectedElement;
+            if (selectElement.Length == 0) HideAllElemenrOptions();
+            ResetHighlightState("Heart");
+
+            ElementHeart heart = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    //bool exists = Elements.Exists(e => e.GetType().Name == "ElementDigitalTime");
+                    heart = (ElementHeart)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementHeart");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    heart = (ElementHeart)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementHeart");
+                }
+            }
+            if (heart != null)
+            {
+                hmUI_widget_IMG_LEVEL img_level = null;
+                hmUI_widget_IMG_PROGRESS img_prorgess = null;
+                hmUI_widget_IMG_NUMBER img_number = null;
+                hmUI_widget_IMG_POINTER img_pointer = null;
+                Circle_Scale circle_scale = null;
+                Linear_Scale linear_scale = null;
+                hmUI_widget_IMG icon = null;
+
+                switch (selectElement)
+                {
+                    case "Images":
+                        if (uCtrl_Heart_Elm.checkBox_Images.Checked)
+                        {
+                            img_level = heart.Images;
+                            Read_ImgLevel_Options(img_level, 6, false);
+                            ShowElemenrOptions("Images");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Segments":
+                        if (uCtrl_Heart_Elm.checkBox_Segments.Checked)
+                        {
+                            img_prorgess = heart.Segments;
+                            Read_ImgProrgess_Options(img_prorgess, 6, true);
+                            ShowElemenrOptions("Segments");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number":
+                        if (uCtrl_Heart_Elm.checkBox_Number.Checked)
+                        {
+                            img_number = heart.Number;
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                            ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Pointer":
+                        if (uCtrl_Heart_Elm.checkBox_Pointer.Checked)
+                        {
+                            img_pointer = heart.Pointer;
+                            Read_ImgPointer_Options(img_pointer, true);
+                            ShowElemenrOptions("Pointer");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Circle_Scale":
+                        if (uCtrl_Heart_Elm.checkBox_Circle_Scale.Checked)
+                        {
+                            circle_scale = heart.Circle_Scale;
+                            Read_CircleScale_Options(circle_scale);
+                            ShowElemenrOptions("Circle_Scale");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Linear_Scale":
+                        if (uCtrl_Heart_Elm.checkBox_Linear_Scale.Checked)
+                        {
+                            linear_scale = heart.Linear_Scale;
+                            Read_LinearScale_Options(linear_scale);
+                            ShowElemenrOptions("Linear_Scale");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Icon":
+                        if (uCtrl_Heart_Elm.checkBox_Icon.Checked)
+                        {
+                            icon = heart.Icon;
+                            Read_Icon_Options(icon);
+                            ShowElemenrOptions("Icon");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                }
+
+            }
+        }
+
+        private void uCtrl_Calories_Elm_SelectChanged(object sender, EventArgs eventArgs)
+        {
+            string selectElement = uCtrl_Calories_Elm.selectedElement;
+            if (selectElement.Length == 0) HideAllElemenrOptions();
+            ResetHighlightState("Calories");
+
+            ElementCalories calories = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    //bool exists = Elements.Exists(e => e.GetType().Name == "ElementDigitalTime");
+                    calories = (ElementCalories)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementCalories");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    calories = (ElementCalories)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementCalories");
+                }
+            }
+            if (calories != null)
+            {
+                hmUI_widget_IMG_LEVEL img_level = null;
+                hmUI_widget_IMG_PROGRESS img_prorgess = null;
+                hmUI_widget_IMG_NUMBER img_number = null;
+                hmUI_widget_IMG_POINTER img_pointer = null;
+                Circle_Scale circle_scale = null;
+                Linear_Scale linear_scale = null;
+                hmUI_widget_IMG icon = null;
+
+                switch (selectElement)
+                {
+                    case "Images":
+                        if (uCtrl_Calories_Elm.checkBox_Images.Checked)
+                        {
+                            img_level = calories.Images;
+                            Read_ImgLevel_Options(img_level, 10, true);
+                            ShowElemenrOptions("Images");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Segments":
+                        if (uCtrl_Calories_Elm.checkBox_Segments.Checked)
+                        {
+                            img_prorgess = calories.Segments;
+                            Read_ImgProrgess_Options(img_prorgess, 10, false);
+                            ShowElemenrOptions("Segments");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number":
+                        if (uCtrl_Calories_Elm.checkBox_Number.Checked)
+                        {
+                            img_number = calories.Number;
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                            ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number_Target":
+                        if (uCtrl_Calories_Elm.checkBox_Number_Target.Checked)
+                        {
+                            img_number = calories.Number_Target;
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                            ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Pointer":
+                        if (uCtrl_Calories_Elm.checkBox_Pointer.Checked)
+                        {
+                            img_pointer = calories.Pointer;
+                            Read_ImgPointer_Options(img_pointer, true);
+                            ShowElemenrOptions("Pointer");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Circle_Scale":
+                        if (uCtrl_Calories_Elm.checkBox_Circle_Scale.Checked)
+                        {
+                            circle_scale = calories.Circle_Scale;
+                            Read_CircleScale_Options(circle_scale);
+                            ShowElemenrOptions("Circle_Scale");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Linear_Scale":
+                        if (uCtrl_Calories_Elm.checkBox_Linear_Scale.Checked)
+                        {
+                            linear_scale = calories.Linear_Scale;
+                            Read_LinearScale_Options(linear_scale);
+                            ShowElemenrOptions("Linear_Scale");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Icon":
+                        if (uCtrl_Calories_Elm.checkBox_Icon.Checked)
+                        {
+                            icon = calories.Icon;
+                            Read_Icon_Options(icon);
+                            ShowElemenrOptions("Icon");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                }
+
+            }
+        }
+
+        private void uCtrl_PAI_Elm_SelectChanged(object sender, EventArgs eventArgs)
+        {
+            string selectElement = uCtrl_PAI_Elm.selectedElement;
+            if (selectElement.Length == 0) HideAllElemenrOptions();
+            ResetHighlightState("PAI");
+
+            ElementPAI pai = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    //bool exists = Elements.Exists(e => e.GetType().Name == "ElementDigitalTime");
+                    pai = (ElementPAI)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementPAI");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    pai = (ElementPAI)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementPAI");
+                }
+            }
+            if (pai != null)
+            {
+                hmUI_widget_IMG_LEVEL img_level = null;
+                hmUI_widget_IMG_PROGRESS img_prorgess = null;
+                hmUI_widget_IMG_NUMBER img_number = null;
+                hmUI_widget_IMG_POINTER img_pointer = null;
+                Circle_Scale circle_scale = null;
+                Linear_Scale linear_scale = null;
+                hmUI_widget_IMG icon = null;
+
+                switch (selectElement)
+                {
+                    case "Images":
+                        if (uCtrl_PAI_Elm.checkBox_Images.Checked)
+                        {
+                            img_level = pai.Images;
+                            Read_ImgLevel_Options(img_level, 10, true);
+                            ShowElemenrOptions("Images");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Segments":
+                        if (uCtrl_PAI_Elm.checkBox_Segments.Checked)
+                        {
+                            img_prorgess = pai.Segments;
+                            Read_ImgProrgess_Options(img_prorgess, 10, false);
+                            ShowElemenrOptions("Segments");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number":
+                        if (uCtrl_PAI_Elm.checkBox_Number.Checked)
+                        {
+                            img_number = pai.Number;
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                            ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number_Target":
+                        if (uCtrl_PAI_Elm.checkBox_Number_Target.Checked)
+                        {
+                            img_number = pai.Number_Target;
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                            ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Pointer":
+                        if (uCtrl_PAI_Elm.checkBox_Pointer.Checked)
+                        {
+                            img_pointer = pai.Pointer;
+                            Read_ImgPointer_Options(img_pointer, true);
+                            ShowElemenrOptions("Pointer");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Circle_Scale":
+                        if (uCtrl_PAI_Elm.checkBox_Circle_Scale.Checked)
+                        {
+                            circle_scale = pai.Circle_Scale;
+                            Read_CircleScale_Options(circle_scale);
+                            ShowElemenrOptions("Circle_Scale");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Linear_Scale":
+                        if (uCtrl_PAI_Elm.checkBox_Linear_Scale.Checked)
+                        {
+                            linear_scale = pai.Linear_Scale;
+                            Read_LinearScale_Options(linear_scale);
+                            ShowElemenrOptions("Linear_Scale");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Icon":
+                        if (uCtrl_PAI_Elm.checkBox_Icon.Checked)
+                        {
+                            icon = pai.Icon;
+                            Read_Icon_Options(icon);
+                            ShowElemenrOptions("Icon");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                }
+
+            }
+        }
+
+        #endregion
 
         private void uCtrl_DateDay_Elm_VisibleOptionsChanged(object sender, EventArgs eventArgs)
         {
@@ -6610,6 +7368,34 @@ namespace Watch_Face_Editor
                             ElementSteps stepElement = (ElementSteps)element;
                             Watch_Face.ScreenAOD.Elements.Add((ElementSteps)stepElement.Clone());
                             break;
+                        #endregion
+
+                        #region ElementBattery
+                        case "ElementBattery":
+                            ElementBattery batteryElement = (ElementBattery)element;
+                            Watch_Face.ScreenAOD.Elements.Add((ElementBattery)batteryElement.Clone());
+                            break;
+                        #endregion
+
+                        #region ElementCalories
+                        case "ElementCalories":
+                            ElementCalories caloriesElement = (ElementCalories)element;
+                            Watch_Face.ScreenAOD.Elements.Add((ElementCalories)caloriesElement.Clone());
+                            break;
+                        #endregion
+
+                        #region ElementHeart
+                        case "ElementHeart":
+                            ElementHeart heartElement = (ElementHeart)element;
+                            Watch_Face.ScreenAOD.Elements.Add((ElementHeart)heartElement.Clone());
+                            break;
+                        #endregion
+
+                        #region ElementPAI
+                        case "ElementPAI":
+                            ElementPAI paiElement = (ElementPAI)element;
+                            Watch_Face.ScreenAOD.Elements.Add((ElementPAI)paiElement.Clone());
+                            break;
                             #endregion
                     }
                 }
@@ -6734,6 +7520,7 @@ namespace Watch_Face_Editor
             FormText();
         }
 
+        #region OptionsMoved
         private void uCtrl_Steps_Elm_OptionsMoved(object sender, EventArgs eventArgs, Dictionary<string, int> elementOptions)
         {
             if (!PreviewView) return;
@@ -6789,6 +7576,228 @@ namespace Watch_Face_Editor
             PreviewImage();
             FormText();
         }
+
+        private void uCtrl_Battery_Elm_OptionsMoved(object sender, EventArgs eventArgs, Dictionary<string, int> elementOptions)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementBattery battery = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementBattery");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementDateWeek());
+                    battery = (ElementBattery)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementBattery");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementBattery");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementDateWeek());
+                    battery = (ElementBattery)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementBattery");
+                }
+            }
+
+            if (battery != null)
+            {
+                if (battery.Images == null) battery.Images = new hmUI_widget_IMG_LEVEL();
+                if (battery.Segments == null) battery.Segments = new hmUI_widget_IMG_PROGRESS();
+                if (battery.Number == null) battery.Number = new hmUI_widget_IMG_NUMBER();
+                if (battery.Pointer == null) battery.Pointer = new hmUI_widget_IMG_POINTER();
+                if (battery.Circle_Scale == null) battery.Circle_Scale = new Circle_Scale();
+                if (battery.Linear_Scale == null) battery.Linear_Scale = new Linear_Scale();
+                if (battery.Icon == null) battery.Icon = new hmUI_widget_IMG();
+
+                if (elementOptions.ContainsKey("Images")) battery.Images.position = elementOptions["Images"];
+                if (elementOptions.ContainsKey("Segments")) battery.Segments.position = elementOptions["Segments"];
+                if (elementOptions.ContainsKey("Number")) battery.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Pointer")) battery.Pointer.position = elementOptions["Pointer"];
+                if (elementOptions.ContainsKey("Circle_Scale")) battery.Circle_Scale.position = elementOptions["Circle_Scale"];
+                if (elementOptions.ContainsKey("Linear_Scale")) battery.Linear_Scale.position = elementOptions["Linear_Scale"];
+                if (elementOptions.ContainsKey("Icon")) battery.Icon.position = elementOptions["Icon"];
+
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Heart_Elm_OptionsMoved(object sender, EventArgs eventArgs, Dictionary<string, int> elementOptions)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementHeart heart = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementHeart");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementDateWeek());
+                    heart = (ElementHeart)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementHeart");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementHeart");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementDateWeek());
+                    heart = (ElementHeart)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementHeart");
+                }
+            }
+
+            if (heart != null)
+            {
+                if (heart.Images == null) heart.Images = new hmUI_widget_IMG_LEVEL();
+                if (heart.Segments == null) heart.Segments = new hmUI_widget_IMG_PROGRESS();
+                if (heart.Number == null) heart.Number = new hmUI_widget_IMG_NUMBER();
+                if (heart.Pointer == null) heart.Pointer = new hmUI_widget_IMG_POINTER();
+                if (heart.Circle_Scale == null) heart.Circle_Scale = new Circle_Scale();
+                if (heart.Linear_Scale == null) heart.Linear_Scale = new Linear_Scale();
+                if (heart.Icon == null) heart.Icon = new hmUI_widget_IMG();
+
+                if (elementOptions.ContainsKey("Images")) heart.Images.position = elementOptions["Images"];
+                if (elementOptions.ContainsKey("Segments")) heart.Segments.position = elementOptions["Segments"];
+                if (elementOptions.ContainsKey("Number")) heart.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Pointer")) heart.Pointer.position = elementOptions["Pointer"];
+                if (elementOptions.ContainsKey("Circle_Scale")) heart.Circle_Scale.position = elementOptions["Circle_Scale"];
+                if (elementOptions.ContainsKey("Linear_Scale")) heart.Linear_Scale.position = elementOptions["Linear_Scale"];
+                if (elementOptions.ContainsKey("Icon")) heart.Icon.position = elementOptions["Icon"];
+
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Calories_Elm_OptionsMoved(object sender, EventArgs eventArgs, Dictionary<string, int> elementOptions)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementCalories calories = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementCalories");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementDateWeek());
+                    calories = (ElementCalories)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementCalories");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementCalories");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementDateWeek());
+                    calories = (ElementCalories)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementCalories");
+                }
+            }
+
+            if (calories != null)
+            {
+                if (calories.Images == null) calories.Images = new hmUI_widget_IMG_LEVEL();
+                if (calories.Segments == null) calories.Segments = new hmUI_widget_IMG_PROGRESS();
+                if (calories.Number == null) calories.Number = new hmUI_widget_IMG_NUMBER();
+                if (calories.Number_Target == null) calories.Number_Target = new hmUI_widget_IMG_NUMBER();
+                if (calories.Pointer == null) calories.Pointer = new hmUI_widget_IMG_POINTER();
+                if (calories.Circle_Scale == null) calories.Circle_Scale = new Circle_Scale();
+                if (calories.Linear_Scale == null) calories.Linear_Scale = new Linear_Scale();
+                if (calories.Icon == null) calories.Icon = new hmUI_widget_IMG();
+
+                if (elementOptions.ContainsKey("Images")) calories.Images.position = elementOptions["Images"];
+                if (elementOptions.ContainsKey("Segments")) calories.Segments.position = elementOptions["Segments"];
+                if (elementOptions.ContainsKey("Number")) calories.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Target")) calories.Number_Target.position = elementOptions["Number_Target"];
+                if (elementOptions.ContainsKey("Pointer")) calories.Pointer.position = elementOptions["Pointer"];
+                if (elementOptions.ContainsKey("Circle_Scale")) calories.Circle_Scale.position = elementOptions["Circle_Scale"];
+                if (elementOptions.ContainsKey("Linear_Scale")) calories.Linear_Scale.position = elementOptions["Linear_Scale"];
+                if (elementOptions.ContainsKey("Icon")) calories.Icon.position = elementOptions["Icon"];
+
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_PAI_Elm_OptionsMoved(object sender, EventArgs eventArgs, Dictionary<string, int> elementOptions)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementPAI pai = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementPAI");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementDateWeek());
+                    pai = (ElementPAI)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementPAI");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementPAI");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementDateWeek());
+                    pai = (ElementPAI)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementPAI");
+                }
+            }
+
+            if (pai != null)
+            {
+                if (pai.Images == null) pai.Images = new hmUI_widget_IMG_LEVEL();
+                if (pai.Segments == null) pai.Segments = new hmUI_widget_IMG_PROGRESS();
+                if (pai.Number == null) pai.Number = new hmUI_widget_IMG_NUMBER();
+                if (pai.Number_Target == null) pai.Number_Target = new hmUI_widget_IMG_NUMBER();
+                if (pai.Pointer == null) pai.Pointer = new hmUI_widget_IMG_POINTER();
+                if (pai.Circle_Scale == null) pai.Circle_Scale = new Circle_Scale();
+                if (pai.Linear_Scale == null) pai.Linear_Scale = new Linear_Scale();
+                if (pai.Icon == null) pai.Icon = new hmUI_widget_IMG();
+
+                if (elementOptions.ContainsKey("Images")) pai.Images.position = elementOptions["Images"];
+                if (elementOptions.ContainsKey("Segments")) pai.Segments.position = elementOptions["Segments"];
+                if (elementOptions.ContainsKey("Number")) pai.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Target")) pai.Number_Target.position = elementOptions["Number_Target"];
+                if (elementOptions.ContainsKey("Pointer")) pai.Pointer.position = elementOptions["Pointer"];
+                if (elementOptions.ContainsKey("Circle_Scale")) pai.Circle_Scale.position = elementOptions["Circle_Scale"];
+                if (elementOptions.ContainsKey("Linear_Scale")) pai.Linear_Scale.position = elementOptions["Linear_Scale"];
+                if (elementOptions.ContainsKey("Icon")) pai.Icon.position = elementOptions["Icon"];
+
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        #endregion
 
         private void uCtrl_Shortcuts_Elm_VisibleElementChanged(object sender, EventArgs eventArgs, bool visible)
         {
@@ -6850,6 +7859,8 @@ namespace Watch_Face_Editor
             FormText();
         }
 
+        #region VisibleElementChanged
+
         private void uCtrl_Steps_Elm_VisibleElementChanged(object sender, EventArgs eventArgs, bool visible)
         {
             ElementSteps steps = null;
@@ -6879,6 +7890,128 @@ namespace Watch_Face_Editor
             PreviewImage();
             FormText();
         }
+
+        private void uCtrl_Battery_Elm_VisibleElementChanged(object sender, EventArgs eventArgs, bool visible)
+        {
+            ElementBattery battery = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    //bool exists = Elements.Exists(e => e.GetType().Name == "ElementAnalogTime");
+                    battery = (ElementBattery)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementBattery");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    battery = (ElementBattery)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementBattery");
+                }
+            }
+            if (battery != null)
+            {
+                battery.visible = visible;
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Heart_Elm_VisibleElementChanged(object sender, EventArgs eventArgs, bool visible)
+        {
+            ElementHeart heart = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    //bool exists = Elements.Exists(e => e.GetType().Name == "ElementAnalogTime");
+                    heart = (ElementHeart)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementHeart");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    heart = (ElementHeart)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementHeart");
+                }
+            }
+            if (heart != null)
+            {
+                heart.visible = visible;
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Calories_Elm_VisibleElementChanged(object sender, EventArgs eventArgs, bool visible)
+        {
+            ElementCalories calories = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    //bool exists = Elements.Exists(e => e.GetType().Name == "ElementAnalogTime");
+                    calories = (ElementCalories)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementCalories");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    calories = (ElementCalories)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementCalories");
+                }
+            }
+            if (calories != null)
+            {
+                calories.visible = visible;
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_PAI_Elm_VisibleElementChanged(object sender, EventArgs eventArgs, bool visible)
+        {
+            ElementPAI pai = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    //bool exists = Elements.Exists(e => e.GetType().Name == "ElementAnalogTime");
+                    pai = (ElementPAI)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementPAI");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    pai = (ElementPAI)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementPAI");
+                }
+            }
+            if (pai != null)
+            {
+                pai.visible = visible;
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        #endregion
 
         private void uCtrl_Shortcuts_Elm_VisibleOptionsChanged(object sender, EventArgs eventArgs)
         {
@@ -7058,6 +8191,7 @@ namespace Watch_Face_Editor
             FormText();
         }
 
+        #region VisibleOptionsChanged
         private void uCtrl_Steps_Elm_VisibleOptionsChanged(object sender, EventArgs eventArgs)
         {
             if (!PreviewView) return;
@@ -7146,6 +8280,354 @@ namespace Watch_Face_Editor
             PreviewImage();
             FormText();
         }
+
+        private void uCtrl_Battery_Elm_VisibleOptionsChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementBattery battery = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementBattery");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementBattery());
+                    battery = (ElementBattery)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementBattery");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementBattery");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementBattery());
+                    battery = (ElementBattery)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementBattery");
+                }
+            }
+
+            if (battery != null)
+            {
+                if (battery.Images == null) battery.Images = new hmUI_widget_IMG_LEVEL();
+                if (battery.Segments == null) battery.Segments = new hmUI_widget_IMG_PROGRESS();
+                if (battery.Number == null) battery.Number = new hmUI_widget_IMG_NUMBER();
+                if (battery.Pointer == null) battery.Pointer = new hmUI_widget_IMG_POINTER();
+                if (battery.Circle_Scale == null) battery.Circle_Scale = new Circle_Scale();
+                if (battery.Linear_Scale == null) battery.Linear_Scale = new Linear_Scale();
+                if (battery.Icon == null) battery.Icon = new hmUI_widget_IMG();
+
+                Dictionary<string, int> elementOptions = uCtrl_Battery_Elm.GetOptionsPosition();
+                if (elementOptions.ContainsKey("Images")) battery.Images.position = elementOptions["Images"];
+                if (elementOptions.ContainsKey("Segments")) battery.Segments.position = elementOptions["Segments"];
+                if (elementOptions.ContainsKey("Number")) battery.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Pointer")) battery.Pointer.position = elementOptions["Pointer"];
+                if (elementOptions.ContainsKey("Circle_Scale")) battery.Circle_Scale.position = elementOptions["Circle_Scale"];
+                if (elementOptions.ContainsKey("Linear_Scale")) battery.Linear_Scale.position = elementOptions["Linear_Scale"];
+                if (elementOptions.ContainsKey("Icon")) battery.Icon.position = elementOptions["Icon"];
+
+                CheckBox checkBox = (CheckBox)sender;
+                string name = checkBox.Name;
+                switch (name)
+                {
+                    case "checkBox_Images":
+                        battery.Images.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Segments":
+                        battery.Segments.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number":
+                        battery.Number.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Pointer":
+                        battery.Pointer.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Circle_Scale":
+                        battery.Circle_Scale.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Linear_Scale":
+                        battery.Linear_Scale.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Icon":
+                        battery.Icon.visible = checkBox.Checked;
+                        break;
+                }
+
+            }
+
+            uCtrl_Battery_Elm_SelectChanged(sender, eventArgs);
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Heart_Elm_VisibleOptionsChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementHeart heart = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementHeart");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementHeart());
+                    heart = (ElementHeart)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementHeart");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementHeart");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementHeart());
+                    heart = (ElementHeart)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementHeart");
+                }
+            }
+
+            if (heart != null)
+            {
+                if (heart.Images == null) heart.Images = new hmUI_widget_IMG_LEVEL();
+                if (heart.Segments == null) heart.Segments = new hmUI_widget_IMG_PROGRESS();
+                if (heart.Number == null) heart.Number = new hmUI_widget_IMG_NUMBER();
+                if (heart.Pointer == null) heart.Pointer = new hmUI_widget_IMG_POINTER();
+                if (heart.Circle_Scale == null) heart.Circle_Scale = new Circle_Scale();
+                if (heart.Linear_Scale == null) heart.Linear_Scale = new Linear_Scale();
+                if (heart.Icon == null) heart.Icon = new hmUI_widget_IMG();
+
+                Dictionary<string, int> elementOptions = uCtrl_Heart_Elm.GetOptionsPosition();
+                if (elementOptions.ContainsKey("Images")) heart.Images.position = elementOptions["Images"];
+                if (elementOptions.ContainsKey("Segments")) heart.Segments.position = elementOptions["Segments"];
+                if (elementOptions.ContainsKey("Number")) heart.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Pointer")) heart.Pointer.position = elementOptions["Pointer"];
+                if (elementOptions.ContainsKey("Circle_Scale")) heart.Circle_Scale.position = elementOptions["Circle_Scale"];
+                if (elementOptions.ContainsKey("Linear_Scale")) heart.Linear_Scale.position = elementOptions["Linear_Scale"];
+                if (elementOptions.ContainsKey("Icon")) heart.Icon.position = elementOptions["Icon"];
+
+                CheckBox checkBox = (CheckBox)sender;
+                string name = checkBox.Name;
+                switch (name)
+                {
+                    case "checkBox_Images":
+                        heart.Images.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Segments":
+                        heart.Segments.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number":
+                        heart.Number.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Pointer":
+                        heart.Pointer.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Circle_Scale":
+                        heart.Circle_Scale.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Linear_Scale":
+                        heart.Linear_Scale.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Icon":
+                        heart.Icon.visible = checkBox.Checked;
+                        break;
+                }
+
+            }
+
+            uCtrl_Heart_Elm_SelectChanged(sender, eventArgs);
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Calories_Elm_VisibleOptionsChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementCalories calories = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementCalories");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementCalories());
+                    calories = (ElementCalories)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementCalories");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementCalories");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementCalories());
+                    calories = (ElementCalories)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementCalories");
+                }
+            }
+
+            if (calories != null)
+            {
+                if (calories.Images == null) calories.Images = new hmUI_widget_IMG_LEVEL();
+                if (calories.Segments == null) calories.Segments = new hmUI_widget_IMG_PROGRESS();
+                if (calories.Number == null) calories.Number = new hmUI_widget_IMG_NUMBER();
+                if (calories.Number_Target == null) calories.Number_Target = new hmUI_widget_IMG_NUMBER();
+                if (calories.Pointer == null) calories.Pointer = new hmUI_widget_IMG_POINTER();
+                if (calories.Circle_Scale == null) calories.Circle_Scale = new Circle_Scale();
+                if (calories.Linear_Scale == null) calories.Linear_Scale = new Linear_Scale();
+                if (calories.Icon == null) calories.Icon = new hmUI_widget_IMG();
+
+                Dictionary<string, int> elementOptions = uCtrl_Calories_Elm.GetOptionsPosition();
+                if (elementOptions.ContainsKey("Images")) calories.Images.position = elementOptions["Images"];
+                if (elementOptions.ContainsKey("Segments")) calories.Segments.position = elementOptions["Segments"];
+                if (elementOptions.ContainsKey("Number")) calories.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Target")) calories.Number_Target.position = elementOptions["Number_Target"];
+                if (elementOptions.ContainsKey("Pointer")) calories.Pointer.position = elementOptions["Pointer"];
+                if (elementOptions.ContainsKey("Circle_Scale")) calories.Circle_Scale.position = elementOptions["Circle_Scale"];
+                if (elementOptions.ContainsKey("Linear_Scale")) calories.Linear_Scale.position = elementOptions["Linear_Scale"];
+                if (elementOptions.ContainsKey("Icon")) calories.Icon.position = elementOptions["Icon"];
+
+                CheckBox checkBox = (CheckBox)sender;
+                string name = checkBox.Name;
+                switch (name)
+                {
+                    case "checkBox_Images":
+                        calories.Images.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Segments":
+                        calories.Segments.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number":
+                        calories.Number.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Target":
+                        calories.Number_Target.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Pointer":
+                        calories.Pointer.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Circle_Scale":
+                        calories.Circle_Scale.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Linear_Scale":
+                        calories.Linear_Scale.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Icon":
+                        calories.Icon.visible = checkBox.Checked;
+                        break;
+                }
+
+            }
+
+            uCtrl_Calories_Elm_SelectChanged(sender, eventArgs);
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_PAI_Elm_VisibleOptionsChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementPAI pai = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementPAI");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementPAI());
+                    pai = (ElementPAI)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementPAI");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementPAI");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementPAI());
+                    pai = (ElementPAI)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementPAI");
+                }
+            }
+
+            if (pai != null)
+            {
+                if (pai.Images == null) pai.Images = new hmUI_widget_IMG_LEVEL();
+                if (pai.Segments == null) pai.Segments = new hmUI_widget_IMG_PROGRESS();
+                if (pai.Number == null) pai.Number = new hmUI_widget_IMG_NUMBER();
+                if (pai.Number_Target == null) pai.Number_Target = new hmUI_widget_IMG_NUMBER();
+                if (pai.Pointer == null) pai.Pointer = new hmUI_widget_IMG_POINTER();
+                if (pai.Circle_Scale == null) pai.Circle_Scale = new Circle_Scale();
+                if (pai.Linear_Scale == null) pai.Linear_Scale = new Linear_Scale();
+                if (pai.Icon == null) pai.Icon = new hmUI_widget_IMG();
+
+                Dictionary<string, int> elementOptions = uCtrl_PAI_Elm.GetOptionsPosition();
+                if (elementOptions.ContainsKey("Images")) pai.Images.position = elementOptions["Images"];
+                if (elementOptions.ContainsKey("Segments")) pai.Segments.position = elementOptions["Segments"];
+                if (elementOptions.ContainsKey("Number")) pai.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Target")) pai.Number_Target.position = elementOptions["Number_Target"];
+                if (elementOptions.ContainsKey("Pointer")) pai.Pointer.position = elementOptions["Pointer"];
+                if (elementOptions.ContainsKey("Circle_Scale")) pai.Circle_Scale.position = elementOptions["Circle_Scale"];
+                if (elementOptions.ContainsKey("Linear_Scale")) pai.Linear_Scale.position = elementOptions["Linear_Scale"];
+                if (elementOptions.ContainsKey("Icon")) pai.Icon.position = elementOptions["Icon"];
+
+                CheckBox checkBox = (CheckBox)sender;
+                string name = checkBox.Name;
+                switch (name)
+                {
+                    case "checkBox_Images":
+                        pai.Images.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Segments":
+                        pai.Segments.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number":
+                        pai.Number.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Target":
+                        pai.Number_Target.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Pointer":
+                        pai.Pointer.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Circle_Scale":
+                        pai.Circle_Scale.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Linear_Scale":
+                        pai.Linear_Scale.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Icon":
+                        pai.Icon.visible = checkBox.Checked;
+                        break;
+                }
+
+            }
+
+            uCtrl_PAI_Elm_SelectChanged(sender, eventArgs);
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        #endregion
 
         private void button_SavePNG_Click(object sender, EventArgs e)
         {
@@ -7617,7 +9099,10 @@ namespace Watch_Face_Editor
             }
         }
 
-        
+        private void linkLabel_py_amazfit_tools_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/SashaCX75/ImageToGTR3/releases/tag/v1.1");
+        }
     }
 }
 

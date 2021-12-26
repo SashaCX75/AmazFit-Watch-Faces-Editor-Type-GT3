@@ -270,7 +270,9 @@ namespace ControlLibrary
         {
             setValue = true;
 
-            comboBox_image.Text = null;
+        imagesCount = -1; // предварительно заданное количество изображений
+        fixedRowsCount = false;
+        comboBox_image.Text = null;
 
             dataGridView_coordinates_set.Rows.Clear();
 
@@ -678,6 +680,11 @@ namespace ControlLibrary
                     dataGridView_coordinates_set.Rows.Add(null, null);
                 }
             }
+        }
+
+        public void UpdateTable()
+        {
+            UCtrl_Segments_Opt_Load(null, null);
         }
     }
 }

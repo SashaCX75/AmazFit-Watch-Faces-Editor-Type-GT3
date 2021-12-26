@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace ControlLibrary
 {
-    public partial class UCtrl_Steps_Elm : UserControl
+    public partial class UCtrl_Calories_Elm : UserControl
     {
         private bool setValue; // режим задания параметров
         bool highlight_images = false;
@@ -30,7 +30,7 @@ namespace ControlLibrary
 
         Point cursorPos = new Point(0, 0);
 
-        public UCtrl_Steps_Elm()
+        public UCtrl_Calories_Elm()
         {
             InitializeComponent();
             setValue = false;
@@ -431,22 +431,6 @@ namespace ControlLibrary
             //((Control)sender).Tag = null;
         }
 
-        private void tableLayoutPanel1_DragDrop(object sender, DragEventArgs e)
-        {
-            int cursorX = Cursor.Position.X;
-            int cursorY = Cursor.Position.Y;
-            int dX = Math.Abs(cursorX - cursorPos.X);
-            int dY = Math.Abs(cursorY - cursorPos.Y);
-            if (dX > 5 || dY > 5)
-            {
-                if (OptionsMoved != null)
-                {
-                    EventArgs eventArgs = new EventArgs();
-                    OptionsMoved(this, eventArgs, GetOptionsPosition());
-                }
-            }
-        }
-
         private void tableLayoutPanel1_DragOver(object sender, DragEventArgs e)
         {
             if (!e.Data.GetDataPresent(typeof(Button)) && !e.Data.GetDataPresent(typeof(Panel)))
@@ -490,6 +474,22 @@ namespace ControlLibrary
                     }
                 }
                 draggedPanel.Tag = null;
+            }
+        }
+
+        private void tableLayoutPanel1_DragDrop(object sender, DragEventArgs e)
+        {
+            int cursorX = Cursor.Position.X;
+            int cursorY = Cursor.Position.Y;
+            int dX = Math.Abs(cursorX - cursorPos.X);
+            int dY = Math.Abs(cursorY - cursorPos.Y);
+            if (dX > 5 || dY > 5)
+            {
+                if (OptionsMoved != null)
+                {
+                    EventArgs eventArgs = new EventArgs();
+                    OptionsMoved(this, eventArgs, GetOptionsPosition());
+                }
             }
         }
 

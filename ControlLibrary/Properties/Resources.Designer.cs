@@ -113,9 +113,29 @@ namespace ControlLibrary.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap battery {
+            get {
+                object obj = ResourceManager.GetObject("battery", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap calendar_month_18 {
             get {
                 object obj = ResourceManager.GetObject("calendar_month_18", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap calories {
+            get {
+                object obj = ResourceManager.GetObject("calories", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -166,6 +186,16 @@ namespace ControlLibrary.Properties {
         internal static System.Drawing.Bitmap Files_Copy_File_icon {
             get {
                 object obj = ResourceManager.GetObject("Files_Copy_File_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap heart {
+            get {
+                object obj = ResourceManager.GetObject("heart", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -246,6 +276,16 @@ namespace ControlLibrary.Properties {
         internal static System.Drawing.Bitmap outline_visibility_off_black_24 {
             get {
                 object obj = ResourceManager.GetObject("outline_visibility_off_black_24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pai {
+            get {
+                object obj = ResourceManager.GetObject("pai", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
