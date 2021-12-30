@@ -140,7 +140,7 @@ namespace Watch_Face_Editor
                     iconPosX = this.Second.iconPosX,
                     iconPosY = this.Second.iconPosY,
                     negative_image = this.Second.negative_image,
-                    dot_path = this.Second.dot_path,
+                    dot_image = this.Second.dot_image,
                     follow = this.Second.follow,
 
                     position = this.Second.position,
@@ -167,7 +167,7 @@ namespace Watch_Face_Editor
                     iconPosX = this.Minute.iconPosX,
                     iconPosY = this.Minute.iconPosY,
                     negative_image = this.Minute.negative_image,
-                    dot_path = this.Minute.dot_path,
+                    dot_image = this.Minute.dot_image,
                     follow = this.Minute.follow,
 
                     position = this.Minute.position,
@@ -194,7 +194,7 @@ namespace Watch_Face_Editor
                     iconPosX = this.Hour.iconPosX,
                     iconPosY = this.Hour.iconPosY,
                     negative_image = this.Hour.negative_image,
-                    dot_path = this.Hour.dot_path,
+                    dot_image = this.Hour.dot_image,
                     follow = this.Hour.follow,
 
                     position = this.Hour.position,
@@ -397,7 +397,7 @@ namespace Watch_Face_Editor
                     iconPosX = this.Number.iconPosX,
                     iconPosY = this.Number.iconPosY,
                     negative_image = this.Number.negative_image,
-                    dot_path = this.Number.dot_path,
+                    dot_image = this.Number.dot_image,
                     follow = this.Number.follow,
 
                     position = this.Number.position,
@@ -476,7 +476,7 @@ namespace Watch_Face_Editor
                     iconPosX = this.Number.iconPosX,
                     iconPosY = this.Number.iconPosY,
                     negative_image = this.Number.negative_image,
-                    dot_path = this.Number.dot_path,
+                    dot_image = this.Number.dot_image,
                     follow = this.Number.follow,
 
                     position = this.Number.position,
@@ -545,7 +545,7 @@ namespace Watch_Face_Editor
                     iconPosX = this.Number.iconPosX,
                     iconPosY = this.Number.iconPosY,
                     negative_image = this.Number.negative_image,
-                    dot_path = this.Number.dot_path,
+                    dot_image = this.Number.dot_image,
                     follow = this.Number.follow,
 
                     position = this.Number.position,
@@ -1077,7 +1077,7 @@ namespace Watch_Face_Editor
                     iconPosX = this.Number.iconPosX,
                     iconPosY = this.Number.iconPosY,
                     negative_image = this.Number.negative_image,
-                    dot_path = this.Number.dot_path,
+                    dot_image = this.Number.dot_image,
                     follow = this.Number.follow,
 
                     position = this.Number.position,
@@ -1104,7 +1104,7 @@ namespace Watch_Face_Editor
                     iconPosX = this.Number_Target.iconPosX,
                     iconPosY = this.Number_Target.iconPosY,
                     negative_image = this.Number_Target.negative_image,
-                    dot_path = this.Number_Target.dot_path,
+                    dot_image = this.Number_Target.dot_image,
                     follow = this.Number_Target.follow,
 
                     position = this.Number_Target.position,
@@ -1290,7 +1290,7 @@ namespace Watch_Face_Editor
                     iconPosX = this.Number.iconPosX,
                     iconPosY = this.Number.iconPosY,
                     negative_image = this.Number.negative_image,
-                    dot_path = this.Number.dot_path,
+                    dot_image = this.Number.dot_image,
                     follow = this.Number.follow,
 
                     position = this.Number.position,
@@ -1476,7 +1476,7 @@ namespace Watch_Face_Editor
                     iconPosX = this.Number.iconPosX,
                     iconPosY = this.Number.iconPosY,
                     negative_image = this.Number.negative_image,
-                    dot_path = this.Number.dot_path,
+                    dot_image = this.Number.dot_image,
                     follow = this.Number.follow,
 
                     position = this.Number.position,
@@ -1503,7 +1503,7 @@ namespace Watch_Face_Editor
                     iconPosX = this.Number_Target.iconPosX,
                     iconPosY = this.Number_Target.iconPosY,
                     negative_image = this.Number_Target.negative_image,
-                    dot_path = this.Number_Target.dot_path,
+                    dot_image = this.Number_Target.dot_image,
                     follow = this.Number_Target.follow,
 
                     position = this.Number_Target.position,
@@ -1689,7 +1689,7 @@ namespace Watch_Face_Editor
                     iconPosX = this.Number.iconPosX,
                     iconPosY = this.Number.iconPosY,
                     negative_image = this.Number.negative_image,
-                    dot_path = this.Number.dot_path,
+                    dot_image = this.Number.dot_image,
                     follow = this.Number.follow,
 
                     position = this.Number.position,
@@ -1875,7 +1875,7 @@ namespace Watch_Face_Editor
                     iconPosX = this.Number.iconPosX,
                     iconPosY = this.Number.iconPosY,
                     negative_image = this.Number.negative_image,
-                    dot_path = this.Number.dot_path,
+                    dot_image = this.Number.dot_image,
                     follow = this.Number.follow,
 
                     position = this.Number.position,
@@ -1902,7 +1902,7 @@ namespace Watch_Face_Editor
                     iconPosX = this.Number_Target.iconPosX,
                     iconPosY = this.Number_Target.iconPosY,
                     negative_image = this.Number_Target.negative_image,
-                    dot_path = this.Number_Target.dot_path,
+                    dot_image = this.Number_Target.dot_image,
                     follow = this.Number_Target.follow,
 
                     position = this.Number_Target.position,
@@ -2012,6 +2012,57 @@ namespace Watch_Face_Editor
                 Circle_Scale = Circle_Scale,
                 Linear_Scale = Linear_Scale,
                 Icon = Icon,
+            };
+        }
+    }
+
+    public class ElementDistance : ICloneable
+    {
+        public string elementName = "ElementDistance";
+
+        ///// <summary>Позиция в наборе элементов</summary>
+        //public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = true;
+
+        public hmUI_widget_IMG_NUMBER Number { get; set; }
+
+        public object Clone()
+        {
+            hmUI_widget_IMG_NUMBER Number = null;
+            if (this.Number != null)
+            {
+                Number = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Number.imageX,
+                    imageY = this.Number.imageY,
+                    space = this.Number.space,
+                    zero = this.Number.zero,
+                    align = this.Number.align,
+                    img_First = this.Number.img_First,
+                    unit = this.Number.unit,
+                    imperial_unit = this.Number.imperial_unit,
+                    icon = this.Number.icon,
+                    iconPosX = this.Number.iconPosX,
+                    iconPosY = this.Number.iconPosY,
+                    negative_image = this.Number.negative_image,
+                    dot_image = this.Number.dot_image,
+                    follow = this.Number.follow,
+
+                    position = this.Number.position,
+                    visible = this.Number.visible,
+                    show_level = this.Number.show_level,
+                    type = this.Number.type,
+                };
+            }
+
+            return new ElementDistance
+            {
+                elementName = this.elementName,
+                visible = this.visible,
+
+                Number = Number,
             };
         }
     }

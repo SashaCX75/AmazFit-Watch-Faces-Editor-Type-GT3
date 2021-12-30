@@ -177,6 +177,10 @@ namespace Watch_Face_Editor
                     Scale_Linear_Scale(elementPAI.Linear_Scale, scale);
                     Scale_IMG(elementPAI.Icon, scale);
                     break;
+                case "ElementDistance":
+                    ElementDistance elementDistance = (ElementDistance)elements;
+                    Scale_IMG_NUMBER(elementDistance.Number, scale);
+                    break;
             }
         }
 

@@ -19,10 +19,65 @@ namespace ControlLibrary
         private List<string> ListImagesFullName = new List<string>(); // перечень путей к файлам с картинками
         public Object _ElementWithPointer;
 
+        private bool Time_mode = false;
+        private int posUp;
+        private int posDown;
+
+        private int offsetUp;
+        private int offsetDown;
+
         public UCtrl_Pointer_Opt()
         {
             InitializeComponent();
             setValue = false;
+
+            posUp = numericUpDown_pointer_startAngle.Location.Y;
+            posDown = comboBox_pointer_imageCentr.Location.Y;
+
+            offsetUp = label08.Location.Y - posDown;
+            offsetDown = label12.Location.Y - posDown;
+        }
+
+        /// <summary>Отображение начального и конечного угла </summary>
+        [Description("Отображение поля изображения при ошибке")]
+        public virtual bool TimeMode
+        {
+            get
+            {
+                return Time_mode;
+            }
+            set
+            {
+                Time_mode = value;
+                numericUpDown_pointer_startAngle.Visible = !Time_mode;
+                numericUpDown_pointer_endAngle.Visible = !Time_mode;
+
+                label10.Visible = !Time_mode;
+                label11.Visible = !Time_mode;
+
+                if (Time_mode)
+                {
+                    comboBox_pointer_imageCentr.Location = new Point(comboBox_pointer_imageCentr.Location.X, posUp);
+                    numericUpDown_pointer_centr_X.Location = new Point(numericUpDown_pointer_centr_X.Location.X, posUp);
+                    numericUpDown_pointer_centr_Y.Location = new Point(numericUpDown_pointer_centr_Y.Location.X, posUp);
+
+                    label08.Location = new Point(label08.Location.X, posUp + offsetUp);
+                    label09.Location = new Point(label09.Location.X, posUp + offsetUp);
+                    label12.Location = new Point(label12.Location.X, posUp + offsetDown);
+                    label13.Location = new Point(label13.Location.X, posUp + offsetDown);
+                }
+                else
+                {
+                    comboBox_pointer_imageCentr.Location = new Point(comboBox_pointer_imageCentr.Location.X, posDown);
+                    numericUpDown_pointer_centr_X.Location = new Point(numericUpDown_pointer_centr_X.Location.X, posDown);
+                    numericUpDown_pointer_centr_Y.Location = new Point(numericUpDown_pointer_centr_Y.Location.X, posDown);
+
+                    label08.Location = new Point(label08.Location.X, posDown + offsetUp);
+                    label09.Location = new Point(label09.Location.X, posDown + offsetUp);
+                    label12.Location = new Point(label12.Location.X, posDown + offsetDown);
+                    label13.Location = new Point(label13.Location.X, posDown + offsetDown);
+                }
+            }
         }
 
 
@@ -225,6 +280,7 @@ namespace ControlLibrary
             comboBox_pointer_image.Text = null;
             comboBox_pointer_imageCentr.Text = null;
             comboBox_pointer_imageBackground.Text = null;
+            this.TimeMode = false;
 
             numericUpDown_pointer_X.Value = 0;
             numericUpDown_pointer_Y.Value = 0;

@@ -24,9 +24,11 @@ namespace ControlLibrary
         //private Point location_unit;
         private Point location_unit_miles;
         private Point location_imageDecimalPoint;
+        private Point location_imageError;
         //private Point location_unit_label;
         private Point location_unit_miles_label;
         private Point location_imageDecimalPoint_label;
+        private Point location_imageError_label;
         private String unit_label_text;
 
         private List<string> ListImagesFullName = new List<string>(); // перечень путей к файлам с картинками
@@ -42,9 +44,11 @@ namespace ControlLibrary
             //location_unit = comboBox_unit.Location;
             location_unit_miles = comboBox_unit_miles.Location;
             location_imageDecimalPoint = comboBox_imageDecimalPoint.Location;
+            location_imageError = comboBox_imageError.Location;
             //location_unit_label = label08.Location; // km
             location_unit_miles_label = label10.Location; // ml
             location_imageDecimalPoint_label = label07.Location; // десятичный разделитель
+            location_imageError_label = label06.Location; // изображение при ошибке
             unit_label_text = label08.Text;
         }
 
@@ -235,7 +239,7 @@ namespace ControlLibrary
                 comboBox_imageDecimalPoint.Visible = OptionalSymbol_mode;
                 label07.Visible = OptionalSymbol_mode; 
                 
-                int offsetPositionX = label03.Location.X - numericUpDown_spacing.Location.X;
+                /*int offsetPositionX = label03.Location.X - numericUpDown_spacing.Location.X;
                 if (!Distance_mode && !OptionalSymbol_mode)
                 {
                     Point location = numericUpDown_spacing.Location;
@@ -255,7 +259,7 @@ namespace ControlLibrary
                     location = label03.Location;
                     location.X = numericUpDown_iconY.Location.X + offsetPositionX;
                     label03.Location = location;
-                }
+                }*/
             }
         }
 
@@ -285,41 +289,38 @@ namespace ControlLibrary
             set
             {
                 Distance_mode = value;
-                comboBox_unit_miles.Visible = Distance_mode;
-                label10.Visible = Distance_mode;
+                //comboBox_unit_miles.Visible = Distance_mode;
+                //label10.Visible = Distance_mode;
                 if (Distance_mode)
                 {
-                    //comboBox_imageDecimalPoint.Location = location_unit;
+                    //comboBox_imageDecimalPoint.Location = location_unit_miles;
                     //comboBox_unit_miles.Location = location_imageDecimalPoint;
-                    //comboBox_unit.Location = location_unit_miles;
-                    //label07.Location = location_unit_label;
+                    //label07.Location = location_unit_miles_label;
                     //label10.Location = location_imageDecimalPoint_label;
-                    //label08.Location = location_unit_miles_label;
 
-                    comboBox_imageDecimalPoint.Location = location_unit_miles;
-                    comboBox_unit_miles.Location = location_imageDecimalPoint;
-                    label07.Location = location_unit_miles_label;
-                    label10.Location = location_imageDecimalPoint_label;
+                    comboBox_imageDecimalPoint.Location = location_imageError;
+                    comboBox_imageError.Location = location_imageDecimalPoint;
+                    label07.Location = location_imageError_label;
+                    label06.Location = location_imageDecimalPoint_label;
 
                     label08.Text = unit_label_text + " (km)";
-                    //label08.TextAlign = ContentAlignment.BottomCenter;
-                    //label07.TextAlign = ContentAlignment.BottomLeft;
                 }
                 else
                 {
+                    //comboBox_imageDecimalPoint.Location = location_imageDecimalPoint;
+                    //comboBox_unit_miles.Location = location_unit_miles;
+                    //label07.Location = location_imageDecimalPoint_label;
+                    //label10.Location = location_unit_miles_label;
+
                     comboBox_imageDecimalPoint.Location = location_imageDecimalPoint;
-                    comboBox_unit_miles.Location = location_unit_miles;
-                    //comboBox_unit.Location = location_unit;
+                    comboBox_imageError.Location = location_imageError;
                     label07.Location = location_imageDecimalPoint_label;
-                    label10.Location = location_unit_miles_label;
-                    //label08.Location = location_unit_label;
+                    label06.Location = location_imageError_label;
 
                     label08.Text = unit_label_text;
-                    //label08.TextAlign = ContentAlignment.BottomLeft;
-                    //label07.TextAlign = ContentAlignment.BottomCenter;
                 }
 
-                int offsetPositionX = label03.Location.X - numericUpDown_spacing.Location.X;
+                /*int offsetPositionX = label03.Location.X - numericUpDown_spacing.Location.X;
                 if (!Distance_mode && !OptionalSymbol_mode)
                 {
                     Point location = numericUpDown_spacing.Location;
@@ -339,7 +340,7 @@ namespace ControlLibrary
                     location = label03.Location;
                     location.X = numericUpDown_iconY.Location.X + offsetPositionX;
                     label03.Location = location;
-                }
+                }*/
             }
         }
 

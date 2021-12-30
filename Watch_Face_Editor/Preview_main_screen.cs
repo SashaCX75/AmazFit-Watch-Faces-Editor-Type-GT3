@@ -1062,6 +1062,50 @@ namespace Watch_Face_Editor
 
 
                             break;
+                        #endregion
+
+                        #region ElementDistance
+                        case "ElementDistance":
+                            ElementDistance activityElementDistance = (ElementDistance)element;
+                            if (!activityElementDistance.visible) continue;
+                            if (activityElementDistance.Number == null || 
+                                activityElementDistance.Number.img_First == null || 
+                                activityElementDistance.Number.img_First.Length == 0) continue;
+
+                            img_number = activityElementDistance.Number;
+
+                            elementValue = WatchFacePreviewSet.Activity.Distance;
+                            double distance_value = elementValue / 1000f;
+                            value_lenght = 4;
+                            int image_Index = ListImages.IndexOf(img_number.img_First);
+                            int pos_x = img_number.imageX;
+                            int pos_y = img_number.imageY;
+                            int distance_spasing = img_number.space;
+                            int distance_alignment = AlignmentToInt(img_number.align);
+                            bool distance_addZero = img_number.zero;
+                            int distance_separator_index = -1;
+                            if (img_number.unit != null && img_number.unit.Length > 0)
+                                distance_separator_index = ListImages.IndexOf(img_number.unit);
+                            int decumalPoint_index = -1;
+                            if (img_number.dot_image != null && img_number.dot_image.Length > 0)
+                                decumalPoint_index = ListImages.IndexOf(img_number.dot_image);
+
+                            Draw_dagital_text_dacumal(gPanel, image_Index, pos_x, pos_y,
+                        distance_spasing, distance_alignment, distance_value, distance_addZero, value_lenght, distance_separator_index,
+                        decumalPoint_index, 2, BBorder);
+
+                            if (img_number.icon != null && img_number.icon.Length > 0)
+                            {
+                                image_Index = ListImages.IndexOf(img_number.icon);
+                                pos_x = img_number.iconPosX;
+                                pos_y = img_number.iconPosY;
+
+                                src = OpenFileStream(ListImagesFullName[image_Index]);
+                                gPanel.DrawImage(src, pos_x, pos_y);
+                                //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                            }
+
+                            break;
                             #endregion
 
                     }
@@ -1754,7 +1798,7 @@ namespace Watch_Face_Editor
         /// <param name="decimalPoint_index">Символ десятичного разделителя</param>
         /// <param name="decCount">Число знаков после запятой</param>
         /// <param name="BBorder">Рисовать рамку по координатам, вокруг элементов с выравниванием</param>
-        private int Draw_dagital_text(Graphics graphics, int image_index, int x, int y, int spacing,
+        private int Draw_dagital_text_dacumal(Graphics graphics, int image_index, int x, int y, int spacing,
             int alignment, double value, bool addZero, int value_lenght, int separator_index,
             int decimalPoint_index, int decCount, bool BBorder)
         {
@@ -1781,13 +1825,13 @@ namespace Watch_Face_Editor
                     data_numberS = data_numberS + "0";
                 }
             }
-            if (addZero)
-            {
-                while (data_numberS.Length <= value_lenght)
-                {
-                    data_numberS = "0" + data_numberS;
-                }
-            }
+            //if (addZero)
+            //{
+            //    while (data_numberS.Length <= value_lenght)
+            //    {
+            //        data_numberS = "0" + data_numberS;
+            //    }
+            //}
             int DateLenghtReal = 0;
             int _number;
             int i;

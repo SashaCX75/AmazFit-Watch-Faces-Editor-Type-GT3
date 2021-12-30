@@ -94,7 +94,7 @@ namespace Watch_Face_Editor
         public string negative_image { get; set; }
 
         /// <summary>Десятичный разделитель</summary>
-        public string dot_path { get; set; }
+        public string dot_image { get; set; }
 
         ///// <summary>Следовать за часами. 0-не следовать; 1-следовать</summary>
         /// <summary>Следовать за предшественником</summary>
@@ -213,7 +213,7 @@ namespace Watch_Face_Editor
         public int start_angle { get; set; }
 
         /// <summary>Конечный угол</summary>
-        public int end_angle = 360;
+        public int end_angle { get; set; } = 360;
 
         /// <summary>Центральное изображение</summary>
         public string cover_path { get; set; }
@@ -291,13 +291,13 @@ namespace Watch_Face_Editor
         public int end_angle = 180;
 
         /// <summary>Цвет</summary>
-        public string color { get; set; }
+        public string color { get; set; } = "0xFFFF8C00";
 
         /// <summary>Радиус</summary>
-        public int radius = 100;
+        public int radius { get; set; } = 100;
 
         /// <summary>Толщина линии</summary>
-        public int line_width = 5;
+        public int line_width { get; set; } = 5;
 
         /// <summary>Тип активности</summary>
         public string type { get; set; }
@@ -328,16 +328,16 @@ namespace Watch_Face_Editor
         public int start_y { get; set; }
 
         /// <summary>Цвет</summary>
-        public string color { get; set; }
+        public string color { get; set; } = "0xFFFF8C00";
 
         /// <summary>Указатель на шкале</summary>
         public string pointer { get; set; }
 
         /// <summary>Длина шкалы</summary>
-        public int lenght = 100;
+        public int lenght { get; set; } = 100;
 
         /// <summary>Толщина линии</summary>
-        public int line_width = 5;
+        public int line_width { get; set; } = 5;
 
         /// <summary>Тип активности</summary>
         public string type { get; set; }
@@ -390,10 +390,10 @@ namespace Watch_Face_Editor
         public int y { get; set; }
 
         /// <summary>Ширина</summary>
-        public int w = 100;
+        public int w { get; set; } = 100;
 
         /// <summary>Высота</summary>
-        public int h = 100;
+        public int h { get; set; } = 100;
 
         /// <summary>Изображение</summary>
         public string src { get; set; }

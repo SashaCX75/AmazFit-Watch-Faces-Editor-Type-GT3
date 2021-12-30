@@ -106,12 +106,14 @@ namespace Watch_Face_Editor
                 items += Environment.NewLine + TabInString(6) + "});";
             }
 
-            if (items.IndexOf("let screenType = hmSetting.getScreenType();") > 0)
+            int firstPos = items.IndexOf("let screenType = hmSetting.getScreenType();");
+            int lastPos = items.LastIndexOf("let screenType = hmSetting.getScreenType();");
+            while (firstPos > 0 && firstPos < lastPos)
             {
-                int firstPos = items.IndexOf("let screenType = hmSetting.getScreenType();");
-                int lastPos = items.LastIndexOf("let screenType = hmSetting.getScreenType();");
                 int lenghtRemove = "let screenType = hmSetting.getScreenType();".Length;
-                if (firstPos < lastPos) items = items.Remove(lastPos, lenghtRemove);
+                items = items.Remove(lastPos, lenghtRemove);
+                firstPos = items.IndexOf("let screenType = hmSetting.getScreenType();");
+                lastPos = items.LastIndexOf("let screenType = hmSetting.getScreenType();");
             }
         }
 
@@ -389,7 +391,7 @@ namespace Watch_Face_Editor
                     {
                         pointerPositionDay = DateDay.Pointer.position;
                         hmUI_widget_IMG_POINTER img_pointer = DateDay.Pointer;
-                        optionsPointerDay = IMG_POINTER_Options(img_pointer, "DAY", show_level);
+                        optionsPointerDay = DATE_POINTER_Options(img_pointer, "DAY", show_level);
                     }
                     if (DateDay.Number != null && DateDay.Number.visible)
                     {
@@ -447,7 +449,7 @@ namespace Watch_Face_Editor
                     {
                         pointerPositionMonth = DateMonth.Pointer.position;
                         hmUI_widget_IMG_POINTER img_pointer = DateMonth.Pointer;
-                        optionsPointerMonth = IMG_POINTER_Options(img_pointer, "MONTH", show_level);
+                        optionsPointerMonth = DATE_POINTER_Options(img_pointer, "MONTH", show_level);
                     }
                     if (DateMonth.Number != null && DateMonth.Number.visible)
                     {
@@ -551,7 +553,7 @@ namespace Watch_Face_Editor
                     {
                         pointerPositionWeek = DateWeek.Pointer.position;
                         hmUI_widget_IMG_POINTER img_pointer = DateWeek.Pointer;
-                        optionsPointerWeek = IMG_POINTER_Options(img_pointer, "WEEK", show_level);
+                        optionsPointerWeek = DATE_POINTER_Options(img_pointer, "WEEK", show_level);
                     }
                     if (DateWeek.Images != null && DateWeek.Images.visible)
                     {
@@ -2334,6 +2336,41 @@ namespace Watch_Face_Editor
 
                     }
                     break;
+                #endregion
+
+                #region ElementDistance
+                case "ElementDistance":
+                    ElementDistance Distance = (ElementDistance)element;
+
+                    if (!Distance.visible) return;
+                    if (Distance.Number != null)
+                    {
+                        numberPosition = Distance.Number.position;
+                        hmUI_widget_IMG_NUMBER img_number = Distance.Number;
+                        numberOptions = IMG_NUMBER_Options(img_number, "DISTANCE", show_level);
+
+                        numberOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+
+                    // Number
+                    if ( numberOptions.Length > 5)
+                    {
+                        variables += TabInString(4) + "let " + optionNameStart +
+                            "distance_text_text_img = ''" + Environment.NewLine;
+                        items += Environment.NewLine + TabInString(6) +
+                            optionNameStart + "distance_text_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                numberOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                        if (numberOptions_separator.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "distance_text_separator_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "distance_text_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                        }
+                    }
+                    break;
                     #endregion
             }
         }
@@ -2420,6 +2457,19 @@ namespace Watch_Face_Editor
                     options += TabInString(7) + "unit_tc: " + unit + "," + Environment.NewLine;
                     options += TabInString(7) + "unit_en: " + unit + "," + Environment.NewLine;
                 }
+
+                if (img_number.negative_image != null && img_number.negative_image.Length > 0)
+                {
+                    string negative_image = "'" + img_number.negative_image + ".png'";
+                    options += TabInString(7) + "dot_image: " + negative_image + "," + Environment.NewLine;
+                }
+
+                if (img_number.dot_image != null && img_number.dot_image.Length > 0)
+                {
+                    string dot_path = "'" + img_number.dot_image + ".png'";
+                    options += TabInString(7) + "dot_image: " + dot_path + "," + Environment.NewLine;
+                }
+
                 options += TabInString(7) + "align_h: hmUI.align." + img_number.align.ToUpper() + "," + Environment.NewLine;
 
 
@@ -2679,6 +2729,56 @@ namespace Watch_Face_Editor
                 {
                     options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
                 } 
+            }
+            return options;
+        }
+
+        private string DATE_POINTER_Options(hmUI_widget_IMG_POINTER img_pointer, string type, string show_level)
+        {
+            string options = Environment.NewLine;
+            if (img_pointer == null) return options;
+            if (img_pointer.src != null && img_pointer.src.Length > 0)
+            {
+                options += TabInString(7) + "src: '" + img_pointer.src + ".png'," + Environment.NewLine;
+                options += TabInString(7) + "center_x: " + img_pointer.center_x.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "center_y: " + img_pointer.center_y.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "posX: " + img_pointer.pos_x.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "posY: " + img_pointer.pos_y.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "start_angle: " + img_pointer.start_angle.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "end_angle: " + img_pointer.end_angle.ToString() + "," + Environment.NewLine;
+
+                if (img_pointer.scale != null && img_pointer.scale.Length > 0)
+                {
+                    options += TabInString(7) + "scale_sc: '" + img_pointer.scale + ".png'," + Environment.NewLine;
+                    options += TabInString(7) + "scale_tc: '" + img_pointer.scale + ".png'," + Environment.NewLine;
+                    options += TabInString(7) + "scale_en: '" + img_pointer.scale + ".png'," + Environment.NewLine;
+                    options += TabInString(7) + "scale_x: " + img_pointer.scale_x.ToString() + "," + Environment.NewLine;
+                    options += TabInString(7) + "scale_y: " + img_pointer.scale_y.ToString() + "," + Environment.NewLine;
+                }
+
+                if (img_pointer.cover_path != null && img_pointer.cover_path.Length > 0)
+                {
+                    options += TabInString(7) + "cover_path: '" + img_pointer.cover_path + ".png'," + Environment.NewLine;
+                    options += TabInString(7) + "cover_x: " + img_pointer.cover_x.ToString() + "," + Environment.NewLine;
+                    options += TabInString(7) + "cover_y: " + img_pointer.cover_y.ToString() + "," + Environment.NewLine;
+                }
+                //else
+                //{
+                //    options += TabInString(7) + "cover_path: ''," + Environment.NewLine;
+                //    options += TabInString(7) + "cover_x: 0," + Environment.NewLine;
+                //    options += TabInString(7) + "cover_y: 0," + Environment.NewLine;
+                //}
+
+                if (type.Length > 0)
+                {
+                    options += TabInString(7) + "type: hmUI.date." + type + "," + Environment.NewLine;
+                }
+
+                //options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+                if (show_level.Length > 0)
+                {
+                    options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+                }
             }
             return options;
         }
@@ -3125,7 +3225,7 @@ namespace Watch_Face_Editor
         private string Circle_Scale_WidgetDelegate_Options(Circle_Scale circle_scale, string optionNameStart, string type)
         {
             string options = Environment.NewLine;
-            options += TabInString(8) + "// " + optionNameStart + type + "_circle_scale" + Environment.NewLine;
+            options += TabInString(9) + "// " + optionNameStart + type + "_circle_scale" + Environment.NewLine;
 
             // исходные параметры
             int start_angle = circle_scale.start_angle - 90;
@@ -3174,7 +3274,7 @@ namespace Watch_Face_Editor
             options += TabInString(9) + "let end_angle_" + optionNameStart + type + "_draw = start_angle_" + optionNameStart + 
                 type + " + angle_offset_" + optionNameStart + type + ";" + Environment.NewLine;
             options += TabInString(9) + Environment.NewLine;
-            options += TabInString(8) + optionNameStart + type + "_circle_scale.setProperty(hmUI.prop.MORE, {" + Environment.NewLine;
+            options += TabInString(9) + optionNameStart + type + "_circle_scale.setProperty(hmUI.prop.MORE, {" + Environment.NewLine;
             options += TabInString(10) + "x: arcX_" + optionNameStart + type + "," + Environment.NewLine;
             options += TabInString(10) + "y: arcY_" + optionNameStart + type + "," + Environment.NewLine;
             options += TabInString(10) + "w: CircleWidth_" + optionNameStart + type + "," + Environment.NewLine;
@@ -3239,7 +3339,7 @@ namespace Watch_Face_Editor
         private string Linear_Scale_WidgetDelegate_Options(Linear_Scale linear_scale, string optionNameStart, string type, string show_level)
         {
             string options = Environment.NewLine;
-            options += TabInString(8) + "// " + optionNameStart + type + "_linear_scale" + Environment.NewLine;
+            options += TabInString(9) + "// " + optionNameStart + type + "_linear_scale" + Environment.NewLine;
 
             // исходные параметры
             int start_x = linear_scale.start_x;
@@ -3285,32 +3385,32 @@ namespace Watch_Face_Editor
 
             if (linear_scale.vertical)
             {
-                options += TabInString(8) + "let lenght_ls_" + optionNameStart + type +
+                options += TabInString(9) + "let lenght_ls_" + optionNameStart + type +
                 "_draw = line_width_ls_" + optionNameStart + type + ";" + Environment.NewLine;
-                options += TabInString(8) + "let line_width_ls_" + optionNameStart + type +
+                options += TabInString(9) + "let line_width_ls_" + optionNameStart + type +
                 "_draw = lenght_ls_" + optionNameStart + type + ";" + Environment.NewLine;
 
-                options += TabInString(8) + "if (lenght_ls_" + optionNameStart + type + " < 0){" + Environment.NewLine;
-                options += TabInString(9) + "line_width_ls_" + optionNameStart + type + "_draw = -lenght_ls_" + 
+                options += TabInString(9) + "if (lenght_ls_" + optionNameStart + type + " < 0){" + Environment.NewLine;
+                options += TabInString(10) + "line_width_ls_" + optionNameStart + type + "_draw = -lenght_ls_" + 
                     optionNameStart + type + ";" + Environment.NewLine;
-                options += TabInString(9) + "start_y_" + optionNameStart + type +
+                options += TabInString(10) + "start_y_" + optionNameStart + type +
                     "_draw = start_y_" + optionNameStart + type + "_draw - line_width_ls_" + 
                     optionNameStart + type + "_draw;" + Environment.NewLine;
-                options += TabInString(8) + "};" + Environment.NewLine;
+                options += TabInString(9) + "};" + Environment.NewLine;
             }
             else
             {
-                options += TabInString(8) + "let lenght_ls_" + optionNameStart + type +
+                options += TabInString(9) + "let lenght_ls_" + optionNameStart + type +
                     "_draw = lenght_ls_" + optionNameStart + type + ";" + Environment.NewLine;
-                options += TabInString(8) + "let line_width_ls_" + optionNameStart + type +
+                options += TabInString(9) + "let line_width_ls_" + optionNameStart + type +
                     "_draw = line_width_ls_" + optionNameStart + type + ";" + Environment.NewLine;
 
-                options += TabInString(8) + "if (lenght_ls_" + optionNameStart + type + " < 0){" + Environment.NewLine;
-                options += TabInString(9) + "lenght_ls_" + optionNameStart + type +
+                options += TabInString(9) + "if (lenght_ls_" + optionNameStart + type + " < 0){" + Environment.NewLine;
+                options += TabInString(10) + "lenght_ls_" + optionNameStart + type +
                     "_draw = -lenght_ls_" + optionNameStart + type + ";" + Environment.NewLine;
-                options += TabInString(9) + "start_x_" + optionNameStart + type + "_draw = start_x_" + 
+                options += TabInString(10) + "start_x_" + optionNameStart + type + "_draw = start_x_" + 
                     optionNameStart + type + " - lenght_ls_" + optionNameStart + type + "_draw;" + Environment.NewLine;
-                options += TabInString(8) + "};" + Environment.NewLine;
+                options += TabInString(9) + "};" + Environment.NewLine;
             }
 
             options += TabInString(9) + Environment.NewLine;
@@ -3332,41 +3432,41 @@ namespace Watch_Face_Editor
                     int pointer_offset_x = src.Width / 2;
                     int pointer_offset_y = src.Height / 2;
 
-                    options += TabInString(8) + Environment.NewLine;
-                    options += TabInString(8) + "// pointers parameters" + Environment.NewLine;
-                    options += TabInString(8) + "let pointer_offset_x_ls_" + optionNameStart + type + " = " +
+                    options += TabInString(9) + Environment.NewLine;
+                    options += TabInString(9) + "// pointers parameters" + Environment.NewLine;
+                    options += TabInString(9) + "let pointer_offset_x_ls_" + optionNameStart + type + " = " +
                         pointer_offset_x.ToString() + ";" + Environment.NewLine;
-                    options += TabInString(8) + "let pointer_offset_y_ls_" + optionNameStart + type + " = " +
+                    options += TabInString(9) + "let pointer_offset_y_ls_" + optionNameStart + type + " = " +
                         pointer_offset_y.ToString() + ";" + Environment.NewLine;
 
 
-                    options += TabInString(8) + "" + optionNameStart + type +
+                    options += TabInString(9) + "" + optionNameStart + type +
                         "_linear_scale_pointer_img.setProperty(hmUI.prop.MORE, {" + Environment.NewLine;
                     if (linear_scale.vertical)
                     {
-                        options += TabInString(9) + "x: start_x_" + optionNameStart + type + 
+                        options += TabInString(10) + "x: start_x_" + optionNameStart + type + 
                             "_draw + line_width_ls_" + optionNameStart + type + 
                             " / 2 - pointer_offset_x_ls_" + optionNameStart + type + "," + Environment.NewLine;
-                        options += TabInString(9) + "y: start_y_" + optionNameStart + type +
+                        options += TabInString(10) + "y: start_y_" + optionNameStart + type +
                             " + lenght_ls_" + optionNameStart + type + " - pointer_offset_y_ls_" + 
                             optionNameStart + type + "," + Environment.NewLine;
                     }
                     else
                     {
 
-                        options += TabInString(9) + "x: start_x_" + optionNameStart + type +
+                        options += TabInString(10) + "x: start_x_" + optionNameStart + type +
                             " + lenght_ls_" + optionNameStart + type + " - pointer_offset_x_ls_" + 
                             optionNameStart + type + "," + Environment.NewLine;
-                        options += TabInString(9) + "y: start_y_" + optionNameStart + type +
+                        options += TabInString(10) + "y: start_y_" + optionNameStart + type +
                             "_draw + line_width_ls_" + optionNameStart + type + " / 2 - pointer_offset_y_ls_" + 
                             optionNameStart + type + "," + Environment.NewLine;
                     }
-                    options += TabInString(9) + "src: '" + linear_scale.pointer + ".png'," + Environment.NewLine;
+                    options += TabInString(10) + "src: '" + linear_scale.pointer + ".png'," + Environment.NewLine;
                     if (show_level.Length > 0)
                     {
-                        options += TabInString(9) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+                        options += TabInString(10) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
                     }
-                    options += TabInString(8) + "});" + Environment.NewLine;
+                    options += TabInString(9) + "});" + Environment.NewLine;
                 }
             }
 
@@ -3467,41 +3567,41 @@ namespace Watch_Face_Editor
                         int pointer_offset_x = src.Width / 2;
                         int pointer_offset_y = src.Height / 2;
 
-                        options += TabInString(8) + Environment.NewLine;
-                        options += TabInString(8) + "// pointers parameters" + Environment.NewLine;
-                        options += TabInString(8) + "let pointer_offset_x_ls_" + optionNameStart + type + "_mirror = " +
+                        options += TabInString(9) + Environment.NewLine;
+                        options += TabInString(9) + "// pointers parameters" + Environment.NewLine;
+                        options += TabInString(9) + "let pointer_offset_x_ls_" + optionNameStart + type + "_mirror = " +
                             pointer_offset_x.ToString() + ";" + Environment.NewLine;
-                        options += TabInString(8) + "let pointer_offset_y_ls_" + optionNameStart + type + "_mirror = " +
+                        options += TabInString(9) + "let pointer_offset_y_ls_" + optionNameStart + type + "_mirror = " +
                             pointer_offset_y.ToString() + ";" + Environment.NewLine;
 
 
-                        options += TabInString(8) + "" + optionNameStart + type +
+                        options += TabInString(9) + "" + optionNameStart + type +
                             "_linear_scale_pointer_img_mirror.setProperty(hmUI.prop.MORE, {" + Environment.NewLine;
                         if (linear_scale.vertical)
                         {
-                            options += TabInString(9) + "x: start_x_" + optionNameStart + type +
+                            options += TabInString(10) + "x: start_x_" + optionNameStart + type +
                                 "_draw_mirror + line_width_ls_" + optionNameStart + type +
                                 "_mirror / 2 - pointer_offset_x_ls_" + optionNameStart + type + "_mirror," + Environment.NewLine;
-                            options += TabInString(9) + "y: start_y_" + optionNameStart + type +
+                            options += TabInString(10) + "y: start_y_" + optionNameStart + type +
                                 "_mirror + lenght_ls_" + optionNameStart + type + "_mirror - pointer_offset_y_ls_" +
                                 optionNameStart + type + "_mirror," + Environment.NewLine;
                         }
                         else
                         {
 
-                            options += TabInString(9) + "x: start_x_" + optionNameStart + type +
+                            options += TabInString(10) + "x: start_x_" + optionNameStart + type +
                                 "_mirror + lenght_ls_" + optionNameStart + type + "_mirror - pointer_offset_x_ls_" +
                                 optionNameStart + type + "_mirror," + Environment.NewLine;
-                            options += TabInString(9) + "y: start_y_" + optionNameStart + type +
+                            options += TabInString(10) + "y: start_y_" + optionNameStart + type +
                                 "_draw_mirror + line_width_ls_" + optionNameStart + type + "_mirror / 2 - pointer_offset_y_ls_" +
                                 optionNameStart + type + "_mirror," + Environment.NewLine;
                         }
-                        options += TabInString(9) + "src: '" + linear_scale.pointer + ".png'," + Environment.NewLine;
+                        options += TabInString(10) + "src: '" + linear_scale.pointer + ".png'," + Environment.NewLine;
                         if (show_level.Length > 0)
                         {
-                            options += TabInString(9) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+                            options += TabInString(10) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
                         }
-                        options += TabInString(8) + "});" + Environment.NewLine;
+                        options += TabInString(9) + "});" + Environment.NewLine;
                     }
                 }
             }
@@ -3783,6 +3883,18 @@ namespace Watch_Face_Editor
                                         pai_weekly.Number.icon = img.src;
                                         pai_weekly.Number.iconPosX = img.x;
                                         pai_weekly.Number.iconPosY = img.y;
+                                    }
+                                }
+
+                                if (objectName.EndsWith("distance_text_separator_img"))
+                                {
+                                    ElementDistance distance = null;
+                                    distance = (ElementDistance)elementsList.Find(e => e.GetType().Name == "ElementDistance");
+                                    if (distance != null && distance.Number != null)
+                                    {
+                                        distance.Number.icon = img.src;
+                                        distance.Number.iconPosX = img.x;
+                                        distance.Number.iconPosY = img.y;
                                     }
                                 }
                             }
@@ -4162,7 +4274,7 @@ namespace Watch_Face_Editor
 
                         #region DATE_POINTER
                         case "DATE_POINTER":
-                            hmUI_widget_IMG_POINTER img_pointer = Object_Pointer(parametrs);
+                            hmUI_widget_IMG_POINTER img_pointer = Object_DATE_POINTER(parametrs);
                             elementsList = null;
                             if (img_pointer.show_level == "ONLY_NORMAL" || img_pointer.show_level == "ONLY_NORMAL" || objectName.StartsWith("normal"))
                             {
@@ -4657,7 +4769,7 @@ namespace Watch_Face_Editor
                                     steps.Number.unit = imgNumber.unit;
                                     steps.Number.imperial_unit = imgNumber.imperial_unit;
                                     steps.Number.negative_image = imgNumber.negative_image;
-                                    steps.Number.dot_path = imgNumber.dot_path;
+                                    steps.Number.dot_image = imgNumber.dot_image;
                                     steps.Number.align = imgNumber.align;
                                     steps.Number.visible = true;
                                     steps.Number.position = offset;
@@ -4694,7 +4806,7 @@ namespace Watch_Face_Editor
                                     steps.Number_Target.unit = imgNumber.unit;
                                     steps.Number_Target.imperial_unit = imgNumber.imperial_unit;
                                     steps.Number_Target.negative_image = imgNumber.negative_image;
-                                    steps.Number_Target.dot_path = imgNumber.dot_path;
+                                    steps.Number_Target.dot_image = imgNumber.dot_image;
                                     steps.Number_Target.align = imgNumber.align;
                                     steps.Number_Target.visible = true;
                                     steps.Number_Target.position = offset;
@@ -4730,7 +4842,7 @@ namespace Watch_Face_Editor
                                     battery.Number.unit = imgNumber.unit;
                                     battery.Number.imperial_unit = imgNumber.imperial_unit;
                                     battery.Number.negative_image = imgNumber.negative_image;
-                                    battery.Number.dot_path = imgNumber.dot_path;
+                                    battery.Number.dot_image = imgNumber.dot_image;
                                     battery.Number.align = imgNumber.align;
                                     battery.Number.visible = true;
                                     battery.Number.position = offset;
@@ -4767,7 +4879,7 @@ namespace Watch_Face_Editor
                                     calorie.Number.unit = imgNumber.unit;
                                     calorie.Number.imperial_unit = imgNumber.imperial_unit;
                                     calorie.Number.negative_image = imgNumber.negative_image;
-                                    calorie.Number.dot_path = imgNumber.dot_path;
+                                    calorie.Number.dot_image = imgNumber.dot_image;
                                     calorie.Number.align = imgNumber.align;
                                     calorie.Number.visible = true;
                                     calorie.Number.position = offset;
@@ -4804,7 +4916,7 @@ namespace Watch_Face_Editor
                                     calorie.Number_Target.unit = imgNumber.unit;
                                     calorie.Number_Target.imperial_unit = imgNumber.imperial_unit;
                                     calorie.Number_Target.negative_image = imgNumber.negative_image;
-                                    calorie.Number_Target.dot_path = imgNumber.dot_path;
+                                    calorie.Number_Target.dot_image = imgNumber.dot_image;
                                     calorie.Number_Target.align = imgNumber.align;
                                     calorie.Number_Target.visible = true;
                                     calorie.Number_Target.position = offset;
@@ -4840,7 +4952,7 @@ namespace Watch_Face_Editor
                                     heart.Number.unit = imgNumber.unit;
                                     heart.Number.imperial_unit = imgNumber.imperial_unit;
                                     heart.Number.negative_image = imgNumber.negative_image;
-                                    heart.Number.dot_path = imgNumber.dot_path;
+                                    heart.Number.dot_image = imgNumber.dot_image;
                                     heart.Number.align = imgNumber.align;
                                     heart.Number.visible = true;
                                     heart.Number.position = offset;
@@ -4877,7 +4989,7 @@ namespace Watch_Face_Editor
                                     pai.Number.unit = imgNumber.unit;
                                     pai.Number.imperial_unit = imgNumber.imperial_unit;
                                     pai.Number.negative_image = imgNumber.negative_image;
-                                    pai.Number.dot_path = imgNumber.dot_path;
+                                    pai.Number.dot_image = imgNumber.dot_image;
                                     pai.Number.align = imgNumber.align;
                                     pai.Number.visible = true;
                                     pai.Number.position = offset;
@@ -4914,10 +5026,37 @@ namespace Watch_Face_Editor
                                     pai.Number_Target.unit = imgNumber.unit;
                                     pai.Number_Target.imperial_unit = imgNumber.imperial_unit;
                                     pai.Number_Target.negative_image = imgNumber.negative_image;
-                                    pai.Number_Target.dot_path = imgNumber.dot_path;
+                                    pai.Number_Target.dot_image = imgNumber.dot_image;
                                     pai.Number_Target.align = imgNumber.align;
                                     pai.Number_Target.visible = true;
                                     pai.Number_Target.position = offset;
+                                }
+                            }
+
+                            if (elementsList != null && imgNumber.type == "DISTANCE")
+                            //if (objectName.EndsWith("step_image_progress_img_level"))
+                            {
+                                ElementDistance distance = (ElementDistance)elementsList.Find(e => e.GetType().Name == "ElementDistance");
+                                if (distance == null)
+                                {
+                                    elementsList.Add(new ElementDistance());
+                                    distance = (ElementDistance)elementsList.Find(e => e.GetType().Name == "ElementDistance");
+                                }
+                                if (distance != null)
+                                {
+                                    distance.Number = new hmUI_widget_IMG_NUMBER();
+                                    distance.Number.img_First = imgNumber.img_First;
+                                    distance.Number.imageX = imgNumber.imageX;
+                                    distance.Number.imageY = imgNumber.imageY;
+                                    distance.Number.space = imgNumber.space;
+                                    distance.Number.zero = imgNumber.zero;
+                                    distance.Number.unit = imgNumber.unit;
+                                    distance.Number.imperial_unit = imgNumber.imperial_unit;
+                                    distance.Number.negative_image = imgNumber.negative_image;
+                                    distance.Number.dot_image = imgNumber.dot_image;
+                                    distance.Number.align = imgNumber.align;
+                                    distance.Number.visible = true;
+                                    distance.Number.position = 1;
                                 }
                             }
 
@@ -6078,8 +6217,9 @@ namespace Watch_Face_Editor
                     elementDigitalTime.Hour.space = value;
                 if (parametrs.ContainsKey("hour_zero"))
                 {
-                    if (parametrs["hour_zero"] == "1") elementDigitalTime.Hour.zero = true;
-                    else elementDigitalTime.Hour.zero = false;
+                    //if (parametrs["hour_zero"] == "1") elementDigitalTime.Hour.zero = true;
+                    //else elementDigitalTime.Hour.zero = false;
+                    elementDigitalTime.Hour.zero = StringToBool(parametrs["hour_zero"]);
                 }
                 if (parametrs.ContainsKey("hour_align")) 
                     elementDigitalTime.Hour.align = parametrs["hour_align"].Replace("hmUI.align.", "");
@@ -6109,8 +6249,9 @@ namespace Watch_Face_Editor
                     elementDigitalTime.Minute.space = value;
                 if (parametrs.ContainsKey("minute_zero"))
                 {
-                    if (parametrs["minute_zero"] == "1") elementDigitalTime.Minute.zero = true;
-                    else elementDigitalTime.Minute.zero = false;
+                    //if (parametrs["minute_zero"] == "1") elementDigitalTime.Minute.zero = true;
+                    //else elementDigitalTime.Minute.zero = false;
+                    elementDigitalTime.Minute.zero = StringToBool(parametrs["minute_zero"]);
                 }
                 if (parametrs.ContainsKey("minute_align"))
                     elementDigitalTime.Minute.align = parametrs["minute_align"].Replace("hmUI.align.", "");
@@ -6122,8 +6263,9 @@ namespace Watch_Face_Editor
                 }
                 if (parametrs.ContainsKey("minute_follow"))
                 {
-                    if (parametrs["minute_follow"] == "1") elementDigitalTime.Minute.follow = true;
-                    else elementDigitalTime.Minute.follow = false;
+                    //if (parametrs["minute_follow"] == "1") elementDigitalTime.Minute.follow = true;
+                    //else elementDigitalTime.Minute.follow = false;
+                    elementDigitalTime.Minute.follow = StringToBool(parametrs["minute_follow"]);
                 }
                 elementDigitalTime.Minute.visible = true;
                 elementDigitalTime.Minute.position = index;
@@ -6145,8 +6287,9 @@ namespace Watch_Face_Editor
                     elementDigitalTime.Second.space = value;
                 if (parametrs.ContainsKey("second_zero"))
                 {
-                    if (parametrs["second_zero"] == "1") elementDigitalTime.Second.zero = true;
-                    else elementDigitalTime.Second.zero = false;
+                    //if (parametrs["second_zero"] == "1") elementDigitalTime.Second.zero = true;
+                    //else elementDigitalTime.Second.zero = false;
+                    elementDigitalTime.Second.zero = StringToBool(parametrs["second_zero"]);
                 }
                 if (parametrs.ContainsKey("second_align"))
                     elementDigitalTime.Second.align = parametrs["second_align"].Replace("hmUI.align.", "");
@@ -6158,8 +6301,9 @@ namespace Watch_Face_Editor
                 }
                 if (parametrs.ContainsKey("second_follow"))
                 {
-                    if (parametrs["second_follow"] == "1") elementDigitalTime.Second.follow = true;
-                    else elementDigitalTime.Second.follow = false;
+                    //if (parametrs["second_follow"] == "1") elementDigitalTime.Second.follow = true;
+                    //else elementDigitalTime.Second.follow = false;
+                    elementDigitalTime.Second.follow = StringToBool(parametrs["second_follow"]);
                 }
                 elementDigitalTime.Second.visible = true;
                 elementDigitalTime.Second.position = index;
@@ -6306,7 +6450,7 @@ namespace Watch_Face_Editor
             return elementAnalogTime;
         }
 
-        private hmUI_widget_IMG_POINTER Object_Pointer(Dictionary<string, string> parametrs)
+        private hmUI_widget_IMG_POINTER Object_DATE_POINTER(Dictionary<string, string> parametrs)
         {
             hmUI_widget_IMG_POINTER elementPointer = new hmUI_widget_IMG_POINTER();
             int value;
@@ -6468,8 +6612,9 @@ namespace Watch_Face_Editor
                         dayNumber.space = value;
                     if (parametrs.ContainsKey("day_zero"))
                     {
-                        if (parametrs["day_zero"] == "1") dayNumber.zero = true;
-                        else dayNumber.zero = false;
+                        //if (parametrs["day_zero"] == "1") dayNumber.zero = true;
+                        //else dayNumber.zero = false;
+                        dayNumber.zero = StringToBool(parametrs["day_zero"]);
                     }
                     if (parametrs.ContainsKey("day_align"))
                         dayNumber.align = parametrs["day_align"].Replace("hmUI.align.", "");
@@ -6511,8 +6656,9 @@ namespace Watch_Face_Editor
                         monthNumber.space = value;
                     if (parametrs.ContainsKey("month_zero"))
                     {
-                        if (parametrs["month_zero"] == "1") monthNumber.zero = true;
-                        else monthNumber.zero = false;
+                        //if (parametrs["month_zero"] == "1") monthNumber.zero = true;
+                        //else monthNumber.zero = false;
+                        monthNumber.zero = StringToBool(parametrs["month_zero"]);
                     }
                     if (parametrs.ContainsKey("month_align"))
                         monthNumber.align = parametrs["month_align"].Replace("hmUI.align.", "");
@@ -6548,8 +6694,9 @@ namespace Watch_Face_Editor
                         yearNumber.space = value;
                     if (parametrs.ContainsKey("year_zero"))
                     {
-                        if (parametrs["year_zero"] == "1") yearNumber.zero = true;
-                        else yearNumber.zero = false;
+                        //if (parametrs["year_zero"] == "1") yearNumber.zero = true;
+                        //else yearNumber.zero = false;
+                        yearNumber.zero = StringToBool(parametrs["year_zero"]);
                     }
                     if (parametrs.ContainsKey("year_align"))
                         yearNumber.align = parametrs["year_align"].Replace("hmUI.align.", "");
@@ -6817,13 +6964,13 @@ namespace Watch_Face_Editor
                 {
                     imgName = parametrs["negative_image"].Replace("'", "");
                     imgName = Path.GetFileNameWithoutExtension(imgName);
-                    imgNumber.unit = imgName;
+                    imgNumber.negative_image = imgName;
                 }
-                if (parametrs.ContainsKey("dont_path") && parametrs["dont_path"].Length > 0)
+                if (parametrs.ContainsKey("dot_image") && parametrs["dot_image"].Length > 0)
                 {
-                    imgName = parametrs["dont_path"].Replace("'", "");
+                    imgName = parametrs["dot_image"].Replace("'", "");
                     imgName = Path.GetFileNameWithoutExtension(imgName);
-                    imgNumber.unit = imgName;
+                    imgNumber.dot_image = imgName;
                 }
 
                 if (parametrs.ContainsKey("type"))

@@ -330,6 +330,26 @@ namespace Watch_Face_Editor
                         }
                         if (PAI != null) NewElements.Add(PAI);
                         break;
+                    #endregion
+
+                    #region ElementDistance
+                    case "ElementDistance":
+                        ElementDistance Distance = null;
+                        try
+                        {
+                            Distance = JsonConvert.DeserializeObject<ElementDistance>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (Distance != null) NewElements.Add(Distance);
+                        break;
                         #endregion
                 }
             }
@@ -423,6 +443,7 @@ namespace Watch_Face_Editor
 
             uCtrl_Text_Opt.SetUnit(img_number.unit);
             uCtrl_Text_Opt.SetUnitMile(img_number.imperial_unit);
+            uCtrl_Text_Opt.SetImageDecimalPointOrMinus(img_number.dot_image);
             //uCtrl_Text_Opt.SetImageDecimalPointOrMinus
             uCtrl_Text_Opt.numericUpDown_spacing.Value = img_number.space;
 
@@ -580,6 +601,8 @@ namespace Watch_Face_Editor
             uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircle_startAngle.Value = circle_scale.start_angle;
             uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircle_endAngle.Value = circle_scale.end_angle;
 
+            uCtrl_Circle_Scale_Opt.SetColorScale(StringToColor(circle_scale.color));
+
             uCtrl_Circle_Scale_Opt.checkBox_mirror.Checked = circle_scale.mirror;
             uCtrl_Circle_Scale_Opt.checkBox_inversion.Checked = circle_scale.inversion;
 
@@ -617,6 +640,8 @@ namespace Watch_Face_Editor
 
             uCtrl_Linear_Scale_Opt.numericUpDown_scaleLinear_length.Value = linear_scale.lenght;
             uCtrl_Linear_Scale_Opt.numericUpDown_scaleLinear_width.Value = linear_scale.line_width;
+
+            uCtrl_Linear_Scale_Opt.SetColorScale(StringToColor(linear_scale.color));
 
             uCtrl_Linear_Scale_Opt.checkBox_mirror.Checked = linear_scale.mirror;
             uCtrl_Linear_Scale_Opt.checkBox_inversion.Checked = linear_scale.inversion;
@@ -845,6 +870,8 @@ namespace Watch_Face_Editor
             img_number.imageY = (int)uCtrl_Text_Opt.numericUpDown_imageY.Value;
             img_number.space = (int)uCtrl_Text_Opt.numericUpDown_spacing.Value;
             img_number.unit = uCtrl_Text_Opt.GetUnit();
+            img_number.imperial_unit = uCtrl_Text_Opt.GetUnitMile();
+            img_number.dot_image = uCtrl_Text_Opt.GetImageDecimalPointOrMinus();
             img_number.zero = uCtrl_Text_Opt.checkBox_addZero.Checked;
 
 

@@ -138,6 +138,12 @@
     <Compile Include="Elements\UCtrl_Heart_Elm.Designer.cs">
       <DependentUpon>UCtrl_Heart_Elm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Elements\UCtrl_Distance_Elm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\UCtrl_Distance_Elm.Designer.cs">
+      <DependentUpon>UCtrl_Distance_Elm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCtrl_Icon_Opt.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -219,6 +225,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Calories_Elm.en.resx">
       <DependentUpon>UCtrl_Calories_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Distance_Elm.en.resx">
+      <DependentUpon>UCtrl_Distance_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Heart_Elm.en.resx">
       <DependentUpon>UCtrl_Heart_Elm.cs</DependentUpon>
@@ -312,6 +321,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Heart_Elm.resx">
       <DependentUpon>UCtrl_Heart_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Distance_Elm.resx">
+      <DependentUpon>UCtrl_Distance_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Icon_Opt.en.resx">
       <DependentUpon>UCtrl_Icon_Opt.cs</DependentUpon>
@@ -488,6 +500,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\pai2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\location.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
