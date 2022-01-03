@@ -918,12 +918,16 @@ namespace Watch_Face_Editor
                             {
                                 imgCount = img_level.image_length;
                                 valueImgIndex = (int)(imgCount * progress);
+                                valueImgIndex--;
+                                if (valueImgIndex < 0) valueImgIndex = 0;
                                 if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
                             }
                             if (img_prorgess != null && img_prorgess.image_length > 0)
                             {
                                 segmentCount = img_prorgess.image_length;
                                 valueSegmentIndex = (int)(segmentCount * progress);
+                                valueSegmentIndex--;
+                                if (valueSegmentIndex < 0) valueSegmentIndex = 0;
                                 if (valueSegmentIndex >= segmentCount) valueImgIndex = (int)(segmentCount - 1);
                             }
 
@@ -959,14 +963,14 @@ namespace Watch_Face_Editor
                             {
                                 imgCount = img_level.image_length;
                                 valueImgIndex = (int)((imgCount - 1) * progress);
-                                if (progress < 0.01) valueImgIndex = -1;
+                                //if (progress < 0.01) valueImgIndex = -1;
                                 if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
                             }
                             if (img_prorgess != null && img_prorgess.image_length > 0)
                             {
                                 segmentCount = img_prorgess.image_length;
                                 valueSegmentIndex = (int)((segmentCount - 1) * progress);
-                                if (progress < 0.01) valueSegmentIndex = -1;
+                                //if (progress < 0.01) valueSegmentIndex = -1;
                                 if (valueSegmentIndex >= segmentCount) valueImgIndex = (int)(segmentCount - 1);
                             }
 
@@ -994,22 +998,51 @@ namespace Watch_Face_Editor
 
                             elementValue = WatchFacePreviewSet.Activity.HeartRate;
                             value_lenght = 3;
-                            goal = 200;
-                            progress = (float)WatchFacePreviewSet.Activity.HeartRate / 200f;
+                            goal = 179;
+                            progress = (WatchFacePreviewSet.Activity.HeartRate - 71) / (179f - 71);
 
-                            if (img_level != null && img_level.image_length > 0)
+                            //if (img_level != null && img_level.image_length > 0)
+                            //{
+                            //    imgCount = img_level.image_length;
+                            //    valueImgIndex = (int)((imgCount - 1) * progress);
+                            //    if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                            //}
+                            //if (img_prorgess != null && img_prorgess.image_length > 0)
+                            //{
+                            //    segmentCount = img_prorgess.image_length;
+                            //    valueSegmentIndex = (int)((segmentCount - 1) * progress);
+                            //    if (progress < 0.01) valueSegmentIndex = -1;
+                            //    if (valueSegmentIndex >= segmentCount) valueImgIndex = (int)(segmentCount - 1);
+                            //}
+                            if (elementValue < 90)
                             {
-                                imgCount = img_level.image_length;
-                                valueImgIndex = (int)((imgCount - 1) * progress);
-                                if (progress < 0.01) valueImgIndex = -1;
-                                if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                                valueImgIndex = 0;
+                                valueSegmentIndex = 0;
                             }
-                            if (img_prorgess != null && img_prorgess.image_length > 0)
+                            if (elementValue >= 90 && elementValue < 108)
                             {
-                                segmentCount = img_prorgess.image_length;
-                                valueSegmentIndex = (int)((segmentCount - 1) * progress);
-                                if (progress < 0.01) valueSegmentIndex = -1;
-                                if (valueSegmentIndex >= segmentCount) valueImgIndex = (int)(segmentCount - 1);
+                                valueImgIndex = 1;
+                                valueSegmentIndex = 1;
+                            }
+                            if (elementValue >= 108 && elementValue < 126)
+                            {
+                                valueImgIndex = 2;
+                                valueSegmentIndex = 2;
+                            }
+                            if (elementValue >= 126 && elementValue < 144)
+                            {
+                                valueImgIndex = 3;
+                                valueSegmentIndex = 3;
+                            }
+                            if (elementValue >= 144 && elementValue < 162)
+                            {
+                                valueImgIndex = 4;
+                                valueSegmentIndex = 4;
+                            }
+                            if (elementValue >= 162)
+                            {
+                                valueImgIndex = 5;
+                                valueSegmentIndex = 5;
                             }
 
                             DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
@@ -1044,14 +1077,14 @@ namespace Watch_Face_Editor
                             {
                                 imgCount = img_level.image_length;
                                 valueImgIndex = (int)((imgCount - 1) * progress);
-                                if (progress < 0.01) valueImgIndex = -1;
+                                //if (progress < 0.01) valueImgIndex = -1;
                                 if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
                             }
                             if (img_prorgess != null && img_prorgess.image_length > 0)
                             {
                                 segmentCount = img_prorgess.image_length;
                                 valueSegmentIndex = (int)((segmentCount - 1) * progress);
-                                if (progress < 0.01) valueSegmentIndex = -1;
+                                //if (progress < 0.01) valueSegmentIndex = -1;
                                 if (valueSegmentIndex >= segmentCount) valueImgIndex = (int)(segmentCount - 1);
                             }
 
@@ -1205,6 +1238,7 @@ namespace Watch_Face_Editor
             int valueImgIndex, int valueSegmentIndex, bool BBorder, bool showProgressArea, bool showCentrHend, string elementName,
             bool ActivityGoal_Calories = false)
         {
+            if (progress < 0) progress = 0;
             if (progress > 1) progress = 1;
             Bitmap src = new Bitmap(1, 1);
 
@@ -1317,6 +1351,12 @@ namespace Watch_Face_Editor
                     int startAngle = pointer.start_angle;
                     int endAngle = pointer.end_angle;
                     int image_index = ListImages.IndexOf(pointer.src);
+                    float progressHeart = 57 / 360f;
+                    if (value >= 90 && value < 108) progressHeart = 118 / 360f;
+                    if (value >= 108 && value < 126) progressHeart = 180 / 360f;
+                    if (value >= 126 && value < 144) progressHeart = 237 / 360f;
+                    if (value >= 144 && value < 162) progressHeart = 298 / 360f;
+                    if (value >= 162) progressHeart = 359 / 360f;
 
                     float angle = startAngle + progress * (endAngle - startAngle);
 
@@ -1330,6 +1370,7 @@ namespace Watch_Face_Editor
                         gPanel.DrawImage(src, x_scale, y_scale);
                     }
 
+                    if (elementName== "ElementHeart") angle = startAngle + progressHeart * (endAngle - startAngle);
                     DrawAnalogClock(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
 
                     if (pointer.cover_path != null && pointer.cover_path.Length > 0)

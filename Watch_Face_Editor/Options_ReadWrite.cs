@@ -529,8 +529,8 @@ namespace Watch_Face_Editor
                 uCtrl_Shortcut_Opt.SetImage(img_click.src);
             uCtrl_Shortcut_Opt.numericUpDown_imageX.Value = img_click.x;
             uCtrl_Shortcut_Opt.numericUpDown_imageY.Value = img_click.y;
-            uCtrl_Shortcut_Opt.numericUpDown_width.Value = img_click.h;
-            uCtrl_Shortcut_Opt.numericUpDown_height.Value = img_click.w;
+            uCtrl_Shortcut_Opt.numericUpDown_width.Value = img_click.w;
+            uCtrl_Shortcut_Opt.numericUpDown_height.Value = img_click.h;
 
             PreviewView = true;
         }
