@@ -465,6 +465,9 @@
     <EmbeddedResource Include="UCtrl_Shortcut_Opt.resx">
       <DependentUpon>UCtrl_Shortcut_Opt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Shortcut_Opt.zh.resx">
+      <DependentUpon>UCtrl_Shortcut_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Text_Opt.en.resx">
       <DependentUpon>UCtrl_Text_Opt.cs</DependentUpon>
     </EmbeddedResource>

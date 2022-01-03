@@ -4108,8 +4108,8 @@ namespace Watch_Face_Editor
             int min = rnd.Next(0, 60);
             int sec = rnd.Next(0, 60);
             int battery = rnd.Next(0, 101);
-            int calories = rnd.Next(0, 2500);
-            int pulse = rnd.Next(45, 150);
+            int calories = rnd.Next(0, 500);
+            int pulse = rnd.Next(45, 180);
             int distance = rnd.Next(0, 15000);
             int steps = rnd.Next(0, 15000);
             int goal = rnd.Next(0, 15000);

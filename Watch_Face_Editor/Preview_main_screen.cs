@@ -1115,7 +1115,8 @@ namespace Watch_Face_Editor
                             int pos_y = img_number.imageY;
                             int distance_spasing = img_number.space;
                             int distance_alignment = AlignmentToInt(img_number.align);
-                            bool distance_addZero = img_number.zero;
+                            //bool distance_addZero = img_number.zero;
+                            bool distance_addZero = false;
                             int distance_separator_index = -1;
                             if (img_number.unit != null && img_number.unit.Length > 0)
                                 distance_separator_index = ListImages.IndexOf(img_number.unit);
@@ -1124,8 +1125,8 @@ namespace Watch_Face_Editor
                                 decumalPoint_index = ListImages.IndexOf(img_number.dot_image);
 
                             Draw_dagital_text_dacumal(gPanel, image_Index, pos_x, pos_y,
-                        distance_spasing, distance_alignment, distance_value, distance_addZero, value_lenght, distance_separator_index,
-                        decumalPoint_index, 2, BBorder);
+                                distance_spasing, distance_alignment, distance_value, distance_addZero, value_lenght, 
+                                distance_separator_index, decumalPoint_index, 2, BBorder);
 
                             if (img_number.icon != null && img_number.icon.Length > 0)
                             {
@@ -1916,8 +1917,9 @@ namespace Watch_Face_Editor
             src = OpenFileStream(ListImagesFullName[image_index]);
             int width = src.Width;
             int height = src.Height;
+
             int DateLenght = 4 * width;
-            if (spacing > 0) DateLenght = DateLenght + 3 * spacing;
+            if (spacing > 0) DateLenght = DateLenght + 2 * spacing;
             if (decimalPoint_index >= 0 && decimalPoint_index < ListImagesFullName.Count)
             {
                 src = OpenFileStream(ListImagesFullName[decimalPoint_index]);
@@ -1927,8 +1929,8 @@ namespace Watch_Face_Editor
             if (separator_index >= 0 && separator_index < ListImagesFullName.Count)
             {
                 src = OpenFileStream(ListImagesFullName[separator_index]);
-                DateLenght = DateLenght + src.Width;
-                if (spacing > 0) DateLenght = DateLenght + spacing;
+                DateLenght = DateLenght + src.Width + src.Width;
+                if (spacing > 0) DateLenght = DateLenght + spacing + spacing;
             }
 
             int PointX = 0;

@@ -121,6 +121,9 @@
   <data name="radioButton_ConvertingInput_Custom.Size" type="System.Drawing.Size, System.Drawing">
     <value>142, 17</value>
   </data>
+  <data name="&gt;&gt;Number.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;label_version.Name" xml:space="preserve">
     <value>label_version</value>
   </data>
@@ -133,9 +136,6 @@
   </data>
   <data name="&gt;&gt;uCtrl_Text_Opt.Parent" xml:space="preserve">
     <value>panel_ElementsOpt</value>
-  </data>
-  <data name="panel_UC_Background.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="&gt;&gt;panel_UC_Shortcuts.Name" xml:space="preserve">
     <value>panel_UC_Shortcuts</value>
@@ -189,8 +189,14 @@
   <data name="uCtrl_Statuses_Elm.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;checkBox_WatchSkin_Use.Parent" xml:space="preserve">
-    <value>groupBox2</value>
+  <data name="&gt;&gt;uCtrl_PAI_Elm.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;userCtrl_Set2.Type" xml:space="preserve">
+    <value>ControlLibrary.UCtrl_Set, ControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="radioButton_Settings_AfterUnpack_Download.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;pictureBox_IconDate.Name" xml:space="preserve">
     <value>pictureBox_IconDate</value>
@@ -246,8 +252,8 @@
   <data name="&gt;&gt;button_JsonPreview_Write.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;tabPage_Edit.Parent" xml:space="preserve">
-    <value>tabControl1</value>
+  <data name="checkBox_JsonWarnings.Size" type="System.Drawing.Size, System.Drawing">
+    <value>323, 17</value>
   </data>
   <data name="button_unpack_zip.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 23</value>
@@ -261,14 +267,14 @@
   <data name="checkBox_AllWidgetsInGif.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
   </data>
-  <data name="checkBox_Shortcuts_Area.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="comboBox_AddActivity.Items5" xml:space="preserve">
+    <value>Дистанция</value>
   </data>
   <data name="&gt;&gt;radioButton_Settings_Pack_Dialog.Name" xml:space="preserve">
     <value>radioButton_Settings_Pack_Dialog</value>
   </data>
-  <data name="label_version_help.Text" xml:space="preserve">
-    <value>0.0</value>
+  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>107</value>
   </data>
   <data name="checkBox_CircleScaleImage.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -282,8 +288,8 @@
   <data name="panel_WatchfaceElements.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 3</value>
   </data>
-  <data name="&gt;&gt;radioButton_ConvertingOutput_GTR3.Parent" xml:space="preserve">
-    <value>groupBox10</value>
+  <data name="numericUpDown_Gif_Speed.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 20</value>
   </data>
   <data name="&gt;&gt;panel_UC_Statuses.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -315,6 +321,9 @@
   <data name="comboBox_AddSystem.Items1" xml:space="preserve">
     <value>Заряд</value>
   </data>
+  <data name="radioButton_Settings_Unpack_Save.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
   <data name="radioButton_Settings_Pack_GoToFile.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 44</value>
   </data>
@@ -326,6 +335,9 @@
   </data>
   <data name="comboBox_AddAir.Items6" xml:space="preserve">
     <value>Давление</value>
+  </data>
+  <data name="&gt;&gt;radioButton_Settings_Unpack_Replace.Name" xml:space="preserve">
+    <value>radioButton_Settings_Unpack_Replace</value>
   </data>
   <data name="userCtrl_Set12.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 253</value>
@@ -360,9 +372,6 @@
   <data name="userCtrl_Set10.ButtonText" xml:space="preserve">
     <value>Набор параметров 10</value>
   </data>
-  <data name="&gt;&gt;label412.Name" xml:space="preserve">
-    <value>label412</value>
-  </data>
   <data name="&gt;&gt;comboBox_AddAir.Parent" xml:space="preserve">
     <value>groupBox_AddElemets</value>
   </data>
@@ -378,8 +387,8 @@
   <data name="button_New_Project.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 586</value>
   </data>
-  <data name="comboBox_AddActivity.Items5" xml:space="preserve">
-    <value>Дистанция</value>
+  <data name="&gt;&gt;radioButton_Settings_AfterUnpack_DoNothing.Name" xml:space="preserve">
+    <value>radioButton_Settings_AfterUnpack_DoNothing</value>
   </data>
   <data name="&gt;&gt;checkBox_AllWidgetsInGif.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -387,20 +396,14 @@
   <data name="&gt;&gt;radioButton_Settings_Pack_DoNotning.Parent" xml:space="preserve">
     <value>groupBox7</value>
   </data>
-  <data name="uCtrl_Images_Opt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="button_JSON.Size" type="System.Drawing.Size, System.Drawing">
+    <value>285, 23</value>
   </data>
   <data name="checkBox_AllWidgetsInGif.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="&gt;&gt;radioButton_Settings_AfterUnpack_Download.Parent" xml:space="preserve">
     <value>groupBox5</value>
-  </data>
-  <data name="&gt;&gt;radioButton_Settings_Open_Download.Name" xml:space="preserve">
-    <value>radioButton_Settings_Open_Download</value>
-  </data>
-  <data name="button_JsonPreview_Random.TabIndex" type="System.Int32, mscorlib">
-    <value>34</value>
   </data>
   <data name="&gt;&gt;userCtrl_Set11.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -422,9 +425,6 @@
   </data>
   <data name="&gt;&gt;panel_UC_Calories.Parent" xml:space="preserve">
     <value>tableLayoutPanel_ElemetsWatchFace</value>
-  </data>
-  <data name="&gt;&gt;radioButton_Settings_AfterUnpack_DoNothing.Name" xml:space="preserve">
-    <value>radioButton_Settings_AfterUnpack_DoNothing</value>
   </data>
   <data name="button_OpenDir.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 615</value>
@@ -477,11 +477,11 @@
   <data name="radioButton_ScreenIdle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;tabPage_About.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="tabPage_Edit.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
-  <data name="comboBox_AddBackground.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+  <data name="pictureBox_IconTime.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
   </data>
   <data name="&gt;&gt;label_ConvertingHelp.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -651,8 +651,8 @@
   <data name="&gt;&gt;radioButton_Settings_Pack_GoToFile.Parent" xml:space="preserve">
     <value>groupBox7</value>
   </data>
-  <data name="panel_UC_Battery.TabIndex" type="System.Int32, mscorlib">
-    <value>26</value>
+  <data name="userCtrl_Set8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>519, 23</value>
   </data>
   <data name="&gt;&gt;checkBox_ShowIn12hourFormat.Parent" xml:space="preserve">
     <value>tabPage_Settings</value>
@@ -672,17 +672,14 @@
   <data name="&gt;&gt;panel_WatchfaceElements.Name" xml:space="preserve">
     <value>panel_WatchfaceElements</value>
   </data>
-  <data name="&gt;&gt;userCtrl_Set2.Type" xml:space="preserve">
-    <value>ControlLibrary.UCtrl_Set, ControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;label355.Parent" xml:space="preserve">
+    <value>tabPage_Settings</value>
   </data>
   <data name="&gt;&gt;button_unpack_zip.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
   <data name="checkBox_border.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
-  </data>
-  <data name="radioButton_ConvertingInput_Custom.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="&gt;&gt;label408.Parent" xml:space="preserve">
     <value>tabPage_About</value>
@@ -726,20 +723,20 @@
   <data name="&gt;&gt;userCtrl_Set8.Name" xml:space="preserve">
     <value>userCtrl_Set8</value>
   </data>
-  <data name="&gt;&gt;userCtrl_Set10.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="checkBox_ShowIn12hourFormat.TabIndex" type="System.Int32, mscorlib">
+    <value>44</value>
   </data>
   <data name="&gt;&gt;pictureBox2.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="groupBox7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 115</value>
   </data>
   <data name="radioButton_ConvertingOutput_TRexPro.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="&gt;&gt;button_WatchSkin_PathGet.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="radioButton_Settings_Open_Dialog.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 17</value>
   </data>
   <data name="uCtrl_PAI_Elm.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
@@ -798,6 +795,9 @@
   <data name="&gt;&gt;comboBox_AddBackground.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="radioButton_Settings_Unpack_Save.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 44</value>
+  </data>
   <data name="&gt;&gt;checkBox_AllWidgetsInGif.Parent" xml:space="preserve">
     <value>tabPage_Settings</value>
   </data>
@@ -812,9 +812,6 @@
   </data>
   <data name="&gt;&gt;label_version.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="button_SaveJson.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
   </data>
   <data name="uCtrl_DateWeek_Elm.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -843,8 +840,14 @@
   <data name="userCtrl_Background_Options.Size" type="System.Drawing.Size, System.Drawing">
     <value>258, 20</value>
   </data>
+  <data name="&gt;&gt;label_ConvertingHelp02.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;uCtrl_DateMonth_Elm.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="radioButton_ConvertingOutput_GTR3Pro.Text" xml:space="preserve">
+    <value>GTR 3 Pro</value>
   </data>
   <data name="&gt;&gt;userCtrl_Set9.Type" xml:space="preserve">
     <value>ControlLibrary.UCtrl_Set, ControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
@@ -855,14 +858,14 @@
   <data name="button_RefreshPreview.Text" xml:space="preserve">
     <value>Обновить Preview</value>
   </data>
-  <data name="&gt;&gt;radioButton_Settings_Pack_DoNotning.Name" xml:space="preserve">
-    <value>radioButton_Settings_Pack_DoNotning</value>
-  </data>
   <data name="radioButton_ConvertingInput_GTR3.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 19</value>
   </data>
   <data name="label_preview_Y.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="button_JsonPreview_Write.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 23</value>
   </data>
   <data name="&gt;&gt;label415.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -873,23 +876,17 @@
   <data name="&gt;&gt;label413.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="checkBox_JsonWarnings.Size" type="System.Drawing.Size, System.Drawing">
-    <value>323, 17</value>
-  </data>
-  <data name="radioButton_ConvertingOutput_Custom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="checkBox_center_marker.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel_ElemetsWatchFace.Name" xml:space="preserve">
-    <value>tableLayoutPanel_ElemetsWatchFace</value>
+  <data name="radioButton_ConvertingOutput_GTR3Pro.Location" type="System.Drawing.Point, System.Drawing">
+    <value>91, 19</value>
   </data>
   <data name="label415.Text" xml:space="preserve">
     <value>С переводом помогали:</value>
   </data>
-  <data name="&gt;&gt;panel_PreviewStates.Name" xml:space="preserve">
-    <value>panel_PreviewStates</value>
+  <data name="&gt;&gt;pictureBox2.Parent" xml:space="preserve">
+    <value>tabPage_About</value>
   </data>
   <data name="radioButton_GTR3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -959,6 +956,9 @@
   </data>
   <data name="&gt;&gt;radioButton_GTS3.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_PreviewBig.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBox_WebW.Name" xml:space="preserve">
     <value>checkBox_WebW</value>
@@ -1059,8 +1059,11 @@
   <data name="&gt;&gt;label414.Name" xml:space="preserve">
     <value>label414</value>
   </data>
-  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
-    <value>groupBox5</value>
+  <data name="&gt;&gt;numericUpDown_Gif_Speed.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="numericUpDown_ConvertingInput_Custom.Location" type="System.Drawing.Point, System.Drawing">
+    <value>483, 19</value>
   </data>
   <data name="label413.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1070,6 +1073,9 @@
   </data>
   <data name="comboBox_AddActivity.Items" xml:space="preserve">
     <value>Активности</value>
+  </data>
+  <data name="&gt;&gt;userCtrl_Set10.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>GTR 3 watch face editor</value>
@@ -1095,29 +1101,20 @@
   <data name="comboBox_AddActivity.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 21</value>
   </data>
-  <data name="panel_UC_DateDay.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 68</value>
-  </data>
   <data name="button_pack_zip.Text" xml:space="preserve">
     <value>Запаковать циферблат</value>
   </data>
   <data name="userCtrl_Set9.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="tabPageConverting.Text" xml:space="preserve">
-    <value>Конвертирование</value>
-  </data>
   <data name="$this.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="uCtrl_Circle_Scale_Opt.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+  <data name="checkBox_Shortcuts_Area.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 20</value>
   </data>
-  <data name="label_ConvertingHelp.Text" xml:space="preserve">
-    <value>Откройте нужный циферблат или сохраните текущий.</value>
-  </data>
-  <data name="button_SaveGIF.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 23</value>
+  <data name="&gt;&gt;panel_MainScreen_AOD.Name" xml:space="preserve">
+    <value>panel_MainScreen_AOD</value>
   </data>
   <data name="uCtrl_AmPm_Opt.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 40</value>
@@ -1125,11 +1122,8 @@
   <data name="&gt;&gt;radioButton_Settings_Open_DoNotning.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="pictureBox_IconSystem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 20</value>
-  </data>
-  <data name="comboBox_Language.Location" type="System.Drawing.Point, System.Drawing">
-    <value>450, 324</value>
+  <data name="panel_UC_DateDay.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="userCtrl_Set4.Size" type="System.Drawing.Size, System.Drawing">
     <value>519, 23</value>
@@ -1155,17 +1149,11 @@
   <data name="tabPage_Edit.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 22</value>
   </data>
-  <data name="&gt;&gt;checkBox_JsonWarnings.Parent" xml:space="preserve">
-    <value>tabPage_Settings</value>
-  </data>
   <data name="&gt;&gt;label_version.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="userCtrl_Set5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>519, 23</value>
-  </data>
-  <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>385, 95</value>
+  <data name="&gt;&gt;checkBox_WatchSkin_Use.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="uCtrl_PAI_Elm.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -1185,8 +1173,8 @@
   <data name="&gt;&gt;groupBox_AddElemets.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;numericUpDown_Gif_Speed.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="comboBox_AddBackground.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
   </data>
   <data name="radioButton_ConvertingOutput_Custom.Text" xml:space="preserve">
     <value>Произвольный размер</value>
@@ -1205,6 +1193,9 @@
   </data>
   <data name="&gt;&gt;userCtrl_Set8.Type" xml:space="preserve">
     <value>ControlLibrary.UCtrl_Set, ControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="panel_UC_Background.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
     <value>1084, 682</value>
@@ -1248,14 +1239,11 @@
   <data name="pictureBox_IconAir.Size" type="System.Drawing.Size, System.Drawing">
     <value>20, 20</value>
   </data>
-  <data name="&gt;&gt;panel_UC_Calories.Name" xml:space="preserve">
-    <value>panel_UC_Calories</value>
+  <data name="uCtrl_Circle_Scale_Opt.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
   <data name="panel_MainScreen_AOD.TabIndex" type="System.Int32, mscorlib">
     <value>33</value>
-  </data>
-  <data name="button_JsonPreview_Read.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 23</value>
   </data>
   <data name="button_JsonPreview_Read.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -1269,8 +1257,8 @@
   <data name="&gt;&gt;panel_UC_Steps.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button_CopyAOD.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="textBox_WatchSkin_Path.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="uCtrl_Steps_Elm.Size" type="System.Drawing.Size, System.Drawing">
     <value>231, 34</value>
@@ -1286,9 +1274,6 @@
   </data>
   <data name="label_TranslateHelp.Text" xml:space="preserve">
     <value>---</value>
-  </data>
-  <data name="tabPage_About.Text" xml:space="preserve">
-    <value>О программе</value>
   </data>
   <data name="userCtrl_Set2.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 23</value>
@@ -1365,23 +1350,26 @@
   <data name="&gt;&gt;comboBox_Language.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
+  <data name="button_pack_zip.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
+  </data>
   <data name="comboBox_AddDate.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 21</value>
   </data>
   <data name="&gt;&gt;userCtrl_Set11.Name" xml:space="preserve">
     <value>userCtrl_Set11</value>
   </data>
-  <data name="uCtrl_Segments_Opt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 20</value>
-  </data>
   <data name="&gt;&gt;checkBox_JsonWarnings.Name" xml:space="preserve">
     <value>checkBox_JsonWarnings</value>
+  </data>
+  <data name="&gt;&gt;button_CopyAOD.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="uCtrl_DateYear_Elm.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="tabPage_Edit.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="checkBox_JsonWarnings.TabIndex" type="System.Int32, mscorlib">
+    <value>48</value>
   </data>
   <data name="&gt;&gt;radioButton_Settings_Pack_Dialog.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -1395,14 +1383,11 @@
   <data name="&gt;&gt;groupBox7.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <data name="&gt;&gt;uCtrl_Shortcut_Opt.Type" xml:space="preserve">
-    <value>ControlLibrary.UCtrl_Shortcut_Opt, ControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;tabControl_Edit_SetShow.Name" xml:space="preserve">
     <value>tabControl_Edit_SetShow</value>
   </data>
-  <data name="button_JsonPreview_Write.Text" xml:space="preserve">
-    <value>Сохранить значения</value>
+  <data name="&gt;&gt;radioButton_Settings_Pack_DoNotning.Name" xml:space="preserve">
+    <value>radioButton_Settings_Pack_DoNotning</value>
   </data>
   <data name="&gt;&gt;label_version_help.Name" xml:space="preserve">
     <value>label_version_help</value>
@@ -1413,11 +1398,11 @@
   <data name="&gt;&gt;uCtrl_Pointer_Opt.Name" xml:space="preserve">
     <value>uCtrl_Pointer_Opt</value>
   </data>
+  <data name="pictureBox_IconDate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>180, 25</value>
+  </data>
   <data name="numericUpDown_ConvertingOutput_Custom.Size" type="System.Drawing.Size, System.Drawing">
     <value>43, 20</value>
-  </data>
-  <data name="radioButton_ConvertingOutput_GTR3Pro.Location" type="System.Drawing.Point, System.Drawing">
-    <value>91, 19</value>
   </data>
   <data name="panel_UC_DateDay.Size" type="System.Drawing.Size, System.Drawing">
     <value>231, 34</value>
@@ -1425,29 +1410,26 @@
   <data name="tabPage_Edit.Text" xml:space="preserve">
     <value>Редактирование</value>
   </data>
-  <data name="panel_UC_DateDay.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
   <data name="pictureBox_Preview.TabIndex" type="System.Int32, mscorlib">
     <value>98</value>
   </data>
-  <data name="uCtrl_Heart_Elm.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="button_Converting.Text" xml:space="preserve">
+    <value>Конвертировать</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>385, 70</value>
   </data>
-  <data name="&gt;&gt;label409.Name" xml:space="preserve">
-    <value>label409</value>
-  </data>
   <data name="radioButton_Settings_Open_DoNotning.Size" type="System.Drawing.Size, System.Drawing">
     <value>158, 17</value>
   </data>
-  <data name="uCtrl_DateDay_Elm.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="panel_UC_Battery.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="&gt;&gt;panel_set.Parent" xml:space="preserve">
     <value>tabPage_Show_Set</value>
+  </data>
+  <data name="radioButton_Settings_Open_Download.Text" xml:space="preserve">
+    <value>Загрузить Preview.States (при наличии)</value>
   </data>
   <data name="pictureBox2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1497,8 +1479,8 @@
   <data name="&gt;&gt;label413.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="label_TranslateHelp.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  <data name="&gt;&gt;tabPage_Show_Set.Parent" xml:space="preserve">
+    <value>tabControl_Edit_SetShow</value>
   </data>
   <data name="checkBox_center_marker.TabIndex" type="System.Int32, mscorlib">
     <value>102</value>
@@ -1512,17 +1494,20 @@
   <data name="&gt;&gt;numericUpDown_Gif_Speed.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;userCtrl_Set10.Name" xml:space="preserve">
+    <value>userCtrl_Set10</value>
+  </data>
   <data name="&gt;&gt;uCtrl_DateDay_Elm.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="button_Converting.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 103</value>
   </data>
-  <data name="uCtrl_Distance_Elm.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
   <data name="checkBox_CircleScaleImage.TabIndex" type="System.Int32, mscorlib">
     <value>99</value>
+  </data>
+  <data name="&gt;&gt;tabPage_About.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="&gt;&gt;uCtrl_Calories_Elm.Parent" xml:space="preserve">
     <value>panel_UC_Calories</value>
@@ -1536,26 +1521,23 @@
   <data name="&gt;&gt;uCtrl_Statuses_Elm.Parent" xml:space="preserve">
     <value>panel_UC_Statuses</value>
   </data>
+  <data name="tableLayoutPanel_ElemetsWatchFace.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
   <data name="&gt;&gt;panel_UC_DigitalTime.Parent" xml:space="preserve">
     <value>tableLayoutPanel_ElemetsWatchFace</value>
   </data>
   <data name="&gt;&gt;panel_PreviewStates.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="checkBox_ShowIn12hourFormat.TabIndex" type="System.Int32, mscorlib">
-    <value>44</value>
-  </data>
   <data name="button_Reset.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 23</value>
   </data>
-  <data name="tableLayoutPanel_ElemetsWatchFace.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="&gt;&gt;label409.Name" xml:space="preserve">
+    <value>label409</value>
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
     <value>385, 95</value>
-  </data>
-  <data name="&gt;&gt;pictureBox2.Parent" xml:space="preserve">
-    <value>tabPage_About</value>
   </data>
   <data name="uCtrl_DateDay_Elm.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -1602,9 +1584,6 @@
   <data name="button_New_Project.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;button_SaveJson.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;checkBox_AllWidgetsInGif.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
@@ -1614,8 +1593,8 @@
   <data name="uCtrl_Circle_Scale_Opt.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="button_JSON.Size" type="System.Drawing.Size, System.Drawing">
-    <value>285, 23</value>
+  <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>385, 95</value>
   </data>
   <data name="&gt;&gt;userCtrl_Set4.Type" xml:space="preserve">
     <value>ControlLibrary.UCtrl_Set, ControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
@@ -1650,8 +1629,8 @@
   <data name="&gt;&gt;label408.Name" xml:space="preserve">
     <value>label408</value>
   </data>
-  <data name="button_JsonPreview_Random.Location" type="System.Drawing.Point, System.Drawing">
-    <value>394, 3</value>
+  <data name="uCtrl_Segments_Opt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>258, 20</value>
   </data>
   <data name="tableLayoutPanel_ElemetsWatchFace.Size" type="System.Drawing.Size, System.Drawing">
     <value>231, 510</value>
@@ -1716,9 +1695,6 @@
   <data name="panel_UC_Heart.TabIndex" type="System.Int32, mscorlib">
     <value>27</value>
   </data>
-  <data name="groupBox8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>405, 10</value>
-  </data>
   <data name="panel_UC_Distance.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
@@ -1755,8 +1731,14 @@
   <data name="&gt;&gt;Number.Name" xml:space="preserve">
     <value>Number</value>
   </data>
+  <data name="checkBox_WatchSkin_Use.Text" xml:space="preserve">
+    <value>Использовать изображение часов при сохранении *.png и *.gif</value>
+  </data>
   <data name="&gt;&gt;checkBox_WidgetsArea.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="button_SavePNG.Text" xml:space="preserve">
+    <value>Сохранить PNG</value>
   </data>
   <data name="pictureBox_Preview.Size" type="System.Drawing.Size, System.Drawing">
     <value>230, 230</value>
@@ -1779,7 +1761,7 @@
   <data name="button_WatchSkin_PathGet.Text" xml:space="preserve">
     <value>Обзор</value>
   </data>
-  <data name="button_New_Project.TabIndex" type="System.Int32, mscorlib">
+  <data name="userCtrl_Set10.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
   </data>
   <data name="&gt;&gt;checkBox_center_marker.Type" xml:space="preserve">
@@ -1823,6 +1805,9 @@
   </data>
   <data name="uCtrl_Steps_Elm.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_AnalogTime_Elm.Name" xml:space="preserve">
+    <value>uCtrl_AnalogTime_Elm</value>
   </data>
   <data name="&gt;&gt;Column1.Name" xml:space="preserve">
     <value>Column1</value>
@@ -1870,13 +1855,10 @@
     <value>3</value>
   </data>
   <data name="checkBox_AllWidgetsInGif.Size" type="System.Drawing.Size, System.Drawing">
-    <value>269, 30</value>
+    <value>398, 17</value>
   </data>
   <data name="pictureBox_IconSystem.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
-  </data>
-  <data name="label_ConvertingHelp03.Text" xml:space="preserve">
-    <value>!!! Проверьте получившийся циферблат после конвертирования !!!</value>
   </data>
   <data name="radioButton_ConvertingOutput_GTR3.TabIndex" type="System.Int32, mscorlib">
     <value>34</value>
@@ -1888,9 +1870,6 @@
     <value>groupBox6</value>
   </data>
   <data name="&gt;&gt;label_TranslateHelp.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="comboBox_AddTime.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -3144,8 +3123,8 @@
         AACAAQAAgAEAAIABAAAAAAAAAAAAAAAAAAAAAAAAgAEAAIABAACAAQAAwAMAAOAHAAD8PwAA
 </value>
   </data>
-  <data name="&gt;&gt;checkBox_border.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="radioButton_Settings_Pack_Dialog.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 20</value>
   </data>
   <data name="button_JSON.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3182,9 +3161,6 @@
   </data>
   <data name="pictureBox_IconSystem.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
-  </data>
-  <data name="button_JsonPreview_Random.Text" xml:space="preserve">
-    <value>Случайные значения</value>
   </data>
   <data name="label_preview_X.Location" type="System.Drawing.Point, System.Drawing">
     <value>86, 290</value>
@@ -3228,8 +3204,8 @@
   <data name="button_Reset.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;label_ConvertingHelp02.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;button_SaveJson.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label_ConvertingHelp01.Parent" xml:space="preserve">
     <value>tabPageConverting</value>
@@ -3261,14 +3237,17 @@
   <data name="Number.HeaderText" xml:space="preserve">
     <value>№</value>
   </data>
-  <data name="radioButton_ScreenIdle.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="&gt;&gt;groupBox7.Name" xml:space="preserve">
+    <value>groupBox7</value>
   </data>
   <data name="radioButton_Settings_AfterUnpack_Dialog.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 20</value>
   </data>
   <data name="&gt;&gt;uCtrl_DigitalTime_Elm.Type" xml:space="preserve">
     <value>ControlLibrary.UCtrl_DigitalTime_Elm, ControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="radioButton_Settings_Open_DoNotning.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="panel_UC_AnalogTime.Size" type="System.Drawing.Size, System.Drawing">
     <value>231, 34</value>
@@ -3291,6 +3270,9 @@
   <data name="groupBox9.Text" xml:space="preserve">
     <value>Исходная модель</value>
   </data>
+  <data name="button_SaveGIF.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 23</value>
+  </data>
   <data name="label355.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -3309,8 +3291,8 @@
   <data name="radioButton_Settings_AfterUnpack_Download.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;radioButton_Settings_Unpack_Replace.Name" xml:space="preserve">
-    <value>radioButton_Settings_Unpack_Replace</value>
+  <data name="tabPageConverting.Text" xml:space="preserve">
+    <value>Конвертирование</value>
   </data>
   <data name="radioButton_Settings_Pack_GoToFile.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3339,20 +3321,20 @@
   <data name="&gt;&gt;uCtrl_DigitalTime_Elm.Name" xml:space="preserve">
     <value>uCtrl_DigitalTime_Elm</value>
   </data>
-  <data name="progressBar1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>10, 23</value>
+  <data name="label_TranslateHelp.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;label406.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <data name="radioButton_Settings_AfterUnpack_Download.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="userCtrl_Set11.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
   </data>
   <data name="&gt;&gt;userCtrl_Set3.Parent" xml:space="preserve">
     <value>panel_set</value>
   </data>
-  <data name="label_TranslateHelp.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="label_ConvertingHelp03.Text" xml:space="preserve">
+    <value>!!! Проверьте получившийся циферблат после конвертирования !!!</value>
   </data>
   <data name="checkBox_border.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 35</value>
@@ -3366,8 +3348,8 @@
   <data name="&gt;&gt;button_pack_zip.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="button_pack_zip.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
+  <data name="uCtrl_Distance_Elm.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
   <data name="panel_UC_Calories.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -3380,6 +3362,9 @@
   </data>
   <data name="&gt;&gt;panel_UC_Calories.ZOrder" xml:space="preserve">
     <value>12</value>
+  </data>
+  <data name="progressBar1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 23</value>
   </data>
   <data name="&gt;&gt;pictureBox_IconTime.Name" xml:space="preserve">
     <value>pictureBox_IconTime</value>
@@ -3414,8 +3399,8 @@
   <data name="comboBox_AddBackground.Items" xml:space="preserve">
     <value>Фон</value>
   </data>
-  <data name="radioButton_Settings_Open_Dialog.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 17</value>
+  <data name="&gt;&gt;checkBox_WatchSkin_Use.Name" xml:space="preserve">
+    <value>checkBox_WatchSkin_Use</value>
   </data>
   <data name="button_SavePNG.Location" type="System.Drawing.Point, System.Drawing">
     <value>135, 562</value>
@@ -3425,9 +3410,6 @@
   </data>
   <data name="&gt;&gt;dataGridView_ImagesList.ZOrder" xml:space="preserve">
     <value>5</value>
-  </data>
-  <data name="uCtrl_Heart_Elm.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
   </data>
   <data name="button_unpack_zip.TabIndex" type="System.Int32, mscorlib">
     <value>85</value>
@@ -3483,8 +3465,8 @@
   <data name="userCtrl_Background_Options.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="button_OpenDir.Text" xml:space="preserve">
-    <value>Открыть папку</value>
+  <data name="button_JsonPreview_Random.TabIndex" type="System.Int32, mscorlib">
+    <value>34</value>
   </data>
   <data name="&gt;&gt;radioButton_ConvertingInput_GTR3.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -3549,8 +3531,8 @@
   <data name="&gt;&gt;groupBox10.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="userCtrl_Set11.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+  <data name="&gt;&gt;label412.Name" xml:space="preserve">
+    <value>label412</value>
   </data>
   <data name="&gt;&gt;userCtrl_Set2.ZOrder" xml:space="preserve">
     <value>10</value>
@@ -3561,8 +3543,11 @@
   <data name="&gt;&gt;label406.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="radioButton_Settings_Unpack_Save.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="&gt;&gt;userCtrl_Set12.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="comboBox_AddTime.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;label412.Parent" xml:space="preserve">
     <value>tabPage_About</value>
@@ -3615,9 +3600,6 @@
   <data name="radioButton_Settings_Unpack_Dialog.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 17</value>
   </data>
-  <data name="&gt;&gt;pictureBox_IconAir.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;panel_set.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
@@ -3639,6 +3621,9 @@
   <data name="button_OpenDir.Size" type="System.Drawing.Size, System.Drawing">
     <value>135, 23</value>
   </data>
+  <data name="pictureBox_IconBackground.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
   <data name="button_Converting.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -3653,9 +3638,6 @@
   </data>
   <data name="panel_set.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="&gt;&gt;comboBox_AddActivity.Name" xml:space="preserve">
-    <value>comboBox_AddActivity</value>
   </data>
   <data name="&gt;&gt;radioButton_ConvertingOutput_Custom.Parent" xml:space="preserve">
     <value>groupBox10</value>
@@ -3695,9 +3677,6 @@
   </data>
   <data name="&gt;&gt;checkBox_center_marker.Name" xml:space="preserve">
     <value>checkBox_center_marker</value>
-  </data>
-  <data name="&gt;&gt;panel_WatchfaceElements.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="radioButton_ConvertingInput_GTR3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -3741,6 +3720,9 @@
   <data name="&gt;&gt;button_RefreshPreview.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="comboBox_AddActivity.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
   <data name="comboBox_Language.Items1" xml:space="preserve">
     <value>English</value>
   </data>
@@ -3750,8 +3732,8 @@
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
     <value>405, 110</value>
   </data>
-  <data name="label_TranslateHelp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1, 245</value>
+  <data name="uCtrl_Calories_Elm.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="label_version_help.TabIndex" type="System.Int32, mscorlib">
     <value>17</value>
@@ -3780,9 +3762,6 @@
   <data name="uCtrl_Pointer_Opt.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 60</value>
   </data>
-  <data name="&gt;&gt;userCtrl_Set1.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
   <data name="radioButton_ConvertingOutput_Custom.Size" type="System.Drawing.Size, System.Drawing">
     <value>142, 17</value>
   </data>
@@ -3804,26 +3783,26 @@
   <data name="&gt;&gt;radioButton_ConvertingOutput_TRexPro.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="pictureBox_IconBackground.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+  <data name="&gt;&gt;pictureBox_IconAir.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label_preview_Y.Size" type="System.Drawing.Size, System.Drawing">
     <value>20, 13</value>
   </data>
-  <data name="&gt;&gt;comboBox_AddDate.Parent" xml:space="preserve">
-    <value>groupBox_AddElemets</value>
+  <data name="button_New_Project.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;panel_UC_Background.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="checkBox_WatchSkin_Use.Text" xml:space="preserve">
-    <value>Использовать изображение часов при сохранении *.png и *.gif</value>
+  <data name="&gt;&gt;comboBox_AddActivity.Name" xml:space="preserve">
+    <value>comboBox_AddActivity</value>
   </data>
   <data name="label356.Size" type="System.Drawing.Size, System.Drawing">
     <value>35, 13</value>
   </data>
-  <data name="&gt;&gt;tabPage_Show_Set.Parent" xml:space="preserve">
-    <value>tabControl_Edit_SetShow</value>
+  <data name="label409.Size" type="System.Drawing.Size, System.Drawing">
+    <value>447, 78</value>
   </data>
   <data name="&gt;&gt;tabPage_Edit_Elements.Parent" xml:space="preserve">
     <value>tabControl_Edit_SetShow</value>
@@ -3833,6 +3812,9 @@
   </data>
   <data name="&gt;&gt;uCtrl_Linear_Scale_Opt.ZOrder" xml:space="preserve">
     <value>3</value>
+  </data>
+  <data name="radioButton_Settings_AfterUnpack_Dialog.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;textBox_WatchSkin_Path.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -3854,6 +3836,9 @@
   </data>
   <data name="&gt;&gt;userCtrl_Set5.Parent" xml:space="preserve">
     <value>panel_set</value>
+  </data>
+  <data name="radioButton_Settings_Unpack_Replace.Text" xml:space="preserve">
+    <value>Заменить</value>
   </data>
   <data name="uCtrl_Steps_Elm.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -3894,8 +3879,8 @@
   <data name="&gt;&gt;label_ConvertingHelp03.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button_PreviewBig.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="userCtrl_Set3.ButtonText" xml:space="preserve">
+    <value>Набор параметров 3</value>
   </data>
   <data name="&gt;&gt;radioButton_Settings_Unpack_Dialog.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -3909,9 +3894,6 @@
   <data name="label_TranslateHelp.Size" type="System.Drawing.Size, System.Drawing">
     <value>19, 13</value>
   </data>
-  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
   <data name="label_ConvertingHelp.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -3924,8 +3906,8 @@
   <data name="&gt;&gt;radioButton_Settings_Open_Download.Parent" xml:space="preserve">
     <value>groupBox6</value>
   </data>
-  <data name="label407.Location" type="System.Drawing.Point, System.Drawing">
-    <value>235, 35</value>
+  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="&gt;&gt;checkBox_AllWidgetsInGif.Name" xml:space="preserve">
     <value>checkBox_AllWidgetsInGif</value>
@@ -3963,6 +3945,12 @@
   <data name="radioButton_ScreenIdle.Location" type="System.Drawing.Point, System.Drawing">
     <value>132, 7</value>
   </data>
+  <data name="&gt;&gt;tableLayoutPanel_ElemetsWatchFace.Name" xml:space="preserve">
+    <value>tableLayoutPanel_ElemetsWatchFace</value>
+  </data>
+  <data name="label_version_help.Text" xml:space="preserve">
+    <value>0.0</value>
+  </data>
   <data name="radioButton_Settings_AfterUnpack_DoNothing.Text" xml:space="preserve">
     <value>Ничего не предпринимать</value>
   </data>
@@ -3990,8 +3978,8 @@
   <data name="label412.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;radioButton_ScreenNormal.Name" xml:space="preserve">
-    <value>radioButton_ScreenNormal</value>
+  <data name="button_JsonPreview_Read.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 23</value>
   </data>
   <data name="&gt;&gt;progressBar1.Parent" xml:space="preserve">
     <value>$this</value>
@@ -4059,14 +4047,17 @@
   <data name="radioButton_ConvertingOutput_GTR3.Size" type="System.Drawing.Size, System.Drawing">
     <value>57, 17</value>
   </data>
+  <data name="panel_MainScreen_AOD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>519, 30</value>
+  </data>
   <data name="&gt;&gt;uCtrl_Circle_Scale_Opt.Type" xml:space="preserve">
     <value>ControlLibrary.UCtrl_Circle_Scale_Opt, ControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;uCtrl_Statuses_Elm.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="panel_UC_Battery.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
+  <data name="uCtrl_PAI_Elm.Size" type="System.Drawing.Size, System.Drawing">
+    <value>231, 34</value>
   </data>
   <data name="&gt;&gt;uCtrl_Images_Opt.Parent" xml:space="preserve">
     <value>panel_ElementsOpt</value>
@@ -4104,8 +4095,8 @@
   <data name="pictureBox_Preview.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Zoom</value>
   </data>
-  <data name="&gt;&gt;radioButton_Settings_AfterUnpack_Dialog.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="uCtrl_Images_Opt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="&gt;&gt;pictureBox_IconSystem.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -4134,20 +4125,17 @@
   <data name="tabPage_Settings.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="userCtrl_Set8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>519, 23</value>
-  </data>
-  <data name="radioButton_Settings_Open_Download.Text" xml:space="preserve">
-    <value>Загрузить Preview.States (при наличии)</value>
+  <data name="&gt;&gt;userCtrl_Set1.Type" xml:space="preserve">
+    <value>ControlLibrary.UCtrl_Set, ControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;radioButton_Settings_AfterUnpack_Download.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="radioButton_Settings_Open_DoNotning.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;groupBox5.Name" xml:space="preserve">
+    <value>groupBox5</value>
   </data>
-  <data name="&gt;&gt;uCtrl_Heart_Elm.Parent" xml:space="preserve">
-    <value>panel_UC_Heart</value>
+  <data name="panel_UC_DateDay.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 68</value>
   </data>
   <data name="&gt;&gt;tabPage_Settings.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -4161,9 +4149,6 @@
   <data name="&gt;&gt;button_CreatePreview.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="radioButton_Settings_Open_Download.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="&gt;&gt;panel_UC_Steps.Parent" xml:space="preserve">
     <value>tableLayoutPanel_ElemetsWatchFace</value>
   </data>
@@ -4173,14 +4158,14 @@
   <data name="uCtrl_DateMonth_Elm.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="textBox_WatchSkin_Path.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="panel_UC_Statuses.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
   </data>
   <data name="&gt;&gt;radioButton_ConvertingInput_GTR3Pro.Name" xml:space="preserve">
     <value>radioButton_ConvertingInput_GTR3Pro</value>
   </data>
-  <data name="pictureBox_IconDate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>180, 25</value>
+  <data name="panel_UC_AnalogTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 34</value>
   </data>
   <data name="label_ConvertingHelp01.Size" type="System.Drawing.Size, System.Drawing">
     <value>376, 13</value>
@@ -4209,11 +4194,11 @@
   <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
     <value>tabControl1</value>
   </data>
-  <data name="numericUpDown_Gif_Speed.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 20</value>
-  </data>
   <data name="&gt;&gt;panel_UC_Distance.ZOrder" xml:space="preserve">
     <value>14</value>
+  </data>
+  <data name="&gt;&gt;radioButton_ConvertingOutput_GTR3.Parent" xml:space="preserve">
+    <value>groupBox10</value>
   </data>
   <data name="userCtrl_Set7.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 138</value>
@@ -4224,8 +4209,8 @@
   <data name="comboBox_AddSystem.Items" xml:space="preserve">
     <value>Система</value>
   </data>
-  <data name="comboBox_AddDate.Items3" xml:space="preserve">
-    <value>Год</value>
+  <data name="&gt;&gt;panel_UC_Calories.Name" xml:space="preserve">
+    <value>panel_UC_Calories</value>
   </data>
   <data name="&gt;&gt;tabPageConverting.Parent" xml:space="preserve">
     <value>tabControl1</value>
@@ -4263,12 +4248,15 @@
   <data name="&gt;&gt;button_JsonPreview_Read.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="label_TranslateHelp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1, 245</value>
+  </data>
   <data name="imageList1.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACm
-        DQAAAk1TRnQBSQFMAgEBBgEAASgBKwEsASsBEAEAARABAAT/AQkBEAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAATQBKwE4ASsBEAEAARABAAT/AQkBEAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -4374,17 +4362,14 @@
   <data name="label_version.Location" type="System.Drawing.Point, System.Drawing">
     <value>1050, 10</value>
   </data>
-  <data name="radioButton_Settings_Pack_Dialog.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 20</value>
+  <data name="uCtrl_Heart_Elm.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="uCtrl_Steps_Elm.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="uCtrl_Segments_Opt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
-  </data>
-  <data name="&gt;&gt;checkBox_WatchSkin_Use.Name" xml:space="preserve">
-    <value>checkBox_WatchSkin_Use</value>
   </data>
   <data name="checkBox_AllWidgetsInGif.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4431,6 +4416,9 @@
   <data name="&gt;&gt;panel_UC_DateMonth.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <data name="radioButton_Settings_Open_Dialog.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 20</value>
+  </data>
   <data name="radioButton_Settings_AfterUnpack_DoNothing.Size" type="System.Drawing.Size, System.Drawing">
     <value>158, 17</value>
   </data>
@@ -4452,8 +4440,8 @@
   <data name="&gt;&gt;button_PreviewBig.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button_JsonPreview_Write.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="checkBox_Shortcuts_Area.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="panel_UC_AnalogTime.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -4503,6 +4491,9 @@
   <data name="button_Reset.Text" xml:space="preserve">
     <value>Сброс настроек</value>
   </data>
+  <data name="label_TranslateHelp.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt, style=Bold</value>
+  </data>
   <data name="radioButton_ConvertingOutput_GTR3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -4516,8 +4507,7 @@
     <value>По возможности отображать время в 12-часовом формате</value>
   </data>
   <data name="checkBox_AllWidgetsInGif.Text" xml:space="preserve">
-    <value>Отображать все элементы редактируемых зон 
-при сохранении gif файла</value>
+    <value>Отображать все элементы редактируемых зон при сохранении gif файла</value>
   </data>
   <data name="button_Add_Images.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -4543,11 +4533,11 @@
   <data name="uCtrl_DateYear_Elm.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
-    <value>107</value>
+  <data name="uCtrl_Pointer_Opt.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="radioButton_ConvertingOutput_GTR3Pro.Text" xml:space="preserve">
-    <value>GTR 3 Pro</value>
+  <data name="&gt;&gt;button_JSON.Parent" xml:space="preserve">
+    <value>tabPage_Edit</value>
   </data>
   <data name="radioButton_Settings_AfterUnpack_Dialog.Text" xml:space="preserve">
     <value>Предлагать выбор</value>
@@ -4612,6 +4602,9 @@
   <data name="&gt;&gt;panel_WatchfaceElements.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="uCtrl_DigitalTime_Elm.Size" type="System.Drawing.Size, System.Drawing">
+    <value>231, 34</value>
+  </data>
   <data name="numericUpDown_ConvertingInput_Custom.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -4635,6 +4628,9 @@
   </data>
   <data name="&gt;&gt;uCtrl_Shortcut_Opt.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="&gt;&gt;checkBox_border.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="comboBox_AddDate.Items2" xml:space="preserve">
     <value>Месяц</value>
@@ -4681,6 +4677,9 @@
   <data name="&gt;&gt;button_JsonPreview_Read.Parent" xml:space="preserve">
     <value>panel_PreviewStates</value>
   </data>
+  <data name="uCtrl_Heart_Elm.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="label413.Text" xml:space="preserve">
     <value>Утилита для преобразования изображений из циферблатов в нормальный PNG формат:</value>
   </data>
@@ -4701,6 +4700,9 @@
   </data>
   <data name="panel_UC_Statuses.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="&gt;&gt;panel_PreviewStates.Name" xml:space="preserve">
+    <value>panel_PreviewStates</value>
   </data>
   <data name="&gt;&gt;tabPage_Edit_Elements.Name" xml:space="preserve">
     <value>tabPage_Edit_Elements</value>
@@ -4735,8 +4737,8 @@
   <data name="label_preview_X.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;userCtrl_Set1.Type" xml:space="preserve">
-    <value>ControlLibrary.UCtrl_Set, ControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;uCtrl_Shortcut_Opt.Type" xml:space="preserve">
+    <value>ControlLibrary.UCtrl_Shortcut_Opt, ControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="pictureBox_IconBackground.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -4752,6 +4754,9 @@
   </data>
   <data name="uCtrl_Battery_Elm.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
+  </data>
+  <data name="label407.Location" type="System.Drawing.Point, System.Drawing">
+    <value>235, 35</value>
   </data>
   <data name="panel_UC_Calories.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 374</value>
@@ -4786,17 +4791,20 @@
   <data name="&gt;&gt;panel_UC_DateMonth.Parent" xml:space="preserve">
     <value>tableLayoutPanel_ElemetsWatchFace</value>
   </data>
+  <data name="numericUpDown_ConvertingInput_Custom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 20</value>
+  </data>
   <data name="button_OpenDir.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="userCtrl_Set10.Size" type="System.Drawing.Size, System.Drawing">
     <value>519, 23</value>
   </data>
-  <data name="radioButton_Settings_Open_Dialog.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 20</value>
+  <data name="&gt;&gt;comboBox_AddDate.Parent" xml:space="preserve">
+    <value>groupBox_AddElemets</value>
   </data>
-  <data name="numericUpDown_ConvertingInput_Custom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 20</value>
+  <data name="label356.Location" type="System.Drawing.Point, System.Drawing">
+    <value>409, 327</value>
   </data>
   <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
     <value>238, 5</value>
@@ -4816,8 +4824,8 @@
   <data name="&gt;&gt;checkBox_Show_Shortcuts.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;radioButton_Settings_Pack_GoToFile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;panel_WatchfaceElements.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;userCtrl_Set9.Name" xml:space="preserve">
     <value>userCtrl_Set9</value>
@@ -4825,11 +4833,11 @@
   <data name="pictureBox_IconBackground.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Center</value>
   </data>
-  <data name="uCtrl_PAI_Elm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>231, 34</value>
+  <data name="button_SaveJson.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
   </data>
-  <data name="radioButton_Settings_AfterUnpack_Download.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 44</value>
+  <data name="radioButton_ConvertingInput_TRexPro.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;numericUpDown_ConvertingInput_Custom.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -4864,8 +4872,8 @@
   <data name="&gt;&gt;uCtrl_Background_Elm.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="Number.Width" type="System.Int32, mscorlib">
-    <value>25</value>
+  <data name="&gt;&gt;radioButton_Settings_Open_Download.Name" xml:space="preserve">
+    <value>radioButton_Settings_Open_Download</value>
   </data>
   <data name="userCtrl_Set1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -4903,14 +4911,14 @@
   <data name="radioButton_Settings_Unpack_Dialog.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="panel_MainScreen_AOD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>519, 30</value>
+  <data name="button_JsonPreview_Random.Location" type="System.Drawing.Point, System.Drawing">
+    <value>394, 3</value>
   </data>
-  <data name="label409.Size" type="System.Drawing.Size, System.Drawing">
-    <value>447, 78</value>
+  <data name="&gt;&gt;radioButton_Settings_Pack_GoToFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="radioButton_Settings_AfterUnpack_Dialog.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="button_JsonPreview_Write.Text" xml:space="preserve">
+    <value>Сохранить значения</value>
   </data>
   <data name="userCtrl_Set2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -4920,9 +4928,6 @@
   </data>
   <data name="uCtrl_Images_Opt.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 80</value>
-  </data>
-  <data name="pictureBox_IconTime.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
   </data>
   <data name="radioButton_Settings_Unpack_Dialog.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -4942,14 +4947,8 @@
   <data name="&gt;&gt;button_JsonPreview_Write.Name" xml:space="preserve">
     <value>button_JsonPreview_Write</value>
   </data>
-  <data name="uCtrl_Circle_Scale_Opt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
   <data name="numericUpDown_Gif_Speed.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
-  </data>
-  <data name="radioButton_ConvertingInput_TRexPro.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
@@ -5002,6 +5001,9 @@
   <data name="panel_ElementsOpt.Location" type="System.Drawing.Point, System.Drawing">
     <value>262, 3</value>
   </data>
+  <data name="dataGridView_ImagesList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>285, 519</value>
+  </data>
   <data name="userCtrl_Set4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
@@ -5029,14 +5031,14 @@
   <data name="&gt;&gt;comboBox_AddSystem.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="radioButton_GTS3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="panel_UC_Heart.Size" type="System.Drawing.Size, System.Drawing">
     <value>231, 34</value>
   </data>
   <data name="label408.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
-    <value>$this</value>
   </data>
   <data name="userCtrl_Set5.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -5062,8 +5064,8 @@
   <data name="label406.Text" xml:space="preserve">
     <value>Версия:</value>
   </data>
-  <data name="&gt;&gt;label_ConvertingHelp02.Parent" xml:space="preserve">
-    <value>tabPageConverting</value>
+  <data name="&gt;&gt;userCtrl_Set1.ZOrder" xml:space="preserve">
+    <value>11</value>
   </data>
   <data name="button_RandomPreview.Text" xml:space="preserve">
     <value>Случайные значения</value>
@@ -5076,6 +5078,9 @@
   </data>
   <data name="&gt;&gt;userCtrl_Background_Options.Type" xml:space="preserve">
     <value>ControlLibrary.UCtrl_Background_Opt, ControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="uCtrl_DateDay_Elm.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="radioButton_Settings_Open_DoNotning.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -5098,6 +5103,9 @@
   <data name="&gt;&gt;button_CopyAOD.Name" xml:space="preserve">
     <value>button_CopyAOD</value>
   </data>
+  <data name="&gt;&gt;label_ConvertingHelp02.Parent" xml:space="preserve">
+    <value>tabPageConverting</value>
+  </data>
   <data name="&gt;&gt;checkBox_ShowIn12hourFormat.Name" xml:space="preserve">
     <value>checkBox_ShowIn12hourFormat</value>
   </data>
@@ -5113,8 +5121,8 @@
   <data name="&gt;&gt;radioButton_Settings_Unpack_Dialog.Name" xml:space="preserve">
     <value>radioButton_Settings_Unpack_Dialog</value>
   </data>
-  <data name="comboBox_AddActivity.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="comboBox_AddTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>30, 24</value>
   </data>
   <data name="&gt;&gt;panel_UC_Heart.ZOrder" xml:space="preserve">
     <value>11</value>
@@ -5152,11 +5160,11 @@
   <data name="radioButton_Settings_AfterUnpack_DoNothing.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 68</value>
   </data>
+  <data name="userCtrl_Set2.ButtonText" xml:space="preserve">
+    <value>Набор параметров 2</value>
+  </data>
   <data name="&gt;&gt;numericUpDown_ConvertingInput_Custom.Parent" xml:space="preserve">
     <value>groupBox9</value>
-  </data>
-  <data name="panel_UC_AnalogTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 34</value>
   </data>
   <data name="checkBox_Shortcuts_Border.Text" xml:space="preserve">
     <value>Показывать рамку вокруг ярлыка</value>
@@ -5191,8 +5199,8 @@
   <data name="&gt;&gt;userCtrl_Set5.Type" xml:space="preserve">
     <value>ControlLibrary.UCtrl_Set, ControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="label_TranslateHelp.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="button_JsonPreview_Random.Text" xml:space="preserve">
+    <value>Случайные значения</value>
   </data>
   <data name="&gt;&gt;label_TranslateHelp.Parent" xml:space="preserve">
     <value>tabPage_About</value>
@@ -5227,9 +5235,6 @@
   <data name="&gt;&gt;NameFile.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="checkBox_JsonWarnings.TabIndex" type="System.Int32, mscorlib">
-    <value>48</value>
-  </data>
   <data name="Column1.Width" type="System.Int32, mscorlib">
     <value>80</value>
   </data>
@@ -5242,8 +5247,8 @@
   <data name="&gt;&gt;checkBox_WebW.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;uCtrl_AnalogTime_Elm.Name" xml:space="preserve">
-    <value>uCtrl_AnalogTime_Elm</value>
+  <data name="comboBox_AddDate.Items3" xml:space="preserve">
+    <value>Год</value>
   </data>
   <data name="&gt;&gt;userCtrl_Set8.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -5263,9 +5268,6 @@
   <data name="&gt;&gt;panel_set.Name" xml:space="preserve">
     <value>panel_set</value>
   </data>
-  <data name="&gt;&gt;checkBox_WatchSkin_Use.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="pictureBox_IconDate.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Center</value>
   </data>
@@ -5284,8 +5286,8 @@
   <data name="panel_UC_Distance.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>
   </data>
-  <data name="userCtrl_Set2.ButtonText" xml:space="preserve">
-    <value>Набор параметров 2</value>
+  <data name="uCtrl_Images_Opt.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="panel_UC_Steps.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -5296,8 +5298,11 @@
   <data name="uCtrl_Text_Opt.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 20</value>
   </data>
-  <data name="button_SavePNG.Text" xml:space="preserve">
-    <value>Сохранить PNG</value>
+  <data name="&gt;&gt;button_JsonPreview_Write.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="comboBox_Language.Items2" xml:space="preserve">
+    <value>Chinese/简体中文</value>
   </data>
   <data name="&gt;&gt;button_SavePNG.Parent" xml:space="preserve">
     <value>$this</value>
@@ -5326,8 +5331,8 @@
   <data name="&gt;&gt;radioButton_ConvertingInput_TRexPro.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="uCtrl_Pointer_Opt.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="radioButton_ConvertingInput_Custom.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;userCtrl_Set7.Parent" xml:space="preserve">
     <value>panel_set</value>
@@ -5344,11 +5349,14 @@
   <data name="&gt;&gt;groupBox6.Name" xml:space="preserve">
     <value>groupBox6</value>
   </data>
-  <data name="radioButton_GTS3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="button_OpenDir.Text" xml:space="preserve">
+    <value>Открыть папку</value>
   </data>
-  <data name="panel_UC_Background.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+  <data name="&gt;&gt;tabPage_Edit.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;checkBox_JsonWarnings.Parent" xml:space="preserve">
+    <value>tabPage_Settings</value>
   </data>
   <data name="radioButton_ConvertingOutput_GTR3Pro.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 17</value>
@@ -5358,9 +5366,6 @@
   </data>
   <data name="userCtrl_Set6.ButtonText" xml:space="preserve">
     <value>Набор параметров 6</value>
-  </data>
-  <data name="button_Converting.Text" xml:space="preserve">
-    <value>Конвертировать</value>
   </data>
   <data name="&gt;&gt;label_version.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -5425,11 +5430,14 @@
   <data name="&gt;&gt;uCtrl_Linear_Scale_Opt.Parent" xml:space="preserve">
     <value>panel_ElementsOpt</value>
   </data>
-  <data name="userCtrl_Set10.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+  <data name="panel_UC_Background.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;radioButton_ConvertingInput_GTR3.Name" xml:space="preserve">
     <value>radioButton_ConvertingInput_GTR3</value>
+  </data>
+  <data name="tabPageConverting.Size" type="System.Drawing.Size, System.Drawing">
+    <value>833, 644</value>
   </data>
   <data name="label_TranslateHelp.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -5485,14 +5493,14 @@
   <data name="userCtrl_Set12.Size" type="System.Drawing.Size, System.Drawing">
     <value>519, 23</value>
   </data>
-  <data name="radioButton_Settings_Unpack_Save.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 44</value>
+  <data name="radioButton_ConvertingOutput_Custom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="&gt;&gt;radioButton_Settings_Open_DoNotning.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="comboBox_AddTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 24</value>
+  <data name="groupBox7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 115</value>
   </data>
   <data name="label414.Location" type="System.Drawing.Point, System.Drawing">
     <value>235, 210</value>
@@ -5506,8 +5514,8 @@
   <data name="userCtrl_Set4.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 69</value>
   </data>
-  <data name="tabPageConverting.Size" type="System.Drawing.Size, System.Drawing">
-    <value>833, 644</value>
+  <data name="groupBox8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>405, 10</value>
   </data>
   <data name="&gt;&gt;groupBox10.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -5569,6 +5577,9 @@
   <data name="&gt;&gt;userCtrl_Set3.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
+  <data name="label_ConvertingHelp.Text" xml:space="preserve">
+    <value>Откройте нужный циферблат или сохраните текущий.</value>
+  </data>
   <data name="uCtrl_DigitalTime_Elm.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
@@ -5608,9 +5619,6 @@
   <data name="&gt;&gt;radioButton_GTR3_Pro.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="uCtrl_Calories_Elm.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
   <data name="checkBox_WebB.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -5635,14 +5643,11 @@
   <data name="&gt;&gt;uCtrl_Icon_Opt.Name" xml:space="preserve">
     <value>uCtrl_Icon_Opt</value>
   </data>
-  <data name="dataGridView_ImagesList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>285, 519</value>
+  <data name="uCtrl_Distance_Elm.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="button_CreatePreview.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 533</value>
-  </data>
-  <data name="checkBox_Shortcuts_Area.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 20</value>
   </data>
   <data name="&gt;&gt;radioButton_ConvertingOutput_GTR3Pro.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -5664,6 +5669,9 @@
   </data>
   <data name="label408.Location" type="System.Drawing.Point, System.Drawing">
     <value>273, 35</value>
+  </data>
+  <data name="NameFile.HeaderText" xml:space="preserve">
+    <value>Имя файла</value>
   </data>
   <data name="&gt;&gt;radioButton_Settings_Unpack_Save.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -5710,17 +5718,23 @@
   <data name="label355.Size" type="System.Drawing.Size, System.Drawing">
     <value>172, 13</value>
   </data>
-  <data name="numericUpDown_ConvertingInput_Custom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>483, 19</value>
-  </data>
   <data name="&gt;&gt;button_JsonPreview_Random.Name" xml:space="preserve">
     <value>button_JsonPreview_Random</value>
   </data>
   <data name="&gt;&gt;linkLabel_py_amazfit_tools.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="&gt;&gt;checkBox_WatchSkin_Use.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="comboBox_Language.Location" type="System.Drawing.Point, System.Drawing">
+    <value>450, 324</value>
+  </data>
   <data name="&gt;&gt;button_Reset.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="radioButton_ScreenIdle.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;uCtrl_Circle_Scale_Opt.Parent" xml:space="preserve">
     <value>panel_ElementsOpt</value>
@@ -5800,9 +5814,6 @@
   <data name="&gt;&gt;checkBox_Shortcuts_Area.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="uCtrl_Images_Opt.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="&gt;&gt;label409.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
@@ -5873,8 +5884,8 @@
   <data name="comboBox_AddTime.Items2" xml:space="preserve">
     <value>Цифровое время</value>
   </data>
-  <data name="radioButton_Settings_Unpack_Replace.Text" xml:space="preserve">
-    <value>Заменить</value>
+  <data name="&gt;&gt;radioButton_Settings_AfterUnpack_Dialog.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="textBox_WatchSkin_Path.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 42</value>
@@ -5882,8 +5893,8 @@
   <data name="panel_UC_Statuses.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 238</value>
   </data>
-  <data name="&gt;&gt;userCtrl_Set10.Name" xml:space="preserve">
-    <value>userCtrl_Set10</value>
+  <data name="uCtrl_Circle_Scale_Opt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="textBox_WatchSkin_Path.Size" type="System.Drawing.Size, System.Drawing">
     <value>291, 20</value>
@@ -5900,8 +5911,8 @@
   <data name="label408.Size" type="System.Drawing.Size, System.Drawing">
     <value>72, 13</value>
   </data>
-  <data name="NameFile.HeaderText" xml:space="preserve">
-    <value>Имя файла</value>
+  <data name="uCtrl_Pointer_Opt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="uCtrl_Shortcuts_Elm.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -5918,20 +5929,11 @@
   <data name="&gt;&gt;panel_UC_Shortcuts.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="panel_UC_Statuses.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
   <data name="checkBox_WidgetsArea.TabIndex" type="System.Int32, mscorlib">
     <value>105</value>
   </data>
-  <data name="&gt;&gt;button_JSON.Parent" xml:space="preserve">
-    <value>tabPage_Edit</value>
-  </data>
   <data name="&gt;&gt;checkBox_Shortcuts_Area.Name" xml:space="preserve">
     <value>checkBox_Shortcuts_Area</value>
-  </data>
-  <data name="&gt;&gt;label355.Parent" xml:space="preserve">
-    <value>tabPage_Settings</value>
   </data>
   <data name="panel_UC_DateMonth.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -5951,20 +5953,26 @@
   <data name="&gt;&gt;groupBox_AddElemets.Name" xml:space="preserve">
     <value>groupBox_AddElemets</value>
   </data>
+  <data name="Number.Width" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
   <data name="tabControl_Edit_SetShow.Size" type="System.Drawing.Size, System.Drawing">
     <value>533, 637</value>
   </data>
   <data name="&gt;&gt;label_ConvertingHelp01.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;panel_MainScreen_AOD.Name" xml:space="preserve">
-    <value>panel_MainScreen_AOD</value>
+  <data name="&gt;&gt;comboBox_AddTime.Parent" xml:space="preserve">
+    <value>groupBox_AddElemets</value>
   </data>
   <data name="comboBox_AddTime.Items1" xml:space="preserve">
     <value>Аналоговое время</value>
   </data>
   <data name="button_Add_Images.Text" xml:space="preserve">
     <value>Добавить изображения</value>
+  </data>
+  <data name="&gt;&gt;radioButton_ScreenNormal.Name" xml:space="preserve">
+    <value>radioButton_ScreenNormal</value>
   </data>
   <data name="button_RefreshPreview.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -6071,8 +6079,8 @@
   <data name="label415.Size" type="System.Drawing.Size, System.Drawing">
     <value>128, 13</value>
   </data>
-  <data name="&gt;&gt;Number.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="userCtrl_Set5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>519, 23</value>
   </data>
   <data name="comboBox_AddAir.Location" type="System.Drawing.Point, System.Drawing">
     <value>204, 53</value>
@@ -6100,6 +6108,9 @@
   </data>
   <data name="&gt;&gt;uCtrl_DateWeek_Elm.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="panel_UC_Battery.TabIndex" type="System.Int32, mscorlib">
+    <value>26</value>
   </data>
   <data name="tabPage_Edit_Elements.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
@@ -6152,17 +6163,11 @@
   <data name="&gt;&gt;userCtrl_Set7.Type" xml:space="preserve">
     <value>ControlLibrary.UCtrl_Set, ControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="label356.Location" type="System.Drawing.Point, System.Drawing">
-    <value>409, 327</value>
-  </data>
-  <data name="&gt;&gt;groupBox7.Name" xml:space="preserve">
-    <value>groupBox7</value>
-  </data>
   <data name="button_PreviewBig.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 285</value>
   </data>
-  <data name="uCtrl_DigitalTime_Elm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>231, 34</value>
+  <data name="radioButton_Settings_Open_Download.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="pictureBox2.Size" type="System.Drawing.Size, System.Drawing">
     <value>227, 227</value>
@@ -6179,14 +6184,14 @@
   <data name="uCtrl_Battery_Elm.Size" type="System.Drawing.Size, System.Drawing">
     <value>231, 34</value>
   </data>
+  <data name="&gt;&gt;uCtrl_Heart_Elm.Parent" xml:space="preserve">
+    <value>panel_UC_Heart</value>
+  </data>
   <data name="&gt;&gt;uCtrl_Images_Opt.Type" xml:space="preserve">
     <value>ControlLibrary.UCtrl_Images_Opt, ControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;button_SaveJson.Parent" xml:space="preserve">
     <value>tabPage_Edit</value>
-  </data>
-  <data name="uCtrl_Pointer_Opt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
   </data>
   <data name="&gt;&gt;checkBox_Show_Shortcuts.ZOrder" xml:space="preserve">
     <value>12</value>
@@ -6242,8 +6247,8 @@
   <data name="label_ConvertingHelp02.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="uCtrl_Distance_Elm.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="tabPage_About.Text" xml:space="preserve">
+    <value>О программе</value>
   </data>
   <data name="panel_UC_DigitalTime.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -6431,6 +6436,9 @@
   <data name="&gt;&gt;groupBox9.Name" xml:space="preserve">
     <value>groupBox9</value>
   </data>
+  <data name="label_TranslateHelp.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
   <data name="button_WatchSkin_PathGet.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
@@ -6458,8 +6466,8 @@
   <data name="groupBox10.Size" type="System.Drawing.Size, System.Drawing">
     <value>827, 47</value>
   </data>
-  <data name="&gt;&gt;userCtrl_Set12.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="pictureBox_IconSystem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 20</value>
   </data>
   <data name="comboBox_AddActivity.Items7" xml:space="preserve">
     <value>Активность</value>
@@ -6490,9 +6498,6 @@
   </data>
   <data name="uCtrl_Calories_Elm.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="uCtrl_Steps_Elm.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="label406.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6542,9 +6547,6 @@
   <data name="&gt;&gt;button_SaveGIF.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;comboBox_AddTime.Parent" xml:space="preserve">
-    <value>groupBox_AddElemets</value>
-  </data>
   <data name="panel_MainScreen_AOD.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 578</value>
   </data>
@@ -6554,8 +6556,8 @@
   <data name="pictureBox_IconSystem.Location" type="System.Drawing.Point, System.Drawing">
     <value>352, 54</value>
   </data>
-  <data name="button_JsonPreview_Write.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 23</value>
+  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="panel_UC_Battery.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -6581,11 +6583,8 @@
   <data name="radioButton_Settings_Unpack_Dialog.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="userCtrl_Set3.ButtonText" xml:space="preserve">
-    <value>Набор параметров 3</value>
-  </data>
-  <data name="&gt;&gt;uCtrl_PAI_Elm.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="uCtrl_Steps_Elm.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="groupBox_AddElemets.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
@@ -6595,6 +6594,9 @@
   </data>
   <data name="&gt;&gt;uCtrl_Background_Elm.Type" xml:space="preserve">
     <value>ControlLibrary.UCtrl_Background_Elm, ControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="radioButton_Settings_AfterUnpack_Download.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 44</value>
   </data>
   <data name="checkBox_WidgetsArea.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 461</value>
