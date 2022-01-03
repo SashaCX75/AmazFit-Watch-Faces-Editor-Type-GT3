@@ -64,11 +64,8 @@ namespace ControlLibrary
             this.comboBox_Image.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_Image.DropDownWidth = 135;
             this.comboBox_Image.FormattingEnabled = true;
-            this.comboBox_Image.Location = new System.Drawing.Point(159, 23);
-            this.comboBox_Image.MaxDropDownItems = 25;
+            resources.ApplyResources(this.comboBox_Image, "comboBox_Image");
             this.comboBox_Image.Name = "comboBox_Image";
-            this.comboBox_Image.Size = new System.Drawing.Size(76, 21);
-            this.comboBox_Image.TabIndex = 115;
             this.comboBox_Image.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
             this.comboBox_Image.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
             this.comboBox_Image.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
@@ -77,7 +74,7 @@ namespace ControlLibrary
             // 
             // numericUpDown_imageX
             // 
-            this.numericUpDown_imageX.Location = new System.Drawing.Point(23, 23);
+            resources.ApplyResources(this.numericUpDown_imageX, "numericUpDown_imageX");
             this.numericUpDown_imageX.Maximum = new decimal(new int[] {
             999,
             0,
@@ -89,14 +86,12 @@ namespace ControlLibrary
             0,
             -2147483648});
             this.numericUpDown_imageX.Name = "numericUpDown_imageX";
-            this.numericUpDown_imageX.Size = new System.Drawing.Size(40, 20);
-            this.numericUpDown_imageX.TabIndex = 118;
             this.numericUpDown_imageX.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
             this.numericUpDown_imageX.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesX_MouseDoubleClick);
             // 
             // numericUpDown_imageY
             // 
-            this.numericUpDown_imageY.Location = new System.Drawing.Point(96, 23);
+            resources.ApplyResources(this.numericUpDown_imageY, "numericUpDown_imageY");
             this.numericUpDown_imageY.Maximum = new decimal(new int[] {
             999,
             0,
@@ -108,52 +103,28 @@ namespace ControlLibrary
             0,
             -2147483648});
             this.numericUpDown_imageY.Name = "numericUpDown_imageY";
-            this.numericUpDown_imageY.Size = new System.Drawing.Size(40, 20);
-            this.numericUpDown_imageY.TabIndex = 119;
             this.numericUpDown_imageY.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
             this.numericUpDown_imageY.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesY_MouseDoubleClick);
             // 
             // label01
             // 
-            this.label01.AutoSize = true;
-            this.label01.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label01.Location = new System.Drawing.Point(159, 6);
+            resources.ApplyResources(this.label01, "label01");
             this.label01.Name = "label01";
-            this.label01.Size = new System.Drawing.Size(84, 13);
-            this.label01.TabIndex = 114;
-            this.label01.Text = "Изображение *";
-            this.label01.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // label02
             // 
-            this.label02.AutoSize = true;
-            this.label02.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label02.Location = new System.Drawing.Point(6, 6);
-            this.label02.Margin = new System.Windows.Forms.Padding(3);
+            resources.ApplyResources(this.label02, "label02");
             this.label02.Name = "label02";
-            this.label02.Size = new System.Drawing.Size(69, 13);
-            this.label02.TabIndex = 120;
-            this.label02.Text = "Координаты";
             // 
             // label04
             // 
-            this.label04.AutoSize = true;
-            this.label04.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label04.Location = new System.Drawing.Point(6, 25);
+            resources.ApplyResources(this.label04, "label04");
             this.label04.Name = "label04";
-            this.label04.Size = new System.Drawing.Size(17, 13);
-            this.label04.TabIndex = 116;
-            this.label04.Text = "X:";
             // 
             // label05
             // 
-            this.label05.AutoSize = true;
-            this.label05.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label05.Location = new System.Drawing.Point(79, 25);
+            resources.ApplyResources(this.label05, "label05");
             this.label05.Name = "label05";
-            this.label05.Size = new System.Drawing.Size(17, 13);
-            this.label05.TabIndex = 117;
-            this.label05.Text = "Y:";
             // 
             // contextMenuStrip_X
             // 
@@ -163,31 +134,25 @@ namespace ControlLibrary
             this.копироватьToolStripMenuItemX,
             this.вставитьToolStripMenuItemX});
             this.contextMenuStrip_X.Name = "contextMenuStrip_X";
-            this.contextMenuStrip_X.Size = new System.Drawing.Size(204, 82);
+            resources.ApplyResources(this.contextMenuStrip_X, "contextMenuStrip_X");
             this.contextMenuStrip_X.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_X_Opening);
             // 
             // вставитьКоординатуХToolStripMenuItem
             // 
-            this.вставитьКоординатуХToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("вставитьКоординатуХToolStripMenuItem.Image")));
+            resources.ApplyResources(this.вставитьКоординатуХToolStripMenuItem, "вставитьКоординатуХToolStripMenuItem");
             this.вставитьКоординатуХToolStripMenuItem.Name = "вставитьКоординатуХToolStripMenuItem";
-            this.вставитьКоординатуХToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
-            this.вставитьКоординатуХToolStripMenuItem.Text = "Вставить координату Х";
             this.вставитьКоординатуХToolStripMenuItem.Click += new System.EventHandler(this.вставитьКоординатуХToolStripMenuItem_Click);
             // 
             // копироватьToolStripMenuItemX
             // 
-            this.копироватьToolStripMenuItemX.Image = ((System.Drawing.Image)(resources.GetObject("копироватьToolStripMenuItemX.Image")));
+            resources.ApplyResources(this.копироватьToolStripMenuItemX, "копироватьToolStripMenuItemX");
             this.копироватьToolStripMenuItemX.Name = "копироватьToolStripMenuItemX";
-            this.копироватьToolStripMenuItemX.Size = new System.Drawing.Size(203, 26);
-            this.копироватьToolStripMenuItemX.Text = "Копировать";
             this.копироватьToolStripMenuItemX.Click += new System.EventHandler(this.копироватьToolStripMenuItem_Click);
             // 
             // вставитьToolStripMenuItemX
             // 
-            this.вставитьToolStripMenuItemX.Image = ((System.Drawing.Image)(resources.GetObject("вставитьToolStripMenuItemX.Image")));
+            resources.ApplyResources(this.вставитьToolStripMenuItemX, "вставитьToolStripMenuItemX");
             this.вставитьToolStripMenuItemX.Name = "вставитьToolStripMenuItemX";
-            this.вставитьToolStripMenuItemX.Size = new System.Drawing.Size(203, 26);
-            this.вставитьToolStripMenuItemX.Text = "Вставить";
             this.вставитьToolStripMenuItemX.Click += new System.EventHandler(this.вставитьToolStripMenuItem_Click);
             // 
             // contextMenuStrip_Y
@@ -198,36 +163,30 @@ namespace ControlLibrary
             this.копироватьToolStripMenuItemY,
             this.вставитьToolStripMenuItemY});
             this.contextMenuStrip_Y.Name = "contextMenuStrip_X";
-            this.contextMenuStrip_Y.Size = new System.Drawing.Size(204, 82);
+            resources.ApplyResources(this.contextMenuStrip_Y, "contextMenuStrip_Y");
             this.contextMenuStrip_Y.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Y_Opening);
             // 
             // вставитьКоординатуYToolStripMenuItem
             // 
-            this.вставитьКоординатуYToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("вставитьКоординатуYToolStripMenuItem.Image")));
+            resources.ApplyResources(this.вставитьКоординатуYToolStripMenuItem, "вставитьКоординатуYToolStripMenuItem");
             this.вставитьКоординатуYToolStripMenuItem.Name = "вставитьКоординатуYToolStripMenuItem";
-            this.вставитьКоординатуYToolStripMenuItem.Size = new System.Drawing.Size(203, 26);
-            this.вставитьКоординатуYToolStripMenuItem.Text = "Вставить координату Y";
             this.вставитьКоординатуYToolStripMenuItem.Click += new System.EventHandler(this.вставитьКоординатуYToolStripMenuItem_Click);
             // 
             // копироватьToolStripMenuItemY
             // 
-            this.копироватьToolStripMenuItemY.Image = ((System.Drawing.Image)(resources.GetObject("копироватьToolStripMenuItemY.Image")));
+            resources.ApplyResources(this.копироватьToolStripMenuItemY, "копироватьToolStripMenuItemY");
             this.копироватьToolStripMenuItemY.Name = "копироватьToolStripMenuItemY";
-            this.копироватьToolStripMenuItemY.Size = new System.Drawing.Size(203, 26);
-            this.копироватьToolStripMenuItemY.Text = "Копировать";
             this.копироватьToolStripMenuItemY.Click += new System.EventHandler(this.копироватьToolStripMenuItem_Click);
             // 
             // вставитьToolStripMenuItemY
             // 
-            this.вставитьToolStripMenuItemY.Image = ((System.Drawing.Image)(resources.GetObject("вставитьToolStripMenuItemY.Image")));
+            resources.ApplyResources(this.вставитьToolStripMenuItemY, "вставитьToolStripMenuItemY");
             this.вставитьToolStripMenuItemY.Name = "вставитьToolStripMenuItemY";
-            this.вставитьToolStripMenuItemY.Size = new System.Drawing.Size(203, 26);
-            this.вставитьToolStripMenuItemY.Text = "Вставить";
             this.вставитьToolStripMenuItemY.Click += new System.EventHandler(this.вставитьToolStripMenuItem_Click);
             // 
             // numericUpDown_width
             // 
-            this.numericUpDown_width.Location = new System.Drawing.Point(23, 90);
+            resources.ApplyResources(this.numericUpDown_width, "numericUpDown_width");
             this.numericUpDown_width.Maximum = new decimal(new int[] {
             999,
             0,
@@ -239,8 +198,6 @@ namespace ControlLibrary
             0,
             -2147483648});
             this.numericUpDown_width.Name = "numericUpDown_width";
-            this.numericUpDown_width.Size = new System.Drawing.Size(40, 20);
-            this.numericUpDown_width.TabIndex = 140;
             this.numericUpDown_width.Value = new decimal(new int[] {
             100,
             0,
@@ -251,7 +208,7 @@ namespace ControlLibrary
             // 
             // numericUpDown_height
             // 
-            this.numericUpDown_height.Location = new System.Drawing.Point(96, 90);
+            resources.ApplyResources(this.numericUpDown_height, "numericUpDown_height");
             this.numericUpDown_height.Maximum = new decimal(new int[] {
             999,
             0,
@@ -263,8 +220,6 @@ namespace ControlLibrary
             0,
             -2147483648});
             this.numericUpDown_height.Name = "numericUpDown_height";
-            this.numericUpDown_height.Size = new System.Drawing.Size(40, 20);
-            this.numericUpDown_height.TabIndex = 142;
             this.numericUpDown_height.Value = new decimal(new int[] {
             100,
             0,
@@ -275,38 +230,22 @@ namespace ControlLibrary
             // 
             // label06
             // 
-            this.label06.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label06.Location = new System.Drawing.Point(79, 56);
-            this.label06.Margin = new System.Windows.Forms.Padding(3);
+            resources.ApplyResources(this.label06, "label06");
             this.label06.Name = "label06";
-            this.label06.Size = new System.Drawing.Size(78, 30);
-            this.label06.TabIndex = 143;
-            this.label06.Text = "Высота области";
-            this.label06.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // label07
             // 
-            this.label07.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.label07.Location = new System.Drawing.Point(11, 56);
-            this.label07.Margin = new System.Windows.Forms.Padding(3);
+            resources.ApplyResources(this.label07, "label07");
             this.label07.Name = "label07";
-            this.label07.Size = new System.Drawing.Size(68, 30);
-            this.label07.TabIndex = 141;
-            this.label07.Text = "Ширина области";
-            this.label07.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 122);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(208, 26);
-            this.label1.TabIndex = 144;
-            this.label1.Text = "* Изображение отображаетмся только \r\nв момент нажатия на ярлык";
             // 
             // UCtrl_Shortcut_Opt
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.numericUpDown_width);
@@ -321,7 +260,6 @@ namespace ControlLibrary
             this.Controls.Add(this.label04);
             this.Controls.Add(this.label05);
             this.Name = "UCtrl_Shortcut_Opt";
-            this.Size = new System.Drawing.Size(255, 175);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_imageX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_imageY)).EndInit();
             this.contextMenuStrip_X.ResumeLayout(false);

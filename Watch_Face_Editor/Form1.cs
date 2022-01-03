@@ -4967,6 +4967,15 @@ namespace Watch_Face_Editor
 
             if (variables.Length>0) indexText = indexText.Replace("//Variable declaration section", variables);
             if (items.Length > 0) indexText = indexText.Replace("//Item description section", items);
+
+            // удаляем слушателя для пульса
+            int pos_destory = indexText.IndexOf("heart_rate.addEventListener");
+            if (pos_destory > 0)
+            {
+                pos_destory = indexText.IndexOf("console.log('index page.js on destory invoke')");
+                indexText = indexText.Insert(pos_destory, "heart_rate.removeEventListener(heart.event.CURRENT, hrCurrListener);"
+                    + Environment.NewLine + TabInString(6));
+            }
             indexText = indexText.Replace("\r", "");
 
             File.WriteAllText(tempDir + @"\watchface\index.js", indexText, Encoding.UTF8);
@@ -6959,7 +6968,7 @@ namespace Watch_Face_Editor
 
                 if (distance.Number == null) distance.Number = new hmUI_widget_IMG_NUMBER();
                 img_number = distance.Number;
-                Read_ImgNumber_Options(img_number, true, false, "", false, true, true);
+                Read_ImgNumber_Options(img_number, true, false, "", false, true, false);
                 ShowElemenrOptions("Text");
 
             }
