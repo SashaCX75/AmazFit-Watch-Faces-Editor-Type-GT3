@@ -37,11 +37,11 @@ namespace ControlLibrary
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip_XY_InTable = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.label02 = new System.Windows.Forms.Label();
             this.вставитьКоординатыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.копироватьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.вставитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.удалитьСтрокуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label02 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_coordinates_set)).BeginInit();
             this.contextMenuStrip_XY_InTable.SuspendLayout();
             this.SuspendLayout();
@@ -110,11 +110,6 @@ namespace ControlLibrary
             this.contextMenuStrip_XY_InTable.Name = "contextMenuStrip_XY_InTable";
             this.contextMenuStrip_XY_InTable.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_XY_InTable_Opening);
             // 
-            // label02
-            // 
-            resources.ApplyResources(this.label02, "label02");
-            this.label02.Name = "label02";
-            // 
             // вставитьКоординатыToolStripMenuItem
             // 
             resources.ApplyResources(this.вставитьКоординатыToolStripMenuItem, "вставитьКоординатыToolStripMenuItem");
@@ -142,6 +137,11 @@ namespace ControlLibrary
             this.удалитьСтрокуToolStripMenuItem.Image = global::ControlLibrary.Properties.Resources.table_row_delete_icon;
             this.удалитьСтрокуToolStripMenuItem.Name = "удалитьСтрокуToolStripMenuItem";
             this.удалитьСтрокуToolStripMenuItem.Click += new System.EventHandler(this.удалитьСтрокуToolStripMenuItem_Click);
+            // 
+            // label02
+            // 
+            resources.ApplyResources(this.label02, "label02");
+            this.label02.Name = "label02";
             // 
             // UCtrl_Segments_Opt
             // 

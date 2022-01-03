@@ -197,11 +197,14 @@
   <data name="checkBox_Images.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 5</value>
   </data>
+  <data name="&gt;&gt;button_Icon.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;checkBox_Circle_Scale.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;panel_Segments.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;button_Segments.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;panel_Images.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -215,9 +218,6 @@
   </data>
   <data name="&gt;&gt;checkBox_Number.Parent" xml:space="preserve">
     <value>panel_Number</value>
-  </data>
-  <data name="pictureBox_Show.Location" type="System.Drawing.Point, System.Drawing">
-    <value>163, 2</value>
   </data>
   <data name="&gt;&gt;button_Segments.Parent" xml:space="preserve">
     <value>panel_Segments</value>
@@ -246,14 +246,20 @@
   <data name="&gt;&gt;pictureBox_Arrow_Right.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="checkBox_Images.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <data name="&gt;&gt;button_Images.Parent" xml:space="preserve">
     <value>panel_Images</value>
   </data>
-  <data name="pictureBox_Arrow_Right.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>Center</value>
+  <data name="button_Images.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
+    <value>ImageBeforeText</value>
   </data>
   <data name="button_Number.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
+  </data>
+  <data name="button_Segments.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="&gt;&gt;button_Icon.Name" xml:space="preserve">
     <value>button_Icon</value>
@@ -264,8 +270,8 @@
   <data name="&gt;&gt;checkBox_Images.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="pictureBox_Show.TabIndex" type="System.Int32, mscorlib">
-    <value>33</value>
+  <data name="button_Images.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 24</value>
   </data>
   <data name="button_Number.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -276,6 +282,47 @@
   <data name="button_ElementName.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="button_Pointer.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
+        EAAAjBIAAP1NAACBPgAAWesAARIPAAA85gAAGc66ySIyAAABJmlDQ1BBZG9iZSBSR0IgKDE5OTgpAAAo
+        z2NgYDJwdHFyZRJgYMjNKykKcndSiIiMUmA/z8DGwMwABonJxQWOAQE+IHZefl4qAwb4do2BEURf1gWZ
+        xUAa4EouKCoB0n+A2CgltTiZgYHRAMjOLi8pAIozzgGyRZKywewNIHZRSJAzkH0EyOZLh7CvgNhJEPYT
+        ELsI6Akg+wtIfTqYzcQBNgfClgGxS1IrQPYyOOcXVBZlpmeUKBhaWloqOKbkJ6UqBFcWl6TmFit45iXn
+        FxXkFyWWpKYA1ULcBwaCEIWgENMAarTQZKAyAMUDhPU5EBy+jGJnEGIIkFxaVAZlMjIZE+YjzJgjwcDg
+        v5SBgeUPQsykl4FhgQ4DA/9UhJiaIQODgD4Dw745AMDGT/0ZOjZcAAAACXBIWXMAAAsMAAALDAE/QCLI
+        AAAGSmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0w
+        TXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIg
+        eDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNi4wLWMwMDIgNzkuMTY0NDYwLCAyMDIwLzA1LzEyLTE2OjA0
+        OjE3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIv
+        MjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9
+        Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUu
+        Y29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdEV2dD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NU
+        eXBlL1Jlc291cmNlRXZlbnQjIiB4bWxuczpwaG90b3Nob3A9Imh0dHA6Ly9ucy5hZG9iZS5jb20vcGhv
+        dG9zaG9wLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1w
+        OkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjEuMiAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRl
+        PSIyMDIxLTExLTI3VDEyOjQxOjE0KzAyOjAwIiB4bXA6TWV0YWRhdGFEYXRlPSIyMDIxLTExLTI3VDEy
+        OjQxOjE0KzAyOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMS0xMS0yN1QxMjo0MToxNCswMjowMCIgeG1w
+        TU06SW5zdGFuY2VJRD0ieG1wLmlpZDphZDRkNDU2OS1lYTFhLWM3NDUtYTgyZS1iYTAwMDBmOTFhNmEi
+        IHhtcE1NOkRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDo0NDJiYTY0Yi1jMThlLWU1NDYt
+        YWE5MS1lZDlkMjc0MGU5ZjQiIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo0YTFjN2Fh
+        My1iOTQ5LWE4NDAtOTljNC0yYzhhYjAyOTgyZTMiIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIGRjOmZv
+        cm1hdD0iaW1hZ2UvcG5nIj4gPHhtcE1NOkhpc3Rvcnk+IDxyZGY6U2VxPiA8cmRmOmxpIHN0RXZ0OmFj
+        dGlvbj0iY3JlYXRlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDo0YTFjN2FhMy1iOTQ5LWE4NDAt
+        OTljNC0yYzhhYjAyOTgyZTMiIHN0RXZ0OndoZW49IjIwMjEtMTEtMjdUMTI6NDE6MTQrMDI6MDAiIHN0
+        RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCAyMS4yIChXaW5kb3dzKSIvPiA8cmRmOmxp
+        IHN0RXZ0OmFjdGlvbj0ic2F2ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6YWQ0ZDQ1NjktZWEx
+        YS1jNzQ1LWE4MmUtYmEwMDAwZjkxYTZhIiBzdEV2dDp3aGVuPSIyMDIxLTExLTI3VDEyOjQxOjE0KzAy
+        OjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgMjEuMiAoV2luZG93cykiIHN0
+        RXZ0OmNoYW5nZWQ9Ii8iLz4gPC9yZGY6U2VxPiA8L3htcE1NOkhpc3Rvcnk+IDxwaG90b3Nob3A6VGV4
+        dExheWVycz4gPHJkZjpCYWc+IDxyZGY6bGkgcGhvdG9zaG9wOkxheWVyTmFtZT0i7pivIiBwaG90b3No
+        b3A6TGF5ZXJUZXh0PSLumK8iLz4gPC9yZGY6QmFnPiA8L3Bob3Rvc2hvcDpUZXh0TGF5ZXJzPiA8L3Jk
+        ZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PpJ0
+        rEYAAACKSURBVDhP1ZLBDcMgEATdAi2kJ7eQFlJcanELaQHfcCAiefwin4y00t5qwTZmq7Ve9MW7q6Fd
+        DSdHV0O7Gk7+fINHiAHhvathUkLjDfDe1XDCwrYYtKth8gp9uvDe1TCfykIGhC/a1fAHG8DSJwyWDnEP
+        jd+I966GyTPEgPDe1TDh9o0zuLmJdTsBH4P/yg9UOU0AAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="&gt;&gt;button_Number.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
@@ -285,8 +332,8 @@
   <data name="button_Circle_Scale.Text" xml:space="preserve">
     <value>Круговая шкала</value>
   </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+  <data name="&gt;&gt;panel_Linear_Scale.Name" xml:space="preserve">
+    <value>panel_Linear_Scale</value>
   </data>
   <data name="panel_Segments.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 26</value>
@@ -296,6 +343,9 @@
   </data>
   <data name="&gt;&gt;checkBox_Images.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pictureBox_Arrow_Right.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>Center</value>
   </data>
   <data name="button_Linear_Scale.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -309,8 +359,8 @@
   <data name="&gt;&gt;panel_Segments.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
-  <data name="button_Pointer.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="button_Pointer.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
   <data name="checkBox_Circle_Scale.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -321,8 +371,8 @@
   <data name="panel_Number.Size" type="System.Drawing.Size, System.Drawing">
     <value>218, 24</value>
   </data>
-  <data name="&gt;&gt;checkBox_Linear_Scale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="button_Images.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="&gt;&gt;pictureBox_Show.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -336,8 +386,11 @@
   <data name="checkBox_Images.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
   </data>
-  <data name="button_ElementName.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>20, 0, 0, 0</value>
+  <data name="&gt;&gt;panel_Linear_Scale.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;panel_Images.Name" xml:space="preserve">
+    <value>panel_Images</value>
   </data>
   <data name="&gt;&gt;button_Linear_Scale.Name" xml:space="preserve">
     <value>button_Linear_Scale</value>
@@ -369,8 +422,8 @@
   <data name="button_Linear_Scale.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="checkBox_Pointer.Size" type="System.Drawing.Size, System.Drawing">
-    <value>15, 14</value>
+  <data name="&gt;&gt;panel_Pointer.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="panel_Linear_Scale.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -378,29 +431,23 @@
   <data name="button_Segments.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
-  <data name="checkBox_Number.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
   <data name="&gt;&gt;panel_Icon.ZOrder" xml:space="preserve">
     <value>6</value>
-  </data>
-  <data name="checkBox_Pointer.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="pictureBox_Show.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Center</value>
   </data>
-  <data name="button_Pointer.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
+  <data name="&gt;&gt;panel_Segments.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;button_Number.Name" xml:space="preserve">
+    <value>button_Number</value>
   </data>
   <data name="&gt;&gt;button_Images.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="button_Segments.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
-  </data>
-  <data name="tableLayoutPanel1.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
   </data>
   <data name="button_ElementName.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -435,8 +482,8 @@
   <data name="&gt;&gt;checkBox_Segments.Parent" xml:space="preserve">
     <value>panel_Segments</value>
   </data>
-  <data name="checkBox_Images.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="pictureBox_Show.Location" type="System.Drawing.Point, System.Drawing">
+    <value>163, 2</value>
   </data>
   <data name="checkBox_Linear_Scale.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 5</value>
@@ -459,8 +506,8 @@
   <data name="button_Linear_Scale.Text" xml:space="preserve">
     <value>Линейная шкала</value>
   </data>
-  <data name="panel_Icon.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+  <data name="&gt;&gt;button_Number.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="panel_Images.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -528,8 +575,8 @@
   <data name="button_Pointer.Location" type="System.Drawing.Point, System.Drawing">
     <value>33, 0</value>
   </data>
-  <data name="panel_Icon.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="&gt;&gt;checkBox_Circle_Scale.Name" xml:space="preserve">
+    <value>checkBox_Circle_Scale</value>
   </data>
   <data name="checkBox_Number.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 5</value>
@@ -537,8 +584,8 @@
   <data name="panel_Pointer.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="&gt;&gt;pictureBox_Show.Name" xml:space="preserve">
-    <value>pictureBox_Show</value>
+  <data name="panel_Icon.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="panel_Number.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -546,8 +593,8 @@
   <data name="button_Circle_Scale.Size" type="System.Drawing.Size, System.Drawing">
     <value>160, 24</value>
   </data>
-  <data name="&gt;&gt;button_Number.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;button_Segments.Name" xml:space="preserve">
+    <value>button_Segments</value>
   </data>
   <data name="panel_Icon.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 151</value>
@@ -567,8 +614,8 @@
   <data name="panel_Pointer.Size" type="System.Drawing.Size, System.Drawing">
     <value>218, 24</value>
   </data>
-  <data name="button_Images.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
+  <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;button_Pointer.Name" xml:space="preserve">
     <value>button_Pointer</value>
@@ -594,11 +641,14 @@
   <data name="&gt;&gt;pictureBox_NotShow.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;panel_Linear_Scale.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="checkBox_Pointer.Size" type="System.Drawing.Size, System.Drawing">
+    <value>15, 14</value>
   </data>
-  <data name="&gt;&gt;button_Segments.Name" xml:space="preserve">
-    <value>button_Segments</value>
+  <data name="button_ElementName.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>20, 0, 0, 0</value>
+  </data>
+  <data name="&gt;&gt;panel_Circle_Scale.Name" xml:space="preserve">
+    <value>panel_Circle_Scale</value>
   </data>
   <data name="checkBox_Number.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -633,8 +683,8 @@
   <data name="panel_Number.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 51</value>
   </data>
-  <data name="&gt;&gt;button_Icon.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="pictureBox_Show.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
   </data>
   <data name="&gt;&gt;panel_Circle_Scale.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -642,20 +692,26 @@
   <data name="button_Number.Size" type="System.Drawing.Size, System.Drawing">
     <value>145, 24</value>
   </data>
+  <data name="&gt;&gt;button_Circle_Scale.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="button_Segments.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
   </data>
   <data name="&gt;&gt;pictureBox_Show.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;panel_Circle_Scale.Name" xml:space="preserve">
-    <value>panel_Circle_Scale</value>
+  <data name="button_Number.Text" xml:space="preserve">
+    <value>Цифровые значения</value>
   </data>
   <data name="&gt;&gt;button_Circle_Scale.Parent" xml:space="preserve">
     <value>panel_Circle_Scale</value>
   </data>
   <data name="&gt;&gt;panel_Segments.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="button_Linear_Scale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>33, 0</value>
   </data>
   <data name="pictureBox_Del.Location" type="System.Drawing.Point, System.Drawing">
     <value>192, 2</value>
@@ -699,11 +755,8 @@
   <data name="button_Icon.Size" type="System.Drawing.Size, System.Drawing">
     <value>160, 24</value>
   </data>
-  <data name="&gt;&gt;button_Segments.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>31</value>
+  <data name="checkBox_Number.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;pictureBox_Arrow_Down.Name" xml:space="preserve">
     <value>pictureBox_Arrow_Down</value>
@@ -713,9 +766,6 @@
   </data>
   <data name="checkBox_Circle_Scale.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 5</value>
-  </data>
-  <data name="panel_Images.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
   </data>
   <data name="button_Number.Location" type="System.Drawing.Point, System.Drawing">
     <value>33, 0</value>
@@ -728,6 +778,9 @@
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="panel_Icon.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="pictureBox_Arrow_Right.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 24</value>
@@ -750,8 +803,8 @@
   <data name="checkBox_Linear_Scale.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
   </data>
-  <data name="button_Number.Text" xml:space="preserve">
-    <value>Цифровые значения</value>
+  <data name="&gt;&gt;panel_Pointer.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="tableLayoutPanel1.CellBorderStyle" type="System.Windows.Forms.TableLayoutPanelCellBorderStyle, System.Windows.Forms">
     <value>Single</value>
@@ -759,20 +812,17 @@
   <data name="tableLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 176</value>
   </data>
-  <data name="button_Circle_Scale.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
   <data name="tableLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <data name="&gt;&gt;checkBox_Number.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="tableLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>31</value>
   </data>
   <data name="pictureBox_Arrow_Down.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Center</value>
   </data>
-  <data name="&gt;&gt;panel_Pointer.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;checkBox_Linear_Scale.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="checkBox_Icon.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -798,49 +848,11 @@
   <data name="&gt;&gt;panel_Pointer.Name" xml:space="preserve">
     <value>panel_Pointer</value>
   </data>
-  <data name="button_Images.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
-    <value>ImageBeforeText</value>
+  <data name="button_Pointer.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
-  <data name="button_Pointer.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
-        EAAAjBIAAP1NAACBPgAAWesAARIPAAA85gAAGc66ySIyAAABJmlDQ1BBZG9iZSBSR0IgKDE5OTgpAAAo
-        z2NgYDJwdHFyZRJgYMjNKykKcndSiIiMUmA/z8DGwMwABonJxQWOAQE+IHZefl4qAwb4do2BEURf1gWZ
-        xUAa4EouKCoB0n+A2CgltTiZgYHRAMjOLi8pAIozzgGyRZKywewNIHZRSJAzkH0EyOZLh7CvgNhJEPYT
-        ELsI6Akg+wtIfTqYzcQBNgfClgGxS1IrQPYyOOcXVBZlpmeUKBhaWloqOKbkJ6UqBFcWl6TmFit45iXn
-        FxXkFyWWpKYA1ULcBwaCEIWgENMAarTQZKAyAMUDhPU5EBy+jGJnEGIIkFxaVAZlMjIZE+YjzJgjwcDg
-        v5SBgeUPQsykl4FhgQ4DA/9UhJiaIQODgD4Dw745AMDGT/0ZOjZcAAAACXBIWXMAAAsMAAALDAE/QCLI
-        AAAGSmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0w
-        TXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIg
-        eDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNi4wLWMwMDIgNzkuMTY0NDYwLCAyMDIwLzA1LzEyLTE2OjA0
-        OjE3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIv
-        MjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9
-        Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUu
-        Y29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdEV2dD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NU
-        eXBlL1Jlc291cmNlRXZlbnQjIiB4bWxuczpwaG90b3Nob3A9Imh0dHA6Ly9ucy5hZG9iZS5jb20vcGhv
-        dG9zaG9wLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1w
-        OkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjEuMiAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRl
-        PSIyMDIxLTExLTI3VDEyOjQxOjE0KzAyOjAwIiB4bXA6TWV0YWRhdGFEYXRlPSIyMDIxLTExLTI3VDEy
-        OjQxOjE0KzAyOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMS0xMS0yN1QxMjo0MToxNCswMjowMCIgeG1w
-        TU06SW5zdGFuY2VJRD0ieG1wLmlpZDphZDRkNDU2OS1lYTFhLWM3NDUtYTgyZS1iYTAwMDBmOTFhNmEi
-        IHhtcE1NOkRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDo0NDJiYTY0Yi1jMThlLWU1NDYt
-        YWE5MS1lZDlkMjc0MGU5ZjQiIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo0YTFjN2Fh
-        My1iOTQ5LWE4NDAtOTljNC0yYzhhYjAyOTgyZTMiIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIGRjOmZv
-        cm1hdD0iaW1hZ2UvcG5nIj4gPHhtcE1NOkhpc3Rvcnk+IDxyZGY6U2VxPiA8cmRmOmxpIHN0RXZ0OmFj
-        dGlvbj0iY3JlYXRlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDo0YTFjN2FhMy1iOTQ5LWE4NDAt
-        OTljNC0yYzhhYjAyOTgyZTMiIHN0RXZ0OndoZW49IjIwMjEtMTEtMjdUMTI6NDE6MTQrMDI6MDAiIHN0
-        RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCAyMS4yIChXaW5kb3dzKSIvPiA8cmRmOmxp
-        IHN0RXZ0OmFjdGlvbj0ic2F2ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6YWQ0ZDQ1NjktZWEx
-        YS1jNzQ1LWE4MmUtYmEwMDAwZjkxYTZhIiBzdEV2dDp3aGVuPSIyMDIxLTExLTI3VDEyOjQxOjE0KzAy
-        OjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgMjEuMiAoV2luZG93cykiIHN0
-        RXZ0OmNoYW5nZWQ9Ii8iLz4gPC9yZGY6U2VxPiA8L3htcE1NOkhpc3Rvcnk+IDxwaG90b3Nob3A6VGV4
-        dExheWVycz4gPHJkZjpCYWc+IDxyZGY6bGkgcGhvdG9zaG9wOkxheWVyTmFtZT0i7pivIiBwaG90b3No
-        b3A6TGF5ZXJUZXh0PSLumK8iLz4gPC9yZGY6QmFnPiA8L3Bob3Rvc2hvcDpUZXh0TGF5ZXJzPiA8L3Jk
-        ZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PpJ0
-        rEYAAACKSURBVDhP1ZLBDcMgEATdAi2kJ7eQFlJcanELaQHfcCAiefwin4y00t5qwTZmq7Ve9MW7q6Fd
-        DSdHV0O7Gk7+fINHiAHhvathUkLjDfDe1XDCwrYYtKth8gp9uvDe1TCfykIGhC/a1fAHG8DSJwyWDnEP
-        jd+I966GyTPEgPDe1TDh9o0zuLmJdTsBH4P/yg9UOU0AAAAASUVORK5CYII=
-</value>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
   </data>
   <data name="button_ElementName.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 28</value>
@@ -854,29 +866,23 @@
   <data name="panel_Segments.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
+  <data name="&gt;&gt;checkBox_Segments.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="pictureBox_Show.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
   <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
     <value>tableLayoutPanel1</value>
   </data>
-  <data name="tableLayoutPanel1.ColumnCount" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
   <data name="checkBox_Images.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
-  </data>
-  <data name="checkBox_Segments.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="pictureBox_NotShow.Location" type="System.Drawing.Point, System.Drawing">
     <value>101, 2</value>
   </data>
   <data name="&gt;&gt;pictureBox_Del.Name" xml:space="preserve">
     <value>pictureBox_Del</value>
-  </data>
-  <data name="&gt;&gt;panel_Linear_Scale.Name" xml:space="preserve">
-    <value>panel_Linear_Scale</value>
   </data>
   <data name="checkBox_Icon.Size" type="System.Drawing.Size, System.Drawing">
     <value>15, 14</value>
@@ -890,8 +896,8 @@
   <data name="&gt;&gt;panel_Circle_Scale.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;panel_Pointer.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="panel_Images.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="&gt;&gt;panel_Number.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -902,17 +908,14 @@
   <data name="&gt;&gt;checkBox_Icon.Name" xml:space="preserve">
     <value>checkBox_Icon</value>
   </data>
-  <data name="&gt;&gt;panel_Images.Name" xml:space="preserve">
-    <value>panel_Images</value>
+  <data name="tableLayoutPanel1.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="checkBox_Images.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="button_ElementName.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
-  </data>
-  <data name="button_Linear_Scale.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
   </data>
   <data name="pictureBox_Del.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
     <value>Center</value>
@@ -941,8 +944,8 @@
   <data name="&gt;&gt;checkBox_Pointer.Name" xml:space="preserve">
     <value>checkBox_Pointer</value>
   </data>
-  <data name="&gt;&gt;button_Number.Name" xml:space="preserve">
-    <value>button_Number</value>
+  <data name="button_Segments.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="pictureBox_Arrow_Down.Size" type="System.Drawing.Size, System.Drawing">
     <value>24, 24</value>
@@ -956,11 +959,11 @@
   <data name="&gt;&gt;pictureBox_NotShow.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="button_Linear_Scale.Location" type="System.Drawing.Point, System.Drawing">
-    <value>33, 0</value>
+  <data name="checkBox_Segments.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="button_Segments.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="button_Circle_Scale.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <data name="&gt;&gt;checkBox_Linear_Scale.Parent" xml:space="preserve">
     <value>panel_Linear_Scale</value>
@@ -992,14 +995,14 @@
   <data name="checkBox_Circle_Scale.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;button_Circle_Scale.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="checkBox_Pointer.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="button_Linear_Scale.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
   </data>
-  <data name="&gt;&gt;checkBox_Circle_Scale.Name" xml:space="preserve">
-    <value>checkBox_Circle_Scale</value>
+  <data name="&gt;&gt;pictureBox_Show.Name" xml:space="preserve">
+    <value>pictureBox_Show</value>
   </data>
   <data name="&gt;&gt;pictureBox_Arrow_Right.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -1019,20 +1022,17 @@
   <data name="panel_Segments.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="&gt;&gt;checkBox_Segments.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;checkBox_Number.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="checkBox_Segments.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="button_Segments.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="button_Circle_Scale.Location" type="System.Drawing.Point, System.Drawing">
     <value>33, 0</value>
   </data>
-  <data name="button_Images.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 24</value>
+  <data name="button_Linear_Scale.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

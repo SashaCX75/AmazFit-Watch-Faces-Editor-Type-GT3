@@ -121,8 +121,8 @@
   <data name="копироватьToolStripMenuItemY.Size" type="System.Drawing.Size, System.Drawing">
     <value>203, 26</value>
   </data>
-  <data name="label08.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 39</value>
+  <data name="&gt;&gt;копироватьToolStripMenuItemX.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label02.Location" type="System.Drawing.Point, System.Drawing">
     <value>153, -1</value>
@@ -172,6 +172,10 @@
   <data name="label02.TabIndex" type="System.Int32, mscorlib">
     <value>129</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label06.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
   <data name="&gt;&gt;checkBox_inversion.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -181,43 +185,32 @@
   <data name="&gt;&gt;label04.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;numericUpDown_scaleLinearY.Name" xml:space="preserve">
+    <value>numericUpDown_scaleLinearY</value>
+  </data>
   <data name="label07.TabIndex" type="System.Int32, mscorlib">
     <value>141</value>
   </data>
   <data name="checkBox_mirror.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 190</value>
   </data>
+  <data name="radioButton_vertical.Text" xml:space="preserve">
+    <value>Вертикальная</value>
+  </data>
+  <data name="label04.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="вставитьToolStripMenuItemY.Size" type="System.Drawing.Size, System.Drawing">
     <value>203, 26</value>
-  </data>
-  <data name="checkBox_inversion.Text" xml:space="preserve">
-    <value>Инверсия шкалы*</value>
   </data>
   <data name="numericUpDown_scaleLinearY.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 20</value>
   </data>
-  <data name="вставитьToolStripMenuItemX.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAK1SURBVDhPZVJLTxNhFJ22PFrkJT4KtIgaEnSB4KP4IJoYE1+oZAqNsFAKiUWKQIypO3+AO10Y
-        UWhrhBBdUAH9EWx0gRG0RUoLpaW0M9OC6+O9Qw0FJzmZm3PPPfe79/sE/gr0ucamkzU9DbUmh9hyq7ez
-        0+602+3O7u5uFRwz12a902upq3acq6/pKS0uMKrF/BUZdNbHdy149+Ylpid9mJmZgd/vRygUUsExc1+m
-        P2Hc+wp9rRZUlZdZM+VkoNeJ/W0WfJ2dw4RvCsMjbrg9Hng8XhVut0flJnyT+DY7D0fLaVRV7BO3qukr
-        MeSI/baz+D7nx4/5X/AvLOJ3cAmLSyEVHAeI4xxrnHSCQ5X7dxoM2hoRCIawsBhEMBRGaHkF4ZWICo6X
-        iONcIBjGQMd5Msg6QTEZDNgsWI7EECZxZDWKaGwNsbW4Co6Z4xxrBjuacKiiLMuAdvCIdhCLJ7EajWEt
-        vo71RBJJSVLBMXOcY00fjVttOvC/wXpSUYWJpARZVqCk0io4Zk41Jo2zrXHXCPocsVc8BUlJq90SkgxF
-        SSGVTqtQUilIxHGONQ+tdI3ZI9A7EB/cboCc2kCCRf8MqDuDY+Y4x5qu5nqYy7MMCukEXTfqKLmJeOYE
-        6ghUyJAVJctgE/evn+CHtG2wJ18n3rt6HJK8sbU8mlfK7IEhybTMxNYy40kZ7VeOwWzcu21gyNOK7Zdr
-        kZTTiNO1cackdeSuDI6Zi0SimP8ZQLPFBJOxdKeB7VINlPQf6kLdaNNSprss0/w0RjyeoBe5jM9Tk7h5
-        xrTrBLnaVtvFoxj1DmPM8xof3g/DN+7Bx9ERjHnfYtQzhKEXz/HsiQPXGo9AvHAYlQdLWjPlgqARBDNd
-        5dNcjeDK1wouQ47gKs6jv05wMcdgrjBf4yrU61xFpNVpNWZBEIS/oF5M/il8x94AAAAASUVORK5CYII=
-</value>
+  <data name="&gt;&gt;label08.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="label03.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 36</value>
-  </data>
-  <data name="comboBox_scaleLinear_color.TabIndex" type="System.Int32, mscorlib">
-    <value>140</value>
   </data>
   <data name="&gt;&gt;comboBox_scaleLinear_image_pointer.Name" xml:space="preserve">
     <value>comboBox_scaleLinear_image_pointer</value>
@@ -230,6 +223,9 @@
   </data>
   <data name="&gt;&gt;radioButton_vertical.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;вставитьToolStripMenuItemY.Name" xml:space="preserve">
+    <value>вставитьToolStripMenuItemY</value>
   </data>
   <data name="radioButton_horizontal.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -287,18 +283,17 @@
   <data name="&gt;&gt;label05.Name" xml:space="preserve">
     <value>label05</value>
   </data>
+  <data name="label01.Text" xml:space="preserve">
+    <value>Координаты начала шкалы</value>
+  </data>
   <data name="&gt;&gt;label04.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
-  <data name="&gt;&gt;label04.Name" xml:space="preserve">
-    <value>label04</value>
+  <data name="radioButton_horizontal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 17</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label05.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
-  </data>
-  <data name="&gt;&gt;radioButton_vertical.Name" xml:space="preserve">
-    <value>radioButton_vertical</value>
   </data>
   <data name="label04.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -309,8 +304,8 @@
   <data name="&gt;&gt;numericUpDown_scaleLinearX.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label06.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;radioButton_vertical.Name" xml:space="preserve">
+    <value>radioButton_vertical</value>
   </data>
   <data name="&gt;&gt;label01.Parent" xml:space="preserve">
     <value>$this</value>
@@ -327,11 +322,14 @@
   <data name="label05.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label04.Location" type="System.Drawing.Point, System.Drawing">
-    <value>76, 36</value>
+  <data name="label05.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 30</value>
   </data>
-  <data name="&gt;&gt;label05.ZOrder" xml:space="preserve">
-    <value>16</value>
+  <data name="&gt;&gt;label08.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButton_vertical.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="label08.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
@@ -348,23 +346,20 @@
   <data name="label01.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 17</value>
   </data>
+  <data name="label02.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomCenter</value>
+  </data>
   <data name="&gt;&gt;contextMenuStrip_X.Name" xml:space="preserve">
     <value>contextMenuStrip_X</value>
-  </data>
-  <data name="radioButton_vertical.Text" xml:space="preserve">
-    <value>Вертикальная</value>
   </data>
   <data name="&gt;&gt;radioButton_horizontal.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="копироватьToolStripMenuItemY.Text" xml:space="preserve">
-    <value>Копировать</value>
+  <data name="label07.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="&gt;&gt;checkBox_mirror.ZOrder" xml:space="preserve">
     <value>4</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
   </data>
   <data name="&gt;&gt;comboBox_scaleLinear_color.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -409,9 +404,6 @@
         vLa4aF41my2rFov1E4H6GzdvOaenTbeRdqbP/q/iuD+MMmJvZ5TQYgAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="&gt;&gt;вставитьToolStripMenuItemY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="label07.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>BottomCenter</value>
   </data>
@@ -423,6 +415,9 @@
   </data>
   <data name="label04.TabIndex" type="System.Int32, mscorlib">
     <value>132</value>
+  </data>
+  <data name="&gt;&gt;label05.ZOrder" xml:space="preserve">
+    <value>16</value>
   </data>
   <data name="label07.Text" xml:space="preserve">
     <value>Цвет</value>
@@ -447,17 +442,17 @@
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>250, 430</value>
   </data>
-  <data name="&gt;&gt;label08.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="groupBox_Orientation.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230, 54</value>
+  <data name="numericUpDown_scaleLinear_width.Location" type="System.Drawing.Point, System.Drawing">
+    <value>93, 99</value>
   </data>
   <data name="label06.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>BottomCenter</value>
   </data>
   <data name="&gt;&gt;radioButton_horizontal.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label03.TabIndex" type="System.Int32, mscorlib">
+    <value>131</value>
   </data>
   <data name="&gt;&gt;label01.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -473,9 +468,6 @@
   </data>
   <data name="&gt;&gt;comboBox_scaleLinear_image_pointer.Parent" xml:space="preserve">
     <value>$this</value>
-  </data>
-  <data name="&gt;&gt;label07.ZOrder" xml:space="preserve">
-    <value>6</value>
   </data>
   <data name="label08.Text" xml:space="preserve">
     <value>* При включенной инверсии шкалы при 
@@ -497,9 +489,6 @@
   <data name="label01.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;копироватьToolStripMenuItemX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="label08.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -509,8 +498,8 @@
   <data name="&gt;&gt;radioButton_horizontal.Name" xml:space="preserve">
     <value>radioButton_horizontal</value>
   </data>
-  <data name="&gt;&gt;radioButton_vertical.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="checkBox_mirror.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 17</value>
   </data>
   <data name="checkBox_mirror.TabIndex" type="System.Int32, mscorlib">
     <value>163</value>
@@ -518,8 +507,8 @@
   <data name="&gt;&gt;label02.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="label06.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="&gt;&gt;contextMenuStrip_Y.Name" xml:space="preserve">
+    <value>contextMenuStrip_Y</value>
   </data>
   <data name="label06.TabIndex" type="System.Int32, mscorlib">
     <value>139</value>
@@ -539,9 +528,6 @@
   <data name="&gt;&gt;numericUpDown_scaleLinearY.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;label08.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="label07.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 30</value>
   </data>
@@ -551,14 +537,31 @@
   <data name="&gt;&gt;numericUpDown_scaleLinear_length.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="label07.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="вставитьToolStripMenuItemX.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAK1SURBVDhPZVJLTxNhFJ22PFrkJT4KtIgaEnSB4KP4IJoYE1+oZAqNsFAKiUWKQIypO3+AO10Y
+        UWhrhBBdUAH9EWx0gRG0RUoLpaW0M9OC6+O9Qw0FJzmZm3PPPfe79/sE/gr0ucamkzU9DbUmh9hyq7ez
+        0+602+3O7u5uFRwz12a902upq3acq6/pKS0uMKrF/BUZdNbHdy149+Ylpid9mJmZgd/vRygUUsExc1+m
+        P2Hc+wp9rRZUlZdZM+VkoNeJ/W0WfJ2dw4RvCsMjbrg9Hng8XhVut0flJnyT+DY7D0fLaVRV7BO3qukr
+        MeSI/baz+D7nx4/5X/AvLOJ3cAmLSyEVHAeI4xxrnHSCQ5X7dxoM2hoRCIawsBhEMBRGaHkF4ZWICo6X
+        iONcIBjGQMd5Msg6QTEZDNgsWI7EECZxZDWKaGwNsbW4Co6Z4xxrBjuacKiiLMuAdvCIdhCLJ7EajWEt
+        vo71RBJJSVLBMXOcY00fjVttOvC/wXpSUYWJpARZVqCk0io4Zk41Jo2zrXHXCPocsVc8BUlJq90SkgxF
+        SSGVTqtQUilIxHGONQ+tdI3ZI9A7EB/cboCc2kCCRf8MqDuDY+Y4x5qu5nqYy7MMCukEXTfqKLmJeOYE
+        6ghUyJAVJctgE/evn+CHtG2wJ18n3rt6HJK8sbU8mlfK7IEhybTMxNYy40kZ7VeOwWzcu21gyNOK7Zdr
+        kZTTiNO1cackdeSuDI6Zi0SimP8ZQLPFBJOxdKeB7VINlPQf6kLdaNNSprss0/w0RjyeoBe5jM9Tk7h5
+        xrTrBLnaVtvFoxj1DmPM8xof3g/DN+7Bx9ERjHnfYtQzhKEXz/HsiQPXGo9AvHAYlQdLWjPlgqARBDNd
+        5dNcjeDK1wouQ47gKs6jv05wMcdgrjBf4yrU61xFpNVpNWZBEIS/oF5M/il8x94AAAAASUVORK5CYII=
+</value>
   </data>
   <data name="label04.Text" xml:space="preserve">
     <value>Y:</value>
   </data>
   <data name="&gt;&gt;label01.ZOrder" xml:space="preserve">
     <value>12</value>
+  </data>
+  <data name="&gt;&gt;label06.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;label07.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -574,6 +577,9 @@
   </data>
   <data name="comboBox_scaleLinear_color.Location" type="System.Drawing.Point, System.Drawing">
     <value>155, 98</value>
+  </data>
+  <data name="label05.Text" xml:space="preserve">
+    <value>Длина шкалы</value>
   </data>
   <data name="копироватьToolStripMenuItemX.Size" type="System.Drawing.Size, System.Drawing">
     <value>203, 26</value>
@@ -594,17 +600,11 @@
         vLa4aF41my2rFov1E4H6GzdvOaenTbeRdqbP/q/iuD+MMmJvZ5TQYgAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="&gt;&gt;label04.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;вставитьКоординатуYToolStripMenuItem.Name" xml:space="preserve">
-    <value>вставитьКоординатуYToolStripMenuItem</value>
-  </data>
   <data name="&gt;&gt;comboBox_scaleLinear_color.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="&gt;&gt;contextMenuStrip_Y.Name" xml:space="preserve">
-    <value>contextMenuStrip_Y</value>
+  <data name="label08.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 39</value>
   </data>
   <data name="comboBox_scaleLinear_image_pointer.MaxDropDownItems" type="System.Int32, mscorlib">
     <value>25</value>
@@ -621,11 +621,11 @@
   <data name="label03.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label03.Text" xml:space="preserve">
-    <value>X:</value>
+  <data name="radioButton_vertical.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;numericUpDown_scaleLinearY.Name" xml:space="preserve">
-    <value>numericUpDown_scaleLinearY</value>
+  <data name="копироватьToolStripMenuItemY.Text" xml:space="preserve">
+    <value>Копировать</value>
   </data>
   <data name="&gt;&gt;label06.ZOrder" xml:space="preserve">
     <value>15</value>
@@ -639,23 +639,17 @@
   <data name="&gt;&gt;comboBox_scaleLinear_color.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="label04.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;label04.Name" xml:space="preserve">
+    <value>label04</value>
   </data>
-  <data name="numericUpDown_scaleLinear_width.Location" type="System.Drawing.Point, System.Drawing">
-    <value>93, 99</value>
+  <data name="label03.Text" xml:space="preserve">
+    <value>X:</value>
   </data>
-  <data name="radioButton_horizontal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>108, 17</value>
-  </data>
-  <data name="&gt;&gt;radioButton_vertical.Parent" xml:space="preserve">
-    <value>groupBox_Orientation</value>
+  <data name="&gt;&gt;label08.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="numericUpDown_scaleLinearY.Location" type="System.Drawing.Point, System.Drawing">
     <value>93, 34</value>
-  </data>
-  <data name="checkBox_mirror.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 17</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -663,8 +657,8 @@
   <data name="groupBox_Orientation.TabIndex" type="System.Int32, mscorlib">
     <value>162</value>
   </data>
-  <data name="label08.TabIndex" type="System.Int32, mscorlib">
-    <value>165</value>
+  <data name="&gt;&gt;radioButton_vertical.Parent" xml:space="preserve">
+    <value>groupBox_Orientation</value>
   </data>
   <data name="label01.Size" type="System.Drawing.Size, System.Drawing">
     <value>144, 13</value>
@@ -672,11 +666,17 @@
   <data name="&gt;&gt;numericUpDown_scaleLinear_length.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="label04.Location" type="System.Drawing.Point, System.Drawing">
+    <value>76, 36</value>
+  </data>
+  <data name="&gt;&gt;label07.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;вставитьКоординатуYToolStripMenuItem.Name" xml:space="preserve">
+    <value>вставитьКоординатуYToolStripMenuItem</value>
+  </data>
   <data name="&gt;&gt;numericUpDown_scaleLinearX.Name" xml:space="preserve">
     <value>numericUpDown_scaleLinearX</value>
-  </data>
-  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 82</value>
   </data>
   <data name="label04.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 13</value>
@@ -687,17 +687,14 @@
   <data name="label07.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="checkBox_inversion.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="label08.TabIndex" type="System.Int32, mscorlib">
+    <value>165</value>
   </data>
   <data name="numericUpDown_scaleLinear_length.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 20</value>
   </data>
   <data name="comboBox_scaleLinear_image_pointer.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 21</value>
-  </data>
-  <data name="&gt;&gt;groupBox_Orientation.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>203, 26</value>
@@ -708,14 +705,14 @@
   <data name="&gt;&gt;checkBox_inversion.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="label06.Size" type="System.Drawing.Size, System.Drawing">
-    <value>78, 30</value>
+  <data name="&gt;&gt;label04.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="label03.TabIndex" type="System.Int32, mscorlib">
-    <value>131</value>
+  <data name="&gt;&gt;вставитьToolStripMenuItemY.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label05.Size" type="System.Drawing.Size, System.Drawing">
-    <value>68, 30</value>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
   </data>
   <data name="&gt;&gt;label03.ZOrder" xml:space="preserve">
     <value>14</value>
@@ -759,14 +756,14 @@
   <data name="label07.Location" type="System.Drawing.Point, System.Drawing">
     <value>153, 65</value>
   </data>
-  <data name="label01.Text" xml:space="preserve">
-    <value>Координаты начала шкалы</value>
+  <data name="checkBox_inversion.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;label02.Name" xml:space="preserve">
     <value>label02</value>
   </data>
-  <data name="&gt;&gt;вставитьToolStripMenuItemY.Name" xml:space="preserve">
-    <value>вставитьToolStripMenuItemY</value>
+  <data name="label06.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 30</value>
   </data>
   <data name="&gt;&gt;contextMenuStrip_X.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -786,11 +783,8 @@
   <data name="label08.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="radioButton_vertical.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="label02.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>BottomCenter</value>
+  <data name="comboBox_scaleLinear_color.TabIndex" type="System.Int32, mscorlib">
+    <value>140</value>
   </data>
   <data name="label01.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -804,14 +798,17 @@
   <data name="numericUpDown_scaleLinear_length.TabIndex" type="System.Int32, mscorlib">
     <value>136</value>
   </data>
-  <data name="label05.Text" xml:space="preserve">
-    <value>Длина шкалы</value>
+  <data name="checkBox_inversion.Text" xml:space="preserve">
+    <value>Инверсия шкалы*</value>
   </data>
   <data name="&gt;&gt;label08.Name" xml:space="preserve">
     <value>label08</value>
   </data>
-  <data name="&gt;&gt;label03.Name" xml:space="preserve">
-    <value>label03</value>
+  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 82</value>
+  </data>
+  <data name="groupBox_Orientation.Size" type="System.Drawing.Size, System.Drawing">
+    <value>230, 54</value>
   </data>
   <data name="numericUpDown_scaleLinear_width.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 20</value>
@@ -822,11 +819,8 @@
   <data name="checkBox_inversion.TabIndex" type="System.Int32, mscorlib">
     <value>164</value>
   </data>
-  <data name="numericUpDown_scaleLinear_length.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 99</value>
-  </data>
-  <data name="&gt;&gt;label08.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;groupBox_Orientation.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;копироватьToolStripMenuItemY.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -842,6 +836,12 @@
   </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Text" xml:space="preserve">
     <value>Вставить координату Y</value>
+  </data>
+  <data name="numericUpDown_scaleLinear_length.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 99</value>
+  </data>
+  <data name="&gt;&gt;label03.Name" xml:space="preserve">
+    <value>label03</value>
   </data>
   <data name="label08.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 236</value>

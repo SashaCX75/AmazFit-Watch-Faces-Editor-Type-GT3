@@ -32,15 +32,15 @@ namespace ControlLibrary
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrl_DateDay_Elm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel_Number = new System.Windows.Forms.Panel();
+            this.button_Number = new System.Windows.Forms.Button();
             this.checkBox_Number = new System.Windows.Forms.CheckBox();
             this.panel_Pointer = new System.Windows.Forms.Panel();
+            this.button_Pointer = new System.Windows.Forms.Button();
             this.checkBox_Pointer = new System.Windows.Forms.CheckBox();
             this.pictureBox_NotShow = new System.Windows.Forms.PictureBox();
             this.pictureBox_Arrow_Right = new System.Windows.Forms.PictureBox();
             this.pictureBox_Show = new System.Windows.Forms.PictureBox();
             this.pictureBox_Del = new System.Windows.Forms.PictureBox();
-            this.button_Number = new System.Windows.Forms.Button();
-            this.button_Pointer = new System.Windows.Forms.Button();
             this.pictureBox_Arrow_Down = new System.Windows.Forms.PictureBox();
             this.button_ElementName = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
@@ -75,6 +75,20 @@ namespace ControlLibrary
             this.panel_Number.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
             this.panel_Number.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
             // 
+            // button_Number
+            // 
+            resources.ApplyResources(this.button_Number, "button_Number");
+            this.button_Number.FlatAppearance.BorderSize = 0;
+            this.button_Number.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.button_Number.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.button_Number.Image = global::ControlLibrary.Properties.Resources.text_icon;
+            this.button_Number.Name = "button_Number";
+            this.button_Number.UseVisualStyleBackColor = true;
+            this.button_Number.Click += new System.EventHandler(this.panel_Number_Click);
+            this.button_Number.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.button_Number.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.button_Number.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
             // checkBox_Number
             // 
             resources.ApplyResources(this.checkBox_Number, "checkBox_Number");
@@ -93,6 +107,20 @@ namespace ControlLibrary
             this.panel_Pointer.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
             this.panel_Pointer.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
             this.panel_Pointer.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // button_Pointer
+            // 
+            resources.ApplyResources(this.button_Pointer, "button_Pointer");
+            this.button_Pointer.FlatAppearance.BorderSize = 0;
+            this.button_Pointer.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.button_Pointer.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.button_Pointer.Image = global::ControlLibrary.Properties.Resources.pointer;
+            this.button_Pointer.Name = "button_Pointer";
+            this.button_Pointer.UseVisualStyleBackColor = true;
+            this.button_Pointer.Click += new System.EventHandler(this.panel_Pointer_Click);
+            this.button_Pointer.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.button_Pointer.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.button_Pointer.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
             // 
             // checkBox_Pointer
             // 
@@ -132,34 +160,6 @@ namespace ControlLibrary
             this.pictureBox_Del.Name = "pictureBox_Del";
             this.pictureBox_Del.TabStop = false;
             this.pictureBox_Del.Click += new System.EventHandler(this.pictureBox_Del_Click);
-            // 
-            // button_Number
-            // 
-            resources.ApplyResources(this.button_Number, "button_Number");
-            this.button_Number.FlatAppearance.BorderSize = 0;
-            this.button_Number.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-            this.button_Number.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            this.button_Number.Image = global::ControlLibrary.Properties.Resources.text_icon;
-            this.button_Number.Name = "button_Number";
-            this.button_Number.UseVisualStyleBackColor = true;
-            this.button_Number.Click += new System.EventHandler(this.panel_Number_Click);
-            this.button_Number.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
-            this.button_Number.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
-            this.button_Number.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
-            // 
-            // button_Pointer
-            // 
-            resources.ApplyResources(this.button_Pointer, "button_Pointer");
-            this.button_Pointer.FlatAppearance.BorderSize = 0;
-            this.button_Pointer.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-            this.button_Pointer.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            this.button_Pointer.Image = global::ControlLibrary.Properties.Resources.pointer;
-            this.button_Pointer.Name = "button_Pointer";
-            this.button_Pointer.UseVisualStyleBackColor = true;
-            this.button_Pointer.Click += new System.EventHandler(this.panel_Pointer_Click);
-            this.button_Pointer.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
-            this.button_Pointer.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
-            this.button_Pointer.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
             // 
             // pictureBox_Arrow_Down
             // 

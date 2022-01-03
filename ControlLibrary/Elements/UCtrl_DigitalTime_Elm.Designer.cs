@@ -63,8 +63,8 @@ namespace ControlLibrary
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.AllowDrop = true;
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+            this.tableLayoutPanel1.AllowDrop = true;
             this.tableLayoutPanel1.Controls.Add(this.panel_Minutes, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel_AmPm, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.panel_Hours, 0, 2);
@@ -75,10 +75,10 @@ namespace ControlLibrary
             // 
             // panel_Minutes
             // 
+            resources.ApplyResources(this.panel_Minutes, "panel_Minutes");
             this.panel_Minutes.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Minutes.Controls.Add(this.button_Minutes);
             this.panel_Minutes.Controls.Add(this.checkBox_Minutes);
-            resources.ApplyResources(this.panel_Minutes, "panel_Minutes");
             this.panel_Minutes.Name = "panel_Minutes";
             this.panel_Minutes.Click += new System.EventHandler(this.panel_Minutes_Click);
             this.panel_Minutes.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -87,10 +87,10 @@ namespace ControlLibrary
             // 
             // button_Minutes
             // 
+            resources.ApplyResources(this.button_Minutes, "button_Minutes");
             this.button_Minutes.FlatAppearance.BorderSize = 0;
             this.button_Minutes.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Minutes.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.button_Minutes, "button_Minutes");
             this.button_Minutes.Image = global::ControlLibrary.Properties.Resources.text_icon;
             this.button_Minutes.Name = "button_Minutes";
             this.button_Minutes.UseVisualStyleBackColor = true;
@@ -108,10 +108,10 @@ namespace ControlLibrary
             // 
             // panel_AmPm
             // 
+            resources.ApplyResources(this.panel_AmPm, "panel_AmPm");
             this.panel_AmPm.BackColor = System.Drawing.SystemColors.Control;
             this.panel_AmPm.Controls.Add(this.button_AmPm);
             this.panel_AmPm.Controls.Add(this.checkBox_AmPm);
-            resources.ApplyResources(this.panel_AmPm, "panel_AmPm");
             this.panel_AmPm.Name = "panel_AmPm";
             this.panel_AmPm.Click += new System.EventHandler(this.panel_AmPm_Click);
             this.panel_AmPm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -120,10 +120,10 @@ namespace ControlLibrary
             // 
             // button_AmPm
             // 
+            resources.ApplyResources(this.button_AmPm, "button_AmPm");
             this.button_AmPm.FlatAppearance.BorderSize = 0;
             this.button_AmPm.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_AmPm.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.button_AmPm, "button_AmPm");
             this.button_AmPm.Image = global::ControlLibrary.Properties.Resources.outline_image_black_18;
             this.button_AmPm.Name = "button_AmPm";
             this.button_AmPm.UseVisualStyleBackColor = true;
@@ -141,10 +141,10 @@ namespace ControlLibrary
             // 
             // panel_Hours
             // 
+            resources.ApplyResources(this.panel_Hours, "panel_Hours");
             this.panel_Hours.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Hours.Controls.Add(this.checkBox_Hours);
             this.panel_Hours.Controls.Add(this.button_Hours);
-            resources.ApplyResources(this.panel_Hours, "panel_Hours");
             this.panel_Hours.Name = "panel_Hours";
             this.panel_Hours.Click += new System.EventHandler(this.panel_Hours_Click);
             this.panel_Hours.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -160,10 +160,10 @@ namespace ControlLibrary
             // 
             // button_Hours
             // 
+            resources.ApplyResources(this.button_Hours, "button_Hours");
             this.button_Hours.FlatAppearance.BorderSize = 0;
             this.button_Hours.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Hours.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.button_Hours, "button_Hours");
             this.button_Hours.Image = global::ControlLibrary.Properties.Resources.text_icon;
             this.button_Hours.Name = "button_Hours";
             this.button_Hours.UseVisualStyleBackColor = true;
@@ -174,10 +174,10 @@ namespace ControlLibrary
             // 
             // panel_Seconds
             // 
+            resources.ApplyResources(this.panel_Seconds, "panel_Seconds");
             this.panel_Seconds.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Seconds.Controls.Add(this.button_Seconds);
             this.panel_Seconds.Controls.Add(this.checkBox_Seconds);
-            resources.ApplyResources(this.panel_Seconds, "panel_Seconds");
             this.panel_Seconds.Name = "panel_Seconds";
             this.panel_Seconds.Click += new System.EventHandler(this.panel_Seconds_Click);
             this.panel_Seconds.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -186,10 +186,10 @@ namespace ControlLibrary
             // 
             // button_Seconds
             // 
+            resources.ApplyResources(this.button_Seconds, "button_Seconds");
             this.button_Seconds.FlatAppearance.BorderSize = 0;
             this.button_Seconds.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Seconds.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            resources.ApplyResources(this.button_Seconds, "button_Seconds");
             this.button_Seconds.Image = global::ControlLibrary.Properties.Resources.text_icon;
             this.button_Seconds.Name = "button_Seconds";
             this.button_Seconds.UseVisualStyleBackColor = true;
@@ -215,8 +215,8 @@ namespace ControlLibrary
             // 
             // pictureBox_Arrow_Right
             // 
-            this.pictureBox_Arrow_Right.BackgroundImage = global::ControlLibrary.Properties.Resources.arrow_right;
             resources.ApplyResources(this.pictureBox_Arrow_Right, "pictureBox_Arrow_Right");
+            this.pictureBox_Arrow_Right.BackgroundImage = global::ControlLibrary.Properties.Resources.arrow_right;
             this.pictureBox_Arrow_Right.Name = "pictureBox_Arrow_Right";
             this.pictureBox_Arrow_Right.TabStop = false;
             this.pictureBox_Arrow_Right.Click += new System.EventHandler(this.button_ElementName_Click);
@@ -231,24 +231,24 @@ namespace ControlLibrary
             // 
             // pictureBox_Del
             // 
-            this.pictureBox_Del.BackgroundImage = global::ControlLibrary.Properties.Resources.outline_delete_forever_black_24;
             resources.ApplyResources(this.pictureBox_Del, "pictureBox_Del");
+            this.pictureBox_Del.BackgroundImage = global::ControlLibrary.Properties.Resources.outline_delete_forever_black_24;
             this.pictureBox_Del.Name = "pictureBox_Del";
             this.pictureBox_Del.TabStop = false;
             this.pictureBox_Del.Click += new System.EventHandler(this.pictureBox_Del_Click);
             // 
             // pictureBox_Arrow_Down
             // 
-            this.pictureBox_Arrow_Down.BackgroundImage = global::ControlLibrary.Properties.Resources.arrow_down;
             resources.ApplyResources(this.pictureBox_Arrow_Down, "pictureBox_Arrow_Down");
+            this.pictureBox_Arrow_Down.BackgroundImage = global::ControlLibrary.Properties.Resources.arrow_down;
             this.pictureBox_Arrow_Down.Name = "pictureBox_Arrow_Down";
             this.pictureBox_Arrow_Down.TabStop = false;
             this.pictureBox_Arrow_Down.Click += new System.EventHandler(this.button_ElementName_Click);
             // 
             // button_ElementName
             // 
-            this.button_ElementName.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this.button_ElementName, "button_ElementName");
+            this.button_ElementName.BackColor = System.Drawing.SystemColors.Control;
             this.button_ElementName.Image = global::ControlLibrary.Properties.Resources.digital_clock_icon;
             this.button_ElementName.Name = "button_ElementName";
             this.button_ElementName.UseVisualStyleBackColor = false;

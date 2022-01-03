@@ -234,6 +234,9 @@
   <data name="label02.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="dataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
+    <value>Y</value>
+  </data>
   <data name="&gt;&gt;dataGridViewTextBoxColumn1.Name" xml:space="preserve">
     <value>dataGridViewTextBoxColumn1</value>
   </data>
@@ -309,17 +312,14 @@
   <data name="&gt;&gt;dataGridView_coordinates_set.Name" xml:space="preserve">
     <value>dataGridView_coordinates_set</value>
   </data>
-  <data name="comboBox_image.TabIndex" type="System.Int32, mscorlib">
-    <value>162</value>
-  </data>
   <data name="&gt;&gt;label01.Name" xml:space="preserve">
     <value>label01</value>
   </data>
   <data name="label01.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>BottomLeft</value>
   </data>
-  <data name="dataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
-    <value>Y</value>
+  <data name="comboBox_image.TabIndex" type="System.Int32, mscorlib">
+    <value>162</value>
   </data>
   <metadata name="dataGridViewTextBoxColumn2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

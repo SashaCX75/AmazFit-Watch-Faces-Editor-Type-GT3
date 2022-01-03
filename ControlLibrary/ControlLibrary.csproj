@@ -50,6 +50,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Strings.zh.Designer.cs">
+      <DependentUpon>Strings.zh.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Properties\Strings.en.Designer.cs">
       <DependentUpon>Strings.en.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -220,33 +225,82 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Elements\UCtrl_AnalogTime_Elm.zh.resx">
+      <DependentUpon>UCtrl_AnalogTime_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Background_Elm.zh.resx">
+      <DependentUpon>UCtrl_Background_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Battery_Elm.en.resx">
+      <DependentUpon>UCtrl_Battery_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Battery_Elm.zh.resx">
       <DependentUpon>UCtrl_Battery_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Calories_Elm.en.resx">
       <DependentUpon>UCtrl_Calories_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Calories_Elm.zh.resx">
+      <DependentUpon>UCtrl_Calories_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_DateDay_Elm.zh.resx">
+      <DependentUpon>UCtrl_DateDay_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_DateMonth_Elm.zh.resx">
+      <DependentUpon>UCtrl_DateMonth_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_DateWeek_Elm.zh.resx">
+      <DependentUpon>UCtrl_DateWeek_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_DateYear_Elm.zh.resx">
+      <DependentUpon>UCtrl_DateYear_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_DigitalTime_Elm.zh.resx">
+      <DependentUpon>UCtrl_DigitalTime_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Distance_Elm.en.resx">
+      <DependentUpon>UCtrl_Distance_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Distance_Elm.zh.resx">
       <DependentUpon>UCtrl_Distance_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Heart_Elm.en.resx">
       <DependentUpon>UCtrl_Heart_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Heart_Elm.zh.resx">
+      <DependentUpon>UCtrl_Heart_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_PAI_Elm.en.resx">
+      <DependentUpon>UCtrl_PAI_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_PAI_Elm.zh.resx">
       <DependentUpon>UCtrl_PAI_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Shortcuts_Elm.en.resx">
       <DependentUpon>UCtrl_Shortcuts_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Shortcuts_Elm.zh.resx">
+      <DependentUpon>UCtrl_Shortcuts_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Statuses_Elm.en.resx">
+      <DependentUpon>UCtrl_Statuses_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Statuses_Elm.zh.resx">
       <DependentUpon>UCtrl_Statuses_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Steps_Elm.en.resx">
       <DependentUpon>UCtrl_Steps_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Steps_Elm.zh.resx">
+      <DependentUpon>UCtrl_Steps_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Strings.zh.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.zh.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Strings.en.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -273,6 +327,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Background_Elm.resx">
       <DependentUpon>UCtrl_Background_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_AmPm_Opt.zh.resx">
+      <DependentUpon>UCtrl_AmPm_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Background_Opt.en.resx">
       <DependentUpon>UCtrl_Background_Opt.cs</DependentUpon>
@@ -316,6 +373,9 @@
     <EmbeddedResource Include="Elements\UCtrl_Calories_Elm.resx">
       <DependentUpon>UCtrl_Calories_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Background_Opt.zh.resx">
+      <DependentUpon>UCtrl_Background_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Circle_Scale_Opt.en.resx">
       <DependentUpon>UCtrl_Circle_Scale_Opt.cs</DependentUpon>
     </EmbeddedResource>
@@ -328,16 +388,25 @@
     <EmbeddedResource Include="Elements\UCtrl_Distance_Elm.resx">
       <DependentUpon>UCtrl_Distance_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Circle_Scale_Opt.zh.resx">
+      <DependentUpon>UCtrl_Circle_Scale_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Icon_Opt.en.resx">
       <DependentUpon>UCtrl_Icon_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Icon_Opt.resx">
       <DependentUpon>UCtrl_Icon_Opt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Icon_Opt.zh.resx">
+      <DependentUpon>UCtrl_Icon_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Images_Opt.en.resx">
       <DependentUpon>UCtrl_Images_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Images_Opt.resx">
+      <DependentUpon>UCtrl_Images_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Images_Opt.zh.resx">
       <DependentUpon>UCtrl_Images_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Linear_Scale_Opt.en.resx">
@@ -349,16 +418,25 @@
     <EmbeddedResource Include="Elements\UCtrl_PAI_Elm.resx">
       <DependentUpon>UCtrl_PAI_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Linear_Scale_Opt.zh.resx">
+      <DependentUpon>UCtrl_Linear_Scale_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Pointer_Opt.en.resx">
       <DependentUpon>UCtrl_Pointer_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Pointer_Opt.resx">
       <DependentUpon>UCtrl_Pointer_Opt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Pointer_Opt.zh.resx">
+      <DependentUpon>UCtrl_Pointer_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Segments_Opt.en.resx">
       <DependentUpon>UCtrl_Segments_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Segments_Opt.resx">
+      <DependentUpon>UCtrl_Segments_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Segments_Opt.zh.resx">
       <DependentUpon>UCtrl_Segments_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Set.en.resx">
@@ -377,6 +455,9 @@
     <EmbeddedResource Include="Elements\UCtrl_Shortcuts_Elm.resx">
       <DependentUpon>UCtrl_Shortcuts_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Set.zh.resx">
+      <DependentUpon>UCtrl_Set.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Shortcut_Opt.en.resx">
       <DependentUpon>UCtrl_Shortcut_Opt.cs</DependentUpon>
     </EmbeddedResource>
@@ -387,6 +468,9 @@
       <DependentUpon>UCtrl_Text_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Text_Opt.resx">
+      <DependentUpon>UCtrl_Text_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Text_Opt.zh.resx">
       <DependentUpon>UCtrl_Text_Opt.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>

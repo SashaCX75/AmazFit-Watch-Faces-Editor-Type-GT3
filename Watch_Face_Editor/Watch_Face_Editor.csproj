@@ -103,6 +103,11 @@
     <Compile Include="Classes\Program_Settings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\Watch_Face_Preview_Set.cs" />
+    <Compile Include="Properties\FormStrings.zh.Designer.cs">
+      <DependentUpon>FormStrings.zh.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="ReadWriteJson.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,14 +118,24 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form1.zh.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormFileExists.en.resx">
       <DependentUpon>FormFileExists.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormFileExists.resx">
       <DependentUpon>FormFileExists.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormFileExists.zh.resx">
+      <DependentUpon>FormFileExists.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormPreview.resx">
       <DependentUpon>FormPreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\FormStrings.zh.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FormStrings.zh.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\FormStrings.en.resx">
       <Generator>ResXFileCodeGenerator</Generator>
