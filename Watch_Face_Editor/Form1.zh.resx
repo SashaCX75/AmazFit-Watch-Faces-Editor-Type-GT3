@@ -546,10 +546,7 @@
     <value>高亮显示指针旋转中心</value>
   </data>
   <data name="button_CreatePreview.Location" type="System.Drawing.Point, System.Drawing">
-  <value>5, 400</value>
-  </data>
-  <data name="button_CreatePreview.Size" type="System.Drawing.Size, System.Drawing">
-  <value>124, 23</value>
+    <value>5, 400</value>
   </data>
   <data name="button_CreatePreview.Text" xml:space="preserve">
     <value>创建预览</value>
