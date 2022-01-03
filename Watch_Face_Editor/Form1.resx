@@ -3700,6 +3700,9 @@
   <data name="comboBox_Language.Items1" xml:space="preserve">
     <value>English</value>
   </data>
+  <data name="comboBox_Language.Items2" xml:space="preserve">
+  <value>Chinese/简体中文</value>
+  </data>
   <data name="comboBox_Language.Location" type="System.Drawing.Point, System.Drawing">
     <value>450, 324</value>
   </data>
