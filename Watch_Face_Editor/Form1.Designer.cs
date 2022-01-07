@@ -268,18 +268,17 @@ namespace Watch_Face_Editor
             // 
             // tabControl1
             // 
-            resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Controls.Add(this.tabPage_Edit);
             this.tabControl1.Controls.Add(this.tabPageConverting);
             this.tabControl1.Controls.Add(this.tabPage_Settings);
             this.tabControl1.Controls.Add(this.tabPage_About);
+            resources.ApplyResources(this.tabControl1, "tabControl1");
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Selecting += new System.Windows.Forms.TabControlCancelEventHandler(this.tabControl1_Selecting);
             // 
             // tabPage_Edit
             // 
-            resources.ApplyResources(this.tabPage_Edit, "tabPage_Edit");
             this.tabPage_Edit.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage_Edit.Controls.Add(this.button_SaveJson);
             this.tabPage_Edit.Controls.Add(this.button_OpenDir);
@@ -288,6 +287,7 @@ namespace Watch_Face_Editor
             this.tabPage_Edit.Controls.Add(this.button_New_Project);
             this.tabPage_Edit.Controls.Add(this.dataGridView_ImagesList);
             this.tabPage_Edit.Controls.Add(this.button_JSON);
+            resources.ApplyResources(this.tabPage_Edit, "tabPage_Edit");
             this.tabPage_Edit.Name = "tabPage_Edit";
             // 
             // button_SaveJson
@@ -306,25 +306,24 @@ namespace Watch_Face_Editor
             // 
             // tabControl_Edit_SetShow
             // 
-            resources.ApplyResources(this.tabControl_Edit_SetShow, "tabControl_Edit_SetShow");
             this.tabControl_Edit_SetShow.Controls.Add(this.tabPage_Edit_Elements);
             this.tabControl_Edit_SetShow.Controls.Add(this.tabPage_Show_Set);
+            resources.ApplyResources(this.tabControl_Edit_SetShow, "tabControl_Edit_SetShow");
             this.tabControl_Edit_SetShow.Name = "tabControl_Edit_SetShow";
             this.tabControl_Edit_SetShow.SelectedIndex = 0;
             // 
             // tabPage_Edit_Elements
             // 
-            resources.ApplyResources(this.tabPage_Edit_Elements, "tabPage_Edit_Elements");
             this.tabPage_Edit_Elements.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage_Edit_Elements.Controls.Add(this.groupBox_AddElemets);
             this.tabPage_Edit_Elements.Controls.Add(this.panel_WatchfaceElements);
             this.tabPage_Edit_Elements.Controls.Add(this.panel_ElementsOpt);
             this.tabPage_Edit_Elements.Controls.Add(this.panel_MainScreen_AOD);
+            resources.ApplyResources(this.tabPage_Edit_Elements, "tabPage_Edit_Elements");
             this.tabPage_Edit_Elements.Name = "tabPage_Edit_Elements";
             // 
             // groupBox_AddElemets
             // 
-            resources.ApplyResources(this.groupBox_AddElemets, "groupBox_AddElemets");
             this.groupBox_AddElemets.Controls.Add(this.pictureBox_IconBackground);
             this.groupBox_AddElemets.Controls.Add(this.comboBox_AddBackground);
             this.groupBox_AddElemets.Controls.Add(this.pictureBox_IconDate);
@@ -337,65 +336,65 @@ namespace Watch_Face_Editor
             this.groupBox_AddElemets.Controls.Add(this.comboBox_AddActivity);
             this.groupBox_AddElemets.Controls.Add(this.comboBox_AddDate);
             this.groupBox_AddElemets.Controls.Add(this.comboBox_AddTime);
+            resources.ApplyResources(this.groupBox_AddElemets, "groupBox_AddElemets");
             this.groupBox_AddElemets.Name = "groupBox_AddElemets";
             this.groupBox_AddElemets.TabStop = false;
             this.groupBox_AddElemets.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox_Paint);
             // 
             // pictureBox_IconBackground
             // 
-            resources.ApplyResources(this.pictureBox_IconBackground, "pictureBox_IconBackground");
             this.pictureBox_IconBackground.BackgroundImage = global::Watch_Face_Editor.Properties.Resources.Background_icon;
+            resources.ApplyResources(this.pictureBox_IconBackground, "pictureBox_IconBackground");
             this.pictureBox_IconBackground.Name = "pictureBox_IconBackground";
             this.pictureBox_IconBackground.TabStop = false;
             // 
             // comboBox_AddBackground
             // 
-            resources.ApplyResources(this.comboBox_AddBackground, "comboBox_AddBackground");
             this.comboBox_AddBackground.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_AddBackground.FormattingEnabled = true;
             this.comboBox_AddBackground.Items.AddRange(new object[] {
             resources.GetString("comboBox_AddBackground.Items")});
+            resources.ApplyResources(this.comboBox_AddBackground, "comboBox_AddBackground");
             this.comboBox_AddBackground.Name = "comboBox_AddBackground";
             this.comboBox_AddBackground.SelectedIndexChanged += new System.EventHandler(this.comboBox_AddBackground_SelectedIndexChanged);
             // 
             // pictureBox_IconDate
             // 
-            resources.ApplyResources(this.pictureBox_IconDate, "pictureBox_IconDate");
             this.pictureBox_IconDate.BackgroundImage = global::Watch_Face_Editor.Properties.Resources.Very_Basic_Calendar_16;
+            resources.ApplyResources(this.pictureBox_IconDate, "pictureBox_IconDate");
             this.pictureBox_IconDate.Name = "pictureBox_IconDate";
             this.pictureBox_IconDate.TabStop = false;
             // 
             // pictureBox_IconAir
             // 
-            resources.ApplyResources(this.pictureBox_IconAir, "pictureBox_IconAir");
             this.pictureBox_IconAir.BackgroundImage = global::Watch_Face_Editor.Properties.Resources.Weather_Partly_Cloudy_Rain_16;
+            resources.ApplyResources(this.pictureBox_IconAir, "pictureBox_IconAir");
             this.pictureBox_IconAir.Name = "pictureBox_IconAir";
             this.pictureBox_IconAir.TabStop = false;
             // 
             // pictureBox_IconSystem
             // 
-            resources.ApplyResources(this.pictureBox_IconSystem, "pictureBox_IconSystem");
             this.pictureBox_IconSystem.BackgroundImage = global::Watch_Face_Editor.Properties.Resources.Logos_Administrative_Tools_16;
+            resources.ApplyResources(this.pictureBox_IconSystem, "pictureBox_IconSystem");
             this.pictureBox_IconSystem.Name = "pictureBox_IconSystem";
             this.pictureBox_IconSystem.TabStop = false;
             // 
             // pictureBox_IconTime
             // 
-            resources.ApplyResources(this.pictureBox_IconTime, "pictureBox_IconTime");
             this.pictureBox_IconTime.BackgroundImage = global::Watch_Face_Editor.Properties.Resources.Sidebar_Search_16;
+            resources.ApplyResources(this.pictureBox_IconTime, "pictureBox_IconTime");
             this.pictureBox_IconTime.Name = "pictureBox_IconTime";
             this.pictureBox_IconTime.TabStop = false;
             // 
             // pictureBox_IconActivity
             // 
-            resources.ApplyResources(this.pictureBox_IconActivity, "pictureBox_IconActivity");
             this.pictureBox_IconActivity.BackgroundImage = global::Watch_Face_Editor.Properties.Resources.Sports_Walking_16;
+            resources.ApplyResources(this.pictureBox_IconActivity, "pictureBox_IconActivity");
             this.pictureBox_IconActivity.Name = "pictureBox_IconActivity";
             this.pictureBox_IconActivity.TabStop = false;
             // 
             // comboBox_AddSystem
             // 
-            resources.ApplyResources(this.comboBox_AddSystem, "comboBox_AddSystem");
             this.comboBox_AddSystem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_AddSystem.FormattingEnabled = true;
             this.comboBox_AddSystem.Items.AddRange(new object[] {
@@ -403,14 +402,15 @@ namespace Watch_Face_Editor
             resources.GetString("comboBox_AddSystem.Items1"),
             resources.GetString("comboBox_AddSystem.Items2"),
             resources.GetString("comboBox_AddSystem.Items3")});
+            resources.ApplyResources(this.comboBox_AddSystem, "comboBox_AddSystem");
             this.comboBox_AddSystem.Name = "comboBox_AddSystem";
             this.comboBox_AddSystem.DropDownClosed += new System.EventHandler(this.comboBox_AddSystem_DropDownClosed);
             this.comboBox_AddSystem.Click += new System.EventHandler(this.comboBox_AddElements_Click);
             // 
             // comboBox_AddAir
             // 
-            resources.ApplyResources(this.comboBox_AddAir, "comboBox_AddAir");
             this.comboBox_AddAir.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            resources.ApplyResources(this.comboBox_AddAir, "comboBox_AddAir");
             this.comboBox_AddAir.FormattingEnabled = true;
             this.comboBox_AddAir.Items.AddRange(new object[] {
             resources.GetString("comboBox_AddAir.Items"),
@@ -426,7 +426,6 @@ namespace Watch_Face_Editor
             // 
             // comboBox_AddActivity
             // 
-            resources.ApplyResources(this.comboBox_AddActivity, "comboBox_AddActivity");
             this.comboBox_AddActivity.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_AddActivity.FormattingEnabled = true;
             this.comboBox_AddActivity.Items.AddRange(new object[] {
@@ -438,13 +437,13 @@ namespace Watch_Face_Editor
             resources.GetString("comboBox_AddActivity.Items5"),
             resources.GetString("comboBox_AddActivity.Items6"),
             resources.GetString("comboBox_AddActivity.Items7")});
+            resources.ApplyResources(this.comboBox_AddActivity, "comboBox_AddActivity");
             this.comboBox_AddActivity.Name = "comboBox_AddActivity";
             this.comboBox_AddActivity.DropDownClosed += new System.EventHandler(this.comboBox_AddActivity_DropDownClosed);
             this.comboBox_AddActivity.Click += new System.EventHandler(this.comboBox_AddElements_Click);
             // 
             // comboBox_AddDate
             // 
-            resources.ApplyResources(this.comboBox_AddDate, "comboBox_AddDate");
             this.comboBox_AddDate.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_AddDate.FormattingEnabled = true;
             this.comboBox_AddDate.Items.AddRange(new object[] {
@@ -453,19 +452,20 @@ namespace Watch_Face_Editor
             resources.GetString("comboBox_AddDate.Items2"),
             resources.GetString("comboBox_AddDate.Items3"),
             resources.GetString("comboBox_AddDate.Items4")});
+            resources.ApplyResources(this.comboBox_AddDate, "comboBox_AddDate");
             this.comboBox_AddDate.Name = "comboBox_AddDate";
             this.comboBox_AddDate.DropDownClosed += new System.EventHandler(this.comboBox_AddDate_DropDownClosed);
             this.comboBox_AddDate.Click += new System.EventHandler(this.comboBox_AddElements_Click);
             // 
             // comboBox_AddTime
             // 
-            resources.ApplyResources(this.comboBox_AddTime, "comboBox_AddTime");
             this.comboBox_AddTime.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_AddTime.FormattingEnabled = true;
             this.comboBox_AddTime.Items.AddRange(new object[] {
             resources.GetString("comboBox_AddTime.Items"),
             resources.GetString("comboBox_AddTime.Items1"),
             resources.GetString("comboBox_AddTime.Items2")});
+            resources.ApplyResources(this.comboBox_AddTime, "comboBox_AddTime");
             this.comboBox_AddTime.Name = "comboBox_AddTime";
             this.comboBox_AddTime.DropDownClosed += new System.EventHandler(this.comboBox_AddTime_DropDownClosed);
             this.comboBox_AddTime.Click += new System.EventHandler(this.comboBox_AddElements_Click);
@@ -479,8 +479,8 @@ namespace Watch_Face_Editor
             // 
             // tableLayoutPanel_ElemetsWatchFace
             // 
-            resources.ApplyResources(this.tableLayoutPanel_ElemetsWatchFace, "tableLayoutPanel_ElemetsWatchFace");
             this.tableLayoutPanel_ElemetsWatchFace.AllowDrop = true;
+            resources.ApplyResources(this.tableLayoutPanel_ElemetsWatchFace, "tableLayoutPanel_ElemetsWatchFace");
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DigitalTime, 0, 0);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_AnalogTime, 0, 1);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateDay, 0, 2);
@@ -849,8 +849,8 @@ namespace Watch_Face_Editor
             // 
             // uCtrl_Text_Opt
             // 
-            resources.ApplyResources(this.uCtrl_Text_Opt, "uCtrl_Text_Opt");
             this.uCtrl_Text_Opt.Distance = false;
+            resources.ApplyResources(this.uCtrl_Text_Opt, "uCtrl_Text_Opt");
             this.uCtrl_Text_Opt.Follow = true;
             this.uCtrl_Text_Opt.ImageError = true;
             this.uCtrl_Text_Opt.Name = "uCtrl_Text_Opt";
@@ -861,19 +861,19 @@ namespace Watch_Face_Editor
             // 
             // userCtrl_Background_Options
             // 
-            resources.ApplyResources(this.userCtrl_Background_Options, "userCtrl_Background_Options");
             this.userCtrl_Background_Options.AOD = false;
+            resources.ApplyResources(this.userCtrl_Background_Options, "userCtrl_Background_Options");
             this.userCtrl_Background_Options.Name = "userCtrl_Background_Options";
             this.userCtrl_Background_Options.ValueChanged += new ControlLibrary.UCtrl_Background_Opt.ValueChangedHandler(this.userCtrl_Background_Options_ValueChanged);
             // 
             // panel_MainScreen_AOD
             // 
-            resources.ApplyResources(this.panel_MainScreen_AOD, "panel_MainScreen_AOD");
             this.panel_MainScreen_AOD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_MainScreen_AOD.Controls.Add(this.button_CopyAOD);
             this.panel_MainScreen_AOD.Controls.Add(this.button_RandomPreview);
             this.panel_MainScreen_AOD.Controls.Add(this.radioButton_ScreenIdle);
             this.panel_MainScreen_AOD.Controls.Add(this.radioButton_ScreenNormal);
+            resources.ApplyResources(this.panel_MainScreen_AOD, "panel_MainScreen_AOD");
             this.panel_MainScreen_AOD.Name = "panel_MainScreen_AOD";
             // 
             // button_CopyAOD
@@ -907,10 +907,10 @@ namespace Watch_Face_Editor
             // 
             // tabPage_Show_Set
             // 
-            resources.ApplyResources(this.tabPage_Show_Set, "tabPage_Show_Set");
             this.tabPage_Show_Set.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage_Show_Set.Controls.Add(this.panel_set);
             this.tabPage_Show_Set.Controls.Add(this.panel_PreviewStates);
+            resources.ApplyResources(this.tabPage_Show_Set, "tabPage_Show_Set");
             this.tabPage_Show_Set.Name = "tabPage_Show_Set";
             // 
             // panel_set
@@ -1040,10 +1040,10 @@ namespace Watch_Face_Editor
             // 
             // panel_PreviewStates
             // 
-            resources.ApplyResources(this.panel_PreviewStates, "panel_PreviewStates");
             this.panel_PreviewStates.Controls.Add(this.button_JsonPreview_Random);
             this.panel_PreviewStates.Controls.Add(this.button_JsonPreview_Read);
             this.panel_PreviewStates.Controls.Add(this.button_JsonPreview_Write);
+            resources.ApplyResources(this.panel_PreviewStates, "panel_PreviewStates");
             this.panel_PreviewStates.Name = "panel_PreviewStates";
             // 
             // button_JsonPreview_Random
@@ -1083,7 +1083,6 @@ namespace Watch_Face_Editor
             // 
             // dataGridView_ImagesList
             // 
-            resources.ApplyResources(this.dataGridView_ImagesList, "dataGridView_ImagesList");
             this.dataGridView_ImagesList.AllowUserToAddRows = false;
             this.dataGridView_ImagesList.AllowUserToDeleteRows = false;
             this.dataGridView_ImagesList.AllowUserToResizeRows = false;
@@ -1093,6 +1092,7 @@ namespace Watch_Face_Editor
             this.NameFile,
             this.ColumnImage,
             this.Column1});
+            resources.ApplyResources(this.dataGridView_ImagesList, "dataGridView_ImagesList");
             this.dataGridView_ImagesList.Name = "dataGridView_ImagesList";
             this.dataGridView_ImagesList.RowHeadersVisible = false;
             // 
@@ -1142,7 +1142,6 @@ namespace Watch_Face_Editor
             // 
             // tabPageConverting
             // 
-            resources.ApplyResources(this.tabPageConverting, "tabPageConverting");
             this.tabPageConverting.BackColor = System.Drawing.SystemColors.Control;
             this.tabPageConverting.Controls.Add(this.label_ConvertingHelp03);
             this.tabPageConverting.Controls.Add(this.label_ConvertingHelp02);
@@ -1151,6 +1150,7 @@ namespace Watch_Face_Editor
             this.tabPageConverting.Controls.Add(this.button_Converting);
             this.tabPageConverting.Controls.Add(this.groupBox10);
             this.tabPageConverting.Controls.Add(this.groupBox9);
+            resources.ApplyResources(this.tabPageConverting, "tabPageConverting");
             this.tabPageConverting.Name = "tabPageConverting";
             // 
             // label_ConvertingHelp03
@@ -1182,12 +1182,12 @@ namespace Watch_Face_Editor
             // 
             // groupBox10
             // 
-            resources.ApplyResources(this.groupBox10, "groupBox10");
             this.groupBox10.Controls.Add(this.numericUpDown_ConvertingOutput_Custom);
             this.groupBox10.Controls.Add(this.radioButton_ConvertingOutput_Custom);
             this.groupBox10.Controls.Add(this.radioButton_ConvertingOutput_TRexPro);
             this.groupBox10.Controls.Add(this.radioButton_ConvertingOutput_GTR3Pro);
             this.groupBox10.Controls.Add(this.radioButton_ConvertingOutput_GTR3);
+            resources.ApplyResources(this.groupBox10, "groupBox10");
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.TabStop = false;
             this.groupBox10.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox_Paint);
@@ -1244,12 +1244,12 @@ namespace Watch_Face_Editor
             // 
             // groupBox9
             // 
-            resources.ApplyResources(this.groupBox9, "groupBox9");
             this.groupBox9.Controls.Add(this.numericUpDown_ConvertingInput_Custom);
             this.groupBox9.Controls.Add(this.radioButton_ConvertingInput_Custom);
             this.groupBox9.Controls.Add(this.radioButton_ConvertingInput_TRexPro);
             this.groupBox9.Controls.Add(this.radioButton_ConvertingInput_GTR3Pro);
             this.groupBox9.Controls.Add(this.radioButton_ConvertingInput_GTR3);
+            resources.ApplyResources(this.groupBox9, "groupBox9");
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.TabStop = false;
             this.groupBox9.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox_Paint);
@@ -1306,7 +1306,6 @@ namespace Watch_Face_Editor
             // 
             // tabPage_Settings
             // 
-            resources.ApplyResources(this.tabPage_Settings, "tabPage_Settings");
             this.tabPage_Settings.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage_Settings.Controls.Add(this.button_Reset);
             this.tabPage_Settings.Controls.Add(this.numericUpDown_Gif_Speed);
@@ -1322,6 +1321,7 @@ namespace Watch_Face_Editor
             this.tabPage_Settings.Controls.Add(this.groupBox6);
             this.tabPage_Settings.Controls.Add(this.groupBox5);
             this.tabPage_Settings.Controls.Add(this.groupBox1);
+            resources.ApplyResources(this.tabPage_Settings, "tabPage_Settings");
             this.tabPage_Settings.Name = "tabPage_Settings";
             // 
             // button_Reset
@@ -1333,13 +1333,13 @@ namespace Watch_Face_Editor
             // 
             // numericUpDown_Gif_Speed
             // 
-            resources.ApplyResources(this.numericUpDown_Gif_Speed, "numericUpDown_Gif_Speed");
             this.numericUpDown_Gif_Speed.DecimalPlaces = 1;
             this.numericUpDown_Gif_Speed.Increment = new decimal(new int[] {
             1,
             0,
             0,
             65536});
+            resources.ApplyResources(this.numericUpDown_Gif_Speed, "numericUpDown_Gif_Speed");
             this.numericUpDown_Gif_Speed.Maximum = new decimal(new int[] {
             25,
             0,
@@ -1365,10 +1365,10 @@ namespace Watch_Face_Editor
             // 
             // groupBox2
             // 
-            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Controls.Add(this.button_WatchSkin_PathGet);
             this.groupBox2.Controls.Add(this.textBox_WatchSkin_Path);
             this.groupBox2.Controls.Add(this.checkBox_WatchSkin_Use);
+            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             this.groupBox2.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox_Paint);
@@ -1411,10 +1411,10 @@ namespace Watch_Face_Editor
             // 
             // groupBox8
             // 
-            resources.ApplyResources(this.groupBox8, "groupBox8");
             this.groupBox8.Controls.Add(this.checkBox_Shortcuts_Image);
             this.groupBox8.Controls.Add(this.checkBox_Shortcuts_Border);
             this.groupBox8.Controls.Add(this.checkBox_Shortcuts_Area);
+            resources.ApplyResources(this.groupBox8, "groupBox8");
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.TabStop = false;
             this.groupBox8.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox_Paint);
@@ -1454,13 +1454,13 @@ namespace Watch_Face_Editor
             // 
             // comboBox_Language
             // 
-            resources.ApplyResources(this.comboBox_Language, "comboBox_Language");
             this.comboBox_Language.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Language.FormattingEnabled = true;
             this.comboBox_Language.Items.AddRange(new object[] {
             resources.GetString("comboBox_Language.Items"),
             resources.GetString("comboBox_Language.Items1"),
             resources.GetString("comboBox_Language.Items2")});
+            resources.ApplyResources(this.comboBox_Language, "comboBox_Language");
             this.comboBox_Language.Name = "comboBox_Language";
             this.comboBox_Language.SelectedIndexChanged += new System.EventHandler(this.comboBox_Language_SelectedIndexChanged);
             // 
@@ -1471,10 +1471,10 @@ namespace Watch_Face_Editor
             // 
             // groupBox7
             // 
-            resources.ApplyResources(this.groupBox7, "groupBox7");
             this.groupBox7.Controls.Add(this.radioButton_Settings_Pack_DoNotning);
             this.groupBox7.Controls.Add(this.radioButton_Settings_Pack_GoToFile);
             this.groupBox7.Controls.Add(this.radioButton_Settings_Pack_Dialog);
+            resources.ApplyResources(this.groupBox7, "groupBox7");
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.TabStop = false;
             this.groupBox7.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox_Paint);
@@ -1504,10 +1504,10 @@ namespace Watch_Face_Editor
             // 
             // groupBox6
             // 
-            resources.ApplyResources(this.groupBox6, "groupBox6");
             this.groupBox6.Controls.Add(this.radioButton_Settings_Open_DoNotning);
             this.groupBox6.Controls.Add(this.radioButton_Settings_Open_Download);
             this.groupBox6.Controls.Add(this.radioButton_Settings_Open_Dialog);
+            resources.ApplyResources(this.groupBox6, "groupBox6");
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.TabStop = false;
             this.groupBox6.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox_Paint);
@@ -1537,10 +1537,10 @@ namespace Watch_Face_Editor
             // 
             // groupBox5
             // 
-            resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Controls.Add(this.radioButton_Settings_AfterUnpack_DoNothing);
             this.groupBox5.Controls.Add(this.radioButton_Settings_AfterUnpack_Download);
             this.groupBox5.Controls.Add(this.radioButton_Settings_AfterUnpack_Dialog);
+            resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
             this.groupBox5.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox_Paint);
@@ -1570,10 +1570,10 @@ namespace Watch_Face_Editor
             // 
             // groupBox1
             // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.radioButton_Settings_Unpack_Replace);
             this.groupBox1.Controls.Add(this.radioButton_Settings_Unpack_Save);
             this.groupBox1.Controls.Add(this.radioButton_Settings_Unpack_Dialog);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             this.groupBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox_Paint);
@@ -1605,7 +1605,6 @@ namespace Watch_Face_Editor
             // 
             // tabPage_About
             // 
-            resources.ApplyResources(this.tabPage_About, "tabPage_About");
             this.tabPage_About.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage_About.Controls.Add(this.label_TranslateHelp);
             this.tabPage_About.Controls.Add(this.label415);
@@ -1619,6 +1618,7 @@ namespace Watch_Face_Editor
             this.tabPage_About.Controls.Add(this.label_version_help);
             this.tabPage_About.Controls.Add(this.label406);
             this.tabPage_About.Controls.Add(this.pictureBox2);
+            resources.ApplyResources(this.tabPage_About, "tabPage_About");
             this.tabPage_About.Name = "tabPage_About";
             // 
             // label_TranslateHelp
@@ -1680,8 +1680,8 @@ namespace Watch_Face_Editor
             // 
             // pictureBox2
             // 
-            resources.ApplyResources(this.pictureBox2, "pictureBox2");
             this.pictureBox2.BackgroundImage = global::Watch_Face_Editor.Properties.Resources.gtr_3;
+            resources.ApplyResources(this.pictureBox2, "pictureBox2");
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.TabStop = false;
             // 
@@ -1699,18 +1699,18 @@ namespace Watch_Face_Editor
             // 
             // checkBox_WidgetsArea
             // 
-            resources.ApplyResources(this.checkBox_WidgetsArea, "checkBox_WidgetsArea");
             this.checkBox_WidgetsArea.Checked = true;
             this.checkBox_WidgetsArea.CheckState = System.Windows.Forms.CheckState.Checked;
+            resources.ApplyResources(this.checkBox_WidgetsArea, "checkBox_WidgetsArea");
             this.checkBox_WidgetsArea.Name = "checkBox_WidgetsArea";
             this.checkBox_WidgetsArea.UseVisualStyleBackColor = true;
             this.checkBox_WidgetsArea.CheckedChanged += new System.EventHandler(this.checkBox_VisibleSettings_CheckedChanged);
             // 
             // checkBox_center_marker
             // 
-            resources.ApplyResources(this.checkBox_center_marker, "checkBox_center_marker");
             this.checkBox_center_marker.Checked = true;
             this.checkBox_center_marker.CheckState = System.Windows.Forms.CheckState.Checked;
+            resources.ApplyResources(this.checkBox_center_marker, "checkBox_center_marker");
             this.checkBox_center_marker.Name = "checkBox_center_marker";
             this.checkBox_center_marker.UseVisualStyleBackColor = true;
             this.checkBox_center_marker.CheckedChanged += new System.EventHandler(this.checkBox_VisibleSettings_CheckedChanged);
@@ -1738,18 +1738,18 @@ namespace Watch_Face_Editor
             // 
             // checkBox_Show_Shortcuts
             // 
-            resources.ApplyResources(this.checkBox_Show_Shortcuts, "checkBox_Show_Shortcuts");
             this.checkBox_Show_Shortcuts.Checked = true;
             this.checkBox_Show_Shortcuts.CheckState = System.Windows.Forms.CheckState.Checked;
+            resources.ApplyResources(this.checkBox_Show_Shortcuts, "checkBox_Show_Shortcuts");
             this.checkBox_Show_Shortcuts.Name = "checkBox_Show_Shortcuts";
             this.checkBox_Show_Shortcuts.UseVisualStyleBackColor = true;
             this.checkBox_Show_Shortcuts.CheckedChanged += new System.EventHandler(this.checkBox_VisibleSettings_CheckedChanged);
             // 
             // checkBox_crop
             // 
-            resources.ApplyResources(this.checkBox_crop, "checkBox_crop");
             this.checkBox_crop.Checked = true;
             this.checkBox_crop.CheckState = System.Windows.Forms.CheckState.Checked;
+            resources.ApplyResources(this.checkBox_crop, "checkBox_crop");
             this.checkBox_crop.Name = "checkBox_crop";
             this.checkBox_crop.UseVisualStyleBackColor = true;
             this.checkBox_crop.CheckedChanged += new System.EventHandler(this.checkBox_VisibleSettings_CheckedChanged);
@@ -1840,16 +1840,16 @@ namespace Watch_Face_Editor
             // 
             // button_pack_zip
             // 
-            resources.ApplyResources(this.button_pack_zip, "button_pack_zip");
             this.button_pack_zip.Image = global::Watch_Face_Editor.Properties.Resources.packaging;
+            resources.ApplyResources(this.button_pack_zip, "button_pack_zip");
             this.button_pack_zip.Name = "button_pack_zip";
             this.button_pack_zip.UseVisualStyleBackColor = true;
             this.button_pack_zip.Click += new System.EventHandler(this.button_pack_zip_Click);
             // 
             // button_unpack_zip
             // 
-            resources.ApplyResources(this.button_unpack_zip, "button_unpack_zip");
             this.button_unpack_zip.Image = global::Watch_Face_Editor.Properties.Resources.unpacking;
+            resources.ApplyResources(this.button_unpack_zip, "button_unpack_zip");
             this.button_unpack_zip.Name = "button_unpack_zip";
             this.button_unpack_zip.UseVisualStyleBackColor = true;
             this.button_unpack_zip.Click += new System.EventHandler(this.button_unpack_zip_Click);

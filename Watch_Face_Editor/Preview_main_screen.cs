@@ -444,8 +444,8 @@ namespace Watch_Face_Editor
                                     int endAngle = DateDay.Pointer.end_angle;
                                     int image_index = ListImages.IndexOf(DateDay.Pointer.src);
                                     int Day = WatchFacePreviewSet.Date.Day;
-                                    Day--;
-                                    float angle = startAngle + Day * (endAngle - startAngle) / 30f;
+                                    //Day--;
+                                    int angle = (int)(startAngle + Day * (endAngle - startAngle) / 31f);
 
                                     if (DateDay.Pointer.scale != null && DateDay.Pointer.scale.Length > 0)
                                     {
@@ -524,8 +524,8 @@ namespace Watch_Face_Editor
                                     int endAngle = DateMonth.Pointer.end_angle;
                                     int image_index = ListImages.IndexOf(DateMonth.Pointer.src);
                                     int Month = WatchFacePreviewSet.Date.Month;
-                                    Month--;
-                                    float angle = startAngle + Month * (endAngle - startAngle) / 11f;
+                                    //Month--;
+                                    int angle = (int)(startAngle + Month * (endAngle - startAngle) / 12f);
 
                                     if (DateMonth.Pointer.scale != null && DateMonth.Pointer.scale.Length > 0)
                                     {
@@ -629,9 +629,11 @@ namespace Watch_Face_Editor
                                     int startAngle = DateWeek.Pointer.start_angle;
                                     int endAngle = DateWeek.Pointer.end_angle;
                                     int image_index = ListImages.IndexOf(DateWeek.Pointer.src);
-                                    int Month = WatchFacePreviewSet.Date.Month;
-                                    Month--;
-                                    float angle = startAngle + Month * (endAngle - startAngle) / 11f;
+                                    int WeekDay = WatchFacePreviewSet.Date.WeekDay;
+                                    //WeekDay++;
+                                    //if (WeekDay < 0) WeekDay = 6;
+                                    //if (WeekDay > 7) WeekDay = 1;
+                                    int angle = (int)(startAngle + WeekDay * (endAngle - startAngle) / 7f);
 
                                     if (DateWeek.Pointer.scale != null && DateWeek.Pointer.scale.Length > 0)
                                     {
