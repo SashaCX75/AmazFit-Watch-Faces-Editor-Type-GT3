@@ -11,45 +11,22 @@ using System.Windows.Forms;
 
 namespace ControlLibrary
 {
-    public partial class UCtrl_Text_Opt : UserControl
+    public partial class UCtrl_Text_Weather_Opt : UserControl
     {
         private bool setValue; // режим задания параметров
         private bool ImageError_mode;
-        private bool OptionalSymbol_mode;
         private bool Padding_zero;
         private bool Follow_mode;
-        private bool Distance_mode;
-        private bool Year_mode = false;
-
-        //private Point location_unit;
-        private Point location_unit_miles;
-        private Point location_imageDecimalPoint;
-        private Point location_imageError;
-        //private Point location_unit_label;
-        private Point location_unit_miles_label;
-        private Point location_imageDecimalPoint_label;
-        private Point location_imageError_label;
-        private String unit_label_text;
 
         private List<string> ListImagesFullName = new List<string>(); // перечень путей к файлам с картинками
         public Object _ElementWithText;
 
-        public UCtrl_Text_Opt()
+        public UCtrl_Text_Weather_Opt()
         {
             InitializeComponent();
             setValue = true;
             comboBox_alignment.SelectedIndex = 0;
             setValue = false;
-
-            //location_unit = comboBox_unit.Location;
-            location_unit_miles = comboBox_unit_miles.Location;
-            location_imageDecimalPoint = comboBox_imageDecimalPoint.Location;
-            location_imageError = comboBox_imageError.Location;
-            //location_unit_label = label08.Location; // km
-            location_unit_miles_label = label10.Location; // ml
-            location_imageDecimalPoint_label = label07.Location; // десятичный разделитель
-            location_imageError_label = label06.Location; // изображение при ошибке
-            unit_label_text = label08.Text;
         }
 
 
@@ -91,39 +68,39 @@ namespace ControlLibrary
             return comboBox_icon.SelectedIndex;
         }
 
-        public void SetUnit(string value)
+        public void SetUnit_C(string value)
         {
-            comboBox_unit.Text = value;
-            if (comboBox_unit.SelectedIndex < 0) comboBox_unit.Text = "";
+            comboBox_unit_c.Text = value;
+            if (comboBox_unit_c.SelectedIndex < 0) comboBox_unit_c.Text = "";
         }
 
         /// <summary>Возвращает название выбранной картинки</summary>
-        public string GetUnit()
+        public string GetUnit_C()
         {
-            if (comboBox_unit.SelectedIndex < 0) return "";
-            return comboBox_unit.Text;
+            if (comboBox_unit_c.SelectedIndex < 0) return "";
+            return comboBox_unit_c.Text;
         }
         /// <summary>Возвращает SelectedIndex выпадающего списка</summary>
-        public int GetSelectedIndexUnit()
+        public int GetSelectedIndexUnit_C()
         {
-            return comboBox_unit.SelectedIndex;
+            return comboBox_unit_c.SelectedIndex;
         }
 
-        public void SetUnitMile(string value)
+        public void SetUnit_F(string value)
         {
-            comboBox_unit_miles.Text = value;
-            if (comboBox_unit_miles.SelectedIndex < 0) comboBox_unit_miles.Text = "";
+            comboBox_unit_f.Text = value;
+            if (comboBox_unit_f.SelectedIndex < 0) comboBox_unit_f.Text = "";
         }
         /// <summary>Возвращает название выбранной картинки</summary>
-        public string GetUnitMile()
+        public string GetUnit_F()
         {
-            if (comboBox_unit_miles.SelectedIndex < 0) return "";
-            return comboBox_unit_miles.Text;
+            if (comboBox_unit_f.SelectedIndex < 0) return "";
+            return comboBox_unit_f.Text;
         }
         /// <summary>Возвращает SelectedIndex выпадающего списка</summary>
-        public int GetSelectedIndexUnitMile()
+        public int GetSelectedIndexUnit_F()
         {
-            return comboBox_unit_miles.SelectedIndex;
+            return comboBox_unit_f.SelectedIndex;
         }
 
         public void SetImageError(string value)
@@ -139,22 +116,22 @@ namespace ControlLibrary
             return comboBox_imageError.Text;
         }
 
-        public void SetImageDecimalPoint(string value)
+        public void SetImageMinus(string value)
         {
-            comboBox_imageDecimalPoint.Text = value;
-            if (comboBox_imageDecimalPoint.SelectedIndex < 0) comboBox_imageDecimalPoint.Text = "";
+            comboBox_imageMinus.Text = value;
+            if (comboBox_imageMinus.SelectedIndex < 0) comboBox_imageMinus.Text = "";
         }
 
         /// <summary>Возвращает название выбранной картинки</summary>
-        public string GetImageDecimalPoint()
+        public string GetImageMinus()
         {
-            if (comboBox_imageDecimalPoint.SelectedIndex < 0) return "";
-            return comboBox_imageDecimalPoint.Text;
+            if (comboBox_imageMinus.SelectedIndex < 0) return "";
+            return comboBox_imageMinus.Text;
         }
         /// <summary>Возвращает SelectedIndex выпадающего списка</summary>
-        public int GetSelectedIndexImageDecimalPoint()
+        public int GetSelectedIndexImageMinus()
         {
-            return comboBox_imageDecimalPoint.SelectedIndex;
+            return comboBox_imageMinus.SelectedIndex;
         }
 
         public void SetAlignment(string alignment)
@@ -225,44 +202,6 @@ namespace ControlLibrary
             }
         }
 
-        /// <summary>Отображение поля изображения десятичного разделителя</summary>
-        [Description("Отображение поля изображения десятичного разделителя")]
-        public virtual bool OptionalSymbol
-        {
-            get
-            {
-                return OptionalSymbol_mode;
-            }
-            set
-            {
-                OptionalSymbol_mode = value;
-                comboBox_imageDecimalPoint.Visible = OptionalSymbol_mode;
-                label07.Visible = OptionalSymbol_mode; 
-                
-                /*int offsetPositionX = label03.Location.X - numericUpDown_spacing.Location.X;
-                if (!Distance_mode && !OptionalSymbol_mode)
-                {
-                    Point location = numericUpDown_spacing.Location;
-                    location.X = numericUpDown_iconX.Location.X;
-                    numericUpDown_spacing.Location = location;
-
-                    location = label03.Location;
-                    location.X = numericUpDown_iconX.Location.X + offsetPositionX;
-                    label03.Location = location;
-                }
-                else
-                {
-                    Point location = numericUpDown_spacing.Location;
-                    location.X = numericUpDown_iconY.Location.X;
-                    numericUpDown_spacing.Location = location;
-
-                    location = label03.Location;
-                    location.X = numericUpDown_iconY.Location.X + offsetPositionX;
-                    label03.Location = location;
-                }*/
-            }
-        }
-
         /// <summary>Отображение чекбокса добавления нулей в начале</summary>
         [Description("Отображение чекбокса добавления нулей в начале")]
         public virtual bool PaddingZero
@@ -275,94 +214,6 @@ namespace ControlLibrary
             {
                 Padding_zero = value;
                 checkBox_addZero.Visible = Padding_zero;
-            }
-        }
-
-        /// <summary>Режим для дистанции</summary>
-        [Description("Режим для дистанции")]
-        public virtual bool Distance
-        {
-            get
-            {
-                return Distance_mode;
-            }
-            set
-            {
-                Distance_mode = value;
-                //comboBox_unit_miles.Visible = Distance_mode;
-                //label10.Visible = Distance_mode;
-                if (Distance_mode)
-                {
-                    //comboBox_imageDecimalPoint.Location = location_unit_miles;
-                    //comboBox_unit_miles.Location = location_imageDecimalPoint;
-                    //label07.Location = location_unit_miles_label;
-                    //label10.Location = location_imageDecimalPoint_label;
-
-                    comboBox_imageDecimalPoint.Location = location_imageError;
-                    comboBox_imageError.Location = location_imageDecimalPoint;
-                    label07.Location = location_imageError_label;
-                    label06.Location = location_imageDecimalPoint_label;
-
-                    label08.Text = unit_label_text + " (km)";
-                }
-                else
-                {
-                    //comboBox_imageDecimalPoint.Location = location_imageDecimalPoint;
-                    //comboBox_unit_miles.Location = location_unit_miles;
-                    //label07.Location = location_imageDecimalPoint_label;
-                    //label10.Location = location_unit_miles_label;
-
-                    comboBox_imageDecimalPoint.Location = location_imageDecimalPoint;
-                    comboBox_imageError.Location = location_imageError;
-                    label07.Location = location_imageDecimalPoint_label;
-                    label06.Location = location_imageError_label;
-
-                    label08.Text = unit_label_text;
-                }
-
-                /*int offsetPositionX = label03.Location.X - numericUpDown_spacing.Location.X;
-                if (!Distance_mode && !OptionalSymbol_mode)
-                {
-                    Point location = numericUpDown_spacing.Location;
-                    location.X = numericUpDown_iconX.Location.X;
-                    numericUpDown_spacing.Location = location;
-
-                    location = label03.Location;
-                    location.X = numericUpDown_iconX.Location.X + offsetPositionX;
-                    label03.Location = location;
-                }
-                else
-                {
-                    Point location = numericUpDown_spacing.Location;
-                    location.X = numericUpDown_iconY.Location.X;
-                    numericUpDown_spacing.Location = location;
-
-                    location = label03.Location;
-                    location.X = numericUpDown_iconY.Location.X + offsetPositionX;
-                    label03.Location = location;
-                }*/
-            }
-        }
-
-        /// <summary>Режим отображения года</summary>
-        [Description("Режим отображения года")]
-        public virtual bool Year
-        {
-            get
-            {
-                return Year_mode;
-            }
-            set
-            {
-                Year_mode = value;
-                if (Year_mode)
-                {
-                    checkBox_addZero.Text = Properties.Strings.UCtrl_Text_Opt_Year_true;
-                }
-                else
-                {
-                    checkBox_addZero.Text = Properties.Strings.UCtrl_Text_Opt_Year_false;
-                }
             }
         }
 
@@ -492,18 +343,18 @@ namespace ControlLibrary
         {
             comboBox_image.Items.Clear();
             comboBox_icon.Items.Clear();
-            comboBox_unit.Items.Clear();
-            comboBox_unit_miles.Items.Clear();
+            comboBox_unit_c.Items.Clear();
+            comboBox_unit_f.Items.Clear();
             comboBox_imageError.Items.Clear();
-            comboBox_imageDecimalPoint.Items.Clear();
+            comboBox_imageMinus.Items.Clear();
 
             comboBox_image.Items.AddRange(ListImages.ToArray());
             comboBox_icon.Items.AddRange(ListImages.ToArray());
-            comboBox_unit.Items.AddRange(ListImages.ToArray());
-            comboBox_unit_miles.Items.AddRange(ListImages.ToArray());
+            comboBox_unit_c.Items.AddRange(ListImages.ToArray());
+            comboBox_unit_f.Items.AddRange(ListImages.ToArray());
 
             comboBox_imageError.Items.AddRange(ListImages.ToArray());
-            comboBox_imageDecimalPoint.Items.AddRange(ListImages.ToArray());
+            comboBox_imageMinus.Items.AddRange(ListImages.ToArray());
 
             ListImagesFullName = _ListImagesFullName;
 
@@ -512,28 +363,28 @@ namespace ControlLibrary
             {
                 comboBox_image.DropDownHeight = 1;
                 comboBox_icon.DropDownHeight = 1;
-                comboBox_unit.DropDownHeight = 1;
-                comboBox_unit_miles.DropDownHeight = 1;
+                comboBox_unit_c.DropDownHeight = 1;
+                comboBox_unit_f.DropDownHeight = 1;
                 comboBox_imageError.DropDownHeight = 1;
-                comboBox_imageDecimalPoint.DropDownHeight = 1;
+                comboBox_imageMinus.DropDownHeight = 1;
             }
             else if (count < 5)
             {
                 comboBox_image.DropDownHeight = 35 * count + 1;
                 comboBox_icon.DropDownHeight = 35 * count + 1;
-                comboBox_unit.DropDownHeight = 35 * count + 1;
-                comboBox_unit_miles.DropDownHeight = 35 * count + 1;
+                comboBox_unit_c.DropDownHeight = 35 * count + 1;
+                comboBox_unit_f.DropDownHeight = 35 * count + 1;
                 comboBox_imageError.DropDownHeight = 35 * count + 1;
-                comboBox_imageDecimalPoint.DropDownHeight = 35 * count + 1;
+                comboBox_imageMinus.DropDownHeight = 35 * count + 1;
             }
             else
             {
                 comboBox_image.DropDownHeight = 106;
                 comboBox_icon.DropDownHeight = 106;
-                comboBox_unit.DropDownHeight = 106;
-                comboBox_unit_miles.DropDownHeight = 106;
+                comboBox_unit_c.DropDownHeight = 106;
+                comboBox_unit_f.DropDownHeight = 106;
                 comboBox_imageError.DropDownHeight = 106;
-                comboBox_imageDecimalPoint.DropDownHeight = 106;
+                comboBox_imageMinus.DropDownHeight = 106;
             }
         }
 
@@ -544,9 +395,9 @@ namespace ControlLibrary
 
             comboBox_image.Text = null;
             comboBox_icon.Text = null;
-            comboBox_unit.Text = null;
+            comboBox_unit_c.Text = null;
             comboBox_imageError.Text = null;
-            comboBox_imageDecimalPoint.Text = null;
+            comboBox_imageMinus.Text = null;
 
             numericUpDown_imageX.Value = 0;
             numericUpDown_imageY.Value = 0;
@@ -558,8 +409,6 @@ namespace ControlLibrary
 
             comboBox_alignment.SelectedIndex = 0;
             checkBox_addZero.Checked = false;
-
-            this.Year = false;
 
             setValue = false;
         }
@@ -736,19 +585,5 @@ namespace ControlLibrary
             numericUpDown_imageY.Enabled = b;
         }
 
-        //public void SetMouseСoordinates(int x, int y)
-        //{
-        //    MouseСoordinates.X = x;
-        //    MouseСoordinates.Y = y;
-        //}
     }
 }
-
-
-//public static class MouseСoordinates
-//{
-//    //public static int X { get; set; }
-//    //public static int Y { get; set; }
-//    public static int X = -1;
-//    public static int Y = -1;
-//}

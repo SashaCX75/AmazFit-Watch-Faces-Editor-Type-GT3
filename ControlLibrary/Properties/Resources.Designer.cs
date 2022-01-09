@@ -353,6 +353,16 @@ namespace ControlLibrary.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap text_fields {
+            get {
+                object obj = ResourceManager.GetObject("text_fields", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap text_icon {
             get {
                 object obj = ResourceManager.GetObject("text-icon", resourceCulture);
@@ -386,6 +396,16 @@ namespace ControlLibrary.Properties {
         internal static System.Drawing.Bitmap wallpaper_18 {
             get {
                 object obj = ResourceManager.GetObject("wallpaper_18", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap weatherIcon {
+            get {
+                object obj = ResourceManager.GetObject("weatherIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

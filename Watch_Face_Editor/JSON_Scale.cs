@@ -181,6 +181,15 @@ namespace Watch_Face_Editor
                     ElementDistance elementDistance = (ElementDistance)elements;
                     Scale_IMG_NUMBER(elementDistance.Number, scale);
                     break;
+                case "ElementWeather":
+                    ElementWeather elementWeather = (ElementWeather)elements;
+                    Scale_IMG_LEVEL(elementWeather.Images, scale);
+                    Scale_IMG_NUMBER(elementWeather.Number, scale);
+                    Scale_IMG_NUMBER(elementWeather.Number_Min, scale);
+                    Scale_IMG_NUMBER(elementWeather.Number_Max, scale);
+                    Scale_TEXT(elementWeather.City_Name, scale);
+                    Scale_IMG(elementWeather.Icon, scale);
+                    break;
             }
         }
 
@@ -256,6 +265,18 @@ namespace Watch_Face_Editor
             img_number.iconPosX = (int)Math.Round((img_number.iconPosX * scale), MidpointRounding.AwayFromZero);
             img_number.iconPosY = (int)Math.Round((img_number.iconPosY * scale), MidpointRounding.AwayFromZero);
             img_number.space = (int)Math.Round((img_number.space * scale), MidpointRounding.AwayFromZero);
+        }
+
+        private void Scale_TEXT(hmUI_widget_TEXT text, float scale)
+        {
+            if (text == null) return;
+            text.x = (int)Math.Round(text.x * scale, MidpointRounding.AwayFromZero);
+            text.y = (int)Math.Round(text.y * scale, MidpointRounding.AwayFromZero);
+            text.w = (int)Math.Round((text.w * scale), MidpointRounding.AwayFromZero);
+            text.h = (int)Math.Round((text.h * scale), MidpointRounding.AwayFromZero);
+            text.text_size = (int)Math.Round((text.text_size * scale), MidpointRounding.AwayFromZero);
+            text.line_space = (int)Math.Round((text.line_space * scale), MidpointRounding.AwayFromZero);
+            text.char_space = (int)Math.Round((text.char_space * scale), MidpointRounding.AwayFromZero);
         }
 
         private void Scale_AmPm(hmUI_widget_IMG_TIME_am_pm am_pm, float scale)

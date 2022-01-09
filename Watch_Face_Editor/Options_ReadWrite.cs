@@ -350,6 +350,26 @@ namespace Watch_Face_Editor
                         }
                         if (Distance != null) NewElements.Add(Distance);
                         break;
+                    #endregion
+
+                    #region ElementWeather
+                    case "ElementWeather":
+                        ElementWeather Weather = null;
+                        try
+                        {
+                            Weather = JsonConvert.DeserializeObject<ElementWeather>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (Weather != null) NewElements.Add(Weather);
+                        break;
                         #endregion
                 }
             }
@@ -443,7 +463,8 @@ namespace Watch_Face_Editor
 
             uCtrl_Text_Opt.SetUnit(img_number.unit);
             uCtrl_Text_Opt.SetUnitMile(img_number.imperial_unit);
-            uCtrl_Text_Opt.SetImageDecimalPointOrMinus(img_number.dot_image);
+            uCtrl_Text_Opt.SetImageError(img_number.invalid_image);
+            uCtrl_Text_Opt.SetImageDecimalPoint(img_number.dot_image);
             //uCtrl_Text_Opt.SetImageDecimalPointOrMinus
             uCtrl_Text_Opt.numericUpDown_spacing.Value = img_number.space;
 
@@ -454,6 +475,52 @@ namespace Watch_Face_Editor
             uCtrl_Text_Opt.checkBox_follow.Checked = img_number.follow;
 
             //uCtrl_Text_Opt.SetUnitMile
+
+            PreviewView = true;
+        }
+
+        /// <summary>Читаем настройки для отображения температуры</summary>
+        private void Read_ImgNumberWeather_Options(hmUI_widget_IMG_NUMBER img_number, bool _follow, string _followText,
+            bool _imageError, bool _padingZero)
+        {
+            PreviewView = false;
+
+            uCtrl_Text_Weather_Opt.SettingsClear();
+
+            uCtrl_Text_Weather_Opt.Follow = _follow;
+            uCtrl_Text_Weather_Opt.FollowText = _followText;
+            uCtrl_Text_Weather_Opt.ImageError = _imageError;
+            uCtrl_Text_Weather_Opt.PaddingZero = _padingZero;
+            uCtrl_Text_Weather_Opt.Visible = true;
+
+            uCtrl_Text_Weather_Opt._ElementWithText = img_number;
+
+            //userCtrl_Background_Options.SettingsClear();
+
+            if (img_number == null)
+            {
+                PreviewView = true;
+                return;
+            }
+            if (img_number.img_First != null)
+                uCtrl_Text_Weather_Opt.SetImage(img_number.img_First);
+            uCtrl_Text_Weather_Opt.numericUpDown_imageX.Value = img_number.imageX;
+            uCtrl_Text_Weather_Opt.numericUpDown_imageY.Value = img_number.imageY;
+
+            uCtrl_Text_Weather_Opt.SetIcon(img_number.icon);
+            uCtrl_Text_Weather_Opt.numericUpDown_iconX.Value = img_number.iconPosX;
+            uCtrl_Text_Weather_Opt.numericUpDown_iconY.Value = img_number.iconPosY;
+
+            uCtrl_Text_Weather_Opt.SetUnit_C(img_number.unit);
+            uCtrl_Text_Weather_Opt.SetUnit_F(img_number.imperial_unit);
+            uCtrl_Text_Weather_Opt.SetImageError(img_number.invalid_image);
+            uCtrl_Text_Weather_Opt.SetImageMinus(img_number.negative_image);
+            uCtrl_Text_Weather_Opt.numericUpDown_spacing.Value = img_number.space;
+
+            uCtrl_Text_Weather_Opt.SetAlignment(img_number.align);
+
+            uCtrl_Text_Weather_Opt.checkBox_addZero.Checked = img_number.zero;
+            uCtrl_Text_Weather_Opt.checkBox_follow.Checked = img_number.follow;
 
             PreviewView = true;
         }
@@ -789,6 +856,11 @@ namespace Watch_Face_Editor
                         background.BackgroundImage.h = 480;
                         background.BackgroundImage.w = 480;
                     }
+                    if (radioButton_GTS3.Checked)
+                    {
+                        background.BackgroundImage.h = 450;
+                        background.BackgroundImage.w = 390;
+                    }
                     //background.BackgroundImage.show_level = "ONLY_NORMAL";
                     background.BackgroundColor = null;
                 }
@@ -824,6 +896,11 @@ namespace Watch_Face_Editor
                 {
                     background.BackgroundColor.h = 480;
                     background.BackgroundColor.w = 480;
+                }
+                if (radioButton_GTS3.Checked)
+                {
+                    background.BackgroundImage.h = 450;
+                    background.BackgroundImage.w = 390;
                 }
                 background.BackgroundImage = null;
             }
@@ -871,7 +948,8 @@ namespace Watch_Face_Editor
             img_number.space = (int)uCtrl_Text_Opt.numericUpDown_spacing.Value;
             img_number.unit = uCtrl_Text_Opt.GetUnit();
             img_number.imperial_unit = uCtrl_Text_Opt.GetUnitMile();
-            img_number.dot_image = uCtrl_Text_Opt.GetImageDecimalPointOrMinus();
+            img_number.dot_image = uCtrl_Text_Opt.GetImageDecimalPoint();
+            img_number.invalid_image = uCtrl_Text_Opt.GetImageError();
             img_number.zero = uCtrl_Text_Opt.checkBox_addZero.Checked;
 
 

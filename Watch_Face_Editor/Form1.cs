@@ -1003,6 +1003,7 @@ namespace Watch_Face_Editor
             if (e.Data.GetDataPresent(typeof(UCtrl_Heart_Elm))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(UCtrl_PAI_Elm))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(UCtrl_Distance_Elm))) typeReturn = false;
+            if (e.Data.GetDataPresent(typeof(UCtrl_Weather_Elm))) typeReturn = false;
             if (typeReturn) return;
 
             e.Effect = e.AllowedEffect;
@@ -1137,6 +1138,14 @@ namespace Watch_Face_Editor
                         draggedUCtrl_Elm = (UCtrl_Distance_Elm)e.Data.GetData(typeof(UCtrl_Distance_Elm));
                         if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
                         break;
+
+                    case "ControlLibrary.UCtrl_Weather_Elm":
+                        ElementWeather weather =
+                            (ElementWeather)Elements.Find(e1 => e1.GetType().Name == "ElementWeather");
+                        index = Elements.IndexOf(weather);
+                        draggedUCtrl_Elm = (UCtrl_Weather_Elm)e.Data.GetData(typeof(UCtrl_Weather_Elm));
+                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                        break;
                 }
 
 
@@ -1224,6 +1233,9 @@ namespace Watch_Face_Editor
                 case "Text":
                     uCtrl_Text_Opt.Visible = true;
                     break;
+                case "Text_Weather":
+                    uCtrl_Text_Weather_Opt.Visible = true;
+                    break;
                 case "AmPm":
                     uCtrl_AmPm_Opt.Visible = true;
                     break;
@@ -1256,6 +1268,7 @@ namespace Watch_Face_Editor
         {
             userCtrl_Background_Options.Visible = false;
             uCtrl_Text_Opt.Visible = false;
+            uCtrl_Text_Weather_Opt.Visible = false;
             uCtrl_AmPm_Opt.Visible = false;
             uCtrl_Pointer_Opt.Visible = false;
             uCtrl_Images_Opt.Visible = false;
@@ -1283,6 +1296,7 @@ namespace Watch_Face_Editor
             if (selectElementName != "Heart") uCtrl_Heart_Elm.ResetHighlightState();
             if (selectElementName != "PAI") uCtrl_PAI_Elm.ResetHighlightState();
             if (selectElementName != "Distance") uCtrl_Distance_Elm.ResetHighlightState();
+            if (selectElementName != "Weather") uCtrl_Weather_Elm.ResetHighlightState();
         }
 
         private void ClearAllElemenrOptions()
@@ -1305,6 +1319,8 @@ namespace Watch_Face_Editor
             uCtrl_Heart_Elm.SettingsClear();
             uCtrl_PAI_Elm.SettingsClear();
             uCtrl_Distance_Elm.SettingsClear();
+
+            uCtrl_Weather_Elm.SettingsClear();
         }
 
         private void uCtrl_Background_Elm_SelectChanged(object sender, EventArgs eventArgs)
@@ -1600,9 +1616,9 @@ namespace Watch_Face_Editor
             Image loadedImage = null; 
             int count = 1;
 
-            progressBar1.Value = 0;
-            progressBar1.Maximum = Images.Length;
-            progressBar1.Visible = true;
+            //progressBar1.Value = 0;
+            //progressBar1.Maximum = Images.Length;
+            //progressBar1.Visible = true;
             foreach (FileInfo file in Images)
             {
                 try
@@ -1636,6 +1652,7 @@ namespace Watch_Face_Editor
                     //loadedImage.Dispose();
                     RowNew.Height = 45;
                     dataGridView_ImagesList.Rows.Add(RowNew);
+                    //progressBar1.Value++;
                     count++;
                     ListImages.Add(fileNameOnly);
                     ListImagesFullName.Add(file.FullName);
@@ -1658,7 +1675,7 @@ namespace Watch_Face_Editor
             uCtrl_Icon_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
             uCtrl_Shortcut_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
 
-            progressBar1.Visible = false;
+            //progressBar1.Visible = false;
         }
 
         private void comboBox_AddElements_Click(object sender, EventArgs e)
@@ -2241,6 +2258,18 @@ namespace Watch_Face_Editor
 
         private void comboBox_AddAir_DropDownClosed(object sender, EventArgs e)
         {
+            if (comboBox_AddActivity.SelectedIndex == 0)
+            {
+                AddWeather();
+                ShowElemetsWatchFace();
+                JSON_Modified = true;
+                FormText();
+
+                panel_WatchfaceElements.AutoScrollPosition = new Point(
+                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                    panel_WatchfaceElements.VerticalScroll.Maximum);
+            }
+
             PreviewView = false;
             //if (comboBox_AddTime.SelectedIndex >= 0) MessageBox.Show(comboBox_AddTime.Text);
             comboBox_AddAir.Items.Insert(0, Properties.FormStrings.Elemet_Air);
@@ -2896,6 +2925,37 @@ namespace Watch_Face_Editor
             uCtrl_Distance_Elm.SettingsClear();
         }
 
+        /// <summary>Добавляем погоду в циферблат</summary>
+        private void AddWeather()
+        {
+            if (!PreviewView) return;
+            List<object> Elements = new List<object>();
+            if (Watch_Face == null) Watch_Face = new WATCH_FACE();
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face.ScreenNormal == null) Watch_Face.ScreenNormal = new ScreenNormal();
+                if (Watch_Face.ScreenNormal.Elements == null) Watch_Face.ScreenNormal.Elements = new List<object>();
+                Elements = Watch_Face.ScreenNormal.Elements;
+            }
+            else
+            {
+                if (Watch_Face.ScreenAOD == null) Watch_Face.ScreenAOD = new ScreenAOD();
+                if (Watch_Face.ScreenAOD.Elements == null) Watch_Face.ScreenAOD.Elements = new List<object>();
+                Elements = Watch_Face.ScreenAOD.Elements;
+
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
+            }
+
+            ElementWeather weather = new ElementWeather();
+            weather.visible = true;
+            //digitalTime.position = Elements.Count;
+            bool exists = Elements.Exists(e => e.GetType().Name == "ElementWeather"); // проверяем что такого элемента нет
+            //if (!exists) Elements.Add(dateDay);
+            if (!exists) Elements.Insert(0, weather);
+            uCtrl_Weather_Elm.SettingsClear();
+        }
+
         /// <summary>Отображаем элемынты в соответствии с json файлом</summary>
         private void ShowElemetsWatchFace()
         {
@@ -2913,12 +2973,15 @@ namespace Watch_Face_Editor
             uCtrl_DateWeek_Elm.Visible = false;
             uCtrl_Shortcuts_Elm.Visible = false;
             uCtrl_Statuses_Elm.Visible = false;
+
             uCtrl_Steps_Elm.Visible = false;
             uCtrl_Battery_Elm.Visible = false;
             uCtrl_Calories_Elm.Visible = false;
             uCtrl_Heart_Elm.Visible = false;
             uCtrl_PAI_Elm.Visible = false;
             uCtrl_Distance_Elm.Visible = false;
+
+            uCtrl_Weather_Elm.Visible = false;
 
 
             int count = tableLayoutPanel_ElemetsWatchFace.RowCount;
@@ -3502,6 +3565,17 @@ namespace Watch_Face_Editor
                             SetElementPositionInGUI(type, count - i - 2);
                             //SetElementPositionInGUI(type, i + 1);
                             break;
+                        #endregion
+
+                        #region ElementWeather
+                        case "ElementWeather":
+                            ElementWeather Weather = (ElementWeather)element;
+                            uCtrl_PAI_Elm.SetVisibilityElementStatus(Weather.visible);
+
+                            uCtrl_Weather_Elm.Visible = true;
+                            SetElementPositionInGUI(type, count - i - 2);
+                            //SetElementPositionInGUI(type, i + 1);
+                            break;
                             #endregion
                     }
                 }
@@ -3557,6 +3631,9 @@ namespace Watch_Face_Editor
                     break;
                 case "ElementDistance":
                     panel = panel_UC_Distance;
+                    break;
+                case "ElementWeather":
+                    panel = panel_UC_Weather;
                     break;
             }
             if (panel == null) return;
@@ -3949,6 +4026,10 @@ namespace Watch_Face_Editor
                 case "UCtrl_Distance_Elm":
                     objectName = "ElementDistance";
                     break;
+
+                case "UCtrl_Weather_Elm":
+                    objectName = "ElementWeather";
+                    break;
             }
             if (objectName.Length > 0)
             {
@@ -3988,9 +4069,14 @@ namespace Watch_Face_Editor
 
         private FileInfo[] FileInfoSort(FileInfo[] fileInfo)
         {
+            progressBar1.Value = 0;
+            progressBar1.Maximum = fileInfo.Length;
+            progressBar1.Visible = true;
             if (fileInfo.Length < 2) return fileInfo;
             for (int i = 0; i < fileInfo.Length - 1; i++)
             {
+                progressBar1.Value++;
+                //progressBar1.Update();
                 for (int j = i + 1; j < fileInfo.Length; j++)
                 {
                     int compare = FileInfoCompare(fileInfo[i], fileInfo[j]);
@@ -4002,6 +4088,7 @@ namespace Watch_Face_Editor
                     }
                 }
             }
+            progressBar1.Visible = false;
             return fileInfo;
         }
 
@@ -6974,6 +7061,98 @@ namespace Watch_Face_Editor
             }
         }
 
+        private void uCtrl_Weather_Elm_SelectChanged(object sender, EventArgs eventArgs)
+        {
+            string selectElement = uCtrl_Weather_Elm.selectedElement;
+            if (selectElement.Length == 0) HideAllElemenrOptions();
+            ResetHighlightState("Weather");
+
+            ElementWeather weather = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    //bool exists = Elements.Exists(e => e.GetType().Name == "ElementDigitalTime");
+                    weather = (ElementWeather)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementWeather");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    weather = (ElementWeather)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementWeather");
+                }
+            }
+            if (weather != null)
+            {
+                hmUI_widget_IMG_LEVEL img_level = null;
+                hmUI_widget_IMG_NUMBER img_number = null;
+                hmUI_widget_TEXT text = null;
+                hmUI_widget_IMG icon = null;
+
+                switch (selectElement)
+                {
+                    case "Images":
+                        if (uCtrl_Weather_Elm.checkBox_Images.Checked)
+                        {
+                            img_level = weather.Images;
+                            Read_ImgLevel_Options(img_level, 29, false);
+                            ShowElemenrOptions("Images");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number":
+                        if (uCtrl_Weather_Elm.checkBox_Number.Checked)
+                        {
+                            img_number = weather.Number;
+                            Read_ImgNumberWeather_Options(img_number, true, "", true, true);
+                            ShowElemenrOptions("Text_Weather");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number_Min":
+                        if (uCtrl_Weather_Elm.checkBox_Number_Min.Checked)
+                        {
+                            img_number = weather.Number_Min;
+                            Read_ImgNumberWeather_Options(img_number, true, "", true, true);
+                            ShowElemenrOptions("Text_Weather");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number_Max":
+                        if (uCtrl_Weather_Elm.checkBox_Number_Max.Checked)
+                        {
+                            img_number = weather.Number_Max;
+                            Read_ImgNumberWeather_Options(img_number, true, "", true, true);
+                            ShowElemenrOptions("Text_Weather");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "CityName":
+                        if (uCtrl_Weather_Elm.checkBox_Text_CityName.Checked)
+                        {
+                            text = weather.City_Name;
+                            //Read_Text_Options(text);
+                            //ShowElemenrOptions("SystemFont");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Icon":
+                        if (uCtrl_Weather_Elm.checkBox_Icon.Checked)
+                        {
+                            icon = weather.Icon;
+                            Read_Icon_Options(icon);
+                            ShowElemenrOptions("Icon");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                }
+
+            }
+        }
+
         #endregion
 
         private void uCtrl_DateDay_Elm_VisibleOptionsChanged(object sender, EventArgs eventArgs)
@@ -7407,6 +7586,13 @@ namespace Watch_Face_Editor
                             ElementDistance distanceElement = (ElementDistance)element;
                             Watch_Face.ScreenAOD.Elements.Add((ElementDistance)distanceElement.Clone());
                             break;
+                        #endregion
+
+                        #region ElementWeather
+                        case "ElementWeather":
+                            ElementWeather weatherElement = (ElementWeather)element;
+                            Watch_Face.ScreenAOD.Elements.Add((ElementWeather)weatherElement.Clone());
+                            break;
                             #endregion
                     }
                 }
@@ -7432,7 +7618,7 @@ namespace Watch_Face_Editor
                 {
                     bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementShortcuts");
                     //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
-                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementDateWeek());
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementShortcuts());
                     shortcuts = (ElementShortcuts)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementShortcuts");
                 }
             }
@@ -7443,7 +7629,7 @@ namespace Watch_Face_Editor
                 {
                     bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementShortcuts");
                     //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
-                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementDateWeek());
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementShortcuts());
                     shortcuts = (ElementShortcuts)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementShortcuts");
                 }
             }
@@ -7496,7 +7682,7 @@ namespace Watch_Face_Editor
                 {
                     bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementStatuses");
                     //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
-                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementDateWeek());
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementStatuses());
                     statuses = (ElementStatuses)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementStatuses");
                 }
             }
@@ -7507,7 +7693,7 @@ namespace Watch_Face_Editor
                 {
                     bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementStatuses");
                     //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
-                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementDateWeek());
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementStatuses());
                     statuses = (ElementStatuses)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementStatuses");
                 }
             }
@@ -7545,7 +7731,7 @@ namespace Watch_Face_Editor
                 {
                     bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementSteps");
                     //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
-                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementDateWeek());
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementSteps());
                     steps = (ElementSteps)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementSteps");
                 }
             }
@@ -7556,7 +7742,7 @@ namespace Watch_Face_Editor
                 {
                     bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementSteps");
                     //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
-                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementDateWeek());
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementSteps());
                     steps = (ElementSteps)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementSteps");
                 }
             }
@@ -7601,7 +7787,7 @@ namespace Watch_Face_Editor
                 {
                     bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementBattery");
                     //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
-                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementDateWeek());
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementBattery());
                     battery = (ElementBattery)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementBattery");
                 }
             }
@@ -7612,7 +7798,7 @@ namespace Watch_Face_Editor
                 {
                     bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementBattery");
                     //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
-                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementDateWeek());
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementBattery());
                     battery = (ElementBattery)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementBattery");
                 }
             }
@@ -7655,7 +7841,7 @@ namespace Watch_Face_Editor
                 {
                     bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementHeart");
                     //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
-                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementDateWeek());
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementHeart());
                     heart = (ElementHeart)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementHeart");
                 }
             }
@@ -7666,7 +7852,7 @@ namespace Watch_Face_Editor
                 {
                     bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementHeart");
                     //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
-                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementDateWeek());
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementHeart());
                     heart = (ElementHeart)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementHeart");
                 }
             }
@@ -7709,7 +7895,7 @@ namespace Watch_Face_Editor
                 {
                     bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementCalories");
                     //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
-                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementDateWeek());
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementCalories());
                     calories = (ElementCalories)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementCalories");
                 }
             }
@@ -7720,7 +7906,7 @@ namespace Watch_Face_Editor
                 {
                     bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementCalories");
                     //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
-                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementDateWeek());
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementCalories());
                     calories = (ElementCalories)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementCalories");
                 }
             }
@@ -7765,7 +7951,7 @@ namespace Watch_Face_Editor
                 {
                     bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementPAI");
                     //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
-                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementDateWeek());
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementPAI());
                     pai = (ElementPAI)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementPAI");
                 }
             }
@@ -7776,7 +7962,7 @@ namespace Watch_Face_Editor
                 {
                     bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementPAI");
                     //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
-                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementDateWeek());
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementPAI());
                     pai = (ElementPAI)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementPAI");
                 }
             }
@@ -7800,6 +7986,58 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Circle_Scale")) pai.Circle_Scale.position = elementOptions["Circle_Scale"];
                 if (elementOptions.ContainsKey("Linear_Scale")) pai.Linear_Scale.position = elementOptions["Linear_Scale"];
                 if (elementOptions.ContainsKey("Icon")) pai.Icon.position = elementOptions["Icon"];
+
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Weather_Elm_OptionsMoved(object sender, EventArgs eventArgs, Dictionary<string, int> elementOptions)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementWeather weather = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementWeather");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementWeather());
+                    weather = (ElementWeather)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementWeather");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementWeather");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementWeather());
+                    weather = (ElementWeather)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementWeather");
+                }
+            }
+
+            if (weather != null)
+            {
+                if (weather.Images == null) weather.Images = new hmUI_widget_IMG_LEVEL();
+                if (weather.Number == null) weather.Number = new hmUI_widget_IMG_NUMBER();
+                if (weather.Number_Min == null) weather.Number_Min = new hmUI_widget_IMG_NUMBER();
+                if (weather.Number_Max == null) weather.Number_Max = new hmUI_widget_IMG_NUMBER();
+                if (weather.City_Name == null) weather.City_Name = new hmUI_widget_TEXT();
+                if (weather.Icon == null) weather.Icon = new hmUI_widget_IMG();
+
+                if (elementOptions.ContainsKey("Images")) weather.Images.position = elementOptions["Images"];
+                if (elementOptions.ContainsKey("Number")) weather.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Min")) weather.Number_Min.position = elementOptions["Number_Min"];
+                if (elementOptions.ContainsKey("Number_Max")) weather.Number_Max.position = elementOptions["Number_Max"];
+                if (elementOptions.ContainsKey("City_Name")) weather.City_Name.position = elementOptions["City_Name"];
+                if (elementOptions.ContainsKey("Icon")) weather.Icon.position = elementOptions["Icon"];
 
             }
 
@@ -8045,6 +8283,36 @@ namespace Watch_Face_Editor
             if (distance != null)
             {
                 distance.visible = visible;
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Weather_Elm_VisibleElementChanged(object sender, EventArgs eventArgs, bool visible)
+        {
+            ElementWeather weather = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    //bool exists = Elements.Exists(e => e.GetType().Name == "ElementAnalogTime");
+                    weather = (ElementWeather)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementWeather");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    weather = (ElementWeather)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementWeather");
+                }
+            }
+            if (weather != null)
+            {
+                weather.visible = visible;
             }
 
             JSON_Modified = true;
@@ -8662,6 +8930,85 @@ namespace Watch_Face_Editor
             }
 
             uCtrl_PAI_Elm_SelectChanged(sender, eventArgs);
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Weather_Elm_VisibleOptionsChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementWeather weather = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementWeather");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementWeather());
+                    weather = (ElementWeather)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementWeather");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementWeather");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementWeather());
+                    weather = (ElementWeather)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementWeather");
+                }
+            }
+
+            if (weather != null)
+            {
+                if (weather.Images == null) weather.Images = new hmUI_widget_IMG_LEVEL();
+                if (weather.Number == null) weather.Number = new hmUI_widget_IMG_NUMBER();
+                if (weather.Number_Min == null) weather.Number_Min = new hmUI_widget_IMG_NUMBER();
+                if (weather.Number_Max == null) weather.Number_Max = new hmUI_widget_IMG_NUMBER();
+                if (weather.City_Name == null) weather.City_Name = new hmUI_widget_TEXT();
+                if (weather.Icon == null) weather.Icon = new hmUI_widget_IMG();
+
+                Dictionary<string, int> elementOptions = uCtrl_PAI_Elm.GetOptionsPosition();
+                if (elementOptions.ContainsKey("Images")) weather.Images.position = elementOptions["Images"];
+                if (elementOptions.ContainsKey("Number")) weather.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Min")) weather.Number_Min.position = elementOptions["Number_Min"];
+                if (elementOptions.ContainsKey("Number_Max")) weather.Number_Max.position = elementOptions["Number_Max"];
+                if (elementOptions.ContainsKey("City_Name")) weather.City_Name.position = elementOptions["City_Name"];
+                if (elementOptions.ContainsKey("Icon")) weather.Icon.position = elementOptions["Icon"];
+
+                CheckBox checkBox = (CheckBox)sender;
+                string name = checkBox.Name;
+                switch (name)
+                {
+                    case "checkBox_Images":
+                        weather.Images.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number":
+                        weather.Number.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Min":
+                        weather.Number_Min.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Max":
+                        weather.Number_Max.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_CityName":
+                        weather.City_Name.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Icon":
+                        weather.Icon.visible = checkBox.Checked;
+                        break;
+                }
+
+            }
+
+            uCtrl_Weather_Elm_SelectChanged(sender, eventArgs);
 
             JSON_Modified = true;
             PreviewImage();

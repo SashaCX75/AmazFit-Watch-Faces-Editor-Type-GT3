@@ -2597,7 +2597,13 @@ namespace Watch_Face_Editor
                 if (img_number.negative_image != null && img_number.negative_image.Length > 0)
                 {
                     string negative_image = "'" + img_number.negative_image + ".png'";
-                    options += TabInString(7) + "dot_image: " + negative_image + "," + Environment.NewLine;
+                    options += TabInString(7) + "negative_image: " + negative_image + "," + Environment.NewLine;
+                }
+
+                if (img_number.invalid_image != null && img_number.invalid_image.Length > 0)
+                {
+                    string invalid_image = "'" + img_number.invalid_image + ".png'";
+                    options += TabInString(7) + "invalid_image: " + invalid_image + "," + Environment.NewLine;
                 }
 
                 if (img_number.dot_image != null && img_number.dot_image.Length > 0)
@@ -4645,10 +4651,14 @@ namespace Watch_Face_Editor
                                     heart.Images = new hmUI_widget_IMG_LEVEL();
                                     heart.Images.img_First = imgLevel.img_First;
                                     heart.Images.image_length = imgLevel.image_length;
+                                    heart.Images.image_length = 6;
                                     heart.Images.X = imgLevel.X;
                                     heart.Images.Y = imgLevel.Y;
                                     heart.Images.visible = true;
                                     heart.Images.position = offset;
+                                    if(imgLevel.image_length!=6)
+                                        MessageBox.Show("Количество изображений для отображения пульса должно быть равным 6.", 
+                                            Properties.FormStrings.Message_Warning_Caption,MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
                             }
 
@@ -4815,11 +4825,15 @@ namespace Watch_Face_Editor
 
                                     heart.Segments = new hmUI_widget_IMG_PROGRESS();
                                     heart.Segments.img_First = imgProgress.img_First;
-                                    heart.Segments.image_length = imgProgress.image_length;
+                                    //heart.Segments.image_length = imgProgress.image_length;
+                                    heart.Segments.image_length = 6;
                                     heart.Segments.X = imgProgress.X;
                                     heart.Segments.Y = imgProgress.Y;
                                     heart.Segments.visible = true;
                                     heart.Segments.position = offset;
+                                    if (imgProgress.image_length != 6)
+                                        MessageBox.Show("Количество изображений для отображения пульса должно быть равным 6.",
+                                            Properties.FormStrings.Message_Warning_Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
                             }
 
@@ -4905,6 +4919,7 @@ namespace Watch_Face_Editor
                                     steps.Number.unit = imgNumber.unit;
                                     steps.Number.imperial_unit = imgNumber.imperial_unit;
                                     steps.Number.negative_image = imgNumber.negative_image;
+                                    steps.Number.invalid_image = imgNumber.invalid_image;
                                     steps.Number.dot_image = imgNumber.dot_image;
                                     steps.Number.align = imgNumber.align;
                                     steps.Number.visible = true;
@@ -4942,6 +4957,7 @@ namespace Watch_Face_Editor
                                     steps.Number_Target.unit = imgNumber.unit;
                                     steps.Number_Target.imperial_unit = imgNumber.imperial_unit;
                                     steps.Number_Target.negative_image = imgNumber.negative_image;
+                                    steps.Number.invalid_image = imgNumber.invalid_image;
                                     steps.Number_Target.dot_image = imgNumber.dot_image;
                                     steps.Number_Target.align = imgNumber.align;
                                     steps.Number_Target.visible = true;
@@ -4978,6 +4994,7 @@ namespace Watch_Face_Editor
                                     battery.Number.unit = imgNumber.unit;
                                     battery.Number.imperial_unit = imgNumber.imperial_unit;
                                     battery.Number.negative_image = imgNumber.negative_image;
+                                    battery.Number.invalid_image = imgNumber.invalid_image;
                                     battery.Number.dot_image = imgNumber.dot_image;
                                     battery.Number.align = imgNumber.align;
                                     battery.Number.visible = true;
@@ -5015,6 +5032,7 @@ namespace Watch_Face_Editor
                                     calorie.Number.unit = imgNumber.unit;
                                     calorie.Number.imperial_unit = imgNumber.imperial_unit;
                                     calorie.Number.negative_image = imgNumber.negative_image;
+                                    calorie.Number.invalid_image = imgNumber.invalid_image;
                                     calorie.Number.dot_image = imgNumber.dot_image;
                                     calorie.Number.align = imgNumber.align;
                                     calorie.Number.visible = true;
@@ -5052,6 +5070,7 @@ namespace Watch_Face_Editor
                                     calorie.Number_Target.unit = imgNumber.unit;
                                     calorie.Number_Target.imperial_unit = imgNumber.imperial_unit;
                                     calorie.Number_Target.negative_image = imgNumber.negative_image;
+                                    calorie.Number.invalid_image = imgNumber.invalid_image;
                                     calorie.Number_Target.dot_image = imgNumber.dot_image;
                                     calorie.Number_Target.align = imgNumber.align;
                                     calorie.Number_Target.visible = true;
@@ -5088,6 +5107,7 @@ namespace Watch_Face_Editor
                                     heart.Number.unit = imgNumber.unit;
                                     heart.Number.imperial_unit = imgNumber.imperial_unit;
                                     heart.Number.negative_image = imgNumber.negative_image;
+                                    heart.Number.invalid_image = imgNumber.invalid_image;
                                     heart.Number.dot_image = imgNumber.dot_image;
                                     heart.Number.align = imgNumber.align;
                                     heart.Number.visible = true;
@@ -5125,6 +5145,7 @@ namespace Watch_Face_Editor
                                     pai.Number.unit = imgNumber.unit;
                                     pai.Number.imperial_unit = imgNumber.imperial_unit;
                                     pai.Number.negative_image = imgNumber.negative_image;
+                                    pai.Number.invalid_image = imgNumber.invalid_image;
                                     pai.Number.dot_image = imgNumber.dot_image;
                                     pai.Number.align = imgNumber.align;
                                     pai.Number.visible = true;
@@ -5162,6 +5183,7 @@ namespace Watch_Face_Editor
                                     pai.Number_Target.unit = imgNumber.unit;
                                     pai.Number_Target.imperial_unit = imgNumber.imperial_unit;
                                     pai.Number_Target.negative_image = imgNumber.negative_image;
+                                    pai.Number.invalid_image = imgNumber.invalid_image;
                                     pai.Number_Target.dot_image = imgNumber.dot_image;
                                     pai.Number_Target.align = imgNumber.align;
                                     pai.Number_Target.visible = true;
@@ -5189,6 +5211,7 @@ namespace Watch_Face_Editor
                                     distance.Number.unit = imgNumber.unit;
                                     distance.Number.imperial_unit = imgNumber.imperial_unit;
                                     distance.Number.negative_image = imgNumber.negative_image;
+                                    distance.Number.invalid_image = imgNumber.invalid_image;
                                     distance.Number.dot_image = imgNumber.dot_image;
                                     distance.Number.align = imgNumber.align;
                                     distance.Number.visible = true;
@@ -6265,8 +6288,11 @@ namespace Watch_Face_Editor
             while (endIndex > 0)
             {
                 valueStr = str.Substring(0, endIndex);
+                //int tempInt = valueStr.IndexOf("//");
                 valueStr = valueStr.Trim();
-                valueStr = valueStr.TrimEnd(',');
+                startIndex = valueStr.IndexOf(",");
+                if (startIndex > 0) valueStr = valueStr.Remove(startIndex, valueStr.Length- startIndex);
+                //valueStr = valueStr.TrimEnd(',');
                 startIndex = valueStr.IndexOf(":");
                 if (startIndex > 0)
                 {
@@ -7101,6 +7127,12 @@ namespace Watch_Face_Editor
                     imgName = parametrs["negative_image"].Replace("'", "");
                     imgName = Path.GetFileNameWithoutExtension(imgName);
                     imgNumber.negative_image = imgName;
+                }
+                if (parametrs.ContainsKey("invalid_image") && parametrs["invalid_image"].Length > 0)
+                {
+                    imgName = parametrs["invalid_image"].Replace("'", "");
+                    imgName = Path.GetFileNameWithoutExtension(imgName);
+                    imgNumber.invalid_image = imgName;
                 }
                 if (parametrs.ContainsKey("dot_image") && parametrs["dot_image"].Length > 0)
                 {

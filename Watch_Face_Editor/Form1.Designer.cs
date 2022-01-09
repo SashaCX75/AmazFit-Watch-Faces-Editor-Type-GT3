@@ -31,8 +31,8 @@ namespace Watch_Face_Editor
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage_Edit = new System.Windows.Forms.TabPage();
             this.button_SaveJson = new System.Windows.Forms.Button();
@@ -84,7 +84,10 @@ namespace Watch_Face_Editor
             this.uCtrl_PAI_Elm = new ControlLibrary.UCtrl_PAI_Elm();
             this.panel_UC_Distance = new System.Windows.Forms.Panel();
             this.uCtrl_Distance_Elm = new ControlLibrary.UCtrl_Distance_Elm();
+            this.panel_UC_Weather = new System.Windows.Forms.Panel();
+            this.uCtrl_Weather_Elm = new ControlLibrary.UCtrl_Weather_Elm();
             this.panel_ElementsOpt = new System.Windows.Forms.Panel();
+            this.uCtrl_Text_Weather_Opt = new ControlLibrary.UCtrl_Text_Weather_Opt();
             this.uCtrl_Shortcut_Opt = new ControlLibrary.UCtrl_Shortcut_Opt();
             this.uCtrl_Segments_Opt = new ControlLibrary.UCtrl_Segments_Opt();
             this.uCtrl_Icon_Opt = new ControlLibrary.UCtrl_Icon_Opt();
@@ -242,6 +245,7 @@ namespace Watch_Face_Editor
             this.panel_UC_Calories.SuspendLayout();
             this.panel_UC_PAI.SuspendLayout();
             this.panel_UC_Distance.SuspendLayout();
+            this.panel_UC_Weather.SuspendLayout();
             this.panel_ElementsOpt.SuspendLayout();
             this.panel_MainScreen_AOD.SuspendLayout();
             this.tabPage_Show_Set.SuspendLayout();
@@ -486,7 +490,7 @@ namespace Watch_Face_Editor
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateDay, 0, 2);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateMonth, 0, 3);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateYear, 0, 4);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Background, 0, 14);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Background, 0, 15);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateWeek, 0, 5);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Steps, 0, 8);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Statuses, 0, 7);
@@ -496,6 +500,7 @@ namespace Watch_Face_Editor
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Calories, 0, 11);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_PAI, 0, 12);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Distance, 0, 13);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Weather, 0, 14);
             this.tableLayoutPanel_ElemetsWatchFace.Name = "tableLayoutPanel_ElemetsWatchFace";
             this.tableLayoutPanel_ElemetsWatchFace.DragOver += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragOver);
             // 
@@ -777,10 +782,30 @@ namespace Watch_Face_Editor
             this.uCtrl_Distance_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
             this.uCtrl_Distance_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
             // 
+            // panel_UC_Weather
+            // 
+            resources.ApplyResources(this.panel_UC_Weather, "panel_UC_Weather");
+            this.panel_UC_Weather.Controls.Add(this.uCtrl_Weather_Elm);
+            this.panel_UC_Weather.Name = "panel_UC_Weather";
+            // 
+            // uCtrl_Weather_Elm
+            // 
+            resources.ApplyResources(this.uCtrl_Weather_Elm, "uCtrl_Weather_Elm");
+            this.uCtrl_Weather_Elm.Name = "uCtrl_Weather_Elm";
+            this.uCtrl_Weather_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_Weather_Elm.VisibleElementChangedHandler(this.uCtrl_Weather_Elm_VisibleElementChanged);
+            this.uCtrl_Weather_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_Weather_Elm.VisibleOptionsChangedHandler(this.uCtrl_Weather_Elm_VisibleOptionsChanged);
+            this.uCtrl_Weather_Elm.OptionsMoved += new ControlLibrary.UCtrl_Weather_Elm.OptionsMovedHandler(this.uCtrl_Weather_Elm_OptionsMoved);
+            this.uCtrl_Weather_Elm.SelectChanged += new ControlLibrary.UCtrl_Weather_Elm.SelectChangedHandler(this.uCtrl_Weather_Elm_SelectChanged);
+            this.uCtrl_Weather_Elm.DelElement += new ControlLibrary.UCtrl_Weather_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
+            this.uCtrl_Weather_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.uCtrl_Weather_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.uCtrl_Weather_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
             // panel_ElementsOpt
             // 
             resources.ApplyResources(this.panel_ElementsOpt, "panel_ElementsOpt");
             this.panel_ElementsOpt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_ElementsOpt.Controls.Add(this.uCtrl_Text_Weather_Opt);
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_Shortcut_Opt);
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_Segments_Opt);
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_Icon_Opt);
@@ -792,6 +817,14 @@ namespace Watch_Face_Editor
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_Text_Opt);
             this.panel_ElementsOpt.Controls.Add(this.userCtrl_Background_Options);
             this.panel_ElementsOpt.Name = "panel_ElementsOpt";
+            // 
+            // uCtrl_Text_Weather_Opt
+            // 
+            resources.ApplyResources(this.uCtrl_Text_Weather_Opt, "uCtrl_Text_Weather_Opt");
+            this.uCtrl_Text_Weather_Opt.Follow = false;
+            this.uCtrl_Text_Weather_Opt.ImageError = true;
+            this.uCtrl_Text_Weather_Opt.Name = "uCtrl_Text_Weather_Opt";
+            this.uCtrl_Text_Weather_Opt.PaddingZero = true;
             // 
             // uCtrl_Shortcut_Opt
             // 
@@ -1099,8 +1132,8 @@ namespace Watch_Face_Editor
             // Number
             // 
             this.Number.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Number.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Number.DefaultCellStyle = dataGridViewCellStyle3;
             resources.ApplyResources(this.Number, "Number");
             this.Number.Name = "Number";
             this.Number.ReadOnly = true;
@@ -1123,11 +1156,11 @@ namespace Watch_Face_Editor
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.NullValue = null;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.NullValue = null;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle4;
             this.Column1.FillWeight = 95F;
             resources.ApplyResources(this.Column1, "Column1");
             this.Column1.Name = "Column1";
@@ -1944,6 +1977,8 @@ namespace Watch_Face_Editor
             this.panel_UC_PAI.PerformLayout();
             this.panel_UC_Distance.ResumeLayout(false);
             this.panel_UC_Distance.PerformLayout();
+            this.panel_UC_Weather.ResumeLayout(false);
+            this.panel_UC_Weather.PerformLayout();
             this.panel_ElementsOpt.ResumeLayout(false);
             this.panel_MainScreen_AOD.ResumeLayout(false);
             this.panel_MainScreen_AOD.PerformLayout();
@@ -2167,6 +2202,9 @@ namespace Watch_Face_Editor
         private ControlLibrary.UCtrl_PAI_Elm uCtrl_PAI_Elm;
         private System.Windows.Forms.Panel panel_UC_Distance;
         private ControlLibrary.UCtrl_Distance_Elm uCtrl_Distance_Elm;
+        private System.Windows.Forms.Panel panel_UC_Weather;
+        private ControlLibrary.UCtrl_Weather_Elm uCtrl_Weather_Elm;
+        private ControlLibrary.UCtrl_Text_Weather_Opt uCtrl_Text_Weather_Opt;
     }
 }
 

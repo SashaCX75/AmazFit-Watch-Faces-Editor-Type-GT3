@@ -140,6 +140,7 @@ namespace Watch_Face_Editor
                     iconPosX = this.Second.iconPosX,
                     iconPosY = this.Second.iconPosY,
                     negative_image = this.Second.negative_image,
+                    invalid_image = this.Second.invalid_image,
                     dot_image = this.Second.dot_image,
                     follow = this.Second.follow,
 
@@ -167,6 +168,7 @@ namespace Watch_Face_Editor
                     iconPosX = this.Minute.iconPosX,
                     iconPosY = this.Minute.iconPosY,
                     negative_image = this.Minute.negative_image,
+                    invalid_image = this.Minute.invalid_image,
                     dot_image = this.Minute.dot_image,
                     follow = this.Minute.follow,
 
@@ -194,6 +196,7 @@ namespace Watch_Face_Editor
                     iconPosX = this.Hour.iconPosX,
                     iconPosY = this.Hour.iconPosY,
                     negative_image = this.Hour.negative_image,
+                    invalid_image = this.Hour.invalid_image,
                     dot_image = this.Hour.dot_image,
                     follow = this.Hour.follow,
 
@@ -397,6 +400,7 @@ namespace Watch_Face_Editor
                     iconPosX = this.Number.iconPosX,
                     iconPosY = this.Number.iconPosY,
                     negative_image = this.Number.negative_image,
+                    invalid_image = this.Number.invalid_image,
                     dot_image = this.Number.dot_image,
                     follow = this.Number.follow,
 
@@ -476,6 +480,7 @@ namespace Watch_Face_Editor
                     iconPosX = this.Number.iconPosX,
                     iconPosY = this.Number.iconPosY,
                     negative_image = this.Number.negative_image,
+                    invalid_image = this.Number.invalid_image,
                     dot_image = this.Number.dot_image,
                     follow = this.Number.follow,
 
@@ -545,6 +550,7 @@ namespace Watch_Face_Editor
                     iconPosX = this.Number.iconPosX,
                     iconPosY = this.Number.iconPosY,
                     negative_image = this.Number.negative_image,
+                    invalid_image = this.Number.invalid_image,
                     dot_image = this.Number.dot_image,
                     follow = this.Number.follow,
 
@@ -1077,6 +1083,7 @@ namespace Watch_Face_Editor
                     iconPosX = this.Number.iconPosX,
                     iconPosY = this.Number.iconPosY,
                     negative_image = this.Number.negative_image,
+                    invalid_image = this.Number.invalid_image,
                     dot_image = this.Number.dot_image,
                     follow = this.Number.follow,
 
@@ -1104,6 +1111,7 @@ namespace Watch_Face_Editor
                     iconPosX = this.Number_Target.iconPosX,
                     iconPosY = this.Number_Target.iconPosY,
                     negative_image = this.Number_Target.negative_image,
+                    invalid_image = this.Number_Target.invalid_image,
                     dot_image = this.Number_Target.dot_image,
                     follow = this.Number_Target.follow,
 
@@ -1290,6 +1298,7 @@ namespace Watch_Face_Editor
                     iconPosX = this.Number.iconPosX,
                     iconPosY = this.Number.iconPosY,
                     negative_image = this.Number.negative_image,
+                    invalid_image = this.Number.invalid_image,
                     dot_image = this.Number.dot_image,
                     follow = this.Number.follow,
 
@@ -1476,6 +1485,7 @@ namespace Watch_Face_Editor
                     iconPosX = this.Number.iconPosX,
                     iconPosY = this.Number.iconPosY,
                     negative_image = this.Number.negative_image,
+                    invalid_image = this.Number.invalid_image,
                     dot_image = this.Number.dot_image,
                     follow = this.Number.follow,
 
@@ -1503,6 +1513,7 @@ namespace Watch_Face_Editor
                     iconPosX = this.Number_Target.iconPosX,
                     iconPosY = this.Number_Target.iconPosY,
                     negative_image = this.Number_Target.negative_image,
+                    invalid_image = this.Number_Target.invalid_image,
                     dot_image = this.Number_Target.dot_image,
                     follow = this.Number_Target.follow,
 
@@ -1689,6 +1700,7 @@ namespace Watch_Face_Editor
                     iconPosX = this.Number.iconPosX,
                     iconPosY = this.Number.iconPosY,
                     negative_image = this.Number.negative_image,
+                    invalid_image = this.Number.invalid_image,
                     dot_image = this.Number.dot_image,
                     follow = this.Number.follow,
 
@@ -1875,6 +1887,7 @@ namespace Watch_Face_Editor
                     iconPosX = this.Number.iconPosX,
                     iconPosY = this.Number.iconPosY,
                     negative_image = this.Number.negative_image,
+                    invalid_image = this.Number.invalid_image,
                     dot_image = this.Number.dot_image,
                     follow = this.Number.follow,
 
@@ -2047,6 +2060,7 @@ namespace Watch_Face_Editor
                     iconPosX = this.Number.iconPosX,
                     iconPosY = this.Number.iconPosY,
                     negative_image = this.Number.negative_image,
+                    invalid_image = this.Number.invalid_image,
                     dot_image = this.Number.dot_image,
                     follow = this.Number.follow,
 
@@ -2063,6 +2077,183 @@ namespace Watch_Face_Editor
                 visible = this.visible,
 
                 Number = Number,
+            };
+        }
+    }
+
+    public class ElementWeather : ICloneable
+    {
+        public string elementName = "ElementWeather";
+
+        ///// <summary>Позиция в наборе элементов</summary>
+        //public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = true;
+
+        public hmUI_widget_IMG_LEVEL Images { get; set; }
+        public hmUI_widget_IMG_NUMBER Number { get; set; }
+        public hmUI_widget_IMG_NUMBER Number_Min { get; set; }
+        public hmUI_widget_IMG_NUMBER Number_Max { get; set; }
+        public hmUI_widget_TEXT City_Name { get; set; }
+        public hmUI_widget_IMG Icon { get; set; }
+
+        public object Clone()
+        {
+
+            hmUI_widget_IMG_LEVEL Images = null;
+            if (this.Images != null)
+            {
+                Images = new hmUI_widget_IMG_LEVEL
+                {
+                    X = this.Images.X,
+                    Y = this.Images.Y,
+                    img_First = this.Images.img_First,
+                    image_length = this.Images.image_length,
+
+                    position = this.Images.position,
+                    visible = this.Images.visible,
+                    show_level = this.Images.show_level,
+                    type = this.Images.type,
+                };
+            }
+
+            hmUI_widget_IMG_NUMBER Number = null;
+            if (this.Number != null)
+            {
+                Number = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Number.imageX,
+                    imageY = this.Number.imageY,
+                    space = this.Number.space,
+                    zero = this.Number.zero,
+                    align = this.Number.align,
+                    img_First = this.Number.img_First,
+                    unit = this.Number.unit,
+                    imperial_unit = this.Number.imperial_unit,
+                    icon = this.Number.icon,
+                    iconPosX = this.Number.iconPosX,
+                    iconPosY = this.Number.iconPosY,
+                    negative_image = this.Number.negative_image,
+                    invalid_image = this.Number.invalid_image,
+                    dot_image = this.Number.dot_image,
+                    follow = this.Number.follow,
+
+                    position = this.Number.position,
+                    visible = this.Number.visible,
+                    show_level = this.Number.show_level,
+                    type = this.Number.type,
+                };
+            }
+
+            hmUI_widget_IMG_NUMBER Number_Min = null;
+            if (this.Number_Min != null)
+            {
+                Number_Min = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Number_Min.imageX,
+                    imageY = this.Number_Min.imageY,
+                    space = this.Number_Min.space,
+                    zero = this.Number_Min.zero,
+                    align = this.Number_Min.align,
+                    img_First = this.Number_Min.img_First,
+                    unit = this.Number_Min.unit,
+                    imperial_unit = this.Number_Min.imperial_unit,
+                    icon = this.Number_Min.icon,
+                    iconPosX = this.Number_Min.iconPosX,
+                    iconPosY = this.Number_Min.iconPosY,
+                    negative_image = this.Number_Min.negative_image,
+                    invalid_image = this.Number_Min.invalid_image,
+                    dot_image = this.Number_Min.dot_image,
+                    follow = this.Number_Min.follow,
+
+                    position = this.Number_Min.position,
+                    visible = this.Number_Min.visible,
+                    show_level = this.Number_Min.show_level,
+                    type = this.Number_Min.type,
+                };
+            }
+
+            hmUI_widget_IMG_NUMBER Number_Max = null;
+            if (this.Number_Max != null)
+            {
+                Number_Max = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Number_Max.imageX,
+                    imageY = this.Number_Max.imageY,
+                    space = this.Number_Max.space,
+                    zero = this.Number_Max.zero,
+                    align = this.Number_Max.align,
+                    img_First = this.Number_Max.img_First,
+                    unit = this.Number_Max.unit,
+                    imperial_unit = this.Number_Max.imperial_unit,
+                    icon = this.Number_Max.icon,
+                    iconPosX = this.Number_Max.iconPosX,
+                    iconPosY = this.Number_Max.iconPosY,
+                    negative_image = this.Number_Max.negative_image,
+                    invalid_image = this.Number_Max.invalid_image,
+                    dot_image = this.Number_Max.dot_image,
+                    follow = this.Number_Max.follow,
+
+                    position = this.Number_Max.position,
+                    visible = this.Number_Max.visible,
+                    show_level = this.Number_Max.show_level,
+                    type = this.Number_Max.type,
+                };
+            }
+
+            hmUI_widget_TEXT City_Name = null;
+            if (this.City_Name != null)
+            {
+                City_Name = new hmUI_widget_TEXT
+                {
+                    x = this.City_Name.x,
+                    y = this.City_Name.y,
+                    w = this.City_Name.w,
+                    h = this.City_Name.h,
+                    color = this.City_Name.color,
+                    align_h = this.City_Name.align_h,
+                    align_v = this.City_Name.align_v,
+                    text_size = this.City_Name.text_size,
+                    text_style = this.City_Name.text_style,
+                    line_space = this.City_Name.line_space,
+                    char_space = this.City_Name.char_space,
+
+                    position = this.City_Name.position,
+                    visible = this.City_Name.visible,
+                    show_level = this.City_Name.show_level,
+                    type = this.City_Name.type,
+                };
+            }
+
+            hmUI_widget_IMG Icon = null;
+            if (this.Icon != null)
+            {
+                Icon = new hmUI_widget_IMG
+                {
+                    x = this.Icon.x,
+                    y = this.Icon.y,
+                    w = this.Icon.w,
+                    h = this.Icon.h,
+                    src = this.Icon.src,
+
+                    position = this.Icon.position,
+                    visible = this.Icon.visible,
+                    show_level = this.Icon.show_level,
+                };
+            }
+
+            return new ElementWeather
+            {
+                elementName = this.elementName,
+                visible = this.visible,
+
+                Images = Images,
+                Number = Number,
+                Number_Min = Number_Min,
+                Number_Max = Number_Max,
+                City_Name = City_Name,
+                Icon = Icon,
             };
         }
     }

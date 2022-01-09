@@ -222,6 +222,18 @@
     <Compile Include="UCtrl_Text_Opt.Designer.cs">
       <DependentUpon>UCtrl_Text_Opt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Elements\UCtrl_Weather_Elm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\UCtrl_Weather_Elm.Designer.cs">
+      <DependentUpon>UCtrl_Weather_Elm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCtrl_Text_Weather_Opt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCtrl_Text_Weather_Opt.Designer.cs">
+      <DependentUpon>UCtrl_Text_Weather_Opt.cs</DependentUpon>
+    </Compile>
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
@@ -293,6 +305,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Steps_Elm.zh.resx">
       <DependentUpon>UCtrl_Steps_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Weather_Elm.en.resx">
+      <DependentUpon>UCtrl_Weather_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Weather_Elm.zh.resx">
+      <DependentUpon>UCtrl_Weather_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -477,6 +495,18 @@
     <EmbeddedResource Include="UCtrl_Text_Opt.zh.resx">
       <DependentUpon>UCtrl_Text_Opt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Weather_Elm.resx">
+      <DependentUpon>UCtrl_Weather_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Text_Weather_Opt.en.resx">
+      <DependentUpon>UCtrl_Text_Weather_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Text_Weather_Opt.resx">
+      <DependentUpon>UCtrl_Text_Weather_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Text_Weather_Opt.zh.resx">
+      <DependentUpon>UCtrl_Text_Weather_Opt.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -597,6 +627,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\location.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\weatherIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text_fields.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -93,6 +93,9 @@ namespace Watch_Face_Editor
         /// <summary>Символ "-"</summary>
         public string negative_image { get; set; }
 
+        /// <summary>Символ ошибки</summary>
+        public string invalid_image { get; set; }
+
         /// <summary>Десятичный разделитель</summary>
         public string dot_image { get; set; }
 
@@ -403,6 +406,59 @@ namespace Watch_Face_Editor
 
         /// <summary>Основной экран или AOD</summary>
         public string show_level = "";
+    }
+
+    /// <summary>Надпись системным шрифтом</summary>
+    public class hmUI_widget_TEXT
+    {
+        /// <summary>Позиция в наборе элементов</summary>
+        public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = false;
+
+        /// <summary>X координата</summary>
+        public int x { get; set; }
+
+        /// <summary>Y координата</summary>
+        public int y { get; set; }
+
+        /// <summary>Ширина</summary>
+        public int w { get; set; }
+
+        /// <summary>Высота</summary>
+        public int h { get; set; }
+
+        /// <summary>Цвет</summary>
+        public string color { get; set; } = "0xFFFF8C00";
+
+        /// <summary>Горизонтальное выравнивание</summary>
+        public string align_h { get; set; } = "LEFT";
+
+        /// <summary>Вертикальное выравнивание</summary>
+        public string align_v { get; set; } = "TOP";
+
+        /// <summary>Размер шрифта</summary>
+        public int text_size { get; set; }
+
+        /// <summary>Стиль переноса слов
+        /// WRAP - перенос по словам
+        /// CHAR_WRAP - перенос по символам
+        /// ELLIPSIS - бегущая строка
+        /// NONE - без переноса</summary>
+        public string text_style { get; set; } = "ELLIPSIS";
+
+        /// <summary>межстрочный интервал</summary>
+        public int line_space { get; set; }
+
+        /// <summary>Отступы</summary>
+        public int char_space { get; set; }
+
+        /// <summary>Основной экран или AOD</summary>
+        public string show_level = "";
+
+        /// <summary>Тип активности</summary>
+        public string type { get; set; }
     }
 
 }
