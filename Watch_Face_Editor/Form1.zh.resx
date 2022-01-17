@@ -221,7 +221,7 @@
     <value>主屏</value>
   </data>
   <data name="tabPage_Edit_Elements.Text" xml:space="preserve">
-    <value>编辑中</value>
+    <value>编辑区</value>
   </data>
   <data name="userCtrl_Set12.ButtonText" xml:space="preserve">
     <value>预设值 12</value>
@@ -293,7 +293,7 @@
     <value>打开项目</value>
   </data>
   <data name="tabPage_Edit.Text" xml:space="preserve">
-    <value>编辑</value>
+    <value>编辑页</value>
   </data>
   <data name="label_ConvertingHelp03.Size" type="System.Drawing.Size, System.Drawing">
     <value>190, 13</value>
@@ -591,8 +591,8 @@
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
-        DQAAAk1TRnQBSQFMAgEBBgEAAfQBJwH0AScBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACm
+        DQAAAk1TRnQBSQFMAgEBBgEAAfQBJwH8AScBEAEAARABAAT/AQkBEAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -650,7 +650,7 @@
         AX4B4QEPAQ0BhgGAAQEBPgF+AfABDwEGAcICAAI+AfgBHwFDAWABAAEgAT8BPgH4AT8BYQGwAQABQAE/
         AR4B4AEnATAB2AEAAYABPAEeAeEBAwFYAWwBAQEAATwBHgHhAQcBbAE2AQEBAAE/Af4B4QEfATYBGgEB
         AwAB8AEfAQsBDAQAAfgBPwFNAYYBgAEBAgAB/AE/AQIBwgGAAQEBBAEAAf4BHwFDAWABwAEDAYQBAAH+
-        AZ8CAAHwAQ8B9wHnAf4BHws=
+        AZ8CAAHwAQ8B9wHnAf4BHxYACw==
 </value>
   </data>
   <data name="button_pack_zip.Text" xml:space="preserve">
@@ -1909,5 +1909,11 @@
         AAAAAAAAAAAAAO+BPCbvgT1I74I+SO+BPSYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8PwAA4AcAAMAD
         AACAAQAAgAEAAIABAAAAAAAAAAAAAAAAAAAAAAAAgAEAAIABAACAAQAAwAMAAOAHAAD8PwAA
 </value>
+  </data>
+  <data name="groupBox10.Text" xml:space="preserve">
+    <value>目标机型</value>
+  </data>
+  <data name="groupBox9.Text" xml:space="preserve">
+    <value>原始机型</value>
   </data>
 </root>

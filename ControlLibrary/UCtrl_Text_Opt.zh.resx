@@ -311,4 +311,7 @@
   <data name="label10.Text" xml:space="preserve">
     <value>单位（毫升）</value>
   </data>
+  <data name="checkBox_follow.Text" xml:space="preserve">
+    <value>跟随</value>
+  </data>
 </root>

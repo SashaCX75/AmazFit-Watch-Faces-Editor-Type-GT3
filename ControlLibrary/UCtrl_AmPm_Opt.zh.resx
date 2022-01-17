@@ -258,12 +258,12 @@
     <value>81, 13</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
-    <value>PM坐标</value>
+    <value>下午坐标</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 13</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>AM坐标</value>
+    <value>上午坐标</value>
   </data>
 </root>

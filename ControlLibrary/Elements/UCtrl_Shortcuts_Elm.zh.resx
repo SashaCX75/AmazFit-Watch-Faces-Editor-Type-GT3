@@ -117,4 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="button_Stopwatch.Text" xml:space="preserve">
+    <value>秒表</value>
+  </data>
+  <data name="button_Countdown.Text" xml:space="preserve">
+    <value>倒计时</value>
+  </data>
+  <data name="button_Sleep.Text" xml:space="preserve">
+    <value>睡眠</value>
+  </data>
+  <data name="button_SPO2.Text" xml:space="preserve">
+    <value>血氧饱和度</value>
+  </data>
+  <data name="button_Sunrise.Text" xml:space="preserve">
+    <value>日出/日落</value>
+  </data>
+  <data name="button_Step.Text" xml:space="preserve">
+    <value>步数</value>
+  </data>
+  <data name="button_Heart.Text" xml:space="preserve">
+    <value>心率</value>
+  </data>
+  <data name="button_Stress.Text" xml:space="preserve">
+    <value>压力水平</value>
+  </data>
+  <data name="button_Weather.Text" xml:space="preserve">
+    <value>气温</value>
+  </data>
+  <data name="button_Altimeter.Text" xml:space="preserve">
+    <value>气压</value>
+  </data>
+  <data name="button_Alarm.Text" xml:space="preserve">
+    <value>闹钟</value>
+  </data>
+  <data name="button_ElementName.Text" xml:space="preserve">
+    <value>捷径方式</value>
+  </data>
+  <data name="button_PAI.Text" xml:space="preserve">
+    <value>PAI</value>
+  </data>
 </root>

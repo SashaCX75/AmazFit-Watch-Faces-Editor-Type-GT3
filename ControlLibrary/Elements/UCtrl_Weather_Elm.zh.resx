@@ -117,6 +117,83 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="button_Text_CityName.Text" xml:space="preserve">
+    <value>城市名称</value>
+  </data>
+  <data name="button_Number_Min.Text" xml:space="preserve">
+    <value>数值（最小值）</value>
+  </data>
+  <data name="panel_Images.ToolTip" xml:space="preserve">
+    <value>1. 多云
+2. 阵雨
+3. 阵雪
+4. 晴
+5. 阴
+6. 小雨
+7. 小雪
+8. 中雨
+9. 中雪
+10. 大雪
+11. 大雨
+12. 沙尘暴
+13. 雨夹雪
+14. 雾
+15. 霾
+16. 雷阵雨
+17. 暴雪
+18. 浮尘
+19. 特大暴雨
+20. 雨加冰雹
+21. 雷阵雨伴有冰雹
+22. 大暴雨
+23. 扬沙
+24. 强沙尘暴
+25. 暴雨
+26. 未知天气
+27. 夜间多云
+28. 夜间阵雨
+29. 夜间阵雨</value>
+  </data>
+  <data name="button_Images.Text" xml:space="preserve">
+    <value>图像</value>
+  </data>
+  <data name="button_Images.ToolTip" xml:space="preserve">
+    <value>1. 多云
+2. 阵雨
+3. 阵雪
+4. 晴
+5. 阴
+6. 小雨
+7. 小雪
+8. 中雨
+9. 中雪
+10. 大雪
+11. 大雨
+12. 沙尘暴
+13. 雨夹雪
+14. 雾
+15. 霾
+16. 雷阵雨
+17. 暴雪
+18. 浮尘
+19. 特大暴雨
+20. 雨加冰雹
+21. 雷阵雨伴有冰雹
+22. 大暴雨
+23. 扬沙
+24. 强沙尘暴
+25. 暴雨
+26. 未知天气
+27. 夜间多云
+28. 夜间阵雨
+29. 夜间阵雨</value>
+  </data>
+  <data name="button_Number.Text" xml:space="preserve">
+    <value>数值</value>
+  </data>
+  <data name="button_Number_Max.Text" xml:space="preserve">
+    <value>数值（最大值）</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="button_Pointer.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -127,36 +204,15 @@
         ELsI6Akg+wtIfTqYzcQBNgfClgGxS1IrQPYyOOcXVBZlpmeUKBhaWloqOKbkJ6UqBFcWl6TmFit45iXn
         FxXkFyWWpKYA1ULcBwaCEIWgENMAarTQZKAyAMUDhPU5EBy+jGJnEGIIkFxaVAZlMjIZE+YjzJgjwcDg
         v5SBgeUPQsykl4FhgQ4DA/9UhJiaIQODgD4Dw745AMDGT/0ZOjZcAAAACXBIWXMAAAsMAAALDAE/QCLI
-        AAAGSmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0w
-        TXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIg
-        eDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNi4wLWMwMDIgNzkuMTY0NDYwLCAyMDIwLzA1LzEyLTE2OjA0
-        OjE3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIv
-        MjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9
-        Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUu
-        Y29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdEV2dD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NU
-        eXBlL1Jlc291cmNlRXZlbnQjIiB4bWxuczpwaG90b3Nob3A9Imh0dHA6Ly9ucy5hZG9iZS5jb20vcGhv
-        dG9zaG9wLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgeG1w
-        OkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjEuMiAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRl
-        PSIyMDIxLTExLTI3VDEyOjQxOjE0KzAyOjAwIiB4bXA6TWV0YWRhdGFEYXRlPSIyMDIxLTExLTI3VDEy
-        OjQxOjE0KzAyOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMS0xMS0yN1QxMjo0MToxNCswMjowMCIgeG1w
-        TU06SW5zdGFuY2VJRD0ieG1wLmlpZDphZDRkNDU2OS1lYTFhLWM3NDUtYTgyZS1iYTAwMDBmOTFhNmEi
-        IHhtcE1NOkRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDo0NDJiYTY0Yi1jMThlLWU1NDYt
-        YWE5MS1lZDlkMjc0MGU5ZjQiIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo0YTFjN2Fh
-        My1iOTQ5LWE4NDAtOTljNC0yYzhhYjAyOTgyZTMiIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIGRjOmZv
-        cm1hdD0iaW1hZ2UvcG5nIj4gPHhtcE1NOkhpc3Rvcnk+IDxyZGY6U2VxPiA8cmRmOmxpIHN0RXZ0OmFj
-        dGlvbj0iY3JlYXRlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDo0YTFjN2FhMy1iOTQ5LWE4NDAt
-        OTljNC0yYzhhYjAyOTgyZTMiIHN0RXZ0OndoZW49IjIwMjEtMTEtMjdUMTI6NDE6MTQrMDI6MDAiIHN0
-        RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCAyMS4yIChXaW5kb3dzKSIvPiA8cmRmOmxp
-        IHN0RXZ0OmFjdGlvbj0ic2F2ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6YWQ0ZDQ1NjktZWEx
-        YS1jNzQ1LWE4MmUtYmEwMDAwZjkxYTZhIiBzdEV2dDp3aGVuPSIyMDIxLTExLTI3VDEyOjQxOjE0KzAy
-        OjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgMjEuMiAoV2luZG93cykiIHN0
-        RXZ0OmNoYW5nZWQ9Ii8iLz4gPC9yZGY6U2VxPiA8L3htcE1NOkhpc3Rvcnk+IDxwaG90b3Nob3A6VGV4
-        dExheWVycz4gPHJkZjpCYWc+IDxyZGY6bGkgcGhvdG9zaG9wOkxheWVyTmFtZT0i7pivIiBwaG90b3No
-        b3A6TGF5ZXJUZXh0PSLumK8iLz4gPC9yZGY6QmFnPiA8L3Bob3Rvc2hvcDpUZXh0TGF5ZXJzPiA8L3Jk
-        ZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PpJ0
-        rEYAAACKSURBVDhP1ZLBDcMgEATdAi2kJ7eQFlJcanELaQHfcCAiefwin4y00t5qwTZmq7Ve9MW7q6Fd
-        DSdHV0O7Gk7+fINHiAHhvathUkLjDfDe1XDCwrYYtKth8gp9uvDe1TCfykIGhC/a1fAHG8DSJwyWDnEP
-        jd+I966GyTPEgPDe1TDh9o0zuLmJdTsBH4P/yg9UOU0AAAAASUVORK5CYII=
+        AAAAiklEQVQ4T9WSwQ3DIBAE3QItpCe3kBZSXGpxC2kB33AgInn8Ip+MtNLeasE2Zqu1XvTFu6uhXQ0n
+        R1dDuxpO/nyDR4gB4b2rYVJC4w3w3tVwwsK2GLSrYfIKfbrw3tUwn8pCBoQv2tXwBxvA0icMlg5xD43f
+        iPeuhskzxIDw3tUw4faNM7i5iXU7AR+D/8oPVDlNAAAAAElFTkSuQmCC
 </value>
+  </data>
+  <data name="button_Icon.Text" xml:space="preserve">
+    <value>图标</value>
+  </data>
+  <data name="button_ElementName.Text" xml:space="preserve">
+    <value>天气</value>
   </data>
 </root>
