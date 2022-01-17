@@ -119,7 +119,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="comboBox_unit_f.Location" type="System.Drawing.Point, System.Drawing">
-    <value>101, 160</value>
+    <value>157, 286</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="comboBox_unit_f.MaxDropDownItems" type="System.Int32, mscorlib">
@@ -196,7 +196,7 @@
     <value>4</value>
   </data>
   <data name="comboBox_imageError.Location" type="System.Drawing.Point, System.Drawing">
-    <value>157, 286</value>
+    <value>101, 160</value>
   </data>
   <data name="comboBox_imageError.MaxDropDownItems" type="System.Int32, mscorlib">
     <value>25</value>
@@ -307,7 +307,7 @@
     <value>NoControl</value>
   </data>
   <data name="label06.Location" type="System.Drawing.Point, System.Drawing">
-    <value>155, 253</value>
+    <value>99, 127</value>
   </data>
   <data name="label06.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
@@ -373,7 +373,7 @@
     <value>NoControl</value>
   </data>
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>94, 127</value>
+    <value>150, 253</value>
   </data>
   <data name="label10.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
@@ -436,7 +436,7 @@
     <value>По центру</value>
   </data>
   <data name="comboBox_alignment.Items2" xml:space="preserve">
-    <value>По праваму краю</value>
+    <value>По правому краю</value>
   </data>
   <data name="comboBox_alignment.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 223</value>

@@ -93,6 +93,16 @@ namespace Watch_Face_Editor.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap image_remove_icon {
+            get {
+                object obj = ResourceManager.GetObject("image-remove-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Logos_Administrative_Tools_16 {
             get {
                 object obj = ResourceManager.GetObject("Logos-Administrative-Tools_16", resourceCulture);
@@ -127,6 +137,16 @@ namespace Watch_Face_Editor.Properties {
             get {
                 object obj = ResourceManager.GetObject("packaging", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Byte[].
+        /// </summary>
+        internal static byte[] Roboto_Regular {
+            get {
+                object obj = ResourceManager.GetObject("Roboto_Regular", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

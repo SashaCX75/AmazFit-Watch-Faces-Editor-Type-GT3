@@ -189,6 +189,7 @@ namespace ControlLibrary
             resources.GetString("comboBox_alignment.Items2")});
             resources.ApplyResources(this.comboBox_alignment, "comboBox_alignment");
             this.comboBox_alignment.Name = "comboBox_alignment";
+            this.comboBox_alignment.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
             // 
             // label08
             // 
@@ -207,6 +208,11 @@ namespace ControlLibrary
             this.comboBox_image.FormattingEnabled = true;
             resources.ApplyResources(this.comboBox_image, "comboBox_image");
             this.comboBox_image.Name = "comboBox_image";
+            this.comboBox_image.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
+            this.comboBox_image.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
+            this.comboBox_image.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
+            this.comboBox_image.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboBox_KeyDown);
+            this.comboBox_image.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_KeyPress);
             // 
             // comboBox_icon
             // 
@@ -433,20 +439,11 @@ namespace ControlLibrary
         }
 
         #endregion
-
-        protected System.Windows.Forms.ComboBox comboBox_unit_f;
         public System.Windows.Forms.NumericUpDown numericUpDown_spacing;
         public System.Windows.Forms.CheckBox checkBox_addZero;
-        protected System.Windows.Forms.ComboBox comboBox_imageError;
-        protected System.Windows.Forms.ComboBox comboBox_imageMinus;
         public System.Windows.Forms.CheckBox checkBox_follow;
         private System.Windows.Forms.Label label03;
-        protected System.Windows.Forms.Label label06;
-        protected System.Windows.Forms.Label label07;
-        protected System.Windows.Forms.Label label10;
-        protected System.Windows.Forms.ComboBox comboBox_unit_c;
         private System.Windows.Forms.ComboBox comboBox_alignment;
-        protected System.Windows.Forms.Label label08;
         private System.Windows.Forms.Label label09;
         private System.Windows.Forms.ComboBox comboBox_image;
         private System.Windows.Forms.ComboBox comboBox_icon;
@@ -456,7 +453,6 @@ namespace ControlLibrary
         public System.Windows.Forms.NumericUpDown numericUpDown_iconY;
         private System.Windows.Forms.Label label01;
         protected System.Windows.Forms.Label label02;
-        protected System.Windows.Forms.Label label04;
         private System.Windows.Forms.Label label05;
         private System.Windows.Forms.Label label1083;
         protected System.Windows.Forms.Label label1084;
@@ -470,5 +466,14 @@ namespace ControlLibrary
         private System.Windows.Forms.ToolStripMenuItem вставитьКоординатуХToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem копироватьToolStripMenuItemX;
         private System.Windows.Forms.ToolStripMenuItem вставитьToolStripMenuItemX;
+        private System.Windows.Forms.ComboBox comboBox_unit_f;
+        private System.Windows.Forms.ComboBox comboBox_imageError;
+        private System.Windows.Forms.ComboBox comboBox_imageMinus;
+        private System.Windows.Forms.Label label06;
+        private System.Windows.Forms.Label label07;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox comboBox_unit_c;
+        private System.Windows.Forms.Label label08;
+        private System.Windows.Forms.Label label04;
     }
 }

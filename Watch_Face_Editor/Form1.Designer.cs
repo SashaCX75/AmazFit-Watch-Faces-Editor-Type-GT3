@@ -30,9 +30,9 @@ namespace Watch_Face_Editor
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage_Edit = new System.Windows.Forms.TabPage();
             this.button_SaveJson = new System.Windows.Forms.Button();
@@ -87,6 +87,7 @@ namespace Watch_Face_Editor
             this.panel_UC_Weather = new System.Windows.Forms.Panel();
             this.uCtrl_Weather_Elm = new ControlLibrary.UCtrl_Weather_Elm();
             this.panel_ElementsOpt = new System.Windows.Forms.Panel();
+            this.uCtrl_Text_SystemFont_Opt = new ControlLibrary.UCtrl_Text_SystemFont_Opt();
             this.uCtrl_Text_Weather_Opt = new ControlLibrary.UCtrl_Text_Weather_Opt();
             this.uCtrl_Shortcut_Opt = new ControlLibrary.UCtrl_Shortcut_Opt();
             this.uCtrl_Segments_Opt = new ControlLibrary.UCtrl_Segments_Opt();
@@ -128,6 +129,8 @@ namespace Watch_Face_Editor
             this.NameFile = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnImage = new System.Windows.Forms.DataGridViewImageColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.contextMenuStrip_RemoveImage = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.удалитьИзображениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button_JSON = new System.Windows.Forms.Button();
             this.tabPageConverting = new System.Windows.Forms.TabPage();
             this.label_ConvertingHelp03 = new System.Windows.Forms.Label();
@@ -158,6 +161,7 @@ namespace Watch_Face_Editor
             this.label355 = new System.Windows.Forms.Label();
             this.checkBox_ShowIn12hourFormat = new System.Windows.Forms.CheckBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.checkBox_Shortcuts_In_Gif = new System.Windows.Forms.CheckBox();
             this.checkBox_Shortcuts_Image = new System.Windows.Forms.CheckBox();
             this.checkBox_Shortcuts_Border = new System.Windows.Forms.CheckBox();
             this.checkBox_Shortcuts_Area = new System.Windows.Forms.CheckBox();
@@ -252,6 +256,7 @@ namespace Watch_Face_Editor
             this.panel_set.SuspendLayout();
             this.panel_PreviewStates.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_ImagesList)).BeginInit();
+            this.contextMenuStrip_RemoveImage.SuspendLayout();
             this.tabPageConverting.SuspendLayout();
             this.groupBox10.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_ConvertingOutput_Custom)).BeginInit();
@@ -414,7 +419,6 @@ namespace Watch_Face_Editor
             // comboBox_AddAir
             // 
             this.comboBox_AddAir.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            resources.ApplyResources(this.comboBox_AddAir, "comboBox_AddAir");
             this.comboBox_AddAir.FormattingEnabled = true;
             this.comboBox_AddAir.Items.AddRange(new object[] {
             resources.GetString("comboBox_AddAir.Items"),
@@ -424,6 +428,7 @@ namespace Watch_Face_Editor
             resources.GetString("comboBox_AddAir.Items4"),
             resources.GetString("comboBox_AddAir.Items5"),
             resources.GetString("comboBox_AddAir.Items6")});
+            resources.ApplyResources(this.comboBox_AddAir, "comboBox_AddAir");
             this.comboBox_AddAir.Name = "comboBox_AddAir";
             this.comboBox_AddAir.DropDownClosed += new System.EventHandler(this.comboBox_AddAir_DropDownClosed);
             this.comboBox_AddAir.Click += new System.EventHandler(this.comboBox_AddElements_Click);
@@ -805,6 +810,7 @@ namespace Watch_Face_Editor
             // 
             resources.ApplyResources(this.panel_ElementsOpt, "panel_ElementsOpt");
             this.panel_ElementsOpt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_ElementsOpt.Controls.Add(this.uCtrl_Text_SystemFont_Opt);
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_Text_Weather_Opt);
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_Shortcut_Opt);
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_Segments_Opt);
@@ -818,13 +824,20 @@ namespace Watch_Face_Editor
             this.panel_ElementsOpt.Controls.Add(this.userCtrl_Background_Options);
             this.panel_ElementsOpt.Name = "panel_ElementsOpt";
             // 
+            // uCtrl_Text_SystemFont_Opt
+            // 
+            resources.ApplyResources(this.uCtrl_Text_SystemFont_Opt, "uCtrl_Text_SystemFont_Opt");
+            this.uCtrl_Text_SystemFont_Opt.Name = "uCtrl_Text_SystemFont_Opt";
+            this.uCtrl_Text_SystemFont_Opt.ValueChanged += new ControlLibrary.UCtrl_Text_SystemFont_Opt.ValueChangedHandler(this.uCtrl_Text_SystemFont_Opt_ValueChanged);
+            // 
             // uCtrl_Text_Weather_Opt
             // 
             resources.ApplyResources(this.uCtrl_Text_Weather_Opt, "uCtrl_Text_Weather_Opt");
             this.uCtrl_Text_Weather_Opt.Follow = false;
             this.uCtrl_Text_Weather_Opt.ImageError = true;
             this.uCtrl_Text_Weather_Opt.Name = "uCtrl_Text_Weather_Opt";
-            this.uCtrl_Text_Weather_Opt.PaddingZero = true;
+            this.uCtrl_Text_Weather_Opt.PaddingZero = false;
+            this.uCtrl_Text_Weather_Opt.ValueChanged += new ControlLibrary.UCtrl_Text_Weather_Opt.ValueChangedHandler(this.uCtrl_Text_Weather_Opt_ValueChanged);
             // 
             // uCtrl_Shortcut_Opt
             // 
@@ -1125,9 +1138,11 @@ namespace Watch_Face_Editor
             this.NameFile,
             this.ColumnImage,
             this.Column1});
+            this.dataGridView_ImagesList.ContextMenuStrip = this.contextMenuStrip_RemoveImage;
             resources.ApplyResources(this.dataGridView_ImagesList, "dataGridView_ImagesList");
             this.dataGridView_ImagesList.Name = "dataGridView_ImagesList";
             this.dataGridView_ImagesList.RowHeadersVisible = false;
+            this.dataGridView_ImagesList.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView_ImagesList_CellMouseDown);
             // 
             // Number
             // 
@@ -1165,6 +1180,21 @@ namespace Watch_Face_Editor
             resources.ApplyResources(this.Column1, "Column1");
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
+            // 
+            // contextMenuStrip_RemoveImage
+            // 
+            this.contextMenuStrip_RemoveImage.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.удалитьИзображениеToolStripMenuItem});
+            this.contextMenuStrip_RemoveImage.Name = "contextMenuStrip_RemoveImage";
+            resources.ApplyResources(this.contextMenuStrip_RemoveImage, "contextMenuStrip_RemoveImage");
+            this.contextMenuStrip_RemoveImage.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_RemoveImage_Opening);
+            // 
+            // удалитьИзображениеToolStripMenuItem
+            // 
+            this.удалитьИзображениеToolStripMenuItem.Image = global::Watch_Face_Editor.Properties.Resources.image_remove_icon;
+            this.удалитьИзображениеToolStripMenuItem.Name = "удалитьИзображениеToolStripMenuItem";
+            resources.ApplyResources(this.удалитьИзображениеToolStripMenuItem, "удалитьИзображениеToolStripMenuItem");
+            this.удалитьИзображениеToolStripMenuItem.Click += new System.EventHandler(this.удалитьИзображениеToolStripMenuItem_Click);
             // 
             // button_JSON
             // 
@@ -1444,6 +1474,7 @@ namespace Watch_Face_Editor
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.checkBox_Shortcuts_In_Gif);
             this.groupBox8.Controls.Add(this.checkBox_Shortcuts_Image);
             this.groupBox8.Controls.Add(this.checkBox_Shortcuts_Border);
             this.groupBox8.Controls.Add(this.checkBox_Shortcuts_Area);
@@ -1451,6 +1482,13 @@ namespace Watch_Face_Editor
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.TabStop = false;
             this.groupBox8.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox_Paint);
+            // 
+            // checkBox_Shortcuts_In_Gif
+            // 
+            resources.ApplyResources(this.checkBox_Shortcuts_In_Gif, "checkBox_Shortcuts_In_Gif");
+            this.checkBox_Shortcuts_In_Gif.Name = "checkBox_Shortcuts_In_Gif";
+            this.checkBox_Shortcuts_In_Gif.UseVisualStyleBackColor = true;
+            this.checkBox_Shortcuts_In_Gif.CheckedChanged += new System.EventHandler(this.checkBox_UnvisibleSettings_CheckedChanged);
             // 
             // checkBox_Shortcuts_Image
             // 
@@ -1987,6 +2025,7 @@ namespace Watch_Face_Editor
             this.panel_set.PerformLayout();
             this.panel_PreviewStates.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_ImagesList)).EndInit();
+            this.contextMenuStrip_RemoveImage.ResumeLayout(false);
             this.tabPageConverting.ResumeLayout(false);
             this.tabPageConverting.PerformLayout();
             this.groupBox10.ResumeLayout(false);
@@ -2205,6 +2244,10 @@ namespace Watch_Face_Editor
         private System.Windows.Forms.Panel panel_UC_Weather;
         private ControlLibrary.UCtrl_Weather_Elm uCtrl_Weather_Elm;
         private ControlLibrary.UCtrl_Text_Weather_Opt uCtrl_Text_Weather_Opt;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip_RemoveImage;
+        private System.Windows.Forms.ToolStripMenuItem удалитьИзображениеToolStripMenuItem;
+        private ControlLibrary.UCtrl_Text_SystemFont_Opt uCtrl_Text_SystemFont_Opt;
+        private System.Windows.Forms.CheckBox checkBox_Shortcuts_In_Gif;
     }
 }
 

@@ -31,10 +31,11 @@ namespace Watch_Face_Editor
         /// <param name="showCentrHend">Подсвечивать центр стрелки</param>
         /// <param name="showWidgetsArea">Подсвечивать область виджетов</param>
         /// <param name="link">0 - основной экран; 1 - AOD</param>
+        /// <param name="Shortcuts_In_Gif">Подсвечивать область с ярлыками (для gif файла)</param>
         public void Preview_screen(Graphics gPanel, float scale, bool crop, bool WMesh, bool BMesh, bool BBorder,
             bool showShortcuts, bool showShortcutsArea, bool showShortcutsBorder, bool showShortcutsImage, 
             bool showAnimation, bool showProgressArea,
-            bool showCentrHend, bool showWidgetsArea, int link)
+            bool showCentrHend, bool showWidgetsArea, int link, bool Shortcuts_In_Gif)
         {
             int offSet_X = 227;
             int offSet_Y = 227;
@@ -773,7 +774,7 @@ namespace Watch_Face_Editor
                         #region ElementShortcuts
                         case "ElementShortcuts":
                             ElementShortcuts shortcutsElement = (ElementShortcuts)element;
-                            if (!shortcutsElement.visible || !showShortcuts) continue;
+                            if (!shortcutsElement.visible || (!showShortcuts && !Shortcuts_In_Gif)) continue;
 
                             hmUI_widget_IMG_CLICK img_click_step = shortcutsElement.Step;
                             hmUI_widget_IMG_CLICK img_click_heart = shortcutsElement.Heart;
@@ -792,63 +793,63 @@ namespace Watch_Face_Editor
                             {
                                 if (img_click_step != null && index == img_click_step.position)
                                 {
-                                    DrawShortcuts(gPanel, img_click_step, 
-                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage);
+                                    DrawShortcuts(gPanel, img_click_step, showShortcuts,
+                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
                                 }
                                 if (img_click_heart != null && index == img_click_heart.position)
                                 {
-                                    DrawShortcuts(gPanel, img_click_heart,
-                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage);
+                                    DrawShortcuts(gPanel, img_click_heart, showShortcuts,
+                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
                                 }
                                 if (img_click_spo2 != null && index == img_click_spo2.position)
                                 {
-                                    DrawShortcuts(gPanel, img_click_spo2,
-                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage);
+                                    DrawShortcuts(gPanel, img_click_spo2, showShortcuts,
+                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
                                 }
                                 if (img_click_pai != null && index == img_click_pai.position)
                                 {
-                                    DrawShortcuts(gPanel, img_click_pai,
-                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage);
+                                    DrawShortcuts(gPanel, img_click_pai, showShortcuts,
+                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
                                 }
                                 if (img_click_stress != null && index == img_click_stress.position)
                                 {
-                                    DrawShortcuts(gPanel, img_click_stress,
-                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage);
+                                    DrawShortcuts(gPanel, img_click_stress, showShortcuts,
+                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
                                 }
                                 if (img_click_weather != null && index == img_click_weather.position)
                                 {
-                                    DrawShortcuts(gPanel, img_click_weather,
-                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage);
+                                    DrawShortcuts(gPanel, img_click_weather, showShortcuts,
+                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
                                 }
                                 if (img_click_altimeter != null && index == img_click_altimeter.position)
                                 {
-                                    DrawShortcuts(gPanel, img_click_altimeter,
-                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage);
+                                    DrawShortcuts(gPanel, img_click_altimeter, showShortcuts,
+                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
                                 }
                                 if (img_click_sunrise != null && index == img_click_sunrise.position)
                                 {
-                                    DrawShortcuts(gPanel, img_click_sunrise,
-                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage);
+                                    DrawShortcuts(gPanel, img_click_sunrise, showShortcuts,
+                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
                                 }
                                 if (img_click_alarm != null && index == img_click_alarm.position)
                                 {
-                                    DrawShortcuts(gPanel, img_click_alarm,
-                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage);
+                                    DrawShortcuts(gPanel, img_click_alarm, showShortcuts,
+                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
                                 }
                                 if (img_click_sleep != null && index == img_click_sleep.position)
                                 {
-                                    DrawShortcuts(gPanel, img_click_sleep,
-                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage);
+                                    DrawShortcuts(gPanel, img_click_sleep, showShortcuts,
+                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
                                 }
                                 if (img_click_countdown != null && index == img_click_countdown.position)
                                 {
-                                    DrawShortcuts(gPanel, img_click_countdown,
-                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage);
+                                    DrawShortcuts(gPanel, img_click_countdown, showShortcuts,
+                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
                                 }
                                 if (img_click_stopwatch != null && index == img_click_stopwatch.position)
                                 {
-                                    DrawShortcuts(gPanel, img_click_stopwatch,
-                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage);
+                                    DrawShortcuts(gPanel, img_click_stopwatch, showShortcuts,
+                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
                                 }
                             }
                             break;
@@ -1070,9 +1071,9 @@ namespace Watch_Face_Editor
                             linear_scale = activityElementPAI.Linear_Scale;
                             icon = activityElementPAI.Icon;
 
-                            elementValue = WatchFacePreviewSet.Activity.PAI;
+                            elementValue = 5;
                             value_lenght = 3;
-                            goal = 100;
+                            goal = WatchFacePreviewSet.Activity.PAI;
                             progress = (float)WatchFacePreviewSet.Activity.PAI / 100f;
 
                             if (img_level != null && img_level.image_length > 0)
@@ -1140,6 +1141,32 @@ namespace Watch_Face_Editor
                                 gPanel.DrawImage(src, pos_x, pos_y);
                                 //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                             }
+
+                            break;
+                        #endregion
+
+                        #region ElementWeather
+                        case "ElementWeather":
+                            ElementWeather activityElementWeather = (ElementWeather)element;
+                            if (!activityElementWeather.visible) continue;
+
+                            img_level = activityElementWeather.Images;
+                            img_number = activityElementWeather.Number;
+                            hmUI_widget_IMG_NUMBER img_number_min = activityElementWeather.Number_Min;
+                            hmUI_widget_IMG_NUMBER img_number_max = activityElementWeather.Number_Max;
+                            hmUI_widget_TEXT city_name = activityElementWeather.City_Name;
+                            icon = activityElementWeather.Icon;
+
+                            int value_current = WatchFacePreviewSet.Weather.Temperature;
+                            int value_min = WatchFacePreviewSet.Weather.TemperatureMin;
+                            int value_max = WatchFacePreviewSet.Weather.TemperatureMax;
+                            int icon_index = WatchFacePreviewSet.Weather.Icon; 
+                            bool showTemperature = WatchFacePreviewSet.Weather.showTemperature;
+
+                            DrawWeather(gPanel, img_level, img_number, img_number_min, img_number_max,
+                                city_name, icon, value_current, value_min, value_max, value_lenght, icon_index,
+                                BBorder, showTemperature);
+
 
                             break;
                             #endregion
@@ -1219,6 +1246,8 @@ namespace Watch_Face_Editor
         /// <param name="gPanel">Поверхность для рисования</param>
         /// <param name="images">Параметры для изображения</param>
         /// <param name="segments">Параметры для сегментов</param>
+        /// <param name="number">Параметры цифрового значения</param>
+        /// <param name="numberTarget">Параметры цифрового значения цели</param>
         /// <param name="pointer">Параметры для стрелочного указателя</param>
         /// <param name="circleScale">Параметры для круговой шкалы</param>
         /// <param name="linearScale">Параметры для линейной шкалы</param>
@@ -1450,6 +1479,221 @@ namespace Watch_Face_Editor
             src.Dispose();
         }
 
+        /// <summary>Рисуем все параметры элемента</summary>
+        /// <param name="gPanel">Поверхность для рисования</param>
+        /// <param name="images">Параметры для изображения</param>
+        /// <param name="number">Параметры для текущей температуры</param>
+        /// <param name="numberMin">Параметры для минимальной температуры</param>
+        /// <param name="numberMax">Параметры для максимальной температуры</param>
+        /// <param name="cityName">Параметры для названия города</param>
+        /// <param name="icon">Параметры для иконки</param>
+        /// <param name="value">Текущая температура</param>
+        /// <param name="valueMin">Минимальная температура</param>
+        /// <param name="valueMax">Максимальная температура</param>
+        /// <param name="value_lenght">Максимальная длина для отображения значения</param>
+        /// <param name="icon_index">Номер иконки погоды</param>
+        /// <param name="BBorder">Рисовать рамку по координатам, вокруг элементов с выравниванием</param>
+        /// <param name="showTemperature">Показывать температуру</param>
+        private void DrawWeather(Graphics gPanel, hmUI_widget_IMG_LEVEL images, 
+            hmUI_widget_IMG_NUMBER number, hmUI_widget_IMG_NUMBER numberMin, hmUI_widget_IMG_NUMBER numberMax,
+            hmUI_widget_TEXT cityName, hmUI_widget_IMG icon, int value, int valueMin, int valueMax, int value_lenght,
+            int icon_index, bool BBorder, bool showTemperature)
+        {
+            Bitmap src = new Bitmap(1, 1);
+
+            for (int index = 1; index <= 10; index++)
+            {
+                if (images != null && images.img_First != null && images.img_First.Length > 0 &&
+                    index == images.position && images.visible)
+                {
+                    if (icon_index >= 0)
+                    {
+                        int imageIndex = ListImages.IndexOf(images.img_First);
+                        int x = images.X;
+                        int y = images.Y;
+                        imageIndex = imageIndex + icon_index;
+
+                        if (imageIndex < ListImagesFullName.Count)
+                        {
+                            src = OpenFileStream(ListImagesFullName[imageIndex]);
+                            gPanel.DrawImage(src, x, y);
+                            //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                        }
+                    }
+                }
+
+                if (number != null && number.img_First != null && number.img_First.Length > 0 &&
+                    index == number.position && number.visible)
+                {
+                    int imageIndex = ListImages.IndexOf(number.img_First);
+                    int x = number.imageX;
+                    int y = number.imageY;
+                    int spasing = number.space;
+                    int alignment = AlignmentToInt(number.align);
+                    bool addZero = false;
+                    int separator_index = -1;
+                    if (number.unit != null && number.unit.Length > 0)
+                        separator_index = ListImages.IndexOf(number.unit);
+                    int imageError_index = -1;
+                    if (number.invalid_image != null && number.invalid_image.Length > 0)
+                        imageError_index = ListImages.IndexOf(number.invalid_image);
+                    int imageMinus_index = -1;
+                    if (number.negative_image != null && number.negative_image.Length > 0)
+                        imageMinus_index = ListImages.IndexOf(number.negative_image);
+
+                    if (showTemperature)
+                    {
+                        Draw_weather_text(gPanel, imageIndex, x, y, spasing, alignment, value, addZero, 
+                            imageMinus_index, separator_index, BBorder, -1, false);
+                    }
+                    else if (imageError_index >= 0)
+                    {
+                        Draw_weather_text(gPanel, imageIndex, x, y,
+                                        spasing, alignment, value, addZero, imageMinus_index, separator_index,
+                                        BBorder, imageError_index, true);
+                    }
+
+                    if (number.icon != null && number.icon.Length > 0)
+                    {
+                        imageIndex = ListImages.IndexOf(number.icon);
+                        x = number.iconPosX;
+                        y = number.iconPosY;
+
+                        src = OpenFileStream(ListImagesFullName[imageIndex]);
+                        gPanel.DrawImage(src, x, y);
+                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                    }
+                }
+
+                if (numberMin != null && numberMin.img_First != null && numberMin.img_First.Length > 0 &&
+                    index == numberMin.position && numberMin.visible)
+                {
+                    int imageIndex = ListImages.IndexOf(numberMin.img_First);
+                    int x = numberMin.imageX;
+                    int y = numberMin.imageY;
+                    int spasing = numberMin.space;
+                    int alignment = AlignmentToInt(numberMin.align);
+                    bool addZero = false;
+                    int separator_index = -1;
+                    if (numberMin.unit != null && numberMin.unit.Length > 0)
+                        separator_index = ListImages.IndexOf(numberMin.unit);
+                    int imageError_index = -1;
+                    if (numberMin.invalid_image != null && numberMin.invalid_image.Length > 0)
+                        imageError_index = ListImages.IndexOf(numberMin.invalid_image);
+                    int imageMinus_index = -1;
+                    if (numberMin.negative_image != null && numberMin.negative_image.Length > 0)
+                        imageMinus_index = ListImages.IndexOf(numberMin.negative_image);
+
+                    if (showTemperature)
+                    {
+                        Draw_weather_text(gPanel, imageIndex, x, y, spasing, alignment, valueMin, addZero,
+                            imageMinus_index, separator_index, BBorder, -1, false);
+                    }
+                    else if (imageError_index >= 0)
+                    {
+                        Draw_weather_text(gPanel, imageIndex, x, y,
+                                        spasing, alignment, valueMin, addZero, imageMinus_index, separator_index,
+                                        BBorder, imageError_index, true);
+                    }
+
+                    if (numberMin.icon != null && numberMin.icon.Length > 0)
+                    {
+                        imageIndex = ListImages.IndexOf(numberMin.icon);
+                        x = numberMin.iconPosX;
+                        y = numberMin.iconPosY;
+
+                        src = OpenFileStream(ListImagesFullName[imageIndex]);
+                        gPanel.DrawImage(src, x, y);
+                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                    }
+                }
+
+                if (numberMax != null && numberMax.img_First != null && numberMax.img_First.Length > 0 &&
+                    index == numberMax.position && numberMax.visible)
+                {
+                    int imageIndex = ListImages.IndexOf(numberMax.img_First);
+                    int x = numberMax.imageX;
+                    int y = numberMax.imageY;
+                    int spasing = numberMax.space;
+                    int alignment = AlignmentToInt(numberMax.align);
+                    bool addZero = false;
+                    int separator_index = -1;
+                    if (numberMax.unit != null && numberMax.unit.Length > 0)
+                        separator_index = ListImages.IndexOf(numberMax.unit);
+                    int imageError_index = -1;
+                    if (numberMax.invalid_image != null && numberMax.invalid_image.Length > 0)
+                        imageError_index = ListImages.IndexOf(numberMax.invalid_image);
+                    int imageMinus_index = -1;
+                    if (numberMax.negative_image != null && numberMax.negative_image.Length > 0)
+                        imageMinus_index = ListImages.IndexOf(numberMax.negative_image);
+
+                    if (showTemperature)
+                    {
+                        Draw_weather_text(gPanel, imageIndex, x, y, spasing, alignment, valueMax, addZero,
+                            imageMinus_index, separator_index, BBorder, -1, false);
+                    }
+                    else if (imageError_index >= 0)
+                    {
+                        Draw_weather_text(gPanel, imageIndex, x, y,
+                                        spasing, alignment, valueMax, addZero, imageMinus_index, separator_index,
+                                        BBorder, imageError_index, true);
+                    }
+
+                    if (numberMax.icon != null && numberMax.icon.Length > 0)
+                    {
+                        imageIndex = ListImages.IndexOf(numberMax.icon);
+                        x = numberMax.iconPosX;
+                        y = numberMax.iconPosY;
+
+                        src = OpenFileStream(ListImagesFullName[imageIndex]);
+                        gPanel.DrawImage(src, x, y);
+                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                    }
+                }
+
+                if (icon != null && icon.src != null && icon.src.Length > 0 &&
+                    index == icon.position && icon.visible)
+                {
+                    int imageIndex = ListImages.IndexOf(icon.src);
+                    int x = icon.x;
+                    int y = icon.y;
+
+                    if (imageIndex < ListImagesFullName.Count)
+                    {
+                        src = OpenFileStream(ListImagesFullName[imageIndex]);
+                        gPanel.DrawImage(src, x, y);
+                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                    }
+                }
+
+                if (cityName != null && index == cityName.position && cityName.visible)
+                {
+                    int x = cityName.x;
+                    int y = cityName.y;
+                    int h = cityName.h;
+                    int w = cityName.w;
+
+                    int size = cityName.text_size;
+                    int space_h = cityName.char_space;
+                    int space_v = cityName.line_space;
+
+                    Color color = StringToColor(cityName.color);
+                    //int align_h = AlignmentToInt(cityName.align_h);
+                    //int align_v = AlignmentVerticalToInt(cityName.align_v);
+                    string align_h = cityName.align_h;
+                    string align_v = cityName.align_v;
+                    string text_style = cityName.text_style;
+                    string valueStr = "City Name";
+
+                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr,
+                        align_h, align_v, text_style, BBorder);
+                }
+
+            }
+
+            src.Dispose();
+        }
+
         /// <summary>Рисует стрелки</summary>
         /// <param name="graphics">Поверхность для рисования</param>
         /// <param name="x">Центр стрелки X</param>
@@ -1526,14 +1770,14 @@ namespace Watch_Face_Editor
             int alignment, int value, bool addZero, int value_lenght, int separator_index, bool BBorder,
             int ActivityType = 0)
         {
-            while (spacing > 127)
-            {
-                spacing = spacing - 256;
-            }
-            while (spacing < -128)
-            {
-                spacing = spacing + 256;
-            }
+            //while (spacing > 127)
+            //{
+            //    spacing = spacing - 256;
+            //}
+            //while (spacing < -128)
+            //{
+            //    spacing = spacing + 256;
+            //}
 
             int result = 0;
             Logger.WriteLine("* Draw_dagital_text");
@@ -1577,7 +1821,7 @@ namespace Watch_Face_Editor
             if (ActivityType == 11) value_lenght = 3;
             int DateLenght = width * value_lenght;
             //int DateLenght = width * value_lenght + 1;
-            if (spacing > 0) DateLenght = DateLenght + spacing * (value_lenght - 1);
+            if (spacing != 0) DateLenght = DateLenght + spacing * (value_lenght - 1);
             //else DateLenght = DateLenght - spacing;
 
             int PointX = 0;
@@ -1645,74 +1889,364 @@ namespace Watch_Face_Editor
             Logger.WriteLine("* Draw_dagital_text (end)");
             return result;
         }
+        
+        /// <summary>Рисует погоду числом</summary>
+         /// <param name="graphics">Поверхность для рисования</param>
+         /// <param name="image_index">Номер изображения</param>
+         /// <param name="x">Координата X</param>
+         /// <param name="y">Координата y</param>
+         /// <param name="spacing">Величина отступа</param>
+         /// <param name="alignment">Выравнивание</param>
+         /// <param name="value">Отображаемая величина</param>
+         /// <param name="addZero">Отображать начальные нули</param>
+         /// <param name="image_minus_index">Символ "-"</param>
+         /// <param name="unit_index">Символ единиц измерения</param>
+         /// <param name="BBorder">Рисовать рамку по координатам, вокруг элементов с выравниванием</param>
+         /// <param name="imageError_index">Иконка ошибки данны</param>
+         /// <param name="errorData">отображать ошибку данный</param>
+        private int Draw_weather_text(Graphics graphics, int image_index, int x, int y, int spacing,
+            int alignment, int value, bool addZero, int image_minus_index, int unit_index, bool BBorder,
+            int imageError_index = -1, bool errorData = false)
+        {
+            //while (spacing > 127)
+            //{
+            //    spacing = spacing - 255;
+            //}
+            //while (spacing < -127)
+            //{
+            //    spacing = spacing + 255;
+            //}
+            int result = 0;
+            Logger.WriteLine("* Draw_weather_text");
+            var src = new Bitmap(1, 1);
+            int _number;
+            int i;
+            string value_S = value.ToString();
+            if (addZero)
+            {
+                //while (value_S.Length < value_lenght)
+                while (value_S.Length < 2)
+                {
+                    value_S = "0" + value_S;
+                }
+            }
+            char[] CH = value_S.ToCharArray();
+
+            src = OpenFileStream(ListImagesFullName[image_index]);
+            int widthD = src.Width;
+            int height = src.Height;
+            int widthM = 0;
+            int widthCF = 0;
+            if (image_minus_index >= 0 && image_minus_index < ListImagesFullName.Count)
+            {
+                src = OpenFileStream(ListImagesFullName[image_minus_index]);
+                widthM = src.Width;
+            }
+            if (unit_index >= 0 && unit_index < ListImagesFullName.Count)
+            {
+                src = OpenFileStream(ListImagesFullName[unit_index]);
+                widthCF = src.Width;
+            }
+
+            //int DateLenght = widthD * 2 + widthM + widthCF + 1;
+            int DateLenght = widthD * 3 + widthCF + 1;
+            //if (alignment == 2 && AvailabilityIcon) DateLenght = DateLenght - widthCF;
+            if (spacing != 0) DateLenght = DateLenght + 4 * spacing;
+            if (widthM == 0) DateLenght = DateLenght - spacing;
+            //if (alignment == 2 && AvailabilityIcon) DateLenght = DateLenght - spacing;
+
+            int DateLenghtReal = 0;
+            Logger.WriteLine("DateLenght");
+            foreach (char ch in CH)
+            {
+                _number = 0;
+                if (int.TryParse(ch.ToString(), out _number))
+                {
+                    i = image_index + _number;
+                    if (i < ListImagesFullName.Count)
+                    {
+                        //src = new Bitmap(ListImagesFullName[i]);
+                        src = OpenFileStream(ListImagesFullName[i]);
+                        DateLenghtReal = DateLenghtReal + src.Width + spacing;
+                        //src.Dispose();
+                    }
+                }
+                else
+                {
+                    if (image_minus_index >= 0 && image_minus_index < ListImagesFullName.Count)
+                    {
+                        DateLenghtReal = DateLenghtReal + widthM + spacing;
+                    }
+                }
+            }
+            if (unit_index >= 0 && unit_index < ListImagesFullName.Count)
+            {
+                DateLenghtReal = DateLenghtReal + widthCF + spacing;
+            }
+
+            DateLenghtReal = DateLenghtReal - spacing;
+
+            int PointX = 0;
+            int PointY = y;
+            switch (alignment)
+            {
+                case 0:
+                    PointX = x;
+                    break;
+                case 1:
+                    PointX = x + DateLenght / 2 - DateLenghtReal / 2;
+                    break;
+                case 2:
+                    PointX = x + DateLenght - DateLenghtReal;
+                    break;
+                default:
+                    PointX = x;
+                    break;
+            }
+
+            Logger.WriteLine("Draw value");
+            if (!errorData)
+            {
+                foreach (char ch in CH)
+                {
+                    _number = 0;
+                    if (int.TryParse(ch.ToString(), out _number))
+                    {
+                        i = image_index + _number;
+                        if (i < ListImagesFullName.Count)
+                        {
+                            //src = new Bitmap(ListImagesFullName[i]);
+                            src = OpenFileStream(ListImagesFullName[i]);
+                            graphics.DrawImage(src, new Rectangle(PointX, PointY, src.Width, src.Height));
+                            PointX = PointX + src.Width + spacing;
+                            //src.Dispose();
+                        }
+                    }
+                    else
+                    {
+                        if (image_minus_index >= 0 && image_minus_index < ListImagesFullName.Count)
+                        {
+                            //src = new Bitmap(ListImagesFullName[dec]);
+                            src = OpenFileStream(ListImagesFullName[image_minus_index]);
+                            graphics.DrawImage(src, new Rectangle(PointX, PointY, src.Width, src.Height));
+                            PointX = PointX + src.Width + spacing;
+                            //src.Dispose();
+                        }
+                    }
+
+                }
+                result = PointX - spacing;
+                if (unit_index > -1)
+                {
+                    src = OpenFileStream(ListImagesFullName[unit_index]);
+                    graphics.DrawImage(src, new Rectangle(PointX, PointY, src.Width, src.Height));
+                    result = result + src.Width + spacing;
+                }
+            }
+            else if (imageError_index >= 0)
+            {
+                src = OpenFileStream(ListImagesFullName[imageError_index]);
+                switch (alignment)
+                {
+                    case 0:
+                        PointX = x;
+                        break;
+                    case 1:
+                        PointX = x + (DateLenght - src.Width) / 2;
+                        break;
+                    case 2:
+                        PointX = x + DateLenght - src.Width;
+                        break;
+                    default:
+                        PointX = x;
+                        break;
+                }
+                graphics.DrawImage(src, PointX, PointY);
+            }
+            src.Dispose();
+
+            if (BBorder)
+            {
+                Logger.WriteLine("DrawBorder");
+                Rectangle rect = new Rectangle(x, y, DateLenght - 1, height - 1);
+                using (Pen pen1 = new Pen(Color.White, 1))
+                {
+                    graphics.DrawRectangle(pen1, rect);
+                }
+                using (Pen pen2 = new Pen(Color.Black, 1))
+                {
+                    pen2.DashStyle = DashStyle.Dot;
+                    graphics.DrawRectangle(pen2, rect);
+                }
+            }
+
+            Logger.WriteLine("* Draw_weather_text (end)");
+            return result;
+        }
 
         /// <summary>Пишем число системным шрифтом</summary>
         /// <param name="graphics">Поверхность для рисования</param>
         /// <param name="x">Координата X</param>
         /// <param name="y">Координата y</param>
+        /// <param name="w">Ширина</param>
+        /// <param name="h">Высота</param>
         /// <param name="size">Размер шрифта</param>
-        /// <param name="spacing">Величина отступа</param>
+        /// <param name="spacing_h">Величина отступа</param>
+        /// <param name="spacing_v">Межстрочный интервал</param>
         /// <param name="color">Цвет шрифта</param>
-        /// <param name="angle">Угол поворота надписи в градусах</param>
-        /// <param name="value">Отображаемая величина</param>
-        /// <param name="addZero">Отображать начальные нули</param>
-        /// <param name="value_lenght">Количество отображаемых символов</param>
+        /// <param name="align_h">Горизонтальное выравнивание</param>
+        /// <param name="align_v">Вертикальное выравнивание</param>
+        /// <param name="text_style">Стиль вписывания текста</param>
         /// <param name="BBorder">Рисовать рамку по координатам, вокруг элементов с выравниванием</param>
-        /// <param name="ActivityType">Номер активности (при необходимости)</param>
-        private int Draw_text(Graphics graphics, int x, int y, float size, int spacing, Color color,
-            float angle, string value, bool BBorder, int ActivityType = 0)
+        private void Draw_text(Graphics graphics, int x, int y, int w, int h, float size, int spacing_h, int spacing_v, 
+            Color color, string value, string align_h, string align_v, string text_style, bool BBorder)
         {
-            while (spacing > 127)
-            {
-                spacing = spacing - 255;
-            }
-            while (spacing < -127)
-            {
-                spacing = spacing + 255;
-            }
-
-            int result = 0;
-            size = size * 0.9f;
+            size = size * 0.99f;
+            Bitmap bitmap = new Bitmap(Convert.ToInt32(w), Convert.ToInt32(h), PixelFormat.Format32bppArgb);
+            Graphics gPanel = Graphics.FromImage(bitmap);
             //Font drawFont = new Font("Times New Roman", size, GraphicsUnit.World);
             Font drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
             StringFormat strFormat = new StringFormat();
             strFormat.FormatFlags = StringFormatFlags.FitBlackBox;
             strFormat.Alignment = StringAlignment.Near;
-            strFormat.LineAlignment = StringAlignment.Far;
+            strFormat.LineAlignment = StringAlignment.Near;
             Size strSize1 = TextRenderer.MeasureText(graphics, "0", drawFont);
-            Size strSize2 = TextRenderer.MeasureText(graphics, "00", drawFont);
-            int chLenght = strSize2.Width - strSize1.Width;
-            int offsetX = strSize1.Width - chLenght;
-            float offsetY = 1.1f * (strSize1.Height - size);
+            Size strSize2 = TextRenderer.MeasureText(graphics, "00" + Environment.NewLine + "0", drawFont);
+            int chWidth = strSize2.Width - strSize1.Width;
+            int offsetX = strSize1.Width - chWidth;
+            int chHeight = strSize2.Height - strSize1.Height;
+            //float offsetY = strSize2.Height - strSize1.Height;
+            float offsetY = strSize1.Height - size;
+            List<string> text = new List<string>();
+            switch (text_style)
+            {
+                case "NONE":
+                    text.Add(value);
+                    break;
+                case "WRAP":
+                    //text.Add(value);
+                    string[] words = value.Split(new char[] { ' ' });
+                    for (int i = 0; i < words.Length; i++)
+                    {
+                        string draw_string = words[i];
+                        Size strSize = TextRenderer.MeasureText(graphics, draw_string, drawFont);
+                        int strLenght = strSize.Width + (draw_string.Length - 1) * spacing_h - offsetX;
+                        //strLenght += (draw_string.Length - 1) * spacing_h;
+                        if(strLenght <= w) // слово помещается в рамку
+                        {
+                            if (i + 1 < words.Length) // есть еще слова
+                            {
+                                while (i + 1 < words.Length && strLenght < w)
+                                {
+                                    string new_draw_string = draw_string + " " + words[i + 1];
+                                    strSize = TextRenderer.MeasureText(graphics, new_draw_string, drawFont);
+                                    strLenght = strSize.Width + (draw_string.Length - 1) * spacing_h - offsetX;
+                                    strLenght += (new_draw_string.Length - 1) * spacing_h;
+                                    if (strLenght <= w)
+                                    {
+                                        i++;
+                                        draw_string = new_draw_string;
+                                    } 
+                                }
+                                text.Add(draw_string);
+                            }
+                            else // последнее слово
+                            {
+                                text.Add(draw_string);
+                            }
+                        }
+                        else // слово больше рамки
+                        {
+                            int index = draw_string.Length;
+                            while (strLenght > w && index > 1)
+                            {
+                                index--;
+                                string subStr = draw_string.Substring(0, index);
+                                strSize = TextRenderer.MeasureText(graphics, subStr, drawFont);
+                                strLenght = strSize.Width + (draw_string.Length - 1) * spacing_h - offsetX;
+                                if(strLenght <= w)
+                                {
+                                    text.Add(subStr);
+                                    draw_string = draw_string.Remove(0, index);
+                                    index = draw_string.Length;
+                                    strSize = TextRenderer.MeasureText(graphics, draw_string, drawFont);
+                                    strLenght = strSize.Width + (draw_string.Length - 1) * spacing_h - offsetX;
+                                }
+                            }
+                            text.Add(draw_string);
+                        }
+                    }
+                    
+                    break;
+                case "CHAR_WRAP":
+                    text.Add(value);
+                    break;
+                case "ELLIPSIS":
+                    text.Add(value);
+                    break;
+
+                default:
+                    text.Add(value);
+                    break;
+            }
 
             Logger.WriteLine("* Draw_text");
-            char[] CH = value.ToCharArray();
 
-            int PointX = (int)(-0.3 * offsetX);
+            float PointX = (float)(-0.3 * offsetX);
+            float PointY = (float)(1.2 * offsetY);
+
+            if (align_v == "BOTTOM")
+            {
+                float textHeight = (float)((text.Count * 1.47 * size) + ((text.Count - 1) * 0.55 * spacing_v));
+                PointY = (float)(h + 1.2 * offsetY - textHeight);
+            }
+            if (align_v == "CENTER_V")
+            {
+                float textHeight = (float)((text.Count * 1.47 * size) + ((text.Count - 1) * 0.55 * spacing_v));
+                PointY = (float)(h/2 + 1.2 * offsetY - textHeight/2);
+            }
 
             Logger.WriteLine("Draw value");
             SolidBrush drawBrush = new SolidBrush(color);
 
-            graphics.TranslateTransform(x, y);
-            graphics.RotateTransform(angle);
             try
             {
-                foreach (char ch in CH)
+                foreach (string draw_string in text)
                 {
-                    string str = ch.ToString();
-                    Size strSize = TextRenderer.MeasureText(graphics, str, drawFont);
-                    //SizeF stringSize = graphics.MeasureString(str, drawFont, 10000, strFormat);
-                    //graphics.FillRectangle(new SolidBrush(Color.White), x + PointX, y + offsetY - strSize.Height, strSize.Width, strSize.Height);
-                    graphics.DrawString(str, drawFont, drawBrush, PointX, offsetY, strFormat);
+                    //gPanel.DrawString(draw_string, drawFont, drawBrush, PointX, PointY, strFormat);
+                    float posX = PointX;
+                    float posY = PointY;
 
-                    PointX = PointX + strSize.Width + spacing - offsetX;
+                    if (align_h == "RIGHT")
+                    {
+                        Size strSize = TextRenderer.MeasureText(graphics, draw_string, drawFont);
+                        float textLenght = strSize.Width + (draw_string.Length-1) * spacing_h - offsetX;
+                        posX = (float)(w - 0.3 * offsetX - textLenght);
+                    }
+                    if (align_h == "CENTER_H")
+                    {
+                        Size strSize = TextRenderer.MeasureText(graphics, draw_string, drawFont);
+                        float textLenght = strSize.Width + (draw_string.Length - 1) * spacing_h - offsetX;
+                        posX = (float)(w/2 - 0.3 * offsetX - textLenght/2);
+                    }
+
+                    foreach (char ch in draw_string)
+                    {
+                        string str = ch.ToString();
+                        Size strSize = TextRenderer.MeasureText(graphics, str, drawFont);
+                        gPanel.DrawString(str, drawFont, drawBrush, posX, posY, strFormat);
+
+                        posX = posX + strSize.Width + spacing_h - offsetX;
+                    }
+                    PointY += (float)(1.47 * size + 0.55 * spacing_v);
                 }
+                graphics.DrawImage(bitmap, x, y);
 
-                result = x + TextRenderer.MeasureText(graphics, value, drawFont).Width - offsetX + (value.Length - 1) * spacing;
                 if (BBorder)
                 {
+                    Rectangle rect = new Rectangle(x, y, w, h);
                     Logger.WriteLine("DrawBorder");
-                    Rectangle rect = new Rectangle(0, (int)(-0.75 * size), result - x - 1, (int)(0.75 * size));
+                    //Rectangle rect = new Rectangle(0, (int)(-0.75 * size), result - x - 1, (int)(0.75 * size));
                     using (Pen pen1 = new Pen(Color.White, 1))
                     {
                         graphics.DrawRectangle(pen1, rect);
@@ -1724,15 +2258,11 @@ namespace Watch_Face_Editor
                     }
                 }
             }
-            finally
+            catch (Exception)
             {
-                //graphics.RotateTransform(-angle);
-                //graphics.TranslateTransform(-x, -y);
-                graphics.ResetTransform();
             }
 
             Logger.WriteLine("* Draw_text (end)");
-            return result;
         }
 
         /// <summary>Пишем число системным шрифтом по окружности</summary>
@@ -1848,14 +2378,14 @@ namespace Watch_Face_Editor
         {
             Logger.WriteLine("* Draw_dagital_text");
             value = Math.Round(value, decCount, MidpointRounding.AwayFromZero);
-            while (spacing > 127)
-            {
-                spacing = spacing - 255;
-            }
-            while (spacing < -127)
-            {
-                spacing = spacing + 255;
-            }
+            //while (spacing > 127)
+            //{
+            //    spacing = spacing - 255;
+            //}
+            //while (spacing < -127)
+            //{
+            //    spacing = spacing + 255;
+            //}
             //var Digit = new Bitmap(ListImagesFullName[image_index]);
             //var Delimit = new Bitmap(1, 1);
             //if (dec >= 0) Delimit = new Bitmap(ListImagesFullName[dec]);
@@ -1921,7 +2451,7 @@ namespace Watch_Face_Editor
             int height = src.Height;
 
             int DateLenght = 4 * width;
-            if (spacing > 0) DateLenght = DateLenght + 2 * spacing;
+            if (spacing != 0) DateLenght = DateLenght + 2 * spacing;
             if (decimalPoint_index >= 0 && decimalPoint_index < ListImagesFullName.Count)
             {
                 src = OpenFileStream(ListImagesFullName[decimalPoint_index]);
@@ -2238,11 +2768,13 @@ namespace Watch_Face_Editor
         /// <summary>формируем изображение на панедли Graphics</summary>
         /// <param name="graphics">Поверхность для рисования</param>
         /// <param name="shortcut">Элемент с отображаемым ярлыклм</param>
+        /// <param name="showShortcuts">Отображать ярлыки</param>
         /// <param name="showShortcutsArea">Подсвечивать область ярлыков рамкой</param>
         /// <param name="showShortcutsBorder">Подсвечивать область ярлыков заливкой</param>
         /// <param name="showShortcutsImage">Подсвечивать изображение, отображаемое при нажатии ярлыка</param>
-        private void DrawShortcuts(Graphics graphics, hmUI_widget_IMG_CLICK shortcut,
-             bool showShortcutsArea, bool showShortcutsBorder, bool showShortcutsImage)
+        /// <param name="Shortcuts_In_Gif">Подсвечивать область с ярлыками (для gif файла)</param>
+        private void DrawShortcuts(Graphics graphics, hmUI_widget_IMG_CLICK shortcut, bool showShortcuts,
+             bool showShortcutsArea, bool showShortcutsBorder, bool showShortcutsImage, bool Shortcuts_In_Gif)
         {
             if (shortcut != null && shortcut.src != null && shortcut.src.Length > 0 && shortcut.visible)
             {
@@ -2252,17 +2784,71 @@ namespace Watch_Face_Editor
                 int width = shortcut.w;
                 int height = shortcut.h;
 
-                if (showShortcutsArea)
+                if (showShortcuts)
+                {
+                    if (showShortcutsArea)
+                    {
+                        HatchBrush myHatchBrush = new HatchBrush(HatchStyle.Percent10, Color.White, Color.Transparent);
+                        Rectangle rect = new Rectangle(x, y, width, height);
+                        graphics.FillRectangle(myHatchBrush, rect);
+                        myHatchBrush = new HatchBrush(HatchStyle.Percent05, Color.Black, Color.Transparent);
+                        graphics.FillRectangle(myHatchBrush, rect);
+                    }
+                    if (showShortcutsBorder)
+                    {
+                        Rectangle rect = new Rectangle(x, y, width - 1, height - 1);
+                        using (Pen pen1 = new Pen(Color.White, 1))
+                        {
+                            graphics.DrawRectangle(pen1, rect);
+                        }
+                        using (Pen pen2 = new Pen(Color.Black, 1))
+                        {
+                            pen2.DashStyle = DashStyle.Dot;
+                            graphics.DrawRectangle(pen2, rect);
+                        }
+                    }
+
+                    if (showShortcutsImage)
+                    {
+                        if (imageIndex < ListImagesFullName.Count)
+                        {
+                            Bitmap src = OpenFileStream(ListImagesFullName[imageIndex]);
+                            int pos_x = x + width / 2 - src.Width / 2;
+                            int pos_y = y + height / 2 - src.Height / 2;
+                            if (pos_x >= x && pos_y >= y)
+                            {
+                                graphics.DrawImage(src, pos_x, pos_y);
+                            }
+                            else
+                            {
+                                Rectangle cropRect = new Rectangle(x - pos_x, y - pos_y, width, height);
+                                //Rectangle cropRect = new Rectangle(...);
+                                //Bitmap src = Image.FromFile(fileName) as Bitmap;
+                                Bitmap target = new Bitmap(cropRect.Width, cropRect.Height);
+
+                                using (Graphics g = Graphics.FromImage(target))
+                                {
+                                    g.DrawImage(src, new Rectangle(0, 0, target.Width, target.Height),
+                                                     cropRect,
+                                                     GraphicsUnit.Pixel);
+                                }
+                                graphics.DrawImage(target, x, y);
+                            }
+                            src.Dispose();
+                        }
+                    } 
+                }
+
+
+                if (Shortcuts_In_Gif)
                 {
                     HatchBrush myHatchBrush = new HatchBrush(HatchStyle.Percent10, Color.White, Color.Transparent);
                     Rectangle rect = new Rectangle(x, y, width, height);
                     graphics.FillRectangle(myHatchBrush, rect);
                     myHatchBrush = new HatchBrush(HatchStyle.Percent05, Color.Black, Color.Transparent);
                     graphics.FillRectangle(myHatchBrush, rect);
-                }
-                if (showShortcutsBorder)
-                {
-                    Rectangle rect = new Rectangle(x, y, width - 1, height - 1);
+
+                    rect = new Rectangle(x, y, width - 1, height - 1);
                     using (Pen pen1 = new Pen(Color.White, 1))
                     {
                         graphics.DrawRectangle(pen1, rect);
@@ -2272,36 +2858,6 @@ namespace Watch_Face_Editor
                         pen2.DashStyle = DashStyle.Dot;
                         graphics.DrawRectangle(pen2, rect);
                     }
-                }
-
-                if (showShortcutsImage)
-                {
-                    if (imageIndex < ListImagesFullName.Count)
-                    {
-                        Bitmap src = OpenFileStream(ListImagesFullName[imageIndex]);
-                        int pos_x = x + width / 2 - src.Width / 2;
-                        int pos_y = y + height / 2 - src.Height / 2;
-                        if (pos_x >= x && pos_y >= y) 
-                        {
-                            graphics.DrawImage(src, pos_x, pos_y);
-                        }
-                        else
-                        {
-                            Rectangle cropRect = new Rectangle(x - pos_x, y - pos_y, width, height);
-                            //Rectangle cropRect = new Rectangle(...);
-                            //Bitmap src = Image.FromFile(fileName) as Bitmap;
-                            Bitmap target = new Bitmap(cropRect.Width, cropRect.Height);
-
-                            using (Graphics g = Graphics.FromImage(target))
-                            {
-                                g.DrawImage(src, new Rectangle(0, 0, target.Width, target.Height),
-                                                 cropRect,
-                                                 GraphicsUnit.Pixel);
-                            }
-                            graphics.DrawImage(target, x, y);
-                        }
-                        src.Dispose();
-                    } 
                 }
             }
         }
@@ -2373,6 +2929,29 @@ namespace Watch_Face_Editor
                     result = 1;
                     break;
                 case "RIGHT":
+                    result = 2;
+                    break;
+
+                default:
+                    result = 0;
+                    break;
+
+            }
+            return result;
+        }
+
+        private int AlignmentVerticalToInt(string alignment)
+        {
+            int result;
+            switch (alignment)
+            {
+                case "TOP":
+                    result = 0;
+                    break;
+                case "CENTER_V":
+                    result = 1;
+                    break;
+                case "BOTTOM":
                     result = 2;
                     break;
 

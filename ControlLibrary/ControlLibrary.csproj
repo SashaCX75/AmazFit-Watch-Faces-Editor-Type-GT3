@@ -228,6 +228,12 @@
     <Compile Include="Elements\UCtrl_Weather_Elm.Designer.cs">
       <DependentUpon>UCtrl_Weather_Elm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UCtrl_Text_SystemFont_Opt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCtrl_Text_SystemFont_Opt.Designer.cs">
+      <DependentUpon>UCtrl_Text_SystemFont_Opt.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCtrl_Text_Weather_Opt.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -497,6 +503,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Weather_Elm.resx">
       <DependentUpon>UCtrl_Weather_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Text_SystemFont_Opt.en.resx">
+      <DependentUpon>UCtrl_Text_SystemFont_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Text_SystemFont_Opt.resx">
+      <DependentUpon>UCtrl_Text_SystemFont_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Text_SystemFont_Opt.zh.resx">
+      <DependentUpon>UCtrl_Text_SystemFont_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Text_Weather_Opt.en.resx">
       <DependentUpon>UCtrl_Text_Weather_Opt.cs</DependentUpon>

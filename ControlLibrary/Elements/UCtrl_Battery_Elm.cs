@@ -642,7 +642,6 @@ namespace ControlLibrary
                     case "panel_Number":
                         elementOptions.Add("Number", count - i);
                         break;
-                        break;
                     case "panel_Pointer":
                         elementOptions.Add("Pointer", count - i);
                         break;

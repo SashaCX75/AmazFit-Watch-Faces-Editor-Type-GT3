@@ -133,15 +133,23 @@ namespace Watch_Face_Editor
 #if !DEBUG
             comboBox_AddActivity.Items.RemoveAt(7);
             comboBox_AddActivity.Items.RemoveAt(6);
+            comboBox_AddAir.Items.RemoveAt(6);
+            comboBox_AddAir.Items.RemoveAt(5);
+            comboBox_AddAir.Items.RemoveAt(4);
+            comboBox_AddAir.Items.RemoveAt(3);
+            comboBox_AddAir.Items.RemoveAt(2);
 #endif
 
             #region sistem font
-            byte[] fontData = Properties.Resources.OpenSans_Regular;
+            //byte[] fontData = Properties.Resources.OpenSans_Regular;
+            byte[] fontData = Properties.Resources.Roboto_Regular;
             IntPtr fontPtr = System.Runtime.InteropServices.Marshal.AllocCoTaskMem(fontData.Length);
             System.Runtime.InteropServices.Marshal.Copy(fontData, 0, fontPtr, fontData.Length);
             uint dummy = 0;
-            fonts.AddMemoryFont(fontPtr, Properties.Resources.OpenSans_Regular.Length);
-            AddFontMemResourceEx(fontPtr, (uint)Properties.Resources.OpenSans_Regular.Length, IntPtr.Zero, ref dummy);
+            //fonts.AddMemoryFont(fontPtr, Properties.Resources.OpenSans_Regular.Length);
+            //AddFontMemResourceEx(fontPtr, (uint)Properties.Resources.OpenSans_Regular.Length, IntPtr.Zero, ref dummy);
+            fonts.AddMemoryFont(fontPtr, Properties.Resources.Roboto_Regular.Length);
+            AddFontMemResourceEx(fontPtr, (uint)Properties.Resources.Roboto_Regular.Length, IntPtr.Zero, ref dummy);
             System.Runtime.InteropServices.Marshal.FreeCoTaskMem(fontPtr);
             #endregion
             Logger.WriteLine("Создали переменные");
@@ -217,43 +225,6 @@ namespace Watch_Face_Editor
             checkBox_center_marker.Checked = ProgramSettings.Shortcuts_Center_marker;
             checkBox_WidgetsArea.Checked = ProgramSettings.Show_Widgets_Area;
 
-            //comboBox_Hour_alignment.SelectedIndex = 0;
-            //comboBox_Minute_alignment.SelectedIndex = 0;
-            //comboBox_Second_alignment.SelectedIndex = 0;
-
-            //comboBox_Hour_alignment_AOD.SelectedIndex = 0;
-            //comboBox_Minute_alignment_AOD.SelectedIndex = 0;
-
-            //comboBox_Day_alignment.SelectedIndex = 0;
-            //comboBox_Month_alignment.SelectedIndex = 0;
-            //comboBox_Year_alignment.SelectedIndex = 0;
-
-            //comboBox_Day_alignment_AOD.SelectedIndex = 0;
-            //comboBox_Month_alignment_AOD.SelectedIndex = 0;
-            //comboBox_Year_alignment_AOD.SelectedIndex = 0;
-
-            //userControl_text_Distance.Collapsed = false;
-            //userControl_text_Distance_AOD.Collapsed = false;
-
-            //tabPage_Background.ImageIndex = 0;
-            //tabPage_Time.ImageIndex = 1;
-            //tabPage_Date.ImageIndex = 2;
-            //tabPage_Activity.ImageIndex = 3;
-            //tabPage_Air.ImageIndex = 4;
-            //tabPage_System.ImageIndex = 5;
-
-            //tabPage_Background_AOD.ImageIndex = 0;
-            //tabPage_Time_AOD.ImageIndex = 1;
-            //tabPage_Date_AOD.ImageIndex = 2;
-            //tabPage_Activity_AOD.ImageIndex = 3;
-            //tabPage_Air_AOD.ImageIndex = 4;
-            //tabPage_System_AOD.ImageIndex = 5;
-
-            //tabPage_WidgetsEdit.ImageIndex = 0;
-            //tabPage_WidgetAdd.ImageIndex = 1;
-
-
-
             label_version.Text = "v " +
                 System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Major.ToString() + "." +
                 System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Minor.ToString();
@@ -282,6 +253,7 @@ namespace Watch_Face_Editor
             checkBox_Shortcuts_Area.Checked = ProgramSettings.Shortcuts_Area;
             checkBox_Shortcuts_Border.Checked = ProgramSettings.Shortcuts_Border;
             checkBox_Shortcuts_Image.Checked = ProgramSettings.Shortcuts_Image;
+            checkBox_Shortcuts_In_Gif.Checked = ProgramSettings.Shortcuts_In_Gif;
 
             checkBox_ShowIn12hourFormat.Checked = ProgramSettings.ShowIn12hourFormat;
             checkBox_AllWidgetsInGif.Checked = ProgramSettings.DrawAllWidgets;
@@ -332,6 +304,7 @@ namespace Watch_Face_Editor
 
             userCtrl_Background_Options.AutoSize = true;
             uCtrl_Text_Opt.AutoSize = true;
+            uCtrl_Text_Weather_Opt.AutoSize = true;
             uCtrl_AmPm_Opt.AutoSize = true;
             uCtrl_Pointer_Opt.AutoSize = true;
             uCtrl_Images_Opt.AutoSize = true;
@@ -340,6 +313,7 @@ namespace Watch_Face_Editor
             uCtrl_Linear_Scale_Opt.AutoSize = true;
             uCtrl_Icon_Opt.AutoSize = true;
             uCtrl_Shortcut_Opt.AutoSize = true;
+            uCtrl_Text_SystemFont_Opt.AutoSize = true;
 
             button_CreatePreview.Location = new Point(5, 563);
             Logger.WriteLine("* Form1_Shown(end)");
@@ -1260,6 +1234,9 @@ namespace Watch_Face_Editor
                 case "Shortcut":
                     uCtrl_Shortcut_Opt.Visible = true;
                     break;
+                case "SystemFont":
+                    uCtrl_Text_SystemFont_Opt.Visible = true;
+                    break;
             }
         }
 
@@ -1277,6 +1254,7 @@ namespace Watch_Face_Editor
             uCtrl_Linear_Scale_Opt.Visible = false;
             uCtrl_Icon_Opt.Visible = false;
             uCtrl_Shortcut_Opt.Visible = false;
+            uCtrl_Text_SystemFont_Opt.Visible = false;
         }
 
         private void ResetHighlightState(string selectElementName)
@@ -1493,7 +1471,7 @@ namespace Watch_Face_Editor
         {
             Logger.WriteLine("* JSON");
             // сохранение если файл не сохранен
-            SaveRequest();
+            if (SaveRequest() == DialogResult.Cancel) return;
 
             //string subPath = Application.StartupPath + @"\Watch_face\";
             //if (!Directory.Exists(subPath)) Directory.CreateDirectory(subPath);
@@ -1667,6 +1645,7 @@ namespace Watch_Face_Editor
 
             userCtrl_Background_Options.ComboBoxAddItems(ListImages, ListImagesFullName);
             uCtrl_Text_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
+            uCtrl_Text_Weather_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
             uCtrl_AmPm_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
             uCtrl_Pointer_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
             uCtrl_Images_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
@@ -1688,7 +1667,7 @@ namespace Watch_Face_Editor
         {
             Logger.WriteLine("* New_Project");
             // сохранение если файл не сохранен
-            SaveRequest();
+            if (SaveRequest() == DialogResult.Cancel) return;
 
             string subPath = Application.StartupPath + @"\Watch_face\";
             if (!Directory.Exists(subPath)) Directory.CreateDirectory(subPath);
@@ -1915,7 +1894,7 @@ namespace Watch_Face_Editor
             Preview_screen(gPanel, scale, checkBox_crop.Checked, checkBox_WebW.Checked, checkBox_WebB.Checked,
                 checkBox_border.Checked, checkBox_Show_Shortcuts.Checked, checkBox_Shortcuts_Area.Checked,
                 checkBox_Shortcuts_Border.Checked, checkBox_Shortcuts_Image.Checked, true, checkBox_CircleScaleImage.Checked,
-                checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link);
+                checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link, false);
             pictureBox_Preview.BackgroundImage = bitmap;
             gPanel.Dispose();
 
@@ -1993,7 +1972,7 @@ namespace Watch_Face_Editor
                         checkBox_WebW.Checked, checkBox_WebB.Checked, checkBox_border.Checked,
                         checkBox_Show_Shortcuts.Checked, checkBox_Shortcuts_Area.Checked, checkBox_Shortcuts_Border.Checked,
                         checkBox_Shortcuts_Image.Checked, true,checkBox_CircleScaleImage.Checked, 
-                        checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link_aod);
+                        checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link_aod, false);
                     formPreview.pictureBox_Preview.BackgroundImage = bitmapPreviewResize;
                     gPanelPreviewResize.Dispose();
                 };
@@ -2010,7 +1989,6 @@ namespace Watch_Face_Editor
 
                 formPreview.pictureBox_Preview.MouseDoubleClick += (object senderDoubleClick, MouseEventArgs eDoubleClick) =>
                 {
-                    //uCtrl_Text_Opt.SetMouseСoordinates(MouseClickСoordinates.X, MouseClickСoordinates.Y);
                     uCtrl_AmPm_Opt.SetMouseСoordinates(MouseClickСoordinates.X, MouseClickСoordinates.Y);
 
                 };
@@ -2042,7 +2020,7 @@ namespace Watch_Face_Editor
             Preview_screen(gPanel, scale, checkBox_crop.Checked, checkBox_WebW.Checked, checkBox_WebB.Checked,
                 checkBox_border.Checked, checkBox_Show_Shortcuts.Checked, checkBox_Shortcuts_Area.Checked,
                 checkBox_Shortcuts_Border.Checked, checkBox_Shortcuts_Image.Checked, true, checkBox_CircleScaleImage.Checked,
-                checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link);
+                checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link, false);
             formPreview.pictureBox_Preview.BackgroundImage = bitmap;
             gPanel.Dispose();
 
@@ -2258,7 +2236,7 @@ namespace Watch_Face_Editor
 
         private void comboBox_AddAir_DropDownClosed(object sender, EventArgs e)
         {
-            if (comboBox_AddActivity.SelectedIndex == 0)
+            if (comboBox_AddAir.SelectedIndex == 0)
             {
                 AddWeather();
                 ShowElemetsWatchFace();
@@ -2325,7 +2303,7 @@ namespace Watch_Face_Editor
             PreviewView = true;
         }
 
-        private void SaveRequest()
+        private DialogResult SaveRequest()
         {
             // сохранение если файл не сохранен
             if (JSON_Modified)
@@ -2342,10 +2320,11 @@ namespace Watch_Face_Editor
                         JSON_Modified = false;
                         FormText();
                         //if (checkBox_JsonWarnings.Checked) jsonWarnings(fullfilename);
+                        return dr;
                     }
                     if (dr == DialogResult.Cancel)
                     {
-                        return;
+                        return dr;
                     }
                 }
                 /*else
@@ -2389,6 +2368,7 @@ namespace Watch_Face_Editor
                     }
                 }*/
             }
+            return DialogResult.Ignore;
         }
 
         /// <summary>Добавляем фон в циферблат</summary>
@@ -3570,7 +3550,40 @@ namespace Watch_Face_Editor
                         #region ElementWeather
                         case "ElementWeather":
                             ElementWeather Weather = (ElementWeather)element;
-                            uCtrl_PAI_Elm.SetVisibilityElementStatus(Weather.visible);
+                            uCtrl_Weather_Elm.SetVisibilityElementStatus(Weather.visible);
+                            elementOptions = new Dictionary<int, string>();
+                            if (Weather.Images != null)
+                            {
+                                uCtrl_Weather_Elm.checkBox_Images.Checked = Weather.Images.visible;
+                                elementOptions.Add(Weather.Images.position, "Images");
+                            }
+                            if (Weather.Number != null)
+                            {
+                                uCtrl_Weather_Elm.checkBox_Number.Checked = Weather.Number.visible;
+                                elementOptions.Add(Weather.Number.position, "Number");
+                            }
+                            if (Weather.Number_Min != null)
+                            {
+                                uCtrl_Weather_Elm.checkBox_Number_Min.Checked = Weather.Number_Min.visible;
+                                elementOptions.Add(Weather.Number_Min.position, "Number_Min");
+                            }
+                            if (Weather.Number_Max != null)
+                            {
+                                uCtrl_Weather_Elm.checkBox_Number_Max.Checked = Weather.Number_Max.visible;
+                                elementOptions.Add(Weather.Number_Max.position, "Number_Max");
+                            }
+                            if (Weather.City_Name != null)
+                            {
+                                uCtrl_Weather_Elm.checkBox_Text_CityName.Checked = Weather.City_Name.visible;
+                                elementOptions.Add(Weather.City_Name.position, "CityName");
+                            }
+                            if (Weather.Icon != null)
+                            {
+                                uCtrl_Weather_Elm.checkBox_Icon.Checked = Weather.Icon.visible;
+                                elementOptions.Add(Weather.Icon.position, "Icon");
+                            }
+
+                            uCtrl_Weather_Elm.SetOptionsPosition(elementOptions);
 
                             uCtrl_Weather_Elm.Visible = true;
                             SetElementPositionInGUI(type, count - i - 2);
@@ -3645,7 +3658,7 @@ namespace Watch_Face_Editor
                 {
                     Control panel2 = tableLayoutPanel_ElemetsWatchFace.GetControlFromPosition(0, i + 1);
                     if (panel2 == null) return;
-                    string n = panel2.Name;
+                    //string n = panel2.Name;
                     tableLayoutPanel_ElemetsWatchFace.SetRow(panel2, i);
                     tableLayoutPanel_ElemetsWatchFace.SetRow(panel, i + 1);
                 }
@@ -3706,6 +3719,7 @@ namespace Watch_Face_Editor
             ProgramSettings.Shortcuts_Center_marker = checkBox_center_marker.Checked;
             ProgramSettings.Show_Widgets_Area = checkBox_WidgetsArea.Checked;
             ProgramSettings.Show_Shortcuts = checkBox_Show_Shortcuts.Checked;
+            ProgramSettings.Shortcuts_In_Gif = checkBox_Shortcuts_In_Gif.Checked;
 
             //ProgramSettings.language = comboBox_Language.Text;
 
@@ -3755,6 +3769,7 @@ namespace Watch_Face_Editor
             ProgramSettings.Shortcuts_Area = checkBox_Shortcuts_Area.Checked;
             ProgramSettings.Shortcuts_Border = checkBox_Shortcuts_Border.Checked;
             ProgramSettings.Shortcuts_Image = checkBox_Shortcuts_Image.Checked;
+            ProgramSettings.Shortcuts_In_Gif = checkBox_Shortcuts_In_Gif.Checked;
 
             ProgramSettings.ShowBorder = checkBox_border.Checked;
             ProgramSettings.Crop = checkBox_crop.Checked;
@@ -4072,7 +4087,11 @@ namespace Watch_Face_Editor
             progressBar1.Value = 0;
             progressBar1.Maximum = fileInfo.Length;
             progressBar1.Visible = true;
-            if (fileInfo.Length < 2) return fileInfo;
+            if (fileInfo.Length < 2)
+            {
+                progressBar1.Visible = false;
+                return fileInfo;
+            }
             for (int i = 0; i < fileInfo.Length - 1; i++)
             {
                 progressBar1.Value++;
@@ -4992,7 +5011,7 @@ namespace Watch_Face_Editor
         private void button_pack_zip_Click(object sender, EventArgs e)
         {
             // сохранение если файл не сохранен
-            SaveRequest();
+            if (SaveRequest() == DialogResult.Cancel) return;
 
             if (FullFileDir == null) return;
             string tempDir = Application.StartupPath + @"\Temp";
@@ -5318,7 +5337,7 @@ namespace Watch_Face_Editor
                 }
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
-                Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false, false, false, link);
+                Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false, false, false, link, false);
                 if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
 
 ;
@@ -5366,7 +5385,7 @@ namespace Watch_Face_Editor
                 }
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
-                Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false, false, false, link);
+                Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false, false, false, link, false);
                 if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
 
                 float scale = (float)PreviewHeight / bitmap.Height;
@@ -5437,7 +5456,7 @@ namespace Watch_Face_Editor
         {
 
             // сохранение если файл не сохранен
-            SaveRequest();
+            if (SaveRequest() == DialogResult.Cancel) return;
 
             OpenFileDialog openFileDialog = new OpenFileDialog();
             //openFileDialog.Filter = "Binary File (*.bin)|*.bin";
@@ -7107,7 +7126,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Weather_Elm.checkBox_Number.Checked)
                         {
                             img_number = weather.Number;
-                            Read_ImgNumberWeather_Options(img_number, true, "", true, true);
+                            Read_ImgNumberWeather_Options(img_number, false, "", true, false);
                             ShowElemenrOptions("Text_Weather");
                         }
                         else HideAllElemenrOptions();
@@ -7116,7 +7135,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Weather_Elm.checkBox_Number_Min.Checked)
                         {
                             img_number = weather.Number_Min;
-                            Read_ImgNumberWeather_Options(img_number, true, "", true, true);
+                            Read_ImgNumberWeather_Options(img_number, false, "", true, false);
                             ShowElemenrOptions("Text_Weather");
                         }
                         else HideAllElemenrOptions();
@@ -7125,7 +7144,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Weather_Elm.checkBox_Number_Max.Checked)
                         {
                             img_number = weather.Number_Max;
-                            Read_ImgNumberWeather_Options(img_number, true, "", true, true);
+                            Read_ImgNumberWeather_Options(img_number, false, "", true, false);
                             ShowElemenrOptions("Text_Weather");
                         }
                         else HideAllElemenrOptions();
@@ -7134,8 +7153,8 @@ namespace Watch_Face_Editor
                         if (uCtrl_Weather_Elm.checkBox_Text_CityName.Checked)
                         {
                             text = weather.City_Name;
-                            //Read_Text_Options(text);
-                            //ShowElemenrOptions("SystemFont");
+                            Read_Text_Options(text);
+                            ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -8036,7 +8055,7 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Number")) weather.Number.position = elementOptions["Number"];
                 if (elementOptions.ContainsKey("Number_Min")) weather.Number_Min.position = elementOptions["Number_Min"];
                 if (elementOptions.ContainsKey("Number_Max")) weather.Number_Max.position = elementOptions["Number_Max"];
-                if (elementOptions.ContainsKey("City_Name")) weather.City_Name.position = elementOptions["City_Name"];
+                if (elementOptions.ContainsKey("CityName")) weather.City_Name.position = elementOptions["CityName"];
                 if (elementOptions.ContainsKey("Icon")) weather.Icon.position = elementOptions["Icon"];
 
             }
@@ -8974,12 +8993,12 @@ namespace Watch_Face_Editor
                 if (weather.City_Name == null) weather.City_Name = new hmUI_widget_TEXT();
                 if (weather.Icon == null) weather.Icon = new hmUI_widget_IMG();
 
-                Dictionary<string, int> elementOptions = uCtrl_PAI_Elm.GetOptionsPosition();
+                Dictionary<string, int> elementOptions = uCtrl_Weather_Elm.GetOptionsPosition();
                 if (elementOptions.ContainsKey("Images")) weather.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Number")) weather.Number.position = elementOptions["Number"];
                 if (elementOptions.ContainsKey("Number_Min")) weather.Number_Min.position = elementOptions["Number_Min"];
                 if (elementOptions.ContainsKey("Number_Max")) weather.Number_Max.position = elementOptions["Number_Max"];
-                if (elementOptions.ContainsKey("City_Name")) weather.City_Name.position = elementOptions["City_Name"];
+                if (elementOptions.ContainsKey("CityName")) weather.City_Name.position = elementOptions["CityName"];
                 if (elementOptions.ContainsKey("Icon")) weather.Icon.position = elementOptions["Icon"];
 
                 CheckBox checkBox = (CheckBox)sender;
@@ -9043,7 +9062,7 @@ namespace Watch_Face_Editor
                 }
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
-                Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false, false, false, link);
+                Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false, false, false, link, false);
                 if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
                 else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
                 bitmap.Save(saveFileDialog.FileName, ImageFormat.Png);
@@ -9051,7 +9070,7 @@ namespace Watch_Face_Editor
             Logger.WriteLine("* SavePNG(end)");
         }
 
-        private void button_SaveGIF_Click(object sender, EventArgs e)
+        private void button_SaveGIF_Click(object sender, EventArgs ea)
         {
             Logger.WriteLine("* SaveGIF");
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -9184,7 +9203,7 @@ namespace Watch_Face_Editor
                             //int link = radioButton_ScreenNormal.Checked ? 0 : 1;
                             int link = 0;
                             Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true,
-                                false, false, false, link);
+                                false, false, false, link, false);
                             //if (checkBox_crop.Checked) {
                             //    bitmap = ApplyMask(bitmap, mask);
                             //    gPanel = Graphics.FromImage(bitmap);
@@ -9201,10 +9220,37 @@ namespace Watch_Face_Editor
                         }
                     }
 
+                    Logger.WriteLine("SaveGIF_Shortcuts");
+                    bool Shortcuts_In_Gif = checkBox_Shortcuts_In_Gif.Checked;
+                    bool exists = false;
+                    if (Watch_Face != null && Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Elements != null) 
+                    exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementShortcuts"); // проверяем что такого элемента нет
+                    Logger.WriteLine("SaveGIF_AOD");
+                    // Shortcuts
+                    if (Shortcuts_In_Gif && exists)
+                    {
+                        bitmap = bitmapTemp;
+                        gPanel = Graphics.FromImage(bitmap);
+                        //int link = radioButton_ScreenNormal.Checked ? 0 : 1;
+                        int link_AOD = 0;
+                        Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true,
+                            false, false, false, link_AOD, Shortcuts_In_Gif);
+
+                        if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
+                        else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
+                        // Add first image and set the animation delay to 100ms
+                        MagickImage item_AOD = new MagickImage(bitmap);
+                        //ExifProfile profile = item.GetExifProfile();
+                        collection.Add(item_AOD);
+                        //collection[collection.Count - 1].AnimationDelay = 100;
+                        collection[collection.Count - 1].AnimationDelay = (int)(100 * numericUpDown_Gif_Speed.Value);
+                    }
+
                     //WidgetDrawIndex = -1;
                     Logger.WriteLine("SaveGIF_AOD");
                     // AOD
-                    if (Watch_Face.ScreenAOD != null)
+                    if (Watch_Face.ScreenAOD != null && 
+                        (Watch_Face.ScreenAOD.Background != null || Watch_Face.ScreenAOD.Elements != null))
                     {
 
                         bitmap = bitmapTemp;
@@ -9212,7 +9258,7 @@ namespace Watch_Face_Editor
                         //int link = radioButton_ScreenNormal.Checked ? 0 : 1;
                         int link_AOD = 1;
                         Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true,
-                            false, false, false, link_AOD);
+                            false, false, false, link_AOD, false);
                         //if (checkBox_crop.Checked)
                         //{
                         //    bitmap = ApplyMask(bitmap, mask);
@@ -9232,7 +9278,7 @@ namespace Watch_Face_Editor
                         bitmap = bitmapTemp;
                         gPanel = Graphics.FromImage(bitmap);
                         Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true,
-                            false, false, false, link_AOD);
+                            false, false, false, link_AOD, false);
                         //if (checkBox_crop.Checked)
                         //{
                         //    bitmap = ApplyMask(bitmap, mask);
@@ -9409,7 +9455,7 @@ namespace Watch_Face_Editor
             if (FileName != null && FullFileDir != null)
             {
                 // сохранение если файл не сохранен
-                SaveRequest();
+                if (SaveRequest() == DialogResult.Cancel) return;
 
                 string suffix = "_GTR_3";
                 float scale = 1;
@@ -9490,6 +9536,54 @@ namespace Watch_Face_Editor
         private void linkLabel_py_amazfit_tools_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/SashaCX75/ImageToGTR3/releases/tag/v1.1");
+        }
+
+        private void удалитьИзображениеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripItem menuItem = sender as ToolStripItem;
+            if (menuItem != null)
+            {
+                // Retrieve the ContextMenuStrip that owns this ToolStripItem
+                ContextMenuStrip owner = menuItem.Owner as ContextMenuStrip;
+                if (owner != null)
+                {
+                    // Get the control that is displaying this context menu
+                    Control sourceControl = owner.SourceControl;
+                    DataGridView dataGridView = sourceControl as DataGridView;
+                    try
+                    {
+                        int rowIndex = dataGridView.CurrentCellAddress.Y;
+                        string fileName = ListImagesFullName[rowIndex];
+                        if (File.Exists(fileName))
+                        {
+                            File.Delete(fileName);
+                            LoadImage(Path.GetDirectoryName(fileName));
+                            PreviewImage();
+                        }
+                    }
+                    catch (Exception)
+                    {
+                    }
+                }
+            }
+        }
+
+
+        private void contextMenuStrip_RemoveImage_Opening(object sender, CancelEventArgs e)
+        {
+            if (dataGridView_ImagesList.CurrentCell == null) e.Cancel = true;
+        }
+
+        private void dataGridView_ImagesList_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                DataGridView dataGridView = sender as DataGridView;
+                if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+                {
+                    dataGridView.CurrentCell = dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                }
+            }
         }
     }
 }

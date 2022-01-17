@@ -424,10 +424,10 @@ namespace Watch_Face_Editor
         public int y { get; set; }
 
         /// <summary>Ширина</summary>
-        public int w { get; set; }
+        public int w { get; set; } = 150;
 
         /// <summary>Высота</summary>
-        public int h { get; set; }
+        public int h { get; set; } = 30;
 
         /// <summary>Цвет</summary>
         public string color { get; set; } = "0xFFFF8C00";
@@ -439,7 +439,7 @@ namespace Watch_Face_Editor
         public string align_v { get; set; } = "TOP";
 
         /// <summary>Размер шрифта</summary>
-        public int text_size { get; set; }
+        public int text_size { get; set; } = 20;
 
         /// <summary>Стиль переноса слов
         /// WRAP - перенос по словам

@@ -16,7 +16,7 @@ namespace Watch_Face_Editor
         {
             variables = Environment.NewLine;
             items = Environment.NewLine;
-            string scale_call = "";
+            string resume_call = "";
             string options = "";
             if (Watch_Face == null) return;
             if (Watch_Face.ScreenNormal != null)
@@ -50,10 +50,10 @@ namespace Watch_Face_Editor
                         string outItems = "";
                         string out_resume_call = "";
                         AddElementToJS(element, "ONLY_NORMAL", out outVariables, out outItems, out out_resume_call,
-                            items, scale_call);
+                            items, resume_call);
                         variables += outVariables;
                         items += outItems;
-                        scale_call += out_resume_call;
+                        resume_call += out_resume_call;
                     }
                 }
             }
@@ -90,18 +90,18 @@ namespace Watch_Face_Editor
                         string outItems = "";
                         string out_resume_call = "";
                         AddElementToJS(element, "ONAL_AOD", out outVariables, out outItems, out out_resume_call,
-                            items, scale_call);
+                            items, resume_call);
                         variables += outVariables;
                         items += outItems;
-                        scale_call += out_resume_call;
+                        resume_call += out_resume_call;
                     }
                 }
             }
 
-            if (scale_call.Length > 5)
+            if (resume_call.Length > 5)
             {
                 items += Environment.NewLine + TabInString(6) + "function scale_call() {";
-                items += Environment.NewLine + scale_call;
+                items += Environment.NewLine + resume_call;
                 items += Environment.NewLine + TabInString(6) + "};" + Environment.NewLine;
                 items += Environment.NewLine + TabInString(6) +
                     "const widgetDelegate = hmUI.createWidget(hmUI.widget.WIDGET_DELEGATE, {";
@@ -124,13 +124,13 @@ namespace Watch_Face_Editor
         }
 
         private void AddElementToJS(Object element, string show_level, out string variables, out string items,
-            out string scale_call,  string exist_items, string exist_scale_call)
+            out string resume_call,  string exist_items, string exist_resume_call)
         {
             string optionNameStart = "normal_";
             if (show_level == "ONAL_AOD") optionNameStart = "idle_";
             variables = "";
             items = "";
-            scale_call = "";
+            resume_call = "";
             string options = "";
             string type = element.GetType().Name;
 
@@ -1073,7 +1073,7 @@ namespace Watch_Face_Editor
 
                             items += TabInString(6) + "};" + Environment.NewLine;
 
-                            scale_call += Environment.NewLine + TabInString(8) + "console.log('update scales STEP');" + Environment.NewLine;
+                            resume_call += Environment.NewLine + TabInString(8) + "console.log('update scales STEP');" + Environment.NewLine;
                             if (items.IndexOf("const step = hmSensor.createSensor(hmSensor.id.STEP);") < 0 &&
                                 exist_items.IndexOf("const step = hmSensor.createSensor(hmSensor.id.STEP);") < 0)
                             {
@@ -1087,39 +1087,39 @@ namespace Watch_Face_Editor
                                 }
                             }
 
-                            if (scale_call.IndexOf("progressStep") < 0 &&
-                                exist_scale_call.IndexOf("progressStep") < 0)
+                            if (resume_call.IndexOf("progressStep") < 0 &&
+                                exist_resume_call.IndexOf("progressStep") < 0)
                             {
-                                scale_call += TabInString(8) + Environment.NewLine;
-                                scale_call += TabInString(8) + "let valueStep = step.current;" + Environment.NewLine;
-                                scale_call += TabInString(8) + "let targetStep = step.target;" + Environment.NewLine;
-                                scale_call += TabInString(8) + "let progressStep = valueStep/targetStep;" + Environment.NewLine;
-                                scale_call += TabInString(8) + "if (progressStep > 1) progressStep = 1;" + Environment.NewLine;
+                                resume_call += TabInString(8) + Environment.NewLine;
+                                resume_call += TabInString(8) + "let valueStep = step.current;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let targetStep = step.target;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let progressStep = valueStep/targetStep;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "if (progressStep > 1) progressStep = 1;" + Environment.NewLine;
                             }
 
                             if (circle_scale.inversion)
                             {
-                                scale_call += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                resume_call += TabInString(8) + "let progress_cs_" + optionNameStart +
                                 "step = 1 - progressStep;" + Environment.NewLine;
                             }
                             else
                             {
-                                scale_call += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                resume_call += TabInString(8) + "let progress_cs_" + optionNameStart +
                                 "step = progressStep;" + Environment.NewLine;
                             }
                             if (optionNameStart == "normal_")
                             {
-                                scale_call += Environment.NewLine + TabInString(8) + 
+                                resume_call += Environment.NewLine + TabInString(8) + 
                                     "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                scale_call += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "step");
-                                scale_call += TabInString(8) + "};" + Environment.NewLine;
+                                resume_call += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "step");
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
                             }
                             else
                             {
-                                scale_call += Environment.NewLine + TabInString(8) + 
+                                resume_call += Environment.NewLine + TabInString(8) + 
                                     "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                scale_call += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "step");
-                                scale_call += TabInString(8) + "};" + Environment.NewLine;
+                                resume_call += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "step");
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
                             }
 
 
@@ -1162,7 +1162,7 @@ namespace Watch_Face_Editor
                             items += linearScaleOptions;
 
 
-                            scale_call += Environment.NewLine + TabInString(8) + "console.log('update scales STEP');" + Environment.NewLine;
+                            resume_call += Environment.NewLine + TabInString(8) + "console.log('update scales STEP');" + Environment.NewLine;
                             if (items.IndexOf("const step = hmSensor.createSensor(hmSensor.id.STEP);") < 0 &&
                                 exist_items.IndexOf("const step = hmSensor.createSensor(hmSensor.id.STEP);") < 0)
                             {
@@ -1176,38 +1176,38 @@ namespace Watch_Face_Editor
                                 }
                             }
 
-                            if (scale_call.IndexOf("progressStep") < 0 &&
-                                exist_scale_call.IndexOf("progressStep") < 0)
+                            if (resume_call.IndexOf("progressStep") < 0 &&
+                                exist_resume_call.IndexOf("progressStep") < 0)
                             {
-                                scale_call += TabInString(8) + Environment.NewLine;
-                                scale_call += TabInString(8) + "let valueStep = step.current;" + Environment.NewLine;
-                                scale_call += TabInString(8) + "let targetStep = step.target;" + Environment.NewLine;
-                                scale_call += TabInString(8) + "let progressStep = valueStep/targetStep;" + Environment.NewLine;
-                                scale_call += TabInString(8) + "if (progressStep > 1) progressStep = 1;" + Environment.NewLine;
+                                resume_call += TabInString(8) + Environment.NewLine;
+                                resume_call += TabInString(8) + "let valueStep = step.current;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let targetStep = step.target;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let progressStep = valueStep/targetStep;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "if (progressStep > 1) progressStep = 1;" + Environment.NewLine;
                             }
                             if (linear_scale.inversion)
                             {
-                                scale_call += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                resume_call += TabInString(8) + "let progress_ls_" + optionNameStart +
                                 "step = 1 - progressStep;" + Environment.NewLine;
                             }
                             else
                             {
-                                scale_call += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                resume_call += TabInString(8) + "let progress_ls_" + optionNameStart +
                                 "step = progressStep;" + Environment.NewLine;
                             }
                             if (optionNameStart == "normal_")
                             {
-                                scale_call += Environment.NewLine + TabInString(8) + 
+                                resume_call += Environment.NewLine + TabInString(8) + 
                                     "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                scale_call += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "step", show_level);
-                                scale_call += TabInString(8) + "};" + Environment.NewLine;
+                                resume_call += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "step", show_level);
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
                             }
                             else
                             {
-                                scale_call += Environment.NewLine + TabInString(8) + 
+                                resume_call += Environment.NewLine + TabInString(8) + 
                                     "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                scale_call += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "step", show_level);
-                                scale_call += TabInString(8) + "};" + Environment.NewLine;
+                                resume_call += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "step", show_level);
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
                             }
 
 
@@ -1365,7 +1365,7 @@ namespace Watch_Face_Editor
                             items += TabInString(6) + "};" + Environment.NewLine;
 
 
-                            scale_call += Environment.NewLine + TabInString(8) + "console.log('update scales BATTERY');" + Environment.NewLine;
+                            resume_call += Environment.NewLine + TabInString(8) + "console.log('update scales BATTERY');" + Environment.NewLine;
                             if (items.IndexOf("const battery = hmSensor.createSensor(hmSensor.id.BATTERY);") < 0 &&
                                 exist_items.IndexOf("const battery = hmSensor.createSensor(hmSensor.id.BATTERY);") < 0)
                             {
@@ -1379,40 +1379,40 @@ namespace Watch_Face_Editor
                                 }
                             }
 
-                            if (scale_call.IndexOf("progressBattery") < 0 &&
-                                exist_scale_call.IndexOf("progressBattery") < 0)
+                            if (resume_call.IndexOf("progressBattery") < 0 &&
+                                exist_resume_call.IndexOf("progressBattery") < 0)
                             {
-                                scale_call += TabInString(8) + Environment.NewLine;
-                                scale_call += TabInString(8) + "let valueBattery = battery.current;" + Environment.NewLine;
-                                scale_call += TabInString(8) + "let targetBattery = 100;" + Environment.NewLine;
+                                resume_call += TabInString(8) + Environment.NewLine;
+                                resume_call += TabInString(8) + "let valueBattery = battery.current;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let targetBattery = 100;" + Environment.NewLine;
                                 //resume_call += TabInString(8) + "let targetBattery = battery.target;" + Environment.NewLine;
-                                scale_call += TabInString(8) + "let progressBattery = valueBattery/targetBattery;" + Environment.NewLine;
-                                scale_call += TabInString(8) + "if (progressBattery > 1) progressBattery = 1;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let progressBattery = valueBattery/targetBattery;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "if (progressBattery > 1) progressBattery = 1;" + Environment.NewLine;
                             }
 
                             if (circle_scale.inversion)
                             {
-                                scale_call += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                resume_call += TabInString(8) + "let progress_cs_" + optionNameStart +
                                 "battery = 1 - progressBattery;" + Environment.NewLine;
                             }
                             else
                             {
-                                scale_call += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                resume_call += TabInString(8) + "let progress_cs_" + optionNameStart +
                                 "battery = progressBattery;" + Environment.NewLine;
                             }
                             if (optionNameStart == "normal_")
                             {
-                                scale_call += Environment.NewLine + TabInString(8) +
+                                resume_call += Environment.NewLine + TabInString(8) +
                                     "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                scale_call += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "battery");
-                                scale_call += TabInString(8) + "};" + Environment.NewLine;
+                                resume_call += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "battery");
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
                             }
                             else
                             {
-                                scale_call += Environment.NewLine + TabInString(8) +
+                                resume_call += Environment.NewLine + TabInString(8) +
                                     "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                scale_call += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "battery");
-                                scale_call += TabInString(8) + "};" + Environment.NewLine;
+                                resume_call += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "battery");
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
                             }
 
 
@@ -1455,7 +1455,7 @@ namespace Watch_Face_Editor
                             items += linearScaleOptions;
 
 
-                            scale_call += Environment.NewLine + TabInString(8) + "console.log('update scales BATTERY');" + Environment.NewLine;
+                            resume_call += Environment.NewLine + TabInString(8) + "console.log('update scales BATTERY');" + Environment.NewLine;
                             if (items.IndexOf("const battery = hmSensor.createSensor(hmSensor.id.BATTERY);") < 0 &&
                                 exist_items.IndexOf("const battery = hmSensor.createSensor(hmSensor.id.BATTERY);") < 0)
                             {
@@ -1469,40 +1469,40 @@ namespace Watch_Face_Editor
                                 }
                             }
 
-                            if (scale_call.IndexOf("progressBattery") < 0 &&
-                                exist_scale_call.IndexOf("progressBattery") < 0)
+                            if (resume_call.IndexOf("progressBattery") < 0 &&
+                                exist_resume_call.IndexOf("progressBattery") < 0)
                             {
-                                scale_call += TabInString(8) + Environment.NewLine;
-                                scale_call += TabInString(8) + "let valueBattery = battery.current;" + Environment.NewLine;
-                                scale_call += TabInString(8) + "let targetBattery = 100;" + Environment.NewLine;
+                                resume_call += TabInString(8) + Environment.NewLine;
+                                resume_call += TabInString(8) + "let valueBattery = battery.current;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let targetBattery = 100;" + Environment.NewLine;
                                 //resume_call += TabInString(8) + "let targetBattery = battery.target;" + Environment.NewLine;
-                                scale_call += TabInString(8) + "let progressBattery = valueBattery/targetBattery;" + Environment.NewLine;
-                                scale_call += TabInString(8) + "if (progressBattery > 1) progressBattery = 1;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let progressBattery = valueBattery/targetBattery;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "if (progressBattery > 1) progressBattery = 1;" + Environment.NewLine;
                             }
 
                             if (linear_scale.inversion)
                             {
-                                scale_call += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                resume_call += TabInString(8) + "let progress_ls_" + optionNameStart +
                                 "battery = 1 - progressBattery;" + Environment.NewLine;
                             }
                             else
                             {
-                                scale_call += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                resume_call += TabInString(8) + "let progress_ls_" + optionNameStart +
                                 "battery = progressBattery;" + Environment.NewLine;
                             }
                             if (optionNameStart == "normal_")
                             {
-                                scale_call += Environment.NewLine + TabInString(8) +
+                                resume_call += Environment.NewLine + TabInString(8) +
                                     "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                scale_call += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "battery", show_level);
-                                scale_call += TabInString(8) + "};" + Environment.NewLine;
+                                resume_call += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "battery", show_level);
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
                             }
                             else
                             {
-                                scale_call += Environment.NewLine + TabInString(8) +
+                                resume_call += Environment.NewLine + TabInString(8) +
                                     "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                scale_call += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "battery", show_level);
-                                scale_call += TabInString(8) + "};" + Environment.NewLine;
+                                resume_call += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "battery", show_level);
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
                             }
 
 
@@ -1687,7 +1687,7 @@ namespace Watch_Face_Editor
                             items += TabInString(6) + "};" + Environment.NewLine;
 
 
-                            scale_call += Environment.NewLine + TabInString(8) + "console.log('update scales CALORIE');" + Environment.NewLine;
+                            resume_call += Environment.NewLine + TabInString(8) + "console.log('update scales CALORIE');" + Environment.NewLine;
                             if (items.IndexOf("const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);") < 0 &&
                                 exist_items.IndexOf("const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);") < 0)
                             {
@@ -1701,39 +1701,39 @@ namespace Watch_Face_Editor
                                 }
                             }
 
-                            if (scale_call.IndexOf("progressCalories") < 0 &&
-                                exist_scale_call.IndexOf("progressCalories") < 0)
+                            if (resume_call.IndexOf("progressCalories") < 0 &&
+                                exist_resume_call.IndexOf("progressCalories") < 0)
                             {
-                                scale_call += TabInString(8) + Environment.NewLine;
-                                scale_call += TabInString(8) + "let valueCalories = calorie.current;" + Environment.NewLine;
-                                scale_call += TabInString(8) + "let targetCalories = calorie.target;" + Environment.NewLine;
-                                scale_call += TabInString(8) + "let progressCalories = valueCalories/targetCalories;" + Environment.NewLine;
-                                scale_call += TabInString(8) + "if (progressCalories > 1) progressCalories = 1;" + Environment.NewLine;
+                                resume_call += TabInString(8) + Environment.NewLine;
+                                resume_call += TabInString(8) + "let valueCalories = calorie.current;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let targetCalories = calorie.target;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let progressCalories = valueCalories/targetCalories;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "if (progressCalories > 1) progressCalories = 1;" + Environment.NewLine;
                             }
 
                             if (circle_scale.inversion)
                             {
-                                scale_call += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                resume_call += TabInString(8) + "let progress_cs_" + optionNameStart +
                                 "calorie = 1 - progressCalories;" + Environment.NewLine;
                             }
                             else
                             {
-                                scale_call += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                resume_call += TabInString(8) + "let progress_cs_" + optionNameStart +
                                 "calorie = progressCalories;" + Environment.NewLine;
                             }
                             if (optionNameStart == "normal_")
                             {
-                                scale_call += Environment.NewLine + TabInString(8) +
+                                resume_call += Environment.NewLine + TabInString(8) +
                                     "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                scale_call += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "calorie");
-                                scale_call += TabInString(8) + "};" + Environment.NewLine;
+                                resume_call += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "calorie");
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
                             }
                             else
                             {
-                                scale_call += Environment.NewLine + TabInString(8) +
+                                resume_call += Environment.NewLine + TabInString(8) +
                                     "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                scale_call += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "calorie");
-                                scale_call += TabInString(8) + "};" + Environment.NewLine;
+                                resume_call += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "calorie");
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
                             }
 
 
@@ -1776,7 +1776,7 @@ namespace Watch_Face_Editor
                             items += linearScaleOptions;
 
 
-                            scale_call += Environment.NewLine + TabInString(8) + "console.log('update scales CALORIE');" + Environment.NewLine;
+                            resume_call += Environment.NewLine + TabInString(8) + "console.log('update scales CALORIE');" + Environment.NewLine;
                             if (items.IndexOf("const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);") < 0 &&
                                 exist_items.IndexOf("const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);") < 0)
                             {
@@ -1790,39 +1790,39 @@ namespace Watch_Face_Editor
                                 }
                             }
 
-                            if (scale_call.IndexOf("progressCalories") < 0 &&
-                                exist_scale_call.IndexOf("progressCalories") < 0)
+                            if (resume_call.IndexOf("progressCalories") < 0 &&
+                                exist_resume_call.IndexOf("progressCalories") < 0)
                             {
-                                scale_call += TabInString(8) + Environment.NewLine;
-                                scale_call += TabInString(8) + "let valueCalories = calorie.current;" + Environment.NewLine;
-                                scale_call += TabInString(8) + "let targetCalories = calorie.target;" + Environment.NewLine;
-                                scale_call += TabInString(8) + "let progressCalories = valueCalories/targetCalories;" + Environment.NewLine;
-                                scale_call += TabInString(8) + "if (progressCalories > 1) progressCalories = 1;" + Environment.NewLine;
+                                resume_call += TabInString(8) + Environment.NewLine;
+                                resume_call += TabInString(8) + "let valueCalories = calorie.current;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let targetCalories = calorie.target;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let progressCalories = valueCalories/targetCalories;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "if (progressCalories > 1) progressCalories = 1;" + Environment.NewLine;
                             }
 
                             if (linear_scale.inversion)
                             {
-                                scale_call += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                resume_call += TabInString(8) + "let progress_ls_" + optionNameStart +
                                 "calorie = 1 - progressCalories;" + Environment.NewLine;
                             }
                             else
                             {
-                                scale_call += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                resume_call += TabInString(8) + "let progress_ls_" + optionNameStart +
                                 "calorie = progressCalories;" + Environment.NewLine;
                             }
                             if (optionNameStart == "normal_")
                             {
-                                scale_call += Environment.NewLine + TabInString(8) +
+                                resume_call += Environment.NewLine + TabInString(8) +
                                     "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                scale_call += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "calorie", show_level);
-                                scale_call += TabInString(8) + "};" + Environment.NewLine;
+                                resume_call += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "calorie", show_level);
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
                             }
                             else
                             {
-                                scale_call += Environment.NewLine + TabInString(8) +
+                                resume_call += Environment.NewLine + TabInString(8) +
                                     "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                scale_call += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "calorie", show_level);
-                                scale_call += TabInString(8) + "};" + Environment.NewLine;
+                                resume_call += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "calorie", show_level);
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
                             }
 
 
@@ -1984,7 +1984,7 @@ namespace Watch_Face_Editor
                             items += TabInString(6) + "};" + Environment.NewLine;
 
 
-                            scale_call += Environment.NewLine + TabInString(8) + "console.log('update scales HEART');" + Environment.NewLine;
+                            resume_call += Environment.NewLine + TabInString(8) + "console.log('update scales HEART');" + Environment.NewLine;
                             if (items.IndexOf("const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);") < 0 &&
                                 exist_items.IndexOf("const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);") < 0)
                             {
@@ -1997,42 +1997,42 @@ namespace Watch_Face_Editor
                                     items += TabInString(6) + "});" + Environment.NewLine; 
                                 }
                             }
-                            if (scale_call.IndexOf("progressHeartRate") < 0 &&
-                                exist_scale_call.IndexOf("progressHeartRate") < 0)
+                            if (resume_call.IndexOf("progressHeartRate") < 0 &&
+                                exist_resume_call.IndexOf("progressHeartRate") < 0)
                             {
-                                scale_call += TabInString(8) + Environment.NewLine;
+                                resume_call += TabInString(8) + Environment.NewLine;
                                 //resume_call += TabInString(8) + "const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);" + Environment.NewLine;
-                                scale_call += TabInString(8) + "let valueHeartRate = heart_rate.last;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let valueHeartRate = heart_rate.last;" + Environment.NewLine;
                                 //resume_call += TabInString(8) + "let valueHeartRate = heart_rate.current;" + Environment.NewLine;
-                                scale_call += TabInString(8) + "let targetHeartRate = 179;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let targetHeartRate = 179;" + Environment.NewLine;
                                 //resume_call += TabInString(8) + "let targetHeartRate = heart_rate.target;" + Environment.NewLine;
-                                scale_call += TabInString(8) + "let progressHeartRate = (valueHeartRate - 71)/(targetHeartRate - 71);" + Environment.NewLine;
-                                scale_call += TabInString(8) + "if (progressHeartRate < 0) progressHeartRate = 0;" + Environment.NewLine;
-                                scale_call += TabInString(8) + "if (progressHeartRate > 1) progressHeartRate = 1;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let progressHeartRate = (valueHeartRate - 71)/(targetHeartRate - 71);" + Environment.NewLine;
+                                resume_call += TabInString(8) + "if (progressHeartRate < 0) progressHeartRate = 0;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "if (progressHeartRate > 1) progressHeartRate = 1;" + Environment.NewLine;
                             }
                             if (circle_scale.inversion)
                             {
-                                scale_call += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                resume_call += TabInString(8) + "let progress_cs_" + optionNameStart +
                                 "heart_rate = 1 - progressHeartRate;" + Environment.NewLine;
                             }
                             else
                             {
-                                scale_call += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                resume_call += TabInString(8) + "let progress_cs_" + optionNameStart +
                                 "heart_rate = progressHeartRate;" + Environment.NewLine;
                             }
                             if (optionNameStart == "normal_")
                             {
-                                scale_call += Environment.NewLine + TabInString(8) +
+                                resume_call += Environment.NewLine + TabInString(8) +
                                     "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                scale_call += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "heart_rate");
-                                scale_call += TabInString(8) + "};" + Environment.NewLine;
+                                resume_call += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "heart_rate");
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
                             }
                             else
                             {
-                                scale_call += Environment.NewLine + TabInString(8) +
+                                resume_call += Environment.NewLine + TabInString(8) +
                                     "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                scale_call += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "heart_rate");
-                                scale_call += TabInString(8) + "};" + Environment.NewLine;
+                                resume_call += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "heart_rate");
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
                             }
 
 
@@ -2075,7 +2075,7 @@ namespace Watch_Face_Editor
                             items += linearScaleOptions;
 
 
-                            scale_call += Environment.NewLine + TabInString(8) + "console.log('update scales HEART');" + Environment.NewLine;
+                            resume_call += Environment.NewLine + TabInString(8) + "console.log('update scales HEART');" + Environment.NewLine;
                             if (items.IndexOf("const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);") < 0 &&
                                 exist_items.IndexOf("const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);") < 0)
                             {
@@ -2089,43 +2089,43 @@ namespace Watch_Face_Editor
                                 }
                             }
                             
-                            if (scale_call.IndexOf("progressHeartRate") < 0 &&
-                                exist_scale_call.IndexOf("progressHeartRate") < 0)
+                            if (resume_call.IndexOf("progressHeartRate") < 0 &&
+                                exist_resume_call.IndexOf("progressHeartRate") < 0)
                             {
-                                scale_call += TabInString(8) + Environment.NewLine;
+                                resume_call += TabInString(8) + Environment.NewLine;
                                 //resume_call += TabInString(8) + "const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);" + Environment.NewLine;
-                                scale_call += TabInString(8) + "let valueHeartRate = heart_rate.last;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let valueHeartRate = heart_rate.last;" + Environment.NewLine;
                                 //resume_call += TabInString(8) + "let valueHeartRate = heart_rate.current;" + Environment.NewLine;
-                                scale_call += TabInString(8) + "let targetHeartRate = 179;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let targetHeartRate = 179;" + Environment.NewLine;
                                 //resume_call += TabInString(8) + "let targetHeartRate = heart_rate.target;" + Environment.NewLine;
-                                scale_call += TabInString(8) + "let progressHeartRate = (valueHeartRate - 71)/(targetHeartRate - 71);" + Environment.NewLine;
-                                scale_call += TabInString(8) + "if (progressHeartRate < 0) progressHeartRate = 0;" + Environment.NewLine;
-                                scale_call += TabInString(8) + "if (progressHeartRate > 1) progressHeartRate = 1;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let progressHeartRate = (valueHeartRate - 71)/(targetHeartRate - 71);" + Environment.NewLine;
+                                resume_call += TabInString(8) + "if (progressHeartRate < 0) progressHeartRate = 0;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "if (progressHeartRate > 1) progressHeartRate = 1;" + Environment.NewLine;
                             }
                             
                             if (linear_scale.inversion)
                             {
-                                scale_call += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                resume_call += TabInString(8) + "let progress_ls_" + optionNameStart +
                                 "heart_rate = 1 - progressHeartRate;" + Environment.NewLine;
                             }
                             else
                             {
-                                scale_call += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                resume_call += TabInString(8) + "let progress_ls_" + optionNameStart +
                                 "heart_rate = progressHeartRate;" + Environment.NewLine;
                             }
                             if (optionNameStart == "normal_")
                             {
-                                scale_call += Environment.NewLine + TabInString(8) +
+                                resume_call += Environment.NewLine + TabInString(8) +
                                     "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                scale_call += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "heart_rate", show_level);
-                                scale_call += TabInString(8) + "};" + Environment.NewLine;
+                                resume_call += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "heart_rate", show_level);
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
                             }
                             else
                             {
-                                scale_call += Environment.NewLine + TabInString(8) +
+                                resume_call += Environment.NewLine + TabInString(8) +
                                     "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                scale_call += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "heart_rate", show_level);
-                                scale_call += TabInString(8) + "};" + Environment.NewLine;
+                                resume_call += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "heart_rate", show_level);
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
                             }
 
 
@@ -2314,7 +2314,7 @@ namespace Watch_Face_Editor
                             items += TabInString(6) + "};" + Environment.NewLine;
 
 
-                            scale_call += Environment.NewLine + TabInString(8) + "console.log('update scales PAI');" + Environment.NewLine;
+                            resume_call += Environment.NewLine + TabInString(8) + "console.log('update scales PAI');" + Environment.NewLine;
                             if (items.IndexOf("const pai = hmSensor.createSensor(hmSensor.id.PAI);") < 0 &&
                                 exist_items.IndexOf("const pai = hmSensor.createSensor(hmSensor.id.PAI);") < 0)
                             {
@@ -2328,40 +2328,40 @@ namespace Watch_Face_Editor
                                 }
                             }
 
-                            if (scale_call.IndexOf("progressPAI") < 0 &&
-                                exist_scale_call.IndexOf("progressPAI") < 0)
+                            if (resume_call.IndexOf("progressPAI") < 0 &&
+                                exist_resume_call.IndexOf("progressPAI") < 0)
                             {
-                                scale_call += TabInString(8) + Environment.NewLine;
-                                scale_call += TabInString(8) + "let valuePAI = pai.totalpai;" + Environment.NewLine;
-                                scale_call += TabInString(8) + "let targetPAI = 100;" + Environment.NewLine;
+                                resume_call += TabInString(8) + Environment.NewLine;
+                                resume_call += TabInString(8) + "let valuePAI = pai.totalpai;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let targetPAI = 100;" + Environment.NewLine;
                                 //resume_call += TabInString(8) + "let targetPAI = pai.target;" + Environment.NewLine;
-                                scale_call += TabInString(8) + "let progressPAI = valuePAI/targetPAI;" + Environment.NewLine;
-                                scale_call += TabInString(8) + "if (progressPAI > 1) progressPAI = 1;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let progressPAI = valuePAI/targetPAI;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "if (progressPAI > 1) progressPAI = 1;" + Environment.NewLine;
                             }
 
                             if (circle_scale.inversion)
                             {
-                                scale_call += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                resume_call += TabInString(8) + "let progress_cs_" + optionNameStart +
                                 "pai = 1 - progressPAI;" + Environment.NewLine;
                             }
                             else
                             {
-                                scale_call += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                resume_call += TabInString(8) + "let progress_cs_" + optionNameStart +
                                 "pai = progressPAI;" + Environment.NewLine;
                             }
                             if (optionNameStart == "normal_")
                             {
-                                scale_call += Environment.NewLine + TabInString(8) +
+                                resume_call += Environment.NewLine + TabInString(8) +
                                     "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                scale_call += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "pai");
-                                scale_call += TabInString(8) + "};" + Environment.NewLine;
+                                resume_call += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "pai");
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
                             }
                             else
                             {
-                                scale_call += Environment.NewLine + TabInString(8) +
+                                resume_call += Environment.NewLine + TabInString(8) +
                                     "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                scale_call += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "pai");
-                                scale_call += TabInString(8) + "};" + Environment.NewLine;
+                                resume_call += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "pai");
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
                             }
 
 
@@ -2404,7 +2404,7 @@ namespace Watch_Face_Editor
                             items += linearScaleOptions;
 
 
-                            scale_call += Environment.NewLine + TabInString(8) + "console.log('update scales PAI');" + Environment.NewLine;
+                            resume_call += Environment.NewLine + TabInString(8) + "console.log('update scales PAI');" + Environment.NewLine;
                             if (items.IndexOf("const pai = hmSensor.createSensor(hmSensor.id.PAI);") < 0 &&
                                 exist_items.IndexOf("const pai = hmSensor.createSensor(hmSensor.id.PAI);") < 0)
                             {
@@ -2418,40 +2418,40 @@ namespace Watch_Face_Editor
                                 }
                             }
 
-                            if (scale_call.IndexOf("progressPAI") < 0 &&
-                                exist_scale_call.IndexOf("progressPAI") < 0)
+                            if (resume_call.IndexOf("progressPAI") < 0 &&
+                                exist_resume_call.IndexOf("progressPAI") < 0)
                             {
-                                scale_call += TabInString(8) + Environment.NewLine;
-                                scale_call += TabInString(8) + "let valuePAI = pai.totalpai;" + Environment.NewLine;
-                                scale_call += TabInString(8) + "let targetPAI = 100;" + Environment.NewLine;
+                                resume_call += TabInString(8) + Environment.NewLine;
+                                resume_call += TabInString(8) + "let valuePAI = pai.totalpai;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let targetPAI = 100;" + Environment.NewLine;
                                 //resume_call += TabInString(8) + "let targetPAI = pai.target;" + Environment.NewLine;
-                                scale_call += TabInString(8) + "let progressPAI = valuePAI/targetPAI;" + Environment.NewLine;
-                                scale_call += TabInString(8) + "if (progressPAI > 1) progressPAI = 1;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "let progressPAI = valuePAI/targetPAI;" + Environment.NewLine;
+                                resume_call += TabInString(8) + "if (progressPAI > 1) progressPAI = 1;" + Environment.NewLine;
                             }
 
                             if (linear_scale.inversion)
                             {
-                                scale_call += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                resume_call += TabInString(8) + "let progress_ls_" + optionNameStart +
                                 "pai = 1 - progressPAI;" + Environment.NewLine;
                             }
                             else
                             {
-                                scale_call += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                resume_call += TabInString(8) + "let progress_ls_" + optionNameStart +
                                 "pai = progressPAI;" + Environment.NewLine;
                             }
                             if (optionNameStart == "normal_")
                             {
-                                scale_call += Environment.NewLine + TabInString(8) +
+                                resume_call += Environment.NewLine + TabInString(8) +
                                     "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                scale_call += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "pai", show_level);
-                                scale_call += TabInString(8) + "};" + Environment.NewLine;
+                                resume_call += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "pai", show_level);
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
                             }
                             else
                             {
-                                scale_call += Environment.NewLine + TabInString(8) +
+                                resume_call += Environment.NewLine + TabInString(8) +
                                     "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                scale_call += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "pai", show_level);
-                                scale_call += TabInString(8) + "};" + Environment.NewLine;
+                                resume_call += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "pai", show_level);
+                                resume_call += TabInString(8) + "};" + Environment.NewLine;
                             }
 
 
@@ -2505,6 +2505,174 @@ namespace Watch_Face_Editor
                                 optionNameStart + "distance_text_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                     numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
                         }
+                    }
+                    break;
+                #endregion
+
+                #region ElementWeather
+                case "ElementWeather":
+                    ElementWeather Weather = (ElementWeather)element;
+                    int numberMinPosition = 99;
+                    int numberMaxPosition = 99;
+                    int cityNamePosition = 99;
+
+                    string numberMinOptions = "";
+                    string numberMaxOptions = "";
+                    string cityNameOptions = "";
+
+                    string numberMinOptions_separator = "";
+                    string numberMaxOptions_separator = "";
+
+                    if (!Weather.visible) return;
+                    if (Weather.Images != null && Weather.Images.visible)
+                    {
+                        imagesPosition = Weather.Images.position;
+                        hmUI_widget_IMG_LEVEL img_images = Weather.Images;
+                        imagesOptions = IMG_IMAGES_Options(img_images, "WEATHER_CURRENT", show_level);
+                    }
+                    if (Weather.Number != null && Weather.Number.visible)
+                    {
+                        numberPosition = Weather.Number.position;
+                        hmUI_widget_IMG_NUMBER img_number = Weather.Number;
+                        numberOptions = IMG_NUMBER_Options(img_number, "WEATHER_CURRENT", show_level);
+
+                        numberOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (Weather.Number_Min != null && Weather.Number_Min.visible)
+                    {
+                        numberMinPosition = Weather.Number_Min.position;
+                        hmUI_widget_IMG_NUMBER img_number = Weather.Number_Min;
+                        numberMinOptions = IMG_NUMBER_Options(img_number, "WEATHER_LOW", show_level);
+
+                        numberMinOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (Weather.Number_Max != null && Weather.Number_Max.visible)
+                    {
+                        numberMaxPosition = Weather.Number_Max.position;
+                        hmUI_widget_IMG_NUMBER img_number = Weather.Number_Max;
+                        numberMaxOptions = IMG_NUMBER_Options(img_number, "WEATHER_HIGH", show_level);
+
+                        numberMaxOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (Weather.City_Name != null && Weather.City_Name.visible)
+                    {
+                        cityNamePosition = Weather.City_Name.position;
+                        hmUI_widget_TEXT text = Weather.City_Name;
+                        cityNameOptions = TEXT_Options(text, show_level);
+                    }
+
+                    if (Weather.Icon != null && Weather.Icon.visible)
+                    {
+                        iconPosition = Weather.Icon.position;
+                        hmUI_widget_IMG img_icon = Weather.Icon;
+                        iconOptions = IMG_Options(img_icon, show_level);
+                    }
+
+                    for (int index = 1; index <= 10; index++)
+                    {
+                        // Images
+                        if (index == imagesPosition && imagesOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "weather_image_progress_img_level = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "weather_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
+                                    imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+                       
+                        // Number
+                        if (index == numberPosition && numberOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "temperature_current_text_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "temperature_current_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "temperature_current_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "temperature_current_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Number min
+                        if (index == numberMinPosition && numberMinOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "temperature_low_text_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "temperature_low_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberMinOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberMinOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "temperature_low_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "temperature_low_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberMinOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Number max
+                        if (index == numberMaxPosition && numberMaxOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "temperature_high_text_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "temperature_high_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberMaxOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberMaxOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "temperature_high_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "temperature_high_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberMaxOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // City Name
+                        if (index == cityNamePosition && cityNameOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "city_name_text = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "city_name_text = hmUI.createWidget(hmUI.widget.TEXT, {" +
+                                    cityNameOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            resume_call += Environment.NewLine + TabInString(7) + "console.log('Wearther city name');" + Environment.NewLine;
+
+                            if (resume_call.IndexOf("const weatherSensor = hmSensor.createSensor(hmSensor.id.WEATHER);") < 0 &&
+                                exist_resume_call.IndexOf("const weatherSensor = hmSensor.createSensor(hmSensor.id.WEATHER);") < 0)
+                            {
+                                resume_call += TabInString(7) + 
+                                    "const weatherSensor = hmSensor.createSensor(hmSensor.id.WEATHER);" + Environment.NewLine;
+                                resume_call += TabInString(7) +
+                                    "const weatherData = weatherSensor.getForecastWeather();" + Environment.NewLine;
+                            }
+                            resume_call += TabInString(7) + optionNameStart +
+                                "city_name_text.setProperty(hmUI.prop.TEXT, weatherData.cityName);" + Environment.NewLine;
+
+
+                        }
+
+                        // Icon
+                        if (index == iconPosition && iconOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "temperature_icon_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "temperature_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    iconOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+
                     }
                     break;
                     #endregion
@@ -3785,6 +3953,37 @@ namespace Watch_Face_Editor
             return options;
         }
 
+        private string TEXT_Options(hmUI_widget_TEXT text, string show_level)
+        {
+            string options = Environment.NewLine;
+            if (text == null) return options;
+            options += TabInString(7) + "x: " + text.x.ToString() + "," + Environment.NewLine;
+            options += TabInString(7) + "y: " + text.y.ToString() + "," + Environment.NewLine;
+            options += TabInString(7) + "w: " + text.w.ToString() + "," + Environment.NewLine;
+            options += TabInString(7) + "h: " + text.h.ToString() + "," + Environment.NewLine;
+
+            options += TabInString(7) + "text_size: " + text.text_size.ToString() + "," + Environment.NewLine;
+            options += TabInString(7) + "char_space: " + text.char_space.ToString() + "," + Environment.NewLine;
+            options += TabInString(7) + "line_space: " + text.line_space.ToString() + "," + Environment.NewLine;
+
+            options += TabInString(7) + "color: " + text.color + "," + Environment.NewLine;
+
+            options += TabInString(7) + "align_h: hmUI.align." + text.align_h + "," + Environment.NewLine;
+            options += TabInString(7) + "align_v: hmUI.align." + text.align_v + "," + Environment.NewLine;
+            options += TabInString(7) + "text_style: hmUI.text_style." + text.text_style + "," + Environment.NewLine;
+
+#if DEBUG
+            options += TabInString(7) + "text: \"City Name\"," + Environment.NewLine;
+#endif
+
+            if (show_level.Length > 0)
+            {
+                options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+            }
+
+            return options;
+        }
+
 
         private string TabInString(int count)
         {
@@ -4039,6 +4238,42 @@ namespace Watch_Face_Editor
                                         distance.Number.iconPosY = img.y;
                                     }
                                 }
+
+                                if (objectName.EndsWith("temperature_current_separator_img"))
+                                {
+                                    ElementWeather weather = null;
+                                    weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
+                                    if (weather != null && weather.Number != null)
+                                    {
+                                        weather.Number.icon = img.src;
+                                        weather.Number.iconPosX = img.x;
+                                        weather.Number.iconPosY = img.y;
+                                    }
+                                }
+
+                                if (objectName.EndsWith("step_low_separator_img"))
+                                {
+                                    ElementWeather weather = null;
+                                    weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
+                                    if (weather != null && weather.Number_Min != null)
+                                    {
+                                        weather.Number_Min.icon = img.src;
+                                        weather.Number_Min.iconPosX = img.x;
+                                        weather.Number_Min.iconPosY = img.y;
+                                    }
+                                }
+
+                                if (objectName.EndsWith("step_high_separator_img"))
+                                {
+                                    ElementWeather weather = null;
+                                    weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
+                                    if (weather != null && weather.Number_Max != null)
+                                    {
+                                        weather.Number_Max.icon = img.src;
+                                        weather.Number_Max.iconPosX = img.x;
+                                        weather.Number_Max.iconPosY = img.y;
+                                    }
+                                }
                             }
 
                             if (objectName.EndsWith("icon_img"))
@@ -4179,6 +4414,31 @@ namespace Watch_Face_Editor
                                         pai.Icon.y = img.y;
                                         pai.Icon.visible = true;
                                         pai.Icon.position = offset;
+                                    }
+                                }
+
+                                if (objectName.EndsWith("temperature_icon_img"))
+                                {
+                                    ElementWeather weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
+                                    if (weather == null)
+                                    {
+                                        elementsList.Add(new ElementWeather());
+                                        weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
+                                    }
+                                    if (weather != null)
+                                    {
+                                        int offset = 1;
+                                        if (weather.Images != null) offset++;
+                                        if (weather.Number != null) offset++;
+                                        if (weather.Number_Min != null) offset++;
+                                        if (weather.Number_Max != null) offset++;
+
+                                        weather.Icon = new hmUI_widget_IMG();
+                                        weather.Icon.src = img.src;
+                                        weather.Icon.x = img.x;
+                                        weather.Icon.y = img.y;
+                                        weather.Icon.visible = true;
+                                        weather.Icon.position = offset;
                                     }
                                 }
                             }
@@ -4690,6 +4950,33 @@ namespace Watch_Face_Editor
                                     pai.Images.Y = imgLevel.Y;
                                     pai.Images.visible = true;
                                     pai.Images.position = offset;
+                                }
+                            }
+
+                            if (elementsList != null && imgLevel.type == "WEATHER_CURRENT")
+                            {
+                                ElementWeather weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
+                                if (weather == null)
+                                {
+                                    elementsList.Add(new ElementWeather());
+                                    weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
+                                }
+                                if (weather != null)
+                                {
+                                    int offset = 1;
+                                    //if (weather.Images != null) offset++;
+                                    if (weather.Number != null) offset++;
+                                    if (weather.Number_Min != null) offset++;
+                                    if (weather.Number_Max != null) offset++;
+                                    if (weather.Icon != null) offset++;
+
+                                    weather.Images = new hmUI_widget_IMG_LEVEL();
+                                    weather.Images.img_First = imgLevel.img_First;
+                                    weather.Images.image_length = imgLevel.image_length;
+                                    weather.Images.X = imgLevel.X;
+                                    weather.Images.Y = imgLevel.Y;
+                                    weather.Images.visible = true;
+                                    weather.Images.position = offset;
                                 }
                             }
 
@@ -5216,6 +5503,114 @@ namespace Watch_Face_Editor
                                     distance.Number.align = imgNumber.align;
                                     distance.Number.visible = true;
                                     distance.Number.position = 1;
+                                }
+                            }
+
+                            if (elementsList != null && imgNumber.type == "WEATHER_CURRENT")
+                            //if (objectName.EndsWith("step_image_progress_img_level"))
+                            {
+                                ElementWeather weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
+                                if (weather == null)
+                                {
+                                    elementsList.Add(new ElementWeather());
+                                    weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
+                                }
+                                if (weather != null)
+                                {
+                                    int offset = 1;
+                                    if (weather.Images != null) offset++;
+                                    //if (weather.Number != null) offset++;
+                                    if (weather.Number_Min != null) offset++;
+                                    if (weather.Number_Max != null) offset++;
+                                    if (weather.City_Name != null) offset++;
+                                    if (weather.Icon != null) offset++;
+
+                                    weather.Number = new hmUI_widget_IMG_NUMBER();
+                                    weather.Number.img_First = imgNumber.img_First;
+                                    weather.Number.imageX = imgNumber.imageX;
+                                    weather.Number.imageY = imgNumber.imageY;
+                                    weather.Number.space = imgNumber.space;
+                                    weather.Number.zero = imgNumber.zero;
+                                    weather.Number.unit = imgNumber.unit;
+                                    weather.Number.imperial_unit = imgNumber.imperial_unit;
+                                    weather.Number.negative_image = imgNumber.negative_image;
+                                    weather.Number.invalid_image = imgNumber.invalid_image;
+                                    weather.Number.dot_image = imgNumber.dot_image;
+                                    weather.Number.align = imgNumber.align;
+                                    weather.Number.visible = true;
+                                    weather.Number.position = offset;
+                                }
+                            }
+
+                            if (elementsList != null && imgNumber.type == "WEATHER_LOW")
+                            //if (objectName.EndsWith("step_image_progress_img_level"))
+                            {
+                                ElementWeather weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
+                                if (weather == null)
+                                {
+                                    elementsList.Add(new ElementWeather());
+                                    weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
+                                }
+                                if (weather != null)
+                                {
+                                    int offset = 1;
+                                    if (weather.Images != null) offset++;
+                                    if (weather.Number != null) offset++;
+                                    //if (weather.Number_Min != null) offset++;
+                                    if (weather.Number_Max != null) offset++;
+                                    if (weather.City_Name != null) offset++;
+                                    if (weather.Icon != null) offset++;
+
+                                    weather.Number_Min = new hmUI_widget_IMG_NUMBER();
+                                    weather.Number_Min.img_First = imgNumber.img_First;
+                                    weather.Number_Min.imageX = imgNumber.imageX;
+                                    weather.Number_Min.imageY = imgNumber.imageY;
+                                    weather.Number_Min.space = imgNumber.space;
+                                    weather.Number_Min.zero = imgNumber.zero;
+                                    weather.Number_Min.unit = imgNumber.unit;
+                                    weather.Number_Min.imperial_unit = imgNumber.imperial_unit;
+                                    weather.Number_Min.negative_image = imgNumber.negative_image;
+                                    weather.Number_Min.invalid_image = imgNumber.invalid_image;
+                                    weather.Number_Min.dot_image = imgNumber.dot_image;
+                                    weather.Number_Min.align = imgNumber.align;
+                                    weather.Number_Min.visible = true;
+                                    weather.Number_Min.position = offset;
+                                }
+                            }
+
+                            if (elementsList != null && imgNumber.type == "WEATHER_HIGH")
+                            //if (objectName.EndsWith("step_image_progress_img_level"))
+                            {
+                                ElementWeather weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
+                                if (weather == null)
+                                {
+                                    elementsList.Add(new ElementWeather());
+                                    weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
+                                }
+                                if (weather != null)
+                                {
+                                    int offset = 1;
+                                    if (weather.Images != null) offset++;
+                                    if (weather.Number != null) offset++;
+                                    if (weather.Number_Min != null) offset++;
+                                    //if (weather.Number_Max != null) offset++;
+                                    if (weather.City_Name != null) offset++;
+                                    if (weather.Icon != null) offset++;
+
+                                    weather.Number_Max = new hmUI_widget_IMG_NUMBER();
+                                    weather.Number_Max.img_First = imgNumber.img_First;
+                                    weather.Number_Max.imageX = imgNumber.imageX;
+                                    weather.Number_Max.imageY = imgNumber.imageY;
+                                    weather.Number_Max.space = imgNumber.space;
+                                    weather.Number_Max.zero = imgNumber.zero;
+                                    weather.Number_Max.unit = imgNumber.unit;
+                                    weather.Number_Max.imperial_unit = imgNumber.imperial_unit;
+                                    weather.Number_Max.negative_image = imgNumber.negative_image;
+                                    weather.Number_Max.invalid_image = imgNumber.invalid_image;
+                                    weather.Number_Max.dot_image = imgNumber.dot_image;
+                                    weather.Number_Max.align = imgNumber.align;
+                                    weather.Number_Max.visible = true;
+                                    weather.Number_Max.position = offset;
                                 }
                             }
 
@@ -6160,6 +6555,66 @@ namespace Watch_Face_Editor
 
                                 }
                             }
+                            break;
+                        #endregion
+
+                        #region TEXT
+                        case "TEXT":
+                            hmUI_widget_TEXT text = Object_TEXT(parametrs);
+                            elementsList = null;
+                            if (text.show_level == "ONLY_NORMAL" || objectName.StartsWith("normal"))
+                            {
+                                if (Watch_Face.ScreenNormal.Elements == null)
+                                    Watch_Face.ScreenNormal.Elements = new List<object>();
+                                elementsList = Watch_Face.ScreenNormal.Elements;
+                            }
+                            else if (text.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
+                            {
+                                if (Watch_Face.ScreenAOD.Elements == null)
+                                    Watch_Face.ScreenAOD.Elements = new List<object>();
+                                elementsList = Watch_Face.ScreenAOD.Elements;
+                            }
+
+                            if (elementsList != null && objectName.EndsWith("city_name_text"))
+                            {
+                                ElementWeather weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
+                                if (weather == null)
+                                {
+                                    elementsList.Add(new ElementWeather());
+                                    weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
+                                }
+                                if (weather != null)
+                                {
+                                    int offset = 1;
+                                    if (weather.Images != null) offset++;
+                                    if (weather.Number != null) offset++;
+                                    if (weather.Number_Min != null) offset++;
+                                    if (weather.Number_Max != null) offset++;
+                                    //if (weather.City_Name != null) offset++;
+                                    if (weather.Icon != null) offset++;
+
+                                    weather.City_Name = new hmUI_widget_TEXT();
+                                    weather.City_Name.x = text.x;
+                                    weather.City_Name.y = text.y;
+                                    weather.City_Name.w = text.w;
+                                    weather.City_Name.h = text.h;
+
+                                    weather.City_Name.color = text.color;
+
+                                    weather.City_Name.text_size = text.text_size;
+                                    weather.City_Name.char_space = text.char_space;
+                                    weather.City_Name.line_space = text.line_space;
+
+                                    weather.City_Name.align_h = text.align_h;
+                                    weather.City_Name.align_v = text.align_v;
+                                    weather.City_Name.text_style = text.text_style;
+
+                                    weather.City_Name.visible = true;
+                                    weather.City_Name.position = offset;
+                                }
+                            }
+
+
                             break;
                             #endregion
                     }
@@ -7315,6 +7770,49 @@ namespace Watch_Face_Editor
             }
 
             return img_shortcut;
+        }
+
+        private hmUI_widget_TEXT Object_TEXT(Dictionary<string, string> parametrs)
+        {
+            hmUI_widget_TEXT text = new hmUI_widget_TEXT();
+            int value;
+            string paramName = "";
+            if (parametrs.ContainsKey("x") && Int32.TryParse(parametrs["x"], out value)) text.x = value;
+            if (parametrs.ContainsKey("y") && Int32.TryParse(parametrs["y"], out value)) text.y = value;
+            if (parametrs.ContainsKey("w") && Int32.TryParse(parametrs["w"], out value)) text.w = value;
+            if (parametrs.ContainsKey("h") && Int32.TryParse(parametrs["h"], out value)) text.h = value;
+
+            if (parametrs.ContainsKey("text_size") && Int32.TryParse(parametrs["text_size"], out value)) text.text_size = value;
+            if (parametrs.ContainsKey("char_space") && Int32.TryParse(parametrs["char_space"], out value)) text.char_space = value;
+            if (parametrs.ContainsKey("line_space") && Int32.TryParse(parametrs["line_space"], out value)) text.line_space = value;
+
+            if (parametrs.ContainsKey("color")) text.color = parametrs["color"].Replace("'", "");
+
+            if (parametrs.ContainsKey("align_h"))
+            {
+                paramName = parametrs["align_h"].Replace("hmUI.align.", "");
+                text.align_h = paramName;
+            }
+            if (parametrs.ContainsKey("align_v"))
+            {
+                paramName = parametrs["align_v"].Replace("hmUI.align.", "");
+                text.align_v = paramName;
+            }
+            if (parametrs.ContainsKey("text_style"))
+            {
+                paramName = parametrs["text_style"].Replace("hmUI.text_style.", "");
+                text.text_style = paramName;
+            }
+
+            if (parametrs.ContainsKey("show_level"))
+            {
+                paramName = parametrs["show_level"].Replace("hmUI.show_level.", "");
+                text.show_level = paramName;
+            }
+            text.visible = true;
+            text.position = 1;
+
+            return text;
         }
 
         private bool StringToBool(string str)

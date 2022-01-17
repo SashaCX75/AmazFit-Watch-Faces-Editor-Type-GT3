@@ -228,7 +228,7 @@
     <value>168</value>
   </data>
   <data name="comboBox_unit_miles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>157, 305</value>
+    <value>157, 298</value>
   </data>
   <data name="вставитьToolStripMenuItemY.Size" type="System.Drawing.Size, System.Drawing">
     <value>203, 26</value>
@@ -243,7 +243,7 @@
     <value>163</value>
   </data>
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 272</value>
+    <value>150, 265</value>
   </data>
   <data name="&gt;&gt;numericUpDown_imageX.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -677,7 +677,7 @@
     <value>120, 34</value>
   </data>
   <data name="comboBox_alignment.Items2" xml:space="preserve">
-    <value>По праваму краю</value>
+    <value>По правому краю</value>
   </data>
   <data name="comboBox_alignment.Items1" xml:space="preserve">
     <value>По центру</value>

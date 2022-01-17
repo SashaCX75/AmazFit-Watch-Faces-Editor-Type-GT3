@@ -30,14 +30,17 @@ namespace Watch_Face_Editor
 
         public bool ShowBorder = false;
         public bool Crop = true;
+        public bool Shortcuts_Center_marker = true;
         public bool Show_Warnings = true;
         public bool Show_Shortcuts = true;
+        public bool Show_CircleScale_Area = false;
+        public bool Show_Widgets_Area = true;
+
         public bool Shortcuts_Area = true;
         public bool Shortcuts_Border = true;
         public bool Shortcuts_Image = false;
-        public bool Shortcuts_Center_marker = true;
-        public bool Show_CircleScale_Area = false;
-        public bool Show_Widgets_Area = true;
+        public bool Shortcuts_In_Gif = false;
+
         public float Scale = 1f;
         public float Gif_Speed = 1f;
         public bool DrawAllWidgets = false;

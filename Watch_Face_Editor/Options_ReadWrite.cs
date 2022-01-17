@@ -808,6 +808,32 @@ namespace Watch_Face_Editor
             PreviewView = true;
         }
 
+        private void Read_Text_Options(hmUI_widget_TEXT system_font)
+        {
+            PreviewView = false;
+
+            uCtrl_Text_SystemFont_Opt.SettingsClear();
+
+            uCtrl_Text_SystemFont_Opt._ElementWithSystemFont = system_font;
+
+            uCtrl_Text_SystemFont_Opt.numericUpDown_X.Value = system_font.x;
+            uCtrl_Text_SystemFont_Opt.numericUpDown_Y.Value = system_font.y;
+            uCtrl_Text_SystemFont_Opt.numericUpDown_Width.Value = system_font.w;
+            uCtrl_Text_SystemFont_Opt.numericUpDown_Height.Value = system_font.h;
+
+            uCtrl_Text_SystemFont_Opt.numericUpDown_Size.Value = system_font.text_size;
+            uCtrl_Text_SystemFont_Opt.numericUpDown_Spacing.Value = system_font.char_space;
+            uCtrl_Text_SystemFont_Opt.numericUpDown_LineSpace.Value = system_font.line_space;
+
+            uCtrl_Text_SystemFont_Opt.SetColorText(StringToColor(system_font.color));
+
+            uCtrl_Text_SystemFont_Opt.SetHorizontalAlignment(system_font.align_h);
+            uCtrl_Text_SystemFont_Opt.SetVerticalAlignment(system_font.align_v);
+            uCtrl_Text_SystemFont_Opt.SetTextStyle(system_font.text_style);
+
+            PreviewView = true;
+        }
+
         /// <summary>Меняем настройки фона</summary>
         private void userCtrl_Background_Options_ValueChanged(object sender, EventArgs eventArgs)
         {
@@ -899,8 +925,8 @@ namespace Watch_Face_Editor
                 }
                 if (radioButton_GTS3.Checked)
                 {
-                    background.BackgroundImage.h = 450;
-                    background.BackgroundImage.w = 390;
+                    background.BackgroundColor.h = 450;
+                    background.BackgroundColor.w = 390;
                 }
                 background.BackgroundImage = null;
             }
@@ -951,6 +977,34 @@ namespace Watch_Face_Editor
             img_number.dot_image = uCtrl_Text_Opt.GetImageDecimalPoint();
             img_number.invalid_image = uCtrl_Text_Opt.GetImageError();
             img_number.zero = uCtrl_Text_Opt.checkBox_addZero.Checked;
+
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Text_Weather_Opt_ValueChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            hmUI_widget_IMG_NUMBER img_number = (hmUI_widget_IMG_NUMBER)uCtrl_Text_Weather_Opt._ElementWithText;
+            if (img_number == null) return;
+
+            img_number.align = uCtrl_Text_Weather_Opt.GetAlignment();
+            img_number.follow = uCtrl_Text_Weather_Opt.checkBox_follow.Checked;
+            img_number.icon = uCtrl_Text_Weather_Opt.GetIcon();
+            img_number.iconPosX = (int)uCtrl_Text_Weather_Opt.numericUpDown_iconX.Value;
+            img_number.iconPosY = (int)uCtrl_Text_Weather_Opt.numericUpDown_iconY.Value;
+            img_number.img_First = uCtrl_Text_Weather_Opt.GetImage();
+            img_number.imageX = (int)uCtrl_Text_Weather_Opt.numericUpDown_imageX.Value;
+            img_number.imageY = (int)uCtrl_Text_Weather_Opt.numericUpDown_imageY.Value;
+            img_number.space = (int)uCtrl_Text_Weather_Opt.numericUpDown_spacing.Value;
+            img_number.unit = uCtrl_Text_Weather_Opt.GetUnit_C();
+            img_number.imperial_unit = uCtrl_Text_Weather_Opt.GetUnit_F();
+            img_number.negative_image = uCtrl_Text_Weather_Opt.GetImageMinus();
+            img_number.invalid_image = uCtrl_Text_Weather_Opt.GetImageError();
+            img_number.zero = uCtrl_Text_Weather_Opt.checkBox_addZero.Checked;
 
 
             JSON_Modified = true;
@@ -1142,6 +1196,33 @@ namespace Watch_Face_Editor
             shortcut.y = (int)uCtrl_Shortcut_Opt.numericUpDown_imageY.Value;
             shortcut.h = (int)uCtrl_Shortcut_Opt.numericUpDown_height.Value;
             shortcut.w = (int)uCtrl_Shortcut_Opt.numericUpDown_width.Value;
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Text_SystemFont_Opt_ValueChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            hmUI_widget_TEXT systemFont = (hmUI_widget_TEXT)uCtrl_Text_SystemFont_Opt._ElementWithSystemFont;
+            if (systemFont == null) return;
+
+            systemFont.x = (int)uCtrl_Text_SystemFont_Opt.numericUpDown_X.Value;
+            systemFont.y = (int)uCtrl_Text_SystemFont_Opt.numericUpDown_Y.Value;
+            systemFont.h = (int)uCtrl_Text_SystemFont_Opt.numericUpDown_Height.Value;
+            systemFont.w = (int)uCtrl_Text_SystemFont_Opt.numericUpDown_Width.Value;
+
+            systemFont.text_size = (int)uCtrl_Text_SystemFont_Opt.numericUpDown_Size.Value;
+            systemFont.char_space = (int)uCtrl_Text_SystemFont_Opt.numericUpDown_Spacing.Value;
+            systemFont.line_space = (int)uCtrl_Text_SystemFont_Opt.numericUpDown_LineSpace.Value;
+
+            systemFont.color = ColorToString(uCtrl_Text_SystemFont_Opt.GetColorText());
+
+            systemFont.align_h = uCtrl_Text_SystemFont_Opt.GetHorizontalAlignment();
+            systemFont.align_v = uCtrl_Text_SystemFont_Opt.GetVerticalAlignment();
+            systemFont.text_style = uCtrl_Text_SystemFont_Opt.GetTextStyle();
 
             JSON_Modified = true;
             PreviewImage();
