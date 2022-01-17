@@ -128,88 +128,88 @@
     <value>多云</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items1" xml:space="preserve">
-    <value>Chance of rain</value>
+    <value>阵雨</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items2" xml:space="preserve">
-    <value>Chance of snow</value>
+    <value>阵雪</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items3" xml:space="preserve">
-    <value>Sunny</value>
+    <value>晴</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items4" xml:space="preserve">
-    <value>Overcast</value>
+    <value>阴</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items5" xml:space="preserve">
-    <value>Light rain</value>
+    <value>小雨</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items6" xml:space="preserve">
-    <value>Light snow</value>
+    <value>小雪</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items7" xml:space="preserve">
-    <value>Moderate rain</value>
+    <value>中雨</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items8" xml:space="preserve">
-    <value>Moderate snow</value>
+    <value>中雪</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items9" xml:space="preserve">
-    <value>Heavy snowfall</value>
+    <value>大雪</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items10" xml:space="preserve">
-    <value>Heavy rain</value>
+    <value>大雨</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items11" xml:space="preserve">
-    <value>Sandstorm</value>
+    <value>沙尘暴</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items12" xml:space="preserve">
-    <value>Sleet</value>
+    <value>雨夹雪</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items13" xml:space="preserve">
-    <value>Fog</value>
+    <value>雾</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items14" xml:space="preserve">
-    <value>Haze</value>
+    <value>霾</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items15" xml:space="preserve">
-    <value>Thunderstorm</value>
+    <value>雷阵雨</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items16" xml:space="preserve">
-    <value>Snowstorm</value>
+    <value>暴雪</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items17" xml:space="preserve">
-    <value>Dusty</value>
+    <value>浮尘</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items18" xml:space="preserve">
-    <value>Extreme rain</value>
+    <value>特大暴雨</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items19" xml:space="preserve">
-    <value>Rain with hail</value>
+    <value>雨加冰雹</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items20" xml:space="preserve">
-    <value>Heavy rain with hail</value>
+    <value>雷阵雨伴有冰雹</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items21" xml:space="preserve">
-    <value>Rainstorm</value>
+    <value>大暴雨</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items22" xml:space="preserve">
-    <value>Dust storm</value>
+    <value>扬沙</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items23" xml:space="preserve">
-    <value>Severe sandstorm</value>
+    <value>强沙尘暴</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items24" xml:space="preserve">
-    <value>Torrential rain</value>
+    <value>暴雨</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items25" xml:space="preserve">
-    <value>Unknown weather</value>
+    <value>未知天气</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items26" xml:space="preserve">
-    <value>Cloudy night</value>
+    <value>夜间多云</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items27" xml:space="preserve">
-    <value>Rainy night</value>
+    <value>夜间阵雨</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items28" xml:space="preserve">
-    <value>Clear night</value>
+    <value>夜间晴</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Location" type="System.Drawing.Point, System.Drawing">
     <value>80, 22</value>
@@ -303,5 +303,11 @@
   </data>
   <data name="button_Set.Text" xml:space="preserve">
     <value>值</value>
+  </data>
+  <data name="checkBox_Bluetooth_Set.Text" xml:space="preserve">
+    <value>蓝牙</value>
+  </data>
+  <data name="label09.Text" xml:space="preserve">
+    <value>PAI</value>
   </data>
 </root>

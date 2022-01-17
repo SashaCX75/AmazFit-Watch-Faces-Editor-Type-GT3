@@ -172,4 +172,7 @@
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>数字时间</value>
   </data>
+  <data name="button_AmPm.Text" xml:space="preserve">
+    <value>上午/下午</value>
+  </data>
 </root>

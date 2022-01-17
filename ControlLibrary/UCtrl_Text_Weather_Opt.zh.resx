@@ -117,11 +117,71 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="checkBox_addZero.Text" xml:space="preserve">
+    <value>前面加0</value>
+  </data>
+  <data name="checkBox_follow.Text" xml:space="preserve">
+    <value>跟随前者</value>
+  </data>
+  <data name="comboBox_alignment.Items" xml:space="preserve">
+    <value>左对齐</value>
+  </data>
+  <data name="comboBox_alignment.Items1" xml:space="preserve">
+    <value>居中对齐</value>
+  </data>
+  <data name="comboBox_alignment.Items2" xml:space="preserve">
+    <value>右对齐</value>
+  </data>
+  <data name="label01.Text" xml:space="preserve">
+    <value>起始图像</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label02.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 13</value>
   </data>
   <data name="label02.Text" xml:space="preserve">
-    <value>Координаты1</value>
+    <value>坐标</value>
+  </data>
+  <data name="label03.Text" xml:space="preserve">
+    <value>间隙</value>
+  </data>
+  <data name="label04.Text" xml:space="preserve">
+    <value>图标</value>
+  </data>
+  <data name="label05.Text" xml:space="preserve">
+    <value>图标坐标</value>
+  </data>
+  <data name="label06.Text" xml:space="preserve">
+    <value>错误图像</value>
+  </data>
+  <data name="label07.Text" xml:space="preserve">
+    <value>符号“-”</value>
+  </data>
+  <data name="label08.Text" xml:space="preserve">
+    <value>单位(°C)</value>
+  </data>
+  <data name="label09.Text" xml:space="preserve">
+    <value>对齐</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>单位(°F)</value>
+  </data>
+  <data name="вставитьToolStripMenuItemX.Text" xml:space="preserve">
+    <value>粘贴</value>
+  </data>
+  <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
+    <value>粘贴</value>
+  </data>
+  <data name="вставитьКоординатуYToolStripMenuItem.Text" xml:space="preserve">
+    <value>粘贴Y坐标</value>
+  </data>
+  <data name="вставитьКоординатуХToolStripMenuItem.Text" xml:space="preserve">
+    <value>粘贴X坐标</value>
+  </data>
+  <data name="копироватьToolStripMenuItemX.Text" xml:space="preserve">
+    <value>复制</value>
+  </data>
+  <data name="копироватьToolStripMenuItemY.Text" xml:space="preserve">
+    <value>复制</value>
   </data>
 </root>
