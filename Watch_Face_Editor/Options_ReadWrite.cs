@@ -352,6 +352,67 @@ namespace Watch_Face_Editor
                         break;
                     #endregion
 
+                    #region ElementStand
+                    case "ElementStand":
+                        ElementStand Stand = null;
+                        try
+                        {
+                            Stand = JsonConvert.DeserializeObject<ElementStand>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (Stand != null) NewElements.Add(Stand);
+                        break;
+                    #endregion
+
+                    #region ElementActivity
+                    case "ElementActivity":
+                        ElementActivity Activity = null;
+                        try
+                        {
+                            Activity = JsonConvert.DeserializeObject<ElementActivity>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (Activity != null) NewElements.Add(Activity);
+                        break;
+                    #endregion
+
+                    #region ElementSpO2
+                    case "ElementSpO2":
+                        ElementSpO2 SpO2 = null;
+                        try
+                        {
+                            SpO2 = JsonConvert.DeserializeObject<ElementSpO2>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (SpO2 != null) NewElements.Add(SpO2);
+                        break;
+                    #endregion
+
+
                     #region ElementWeather
                     case "ElementWeather":
                         ElementWeather Weather = null;
@@ -369,6 +430,46 @@ namespace Watch_Face_Editor
                                 Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                         if (Weather != null) NewElements.Add(Weather);
+                        break;
+                    #endregion
+
+                    #region ElementUVIndex
+                    case "ElementUVIndex":
+                        ElementUVIndex UVIndex = null;
+                        try
+                        {
+                            UVIndex = JsonConvert.DeserializeObject<ElementUVIndex>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (UVIndex != null) NewElements.Add(UVIndex);
+                        break;
+                    #endregion
+
+                    #region ElementHumidity
+                    case "ElementHumidity":
+                        ElementHumidity Humidity = null;
+                        try
+                        {
+                            Humidity = JsonConvert.DeserializeObject<ElementHumidity>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (Humidity != null) NewElements.Add(Humidity);
                         break;
                         #endregion
                 }

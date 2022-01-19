@@ -387,7 +387,7 @@ namespace ControlLibrary
 
             numericUp_UVindex_Set.Value = rnd.Next(0, 13);
             numericUpDown_AirQuality_Set.Value = rnd.Next(0, 650);
-            numericUpDown_Humidity_Set.Value = rnd.Next(0, 100);
+            numericUpDown_Humidity_Set.Value = rnd.Next(30, 100);
             numericUpDown_WindForce.Value = rnd.Next(0, 13);
             numericUpDown_Altitude_Set.Value = rnd.Next(0, 100);
             numericUpDown_AirPressure_Set.Value = rnd.Next(800, 1200);

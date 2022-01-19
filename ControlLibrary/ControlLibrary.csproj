@@ -65,6 +65,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
+    <Compile Include="Elements\UCtrl_Activity_Elm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\UCtrl_Activity_Elm.Designer.cs">
+      <DependentUpon>UCtrl_Activity_Elm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCtrl_AmPm_Opt.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -149,6 +155,12 @@
     <Compile Include="Elements\UCtrl_Distance_Elm.Designer.cs">
       <DependentUpon>UCtrl_Distance_Elm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Elements\UCtrl_Humidity_Elm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\UCtrl_Humidity_Elm.Designer.cs">
+      <DependentUpon>UCtrl_Humidity_Elm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCtrl_Icon_Opt.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -216,6 +228,18 @@
     <Compile Include="UCtrl_Shortcut_Opt.Designer.cs">
       <DependentUpon>UCtrl_Shortcut_Opt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Elements\UCtrl_SpO2_Elm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\UCtrl_SpO2_Elm.Designer.cs">
+      <DependentUpon>UCtrl_SpO2_Elm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Elements\UCtrl_Stand_Elm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\UCtrl_Stand_Elm.Designer.cs">
+      <DependentUpon>UCtrl_Stand_Elm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCtrl_Text_Opt.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -240,9 +264,24 @@
     <Compile Include="UCtrl_Text_Weather_Opt.Designer.cs">
       <DependentUpon>UCtrl_Text_Weather_Opt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Elements\UCtrl_UVIndex_Elm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\UCtrl_UVIndex_Elm.Designer.cs">
+      <DependentUpon>UCtrl_UVIndex_Elm.cs</DependentUpon>
+    </Compile>
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Elements\UCtrl_Activity_Elm.en.resx">
+      <DependentUpon>UCtrl_Activity_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Activity_Elm.resx">
+      <DependentUpon>UCtrl_Activity_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Activity_Elm.zh.resx">
+      <DependentUpon>UCtrl_Activity_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_AnalogTime_Elm.zh.resx">
       <DependentUpon>UCtrl_AnalogTime_Elm.cs</DependentUpon>
     </EmbeddedResource>
@@ -288,6 +327,12 @@
     <EmbeddedResource Include="Elements\UCtrl_Heart_Elm.zh.resx">
       <DependentUpon>UCtrl_Heart_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Humidity_Elm.en.resx">
+      <DependentUpon>UCtrl_Humidity_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Humidity_Elm.zh.resx">
+      <DependentUpon>UCtrl_Humidity_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_PAI_Elm.en.resx">
       <DependentUpon>UCtrl_PAI_Elm.cs</DependentUpon>
     </EmbeddedResource>
@@ -311,6 +356,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Steps_Elm.zh.resx">
       <DependentUpon>UCtrl_Steps_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_UVIndex_Elm.en.resx">
+      <DependentUpon>UCtrl_UVIndex_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_UVIndex_Elm.zh.resx">
+      <DependentUpon>UCtrl_UVIndex_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Weather_Elm.en.resx">
       <DependentUpon>UCtrl_Weather_Elm.cs</DependentUpon>
@@ -416,6 +467,9 @@
     <EmbeddedResource Include="UCtrl_Circle_Scale_Opt.zh.resx">
       <DependentUpon>UCtrl_Circle_Scale_Opt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Humidity_Elm.resx">
+      <DependentUpon>UCtrl_Humidity_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Icon_Opt.en.resx">
       <DependentUpon>UCtrl_Icon_Opt.cs</DependentUpon>
     </EmbeddedResource>
@@ -492,6 +546,12 @@
     <EmbeddedResource Include="UCtrl_Shortcut_Opt.zh.resx">
       <DependentUpon>UCtrl_Shortcut_Opt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_SpO2_Elm.resx">
+      <DependentUpon>UCtrl_SpO2_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Stand_Elm.resx">
+      <DependentUpon>UCtrl_Stand_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Text_Opt.en.resx">
       <DependentUpon>UCtrl_Text_Opt.cs</DependentUpon>
     </EmbeddedResource>
@@ -521,6 +581,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Text_Weather_Opt.zh.resx">
       <DependentUpon>UCtrl_Text_Weather_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_UVIndex_Elm.resx">
+      <DependentUpon>UCtrl_UVIndex_Elm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -648,6 +711,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\text_fields.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stand_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stand_icon1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stand_icon2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\activity_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SpO2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SpO21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UVIndex.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\humidity.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

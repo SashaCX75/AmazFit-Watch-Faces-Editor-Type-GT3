@@ -57,16 +57,16 @@ namespace ControlLibrary
             // 
             // pictureBox_Del
             // 
-            resources.ApplyResources(this.pictureBox_Del, "pictureBox_Del");
             this.pictureBox_Del.BackgroundImage = global::ControlLibrary.Properties.Resources.outline_delete_forever_black_24;
+            resources.ApplyResources(this.pictureBox_Del, "pictureBox_Del");
             this.pictureBox_Del.Name = "pictureBox_Del";
             this.pictureBox_Del.TabStop = false;
             this.pictureBox_Del.Click += new System.EventHandler(this.pictureBox_Del_Click);
             // 
             // button_ElementName
             // 
-            resources.ApplyResources(this.button_ElementName, "button_ElementName");
             this.button_ElementName.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_ElementName, "button_ElementName");
             this.button_ElementName.Image = global::ControlLibrary.Properties.Resources.location;
             this.button_ElementName.Name = "button_ElementName";
             this.button_ElementName.UseVisualStyleBackColor = false;
@@ -97,6 +97,6 @@ namespace ControlLibrary
         private System.Windows.Forms.PictureBox pictureBox_NotShow;
         private System.Windows.Forms.PictureBox pictureBox_Show;
         private System.Windows.Forms.PictureBox pictureBox_Del;
-        private System.Windows.Forms.Button button_ElementName;
+        protected System.Windows.Forms.Button button_ElementName;
     }
 }

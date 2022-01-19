@@ -73,6 +73,16 @@ namespace ControlLibrary.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap activity_icon {
+            get {
+                object obj = ResourceManager.GetObject("activity_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap analog_time_18 {
             get {
                 object obj = ResourceManager.GetObject("analog_time_18", resourceCulture);
@@ -196,6 +206,16 @@ namespace ControlLibrary.Properties {
         internal static System.Drawing.Bitmap heart {
             get {
                 object obj = ResourceManager.GetObject("heart", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap humidity {
+            get {
+                object obj = ResourceManager.GetObject("humidity", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -333,6 +353,26 @@ namespace ControlLibrary.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap SpO2 {
+            get {
+                object obj = ResourceManager.GetObject("SpO2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap stand_icon {
+            get {
+                object obj = ResourceManager.GetObject("stand_icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap steps {
             get {
                 object obj = ResourceManager.GetObject("steps", resourceCulture);
@@ -376,6 +416,16 @@ namespace ControlLibrary.Properties {
         internal static System.Drawing.Bitmap text_rotation_18 {
             get {
                 object obj = ResourceManager.GetObject("text_rotation_18", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap UVIndex {
+            get {
+                object obj = ResourceManager.GetObject("UVIndex", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

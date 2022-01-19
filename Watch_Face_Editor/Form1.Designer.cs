@@ -30,9 +30,9 @@ namespace Watch_Face_Editor
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage_Edit = new System.Windows.Forms.TabPage();
             this.button_SaveJson = new System.Windows.Forms.Button();
@@ -86,6 +86,16 @@ namespace Watch_Face_Editor
             this.uCtrl_Distance_Elm = new ControlLibrary.UCtrl_Distance_Elm();
             this.panel_UC_Weather = new System.Windows.Forms.Panel();
             this.uCtrl_Weather_Elm = new ControlLibrary.UCtrl_Weather_Elm();
+            this.panel_UC_Stand = new System.Windows.Forms.Panel();
+            this.uCtrl_Stand_Elm = new ControlLibrary.UCtrl_Stand_Elm();
+            this.panel_UC_Activity = new System.Windows.Forms.Panel();
+            this.uCtrl_Activity_Elm = new ControlLibrary.UCtrl_Activity_Elm();
+            this.panel_UC_SpO2 = new System.Windows.Forms.Panel();
+            this.uCtrl_SpO2_Elm = new ControlLibrary.UCtrl_SpO2_Elm();
+            this.panel_UC_UVIndex = new System.Windows.Forms.Panel();
+            this.uCtrl_UVIndex_Elm = new ControlLibrary.UCtrl_UVIndex_Elm();
+            this.panel_UC_Humidity = new System.Windows.Forms.Panel();
+            this.uCtrl_Humidity_Elm = new ControlLibrary.UCtrl_Humidity_Elm();
             this.panel_ElementsOpt = new System.Windows.Forms.Panel();
             this.uCtrl_Text_SystemFont_Opt = new ControlLibrary.UCtrl_Text_SystemFont_Opt();
             this.uCtrl_Text_Weather_Opt = new ControlLibrary.UCtrl_Text_Weather_Opt();
@@ -250,6 +260,11 @@ namespace Watch_Face_Editor
             this.panel_UC_PAI.SuspendLayout();
             this.panel_UC_Distance.SuspendLayout();
             this.panel_UC_Weather.SuspendLayout();
+            this.panel_UC_Stand.SuspendLayout();
+            this.panel_UC_Activity.SuspendLayout();
+            this.panel_UC_SpO2.SuspendLayout();
+            this.panel_UC_UVIndex.SuspendLayout();
+            this.panel_UC_Humidity.SuspendLayout();
             this.panel_ElementsOpt.SuspendLayout();
             this.panel_MainScreen_AOD.SuspendLayout();
             this.tabPage_Show_Set.SuspendLayout();
@@ -495,7 +510,7 @@ namespace Watch_Face_Editor
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateDay, 0, 2);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateMonth, 0, 3);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateYear, 0, 4);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Background, 0, 15);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Background, 0, 20);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateWeek, 0, 5);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Steps, 0, 8);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Statuses, 0, 7);
@@ -505,7 +520,12 @@ namespace Watch_Face_Editor
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Calories, 0, 11);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_PAI, 0, 12);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Distance, 0, 13);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Weather, 0, 14);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Weather, 0, 17);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Stand, 0, 14);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Activity, 0, 15);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_SpO2, 0, 16);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_UVIndex, 0, 18);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Humidity, 0, 19);
             this.tableLayoutPanel_ElemetsWatchFace.Name = "tableLayoutPanel_ElemetsWatchFace";
             this.tableLayoutPanel_ElemetsWatchFace.DragOver += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragOver);
             // 
@@ -805,6 +825,99 @@ namespace Watch_Face_Editor
             this.uCtrl_Weather_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
             this.uCtrl_Weather_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
             this.uCtrl_Weather_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // panel_UC_Stand
+            // 
+            resources.ApplyResources(this.panel_UC_Stand, "panel_UC_Stand");
+            this.panel_UC_Stand.Controls.Add(this.uCtrl_Stand_Elm);
+            this.panel_UC_Stand.Name = "panel_UC_Stand";
+            // 
+            // uCtrl_Stand_Elm
+            // 
+            resources.ApplyResources(this.uCtrl_Stand_Elm, "uCtrl_Stand_Elm");
+            this.uCtrl_Stand_Elm.Name = "uCtrl_Stand_Elm";
+            this.uCtrl_Stand_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_Steps_Elm.VisibleElementChangedHandler(this.uCtrl_Stand_Elm_VisibleElementChanged);
+            this.uCtrl_Stand_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_Steps_Elm.VisibleOptionsChangedHandler(this.uCtrl_Stand_Elm_VisibleOptionsChanged);
+            this.uCtrl_Stand_Elm.OptionsMoved += new ControlLibrary.UCtrl_Steps_Elm.OptionsMovedHandler(this.uCtrl_Stand_Elm_OptionsMoved);
+            this.uCtrl_Stand_Elm.SelectChanged += new ControlLibrary.UCtrl_Steps_Elm.SelectChangedHandler(this.uCtrl_Stand_Elm_SelectChanged);
+            this.uCtrl_Stand_Elm.DelElement += new ControlLibrary.UCtrl_Steps_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
+            this.uCtrl_Stand_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.uCtrl_Stand_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.uCtrl_Stand_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // panel_UC_Activity
+            // 
+            resources.ApplyResources(this.panel_UC_Activity, "panel_UC_Activity");
+            this.panel_UC_Activity.Controls.Add(this.uCtrl_Activity_Elm);
+            this.panel_UC_Activity.Name = "panel_UC_Activity";
+            // 
+            // uCtrl_Activity_Elm
+            // 
+            resources.ApplyResources(this.uCtrl_Activity_Elm, "uCtrl_Activity_Elm");
+            this.uCtrl_Activity_Elm.Name = "uCtrl_Activity_Elm";
+            this.uCtrl_Activity_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_Activity_Elm.VisibleElementChangedHandler(this.uCtrl_Activity_Elm_VisibleElementChanged);
+            this.uCtrl_Activity_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_Activity_Elm.VisibleOptionsChangedHandler(this.uCtrl_Activity_Elm_VisibleOptionsChanged);
+            this.uCtrl_Activity_Elm.OptionsMoved += new ControlLibrary.UCtrl_Activity_Elm.OptionsMovedHandler(this.uCtrl_Activity_Elm_OptionsMoved);
+            this.uCtrl_Activity_Elm.SelectChanged += new ControlLibrary.UCtrl_Activity_Elm.SelectChangedHandler(this.uCtrl_Activity_Elm_SelectChanged);
+            this.uCtrl_Activity_Elm.DelElement += new ControlLibrary.UCtrl_Activity_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
+            this.uCtrl_Activity_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.uCtrl_Activity_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.uCtrl_Activity_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // panel_UC_SpO2
+            // 
+            resources.ApplyResources(this.panel_UC_SpO2, "panel_UC_SpO2");
+            this.panel_UC_SpO2.Controls.Add(this.uCtrl_SpO2_Elm);
+            this.panel_UC_SpO2.Name = "panel_UC_SpO2";
+            // 
+            // uCtrl_SpO2_Elm
+            // 
+            resources.ApplyResources(this.uCtrl_SpO2_Elm, "uCtrl_SpO2_Elm");
+            this.uCtrl_SpO2_Elm.Name = "uCtrl_SpO2_Elm";
+            this.uCtrl_SpO2_Elm.SelectChanged += new ControlLibrary.UCtrl_Distance_Elm.SelectChangedHandler(this.uCtrl_SpO2_Elm_SelectChanged);
+            this.uCtrl_SpO2_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_Distance_Elm.VisibleElementChangedHandler(this.uCtrl_SpO2_Elm_VisibleElementChanged);
+            this.uCtrl_SpO2_Elm.DelElement += new ControlLibrary.UCtrl_Distance_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
+            this.uCtrl_SpO2_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.uCtrl_SpO2_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.uCtrl_SpO2_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // panel_UC_UVIndex
+            // 
+            resources.ApplyResources(this.panel_UC_UVIndex, "panel_UC_UVIndex");
+            this.panel_UC_UVIndex.Controls.Add(this.uCtrl_UVIndex_Elm);
+            this.panel_UC_UVIndex.Name = "panel_UC_UVIndex";
+            // 
+            // uCtrl_UVIndex_Elm
+            // 
+            resources.ApplyResources(this.uCtrl_UVIndex_Elm, "uCtrl_UVIndex_Elm");
+            this.uCtrl_UVIndex_Elm.Name = "uCtrl_UVIndex_Elm";
+            this.uCtrl_UVIndex_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_Humidity_Elm.VisibleElementChangedHandler(this.uCtrl_UVIndex_Elm_VisibleElementChanged);
+            this.uCtrl_UVIndex_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_Humidity_Elm.VisibleOptionsChangedHandler(this.uCtrl_UVIndex_Elm_VisibleOptionsChanged);
+            this.uCtrl_UVIndex_Elm.OptionsMoved += new ControlLibrary.UCtrl_Humidity_Elm.OptionsMovedHandler(this.uCtrl_UVIndex_Elm_OptionsMoved);
+            this.uCtrl_UVIndex_Elm.SelectChanged += new ControlLibrary.UCtrl_Humidity_Elm.SelectChangedHandler(this.uCtrl_UVIndex_Elm_SelectChanged);
+            this.uCtrl_UVIndex_Elm.DelElement += new ControlLibrary.UCtrl_Humidity_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
+            this.uCtrl_UVIndex_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.uCtrl_UVIndex_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.uCtrl_UVIndex_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // panel_UC_Humidity
+            // 
+            resources.ApplyResources(this.panel_UC_Humidity, "panel_UC_Humidity");
+            this.panel_UC_Humidity.Controls.Add(this.uCtrl_Humidity_Elm);
+            this.panel_UC_Humidity.Name = "panel_UC_Humidity";
+            // 
+            // uCtrl_Humidity_Elm
+            // 
+            resources.ApplyResources(this.uCtrl_Humidity_Elm, "uCtrl_Humidity_Elm");
+            this.uCtrl_Humidity_Elm.Name = "uCtrl_Humidity_Elm";
+            this.uCtrl_Humidity_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_Humidity_Elm.VisibleElementChangedHandler(this.uCtrl_Humidity_Elm_VisibleElementChanged);
+            this.uCtrl_Humidity_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_Humidity_Elm.VisibleOptionsChangedHandler(this.uCtrl_Humidity_Elm_VisibleOptionsChanged);
+            this.uCtrl_Humidity_Elm.OptionsMoved += new ControlLibrary.UCtrl_Humidity_Elm.OptionsMovedHandler(this.uCtrl_Humidity_Elm_OptionsMoved);
+            this.uCtrl_Humidity_Elm.SelectChanged += new ControlLibrary.UCtrl_Humidity_Elm.SelectChangedHandler(this.uCtrl_Humidity_Elm_SelectChanged);
+            this.uCtrl_Humidity_Elm.DelElement += new ControlLibrary.UCtrl_Humidity_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
+            this.uCtrl_Humidity_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.uCtrl_Humidity_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.uCtrl_Humidity_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
             // 
             // panel_ElementsOpt
             // 
@@ -1147,8 +1260,8 @@ namespace Watch_Face_Editor
             // Number
             // 
             this.Number.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Number.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Number.DefaultCellStyle = dataGridViewCellStyle1;
             resources.ApplyResources(this.Number, "Number");
             this.Number.Name = "Number";
             this.Number.ReadOnly = true;
@@ -1171,11 +1284,11 @@ namespace Watch_Face_Editor
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.NullValue = null;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.NullValue = null;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column1.FillWeight = 95F;
             resources.ApplyResources(this.Column1, "Column1");
             this.Column1.Name = "Column1";
@@ -2017,6 +2130,16 @@ namespace Watch_Face_Editor
             this.panel_UC_Distance.PerformLayout();
             this.panel_UC_Weather.ResumeLayout(false);
             this.panel_UC_Weather.PerformLayout();
+            this.panel_UC_Stand.ResumeLayout(false);
+            this.panel_UC_Stand.PerformLayout();
+            this.panel_UC_Activity.ResumeLayout(false);
+            this.panel_UC_Activity.PerformLayout();
+            this.panel_UC_SpO2.ResumeLayout(false);
+            this.panel_UC_SpO2.PerformLayout();
+            this.panel_UC_UVIndex.ResumeLayout(false);
+            this.panel_UC_UVIndex.PerformLayout();
+            this.panel_UC_Humidity.ResumeLayout(false);
+            this.panel_UC_Humidity.PerformLayout();
             this.panel_ElementsOpt.ResumeLayout(false);
             this.panel_MainScreen_AOD.ResumeLayout(false);
             this.panel_MainScreen_AOD.PerformLayout();
@@ -2248,6 +2371,16 @@ namespace Watch_Face_Editor
         private System.Windows.Forms.ToolStripMenuItem удалитьИзображениеToolStripMenuItem;
         private ControlLibrary.UCtrl_Text_SystemFont_Opt uCtrl_Text_SystemFont_Opt;
         private System.Windows.Forms.CheckBox checkBox_Shortcuts_In_Gif;
+        private System.Windows.Forms.Panel panel_UC_Stand;
+        private System.Windows.Forms.Panel panel_UC_Activity;
+        private System.Windows.Forms.Panel panel_UC_SpO2;
+        private ControlLibrary.UCtrl_Stand_Elm uCtrl_Stand_Elm;
+        private ControlLibrary.UCtrl_Activity_Elm uCtrl_Activity_Elm;
+        private ControlLibrary.UCtrl_SpO2_Elm uCtrl_SpO2_Elm;
+        private System.Windows.Forms.Panel panel_UC_UVIndex;
+        private System.Windows.Forms.Panel panel_UC_Humidity;
+        private ControlLibrary.UCtrl_UVIndex_Elm uCtrl_UVIndex_Elm;
+        private ControlLibrary.UCtrl_Humidity_Elm uCtrl_Humidity_Elm;
     }
 }
 

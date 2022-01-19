@@ -237,6 +237,9 @@
     <None Include="Resources\unpacking.png" />
     <None Include="Resources\packaging.png" />
     <None Include="Resources\image-remove-icon.png" />
+    <Content Include="Mask\shortcut_pointer.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Skin\Skin_GTR_3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

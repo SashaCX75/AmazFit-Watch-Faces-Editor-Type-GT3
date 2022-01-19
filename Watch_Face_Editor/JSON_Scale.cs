@@ -181,6 +181,33 @@ namespace Watch_Face_Editor
                     ElementDistance elementDistance = (ElementDistance)elements;
                     Scale_IMG_NUMBER(elementDistance.Number, scale);
                     break;
+                case "ElementStand":
+                    ElementStand elementStand = (ElementStand)elements;
+                    Scale_IMG_LEVEL(elementStand.Images, scale);
+                    Scale_IMG_PROGRESS(elementStand.Segments, scale);
+                    Scale_IMG_NUMBER(elementStand.Number, scale);
+                    Scale_IMG_NUMBER(elementStand.Number_Target, scale);
+                    Scale_IMG_POINTER(elementStand.Pointer, scale);
+                    Scale_Circle_Scale(elementStand.Circle_Scale, scale);
+                    Scale_Linear_Scale(elementStand.Linear_Scale, scale);
+                    Scale_IMG(elementStand.Icon, scale);
+                    break;
+                case "ElementActivity":
+                    ElementActivity elementActivity = (ElementActivity)elements;
+                    Scale_IMG_LEVEL(elementActivity.Images, scale);
+                    Scale_IMG_PROGRESS(elementActivity.Segments, scale);
+                    Scale_IMG_NUMBER(elementActivity.Number, scale);
+                    Scale_IMG_NUMBER(elementActivity.Number_Target, scale);
+                    Scale_IMG_POINTER(elementActivity.Pointer, scale);
+                    Scale_Circle_Scale(elementActivity.Circle_Scale, scale);
+                    Scale_Linear_Scale(elementActivity.Linear_Scale, scale);
+                    Scale_IMG(elementActivity.Icon, scale);
+                    break;
+                case "ElementSpO2":
+                    ElementSpO2 elementSpO2 = (ElementSpO2)elements;
+                    Scale_IMG_NUMBER(elementSpO2.Number, scale);
+                    break;
+
                 case "ElementWeather":
                     ElementWeather elementWeather = (ElementWeather)elements;
                     Scale_IMG_LEVEL(elementWeather.Images, scale);
@@ -189,6 +216,22 @@ namespace Watch_Face_Editor
                     Scale_IMG_NUMBER(elementWeather.Number_Max, scale);
                     Scale_TEXT(elementWeather.City_Name, scale);
                     Scale_IMG(elementWeather.Icon, scale);
+                    break;
+                case "ElementUVIndex":
+                    ElementUVIndex elementUVIndex = (ElementUVIndex)elements;
+                    Scale_IMG_LEVEL(elementUVIndex.Images, scale);
+                    Scale_IMG_PROGRESS(elementUVIndex.Segments, scale);
+                    Scale_IMG_NUMBER(elementUVIndex.Number, scale);
+                    Scale_IMG_POINTER(elementUVIndex.Pointer, scale);
+                    Scale_IMG(elementUVIndex.Icon, scale);
+                    break;
+                case "ElementHumidity":
+                    ElementHumidity elementHumidity = (ElementHumidity)elements;
+                    Scale_IMG_LEVEL(elementHumidity.Images, scale);
+                    Scale_IMG_PROGRESS(elementHumidity.Segments, scale);
+                    Scale_IMG_NUMBER(elementHumidity.Number, scale);
+                    Scale_IMG_POINTER(elementHumidity.Pointer, scale);
+                    Scale_IMG(elementHumidity.Icon, scale);
                     break;
             }
         }

@@ -1145,6 +1145,140 @@ namespace Watch_Face_Editor
                             break;
                         #endregion
 
+                        #region ElementStand
+                        case "ElementStand":
+                            ElementStand activityElementStand = (ElementStand)element;
+                            if (!activityElementStand.visible) continue;
+
+                            img_level = activityElementStand.Images;
+                            img_prorgess = activityElementStand.Segments;
+                            img_number = activityElementStand.Number;
+                            img_number_target = activityElementStand.Number_Target;
+                            img_pointer = activityElementStand.Pointer;
+                            circle_scale = activityElementStand.Circle_Scale;
+                            linear_scale = activityElementStand.Linear_Scale;
+                            icon = activityElementStand.Icon;
+
+                            elementValue = WatchFacePreviewSet.Activity.StandUp;
+                            value_lenght = 2;
+                            goal = 12;
+                            progress = (float)WatchFacePreviewSet.Activity.StandUp / 12f;
+
+                            if (img_level != null && img_level.image_length > 0)
+                            {
+                                imgCount = img_level.image_length;
+                                valueImgIndex = (int)((imgCount - 1) * progress);
+                                //if (progress < 0.01) valueImgIndex = -1;
+                                if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                            }
+                            if (img_prorgess != null && img_prorgess.image_length > 0)
+                            {
+                                segmentCount = img_prorgess.image_length;
+                                valueSegmentIndex = (int)((segmentCount - 1) * progress);
+                                //if (progress < 0.01) valueSegmentIndex = -1;
+                                if (valueSegmentIndex >= segmentCount) valueImgIndex = (int)(segmentCount - 1);
+                            }
+
+                            DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                                img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                                progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                                showCentrHend, "ElementStand");
+
+
+                            break;
+                        #endregion
+
+                        #region ElementActivity
+                        case "ElementActivity":
+                            ElementActivity activityElementActivity = (ElementActivity)element;
+                            if (!activityElementActivity.visible) continue;
+
+                            img_level = activityElementActivity.Images;
+                            img_prorgess = activityElementActivity.Segments;
+                            img_number = activityElementActivity.Number;
+                            img_number_target = activityElementActivity.Number_Target;
+                            img_pointer = activityElementActivity.Pointer;
+                            circle_scale = activityElementActivity.Circle_Scale;
+                            linear_scale = activityElementActivity.Linear_Scale;
+                            icon = activityElementActivity.Icon;
+
+                            elementValue = WatchFacePreviewSet.Activity.Steps;
+                            value_lenght = 5;
+                            goal = WatchFacePreviewSet.Activity.StepsGoal;
+                            progress = (float)WatchFacePreviewSet.Activity.Steps / WatchFacePreviewSet.Activity.StepsGoal;
+
+                            if (img_level != null && img_level.image_length > 0)
+                            {
+                                imgCount = img_level.image_length;
+                                valueImgIndex = (int)((imgCount - 1) * progress);
+                                if (progress < 0.01) valueImgIndex = -1;
+                                if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                            }
+                            if (img_prorgess != null && img_prorgess.image_length > 0)
+                            {
+                                segmentCount = img_prorgess.image_length;
+                                valueSegmentIndex = (int)((segmentCount - 1) * progress);
+                                if (progress < 0.01) valueSegmentIndex = -1;
+                                if (valueSegmentIndex >= segmentCount) valueImgIndex = (int)(segmentCount - 1);
+                            }
+
+                            // пересчитываем данные если отображаем как калории
+                            if (activityElementActivity.showCalories)
+                            {
+                                elementValue = WatchFacePreviewSet.Activity.Calories;
+                                value_lenght = 4;
+                                goal = 300;
+                                progress = (float)WatchFacePreviewSet.Activity.Calories / 300f;
+
+                                if (img_level != null && img_level.image_length > 0)
+                                {
+                                    imgCount = img_level.image_length;
+                                    valueImgIndex = (int)((imgCount - 1) * progress);
+                                    //if (progress < 0.01) valueImgIndex = -1;
+                                    if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                                }
+                                if (img_prorgess != null && img_prorgess.image_length > 0)
+                                {
+                                    segmentCount = img_prorgess.image_length;
+                                    valueSegmentIndex = (int)((segmentCount - 1) * progress);
+                                    //if (progress < 0.01) valueSegmentIndex = -1;
+                                    if (valueSegmentIndex >= segmentCount) valueImgIndex = (int)(segmentCount - 1);
+                                }
+                            }
+
+                            DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                                img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                                progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                                showCentrHend, "ElementActivity");
+
+
+                            break;
+                        #endregion
+
+                        #region ElementSpO2
+                        case "ElementSpO2":
+                            ElementSpO2 activityElementSpO2 = (ElementSpO2)element;
+                            if (!activityElementSpO2.visible) continue;
+
+                            img_number = activityElementSpO2.Number;
+
+                            elementValue = 97;
+                            value_lenght = 3;
+                            goal = 100;
+                            progress = 0;
+
+
+                            DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                                img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                                progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                                showCentrHend, "ElementSpO2");
+
+
+                            break;
+                        #endregion
+
+
+
                         #region ElementWeather
                         case "ElementWeather":
                             ElementWeather activityElementWeather = (ElementWeather)element;
@@ -1166,6 +1300,92 @@ namespace Watch_Face_Editor
                             DrawWeather(gPanel, img_level, img_number, img_number_min, img_number_max,
                                 city_name, icon, value_current, value_min, value_max, value_lenght, icon_index,
                                 BBorder, showTemperature);
+
+
+                            break;
+                        #endregion
+
+                        #region ElementUVIndex
+                        case "ElementUVIndex":
+                            ElementUVIndex activityElementUVIndex = (ElementUVIndex)element;
+                            if (!activityElementUVIndex.visible) continue;
+
+                            img_level = activityElementUVIndex.Images;
+                            img_prorgess = activityElementUVIndex.Segments;
+                            img_number = activityElementUVIndex.Number;
+                            //img_number_target = activityElementBattery.Number_Target;
+                            img_pointer = activityElementUVIndex.Pointer;
+                            icon = activityElementUVIndex.Icon;
+
+                            elementValue = WatchFacePreviewSet.Weather.UVindex;
+                            value_lenght = 1;
+                            goal = 5;
+                            progress = (float)WatchFacePreviewSet.Weather.UVindex / 5f;
+
+                            if (img_level != null && img_level.image_length > 0)
+                            {
+                                imgCount = img_level.image_length;
+                                valueImgIndex = (int)(imgCount * progress);
+                                valueImgIndex--;
+                                if (valueImgIndex < 0) valueImgIndex = 0;
+                                if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                            }
+                            if (img_prorgess != null && img_prorgess.image_length > 0)
+                            {
+                                segmentCount = img_prorgess.image_length;
+                                valueSegmentIndex = (int)(segmentCount * progress);
+                                valueSegmentIndex--;
+                                if (valueSegmentIndex < 0) valueSegmentIndex = 0;
+                                if (valueSegmentIndex >= segmentCount) valueImgIndex = (int)(segmentCount - 1);
+                            }
+
+                            DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                                img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                                progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                                showCentrHend, "ElementUVIndex");
+
+
+                            break;
+                        #endregion
+
+                        #region ElementHumidity
+                        case "ElementHumidity":
+                            ElementHumidity activityElementHumidity = (ElementHumidity)element;
+                            if (!activityElementHumidity.visible) continue;
+
+                            img_level = activityElementHumidity.Images;
+                            img_prorgess = activityElementHumidity.Segments;
+                            img_number = activityElementHumidity.Number;
+                            //img_number_target = activityElementBattery.Number_Target;
+                            img_pointer = activityElementHumidity.Pointer;
+                            icon = activityElementHumidity.Icon;
+
+                            elementValue = WatchFacePreviewSet.Weather.Humidity;
+                            value_lenght = 1;
+                            goal = 100;
+                            progress = (float)WatchFacePreviewSet.Weather.Humidity / 100f;
+
+                            if (img_level != null && img_level.image_length > 0)
+                            {
+                                imgCount = img_level.image_length;
+                                valueImgIndex = (int)(imgCount * progress);
+                                valueImgIndex--;
+                                if (valueImgIndex < 0) valueImgIndex = 0;
+                                if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                            }
+                            if (img_prorgess != null && img_prorgess.image_length > 0)
+                            {
+                                segmentCount = img_prorgess.image_length;
+                                valueSegmentIndex = (int)(segmentCount * progress);
+                                valueSegmentIndex--;
+                                if (valueSegmentIndex < 0) valueSegmentIndex = 0;
+                                if (valueSegmentIndex >= segmentCount) valueImgIndex = (int)(segmentCount - 1);
+                            }
+
+                            DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                                img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                                progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                                showCentrHend, "ElementHumidity");
 
 
                             break;
@@ -1331,7 +1551,7 @@ namespace Watch_Face_Editor
                         separator_index = ListImages.IndexOf(number.unit);
 
                     Draw_dagital_text(gPanel, imageIndex, x, y,
-                        spasing, alignment, (int)value, addZero, value_lenght, separator_index, BBorder);
+                        spasing, alignment, (int)value, addZero, value_lenght, separator_index, BBorder, elementName);
 
                     if (number.icon != null && number.icon.Length > 0)
                     {
@@ -1765,10 +1985,10 @@ namespace Watch_Face_Editor
         /// <param name="value_lenght">Количество отображаемых символов</param>
         /// <param name="separator_index">Символ разделителя (единиц измерения)</param>
         /// <param name="BBorder">Рисовать рамку по координатам, вокруг элементов с выравниванием</param>
-        /// <param name="ActivityType">Номер активности (при необходимости)</param>
+        /// <param name="elementName">Название элемента (при необходимости)</param>
         private int Draw_dagital_text(Graphics graphics, int image_index, int x, int y, int spacing,
-            int alignment, int value, bool addZero, int value_lenght, int separator_index, bool BBorder,
-            int ActivityType = 0)
+            int alignment, int value, bool addZero, int value_lenght, int separator_index, bool BBorder, 
+            string elementName = "")
         {
             //while (spacing > 127)
             //{
@@ -1816,9 +2036,10 @@ namespace Watch_Face_Editor
             src = OpenFileStream(ListImagesFullName[image_index]);
             int width = src.Width;
             int height = src.Height;
-            //int DateLenght = width * value_lenght + spacing * (value_lenght - 1);
-            if (ActivityType == 17) value_lenght = 5;
-            if (ActivityType == 11) value_lenght = 3;
+            //int DateLenght = width * value_lenght + spacing * (value_lenght - 1);ElementHumidity
+            if (elementName == "ElementStand") value_lenght = 5;
+            if (elementName == "ElementUVIndex") value_lenght = 2;
+            if (elementName == "ElementHumidity") value_lenght = 3;
             int DateLenght = width * value_lenght;
             //int DateLenght = width * value_lenght + 1;
             if (spacing != 0) DateLenght = DateLenght + spacing * (value_lenght - 1);
@@ -2858,6 +3079,11 @@ namespace Watch_Face_Editor
                         pen2.DashStyle = DashStyle.Dot;
                         graphics.DrawRectangle(pen2, rect);
                     }
+
+                    Bitmap src = new Bitmap(Application.StartupPath + @"\Mask\shortcut_pointer.png");
+                    int pos_x = x + width / 2 - 16;
+                    int pos_y = y + height / 2 - 11;
+                    graphics.DrawImage(src, pos_x, pos_y);
                 }
             }
         }

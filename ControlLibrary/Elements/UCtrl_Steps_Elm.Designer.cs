@@ -465,7 +465,6 @@ namespace ControlLibrary
         private System.Windows.Forms.Panel panel_Pointer;
         private System.Windows.Forms.Button button_Pointer;
         public System.Windows.Forms.CheckBox checkBox_Pointer;
-        private System.Windows.Forms.Button button_ElementName;
         private System.Windows.Forms.Panel panel_Segments;
         public System.Windows.Forms.CheckBox checkBox_Segments;
         private System.Windows.Forms.Button button_Segments;
@@ -481,5 +480,6 @@ namespace ControlLibrary
         private System.Windows.Forms.Panel panel_Icon;
         private System.Windows.Forms.Button button_Icon;
         public System.Windows.Forms.CheckBox checkBox_Icon;
+        protected System.Windows.Forms.Button button_ElementName;
     }
 }

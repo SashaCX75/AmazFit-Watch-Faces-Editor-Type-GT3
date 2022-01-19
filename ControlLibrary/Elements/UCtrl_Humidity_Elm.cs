@@ -10,15 +10,13 @@ using System.Windows.Forms;
 
 namespace ControlLibrary
 {
-    public partial class UCtrl_Battery_Elm : UserControl
+    public partial class UCtrl_Humidity_Elm : UserControl
     {
         private bool setValue; // режим задания параметров
         bool highlight_images = false;
         bool highlight_segments = false;
         bool highlight_number = false;
         bool highlight_pointer = false;
-        bool highlight_circle_scale = false;
-        bool highlight_linear_scale = false;
         bool highlight_icon = false;
 
         bool visibility_elements = false; // развернут список с элементами
@@ -29,7 +27,7 @@ namespace ControlLibrary
 
         Point cursorPos = new Point(0, 0);
 
-        public UCtrl_Battery_Elm()
+        public UCtrl_Humidity_Elm()
         {
             InitializeComponent();
             setValue = false;
@@ -95,8 +93,6 @@ namespace ControlLibrary
             highlight_segments = false;
             highlight_number = false;
             highlight_pointer = false;
-            highlight_circle_scale = false;
-            highlight_linear_scale = false;
             highlight_icon = false;
 
             SelectElement();
@@ -156,32 +152,6 @@ namespace ControlLibrary
                 button_Pointer.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
-            if (highlight_circle_scale)
-            {
-                panel_Circle_Scale.BackColor = SystemColors.ActiveCaption;
-                button_Circle_Scale.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Circle_Scale.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Circle_Scale.BackColor = SystemColors.Control;
-                button_Circle_Scale.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Circle_Scale.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_linear_scale)
-            {
-                panel_Linear_Scale.BackColor = SystemColors.ActiveCaption;
-                button_Linear_Scale.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Linear_Scale.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Linear_Scale.BackColor = SystemColors.Control;
-                button_Linear_Scale.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Linear_Scale.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
             if (highlight_icon)
             {
                 panel_Icon.BackColor = SystemColors.ActiveCaption;
@@ -204,8 +174,6 @@ namespace ControlLibrary
             highlight_segments = false;
             highlight_number = false;
             highlight_pointer = false;
-            highlight_circle_scale = false;
-            highlight_linear_scale = false;
             highlight_icon = false;
 
             SelectElement();
@@ -225,8 +193,6 @@ namespace ControlLibrary
             highlight_segments = true;
             highlight_number = false;
             highlight_pointer = false;
-            highlight_circle_scale = false;
-            highlight_linear_scale = false;
             highlight_icon = false;
 
             SelectElement();
@@ -246,8 +212,6 @@ namespace ControlLibrary
             highlight_segments = false;
             highlight_number = true;
             highlight_pointer = false;
-            highlight_circle_scale = false;
-            highlight_linear_scale = false;
             highlight_icon = false;
 
             SelectElement();
@@ -267,50 +231,6 @@ namespace ControlLibrary
             highlight_segments = false;
             highlight_number = false;
             highlight_pointer = true;
-            highlight_circle_scale = false;
-            highlight_linear_scale = false;
-            highlight_icon = false;
-
-            SelectElement();
-
-            if (SelectChanged != null)
-            {
-                EventArgs eventArgs = new EventArgs();
-                SelectChanged(this, eventArgs);
-            }
-        }
-
-        private void panel_Circle_Scale_Click(object sender, EventArgs e)
-        {
-            selectedElement = "Circle_Scale";
-
-            highlight_images = false;
-            highlight_segments = false;
-            highlight_number = false;
-            highlight_pointer = false;
-            highlight_circle_scale = true;
-            highlight_linear_scale = false;
-            highlight_icon = false;
-
-            SelectElement();
-
-            if (SelectChanged != null)
-            {
-                EventArgs eventArgs = new EventArgs();
-                SelectChanged(this, eventArgs);
-            }
-        }
-
-        private void panel_Linear_Scale_Click(object sender, EventArgs e)
-        {
-            selectedElement = "Linear_Scale";
-
-            highlight_images = false;
-            highlight_segments = false;
-            highlight_number = false;
-            highlight_pointer = false;
-            highlight_circle_scale = false;
-            highlight_linear_scale = true;
             highlight_icon = false;
 
             SelectElement();
@@ -330,8 +250,6 @@ namespace ControlLibrary
             highlight_segments = false;
             highlight_number = false;
             highlight_pointer = false;
-            highlight_circle_scale = false;
-            highlight_linear_scale = false;
             highlight_icon = true;
 
             SelectElement();
@@ -545,12 +463,6 @@ namespace ControlLibrary
                 case "Pointer":
                     checkBox_Pointer.Checked = status;
                     break;
-                case "Circle_Scale":
-                    checkBox_Circle_Scale.Checked = status;
-                    break;
-                case "Linear_Scale":
-                    checkBox_Linear_Scale.Checked = status;
-                    break;
                 case "Icon":
                     checkBox_Icon.Checked = status;
                     break;
@@ -581,12 +493,6 @@ namespace ControlLibrary
                             break;
                         case "Pointer":
                             panel = panel_Pointer;
-                            break;
-                        case "Circle_Scale":
-                            panel = panel_Circle_Scale;
-                            break;
-                        case "Linear_Scale":
-                            panel = panel_Linear_Scale;
                             break;
                         case "Icon":
                             panel = panel_Icon;
@@ -645,12 +551,6 @@ namespace ControlLibrary
                     case "panel_Pointer":
                         elementOptions.Add("Pointer", count - i);
                         break;
-                    case "panel_Circle_Scale":
-                        elementOptions.Add("Circle_Scale", count - i);
-                        break;
-                    case "panel_Linear_Scale":
-                        elementOptions.Add("Linear_Scale", count - i);
-                        break;
                     case "panel_Icon":
                         elementOptions.Add("Icon", count - i);
                         break;
@@ -665,20 +565,16 @@ namespace ControlLibrary
 
             Dictionary<int, string> elementOptions = new Dictionary<int, string>();
             elementOptions.Add(1, "Icon");
-            elementOptions.Add(2, "Linear_Scale");
-            elementOptions.Add(3, "Circle_Scale");
-            elementOptions.Add(4, "Pointer");
-            elementOptions.Add(5, "Number");
-            elementOptions.Add(6, "Segments");
-            elementOptions.Add(7, "Images");
+            elementOptions.Add(2, "Pointer");
+            elementOptions.Add(3, "Number");
+            elementOptions.Add(4, "Segments");
+            elementOptions.Add(5, "Images");
             SetOptionsPosition(elementOptions);
 
             checkBox_Images.Checked = false;
             checkBox_Segments.Checked = false;
             checkBox_Number.Checked = false;
             checkBox_Pointer.Checked = false;
-            checkBox_Circle_Scale.Checked = false;
-            checkBox_Linear_Scale.Checked = false;
             checkBox_Icon.Checked = false;
 
             visibility_elements = false;
