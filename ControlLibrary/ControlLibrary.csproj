@@ -345,6 +345,18 @@
     <EmbeddedResource Include="Elements\UCtrl_Shortcuts_Elm.zh.resx">
       <DependentUpon>UCtrl_Shortcuts_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_SpO2_Elm.en.resx">
+      <DependentUpon>UCtrl_SpO2_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_SpO2_Elm.zh.resx">
+      <DependentUpon>UCtrl_SpO2_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Stand_Elm.en.resx">
+      <DependentUpon>UCtrl_Stand_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Stand_Elm.zh.resx">
+      <DependentUpon>UCtrl_Stand_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Statuses_Elm.en.resx">
       <DependentUpon>UCtrl_Statuses_Elm.cs</DependentUpon>
     </EmbeddedResource>

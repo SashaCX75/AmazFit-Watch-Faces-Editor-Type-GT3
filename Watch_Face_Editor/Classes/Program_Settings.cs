@@ -23,6 +23,8 @@ namespace Watch_Face_Editor
         public bool Settings_Open_Dialog = false;
         public bool Settings_Open_Download = true;
         public bool Settings_Open_DoNotning = false;
+        public bool Settings_Open_Download_Your_File = false;
+        public string PreviewStates_Path = "";
 
         public bool Model_GTR3 = true;
         public bool Model_GTR3_Pro = false;

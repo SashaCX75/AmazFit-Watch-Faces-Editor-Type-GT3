@@ -134,8 +134,6 @@ namespace Watch_Face_Editor
             comboBox_AddAir.Items.RemoveAt(6);
             comboBox_AddAir.Items.RemoveAt(5);
             comboBox_AddAir.Items.RemoveAt(4);
-            comboBox_AddAir.Items.RemoveAt(3);
-            comboBox_AddAir.Items.RemoveAt(2);
 #endif
 
             #region sistem font
@@ -215,6 +213,8 @@ namespace Watch_Face_Editor
             checkBox_WatchSkin_Use.Checked = ProgramSettings.WatchSkin_Use;
             textBox_WatchSkin_Path.Enabled = ProgramSettings.WatchSkin_Use;
 
+            textBox_PreviewStates_Path.Text = ProgramSettings.PreviewStates_Path;
+
             Logger.WriteLine("Set checkBox");
             checkBox_border.Checked = ProgramSettings.ShowBorder;
             checkBox_crop.Checked = ProgramSettings.Crop;
@@ -238,6 +238,7 @@ namespace Watch_Face_Editor
             radioButton_Settings_Open_Dialog.Checked = ProgramSettings.Settings_Open_Dialog;
             radioButton_Settings_Open_DoNotning.Checked = ProgramSettings.Settings_Open_DoNotning;
             radioButton_Settings_Open_Download.Checked = ProgramSettings.Settings_Open_Download;
+            radioButton_Settings_Open_Download_Your_File.Checked = ProgramSettings.Settings_Open_Download_Your_File;
 
             radioButton_Settings_Pack_Dialog.Checked = ProgramSettings.Settings_Pack_Dialog;
             radioButton_Settings_Pack_DoNotning.Checked = ProgramSettings.Settings_Pack_DoNotning;
@@ -1586,7 +1587,7 @@ namespace Watch_Face_Editor
             string dirName = Path.GetDirectoryName(fileName) + @"\assets\";
             // устанавливаем настройки для предпросмотра
             fileName = Path.Combine(Path.GetDirectoryName(fileName), "Preview.States");
-            if (File.Exists(fileName))
+            if (File.Exists(fileName) && (ProgramSettings.Settings_Open_Download || ProgramSettings.Settings_Open_Dialog))
             {
                 Logger.WriteLine("Load Preview.States");
                 if (ProgramSettings.Settings_Open_Download)
@@ -1603,7 +1604,12 @@ namespace Watch_Face_Editor
                     }
                 }
             }
-            else StartJsonPreview();
+            else if (ProgramSettings.Settings_Open_Download_Your_File &&
+                File.Exists(ProgramSettings.PreviewStates_Path))
+            {
+                JsonPreview_Read(ProgramSettings.PreviewStates_Path);
+            }
+            else StartJsonPreview(); 
 
             LoadImage(dirName);
             ShowElemetsWatchFace();
@@ -5122,7 +5128,7 @@ namespace Watch_Face_Editor
             openFileDialog.InitialDirectory = FullFileDir;
             //openFileDialog.Filter = Properties.FormStrings.FilterJson;
             openFileDialog.FileName = "Preview.States";
-            openFileDialog.Filter = "PreviewStates file | *.States|Json files (*.json) | *.json";
+            openFileDialog.Filter = "PreviewStates file | *.States";
             openFileDialog.RestoreDirectory = true;
             openFileDialog.Multiselect = false;
             openFileDialog.Title = Properties.FormStrings.Dialog_Title_PreviewStates;
@@ -11250,8 +11256,51 @@ namespace Watch_Face_Editor
             }
         }
 
-        
+        private void radioButton_Settings_Open_Download_Your_File_CheckedChanged(object sender, EventArgs e)
+        {
+            textBox_PreviewStates_Path.Enabled = radioButton_Settings_Open_Download_Your_File.Checked;
+            button_PreviewStates_PathGet.Enabled = radioButton_Settings_Open_Download_Your_File.Checked;
+            if (Settings_Load) return;
 
+            ProgramSettings.Settings_Open_Download_Your_File = radioButton_Settings_Open_Download_Your_File.Checked;
+
+            string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
+            {
+                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                NullValueHandling = NullValueHandling.Ignore
+            });
+            File.WriteAllText(Application.StartupPath + @"\Settings.json", JSON_String, Encoding.UTF8);
+        }
+
+        private void button_PreviewStates_PathGet_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.InitialDirectory = FullFileDir;
+            openFileDialog.FileName = "Preview.States";
+            openFileDialog.Filter = "PreviewStates file | *.States";
+            //openFileDialog.Filter = "Json files (*.json) | *.json";
+            openFileDialog.RestoreDirectory = true;
+            openFileDialog.Multiselect = false;
+            openFileDialog.Title = Properties.FormStrings.Dialog_Title_WatchSkin;
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                Logger.WriteLine("* WatchSkin_PathGet_Click");
+                string fullfilename = openFileDialog.FileName;
+                //if (fullfilename.IndexOf(Application.StartupPath) == 0)
+                //    fullfilename = fullfilename.Remove(0, Application.StartupPath.Length);
+                textBox_PreviewStates_Path.Text = fullfilename;
+                ProgramSettings.PreviewStates_Path = fullfilename;
+
+                string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
+                {
+                    //DefaultValueHandling = DefaultValueHandling.Ignore,
+                    NullValueHandling = NullValueHandling.Ignore
+                });
+                File.WriteAllText("Settings.json", JSON_String, Encoding.UTF8);
+
+                Logger.WriteLine("* WatchSkin_PathGet_Click_END");
+            }
+        }
     }
 }
 

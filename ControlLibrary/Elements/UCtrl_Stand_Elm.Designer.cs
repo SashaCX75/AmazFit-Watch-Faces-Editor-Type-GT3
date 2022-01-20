@@ -32,14 +32,45 @@ namespace ControlLibrary
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrl_Stand_Elm));
             this.SuspendLayout();
             // 
+            // checkBox_Number
+            // 
+            resources.ApplyResources(this.checkBox_Number, "checkBox_Number");
+            // 
+            // checkBox_Images
+            // 
+            resources.ApplyResources(this.checkBox_Images, "checkBox_Images");
+            // 
+            // checkBox_Pointer
+            // 
+            resources.ApplyResources(this.checkBox_Pointer, "checkBox_Pointer");
+            // 
+            // checkBox_Segments
+            // 
+            resources.ApplyResources(this.checkBox_Segments, "checkBox_Segments");
+            // 
+            // checkBox_Linear_Scale
+            // 
+            resources.ApplyResources(this.checkBox_Linear_Scale, "checkBox_Linear_Scale");
+            // 
+            // checkBox_Number_Target
+            // 
+            resources.ApplyResources(this.checkBox_Number_Target, "checkBox_Number_Target");
+            // 
+            // checkBox_Circle_Scale
+            // 
+            resources.ApplyResources(this.checkBox_Circle_Scale, "checkBox_Circle_Scale");
+            // 
+            // checkBox_Icon
+            // 
+            resources.ApplyResources(this.checkBox_Icon, "checkBox_Icon");
+            // 
             // button_ElementName
             // 
-            this.button_ElementName.Image = ((System.Drawing.Image)(resources.GetObject("button_ElementName.Image")));
-            this.button_ElementName.Text = "Разминка";
+            resources.ApplyResources(this.button_ElementName, "button_ElementName");
             // 
             // UCtrl_Stand_Elm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.Name = "UCtrl_Stand_Elm";
             this.ResumeLayout(false);
             this.PerformLayout();

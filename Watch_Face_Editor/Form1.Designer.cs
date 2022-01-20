@@ -183,6 +183,9 @@ namespace Watch_Face_Editor
             this.radioButton_Settings_Pack_GoToFile = new System.Windows.Forms.RadioButton();
             this.radioButton_Settings_Pack_Dialog = new System.Windows.Forms.RadioButton();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.button_PreviewStates_PathGet = new System.Windows.Forms.Button();
+            this.textBox_PreviewStates_Path = new System.Windows.Forms.TextBox();
+            this.radioButton_Settings_Open_Download_Your_File = new System.Windows.Forms.RadioButton();
             this.radioButton_Settings_Open_DoNotning = new System.Windows.Forms.RadioButton();
             this.radioButton_Settings_Open_Download = new System.Windows.Forms.RadioButton();
             this.radioButton_Settings_Open_Dialog = new System.Windows.Forms.RadioButton();
@@ -1688,6 +1691,9 @@ namespace Watch_Face_Editor
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.button_PreviewStates_PathGet);
+            this.groupBox6.Controls.Add(this.textBox_PreviewStates_Path);
+            this.groupBox6.Controls.Add(this.radioButton_Settings_Open_Download_Your_File);
             this.groupBox6.Controls.Add(this.radioButton_Settings_Open_DoNotning);
             this.groupBox6.Controls.Add(this.radioButton_Settings_Open_Download);
             this.groupBox6.Controls.Add(this.radioButton_Settings_Open_Dialog);
@@ -1695,6 +1701,25 @@ namespace Watch_Face_Editor
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.TabStop = false;
             this.groupBox6.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox_Paint);
+            // 
+            // button_PreviewStates_PathGet
+            // 
+            resources.ApplyResources(this.button_PreviewStates_PathGet, "button_PreviewStates_PathGet");
+            this.button_PreviewStates_PathGet.Name = "button_PreviewStates_PathGet";
+            this.button_PreviewStates_PathGet.UseVisualStyleBackColor = true;
+            this.button_PreviewStates_PathGet.Click += new System.EventHandler(this.button_PreviewStates_PathGet_Click);
+            // 
+            // textBox_PreviewStates_Path
+            // 
+            resources.ApplyResources(this.textBox_PreviewStates_Path, "textBox_PreviewStates_Path");
+            this.textBox_PreviewStates_Path.Name = "textBox_PreviewStates_Path";
+            // 
+            // radioButton_Settings_Open_Download_Your_File
+            // 
+            resources.ApplyResources(this.radioButton_Settings_Open_Download_Your_File, "radioButton_Settings_Open_Download_Your_File");
+            this.radioButton_Settings_Open_Download_Your_File.Name = "radioButton_Settings_Open_Download_Your_File";
+            this.radioButton_Settings_Open_Download_Your_File.UseVisualStyleBackColor = true;
+            this.radioButton_Settings_Open_Download_Your_File.CheckedChanged += new System.EventHandler(this.radioButton_Settings_Open_Download_Your_File_CheckedChanged);
             // 
             // radioButton_Settings_Open_DoNotning
             // 
@@ -2381,6 +2406,9 @@ namespace Watch_Face_Editor
         private System.Windows.Forms.Panel panel_UC_Humidity;
         private ControlLibrary.UCtrl_UVIndex_Elm uCtrl_UVIndex_Elm;
         private ControlLibrary.UCtrl_Humidity_Elm uCtrl_Humidity_Elm;
+        private System.Windows.Forms.Button button_PreviewStates_PathGet;
+        private System.Windows.Forms.TextBox textBox_PreviewStates_Path;
+        private System.Windows.Forms.RadioButton radioButton_Settings_Open_Download_Your_File;
     }
 }
 

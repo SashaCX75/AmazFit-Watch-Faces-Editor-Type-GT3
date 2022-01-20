@@ -5450,6 +5450,7 @@ namespace Watch_Face_Editor
                                         if (weather.Number != null) offset++;
                                         if (weather.Number_Min != null) offset++;
                                         if (weather.Number_Max != null) offset++;
+                                        if (weather.City_Name != null) offset++;
 
                                         weather.Icon = new hmUI_widget_IMG();
                                         weather.Icon.src = img.src;
@@ -6098,6 +6099,7 @@ namespace Watch_Face_Editor
                                     if (weather.Number != null) offset++;
                                     if (weather.Number_Min != null) offset++;
                                     if (weather.Number_Max != null) offset++;
+                                    if (weather.City_Name != null) offset++;
                                     if (weather.Icon != null) offset++;
 
                                     weather.Images = new hmUI_widget_IMG_LEVEL();

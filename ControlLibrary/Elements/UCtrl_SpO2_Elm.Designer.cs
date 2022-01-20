@@ -34,12 +34,11 @@ namespace ControlLibrary
             // 
             // button_ElementName
             // 
-            this.button_ElementName.Image = ((System.Drawing.Image)(resources.GetObject("button_ElementName.Image")));
-            this.button_ElementName.Text = "SpO2";
+            resources.ApplyResources(this.button_ElementName, "button_ElementName");
             // 
             // UCtrl_SpO2_Elm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.Name = "UCtrl_SpO2_Elm";
             this.ResumeLayout(false);
 
