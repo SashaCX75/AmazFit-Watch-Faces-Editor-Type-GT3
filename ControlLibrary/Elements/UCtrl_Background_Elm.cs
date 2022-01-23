@@ -97,6 +97,25 @@ namespace ControlLibrary
             pictureBox_Show.Location = new Point(button_ElementName.Width - pictureBox_Show.Width * 2 - 6, 2);
 
             pictureBox_Del.Location = new Point(button_ElementName.Width - pictureBox_Del.Width - 4, 2);
+
+            if (button_ElementName.Height > 35)
+            {
+                float currentDPI = button_ElementName.Height / 28f;
+                button_ElementName.Image = (Image)(new Bitmap(button_ElementName.Image,
+                    new Size((int)(16 * currentDPI), (int)(16 * currentDPI))));
+
+                Control.ControlCollection controlCollection = button_ElementName.Controls;
+                for (int i = 0; i < controlCollection.Count; i++)
+                {
+                    string name = controlCollection[i].GetType().Name;
+                    if (name == "PictureBox")
+                    {
+                        PictureBox pb = (PictureBox)controlCollection[i];
+                        pb.BackgroundImageLayout = ImageLayout.Zoom;
+                    }
+                }
+
+            }
         }
 
         private void pictureBox_Show_Click(object sender, EventArgs e)

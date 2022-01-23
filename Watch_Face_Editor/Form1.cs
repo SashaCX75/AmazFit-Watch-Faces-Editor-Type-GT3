@@ -229,6 +229,7 @@ namespace Watch_Face_Editor
             label_version_help.Text =
                 System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Major.ToString() + "." +
                 System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.Minor.ToString();
+            //label_version.Text = currentDPI.ToString();
 
             Logger.WriteLine("Set Settings");
             radioButton_Settings_AfterUnpack_Dialog.Checked = ProgramSettings.Settings_AfterUnpack_Dialog;
@@ -314,7 +315,22 @@ namespace Watch_Face_Editor
             uCtrl_Shortcut_Opt.AutoSize = true;
             uCtrl_Text_SystemFont_Opt.AutoSize = true;
 
-            button_CreatePreview.Location = new Point(5, 563);
+            button_CreatePreview.Location = button_RefreshPreview.Location;
+
+            if (currentDPI > 1.27)
+            {
+                pictureBox_IconTime.BackgroundImageLayout = ImageLayout.Zoom;
+                pictureBox_IconActivity.BackgroundImageLayout = ImageLayout.Zoom;
+                pictureBox_IconDate.BackgroundImageLayout = ImageLayout.Zoom;
+                pictureBox_IconAir.BackgroundImageLayout = ImageLayout.Zoom;
+                pictureBox_IconBackground.BackgroundImageLayout = ImageLayout.Zoom;
+                pictureBox_IconSystem.BackgroundImageLayout = ImageLayout.Zoom;
+
+                button_unpack_zip.Image = (Image)(new Bitmap(button_unpack_zip.Image, 
+                    new Size((int)(16 * currentDPI), (int)(16 * currentDPI))));
+                button_pack_zip.Image = (Image)(new Bitmap(button_pack_zip.Image,
+                    new Size((int)(16 * currentDPI), (int)(16 * currentDPI))));
+            }
             Logger.WriteLine("* Form1_Shown(end)");
         }
 

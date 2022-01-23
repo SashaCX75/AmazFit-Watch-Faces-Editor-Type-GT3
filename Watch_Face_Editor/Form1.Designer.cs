@@ -1262,9 +1262,10 @@ namespace Watch_Face_Editor
             // 
             // Number
             // 
-            this.Number.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Number.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             this.Number.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Number.FillWeight = 25F;
             resources.ApplyResources(this.Number, "Number");
             this.Number.Name = "Number";
             this.Number.ReadOnly = true;
@@ -1272,27 +1273,28 @@ namespace Watch_Face_Editor
             // NameFile
             // 
             this.NameFile.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.NameFile.FillWeight = 80F;
             resources.ApplyResources(this.NameFile, "NameFile");
             this.NameFile.Name = "NameFile";
             this.NameFile.ReadOnly = true;
             // 
             // ColumnImage
             // 
-            this.ColumnImage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.ColumnImage.FillWeight = 95F;
+            this.ColumnImage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColumnImage.FillWeight = 70F;
             resources.ApplyResources(this.ColumnImage, "ColumnImage");
             this.ColumnImage.Name = "ColumnImage";
             this.ColumnImage.ReadOnly = true;
             // 
             // Column1
             // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.NullValue = null;
             this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Column1.FillWeight = 95F;
+            this.Column1.FillWeight = 70F;
             resources.ApplyResources(this.Column1, "Column1");
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
@@ -2318,10 +2320,6 @@ namespace Watch_Face_Editor
         private System.Windows.Forms.Button button_OpenDir;
         private System.Windows.Forms.PictureBox pictureBox_IconBackground;
         private System.Windows.Forms.ComboBox comboBox_AddBackground;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Number;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NameFile;
-        private System.Windows.Forms.DataGridViewImageColumn ColumnImage;
-        private System.Windows.Forms.DataGridViewImageColumn Column1;
         private System.Windows.Forms.ProgressBar progressBar1;
         private ControlLibrary.UCtrl_AmPm_Opt uCtrl_AmPm_Opt;
         private System.Windows.Forms.Panel panel_UC_AnalogTime;
@@ -2409,6 +2407,10 @@ namespace Watch_Face_Editor
         private System.Windows.Forms.Button button_PreviewStates_PathGet;
         private System.Windows.Forms.TextBox textBox_PreviewStates_Path;
         private System.Windows.Forms.RadioButton radioButton_Settings_Open_Download_Your_File;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Number;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NameFile;
+        private System.Windows.Forms.DataGridViewImageColumn ColumnImage;
+        private System.Windows.Forms.DataGridViewImageColumn Column1;
     }
 }
 

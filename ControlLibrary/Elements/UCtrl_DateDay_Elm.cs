@@ -331,6 +331,45 @@ namespace ControlLibrary
             pictureBox_Show.Location = new Point(button_ElementName.Width - pictureBox_Show.Width * 2 - 6, 2);
 
             pictureBox_Del.Location = new Point(button_ElementName.Width - pictureBox_Del.Width - 4, 2);
+
+            if (tableLayoutPanel1.Height > 65)
+            {
+                float currentDPI = tableLayoutPanel1.Height / 51f;
+                button_ElementName.Image = (Image)(new Bitmap(button_ElementName.Image,
+                    new Size((int)(16 * currentDPI), (int)(16 * currentDPI))));
+
+                Control.ControlCollection controlCollection = tableLayoutPanel1.Controls;
+                for (int i = 0; i < controlCollection.Count; i++)
+                {
+                    string name = controlCollection[i].GetType().Name;
+                    if (name == "Panel")
+                    {
+                        Control.ControlCollection panelCollection = controlCollection[i].Controls;
+                        for (int j = 0; j < panelCollection.Count; j++)
+                        {
+                            string nameButton = panelCollection[j].GetType().Name;
+                            if (nameButton == "Button")
+                            {
+                                Button btn = (Button)panelCollection[j];
+                                btn.Image = (Image)(new Bitmap(btn.Image,
+                                    new Size((int)(16 * currentDPI), (int)(16 * currentDPI))));
+                            }
+                        }
+                    }
+                }
+
+                controlCollection = button_ElementName.Controls;
+                for (int i = 0; i < controlCollection.Count; i++)
+                {
+                    string name = controlCollection[i].GetType().Name;
+                    if (name == "PictureBox")
+                    {
+                        PictureBox pb = (PictureBox)controlCollection[i];
+                        pb.BackgroundImageLayout = ImageLayout.Zoom;
+                    }
+                }
+
+            }
         }
 
         private void pictureBox_Show_Click(object sender, EventArgs e)

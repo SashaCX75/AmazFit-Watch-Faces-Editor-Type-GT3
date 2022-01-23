@@ -920,7 +920,8 @@ namespace Watch_Face_Editor
                             if (img_level != null && img_level.image_length > 0)
                             {
                                 imgCount = img_level.image_length;
-                                valueImgIndex = (int)(imgCount * progress);
+                                float imgIndex = imgCount * progress;
+                                valueImgIndex = (int)imgIndex;
                                 valueImgIndex--;
                                 if (valueImgIndex < 0) valueImgIndex = 0;
                                 if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
@@ -928,7 +929,8 @@ namespace Watch_Face_Editor
                             if (img_prorgess != null && img_prorgess.image_length > 0)
                             {
                                 segmentCount = img_prorgess.image_length;
-                                valueSegmentIndex = (int)(segmentCount * progress);
+                                float imgIndex = segmentCount * progress;
+                                valueSegmentIndex = (int)imgIndex;
                                 valueSegmentIndex--;
                                 if (valueSegmentIndex < 0) valueSegmentIndex = 0;
                                 if (valueSegmentIndex >= segmentCount) valueImgIndex = (int)(segmentCount - 1);

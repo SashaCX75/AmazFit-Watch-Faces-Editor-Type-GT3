@@ -127,7 +127,7 @@
     <value>Sleep</value>
   </data>
   <data name="button_SPO2.Text" xml:space="preserve">
-    <value>SPO2</value>
+    <value>Oxygen in blood (SpO2)</value>
   </data>
   <data name="button_Sunrise.Text" xml:space="preserve">
     <value>Sunrise / Sunset</value>

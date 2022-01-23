@@ -187,10 +187,10 @@
     <value>NoControl</value>
   </data>
   <data name="pictureBox_IconBackground.Location" type="System.Drawing.Point, System.Drawing">
-    <value>352, 25</value>
+    <value>354, 27</value>
   </data>
   <data name="pictureBox_IconBackground.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 20</value>
+    <value>16, 16</value>
   </data>
   <data name="pictureBox_IconBackground.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -244,10 +244,10 @@
     <value>NoControl</value>
   </data>
   <data name="pictureBox_IconDate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>180, 25</value>
+    <value>182, 27</value>
   </data>
   <data name="pictureBox_IconDate.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 20</value>
+    <value>16, 16</value>
   </data>
   <data name="pictureBox_IconDate.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -271,10 +271,10 @@
     <value>NoControl</value>
   </data>
   <data name="pictureBox_IconAir.Location" type="System.Drawing.Point, System.Drawing">
-    <value>180, 54</value>
+    <value>182, 56</value>
   </data>
   <data name="pictureBox_IconAir.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 20</value>
+    <value>16, 16</value>
   </data>
   <data name="pictureBox_IconAir.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -298,10 +298,10 @@
     <value>NoControl</value>
   </data>
   <data name="pictureBox_IconSystem.Location" type="System.Drawing.Point, System.Drawing">
-    <value>352, 54</value>
+    <value>354, 56</value>
   </data>
   <data name="pictureBox_IconSystem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 20</value>
+    <value>16, 16</value>
   </data>
   <data name="pictureBox_IconSystem.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -325,10 +325,10 @@
     <value>NoControl</value>
   </data>
   <data name="pictureBox_IconTime.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 25</value>
+    <value>9, 27</value>
   </data>
   <data name="pictureBox_IconTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 20</value>
+    <value>16, 16</value>
   </data>
   <data name="pictureBox_IconTime.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -352,10 +352,10 @@
     <value>NoControl</value>
   </data>
   <data name="pictureBox_IconActivity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 53</value>
+    <value>9, 55</value>
   </data>
   <data name="pictureBox_IconActivity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 20</value>
+    <value>16, 16</value>
   </data>
   <data name="pictureBox_IconActivity.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -3099,9 +3099,6 @@
   <data name="Number.HeaderText" xml:space="preserve">
     <value>№</value>
   </data>
-  <data name="Number.Width" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
   <metadata name="NameFile.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -3114,17 +3111,11 @@
   <data name="ColumnImage.HeaderText" xml:space="preserve">
     <value>Картинка</value>
   </data>
-  <data name="ColumnImage.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
   <metadata name="Column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <data name="Column1.HeaderText" xml:space="preserve">
     <value>Картинка</value>
-  </data>
-  <data name="Column1.Width" type="System.Int32, mscorlib">
-    <value>80</value>
   </data>
   <metadata name="contextMenuStrip_RemoveImage.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>127, 17</value>
@@ -5802,7 +5793,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
-        DQAAAk1TRnQBSQFMAgEBBgEAARQBLQEUAS0BEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAATwBLQE8AS0BEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
