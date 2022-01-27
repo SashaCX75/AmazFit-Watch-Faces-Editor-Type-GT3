@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Dialog_Title_Dial_Settings" xml:space="preserve">
+    <value>Seleziona il file delle impostazioni della watch face</value>
+  </data>
+  <data name="Dialog_Title_Image" xml:space="preserve">
+    <value>Seleziona i files delle immagini</value>
+  </data>
+  <data name="Dialog_Title_New_Project" xml:space="preserve">
+    <value>Crea un nuovo progetto</value>
+  </data>
+  <data name="Dialog_Title_PreviewStates" xml:space="preserve">
+    <value>Seleziona il file delle impostazioni dell'anteprima</value>
+  </data>
+  <data name="Dialog_Title_SaveGIF" xml:space="preserve">
+    <value>Salva l'anteprima animata</value>
+  </data>
+  <data name="Dialog_Title_SavePNG" xml:space="preserve">
+    <value>Salva l'anteprima</value>
+  </data>
+  <data name="Dialog_Title_Unpack" xml:space="preserve">
+    <value>Seleziona il file della watch face</value>
+  </data>
+  <data name="Dialog_Title_WatchSkin" xml:space="preserve">
+    <value>Selezione il file immagine della watch face</value>
+  </data>
+  <data name="Elemet_Activity" xml:space="preserve">
+    <value>Attività</value>
+  </data>
+  <data name="Elemet_Air" xml:space="preserve">
+    <value>Atmosfera</value>
+  </data>
+  <data name="Elemet_Date" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="Elemet_System" xml:space="preserve">
+    <value>Sistema</value>
+  </data>
+  <data name="Elemet_Time" xml:space="preserve">
+    <value>Orario</value>
+  </data>
+  <data name="FilterGif" xml:space="preserve">
+    <value>GIF Files (*.gif)|*.gif</value>
+  </data>
+  <data name="FilterJson" xml:space="preserve">
+    <value>Json files (*.json) | *.json</value>
+  </data>
+  <data name="FilterPng" xml:space="preserve">
+    <value>PNG Files (*.png)|*.png</value>
+  </data>
+  <data name="FilterZip" xml:space="preserve">
+    <value>Zip file della watch face (* .zip) | * .zip</value>
+  </data>
+  <data name="FollowMinute" xml:space="preserve">
+    <value>Segui le ore</value>
+  </data>
+  <data name="FollowSecond" xml:space="preserve">
+    <value>Segui i minuti</value>
+  </data>
+  <data name="Form_Preview" xml:space="preserve">
+    <value>Anteprima</value>
+  </data>
+  <data name="Form_PreviewX" xml:space="preserve">
+    <value>Anteprima [X =</value>
+  </data>
+  <data name="Message_ConvertingCompleted_Text" xml:space="preserve">
+    <value>Una nuova watch face è stata creata</value>
+  </data>
+  <data name="Message_CopyCoord" xml:space="preserve">
+    <value>Coordinate copiate</value>
+  </data>
+  <data name="Message_ErrorReadJS" xml:space="preserve">
+    <value>Impossibile ricostruire la struttura della watch face</value>
+  </data>
+  <data name="Message_Error_Caption" xml:space="preserve">
+    <value>Errore</value>
+  </data>
+  <data name="Message_Error_Image_Text1" xml:space="preserve">
+    <value>Impossibile caricare l'immagine:</value>
+  </data>
+  <data name="Message_Error_Image_Text2" xml:space="preserve">
+    <value>. Non hai l'autorizzazione per leggere il file o l'immagine è danneggiata.</value>
+  </data>
+  <data name="Message_GoToFile_Caption" xml:space="preserve">
+    <value>Vai al file</value>
+  </data>
+  <data name="Message_GoToFile_Text" xml:space="preserve">
+    <value>Vai al file?</value>
+  </data>
+  <data name="Message_Image32bit" xml:space="preserve">
+    <value>L'immagine non deve essere monocromatica e deve essere in formato a 32 bit</value>
+  </data>
+  <data name="Message_ImageCount_Error" xml:space="preserve">
+    <value>Le immagini selezionate sono al di fuori dell'intervallo di immagini disponibili.</value>
+  </data>
+  <data name="Message_ImageFix_Error" xml:space="preserve">
+    <value>Errore di conversione dell'immagine</value>
+  </data>
+  <data name="Message_JsonError_Text" xml:space="preserve">
+    <value>File JSON non valido</value>
+  </data>
+  <data name="Message_JsonReadError_Text" xml:space="preserve">
+    <value>Errore nella lettura del file JSON</value>
+  </data>
+  <data name="Message_LoadPreviewStates_Caption" xml:space="preserve">
+    <value>Caricamento delle impostazioni di anteprima</value>
+  </data>
+  <data name="Message_LoadPreviewStates_Text" xml:space="preserve">
+    <value>Caricare un file PreviewStates.json esistente con una serie di valori di anteprima?</value>
+  </data>
+  <data name="Message_Restart_Caption" xml:space="preserve">
+    <value>Riavvio</value>
+  </data>
+  <data name="Message_Restart_Text1" xml:space="preserve">
+    <value>Per applicare le impostazioni, è necessario riavviare il programma.</value>
+  </data>
+  <data name="Message_Restart_Text2" xml:space="preserve">
+    <value>Riavviare il programma?</value>
+  </data>
+  <data name="Message_SaveOnly1234_Text" xml:space="preserve">
+    <value>Per salvare i parametri preimpostati, impostare almeno un campo "Calorie" su un valore diverso da "1234".</value>
+  </data>
+  <data name="Message_Save_JSON_Modified_Caption" xml:space="preserve">
+    <value>Salva il progetto</value>
+  </data>
+  <data name="Message_Save_JSON_Modified_Text1" xml:space="preserve">
+    <value>Vuoi salvare le modifiche al progetto? "</value>
+  </data>
+  <data name="Message_Save_new_JSON" xml:space="preserve">
+    <value>Il progetto attuale non è stato ancora salvato. Vuoi salvarlo?</value>
+  </data>
+  <data name="Message_ShortcutsAOD_Text" xml:space="preserve">
+    <value>Non è possibile aggiungere shortcuts alla schermata AOD.</value>
+  </data>
+  <data name="Message_WarningConverting_Text1" xml:space="preserve">
+    <value>Directory </value>
+  </data>
+  <data name="Message_WarningConverting_Text2" xml:space="preserve">
+    <value> esiste già. Sostituire?</value>
+  </data>
+  <data name="Message_WarningPreview_Text1" xml:space="preserve">
+    <value>Le dimensioni dell'immagine per l'anteprima differiscono da quelle standard.</value>
+  </data>
+  <data name="Message_WarningPreview_Text2" xml:space="preserve">
+    <value>Utilizzare le dimensioni esistenti?</value>
+  </data>
+  <data name="Message_Warning_Assets_Exist1" xml:space="preserve">
+    <value>In questo percorso è già presente una directory con delle immagini</value>
+  </data>
+  <data name="Message_Warning_Assets_Exist2" xml:space="preserve">
+    <value>Si consiglia di creare un progetto in una cartella separata.</value>
+  </data>
+  <data name="Message_Warning_Assets_Exist3" xml:space="preserve">
+    <value>Vuoi creare un progetto nella cartella selezionata?</value>
+  </data>
+  <data name="Message_Warning_Caption" xml:space="preserve">
+    <value>Avvertimento</value>
+  </data>
+  <data name="Message_Warning_Image_Exist1" xml:space="preserve">
+    <value>Esiste già un'immagine nel progetto:</value>
+  </data>
+  <data name="Message_Warning_Image_Exist2" xml:space="preserve">
+    <value>Sostituire con una nuova immagine?</value>
+  </data>
+  <data name="Message_Warning_Information" xml:space="preserve">
+    <value>Informazione</value>
+  </data>
+  <data name="Message_Wrong_Original_Image" xml:space="preserve">
+    <value>Formato immagine originale non valido</value>
+  </data>
+  <data name="Message_Wrong_Preview_Exists" xml:space="preserve">
+    <value>Impossibile creare l'immagine di anteprima. Forse un'immagine simile esiste già.</value>
+  </data>
+</root>

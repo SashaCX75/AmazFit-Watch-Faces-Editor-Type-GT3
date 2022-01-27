@@ -156,17 +156,14 @@
   <data name="&gt;&gt;checkBox_Icon.Parent" xml:space="preserve">
     <value>panel_Icon</value>
   </data>
-  <data name="&gt;&gt;checkBox_Icon.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;checkBox_Number_Target.Parent" xml:space="preserve">
+    <value>panel_Number_Target</value>
   </data>
   <data name="&gt;&gt;button_ElementName.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBox_Images.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Number_Target.Parent" xml:space="preserve">
-    <value>panel_Number_Target</value>
   </data>
   <data name="&gt;&gt;checkBox_Pointer.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -197,6 +194,9 @@
   </data>
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Разминка</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Number.Name" xml:space="preserve">
+    <value>checkBox_Number</value>
   </data>
   <data name="&gt;&gt;checkBox_Images.Name" xml:space="preserve">
     <value>checkBox_Images</value>
@@ -267,8 +267,8 @@
   <data name="&gt;&gt;checkBox_Number.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkBox_Number.Name" xml:space="preserve">
-    <value>checkBox_Number</value>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
   </data>
   <data name="&gt;&gt;checkBox_Linear_Scale.Name" xml:space="preserve">
     <value>checkBox_Linear_Scale</value>
@@ -288,8 +288,8 @@
   <data name="&gt;&gt;checkBox_Circle_Scale.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+  <data name="&gt;&gt;checkBox_Icon.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;checkBox_Linear_Scale.ZOrder" xml:space="preserve">
     <value>1</value>

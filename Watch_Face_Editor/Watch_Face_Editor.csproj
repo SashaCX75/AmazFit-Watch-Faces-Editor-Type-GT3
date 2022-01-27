@@ -122,6 +122,16 @@
     <Compile Include="Classes\Program_Settings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\Watch_Face_Preview_Set.cs" />
+    <Compile Include="Properties\FormStrings.it.Designer.cs">
+      <DependentUpon>FormStrings.it.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\FormStrings.es.Designer.cs">
+      <DependentUpon>FormStrings.es.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Properties\FormStrings.zh.Designer.cs">
       <DependentUpon>FormStrings.zh.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -135,6 +145,12 @@
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form1.es.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.it.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -145,6 +161,12 @@
     <EmbeddedResource Include="FormFileExists.en.resx">
       <DependentUpon>FormFileExists.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormFileExists.es.resx">
+      <DependentUpon>FormFileExists.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFileExists.it.resx">
+      <DependentUpon>FormFileExists.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormFileExists.resx">
       <DependentUpon>FormFileExists.cs</DependentUpon>
     </EmbeddedResource>
@@ -153,6 +175,14 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormPreview.resx">
       <DependentUpon>FormPreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\FormStrings.it.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FormStrings.it.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\FormStrings.es.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FormStrings.es.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\FormStrings.zh.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -276,11 +306,15 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>rmdir /s /q $(TargetDir)\Language\en"
-rmdir /s /q $(TargetDir)\Language\zh"
+    <PostBuildEvent>rmdir /s /q "$(TargetDir)\Language\en"
+rmdir /s /q "$(TargetDir)\Language\es"
+rmdir /s /q "$(TargetDir)\Language\it"
+rmdir /s /q "$(TargetDir)\Language\zh"
 mkdir "$(TargetDir)\Libs"
 mkdir "$(TargetDir)\Language"
 move /y "$(TargetDir)\en" "$(TargetDir)\Language"
+move /y "$(TargetDir)\es" "$(TargetDir)\Language"
+move /y "$(TargetDir)\it" "$(TargetDir)\Language"
 move /y "$(TargetDir)\zh" "$(TargetDir)\Language"
 move "$(TargetDir)*.dll" "$(TargetDir)\Libs"
 move "$(TargetDir)*.xml" "$(TargetDir)\Libs"
