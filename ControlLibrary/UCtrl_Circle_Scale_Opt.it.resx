@@ -225,7 +225,8 @@
     <value>Coordinate del centro</value>
   </data>
   <data name="label02.Text" xml:space="preserve">
-    <value>* Quando Inverti è abilitato, l'incremento del valore farà diminuire la barra di avanzamento.</value>
+    <value>* Con Inverti abilitato,
+si invertirà il progresso della barra.</value>
   </data>
   <data name="label05.Text" xml:space="preserve">
     <value>Raggio</value>

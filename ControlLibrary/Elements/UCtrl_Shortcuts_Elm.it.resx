@@ -130,13 +130,16 @@
     <value>Shortcuts</value>
   </data>
   <data name="button_Heart.Text" xml:space="preserve">
-    <value>Frequenza cardiaca</value>
+    <value>Battito cardiaco</value>
+  </data>
+  <data name="button_PAI.Text" xml:space="preserve">
+    <value>PAI</value>
   </data>
   <data name="button_Sleep.Text" xml:space="preserve">
     <value>Sonno</value>
   </data>
   <data name="button_SPO2.Text" xml:space="preserve">
-    <value>Ossigenazione del sangue (SpO2)</value>
+    <value>Ossigen. sangue (SpO2)</value>
   </data>
   <data name="button_Step.Text" xml:space="preserve">
     <value>Passi</value>

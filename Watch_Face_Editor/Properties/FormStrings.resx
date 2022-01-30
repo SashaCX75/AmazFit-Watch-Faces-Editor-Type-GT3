@@ -190,7 +190,7 @@
     <value>Не удалось распознать структуру циферблата</value>
   </data>
   <data name="Message_Error_Caption" xml:space="preserve">
-    <value>Error</value>
+    <value>Ошибка</value>
   </data>
   <data name="Message_Error_Image_Text1" xml:space="preserve">
     <value>Невозможно открыть изображение:</value>
@@ -214,7 +214,7 @@
     <value>Ошибка конвертации изображения</value>
   </data>
   <data name="Message_JsonError_Text" xml:space="preserve">
-    <value>Invalid JSON file.</value>
+    <value>Неправильный JSON file.</value>
   </data>
   <data name="Message_JsonReadError_Text" xml:space="preserve">
     <value>Ошибка чтения JSON файла.</value>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Watch_Face_Editor
 {
@@ -16,7 +17,7 @@ namespace Watch_Face_Editor
         public int Width { get; }
         public int Height { get; }
 
-        public Header(byte[] streamBuffer)
+        public Header(byte[] streamBuffer, string fileName = "")
         {
             _header = new byte[HeaderSize];
             Array.Copy(streamBuffer, 0, _header, 0, HeaderSize);
@@ -26,7 +27,18 @@ namespace Watch_Face_Editor
             Width = BitConverter.ToUInt16(_header, 12);
             Height = BitConverter.ToUInt16(_header, 14);
 
-            if (_header[1] != 1 || _header[2] != 1) throw new Exception("Не верный формат файла");
+            if (_header[1] != 1 || _header[2] != 1) 
+            {
+                if (MessageBox.Show("Ошибка обработки изображения \"" + fileName + "\"." + Environment.NewLine +
+                                "Попытаться сохранить изображение?", Properties.FormStrings.Message_Error_Caption,
+                                MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                { 
+                }
+                else 
+                { 
+                    throw new Exception("Отсутствует карта цветов"); 
+                }
+            }
         }
 
         public byte GetImageIDLength()

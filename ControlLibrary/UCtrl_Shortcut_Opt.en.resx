@@ -231,11 +231,12 @@
     <value>Width</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>209, 39</value>
+    <value>209, 52</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>* Required image.
-The image is displayed only at the moment 
-of clicking on the shortcut.</value>
+In older firmware, the image is displayed 
+on the watch only at the moment you click 
+on the shortcut.</value>
   </data>
 </root>

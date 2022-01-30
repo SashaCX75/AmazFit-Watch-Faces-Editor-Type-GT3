@@ -120,11 +120,14 @@
   <data name="button_Alarm.Text" xml:space="preserve">
     <value>Sveglia</value>
   </data>
+  <data name="button_Bluetooth.Text" xml:space="preserve">
+    <value>Bluetooth (Off)</value>
+  </data>
   <data name="button_DND.Text" xml:space="preserve">
     <value>Non disturbare (DND)</value>
   </data>
   <data name="button_ElementName.Text" xml:space="preserve">
-    <value>Stati</value>
+    <value>Icone di stato</value>
   </data>
   <data name="button_Lock.Text" xml:space="preserve">
     <value>Blocco</value>

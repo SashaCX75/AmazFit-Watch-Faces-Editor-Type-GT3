@@ -242,7 +242,10 @@
     <value>Icona del meteo</value>
   </data>
   <data name="groupBox_Air.Text" xml:space="preserve">
-    <value>Atmosfera</value>
+    <value>Ambiente</value>
+  </data>
+  <data name="groupBox_Activity.Text" xml:space="preserve">
+    <value>Attività</value>
   </data>
   <data name="checkBox_DND_Set.Location" type="System.Drawing.Point, System.Drawing">
     <value>337, 123</value>
@@ -251,7 +254,7 @@
     <value>89, 34</value>
   </data>
   <data name="checkBox_DND_Set.Text" xml:space="preserve">
-    <value>Non disturbare (DND)</value>
+    <value>Non disturbare</value>
   </data>
   <data name="checkBox_Lock_Set.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 18</value>
@@ -283,6 +286,12 @@
   <data name="label06.Text" xml:space="preserve">
     <value>Distanza</value>
   </data>
+  <data name="label05.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 50</value>
+  </data>
+  <data name="label05.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 28</value>
+  </data>
   <data name="label05.Text" xml:space="preserve">
     <value>Pulsazioni</value>
   </data>
@@ -293,13 +302,10 @@
     <value>Batteria</value>
   </data>
   <data name="label02.Text" xml:space="preserve">
-    <value>Orario</value>
+    <value>Orologio</value>
   </data>
   <data name="label01.Text" xml:space="preserve">
     <value>Data</value>
-  </data>
-  <data name="groupBox_Activity.Text" xml:space="preserve">
-    <value>Attività</value>
   </data>
   <data name="button_Set.Text" xml:space="preserve">
     <value>Set di parametri</value>

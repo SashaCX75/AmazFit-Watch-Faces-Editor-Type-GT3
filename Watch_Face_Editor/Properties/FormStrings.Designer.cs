@@ -268,7 +268,7 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Error.
+        ///   Ищет локализованную строку, похожую на Ошибка.
         /// </summary>
         internal static string Message_Error_Caption {
             get {
@@ -349,7 +349,7 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Invalid JSON file..
+        ///   Ищет локализованную строку, похожую на Неправильный JSON file..
         /// </summary>
         internal static string Message_JsonError_Text {
             get {

@@ -26,20 +26,22 @@ namespace Watch_Face_Editor
                     path = Path.GetDirectoryName(fileNameFull);
                     //fileName = Path.Combine(path, fileName);
                     int RealWidth = -1;
+                    bool colored = true;
                     using (var fileStream = File.OpenRead(fileNameFull))
                     {
                         byte[] _streamBuffer;
                         _streamBuffer = new byte[fileStream.Length];
                         fileStream.Read(_streamBuffer, 0, (int)fileStream.Length);
 
-                        Header header = new Header(_streamBuffer);
+                        Header header = new Header(_streamBuffer, Path.GetFileName(fileNameFull));
+                        if (header.GetColorMapCount() == 0) colored = false;
                         ImageDescription imageDescription = new ImageDescription(_streamBuffer, header.GetImageIDLength());
                         RealWidth = imageDescription.GetRealWidth();
                     }
 
                     using (var fileStream = File.OpenRead(fileNameFull))
                     {
-                        image = new ImageMagick.MagickImage(fileStream, ImageMagick.MagickFormat.Tga);
+                        image = new ImageMagick.MagickImage(fileStream, ImageMagick.MagickFormat.Tga );
                     }
 
                     image.Format = ImageMagick.MagickFormat.Png32;
@@ -50,16 +52,28 @@ namespace Watch_Face_Editor
                     }
 
                     ImageMagick.IMagickImage Blue = image.Separate(ImageMagick.Channels.Blue).First();
-                    ImageMagick.IMagickImage Red = image.Separate(ImageMagick.Channels.Red).First();
+                    ImageMagick.IMagickImage Red = image.Separate(ImageMagick.Channels.Red).First(); 
+                    ImageMagick.IMagickImage Alpha = image.Separate(ImageMagick.Channels.Red).First();
                     image.Composite(Red, ImageMagick.CompositeOperator.Replace, ImageMagick.Channels.Blue);
                     image.Composite(Blue, ImageMagick.CompositeOperator.Replace, ImageMagick.Channels.Red);
+                    if (!colored) 
+                        //if (!colored)
+                        {
+                        //image.Negate();
+                        image.Composite(Alpha, ImageMagick.CompositeOperator.CopyAlpha, ImageMagick.Channels.Alpha);
+                        //image.Negate();
+                    }
 
                     image.Write(targetFile);
                 }
                 catch (Exception exp)
                 {
-                    MessageBox.Show("Не верный формат исходного файла" + Environment.NewLine +
-                        exp);
+                    if (exp.Message != "Отсутствует карта цветов")
+                    {
+                        MessageBox.Show("Не верный формат исходного файла." + Environment.NewLine +
+                                        "Файл \"" + Path.GetFileName(targetFile) + "\" не был сохранен." + 
+                                        Environment.NewLine + exp); 
+                    }
                 }
             }
             return path;

@@ -274,6 +274,7 @@
     <Content Include="Mask\shortcut_pointer.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\pictures-icon.png" />
     <Content Include="Skin\Skin_GTR_3.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

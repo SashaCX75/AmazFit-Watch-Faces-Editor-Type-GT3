@@ -145,7 +145,7 @@
     <value>Attività</value>
   </data>
   <data name="Elemet_Air" xml:space="preserve">
-    <value>Atmosfera</value>
+    <value>Ambiente</value>
   </data>
   <data name="Elemet_Date" xml:space="preserve">
     <value>Data</value>
@@ -154,7 +154,7 @@
     <value>Sistema</value>
   </data>
   <data name="Elemet_Time" xml:space="preserve">
-    <value>Orario</value>
+    <value>Orologio</value>
   </data>
   <data name="FilterGif" xml:space="preserve">
     <value>GIF Files (*.gif)|*.gif</value>
@@ -241,7 +241,7 @@
     <value>Salva il progetto</value>
   </data>
   <data name="Message_Save_JSON_Modified_Text1" xml:space="preserve">
-    <value>Vuoi salvare le modifiche al progetto? "</value>
+    <value>Vuoi salvare le modifiche al progetto "</value>
   </data>
   <data name="Message_Save_new_JSON" xml:space="preserve">
     <value>Il progetto attuale non è stato ancora salvato. Vuoi salvarlo?</value>

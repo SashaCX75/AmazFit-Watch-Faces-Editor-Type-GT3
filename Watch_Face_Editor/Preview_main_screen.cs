@@ -39,6 +39,7 @@ namespace Watch_Face_Editor
         {
             int offSet_X = 227;
             int offSet_Y = 227;
+            showShortcutsImage = true;
 
             Bitmap src = new Bitmap(1, 1);
             gPanel.ScaleTransform(scale, scale, MatrixOrder.Prepend);

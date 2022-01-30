@@ -11258,6 +11258,14 @@ namespace Watch_Face_Editor
         private void contextMenuStrip_RemoveImage_Opening(object sender, CancelEventArgs e)
         {
             if (dataGridView_ImagesList.CurrentCell == null) e.Cancel = true;
+            if (FullFileDir != null && Directory.Exists(FullFileDir + @"\assets\"))
+            {
+                contextMenuStrip_RemoveImage.Items[1].Enabled = true;
+            }
+            else
+            {
+                contextMenuStrip_RemoveImage.Items[1].Enabled = false;
+            }
         }
 
         private void dataGridView_ImagesList_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
@@ -11316,6 +11324,11 @@ namespace Watch_Face_Editor
 
                 Logger.WriteLine("* WatchSkin_PathGet_Click_END");
             }
+        }
+
+        private void обновитьСписокИзображенийToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(FullFileDir != null && Directory.Exists(FullFileDir + @"\assets\")) LoadImage(FullFileDir + @"\assets\");
         }
 
        
