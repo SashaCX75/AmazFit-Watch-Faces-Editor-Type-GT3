@@ -887,7 +887,7 @@ namespace Watch_Face_Editor
                                 segmentCount = img_prorgess.image_length;
                                 valueSegmentIndex = (int)((segmentCount-1) * progress);
                                 if (progress < 0.01) valueSegmentIndex = -1;
-                                if (valueSegmentIndex >= segmentCount) valueImgIndex = (int)(segmentCount - 1);
+                                if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
                             }
 
                             DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
@@ -934,7 +934,7 @@ namespace Watch_Face_Editor
                                 valueSegmentIndex = (int)imgIndex;
                                 valueSegmentIndex--;
                                 if (valueSegmentIndex < 0) valueSegmentIndex = 0;
-                                if (valueSegmentIndex >= segmentCount) valueImgIndex = (int)(segmentCount - 1);
+                                if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
                             }
 
                             DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
@@ -977,7 +977,7 @@ namespace Watch_Face_Editor
                                 segmentCount = img_prorgess.image_length;
                                 valueSegmentIndex = (int)((segmentCount - 1) * progress);
                                 //if (progress < 0.01) valueSegmentIndex = -1;
-                                if (valueSegmentIndex >= segmentCount) valueImgIndex = (int)(segmentCount - 1);
+                                if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
                             }
 
                             DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
@@ -1091,7 +1091,7 @@ namespace Watch_Face_Editor
                                 segmentCount = img_prorgess.image_length;
                                 valueSegmentIndex = (int)((segmentCount - 1) * progress);
                                 //if (progress < 0.01) valueSegmentIndex = -1;
-                                if (valueSegmentIndex >= segmentCount) valueImgIndex = (int)(segmentCount - 1);
+                                if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
                             }
 
                             DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
@@ -1179,7 +1179,7 @@ namespace Watch_Face_Editor
                                 segmentCount = img_prorgess.image_length;
                                 valueSegmentIndex = (int)((segmentCount - 1) * progress);
                                 //if (progress < 0.01) valueSegmentIndex = -1;
-                                if (valueSegmentIndex >= segmentCount) valueImgIndex = (int)(segmentCount - 1);
+                                if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
                             }
 
                             DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
@@ -1222,7 +1222,7 @@ namespace Watch_Face_Editor
                                 segmentCount = img_prorgess.image_length;
                                 valueSegmentIndex = (int)((segmentCount - 1) * progress);
                                 if (progress < 0.01) valueSegmentIndex = -1;
-                                if (valueSegmentIndex >= segmentCount) valueImgIndex = (int)(segmentCount - 1);
+                                if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
                             }
 
                             // пересчитываем данные если отображаем как калории
@@ -1275,6 +1275,89 @@ namespace Watch_Face_Editor
                                 img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
                                 progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
                                 showCentrHend, "ElementSpO2");
+
+
+                            break;
+                        #endregion
+
+                        #region ElementStress
+                        case "ElementStress":
+                            ElementStress activityElementStress = (ElementStress)element;
+                            if (!activityElementStress.visible) continue;
+
+                            img_level = activityElementStress.Images;
+                            img_prorgess = activityElementStress.Segments;
+                            img_number = activityElementStress.Number;
+                            img_pointer = activityElementStress.Pointer;
+                            icon = activityElementStress.Icon;
+
+                            elementValue = WatchFacePreviewSet.Activity.Stress;
+                            value_lenght = 3;
+                            goal = 100;
+                            progress = (float)WatchFacePreviewSet.Activity.Stress / 100f;
+
+                            if (img_level != null && img_level.image_length > 0)
+                            {
+                                imgCount = img_level.image_length;
+                                valueImgIndex = (int)((imgCount - 1) * progress);
+                                if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                                if (elementValue == 0) valueImgIndex = -1;
+                            }
+                            if (img_prorgess != null && img_prorgess.image_length > 0)
+                            {
+                                segmentCount = img_prorgess.image_length;
+                                valueSegmentIndex = (int)((segmentCount - 1) * progress);
+                                if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
+                                if (elementValue == 0) valueSegmentIndex = -1;
+                            }
+
+                            DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                                img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                                progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                                showCentrHend, "ElementStress");
+
+
+                            break;
+                        #endregion
+
+                        #region ElementFatBurning
+                        case "ElementFatBurning":
+                            ElementFatBurning activityElementFatBurning = (ElementFatBurning)element;
+                            if (!activityElementFatBurning.visible) continue;
+
+                            img_level = activityElementFatBurning.Images;
+                            img_prorgess = activityElementFatBurning.Segments;
+                            img_number = activityElementFatBurning.Number;
+                            img_number_target = activityElementFatBurning.Number_Target;
+                            img_pointer = activityElementFatBurning.Pointer;
+                            circle_scale = activityElementFatBurning.Circle_Scale;
+                            linear_scale = activityElementFatBurning.Linear_Scale;
+                            icon = activityElementFatBurning.Icon;
+
+                            elementValue = WatchFacePreviewSet.Activity.FatBurning;
+                            value_lenght = 3;
+                            goal = 30;
+                            progress = (float)WatchFacePreviewSet.Activity.FatBurning / 30f;
+
+                            if (img_level != null && img_level.image_length > 0)
+                            {
+                                imgCount = img_level.image_length;
+                                valueImgIndex = (int)((imgCount - 1) * progress);
+                                if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                                if (elementValue == 0) valueImgIndex = -1;
+                            }
+                            if (img_prorgess != null && img_prorgess.image_length > 0)
+                            {
+                                segmentCount = img_prorgess.image_length;
+                                valueSegmentIndex = (int)((segmentCount - 1) * progress);
+                                if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
+                                if (elementValue == 0) valueSegmentIndex = -1;
+                            }
+
+                            DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                                img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                                progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                                showCentrHend, "ElementFatBurning");
 
 
                             break;
@@ -1339,7 +1422,7 @@ namespace Watch_Face_Editor
                                 valueSegmentIndex = (int)(segmentCount * progress);
                                 valueSegmentIndex--;
                                 if (valueSegmentIndex < 0) valueSegmentIndex = 0;
-                                if (valueSegmentIndex >= segmentCount) valueImgIndex = (int)(segmentCount - 1);
+                                if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
                             }
 
                             DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
@@ -1382,13 +1465,143 @@ namespace Watch_Face_Editor
                                 valueSegmentIndex = (int)(segmentCount * progress);
                                 valueSegmentIndex--;
                                 if (valueSegmentIndex < 0) valueSegmentIndex = 0;
-                                if (valueSegmentIndex >= segmentCount) valueImgIndex = (int)(segmentCount - 1);
+                                if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
                             }
 
                             DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
                                 img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
                                 progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
                                 showCentrHend, "ElementHumidity");
+
+
+                            break;
+                        #endregion
+
+                        #region ElementAltimeter
+                        case "ElementAltimeter":
+                            ElementAltimeter activityElementAltimeter = (ElementAltimeter)element;
+                            if (!activityElementAltimeter.visible) continue;
+
+                            img_level = activityElementAltimeter.Images;
+                            img_prorgess = activityElementAltimeter.Segments;
+                            img_number = activityElementAltimeter.Number;
+                            img_pointer = activityElementAltimeter.Pointer;
+                            icon = activityElementAltimeter.Icon;
+
+                            elementValue = WatchFacePreviewSet.Weather.AirPressure;
+                            value_lenght = 4;
+                            goal = 1200-200;
+                            progress = (float)WatchFacePreviewSet.Weather.AirPressure / 1000f;
+
+                            if (img_level != null && img_level.image_length > 0)
+                            {
+                                imgCount = img_level.image_length;
+                                valueImgIndex = (int)((imgCount - 1) * progress);
+                                if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                            }
+                            if (img_prorgess != null && img_prorgess.image_length > 0)
+                            {
+                                segmentCount = img_prorgess.image_length;
+                                valueSegmentIndex = (int)((segmentCount - 1) * progress);
+                                if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
+                            }
+
+                            DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                                img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                                progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                                showCentrHend, "ElementAltimeter");
+
+
+                            break;
+                        #endregion
+
+                        #region ElementSunrise
+                        case "ElementSunrise":
+                            ElementSunrise activityElementSunrise = (ElementSunrise)element;
+                            if (!activityElementSunrise.visible) continue;
+
+                            img_level = activityElementSunrise.Images;
+                            img_prorgess = activityElementSunrise.Segments;
+                            img_number = activityElementSunrise.Sunrise;
+                            img_number_target = activityElementSunrise.Sunset;
+                            img_pointer = activityElementSunrise.Pointer;
+                            icon = activityElementSunrise.Icon;
+
+                            int minSunrise = WatchFacePreviewSet.Time.Minutes;
+                            int hourSunrise = WatchFacePreviewSet.Time.Hours;
+
+                            DrawSunrise(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                                img_pointer, icon, hourSunrise, minSunrise, BBorder, showProgressArea, showCentrHend);
+
+
+                            break;
+                        #endregion
+
+                        #region ElementWind
+                        case "ElementWind":
+                            ElementWind activityElementWind = (ElementWind)element;
+                            if (!activityElementWind.visible) continue;
+
+                            img_level = activityElementWind.Images;
+                            img_prorgess = activityElementWind.Segments;
+                            img_number = activityElementWind.Number;
+                            img_pointer = activityElementWind.Pointer;
+                            icon = activityElementWind.Icon;
+
+                            elementValue = WatchFacePreviewSet.Weather.WindForce;
+                            value_lenght = 1;
+                            goal = 6;
+                            progress = (float)WatchFacePreviewSet.Weather.WindForce / 6.57f;
+
+                            if (img_level != null && img_level.image_length > 0)
+                            {
+                                imgCount = img_level.image_length;
+                                valueImgIndex = (int)((imgCount - 1) * progress);
+                                if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                            }
+                            if (img_prorgess != null && img_prorgess.image_length > 0)
+                            {
+                                segmentCount = img_prorgess.image_length;
+                                valueSegmentIndex = (int)((segmentCount - 1) * progress);
+                                if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
+                            }
+
+                            DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                                img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                                progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                                showCentrHend, "ElementWind");
+
+
+                            break;
+                        #endregion
+
+                        #region ElementMoon
+                        case "ElementMoon":
+                            ElementMoon activityElementMoon = (ElementMoon)element;
+                            if (!activityElementMoon.visible) continue;
+
+                            img_level = activityElementMoon.Images;
+
+                            elementValue = 100;
+                            value_lenght = 3;
+                            goal = 100;
+                            //progress = 0;
+
+                            int year = WatchFacePreviewSet.Date.Year;
+                            int month = WatchFacePreviewSet.Date.Month;
+                            int day = WatchFacePreviewSet.Date.Day;
+                            double moon_age = MoonAge(day, month, year) - 1;
+                            int moonPhase = (int)(9 * moon_age / 29);
+
+                            imgCount = img_level.image_length;
+                            valueImgIndex = (int)((imgCount - 1) * moonPhase/8);
+                            if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+
+
+                            DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                                img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                                progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                                showCentrHend, "ElementMoon");
 
 
                             break;
@@ -1695,8 +1908,6 @@ namespace Watch_Face_Editor
                     }
                 }
 
-
-
             }
 
             src.Dispose();
@@ -1917,6 +2128,201 @@ namespace Watch_Face_Editor
             src.Dispose();
         }
 
+        private void DrawSunrise(Graphics gPanel, hmUI_widget_IMG_LEVEL images, hmUI_widget_IMG_PROGRESS segments,
+            hmUI_widget_IMG_NUMBER sunrise, hmUI_widget_IMG_NUMBER sunset, hmUI_widget_IMG_POINTER pointer,
+            hmUI_widget_IMG icon, int hour, int minute, bool BBorder, bool showProgressArea, bool showCentrHend)
+        {
+            TimeSpan time_now = new TimeSpan(hour, minute, 0);
+            TimeSpan time_sunrise = new TimeSpan(5, 30, 0);
+            TimeSpan time_sunset = new TimeSpan(19, 30, 0);
+            TimeSpan day_lenght = time_sunset - time_sunrise;
+            TimeSpan day_progress = time_now - time_sunrise;
+
+            bool sun = false;
+            if(time_now >= time_sunrise && time_now <= time_sunset) sun = true;
+
+            float progress = (float)(day_progress.TotalSeconds / day_lenght.TotalSeconds);
+            if (progress > 1) progress = 1;
+            if (progress < 0) progress = 0;
+            Bitmap src = new Bitmap(1, 1);
+
+            for (int index = 1; index <= 10; index++)
+            {
+                if (sun && images != null && images.img_First != null && images.img_First.Length > 0 &&
+                    index == images.position && images.visible)
+                {
+                    int imgCount = images.image_length;
+                    int valueImgIndex = (int)((imgCount - 1) * progress);
+                    if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+
+                    if (valueImgIndex >= 0)
+                    {
+                        int imageIndex = ListImages.IndexOf(images.img_First);
+                        int x = images.X;
+                        int y = images.Y;
+                        imageIndex = imageIndex + valueImgIndex;
+
+                        if (imageIndex < ListImagesFullName.Count)
+                        {
+                            src = OpenFileStream(ListImagesFullName[imageIndex]);
+                            gPanel.DrawImage(src, x, y);
+                            //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                        }
+                    }
+                }
+
+                if (sun && segments != null && segments.img_First != null && segments.img_First.Length > 0 &&
+                    index == segments.position && segments.visible)
+                {
+                    int segmentCount = segments.image_length;
+                    int valueSegmentIndex = (int)((segmentCount - 1) * progress);
+                    if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
+
+                    if (valueSegmentIndex >= 0)
+                    {
+                        int imageIndex = ListImages.IndexOf(segments.img_First);
+                        for (int i = 0; i <= valueSegmentIndex; i++)
+                        {
+                            int imgIndex = imageIndex + i;
+
+                            if (imgIndex < ListImagesFullName.Count && i < segments.X.Count)
+                            {
+                                int x = segments.X[i];
+                                int y = segments.Y[i];
+                                src = OpenFileStream(ListImagesFullName[imgIndex]);
+                                gPanel.DrawImage(src, x, y);
+                                //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                            }
+                        }
+                    }
+                }
+
+                if (sunrise != null && sunrise.img_First != null && sunrise.img_First.Length > 0 &&
+                    index == sunrise.position && sunrise.visible)
+                {
+                    float sunrise_value = 5.30f;
+                    int image_Index = ListImages.IndexOf(sunrise.img_First);
+                    int pos_x = sunrise.imageX;
+                    int pos_y = sunrise.imageY;
+                    int sunrise_spasing = sunrise.space;
+                    int sunrise_alignment = AlignmentToInt(sunrise.align);
+                    //bool distance_addZero = img_number.zero;
+                    bool sunrise_addZero = true;
+                    int sunrise_separator_index = -1;
+                    if (sunrise.unit != null && sunrise.unit.Length > 0)
+                        sunrise_separator_index = ListImages.IndexOf(sunrise.unit);
+                    int decumalPoint_index = -1;
+                    if (sunrise.dot_image != null && sunrise.dot_image.Length > 0)
+                        decumalPoint_index = ListImages.IndexOf(sunrise.dot_image);
+
+                    Draw_dagital_text_dacumal(gPanel, image_Index, pos_x, pos_y,
+                        sunrise_spasing, sunrise_alignment, sunrise_value, sunrise_addZero, 4,
+                        sunrise_separator_index, decumalPoint_index, 2, BBorder, "ElementSunrise");
+
+                    if (sunrise.icon != null && sunrise.icon.Length > 0)
+                    {
+                        image_Index = ListImages.IndexOf(sunrise.icon);
+                        pos_x = sunrise.iconPosX;
+                        pos_y = sunrise.iconPosY;
+
+                        src = OpenFileStream(ListImagesFullName[image_Index]);
+                        gPanel.DrawImage(src, pos_x, pos_y);
+                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                    }
+                }
+                
+                if (sunset != null && sunset.img_First != null && sunset.img_First.Length > 0 &&
+                    index == sunset.position && sunset.visible)
+                {
+                    float sunset_value = 19.30f;
+                    int image_Index = ListImages.IndexOf(sunset.img_First);
+                    int pos_x = sunset.imageX;
+                    int pos_y = sunset.imageY;
+                    int sunset_spasing = sunset.space;
+                    int sunset_alignment = AlignmentToInt(sunset.align);
+                    //bool distance_addZero = img_number.zero;
+                    bool sunset_addZero = true;
+                    int sunset_separator_index = -1;
+                    if (sunset.unit != null && sunset.unit.Length > 0)
+                        sunset_separator_index = ListImages.IndexOf(sunset.unit);
+                    int decumalPoint_index = -1;
+                    if (sunset.dot_image != null && sunset.dot_image.Length > 0)
+                        decumalPoint_index = ListImages.IndexOf(sunset.dot_image);
+
+                    Draw_dagital_text_dacumal(gPanel, image_Index, pos_x, pos_y,
+                        sunset_spasing, sunset_alignment, sunset_value, sunset_addZero, 4,
+                        sunset_separator_index, decumalPoint_index, 2, BBorder, "ElementSunrise");
+
+                    if (sunset.icon != null && sunset.icon.Length > 0)
+                    {
+                        image_Index = ListImages.IndexOf(sunset.icon);
+                        pos_x = sunset.iconPosX;
+                        pos_y = sunset.iconPosY;
+
+                        src = OpenFileStream(ListImagesFullName[image_Index]);
+                        gPanel.DrawImage(src, pos_x, pos_y);
+                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                    }
+                }
+
+                if (sun && pointer != null && pointer.src != null && pointer.src.Length > 0 &&
+                    index == pointer.position && pointer.visible)
+                {
+                    int x = pointer.center_x;
+                    int y = pointer.center_y;
+                    int offsetX = pointer.pos_x;
+                    int offsetY = pointer.pos_y;
+                    int startAngle = pointer.start_angle;
+                    int endAngle = pointer.end_angle;
+                    int image_index = ListImages.IndexOf(pointer.src);
+
+                    float angle = startAngle + progress * (endAngle - startAngle);
+
+                    if (pointer.scale != null && pointer.scale.Length > 0)
+                    {
+                        int image_index_scale = ListImages.IndexOf(pointer.scale);
+                        int x_scale = pointer.scale_x;
+                        int y_scale = pointer.scale_y;
+
+                        src = OpenFileStream(ListImagesFullName[image_index_scale]);
+                        gPanel.DrawImage(src, x_scale, y_scale);
+                    }
+
+                    DrawAnalogClock(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+
+                    if (pointer.cover_path != null && pointer.cover_path.Length > 0)
+                    {
+                        image_index = ListImages.IndexOf(pointer.cover_path);
+                        x = pointer.cover_x;
+                        y = pointer.cover_y;
+
+                        src = OpenFileStream(ListImagesFullName[image_index]);
+                        gPanel.DrawImage(src, x, y);
+                    }
+                }
+
+                if (icon != null && icon.src != null && icon.src.Length > 0 &&
+                    index == icon.position && icon.visible)
+                {
+                    int imageIndex = ListImages.IndexOf(icon.src);
+                    int x = icon.x;
+                    int y = icon.y;
+
+                    if (imageIndex < ListImagesFullName.Count)
+                    {
+                        src = OpenFileStream(ListImagesFullName[imageIndex]);
+                        gPanel.DrawImage(src, x, y);
+                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                    }
+                }
+
+
+
+            }
+
+            src.Dispose();
+        }
+
         /// <summary>Рисует стрелки</summary>
         /// <param name="graphics">Поверхность для рисования</param>
         /// <param name="x">Центр стрелки X</param>
@@ -2043,6 +2449,7 @@ namespace Watch_Face_Editor
             if (elementName == "ElementStand") value_lenght = 5;
             if (elementName == "ElementUVIndex") value_lenght = 2;
             if (elementName == "ElementHumidity") value_lenght = 3;
+            if (elementName == "ElementWind") value_lenght = 2;
             int DateLenght = width * value_lenght;
             //int DateLenght = width * value_lenght + 1;
             if (spacing != 0) DateLenght = DateLenght + spacing * (value_lenght - 1);
@@ -2598,7 +3005,7 @@ namespace Watch_Face_Editor
         /// <param name="BBorder">Рисовать рамку по координатам, вокруг элементов с выравниванием</param>
         private int Draw_dagital_text_dacumal(Graphics graphics, int image_index, int x, int y, int spacing,
             int alignment, double value, bool addZero, int value_lenght, int separator_index,
-            int decimalPoint_index, int decCount, bool BBorder)
+            int decimalPoint_index, int decCount, bool BBorder, string elementName = "")
         {
             Logger.WriteLine("* Draw_dagital_text");
             value = Math.Round(value, decCount, MidpointRounding.AwayFromZero);
@@ -2623,13 +3030,13 @@ namespace Watch_Face_Editor
                     data_numberS = data_numberS + "0";
                 }
             }
-            //if (addZero)
-            //{
-            //    while (data_numberS.Length <= value_lenght)
-            //    {
-            //        data_numberS = "0" + data_numberS;
-            //    }
-            //}
+            if (addZero)
+            {
+                while (data_numberS.Length <= value_lenght)
+                {
+                    data_numberS = "0" + data_numberS;
+                }
+            }
             int DateLenghtReal = 0;
             int _number;
             int i;
@@ -2674,19 +3081,17 @@ namespace Watch_Face_Editor
             int width = src.Width;
             int height = src.Height;
 
-            int DateLenght = 4 * width;
-            if (spacing != 0) DateLenght = DateLenght + 2 * spacing;
+            int DateLenght = 4 * width + 2 * spacing;
+            if(elementName == "ElementSunrise") DateLenght = 5 * width + 3 * spacing;
             if (decimalPoint_index >= 0 && decimalPoint_index < ListImagesFullName.Count)
             {
                 src = OpenFileStream(ListImagesFullName[decimalPoint_index]);
-                DateLenght = DateLenght + src.Width;
-                if (spacing > 0) DateLenght = DateLenght + spacing;
+                DateLenght = DateLenght + src.Width + spacing;
             }
             if (separator_index >= 0 && separator_index < ListImagesFullName.Count)
             {
                 src = OpenFileStream(ListImagesFullName[separator_index]);
-                DateLenght = DateLenght + src.Width + src.Width;
-                if (spacing > 0) DateLenght = DateLenght + spacing + spacing;
+                DateLenght = DateLenght + src.Width + src.Width + spacing + spacing;
             }
 
             int PointX = 0;
@@ -3341,5 +3746,49 @@ namespace Watch_Face_Editor
 
             return returnBitmap;
         }
+
+        #region Moom phase
+        private int JulianDate(int d, int m, int y)
+        {
+            int mm, yy;
+            int k1, k2, k3;
+            int j;
+
+            yy = y - (int)((12 - m) / 10);
+            mm = m + 9;
+            if (mm >= 12)
+            {
+                mm = mm - 12;
+            }
+            k1 = (int)(365.25 * (yy + 4712));
+            k2 = (int)(30.6001 * mm + 0.5);
+            k3 = (int)((int)((yy / 100) + 49) * 0.75) - 38;
+            // 'j' for dates in Julian calendar:
+            j = k1 + k2 + d + 59;
+            if (j > 2299160)
+            {
+                // For Gregorian calendar:
+                j = j - k3; // 'j' is the Julian date at 12h UT (Universal Time)
+            }
+            return j;
+        }
+        private double MoonAge(int d, int m, int y)
+        {
+            double ag = 0;
+            int j = JulianDate(d, m, y);
+            //Calculate the approximate phase of the moon
+            double ip = (j + 4.867) / 29.53059;
+            ip = ip - Math.Floor(ip);
+            //After several trials I've seen to add the following lines, 
+            //which gave the result was not bad 
+            if (ip < 0.5)
+                ag = ip * 29.53059 + 29.53059 / 2;
+            else
+                ag = ip * 29.53059 - 29.53059 / 2;
+            // Moon's age in days
+            ag = Math.Floor(ag) + 1;
+            return ag;
+        }
+        #endregion
     }
 }

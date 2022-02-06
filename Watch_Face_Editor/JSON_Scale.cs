@@ -124,6 +124,7 @@ namespace Watch_Face_Editor
                     Scale_IMG_CLICK(elementShortcuts.Countdown, scale);
                     Scale_IMG_CLICK(elementShortcuts.Stopwatch, scale);
                     break;
+
                 case "ElementSteps":
                     ElementSteps elementSteps = (ElementSteps)elements;
                     Scale_IMG_LEVEL(elementSteps.Images, scale);
@@ -207,6 +208,25 @@ namespace Watch_Face_Editor
                     ElementSpO2 elementSpO2 = (ElementSpO2)elements;
                     Scale_IMG_NUMBER(elementSpO2.Number, scale);
                     break;
+                case "ElementStress":
+                    ElementStress elementStress = (ElementStress)elements;
+                    Scale_IMG_LEVEL(elementStress.Images, scale);
+                    Scale_IMG_PROGRESS(elementStress.Segments, scale);
+                    Scale_IMG_NUMBER(elementStress.Number, scale);
+                    Scale_IMG_POINTER(elementStress.Pointer, scale);
+                    Scale_IMG(elementStress.Icon, scale);
+                    break;
+                case "ElementFatBurning":
+                    ElementFatBurning elementFatBurning = (ElementFatBurning)elements;
+                    Scale_IMG_LEVEL(elementFatBurning.Images, scale);
+                    Scale_IMG_PROGRESS(elementFatBurning.Segments, scale);
+                    Scale_IMG_NUMBER(elementFatBurning.Number, scale);
+                    Scale_IMG_NUMBER(elementFatBurning.Number_Target, scale);
+                    Scale_IMG_POINTER(elementFatBurning.Pointer, scale);
+                    Scale_Circle_Scale(elementFatBurning.Circle_Scale, scale);
+                    Scale_Linear_Scale(elementFatBurning.Linear_Scale, scale);
+                    Scale_IMG(elementFatBurning.Icon, scale);
+                    break;
 
                 case "ElementWeather":
                     ElementWeather elementWeather = (ElementWeather)elements;
@@ -232,6 +252,35 @@ namespace Watch_Face_Editor
                     Scale_IMG_NUMBER(elementHumidity.Number, scale);
                     Scale_IMG_POINTER(elementHumidity.Pointer, scale);
                     Scale_IMG(elementHumidity.Icon, scale);
+                    break;
+                case "ElementAltimeter":
+                    ElementAltimeter Altimeter = (ElementAltimeter)elements;
+                    Scale_IMG_LEVEL(Altimeter.Images, scale);
+                    Scale_IMG_PROGRESS(Altimeter.Segments, scale);
+                    Scale_IMG_NUMBER(Altimeter.Number, scale);
+                    Scale_IMG_POINTER(Altimeter.Pointer, scale);
+                    Scale_IMG(Altimeter.Icon, scale);
+                    break;
+                case "ElementSunrise":
+                    ElementSunrise elementSunrise = (ElementSunrise)elements;
+                    Scale_IMG_LEVEL(elementSunrise.Images, scale);
+                    Scale_IMG_PROGRESS(elementSunrise.Segments, scale);
+                    Scale_IMG_NUMBER(elementSunrise.Sunrise, scale);
+                    Scale_IMG_NUMBER(elementSunrise.Sunset, scale);
+                    Scale_IMG_POINTER(elementSunrise.Pointer, scale);
+                    Scale_IMG(elementSunrise.Icon, scale);
+                    break;
+                case "ElementWind":
+                    ElementWind elementWind = (ElementWind)elements;
+                    Scale_IMG_LEVEL(elementWind.Images, scale);
+                    Scale_IMG_PROGRESS(elementWind.Segments, scale);
+                    Scale_IMG_NUMBER(elementWind.Number, scale);
+                    Scale_IMG_POINTER(elementWind.Pointer, scale);
+                    Scale_IMG(elementWind.Icon, scale);
+                    break;
+                case "ElementMoon":
+                    ElementMoon elementMoon = (ElementMoon)elements;
+                    Scale_IMG_LEVEL(elementMoon.Images, scale);
                     break;
             }
         }

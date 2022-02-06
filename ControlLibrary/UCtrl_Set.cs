@@ -374,9 +374,9 @@ namespace ControlLibrary
 
             numericUpDown_PAI_Set.Value = rnd.Next(0, 150);
             numericUpDown_StandUp_Set.Value = rnd.Next(0, 13);
-            numericUpDown_Stress_Set.Value = rnd.Next(0, 13);
+            numericUpDown_Stress_Set.Value = rnd.Next(0, 101);
             //numericUpDown_ActivityGoal_Set.Value = rnd.Next(0, 13);
-            numericUpDown_FatBurning_Set.Value = rnd.Next(0, 13);
+            numericUpDown_FatBurning_Set.Value = rnd.Next(0, 35);
 
 
             comboBox_WeatherSet_Icon.SelectedIndex = rnd.Next(0, 29);

@@ -117,25 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="button_Linear_Scale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 24</value>
-  </data>
-  <data name="button_Linear_Scale.Text" xml:space="preserve">
-    <value>Barra di avanzamento lineare</value>
-  </data>
   <data name="button_Images.Text" xml:space="preserve">
-    <value>Immagini</value>
+    <value>Images</value>
   </data>
   <data name="button_Segments.Text" xml:space="preserve">
-    <value>Immagini indipendenti</value>
+    <value>Independent images</value>
   </data>
   <data name="button_Number.Text" xml:space="preserve">
-    <value>Valori numerici</value>
+    <value>Numerical values</value>
   </data>
-  <data name="button_Number_Target.Text" xml:space="preserve">
-    <value>Valori numerici (target)</value>
-  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="button_Pointer.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
@@ -178,18 +169,47 @@
 </value>
   </data>
   <data name="button_Pointer.Text" xml:space="preserve">
-    <value>Puntatore</value>
-  </data>
-  <data name="button_Circle_Scale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 24</value>
-  </data>
-  <data name="button_Circle_Scale.Text" xml:space="preserve">
-    <value>Barra di avanzamento circolare</value>
+    <value>Pointer</value>
   </data>
   <data name="button_Icon.Text" xml:space="preserve">
-    <value>Icona</value>
+    <value>Icon</value>
+  </data>
+  <data name="button_ElementName.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAACw8AAAsPAZL5A6UAAAW6aVRYdFhNTDpjb20uYWRvYmUueG1wAAAAAAA8P3hwYWNr
+        ZXQgYmVnaW49Iu+7vyIgaWQ9Ilc1TTBNcENlaGlIenJlU3pOVGN6a2M5ZCI/PiA8eDp4bXBtZXRhIHht
+        bG5zOng9ImFkb2JlOm5zOm1ldGEvIiB4OnhtcHRrPSJBZG9iZSBYTVAgQ29yZSA2LjAtYzAwMiA3OS4x
+        NjQ0NjAsIDIwMjAvMDUvMTItMTY6MDQ6MTcgICAgICAgICI+IDxyZGY6UkRGIHhtbG5zOnJkZj0iaHR0
+        cDovL3d3dy53My5vcmcvMTk5OS8wMi8yMi1yZGYtc3ludGF4LW5zIyI+IDxyZGY6RGVzY3JpcHRpb24g
+        cmRmOmFib3V0PSIiIHhtbG5zOnhtcD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wLyIgeG1sbnM6
+        ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50cy8xLjEvIiB4bWxuczpwaG90b3Nob3A9Imh0dHA6
+        Ly9ucy5hZG9iZS5jb20vcGhvdG9zaG9wLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUu
+        Y29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdEV2dD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NU
+        eXBlL1Jlc291cmNlRXZlbnQjIiB4bXA6Q3JlYXRvclRvb2w9IkFkb2JlIFBob3Rvc2hvcCAyMS4yIChX
+        aW5kb3dzKSIgeG1wOkNyZWF0ZURhdGU9IjIwMjItMDItMDFUMTk6MTk6NTQrMDI6MDAiIHhtcDpNb2Rp
+        ZnlEYXRlPSIyMDIyLTAyLTAxVDE5OjIxOjU5KzAyOjAwIiB4bXA6TWV0YWRhdGFEYXRlPSIyMDIyLTAy
+        LTAxVDE5OjIxOjU5KzAyOjAwIiBkYzpmb3JtYXQ9ImltYWdlL3BuZyIgcGhvdG9zaG9wOkNvbG9yTW9k
+        ZT0iMSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo1M2EyMjhhNy1kMTYxLTAwNGQtODY1ZS01YzMx
+        NjhhMmU5MWYiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6YTc4OWI5MGYtZGVkMy02NzQ4LWI1YjAt
+        ZjJhODAzNTIxMWYzIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9InhtcC5kaWQ6YTc4OWI5MGYtZGVk
+        My02NzQ4LWI1YjAtZjJhODAzNTIxMWYzIj4gPHhtcE1NOkhpc3Rvcnk+IDxyZGY6U2VxPiA8cmRmOmxp
+        IHN0RXZ0OmFjdGlvbj0iY3JlYXRlZCIgc3RFdnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDphNzg5YjkwZi1k
+        ZWQzLTY3NDgtYjViMC1mMmE4MDM1MjExZjMiIHN0RXZ0OndoZW49IjIwMjItMDItMDFUMTk6MTk6NTQr
+        MDI6MDAiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBob3Rvc2hvcCAyMS4yIChXaW5kb3dzKSIv
+        PiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0ic2F2ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6NTNh
+        MjI4YTctZDE2MS0wMDRkLTg2NWUtNWMzMTY4YTJlOTFmIiBzdEV2dDp3aGVuPSIyMDIyLTAyLTAxVDE5
+        OjIxOjU5KzAyOjAwIiBzdEV2dDpzb2Z0d2FyZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgMjEuMiAoV2lu
+        ZG93cykiIHN0RXZ0OmNoYW5nZWQ9Ii8iLz4gPC9yZGY6U2VxPiA8L3htcE1NOkhpc3Rvcnk+IDwvcmRm
+        OkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+V91Q
+        AwAAAQxJREFUOE+lkz1OAkEYhqejUaBwa3ssKOUc4hE8ASYW3IFCCpQbEHpqL8Ad/ImHEJr1eZZZMvtD
+        YvBNnt3vdzL77UyoKcvz3PceNFJ2MXflo0038Ak7eIYRXES0jZn7gAFUlIHN3zA0cELmrHERe456hR+w
+        oGMgeas0Zo219hTqg1ubF14Ia1jBF5gTbWPmlLX29HTuwOnc6qAH0N8U3kHaxswpa/XtDZPoXOqgBUzh
+        DcodaBszp6y1x97GAn9RZYH6JygnPINtRDudeuUT6kO8hnewIMWYOVUZokp/4xP4zW2YK3/jCxx1zkFq
+        HOl/HeVS7mQJrZcJ3PbJy5TK4dzDY2QMXWjKK3o+efgF9PKMo9tNWosAAAAASUVORK5CYII=
+</value>
   </data>
   <data name="button_ElementName.Text" xml:space="preserve">
-    <value>Passi</value>
+    <value>Stress</value>
   </data>
 </root>

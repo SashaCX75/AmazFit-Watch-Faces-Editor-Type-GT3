@@ -118,9 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="UCtrl_Text_Opt_Year_false" xml:space="preserve">
-    <value>Añadir ceros a la izquierda</value>
+    <value>Add leading zeros</value>
   </data>
   <data name="UCtrl_Text_Opt_Year_true" xml:space="preserve">
-    <value>Año completo</value>
+    <value>Full spelling of the year</value>
   </data>
 </root>

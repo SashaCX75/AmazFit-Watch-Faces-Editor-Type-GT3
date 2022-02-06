@@ -117,11 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="tabPage_Edit.Text" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="tabPageConverting.Text" xml:space="preserve">
+    <value>Converting</value>
+  </data>
+  <data name="tabPage_Settings.Text" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="tabPage_About.Text" xml:space="preserve">
+    <value>About</value>
+  </data>
   <data name="button_SaveJson.Text" xml:space="preserve">
     <value>Save Json</value>
   </data>
   <data name="button_OpenDir.Text" xml:space="preserve">
     <value>Open Folder</value>
+  </data>
+  <data name="tabPage_Edit_Elements.Text" xml:space="preserve">
+    <value>Editing</value>
+  </data>
+  <data name="groupBox_AddElemets.Text" xml:space="preserve">
+    <value>Add items to watch face</value>
   </data>
   <data name="comboBox_AddBackground.Items" xml:space="preserve">
     <value>Background</value>
@@ -154,10 +172,13 @@
     <value>Sunrise / Sunset</value>
   </data>
   <data name="comboBox_AddAir.Items5" xml:space="preserve">
-    <value>Wind</value>
+    <value>Wind force</value>
   </data>
   <data name="comboBox_AddAir.Items6" xml:space="preserve">
-    <value>Pressure</value>
+    <value>Barometer</value>
+  </data>
+  <data name="comboBox_AddAir.Items7" xml:space="preserve">
+    <value>Moon phases</value>
   </data>
   <data name="comboBox_AddActivity.Items" xml:space="preserve">
     <value>Activity</value>
@@ -204,9 +225,6 @@
   <data name="comboBox_AddTime.Items2" xml:space="preserve">
     <value>Digital time</value>
   </data>
-  <data name="groupBox_AddElemets.Text" xml:space="preserve">
-    <value>Add items to watch face</value>
-  </data>
   <data name="button_CopyAOD.Text" xml:space="preserve">
     <value>Copy items to AOD</value>
   </data>
@@ -220,8 +238,8 @@
   <data name="radioButton_ScreenNormal.Text" xml:space="preserve">
     <value>Main screen</value>
   </data>
-  <data name="tabPage_Edit_Elements.Text" xml:space="preserve">
-    <value>Editing</value>
+  <data name="tabPage_Show_Set.Text" xml:space="preserve">
+    <value>Data for preview</value>
   </data>
   <data name="userCtrl_Set12.ButtonText" xml:space="preserve">
     <value>Values 12</value>
@@ -268,9 +286,6 @@
   <data name="button_JsonPreview_Write.Text" xml:space="preserve">
     <value>Save Preview values</value>
   </data>
-  <data name="tabPage_Show_Set.Text" xml:space="preserve">
-    <value>Data for preview</value>
-  </data>
   <data name="button_Add_Images.Text" xml:space="preserve">
     <value>Add images</value>
   </data>
@@ -289,6 +304,9 @@
   <data name="Column1.HeaderText" xml:space="preserve">
     <value>Image</value>
   </data>
+  <data name="contextMenuStrip_RemoveImage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 48</value>
+  </data>
   <data name="удалитьИзображениеToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>166, 22</value>
   </data>
@@ -301,14 +319,8 @@
   <data name="обновитьСписокИзображенийToolStripMenuItem.Text" xml:space="preserve">
     <value>Update image list</value>
   </data>
-  <data name="contextMenuStrip_RemoveImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 48</value>
-  </data>
   <data name="button_JSON.Text" xml:space="preserve">
     <value>Open project</value>
-  </data>
-  <data name="tabPage_Edit.Text" xml:space="preserve">
-    <value>Edit</value>
   </data>
   <data name="label_ConvertingHelp03.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 13</value>
@@ -337,6 +349,9 @@
   <data name="button_Converting.Text" xml:space="preserve">
     <value>Convert</value>
   </data>
+  <data name="groupBox10.Text" xml:space="preserve">
+    <value>Target model</value>
+  </data>
   <data name="radioButton_ConvertingOutput_Custom.Location" type="System.Drawing.Point, System.Drawing">
     <value>395, 19</value>
   </data>
@@ -346,8 +361,8 @@
   <data name="radioButton_ConvertingOutput_Custom.Text" xml:space="preserve">
     <value>Custom size</value>
   </data>
-  <data name="groupBox10.Text" xml:space="preserve">
-    <value>Target model</value>
+  <data name="groupBox9.Text" xml:space="preserve">
+    <value>Initial model</value>
   </data>
   <data name="radioButton_ConvertingInput_Custom.Location" type="System.Drawing.Point, System.Drawing">
     <value>395, 19</value>
@@ -357,12 +372,6 @@
   </data>
   <data name="radioButton_ConvertingInput_Custom.Text" xml:space="preserve">
     <value>Custom size</value>
-  </data>
-  <data name="groupBox9.Text" xml:space="preserve">
-    <value>Initial model</value>
-  </data>
-  <data name="tabPageConverting.Text" xml:space="preserve">
-    <value>Converting</value>
   </data>
   <data name="button_Reset.Text" xml:space="preserve">
     <value>Reset</value>
@@ -376,6 +385,9 @@
   <data name="checkBox_AllWidgetsInGif.Text" xml:space="preserve">
     <value>Show all elements of edited zones when saving a gif file</value>
   </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Watch image</value>
+  </data>
   <data name="button_WatchSkin_PathGet.Text" xml:space="preserve">
     <value>Browse</value>
   </data>
@@ -384,9 +396,6 @@
   </data>
   <data name="checkBox_WatchSkin_Use.Text" xml:space="preserve">
     <value>Use watch image when saving *.png and *.gif</value>
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Watch image</value>
   </data>
   <data name="label355.Size" type="System.Drawing.Size, System.Drawing">
     <value>104, 13</value>
@@ -399,6 +408,9 @@
   </data>
   <data name="checkBox_ShowIn12hourFormat.Text" xml:space="preserve">
     <value>If possible, display time in 12-hour format</value>
+  </data>
+  <data name="groupBox8.Text" xml:space="preserve">
+    <value>Highlighting type of the shortcut area</value>
   </data>
   <data name="checkBox_Shortcuts_In_Gif.Size" type="System.Drawing.Size, System.Drawing">
     <value>206, 17</value>
@@ -424,9 +436,6 @@
   <data name="checkBox_Shortcuts_Area.Text" xml:space="preserve">
     <value>Dotted grid</value>
   </data>
-  <data name="groupBox8.Text" xml:space="preserve">
-    <value>Highlighting type of the shortcut area</value>
-  </data>
   <data name="checkBox_JsonWarnings.Size" type="System.Drawing.Size, System.Drawing">
     <value>203, 17</value>
   </data>
@@ -444,6 +453,9 @@
   </data>
   <data name="label356.Text" xml:space="preserve">
     <value>Language:</value>
+  </data>
+  <data name="groupBox7.Text" xml:space="preserve">
+    <value>Action after packing the watch face</value>
   </data>
   <data name="radioButton_Settings_Pack_DoNotning.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 17</value>
@@ -463,8 +475,8 @@
   <data name="radioButton_Settings_Pack_Dialog.Text" xml:space="preserve">
     <value>Let me choose</value>
   </data>
-  <data name="groupBox7.Text" xml:space="preserve">
-    <value>Action after packing the watch face</value>
+  <data name="groupBox6.Text" xml:space="preserve">
+    <value>After openning the project</value>
   </data>
   <data name="radioButton_Settings_Open_Download_Your_File.Size" type="System.Drawing.Size, System.Drawing">
     <value>166, 17</value>
@@ -490,8 +502,8 @@
   <data name="radioButton_Settings_Open_Dialog.Text" xml:space="preserve">
     <value>Let me choose</value>
   </data>
-  <data name="groupBox6.Text" xml:space="preserve">
-    <value>After openning the project</value>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>Action after unpacking the watch face</value>
   </data>
   <data name="radioButton_Settings_AfterUnpack_DoNothing.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 17</value>
@@ -511,8 +523,8 @@
   <data name="radioButton_Settings_AfterUnpack_Dialog.Text" xml:space="preserve">
     <value>Let me choose</value>
   </data>
-  <data name="groupBox5.Text" xml:space="preserve">
-    <value>Action after unpacking the watch face</value>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Action if the names of the unpacked watch faces match</value>
   </data>
   <data name="radioButton_Settings_Unpack_Replace.Size" type="System.Drawing.Size, System.Drawing">
     <value>65, 17</value>
@@ -531,12 +543,6 @@
   </data>
   <data name="radioButton_Settings_Unpack_Dialog.Text" xml:space="preserve">
     <value>Let me choose</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Action if the names of the unpacked watch faces match</value>
-  </data>
-  <data name="tabPage_Settings.Text" xml:space="preserve">
-    <value>Settings</value>
   </data>
   <data name="label415.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 13</value>
@@ -570,9 +576,6 @@
   </data>
   <data name="label406.Text" xml:space="preserve">
     <value>Version:</value>
-  </data>
-  <data name="tabPage_About.Text" xml:space="preserve">
-    <value>About</value>
   </data>
   <data name="checkBox_WidgetsArea.Text" xml:space="preserve">
     <value>Highlight editable zones</value>
@@ -624,7 +627,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
-        DQAAAk1TRnQBSQFMAgEBBgEAATQBKAE0ASgBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAATwBKAE8ASgBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -1941,9 +1944,5 @@
         AAAAAAAAAAAAAO+BPCbvgT1I74I+SO+BPSYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8PwAA4AcAAMAD
         AACAAQAAgAEAAIABAAAAAAAAAAAAAAAAAAAAAAAAgAEAAIABAACAAQAAwAMAAOAHAAD8PwAA
 </value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
 </root>

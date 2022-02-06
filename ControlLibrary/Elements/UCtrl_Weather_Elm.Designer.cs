@@ -73,11 +73,10 @@ namespace ControlLibrary
             // 
             // pictureBox_Arrow_Down
             // 
-            resources.ApplyResources(this.pictureBox_Arrow_Down, "pictureBox_Arrow_Down");
             this.pictureBox_Arrow_Down.BackgroundImage = global::ControlLibrary.Properties.Resources.arrow_down;
+            resources.ApplyResources(this.pictureBox_Arrow_Down, "pictureBox_Arrow_Down");
             this.pictureBox_Arrow_Down.Name = "pictureBox_Arrow_Down";
             this.pictureBox_Arrow_Down.TabStop = false;
-            this.toolTip_Weather.SetToolTip(this.pictureBox_Arrow_Down, resources.GetString("pictureBox_Arrow_Down.ToolTip"));
             this.pictureBox_Arrow_Down.Click += new System.EventHandler(this.button_ElementName_Click);
             // 
             // pictureBox_NotShow
@@ -86,16 +85,14 @@ namespace ControlLibrary
             this.pictureBox_NotShow.BackgroundImage = global::ControlLibrary.Properties.Resources.outline_visibility_off_black_24;
             this.pictureBox_NotShow.Name = "pictureBox_NotShow";
             this.pictureBox_NotShow.TabStop = false;
-            this.toolTip_Weather.SetToolTip(this.pictureBox_NotShow, resources.GetString("pictureBox_NotShow.ToolTip"));
             this.pictureBox_NotShow.Click += new System.EventHandler(this.pictureBox_NotShow_Click);
             // 
             // pictureBox_Arrow_Right
             // 
-            resources.ApplyResources(this.pictureBox_Arrow_Right, "pictureBox_Arrow_Right");
             this.pictureBox_Arrow_Right.BackgroundImage = global::ControlLibrary.Properties.Resources.arrow_right;
+            resources.ApplyResources(this.pictureBox_Arrow_Right, "pictureBox_Arrow_Right");
             this.pictureBox_Arrow_Right.Name = "pictureBox_Arrow_Right";
             this.pictureBox_Arrow_Right.TabStop = false;
-            this.toolTip_Weather.SetToolTip(this.pictureBox_Arrow_Right, resources.GetString("pictureBox_Arrow_Right.ToolTip"));
             this.pictureBox_Arrow_Right.Click += new System.EventHandler(this.button_ElementName_Click);
             // 
             // pictureBox_Show
@@ -104,22 +101,20 @@ namespace ControlLibrary
             this.pictureBox_Show.BackgroundImage = global::ControlLibrary.Properties.Resources.outline_visibility_black_24;
             this.pictureBox_Show.Name = "pictureBox_Show";
             this.pictureBox_Show.TabStop = false;
-            this.toolTip_Weather.SetToolTip(this.pictureBox_Show, resources.GetString("pictureBox_Show.ToolTip"));
             this.pictureBox_Show.Click += new System.EventHandler(this.pictureBox_Show_Click);
             // 
             // pictureBox_Del
             // 
-            resources.ApplyResources(this.pictureBox_Del, "pictureBox_Del");
             this.pictureBox_Del.BackgroundImage = global::ControlLibrary.Properties.Resources.outline_delete_forever_black_24;
+            resources.ApplyResources(this.pictureBox_Del, "pictureBox_Del");
             this.pictureBox_Del.Name = "pictureBox_Del";
             this.pictureBox_Del.TabStop = false;
-            this.toolTip_Weather.SetToolTip(this.pictureBox_Del, resources.GetString("pictureBox_Del.ToolTip"));
             this.pictureBox_Del.Click += new System.EventHandler(this.pictureBox_Del_Click);
             // 
             // tableLayoutPanel1
             // 
-            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.AllowDrop = true;
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.Controls.Add(this.panel_Text_CityName, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.panel_Number_Min, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel_Images, 0, 0);
@@ -127,18 +122,16 @@ namespace ControlLibrary
             this.tableLayoutPanel1.Controls.Add(this.panel_Number_Max, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.panel_Icon, 0, 5);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.toolTip_Weather.SetToolTip(this.tableLayoutPanel1, resources.GetString("tableLayoutPanel1.ToolTip"));
             this.tableLayoutPanel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragDrop);
             this.tableLayoutPanel1.DragOver += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragOver);
             // 
             // panel_Text_CityName
             // 
-            resources.ApplyResources(this.panel_Text_CityName, "panel_Text_CityName");
             this.panel_Text_CityName.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Text_CityName.Controls.Add(this.button_Text_CityName);
             this.panel_Text_CityName.Controls.Add(this.checkBox_Text_CityName);
+            resources.ApplyResources(this.panel_Text_CityName, "panel_Text_CityName");
             this.panel_Text_CityName.Name = "panel_Text_CityName";
-            this.toolTip_Weather.SetToolTip(this.panel_Text_CityName, resources.GetString("panel_Text_CityName.ToolTip"));
             this.panel_Text_CityName.Click += new System.EventHandler(this.panel_Text_CityName_Click);
             this.panel_Text_CityName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
             this.panel_Text_CityName.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
@@ -146,13 +139,12 @@ namespace ControlLibrary
             // 
             // button_Text_CityName
             // 
-            resources.ApplyResources(this.button_Text_CityName, "button_Text_CityName");
             this.button_Text_CityName.FlatAppearance.BorderSize = 0;
             this.button_Text_CityName.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Text_CityName.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Text_CityName, "button_Text_CityName");
             this.button_Text_CityName.Image = global::ControlLibrary.Properties.Resources.text_fields;
             this.button_Text_CityName.Name = "button_Text_CityName";
-            this.toolTip_Weather.SetToolTip(this.button_Text_CityName, resources.GetString("button_Text_CityName.ToolTip"));
             this.button_Text_CityName.UseVisualStyleBackColor = true;
             this.button_Text_CityName.Click += new System.EventHandler(this.panel_Text_CityName_Click);
             this.button_Text_CityName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -163,18 +155,16 @@ namespace ControlLibrary
             // 
             resources.ApplyResources(this.checkBox_Text_CityName, "checkBox_Text_CityName");
             this.checkBox_Text_CityName.Name = "checkBox_Text_CityName";
-            this.toolTip_Weather.SetToolTip(this.checkBox_Text_CityName, resources.GetString("checkBox_Text_CityName.ToolTip"));
             this.checkBox_Text_CityName.UseVisualStyleBackColor = true;
             this.checkBox_Text_CityName.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
             // 
             // panel_Number_Min
             // 
-            resources.ApplyResources(this.panel_Number_Min, "panel_Number_Min");
             this.panel_Number_Min.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Number_Min.Controls.Add(this.button_Number_Min);
             this.panel_Number_Min.Controls.Add(this.checkBox_Number_Min);
+            resources.ApplyResources(this.panel_Number_Min, "panel_Number_Min");
             this.panel_Number_Min.Name = "panel_Number_Min";
-            this.toolTip_Weather.SetToolTip(this.panel_Number_Min, resources.GetString("panel_Number_Min.ToolTip"));
             this.panel_Number_Min.Click += new System.EventHandler(this.panel_Number_Min_Click);
             this.panel_Number_Min.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
             this.panel_Number_Min.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
@@ -182,13 +172,12 @@ namespace ControlLibrary
             // 
             // button_Number_Min
             // 
-            resources.ApplyResources(this.button_Number_Min, "button_Number_Min");
             this.button_Number_Min.FlatAppearance.BorderSize = 0;
             this.button_Number_Min.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Number_Min.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Number_Min, "button_Number_Min");
             this.button_Number_Min.Image = global::ControlLibrary.Properties.Resources.text_icon;
             this.button_Number_Min.Name = "button_Number_Min";
-            this.toolTip_Weather.SetToolTip(this.button_Number_Min, resources.GetString("button_Number_Min.ToolTip"));
             this.button_Number_Min.UseVisualStyleBackColor = true;
             this.button_Number_Min.Click += new System.EventHandler(this.panel_Number_Min_Click);
             this.button_Number_Min.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -199,16 +188,15 @@ namespace ControlLibrary
             // 
             resources.ApplyResources(this.checkBox_Number_Min, "checkBox_Number_Min");
             this.checkBox_Number_Min.Name = "checkBox_Number_Min";
-            this.toolTip_Weather.SetToolTip(this.checkBox_Number_Min, resources.GetString("checkBox_Number_Min.ToolTip"));
             this.checkBox_Number_Min.UseVisualStyleBackColor = true;
             this.checkBox_Number_Min.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
             // 
             // panel_Images
             // 
-            resources.ApplyResources(this.panel_Images, "panel_Images");
             this.panel_Images.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Images.Controls.Add(this.checkBox_Images);
             this.panel_Images.Controls.Add(this.button_Images);
+            resources.ApplyResources(this.panel_Images, "panel_Images");
             this.panel_Images.Name = "panel_Images";
             this.toolTip_Weather.SetToolTip(this.panel_Images, resources.GetString("panel_Images.ToolTip"));
             this.panel_Images.Click += new System.EventHandler(this.panel_Images_Click);
@@ -220,16 +208,15 @@ namespace ControlLibrary
             // 
             resources.ApplyResources(this.checkBox_Images, "checkBox_Images");
             this.checkBox_Images.Name = "checkBox_Images";
-            this.toolTip_Weather.SetToolTip(this.checkBox_Images, resources.GetString("checkBox_Images.ToolTip"));
             this.checkBox_Images.UseVisualStyleBackColor = true;
             this.checkBox_Images.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
             // 
             // button_Images
             // 
-            resources.ApplyResources(this.button_Images, "button_Images");
             this.button_Images.FlatAppearance.BorderSize = 0;
             this.button_Images.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Images.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Images, "button_Images");
             this.button_Images.Image = global::ControlLibrary.Properties.Resources.images_18;
             this.button_Images.Name = "button_Images";
             this.toolTip_Weather.SetToolTip(this.button_Images, resources.GetString("button_Images.ToolTip"));
@@ -241,12 +228,11 @@ namespace ControlLibrary
             // 
             // panel_Number
             // 
-            resources.ApplyResources(this.panel_Number, "panel_Number");
             this.panel_Number.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Number.Controls.Add(this.button_Number);
             this.panel_Number.Controls.Add(this.checkBox_Number);
+            resources.ApplyResources(this.panel_Number, "panel_Number");
             this.panel_Number.Name = "panel_Number";
-            this.toolTip_Weather.SetToolTip(this.panel_Number, resources.GetString("panel_Number.ToolTip"));
             this.panel_Number.Click += new System.EventHandler(this.panel_Number_Click);
             this.panel_Number.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
             this.panel_Number.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
@@ -254,13 +240,12 @@ namespace ControlLibrary
             // 
             // button_Number
             // 
-            resources.ApplyResources(this.button_Number, "button_Number");
             this.button_Number.FlatAppearance.BorderSize = 0;
             this.button_Number.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Number.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Number, "button_Number");
             this.button_Number.Image = global::ControlLibrary.Properties.Resources.text_icon;
             this.button_Number.Name = "button_Number";
-            this.toolTip_Weather.SetToolTip(this.button_Number, resources.GetString("button_Number.ToolTip"));
             this.button_Number.UseVisualStyleBackColor = true;
             this.button_Number.Click += new System.EventHandler(this.panel_Number_Click);
             this.button_Number.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -271,18 +256,16 @@ namespace ControlLibrary
             // 
             resources.ApplyResources(this.checkBox_Number, "checkBox_Number");
             this.checkBox_Number.Name = "checkBox_Number";
-            this.toolTip_Weather.SetToolTip(this.checkBox_Number, resources.GetString("checkBox_Number.ToolTip"));
             this.checkBox_Number.UseVisualStyleBackColor = true;
             this.checkBox_Number.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
             // 
             // panel_Number_Max
             // 
-            resources.ApplyResources(this.panel_Number_Max, "panel_Number_Max");
             this.panel_Number_Max.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Number_Max.Controls.Add(this.button_Number_Max);
             this.panel_Number_Max.Controls.Add(this.checkBox_Number_Max);
+            resources.ApplyResources(this.panel_Number_Max, "panel_Number_Max");
             this.panel_Number_Max.Name = "panel_Number_Max";
-            this.toolTip_Weather.SetToolTip(this.panel_Number_Max, resources.GetString("panel_Number_Max.ToolTip"));
             this.panel_Number_Max.Click += new System.EventHandler(this.panel_Number_Max_Click);
             this.panel_Number_Max.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
             this.panel_Number_Max.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
@@ -290,13 +273,12 @@ namespace ControlLibrary
             // 
             // button_Number_Max
             // 
-            resources.ApplyResources(this.button_Number_Max, "button_Number_Max");
             this.button_Number_Max.FlatAppearance.BorderSize = 0;
             this.button_Number_Max.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Number_Max.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Number_Max, "button_Number_Max");
             this.button_Number_Max.Image = global::ControlLibrary.Properties.Resources.text_icon;
             this.button_Number_Max.Name = "button_Number_Max";
-            this.toolTip_Weather.SetToolTip(this.button_Number_Max, resources.GetString("button_Number_Max.ToolTip"));
             this.button_Number_Max.UseVisualStyleBackColor = true;
             this.button_Number_Max.Click += new System.EventHandler(this.panel_Number_Max_Click);
             this.button_Number_Max.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -307,18 +289,16 @@ namespace ControlLibrary
             // 
             resources.ApplyResources(this.checkBox_Number_Max, "checkBox_Number_Max");
             this.checkBox_Number_Max.Name = "checkBox_Number_Max";
-            this.toolTip_Weather.SetToolTip(this.checkBox_Number_Max, resources.GetString("checkBox_Number_Max.ToolTip"));
             this.checkBox_Number_Max.UseVisualStyleBackColor = true;
             this.checkBox_Number_Max.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
             // 
             // panel_Icon
             // 
-            resources.ApplyResources(this.panel_Icon, "panel_Icon");
             this.panel_Icon.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Icon.Controls.Add(this.button_Icon);
             this.panel_Icon.Controls.Add(this.checkBox_Icon);
+            resources.ApplyResources(this.panel_Icon, "panel_Icon");
             this.panel_Icon.Name = "panel_Icon";
-            this.toolTip_Weather.SetToolTip(this.panel_Icon, resources.GetString("panel_Icon.ToolTip"));
             this.panel_Icon.Click += new System.EventHandler(this.panel_Icon_Click);
             this.panel_Icon.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
             this.panel_Icon.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
@@ -326,13 +306,12 @@ namespace ControlLibrary
             // 
             // button_Icon
             // 
-            resources.ApplyResources(this.button_Icon, "button_Icon");
             this.button_Icon.FlatAppearance.BorderSize = 0;
             this.button_Icon.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Icon.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Icon, "button_Icon");
             this.button_Icon.Image = global::ControlLibrary.Properties.Resources.wallpaper_18;
             this.button_Icon.Name = "button_Icon";
-            this.toolTip_Weather.SetToolTip(this.button_Icon, resources.GetString("button_Icon.ToolTip"));
             this.button_Icon.UseVisualStyleBackColor = true;
             this.button_Icon.Click += new System.EventHandler(this.panel_Icon_Click);
             this.button_Icon.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -343,17 +322,15 @@ namespace ControlLibrary
             // 
             resources.ApplyResources(this.checkBox_Icon, "checkBox_Icon");
             this.checkBox_Icon.Name = "checkBox_Icon";
-            this.toolTip_Weather.SetToolTip(this.checkBox_Icon, resources.GetString("checkBox_Icon.ToolTip"));
             this.checkBox_Icon.UseVisualStyleBackColor = true;
             this.checkBox_Icon.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
             // 
             // button_ElementName
             // 
-            resources.ApplyResources(this.button_ElementName, "button_ElementName");
             this.button_ElementName.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_ElementName, "button_ElementName");
             this.button_ElementName.Image = global::ControlLibrary.Properties.Resources.weatherIcon;
             this.button_ElementName.Name = "button_ElementName";
-            this.toolTip_Weather.SetToolTip(this.button_ElementName, resources.GetString("button_ElementName.ToolTip"));
             this.button_ElementName.UseVisualStyleBackColor = false;
             this.button_ElementName.SizeChanged += new System.EventHandler(this.button_ElementName_SizeChanged);
             this.button_ElementName.Click += new System.EventHandler(this.button_ElementName_Click);
@@ -363,7 +340,7 @@ namespace ControlLibrary
             // 
             // toolTip_Weather
             // 
-            this.toolTip_Weather.ToolTipTitle = "Weather images";
+            this.toolTip_Weather.ToolTipTitle = "Изображения погоды";
             // 
             // UCtrl_Weather_Elm
             // 
@@ -377,7 +354,6 @@ namespace ControlLibrary
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.button_ElementName);
             this.Name = "UCtrl_Weather_Elm";
-            this.toolTip_Weather.SetToolTip(this, resources.GetString("$this.ToolTip"));
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Arrow_Down)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_NotShow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Arrow_Right)).EndInit();

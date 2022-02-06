@@ -412,6 +412,46 @@ namespace Watch_Face_Editor
                         break;
                     #endregion
 
+                    #region ElementStress
+                    case "ElementStress":
+                        ElementStress Stress = null;
+                        try
+                        {
+                            Stress = JsonConvert.DeserializeObject<ElementStress>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (Stress != null) NewElements.Add(Stress);
+                        break;
+                    #endregion
+
+                    #region ElementFatBurning
+                    case "ElementFatBurning":
+                        ElementFatBurning FatBurning = null;
+                        try
+                        {
+                            FatBurning = JsonConvert.DeserializeObject<ElementFatBurning>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (FatBurning != null) NewElements.Add(FatBurning);
+                        break;
+                    #endregion
+
 
                     #region ElementWeather
                     case "ElementWeather":
@@ -470,6 +510,86 @@ namespace Watch_Face_Editor
                                 Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                         if (Humidity != null) NewElements.Add(Humidity);
+                        break;
+                    #endregion
+
+                    #region ElementAltimeter
+                    case "ElementAltimeter":
+                        ElementAltimeter Altimeter = null;
+                        try
+                        {
+                            Altimeter = JsonConvert.DeserializeObject<ElementAltimeter>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (Altimeter != null) NewElements.Add(Altimeter);
+                        break;
+                    #endregion
+
+                    #region ElementSunrise
+                    case "ElementSunrise":
+                        ElementSunrise Sunrise = null;
+                        try
+                        {
+                            Sunrise = JsonConvert.DeserializeObject<ElementSunrise>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (Sunrise != null) NewElements.Add(Sunrise);
+                        break;
+                    #endregion
+
+                    #region ElementWind
+                    case "ElementWind":
+                        ElementWind Wind = null;
+                        try
+                        {
+                            Wind = JsonConvert.DeserializeObject<ElementWind>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (Wind != null) NewElements.Add(Wind);
+                        break;
+                    #endregion
+
+                    #region ElementMoon
+                    case "ElementMoon":
+                        ElementMoon Moon = null;
+                        try
+                        {
+                            Moon = JsonConvert.DeserializeObject<ElementMoon>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (Moon != null) NewElements.Add(Moon);
                         break;
                         #endregion
                 }
