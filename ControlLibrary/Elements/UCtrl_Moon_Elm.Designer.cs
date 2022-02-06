@@ -36,8 +36,8 @@ namespace ControlLibrary
             // 
             // button_ElementName
             // 
-            this.button_ElementName.Image = global::ControlLibrary.Properties.Resources.moon;
             resources.ApplyResources(this.button_ElementName, "button_ElementName");
+            this.button_ElementName.Image = global::ControlLibrary.Properties.Resources.moon;
             this.toolTip_Moon.SetToolTip(this.button_ElementName, resources.GetString("button_ElementName.ToolTip"));
             // 
             // toolTip_Moon
@@ -48,6 +48,7 @@ namespace ControlLibrary
             // 
             resources.ApplyResources(this, "$this");
             this.Name = "UCtrl_Moon_Elm";
+            this.toolTip_Moon.SetToolTip(this, resources.GetString("$this.ToolTip"));
             this.ResumeLayout(false);
 
         }

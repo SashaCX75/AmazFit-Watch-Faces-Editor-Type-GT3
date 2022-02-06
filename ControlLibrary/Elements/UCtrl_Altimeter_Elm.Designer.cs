@@ -294,7 +294,7 @@ namespace ControlLibrary
             this.button_ElementName.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button_ElementName_MouseMove);
             this.button_ElementName.MouseUp += new System.Windows.Forms.MouseEventHandler(this.button_ElementName_MouseUp);
             // 
-            // UCtrl_Barometer_Elm
+            // UCtrl_Altimeter_Elm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -305,7 +305,7 @@ namespace ControlLibrary
             this.Controls.Add(this.pictureBox_Del);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.button_ElementName);
-            this.Name = "UCtrl_Barometer_Elm";
+            this.Name = "UCtrl_Altimeter_Elm";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel_Images.ResumeLayout(false);
             this.panel_Images.PerformLayout();

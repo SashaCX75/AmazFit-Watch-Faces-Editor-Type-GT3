@@ -334,6 +334,9 @@
     <EmbeddedResource Include="Elements\UCtrl_Activity_Elm.zh.resx">
       <DependentUpon>UCtrl_Activity_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Altimeter_Elm.zh.resx">
+      <DependentUpon>UCtrl_Altimeter_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_AnalogTime_Elm.es.resx">
       <DependentUpon>UCtrl_AnalogTime_Elm.cs</DependentUpon>
     </EmbeddedResource>
@@ -433,6 +436,9 @@
     <EmbeddedResource Include="Elements\UCtrl_Distance_Elm.zh.resx">
       <DependentUpon>UCtrl_Distance_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_FatBurning_Elm.zh.resx">
+      <DependentUpon>UCtrl_FatBurning_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Heart_Elm.en.resx">
       <DependentUpon>UCtrl_Heart_Elm.cs</DependentUpon>
     </EmbeddedResource>
@@ -456,6 +462,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Humidity_Elm.zh.resx">
       <DependentUpon>UCtrl_Humidity_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Moon_Elm.zh.resx">
+      <DependentUpon>UCtrl_Moon_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_PAI_Elm.en.resx">
       <DependentUpon>UCtrl_PAI_Elm.cs</DependentUpon>
@@ -533,6 +542,12 @@
     <EmbeddedResource Include="Elements\UCtrl_Stress_Elm.en.resx">
       <DependentUpon>UCtrl_Stress_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Stress_Elm.zh.resx">
+      <DependentUpon>UCtrl_Stress_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Sunrise_Elm.zh.resx">
+      <DependentUpon>UCtrl_Sunrise_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_UVIndex_Elm.en.resx">
       <DependentUpon>UCtrl_UVIndex_Elm.cs</DependentUpon>
     </EmbeddedResource>
@@ -561,6 +576,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Wind_Elm.en.resx">
+      <DependentUpon>UCtrl_Wind_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Wind_Elm.zh.resx">
       <DependentUpon>UCtrl_Wind_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
