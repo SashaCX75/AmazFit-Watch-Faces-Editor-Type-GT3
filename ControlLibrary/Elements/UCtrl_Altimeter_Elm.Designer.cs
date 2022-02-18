@@ -31,12 +31,6 @@ namespace ControlLibrary
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrl_Altimeter_Elm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel_Images = new System.Windows.Forms.Panel();
-            this.checkBox_Images = new System.Windows.Forms.CheckBox();
-            this.button_Images = new System.Windows.Forms.Button();
-            this.panel_Segments = new System.Windows.Forms.Panel();
-            this.checkBox_Segments = new System.Windows.Forms.CheckBox();
-            this.button_Segments = new System.Windows.Forms.Button();
             this.panel_Number = new System.Windows.Forms.Panel();
             this.button_Number = new System.Windows.Forms.Button();
             this.checkBox_Number = new System.Windows.Forms.CheckBox();
@@ -53,8 +47,6 @@ namespace ControlLibrary
             this.pictureBox_Del = new System.Windows.Forms.PictureBox();
             this.button_ElementName = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
-            this.panel_Images.SuspendLayout();
-            this.panel_Segments.SuspendLayout();
             this.panel_Number.SuspendLayout();
             this.panel_Pointer.SuspendLayout();
             this.panel_Icon.SuspendLayout();
@@ -69,80 +61,12 @@ namespace ControlLibrary
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.AllowDrop = true;
-            this.tableLayoutPanel1.Controls.Add(this.panel_Images, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.panel_Segments, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.panel_Number, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.panel_Pointer, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.panel_Icon, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Number, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Pointer, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Icon, 0, 2);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragDrop);
             this.tableLayoutPanel1.DragOver += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragOver);
-            // 
-            // panel_Images
-            // 
-            resources.ApplyResources(this.panel_Images, "panel_Images");
-            this.panel_Images.BackColor = System.Drawing.SystemColors.Control;
-            this.panel_Images.Controls.Add(this.checkBox_Images);
-            this.panel_Images.Controls.Add(this.button_Images);
-            this.panel_Images.Name = "panel_Images";
-            this.panel_Images.Click += new System.EventHandler(this.panel_Images_Click);
-            this.panel_Images.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
-            this.panel_Images.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
-            this.panel_Images.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
-            // 
-            // checkBox_Images
-            // 
-            resources.ApplyResources(this.checkBox_Images, "checkBox_Images");
-            this.checkBox_Images.Name = "checkBox_Images";
-            this.checkBox_Images.UseVisualStyleBackColor = true;
-            this.checkBox_Images.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
-            // 
-            // button_Images
-            // 
-            resources.ApplyResources(this.button_Images, "button_Images");
-            this.button_Images.FlatAppearance.BorderSize = 0;
-            this.button_Images.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-            this.button_Images.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            this.button_Images.Image = global::ControlLibrary.Properties.Resources.images_18;
-            this.button_Images.Name = "button_Images";
-            this.button_Images.UseVisualStyleBackColor = true;
-            this.button_Images.Click += new System.EventHandler(this.panel_Images_Click);
-            this.button_Images.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
-            this.button_Images.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
-            this.button_Images.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
-            // 
-            // panel_Segments
-            // 
-            resources.ApplyResources(this.panel_Segments, "panel_Segments");
-            this.panel_Segments.BackColor = System.Drawing.SystemColors.Control;
-            this.panel_Segments.Controls.Add(this.checkBox_Segments);
-            this.panel_Segments.Controls.Add(this.button_Segments);
-            this.panel_Segments.Name = "panel_Segments";
-            this.panel_Segments.Click += new System.EventHandler(this.panel_Segments_Click);
-            this.panel_Segments.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
-            this.panel_Segments.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
-            this.panel_Segments.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
-            // 
-            // checkBox_Segments
-            // 
-            resources.ApplyResources(this.checkBox_Segments, "checkBox_Segments");
-            this.checkBox_Segments.Name = "checkBox_Segments";
-            this.checkBox_Segments.UseVisualStyleBackColor = true;
-            this.checkBox_Segments.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
-            // 
-            // button_Segments
-            // 
-            resources.ApplyResources(this.button_Segments, "button_Segments");
-            this.button_Segments.FlatAppearance.BorderSize = 0;
-            this.button_Segments.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-            this.button_Segments.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            this.button_Segments.Image = global::ControlLibrary.Properties.Resources.segment_18;
-            this.button_Segments.Name = "button_Segments";
-            this.button_Segments.UseVisualStyleBackColor = true;
-            this.button_Segments.Click += new System.EventHandler(this.panel_Segments_Click);
-            this.button_Segments.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
-            this.button_Segments.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
-            this.button_Segments.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
             // 
             // panel_Number
             // 
@@ -307,10 +231,6 @@ namespace ControlLibrary
             this.Controls.Add(this.button_ElementName);
             this.Name = "UCtrl_Altimeter_Elm";
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.panel_Images.ResumeLayout(false);
-            this.panel_Images.PerformLayout();
-            this.panel_Segments.ResumeLayout(false);
-            this.panel_Segments.PerformLayout();
             this.panel_Number.ResumeLayout(false);
             this.panel_Number.PerformLayout();
             this.panel_Pointer.ResumeLayout(false);
@@ -335,12 +255,6 @@ namespace ControlLibrary
         private System.Windows.Forms.PictureBox pictureBox_Show;
         private System.Windows.Forms.PictureBox pictureBox_Del;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Panel panel_Images;
-        public System.Windows.Forms.CheckBox checkBox_Images;
-        private System.Windows.Forms.Button button_Images;
-        private System.Windows.Forms.Panel panel_Segments;
-        public System.Windows.Forms.CheckBox checkBox_Segments;
-        private System.Windows.Forms.Button button_Segments;
         private System.Windows.Forms.Panel panel_Number;
         private System.Windows.Forms.Button button_Number;
         public System.Windows.Forms.CheckBox checkBox_Number;

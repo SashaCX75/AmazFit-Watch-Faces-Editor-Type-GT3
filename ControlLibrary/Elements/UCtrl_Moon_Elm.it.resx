@@ -118,19 +118,16 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="button_ElementName.Text" xml:space="preserve">
-    <value>Moon phase</value>
+    <value>Fasi lunari</value>
   </data>
   <data name="button_ElementName.ToolTip" xml:space="preserve">
-    <value>1. Waxing Crescent
-2. First Quarter
-3. Waxing Gibbous
-5. Full Moon
-5. Waning Gibbous
-6. Last Quarter
-7. Waning Crescent
-8. New Moon</value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
+    <value>1. Crescente
+2. Primo quarto
+3. Gibbosa crescente
+5. Piena
+5. Gibbosa calante
+6. Ultimo quarto
+7. Calante
+8. Nuova</value>
   </data>
 </root>

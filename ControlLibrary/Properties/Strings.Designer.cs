@@ -61,6 +61,24 @@ namespace ControlLibrary.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Десятичный разделитель.
+        /// </summary>
+        internal static string UCtrl_Text_Opt_Sunrise_false {
+            get {
+                return ResourceManager.GetString("UCtrl_Text_Opt_Sunrise_false", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Разделитель.
+        /// </summary>
+        internal static string UCtrl_Text_Opt_Sunrise_true {
+            get {
+                return ResourceManager.GetString("UCtrl_Text_Opt_Sunrise_true", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Добавлять нули в начале.
         /// </summary>
         internal static string UCtrl_Text_Opt_Year_false {

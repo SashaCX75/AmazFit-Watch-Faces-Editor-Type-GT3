@@ -92,10 +92,10 @@ namespace Watch_Face_Editor
                     {
                         ProgramSettings.language = "Español";
                     }
-                    if (language == "fr")
-                    {
-                        ProgramSettings.language = "French";
-                    }
+                    //if (language == "fr")
+                    //{
+                    //    ProgramSettings.language = "French";
+                    //}
                     if (language == "it")
                     {
                         ProgramSettings.language = "Italiano";
@@ -104,10 +104,10 @@ namespace Watch_Face_Editor
                     {
                         ProgramSettings.language = "Chinese/简体中文";
                     }
-                    if (language == "hu")
-                    {
-                        ProgramSettings.language = "Magyar";
-                    }
+                    //if (language == "hu")
+                    //{
+                    //    ProgramSettings.language = "Magyar";
+                    //}
                 }
                 //Logger.WriteLine("Определили язык");
                 SetLanguage();
@@ -4517,16 +4517,6 @@ namespace Watch_Face_Editor
                             ElementAltimeter Altimeter = (ElementAltimeter)element;
                             uCtrl_Altimeter_Elm.SetVisibilityElementStatus(Altimeter.visible);
                             elementOptions = new Dictionary<int, string>();
-                            if (Altimeter.Images != null)
-                            {
-                                uCtrl_Altimeter_Elm.checkBox_Images.Checked = Altimeter.Images.visible;
-                                elementOptions.Add(Altimeter.Images.position, "Images");
-                            }
-                            if (Altimeter.Segments != null)
-                            {
-                                uCtrl_Altimeter_Elm.checkBox_Segments.Checked = Altimeter.Segments.visible;
-                                elementOptions.Add(Altimeter.Segments.position, "Segments");
-                            }
                             if (Altimeter.Number != null)
                             {
                                 uCtrl_Altimeter_Elm.checkBox_Number.Checked = Altimeter.Number.visible;
@@ -5241,6 +5231,22 @@ namespace Watch_Face_Editor
             string name2 = fileInfo2.Name;
             name1 = Path.GetFileNameWithoutExtension(name1);
             name2 = Path.GetFileNameWithoutExtension(name2);
+            int value1 = 0;
+            int value2 = 0;
+            if (Int32.TryParse(name1, out value1) && Int32.TryParse(name2, out value2))
+            {
+                if (name1.Length != name2.Length)
+                {
+                    if (name1.Length < name2.Length) return -1;
+                    if (name1.Length > name2.Length) return 1;
+                }
+
+                if (value1 < value2) return -1;
+                if (value1 > value2) return 1;
+                if (value1 == value2)
+                    return name1.CompareTo(name2);
+            }
+
             string[] parts1 = name1.Split(new char[] { '-', '_', '.' });
             string[] parts2 = name2.Split(new char[] { '-', '_', '.' });
 
@@ -8909,7 +8915,7 @@ namespace Watch_Face_Editor
                         else HideAllElemenrOptions();
                         break;
                     case "Icon":
-                        if (uCtrl_Steps_Elm.checkBox_Icon.Checked)
+                        if (uCtrl_Humidity_Elm.checkBox_Icon.Checked)
                         {
                             icon = humidity.Icon;
                             Read_Icon_Options(icon);
@@ -8948,32 +8954,12 @@ namespace Watch_Face_Editor
             }
             if (altimeter != null)
             {
-                hmUI_widget_IMG_LEVEL img_level = null;
-                hmUI_widget_IMG_PROGRESS img_prorgess = null;
                 hmUI_widget_IMG_NUMBER img_number = null;
                 hmUI_widget_IMG_POINTER img_pointer = null;
                 hmUI_widget_IMG icon = null;
 
                 switch (selectElement)
                 {
-                    case "Images":
-                        if (uCtrl_Altimeter_Elm.checkBox_Images.Checked)
-                        {
-                            img_level = altimeter.Images;
-                            Read_ImgLevel_Options(img_level, 10, true);
-                            ShowElemenrOptions("Images");
-                        }
-                        else HideAllElemenrOptions();
-                        break;
-                    case "Segments":
-                        if (uCtrl_Altimeter_Elm.checkBox_Segments.Checked)
-                        {
-                            img_prorgess = altimeter.Segments;
-                            Read_ImgProrgess_Options(img_prorgess, 10, false);
-                            ShowElemenrOptions("Segments");
-                        }
-                        else HideAllElemenrOptions();
-                        break;
                     case "Number":
                         if (uCtrl_Altimeter_Elm.checkBox_Number.Checked)
                         {
@@ -9062,7 +9048,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Sunrise_Elm.checkBox_Sunrise.Checked)
                         {
                             img_number = sunrise.Sunrise;
-                            Read_ImgNumber_Options(img_number, false, false, "", true, true, true);
+                            Read_ImgNumber_Options(img_number, false, false, "", true, true, false, true);
                             ShowElemenrOptions("Text");
                         }
                         else HideAllElemenrOptions();
@@ -9071,7 +9057,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Sunrise_Elm.checkBox_Sunset.Checked)
                         {
                             img_number = sunrise.Sunset;
-                            Read_ImgNumber_Options(img_number, false, false, "", true, true, true);
+                            Read_ImgNumber_Options(img_number, false, false, "", true, true, false, true);
                             ShowElemenrOptions("Text");
                         }
                         else HideAllElemenrOptions();
@@ -9211,7 +9197,7 @@ namespace Watch_Face_Editor
 
                 if (moon.Images == null) moon.Images = new hmUI_widget_IMG_LEVEL();
                 img_level = moon.Images;
-                Read_ImgLevel_Options(img_level, 8, true);
+                Read_ImgLevel_Options(img_level, 7, true);
                 ShowElemenrOptions("Images");
 
             }
@@ -10540,14 +10526,10 @@ namespace Watch_Face_Editor
 
             if (altimeter != null)
             {
-                if (altimeter.Images == null) altimeter.Images = new hmUI_widget_IMG_LEVEL();
-                if (altimeter.Segments == null) altimeter.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (altimeter.Number == null) altimeter.Number = new hmUI_widget_IMG_NUMBER();
                 if (altimeter.Pointer == null) altimeter.Pointer = new hmUI_widget_IMG_POINTER();
                 if (altimeter.Icon == null) altimeter.Icon = new hmUI_widget_IMG();
 
-                if (elementOptions.ContainsKey("Images")) altimeter.Images.position = elementOptions["Images"];
-                if (elementOptions.ContainsKey("Segments")) altimeter.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) altimeter.Number.position = elementOptions["Number"];
                 if (elementOptions.ContainsKey("Pointer")) altimeter.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Icon")) altimeter.Icon.position = elementOptions["Icon"];
@@ -12486,15 +12468,11 @@ namespace Watch_Face_Editor
 
             if (altimeter != null)
             {
-                if (altimeter.Images == null) altimeter.Images = new hmUI_widget_IMG_LEVEL();
-                if (altimeter.Segments == null) altimeter.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (altimeter.Number == null) altimeter.Number = new hmUI_widget_IMG_NUMBER();
                 if (altimeter.Pointer == null) altimeter.Pointer = new hmUI_widget_IMG_POINTER();
                 if (altimeter.Icon == null) altimeter.Icon = new hmUI_widget_IMG();
 
                 Dictionary<string, int> elementOptions = uCtrl_Altimeter_Elm.GetOptionsPosition();
-                if (elementOptions.ContainsKey("Images")) altimeter.Images.position = elementOptions["Images"];
-                if (elementOptions.ContainsKey("Segments")) altimeter.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) altimeter.Number.position = elementOptions["Number"];
                 if (elementOptions.ContainsKey("Pointer")) altimeter.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Icon")) altimeter.Icon.position = elementOptions["Icon"];
@@ -12503,12 +12481,6 @@ namespace Watch_Face_Editor
                 string name = checkBox.Name;
                 switch (name)
                 {
-                    case "checkBox_Images":
-                        altimeter.Images.visible = checkBox.Checked;
-                        break;
-                    case "checkBox_Segments":
-                        altimeter.Segments.visible = checkBox.Checked;
-                        break;
                     case "checkBox_Number":
                         altimeter.Number.visible = checkBox.Checked;
                         break;
@@ -13204,9 +13176,17 @@ namespace Watch_Face_Editor
                         string fileName = ListImagesFullName[rowIndex];
                         if (File.Exists(fileName))
                         {
-                            File.Delete(fileName);
-                            LoadImage(Path.GetDirectoryName(fileName));
-                            PreviewImage();
+                            if (MessageBox.Show(Properties.FormStrings.Message_Delet_Text1 +
+                                Path.GetFileName(fileName) + Properties.FormStrings.Message_Delet_Text2, 
+                                Properties.FormStrings.Message_Delet_Caption, MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                            {
+                                File.Delete(fileName);
+                                LoadImage(Path.GetDirectoryName(fileName));
+                                HideAllElemenrOptions();
+                                ResetHighlightState("");
+                                PreviewImage(); 
+                            }
                         }
                     }
                     catch (Exception)
@@ -13291,7 +13271,12 @@ namespace Watch_Face_Editor
         private void обновитьСписокИзображенийToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if(FullFileDir != null && Directory.Exists(FullFileDir + @"\assets\")) LoadImage(FullFileDir + @"\assets\");
+            HideAllElemenrOptions();
+            ResetHighlightState("");
         }
+
+        
+
     }
 }
 
@@ -13355,8 +13340,17 @@ public class MyCustomComparer : IComparer<FileInfo>
         //string[] parts2 = y.Name.Split('_');
         string name1 = x.Name;
         string name2 = y.Name;
+        int value1 = 0;
+        int value2 = 0;
         name1 = Path.GetFileNameWithoutExtension(name1);
         name2 = Path.GetFileNameWithoutExtension(name2);
+        if (Int32.TryParse(name1, out value1) && Int32.TryParse(name2, out value2))
+        {
+            if (value1 < value2) return -1;
+            if (value1 > value2) return 1;
+            if (value1 == value2) 
+                return 0;
+        }
 
         string[] parts1 = name1.Split(new char[] { '-', '_', '.' });
         string[] parts2 = name2.Split(new char[] { '-', '_', '.' });

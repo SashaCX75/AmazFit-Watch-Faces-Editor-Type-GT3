@@ -775,7 +775,7 @@ namespace Watch_Face_Editor
                         #region ElementShortcuts
                         case "ElementShortcuts":
                             ElementShortcuts shortcutsElement = (ElementShortcuts)element;
-                            if (!shortcutsElement.visible || (!showShortcuts && !Shortcuts_In_Gif)) continue;
+                            if (!shortcutsElement.visible && !Shortcuts_In_Gif) continue;
 
                             hmUI_widget_IMG_CLICK img_click_step = shortcutsElement.Step;
                             hmUI_widget_IMG_CLICK img_click_heart = shortcutsElement.Heart;
@@ -855,6 +855,8 @@ namespace Watch_Face_Editor
                             }
                             break;
                         #endregion
+
+
 
                         #region ElementSteps
                         case "ElementSteps":
@@ -1482,16 +1484,14 @@ namespace Watch_Face_Editor
                             ElementAltimeter activityElementAltimeter = (ElementAltimeter)element;
                             if (!activityElementAltimeter.visible) continue;
 
-                            img_level = activityElementAltimeter.Images;
-                            img_prorgess = activityElementAltimeter.Segments;
                             img_number = activityElementAltimeter.Number;
                             img_pointer = activityElementAltimeter.Pointer;
                             icon = activityElementAltimeter.Icon;
 
                             elementValue = WatchFacePreviewSet.Weather.AirPressure;
                             value_lenght = 4;
-                            goal = 1200-200;
-                            progress = (float)WatchFacePreviewSet.Weather.AirPressure / 1000f;
+                            goal = 1170-195;
+                            progress = (WatchFacePreviewSet.Weather.AirPressure - 195) / 975f;
 
                             if (img_level != null && img_level.image_length > 0)
                             {
@@ -1550,8 +1550,8 @@ namespace Watch_Face_Editor
 
                             elementValue = WatchFacePreviewSet.Weather.WindForce;
                             value_lenght = 1;
-                            goal = 6;
-                            progress = (float)WatchFacePreviewSet.Weather.WindForce / 6.57f;
+                            goal = 12;
+                            progress = (float)WatchFacePreviewSet.Weather.WindForce / 12f;
 
                             if (img_level != null && img_level.image_length > 0)
                             {
@@ -1591,10 +1591,12 @@ namespace Watch_Face_Editor
                             int month = WatchFacePreviewSet.Date.Month;
                             int day = WatchFacePreviewSet.Date.Day;
                             double moon_age = MoonAge(day, month, year) - 1;
-                            int moonPhase = (int)(9 * moon_age / 29);
+                            int moonPhase = (int)(8 * moon_age / 29);
 
                             imgCount = img_level.image_length;
-                            valueImgIndex = (int)((imgCount - 1) * moonPhase/8);
+                            //valueImgIndex = (int)((imgCount) * moonPhase/8);
+                            valueImgIndex = moonPhase - 1;
+                            if (valueImgIndex < 0) valueImgIndex = (int)(imgCount - 1);
                             if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
 
 
@@ -1820,6 +1822,7 @@ namespace Watch_Face_Editor
                     int endAngle = pointer.end_angle;
                     int image_index = ListImages.IndexOf(pointer.src);
                     float progressHeart = 57 / 360f;
+                    if (value == 0) progressHeart = 0;
                     if (value >= 90 && value < 108) progressHeart = 118 / 360f;
                     if (value >= 108 && value < 126) progressHeart = 180 / 360f;
                     if (value >= 126 && value < 144) progressHeart = 237 / 360f;
@@ -2421,27 +2424,8 @@ namespace Watch_Face_Editor
                     value_S = "0" + value_S;
                 }
             }
-            char[] CH = value_S.ToCharArray();
-            int DateLenghtReal = 0;
+
             Logger.WriteLine("DateLenght");
-            foreach (char ch in CH)
-            {
-                _number = 0;
-                if (int.TryParse(ch.ToString(), out _number))
-                {
-                    i = image_index + _number;
-                    if (i < ListImagesFullName.Count)
-                    {
-                        //src = new Bitmap(ListImagesFullName[i]);
-                        src = OpenFileStream(ListImagesFullName[i]);
-                        DateLenghtReal = DateLenghtReal + src.Width + spacing;
-                        //src.Dispose();
-                    }
-                }
-
-            }
-            DateLenghtReal = DateLenghtReal - spacing;
-
             src = OpenFileStream(ListImagesFullName[image_index]);
             int width = src.Width;
             int height = src.Height;
@@ -2454,6 +2438,26 @@ namespace Watch_Face_Editor
             //int DateLenght = width * value_lenght + 1;
             if (spacing != 0) DateLenght = DateLenght + spacing * (value_lenght - 1);
             //else DateLenght = DateLenght - spacing;
+
+            Logger.WriteLine("DateLenghtReal");
+            char[] CH = value_S.ToCharArray();
+            int DateLenghtReal = 0;
+            foreach (char ch in CH)
+            {
+                _number = 0;
+                if (int.TryParse(ch.ToString(), out _number))
+                {
+                    i = image_index + _number;
+                    if (i < ListImagesFullName.Count)
+                    {
+                        src = OpenFileStream(ListImagesFullName[i]);
+                        //DateLenghtReal = DateLenghtReal + src.Width + spacing;
+                        DateLenghtReal = DateLenghtReal + width + spacing;
+                    }
+                }
+
+            }
+            DateLenghtReal = DateLenghtReal - spacing;
 
             int PointX = 0;
             int PointY = y;
@@ -2485,7 +2489,8 @@ namespace Watch_Face_Editor
                         string s = ListImagesFullName[i];
                         src = OpenFileStream(ListImagesFullName[i]);
                         graphics.DrawImage(src, PointX, PointY);
-                        PointX = PointX + src.Width + spacing;
+                        //PointX = PointX + src.Width + spacing;
+                        PointX = PointX + width + spacing;
                         //src.Dispose();
                     }
                 }
@@ -3044,6 +3049,24 @@ namespace Watch_Face_Editor
             char[] CH = data_numberS.ToCharArray();
 
             Logger.WriteLine("DateLenght");
+            src = OpenFileStream(ListImagesFullName[image_index]);
+            int width = src.Width;
+            int height = src.Height;
+
+            int DateLenght = 4 * width + 2 * spacing;
+            if(elementName == "ElementSunrise") DateLenght = 5 * width + 3 * spacing;
+            if (decimalPoint_index >= 0 && decimalPoint_index < ListImagesFullName.Count)
+            {
+                src = OpenFileStream(ListImagesFullName[decimalPoint_index]);
+                DateLenght = DateLenght + src.Width + spacing;
+            }
+            if (separator_index >= 0 && separator_index < ListImagesFullName.Count)
+            {
+                src = OpenFileStream(ListImagesFullName[separator_index]);
+                DateLenght = DateLenght + src.Width + src.Width + spacing + spacing;
+            }
+
+            Logger.WriteLine("DateLenghtReal");
             foreach (char ch in CH)
             {
                 _number = 0;
@@ -3052,10 +3075,9 @@ namespace Watch_Face_Editor
                     i = image_index + _number;
                     if (i < ListImagesFullName.Count)
                     {
-                        //src = new Bitmap(ListImagesFullName[i]);
-                        src = OpenFileStream(ListImagesFullName[i]);
-                        DateLenghtReal = DateLenghtReal + src.Width + spacing;
-                        //src.Dispose();
+                        //src = OpenFileStream(ListImagesFullName[i]);
+                        //DateLenghtReal = DateLenghtReal + src.Width + spacing;
+                        DateLenghtReal = DateLenghtReal + width + spacing;
                     }
                 }
                 else
@@ -3076,23 +3098,6 @@ namespace Watch_Face_Editor
             }
             DateLenghtReal = DateLenghtReal - spacing;
 
-
-            src = OpenFileStream(ListImagesFullName[image_index]);
-            int width = src.Width;
-            int height = src.Height;
-
-            int DateLenght = 4 * width + 2 * spacing;
-            if(elementName == "ElementSunrise") DateLenght = 5 * width + 3 * spacing;
-            if (decimalPoint_index >= 0 && decimalPoint_index < ListImagesFullName.Count)
-            {
-                src = OpenFileStream(ListImagesFullName[decimalPoint_index]);
-                DateLenght = DateLenght + src.Width + spacing;
-            }
-            if (separator_index >= 0 && separator_index < ListImagesFullName.Count)
-            {
-                src = OpenFileStream(ListImagesFullName[separator_index]);
-                DateLenght = DateLenght + src.Width + src.Width + spacing + spacing;
-            }
 
             int PointX = 0;
             int PointY = y;
@@ -3121,24 +3126,19 @@ namespace Watch_Face_Editor
                     i = image_index + _number;
                     if (i < ListImagesFullName.Count)
                     {
-                        //src = new Bitmap(ListImagesFullName[i]);
                         src = OpenFileStream(ListImagesFullName[i]);
                         graphics.DrawImage(src, PointX, PointY);
-                        //graphics.DrawImage(src, new Rectangle(PointX, PointY, src.Width, src.Height));
-                        PointX = PointX + src.Width + spacing;
-                        //src.Dispose();
+                        //PointX = PointX + src.Width + spacing;
+                        PointX = PointX + width + spacing;
                     }
                 }
                 else
                 {
                     if (decimalPoint_index >= 0 && decimalPoint_index < ListImagesFullName.Count)
                     {
-                        //src = new Bitmap(ListImagesFullName[dec]);
                         src = OpenFileStream(ListImagesFullName[decimalPoint_index]);
                         graphics.DrawImage(src, PointX, PointY);
-                        //graphics.DrawImage(src, new Rectangle(PointX, PointY, src.Width, src.Height));
                         PointX = PointX + src.Width + spacing;
-                        //src.Dispose();
                     }
                 }
 
@@ -3413,6 +3413,32 @@ namespace Watch_Face_Editor
                 int width = shortcut.w;
                 int height = shortcut.h;
 
+                if (imageIndex < ListImagesFullName.Count)
+                {
+                    Bitmap src = OpenFileStream(ListImagesFullName[imageIndex]);
+                    int pos_x = x + width / 2 - src.Width / 2;
+                    int pos_y = y + height / 2 - src.Height / 2;
+                    if (pos_x >= x && pos_y >= y)
+                    {
+                        graphics.DrawImage(src, pos_x, pos_y);
+                    }
+                    else
+                    {
+                        Rectangle cropRect = new Rectangle(x - pos_x, y - pos_y, width, height);
+                        //Rectangle cropRect = new Rectangle(...);
+                        //Bitmap src = Image.FromFile(fileName) as Bitmap;
+                        Bitmap target = new Bitmap(cropRect.Width, cropRect.Height);
+
+                        using (Graphics g = Graphics.FromImage(target))
+                        {
+                            g.DrawImage(src, new Rectangle(0, 0, target.Width, target.Height),
+                                             cropRect, GraphicsUnit.Pixel);
+                        }
+                        graphics.DrawImage(target, x, y);
+                    }
+                    src.Dispose();
+                }
+
                 if (showShortcuts)
                 {
                     if (showShortcutsArea)
@@ -3437,7 +3463,7 @@ namespace Watch_Face_Editor
                         }
                     }
 
-                    if (showShortcutsImage)
+                    /*if (showShortcutsImage)
                     {
                         if (imageIndex < ListImagesFullName.Count)
                         {
@@ -3465,7 +3491,7 @@ namespace Watch_Face_Editor
                             }
                             src.Dispose();
                         }
-                    } 
+                    } */
                 }
 
 
@@ -3764,7 +3790,7 @@ namespace Watch_Face_Editor
             k2 = (int)(30.6001 * mm + 0.5);
             k3 = (int)((int)((yy / 100) + 49) * 0.75) - 38;
             // 'j' for dates in Julian calendar:
-            j = k1 + k2 + d + 59;
+            j = k1 + k2 + d + 62;
             if (j > 2299160)
             {
                 // For Gregorian calendar:

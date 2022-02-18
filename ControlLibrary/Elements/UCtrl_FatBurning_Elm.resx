@@ -129,14 +129,11 @@
   <data name="&gt;&gt;checkBox_Segments.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;checkBox_Segments.Name" xml:space="preserve">
-    <value>checkBox_Segments</value>
+  <data name="&gt;&gt;button_ElementName.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBox_Number_Target.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_ElementName.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBox_Linear_Scale.Parent" xml:space="preserve">
     <value>panel_Linear_Scale</value>
@@ -150,17 +147,20 @@
   <data name="&gt;&gt;button_ElementName.Name" xml:space="preserve">
     <value>button_ElementName</value>
   </data>
-  <data name="&gt;&gt;checkBox_Pointer.Name" xml:space="preserve">
-    <value>checkBox_Pointer</value>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>UCtrl_FatBurning_Elm</value>
   </data>
-  <data name="&gt;&gt;checkBox_Circle_Scale.Name" xml:space="preserve">
-    <value>checkBox_Circle_Scale</value>
+  <data name="&gt;&gt;checkBox_Icon.Name" xml:space="preserve">
+    <value>checkBox_Icon</value>
   </data>
   <data name="&gt;&gt;checkBox_Icon.Parent" xml:space="preserve">
     <value>panel_Icon</value>
   </data>
   <data name="&gt;&gt;checkBox_Number_Target.Parent" xml:space="preserve">
     <value>panel_Number_Target</value>
+  </data>
+  <data name="&gt;&gt;button_ElementName.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBox_Images.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -174,14 +174,14 @@
   <data name="&gt;&gt;checkBox_Pointer.Parent" xml:space="preserve">
     <value>panel_Pointer</value>
   </data>
+  <data name="&gt;&gt;checkBox_Segments.Name" xml:space="preserve">
+    <value>checkBox_Segments</value>
+  </data>
   <data name="&gt;&gt;checkBox_Number_Target.Name" xml:space="preserve">
     <value>checkBox_Number_Target</value>
   </data>
-  <data name="&gt;&gt;checkBox_Icon.Name" xml:space="preserve">
-    <value>checkBox_Icon</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Icon.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;checkBox_Circle_Scale.Name" xml:space="preserve">
+    <value>checkBox_Circle_Scale</value>
   </data>
   <data name="&gt;&gt;checkBox_Images.Parent" xml:space="preserve">
     <value>panel_Images</value>
@@ -189,18 +189,14 @@
   <data name="&gt;&gt;checkBox_Icon.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>UCtrl_FatBurning_Elm</value>
-  </data>
   <data name="&gt;&gt;checkBox_Linear_Scale.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Жиросжигание</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+  <data name="&gt;&gt;checkBox_Number.Name" xml:space="preserve">
+    <value>checkBox_Number</value>
   </data>
   <data name="&gt;&gt;checkBox_Images.Name" xml:space="preserve">
     <value>checkBox_Images</value>
@@ -208,14 +204,12 @@
   <data name="&gt;&gt;checkBox_Number_Target.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;checkBox_Circle_Scale.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="&gt;&gt;checkBox_Number.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkBox_Number.Name" xml:space="preserve">
-    <value>checkBox_Number</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
   </data>
   <data name="&gt;&gt;checkBox_Linear_Scale.Name" xml:space="preserve">
     <value>checkBox_Linear_Scale</value>
@@ -223,14 +217,20 @@
   <data name="&gt;&gt;checkBox_Circle_Scale.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button_ElementName.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;checkBox_Pointer.Name" xml:space="preserve">
+    <value>checkBox_Pointer</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Number.Parent" xml:space="preserve">
+    <value>panel_Number</value>
   </data>
   <data name="&gt;&gt;checkBox_Pointer.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkBox_Number.Parent" xml:space="preserve">
-    <value>panel_Number</value>
+  <data name="&gt;&gt;checkBox_Circle_Scale.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Icon.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;checkBox_Linear_Scale.ZOrder" xml:space="preserve">
     <value>1</value>

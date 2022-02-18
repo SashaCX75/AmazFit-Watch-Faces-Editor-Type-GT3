@@ -3484,49 +3484,12 @@ namespace Watch_Face_Editor
         /// <summary>Видимость элемента</summary>
         public bool visible = true;
 
-        public hmUI_widget_IMG_LEVEL Images { get; set; }
-        public hmUI_widget_IMG_PROGRESS Segments { get; set; }
         public hmUI_widget_IMG_NUMBER Number { get; set; }
         public hmUI_widget_IMG_POINTER Pointer { get; set; }
         public hmUI_widget_IMG Icon { get; set; }
 
         public object Clone()
         {
-
-            hmUI_widget_IMG_LEVEL Images = null;
-            if (this.Images != null)
-            {
-                Images = new hmUI_widget_IMG_LEVEL
-                {
-                    X = this.Images.X,
-                    Y = this.Images.Y,
-                    img_First = this.Images.img_First,
-                    image_length = this.Images.image_length,
-
-                    position = this.Images.position,
-                    visible = this.Images.visible,
-                    show_level = this.Images.show_level,
-                    type = this.Images.type,
-                };
-            }
-
-            hmUI_widget_IMG_PROGRESS Segments = null;
-            if (this.Segments != null)
-            {
-                Segments = new hmUI_widget_IMG_PROGRESS
-                {
-                    X = this.Segments.X,
-                    Y = this.Segments.Y,
-                    img_First = this.Segments.img_First,
-                    image_length = this.Segments.image_length,
-
-                    position = this.Segments.position,
-                    visible = this.Segments.visible,
-                    show_level = this.Segments.show_level,
-                    type = this.Segments.type,
-                };
-            }
-
             hmUI_widget_IMG_NUMBER Number = null;
             if (this.Number != null)
             {
@@ -3603,8 +3566,6 @@ namespace Watch_Face_Editor
                 elementName = this.elementName,
                 visible = this.visible,
 
-                Images = Images,
-                Segments = Segments,
                 Number = Number,
                 Pointer = Pointer,
                 Icon = Icon,
@@ -3666,7 +3627,7 @@ namespace Watch_Face_Editor
                 };
             }
 
-            hmUI_widget_IMG_NUMBER Number = null;
+            hmUI_widget_IMG_NUMBER Sunrise = null;
             if (this.Sunrise != null)
             {
                 Sunrise = new hmUI_widget_IMG_NUMBER
@@ -3694,7 +3655,7 @@ namespace Watch_Face_Editor
                 };
             }
 
-            hmUI_widget_IMG_NUMBER Number_Target = null;
+            hmUI_widget_IMG_NUMBER Sunset = null;
             if (this.Sunset != null)
             {
                 Sunset = new hmUI_widget_IMG_NUMBER

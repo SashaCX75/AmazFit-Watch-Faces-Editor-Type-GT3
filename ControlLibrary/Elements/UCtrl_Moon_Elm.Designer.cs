@@ -42,7 +42,10 @@ namespace ControlLibrary
             // 
             // toolTip_Moon
             // 
-            this.toolTip_Moon.ToolTipTitle = "Фазы луны";
+            this.toolTip_Moon.AutoPopDelay = 5000;
+            this.toolTip_Moon.InitialDelay = 500;
+            this.toolTip_Moon.ReshowDelay = 100;
+            this.toolTip_Moon.ToolTipTitle = "Moon Phases";
             // 
             // UCtrl_Moon_Elm
             // 

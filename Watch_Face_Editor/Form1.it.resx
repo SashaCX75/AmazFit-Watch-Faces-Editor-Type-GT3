@@ -157,7 +157,10 @@
     <value>Vento</value>
   </data>
   <data name="comboBox_AddAir.Items6" xml:space="preserve">
-    <value>Pressione</value>
+    <value>Pressione atmosferica</value>
+  </data>
+  <data name="comboBox_AddAir.Items7" xml:space="preserve">
+    <value>Fasi lunari</value>
   </data>
   <data name="comboBox_AddActivity.Items" xml:space="preserve">
     <value>Attività</value>
@@ -180,6 +183,12 @@
   <data name="comboBox_AddActivity.Items7" xml:space="preserve">
     <value>Ossigen. sangue (SpO2)</value>
   </data>
+  <data name="comboBox_AddActivity.Items8" xml:space="preserve">
+    <value>Grassi bruciati</value>
+  </data>
+  <data name="comboBox_AddActivity.Items9" xml:space="preserve">
+    <value>Stress</value>
+  </data>
   <data name="comboBox_AddDate.Items" xml:space="preserve">
     <value>Data</value>
   </data>
@@ -199,7 +208,7 @@
     <value>Orologio</value>
   </data>
   <data name="comboBox_AddTime.Items1" xml:space="preserve">
-    <value>Orologio Analogico</value>
+    <value>Orologio analogico</value>
   </data>
   <data name="comboBox_AddTime.Items2" xml:space="preserve">
     <value>Orologio digitale</value>
@@ -233,25 +242,25 @@
     <value>Valore 10</value>
   </data>
   <data name="userCtrl_Set9.ButtonText" xml:space="preserve">
-    <value>Valore 2</value>
+    <value>Valore 9</value>
   </data>
   <data name="userCtrl_Set8.ButtonText" xml:space="preserve">
-    <value>Valore 2</value>
+    <value>Valore 8</value>
   </data>
   <data name="userCtrl_Set7.ButtonText" xml:space="preserve">
-    <value>Valore 2</value>
+    <value>Valore 7</value>
   </data>
   <data name="userCtrl_Set6.ButtonText" xml:space="preserve">
-    <value>Valore 2</value>
+    <value>Valore 6</value>
   </data>
   <data name="userCtrl_Set5.ButtonText" xml:space="preserve">
-    <value>Valore 2</value>
+    <value>Valore 5</value>
   </data>
   <data name="userCtrl_Set4.ButtonText" xml:space="preserve">
-    <value>Valore 2</value>
+    <value>Valore 4</value>
   </data>
   <data name="userCtrl_Set3.ButtonText" xml:space="preserve">
-    <value>Valore 2</value>
+    <value>Valore 3</value>
   </data>
   <data name="userCtrl_Set2.ButtonText" xml:space="preserve">
     <value>Valore 2</value>
@@ -612,7 +621,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
-        DQAAAk1TRnQBSQFMAgEBBgEAAcQBLQHEAS0BEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAAfQBLQH0AS0BEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -1932,6 +1941,6 @@
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>Inherit</value>
+    <value>NoControl</value>
   </data>
 </root>

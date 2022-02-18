@@ -13,8 +13,6 @@ namespace ControlLibrary
     public partial class UCtrl_Altimeter_Elm : UserControl
     {
         private bool setValue; // режим задания параметров
-        bool highlight_images = false;
-        bool highlight_segments = false;
         bool highlight_number = false;
         bool highlight_pointer = false;
         bool highlight_icon = false;
@@ -89,8 +87,6 @@ namespace ControlLibrary
         {
             selectedElement = "";
 
-            highlight_images = false;
-            highlight_segments = false;
             highlight_number = false;
             highlight_pointer = false;
             highlight_icon = false;
@@ -100,32 +96,6 @@ namespace ControlLibrary
 
         private void SelectElement()
         {
-            if (highlight_images)
-            {
-                panel_Images.BackColor = SystemColors.ActiveCaption;
-                button_Images.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Images.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Images.BackColor = SystemColors.Control;
-                button_Images.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Images.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_segments)
-            {
-                panel_Segments.BackColor = SystemColors.ActiveCaption;
-                button_Segments.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Segments.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Segments.BackColor = SystemColors.Control;
-                button_Segments.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Segments.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
             if (highlight_number)
             {
                 panel_Number.BackColor = SystemColors.ActiveCaption;
@@ -166,50 +136,10 @@ namespace ControlLibrary
             }
         }
 
-        private void panel_Images_Click(object sender, EventArgs e)
-        {
-            selectedElement = "Images";
-
-            highlight_images = true;
-            highlight_segments = false;
-            highlight_number = false;
-            highlight_pointer = false;
-            highlight_icon = false;
-
-            SelectElement();
-
-            if (SelectChanged != null)
-            {
-                EventArgs eventArgs = new EventArgs();
-                SelectChanged(this, eventArgs);
-            }
-        }
-
-        private void panel_Segments_Click(object sender, EventArgs e)
-        {
-            selectedElement = "Segments";
-
-            highlight_images = false;
-            highlight_segments = true;
-            highlight_number = false;
-            highlight_pointer = false;
-            highlight_icon = false;
-
-            SelectElement();
-
-            if (SelectChanged != null)
-            {
-                EventArgs eventArgs = new EventArgs();
-                SelectChanged(this, eventArgs);
-            }
-        }
-
         private void panel_Number_Click(object sender, EventArgs e)
         {
             selectedElement = "Number";
 
-            highlight_images = false;
-            highlight_segments = false;
             highlight_number = true;
             highlight_pointer = false;
             highlight_icon = false;
@@ -227,8 +157,6 @@ namespace ControlLibrary
         {
             selectedElement = "Pointer";
 
-            highlight_images = false;
-            highlight_segments = false;
             highlight_number = false;
             highlight_pointer = true;
             highlight_icon = false;
@@ -246,8 +174,6 @@ namespace ControlLibrary
         {
             selectedElement = "Icon";
 
-            highlight_images = false;
-            highlight_segments = false;
             highlight_number = false;
             highlight_pointer = false;
             highlight_icon = true;
@@ -490,12 +416,6 @@ namespace ControlLibrary
             setValue = true;
             switch (name)
             {
-                case "Images":
-                    checkBox_Images.Checked = status;
-                    break;
-                case "Segments":
-                    checkBox_Segments.Checked = status;
-                    break;
                 case "Number":
                     checkBox_Number.Checked = status;
                     break;
@@ -521,12 +441,6 @@ namespace ControlLibrary
                     string name = elementOptions[elementCount - key];
                     switch (name)
                     {
-                        case "Images":
-                            panel = panel_Images;
-                            break;
-                        case "Segments":
-                            panel = panel_Segments;
-                            break;
                         case "Number":
                             panel = panel_Number;
                             break;
@@ -606,12 +520,8 @@ namespace ControlLibrary
             elementOptions.Add(1, "Icon");
             elementOptions.Add(2, "Pointer");
             elementOptions.Add(3, "Number");
-            elementOptions.Add(4, "Segments");
-            elementOptions.Add(5, "Images");
             SetOptionsPosition(elementOptions);
 
-            checkBox_Images.Checked = false;
-            checkBox_Segments.Checked = false;
             checkBox_Number.Checked = false;
             checkBox_Pointer.Checked = false;
             checkBox_Icon.Checked = false;

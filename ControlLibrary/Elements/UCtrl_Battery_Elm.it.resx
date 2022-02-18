@@ -117,11 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="button_Linear_Scale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 24</value>
+  </data>
   <data name="button_Linear_Scale.Text" xml:space="preserve">
     <value>Barra di avanzamento lineare</value>
   </data>
   <data name="button_Images.Text" xml:space="preserve">
-    <value>Immagini indipendenti</value>
+    <value>Immagini</value>
   </data>
   <data name="button_Segments.Text" xml:space="preserve">
     <value>Immagini indipendenti</value>
@@ -129,7 +133,6 @@
   <data name="button_Number.Text" xml:space="preserve">
     <value>Valori numerici</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="button_Pointer.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
@@ -175,7 +178,7 @@
     <value>Puntatore</value>
   </data>
   <data name="button_Circle_Scale.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 24</value>
+    <value>180, 24</value>
   </data>
   <data name="button_Circle_Scale.Text" xml:space="preserve">
     <value>Barra di avanzamento circolare</value>

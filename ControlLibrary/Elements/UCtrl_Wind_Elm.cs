@@ -502,7 +502,6 @@ namespace ControlLibrary
                 case "Pointer":
                     checkBox_Pointer.Checked = status;
                     break;
-                    break;
                 case "Icon":
                     checkBox_Icon.Checked = status;
                     break;

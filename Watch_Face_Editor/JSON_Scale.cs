@@ -255,8 +255,6 @@ namespace Watch_Face_Editor
                     break;
                 case "ElementAltimeter":
                     ElementAltimeter Altimeter = (ElementAltimeter)elements;
-                    Scale_IMG_LEVEL(Altimeter.Images, scale);
-                    Scale_IMG_PROGRESS(Altimeter.Segments, scale);
                     Scale_IMG_NUMBER(Altimeter.Number, scale);
                     Scale_IMG_POINTER(Altimeter.Pointer, scale);
                     Scale_IMG(Altimeter.Icon, scale);

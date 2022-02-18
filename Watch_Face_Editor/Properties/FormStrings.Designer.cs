@@ -268,6 +268,33 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Удаление.
+        /// </summary>
+        internal static string Message_Delet_Caption {
+            get {
+                return ResourceManager.GetString("Message_Delet_Caption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Вы действительно хотите безвозвратно удалить файл &quot;.
+        /// </summary>
+        internal static string Message_Delet_Text1 {
+            get {
+                return ResourceManager.GetString("Message_Delet_Text1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на &quot;?.
+        /// </summary>
+        internal static string Message_Delet_Text2 {
+            get {
+                return ResourceManager.GetString("Message_Delet_Text2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Ошибка.
         /// </summary>
         internal static string Message_Error_Caption {

@@ -118,8 +118,17 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label01.Size" type="System.Drawing.Size, System.Drawing">
+    <value>49, 13</value>
+  </data>
+  <data name="label01.Text" xml:space="preserve">
+    <value>Imagen *</value>
+  </data>
   <data name="label02.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 13</value>
+    <value>70, 13</value>
+  </data>
+  <data name="label02.Text" xml:space="preserve">
+    <value>Coordenadas</value>
   </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -215,20 +224,19 @@
         5dNcjeDK1wouQ47gKs6jv05wMcdgrjBf4yrU61xFpNVpNWZBEIS/oF5M/il8x94AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="label01.Text" xml:space="preserve">
-    <value>Imagen *</value>
-  </data>
-  <data name="label02.Text" xml:space="preserve">
-    <value>Coordenadas</value>
-  </data>
   <data name="label06.Text" xml:space="preserve">
     <value>Altura</value>
   </data>
   <data name="label07.Text" xml:space="preserve">
     <value>Ancho</value>
   </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 52</value>
+  </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>*Imagen requerida. La imagen se muestra solo en este momento.
-de hacer clic en el acceso directo</value>
+    <value>*Imagen requerida.
+En firmware anterior, la imagen se muestra
+en el reloj solo en el momento en que haces clic
+en el atajo.</value>
   </data>
 </root>

@@ -118,19 +118,24 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="button_ElementName.Text" xml:space="preserve">
-    <value>Moon phase</value>
+    <value>Alba / Tramonto</value>
   </data>
-  <data name="button_ElementName.ToolTip" xml:space="preserve">
-    <value>1. Waxing Crescent
-2. First Quarter
-3. Waxing Gibbous
-5. Full Moon
-5. Waning Gibbous
-6. Last Quarter
-7. Waning Crescent
-8. New Moon</value>
+  <data name="button_Icon.Text" xml:space="preserve">
+    <value>Icona</value>
   </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
+  <data name="button_Images.Text" xml:space="preserve">
+    <value>Immagini</value>
+  </data>
+  <data name="button_Pointer.Text" xml:space="preserve">
+    <value>Puntatore</value>
+  </data>
+  <data name="button_Segments.Text" xml:space="preserve">
+    <value>Immagini indipendenti</value>
+  </data>
+  <data name="button_Sunrise.Text" xml:space="preserve">
+    <value>Valori numerici (Alba)</value>
+  </data>
+  <data name="button_Sunset.Text" xml:space="preserve">
+    <value>Valori numerici (Tramonto)</value>
   </data>
 </root>

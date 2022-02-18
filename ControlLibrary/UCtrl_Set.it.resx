@@ -224,7 +224,7 @@
     <value>Altitudine</value>
   </data>
   <data name="label18.Text" xml:space="preserve">
-    <value>Intensità del vento</value>
+    <value>Vento</value>
   </data>
   <data name="label17.Text" xml:space="preserve">
     <value>Umidità</value>
@@ -243,9 +243,6 @@
   </data>
   <data name="groupBox_Air.Text" xml:space="preserve">
     <value>Ambiente</value>
-  </data>
-  <data name="groupBox_Activity.Text" xml:space="preserve">
-    <value>Attività</value>
   </data>
   <data name="checkBox_DND_Set.Location" type="System.Drawing.Point, System.Drawing">
     <value>337, 123</value>
@@ -306,6 +303,9 @@
   </data>
   <data name="label01.Text" xml:space="preserve">
     <value>Data</value>
+  </data>
+  <data name="groupBox_Activity.Text" xml:space="preserve">
+    <value>Attività</value>
   </data>
   <data name="button_Set.Text" xml:space="preserve">
     <value>Set di parametri</value>

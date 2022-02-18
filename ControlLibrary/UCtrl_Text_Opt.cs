@@ -20,6 +20,7 @@ namespace ControlLibrary
         private bool Follow_mode;
         private bool Distance_mode;
         private bool Year_mode = false;
+        private bool Sunrise_mode = false;
 
         //private Point location_unit;
         private Point location_unit_miles;
@@ -289,58 +290,29 @@ namespace ControlLibrary
             set
             {
                 Distance_mode = value;
-                //comboBox_unit_miles.Visible = Distance_mode;
-                //label10.Visible = Distance_mode;
                 if (Distance_mode)
                 {
-                    //comboBox_imageDecimalPoint.Location = location_unit_miles;
-                    //comboBox_unit_miles.Location = location_imageDecimalPoint;
-                    //label07.Location = location_unit_miles_label;
-                    //label10.Location = location_imageDecimalPoint_label;
-
-                    comboBox_imageDecimalPoint.Location = location_imageError;
-                    comboBox_imageError.Location = location_imageDecimalPoint;
-                    label07.Location = location_imageError_label;
-                    label06.Location = location_imageDecimalPoint_label;
-
                     label08.Text = unit_label_text + " (km)";
                 }
                 else
                 {
-                    //comboBox_imageDecimalPoint.Location = location_imageDecimalPoint;
-                    //comboBox_unit_miles.Location = location_unit_miles;
-                    //label07.Location = location_imageDecimalPoint_label;
-                    //label10.Location = location_unit_miles_label;
+                    label08.Text = unit_label_text;
+                }
 
+                if (Distance_mode || Sunrise_mode)
+                {
+                    comboBox_imageDecimalPoint.Location = location_imageError;
+                    comboBox_imageError.Location = location_imageDecimalPoint;
+                    label07.Location = location_imageError_label;
+                    label06.Location = location_imageDecimalPoint_label;
+                }
+                else
+                {
                     comboBox_imageDecimalPoint.Location = location_imageDecimalPoint;
                     comboBox_imageError.Location = location_imageError;
                     label07.Location = location_imageDecimalPoint_label;
                     label06.Location = location_imageError_label;
-
-                    label08.Text = unit_label_text;
                 }
-
-                /*int offsetPositionX = label03.Location.X - numericUpDown_spacing.Location.X;
-                if (!Distance_mode && !OptionalSymbol_mode)
-                {
-                    Point location = numericUpDown_spacing.Location;
-                    location.X = numericUpDown_iconX.Location.X;
-                    numericUpDown_spacing.Location = location;
-
-                    location = label03.Location;
-                    location.X = numericUpDown_iconX.Location.X + offsetPositionX;
-                    label03.Location = location;
-                }
-                else
-                {
-                    Point location = numericUpDown_spacing.Location;
-                    location.X = numericUpDown_iconY.Location.X;
-                    numericUpDown_spacing.Location = location;
-
-                    location = label03.Location;
-                    location.X = numericUpDown_iconY.Location.X + offsetPositionX;
-                    label03.Location = location;
-                }*/
             }
         }
 
@@ -362,6 +334,43 @@ namespace ControlLibrary
                 else
                 {
                     checkBox_addZero.Text = Properties.Strings.UCtrl_Text_Opt_Year_false;
+                }
+            }
+        }
+
+        /// <summary>Режим отображения года</summary>
+        [Description("Режим отображения восхода")]
+        public virtual bool Sunrise
+        {
+            get
+            {
+                return Sunrise_mode;
+            }
+            set
+            {
+                Sunrise_mode = value;
+                if (Sunrise_mode)
+                {
+                    label07.Text = Properties.Strings.UCtrl_Text_Opt_Sunrise_true;
+                }
+                else
+                {
+                    label07.Text = Properties.Strings.UCtrl_Text_Opt_Sunrise_false;
+                }
+
+                if (Distance_mode || Sunrise_mode)
+                {
+                    comboBox_imageDecimalPoint.Location = location_imageError;
+                    comboBox_imageError.Location = location_imageDecimalPoint;
+                    label07.Location = location_imageError_label;
+                    label06.Location = location_imageDecimalPoint_label;
+                }
+                else
+                {
+                    comboBox_imageDecimalPoint.Location = location_imageDecimalPoint;
+                    comboBox_imageError.Location = location_imageError;
+                    label07.Location = location_imageDecimalPoint_label;
+                    label06.Location = location_imageError_label;
                 }
             }
         }

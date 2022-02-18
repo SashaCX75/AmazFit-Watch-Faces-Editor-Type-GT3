@@ -186,6 +186,15 @@
   <data name="Message_CopyCoord" xml:space="preserve">
     <value>Координаты скопированны</value>
   </data>
+  <data name="Message_Delet_Caption" xml:space="preserve">
+    <value>Удаление</value>
+  </data>
+  <data name="Message_Delet_Text1" xml:space="preserve">
+    <value>Вы действительно хотите безвозвратно удалить файл "</value>
+  </data>
+  <data name="Message_Delet_Text2" xml:space="preserve">
+    <value>"?</value>
+  </data>
   <data name="Message_ErrorReadJS" xml:space="preserve">
     <value>Не удалось распознать структуру циферблата</value>
   </data>

@@ -186,6 +186,15 @@
   <data name="Message_CopyCoord" xml:space="preserve">
     <value>Coordenadas copiadas</value>
   </data>
+  <data name="Message_Delet_Caption" xml:space="preserve">
+    <value>Eliminación</value>
+  </data>
+  <data name="Message_Delet_Text1" xml:space="preserve">
+    <value>¿Está seguro de que desea eliminar permanentemente el archivo "</value>
+  </data>
+  <data name="Message_Delet_Text2" xml:space="preserve">
+    <value>"?</value>
+  </data>
   <data name="Message_ErrorReadJS" xml:space="preserve">
     <value>No se puede reconocer la estructura de la esfera del reloj</value>
   </data>

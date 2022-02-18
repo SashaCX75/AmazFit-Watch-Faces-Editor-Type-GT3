@@ -186,6 +186,15 @@
   <data name="Message_CopyCoord" xml:space="preserve">
     <value>Coordinate copiate</value>
   </data>
+  <data name="Message_Delet_Caption" xml:space="preserve">
+    <value>Elimina file</value>
+  </data>
+  <data name="Message_Delet_Text1" xml:space="preserve">
+    <value>Sei sicuro di voler eliminare in modo definitivo il file "</value>
+  </data>
+  <data name="Message_Delet_Text2" xml:space="preserve">
+    <value>"?</value>
+  </data>
   <data name="Message_ErrorReadJS" xml:space="preserve">
     <value>Impossibile ricostruire la struttura della watch face</value>
   </data>

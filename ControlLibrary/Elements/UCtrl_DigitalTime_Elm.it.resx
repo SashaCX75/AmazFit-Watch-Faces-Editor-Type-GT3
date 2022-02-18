@@ -117,19 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="button_Minutes.Text" xml:space="preserve">
+    <value>Minuti</value>
+  </data>
   <data name="button_AmPm.Text" xml:space="preserve">
     <value>AM/PM</value>
-  </data>
-  <data name="button_ElementName.Text" xml:space="preserve">
-    <value>Orologio Digitale</value>
   </data>
   <data name="button_Hours.Text" xml:space="preserve">
     <value>Ore</value>
   </data>
-  <data name="button_Minutes.Text" xml:space="preserve">
-    <value>Minuti</value>
-  </data>
   <data name="button_Seconds.Text" xml:space="preserve">
     <value>Secondi</value>
+  </data>
+  <data name="button_ElementName.Text" xml:space="preserve">
+    <value>Orologio digitale</value>
   </data>
 </root>

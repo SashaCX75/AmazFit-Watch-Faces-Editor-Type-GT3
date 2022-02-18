@@ -143,14 +143,14 @@
     <value>UCtrl_Moon_Elm</value>
   </data>
   <data name="button_ElementName.ToolTip" xml:space="preserve">
-    <value>1. Новолуние
-2. Растущий полумесяц
-3. Четверть луны
-4. Растущая луна
-5. Полнолуние
-6. Убывающая луна
-7. Последняя четверть луны
-8. Убывающий полумесяц</value>
+    <value>1. Молодая луна
+2. Первая четверть луны
+3. Прибывающая луна
+4. Полнолуние
+5. Убывающая луна
+6. Последняя четверть луны
+7. Старая луна
+8. Новолуние</value>
   </data>
   <data name="&gt;&gt;button_ElementName.Name" xml:space="preserve">
     <value>button_ElementName</value>
