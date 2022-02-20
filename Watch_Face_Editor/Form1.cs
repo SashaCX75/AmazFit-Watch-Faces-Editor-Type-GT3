@@ -9197,7 +9197,7 @@ namespace Watch_Face_Editor
 
                 if (moon.Images == null) moon.Images = new hmUI_widget_IMG_LEVEL();
                 img_level = moon.Images;
-                Read_ImgLevel_Options(img_level, 7, true);
+                Read_ImgLevel_Options(img_level, 8, true);
                 ShowElemenrOptions("Images");
 
             }

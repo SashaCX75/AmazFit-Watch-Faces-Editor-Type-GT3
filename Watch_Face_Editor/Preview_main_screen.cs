@@ -1557,12 +1557,16 @@ namespace Watch_Face_Editor
                             {
                                 imgCount = img_level.image_length;
                                 valueImgIndex = (int)((imgCount - 1) * progress);
+                                valueImgIndex = elementValue - 2;
+                                if (valueImgIndex < 0) valueImgIndex = 0;
                                 if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
                             }
                             if (img_prorgess != null && img_prorgess.image_length > 0)
                             {
                                 segmentCount = img_prorgess.image_length;
                                 valueSegmentIndex = (int)((segmentCount - 1) * progress);
+                                valueSegmentIndex = elementValue - 2;
+                                if (valueSegmentIndex < 0) valueSegmentIndex = 0;
                                 if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
                             }
 

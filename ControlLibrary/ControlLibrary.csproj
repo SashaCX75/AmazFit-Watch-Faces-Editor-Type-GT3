@@ -442,6 +442,9 @@
     <EmbeddedResource Include="Elements\UCtrl_Distance_Elm.zh.resx">
       <DependentUpon>UCtrl_Distance_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_FatBurning_Elm.es.resx">
+      <DependentUpon>UCtrl_FatBurning_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_FatBurning_Elm.it.resx">
       <DependentUpon>UCtrl_FatBurning_Elm.cs</DependentUpon>
     </EmbeddedResource>
