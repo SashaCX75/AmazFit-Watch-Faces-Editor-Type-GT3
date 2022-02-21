@@ -157,7 +157,7 @@
     <value>风力</value>
   </data>
   <data name="comboBox_AddAir.Items6" xml:space="preserve">
-    <value>压力</value>
+    <value>气压</value>
   </data>
   <data name="comboBox_AddActivity.Items" xml:space="preserve">
     <value>活动</value>
@@ -284,7 +284,7 @@
     <value>图像</value>
   </data>
   <data name="Column1.HeaderText" xml:space="preserve">
-    <value>图像2</value>
+    <value>图像-反色</value>
   </data>
   <data name="button_JSON.Text" xml:space="preserve">
     <value>打开项目</value>
@@ -595,7 +595,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACm
-        DQAAAk1TRnQBSQFMAgEBBgEAARQBKAEYASgBEAEAARABAAT/AQkBEAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAARQBKAEgASgBEAEAARABAAT/AQkBEAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -1940,5 +1940,14 @@
   </data>
   <data name="удалитьИзображениеToolStripMenuItem.Text" xml:space="preserve">
     <value>删除图像</value>
+  </data>
+  <data name="comboBox_AddActivity.Items8" xml:space="preserve">
+    <value>脂肪燃烧</value>
+  </data>
+  <data name="comboBox_AddActivity.Items9" xml:space="preserve">
+    <value>压力</value>
+  </data>
+  <data name="comboBox_AddAir.Items7" xml:space="preserve">
+    <value>月相</value>
   </data>
 </root>
