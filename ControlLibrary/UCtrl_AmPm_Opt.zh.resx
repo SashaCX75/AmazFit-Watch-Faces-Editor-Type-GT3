@@ -266,4 +266,10 @@
   <data name="label2.Text" xml:space="preserve">
     <value>上午坐标</value>
   </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>上午</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>下午</value>
+  </data>
 </root>
