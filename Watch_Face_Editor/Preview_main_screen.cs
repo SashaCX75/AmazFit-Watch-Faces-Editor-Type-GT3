@@ -32,10 +32,11 @@ namespace Watch_Face_Editor
         /// <param name="showWidgetsArea">Подсвечивать область виджетов</param>
         /// <param name="link">0 - основной экран; 1 - AOD</param>
         /// <param name="Shortcuts_In_Gif">Подсвечивать область с ярлыками (для gif файла)</param>
+        /// <param name="time_value_sec">Время от начала анимации, сек</param>
         public void Preview_screen(Graphics gPanel, float scale, bool crop, bool WMesh, bool BMesh, bool BBorder,
             bool showShortcuts, bool showShortcutsArea, bool showShortcutsBorder, bool showShortcutsImage, 
-            bool showAnimation, bool showProgressArea,
-            bool showCentrHend, bool showWidgetsArea, int link, bool Shortcuts_In_Gif)
+            bool showAnimation, bool showProgressArea, bool showCentrHend, 
+            bool showWidgetsArea, int link, bool Shortcuts_In_Gif, float time_value_sec)
         {
             int offSet_X = 227;
             int offSet_Y = 227;
@@ -50,11 +51,11 @@ namespace Watch_Face_Editor
             #region Black background
             Logger.WriteLine("Preview_screen (Black background)");
             src = OpenFileStream(Application.StartupPath + @"\Mask\mask_gtr_3.png");
-            if (radioButton_GTR3_Pro.Checked)
+            if (ProgramSettings.Watch_Model == "GTR 3 Pro")
             {
                 src = OpenFileStream(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
             }
-            if (radioButton_GTS3.Checked)
+            if (ProgramSettings.Watch_Model == "GTS 3")
             {
                 src = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_3.png");
             }
@@ -1417,6 +1418,34 @@ namespace Watch_Face_Editor
                                 valueImgIndex--;
                                 if (valueImgIndex < 0) valueImgIndex = 0;
                                 if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                                if (imgCount == 5)
+                                {
+                                    switch (elementValue)
+                                    {
+                                        case 0:
+                                        case 1:
+                                        case 2:
+                                            valueImgIndex = 0;
+                                            break;
+                                        case 3:
+                                        case 4:
+                                        case 5:
+                                            valueImgIndex = 1;
+                                            break;
+                                        case 6:
+                                        case 7:
+                                            valueImgIndex = 2;
+                                            break;
+                                        case 8:
+                                        case 9:
+                                        case 10:
+                                            valueImgIndex = 3;
+                                            break;
+                                        default:
+                                            valueImgIndex = 4;
+                                            break;
+                                    }
+                                }
                             }
                             if (img_prorgess != null && img_prorgess.image_length > 0)
                             {
@@ -1425,6 +1454,34 @@ namespace Watch_Face_Editor
                                 valueSegmentIndex--;
                                 if (valueSegmentIndex < 0) valueSegmentIndex = 0;
                                 if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
+                                if (segmentCount == 5)
+                                {
+                                    switch (elementValue)
+                                    {
+                                        case 0:
+                                        case 1:
+                                        case 2:
+                                            valueSegmentIndex = 0;
+                                            break;
+                                        case 3:
+                                        case 4:
+                                        case 5:
+                                            valueSegmentIndex = 1;
+                                            break;
+                                        case 6:
+                                        case 7:
+                                            valueSegmentIndex = 2;
+                                            break;
+                                        case 8:
+                                        case 9:
+                                        case 10:
+                                            valueSegmentIndex = 3;
+                                            break;
+                                        default:
+                                            valueSegmentIndex = 4;
+                                            break;
+                                    }
+                                }
                             }
 
                             DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
@@ -1594,12 +1651,12 @@ namespace Watch_Face_Editor
                             int year = WatchFacePreviewSet.Date.Year;
                             int month = WatchFacePreviewSet.Date.Month;
                             int day = WatchFacePreviewSet.Date.Day;
-                            double moon_age = MoonAge(day, month, year) - 1;
-                            int moonPhase = (int)(8 * moon_age / 29);
+                            double moon_age = MoonAge(day, month, year);
+                            //int moonPhase = (int)(8 * moon_age / 29);
 
                             imgCount = img_level.image_length;
-                            //valueImgIndex = (int)((imgCount) * moonPhase/8);
-                            valueImgIndex = moonPhase - 1;
+                            valueImgIndex = (int)Math.Round((imgCount - 1) * moon_age / 29.53f);
+                            //valueImgIndex = moonPhase - 1;
                             if (valueImgIndex < 0) valueImgIndex = (int)(imgCount - 1);
                             if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
 
@@ -1608,6 +1665,48 @@ namespace Watch_Face_Editor
                                 img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
                                 progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
                                 showCentrHend, "ElementMoon");
+
+
+                            break;
+                        #endregion
+
+                        #region ElementAnimation
+                        case "ElementAnimation":
+                            ElementAnimation elementAnimation = (ElementAnimation)element;
+                            if (!elementAnimation.visible) continue;
+
+                            for (int indexAnim = 1; indexAnim <= 3; indexAnim++)
+                            {
+                                hmUI_widget_IMG_ANIM_List frame_Animation_List = elementAnimation.Frame_Animation_List;
+                                if (frame_Animation_List != null && frame_Animation_List.visible && 
+                                    frame_Animation_List.position == indexAnim && frame_Animation_List.Frame_Animation != null)
+                                {
+                                    foreach (hmUI_widget_IMG_ANIM animation_frame in frame_Animation_List.Frame_Animation)
+                                    {
+                                        if(animation_frame.visible) DrawAnimationFrame(gPanel, animation_frame, time_value_sec);
+                                    }
+                                }
+
+                                Motion_Animation_List motion_Animation_List = elementAnimation.Motion_Animation_List;
+                                if (motion_Animation_List != null && motion_Animation_List.visible &&
+                                    motion_Animation_List.position == indexAnim && motion_Animation_List.Motion_Animation != null)
+                                {
+                                    foreach (Motion_Animation motion_Animation in motion_Animation_List.Motion_Animation)
+                                    {
+                                        if (motion_Animation.visible) DrawAnimationMotion(gPanel, motion_Animation, time_value_sec);
+                                    }
+                                }
+
+                                Rotate_Animation_List rotate_Animation_List = elementAnimation.Rotate_Animation_List;
+                                if (rotate_Animation_List != null && rotate_Animation_List.visible &&
+                                    rotate_Animation_List.position == indexAnim && rotate_Animation_List.Rotate_Animation != null)
+                                {
+                                    foreach (Rotate_Animation rotate_Animation in rotate_Animation_List.Rotate_Animation)
+                                    {
+
+                                    }
+                                } 
+                            }
 
 
                             break;
@@ -1669,11 +1768,11 @@ namespace Watch_Face_Editor
             {
                 Logger.WriteLine("PreviewToBitmap (crop)");
                 Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
-                if (radioButton_GTR3_Pro.Checked)
+                if (ProgramSettings.Watch_Model == "GTR 3 Pro")
                 {
                     mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
                 }
-                if (radioButton_GTS3.Checked)
+                if (ProgramSettings.Watch_Model == "GTS 3")
                 {
                     mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_3.png");
                 }
@@ -1920,7 +2019,7 @@ namespace Watch_Face_Editor
             src.Dispose();
         }
 
-        /// <summary>Рисуем все параметры элемента</summary>
+        /// <summary>Рисуем все параметры элемента погода</summary>
         /// <param name="gPanel">Поверхность для рисования</param>
         /// <param name="images">Параметры для изображения</param>
         /// <param name="number">Параметры для текущей температуры</param>
@@ -2135,6 +2234,7 @@ namespace Watch_Face_Editor
             src.Dispose();
         }
 
+        /// <summary>Рисуем восход, звкат</summary>
         private void DrawSunrise(Graphics gPanel, hmUI_widget_IMG_LEVEL images, hmUI_widget_IMG_PROGRESS segments,
             hmUI_widget_IMG_NUMBER sunrise, hmUI_widget_IMG_NUMBER sunset, hmUI_widget_IMG_POINTER pointer,
             hmUI_widget_IMG icon, int hour, int minute, bool BBorder, bool showProgressArea, bool showCentrHend)
@@ -2326,6 +2426,134 @@ namespace Watch_Face_Editor
 
 
             }
+
+            src.Dispose();
+        }
+
+        /// <summary>Рисуем покадровую анимацию</summary>
+        /// <param name="gPanel">Поверхность для рисования</param>
+        /// <param name="img_anim">Параметры покадровой анимации</param>
+        /// <param name="time_value_sec">Время от начала анимайии, сек</param>
+        private void DrawAnimationFrame(Graphics gPanel, hmUI_widget_IMG_ANIM img_anim,
+            float time_value_sec)
+        {
+            string start_img = img_anim.anim_src;
+            if (start_img == null || start_img.Length == 0) return;
+            if (time_value_sec < 0) time_value_sec = 0;
+
+                int x = img_anim.x;
+            int y = img_anim.y;
+
+            int fps = img_anim.anim_fps;
+            int size = img_anim.anim_size;
+
+            bool repeat = img_anim.anim_repeat;
+
+            if (repeat)
+            {
+                while (time_value_sec > (float)size / fps)
+                {
+                    time_value_sec = time_value_sec - (float)size / fps;
+                }
+            }
+
+            Bitmap src = new Bitmap(1, 1);
+            int imageIndex = ListAnimImages.IndexOf(start_img);
+            if (repeat) imageIndex = (int)(imageIndex + time_value_sec * fps);
+            else
+            {
+                if (time_value_sec > (float)size / fps) imageIndex = (int)(imageIndex + size - 1);
+                else imageIndex = (int)(imageIndex + time_value_sec * fps);
+            }
+            if (imageIndex < ListAnimImagesFullName.Count && imageIndex >= 0)
+            {
+                src = OpenFileStream(ListAnimImagesFullName[imageIndex]);
+                gPanel.DrawImage(src, x, y);
+            }
+
+            src.Dispose();
+        }
+
+        /// <summary>Рисуем анимацию движения </summary>
+        /// <param name="gPanel">Поверхность для рисования</param>
+        /// <param name="motion_anim">Параметры покадровой анимации</param>
+        /// <param name="time_value_sec">Время от начала анимайии, сек</param>
+        private void DrawAnimationMotion(Graphics gPanel, Motion_Animation motion_anim,
+            float time_value_sec)
+        {
+            string src_name = motion_anim.src;
+            if (src_name == null || src_name.Length == 0) return;
+
+            int x_start = motion_anim.x_start;
+            int y_start = motion_anim.y_start;
+            int x_end = motion_anim.x_end;
+            int y_end = motion_anim.y_end;
+
+            float time_anim = motion_anim.anim_duration/1000;
+            int count = motion_anim.repeat_count;
+
+            bool anim_two_sides = motion_anim.anim_two_sides;
+
+            int imageIndex = ListAnimImages.IndexOf(src_name);
+            if (imageIndex < 0) return;
+            Bitmap src = new Bitmap(1, 1);
+            src = OpenFileStream(ListAnimImagesFullName[imageIndex]);
+
+            if (time_value_sec < 0) // статичная картинка
+            {
+                bool show_in_start = motion_anim.show_in_start;
+                if(show_in_start) gPanel.DrawImage(src, x_start, y_start);
+                else gPanel.DrawImage(src, x_end, y_end);
+            }
+            else
+            {
+                if(anim_two_sides) // зеркальная анимация в обе стороны
+                {
+                    if (count > 0 & time_value_sec > time_anim * 2 * count) time_value_sec = 0;
+                    while (time_value_sec > time_anim * 2)
+                    {
+                        time_value_sec = time_value_sec - time_anim * 2;
+                    }
+                    bool morror_anim = false;
+                    if(time_value_sec > time_anim)
+                    {
+                        time_value_sec = time_value_sec - time_anim;
+                        morror_anim = true;
+                    }
+                    float progress = time_value_sec / time_anim;
+                    int dx = x_end - x_start;
+                    int dy = y_end - y_start;
+
+                    if (!morror_anim)
+                    {
+                        int x = (int)Math.Round(x_start + dx * progress);
+                        int y = (int)Math.Round(y_start + dy * progress);
+                        gPanel.DrawImage(src, x, y);
+                    }
+                    else
+                    {
+                        int x = (int)Math.Round(x_end - dx * progress);
+                        int y = (int)Math.Round(y_end - dy * progress);
+                        gPanel.DrawImage(src, x, y);
+                    }
+                }
+                else // одностароняя анимация
+                {
+                    if (count > 0 & time_value_sec > time_anim * count) time_value_sec = time_anim;
+                    while (time_value_sec > time_anim)
+                    {
+                        time_value_sec = time_value_sec - time_anim;
+                    }
+                    float progress = time_value_sec / time_anim;
+                    int dx = x_end - x_start;
+                    int dy = y_end - y_start;
+
+                    int x = (int)Math.Round(x_start + dx * progress);
+                    int y = (int)Math.Round(y_start + dy * progress);
+                    gPanel.DrawImage(src, x, y);
+                }
+            }
+
 
             src.Dispose();
         }
@@ -3245,8 +3473,11 @@ namespace Watch_Face_Editor
             {
                 //graphics.DrawArc(pen, arcX, arcY, CircleWidth, CircleWidth, startAngle, valueAngle);
                 int s = Math.Sign(valueAngle);
-                graphics.DrawArc(pen, arcX, arcY, CircleWidth, CircleWidth,
-                    (float)(startAngle - 0.007 * s * width), (float)(valueAngle + 0.015 * s * width));
+                float start_angl = (float)(startAngle + 0.08 * s * width);
+                float end_angl = (float)(valueAngle - 0.16 * s * width);
+                //graphics.DrawArc(pen, arcX, arcY, CircleWidth, CircleWidth,
+                //    (float)(startAngle - 0.007 * s * width), (float)(valueAngle + 0.015 * s * width));
+                graphics.DrawArc(pen, arcX, arcY, CircleWidth, CircleWidth,start_angl, end_angl);
                 //TODO исправить отрисовку при большой толщине
             }
             catch (Exception)
@@ -3265,14 +3496,18 @@ namespace Watch_Face_Editor
                 HatchBrush myHatchBrush = new HatchBrush(HatchStyle.Percent20, Color.White, Color.Transparent);
                 pen.Brush = myHatchBrush;
                 int s = Math.Sign(fullAngle);
+                float start_angl = (float)(startAngle + 0.08 * s * width);
+                float end_angl = (float)(fullAngle - 0.16 * s * width);
                 //graphics.DrawArc(pen, arcX, arcY, CircleWidth, CircleWidth, startAngle, endAngle);
-                graphics.DrawArc(pen, arcX, arcY, CircleWidth, CircleWidth,
-                    (float)(startAngle - 0.007 * s * width), (float)(fullAngle + 0.015 * s * width));
+                //graphics.DrawArc(pen, arcX, arcY, CircleWidth, CircleWidth,
+                //    (float)(startAngle - 0.007 * s * width), (float)(fullAngle + 0.015 * s * width));
+                graphics.DrawArc(pen, arcX, arcY, CircleWidth, CircleWidth, start_angl, end_angl);
                 myHatchBrush = new HatchBrush(HatchStyle.Percent10, Color.Black, Color.Transparent);
                 pen.Brush = myHatchBrush;
                 //graphics.DrawArc(pen, arcX, arcY, CircleWidth, CircleWidth, startAngle, endAngle);
-                graphics.DrawArc(pen, arcX, arcY, CircleWidth, CircleWidth,
-                    (float)(startAngle - 0.007 * s * width), (float)(fullAngle + 0.015 * s * width));
+                //graphics.DrawArc(pen, arcX, arcY, CircleWidth, CircleWidth,
+                //    (float)(startAngle - 0.007 * s * width), (float)(fullAngle + 0.015 * s * width));
+                graphics.DrawArc(pen, arcX, arcY, CircleWidth, CircleWidth, start_angl, end_angl);
 
                 // подсвечивание внешней и внутреней дуги на шкале
                 using (Pen pen1 = new Pen(Color.White, 1))
@@ -3426,7 +3661,7 @@ namespace Watch_Face_Editor
                     {
                         graphics.DrawImage(src, pos_x, pos_y);
                     }
-                    else
+                    else if (width > 0 && height > 0)
                     {
                         Rectangle cropRect = new Rectangle(x - pos_x, y - pos_y, width, height);
                         //Rectangle cropRect = new Rectangle(...);
@@ -3687,11 +3922,11 @@ namespace Watch_Face_Editor
             else return bitmap;
 
             Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
-            if (radioButton_GTR3_Pro.Checked)
+            if (ProgramSettings.Watch_Model == "GTR 3 Pro")
             {
                 mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
             }
-            if (radioButton_GTS3.Checked)
+            if (ProgramSettings.Watch_Model == "GTR 3")
             {
                 mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
             }
@@ -3794,7 +4029,7 @@ namespace Watch_Face_Editor
             k2 = (int)(30.6001 * mm + 0.5);
             k3 = (int)((int)((yy / 100) + 49) * 0.75) - 38;
             // 'j' for dates in Julian calendar:
-            j = k1 + k2 + d + 62;
+            j = k1 + k2 + d + 59;
             if (j > 2299160)
             {
                 // For Gregorian calendar:

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Watch_Face_Editor
 {
-    class Watch_Face_Preview_Set
+    public class Watch_Face_Preview_Set
     {
         public DateSet Date { get; set; }
         public TimeSet Time { get; set; }

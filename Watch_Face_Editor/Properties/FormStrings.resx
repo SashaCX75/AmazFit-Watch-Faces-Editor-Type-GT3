@@ -180,6 +180,9 @@
   <data name="Form_PreviewX" xml:space="preserve">
     <value>Предпросмотр [X =</value>
   </data>
+  <data name="Message_AnimationAOD_Text" xml:space="preserve">
+    <value>Вы не можете добавлять анимацию на экран AOD.</value>
+  </data>
   <data name="Message_ConvertingCompleted_Text" xml:space="preserve">
     <value>Новый циферблат создан.</value>
   </data>

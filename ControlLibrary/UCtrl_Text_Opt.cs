@@ -47,10 +47,10 @@ namespace ControlLibrary
             location_imageDecimalPoint = comboBox_imageDecimalPoint.Location;
             location_imageError = comboBox_imageError.Location;
             //location_unit_label = label08.Location; // km
-            location_unit_miles_label = label10.Location; // ml
-            location_imageDecimalPoint_label = label07.Location; // десятичный разделитель
-            location_imageError_label = label06.Location; // изображение при ошибке
-            unit_label_text = label08.Text;
+            location_unit_miles_label = label_unit_miles.Location; // ml
+            location_imageDecimalPoint_label = label_imageDecimalPoint.Location; // десятичный разделитель
+            location_imageError_label = label_imageError.Location; // изображение при ошибке
+            unit_label_text = label_unit.Text;
         }
 
 
@@ -222,7 +222,7 @@ namespace ControlLibrary
             {
                 ImageError_mode = value;
                 comboBox_imageError.Visible = ImageError_mode;
-                label06.Visible = ImageError_mode;
+                label_imageError.Visible = ImageError_mode;
             }
         }
 
@@ -238,7 +238,7 @@ namespace ControlLibrary
             {
                 OptionalSymbol_mode = value;
                 comboBox_imageDecimalPoint.Visible = OptionalSymbol_mode;
-                label07.Visible = OptionalSymbol_mode; 
+                label_imageDecimalPoint.Visible = OptionalSymbol_mode; 
                 
                 /*int offsetPositionX = label03.Location.X - numericUpDown_spacing.Location.X;
                 if (!Distance_mode && !OptionalSymbol_mode)
@@ -292,26 +292,47 @@ namespace ControlLibrary
                 Distance_mode = value;
                 if (Distance_mode)
                 {
-                    label08.Text = unit_label_text + " (km)";
+                    label_unit.Text = unit_label_text + " (km)";
                 }
                 else
                 {
-                    label08.Text = unit_label_text;
+                    label_unit.Text = unit_label_text;
                 }
 
-                if (Distance_mode || Sunrise_mode)
+                comboBox_unit_miles.Visible = false;
+                label_unit_miles.Visible = false;
+                if (Sunrise_mode)
                 {
                     comboBox_imageDecimalPoint.Location = location_imageError;
                     comboBox_imageError.Location = location_imageDecimalPoint;
-                    label07.Location = location_imageError_label;
-                    label06.Location = location_imageDecimalPoint_label;
+                    comboBox_unit_miles.Location = location_unit_miles;
+
+                    label_imageDecimalPoint.Location = location_imageError_label;
+                    label_imageError.Location = location_imageDecimalPoint_label;
+                    label_unit_miles.Location = location_unit_miles_label;
+                }
+                else if (Distance_mode)
+                {
+                    comboBox_imageDecimalPoint.Location = location_imageDecimalPoint;
+                    comboBox_imageError.Location = location_unit_miles;
+                    comboBox_unit_miles.Location = location_imageError;
+
+                    label_imageDecimalPoint.Location = location_imageDecimalPoint_label;
+                    label_unit_miles.Location = location_imageError_label;
+                    label_imageError.Location = location_unit_miles_label;
+
+                    comboBox_unit_miles.Visible = true;
+                    label_unit_miles.Visible = true;
                 }
                 else
                 {
                     comboBox_imageDecimalPoint.Location = location_imageDecimalPoint;
                     comboBox_imageError.Location = location_imageError;
-                    label07.Location = location_imageDecimalPoint_label;
-                    label06.Location = location_imageError_label;
+                    comboBox_unit_miles.Location = location_unit_miles;
+
+                    label_imageDecimalPoint.Location = location_imageDecimalPoint_label;
+                    label_imageError.Location = location_imageError_label;
+                    label_unit_miles.Location = location_unit_miles_label;
                 }
             }
         }
@@ -351,26 +372,47 @@ namespace ControlLibrary
                 Sunrise_mode = value;
                 if (Sunrise_mode)
                 {
-                    label07.Text = Properties.Strings.UCtrl_Text_Opt_Sunrise_true;
+                    label_imageDecimalPoint.Text = Properties.Strings.UCtrl_Text_Opt_Sunrise_true;
                 }
                 else
                 {
-                    label07.Text = Properties.Strings.UCtrl_Text_Opt_Sunrise_false;
+                    label_imageDecimalPoint.Text = Properties.Strings.UCtrl_Text_Opt_Sunrise_false;
                 }
 
-                if (Distance_mode || Sunrise_mode)
+                comboBox_unit_miles.Visible = false;
+                label_unit_miles.Visible = false;
+                if (Sunrise_mode)
                 {
                     comboBox_imageDecimalPoint.Location = location_imageError;
                     comboBox_imageError.Location = location_imageDecimalPoint;
-                    label07.Location = location_imageError_label;
-                    label06.Location = location_imageDecimalPoint_label;
+                    comboBox_unit_miles.Location = location_unit_miles;
+
+                    label_imageDecimalPoint.Location = location_imageError_label;
+                    label_imageError.Location = location_imageDecimalPoint_label;
+                    label_unit_miles.Location = location_unit_miles_label;
+                }
+                else if (Distance_mode)
+                {
+                    comboBox_imageDecimalPoint.Location = location_imageDecimalPoint;
+                    comboBox_imageError.Location = location_unit_miles;
+                    comboBox_unit_miles.Location = location_imageError;
+
+                    label_imageDecimalPoint.Location = location_imageDecimalPoint_label;
+                    label_unit_miles.Location = location_imageError_label;
+                    label_imageError.Location = location_unit_miles_label;
+
+                    comboBox_unit_miles.Visible = true;
+                    label_unit_miles.Visible = true;
                 }
                 else
                 {
                     comboBox_imageDecimalPoint.Location = location_imageDecimalPoint;
                     comboBox_imageError.Location = location_imageError;
-                    label07.Location = location_imageDecimalPoint_label;
-                    label06.Location = location_imageError_label;
+                    comboBox_unit_miles.Location = location_unit_miles;
+
+                    label_imageDecimalPoint.Location = location_imageDecimalPoint_label;
+                    label_imageError.Location = location_imageError_label;
+                    label_unit_miles.Location = location_unit_miles_label;
                 }
             }
         }

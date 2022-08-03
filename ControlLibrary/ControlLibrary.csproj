@@ -8,9 +8,10 @@
     <OutputType>Library</OutputType>
     <RootNamespace>ControlLibrary</RootNamespace>
     <AssemblyName>ControlLibrary</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -98,6 +99,30 @@
     </Compile>
     <Compile Include="Elements\UCtrl_Background_Elm.Designer.cs">
       <DependentUpon>UCtrl_Background_Elm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Elements\UCtrl_Animation_Elm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\UCtrl_Animation_Elm.Designer.cs">
+      <DependentUpon>UCtrl_Animation_Elm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCtrl_Animation_Frame_Opt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCtrl_Animation_Frame_Opt.Designer.cs">
+      <DependentUpon>UCtrl_Animation_Frame_Opt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCtrl_Animation_Motion_Opt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCtrl_Animation_Motion_Opt.Designer.cs">
+      <DependentUpon>UCtrl_Animation_Motion_Opt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCtrl_Animation_Rotate_Opt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCtrl_Animation_Rotate_Opt.Designer.cs">
+      <DependentUpon>UCtrl_Animation_Rotate_Opt.cs</DependentUpon>
     </Compile>
     <Compile Include="UCtrl_Background_Opt.cs">
       <SubType>UserControl</SubType>
@@ -351,6 +376,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_AnalogTime_Elm.zh.resx">
       <DependentUpon>UCtrl_AnalogTime_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Animation_Elm.en.resx">
+      <DependentUpon>UCtrl_Animation_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Background_Elm.es.resx">
       <DependentUpon>UCtrl_Background_Elm.cs</DependentUpon>
@@ -667,6 +695,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_AmPm_Opt.zh.resx">
       <DependentUpon>UCtrl_AmPm_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Animation_Elm.resx">
+      <DependentUpon>UCtrl_Animation_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Animation_Frame_Opt.en.resx">
+      <DependentUpon>UCtrl_Animation_Frame_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Animation_Frame_Opt.resx">
+      <DependentUpon>UCtrl_Animation_Frame_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Animation_Motion_Opt.en.resx">
+      <DependentUpon>UCtrl_Animation_Motion_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Animation_Motion_Opt.resx">
+      <DependentUpon>UCtrl_Animation_Motion_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Animation_Rotate_Opt.en.resx">
+      <DependentUpon>UCtrl_Animation_Rotate_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Animation_Rotate_Opt.resx">
+      <DependentUpon>UCtrl_Animation_Rotate_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Background_Opt.en.resx">
       <DependentUpon>UCtrl_Background_Opt.cs</DependentUpon>
@@ -1124,6 +1173,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\moon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\animation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\frame_anim.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\motion_anim.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rotate_anim.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

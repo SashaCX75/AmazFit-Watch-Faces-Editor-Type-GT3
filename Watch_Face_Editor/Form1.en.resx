@@ -117,6 +117,49 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Number.HeaderText" xml:space="preserve">
+    <value>#</value>
+  </data>
+  <data name="NameFile.HeaderText" xml:space="preserve">
+    <value>Filename</value>
+  </data>
+  <data name="ColumnImage.HeaderText" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="Column1.HeaderText" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="удалитьИзображениеToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 22</value>
+  </data>
+  <data name="удалитьИзображениеToolStripMenuItem.Text" xml:space="preserve">
+    <value>Delete image</value>
+  </data>
+  <data name="обновитьСписокИзображенийToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>166, 22</value>
+  </data>
+  <data name="обновитьСписокИзображенийToolStripMenuItem.Text" xml:space="preserve">
+    <value>Update image list</value>
+  </data>
+  <data name="contextMenuStrip_RemoveImage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 48</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
+    <value>Filename</value>
+  </data>
+  <data name="dataGridViewImageColumn1.HeaderText" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="dataGridViewImageColumn2.HeaderText" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="button_Add_Anim_Images.Text" xml:space="preserve">
+    <value>Add animation images</value>
+  </data>
+  <data name="button_Add_Images.Text" xml:space="preserve">
+    <value>Add images</value>
+  </data>
   <data name="button_SaveJson.Text" xml:space="preserve">
     <value>Save Json</value>
   </data>
@@ -137,6 +180,9 @@
   </data>
   <data name="comboBox_AddSystem.Items3" xml:space="preserve">
     <value>Shortcuts</value>
+  </data>
+  <data name="comboBox_AddSystem.Items4" xml:space="preserve">
+    <value>Animation</value>
   </data>
   <data name="comboBox_AddAir.Items" xml:space="preserve">
     <value>Air</value>
@@ -222,7 +268,6 @@
   <data name="button_RandomPreview.Text" xml:space="preserve">
     <value>Random preview</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="radioButton_ScreenNormal.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 17</value>
   </data>
@@ -280,38 +325,8 @@
   <data name="tabPage_Show_Set.Text" xml:space="preserve">
     <value>Data for preview</value>
   </data>
-  <data name="button_Add_Images.Text" xml:space="preserve">
-    <value>Add images</value>
-  </data>
   <data name="button_New_Project.Text" xml:space="preserve">
     <value>Create a new project</value>
-  </data>
-  <data name="Number.HeaderText" xml:space="preserve">
-    <value>#</value>
-  </data>
-  <data name="NameFile.HeaderText" xml:space="preserve">
-    <value>Filename</value>
-  </data>
-  <data name="ColumnImage.HeaderText" xml:space="preserve">
-    <value>Image</value>
-  </data>
-  <data name="Column1.HeaderText" xml:space="preserve">
-    <value>Image</value>
-  </data>
-  <data name="удалитьИзображениеToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 22</value>
-  </data>
-  <data name="удалитьИзображениеToolStripMenuItem.Text" xml:space="preserve">
-    <value>Delete image</value>
-  </data>
-  <data name="обновитьСписокИзображенийToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 22</value>
-  </data>
-  <data name="обновитьСписокИзображенийToolStripMenuItem.Text" xml:space="preserve">
-    <value>Update image list</value>
-  </data>
-  <data name="contextMenuStrip_RemoveImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 48</value>
   </data>
   <data name="button_JSON.Text" xml:space="preserve">
     <value>Open project</value>
@@ -372,6 +387,9 @@
   </data>
   <data name="tabPageConverting.Text" xml:space="preserve">
     <value>Converting</value>
+  </data>
+  <data name="comboBox_Animation_Preview_Speed.Location" type="System.Drawing.Point, System.Drawing">
+    <value>600, 310</value>
   </data>
   <data name="button_Reset.Text" xml:space="preserve">
     <value>Reset</value>
@@ -443,10 +461,10 @@
     <value>Show warning when saving JSON file</value>
   </data>
   <data name="comboBox_Language.Location" type="System.Drawing.Point, System.Drawing">
-    <value>465, 299</value>
+    <value>465, 367</value>
   </data>
   <data name="label356.Location" type="System.Drawing.Point, System.Drawing">
-    <value>409, 303</value>
+    <value>409, 371</value>
   </data>
   <data name="label356.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 13</value>
@@ -544,6 +562,14 @@
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Action if the names of the unpacked watch faces match</value>
   </data>
+  <data name="label483.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 39</value>
+  </data>
+  <data name="label483.Text" xml:space="preserve">
+    <value>Animation speed of animation preview
+(high speed - smoother animation,
+more system load)</value>
+  </data>
   <data name="tabPage_Settings.Text" xml:space="preserve">
     <value>Settings</value>
   </data>
@@ -633,7 +659,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
-        DQAAAk1TRnQBSQFMAgEBBgEAAUwBKAFMASgBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAAYQBKAGEASgBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -699,6 +725,12 @@
   </data>
   <data name="button_unpack_zip.Text" xml:space="preserve">
     <value>Unpack the dial</value>
+  </data>
+  <data name="label_watch_model.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 13</value>
+  </data>
+  <data name="label_watch_model.Text" xml:space="preserve">
+    <value>Watch model</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

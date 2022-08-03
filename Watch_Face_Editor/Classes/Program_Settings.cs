@@ -26,9 +26,10 @@ namespace Watch_Face_Editor
         public bool Settings_Open_Download_Your_File = false;
         public string PreviewStates_Path = "";
 
-        public bool Model_GTR3 = true;
-        public bool Model_GTR3_Pro = false;
-        public bool Model_GTS3 = false;
+        //public bool Model_GTR3 = true;
+        //public bool Model_GTR3_Pro = false;
+        //public bool Model_GTS3 = false;
+        public string Watch_Model = "GTR 3";
 
         public bool ShowBorder = false;
         public bool Crop = true;
@@ -45,6 +46,8 @@ namespace Watch_Face_Editor
 
         public float Scale = 1f;
         public float Gif_Speed = 1f;
+        public int Animation_Preview_Speed = 4;
+
         public bool DrawAllWidgets = false;
 
         public bool ShowIn12hourFormat = true;
@@ -58,6 +61,7 @@ namespace Watch_Face_Editor
         public string WatchSkin_GTR_3 = @"\Skin\WatchSkin_GTR_3.json";
         public string WatchSkin_GTR_3_Pro = @"\Skin\WatchSkin_GTR_3_Pro.json";
         public string WatchSkin_GTS_3 = @"\Skin\WatchSkin_GTS_3.json";
+        public string WatchSkin_T_Rex_2 = @"\Skin\WatchSkin_T_Rex_2.json";
         public bool WatchSkin_Use = false;
     }
 }

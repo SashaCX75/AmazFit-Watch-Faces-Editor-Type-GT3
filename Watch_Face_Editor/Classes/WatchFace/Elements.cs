@@ -461,4 +461,334 @@ namespace Watch_Face_Editor
         public string type { get; set; }
     }
 
+    /// <summary>Набор покадровой анимация</summary>
+    public class hmUI_widget_IMG_ANIM_List : ICloneable
+    {
+        /// <summary>Позиция в наборе элементов</summary>
+        public int position = -1;
+        /// <summary>Выбраная анимация</summary>
+        public int selected_animation = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = false;
+
+        public List<hmUI_widget_IMG_ANIM> Frame_Animation { get; set; }
+
+        public object Clone()
+        {
+            List<hmUI_widget_IMG_ANIM> Frame_Animation = null;
+            if (this.Frame_Animation != null)
+            {
+                foreach (hmUI_widget_IMG_ANIM frame_fnimation in this.Frame_Animation)
+                {
+                    Frame_Animation.Add((hmUI_widget_IMG_ANIM)frame_fnimation.Clone());
+                }
+            }
+
+            return new hmUI_widget_IMG_ANIM_List
+            {
+                position = this.position,
+                selected_animation = this.selected_animation,
+                visible = this.visible,
+
+                Frame_Animation = Frame_Animation,
+            };
+        }
+    }
+
+    /// <summary>Покадровая анимация</summary>
+    public class hmUI_widget_IMG_ANIM : ICloneable
+    {
+        /*/// <summary>Позиция в наборе элементов</summary>
+        public int position = -1;*/
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = true;
+
+        public int x { get; set; }
+        public int y { get; set; }
+
+        ///// <summary>Путь к изображениям</summary>
+        //public string anim_path { get; set; }
+
+        /// <summary>Имя изображения</summary>
+        public string anim_src { get; set; }
+
+        /// <summary>Префикс изображений</summary>
+        public string anim_prefix { get; set; }
+
+        ///// <summary>Расширение изображений</summary>
+        //public string anim_ext { get; set; }
+
+        /// <summary>Количество кадров в секунду</summary>
+        public int anim_fps { get; set; } = 10;
+
+        ///// <summary>Количество повторений</summary>
+        //public int repeat_count { get; set; }
+
+        /// <summary>Повторять анимацию</summary>
+        public bool anim_repeat { get; set; } = true;
+
+        /*/// <summary>Начинать анимацию заново после выхода из AOD режима</summary>
+        public bool display_on_restart { get; set; }*/
+
+        /// <summary>Количество изображений для анимации</summary>
+        public int anim_size { get; set; } = 10;
+
+        ///// <summary>Статус анимации</summary>
+        //public string anim_status { get; set; }
+
+        /// <summary>Основной экран или AOD</summary>
+        public string show_level = "";
+
+        public object Clone()
+        {
+            return new hmUI_widget_IMG_ANIM
+            {
+                //position = this.position,
+                visible = this.visible,
+
+                x = this.x,
+                y = this.y,
+
+                //anim_path = this.anim_path,
+                anim_src = this.anim_src,
+                anim_prefix = this.anim_prefix,
+                //anim_path = this.anim_path,
+                anim_fps = this.anim_fps,
+                //repeat_count = this.repeat_count,
+                anim_repeat = this.anim_repeat,
+                //display_on_restart = this.display_on_restart,
+                anim_size = this.anim_size,
+            };
+        }
+}
+
+    /// <summary>Набор анимации движения</summary>
+    public class Motion_Animation_List : ICloneable
+    {
+        /// <summary>Позиция в наборе элементов</summary>
+        public int position = -1;
+        /// <summary>Выбраная анимация</summary>
+        public int selected_animation = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = false;
+
+        public List<Motion_Animation> Motion_Animation { get; set; }
+
+        public object Clone()
+        {
+            List<Motion_Animation> Motion_Animation = null;
+            if (this.Motion_Animation != null)
+            {
+                foreach (Motion_Animation motion_animation in this.Motion_Animation)
+                {
+                    Motion_Animation.Add((Motion_Animation)motion_animation.Clone());
+                }
+            }
+
+            return new Motion_Animation_List
+            {
+                position = this.position,
+                selected_animation = this.selected_animation,
+                visible = this.visible,
+
+                Motion_Animation = Motion_Animation,
+            };
+        }
+    }
+
+    /// <summary>Анимация движения</summary>
+    public class Motion_Animation : ICloneable
+        {
+            /*/// <summary>Позиция в наборе элементов</summary>
+            public int position = -1;*/
+
+            /// <summary>Видимость элемента</summary>
+            public bool visible = true;
+
+            /// <summary>Стартовая координата X</summary>
+            public int x_start { get; set; }
+
+            /// <summary>Стартовая координата Y</summary>
+            public int y_start { get; set; }
+
+            /// <summary>Конечная координата X</summary>
+            public int x_end { get; set; }
+
+            /// <summary>Конечная координата Y</summary>
+            public int y_end { get; set; }
+
+
+            /// <summary>Файл изображения</summary>
+            public string src { get; set; }
+
+            /// <summary>Количество кадров в секунду</summary>
+            public int anim_fps { get; set; } = 10;
+
+            /// <summary>Длительность цикла анимации, мс</summary>
+            public int anim_duration { get; set; } = 10000;
+
+            /// <summary>Количество повторений</summary>
+            public int repeat_count { get; set; }
+
+            ///// <summary>Повторять анимацию</summary>
+            //public bool anim_repeat { get; set; }
+
+            /// <summary>Движение в обе стороны</summary>
+            public bool anim_two_sides { get; set; } = true;
+
+            /// <summary>Показывать положение элемента в начальной позиции</summary>
+            public bool show_in_start { get; set; } = true;
+
+        ///// <summary>Статус анимации</summary>
+        //public string anim_status { get; set; }
+
+        ///// <summary>Ключь анимации</summary>
+        //public string anim_key { get; set; }
+
+        /// <summary>Основной экран или AOD</summary>
+        public string show_level = "";
+
+        public object Clone()
+            {
+                return new Motion_Animation
+                {
+                    //position = this.position,
+                    visible = this.visible,
+
+                    x_start = this.x_start,
+                    y_start = this.y_start,
+                    x_end = this.x_end,
+                    y_end = this.y_end,
+
+                    src = this.src,
+                    anim_fps = this.anim_fps,
+                    anim_duration = this.anim_duration,
+                    repeat_count = this.repeat_count,
+                    //anim_repeat = this.anim_repeat,
+                    anim_two_sides = this.anim_two_sides,
+                    show_in_start = this.show_in_start,
+                };
+            }
+    }
+
+/// <summary>Набор анимации вращения</summary>
+    public class Rotate_Animation_List : ICloneable
+    {
+        /// <summary>Позиция в наборе элементов</summary>
+        public int position = -1;
+        /// <summary>Выбраная анимация</summary>
+        public int selected_animation = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = false;
+
+        public List<Rotate_Animation> Rotate_Animation { get; set; }
+
+        public object Clone()
+        {
+            List<Rotate_Animation> Rotate_Animation = null;
+            if (this.Rotate_Animation != null)
+            {
+                foreach (Rotate_Animation rotate_animation in this.Rotate_Animation)
+                {
+                    Rotate_Animation.Add((Rotate_Animation)rotate_animation.Clone());
+                }
+            }
+
+            return new Rotate_Animation_List
+            {
+                position = this.position,
+                selected_animation = this.selected_animation,
+                visible = this.visible,
+
+                Rotate_Animation = Rotate_Animation,
+            };
+        }
+    }
+
+    /// <summary>Анимация вращения</summary>
+    public class Rotate_Animation : ICloneable
+        {
+            /*/// <summary>Позиция в наборе элементов</summary>
+            public int position = -1;*/
+
+            /// <summary>Видимость элемента</summary>
+            public bool visible = false;
+
+            /// <summary>Файл изображения</summary>
+            public string src { get; set; }
+
+            /// <summary>Координата Х центра вращения на циферблате</summary>
+            public int center_x { get; set; }
+
+            /// <summary>Координата Y центра вращения на циферблате</summary>
+            public int center_y { get; set; }
+
+            /// <summary>Координата Х начального положения изображения</summary>
+            public int pos_x { get; set; }
+
+            /// <summary>Координата Y начального положения изображения</summary>
+            public int pos_y { get; set; }
+
+            /// <summary>Начальный угол</summary>
+            public int start_angle { get; set; }
+
+            /// <summary>Конечный угол</summary>
+            public int end_angle { get; set; } = 360;
+
+            /// <summary>Количество кадров в секунду</summary>
+            public int anim_fps { get; set; } = 1;
+
+            /// <summary>Длительность цикла анимации, мс</summary>
+            public int anim_duration { get; set; } = 10000;
+
+            /// <summary>Количество повторений</summary>
+            public int repeat_count { get; set; }
+
+            ///// <summary>Повторять анимацию</summary>
+            //public bool anim_repeat { get; set; }
+
+            /// <summary>Движение в обе стороны</summary>
+            public bool anim_two_sides { get; set; }
+
+            /// <summary>Показывать положение элемента в начальной позиции</summary>
+            public bool show_in_start { get; set; } = true;
+
+        ///// <summary>Статус анимации</summary>
+        //public string anim_status { get; set; }
+
+        ///// <summary>Ключь анимации</summary>
+        //public string anim_key { get; set; }
+
+        /// <summary>Основной экран или AOD</summary>
+        public string show_level = "";
+
+        public object Clone()
+            {
+                return new Rotate_Animation
+                {
+                    //position = this.position,
+                    visible = this.visible,
+
+                    center_x = this.center_x,
+                    center_y = this.center_y,
+                    pos_x = this.pos_x,
+                    pos_y = this.pos_y,
+
+                    src = this.src,
+                    start_angle = this.start_angle,
+                    end_angle = this.end_angle,
+                    anim_fps = this.anim_fps,
+                    anim_duration = this.anim_duration,
+                    repeat_count = this.repeat_count,
+                    //anim_repeat = this.anim_repeat,
+                    anim_two_sides = this.anim_two_sides,
+                    show_in_start = this.show_in_start,
+                };
+            }
+        }
+
 }

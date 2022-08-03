@@ -1,0 +1,13 @@
+{
+  "Background": {
+    "Path": "\\Skin\\Skin_T-Rex_2.png",
+    "ImageHeight": 600
+  },
+  "Image": {
+    "ImageHeight": 314,
+    "Position": {
+      "X": 84,
+      "Y": 144
+    }
+  }
+}

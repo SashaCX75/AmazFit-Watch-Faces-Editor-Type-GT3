@@ -31,17 +31,17 @@ namespace Watch_Face_Editor
             pictureBox_Preview.BackgroundImageLayout = ImageLayout.Zoom;
             if (radioButton_small.Checked)
             {
-                if (Model_Wath.model_GTR3)
+                if (Watch_Model == "GTR 3" || Watch_Model == "T-Rex 2")
                 {
                     pictureBox_Preview.Size = new Size(230, 230);
                     this.Size = new Size(230 + (int)(22 * currentDPI), 230 + (int)(66 * currentDPI));
                 }
-                else if (Model_Wath.model_GTR3_Pro)
+                else if (Watch_Model == "GTR 3 Pro")
                 {
                     pictureBox_Preview.Size = new Size(243, 243);
                     this.Size = new Size(243 + (int)(22 * currentDPI), 243 + (int)(66 * currentDPI));
                 }
-                else if (Model_Wath.model_GTS3)
+                else if (Watch_Model == "GTS 3")
                 {
                     pictureBox_Preview.Size = new Size(198, 228);
                     this.Size = new Size(198 + (int)(22 * currentDPI), 228 + (int)(66 * currentDPI));
@@ -52,17 +52,17 @@ namespace Watch_Face_Editor
             if (radioButton_normal.Checked)
             {
                 pictureBox_Preview.BackgroundImageLayout = ImageLayout.None;
-                if (Model_Wath.model_GTR3)
+                if (Watch_Model == "GTR 3" || Watch_Model == "T-Rex 2")
                 {
                     pictureBox_Preview.Size = new Size(456, 456);
                     this.Size = new Size(456 + (int)(22 * currentDPI), 456 + (int)(66 * currentDPI));
                 }
-                else if (Model_Wath.model_GTR3_Pro)
+                else if (Watch_Model == "GTR 3 Pro")
                 {
                     pictureBox_Preview.Size = new Size(482, 482);
                     this.Size = new Size(482 + (int)(22 * currentDPI), 482 + (int)(66 * currentDPI));
                 }
-                else if (Model_Wath.model_GTS3)
+                else if (Watch_Model == "GTS 3")
                 {
                     pictureBox_Preview.Size = new Size(392, 452);
                     this.Size = new Size(392 + (int)(22 * currentDPI), 452 + (int)(66 * currentDPI));
@@ -72,17 +72,17 @@ namespace Watch_Face_Editor
 
             if (radioButton_large.Checked)
             {
-                if (Model_Wath.model_GTR3)
+                if (Watch_Model == "GTR 3" || Watch_Model == "T-Rex 2")
                 {
                     pictureBox_Preview.Size = new Size(683, 683);
                     this.Size = new Size(683 + (int)(22 * currentDPI), 683 + (int)(66 * currentDPI));
                 }
-                else if (Model_Wath.model_GTR3_Pro)
+                else if (Watch_Model == "GTR 3 Pro")
                 {
                     pictureBox_Preview.Size = new Size(722, 722);
                     this.Size = new Size(722 + (int)(22 * currentDPI), 722 + (int)(66 * currentDPI));
                 }
-                else if (Model_Wath.model_GTS3)
+                else if (Watch_Model == "GTS 3")
                 {
                     pictureBox_Preview.Size = new Size(587, 677);
                     this.Size = new Size(587 + (int)(22 * currentDPI), 677 + (int)(66 * currentDPI));
@@ -92,17 +92,17 @@ namespace Watch_Face_Editor
 
             if (radioButton_xlarge.Checked)
             {
-                if (Model_Wath.model_GTR3)
+                if (Watch_Model == "GTR 3" || Watch_Model == "T-Rex 2")
                 {
                     pictureBox_Preview.Size = new Size(909, 909);
                     this.Size = new Size(909 + (int)(22 * currentDPI), 909 + (int)(66 * currentDPI));
                 }
-                else if (Model_Wath.model_GTR3_Pro)
+                else if (Watch_Model == "GTR 3 Pro")
                 {
                     pictureBox_Preview.Size = new Size(961, 961);
                     this.Size = new Size(961 + (int)(22 * currentDPI), 961 + (int)(66 * currentDPI));
                 }
-                else if (Model_Wath.model_GTS3)
+                else if (Watch_Model == "GTS 3")
                 {
                     pictureBox_Preview.Size = new Size(781, 901);
                     this.Size = new Size(781 + (int)(22 * currentDPI), 901 + (int)(66 * currentDPI));
@@ -112,17 +112,17 @@ namespace Watch_Face_Editor
 
             if (radioButton_xxlarge.Checked)
             {
-                if (Model_Wath.model_GTR3)
+                if (Watch_Model == "GTR 3" || Watch_Model == "T-Rex 2")
                 {
                     pictureBox_Preview.Size = new Size(1136, 1136);
                     this.Size = new Size(1136 + (int)(22 * currentDPI), 1136 + (int)(66 * currentDPI));
                 }
-                else if (Model_Wath.model_GTR3_Pro)
+                else if (Watch_Model == "GTR 3 Pro")
                 {
                     pictureBox_Preview.Size = new Size(1201, 1201);
                     this.Size = new Size(1201 + (int)(22 * currentDPI), 1201 + (int)(66 * currentDPI));
                 }
-                else if (Model_Wath.model_GTS3)
+                else if (Watch_Model == "GTS 3")
                 {
                     pictureBox_Preview.Size = new Size(976, 1126);
                     this.Size = new Size(976 + (int)(22 * currentDPI), 1126 + (int)(66 * currentDPI));
@@ -131,13 +131,16 @@ namespace Watch_Face_Editor
             }
         }
 
-        public class Model_Wath
-        {
-            public static bool model_GTR3 { get; set; }
-            public static bool model_GTR3_Pro { get; set; }
-            public static bool model_GTS3 { get; set; }
+        //public class Watch_Model
+        //{
+        //    public static bool model_GTR3 { get; set; } = true;
+        //    public static bool model_GTR3_Pro { get; set; }
+        //    public static bool model_GTS3 { get; set; }
 
-        }
+        //}
+
+        public static string Watch_Model { get; set; } = "GTR 3";
+        
 
         private void pictureBox_Preview_MouseMove(object sender, MouseEventArgs e)
         {

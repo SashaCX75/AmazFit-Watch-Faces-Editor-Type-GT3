@@ -591,11 +591,33 @@ namespace Watch_Face_Editor
                         }
                         if (Moon != null) NewElements.Add(Moon);
                         break;
+                    #endregion
+
+
+                    #region ElementAnimation
+                    case "ElementAnimation":
+                        ElementAnimation Animation = null;
+                        try
+                        {
+                            Animation = JsonConvert.DeserializeObject<ElementAnimation>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (Animation != null) NewElements.Add(Animation);
+                        break;
                         #endregion
                 }
             }
             return NewElements;
         }
+
         /// <summary>Выделяем тип элемента из строки с параметрами</summary>
         private string GetTypeFromSring(string str)
         {
@@ -820,6 +842,144 @@ namespace Watch_Face_Editor
             uCtrl_Shortcut_Opt.numericUpDown_imageY.Value = img_click.y;
             uCtrl_Shortcut_Opt.numericUpDown_width.Value = img_click.w;
             uCtrl_Shortcut_Opt.numericUpDown_height.Value = img_click.h;
+
+            PreviewView = true;
+        }
+
+        /// <summary>Читаем настройки для отображения покадровой анимации</summary>
+        private void Read_FrameAnimation_Options(hmUI_widget_IMG_ANIM_List frame_animation_list)
+        {
+            PreviewView = false;
+
+            uCtrl_Animation_Frame_Opt.SettingsClear();
+
+            uCtrl_Animation_Frame_Opt._AnimationFrame = frame_animation_list;
+
+            //userCtrl_Background_Options.SettingsClear();
+
+            if (frame_animation_list == null || frame_animation_list.Frame_Animation == null)
+            {
+                uCtrl_Animation_Frame_Opt.SetAnimationCount(0);
+                PreviewView = true;
+                return;
+            }
+
+            uCtrl_Animation_Frame_Opt.SetAnimationCount(frame_animation_list.Frame_Animation.Count);
+            int selected_animation = frame_animation_list.selected_animation;
+            if (selected_animation < 0 || selected_animation > frame_animation_list.Frame_Animation.Count-1)
+            {
+                PreviewView = true;
+                return;
+            }
+
+            hmUI_widget_IMG_ANIM frame_animation = frame_animation_list.Frame_Animation[selected_animation];
+            //uCtrl_Animation_Frame_Opt.SetAnimationCount(frame_animation_list.Frame_Animation.Count);
+            uCtrl_Animation_Frame_Opt.SetAnimationIndex(selected_animation);
+            if (frame_animation.anim_src != null)
+                uCtrl_Animation_Frame_Opt.SetImage(frame_animation.anim_src);
+            uCtrl_Animation_Frame_Opt.numericUpDown_imageX.Value = frame_animation.x;
+            uCtrl_Animation_Frame_Opt.numericUpDown_imageY.Value = frame_animation.y;
+            uCtrl_Animation_Frame_Opt.numericUpDown_images_count.Value = frame_animation.anim_size;
+
+            uCtrl_Animation_Frame_Opt.numericUpDown_fps.Value = frame_animation.anim_fps;
+            uCtrl_Animation_Frame_Opt.checkBox_anim_repeat.Checked = frame_animation.anim_repeat;
+            //uCtrl_Animation_Frame_Opt.checkBox_anim_restart.Checked = frame_animation.display_on_restart;
+
+            uCtrl_Animation_Frame_Opt.label_prefix.Text = frame_animation.anim_prefix;
+            uCtrl_Animation_Frame_Opt.checkBox_visible.Checked = frame_animation.visible;
+            PreviewView = true;
+        }
+
+        /// <summary>Читаем настройки для отображения анимации движения</summary>
+        private void Read_MotionAnimation_Options(Motion_Animation_List motion_animation_list)
+        {
+            PreviewView = false;
+
+            uCtrl_Animation_Motion_Opt.SettingsClear();
+
+            uCtrl_Animation_Motion_Opt._AnimationMotion = motion_animation_list;
+
+            //userCtrl_Background_Options.SettingsClear();
+
+            if (motion_animation_list == null || motion_animation_list.Motion_Animation == null)
+            {
+                uCtrl_Animation_Motion_Opt.SetAnimationCount(0);
+                PreviewView = true;
+                return;
+            }
+
+            uCtrl_Animation_Motion_Opt.SetAnimationCount(motion_animation_list.Motion_Animation.Count);
+            int selected_animation = motion_animation_list.selected_animation;
+            if (selected_animation < 0 || selected_animation > motion_animation_list.Motion_Animation.Count - 1)
+            {
+                PreviewView = true;
+                return;
+            }
+
+            Motion_Animation motion_animation = motion_animation_list.Motion_Animation[selected_animation];
+            uCtrl_Animation_Motion_Opt.SetAnimationIndex(selected_animation);
+            if (motion_animation.src != null)
+                uCtrl_Animation_Motion_Opt.SetImage(motion_animation.src);
+            uCtrl_Animation_Motion_Opt.numericUpDown_start_x.Value = motion_animation.x_start;
+            uCtrl_Animation_Motion_Opt.numericUpDown_start_y.Value = motion_animation.y_start;
+            uCtrl_Animation_Motion_Opt.numericUpDown_end_x.Value = motion_animation.x_end;
+            uCtrl_Animation_Motion_Opt.numericUpDown_end_y.Value = motion_animation.y_end;
+
+            uCtrl_Animation_Motion_Opt.numericUpDown_fps.Value = motion_animation.anim_fps;
+            uCtrl_Animation_Motion_Opt.numericUpDown_anim_duration.Value = (decimal)(motion_animation.anim_duration/1000f);
+            uCtrl_Animation_Motion_Opt.numericUpDown_repeat_count.Value = motion_animation.repeat_count;
+
+            uCtrl_Animation_Motion_Opt.checkBox_anim_two_sides.Checked = motion_animation.anim_two_sides;
+            uCtrl_Animation_Motion_Opt.checkBox_show_in_startPos.Checked = motion_animation.show_in_start;
+            uCtrl_Animation_Motion_Opt.checkBox_visible.Checked = motion_animation.visible;
+
+            PreviewView = true;
+        }
+
+        /// <summary>Читаем настройки для отображения анимации движения </summary>
+        private void Read_RotateAnimation_Options(Rotate_Animation_List rotate_animation_list)
+        {
+            PreviewView = false;
+
+            uCtrl_Animation_Rotate_Opt.SettingsClear();
+
+            uCtrl_Animation_Rotate_Opt._AnimationRotate = rotate_animation_list;
+
+            //userCtrl_Background_Options.SettingsClear();
+
+            if (rotate_animation_list == null || rotate_animation_list.Rotate_Animation == null)
+            {
+                uCtrl_Animation_Rotate_Opt.SetAnimationCount(0);
+                PreviewView = true;
+                return;
+            }
+
+            uCtrl_Animation_Rotate_Opt.SetAnimationCount(rotate_animation_list.Rotate_Animation.Count);
+            int selected_animation = rotate_animation_list.selected_animation;
+            if (selected_animation < 0 || selected_animation > rotate_animation_list.Rotate_Animation.Count - 1)
+            {
+                PreviewView = true;
+                return;
+            }
+
+            Rotate_Animation rotate_animation = rotate_animation_list.Rotate_Animation[selected_animation];
+            uCtrl_Animation_Rotate_Opt.SetAnimationIndex(selected_animation);
+            if (rotate_animation.src != null)
+                uCtrl_Animation_Rotate_Opt.SetImage(rotate_animation.src);
+            uCtrl_Animation_Rotate_Opt.numericUpDown_pos_x.Value = rotate_animation.pos_x;
+            uCtrl_Animation_Rotate_Opt.numericUpDown_pos_y.Value = rotate_animation.pos_y;
+            uCtrl_Animation_Rotate_Opt.numericUpDown_center_x.Value = rotate_animation.center_x;
+            uCtrl_Animation_Rotate_Opt.numericUpDown_center_y.Value = rotate_animation.center_y;
+            uCtrl_Animation_Rotate_Opt.numericUpDown_start_angle.Value = rotate_animation.start_angle;
+            uCtrl_Animation_Rotate_Opt.numericUpDown_end_angle.Value = rotate_animation.end_angle;
+
+            uCtrl_Animation_Rotate_Opt.numericUpDown_fps.Value = rotate_animation.anim_fps;
+            uCtrl_Animation_Rotate_Opt.numericUpDown_anim_duration.Value = (decimal)(rotate_animation.anim_duration/1000f);
+            uCtrl_Animation_Rotate_Opt.numericUpDown_repeat_count.Value = rotate_animation.repeat_count;
+
+            uCtrl_Animation_Rotate_Opt.checkBox_anim_two_sides.Checked = rotate_animation.anim_two_sides;
+            uCtrl_Animation_Rotate_Opt.checkBox_show_in_startPos.Checked = rotate_animation.show_in_start;
+            uCtrl_Animation_Rotate_Opt.checkBox_visible.Checked = rotate_animation.visible;
 
             PreviewView = true;
         }
@@ -1099,12 +1259,12 @@ namespace Watch_Face_Editor
                     background.BackgroundImage.y = 0;
                     background.BackgroundImage.h = 454;
                     background.BackgroundImage.w = 454;
-                    if (radioButton_GTR3_Pro.Checked)
+                    if (Form_Preview.Watch_Model == "GTR 3 Pro")
                     {
                         background.BackgroundImage.h = 480;
                         background.BackgroundImage.w = 480;
                     }
-                    if (radioButton_GTS3.Checked)
+                    if (Form_Preview.Watch_Model == "GTS 3")
                     {
                         background.BackgroundImage.h = 450;
                         background.BackgroundImage.w = 390;
@@ -1140,12 +1300,12 @@ namespace Watch_Face_Editor
                 background.BackgroundColor.y = 0;
                 background.BackgroundColor.h = 454;
                 background.BackgroundColor.w = 454;
-                if (radioButton_GTR3_Pro.Checked)
+                if (ProgramSettings.Watch_Model == "GTR 3 Pro")
                 {
                     background.BackgroundColor.h = 480;
                     background.BackgroundColor.w = 480;
                 }
-                if (radioButton_GTS3.Checked)
+                if (ProgramSettings.Watch_Model == "GTS 3")
                 {
                     background.BackgroundColor.h = 450;
                     background.BackgroundColor.w = 390;
@@ -1449,6 +1609,328 @@ namespace Watch_Face_Editor
             JSON_Modified = true;
             PreviewImage();
             FormText();
+        }
+
+        private void uCtrl_Animation_Frame_Opt_ValueChanged(object sender, EventArgs eventArgs, int index)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            //if (index < 0) return;
+            hmUI_widget_IMG_ANIM_List animation_frame = (hmUI_widget_IMG_ANIM_List)uCtrl_Animation_Frame_Opt._AnimationFrame;
+            if (animation_frame == null) return;
+
+            if (animation_frame.Frame_Animation == null) animation_frame.Frame_Animation = new List<hmUI_widget_IMG_ANIM>();
+            List<hmUI_widget_IMG_ANIM> frameAnimation = animation_frame.Frame_Animation;
+            if (frameAnimation == null) return;
+            if (frameAnimation.Count < index + 1) return;
+
+            hmUI_widget_IMG_ANIM img_anim = new hmUI_widget_IMG_ANIM();
+
+            img_anim.visible = uCtrl_Animation_Frame_Opt.checkBox_visible.Checked;
+            img_anim.x = (int)uCtrl_Animation_Frame_Opt.numericUpDown_imageX.Value;
+            img_anim.y = (int)uCtrl_Animation_Frame_Opt.numericUpDown_imageY.Value;
+
+            img_anim.anim_src = uCtrl_Animation_Frame_Opt.GetImage();
+            img_anim.anim_prefix = uCtrl_Animation_Frame_Opt.GetPrefix();
+            img_anim.anim_fps = (int)uCtrl_Animation_Frame_Opt.numericUpDown_fps.Value;
+            img_anim.anim_size = (int)uCtrl_Animation_Frame_Opt.numericUpDown_images_count.Value;
+            img_anim.anim_repeat = uCtrl_Animation_Frame_Opt.checkBox_anim_repeat.Checked;
+
+            //rotate_anim.display_on_restart = uCtrl_Animation_Frame_Opt.checkBox_anim_restart.Checked;
+
+            if (index + 1 <= frameAnimation.Count && index >= 0) frameAnimation[index] = img_anim;
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Animation_Motion_Opt_ValueChanged(object sender, EventArgs eventArgs, int index)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            //if (index < 0) return;
+            Motion_Animation_List animation_motion = (Motion_Animation_List)uCtrl_Animation_Motion_Opt._AnimationMotion;
+            if (animation_motion == null) return;
+
+            if (animation_motion.Motion_Animation == null) animation_motion.Motion_Animation = new List<Motion_Animation>();
+            List<Motion_Animation> motionAnimation = animation_motion.Motion_Animation;
+            if (motionAnimation == null) return;
+            if (motionAnimation.Count < index + 1) return;
+
+            Motion_Animation motion_anim = new Motion_Animation();
+
+            motion_anim.visible = uCtrl_Animation_Motion_Opt.checkBox_visible.Checked;
+            motion_anim.x_start = (int)uCtrl_Animation_Motion_Opt.numericUpDown_start_x.Value;
+            motion_anim.y_start = (int)uCtrl_Animation_Motion_Opt.numericUpDown_start_y.Value;
+            motion_anim.x_end = (int)uCtrl_Animation_Motion_Opt.numericUpDown_end_x.Value;
+            motion_anim.y_end = (int)uCtrl_Animation_Motion_Opt.numericUpDown_end_y.Value;
+
+            motion_anim.src = uCtrl_Animation_Motion_Opt.GetImage();
+            motion_anim.anim_fps = (int)uCtrl_Animation_Motion_Opt.numericUpDown_fps.Value;
+            motion_anim.anim_duration = (int)(uCtrl_Animation_Motion_Opt.numericUpDown_anim_duration.Value * 1000);
+            motion_anim.repeat_count = (int)uCtrl_Animation_Motion_Opt.numericUpDown_repeat_count.Value;
+
+            motion_anim.anim_two_sides = uCtrl_Animation_Motion_Opt.checkBox_anim_two_sides.Checked;
+            motion_anim.show_in_start = uCtrl_Animation_Motion_Opt.checkBox_show_in_startPos.Checked;
+
+            if (index + 1 <= motionAnimation.Count && index >= 0) motionAnimation[index] = motion_anim;
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Animation_Rotate_Opt_ValueChanged(object sender, EventArgs eventArgs, int index)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            //if (index < 0) return;
+            Rotate_Animation_List animation_rotate = (Rotate_Animation_List)uCtrl_Animation_Rotate_Opt._AnimationRotate;
+            if (animation_rotate == null) return;
+
+            if (animation_rotate.Rotate_Animation == null) animation_rotate.Rotate_Animation = new List<Rotate_Animation>();
+            List<Rotate_Animation> motionAnimation = animation_rotate.Rotate_Animation;
+            if (motionAnimation == null) return;
+            if (motionAnimation.Count < index + 1) return;
+
+            Rotate_Animation rotate_anim = new Rotate_Animation();
+
+            rotate_anim.visible = uCtrl_Animation_Rotate_Opt.checkBox_visible.Checked;
+            rotate_anim.center_x = (int)uCtrl_Animation_Rotate_Opt.numericUpDown_center_x.Value;
+            rotate_anim.center_y = (int)uCtrl_Animation_Rotate_Opt.numericUpDown_center_y.Value;
+            rotate_anim.pos_x = (int)uCtrl_Animation_Rotate_Opt.numericUpDown_pos_x.Value;
+            rotate_anim.pos_y = (int)uCtrl_Animation_Rotate_Opt.numericUpDown_pos_y.Value;
+
+            rotate_anim.start_angle = (int)uCtrl_Animation_Rotate_Opt.numericUpDown_start_angle.Value;
+            rotate_anim.end_angle = (int)uCtrl_Animation_Rotate_Opt.numericUpDown_end_angle.Value;
+
+            rotate_anim.src = uCtrl_Animation_Rotate_Opt.GetImage();
+            rotate_anim.anim_fps = (int)uCtrl_Animation_Rotate_Opt.numericUpDown_fps.Value;
+            rotate_anim.anim_duration = (int)(uCtrl_Animation_Rotate_Opt.numericUpDown_anim_duration.Value*1000);
+            rotate_anim.repeat_count = (int)uCtrl_Animation_Rotate_Opt.numericUpDown_repeat_count.Value;
+
+            rotate_anim.anim_two_sides = uCtrl_Animation_Rotate_Opt.checkBox_anim_two_sides.Checked;
+            rotate_anim.show_in_start = uCtrl_Animation_Rotate_Opt.checkBox_show_in_startPos.Checked;
+
+            if (index + 1 <= motionAnimation.Count && index >= 0) motionAnimation[index] = rotate_anim;
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Animation_Frame_Opt_AnimationAdd(object sender, EventArgs eventArgs, int index)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            //if (index < 0) return;
+            hmUI_widget_IMG_ANIM_List animation_frame = (hmUI_widget_IMG_ANIM_List)uCtrl_Animation_Frame_Opt._AnimationFrame;
+            if (animation_frame == null) return;
+
+            if (animation_frame.Frame_Animation == null) animation_frame.Frame_Animation = new List<hmUI_widget_IMG_ANIM>();
+            List<hmUI_widget_IMG_ANIM> frameAnimation = animation_frame.Frame_Animation;
+
+            hmUI_widget_IMG_ANIM img_anim = new hmUI_widget_IMG_ANIM();
+            img_anim.x = (int)uCtrl_Animation_Frame_Opt.numericUpDown_imageX.Value;
+            img_anim.y = (int)uCtrl_Animation_Frame_Opt.numericUpDown_imageY.Value;
+
+            img_anim.anim_src = uCtrl_Animation_Frame_Opt.GetImage();
+            img_anim.anim_prefix = uCtrl_Animation_Frame_Opt.GetPrefix();
+            img_anim.anim_fps = (int)uCtrl_Animation_Frame_Opt.numericUpDown_fps.Value;
+            img_anim.anim_size = (int)uCtrl_Animation_Frame_Opt.numericUpDown_images_count.Value;
+            img_anim.anim_repeat = uCtrl_Animation_Frame_Opt.checkBox_anim_repeat.Checked;
+
+            //rotate_anim.display_on_restart = uCtrl_Animation_Frame_Opt.checkBox_anim_restart.Checked;
+
+            if (frameAnimation.Count > index) frameAnimation.Add(img_anim);
+            else frameAnimation.Insert(index, img_anim);
+            animation_frame.selected_animation = ++index;
+            //uCtrl_Animation_Frame_Opt.SetAnimationIndex(index);
+            uCtrl_Animation_Elm_SelectChanged(sender, eventArgs);
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Animation_Motion_Opt_AnimationAdd(object sender, EventArgs eventArgs, int index)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            //if (index < 0) return;
+            Motion_Animation_List animation_motion = (Motion_Animation_List)uCtrl_Animation_Motion_Opt._AnimationMotion;
+            if (animation_motion == null) return;
+
+            if (animation_motion.Motion_Animation == null) animation_motion.Motion_Animation = new List<Motion_Animation>();
+            List<Motion_Animation> motionAnimation = animation_motion.Motion_Animation;
+
+            Motion_Animation motion_anim = new Motion_Animation();
+            motion_anim.x_start = (int)uCtrl_Animation_Motion_Opt.numericUpDown_start_x.Value;
+            motion_anim.x_end = (int)uCtrl_Animation_Motion_Opt.numericUpDown_end_x.Value;
+            motion_anim.y_start = (int)uCtrl_Animation_Motion_Opt.numericUpDown_start_y.Value;
+            motion_anim.y_end = (int)uCtrl_Animation_Motion_Opt.numericUpDown_end_y.Value;
+
+
+            motion_anim.src = uCtrl_Animation_Motion_Opt.GetImage();
+            motion_anim.anim_fps = (int)uCtrl_Animation_Motion_Opt.numericUpDown_fps.Value;
+            motion_anim.anim_duration = (int)(uCtrl_Animation_Motion_Opt.numericUpDown_anim_duration.Value*1000);
+            motion_anim.repeat_count = (int)uCtrl_Animation_Motion_Opt.numericUpDown_repeat_count.Value;
+
+            motion_anim.anim_two_sides = uCtrl_Animation_Motion_Opt.checkBox_anim_two_sides.Checked;
+            motion_anim.show_in_start = uCtrl_Animation_Motion_Opt.checkBox_show_in_startPos.Checked;
+
+            if (motionAnimation.Count > index) motionAnimation.Add(motion_anim);
+            else motionAnimation.Insert(index, motion_anim);
+            animation_motion.selected_animation = ++index;
+            //uCtrl_Animation_Motion_Opt.SetAnimationIndex(index);
+            uCtrl_Animation_Elm_SelectChanged(sender, eventArgs);
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Animation_Rotate_Opt_AnimationAdd(object sender, EventArgs eventArgs, int index)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            //if (index < 0) return;
+            Rotate_Animation_List animation_rotate = (Rotate_Animation_List)uCtrl_Animation_Rotate_Opt._AnimationRotate;
+            if (animation_rotate == null) return;
+
+            if (animation_rotate.Rotate_Animation == null) animation_rotate.Rotate_Animation = new List<Rotate_Animation>();
+            List<Rotate_Animation> frameAnimation = animation_rotate.Rotate_Animation;
+
+            Rotate_Animation rotate_anim = new Rotate_Animation();
+            rotate_anim.center_x = (int)uCtrl_Animation_Rotate_Opt.numericUpDown_center_x.Value;
+            rotate_anim.center_y = (int)uCtrl_Animation_Rotate_Opt.numericUpDown_center_y.Value;
+            rotate_anim.pos_x = (int)uCtrl_Animation_Rotate_Opt.numericUpDown_pos_x.Value;
+            rotate_anim.pos_y = (int)uCtrl_Animation_Rotate_Opt.numericUpDown_pos_y.Value;
+
+            rotate_anim.src = uCtrl_Animation_Rotate_Opt.GetImage();
+
+            rotate_anim.start_angle = (int)uCtrl_Animation_Rotate_Opt.numericUpDown_start_angle.Value;
+            rotate_anim.end_angle = (int)uCtrl_Animation_Rotate_Opt.numericUpDown_end_angle.Value;
+
+            rotate_anim.anim_fps = (int)uCtrl_Animation_Rotate_Opt.numericUpDown_fps.Value;
+            rotate_anim.anim_duration = (int)(uCtrl_Animation_Rotate_Opt.numericUpDown_anim_duration.Value * 1000);
+            rotate_anim.repeat_count = (int)uCtrl_Animation_Rotate_Opt.numericUpDown_repeat_count.Value;
+
+            rotate_anim.anim_two_sides = uCtrl_Animation_Rotate_Opt.checkBox_anim_two_sides.Checked;
+            rotate_anim.show_in_start = uCtrl_Animation_Rotate_Opt.checkBox_show_in_startPos.Checked;
+
+            if (frameAnimation.Count > index) frameAnimation.Add(rotate_anim);
+            else frameAnimation.Insert(index, rotate_anim);
+            animation_rotate.selected_animation = ++index;
+            //uCtrl_Animation_Rotate_Opt.SetAnimationIndex(index);
+            uCtrl_Animation_Elm_SelectChanged(sender, eventArgs);
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Animation_Frame_Opt_AnimationDel(object sender, EventArgs eventArgs, int index)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            //if (index < 0) return;
+            hmUI_widget_IMG_ANIM_List animation_frame = (hmUI_widget_IMG_ANIM_List)uCtrl_Animation_Frame_Opt._AnimationFrame;
+            if (animation_frame == null) return;
+
+            if (animation_frame.Frame_Animation == null) animation_frame.Frame_Animation = new List<hmUI_widget_IMG_ANIM>();
+            List<hmUI_widget_IMG_ANIM> frameAnimation = animation_frame.Frame_Animation;
+
+            if (frameAnimation.Count > index) frameAnimation.RemoveAt(index);
+            animation_frame.selected_animation = --index;
+            if (index < 0 && animation_frame.Frame_Animation != null && animation_frame.Frame_Animation.Count > 0)
+                animation_frame.selected_animation = 0;
+            uCtrl_Animation_Elm_SelectChanged(sender, eventArgs);
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Animation_Motion_Opt_AnimationDel(object sender, EventArgs eventArgs, int index)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            //if (index < 0) return;
+            Motion_Animation_List animation_motion = (Motion_Animation_List)uCtrl_Animation_Motion_Opt._AnimationMotion;
+            if (animation_motion == null) return;
+
+            if (animation_motion.Motion_Animation == null) animation_motion.Motion_Animation = new List<Motion_Animation>();
+            List<Motion_Animation> motionAnimation = animation_motion.Motion_Animation;
+
+            if (motionAnimation.Count > index) motionAnimation.RemoveAt(index);
+            animation_motion.selected_animation = --index;
+            if (index < 0 && animation_motion.Motion_Animation != null && animation_motion.Motion_Animation.Count > 0)
+                animation_motion.selected_animation = 0;
+            uCtrl_Animation_Elm_SelectChanged(sender, eventArgs);
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Animation_Rotate_Opt_AnimationDel(object sender, EventArgs eventArgs, int index)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            //if (index < 0) return;
+            Rotate_Animation_List animation_rotate = (Rotate_Animation_List)uCtrl_Animation_Rotate_Opt._AnimationRotate;
+            if (animation_rotate == null) return;
+
+            if (animation_rotate.Rotate_Animation == null) animation_rotate.Rotate_Animation = new List<Rotate_Animation>();
+            List<Rotate_Animation> rotateAnimation = animation_rotate.Rotate_Animation;
+
+            if (rotateAnimation.Count > index) rotateAnimation.RemoveAt(index);
+            animation_rotate.selected_animation = --index;
+            if (index < 0 && animation_rotate.Rotate_Animation != null && animation_rotate.Rotate_Animation.Count > 0)
+                animation_rotate.selected_animation = 0;
+            uCtrl_Animation_Elm_SelectChanged(sender, eventArgs);
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Animation_Frame_Opt_AnimIndexChanged(object sender, EventArgs eventArgs, int index)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            //if (index < 0) return;
+            hmUI_widget_IMG_ANIM_List animation_frame = (hmUI_widget_IMG_ANIM_List)uCtrl_Animation_Frame_Opt._AnimationFrame;
+            if (animation_frame == null) return;
+            animation_frame.selected_animation = index;
+
+            uCtrl_Animation_Elm_SelectChanged(sender, eventArgs);
+        }
+
+        private void uCtrl_Animation_Motion_Opt_AnimIndexChanged(object sender, EventArgs eventArgs, int index)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            //if (index < 0) return;
+            Motion_Animation_List animation_motion = (Motion_Animation_List)uCtrl_Animation_Motion_Opt._AnimationMotion;
+            if (animation_motion == null) return;
+            animation_motion.selected_animation = index;
+
+            uCtrl_Animation_Elm_SelectChanged(sender, eventArgs);
+        }
+
+        private void uCtrl_Animation_Rotate_Opt_AnimIndexChanged(object sender, EventArgs eventArgs, int index)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            //if (index < 0) return;
+            Rotate_Animation_List animation_rotate = (Rotate_Animation_List)uCtrl_Animation_Rotate_Opt._AnimationRotate;
+            if (animation_rotate == null) return;
+            animation_rotate.selected_animation = index;
+
+            uCtrl_Animation_Elm_SelectChanged(sender, eventArgs);
         }
 
         private Color StringToColor(string color)

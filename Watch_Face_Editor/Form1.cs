@@ -24,9 +24,11 @@ namespace Watch_Face_Editor
     public partial class Form1 : Form
     {
         WATCH_FACE Watch_Face;
-        Watch_Face_Preview_Set WatchFacePreviewSet;
+        public Watch_Face_Preview_Set WatchFacePreviewSet;
         List<string> ListImages = new List<string>(); // перечень имен файлов с картинками без раширений
         List<string> ListImagesFullName = new List<string>(); // перечень путей к файлам с картинками
+        List<string> ListAnimImages = new List<string>(); // перечень имен файлов с картинками анимации без раширений
+        List<string> ListAnimImagesFullName = new List<string>(); // перечень путей к файлам с картинками анимации
         public bool PreviewView; // включает прорисовку предпросмотра
         bool Settings_Load; // включать при обновлении настроек для выключения перерисовки
         bool JSON_Modified = false; // JSON файл был изменен
@@ -195,23 +197,25 @@ namespace Watch_Face_Editor
             progressBar1.Width = (int)(650 * currentDPI);
 
             Logger.WriteLine("Set Model_Watch");
-            if (ProgramSettings.Model_GTR3)
-            {
-                radioButton_GTR3.Checked = true;
-                textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_3;
-            }
-            else if (ProgramSettings.Model_GTR3_Pro)
-            {
-                radioButton_GTR3_Pro.Checked = true;
-                textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_3_Pro;
-            }
-            else if (ProgramSettings.Model_GTS3)
-            {
-                radioButton_GTS3.Checked = true;
-                textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_3;
-            }
+            comboBox_watch_model.Text = ProgramSettings.Watch_Model;
+            
             checkBox_WatchSkin_Use.Checked = ProgramSettings.WatchSkin_Use;
             textBox_WatchSkin_Path.Enabled = ProgramSettings.WatchSkin_Use;
+            switch (ProgramSettings.Watch_Model)
+            {
+                case "GTR 3":
+                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_3;
+                    break;
+                case "GTR 3 Pro":
+                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_3_Pro;
+                    break;
+                case "GTS 3":
+                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_3;
+                    break;
+                case "T-Rex 2":
+                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_T_Rex_2;
+                    break;
+            }
 
             textBox_PreviewStates_Path.Text = ProgramSettings.PreviewStates_Path;
 
@@ -249,6 +253,7 @@ namespace Watch_Face_Editor
             radioButton_Settings_Unpack_Replace.Checked = ProgramSettings.Settings_Unpack_Replace;
             radioButton_Settings_Unpack_Save.Checked = ProgramSettings.Settings_Unpack_Save;
             numericUpDown_Gif_Speed.Value = (decimal)ProgramSettings.Gif_Speed;
+            comboBox_Animation_Preview_Speed.SelectedIndex = ProgramSettings.Animation_Preview_Speed;
 
             checkBox_Shortcuts_Area.Checked = ProgramSettings.Shortcuts_Area;
             checkBox_Shortcuts_Border.Checked = ProgramSettings.Shortcuts_Border;
@@ -281,6 +286,7 @@ namespace Watch_Face_Editor
                 FileName = Path.GetFileName(StartFileNameJson);
                 FullFileDir = Path.GetDirectoryName(StartFileNameJson);
                 button_Add_Images.Enabled = true;
+                button_Add_Anim_Images.Enabled = true;
                 LoadJson(StartFileNameJson);
                 StartFileNameJson = "";
             }
@@ -295,9 +301,9 @@ namespace Watch_Face_Editor
             //Logger.WriteLine("Загрузили файл из значения аргумента " + StartFileNameJson);
 
             // изменяем размер панели для предпросмотра если она не влазит
-            if (pictureBox_Preview.Top + pictureBox_Preview.Height > radioButton_GTR3.Top)
+            if (pictureBox_Preview.Top + pictureBox_Preview.Height > label_watch_model.Top)
             {
-                float newHeight = radioButton_GTR3.Top - pictureBox_Preview.Top;
+                float newHeight = label_watch_model.Top - pictureBox_Preview.Top;
                 float scale = newHeight / pictureBox_Preview.Height;
                 pictureBox_Preview.Size = new Size((int)(pictureBox_Preview.Width * scale), (int)(pictureBox_Preview.Height * scale));
             }
@@ -314,6 +320,9 @@ namespace Watch_Face_Editor
             uCtrl_Icon_Opt.AutoSize = true;
             uCtrl_Shortcut_Opt.AutoSize = true;
             uCtrl_Text_SystemFont_Opt.AutoSize = true;
+            uCtrl_Animation_Frame_Opt.AutoSize = true;
+            uCtrl_Animation_Motion_Opt.AutoSize = true;
+            uCtrl_Animation_Rotate_Opt.AutoSize = true;
 
             button_CreatePreview.Location = button_RefreshPreview.Location;
 
@@ -401,7 +410,6 @@ namespace Watch_Face_Editor
 
         private void radioButton_Settings_CheckedChanged(object sender, EventArgs e)
         {
-
             if (Settings_Load) return;
             ProgramSettings.Settings_AfterUnpack_Dialog = radioButton_Settings_AfterUnpack_Dialog.Checked;
             ProgramSettings.Settings_AfterUnpack_DoNothing = radioButton_Settings_AfterUnpack_DoNothing.Checked;
@@ -435,15 +443,15 @@ namespace Watch_Face_Editor
 
             //ProgramSettings.language = comboBox_Language.Text;
 
-            ProgramSettings.Model_GTR3 = radioButton_GTR3.Checked;
-            ProgramSettings.Model_GTR3_Pro = radioButton_GTR3_Pro.Checked;
-            ProgramSettings.Model_GTS3 = radioButton_GTS3.Checked;
+            if (comboBox_watch_model.SelectedIndex != -1)
+            {
+                ProgramSettings.Watch_Model = comboBox_watch_model.Text;
 
-            if (radioButton_GTR3.Checked) ProgramSettings.WatchSkin_GTR_3 = textBox_WatchSkin_Path.Text;
-            if (radioButton_GTR3_Pro.Checked) ProgramSettings.WatchSkin_GTR_3_Pro = textBox_WatchSkin_Path.Text;
-            if (radioButton_GTS3.Checked) ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
-
-
+                if (comboBox_watch_model.Text == "GTR 3") ProgramSettings.WatchSkin_GTR_3 = textBox_WatchSkin_Path.Text;
+                if (comboBox_watch_model.Text == "GTR 3 Pro") ProgramSettings.WatchSkin_GTR_3_Pro = textBox_WatchSkin_Path.Text;
+                if (comboBox_watch_model.Text == "GTS 3") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
+                if (comboBox_watch_model.Text == "T-Rex 2") ProgramSettings.WatchSkin_T_Rex_2 = textBox_WatchSkin_Path.Text;
+            }
 
             string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
             {
@@ -455,7 +463,9 @@ namespace Watch_Face_Editor
 
         private void comboBox_Language_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (Settings_Load) return;
             ProgramSettings.language = comboBox_Language.Text;
+            ProgramSettings.Animation_Preview_Speed = comboBox_Animation_Preview_Speed.SelectedIndex;
             SetLanguage();
             string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
             {
@@ -483,21 +493,23 @@ namespace Watch_Face_Editor
             {
                 FormNameSufix = Path.GetFileNameWithoutExtension(FileName);
             }
-            if (radioButton_GTR3.Checked)
+            switch (Form_Preview.Watch_Model)
             {
-                FormName = "GTR 3 watch face editor";
-            }
-            else if (radioButton_GTS3.Checked)
-            {
-                FormName = "GTS 3 watch face editor";
-            }
-            else if (radioButton_GTR3_Pro.Checked)
-            {
-                FormName = "GTR 3 Pro watch face editor";
-            }
-            else if (radioButton_GTS3.Checked)
-            {
-                FormName = "GTS 3 watch face editor";
+                case "GTR 3":
+                    FormName = "GTR 3 watch face editor";
+                    break;
+                case "GTR 3 Pro":
+                    FormName = "GTR 3 Pro watch face editor";
+                    break;
+                case "GTS 3":
+                    FormName = "GTS 3 watch face editor";
+                    break;
+                case "T-Rex 2":
+                    FormName = "T-Rex 2 watch face editor";
+                    break;
+                default:
+                    FormName = "GTR 3 watch face editor";
+                    break;
             }
 
             if (FormNameSufix.Length == 0)
@@ -579,17 +591,20 @@ namespace Watch_Face_Editor
                     fullfilename = fullfilename.Remove(0, Application.StartupPath.Length);
                 textBox_WatchSkin_Path.Text = fullfilename;
 
-                if (radioButton_GTR3.Checked)
+                switch (ProgramSettings.Watch_Model)
                 {
-                    ProgramSettings.WatchSkin_GTR_3 = textBox_WatchSkin_Path.Text;
-                }
-                else if (radioButton_GTR3_Pro.Checked)
-                {
-                    ProgramSettings.WatchSkin_GTR_3_Pro = textBox_WatchSkin_Path.Text;
-                }
-                else if (radioButton_GTS3.Checked)
-                {
-                    ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
+                    case "GTR 3":
+                        ProgramSettings.WatchSkin_GTR_3 = textBox_WatchSkin_Path.Text;
+                        break;
+                    case "GTR 3 Pro":
+                        ProgramSettings.WatchSkin_GTR_3_Pro = textBox_WatchSkin_Path.Text;
+                        break;
+                    case "GTS 3":
+                        ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
+                        break;
+                    case "T-Rex 2":
+                        ProgramSettings.WatchSkin_T_Rex_2 = textBox_WatchSkin_Path.Text;
+                        break;
                 }
 
                 string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
@@ -984,8 +999,11 @@ namespace Watch_Face_Editor
             if (e.Data.GetDataPresent(typeof(UCtrl_DateMonth_Elm))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(UCtrl_DateYear_Elm))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(UCtrl_DateWeek_Elm))) typeReturn = false;
+
             if (e.Data.GetDataPresent(typeof(UCtrl_Statuses_Elm))) typeReturn = false;
             //if (e.Data.GetDataPresent(typeof(UCtrl_Shortcuts_Elm))) typeReturn = false;
+            if (e.Data.GetDataPresent(typeof(UCtrl_Animation_Elm))) typeReturn = false;
+
             if (e.Data.GetDataPresent(typeof(UCtrl_Steps_Elm))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(UCtrl_Battery_Elm))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(UCtrl_Calories_Elm))) typeReturn = false;
@@ -1076,6 +1094,8 @@ namespace Watch_Face_Editor
                         if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
                         break;
 
+
+
                     case "ControlLibrary.UCtrl_Shortcuts_Elm":
                         ElementShortcuts shortcuts =
                             (ElementShortcuts)Elements.Find(e1 => e1.GetType().Name == "ElementShortcuts");
@@ -1091,6 +1111,16 @@ namespace Watch_Face_Editor
                         draggedUCtrl_Elm = (UCtrl_Statuses_Elm)e.Data.GetData(typeof(UCtrl_Statuses_Elm));
                         if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
                         break;
+
+                    case "ControlLibrary.UCtrl_Animation_Elm":
+                        ElementAnimation animation =
+                            (ElementAnimation)Elements.Find(e1 => e1.GetType().Name == "ElementAnimation");
+                        index = Elements.IndexOf(animation);
+                        draggedUCtrl_Elm = (UCtrl_Animation_Elm)e.Data.GetData(typeof(UCtrl_Animation_Elm));
+                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                        break;
+
+
 
                     case "ControlLibrary.UCtrl_Steps_Elm":
                         ElementSteps steps =
@@ -1354,6 +1384,15 @@ namespace Watch_Face_Editor
                 case "SystemFont":
                     uCtrl_Text_SystemFont_Opt.Visible = true;
                     break;
+                case "FrameAnimation":
+                    uCtrl_Animation_Frame_Opt.Visible = true;
+                    break;
+                case "MotionAnimation":
+                    uCtrl_Animation_Motion_Opt.Visible = true;
+                    break;
+                case "RotateAnimation":
+                    uCtrl_Animation_Rotate_Opt.Visible = true;
+                    break;
             }
         }
 
@@ -1372,6 +1411,9 @@ namespace Watch_Face_Editor
             uCtrl_Icon_Opt.Visible = false;
             uCtrl_Shortcut_Opt.Visible = false;
             uCtrl_Text_SystemFont_Opt.Visible = false;
+            uCtrl_Animation_Frame_Opt.Visible = false;
+            uCtrl_Animation_Motion_Opt.Visible = false;
+            uCtrl_Animation_Rotate_Opt.Visible = false;
         }
 
         private void ResetHighlightState(string selectElementName)
@@ -1385,6 +1427,7 @@ namespace Watch_Face_Editor
             if (selectElementName != "DateWeek") uCtrl_DateWeek_Elm.ResetHighlightState();
             if (selectElementName != "Shortcuts") uCtrl_Shortcuts_Elm.ResetHighlightState();
             if (selectElementName != "Statuses") uCtrl_Statuses_Elm.ResetHighlightState();
+            if (selectElementName != "Animation") uCtrl_Animation_Elm.ResetHighlightState();
 
             if (selectElementName != "Steps") uCtrl_Steps_Elm.ResetHighlightState();
             if (selectElementName != "Battery") uCtrl_Battery_Elm.ResetHighlightState();
@@ -1405,6 +1448,28 @@ namespace Watch_Face_Editor
             if (selectElementName != "Sunrise") uCtrl_Sunrise_Elm.ResetHighlightState();
             if (selectElementName != "Wind") uCtrl_Wind_Elm.ResetHighlightState();
             if (selectElementName != "Moon") uCtrl_Moon_Elm.ResetHighlightState();
+
+
+            if (selectElementName != "Animation") 
+            {
+                if (button_Add_Anim_Images.Visible)
+                {
+                    button_Add_Anim_Images.Visible = false;
+                    button_Add_Images.Visible = true;
+                    dataGridView_AnimImagesList.Visible = false;
+                    dataGridView_ImagesList.Visible = true;
+                }
+            }
+            else
+            {
+                if (!button_Add_Anim_Images.Visible)
+                {
+                    button_Add_Anim_Images.Visible = true;
+                    button_Add_Images.Visible = false;
+                    dataGridView_AnimImagesList.Visible = true;
+                    dataGridView_ImagesList.Visible = false;
+                }
+            }
         }
 
         private void ClearAllElemenrOptions()
@@ -1420,6 +1485,7 @@ namespace Watch_Face_Editor
 
             uCtrl_Statuses_Elm.SettingsClear();
             uCtrl_Shortcuts_Elm.SettingsClear();
+            uCtrl_Animation_Elm.SettingsClear();
 
             uCtrl_Steps_Elm.SettingsClear();
             uCtrl_Battery_Elm.SettingsClear();
@@ -1634,6 +1700,7 @@ namespace Watch_Face_Editor
                 string newFullName = openFileDialog.FileName;
                 //string dirName = Path.GetDirectoryName(newFullName) + @"\assets\";
                 button_Add_Images.Enabled = true;
+                button_Add_Anim_Images.Enabled = true;
 
                 LoadJson(newFullName);
 
@@ -1700,13 +1767,19 @@ namespace Watch_Face_Editor
                 switch (Watch_Face.WatchFace_Info.DeviceName)
                 {
                     case "GTR3":
-                        radioButton_GTR3.Checked = true;
+                        comboBox_watch_model.Text = "GTR 3";
                         break;
                     case "GTR3_Pro":
-                        radioButton_GTR3_Pro.Checked = true;
+                        comboBox_watch_model.Text = "GTR 3 Pro";
                         break;
                     case "GTS3":
-                        radioButton_GTS3.Checked = true;
+                        comboBox_watch_model.Text = "GTS 3";
+                        break;
+                    case "T_Rex_2":
+                        comboBox_watch_model.Text = "T-Rex 2";
+                        break;
+                    default:
+                        comboBox_watch_model.Text = "GTR 3";
                         break;
                 }
             }
@@ -1724,11 +1797,17 @@ namespace Watch_Face_Editor
         private void LoadImage(string dirName)
         {
             Logger.WriteLine("* LoadImage");
-            if (!Directory.Exists(dirName)) return;
 
             dataGridView_ImagesList.Rows.Clear();
             ListImages.Clear();
             ListImagesFullName.Clear();
+
+
+            dataGridView_AnimImagesList.Rows.Clear();
+            ListAnimImages.Clear();
+            ListAnimImagesFullName.Clear();
+
+            if (!Directory.Exists(dirName)) return;
 
             DirectoryInfo Folder;
             Folder = new DirectoryInfo(dirName);
@@ -1799,6 +1878,93 @@ namespace Watch_Face_Editor
             uCtrl_Linear_Scale_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
             uCtrl_Icon_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
             uCtrl_Shortcut_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
+            //uCtrl_Animation_Frame_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
+            //uCtrl_Animation_Motion_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
+            //uCtrl_Animation_Rotate_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
+
+            //progressBar1.Visible = false;
+            LoadAnimImage(dirName + @"animation\");
+        }
+
+        /// <summary>Загружаем файлы изображений для анимации в проект и в выпадающие списки</summary>
+        /// <param name="dirName">Папка с изображениями анимации</param>
+        private void LoadAnimImage(string dirName)
+        {
+            Logger.WriteLine("* LoadAnimImage");
+            if (!Directory.Exists(dirName)) return;
+
+            DirectoryInfo Folder;
+            Folder = new DirectoryInfo(dirName);
+            //FileInfo[] Images;
+            //Images = Folder.GetFiles("*.png").OrderBy(p => Path.GetFileNameWithoutExtension(p.Name)).ToArray();
+            FileInfo[] Images = Folder.GetFiles("*.png");
+            Images = FileInfoSort(Images);
+            //Array.Sort(Images, new MyCustomComparer()); выдает ошибку
+            Image loadedImage = null;
+            int count = 1;
+
+            //progressBar1.Value = 0;
+            //progressBar1.Maximum = Images.Length;
+            //progressBar1.Visible = true;
+            foreach (FileInfo file in Images)
+            {
+                try
+                {
+                    string fileNameOnly = Path.GetFileNameWithoutExtension(file.Name);
+                    Logger.WriteLine("loadedAnimImage " + fileNameOnly);
+                    //loadedImage = Image.FromFile(file.FullName);
+                    using (FileStream stream = new FileStream(file.FullName, FileMode.Open, FileAccess.Read))
+                    {
+                        loadedImage = Image.FromStream(stream);
+                    }
+
+                    var RowNew = new DataGridViewRow();
+                    DataGridViewImageCellLayout ZoomType = DataGridViewImageCellLayout.Zoom;
+                    if ((loadedImage.Height < 45) && (loadedImage.Width < 110))
+                        ZoomType = DataGridViewImageCellLayout.Normal;
+                    RowNew.Cells.Add(new DataGridViewTextBoxCell() { Value = count.ToString() });
+                    RowNew.Cells.Add(new DataGridViewTextBoxCell() { Value = fileNameOnly });
+                    RowNew.Cells.Add(new DataGridViewImageCell()
+                    {
+                        Value = loadedImage,
+                        ImageLayout = ZoomType,
+
+                    });
+                    RowNew.Cells.Add(new DataGridViewImageCell()
+                    {
+                        Value = loadedImage,
+                        ImageLayout = ZoomType,
+
+                    });
+                    //loadedImage.Dispose();
+                    RowNew.Height = 45;
+                    dataGridView_AnimImagesList.Rows.Add(RowNew);
+                    //progressBar1.Value++;
+                    count++;
+                    ListAnimImages.Add(fileNameOnly);
+                    ListAnimImagesFullName.Add(file.FullName);
+                }
+                catch
+                {
+                    // Could not load the image - probably related to Windows file system permissions.
+                    MessageBox.Show(Properties.FormStrings.Message_Error_Image_Text1 +
+                        file.FullName.Substring(file.FullName.LastIndexOf('\\') + 1) + Properties.FormStrings.Message_Error_Image_Text2);
+                }
+            }
+
+            //userCtrl_Background_Options.ComboBoxAddItems(ListImages, ListImagesFullName);
+            //uCtrl_Text_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
+            //uCtrl_Text_Weather_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
+            //uCtrl_AmPm_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
+            //uCtrl_Pointer_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
+            //uCtrl_Images_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
+            //uCtrl_Segments_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
+            //uCtrl_Linear_Scale_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
+            //uCtrl_Icon_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
+            //uCtrl_Shortcut_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
+            uCtrl_Animation_Frame_Opt.ComboBoxAddItems(ListAnimImages, ListAnimImagesFullName);
+            uCtrl_Animation_Motion_Opt.ComboBoxAddItems(ListAnimImages, ListAnimImagesFullName);
+            uCtrl_Animation_Rotate_Opt.ComboBoxAddItems(ListAnimImages, ListAnimImagesFullName);
 
             //progressBar1.Visible = false;
         }
@@ -1857,38 +2023,41 @@ namespace Watch_Face_Editor
                 Watch_Face.ScreenNormal = new ScreenNormal();
                 Watch_Face.ScreenNormal.Background = new Background();
                 Watch_Face.ScreenNormal.Background.BackgroundColor = new hmUI_widget_FILL_RECT();
-                if (radioButton_GTR3.Checked)
-                {
-                    Watch_Face.WatchFace_Info.DeviceName = "GTR3";
 
-                    //Watch_Face.ScreenNormal.Background.BackgroundColor.show_level = "ONLY_NORMAL";
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
-                }
-                else if (radioButton_GTR3_Pro.Checked)
+                switch (ProgramSettings.Watch_Model)
                 {
-                    Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
-
-                    //Watch_Face.ScreenNormal.Background.BackgroundColor.show_level = "ONLY_NORMAL";
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.h = 480;
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.w = 480;
-                }
-                else if (radioButton_GTS3.Checked)
-                {
-                    Watch_Face.WatchFace_Info.DeviceName = "GTS3";
-
-                    //Watch_Face.ScreenNormal.Background.BackgroundColor.show_level = "ONLY_NORMAL";
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
+                    case "GTR 3":
+                        Watch_Face.WatchFace_Info.DeviceName = "GTR3";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
+                        break;
+                    case "GTR 3 Pro":
+                        Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 480;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 480;
+                        break;
+                    case "GTS 3":
+                        Watch_Face.WatchFace_Info.DeviceName = "GTS3";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
+                        break;
+                    case "T-Rex 2":
+                        Watch_Face.WatchFace_Info.DeviceName = "T_Rex_2";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
+                        break;
                 }
 
                 string JSON_String = JsonConvert.SerializeObject(Watch_Face, Formatting.Indented, new JsonSerializerSettings
@@ -1898,6 +2067,7 @@ namespace Watch_Face_Editor
                 });
                 File.WriteAllText(fullfilename, JSON_String, Encoding.UTF8);
                 button_Add_Images.Enabled = true;
+                button_Add_Anim_Images.Enabled = true;
                 Directory.CreateDirectory(dirName);
                 LoadImage(dirName);
                 PreviewView = false;
@@ -2024,11 +2194,11 @@ namespace Watch_Face_Editor
             #region BackgroundImage
             Logger.WriteLine("BackgroundImage");
             Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
-            if (radioButton_GTR3_Pro.Checked)
+            if (ProgramSettings.Watch_Model == "GTR 3 Pro")
             {
                 bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
             }
-            else if (radioButton_GTS3.Checked)
+            else if (ProgramSettings.Watch_Model == "GTS 3")
             {
                 bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
             }
@@ -2040,7 +2210,7 @@ namespace Watch_Face_Editor
             Preview_screen(gPanel, scale, checkBox_crop.Checked, checkBox_WebW.Checked, checkBox_WebB.Checked,
                 checkBox_border.Checked, checkBox_Show_Shortcuts.Checked, checkBox_Shortcuts_Area.Checked,
                 checkBox_Shortcuts_Border.Checked, checkBox_Shortcuts_Image.Checked, true, checkBox_CircleScaleImage.Checked,
-                checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link, false);
+                checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link, false, -1);
             pictureBox_Preview.BackgroundImage = bitmap;
             gPanel.Dispose();
 
@@ -2080,12 +2250,11 @@ namespace Watch_Face_Editor
 
                 formPreview.pictureBox_Preview.Resize += (object senderResize, EventArgs eResize) =>
                 {
-                    if (Form_Preview.Model_Wath.model_GTR3 != radioButton_GTR3.Checked)
-                        Form_Preview.Model_Wath.model_GTR3 = radioButton_GTR3.Checked;
-                    if (Form_Preview.Model_Wath.model_GTR3_Pro != radioButton_GTR3_Pro.Checked)
-                        Form_Preview.Model_Wath.model_GTR3_Pro = radioButton_GTR3_Pro.Checked;
-                    if (Form_Preview.Model_Wath.model_GTS3 != radioButton_GTS3.Checked)
-                        Form_Preview.Model_Wath.model_GTS3 = radioButton_GTS3.Checked;
+                    if (Form_Preview.Watch_Model != comboBox_watch_model.Text)
+                    {
+                        if (comboBox_watch_model.SelectedIndex == -1) Form_Preview.Watch_Model = "GTR 3";
+                        else Form_Preview.Watch_Model = comboBox_watch_model.Text;
+                    }
                     float scalePreviewResize = 1.0f;
                     if (formPreview.radioButton_small.Checked) scalePreviewResize = 0.5f;
                     if (formPreview.radioButton_large.Checked) scalePreviewResize = 1.5f;
@@ -2102,11 +2271,11 @@ namespace Watch_Face_Editor
 
                     #region BackgroundImage 
                     Bitmap bitmapPreviewResize = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
-                    if (radioButton_GTR3_Pro.Checked)
+                    if (ProgramSettings.Watch_Model == "GTR 3 Pro")
                     {
                         bitmapPreviewResize = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
                     }
-                    if (radioButton_GTS3.Checked)
+                    if (ProgramSettings.Watch_Model == "GTS 3")
                     {
                         bitmapPreviewResize = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
                     }
@@ -2118,7 +2287,7 @@ namespace Watch_Face_Editor
                         checkBox_WebW.Checked, checkBox_WebB.Checked, checkBox_border.Checked,
                         checkBox_Show_Shortcuts.Checked, checkBox_Shortcuts_Area.Checked, checkBox_Shortcuts_Border.Checked,
                         checkBox_Shortcuts_Image.Checked, true,checkBox_CircleScaleImage.Checked, 
-                        checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link_aod, false);
+                        checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link_aod, false, -1);
                     formPreview.pictureBox_Preview.BackgroundImage = bitmapPreviewResize;
                     gPanelPreviewResize.Dispose();
                 };
@@ -2140,22 +2309,21 @@ namespace Watch_Face_Editor
                 };
             }
 
-            if (Form_Preview.Model_Wath.model_GTR3 != radioButton_GTR3.Checked)
-                Form_Preview.Model_Wath.model_GTR3 = radioButton_GTR3.Checked;
-            if (Form_Preview.Model_Wath.model_GTR3_Pro != radioButton_GTR3_Pro.Checked)
-                Form_Preview.Model_Wath.model_GTR3_Pro = radioButton_GTR3_Pro.Checked;
-            if (Form_Preview.Model_Wath.model_GTS3 != radioButton_GTS3.Checked)
-                Form_Preview.Model_Wath.model_GTS3 = radioButton_GTS3.Checked;
+            if (Form_Preview.Watch_Model != comboBox_watch_model.Text)
+            {
+                if (comboBox_watch_model.SelectedIndex == -1) Form_Preview.Watch_Model = "GTR 3";
+                else Form_Preview.Watch_Model = comboBox_watch_model.Text;
+            }
             formPreview.radioButton_CheckedChanged(sender, e);
             float scale = 1.0f;
 
             #region BackgroundImage 
             Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
-            if (radioButton_GTR3_Pro.Checked)
+            if (ProgramSettings.Watch_Model == "GTR 3 Pro")
             {
                 bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
             }
-            if (radioButton_GTS3.Checked)
+            if (ProgramSettings.Watch_Model == "GTS 3")
             {
                 bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
             }
@@ -2166,7 +2334,7 @@ namespace Watch_Face_Editor
             Preview_screen(gPanel, scale, checkBox_crop.Checked, checkBox_WebW.Checked, checkBox_WebB.Checked,
                 checkBox_border.Checked, checkBox_Show_Shortcuts.Checked, checkBox_Shortcuts_Area.Checked,
                 checkBox_Shortcuts_Border.Checked, checkBox_Shortcuts_Image.Checked, true, checkBox_CircleScaleImage.Checked,
-                checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link, false);
+                checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link, false, -1);
             formPreview.pictureBox_Preview.BackgroundImage = bitmap;
             gPanel.Dispose();
 
@@ -2562,6 +2730,22 @@ namespace Watch_Face_Editor
                 //    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
                 //    panel_WatchfaceElements.VerticalScroll.Maximum);
             }
+            if (comboBox_AddSystem.SelectedIndex == 3)
+            {
+                if (radioButton_ScreenNormal.Checked)
+                {
+                    AddAnimation();
+                    ShowElemetsWatchFace();
+                    JSON_Modified = true;
+                    FormText();
+                }
+                else MessageBox.Show(Properties.FormStrings.Message_AnimationAOD_Text, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                //panel_WatchfaceElements.AutoScrollPosition = new Point(
+                //    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                //    panel_WatchfaceElements.VerticalScroll.Maximum);
+            }
 
             PreviewView = false;
             //if (comboBox_AddTime.SelectedIndex >= 0) MessageBox.Show(comboBox_AddTime.Text);
@@ -2649,38 +2833,30 @@ namespace Watch_Face_Editor
                 if(Watch_Face.ScreenNormal.Background != null) return;
                 Watch_Face.ScreenNormal.Background = new Background();
                 Watch_Face.ScreenNormal.Background.BackgroundColor = new hmUI_widget_FILL_RECT();
-                if (radioButton_GTR3.Checked)
+                switch (ProgramSettings.Watch_Model)
                 {
-                    //Watch_Face.WatchFace_Info.DeviceName = "GTR3";
-
-                    //Watch_Face.ScreenNormal.Background.BackgroundColor.show_level = "ONLY_NORMAL";
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
-                }
-                else if (radioButton_GTR3_Pro.Checked)
-                {
-                    //Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
-
-                    //Watch_Face.ScreenNormal.Background.BackgroundColor.show_level = "ONLY_NORMAL";
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.h = 480;
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.w = 480;
-                }
-                else if (radioButton_GTS3.Checked)
-                {
-                    //Watch_Face.WatchFace_Info.DeviceName = "GTS3";
-
-                    //Watch_Face.ScreenNormal.Background.BackgroundColor.show_level = "ONLY_NORMAL";
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
-                    Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
+                    case "GTR 3":
+                    case "T-Rex 2":
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
+                        break;
+                    case "GTR 3 Pro":
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 480;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 480;
+                        break;
+                    case "GTS 3":
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
+                        break;
                 }
                 Watch_Face.ScreenNormal.Background.visible = true;
                 JSON_Modified = true;
@@ -2691,38 +2867,30 @@ namespace Watch_Face_Editor
                 if (Watch_Face.ScreenAOD.Background != null) return;
                 Watch_Face.ScreenAOD.Background = new Background();
                 Watch_Face.ScreenAOD.Background.BackgroundColor = new hmUI_widget_FILL_RECT();
-                if (radioButton_GTR3.Checked)
+                switch (ProgramSettings.Watch_Model)
                 {
-                    //Watch_Face.WatchFace_Info.DeviceName = "GTR3";
-
-                    //Watch_Face.ScreenAOD.Background.BackgroundColor.show_level = "ONLY_NORMAL";
-                    Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
-                    Watch_Face.ScreenAOD.Background.BackgroundColor.x = 0;
-                    Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
-                    Watch_Face.ScreenAOD.Background.BackgroundColor.h = 454;
-                    Watch_Face.ScreenAOD.Background.BackgroundColor.w = 454;
-                }
-                else if (radioButton_GTR3_Pro.Checked)
-                {
-                    //Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
-
-                    //Watch_Face.ScreenAOD.Background.BackgroundColor.show_level = "ONLY_NORMAL";
-                    Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
-                    Watch_Face.ScreenAOD.Background.BackgroundColor.x = 0;
-                    Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
-                    Watch_Face.ScreenAOD.Background.BackgroundColor.h = 480;
-                    Watch_Face.ScreenAOD.Background.BackgroundColor.w = 480;
-                }
-                else if (radioButton_GTS3.Checked)
-                {
-                    //Watch_Face.WatchFace_Info.DeviceName = "GTS3";
-
-                    //Watch_Face.ScreenAOD.Background.BackgroundColor.show_level = "ONLY_NORMAL";
-                    Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
-                    Watch_Face.ScreenAOD.Background.BackgroundColor.x = 0;
-                    Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
-                    Watch_Face.ScreenAOD.Background.BackgroundColor.h = 450;
-                    Watch_Face.ScreenAOD.Background.BackgroundColor.w = 390;
+                    case "GTR 3":
+                    case "T-Rex 2":
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.x = 0;
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.h = 454;
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.w = 454;
+                        break;
+                    case "GTR 3 Pro":
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.x = 0;
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.h = 480;
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.w = 480;
+                        break;
+                    case "GTS 3":
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.x = 0;
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.h = 450;
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.w = 390;
+                        break;
                 }
                 Watch_Face.ScreenAOD.Background.visible = true;
                 JSON_Modified = true;
@@ -2984,6 +3152,37 @@ namespace Watch_Face_Editor
             //if (!exists) Elements.Insert(0, shortcuts);
             if (!exists) Elements.Add(shortcuts);
             uCtrl_Shortcuts_Elm.SettingsClear();
+        }
+
+        /// <summary>Добавляем ярлыки в циферблат</summary>
+        private void AddAnimation()
+        {
+            if (!PreviewView) return;
+            List<object> Elements = new List<object>();
+            if (Watch_Face == null) Watch_Face = new WATCH_FACE();
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face.ScreenNormal == null) Watch_Face.ScreenNormal = new ScreenNormal();
+                if (Watch_Face.ScreenNormal.Elements == null) Watch_Face.ScreenNormal.Elements = new List<object>();
+                Elements = Watch_Face.ScreenNormal.Elements;
+            }
+            else
+            {
+                if (Watch_Face.ScreenAOD == null) Watch_Face.ScreenAOD = new ScreenAOD();
+                if (Watch_Face.ScreenAOD.Elements == null) Watch_Face.ScreenAOD.Elements = new List<object>();
+                Elements = Watch_Face.ScreenAOD.Elements;
+
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
+            }
+
+            ElementAnimation animation = new ElementAnimation();
+            animation.visible = true;
+            //digitalTime.position = Elements.Count;
+            bool exists = Elements.Exists(e => e.GetType().Name == "ElementAnimation"); // проверяем что такого элемента нет
+            if (!exists) Elements.Insert(0, animation);
+            //if (!exists) Elements.Add(animation);
+            uCtrl_Animation_Elm.SettingsClear();
         }
 
         /// <summary>Добавляем шаги в циферблат</summary>
@@ -3569,8 +3768,10 @@ namespace Watch_Face_Editor
             uCtrl_DateMonth_Elm.Visible = false;
             uCtrl_DateYear_Elm.Visible = false;
             uCtrl_DateWeek_Elm.Visible = false;
+
             uCtrl_Shortcuts_Elm.Visible = false;
             uCtrl_Statuses_Elm.Visible = false;
+            uCtrl_Animation_Elm.Visible = false;
 
             uCtrl_Steps_Elm.Visible = false;
             uCtrl_Battery_Elm.Visible = false;
@@ -3799,6 +4000,7 @@ namespace Watch_Face_Editor
                             break;
                         #endregion
 
+
                         #region ElementStatuses
                         case "ElementStatuses":
                             ElementStatuses Statuses = (ElementStatuses)element;
@@ -3904,6 +4106,39 @@ namespace Watch_Face_Editor
                             //SetElementPositionInGUI(type, i + 1);
                             break;
                         #endregion
+
+                        #region ElementAnimation
+                        case "ElementAnimation":
+                            ElementAnimation Animation = (ElementAnimation)element;
+                            uCtrl_Animation_Elm.SetVisibilityElementStatus(Animation.visible);
+                            elementOptions = new Dictionary<int, string>();
+                            if (Animation.Frame_Animation_List!= null)
+                            {
+                                uCtrl_Animation_Elm.checkBox_FrameAnimation.Checked = Animation.Frame_Animation_List.visible;
+                                elementOptions.Add(Animation.Frame_Animation_List.position, "FrameAnimation");
+                            }
+
+                            if (Animation.Motion_Animation_List != null)
+                            {
+                                uCtrl_Animation_Elm.checkBox_MotionAnimation.Checked = Animation.Motion_Animation_List.visible;
+                                elementOptions.Add(Animation.Motion_Animation_List.position, "MotionAnimation");
+                            }
+
+                            if (Animation.Rotate_Animation_List != null)
+                            {
+                                uCtrl_Animation_Elm.checkBox_RotateAnimation.Checked = Animation.Rotate_Animation_List.visible;
+                                elementOptions.Add(Animation.Rotate_Animation_List.position, "RotateAnimation");
+                            }
+
+
+                            uCtrl_Animation_Elm.SetOptionsPosition(elementOptions);
+
+                            uCtrl_Animation_Elm.Visible = true;
+                            SetElementPositionInGUI(type, count - i - 2);
+                            //SetElementPositionInGUI(type, i + 1);
+                            break;
+                        #endregion
+
 
                         #region ElementSteps
                         case "ElementSteps":
@@ -4665,12 +4900,17 @@ namespace Watch_Face_Editor
                 case "ElementDateWeek":
                     panel = panel_UC_DateWeek;
                     break;
+
                 case "ElementStatuses":
                     panel = panel_UC_Statuses;
                     break;
                 case "ElementShortcuts":
                     panel = panel_UC_Shortcuts;
                     break;
+                case "ElementAnimation":
+                    panel = panel_UC_Animation;
+                    break;
+
                 case "ElementSteps":
                     panel = panel_UC_Steps;
                     break;
@@ -4801,16 +5041,15 @@ namespace Watch_Face_Editor
             ProgramSettings.Shortcuts_In_Gif = checkBox_Shortcuts_In_Gif.Checked;
 
             //ProgramSettings.language = comboBox_Language.Text;
+            if (comboBox_watch_model.SelectedIndex != -1)
+            {
+                ProgramSettings.Watch_Model = comboBox_watch_model.Text;
 
-            ProgramSettings.Model_GTR3 = radioButton_GTR3.Checked;
-            ProgramSettings.Model_GTR3_Pro = radioButton_GTR3_Pro.Checked;
-            ProgramSettings.Model_GTS3 = radioButton_GTS3.Checked;
-
-            if (radioButton_GTR3.Checked) ProgramSettings.WatchSkin_GTR_3 = textBox_WatchSkin_Path.Text;
-            if (radioButton_GTR3_Pro.Checked) ProgramSettings.WatchSkin_GTR_3_Pro = textBox_WatchSkin_Path.Text;
-            if (radioButton_GTS3.Checked) ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
-
-
+                if (comboBox_watch_model.Text == "GTR 3") ProgramSettings.WatchSkin_GTR_3 = textBox_WatchSkin_Path.Text;
+                if (comboBox_watch_model.Text == "GTR 3 Pro") ProgramSettings.WatchSkin_GTR_3_Pro = textBox_WatchSkin_Path.Text;
+                if (comboBox_watch_model.Text == "GTS 3") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
+                if (comboBox_watch_model.Text == "T-Rex 2") ProgramSettings.WatchSkin_T_Rex_2 = textBox_WatchSkin_Path.Text;
+            }
 
             string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
             {
@@ -4858,16 +5097,15 @@ namespace Watch_Face_Editor
             ProgramSettings.Show_Shortcuts = checkBox_Show_Shortcuts.Checked;
 
             //ProgramSettings.language = comboBox_Language.Text;
+            if (comboBox_watch_model.SelectedIndex != -1)
+            {
+                ProgramSettings.Watch_Model = comboBox_watch_model.Text;
 
-            ProgramSettings.Model_GTR3 = radioButton_GTR3.Checked;
-            ProgramSettings.Model_GTR3_Pro = radioButton_GTR3_Pro.Checked;
-            ProgramSettings.Model_GTS3 = radioButton_GTS3.Checked;
-
-            if (radioButton_GTR3.Checked) ProgramSettings.WatchSkin_GTR_3 = textBox_WatchSkin_Path.Text;
-            if (radioButton_GTR3_Pro.Checked) ProgramSettings.WatchSkin_GTR_3_Pro = textBox_WatchSkin_Path.Text;
-            if (radioButton_GTS3.Checked) ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
-
-
+                if (comboBox_watch_model.Text == "GTR 3") ProgramSettings.WatchSkin_GTR_3 = textBox_WatchSkin_Path.Text;
+                if (comboBox_watch_model.Text == "GTR 3 Pro") ProgramSettings.WatchSkin_GTR_3_Pro = textBox_WatchSkin_Path.Text;
+                if (comboBox_watch_model.Text == "GTS 3") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
+                if (comboBox_watch_model.Text == "T-Rex 2") ProgramSettings.WatchSkin_T_Rex_2 = textBox_WatchSkin_Path.Text;
+            }
 
             string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
             {
@@ -5096,11 +5334,15 @@ namespace Watch_Face_Editor
                 case "UCtrl_DateWeek_Elm":
                     objectName = "ElementDateWeek";
                     break;
+
                 case "UCtrl_Shortcuts_Elm":
                     objectName = "ElementShortcuts";
                     break;
                 case "UCtrl_Statuses_Elm":
                     objectName = "ElementStatuses";
+                    break;
+                case "UCtrl_Animation_Elm":
+                    objectName = "ElementAnimation";
                     break;
 
                 case "UCtrl_Steps_Elm":
@@ -5928,7 +6170,7 @@ namespace Watch_Face_Editor
 
         private void radioButton_Model_CheckedChanged(object sender, EventArgs e)
         {
-            RadioButton radioButton = sender as RadioButton;
+            /*RadioButton radioButton = sender as RadioButton;
             if (radioButton != null && !radioButton.Checked) return;
             if (radioButton_GTR3.Checked)
             {
@@ -5954,12 +6196,12 @@ namespace Watch_Face_Editor
 
             if ((formPreview != null) && (formPreview.Visible))
             {
-                if (Form_Preview.Model_Wath.model_GTR3 != radioButton_GTR3.Checked)
-                    Form_Preview.Model_Wath.model_GTR3 = radioButton_GTR3.Checked;
-                if (Form_Preview.Model_Wath.model_GTR3_Pro != radioButton_GTR3_Pro.Checked)
-                    Form_Preview.Model_Wath.model_GTR3_Pro = radioButton_GTR3_Pro.Checked;
-                if (Form_Preview.Model_Wath.model_GTS3 != radioButton_GTS3.Checked)
-                    Form_Preview.Model_Wath.model_GTS3 = radioButton_GTS3.Checked;
+                if (Form_Preview.Watch_Model.model_GTR3 != radioButton_GTR3.Checked)
+                    Form_Preview.Watch_Model.model_GTR3 = radioButton_GTR3.Checked;
+                if (Form_Preview.Watch_Model.model_GTR3_Pro != radioButton_GTR3_Pro.Checked)
+                    Form_Preview.Watch_Model.model_GTR3_Pro = radioButton_GTR3_Pro.Checked;
+                if (Form_Preview.Watch_Model.model_GTS3 != radioButton_GTS3.Checked)
+                    Form_Preview.Watch_Model.model_GTS3 = radioButton_GTS3.Checked;
                 formPreview.radioButton_CheckedChanged(sender, e);
             }
 
@@ -6094,6 +6336,203 @@ namespace Watch_Face_Editor
             FormText();
 
             //JSON_write();
+            //PreviewImage();*/
+        }
+
+        private void comboBox_watch_model_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox_watch_model.SelectedIndex == -1) return;
+            ProgramSettings.Watch_Model = comboBox_watch_model.Text;
+            if (ProgramSettings.Watch_Model == "GTR 3" || ProgramSettings.Watch_Model == "T-Rex 2")
+            {
+                pictureBox_Preview.Size = new Size((int)(230 * currentDPI), (int)(230 * currentDPI));
+            }
+            else if (ProgramSettings.Watch_Model == "GTR 3 Pro")
+            {
+                pictureBox_Preview.Size = new Size((int)(230 * currentDPI), (int)(230 * currentDPI));
+            }
+            else if (ProgramSettings.Watch_Model == "GTS 3")
+            {
+                pictureBox_Preview.Size = new Size((int)(198 * currentDPI), (int)(228 * currentDPI));
+            }
+
+            // изменяем размер панели для предпросмотра если она не влазит
+            if (pictureBox_Preview.Top + pictureBox_Preview.Height > label_watch_model.Top)
+            {
+                float newHeight = label_watch_model.Top - pictureBox_Preview.Top;
+                float scale = newHeight / pictureBox_Preview.Height;
+                pictureBox_Preview.Size = new Size((int)(pictureBox_Preview.Width * scale), (int)(pictureBox_Preview.Height * scale));
+            }
+
+            if ((formPreview != null) && (formPreview.Visible))
+            {
+                if (Form_Preview.Watch_Model != comboBox_watch_model.Text)
+                {
+                    if (comboBox_watch_model.SelectedIndex == -1) Form_Preview.Watch_Model = "GTR 3";
+                    else Form_Preview.Watch_Model = comboBox_watch_model.Text;
+                }
+                formPreview.radioButton_CheckedChanged(sender, e);
+            }
+
+            if (Settings_Load) return;
+
+            if (Watch_Face == null) Watch_Face = new WATCH_FACE();
+            if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
+
+            switch (ProgramSettings.Watch_Model)
+            {
+                case "GTR 3":
+                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_3;
+
+                    Watch_Face.WatchFace_Info.DeviceName = "GTR3";
+                    if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
+                    {
+                        if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
+                        {
+                            Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
+                            Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
+                        }
+                        if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
+                        {
+                            Watch_Face.ScreenNormal.Background.BackgroundImage.w = 454;
+                            Watch_Face.ScreenNormal.Background.BackgroundImage.h = 454;
+                        }
+                    }
+
+                    if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
+                    {
+                        if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
+                        {
+                            Watch_Face.ScreenAOD.Background.BackgroundColor.w = 454;
+                            Watch_Face.ScreenAOD.Background.BackgroundColor.h = 454;
+                        }
+                        if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
+                        {
+                            Watch_Face.ScreenAOD.Background.BackgroundImage.w = 454;
+                            Watch_Face.ScreenAOD.Background.BackgroundImage.h = 454;
+                        }
+                    }
+                    break;
+                case "GTR 3 Pro":
+                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_3_Pro;
+
+                    if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
+                    Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
+
+                    if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
+                    {
+                        if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
+                        {
+                            Watch_Face.ScreenNormal.Background.BackgroundColor.w = 480;
+                            Watch_Face.ScreenNormal.Background.BackgroundColor.h = 480;
+                        }
+                        if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
+                        {
+                            Watch_Face.ScreenNormal.Background.BackgroundImage.w = 480;
+                            Watch_Face.ScreenNormal.Background.BackgroundImage.h = 480;
+                        }
+                    }
+
+                    if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
+                    {
+                        if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
+                        {
+                            Watch_Face.ScreenAOD.Background.BackgroundColor.w = 480;
+                            Watch_Face.ScreenAOD.Background.BackgroundColor.h = 480;
+                        }
+                        if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
+                        {
+                            Watch_Face.ScreenAOD.Background.BackgroundImage.w = 480;
+                            Watch_Face.ScreenAOD.Background.BackgroundImage.h = 480;
+                        }
+                    }
+                    break;
+                case "GTS 3":
+                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_3;
+
+                    if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
+                    Watch_Face.WatchFace_Info.DeviceName = "GTS3";
+
+                    if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
+                    {
+                        if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
+                        {
+                            Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
+                            Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
+                        }
+                        if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
+                        {
+                            Watch_Face.ScreenNormal.Background.BackgroundImage.w = 390;
+                            Watch_Face.ScreenNormal.Background.BackgroundImage.h = 450;
+                        }
+                    }
+
+                    if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
+                    {
+                        if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
+                        {
+                            Watch_Face.ScreenAOD.Background.BackgroundColor.w = 390;
+                            Watch_Face.ScreenAOD.Background.BackgroundColor.h = 450;
+                        }
+                        if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
+                        {
+                            Watch_Face.ScreenAOD.Background.BackgroundImage.w = 390;
+                            Watch_Face.ScreenAOD.Background.BackgroundImage.h = 450;
+                        }
+                    }
+                    break;
+                case "T-Rex 2":
+                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_T_Rex_2;
+
+                    Watch_Face.WatchFace_Info.DeviceName = "T_Rex_2";
+                    if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
+                    {
+                        if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
+                        {
+                            Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
+                            Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
+                        }
+                        if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
+                        {
+                            Watch_Face.ScreenNormal.Background.BackgroundImage.w = 454;
+                            Watch_Face.ScreenNormal.Background.BackgroundImage.h = 454;
+                        }
+                    }
+
+                    if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
+                    {
+                        if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
+                        {
+                            Watch_Face.ScreenAOD.Background.BackgroundColor.w = 454;
+                            Watch_Face.ScreenAOD.Background.BackgroundColor.h = 454;
+                        }
+                        if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
+                        {
+                            Watch_Face.ScreenAOD.Background.BackgroundImage.w = 454;
+                            Watch_Face.ScreenAOD.Background.BackgroundImage.h = 454;
+                        }
+                    }
+                    break;
+            }
+
+            string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
+            {
+                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                NullValueHandling = NullValueHandling.Ignore
+            });
+            File.WriteAllText(Application.StartupPath + @"\Settings.json", JSON_String, Encoding.UTF8);
+
+            if (Watch_Face != null && Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
+                ChangSizeBackground(Watch_Face.ScreenNormal.Background);
+
+            if (Watch_Face != null && Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
+                ChangSizeBackground(Watch_Face.ScreenAOD.Background);
+
+            PreviewImage();
+            JSON_Modified = true;
+            FormText();
+
+            //JSON_write();
             //PreviewImage();
         }
 
@@ -6101,38 +6540,46 @@ namespace Watch_Face_Editor
         {
             if(background.BackgroundColor != null)
             {
-                if (radioButton_GTR3.Checked)
+                switch (ProgramSettings.Watch_Model)
                 {
-                    background.BackgroundColor.h = 454;
-                    background.BackgroundColor.w = 454;
-                }
-                else if (radioButton_GTR3_Pro.Checked)
-                {
-                    background.BackgroundColor.h = 480;
-                    background.BackgroundColor.w = 480;
-                }
-                else if (radioButton_GTS3.Checked)
-                {
-                    background.BackgroundColor.h = 450;
-                    background.BackgroundColor.w = 390;
+                    case "GTR 3":
+                        background.BackgroundColor.h = 454;
+                        background.BackgroundColor.w = 454;
+                        break;
+                    case "GTR 3 Pro":
+                        background.BackgroundColor.h = 480;
+                        background.BackgroundColor.w = 480;
+                        break;
+                    case "GTS 3":
+                        background.BackgroundColor.h = 450;
+                        background.BackgroundColor.w = 390;
+                        break;
+                    case "T-Rex 2":
+                        background.BackgroundColor.h = 454;
+                        background.BackgroundColor.w = 454;
+                        break;
                 }
             }
             if (background.BackgroundImage != null)
             {
-                if (radioButton_GTR3.Checked)
+                switch (ProgramSettings.Watch_Model)
                 {
-                    background.BackgroundImage.h = 454;
-                    background.BackgroundImage.w = 454;
-                }
-                else if (radioButton_GTR3_Pro.Checked)
-                {
-                    background.BackgroundImage.h = 480;
-                    background.BackgroundImage.w = 480;
-                }
-                else if (radioButton_GTS3.Checked)
-                {
-                    background.BackgroundImage.h = 450;
-                    background.BackgroundImage.w = 390;
+                    case "GTR 3":
+                        background.BackgroundImage.h = 454;
+                        background.BackgroundImage.w = 454;
+                        break;
+                    case "GTR 3 Pro":
+                        background.BackgroundImage.h = 480;
+                        background.BackgroundImage.w = 480;
+                        break;
+                    case "GTS 3":
+                        background.BackgroundImage.h = 450;
+                        background.BackgroundImage.w = 390;
+                        break;
+                    case "T-Rex 2":
+                        background.BackgroundImage.h = 454;
+                        background.BackgroundImage.w = 454;
+                        break;
                 }
             }
         }
@@ -6166,6 +6613,20 @@ namespace Watch_Face_Editor
                 progressBar1.Value++;
                 string fileNameFull = PngToTga(file.FullName, tempDir + @"\assets");
                 if (fileNameFull != null) ImageFix(fileNameFull);
+            }
+
+            imagesFolder = FullFileDir + @"\assets\animation";
+            if (Directory.Exists(imagesFolder))
+            {
+                Folder = new DirectoryInfo(imagesFolder);
+                Images = Folder.GetFiles("*.png");
+                progressBar1.Maximum = progressBar1.Maximum + Images.Length;
+                foreach (FileInfo file in Images)
+                {
+                    progressBar1.Value++;
+                    string fileNameFull = PngToTga(file.FullName, tempDir + @"\assets\animation");
+                    if (fileNameFull != null) ImageFix(fileNameFull);
+                }
             }
 
             string appText = File.ReadAllText(templatesFileDir + @"\app.json");
@@ -6452,13 +6913,13 @@ namespace Watch_Face_Editor
                 Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
                 Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
                 int PreviewHeight = 306;
-                if (radioButton_GTR3_Pro.Checked)
+                if (ProgramSettings.Watch_Model == "GTR 3 Pro")
                 {
                     bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
                     mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
                     PreviewHeight = 324;
                 }
-                if (radioButton_GTS3.Checked)
+                if (ProgramSettings.Watch_Model == "GTS 3")
                 {
                     bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
                     mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
@@ -6466,7 +6927,8 @@ namespace Watch_Face_Editor
                 }
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
-                Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false, false, false, link, false);
+                Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false, 
+                    false, false, link, false, -1);
                 if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
 
 ;
@@ -6500,13 +6962,13 @@ namespace Watch_Face_Editor
                 Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
                 Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
                 int PreviewHeight = 306;
-                if (radioButton_GTR3_Pro.Checked)
+                if (ProgramSettings.Watch_Model == "GTR 3 Pro")
                 {
                     bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
                     mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
                     PreviewHeight = 324;
                 }
-                if (radioButton_GTS3.Checked)
+                if (ProgramSettings.Watch_Model == "GTS 3")
                 {
                     bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
                     mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
@@ -6514,7 +6976,8 @@ namespace Watch_Face_Editor
                 }
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
-                Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false, false, false, link, false);
+                Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false, 
+                    false, false, link, false, -1);
                 if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
 
                 float scale = (float)PreviewHeight / bitmap.Height;
@@ -6709,7 +7172,30 @@ namespace Watch_Face_Editor
                 }
 
                 // читаем данные из текста и преобразуем их в json
-                JSToJson(tempDir + @"\watchface\index.js"); // создаем новый json файл циферблата
+                string index_js = @"\watchface\index.js";
+                if (File.Exists(tempDir + @"\app.json"))  // читаем путь к файлу с кодом циферблата
+                {
+                    string appText = File.ReadAllText(tempDir + @"\app.json");
+                    try
+                    {
+                        App_WatchFace appJson = JsonConvert.DeserializeObject<App_WatchFace>(appText, new JsonSerializerSettings
+                        {
+                            DefaultValueHandling = DefaultValueHandling.Ignore,
+                            NullValueHandling = NullValueHandling.Ignore
+                        });
+                        if (appJson != null && appJson.module != null)
+                        {
+                            if (appJson.module.watchface != null && appJson.module.watchface.path != null &&
+                                appJson.module.watchface.path.Length > 2) index_js = @"\" + appJson.module.watchface.path + ".js";
+                            index_js = index_js.Replace("/", @"\");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+                JSToJson(tempDir + index_js); // создаем новый json файл циферблата
                 if (Watch_Face != null && Watch_Face.ScreenNormal != null)
                 {
                     if (File.Exists(tempDir + @"\app.json"))
@@ -7621,6 +8107,72 @@ namespace Watch_Face_Editor
                         }
                         else HideAllElemenrOptions();
                         break;
+                }
+
+            }
+        }
+
+        private void uCtrl_Animation_Elm_SelectChanged(object sender, EventArgs eventArgs)
+        {
+            string selectElement = uCtrl_Animation_Elm.selectedElement;
+            if (selectElement.Length == 0) HideAllElemenrOptions();
+            ResetHighlightState("Animation");
+
+            ElementAnimation animation = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    //bool exists = Elements.Exists(e => e.GetType().Name == "ElementDigitalTime");
+                    animation = (ElementAnimation)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnimation");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    animation = (ElementAnimation)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementAnimation");
+                }
+            }
+            if (animation != null)
+            {
+                hmUI_widget_IMG_ANIM_List frame_animation = null;
+                Motion_Animation_List motion_animation = null;
+                Rotate_Animation_List rotate_animation = null;
+
+                switch (selectElement)
+                {
+                    case "FrameAnimation":
+                        if (uCtrl_Animation_Elm.checkBox_FrameAnimation.Checked)
+                        {
+                            frame_animation = animation.Frame_Animation_List;
+                            Read_FrameAnimation_Options(frame_animation);
+                            ShowElemenrOptions("FrameAnimation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "MotionAnimation":
+                        if (uCtrl_Animation_Elm.checkBox_MotionAnimation.Checked)
+                        {
+                            motion_animation = animation.Motion_Animation_List;
+                            Read_MotionAnimation_Options(motion_animation);
+                            ShowElemenrOptions("MotionAnimation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "RotateAnimation":
+                        if (uCtrl_Animation_Elm.checkBox_RotateAnimation.Checked)
+                        {
+                            rotate_animation = animation.Rotate_Animation_List;
+                            Read_RotateAnimation_Options(rotate_animation);
+                            ShowElemenrOptions("RotateAnimation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+
+
                 }
 
             }
@@ -9197,7 +9749,7 @@ namespace Watch_Face_Editor
 
                 if (moon.Images == null) moon.Images = new hmUI_widget_IMG_LEVEL();
                 img_level = moon.Images;
-                Read_ImgLevel_Options(img_level, 8, true);
+                Read_ImgLevel_Options(img_level, 30, true);
                 ShowElemenrOptions("Images");
 
             }
@@ -9845,6 +10397,53 @@ namespace Watch_Face_Editor
             PreviewImage();
             FormText();
         }
+
+        private void uCtrl_Animation_Elm_OptionsMoved(object sender, EventArgs eventArgs, Dictionary<string, int> elementOptions)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementAnimation animation = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementAnimation");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementAnimation());
+                    animation = (ElementAnimation)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnimation");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementAnimation");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementAnimation());
+                    animation = (ElementAnimation)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementAnimation");
+                }
+            }
+
+            if (animation != null)
+            {
+                if (animation.Frame_Animation_List == null) animation.Frame_Animation_List = new hmUI_widget_IMG_ANIM_List();
+                if (animation.Motion_Animation_List == null) animation.Motion_Animation_List = new Motion_Animation_List();
+                if (animation.Rotate_Animation_List == null) animation.Rotate_Animation_List = new Rotate_Animation_List();
+
+                if (elementOptions.ContainsKey("FrameAnimation")) animation.Frame_Animation_List.position = elementOptions["FrameAnimation"];
+                if (elementOptions.ContainsKey("MotionAnimation")) animation.Motion_Animation_List.position = elementOptions["MotionAnimation"];
+                if (elementOptions.ContainsKey("RotateAnimation")) animation.Rotate_Animation_List.position = elementOptions["RotateAnimation"];
+
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
 
         #region OptionsMoved
         private void uCtrl_Steps_Elm_OptionsMoved(object sender, EventArgs eventArgs, Dictionary<string, int> elementOptions)
@@ -10706,6 +11305,36 @@ namespace Watch_Face_Editor
             FormText();
         }
 
+        private void uCtrl_Animation_Elm_VisibleElementChanged(object sender, EventArgs eventArgs, bool visible)
+        {
+            ElementAnimation animation = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    //bool exists = Elements.Exists(e => e.GetType().Name == "ElementAnalogTime");
+                    animation = (ElementAnimation)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnimation");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    animation = (ElementAnimation)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementAnimation");
+                }
+            }
+            if (animation != null)
+            {
+                animation.visible = visible;
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
         #region VisibleElementChanged
 
         private void uCtrl_Steps_Elm_VisibleElementChanged(object sender, EventArgs eventArgs, bool visible)
@@ -11425,6 +12054,71 @@ namespace Watch_Face_Editor
             }
 
             uCtrl_Statuses_Elm_SelectChanged(sender, eventArgs);
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Animation_Elm_VisibleOptionsChanged(object sender, EventArgs eventArgs)
+        {
+            
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementAnimation animation = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementAnimation");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementAnimation());
+                    animation = (ElementAnimation)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnimation");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementAnimation");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementAnimation());
+                    animation = (ElementAnimation)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementAnimation");
+                }
+            }
+
+            if (animation != null)
+            {
+                if (animation.Frame_Animation_List == null) animation.Frame_Animation_List = new hmUI_widget_IMG_ANIM_List();
+                if (animation.Motion_Animation_List == null) animation.Motion_Animation_List = new Motion_Animation_List();
+                if (animation.Rotate_Animation_List == null) animation.Rotate_Animation_List = new Rotate_Animation_List();
+
+                Dictionary<string, int> elementOptions = uCtrl_Animation_Elm.GetOptionsPosition();
+                if (elementOptions.ContainsKey("FrameAnimation")) animation.Frame_Animation_List.position = elementOptions["FrameAnimation"];
+                if (elementOptions.ContainsKey("MotionAnimation")) animation.Motion_Animation_List.position = elementOptions["MotionAnimation"];
+                if (elementOptions.ContainsKey("RotateAnimation")) animation.Rotate_Animation_List.position = elementOptions["RotateAnimation"];
+
+                CheckBox checkBox = (CheckBox)sender;
+                string name = checkBox.Name;
+                switch (name)
+                {
+                    case "checkBox_FrameAnimation":
+                        animation.Frame_Animation_List.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_MotionAnimation":
+                        animation.Motion_Animation_List.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_RotateAnimation":
+                        animation.Rotate_Animation_List.visible = checkBox.Checked;
+                        break;
+                }
+
+            }
+
+            uCtrl_Animation_Elm_SelectChanged(sender, eventArgs);
 
             JSON_Modified = true;
             PreviewImage();
@@ -12670,19 +13364,20 @@ namespace Watch_Face_Editor
             {
                 Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
                 Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
-                if (radioButton_GTR3_Pro.Checked)
+                if (ProgramSettings.Watch_Model == "GTR 3 Pro")
                 {
                     bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
                     mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
                 }
-                if (radioButton_GTS3.Checked)
+                if (ProgramSettings.Watch_Model == "GTS 3")
                 {
                     bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
                     mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
                 }
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
-                Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false, false, false, link, false);
+                Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false, 
+                    false, false, link, false, -1);
                 if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
                 else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
                 bitmap.Save(saveFileDialog.FileName, ImageFormat.Png);
@@ -12704,12 +13399,12 @@ namespace Watch_Face_Editor
             {
                 Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
                 Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
-                if (radioButton_GTR3_Pro.Checked)
+                if (ProgramSettings.Watch_Model == "GTR 3 Pro")
                 {
                     bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
                     mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
                 }
-                if (radioButton_GTS3.Checked)
+                if (ProgramSettings.Watch_Model == "GTS 3")
                 {
                     bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
                     mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
@@ -12823,7 +13518,7 @@ namespace Watch_Face_Editor
                             //int link = radioButton_ScreenNormal.Checked ? 0 : 1;
                             int link = 0;
                             Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true,
-                                false, false, false, link, false);
+                                false, false, false, link, false, -1);
                             //if (checkBox_crop.Checked) {
                             //    bitmap = ApplyMask(bitmap, mask);
                             //    gPanel = Graphics.FromImage(bitmap);
@@ -12854,7 +13549,7 @@ namespace Watch_Face_Editor
                         //int link = radioButton_ScreenNormal.Checked ? 0 : 1;
                         int link_AOD = 0;
                         Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true,
-                            false, false, false, link_AOD, Shortcuts_In_Gif);
+                            false, false, false, link_AOD, Shortcuts_In_Gif, -1);
 
                         if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
                         else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
@@ -12878,7 +13573,7 @@ namespace Watch_Face_Editor
                         //int link = radioButton_ScreenNormal.Checked ? 0 : 1;
                         int link_AOD = 1;
                         Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true,
-                            false, false, false, link_AOD, false);
+                            false, false, false, link_AOD, false, -1);
                         //if (checkBox_crop.Checked)
                         //{
                         //    bitmap = ApplyMask(bitmap, mask);
@@ -12898,7 +13593,7 @@ namespace Watch_Face_Editor
                         bitmap = bitmapTemp;
                         gPanel = Graphics.FromImage(bitmap);
                         Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true,
-                            false, false, false, link_AOD, false);
+                            false, false, false, link_AOD, false, -1);
                         //if (checkBox_crop.Checked)
                         //{
                         //    bitmap = ApplyMask(bitmap, mask);
@@ -13012,15 +13707,31 @@ namespace Watch_Face_Editor
         {
             if (e.TabPage.Name == "tabPageConverting")
             {
-                if (radioButton_GTR3.Checked)
+                //if (radioButton_GTR3.Checked)
+                //{
+                //    radioButton_ConvertingInput_GTR3.Checked = true;
+                //    numericUpDown_ConvertingInput_Custom.Value = 454;
+                //}
+                //if (radioButton_GTR3_Pro.Checked)
+                //{
+                //    radioButton_ConvertingInput_GTR3Pro.Checked = true;
+                //    numericUpDown_ConvertingInput_Custom.Value = 480;
+                //}
+                switch (comboBox_watch_model.SelectedIndex)
                 {
-                    radioButton_ConvertingInput_GTR3.Checked = true;
-                    numericUpDown_ConvertingInput_Custom.Value = 454;
-                }
-                if (radioButton_GTR3_Pro.Checked)
-                {
-                    radioButton_ConvertingInput_GTR3Pro.Checked = true;
-                    numericUpDown_ConvertingInput_Custom.Value = 480;
+                    case 0:
+                    case 3:
+                        radioButton_ConvertingInput_GTR3.Checked = true;
+                        numericUpDown_ConvertingInput_Custom.Value = 454;
+                        radioButton_ConvertingOutput_GTR3Pro.Checked = true;
+                        numericUpDown_ConvertingOutput_Custom.Value = 480;
+                        break;
+                    case 1:
+                        radioButton_ConvertingInput_GTR3Pro.Checked = true;
+                        numericUpDown_ConvertingInput_Custom.Value = 480;
+                        radioButton_ConvertingOutput_GTR3.Checked = true;
+                        numericUpDown_ConvertingOutput_Custom.Value = 454;
+                        break;
                 }
                 numericUpDown_ConvertingInput_Custom.Enabled = radioButton_ConvertingInput_Custom.Checked;
             }
@@ -13129,6 +13840,19 @@ namespace Watch_Face_Editor
 
                     bitmap.Save(newFullFileName, ImageFormat.Png);
                 }
+                Directory.CreateDirectory(Path.Combine(newFullDirName, "assets", "animation"));
+                foreach (string ImageFullName in ListAnimImagesFullName)
+                {
+                    using (FileStream stream = new FileStream(ImageFullName, FileMode.Open, FileAccess.Read))
+                    {
+                        loadedImage = Image.FromStream(stream);
+                    }
+                    string fileName = Path.GetFileName(ImageFullName);
+                    string newFullFileName = Path.Combine(newFullDirName, "assets", "animation", fileName);
+                    Bitmap bitmap = ResizeImage(loadedImage, scale);
+
+                    bitmap.Save(newFullFileName, ImageFormat.Png);
+                }
                 loadedImage = null;
 
                 JSON_Scale(scale, DeviceName);
@@ -13174,6 +13898,7 @@ namespace Watch_Face_Editor
                     {
                         int rowIndex = dataGridView.CurrentCellAddress.Y;
                         string fileName = ListImagesFullName[rowIndex];
+                        if(dataGridView.Name == "dataGridView_AnimImagesList") fileName = ListAnimImagesFullName[rowIndex];
                         if (File.Exists(fileName))
                         {
                             if (MessageBox.Show(Properties.FormStrings.Message_Delet_Text1 +
@@ -13182,7 +13907,8 @@ namespace Watch_Face_Editor
                                 MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                             {
                                 File.Delete(fileName);
-                                LoadImage(Path.GetDirectoryName(fileName));
+                                if (dataGridView.Name == "dataGridView_AnimImagesList") fileName = Path.GetDirectoryName(fileName);
+                                LoadImage(Path.GetDirectoryName(fileName)+@"\");
                                 HideAllElemenrOptions();
                                 ResetHighlightState("");
                                 PreviewImage(); 
@@ -13275,7 +14001,76 @@ namespace Watch_Face_Editor
             ResetHighlightState("");
         }
 
-        
+        private void button_Add_Anim_Images_Click(object sender, EventArgs e)
+        {
+            Logger.WriteLine("* Add_Anim_Images");
+            if (FullFileDir == null) return;
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            //openFileDialog.InitialDirectory = FullFileDir;
+            openFileDialog.FileName = FileName;
+            openFileDialog.Filter = Properties.FormStrings.FilterPng;
+            //openFileDialog.Filter = "Json files (*.json) | *.json";
+            openFileDialog.RestoreDirectory = true;
+            openFileDialog.Multiselect = true;
+            openFileDialog.Title = Properties.FormStrings.Dialog_Title_Dial_Settings;
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                //FileName = Path.GetFileName(openFileDialog.FileName);
+                //FullFileDir = Path.GetDirectoryName(openFileDialog.FileName);
+
+                Logger.WriteLine("* Add_Images_Click");
+                string dirImgName = FullFileDir + @"\assets\";
+                string dirName = FullFileDir + @"\assets\animation\";
+                if (!Directory.Exists(dirName)) Directory.CreateDirectory(dirName);
+                foreach (string fileFullName in openFileDialog.FileNames)
+                {
+                    string fileName = Path.GetFileName(fileFullName);
+                    fileName = fileName.Replace(" ", "_");
+                    if (fileName.IndexOf("_") < 0) fileName = "anim_" + fileName;
+                    string newFileName = dirName + fileName;
+                    if (File.Exists(newFileName))
+                    {
+                        DialogResult dialogResult = MessageBox.Show(Properties.FormStrings.Message_Warning_Image_Exist1
+                            + fileName + Environment.NewLine + Properties.FormStrings.Message_Warning_Image_Exist2,
+                            Properties.FormStrings.Message_Warning_Caption,
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                        if (dialogResult == DialogResult.Yes) File.Copy(fileFullName, newFileName, true); ;
+                    }
+                    else File.Copy(fileFullName, newFileName, true);
+                }
+                LoadImage(dirImgName);
+            }
+            Logger.WriteLine("* Add_Anim_Images (end)");
+        }
+
+        private void uCtrl_Animation_Elm_ShowAnimation(object sender, EventArgs eventArgs)
+        {
+            FormAnimation formAnimation = new FormAnimation(currentDPI);
+            formAnimation.Owner = this;
+
+            switch (comboBox_Animation_Preview_Speed.SelectedIndex)
+            {
+                case 0:
+                    formAnimation.timer1.Interval = 20;
+                    break;
+                case 1:
+                    formAnimation.timer1.Interval = 25;
+                    break;
+                case 2:
+                    formAnimation.timer1.Interval = 33;
+                    break;
+                case 3:
+                    formAnimation.timer1.Interval = 50;
+                    break;
+                case 4:
+                    formAnimation.timer1.Interval = 100;
+                    break;
+            }
+            formAnimation.ShowDialog();
+        }
+
+       
 
     }
 }

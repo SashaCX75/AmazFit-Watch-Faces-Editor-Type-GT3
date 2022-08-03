@@ -180,6 +180,9 @@
   <data name="Form_PreviewX" xml:space="preserve">
     <value>Preview [X =</value>
   </data>
+  <data name="Message_AnimationAOD_Text" xml:space="preserve">
+    <value>You cannot add animation to the AOD screen.</value>
+  </data>
   <data name="Message_ConvertingCompleted_Text" xml:space="preserve">
     <value>A new watch face has been created.</value>
   </data>

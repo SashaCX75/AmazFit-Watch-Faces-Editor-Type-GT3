@@ -284,7 +284,7 @@
   <data name="comboBox_alignment.Items2" xml:space="preserve">
     <value>右对齐</value>
   </data>
-  <data name="label08.Text" xml:space="preserve">
+  <data name="label_unit.Text" xml:space="preserve">
     <value>单位</value>
   </data>
   <data name="label09.Size" type="System.Drawing.Size, System.Drawing">
@@ -302,13 +302,13 @@
   <data name="label03.Text" xml:space="preserve">
     <value>间隔</value>
   </data>
-  <data name="label06.Text" xml:space="preserve">
+  <data name="label_imageError.Text" xml:space="preserve">
     <value>错误图像</value>
   </data>
-  <data name="label07.Text" xml:space="preserve">
+  <data name="label_imageDecimalPoint.Text" xml:space="preserve">
     <value>小数分隔符</value>
   </data>
-  <data name="label10.Text" xml:space="preserve">
+  <data name="label_unit_miles.Text" xml:space="preserve">
     <value>单位（毫升）</value>
   </data>
   <data name="checkBox_follow.Text" xml:space="preserve">

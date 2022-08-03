@@ -3920,6 +3920,51 @@ namespace Watch_Face_Editor
             };
         }
     }
+
+
+
+    public class ElementAnimation : ICloneable
+    {
+        public string elementName = "ElementAnimation";
+
+        ///// <summary>Позиция в наборе элементов</summary>
+        //public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = true;
+
+        public hmUI_widget_IMG_ANIM_List Frame_Animation_List { get; set; }
+        public Motion_Animation_List Motion_Animation_List { get; set; }
+        public Rotate_Animation_List Rotate_Animation_List { get; set; }
+
+        public object Clone()
+        {
+            hmUI_widget_IMG_ANIM_List Frame_Animation_list = null;
+            if (this.Frame_Animation_List != null) 
+                Frame_Animation_list = (hmUI_widget_IMG_ANIM_List)this.Frame_Animation_List.Clone();
+
+            Motion_Animation_List Motion_Animation_list = null;
+            if (this.Motion_Animation_List != null)
+                Motion_Animation_List = (Motion_Animation_List)this.Motion_Animation_List.Clone();
+
+            Rotate_Animation_List Rotate_Animation_list = null;
+            if (this.Rotate_Animation_List != null)
+                Rotate_Animation_List = (Rotate_Animation_List)this.Rotate_Animation_List.Clone();
+
+
+            return new ElementAnimation
+            {
+                elementName = this.elementName,
+                visible = this.visible,
+
+                Frame_Animation_List = Frame_Animation_list,
+                Motion_Animation_List = Motion_Animation_list,
+                Rotate_Animation_List = Rotate_Animation_list,
+            };
+        }
+
+
+    }
 }
 
 

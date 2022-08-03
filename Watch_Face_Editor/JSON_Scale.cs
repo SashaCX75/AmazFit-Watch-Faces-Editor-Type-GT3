@@ -64,6 +64,60 @@ namespace Watch_Face_Editor
             if (img.h != null) img.h = (int)Math.Round((double)(img.h * scale), MidpointRounding.AwayFromZero);
         }
 
+        private void Scale_Frame_Animation(hmUI_widget_IMG_ANIM anim_frame, float scale)
+        {
+            if (anim_frame == null) return;
+            anim_frame.x = (int)Math.Round(anim_frame.x * scale, MidpointRounding.AwayFromZero);
+            anim_frame.y = (int)Math.Round(anim_frame.y * scale, MidpointRounding.AwayFromZero);
+        }
+
+        private void Scale_Motion_Animation(Motion_Animation anim_motion, float scale)
+        {
+            if (anim_motion == null) return;
+            anim_motion.x_start = (int)Math.Round(anim_motion.x_start * scale, MidpointRounding.AwayFromZero);
+            anim_motion.y_start = (int)Math.Round(anim_motion.y_start * scale, MidpointRounding.AwayFromZero);
+            anim_motion.x_end = (int)Math.Round(anim_motion.x_end * scale, MidpointRounding.AwayFromZero);
+            anim_motion.y_end = (int)Math.Round(anim_motion.y_end * scale, MidpointRounding.AwayFromZero);
+        }
+
+        private void Scale_Rotate_Animation(Rotate_Animation anim_rotate, float scale)
+        {
+            if (anim_rotate == null) return;
+            anim_rotate.center_x = (int)Math.Round(anim_rotate.center_x * scale, MidpointRounding.AwayFromZero);
+            anim_rotate.center_y = (int)Math.Round(anim_rotate.center_y * scale, MidpointRounding.AwayFromZero);
+            anim_rotate.pos_x = (int)Math.Round(anim_rotate.pos_x * scale, MidpointRounding.AwayFromZero);
+            anim_rotate.pos_y = (int)Math.Round(anim_rotate.pos_y * scale, MidpointRounding.AwayFromZero);
+        }
+
+        private void Scale_Animation(ElementAnimation anim, float scale)
+        {
+            if(anim == null) return;
+            if (anim.Frame_Animation_List != null && anim.Frame_Animation_List.Frame_Animation != null &&
+                anim.Frame_Animation_List.Frame_Animation.Count > 0)
+            {
+                for (int i = 0; i < anim.Frame_Animation_List.Frame_Animation.Count; i++)
+                {
+                    Scale_Frame_Animation(anim.Frame_Animation_List.Frame_Animation[i], scale);
+                }
+            }
+            if (anim.Motion_Animation_List != null && anim.Motion_Animation_List.Motion_Animation != null && 
+                anim.Motion_Animation_List.Motion_Animation.Count > 0)
+            {
+                for(int i =0; i < anim.Motion_Animation_List.Motion_Animation.Count; i++)
+                {
+                    Scale_Motion_Animation(anim.Motion_Animation_List.Motion_Animation[i], scale);
+                }
+            }
+            if (anim.Rotate_Animation_List != null && anim.Rotate_Animation_List.Rotate_Animation != null &&
+                anim.Rotate_Animation_List.Rotate_Animation.Count > 0)
+            {
+                for (int i = 0; i < anim.Rotate_Animation_List.Rotate_Animation.Count; i++)
+                {
+                    Scale_Rotate_Animation(anim.Rotate_Animation_List.Rotate_Animation[i], scale);
+                }
+            }
+        }
+
         private void ScaleElements(object elements, float scale)
         {
             string www = elements.GetType().Name;
@@ -279,6 +333,10 @@ namespace Watch_Face_Editor
                 case "ElementMoon":
                     ElementMoon elementMoon = (ElementMoon)elements;
                     Scale_IMG_LEVEL(elementMoon.Images, scale);
+                    break;
+                case "ElementAnimation":
+                    ElementAnimation elementAnimation = (ElementAnimation)elements;
+                    Scale_Animation(elementAnimation, scale);
                     break;
             }
         }
