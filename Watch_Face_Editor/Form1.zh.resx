@@ -117,6 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Number.HeaderText" xml:space="preserve">
+    <value>#</value>
+  </data>
+  <data name="NameFile.HeaderText" xml:space="preserve">
+    <value>文件名</value>
+  </data>
+  <data name="ColumnImage.HeaderText" xml:space="preserve">
+    <value>图像</value>
+  </data>
+  <data name="Column1.HeaderText" xml:space="preserve">
+    <value>图像-反色</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="удалитьИзображениеToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 22</value>
+  </data>
+  <data name="удалитьИзображениеToolStripMenuItem.Text" xml:space="preserve">
+    <value>删除图像</value>
+  </data>
+  <data name="обновитьСписокИзображенийToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 22</value>
+  </data>
+  <data name="обновитьСписокИзображенийToolStripMenuItem.Text" xml:space="preserve">
+    <value>更新图像列表</value>
+  </data>
+  <data name="contextMenuStrip_RemoveImage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 48</value>
+  </data>
+  <data name="button_Add_Images.Text" xml:space="preserve">
+    <value>添加图像</value>
+  </data>
   <data name="button_SaveJson.Text" xml:space="preserve">
     <value>保存 Json</value>
   </data>
@@ -159,6 +190,9 @@
   <data name="comboBox_AddAir.Items6" xml:space="preserve">
     <value>气压</value>
   </data>
+  <data name="comboBox_AddAir.Items7" xml:space="preserve">
+    <value>月相</value>
+  </data>
   <data name="comboBox_AddActivity.Items" xml:space="preserve">
     <value>活动</value>
   </data>
@@ -176,6 +210,15 @@
   </data>
   <data name="comboBox_AddActivity.Items6" xml:space="preserve">
     <value>站立</value>
+  </data>
+  <data name="comboBox_AddActivity.Items7" xml:space="preserve">
+    <value>血氧</value>
+  </data>
+  <data name="comboBox_AddActivity.Items8" xml:space="preserve">
+    <value>脂肪燃烧</value>
+  </data>
+  <data name="comboBox_AddActivity.Items9" xml:space="preserve">
+    <value>压力</value>
   </data>
   <data name="comboBox_AddDate.Items" xml:space="preserve">
     <value>日期</value>
@@ -210,7 +253,12 @@
   <data name="button_RandomPreview.Text" xml:space="preserve">
     <value>随机预览</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="radioButton_ScreenIdle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 17</value>
+  </data>
+  <data name="radioButton_ScreenIdle.Text" xml:space="preserve">
+    <value>AOD(息屏)</value>
+  </data>
   <data name="radioButton_ScreenNormal.Size" type="System.Drawing.Size, System.Drawing">
     <value>49, 17</value>
   </data>
@@ -268,23 +316,8 @@
   <data name="tabPage_Show_Set.Text" xml:space="preserve">
     <value>预览数据</value>
   </data>
-  <data name="button_Add_Images.Text" xml:space="preserve">
-    <value>添加图像</value>
-  </data>
   <data name="button_New_Project.Text" xml:space="preserve">
     <value>创建新项目</value>
-  </data>
-  <data name="Number.HeaderText" xml:space="preserve">
-    <value>#</value>
-  </data>
-  <data name="NameFile.HeaderText" xml:space="preserve">
-    <value>文件名</value>
-  </data>
-  <data name="ColumnImage.HeaderText" xml:space="preserve">
-    <value>图像</value>
-  </data>
-  <data name="Column1.HeaderText" xml:space="preserve">
-    <value>图像-反色</value>
   </data>
   <data name="button_JSON.Text" xml:space="preserve">
     <value>打开项目</value>
@@ -346,15 +379,17 @@
   <data name="tabPageConverting.Text" xml:space="preserve">
     <value>转换表盘</value>
   </data>
+  <data name="button_Reset.Text" xml:space="preserve">
+    <value>重置</value>
+  </data>
   <data name="numericUpDown_Gif_Speed.Location" type="System.Drawing.Point, System.Drawing">
     <value>485, 252</value>
   </data>
   <data name="checkBox_AllWidgetsInGif.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 30</value>
+    <value>241, 17</value>
   </data>
   <data name="checkBox_AllWidgetsInGif.Text" xml:space="preserve">
-    <value>显示已编辑分区的所有元素
-保存gif文件时</value>
+    <value>显示已编辑分区的所有元素保存gif文件时</value>
   </data>
   <data name="button_WatchSkin_PathGet.Text" xml:space="preserve">
     <value>浏览</value>
@@ -379,6 +414,12 @@
   </data>
   <data name="checkBox_ShowIn12hourFormat.Text" xml:space="preserve">
     <value>如果可能，以12小时格式显示时间</value>
+  </data>
+  <data name="checkBox_Shortcuts_In_Gif.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 17</value>
+  </data>
+  <data name="checkBox_Shortcuts_In_Gif.Text" xml:space="preserve">
+    <value>保存gif文件时高亮显示快捷方式</value>
   </data>
   <data name="checkBox_Shortcuts_Image.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 17</value>
@@ -408,10 +449,7 @@
     <value>保存JSON文件时显示警告</value>
   </data>
   <data name="comboBox_Language.Location" type="System.Drawing.Point, System.Drawing">
-    <value>445, 317</value>
-  </data>
-  <data name="label356.Location" type="System.Drawing.Point, System.Drawing">
-    <value>409, 321</value>
+    <value>445, 398</value>
   </data>
   <data name="label356.Size" type="System.Drawing.Size, System.Drawing">
     <value>37, 13</value>
@@ -439,6 +477,12 @@
   </data>
   <data name="groupBox7.Text" xml:space="preserve">
     <value>打包表盘后的动作</value>
+  </data>
+  <data name="radioButton_Settings_Open_Download_Your_File.Size" type="System.Drawing.Size, System.Drawing">
+    <value>156, 17</value>
+  </data>
+  <data name="radioButton_Settings_Open_Download_Your_File.Text" xml:space="preserve">
+    <value>加载选定的Preview.States</value>
   </data>
   <data name="radioButton_Settings_Open_DoNotning.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 17</value>
@@ -594,8 +638,8 @@
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACm
-        DQAAAk1TRnQBSQFMAgEBBgEAARQBKAEgASgBEAEAARABAAT/AQkBEAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
+        DQAAAk1TRnQBSQFMAgEBBgEAATABKAEwASgBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -653,7 +697,7 @@
         AX4B4QEPAQ0BhgGAAQEBPgF+AfABDwEGAcICAAI+AfgBHwFDAWABAAEgAT8BPgH4AT8BYQGwAQABQAE/
         AR4B4AEnATAB2AEAAYABPAEeAeEBAwFYAWwBAQEAATwBHgHhAQcBbAE2AQEBAAE/Af4B4QEfATYBGgEB
         AwAB8AEfAQsBDAQAAfgBPwFNAYYBgAEBAgAB/AE/AQIBwgGAAQEBBAEAAf4BHwFDAWABwAEDAYQBAAH+
-        AZ8CAAHwAQ8B9wHnAf4BHxYACw==
+        AZ8CAAHwAQ8B9wHnAf4BHws=
 </value>
   </data>
   <data name="button_pack_zip.Text" xml:space="preserve">
@@ -1912,42 +1956,5 @@
         AAAAAAAAAAAAAO+BPCbvgT1I74I+SO+BPSYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8PwAA4AcAAMAD
         AACAAQAAgAEAAIABAAAAAAAAAAAAAAAAAAAAAAAAgAEAAIABAACAAQAAwAMAAOAHAAD8PwAA
 </value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>Inherit</value>
-  </data>
-  <data name="button_Reset.Text" xml:space="preserve">
-    <value>重置</value>
-  </data>
-  <data name="checkBox_Shortcuts_In_Gif.Text" xml:space="preserve">
-    <value>保存gif文件时高亮显示快捷方式</value>
-  </data>
-  <data name="comboBox_AddActivity.Items4" xml:space="preserve">
-    <value>PAI</value>
-  </data>
-  <data name="comboBox_AddActivity.Items7" xml:space="preserve">
-    <value>血氧</value>
-  </data>
-  <data name="radioButton_ScreenIdle.Text" xml:space="preserve">
-    <value>AOD(息屏)</value>
-  </data>
-  <data name="radioButton_Settings_Open_Download_Your_File.Text" xml:space="preserve">
-    <value>加载选定的Preview.States</value>
-  </data>
-  <data name="обновитьСписокИзображенийToolStripMenuItem.Text" xml:space="preserve">
-    <value>更新图像列表</value>
-  </data>
-  <data name="удалитьИзображениеToolStripMenuItem.Text" xml:space="preserve">
-    <value>删除图像</value>
-  </data>
-  <data name="comboBox_AddActivity.Items8" xml:space="preserve">
-    <value>脂肪燃烧</value>
-  </data>
-  <data name="comboBox_AddActivity.Items9" xml:space="preserve">
-    <value>压力</value>
-  </data>
-  <data name="comboBox_AddAir.Items7" xml:space="preserve">
-    <value>月相</value>
   </data>
 </root>

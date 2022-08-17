@@ -195,8 +195,14 @@
   <data name="Message_Delet_Text1" xml:space="preserve">
     <value>Are you sure you want to permanently delete the file "</value>
   </data>
+  <data name="Message_Delet_Text11" xml:space="preserve">
+    <value>Are you sure you want to permanently delete the files:</value>
+  </data>
   <data name="Message_Delet_Text2" xml:space="preserve">
     <value>"?</value>
+  </data>
+  <data name="Message_Delet_Text21" xml:space="preserve">
+    <value>?</value>
   </data>
   <data name="Message_ErrorReadJS" xml:space="preserve">
     <value>Unable to recognize the structure of the watch face</value>

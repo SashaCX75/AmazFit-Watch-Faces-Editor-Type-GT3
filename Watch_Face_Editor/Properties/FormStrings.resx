@@ -195,8 +195,14 @@
   <data name="Message_Delet_Text1" xml:space="preserve">
     <value>Вы действительно хотите безвозвратно удалить файл "</value>
   </data>
+  <data name="Message_Delet_Text11" xml:space="preserve">
+    <value>Вы действительно хотите безвозвратно удалить файлы:</value>
+  </data>
   <data name="Message_Delet_Text2" xml:space="preserve">
     <value>"?</value>
+  </data>
+  <data name="Message_Delet_Text21" xml:space="preserve">
+    <value>?</value>
   </data>
   <data name="Message_ErrorReadJS" xml:space="preserve">
     <value>Не удалось распознать структуру циферблата</value>

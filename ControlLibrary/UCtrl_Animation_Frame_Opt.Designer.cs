@@ -59,12 +59,15 @@ namespace ControlLibrary
             this.button_add = new System.Windows.Forms.Button();
             this.button_del = new System.Windows.Forms.Button();
             this.checkBox_visible = new System.Windows.Forms.CheckBox();
+            this.numericUpDown_preview_frame = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_imageX)).BeginInit();
             this.contextMenuStrip_X.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_imageY)).BeginInit();
             this.contextMenuStrip_Y.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_fps)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_images_count)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_preview_frame)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox_image
@@ -205,7 +208,7 @@ namespace ControlLibrary
             0});
             this.numericUpDown_fps.Name = "numericUpDown_fps";
             this.numericUpDown_fps.Value = new decimal(new int[] {
-            10,
+            15,
             0,
             0,
             0});
@@ -297,10 +300,38 @@ namespace ControlLibrary
             this.checkBox_visible.UseVisualStyleBackColor = true;
             this.checkBox_visible.Click += new System.EventHandler(this.checkBox_Click);
             // 
+            // numericUpDown_preview_frame
+            // 
+            resources.ApplyResources(this.numericUpDown_preview_frame, "numericUpDown_preview_frame");
+            this.numericUpDown_preview_frame.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.numericUpDown_preview_frame.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_preview_frame.Name = "numericUpDown_preview_frame";
+            this.numericUpDown_preview_frame.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.numericUpDown_preview_frame.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
             // UCtrl_Animation_Frame_Opt
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.numericUpDown_preview_frame);
             this.Controls.Add(this.checkBox_visible);
             this.Controls.Add(this.button_del);
             this.Controls.Add(this.button_add);
@@ -328,6 +359,7 @@ namespace ControlLibrary
             this.contextMenuStrip_Y.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_fps)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_images_count)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_preview_frame)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -363,5 +395,7 @@ namespace ControlLibrary
         private System.Windows.Forms.Button button_del;
         public System.Windows.Forms.Label label_prefix;
         public System.Windows.Forms.CheckBox checkBox_visible;
+        public System.Windows.Forms.NumericUpDown numericUpDown_preview_frame;
+        protected System.Windows.Forms.Label label2;
     }
 }

@@ -209,12 +209,13 @@ namespace ControlLibrary
             numericUpDown_end_x.Value = 0;
             numericUpDown_end_y.Value = 0;
 
-            numericUpDown_fps.Value = 10;
+            numericUpDown_fps.Value = 15;
             numericUpDown_anim_duration.Value = 10;
             numericUpDown_repeat_count.Value = 0;
 
             checkBox_anim_two_sides.Checked = true;
             checkBox_show_in_startPos.Checked = true;
+            checkBox_visible.Checked = true;
 
             setValue = false;
         }

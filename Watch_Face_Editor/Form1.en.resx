@@ -1983,4 +1983,7 @@ more system load)</value>
         AACAAQAAgAEAAIABAAAAAAAAAAAAAAAAAAAAAAAAgAEAAIABAACAAQAAwAMAAOAHAAD8PwAA
 </value>
   </data>
+  <data name="button_PreviewStates_PathGet.Text" xml:space="preserve">
+    <value>Browse</value>
+  </data>
 </root>

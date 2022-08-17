@@ -282,7 +282,10 @@
     <value>Prefix:</value>
   </data>
   <data name="label_prefix.Location" type="System.Drawing.Point, System.Drawing">
-    <value>33, 275</value>
+    <value>34, 216</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>244, 74</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Animation filenames must be in the format Prefix_X.
@@ -292,8 +295,14 @@ Prefix - any word.
   <data name="label1.Text" xml:space="preserve">
     <value>Select Animation</value>
   </data>
+  <data name="button_add.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 360</value>
+  </data>
   <data name="button_add.Text" xml:space="preserve">
     <value>Add animation</value>
+  </data>
+  <data name="button_del.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 389</value>
   </data>
   <data name="button_del.Text" xml:space="preserve">
     <value>Remove animation</value>
@@ -303,5 +312,8 @@ Prefix - any word.
   </data>
   <data name="checkBox_visible.Text" xml:space="preserve">
     <value>Show animation</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Frame number displayed on the preview</value>
   </data>
 </root>

@@ -18,6 +18,7 @@ namespace ControlLibrary
         bool highlight_pointer = false;
         bool highlight_sunset = false;
         bool highlight_sunrise = false;
+        bool highlight_sunset_sunrise = false;
         bool highlight_icon = false;
 
         bool visibility_elements = false; // развернут список с элементами
@@ -95,6 +96,7 @@ namespace ControlLibrary
             highlight_pointer = false;
             highlight_sunset = false;
             highlight_sunrise = false;
+            highlight_sunset_sunrise = false;
             highlight_icon = false;
 
             SelectElement();
@@ -167,6 +169,19 @@ namespace ControlLibrary
                 button_Sunrise.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
+            if (highlight_sunset_sunrise)
+            {
+                panel_Sunset_Sunrise.BackColor = SystemColors.ActiveCaption;
+                button_Sunset_Sunrise.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Sunset_Sunrise.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Sunset_Sunrise.BackColor = SystemColors.Control;
+                button_Sunset_Sunrise.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Sunset_Sunrise.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
             if (highlight_icon)
             {
                 panel_Icon.BackColor = SystemColors.ActiveCaption;
@@ -191,6 +206,7 @@ namespace ControlLibrary
             highlight_pointer = false;
             highlight_sunset = false;
             highlight_sunrise = false;
+            highlight_sunset_sunrise = false;
             highlight_icon = false;
 
             SelectElement();
@@ -212,6 +228,7 @@ namespace ControlLibrary
             highlight_pointer = false;
             highlight_sunset = false;
             highlight_sunrise = false;
+            highlight_sunset_sunrise = false;
             highlight_icon = false;
 
             SelectElement();
@@ -233,6 +250,7 @@ namespace ControlLibrary
             highlight_pointer = true;
             highlight_sunset = false;
             highlight_sunrise = false;
+            highlight_sunset_sunrise = false;
             highlight_icon = false;
 
             SelectElement();
@@ -253,6 +271,7 @@ namespace ControlLibrary
             highlight_pointer = false;
             highlight_sunset = true;
             highlight_sunrise = false;
+            highlight_sunset_sunrise = false;
             highlight_icon = false;
 
             SelectElement();
@@ -273,6 +292,28 @@ namespace ControlLibrary
             highlight_pointer = false;
             highlight_sunset = false;
             highlight_sunrise = true;
+            highlight_sunset_sunrise = false;
+            highlight_icon = false;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Sunset_Sunrise_Click(object sender, EventArgs e)
+        {
+            selectedElement = "Sunset_Sunrise";
+
+            highlight_images = false;
+            highlight_segments = false;
+            highlight_pointer = false;
+            highlight_sunset = false;
+            highlight_sunrise = false;
+            highlight_sunset_sunrise = true;
             highlight_icon = false;
 
             SelectElement();
@@ -293,6 +334,7 @@ namespace ControlLibrary
             highlight_pointer = false;
             highlight_sunset = false;
             highlight_sunrise = false;
+            highlight_sunset_sunrise = false;
             highlight_icon = true;
 
             SelectElement();
@@ -533,6 +575,9 @@ namespace ControlLibrary
             setValue = true;
             switch (name)
             {
+                case "Images":
+                    checkBox_Images.Checked = status;
+                    break;
                 case "Segments":
                     checkBox_Segments.Checked = status;
                     break;
@@ -544,6 +589,9 @@ namespace ControlLibrary
                     break;
                 case "Sunrise":
                     checkBox_Sunrise.Checked = status;
+                    break;
+                case "Sunset_Sunrise":
+                    checkBox_Sunset_Sunrise.Checked = status;
                     break;
                 case "Icon":
                     checkBox_Icon.Checked = status;
@@ -578,6 +626,9 @@ namespace ControlLibrary
                             break;
                         case "Sunrise":
                             panel = panel_Sunrise;
+                            break;
+                        case "Sunset_Sunrise":
+                            panel = panel_Sunset_Sunrise;
                             break;
                         case "Icon":
                             panel = panel_Icon;
@@ -639,6 +690,9 @@ namespace ControlLibrary
                     case "panel_Sunrise":
                         elementOptions.Add("Sunrise", count - i);
                         break;
+                    case "panel_Sunset_Sunrise":
+                        elementOptions.Add("Sunset_Sunrise", count - i);
+                        break;
                     case "panel_Icon":
                         elementOptions.Add("Icon", count - i);
                         break;
@@ -653,11 +707,12 @@ namespace ControlLibrary
 
             Dictionary<int, string> elementOptions = new Dictionary<int, string>();
             elementOptions.Add(1, "Icon");
-            elementOptions.Add(2, "Sunrise");
-            elementOptions.Add(3, "Sunset");
-            elementOptions.Add(4, "Pointer");
-            elementOptions.Add(5, "Segments");
-            elementOptions.Add(6, "Images");
+            elementOptions.Add(2, "Sunset_Sunrise");
+            elementOptions.Add(3, "Sunrise");
+            elementOptions.Add(4, "Sunset");
+            elementOptions.Add(5, "Pointer");
+            elementOptions.Add(6, "Segments");
+            elementOptions.Add(7, "Images");
             SetOptionsPosition(elementOptions);
 
             checkBox_Images.Checked = false;
@@ -665,6 +720,7 @@ namespace ControlLibrary
             checkBox_Pointer.Checked = false;
             checkBox_Sunset.Checked = false;
             checkBox_Sunrise.Checked = false;
+            checkBox_Sunset_Sunrise.Checked = false;
             checkBox_Icon.Checked = false;
 
             visibility_elements = false;

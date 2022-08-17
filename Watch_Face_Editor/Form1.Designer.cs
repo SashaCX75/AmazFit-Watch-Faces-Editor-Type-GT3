@@ -29,7 +29,6 @@ namespace Watch_Face_Editor
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -43,7 +42,7 @@ namespace Watch_Face_Editor
             this.NameFile = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnImage = new System.Windows.Forms.DataGridViewImageColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.contextMenuStrip_RemoveImage = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip_RemoveImage = new System.Windows.Forms.ContextMenuStrip();
             this.удалитьИзображениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.обновитьСписокИзображенийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView_AnimImagesList = new System.Windows.Forms.DataGridView();
@@ -257,7 +256,7 @@ namespace Watch_Face_Editor
             this.checkBox_WebW = new System.Windows.Forms.CheckBox();
             this.button_PreviewBig = new System.Windows.Forms.Button();
             this.label_version = new System.Windows.Forms.Label();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.imageList1 = new System.Windows.Forms.ImageList();
             this.button_pack_zip = new System.Windows.Forms.Button();
             this.button_unpack_zip = new System.Windows.Forms.Button();
             this.pictureBox_Preview = new System.Windows.Forms.PictureBox();
@@ -379,6 +378,7 @@ namespace Watch_Face_Editor
             this.dataGridView_ImagesList.Name = "dataGridView_ImagesList";
             this.dataGridView_ImagesList.RowHeadersVisible = false;
             this.dataGridView_ImagesList.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView_ImagesList_CellMouseDown);
+            this.dataGridView_ImagesList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView_ImagesList_KeyDown);
             // 
             // Number
             // 
@@ -457,6 +457,7 @@ namespace Watch_Face_Editor
             resources.ApplyResources(this.dataGridView_AnimImagesList, "dataGridView_AnimImagesList");
             this.dataGridView_AnimImagesList.Name = "dataGridView_AnimImagesList";
             this.dataGridView_AnimImagesList.RowHeadersVisible = false;
+            this.dataGridView_AnimImagesList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView_ImagesList_KeyDown);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -1602,7 +1603,7 @@ namespace Watch_Face_Editor
             resources.ApplyResources(this.button_New_Project, "button_New_Project");
             this.button_New_Project.Name = "button_New_Project";
             this.button_New_Project.UseVisualStyleBackColor = true;
-            this.button_New_Project.Click += new System.EventHandler(this.button_New_Project_Click);
+            this.button_New_Project.Click += new System.EventHandler(this.button_New_Project_Click_New);
             // 
             // button_JSON
             // 
@@ -1806,10 +1807,11 @@ namespace Watch_Face_Editor
             resources.GetString("comboBox_Animation_Preview_Speed.Items1"),
             resources.GetString("comboBox_Animation_Preview_Speed.Items2"),
             resources.GetString("comboBox_Animation_Preview_Speed.Items3"),
-            resources.GetString("comboBox_Animation_Preview_Speed.Items4")});
+            resources.GetString("comboBox_Animation_Preview_Speed.Items4"),
+            resources.GetString("comboBox_Animation_Preview_Speed.Items5")});
             resources.ApplyResources(this.comboBox_Animation_Preview_Speed, "comboBox_Animation_Preview_Speed");
             this.comboBox_Animation_Preview_Speed.Name = "comboBox_Animation_Preview_Speed";
-            this.comboBox_Animation_Preview_Speed.SelectedIndexChanged += new System.EventHandler(this.comboBox_Language_SelectedIndexChanged);
+            this.comboBox_Animation_Preview_Speed.SelectedIndexChanged += new System.EventHandler(this.comboBox_Animation_Preview_Speed_SelectedIndexChanged);
             // 
             // button_Reset
             // 
@@ -1956,7 +1958,8 @@ namespace Watch_Face_Editor
             resources.GetString("comboBox_Language.Items1"),
             resources.GetString("comboBox_Language.Items2"),
             resources.GetString("comboBox_Language.Items3"),
-            resources.GetString("comboBox_Language.Items4")});
+            resources.GetString("comboBox_Language.Items4"),
+            resources.GetString("comboBox_Language.Items5")});
             resources.ApplyResources(this.comboBox_Language, "comboBox_Language");
             this.comboBox_Language.Name = "comboBox_Language";
             this.comboBox_Language.SelectedIndexChanged += new System.EventHandler(this.comboBox_Language_SelectedIndexChanged);
@@ -2415,8 +2418,10 @@ namespace Watch_Face_Editor
             this.Controls.Add(this.checkBox_WebB);
             this.Controls.Add(this.checkBox_WebW);
             this.Controls.Add(this.button_PreviewBig);
+            this.DataBindings.Add(new System.Windows.Forms.Binding("Location", global::Watch_Face_Editor.Properties.Settings.Default, "FormLocation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
+            this.Location = global::Watch_Face_Editor.Properties.Settings.Default.FormLocation;
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);

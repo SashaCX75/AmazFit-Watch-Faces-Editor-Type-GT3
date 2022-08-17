@@ -117,22 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;button_ElementName.Name" xml:space="preserve">
-    <value>button_ElementName</value>
-  </data>
   <data name="&gt;&gt;button_ElementName.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>UCtrl_SpO2_Elm</value>
   </data>
-  <data name="&gt;&gt;button_ElementName.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="button_ElementName.Text" xml:space="preserve">
+    <value>Кислород в крови (SpO2)</value>
   </data>
   <data name="&gt;&gt;button_ElementName.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;button_ElementName.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="button_ElementName.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
@@ -142,47 +142,22 @@
         ELsI6Akg+wtIfTqYzcQBNgfClgGxS1IrQPYyOOcXVBZlpmeUKBhaWloqOKbkJ6UqBFcWl6TmFit45iXn
         FxXkFyWWpKYA1ULcBwaCEIWgENMAarTQZKAyAMUDhPU5EBy+jGJnEGIIkFxaVAZlMjIZE+YjzJgjwcDg
         v5SBgeUPQsykl4FhgQ4DA/9UhJiaIQODgD4Dw745AMDGT/0ZOjZcAAAACXBIWXMAAAuCAAALggG++uKl
-        AAAF4mlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0w
-        TXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIg
-        eDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNi4wLWMwMDIgNzkuMTY0NDYwLCAyMDIwLzA1LzEyLTE2OjA0
-        OjE3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIv
-        MjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9
-        Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMv
-        ZWxlbWVudHMvMS4xLyIgeG1sbnM6cGhvdG9zaG9wPSJodHRwOi8vbnMuYWRvYmUuY29tL3Bob3Rvc2hv
-        cC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6
-        c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1w
-        OkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjEuMiAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRl
-        PSIyMDIyLTAxLTE4VDE3OjExOjQzKzAyOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAyMi0wMS0xOFQxNzox
-        MzoyNyswMjowMCIgeG1wOk1ldGFkYXRhRGF0ZT0iMjAyMi0wMS0xOFQxNzoxMzoyNyswMjowMCIgZGM6
-        Zm9ybWF0PSJpbWFnZS9wbmciIHBob3Rvc2hvcDpDb2xvck1vZGU9IjMiIHBob3Rvc2hvcDpJQ0NQcm9m
-        aWxlPSJBZG9iZSBSR0IgKDE5OTgpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjAxOWI3MTQ1LWNm
-        YWYtYzI0OS1hZmQ3LTU5MmZkYzI3ZGE0YSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo3NmZiZTk2
-        MC02ZjdkLWFmNGQtOTE0OS1hYzEyMDU2MjhhZjQiIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1w
-        LmRpZDo3NmZiZTk2MC02ZjdkLWFmNGQtOTE0OS1hYzEyMDU2MjhhZjQiPiA8eG1wTU06SGlzdG9yeT4g
-        PHJkZjpTZXE+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJjcmVhdGVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4
-        bXAuaWlkOjc2ZmJlOTYwLTZmN2QtYWY0ZC05MTQ5LWFjMTIwNTYyOGFmNCIgc3RFdnQ6d2hlbj0iMjAy
-        Mi0wMS0xOFQxNzoxMTo0MyswMjowMCIgc3RFdnQ6c29mdHdhcmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9w
-        IDIxLjIgKFdpbmRvd3MpIi8+IDxyZGY6bGkgc3RFdnQ6YWN0aW9uPSJzYXZlZCIgc3RFdnQ6aW5zdGFu
-        Y2VJRD0ieG1wLmlpZDowMTliNzE0NS1jZmFmLWMyNDktYWZkNy01OTJmZGMyN2RhNGEiIHN0RXZ0Ondo
-        ZW49IjIwMjItMDEtMThUMTc6MTM6MjcrMDI6MDAiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9IkFkb2JlIFBo
-        b3Rvc2hvcCAyMS4yIChXaW5kb3dzKSIgc3RFdnQ6Y2hhbmdlZD0iLyIvPiA8L3JkZjpTZXE+IDwveG1w
-        TU06SGlzdG9yeT4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBh
-        Y2tldCBlbmQ9InIiPz7wpH5FAAABOElEQVQ4T6XSvytFYRzH8UMWAwuL/Nr8KCmyMZgoucRiYjGykUFK
-        yj9AyoA/QUbZZWORQdkoZLKQ6Xh/ru/n9rh1bsqnXt3n+fSc55z7nJMl2cMb8vCITfwp5/CF1TZQM8Pw
-        4gs0ogPP0X2gDoVZgzfoUxFZhft+FUXZhxe2qYiU4H5CRVGO4YV6dCfdYF4FaccpbrCoQkk36FQRmYX7
-        SRXkE1+4gvplZEcxqbXBiAqisZ5M0fhSg5OYSPoXZuB+WgXpjd8xqN/S5DAmkh7iFNz7rkoX1N2h/Hr1
-        tXlhj4rIEtwPqSDN0PylPIuMwgvPUI9WPEQnDVDu8foz/B0dhhdX24Wi89H8Gvr4djCOSvQ63+ELdSdf
-        rAzgFk/wmm1U0o11HEBf5wqa4LRgDgvQ+chgluf5P+TZN4E4mbx3AnxvAAAAAElFTkSuQmCC
+        AAABOElEQVQ4T6XSvytFYRzH8UMWAwuL/Nr8KCmyMZgoucRiYjGykUFKyj9AyoA/QUbZZWORQdkoZLKQ
+        6Xh/ru/n9rh1bsqnXt3n+fSc55z7nJMl2cMb8vCITfwp5/CF1TZQM8Pw4gs0ogPP0X2gDoVZgzfoUxFZ
+        hft+FUXZhxe2qYiU4H5CRVGO4YV6dCfdYF4FaccpbrCoQkk36FQRmYX7SRXkE1+4gvplZEcxqbXBiAqi
+        sZ5M0fhSg5OYSPoXZuB+WgXpjd8xqN/S5DAmkh7iFNz7rkoX1N2h/Hr1tXlhj4rIEtwPqSDN0PylPIuM
+        wgvPUI9WPEQnDVDu8foz/B0dhhdX24Wi89H8Gvr4djCOSvQ63+ELdSdfrAzgFk/wmm1U0o11HEBf5wqa
+        4LRgDgvQ+chgluf5P+TZN4E4mbx3AnxvAAAAAElFTkSuQmCC
 </value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="&gt;&gt;button_ElementName.Name" xml:space="preserve">
+    <value>button_ElementName</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>ControlLibrary.UCtrl_Distance_Elm, ControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="button_ElementName.Text" xml:space="preserve">
-    <value>Кислород в крови (SpO2)</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>UCtrl_SpO2_Elm</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

@@ -295,11 +295,29 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Вы действительно хотите безвозвратно удалить файлы:.
+        /// </summary>
+        internal static string Message_Delet_Text11 {
+            get {
+                return ResourceManager.GetString("Message_Delet_Text11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на &quot;?.
         /// </summary>
         internal static string Message_Delet_Text2 {
             get {
                 return ResourceManager.GetString("Message_Delet_Text2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на ?.
+        /// </summary>
+        internal static string Message_Delet_Text21 {
+            get {
+                return ResourceManager.GetString("Message_Delet_Text21", resourceCulture);
             }
         }
         

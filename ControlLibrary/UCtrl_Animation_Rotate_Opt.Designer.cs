@@ -297,7 +297,7 @@ namespace ControlLibrary
             0});
             this.numericUpDown_fps.Name = "numericUpDown_fps";
             this.numericUpDown_fps.Value = new decimal(new int[] {
-            10,
+            15,
             0,
             0,
             0});

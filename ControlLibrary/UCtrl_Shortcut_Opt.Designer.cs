@@ -33,27 +33,27 @@ namespace ControlLibrary
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrl_Shortcut_Opt));
             this.comboBox_Image = new System.Windows.Forms.ComboBox();
             this.numericUpDown_imageX = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDown_imageY = new System.Windows.Forms.NumericUpDown();
-            this.label01 = new System.Windows.Forms.Label();
-            this.label02 = new System.Windows.Forms.Label();
-            this.label04 = new System.Windows.Forms.Label();
-            this.label05 = new System.Windows.Forms.Label();
             this.contextMenuStrip_X = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.вставитьКоординатуХToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.копироватьToolStripMenuItemX = new System.Windows.Forms.ToolStripMenuItem();
             this.вставитьToolStripMenuItemX = new System.Windows.Forms.ToolStripMenuItem();
+            this.numericUpDown_imageY = new System.Windows.Forms.NumericUpDown();
             this.contextMenuStrip_Y = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.вставитьКоординатуYToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.копироватьToolStripMenuItemY = new System.Windows.Forms.ToolStripMenuItem();
             this.вставитьToolStripMenuItemY = new System.Windows.Forms.ToolStripMenuItem();
+            this.label01 = new System.Windows.Forms.Label();
+            this.label02 = new System.Windows.Forms.Label();
+            this.label04 = new System.Windows.Forms.Label();
+            this.label05 = new System.Windows.Forms.Label();
             this.numericUpDown_width = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown_height = new System.Windows.Forms.NumericUpDown();
             this.label06 = new System.Windows.Forms.Label();
             this.label07 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_imageX)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_imageY)).BeginInit();
             this.contextMenuStrip_X.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_imageY)).BeginInit();
             this.contextMenuStrip_Y.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_width)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_height)).BeginInit();
@@ -61,10 +61,10 @@ namespace ControlLibrary
             // 
             // comboBox_Image
             // 
+            resources.ApplyResources(this.comboBox_Image, "comboBox_Image");
             this.comboBox_Image.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_Image.DropDownWidth = 135;
             this.comboBox_Image.FormattingEnabled = true;
-            resources.ApplyResources(this.comboBox_Image, "comboBox_Image");
             this.comboBox_Image.Name = "comboBox_Image";
             this.comboBox_Image.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
             this.comboBox_Image.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
@@ -74,8 +74,8 @@ namespace ControlLibrary
             // 
             // numericUpDown_imageX
             // 
-            this.numericUpDown_imageX.ContextMenuStrip = this.contextMenuStrip_X;
             resources.ApplyResources(this.numericUpDown_imageX, "numericUpDown_imageX");
+            this.numericUpDown_imageX.ContextMenuStrip = this.contextMenuStrip_X;
             this.numericUpDown_imageX.Maximum = new decimal(new int[] {
             999,
             0,
@@ -90,53 +90,15 @@ namespace ControlLibrary
             this.numericUpDown_imageX.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
             this.numericUpDown_imageX.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesX_MouseDoubleClick);
             // 
-            // numericUpDown_imageY
-            // 
-            this.numericUpDown_imageY.ContextMenuStrip = this.contextMenuStrip_Y;
-            resources.ApplyResources(this.numericUpDown_imageY, "numericUpDown_imageY");
-            this.numericUpDown_imageY.Maximum = new decimal(new int[] {
-            999,
-            0,
-            0,
-            0});
-            this.numericUpDown_imageY.Minimum = new decimal(new int[] {
-            999,
-            0,
-            0,
-            -2147483648});
-            this.numericUpDown_imageY.Name = "numericUpDown_imageY";
-            this.numericUpDown_imageY.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
-            this.numericUpDown_imageY.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesY_MouseDoubleClick);
-            // 
-            // label01
-            // 
-            resources.ApplyResources(this.label01, "label01");
-            this.label01.Name = "label01";
-            // 
-            // label02
-            // 
-            resources.ApplyResources(this.label02, "label02");
-            this.label02.Name = "label02";
-            // 
-            // label04
-            // 
-            resources.ApplyResources(this.label04, "label04");
-            this.label04.Name = "label04";
-            // 
-            // label05
-            // 
-            resources.ApplyResources(this.label05, "label05");
-            this.label05.Name = "label05";
-            // 
             // contextMenuStrip_X
             // 
+            resources.ApplyResources(this.contextMenuStrip_X, "contextMenuStrip_X");
             this.contextMenuStrip_X.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip_X.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вставитьКоординатуХToolStripMenuItem,
             this.копироватьToolStripMenuItemX,
             this.вставитьToolStripMenuItemX});
             this.contextMenuStrip_X.Name = "contextMenuStrip_X";
-            resources.ApplyResources(this.contextMenuStrip_X, "contextMenuStrip_X");
             this.contextMenuStrip_X.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_X_Opening);
             // 
             // вставитьКоординатуХToolStripMenuItem
@@ -157,15 +119,33 @@ namespace ControlLibrary
             this.вставитьToolStripMenuItemX.Name = "вставитьToolStripMenuItemX";
             this.вставитьToolStripMenuItemX.Click += new System.EventHandler(this.вставитьToolStripMenuItem_Click);
             // 
+            // numericUpDown_imageY
+            // 
+            resources.ApplyResources(this.numericUpDown_imageY, "numericUpDown_imageY");
+            this.numericUpDown_imageY.ContextMenuStrip = this.contextMenuStrip_Y;
+            this.numericUpDown_imageY.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.numericUpDown_imageY.Minimum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown_imageY.Name = "numericUpDown_imageY";
+            this.numericUpDown_imageY.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_imageY.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesY_MouseDoubleClick);
+            // 
             // contextMenuStrip_Y
             // 
+            resources.ApplyResources(this.contextMenuStrip_Y, "contextMenuStrip_Y");
             this.contextMenuStrip_Y.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip_Y.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вставитьКоординатуYToolStripMenuItem,
             this.копироватьToolStripMenuItemY,
             this.вставитьToolStripMenuItemY});
             this.contextMenuStrip_Y.Name = "contextMenuStrip_X";
-            resources.ApplyResources(this.contextMenuStrip_Y, "contextMenuStrip_Y");
             this.contextMenuStrip_Y.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Y_Opening);
             // 
             // вставитьКоординатуYToolStripMenuItem
@@ -185,6 +165,26 @@ namespace ControlLibrary
             resources.ApplyResources(this.вставитьToolStripMenuItemY, "вставитьToolStripMenuItemY");
             this.вставитьToolStripMenuItemY.Name = "вставитьToolStripMenuItemY";
             this.вставитьToolStripMenuItemY.Click += new System.EventHandler(this.вставитьToolStripMenuItem_Click);
+            // 
+            // label01
+            // 
+            resources.ApplyResources(this.label01, "label01");
+            this.label01.Name = "label01";
+            // 
+            // label02
+            // 
+            resources.ApplyResources(this.label02, "label02");
+            this.label02.Name = "label02";
+            // 
+            // label04
+            // 
+            resources.ApplyResources(this.label04, "label04");
+            this.label04.Name = "label04";
+            // 
+            // label05
+            // 
+            resources.ApplyResources(this.label05, "label05");
+            this.label05.Name = "label05";
             // 
             // numericUpDown_width
             // 
@@ -263,8 +263,8 @@ namespace ControlLibrary
             this.Controls.Add(this.label05);
             this.Name = "UCtrl_Shortcut_Opt";
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_imageX)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_imageY)).EndInit();
             this.contextMenuStrip_X.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_imageY)).EndInit();
             this.contextMenuStrip_Y.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_width)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_height)).EndInit();

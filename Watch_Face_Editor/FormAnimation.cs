@@ -288,14 +288,17 @@ namespace Watch_Face_Editor
                             MagickImage item = new MagickImage(bitmap);
                             //ExifProfile profile = item.GetExifProfile();
                             collection.Add(item);
+                            collection[collection.Count - 1].AnimationDelay = timer1.Interval / 10;
+
                             //collection[collection.Count - 1].AnimationDelay = 100;
-                            collection[collection.Count - 1].AnimationDelay = 10;
+                            //collection[collection.Count - 1].AnimationDelay = 10;
 
 
                         }
 
-                        setIndex = setIndex + 100;
-                        time_value_sec = time_value_sec + 0.1f;
+                        setIndex = setIndex + timer1.Interval;
+                        //time_value_sec = time_value_sec + 0.1f;
+                        time_value_sec = time_value_sec + timer1.Interval/1000f;
                         if (setIndex >= (1000 * form1.numericUpDown_Gif_Speed.Value))
                         {
                             setIndex = 0;

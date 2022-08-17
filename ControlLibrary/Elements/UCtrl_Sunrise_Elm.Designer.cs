@@ -31,6 +31,9 @@ namespace ControlLibrary
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrl_Sunrise_Elm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel_Sunset_Sunrise = new System.Windows.Forms.Panel();
+            this.button_Sunset_Sunrise = new System.Windows.Forms.Button();
+            this.checkBox_Sunset_Sunrise = new System.Windows.Forms.CheckBox();
             this.panel_Images = new System.Windows.Forms.Panel();
             this.checkBox_Images = new System.Windows.Forms.CheckBox();
             this.button_Images = new System.Windows.Forms.Button();
@@ -43,12 +46,12 @@ namespace ControlLibrary
             this.panel_Pointer = new System.Windows.Forms.Panel();
             this.button_Pointer = new System.Windows.Forms.Button();
             this.checkBox_Pointer = new System.Windows.Forms.CheckBox();
-            this.panel_Sunrise = new System.Windows.Forms.Panel();
-            this.button_Sunrise = new System.Windows.Forms.Button();
-            this.checkBox_Sunrise = new System.Windows.Forms.CheckBox();
             this.panel_Icon = new System.Windows.Forms.Panel();
             this.button_Icon = new System.Windows.Forms.Button();
             this.checkBox_Icon = new System.Windows.Forms.CheckBox();
+            this.panel_Sunrise = new System.Windows.Forms.Panel();
+            this.button_Sunrise = new System.Windows.Forms.Button();
+            this.checkBox_Sunrise = new System.Windows.Forms.CheckBox();
             this.pictureBox_Arrow_Down = new System.Windows.Forms.PictureBox();
             this.pictureBox_NotShow = new System.Windows.Forms.PictureBox();
             this.pictureBox_Arrow_Right = new System.Windows.Forms.PictureBox();
@@ -56,12 +59,13 @@ namespace ControlLibrary
             this.pictureBox_Del = new System.Windows.Forms.PictureBox();
             this.button_ElementName = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
+            this.panel_Sunset_Sunrise.SuspendLayout();
             this.panel_Images.SuspendLayout();
             this.panel_Sunset.SuspendLayout();
             this.panel_Segments.SuspendLayout();
             this.panel_Pointer.SuspendLayout();
-            this.panel_Sunrise.SuspendLayout();
             this.panel_Icon.SuspendLayout();
+            this.panel_Sunrise.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Arrow_Down)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_NotShow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Arrow_Right)).BeginInit();
@@ -73,15 +77,49 @@ namespace ControlLibrary
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.AllowDrop = true;
+            this.tableLayoutPanel1.Controls.Add(this.panel_Sunset_Sunrise, 0, 5);
             this.tableLayoutPanel1.Controls.Add(this.panel_Images, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel_Sunset, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.panel_Segments, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel_Pointer, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Icon, 0, 6);
             this.tableLayoutPanel1.Controls.Add(this.panel_Sunrise, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.panel_Icon, 0, 5);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragDrop);
             this.tableLayoutPanel1.DragOver += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragOver);
+            // 
+            // panel_Sunset_Sunrise
+            // 
+            resources.ApplyResources(this.panel_Sunset_Sunrise, "panel_Sunset_Sunrise");
+            this.panel_Sunset_Sunrise.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_Sunset_Sunrise.Controls.Add(this.button_Sunset_Sunrise);
+            this.panel_Sunset_Sunrise.Controls.Add(this.checkBox_Sunset_Sunrise);
+            this.panel_Sunset_Sunrise.Name = "panel_Sunset_Sunrise";
+            this.panel_Sunset_Sunrise.Click += new System.EventHandler(this.panel_Sunset_Sunrise_Click);
+            this.panel_Sunset_Sunrise.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.panel_Sunset_Sunrise.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.panel_Sunset_Sunrise.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // button_Sunset_Sunrise
+            // 
+            resources.ApplyResources(this.button_Sunset_Sunrise, "button_Sunset_Sunrise");
+            this.button_Sunset_Sunrise.FlatAppearance.BorderSize = 0;
+            this.button_Sunset_Sunrise.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.button_Sunset_Sunrise.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.button_Sunset_Sunrise.Image = global::ControlLibrary.Properties.Resources.text_icon;
+            this.button_Sunset_Sunrise.Name = "button_Sunset_Sunrise";
+            this.button_Sunset_Sunrise.UseVisualStyleBackColor = true;
+            this.button_Sunset_Sunrise.Click += new System.EventHandler(this.panel_Sunset_Sunrise_Click);
+            this.button_Sunset_Sunrise.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.button_Sunset_Sunrise.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.button_Sunset_Sunrise.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // checkBox_Sunset_Sunrise
+            // 
+            resources.ApplyResources(this.checkBox_Sunset_Sunrise, "checkBox_Sunset_Sunrise");
+            this.checkBox_Sunset_Sunrise.Name = "checkBox_Sunset_Sunrise";
+            this.checkBox_Sunset_Sunrise.UseVisualStyleBackColor = true;
+            this.checkBox_Sunset_Sunrise.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
             // 
             // panel_Images
             // 
@@ -215,39 +253,6 @@ namespace ControlLibrary
             this.checkBox_Pointer.UseVisualStyleBackColor = true;
             this.checkBox_Pointer.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
             // 
-            // panel_Sunrise
-            // 
-            resources.ApplyResources(this.panel_Sunrise, "panel_Sunrise");
-            this.panel_Sunrise.BackColor = System.Drawing.SystemColors.Control;
-            this.panel_Sunrise.Controls.Add(this.button_Sunrise);
-            this.panel_Sunrise.Controls.Add(this.checkBox_Sunrise);
-            this.panel_Sunrise.Name = "panel_Sunrise";
-            this.panel_Sunrise.Click += new System.EventHandler(this.panel_Sunrise_Click);
-            this.panel_Sunrise.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
-            this.panel_Sunrise.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
-            this.panel_Sunrise.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
-            // 
-            // button_Sunrise
-            // 
-            resources.ApplyResources(this.button_Sunrise, "button_Sunrise");
-            this.button_Sunrise.FlatAppearance.BorderSize = 0;
-            this.button_Sunrise.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
-            this.button_Sunrise.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
-            this.button_Sunrise.Image = global::ControlLibrary.Properties.Resources.text_icon;
-            this.button_Sunrise.Name = "button_Sunrise";
-            this.button_Sunrise.UseVisualStyleBackColor = true;
-            this.button_Sunrise.Click += new System.EventHandler(this.panel_Sunrise_Click);
-            this.button_Sunrise.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
-            this.button_Sunrise.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
-            this.button_Sunrise.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
-            // 
-            // checkBox_Sunrise
-            // 
-            resources.ApplyResources(this.checkBox_Sunrise, "checkBox_Sunrise");
-            this.checkBox_Sunrise.Name = "checkBox_Sunrise";
-            this.checkBox_Sunrise.UseVisualStyleBackColor = true;
-            this.checkBox_Sunrise.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
-            // 
             // panel_Icon
             // 
             resources.ApplyResources(this.panel_Icon, "panel_Icon");
@@ -280,6 +285,39 @@ namespace ControlLibrary
             this.checkBox_Icon.Name = "checkBox_Icon";
             this.checkBox_Icon.UseVisualStyleBackColor = true;
             this.checkBox_Icon.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
+            // 
+            // panel_Sunrise
+            // 
+            resources.ApplyResources(this.panel_Sunrise, "panel_Sunrise");
+            this.panel_Sunrise.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_Sunrise.Controls.Add(this.button_Sunrise);
+            this.panel_Sunrise.Controls.Add(this.checkBox_Sunrise);
+            this.panel_Sunrise.Name = "panel_Sunrise";
+            this.panel_Sunrise.Click += new System.EventHandler(this.panel_Sunrise_Click);
+            this.panel_Sunrise.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.panel_Sunrise.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.panel_Sunrise.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // button_Sunrise
+            // 
+            resources.ApplyResources(this.button_Sunrise, "button_Sunrise");
+            this.button_Sunrise.FlatAppearance.BorderSize = 0;
+            this.button_Sunrise.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.button_Sunrise.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.button_Sunrise.Image = global::ControlLibrary.Properties.Resources.text_icon;
+            this.button_Sunrise.Name = "button_Sunrise";
+            this.button_Sunrise.UseVisualStyleBackColor = true;
+            this.button_Sunrise.Click += new System.EventHandler(this.panel_Sunrise_Click);
+            this.button_Sunrise.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.button_Sunrise.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.button_Sunrise.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // checkBox_Sunrise
+            // 
+            resources.ApplyResources(this.checkBox_Sunrise, "checkBox_Sunrise");
+            this.checkBox_Sunrise.Name = "checkBox_Sunrise";
+            this.checkBox_Sunrise.UseVisualStyleBackColor = true;
+            this.checkBox_Sunrise.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
             // 
             // pictureBox_Arrow_Down
             // 
@@ -347,6 +385,8 @@ namespace ControlLibrary
             this.Controls.Add(this.button_ElementName);
             this.Name = "UCtrl_Sunrise_Elm";
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel_Sunset_Sunrise.ResumeLayout(false);
+            this.panel_Sunset_Sunrise.PerformLayout();
             this.panel_Images.ResumeLayout(false);
             this.panel_Images.PerformLayout();
             this.panel_Sunset.ResumeLayout(false);
@@ -355,10 +395,10 @@ namespace ControlLibrary
             this.panel_Segments.PerformLayout();
             this.panel_Pointer.ResumeLayout(false);
             this.panel_Pointer.PerformLayout();
-            this.panel_Sunrise.ResumeLayout(false);
-            this.panel_Sunrise.PerformLayout();
             this.panel_Icon.ResumeLayout(false);
             this.panel_Icon.PerformLayout();
+            this.panel_Sunrise.ResumeLayout(false);
+            this.panel_Sunrise.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Arrow_Down)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_NotShow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Arrow_Right)).EndInit();
@@ -396,5 +436,8 @@ namespace ControlLibrary
         private System.Windows.Forms.Panel panel_Images;
         public System.Windows.Forms.CheckBox checkBox_Images;
         private System.Windows.Forms.Button button_Images;
+        private System.Windows.Forms.Panel panel_Sunset_Sunrise;
+        private System.Windows.Forms.Button button_Sunset_Sunrise;
+        public System.Windows.Forms.CheckBox checkBox_Sunset_Sunrise;
     }
 }

@@ -3587,6 +3587,7 @@ namespace Watch_Face_Editor
         public hmUI_widget_IMG_PROGRESS Segments { get; set; }
         public hmUI_widget_IMG_NUMBER Sunrise { get; set; }
         public hmUI_widget_IMG_NUMBER Sunset { get; set; }
+        public hmUI_widget_IMG_NUMBER Sunset_Sunrise { get; set; }
         public hmUI_widget_IMG_POINTER Pointer { get; set; }
         public hmUI_widget_IMG Icon { get; set; }
 
@@ -3683,6 +3684,34 @@ namespace Watch_Face_Editor
                 };
             }
 
+            hmUI_widget_IMG_NUMBER Sunset_Sunrise = null;
+            if (this.Sunset_Sunrise != null)
+            {
+                Sunset_Sunrise = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Sunset_Sunrise.imageX,
+                    imageY = this.Sunset_Sunrise.imageY,
+                    space = this.Sunset_Sunrise.space,
+                    zero = this.Sunset_Sunrise.zero,
+                    align = this.Sunset_Sunrise.align,
+                    img_First = this.Sunset_Sunrise.img_First,
+                    unit = this.Sunset_Sunrise.unit,
+                    imperial_unit = this.Sunset_Sunrise.imperial_unit,
+                    icon = this.Sunset_Sunrise.icon,
+                    iconPosX = this.Sunset_Sunrise.iconPosX,
+                    iconPosY = this.Sunset_Sunrise.iconPosY,
+                    negative_image = this.Sunset_Sunrise.negative_image,
+                    invalid_image = this.Sunset_Sunrise.invalid_image,
+                    dot_image = this.Sunset_Sunrise.dot_image,
+                    follow = this.Sunset_Sunrise.follow,
+
+                    position = this.Sunset_Sunrise.position,
+                    visible = this.Sunset_Sunrise.visible,
+                    show_level = this.Sunset_Sunrise.show_level,
+                    type = this.Sunset_Sunrise.type,
+                };
+            }
+
             hmUI_widget_IMG_POINTER Pointer = null;
             if (this.Pointer != null)
             {
@@ -3735,6 +3764,7 @@ namespace Watch_Face_Editor
                 Segments = Segments,
                 Sunrise = Sunrise,
                 Sunset = Sunset,
+                Sunset_Sunrise = Sunset_Sunrise,
                 Pointer = Pointer,
                 Icon = Icon,
             };

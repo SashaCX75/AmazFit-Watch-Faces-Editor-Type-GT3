@@ -880,6 +880,15 @@ namespace Watch_Face_Editor
             uCtrl_Animation_Frame_Opt.numericUpDown_imageX.Value = frame_animation.x;
             uCtrl_Animation_Frame_Opt.numericUpDown_imageY.Value = frame_animation.y;
             uCtrl_Animation_Frame_Opt.numericUpDown_images_count.Value = frame_animation.anim_size;
+            uCtrl_Animation_Frame_Opt.numericUpDown_preview_frame.Maximum = frame_animation.anim_size;
+            if (frame_animation.preview_frame <= frame_animation.anim_size)
+            {
+                uCtrl_Animation_Frame_Opt.numericUpDown_preview_frame.Value = frame_animation.preview_frame; 
+            }
+            else
+            {
+                uCtrl_Animation_Frame_Opt.numericUpDown_preview_frame.Value = 1;
+            }
 
             uCtrl_Animation_Frame_Opt.numericUpDown_fps.Value = frame_animation.anim_fps;
             uCtrl_Animation_Frame_Opt.checkBox_anim_repeat.Checked = frame_animation.anim_repeat;
@@ -1634,6 +1643,7 @@ namespace Watch_Face_Editor
             img_anim.anim_prefix = uCtrl_Animation_Frame_Opt.GetPrefix();
             img_anim.anim_fps = (int)uCtrl_Animation_Frame_Opt.numericUpDown_fps.Value;
             img_anim.anim_size = (int)uCtrl_Animation_Frame_Opt.numericUpDown_images_count.Value;
+            img_anim.preview_frame = (int)uCtrl_Animation_Frame_Opt.numericUpDown_preview_frame.Value;
             img_anim.anim_repeat = uCtrl_Animation_Frame_Opt.checkBox_anim_repeat.Checked;
 
             //rotate_anim.display_on_restart = uCtrl_Animation_Frame_Opt.checkBox_anim_restart.Checked;
@@ -1740,6 +1750,7 @@ namespace Watch_Face_Editor
             img_anim.anim_fps = (int)uCtrl_Animation_Frame_Opt.numericUpDown_fps.Value;
             img_anim.anim_size = (int)uCtrl_Animation_Frame_Opt.numericUpDown_images_count.Value;
             img_anim.anim_repeat = uCtrl_Animation_Frame_Opt.checkBox_anim_repeat.Checked;
+            img_anim.visible = true;
 
             //rotate_anim.display_on_restart = uCtrl_Animation_Frame_Opt.checkBox_anim_restart.Checked;
 
@@ -1779,6 +1790,7 @@ namespace Watch_Face_Editor
 
             motion_anim.anim_two_sides = uCtrl_Animation_Motion_Opt.checkBox_anim_two_sides.Checked;
             motion_anim.show_in_start = uCtrl_Animation_Motion_Opt.checkBox_show_in_startPos.Checked;
+            motion_anim.visible = true;
 
             if (motionAnimation.Count > index) motionAnimation.Add(motion_anim);
             else motionAnimation.Insert(index, motion_anim);
@@ -1819,6 +1831,7 @@ namespace Watch_Face_Editor
 
             rotate_anim.anim_two_sides = uCtrl_Animation_Rotate_Opt.checkBox_anim_two_sides.Checked;
             rotate_anim.show_in_start = uCtrl_Animation_Rotate_Opt.checkBox_show_in_startPos.Checked;
+            rotate_anim.visible = true;
 
             if (frameAnimation.Count > index) frameAnimation.Add(rotate_anim);
             else frameAnimation.Insert(index, rotate_anim);

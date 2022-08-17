@@ -117,92 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;checkBox_Segments.Parent" xml:space="preserve">
-    <value>panel_Segments</value>
-  </data>
-  <data name="&gt;&gt;button_ElementName.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Number.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Segments.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;checkBox_Number_Target.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_ElementName.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkBox_Number_Target.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Linear_Scale.Parent" xml:space="preserve">
-    <value>panel_Linear_Scale</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Images.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>ControlLibrary.UCtrl_Steps_Elm, ControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;button_ElementName.Name" xml:space="preserve">
-    <value>button_ElementName</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>UCtrl_Stand_Elm</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Icon.Name" xml:space="preserve">
-    <value>checkBox_Icon</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Icon.Parent" xml:space="preserve">
-    <value>panel_Icon</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Number_Target.Parent" xml:space="preserve">
-    <value>panel_Number_Target</value>
-  </data>
-  <data name="&gt;&gt;button_ElementName.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
   <data name="&gt;&gt;checkBox_Images.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Pointer.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Circle_Scale.Parent" xml:space="preserve">
-    <value>panel_Circle_Scale</value>
   </data>
   <data name="&gt;&gt;checkBox_Pointer.Parent" xml:space="preserve">
     <value>panel_Pointer</value>
   </data>
-  <data name="&gt;&gt;checkBox_Segments.Name" xml:space="preserve">
-    <value>checkBox_Segments</value>
+  <data name="&gt;&gt;checkBox_Number.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkBox_Number_Target.Name" xml:space="preserve">
-    <value>checkBox_Number_Target</value>
+  <data name="&gt;&gt;checkBox_Icon.Parent" xml:space="preserve">
+    <value>panel_Icon</value>
   </data>
   <data name="&gt;&gt;checkBox_Circle_Scale.Name" xml:space="preserve">
     <value>checkBox_Circle_Scale</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Images.Parent" xml:space="preserve">
-    <value>panel_Images</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Icon.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Linear_Scale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="button_ElementName.Text" xml:space="preserve">
-    <value>Разминка</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Number.Name" xml:space="preserve">
-    <value>checkBox_Number</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Images.Name" xml:space="preserve">
-    <value>checkBox_Images</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Number_Target.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="button_ElementName.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -214,88 +148,111 @@
         ELsI6Akg+wtIfTqYzcQBNgfClgGxS1IrQPYyOOcXVBZlpmeUKBhaWloqOKbkJ6UqBFcWl6TmFit45iXn
         FxXkFyWWpKYA1ULcBwaCEIWgENMAarTQZKAyAMUDhPU5EBy+jGJnEGIIkFxaVAZlMjIZE+YjzJgjwcDg
         v5SBgeUPQsykl4FhgQ4DA/9UhJiaIQODgD4Dw745AMDGT/0ZOjZcAAAACXBIWXMAAAsMAAALDAE/QCLI
-        AAAKJmlUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0w
-        TXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIg
-        eDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNi4wLWMwMDIgNzkuMTY0NDYwLCAyMDIwLzA1LzEyLTE2OjA0
-        OjE3ICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIv
-        MjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9
-        Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFk
-        b2JlLmNvbS9waG90b3Nob3AvMS4wLyIgeG1sbnM6ZGM9Imh0dHA6Ly9wdXJsLm9yZy9kYy9lbGVtZW50
-        cy8xLjEvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6
-        c3RFdnQ9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZUV2ZW50IyIgeG1s
-        bnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHht
-        bG5zOnRpZmY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vdGlmZi8xLjAvIiB4bWxuczpleGlmPSJodHRwOi8v
-        bnMuYWRvYmUuY29tL2V4aWYvMS4wLyIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgMjEu
-        MiAoV2luZG93cykiIHhtcDpDcmVhdGVEYXRlPSIyMDIxLTEyLTI1VDE5OjE0OjMwKzAyOjAwIiB4bXA6
-        TWV0YWRhdGFEYXRlPSIyMDIyLTAxLTE4VDE2OjQ0OjM4KzAyOjAwIiB4bXA6TW9kaWZ5RGF0ZT0iMjAy
-        Mi0wMS0xOFQxNjo0NDozOCswMjowMCIgcGhvdG9zaG9wOkNvbG9yTW9kZT0iMyIgZGM6Zm9ybWF0PSJp
-        bWFnZS9wbmciIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MzAzZTRkODctMGY4OC1iMDQ1LTg1MWYt
-        OWYzMGU1ZDY3NmUzIiB4bXBNTTpEb2N1bWVudElEPSJhZG9iZTpkb2NpZDpwaG90b3Nob3A6NmUzYzE4
-        YjItNzY5Zi01YzQxLWIyMzMtMGUyNDFjOTI3N2RjIiB4bXBNTTpPcmlnaW5hbERvY3VtZW50SUQ9Inht
-        cC5kaWQ6ZDMxNDI5MjEtZGU4YS0yNTRlLWE4YWEtMmJlY2UxN2JkMDk0IiB0aWZmOk9yaWVudGF0aW9u
-        PSIxIiB0aWZmOlhSZXNvbHV0aW9uPSI3MjAwMDAvMTAwMDAiIHRpZmY6WVJlc29sdXRpb249IjcyMDAw
-        MC8xMDAwMCIgdGlmZjpSZXNvbHV0aW9uVW5pdD0iMiIgZXhpZjpDb2xvclNwYWNlPSI2NTUzNSIgZXhp
-        ZjpQaXhlbFhEaW1lbnNpb249IjE2IiBleGlmOlBpeGVsWURpbWVuc2lvbj0iMTYiPiA8cGhvdG9zaG9w
-        OlRleHRMYXllcnM+IDxyZGY6QmFnPiA8cmRmOmxpIHBob3Rvc2hvcDpMYXllck5hbWU9Iu6ZjyIgcGhv
-        dG9zaG9wOkxheWVyVGV4dD0i7pmPIi8+IDwvcmRmOkJhZz4gPC9waG90b3Nob3A6VGV4dExheWVycz4g
-        PHhtcE1NOkhpc3Rvcnk+IDxyZGY6U2VxPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0iY3JlYXRlZCIgc3RF
-        dnQ6aW5zdGFuY2VJRD0ieG1wLmlpZDpkMzE0MjkyMS1kZThhLTI1NGUtYThhYS0yYmVjZTE3YmQwOTQi
-        IHN0RXZ0OndoZW49IjIwMjEtMTItMjVUMTk6MTQ6MzArMDI6MDAiIHN0RXZ0OnNvZnR3YXJlQWdlbnQ9
-        IkFkb2JlIFBob3Rvc2hvcCAyMS4yIChXaW5kb3dzKSIvPiA8cmRmOmxpIHN0RXZ0OmFjdGlvbj0ic2F2
-        ZWQiIHN0RXZ0Omluc3RhbmNlSUQ9InhtcC5paWQ6OTJjNWQzNjYtNGE1OS0yZjQ4LWI1MjEtNWNmN2Y0
-        OGRhMGUzIiBzdEV2dDp3aGVuPSIyMDIyLTAxLTE4VDE2OjQ0OjM4KzAyOjAwIiBzdEV2dDpzb2Z0d2Fy
-        ZUFnZW50PSJBZG9iZSBQaG90b3Nob3AgMjEuMiAoV2luZG93cykiIHN0RXZ0OmNoYW5nZWQ9Ii8iLz4g
-        PHJkZjpsaSBzdEV2dDphY3Rpb249ImNvbnZlcnRlZCIgc3RFdnQ6cGFyYW1ldGVycz0iZnJvbSBhcHBs
-        aWNhdGlvbi92bmQuYWRvYmUucGhvdG9zaG9wIHRvIGltYWdlL3BuZyIvPiA8cmRmOmxpIHN0RXZ0OmFj
-        dGlvbj0iZGVyaXZlZCIgc3RFdnQ6cGFyYW1ldGVycz0iY29udmVydGVkIGZyb20gYXBwbGljYXRpb24v
-        dm5kLmFkb2JlLnBob3Rvc2hvcCB0byBpbWFnZS9wbmciLz4gPHJkZjpsaSBzdEV2dDphY3Rpb249InNh
-        dmVkIiBzdEV2dDppbnN0YW5jZUlEPSJ4bXAuaWlkOjMwM2U0ZDg3LTBmODgtYjA0NS04NTFmLTlmMzBl
-        NWQ2NzZlMyIgc3RFdnQ6d2hlbj0iMjAyMi0wMS0xOFQxNjo0NDozOCswMjowMCIgc3RFdnQ6c29mdHdh
-        cmVBZ2VudD0iQWRvYmUgUGhvdG9zaG9wIDIxLjIgKFdpbmRvd3MpIiBzdEV2dDpjaGFuZ2VkPSIvIi8+
-        IDwvcmRmOlNlcT4gPC94bXBNTTpIaXN0b3J5PiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFu
-        Y2VJRD0ieG1wLmlpZDo5MmM1ZDM2Ni00YTU5LTJmNDgtYjUyMS01Y2Y3ZjQ4ZGEwZTMiIHN0UmVmOmRv
-        Y3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDoxODIyOGZkOC0zZjFjLWM1NDktOGE0OC1mOWE1
-        YmJkZTZiNmMiIHN0UmVmOm9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDpkMzE0MjkyMS1kZThhLTI1
-        NGUtYThhYS0yYmVjZTE3YmQwOTQiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94Onht
-        cG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz53YjoQAAAA6klEQVQ4T51TURHCMBRjEmYBC1jAAhawMAuz
-        MAuzMAtYwAIWyktIewlfHLnLtWmTt9etO7XWBh3TNN2LrbhpiXA/MyEMFTxUIDbcz0wIQwXRwau4aolw
-        PzMhDBW8dmqJcD8zIYQKjfbFR3HGnvuZCfEJLxZ0Hr8WeIoeRgcYz+5nxkUZLjJ+d3HTuLgfDFGG/u1n
-        jZ14mehqcz8Yogx4Mj4dAl4AHeyg+8EUQhl7gX72RVvhZyaEYAXG2bUVfmZCCAgo2AuN/8H9zIQQegHN
-        cQzeAcD9zIQQKrBaAdzKvwrsmqMbzgH3t9ZOb8JOjamxL159AAAAAElFTkSuQmCC
+        AAAA6klEQVQ4T51TURHCMBRjEmYBC1jAAhawMAuzMAuzMAtYwAIWyktIewlfHLnLtWmTt9etO7XWBh3T
+        NN2LrbhpiXA/MyEMFTxUIDbcz0wIQwXRwau4aolwPzMhDBW8dmqJcD8zIYQKjfbFR3HGnvuZCfEJLxZ0
+        Hr8WeIoeRgcYz+5nxkUZLjJ+d3HTuLgfDFGG/u1njZ14mehqcz8Yogx4Mj4dAl4AHeyg+8EUQhl7gX72
+        RVvhZyaEYAXG2bUVfmZCCAgo2AuN/8H9zIQQegHNcQzeAcD9zIQQKrBaAdzKvwrsmqMbzgH3t9ZOb8JO
+        jamxL159AAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="&gt;&gt;checkBox_Number.Type" xml:space="preserve">
+  <data name="&gt;&gt;button_ElementName.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Circle_Scale.Parent" xml:space="preserve">
+    <value>panel_Circle_Scale</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Number.Name" xml:space="preserve">
+    <value>checkBox_Number</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Segments.Name" xml:space="preserve">
+    <value>checkBox_Segments</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Icon.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+  <data name="&gt;&gt;checkBox_Number.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;checkBox_Linear_Scale.Name" xml:space="preserve">
-    <value>checkBox_Linear_Scale</value>
-  </data>
-  <data name="&gt;&gt;checkBox_Circle_Scale.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="button_ElementName.Text" xml:space="preserve">
+    <value>Разминка</value>
   </data>
   <data name="&gt;&gt;checkBox_Pointer.Name" xml:space="preserve">
     <value>checkBox_Pointer</value>
   </data>
+  <data name="&gt;&gt;checkBox_Circle_Scale.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Images.Parent" xml:space="preserve">
+    <value>panel_Images</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Number_Target.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>ControlLibrary.UCtrl_Steps_Elm, ControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
   <data name="&gt;&gt;checkBox_Number.Parent" xml:space="preserve">
     <value>panel_Number</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Images.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Linear_Scale.Name" xml:space="preserve">
+    <value>checkBox_Linear_Scale</value>
+  </data>
+  <data name="&gt;&gt;button_ElementName.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;checkBox_Pointer.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkBox_Circle_Scale.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;checkBox_Images.Name" xml:space="preserve">
+    <value>checkBox_Images</value>
   </data>
-  <data name="&gt;&gt;checkBox_Icon.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;checkBox_Number_Target.Parent" xml:space="preserve">
+    <value>panel_Number_Target</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Linear_Scale.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Segments.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Segments.Parent" xml:space="preserve">
+    <value>panel_Segments</value>
   </data>
   <data name="&gt;&gt;checkBox_Linear_Scale.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;checkBox_Segments.Type" xml:space="preserve">
+  <data name="&gt;&gt;checkBox_Segments.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>UCtrl_Stand_Elm</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Number_Target.Name" xml:space="preserve">
+    <value>checkBox_Number_Target</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Icon.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;button_ElementName.Name" xml:space="preserve">
+    <value>button_ElementName</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Linear_Scale.Parent" xml:space="preserve">
+    <value>panel_Linear_Scale</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Circle_Scale.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Pointer.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;checkBox_Icon.Name" xml:space="preserve">
+    <value>checkBox_Icon</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>

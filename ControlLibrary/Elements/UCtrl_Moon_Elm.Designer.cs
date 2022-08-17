@@ -29,19 +29,19 @@ namespace ControlLibrary
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrl_Moon_Elm));
-            this.toolTip_Moon = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTip_Moon = new System.Windows.Forms.ToolTip();
             this.SuspendLayout();
             // 
             // button_ElementName
             // 
-            resources.ApplyResources(this.button_ElementName, "button_ElementName");
             this.button_ElementName.Image = global::ControlLibrary.Properties.Resources.moon;
+            resources.ApplyResources(this.button_ElementName, "button_ElementName");
             this.toolTip_Moon.SetToolTip(this.button_ElementName, resources.GetString("button_ElementName.ToolTip"));
             // 
             // toolTip_Moon
             // 
+            this.toolTip_Moon.Active = false;
             this.toolTip_Moon.AutoPopDelay = 5000;
             this.toolTip_Moon.InitialDelay = 500;
             this.toolTip_Moon.ReshowDelay = 100;
@@ -51,7 +51,6 @@ namespace ControlLibrary
             // 
             resources.ApplyResources(this, "$this");
             this.Name = "UCtrl_Moon_Elm";
-            this.toolTip_Moon.SetToolTip(this, resources.GetString("$this.ToolTip"));
             this.ResumeLayout(false);
 
         }

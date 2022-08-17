@@ -4396,19 +4396,22 @@
     <value>1</value>
   </data>
   <data name="comboBox_Animation_Preview_Speed.Items" xml:space="preserve">
-    <value>50</value>
+    <value>10</value>
   </data>
   <data name="comboBox_Animation_Preview_Speed.Items1" xml:space="preserve">
-    <value>40</value>
+    <value>12</value>
   </data>
   <data name="comboBox_Animation_Preview_Speed.Items2" xml:space="preserve">
-    <value>30</value>
+    <value>15</value>
   </data>
   <data name="comboBox_Animation_Preview_Speed.Items3" xml:space="preserve">
     <value>20</value>
   </data>
   <data name="comboBox_Animation_Preview_Speed.Items4" xml:space="preserve">
-    <value>10</value>
+    <value>25</value>
+  </data>
+  <data name="comboBox_Animation_Preview_Speed.Items5" xml:space="preserve">
+    <value>30</value>
   </data>
   <data name="comboBox_Animation_Preview_Speed.Location" type="System.Drawing.Point, System.Drawing">
     <value>643, 318</value>
@@ -4874,6 +4877,9 @@
   </data>
   <data name="comboBox_Language.Items4" xml:space="preserve">
     <value>Italiano</value>
+  </data>
+  <data name="comboBox_Language.Items5" xml:space="preserve">
+    <value>Український</value>
   </data>
   <data name="comboBox_Language.Location" type="System.Drawing.Point, System.Drawing">
     <value>450, 399</value>
@@ -5535,7 +5541,7 @@
     <value>1, 245</value>
   </data>
   <data name="label_TranslateHelp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 39</value>
+    <value>156, 52</value>
   </data>
   <data name="label_TranslateHelp.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
@@ -5543,7 +5549,8 @@
   <data name="label_TranslateHelp.Text" xml:space="preserve">
     <value>Chinese - kyle208
 Español - @Mr_Pacojones
-Italiano - babigiov</value>
+Italiano - babigiov
+Ukrainian - kartoris82</value>
   </data>
   <data name="&gt;&gt;label_TranslateHelp.Name" xml:space="preserve">
     <value>label_TranslateHelp</value>
@@ -6479,7 +6486,7 @@ PayPal: sashacx75@gmail.com</value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
-        DQAAAk1TRnQBSQFMAgEBBgEAAZABMAGQATABEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAAVABMQFQATEBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA

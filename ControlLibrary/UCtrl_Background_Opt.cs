@@ -262,6 +262,7 @@ namespace ControlLibrary
 
         private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ComboBox cb = (ComboBox)sender;
             if (ValueChanged != null && !setValue)
             {
                 EventArgs eventArgs = new EventArgs();

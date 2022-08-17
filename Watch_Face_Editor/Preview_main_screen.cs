@@ -331,7 +331,7 @@ namespace Watch_Face_Editor
                                     //int sec = Watch_Face_Preview_Set.TimeW.Seconds;
                                     if (hour >= 12) hour = hour - 12;
                                     float angle = 360 * hour / 12 + 360 * min / (60 * 12);
-                                    DrawAnalogClock(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+                                    DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
 
                                     if (AnalogTime.Hour.cover_path != null && AnalogTime.Hour.cover_path.Length > 0)
                                     {
@@ -355,7 +355,7 @@ namespace Watch_Face_Editor
                                     int image_index = ListImages.IndexOf(AnalogTime.Minute.src);
                                     int min = WatchFacePreviewSet.Time.Minutes;
                                     float angle = 360 * min / 60;
-                                    DrawAnalogClock(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+                                    DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
 
                                     if (AnalogTime.Minute.cover_path != null && AnalogTime.Minute.cover_path.Length > 0)
                                     {
@@ -379,7 +379,7 @@ namespace Watch_Face_Editor
                                     int image_index = ListImages.IndexOf(AnalogTime.Second.src);
                                     int sec = WatchFacePreviewSet.Time.Seconds;
                                     float angle = 360 * sec / 60;
-                                    DrawAnalogClock(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+                                    DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
 
                                     if (AnalogTime.Second.cover_path != null && AnalogTime.Second.cover_path.Length > 0)
                                     {
@@ -452,15 +452,15 @@ namespace Watch_Face_Editor
 
                                     if (DateDay.Pointer.scale != null && DateDay.Pointer.scale.Length > 0)
                                     {
-                                        image_index = ListImages.IndexOf(DateDay.Pointer.scale);
-                                        x = DateDay.Pointer.scale_x;
-                                        y = DateDay.Pointer.scale_y;
+                                        int image_index_scale = ListImages.IndexOf(DateDay.Pointer.scale);
+                                        int x_scale = DateDay.Pointer.scale_x;
+                                        int y_scale = DateDay.Pointer.scale_y;
 
-                                        src = OpenFileStream(ListImagesFullName[image_index]);
-                                        gPanel.DrawImage(src, x, y);
+                                        src = OpenFileStream(ListImagesFullName[image_index_scale]);
+                                        gPanel.DrawImage(src, x_scale, y_scale);
                                     }
 
-                                    DrawAnalogClock(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+                                    DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
 
                                     if (DateDay.Pointer.cover_path != null && DateDay.Pointer.cover_path.Length > 0)
                                     {
@@ -532,15 +532,15 @@ namespace Watch_Face_Editor
 
                                     if (DateMonth.Pointer.scale != null && DateMonth.Pointer.scale.Length > 0)
                                     {
-                                        image_index = ListImages.IndexOf(DateMonth.Pointer.scale);
-                                        x = DateMonth.Pointer.scale_x;
-                                        y = DateMonth.Pointer.scale_y;
+                                        int image_index_scale = ListImages.IndexOf(DateMonth.Pointer.scale);
+                                        int x_scale = DateMonth.Pointer.scale_x;
+                                        int y_scale = DateMonth.Pointer.scale_y;
 
-                                        src = OpenFileStream(ListImagesFullName[image_index]);
-                                        gPanel.DrawImage(src, x, y);
+                                        src = OpenFileStream(ListImagesFullName[image_index_scale]);
+                                        gPanel.DrawImage(src, x_scale, y_scale);
                                     }
 
-                                    DrawAnalogClock(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+                                    DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
 
                                     if (DateMonth.Pointer.cover_path != null && DateMonth.Pointer.cover_path.Length > 0)
                                     {
@@ -640,15 +640,15 @@ namespace Watch_Face_Editor
 
                                     if (DateWeek.Pointer.scale != null && DateWeek.Pointer.scale.Length > 0)
                                     {
-                                        image_index = ListImages.IndexOf(DateWeek.Pointer.scale);
-                                        x = DateWeek.Pointer.scale_x;
-                                        y = DateWeek.Pointer.scale_y;
+                                        int image_index_scale = ListImages.IndexOf(DateWeek.Pointer.scale);
+                                        int x_scale = DateWeek.Pointer.scale_x;
+                                        int y_scale = DateWeek.Pointer.scale_y;
 
-                                        src = OpenFileStream(ListImagesFullName[image_index]);
-                                        gPanel.DrawImage(src, x, y);
+                                        src = OpenFileStream(ListImagesFullName[image_index_scale]);
+                                        gPanel.DrawImage(src, x_scale, y_scale);
                                     }
 
-                                    DrawAnalogClock(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+                                    DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
 
                                     if (DateWeek.Pointer.cover_path != null && DateWeek.Pointer.cover_path.Length > 0)
                                     {
@@ -1587,7 +1587,7 @@ namespace Watch_Face_Editor
                             int minSunrise = WatchFacePreviewSet.Time.Minutes;
                             int hourSunrise = WatchFacePreviewSet.Time.Hours;
 
-                            DrawSunrise(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                            DrawSunrise(gPanel, img_level, img_prorgess, img_number, img_number_target, activityElementSunrise.Sunset_Sunrise,
                                 img_pointer, icon, hourSunrise, minSunrise, BBorder, showProgressArea, showCentrHend);
 
 
@@ -1655,7 +1655,8 @@ namespace Watch_Face_Editor
                             //int moonPhase = (int)(8 * moon_age / 29);
 
                             imgCount = img_level.image_length;
-                            valueImgIndex = (int)Math.Round((imgCount - 1) * moon_age / 29.53f);
+                            valueImgIndex = (int)Math.Round((imgCount - 1) * moon_age / 29);
+                            //valueImgIndex = (int)Math.Round((imgCount - 1) * moon_age / 29.53f);
                             //valueImgIndex = moonPhase - 1;
                             if (valueImgIndex < 0) valueImgIndex = (int)(imgCount - 1);
                             if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
@@ -1703,7 +1704,7 @@ namespace Watch_Face_Editor
                                 {
                                     foreach (Rotate_Animation rotate_Animation in rotate_Animation_List.Rotate_Animation)
                                     {
-
+                                        if (rotate_Animation.visible) DrawAnimationRotate(gPanel, rotate_Animation, time_value_sec, showCentrHend);
                                     }
                                 } 
                             }
@@ -1825,13 +1826,35 @@ namespace Watch_Face_Editor
                         int imageIndex = ListImages.IndexOf(images.img_First);
                         int x = images.X;
                         int y = images.Y;
+                        int width = 0;
+                        int height = 0;
+
+                        src = OpenFileStream(ListImagesFullName[imageIndex]);
+                        width = src.Width;
+                        height = src.Height;
+
                         imageIndex = imageIndex + valueImgIndex;
 
                         if (imageIndex < ListImagesFullName.Count)
                         {
                             src = OpenFileStream(ListImagesFullName[imageIndex]);
-                            gPanel.DrawImage(src, x, y);
-                            //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                            if (width > 0 && height > 0) 
+                            {
+                                Rectangle cropRect = new Rectangle(0, 0, width, height);
+                                Bitmap target = new Bitmap(cropRect.Width, cropRect.Height);
+
+                                using (Graphics g = Graphics.FromImage(target))
+                                {
+                                    g.DrawImage(src, new Rectangle(0, 0, target.Width, target.Height),
+                                                     cropRect, GraphicsUnit.Pixel);
+                                }
+                                gPanel.DrawImage(target, x, y);
+                            }
+                            else
+                            {
+                                gPanel.DrawImage(src, x, y);
+
+                            }
                         } 
                     }
                 }
@@ -1945,7 +1968,7 @@ namespace Watch_Face_Editor
                     }
 
                     if (elementName== "ElementHeart") angle = startAngle + progressHeart * (endAngle - startAngle);
-                    DrawAnalogClock(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+                    DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
 
                     if (pointer.cover_path != null && pointer.cover_path.Length > 0)
                     {
@@ -2236,7 +2259,7 @@ namespace Watch_Face_Editor
 
         /// <summary>Рисуем восход, звкат</summary>
         private void DrawSunrise(Graphics gPanel, hmUI_widget_IMG_LEVEL images, hmUI_widget_IMG_PROGRESS segments,
-            hmUI_widget_IMG_NUMBER sunrise, hmUI_widget_IMG_NUMBER sunset, hmUI_widget_IMG_POINTER pointer,
+            hmUI_widget_IMG_NUMBER sunrise, hmUI_widget_IMG_NUMBER sunset, hmUI_widget_IMG_NUMBER sunset_sunrise, hmUI_widget_IMG_POINTER pointer,
             hmUI_widget_IMG icon, int hour, int minute, bool BBorder, bool showProgressArea, bool showCentrHend)
         {
             TimeSpan time_now = new TimeSpan(hour, minute, 0);
@@ -2372,6 +2395,41 @@ namespace Watch_Face_Editor
                     }
                 }
 
+                if (sunset_sunrise != null && sunset_sunrise.img_First != null && sunset_sunrise.img_First.Length > 0 &&
+                    index == sunset_sunrise.position && sunset_sunrise.visible)
+                {
+                    float sunset_sunrise_value = 5.30f;
+                    if (time_now > time_sunrise && time_now < time_sunset) sunset_sunrise_value = 19.30f;
+                    int image_Index = ListImages.IndexOf(sunset_sunrise.img_First);
+                    int pos_x = sunset_sunrise.imageX;
+                    int pos_y = sunset_sunrise.imageY;
+                    int sunset_sunrise_spasing = sunset_sunrise.space;
+                    int sunset_sunrise_alignment = AlignmentToInt(sunset_sunrise.align);
+                    //bool distance_addZero = img_number.zero;
+                    bool sunset_sunrise_addZero = true;
+                    int sunset_sunrise_separator_index = -1;
+                    if (sunset_sunrise.unit != null && sunset_sunrise.unit.Length > 0)
+                        sunset_sunrise_separator_index = ListImages.IndexOf(sunset_sunrise.unit);
+                    int decumalPoint_index = -1;
+                    if (sunset_sunrise.dot_image != null && sunset_sunrise.dot_image.Length > 0)
+                        decumalPoint_index = ListImages.IndexOf(sunset_sunrise.dot_image);
+
+                    Draw_dagital_text_dacumal(gPanel, image_Index, pos_x, pos_y,
+                        sunset_sunrise_spasing, sunset_sunrise_alignment, sunset_sunrise_value, sunset_sunrise_addZero, 4,
+                        sunset_sunrise_separator_index, decumalPoint_index, 2, BBorder, "ElementSunrise");
+
+                    if (sunset_sunrise.icon != null && sunset_sunrise.icon.Length > 0)
+                    {
+                        image_Index = ListImages.IndexOf(sunset_sunrise.icon);
+                        pos_x = sunset_sunrise.iconPosX;
+                        pos_y = sunset_sunrise.iconPosY;
+
+                        src = OpenFileStream(ListImagesFullName[image_Index]);
+                        gPanel.DrawImage(src, pos_x, pos_y);
+                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                    }
+                }
+
                 if (sun && pointer != null && pointer.src != null && pointer.src.Length > 0 &&
                     index == pointer.position && pointer.visible)
                 {
@@ -2395,7 +2453,7 @@ namespace Watch_Face_Editor
                         gPanel.DrawImage(src, x_scale, y_scale);
                     }
 
-                    DrawAnalogClock(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+                    DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
 
                     if (pointer.cover_path != null && pointer.cover_path.Length > 0)
                     {
@@ -2432,43 +2490,57 @@ namespace Watch_Face_Editor
 
         /// <summary>Рисуем покадровую анимацию</summary>
         /// <param name="gPanel">Поверхность для рисования</param>
-        /// <param name="img_anim">Параметры покадровой анимации</param>
+        /// <param name="img_anim">Параметры анимации движения </param>
         /// <param name="time_value_sec">Время от начала анимайии, сек</param>
         private void DrawAnimationFrame(Graphics gPanel, hmUI_widget_IMG_ANIM img_anim,
             float time_value_sec)
         {
             string start_img = img_anim.anim_src;
             if (start_img == null || start_img.Length == 0) return;
-            if (time_value_sec < 0) time_value_sec = 0;
+            //if (time_value_sec < 0) time_value_sec = 0;
 
-                int x = img_anim.x;
+            int x = img_anim.x;
             int y = img_anim.y;
 
             int fps = img_anim.anim_fps;
             int size = img_anim.anim_size;
 
-            bool repeat = img_anim.anim_repeat;
+            Bitmap src = new Bitmap(1, 1);
 
-            if (repeat)
+            if (time_value_sec < 0) // статичная картинка
             {
-                while (time_value_sec > (float)size / fps)
+                int imageIndex = ListAnimImages.IndexOf(start_img);
+                imageIndex += img_anim.preview_frame - 1;
+                if (imageIndex > ListAnimImages.Count - 1) imageIndex = ListAnimImages.Count - 1;
+                if (imageIndex >= 0)
                 {
-                    time_value_sec = time_value_sec - (float)size / fps;
+                    src = OpenFileStream(ListAnimImagesFullName[imageIndex]);
+                    gPanel.DrawImage(src, x, y); 
                 }
             }
-
-            Bitmap src = new Bitmap(1, 1);
-            int imageIndex = ListAnimImages.IndexOf(start_img);
-            if (repeat) imageIndex = (int)(imageIndex + time_value_sec * fps);
             else
             {
-                if (time_value_sec > (float)size / fps) imageIndex = (int)(imageIndex + size - 1);
-                else imageIndex = (int)(imageIndex + time_value_sec * fps);
-            }
-            if (imageIndex < ListAnimImagesFullName.Count && imageIndex >= 0)
-            {
-                src = OpenFileStream(ListAnimImagesFullName[imageIndex]);
-                gPanel.DrawImage(src, x, y);
+
+                bool repeat = img_anim.anim_repeat;
+                if (repeat)
+                {
+                    while (time_value_sec > (float)size / fps)
+                    {
+                        time_value_sec = time_value_sec - (float)size / fps;
+                    }
+                }
+                int imageIndex = ListAnimImages.IndexOf(start_img);
+                if (repeat) imageIndex = (int)(imageIndex + time_value_sec * fps);
+                else
+                {
+                    if (time_value_sec > (float)size / fps) imageIndex = (int)(imageIndex + size - 1);
+                    else imageIndex = (int)(imageIndex + time_value_sec * fps);
+                }
+                if (imageIndex < ListAnimImagesFullName.Count && imageIndex >= 0)
+                {
+                    src = OpenFileStream(ListAnimImagesFullName[imageIndex]);
+                    gPanel.DrawImage(src, x, y);
+                } 
             }
 
             src.Dispose();
@@ -2558,6 +2630,84 @@ namespace Watch_Face_Editor
             src.Dispose();
         }
 
+        /// <summary>Рисуем анимацию вращения </summary>
+        /// <param name="gPanel">Поверхность для рисования</param>
+        /// <param name="rotate_anim">Параметры анимации вращения</param>
+        /// <param name="time_value_sec">Время от начала анимайии, сек</param>
+        /// <param name="showCentrHend">Отображать маркер на точке вращения</param>
+        private void DrawAnimationRotate(Graphics gPanel, Rotate_Animation rotate_anim,
+            float time_value_sec, bool showCentrHend)
+        {
+            string src_name = rotate_anim.src;
+            if (src_name == null || src_name.Length == 0) return;
+
+            int image_index = ListAnimImages.IndexOf(src_name);
+            if (image_index < 0) return;
+            int x = rotate_anim.center_x;
+            int y = rotate_anim.center_y;
+            int offsetX = rotate_anim.pos_x;
+            int offsetY = rotate_anim.pos_y;
+            float angle = 0;
+
+            float start_angle = rotate_anim.start_angle;
+            float end_angle = rotate_anim.end_angle;
+
+
+            float time_anim = rotate_anim.anim_duration / 1000;
+            int count = rotate_anim.repeat_count;
+
+            bool anim_two_sides = rotate_anim.anim_two_sides;
+
+            if (time_value_sec < 0) // статичная картинка
+            {
+                bool show_in_start = rotate_anim.show_in_start;
+                if (show_in_start) angle = start_angle;
+                else angle = end_angle;
+            }
+            else
+            {
+                if (anim_two_sides) // зеркальная анимация в обе стороны
+                {
+                    if (count > 0 & time_value_sec > time_anim * 2 * count) time_value_sec = 0;
+                    while (time_value_sec > time_anim * 2)
+                    {
+                        time_value_sec = time_value_sec - time_anim * 2;
+                    }
+                    bool morror_anim = false;
+                    if (time_value_sec > time_anim)
+                    {
+                        time_value_sec = time_value_sec - time_anim;
+                        morror_anim = true;
+                    }
+                    float progress = time_value_sec / time_anim;
+                    float d_angl = end_angle - start_angle;
+
+                    if (!morror_anim)
+                    {
+                        angle = start_angle + d_angl * progress;
+                    }
+                    else
+                    {
+                        angle = end_angle - d_angl * progress;
+                    }
+                }
+                else // одностароняя анимация
+                {
+                    if (count > 0 & time_value_sec > time_anim * count) time_value_sec = time_anim;
+                    while (time_value_sec > time_anim)
+                    {
+                        time_value_sec = time_value_sec - time_anim;
+                    }
+                    float progress = time_value_sec / time_anim;
+                    float d_angl = end_angle - start_angle;
+
+                    angle = start_angle + d_angl * progress;
+                }
+            }
+
+            DrawRotateForAnim(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+        }
+
         /// <summary>Рисует стрелки</summary>
         /// <param name="graphics">Поверхность для рисования</param>
         /// <param name="x">Центр стрелки X</param>
@@ -2566,30 +2716,10 @@ namespace Watch_Face_Editor
         /// <param name="offsetY">Смещение от центра по Y</param>
         /// <param name="image_index">Номер изображения</param>
         /// <param name="angle">Угол поворота стрелки в градусах</param>
-        /// <param name="center_marker">Отображать маркер на точке вращения</param>
-        public void DrawAnalogClock(Graphics graphics, int x, int y, int offsetX, int offsetY, int image_index, float angle, bool showCentrHend)
+        /// <param name="showCentrHend">Отображать маркер на точке вращения</param>
+        public void DrawPointer(Graphics graphics, int x, int y, int offsetX, int offsetY, int image_index, float angle, bool showCentrHend)
         {
-            //int centerX = 227;
-            //int centerY = 227;
-            //if (radioButton_GTS2.Checked)
-            //{
-            //    centerX = 174;
-            //    centerY = 221;
-            //}
-            //if (radioButton_TRex_pro.Checked)
-            //{
-            //    centerX = 180;
-            //    centerY = 180;
-            //}
-            //if (radioButton_ZeppE.Checked)
-            //{
-            //    centerX = 208;
-            //    centerY = 208;
-            //}
-            //if (x == 0) x = centerX;
-            //if (y == 0) y = centerY;
-
-            Logger.WriteLine("* DrawAnalogClock");
+            Logger.WriteLine("* DrawPointer");
             Bitmap src = OpenFileStream(ListImagesFullName[image_index]);
             graphics.TranslateTransform(x, y);
             graphics.RotateTransform(angle);
@@ -2613,7 +2743,45 @@ namespace Watch_Face_Editor
                     graphics.DrawLine(pen2, new Point(x, y - 5), new Point(x, y + 5));
                 }
             }
-            Logger.WriteLine("* DrawAnalogClock (end)");
+            Logger.WriteLine("* DrawPointer (end)");
+        }
+
+        /// <summary>Рисует элемент для анимации вращения</summary>
+        /// <param name="graphics">Поверхность для рисования</param>
+        /// <param name="x">Центр стрелки X</param>
+        /// <param name="y">Центр стрелки Y</param>
+        /// <param name="offsetX">Смещение от центра по X</param>
+        /// <param name="offsetY">Смещение от центра по Y</param>
+        /// <param name="image_index">Номер изображения</param>
+        /// <param name="angle">Угол поворота стрелки в градусах</param>
+        /// <param name="showCentrHend">Отображать маркер на точке вращения</param>
+        public void DrawRotateForAnim(Graphics graphics, int x, int y, int offsetX, int offsetY, int image_index, float angle, bool showCentrHend)
+        {
+            Logger.WriteLine("* DrawPointer");
+            Bitmap src = OpenFileStream(ListAnimImagesFullName[image_index]);
+            graphics.TranslateTransform(x, y);
+            graphics.RotateTransform(angle);
+            graphics.DrawImage(src, new Rectangle(-offsetX, -offsetY, src.Width, src.Height));
+            graphics.RotateTransform(-angle);
+            graphics.TranslateTransform(-x, -y);
+            src.Dispose();
+
+            if (showCentrHend)
+            {
+                Logger.WriteLine("Draw showCentrHend");
+                using (Pen pen1 = new Pen(Color.White, 1))
+                {
+                    graphics.DrawLine(pen1, new Point(x - 5, y), new Point(x + 5, y));
+                    graphics.DrawLine(pen1, new Point(x, y - 5), new Point(x, y + 5));
+                }
+                using (Pen pen2 = new Pen(Color.Black, 1))
+                {
+                    pen2.DashStyle = DashStyle.Dot;
+                    graphics.DrawLine(pen2, new Point(x - 5, y), new Point(x + 5, y));
+                    graphics.DrawLine(pen2, new Point(x, y - 5), new Point(x, y + 5));
+                }
+            }
+            Logger.WriteLine("* DrawPointer (end)");
         }
 
 
@@ -2819,8 +2987,8 @@ namespace Watch_Face_Editor
             //int DateLenght = widthD * 2 + widthM + widthCF + 1;
             int DateLenght = widthD * 3 + widthCF + 1;
             //if (alignment == 2 && AvailabilityIcon) DateLenght = DateLenght - widthCF;
-            if (spacing != 0) DateLenght = DateLenght + 4 * spacing;
-            if (widthM == 0) DateLenght = DateLenght - spacing;
+            if (spacing != 0) DateLenght = DateLenght + 3 * spacing;
+            //if (widthM == 0) DateLenght = DateLenght - spacing;
             //if (alignment == 2 && AvailabilityIcon) DateLenght = DateLenght - spacing;
 
             int DateLenghtReal = 0;
@@ -3926,7 +4094,7 @@ namespace Watch_Face_Editor
             {
                 mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
             }
-            if (ProgramSettings.Watch_Model == "GTR 3")
+            if (ProgramSettings.Watch_Model == "GTS 3")
             {
                 mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
             }

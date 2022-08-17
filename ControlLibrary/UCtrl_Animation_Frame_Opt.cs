@@ -79,8 +79,8 @@ namespace ControlLibrary
                 string images_full_name = ListImagesFullName[comboBox_image.SelectedIndex];
                 string fileName = Path.GetFileNameWithoutExtension(images_full_name);
                 string dirName = Path.GetDirectoryName(images_full_name);
-                int index = fileName.IndexOf("_");
-                if (fileName.IndexOf("-") > index) index = fileName.IndexOf("-");
+                int index = fileName.LastIndexOf("_");
+                //if (fileName.IndexOf("-") > index) index = fileName.IndexOf("-");
                 if (index >= 0)
                 {
                     //int count = -1;
@@ -240,10 +240,12 @@ namespace ControlLibrary
             numericUpDown_imageY.Value = 0;
 
             numericUpDown_images_count.Value = 10;
-            numericUpDown_fps.Value = 10;
+            numericUpDown_fps.Value = 15;
+            numericUpDown_preview_frame.Value = 1;
 
             checkBox_anim_repeat.Checked = true;
             //checkBox_anim_restart.Checked = false;
+            checkBox_visible.Checked = true;
 
             label_prefix.Text = "-";
 
@@ -452,8 +454,8 @@ namespace ControlLibrary
                 string images_full_name = ListImagesFullName[comboBox_image.SelectedIndex];
                 string fileName = Path.GetFileNameWithoutExtension(images_full_name);
                 string dirName = Path.GetDirectoryName(images_full_name);
-                int index = fileName.IndexOf("_");
-                if (fileName.IndexOf("-") > index) index = fileName.IndexOf("-");
+                int index = fileName.LastIndexOf("_");
+                //if (fileName.IndexOf("-") > index) index = fileName.IndexOf("-");
                 if (index >= 0)
                 {
                     int count = -1;
@@ -462,7 +464,15 @@ namespace ControlLibrary
                         prefix = fileName.Substring(0, index + 1);
                         string[] files_anim = Directory.GetFiles(dirName, prefix + "*.png", SearchOption.AllDirectories);
                         if (files_anim.Length > 0) count = files_anim.Length;
-                        if (count > 0) numericUpDown_images_count.Value = count;
+                        if (count > 0) 
+                        {
+                            numericUpDown_images_count.Value = count;
+                            int frame_index = count / 2;
+                            if (frame_index < 1) frame_index = 1;
+                            numericUpDown_preview_frame.Maximum = 999;
+                            numericUpDown_preview_frame.Value = frame_index;
+                            numericUpDown_preview_frame.Maximum = count;
+                        }
                         prefix = fileName.Substring(0, index);
                     }
                 }

@@ -521,7 +521,7 @@ namespace Watch_Face_Editor
         //public string anim_ext { get; set; }
 
         /// <summary>Количество кадров в секунду</summary>
-        public int anim_fps { get; set; } = 10;
+        public int anim_fps { get; set; } = 15;
 
         ///// <summary>Количество повторений</summary>
         //public int repeat_count { get; set; }
@@ -529,11 +529,11 @@ namespace Watch_Face_Editor
         /// <summary>Повторять анимацию</summary>
         public bool anim_repeat { get; set; } = true;
 
-        /*/// <summary>Начинать анимацию заново после выхода из AOD режима</summary>
-        public bool display_on_restart { get; set; }*/
+        /// <summary>Номер кадра отображаемого на предпросмотре</summary>
+        public int preview_frame { get; set; } = 1;
 
         /// <summary>Количество изображений для анимации</summary>
-        public int anim_size { get; set; } = 10;
+        public int anim_size { get; set; } = 1;
 
         ///// <summary>Статус анимации</summary>
         //public string anim_status { get; set; }
@@ -625,7 +625,7 @@ namespace Watch_Face_Editor
             public string src { get; set; }
 
             /// <summary>Количество кадров в секунду</summary>
-            public int anim_fps { get; set; } = 10;
+            public int anim_fps { get; set; } = 15;
 
             /// <summary>Длительность цикла анимации, мс</summary>
             public int anim_duration { get; set; } = 10000;
@@ -716,7 +716,7 @@ namespace Watch_Face_Editor
             public int position = -1;*/
 
             /// <summary>Видимость элемента</summary>
-            public bool visible = false;
+            public bool visible = true;
 
             /// <summary>Файл изображения</summary>
             public string src { get; set; }
@@ -740,7 +740,7 @@ namespace Watch_Face_Editor
             public int end_angle { get; set; } = 360;
 
             /// <summary>Количество кадров в секунду</summary>
-            public int anim_fps { get; set; } = 1;
+            public int anim_fps { get; set; } = 15;
 
             /// <summary>Длительность цикла анимации, мс</summary>
             public int anim_duration { get; set; } = 10000;

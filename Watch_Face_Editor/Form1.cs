@@ -1,5 +1,6 @@
 ﻿using ControlLibrary;
 using ImageMagick;
+using Microsoft.WindowsAPICodePack.Dialogs;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -106,6 +107,10 @@ namespace Watch_Face_Editor
                     {
                         ProgramSettings.language = "Chinese/简体中文";
                     }
+                    if (language == "uk")
+                    {
+                        ProgramSettings.language = "Український";
+                    }
                     //if (language == "hu")
                     //{
                     //    ProgramSettings.language = "Magyar";
@@ -182,6 +187,11 @@ namespace Watch_Face_Editor
             //    SendMessage(windowPtr, WM_CLOSE, IntPtr.Zero, IntPtr.Zero);
             //}
 
+            /*// Set window location
+            if (Properties.Settings.Default.FormLocation != null)
+            {
+                this.Location = Properties.Settings.Default.FormLocation;
+            }*/
 
             Logger.WriteLine("Form1_Load");
 
@@ -347,8 +357,14 @@ namespace Watch_Face_Editor
         {
 
             Logger.WriteLine("* FormClosing");
+
+            /*// Copy window location to app settings
+            Properties.Settings.Default.FormLocation = this.Location;*/
+
+            // Save settings
+            Properties.Settings.Default.Save();
 #if !DEBUG
-            SaveRequest();
+            if(SaveRequest() == DialogResult.Cancel) e.Cancel = true;
 #endif
         }
 
@@ -399,6 +415,11 @@ namespace Watch_Face_Editor
             {
                 Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("it");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("it");
+            }
+            else if (ProgramSettings.language == "Український")
+            {
+                Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("uk");
+                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("uk");
             }
             else
             {
@@ -465,7 +486,6 @@ namespace Watch_Face_Editor
         {
             if (Settings_Load) return;
             ProgramSettings.language = comboBox_Language.Text;
-            ProgramSettings.Animation_Preview_Speed = comboBox_Animation_Preview_Speed.SelectedIndex;
             SetLanguage();
             string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
             {
@@ -481,6 +501,17 @@ namespace Watch_Face_Editor
                     Application.Restart();
                 }
             }
+        }
+
+        private void comboBox_Animation_Preview_Speed_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (Settings_Load) return;
+            ProgramSettings.Animation_Preview_Speed = comboBox_Animation_Preview_Speed.SelectedIndex;
+            string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore
+            });
+            File.WriteAllText(Application.StartupPath + @"\Settings.json", JSON_String, Encoding.UTF8);
         }
 
         // устанавливаем заголовок окна
@@ -2081,6 +2112,116 @@ namespace Watch_Face_Editor
             Logger.WriteLine("* New_Project (end)");
         }
 
+        private void button_New_Project_Click_New(object sender, EventArgs e)
+        {
+            Logger.WriteLine("* New_Project");
+            // сохранение если файл не сохранен
+            if (SaveRequest() == DialogResult.Cancel) return;
+
+            string subPath = Application.StartupPath + @"\Watch_face\";
+            if (!Directory.Exists(subPath)) Directory.CreateDirectory(subPath);
+
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.IsFolderPicker = true;
+
+            dialog.InitialDirectory = subPath;
+            //dialog.DefaultFileName = "New_Project";
+            //dialog.FileName = "New_Project";
+            //dialog.Filter = Properties.FormStrings.FilterJson;
+            //openFileDialog.Filter = "Json files (*.json) | *.json";
+            dialog.RestoreDirectory = true;
+            //openFileDialog.Multiselect = false;
+            //openFileDialog.CheckFileExists = true;
+            //openFileDialog.CreatePrompt = true;
+            //dialog.DefaultExt = "json";
+            dialog.EnsureValidNames = false;
+            //dialog.OverwritePrompt = true;
+            dialog.Title = Properties.FormStrings.Dialog_Title_New_Project;
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                Logger.WriteLine("* New_Project_Click");
+                string fullfilename =Path.GetFileNameWithoutExtension(dialog.FileName);
+                fullfilename = Path.Combine(dialog.FileName, fullfilename)+".json";
+                string dirName = Path.GetDirectoryName(fullfilename) + @"\assets\";
+                if (Directory.Exists(dirName))
+                {
+                    DialogResult dialogResult = MessageBox.Show(Properties.FormStrings.Message_Warning_Assets_Exist1 +
+                        Environment.NewLine + Properties.FormStrings.Message_Warning_Assets_Exist2 + Environment.NewLine +
+                        Properties.FormStrings.Message_Warning_Assets_Exist3, Properties.FormStrings.Message_Warning_Caption,
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                    if (dialogResult == DialogResult.No) return;
+                }
+                if (Path.GetExtension(fullfilename) != ".json") fullfilename = fullfilename + ".json";
+                FileName = Path.GetFileName(fullfilename);
+                FullFileDir = Path.GetDirectoryName(fullfilename);
+
+                Watch_Face = new WATCH_FACE();
+                Watch_Face.WatchFace_Info = new WatchFace_Info();
+                Random rnd = new Random();
+                int rndID = rnd.Next(1000, 10000000);
+                Watch_Face.WatchFace_Info.WatchFaceId = rndID;
+
+                Watch_Face.ScreenNormal = new ScreenNormal();
+                Watch_Face.ScreenNormal.Background = new Background();
+                Watch_Face.ScreenNormal.Background.BackgroundColor = new hmUI_widget_FILL_RECT();
+
+                switch (ProgramSettings.Watch_Model)
+                {
+                    case "GTR 3":
+                        Watch_Face.WatchFace_Info.DeviceName = "GTR3";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
+                        break;
+                    case "GTR 3 Pro":
+                        Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 480;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 480;
+                        break;
+                    case "GTS 3":
+                        Watch_Face.WatchFace_Info.DeviceName = "GTS3";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
+                        break;
+                    case "T-Rex 2":
+                        Watch_Face.WatchFace_Info.DeviceName = "T_Rex_2";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
+                        break;
+                }
+
+                string JSON_String = JsonConvert.SerializeObject(Watch_Face, Formatting.Indented, new JsonSerializerSettings
+                {
+                    //DefaultValueHandling = DefaultValueHandling.Ignore,
+                    NullValueHandling = NullValueHandling.Ignore
+                });
+                File.WriteAllText(fullfilename, JSON_String, Encoding.UTF8);
+                button_Add_Images.Enabled = true;
+                button_Add_Anim_Images.Enabled = true;
+                Directory.CreateDirectory(dirName);
+                LoadImage(dirName);
+                PreviewView = false;
+                ShowElemetsWatchFace();
+                PreviewView = true;
+                groupBox_AddElemets.Enabled = true;
+
+                PreviewImage();
+                FormText();
+            }
+            Logger.WriteLine("* New_Project (end)");
+        }
+
         private void button_Add_Images_Click(object sender, EventArgs e)
         {
             Logger.WriteLine("* Add_Images");
@@ -2778,46 +2919,6 @@ namespace Watch_Face_Editor
                         return dr;
                     }
                 }
-                /*else
-                {
-                    DialogResult dr = MessageBox.Show(Properties.FormStrings.Message_Save_new_JSON,
-                        Properties.FormStrings.Message_Save_JSON_Modified_Caption,
-                        MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
-                    if (dr == DialogResult.Yes)
-                    {
-                        SaveFileDialog saveFileDialog = new SaveFileDialog();
-                        saveFileDialog.InitialDirectory = FullFileDir;
-                        saveFileDialog.FileName = FileName;
-                        if (FileName == null || FileName.Length == 0)
-                        {
-                            if (FullFileDir != null && FullFileDir.Length > 3)
-                            {
-                                saveFileDialog.FileName = Path.GetFileName(FullFileDir);
-                            }
-                        }
-                        saveFileDialog.Filter = Properties.FormStrings.FilterJson;
-
-                        //openFileDialog.Filter = "Json files (*.json) | *.json";
-                        saveFileDialog.RestoreDirectory = true;
-                        saveFileDialog.Title = Properties.FormStrings.Dialog_Title_Dial_Settings;
-                        if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                        {
-                            string fullfilename = saveFileDialog.FileName;
-                            save_JSON_File(fullfilename);
-
-                            FileName = Path.GetFileName(fullfilename);
-                            FullFileDir = Path.GetDirectoryName(fullfilename);
-                            JSON_Modified = false;
-                            FormText();
-                            //if (checkBox_JsonWarnings.Checked) jsonWarnings(fullfilename);
-                        }
-                        else return;
-                    }
-                    if (dr == DialogResult.Cancel)
-                    {
-                        return;
-                    }
-                }*/
             }
             return DialogResult.Ignore;
         }
@@ -4801,6 +4902,11 @@ namespace Watch_Face_Editor
                                 uCtrl_Sunrise_Elm.checkBox_Sunset.Checked = Sunrise.Sunset.visible;
                                 elementOptions.Add(Sunrise.Sunset.position, "Sunset");
                             }
+                            if (Sunrise.Sunset_Sunrise != null)
+                            {
+                                uCtrl_Sunrise_Elm.checkBox_Sunset_Sunrise.Checked = Sunrise.Sunset_Sunrise.visible;
+                                elementOptions.Add(Sunrise.Sunset_Sunrise.position, "Sunset_Sunrise");
+                            }
                             if (Sunrise.Pointer != null)
                             {
                                 uCtrl_Sunrise_Elm.checkBox_Pointer.Checked = Sunrise.Pointer.visible;
@@ -6645,6 +6751,13 @@ namespace Watch_Face_Editor
                                     "\"icon\": \"" + Watch_Face.WatchFace_Info.Preview + ".png\"");
                 }
             }
+            if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Elements != null)
+            {
+                List<object> Elements = Watch_Face.ScreenNormal.Elements;
+                bool exists = Elements.Exists(el => el.GetType().Name == "ElementAnimation"); // проверяем что такого элемента нет
+                if (exists) appText = appText.Replace("\"lockscrreen\": 1",
+                                "\"lockscrreen\": 1,\n      \"hightCost\":1");
+            }
             File.WriteAllText(tempDir + @"\app.json", appText, Encoding.UTF8);
             File.Copy(templatesFileDir + @"\app.js", tempDir + @"\app.js");
 
@@ -6950,6 +7063,12 @@ namespace Watch_Face_Editor
 
                 bitmap.Dispose();
                 loadedImage.Dispose();
+
+                LoadImage(Path.GetDirectoryName(preview) + @"\");
+                //string fileNameOnly = Path.GetFileNameWithoutExtension(preview);
+                //userCtrl_Background_Options.SetPreview(fileNameOnly);
+                HideAllElemenrOptions();
+                ResetHighlightState("");
             }
         }
 
@@ -7005,42 +7124,21 @@ namespace Watch_Face_Editor
 
                 PreviewView = false;
 
-                LoadImage(Path.GetDirectoryName(PathPreview));
-                //ListImages.Add(fileNameOnly);
-                //ListImagesFullName.Add(PathPreview);
-
-                //// добавляем строки в таблицу
-                ////Image PreviewImage = Image.FromHbitmap(bitmap.GetHbitmap());
-                //Image PreviewImage = null;
-                //using (FileStream stream = new FileStream(PathPreview, FileMode.Open, FileAccess.Read))
-                //{
-                //    PreviewImage = Image.FromStream(stream);
-                //}
-                //i = dataGridView_ImagesList.Rows.Count + 1;
-                //var RowNew = new DataGridViewRow();
-                //DataGridViewImageCellLayout ZoomType = DataGridViewImageCellLayout.Zoom;
-                //if ((bitmap.Height < 45) && (bitmap.Width < 110))
-                //    ZoomType = DataGridViewImageCellLayout.Normal;
-                //RowNew.Cells.Add(new DataGridViewTextBoxCell() { Value = i.ToString() });
-                //RowNew.Cells.Add(new DataGridViewTextBoxCell() { Value = fileNameOnly });
-                //RowNew.Cells.Add(new DataGridViewImageCell()
-                //{
-                //    Value = PreviewImage,
-                //    ImageLayout = ZoomType
-                //});
-                //RowNew.Height = 45;
-                //dataGridView_ImagesList.Rows.Add(RowNew);
+                LoadImage(Path.GetDirectoryName(PathPreview) + @"\");
 
                 if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
                 Watch_Face.WatchFace_Info.Preview = fileNameOnly;
                 //userCtrl_Background_Options.ComboBoxAddItems(ListImages, ListImagesFullName);
-                userCtrl_Background_Options.SetPreview(fileNameOnly);
+                //userCtrl_Background_Options.SetPreview(fileNameOnly);
                 PreviewView = true;
                 JSON_Modified = true;
                 FormText();
+                HideAllElemenrOptions();
+                ResetHighlightState("");
 
                 bitmap.Dispose();
-
+                button_CreatePreview.Visible = false;
+                button_RefreshPreview.Visible = true;
             }
         }
 
@@ -7733,7 +7831,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_DateDay_Elm.checkBox_Pointer.Checked)
                         {
                             img_pointer = dateDay.Pointer;
-                            Read_ImgPointer_Options(img_pointer, false);
+                            Read_ImgPointer_Options(img_pointer, true);
                             ShowElemenrOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
@@ -7797,7 +7895,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_DateMonth_Elm.checkBox_Pointer.Checked)
                         {
                             img_pointer = dateMonth.Pointer;
-                            Read_ImgPointer_Options(img_pointer, false);
+                            Read_ImgPointer_Options(img_pointer, true);
                             ShowElemenrOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
@@ -7888,7 +7986,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_DateWeek_Elm.checkBox_Pointer.Checked)
                         {
                             img_pointer = dateWeek.Pointer;
-                            Read_ImgPointer_Options(img_pointer, false);
+                            Read_ImgPointer_Options(img_pointer, true);
                             ShowElemenrOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
@@ -8255,7 +8353,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Steps_Elm.checkBox_Pointer.Checked)
                         {
                             img_pointer = steps.Pointer;
-                            Read_ImgPointer_Options(img_pointer, true);
+                            Read_ImgPointer_Options(img_pointer, false);
                             ShowElemenrOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
@@ -8359,7 +8457,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Battery_Elm.checkBox_Pointer.Checked)
                         {
                             img_pointer = battery.Pointer;
-                            Read_ImgPointer_Options(img_pointer, true);
+                            Read_ImgPointer_Options(img_pointer, false);
                             ShowElemenrOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
@@ -8464,7 +8562,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Heart_Elm.checkBox_Pointer.Checked)
                         {
                             img_pointer = heart.Pointer;
-                            Read_ImgPointer_Options(img_pointer, true);
+                            Read_ImgPointer_Options(img_pointer, false);
                             ShowElemenrOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
@@ -8577,7 +8675,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Calories_Elm.checkBox_Pointer.Checked)
                         {
                             img_pointer = calories.Pointer;
-                            Read_ImgPointer_Options(img_pointer, true);
+                            Read_ImgPointer_Options(img_pointer, false);
                             ShowElemenrOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
@@ -8690,7 +8788,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_PAI_Elm.checkBox_Pointer.Checked)
                         {
                             img_pointer = pai.Pointer;
-                            Read_ImgPointer_Options(img_pointer, true);
+                            Read_ImgPointer_Options(img_pointer, false);
                             ShowElemenrOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
@@ -8837,7 +8935,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Stand_Elm.checkBox_Pointer.Checked)
                         {
                             img_pointer = stand.Pointer;
-                            Read_ImgPointer_Options(img_pointer, true);
+                            Read_ImgPointer_Options(img_pointer, false);
                             ShowElemenrOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
@@ -8950,7 +9048,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Activity_Elm.checkBox_Pointer.Checked)
                         {
                             img_pointer = activity.Pointer;
-                            Read_ImgPointer_Options(img_pointer, true);
+                            Read_ImgPointer_Options(img_pointer, false);
                             ShowElemenrOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
@@ -9086,7 +9184,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Stress_Elm.checkBox_Pointer.Checked)
                         {
                             img_pointer = stress.Pointer;
-                            Read_ImgPointer_Options(img_pointer, true);
+                            Read_ImgPointer_Options(img_pointer, false);
                             ShowElemenrOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
@@ -9181,7 +9279,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_FatBurning_Elm.checkBox_Pointer.Checked)
                         {
                             img_pointer = fat_burning.Pointer;
-                            Read_ImgPointer_Options(img_pointer, true);
+                            Read_ImgPointer_Options(img_pointer, false);
                             ShowElemenrOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
@@ -9350,7 +9448,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_UVIndex_Elm.checkBox_Images.Checked)
                         {
                             img_level = uv_index.Images;
-                            Read_ImgLevel_Options(img_level, 5, true);
+                            Read_ImgLevel_Options(img_level, 5, false);
                             ShowElemenrOptions("Images");
                         }
                         else HideAllElemenrOptions();
@@ -9359,7 +9457,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_UVIndex_Elm.checkBox_Segments.Checked)
                         {
                             img_prorgess = uv_index.Segments;
-                            Read_ImgProrgess_Options(img_prorgess, 5, false);
+                            Read_ImgProrgess_Options(img_prorgess, 5, true);
                             ShowElemenrOptions("Segments");
                         }
                         else HideAllElemenrOptions();
@@ -9377,7 +9475,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_UVIndex_Elm.checkBox_Pointer.Checked)
                         {
                             img_pointer = uv_index.Pointer;
-                            Read_ImgPointer_Options(img_pointer, true);
+                            Read_ImgPointer_Options(img_pointer, false);
                             ShowElemenrOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
@@ -9461,7 +9559,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Humidity_Elm.checkBox_Pointer.Checked)
                         {
                             img_pointer = humidity.Pointer;
-                            Read_ImgPointer_Options(img_pointer, true);
+                            Read_ImgPointer_Options(img_pointer, false);
                             ShowElemenrOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
@@ -9525,7 +9623,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Altimeter_Elm.checkBox_Pointer.Checked)
                         {
                             img_pointer = altimeter.Pointer;
-                            Read_ImgPointer_Options(img_pointer, true);
+                            Read_ImgPointer_Options(img_pointer, false);
                             ShowElemenrOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
@@ -9614,11 +9712,20 @@ namespace Watch_Face_Editor
                         }
                         else HideAllElemenrOptions();
                         break;
+                    case "Sunset_Sunrise":
+                        if (uCtrl_Sunrise_Elm.checkBox_Sunset_Sunrise.Checked)
+                        {
+                            img_number = sunrise.Sunset_Sunrise;
+                            Read_ImgNumber_Options(img_number, false, false, "", true, true, false, true);
+                            ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
                     case "Pointer":
                         if (uCtrl_Sunrise_Elm.checkBox_Pointer.Checked)
                         {
                             img_pointer = sunrise.Pointer;
-                            Read_ImgPointer_Options(img_pointer, true);
+                            Read_ImgPointer_Options(img_pointer, false);
                             ShowElemenrOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
@@ -9702,7 +9809,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Wind_Elm.checkBox_Pointer.Checked)
                         {
                             img_pointer = wind.Pointer;
-                            Read_ImgPointer_Options(img_pointer, true);
+                            Read_ImgPointer_Options(img_pointer, false);
                             ShowElemenrOptions("Pointer");
                         }
                         else HideAllElemenrOptions();
@@ -13230,6 +13337,7 @@ namespace Watch_Face_Editor
                 if (sunrise.Segments == null) sunrise.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (sunrise.Sunrise == null) sunrise.Sunrise = new hmUI_widget_IMG_NUMBER();
                 if (sunrise.Sunset == null) sunrise.Sunset = new hmUI_widget_IMG_NUMBER();
+                if (sunrise.Sunset_Sunrise == null) sunrise.Sunset_Sunrise = new hmUI_widget_IMG_NUMBER();
                 if (sunrise.Pointer == null) sunrise.Pointer = new hmUI_widget_IMG_POINTER();
                 if (sunrise.Icon == null) sunrise.Icon = new hmUI_widget_IMG();
 
@@ -13238,6 +13346,7 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Segments")) sunrise.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Sunrise")) sunrise.Sunrise.position = elementOptions["Sunrise"];
                 if (elementOptions.ContainsKey("Sunset")) sunrise.Sunset.position = elementOptions["Sunset"];
+                if (elementOptions.ContainsKey("Sunset_Sunrise")) sunrise.Sunset_Sunrise.position = elementOptions["Sunset_Sunrise"];
                 if (elementOptions.ContainsKey("Pointer")) sunrise.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Icon")) sunrise.Icon.position = elementOptions["Icon"];
 
@@ -13256,6 +13365,9 @@ namespace Watch_Face_Editor
                         break;
                     case "checkBox_Sunset":
                         sunrise.Sunset.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Sunset_Sunrise":
+                        sunrise.Sunset_Sunrise.visible = checkBox.Checked;
                         break;
                     case "checkBox_Pointer":
                         sunrise.Pointer.visible = checkBox.Checked;
@@ -13896,23 +14008,42 @@ namespace Watch_Face_Editor
                     DataGridView dataGridView = sourceControl as DataGridView;
                     try
                     {
-                        int rowIndex = dataGridView.CurrentCellAddress.Y;
-                        string fileName = ListImagesFullName[rowIndex];
-                        if(dataGridView.Name == "dataGridView_AnimImagesList") fileName = ListAnimImagesFullName[rowIndex];
-                        if (File.Exists(fileName))
+                        int selectedRowCount = dataGridView.SelectedCells.Count;
+                        if (selectedRowCount > 0)
                         {
-                            if (MessageBox.Show(Properties.FormStrings.Message_Delet_Text1 +
-                                Path.GetFileName(fileName) + Properties.FormStrings.Message_Delet_Text2, 
-                                Properties.FormStrings.Message_Delet_Caption, MessageBoxButtons.YesNo,
-                                MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                            string fileName = "";
+                            DataGridViewSelectedCellCollection selectedCells = dataGridView.SelectedCells;
+                            int startColumn = selectedCells[0].ColumnIndex;
+                            foreach (DataGridViewCell cells in selectedCells)
                             {
-                                File.Delete(fileName);
-                                if (dataGridView.Name == "dataGridView_AnimImagesList") fileName = Path.GetDirectoryName(fileName);
-                                LoadImage(Path.GetDirectoryName(fileName)+@"\");
-                                HideAllElemenrOptions();
-                                ResetHighlightState("");
-                                PreviewImage(); 
+                                int column = cells.ColumnIndex;
+                                if (column == startColumn)
+                                {
+                                    int rowIndex = cells.RowIndex;
+                                    if (dataGridView.Name == "dataGridView_AnimImagesList") fileName = ListAnimImagesFullName[rowIndex];
+                                    else fileName = ListImagesFullName[rowIndex];
+                                    if (File.Exists(fileName))
+                                    {
+                                        if (MessageBox.Show(Properties.FormStrings.Message_Delet_Text1 +
+                                            Path.GetFileName(fileName) + Properties.FormStrings.Message_Delet_Text2,
+                                            Properties.FormStrings.Message_Delet_Caption, MessageBoxButtons.YesNo,
+                                            MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                                        {
+                                            File.Delete(fileName);
+                                        }
+                                    }
+                                }
                             }
+                            if (dataGridView.Name == "dataGridView_AnimImagesList") fileName = Path.GetDirectoryName(fileName);
+                            LoadImage(Path.GetDirectoryName(fileName) + @"\");
+                            HideAllElemenrOptions();
+                            if (dataGridView.Name == "dataGridView_AnimImagesList")
+                            {
+                                ResetHighlightState("Animation");
+                                uCtrl_Animation_Elm_SelectChanged(sender, null);
+                            }
+                            else ResetHighlightState("");
+                            PreviewImage();
                         }
                     }
                     catch (Exception)
@@ -13925,14 +14056,27 @@ namespace Watch_Face_Editor
 
         private void contextMenuStrip_RemoveImage_Opening(object sender, CancelEventArgs e)
         {
-            if (dataGridView_ImagesList.CurrentCell == null) e.Cancel = true;
-            if (FullFileDir != null && Directory.Exists(FullFileDir + @"\assets\"))
+            ToolStripItem menuItem = sender as ToolStripItem;
+            if (menuItem != null)
             {
-                contextMenuStrip_RemoveImage.Items[1].Enabled = true;
-            }
-            else
-            {
-                contextMenuStrip_RemoveImage.Items[1].Enabled = false;
+                // Retrieve the ContextMenuStrip that owns this ToolStripItem
+                ContextMenuStrip owner = menuItem.Owner as ContextMenuStrip;
+                if (owner != null)
+                {
+                    // Get the control that is displaying this context menu
+                    Control sourceControl = owner.SourceControl;
+                    DataGridView dataGridView = sourceControl as DataGridView;
+
+                    if (dataGridView.CurrentCell == null) e.Cancel = true;
+                    if (FullFileDir != null && Directory.Exists(FullFileDir + @"\assets\"))
+                    {
+                        contextMenuStrip_RemoveImage.Items[1].Enabled = true;
+                    }
+                    else
+                    {
+                        contextMenuStrip_RemoveImage.Items[1].Enabled = false;
+                    }
+                }
             }
         }
 
@@ -14048,30 +14192,95 @@ namespace Watch_Face_Editor
         {
             FormAnimation formAnimation = new FormAnimation(currentDPI);
             formAnimation.Owner = this;
-
-            switch (comboBox_Animation_Preview_Speed.SelectedIndex)
-            {
-                case 0:
-                    formAnimation.timer1.Interval = 20;
-                    break;
-                case 1:
-                    formAnimation.timer1.Interval = 25;
-                    break;
-                case 2:
-                    formAnimation.timer1.Interval = 33;
-                    break;
-                case 3:
-                    formAnimation.timer1.Interval = 50;
-                    break;
-                case 4:
-                    formAnimation.timer1.Interval = 100;
-                    break;
-            }
+            int interval = 10;
+            int.TryParse(comboBox_Animation_Preview_Speed.Text, out interval);
+            interval = 1000 / interval;
+            formAnimation.timer1.Interval = interval;
+            //switch (comboBox_Animation_Preview_Speed.SelectedIndex)
+            //{
+            //    case 0:
+            //        formAnimation.timer1.Interval = 20;
+            //        break;
+            //    case 1:
+            //        formAnimation.timer1.Interval = 25;
+            //        break;
+            //    case 2:
+            //        formAnimation.timer1.Interval = 33;
+            //        break;
+            //    case 3:
+            //        formAnimation.timer1.Interval = 50;
+            //        break;
+            //    case 4:
+            //        formAnimation.timer1.Interval = 100;
+            //        break;
+            //}
             formAnimation.ShowDialog();
         }
 
-       
-
+        private void dataGridView_ImagesList_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.KeyCode == Keys.Delete) || (e.KeyCode == Keys.Back))
+            {
+                DataGridView dataGridView = sender as DataGridView;
+                if (dataGridView != null)
+                {
+                    try
+                    {
+                        int selectedRowCount = dataGridView.SelectedCells.Count;
+                        if (selectedRowCount > 0)
+                        {
+                            string fileName = "";
+                            DataGridViewSelectedCellCollection selectedCells = dataGridView.SelectedCells;
+                            int startColumn = selectedCells[0].ColumnIndex;
+                            string delFileName = "";
+                            foreach (DataGridViewCell cells in selectedCells)
+                            {
+                                int column = cells.ColumnIndex;
+                                if (column == startColumn)
+                                {
+                                    int rowIndex = cells.RowIndex;
+                                    if (dataGridView.Name == "dataGridView_AnimImagesList") fileName = ListAnimImagesFullName[rowIndex];
+                                    else fileName = ListImagesFullName[rowIndex];
+                                    delFileName += Environment.NewLine + Path.GetFileName(fileName) + ";";
+                                }
+                            }
+                            if (MessageBox.Show(Properties.FormStrings.Message_Delet_Text11 +
+                                            delFileName + Properties.FormStrings.Message_Delet_Text21,
+                                            Properties.FormStrings.Message_Delet_Caption, MessageBoxButtons.YesNo,
+                                            MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                            {
+                                foreach (DataGridViewCell cells in selectedCells)
+                                {
+                                    int column = cells.ColumnIndex;
+                                    if (column == startColumn)
+                                    {
+                                        int rowIndex = cells.RowIndex;
+                                        if (dataGridView.Name == "dataGridView_AnimImagesList") fileName = ListAnimImagesFullName[rowIndex];
+                                        else fileName = ListImagesFullName[rowIndex];
+                                        if (File.Exists(fileName))
+                                        {
+                                            File.Delete(fileName);
+                                        }
+                                    }
+                                } 
+                            }
+                            if (dataGridView.Name == "dataGridView_AnimImagesList") fileName = Path.GetDirectoryName(fileName);
+                            LoadImage(Path.GetDirectoryName(fileName) + @"\");
+                            HideAllElemenrOptions();
+                            if (dataGridView.Name == "dataGridView_AnimImagesList") { 
+                                ResetHighlightState("Animation");
+                                uCtrl_Animation_Elm_SelectChanged(sender, null);
+                            }
+                            else ResetHighlightState("");
+                            PreviewImage();
+                        }
+                    }
+                    catch (Exception)
+                    {
+                    } 
+                }
+            }
+        }
     }
 }
 
