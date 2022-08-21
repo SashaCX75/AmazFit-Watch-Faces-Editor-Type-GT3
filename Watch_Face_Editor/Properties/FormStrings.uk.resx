@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Dialog_Title_Dial_Settings" xml:space="preserve">
+    <value>Виберіть файл налаштувань циферблата</value>
+  </data>
+  <data name="Dialog_Title_Image" xml:space="preserve">
+    <value>Виберіть файли зображень</value>
+  </data>
+  <data name="Dialog_Title_New_Project" xml:space="preserve">
+    <value>Створення нового проекту</value>
+  </data>
+  <data name="Dialog_Title_PreviewStates" xml:space="preserve">
+    <value>Вибір файла налаштувань попереднього перегляду</value>
+  </data>
+  <data name="Dialog_Title_SaveGIF" xml:space="preserve">
+    <value>Зберегти анімований попередній перегляд</value>
+  </data>
+  <data name="Dialog_Title_SavePNG" xml:space="preserve">
+    <value>Зберегти попередній перегляд</value>
+  </data>
+  <data name="Dialog_Title_Unpack" xml:space="preserve">
+    <value>Вибір файла циферблата</value>
+  </data>
+  <data name="Dialog_Title_WatchSkin" xml:space="preserve">
+    <value>Вибір файла зображення годинника</value>
+  </data>
+  <data name="Elemet_Date" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="Elemet_System" xml:space="preserve">
+    <value>Система</value>
+  </data>
+  <data name="FollowMinute" xml:space="preserve">
+    <value>Слідувати за годинами</value>
+  </data>
+  <data name="FollowSecond" xml:space="preserve">
+    <value>Слідувати за хвилинами</value>
+  </data>
+  <data name="Form_Preview" xml:space="preserve">
+    <value>Попередній перегляд</value>
+  </data>
+  <data name="Form_PreviewX" xml:space="preserve">
+    <value>Попередній перегляд [Х =</value>
+  </data>
+  <data name="Message_AnimationAOD_Text" xml:space="preserve">
+    <value>Ви не можете додати анімацію до екрану AOD.</value>
+  </data>
+  <data name="Message_ConvertingCompleted_Text" xml:space="preserve">
+    <value>Новий циферблат створений.</value>
+  </data>
+  <data name="Message_CopyCoord" xml:space="preserve">
+    <value>Координати скопійовані</value>
+  </data>
+  <data name="Message_Delet_Caption" xml:space="preserve">
+    <value>Видалення</value>
+  </data>
+  <data name="Message_Delet_Text11" xml:space="preserve">
+    <value>Ви дійсно хочете безповоротно видалити файли :</value>
+  </data>
+  <data name="Message_Delet_Text2" xml:space="preserve">
+    <value>?
+Message_Error_Image_Text2	. Ви не маєте права читати файл, або зображення пошкоджено.
+Message_Delet_Text21	?
+FilterGif	GIF Файли (* .gif) | * .gif
+FilterJson	JSON файли (* .json) | * .json
+FilterPng	PNG файли (* .png) | * .png
+FilterZip	ZIP-файл циферблата (* .zip) | * .zip
+Elemet_Activity	Активності
+Elemet_Air	Атмосфера
+Message_Warning_Image_Exist1	У проекті вже існує зображення:
+Message_Warning_Assets_Exist1	У цій папці вже існує папка з зображеннями.
+Elemet_Time	Час
+Message_Delet_Text1	Ви дійсно хочете безповоротно видалити файл </value>
+  </data>
+  <data name="Message_ErrorReadJS" xml:space="preserve">
+    <value>Не вдалося визначити структуру циферблату</value>
+  </data>
+  <data name="Message_Error_Caption" xml:space="preserve">
+    <value>Помилка</value>
+  </data>
+  <data name="Message_Error_Image_Text1" xml:space="preserve">
+    <value>Неможливо відкрити зображення:</value>
+  </data>
+  <data name="Message_GoToFile_Caption" xml:space="preserve">
+    <value>Перейти до файлу</value>
+  </data>
+  <data name="Message_GoToFile_Text" xml:space="preserve">
+    <value>Перейти до файлу?</value>
+  </data>
+  <data name="Message_Image32bit" xml:space="preserve">
+    <value>Зображення не повинно бути монохромним і має бути у форматі 32bit</value>
+  </data>
+  <data name="Message_ImageCount_Error" xml:space="preserve">
+    <value>Вибрані зображення перевершують діапазон доступних зображень.</value>
+  </data>
+  <data name="Message_ImageFix_Error" xml:space="preserve">
+    <value>Помилка конвертації зображення</value>
+  </data>
+  <data name="Message_JsonError_Text" xml:space="preserve">
+    <value>Неправильний файл JSON.</value>
+  </data>
+  <data name="Message_JsonReadError_Text" xml:space="preserve">
+    <value>Помилка прочитання JSON файла</value>
+  </data>
+  <data name="Message_LoadPreviewStates_Caption" xml:space="preserve">
+    <value>Завантаження налаштувань попереднього перегляду</value>
+  </data>
+  <data name="Message_LoadPreviewStates_Text" xml:space="preserve">
+    <value>Завантажити наявний файл з набором параметрів попереднього переглялу PreviewStates.json?</value>
+  </data>
+  <data name="Message_Restart_Caption" xml:space="preserve">
+    <value>Перезавантаження</value>
+  </data>
+  <data name="Message_Restart_Text1" xml:space="preserve">
+    <value>Щоб застосувати налаштування, потрібно перезапустити програму.</value>
+  </data>
+  <data name="Message_Restart_Text2" xml:space="preserve">
+    <value>Перезавантажити програму?</value>
+  </data>
+  <data name="Message_SaveOnly1234_Text" xml:space="preserve">
+    <value>Щоб зберегти попередньо встановлений параметр, встановіть принаймні в одному полі "калорій", значення що відрізняється від "1234".</value>
+  </data>
+  <data name="Message_Save_JSON_Modified_Caption" xml:space="preserve">
+    <value>Збереження проекту</value>
+  </data>
+  <data name="Message_Save_JSON_Modified_Text1" xml:space="preserve">
+    <value>Ви хочете зберегти зміни в проекті "</value>
+  </data>
+  <data name="Message_Save_new_JSON" xml:space="preserve">
+    <value>Поточний проект ще не збережено. Ви хочете зберегти його?</value>
+  </data>
+  <data name="Message_ShortcutsAOD_Text" xml:space="preserve">
+    <value>Ви не можете додавати ярлики до екрану AOD.</value>
+  </data>
+  <data name="Message_WarningConverting_Text1" xml:space="preserve">
+    <value>Каталог</value>
+  </data>
+  <data name="Message_WarningConverting_Text2" xml:space="preserve">
+    <value>вже існує. Замінити?</value>
+  </data>
+  <data name="Message_WarningPreview_Text1" xml:space="preserve">
+    <value>Розміри зображення для Preview відрізняються від стандарту.</value>
+  </data>
+  <data name="Message_WarningPreview_Text2" xml:space="preserve">
+    <value>Використовувати існуючі розміри?</value>
+  </data>
+  <data name="Message_Warning_Assets_Exist2" xml:space="preserve">
+    <value>Рекомендовано створювати проект у окремій папці.</value>
+  </data>
+  <data name="Message_Warning_Assets_Exist3" xml:space="preserve">
+    <value>Створити проект у обраній папці?</value>
+  </data>
+  <data name="Message_Warning_Caption" xml:space="preserve">
+    <value>Попередження</value>
+  </data>
+  <data name="Message_Warning_Image_Exist2" xml:space="preserve">
+    <value>Замінити його новим зображенням?</value>
+  </data>
+  <data name="Message_Warning_Information" xml:space="preserve">
+    <value>Інформація</value>
+  </data>
+  <data name="Message_Wrong_Original_Image" xml:space="preserve">
+    <value>Невірний формат вихідного зображення</value>
+  </data>
+  <data name="Message_Wrong_Preview_Exists" xml:space="preserve">
+    <value>Не вдалося створити зображення попереднього перегляду. Можливо, це зображення вже існує.</value>
+  </data>
+</root>

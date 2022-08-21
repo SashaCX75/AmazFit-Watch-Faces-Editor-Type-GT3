@@ -251,6 +251,9 @@ namespace Watch_Face_Editor
         public hmUI_widget_IMG_POINTER Minute { get; set; }
         public hmUI_widget_IMG_POINTER Hour { get; set; }
 
+        /// <summary>Основной экран или AOD</summary>
+        public string show_level = "";
+
         public object Clone()
         {
             hmUI_widget_IMG_POINTER Second = null;

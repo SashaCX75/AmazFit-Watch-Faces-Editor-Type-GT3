@@ -493,6 +493,9 @@
   <data name="groupBox7.Text" xml:space="preserve">
     <value>Action after packing the watch face</value>
   </data>
+  <data name="button_PreviewStates_PathGet.Text" xml:space="preserve">
+    <value>Browse</value>
+  </data>
   <data name="radioButton_Settings_Open_Download_Your_File.Size" type="System.Drawing.Size, System.Drawing">
     <value>166, 17</value>
   </data>
@@ -572,6 +575,9 @@ more system load)</value>
   </data>
   <data name="tabPage_Settings.Text" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="tabPage_Tips.Text" xml:space="preserve">
+    <value>Tips for use</value>
   </data>
   <data name="label415.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 13</value>
@@ -659,7 +665,7 @@ more system load)</value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
-        DQAAAk1TRnQBSQFMAgEBBgEAAYQBKAGEASgBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAAYwBKAGMASgBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -1982,8 +1988,5 @@ more system load)</value>
         AAAAAAAAAAAAAO+BPCbvgT1I74I+SO+BPSYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8PwAA4AcAAMAD
         AACAAQAAgAEAAIABAAAAAAAAAAAAAAAAAAAAAAAAgAEAAIABAACAAQAAwAMAAOAHAAD8PwAA
 </value>
-  </data>
-  <data name="button_PreviewStates_PathGet.Text" xml:space="preserve">
-    <value>Browse</value>
   </data>
 </root>

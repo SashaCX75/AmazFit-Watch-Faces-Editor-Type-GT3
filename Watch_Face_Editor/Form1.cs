@@ -109,7 +109,7 @@ namespace Watch_Face_Editor
                     }
                     if (language == "uk")
                     {
-                        ProgramSettings.language = "Український";
+                        ProgramSettings.language = "Українська";
                     }
                     //if (language == "hu")
                     //{
@@ -279,6 +279,21 @@ namespace Watch_Face_Editor
             Settings_Load = false;
             JSON_Modified = false;
 
+            switch(ProgramSettings.language)
+            {
+                case "Русский":
+                    richTextBox_Tips.Rtf = Properties.Resources.tips_ru;
+                    break;
+                case "Українська":
+                    richTextBox_Tips.Rtf = Properties.Resources.tips_uk;
+                    break;
+                default:
+                    richTextBox_Tips.Rtf = Properties.Resources.tips_en;
+                    break;
+            }
+            
+            //richTextBox_Tips.Rtf = richTextBox_Tips.Text;
+
 
             StartJsonPreview();
             SetPreferences(userCtrl_Set1);
@@ -416,7 +431,7 @@ namespace Watch_Face_Editor
                 Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("it");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("it");
             }
-            else if (ProgramSettings.language == "Український")
+            else if (ProgramSettings.language == "Українська")
             {
                 Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("uk");
                 Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("uk");
@@ -7352,6 +7367,30 @@ namespace Watch_Face_Editor
                                         break;
                                     case 390:
                                         Watch_Face.WatchFace_Info.DeviceName = "GTS3";
+                                        break;
+
+                                    default:
+                                        Background background = Watch_Face.ScreenNormal.Background;
+                                        if (background == null) background = new Background();
+                                        if (background.BackgroundColor == null)
+                                            background.BackgroundColor = new hmUI_widget_FILL_RECT();
+                                        background.BackgroundColor.color = ColorToString(Color.Black);
+                                        background.BackgroundColor.x = 0;
+                                        background.BackgroundColor.y = 0;
+                                        background.BackgroundColor.h = 454;
+                                        background.BackgroundColor.w = 454;
+                                        if (ProgramSettings.Watch_Model == "GTR 3 Pro")
+                                        {
+                                            background.BackgroundColor.h = 480;
+                                            background.BackgroundColor.w = 480;
+                                        }
+                                        if (ProgramSettings.Watch_Model == "GTS 3")
+                                        {
+                                            background.BackgroundColor.h = 450;
+                                            background.BackgroundColor.w = 390;
+                                        }
+                                        background.BackgroundImage = null;
+                                        Watch_Face.ScreenNormal.Background = background;
                                         break;
                                 }
                             }

@@ -134,6 +134,11 @@
     <Compile Include="Classes\Program_Settings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\Watch_Face_Preview_Set.cs" />
+    <Compile Include="Properties\FormStrings.uk.Designer.cs">
+      <DependentUpon>FormStrings.uk.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Properties\FormStrings.it.Designer.cs">
       <DependentUpon>FormStrings.it.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -168,6 +173,9 @@
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form1.uk.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.zh.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -175,6 +183,9 @@
       <DependentUpon>FormAnimation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAnimation.resx">
+      <DependentUpon>FormAnimation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAnimation.uk.resx">
       <DependentUpon>FormAnimation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormFileExists.en.resx">
@@ -189,11 +200,18 @@
     <EmbeddedResource Include="FormFileExists.resx">
       <DependentUpon>FormFileExists.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormFileExists.uk.resx">
+      <DependentUpon>FormFileExists.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormFileExists.zh.resx">
       <DependentUpon>FormFileExists.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormPreview.resx">
       <DependentUpon>FormPreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\FormStrings.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FormStrings.uk.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\FormStrings.it.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -251,6 +269,9 @@
     </Compile>
     <None Include="Resources\OpenSans-Regular.ttf" />
     <None Include="Resources\Roboto-Regular.ttf" />
+    <None Include="Resources\tips_en.rtf" />
+    <None Include="Resources\tips_ru.rtf" />
+    <None Include="Resources\tips_uk.rtf" />
     <None Include="Skin\WatchSkin_GTR_3.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
@@ -294,7 +315,6 @@
     <Content Include="Skin\Skin_T-Rex_2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Windows Logo.png" />
     <None Include="Resources\unpacking.png" />
     <None Include="Resources\packaging.png" />
     <None Include="Resources\image-remove-icon.png" />

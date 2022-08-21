@@ -6429,7 +6429,10 @@ namespace Watch_Face_Editor
             string functionText = File.ReadAllText(fileHame);
             functionText = functionText.Replace("\r", "");
             functionText = functionText.Replace("\n", Environment.NewLine);
-            functionText = functionText.Replace("{px:n}", "px:n");
+            Regex regex = new Regex(@"{px:\w}");
+            functionText = regex.Replace(functionText, "px:x");
+            //functionText = functionText.Replace("{px:n}", "px:n");
+            //functionText = functionText.Replace("{px:g}", "px:g");
             string functionName = "";
             while (functionName != "init_view()" && functionText.Length > 10)
             {
@@ -6441,6 +6444,8 @@ namespace Watch_Face_Editor
             Watch_Face.WatchFace_Info = new WatchFace_Info();
             Watch_Face.ScreenNormal = new ScreenNormal();
             Watch_Face.ScreenAOD = new ScreenAOD();
+            bool firstImgNormal = true;
+            bool firstImgAOD = true;
 
             foreach (string parametrString in functionsList)
             {
@@ -7282,8 +7287,32 @@ namespace Watch_Face_Editor
                                 }
                             }
 
+                            if (objectName.Length==0)
+                            {
+                                if (firstImgNormal && img.show_level == "ONLY_NORMAL")
+                                {
+                                    firstImgNormal = false;
+                                    if ((img.w == 454 && img.h == 454) || (img.w == 480 && img.h == 480) || (img.w == 390 && img.h == 450))
+                                    {
+                                        if (Watch_Face.ScreenNormal.Background == null)
+                                            Watch_Face.ScreenNormal.Background = new Background();
+                                        Watch_Face.ScreenNormal.Background.BackgroundImage = img; 
+                                    }
+                                }
+                                else if (firstImgAOD && img.show_level == "ONAL_AOD")
+                                {
+                                    firstImgAOD = false;
+                                    if ((img.w == 454 && img.h == 454) || (img.w == 480 && img.h == 480) || (img.w == 390 && img.h == 450))
+                                    {
+                                        if (Watch_Face.ScreenAOD.Background == null)
+                                            Watch_Face.ScreenAOD.Background = new Background();
+                                        Watch_Face.ScreenAOD.Background.BackgroundImage = img; 
+                                    }
+                                }
+                            };
 
-                        break;
+
+                            break;
                         #endregion
 
                         #region FILL_RECT
@@ -7376,13 +7405,13 @@ namespace Watch_Face_Editor
                         case "TIME_POINTER":
                             ElementAnalogTime pointer_time = Object_AnalogTime(parametrs);
                             elementsList = null;
-                            if (objectName.StartsWith("normal"))
+                            if (pointer_time.show_level == "ONLY_NORMAL" || objectName.StartsWith("normal"))
                             {
                                 if (Watch_Face.ScreenNormal.Elements == null)
                                     Watch_Face.ScreenNormal.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenNormal.Elements;
                             }
-                            else if (objectName.StartsWith("idle"))
+                            else if (pointer_time.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
                             {
                                 if (Watch_Face.ScreenAOD.Elements == null)
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
@@ -7540,7 +7569,7 @@ namespace Watch_Face_Editor
                         case "DATE_POINTER":
                             hmUI_widget_IMG_POINTER img_pointer = Object_DATE_POINTER(parametrs);
                             elementsList = null;
-                            if (img_pointer.show_level == "ONLY_NORMAL" || img_pointer.show_level == "ONLY_NORMAL" || objectName.StartsWith("normal"))
+                            if (img_pointer.show_level == "ONLY_NORMAL" || objectName.StartsWith("normal"))
                             {
                                 if (Watch_Face.ScreenNormal.Elements == null)
                                     Watch_Face.ScreenNormal.Elements = new List<object>();
@@ -11232,6 +11261,7 @@ namespace Watch_Face_Editor
                 valueLenght = str.IndexOf("}),");
                 int posIf = str.IndexOf("if (screenType");
                 if (posIf >= 0 && posIf < valueLenght) valueLenght = str.IndexOf("};")-1;
+                if (valueLenght < 0 && str.EndsWith("})")) valueLenght = str.Length - 3;
                 if (valueLenght >= 0) valueLenght = valueLenght + 2;
             }
 
@@ -11244,7 +11274,10 @@ namespace Watch_Face_Editor
             List<string> GetParametrsList = new List<string>();
 
             int valueLenght = str.IndexOf("});") + 2;
-            if(valueLenght == 1)
+            int strCount = str.Split(new string[] { "\n" }, StringSplitOptions.None).Count() - 1;
+            int i1 = str.IndexOf("hmUI.createWidget");
+            if (valueLenght == 1 || strCount<5)
+            //if (valueLenght == 1 || valueLenght>1000)
             {
                 return GetFunctionsList_v2(str);
             }
@@ -11367,9 +11400,9 @@ namespace Watch_Face_Editor
 
             int startIndex = str.IndexOf("hmUI.widget.") + "hmUI.widget.".Length;
             int endIndex = str.IndexOf(",", startIndex);
-            if (str.IndexOf(")", startIndex) < endIndex)
+            if (str.IndexOf("}", startIndex) < endIndex)
             {
-                endIndex = str.IndexOf(")", startIndex);
+                endIndex = str.IndexOf("}", startIndex);
                 if (startIndex < 12 || endIndex < 0)
                     return returnParametrs;
                 string valueStrType = str.Substring(startIndex, endIndex - startIndex);
@@ -11504,7 +11537,7 @@ namespace Watch_Face_Editor
                     elementDigitalTime.Hour.align = parametrs["hour_align"].Replace("hmUI.align.", "");
                 if (parametrs.ContainsKey("hour_unit_en"))
                 {
-                    imgName = parametrs["hour_unit_en"].Replace("'", "");
+                    imgName = parametrs["hour_unit_en"].Replace("'", "").Replace("\"", "");
                     imgName = Path.GetFileNameWithoutExtension(imgName);
                     elementDigitalTime.Hour.unit = imgName;
                 }
@@ -11543,7 +11576,7 @@ namespace Watch_Face_Editor
                     elementDigitalTime.Minute.align = parametrs["minute_align"].Replace("hmUI.align.", "");
                 if (parametrs.ContainsKey("minute_unit_en"))
                 {
-                    imgName = parametrs["minute_unit_en"].Replace("'", "");
+                    imgName = parametrs["minute_unit_en"].Replace("'", "").Replace("\"", "");
                     imgName = Path.GetFileNameWithoutExtension(imgName);
                     elementDigitalTime.Minute.unit = imgName;
                 }
@@ -11588,7 +11621,7 @@ namespace Watch_Face_Editor
                     elementDigitalTime.Second.align = parametrs["second_align"].Replace("hmUI.align.", "");
                 if (parametrs.ContainsKey("second_unit_en"))
                 {
-                    imgName = parametrs["second_unit_en"].Replace("'", "");
+                    imgName = parametrs["second_unit_en"].Replace("'", "").Replace("\"", "");
                     imgName = Path.GetFileNameWithoutExtension(imgName);
                     elementDigitalTime.Second.unit = imgName;
                 }
@@ -11613,7 +11646,7 @@ namespace Watch_Face_Editor
             if (parametrs.ContainsKey("am_en_path"))
             {
                 elementDigitalTime.AmPm = new hmUI_widget_IMG_TIME_am_pm();
-                string imgName = parametrs["am_en_path"].Replace("'", "");
+                string imgName = parametrs["am_en_path"].Replace("'", "").Replace("\"", "");
                 imgName = Path.GetFileNameWithoutExtension(imgName);
                 elementDigitalTime.AmPm.am_img = imgName;
                 if (parametrs.ContainsKey("am_x") && Int32.TryParse(parametrs["am_x"], out value))
@@ -11623,7 +11656,7 @@ namespace Watch_Face_Editor
 
                 if (parametrs.ContainsKey("pm_en_path"))
                 {
-                    imgName = parametrs["pm_en_path"].Replace("'", "");
+                    imgName = parametrs["pm_en_path"].Replace("'", "").Replace("\"", "");
                     imgName = Path.GetFileNameWithoutExtension(imgName);
                     elementDigitalTime.AmPm.pm_img = imgName;
                 }
@@ -11654,7 +11687,7 @@ namespace Watch_Face_Editor
             if (parametrs.ContainsKey("hour_path"))
             {
                 elementAnalogTime.Hour = new hmUI_widget_IMG_POINTER();
-                string imgName = parametrs["hour_path"].Replace("'", "");
+                string imgName = parametrs["hour_path"].Replace("'", "").Replace("\"", "");
                 imgName = Path.GetFileNameWithoutExtension(imgName);
                 elementAnalogTime.Hour.src = imgName;
 
@@ -11670,7 +11703,7 @@ namespace Watch_Face_Editor
 
                 if (parametrs.ContainsKey("hour_cover_path"))
                 {
-                    imgName = parametrs["hour_cover_path"].Replace("'", "");
+                    imgName = parametrs["hour_cover_path"].Replace("'", "").Replace("\"", "");
                     imgName = Path.GetFileNameWithoutExtension(imgName);
                     elementAnalogTime.Hour.cover_path = imgName;
 
@@ -11678,6 +11711,13 @@ namespace Watch_Face_Editor
                         elementAnalogTime.Hour.cover_x = value;
                     if (parametrs.ContainsKey("hour_cover_y") && Int32.TryParse(parametrs["hour_cover_y"], out value))
                         elementAnalogTime.Hour.cover_y = value;
+                }
+
+                if (parametrs.ContainsKey("show_level"))
+                {
+                    imgName = parametrs["show_level"].Replace("hmUI.show_level.", "");
+                    elementAnalogTime.Hour.show_level = imgName;
+                    elementAnalogTime.show_level = imgName;
                 }
 
                 elementAnalogTime.Hour.visible = true;
@@ -11688,7 +11728,7 @@ namespace Watch_Face_Editor
             if (parametrs.ContainsKey("minute_path"))
             {
                 elementAnalogTime.Minute = new hmUI_widget_IMG_POINTER();
-                string imgName = parametrs["minute_path"].Replace("'", "");
+                string imgName = parametrs["minute_path"].Replace("'", "").Replace("\"", "");
                 imgName = Path.GetFileNameWithoutExtension(imgName);
                 elementAnalogTime.Minute.src = imgName;
 
@@ -11704,7 +11744,7 @@ namespace Watch_Face_Editor
 
                 if (parametrs.ContainsKey("minute_cover_path"))
                 {
-                    imgName = parametrs["minute_cover_path"].Replace("'", "");
+                    imgName = parametrs["minute_cover_path"].Replace("'", "").Replace("\"", "");
                     imgName = Path.GetFileNameWithoutExtension(imgName);
                     elementAnalogTime.Minute.cover_path = imgName;
 
@@ -11712,6 +11752,13 @@ namespace Watch_Face_Editor
                         elementAnalogTime.Minute.cover_x = value;
                     if (parametrs.ContainsKey("minute_cover_y") && Int32.TryParse(parametrs["minute_cover_y"], out value))
                         elementAnalogTime.Minute.cover_y = value;
+                }
+
+                if (parametrs.ContainsKey("show_level"))
+                {
+                    imgName = parametrs["show_level"].Replace("hmUI.show_level.", "");
+                    elementAnalogTime.Minute.show_level = imgName;
+                    elementAnalogTime.show_level = imgName;
                 }
 
                 elementAnalogTime.Minute.visible = true;
@@ -11722,7 +11769,7 @@ namespace Watch_Face_Editor
             if (parametrs.ContainsKey("second_path"))
             {
                 elementAnalogTime.Second = new hmUI_widget_IMG_POINTER();
-                string imgName = parametrs["second_path"].Replace("'", "");
+                string imgName = parametrs["second_path"].Replace("'", "").Replace("\"", "");
                 imgName = Path.GetFileNameWithoutExtension(imgName);
                 elementAnalogTime.Second.src = imgName;
 
@@ -11738,7 +11785,7 @@ namespace Watch_Face_Editor
 
                 if (parametrs.ContainsKey("second_cover_path"))
                 {
-                    imgName = parametrs["second_cover_path"].Replace("'", "");
+                    imgName = parametrs["second_cover_path"].Replace("'", "").Replace("\"", "");
                     imgName = Path.GetFileNameWithoutExtension(imgName);
                     elementAnalogTime.Second.cover_path = imgName;
 
@@ -11748,11 +11795,17 @@ namespace Watch_Face_Editor
                         elementAnalogTime.Second.cover_y = value;
                 }
 
+                if (parametrs.ContainsKey("show_level"))
+                {
+                    imgName = parametrs["show_level"].Replace("hmUI.show_level.", "");
+                    elementAnalogTime.Second.show_level = imgName;
+                    elementAnalogTime.show_level = imgName;
+                }
+
                 elementAnalogTime.Second.visible = true;
                 elementAnalogTime.Second.position = index;
                 index++;
             }
-
             return elementAnalogTime;
         }
 
@@ -11763,7 +11816,7 @@ namespace Watch_Face_Editor
             //int index = 1;
             if (parametrs.ContainsKey("src"))
             {
-                string imgName = parametrs["src"].Replace("'", "");
+                string imgName = parametrs["src"].Replace("'", "").Replace("\"", "");
                 imgName = Path.GetFileNameWithoutExtension(imgName);
                 elementPointer.src = imgName;
 
@@ -11784,7 +11837,7 @@ namespace Watch_Face_Editor
 
                 if (parametrs.ContainsKey("cover_path"))
                 {
-                    imgName = parametrs["cover_path"].Replace("'", "");
+                    imgName = parametrs["cover_path"].Replace("'", "").Replace("\"", "");
                     imgName = Path.GetFileNameWithoutExtension(imgName);
                     elementPointer.cover_path = imgName;
 
@@ -11796,7 +11849,7 @@ namespace Watch_Face_Editor
 
                 if (parametrs.ContainsKey("scale_en"))
                 {
-                    imgName = parametrs["scale_en"].Replace("'", "");
+                    imgName = parametrs["scale_en"].Replace("'", "").Replace("\"", "");
                     imgName = Path.GetFileNameWithoutExtension(imgName);
                     elementPointer.scale = imgName;
 
@@ -11833,7 +11886,7 @@ namespace Watch_Face_Editor
             //int index = 1;
             if (parametrs.ContainsKey("src"))
             {
-                string imgName = parametrs["src"].Replace("'", "");
+                string imgName = parametrs["src"].Replace("'", "").Replace("\"", "");
                 imgName = Path.GetFileNameWithoutExtension(imgName);
                 elementPointer.src = imgName;
 
@@ -11854,7 +11907,7 @@ namespace Watch_Face_Editor
 
                 if (parametrs.ContainsKey("cover_path"))
                 {
-                    imgName = parametrs["cover_path"].Replace("'", "");
+                    imgName = parametrs["cover_path"].Replace("'", "").Replace("\"", "");
                     imgName = Path.GetFileNameWithoutExtension(imgName);
                     elementPointer.cover_path = imgName;
 
@@ -11866,7 +11919,7 @@ namespace Watch_Face_Editor
 
                 if (parametrs.ContainsKey("scale_en"))
                 {
-                    imgName = parametrs["scale_en"].Replace("'", "");
+                    imgName = parametrs["scale_en"].Replace("'", "").Replace("\"", "");
                     imgName = Path.GetFileNameWithoutExtension(imgName);
                     elementPointer.scale = imgName;
 
@@ -11903,7 +11956,7 @@ namespace Watch_Face_Editor
             int index = 1;
             if (parametrs.ContainsKey("day_en_array"))
             {
-                if (!parametrs.ContainsKey("day_is_character") || parametrs["day_is_character"] == "false")
+                if (!parametrs.ContainsKey("day_is_character") || !StringToBool(parametrs["day_is_character"]))
                 {
                     hmUI_widget_IMG_NUMBER dayNumber = new hmUI_widget_IMG_NUMBER();
                     string[] day_array = parametrs["day_en_array"].Split(',');
@@ -11926,7 +11979,7 @@ namespace Watch_Face_Editor
                         dayNumber.align = parametrs["day_align"].Replace("hmUI.align.", "");
                     if (parametrs.ContainsKey("day_unit_en"))
                     {
-                        imgName = parametrs["day_unit_en"].Replace("'", "");
+                        imgName = parametrs["day_unit_en"].Replace("'", "").Replace("\"", "");
                         imgName = Path.GetFileNameWithoutExtension(imgName);
                         dayNumber.unit = imgName;
                     }
@@ -11939,6 +11992,12 @@ namespace Watch_Face_Editor
                     dayNumber.visible = true;
                     dayNumber.position = index;
                     dayNumber.type = "DAY";
+
+                    if (parametrs.ContainsKey("show_level"))
+                    {
+                        imgName = parametrs["show_level"].Replace("hmUI.show_level.", "");
+                        dayNumber.show_level = imgName;
+                    }
                     index++;
 
                     elementImgDate.Add(dayNumber);
@@ -11947,7 +12006,7 @@ namespace Watch_Face_Editor
 
             if (parametrs.ContainsKey("month_en_array"))
             {
-                if (!parametrs.ContainsKey("month_is_character") || parametrs["month_is_character"] == "false")
+                if (!parametrs.ContainsKey("month_is_character") || !StringToBool(parametrs["month_is_character"]))
                 {
                     hmUI_widget_IMG_NUMBER monthNumber = new hmUI_widget_IMG_NUMBER();
                     string[] month_array = parametrs["month_en_array"].Split(',');
@@ -11970,13 +12029,19 @@ namespace Watch_Face_Editor
                         monthNumber.align = parametrs["month_align"].Replace("hmUI.align.", "");
                     if (parametrs.ContainsKey("month_unit_en"))
                     {
-                        imgName = parametrs["month_unit_en"].Replace("'", "");
+                        imgName = parametrs["month_unit_en"].Replace("'", "").Replace("\"", "");
                         imgName = Path.GetFileNameWithoutExtension(imgName);
                         monthNumber.unit = imgName;
                     }
                     monthNumber.visible = true;
                     monthNumber.position = index;
                     monthNumber.type = "MONTH";
+
+                    if (parametrs.ContainsKey("show_level"))
+                    {
+                        imgName = parametrs["show_level"].Replace("hmUI.show_level.", "");
+                        monthNumber.show_level = imgName;
+                    }
                     index++;
 
                     elementImgDate.Add(monthNumber);
@@ -11985,7 +12050,7 @@ namespace Watch_Face_Editor
 
             if (parametrs.ContainsKey("year_en_array"))
             {
-                if (!parametrs.ContainsKey("year_is_character") || parametrs["year_is_character"] == "false")
+                if (!parametrs.ContainsKey("year_is_character") || !StringToBool(parametrs["year_is_character"]))
                 {
                     hmUI_widget_IMG_NUMBER yearNumber = new hmUI_widget_IMG_NUMBER();
                     string[] year_array = parametrs["year_en_array"].Split(',');
@@ -12008,14 +12073,19 @@ namespace Watch_Face_Editor
                         yearNumber.align = parametrs["year_align"].Replace("hmUI.align.", "");
                     if (parametrs.ContainsKey("year_unit_en"))
                     {
-                        imgName = parametrs["year_unit_en"].Replace("'", "");
+                        imgName = parametrs["year_unit_en"].Replace("'", "").Replace("\"", "");
                         imgName = Path.GetFileNameWithoutExtension(imgName);
                         yearNumber.unit = imgName;
                     }
                     yearNumber.visible = true;
                     yearNumber.position = index;
                     yearNumber.type = "YEAR";
-                    index++;
+
+                    if (parametrs.ContainsKey("show_level"))
+                    {
+                        imgName = parametrs["show_level"].Replace("hmUI.show_level.", "");
+                        yearNumber.show_level = imgName;
+                    }
 
                     elementImgDate.Add(yearNumber);
                 }
@@ -12032,7 +12102,7 @@ namespace Watch_Face_Editor
             int index = 1;
             if (parametrs.ContainsKey("day_en_array"))
             {
-                if (parametrs.ContainsKey("day_is_character") && parametrs["day_is_character"] == "true")
+                if (parametrs.ContainsKey("day_is_character") && StringToBool(parametrs["day_is_character"]))
                 {
                     hmUI_widget_IMG_LEVEL dayNumber = new hmUI_widget_IMG_LEVEL();
                     string[] day_array = parametrs["day_en_array"].Split(',');
@@ -12052,6 +12122,12 @@ namespace Watch_Face_Editor
                     dayNumber.visible = true;
                     dayNumber.position = index;
                     dayNumber.type = "DAY";
+
+                    if (parametrs.ContainsKey("show_level"))
+                    {
+                        imgName = parametrs["show_level"].Replace("hmUI.show_level.", "");
+                        dayNumber.show_level = imgName;
+                    }
                     index++;
 
                     elementImgLevelDate.Add(dayNumber);
@@ -12060,7 +12136,7 @@ namespace Watch_Face_Editor
 
             if (parametrs.ContainsKey("month_en_array"))
             {
-                if (parametrs.ContainsKey("month_is_character") && parametrs["month_is_character"] == "true")
+                if (parametrs.ContainsKey("month_is_character") && StringToBool(parametrs["month_is_character"]))
                 {
                     hmUI_widget_IMG_LEVEL monthNumber = new hmUI_widget_IMG_LEVEL();
                     string[] month_array = parametrs["month_en_array"].Split(',');
@@ -12074,6 +12150,12 @@ namespace Watch_Face_Editor
                     monthNumber.visible = true;
                     monthNumber.position = index;
                     monthNumber.type = "MONTH";
+
+                    if (parametrs.ContainsKey("show_level"))
+                    {
+                        imgName = parametrs["show_level"].Replace("hmUI.show_level.", "");
+                        monthNumber.show_level = imgName;
+                    }
                     index++;
 
                     elementImgLevelDate.Add(monthNumber);
@@ -12082,7 +12164,7 @@ namespace Watch_Face_Editor
 
             if (parametrs.ContainsKey("year_en_array"))
             {
-                if (parametrs.ContainsKey("year_is_character") && parametrs["year_is_character"] == "true")
+                if (parametrs.ContainsKey("year_is_character") && StringToBool(parametrs["year_is_character"]))
                 {
                     hmUI_widget_IMG_LEVEL yearNumber = new hmUI_widget_IMG_LEVEL();
                     string[] year_array = parametrs["year_en_array"].Split(',');
@@ -12096,7 +12178,12 @@ namespace Watch_Face_Editor
                     yearNumber.visible = true;
                     yearNumber.position = index;
                     yearNumber.type = "YEAR";
-                    index++;
+
+                    if (parametrs.ContainsKey("show_level"))
+                    {
+                        imgName = parametrs["show_level"].Replace("hmUI.show_level.", "");
+                        yearNumber.show_level = imgName;
+                    }
 
                     elementImgLevelDate.Add(yearNumber);
                 }
@@ -12256,31 +12343,31 @@ namespace Watch_Face_Editor
                 if (parametrs.ContainsKey("align_h")) imgNumber.align = parametrs["align_h"].Replace("hmUI.align.","");
                 if (parametrs.ContainsKey("unit_en") && parametrs["unit_en"].Length > 0) 
                 {
-                    imgName = parametrs["unit_en"].Replace("'", "");
+                    imgName = parametrs["unit_en"].Replace("'", "").Replace("\"", "");
                     imgName = Path.GetFileNameWithoutExtension(imgName);
                     imgNumber.unit = imgName;
                 }
                 if (parametrs.ContainsKey("imperial_unit_en") && parametrs["imperial_unit_en"].Length > 0)
                 {
-                    imgName = parametrs["imperial_unit_en"].Replace("'", "");
+                    imgName = parametrs["imperial_unit_en"].Replace("'", "").Replace("\"", "");
                     imgName = Path.GetFileNameWithoutExtension(imgName);
                     imgNumber.unit = imgName;
                 }
                 if (parametrs.ContainsKey("negative_image") && parametrs["negative_image"].Length > 0)
                 {
-                    imgName = parametrs["negative_image"].Replace("'", "");
+                    imgName = parametrs["negative_image"].Replace("'", "").Replace("\"", "");
                     imgName = Path.GetFileNameWithoutExtension(imgName);
                     imgNumber.negative_image = imgName;
                 }
                 if (parametrs.ContainsKey("invalid_image") && parametrs["invalid_image"].Length > 0)
                 {
-                    imgName = parametrs["invalid_image"].Replace("'", "");
+                    imgName = parametrs["invalid_image"].Replace("'", "").Replace("\"", "");
                     imgName = Path.GetFileNameWithoutExtension(imgName);
                     imgNumber.invalid_image = imgName;
                 }
                 if (parametrs.ContainsKey("dot_image") && parametrs["dot_image"].Length > 0)
                 {
-                    imgName = parametrs["dot_image"].Replace("'", "");
+                    imgName = parametrs["dot_image"].Replace("'", "").Replace("\"", "");
                     imgName = Path.GetFileNameWithoutExtension(imgName);
                     imgNumber.dot_image = imgName;
                 }
@@ -12403,7 +12490,7 @@ namespace Watch_Face_Editor
             int value;
             if (parametrs.ContainsKey("src"))
             {
-                string imgName = parametrs["src"].Replace("'", "");
+                string imgName = parametrs["src"].Replace("'", "").Replace("\"", "");
                 imgName = Path.GetFileNameWithoutExtension(imgName);
                 img_status.src = imgName;
 
@@ -12434,7 +12521,7 @@ namespace Watch_Face_Editor
             int value;
             if (parametrs.ContainsKey("src"))
             {
-                string imgName = parametrs["src"].Replace("'", "");
+                string imgName = parametrs["src"].Replace("'", "").Replace("\"", "");
                 imgName = Path.GetFileNameWithoutExtension(imgName);
                 img_shortcut.src = imgName;
 
@@ -12608,6 +12695,7 @@ namespace Watch_Face_Editor
             bool returnValue = false;
             str = str.ToLower();
             if (str == "1") returnValue = true;
+            if (str == "!0") returnValue = true;
             if (str == "true") returnValue = true;
             return returnValue;
         }
