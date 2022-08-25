@@ -287,6 +287,9 @@ namespace Watch_Face_Editor
                 case "Українська":
                     richTextBox_Tips.Rtf = Properties.Resources.tips_uk;
                     break;
+                case "Chinese/简体中文":
+                    richTextBox_Tips.Rtf = Properties.Resources.tips_zh;
+                    break;
                 default:
                     richTextBox_Tips.Rtf = Properties.Resources.tips_en;
                     break;

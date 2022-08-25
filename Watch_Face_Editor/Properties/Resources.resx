@@ -184,4 +184,7 @@
   <data name="tips_uk" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tips_uk.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
+  <data name="tips_zh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tips_zh.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
 </root>
