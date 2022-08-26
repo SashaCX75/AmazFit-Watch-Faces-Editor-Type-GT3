@@ -7339,15 +7339,6 @@ namespace Watch_Face_Editor
 
                                 int width = 0;
 
-                                if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
-                                {
-                                    if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
-                                        width = Watch_Face.ScreenNormal.Background.BackgroundColor.w;
-                                    if (Watch_Face.ScreenNormal.Background.BackgroundImage != null &&
-                                        Watch_Face.ScreenNormal.Background.BackgroundImage.w != null)
-                                        width = (int)Watch_Face.ScreenNormal.Background.BackgroundImage.w;
-                                }
-
                                 if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
                                 {
                                     if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
@@ -7355,6 +7346,15 @@ namespace Watch_Face_Editor
                                     if (Watch_Face.ScreenAOD.Background.BackgroundImage != null &&
                                         Watch_Face.ScreenAOD.Background.BackgroundImage.w != null)
                                         width = (int)Watch_Face.ScreenAOD.Background.BackgroundImage.w;
+                                }
+
+                                if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
+                                {
+                                    if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
+                                        width = Watch_Face.ScreenNormal.Background.BackgroundColor.w;
+                                    if (Watch_Face.ScreenNormal.Background.BackgroundImage != null &&
+                                        Watch_Face.ScreenNormal.Background.BackgroundImage.w != null)
+                                        width = (int)Watch_Face.ScreenNormal.Background.BackgroundImage.w;
                                 }
 
                                 switch (width)

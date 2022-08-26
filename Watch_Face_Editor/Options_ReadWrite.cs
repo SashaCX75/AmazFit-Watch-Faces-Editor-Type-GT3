@@ -1268,12 +1268,12 @@ namespace Watch_Face_Editor
                     background.BackgroundImage.y = 0;
                     background.BackgroundImage.h = 454;
                     background.BackgroundImage.w = 454;
-                    if (Form_Preview.Watch_Model == "GTR 3 Pro")
+                    if (ProgramSettings.Watch_Model == "GTR 3 Pro")
                     {
                         background.BackgroundImage.h = 480;
                         background.BackgroundImage.w = 480;
                     }
-                    if (Form_Preview.Watch_Model == "GTS 3")
+                    if (ProgramSettings.Watch_Model == "GTS 3")
                     {
                         background.BackgroundImage.h = 450;
                         background.BackgroundImage.w = 390;

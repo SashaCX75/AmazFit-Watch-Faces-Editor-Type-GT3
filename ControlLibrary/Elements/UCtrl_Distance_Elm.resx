@@ -241,7 +241,7 @@
     <value>3</value>
   </data>
   <data name="button_ElementName.Text" xml:space="preserve">
-    <value>Путь</value>
+    <value>Дистанция</value>
   </data>
   <data name="&gt;&gt;pictureBox_Del.Type" xml:space="preserve">
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
