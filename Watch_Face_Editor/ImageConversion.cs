@@ -12,7 +12,7 @@ namespace Watch_Face_Editor
     public partial class Form1 : Form
     {
         /// <summary>Преобразуем Tga в Png</summary>
-        private string TgaToPng(string file, string targetFile)
+        private string TgaToPng(string file, string targetFile, string model)
         {
             string path = "";
             if (File.Exists(file))
@@ -54,8 +54,11 @@ namespace Watch_Face_Editor
                     ImageMagick.IMagickImage Blue = image.Separate(ImageMagick.Channels.Blue).First();
                     ImageMagick.IMagickImage Red = image.Separate(ImageMagick.Channels.Red).First(); 
                     ImageMagick.IMagickImage Alpha = image.Separate(ImageMagick.Channels.Red).First();
-                    image.Composite(Red, ImageMagick.CompositeOperator.Replace, ImageMagick.Channels.Blue);
-                    image.Composite(Blue, ImageMagick.CompositeOperator.Replace, ImageMagick.Channels.Red);
+                    if (model != "Amazfit Band 7")
+                    {
+                        image.Composite(Red, ImageMagick.CompositeOperator.Replace, ImageMagick.Channels.Blue);
+                        image.Composite(Blue, ImageMagick.CompositeOperator.Replace, ImageMagick.Channels.Red); 
+                    }
                     if (!colored) 
                         //if (!colored)
                         {
@@ -80,7 +83,7 @@ namespace Watch_Face_Editor
         }
 
         /// <summary>Преобразуем Png в Tga</summary>
-        private string PngToTga(string fileNameFull, string targetFolder)
+        private string PngToTga(string fileNameFull, string targetFolder, string model)
         {
             if (File.Exists(fileNameFull))
             {
@@ -106,19 +109,22 @@ namespace Watch_Face_Editor
                     ImageWidth = image.Width;
                     int newWidth = ImageWidth;
                     int newHeight = image.Height;
-                    while (newWidth % 16 != 0)
+                    if (model != "Amazfit Band 7")
                     {
-                        newWidth++;
-                    }
+                        while (newWidth % 16 != 0)
+                        {
+                            newWidth++;
+                        }
 
-                    if (ImageWidth != newWidth)
-                    {
-                        Bitmap bitmap = image.ToBitmap();
-                        Bitmap bitmapNew = new Bitmap(newWidth, newHeight);
-                        Graphics gfx = Graphics.FromImage(bitmapNew);
-                        gfx.DrawImage(bitmap, 0, 0, bitmap.Width, bitmap.Height);
-                        image = new ImageMagick.MagickImage(bitmapNew);
-                        image_temp = new ImageMagick.MagickImage(bitmapNew);
+                        if (ImageWidth != newWidth)
+                        {
+                            Bitmap bitmap = image.ToBitmap();
+                            Bitmap bitmapNew = new Bitmap(newWidth, newHeight);
+                            Graphics gfx = Graphics.FromImage(bitmapNew);
+                            gfx.DrawImage(bitmap, 0, 0, bitmap.Width, bitmap.Height);
+                            image = new ImageMagick.MagickImage(bitmapNew);
+                            image_temp = new ImageMagick.MagickImage(bitmapNew);
+                        } 
                     }
                     ImageMagick.Pixel pixel = image.GetPixels().GetPixel(0, 0);
                     //pixel = new ImageMagick.Pixel(0, 0, 4);

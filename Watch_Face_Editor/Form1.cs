@@ -19,6 +19,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace Watch_Face_Editor
 {
@@ -224,6 +225,9 @@ namespace Watch_Face_Editor
                     break;
                 case "T-Rex 2":
                     textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_T_Rex_2;
+                    break;
+                case "Amazfit Band 7":
+                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_Amazfit_Band_7;
                     break;
             }
 
@@ -487,6 +491,7 @@ namespace Watch_Face_Editor
                 if (comboBox_watch_model.Text == "GTR 3 Pro") ProgramSettings.WatchSkin_GTR_3_Pro = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "GTS 3") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "T-Rex 2") ProgramSettings.WatchSkin_T_Rex_2 = textBox_WatchSkin_Path.Text;
+                if (comboBox_watch_model.Text == "Amazfit Band 7") ProgramSettings.WatchSkin_Amazfit_Band_7 = textBox_WatchSkin_Path.Text;
             }
 
             string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
@@ -552,6 +557,9 @@ namespace Watch_Face_Editor
                     break;
                 case "T-Rex 2":
                     FormName = "T-Rex 2 watch face editor";
+                    break;
+                case "Amazfit Band 7":
+                    FormName = "Amazfit Band 7 watch face editor";
                     break;
                 default:
                     FormName = "GTR 3 watch face editor";
@@ -650,6 +658,9 @@ namespace Watch_Face_Editor
                         break;
                     case "T-Rex 2":
                         ProgramSettings.WatchSkin_T_Rex_2 = textBox_WatchSkin_Path.Text;
+                        break;
+                    case "Amazfit Band 7":
+                        ProgramSettings.WatchSkin_Amazfit_Band_7 = textBox_WatchSkin_Path.Text;
                         break;
                 }
 
@@ -1824,6 +1835,9 @@ namespace Watch_Face_Editor
                     case "T_Rex_2":
                         comboBox_watch_model.Text = "T-Rex 2";
                         break;
+                    case "Amazfit_Band_7":
+                        comboBox_watch_model.Text = "Amazfit Band 7";
+                        break;
                     default:
                         comboBox_watch_model.Text = "GTR 3";
                         break;
@@ -2104,6 +2118,14 @@ namespace Watch_Face_Editor
                         Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
                         Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
                         break;
+                    case "Amazfit Band 7":
+                        Watch_Face.WatchFace_Info.DeviceName = "Amazfit_Band_7";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 368;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 194;
+                        break;
                 }
 
                 string JSON_String = JsonConvert.SerializeObject(Watch_Face, Formatting.Indented, new JsonSerializerSettings
@@ -2213,6 +2235,14 @@ namespace Watch_Face_Editor
                         Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
                         Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
                         Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
+                        break;
+                    case "Amazfit Band 7":
+                        Watch_Face.WatchFace_Info.DeviceName = "Amazfit_Band_7";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 368;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 194;
                         break;
                 }
 
@@ -2358,6 +2388,10 @@ namespace Watch_Face_Editor
             {
                 bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
             }
+            else if (ProgramSettings.Watch_Model == "Amazfit Band 7")
+            {
+                bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
+            }
             Graphics gPanel = Graphics.FromImage(bitmap);
             #endregion
 
@@ -2435,6 +2469,10 @@ namespace Watch_Face_Editor
                     {
                         bitmapPreviewResize = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
                     }
+                    if (ProgramSettings.Watch_Model == "Amazfit Band 7")
+                    {
+                        bitmapPreviewResize = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
+                    }
                     Graphics gPanelPreviewResize = Graphics.FromImage(bitmapPreviewResize);
                     #endregion
 
@@ -2482,6 +2520,10 @@ namespace Watch_Face_Editor
             if (ProgramSettings.Watch_Model == "GTS 3")
             {
                 bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
+            }
+            if (ProgramSettings.Watch_Model == "Amazfit Band 7")
+            {
+                bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
             }
             Graphics gPanel = Graphics.FromImage(bitmap);
             #endregion
@@ -2973,6 +3015,13 @@ namespace Watch_Face_Editor
                         Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
                         Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
                         break;
+                    case "Amazfit Band 7":
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 368;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 194;
+                        break;
                 }
                 Watch_Face.ScreenNormal.Background.visible = true;
                 JSON_Modified = true;
@@ -3006,6 +3055,13 @@ namespace Watch_Face_Editor
                         Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
                         Watch_Face.ScreenAOD.Background.BackgroundColor.h = 450;
                         Watch_Face.ScreenAOD.Background.BackgroundColor.w = 390;
+                        break;
+                    case "Amazfit Band 7":
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.x = 0;
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.h = 368;
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.w = 194;
                         break;
                 }
                 Watch_Face.ScreenAOD.Background.visible = true;
@@ -5170,6 +5226,7 @@ namespace Watch_Face_Editor
                 if (comboBox_watch_model.Text == "GTR 3 Pro") ProgramSettings.WatchSkin_GTR_3_Pro = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "GTS 3") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "T-Rex 2") ProgramSettings.WatchSkin_T_Rex_2 = textBox_WatchSkin_Path.Text;
+                if (comboBox_watch_model.Text == "Amazfit Band 7") ProgramSettings.WatchSkin_Amazfit_Band_7 = textBox_WatchSkin_Path.Text;
             }
 
             string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
@@ -5226,6 +5283,7 @@ namespace Watch_Face_Editor
                 if (comboBox_watch_model.Text == "GTR 3 Pro") ProgramSettings.WatchSkin_GTR_3_Pro = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "GTS 3") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "T-Rex 2") ProgramSettings.WatchSkin_T_Rex_2 = textBox_WatchSkin_Path.Text;
+                if (comboBox_watch_model.Text == "Amazfit Band 7") ProgramSettings.WatchSkin_Amazfit_Band_7 = textBox_WatchSkin_Path.Text;
             }
 
             string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
@@ -6476,6 +6534,10 @@ namespace Watch_Face_Editor
             {
                 pictureBox_Preview.Size = new Size((int)(198 * currentDPI), (int)(228 * currentDPI));
             }
+            else if (ProgramSettings.Watch_Model == "Amazfit Band 7")
+            {
+                pictureBox_Preview.Size = new Size((int)(100 * currentDPI), (int)(187 * currentDPI));
+            }
 
             // изменяем размер панели для предпросмотра если она не влазит
             if (pictureBox_Preview.Top + pictureBox_Preview.Height > label_watch_model.Top)
@@ -6634,6 +6696,40 @@ namespace Watch_Face_Editor
                         }
                     }
                     break;
+                case "Amazfit Band 7":
+                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_Amazfit_Band_7;
+
+                    if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
+                    Watch_Face.WatchFace_Info.DeviceName = "Amazfit_Band_7";
+
+                    if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
+                    {
+                        if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
+                        {
+                            Watch_Face.ScreenNormal.Background.BackgroundColor.w = 194;
+                            Watch_Face.ScreenNormal.Background.BackgroundColor.h = 368;
+                        }
+                        if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
+                        {
+                            Watch_Face.ScreenNormal.Background.BackgroundImage.w = 194;
+                            Watch_Face.ScreenNormal.Background.BackgroundImage.h = 368;
+                        }
+                    }
+
+                    if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
+                    {
+                        if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
+                        {
+                            Watch_Face.ScreenAOD.Background.BackgroundColor.w = 194;
+                            Watch_Face.ScreenAOD.Background.BackgroundColor.h = 368;
+                        }
+                        if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
+                        {
+                            Watch_Face.ScreenAOD.Background.BackgroundImage.w = 194;
+                            Watch_Face.ScreenAOD.Background.BackgroundImage.h = 368;
+                        }
+                    }
+                    break;
             }
 
             string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
@@ -6679,6 +6775,10 @@ namespace Watch_Face_Editor
                         background.BackgroundColor.h = 454;
                         background.BackgroundColor.w = 454;
                         break;
+                    case "Amazfit Band 7":
+                        background.BackgroundColor.h = 194;
+                        background.BackgroundColor.w = 368;
+                        break;
                 }
             }
             if (background.BackgroundImage != null)
@@ -6700,6 +6800,10 @@ namespace Watch_Face_Editor
                     case "T-Rex 2":
                         background.BackgroundImage.h = 454;
                         background.BackgroundImage.w = 454;
+                        break;
+                    case "Amazfit Band 7":
+                        background.BackgroundImage.h = 194;
+                        background.BackgroundImage.w = 368;
                         break;
                 }
             }
@@ -6732,8 +6836,8 @@ namespace Watch_Face_Editor
             foreach (FileInfo file in Images)
             {
                 progressBar1.Value++;
-                string fileNameFull = PngToTga(file.FullName, tempDir + @"\assets");
-                if (fileNameFull != null) ImageFix(fileNameFull);
+                string fileNameFull = PngToTga(file.FullName, tempDir + @"\assets", comboBox_watch_model.Text);
+                if (fileNameFull != null) ImageFix(fileNameFull, comboBox_watch_model.Text);
             }
 
             imagesFolder = FullFileDir + @"\assets\animation";
@@ -6745,8 +6849,8 @@ namespace Watch_Face_Editor
                 foreach (FileInfo file in Images)
                 {
                     progressBar1.Value++;
-                    string fileNameFull = PngToTga(file.FullName, tempDir + @"\assets\animation");
-                    if (fileNameFull != null) ImageFix(fileNameFull);
+                    string fileNameFull = PngToTga(file.FullName, tempDir + @"\assets\animation", comboBox_watch_model.Text);
+                    if (fileNameFull != null) ImageFix(fileNameFull, comboBox_watch_model.Text);
                 }
             }
 
@@ -6840,87 +6944,7 @@ namespace Watch_Face_Editor
             progressBar1.Visible = false;
         }
 
-        /// <summary>Преобразуем Png в Tga</summary>
-        private string PngToTga(string fileNameFull)
-        {
-            if (File.Exists(fileNameFull))
-            {
-                colorMapList.Clear();
-                try
-                {
-                    string fileName = Path.GetFileNameWithoutExtension(fileNameFull);
-                    //string path = Path.GetDirectoryName(fileNameFull);
-                    ImageMagick.MagickImage image = new ImageMagick.MagickImage(fileNameFull);
-                    ImageMagick.MagickImage image_temp = new ImageMagick.MagickImage(fileNameFull);
-                    ImageWidth = image.Width;
-                    int newWidth = ImageWidth;
-                    int newHeight = image.Height;
-                    while (newWidth % 16 != 0)
-                    {
-                        newWidth++;
-                    }
-
-                    if (ImageWidth != newWidth)
-                    {
-                        Bitmap bitmap = image.ToBitmap();
-                        Bitmap bitmapNew = new Bitmap(newWidth, newHeight);
-                        Graphics gfx = Graphics.FromImage(bitmapNew);
-                        gfx.DrawImage(bitmap, 0, 0, bitmap.Width, bitmap.Height);
-                        image = new ImageMagick.MagickImage(bitmapNew);
-                        image_temp = new ImageMagick.MagickImage(bitmapNew);
-                    }
-                    image.ColorType = ImageMagick.ColorType.Palette;
-                    if (image.ColorSpace != ImageMagick.ColorSpace.sRGB)
-                    {
-                        image = image_temp;
-                        ImageMagick.Pixel pixel = image.GetPixels().GetPixel(0, 0);
-                        ushort[] p;
-                        if (pixel[2] > 256)
-                        {
-                            if (pixel.Channels == 4) p = new ushort[] { pixel[0], pixel[1], (ushort)(pixel[2] - 256), pixel[3] };
-                            else p = new ushort[] { pixel[0], pixel[1], (ushort)(pixel[2] - 256) };
-                        }
-                        else
-                        {
-                            if (pixel.Channels == 4) p = new ushort[] { pixel[0], pixel[1], (ushort)(pixel[2] + 256), pixel[3] };
-                            else p = new ushort[] { pixel[0], pixel[1], (ushort)(pixel[2] + 256) };
-                        }
-                        image.GetPixels().SetPixel(0, 0, p);
-                        pixel = image.GetPixels().GetPixel(0, 0);
-                        image.ColorType = ImageMagick.ColorType.Palette;
-                        pixel = image.GetPixels().GetPixel(0, 0);
-                        if (image.ColorSpace != ImageMagick.ColorSpace.sRGB)
-                        {
-                            MessageBox.Show(Properties.FormStrings.Message_Image32bit +
-                                Environment.NewLine + fileNameFull, Properties.FormStrings.Message_Warning_Caption,
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return null;
-                        }
-                    }
-
-                    for (int i = 0; i < image.ColormapSize; i++)
-                    {
-
-                        colorMapList.Add(image.GetColormap(i));
-                    }
-                    //if (!Directory.Exists(targetFolder))
-                    //{
-                    //    Directory.CreateDirectory(targetFolder);
-                    //}
-                    //string newFileName = Path.Combine(targetFolder, fileName + ".tga");
-                    //image.Write(newFileName, ImageMagick.MagickFormat.Tga);
-                    //return newFileName;
-
-                }
-                catch (Exception exp)
-                {
-                    MessageBox.Show(Properties.FormStrings.Message_Wrong_Original_Image + Environment.NewLine + exp);
-                }
-            }
-            return null;
-        }
-
-        private void ImageFix(string fileNameFull)
+        private void ImageFix(string fileNameFull, string model)
         {
             if (File.Exists(fileNameFull))
             {
@@ -6970,7 +6994,7 @@ namespace Watch_Face_Editor
                         byte colorMapEntrySize = 32;
 
                         ColorMap.RestoreColor(colorMapList);
-                        ColorMap.ColorsFix(argb_brga, colorMapCount, colorMapEntrySize);
+                        ColorMap.ColorsFix(argb_brga, colorMapCount, colorMapEntrySize, model);
                         header.SetColorMapEntrySize(32);
                         #endregion
 
@@ -7053,6 +7077,12 @@ namespace Watch_Face_Editor
                     mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
                     PreviewHeight = 306;
                 }
+                if (ProgramSettings.Watch_Model == "Amazfit Band 7")
+                {
+                    bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
+                    mask = new Bitmap(Application.StartupPath + @"\Mask\mask_band_7.png");
+                    PreviewHeight = 288;
+                }
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
                 Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false, 
@@ -7107,6 +7137,12 @@ namespace Watch_Face_Editor
                     bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
                     mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
                     PreviewHeight = 306;
+                }
+                if (ProgramSettings.Watch_Model == "Amazfit Band 7")
+                {
+                    bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
+                    mask = new Bitmap(Application.StartupPath + @"\Mask\mask_band_7.png");
+                    PreviewHeight = 288;
                 }
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
@@ -7279,7 +7315,7 @@ namespace Watch_Face_Editor
                 foreach (string fileNames in allFiles)
                 {
                     //Console.WriteLine(fileNames);
-                    TgaToPng(tempDir + @"\assets" + fileNames, projectPath + @"\assets" + fileNames);
+                    TgaToPng(tempDir + @"\assets" + fileNames, projectPath + @"\assets" + fileNames, comboBox_watch_model.Text);
                     progress++;
                     progressBar1.Value = progress;
                 }
@@ -7368,6 +7404,9 @@ namespace Watch_Face_Editor
                                     case 390:
                                         Watch_Face.WatchFace_Info.DeviceName = "GTS3";
                                         break;
+                                    case 368:
+                                        Watch_Face.WatchFace_Info.DeviceName = "Amazfit_Band_7";
+                                        break;
 
                                     default:
                                         Background background = Watch_Face.ScreenNormal.Background;
@@ -7379,15 +7418,24 @@ namespace Watch_Face_Editor
                                         background.BackgroundColor.y = 0;
                                         background.BackgroundColor.h = 454;
                                         background.BackgroundColor.w = 454;
+                                        Watch_Face.WatchFace_Info.DeviceName = "GTR3";
                                         if (ProgramSettings.Watch_Model == "GTR 3 Pro")
                                         {
                                             background.BackgroundColor.h = 480;
                                             background.BackgroundColor.w = 480;
+                                            Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
                                         }
                                         if (ProgramSettings.Watch_Model == "GTS 3")
                                         {
                                             background.BackgroundColor.h = 450;
                                             background.BackgroundColor.w = 390;
+                                            Watch_Face.WatchFace_Info.DeviceName = "GTS3";
+                                        }
+                                        if (ProgramSettings.Watch_Model == "Amazfit Band 7")
+                                        {
+                                            background.BackgroundColor.h = 368;
+                                            background.BackgroundColor.w = 194;
+                                            Watch_Face.WatchFace_Info.DeviceName = "Amazfit_Band_7";
                                         }
                                         background.BackgroundImage = null;
                                         Watch_Face.ScreenNormal.Background = background;
@@ -13525,6 +13573,11 @@ namespace Watch_Face_Editor
                     bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
                     mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
                 }
+                if (ProgramSettings.Watch_Model == "Amazfit Band 7")
+                {
+                    bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
+                    mask = new Bitmap(Application.StartupPath + @"\Mask\mask_band_7.png");
+                }
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
                 Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false, 
@@ -13559,6 +13612,11 @@ namespace Watch_Face_Editor
                 {
                     bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
                     mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
+                }
+                if (ProgramSettings.Watch_Model == "Amazfit Band 7")
+                {
+                    bitmap = new Bitmap(Convert.ToInt32(198), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
+                    mask = new Bitmap(Application.StartupPath + @"\Mask\mask_band_7.png");
                 }
                 Bitmap bitmapTemp = new Bitmap(bitmap.Width, bitmap.Height, PixelFormat.Format32bppArgb);
                 Graphics gPanel = Graphics.FromImage(bitmap);
@@ -14320,6 +14378,9 @@ namespace Watch_Face_Editor
                 }
             }
         }
+
+        
+
     }
 }
 

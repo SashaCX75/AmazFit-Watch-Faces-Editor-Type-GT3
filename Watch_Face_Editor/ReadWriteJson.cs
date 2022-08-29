@@ -6258,6 +6258,10 @@ namespace Watch_Face_Editor
                         options += TabInString(7 + tab_offset) + "w: 389," + Environment.NewLine;
                         options += TabInString(7 + tab_offset) + "h: 449," + Environment.NewLine;
                         break;
+                    case "Amazfit_Band_7":
+                        options += TabInString(7 + tab_offset) + "w: 194," + Environment.NewLine;
+                        options += TabInString(7 + tab_offset) + "h: 368," + Environment.NewLine;
+                        break;
                 }
                 options += TabInString(7 + tab_offset) + "pos_x: " + anim.x_start.ToString() + "," + Environment.NewLine;
                 options += TabInString(7 + tab_offset) + "pos_y: " + anim.y_start.ToString() + "," + Environment.NewLine;
@@ -6347,6 +6351,10 @@ namespace Watch_Face_Editor
                     case "GTS3":
                         options += TabInString(7 + tab_offset) + "w: 391," + Environment.NewLine;
                         options += TabInString(7 + tab_offset) + "h: 451," + Environment.NewLine;
+                        break;
+                    case "Amazfit_Band_7":
+                        options += TabInString(7 + tab_offset) + "w: 194," + Environment.NewLine;
+                        options += TabInString(7 + tab_offset) + "h: 386," + Environment.NewLine;
                         break;
                 }
                 options += TabInString(7 + tab_offset) + "pos_x: " + (anim.center_x - anim.pos_x).ToString() + "," + Environment.NewLine;
@@ -7292,7 +7300,8 @@ namespace Watch_Face_Editor
                                 if (firstImgNormal && img.show_level == "ONLY_NORMAL")
                                 {
                                     firstImgNormal = false;
-                                    if ((img.w == 454 && img.h == 454) || (img.w == 480 && img.h == 480) || (img.w == 390 && img.h == 450))
+                                    if ((img.w == 454 && img.h == 454) || (img.w == 480 && img.h == 480) || 
+                                        (img.w == 390 && img.h == 450) || (img.w == 194 && img.h == 368))
                                     {
                                         if (Watch_Face.ScreenNormal.Background == null)
                                             Watch_Face.ScreenNormal.Background = new Background();

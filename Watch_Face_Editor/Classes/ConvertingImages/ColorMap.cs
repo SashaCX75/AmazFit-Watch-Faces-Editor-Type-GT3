@@ -56,7 +56,7 @@ namespace Watch_Face_Editor
             }
         }
 
-        private void ARGB_BGRA()
+        private void ARGB_BGRA(string model)
         {
             for (int i = 0; i < Colors.Count; i++)
             {
@@ -68,14 +68,14 @@ namespace Watch_Face_Editor
                 R = (byte)(R * scale);
                 G = (byte)(G * scale);
                 B = (byte)(B * scale);
-
-                Colors[i] = Color.FromArgb(R, G, B, A);
+                if (model == "Amazfit Band 7") Colors[i] = Color.FromArgb(B, G, R, A);
+                else Colors[i] = Color.FromArgb(R, G, B, A);
             }
         }
 
-        public void ColorsFix(bool argb_brga, int colorMapCount, byte colorMapEntrySize)
+        public void ColorsFix(bool argb_brga, int colorMapCount, byte colorMapEntrySize, string model)
         {
-            if (argb_brga) ARGB_BGRA();
+            if (argb_brga) ARGB_BGRA(model);
 
             ColorMapCount = colorMapCount;
             ColorMapEntrySize = colorMapEntrySize;

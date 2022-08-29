@@ -59,6 +59,10 @@ namespace Watch_Face_Editor
             {
                 src = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_3.png");
             }
+            if (ProgramSettings.Watch_Model == "Amazfit Band 7")
+            {
+                src = OpenFileStream(Application.StartupPath + @"\Mask\mask_band_7.png");
+            }
             offSet_X = src.Width / 2;
             offSet_Y = src.Height / 2;
             gPanel.DrawImage(src, 0, 0);
@@ -1777,6 +1781,10 @@ namespace Watch_Face_Editor
                 {
                     mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_3.png");
                 }
+                if (ProgramSettings.Watch_Model == "Amazfit Band 7")
+                {
+                    mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_band_7.png");
+                }
                 mask = FormColor(mask);
                 gPanel.DrawImage(mask, 0, 0);
                 //gPanel.DrawImage(mask, new Rectangle(0, 0, mask.Width, mask.Height));
@@ -2492,8 +2500,7 @@ namespace Watch_Face_Editor
         /// <param name="gPanel">Поверхность для рисования</param>
         /// <param name="img_anim">Параметры анимации движения </param>
         /// <param name="time_value_sec">Время от начала анимайии, сек</param>
-        private void DrawAnimationFrame(Graphics gPanel, hmUI_widget_IMG_ANIM img_anim,
-            float time_value_sec)
+        private void DrawAnimationFrame(Graphics gPanel, hmUI_widget_IMG_ANIM img_anim, float time_value_sec)
         {
             string start_img = img_anim.anim_src;
             if (start_img == null || start_img.Length == 0) return;
@@ -2561,7 +2568,7 @@ namespace Watch_Face_Editor
             int x_end = motion_anim.x_end;
             int y_end = motion_anim.y_end;
 
-            float time_anim = motion_anim.anim_duration/1000;
+            float time_anim = motion_anim.anim_duration/1000f;
             int count = motion_anim.repeat_count;
 
             bool anim_two_sides = motion_anim.anim_two_sides;
@@ -2653,7 +2660,7 @@ namespace Watch_Face_Editor
             float end_angle = rotate_anim.end_angle;
 
 
-            float time_anim = rotate_anim.anim_duration / 1000;
+            float time_anim = rotate_anim.anim_duration / 1000f;
             int count = rotate_anim.repeat_count;
 
             bool anim_two_sides = rotate_anim.anim_two_sides;
