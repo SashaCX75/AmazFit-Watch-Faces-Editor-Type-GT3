@@ -6569,7 +6569,7 @@ PayPal: sashacx75@gmail.com</value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
-        DQAAAk1TRnQBSQFMAgEBBgEAAcgBMQHIATEBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAAdgBMQHYATEBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -6739,6 +6739,9 @@ PayPal: sashacx75@gmail.com</value>
     <value>T-Rex 2</value>
   </data>
   <data name="comboBox_watch_model.Items4" xml:space="preserve">
+    <value>GTS 4 mini</value>
+  </data>
+  <data name="comboBox_watch_model.Items5" xml:space="preserve">
     <value>Amazfit Band 7</value>
   </data>
   <data name="comboBox_watch_model.Location" type="System.Drawing.Point, System.Drawing">
@@ -8054,9 +8057,6 @@ PayPal: sashacx75@gmail.com</value>
         AAAAAAAAAAAAAO+BPCbvgT1I74I+SO+BPSYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8PwAA4AcAAMAD
         AACAAQAAgAEAAIABAAAAAAAAAAAAAAAAAAAAAAAAgAEAAIABAACAAQAAwAMAAOAHAAD8PwAA
 </value>
-  </data>
-  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>GTR 3 watch face editor</value>

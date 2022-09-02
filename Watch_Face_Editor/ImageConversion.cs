@@ -109,7 +109,7 @@ namespace Watch_Face_Editor
                     ImageWidth = image.Width;
                     int newWidth = ImageWidth;
                     int newHeight = image.Height;
-                    if (model != "Amazfit Band 7")
+                    if (model != "Amazfit Band 7" && model != "GTS 4 mini")
                     {
                         while (newWidth % 16 != 0)
                         {

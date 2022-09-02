@@ -71,6 +71,16 @@ namespace Watch_Face_Editor
                         pictureBox_AnimatiomPreview.Size = new Size(392, 452);
                         this.Size = new Size((int)(392 + 20 * currentDPI), (int)(452 + 100 * currentDPI));
                         break;
+
+                    case "Amazfit Band 7":
+                        pictureBox_AnimatiomPreview.Size = new Size(196, 370);
+                        this.Size = new Size((int)(196 + 20 * currentDPI), (int)(370 + 100 * currentDPI));
+                        break;
+
+                    case "GTS 4 mini":
+                        pictureBox_AnimatiomPreview.Size = new Size(338, 386);
+                        this.Size = new Size((int)(338 + 20 * currentDPI), (int)(386 + 100 * currentDPI));
+                        break;
                 }
                 scalePreview = 1f;
             }
@@ -93,6 +103,16 @@ namespace Watch_Face_Editor
                     case "GTS 3":
                         pictureBox_AnimatiomPreview.Size = new Size(587, 677);
                         this.Size = new Size((int)(587 + 20 * currentDPI), (int)(677 + 100 * currentDPI));
+                        break;
+
+                    case "Amazfit Band 7":
+                        pictureBox_AnimatiomPreview.Size = new Size(293, 554);
+                        this.Size = new Size((int)(293 + 20 * currentDPI), (int)(554 + 100 * currentDPI));
+                        break;
+
+                    case "GTS 4 mini":
+                        pictureBox_AnimatiomPreview.Size = new Size(506, 578);
+                        this.Size = new Size((int)(506 + 20 * currentDPI), (int)(578 + 100 * currentDPI));
                         break;
                 }
                 scalePreview = 1.5f;
@@ -117,23 +137,22 @@ namespace Watch_Face_Editor
                         pictureBox_AnimatiomPreview.Size = new Size(781, 901);
                         this.Size = new Size((int)(781 + 20 * currentDPI), (int)(901 + 100 * currentDPI));
                         break;
+
+                    case "Amazfit Band 7":
+                        pictureBox_AnimatiomPreview.Size = new Size(389, 737);
+                        this.Size = new Size((int)(389 + 20 * currentDPI), (int)(737 + 100 * currentDPI));
+                        break;
+
+                    case "GTS 4 mini":
+                        pictureBox_AnimatiomPreview.Size = new Size(673, 769);
+                        this.Size = new Size((int)(673 + 20 * currentDPI), (int)(769 + 100 * currentDPI));
+                        break;
                 }
                 scalePreview = 2f;
             }
             int width = button_SaveAnimation.Left + button_SaveAnimation.Width;
             if (this.Width < (int)(width + 20 * currentDPI)) this.Width = (int)(width + 20 * currentDPI);
         }
-
-        //public class Model_Wath
-        //{
-        //    public static bool model_gtr47 { get; set; }
-        //    public static bool model_gtr42 { get; set; }
-        //    public static bool model_gts { get; set; }
-        //    public static bool model_TRex { get; set; }
-        //    public static bool model_AmazfitX { get; set; }
-        //    public static bool model_Verge { get; set; }
-
-        //}
 
         private void button_SaveAnimation_Click(object sender, EventArgs e)
         {
@@ -161,6 +180,16 @@ namespace Watch_Face_Editor
                     case "GTS 3":
                         bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
+                        break;
+
+                    case "Amazfit Band 7":
+                        bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_band_7.png");
+                        break;
+
+                    case "GTS 4 mini":
+                        bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
                         break;
                 }
                 Bitmap bitmapTemp = new Bitmap(bitmap.Width, bitmap.Height, PixelFormat.Format32bppArgb);

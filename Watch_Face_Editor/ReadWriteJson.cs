@@ -6262,6 +6262,10 @@ namespace Watch_Face_Editor
                         options += TabInString(7 + tab_offset) + "w: 194," + Environment.NewLine;
                         options += TabInString(7 + tab_offset) + "h: 368," + Environment.NewLine;
                         break;
+                    case "GTS4_mini":
+                        options += TabInString(7 + tab_offset) + "w: 336," + Environment.NewLine;
+                        options += TabInString(7 + tab_offset) + "h: 384," + Environment.NewLine;
+                        break;
                 }
                 options += TabInString(7 + tab_offset) + "pos_x: " + anim.x_start.ToString() + "," + Environment.NewLine;
                 options += TabInString(7 + tab_offset) + "pos_y: " + anim.y_start.ToString() + "," + Environment.NewLine;
@@ -6355,6 +6359,10 @@ namespace Watch_Face_Editor
                     case "Amazfit_Band_7":
                         options += TabInString(7 + tab_offset) + "w: 194," + Environment.NewLine;
                         options += TabInString(7 + tab_offset) + "h: 386," + Environment.NewLine;
+                        break;
+                    case "GTS4_mini":
+                        options += TabInString(7 + tab_offset) + "w: 336," + Environment.NewLine;
+                        options += TabInString(7 + tab_offset) + "h: 384," + Environment.NewLine;
                         break;
                 }
                 options += TabInString(7 + tab_offset) + "pos_x: " + (anim.center_x - anim.pos_x).ToString() + "," + Environment.NewLine;

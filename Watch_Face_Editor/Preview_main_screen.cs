@@ -63,6 +63,10 @@ namespace Watch_Face_Editor
             {
                 src = OpenFileStream(Application.StartupPath + @"\Mask\mask_band_7.png");
             }
+            if (ProgramSettings.Watch_Model == "GTS 4 mini")
+            {
+                src = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
+            }
             offSet_X = src.Width / 2;
             offSet_Y = src.Height / 2;
             gPanel.DrawImage(src, 0, 0);
@@ -1784,6 +1788,10 @@ namespace Watch_Face_Editor
                 if (ProgramSettings.Watch_Model == "Amazfit Band 7")
                 {
                     mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_band_7.png");
+                }
+                if (ProgramSettings.Watch_Model == "GTS 4 mini")
+                {
+                    mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
                 }
                 mask = FormColor(mask);
                 gPanel.DrawImage(mask, 0, 0);

@@ -68,7 +68,7 @@ namespace Watch_Face_Editor
                 R = (byte)(R * scale);
                 G = (byte)(G * scale);
                 B = (byte)(B * scale);
-                if (model == "Amazfit Band 7") Colors[i] = Color.FromArgb(B, G, R, A);
+                if (model == "Amazfit Band 7" || model == "GTS 4 mini") Colors[i] = Color.FromArgb(B, G, R, A);
                 else Colors[i] = Color.FromArgb(R, G, B, A);
             }
         }
