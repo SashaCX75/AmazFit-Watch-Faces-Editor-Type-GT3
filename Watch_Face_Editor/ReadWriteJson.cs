@@ -4429,18 +4429,6 @@ namespace Watch_Face_Editor
                                             anim_x + TabInString(6) + "};" + Environment.NewLine;
 
                                     string anim_y = Motion_Animation_Options(anim_motion, false, false);
-                                    //if (anim_rotate.anim_two_sides)
-                                    //{
-                                    //    anim_y += TabInString(7) +
-                                    //        "anim_complete_call: anim_motion_" + indexStr + "_mirror," +
-                                    //        Environment.NewLine;
-                                    //}
-                                    //else
-                                    //{
-                                    //    /*if (anim_rotate.repeat_count > 0) */anim_y += TabInString(7) +
-                                    //        "anim_complete_call: anim_motion_" + indexStr + "_complete_call," +
-                                    //        Environment.NewLine;
-                                    //}
 
                                     variables += TabInString(4) + "let " + optionNameStart +
                                         "motion_animation_paramY_" + indexStr + " = null;" + Environment.NewLine;
@@ -4459,11 +4447,7 @@ namespace Watch_Face_Editor
                                     }
                                     if (items.IndexOf("let now = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
                                         items += Environment.NewLine + TabInString(6) + "let now = hmSensor.createSensor(hmSensor.id.TIME);" + Environment.NewLine;
-                                    //if (variables.IndexOf("let nawAnimationTime = 0;") < 0)
-                                    //    variables += TabInString(4) + "let nawAnimatiomTime = 0;" + Environment.NewLine;
-
-                                    //variables += TabInString(4) + "let animation_after_AOD = false;" + Environment.NewLine;
-
+                                    
                                     // создаем свойства для зеркальной анимации
                                     if (anim_motion.anim_two_sides)
                                     {
@@ -4486,14 +4470,6 @@ namespace Watch_Face_Editor
                                                 anim_y + TabInString(6) + "};" + Environment.NewLine; 
                                     }
 
-                                    /*// задаем первичную анимацию для элемента
-                                    items += Environment.NewLine + TabInString(6) + optionNameStart + "motion_animation_img_" +
-                                        indexStr + ".setProperty(hmUI.prop.ANIM, " + optionNameStart + 
-                                        "motion_animation_paramX_" + indexStr + ");";
-                                    items += Environment.NewLine + TabInString(6) + optionNameStart + "motion_animation_img_" +
-                                        indexStr + ".setProperty(hmUI.prop.ANIM, " + optionNameStart +
-                                        "motion_animation_paramY_" + indexStr + ");" + Environment.NewLine;*/
-
                                     // функция вызова зеркального движения
                                     if (anim_motion.anim_two_sides)
                                     {
@@ -4510,77 +4486,48 @@ namespace Watch_Face_Editor
                                         items += TabInString(6) + "};" + Environment.NewLine;
                                     }
 
-                                    //if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
-                                    //    items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();" + Environment.NewLine;
-
                                     // функция вызова повтора анимации
-                                    //if (anim_rotate.repeat_count > 0) // если ограничено число повторений
-                                    //{
-                                        items += Environment.NewLine + TabInString(6) +
-                                            "function anim_motion_" + indexStr + "_complete_call" + "() {" + Environment.NewLine;
-                                        //items += Environment.NewLine + TabInString(7) + "animation_after_AOD = true;";
+                                    items += Environment.NewLine + TabInString(6) +
+                                        "function anim_motion_" + indexStr + "_complete_call" + "() {" + Environment.NewLine;
 
-                                        // проверяем что не AOD
-                                        //items += Environment.NewLine + TabInString(7) + "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                        //items += Environment.NewLine + TabInString(8) + "if (animation_after_AOD == true) " + optionNameStart +
-                                        //"motion_animation_count_" + indexStr + " = 3;" + Environment.NewLine;
+                                    items += TabInString(7) + optionNameStart +
+                                    "motion_animation_count_" + indexStr + " = " + optionNameStart +
+                                    "motion_animation_count_" + indexStr + " - 1;" + Environment.NewLine;
+                                    items += TabInString(7) + "if(normal_motion_animation_count_" + indexStr + 
+                                        " < -1) normal_motion_animation_count_" + indexStr + " = - 1;" + Environment.NewLine;
 
-                                        items += TabInString(7) + optionNameStart +
-                                        "motion_animation_count_" + indexStr + " = " + optionNameStart +
-                                        "motion_animation_count_" + indexStr + " - 1;" + Environment.NewLine;
-                                        items += TabInString(7) + "if(normal_motion_animation_count_" + indexStr + 
-                                            " < -1) normal_motion_animation_count_" + indexStr + " = - 1;" + Environment.NewLine;
-
-                                        //items += Environment.NewLine + TabInString(7) +
-                                        //    "if(normal_motion_animation_count_" + indexStr + " > 0) {" + Environment.NewLine;
-                                        //items += TabInString(8) + "{" + Environment.NewLine;
-
-                                        items += TabInString(8) + optionNameStart + "motion_animation_img_" +
-                                            indexStr + ".setProperty(hmUI.prop.ANIM, " + optionNameStart +
-                                            "motion_animation_paramX_" + indexStr + ");" + Environment.NewLine;
-                                        items += TabInString(8) + optionNameStart + "motion_animation_img_" +
-                                            indexStr + ".setProperty(hmUI.prop.ANIM, " + optionNameStart +
-                                            "motion_animation_paramY_" + indexStr + ");" + Environment.NewLine;
+                                    items += TabInString(8) + optionNameStart + "motion_animation_img_" +
+                                        indexStr + ".setProperty(hmUI.prop.ANIM, " + optionNameStart +
+                                        "motion_animation_paramX_" + indexStr + ");" + Environment.NewLine;
+                                    items += TabInString(8) + optionNameStart + "motion_animation_img_" +
+                                        indexStr + ".setProperty(hmUI.prop.ANIM, " + optionNameStart +
+                                        "motion_animation_paramY_" + indexStr + ");" + Environment.NewLine;
                                         
-                                        items += TabInString(8) + optionNameStart + "motion_animation_lastTime_" +
-                                            indexStr + " = now.utc;" + Environment.NewLine;
+                                    items += TabInString(8) + optionNameStart + "motion_animation_lastTime_" +
+                                        indexStr + " = now.utc;" + Environment.NewLine;
 
-                                        //items += TabInString(7) + "}; // end count > 0 block" + Environment.NewLine;
-                                        //items += TabInString(8) + "animation_after_AOD = false;" + Environment.NewLine;
-                                        //items += TabInString(8) + "if(" + optionNameStart + "motion_animation_count_" + 
-                                        //indexStr + " == 0) animation_after_AOD = true;" + Environment.NewLine;
-                                        //items += TabInString(7) + "}; // end !AOD block" + Environment.NewLine;
-                                        items += TabInString(7) + "if(" + optionNameStart + "motion_animation_count_" +
-                                            indexStr + " == 0) stop_anim_motion_" +
-                                            indexStr + "();" + Environment.NewLine;
+                                    items += TabInString(7) + "if(" + optionNameStart + "motion_animation_count_" +
+                                        indexStr + " == 0) stop_anim_motion_" +
+                                        indexStr + "();" + Environment.NewLine;
 
-                                        items += TabInString(6) + "}; // end animation callback function" + Environment.NewLine;
-                                        items += TabInString(6) + Environment.NewLine;
+                                    items += TabInString(6) + "}; // end animation callback function" + Environment.NewLine;
+                                    items += TabInString(6) + Environment.NewLine;
 
-                                        // функция остановки таймера
-                                        items += TabInString(6) + "function stop_anim_motion_" +
-                                            indexStr + "() {" + Environment.NewLine;
-                                        items += TabInString(7) + "if (timer_anim_motion_" +
-                                            indexStr + ") {" + Environment.NewLine;
-                                        items += TabInString(8) + "timer.stopTimer(timer_anim_motion_" +
-                                            indexStr + ");" + Environment.NewLine;
-                                        items += TabInString(8) + "timer_anim_motion_" +
-                                            indexStr + " = undefined;" + Environment.NewLine;
-                                        items += TabInString(7) + "};" + Environment.NewLine;
-                                        items += TabInString(6) + "}; // end stop_anim_motion function" + Environment.NewLine;
+                                    // функция остановки таймера
+                                    items += TabInString(6) + "function stop_anim_motion_" +
+                                        indexStr + "() {" + Environment.NewLine;
+                                    items += TabInString(7) + "if (timer_anim_motion_" +
+                                        indexStr + ") {" + Environment.NewLine;
+                                    items += TabInString(8) + "timer.stopTimer(timer_anim_motion_" +
+                                        indexStr + ");" + Environment.NewLine;
+                                    items += TabInString(8) + "timer_anim_motion_" +
+                                        indexStr + " = undefined;" + Environment.NewLine;
+                                    items += TabInString(7) + "};" + Environment.NewLine;
+                                    items += TabInString(6) + "}; // end stop_anim_motion function" + Environment.NewLine;
 
-                                        variables += TabInString(4) + "let " + optionNameStart +
-                                            "motion_animation_count_" + indexStr + " = " +
-                                            anim_motion.repeat_count.ToString() + ";" + Environment.NewLine;
-
-                                    //resume_call += TabInString(8) + optionNameStart + "motion_animation_count_" + indexStr + " = " +
-                                    //    anim_rotate.repeat_count.ToString() + ";" + Environment.NewLine;
-                                    //resume_call += TabInString(8) + "if (animation_after_AOD){" + Environment.NewLine;
-                                    //resume_call += TabInString(9) + optionNameStart + "motion_animation_count_" + indexStr + 
-                                    //    " = " + (anim_rotate.repeat_count+1).ToString() + "; " + Environment.NewLine;
-                                    //resume_call += TabInString(9) + "anim_motion_" + indexStr +
-                                    //    "_complete_call();" + Environment.NewLine;
-                                    //resume_call += TabInString(8) + "};";
+                                    variables += TabInString(4) + "let " + optionNameStart +
+                                        "motion_animation_count_" + indexStr + " = " +
+                                        anim_motion.repeat_count.ToString() + ";" + Environment.NewLine;
 
                                     //resume_call += TabInString(8) + "let nawAnimationTime = now.utc;" + Environment.NewLine;
                                     if (resume_call.IndexOf("let nawAnimationTime = now.utc;") < 0)
@@ -4633,57 +4580,7 @@ namespace Watch_Face_Editor
 
 
                                     pause_call += TabInString(8) + "stop_anim_motion_" + indexStr + "();" + Environment.NewLine;
-                                    //}
-                                    /*else // если бесконечное повторение
-                                    {
-                                        items += Environment.NewLine + TabInString(6) +
-                                            "function anim_motion_" + indexStr + "_complete_call" + "() {";
-                                        //items += Environment.NewLine + TabInString(7) + "animation_after_AOD = true;";
-
-                                        // проверяем что не AOD
-                                        items += Environment.NewLine + TabInString(7) + "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                        //items += Environment.NewLine + TabInString(8) + "if (animation_after_AOD == true) " + optionNameStart +
-                                        //"motion_animation_count_" + indexStr + " = 3;" + Environment.NewLine;
-
-                                        items += TabInString(8) + optionNameStart + "motion_animation_img_" +
-                                            indexStr + ".setProperty(hmUI.prop.ANIM, " + optionNameStart +
-                                            "motion_animation_paramX_" + indexStr + ");" + Environment.NewLine;
-                                        items += TabInString(8) + optionNameStart + "motion_animation_img_" +
-                                            indexStr + ".setProperty(hmUI.prop.ANIM, " + optionNameStart +
-                                            "motion_animation_paramY_" + indexStr + ");" + Environment.NewLine;
-                                        //items += TabInString(8) + "animation_after_AOD = false;" + Environment.NewLine;
-
-                                        items += TabInString(7) + "}; // end !AOD block" + Environment.NewLine;
-                                        items += TabInString(6) + "}; // end animation callback function" + Environment.NewLine;
-
-                                        //resume_call += TabInString(8) + "if (animation_after_AOD){" + Environment.NewLine;
-                                        //resume_call += TabInString(9) + "anim_motion_" + indexStr +
-                                        //    "_complete_call();" + Environment.NewLine;
-                                        //resume_call += TabInString(8) + "};";
-
-                                        resume_call += TabInString(8) + "anim_motion_" + indexStr +
-                                            "_restart();" + Environment.NewLine;
-                                    }*/
-
-                                    /*// перезапуск анимации
-                                    items += Environment.NewLine + TabInString(6) +
-                                            "function anim_motion_" + indexStr + "_restart() {";
-                                    items += Environment.NewLine + TabInString(7) + "hmUI.deleteWidget(" + optionNameStart +
-                                        "motion_animation_img_" + indexStr + ");";
-
-                                    animMotionOptions = Motion_Animation_Img(anim_rotate, show_level, 1);
-                                    items += Environment.NewLine + TabInString(7) +
-                                        optionNameStart + "motion_animation_img_" + indexStr + " = hmUI.createWidget(hmUI.widget.IMG, {" +
-                                            animMotionOptions + TabInString(7) + "});" + Environment.NewLine;
-
-                                    items += Environment.NewLine + TabInString(7) + optionNameStart + "motion_animation_img_" +
-                                        indexStr + ".setProperty(hmUI.prop.ANIM, " + optionNameStart +
-                                        "motion_animation_paramX_" + indexStr + ");";
-                                    items += Environment.NewLine + TabInString(7) + optionNameStart + "motion_animation_img_" +
-                                        indexStr + ".setProperty(hmUI.prop.ANIM, " + optionNameStart +
-                                        "motion_animation_paramY_" + indexStr + ");" + Environment.NewLine;
-                                    items += TabInString(6) + "};" + Environment.NewLine;*/
-
+                                    
                                     animMotionOptions = Motion_Animation_OptionsForRead(anim_motion, optionNameStart, 
                                         show_level, anim_motion_index);
                                     items += animMotionOptions;
@@ -6258,6 +6155,10 @@ namespace Watch_Face_Editor
                         options += TabInString(7 + tab_offset) + "w: 389," + Environment.NewLine;
                         options += TabInString(7 + tab_offset) + "h: 449," + Environment.NewLine;
                         break;
+                    case "GTR4":
+                        options += TabInString(7 + tab_offset) + "w: 465," + Environment.NewLine;
+                        options += TabInString(7 + tab_offset) + "h: 465," + Environment.NewLine;
+                        break;
                     case "Amazfit_Band_7":
                         options += TabInString(7 + tab_offset) + "w: 194," + Environment.NewLine;
                         options += TabInString(7 + tab_offset) + "h: 368," + Environment.NewLine;
@@ -6355,6 +6256,10 @@ namespace Watch_Face_Editor
                     case "GTS3":
                         options += TabInString(7 + tab_offset) + "w: 391," + Environment.NewLine;
                         options += TabInString(7 + tab_offset) + "h: 451," + Environment.NewLine;
+                        break;
+                    case "GTR4":
+                        options += TabInString(7 + tab_offset) + "w: 467," + Environment.NewLine;
+                        options += TabInString(7 + tab_offset) + "h: 467," + Environment.NewLine;
                         break;
                     case "Amazfit_Band_7":
                         options += TabInString(7 + tab_offset) + "w: 194," + Environment.NewLine;
@@ -7309,7 +7214,8 @@ namespace Watch_Face_Editor
                                 {
                                     firstImgNormal = false;
                                     if ((img.w == 454 && img.h == 454) || (img.w == 480 && img.h == 480) || 
-                                        (img.w == 390 && img.h == 450) || (img.w == 194 && img.h == 368))
+                                        (img.w == 390 && img.h == 450) || (img.w == 466 && img.h == 466) || 
+                                        (img.w == 194 && img.h == 368) || (img.w == 336 && img.h == 384))
                                     {
                                         if (Watch_Face.ScreenNormal.Background == null)
                                             Watch_Face.ScreenNormal.Background = new Background();
@@ -7319,7 +7225,9 @@ namespace Watch_Face_Editor
                                 else if (firstImgAOD && img.show_level == "ONAL_AOD")
                                 {
                                     firstImgAOD = false;
-                                    if ((img.w == 454 && img.h == 454) || (img.w == 480 && img.h == 480) || (img.w == 390 && img.h == 450))
+                                    if ((img.w == 454 && img.h == 454) || (img.w == 480 && img.h == 480) ||
+                                        (img.w == 390 && img.h == 450) || (img.w == 466 && img.h == 466) ||
+                                        (img.w == 194 && img.h == 368) || (img.w == 336 && img.h == 384))
                                     {
                                         if (Watch_Face.ScreenAOD.Background == null)
                                             Watch_Face.ScreenAOD.Background = new Background();

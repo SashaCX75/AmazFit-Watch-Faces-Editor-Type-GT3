@@ -72,6 +72,11 @@ namespace Watch_Face_Editor
                         this.Size = new Size((int)(392 + 20 * currentDPI), (int)(452 + 100 * currentDPI));
                         break;
 
+                    case "GTR 4":
+                        pictureBox_AnimatiomPreview.Size = new Size(468, 468);
+                        this.Size = new Size((int)(468 + 20 * currentDPI), (int)(468 + 100 * currentDPI));
+                        break;
+
                     case "Amazfit Band 7":
                         pictureBox_AnimatiomPreview.Size = new Size(196, 370);
                         this.Size = new Size((int)(196 + 20 * currentDPI), (int)(370 + 100 * currentDPI));
@@ -105,6 +110,11 @@ namespace Watch_Face_Editor
                         this.Size = new Size((int)(587 + 20 * currentDPI), (int)(677 + 100 * currentDPI));
                         break;
 
+                    case "GTR 4":
+                        pictureBox_AnimatiomPreview.Size = new Size(701, 701);
+                        this.Size = new Size((int)(701 + 20 * currentDPI), (int)(701 + 100 * currentDPI));
+                        break;
+
                     case "Amazfit Band 7":
                         pictureBox_AnimatiomPreview.Size = new Size(293, 554);
                         this.Size = new Size((int)(293 + 20 * currentDPI), (int)(554 + 100 * currentDPI));
@@ -136,6 +146,11 @@ namespace Watch_Face_Editor
                     case "GTS 3":
                         pictureBox_AnimatiomPreview.Size = new Size(781, 901);
                         this.Size = new Size((int)(781 + 20 * currentDPI), (int)(901 + 100 * currentDPI));
+                        break;
+
+                    case "GTR 4":
+                        pictureBox_AnimatiomPreview.Size = new Size(933, 933);
+                        this.Size = new Size((int)(933 + 20 * currentDPI), (int)(933 + 100 * currentDPI));
                         break;
 
                     case "Amazfit Band 7":
@@ -180,6 +195,11 @@ namespace Watch_Face_Editor
                     case "GTS 3":
                         bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
+                        break;
+
+                    case "GTR 4":
+                        bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_4.png");
                         break;
 
                     case "Amazfit Band 7":

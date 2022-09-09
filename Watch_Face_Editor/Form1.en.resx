@@ -334,6 +334,12 @@
   <data name="tabPage_Edit.Text" xml:space="preserve">
     <value>Edit</value>
   </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>765, 40</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>*** For GTS series models, due to different aspect ratios and different rounding of corners, full scaling is not possible, part of the image below and at the corners may be cut off.</value>
+  </data>
   <data name="label_ConvertingHelp03.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 13</value>
   </data>
@@ -361,26 +367,8 @@
   <data name="button_Converting.Text" xml:space="preserve">
     <value>Convert</value>
   </data>
-  <data name="radioButton_ConvertingOutput_Custom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>395, 19</value>
-  </data>
-  <data name="radioButton_ConvertingOutput_Custom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 17</value>
-  </data>
-  <data name="radioButton_ConvertingOutput_Custom.Text" xml:space="preserve">
-    <value>Custom size</value>
-  </data>
   <data name="groupBox10.Text" xml:space="preserve">
     <value>Target model</value>
-  </data>
-  <data name="radioButton_ConvertingInput_Custom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>395, 19</value>
-  </data>
-  <data name="radioButton_ConvertingInput_Custom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>81, 17</value>
-  </data>
-  <data name="radioButton_ConvertingInput_Custom.Text" xml:space="preserve">
-    <value>Custom size</value>
   </data>
   <data name="groupBox9.Text" xml:space="preserve">
     <value>Initial model</value>
@@ -665,7 +653,7 @@ more system load)</value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
-        DQAAAk1TRnQBSQFMAgEBBgEAAYwBKAGMASgBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAAZQBKAGUASgBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA

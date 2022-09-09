@@ -51,21 +51,23 @@ namespace Watch_Face_Editor
             #region Black background
             Logger.WriteLine("Preview_screen (Black background)");
             src = OpenFileStream(Application.StartupPath + @"\Mask\mask_gtr_3.png");
-            if (ProgramSettings.Watch_Model == "GTR 3 Pro")
+            switch (ProgramSettings.Watch_Model)
             {
-                src = OpenFileStream(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
-            }
-            if (ProgramSettings.Watch_Model == "GTS 3")
-            {
-                src = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_3.png");
-            }
-            if (ProgramSettings.Watch_Model == "Amazfit Band 7")
-            {
-                src = OpenFileStream(Application.StartupPath + @"\Mask\mask_band_7.png");
-            }
-            if (ProgramSettings.Watch_Model == "GTS 4 mini")
-            {
-                src = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
+                case "GTR 3 Pro":
+                    src = OpenFileStream(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
+                    break;
+                case "GTS 3":
+                    src = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_3.png");
+                    break;
+                case "GTR 4":
+                    src = OpenFileStream(Application.StartupPath + @"\Mask\mask_gtr_4.png");
+                    break;
+                case "Amazfit Band 7":
+                    src = OpenFileStream(Application.StartupPath + @"\Mask\mask_band_7.png");
+                    break;
+                case "GTS 4 mini":
+                    src = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
+                    break;
             }
             offSet_X = src.Width / 2;
             offSet_Y = src.Height / 2;
@@ -1777,21 +1779,23 @@ namespace Watch_Face_Editor
             {
                 Logger.WriteLine("PreviewToBitmap (crop)");
                 Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
-                if (ProgramSettings.Watch_Model == "GTR 3 Pro")
+                switch (ProgramSettings.Watch_Model)
                 {
-                    mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
-                }
-                if (ProgramSettings.Watch_Model == "GTS 3")
-                {
-                    mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_3.png");
-                }
-                if (ProgramSettings.Watch_Model == "Amazfit Band 7")
-                {
-                    mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_band_7.png");
-                }
-                if (ProgramSettings.Watch_Model == "GTS 4 mini")
-                {
-                    mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
+                    case "GTR 3 Pro":
+                        mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
+                        break;
+                    case "GTS 3":
+                        mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_3.png");
+                        break;
+                    case "GTR 4":
+                        mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gtr_4.png");
+                        break;
+                    case "Amazfit Band 7":
+                        mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_band_7.png");
+                        break;
+                    case "GTS 4 mini":
+                        mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
+                        break;
                 }
                 mask = FormColor(mask);
                 gPanel.DrawImage(mask, 0, 0);
@@ -4106,13 +4110,15 @@ namespace Watch_Face_Editor
 
             Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
             if (ProgramSettings.Watch_Model == "GTR 3 Pro")
-            {
                 mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
-            }
             if (ProgramSettings.Watch_Model == "GTS 3")
-            {
                 mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
-            }
+            if (ProgramSettings.Watch_Model == "GTR 4")
+                mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_4.png");
+            if (ProgramSettings.Watch_Model == "Amazfit Band 7")
+                mask = new Bitmap(Application.StartupPath + @"\Mask\mask_band_7.png");
+            if (ProgramSettings.Watch_Model == "GTS 4 mini")
+                mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
 
             bitmap = ApplyMask(bitmap, mask);
             //Graphics gPanel = Graphics.FromImage(bitmap);

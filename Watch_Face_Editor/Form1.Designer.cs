@@ -170,23 +170,18 @@ namespace Watch_Face_Editor
             this.button_New_Project = new System.Windows.Forms.Button();
             this.button_JSON = new System.Windows.Forms.Button();
             this.tabPageConverting = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
             this.label_ConvertingHelp03 = new System.Windows.Forms.Label();
             this.label_ConvertingHelp02 = new System.Windows.Forms.Label();
             this.label_ConvertingHelp01 = new System.Windows.Forms.Label();
             this.label_ConvertingHelp = new System.Windows.Forms.Label();
             this.button_Converting = new System.Windows.Forms.Button();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.comboBox_ConvertingOutput_Model = new System.Windows.Forms.ComboBox();
             this.numericUpDown_ConvertingOutput_Custom = new System.Windows.Forms.NumericUpDown();
-            this.radioButton_ConvertingOutput_Custom = new System.Windows.Forms.RadioButton();
-            this.radioButton_ConvertingOutput_TRexPro = new System.Windows.Forms.RadioButton();
-            this.radioButton_ConvertingOutput_GTR3Pro = new System.Windows.Forms.RadioButton();
-            this.radioButton_ConvertingOutput_GTR3 = new System.Windows.Forms.RadioButton();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.comboBox_ConvertingInput_Model = new System.Windows.Forms.ComboBox();
             this.numericUpDown_ConvertingInput_Custom = new System.Windows.Forms.NumericUpDown();
-            this.radioButton_ConvertingInput_Custom = new System.Windows.Forms.RadioButton();
-            this.radioButton_ConvertingInput_TRexPro = new System.Windows.Forms.RadioButton();
-            this.radioButton_ConvertingInput_GTR3Pro = new System.Windows.Forms.RadioButton();
-            this.radioButton_ConvertingInput_GTR3 = new System.Windows.Forms.RadioButton();
             this.tabPage_Settings = new System.Windows.Forms.TabPage();
             this.comboBox_Animation_Preview_Speed = new System.Windows.Forms.ComboBox();
             this.button_Reset = new System.Windows.Forms.Button();
@@ -1620,6 +1615,7 @@ namespace Watch_Face_Editor
             // tabPageConverting
             // 
             this.tabPageConverting.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPageConverting.Controls.Add(this.label1);
             this.tabPageConverting.Controls.Add(this.label_ConvertingHelp03);
             this.tabPageConverting.Controls.Add(this.label_ConvertingHelp02);
             this.tabPageConverting.Controls.Add(this.label_ConvertingHelp01);
@@ -1629,6 +1625,11 @@ namespace Watch_Face_Editor
             this.tabPageConverting.Controls.Add(this.groupBox9);
             resources.ApplyResources(this.tabPageConverting, "tabPageConverting");
             this.tabPageConverting.Name = "tabPageConverting";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
             // 
             // label_ConvertingHelp03
             // 
@@ -1659,15 +1660,28 @@ namespace Watch_Face_Editor
             // 
             // groupBox10
             // 
+            this.groupBox10.Controls.Add(this.comboBox_ConvertingOutput_Model);
             this.groupBox10.Controls.Add(this.numericUpDown_ConvertingOutput_Custom);
-            this.groupBox10.Controls.Add(this.radioButton_ConvertingOutput_Custom);
-            this.groupBox10.Controls.Add(this.radioButton_ConvertingOutput_TRexPro);
-            this.groupBox10.Controls.Add(this.radioButton_ConvertingOutput_GTR3Pro);
-            this.groupBox10.Controls.Add(this.radioButton_ConvertingOutput_GTR3);
             resources.ApplyResources(this.groupBox10, "groupBox10");
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.TabStop = false;
             this.groupBox10.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox_Paint);
+            // 
+            // comboBox_ConvertingOutput_Model
+            // 
+            this.comboBox_ConvertingOutput_Model.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_ConvertingOutput_Model.FormattingEnabled = true;
+            this.comboBox_ConvertingOutput_Model.Items.AddRange(new object[] {
+            resources.GetString("comboBox_ConvertingOutput_Model.Items"),
+            resources.GetString("comboBox_ConvertingOutput_Model.Items1"),
+            resources.GetString("comboBox_ConvertingOutput_Model.Items2"),
+            resources.GetString("comboBox_ConvertingOutput_Model.Items3"),
+            resources.GetString("comboBox_ConvertingOutput_Model.Items4"),
+            resources.GetString("comboBox_ConvertingOutput_Model.Items5"),
+            resources.GetString("comboBox_ConvertingOutput_Model.Items6")});
+            resources.ApplyResources(this.comboBox_ConvertingOutput_Model, "comboBox_ConvertingOutput_Model");
+            this.comboBox_ConvertingOutput_Model.Name = "comboBox_ConvertingOutput_Model";
+            this.comboBox_ConvertingOutput_Model.SelectedIndexChanged += new System.EventHandler(this.comboBox_ConvertingOutput_Model_SelectedIndexChanged);
             // 
             // numericUpDown_ConvertingOutput_Custom
             // 
@@ -1689,47 +1703,30 @@ namespace Watch_Face_Editor
             0,
             0});
             // 
-            // radioButton_ConvertingOutput_Custom
-            // 
-            resources.ApplyResources(this.radioButton_ConvertingOutput_Custom, "radioButton_ConvertingOutput_Custom");
-            this.radioButton_ConvertingOutput_Custom.Name = "radioButton_ConvertingOutput_Custom";
-            this.radioButton_ConvertingOutput_Custom.UseVisualStyleBackColor = true;
-            this.radioButton_ConvertingOutput_Custom.CheckedChanged += new System.EventHandler(this.radioButton_ConvertingOutput_Custom_CheckedChanged);
-            // 
-            // radioButton_ConvertingOutput_TRexPro
-            // 
-            resources.ApplyResources(this.radioButton_ConvertingOutput_TRexPro, "radioButton_ConvertingOutput_TRexPro");
-            this.radioButton_ConvertingOutput_TRexPro.Name = "radioButton_ConvertingOutput_TRexPro";
-            this.radioButton_ConvertingOutput_TRexPro.UseVisualStyleBackColor = true;
-            this.radioButton_ConvertingOutput_TRexPro.CheckedChanged += new System.EventHandler(this.radioButton_ConvertingOutput_GTR3_CheckedChanged);
-            // 
-            // radioButton_ConvertingOutput_GTR3Pro
-            // 
-            resources.ApplyResources(this.radioButton_ConvertingOutput_GTR3Pro, "radioButton_ConvertingOutput_GTR3Pro");
-            this.radioButton_ConvertingOutput_GTR3Pro.Checked = true;
-            this.radioButton_ConvertingOutput_GTR3Pro.Name = "radioButton_ConvertingOutput_GTR3Pro";
-            this.radioButton_ConvertingOutput_GTR3Pro.TabStop = true;
-            this.radioButton_ConvertingOutput_GTR3Pro.UseVisualStyleBackColor = true;
-            this.radioButton_ConvertingOutput_GTR3Pro.CheckedChanged += new System.EventHandler(this.radioButton_ConvertingOutput_GTR3_CheckedChanged);
-            // 
-            // radioButton_ConvertingOutput_GTR3
-            // 
-            resources.ApplyResources(this.radioButton_ConvertingOutput_GTR3, "radioButton_ConvertingOutput_GTR3");
-            this.radioButton_ConvertingOutput_GTR3.Name = "radioButton_ConvertingOutput_GTR3";
-            this.radioButton_ConvertingOutput_GTR3.UseVisualStyleBackColor = true;
-            this.radioButton_ConvertingOutput_GTR3.CheckedChanged += new System.EventHandler(this.radioButton_ConvertingOutput_GTR3_CheckedChanged);
-            // 
             // groupBox9
             // 
+            this.groupBox9.Controls.Add(this.comboBox_ConvertingInput_Model);
             this.groupBox9.Controls.Add(this.numericUpDown_ConvertingInput_Custom);
-            this.groupBox9.Controls.Add(this.radioButton_ConvertingInput_Custom);
-            this.groupBox9.Controls.Add(this.radioButton_ConvertingInput_TRexPro);
-            this.groupBox9.Controls.Add(this.radioButton_ConvertingInput_GTR3Pro);
-            this.groupBox9.Controls.Add(this.radioButton_ConvertingInput_GTR3);
             resources.ApplyResources(this.groupBox9, "groupBox9");
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.TabStop = false;
             this.groupBox9.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox_Paint);
+            // 
+            // comboBox_ConvertingInput_Model
+            // 
+            this.comboBox_ConvertingInput_Model.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_ConvertingInput_Model.FormattingEnabled = true;
+            this.comboBox_ConvertingInput_Model.Items.AddRange(new object[] {
+            resources.GetString("comboBox_ConvertingInput_Model.Items"),
+            resources.GetString("comboBox_ConvertingInput_Model.Items1"),
+            resources.GetString("comboBox_ConvertingInput_Model.Items2"),
+            resources.GetString("comboBox_ConvertingInput_Model.Items3"),
+            resources.GetString("comboBox_ConvertingInput_Model.Items4"),
+            resources.GetString("comboBox_ConvertingInput_Model.Items5"),
+            resources.GetString("comboBox_ConvertingInput_Model.Items6")});
+            resources.ApplyResources(this.comboBox_ConvertingInput_Model, "comboBox_ConvertingInput_Model");
+            this.comboBox_ConvertingInput_Model.Name = "comboBox_ConvertingInput_Model";
+            this.comboBox_ConvertingInput_Model.SelectedIndexChanged += new System.EventHandler(this.comboBox_ConvertingInput_Model_SelectedIndexChanged);
             // 
             // numericUpDown_ConvertingInput_Custom
             // 
@@ -1750,36 +1747,6 @@ namespace Watch_Face_Editor
             0,
             0,
             0});
-            // 
-            // radioButton_ConvertingInput_Custom
-            // 
-            resources.ApplyResources(this.radioButton_ConvertingInput_Custom, "radioButton_ConvertingInput_Custom");
-            this.radioButton_ConvertingInput_Custom.Name = "radioButton_ConvertingInput_Custom";
-            this.radioButton_ConvertingInput_Custom.UseVisualStyleBackColor = true;
-            this.radioButton_ConvertingInput_Custom.CheckedChanged += new System.EventHandler(this.radioButton_ConvertingInput_Custom_CheckedChanged);
-            // 
-            // radioButton_ConvertingInput_TRexPro
-            // 
-            resources.ApplyResources(this.radioButton_ConvertingInput_TRexPro, "radioButton_ConvertingInput_TRexPro");
-            this.radioButton_ConvertingInput_TRexPro.Name = "radioButton_ConvertingInput_TRexPro";
-            this.radioButton_ConvertingInput_TRexPro.UseVisualStyleBackColor = true;
-            this.radioButton_ConvertingInput_TRexPro.CheckedChanged += new System.EventHandler(this.radioButton_ConvertingInput_GTR3_CheckedChanged);
-            // 
-            // radioButton_ConvertingInput_GTR3Pro
-            // 
-            resources.ApplyResources(this.radioButton_ConvertingInput_GTR3Pro, "radioButton_ConvertingInput_GTR3Pro");
-            this.radioButton_ConvertingInput_GTR3Pro.Name = "radioButton_ConvertingInput_GTR3Pro";
-            this.radioButton_ConvertingInput_GTR3Pro.UseVisualStyleBackColor = true;
-            this.radioButton_ConvertingInput_GTR3Pro.CheckedChanged += new System.EventHandler(this.radioButton_ConvertingInput_GTR3_CheckedChanged);
-            // 
-            // radioButton_ConvertingInput_GTR3
-            // 
-            resources.ApplyResources(this.radioButton_ConvertingInput_GTR3, "radioButton_ConvertingInput_GTR3");
-            this.radioButton_ConvertingInput_GTR3.Checked = true;
-            this.radioButton_ConvertingInput_GTR3.Name = "radioButton_ConvertingInput_GTR3";
-            this.radioButton_ConvertingInput_GTR3.TabStop = true;
-            this.radioButton_ConvertingInput_GTR3.UseVisualStyleBackColor = true;
-            this.radioButton_ConvertingInput_GTR3.CheckedChanged += new System.EventHandler(this.radioButton_ConvertingInput_GTR3_CheckedChanged);
             // 
             // tabPage_Settings
             // 
@@ -2404,7 +2371,8 @@ namespace Watch_Face_Editor
             resources.GetString("comboBox_watch_model.Items2"),
             resources.GetString("comboBox_watch_model.Items3"),
             resources.GetString("comboBox_watch_model.Items4"),
-            resources.GetString("comboBox_watch_model.Items5")});
+            resources.GetString("comboBox_watch_model.Items5"),
+            resources.GetString("comboBox_watch_model.Items6")});
             resources.ApplyResources(this.comboBox_watch_model, "comboBox_watch_model");
             this.comboBox_watch_model.Name = "comboBox_watch_model";
             this.comboBox_watch_model.SelectedIndexChanged += new System.EventHandler(this.comboBox_watch_model_SelectedIndexChanged);
@@ -2536,10 +2504,8 @@ namespace Watch_Face_Editor
             this.tabPageConverting.ResumeLayout(false);
             this.tabPageConverting.PerformLayout();
             this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_ConvertingOutput_Custom)).EndInit();
             this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_ConvertingInput_Custom)).EndInit();
             this.tabPage_Settings.ResumeLayout(false);
             this.tabPage_Settings.PerformLayout();
@@ -2702,16 +2668,8 @@ namespace Watch_Face_Editor
         private System.Windows.Forms.Button button_Converting;
         private System.Windows.Forms.GroupBox groupBox10;
         private System.Windows.Forms.NumericUpDown numericUpDown_ConvertingOutput_Custom;
-        private System.Windows.Forms.RadioButton radioButton_ConvertingOutput_Custom;
-        private System.Windows.Forms.RadioButton radioButton_ConvertingOutput_TRexPro;
-        private System.Windows.Forms.RadioButton radioButton_ConvertingOutput_GTR3Pro;
-        private System.Windows.Forms.RadioButton radioButton_ConvertingOutput_GTR3;
         private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.NumericUpDown numericUpDown_ConvertingInput_Custom;
-        private System.Windows.Forms.RadioButton radioButton_ConvertingInput_Custom;
-        private System.Windows.Forms.RadioButton radioButton_ConvertingInput_TRexPro;
-        private System.Windows.Forms.RadioButton radioButton_ConvertingInput_GTR3Pro;
-        private System.Windows.Forms.RadioButton radioButton_ConvertingInput_GTR3;
         private System.Windows.Forms.Panel panel_UC_Statuses;
         private ControlLibrary.UCtrl_Statuses_Elm uCtrl_Statuses_Elm;
         private System.Windows.Forms.Panel panel_UC_Shortcuts;
@@ -2798,6 +2756,9 @@ namespace Watch_Face_Editor
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
         private System.Windows.Forms.TabPage tabPage_Tips;
         private System.Windows.Forms.RichTextBox richTextBox_Tips;
+        private System.Windows.Forms.ComboBox comboBox_ConvertingOutput_Model;
+        private System.Windows.Forms.ComboBox comboBox_ConvertingInput_Model;
+        private System.Windows.Forms.Label label1;
     }
 }
 

@@ -1266,17 +1266,32 @@ namespace Watch_Face_Editor
                     background.BackgroundImage.src = backgroundImg;
                     background.BackgroundImage.x = 0;
                     background.BackgroundImage.y = 0;
-                    background.BackgroundImage.h = 454;
-                    background.BackgroundImage.w = 454;
-                    if (ProgramSettings.Watch_Model == "GTR 3 Pro")
+                    switch (ProgramSettings.Watch_Model)
                     {
-                        background.BackgroundImage.h = 480;
-                        background.BackgroundImage.w = 480;
-                    }
-                    if (ProgramSettings.Watch_Model == "GTS 3")
-                    {
-                        background.BackgroundImage.h = 450;
-                        background.BackgroundImage.w = 390;
+                        case "GTR 3":
+                            background.BackgroundImage.h = 454;
+                            background.BackgroundImage.w = 454;
+                            break;
+                        case "GTR 3 Pro":
+                            background.BackgroundImage.h = 480;
+                            background.BackgroundImage.w = 480;
+                            break;
+                        case "GTS 3":
+                            background.BackgroundImage.h = 450;
+                            background.BackgroundImage.w = 390;
+                            break;
+                        case "GTR 4":
+                            background.BackgroundImage.h = 466;
+                            background.BackgroundImage.w = 466;
+                            break;
+                        case "Amazfit Band 7":
+                            background.BackgroundImage.h = 368;
+                            background.BackgroundImage.w = 194;
+                            break;
+                        case "GTS 4 mini":
+                            background.BackgroundImage.h = 384;
+                            background.BackgroundImage.w = 336;
+                            break;
                     }
                     //background.BackgroundImage.show_level = "ONLY_NORMAL";
                     background.BackgroundColor = null;
@@ -1307,17 +1322,32 @@ namespace Watch_Face_Editor
                 background.BackgroundColor.color = ColorToString(userCtrl_Background_Options.GetColorBackground());
                 background.BackgroundColor.x = 0;
                 background.BackgroundColor.y = 0;
-                background.BackgroundColor.h = 454;
-                background.BackgroundColor.w = 454;
-                if (ProgramSettings.Watch_Model == "GTR 3 Pro")
+                switch (ProgramSettings.Watch_Model)
                 {
-                    background.BackgroundColor.h = 480;
-                    background.BackgroundColor.w = 480;
-                }
-                if (ProgramSettings.Watch_Model == "GTS 3")
-                {
-                    background.BackgroundColor.h = 450;
-                    background.BackgroundColor.w = 390;
+                    case "GTR 3":
+                        background.BackgroundColor.h = 454;
+                        background.BackgroundColor.w = 454;
+                        break;
+                    case "GTR 3 Pro":
+                        background.BackgroundColor.h = 480;
+                        background.BackgroundColor.w = 480;
+                        break;
+                    case "GTS 3":
+                        background.BackgroundColor.h = 450;
+                        background.BackgroundColor.w = 390;
+                        break;
+                    case "GTR 4":
+                        background.BackgroundColor.h = 466;
+                        background.BackgroundColor.w = 466;
+                        break;
+                    case "Amazfit Band 7":
+                        background.BackgroundColor.h = 368;
+                        background.BackgroundColor.w = 194;
+                        break;
+                    case "GTS 4 mini":
+                        background.BackgroundColor.h = 384;
+                        background.BackgroundColor.w = 336;
+                        break;
                 }
                 background.BackgroundImage = null;
             }

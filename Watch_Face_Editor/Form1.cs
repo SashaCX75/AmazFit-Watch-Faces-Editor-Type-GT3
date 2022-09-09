@@ -226,6 +226,9 @@ namespace Watch_Face_Editor
                 case "T-Rex 2":
                     textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_T_Rex_2;
                     break;
+                case "GTR 4":
+                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_4;
+                    break;
                 case "Amazfit Band 7":
                     textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_Amazfit_Band_7;
                     break;
@@ -320,8 +323,6 @@ namespace Watch_Face_Editor
                 Logger.WriteLine("Загружаем Json файл из значения аргумента " + StartFileNameJson);
                 FileName = Path.GetFileName(StartFileNameJson);
                 FullFileDir = Path.GetDirectoryName(StartFileNameJson);
-                button_Add_Images.Enabled = true;
-                button_Add_Anim_Images.Enabled = true;
                 LoadJson(StartFileNameJson);
                 StartFileNameJson = "";
             }
@@ -497,6 +498,7 @@ namespace Watch_Face_Editor
                 if (comboBox_watch_model.Text == "GTR 3 Pro") ProgramSettings.WatchSkin_GTR_3_Pro = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "GTS 3") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "T-Rex 2") ProgramSettings.WatchSkin_T_Rex_2 = textBox_WatchSkin_Path.Text;
+                if (comboBox_watch_model.Text == "GTR 4") ProgramSettings.WatchSkin_GTR_4 = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "Amazfit Band 7") ProgramSettings.WatchSkin_Amazfit_Band_7 = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "GTS 4 mini") ProgramSettings.WatchSkin_GTS_4_mini = textBox_WatchSkin_Path.Text;
             }
@@ -551,7 +553,7 @@ namespace Watch_Face_Editor
             {
                 FormNameSufix = Path.GetFileNameWithoutExtension(FileName);
             }
-            switch (Form_Preview.Watch_Model)
+            switch (ProgramSettings.Watch_Model)
             {
                 case "GTR 3":
                     FormName = "GTR 3 watch face editor";
@@ -564,6 +566,9 @@ namespace Watch_Face_Editor
                     break;
                 case "T-Rex 2":
                     FormName = "T-Rex 2 watch face editor";
+                    break;
+                case "GTR 4":
+                    FormName = "GTR 4 watch face editor";
                     break;
                 case "Amazfit Band 7":
                     FormName = "Amazfit Band 7 watch face editor";
@@ -668,6 +673,9 @@ namespace Watch_Face_Editor
                         break;
                     case "T-Rex 2":
                         ProgramSettings.WatchSkin_T_Rex_2 = textBox_WatchSkin_Path.Text;
+                        break;
+                    case "GTR 4":
+                        ProgramSettings.WatchSkin_GTR_4 = textBox_WatchSkin_Path.Text;
                         break;
                     case "Amazfit Band 7":
                         ProgramSettings.WatchSkin_Amazfit_Band_7 = textBox_WatchSkin_Path.Text;
@@ -1769,8 +1777,6 @@ namespace Watch_Face_Editor
                 Logger.WriteLine("* JSON_Click");
                 string newFullName = openFileDialog.FileName;
                 //string dirName = Path.GetDirectoryName(newFullName) + @"\assets\";
-                button_Add_Images.Enabled = true;
-                button_Add_Anim_Images.Enabled = true;
 
                 LoadJson(newFullName);
 
@@ -1831,6 +1837,8 @@ namespace Watch_Face_Editor
             else StartJsonPreview(); 
 
             LoadImage(dirName);
+            button_Add_Images.Enabled = true;
+            button_Add_Anim_Images.Enabled = true;
             ShowElemetsWatchFace();
             if (Watch_Face != null && Watch_Face.WatchFace_Info != null && Watch_Face.WatchFace_Info.DeviceName != null)
             {
@@ -1847,6 +1855,9 @@ namespace Watch_Face_Editor
                         break;
                     case "T_Rex_2":
                         comboBox_watch_model.Text = "T-Rex 2";
+                        break;
+                    case "GTR4":
+                        comboBox_watch_model.Text = "GTR 4";
                         break;
                     case "Amazfit_Band_7":
                         comboBox_watch_model.Text = "Amazfit Band 7";
@@ -2134,6 +2145,14 @@ namespace Watch_Face_Editor
                         Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
                         Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
                         break;
+                    case "GTR 4":
+                        Watch_Face.WatchFace_Info.DeviceName = "GTR4";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 466;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 466;
+                        break;
                     case "Amazfit Band 7":
                         Watch_Face.WatchFace_Info.DeviceName = "Amazfit_Band_7";
                         Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
@@ -2259,6 +2278,14 @@ namespace Watch_Face_Editor
                         Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
                         Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
                         Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
+                        break;
+                    case "GTR 4":
+                        Watch_Face.WatchFace_Info.DeviceName = "GTR4";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 466;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 466;
                         break;
                     case "Amazfit Band 7":
                         Watch_Face.WatchFace_Info.DeviceName = "Amazfit_Band_7";
@@ -2420,6 +2447,9 @@ namespace Watch_Face_Editor
                 case "GTS 3":
                     bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
                     break;
+                case "GTR 4":
+                    bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
+                    break;
                 case "Amazfit Band 7":
                     bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
                     break;
@@ -2504,6 +2534,9 @@ namespace Watch_Face_Editor
                         case "GTS 3":
                             bitmapPreviewResize = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
                             break;
+                        case "GTR 4":
+                            bitmapPreviewResize = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
+                            break;
                         case "Amazfit Band 7":
                             bitmapPreviewResize = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
                             break;
@@ -2558,6 +2591,9 @@ namespace Watch_Face_Editor
                     break;
                 case "GTS 3":
                     bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
+                    break;
+                case "GTR 4":
+                    bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
                     break;
                 case "Amazfit Band 7":
                     bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
@@ -3056,6 +3092,13 @@ namespace Watch_Face_Editor
                         Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
                         Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
                         break;
+                    case "GTR 4":
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 466;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 466;
+                        break;
                     case "Amazfit Band 7":
                         Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
                         Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
@@ -3103,6 +3146,13 @@ namespace Watch_Face_Editor
                         Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
                         Watch_Face.ScreenAOD.Background.BackgroundColor.h = 450;
                         Watch_Face.ScreenAOD.Background.BackgroundColor.w = 390;
+                        break;
+                    case "GTR 4":
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.x = 0;
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.h = 466;
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.w = 466;
                         break;
                     case "Amazfit Band 7":
                         Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
@@ -5281,6 +5331,7 @@ namespace Watch_Face_Editor
                 if (comboBox_watch_model.Text == "GTR 3 Pro") ProgramSettings.WatchSkin_GTR_3_Pro = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "GTS 3") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "T-Rex 2") ProgramSettings.WatchSkin_T_Rex_2 = textBox_WatchSkin_Path.Text;
+                if (comboBox_watch_model.Text == "GTR 4") ProgramSettings.WatchSkin_GTR_4 = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "Amazfit Band 7") ProgramSettings.WatchSkin_Amazfit_Band_7 = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "GTS 4 mini") ProgramSettings.WatchSkin_GTS_4_mini = textBox_WatchSkin_Path.Text;
             }
@@ -5339,6 +5390,7 @@ namespace Watch_Face_Editor
                 if (comboBox_watch_model.Text == "GTR 3 Pro") ProgramSettings.WatchSkin_GTR_3_Pro = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "GTS 3") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "T-Rex 2") ProgramSettings.WatchSkin_T_Rex_2 = textBox_WatchSkin_Path.Text;
+                if (comboBox_watch_model.Text == "GTR 4") ProgramSettings.WatchSkin_GTR_4 = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "Amazfit Band 7") ProgramSettings.WatchSkin_Amazfit_Band_7 = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "GTS 4 mini") ProgramSettings.WatchSkin_GTS_4_mini = textBox_WatchSkin_Path.Text;
             }
@@ -6420,6 +6472,9 @@ namespace Watch_Face_Editor
                 case "GTS 3":
                     pictureBox_Preview.Size = new Size((int)(198 * currentDPI), (int)(228 * currentDPI));
                     break;
+                case "GTR 4":
+                    pictureBox_Preview.Size = new Size((int)(230 * currentDPI), (int)(230 * currentDPI));
+                    break;
                 case "Amazfit Band 7":
                     pictureBox_Preview.Size = new Size((int)(100 * currentDPI), (int)(187 * currentDPI));
                     break;
@@ -6585,6 +6640,38 @@ namespace Watch_Face_Editor
                         }
                     }
                     break;
+                case "GTR 4":
+                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_4;
+
+                    Watch_Face.WatchFace_Info.DeviceName = "GTR4";
+                    if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
+                    {
+                        if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
+                        {
+                            Watch_Face.ScreenNormal.Background.BackgroundColor.w = 466;
+                            Watch_Face.ScreenNormal.Background.BackgroundColor.h = 466;
+                        }
+                        if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
+                        {
+                            Watch_Face.ScreenNormal.Background.BackgroundImage.w = 466;
+                            Watch_Face.ScreenNormal.Background.BackgroundImage.h = 466;
+                        }
+                    }
+
+                    if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
+                    {
+                        if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
+                        {
+                            Watch_Face.ScreenAOD.Background.BackgroundColor.w = 466;
+                            Watch_Face.ScreenAOD.Background.BackgroundColor.h = 466;
+                        }
+                        if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
+                        {
+                            Watch_Face.ScreenAOD.Background.BackgroundImage.w = 466;
+                            Watch_Face.ScreenAOD.Background.BackgroundImage.h = 466;
+                        }
+                    }
+                    break;
                 case "Amazfit Band 7":
                     textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_Amazfit_Band_7;
 
@@ -6698,6 +6785,10 @@ namespace Watch_Face_Editor
                         background.BackgroundColor.h = 454;
                         background.BackgroundColor.w = 454;
                         break;
+                    case "GTR 4":
+                        background.BackgroundColor.h = 466;
+                        background.BackgroundColor.w = 466;
+                        break;
                     case "Amazfit Band 7":
                         background.BackgroundColor.h = 194;
                         background.BackgroundColor.w = 368;
@@ -6727,6 +6818,10 @@ namespace Watch_Face_Editor
                     case "T-Rex 2":
                         background.BackgroundImage.h = 454;
                         background.BackgroundImage.w = 454;
+                        break;
+                    case "GTR 4":
+                        background.BackgroundImage.h = 466;
+                        background.BackgroundImage.w = 466;
                         break;
                     case "Amazfit Band 7":
                         background.BackgroundImage.h = 194;
@@ -7008,6 +7103,11 @@ namespace Watch_Face_Editor
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
                         PreviewHeight = 306;
                         break;
+                    case "GTR 4":
+                        bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_4.png");
+                        PreviewHeight = 314;
+                        break;
                     case "Amazfit Band 7":
                         bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_band_7.png");
@@ -7073,6 +7173,11 @@ namespace Watch_Face_Editor
                         bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
                         PreviewHeight = 306;
+                        break;
+                    case "GTR 4":
+                        bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_4.png");
+                        PreviewHeight = 314;
                         break;
                     case "Amazfit Band 7":
                         bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
@@ -7345,7 +7450,10 @@ namespace Watch_Face_Editor
                                     case 390:
                                         Watch_Face.WatchFace_Info.DeviceName = "GTS3";
                                         break;
-                                    case 368:
+                                    case 466:
+                                        Watch_Face.WatchFace_Info.DeviceName = "GTR4";
+                                        break;
+                                    case 194:
                                         Watch_Face.WatchFace_Info.DeviceName = "Amazfit_Band_7";
                                         break;
                                     case 336:
@@ -7360,32 +7468,43 @@ namespace Watch_Face_Editor
                                         background.BackgroundColor.color = ColorToString(Color.Black);
                                         background.BackgroundColor.x = 0;
                                         background.BackgroundColor.y = 0;
-                                        background.BackgroundColor.h = 454;
-                                        background.BackgroundColor.w = 454;
-                                        Watch_Face.WatchFace_Info.DeviceName = "GTR3";
-                                        if (ProgramSettings.Watch_Model == "GTR 3 Pro")
+                                        switch (ProgramSettings.Watch_Model)
                                         {
-                                            background.BackgroundColor.h = 480;
-                                            background.BackgroundColor.w = 480;
-                                            Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
-                                        }
-                                        if (ProgramSettings.Watch_Model == "GTS 3")
-                                        {
-                                            background.BackgroundColor.h = 450;
-                                            background.BackgroundColor.w = 390;
-                                            Watch_Face.WatchFace_Info.DeviceName = "GTS3";
-                                        }
-                                        if (ProgramSettings.Watch_Model == "Amazfit Band 7")
-                                        {
-                                            background.BackgroundColor.h = 368;
-                                            background.BackgroundColor.w = 194;
-                                            Watch_Face.WatchFace_Info.DeviceName = "Amazfit_Band_7";
-                                        }
-                                        if (ProgramSettings.Watch_Model == "GTS 4 mini")
-                                        {
-                                            background.BackgroundColor.h = 384;
-                                            background.BackgroundColor.w = 336;
-                                            Watch_Face.WatchFace_Info.DeviceName = "GTS4_mini";
+                                            case "GTR 3":
+                                                background.BackgroundColor.h = 454;
+                                                background.BackgroundColor.w = 454;
+                                                Watch_Face.WatchFace_Info.DeviceName = "GTR3";
+                                                break;
+                                            case "GTR 3 Pro":
+                                                background.BackgroundColor.h = 480;
+                                                background.BackgroundColor.w = 480;
+                                                Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
+                                                break;
+                                            case "GTS 3":
+                                                background.BackgroundColor.h = 450;
+                                                background.BackgroundColor.w = 390;
+                                                Watch_Face.WatchFace_Info.DeviceName = "GTS3";
+                                                break;
+                                            case "GTR 4":
+                                                background.BackgroundColor.h = 466;
+                                                background.BackgroundColor.w = 466;
+                                                Watch_Face.WatchFace_Info.DeviceName = "GTR4";
+                                                break;
+                                            case "Amazfit Band 7":
+                                                background.BackgroundColor.h = 368;
+                                                background.BackgroundColor.w = 194;
+                                                Watch_Face.WatchFace_Info.DeviceName = "Amazfit_Band_7";
+                                                break;
+                                            case "GTS 4 mini":
+                                                background.BackgroundColor.h = 384;
+                                                background.BackgroundColor.w = 336;
+                                                Watch_Face.WatchFace_Info.DeviceName = "GTS4_mini";
+                                                break;
+                                            default:
+                                                background.BackgroundColor.h = 454;
+                                                background.BackgroundColor.w = 454;
+                                                Watch_Face.WatchFace_Info.DeviceName = "GTR3";
+                                                break;
                                         }
                                         background.BackgroundImage = null;
                                         Watch_Face.ScreenNormal.Background = background;
@@ -13523,6 +13642,10 @@ namespace Watch_Face_Editor
                         bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
                         break;
+                    case "GTR 4":
+                        bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_4.png");
+                        break;
                     case "Amazfit Band 7":
                         bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_band_7.png");
@@ -13566,6 +13689,10 @@ namespace Watch_Face_Editor
                     case "GTS 3":
                         bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
+                        break;
+                    case "GTR 4":
+                        bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_4.png");
                         break;
                     case "Amazfit Band 7":
                         bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
@@ -13874,33 +14001,37 @@ namespace Watch_Face_Editor
         {
             if (e.TabPage.Name == "tabPageConverting")
             {
-                //if (radioButton_GTR3.Checked)
-                //{
-                //    radioButton_ConvertingInput_GTR3.Checked = true;
-                //    numericUpDown_ConvertingInput_Custom.Value = 454;
-                //}
-                //if (radioButton_GTR3_Pro.Checked)
-                //{
-                //    radioButton_ConvertingInput_GTR3Pro.Checked = true;
-                //    numericUpDown_ConvertingInput_Custom.Value = 480;
-                //}
-                switch (comboBox_watch_model.SelectedIndex)
+                switch (comboBox_watch_model.Text)
                 {
-                    case 0:
-                    case 3:
-                        radioButton_ConvertingInput_GTR3.Checked = true;
-                        numericUpDown_ConvertingInput_Custom.Value = 454;
-                        radioButton_ConvertingOutput_GTR3Pro.Checked = true;
-                        numericUpDown_ConvertingOutput_Custom.Value = 480;
+                    case "GTR 3":
+                        comboBox_ConvertingInput_Model.Text = "454 (GTR 3)";
+                        comboBox_ConvertingOutput_Model.Text = "480 (GTR 3 Pro)";
                         break;
-                    case 1:
-                        radioButton_ConvertingInput_GTR3Pro.Checked = true;
-                        numericUpDown_ConvertingInput_Custom.Value = 480;
-                        radioButton_ConvertingOutput_GTR3.Checked = true;
-                        numericUpDown_ConvertingOutput_Custom.Value = 454;
+                    case "T-Rex 2":
+                        comboBox_ConvertingInput_Model.Text = "454 (T-Rex 2)";
+                        comboBox_ConvertingOutput_Model.Text = "480 (GTR 3 Pro)";
+                        break;
+                    case "GTR 3 Pro":
+                        comboBox_ConvertingInput_Model.Text = "480 (GTR 3 Pro)";
+                        comboBox_ConvertingOutput_Model.Text = "454 (GTR 3)";
+                        break;
+                    case "GTS 3":
+                        comboBox_ConvertingInput_Model.Text = "390 (GTS 3)";
+                        comboBox_ConvertingOutput_Model.Text = "336 (GTS 4 mini)";
+                        break;
+                    case "GTR 4":
+                        comboBox_ConvertingInput_Model.Text = "466 (GTR 4)";
+                        comboBox_ConvertingOutput_Model.Text = "454 (GTR 3)";
+                        break;
+                    case "GTS 4 mini":
+                        comboBox_ConvertingInput_Model.Text = "336 (GTS 4 mini)";
+                        comboBox_ConvertingOutput_Model.Text = "390 (GTS 3)";
+                        break;
+                    default:
+                        comboBox_ConvertingInput_Model.SelectedIndex = 0;
+                        comboBox_ConvertingOutput_Model.SelectedIndex = 0;
                         break;
                 }
-                numericUpDown_ConvertingInput_Custom.Enabled = radioButton_ConvertingInput_Custom.Checked;
             }
             if (FileName != null && FullFileDir != null)
             {
@@ -13914,37 +14045,57 @@ namespace Watch_Face_Editor
             }
         }
 
-        private void radioButton_ConvertingInput_Custom_CheckedChanged(object sender, EventArgs e)
+        private void comboBox_ConvertingInput_Model_SelectedIndexChanged(object sender, EventArgs e)
         {
-            numericUpDown_ConvertingInput_Custom.Enabled = radioButton_ConvertingInput_Custom.Checked;
+            if (comboBox_ConvertingInput_Model.SelectedIndex == 0) numericUpDown_ConvertingInput_Custom.Enabled = true;
+            else numericUpDown_ConvertingInput_Custom.Enabled = false;
+            switch (comboBox_ConvertingInput_Model.Text)
+            {
+                case "336 (GTS 4 mini)":
+                    numericUpDown_ConvertingInput_Custom.Value = 336;
+                    break;
+                case "390 (GTS 3)":
+                    numericUpDown_ConvertingInput_Custom.Value = 390;
+                    break;
+                case "454 (GTR 3)":
+                    numericUpDown_ConvertingInput_Custom.Value = 454;
+                    break;
+                case "454 (T-Rex 2)":
+                    numericUpDown_ConvertingInput_Custom.Value = 454;
+                    break;
+                case "466 (GTR 4)":
+                    numericUpDown_ConvertingInput_Custom.Value = 466;
+                    break;
+                case "480 (GTR 3 Pro)":
+                    numericUpDown_ConvertingInput_Custom.Value = 480;
+                    break;
+            }
         }
 
-        private void radioButton_ConvertingOutput_Custom_CheckedChanged(object sender, EventArgs e)
+        private void comboBox_ConvertingOutput_Model_SelectedIndexChanged(object sender, EventArgs e)
         {
-            numericUpDown_ConvertingOutput_Custom.Enabled = radioButton_ConvertingOutput_Custom.Checked;
-        }
-
-        private void radioButton_ConvertingInput_GTR3_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButton_ConvertingInput_GTR3.Checked)
+            if (comboBox_ConvertingOutput_Model.SelectedIndex == 0) numericUpDown_ConvertingOutput_Custom.Enabled = true;
+            else numericUpDown_ConvertingOutput_Custom.Enabled = false;
+            switch (comboBox_ConvertingOutput_Model.Text)
             {
-                numericUpDown_ConvertingInput_Custom.Value = 454;
-            }
-            if (radioButton_ConvertingInput_GTR3Pro.Checked)
-            {
-                numericUpDown_ConvertingInput_Custom.Value = 480;
-            }
-        }
-
-        private void radioButton_ConvertingOutput_GTR3_CheckedChanged(object sender, EventArgs e)
-        {
-            if (radioButton_ConvertingOutput_GTR3.Checked)
-            {
-                numericUpDown_ConvertingOutput_Custom.Value = 454;
-            }
-            if (radioButton_ConvertingOutput_GTR3Pro.Checked)
-            {
-                numericUpDown_ConvertingOutput_Custom.Value = 480;
+                case "336 (GTS 4 mini)":
+                    numericUpDown_ConvertingOutput_Custom.Value = 336;
+                    break;
+                case "390 (GTS 3)":
+                    numericUpDown_ConvertingOutput_Custom.Value = 390;
+                    break;
+                case "454 (GTR 3)":
+                    numericUpDown_ConvertingOutput_Custom.Value = 454;
+                    break;
+                case "454 (T-Rex 2)":
+                    numericUpDown_ConvertingOutput_Custom.Value = 454;
+                    break;
+                case "466 (GTR 4)":
+                    numericUpDown_ConvertingOutput_Custom.Value = 466;
+                    break;
+                case "480 (GTR 3 Pro)":
+                    numericUpDown_ConvertingOutput_Custom.Value = 480;
+                    break;
             }
         }
 
@@ -13958,18 +14109,35 @@ namespace Watch_Face_Editor
                 string suffix = "_GTR_3";
                 float scale = 1;
                 string DeviceName = "GTR3";
-                if (radioButton_ConvertingOutput_TRexPro.Checked)
+                switch (comboBox_ConvertingOutput_Model.Text)
                 {
-                    suffix = "_T-Rex_Pro";
-                }
-                if (radioButton_ConvertingOutput_GTR3Pro.Checked)
-                {
-                    suffix = "_GTR_3_Pro";
-                    DeviceName = "GTR3_Pro";
-                }
-                if (radioButton_ConvertingOutput_Custom.Checked)
-                {
-                    suffix = "_Custom_" + numericUpDown_ConvertingOutput_Custom.Value.ToString();
+                    case "336 (GTS 4 mini)":
+                        suffix = "_GTS_4_mini";
+                        DeviceName = "GTS4_mini";
+                        break;
+                    case "390 (GTS 3)":
+                        suffix = "_GTS_3";
+                        DeviceName = "GTS3";
+                        break;
+                    case "454 (GTR 3)":
+                        suffix = "_GTR_3";
+                        DeviceName = "GTR3";
+                        break;
+                    case "454 (T-Rex 2)":
+                        suffix = "_T_Rex_2";
+                        DeviceName = "T_Rex_2";
+                        break;
+                    case "466 (GTR 4)":
+                        suffix = "_GTR_4";
+                        DeviceName = "GTR4";
+                        break;
+                    case "480 (GTR 3 Pro)":
+                        suffix = "_GTR_3_Pro";
+                        DeviceName = "GTR3_Pro";
+                        break;
+                    default:
+                        suffix = "_Custom_" + numericUpDown_ConvertingOutput_Custom.Value.ToString();
+                        break;
                 }
 
                 scale = (float)(numericUpDown_ConvertingOutput_Custom.Value / numericUpDown_ConvertingInput_Custom.Value);

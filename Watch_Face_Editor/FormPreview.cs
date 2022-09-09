@@ -46,6 +46,10 @@ namespace Watch_Face_Editor
                         pictureBox_Preview.Size = new Size(198, 228);
                         this.Size = new Size(198 + (int)(22 * currentDPI), 228 + (int)(66 * currentDPI));
                         break;
+                    case "GTR 4":
+                        pictureBox_Preview.Size = new Size(236, 236);
+                        this.Size = new Size(236 + (int)(22 * currentDPI), 236 + (int)(66 * currentDPI));
+                        break;
                     case "Amazfit Band 7":
                         pictureBox_Preview.Size = new Size(100, 187);
                         this.Size = new Size(100 + (int)(22 * currentDPI), 187 + (int)(66 * currentDPI));
@@ -74,6 +78,10 @@ namespace Watch_Face_Editor
                     case "GTS 3":
                         pictureBox_Preview.Size = new Size(392, 452);
                         this.Size = new Size(392 + (int)(22 * currentDPI), 452 + (int)(66 * currentDPI));
+                        break;
+                    case "GTR 4":
+                        pictureBox_Preview.Size = new Size(468, 468);
+                        this.Size = new Size(468 + (int)(22 * currentDPI), 468 + (int)(66 * currentDPI));
                         break;
                     case "Amazfit Band 7":
                         pictureBox_Preview.Size = new Size(196, 370);
@@ -104,6 +112,10 @@ namespace Watch_Face_Editor
                         pictureBox_Preview.Size = new Size(587, 677);
                         this.Size = new Size(587 + (int)(22 * currentDPI), 677 + (int)(66 * currentDPI));
                         break;
+                    case "GTR 4":
+                        pictureBox_Preview.Size = new Size(701, 701);
+                        this.Size = new Size(701 + (int)(22 * currentDPI), 701 + (int)(66 * currentDPI));
+                        break;
                     case "Amazfit Band 7":
                         pictureBox_Preview.Size = new Size(293, 554);
                         this.Size = new Size(293 + (int)(22 * currentDPI), 554 + (int)(66 * currentDPI));
@@ -133,6 +145,10 @@ namespace Watch_Face_Editor
                         pictureBox_Preview.Size = new Size(781, 901);
                         this.Size = new Size(781 + (int)(22 * currentDPI), 901 + (int)(66 * currentDPI));
                         break;
+                    case "GTR 4":
+                        pictureBox_Preview.Size = new Size(933, 933);
+                        this.Size = new Size(933 + (int)(22 * currentDPI), 933 + (int)(66 * currentDPI));
+                        break;
                     case "Amazfit Band 7":
                         pictureBox_Preview.Size = new Size(389, 737);
                         this.Size = new Size(389 + (int)(22 * currentDPI), 737 + (int)(66 * currentDPI));
@@ -161,6 +177,10 @@ namespace Watch_Face_Editor
                     case "GTS 3":
                         pictureBox_Preview.Size = new Size(976, 1126);
                         this.Size = new Size(976 + (int)(22 * currentDPI), 1126 + (int)(66 * currentDPI));
+                        break;
+                    case "GTR 4":
+                        pictureBox_Preview.Size = new Size(1166, 1166);
+                        this.Size = new Size(1166 + (int)(22 * currentDPI), 1166 + (int)(66 * currentDPI));
                         break;
                     case "Amazfit Band 7":
                         pictureBox_Preview.Size = new Size(486, 921);

@@ -54,7 +54,7 @@ namespace Watch_Face_Editor
                     ImageMagick.IMagickImage Blue = image.Separate(ImageMagick.Channels.Blue).First();
                     ImageMagick.IMagickImage Red = image.Separate(ImageMagick.Channels.Red).First(); 
                     ImageMagick.IMagickImage Alpha = image.Separate(ImageMagick.Channels.Red).First();
-                    if (model != "Amazfit Band 7")
+                    if (model != "Amazfit Band 7" && model != "GTS 4 mini")
                     {
                         image.Composite(Red, ImageMagick.CompositeOperator.Replace, ImageMagick.Channels.Blue);
                         image.Composite(Blue, ImageMagick.CompositeOperator.Replace, ImageMagick.Channels.Red); 
