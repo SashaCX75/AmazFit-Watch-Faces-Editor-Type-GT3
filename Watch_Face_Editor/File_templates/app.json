@@ -55,7 +55,7 @@
       "path": "watchface/index",
       "main": 1,
       "editable": 0,
-      "lockscrreen": 1
+      "lockscreen": 0
     },
     "app-side": {
       "path": "app-side/index"

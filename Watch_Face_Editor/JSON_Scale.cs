@@ -319,6 +319,7 @@ namespace Watch_Face_Editor
                     Scale_IMG_PROGRESS(elementSunrise.Segments, scale);
                     Scale_IMG_NUMBER(elementSunrise.Sunrise, scale);
                     Scale_IMG_NUMBER(elementSunrise.Sunset, scale);
+                    Scale_IMG_NUMBER(elementSunrise.Sunset_Sunrise, scale);
                     Scale_IMG_POINTER(elementSunrise.Pointer, scale);
                     Scale_IMG(elementSunrise.Icon, scale);
                     break;

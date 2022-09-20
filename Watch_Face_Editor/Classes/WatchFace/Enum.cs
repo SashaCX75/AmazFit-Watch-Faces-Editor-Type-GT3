@@ -3,7 +3,7 @@
     public enum hmUI_show_level
     {
         ONLY_NORMAL = 0,
-        ONAL_AOD = 1,
+        ONLY_AOD = 1,
         ALL = 2
     }
 

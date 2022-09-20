@@ -32,7 +32,7 @@ namespace ControlLibrary
             setValue = false;
         }
 
-        /// <summary>Задает индекс выбраной анимации</summary>
+        /// <summary>Задает количество анимаций в выпадающем списке</summary>
         public void SetAnimationCount(int count)
         {
             setValue = true;

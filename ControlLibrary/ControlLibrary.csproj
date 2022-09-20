@@ -213,6 +213,12 @@
     <Compile Include="Elements\UCtrl_FatBurning_Elm.Designer.cs">
       <DependentUpon>UCtrl_FatBurning_Elm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UCtrl_EditableBackground_Opt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCtrl_EditableBackground_Opt.Designer.cs">
+      <DependentUpon>UCtrl_EditableBackground_Opt.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCtrl_Icon_Opt.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -927,6 +933,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_FatBurning_Elm.resx">
       <DependentUpon>UCtrl_FatBurning_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_EditableBackground_Opt.en.resx">
+      <DependentUpon>UCtrl_EditableBackground_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_EditableBackground_Opt.resx">
+      <DependentUpon>UCtrl_EditableBackground_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Icon_Opt.en.resx">
       <DependentUpon>UCtrl_Icon_Opt.cs</DependentUpon>

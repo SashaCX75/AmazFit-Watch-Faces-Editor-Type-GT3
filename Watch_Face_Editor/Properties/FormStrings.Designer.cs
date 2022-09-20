@@ -635,5 +635,23 @@ namespace Watch_Face_Editor.Properties {
                 return ResourceManager.GetString("Message_Wrong_Preview_Exists", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Фон .
+        /// </summary>
+        internal static string Tip_Background {
+            get {
+                return ResourceManager.GetString("Tip_Background", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Стрелки .
+        /// </summary>
+        internal static string Tip_Pointer {
+            get {
+                return ResourceManager.GetString("Tip_Pointer", resourceCulture);
+            }
+        }
     }
 }

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace ControlLibrary
 {
@@ -17,6 +18,7 @@ namespace ControlLibrary
         private bool setValue; // режим задания параметров
         private List<string> ListImagesFullName = new List<string>(); // перечень путей к файлам с картинками
         private bool AODmode;
+        private bool Editable_background_mode;
         public Object _Background;
         private int ID;
 
@@ -35,6 +37,20 @@ namespace ControlLibrary
                 label3.Visible = !AODmode;
                 label1.Visible = !AODmode;
                 label_ID.Visible = !AODmode;
+                //radioButton_EditableBackground.Visible = !AODmode;
+            }
+        }
+        [Description("Возможность включить редактируемый фон")]
+        public bool Editable_background
+        {
+            get
+            {
+                return Editable_background_mode;
+            }
+            set
+            {
+                Editable_background_mode = value;
+                radioButton_EditableBackground.Enabled = Editable_background_mode;
             }
         }
         public UCtrl_Background_Opt()
@@ -86,9 +102,17 @@ namespace ControlLibrary
 
         private void radioButton_Background_image_CheckedChanged(object sender, EventArgs e)
         {
-            bool b = radioButton_Background_image.Checked;
-            comboBox_Background_image.Enabled = b;
-            comboBox_Background_color.Enabled = !b;
+            System.Windows.Forms.RadioButton radioButton = sender as System.Windows.Forms.RadioButton;
+            if (!radioButton.Checked) return;
+            label_EditableBackground_Hint.Visible = false;
+            if (radioButton.Name == "radioButton_EditableBackground")
+            {
+                if(AODmode) label_EditableBackground_Hint.Visible = true;
+            }
+            bool i = radioButton_Background_image.Checked;
+            bool c = radioButton_Background_color.Checked;
+            comboBox_Background_image.Enabled = i;
+            comboBox_Background_color.Enabled = c;
 
             if (ValueChanged != null && !setValue)
             {
@@ -189,11 +213,26 @@ namespace ControlLibrary
             return comboBox_Preview_image.SelectedIndex;
         }
 
-        /// <summary>Переключает отображение фона картинкой или цветом. 0 - картинка, иначе цвет</summary>
-        public void Switch_ImageColor(int value)
+        /// <summary>Переключает отображение фона картинкой или цветом. 0 - картинка, 1 - фон, 2 - редактируемая фоновая картинка</summary>
+        public void Switch_ImageType(int value)
         {
-            if (value == 0) radioButton_Background_image.Checked = true;
-            else radioButton_Background_color.Checked = true;
+            //if (value == 0) radioButton_Background_image.Checked = true;
+            //else radioButton_Background_color.Checked = true;
+            switch (value)
+            {
+                case 0:
+                    radioButton_Background_image.Checked = true;
+                    break;
+                case 1:
+                    radioButton_Background_color.Checked = true;
+                    break;
+                case 2:
+                    radioButton_EditableBackground.Checked = true;
+                    break;
+                default:
+                    radioButton_Background_image.Checked = true;
+                    break;
+            }
         }
 
         #region Standard events

@@ -1,12 +1,15 @@
-﻿using Newtonsoft.Json;
+﻿using ControlLibrary;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrayNotify;
 
 namespace Watch_Face_Editor
 {
@@ -20,7 +23,7 @@ namespace Watch_Face_Editor
             {
                 Watch_Face_temp = JsonConvert.DeserializeObject<WATCH_FACE>(text, new JsonSerializerSettings
                 {
-                    DefaultValueHandling = DefaultValueHandling.Ignore,
+                    //DefaultValueHandling = DefaultValueHandling.Ignore,
                     NullValueHandling = NullValueHandling.Ignore
                 });
             }
@@ -637,10 +640,12 @@ namespace Watch_Face_Editor
         }
 
         /// <summary>Читаем настройки для фона</summary>
-        private void Read_Background_Options(Background background, string preview = "", int id = 0)
+        private void Read_Background_Options(Background background, bool Editable_background, bool Editable_background_ShowOnAOD, 
+            string preview = "", int id = 0)
         {
             PreviewView = false;
             userCtrl_Background_Options.SettingsClear();
+            userCtrl_Background_Options.Editable_background = Editable_background;
 
             if (preview != null && preview.Length > 0) userCtrl_Background_Options.SetPreview(preview);
             if (id > 999 && id < 10000000) userCtrl_Background_Options.SetID(id);
@@ -655,16 +660,24 @@ namespace Watch_Face_Editor
                 PreviewView = true;
                 return;
             }
-            if (background.BackgroundColor != null)
-            {
-                userCtrl_Background_Options.SetColorBackground(StringToColor(background.BackgroundColor.color));
-                userCtrl_Background_Options.Switch_ImageColor(1);
-            }
             if (background.BackgroundImage != null)
             {
                 userCtrl_Background_Options.SetBackground(background.BackgroundImage.src);
-                userCtrl_Background_Options.Switch_ImageColor(0);
+                userCtrl_Background_Options.Switch_ImageType(0);
             }
+            if (background.BackgroundColor != null)
+            {
+                userCtrl_Background_Options.SetColorBackground(StringToColor(background.BackgroundColor.color));
+                userCtrl_Background_Options.Switch_ImageType(1);
+            }
+            if (background.Editable_Background != null && background.Editable_Background.enable_edit_bg)
+            {
+                userCtrl_Background_Options.Switch_ImageType(2);
+
+                Read_EditableBackground_Options(background.Editable_Background);
+                uCtrl_EditableBackground_Opt.Visible = true;
+            }
+            if (Editable_background_ShowOnAOD) userCtrl_Background_Options.Switch_ImageType(2);
             userCtrl_Background_Options._Background = background;
 
             PreviewView = true;
@@ -993,6 +1006,34 @@ namespace Watch_Face_Editor
             PreviewView = true;
         }
 
+        private void Read_EditableBackground_Options(Editable_Background editable_background)
+        {
+            PreviewView = false;
+            uCtrl_EditableBackground_Opt.SettingsClear();
+
+            uCtrl_EditableBackground_Opt._EditableBackground = editable_background;
+            int index = -1;
+            if (editable_background.BackgroundImageList != null && editable_background.BackgroundImageList.Count > 0)
+            {
+                index = editable_background.selected_background;
+                uCtrl_EditableBackground_Opt.SetBackgroundCount(editable_background.BackgroundImageList.Count);
+                uCtrl_EditableBackground_Opt.SetBackgroundIndex(index);
+
+                if (index >= 0 && index < editable_background.BackgroundImageList.Count)
+                {
+                    uCtrl_EditableBackground_Opt.SetImage(editable_background.BackgroundImageList[index]);
+                    uCtrl_EditableBackground_Opt.SetPreview(editable_background.BackgroundPreviewList[index]); 
+                }
+            }
+            uCtrl_EditableBackground_Opt.SetBackgroundIndex(index);
+            uCtrl_EditableBackground_Opt.SetForeground(editable_background.fg);
+
+            uCtrl_EditableBackground_Opt.SetTip(editable_background.tips_bg);
+            uCtrl_EditableBackground_Opt.numericUpDown_tipX.Value = editable_background.tips_x;
+            uCtrl_EditableBackground_Opt.numericUpDown_tipY.Value = editable_background.tips_y;
+            PreviewView = true;
+        }
+
         /// <summary>Читаем настройки для отображения стрелочного указателя</summary>
         private void Read_ImgPointer_Options(hmUI_widget_IMG_POINTER img_pointer, bool _showBackground)
         {
@@ -1238,6 +1279,7 @@ namespace Watch_Face_Editor
             else Watch_Face.WatchFace_Info.Preview = null;
             Watch_Face.WatchFace_Info.WatchFaceId = userCtrl_Background_Options.GetID();
 
+            // картинка для фона
             if (userCtrl_Background_Options.radioButton_Background_image.Checked)
             {
                 if (backgroundImg.Length > 0)
@@ -1295,9 +1337,20 @@ namespace Watch_Face_Editor
                     }
                     //background.BackgroundImage.show_level = "ONLY_NORMAL";
                     background.BackgroundColor = null;
+                    if (background.Editable_Background != null) background.Editable_Background.enable_edit_bg = false;
+                    uCtrl_EditableBackground_Opt.Visible = false;
+
+                    if (radioButton_ScreenIdle.Checked)
+                    {
+                        if (Watch_Face.ScreenNormal.Background != null)
+                        {
+                            Watch_Face.ScreenNormal.Background.Editable_Background.AOD_show = false;
+                        }
+                    }
                 }
             }
-            else
+            // цвет для фона
+            else if (userCtrl_Background_Options.radioButton_Background_color.Checked)
             {
                 if (background == null)
                 {
@@ -1350,8 +1403,87 @@ namespace Watch_Face_Editor
                         break;
                 }
                 background.BackgroundImage = null;
+                if (background.Editable_Background != null) background.Editable_Background.enable_edit_bg = false;
+                uCtrl_EditableBackground_Opt.Visible = false;
+
+                if (radioButton_ScreenIdle.Checked)
+                {
+                    if (Watch_Face.ScreenNormal.Background != null)
+                    {
+                        Watch_Face.ScreenNormal.Background.Editable_Background.AOD_show = false;
+                    }
+                }
             }
-            background.visible = userCtrl_Background_Options.Visible;
+            // настраиваемый фон
+            else if (userCtrl_Background_Options.radioButton_EditableBackground.Checked)
+            {
+                if (background == null)
+                {
+                    if (radioButton_ScreenNormal.Checked)
+                    {
+                        if (Watch_Face.ScreenNormal == null) Watch_Face.ScreenNormal = new ScreenNormal();
+                        if (Watch_Face.ScreenNormal.Background == null)
+                            Watch_Face.ScreenNormal.Background = new Background();
+                        background = Watch_Face.ScreenNormal.Background;
+                    }
+                    else
+                    {
+                        if (Watch_Face.ScreenAOD == null) Watch_Face.ScreenAOD = new ScreenAOD();
+                        if (Watch_Face.ScreenAOD.Background == null)
+                            Watch_Face.ScreenAOD.Background = new Background();
+                        background = Watch_Face.ScreenAOD.Background;
+                    }
+                }
+
+                if (radioButton_ScreenNormal.Checked)
+                {
+                    if (background.Editable_Background == null)
+                        background.Editable_Background = new Editable_Background();
+                    switch (ProgramSettings.Watch_Model)
+                    {
+                        case "GTR 3":
+                            background.Editable_Background.h = 454;
+                            background.Editable_Background.w = 454;
+                            break;
+                        case "GTR 3 Pro":
+                            background.Editable_Background.h = 480;
+                            background.Editable_Background.w = 480;
+                            break;
+                        case "GTS 3":
+                            background.Editable_Background.h = 450;
+                            background.Editable_Background.w = 390;
+                            break;
+                        case "GTR 4":
+                            background.Editable_Background.h = 466;
+                            background.Editable_Background.w = 466;
+                            break;
+                        case "Amazfit Band 7":
+                            background.Editable_Background.h = 368;
+                            background.Editable_Background.w = 194;
+                            break;
+                        case "GTS 4 mini":
+                            background.Editable_Background.h = 384;
+                            background.Editable_Background.w = 336;
+                            break;
+                    }
+
+                    background.Editable_Background.enable_edit_bg = true;
+                    Read_EditableBackground_Options(background.Editable_Background);
+                    uCtrl_EditableBackground_Opt.Visible = true;
+                    background.BackgroundImage = null;
+                    background.BackgroundColor = null; 
+                }
+                else
+                {
+                    if (Watch_Face.ScreenNormal.Background != null)
+                    {
+                        Watch_Face.ScreenNormal.Background.Editable_Background.AOD_show=true;
+                        background.BackgroundImage = null;
+                        background.BackgroundColor = null;
+                    }
+                }
+            }
+            //background.visible = userCtrl_Background_Options.Visible;
 
             JSON_Modified = true;
             PreviewImage();
@@ -1654,7 +1786,7 @@ namespace Watch_Face_Editor
         {
             if (!PreviewView) return;
             if (Watch_Face == null) return;
-            //if (index < 0) return;
+            if (index < 0) return;
             hmUI_widget_IMG_ANIM_List animation_frame = (hmUI_widget_IMG_ANIM_List)uCtrl_Animation_Frame_Opt._AnimationFrame;
             if (animation_frame == null) return;
 
@@ -1678,7 +1810,7 @@ namespace Watch_Face_Editor
 
             //rotate_anim.display_on_restart = uCtrl_Animation_Frame_Opt.checkBox_anim_restart.Checked;
 
-            if (index + 1 <= frameAnimation.Count && index >= 0) frameAnimation[index] = img_anim;
+            if (index + 1 <= frameAnimation.Count) frameAnimation[index] = img_anim;
 
             JSON_Modified = true;
             PreviewImage();
@@ -1689,7 +1821,7 @@ namespace Watch_Face_Editor
         {
             if (!PreviewView) return;
             if (Watch_Face == null) return;
-            //if (index < 0) return;
+            if (index < 0) return;
             Motion_Animation_List animation_motion = (Motion_Animation_List)uCtrl_Animation_Motion_Opt._AnimationMotion;
             if (animation_motion == null) return;
 
@@ -1714,7 +1846,7 @@ namespace Watch_Face_Editor
             motion_anim.anim_two_sides = uCtrl_Animation_Motion_Opt.checkBox_anim_two_sides.Checked;
             motion_anim.show_in_start = uCtrl_Animation_Motion_Opt.checkBox_show_in_startPos.Checked;
 
-            if (index + 1 <= motionAnimation.Count && index >= 0) motionAnimation[index] = motion_anim;
+            if (index + 1 <= motionAnimation.Count) motionAnimation[index] = motion_anim;
 
             JSON_Modified = true;
             PreviewImage();
@@ -1725,7 +1857,7 @@ namespace Watch_Face_Editor
         {
             if (!PreviewView) return;
             if (Watch_Face == null) return;
-            //if (index < 0) return;
+            if (index < 0) return;
             Rotate_Animation_List animation_rotate = (Rotate_Animation_List)uCtrl_Animation_Rotate_Opt._AnimationRotate;
             if (animation_rotate == null) return;
 
@@ -1753,7 +1885,7 @@ namespace Watch_Face_Editor
             rotate_anim.anim_two_sides = uCtrl_Animation_Rotate_Opt.checkBox_anim_two_sides.Checked;
             rotate_anim.show_in_start = uCtrl_Animation_Rotate_Opt.checkBox_show_in_startPos.Checked;
 
-            if (index + 1 <= motionAnimation.Count && index >= 0) motionAnimation[index] = rotate_anim;
+            if (index + 1 <= motionAnimation.Count) motionAnimation[index] = rotate_anim;
 
             JSON_Modified = true;
             PreviewImage();
@@ -1974,6 +2106,260 @@ namespace Watch_Face_Editor
             animation_rotate.selected_animation = index;
 
             uCtrl_Animation_Elm_SelectChanged(sender, eventArgs);
+        }
+
+
+        private void uCtrl_EditableBackground_Opt_BackgroundAdd(object sender, EventArgs eventArgs, int index)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            Editable_Background background = (Editable_Background)uCtrl_EditableBackground_Opt._EditableBackground;
+            if (background == null) return;
+
+            if (background.BackgroundImageList == null) background.BackgroundImageList = new List<string>();
+            if (background.BackgroundPreviewList == null) background.BackgroundPreviewList = new List<string>();
+            if (background.BackgroundImageList.Count <= index || index < 0)
+            {
+                background.BackgroundImageList.Add(uCtrl_EditableBackground_Opt.GetImage());
+                background.BackgroundPreviewList.Add(uCtrl_EditableBackground_Opt.GetPreview());
+            }
+            else
+            {
+                background.BackgroundImageList.Insert(index, uCtrl_EditableBackground_Opt.GetImage());
+                background.BackgroundPreviewList.Insert(index, uCtrl_EditableBackground_Opt.GetPreview());
+            }
+            background.selected_background = ++index;
+            Read_EditableBackground_Options(background);
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_EditableBackground_Opt_BackgroundDel(object sender, EventArgs eventArgs, int index)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            if (index < 0) return;
+            Editable_Background background = (Editable_Background)uCtrl_EditableBackground_Opt._EditableBackground;
+            if (background == null) return;
+
+            if (background.BackgroundImageList == null) background.BackgroundImageList = new List<string>();
+            if (background.BackgroundPreviewList == null) background.BackgroundPreviewList = new List<string>();
+            List<string> backgroundImage = background.BackgroundImageList;
+            List<string> previewImage = background.BackgroundPreviewList;
+
+            if (backgroundImage.Count > index) backgroundImage.RemoveAt(index);
+            if (previewImage.Count > index) previewImage.RemoveAt(index);
+            background.selected_background = --index;
+            if (index < 0 && backgroundImage != null && backgroundImage.Count > 0)
+                background.selected_background = 0;
+            Read_EditableBackground_Options(background);
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_EditableBackground_Opt_BackgroundIndexChanged(object sender, EventArgs eventArgs, int index)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            if (index < 0) return;
+            Editable_Background background = (Editable_Background)uCtrl_EditableBackground_Opt._EditableBackground;
+            if (background == null) return;
+            background.selected_background = index;
+
+            PreviewImage();
+            Read_EditableBackground_Options(background);
+        }
+
+        private void uCtrl_EditableBackground_Opt_PreviewAdd(object sender, EventArgs eventArgs, int index)
+        {
+            if (index < 0) return;
+            if (Watch_Face == null || Watch_Face.ScreenNormal == null || Watch_Face.ScreenNormal.Background == null ||
+                Watch_Face.ScreenNormal.Background.Editable_Background == null ||
+                Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundPreviewList == null ||
+                index >= Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundPreviewList.Count)
+            {
+                return;
+            }
+            if (FileName != null && FullFileDir != null) // проект уже сохранен
+            {
+                // формируем картинку для предпросмотра
+                Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
+                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
+                switch (ProgramSettings.Watch_Model)
+                {
+                    case "GTR 3 Pro":
+                        bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
+                        break;
+                    case "GTS 3":
+                        bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
+                        break;
+                    case "GTR 4":
+                        bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_4.png");
+                        break;
+                    case "Amazfit Band 7":
+                        bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_band_7.png");
+                        break;
+                    case "GTS 4 mini":
+                        bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
+                        break;
+                }
+                Graphics gPanel = Graphics.FromImage(bitmap);
+                int link = radioButton_ScreenNormal.Checked ? 0 : 1;
+                Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false,
+                    false, false, link, false, -1, false);
+                if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
+
+                // определяем имя файла для сохранения и сохраняем файл
+                int i = 1;
+                string tempName = "bg_edit_" + (index + 1).ToString() + "_preview";
+                string NamePreview = tempName + ".png";
+                string PathPreview = FullFileDir + @"\assets\" + NamePreview;
+                while (File.Exists(PathPreview) && i < 10)
+                {
+                    NamePreview = tempName + i.ToString() + ".png";
+                    PathPreview = FullFileDir + @"\assets\" + NamePreview;
+                    i++;
+                    if (i > 9)
+                    {
+                        MessageBox.Show(Properties.FormStrings.Message_Wrong_Preview_Exists,
+                            Properties.FormStrings.Message_Warning_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+                bitmap.Save(PathPreview, ImageFormat.Png);
+                string fileNameOnly = Path.GetFileNameWithoutExtension(PathPreview);
+
+                PreviewView = false;
+
+                LoadImage(Path.GetDirectoryName(PathPreview) + @"\");
+
+                Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundPreviewList[index] = fileNameOnly;
+                PreviewView = true;
+                JSON_Modified = true;
+                FormText();
+                Read_EditableBackground_Options(Watch_Face.ScreenNormal.Background.Editable_Background);
+                //HideAllElemenrOptions();
+                //ResetHighlightState("");
+
+                bitmap.Dispose();
+                button_CreatePreview.Visible = false;
+                button_RefreshPreview.Visible = true;
+
+                PreviewImage();
+            }
+        }
+
+        private void uCtrl_EditableBackground_Opt_PreviewRefresh(object sender, EventArgs eventArgs, int index)
+        {
+            if (FileName == null || FullFileDir == null) return;
+            if (index < 0) return;
+            if (Watch_Face == null || Watch_Face.ScreenNormal == null || Watch_Face.ScreenNormal.Background == null || 
+                Watch_Face.ScreenNormal.Background.Editable_Background == null || 
+                Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundPreviewList == null)
+            {
+                if (index < Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundPreviewList.Count)
+                {
+                    uCtrl_EditableBackground_Opt_PreviewAdd(null, null, index); 
+                }
+                return;
+            }
+            if (index < Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundPreviewList.Count &&
+                Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundPreviewList[index].Length > 0)
+            {
+                string preview = FullFileDir + @"\assets\" + 
+                    Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundPreviewList[index] + ".png";
+                if (!File.Exists(preview))
+                {
+                    Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundPreviewList[index] = "";
+                    uCtrl_EditableBackground_Opt_PreviewAdd(null, null, index);
+                    return;
+                }
+                Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
+                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
+                switch (ProgramSettings.Watch_Model)
+                {
+                    case "GTR 3 Pro":
+                        bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
+                        break;
+                    case "GTS 3":
+                        bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
+                        break;
+                    case "GTR 4":
+                        bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_4.png");
+                        break;
+                    case "Amazfit Band 7":
+                        bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_band_7.png");
+                        break;
+                    case "GTS 4 mini":
+                        bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
+                        break;
+                }
+                Graphics gPanel = Graphics.FromImage(bitmap);
+                int link = radioButton_ScreenNormal.Checked ? 0 : 1;
+                Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false,
+                    false, false, link, false, -1, false);
+                if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
+
+                ;
+                Image loadedImage = null;
+                using (FileStream stream = new FileStream(preview, FileMode.Open, FileAccess.Read))
+                {
+                    loadedImage = Image.FromStream(stream);
+                }
+                bitmap.Save(preview, ImageFormat.Png);
+
+                bitmap.Dispose();
+                loadedImage.Dispose();
+
+                LoadImage(Path.GetDirectoryName(preview) + @"\");
+                //HideAllElemenrOptions();
+                //ResetHighlightState("");
+
+                PreviewImage();
+            }
+        }
+
+        private void uCtrl_EditableBackground_Opt_ValueChanged(object sender, EventArgs eventArgs, int index)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            if (index < 0) return;
+            Editable_Background background = (Editable_Background)uCtrl_EditableBackground_Opt._EditableBackground;
+            if (background == null) return;
+
+            if (background.BackgroundImageList == null) background.BackgroundImageList = new List<string>();
+            if (background.BackgroundPreviewList == null) background.BackgroundPreviewList = new List<string>();
+            List<string> backgroundImage = background.BackgroundImageList;
+            List<string> previewImage = background.BackgroundPreviewList;
+            if (backgroundImage == null || previewImage == null) return;
+            if (backgroundImage.Count < index + 1 || previewImage.Count < index + 1) return;
+
+            background.fg = uCtrl_EditableBackground_Opt.GetForeground();
+
+            background.tips_bg = uCtrl_EditableBackground_Opt.GetTip();
+            background.tips_x = (int)uCtrl_EditableBackground_Opt.numericUpDown_tipX.Value;
+            background.tips_y = (int)uCtrl_EditableBackground_Opt.numericUpDown_tipY.Value;
+
+            backgroundImage[index] = uCtrl_EditableBackground_Opt.GetImage();
+            previewImage[index] = uCtrl_EditableBackground_Opt.GetPreview();
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
         }
 
         private Color StringToColor(string color)

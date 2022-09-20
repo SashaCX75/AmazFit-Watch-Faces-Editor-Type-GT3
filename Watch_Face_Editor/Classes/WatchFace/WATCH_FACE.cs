@@ -17,7 +17,7 @@ namespace Watch_Face_Editor
         /// <summary>AOD экран</summary>
         public ScreenAOD ScreenAOD { get; set; }
 
-        
+
     }
 
     public class WatchFace_Info
@@ -32,7 +32,7 @@ namespace Watch_Face_Editor
         public string Preview { get; set; }
     }
 
-    public class ScreenNormal 
+    public class ScreenNormal
     {
         /// <summary>Задний фон</summary>
         public Background Background { get; set; }
@@ -61,6 +61,9 @@ namespace Watch_Face_Editor
         /// <summary>Цвет фона</summary>
         public hmUI_widget_FILL_RECT BackgroundColor { get; set; }
 
+        /// <summary>Редактируемый задний фон</summary>
+        public Editable_Background Editable_Background { get; set; }
+
         public object Clone()
         {
             hmUI_widget_IMG BackgroundImage = null;
@@ -77,7 +80,7 @@ namespace Watch_Face_Editor
                     position = this.BackgroundImage.position,
                     visible = this.BackgroundImage.visible,
                     show_level = this.BackgroundImage.show_level,
-                }; 
+                };
             }
 
             hmUI_widget_FILL_RECT BackgroundColor = null;
@@ -94,9 +97,9 @@ namespace Watch_Face_Editor
                     //visible = this.BackgroundImage.visible,
                     color = this.BackgroundColor.color,
                     show_level = this.BackgroundColor.show_level,
-                }; 
+                };
             }
-            
+
             return new Background
             {
                 visible = this.visible,
@@ -104,6 +107,48 @@ namespace Watch_Face_Editor
                 BackgroundColor = BackgroundColor
             };
         }
+    }
+
+    public class Editable_Background
+    {
+        /// <summary>Использовать ли в циферблате редактируемый фон</summary>
+        public bool enable_edit_bg = true;
+
+        /// <summary>Выбраный задний фон</summary>
+        public int selected_background = 0;
+
+        /// <summary>Координаты фона (на всякий случай)</summary>
+        public int x = 0;
+
+        /// <summary>Координаты фона (на всякий случай)</summary>
+        public int y = 0;
+
+        /// <summary>Размер фона (для определения модели)</summary>
+        public int h = 0;
+
+        /// <summary>Размер фона (для определения модели)</summary>
+        public int w = 0;
+
+        /// <summary>Перечень картинок для фона</summary>
+        public List<string> BackgroundImageList { get; set; }
+
+        /// <summary>Перечень картинок для предпросмотра фона</summary>
+        public List<string> BackgroundPreviewList { get; set; }
+
+        /// <summary>Фон пояснительной даписи</summary>
+        public string tips_bg { get; set; }
+
+        /// <summary>Координаты пояснительной даписи</summary>
+        public int tips_x { get; set; }
+
+        /// <summary>Координаты пояснительной даписи</summary>
+        public int tips_y { get; set; }
+
+        /// <summary>Рамка выделения</summary>
+        public string fg { get; set; }
+
+        /// <summary>Рамка выделения</summary>
+        public bool AOD_show { get; set; } = false;
     }
 
     public class ElementDigitalTime : ICloneable

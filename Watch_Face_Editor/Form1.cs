@@ -74,6 +74,11 @@ namespace Watch_Face_Editor
                                 });
                     //Logger.WriteLine("Чтение Settings.json");
                 }
+                else
+                {
+                    Properties.Settings.Default.FormLocation = new Point(0, 0);
+                    Properties.Settings.Default.Save();
+                }
 
 
 
@@ -345,6 +350,7 @@ namespace Watch_Face_Editor
             }
 
             userCtrl_Background_Options.AutoSize = true;
+            uCtrl_EditableBackground_Opt.AutoSize = true;
             uCtrl_Text_Opt.AutoSize = true;
             uCtrl_Text_Weather_Opt.AutoSize = true;
             uCtrl_AmPm_Opt.AutoSize = true;
@@ -1478,6 +1484,8 @@ namespace Watch_Face_Editor
         private void HideAllElemenrOptions()
         {
             userCtrl_Background_Options.Visible = false;
+            uCtrl_EditableBackground_Opt.Visible = false;
+            uCtrl_EditableBackground_Opt.Visible = false;
             uCtrl_Text_Opt.Visible = false;
             uCtrl_Text_Weather_Opt.Visible = false;
             uCtrl_AmPm_Opt.Visible = false;
@@ -1597,19 +1605,30 @@ namespace Watch_Face_Editor
                 preview = Watch_Face.WatchFace_Info.Preview;
                 id = Watch_Face.WatchFace_Info.WatchFaceId;
             }
+            bool editable_background = false; 
+            bool Editable_background_ShowOnAOD = false;
             Background background = null;
             if (radioButton_ScreenNormal.Checked)
             {
                 if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
                     Watch_Face.ScreenNormal.Background != null) background = Watch_Face.ScreenNormal.Background;
+                editable_background = true;
             }
             else
             {
                 if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
                     Watch_Face.ScreenAOD.Background != null) background = Watch_Face.ScreenAOD.Background;
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Background != null && Watch_Face.ScreenNormal.Background.visible &&
+                    Watch_Face.ScreenNormal.Background.Editable_Background != null &&
+                    Watch_Face.ScreenNormal.Background.Editable_Background.enable_edit_bg) 
+                { 
+                    editable_background = true;
+                    if (Watch_Face.ScreenNormal.Background.Editable_Background.AOD_show) Editable_background_ShowOnAOD = true;
+                }
             }
-            Read_Background_Options(background, preview, id);
             ShowElemenrOptions("Background");
+            Read_Background_Options(background, editable_background, Editable_background_ShowOnAOD, preview, id);
         }
 
         private void uCtrl_DigitalTime_Elm_SelectChanged(object sender, EventArgs eventArgs)
@@ -1956,6 +1975,7 @@ namespace Watch_Face_Editor
             }
 
             userCtrl_Background_Options.ComboBoxAddItems(ListImages, ListImagesFullName);
+            uCtrl_EditableBackground_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
             uCtrl_Text_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
             uCtrl_Text_Weather_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
             uCtrl_AmPm_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
@@ -2039,16 +2059,6 @@ namespace Watch_Face_Editor
                 }
             }
 
-            //userCtrl_Background_Options.ComboBoxAddItems(ListImages, ListImagesFullName);
-            //uCtrl_Text_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
-            //uCtrl_Text_Weather_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
-            //uCtrl_AmPm_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
-            //uCtrl_Pointer_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
-            //uCtrl_Images_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
-            //uCtrl_Segments_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
-            //uCtrl_Linear_Scale_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
-            //uCtrl_Icon_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
-            //uCtrl_Shortcut_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
             uCtrl_Animation_Frame_Opt.ComboBoxAddItems(ListAnimImages, ListAnimImagesFullName);
             uCtrl_Animation_Motion_Opt.ComboBoxAddItems(ListAnimImages, ListAnimImagesFullName);
             uCtrl_Animation_Rotate_Opt.ComboBoxAddItems(ListAnimImages, ListAnimImagesFullName);
@@ -2461,11 +2471,13 @@ namespace Watch_Face_Editor
             #endregion
 
             Logger.WriteLine("Preview_screen");
+            bool editMode = false;
+            if(uCtrl_EditableBackground_Opt.Visible && uCtrl_EditableBackground_Opt.checkBox_edit_mode.Checked) editMode = true;
             int link = radioButton_ScreenNormal.Checked ? 0 : 1;
             Preview_screen(gPanel, scale, checkBox_crop.Checked, checkBox_WebW.Checked, checkBox_WebB.Checked,
                 checkBox_border.Checked, checkBox_Show_Shortcuts.Checked, checkBox_Shortcuts_Area.Checked,
                 checkBox_Shortcuts_Border.Checked, checkBox_Shortcuts_Image.Checked, true, checkBox_CircleScaleImage.Checked,
-                checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link, false, -1);
+                checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link, false, -1, editMode);
             pictureBox_Preview.BackgroundImage = bitmap;
             gPanel.Dispose();
 
@@ -2478,6 +2490,7 @@ namespace Watch_Face_Editor
 
         private void pictureBox_Preview_Click(object sender, EventArgs e)
         {
+            bool editMode = false;
             if ((formPreview == null) || (!formPreview.Visible))
             {
                 formPreview = new Form_Preview(currentDPI);
@@ -2548,11 +2561,12 @@ namespace Watch_Face_Editor
                     #endregion
 
                     int link_aod = radioButton_ScreenNormal.Checked ? 0 : 1;
+                    if (uCtrl_EditableBackground_Opt.Visible && uCtrl_EditableBackground_Opt.checkBox_edit_mode.Checked) editMode = true;
                     Preview_screen(gPanelPreviewResize, 1, checkBox_crop.Checked,
                         checkBox_WebW.Checked, checkBox_WebB.Checked, checkBox_border.Checked,
                         checkBox_Show_Shortcuts.Checked, checkBox_Shortcuts_Area.Checked, checkBox_Shortcuts_Border.Checked,
                         checkBox_Shortcuts_Image.Checked, true,checkBox_CircleScaleImage.Checked, 
-                        checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link_aod, false, -1);
+                        checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link_aod, false, -1, editMode);
                     formPreview.pictureBox_Preview.BackgroundImage = bitmapPreviewResize;
                     gPanelPreviewResize.Dispose();
                 };
@@ -2606,10 +2620,11 @@ namespace Watch_Face_Editor
             #endregion
 
             int link = radioButton_ScreenNormal.Checked ? 0 : 1;
+            if (uCtrl_EditableBackground_Opt.Visible && uCtrl_EditableBackground_Opt.checkBox_edit_mode.Checked) editMode = true;
             Preview_screen(gPanel, scale, checkBox_crop.Checked, checkBox_WebW.Checked, checkBox_WebB.Checked,
                 checkBox_border.Checked, checkBox_Show_Shortcuts.Checked, checkBox_Shortcuts_Area.Checked,
                 checkBox_Shortcuts_Border.Checked, checkBox_Shortcuts_Image.Checked, true, checkBox_CircleScaleImage.Checked,
-                checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link, false, -1);
+                checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link, false, -1, editMode);
             formPreview.pictureBox_Preview.BackgroundImage = bitmap;
             gPanel.Dispose();
 
@@ -6900,8 +6915,14 @@ namespace Watch_Face_Editor
             {
                 List<object> Elements = Watch_Face.ScreenNormal.Elements;
                 bool exists = Elements.Exists(el => el.GetType().Name == "ElementAnimation"); // проверяем что такого элемента нет
-                if (exists) appText = appText.Replace("\"lockscrreen\": 1",
-                                "\"lockscrreen\": 1,\n      \"hightCost\":1");
+                if (exists) appText = appText.Replace("\"lockscreen\": 0",
+                                "\"lockscreen\": 0,\n      \"hightCost\":1");
+            }
+            if (Watch_Face.ScreenAOD != null) appText = appText.Replace("\"lockscreen\": 0", "\"lockscreen\": 1");
+            if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
+            {
+                if (Watch_Face.ScreenNormal.Background.Editable_Background != null &&
+                    Watch_Face.ScreenNormal.Background.Editable_Background.enable_edit_bg) appText = appText.Replace("\"editable\": 0", "\"editable\": 1");
             }
             File.WriteAllText(tempDir + @"\app.json", appText, Encoding.UTF8);
             File.Copy(templatesFileDir + @"\app.js", tempDir + @"\app.js");
@@ -7122,7 +7143,7 @@ namespace Watch_Face_Editor
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
                 Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false, 
-                    false, false, link, false, -1);
+                    false, false, link, false, -1, false);
                 if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
 
 ;
@@ -7146,8 +7167,6 @@ namespace Watch_Face_Editor
                 loadedImage.Dispose();
 
                 LoadImage(Path.GetDirectoryName(preview) + @"\");
-                //string fileNameOnly = Path.GetFileNameWithoutExtension(preview);
-                //userCtrl_Background_Options.SetPreview(fileNameOnly);
                 HideAllElemenrOptions();
                 ResetHighlightState("");
             }
@@ -7193,7 +7212,7 @@ namespace Watch_Face_Editor
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
                 Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false, 
-                    false, false, link, false, -1);
+                    false, false, link, false, -1, false);
                 if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
 
                 float scale = (float)PreviewHeight / bitmap.Height;
@@ -7225,8 +7244,6 @@ namespace Watch_Face_Editor
 
                 if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
                 Watch_Face.WatchFace_Info.Preview = fileNameOnly;
-                //userCtrl_Background_Options.ComboBoxAddItems(ListImages, ListImagesFullName);
-                //userCtrl_Background_Options.SetPreview(fileNameOnly);
                 PreviewView = true;
                 JSON_Modified = true;
                 FormText();
@@ -7437,6 +7454,13 @@ namespace Watch_Face_Editor
                                     if (Watch_Face.ScreenNormal.Background.BackgroundImage != null &&
                                         Watch_Face.ScreenNormal.Background.BackgroundImage.w != null)
                                         width = (int)Watch_Face.ScreenNormal.Background.BackgroundImage.w;
+
+                                    if (Watch_Face.ScreenNormal.Background.Editable_Background != null &&
+                                        Watch_Face.ScreenNormal.Background.Editable_Background.AOD_show)
+                                    {
+                                        if (Watch_Face.ScreenAOD == null) Watch_Face.ScreenAOD = new ScreenAOD();
+                                        if (Watch_Face.ScreenAOD.Background == null) Watch_Face.ScreenAOD.Background = new Background();
+                                    }
                                 }
 
                                 switch (width)
@@ -7462,53 +7486,201 @@ namespace Watch_Face_Editor
 
                                     default:
                                         Background background = Watch_Face.ScreenNormal.Background;
-                                        if (background == null) background = new Background();
-                                        if (background.BackgroundColor == null)
-                                            background.BackgroundColor = new hmUI_widget_FILL_RECT();
-                                        background.BackgroundColor.color = ColorToString(Color.Black);
-                                        background.BackgroundColor.x = 0;
-                                        background.BackgroundColor.y = 0;
-                                        switch (ProgramSettings.Watch_Model)
+                                        if (background == null || 
+                                            (background.BackgroundImage == null && background.Editable_Background == null))
                                         {
-                                            case "GTR 3":
-                                                background.BackgroundColor.h = 454;
-                                                background.BackgroundColor.w = 454;
-                                                Watch_Face.WatchFace_Info.DeviceName = "GTR3";
-                                                break;
-                                            case "GTR 3 Pro":
-                                                background.BackgroundColor.h = 480;
-                                                background.BackgroundColor.w = 480;
-                                                Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
-                                                break;
-                                            case "GTS 3":
-                                                background.BackgroundColor.h = 450;
-                                                background.BackgroundColor.w = 390;
-                                                Watch_Face.WatchFace_Info.DeviceName = "GTS3";
-                                                break;
-                                            case "GTR 4":
-                                                background.BackgroundColor.h = 466;
-                                                background.BackgroundColor.w = 466;
-                                                Watch_Face.WatchFace_Info.DeviceName = "GTR4";
-                                                break;
-                                            case "Amazfit Band 7":
-                                                background.BackgroundColor.h = 368;
-                                                background.BackgroundColor.w = 194;
-                                                Watch_Face.WatchFace_Info.DeviceName = "Amazfit_Band_7";
-                                                break;
-                                            case "GTS 4 mini":
-                                                background.BackgroundColor.h = 384;
-                                                background.BackgroundColor.w = 336;
-                                                Watch_Face.WatchFace_Info.DeviceName = "GTS4_mini";
-                                                break;
-                                            default:
-                                                background.BackgroundColor.h = 454;
-                                                background.BackgroundColor.w = 454;
-                                                Watch_Face.WatchFace_Info.DeviceName = "GTR3";
-                                                break;
+                                            if (background == null) background = new Background();
+                                            if (background.BackgroundColor == null)
+                                                background.BackgroundColor = new hmUI_widget_FILL_RECT();
+                                            background.BackgroundColor.color = ColorToString(Color.Black);
+                                            background.BackgroundColor.x = 0;
+                                            background.BackgroundColor.y = 0;
+                                            switch (ProgramSettings.Watch_Model)
+                                            {
+                                                case "GTR 3":
+                                                    background.BackgroundColor.h = 454;
+                                                    background.BackgroundColor.w = 454;
+                                                    Watch_Face.WatchFace_Info.DeviceName = "GTR3";
+                                                    break;
+                                                case "GTR 3 Pro":
+                                                    background.BackgroundColor.h = 480;
+                                                    background.BackgroundColor.w = 480;
+                                                    Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
+                                                    break;
+                                                case "GTS 3":
+                                                    background.BackgroundColor.h = 450;
+                                                    background.BackgroundColor.w = 390;
+                                                    Watch_Face.WatchFace_Info.DeviceName = "GTS3";
+                                                    break;
+                                                case "GTR 4":
+                                                    background.BackgroundColor.h = 466;
+                                                    background.BackgroundColor.w = 466;
+                                                    Watch_Face.WatchFace_Info.DeviceName = "GTR4";
+                                                    break;
+                                                case "Amazfit Band 7":
+                                                    background.BackgroundColor.h = 368;
+                                                    background.BackgroundColor.w = 194;
+                                                    Watch_Face.WatchFace_Info.DeviceName = "Amazfit_Band_7";
+                                                    break;
+                                                case "GTS 4 mini":
+                                                    background.BackgroundColor.h = 384;
+                                                    background.BackgroundColor.w = 336;
+                                                    Watch_Face.WatchFace_Info.DeviceName = "GTS4_mini";
+                                                    break;
+                                                default:
+                                                    background.BackgroundColor.h = 454;
+                                                    background.BackgroundColor.w = 454;
+                                                    Watch_Face.WatchFace_Info.DeviceName = "GTR3";
+                                                    break;
+                                            }
+                                            background.BackgroundImage = null;
+                                            Watch_Face.ScreenNormal.Background = background; 
                                         }
-                                        background.BackgroundImage = null;
-                                        Watch_Face.ScreenNormal.Background = background;
+                                        else
+                                        {
+                                            if(background.Editable_Background != null && 
+                                                background.Editable_Background.BackgroundImageList == null &&
+                                                background.Editable_Background.BackgroundImageList.Count > 0)
+                                            {
+                                                int h = 454;
+                                                int w = 454;
+                                                switch (ProgramSettings.Watch_Model)
+                                                {
+                                                    case "GTR 3":
+                                                        h = 454;
+                                                        w = 454;
+                                                        Watch_Face.WatchFace_Info.DeviceName = "GTR3";
+                                                        break;
+                                                    case "GTR 3 Pro":
+                                                        h = 480;
+                                                        w = 480;
+                                                        Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
+                                                        break;
+                                                    case "GTS 3":
+                                                        h = 450;
+                                                        w = 390;
+                                                        Watch_Face.WatchFace_Info.DeviceName = "GTS3";
+                                                        break;
+                                                    case "GTR 4":
+                                                        h = 466;
+                                                        w = 466;
+                                                        Watch_Face.WatchFace_Info.DeviceName = "GTR4";
+                                                        break;
+                                                    case "Amazfit Band 7":
+                                                        h = 368;
+                                                        w = 194;
+                                                        Watch_Face.WatchFace_Info.DeviceName = "Amazfit_Band_7";
+                                                        break;
+                                                    case "GTS 4 mini":
+                                                        h = 384;
+                                                        w = 336;
+                                                        Watch_Face.WatchFace_Info.DeviceName = "GTS4_mini";
+                                                        break;
+                                                    default:
+                                                        h = 454;
+                                                        w = 454;
+                                                        Watch_Face.WatchFace_Info.DeviceName = "GTR3";
+                                                        break;
+                                                }
+                                                background.Editable_Background.h = h;
+                                                background.Editable_Background.w = w;
+                                            }
+                                            else if (background.BackgroundImage != null)
+                                            {
+                                                switch (ProgramSettings.Watch_Model)
+                                                {
+                                                    case "GTR 3":
+                                                        background.BackgroundImage.h = 454;
+                                                        background.BackgroundImage.w = 454;
+                                                        Watch_Face.WatchFace_Info.DeviceName = "GTR3";
+                                                        break;
+                                                    case "GTR 3 Pro":
+                                                        background.BackgroundImage.h = 480;
+                                                        background.BackgroundImage.w = 480;
+                                                        Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
+                                                        break;
+                                                    case "GTS 3":
+                                                        background.BackgroundImage.h = 450;
+                                                        background.BackgroundImage.w = 390;
+                                                        Watch_Face.WatchFace_Info.DeviceName = "GTS3";
+                                                        break;
+                                                    case "GTR 4":
+                                                        background.BackgroundImage.h = 466;
+                                                        background.BackgroundImage.w = 466;
+                                                        Watch_Face.WatchFace_Info.DeviceName = "GTR4";
+                                                        break;
+                                                    case "Amazfit Band 7":
+                                                        background.BackgroundImage.h = 368;
+                                                        background.BackgroundImage.w = 194;
+                                                        Watch_Face.WatchFace_Info.DeviceName = "Amazfit_Band_7";
+                                                        break;
+                                                    case "GTS 4 mini":
+                                                        background.BackgroundImage.h = 384;
+                                                        background.BackgroundImage.w = 336;
+                                                        Watch_Face.WatchFace_Info.DeviceName = "GTS4_mini";
+                                                        break;
+                                                    default:
+                                                        background.BackgroundImage.h = 454;
+                                                        background.BackgroundImage.w = 454;
+                                                        Watch_Face.WatchFace_Info.DeviceName = "GTR3";
+                                                        break;
+                                                }
+                                            }
+                                        }
                                         break;
+                                }
+
+                                // есло всетаки не определили фон и модель
+                                Background backgroundEmpty = Watch_Face.ScreenNormal.Background;
+                                if (backgroundEmpty == null ||
+                                    (backgroundEmpty.BackgroundImage == null && backgroundEmpty.BackgroundColor == null &&
+                                    backgroundEmpty.Editable_Background == null))
+                                {
+                                    if (backgroundEmpty == null) backgroundEmpty = new Background();
+                                    if (backgroundEmpty.BackgroundColor == null)
+                                        backgroundEmpty.BackgroundColor = new hmUI_widget_FILL_RECT();
+                                    backgroundEmpty.BackgroundColor.color = ColorToString(Color.Black);
+                                    backgroundEmpty.BackgroundColor.x = 0;
+                                    backgroundEmpty.BackgroundColor.y = 0;
+                                    switch (ProgramSettings.Watch_Model)
+                                    {
+                                        case "GTR 3":
+                                            backgroundEmpty.BackgroundColor.h = 454;
+                                            backgroundEmpty.BackgroundColor.w = 454;
+                                            Watch_Face.WatchFace_Info.DeviceName = "GTR3";
+                                            break;
+                                        case "GTR 3 Pro":
+                                            backgroundEmpty.BackgroundColor.h = 480;
+                                            backgroundEmpty.BackgroundColor.w = 480;
+                                            Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
+                                            break;
+                                        case "GTS 3":
+                                            backgroundEmpty.BackgroundColor.h = 450;
+                                            backgroundEmpty.BackgroundColor.w = 390;
+                                            Watch_Face.WatchFace_Info.DeviceName = "GTS3";
+                                            break;
+                                        case "GTR 4":
+                                            backgroundEmpty.BackgroundColor.h = 466;
+                                            backgroundEmpty.BackgroundColor.w = 466;
+                                            Watch_Face.WatchFace_Info.DeviceName = "GTR4";
+                                            break;
+                                        case "Amazfit Band 7":
+                                            backgroundEmpty.BackgroundColor.h = 368;
+                                            backgroundEmpty.BackgroundColor.w = 194;
+                                            Watch_Face.WatchFace_Info.DeviceName = "Amazfit_Band_7";
+                                            break;
+                                        case "GTS 4 mini":
+                                            backgroundEmpty.BackgroundColor.h = 384;
+                                            backgroundEmpty.BackgroundColor.w = 336;
+                                            Watch_Face.WatchFace_Info.DeviceName = "GTS4_mini";
+                                            break;
+                                        default:
+                                            backgroundEmpty.BackgroundColor.h = 454;
+                                            backgroundEmpty.BackgroundColor.w = 454;
+                                            Watch_Face.WatchFace_Info.DeviceName = "GTR3";
+                                            break;
+                                    }
+                                    Watch_Face.ScreenNormal.Background = backgroundEmpty;
                                 }
                             }
                         }
@@ -7517,6 +7689,7 @@ namespace Watch_Face_Editor
                             MessageBox.Show(ex.Message);
                         }
                     }
+
                     string Watch_Face_String = JsonConvert.SerializeObject(Watch_Face, Formatting.Indented, new JsonSerializerSettings
                     {
                         //DefaultValueHandling = DefaultValueHandling.Ignore,
@@ -10348,6 +10521,8 @@ namespace Watch_Face_Editor
                 Background background = Watch_Face.ScreenNormal.Background;
                 List<object> elements = Watch_Face.ScreenNormal.Elements;
                 Watch_Face.ScreenAOD.Background = (Background)background.Clone();
+                if (Watch_Face.ScreenNormal.Background != null && Watch_Face.ScreenNormal.Background.Editable_Background != null)
+                    Watch_Face.ScreenNormal.Background.Editable_Background.AOD_show = true;
                 //Watch_Face.ScreenAOD.Elements = elements;
                 Watch_Face.ScreenAOD.Elements = new List<object>();
                 foreach (Object element in elements)
@@ -13658,7 +13833,7 @@ namespace Watch_Face_Editor
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
                 Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false, 
-                    false, false, link, false, -1);
+                    false, false, link, false, -1, false);
                 if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
                 else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
                 bitmap.Save(saveFileDialog.FileName, ImageFormat.Png);
@@ -13812,7 +13987,7 @@ namespace Watch_Face_Editor
                             //int link = radioButton_ScreenNormal.Checked ? 0 : 1;
                             int link = 0;
                             Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true,
-                                false, false, false, link, false, -1);
+                                false, false, false, link, false, -1, false);
                             //if (checkBox_crop.Checked) {
                             //    bitmap = ApplyMask(bitmap, mask);
                             //    gPanel = Graphics.FromImage(bitmap);
@@ -13843,7 +14018,7 @@ namespace Watch_Face_Editor
                         //int link = radioButton_ScreenNormal.Checked ? 0 : 1;
                         int link_AOD = 0;
                         Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true,
-                            false, false, false, link_AOD, Shortcuts_In_Gif, -1);
+                            false, false, false, link_AOD, Shortcuts_In_Gif, -1, false);
 
                         if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
                         else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
@@ -13867,7 +14042,7 @@ namespace Watch_Face_Editor
                         //int link = radioButton_ScreenNormal.Checked ? 0 : 1;
                         int link_AOD = 1;
                         Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true,
-                            false, false, false, link_AOD, false, -1);
+                            false, false, false, link_AOD, false, -1, false);
                         //if (checkBox_crop.Checked)
                         //{
                         //    bitmap = ApplyMask(bitmap, mask);
@@ -13887,7 +14062,7 @@ namespace Watch_Face_Editor
                         bitmap = bitmapTemp;
                         gPanel = Graphics.FromImage(bitmap);
                         Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true,
-                            false, false, false, link_AOD, false, -1);
+                            false, false, false, link_AOD, false, -1, false);
                         //if (checkBox_crop.Checked)
                         //{
                         //    bitmap = ApplyMask(bitmap, mask);
@@ -14508,8 +14683,10 @@ namespace Watch_Face_Editor
             }
         }
 
-        
-
+        private void uCtrl_EditableBackground_Opt_VisibleChanged(object sender, EventArgs e)
+        {
+            PreviewImage();
+        }
     }
 }
 

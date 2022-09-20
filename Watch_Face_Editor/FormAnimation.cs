@@ -37,7 +37,7 @@ namespace Watch_Face_Editor
             Form1 form1 = this.Owner as Form1;//Получаем ссылку на первую форму
             int link = form1.radioButton_ScreenNormal.Checked ? 0 : 1;
             form1.Preview_screen(gPanel, 1, false, false, false, false, false, false, false, false, true, false,
-                false, false, link, false, time_value_sec);
+                false, false, link, false, time_value_sec, false);
 
             pictureBox_AnimatiomPreview.Image = SrcImg;
             time_value_sec = time_value_sec + timer1.Interval / 1000f;
@@ -328,7 +328,7 @@ namespace Watch_Face_Editor
                             gPanel = Graphics.FromImage(bitmap);
 
                             form1.Preview_screen(gPanel, 1, false, false, false, false, false, false, false, false, true, false,
-                                false, false, 0, false, time_value_sec);
+                                false, false, 0, false, time_value_sec, false);
 
                             if (form1.checkBox_WatchSkin_Use.Checked) bitmap = form1.ApplyWatchSkin(bitmap);
                             else if (form1.checkBox_crop.Checked) bitmap = form1.ApplyMask(bitmap, mask);

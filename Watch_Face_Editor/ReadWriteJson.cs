@@ -7,6 +7,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Watch_Face_Editor
 {
@@ -43,6 +45,14 @@ namespace Watch_Face_Editor
                         items += TabInString(6) + "normal_background_bg_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                             options + TabInString(6) + "});" + Environment.NewLine;
                     }
+                    if (Watch_Face.ScreenNormal.Background.Editable_Background != null)
+                    {
+                        variables += TabInString(4) + "let editBg = ''" + Environment.NewLine;
+                        Editable_Background editable_Background = Watch_Face.ScreenNormal.Background.Editable_Background;
+                        options = Editable_Background_Options(editable_Background, "ONLY_NORMAL");
+                        items += TabInString(6) + "editBg = hmUI.createWidget(hmUI.widget.WATCHFACE_EDIT_BG, {" +
+                            options + TabInString(6) + "});" + Environment.NewLine;
+                    }
                 }
                 if (Watch_Face.ScreenNormal.Elements != null && Watch_Face.ScreenNormal.Elements.Count > 0)
                 {
@@ -74,7 +84,7 @@ namespace Watch_Face_Editor
                         variables += TabInString(4) + "let idle_background_bg = ''" + Environment.NewLine;
                         hmUI_widget_FILL_RECT backgroundColor = Watch_Face.ScreenAOD.Background.BackgroundColor;
                         //if (backgroundColor.show_level == null) backgroundColor.show_level = "ONLY_NORMAL";
-                        options = FILL_RECT_Options(backgroundColor, "ONAL_AOD");
+                        options = FILL_RECT_Options(backgroundColor, "ONLY_AOD");
                         items += TabInString(6) + "idle_background_bg = hmUI.createWidget(hmUI.widget.FILL_RECT, {" +
                             options + TabInString(6) + "});" + Environment.NewLine;
                     }
@@ -83,7 +93,7 @@ namespace Watch_Face_Editor
                         variables += TabInString(4) + "let idle_background_bg_img = ''" + Environment.NewLine;
                         hmUI_widget_IMG backgroundImage = Watch_Face.ScreenAOD.Background.BackgroundImage;
                         //if (backgroundImage.show_level == null) backgroundImage.show_level = "ONLY_NORMAL";
-                        options = IMG_Options(backgroundImage, "ONAL_AOD");
+                        options = IMG_Options(backgroundImage, "ONLY_AOD");
                         items += TabInString(6) + "idle_background_bg_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                             options + TabInString(6) + "});" + Environment.NewLine;
                     }
@@ -97,7 +107,7 @@ namespace Watch_Face_Editor
                         string out_resume_function = "";
                         string out_resume_call = "";
                         string out_pause_call = "";
-                        AddElementToJS(element, "ONAL_AOD", out outVariables, out outItems, out out_resume_function,
+                        AddElementToJS(element, "ONLY_AOD", out outVariables, out outItems, out out_resume_function,
                             items, resume_function, out out_resume_call, out out_pause_call);
                         variables += outVariables;
                         items += outItems;
@@ -147,7 +157,7 @@ namespace Watch_Face_Editor
             out string resume_call, out string pause_call)
         {
             string optionNameStart = "normal_";
-            if (show_level == "ONAL_AOD") optionNameStart = "idle_";
+            if (show_level == "ONLY_AOD") optionNameStart = "idle_";
             variables = "";
             items = "";
             resume_function = "";
@@ -6334,6 +6344,43 @@ namespace Watch_Face_Editor
             return options;
         }
 
+        private string Editable_Background_Options(Editable_Background editable_background, string show_level)
+        {
+            string options = Environment.NewLine;
+            if (editable_background == null) return options;
+            if (!editable_background.enable_edit_bg) return options;
+            if (editable_background.BackgroundImageList == null || editable_background.BackgroundPreviewList == null) return options;
+            if (editable_background.BackgroundImageList[0].Length > 0)
+            {
+                options += TabInString(7) + "edit_id: 1003," + Environment.NewLine;
+                options += TabInString(7) + "x: 0," + Environment.NewLine;
+                options += TabInString(7) + "y: 0," + Environment.NewLine;
+                options += TabInString(7) + "// w: " + editable_background.w.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "// h: " + editable_background.h.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "// AOD_show: " + editable_background.AOD_show.ToString() + "," + Environment.NewLine;
+
+                int count = editable_background.BackgroundImageList.Count;
+                options += TabInString(7) + "bg_config: [" + Environment.NewLine;
+                for(int i= 0; i < count; i++)
+                {
+                    options += TabInString(8) + "{ id: " + (i+1).ToString() + 
+                        ", preview: '" + editable_background.BackgroundPreviewList[i] +
+                        ".png', path: '" + editable_background.BackgroundImageList[i] + ".png' }," + Environment.NewLine;
+                }
+                options += TabInString(7) + "]," + Environment.NewLine;
+
+                options += TabInString(7) + "count: " + count.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "default_id: 1," + Environment.NewLine;
+                options += TabInString(7) + "fg: '" + editable_background.fg + ".png'," + Environment.NewLine;
+                options += TabInString(7) + "tips_bg: '" + editable_background.tips_bg + ".png'," + Environment.NewLine;
+                options += TabInString(7) + "tips_x: " + editable_background.tips_x.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "tips_y: " + editable_background.tips_y.ToString() + "," + Environment.NewLine;
+
+                //options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+            }
+            return options;
+        }
+
 
         private string TabInString(int count)
         {
@@ -6390,7 +6437,7 @@ namespace Watch_Face_Editor
                                         Watch_Face.ScreenNormal.Background = new Background();
                                     Watch_Face.ScreenNormal.Background.BackgroundImage = img;
                                 }
-                                else if (img.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
+                                else if (img.show_level == "ONLY_AOD" || img.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
                                 {
                                     if (Watch_Face.ScreenAOD.Background == null)
                                         Watch_Face.ScreenAOD.Background = new Background();
@@ -6406,7 +6453,7 @@ namespace Watch_Face_Editor
                                         Watch_Face.ScreenNormal.Elements = new List<object>();
                                     elementsList = Watch_Face.ScreenNormal.Elements;
                                 }
-                                else if (img.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
+                                else if (img.show_level == "ONLY_AOD" || img.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
                                 {
                                     if (Watch_Face.ScreenAOD.Elements == null)
                                         Watch_Face.ScreenAOD.Elements = new List<object>();
@@ -7222,7 +7269,7 @@ namespace Watch_Face_Editor
                                         Watch_Face.ScreenNormal.Background.BackgroundImage = img; 
                                     }
                                 }
-                                else if (firstImgAOD && img.show_level == "ONAL_AOD")
+                                else if (firstImgAOD && (img.show_level == "ONLY_AOD" || img.show_level == "ONAL_AOD"))
                                 {
                                     firstImgAOD = false;
                                     if ((img.w == 454 && img.h == 454) || (img.w == 480 && img.h == 480) ||
@@ -7251,13 +7298,23 @@ namespace Watch_Face_Editor
                                         Watch_Face.ScreenNormal.Background = new Background();
                                     Watch_Face.ScreenNormal.Background.BackgroundColor = fill_rect;
                                 }
-                                else if (fill_rect.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
+                                else if (fill_rect.show_level == "ONLY_AOD" || fill_rect.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
                                 {
                                     if (Watch_Face.ScreenAOD.Background == null)
                                         Watch_Face.ScreenAOD.Background = new Background();
                                     Watch_Face.ScreenAOD.Background.BackgroundColor = fill_rect;
                                 }
                             }
+
+                            break;
+                        #endregion
+
+                        #region WATCHFACE_EDIT_BG
+                        case "WATCHFACE_EDIT_BG":
+                            Editable_Background edit_bg = Object_WATCHFACE_EDIT_BG(parametrs);
+                            if(Watch_Face.ScreenNormal.Background == null)
+                                        Watch_Face.ScreenNormal.Background = new Background();
+                            Watch_Face.ScreenNormal.Background.Editable_Background = edit_bg;
 
                             break;
                         #endregion
@@ -7336,7 +7393,7 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenNormal.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenNormal.Elements;
                             }
-                            else if (pointer_time.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
+                            else if (pointer_time.show_level == "ONLY_AOD" || pointer_time.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
                             {
                                 if (Watch_Face.ScreenAOD.Elements == null)
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
@@ -7391,7 +7448,9 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenNormal.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenNormal.Elements;
                             }
-                            else if ((img_number_list.Count > 0 && img_number_list[0].show_level == "ONAL_AOD") || objectName.StartsWith("idle"))
+                            else if ((img_number_list.Count > 0 && 
+                                (img_number_list[0].show_level == "ONLY_AOD" || img_number_list[0].show_level == "ONAL_AOD")) || 
+                                objectName.StartsWith("idle"))
                             {
                                 if (Watch_Face.ScreenAOD.Elements == null)
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
@@ -7500,7 +7559,7 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenNormal.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenNormal.Elements;
                             }
-                            else if (img_pointer.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
+                            else if (img_pointer.show_level == "ONLY_AOD" || img_pointer.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
                             {
                                 if (Watch_Face.ScreenAOD.Elements == null)
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
@@ -7580,7 +7639,7 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenNormal.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenNormal.Elements;
                             }
-                            else if (imgWeek.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
+                            else if (imgWeek.show_level == "ONLY_AOD" || imgWeek.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
                             {
                                 if (Watch_Face.ScreenAOD.Elements == null)
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
@@ -7626,7 +7685,7 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenNormal.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenNormal.Elements;
                             }
-                            else if (imgLevel.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
+                            else if (imgLevel.show_level == "ONLY_AOD" || imgLevel.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
                             {
                                 if (Watch_Face.ScreenAOD.Elements == null)
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
@@ -8091,7 +8150,7 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenNormal.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenNormal.Elements;
                             }
-                            else if (imgProgress.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
+                            else if (imgProgress.show_level == "ONLY_AOD" || imgProgress.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
                             {
                                 if (Watch_Face.ScreenAOD.Elements == null)
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
@@ -8494,7 +8553,7 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenNormal.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenNormal.Elements;
                             }
-                            else if (imgNumber.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
+                            else if (imgNumber.show_level == "ONLY_AOD" || imgNumber.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
                             {
                                 if (Watch_Face.ScreenAOD.Elements == null)
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
@@ -9491,7 +9550,7 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenNormal.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenNormal.Elements;
                             }
-                            else if (imgPointer.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
+                            else if (imgPointer.show_level == "ONLY_AOD" || imgPointer.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
                             {
                                 if (Watch_Face.ScreenAOD.Elements == null)
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
@@ -10048,7 +10107,7 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenNormal.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenNormal.Elements;
                             }
-                            else if (img_Circle_Scale.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
+                            else if (img_Circle_Scale.show_level == "ONLY_AOD" || img_Circle_Scale.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
                             {
                                 if (Watch_Face.ScreenAOD.Elements == null)
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
@@ -10318,7 +10377,7 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenNormal.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenNormal.Elements;
                             }
-                            else if (img_Linear_Scale.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
+                            else if (img_Linear_Scale.show_level == "ONLY_AOD" || img_Linear_Scale.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
                             {
                                 if (Watch_Face.ScreenAOD.Elements == null)
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
@@ -10588,7 +10647,7 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenNormal.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenNormal.Elements;
                             }
-                            else if (imgStatus.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
+                            else if (imgStatus.show_level == "ONLY_AOD" || imgStatus.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
                             {
                                 if (Watch_Face.ScreenAOD.Elements == null)
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
@@ -10664,7 +10723,7 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenNormal.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenNormal.Elements;
                             }
-                            else if (imgShortcut.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
+                            else if (imgShortcut.show_level == "ONLY_AOD" || imgShortcut.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
                             {
                                 if (Watch_Face.ScreenAOD.Elements == null)
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
@@ -10913,7 +10972,7 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenNormal.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenNormal.Elements;
                             }
-                            else if (text.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
+                            else if (text.show_level == "ONLY_AOD" || text.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
                             {
                                 if (Watch_Face.ScreenAOD.Elements == null)
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
@@ -10973,7 +11032,7 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenNormal.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenNormal.Elements;
                             }
-                            else if (animation.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
+                            else if (animation.show_level == "ONLY_AOD" || animation.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
                             {
                                 if (Watch_Face.ScreenAOD.Elements == null)
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
@@ -11021,7 +11080,7 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenNormal.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenNormal.Elements;
                             }
-                            else if (motion_animation.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
+                            else if (motion_animation.show_level == "ONLY_AOD" || motion_animation.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
                             {
                                 if (Watch_Face.ScreenAOD.Elements == null)
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
@@ -11069,7 +11128,7 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenNormal.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenNormal.Elements;
                             }
-                            else if (rotate_animation.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
+                            else if (rotate_animation.show_level == "ONLY_AOD" || rotate_animation.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
                             {
                                 if (Watch_Face.ScreenAOD.Elements == null)
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
@@ -11274,12 +11333,15 @@ namespace Watch_Face_Editor
 
             startIndex = str.IndexOf("{") + 1;
             endIndex = str.IndexOf("}", startIndex);
+
+            if (str.IndexOf("WATCHFACE_EDIT_BG") > 0) endIndex = str.IndexOf("}", str.IndexOf("]"));
+
             str = str.Substring(startIndex, endIndex - startIndex);
             str = str.Trim();
             str = str + Environment.NewLine;
 
             endIndex = str.IndexOf(Environment.NewLine);
-            while (endIndex > 0)
+            while (endIndex > 0)  // перебираем все параметры элемента
             {
                 valueStr = str.Substring(0, endIndex);
                 //int tempInt = valueStr.IndexOf("//");
@@ -11301,6 +11363,7 @@ namespace Watch_Face_Editor
                 if (startIndex > 0)
                 {
                     string valueName = valueStr.Substring(0, startIndex);
+                    if (valueName == "bg_config") valueStr = str.Substring(1, str.IndexOf("]"));
                     valueStr = valueStr.Remove(0, startIndex + 1);
                     valueStr = valueStr.Trim();
 
@@ -11313,6 +11376,7 @@ namespace Watch_Face_Editor
                 //str = str.Trim();
                 //str = str.TrimEnd(',');
                 endIndex = str.IndexOf(Environment.NewLine);
+                if (str.StartsWith("bg_config")) endIndex = str.IndexOf(Environment.NewLine, str.IndexOf("]"));
             }
 
             return returnParametrs;
@@ -11343,6 +11407,9 @@ namespace Watch_Face_Editor
 
             startIndex = str.IndexOf("{") + 1;
             endIndex = str.IndexOf("}", startIndex);
+
+            if (str.IndexOf("WATCHFACE_EDIT_BG") > 0) endIndex = str.IndexOf("}", str.IndexOf("]"));
+
             str = str.Substring(startIndex, endIndex - startIndex);
             str = str.Trim();
             str = str + ",";
@@ -11371,6 +11438,7 @@ namespace Watch_Face_Editor
                 if (startIndex > 0)
                 {
                     string valueName = valueStr.Substring(0, startIndex);
+                    if (valueName == "bg_config") valueStr = str.Substring(1, str.IndexOf("]"));
                     valueStr = valueStr.Remove(0, startIndex + 1);
                     valueStr = valueStr.Trim();
 
@@ -11383,6 +11451,7 @@ namespace Watch_Face_Editor
                 //str = str.Trim();
                 //str = str.TrimEnd(',');
                 endIndex = str.IndexOf(',');
+                if (str.StartsWith("bg_config")) endIndex = str.IndexOf(',', str.IndexOf("]"));
             }
 
             return returnParametrs;
@@ -11413,6 +11482,91 @@ namespace Watch_Face_Editor
             }
 
             return img;
+        }
+
+        private Editable_Background Object_WATCHFACE_EDIT_BG(Dictionary<string, string> parametrs)
+        {
+            Editable_Background edit_bg = new Editable_Background();
+            int value;
+            if (parametrs.ContainsKey("bg_config"))
+            {
+                string imgName = "";
+
+                if (parametrs.ContainsKey("x") && Int32.TryParse(parametrs["x"], out value)) edit_bg.x = value;
+                if (parametrs.ContainsKey("y") && Int32.TryParse(parametrs["y"], out value)) edit_bg.y = value;
+                if (parametrs.ContainsKey("// h") && Int32.TryParse(parametrs["// h"], out value)) edit_bg.h = value;
+                if (parametrs.ContainsKey("// w") && Int32.TryParse(parametrs["// w"], out value)) edit_bg.w = value; 
+                if (parametrs.ContainsKey("// AOD_show")) edit_bg.AOD_show = StringToBool(parametrs["// AOD_show"]);
+
+                if (parametrs.ContainsKey("tips_x") && Int32.TryParse(parametrs["tips_x"], out value)) edit_bg.tips_x = value;
+                if (parametrs.ContainsKey("tips_y") && Int32.TryParse(parametrs["tips_y"], out value)) edit_bg.tips_y = value;
+                if (parametrs.ContainsKey("tips_bg"))
+                {
+                    imgName = parametrs["tips_bg"].Replace("'", "").Replace("\"", "");
+                    imgName = Path.GetFileNameWithoutExtension(imgName);
+                    edit_bg.tips_bg = imgName;
+                }
+                if (parametrs.ContainsKey("fg"))
+                {
+                    imgName = parametrs["fg"].Replace("'", "").Replace("\"", "");
+                    imgName = Path.GetFileNameWithoutExtension(imgName);
+                    edit_bg.fg = imgName;
+                }
+
+                string bg_config = parametrs["bg_config"];
+                while (bg_config.IndexOf("{") >= 0)
+                {
+                    int start_pos = bg_config.IndexOf("{");
+                    int end_pos = bg_config.IndexOf("}");
+                    string bg_config_element = bg_config.Substring(start_pos + 1, end_pos - start_pos - 1);
+                    bg_config = bg_config.Substring(end_pos + 1, bg_config.Length - end_pos - 1);
+
+                    string preview = null;
+                    string path = null;
+                    string[] elements = bg_config_element.Split(new char[] { ',' });
+                    foreach (string e in elements)
+                    {
+                        string tempStr = e.Trim();
+                        int lenght = 0;
+                        string str_value = null;
+                        if (tempStr.StartsWith("preview:"))
+                        {
+                            lenght = "preview:".Length;
+                            str_value = tempStr.Substring(lenght, tempStr.Length - lenght);
+                            str_value = str_value.Trim();
+                            if (str_value.Length > 5)
+                            {
+                                str_value = str_value.Replace("'", "").Replace("\"", "");
+                                preview = Path.GetFileNameWithoutExtension(str_value);
+                            }
+                        }
+                        if (tempStr.StartsWith("path:"))
+                        {
+                            lenght = "path:".Length;
+                            str_value = tempStr.Substring(lenght, tempStr.Length - lenght);
+                            str_value = str_value.Trim();
+                            if (str_value.Length > 5)
+                            {
+                                str_value = str_value.Replace("'", "").Replace("\"", "");
+                                path = Path.GetFileNameWithoutExtension(str_value);
+                            }
+                        }
+                    }
+
+                    if (preview != null && path != null)
+                    {
+                        if (edit_bg.BackgroundImageList == null) edit_bg.BackgroundImageList = new List<string>();
+                        if (edit_bg.BackgroundPreviewList == null) edit_bg.BackgroundPreviewList = new List<string>();
+                        edit_bg.BackgroundImageList.Add(path);
+                        edit_bg.BackgroundPreviewList.Add(preview);
+
+                    }
+                }
+
+                edit_bg.enable_edit_bg = true;
+            }
+
+            return edit_bg;
         }
 
         private hmUI_widget_FILL_RECT Object_FILL_RECT(Dictionary<string, string> parametrs)

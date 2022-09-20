@@ -2647,10 +2647,10 @@
     <value>Top</value>
   </data>
   <data name="uCtrl_Animation_Rotate_Opt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 280</value>
+    <value>0, 300</value>
   </data>
   <data name="uCtrl_Animation_Rotate_Opt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 400</value>
+    <value>258, 20</value>
   </data>
   <data name="uCtrl_Animation_Rotate_Opt.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
@@ -2674,10 +2674,10 @@
     <value>Top</value>
   </data>
   <data name="uCtrl_Animation_Motion_Opt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 260</value>
+    <value>0, 280</value>
   </data>
   <data name="uCtrl_Animation_Motion_Opt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 20</value>
+    <value>258, 20</value>
   </data>
   <data name="uCtrl_Animation_Motion_Opt.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
@@ -2701,10 +2701,10 @@
     <value>Top</value>
   </data>
   <data name="uCtrl_Animation_Frame_Opt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 240</value>
+    <value>0, 260</value>
   </data>
   <data name="uCtrl_Animation_Frame_Opt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 20</value>
+    <value>258, 20</value>
   </data>
   <data name="uCtrl_Animation_Frame_Opt.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -2728,10 +2728,10 @@
     <value>Top</value>
   </data>
   <data name="uCtrl_Text_SystemFont_Opt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 220</value>
+    <value>0, 240</value>
   </data>
   <data name="uCtrl_Text_SystemFont_Opt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 20</value>
+    <value>258, 20</value>
   </data>
   <data name="uCtrl_Text_SystemFont_Opt.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -2758,10 +2758,10 @@
     <value>Следовать за предшественником</value>
   </data>
   <data name="uCtrl_Text_Weather_Opt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 200</value>
+    <value>0, 220</value>
   </data>
   <data name="uCtrl_Text_Weather_Opt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 20</value>
+    <value>258, 20</value>
   </data>
   <data name="uCtrl_Text_Weather_Opt.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -2785,10 +2785,10 @@
     <value>Top</value>
   </data>
   <data name="uCtrl_Shortcut_Opt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 180</value>
+    <value>0, 200</value>
   </data>
   <data name="uCtrl_Shortcut_Opt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 20</value>
+    <value>258, 20</value>
   </data>
   <data name="uCtrl_Shortcut_Opt.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -2812,10 +2812,10 @@
     <value>Top</value>
   </data>
   <data name="uCtrl_Segments_Opt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 160</value>
+    <value>0, 180</value>
   </data>
   <data name="uCtrl_Segments_Opt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 20</value>
+    <value>258, 20</value>
   </data>
   <data name="uCtrl_Segments_Opt.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -2839,10 +2839,10 @@
     <value>Top</value>
   </data>
   <data name="uCtrl_Icon_Opt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 140</value>
+    <value>0, 160</value>
   </data>
   <data name="uCtrl_Icon_Opt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 20</value>
+    <value>258, 20</value>
   </data>
   <data name="uCtrl_Icon_Opt.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -2866,10 +2866,10 @@
     <value>Top</value>
   </data>
   <data name="uCtrl_Linear_Scale_Opt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 120</value>
+    <value>0, 140</value>
   </data>
   <data name="uCtrl_Linear_Scale_Opt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 20</value>
+    <value>258, 20</value>
   </data>
   <data name="uCtrl_Linear_Scale_Opt.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -2893,10 +2893,10 @@
     <value>Top</value>
   </data>
   <data name="uCtrl_Circle_Scale_Opt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 100</value>
+    <value>0, 120</value>
   </data>
   <data name="uCtrl_Circle_Scale_Opt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 20</value>
+    <value>258, 20</value>
   </data>
   <data name="uCtrl_Circle_Scale_Opt.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -2920,10 +2920,10 @@
     <value>Top</value>
   </data>
   <data name="uCtrl_Images_Opt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 80</value>
+    <value>0, 100</value>
   </data>
   <data name="uCtrl_Images_Opt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 20</value>
+    <value>258, 20</value>
   </data>
   <data name="uCtrl_Images_Opt.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -2947,10 +2947,10 @@
     <value>Top</value>
   </data>
   <data name="uCtrl_Pointer_Opt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 60</value>
+    <value>0, 80</value>
   </data>
   <data name="uCtrl_Pointer_Opt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 20</value>
+    <value>258, 20</value>
   </data>
   <data name="uCtrl_Pointer_Opt.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -2974,10 +2974,10 @@
     <value>Top</value>
   </data>
   <data name="uCtrl_AmPm_Opt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 40</value>
+    <value>0, 60</value>
   </data>
   <data name="uCtrl_AmPm_Opt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 20</value>
+    <value>258, 20</value>
   </data>
   <data name="uCtrl_AmPm_Opt.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -3004,10 +3004,10 @@
     <value>Следовать за</value>
   </data>
   <data name="uCtrl_Text_Opt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 20</value>
+    <value>0, 40</value>
   </data>
   <data name="uCtrl_Text_Opt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 20</value>
+    <value>258, 20</value>
   </data>
   <data name="uCtrl_Text_Opt.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3027,6 +3027,36 @@
   <data name="&gt;&gt;uCtrl_Text_Opt.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
+  <data name="uCtrl_EditableBackground_Opt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="uCtrl_EditableBackground_Opt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 20</value>
+  </data>
+  <data name="uCtrl_EditableBackground_Opt.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="uCtrl_EditableBackground_Opt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>258, 20</value>
+  </data>
+  <data name="uCtrl_EditableBackground_Opt.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="uCtrl_EditableBackground_Opt.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_EditableBackground_Opt.Name" xml:space="preserve">
+    <value>uCtrl_EditableBackground_Opt</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_EditableBackground_Opt.Type" xml:space="preserve">
+    <value>ControlLibrary.UCtrl_EditableBackground_Opt, ControlLibrary, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_EditableBackground_Opt.Parent" xml:space="preserve">
+    <value>panel_ElementsOpt</value>
+  </data>
+  <data name="&gt;&gt;uCtrl_EditableBackground_Opt.ZOrder" xml:space="preserve">
+    <value>14</value>
+  </data>
   <data name="userCtrl_Background_Options.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
@@ -3034,7 +3064,7 @@
     <value>0, 0</value>
   </data>
   <data name="userCtrl_Background_Options.Size" type="System.Drawing.Size, System.Drawing">
-    <value>241, 20</value>
+    <value>258, 20</value>
   </data>
   <data name="userCtrl_Background_Options.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -3052,7 +3082,7 @@
     <value>panel_ElementsOpt</value>
   </data>
   <data name="&gt;&gt;userCtrl_Background_Options.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="panel_ElementsOpt.Location" type="System.Drawing.Point, System.Drawing">
     <value>262, 3</value>
@@ -6428,7 +6458,7 @@ PayPal: sashacx75@gmail.com</value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
-        DQAAAk1TRnQBSQFMAgEBBgEAARwBMgEcATIBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAAYQBMgGEATIBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA

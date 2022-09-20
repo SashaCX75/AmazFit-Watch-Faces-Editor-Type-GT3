@@ -143,6 +143,7 @@ namespace Watch_Face_Editor
             this.uCtrl_Pointer_Opt = new ControlLibrary.UCtrl_Pointer_Opt();
             this.uCtrl_AmPm_Opt = new ControlLibrary.UCtrl_AmPm_Opt();
             this.uCtrl_Text_Opt = new ControlLibrary.UCtrl_Text_Opt();
+            this.uCtrl_EditableBackground_Opt = new ControlLibrary.UCtrl_EditableBackground_Opt();
             this.userCtrl_Background_Options = new ControlLibrary.UCtrl_Background_Opt();
             this.panel_MainScreen_AOD = new System.Windows.Forms.Panel();
             this.button_CopyAOD = new System.Windows.Forms.Button();
@@ -1278,6 +1279,7 @@ namespace Watch_Face_Editor
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_Pointer_Opt);
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_AmPm_Opt);
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_Text_Opt);
+            this.panel_ElementsOpt.Controls.Add(this.uCtrl_EditableBackground_Opt);
             this.panel_ElementsOpt.Controls.Add(this.userCtrl_Background_Options);
             this.panel_ElementsOpt.Name = "panel_ElementsOpt";
             // 
@@ -1390,10 +1392,23 @@ namespace Watch_Face_Editor
             this.uCtrl_Text_Opt.Year = false;
             this.uCtrl_Text_Opt.ValueChanged += new ControlLibrary.UCtrl_Text_Opt.ValueChangedHandler(this.uCtrl_Text_Opt_ValueChanged);
             // 
+            // uCtrl_EditableBackground_Opt
+            // 
+            resources.ApplyResources(this.uCtrl_EditableBackground_Opt, "uCtrl_EditableBackground_Opt");
+            this.uCtrl_EditableBackground_Opt.Name = "uCtrl_EditableBackground_Opt";
+            this.uCtrl_EditableBackground_Opt.ValueChanged += new ControlLibrary.UCtrl_EditableBackground_Opt.ValueChangedHandler(this.uCtrl_EditableBackground_Opt_ValueChanged);
+            this.uCtrl_EditableBackground_Opt.BackgroundDel += new ControlLibrary.UCtrl_EditableBackground_Opt.BackgroundDelHandler(this.uCtrl_EditableBackground_Opt_BackgroundDel);
+            this.uCtrl_EditableBackground_Opt.BackgroundAdd += new ControlLibrary.UCtrl_EditableBackground_Opt.BackgroundAddHandler(this.uCtrl_EditableBackground_Opt_BackgroundAdd);
+            this.uCtrl_EditableBackground_Opt.BackgroundIndexChanged += new ControlLibrary.UCtrl_EditableBackground_Opt.BackgroundIndexChangedHandler(this.uCtrl_EditableBackground_Opt_BackgroundIndexChanged);
+            this.uCtrl_EditableBackground_Opt.PreviewRefresh += new ControlLibrary.UCtrl_EditableBackground_Opt.PreviewRefreshHandler(this.uCtrl_EditableBackground_Opt_PreviewRefresh);
+            this.uCtrl_EditableBackground_Opt.PreviewAdd += new ControlLibrary.UCtrl_EditableBackground_Opt.PreviewAddHandler(this.uCtrl_EditableBackground_Opt_PreviewAdd);
+            this.uCtrl_EditableBackground_Opt.VisibleChanged += new System.EventHandler(this.uCtrl_EditableBackground_Opt_VisibleChanged);
+            // 
             // userCtrl_Background_Options
             // 
             this.userCtrl_Background_Options.AOD = false;
             resources.ApplyResources(this.userCtrl_Background_Options, "userCtrl_Background_Options");
+            this.userCtrl_Background_Options.Editable_background = false;
             this.userCtrl_Background_Options.Name = "userCtrl_Background_Options";
             this.userCtrl_Background_Options.ValueChanged += new ControlLibrary.UCtrl_Background_Opt.ValueChangedHandler(this.userCtrl_Background_Options_ValueChanged);
             // 
@@ -2759,6 +2774,7 @@ namespace Watch_Face_Editor
         private System.Windows.Forms.ComboBox comboBox_ConvertingOutput_Model;
         private System.Windows.Forms.ComboBox comboBox_ConvertingInput_Model;
         private System.Windows.Forms.Label label1;
+        private ControlLibrary.UCtrl_EditableBackground_Opt uCtrl_EditableBackground_Opt;
     }
 }
 

@@ -11,35 +11,35 @@ using System.Windows.Forms;
 
 namespace ControlLibrary
 {
-    public partial class UCtrl_Animation_Motion_Opt : UserControl
+    public partial class UCtrl_EditableBackground_Opt : UserControl
     {
         private bool setValue; // режим задания параметров
-
         private List<string> ListImagesFullName = new List<string>(); // перечень путей к файлам с картинками
-        public Object _AnimationMotion;
+        public Object _EditableBackground;
 
-        public UCtrl_Animation_Motion_Opt()
+        public UCtrl_EditableBackground_Opt()
         {
             InitializeComponent();
             setValue = false;
         }
 
-        /// <summary>Задает индекс выбраной анимации</summary>
-        public void SetAnimationIndex(int index)
+        /// <summary>Задает индекс выбраного фона</summary>
+        public void SetBackgroundIndex(int index)
         {
             setValue = true;
-            comboBox_select_anim.SelectedIndex = index;
+            //index--;
+            comboBox_select_background.SelectedIndex = index;
             setValue = false;
         }
 
         /// <summary>Задает количество анимаций в выпадающем списке</summary>
-        public void SetAnimationCount(int count)
+        public void SetBackgroundCount(int count)
         {
             setValue = true;
-            comboBox_select_anim.Items.Clear();
+            comboBox_select_background.Items.Clear();
             for (int i = 1; i < count + 1; i++)
             {
-                comboBox_select_anim.Items.Add(i.ToString());
+                comboBox_select_background.Items.Add(i.ToString());
             }
             if (count >= 5) button_add.Enabled = false;
             else button_add.Enabled = true;
@@ -64,7 +64,70 @@ namespace ControlLibrary
         /// <summary>Возвращает SelectedIndex выпадающего списка</summary>
         public int GetSelectedIndexImage()
         {
-            return comboBox_image.SelectedIndex;
+            return comboBox_tip.SelectedIndex;
+        }
+
+
+        /// <summary>Задает название выбранной картинки фона описания</summary>
+        public void SetTip(string value)
+        {
+            comboBox_tip.Text = value;
+            if (comboBox_tip.SelectedIndex < 0) comboBox_tip.Text = "";
+        }
+
+        /// <summary>Возвращает название выбранной картинки фона описания</summary>
+        public string GetTip()
+        {
+            if (comboBox_tip.SelectedIndex < 0) return "";
+            return comboBox_tip.Text;
+        }
+
+        /// <summary>Возвращает SelectedIndex выпадающего списка фона описания</summary>
+        public int GetSelectedIndexTip()
+        {
+            return comboBox_tip.SelectedIndex;
+        }
+
+
+        /// <summary>Задает название выбранной рамки выделения</summary>
+        public void SetForeground(string value)
+        {
+            comboBox_foreground.Text = value;
+            if (comboBox_foreground.SelectedIndex < 0) comboBox_foreground.Text = "";
+        }
+
+        /// <summary>Возвращает название выбранной рамки выделения</summary>
+        public string GetForeground()
+        {
+            if (comboBox_foreground.SelectedIndex < 0) return "";
+            return comboBox_foreground.Text;
+        }
+
+        /// <summary>Возвращает SelectedIndex выпадающего списка рамки выделения</summary>
+        public int GetSelectedIndexForeground()
+        {
+            return comboBox_foreground.SelectedIndex;
+        }
+
+
+        /// <summary>Задает название выбранной картинки предпросмотра</summary>
+        public void SetPreview(string value)
+        {
+            comboBox_Preview_image.Text = value;
+            if (comboBox_Preview_image.SelectedIndex < 0) comboBox_Preview_image.Text = "";
+        }
+
+        /// <summary>Возвращает название выбранной картинки предпросмотра</summary>
+        public string GetPreview()
+        {
+            if (comboBox_Preview_image.SelectedIndex < 0) return "";
+            return comboBox_Preview_image.Text;
+        }
+
+        /// <summary>Возвращает SelectedIndex выпадающего списка предпросмотра</summary>
+        public int GetSelectedIndexPreview()
+        {
+            return comboBox_Preview_image.SelectedIndex;
         }
 
         [Browsable(true)]
@@ -73,26 +136,36 @@ namespace ControlLibrary
         public delegate void ValueChangedHandler(object sender, EventArgs eventArgs, int index);
 
         [Browsable(true)]
-        [Description("Происходит при удалении анимации")]
-        public event AnimationDelHandler AnimationDel;
-        public delegate void AnimationDelHandler(object sender, EventArgs eventArgs, int index);
+        [Description("Происходит при удалении фона")]
+        public event BackgroundDelHandler BackgroundDel;
+        public delegate void BackgroundDelHandler(object sender, EventArgs eventArgs, int index);
 
         [Browsable(true)]
-        [Description("Происходит при добавлении анимации")]
-        public event AnimationAddHandler AnimationAdd;
-        public delegate void AnimationAddHandler(object sender, EventArgs eventArgs, int index);
+        [Description("Происходит при добавлении фона")]
+        public event BackgroundAddHandler BackgroundAdd;
+        public delegate void BackgroundAddHandler(object sender, EventArgs eventArgs, int index);
 
         [Browsable(true)]
-        [Description("Происходит при изменении выбраной анимации")]
-        public event AnimIndexChangedHandler AnimIndexChanged;
-        public delegate void AnimIndexChangedHandler(object sender, EventArgs eventArgs, int index);
+        [Description("Происходит при изменении выбраного фона")]
+        public event BackgroundIndexChangedHandler BackgroundIndexChanged;
+        public delegate void BackgroundIndexChangedHandler(object sender, EventArgs eventArgs, int index);
+
+        [Browsable(true)]
+        [Description("Происходит при обновлении предпросмотра")]
+        public event PreviewRefreshHandler PreviewRefresh;
+        public delegate void PreviewRefreshHandler(object sender, EventArgs eventArgs, int index);
+
+        [Browsable(true)]
+        [Description("Происходит при добавлении предпросмотра")]
+        public event PreviewAddHandler PreviewAdd;
+        public delegate void PreviewAddHandler(object sender, EventArgs eventArgs, int index);
 
         private void checkBox_Click(object sender, EventArgs e)
         {
             if (ValueChanged != null && !setValue)
             {
                 EventArgs eventArgs = new EventArgs();
-                ValueChanged(this, eventArgs, comboBox_select_anim.SelectedIndex);
+                ValueChanged(this, eventArgs, comboBox_select_background.SelectedIndex);
             }
         }
 
@@ -107,7 +180,7 @@ namespace ControlLibrary
                 if (ValueChanged != null && !setValue)
                 {
                     EventArgs eventArgs = new EventArgs();
-                    ValueChanged(this, eventArgs, comboBox_select_anim.SelectedIndex);
+                    ValueChanged(this, eventArgs, comboBox_select_background.SelectedIndex);
                 }
             }
         }
@@ -164,10 +237,24 @@ namespace ControlLibrary
 
         private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ComboBox comboBox = (ComboBox)sender;
+            if(comboBox.Name== "comboBox_Preview_image")
+            {
+                if(comboBox_Preview_image.Text.Length > 0)
+                {
+                    button_PreviewAdd.Visible = false;
+                    button_PreviewRefresh.Visible = true;
+                }
+                else
+                {
+                    button_PreviewAdd.Visible = true;
+                    button_PreviewRefresh.Visible = false;
+                }
+            }
             if (ValueChanged != null && !setValue)
             {
                 EventArgs eventArgs = new EventArgs();
-                ValueChanged(this, eventArgs, comboBox_select_anim.SelectedIndex);
+                ValueChanged(this, eventArgs, comboBox_select_background.SelectedIndex);
             }
         }
         #endregion
@@ -177,8 +264,14 @@ namespace ControlLibrary
         public void ComboBoxAddItems(List<string> ListImages, List<string> _ListImagesFullName)
         {
             comboBox_image.Items.Clear();
+            comboBox_Preview_image.Items.Clear();
+            comboBox_tip.Items.Clear();
+            comboBox_foreground.Items.Clear();
 
             comboBox_image.Items.AddRange(ListImages.ToArray());
+            comboBox_Preview_image.Items.AddRange(ListImages.ToArray());
+            comboBox_tip.Items.AddRange(ListImages.ToArray());
+            comboBox_foreground.Items.AddRange(ListImages.ToArray());
 
             ListImagesFullName = _ListImagesFullName;
 
@@ -186,14 +279,23 @@ namespace ControlLibrary
             if (count == 0)
             {
                 comboBox_image.DropDownHeight = 1;
+                comboBox_Preview_image.DropDownHeight = 1;
+                comboBox_tip.DropDownHeight = 1;
+                comboBox_foreground.DropDownHeight = 1;
             }
             else if (count < 5)
             {
                 comboBox_image.DropDownHeight = 35 * count + 1;
+                comboBox_Preview_image.DropDownHeight = 35 * count + 1;
+                comboBox_tip.DropDownHeight = 35 * count + 1;
+                comboBox_foreground.DropDownHeight = 35 * count + 1;
             }
             else
             {
                 comboBox_image.DropDownHeight = 106;
+                comboBox_Preview_image.DropDownHeight = 106;
+                comboBox_tip.DropDownHeight = 106;
+                comboBox_foreground.DropDownHeight = 106;
             }
         }
 
@@ -201,21 +303,18 @@ namespace ControlLibrary
         public void SettingsClear()
         {
             setValue = true;
+            comboBox_select_background.Items.Clear();
+            button_del.Enabled = false;
+            button_PreviewAdd.Enabled = false;
+            button_PreviewRefresh.Enabled = false;
 
             comboBox_image.Text = null;
+            comboBox_Preview_image.Text = null;
+            comboBox_tip.Text = null;
+            comboBox_foreground.Text = null;
 
-            numericUpDown_start_x.Value = 0;
-            numericUpDown_start_y.Value = 0;
-            numericUpDown_end_x.Value = 0;
-            numericUpDown_end_y.Value = 0;
-
-            numericUpDown_fps.Value = 15;
-            numericUpDown_anim_duration.Value = 10;
-            numericUpDown_repeat_count.Value = 0;
-
-            checkBox_anim_two_sides.Checked = true;
-            checkBox_show_in_startPos.Checked = true;
-            checkBox_visible.Checked = true;
+            numericUpDown_tipX.Value = 0;
+            numericUpDown_tipY.Value = 0;
 
             setValue = false;
         }
@@ -376,7 +475,7 @@ namespace ControlLibrary
             if (ValueChanged != null && !setValue)
             {
                 EventArgs eventArgs = new EventArgs();
-                ValueChanged(this, eventArgs, comboBox_select_anim.SelectedIndex);
+                ValueChanged(this, eventArgs, comboBox_select_background.SelectedIndex);
             }
         }
 
@@ -384,31 +483,103 @@ namespace ControlLibrary
 
         private void button_add_Click(object sender, EventArgs e)
         {
-            if (AnimationAdd != null && !setValue)
+            if (BackgroundAdd != null && !setValue)
             {
                 EventArgs eventArgs = new EventArgs();
-                AnimationAdd(this, eventArgs, comboBox_select_anim.SelectedIndex);
+                BackgroundAdd(this, eventArgs, comboBox_select_background.SelectedIndex);
             }
         }
 
         private void button_del_Click(object sender, EventArgs e)
         {
-            if (AnimationDel != null && !setValue)
+            if (BackgroundDel != null && !setValue)
             {
                 EventArgs eventArgs = new EventArgs();
-                AnimationDel(this, eventArgs, comboBox_select_anim.SelectedIndex);
+                BackgroundDel(this, eventArgs, comboBox_select_background.SelectedIndex);
             }
         }
 
-        private void comboBox_select_anim_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBox_select_background_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox_select_anim.SelectedIndex >= 0) button_del.Enabled = true;
-            else button_del.Enabled = false;
+            if (comboBox_select_background.SelectedIndex >= 0)
+            {
+                button_del.Enabled = true;
+                button_PreviewAdd.Enabled = true;
+                button_PreviewRefresh.Enabled = true;
+            }
+            else 
+            { 
+                button_del.Enabled = false;
+                button_PreviewAdd.Enabled = false;
+                button_PreviewRefresh.Enabled = false;
+            }
 
-            if (AnimIndexChanged != null && !setValue)
+            if (BackgroundIndexChanged != null && !setValue)
             {
                 EventArgs eventArgs = new EventArgs();
-                AnimIndexChanged(this, eventArgs, comboBox_select_anim.SelectedIndex);
+                BackgroundIndexChanged(this, eventArgs, comboBox_select_background.SelectedIndex);
+            }
+        }
+
+        private void groupBox_Paint(object sender, PaintEventArgs e)
+        {
+            GroupBox groupBox = sender as GroupBox;
+            if (groupBox.Enabled) DrawGroupBox(groupBox, e.Graphics, Color.Black, Color.DarkGray);
+            else DrawGroupBox(groupBox, e.Graphics, Color.DarkGray, Color.DarkGray);
+        }
+        private void DrawGroupBox(GroupBox groupBox, Graphics g, Color textColor, Color borderColor)
+        {
+            if (groupBox != null)
+            {
+                Brush textBrush = new SolidBrush(textColor);
+                Brush borderBrush = new SolidBrush(borderColor);
+                Pen borderPen = new Pen(borderBrush);
+                SizeF strSize = g.MeasureString(groupBox.Text, groupBox.Font);
+                Rectangle rect = new Rectangle(groupBox.ClientRectangle.X,
+                                               groupBox.ClientRectangle.Y + (int)(strSize.Height / 2),
+                                               groupBox.ClientRectangle.Width - 1,
+                                               groupBox.ClientRectangle.Height - (int)(strSize.Height / 2) - 5);
+
+                // Clear text and border
+                g.Clear(this.BackColor);
+
+                // Draw text
+                g.DrawString(groupBox.Text, groupBox.Font, textBrush, groupBox.Padding.Left, 0);
+
+                // Drawing Border
+                //Left
+                g.DrawLine(borderPen, rect.Location, new Point(rect.X, rect.Y + rect.Height));
+                //Right
+                g.DrawLine(borderPen, new Point(rect.X + rect.Width, rect.Y), new Point(rect.X + rect.Width, rect.Y + rect.Height));
+                //Bottom
+                g.DrawLine(borderPen, new Point(rect.X, rect.Y + rect.Height), new Point(rect.X + rect.Width, rect.Y + rect.Height));
+                //Top1
+                g.DrawLine(borderPen, new Point(rect.X, rect.Y), new Point(rect.X + groupBox.Padding.Left, rect.Y));
+                //Top2
+                g.DrawLine(borderPen, new Point(rect.X + groupBox.Padding.Left + (int)(strSize.Width), rect.Y), new Point(rect.X + rect.Width, rect.Y));
+            }
+        }
+
+        private void UCtrl_EditableBackground_Opt_Load(object sender, EventArgs e)
+        {
+            button_PreviewAdd.Location = button_PreviewRefresh.Location;
+        }
+
+        private void button_PreviewAdd_Click(object sender, EventArgs e)
+        {
+            if (PreviewAdd != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                PreviewAdd(this, eventArgs, comboBox_select_background.SelectedIndex);
+            }
+        }
+
+        private void button_PreviewRefresh_Click(object sender, EventArgs e)
+        {
+            if (PreviewRefresh != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                PreviewRefresh(this, eventArgs, comboBox_select_background.SelectedIndex);
             }
         }
     }

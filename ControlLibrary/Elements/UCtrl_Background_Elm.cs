@@ -133,6 +133,7 @@ namespace ControlLibrary
 
         public void SetVisibilityElementStatus(bool status)
         {
+            visibilityElement = status;
             pictureBox_NotShow.Visible = !visibilityElement;
             pictureBox_Show.Visible = visibilityElement;
         }

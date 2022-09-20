@@ -39,6 +39,8 @@ namespace ControlLibrary
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label_ID = new System.Windows.Forms.Label();
+            this.radioButton_EditableBackground = new System.Windows.Forms.RadioButton();
+            this.label_EditableBackground_Hint = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button_GenerateID
@@ -55,6 +57,7 @@ namespace ControlLibrary
             this.radioButton_Background_color.Name = "radioButton_Background_color";
             this.radioButton_Background_color.TabStop = true;
             this.radioButton_Background_color.UseVisualStyleBackColor = true;
+            this.radioButton_Background_color.CheckedChanged += new System.EventHandler(this.radioButton_Background_image_CheckedChanged);
             // 
             // radioButton_Background_image
             // 
@@ -114,10 +117,24 @@ namespace ControlLibrary
             resources.ApplyResources(this.label_ID, "label_ID");
             this.label_ID.Name = "label_ID";
             // 
+            // radioButton_EditableBackground
+            // 
+            resources.ApplyResources(this.radioButton_EditableBackground, "radioButton_EditableBackground");
+            this.radioButton_EditableBackground.Name = "radioButton_EditableBackground";
+            this.radioButton_EditableBackground.UseVisualStyleBackColor = true;
+            this.radioButton_EditableBackground.CheckedChanged += new System.EventHandler(this.radioButton_Background_image_CheckedChanged);
+            // 
+            // label_EditableBackground_Hint
+            // 
+            resources.ApplyResources(this.label_EditableBackground_Hint, "label_EditableBackground_Hint");
+            this.label_EditableBackground_Hint.Name = "label_EditableBackground_Hint";
+            // 
             // UCtrl_Background_Opt
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label_EditableBackground_Hint);
+            this.Controls.Add(this.radioButton_EditableBackground);
             this.Controls.Add(this.label_ID);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button_GenerateID);
@@ -136,7 +153,6 @@ namespace ControlLibrary
         #endregion
 
         private System.Windows.Forms.Button button_GenerateID;
-        private System.Windows.Forms.RadioButton radioButton_Background_color;
         private System.Windows.Forms.ComboBox comboBox_Background_color;
         private System.Windows.Forms.ComboBox comboBox_Preview_image;
         private System.Windows.Forms.ComboBox comboBox_Background_image;
@@ -144,5 +160,8 @@ namespace ControlLibrary
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label_ID;
         public System.Windows.Forms.RadioButton radioButton_Background_image;
+        public System.Windows.Forms.RadioButton radioButton_Background_color;
+        public System.Windows.Forms.RadioButton radioButton_EditableBackground;
+        private System.Windows.Forms.Label label_EditableBackground_Hint;
     }
 }

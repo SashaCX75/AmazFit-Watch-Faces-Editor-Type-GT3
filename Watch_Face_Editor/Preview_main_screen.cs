@@ -33,11 +33,17 @@ namespace Watch_Face_Editor
         /// <param name="link">0 - основной экран; 1 - AOD</param>
         /// <param name="Shortcuts_In_Gif">Подсвечивать область с ярлыками (для gif файла)</param>
         /// <param name="time_value_sec">Время от начала анимации, сек</param>
+        /// <param name="editMode">Отображение в режиме редактирования</param>
         public void Preview_screen(Graphics gPanel, float scale, bool crop, bool WMesh, bool BMesh, bool BBorder,
             bool showShortcuts, bool showShortcutsArea, bool showShortcutsBorder, bool showShortcutsImage, 
             bool showAnimation, bool showProgressArea, bool showCentrHend, 
-            bool showWidgetsArea, int link, bool Shortcuts_In_Gif, float time_value_sec)
+            bool showWidgetsArea, int link, bool Shortcuts_In_Gif, float time_value_sec, bool editMode)
         {
+            if (editMode) 
+            {
+                Preview_edit_screen(gPanel, scale, crop);
+                return;
+            }
             int offSet_X = 227;
             int offSet_Y = 227;
             showShortcutsImage = true;
@@ -87,9 +93,40 @@ namespace Watch_Face_Editor
             {
                 if (Watch_Face != null && Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
                     background = Watch_Face.ScreenAOD.Background;
+
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null &&
+                    Watch_Face.ScreenNormal.Background.Editable_Background != null &&
+                    Watch_Face.ScreenNormal.Background.Editable_Background.enable_edit_bg &&
+                    Watch_Face.ScreenNormal.Background.Editable_Background.AOD_show)
+                {
+                    Background backgroundAOD = Watch_Face.ScreenNormal.Background;
+                    if (backgroundAOD.Editable_Background.BackgroundImageList != null &&
+                                backgroundAOD.Editable_Background.BackgroundImageList.Count > 0 && backgroundAOD.visible)
+                    {
+                        int index = backgroundAOD.Editable_Background.selected_background;
+                        if (index >= 0 && index < backgroundAOD.Editable_Background.BackgroundImageList.Count &&
+                            backgroundAOD.Editable_Background.BackgroundImageList[index].Length > 0)
+                        {
+                            src = OpenFileStream(backgroundAOD.Editable_Background.BackgroundImageList[index]);
+                            gPanel.DrawImage(src, 0, 0);
+                        }
+                    }
+                }
             }
             if (background != null)
             {
+                if (background.Editable_Background != null && background.Editable_Background.enable_edit_bg &&
+                    background.Editable_Background.BackgroundImageList != null &&
+                    background.Editable_Background.BackgroundImageList.Count > 0 && background.visible)
+                {
+                    int index = background.Editable_Background.selected_background;
+                    if (index >= 0 && index < background.Editable_Background.BackgroundImageList.Count &&
+                        background.Editable_Background.BackgroundImageList[index].Length > 0)
+                    {
+                        src = OpenFileStream(background.Editable_Background.BackgroundImageList[index]);
+                        gPanel.DrawImage(src, 0, 0);
+                    }
+                }
                 if (background.BackgroundImage != null && background.BackgroundImage.src != null && 
                     background.BackgroundImage.src.Length > 0 && background.visible)
                 {
@@ -1802,6 +1839,121 @@ namespace Watch_Face_Editor
                 //gPanel.DrawImage(mask, new Rectangle(0, 0, mask.Width, mask.Height));
                 mask.Dispose();
             }
+        }
+
+        public void Preview_edit_screen(Graphics gPanel, float scale, bool crop)
+        {
+            Bitmap src = new Bitmap(1, 1);
+
+            #region Black background
+            Logger.WriteLine("Preview_edit_screen (Black background)");
+            src = OpenFileStream(Application.StartupPath + @"\Mask\mask_gtr_3.png");
+            switch (ProgramSettings.Watch_Model)
+            {
+                case "GTR 3 Pro":
+                    src = OpenFileStream(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
+                    break;
+                case "GTS 3":
+                    src = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_3.png");
+                    break;
+                case "GTR 4":
+                    src = OpenFileStream(Application.StartupPath + @"\Mask\mask_gtr_4.png");
+                    break;
+                case "Amazfit Band 7":
+                    src = OpenFileStream(Application.StartupPath + @"\Mask\mask_band_7.png");
+                    break;
+                case "GTS 4 mini":
+                    src = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
+                    break;
+            }
+            gPanel.DrawImage(src, 0, 0);
+            #endregion
+
+            #region Background
+            Background background = null;
+            if (Watch_Face != null && Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
+                background = Watch_Face.ScreenNormal.Background;
+            if (background != null)
+            {
+                if (background.Editable_Background != null && background.Editable_Background.enable_edit_bg &&
+                    background.Editable_Background.BackgroundPreviewList != null &&
+                    background.Editable_Background.BackgroundPreviewList.Count > 0 && background.visible)
+                {
+                    int index = background.Editable_Background.selected_background;
+                    Editable_Background editable_background = background.Editable_Background;
+                    if (index >= 0 && index < editable_background.BackgroundPreviewList.Count &&
+                        editable_background.BackgroundPreviewList[index].Length > 0)
+                    {
+                        src = OpenFileStream(editable_background.BackgroundPreviewList[index]);
+                        gPanel.DrawImage(src, 0, 0);
+                    }
+                    if (uCtrl_EditableBackground_Opt.Visible)
+                    {
+                        if (editable_background.tips_bg.Length > 0)
+                        {
+                            int tips_x = editable_background.tips_x;
+                            int tips_y = editable_background.tips_y;
+                            src = OpenFileStream(editable_background.tips_bg);
+                            gPanel.DrawImage(src, tips_x, tips_y);
+
+                            int x = tips_x + 10;
+                            int y = tips_y;
+                            int h = src.Height;
+                            int w = src.Width - 20;
+
+                            int size = 16;
+                            int space_h = 0;
+                            int space_v = 0;
+
+                            Color color = Color.Black;
+                            string align_h = "CENTER_H";
+                            string align_v = "CENTER_V";
+                            string text_style = "ELLIPSIS";
+                            string valueStr = Properties.FormStrings.Tip_Background + (index + 1).ToString() +
+                                "/" + editable_background.BackgroundPreviewList.Count.ToString();
+
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr,
+                                align_h, align_v, text_style, false);
+                        }
+                        if (editable_background.fg.Length > 0)
+                        {
+                            src = OpenFileStream(editable_background.fg);
+                            gPanel.DrawImage(src, 0, 0);
+                        }
+                    }
+                }
+            }
+            #endregion
+
+            if (crop)
+            {
+                Logger.WriteLine("Preview_edit_screen (crop)");
+                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
+                switch (ProgramSettings.Watch_Model)
+                {
+                    case "GTR 3 Pro":
+                        mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
+                        break;
+                    case "GTS 3":
+                        mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_3.png");
+                        break;
+                    case "GTR 4":
+                        mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gtr_4.png");
+                        break;
+                    case "Amazfit Band 7":
+                        mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_band_7.png");
+                        break;
+                    case "GTS 4 mini":
+                        mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
+                        break;
+                }
+                mask = FormColor(mask);
+                gPanel.DrawImage(mask, 0, 0);
+                //gPanel.DrawImage(mask, new Rectangle(0, 0, mask.Width, mask.Height));
+                mask.Dispose();
+            }
+
+            src.Dispose();
         }
 
         /// <summary>Рисуем все параметры элемента</summary>
