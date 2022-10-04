@@ -43,6 +43,7 @@ namespace Watch_Face_Editor
                         this.Size = new Size(243 + (int)(22 * currentDPI), 243 + (int)(66 * currentDPI));
                         break;
                     case "GTS 3":
+                    case "GTS 4":
                         pictureBox_Preview.Size = new Size(198, 228);
                         this.Size = new Size(198 + (int)(22 * currentDPI), 228 + (int)(66 * currentDPI));
                         break;
@@ -76,6 +77,7 @@ namespace Watch_Face_Editor
                         this.Size = new Size(482 + (int)(22 * currentDPI), 482 + (int)(66 * currentDPI));
                         break;
                     case "GTS 3":
+                    case "GTS 4":
                         pictureBox_Preview.Size = new Size(392, 452);
                         this.Size = new Size(392 + (int)(22 * currentDPI), 452 + (int)(66 * currentDPI));
                         break;
@@ -109,6 +111,7 @@ namespace Watch_Face_Editor
                         this.Size = new Size(722 + (int)(22 * currentDPI), 722 + (int)(66 * currentDPI));
                         break;
                     case "GTS 3":
+                    case "GTS 4":
                         pictureBox_Preview.Size = new Size(587, 677);
                         this.Size = new Size(587 + (int)(22 * currentDPI), 677 + (int)(66 * currentDPI));
                         break;
@@ -142,6 +145,7 @@ namespace Watch_Face_Editor
                         this.Size = new Size(961 + (int)(22 * currentDPI), 961 + (int)(66 * currentDPI));
                         break;
                     case "GTS 3":
+                    case "GTS 4":
                         pictureBox_Preview.Size = new Size(781, 901);
                         this.Size = new Size(781 + (int)(22 * currentDPI), 901 + (int)(66 * currentDPI));
                         break;
@@ -175,6 +179,7 @@ namespace Watch_Face_Editor
                         this.Size = new Size(1201 + (int)(22 * currentDPI), 1201 + (int)(66 * currentDPI));
                         break;
                     case "GTS 3":
+                    case "GTS 4":
                         pictureBox_Preview.Size = new Size(976, 1126);
                         this.Size = new Size(976 + (int)(22 * currentDPI), 1126 + (int)(66 * currentDPI));
                         break;

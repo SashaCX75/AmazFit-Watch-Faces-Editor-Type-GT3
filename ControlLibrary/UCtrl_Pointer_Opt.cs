@@ -39,7 +39,7 @@ namespace ControlLibrary
         }
 
         /// <summary>Отображение начального и конечного угла </summary>
-        [Description("Отображение поля изображения при ошибке")]
+        [Description("Отображение начального и конечного угла")]
         public virtual bool TimeMode
         {
             get

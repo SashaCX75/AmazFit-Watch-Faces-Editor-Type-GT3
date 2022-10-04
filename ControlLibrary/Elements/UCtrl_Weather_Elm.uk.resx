@@ -117,11 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="button_ElementName.Text" xml:space="preserve">
-    <value>Погода</value>
+  <data name="button_Text_CityName.Text" xml:space="preserve">
+    <value>Назва міста</value>
   </data>
-  <data name="button_Icon.Text" xml:space="preserve">
-    <value>Іконка</value>
+  <data name="button_Number_Min.Text" xml:space="preserve">
+    <value>Цифрові значення (мін)</value>
   </data>
   <data name="button_Images.Text" xml:space="preserve">
     <value>Зображення</value>
@@ -157,18 +157,6 @@
 28.Часом дощ вночі
 29.Ясна ніч</value>
   </data>
-  <data name="button_Number.Text" xml:space="preserve">
-    <value>Цифрові значення</value>
-  </data>
-  <data name="button_Number_Max.Text" xml:space="preserve">
-    <value>Цифрові значення (макс)</value>
-  </data>
-  <data name="button_Number_Min.Text" xml:space="preserve">
-    <value>Цифрові значення (мін)</value>
-  </data>
-  <data name="button_Text_CityName.Text" xml:space="preserve">
-    <value>Назва міста</value>
-  </data>
   <data name="panel_Images.ToolTip" xml:space="preserve">
     <value>1.Хмарно
 2.Часом дощ
@@ -199,5 +187,14 @@
 27.Хмарно вночі
 28.Часом дощ вночі
 29.Ясна ніч</value>
+  </data>
+  <data name="button_Number.Text" xml:space="preserve">
+    <value>Цифрові значення</value>
+  </data>
+  <data name="button_Number_Max.Text" xml:space="preserve">
+    <value>Цифрові значення (макс)</value>
+  </data>
+  <data name="button_Icon.Text" xml:space="preserve">
+    <value>Іконка</value>
   </data>
 </root>

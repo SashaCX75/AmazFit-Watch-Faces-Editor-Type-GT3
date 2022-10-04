@@ -117,20 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="button_del.Text" xml:space="preserve">
-    <value>Delete background</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Pointer selection</value>
   </data>
   <data name="button_add.Text" xml:space="preserve">
-    <value>Add background</value>
+    <value>Add pointer set</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Background selection</value>
+  <data name="button_del.Text" xml:space="preserve">
+    <value>Delete pointer set</value>
   </data>
-  <data name="label01.Text" xml:space="preserve">
-    <value>Background image</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Preview</value>
+  <data name="label03.Text" xml:space="preserve">
+    <value>Pointer rotation center</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -269,17 +266,53 @@
   <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
     <value>177, 82</value>
   </data>
-  <data name="label3.Text" xml:space="preserve">
+  <data name="label02.Text" xml:space="preserve">
+    <value>Rotation center coordinates</value>
+  </data>
+  <data name="label01.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 30</value>
+  </data>
+  <data name="label01.Text" xml:space="preserve">
+    <value>Image of hour hand</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Pointer rotation center</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Rotation center coordinates</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 30</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Image of minute hand</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Pointer rotation center</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Rotation center coordinates</value>
+  </data>
+  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 30</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Image of second hand</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>Highlight frame</value>
+  </data>
+  <data name="checkBox_secondInAOD.Text" xml:space="preserve">
+    <value>Display second hand in AOD mode</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
     <value>Tooltip background</value>
   </data>
-  <data name="label02.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 13</value>
   </data>
-  <data name="label02.Text" xml:space="preserve">
+  <data name="label20.Text" xml:space="preserve">
     <value>Tooltip coordinates</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Highlight frame</value>
   </data>
   <data name="checkBox_edit_mode.Size" type="System.Drawing.Size, System.Drawing">
     <value>113, 17</value>
@@ -293,10 +326,16 @@
   <data name="button_PreviewRefresh.Text" xml:space="preserve">
     <value>Refresh preview</value>
   </data>
-  <data name="groupBox_EditableBackground.Text" xml:space="preserve">
-    <value>Editable background</value>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Preview</value>
   </data>
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 320</value>
+  <data name="tabPage_hour.Text" xml:space="preserve">
+    <value>Hour hand</value>
+  </data>
+  <data name="tabPage_minute.Text" xml:space="preserve">
+    <value>Minute hand</value>
+  </data>
+  <data name="tabPage_second.Text" xml:space="preserve">
+    <value>Second hand</value>
   </data>
 </root>

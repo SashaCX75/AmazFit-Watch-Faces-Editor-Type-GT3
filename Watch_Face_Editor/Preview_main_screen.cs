@@ -6,10 +6,12 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace Watch_Face_Editor
 {
@@ -33,15 +35,19 @@ namespace Watch_Face_Editor
         /// <param name="link">0 - основной экран; 1 - AOD</param>
         /// <param name="Shortcuts_In_Gif">Подсвечивать область с ярлыками (для gif файла)</param>
         /// <param name="time_value_sec">Время от начала анимации, сек</param>
-        /// <param name="editMode">Отображение в режиме редактирования</param>
+        /// <param name="showEeditMode">Отображение в режиме редактирования</param>
+        /// <param name="edit_mode">Выбор отображаемого режима редактирования. 
+        /// 1 - редактируемый задний фон
+        /// 2 - редактируемые стрелки
+        /// 3 - редактируемые элементы</param>
         public void Preview_screen(Graphics gPanel, float scale, bool crop, bool WMesh, bool BMesh, bool BBorder,
             bool showShortcuts, bool showShortcutsArea, bool showShortcutsBorder, bool showShortcutsImage, 
             bool showAnimation, bool showProgressArea, bool showCentrHend, 
-            bool showWidgetsArea, int link, bool Shortcuts_In_Gif, float time_value_sec, bool editMode)
+            bool showWidgetsArea, int link, bool Shortcuts_In_Gif, float time_value_sec, bool showEeditMode, int edit_mode)
         {
-            if (editMode) 
+            if (showEeditMode && edit_mode > 0) 
             {
-                Preview_edit_screen(gPanel, scale, crop);
+                Preview_edit_screen(gPanel, edit_mode, scale, crop);
                 return;
             }
             int offSet_X = 227;
@@ -63,6 +69,7 @@ namespace Watch_Face_Editor
                     src = OpenFileStream(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
                     break;
                 case "GTS 3":
+                case "GTS 4":
                     src = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_3.png");
                     break;
                 case "GTR 4":
@@ -97,17 +104,18 @@ namespace Watch_Face_Editor
                 if (Watch_Face != null && Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null &&
                     Watch_Face.ScreenNormal.Background.Editable_Background != null &&
                     Watch_Face.ScreenNormal.Background.Editable_Background.enable_edit_bg &&
-                    Watch_Face.ScreenNormal.Background.Editable_Background.AOD_show)
+                    (Watch_Face.ScreenNormal.Background.Editable_Background.AOD_show || background == null))
                 {
                     Background backgroundAOD = Watch_Face.ScreenNormal.Background;
-                    if (backgroundAOD.Editable_Background.BackgroundImageList != null &&
-                                backgroundAOD.Editable_Background.BackgroundImageList.Count > 0 && backgroundAOD.visible)
+                    if (backgroundAOD.Editable_Background.BackgroundList != null &&
+                                backgroundAOD.Editable_Background.BackgroundList.Count > 0 && backgroundAOD.visible)
                     {
                         int index = backgroundAOD.Editable_Background.selected_background;
-                        if (index >= 0 && index < backgroundAOD.Editable_Background.BackgroundImageList.Count &&
-                            backgroundAOD.Editable_Background.BackgroundImageList[index].Length > 0)
+                        if (index >= 0 && index < backgroundAOD.Editable_Background.BackgroundList.Count &&
+                            backgroundAOD.Editable_Background.BackgroundList[index].path != null &&
+                            backgroundAOD.Editable_Background.BackgroundList[index].path.Length > 0)
                         {
-                            src = OpenFileStream(backgroundAOD.Editable_Background.BackgroundImageList[index]);
+                            src = OpenFileStream(backgroundAOD.Editable_Background.BackgroundList[index].path);
                             gPanel.DrawImage(src, 0, 0);
                         }
                     }
@@ -116,14 +124,15 @@ namespace Watch_Face_Editor
             if (background != null)
             {
                 if (background.Editable_Background != null && background.Editable_Background.enable_edit_bg &&
-                    background.Editable_Background.BackgroundImageList != null &&
-                    background.Editable_Background.BackgroundImageList.Count > 0 && background.visible)
+                    background.Editable_Background.BackgroundList != null &&
+                    background.Editable_Background.BackgroundList.Count > 0 && background.visible)
                 {
                     int index = background.Editable_Background.selected_background;
-                    if (index >= 0 && index < background.Editable_Background.BackgroundImageList.Count &&
-                        background.Editable_Background.BackgroundImageList[index].Length > 0)
+                    if (index >= 0 && index < background.Editable_Background.BackgroundList.Count &&
+                        background.Editable_Background.BackgroundList[index].path != null &&
+                        background.Editable_Background.BackgroundList[index].path.Length > 0)
                     {
-                        src = OpenFileStream(background.Editable_Background.BackgroundImageList[index]);
+                        src = OpenFileStream(background.Editable_Background.BackgroundList[index].path);
                         gPanel.DrawImage(src, 0, 0);
                     }
                 }
@@ -441,6 +450,92 @@ namespace Watch_Face_Editor
                             }
 
                             break;
+                        #endregion
+
+                        #region ElementEditablePointers
+                        /*case "ElementEditablePointers":
+                            ElementEditablePointers EditablePointers = (ElementEditablePointers)element;
+                            if (!EditablePointers.visible) continue;
+                            if (EditablePointers.config == null || EditablePointers.config.Count == 0 ||
+                                EditablePointers.selected_pointers < 0 || 
+                                EditablePointers.selected_pointers >= EditablePointers.config.Count) continue;
+
+                            PointersList pointers_list = EditablePointers.config[EditablePointers.selected_pointers];
+
+                            if (pointers_list.hour != null && pointers_list.hour.src != null
+                                    && pointers_list.hour.src.Length > 0)
+                            {
+                                int x = pointers_list.hour.center_x;
+                                int y = pointers_list.hour.center_y;
+                                int offsetX = pointers_list.hour.pos_x;
+                                int offsetY = pointers_list.hour.pos_y;
+                                int image_index = ListImages.IndexOf(pointers_list.hour.src);
+                                int hour = WatchFacePreviewSet.Time.Hours;
+                                int min = WatchFacePreviewSet.Time.Minutes;
+                                //int sec = Watch_Face_Preview_Set.TimeW.Seconds;
+                                if (hour >= 12) hour = hour - 12;
+                                float angle = 360 * hour / 12 + 360 * min / (60 * 12);
+                                DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+
+                                if (pointers_list.hour.cover_path != null && pointers_list.hour.cover_path.Length > 0)
+                                {
+                                    image_index = ListImages.IndexOf(pointers_list.hour.cover_path);
+                                    x = pointers_list.hour.cover_x;
+                                    y = pointers_list.hour.cover_y;
+
+                                    src = OpenFileStream(ListImagesFullName[image_index]);
+                                    gPanel.DrawImage(src, x, y);
+                                }
+                            }
+
+                            if (pointers_list.minute != null && pointers_list.minute.src != null
+                                && pointers_list.minute.src.Length > 0)
+                            {
+                                int x = pointers_list.minute.center_x;
+                                int y = pointers_list.minute.center_y;
+                                int offsetX = pointers_list.minute.pos_x;
+                                int offsetY = pointers_list.minute.pos_y;
+                                int image_index = ListImages.IndexOf(pointers_list.minute.src);
+                                int min = WatchFacePreviewSet.Time.Minutes;
+                                float angle = 360 * min / 60;
+                                DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+
+                                if (pointers_list.minute.cover_path != null && pointers_list.minute.cover_path.Length > 0)
+                                {
+                                    image_index = ListImages.IndexOf(pointers_list.minute.cover_path);
+                                    x = pointers_list.minute.cover_x;
+                                    y = pointers_list.minute.cover_y;
+
+                                    src = OpenFileStream(ListImagesFullName[image_index]);
+                                    gPanel.DrawImage(src, x, y);
+                                }
+                            }
+
+                            if (pointers_list.second != null && pointers_list.second.src != null
+                                && pointers_list.second.src.Length > 0 &&
+                                (radioButton_ScreenNormal.Checked || EditablePointers.AOD_show))
+                            {
+                                int x = pointers_list.second.center_x;
+                                int y = pointers_list.second.center_y;
+                                int offsetX = pointers_list.second.pos_x;
+                                int offsetY = pointers_list.second.pos_y;
+                                int image_index = ListImages.IndexOf(pointers_list.second.src);
+                                int sec = WatchFacePreviewSet.Time.Seconds;
+                                float angle = 360 * sec / 60;
+                                DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+
+                                if (pointers_list.second.cover_path != null && pointers_list.second.cover_path.Length > 0)
+                                {
+                                    image_index = ListImages.IndexOf(pointers_list.second.cover_path);
+                                    x = pointers_list.second.cover_x;
+                                    y = pointers_list.second.cover_y;
+
+                                    src = OpenFileStream(ListImagesFullName[image_index]);
+                                    gPanel.DrawImage(src, x, y);
+                                }
+                            }
+
+                            break;*/
                         #endregion
 
                         #region ElementDateDay
@@ -1766,6 +1861,66 @@ namespace Watch_Face_Editor
             #endregion
             //src.Dispose();
 
+            #region EditablePointers
+            if (Watch_Face != null && Watch_Face.ElementEditablePointers != null &&
+                Watch_Face.ElementEditablePointers.visible)
+            {
+                ElementEditablePointers EditablePointers = Watch_Face.ElementEditablePointers;
+
+                if (EditablePointers.config != null && EditablePointers.config.Count > 0 &&
+                    EditablePointers.selected_pointers >= 0 &&
+                    EditablePointers.selected_pointers < EditablePointers.config.Count)
+                {
+                    PointersList pointers_list = EditablePointers.config[EditablePointers.selected_pointers];
+
+                    if (pointers_list.hour != null && pointers_list.hour.path != null
+                            && pointers_list.hour.path.Length > 0)
+                    {
+                        int x = pointers_list.hour.centerX;
+                        int y = pointers_list.hour.centerY;
+                        int offsetX = pointers_list.hour.posX;
+                        int offsetY = pointers_list.hour.posY;
+                        int image_index = ListImages.IndexOf(pointers_list.hour.path);
+                        int hour = WatchFacePreviewSet.Time.Hours;
+                        int min = WatchFacePreviewSet.Time.Minutes;
+                        //int sec = Watch_Face_Preview_Set.TimeW.Seconds;
+                        if (hour >= 12) hour = hour - 12;
+                        float angle = 360 * hour / 12 + 360 * min / (60 * 12);
+                        DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+                    }
+
+                    if (pointers_list.minute != null && pointers_list.minute.path != null
+                        && pointers_list.minute.path.Length > 0)
+                    {
+                        int x = pointers_list.minute.centerX;
+                        int y = pointers_list.minute.centerY;
+                        int offsetX = pointers_list.minute.posX;
+                        int offsetY = pointers_list.minute.posY;
+                        int image_index = ListImages.IndexOf(pointers_list.minute.path);
+                        int min = WatchFacePreviewSet.Time.Minutes;
+                        float angle = 360 * min / 60;
+                        DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+                    }
+
+                    if (pointers_list.second != null && pointers_list.second.path != null
+                        && pointers_list.second.path.Length > 0 &&
+                        (radioButton_ScreenNormal.Checked || EditablePointers.AOD_show))
+                    {
+                        int x = pointers_list.second.centerX;
+                        int y = pointers_list.second.centerY;
+                        int offsetX = pointers_list.second.posX;
+                        int offsetY = pointers_list.second.posY;
+                        int image_index = ListImages.IndexOf(pointers_list.second.path);
+                        int sec = WatchFacePreviewSet.Time.Seconds;
+                        float angle = 360 * sec / 60;
+                        DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+                    } 
+                }
+
+
+            }
+            #endregion
+
             #region Mesh
             Logger.WriteLine("PreviewToBitmap (Mesh)");
 
@@ -1822,6 +1977,7 @@ namespace Watch_Face_Editor
                         mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
                         break;
                     case "GTS 3":
+                    case "GTS 4":
                         mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_3.png");
                         break;
                     case "GTR 4":
@@ -1841,7 +1997,7 @@ namespace Watch_Face_Editor
             }
         }
 
-        public void Preview_edit_screen(Graphics gPanel, float scale, bool crop)
+        public void Preview_edit_screen(Graphics gPanel, int edit_mode, float scale, bool crop)
         {
             Bitmap src = new Bitmap(1, 1);
 
@@ -1854,6 +2010,7 @@ namespace Watch_Face_Editor
                     src = OpenFileStream(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
                     break;
                 case "GTS 3":
+                case "GTS 4":
                     src = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_3.png");
                     break;
                 case "GTR 4":
@@ -1869,6 +2026,9 @@ namespace Watch_Face_Editor
             gPanel.DrawImage(src, 0, 0);
             #endregion
 
+            Editable_Background editable_background = null;
+            ElementEditablePointers editable_pointers = null;
+
             #region Background
             Background background = null;
             if (Watch_Face != null && Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
@@ -1876,54 +2036,114 @@ namespace Watch_Face_Editor
             if (background != null)
             {
                 if (background.Editable_Background != null && background.Editable_Background.enable_edit_bg &&
-                    background.Editable_Background.BackgroundPreviewList != null &&
-                    background.Editable_Background.BackgroundPreviewList.Count > 0 && background.visible)
+                    background.Editable_Background.BackgroundList != null &&
+                    background.Editable_Background.BackgroundList.Count > 0 && background.visible)
                 {
                     int index = background.Editable_Background.selected_background;
-                    Editable_Background editable_background = background.Editable_Background;
-                    if (index >= 0 && index < editable_background.BackgroundPreviewList.Count &&
-                        editable_background.BackgroundPreviewList[index].Length > 0)
+                    editable_background = background.Editable_Background;
+                    if (index >= 0 && index < editable_background.BackgroundList.Count &&
+                        editable_background.BackgroundList[index].preview != null &&
+                        editable_background.BackgroundList[index].preview.Length > 0)
                     {
-                        src = OpenFileStream(editable_background.BackgroundPreviewList[index]);
+                        src = OpenFileStream(editable_background.BackgroundList[index].preview);
                         gPanel.DrawImage(src, 0, 0);
-                    }
-                    if (uCtrl_EditableBackground_Opt.Visible)
-                    {
-                        if (editable_background.tips_bg.Length > 0)
-                        {
-                            int tips_x = editable_background.tips_x;
-                            int tips_y = editable_background.tips_y;
-                            src = OpenFileStream(editable_background.tips_bg);
-                            gPanel.DrawImage(src, tips_x, tips_y);
-
-                            int x = tips_x + 10;
-                            int y = tips_y;
-                            int h = src.Height;
-                            int w = src.Width - 20;
-
-                            int size = 16;
-                            int space_h = 0;
-                            int space_v = 0;
-
-                            Color color = Color.Black;
-                            string align_h = "CENTER_H";
-                            string align_v = "CENTER_V";
-                            string text_style = "ELLIPSIS";
-                            string valueStr = Properties.FormStrings.Tip_Background + (index + 1).ToString() +
-                                "/" + editable_background.BackgroundPreviewList.Count.ToString();
-
-                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr,
-                                align_h, align_v, text_style, false);
-                        }
-                        if (editable_background.fg.Length > 0)
-                        {
-                            src = OpenFileStream(editable_background.fg);
-                            gPanel.DrawImage(src, 0, 0);
-                        }
                     }
                 }
             }
             #endregion
+
+            #region EditablePointers
+            if (Watch_Face != null && Watch_Face.ElementEditablePointers != null)
+                editable_pointers = Watch_Face.ElementEditablePointers;
+            if (editable_pointers != null)
+            {
+                if (editable_pointers.visible &&
+                    editable_pointers.config != null &&
+                    editable_pointers.config.Count > 0)
+                {
+                    int index = editable_pointers.selected_pointers;
+                    if (index >= 0 && index < editable_pointers.config.Count &&
+                        editable_pointers.config[index].preview != null &&
+                        editable_pointers.config[index].preview.Length > 0)
+                    {
+                        src = OpenFileStream(editable_pointers.config[index].preview);
+                        gPanel.DrawImage(src, 0, 0);
+                    }
+                }
+            }
+            #endregion
+
+            if (edit_mode == 1 && editable_background != null)
+            {
+                if (editable_background.fg != null && editable_background.fg.Length > 0)
+                {
+                    src = OpenFileStream(editable_background.fg);
+                    gPanel.DrawImage(src, 0, 0);
+                }
+                if (editable_background.tips_bg != null && editable_background.tips_bg.Length > 0)
+                {
+                    int tips_x = editable_background.tips_x;
+                    int tips_y = editable_background.tips_y;
+                    src = OpenFileStream(editable_background.tips_bg);
+                    gPanel.DrawImage(src, tips_x, tips_y);
+                    int index = background.Editable_Background.selected_background;
+
+                    int x = tips_x + 5;
+                    int y = tips_y;
+                    int h = src.Height;
+                    int w = src.Width - 10;
+
+                    int size = 19;
+                    int space_h = 0;
+                    int space_v = 0;
+
+                    Color color = Color.Black;
+                    string align_h = "CENTER_H";
+                    string align_v = "CENTER_V";
+                    string text_style = "ELLIPSIS";
+                    string valueStr = Properties.FormStrings.Tip_Background + (index + 1).ToString() +
+                        "/" + editable_background.BackgroundList.Count.ToString();
+
+                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr,
+                        align_h, align_v, text_style, false);
+                }
+            }
+
+            if (edit_mode == 3 && editable_pointers != null)
+            {
+                if (editable_pointers.fg != null && editable_pointers.fg.Length > 0)
+                {
+                    src = OpenFileStream(editable_pointers.fg);
+                    gPanel.DrawImage(src, 0, 0);
+                }
+                if (editable_pointers.tips_bg != null && editable_pointers.tips_bg.Length > 0)
+                {
+                    int tips_x = editable_pointers.tips_x;
+                    int tips_y = editable_pointers.tips_y;
+                    src = OpenFileStream(editable_pointers.tips_bg);
+                    gPanel.DrawImage(src, tips_x, tips_y);
+                    int index = editable_pointers.selected_pointers;
+
+                    int x = tips_x + 5;
+                    int y = tips_y;
+                    int h = src.Height;
+                    int w = src.Width - 10;
+
+                    int size = 19;
+                    int space_h = 0;
+                    int space_v = 0;
+
+                    Color color = Color.Black;
+                    string align_h = "CENTER_H";
+                    string align_v = "CENTER_V";
+                    string text_style = "ELLIPSIS";
+                    string valueStr = Properties.FormStrings.Tip_Pointer + (index + 1).ToString() +
+                        "/" + editable_pointers.config.Count.ToString();
+
+                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr,
+                        align_h, align_v, text_style, false);
+                }
+            }
 
             if (crop)
             {
@@ -1935,6 +2155,7 @@ namespace Watch_Face_Editor
                         mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
                         break;
                     case "GTS 3":
+                    case "GTS 4":
                         mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_3.png");
                         break;
                     case "GTR 4":
@@ -1954,6 +2175,107 @@ namespace Watch_Face_Editor
             }
 
             src.Dispose();
+        }
+
+        /// <summary>создаем предпросмотр для редактируемых стрелок</summary>
+        /// <param name="gPanel">Поверхность для рисования</param>
+        /// <param name="scale">Масштаб прорисовки</param>
+        /// <param name="crop">Обрезать по форме экрана</param>
+        public void Creat_preview_editable_pointers(Graphics gPanel, float scale, bool crop)
+        {
+            Bitmap src = new Bitmap(1, 1);
+            gPanel.ScaleTransform(scale, scale, MatrixOrder.Prepend);
+            //gPanel.SmoothingMode = SmoothingMode.AntiAlias;
+            //if (link == 2) goto AnimationEnd;
+
+            #region EditablePointers
+            if (Watch_Face != null && Watch_Face.ElementEditablePointers != null &&
+                Watch_Face.ElementEditablePointers.visible)
+            {
+                ElementEditablePointers EditablePointers = Watch_Face.ElementEditablePointers;
+
+                if (EditablePointers.config != null && EditablePointers.config.Count > 0 &&
+                    EditablePointers.selected_pointers >= 0 &&
+                    EditablePointers.selected_pointers < EditablePointers.config.Count)
+                {
+                    PointersList pointers_list = EditablePointers.config[EditablePointers.selected_pointers];
+
+                    if (pointers_list.hour != null && pointers_list.hour.path != null
+                            && pointers_list.hour.path.Length > 0)
+                    {
+                        int x = pointers_list.hour.centerX;
+                        int y = pointers_list.hour.centerY;
+                        int offsetX = pointers_list.hour.posX;
+                        int offsetY = pointers_list.hour.posY;
+                        int image_index = ListImages.IndexOf(pointers_list.hour.path);
+                        int hour = WatchFacePreviewSet.Time.Hours;
+                        int min = WatchFacePreviewSet.Time.Minutes;
+                        //int sec = Watch_Face_Preview_Set.TimeW.Seconds;
+                        if (hour >= 12) hour = hour - 12;
+                        float angle = 360 * hour / 12 + 360 * min / (60 * 12);
+                        DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, false);
+                    }
+
+                    if (pointers_list.minute != null && pointers_list.minute.path != null
+                        && pointers_list.minute.path.Length > 0)
+                    {
+                        int x = pointers_list.minute.centerX;
+                        int y = pointers_list.minute.centerY;
+                        int offsetX = pointers_list.minute.posX;
+                        int offsetY = pointers_list.minute.posY;
+                        int image_index = ListImages.IndexOf(pointers_list.minute.path);
+                        int min = WatchFacePreviewSet.Time.Minutes;
+                        float angle = 360 * min / 60;
+                        DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, false);
+                    }
+
+                    if (pointers_list.second != null && pointers_list.second.path != null
+                        && pointers_list.second.path.Length > 0 &&
+                        (radioButton_ScreenNormal.Checked || EditablePointers.AOD_show))
+                    {
+                        int x = pointers_list.second.centerX;
+                        int y = pointers_list.second.centerY;
+                        int offsetX = pointers_list.second.posX;
+                        int offsetY = pointers_list.second.posY;
+                        int image_index = ListImages.IndexOf(pointers_list.second.path);
+                        int sec = WatchFacePreviewSet.Time.Seconds;
+                        float angle = 360 * sec / 60;
+                        DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, false);
+                    }
+                }
+
+
+            }
+            #endregion
+
+            if (crop)
+            {
+                Logger.WriteLine("PreviewToBitmap (crop)");
+                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
+                switch (ProgramSettings.Watch_Model)
+                {
+                    case "GTR 3 Pro":
+                        mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
+                        break;
+                    case "GTS 3":
+                    case "GTS 4":
+                        mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_3.png");
+                        break;
+                    case "GTR 4":
+                        mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gtr_4.png");
+                        break;
+                    case "Amazfit Band 7":
+                        mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_band_7.png");
+                        break;
+                    case "GTS 4 mini":
+                        mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
+                        break;
+                }
+                mask = FormColor(mask);
+                gPanel.DrawImage(mask, 0, 0);
+                //gPanel.DrawImage(mask, new Rectangle(0, 0, mask.Width, mask.Height));
+                mask.Dispose();
+            }
         }
 
         /// <summary>Рисуем все параметры элемента</summary>
@@ -3309,6 +3631,7 @@ namespace Watch_Face_Editor
             Color color, string value, string align_h, string align_v, string text_style, bool BBorder)
         {
             size = size * 0.99f;
+            if (w < 5 || h < 5) return;
             Bitmap bitmap = new Bitmap(Convert.ToInt32(w), Convert.ToInt32(h), PixelFormat.Format32bppArgb);
             Graphics gPanel = Graphics.FromImage(bitmap);
             //Font drawFont = new Font("Times New Roman", size, GraphicsUnit.World);
@@ -3634,7 +3957,15 @@ namespace Watch_Face_Editor
             if (separator_index >= 0 && separator_index < ListImagesFullName.Count)
             {
                 src = OpenFileStream(ListImagesFullName[separator_index]);
-                DateLenght = DateLenght + src.Width + src.Width + spacing + spacing;
+                if (comboBox_watch_model.Text == "T-Rex 2" || comboBox_watch_model.Text == "GTR 4" ||
+                    comboBox_watch_model.Text == "GTS 4")
+                {
+                    DateLenght = DateLenght + src.Width + spacing + spacing; 
+                }
+                else
+                {
+                    DateLenght = DateLenght + src.Width + src.Width + spacing + spacing;
+                }
             }
 
             Logger.WriteLine("DateLenghtReal");
@@ -4271,6 +4602,8 @@ namespace Watch_Face_Editor
                 mask = new Bitmap(Application.StartupPath + @"\Mask\mask_band_7.png");
             if (ProgramSettings.Watch_Model == "GTS 4 mini")
                 mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
+            if (ProgramSettings.Watch_Model == "GTS 4")
+                mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
 
             bitmap = ApplyMask(bitmap, mask);
             //Graphics gPanel = Graphics.FromImage(bitmap);

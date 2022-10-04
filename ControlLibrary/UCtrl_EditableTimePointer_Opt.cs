@@ -11,35 +11,34 @@ using System.Windows.Forms;
 
 namespace ControlLibrary
 {
-    public partial class UCtrl_EditableBackground_Opt : UserControl
+    public partial class UCtrl_EditableTimePointer_Opt : UserControl
     {
         private bool setValue; // режим задания параметров
         private List<string> ListImagesFullName = new List<string>(); // перечень путей к файлам с картинками
-        public Object _EditableBackground;
+        public Object _EditableTimePointer;
 
-        public UCtrl_EditableBackground_Opt()
+        public UCtrl_EditableTimePointer_Opt()
         {
             InitializeComponent();
             setValue = false;
         }
 
-        /// <summary>Задает индекс выбраного фона</summary>
-        public void SetBackgroundIndex(int index)
+        /// <summary>Задает индекс выбраного набора стрелок</summary>
+        public void SetPointerSetIndex(int index)
         {
             setValue = true;
-            //index--;
-            comboBox_select_background.SelectedIndex = index;
+            comboBox_select_pointerSet.SelectedIndex = index;
             setValue = false;
         }
 
-        /// <summary>Задает количество фонов в выпадающем списке</summary>
-        public void SetBackgroundCount(int count)
+        /// <summary>Задает количество наборов стрелок в выпадающем списке</summary>
+        public void SetPointerSetCount(int count)
         {
             setValue = true;
-            comboBox_select_background.Items.Clear();
+            comboBox_select_pointerSet.Items.Clear();
             for (int i = 1; i < count + 1; i++)
             {
-                comboBox_select_background.Items.Add(i.ToString());
+                comboBox_select_pointerSet.Items.Add(i.ToString());
             }
             if (count >= 5) button_add.Enabled = false;
             else button_add.Enabled = true;
@@ -47,24 +46,60 @@ namespace ControlLibrary
         }
 
 
-        /// <summary>Задает название выбранной картинки</summary>
-        public void SetImage(string value)
+        /// <summary>Задает название выбранной картинки для часов</summary>
+        public void SetHourPointerImage(string value)
         {
-            comboBox_image.Text = value;
-            if (comboBox_image.SelectedIndex < 0) comboBox_image.Text = "";
+            comboBox_hourPointer_image.Text = value;
+            if (comboBox_hourPointer_image.SelectedIndex < 0) comboBox_hourPointer_image.Text = "";
+        }
+        /// <summary>Возвращает номер выбранной картинки для часов, в случае ошибки возвращает -1</summary>
+        public string GetHourPointerImage()
+        {
+            if (comboBox_hourPointer_image.SelectedIndex < 0) return "";
+            return comboBox_hourPointer_image.Text;
+        }
+        /// <summary>Возвращает SelectedIndex выпадающего списка для часов</summary>
+        public int GetSelectedIndexHourPointerImage()
+        {
+            return comboBox_hourPointer_image.SelectedIndex;
         }
 
-        /// <summary>Возвращает название выбранной картинки</summary>
-        public string GetImage()
+
+        /// <summary>Задает название выбранной картинки для минут</summary>
+        public void SetMinutePointerImage(string value)
         {
-            if (comboBox_image.SelectedIndex < 0) return "";
-            return comboBox_image.Text;
+            comboBox_minutePointer_image.Text = value;
+            if (comboBox_minutePointer_image.SelectedIndex < 0) comboBox_minutePointer_image.Text = "";
+        }
+        /// <summary>Возвращает номер выбранной картинки для минут, в случае ошибки возвращает -1</summary>
+        public string GetMinutePointerImage()
+        {
+            if (comboBox_minutePointer_image.SelectedIndex < 0) return "";
+            return comboBox_minutePointer_image.Text;
+        }
+        /// <summary>Возвращает SelectedIndex выпадающего списка для минут</summary>
+        public int GetSelectedIndexMinutePointerImage()
+        {
+            return comboBox_minutePointer_image.SelectedIndex;
         }
 
-        /// <summary>Возвращает SelectedIndex выпадающего списка</summary>
-        public int GetSelectedIndexImage()
+
+        /// <summary>Задает название выбранной картинки для секунд</summary>
+        public void SetSecondPointerImage(string value)
         {
-            return comboBox_tip.SelectedIndex;
+            comboBox_secondPointer_image.Text = value;
+            if (comboBox_secondPointer_image.SelectedIndex < 0) comboBox_secondPointer_image.Text = "";
+        }
+        /// <summary>Возвращает номер выбранной картинки для секунд, в случае ошибки возвращает -1</summary>
+        public string GetSecondPointerImage()
+        {
+            if (comboBox_secondPointer_image.SelectedIndex < 0) return "";
+            return comboBox_secondPointer_image.Text;
+        }
+        /// <summary>Возвращает SelectedIndex выпадающего списка для секунд</summary>
+        public int GetSelectedIndexSecondPointerImage()
+        {
+            return comboBox_secondPointer_image.SelectedIndex;
         }
 
 
@@ -136,19 +171,19 @@ namespace ControlLibrary
         public delegate void ValueChangedHandler(object sender, EventArgs eventArgs, int index);
 
         [Browsable(true)]
-        [Description("Происходит при удалении фона")]
-        public event BackgroundDelHandler BackgroundDel;
-        public delegate void BackgroundDelHandler(object sender, EventArgs eventArgs, int index);
+        [Description("Происходит при удалении набора стрелок")]
+        public event PointersDelHandler PointersDel;
+        public delegate void PointersDelHandler(object sender, EventArgs eventArgs, int index);
 
         [Browsable(true)]
-        [Description("Происходит при добавлении фона")]
-        public event BackgroundAddHandler BackgroundAdd;
-        public delegate void BackgroundAddHandler(object sender, EventArgs eventArgs, int index);
+        [Description("Происходит при добавлении набора стрелок")]
+        public event PointersAddHandler PointersAdd;
+        public delegate void PointersAddHandler(object sender, EventArgs eventArgs, int index);
 
         [Browsable(true)]
-        [Description("Происходит при изменении выбраного фона")]
-        public event BackgroundIndexChangedHandler BackgroundIndexChanged;
-        public delegate void BackgroundIndexChangedHandler(object sender, EventArgs eventArgs, int index);
+        [Description("Происходит при изменении выбраного набора стрелок")]
+        public event PointersIndexChangedHandler PointersIndexChanged;
+        public delegate void PointersIndexChangedHandler(object sender, EventArgs eventArgs, int index);
 
         [Browsable(true)]
         [Description("Происходит при обновлении предпросмотра")]
@@ -165,7 +200,7 @@ namespace ControlLibrary
             if (ValueChanged != null && !setValue)
             {
                 EventArgs eventArgs = new EventArgs();
-                ValueChanged(this, eventArgs, comboBox_select_background.SelectedIndex);
+                ValueChanged(this, eventArgs, comboBox_select_pointerSet.SelectedIndex);
             }
         }
 
@@ -180,7 +215,7 @@ namespace ControlLibrary
                 if (ValueChanged != null && !setValue)
                 {
                     EventArgs eventArgs = new EventArgs();
-                    ValueChanged(this, eventArgs, comboBox_select_background.SelectedIndex);
+                    ValueChanged(this, eventArgs, comboBox_select_pointerSet.SelectedIndex);
                 }
             }
         }
@@ -238,9 +273,9 @@ namespace ControlLibrary
         private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
-            if(comboBox.Name== "comboBox_Preview_image")
+            if (comboBox.Name == "comboBox_Preview_image")
             {
-                if(comboBox_Preview_image.Text.Length > 0)
+                if (comboBox_Preview_image.Text.Length > 0)
                 {
                     button_PreviewAdd.Visible = false;
                     button_PreviewRefresh.Visible = true;
@@ -254,7 +289,7 @@ namespace ControlLibrary
             if (ValueChanged != null && !setValue)
             {
                 EventArgs eventArgs = new EventArgs();
-                ValueChanged(this, eventArgs, comboBox_select_background.SelectedIndex);
+                ValueChanged(this, eventArgs, comboBox_select_pointerSet.SelectedIndex);
             }
         }
         #endregion
@@ -263,12 +298,16 @@ namespace ControlLibrary
         /// <summary>Добавляет ссылки на картинки в выпадающие списки</summary>
         public void ComboBoxAddItems(List<string> ListImages, List<string> _ListImagesFullName)
         {
-            comboBox_image.Items.Clear();
+            comboBox_hourPointer_image.Items.Clear();
+            comboBox_minutePointer_image.Items.Clear();
+            comboBox_secondPointer_image.Items.Clear();
             comboBox_Preview_image.Items.Clear();
             comboBox_tip.Items.Clear();
             comboBox_foreground.Items.Clear();
 
-            comboBox_image.Items.AddRange(ListImages.ToArray());
+            comboBox_hourPointer_image.Items.AddRange(ListImages.ToArray());
+            comboBox_minutePointer_image.Items.AddRange(ListImages.ToArray());
+            comboBox_secondPointer_image.Items.AddRange(ListImages.ToArray());
             comboBox_Preview_image.Items.AddRange(ListImages.ToArray());
             comboBox_tip.Items.AddRange(ListImages.ToArray());
             comboBox_foreground.Items.AddRange(ListImages.ToArray());
@@ -278,21 +317,27 @@ namespace ControlLibrary
             int count = ListImages.Count;
             if (count == 0)
             {
-                comboBox_image.DropDownHeight = 1;
+                comboBox_hourPointer_image.DropDownHeight = 1;
+                comboBox_minutePointer_image.DropDownHeight = 1;
+                comboBox_secondPointer_image.DropDownHeight = 1;
                 comboBox_Preview_image.DropDownHeight = 1;
                 comboBox_tip.DropDownHeight = 1;
                 comboBox_foreground.DropDownHeight = 1;
             }
             else if (count < 5)
             {
-                comboBox_image.DropDownHeight = 35 * count + 1;
+                comboBox_hourPointer_image.DropDownHeight = 35 * count + 1;
+                comboBox_minutePointer_image.DropDownHeight = 35 * count + 1;
+                comboBox_secondPointer_image.DropDownHeight = 35 * count + 1;
                 comboBox_Preview_image.DropDownHeight = 35 * count + 1;
                 comboBox_tip.DropDownHeight = 35 * count + 1;
                 comboBox_foreground.DropDownHeight = 35 * count + 1;
             }
             else
             {
-                comboBox_image.DropDownHeight = 106;
+                comboBox_hourPointer_image.DropDownHeight = 106;
+                comboBox_minutePointer_image.DropDownHeight = 106;
+                comboBox_secondPointer_image.DropDownHeight = 106;
                 comboBox_Preview_image.DropDownHeight = 106;
                 comboBox_tip.DropDownHeight = 106;
                 comboBox_foreground.DropDownHeight = 106;
@@ -303,12 +348,14 @@ namespace ControlLibrary
         public void SettingsClear()
         {
             setValue = true;
-            comboBox_select_background.Items.Clear();
+            comboBox_select_pointerSet.Items.Clear();
             button_del.Enabled = false;
             button_PreviewAdd.Enabled = false;
             button_PreviewRefresh.Enabled = false;
 
-            comboBox_image.Text = null;
+            comboBox_hourPointer_image.Text = null;
+            comboBox_minutePointer_image.Text = null;
+            comboBox_secondPointer_image.Text = null;
             comboBox_Preview_image.Text = null;
             comboBox_tip.Text = null;
             comboBox_foreground.Text = null;
@@ -316,6 +363,7 @@ namespace ControlLibrary
             numericUpDown_tipX.Value = 0;
             numericUpDown_tipY.Value = 0;
 
+            checkBox_secondInAOD.Checked = false;
             checkBox_edit_mode.Checked = false;
 
             setValue = false;
@@ -477,7 +525,7 @@ namespace ControlLibrary
             if (ValueChanged != null && !setValue)
             {
                 EventArgs eventArgs = new EventArgs();
-                ValueChanged(this, eventArgs, comboBox_select_background.SelectedIndex);
+                ValueChanged(this, eventArgs, comboBox_select_pointerSet.SelectedIndex);
             }
         }
 
@@ -485,41 +533,41 @@ namespace ControlLibrary
 
         private void button_add_Click(object sender, EventArgs e)
         {
-            if (BackgroundAdd != null && !setValue)
+            if (PointersAdd != null && !setValue)
             {
                 EventArgs eventArgs = new EventArgs();
-                BackgroundAdd(this, eventArgs, comboBox_select_background.SelectedIndex);
+                PointersAdd(this, eventArgs, comboBox_select_pointerSet.SelectedIndex);
             }
         }
 
         private void button_del_Click(object sender, EventArgs e)
         {
-            if (BackgroundDel != null && !setValue)
+            if (PointersDel != null && !setValue)
             {
                 EventArgs eventArgs = new EventArgs();
-                BackgroundDel(this, eventArgs, comboBox_select_background.SelectedIndex);
+                PointersDel(this, eventArgs, comboBox_select_pointerSet.SelectedIndex);
             }
         }
 
-        private void comboBox_select_background_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBox_select_pointerSet_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox_select_background.SelectedIndex >= 0)
+            if (comboBox_select_pointerSet.SelectedIndex >= 0)
             {
                 button_del.Enabled = true;
                 button_PreviewAdd.Enabled = true;
                 button_PreviewRefresh.Enabled = true;
             }
-            else 
-            { 
+            else
+            {
                 button_del.Enabled = false;
                 button_PreviewAdd.Enabled = false;
                 button_PreviewRefresh.Enabled = false;
             }
 
-            if (BackgroundIndexChanged != null && !setValue)
+            if (PointersIndexChanged != null && !setValue)
             {
                 EventArgs eventArgs = new EventArgs();
-                BackgroundIndexChanged(this, eventArgs, comboBox_select_background.SelectedIndex);
+                PointersIndexChanged(this, eventArgs, comboBox_select_pointerSet.SelectedIndex);
             }
         }
 
@@ -562,7 +610,7 @@ namespace ControlLibrary
             }
         }
 
-        private void UCtrl_EditableBackground_Opt_Load(object sender, EventArgs e)
+        private void UCtrl_EditableTimePointer_Opt_Load(object sender, EventArgs e)
         {
             button_PreviewAdd.Location = button_PreviewRefresh.Location;
         }
@@ -572,7 +620,7 @@ namespace ControlLibrary
             if (PreviewAdd != null && !setValue)
             {
                 EventArgs eventArgs = new EventArgs();
-                PreviewAdd(this, eventArgs, comboBox_select_background.SelectedIndex);
+                PreviewAdd(this, eventArgs, comboBox_select_pointerSet.SelectedIndex);
             }
         }
 
@@ -581,7 +629,7 @@ namespace ControlLibrary
             if (PreviewRefresh != null && !setValue)
             {
                 EventArgs eventArgs = new EventArgs();
-                PreviewRefresh(this, eventArgs, comboBox_select_background.SelectedIndex);
+                PreviewRefresh(this, eventArgs, comboBox_select_pointerSet.SelectedIndex);
             }
         }
     }

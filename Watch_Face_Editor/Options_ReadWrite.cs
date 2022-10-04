@@ -62,6 +62,9 @@ namespace Watch_Face_Editor
                 }
             }
 
+            if (Watch_Face_temp.ElementEditablePointers != null) 
+                Watch_Face_return.ElementEditablePointers = Watch_Face_temp.ElementEditablePointers;
+
             return Watch_Face_return;
         }
 
@@ -112,6 +115,26 @@ namespace Watch_Face_Editor
                                 Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                         if (AnalogTime != null) NewElements.Add(AnalogTime);
+                        break;
+                    #endregion
+
+                    #region ElementEditablePointers
+                    case "ElementEditablePointers":
+                        ElementEditablePointers EditablePointers = null;
+                        try
+                        {
+                            EditablePointers = JsonConvert.DeserializeObject<ElementEditablePointers>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (EditablePointers != null) NewElements.Add(EditablePointers);
                         break;
                     #endregion
 
@@ -1013,16 +1036,16 @@ namespace Watch_Face_Editor
 
             uCtrl_EditableBackground_Opt._EditableBackground = editable_background;
             int index = -1;
-            if (editable_background.BackgroundImageList != null && editable_background.BackgroundImageList.Count > 0)
+            if (editable_background.BackgroundList != null && editable_background.BackgroundList.Count > 0)
             {
                 index = editable_background.selected_background;
-                uCtrl_EditableBackground_Opt.SetBackgroundCount(editable_background.BackgroundImageList.Count);
+                uCtrl_EditableBackground_Opt.SetBackgroundCount(editable_background.BackgroundList.Count);
                 uCtrl_EditableBackground_Opt.SetBackgroundIndex(index);
 
-                if (index >= 0 && index < editable_background.BackgroundImageList.Count)
+                if (index >= 0 && index < editable_background.BackgroundList.Count)
                 {
-                    uCtrl_EditableBackground_Opt.SetImage(editable_background.BackgroundImageList[index]);
-                    uCtrl_EditableBackground_Opt.SetPreview(editable_background.BackgroundPreviewList[index]); 
+                    uCtrl_EditableBackground_Opt.SetImage(editable_background.BackgroundList[index].path);
+                    uCtrl_EditableBackground_Opt.SetPreview(editable_background.BackgroundList[index].preview); 
                 }
             }
             uCtrl_EditableBackground_Opt.SetBackgroundIndex(index);
@@ -1072,6 +1095,72 @@ namespace Watch_Face_Editor
 
             uCtrl_Pointer_Opt.numericUpDown_pointer_startAngle.Value = img_pointer.start_angle;
             uCtrl_Pointer_Opt.numericUpDown_pointer_endAngle.Value = img_pointer.end_angle;
+
+            PreviewView = true;
+        }
+
+        /// <summary>Читаем настройки для отображения редактируемых стрелок</summary>
+        private void Read_EditablePointers_Options(ElementEditablePointers editablePointers)
+        {
+            PreviewView = false;
+
+            uCtrl_EditableTimePointer_Opt.SettingsClear();
+
+            uCtrl_EditableTimePointer_Opt.Visible = true;
+
+            uCtrl_EditableTimePointer_Opt._EditableTimePointer = editablePointers;
+
+            //userCtrl_Background_Options.SettingsClear();
+
+            if (editablePointers == null)
+            {
+                PreviewView = true;
+                return;
+            }
+            if (editablePointers.config == null || editablePointers.config.Count == 0 ||
+                editablePointers.selected_pointers >= editablePointers.config.Count)
+            {
+                PreviewView = true;
+                return;
+            }
+            uCtrl_EditableTimePointer_Opt.SetPointerSetCount(editablePointers.config.Count);
+            uCtrl_EditableTimePointer_Opt.SetPointerSetIndex(editablePointers.selected_pointers);
+            PointersList pointersList = editablePointers.config[editablePointers.selected_pointers];
+
+            if (pointersList.hour != null) 
+            {
+                uCtrl_EditableTimePointer_Opt.SetHourPointerImage(pointersList.hour.path);
+                uCtrl_EditableTimePointer_Opt.numericUpDown_hourPointer_X.Value = pointersList.hour.centerX;
+                uCtrl_EditableTimePointer_Opt.numericUpDown_hourPointer_Y.Value = pointersList.hour.centerY;
+                uCtrl_EditableTimePointer_Opt.numericUpDown_hourPointer_offset_X.Value = pointersList.hour.posX;
+                uCtrl_EditableTimePointer_Opt.numericUpDown_hourPointer_offset_Y.Value = pointersList.hour.posY;
+            }
+
+            if (pointersList.minute != null)
+            {
+                uCtrl_EditableTimePointer_Opt.SetMinutePointerImage(pointersList.minute.path);
+                uCtrl_EditableTimePointer_Opt.numericUpDown_minutePointer_X.Value = pointersList.minute.centerX;
+                uCtrl_EditableTimePointer_Opt.numericUpDown_minutePointer_Y.Value = pointersList.minute.centerY;
+                uCtrl_EditableTimePointer_Opt.numericUpDown_minutePointer_offset_X.Value = pointersList.minute.posX;
+                uCtrl_EditableTimePointer_Opt.numericUpDown_minutePointer_offset_Y.Value = pointersList.minute.posY;
+            }
+
+            if (pointersList.second != null)
+            {
+                uCtrl_EditableTimePointer_Opt.SetSecondPointerImage(pointersList.second.path);
+                uCtrl_EditableTimePointer_Opt.numericUpDown_secondPointer_X.Value = pointersList.second.centerX;
+                uCtrl_EditableTimePointer_Opt.numericUpDown_secondPointer_Y.Value = pointersList.second.centerY;
+                uCtrl_EditableTimePointer_Opt.numericUpDown_secondPointer_offset_X.Value = pointersList.second.posX;
+                uCtrl_EditableTimePointer_Opt.numericUpDown_secondPointer_offset_Y.Value = pointersList.second.posY;
+            }
+
+            uCtrl_EditableTimePointer_Opt.SetPreview(pointersList.preview);
+
+            uCtrl_EditableTimePointer_Opt.SetForeground(editablePointers.fg);
+
+            uCtrl_EditableTimePointer_Opt.SetTip(editablePointers.tips_bg);
+            uCtrl_EditableTimePointer_Opt.numericUpDown_tipX.Value = editablePointers.tips_x;
+            uCtrl_EditableTimePointer_Opt.numericUpDown_tipY.Value = editablePointers.tips_y;
 
             PreviewView = true;
         }
@@ -1322,6 +1411,10 @@ namespace Watch_Face_Editor
                             background.BackgroundImage.h = 450;
                             background.BackgroundImage.w = 390;
                             break;
+                        case "T-Rex 2":
+                            background.BackgroundImage.h = 454;
+                            background.BackgroundImage.w = 454;
+                            break;
                         case "GTR 4":
                             background.BackgroundImage.h = 466;
                             background.BackgroundImage.w = 466;
@@ -1334,6 +1427,10 @@ namespace Watch_Face_Editor
                             background.BackgroundImage.h = 384;
                             background.BackgroundImage.w = 336;
                             break;
+                        case "GTS 4":
+                            background.BackgroundImage.h = 450;
+                            background.BackgroundImage.w = 390;
+                            break;
                     }
                     //background.BackgroundImage.show_level = "ONLY_NORMAL";
                     background.BackgroundColor = null;
@@ -1342,7 +1439,7 @@ namespace Watch_Face_Editor
 
                     if (radioButton_ScreenIdle.Checked)
                     {
-                        if (Watch_Face.ScreenNormal.Background != null)
+                        if (Watch_Face.ScreenNormal.Background != null && Watch_Face.ScreenNormal.Background.Editable_Background != null)
                         {
                             Watch_Face.ScreenNormal.Background.Editable_Background.AOD_show = false;
                         }
@@ -1389,6 +1486,10 @@ namespace Watch_Face_Editor
                         background.BackgroundColor.h = 450;
                         background.BackgroundColor.w = 390;
                         break;
+                    case "T-Rex 2":
+                        background.BackgroundColor.h = 454;
+                        background.BackgroundColor.w = 454;
+                        break;
                     case "GTR 4":
                         background.BackgroundColor.h = 466;
                         background.BackgroundColor.w = 466;
@@ -1401,6 +1502,10 @@ namespace Watch_Face_Editor
                         background.BackgroundColor.h = 384;
                         background.BackgroundColor.w = 336;
                         break;
+                    case "GTS 4":
+                        background.BackgroundColor.h = 450;
+                        background.BackgroundColor.w = 390;
+                        break;
                 }
                 background.BackgroundImage = null;
                 if (background.Editable_Background != null) background.Editable_Background.enable_edit_bg = false;
@@ -1408,7 +1513,7 @@ namespace Watch_Face_Editor
 
                 if (radioButton_ScreenIdle.Checked)
                 {
-                    if (Watch_Face.ScreenNormal.Background != null)
+                    if (Watch_Face.ScreenNormal.Background != null && Watch_Face.ScreenNormal.Background.Editable_Background != null)
                     {
                         Watch_Face.ScreenNormal.Background.Editable_Background.AOD_show = false;
                     }
@@ -1453,6 +1558,10 @@ namespace Watch_Face_Editor
                             background.Editable_Background.h = 450;
                             background.Editable_Background.w = 390;
                             break;
+                        case "T-Rex 2":
+                            background.Editable_Background.h = 454;
+                            background.Editable_Background.w = 454;
+                            break;
                         case "GTR 4":
                             background.Editable_Background.h = 466;
                             background.Editable_Background.w = 466;
@@ -1464,6 +1573,10 @@ namespace Watch_Face_Editor
                         case "GTS 4 mini":
                             background.Editable_Background.h = 384;
                             background.Editable_Background.w = 336;
+                            break;
+                        case "GTS 4":
+                            background.Editable_Background.h = 450;
+                            background.Editable_Background.w = 390;
                             break;
                     }
 
@@ -2116,17 +2229,17 @@ namespace Watch_Face_Editor
             Editable_Background background = (Editable_Background)uCtrl_EditableBackground_Opt._EditableBackground;
             if (background == null) return;
 
-            if (background.BackgroundImageList == null) background.BackgroundImageList = new List<string>();
-            if (background.BackgroundPreviewList == null) background.BackgroundPreviewList = new List<string>();
-            if (background.BackgroundImageList.Count <= index || index < 0)
+            if (background.BackgroundList == null) background.BackgroundList = new List<BackgroundList>();
+            BackgroundList background_list = new BackgroundList();
+            background_list.path = uCtrl_EditableBackground_Opt.GetImage();
+            background_list.preview = uCtrl_EditableBackground_Opt.GetPreview();
+            if (background.BackgroundList.Count <= index || index < 0)
             {
-                background.BackgroundImageList.Add(uCtrl_EditableBackground_Opt.GetImage());
-                background.BackgroundPreviewList.Add(uCtrl_EditableBackground_Opt.GetPreview());
+                background.BackgroundList.Add(background_list);
             }
             else
             {
-                background.BackgroundImageList.Insert(index, uCtrl_EditableBackground_Opt.GetImage());
-                background.BackgroundPreviewList.Insert(index, uCtrl_EditableBackground_Opt.GetPreview());
+                background.BackgroundList.Insert(index, background_list);
             }
             background.selected_background = ++index;
             Read_EditableBackground_Options(background);
@@ -2144,15 +2257,12 @@ namespace Watch_Face_Editor
             Editable_Background background = (Editable_Background)uCtrl_EditableBackground_Opt._EditableBackground;
             if (background == null) return;
 
-            if (background.BackgroundImageList == null) background.BackgroundImageList = new List<string>();
-            if (background.BackgroundPreviewList == null) background.BackgroundPreviewList = new List<string>();
-            List<string> backgroundImage = background.BackgroundImageList;
-            List<string> previewImage = background.BackgroundPreviewList;
+            if (background.BackgroundList == null) background.BackgroundList = new List<BackgroundList>();
+            List<BackgroundList> background_list = background.BackgroundList;
 
-            if (backgroundImage.Count > index) backgroundImage.RemoveAt(index);
-            if (previewImage.Count > index) previewImage.RemoveAt(index);
+            if (background_list.Count > index) background_list.RemoveAt(index);
             background.selected_background = --index;
-            if (index < 0 && backgroundImage != null && backgroundImage.Count > 0)
+            if (index < 0 && background_list != null && background_list.Count > 0)
                 background.selected_background = 0;
             Read_EditableBackground_Options(background);
 
@@ -2179,8 +2289,8 @@ namespace Watch_Face_Editor
             if (index < 0) return;
             if (Watch_Face == null || Watch_Face.ScreenNormal == null || Watch_Face.ScreenNormal.Background == null ||
                 Watch_Face.ScreenNormal.Background.Editable_Background == null ||
-                Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundPreviewList == null ||
-                index >= Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundPreviewList.Count)
+                Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundList == null ||
+                index >= Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundList.Count)
             {
                 return;
             }
@@ -2196,6 +2306,7 @@ namespace Watch_Face_Editor
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
                         break;
                     case "GTS 3":
+                    case "GTS 4":
                         bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
                         break;
@@ -2215,7 +2326,7 @@ namespace Watch_Face_Editor
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
                 Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false,
-                    false, false, link, false, -1, false);
+                    false, false, link, false, -1, false, 0);
                 if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
 
                 // определяем имя файла для сохранения и сохраняем файл
@@ -2242,7 +2353,7 @@ namespace Watch_Face_Editor
 
                 LoadImage(Path.GetDirectoryName(PathPreview) + @"\");
 
-                Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundPreviewList[index] = fileNameOnly;
+                Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundList[index].preview = fileNameOnly;
                 PreviewView = true;
                 JSON_Modified = true;
                 FormText();
@@ -2251,8 +2362,6 @@ namespace Watch_Face_Editor
                 //ResetHighlightState("");
 
                 bitmap.Dispose();
-                button_CreatePreview.Visible = false;
-                button_RefreshPreview.Visible = true;
 
                 PreviewImage();
             }
@@ -2262,24 +2371,24 @@ namespace Watch_Face_Editor
         {
             if (FileName == null || FullFileDir == null) return;
             if (index < 0) return;
-            if (Watch_Face == null || Watch_Face.ScreenNormal == null || Watch_Face.ScreenNormal.Background == null || 
-                Watch_Face.ScreenNormal.Background.Editable_Background == null || 
-                Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundPreviewList == null)
+            if (Watch_Face == null || Watch_Face.ScreenNormal == null || Watch_Face.ScreenNormal.Background == null ||
+                Watch_Face.ScreenNormal.Background.Editable_Background == null ||
+                Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundList == null) return;
+            if (index >= Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundList.Count) return;
+            if ( Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundList[index].preview == null ||
+                 Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundList[index].preview.Length < 1)
             {
-                if (index < Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundPreviewList.Count)
-                {
-                    uCtrl_EditableBackground_Opt_PreviewAdd(null, null, index); 
-                }
+                uCtrl_EditableBackground_Opt_PreviewAdd(null, null, index);
                 return;
             }
-            if (index < Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundPreviewList.Count &&
-                Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundPreviewList[index].Length > 0)
+            if (index < Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundList.Count &&
+                Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundList[index].preview.Length > 0)
             {
                 string preview = FullFileDir + @"\assets\" + 
-                    Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundPreviewList[index] + ".png";
+                    Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundList[index].preview + ".png";
                 if (!File.Exists(preview))
                 {
-                    Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundPreviewList[index] = "";
+                    Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundList[index].preview = "";
                     uCtrl_EditableBackground_Opt_PreviewAdd(null, null, index);
                     return;
                 }
@@ -2292,6 +2401,7 @@ namespace Watch_Face_Editor
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
                         break;
                     case "GTS 3":
+                    case "GTS 4":
                         bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
                         break;
@@ -2311,7 +2421,7 @@ namespace Watch_Face_Editor
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
                 Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false,
-                    false, false, link, false, -1, false);
+                    false, false, link, false, -1, false, 0);
                 if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
 
                 ;
@@ -2328,6 +2438,7 @@ namespace Watch_Face_Editor
                 LoadImage(Path.GetDirectoryName(preview) + @"\");
                 //HideAllElemenrOptions();
                 //ResetHighlightState("");
+                Read_EditableBackground_Options(Watch_Face.ScreenNormal.Background.Editable_Background);
 
                 PreviewImage();
             }
@@ -2341,12 +2452,10 @@ namespace Watch_Face_Editor
             Editable_Background background = (Editable_Background)uCtrl_EditableBackground_Opt._EditableBackground;
             if (background == null) return;
 
-            if (background.BackgroundImageList == null) background.BackgroundImageList = new List<string>();
-            if (background.BackgroundPreviewList == null) background.BackgroundPreviewList = new List<string>();
-            List<string> backgroundImage = background.BackgroundImageList;
-            List<string> previewImage = background.BackgroundPreviewList;
-            if (backgroundImage == null || previewImage == null) return;
-            if (backgroundImage.Count < index + 1 || previewImage.Count < index + 1) return;
+            if (background.BackgroundList == null) background.BackgroundList = new List<BackgroundList>();
+            List<BackgroundList> background_list = background.BackgroundList;
+            if (background_list == null) return;
+            if (background_list.Count < index + 1) return;
 
             background.fg = uCtrl_EditableBackground_Opt.GetForeground();
 
@@ -2354,8 +2463,292 @@ namespace Watch_Face_Editor
             background.tips_x = (int)uCtrl_EditableBackground_Opt.numericUpDown_tipX.Value;
             background.tips_y = (int)uCtrl_EditableBackground_Opt.numericUpDown_tipY.Value;
 
-            backgroundImage[index] = uCtrl_EditableBackground_Opt.GetImage();
-            previewImage[index] = uCtrl_EditableBackground_Opt.GetPreview();
+            background_list[index].path = uCtrl_EditableBackground_Opt.GetImage();
+            background_list[index].preview = uCtrl_EditableBackground_Opt.GetPreview();
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_EditableTimePointer_Opt_PointersAdd(object sender, EventArgs eventArgs, int index)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            ElementEditablePointers editablePointers = (ElementEditablePointers)uCtrl_EditableTimePointer_Opt._EditableTimePointer;
+            if (editablePointers == null) return;
+
+            if (editablePointers.config == null) editablePointers.config = new List<PointersList>();
+            PointersList pointers_list = new PointersList();
+            pointers_list.hour = new EDITABLE_POINTER();
+            pointers_list.minute = new EDITABLE_POINTER();
+            pointers_list.second = new EDITABLE_POINTER();
+
+            pointers_list.hour.path = uCtrl_EditableTimePointer_Opt.GetHourPointerImage();
+            pointers_list.hour.centerX = (int)uCtrl_EditableTimePointer_Opt.numericUpDown_hourPointer_X.Value;
+            pointers_list.hour.centerY = (int)uCtrl_EditableTimePointer_Opt.numericUpDown_hourPointer_Y.Value;
+            pointers_list.hour.posX = (int)uCtrl_EditableTimePointer_Opt.numericUpDown_hourPointer_offset_X.Value;
+            pointers_list.hour.posY = (int)uCtrl_EditableTimePointer_Opt.numericUpDown_hourPointer_offset_Y.Value;
+
+            pointers_list.minute.path = uCtrl_EditableTimePointer_Opt.GetMinutePointerImage();
+            pointers_list.minute.centerX = (int)uCtrl_EditableTimePointer_Opt.numericUpDown_minutePointer_X.Value;
+            pointers_list.minute.centerY = (int)uCtrl_EditableTimePointer_Opt.numericUpDown_minutePointer_Y.Value;
+            pointers_list.minute.posX = (int)uCtrl_EditableTimePointer_Opt.numericUpDown_minutePointer_offset_X.Value;
+            pointers_list.minute.posY = (int)uCtrl_EditableTimePointer_Opt.numericUpDown_minutePointer_offset_Y.Value;
+
+            pointers_list.second.path = uCtrl_EditableTimePointer_Opt.GetSecondPointerImage();
+            pointers_list.second.centerX = (int)uCtrl_EditableTimePointer_Opt.numericUpDown_secondPointer_X.Value;
+            pointers_list.second.centerY = (int)uCtrl_EditableTimePointer_Opt.numericUpDown_secondPointer_Y.Value;
+            pointers_list.second.posX = (int)uCtrl_EditableTimePointer_Opt.numericUpDown_secondPointer_offset_X.Value;
+            pointers_list.second.posY = (int)uCtrl_EditableTimePointer_Opt.numericUpDown_secondPointer_offset_Y.Value;
+
+            pointers_list.preview = uCtrl_EditableTimePointer_Opt.GetPreview();
+
+            if (editablePointers.config.Count <= index || index < 0)
+            {
+                editablePointers.config.Add(pointers_list);
+            }
+            else
+            {
+                editablePointers.config.Insert(index, pointers_list);
+            }
+            editablePointers.selected_pointers = ++index;
+            Read_EditablePointers_Options(editablePointers);
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_EditableTimePointer_Opt_PointersDel(object sender, EventArgs eventArgs, int index)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            if (index < 0) return;
+            ElementEditablePointers editablePointers = (ElementEditablePointers)uCtrl_EditableTimePointer_Opt._EditableTimePointer;
+            if (editablePointers == null) return;
+
+            if (editablePointers.config == null) editablePointers.config = new List<PointersList>();
+            List<PointersList> pointers_list = editablePointers.config;
+
+            if (pointers_list.Count > index) pointers_list.RemoveAt(index);
+            editablePointers.selected_pointers = --index;
+            if (index < 0 && pointers_list != null && pointers_list.Count > 0)
+                editablePointers.selected_pointers = 0;
+            Read_EditablePointers_Options(editablePointers);
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_EditableTimePointer_Opt_PointersIndexChanged(object sender, EventArgs eventArgs, int index)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            if (index < 0) return;
+            ElementEditablePointers editablePointers = (ElementEditablePointers)uCtrl_EditableTimePointer_Opt._EditableTimePointer;
+            if (editablePointers == null) return;
+            editablePointers.selected_pointers = index;
+
+            PreviewImage();
+            Read_EditablePointers_Options(editablePointers);
+        }
+
+        private void uCtrl_EditableTimePointer_Opt_PreviewAdd(object sender, EventArgs eventArgs, int index)
+        {
+            if (index < 0) return;
+            if (Watch_Face == null || Watch_Face.ElementEditablePointers == null ||
+                Watch_Face.ElementEditablePointers.config == null ||
+                index >= Watch_Face.ElementEditablePointers.config.Count)
+            {
+                return;
+            }
+            if (FileName != null && FullFileDir != null) // проект уже сохранен
+            {
+                // формируем картинку для предпросмотра
+                Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
+                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
+                switch (ProgramSettings.Watch_Model)
+                {
+                    case "GTR 3 Pro":
+                        bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
+                        break;
+                    case "GTS 3":
+                    case "GTS 4":
+                        bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
+                        break;
+                    case "GTR 4":
+                        bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_4.png");
+                        break;
+                    case "Amazfit Band 7":
+                        bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_band_7.png");
+                        break;
+                    case "GTS 4 mini":
+                        bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
+                        break;
+                }
+                Graphics gPanel = Graphics.FromImage(bitmap);
+                Creat_preview_editable_pointers(gPanel, 1.0f, false);
+                if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
+
+                // определяем имя файла для сохранения и сохраняем файл
+                int i = 1;
+                string tempName = "pointer_edit_" + (index + 1).ToString() + "_preview";
+                string NamePreview = tempName + ".png";
+                string PathPreview = FullFileDir + @"\assets\" + NamePreview;
+                while (File.Exists(PathPreview) && i < 10)
+                {
+                    NamePreview = tempName + i.ToString() + ".png";
+                    PathPreview = FullFileDir + @"\assets\" + NamePreview;
+                    i++;
+                    if (i > 9)
+                    {
+                        MessageBox.Show(Properties.FormStrings.Message_Wrong_Preview_Exists,
+                            Properties.FormStrings.Message_Warning_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+                bitmap.Save(PathPreview, ImageFormat.Png);
+                string fileNameOnly = Path.GetFileNameWithoutExtension(PathPreview);
+
+                PreviewView = false;
+
+                LoadImage(Path.GetDirectoryName(PathPreview) + @"\");
+
+                Watch_Face.ElementEditablePointers.config[index].preview = fileNameOnly;
+                PreviewView = true;
+                JSON_Modified = true;
+                FormText();
+                Read_EditablePointers_Options(Watch_Face.ElementEditablePointers);
+                //HideAllElemenrOptions();
+                //ResetHighlightState("");
+
+                bitmap.Dispose();
+
+                PreviewImage();
+            }
+        }
+
+        private void uCtrl_EditableTimePointer_Opt_PreviewRefresh(object sender, EventArgs eventArgs, int index)
+        {
+            if (FileName == null || FullFileDir == null) return;
+            if (index < 0) return;
+            if (Watch_Face == null || Watch_Face.ElementEditablePointers == null ||
+                Watch_Face.ElementEditablePointers.config == null) return;
+            if (index >= Watch_Face.ElementEditablePointers.config.Count) return;
+            if (Watch_Face.ElementEditablePointers.config[index].preview == null ||
+                 Watch_Face.ElementEditablePointers.config[index].preview.Length < 1)
+            {
+                uCtrl_EditableBackground_Opt_PreviewAdd(null, null, index);
+                return;
+            }
+            if (index < Watch_Face.ElementEditablePointers.config.Count &&
+                Watch_Face.ElementEditablePointers.config[index].preview.Length > 0)
+            {
+                string preview = FullFileDir + @"\assets\" +
+                    Watch_Face.ElementEditablePointers.config[index].preview + ".png";
+                if (!File.Exists(preview))
+                {
+                    Watch_Face.ElementEditablePointers.config[index].preview = "";
+                    uCtrl_EditableBackground_Opt_PreviewAdd(null, null, index);
+                    return;
+                }
+                Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
+                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
+                switch (ProgramSettings.Watch_Model)
+                {
+                    case "GTR 3 Pro":
+                        bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
+                        break;
+                    case "GTS 3":
+                    case "GTS 4":
+                        bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
+                        break;
+                    case "GTR 4":
+                        bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_4.png");
+                        break;
+                    case "Amazfit Band 7":
+                        bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_band_7.png");
+                        break;
+                    case "GTS 4 mini":
+                        bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
+                        break;
+                }
+                Graphics gPanel = Graphics.FromImage(bitmap);
+                Creat_preview_editable_pointers(gPanel, 1.0f, false);
+                if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
+
+                ;
+                Image loadedImage = null;
+                using (FileStream stream = new FileStream(preview, FileMode.Open, FileAccess.Read))
+                {
+                    loadedImage = Image.FromStream(stream);
+                }
+                bitmap.Save(preview, ImageFormat.Png);
+
+                bitmap.Dispose();
+                loadedImage.Dispose();
+
+                LoadImage(Path.GetDirectoryName(preview) + @"\");
+                //HideAllElemenrOptions();
+                //ResetHighlightState("");
+                Read_EditablePointers_Options(Watch_Face.ElementEditablePointers);
+
+                PreviewImage();
+            }
+        }
+
+        private void uCtrl_EditableTimePointer_Opt_ValueChanged(object sender, EventArgs eventArgs, int index)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            if (index < 0) return;
+            ElementEditablePointers editablePointers = (ElementEditablePointers)uCtrl_EditableTimePointer_Opt._EditableTimePointer;
+            if (editablePointers == null) return;
+
+            if (editablePointers.config == null) editablePointers.config = new List<PointersList>();
+            List<PointersList> pointers_list = editablePointers.config;
+            if (pointers_list == null) return;
+            if (pointers_list.Count < index + 1) return;
+
+            editablePointers.fg = uCtrl_EditableTimePointer_Opt.GetForeground();
+
+            editablePointers.tips_bg = uCtrl_EditableTimePointer_Opt.GetTip();
+            editablePointers.tips_x = (int)uCtrl_EditableTimePointer_Opt.numericUpDown_tipX.Value;
+            editablePointers.tips_y = (int)uCtrl_EditableTimePointer_Opt.numericUpDown_tipY.Value;
+            
+            pointers_list[index].hour.path = uCtrl_EditableTimePointer_Opt.GetHourPointerImage();
+            pointers_list[index].hour.centerX = (int)uCtrl_EditableTimePointer_Opt.numericUpDown_hourPointer_X.Value;
+            pointers_list[index].hour.centerY = (int)uCtrl_EditableTimePointer_Opt.numericUpDown_hourPointer_Y.Value;
+            pointers_list[index].hour.posX = (int)uCtrl_EditableTimePointer_Opt.numericUpDown_hourPointer_offset_X.Value;
+            pointers_list[index].hour.posY = (int)uCtrl_EditableTimePointer_Opt.numericUpDown_hourPointer_offset_Y.Value;
+
+            pointers_list[index].minute.path = uCtrl_EditableTimePointer_Opt.GetMinutePointerImage();
+            pointers_list[index].minute.centerX = (int)uCtrl_EditableTimePointer_Opt.numericUpDown_minutePointer_X.Value;
+            pointers_list[index].minute.centerY = (int)uCtrl_EditableTimePointer_Opt.numericUpDown_minutePointer_Y.Value;
+            pointers_list[index].minute.posX = (int)uCtrl_EditableTimePointer_Opt.numericUpDown_minutePointer_offset_X.Value;
+            pointers_list[index].minute.posY = (int)uCtrl_EditableTimePointer_Opt.numericUpDown_minutePointer_offset_Y.Value;
+
+            pointers_list[index].second.path = uCtrl_EditableTimePointer_Opt.GetSecondPointerImage();
+            pointers_list[index].second.centerX = (int)uCtrl_EditableTimePointer_Opt.numericUpDown_secondPointer_X.Value;
+            pointers_list[index].second.centerY = (int)uCtrl_EditableTimePointer_Opt.numericUpDown_secondPointer_Y.Value;
+            pointers_list[index].second.posX = (int)uCtrl_EditableTimePointer_Opt.numericUpDown_secondPointer_offset_X.Value;
+            pointers_list[index].second.posY = (int)uCtrl_EditableTimePointer_Opt.numericUpDown_secondPointer_offset_Y.Value;
+
+            pointers_list[index].preview = uCtrl_EditableTimePointer_Opt.GetPreview();
+
+            editablePointers.AOD_show = uCtrl_EditableTimePointer_Opt.checkBox_secondInAOD.Checked;
 
             JSON_Modified = true;
             PreviewImage();

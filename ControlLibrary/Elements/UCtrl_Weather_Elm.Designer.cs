@@ -363,7 +363,7 @@ namespace ControlLibrary
             // 
             // toolTip_Weather
             // 
-            this.toolTip_Weather.ToolTipTitle = "Изображения погоды";
+            this.toolTip_Weather.ToolTipTitle = "Weather images";
             // 
             // UCtrl_Weather_Elm
             // 

@@ -192,9 +192,6 @@
   <data name="label_EditableBackground_Hint.Size" type="System.Drawing.Size, System.Drawing">
     <value>249, 28</value>
   </data>
-  <data name="&gt;&gt;radioButton_Background_color.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;label_ID.Name" xml:space="preserve">
     <value>label_ID</value>
   </data>
@@ -252,9 +249,6 @@
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
   </data>
-  <data name="&gt;&gt;comboBox_Background_image.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
   <data name="comboBox_Background_color.IntegralHeight" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -278,6 +272,9 @@
   </data>
   <data name="comboBox_Background_color.TabIndex" type="System.Int32, mscorlib">
     <value>59</value>
+  </data>
+  <data name="radioButton_EditableBackground.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="radioButton_EditableBackground.Size" type="System.Drawing.Size, System.Drawing">
     <value>131, 17</value>
@@ -309,9 +306,6 @@
   <data name="&gt;&gt;radioButton_Background_image.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="radioButton_EditableBackground.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 123</value>
-  </data>
   <data name="&gt;&gt;label1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -324,14 +318,14 @@
   <data name="label_EditableBackground_Hint.TabIndex" type="System.Int32, mscorlib">
     <value>68</value>
   </data>
-  <data name="radioButton_EditableBackground.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
   </data>
   <data name="&gt;&gt;label_EditableBackground_Hint.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Preview</value>
+  <data name="&gt;&gt;label_ID.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="&gt;&gt;button_GenerateID.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -339,11 +333,17 @@
   <data name="comboBox_Preview_image.MaxDropDownItems" type="System.Int32, mscorlib">
     <value>25</value>
   </data>
+  <data name="radioButton_Background_color.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 63</value>
+  </data>
   <data name="button_GenerateID.TabIndex" type="System.Int32, mscorlib">
     <value>64</value>
   </data>
   <data name="radioButton_Background_color.Text" xml:space="preserve">
     <value>Цвет</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Preview</value>
   </data>
   <data name="comboBox_Background_image.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 21</value>
@@ -387,8 +387,8 @@
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;label_ID.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;radioButton_Background_color.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="comboBox_Background_color.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 21</value>
@@ -405,11 +405,11 @@
   <data name="&gt;&gt;radioButton_EditableBackground.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="radioButton_Background_color.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 63</value>
+  <data name="radioButton_EditableBackground.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 123</value>
   </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
+  <data name="&gt;&gt;comboBox_Background_image.ZOrder" xml:space="preserve">
+    <value>9</value>
   </data>
   <data name="button_GenerateID.Size" type="System.Drawing.Size, System.Drawing">
     <value>144, 23</value>

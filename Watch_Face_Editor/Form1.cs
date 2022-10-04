@@ -14,11 +14,13 @@ using System.Globalization;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace Watch_Face_Editor
@@ -240,6 +242,9 @@ namespace Watch_Face_Editor
                 case "GTS 4 mini":
                     textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_4_mini;
                     break;
+                case "GTS 4":
+                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_3;
+                    break;
             }
 
             textBox_PreviewStates_Path.Text = ProgramSettings.PreviewStates_Path;
@@ -305,6 +310,9 @@ namespace Watch_Face_Editor
                 case "Chinese/简体中文":
                     richTextBox_Tips.Rtf = Properties.Resources.tips_zh;
                     break;
+                case "Español":
+                    richTextBox_Tips.Rtf = Properties.Resources.tips_es;
+                    break;
                 default:
                     richTextBox_Tips.Rtf = Properties.Resources.tips_en;
                     break;
@@ -365,6 +373,7 @@ namespace Watch_Face_Editor
             uCtrl_Animation_Frame_Opt.AutoSize = true;
             uCtrl_Animation_Motion_Opt.AutoSize = true;
             uCtrl_Animation_Rotate_Opt.AutoSize = true;
+            uCtrl_EditableTimePointer_Opt.AutoSize = true;
 
             button_CreatePreview.Location = button_RefreshPreview.Location;
 
@@ -507,6 +516,7 @@ namespace Watch_Face_Editor
                 if (comboBox_watch_model.Text == "GTR 4") ProgramSettings.WatchSkin_GTR_4 = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "Amazfit Band 7") ProgramSettings.WatchSkin_Amazfit_Band_7 = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "GTS 4 mini") ProgramSettings.WatchSkin_GTS_4_mini = textBox_WatchSkin_Path.Text;
+                if (comboBox_watch_model.Text == "GTS 4") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
             }
 
             string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
@@ -581,6 +591,9 @@ namespace Watch_Face_Editor
                     break;
                 case "GTS 4 mini":
                     FormName = "GTS 4 mini watch face editor";
+                    break;
+                case "GTS 4":
+                    FormName = "GTS 4 watch face editor";
                     break;
                 default:
                     FormName = "GTR 3 watch face editor";
@@ -688,6 +701,9 @@ namespace Watch_Face_Editor
                         break;
                     case "GTS 4 mini":
                         ProgramSettings.WatchSkin_GTS_4_mini = textBox_WatchSkin_Path.Text;
+                        break;
+                    case "GTS 4":
+                        ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
                         break;
                 }
 
@@ -1079,6 +1095,7 @@ namespace Watch_Face_Editor
             //if (e.Data.GetDataPresent(typeof(UCtrl_Background_Elm))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(UCtrl_DigitalTime_Elm))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(UCtrl_AnalogTime_Elm))) typeReturn = false;
+            //if (e.Data.GetDataPresent(typeof(UCtrl_EditableTimePointer_Elm))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(UCtrl_DateDay_Elm))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(UCtrl_DateMonth_Elm))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(UCtrl_DateYear_Elm))) typeReturn = false;
@@ -1108,6 +1125,9 @@ namespace Watch_Face_Editor
             if (e.Data.GetDataPresent(typeof(UCtrl_Wind_Elm))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(UCtrl_Moon_Elm))) typeReturn = false;
             if (typeReturn) return;
+            int dY = tableLayoutPanel_ElemetsWatchFace.PointToScreen(Point.Empty).Y;
+            int posY = e.Y - dY;
+            if (posY < 5) return;
 
             e.Effect = e.AllowedEffect;
             string[] objectName = e.Data.GetFormats();
@@ -1145,7 +1165,15 @@ namespace Watch_Face_Editor
                         draggedUCtrl_Elm = (UCtrl_AnalogTime_Elm)e.Data.GetData(typeof(UCtrl_AnalogTime_Elm));
                         if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
                         break;
-                        
+
+                    case "ControlLibrary.UCtrl_EditableTimePointer_Elm":
+                        ElementEditablePointers editablePointers =
+                            (ElementEditablePointers)Elements.Find(e1 => e1.GetType().Name == "ElementEditablePointers");
+                        index = Elements.IndexOf(editablePointers);
+                        draggedUCtrl_Elm = (UCtrl_EditableTimePointer_Elm)e.Data.GetData(typeof(UCtrl_EditableTimePointer_Elm));
+                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                        break;
+
                     case "ControlLibrary.UCtrl_DateDay_Elm":
                         ElementDateDay dateDay =
                             (ElementDateDay)Elements.Find(e1 => e1.GetType().Name == "ElementDateDay");
@@ -1363,6 +1391,7 @@ namespace Watch_Face_Editor
                 {
                     if (control.Name == "panel_UC_Background") return;
                     if (control.Name == "panel_UC_Shortcuts") return;
+                    if (control.Name == "panel_UC_EditableTimePointer") return;
                     var pos = tableLayoutPanel_ElemetsWatchFace.GetPositionFromControl(control);
                     var posOld = tableLayoutPanel_ElemetsWatchFace.GetPositionFromControl(draggedPanel);
                     int indexNew = tableLayoutPanel_ElemetsWatchFace.RowCount - 2 - pos.Row;
@@ -1477,6 +1506,9 @@ namespace Watch_Face_Editor
                 case "RotateAnimation":
                     uCtrl_Animation_Rotate_Opt.Visible = true;
                     break;
+                case "EditableTimePointer":
+                    uCtrl_EditableTimePointer_Opt.Visible = true;
+                    break;
             }
         }
 
@@ -1500,6 +1532,7 @@ namespace Watch_Face_Editor
             uCtrl_Animation_Frame_Opt.Visible = false;
             uCtrl_Animation_Motion_Opt.Visible = false;
             uCtrl_Animation_Rotate_Opt.Visible = false;
+            uCtrl_EditableTimePointer_Opt.Visible = false;
         }
 
         private void ResetHighlightState(string selectElementName)
@@ -1507,6 +1540,7 @@ namespace Watch_Face_Editor
             if (selectElementName != "Background") uCtrl_Background_Elm.ResetHighlightState();
             if (selectElementName != "DigitalTime") uCtrl_DigitalTime_Elm.ResetHighlightState();
             if (selectElementName != "AnalogTime") uCtrl_AnalogTime_Elm.ResetHighlightState();
+            if (selectElementName != "EditablePointers") uCtrl_EditableTimePointer_Elm.ResetHighlightState();
             if (selectElementName != "DateDay") uCtrl_DateDay_Elm.ResetHighlightState();
             if (selectElementName != "DateMonth") uCtrl_DateMonth_Elm.ResetHighlightState();
             if (selectElementName != "DateYear") uCtrl_DateYear_Elm.ResetHighlightState();
@@ -1563,6 +1597,7 @@ namespace Watch_Face_Editor
             uCtrl_Background_Elm.SettingsClear();
             uCtrl_DigitalTime_Elm.SettingsClear();
             uCtrl_AnalogTime_Elm.SettingsClear();
+            uCtrl_EditableTimePointer_Elm.SettingsClear();
 
             uCtrl_DateDay_Elm.SettingsClear();
             uCtrl_DateMonth_Elm.SettingsClear();
@@ -1771,6 +1806,25 @@ namespace Watch_Face_Editor
             }
         }
 
+        private void uCtrl_EditableTimePointer_Elm_SelectChanged(object sender, EventArgs eventArgs)
+        {
+            ResetHighlightState("EditablePointers");
+
+            ElementEditablePointers editablePointers = null;
+            if (Watch_Face != null && Watch_Face.ElementEditablePointers != null) editablePointers = Watch_Face.ElementEditablePointers;
+            
+            if (editablePointers != null)
+            {
+                //hmUI_widget_IMG_NUMBER img_number = null;
+
+                //if (distance.Number == null) distance.Number = new hmUI_widget_IMG_NUMBER();
+                //img_number = distance.Number;
+                Read_EditablePointers_Options(editablePointers);
+                ShowElemenrOptions("EditableTimePointer");
+
+            }
+        }
+
         private void button_JSON_Click(object sender, EventArgs e)
         {
             Logger.WriteLine("* JSON");
@@ -1884,6 +1938,9 @@ namespace Watch_Face_Editor
                     case "GTS4_mini":
                         comboBox_watch_model.Text = "GTS 4 mini";
                         break;
+                    case "GTS4":
+                        comboBox_watch_model.Text = "GTS 4";
+                        break;
                     default:
                         comboBox_watch_model.Text = "GTR 3";
                         break;
@@ -1985,6 +2042,7 @@ namespace Watch_Face_Editor
             uCtrl_Linear_Scale_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
             uCtrl_Icon_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
             uCtrl_Shortcut_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
+            uCtrl_EditableTimePointer_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
             //uCtrl_Animation_Frame_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
             //uCtrl_Animation_Motion_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
             //uCtrl_Animation_Rotate_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
@@ -2179,6 +2237,14 @@ namespace Watch_Face_Editor
                         Watch_Face.ScreenNormal.Background.BackgroundColor.h = 384;
                         Watch_Face.ScreenNormal.Background.BackgroundColor.w = 336;
                         break;
+                    case "GTS 4":
+                        Watch_Face.WatchFace_Info.DeviceName = "GTS4";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
+                        break;
                 }
 
                 string JSON_String = JsonConvert.SerializeObject(Watch_Face, Formatting.Indented, new JsonSerializerSettings
@@ -2312,6 +2378,14 @@ namespace Watch_Face_Editor
                         Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
                         Watch_Face.ScreenNormal.Background.BackgroundColor.h = 384;
                         Watch_Face.ScreenNormal.Background.BackgroundColor.w = 336;
+                        break;
+                    case "GTS 4":
+                        Watch_Face.WatchFace_Info.DeviceName = "GTS4";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
                         break;
                 }
 
@@ -2455,6 +2529,7 @@ namespace Watch_Face_Editor
                     bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
                     break;
                 case "GTS 3":
+                case "GTS 4":
                     bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
                     break;
                 case "GTR 4":
@@ -2471,13 +2546,22 @@ namespace Watch_Face_Editor
             #endregion
 
             Logger.WriteLine("Preview_screen");
-            bool editMode = false;
-            if(uCtrl_EditableBackground_Opt.Visible && uCtrl_EditableBackground_Opt.checkBox_edit_mode.Checked) editMode = true;
+            bool showEeditMode = false;
+            int edit_mode = 0;
+            if (uCtrl_EditableBackground_Opt.Visible && uCtrl_EditableBackground_Opt.checkBox_edit_mode.Checked) { 
+                showEeditMode = true;
+                edit_mode = 1;
+            }
+            if (uCtrl_EditableTimePointer_Opt.Visible && uCtrl_EditableTimePointer_Opt.checkBox_edit_mode.Checked)
+            {
+                showEeditMode = true;
+                edit_mode = 3;
+            }
             int link = radioButton_ScreenNormal.Checked ? 0 : 1;
             Preview_screen(gPanel, scale, checkBox_crop.Checked, checkBox_WebW.Checked, checkBox_WebB.Checked,
                 checkBox_border.Checked, checkBox_Show_Shortcuts.Checked, checkBox_Shortcuts_Area.Checked,
                 checkBox_Shortcuts_Border.Checked, checkBox_Shortcuts_Image.Checked, true, checkBox_CircleScaleImage.Checked,
-                checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link, false, -1, editMode);
+                checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link, false, -1, showEeditMode, edit_mode);
             pictureBox_Preview.BackgroundImage = bitmap;
             gPanel.Dispose();
 
@@ -2490,7 +2574,8 @@ namespace Watch_Face_Editor
 
         private void pictureBox_Preview_Click(object sender, EventArgs e)
         {
-            bool editMode = false;
+            bool showEeditMode = false;
+            int edit_mode = 0;
             if ((formPreview == null) || (!formPreview.Visible))
             {
                 formPreview = new Form_Preview(currentDPI);
@@ -2545,6 +2630,7 @@ namespace Watch_Face_Editor
                             bitmapPreviewResize = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
                             break;
                         case "GTS 3":
+                        case "GTS 4":
                             bitmapPreviewResize = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
                             break;
                         case "GTR 4":
@@ -2561,12 +2647,16 @@ namespace Watch_Face_Editor
                     #endregion
 
                     int link_aod = radioButton_ScreenNormal.Checked ? 0 : 1;
-                    if (uCtrl_EditableBackground_Opt.Visible && uCtrl_EditableBackground_Opt.checkBox_edit_mode.Checked) editMode = true;
+                    if (uCtrl_EditableBackground_Opt.Visible && uCtrl_EditableBackground_Opt.checkBox_edit_mode.Checked)
+                    {
+                        showEeditMode = true;
+                        edit_mode = 1;
+                    }
                     Preview_screen(gPanelPreviewResize, 1, checkBox_crop.Checked,
                         checkBox_WebW.Checked, checkBox_WebB.Checked, checkBox_border.Checked,
                         checkBox_Show_Shortcuts.Checked, checkBox_Shortcuts_Area.Checked, checkBox_Shortcuts_Border.Checked,
                         checkBox_Shortcuts_Image.Checked, true,checkBox_CircleScaleImage.Checked, 
-                        checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link_aod, false, -1, editMode);
+                        checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link_aod, false, -1, showEeditMode, edit_mode);
                     formPreview.pictureBox_Preview.BackgroundImage = bitmapPreviewResize;
                     gPanelPreviewResize.Dispose();
                 };
@@ -2604,6 +2694,7 @@ namespace Watch_Face_Editor
                     bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
                     break;
                 case "GTS 3":
+                case "GTS 4":
                     bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
                     break;
                 case "GTR 4":
@@ -2620,11 +2711,17 @@ namespace Watch_Face_Editor
             #endregion
 
             int link = radioButton_ScreenNormal.Checked ? 0 : 1;
-            if (uCtrl_EditableBackground_Opt.Visible && uCtrl_EditableBackground_Opt.checkBox_edit_mode.Checked) editMode = true;
+            showEeditMode = false;
+            edit_mode = 0;
+            if (uCtrl_EditableBackground_Opt.Visible && uCtrl_EditableBackground_Opt.checkBox_edit_mode.Checked)
+            {
+                showEeditMode = true;
+                edit_mode = 1;
+            }
             Preview_screen(gPanel, scale, checkBox_crop.Checked, checkBox_WebW.Checked, checkBox_WebB.Checked,
                 checkBox_border.Checked, checkBox_Show_Shortcuts.Checked, checkBox_Shortcuts_Area.Checked,
                 checkBox_Shortcuts_Border.Checked, checkBox_Shortcuts_Image.Checked, true, checkBox_CircleScaleImage.Checked,
-                checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link, false, -1, editMode);
+                checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link, false, -1, showEeditMode, edit_mode);
             formPreview.pictureBox_Preview.BackgroundImage = bitmap;
             gPanel.Dispose();
 
@@ -2705,6 +2802,17 @@ namespace Watch_Face_Editor
             if (comboBox_AddTime.SelectedIndex == 1)
             {
                 AddDigitalTime();
+                ShowElemetsWatchFace();
+                JSON_Modified = true;
+                FormText();
+
+                //panel_WatchfaceElements.AutoScrollPosition = new Point(
+                //    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                //    panel_WatchfaceElements.VerticalScroll.Maximum);
+            }
+            if (comboBox_AddTime.SelectedIndex == 2)
+            {
+                AddEditableTimePointer();
                 ShowElemetsWatchFace();
                 JSON_Modified = true;
                 FormText();
@@ -3101,6 +3209,7 @@ namespace Watch_Face_Editor
                         Watch_Face.ScreenNormal.Background.BackgroundColor.w = 480;
                         break;
                     case "GTS 3":
+                    case "GTS 4":
                         Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
                         Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
                         Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
@@ -3156,6 +3265,7 @@ namespace Watch_Face_Editor
                         Watch_Face.ScreenAOD.Background.BackgroundColor.w = 480;
                         break;
                     case "GTS 3":
+                    case "GTS 4":
                         Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
                         Watch_Face.ScreenAOD.Background.BackgroundColor.x = 0;
                         Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
@@ -3224,7 +3334,7 @@ namespace Watch_Face_Editor
             uCtrl_DigitalTime_Elm.SettingsClear();
         }
 
-        /// <summary>Добавляем аналогового  время в циферблат</summary>
+        /// <summary>Добавляем аналогового время в циферблат</summary>
         private void AddAnalogTime()
         {
             if (!PreviewView) return;
@@ -3258,6 +3368,45 @@ namespace Watch_Face_Editor
             }
             //if (!exists) Elements.Insert(0, analogTime);
             uCtrl_AnalogTime_Elm.SettingsClear();
+        }
+
+        /// <summary>Добавляем редактируемые стрелки</summary>
+        private void AddEditableTimePointer()
+        {
+            if (!PreviewView) return;
+            List<object> Elements = new List<object>();
+            if (Watch_Face == null) Watch_Face = new WATCH_FACE();
+            /*if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face.ScreenNormal == null) Watch_Face.ScreenNormal = new ScreenNormal();
+                if (Watch_Face.ScreenNormal.Elements == null) Watch_Face.ScreenNormal.Elements = new List<object>();
+                Elements = Watch_Face.ScreenNormal.Elements;
+            }
+            else
+            {
+                return;
+                //if (Watch_Face.ScreenAOD == null) Watch_Face.ScreenAOD = new ScreenAOD();
+                //if (Watch_Face.ScreenAOD.Elements == null) Watch_Face.ScreenAOD.Elements = new List<object>();
+                //Elements = Watch_Face.ScreenAOD.Elements;
+
+                //if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                //    Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
+            }
+
+            ElementEditablePointers editablePointers = new ElementEditablePointers();
+            editablePointers.visible = true;
+            //digitalTime.position = Elements.Count;
+            bool exists = Elements.Exists(e => e.GetType().Name == "ElementEditablePointers"); // проверяем что такого элемента нет
+            bool existsShortcuts = Elements.Exists(e => e.GetType().Name == "ElementShortcuts"); // проверяем что нет ярлыков
+            if (!exists)
+            {
+                if (!existsShortcuts) Elements.Add(editablePointers);
+                else Elements.Insert(Elements.Count - 1, editablePointers);
+            }
+            //if (!exists) Elements.Insert(0, analogTime);*/
+            if (Watch_Face.ElementEditablePointers == null) Watch_Face.ElementEditablePointers = new ElementEditablePointers();
+            Watch_Face.ElementEditablePointers.visible = true;
+            uCtrl_EditableTimePointer_Opt.SettingsClear();
         }
 
         /// <summary>Добавляем дату в циферблат</summary>
@@ -4056,6 +4205,8 @@ namespace Watch_Face_Editor
             uCtrl_Background_Elm.Visible = false;
             uCtrl_DigitalTime_Elm.Visible = false;
             uCtrl_AnalogTime_Elm.Visible = false;
+            uCtrl_EditableTimePointer_Elm.Visible = false;
+
             uCtrl_DateDay_Elm.Visible = false;
             uCtrl_DateMonth_Elm.Visible = false;
             uCtrl_DateYear_Elm.Visible = false;
@@ -4203,6 +4354,17 @@ namespace Watch_Face_Editor
                             //SetElementPositionInGUI(type, i + 1);
                             break;
                         #endregion
+
+                        /*#region ElementEditablePointers
+                        case "ElementEditablePointers":
+                            ElementEditablePointers EditablePointers = (ElementEditablePointers)element;
+                            uCtrl_EditableTimePointer_Elm.SetVisibilityElementStatus(EditablePointers.visible);
+
+                            uCtrl_EditableTimePointer_Elm.Visible = true;
+                            SetElementPositionInGUI(type, count - i - 2);
+                            //SetElementPositionInGUI(type, i + 1);
+                            break;
+                        #endregion*/
 
                         #region ElementDateDay
                         case "ElementDateDay":
@@ -5169,6 +5331,18 @@ namespace Watch_Face_Editor
                     }
                 }
             }
+
+
+            if (Watch_Face.ElementEditablePointers != null)
+            {
+                ElementEditablePointers EditablePointers = Watch_Face.ElementEditablePointers;
+                uCtrl_EditableTimePointer_Elm.SetVisibilityElementStatus(EditablePointers.visible);
+
+                uCtrl_EditableTimePointer_Elm.Visible = true;
+                SetElementPositionInGUI(EditablePointers.GetType().Name, count - elements.Count - 2);
+                //SetElementPositionInGUI(type, i + 1); 
+            }
+            
             PreviewView = true;
         }
 
@@ -5184,6 +5358,9 @@ namespace Watch_Face_Editor
                     break;
                 case "ElementDigitalTime":
                     panel = panel_UC_DigitalTime;
+                    break;
+                case "ElementEditablePointers":
+                    panel = panel_UC_EditableTimePointer;
                     break;
                 case "ElementDateDay":
                     panel = panel_UC_DateDay;
@@ -5349,6 +5526,7 @@ namespace Watch_Face_Editor
                 if (comboBox_watch_model.Text == "GTR 4") ProgramSettings.WatchSkin_GTR_4 = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "Amazfit Band 7") ProgramSettings.WatchSkin_Amazfit_Band_7 = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "GTS 4 mini") ProgramSettings.WatchSkin_GTS_4_mini = textBox_WatchSkin_Path.Text;
+                if (comboBox_watch_model.Text == "GTS 4") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
             }
 
             string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
@@ -5408,6 +5586,7 @@ namespace Watch_Face_Editor
                 if (comboBox_watch_model.Text == "GTR 4") ProgramSettings.WatchSkin_GTR_4 = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "Amazfit Band 7") ProgramSettings.WatchSkin_Amazfit_Band_7 = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "GTS 4 mini") ProgramSettings.WatchSkin_GTS_4_mini = textBox_WatchSkin_Path.Text;
+                if (comboBox_watch_model.Text == "GTS 4") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
             }
 
             string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
@@ -5625,6 +5804,9 @@ namespace Watch_Face_Editor
                 case "UCtrl_AnalogTime_Elm":
                     objectName = "ElementAnalogTime";
                     break;
+                //case "UCtrl_EditableTimePointer_Elm":
+                //    objectName = "ElementEditablePointers";
+                    //break;
                 case "UCtrl_DateDay_Elm":
                     objectName = "ElementDateDay";
                     break;
@@ -5738,6 +5920,22 @@ namespace Watch_Face_Editor
                 PreviewImage();
                 FormText(); 
             }
+        }
+
+        private void uCtrl_EditableTimePointer_Elm_DelElement(object sender, EventArgs eventArgs)
+        {
+            if (Watch_Face != null && Watch_Face.ElementEditablePointers != null)
+            {
+                Watch_Face.ElementEditablePointers = null;
+
+                PreviewView = false;
+                ShowElemetsWatchFace();
+                PreviewView = true;
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
         }
 
         private FileInfo[] FileInfoSort(FileInfo[] fileInfo)
@@ -6485,6 +6683,7 @@ namespace Watch_Face_Editor
                     pictureBox_Preview.Size = new Size((int)(230 * currentDPI), (int)(230 * currentDPI));
                     break;
                 case "GTS 3":
+                case "GTS 4":
                     pictureBox_Preview.Size = new Size((int)(198 * currentDPI), (int)(228 * currentDPI));
                     break;
                 case "GTR 4":
@@ -6755,6 +6954,40 @@ namespace Watch_Face_Editor
                         }
                     }
                     break;
+                case "GTS 4":
+                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_3;
+
+                    if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
+                    Watch_Face.WatchFace_Info.DeviceName = "GTS4";
+
+                    if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
+                    {
+                        if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
+                        {
+                            Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
+                            Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
+                        }
+                        if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
+                        {
+                            Watch_Face.ScreenNormal.Background.BackgroundImage.w = 390;
+                            Watch_Face.ScreenNormal.Background.BackgroundImage.h = 450;
+                        }
+                    }
+
+                    if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
+                    {
+                        if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
+                        {
+                            Watch_Face.ScreenAOD.Background.BackgroundColor.w = 390;
+                            Watch_Face.ScreenAOD.Background.BackgroundColor.h = 450;
+                        }
+                        if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
+                        {
+                            Watch_Face.ScreenAOD.Background.BackgroundImage.w = 390;
+                            Watch_Face.ScreenAOD.Background.BackgroundImage.h = 450;
+                        }
+                    }
+                    break;
             }
 
             string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
@@ -6785,6 +7018,7 @@ namespace Watch_Face_Editor
                 switch (ProgramSettings.Watch_Model)
                 {
                     case "GTR 3":
+                    case "T-Rex 2":
                         background.BackgroundColor.h = 454;
                         background.BackgroundColor.w = 454;
                         break;
@@ -6793,12 +7027,9 @@ namespace Watch_Face_Editor
                         background.BackgroundColor.w = 480;
                         break;
                     case "GTS 3":
+                    case "GTS 4":
                         background.BackgroundColor.h = 450;
                         background.BackgroundColor.w = 390;
-                        break;
-                    case "T-Rex 2":
-                        background.BackgroundColor.h = 454;
-                        background.BackgroundColor.w = 454;
                         break;
                     case "GTR 4":
                         background.BackgroundColor.h = 466;
@@ -6819,6 +7050,7 @@ namespace Watch_Face_Editor
                 switch (ProgramSettings.Watch_Model)
                 {
                     case "GTR 3":
+                    case "T-Rex 2":
                         background.BackgroundImage.h = 454;
                         background.BackgroundImage.w = 454;
                         break;
@@ -6827,12 +7059,9 @@ namespace Watch_Face_Editor
                         background.BackgroundImage.w = 480;
                         break;
                     case "GTS 3":
+                    case "GTS 4":
                         background.BackgroundImage.h = 450;
                         background.BackgroundImage.w = 390;
-                        break;
-                    case "T-Rex 2":
-                        background.BackgroundImage.h = 454;
-                        background.BackgroundImage.w = 454;
                         break;
                     case "GTR 4":
                         background.BackgroundImage.h = 466;
@@ -7120,6 +7349,7 @@ namespace Watch_Face_Editor
                         PreviewHeight = 324;
                         break;
                     case "GTS 3":
+                    case "GTS 4":
                         bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
                         PreviewHeight = 306;
@@ -7143,7 +7373,7 @@ namespace Watch_Face_Editor
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
                 Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false, 
-                    false, false, link, false, -1, false);
+                    false, false, link, false, -1, false, 0);
                 if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
 
 ;
@@ -7189,6 +7419,7 @@ namespace Watch_Face_Editor
                         PreviewHeight = 324;
                         break;
                     case "GTS 3":
+                    case "GTS 4":
                         bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
                         PreviewHeight = 306;
@@ -7212,7 +7443,7 @@ namespace Watch_Face_Editor
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
                 Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false, 
-                    false, false, link, false, -1, false);
+                    false, false, link, false, -1, false, 0);
                 if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
 
                 float scale = (float)PreviewHeight / bitmap.Height;
@@ -7454,6 +7685,8 @@ namespace Watch_Face_Editor
                                     if (Watch_Face.ScreenNormal.Background.BackgroundImage != null &&
                                         Watch_Face.ScreenNormal.Background.BackgroundImage.w != null)
                                         width = (int)Watch_Face.ScreenNormal.Background.BackgroundImage.w;
+                                    if (Watch_Face.ScreenNormal.Background.Editable_Background != null)
+                                        width = Watch_Face.ScreenNormal.Background.Editable_Background.w;
 
                                     if (Watch_Face.ScreenNormal.Background.Editable_Background != null &&
                                         Watch_Face.ScreenNormal.Background.Editable_Background.AOD_show)
@@ -7527,10 +7760,15 @@ namespace Watch_Face_Editor
                                                     background.BackgroundColor.w = 336;
                                                     Watch_Face.WatchFace_Info.DeviceName = "GTS4_mini";
                                                     break;
+                                                //case "GTS 4":
+                                                //    background.BackgroundColor.h = 450;
+                                                //    background.BackgroundColor.w = 390;
+                                                //    Watch_Face.WatchFace_Info.DeviceName = "GTS4";
+                                                //    break;
                                                 default:
                                                     background.BackgroundColor.h = 454;
                                                     background.BackgroundColor.w = 454;
-                                                    Watch_Face.WatchFace_Info.DeviceName = "GTR3";
+                                                    Watch_Face.WatchFace_Info.DeviceName = "GTR4";
                                                     break;
                                             }
                                             background.BackgroundImage = null;
@@ -7539,8 +7777,8 @@ namespace Watch_Face_Editor
                                         else
                                         {
                                             if(background.Editable_Background != null && 
-                                                background.Editable_Background.BackgroundImageList == null &&
-                                                background.Editable_Background.BackgroundImageList.Count > 0)
+                                                background.Editable_Background.BackgroundList == null &&
+                                                background.Editable_Background.BackgroundList.Count > 0)
                                             {
                                                 int h = 454;
                                                 int w = 454;
@@ -7576,6 +7814,11 @@ namespace Watch_Face_Editor
                                                         w = 336;
                                                         Watch_Face.WatchFace_Info.DeviceName = "GTS4_mini";
                                                         break;
+                                                    //case "GTS 4":
+                                                    //    h = 450;
+                                                    //    w = 390;
+                                                    //    Watch_Face.WatchFace_Info.DeviceName = "GTS4";
+                                                    //    break;
                                                     default:
                                                         h = 454;
                                                         w = 454;
@@ -7618,6 +7861,11 @@ namespace Watch_Face_Editor
                                                         background.BackgroundImage.h = 384;
                                                         background.BackgroundImage.w = 336;
                                                         Watch_Face.WatchFace_Info.DeviceName = "GTS4_mini";
+                                                        break;
+                                                    case "GTS 4":
+                                                        background.BackgroundImage.h = 450;
+                                                        background.BackgroundImage.w = 390;
+                                                        Watch_Face.WatchFace_Info.DeviceName = "GTS4";
                                                         break;
                                                     default:
                                                         background.BackgroundImage.h = 454;
@@ -7673,6 +7921,11 @@ namespace Watch_Face_Editor
                                             backgroundEmpty.BackgroundColor.h = 384;
                                             backgroundEmpty.BackgroundColor.w = 336;
                                             Watch_Face.WatchFace_Info.DeviceName = "GTS4_mini";
+                                            break;
+                                        case "GTS 4":
+                                            backgroundEmpty.BackgroundColor.h = 450;
+                                            backgroundEmpty.BackgroundColor.w = 390;
+                                            Watch_Face.WatchFace_Info.DeviceName = "GTS4";
                                             break;
                                         default:
                                             backgroundEmpty.BackgroundColor.h = 454;
@@ -7989,6 +8242,21 @@ namespace Watch_Face_Editor
             if (analogTime != null)
             {
                 analogTime.visible = visible;
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_EditableTimePointer_Elm_VisibleElementChanged(object sender, EventArgs eventArgs, bool visible)
+        {
+            ElementEditablePointers editablePointers = null;
+            if (Watch_Face != null && Watch_Face.ElementEditablePointers != null) editablePointers = Watch_Face.ElementEditablePointers;
+            
+            if (editablePointers != null)
+            {
+                editablePointers.visible = visible;
             }
 
             JSON_Modified = true;
@@ -10129,7 +10397,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Wind_Elm.checkBox_Number.Checked)
                         {
                             img_number = wind.Number;
-                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, false);
                             ShowElemenrOptions("Text");
                         }
                         else HideAllElemenrOptions();
@@ -13814,6 +14082,7 @@ namespace Watch_Face_Editor
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
                         break;
                     case "GTS 3":
+                    case "GTS 4":
                         bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
                         break;
@@ -13833,7 +14102,7 @@ namespace Watch_Face_Editor
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
                 Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false, 
-                    false, false, link, false, -1, false);
+                    false, false, link, false, -1, false, 0);
                 if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
                 else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
                 bitmap.Save(saveFileDialog.FileName, ImageFormat.Png);
@@ -13862,6 +14131,7 @@ namespace Watch_Face_Editor
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
                         break;
                     case "GTS 3":
+                    case "GTS 4":
                         bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
                         break;
@@ -13987,7 +14257,7 @@ namespace Watch_Face_Editor
                             //int link = radioButton_ScreenNormal.Checked ? 0 : 1;
                             int link = 0;
                             Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true,
-                                false, false, false, link, false, -1, false);
+                                false, false, false, link, false, -1, false, 0);
                             //if (checkBox_crop.Checked) {
                             //    bitmap = ApplyMask(bitmap, mask);
                             //    gPanel = Graphics.FromImage(bitmap);
@@ -14009,7 +14279,7 @@ namespace Watch_Face_Editor
                     bool exists = false;
                     if (Watch_Face != null && Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Elements != null) 
                     exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementShortcuts"); // проверяем что такого элемента нет
-                    Logger.WriteLine("SaveGIF_AOD");
+                    Logger.WriteLine("SaveGIF_Shortcuts");
                     // Shortcuts
                     if (Shortcuts_In_Gif && exists)
                     {
@@ -14018,7 +14288,7 @@ namespace Watch_Face_Editor
                         //int link = radioButton_ScreenNormal.Checked ? 0 : 1;
                         int link_AOD = 0;
                         Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true,
-                            false, false, false, link_AOD, Shortcuts_In_Gif, -1, false);
+                            false, false, false, link_AOD, Shortcuts_In_Gif, -1, false, 0);
 
                         if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
                         else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
@@ -14042,7 +14312,7 @@ namespace Watch_Face_Editor
                         //int link = radioButton_ScreenNormal.Checked ? 0 : 1;
                         int link_AOD = 1;
                         Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true,
-                            false, false, false, link_AOD, false, -1, false);
+                            false, false, false, link_AOD, false, -1, false, 0);
                         //if (checkBox_crop.Checked)
                         //{
                         //    bitmap = ApplyMask(bitmap, mask);
@@ -14062,7 +14332,7 @@ namespace Watch_Face_Editor
                         bitmap = bitmapTemp;
                         gPanel = Graphics.FromImage(bitmap);
                         Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true,
-                            false, false, false, link_AOD, false, -1, false);
+                            false, false, false, link_AOD, false, -1, false, 0);
                         //if (checkBox_crop.Checked)
                         //{
                         //    bitmap = ApplyMask(bitmap, mask);
@@ -14077,24 +14347,35 @@ namespace Watch_Face_Editor
                         collection[collection.Count - 1].AnimationDelay = (int)(100 * numericUpDown_Gif_Speed.Value);
                     }
 
-                    //if (Watch_Face != null && Watch_Face.Widgets != null && Watch_Face.Widgets.Widget != null)
-                    //{
-                    //    if (comboBox_WidgetNumber.Items.Count > 0)
-                    //    {
-                    //        for (int i = 0; i < comboBox_WidgetNumber.Items.Count; i++)
-                    //        {
-                    //            bitmap = bitmapTemp;
-                    //            gPanel = Graphics.FromImage(bitmap);
-                    //            DrawWidgetEditScreen(gPanel, false, false, i, true);
 
-                    //            if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
-                    //            else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
-                    //            MagickImage item = new MagickImage(bitmap);
-                    //            collection.Add(item);
-                    //            collection[collection.Count - 1].AnimationDelay = (int)(100 * numericUpDown_Gif_Speed.Value);
-                    //        }
-                    //    }
-                    //}
+                    Logger.WriteLine("SaveGIF_Editable_Background");
+                    // Editable_Background
+                    if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null &&
+                        (Watch_Face.ScreenNormal.Background.Editable_Background != null &&
+                        Watch_Face.ScreenNormal.Background.Editable_Background.enable_edit_bg &&
+                        Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundList.Count > 0))
+                    {
+                        int bg_index = Watch_Face.ScreenNormal.Background.Editable_Background.selected_background;
+                        //int link = radioButton_ScreenNormal.Checked ? 0 : 1;
+                        int link_AOD = 0;
+                        for (int index = 0; index < Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundList.Count; index++)
+                        {
+                            bitmap = bitmapTemp;
+                            gPanel = Graphics.FromImage(bitmap);
+                            Watch_Face.ScreenNormal.Background.Editable_Background.selected_background = index;
+                            Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true,
+                                            false, false, false, link_AOD, false, -1, true, 1);
+                            if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
+                            else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
+                            // Add first image and set the animation delay to 100ms
+                            MagickImage item_bg_edit = new MagickImage(bitmap);
+                            //ExifProfile profile = item.GetExifProfile();
+                            collection.Add(item_bg_edit);
+                            //collection[collection.Count - 1].AnimationDelay = 100;
+                            collection[collection.Count - 1].AnimationDelay = (int)(100 * numericUpDown_Gif_Speed.Value); 
+                        }
+                        Watch_Face.ScreenNormal.Background.Editable_Background.selected_background = bg_index;
+                    }
 
                     // Optionally reduce colors
                     QuantizeSettings settings = new QuantizeSettings();
@@ -14202,6 +14483,10 @@ namespace Watch_Face_Editor
                         comboBox_ConvertingInput_Model.Text = "336 (GTS 4 mini)";
                         comboBox_ConvertingOutput_Model.Text = "390 (GTS 3)";
                         break;
+                    case "GTS 4":
+                        comboBox_ConvertingInput_Model.Text = "390 (GTS 4)";
+                        comboBox_ConvertingOutput_Model.Text = "336 (GTS 4 mini)";
+                        break;
                     default:
                         comboBox_ConvertingInput_Model.SelectedIndex = 0;
                         comboBox_ConvertingOutput_Model.SelectedIndex = 0;
@@ -14244,6 +14529,9 @@ namespace Watch_Face_Editor
                 case "480 (GTR 3 Pro)":
                     numericUpDown_ConvertingInput_Custom.Value = 480;
                     break;
+                case "390 (GTS 4)":
+                    numericUpDown_ConvertingInput_Custom.Value = 390;
+                    break;
             }
         }
 
@@ -14270,6 +14558,9 @@ namespace Watch_Face_Editor
                     break;
                 case "480 (GTR 3 Pro)":
                     numericUpDown_ConvertingOutput_Custom.Value = 480;
+                    break;
+                case "390 (GTS 4)":
+                    numericUpDown_ConvertingOutput_Custom.Value = 390;
                     break;
             }
         }
@@ -14309,6 +14600,10 @@ namespace Watch_Face_Editor
                     case "480 (GTR 3 Pro)":
                         suffix = "_GTR_3_Pro";
                         DeviceName = "GTR3_Pro";
+                        break;
+                    case "390 (GTS 4)":
+                        suffix = "_GTS_4";
+                        DeviceName = "GTS4";
                         break;
                     default:
                         suffix = "_Custom_" + numericUpDown_ConvertingOutput_Custom.Value.ToString();

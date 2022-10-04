@@ -273,9 +273,15 @@
     </Compile>
     <None Include="Resources\OpenSans-Regular.ttf" />
     <None Include="Resources\Roboto-Regular.ttf" />
+    <None Include="Resources\tips.en.rtf" />
+    <None Include="Resources\tips.ru.rtf" />
+    <None Include="Resources\tips.uk.rtf" />
+    <None Include="Resources\tips.zh.rtf" />
     <None Include="Resources\tips_en.rtf" />
+    <None Include="Resources\tips_es.rtf" />
     <None Include="Resources\tips_ru.rtf" />
     <None Include="Resources\tips_uk.rtf" />
+    <None Include="Resources\tips_zh.rtf" />
     <None Include="Skin\WatchSkin_Amazfit_Band_7.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

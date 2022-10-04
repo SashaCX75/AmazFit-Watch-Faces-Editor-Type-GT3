@@ -3,10 +3,12 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Net.Mime.MediaTypeNames;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
@@ -116,6 +118,35 @@ namespace Watch_Face_Editor
                         pause_call += out_pause_call;
                     }
                 }
+            }
+
+            if (Watch_Face.ElementEditablePointers != null)
+            {
+                ElementEditablePointers EditablePointers = Watch_Face.ElementEditablePointers;
+                if (!EditablePointers.visible) return;
+
+                string editablePointersOptions = Editable_Pointers_Options(EditablePointers);
+
+                if (editablePointersOptions.Length > 5)
+                {
+                    variables += TabInString(4) + "let editableTimPointers = ''" + Environment.NewLine;
+                    items += Environment.NewLine + TabInString(6) +
+                        "const pointerEdit = hmUI.createWidget(hmUI.widget.WATCHFACE_EDIT_POINTER, {" +
+                            editablePointersOptions + TabInString(6) + "});" + Environment.NewLine;
+                    if (!EditablePointers.AOD_show)
+                    {
+                        items += TabInString(6) + "const screenTypeForETP = hmSetting.getScreenType();" + Environment.NewLine;
+                        items += TabInString(6) + "const aodModel = screenTypeForETP == hmSetting.screen_type.AOD;" + Environment.NewLine;
+                        items += TabInString(6) + "const pointerProp = pointerEdit.getProperty(hmUI.prop.CURRENT_CONFIG, !aodModel);" + Environment.NewLine;
+                    }
+                    else
+                    {
+                        items += TabInString(6) + "const pointerProp = pointerEdit.getProperty(hmUI.prop.CURRENT_CONFIG, true);" + Environment.NewLine;
+                    }
+
+                    items += TabInString(6) + "editableTimPointers = hmUI.createWidget(hmUI.widget.TIME_POINTER, pointerProp);" + Environment.NewLine;
+                }
+
             }
 
             if (resume_function.Length > 5 || resume_call.Length > 0)
@@ -415,6 +446,36 @@ namespace Watch_Face_Editor
                     }
                     break;
                 #endregion
+
+                /*#region ElementEditablePointers
+                case "ElementEditablePointers":
+                    ElementEditablePointers EditablePointers = (ElementEditablePointers)element;
+                    if (!EditablePointers.visible) return;
+
+                    string editablePointersOptions = Editable_Pointers_Options(EditablePointers);
+
+                    if (editablePointersOptions.Length > 5)
+                    {
+                        variables += TabInString(4) + "let editableTimPointers = ''" + Environment.NewLine;
+                        items += Environment.NewLine + TabInString(6) +
+                            "const pointerEdit = hmUI.createWidget(hmUI.widget.WATCHFACE_EDIT_POINTER, {" +
+                                editablePointersOptions + TabInString(6) + "});" + Environment.NewLine;
+                        if (!EditablePointers.AOD_show)
+                        {
+                            items += TabInString(6) + "const screenTypeForETP = hmSetting.getScreenType();" + Environment.NewLine;
+                            items += TabInString(6) + "const aodModel = screenTypeForETP == hmSetting.screen_type.AOD;" + Environment.NewLine;
+                            items += TabInString(6) + "const pointerProp = pointerEdit.getProperty(hmUI.prop.CURRENT_CONFIG, !aodModel);" + Environment.NewLine; 
+                        }
+                        else
+                        {
+                            items += TabInString(6) + "const pointerProp = pointerEdit.getProperty(hmUI.prop.CURRENT_CONFIG, true);" + Environment.NewLine;
+                        }
+
+                        items += TabInString(6) + "editableTimPointers = hmUI.createWidget(hmUI.widget.TIME_POINTER, pointerProp);" + Environment.NewLine;  
+                    }
+
+                    break;
+                #endregion*/
 
                 #region ElementDateDay
                 case "ElementDateDay":
@@ -6349,23 +6410,23 @@ namespace Watch_Face_Editor
             string options = Environment.NewLine;
             if (editable_background == null) return options;
             if (!editable_background.enable_edit_bg) return options;
-            if (editable_background.BackgroundImageList == null || editable_background.BackgroundPreviewList == null) return options;
-            if (editable_background.BackgroundImageList[0].Length > 0)
+            if (editable_background.BackgroundList == null || editable_background.BackgroundList.Count == 0) return options;
+            if (editable_background.BackgroundList[0].path.Length > 0)
             {
-                options += TabInString(7) + "edit_id: 1003," + Environment.NewLine;
+                options += TabInString(7) + "edit_id: 1002," + Environment.NewLine;
                 options += TabInString(7) + "x: 0," + Environment.NewLine;
                 options += TabInString(7) + "y: 0," + Environment.NewLine;
                 options += TabInString(7) + "// w: " + editable_background.w.ToString() + "," + Environment.NewLine;
                 options += TabInString(7) + "// h: " + editable_background.h.ToString() + "," + Environment.NewLine;
                 options += TabInString(7) + "// AOD_show: " + editable_background.AOD_show.ToString() + "," + Environment.NewLine;
 
-                int count = editable_background.BackgroundImageList.Count;
+                int count = editable_background.BackgroundList.Count;
                 options += TabInString(7) + "bg_config: [" + Environment.NewLine;
                 for(int i= 0; i < count; i++)
                 {
                     options += TabInString(8) + "{ id: " + (i+1).ToString() + 
-                        ", preview: '" + editable_background.BackgroundPreviewList[i] +
-                        ".png', path: '" + editable_background.BackgroundImageList[i] + ".png' }," + Environment.NewLine;
+                        ", preview: '" + editable_background.BackgroundList[i].preview +
+                        ".png', path: '" + editable_background.BackgroundList[i].path + ".png' }," + Environment.NewLine;
                 }
                 options += TabInString(7) + "]," + Environment.NewLine;
 
@@ -6377,6 +6438,88 @@ namespace Watch_Face_Editor
                 options += TabInString(7) + "tips_y: " + editable_background.tips_y.ToString() + "," + Environment.NewLine;
 
                 //options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+            }
+            return options;
+        }
+
+        private string Editable_Pointers_Options(ElementEditablePointers editable_pointers)
+        {
+            string options = Environment.NewLine;
+            if (editable_pointers == null) return options;
+            if (editable_pointers.config != null && editable_pointers.config.Count > 0)
+            {
+                options += TabInString(7) + "edit_id: 1003," + Environment.NewLine;
+                options += TabInString(7) + "x: 0," + Environment.NewLine;
+                options += TabInString(7) + "y: 0," + Environment.NewLine;
+                options += TabInString(7) + "config: [" + Environment.NewLine;
+                string tempStr = "";
+                for (int i = 0; i < editable_pointers.config.Count; i++)
+                {
+                    string configStr = "";
+                    PointersList pointersList = editable_pointers.config[i];
+
+                    if (pointersList.hour != null && pointersList.hour.path != null && pointersList.hour.path.Length > 0)
+                    {
+                        configStr += TabInString(9) + "hour: {" + Environment.NewLine;
+                        configStr += TabInString(10) + "centerX: " + pointersList.hour.centerX.ToString() + "," + Environment.NewLine;
+                        configStr += TabInString(10) + "centerY: " + pointersList.hour.centerY.ToString() + "," + Environment.NewLine;
+                        configStr += TabInString(10) + "posX: " + pointersList.hour.posX.ToString() + "," + Environment.NewLine;
+                        configStr += TabInString(10) + "posY: " + pointersList.hour.posY.ToString() + "," + Environment.NewLine;
+                        configStr += TabInString(10) + "path: '" + pointersList.hour.path + ".png'," + Environment.NewLine;
+                        configStr += TabInString(9) + "}," + Environment.NewLine;
+                    }
+
+                    if (pointersList.minute != null && pointersList.minute.path != null && pointersList.minute.path.Length > 0)
+                    {
+                        configStr += TabInString(9) + "minute: {" + Environment.NewLine;
+                        configStr += TabInString(10) + "centerX: " + pointersList.minute.centerX.ToString() + "," + Environment.NewLine;
+                        configStr += TabInString(10) + "centerY: " + pointersList.minute.centerY.ToString() + "," + Environment.NewLine;
+                        configStr += TabInString(10) + "posX: " + pointersList.minute.posX.ToString() + "," + Environment.NewLine;
+                        configStr += TabInString(10) + "posY: " + pointersList.minute.posY.ToString() + "," + Environment.NewLine;
+                        configStr += TabInString(10) + "path: '" + pointersList.minute.path + ".png'," + Environment.NewLine;
+                        configStr += TabInString(9) + "}," + Environment.NewLine;
+                    }
+
+                    if (pointersList.second != null && pointersList.second.path != null && pointersList.second.path.Length > 0)
+                    {
+                        configStr += TabInString(9) + "second: {" + Environment.NewLine;
+                        configStr += TabInString(10) + "centerX: " + pointersList.second.centerX.ToString() + "," + Environment.NewLine;
+                        configStr += TabInString(10) + "centerY: " + pointersList.second.centerY.ToString() + "," + Environment.NewLine;
+                        configStr += TabInString(10) + "posX: " + pointersList.second.posX.ToString() + "," + Environment.NewLine;
+                        configStr += TabInString(10) + "posY: " + pointersList.second.posY.ToString() + "," + Environment.NewLine;
+                        configStr += TabInString(10) + "path: '" + pointersList.second.path + ".png'," + Environment.NewLine;
+                        configStr += TabInString(9) + "}," + Environment.NewLine;
+                    }
+
+                    if (pointersList.preview != null && pointersList.preview.Length > 0)
+                    {
+                        configStr += TabInString(9) + "preview: '" + pointersList.preview + ".png'," + Environment.NewLine;
+                    }
+                    if (configStr.Length > 5) 
+                    { 
+                        configStr = TabInString(9) + "id: " + (i + 1).ToString() + "," + Environment.NewLine + configStr;
+                        tempStr += TabInString(8) + "{" + Environment.NewLine;
+                        tempStr += configStr;
+                        tempStr += TabInString(8) + "}," + Environment.NewLine;
+                    }
+                }
+                if (tempStr.Length > 5)
+                {
+                    //options += TabInString(8) + "{" + Environment.NewLine;
+                    options += tempStr;
+                    //options += TabInString(8) + "}," + Environment.NewLine; 
+                }
+
+                options += TabInString(7) + "]," + Environment.NewLine;
+
+                options += TabInString(7) + "count: " + editable_pointers.config.Count.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "default_id: 1," + Environment.NewLine;
+                options += TabInString(7) + "fg: '" + editable_pointers.fg + ".png'," + Environment.NewLine;
+                options += TabInString(7) + "tips_x: " + editable_pointers.tips_x.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "tips_y: " + editable_pointers.tips_y.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "tips_bg: '" + editable_pointers.tips_bg + ".png'," + Environment.NewLine;
+
+
             }
             return options;
         }
@@ -6837,6 +6980,19 @@ namespace Watch_Face_Editor
                                         sunset.Sunset.iconPosY = img.y;
                                     }
                                 }
+
+                                if (objectName.EndsWith("sun_current_separator_img"))
+                                {
+                                    ElementSunrise sunset = null;
+                                    sunset = (ElementSunrise)elementsList.Find(e => e.GetType().Name == "ElementSunrise");
+                                    if (sunset != null && sunset.Sunset_Sunrise != null)
+                                    {
+                                        sunset.Sunset_Sunrise.icon = img.src;
+                                        sunset.Sunset_Sunrise.iconPosX = img.x;
+                                        sunset.Sunset_Sunrise.iconPosY = img.y;
+                                    }
+                                }
+
 
                                 if (objectName.EndsWith("wind_text_separator_img"))
                                 {
@@ -7433,6 +7589,45 @@ namespace Watch_Face_Editor
                                 }
                             }
 
+
+                            break;
+                        #endregion
+
+                        #region WATCHFACE_EDIT_POINTER
+                        case "WATCHFACE_EDIT_POINTER":
+                            int pos = parametrString.IndexOf("WATCHFACE_EDIT_POINTER");
+                            string elementEditablePointers = parametrString.Remove(0, pos + "WATCHFACE_EDIT_POINTER".Length + 1);
+                            //string elementEditablePointers = parametrString.Replace("const pointerEdit = hmUI.createWidget(hmUI.widget.WATCHFACE_EDIT_POINTER, ", "");
+                            elementEditablePointers = elementEditablePointers.Replace(")", "");
+                            ElementEditablePointers elementEditablePointers_temp = null;
+                            try
+                            {
+                                elementEditablePointers_temp = JsonConvert.DeserializeObject<ElementEditablePointers>(elementEditablePointers, new JsonSerializerSettings
+                                {
+                                    //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                    NullValueHandling = NullValueHandling.Ignore
+                                });
+                            }
+                            catch
+                            {
+                                
+                            }
+                            if (elementEditablePointers_temp != null && elementEditablePointers_temp.config != null && 
+                                elementEditablePointers_temp.config.Count > 0) 
+                            {
+                                foreach (PointersList element in elementEditablePointers_temp.config)
+                                {
+                                    if (element != null && element.hour != null && element.hour.path != null)
+                                        element.hour.path = element.hour.path.Replace(".png", "");
+                                    if (element != null && element.minute != null && element.minute.path != null)
+                                        element.minute.path = element.minute.path.Replace(".png", "");
+                                    if (element != null && element.second != null && element.second.path != null)
+                                        element.second.path = element.second.path.Replace(".png", "");
+                                    if (element != null && element.preview != null)
+                                        element.preview = element.preview.Replace(".png", "");
+                                }
+                                Watch_Face.ElementEditablePointers = elementEditablePointers_temp; 
+                            }
 
                             break;
                         #endregion
@@ -11534,7 +11729,7 @@ namespace Watch_Face_Editor
                             lenght = "preview:".Length;
                             str_value = tempStr.Substring(lenght, tempStr.Length - lenght);
                             str_value = str_value.Trim();
-                            if (str_value.Length > 5)
+                            if (str_value.Length > 3)
                             {
                                 str_value = str_value.Replace("'", "").Replace("\"", "");
                                 preview = Path.GetFileNameWithoutExtension(str_value);
@@ -11545,7 +11740,7 @@ namespace Watch_Face_Editor
                             lenght = "path:".Length;
                             str_value = tempStr.Substring(lenght, tempStr.Length - lenght);
                             str_value = str_value.Trim();
-                            if (str_value.Length > 5)
+                            if (str_value.Length > 3)
                             {
                                 str_value = str_value.Replace("'", "").Replace("\"", "");
                                 path = Path.GetFileNameWithoutExtension(str_value);
@@ -11555,10 +11750,12 @@ namespace Watch_Face_Editor
 
                     if (preview != null && path != null)
                     {
-                        if (edit_bg.BackgroundImageList == null) edit_bg.BackgroundImageList = new List<string>();
-                        if (edit_bg.BackgroundPreviewList == null) edit_bg.BackgroundPreviewList = new List<string>();
-                        edit_bg.BackgroundImageList.Add(path);
-                        edit_bg.BackgroundPreviewList.Add(preview);
+                        if (preview == null) preview = "";
+                        BackgroundList background_list = new BackgroundList();
+                        background_list.path= path;
+                        background_list.preview = preview;
+                        if (edit_bg.BackgroundList == null) edit_bg.BackgroundList = new List<BackgroundList>();
+                        edit_bg.BackgroundList.Add(background_list);
 
                     }
                 }
@@ -11608,8 +11805,8 @@ namespace Watch_Face_Editor
                     elementDigitalTime.Hour.space = value;
                 if (parametrs.ContainsKey("hour_zero"))
                 {
-                    //if (parametrs["hour_zero"] == "1") elementDigitalTime.Hour.zero = true;
-                    //else elementDigitalTime.Hour.zero = false;
+                    //if (parametrs["hour_zero"] == "1") elementDigitalTime.hour.zero = true;
+                    //else elementDigitalTime.hour.zero = false;
                     elementDigitalTime.Hour.zero = StringToBool(parametrs["hour_zero"]);
                 }
                 if (parametrs.ContainsKey("hour_align")) 
@@ -11647,8 +11844,8 @@ namespace Watch_Face_Editor
                     elementDigitalTime.Minute.space = value;
                 if (parametrs.ContainsKey("minute_zero"))
                 {
-                    //if (parametrs["minute_zero"] == "1") elementDigitalTime.Minute.zero = true;
-                    //else elementDigitalTime.Minute.zero = false;
+                    //if (parametrs["minute_zero"] == "1") elementDigitalTime.minute.zero = true;
+                    //else elementDigitalTime.minute.zero = false;
                     elementDigitalTime.Minute.zero = StringToBool(parametrs["minute_zero"]);
                 }
                 if (parametrs.ContainsKey("minute_align"))
@@ -11661,8 +11858,8 @@ namespace Watch_Face_Editor
                 }
                 if (parametrs.ContainsKey("minute_follow"))
                 {
-                    //if (parametrs["minute_follow"] == "1") elementDigitalTime.Minute.follow = true;
-                    //else elementDigitalTime.Minute.follow = false;
+                    //if (parametrs["minute_follow"] == "1") elementDigitalTime.minute.follow = true;
+                    //else elementDigitalTime.minute.follow = false;
                     elementDigitalTime.Minute.follow = StringToBool(parametrs["minute_follow"]);
                 }
 
@@ -11692,8 +11889,8 @@ namespace Watch_Face_Editor
                     elementDigitalTime.Second.space = value;
                 if (parametrs.ContainsKey("second_zero"))
                 {
-                    //if (parametrs["second_zero"] == "1") elementDigitalTime.Second.zero = true;
-                    //else elementDigitalTime.Second.zero = false;
+                    //if (parametrs["second_zero"] == "1") elementDigitalTime.second.zero = true;
+                    //else elementDigitalTime.second.zero = false;
                     elementDigitalTime.Second.zero = StringToBool(parametrs["second_zero"]);
                 }
                 if (parametrs.ContainsKey("second_align"))
@@ -11706,8 +11903,8 @@ namespace Watch_Face_Editor
                 }
                 if (parametrs.ContainsKey("second_follow"))
                 {
-                    //if (parametrs["second_follow"] == "1") elementDigitalTime.Second.follow = true;
-                    //else elementDigitalTime.Second.follow = false;
+                    //if (parametrs["second_follow"] == "1") elementDigitalTime.second.follow = true;
+                    //else elementDigitalTime.second.follow = false;
                     elementDigitalTime.Second.follow = StringToBool(parametrs["second_follow"]);
                 }
 

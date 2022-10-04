@@ -117,20 +117,17 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="button_del.Text" xml:space="preserve">
-    <value>Delete background</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Вибір стрілок</value>
   </data>
   <data name="button_add.Text" xml:space="preserve">
-    <value>Add background</value>
+    <value>Додати набір стрілок</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Background selection</value>
+  <data name="button_del.Text" xml:space="preserve">
+    <value>Видалити набір стрілок</value>
   </data>
-  <data name="label01.Text" xml:space="preserve">
-    <value>Background image</value>
-  </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Preview</value>
+  <data name="label03.Text" xml:space="preserve">
+    <value>Центр обертання стрілки</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -148,10 +145,10 @@
 </value>
   </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 26</value>
+    <value>204, 26</value>
   </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Text" xml:space="preserve">
-    <value>Paste coordinate X</value>
+    <value>Вставити координату X</value>
   </data>
   <data name="копироватьToolStripMenuItemX.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -170,10 +167,10 @@
 </value>
   </data>
   <data name="копироватьToolStripMenuItemX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 26</value>
+    <value>204, 26</value>
   </data>
   <data name="копироватьToolStripMenuItemX.Text" xml:space="preserve">
-    <value>Copy</value>
+    <value>Копіювати</value>
   </data>
   <data name="вставитьToolStripMenuItemX.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -193,13 +190,16 @@
 </value>
   </data>
   <data name="вставитьToolStripMenuItemX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 26</value>
+    <value>204, 26</value>
   </data>
   <data name="вставитьToolStripMenuItemX.Text" xml:space="preserve">
-    <value>Paste</value>
+    <value>Вставити</value>
   </data>
   <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 82</value>
+    <value>205, 82</value>
+  </data>
+  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 82</value>
   </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -216,10 +216,10 @@
 </value>
   </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 26</value>
+    <value>204, 26</value>
   </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Text" xml:space="preserve">
-    <value>Paste coordinate Y</value>
+    <value>Вставити координату Y</value>
   </data>
   <data name="копироватьToolStripMenuItemY.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -238,10 +238,10 @@
 </value>
   </data>
   <data name="копироватьToolStripMenuItemY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 26</value>
+    <value>204, 26</value>
   </data>
   <data name="копироватьToolStripMenuItemY.Text" xml:space="preserve">
-    <value>Copy</value>
+    <value>Копіювати</value>
   </data>
   <data name="вставитьToolStripMenuItemY.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -261,42 +261,72 @@
 </value>
   </data>
   <data name="вставитьToolStripMenuItemY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>176, 26</value>
+    <value>204, 26</value>
   </data>
   <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
-    <value>Paste</value>
-  </data>
-  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 82</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Tooltip background</value>
-  </data>
-  <data name="label02.Size" type="System.Drawing.Size, System.Drawing">
-    <value>97, 13</value>
+    <value>Вставити</value>
   </data>
   <data name="label02.Text" xml:space="preserve">
-    <value>Tooltip coordinates</value>
+    <value>Координати центра обертання</value>
   </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Highlight frame</value>
+  <data name="label01.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 30</value>
+  </data>
+  <data name="label01.Text" xml:space="preserve">
+    <value>Зображення годинної стрілки</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Центр обертання стрілки</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Зображення хвилинної стрілки</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Центр обертання стрілки</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Координати центра обертання</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Зображення секундної стрілки</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>Рамка виділення</value>
+  </data>
+  <data name="checkBox_secondInAOD.Text" xml:space="preserve">
+    <value>Відображати секундну стрілку в режимі AOD</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Фон підказки</value>
+  </data>
+  <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 13</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Координати підказки</value>
   </data>
   <data name="checkBox_edit_mode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>113, 17</value>
+    <value>184, 17</value>
   </data>
   <data name="checkBox_edit_mode.Text" xml:space="preserve">
-    <value>Edit mode preview</value>
+    <value>Перегляд режиму редагування</value>
   </data>
   <data name="button_PreviewAdd.Text" xml:space="preserve">
-    <value>Create preview</value>
+    <value>Створити перегляд</value>
   </data>
   <data name="button_PreviewRefresh.Text" xml:space="preserve">
-    <value>Refresh preview</value>
+    <value>Оновити перегляд</value>
   </data>
-  <data name="groupBox_EditableBackground.Text" xml:space="preserve">
-    <value>Editable background</value>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Перегляд</value>
   </data>
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 320</value>
+  <data name="tabPage_hour.Text" xml:space="preserve">
+    <value>Годинна стрілка</value>
+  </data>
+  <data name="tabPage_minute.Text" xml:space="preserve">
+    <value>Хвилинна стрілка</value>
+  </data>
+  <data name="tabPage_second.Text" xml:space="preserve">
+    <value>Секундна стрілка</value>
   </data>
 </root>

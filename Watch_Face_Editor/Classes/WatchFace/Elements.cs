@@ -189,6 +189,7 @@ namespace Watch_Face_Editor
         public string show_level = "";
     }
 
+    /// <summary>Стрелочный указатель</summary>
     public class hmUI_widget_IMG_POINTER
     {
         /// <summary>Позиция в наборе элементов</summary>
@@ -245,6 +246,44 @@ namespace Watch_Face_Editor
 
     }
 
+    /// <summary>Стрелочный указатель</summary>
+    public class EDITABLE_POINTER
+    {
+
+        /// <summary>Изображение указателя (стрелки)</summary>
+        public string path { get; set; }
+
+        /// <summary>Координата Х центра вращения на циферблате</summary>
+        public int centerX { get; set; }
+
+        /// <summary>Координата Y центра вращения на циферблате</summary>
+        public int centerY { get; set; }
+
+        /// <summary>Координата Х центра вращения на указателе (стрелке)</summary>
+        public int posX { get; set; }
+
+        /// <summary>Координата Y центра вращения на указателе (стрелке)</summary>
+        public int posY { get; set; }
+
+    }
+
+    /// <summary>Набор параметров для настраиваемого фона</summary>
+    public class BackgroundList
+    {
+        public string path { get; set; }
+        public string preview { get; set; }
+    }
+
+    /// <summary>Набор стрелок</summary>
+    public class PointersList
+    {
+        public EDITABLE_POINTER hour { get; set; }
+        public EDITABLE_POINTER minute { get; set; }
+        public EDITABLE_POINTER second { get; set; }
+        public string preview { get; set; }
+    }
+
+    /// <summary>Набор независимых картинок</summary>
     public class hmUI_widget_IMG_PROGRESS 
     {
         /// <summary>Позиция в наборе элементов</summary>
@@ -273,6 +312,7 @@ namespace Watch_Face_Editor
         public string show_level = "";
     }
 
+    /// <summary>Круговая шкала</summary>
     public class Circle_Scale
     {
         /// <summary>Позиция в наборе элементов</summary>
@@ -316,6 +356,7 @@ namespace Watch_Face_Editor
 
     }
 
+    /// <summary>Линейная шкала</summary>
     public class Linear_Scale
     {
         /// <summary>Позиция в наборе элементов</summary>

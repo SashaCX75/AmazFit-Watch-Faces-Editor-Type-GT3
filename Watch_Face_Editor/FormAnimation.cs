@@ -37,7 +37,7 @@ namespace Watch_Face_Editor
             Form1 form1 = this.Owner as Form1;//Получаем ссылку на первую форму
             int link = form1.radioButton_ScreenNormal.Checked ? 0 : 1;
             form1.Preview_screen(gPanel, 1, false, false, false, false, false, false, false, false, true, false,
-                false, false, link, false, time_value_sec, false);
+                false, false, link, false, time_value_sec, false, 0);
 
             pictureBox_AnimatiomPreview.Image = SrcImg;
             time_value_sec = time_value_sec + timer1.Interval / 1000f;
@@ -68,6 +68,7 @@ namespace Watch_Face_Editor
                         break;
 
                     case "GTS 3":
+                    case "GTS 4":
                         pictureBox_AnimatiomPreview.Size = new Size(392, 452);
                         this.Size = new Size((int)(392 + 20 * currentDPI), (int)(452 + 100 * currentDPI));
                         break;
@@ -106,6 +107,7 @@ namespace Watch_Face_Editor
                         break;
 
                     case "GTS 3":
+                    case "GTS 4":
                         pictureBox_AnimatiomPreview.Size = new Size(587, 677);
                         this.Size = new Size((int)(587 + 20 * currentDPI), (int)(677 + 100 * currentDPI));
                         break;
@@ -144,6 +146,7 @@ namespace Watch_Face_Editor
                         break;
 
                     case "GTS 3":
+                    case "GTS 4":
                         pictureBox_AnimatiomPreview.Size = new Size(781, 901);
                         this.Size = new Size((int)(781 + 20 * currentDPI), (int)(901 + 100 * currentDPI));
                         break;
@@ -193,6 +196,7 @@ namespace Watch_Face_Editor
                         break;
 
                     case "GTS 3":
+                    case "GTS 4":
                         bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
                         break;
@@ -328,7 +332,7 @@ namespace Watch_Face_Editor
                             gPanel = Graphics.FromImage(bitmap);
 
                             form1.Preview_screen(gPanel, 1, false, false, false, false, false, false, false, false, true, false,
-                                false, false, 0, false, time_value_sec, false);
+                                false, false, 0, false, time_value_sec, false, 0);
 
                             if (form1.checkBox_WatchSkin_Use.Checked) bitmap = form1.ApplyWatchSkin(bitmap);
                             else if (form1.checkBox_crop.Checked) bitmap = form1.ApplyMask(bitmap, mask);

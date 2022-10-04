@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace Watch_Face_Editor
                 {
                     Scale_IMG(Watch_Face.ScreenNormal.Background.BackgroundImage, scale);
                     Scale_FILL_RECT(Watch_Face.ScreenNormal.Background.BackgroundColor, scale);
+                    Scale_Editable_Background(Watch_Face.ScreenNormal.Background.Editable_Background, scale);
                 }
                 if (Watch_Face.ScreenNormal.Elements != null)
                 {
@@ -44,6 +46,10 @@ namespace Watch_Face_Editor
                     }
                 }
             }
+            if(Watch_Face.ElementEditablePointers != null)
+            {
+
+            }
         }
 
         private void Scale_FILL_RECT(hmUI_widget_FILL_RECT fill_rect, float scale)
@@ -62,6 +68,31 @@ namespace Watch_Face_Editor
             img.y = (int)Math.Round(img.y * scale, MidpointRounding.AwayFromZero);
             if(img.w != null) img.w = (int)Math.Round((double)(img.w * scale), MidpointRounding.AwayFromZero);
             if (img.h != null) img.h = (int)Math.Round((double)(img.h * scale), MidpointRounding.AwayFromZero);
+        }
+
+        private void Scale_Editable_Background(Editable_Background edit_bg, float scale)
+        {
+            if (edit_bg == null) return;
+            edit_bg.w = (int)Math.Round((double)(edit_bg.w * scale), MidpointRounding.AwayFromZero);
+            edit_bg.h = (int)Math.Round((double)(edit_bg.h * scale), MidpointRounding.AwayFromZero);
+
+            edit_bg.tips_x = (int)Math.Round((double)(edit_bg.tips_x * scale), MidpointRounding.AwayFromZero);
+            edit_bg.tips_y = (int)Math.Round((double)(edit_bg.tips_y * scale), MidpointRounding.AwayFromZero);
+        }
+
+        private void Scale_EditablePointers(ElementEditablePointers edit_pointers, float scale)
+        {
+            if (edit_pointers == null) return;
+
+            edit_pointers.tips_x = (int)Math.Round((double)(edit_pointers.tips_x * scale), MidpointRounding.AwayFromZero);
+            edit_pointers.tips_y = (int)Math.Round((double)(edit_pointers.tips_y * scale), MidpointRounding.AwayFromZero);
+
+            foreach(PointersList pointers in edit_pointers.config)
+            {
+                Scale_EDITABLE_POINTER(pointers.second, scale);
+                Scale_EDITABLE_POINTER(pointers.minute, scale);
+                Scale_EDITABLE_POINTER(pointers.hour, scale);
+            }
         }
 
         private void Scale_Frame_Animation(hmUI_widget_IMG_ANIM anim_frame, float scale)
@@ -404,6 +435,15 @@ namespace Watch_Face_Editor
             img_pointer.cover_y = (int)Math.Round((img_pointer.cover_y * scale), MidpointRounding.AwayFromZero);
             img_pointer.scale_x = (int)Math.Round((img_pointer.scale_x * scale), MidpointRounding.AwayFromZero);
             img_pointer.scale_y = (int)Math.Round((img_pointer.scale_y * scale), MidpointRounding.AwayFromZero);
+        }
+
+        private void Scale_EDITABLE_POINTER(EDITABLE_POINTER edit_pointer, float scale)
+        {
+            if (edit_pointer == null) return;
+            edit_pointer.centerX = (int)Math.Round(edit_pointer.centerX * scale, MidpointRounding.AwayFromZero);
+            edit_pointer.centerY = (int)Math.Round(edit_pointer.centerY * scale, MidpointRounding.AwayFromZero);
+            edit_pointer.posX = (int)Math.Round((edit_pointer.posX * scale), MidpointRounding.AwayFromZero);
+            edit_pointer.posY = (int)Math.Round((edit_pointer.posY * scale), MidpointRounding.AwayFromZero);
         }
 
         private void Scale_IMG_NUMBER(hmUI_widget_IMG_NUMBER img_number, float scale)

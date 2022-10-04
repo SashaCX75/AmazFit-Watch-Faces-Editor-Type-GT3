@@ -14,10 +14,11 @@ namespace Watch_Face_Editor
         /// <summary>Основной экран</summary>
         public ScreenNormal ScreenNormal { get; set; }
 
-        /// <summary>AOD экран</summary>
+        /// <summary>Редактируемые стрелки</summary>
         public ScreenAOD ScreenAOD { get; set; }
 
-
+        /// <summary>AOD экран</summary>
+        public ElementEditablePointers ElementEditablePointers { get; set; }
     }
 
     public class WatchFace_Info
@@ -130,10 +131,10 @@ namespace Watch_Face_Editor
         public int w = 0;
 
         /// <summary>Перечень картинок для фона</summary>
-        public List<string> BackgroundImageList { get; set; }
+        public List<BackgroundList> BackgroundList { get; set; }
 
         /// <summary>Перечень картинок для предпросмотра фона</summary>
-        public List<string> BackgroundPreviewList { get; set; }
+        //public List<string> BackgroundPreviewList { get; set; }
 
         /// <summary>Фон пояснительной даписи</summary>
         public string tips_bg { get; set; }
@@ -147,7 +148,7 @@ namespace Watch_Face_Editor
         /// <summary>Рамка выделения</summary>
         public string fg { get; set; }
 
-        /// <summary>Рамка выделения</summary>
+        /// <summary>Отображать редактируемый фон в режиме АОД</summary>
         public bool AOD_show { get; set; } = false;
     }
 
@@ -388,6 +389,38 @@ namespace Watch_Face_Editor
                 Hour = Hour,
             };
         }
+    }
+
+    public class ElementEditablePointers
+    {
+        public string elementName = "ElementEditablePointers";
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = true;
+
+        /// <summary>Выбраный набор стрелок</summary>
+        public int selected_pointers = 0;
+
+        /// <summary>Перечень наборов стрелок</summary>
+        public List<PointersList> config { get; set; }
+
+        /// <summary>Перечень картинок для предпросмотра стрелок</summary>
+        //public List<string> PointersPreviewList { get; set; }
+
+        /// <summary>Фон пояснительной даписи</summary>
+        public string tips_bg { get; set; }
+
+        /// <summary>Координаты пояснительной даписи</summary>
+        public int tips_x { get; set; }
+
+        /// <summary>Координаты пояснительной даписи</summary>
+        public int tips_y { get; set; }
+
+        /// <summary>Рамка выделения</summary>
+        public string fg { get; set; }
+
+        /// <summary>Отображать секунды в режиме АОД</summary>
+        public bool AOD_show { get; set; } = false;
     }
 
     public class ElementDateDay : ICloneable
