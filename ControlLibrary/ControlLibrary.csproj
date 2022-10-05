@@ -979,6 +979,9 @@
     <EmbeddedResource Include="UCtrl_EditableTimePointer_Opt.uk.resx">
       <DependentUpon>UCtrl_EditableTimePointer_Opt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_EditableTimePointer_Opt.zh.resx">
+      <DependentUpon>UCtrl_EditableTimePointer_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Icon_Opt.en.resx">
       <DependentUpon>UCtrl_Icon_Opt.cs</DependentUpon>
     </EmbeddedResource>
