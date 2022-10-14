@@ -1,6 +1,6 @@
 ﻿namespace ControlLibrary
 {
-    partial class UCtrl_EditableTimePointer_Elm
+    partial class UCtrl_EditableElements_Elm
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrl_EditableTimePointer_Elm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrl_EditableElements_Elm));
             this.pictureBox_NotShow = new System.Windows.Forms.PictureBox();
             this.pictureBox_Show = new System.Windows.Forms.PictureBox();
             this.pictureBox_Del = new System.Windows.Forms.PictureBox();
@@ -56,17 +56,17 @@
             // 
             // pictureBox_Del
             // 
-            this.pictureBox_Del.BackgroundImage = global::ControlLibrary.Properties.Resources.outline_delete_forever_black_24;
             resources.ApplyResources(this.pictureBox_Del, "pictureBox_Del");
+            this.pictureBox_Del.BackgroundImage = global::ControlLibrary.Properties.Resources.outline_delete_forever_black_24;
             this.pictureBox_Del.Name = "pictureBox_Del";
             this.pictureBox_Del.TabStop = false;
             this.pictureBox_Del.Click += new System.EventHandler(this.pictureBox_Del_Click);
             // 
             // button_ElementName
             // 
-            this.button_ElementName.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this.button_ElementName, "button_ElementName");
-            this.button_ElementName.Image = global::ControlLibrary.Properties.Resources.analog_time_18;
+            this.button_ElementName.BackColor = System.Drawing.SystemColors.Control;
+            this.button_ElementName.Image = global::ControlLibrary.Properties.Resources.category;
             this.button_ElementName.Name = "button_ElementName";
             this.button_ElementName.UseVisualStyleBackColor = false;
             this.button_ElementName.SizeChanged += new System.EventHandler(this.button_ElementName_SizeChanged);
@@ -75,7 +75,7 @@
             this.button_ElementName.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button_ElementName_MouseMove);
             this.button_ElementName.MouseUp += new System.Windows.Forms.MouseEventHandler(this.button_ElementName_MouseUp);
             // 
-            // UCtrl_EditableTimePointer_Elm
+            // UCtrl_EditableElements_Elm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -83,7 +83,7 @@
             this.Controls.Add(this.pictureBox_Show);
             this.Controls.Add(this.pictureBox_Del);
             this.Controls.Add(this.button_ElementName);
-            this.Name = "UCtrl_EditableTimePointer_Elm";
+            this.Name = "UCtrl_EditableElements_Elm";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_NotShow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Show)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Del)).EndInit();

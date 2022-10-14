@@ -40,7 +40,7 @@ namespace ControlLibrary
             {
                 comboBox_select_pointerSet.Items.Add(i.ToString());
             }
-            if (count >= 5) button_add.Enabled = false;
+            if (count >= 9) button_add.Enabled = false;
             else button_add.Enabled = true;
             setValue = false;
         }
@@ -163,6 +163,27 @@ namespace ControlLibrary
         public int GetSelectedIndexPreview()
         {
             return comboBox_Preview_image.SelectedIndex;
+        }
+
+
+        /// <summary>Задает название выбранной центральной картинки</summary>
+        public void SetImageCentr(string value)
+        {
+            comboBox_pointer_imageCentr.Text = value;
+            if (comboBox_pointer_imageCentr.SelectedIndex < 0) comboBox_pointer_imageCentr.Text = "";
+        }
+
+        /// <summary>Возвращает название выбранной центральной картинки</summary>
+        public string GetImageCentr()
+        {
+            if (comboBox_pointer_imageCentr.SelectedIndex < 0) return "";
+            return comboBox_pointer_imageCentr.Text;
+        }
+
+        /// <summary>Возвращает SelectedIndex выпадающего списка центральной картинки</summary>
+        public int GetSelectedIndexImageCentr()
+        {
+            return comboBox_pointer_imageCentr.SelectedIndex;
         }
 
         [Browsable(true)]
@@ -304,6 +325,7 @@ namespace ControlLibrary
             comboBox_Preview_image.Items.Clear();
             comboBox_tip.Items.Clear();
             comboBox_foreground.Items.Clear();
+            comboBox_pointer_imageCentr.Items.Clear();
 
             comboBox_hourPointer_image.Items.AddRange(ListImages.ToArray());
             comboBox_minutePointer_image.Items.AddRange(ListImages.ToArray());
@@ -311,6 +333,7 @@ namespace ControlLibrary
             comboBox_Preview_image.Items.AddRange(ListImages.ToArray());
             comboBox_tip.Items.AddRange(ListImages.ToArray());
             comboBox_foreground.Items.AddRange(ListImages.ToArray());
+            comboBox_pointer_imageCentr.Items.AddRange(ListImages.ToArray());
 
             ListImagesFullName = _ListImagesFullName;
 
@@ -323,6 +346,7 @@ namespace ControlLibrary
                 comboBox_Preview_image.DropDownHeight = 1;
                 comboBox_tip.DropDownHeight = 1;
                 comboBox_foreground.DropDownHeight = 1;
+                comboBox_pointer_imageCentr.DropDownHeight = 1;
             }
             else if (count < 5)
             {
@@ -332,6 +356,7 @@ namespace ControlLibrary
                 comboBox_Preview_image.DropDownHeight = 35 * count + 1;
                 comboBox_tip.DropDownHeight = 35 * count + 1;
                 comboBox_foreground.DropDownHeight = 35 * count + 1;
+                comboBox_pointer_imageCentr.DropDownHeight = 35 * count + 1;
             }
             else
             {
@@ -341,6 +366,7 @@ namespace ControlLibrary
                 comboBox_Preview_image.DropDownHeight = 106;
                 comboBox_tip.DropDownHeight = 106;
                 comboBox_foreground.DropDownHeight = 106;
+                comboBox_pointer_imageCentr.DropDownHeight = 106;
             }
         }
 
@@ -359,9 +385,28 @@ namespace ControlLibrary
             comboBox_Preview_image.Text = null;
             comboBox_tip.Text = null;
             comboBox_foreground.Text = null;
+            comboBox_pointer_imageCentr.Text = null;
 
             numericUpDown_tipX.Value = 0;
             numericUpDown_tipY.Value = 0;
+
+            numericUpDown_hourPointer_X.Value = 0;
+            numericUpDown_hourPointer_Y.Value = 0;
+            numericUpDown_hourPointer_offset_X.Value = 0;
+            numericUpDown_hourPointer_offset_Y.Value = 0;
+
+            numericUpDown_minutePointer_X.Value = 0;
+            numericUpDown_minutePointer_Y.Value = 0;
+            numericUpDown_minutePointer_offset_X.Value = 0;
+            numericUpDown_minutePointer_offset_Y.Value = 0;
+
+            numericUpDown_secondPointer_X.Value = 0;
+            numericUpDown_secondPointer_Y.Value = 0;
+            numericUpDown_secondPointer_offset_X.Value = 0;
+            numericUpDown_secondPointer_offset_Y.Value = 0;
+
+            numericUpDown_pointer_centr_X.Value = 0;
+            numericUpDown_pointer_centr_Y.Value = 0;
 
             checkBox_secondInAOD.Checked = false;
             checkBox_edit_mode.Checked = false;

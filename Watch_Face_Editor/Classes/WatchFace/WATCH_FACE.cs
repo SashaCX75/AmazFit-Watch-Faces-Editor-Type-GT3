@@ -17,6 +17,9 @@ namespace Watch_Face_Editor
         /// <summary>Редактируемые стрелки</summary>
         public ScreenAOD ScreenAOD { get; set; }
 
+        /// <summary>Редактируемые элементы</summary>
+        public EditableElements Editable_Elements { get; set; }
+
         /// <summary>AOD экран</summary>
         public ElementEditablePointers ElementEditablePointers { get; set; }
     }
@@ -136,13 +139,13 @@ namespace Watch_Face_Editor
         /// <summary>Перечень картинок для предпросмотра фона</summary>
         //public List<string> BackgroundPreviewList { get; set; }
 
-        /// <summary>Фон пояснительной даписи</summary>
+        /// <summary>Фон пояснительной надписи</summary>
         public string tips_bg { get; set; }
 
-        /// <summary>Координаты пояснительной даписи</summary>
+        /// <summary>Координаты пояснительной надписи</summary>
         public int tips_x { get; set; }
 
-        /// <summary>Координаты пояснительной даписи</summary>
+        /// <summary>Координаты пояснительной надписи</summary>
         public int tips_y { get; set; }
 
         /// <summary>Рамка выделения</summary>
@@ -150,6 +153,9 @@ namespace Watch_Face_Editor
 
         /// <summary>Отображать редактируемый фон в режиме АОД</summary>
         public bool AOD_show { get; set; } = false;
+
+        /// <summary>Отображать в режиме редактирования</summary>
+        public bool showEeditMode { get; set; } = false;
     }
 
     public class ElementDigitalTime : ICloneable
@@ -421,6 +427,12 @@ namespace Watch_Face_Editor
 
         /// <summary>Отображать секунды в режиме АОД</summary>
         public bool AOD_show { get; set; } = false;
+
+        /// <summary>Отображать в режиме редактирования</summary>
+        public bool showEeditMode { get; set; } = false;
+
+        /// <summary>Отображать в режиме редактирования</summary>
+        public hmUI_widget_IMG cover { get; set; }
     }
 
     public class ElementDateDay : ICloneable
@@ -4075,6 +4087,17 @@ namespace Watch_Face_Editor
         }
 
 
+    }
+
+
+    public class EditableElements
+    {
+        public List<WATCHFACE_EDIT_GROUP> Watchface_edit_group { get; set; }
+        public hmUI_widget_IMG maskCover { get; set; } //100%mask
+        public hmUI_widget_IMG mask { get; set; } //70%mask
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = false;
     }
 }
 

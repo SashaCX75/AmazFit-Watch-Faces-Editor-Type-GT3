@@ -21,6 +21,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace Watch_Face_Editor
@@ -1541,6 +1542,7 @@ namespace Watch_Face_Editor
             if (selectElementName != "DigitalTime") uCtrl_DigitalTime_Elm.ResetHighlightState();
             if (selectElementName != "AnalogTime") uCtrl_AnalogTime_Elm.ResetHighlightState();
             if (selectElementName != "EditablePointers") uCtrl_EditableTimePointer_Elm.ResetHighlightState();
+            if (selectElementName != "EditableElements") uCtrl_EditableElements_Elm.ResetHighlightState();
             if (selectElementName != "DateDay") uCtrl_DateDay_Elm.ResetHighlightState();
             if (selectElementName != "DateMonth") uCtrl_DateMonth_Elm.ResetHighlightState();
             if (selectElementName != "DateYear") uCtrl_DateYear_Elm.ResetHighlightState();
@@ -1598,6 +1600,7 @@ namespace Watch_Face_Editor
             uCtrl_DigitalTime_Elm.SettingsClear();
             uCtrl_AnalogTime_Elm.SettingsClear();
             uCtrl_EditableTimePointer_Elm.SettingsClear();
+            uCtrl_EditableElements_Elm.SettingsClear();
 
             uCtrl_DateDay_Elm.SettingsClear();
             uCtrl_DateMonth_Elm.SettingsClear();
@@ -2647,10 +2650,17 @@ namespace Watch_Face_Editor
                     #endregion
 
                     int link_aod = radioButton_ScreenNormal.Checked ? 0 : 1;
+                    showEeditMode = false;
+                    edit_mode = 0;
                     if (uCtrl_EditableBackground_Opt.Visible && uCtrl_EditableBackground_Opt.checkBox_edit_mode.Checked)
                     {
                         showEeditMode = true;
                         edit_mode = 1;
+                    }
+                    if (uCtrl_EditableTimePointer_Opt.Visible && uCtrl_EditableTimePointer_Opt.checkBox_edit_mode.Checked)
+                    {
+                        showEeditMode = true;
+                        edit_mode = 3;
                     }
                     Preview_screen(gPanelPreviewResize, 1, checkBox_crop.Checked,
                         checkBox_WebW.Checked, checkBox_WebB.Checked, checkBox_border.Checked,
@@ -2717,6 +2727,11 @@ namespace Watch_Face_Editor
             {
                 showEeditMode = true;
                 edit_mode = 1;
+            }
+            if (uCtrl_EditableTimePointer_Opt.Visible && uCtrl_EditableTimePointer_Opt.checkBox_edit_mode.Checked)
+            {
+                showEeditMode = true;
+                edit_mode = 3;
             }
             Preview_screen(gPanel, scale, checkBox_crop.Checked, checkBox_WebW.Checked, checkBox_WebB.Checked,
                 checkBox_border.Checked, checkBox_Show_Shortcuts.Checked, checkBox_Shortcuts_Area.Checked,
@@ -2812,14 +2827,19 @@ namespace Watch_Face_Editor
             }
             if (comboBox_AddTime.SelectedIndex == 2)
             {
-                AddEditableTimePointer();
-                ShowElemetsWatchFace();
-                JSON_Modified = true;
-                FormText();
+                if (radioButton_ScreenNormal.Checked)
+                {
+                    AddEditableTimePointer();
+                    ShowElemetsWatchFace();
+                    JSON_Modified = true;
+                    FormText();
 
-                //panel_WatchfaceElements.AutoScrollPosition = new Point(
-                //    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                //    panel_WatchfaceElements.VerticalScroll.Maximum);
+                    //panel_WatchfaceElements.AutoScrollPosition = new Point(
+                    //    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                    //    panel_WatchfaceElements.VerticalScroll.Maximum); 
+                }
+                else MessageBox.Show(Properties.FormStrings.Message_EditablePointerAOD_Text, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             PreviewView = false;
             //if (comboBox_AddTime.SelectedIndex >= 0) MessageBox.Show(comboBox_AddTime.Text);
@@ -3144,6 +3164,22 @@ namespace Watch_Face_Editor
                 //    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
                 //    panel_WatchfaceElements.VerticalScroll.Maximum);
             }
+            if (comboBox_AddSystem.SelectedIndex == 4)
+            {
+                if (radioButton_ScreenNormal.Checked)
+                {
+                    AddEditableElements();
+                    ShowElemetsWatchFace();
+                    JSON_Modified = true;
+                    FormText();
+                }
+                else MessageBox.Show(Properties.FormStrings.Message_EditableElementsAOD_Text, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                //panel_WatchfaceElements.AutoScrollPosition = new Point(
+                //    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                //    panel_WatchfaceElements.VerticalScroll.Maximum);
+            }
 
             PreviewView = false;
             //if (comboBox_AddTime.SelectedIndex >= 0) MessageBox.Show(comboBox_AddTime.Text);
@@ -3374,7 +3410,7 @@ namespace Watch_Face_Editor
         private void AddEditableTimePointer()
         {
             if (!PreviewView) return;
-            List<object> Elements = new List<object>();
+            //List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             /*if (radioButton_ScreenNormal.Checked)
             {
@@ -3407,6 +3443,17 @@ namespace Watch_Face_Editor
             if (Watch_Face.ElementEditablePointers == null) Watch_Face.ElementEditablePointers = new ElementEditablePointers();
             Watch_Face.ElementEditablePointers.visible = true;
             uCtrl_EditableTimePointer_Opt.SettingsClear();
+        }
+
+        /// <summary>Добавляем редактируемые стрелки</summary>
+        private void AddEditableElements()
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) Watch_Face = new WATCH_FACE();
+
+            if (Watch_Face.Editable_Elements == null) Watch_Face.Editable_Elements = new EditableElements();
+            Watch_Face.Editable_Elements.visible = true;
+            //uCtrl_EditableElements_Opt.SettingsClear();
         }
 
         /// <summary>Добавляем дату в циферблат</summary>
@@ -4206,6 +4253,7 @@ namespace Watch_Face_Editor
             uCtrl_DigitalTime_Elm.Visible = false;
             uCtrl_AnalogTime_Elm.Visible = false;
             uCtrl_EditableTimePointer_Elm.Visible = false;
+            uCtrl_EditableElements_Elm.Visible = false;
 
             uCtrl_DateDay_Elm.Visible = false;
             uCtrl_DateMonth_Elm.Visible = false;
@@ -5332,6 +5380,19 @@ namespace Watch_Face_Editor
                 }
             }
 
+            int elementsCount = elements.Count;
+
+            if (Watch_Face.Editable_Elements != null)
+            {
+                EditableElements editableElements = Watch_Face.Editable_Elements;
+                uCtrl_EditableElements_Elm.SetVisibilityElementStatus(editableElements.visible);
+
+                uCtrl_EditableElements_Elm.Visible = true;
+                SetElementPositionInGUI(editableElements.GetType().Name, count - elementsCount - 2);
+                //SetElementPositionInGUI(type, i + 1); 
+                elementsCount++;
+            }
+
 
             if (Watch_Face.ElementEditablePointers != null)
             {
@@ -5339,7 +5400,7 @@ namespace Watch_Face_Editor
                 uCtrl_EditableTimePointer_Elm.SetVisibilityElementStatus(EditablePointers.visible);
 
                 uCtrl_EditableTimePointer_Elm.Visible = true;
-                SetElementPositionInGUI(EditablePointers.GetType().Name, count - elements.Count - 2);
+                SetElementPositionInGUI(EditablePointers.GetType().Name, count - elementsCount - 2);
                 //SetElementPositionInGUI(type, i + 1); 
             }
             
@@ -14377,6 +14438,36 @@ namespace Watch_Face_Editor
                         Watch_Face.ScreenNormal.Background.Editable_Background.selected_background = bg_index;
                     }
 
+
+                    Logger.WriteLine("SaveGIF_Editable_Pointers");
+                    // Editable_Background
+                    if (Watch_Face.ElementEditablePointers != null && 
+                        Watch_Face.ElementEditablePointers.visible &&
+                        Watch_Face.ElementEditablePointers.config != null &&
+                        Watch_Face.ElementEditablePointers.config.Count > 0)
+                    {
+                        int p_index = Watch_Face.ElementEditablePointers.selected_pointers;
+                        //int link = radioButton_ScreenNormal.Checked ? 0 : 1;
+                        int link_AOD = 0;
+                        for (int index = 0; index < Watch_Face.ElementEditablePointers.config.Count; index++)
+                        {
+                            bitmap = bitmapTemp;
+                            gPanel = Graphics.FromImage(bitmap);
+                            Watch_Face.ElementEditablePointers.selected_pointers = index;
+                            Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true,
+                                            false, false, false, link_AOD, false, -1, true, 3);
+                            if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
+                            else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
+                            // Add first image and set the animation delay to 100ms
+                            MagickImage item_bg_edit = new MagickImage(bitmap);
+                            //ExifProfile profile = item.GetExifProfile();
+                            collection.Add(item_bg_edit);
+                            //collection[collection.Count - 1].AnimationDelay = 100;
+                            collection[collection.Count - 1].AnimationDelay = (int)(100 * numericUpDown_Gif_Speed.Value);
+                        }
+                        Watch_Face.ScreenNormal.Background.Editable_Background.selected_background = p_index;
+                    }
+
                     // Optionally reduce colors
                     QuantizeSettings settings = new QuantizeSettings();
                     //settings.Colors = 256;
@@ -14982,6 +15073,9 @@ namespace Watch_Face_Editor
         {
             PreviewImage();
         }
+
+        
+
     }
 }
 

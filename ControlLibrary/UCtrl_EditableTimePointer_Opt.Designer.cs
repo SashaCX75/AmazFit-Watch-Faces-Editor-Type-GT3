@@ -94,6 +94,13 @@
             this.label21 = new System.Windows.Forms.Label();
             this.comboBox_Preview_image = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.numericUpDown_pointer_centr_Y = new System.Windows.Forms.NumericUpDown();
+            this.numericUpDown_pointer_centr_X = new System.Windows.Forms.NumericUpDown();
+            this.comboBox_pointer_imageCentr = new System.Windows.Forms.ComboBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage_hour = new System.Windows.Forms.TabPage();
             this.tabPage_minute = new System.Windows.Forms.TabPage();
@@ -116,6 +123,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_tipX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_tipY)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_pointer_centr_Y)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_pointer_centr_X)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage_hour.SuspendLayout();
             this.tabPage_minute.SuspendLayout();
@@ -125,9 +134,9 @@
             // 
             // comboBox_select_pointerSet
             // 
-            resources.ApplyResources(this.comboBox_select_pointerSet, "comboBox_select_pointerSet");
             this.comboBox_select_pointerSet.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_select_pointerSet.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_select_pointerSet, "comboBox_select_pointerSet");
             this.comboBox_select_pointerSet.Name = "comboBox_select_pointerSet";
             this.comboBox_select_pointerSet.SelectedIndexChanged += new System.EventHandler(this.comboBox_select_pointerSet_SelectedIndexChanged);
             // 
@@ -199,10 +208,10 @@
             // 
             // comboBox_hourPointer_image
             // 
-            resources.ApplyResources(this.comboBox_hourPointer_image, "comboBox_hourPointer_image");
             this.comboBox_hourPointer_image.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_hourPointer_image.DropDownWidth = 135;
             this.comboBox_hourPointer_image.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_hourPointer_image, "comboBox_hourPointer_image");
             this.comboBox_hourPointer_image.Name = "comboBox_hourPointer_image";
             this.comboBox_hourPointer_image.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
             this.comboBox_hourPointer_image.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
@@ -212,8 +221,8 @@
             // 
             // numericUpDown_hourPointer_X
             // 
-            resources.ApplyResources(this.numericUpDown_hourPointer_X, "numericUpDown_hourPointer_X");
             this.numericUpDown_hourPointer_X.ContextMenuStrip = this.contextMenuStrip_X;
+            resources.ApplyResources(this.numericUpDown_hourPointer_X, "numericUpDown_hourPointer_X");
             this.numericUpDown_hourPointer_X.Maximum = new decimal(new int[] {
             999,
             0,
@@ -230,13 +239,13 @@
             // 
             // contextMenuStrip_X
             // 
-            resources.ApplyResources(this.contextMenuStrip_X, "contextMenuStrip_X");
             this.contextMenuStrip_X.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip_X.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вставитьКоординатуХToolStripMenuItem,
             this.копироватьToolStripMenuItemX,
             this.вставитьToolStripMenuItemX});
             this.contextMenuStrip_X.Name = "contextMenuStrip_X";
+            resources.ApplyResources(this.contextMenuStrip_X, "contextMenuStrip_X");
             this.contextMenuStrip_X.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_X_Opening);
             // 
             // вставитьКоординатуХToolStripMenuItem
@@ -259,8 +268,8 @@
             // 
             // numericUpDown_hourPointer_Y
             // 
-            resources.ApplyResources(this.numericUpDown_hourPointer_Y, "numericUpDown_hourPointer_Y");
             this.numericUpDown_hourPointer_Y.ContextMenuStrip = this.contextMenuStrip_Y;
+            resources.ApplyResources(this.numericUpDown_hourPointer_Y, "numericUpDown_hourPointer_Y");
             this.numericUpDown_hourPointer_Y.Maximum = new decimal(new int[] {
             999,
             0,
@@ -277,13 +286,13 @@
             // 
             // contextMenuStrip_Y
             // 
-            resources.ApplyResources(this.contextMenuStrip_Y, "contextMenuStrip_Y");
             this.contextMenuStrip_Y.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip_Y.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вставитьКоординатуYToolStripMenuItem,
             this.копироватьToolStripMenuItemY,
             this.вставитьToolStripMenuItemY});
             this.contextMenuStrip_Y.Name = "contextMenuStrip_X";
+            resources.ApplyResources(this.contextMenuStrip_Y, "contextMenuStrip_Y");
             this.contextMenuStrip_Y.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Y_Opening);
             // 
             // вставитьКоординатуYToolStripMenuItem
@@ -373,10 +382,10 @@
             // 
             // comboBox_minutePointer_image
             // 
-            resources.ApplyResources(this.comboBox_minutePointer_image, "comboBox_minutePointer_image");
             this.comboBox_minutePointer_image.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_minutePointer_image.DropDownWidth = 135;
             this.comboBox_minutePointer_image.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_minutePointer_image, "comboBox_minutePointer_image");
             this.comboBox_minutePointer_image.Name = "comboBox_minutePointer_image";
             this.comboBox_minutePointer_image.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
             this.comboBox_minutePointer_image.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
@@ -386,8 +395,8 @@
             // 
             // numericUpDown_minutePointer_X
             // 
-            resources.ApplyResources(this.numericUpDown_minutePointer_X, "numericUpDown_minutePointer_X");
             this.numericUpDown_minutePointer_X.ContextMenuStrip = this.contextMenuStrip_X;
+            resources.ApplyResources(this.numericUpDown_minutePointer_X, "numericUpDown_minutePointer_X");
             this.numericUpDown_minutePointer_X.Maximum = new decimal(new int[] {
             999,
             0,
@@ -404,8 +413,8 @@
             // 
             // numericUpDown_minutePointer_Y
             // 
-            resources.ApplyResources(this.numericUpDown_minutePointer_Y, "numericUpDown_minutePointer_Y");
             this.numericUpDown_minutePointer_Y.ContextMenuStrip = this.contextMenuStrip_Y;
+            resources.ApplyResources(this.numericUpDown_minutePointer_Y, "numericUpDown_minutePointer_Y");
             this.numericUpDown_minutePointer_Y.Maximum = new decimal(new int[] {
             999,
             0,
@@ -489,10 +498,10 @@
             // 
             // comboBox_secondPointer_image
             // 
-            resources.ApplyResources(this.comboBox_secondPointer_image, "comboBox_secondPointer_image");
             this.comboBox_secondPointer_image.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_secondPointer_image.DropDownWidth = 135;
             this.comboBox_secondPointer_image.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_secondPointer_image, "comboBox_secondPointer_image");
             this.comboBox_secondPointer_image.Name = "comboBox_secondPointer_image";
             this.comboBox_secondPointer_image.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
             this.comboBox_secondPointer_image.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
@@ -502,8 +511,8 @@
             // 
             // numericUpDown_secondPointer_X
             // 
-            resources.ApplyResources(this.numericUpDown_secondPointer_X, "numericUpDown_secondPointer_X");
             this.numericUpDown_secondPointer_X.ContextMenuStrip = this.contextMenuStrip_X;
+            resources.ApplyResources(this.numericUpDown_secondPointer_X, "numericUpDown_secondPointer_X");
             this.numericUpDown_secondPointer_X.Maximum = new decimal(new int[] {
             999,
             0,
@@ -520,8 +529,8 @@
             // 
             // numericUpDown_secondPointer_Y
             // 
-            resources.ApplyResources(this.numericUpDown_secondPointer_Y, "numericUpDown_secondPointer_Y");
             this.numericUpDown_secondPointer_Y.ContextMenuStrip = this.contextMenuStrip_Y;
+            resources.ApplyResources(this.numericUpDown_secondPointer_Y, "numericUpDown_secondPointer_Y");
             this.numericUpDown_secondPointer_Y.Maximum = new decimal(new int[] {
             999,
             0,
@@ -558,10 +567,10 @@
             // 
             // comboBox_foreground
             // 
-            resources.ApplyResources(this.comboBox_foreground, "comboBox_foreground");
             this.comboBox_foreground.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_foreground.DropDownWidth = 135;
             this.comboBox_foreground.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_foreground, "comboBox_foreground");
             this.comboBox_foreground.Name = "comboBox_foreground";
             this.comboBox_foreground.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
             this.comboBox_foreground.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
@@ -583,10 +592,10 @@
             // 
             // comboBox_tip
             // 
-            resources.ApplyResources(this.comboBox_tip, "comboBox_tip");
             this.comboBox_tip.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_tip.DropDownWidth = 135;
             this.comboBox_tip.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_tip, "comboBox_tip");
             this.comboBox_tip.Name = "comboBox_tip";
             this.comboBox_tip.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
             this.comboBox_tip.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
@@ -596,8 +605,8 @@
             // 
             // numericUpDown_tipX
             // 
-            resources.ApplyResources(this.numericUpDown_tipX, "numericUpDown_tipX");
             this.numericUpDown_tipX.ContextMenuStrip = this.contextMenuStrip_X;
+            resources.ApplyResources(this.numericUpDown_tipX, "numericUpDown_tipX");
             this.numericUpDown_tipX.Maximum = new decimal(new int[] {
             999,
             0,
@@ -614,8 +623,8 @@
             // 
             // numericUpDown_tipY
             // 
-            resources.ApplyResources(this.numericUpDown_tipY, "numericUpDown_tipY");
             this.numericUpDown_tipY.ContextMenuStrip = this.contextMenuStrip_Y;
+            resources.ApplyResources(this.numericUpDown_tipY, "numericUpDown_tipY");
             this.numericUpDown_tipY.Maximum = new decimal(new int[] {
             999,
             0,
@@ -678,10 +687,10 @@
             // 
             // comboBox_Preview_image
             // 
-            resources.ApplyResources(this.comboBox_Preview_image, "comboBox_Preview_image");
             this.comboBox_Preview_image.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_Preview_image.DropDownWidth = 135;
             this.comboBox_Preview_image.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_Preview_image, "comboBox_Preview_image");
             this.comboBox_Preview_image.Name = "comboBox_Preview_image";
             this.comboBox_Preview_image.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
             this.comboBox_Preview_image.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
@@ -691,7 +700,13 @@
             // 
             // panel1
             // 
-            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Controls.Add(this.label22);
+            this.panel1.Controls.Add(this.label23);
+            this.panel1.Controls.Add(this.label24);
+            this.panel1.Controls.Add(this.label25);
+            this.panel1.Controls.Add(this.numericUpDown_pointer_centr_Y);
+            this.panel1.Controls.Add(this.numericUpDown_pointer_centr_X);
+            this.panel1.Controls.Add(this.comboBox_pointer_imageCentr);
             this.panel1.Controls.Add(this.label18);
             this.panel1.Controls.Add(this.label20);
             this.panel1.Controls.Add(this.label19);
@@ -701,7 +716,77 @@
             this.panel1.Controls.Add(this.comboBox_tip);
             this.panel1.Controls.Add(this.checkBox_edit_mode);
             this.panel1.Controls.Add(this.checkBox_secondInAOD);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
+            // 
+            // label22
+            // 
+            resources.ApplyResources(this.label22, "label22");
+            this.label22.Name = "label22";
+            // 
+            // label23
+            // 
+            resources.ApplyResources(this.label23, "label23");
+            this.label23.Name = "label23";
+            // 
+            // label24
+            // 
+            resources.ApplyResources(this.label24, "label24");
+            this.label24.Name = "label24";
+            // 
+            // label25
+            // 
+            resources.ApplyResources(this.label25, "label25");
+            this.label25.Name = "label25";
+            // 
+            // numericUpDown_pointer_centr_Y
+            // 
+            this.numericUpDown_pointer_centr_Y.ContextMenuStrip = this.contextMenuStrip_Y;
+            resources.ApplyResources(this.numericUpDown_pointer_centr_Y, "numericUpDown_pointer_centr_Y");
+            this.numericUpDown_pointer_centr_Y.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.numericUpDown_pointer_centr_Y.Minimum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown_pointer_centr_Y.Name = "numericUpDown_pointer_centr_Y";
+            this.numericUpDown_pointer_centr_Y.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_pointer_centr_Y.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesY_MouseDoubleClick);
+            // 
+            // numericUpDown_pointer_centr_X
+            // 
+            this.numericUpDown_pointer_centr_X.ContextMenuStrip = this.contextMenuStrip_X;
+            resources.ApplyResources(this.numericUpDown_pointer_centr_X, "numericUpDown_pointer_centr_X");
+            this.numericUpDown_pointer_centr_X.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.numericUpDown_pointer_centr_X.Minimum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown_pointer_centr_X.Name = "numericUpDown_pointer_centr_X";
+            this.numericUpDown_pointer_centr_X.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_pointer_centr_X.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesX_MouseDoubleClick);
+            // 
+            // comboBox_pointer_imageCentr
+            // 
+            this.comboBox_pointer_imageCentr.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.comboBox_pointer_imageCentr.DropDownWidth = 135;
+            this.comboBox_pointer_imageCentr.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_pointer_imageCentr, "comboBox_pointer_imageCentr");
+            this.comboBox_pointer_imageCentr.Name = "comboBox_pointer_imageCentr";
+            this.comboBox_pointer_imageCentr.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
+            this.comboBox_pointer_imageCentr.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
+            this.comboBox_pointer_imageCentr.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
+            this.comboBox_pointer_imageCentr.KeyDown += new System.Windows.Forms.KeyEventHandler(this.comboBox_KeyDown);
+            this.comboBox_pointer_imageCentr.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_KeyPress);
             // 
             // tabControl1
             // 
@@ -714,7 +799,6 @@
             // 
             // tabPage_hour
             // 
-            resources.ApplyResources(this.tabPage_hour, "tabPage_hour");
             this.tabPage_hour.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage_hour.Controls.Add(this.numericUpDown_hourPointer_offset_X);
             this.tabPage_hour.Controls.Add(this.comboBox_hourPointer_image);
@@ -728,11 +812,11 @@
             this.tabPage_hour.Controls.Add(this.label02);
             this.tabPage_hour.Controls.Add(this.numericUpDown_hourPointer_Y);
             this.tabPage_hour.Controls.Add(this.numericUpDown_hourPointer_X);
+            resources.ApplyResources(this.tabPage_hour, "tabPage_hour");
             this.tabPage_hour.Name = "tabPage_hour";
             // 
             // tabPage_minute
             // 
-            resources.ApplyResources(this.tabPage_minute, "tabPage_minute");
             this.tabPage_minute.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage_minute.Controls.Add(this.numericUpDown_minutePointer_offset_X);
             this.tabPage_minute.Controls.Add(this.label6);
@@ -746,11 +830,11 @@
             this.tabPage_minute.Controls.Add(this.numericUpDown_minutePointer_Y);
             this.tabPage_minute.Controls.Add(this.comboBox_minutePointer_image);
             this.tabPage_minute.Controls.Add(this.numericUpDown_minutePointer_X);
+            resources.ApplyResources(this.tabPage_minute, "tabPage_minute");
             this.tabPage_minute.Name = "tabPage_minute";
             // 
             // tabPage_second
             // 
-            resources.ApplyResources(this.tabPage_second, "tabPage_second");
             this.tabPage_second.BackColor = System.Drawing.SystemColors.Control;
             this.tabPage_second.Controls.Add(this.numericUpDown_secondPointer_offset_X);
             this.tabPage_second.Controls.Add(this.label13);
@@ -764,6 +848,7 @@
             this.tabPage_second.Controls.Add(this.numericUpDown_secondPointer_Y);
             this.tabPage_second.Controls.Add(this.comboBox_secondPointer_image);
             this.tabPage_second.Controls.Add(this.numericUpDown_secondPointer_X);
+            resources.ApplyResources(this.tabPage_second, "tabPage_second");
             this.tabPage_second.Name = "tabPage_second";
             // 
             // panel2
@@ -808,6 +893,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_tipY)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_pointer_centr_Y)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_pointer_centr_X)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage_hour.ResumeLayout(false);
             this.tabPage_hour.PerformLayout();
@@ -892,5 +979,12 @@
         private System.Windows.Forms.TabPage tabPage_minute;
         private System.Windows.Forms.TabPage tabPage_second;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label22;
+        protected System.Windows.Forms.Label label23;
+        protected System.Windows.Forms.Label label24;
+        protected System.Windows.Forms.Label label25;
+        public System.Windows.Forms.NumericUpDown numericUpDown_pointer_centr_Y;
+        public System.Windows.Forms.NumericUpDown numericUpDown_pointer_centr_X;
+        private System.Windows.Forms.ComboBox comboBox_pointer_imageCentr;
     }
 }

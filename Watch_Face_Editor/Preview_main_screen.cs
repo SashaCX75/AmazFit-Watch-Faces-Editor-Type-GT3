@@ -38,8 +38,8 @@ namespace Watch_Face_Editor
         /// <param name="showEeditMode">Отображение в режиме редактирования</param>
         /// <param name="edit_mode">Выбор отображаемого режима редактирования. 
         /// 1 - редактируемый задний фон
-        /// 2 - редактируемые стрелки
-        /// 3 - редактируемые элементы</param>
+        /// 2 - редактируемые элементы
+        /// 3 - редактируемые стрелки</param>
         public void Preview_screen(Graphics gPanel, float scale, bool crop, bool WMesh, bool BMesh, bool BBorder,
             bool showShortcuts, bool showShortcutsArea, bool showShortcutsBorder, bool showShortcutsImage, 
             bool showAnimation, bool showProgressArea, bool showCentrHend, 
@@ -1914,7 +1914,18 @@ namespace Watch_Face_Editor
                         int sec = WatchFacePreviewSet.Time.Seconds;
                         float angle = 360 * sec / 60;
                         DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
-                    } 
+                    }
+
+                    if (EditablePointers.cover != null && EditablePointers.cover.src != null && 
+                        EditablePointers.cover.src.Length > 0)
+                    {
+                        int image_Index = ListImages.IndexOf(EditablePointers.cover.src);
+                        int pos_x = EditablePointers.cover.x;
+                        int pos_y = EditablePointers.cover.y;
+
+                        src = OpenFileStream(ListImagesFullName[image_Index]);
+                        gPanel.DrawImage(src, pos_x, pos_y);
+                    }
                 }
 
 
@@ -3295,6 +3306,7 @@ namespace Watch_Face_Editor
             int alignment, int value, bool addZero, int value_lenght, int separator_index, bool BBorder, 
             string elementName = "")
         {
+            if (image_index < 0 || image_index >= ListImagesFullName.Count) return 0;
             //while (spacing > 127)
             //{
             //    spacing = spacing - 256;

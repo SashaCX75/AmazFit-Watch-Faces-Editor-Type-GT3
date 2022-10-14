@@ -203,7 +203,6 @@ namespace ControlLibrary
             highlight_images = true;
             highlight_segments = false;
             highlight_pointer = false;
-            highlight_pointer = false;
             highlight_sunset = false;
             highlight_sunrise = false;
             highlight_sunset_sunrise = false;
@@ -225,7 +224,6 @@ namespace ControlLibrary
             highlight_images = false;
             highlight_segments = true;
             highlight_pointer = false;
-            highlight_pointer = false;
             highlight_sunset = false;
             highlight_sunrise = false;
             highlight_sunset_sunrise = false;
@@ -246,7 +244,6 @@ namespace ControlLibrary
 
             highlight_images = false;
             highlight_segments = false;
-            highlight_pointer = false;
             highlight_pointer = true;
             highlight_sunset = false;
             highlight_sunrise = false;

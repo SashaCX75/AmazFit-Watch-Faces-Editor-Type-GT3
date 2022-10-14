@@ -322,6 +322,24 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Вы не можете добавлять настраиваемые элементы на экран AOD..
+        /// </summary>
+        internal static string Message_EditableElementsAOD_Text {
+            get {
+                return ResourceManager.GetString("Message_EditableElementsAOD_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Вы не можете добавлять настраиваемые стрелки на экран AOD..
+        /// </summary>
+        internal static string Message_EditablePointerAOD_Text {
+            get {
+                return ResourceManager.GetString("Message_EditablePointerAOD_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Ошибка.
         /// </summary>
         internal static string Message_Error_Caption {

@@ -204,6 +204,12 @@
   <data name="Message_Delet_Text21" xml:space="preserve">
     <value>?</value>
   </data>
+  <data name="Message_EditableElementsAOD_Text" xml:space="preserve">
+    <value>Вы не можете добавлять настраиваемые элементы на экран AOD.</value>
+  </data>
+  <data name="Message_EditablePointerAOD_Text" xml:space="preserve">
+    <value>Вы не можете добавлять настраиваемые стрелки на экран AOD.</value>
+  </data>
   <data name="Message_ErrorReadJS" xml:space="preserve">
     <value>Не удалось распознать структуру циферблата</value>
   </data>

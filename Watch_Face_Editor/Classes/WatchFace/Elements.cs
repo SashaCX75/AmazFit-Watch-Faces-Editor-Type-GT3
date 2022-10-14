@@ -246,7 +246,7 @@ namespace Watch_Face_Editor
 
     }
 
-    /// <summary>Стрелочный указатель</summary>
+    /// <summary>Редактируемые стрелки часов</summary>
     public class EDITABLE_POINTER
     {
 
@@ -267,6 +267,56 @@ namespace Watch_Face_Editor
 
     }
 
+    /// <summary>Редактируемые элементы</summary>
+    public class WATCHFACE_EDIT_GROUP
+    {
+        /// <summary>Выбраный элемент</summary>
+        public int selected_element = 0;
+
+        /// <summary>Координаты элемента</summary>
+        public int x = 0;
+
+        /// <summary>Координаты элемента</summary>
+        public int y = 0;
+
+        /// <summary>Размер элемента</summary>
+        public int h = 0;
+
+        /// <summary>Размер элемента</summary>
+        public int w = 0;
+
+        /// <summary>Перечень элементов</summary>
+        public List<Optional_Types_List> optional_types_list { get; set; }
+
+        /// <summary>Набор элементов</summary>
+        public List<Object> Elements { get; set; }
+
+        /// <summary>Фон пояснительной надписи</summary>
+        public string tips_BG { get; set; }
+
+        /// <summary>Координаты пояснительной надписи</summary>
+        public int tips_x { get; set; }
+
+        /// <summary>Координаты пояснительной надписи</summary>
+        public int tips_y { get; set; }
+
+        /// <summary>Ширина пояснительной надписи</summary>
+        public int tips_width { get; set; }
+
+        /// <summary>Отступы для пояснительной надписи</summary>
+        public int tips_margin { get; set; }
+
+        /// <summary>Рамка выделения</summary>
+        public string fg { get; set; }
+
+        /// <summary>Отображать элементы в режиме АОД</summary>
+        public bool AOD_show { get; set; } = false;
+
+        /// <summary>Отображать в режиме редактирования</summary>
+        public bool showEeditMode { get; set; } = false;
+
+    }
+
     /// <summary>Набор параметров для настраиваемого фона</summary>
     public class BackgroundList
     {
@@ -280,6 +330,13 @@ namespace Watch_Face_Editor
         public EDITABLE_POINTER hour { get; set; }
         public EDITABLE_POINTER minute { get; set; }
         public EDITABLE_POINTER second { get; set; }
+        public string preview { get; set; }
+    }
+
+    /// <summary>Набор параметров для настраиваемого фона</summary>
+    public class Optional_Types_List
+    {
+        public string type { get; set; }
         public string preview { get; set; }
     }
 

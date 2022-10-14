@@ -41,7 +41,7 @@ namespace ControlLibrary
             {
                 comboBox_select_background.Items.Add(i.ToString());
             }
-            if (count >= 5) button_add.Enabled = false;
+            if (count >= 9) button_add.Enabled = false;
             else button_add.Enabled = true;
             setValue = false;
         }

@@ -1054,6 +1054,9 @@ namespace Watch_Face_Editor
             uCtrl_EditableBackground_Opt.SetTip(editable_background.tips_bg);
             uCtrl_EditableBackground_Opt.numericUpDown_tipX.Value = editable_background.tips_x;
             uCtrl_EditableBackground_Opt.numericUpDown_tipY.Value = editable_background.tips_y;
+
+            uCtrl_EditableBackground_Opt.checkBox_edit_mode.Checked = editable_background.showEeditMode;
+
             PreviewView = true;
         }
 
@@ -1161,6 +1164,16 @@ namespace Watch_Face_Editor
             uCtrl_EditableTimePointer_Opt.SetTip(editablePointers.tips_bg);
             uCtrl_EditableTimePointer_Opt.numericUpDown_tipX.Value = editablePointers.tips_x;
             uCtrl_EditableTimePointer_Opt.numericUpDown_tipY.Value = editablePointers.tips_y;
+
+            if (editablePointers.cover != null && editablePointers.cover.src != null && editablePointers.cover.src.Length > 0)
+            {
+                uCtrl_EditableTimePointer_Opt.SetImageCentr(editablePointers.cover.src);
+                uCtrl_EditableTimePointer_Opt.numericUpDown_pointer_centr_X.Value = editablePointers.cover.x;
+                uCtrl_EditableTimePointer_Opt.numericUpDown_pointer_centr_Y.Value = editablePointers.cover.y; 
+            }
+
+            uCtrl_EditableTimePointer_Opt.checkBox_secondInAOD.Checked = editablePointers.AOD_show;
+            uCtrl_EditableTimePointer_Opt.checkBox_edit_mode.Checked = editablePointers.showEeditMode;
 
             PreviewView = true;
         }
@@ -2280,8 +2293,8 @@ namespace Watch_Face_Editor
             if (background == null) return;
             background.selected_background = index;
 
-            PreviewImage();
             Read_EditableBackground_Options(background);
+            PreviewImage();
         }
 
         private void uCtrl_EditableBackground_Opt_PreviewAdd(object sender, EventArgs eventArgs, int index)
@@ -2465,6 +2478,7 @@ namespace Watch_Face_Editor
 
             background_list[index].path = uCtrl_EditableBackground_Opt.GetImage();
             background_list[index].preview = uCtrl_EditableBackground_Opt.GetPreview();
+            background.showEeditMode = uCtrl_EditableBackground_Opt.checkBox_edit_mode.Checked;
 
             JSON_Modified = true;
             PreviewImage();
@@ -2551,8 +2565,8 @@ namespace Watch_Face_Editor
             if (editablePointers == null) return;
             editablePointers.selected_pointers = index;
 
-            PreviewImage();
             Read_EditablePointers_Options(editablePointers);
+            PreviewImage();
         }
 
         private void uCtrl_EditableTimePointer_Opt_PreviewAdd(object sender, EventArgs eventArgs, int index)
@@ -2718,6 +2732,7 @@ namespace Watch_Face_Editor
             if (editablePointers == null) return;
 
             if (editablePointers.config == null) editablePointers.config = new List<PointersList>();
+            if (editablePointers.cover == null) editablePointers.cover = new hmUI_widget_IMG();
             List<PointersList> pointers_list = editablePointers.config;
             if (pointers_list == null) return;
             if (pointers_list.Count < index + 1) return;
@@ -2746,9 +2761,14 @@ namespace Watch_Face_Editor
             pointers_list[index].second.posX = (int)uCtrl_EditableTimePointer_Opt.numericUpDown_secondPointer_offset_X.Value;
             pointers_list[index].second.posY = (int)uCtrl_EditableTimePointer_Opt.numericUpDown_secondPointer_offset_Y.Value;
 
+            editablePointers.cover.src = uCtrl_EditableTimePointer_Opt.GetImageCentr();
+            editablePointers.cover.x = (int)uCtrl_EditableTimePointer_Opt.numericUpDown_pointer_centr_X.Value;
+            editablePointers.cover.y = (int)uCtrl_EditableTimePointer_Opt.numericUpDown_pointer_centr_Y.Value;
+
             pointers_list[index].preview = uCtrl_EditableTimePointer_Opt.GetPreview();
 
             editablePointers.AOD_show = uCtrl_EditableTimePointer_Opt.checkBox_secondInAOD.Checked;
+            editablePointers.showEeditMode = uCtrl_EditableTimePointer_Opt.checkBox_edit_mode.Checked;
 
             JSON_Modified = true;
             PreviewImage();

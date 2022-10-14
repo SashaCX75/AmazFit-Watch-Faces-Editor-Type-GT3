@@ -129,7 +129,7 @@ namespace Watch_Face_Editor
 
                 if (editablePointersOptions.Length > 5)
                 {
-                    variables += TabInString(4) + "let editableTimPointers = ''" + Environment.NewLine;
+                    variables += TabInString(4) + "let editableTimePointers = ''" + Environment.NewLine;
                     items += Environment.NewLine + TabInString(6) +
                         "const pointerEdit = hmUI.createWidget(hmUI.widget.WATCHFACE_EDIT_POINTER, {" +
                             editablePointersOptions + TabInString(6) + "});" + Environment.NewLine;
@@ -144,7 +144,24 @@ namespace Watch_Face_Editor
                         items += TabInString(6) + "const pointerProp = pointerEdit.getProperty(hmUI.prop.CURRENT_CONFIG, true);" + Environment.NewLine;
                     }
 
-                    items += TabInString(6) + "editableTimPointers = hmUI.createWidget(hmUI.widget.TIME_POINTER, pointerProp);" + Environment.NewLine;
+                    string coverOptions = "";
+                    items += TabInString(6) + "editableTimePointers = hmUI.createWidget(hmUI.widget.TIME_POINTER, pointerProp);" + Environment.NewLine;
+
+                    if (EditablePointers.cover != null && EditablePointers.cover.src != null && 
+                        EditablePointers.cover.src.Length > 0)
+                    {
+                        coverOptions = IMG_Options(EditablePointers.cover, null);
+
+                        // cover
+                        if (coverOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " +
+                                "editableTimePointers_cover_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                "editableTimePointers_cover_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    coverOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+                    }
                 }
 
             }
@@ -456,7 +473,7 @@ namespace Watch_Face_Editor
 
                     if (editablePointersOptions.Length > 5)
                     {
-                        variables += TabInString(4) + "let editableTimPointers = ''" + Environment.NewLine;
+                        variables += TabInString(4) + "let editableTimePointers = ''" + Environment.NewLine;
                         items += Environment.NewLine + TabInString(6) +
                             "const pointerEdit = hmUI.createWidget(hmUI.widget.WATCHFACE_EDIT_POINTER, {" +
                                 editablePointersOptions + TabInString(6) + "});" + Environment.NewLine;
@@ -471,7 +488,7 @@ namespace Watch_Face_Editor
                             items += TabInString(6) + "const pointerProp = pointerEdit.getProperty(hmUI.prop.CURRENT_CONFIG, true);" + Environment.NewLine;
                         }
 
-                        items += TabInString(6) + "editableTimPointers = hmUI.createWidget(hmUI.widget.TIME_POINTER, pointerProp);" + Environment.NewLine;  
+                        items += TabInString(6) + "editableTimePointers = hmUI.createWidget(hmUI.widget.TIME_POINTER, pointerProp);" + Environment.NewLine;  
                     }
 
                     break;
@@ -4855,7 +4872,10 @@ namespace Watch_Face_Editor
                 if (img.w != null) options += TabInString(7) + "w: " + img.w.ToString() + "," + Environment.NewLine;
                 if (img.h != null) options += TabInString(7) + "h: " + img.h.ToString() + "," + Environment.NewLine;
                 options += TabInString(7) + "src: '" + img.src + ".png'," + Environment.NewLine;
-                options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine; 
+                if (show_level != null && show_level.Length > 0)
+                {
+                    options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine; 
+                } 
             }
             return options;
         }
@@ -6458,6 +6478,17 @@ namespace Watch_Face_Editor
                     string configStr = "";
                     PointersList pointersList = editable_pointers.config[i];
 
+                    if (pointersList.second != null && pointersList.second.path != null && pointersList.second.path.Length > 0)
+                    {
+                        configStr += TabInString(9) + "second: {" + Environment.NewLine;
+                        configStr += TabInString(10) + "centerX: " + pointersList.second.centerX.ToString() + "," + Environment.NewLine;
+                        configStr += TabInString(10) + "centerY: " + pointersList.second.centerY.ToString() + "," + Environment.NewLine;
+                        configStr += TabInString(10) + "posX: " + pointersList.second.posX.ToString() + "," + Environment.NewLine;
+                        configStr += TabInString(10) + "posY: " + pointersList.second.posY.ToString() + "," + Environment.NewLine;
+                        configStr += TabInString(10) + "path: '" + pointersList.second.path + ".png'," + Environment.NewLine;
+                        configStr += TabInString(9) + "}," + Environment.NewLine;
+                    }
+
                     if (pointersList.hour != null && pointersList.hour.path != null && pointersList.hour.path.Length > 0)
                     {
                         configStr += TabInString(9) + "hour: {" + Environment.NewLine;
@@ -6477,17 +6508,6 @@ namespace Watch_Face_Editor
                         configStr += TabInString(10) + "posX: " + pointersList.minute.posX.ToString() + "," + Environment.NewLine;
                         configStr += TabInString(10) + "posY: " + pointersList.minute.posY.ToString() + "," + Environment.NewLine;
                         configStr += TabInString(10) + "path: '" + pointersList.minute.path + ".png'," + Environment.NewLine;
-                        configStr += TabInString(9) + "}," + Environment.NewLine;
-                    }
-
-                    if (pointersList.second != null && pointersList.second.path != null && pointersList.second.path.Length > 0)
-                    {
-                        configStr += TabInString(9) + "second: {" + Environment.NewLine;
-                        configStr += TabInString(10) + "centerX: " + pointersList.second.centerX.ToString() + "," + Environment.NewLine;
-                        configStr += TabInString(10) + "centerY: " + pointersList.second.centerY.ToString() + "," + Environment.NewLine;
-                        configStr += TabInString(10) + "posX: " + pointersList.second.posX.ToString() + "," + Environment.NewLine;
-                        configStr += TabInString(10) + "posY: " + pointersList.second.posY.ToString() + "," + Environment.NewLine;
-                        configStr += TabInString(10) + "path: '" + pointersList.second.path + ".png'," + Environment.NewLine;
                         configStr += TabInString(9) + "}," + Environment.NewLine;
                     }
 
@@ -7411,6 +7431,21 @@ namespace Watch_Face_Editor
                                 }
                             }
 
+                            if (objectName == "editableTimePointers_cover_img")
+                            {
+                                ElementEditablePointers editablePointers = Watch_Face.ElementEditablePointers;
+                                if (editablePointers != null)
+                                {
+                                    editablePointers.cover = new hmUI_widget_IMG();
+                                    editablePointers.cover.src = img.src;
+                                    editablePointers.cover.x = img.x;
+                                    editablePointers.cover.y = img.y;
+                                    editablePointers.cover.visible = true;
+                                    editablePointers.cover.position = -1;
+                                }
+                                continue;
+                            }
+
                             if (objectName.Length==0)
                             {
                                 if (firstImgNormal && img.show_level == "ONLY_NORMAL")
@@ -7617,15 +7652,24 @@ namespace Watch_Face_Editor
                             {
                                 foreach (PointersList element in elementEditablePointers_temp.config)
                                 {
-                                    if (element != null && element.hour != null && element.hour.path != null)
-                                        element.hour.path = element.hour.path.Replace(".png", "");
-                                    if (element != null && element.minute != null && element.minute.path != null)
-                                        element.minute.path = element.minute.path.Replace(".png", "");
-                                    if (element != null && element.second != null && element.second.path != null)
-                                        element.second.path = element.second.path.Replace(".png", "");
-                                    if (element != null && element.preview != null)
+                                    if (element != null && element.hour != null && element.hour.path != null && 
+                                        element.hour.path.EndsWith(".png")) element.hour.path = element.hour.path.Replace(".png", "");
+                                    if (element != null && element.minute != null && element.minute.path != null &&
+                                        element.minute.path.EndsWith(".png")) element.minute.path = element.minute.path.Replace(".png", "");
+                                    if (element != null && element.second != null && element.second.path != null &&
+                                        element.second.path.EndsWith(".png")) element.second.path = element.second.path.Replace(".png", "");
+                                    if (element != null && element.preview != null && element.preview.EndsWith(".png"))
                                         element.preview = element.preview.Replace(".png", "");
                                 }
+
+                                if (elementEditablePointers_temp.cover != null && elementEditablePointers_temp.cover.src != null &&
+                                    elementEditablePointers_temp.cover.src.EndsWith(".png"))
+                                    elementEditablePointers_temp.cover.src = elementEditablePointers_temp.cover.src.Replace(".png", "");
+                                if (elementEditablePointers_temp.fg != null && elementEditablePointers_temp.fg.EndsWith(".png"))
+                                    elementEditablePointers_temp.fg = elementEditablePointers_temp.fg.Replace(".png", "");
+                                if (elementEditablePointers_temp.tips_bg != null && elementEditablePointers_temp.tips_bg.EndsWith(".png"))
+                                    elementEditablePointers_temp.tips_bg = elementEditablePointers_temp.tips_bg.Replace(".png", "");
+
                                 Watch_Face.ElementEditablePointers = elementEditablePointers_temp; 
                             }
 
@@ -10991,6 +11035,7 @@ namespace Watch_Face_Editor
                                         break;
 
                                     case "PAI":
+                                    case "PAI_WEEKLY":
                                         if (elementShortcuts.Step != null) index++;
                                         if (elementShortcuts.Heart != null) index++;
                                         if (elementShortcuts.SPO2 != null) index++;

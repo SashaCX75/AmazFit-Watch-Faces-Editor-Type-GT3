@@ -189,6 +189,12 @@ Message_Warning_Assets_Exist1	У цій папці вже існує папка 
 Elemet_Time	Час
 Message_Delet_Text1	Ви дійсно хочете безповоротно видалити файл </value>
   </data>
+  <data name="Message_EditableElementsAOD_Text" xml:space="preserve">
+    <value>Ви не можете додавати  редаговані елементи екран AOD.</value>
+  </data>
+  <data name="Message_EditablePointerAOD_Text" xml:space="preserve">
+    <value>Ви не можете додавати  редаговані стрілкина екран AOD.</value>
+  </data>
   <data name="Message_ErrorReadJS" xml:space="preserve">
     <value>Не вдалося визначити структуру циферблату</value>
   </data>

@@ -130,6 +130,9 @@
     <value>Pointer rotation center</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
+    <value>177, 82</value>
+  </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
@@ -195,7 +198,7 @@
   <data name="вставитьToolStripMenuItemX.Text" xml:space="preserve">
     <value>Paste</value>
   </data>
-  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
     <value>177, 82</value>
   </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -263,9 +266,6 @@
   <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
     <value>Paste</value>
   </data>
-  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
-    <value>177, 82</value>
-  </data>
   <data name="label02.Text" xml:space="preserve">
     <value>Rotation center coordinates</value>
   </data>
@@ -328,6 +328,12 @@
   </data>
   <data name="label21.Text" xml:space="preserve">
     <value>Preview</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Foreground image</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Foreground image coordinates</value>
   </data>
   <data name="tabPage_hour.Text" xml:space="preserve">
     <value>Hour hand</value>

@@ -225,6 +225,18 @@
     <Compile Include="Elements\UCtrl_EditableTimePointer_Elm.Designer.cs">
       <DependentUpon>UCtrl_EditableTimePointer_Elm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Elements\UCtrl_EditableElements_Elm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\UCtrl_EditableElements_Elm.Designer.cs">
+      <DependentUpon>UCtrl_EditableElements_Elm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCtrl_EditableElemets_Opt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCtrl_EditableElemets_Opt.Designer.cs">
+      <DependentUpon>UCtrl_EditableElemets_Opt.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCtrl_EditableTimePointer_Opt.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -535,6 +547,12 @@
     <EmbeddedResource Include="Elements\UCtrl_Distance_Elm.zh.resx">
       <DependentUpon>UCtrl_Distance_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_EditableElements_Elm.en.resx">
+      <DependentUpon>UCtrl_EditableElements_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_EditableElements_Elm.uk.resx">
+      <DependentUpon>UCtrl_EditableElements_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_EditableTimePointer_Elm.en.resx">
       <DependentUpon>UCtrl_EditableTimePointer_Elm.cs</DependentUpon>
     </EmbeddedResource>
@@ -767,6 +785,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Strings.uk.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -966,6 +985,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_EditableTimePointer_Elm.resx">
       <DependentUpon>UCtrl_EditableTimePointer_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_EditableElements_Elm.resx">
+      <DependentUpon>UCtrl_EditableElements_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_EditableElemets_Opt.resx">
+      <DependentUpon>UCtrl_EditableElemets_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_EditableBackground_Opt.zh.resx">
       <DependentUpon>UCtrl_EditableBackground_Opt.cs</DependentUpon>
@@ -1307,12 +1332,6 @@
     <None Include="Resources\calories.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\calories1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\calories2.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\heart.png" />
   </ItemGroup>
   <ItemGroup>
@@ -1347,9 +1366,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SpO2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\SpO21.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\UVIndex.png" />
@@ -1392,6 +1408,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\rotate_anim.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\category.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
