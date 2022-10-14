@@ -117,41 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="button_GenerateID.Text" xml:space="preserve">
-    <value>生成</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="radioButton_Background_color.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 17</value>
-  </data>
-  <data name="radioButton_Background_color.Text" xml:space="preserve">
-    <value>颜色</value>
-  </data>
-  <data name="radioButton_Background_image.Size" type="System.Drawing.Size, System.Drawing">
-    <value>49, 17</value>
-  </data>
-  <data name="radioButton_Background_image.Text" xml:space="preserve">
-    <value>图像</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 13</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>预览：</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 13</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>表盘 ID:</value>
-  </data>
-  <data name="label_ID.Location" type="System.Drawing.Point, System.Drawing">
-    <value>119, 65</value>
-  </data>
-  <data name="label_EditableBackground_Hint.Text" xml:space="preserve">
-    <value>将使用主屏幕中的可编辑背景</value>
-  </data>
-  <data name="radioButton_EditableBackground.Text" xml:space="preserve">
-    <value>可编辑背景</value>
+  <data name="button_ElementName.Text" xml:space="preserve">
+    <value>可编辑指针</value>
   </data>
 </root>

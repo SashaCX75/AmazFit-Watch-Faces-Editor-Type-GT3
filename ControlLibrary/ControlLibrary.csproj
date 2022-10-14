@@ -541,6 +541,9 @@
     <EmbeddedResource Include="Elements\UCtrl_EditableTimePointer_Elm.uk.resx">
       <DependentUpon>UCtrl_EditableTimePointer_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_EditableTimePointer_Elm.zh.resx">
+      <DependentUpon>UCtrl_EditableTimePointer_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_FatBurning_Elm.es.resx">
       <DependentUpon>UCtrl_FatBurning_Elm.cs</DependentUpon>
     </EmbeddedResource>
@@ -964,6 +967,9 @@
     <EmbeddedResource Include="Elements\UCtrl_EditableTimePointer_Elm.resx">
       <DependentUpon>UCtrl_EditableTimePointer_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_EditableBackground_Opt.zh.resx">
+      <DependentUpon>UCtrl_EditableBackground_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_EditableTimePointer_Opt.en.resx">
       <DependentUpon>UCtrl_EditableTimePointer_Opt.cs</DependentUpon>
     </EmbeddedResource>
@@ -971,6 +977,9 @@
       <DependentUpon>UCtrl_EditableTimePointer_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_EditableTimePointer_Opt.uk.resx">
+      <DependentUpon>UCtrl_EditableTimePointer_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_EditableTimePointer_Opt.zh.resx">
       <DependentUpon>UCtrl_EditableTimePointer_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Icon_Opt.en.resx">
