@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace ControlLibrary
 {
@@ -14,12 +16,14 @@ namespace ControlLibrary
     {
         private bool setValue; // режим задания параметров
         private List<string> ListImagesFullName = new List<string>(); // перечень путей к файлам с картинками
-        public Object _EditableTimePointer;
+        public Object _EditableElemets;
+        private bool _collapse = false;
 
         bool highlight_images = false;
         bool highlight_segments = false;
         bool highlight_pointer = false;
         bool highlight_number = false;
+        bool highlight_number_target = false;
         bool highlight_number_min = false;
         bool highlight_number_max = false;
         bool highlight_sunset = false;
@@ -30,8 +34,8 @@ namespace ControlLibrary
         bool highlight_linear_scale = false;
         bool highlight_icon = false;
 
-        bool visibility_elements = false; // развернут список с элементами
-        bool visibilityElement = true; // элемент оторажается на предпросмотре
+        float currentDPI; // масштаб экрана
+        //bool visibilityElement = true; // элемент оторажается на предпросмотре
 
         public int position = -1; // позиция в наборе элеменетов
         public string selectedElement; // название выбраного элемента
@@ -42,9 +46,37 @@ namespace ControlLibrary
         {
             InitializeComponent();
             setValue = false;
+            currentDPI = tabControl1.Height / 462f;
+
+            button_collapse.Controls.Add(pictureBox_Arrow_Right); 
+            button_collapse.Controls.Add(pictureBox_Arrow_Down);
+
+            pictureBox_Arrow_Right.Location = new Point(1, 2);
+            pictureBox_Arrow_Right.BackColor = Color.Transparent;
+
+            pictureBox_Arrow_Down.Location = new Point(1, 2);
+            pictureBox_Arrow_Down.BackColor = Color.Transparent;
+        }
+        
+        /// <summary>Сворачиваение элемента</summary>
+        [Description("Сворачиваение элемента")]
+        public virtual bool Collapse
+        {
+            get
+            {
+                return _collapse;
+            }
+            set
+            {
+                _collapse = value;
+                //button_collapse.Visible = _collapse;
+                tabControl1.Visible = !_collapse;
+                pictureBox_Arrow_Right.Visible = _collapse;
+                pictureBox_Arrow_Down.Visible = !_collapse;
+            }
         }
 
-        /// <summary>Задает индекс выбраного набора стрелок</summary>
+        /// <summary>Задает индекс выбраноq зоны</summary>
         public void SetZoneIndex(int index)
         {
             setValue = true;
@@ -52,7 +84,7 @@ namespace ControlLibrary
             setValue = false;
         }
 
-        /// <summary>Задает количество наборов стрелок в выпадающем списке</summary>
+        /// <summary>Задает количество зон в выпадающем списке</summary>
         public void SetZoneCount(int count)
         {
             setValue = true;
@@ -61,8 +93,63 @@ namespace ControlLibrary
             {
                 comboBox_select_zone.Items.Add(i.ToString());
             }
-            if (count >= 9) button_add.Enabled = false;
-            else button_add.Enabled = true;
+            if (count >= 9) button_zoneAdd.Enabled = false;
+            else button_zoneAdd.Enabled = true;
+            setValue = false;
+        }
+
+        /// <summary>Задает индекс выбраного элемента в зоне</summary>
+        public void SetElementsIndex(int index)
+        {
+            //setValue = true;
+            comboBox_select_element.SelectedIndex = index;
+            //setValue = false;
+        }
+
+        /// <summary>Задает количество элементов в выбранной зоне</summary>
+        public void SetElementsCount(int count)
+        {
+            setValue = true;
+            comboBox_select_element.Items.Clear();
+            for (int i = 1; i < count + 1; i++)
+            {
+                comboBox_select_element.Items.Add(i.ToString());
+            }
+            if (comboBox_select_zone.SelectedIndex >= 0)
+            {
+                button_elementAdd.Enabled = true; 
+                if (comboBox_select_element.SelectedIndex >= 0) button_elementDel.Enabled = true;
+                else button_elementDel.Enabled = false;
+            }
+            else
+            {
+                button_elementAdd.Enabled = false;
+                button_elementDel.Enabled = false;
+            }
+            setValue = false;
+        }
+
+        /// <summary>Задает количество элементов в выбранной зоне и прописывает названия элементов</summary>
+        public void SetElementsCount(List<string> elementName)
+        {
+            setValue = true;
+            int count = elementName.Count;
+            comboBox_select_element.Items.Clear();
+            for (int i = 1; i < count + 1; i++)
+            {
+                comboBox_select_element.Items.Add(i.ToString() + " " + elementName[i - 1]);
+            }
+            if (comboBox_select_zone.SelectedIndex >= 0)
+            {
+                button_elementAdd.Enabled = true;
+                if (comboBox_select_element.SelectedIndex >= 0) button_elementDel.Enabled = true;
+                else button_elementDel.Enabled = false;
+            }
+            else
+            {
+                button_elementAdd.Enabled = false;
+                button_elementDel.Enabled = false;
+            }
             setValue = false;
         }
 
@@ -88,33 +175,117 @@ namespace ControlLibrary
         }
 
 
-        /// <summary>Задает название выбранной рамки выделения</summary>
-        public void SetForeground(string value)
+        /// <summary>Задает название рамки выделения невыбранного элемента</summary>
+        public void SetUnSelectImage(string value)
         {
-            comboBox_foreground.Text = value;
-            if (comboBox_foreground.SelectedIndex < 0) comboBox_foreground.Text = "";
+            comboBox_un_select_image.Text = value;
+            if (comboBox_un_select_image.SelectedIndex < 0) comboBox_un_select_image.Text = "";
         }
 
-        /// <summary>Возвращает название выбранной рамки выделения</summary>
-        public string GetForeground()
+        /// <summary>Возвращает название рамки выделения невыбранного элемента</summary>
+        public string GetUnSelectImage()
         {
-            if (comboBox_foreground.SelectedIndex < 0) return "";
-            return comboBox_foreground.Text;
+            if (comboBox_un_select_image.SelectedIndex < 0) return "";
+            return comboBox_un_select_image.Text;
         }
 
-        /// <summary>Возвращает SelectedIndex выпадающего списка рамки выделения</summary>
-        public int GetSelectedIndexForeground()
+        /// <summary>Возвращает SelectedIndex выпадающего списка рамки выделения невыбранного элемента</summary>
+        public int GetSelectedIndexUnSelectImage()
         {
-            return comboBox_foreground.SelectedIndex;
+            return comboBox_un_select_image.SelectedIndex;
+        }
+
+
+        /// <summary>Задает название рамки выделения выбранного элемента</summary>
+        public void SetSelectImage(string value)
+        {
+            comboBox_select_image.Text = value;
+            if (comboBox_select_image.SelectedIndex < 0) comboBox_select_image.Text = "";
+        }
+
+        /// <summary>Возвращает название рамки выделения выбранного элемента</summary>
+        public string GetSelectImage()
+        {
+            if (comboBox_select_image.SelectedIndex < 0) return "";
+            return comboBox_select_image.Text;
+        }
+
+        /// <summary>Возвращает SelectedIndex выпадающего списка рамки выделения выбранного элемента</summary>
+        public int GetSelectedIndexSelectImage()
+        {
+            return comboBox_select_image.SelectedIndex;
+        }
+
+
+        /// <summary>Задает название верхней маски</summary>
+        public void SetFgMask(string value)
+        {
+            comboBox_fg_mask.Text = value;
+            if (comboBox_fg_mask.SelectedIndex < 0) comboBox_fg_mask.Text = "";
+        }
+
+        /// <summary>Возвращает название верхней маски</summary>
+        public string GetFgMask()
+        {
+            if (comboBox_fg_mask.SelectedIndex < 0) return "";
+            return comboBox_fg_mask.Text;
+        }
+
+        /// <summary>Возвращает SelectedIndex выпадающего списка верхней маски</summary>
+        public int GetSelectedIndexFgMask()
+        {
+            return comboBox_fg_mask.SelectedIndex;
+        }
+
+
+        /// <summary>Задает название нижней маски</summary>
+        public void SetMask(string value)
+        {
+            comboBox_mask.Text = value;
+            if (comboBox_mask.SelectedIndex < 0) comboBox_mask.Text = "";
+        }
+
+        /// <summary>Возвращает название нижней маски</summary>
+        public string GetMask()
+        {
+            if (comboBox_mask.SelectedIndex < 0) return "";
+            return comboBox_mask.Text;
+        }
+
+        /// <summary>Возвращает SelectedIndex выпадающего списка нижней маски</summary>
+        public int GetSelectedIndexMask()
+        {
+            return comboBox_mask.SelectedIndex;
+        }
+
+
+        /// <summary>Задает название предпросмотра элемента</summary>
+        public void SetPreviewElement(string value)
+        {
+            comboBox_Preview_image.Text = value;
+            if (comboBox_Preview_image.SelectedIndex < 0) comboBox_Preview_image.Text = "";
+        }
+
+        /// <summary>Возвращает название предпросмотра предпросмотра элемента</summary>
+        public string GetPreviewElement()
+        {
+            if (comboBox_Preview_image.SelectedIndex < 0) return "";
+            return comboBox_Preview_image.Text;
+        }
+
+        /// <summary>Возвращает SelectedIndex выпадающего списка предпросмотра элемента</summary>
+        public int GetSelectedIndexPreviewElement()
+        {
+            return comboBox_Preview_image.SelectedIndex;
         }
 
         [Browsable(true)]
         [Description("Происходит при изменении общих настроек редактируемых элементов")]
-        public event EditableElementsChangedHandler EditableElementsChanged;
-        public delegate void EditableElementsChangedHandler(object sender, EventArgs eventArgs, int index);
+        public event ZoneValueChangedHandler ZoneValueChanged;
+        public delegate void ZoneValueChangedHandler(object sender, EventArgs eventArgs, int index);
 
         [Browsable(true)]
-        [Description("Происходит при изменении выбора редактируемых элементов")]
+        [Description("Происходит при изменении настроек элемента в выбраной зоне")]
         public event ElementValueChangedHandler ElementValueChanged;
         public delegate void ElementValueChangedHandler(object sender, EventArgs eventArgs, int index);
 
@@ -129,7 +300,7 @@ namespace ControlLibrary
         public delegate void ZoneAddHandler(object sender, EventArgs eventArgs, int index);
 
         [Browsable(true)]
-        [Description("Происходит при изменении редактируемой зоны")]
+        [Description("Происходит при изменении выбора редактируемой зоны")]
         public event ZoneIndexChangedHandler ZoneIndexChanged;
         public delegate void ZoneIndexChangedHandler(object sender, EventArgs eventArgs, int index);
 
@@ -144,7 +315,7 @@ namespace ControlLibrary
         public delegate void ElementAddHandler(object sender, EventArgs eventArgs, int index);
 
         [Browsable(true)]
-        [Description("Происходит при изменении редактируемой зоны")]
+        [Description("Происходит при изменении выбора редактируемой зоны")]
         public event ElementIndexChangedHandler ElementIndexChanged;
         public delegate void ElementIndexChangedHandler(object sender, EventArgs eventArgs, int index);
 
@@ -173,6 +344,141 @@ namespace ControlLibrary
         public event VisibleOptionsChangedHandler VisibleOptionsChanged;
         public delegate void VisibleOptionsChangedHandler(object sender, EventArgs eventArgs);
 
+        private void checkBox_Click(object sender, EventArgs e)
+        {
+            if (ZoneValueChanged != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                ZoneValueChanged(this, eventArgs, comboBox_select_zone.SelectedIndex);
+            }
+        }
+
+        #region Standard events
+        private void comboBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.KeyCode == Keys.Delete) || (e.KeyCode == Keys.Back))
+            {
+                ComboBox comboBox = sender as ComboBox;
+                comboBox.Text = "";
+                comboBox.SelectedIndex = -1;
+                if (ZoneValueChanged != null && !setValue)
+                {
+                    EventArgs eventArgs = new EventArgs();
+                    ZoneValueChanged(this, eventArgs, comboBox_select_zone.SelectedIndex);
+                }
+            }
+        }
+
+        private void comboBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+        private void comboBox_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            ComboBox comboBox = sender as ComboBox;
+            //if (comboBox.Items.Count < 10) comboBox.DropDownHeight = comboBox.Items.Count * 35;
+            //else comboBox.DropDownHeight = 106;
+            float size = comboBox.Font.Size;
+            Font myFont;
+            FontFamily family = comboBox.Font.FontFamily;
+            e.DrawBackground();
+            int itemWidth = e.Bounds.Height;
+            int itemHeight = e.Bounds.Height - 4;
+
+            if (e.Index >= 0)
+            {
+                try
+                {
+                    using (FileStream stream = new FileStream(ListImagesFullName[e.Index], FileMode.Open, FileAccess.Read))
+                    {
+                        Image image = Image.FromStream(stream);
+                        float scale = (float)itemWidth / image.Width;
+                        if ((float)itemHeight / image.Height < scale) scale = (float)itemHeight / image.Height;
+                        float itemWidthRec = image.Width * scale;
+                        float itemHeightRec = image.Height * scale;
+                        Rectangle rectangle = new Rectangle((int)(itemWidth - itemWidthRec) / 2 + 2,
+                            e.Bounds.Top + (int)(itemHeight - itemHeightRec) / 2 + 2, (int)itemWidthRec, (int)itemHeightRec);
+                        e.Graphics.DrawImage(image, rectangle);
+                    }
+                }
+                catch { }
+            }
+            //e.Graphics.DrawImage(imageList1.Images[e.Index], rectangle);
+            myFont = new Font(family, size);
+            StringFormat lineAlignment = new StringFormat();
+            //lineAlignment.Alignment = StringAlignment.Center;
+            lineAlignment.LineAlignment = StringAlignment.Center;
+            if (e.Index >= 0)
+                e.Graphics.DrawString(comboBox.Items[e.Index].ToString(), myFont, System.Drawing.Brushes.Black, new RectangleF(e.Bounds.X + itemWidth, e.Bounds.Y, e.Bounds.Width, e.Bounds.Height), lineAlignment);
+            e.DrawFocusRectangle();
+        }
+
+        private void comboBox_MeasureItem(object sender, MeasureItemEventArgs e)
+        {
+            e.ItemHeight = 35;
+        }
+
+        private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ZoneValueChanged != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                ZoneValueChanged(this, eventArgs, comboBox_select_zone.SelectedIndex);
+            }
+        }
+
+        private void comboBox_select_zone_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox_select_zone.SelectedIndex >= 0)
+            {
+                button_zoneDel.Enabled = true;
+            }
+            else
+            {
+                button_zoneDel.Enabled = false;
+            }
+
+            if (comboBox_select_zone.SelectedIndex >= 0)
+            {
+                button_elementAdd.Enabled = true;
+                if (comboBox_select_element.SelectedIndex >= 0) button_elementDel.Enabled = true;
+                else button_elementDel.Enabled = false;
+            }
+            else
+            {
+                button_elementAdd.Enabled = false;
+                button_elementDel.Enabled = false;
+            }
+
+            if (ZoneIndexChanged != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                ZoneIndexChanged(this, eventArgs, comboBox_select_zone.SelectedIndex);
+            }
+        }
+
+        private void comboBox_Preview_image_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox_Preview_image.Text.Length > 0)
+            {
+                button_PreviewAdd.Visible = false;
+                button_PreviewRefresh.Visible = true;
+            }
+            else
+            {
+                button_PreviewAdd.Visible = true;
+                button_PreviewRefresh.Visible = false;
+            }
+
+            if (ElementValueChanged != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                ElementValueChanged(this, eventArgs, comboBox_select_element.SelectedIndex);
+            }
+        }
+        #endregion
+
 
         public void ResetHighlightState()
         {
@@ -182,6 +488,7 @@ namespace ControlLibrary
             highlight_segments = false;
             highlight_pointer = false;
             highlight_number = false;
+            highlight_number_target = false;
             highlight_number_min = false;
             highlight_number_max = false;
             highlight_sunset = false;
@@ -247,6 +554,19 @@ namespace ControlLibrary
                 panel_Number.BackColor = SystemColors.Control;
                 button_Number.FlatAppearance.MouseOverBackColor = SystemColors.Control;
                 button_Number.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_number_target)
+            {
+                panel_Number_Target.BackColor = SystemColors.ActiveCaption;
+                button_Number_Target.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Number_Target.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Number_Target.BackColor = SystemColors.Control;
+                button_Number_Target.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Number_Target.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
             if (highlight_number_min)
@@ -375,6 +695,7 @@ namespace ControlLibrary
             highlight_images = true;
             highlight_segments = false;
             highlight_number = false;
+            highlight_number_target = false;
             highlight_number_min = false;
             highlight_number_max = false;
             highlight_sunset = false;
@@ -402,6 +723,7 @@ namespace ControlLibrary
             highlight_images = false;
             highlight_segments = true;
             highlight_number = false;
+            highlight_number_target = false;
             highlight_number_min = false;
             highlight_number_max = false;
             highlight_sunset = false;
@@ -429,6 +751,35 @@ namespace ControlLibrary
             highlight_images = false;
             highlight_segments = false;
             highlight_number = true;
+            highlight_number_target = false;
+            highlight_number_min = false;
+            highlight_number_max = false;
+            highlight_sunset = false;
+            highlight_sunrise = false;
+            highlight_sunset_sunrise = false;
+            highlight_pointer = false;
+            highlight_circle_scale = false;
+            highlight_linear_scale = false;
+            highlight_city_name = false;
+            highlight_icon = false;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Number_Target_Click(object sender, EventArgs e)
+        {
+            selectedElement = "Number_Target";
+
+            highlight_images = false;
+            highlight_segments = false;
+            highlight_number = false;
+            highlight_number_target = true;
             highlight_number_min = false;
             highlight_number_max = false;
             highlight_sunset = false;
@@ -454,7 +805,9 @@ namespace ControlLibrary
             selectedElement = "Number_Min";
 
             highlight_images = false;
+            highlight_segments = false;
             highlight_number = false;
+            highlight_number_target = false;
             highlight_number_min = true;
             highlight_number_max = false;
             highlight_sunset = false;
@@ -480,7 +833,9 @@ namespace ControlLibrary
             selectedElement = "Number_Max";
 
             highlight_images = false;
+            highlight_segments = false;
             highlight_number = false;
+            highlight_number_target = false;
             highlight_number_min = false;
             highlight_number_max = true;
             highlight_sunset = false;
@@ -508,6 +863,7 @@ namespace ControlLibrary
             highlight_images = false;
             highlight_segments = false;
             highlight_number = false;
+            highlight_number_target = false;
             highlight_number_min = false;
             highlight_number_max = false;
             highlight_sunset = true;
@@ -535,6 +891,7 @@ namespace ControlLibrary
             highlight_images = false;
             highlight_segments = false;
             highlight_number = false;
+            highlight_number_target = false;
             highlight_number_min = false;
             highlight_number_max = false;
             highlight_sunset = false;
@@ -562,6 +919,7 @@ namespace ControlLibrary
             highlight_images = false;
             highlight_segments = false;
             highlight_number = false;
+            highlight_number_target = false;
             highlight_number_min = false;
             highlight_number_max = false;
             highlight_sunset = false;
@@ -589,6 +947,7 @@ namespace ControlLibrary
             highlight_images = false;
             highlight_segments = false;
             highlight_number = false;
+            highlight_number_target = false;
             highlight_number_min = false;
             highlight_number_max = false;
             highlight_sunset = false;
@@ -616,6 +975,7 @@ namespace ControlLibrary
             highlight_images = false;
             highlight_segments = false;
             highlight_number = false;
+            highlight_number_target = false;
             highlight_number_min = false;
             highlight_number_max = false;
             highlight_sunset = false;
@@ -643,6 +1003,7 @@ namespace ControlLibrary
             highlight_images = false;
             highlight_segments = false;
             highlight_number = false;
+            highlight_number_target = false;
             highlight_number_min = false;
             highlight_number_max = false;
             highlight_sunset = false;
@@ -668,7 +1029,9 @@ namespace ControlLibrary
             selectedElement = "CityName";
 
             highlight_images = false;
+            highlight_segments = false;
             highlight_number = false;
+            highlight_number_target = false;
             highlight_number_min = false;
             highlight_number_max = false;
             highlight_sunset = false;
@@ -696,6 +1059,7 @@ namespace ControlLibrary
             highlight_images = false;
             highlight_segments = false;
             highlight_number = false;
+            highlight_number_target = false;
             highlight_number_min = false;
             highlight_number_max = false;
             highlight_sunset = false;
@@ -848,6 +1212,9 @@ namespace ControlLibrary
                 case "Number":
                     checkBox_Number.Checked = status;
                     break;
+                case "Number_Target":
+                    checkBox_Number_Target.Checked = status;
+                    break;
                 case "Number_Min":
                     checkBox_Number_Min.Checked = status;
                     break;
@@ -902,6 +1269,9 @@ namespace ControlLibrary
                             break;
                         case "Number":
                             panel = panel_Number;
+                            break;
+                        case "Number_Target":
+                            panel = panel_Number_Target;
                             break;
                         case "Number_Min":
                             panel = panel_Number_Min;
@@ -969,54 +1339,225 @@ namespace ControlLibrary
         public Dictionary<string, int> GetOptionsPosition()
         {
             Dictionary<string, int> elementOptions = new Dictionary<string, int>();
-            int count = tableLayoutPanel_element.RowCount;
-            for (int i = 0; i < tableLayoutPanel_element.RowCount; i++)
+            int index = 1;
+            for (int i = tableLayoutPanel_element.RowCount - 1; i >= 0; i--)
             {
                 Control panel = tableLayoutPanel_element.GetControlFromPosition(0, i);
-                switch (panel.Name)
+                if (panel != null)
                 {
-                    case "panel_Images":
-                        elementOptions.Add("Images", count - i);
-                        break;
-                    case "panel_Segments":
-                        elementOptions.Add("Segments", count - i);
-                        break;
-                    case "panel_Number":
-                        elementOptions.Add("Number", count - i);
-                        break;
-                    case "panel_Number_Min":
-                        elementOptions.Add("Number_Min", count - i);
-                        break;
-                    case "panel_Number_Max":
-                        elementOptions.Add("Number_Max", count - i);
-                        break;
-                    case "panel_Sunset":
-                        elementOptions.Add("Sunset", count - i);
-                        break;
-                    case "panel_Sunrise":
-                        elementOptions.Add("Sunrise", count - i);
-                        break;
-                    case "panel_Sunset_Sunrise":
-                        elementOptions.Add("Sunset_Sunrise", count - i);
-                        break;
-                    case "panel_Pointer":
-                        elementOptions.Add("Pointer", count - i);
-                        break;
-                    case "panel_Circle_Scale":
-                        elementOptions.Add("Circle_Scale", count - i);
-                        break;
-                    case "panel_Linear_Scale":
-                        elementOptions.Add("Linear_Scale", count - i);
-                        break;
-                    case "panel_Text_CityName":
-                        elementOptions.Add("CityName", count - i);
-                        break;
-                    case "panel_Icon":
-                        elementOptions.Add("Icon", count - i);
-                        break;
+                    switch (panel.Name)
+                    {
+                        case "panel_Images":
+                            elementOptions.Add("Images", index);
+                            break;
+                        case "panel_Segments":
+                            elementOptions.Add("Segments", index);
+                            break;
+                        case "panel_Number":
+                            elementOptions.Add("Number", index);
+                            break;
+                        case "panel_Number_Target":
+                            elementOptions.Add("Number_Target", index);
+                            break;
+                        case "panel_Number_Min":
+                            elementOptions.Add("Number_Min", index);
+                            break;
+                        case "panel_Number_Max":
+                            elementOptions.Add("Number_Max", index);
+                            break;
+                        case "panel_Sunset":
+                            elementOptions.Add("Sunset", index);
+                            break;
+                        case "panel_Sunrise":
+                            elementOptions.Add("Sunrise", index);
+                            break;
+                        case "panel_Sunset_Sunrise":
+                            elementOptions.Add("Sunset_Sunrise", index);
+                            break;
+                        case "panel_Pointer":
+                            elementOptions.Add("Pointer", index);
+                            break;
+                        case "panel_Circle_Scale":
+                            elementOptions.Add("Circle_Scale", index);
+                            break;
+                        case "panel_Linear_Scale":
+                            elementOptions.Add("Linear_Scale", index);
+                            break;
+                        case "panel_Text_CityName":
+                            elementOptions.Add("CityName", index);
+                            break;
+                        case "panel_Icon":
+                            elementOptions.Add("Icon", index);
+                            break;
+                    } 
+                    index++;
                 }
             }
             return elementOptions;
+        }
+
+        /// <summary>Устанавливаем порядок опций в элементе</summary>
+        public void SetVisibilityOptions(List<string> elementOptions)
+        {
+            if (elementOptions == null) elementOptions = new List<string>();
+            panel_Images.Visible = elementOptions.Contains("Images") ? true : false;
+            panel_Segments.Visible = elementOptions.Contains("Segments") ? true : false;
+            panel_Number.Visible = elementOptions.Contains("Number") ? true : false;
+            panel_Number_Target.Visible = elementOptions.Contains("Number_target") ? true : false;
+            panel_Number_Min.Visible = elementOptions.Contains("Number_min") ? true : false;
+            panel_Number_Max.Visible = elementOptions.Contains("Number_max") ? true : false;
+            panel_Sunset.Visible = elementOptions.Contains("Sunset") ? true : false;
+            panel_Sunrise.Visible = elementOptions.Contains("Sunrise") ? true : false;
+            panel_Sunset_Sunrise.Visible = elementOptions.Contains("Sunset_Sunrise") ? true : false;
+            panel_Pointer.Visible = elementOptions.Contains("Pointer") ? true : false;
+            panel_Circle_Scale.Visible = elementOptions.Contains("Circle_scale") ? true : false;
+            panel_Linear_Scale.Visible = elementOptions.Contains("Linear_scale") ? true : false;
+            panel_Text_CityName.Visible = elementOptions.Contains("CityName") ? true : false;
+            panel_Icon.Visible = elementOptions.Contains("Icon") ? true : false;
+
+            //for (int i = 0; i < elementOptions.Count; i++)
+            //{
+            //    switch (elementOptions[i])
+            //    {
+            //        case "Images":
+            //            panel_Images.Visible = true;
+            //            break;
+            //        case "Segments":
+            //            panel_Segments.Visible = true;
+            //            break;
+            //        case "Number":
+            //            panel_Number.Visible = true;
+            //            break;
+            //        case "Number_Min":
+            //            panel_Number_Min.Visible = true;
+            //            break;
+            //        case "Number_Max":
+            //            panel_Number_Max.Visible = true;
+            //            break;
+            //        case "Sunset":
+            //            panel_Sunset.Visible = true;
+            //            break;
+            //        case "Sunrise":
+            //            panel_Sunrise.Visible = true;
+            //            break;
+            //        case "Sunset_Sunrise":
+            //            panel_Sunset_Sunrise.Visible = true;
+            //            break;
+            //        case "Pointer":
+            //            panel_Pointer.Visible = true;
+            //            break;
+            //        case "Circle_Scale":
+            //            panel_Circle_Scale.Visible = true;
+            //            break;
+            //        case "Linear_Scale":
+            //            panel_Linear_Scale.Visible = true;
+            //            break;
+            //        case "CityName":
+            //            panel_Text_CityName.Visible = true;
+            //            break;
+            //        case "Icon":
+            //            panel_Icon.Visible = true;
+            //            break;
+            //    }
+            //}
+
+            if (tabControl1.SelectedTab.Name == "tabPageElementSettings")
+            {
+                tabControl1.Height = (int)(panel3.Location.Y + panel3.Height + 26 * currentDPI);
+            }
+            else
+            {
+                tabControl1.Height = (int)(462 * currentDPI);
+            }
+        }
+
+        #region Settings Set/Clear
+        /// <summary>Добавляет ссылки на картинки в выпадающие списки</summary>
+        public void ComboBoxAddItems(List<string> ListImages, List<string> _ListImagesFullName)
+        {
+            comboBox_un_select_image.Items.Clear();
+            comboBox_select_image.Items.Clear();
+            comboBox_fg_mask.Items.Clear();
+            comboBox_mask.Items.Clear();
+            comboBox_tip.Items.Clear();
+            comboBox_Preview_image.Items.Clear();
+
+            comboBox_un_select_image.Items.AddRange(ListImages.ToArray());
+            comboBox_select_image.Items.AddRange(ListImages.ToArray());
+            comboBox_fg_mask.Items.AddRange(ListImages.ToArray());
+            comboBox_mask.Items.AddRange(ListImages.ToArray());
+            comboBox_tip.Items.AddRange(ListImages.ToArray());
+            comboBox_Preview_image.Items.AddRange(ListImages.ToArray());
+
+            ListImagesFullName = _ListImagesFullName;
+
+            int count = ListImages.Count;
+            if (count == 0)
+            {
+                comboBox_un_select_image.DropDownHeight = 1;
+                comboBox_select_image.DropDownHeight = 1;
+                comboBox_fg_mask.DropDownHeight = 1;
+                comboBox_mask.DropDownHeight = 1;
+                comboBox_tip.DropDownHeight = 1;
+                comboBox_Preview_image.DropDownHeight = 1;
+            }
+            else if (count < 5)
+            {
+                comboBox_un_select_image.DropDownHeight = 35 * count + 1;
+                comboBox_select_image.DropDownHeight = 35 * count + 1;
+                comboBox_fg_mask.DropDownHeight = 35 * count + 1;
+                comboBox_mask.DropDownHeight = 35 * count + 1;
+                comboBox_tip.DropDownHeight = 35 * count + 1;
+                comboBox_Preview_image.DropDownHeight = 35 * count + 1;
+            }
+            else
+            {
+                comboBox_un_select_image.DropDownHeight = 106;
+                comboBox_select_image.DropDownHeight = 106;
+                comboBox_fg_mask.DropDownHeight = 106;
+                comboBox_mask.DropDownHeight = 106;
+                comboBox_tip.DropDownHeight = 106;
+                comboBox_Preview_image.DropDownHeight = 106;
+            }
+        }
+
+        /// <summary>Очищает выпадающие списки с картинками, сбрасывает данные на значения по умолчанию</summary>
+        public void SettingsClear()
+        {
+            setValue = true;
+            comboBox_select_zone.Items.Clear();
+            comboBox_select_element.Items.Clear();
+            button_elementAdd.Enabled = false;
+            button_zoneDel.Enabled = false;
+            button_PreviewAdd.Enabled = false;
+            //button_PreviewRefresh.Enabled = false;
+
+            comboBox_un_select_image.Text = null;
+            comboBox_select_image.Text = null;
+            comboBox_fg_mask.Text = null;
+            comboBox_mask.Text = null;
+            comboBox_tip.Text = null;
+            comboBox_Preview_image.Text = null;
+
+            numericUpDown_tipX.Value = 0;
+            numericUpDown_tipY.Value = 0;
+            numericUpDown_tips_width.Value = 0;
+            numericUpDown_tips_margin.Value = 0;
+
+            numericUpDown_zone_X.Value = 0;
+            numericUpDown_zone_Y.Value = 0;
+            numericUpDown_zone_W.Value = 100;
+            numericUpDown_zone_H.Value = 100;
+
+            checkBox_showInAOD.Checked = false;
+            checkBox_edit_mode.Checked = false;
+
+            //visibilityElement = true;
+            button_collapse.Visible = false;
+            Collapse = false;
+            SettingsElementClear();
+
+            setValue = false;
         }
 
         public void SettingsElementClear()
@@ -1035,14 +1576,16 @@ namespace ControlLibrary
             elementOptions.Add(8, "Sunset");
             elementOptions.Add(9, "Number_Max");
             elementOptions.Add(10, "Number_Min");
-            elementOptions.Add(11, "Number");
-            elementOptions.Add(12, "Segments");
-            elementOptions.Add(13, "Images");
+            elementOptions.Add(11, "Number_Target");
+            elementOptions.Add(12, "Number");
+            elementOptions.Add(13, "Segments");
+            elementOptions.Add(14, "Images");
             SetOptionsPosition(elementOptions);
 
             checkBox_Images.Checked = false;
             checkBox_Segments.Checked = false;
             checkBox_Number.Checked = false;
+            checkBox_Number_Target.Checked = false;
             checkBox_Number_Min.Checked = false;
             checkBox_Number_Max.Checked = false;
             checkBox_Sunset.Checked = false;
@@ -1054,12 +1597,383 @@ namespace ControlLibrary
             checkBox_Text_CityName.Checked = false;
             checkBox_Icon.Checked = false;
 
-            visibility_elements = false;
-            tableLayoutPanel_element.Visible = visibility_elements;
-
-            visibilityElement = true;
+            button_PreviewAdd.Enabled = false;
+            //button_PreviewRefresh.Enabled = false;
 
             setValue = setValueTemp;
+        }
+
+        public void SetElementsType(string type)
+        {
+            panel_Images.Visible = false;
+            panel_Segments.Visible = false;
+            panel_Number.Visible = false;
+            panel_Number_Min.Visible = false;
+            panel_Number_Max.Visible = false;
+            panel_Sunset.Visible = false;
+            panel_Sunrise.Visible = false;
+            panel_Sunset_Sunrise.Visible = false;
+            panel_Pointer.Visible = false;
+            panel_Text_CityName.Visible = false;
+            panel_Circle_Scale.Visible = false;
+            panel_Linear_Scale.Visible = false;
+            panel_Icon.Visible = false;
+
+            switch (type)
+            {
+                case "ElementBattery":
+                    panel_Images.Visible = true;
+                    panel_Segments.Visible = true;
+                    panel_Number.Visible = true;
+                    panel_Number_Min.Visible = false;
+                    panel_Number_Max.Visible = false;
+                    panel_Sunset.Visible = false;
+                    panel_Sunrise.Visible = false;
+                    panel_Sunset_Sunrise.Visible = false;
+                    panel_Pointer.Visible = true;
+                    panel_Text_CityName.Visible = false;
+                    panel_Circle_Scale.Visible = true;
+                    panel_Linear_Scale.Visible = true;
+                    panel_Icon.Visible = true;
+                    break;
+            }
+        }
+        #endregion
+
+        #region contextMenu
+        private void contextMenuStrip_X_Opening(object sender, CancelEventArgs e)
+        {
+            if ((MouseСoordinates.X < 0) || (MouseСoordinates.Y < 0))
+            {
+                contextMenuStrip_X.Items[0].Enabled = false;
+            }
+            else
+            {
+                contextMenuStrip_X.Items[0].Enabled = true;
+            }
+            decimal i = 0;
+            if ((Clipboard.ContainsText() == true) && (decimal.TryParse(Clipboard.GetText(), out i)))
+            {
+                contextMenuStrip_X.Items[2].Enabled = true;
+            }
+            else
+            {
+                contextMenuStrip_X.Items[2].Enabled = false;
+            }
+        }
+
+        private void contextMenuStrip_Y_Opening(object sender, CancelEventArgs e)
+        {
+            if ((MouseСoordinates.X < 0) || (MouseСoordinates.Y < 0))
+            {
+                contextMenuStrip_Y.Items[0].Enabled = false;
+            }
+            else
+            {
+                contextMenuStrip_Y.Items[0].Enabled = true;
+            }
+            decimal i = 0;
+            if ((Clipboard.ContainsText() == true) && (decimal.TryParse(Clipboard.GetText(), out i)))
+            {
+                contextMenuStrip_Y.Items[2].Enabled = true;
+            }
+            else
+            {
+                contextMenuStrip_Y.Items[2].Enabled = false;
+            }
+        }
+
+        private void вставитьКоординатуХToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Try to cast the sender to a ToolStripItem
+            ToolStripItem menuItem = sender as ToolStripItem;
+            if (menuItem != null)
+            {
+                // Retrieve the ContextMenuStrip that owns this ToolStripItem
+                ContextMenuStrip owner = menuItem.Owner as ContextMenuStrip;
+                if (owner != null)
+                {
+                    // Get the control that is displaying this context menu
+                    Control sourceControl = owner.SourceControl;
+                    NumericUpDown numericUpDown = sourceControl as NumericUpDown;
+                    numericUpDown.Value = MouseСoordinates.X;
+                }
+            }
+        }
+
+        private void вставитьКоординатуYToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Try to cast the sender to a ToolStripItem
+            ToolStripItem menuItem = sender as ToolStripItem;
+            if (menuItem != null)
+            {
+                // Retrieve the ContextMenuStrip that owns this ToolStripItem
+                ContextMenuStrip owner = menuItem.Owner as ContextMenuStrip;
+                if (owner != null)
+                {
+                    // Get the control that is displaying this context menu
+                    Control sourceControl = owner.SourceControl;
+                    NumericUpDown numericUpDown = sourceControl as NumericUpDown;
+                    numericUpDown.Value = MouseСoordinates.Y;
+                }
+            }
+        }
+
+        private void копироватьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Try to cast the sender to a ToolStripItem
+            ToolStripItem menuItem = sender as ToolStripItem;
+            if (menuItem != null)
+            {
+                // Retrieve the ContextMenuStrip that owns this ToolStripItem
+                ContextMenuStrip owner = menuItem.Owner as ContextMenuStrip;
+                if (owner != null)
+                {
+                    // Get the control that is displaying this context menu
+                    Control sourceControl = owner.SourceControl;
+                    NumericUpDown numericUpDown = sourceControl as NumericUpDown;
+                    Clipboard.SetText(numericUpDown.Value.ToString());
+                }
+            }
+        }
+
+        private void вставитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ToolStripItem menuItem = sender as ToolStripItem;
+            if (menuItem != null)
+            {
+                // Retrieve the ContextMenuStrip that owns this ToolStripItem
+                ContextMenuStrip owner = menuItem.Owner as ContextMenuStrip;
+                if (owner != null)
+                {
+                    // Get the control that is displaying this context menu
+                    Control sourceControl = owner.SourceControl;
+                    NumericUpDown numericUpDown = sourceControl as NumericUpDown;
+                    //Если в буфере обмен содержится текст
+                    if (Clipboard.ContainsText() == true)
+                    {
+                        //Извлекаем (точнее копируем) его и сохраняем в переменную
+                        decimal i = 0;
+                        if (decimal.TryParse(Clipboard.GetText(), out i))
+                        {
+                            if (i > numericUpDown.Maximum) i = numericUpDown.Maximum;
+                            if (i < numericUpDown.Minimum) i = numericUpDown.Minimum;
+                            numericUpDown.Value = i;
+                        }
+                    }
+
+                }
+            }
+        }
+        #endregion
+
+        #region numericUpDown
+        private void numericUpDown_picturesX_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (MouseСoordinates.X < 0) return;
+            NumericUpDown numericUpDown = sender as NumericUpDown;
+            if (e.X <= numericUpDown.Controls[1].Width + 1)
+            {
+                // Click is in text area
+                numericUpDown.Value = MouseСoordinates.X;
+            }
+        }
+
+        private void numericUpDown_picturesY_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (MouseСoordinates.Y < 0) return;
+            NumericUpDown numericUpDown = sender as NumericUpDown;
+            if (e.X <= numericUpDown.Controls[1].Width + 1)
+            {
+                // Click is in text area
+                numericUpDown.Value = MouseСoordinates.Y;
+            }
+        }
+
+        private void numericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            if (ZoneValueChanged != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                ZoneValueChanged(this, eventArgs, comboBox_select_zone.SelectedIndex);
+            }
+        }
+
+        private void numericUpDown_height_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (MouseСoordinates.X < 0) return;
+            NumericUpDown numericUpDown = sender as NumericUpDown;
+            if (e.X <= numericUpDown.Controls[1].Width + 1)
+            {
+                // Click is in text area
+                numericUpDown.Value = MouseСoordinates.X - numericUpDown_zone_X.Value;
+            }
+        }
+
+        private void numericUpDown_width_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (MouseСoordinates.Y < 0) return;
+            NumericUpDown numericUpDown = sender as NumericUpDown;
+            if (e.X <= numericUpDown.Controls[1].Width + 1)
+            {
+                // Click is in text area
+                numericUpDown.Value = MouseСoordinates.Y - numericUpDown_zone_Y.Value;
+            }
+        }
+
+        #endregion
+
+        private void button_add_Click(object sender, EventArgs e)
+        {
+            if (ZoneAdd != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                ZoneAdd(this, eventArgs, comboBox_select_zone.SelectedIndex);
+            }
+        }
+
+        private void button_del_Click(object sender, EventArgs e)
+        {
+            if (ZoneDel != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                ZoneDel(this, eventArgs, comboBox_select_zone.SelectedIndex);
+            }
+        }
+
+        private void UCtrl_EditableElemets_Opt_Load(object sender, EventArgs e)
+        {
+            button_PreviewAdd.Location = button_PreviewRefresh.Location;
+        }
+
+        private void button_elementAdd_Click(object sender, EventArgs e)
+        {
+            if (ElementAdd != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                ElementAdd(this, eventArgs, comboBox_select_element.SelectedIndex);
+            }
+        }
+
+        private void button_elementDel_Click(object sender, EventArgs e)
+        {
+            if (ElementDel != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                ElementDel(this, eventArgs, comboBox_select_element.SelectedIndex);
+            }
+        }
+
+        private void comboBox_select_element_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ElementIndexChanged != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                ElementIndexChanged(this, eventArgs, comboBox_select_element.SelectedIndex);
+            }
+
+            if (comboBox_select_element.SelectedIndex >= 0)
+            {
+                button_elementDel.Enabled = true;
+                button_PreviewAdd.Enabled = true;
+            }
+            else
+            {
+                button_elementDel.Enabled = false;
+                button_PreviewAdd.Enabled = false;
+            }
+        }
+
+        private void tabControl1_Selecting(object sender, TabControlCancelEventArgs e)
+        {
+            if (e.TabPage.Name == "tabPageElementSettings")
+            {
+                tabControl1.Height = (int)(panel3.Location.Y + panel3.Height + 26 * currentDPI);
+                button_collapse.Visible = true;
+            }
+            else
+            {
+                tabControl1.Height = (int)(462 * currentDPI);
+                button_collapse.Visible = false;
+            }
+        }
+
+        private void panel3_LocationChanged(object sender, EventArgs e)
+        {
+            if (currentDPI == 0) return;
+            //if (tabControl1.SelectedTab.Name == "tabPageElementSettings")
+            //{
+            //    tabControl1.Height = (int)(panel3.Location.Y + panel3.Height + 26 * currentDPI);
+            //}
+            //else
+            //{
+            //    tabControl1.Height = (int)(462 * currentDPI);
+            //}
+        }
+
+        private void button_PreviewAdd_Click(object sender, EventArgs e)
+        {
+            if (PreviewElementAdd != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                PreviewElementAdd(this, eventArgs, comboBox_select_element.SelectedIndex);
+            }
+        }
+
+        private void button_PreviewRefresh_Click(object sender, EventArgs e)
+        {
+            if (PreviewElementRefresh != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                PreviewElementRefresh(this, eventArgs, comboBox_select_element.SelectedIndex);
+            }
+        }
+
+        private void button_collapse_Click(object sender, EventArgs e)
+        {
+            Collapse = !Collapse;
+        }
+
+        private void button_collapse_SizeChanged(object sender, EventArgs e)
+        {
+            if (tabControl1.Height > 580)
+            {
+                float currentDPI = tabControl1.Height / 462f;
+                button_collapse.Image = (Image)(new Bitmap(button_collapse.Image,
+                    new Size((int)(16 * currentDPI), (int)(16 * currentDPI))));
+
+                Control.ControlCollection controlCollection = tableLayoutPanel_element.Controls;
+                for (int i = 0; i < controlCollection.Count; i++)
+                {
+                    string name = controlCollection[i].GetType().Name;
+                    if (name == "Panel")
+                    {
+                        Control.ControlCollection panelCollection = controlCollection[i].Controls;
+                        for (int j = 0; j < panelCollection.Count; j++)
+                        {
+                            string nameButton = panelCollection[j].GetType().Name;
+                            if (nameButton == "Button")
+                            {
+                                Button btn = (Button)panelCollection[j];
+                                btn.Image = (Image)(new Bitmap(btn.Image,
+                                    new Size((int)(16 * currentDPI), (int)(16 * currentDPI))));
+                            }
+                        }
+                    }
+                }
+
+                controlCollection = button_collapse.Controls;
+                for (int i = 0; i < controlCollection.Count; i++)
+                {
+                    string name = controlCollection[i].GetType().Name;
+                    if (name == "PictureBox")
+                    {
+                        PictureBox pb = (PictureBox)controlCollection[i];
+                        pb.BackgroundImageLayout = ImageLayout.Zoom;
+                    }
+                }
+
+            }
         }
     }
 }

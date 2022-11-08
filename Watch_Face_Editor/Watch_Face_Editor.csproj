@@ -90,11 +90,20 @@
     <Compile Include="Classes\WatchFace\WATCH_FACE.cs" />
     <Compile Include="Classes\ConvertingImages\ColorMap.cs" />
     <Compile Include="Classes\ConvertingImages\Footer.cs" />
+    <Compile Include="EditableElemets.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAddEditableElement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddEditableElement.Designer.cs">
+      <DependentUpon>FormAddEditableElement.cs</DependentUpon>
     </Compile>
     <Compile Include="FormAnimation.cs">
       <SubType>Form</SubType>
@@ -134,6 +143,21 @@
     <Compile Include="Classes\Program_Settings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\Watch_Face_Preview_Set.cs" />
+    <Compile Include="Properties\ElementsString.uk.Designer.cs">
+      <DependentUpon>ElementsString.uk.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\ElementsString.en.Designer.cs">
+      <DependentUpon>ElementsString.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\ElementsString.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ElementsString.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\FormStrings.uk.Designer.cs">
       <DependentUpon>FormStrings.uk.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -180,6 +204,15 @@
     <EmbeddedResource Include="Form1.zh.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormAddEditableElement.en.resx">
+      <DependentUpon>FormAddEditableElement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAddEditableElement.resx">
+      <DependentUpon>FormAddEditableElement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAddEditableElement.uk.resx">
+      <DependentUpon>FormAddEditableElement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormAnimation.en.resx">
       <DependentUpon>FormAnimation.cs</DependentUpon>
     </EmbeddedResource>
@@ -212,6 +245,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormPreview.resx">
       <DependentUpon>FormPreview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\ElementsString.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ElementsString.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\ElementsString.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ElementsString.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\ElementsString.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ElementsString.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\FormStrings.uk.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -273,10 +318,6 @@
     </Compile>
     <None Include="Resources\OpenSans-Regular.ttf" />
     <None Include="Resources\Roboto-Regular.ttf" />
-    <None Include="Resources\tips.en.rtf" />
-    <None Include="Resources\tips.ru.rtf" />
-    <None Include="Resources\tips.uk.rtf" />
-    <None Include="Resources\tips.zh.rtf" />
     <None Include="Resources\tips_en.rtf" />
     <None Include="Resources\tips_es.rtf" />
     <None Include="Resources\tips_ru.rtf" />
@@ -306,12 +347,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ControlLibrary\ControlLibrary.csproj">
-      <Project>{62353a5f-d872-408a-8999-06c08a03cc66}</Project>
-      <Name>ControlLibrary</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="AppIcon.ico" />
@@ -388,6 +423,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ControlLibrary\ControlLibrary.csproj">
+      <Project>{62353a5f-d872-408a-8999-06c08a03cc66}</Project>
+      <Name>ControlLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

@@ -359,6 +359,7 @@ namespace Watch_Face_Editor
             }
 
             userCtrl_Background_Options.AutoSize = true;
+            userCtrl_Background_Options.Visible = false;
             uCtrl_EditableBackground_Opt.AutoSize = true;
             uCtrl_Text_Opt.AutoSize = true;
             uCtrl_Text_Weather_Opt.AutoSize = true;
@@ -375,6 +376,7 @@ namespace Watch_Face_Editor
             uCtrl_Animation_Motion_Opt.AutoSize = true;
             uCtrl_Animation_Rotate_Opt.AutoSize = true;
             uCtrl_EditableTimePointer_Opt.AutoSize = true;
+            uCtrl_EditableElements_Opt.AutoSize = true;
 
             button_CreatePreview.Location = button_RefreshPreview.Location;
 
@@ -1457,6 +1459,11 @@ namespace Watch_Face_Editor
 
         private void ShowElemenrOptions(string optionsName)
         {
+            bool updatePreview = false;
+            if (uCtrl_EditableBackground_Opt.Visible) updatePreview = true;
+            if (uCtrl_EditableElements_Opt.Visible) updatePreview = true;
+            if (uCtrl_EditableTimePointer_Opt.Visible) updatePreview = true;
+
             bool AOD = radioButton_ScreenIdle.Checked;
             HideAllElemenrOptions();
             switch (optionsName)
@@ -1510,14 +1517,20 @@ namespace Watch_Face_Editor
                 case "EditableTimePointer":
                     uCtrl_EditableTimePointer_Opt.Visible = true;
                     break;
+                case "EditableElements":
+                    uCtrl_EditableElements_Opt.Visible = true;
+                    break;
             }
+
+            if (optionsName == "EditableTimePointer" || optionsName == "EditableElements" ||
+                optionsName == "Background") updatePreview = !updatePreview;
+            if (updatePreview) PreviewImage();
         }
 
         /// <summary>Скрывает все панели с настройками элементов</summary>
         private void HideAllElemenrOptions()
         {
             userCtrl_Background_Options.Visible = false;
-            uCtrl_EditableBackground_Opt.Visible = false;
             uCtrl_EditableBackground_Opt.Visible = false;
             uCtrl_Text_Opt.Visible = false;
             uCtrl_Text_Weather_Opt.Visible = false;
@@ -1534,6 +1547,7 @@ namespace Watch_Face_Editor
             uCtrl_Animation_Motion_Opt.Visible = false;
             uCtrl_Animation_Rotate_Opt.Visible = false;
             uCtrl_EditableTimePointer_Opt.Visible = false;
+            uCtrl_EditableElements_Opt.Visible = false;
         }
 
         private void ResetHighlightState(string selectElementName)
@@ -1828,6 +1842,25 @@ namespace Watch_Face_Editor
             }
         }
 
+        private void uCtrl_EditableElements_Elm_SelectChanged(object sender, EventArgs eventArgs)
+        {
+            ResetHighlightState("EditableElements");
+
+            EditableElements editableElement = null;
+            if (Watch_Face != null && Watch_Face.Editable_Elements != null) editableElement = Watch_Face.Editable_Elements;
+
+            if (editableElement != null)
+            {
+                //hmUI_widget_IMG_NUMBER img_number = null;
+
+                //if (distance.Number == null) distance.Number = new hmUI_widget_IMG_NUMBER();
+                //img_number = distance.Number;
+                Read_EditableElements_Options(editableElement);
+                ShowElemenrOptions("EditableElements");
+
+            }
+        }
+
         private void button_JSON_Click(object sender, EventArgs e)
         {
             Logger.WriteLine("* JSON");
@@ -2045,6 +2078,7 @@ namespace Watch_Face_Editor
             uCtrl_Linear_Scale_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
             uCtrl_Icon_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
             uCtrl_Shortcut_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
+            uCtrl_EditableElements_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
             uCtrl_EditableTimePointer_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
             //uCtrl_Animation_Frame_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
             //uCtrl_Animation_Motion_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
@@ -2555,6 +2589,11 @@ namespace Watch_Face_Editor
                 showEeditMode = true;
                 edit_mode = 1;
             }
+            if (uCtrl_EditableElements_Opt.Visible && uCtrl_EditableElements_Opt.checkBox_edit_mode.Checked)
+            {
+                showEeditMode = true;
+                edit_mode = 2;
+            }
             if (uCtrl_EditableTimePointer_Opt.Visible && uCtrl_EditableTimePointer_Opt.checkBox_edit_mode.Checked)
             {
                 showEeditMode = true;
@@ -2657,6 +2696,11 @@ namespace Watch_Face_Editor
                         showEeditMode = true;
                         edit_mode = 1;
                     }
+                    if (uCtrl_EditableElements_Opt.Visible && uCtrl_EditableElements_Opt.checkBox_edit_mode.Checked)
+                    {
+                        showEeditMode = true;
+                        edit_mode = 2;
+                    }
                     if (uCtrl_EditableTimePointer_Opt.Visible && uCtrl_EditableTimePointer_Opt.checkBox_edit_mode.Checked)
                     {
                         showEeditMode = true;
@@ -2727,6 +2771,11 @@ namespace Watch_Face_Editor
             {
                 showEeditMode = true;
                 edit_mode = 1;
+            }
+            if (uCtrl_EditableElements_Opt.Visible && uCtrl_EditableElements_Opt.checkBox_edit_mode.Checked)
+            {
+                showEeditMode = true;
+                edit_mode = 2;
             }
             if (uCtrl_EditableTimePointer_Opt.Visible && uCtrl_EditableTimePointer_Opt.checkBox_edit_mode.Checked)
             {
@@ -3482,7 +3531,6 @@ namespace Watch_Face_Editor
             dateDay.visible = true;
             //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementDateDay"); // проверяем что такого элемента нет
-            //if (!exists) Elements.Add(dateDay);
             if (!exists) Elements.Insert(0, dateDay);
             uCtrl_DigitalTime_Elm.SettingsClear();
         }
@@ -3513,7 +3561,6 @@ namespace Watch_Face_Editor
             dateMonth.visible = true;
             //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementDateMonth"); // проверяем что такого элемента нет
-            //if (!exists) Elements.Add(dateDay);
             if (!exists) Elements.Insert(0, dateMonth);
             uCtrl_DigitalTime_Elm.SettingsClear();
         }
@@ -3544,7 +3591,6 @@ namespace Watch_Face_Editor
             dateYear.visible = true;
             //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementDateYear"); // проверяем что такого элемента нет
-            //if (!exists) Elements.Add(dateDay);
             if (!exists) Elements.Insert(0, dateYear);
             uCtrl_DigitalTime_Elm.SettingsClear();
         }
@@ -3575,7 +3621,6 @@ namespace Watch_Face_Editor
             dateWeek.visible = true;
             //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementDateWeek"); // проверяем что такого элемента нет
-            //if (!exists) Elements.Add(dateDay);
             if (!exists) Elements.Insert(0, dateWeek);
             uCtrl_DigitalTime_Elm.SettingsClear();
         }
@@ -3606,7 +3651,6 @@ namespace Watch_Face_Editor
             statuses.visible = true;
             //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementStatuses"); // проверяем что такого элемента нет
-            //if (!exists) Elements.Add(dateDay);
             if (!exists) Elements.Insert(0, statuses);
             uCtrl_Statuses_Elm.SettingsClear();
         }
@@ -3699,7 +3743,6 @@ namespace Watch_Face_Editor
             steps.visible = true;
             //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementSteps"); // проверяем что такого элемента нет
-            //if (!exists) Elements.Add(dateDay);
             if (!exists) Elements.Insert(0, steps);
             uCtrl_Steps_Elm.SettingsClear();
         }
@@ -3730,7 +3773,6 @@ namespace Watch_Face_Editor
             battery.visible = true;
             //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementBattery"); // проверяем что такого элемента нет
-            //if (!exists) Elements.Add(dateDay);
             if (!exists) Elements.Insert(0, battery);
             uCtrl_Battery_Elm.SettingsClear();
         }
@@ -3761,7 +3803,6 @@ namespace Watch_Face_Editor
             сalories.visible = true;
             //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementCalories"); // проверяем что такого элемента нет
-            //if (!exists) Elements.Add(dateDay);
             if (!exists) Elements.Insert(0, сalories);
             uCtrl_Calories_Elm.SettingsClear();
         }
@@ -3792,7 +3833,6 @@ namespace Watch_Face_Editor
             heart.visible = true;
             //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementHeart"); // проверяем что такого элемента нет
-            //if (!exists) Elements.Add(dateDay);
             if (!exists) Elements.Insert(0, heart);
             uCtrl_Heart_Elm.SettingsClear();
         }
@@ -3823,7 +3863,6 @@ namespace Watch_Face_Editor
             pai.visible = true;
             //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementPAI"); // проверяем что такого элемента нет
-            //if (!exists) Elements.Add(dateDay);
             if (!exists) Elements.Insert(0, pai);
             uCtrl_PAI_Elm.SettingsClear();
         }
@@ -3854,7 +3893,6 @@ namespace Watch_Face_Editor
             distance.visible = true;
             //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementDistance"); // проверяем что такого элемента нет
-            //if (!exists) Elements.Add(dateDay);
             if (!exists) Elements.Insert(0, distance);
             uCtrl_Distance_Elm.SettingsClear();
         }
@@ -3885,7 +3923,6 @@ namespace Watch_Face_Editor
             stand.visible = true;
             //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementStand"); // проверяем что такого элемента нет
-            //if (!exists) Elements.Add(dateDay);
             if (!exists) Elements.Insert(0, stand);
             uCtrl_Stand_Elm.SettingsClear();
         }
@@ -3916,7 +3953,6 @@ namespace Watch_Face_Editor
             activity.visible = true;
             //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementActivity"); // проверяем что такого элемента нет
-            //if (!exists) Elements.Add(dateDay);
             if (!exists) Elements.Insert(0, activity);
             uCtrl_Activity_Elm.SettingsClear();
         }
@@ -3950,7 +3986,6 @@ namespace Watch_Face_Editor
             spo2.Number.visible = true;
             //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementSpO2"); // проверяем что такого элемента нет
-            //if (!exists) Elements.Add(dateDay);
             if (!exists) Elements.Insert(0, spo2);
             uCtrl_SpO2_Elm.SettingsClear();
         }
@@ -3981,7 +4016,6 @@ namespace Watch_Face_Editor
             steps.visible = true;
             //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementStress"); // проверяем что такого элемента нет
-            //if (!exists) Elements.Add(dateDay);
             if (!exists) Elements.Insert(0, steps);
             uCtrl_Stress_Elm.SettingsClear();
         }
@@ -4012,7 +4046,6 @@ namespace Watch_Face_Editor
             steps.visible = true;
             //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementFatBurning"); // проверяем что такого элемента нет
-            //if (!exists) Elements.Add(dateDay);
             if (!exists) Elements.Insert(0, steps);
             uCtrl_FatBurning_Elm.SettingsClear();
         }
@@ -4045,7 +4078,6 @@ namespace Watch_Face_Editor
             weather.visible = true;
             //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementWeather"); // проверяем что такого элемента нет
-            //if (!exists) Elements.Add(dateDay);
             if (!exists) Elements.Insert(0, weather);
             uCtrl_Weather_Elm.SettingsClear();
         }
@@ -4076,7 +4108,6 @@ namespace Watch_Face_Editor
             uv_index.visible = true;
             //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementUVIndex"); // проверяем что такого элемента нет
-            //if (!exists) Elements.Add(dateDay);
             if (!exists) Elements.Insert(0, uv_index);
             uCtrl_UVIndex_Elm.SettingsClear();
         }
@@ -4107,7 +4138,6 @@ namespace Watch_Face_Editor
             humidity.visible = true;
             //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementHumidity"); // проверяем что такого элемента нет
-            //if (!exists) Elements.Add(dateDay);
             if (!exists) Elements.Insert(0, humidity);
             uCtrl_Humidity_Elm.SettingsClear();
         }
@@ -4134,12 +4164,11 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementAltimeter steps = new ElementAltimeter();
-            steps.visible = true;
+            ElementAltimeter altimete = new ElementAltimeter();
+            altimete.visible = true;
             //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementAltimeter"); // проверяем что такого элемента нет
-            //if (!exists) Elements.Add(dateDay);
-            if (!exists) Elements.Insert(0, steps);
+            if (!exists) Elements.Insert(0, altimete);
             uCtrl_Altimeter_Elm.SettingsClear();
         }
 
@@ -4165,12 +4194,11 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementSunrise steps = new ElementSunrise();
-            steps.visible = true;
+            ElementSunrise sunrise = new ElementSunrise();
+            sunrise.visible = true;
             //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementSunrise"); // проверяем что такого элемента нет
-            //if (!exists) Elements.Add(dateDay);
-            if (!exists) Elements.Insert(0, steps);
+            if (!exists) Elements.Insert(0, sunrise);
             uCtrl_Sunrise_Elm.SettingsClear();
         }
 
@@ -4196,12 +4224,11 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementWind steps = new ElementWind();
-            steps.visible = true;
+            ElementWind wind = new ElementWind();
+            wind.visible = true;
             //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementWind"); // проверяем что такого элемента нет
-            //if (!exists) Elements.Add(dateDay);
-            if (!exists) Elements.Insert(0, steps);
+            if (!exists) Elements.Insert(0, wind);
             uCtrl_Wind_Elm.SettingsClear();
         }
 
@@ -4227,15 +4254,14 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
             }
 
-            ElementMoon steps = new ElementMoon();
-            steps.visible = true;
-            steps.Images = new hmUI_widget_IMG_LEVEL();
-            steps.Images.position = 1;
-            steps.Images.visible = true;
+            ElementMoon moon = new ElementMoon();
+            moon.visible = true;
+            moon.Images = new hmUI_widget_IMG_LEVEL();
+            moon.Images.position = 1;
+            moon.Images.visible = true;
 
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementMoon"); // проверяем что такого элемента нет
-            //if (!exists) Elements.Add(dateDay);
-            if (!exists) Elements.Insert(0, steps);
+            if (!exists) Elements.Insert(0, moon);
             uCtrl_Moon_Elm.SettingsClear();
         }
 
@@ -5400,7 +5426,7 @@ namespace Watch_Face_Editor
                 uCtrl_EditableTimePointer_Elm.SetVisibilityElementStatus(EditablePointers.visible);
 
                 uCtrl_EditableTimePointer_Elm.Visible = true;
-                SetElementPositionInGUI(EditablePointers.GetType().Name, count - elementsCount - 2);
+                SetElementPositionInGUI("ElementEditablePointers", count - elementsCount - 2);
                 //SetElementPositionInGUI(type, i + 1); 
             }
             
@@ -5422,6 +5448,9 @@ namespace Watch_Face_Editor
                     break;
                 case "ElementEditablePointers":
                     panel = panel_UC_EditableTimePointer;
+                    break;
+                case "EditableElements":
+                    panel = panel_UC_EditableElements;
                     break;
                 case "ElementDateDay":
                     panel = panel_UC_DateDay;
@@ -5988,6 +6017,22 @@ namespace Watch_Face_Editor
             if (Watch_Face != null && Watch_Face.ElementEditablePointers != null)
             {
                 Watch_Face.ElementEditablePointers = null;
+
+                PreviewView = false;
+                ShowElemetsWatchFace();
+                PreviewView = true;
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_EditableElements_Elm_DelElement(object sender, EventArgs eventArgs)
+        {
+            if (Watch_Face != null && Watch_Face.Editable_Elements != null)
+            {
+                Watch_Face.Editable_Elements = null;
 
                 PreviewView = false;
                 ShowElemetsWatchFace();
@@ -7214,6 +7259,9 @@ namespace Watch_Face_Editor
                 if (Watch_Face.ScreenNormal.Background.Editable_Background != null &&
                     Watch_Face.ScreenNormal.Background.Editable_Background.enable_edit_bg) appText = appText.Replace("\"editable\": 0", "\"editable\": 1");
             }
+            if (Watch_Face.Editable_Elements != null && Watch_Face.Editable_Elements.visible) appText = appText.Replace("\"editable\": 0", "\"editable\": 1");
+            if (Watch_Face.ElementEditablePointers != null && Watch_Face.ElementEditablePointers.visible) appText = appText.Replace("\"editable\": 0", "\"editable\": 1");
+
             File.WriteAllText(tempDir + @"\app.json", appText, Encoding.UTF8);
             File.Copy(templatesFileDir + @"\app.js", tempDir + @"\app.js");
 
@@ -8318,6 +8366,21 @@ namespace Watch_Face_Editor
             if (editablePointers != null)
             {
                 editablePointers.visible = visible;
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_EditableElements_Elm_VisibleElementChanged(object sender, EventArgs eventArgs, bool visible)
+        {
+            EditableElements editableElements = null;
+            if (Watch_Face != null && Watch_Face.Editable_Elements != null) editableElements = Watch_Face.Editable_Elements;
+
+            if (editableElements != null)
+            {
+                editableElements.visible = visible;
             }
 
             JSON_Modified = true;
@@ -14465,7 +14528,7 @@ namespace Watch_Face_Editor
                             //collection[collection.Count - 1].AnimationDelay = 100;
                             collection[collection.Count - 1].AnimationDelay = (int)(100 * numericUpDown_Gif_Speed.Value);
                         }
-                        Watch_Face.ScreenNormal.Background.Editable_Background.selected_background = p_index;
+                        Watch_Face.ElementEditablePointers.selected_pointers = p_index;
                     }
 
                     // Optionally reduce colors
@@ -15073,9 +15136,6 @@ namespace Watch_Face_Editor
         {
             PreviewImage();
         }
-
-        
-
     }
 }
 

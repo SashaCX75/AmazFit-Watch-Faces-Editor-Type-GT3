@@ -4092,9 +4092,17 @@ namespace Watch_Face_Editor
 
     public class EditableElements
     {
+        /// <summary>Выбраная зона</summary>
+        public int selected_zone = -1;
         public List<WATCHFACE_EDIT_GROUP> Watchface_edit_group { get; set; }
-        public hmUI_widget_IMG maskCover { get; set; } //100%mask
-        public hmUI_widget_IMG mask { get; set; } //70%mask
+        public string mask { get; set; } //100%mask
+        public string fg_mask { get; set; } //70%mask
+
+        /// <summary>Отображать элементы в режиме АОД</summary>
+        public bool AOD_show { get; set; } = false;
+
+        /// <summary>Отображать в режиме редактирования</summary>
+        public bool showEeditMode { get; set; } = false;
 
         /// <summary>Видимость элемента</summary>
         public bool visible = false;

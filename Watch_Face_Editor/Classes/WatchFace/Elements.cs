@@ -271,7 +271,7 @@ namespace Watch_Face_Editor
     public class WATCHFACE_EDIT_GROUP
     {
         /// <summary>Выбраный элемент</summary>
-        public int selected_element = 0;
+        public int selected_element = -1;
 
         /// <summary>Координаты элемента</summary>
         public int x = 0;
@@ -306,14 +306,11 @@ namespace Watch_Face_Editor
         /// <summary>Отступы для пояснительной надписи</summary>
         public int tips_margin { get; set; }
 
-        /// <summary>Рамка выделения</summary>
-        public string fg { get; set; }
+        /// <summary>Рамка невыделенного элемента</summary>
+        public string un_select_image { get; set; }
 
-        /// <summary>Отображать элементы в режиме АОД</summary>
-        public bool AOD_show { get; set; } = false;
-
-        /// <summary>Отображать в режиме редактирования</summary>
-        public bool showEeditMode { get; set; } = false;
+        /// <summary>Рамка выделенного элемента</summary>
+        public string select_image { get; set; }
 
     }
 

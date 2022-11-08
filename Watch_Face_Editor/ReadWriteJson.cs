@@ -120,6 +120,203 @@ namespace Watch_Face_Editor
                 }
             }
 
+            if(Watch_Face.Editable_Elements != null && Watch_Face.Editable_Elements.Watchface_edit_group != null &&
+                Watch_Face.Editable_Elements.Watchface_edit_group.Count > 0)
+            {
+                if (!Watch_Face.Editable_Elements.visible) return;
+
+                for (int i = 1; i <= Watch_Face.Editable_Elements.Watchface_edit_group.Count; i++)
+                {
+                    if (Watch_Face.Editable_Elements.Watchface_edit_group[i - 1].Elements != null &&
+                        Watch_Face.Editable_Elements.Watchface_edit_group[i - 1].Elements.Count > 0 &&
+                        Watch_Face.Editable_Elements.Watchface_edit_group[i - 1].optional_types_list != null &&
+                        Watch_Face.Editable_Elements.Watchface_edit_group[i - 1].optional_types_list.Count > 0)
+                    {
+                        string date = "";
+                        string week = "";
+                        string step = "";
+                        string battery = "";
+                        string calories = "";
+                        string heart = "";
+                        string pai = "";
+                        string distance = "";
+                        foreach (Object element in Watch_Face.Editable_Elements.Watchface_edit_group[i - 1].Elements)
+                        {
+                            string outVariables = "";
+                            string outItems = "";
+                            string outMainItems = "";
+                            string out_resume_function = "";
+                            string out_resume_call = "";
+                            string out_pause_call = "";
+                            string optionNameStart = "editableZone_" + i.ToString() + "_";
+                            string show_level = "ONLY_NORMAL";
+                            if (Watch_Face.Editable_Elements.AOD_show) show_level = "ONLY_NORMAL | hmUI.show_level.ONLY_AOD";
+                            AddEditableElementToJS(element, show_level, optionNameStart, out outVariables, out outItems, out outMainItems, 
+                                out out_resume_function, items, resume_function, out out_resume_call, out out_pause_call);
+
+                            string type = element.GetType().Name;
+                            switch (type)
+                            {
+                                case "ElementDateDay":
+                                    if (outItems.Length > 5) date += outItems;
+                                    break;
+
+                                case "ElementDateMonth":
+                                    if (outItems.Length > 5) date += outItems;
+                                    break;
+
+                                case "ElementDateYear":
+                                    if (outItems.Length > 5) date += outItems;
+                                    break;
+
+                                case "ElementDateWeek":
+                                    if (outItems.Length > 5) week += outItems;
+                                    break;
+
+
+                                case "ElementBattery":
+                                    if (outItems.Length > 5) battery += outItems;
+                                    break;
+
+                                case "ElementSteps":
+                                    if (outItems.Length > 5) step += outItems;
+                                    break;
+                                case "ElementCalories":
+                                    if (outItems.Length > 5) calories += outItems;
+                                    break;
+                                case "ElementHeart":
+                                    if (outItems.Length > 5) heart += outItems;
+                                    break;
+                                case "ElementPAI":
+                                    if (outItems.Length > 5) pai += outItems;
+                                    break;
+                                case "ElementDistance":
+                                    if (outItems.Length > 5) distance += outItems;
+                                    break;
+
+                                #region ElementStand
+                                case "ElementStand":
+                                    
+                                #endregion
+
+                                #region ElementActivity
+                                case "ElementActivity":
+                                   
+                                #endregion
+
+                                #region ElementSpO2
+                                case "ElementSpO2":
+                                   
+                                #endregion
+
+                                #region ElementStress
+                                case "ElementStress":
+                                   
+                                #endregion
+
+                                #region ElementFatBurning
+                                case "ElementFatBurning":
+                                   
+                                #endregion
+
+
+
+                                #region ElementWeather
+                                case "ElementWeather":
+                                    
+                                #endregion
+
+                                #region ElementUVIndex
+                                case "ElementUVIndex":
+                                   
+                                #endregion
+
+                                #region ElementHumidity
+                                case "ElementHumidity":
+                                   
+                                #endregion
+
+                                #region ElementAltimeter
+                                case "ElementAltimeter":
+                                   
+                                #endregion
+
+                                #region ElementSunrise
+                                case "ElementSunrise":
+                                    
+                                #endregion
+
+                                #region ElementWind
+                                case "ElementWind":
+                                    
+                                #endregion
+
+                                #region ElementMoon
+                                case "ElementMoon":
+                                    break;
+                                #endregion
+                            }
+
+                            variables += outVariables;
+                            //items += outItems;
+                            items += outMainItems;
+                            resume_function += out_resume_function;
+                            resume_call += out_resume_call;
+                            pause_call += out_pause_call;
+                        }
+
+                        if (date.Length > 5) date = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.DATE:" + date + TabInString(8) + "break;" + Environment.NewLine;
+                        if (week.Length > 5) week = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.WEEK:" + week + TabInString(8) + "break;" + Environment.NewLine;
+                        if (battery.Length > 5) battery = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.BATTERY:" + battery + TabInString(8) + "break;" + Environment.NewLine;
+                        if (step.Length > 5) step = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.STEP:" + step + TabInString(8) + "break;" + Environment.NewLine;
+                        if (calories.Length > 5) calories = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.CAL:" + calories + TabInString(8) + "break;" + Environment.NewLine;
+                        if (heart.Length > 5) heart = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.HEART:" + heart + TabInString(8) + "break;" + Environment.NewLine;
+                        if (pai.Length > 5) pai = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.PAI_DAILY:" + pai + TabInString(8) + "break;" + Environment.NewLine;
+                        if (distance.Length > 5) distance = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.DISTANCE:" + distance + TabInString(8) + "break;" + Environment.NewLine;
+
+                        string editablePointersOptions = Editable_Elements_Options(Watch_Face.Editable_Elements.Watchface_edit_group[i - 1], i);
+                        if (editablePointersOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + "editGroup_" + i.ToString() + "  = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) + "editGroup_" + i.ToString() + " = hmUI.createWidget(hmUI.widget.WATCHFACE_EDIT_GROUP, {" +
+                                    editablePointersOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            items += Environment.NewLine + TabInString(6) + "const editType_" + i.ToString() +
+                                " = editGroup_" + i.ToString() + ".getProperty(hmUI.prop.CURRENT_TYPE);" + Environment.NewLine;
+
+                            string switchText = date + week + battery + step + calories + heart + pai + distance;
+                            if (switchText.Length > 5)
+                            {
+                                items += Environment.NewLine + TabInString(6) + "switch (editType_" + i.ToString() + ") {";
+                                items += switchText;
+                                items += TabInString(6) + "};" + Environment.NewLine;
+                            }
+                        } 
+                    }
+                }
+
+                if (Watch_Face.Editable_Elements.mask != null && Watch_Face.Editable_Elements.mask.Length > 0)
+                {
+                    string maskOptions = MASK_Options(Watch_Face.Editable_Elements.mask);
+                    if (maskOptions.Length > 5)
+                    {
+                        variables += TabInString(4) + "let " + "mask = ''" + Environment.NewLine;
+                        items += Environment.NewLine + TabInString(6) + "mask = hmUI.createWidget(hmUI.widget.WATCHFACE_EDIT_MASK, {" +
+                                maskOptions + TabInString(6) + "});" + Environment.NewLine;
+                    }
+                }
+                if (Watch_Face.Editable_Elements.fg_mask != null && Watch_Face.Editable_Elements.fg_mask.Length > 0)
+                {
+                    string maskOptions = MASK_Options(Watch_Face.Editable_Elements.fg_mask);
+                    if (maskOptions.Length > 5)
+                    {
+                        variables += TabInString(4) + "let " + "fg_mask = ''" + Environment.NewLine;
+                        items += Environment.NewLine + TabInString(6) + "fg_mask = hmUI.createWidget(hmUI.widget.WATCHFACE_EDIT_FG_MASK, {" +
+                                maskOptions + TabInString(6) + "});" + Environment.NewLine;
+                    }
+                }
+            }
+
             if (Watch_Face.ElementEditablePointers != null)
             {
                 ElementEditablePointers EditablePointers = Watch_Face.ElementEditablePointers;
@@ -150,7 +347,7 @@ namespace Watch_Face_Editor
                     if (EditablePointers.cover != null && EditablePointers.cover.src != null && 
                         EditablePointers.cover.src.Length > 0)
                     {
-                        coverOptions = IMG_Options(EditablePointers.cover, null);
+                        coverOptions = IMG_Options(EditablePointers.cover, "ONLY_NORMAL | hmUI.show_level.ONLY_AOD");
 
                         // cover
                         if (coverOptions.Length > 5)
@@ -4462,7 +4659,7 @@ namespace Watch_Face_Editor
                     {
                         // покадровая анимация
                         if (Anim.Frame_Animation_List != null && Anim.Frame_Animation_List.position == index && 
-                            Anim.Frame_Animation_List.visible)
+                            Anim.Frame_Animation_List.visible && Anim.Frame_Animation_List.Frame_Animation != null)
                         {
                             int fps_index = 1;
                             foreach (hmUI_widget_IMG_ANIM anim_fps in Anim.Frame_Animation_List.Frame_Animation)
@@ -4491,7 +4688,7 @@ namespace Watch_Face_Editor
 
                         // анимация движения
                         if (Anim.Motion_Animation_List != null && Anim.Motion_Animation_List.position == index &&
-                            Anim.Motion_Animation_List.visible)
+                            Anim.Motion_Animation_List.visible && Anim.Motion_Animation_List.Motion_Animation != null)
                         {
                             int anim_motion_index = 1;
                             foreach (Motion_Animation anim_motion in Anim.Motion_Animation_List.Motion_Animation)
@@ -4679,7 +4876,7 @@ namespace Watch_Face_Editor
 
                         // анимация вращения
                         if (Anim.Rotate_Animation_List != null && Anim.Rotate_Animation_List.position == index &&
-                            Anim.Rotate_Animation_List.visible)
+                            Anim.Rotate_Animation_List.visible && Anim.Rotate_Animation_List.Rotate_Animation != null)
                         {
                             int anim_rotate_index = 1;
                             foreach (Rotate_Animation anim_rotate in Anim.Rotate_Animation_List.Rotate_Animation)
@@ -4847,6 +5044,3865 @@ namespace Watch_Face_Editor
             }
         }
 
+        private void AddEditableElementToJS(Object element, string show_level, string optionNameStart, out string variables, out string items,
+            out string main_items, out string resume_function, string exist_items, string exist_resume_call,
+            out string resume_call, out string pause_call)
+        {
+            variables = "";
+            items = "";
+            main_items = "";
+            resume_function = "";
+            resume_call = "";
+            pause_call = "";
+            string type = element.GetType().Name;
+
+            int imagesPosition = 99;
+            int segmentsPosition = 99;
+            int numberPosition = 99;
+            int numberTargetPosition = 99;
+            int pointerPosition = 99;
+            int circleScalePosition = 99;
+            int linearScalePosition = 99;
+            int iconPosition = 99;
+
+            string imagesOptions = "";
+            string segmentsOptions = "";
+            string numberOptions = "";
+            string numberTargetOptions = "";
+            string pointerOptions = "";
+            string circleScaleOptions = "";
+            string linearScaleOptions = "";
+            Circle_Scale circle_scale = null;
+            Linear_Scale linear_scale = null;
+            string iconOptions = "";
+
+            string numberOptions_separator = "";
+            string numberTargetOptions_separator = "";
+
+            switch (type)
+            {
+                #region ElementDateDay
+                case "ElementDateDay":
+                    ElementDateDay DateDay = (ElementDateDay)element;
+                    if (!DateDay.visible) return;
+                    int pointerPositionDay = 99;
+                    int numberPositionDay = 99;
+                    string optionsPointerDay = "";
+                    string optionsNumberDay = "";
+                    string optionsNumberDay_separator = "";
+                    if (DateDay.Pointer != null && DateDay.Pointer.visible)
+                    {
+                        pointerPositionDay = DateDay.Pointer.position;
+                        hmUI_widget_IMG_POINTER img_pointer = DateDay.Pointer;
+                        optionsPointerDay = DATE_POINTER_Options(img_pointer, "DAY", show_level, 2);
+                    }
+                    if (DateDay.Number != null && DateDay.Number.visible)
+                    {
+                        numberPositionDay = DateDay.Number.position;
+                        hmUI_widget_IMG_NUMBER img_number = DateDay.Number;
+                        optionsNumberDay = IMG_NUMBER_Day_Options(img_number, show_level, 2);
+
+                        optionsNumberDay_separator = IMG_Separator_Options(img_number, show_level, 2);
+                    }
+
+                    for (int index = 1; index <= 15; index++)
+                    {
+                        if (index == pointerPositionDay && optionsPointerDay.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                               "hmUI.createWidget(hmUI.widget.DATE_POINTER, {" +
+                               optionsPointerDay + TabInString(8) + "});" + Environment.NewLine;
+                        }
+
+                        if (index == numberPositionDay && optionsNumberDay.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.IMG_DATE, {" + 
+                                optionsNumberDay + TabInString(8) + "});" + Environment.NewLine;
+
+                            if (optionsNumberDay_separator.Length > 5)
+                            {
+                                items += Environment.NewLine + TabInString(8) +
+                                    "hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    optionsNumberDay_separator + TabInString(8) + "});" + Environment.NewLine;
+                            }
+                        }
+                    }
+                    break;
+                #endregion
+
+                #region ElementDateMonth
+                case "ElementDateMonth":
+                    ElementDateMonth DateMonth = (ElementDateMonth)element;
+                    if (!DateMonth.visible) return;
+                    int pointerPositionMonth = 99;
+                    int numberPositionMonth = 99;
+                    int imagesPositionMonth = 99;
+                    string optionsPointerMonth = "";
+                    string optionsNumberMonth = "";
+                    string optionsNumberMonth_separator = "";
+                    string optionsImagesMonth = "";
+                    if (DateMonth.Pointer != null && DateMonth.Pointer.visible)
+                    {
+                        pointerPositionMonth = DateMonth.Pointer.position;
+                        hmUI_widget_IMG_POINTER img_pointer = DateMonth.Pointer;
+                        optionsPointerMonth = DATE_POINTER_Options(img_pointer, "MONTH", show_level, 2);
+                    }
+                    if (DateMonth.Number != null && DateMonth.Number.visible)
+                    {
+                        numberPositionMonth = DateMonth.Number.position;
+                        hmUI_widget_IMG_NUMBER img_number = DateMonth.Number;
+                        optionsNumberMonth = IMG_NUMBER_Month_Options(img_number, show_level, 2);
+
+                        optionsNumberMonth_separator = IMG_Separator_Options(img_number, show_level, 2);
+                    }
+                    if (DateMonth.Images != null && DateMonth.Images.visible)
+                    {
+                        imagesPositionMonth = DateMonth.Images.position;
+                        hmUI_widget_IMG_LEVEL img_images = DateMonth.Images;
+                        optionsImagesMonth = IMG_IMAGES_Month_Options(img_images, show_level, 2);
+                    }
+
+                    for (int index = 1; index <= 15; index++)
+                    {
+                        if (index == pointerPositionMonth && optionsPointerMonth.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.DATE_POINTER, {" +
+                                    optionsPointerMonth + TabInString(8) + "});" + Environment.NewLine;
+                        }
+
+                        if (index == numberPositionMonth && optionsNumberMonth.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.IMG_DATE, {" +
+                                    optionsNumberMonth + TabInString(8) + "});" + Environment.NewLine;
+
+                            if (optionsNumberMonth_separator.Length > 5)
+                            {
+                                items += Environment.NewLine + TabInString(8) +
+                                    "hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        optionsNumberMonth_separator + TabInString(8) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        if (index == imagesPositionMonth && optionsImagesMonth.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "date_img_date_month_img = hmUI.createWidget(hmUI.widget.IMG_DATE, {" +
+                                    optionsImagesMonth + TabInString(8) + "});" + Environment.NewLine;
+                        }
+                    }
+                    break;
+                #endregion
+
+                #region ElementDateYear
+                case "ElementDateYear":
+                    ElementDateYear DateYear = (ElementDateYear)element;
+                    if (!DateYear.visible) return;
+                    string optionsNumberYear = "";
+                    string optionsNumberYear_separator = "";
+                    if (DateYear.Number != null)
+                    {
+                        hmUI_widget_IMG_NUMBER img_number = DateYear.Number;
+                        optionsNumberYear = IMG_NUMBER_Year_Options(img_number, show_level, 2);
+
+                        optionsNumberYear_separator = IMG_Separator_Options(img_number, show_level, 2);
+                    }
+
+                    if (optionsNumberYear.Length > 5)
+                    {
+                        items += Environment.NewLine + TabInString(8) +
+                            "hmUI.createWidget(hmUI.widget.IMG_DATE, {" +
+                                optionsNumberYear + TabInString(8) + "});" + Environment.NewLine;
+
+                        if (optionsNumberYear_separator.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    optionsNumberYear_separator + TabInString(8) + "});" + Environment.NewLine;
+                        }
+                    }
+                    break;
+                #endregion
+
+                #region ElementDateWeek
+                case "ElementDateWeek":
+                    ElementDateWeek DateWeek = (ElementDateWeek)element;
+                    if (!DateWeek.visible) return;
+                    int pointerPositionWeek = 99;
+                    int imagesPositionWeek = 99;
+                    string optionsPointerWeek = "";
+                    string optionsImagesWeek = "";
+                    if (DateWeek.Pointer != null && DateWeek.Pointer.visible)
+                    {
+                        pointerPositionWeek = DateWeek.Pointer.position;
+                        hmUI_widget_IMG_POINTER img_pointer = DateWeek.Pointer;
+                        optionsPointerWeek = DATE_POINTER_Options(img_pointer, "WEEK", show_level, 2);
+                    }
+                    if (DateWeek.Images != null && DateWeek.Images.visible)
+                    {
+                        imagesPositionWeek = DateWeek.Images.position;
+                        hmUI_widget_IMG_LEVEL img_images = DateWeek.Images;
+                        optionsImagesWeek = IMG_IMAGES_Week_Options(img_images, show_level, 2);
+                    }
+
+                    for (int index = 1; index <= 15; index++)
+                    {
+                        if (index == pointerPositionWeek && optionsPointerWeek.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.DATE_POINTER, {" +
+                                    optionsPointerWeek + TabInString(8) + "});" + Environment.NewLine;
+                        }
+
+                        if (index == imagesPositionWeek && optionsImagesWeek.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.IMG_WEEK, {" +
+                                    optionsImagesWeek + TabInString(8) + "});" + Environment.NewLine;
+                        }
+                    }
+                    break;
+                #endregion
+
+
+                #region ElementSteps
+                case "ElementSteps":
+                    ElementSteps Steps = (ElementSteps)element;
+
+                    if (!Steps.visible) return;
+                    if (Steps.Images != null && Steps.Images.visible)
+                    {
+                        imagesPosition = Steps.Images.position;
+                        hmUI_widget_IMG_LEVEL img_images = Steps.Images;
+                        imagesOptions = IMG_IMAGES_Options(img_images, "STEP", show_level, 2);
+                    }
+                    if (Steps.Segments != null && Steps.Segments.visible)
+                    {
+                        segmentsPosition = Steps.Segments.position;
+                        hmUI_widget_IMG_PROGRESS img_progress = Steps.Segments;
+                        segmentsOptions = IMG_PROGRESS_Options(img_progress, "STEP", show_level, 2);
+                    }
+                    if (Steps.Number != null && Steps.Number.visible)
+                    {
+                        numberPosition = Steps.Number.position;
+                        hmUI_widget_IMG_NUMBER img_number = Steps.Number;
+                        numberOptions = IMG_NUMBER_Options(img_number, "STEP", show_level, 2);
+
+                        numberOptions_separator = IMG_Separator_Options(img_number, show_level, 2);
+                    }
+                    if (Steps.Number_Target != null && Steps.Number_Target.visible)
+                    {
+                        numberTargetPosition = Steps.Number_Target.position;
+                        hmUI_widget_IMG_NUMBER img_number = Steps.Number_Target;
+                        numberTargetOptions = IMG_NUMBER_Options(img_number, "STEP_TARGET", show_level, 2);
+
+                        numberTargetOptions_separator = IMG_Separator_Options(img_number, show_level, 2);
+                    }
+                    if (Steps.Pointer != null && Steps.Pointer.visible)
+                    {
+                        pointerPosition = Steps.Pointer.position;
+                        hmUI_widget_IMG_POINTER img_pointer = Steps.Pointer;
+                        pointerOptions = IMG_POINTER_Options(img_pointer, "STEP", show_level, 2);
+                    }
+
+                    if (Steps.Circle_Scale != null && Steps.Circle_Scale.visible)
+                    {
+                        circleScalePosition = Steps.Circle_Scale.position;
+                        circle_scale = Steps.Circle_Scale;
+
+                        circleScaleOptions = Circle_Scale_Options(circle_scale, optionNameStart, "STEP", show_level, 2);
+                    }
+                    if (Steps.Linear_Scale != null && Steps.Linear_Scale.visible)
+                    {
+                        linearScalePosition = Steps.Linear_Scale.position;
+                        linear_scale = Steps.Linear_Scale;
+
+                        linearScaleOptions = Linear_Scale_Options(linear_scale, optionNameStart, "STEP", "step", show_level, 2);
+                    }
+
+                    if (Steps.Icon != null && Steps.Icon.visible)
+                    {
+                        iconPosition = Steps.Icon.position;
+                        hmUI_widget_IMG img_icon = Steps.Icon;
+                        iconOptions = IMG_Options(img_icon, show_level, 2);
+                    }
+
+                    for (int index = 1; index <= 15; index++)
+                    {
+                        // Images
+                        if (index == imagesPosition && imagesOptions.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
+                                    imagesOptions + TabInString(8) + "});" + Environment.NewLine;
+                        }
+
+                        // Segments
+                        if (index == segmentsPosition && segmentsOptions.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.IMG_PROGRESS, {" +
+                                    segmentsOptions + TabInString(8) + "});" + Environment.NewLine;
+                        }
+
+                        // Number
+                        if (index == numberPosition && numberOptions.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberOptions + TabInString(8) + "});" + Environment.NewLine;
+
+                            if (numberOptions_separator.Length > 5)
+                            {
+                                items += Environment.NewLine + TabInString(8) +
+                                    "hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberOptions_separator + TabInString(8) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Number_Target
+                        if (index == numberTargetPosition && numberTargetOptions.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberTargetOptions + TabInString(8) + "});" + Environment.NewLine;
+
+                            if (numberTargetOptions_separator.Length > 5)
+                            {
+                                items += Environment.NewLine + TabInString(8) +
+                                    "hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberTargetOptions_separator + TabInString(8) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Pointer
+                        if (index == pointerPosition && pointerOptions.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
+                                    pointerOptions + TabInString(8) + "});" + Environment.NewLine;
+                        }
+
+                        // Circle_Scale
+                        if (index == circleScalePosition && circle_scale != null)
+                        {
+                            string variableName = optionNameStart + "step_circle_scale";
+                            variables += TabInString(4) + "let " + variableName +  " = null;" + Environment.NewLine;
+
+                            items += circleScaleOptions;
+
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                main_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                main_items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (show_level == "ONLY_NORMAL")
+                                items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
+                            else items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
+
+                            items += Environment.NewLine + TabInString(9) +
+                                variableName + " = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
+
+                            if (circle_scale.mirror)
+                            {
+                                variables += TabInString(4) + "let " + variableName + "_mirror = null;" + Environment.NewLine;
+
+                                items += TabInString(9) + variableName +
+                                    "_mirror = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
+                            }
+
+                            items += TabInString(8) + "};" + Environment.NewLine;
+
+                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update editable circle_scale STEP');" + Environment.NewLine;
+                            if (items.IndexOf("const step = hmSensor.createSensor(hmSensor.id.STEP);") < 0 &&
+                                exist_items.IndexOf("const step = hmSensor.createSensor(hmSensor.id.STEP);") < 0 &&
+                                main_items.IndexOf("const step = hmSensor.createSensor(hmSensor.id.STEP);") < 0)
+                            {
+                                main_items += TabInString(6) + Environment.NewLine;
+                                main_items += TabInString(6) + "const step = hmSensor.createSensor(hmSensor.id.STEP);" + Environment.NewLine;
+                                if (exist_items.IndexOf("step.addEventListener") < 0)
+                                {
+                                    items += TabInString(8) + "step.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
+                                    items += TabInString(9) + "scale_call();" + Environment.NewLine;
+                                    items += TabInString(8) + "});" + Environment.NewLine;
+                                }
+                            }
+
+                            if (resume_function.IndexOf("progressStep") < 0 &&
+                                exist_resume_call.IndexOf("progressStep") < 0)
+                            {
+                                resume_function += TabInString(8) + Environment.NewLine;
+                                resume_function += TabInString(8) + "let valueStep = step.current;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "let targetStep = step.target;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "let progressStep = valueStep/targetStep;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "if (progressStep > 1) progressStep = 1;" + Environment.NewLine;
+                            }
+
+                            if (circle_scale.inversion)
+                            {
+                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                "step = 1 - progressStep;" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                "step = progressStep;" + Environment.NewLine;
+                            }
+                            resume_function += Environment.NewLine + TabInString(8) +
+                                    "if (" + variableName + ") {" + Environment.NewLine;
+                            resume_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "step", 0);
+                            resume_function += TabInString(8) + "};" + Environment.NewLine;
+
+
+
+
+                        }
+
+                        // Linear_Scale
+                        if (index == linearScalePosition && linear_scale != null)
+                        {
+                            string variableName = optionNameStart + "step_linear_scale";
+                            variables += TabInString(4) + "let " + variableName + " = null;" + Environment.NewLine;
+                            if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
+                                variables += TabInString(4) + "let " + variableName +
+                                    "_pointer_img = ''" + Environment.NewLine;
+
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                main_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                main_items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (show_level == "ONLY_NORMAL")
+                                items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
+                            else items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
+
+                            items += Environment.NewLine + TabInString(9) +
+                                variableName + " = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+
+                            if (linear_scale.mirror)
+                            {
+                                variables += TabInString(4) + "let " + variableName +
+                                "_mirror = ''" + Environment.NewLine;
+                                if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
+                                    variables += TabInString(4) + "let " + variableName +
+                                        "_pointer_img_mirror = ''" + Environment.NewLine;
+
+                                items += TabInString(9) + variableName +
+                                    "_mirror = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+                            }
+
+                            items += TabInString(8) + "};" + Environment.NewLine;
+
+                            items += linearScaleOptions;
+
+
+                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update editable linear_scale STEP');" + Environment.NewLine;
+                            if (items.IndexOf("const step = hmSensor.createSensor(hmSensor.id.STEP);") < 0 &&
+                                exist_items.IndexOf("const step = hmSensor.createSensor(hmSensor.id.STEP);") < 0 &&
+                                main_items.IndexOf("const step = hmSensor.createSensor(hmSensor.id.STEP);") < 0)
+                            {
+                                main_items += TabInString(6) + Environment.NewLine;
+                                main_items += TabInString(6) + "const step = hmSensor.createSensor(hmSensor.id.STEP);" + Environment.NewLine;
+                                if (exist_items.IndexOf("step.addEventListener") < 0)
+                                {
+                                    items += TabInString(8) + "step.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
+                                    items += TabInString(9) + "scale_call();" + Environment.NewLine;
+                                    items += TabInString(8) + "});" + Environment.NewLine;
+                                }
+                            }
+
+                            if (resume_function.IndexOf("progressStep") < 0 &&
+                                exist_resume_call.IndexOf("progressStep") < 0)
+                            {
+                                resume_function += TabInString(8) + Environment.NewLine;
+                                resume_function += TabInString(8) + "let valueStep = step.current;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "let targetStep = step.target;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "let progressStep = valueStep/targetStep;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "if (progressStep > 1) progressStep = 1;" + Environment.NewLine;
+                            }
+                            if (linear_scale.inversion)
+                            {
+                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                "step = 1 - progressStep;" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                "step = progressStep;" + Environment.NewLine;
+                            }
+                            resume_function += Environment.NewLine + TabInString(8) +
+                                    "if (" + variableName + ") {" + Environment.NewLine;
+                            resume_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "step", show_level);
+                            resume_function += TabInString(8) + "};" + Environment.NewLine;
+
+
+
+                        }
+
+                        // Icon
+                        if (index == iconPosition && iconOptions.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    iconOptions + TabInString(8) + "});" + Environment.NewLine;
+                        }
+
+
+                    }
+                    break;
+                #endregion
+
+                #region ElementBattery
+                case "ElementBattery":
+                    ElementBattery Battery = (ElementBattery)element;
+
+                    if (!Battery.visible) return;
+                    if (Battery.Images != null && Battery.Images.visible)
+                    {
+                        imagesPosition = Battery.Images.position;
+                        hmUI_widget_IMG_LEVEL img_images = Battery.Images;
+                        imagesOptions = IMG_IMAGES_Options(img_images, "BATTERY", show_level, 2);
+                    }
+                    if (Battery.Segments != null && Battery.Segments.visible)
+                    {
+                        segmentsPosition = Battery.Segments.position;
+                        hmUI_widget_IMG_PROGRESS img_progress = Battery.Segments;
+                        segmentsOptions = IMG_PROGRESS_Options(img_progress, "BATTERY", show_level, 2);
+                    }
+                    if (Battery.Number != null && Battery.Number.visible)
+                    {
+                        numberPosition = Battery.Number.position;
+                        hmUI_widget_IMG_NUMBER img_number = Battery.Number;
+                        numberOptions = IMG_NUMBER_Options(img_number, "BATTERY", show_level, 2);
+
+                        numberOptions_separator = IMG_Separator_Options(img_number, show_level, 2);
+                    }
+                    if (Battery.Pointer != null && Battery.Pointer.visible)
+                    {
+                        pointerPosition = Battery.Pointer.position;
+                        hmUI_widget_IMG_POINTER img_pointer = Battery.Pointer;
+                        pointerOptions = IMG_POINTER_Options(img_pointer, "BATTERY", show_level, 2);
+                    }
+
+                    if (Battery.Circle_Scale != null && Battery.Circle_Scale.visible)
+                    {
+                        circleScalePosition = Battery.Circle_Scale.position;
+                        circle_scale = Battery.Circle_Scale;
+
+                        circleScaleOptions = Circle_Scale_Options(circle_scale, optionNameStart, "BATTERY", show_level, 2);
+                    }
+                    if (Battery.Linear_Scale != null && Battery.Linear_Scale.visible)
+                    {
+                        linearScalePosition = Battery.Linear_Scale.position;
+                        linear_scale = Battery.Linear_Scale;
+
+                        linearScaleOptions = Linear_Scale_Options(linear_scale, optionNameStart, "BATTERY", "battery", show_level, 2);
+                    }
+
+                    if (Battery.Icon != null && Battery.Icon.visible)
+                    {
+                        iconPosition = Battery.Icon.position;
+                        hmUI_widget_IMG img_icon = Battery.Icon;
+                        iconOptions = IMG_Options(img_icon, show_level, 2);
+                    }
+
+                    for (int index = 1; index <= 15; index++)
+                    {
+                        // Images
+                        if (index == imagesPosition && imagesOptions.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
+                                    imagesOptions + TabInString(8) + "});" + Environment.NewLine;
+                        }
+
+                        // Segments
+                        if (index == segmentsPosition && segmentsOptions.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.IMG_PROGRESS, {" +
+                                    segmentsOptions + TabInString(8) + "});" + Environment.NewLine;
+                        }
+
+                        // Number
+                        if (index == numberPosition && numberOptions.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberOptions + TabInString(8) + "});" + Environment.NewLine;
+
+                            if (numberOptions_separator.Length > 5)
+                            {
+                                items += Environment.NewLine + TabInString(8) +
+                                    "hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberOptions_separator + TabInString(8) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Pointer
+                        if (index == pointerPosition && pointerOptions.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
+                                    pointerOptions + TabInString(8) + "});" + Environment.NewLine;
+                        }
+
+                        // Circle_Scale
+                        if (index == circleScalePosition && circle_scale != null)
+                        {
+                            string variableName = optionNameStart + "battery_circle_scale";
+                            variables += TabInString(4) + "let " + variableName + " = null;" + Environment.NewLine;
+
+                            items += circleScaleOptions;
+
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                main_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                main_items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (show_level == "ONLY_NORMAL")
+                                items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
+                            else items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
+
+                            items += Environment.NewLine + TabInString(9) +
+                                variableName + " = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
+
+                            if (circle_scale.mirror)
+                            {
+                                variables += TabInString(4) + "let " + variableName + "_mirror = null;" + Environment.NewLine;
+
+                                items += TabInString(9) + variableName +
+                                    "_mirror = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
+                            }
+
+                            items += TabInString(8) + "};" + Environment.NewLine;
+
+                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update editable circle_scale BATTERY');" + Environment.NewLine;
+                            if (items.IndexOf("const battery = hmSensor.createSensor(hmSensor.id.BATTERY);") < 0 &&
+                                exist_items.IndexOf("const battery = hmSensor.createSensor(hmSensor.id.BATTERY);") < 0 &&
+                                main_items.IndexOf("const battery = hmSensor.createSensor(hmSensor.id.BATTERY);") < 0)
+                            {
+                                main_items += TabInString(6) + Environment.NewLine;
+                                main_items += TabInString(6) + "const battery = hmSensor.createSensor(hmSensor.id.BATTERY);" + Environment.NewLine;
+                                if (exist_items.IndexOf("battery.addEventListener") < 0)
+                                {
+                                    items += TabInString(8) + "battery.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
+                                    items += TabInString(9) + "scale_call();" + Environment.NewLine;
+                                    items += TabInString(8) + "});" + Environment.NewLine;
+                                }
+                            }
+
+                            if (resume_function.IndexOf("progressBattery") < 0 &&
+                                exist_resume_call.IndexOf("progressBattery") < 0)
+                            {
+                                resume_function += TabInString(8) + Environment.NewLine;
+                                resume_function += TabInString(8) + "let valueBattery = battery.current;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "let targetBattery = 100;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "let progressBattery = valueBattery/targetBattery;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "if (progressBattery > 1) progressBattery = 1;" + Environment.NewLine;
+                            }
+
+                            if (circle_scale.inversion)
+                            {
+                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                "battery = 1 - progressBattery;" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                "battery = progressBattery;" + Environment.NewLine;
+                            }
+                            resume_function += Environment.NewLine + TabInString(8) +
+                                    "if (" + variableName + ") {" + Environment.NewLine;
+                            resume_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "battery", 0);
+                            resume_function += TabInString(8) + "};" + Environment.NewLine;
+
+
+
+
+                        }
+
+                        // Linear_Scale
+                        if (index == linearScalePosition && linear_scale != null)
+                        {
+                            string variableName = optionNameStart + "battery_linear_scale";
+                            variables += TabInString(4) + "let " + variableName + " = null;" + Environment.NewLine;
+                            if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
+                                variables += TabInString(4) + "let " + variableName +
+                                    "_pointer_img = ''" + Environment.NewLine;
+
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                main_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                main_items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            //if (optionNameStart == "normal_")
+                            //    items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
+                            //else items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type.AOD) {";
+                            if (show_level == "ONLY_NORMAL")
+                                items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
+                            else items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
+
+                            items += Environment.NewLine + TabInString(9) +
+                                variableName + " = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+
+                            if (linear_scale.mirror)
+                            {
+                                variables += TabInString(4) + "let " + variableName +
+                                "_mirror = ''" + Environment.NewLine;
+                                if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
+                                    variables += TabInString(4) + "let " + variableName +
+                                        "_pointer_img_mirror = ''" + Environment.NewLine;
+
+                                items += TabInString(9) + variableName +
+                                    "_mirror = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+                            }
+
+                            items += TabInString(8) + "};" + Environment.NewLine;
+
+                            items += linearScaleOptions;
+
+
+                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update editable linear_scale BATTERY');" + Environment.NewLine;
+                            if (items.IndexOf("const battery = hmSensor.createSensor(hmSensor.id.BATTERY);") < 0 &&
+                                exist_items.IndexOf("const battery = hmSensor.createSensor(hmSensor.id.BATTERY);") < 0 &&
+                                main_items.IndexOf("const battery = hmSensor.createSensor(hmSensor.id.BATTERY);") < 0)
+                            {
+                                main_items += TabInString(6) + Environment.NewLine;
+                                main_items += TabInString(6) + "const battery = hmSensor.createSensor(hmSensor.id.BATTERY);" + Environment.NewLine;
+                                if (exist_items.IndexOf("battery.addEventListener") < 0)
+                                {
+                                    items += TabInString(8) + "battery.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
+                                    items += TabInString(9) + "scale_call();" + Environment.NewLine;
+                                    items += TabInString(8) + "});" + Environment.NewLine;
+                                }
+                            }
+
+                            if (resume_function.IndexOf("progressBattery") < 0 &&
+                                exist_resume_call.IndexOf("progressBattery") < 0)
+                            {
+                                resume_function += TabInString(8) + Environment.NewLine;
+                                resume_function += TabInString(8) + "let valueBattery= battery.current;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "let targetBattery = 100;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "let progressBattery = valueBattery/targetBattery;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "if (progressBattery > 1) progressBattery = 1;" + Environment.NewLine;
+                            }
+                            if (linear_scale.inversion)
+                            {
+                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                "battery = 1 - progressBattery;" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                "battery = progressBattery;" + Environment.NewLine;
+                            }
+                            resume_function += Environment.NewLine + TabInString(8) +
+                                    "if (" + variableName + ") {" + Environment.NewLine;
+                            resume_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "battery", show_level);
+                            resume_function += TabInString(8) + "};" + Environment.NewLine;
+
+
+
+                        }
+
+                        // Icon
+                        if (index == iconPosition && iconOptions.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    iconOptions + TabInString(8) + "});" + Environment.NewLine;
+                        }
+
+
+                    }
+                    break;
+                #endregion
+
+                #region ElementCalories
+                case "ElementCalories":
+                    ElementCalories Calories = (ElementCalories)element;
+
+                    if (!Calories.visible) return;
+                    if (Calories.Images != null && Calories.Images.visible)
+                    {
+                        imagesPosition = Calories.Images.position;
+                        hmUI_widget_IMG_LEVEL img_images = Calories.Images;
+                        imagesOptions = IMG_IMAGES_Options(img_images, "CAL", show_level, 2);
+                    }
+                    if (Calories.Segments != null && Calories.Segments.visible)
+                    {
+                        segmentsPosition = Calories.Segments.position;
+                        hmUI_widget_IMG_PROGRESS img_progress = Calories.Segments;
+                        segmentsOptions = IMG_PROGRESS_Options(img_progress, "CAL", show_level, 2);
+                    }
+                    if (Calories.Number != null && Calories.Number.visible)
+                    {
+                        numberPosition = Calories.Number.position;
+                        hmUI_widget_IMG_NUMBER img_number = Calories.Number;
+                        numberOptions = IMG_NUMBER_Options(img_number, "CAL", show_level, 2);
+
+                        numberOptions_separator = IMG_Separator_Options(img_number, show_level, 2);
+                    }
+                    if (Calories.Number_Target != null && Calories.Number_Target.visible)
+                    {
+                        numberTargetPosition = Calories.Number_Target.position;
+                        hmUI_widget_IMG_NUMBER img_number = Calories.Number_Target;
+                        numberTargetOptions = IMG_NUMBER_Options(img_number, "CAL_TARGET", show_level, 2);
+
+                        numberTargetOptions_separator = IMG_Separator_Options(img_number, show_level, 2);
+                    }
+                    if (Calories.Pointer != null && Calories.Pointer.visible)
+                    {
+                        pointerPosition = Calories.Pointer.position;
+                        hmUI_widget_IMG_POINTER img_pointer = Calories.Pointer;
+                        pointerOptions = IMG_POINTER_Options(img_pointer, "CAL", show_level, 2);
+                    }
+
+                    if (Calories.Circle_Scale != null && Calories.Circle_Scale.visible)
+                    {
+                        circleScalePosition = Calories.Circle_Scale.position;
+                        circle_scale = Calories.Circle_Scale;
+
+                        circleScaleOptions = Circle_Scale_Options(circle_scale, optionNameStart, "CAL", show_level, 2);
+                        //circleScaleMirrorOptions = Circle_Scale_Options(linear_scale, true);
+                    }
+                    if (Calories.Linear_Scale != null && Calories.Linear_Scale.visible)
+                    {
+                        linearScalePosition = Calories.Linear_Scale.position;
+                        linear_scale = Calories.Linear_Scale;
+
+                        linearScaleOptions = Linear_Scale_Options(linear_scale, optionNameStart, "CAL", "calorie", show_level, 2);
+                    }
+
+                    if (Calories.Icon != null && Calories.Icon.visible)
+                    {
+                        iconPosition = Calories.Icon.position;
+                        hmUI_widget_IMG img_icon = Calories.Icon;
+                        iconOptions = IMG_Options(img_icon, show_level, 2);
+                    }
+
+                    for (int index = 1; index <= 15; index++)
+                    {
+                        // Images
+                        if (index == imagesPosition && imagesOptions.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
+                                    imagesOptions + TabInString(8) + "});" + Environment.NewLine;
+                        }
+
+                        // Segments
+                        if (index == segmentsPosition && segmentsOptions.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.IMG_PROGRESS, {" +
+                                    segmentsOptions + TabInString(8) + "});" + Environment.NewLine;
+                        }
+
+                        // Number
+                        if (index == numberPosition && numberOptions.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberOptions + TabInString(8) + "});" + Environment.NewLine;
+
+                            if (numberOptions_separator.Length > 5)
+                            {
+                                items += Environment.NewLine + TabInString(8) +
+                                    "hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberOptions_separator + TabInString(8) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Number_Target
+                        if (index == numberTargetPosition && numberTargetOptions.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberTargetOptions + TabInString(8) + "});" + Environment.NewLine;
+
+                            if (numberTargetOptions_separator.Length > 5)
+                            {
+                                items += Environment.NewLine + TabInString(8) +
+                                    "hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberTargetOptions_separator + TabInString(8) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Pointer
+                        if (index == pointerPosition && pointerOptions.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
+                                    pointerOptions + TabInString(8) + "});" + Environment.NewLine;
+                        }
+
+                        // Circle_Scale
+                        if (index == circleScalePosition && circle_scale != null)
+                        {
+                            string variableName = optionNameStart + "calorie_circle_scale";
+                            variables += TabInString(4) + "let " + variableName + " = null;" + Environment.NewLine;
+
+                            items += circleScaleOptions;
+
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                main_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                main_items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (show_level == "ONLY_NORMAL")
+                                items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
+                            else items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
+
+                            items += Environment.NewLine + TabInString(9) +
+                                variableName + " = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
+
+                            if (circle_scale.mirror)
+                            {
+                                variables += TabInString(4) + "let " + variableName + "_mirror = null;" + Environment.NewLine;
+
+                                items += TabInString(9) + variableName +
+                                    "_mirror = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
+                            }
+
+                            items += TabInString(8) + "};" + Environment.NewLine;
+
+                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update editable circle_scale CALORIE');" + Environment.NewLine;
+                            if (items.IndexOf("const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);") < 0 &&
+                                exist_items.IndexOf("const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);") < 0 &&
+                                main_items.IndexOf("const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);") < 0)
+                            {
+                                main_items += TabInString(6) + Environment.NewLine;
+                                main_items += TabInString(6) + "const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);" + Environment.NewLine;
+                                if (exist_items.IndexOf("calorie.addEventListener") < 0)
+                                {
+                                    items += TabInString(8) + "calorie.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
+                                    items += TabInString(9) + "scale_call();" + Environment.NewLine;
+                                    items += TabInString(8) + "});" + Environment.NewLine;
+                                }
+                            }
+
+                            if (resume_function.IndexOf("progressCalories") < 0 &&
+                                exist_resume_call.IndexOf("progressCalories") < 0)
+                            {
+                                resume_function += TabInString(8) + Environment.NewLine;
+                                resume_function += TabInString(8) + "let valueCalories = calorie.current;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "let targetCalories = calorie.target;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "let progressCalories = valueCalories/targetCalories;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "if (progressCalories > 1) progressCalories = 1;" + Environment.NewLine;
+                            }
+
+                            if (circle_scale.inversion)
+                            {
+                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                "calorie = 1 - progressCalories;" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                "calorie = progressCalories;" + Environment.NewLine;
+                            }
+                            resume_function += Environment.NewLine + TabInString(8) +
+                                    "if (" + variableName + ") {" + Environment.NewLine;
+                            resume_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "calorie", 0);
+                            resume_function += TabInString(8) + "};" + Environment.NewLine;
+
+
+
+
+                        }
+
+                        // Linear_Scale
+                        if (index == linearScalePosition && linear_scale != null)
+                        {
+                            string variableName = optionNameStart + "calorie_linear_scale";
+                            variables += TabInString(4) + "let " + variableName + " = null;" + Environment.NewLine;
+                            if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
+                                variables += TabInString(4) + "let " + variableName +
+                                    "_pointer_img = ''" + Environment.NewLine;
+
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                main_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                main_items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (show_level == "ONLY_NORMAL")
+                                items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
+                            else items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
+
+                            items += Environment.NewLine + TabInString(9) +
+                                variableName + " = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+
+                            if (linear_scale.mirror)
+                            {
+                                variables += TabInString(4) + "let " + variableName +
+                                "_mirror = ''" + Environment.NewLine;
+                                if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
+                                    variables += TabInString(4) + "let " + variableName +
+                                        "_pointer_img_mirror = ''" + Environment.NewLine;
+
+                                items += TabInString(9) + variableName +
+                                    "_mirror = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+                            }
+
+                            items += TabInString(8) + "};" + Environment.NewLine;
+
+                            items += linearScaleOptions;
+
+
+                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update editable linear_scale CALORIE');" + Environment.NewLine;
+                            if (items.IndexOf("const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);") < 0 &&
+                                exist_items.IndexOf("const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);") < 0 &&
+                                main_items.IndexOf("const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);") < 0)
+                            {
+                                main_items += TabInString(6) + Environment.NewLine;
+                                main_items += TabInString(6) + "const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);" + Environment.NewLine;
+                                if (exist_items.IndexOf("calorie.addEventListener") < 0)
+                                {
+                                    items += TabInString(8) + "calorie.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
+                                    items += TabInString(9) + "scale_call();" + Environment.NewLine;
+                                    items += TabInString(8) + "});" + Environment.NewLine;
+                                }
+                            }
+
+                            if (resume_function.IndexOf("progressCalories") < 0 &&
+                                exist_resume_call.IndexOf("progressCalories") < 0)
+                            {
+                                resume_function += TabInString(8) + Environment.NewLine;
+                                resume_function += TabInString(8) + "let valueCalories = calorie.current;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "let targetCalories = calorie.target;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "let progressCalories = valueCalories/targetCalories;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "if (progressCalories > 1) progressCalories = 1;" + Environment.NewLine;
+                            }
+                            if (linear_scale.inversion)
+                            {
+                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                "calorie = 1 - progressCalories;" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                "calorie = progressCalories;" + Environment.NewLine;
+                            }
+                            resume_function += Environment.NewLine + TabInString(8) +
+                                    "if (" + variableName + ") {" + Environment.NewLine;
+                            resume_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "calorie", show_level);
+                            resume_function += TabInString(8) + "};" + Environment.NewLine;
+
+
+
+                        }
+
+                        // Icon
+                        if (index == iconPosition && iconOptions.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    iconOptions + TabInString(8) + "});" + Environment.NewLine;
+                        }
+
+
+                    }
+                    break;
+                #endregion
+
+                #region ElementHeart
+                case "ElementHeart":
+                    ElementHeart Heart = (ElementHeart)element;
+
+                    if (!Heart.visible) return;
+                    if (Heart.Images != null && Heart.Images.visible)
+                    {
+                        imagesPosition = Heart.Images.position;
+                        hmUI_widget_IMG_LEVEL img_images = Heart.Images;
+                        imagesOptions = IMG_IMAGES_Options(img_images, "HEART", show_level, 2);
+                    }
+                    if (Heart.Segments != null && Heart.Segments.visible)
+                    {
+                        segmentsPosition = Heart.Segments.position;
+                        hmUI_widget_IMG_PROGRESS img_progress = Heart.Segments;
+                        segmentsOptions = IMG_PROGRESS_Options(img_progress, "HEART", show_level, 2);
+                    }
+                    if (Heart.Number != null && Heart.Number.visible)
+                    {
+                        numberPosition = Heart.Number.position;
+                        hmUI_widget_IMG_NUMBER img_number = Heart.Number;
+                        numberOptions = IMG_NUMBER_Options(img_number, "HEART", show_level, 2);
+
+                        numberOptions_separator = IMG_Separator_Options(img_number, show_level, 2);
+                    }
+                    if (Heart.Pointer != null && Heart.Pointer.visible)
+                    {
+                        pointerPosition = Heart.Pointer.position;
+                        hmUI_widget_IMG_POINTER img_pointer = Heart.Pointer;
+                        pointerOptions = IMG_POINTER_Options(img_pointer, "HEART", show_level, 2);
+                    }
+
+                    if (Heart.Circle_Scale != null && Heart.Circle_Scale.visible)
+                    {
+                        circleScalePosition = Heart.Circle_Scale.position;
+                        circle_scale = Heart.Circle_Scale;
+
+                        circleScaleOptions = Circle_Scale_Options(circle_scale, optionNameStart, "HEART", show_level, 2);
+                        //circleScaleMirrorOptions = Circle_Scale_Options(linear_scale, true);
+                    }
+                    if (Heart.Linear_Scale != null && Heart.Linear_Scale.visible)
+                    {
+                        linearScalePosition = Heart.Linear_Scale.position;
+                        linear_scale = Heart.Linear_Scale;
+
+                        linearScaleOptions = Linear_Scale_Options(linear_scale, optionNameStart, "HEART", "heart_rate", show_level, 2);
+                    }
+
+                    if (Heart.Icon != null && Heart.Icon.visible)
+                    {
+                        iconPosition = Heart.Icon.position;
+                        hmUI_widget_IMG img_icon = Heart.Icon;
+                        iconOptions = IMG_Options(img_icon, show_level, 2);
+                    }
+
+                    for (int index = 1; index <= 15; index++)
+                    {
+                        // Images
+                        if (index == imagesPosition && imagesOptions.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
+                                    imagesOptions + TabInString(8) + "});" + Environment.NewLine;
+                        }
+
+                        // Segments
+                        if (index == segmentsPosition && segmentsOptions.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.IMG_PROGRESS, {" +
+                                    segmentsOptions + TabInString(8) + "});" + Environment.NewLine;
+                        }
+
+                        // Number
+                        if (index == numberPosition && numberOptions.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberOptions + TabInString(8) + "});" + Environment.NewLine;
+
+                            if (numberOptions_separator.Length > 5)
+                            {
+                                items += Environment.NewLine + TabInString(8) +
+                                    "hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberOptions_separator + TabInString(8) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Pointer
+                        if (index == pointerPosition && pointerOptions.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
+                                    pointerOptions + TabInString(8) + "});" + Environment.NewLine;
+                        }
+
+                        // Circle_Scale
+                        if (index == circleScalePosition && circle_scale != null)
+                        {
+                            string variableName = optionNameStart + "heart_rate_circle_scale";
+                            variables += TabInString(4) + "let " + variableName + " = null;" + Environment.NewLine;
+
+                            items += circleScaleOptions;
+
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                main_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                main_items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (show_level == "ONLY_NORMAL")
+                                items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
+                            else items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
+
+                            items += Environment.NewLine + TabInString(9) +
+                                variableName + " = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
+
+                            if (circle_scale.mirror)
+                            {
+                                variables += TabInString(4) + "let " + variableName + "_mirror = null;" + Environment.NewLine;
+
+                                items += TabInString(9) + variableName +
+                                    "_mirror = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
+                            }
+
+                            items += TabInString(8) + "};" + Environment.NewLine;
+
+                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update editable circle_scale HEART');" + Environment.NewLine;
+                            if (items.IndexOf("const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);") < 0 &&
+                                exist_items.IndexOf("const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);") < 0 &&
+                                main_items.IndexOf("const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);") < 0)
+                            {
+                                main_items += TabInString(6) + Environment.NewLine;
+                                main_items += TabInString(6) + "const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);" + Environment.NewLine;
+                                if (exist_items.IndexOf("heart_rate.addEventListener") < 0)
+                                {
+                                    items += TabInString(8) + "heart_rate.addEventListener(hmSensor.event.LAST, function() {" + Environment.NewLine;
+                                    items += TabInString(9) + "scale_call();" + Environment.NewLine;
+                                    items += TabInString(8) + "});" + Environment.NewLine;
+                                }
+                            }
+
+                            if (resume_function.IndexOf("progressHeartRate") < 0 &&
+                                exist_resume_call.IndexOf("progressHeartRate") < 0)
+                            {
+                                resume_function += TabInString(8) + Environment.NewLine;
+                                resume_function += TabInString(8) + "let valueHeartRate = heart_rate.last;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "let targetHeartRate = 179;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "let progressHeartRate = (valueHeartRate - 71)/(targetHeartRate - 71);" + Environment.NewLine;
+                                resume_function += TabInString(8) + "if (progressHeartRate < 0) progressHeartRate = 0;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "if (progressHeartRate > 1) progressHeartRate = 1;" + Environment.NewLine;
+                            }
+
+                            if (circle_scale.inversion)
+                            {
+                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                "heart_rate = 1 - progressHeartRate;" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                "heart_rate = progressHeartRate;" + Environment.NewLine;
+                            }
+                            resume_function += Environment.NewLine + TabInString(8) +
+                                    "if (" + variableName + ") {" + Environment.NewLine;
+                            resume_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "heart_rate", 0);
+                            resume_function += TabInString(8) + "};" + Environment.NewLine;
+
+                            pause_call += TabInString(8) + 
+                                "if (heart_rate) heart_rate.removeEventListener(heart_rate.event.LAST, function () {});" + Environment.NewLine;
+                        }
+
+                        // Linear_Scale
+                        if (index == linearScalePosition && linear_scale != null)
+                        {
+                            string variableName = optionNameStart + "heart_rate_linear_scale";
+                            variables += TabInString(4) + "let " + variableName + " = null;" + Environment.NewLine;
+                            if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
+                                variables += TabInString(4) + "let " + variableName +
+                                    "_pointer_img = ''" + Environment.NewLine;
+
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                main_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                main_items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (show_level == "ONLY_NORMAL")
+                                items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
+                            else items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
+
+                            items += Environment.NewLine + TabInString(9) +
+                                variableName + " = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+
+                            if (linear_scale.mirror)
+                            {
+                                variables += TabInString(4) + "let " + variableName +
+                                "_mirror = ''" + Environment.NewLine;
+                                if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
+                                    variables += TabInString(4) + "let " + variableName +
+                                        "_pointer_img_mirror = ''" + Environment.NewLine;
+
+                                items += TabInString(9) + variableName +
+                                    "_mirror = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+                            }
+
+                            items += TabInString(8) + "};" + Environment.NewLine;
+
+                            items += linearScaleOptions;
+
+
+                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update editable linear_scale HEART');" + Environment.NewLine;
+                            if (items.IndexOf("const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);") < 0 &&
+                                exist_items.IndexOf("const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);") < 0 &&
+                                main_items.IndexOf("const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);") < 0)
+                            {
+                                main_items += TabInString(6) + Environment.NewLine;
+                                main_items += TabInString(6) + "const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);" + Environment.NewLine;
+                                if (exist_items.IndexOf("heart_rate.addEventListener") < 0)
+                                {
+                                    items += TabInString(8) + "heart_rate.addEventListener(hmSensor.event.LAST, function() {" + Environment.NewLine;
+                                    items += TabInString(9) + "scale_call();" + Environment.NewLine;
+                                    items += TabInString(8) + "});" + Environment.NewLine;
+                                }
+                            }
+
+                            if (resume_function.IndexOf("progressHeartRate") < 0 &&
+                                exist_resume_call.IndexOf("progressHeartRate") < 0)
+                            {
+                                resume_function += TabInString(8) + Environment.NewLine;
+                                resume_function += TabInString(8) + "let valueHeartRate = heart_rate.last;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "let targetHeartRate = 179;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "let progressHeartRate = (valueHeartRate - 71)/(targetHeartRate - 71);" + Environment.NewLine;
+                                resume_function += TabInString(8) + "if (progressHeartRate < 0) progressHeartRate = 0;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "if (progressHeartRate > 1) progressHeartRate = 1;" + Environment.NewLine;
+                            }
+                            if (linear_scale.inversion)
+                            {
+                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                "heart_rate = 1 - progressHeartRate;" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                "heart_rate = progressHeartRate;" + Environment.NewLine;
+                            }
+                            resume_function += Environment.NewLine + TabInString(8) +
+                                    "if (" + variableName + ") {" + Environment.NewLine;
+                            resume_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "heart_rate", show_level);
+                            resume_function += TabInString(8) + "};" + Environment.NewLine;
+
+                            pause_call += TabInString(8) +
+                                "if (heart_rate) heart_rate.removeEventListener(heart_rate.event.LAST, function () {});" + Environment.NewLine;
+                        }
+
+                        // Icon
+                        if (index == iconPosition && iconOptions.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    iconOptions + TabInString(8) + "});" + Environment.NewLine;
+                        }
+
+
+                    }
+                    break;
+                #endregion
+
+                #region ElementPAI
+                case "ElementPAI":
+                    ElementPAI PAI = (ElementPAI)element;
+
+                    if (!PAI.visible) return;
+                    if (PAI.Images != null && PAI.Images.visible)
+                    {
+                        imagesPosition = PAI.Images.position;
+                        hmUI_widget_IMG_LEVEL img_images = PAI.Images;
+                        imagesOptions = IMG_IMAGES_Options(img_images, "PAI_WEEKLY", show_level, 2);
+                    }
+                    if (PAI.Segments != null && PAI.Segments.visible)
+                    {
+                        segmentsPosition = PAI.Segments.position;
+                        hmUI_widget_IMG_PROGRESS img_progress = PAI.Segments;
+                        segmentsOptions = IMG_PROGRESS_Options(img_progress, "PAI_WEEKLY", show_level, 2);
+                    }
+                    if (PAI.Number != null && PAI.Number.visible)
+                    {
+                        numberPosition = PAI.Number.position;
+                        hmUI_widget_IMG_NUMBER img_number = PAI.Number;
+                        //numberOptions = IMG_NUMBER_Options(img_number, "PAI_DAILY", show_level, 2);
+                        numberOptions = IMG_NUMBER_Options(img_number, "PAI_WEEKLY", show_level, 2);
+
+                        numberOptions_separator = IMG_Separator_Options(img_number, show_level, 2);
+                    }
+                    //if (PAI.Number_Target != null && PAI.Number_Target.visible)
+                    //{
+                    //    numberTargetPosition = PAI.Number_Target.position;
+                    //    hmUI_widget_IMG_NUMBER img_number = PAI.Number_Target;
+                    //    numberTargetOptions = IMG_NUMBER_Options(img_number, "PAI_WEEKLY", show_level, 2);
+
+                    //    numberTargetOptions_separator = IMG_Separator_Options(img_number, show_level, 2);
+                    //}
+                    if (PAI.Pointer != null && PAI.Pointer.visible)
+                    {
+                        pointerPosition = PAI.Pointer.position;
+                        hmUI_widget_IMG_POINTER img_pointer = PAI.Pointer;
+                        pointerOptions = IMG_POINTER_Options(img_pointer, "PAI_WEEKLY", show_level);
+                    }
+
+                    if (PAI.Circle_Scale != null && PAI.Circle_Scale.visible)
+                    {
+                        circleScalePosition = PAI.Circle_Scale.position;
+                        circle_scale = PAI.Circle_Scale;
+
+                        circleScaleOptions = Circle_Scale_Options(circle_scale, optionNameStart, "PAI_WEEKLY", show_level, 2);
+                        //circleScaleMirrorOptions = Circle_Scale_Options(linear_scale, true);
+                    }
+                    if (PAI.Linear_Scale != null && PAI.Linear_Scale.visible)
+                    {
+                        linearScalePosition = PAI.Linear_Scale.position;
+                        linear_scale = PAI.Linear_Scale;
+
+                        linearScaleOptions = Linear_Scale_Options(linear_scale, optionNameStart, "PAI_WEEKLY", "pai", show_level, 2);
+                    }
+
+                    if (PAI.Icon != null && PAI.Icon.visible)
+                    {
+                        iconPosition = PAI.Icon.position;
+                        hmUI_widget_IMG img_icon = PAI.Icon;
+                        iconOptions = IMG_Options(img_icon, show_level, 2);
+                    }
+
+                    for (int index = 1; index <= 15; index++)
+                    {
+                        // Images
+                        if (index == imagesPosition && imagesOptions.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
+                                    imagesOptions + TabInString(8) + "});" + Environment.NewLine;
+                        }
+
+                        // Segments
+                        if (index == segmentsPosition && segmentsOptions.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.IMG_PROGRESS, {" +
+                                    segmentsOptions + TabInString(8) + "});" + Environment.NewLine;
+                        }
+
+                        // Number
+                        if (index == numberPosition && numberOptions.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberOptions + TabInString(8) + "});" + Environment.NewLine;
+
+                            if (numberOptions_separator.Length > 5)
+                            {
+                                items += Environment.NewLine + TabInString(8) +
+                                    "hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberOptions_separator + TabInString(8) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Number_Target
+                        if (index == numberTargetPosition && numberTargetOptions.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberTargetOptions + TabInString(8) + "});" + Environment.NewLine;
+
+                            if (numberTargetOptions_separator.Length > 5)
+                            {
+                                items += Environment.NewLine + TabInString(8) +
+                                    "hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberTargetOptions_separator + TabInString(8) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Pointer
+                        if (index == pointerPosition && pointerOptions.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
+                                    pointerOptions + TabInString(8) + "});" + Environment.NewLine;
+                        }
+
+                        // Circle_Scale
+                        if (index == circleScalePosition && circle_scale != null)
+                        {
+                            string variableName = optionNameStart + "pai_circle_scale";
+                            variables += TabInString(4) + "let " + variableName + " = null;" + Environment.NewLine;
+
+                            items += circleScaleOptions;
+
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                main_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                main_items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (show_level == "ONLY_NORMAL")
+                                items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
+                            else items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
+
+                            items += Environment.NewLine + TabInString(9) +
+                                variableName + " = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
+
+                            if (circle_scale.mirror)
+                            {
+                                variables += TabInString(4) + "let " + variableName + "_mirror = null;" + Environment.NewLine;
+
+                                items += TabInString(9) + variableName +
+                                    "_mirror = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
+                            }
+
+                            items += TabInString(8) + "};" + Environment.NewLine;
+
+                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update editable circle_scale PAI');" + Environment.NewLine;
+                            if (items.IndexOf("const pai = hmSensor.createSensor(hmSensor.id.PAI);") < 0 &&
+                                exist_items.IndexOf("const pai = hmSensor.createSensor(hmSensor.id.PAI);") < 0 &&
+                                main_items.IndexOf("const pai = hmSensor.createSensor(hmSensor.id.PAI);") < 0)
+                            {
+                                main_items += TabInString(6) + Environment.NewLine;
+                                main_items += TabInString(6) + "const pai = hmSensor.createSensor(hmSensor.id.PAI);" + Environment.NewLine;
+                                if (exist_items.IndexOf("pai.addEventListener") < 0)
+                                {
+                                    items += TabInString(8) + "pai.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
+                                    items += TabInString(9) + "scale_call();" + Environment.NewLine;
+                                    items += TabInString(8) + "});" + Environment.NewLine;
+                                }
+                            }
+
+                            if (resume_function.IndexOf("progressPAI") < 0 &&
+                                exist_resume_call.IndexOf("progressPAI") < 0)
+                            {
+                                resume_function += TabInString(8) + Environment.NewLine;
+                                resume_function += TabInString(8) + "let valuePAI = pai.totalpai;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "let targetPAI = 100;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "let progressPAI = valuePAI/targetPAI;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "if (progressPAI > 1) progressPAI = 1;" + Environment.NewLine;
+                            }
+
+                            if (circle_scale.inversion)
+                            {
+                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                "pai = 1 - progressPAI;" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                "pai = progressPAI;" + Environment.NewLine;
+                            }
+                            resume_function += Environment.NewLine + TabInString(8) +
+                                    "if (" + variableName + ") {" + Environment.NewLine;
+                            resume_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "pai", 0);
+                            resume_function += TabInString(8) + "};" + Environment.NewLine;
+
+
+
+
+                        }
+
+                        // Linear_Scale
+                        if (index == linearScalePosition && linear_scale != null)
+                        {
+                            string variableName = optionNameStart + "pai_linear_scale";
+                            variables += TabInString(4) + "let " + variableName + " = null;" + Environment.NewLine;
+                            if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
+                                variables += TabInString(4) + "let " + variableName +
+                                    "_pointer_img = ''" + Environment.NewLine;
+
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                main_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                main_items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (show_level == "ONLY_NORMAL")
+                                items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
+                            else items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
+
+                            items += Environment.NewLine + TabInString(9) +
+                                variableName + " = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+
+                            if (linear_scale.mirror)
+                            {
+                                variables += TabInString(4) + "let " + variableName +
+                                "_mirror = ''" + Environment.NewLine;
+                                if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
+                                    variables += TabInString(4) + "let " + variableName +
+                                        "_pointer_img_mirror = ''" + Environment.NewLine;
+
+                                items += TabInString(9) + variableName +
+                                    "_mirror = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+                            }
+
+                            items += TabInString(8) + "};" + Environment.NewLine;
+
+                            items += linearScaleOptions;
+
+
+                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update editable linear_scale PAI');" + Environment.NewLine;
+                            if (items.IndexOf("const pai = hmSensor.createSensor(hmSensor.id.PAI);") < 0 &&
+                                exist_items.IndexOf("const pai = hmSensor.createSensor(hmSensor.id.PAI);") < 0 &&
+                                main_items.IndexOf("const pai = hmSensor.createSensor(hmSensor.id.PAI);") < 0)
+                            {
+                                main_items += TabInString(6) + Environment.NewLine;
+                                main_items += TabInString(6) + "const pai = hmSensor.createSensor(hmSensor.id.PAI);" + Environment.NewLine;
+                                if (exist_items.IndexOf("pai.addEventListener") < 0)
+                                {
+                                    items += TabInString(8) + "pai.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
+                                    items += TabInString(9) + "scale_call();" + Environment.NewLine;
+                                    items += TabInString(8) + "});" + Environment.NewLine;
+                                }
+                            }
+
+                            if (resume_function.IndexOf("progressPAI") < 0 &&
+                                exist_resume_call.IndexOf("progressPAI") < 0)
+                            {
+                                resume_function += TabInString(8) + Environment.NewLine;
+                                resume_function += TabInString(8) + "let valuePAI = pai.totalpai;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "let targetPAI = 100;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "let progressPAI = valuePAI/targetPAI;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "if (progressPAI > 1) progressPAI = 1;" + Environment.NewLine;
+                            }
+                            if (linear_scale.inversion)
+                            {
+                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                "pai = 1 - progressPAI;" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                "pai = progressPAI;" + Environment.NewLine;
+                            }
+                            resume_function += Environment.NewLine + TabInString(8) +
+                                    "if (" + variableName + ") {" + Environment.NewLine;
+                            resume_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "pai", show_level);
+                            resume_function += TabInString(8) + "};" + Environment.NewLine;
+
+
+
+                        }
+
+                        // Icon
+                        if (index == iconPosition && iconOptions.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    iconOptions + TabInString(8) + "});" + Environment.NewLine;
+                        }
+
+
+                    }
+                    break;
+                #endregion
+
+                #region ElementDistance
+                case "ElementDistance":
+                    ElementDistance Distance = (ElementDistance)element;
+
+                    if (!Distance.visible) return;
+                    if (Distance.Number != null)
+                    {
+                        numberPosition = Distance.Number.position;
+                        hmUI_widget_IMG_NUMBER img_number = Distance.Number;
+                        numberOptions = IMG_NUMBER_Options(img_number, "DISTANCE", show_level, 2);
+
+                        numberOptions_separator = IMG_Separator_Options(img_number, show_level, 2);
+                    }
+
+                    // Number
+                    if (numberOptions.Length > 5)
+                    {
+                        items += Environment.NewLine + TabInString(8) +
+                            "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                numberOptions + TabInString(8) + "});" + Environment.NewLine;
+
+                        if (numberOptions_separator.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    numberOptions_separator + TabInString(8) + "});" + Environment.NewLine;
+                        }
+                    }
+                    break;
+                #endregion
+
+                #region ElementStand
+                case "ElementStand":
+                    ElementStand Stand = (ElementStand)element;
+
+                    if (!Stand.visible) return;
+                    if (Stand.Images != null && Stand.Images.visible)
+                    {
+                        imagesPosition = Stand.Images.position;
+                        hmUI_widget_IMG_LEVEL img_images = Stand.Images;
+                        imagesOptions = IMG_IMAGES_Options(img_images, "STAND", show_level);
+                    }
+                    if (Stand.Segments != null && Stand.Segments.visible)
+                    {
+                        segmentsPosition = Stand.Segments.position;
+                        hmUI_widget_IMG_PROGRESS img_progress = Stand.Segments;
+                        segmentsOptions = IMG_PROGRESS_Options(img_progress, "STAND", show_level);
+                    }
+                    if (Stand.Number != null && Stand.Number.visible)
+                    {
+                        numberPosition = Stand.Number.position;
+                        hmUI_widget_IMG_NUMBER img_number = Stand.Number;
+                        numberOptions = IMG_NUMBER_Options(img_number, "STAND", show_level);
+
+                        numberOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (Stand.Number_Target != null && Stand.Number_Target.visible)
+                    {
+                        numberTargetPosition = Stand.Number_Target.position;
+                        hmUI_widget_IMG_NUMBER img_number = Stand.Number_Target;
+                        numberTargetOptions = IMG_NUMBER_Options(img_number, "STAND_TARGET", show_level);
+
+                        numberTargetOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (Stand.Pointer != null && Stand.Pointer.visible)
+                    {
+                        pointerPosition = Stand.Pointer.position;
+                        hmUI_widget_IMG_POINTER img_pointer = Stand.Pointer;
+                        pointerOptions = IMG_POINTER_Options(img_pointer, "STAND", show_level);
+                    }
+
+                    if (Stand.Circle_Scale != null && Stand.Circle_Scale.visible)
+                    {
+                        circleScalePosition = Stand.Circle_Scale.position;
+                        circle_scale = Stand.Circle_Scale;
+
+                        circleScaleOptions = Circle_Scale_Options(circle_scale, optionNameStart, "STAND", show_level);
+                        //circleScaleMirrorOptions = Circle_Scale_Options(linear_scale, true);
+                    }
+                    if (Stand.Linear_Scale != null && Stand.Linear_Scale.visible)
+                    {
+                        linearScalePosition = Stand.Linear_Scale.position;
+                        linear_scale = Stand.Linear_Scale;
+
+                        linearScaleOptions = Linear_Scale_Options(linear_scale, optionNameStart, "STAND", "stand", show_level);
+                    }
+
+                    if (Stand.Icon != null && Stand.Icon.visible)
+                    {
+                        iconPosition = Stand.Icon.position;
+                        hmUI_widget_IMG img_icon = Stand.Icon;
+                        iconOptions = IMG_Options(img_icon, show_level);
+                    }
+
+                    for (int index = 1; index <= 10; index++)
+                    {
+                        // Images
+                        if (index == imagesPosition && imagesOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "stand_image_progress_img_level = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "stand_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
+                                    imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Segments
+                        if (index == segmentsPosition && segmentsOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "stand_image_progress_img_progress = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "stand_image_progress_img_progress = hmUI.createWidget(hmUI.widget.IMG_PROGRESS, {" +
+                                    segmentsOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Number
+                        if (index == numberPosition && numberOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "stand_current_text_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "stand_current_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "stand_current_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "stand_current_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Number_Target
+                        if (index == numberTargetPosition && numberTargetOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "stand_target_text_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "stand_target_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberTargetOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberTargetOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "stand_target_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "stand_target_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberTargetOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Pointer
+                        if (index == pointerPosition && pointerOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "stand_pointer_progress_img_pointer = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "stand_pointer_progress_img_pointer = hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
+                                    pointerOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Circle_Scale
+                        if (index == circleScalePosition && circle_scale != null)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "stand_circle_scale = ''" + Environment.NewLine;
+
+                            items += circleScaleOptions;
+
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (optionNameStart == "normal_")
+                                items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
+                            else items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type.AOD) {";
+
+                            items += Environment.NewLine + TabInString(7) +
+                                optionNameStart + "stand_circle_scale = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
+
+                            if (circle_scale.mirror)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                "stand_circle_scale_mirror = ''" + Environment.NewLine;
+
+                                items += TabInString(7) + optionNameStart +
+                                    "stand_circle_scale_mirror = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
+                            }
+
+                            items += TabInString(6) + "};" + Environment.NewLine;
+
+                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update scales STAND');" + Environment.NewLine;
+                            if (items.IndexOf("const stand = hmSensor.createSensor(hmSensor.id.STAND);") < 0 &&
+                                exist_items.IndexOf("const stand = hmSensor.createSensor(hmSensor.id.STAND);") < 0)
+                            {
+                                items += TabInString(6) + Environment.NewLine;
+                                items += TabInString(6) + "const stand = hmSensor.createSensor(hmSensor.id.STAND);" + Environment.NewLine;
+                                if (exist_items.IndexOf("stand.addEventListener") < 0)
+                                {
+                                    items += TabInString(6) + "stand.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
+                                    items += TabInString(7) + "scale_call();" + Environment.NewLine;
+                                    items += TabInString(6) + "});" + Environment.NewLine;
+                                }
+                            }
+
+                            if (resume_function.IndexOf("progressStand") < 0 &&
+                                exist_resume_call.IndexOf("progressStand") < 0)
+                            {
+                                resume_function += TabInString(8) + Environment.NewLine;
+                                resume_function += TabInString(8) + "let valueStand = stand.current;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "let targetStand = stand.target;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "let progressStand = valueStand/targetStand;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "if (progressStand > 1) progressStand = 1;" + Environment.NewLine;
+                            }
+
+                            if (circle_scale.inversion)
+                            {
+                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                "stand = 1 - progressStand;" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                "stand = progressStand;" + Environment.NewLine;
+                            }
+                            if (optionNameStart == "normal_")
+                            {
+                                resume_function += Environment.NewLine + TabInString(8) +
+                                    "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                resume_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "stand");
+                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_function += Environment.NewLine + TabInString(8) +
+                                    "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                resume_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "stand");
+                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                            }
+
+                        }
+
+                        // Linear_Scale
+                        if (index == linearScalePosition && linear_scale != null)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "stand_linear_scale = ''" + Environment.NewLine;
+                            if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "stand_linear_scale_pointer_img = ''" + Environment.NewLine;
+
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (optionNameStart == "normal_")
+                                items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
+                            else items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type.AOD) {";
+
+                            items += Environment.NewLine + TabInString(7) +
+                                optionNameStart + "stand_linear_scale = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+
+                            if (linear_scale.mirror)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                "stand_linear_scale_mirror = ''" + Environment.NewLine;
+                                if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
+                                    variables += TabInString(4) + "let " + optionNameStart +
+                                        "stand_linear_scale_pointer_img_mirror = ''" + Environment.NewLine;
+
+                                items += TabInString(7) + optionNameStart +
+                                    "stand_linear_scale_mirror = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+                            }
+
+                            items += TabInString(6) + "};" + Environment.NewLine;
+
+                            items += linearScaleOptions;
+
+
+                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update scales STAND');" + Environment.NewLine;
+                            if (items.IndexOf("const stand = hmSensor.createSensor(hmSensor.id.STAND);") < 0 &&
+                                exist_items.IndexOf("const stand = hmSensor.createSensor(hmSensor.id.STAND);") < 0)
+                            {
+                                items += TabInString(6) + Environment.NewLine;
+                                items += TabInString(6) + "const stand = hmSensor.createSensor(hmSensor.id.STAND);" + Environment.NewLine;
+                                if (exist_items.IndexOf("stand.addEventListener") < 0)
+                                {
+                                    items += TabInString(6) + "stand.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
+                                    items += TabInString(7) + "scale_call();" + Environment.NewLine;
+                                    items += TabInString(6) + "});" + Environment.NewLine;
+                                }
+                            }
+
+                            if (resume_function.IndexOf("progressStand") < 0 &&
+                                exist_resume_call.IndexOf("progressStand") < 0)
+                            {
+                                resume_function += TabInString(8) + Environment.NewLine;
+                                resume_function += TabInString(8) + "let valueStand = stand.current;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "let targetStand = stand.target;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "let progressStand = valueStand/targetStand;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "if (progressStand > 1) progressStand = 1;" + Environment.NewLine;
+                            }
+                            if (linear_scale.inversion)
+                            {
+                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                "stand = 1 - progressStand;" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                "stand = progressStand;" + Environment.NewLine;
+                            }
+                            if (optionNameStart == "normal_")
+                            {
+                                resume_function += Environment.NewLine + TabInString(8) +
+                                    "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                resume_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "stand", show_level);
+                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_function += Environment.NewLine + TabInString(8) +
+                                    "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                resume_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "stand", show_level);
+                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                            }
+
+                        }
+
+                        // Icon
+                        if (index == iconPosition && iconOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "stand_icon_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "stand_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    iconOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+
+                    }
+                    break;
+                #endregion
+
+                #region ElementActivity
+                case "ElementActivity":
+                    ElementActivity Activity = (ElementActivity)element;
+
+                    if (!Activity.visible) return;
+                    if (Activity.Images != null && Activity.Images.visible)
+                    {
+                        imagesPosition = Activity.Images.position;
+                        hmUI_widget_IMG_LEVEL img_images = Activity.Images;
+                        imagesOptions = IMG_IMAGES_Options(img_images, "ACTIVITY", show_level);
+                    }
+                    if (Activity.Segments != null && Activity.Segments.visible)
+                    {
+                        segmentsPosition = Activity.Segments.position;
+                        hmUI_widget_IMG_PROGRESS img_progress = Activity.Segments;
+                        segmentsOptions = IMG_PROGRESS_Options(img_progress, "ACTIVITY", show_level);
+                    }
+                    if (Activity.Number != null && Activity.Number.visible)
+                    {
+                        numberPosition = Activity.Number.position;
+                        hmUI_widget_IMG_NUMBER img_number = Activity.Number;
+                        numberOptions = IMG_NUMBER_Options(img_number, "ACTIVITY", show_level);
+
+                        numberOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (Activity.Number_Target != null && Activity.Number_Target.visible)
+                    {
+                        numberTargetPosition = Activity.Number_Target.position;
+                        hmUI_widget_IMG_NUMBER img_number = Activity.Number_Target;
+                        numberTargetOptions = IMG_NUMBER_Options(img_number, "ACTIVITY_TARGET", show_level);
+
+                        numberTargetOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (Activity.Pointer != null && Activity.Pointer.visible)
+                    {
+                        pointerPosition = Activity.Pointer.position;
+                        hmUI_widget_IMG_POINTER img_pointer = Activity.Pointer;
+                        pointerOptions = IMG_POINTER_Options(img_pointer, "ACTIVITY", show_level);
+                    }
+
+                    if (Activity.Circle_Scale != null && Activity.Circle_Scale.visible)
+                    {
+                        circleScalePosition = Activity.Circle_Scale.position;
+                        circle_scale = Activity.Circle_Scale;
+
+                        circleScaleOptions = Circle_Scale_Options(circle_scale, optionNameStart, "ACTIVITY", show_level);
+                        //circleScaleMirrorOptions = Circle_Scale_Options(linear_scale, true);
+                    }
+                    if (Activity.Linear_Scale != null && Activity.Linear_Scale.visible)
+                    {
+                        linearScalePosition = Activity.Linear_Scale.position;
+                        linear_scale = Activity.Linear_Scale;
+
+                        linearScaleOptions = Linear_Scale_Options(linear_scale, optionNameStart, "ACTIVITY", "activity", show_level);
+                    }
+
+                    if (Activity.Icon != null && Activity.Icon.visible)
+                    {
+                        iconPosition = Activity.Icon.position;
+                        hmUI_widget_IMG img_icon = Activity.Icon;
+                        iconOptions = IMG_Options(img_icon, show_level);
+                    }
+
+                    for (int index = 1; index <= 10; index++)
+                    {
+                        // Images
+                        if (index == imagesPosition && imagesOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "activity_image_progress_img_level = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "activity_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
+                                    imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Segments
+                        if (index == segmentsPosition && segmentsOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "activity_image_progress_img_progress = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "activity_image_progress_img_progress = hmUI.createWidget(hmUI.widget.IMG_PROGRESS, {" +
+                                    segmentsOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Number
+                        if (index == numberPosition && numberOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "activity_current_text_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "activity_current_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "activity_current_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "activity_current_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Number_Target
+                        if (index == numberTargetPosition && numberTargetOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "activity_target_text_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "activity_target_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberTargetOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberTargetOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "activity_target_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "activity_target_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberTargetOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Pointer
+                        if (index == pointerPosition && pointerOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "activity_pointer_progress_img_pointer = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "activity_pointer_progress_img_pointer = hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
+                                    pointerOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Circle_Scale
+                        if (index == circleScalePosition && circle_scale != null)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "activity_circle_scale = ''" + Environment.NewLine;
+
+                            items += circleScaleOptions;
+
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (optionNameStart == "normal_")
+                                items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
+                            else items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type.AOD) {";
+
+                            items += Environment.NewLine + TabInString(7) +
+                                optionNameStart + "activity_circle_scale = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
+
+                            if (circle_scale.mirror)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                "activity_circle_scale_mirror = ''" + Environment.NewLine;
+
+                                items += TabInString(7) + optionNameStart +
+                                    "activity_circle_scale_mirror = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
+                            }
+
+                            items += TabInString(6) + "};" + Environment.NewLine;
+
+                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update scales ACTIVITY');" + Environment.NewLine;
+                            if (items.IndexOf("const activity = hmSensor.createSensor(hmSensor.id.ACTIVITY);") < 0 &&
+                                exist_items.IndexOf("const activity = hmSensor.createSensor(hmSensor.id.ACTIVITY);") < 0)
+                            {
+                                items += TabInString(6) + Environment.NewLine;
+                                items += TabInString(6) + "const activity = hmSensor.createSensor(hmSensor.id.ACTIVITY);" + Environment.NewLine;
+                                if (exist_items.IndexOf("activity.addEventListener") < 0)
+                                {
+                                    items += TabInString(6) + "activity.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
+                                    items += TabInString(7) + "scale_call();" + Environment.NewLine;
+                                    items += TabInString(6) + "});" + Environment.NewLine;
+                                }
+                            }
+
+                            if (resume_function.IndexOf("progressActivity") < 0 &&
+                                exist_resume_call.IndexOf("progressActivity") < 0)
+                            {
+                                resume_function += TabInString(8) + Environment.NewLine;
+                                resume_function += TabInString(8) + "let valueActivity = activity.current;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "let targetActivity = activity.target;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "let progressActivity = valueActivity/targetActivity;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "if (progressActivity > 1) progressActivity = 1;" + Environment.NewLine;
+                            }
+
+                            if (circle_scale.inversion)
+                            {
+                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                "activity = 1 - progressActivity;" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                "activity = progressActivity;" + Environment.NewLine;
+                            }
+                            if (optionNameStart == "normal_")
+                            {
+                                resume_function += Environment.NewLine + TabInString(8) +
+                                    "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                resume_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "activity");
+                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_function += Environment.NewLine + TabInString(8) +
+                                    "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                resume_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "activity");
+                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                            }
+
+                        }
+
+                        // Linear_Scale
+                        if (index == linearScalePosition && linear_scale != null)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "activity_linear_scale = ''" + Environment.NewLine;
+                            if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "activity_linear_scale_pointer_img = ''" + Environment.NewLine;
+
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (optionNameStart == "normal_")
+                                items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
+                            else items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type.AOD) {";
+
+                            items += Environment.NewLine + TabInString(7) +
+                                optionNameStart + "activity_linear_scale = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+
+                            if (linear_scale.mirror)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                "activity_linear_scale_mirror = ''" + Environment.NewLine;
+                                if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
+                                    variables += TabInString(4) + "let " + optionNameStart +
+                                        "activity_linear_scale_pointer_img_mirror = ''" + Environment.NewLine;
+
+                                items += TabInString(7) + optionNameStart +
+                                    "activity_linear_scale_mirror = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+                            }
+
+                            items += TabInString(6) + "};" + Environment.NewLine;
+
+                            items += linearScaleOptions;
+
+
+                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update scales ACTIVITY');" + Environment.NewLine;
+                            if (items.IndexOf("const activity = hmSensor.createSensor(hmSensor.id.ACTIVITY);") < 0 &&
+                                exist_items.IndexOf("const activity = hmSensor.createSensor(hmSensor.id.ACTIVITY);") < 0)
+                            {
+                                items += TabInString(6) + Environment.NewLine;
+                                items += TabInString(6) + "const activity = hmSensor.createSensor(hmSensor.id.ACTIVITY);" + Environment.NewLine;
+                                if (exist_items.IndexOf("activity.addEventListener") < 0)
+                                {
+                                    items += TabInString(6) + "activity.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
+                                    items += TabInString(7) + "scale_call();" + Environment.NewLine;
+                                    items += TabInString(6) + "});" + Environment.NewLine;
+                                }
+                            }
+
+                            if (resume_function.IndexOf("progressActivity") < 0 &&
+                                exist_resume_call.IndexOf("progressActivity") < 0)
+                            {
+                                resume_function += TabInString(8) + Environment.NewLine;
+                                resume_function += TabInString(8) + "let valueActivity = activity.current;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "let targetActivity = activity.target;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "let progressActivity = valueActivity/targetActivity;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "if (progressActivity > 1) progressActivity = 1;" + Environment.NewLine;
+                            }
+                            if (linear_scale.inversion)
+                            {
+                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                "activity = 1 - progressActivity;" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                "activity = progressActivity;" + Environment.NewLine;
+                            }
+                            if (optionNameStart == "normal_")
+                            {
+                                resume_function += Environment.NewLine + TabInString(8) +
+                                    "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                resume_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "activity", show_level);
+                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_function += Environment.NewLine + TabInString(8) +
+                                    "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                resume_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "activity", show_level);
+                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                            }
+
+
+
+
+                        }
+
+                        // Icon
+                        if (index == iconPosition && iconOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "activity_icon_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "activity_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    iconOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+
+                    }
+                    break;
+                #endregion
+
+                #region ElementSpO2
+                case "ElementSpO2":
+                    ElementSpO2 SpO2 = (ElementSpO2)element;
+
+                    if (!SpO2.visible) return;
+                    if (SpO2.Number != null)
+                    {
+                        numberPosition = SpO2.Number.position;
+                        hmUI_widget_IMG_NUMBER img_number = SpO2.Number;
+                        numberOptions = IMG_NUMBER_Options(img_number, "SPO2", show_level);
+
+                        numberOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+
+                    // Number
+                    if (numberOptions.Length > 5)
+                    {
+                        variables += TabInString(4) + "let " + optionNameStart +
+                            "spo2_text_text_img = ''" + Environment.NewLine;
+                        items += Environment.NewLine + TabInString(6) +
+                            optionNameStart + "spo2_text_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                numberOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                        if (numberOptions_separator.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "spo2_text_separator_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "spo2_text_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                        }
+                    }
+                    break;
+                #endregion
+
+                #region ElementStress
+                case "ElementStress":
+                    ElementStress Stress = (ElementStress)element;
+
+                    if (!Stress.visible) return;
+                    if (Stress.Images != null && Stress.Images.visible)
+                    {
+                        imagesPosition = Stress.Images.position;
+                        hmUI_widget_IMG_LEVEL img_images = Stress.Images;
+                        imagesOptions = IMG_IMAGES_Options(img_images, "STRESS", show_level);
+                    }
+                    if (Stress.Segments != null && Stress.Segments.visible)
+                    {
+                        segmentsPosition = Stress.Segments.position;
+                        hmUI_widget_IMG_PROGRESS img_progress = Stress.Segments;
+                        segmentsOptions = IMG_PROGRESS_Options(img_progress, "STRESS", show_level);
+                    }
+                    if (Stress.Number != null && Stress.Number.visible)
+                    {
+                        numberPosition = Stress.Number.position;
+                        hmUI_widget_IMG_NUMBER img_number = Stress.Number;
+                        numberOptions = IMG_NUMBER_Options(img_number, "STRESS", show_level);
+
+                        numberOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (Stress.Pointer != null && Stress.Pointer.visible)
+                    {
+                        pointerPosition = Stress.Pointer.position;
+                        hmUI_widget_IMG_POINTER img_pointer = Stress.Pointer;
+                        pointerOptions = IMG_POINTER_Options(img_pointer, "STRESS", show_level);
+                    }
+
+
+                    if (Stress.Icon != null && Stress.Icon.visible)
+                    {
+                        iconPosition = Stress.Icon.position;
+                        hmUI_widget_IMG img_icon = Stress.Icon;
+                        iconOptions = IMG_Options(img_icon, show_level);
+                    }
+
+                    for (int index = 1; index <= 10; index++)
+                    {
+                        // Images
+                        if (index == imagesPosition && imagesOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "stress_image_progress_img_level = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "stress_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
+                                    imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Segments
+                        if (index == segmentsPosition && segmentsOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "stress_image_progress_img_progress = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "stress_image_progress_img_progress = hmUI.createWidget(hmUI.widget.IMG_PROGRESS, {" +
+                                    segmentsOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Number
+                        if (index == numberPosition && numberOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "stress_text_text_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "stress_text_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "stress_text_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "stress_text_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Pointer
+                        if (index == pointerPosition && pointerOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "stress_pointer_progress_img_pointer = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "stress_pointer_progress_img_pointer = hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
+                                    pointerOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Icon
+                        if (index == iconPosition && iconOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "stress_icon_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "stress_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    iconOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+
+                    }
+                    break;
+                #endregion
+
+                #region ElementFatBurning
+                case "ElementFatBurning":
+                    ElementFatBurning FatBurning = (ElementFatBurning)element;
+
+                    if (!FatBurning.visible) return;
+                    if (FatBurning.Images != null && FatBurning.Images.visible)
+                    {
+                        imagesPosition = FatBurning.Images.position;
+                        hmUI_widget_IMG_LEVEL img_images = FatBurning.Images;
+                        imagesOptions = IMG_IMAGES_Options(img_images, "FAT_BURNING", show_level);
+                    }
+                    if (FatBurning.Segments != null && FatBurning.Segments.visible)
+                    {
+                        segmentsPosition = FatBurning.Segments.position;
+                        hmUI_widget_IMG_PROGRESS img_progress = FatBurning.Segments;
+                        segmentsOptions = IMG_PROGRESS_Options(img_progress, "FAT_BURNING", show_level);
+                    }
+                    if (FatBurning.Number != null && FatBurning.Number.visible)
+                    {
+                        numberPosition = FatBurning.Number.position;
+                        hmUI_widget_IMG_NUMBER img_number = FatBurning.Number;
+                        numberOptions = IMG_NUMBER_Options(img_number, "FAT_BURNING", show_level);
+
+                        numberOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (FatBurning.Number_Target != null && FatBurning.Number_Target.visible)
+                    {
+                        numberTargetPosition = FatBurning.Number_Target.position;
+                        hmUI_widget_IMG_NUMBER img_number = FatBurning.Number_Target;
+                        numberTargetOptions = IMG_NUMBER_Options(img_number, "FAT_BURNING_TARGET", show_level);
+
+                        numberTargetOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (FatBurning.Pointer != null && FatBurning.Pointer.visible)
+                    {
+                        pointerPosition = FatBurning.Pointer.position;
+                        hmUI_widget_IMG_POINTER img_pointer = FatBurning.Pointer;
+                        pointerOptions = IMG_POINTER_Options(img_pointer, "FAT_BURNING", show_level);
+                    }
+
+                    if (FatBurning.Circle_Scale != null && FatBurning.Circle_Scale.visible)
+                    {
+                        circleScalePosition = FatBurning.Circle_Scale.position;
+                        circle_scale = FatBurning.Circle_Scale;
+
+                        circleScaleOptions = Circle_Scale_Options(circle_scale, optionNameStart, "FAT_BURNING", show_level);
+                        //circleScaleMirrorOptions = Circle_Scale_Options(linear_scale, true);
+                    }
+                    if (FatBurning.Linear_Scale != null && FatBurning.Linear_Scale.visible)
+                    {
+                        linearScalePosition = FatBurning.Linear_Scale.position;
+                        linear_scale = FatBurning.Linear_Scale;
+
+                        linearScaleOptions = Linear_Scale_Options(linear_scale, optionNameStart, "FAT_BURNING", "fat_burning", show_level);
+                    }
+
+                    if (FatBurning.Icon != null && FatBurning.Icon.visible)
+                    {
+                        iconPosition = FatBurning.Icon.position;
+                        hmUI_widget_IMG img_icon = FatBurning.Icon;
+                        iconOptions = IMG_Options(img_icon, show_level);
+                    }
+
+                    for (int index = 1; index <= 10; index++)
+                    {
+                        // Images
+                        if (index == imagesPosition && imagesOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "fat_burning_image_progress_img_level = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "fat_burning_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
+                                    imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Segments
+                        if (index == segmentsPosition && segmentsOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "fat_burning_image_progress_img_progress = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "fat_burning_image_progress_img_progress = hmUI.createWidget(hmUI.widget.IMG_PROGRESS, {" +
+                                    segmentsOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Number
+                        if (index == numberPosition && numberOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "fat_burning_current_text_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "fat_burning_current_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "fat_burning_current_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "fat_burning_current_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Number_Target
+                        if (index == numberTargetPosition && numberTargetOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "fat_burning_target_text_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "fat_burning_target_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberTargetOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberTargetOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "fat_burning_target_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "fat_burning_target_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberTargetOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Pointer
+                        if (index == pointerPosition && pointerOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "fat_burning_pointer_progress_img_pointer = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "fat_burning_pointer_progress_img_pointer = hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
+                                    pointerOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Circle_Scale
+                        if (index == circleScalePosition && circle_scale != null)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "fat_burning_circle_scale = ''" + Environment.NewLine;
+
+                            items += circleScaleOptions;
+
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (optionNameStart == "normal_")
+                                items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
+                            else items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type.AOD) {";
+
+                            //items += Environment.NewLine + TabInString(7) +
+                            //    optionNameStart + "fat_burning_circle_scale = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
+                            //        circleScaleOptions + TabInString(7) + "});" + Environment.NewLine;
+
+                            items += Environment.NewLine + TabInString(7) +
+                                optionNameStart + "fat_burning_circle_scale = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
+
+                            if (circle_scale.mirror)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                "fat_burning_circle_scale_mirror = ''" + Environment.NewLine;
+
+                                items += TabInString(7) + optionNameStart +
+                                    "fat_burning_circle_scale_mirror = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
+                            }
+
+                            items += TabInString(6) + "};" + Environment.NewLine;
+
+                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update scales FAT_BURNING');" + Environment.NewLine;
+                            if (items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0 &&
+                                exist_items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0)
+                            {
+                                items += TabInString(6) + Environment.NewLine;
+                                items += TabInString(6) + "const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);" + Environment.NewLine;
+                                if (exist_items.IndexOf("fat_burning.addEventListener") < 0)
+                                {
+                                    items += TabInString(6) + "fat_burning.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
+                                    items += TabInString(7) + "scale_call();" + Environment.NewLine;
+                                    items += TabInString(6) + "});" + Environment.NewLine;
+                                }
+                            }
+
+                            if (resume_function.IndexOf("progressFatBurning") < 0 &&
+                                exist_resume_call.IndexOf("progressFatBurning") < 0)
+                            {
+                                resume_function += TabInString(8) + Environment.NewLine;
+                                resume_function += TabInString(8) + "let valueFatBurning = fat_burning.current;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "let targetFatBurning = fat_burning.target;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "let progressFatBurning = valueFatBurning/targetFatBurning;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "if (progressFatBurning > 1) progressFatBurning = 1;" + Environment.NewLine;
+                            }
+
+                            if (circle_scale.inversion)
+                            {
+                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                "fat_burning = 1 - progressFatBurning;" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                "fat_burning = progressFatBurning;" + Environment.NewLine;
+                            }
+                            if (optionNameStart == "normal_")
+                            {
+                                resume_function += Environment.NewLine + TabInString(8) +
+                                    "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                resume_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "fat_burning");
+                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_function += Environment.NewLine + TabInString(8) +
+                                    "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                resume_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "fat_burning");
+                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                            }
+
+
+
+
+                        }
+
+                        // Linear_Scale
+                        if (index == linearScalePosition && linear_scale != null)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "fat_burning_linear_scale = ''" + Environment.NewLine;
+                            if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "fat_burning_linear_scale_pointer_img = ''" + Environment.NewLine;
+
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (optionNameStart == "normal_")
+                                items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
+                            else items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type.AOD) {";
+
+                            items += Environment.NewLine + TabInString(7) +
+                                optionNameStart + "fat_burning_linear_scale = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+
+                            if (linear_scale.mirror)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                "fat_burning_linear_scale_mirror = ''" + Environment.NewLine;
+                                if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
+                                    variables += TabInString(4) + "let " + optionNameStart +
+                                        "fat_burning_linear_scale_pointer_img_mirror = ''" + Environment.NewLine;
+
+                                items += TabInString(7) + optionNameStart +
+                                    "fat_burning_linear_scale_mirror = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
+                            }
+
+                            items += TabInString(6) + "};" + Environment.NewLine;
+
+                            items += linearScaleOptions;
+
+
+                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update scales FAT_BURNING');" + Environment.NewLine;
+                            if (items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0 &&
+                                exist_items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0)
+                            {
+                                items += TabInString(6) + Environment.NewLine;
+                                items += TabInString(6) + "const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);" + Environment.NewLine;
+                                if (exist_items.IndexOf("fat_burning.addEventListener") < 0)
+                                {
+                                    items += TabInString(6) + "fat_burning.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
+                                    items += TabInString(7) + "scale_call();" + Environment.NewLine;
+                                    items += TabInString(6) + "});" + Environment.NewLine;
+                                }
+                            }
+
+                            if (resume_function.IndexOf("progressFatBurning") < 0 &&
+                                exist_resume_call.IndexOf("progressFatBurning") < 0)
+                            {
+                                resume_function += TabInString(8) + Environment.NewLine;
+                                resume_function += TabInString(8) + "let valueFatBurning = fat_burning.current;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "let targetFatBurning = fat_burning.target;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "let progressFatBurning = valueFatBurning/targetFatBurning;" + Environment.NewLine;
+                                resume_function += TabInString(8) + "if (progressFatBurning > 1) progressFatBurning = 1;" + Environment.NewLine;
+                            }
+                            if (linear_scale.inversion)
+                            {
+                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                "fat_burning = 1 - progressFatBurning;" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                "fat_burning = progressFatBurning;" + Environment.NewLine;
+                            }
+                            if (optionNameStart == "normal_")
+                            {
+                                resume_function += Environment.NewLine + TabInString(8) +
+                                    "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                resume_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "fat_burning", show_level);
+                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                resume_function += Environment.NewLine + TabInString(8) +
+                                    "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                resume_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "fat_burning", show_level);
+                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                            }
+
+
+
+
+                        }
+
+                        // Icon
+                        if (index == iconPosition && iconOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "fat_burning_icon_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "fat_burning_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    iconOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+
+                    }
+                    break;
+                #endregion
+
+
+
+                #region ElementWeather
+                case "ElementWeather":
+                    ElementWeather Weather = (ElementWeather)element;
+                    int numberMinPosition = 99;
+                    int numberMaxPosition = 99;
+                    int cityNamePosition = 99;
+
+                    string numberMinOptions = "";
+                    string numberMaxOptions = "";
+                    string cityNameOptions = "";
+
+                    string numberMinOptions_separator = "";
+                    string numberMaxOptions_separator = "";
+
+                    if (!Weather.visible) return;
+                    if (Weather.Images != null && Weather.Images.visible)
+                    {
+                        imagesPosition = Weather.Images.position;
+                        hmUI_widget_IMG_LEVEL img_images = Weather.Images;
+                        imagesOptions = IMG_IMAGES_Options(img_images, "WEATHER_CURRENT", show_level);
+                    }
+                    if (Weather.Number != null && Weather.Number.visible)
+                    {
+                        numberPosition = Weather.Number.position;
+                        hmUI_widget_IMG_NUMBER img_number = Weather.Number;
+                        numberOptions = IMG_NUMBER_Options(img_number, "WEATHER_CURRENT", show_level);
+
+                        numberOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (Weather.Number_Min != null && Weather.Number_Min.visible)
+                    {
+                        numberMinPosition = Weather.Number_Min.position;
+                        hmUI_widget_IMG_NUMBER img_number = Weather.Number_Min;
+                        numberMinOptions = IMG_NUMBER_Options(img_number, "WEATHER_LOW", show_level);
+
+                        numberMinOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (Weather.Number_Max != null && Weather.Number_Max.visible)
+                    {
+                        numberMaxPosition = Weather.Number_Max.position;
+                        hmUI_widget_IMG_NUMBER img_number = Weather.Number_Max;
+                        numberMaxOptions = IMG_NUMBER_Options(img_number, "WEATHER_HIGH", show_level);
+
+                        numberMaxOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (Weather.City_Name != null && Weather.City_Name.visible)
+                    {
+                        cityNamePosition = Weather.City_Name.position;
+                        hmUI_widget_TEXT text = Weather.City_Name;
+                        cityNameOptions = TEXT_Options(text, show_level);
+                    }
+
+                    if (Weather.Icon != null && Weather.Icon.visible)
+                    {
+                        iconPosition = Weather.Icon.position;
+                        hmUI_widget_IMG img_icon = Weather.Icon;
+                        iconOptions = IMG_Options(img_icon, show_level);
+                    }
+
+                    for (int index = 1; index <= 10; index++)
+                    {
+                        // Images
+                        if (index == imagesPosition && imagesOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "weather_image_progress_img_level = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "weather_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
+                                    imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Number
+                        if (index == numberPosition && numberOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "temperature_current_text_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "temperature_current_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "temperature_current_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "temperature_current_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Number min
+                        if (index == numberMinPosition && numberMinOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "temperature_low_text_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "temperature_low_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberMinOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberMinOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "temperature_low_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "temperature_low_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberMinOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Number max
+                        if (index == numberMaxPosition && numberMaxOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "temperature_high_text_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "temperature_high_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberMaxOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberMaxOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "temperature_high_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "temperature_high_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberMaxOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // City Name
+                        if (index == cityNamePosition && cityNameOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "city_name_text = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "city_name_text = hmUI.createWidget(hmUI.widget.TEXT, {" +
+                                    cityNameOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            resume_function += Environment.NewLine + TabInString(7) + "console.log('Wearther city name');" + Environment.NewLine;
+
+                            if (resume_function.IndexOf("const weatherSensor = hmSensor.createSensor(hmSensor.id.WEATHER);") < 0 &&
+                                exist_resume_call.IndexOf("const weatherSensor = hmSensor.createSensor(hmSensor.id.WEATHER);") < 0)
+                            {
+                                resume_function += TabInString(7) +
+                                    "const weatherSensor = hmSensor.createSensor(hmSensor.id.WEATHER);" + Environment.NewLine;
+                                resume_function += TabInString(7) +
+                                    "const weatherData = weatherSensor.getForecastWeather();" + Environment.NewLine;
+                            }
+                            resume_function += TabInString(7) + optionNameStart +
+                                "city_name_text.setProperty(hmUI.prop.TEXT, weatherData.cityName);" + Environment.NewLine;
+
+
+                        }
+
+                        // Icon
+                        if (index == iconPosition && iconOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "temperature_icon_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "temperature_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    iconOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+
+                    }
+                    break;
+                #endregion
+
+                #region ElementUVIndex
+                case "ElementUVIndex":
+                    ElementUVIndex UVIndex = (ElementUVIndex)element;
+
+                    if (!UVIndex.visible) return;
+                    if (UVIndex.Images != null && UVIndex.Images.visible)
+                    {
+                        imagesPosition = UVIndex.Images.position;
+                        hmUI_widget_IMG_LEVEL img_images = UVIndex.Images;
+                        imagesOptions = IMG_IMAGES_Options(img_images, "UVI", show_level);
+                    }
+                    if (UVIndex.Segments != null && UVIndex.Segments.visible)
+                    {
+                        segmentsPosition = UVIndex.Segments.position;
+                        hmUI_widget_IMG_PROGRESS img_progress = UVIndex.Segments;
+                        segmentsOptions = IMG_PROGRESS_Options(img_progress, "UVI", show_level);
+                    }
+                    if (UVIndex.Number != null && UVIndex.Number.visible)
+                    {
+                        numberPosition = UVIndex.Number.position;
+                        hmUI_widget_IMG_NUMBER img_number = UVIndex.Number;
+                        numberOptions = IMG_NUMBER_Options(img_number, "UVI", show_level);
+
+                        numberOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (UVIndex.Pointer != null && UVIndex.Pointer.visible)
+                    {
+                        pointerPosition = UVIndex.Pointer.position;
+                        hmUI_widget_IMG_POINTER img_pointer = UVIndex.Pointer;
+                        pointerOptions = IMG_POINTER_Options(img_pointer, "UVI", show_level);
+                    }
+
+                    if (UVIndex.Icon != null && UVIndex.Icon.visible)
+                    {
+                        iconPosition = UVIndex.Icon.position;
+                        hmUI_widget_IMG img_icon = UVIndex.Icon;
+                        iconOptions = IMG_Options(img_icon, show_level);
+                    }
+
+                    for (int index = 1; index <= 10; index++)
+                    {
+                        // Images
+                        if (index == imagesPosition && imagesOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "uvi_image_progress_img_level = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "uvi_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
+                                    imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Segments
+                        if (index == segmentsPosition && segmentsOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "uvi_image_progress_img_progress = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "uvi_image_progress_img_progress = hmUI.createWidget(hmUI.widget.IMG_PROGRESS, {" +
+                                    segmentsOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Number
+                        if (index == numberPosition && numberOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "uvi_text_text_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "uvi_text_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "uvi_text_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "uvi_text_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Pointer
+                        if (index == pointerPosition && pointerOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "uvi_pointer_progress_img_pointer = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "uvi_pointer_progress_img_pointer = hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
+                                    pointerOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Icon
+                        if (index == iconPosition && iconOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "uvi_icon_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "uvi_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    iconOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+
+                    }
+                    break;
+                #endregion
+
+                #region ElementHumidity
+                case "ElementHumidity":
+                    ElementHumidity Humidity = (ElementHumidity)element;
+
+                    if (!Humidity.visible) return;
+                    if (Humidity.Images != null && Humidity.Images.visible)
+                    {
+                        imagesPosition = Humidity.Images.position;
+                        hmUI_widget_IMG_LEVEL img_images = Humidity.Images;
+                        imagesOptions = IMG_IMAGES_Options(img_images, "HUMIDITY", show_level);
+                    }
+                    if (Humidity.Segments != null && Humidity.Segments.visible)
+                    {
+                        segmentsPosition = Humidity.Segments.position;
+                        hmUI_widget_IMG_PROGRESS img_progress = Humidity.Segments;
+                        segmentsOptions = IMG_PROGRESS_Options(img_progress, "HUMIDITY", show_level);
+                    }
+                    if (Humidity.Number != null && Humidity.Number.visible)
+                    {
+                        numberPosition = Humidity.Number.position;
+                        hmUI_widget_IMG_NUMBER img_number = Humidity.Number;
+                        numberOptions = IMG_NUMBER_Options(img_number, "HUMIDITY", show_level);
+
+                        numberOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (Humidity.Pointer != null && Humidity.Pointer.visible)
+                    {
+                        pointerPosition = Humidity.Pointer.position;
+                        hmUI_widget_IMG_POINTER img_pointer = Humidity.Pointer;
+                        pointerOptions = IMG_POINTER_Options(img_pointer, "HUMIDITY", show_level);
+                    }
+
+                    if (Humidity.Icon != null && Humidity.Icon.visible)
+                    {
+                        iconPosition = Humidity.Icon.position;
+                        hmUI_widget_IMG img_icon = Humidity.Icon;
+                        iconOptions = IMG_Options(img_icon, show_level);
+                    }
+
+                    for (int index = 1; index <= 10; index++)
+                    {
+                        // Images
+                        if (index == imagesPosition && imagesOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "humidity_image_progress_img_level = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "humidity_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
+                                    imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Segments
+                        if (index == segmentsPosition && segmentsOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "humidity_image_progress_img_progress = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "humidity_image_progress_img_progress = hmUI.createWidget(hmUI.widget.IMG_PROGRESS, {" +
+                                    segmentsOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Number
+                        if (index == numberPosition && numberOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "humidity_text_text_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "humidity_text_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "humidity_text_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "humidity_text_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Pointer
+                        if (index == pointerPosition && pointerOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "humidity_pointer_progress_img_pointer = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "humidity_pointer_progress_img_pointer = hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
+                                    pointerOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Icon
+                        if (index == iconPosition && iconOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "humidity_icon_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "humidity_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    iconOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+
+                    }
+                    break;
+                #endregion
+
+                #region ElementAltimeter
+                case "ElementAltimeter":
+                    ElementAltimeter Altimeter = (ElementAltimeter)element;
+
+                    if (!Altimeter.visible) return;
+                    if (Altimeter.Number != null && Altimeter.Number.visible)
+                    {
+                        numberPosition = Altimeter.Number.position;
+                        hmUI_widget_IMG_NUMBER img_number = Altimeter.Number;
+                        numberOptions = IMG_NUMBER_Options(img_number, "ALTIMETER", show_level);
+
+                        numberOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (Altimeter.Pointer != null && Altimeter.Pointer.visible)
+                    {
+                        pointerPosition = Altimeter.Pointer.position;
+                        hmUI_widget_IMG_POINTER img_pointer = Altimeter.Pointer;
+                        pointerOptions = IMG_POINTER_Options(img_pointer, "ALTIMETER", show_level);
+                    }
+
+                    if (Altimeter.Icon != null && Altimeter.Icon.visible)
+                    {
+                        iconPosition = Altimeter.Icon.position;
+                        hmUI_widget_IMG img_icon = Altimeter.Icon;
+                        iconOptions = IMG_Options(img_icon, show_level);
+                    }
+
+                    for (int index = 1; index <= 10; index++)
+                    {
+                        // Number
+                        if (index == numberPosition && numberOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "altimeter_text_text_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "altimeter_text_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "altimeter_text_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "altimeter_text_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Pointer
+                        if (index == pointerPosition && pointerOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "altimeter_pointer_progress_img_pointer = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "altimeter_pointer_progress_img_pointer = hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
+                                    pointerOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Icon
+                        if (index == iconPosition && iconOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "altimeter_icon_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "altimeter_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    iconOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+
+                    }
+                    break;
+                #endregion
+
+                #region ElementSunrise
+                case "ElementSunrise":
+                    ElementSunrise Sunrise = (ElementSunrise)element;
+                    string numberSunCurrentOptions = "";
+                    string numberSunCurrentOptions_separator = "";
+                    int numberSunCurrentPosition = 99;
+
+                    if (!Sunrise.visible) return;
+                    if (Sunrise.Images != null && Sunrise.Images.visible)
+                    {
+                        imagesPosition = Sunrise.Images.position;
+                        hmUI_widget_IMG_LEVEL img_images = Sunrise.Images;
+                        imagesOptions = IMG_IMAGES_Options(img_images, "SUN_CURRENT", show_level);
+                    }
+                    if (Sunrise.Segments != null && Sunrise.Segments.visible)
+                    {
+                        segmentsPosition = Sunrise.Segments.position;
+                        hmUI_widget_IMG_PROGRESS img_progress = Sunrise.Segments;
+                        segmentsOptions = IMG_PROGRESS_Options(img_progress, "SUN_CURRENT", show_level);
+                    }
+                    if (Sunrise.Sunrise != null && Sunrise.Sunrise.visible)
+                    {
+                        numberPosition = Sunrise.Sunrise.position;
+                        hmUI_widget_IMG_NUMBER img_number = Sunrise.Sunrise;
+                        numberOptions = IMG_NUMBER_Options(img_number, "SUN_RISE", show_level);
+
+                        numberOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (Sunrise.Sunset != null && Sunrise.Sunset.visible)
+                    {
+                        numberTargetPosition = Sunrise.Sunset.position;
+                        hmUI_widget_IMG_NUMBER img_number = Sunrise.Sunset;
+                        numberTargetOptions = IMG_NUMBER_Options(img_number, "SUN_SET", show_level);
+
+                        numberTargetOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (Sunrise.Sunset_Sunrise != null && Sunrise.Sunset_Sunrise.visible)
+                    {
+                        numberSunCurrentPosition = Sunrise.Sunset_Sunrise.position;
+                        hmUI_widget_IMG_NUMBER img_number = Sunrise.Sunset_Sunrise;
+                        numberSunCurrentOptions = IMG_NUMBER_Options(img_number, "SUN_CURRENT", show_level);
+
+                        numberSunCurrentOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (Sunrise.Pointer != null && Sunrise.Pointer.visible)
+                    {
+                        pointerPosition = Sunrise.Pointer.position;
+                        hmUI_widget_IMG_POINTER img_pointer = Sunrise.Pointer;
+                        pointerOptions = IMG_POINTER_Options(img_pointer, "SUN_CURRENT", show_level);
+                    }
+
+                    if (Sunrise.Icon != null && Sunrise.Icon.visible)
+                    {
+                        iconPosition = Sunrise.Icon.position;
+                        hmUI_widget_IMG img_icon = Sunrise.Icon;
+                        iconOptions = IMG_Options(img_icon, show_level);
+                    }
+
+                    for (int index = 1; index <= 10; index++)
+                    {
+                        // Images
+                        if (index == imagesPosition && imagesOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "sun_image_progress_img_level = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "sun_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
+                                    imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Segments
+                        if (index == segmentsPosition && segmentsOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "sun_image_progress_img_progress = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "sun_image_progress_img_progress = hmUI.createWidget(hmUI.widget.IMG_PROGRESS, {" +
+                                    segmentsOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Number
+                        if (index == numberPosition && numberOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "sun_high_text_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "sun_high_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "sun_high_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "sun_high_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Number_Target
+                        if (index == numberTargetPosition && numberTargetOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "sun_low_text_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "sun_low_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberTargetOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberTargetOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "sun_low_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "sun_low_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberTargetOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Number_SunCurrent
+                        if (index == numberSunCurrentPosition && numberSunCurrentOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "sun_current_text_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "sun_current_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberSunCurrentOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberSunCurrentOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "sun_current_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "sun_current_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberSunCurrentOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Pointer
+                        if (index == pointerPosition && pointerOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "sun_pointer_progress_img_pointer = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "sun_pointer_progress_img_pointer = hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
+                                    pointerOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Icon
+                        if (index == iconPosition && iconOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "sun_icon_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "sun_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    iconOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+
+                    }
+                    break;
+                #endregion
+
+                #region ElementWind
+                case "ElementWind":
+                    ElementWind Wind = (ElementWind)element;
+
+                    if (!Wind.visible) return;
+                    if (Wind.Images != null && Wind.Images.visible)
+                    {
+                        imagesPosition = Wind.Images.position;
+                        hmUI_widget_IMG_LEVEL img_images = Wind.Images;
+                        imagesOptions = IMG_IMAGES_Options(img_images, "WIND", show_level);
+                    }
+                    if (Wind.Segments != null && Wind.Segments.visible)
+                    {
+                        segmentsPosition = Wind.Segments.position;
+                        hmUI_widget_IMG_PROGRESS img_progress = Wind.Segments;
+                        segmentsOptions = IMG_PROGRESS_Options(img_progress, "WIND", show_level);
+                    }
+                    if (Wind.Number != null && Wind.Number.visible)
+                    {
+                        numberPosition = Wind.Number.position;
+                        hmUI_widget_IMG_NUMBER img_number = Wind.Number;
+                        numberOptions = IMG_NUMBER_Options(img_number, "WIND", show_level);
+
+                        numberOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (Wind.Pointer != null && Wind.Pointer.visible)
+                    {
+                        pointerPosition = Wind.Pointer.position;
+                        hmUI_widget_IMG_POINTER img_pointer = Wind.Pointer;
+                        pointerOptions = IMG_POINTER_Options(img_pointer, "WIND", show_level);
+                    }
+
+                    if (Wind.Icon != null && Wind.Icon.visible)
+                    {
+                        iconPosition = Wind.Icon.position;
+                        hmUI_widget_IMG img_icon = Wind.Icon;
+                        iconOptions = IMG_Options(img_icon, show_level);
+                    }
+
+                    for (int index = 1; index <= 10; index++)
+                    {
+                        // Images
+                        if (index == imagesPosition && imagesOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "wind_image_progress_img_level = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "wind_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
+                                    imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Segments
+                        if (index == segmentsPosition && segmentsOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "wind_image_progress_img_progress = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "wind_image_progress_img_progress = hmUI.createWidget(hmUI.widget.IMG_PROGRESS, {" +
+                                    segmentsOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Number
+                        if (index == numberPosition && numberOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "wind_text_text_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "wind_text_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "wind_text_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "wind_text_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Pointer
+                        if (index == pointerPosition && pointerOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "wind_pointer_progress_img_pointer = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "wind_pointer_progress_img_pointer = hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
+                                    pointerOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Icon
+                        if (index == iconPosition && iconOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "wind_icon_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "wind_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    iconOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+
+                    }
+                    break;
+                #endregion
+
+                #region ElementMoon
+                case "ElementMoon":
+                    ElementMoon Moon = (ElementMoon)element;
+
+                    if (!Moon.visible) return;
+                    if (Moon.Images != null)
+                    {
+                        imagesPosition = Moon.Images.position;
+                        hmUI_widget_IMG_LEVEL img_images = Moon.Images;
+                        imagesOptions = IMG_IMAGES_Options(img_images, "MOON", show_level);
+                    }
+
+                    // Images
+                    if (imagesOptions.Length > 5)
+                    {
+                        variables += TabInString(4) + "let " + optionNameStart +
+                            "moon_image_progress_img_level = ''" + Environment.NewLine;
+                        items += Environment.NewLine + TabInString(6) +
+                            optionNameStart + "moon_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
+                                imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+                    }
+                    break;
+                #endregion
+
+                #region ElementAnimation
+                case "ElementAnimation":
+                    ElementAnimation Anim = (ElementAnimation)element;
+
+                    if (!Anim.visible) return;
+                    for (int index = 1; index <= 3; index++)
+                    {
+                        // покадровая анимация
+                        if (Anim.Frame_Animation_List != null && Anim.Frame_Animation_List.position == index &&
+                            Anim.Frame_Animation_List.visible)
+                        {
+                            int fps_index = 1;
+                            foreach (hmUI_widget_IMG_ANIM anim_fps in Anim.Frame_Animation_List.Frame_Animation)
+                            {
+                                if (anim_fps.anim_prefix != null && anim_fps.anim_prefix != "-")
+                                {
+                                    string animFpsOptions = IMG_ANIM_Options(anim_fps, show_level);
+
+                                    if (animFpsOptions.Length > 5)
+                                    {
+                                        variables += TabInString(4) + "let " + optionNameStart +
+                                            "frame_animation_" + fps_index.ToString() + " = ''" + Environment.NewLine;
+                                        items += Environment.NewLine + TabInString(6) +
+                                            optionNameStart + "frame_animation_" + fps_index.ToString() + " = hmUI.createWidget(hmUI.widget.IMG_ANIM, {" +
+                                                animFpsOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                                        resume_call += TabInString(8) + optionNameStart + "frame_animation_" + fps_index.ToString() +
+                                            ".setProperty(hmUI.prop.ANIM_STATUS,hmUI.anim_status.START);" + Environment.NewLine;
+                                        pause_call += TabInString(8) + optionNameStart + "frame_animation_" + fps_index.ToString() +
+                                            ".setProperty(hmUI.prop.ANIM_STATUS,hmUI.anim_status.STOP);" + Environment.NewLine;
+                                    }
+                                    fps_index++;
+                                }
+                            }
+                        }
+
+                        // анимация движения
+                        if (Anim.Motion_Animation_List != null && Anim.Motion_Animation_List.position == index &&
+                            Anim.Motion_Animation_List.visible)
+                        {
+                            int anim_motion_index = 1;
+                            foreach (Motion_Animation anim_motion in Anim.Motion_Animation_List.Motion_Animation)
+                            {
+                                string animMotionOptions = Motion_Animation_Img(anim_motion, show_level, 0);
+
+                                if (animMotionOptions.Length > 5)
+                                {
+                                    string indexStr = anim_motion_index.ToString();
+                                    // объявлаем переменные и изображение для перемещения
+                                    variables += TabInString(4) + "let " + optionNameStart +
+                                        "motion_animation_img_" + indexStr + " = '';" + Environment.NewLine;
+                                    items += Environment.NewLine + TabInString(6) +
+                                        optionNameStart + "motion_animation_img_" + indexStr + " = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                            animMotionOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                                    // создаем свойства для анимации
+                                    string anim_x = Motion_Animation_Options(anim_motion, true, false);
+                                    variables += TabInString(4) + "let " + optionNameStart +
+                                        "motion_animation_paramX_" + indexStr + " = null;" + Environment.NewLine;
+                                    items += Environment.NewLine + TabInString(6) +
+                                        optionNameStart + "motion_animation_paramX_" + indexStr + " = {" +
+                                            anim_x + TabInString(6) + "};" + Environment.NewLine;
+
+                                    string anim_y = Motion_Animation_Options(anim_motion, false, false);
+
+                                    variables += TabInString(4) + "let " + optionNameStart +
+                                        "motion_animation_paramY_" + indexStr + " = null;" + Environment.NewLine;
+                                    items += Environment.NewLine + TabInString(6) +
+                                        optionNameStart + "motion_animation_paramY_" + indexStr + " = {" +
+                                            anim_y + TabInString(6) + "};" + Environment.NewLine;
+
+                                    // переменные для отслеживания времени анимации
+                                    variables += TabInString(4) + "let " + optionNameStart +
+                                        "motion_animation_lastTime_" + indexStr + " = 0;" + Environment.NewLine;
+                                    variables += TabInString(4) + "let " + "timer_anim_motion_" + indexStr + ";" + Environment.NewLine;
+                                    if (anim_motion.anim_two_sides)
+                                    {
+                                        variables += TabInString(4) + "let " + "timer_anim_motion_" + indexStr +
+                                                                        "_mirror = false;" + Environment.NewLine;
+                                    }
+                                    if (items.IndexOf("let now = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
+                                        items += Environment.NewLine + TabInString(6) + "let now = hmSensor.createSensor(hmSensor.id.TIME);" + Environment.NewLine;
+
+                                    // создаем свойства для зеркальной анимации
+                                    if (anim_motion.anim_two_sides)
+                                    {
+                                        anim_x = Motion_Animation_Options(anim_motion, true, true);
+                                        variables += TabInString(4) + "let " + optionNameStart +
+                                            "motion_animation_paramX_" + indexStr + "_mirror = null;" + Environment.NewLine;
+                                        items += Environment.NewLine + TabInString(6) +
+                                            optionNameStart + "motion_animation_paramX_" + indexStr + "_mirror = {" +
+                                                anim_x + TabInString(6) + "};" + Environment.NewLine;
+
+                                        anim_y = Motion_Animation_Options(anim_motion, false, true);
+                                        /*if (anim_rotate.repeat_count > 0) anim_y += TabInString(7) +
+                                                "anim_complete_call: anim_motion_" + indexStr + "_complete_call," +
+                                                Environment.NewLine;*/
+
+                                        variables += TabInString(4) + "let " + optionNameStart +
+                                            "motion_animation_paramY_" + indexStr + "_mirror = null;" + Environment.NewLine;
+                                        items += Environment.NewLine + TabInString(6) +
+                                            optionNameStart + "motion_animation_paramY_" + indexStr + "_mirror = {" +
+                                                anim_y + TabInString(6) + "};" + Environment.NewLine;
+                                    }
+
+                                    // функция вызова зеркального движения
+                                    if (anim_motion.anim_two_sides)
+                                    {
+                                        items += Environment.NewLine + TabInString(6) +
+                                            "function anim_motion_" + indexStr + "_mirror" + "() {";
+                                        items += Environment.NewLine + TabInString(7) + optionNameStart + "motion_animation_img_" +
+                                            indexStr + ".setProperty(hmUI.prop.ANIM, " + optionNameStart +
+                                            "motion_animation_paramX_" + indexStr + "_mirror);";
+                                        items += Environment.NewLine + TabInString(7) + optionNameStart + "motion_animation_img_" +
+                                            indexStr + ".setProperty(hmUI.prop.ANIM, " + optionNameStart +
+                                            "motion_animation_paramY_" + indexStr + "_mirror);" + Environment.NewLine;
+                                        items += TabInString(7) + optionNameStart + "motion_animation_lastTime_" +
+                                            indexStr + " = now.utc;" + Environment.NewLine;
+                                        items += TabInString(6) + "};" + Environment.NewLine;
+                                    }
+
+                                    // функция вызова повтора анимации
+                                    items += Environment.NewLine + TabInString(6) +
+                                        "function anim_motion_" + indexStr + "_complete_call" + "() {" + Environment.NewLine;
+
+                                    items += TabInString(7) + optionNameStart +
+                                    "motion_animation_count_" + indexStr + " = " + optionNameStart +
+                                    "motion_animation_count_" + indexStr + " - 1;" + Environment.NewLine;
+                                    items += TabInString(7) + "if(normal_motion_animation_count_" + indexStr +
+                                        " < -1) normal_motion_animation_count_" + indexStr + " = - 1;" + Environment.NewLine;
+
+                                    items += TabInString(8) + optionNameStart + "motion_animation_img_" +
+                                        indexStr + ".setProperty(hmUI.prop.ANIM, " + optionNameStart +
+                                        "motion_animation_paramX_" + indexStr + ");" + Environment.NewLine;
+                                    items += TabInString(8) + optionNameStart + "motion_animation_img_" +
+                                        indexStr + ".setProperty(hmUI.prop.ANIM, " + optionNameStart +
+                                        "motion_animation_paramY_" + indexStr + ");" + Environment.NewLine;
+
+                                    items += TabInString(8) + optionNameStart + "motion_animation_lastTime_" +
+                                        indexStr + " = now.utc;" + Environment.NewLine;
+
+                                    items += TabInString(7) + "if(" + optionNameStart + "motion_animation_count_" +
+                                        indexStr + " == 0) stop_anim_motion_" +
+                                        indexStr + "();" + Environment.NewLine;
+
+                                    items += TabInString(6) + "}; // end animation callback function" + Environment.NewLine;
+                                    items += TabInString(6) + Environment.NewLine;
+
+                                    // функция остановки таймера
+                                    items += TabInString(6) + "function stop_anim_motion_" +
+                                        indexStr + "() {" + Environment.NewLine;
+                                    items += TabInString(7) + "if (timer_anim_motion_" +
+                                        indexStr + ") {" + Environment.NewLine;
+                                    items += TabInString(8) + "timer.stopTimer(timer_anim_motion_" +
+                                        indexStr + ");" + Environment.NewLine;
+                                    items += TabInString(8) + "timer_anim_motion_" +
+                                        indexStr + " = undefined;" + Environment.NewLine;
+                                    items += TabInString(7) + "};" + Environment.NewLine;
+                                    items += TabInString(6) + "}; // end stop_anim_motion function" + Environment.NewLine;
+
+                                    variables += TabInString(4) + "let " + optionNameStart +
+                                        "motion_animation_count_" + indexStr + " = " +
+                                        anim_motion.repeat_count.ToString() + ";" + Environment.NewLine;
+
+                                    //resume_call += TabInString(8) + "let nawAnimationTime = now.utc;" + Environment.NewLine;
+                                    if (resume_call.IndexOf("let nawAnimationTime = now.utc;") < 0)
+                                        resume_call += Environment.NewLine + TabInString(8) + "let nawAnimationTime = now.utc;;" + Environment.NewLine;
+                                    resume_call += TabInString(8) + Environment.NewLine;
+
+                                    resume_call += TabInString(8) + "let delay_anim_motion_" + indexStr + " = 0;" + Environment.NewLine;
+                                    resume_call += TabInString(8) + "let repeat_anim_motion_" +
+                                            indexStr + " = " + anim_motion.anim_duration.ToString() + ";" + Environment.NewLine;
+                                    resume_call += TabInString(8) + "delay_anim_motion_" + indexStr + " = repeat_anim_motion_" +
+                                        indexStr + " - (nawAnimationTime - normal_motion_animation_lastTime_" + indexStr + ");" + Environment.NewLine;
+                                    resume_call += TabInString(8) + "if(delay_anim_motion_" + indexStr + " < 0) delay_anim_motion_" + indexStr + " = 0; " + Environment.NewLine;
+                                    if (anim_motion.anim_two_sides)
+                                    {
+                                        resume_call += TabInString(8) + "if((nawAnimationTime - normal_motion_animation_lastTime_" +
+                                                                        indexStr + ") > repeat_anim_motion_" + indexStr + "*2) {" + Environment.NewLine;
+                                    }
+                                    else
+                                    {
+                                        resume_call += TabInString(8) + "if((nawAnimationTime - normal_motion_animation_lastTime_" +
+                                                                        indexStr + ") > repeat_anim_motion_" + indexStr + ") {" + Environment.NewLine;
+                                    }
+                                    resume_call += TabInString(9) + "normal_motion_animation_count_" + indexStr + " = " +
+                                        anim_motion.repeat_count.ToString() + ";" + Environment.NewLine;
+                                    resume_call += TabInString(9) + "timer_anim_motion_" + indexStr + "_mirror = false;" + Environment.NewLine;
+                                    resume_call += TabInString(8) + "};" + Environment.NewLine + Environment.NewLine;
+
+                                    resume_call += TabInString(8) + "if (!timer_anim_motion_" + indexStr + ") {" + Environment.NewLine;
+                                    resume_call += TabInString(9) + "timer_anim_motion_" + indexStr + " = timer.createTimer(delay_anim_motion_" +
+                                        indexStr + ", repeat_anim_motion_" + indexStr + ", (function (option) {" + Environment.NewLine;
+
+                                    if (anim_motion.anim_two_sides)
+                                    {
+                                        resume_call += TabInString(10) + "if(timer_anim_motion_" + indexStr + "_mirror) {" + Environment.NewLine;
+                                        resume_call += TabInString(11) + "anim_motion_" + indexStr + "_mirror()" + Environment.NewLine;
+                                        resume_call += TabInString(10) + "} else {" + Environment.NewLine;
+                                        resume_call += TabInString(11) + "anim_motion_" + indexStr + "_complete_call()" + Environment.NewLine;
+                                        resume_call += TabInString(10) + "};" + Environment.NewLine;
+                                        resume_call += TabInString(10) + "timer_anim_motion_" + indexStr + "_mirror = !timer_anim_motion_" +
+                                            indexStr + "_mirror;" + Environment.NewLine;
+                                    }
+                                    else
+                                    {
+
+                                        resume_call += TabInString(10) + "anim_motion_" + indexStr + "_complete_call()" + Environment.NewLine;
+                                    }
+
+                                    resume_call += TabInString(9) + "})); // end timer create" + Environment.NewLine;
+                                    resume_call += TabInString(8) + "};" + Environment.NewLine;
+
+
+                                    pause_call += TabInString(8) + "stop_anim_motion_" + indexStr + "();" + Environment.NewLine;
+
+                                    animMotionOptions = Motion_Animation_OptionsForRead(anim_motion, optionNameStart,
+                                        show_level, anim_motion_index);
+                                    items += animMotionOptions;
+                                }
+                                anim_motion_index++;
+                            }
+                        }
+
+                        // анимация вращения
+                        if (Anim.Rotate_Animation_List != null && Anim.Rotate_Animation_List.position == index &&
+                            Anim.Rotate_Animation_List.visible)
+                        {
+                            int anim_rotate_index = 1;
+                            foreach (Rotate_Animation anim_rotate in Anim.Rotate_Animation_List.Rotate_Animation)
+                            {
+                                string animRotateOptions = Rotate_Animation_Img(anim_rotate, show_level, 0);
+
+                                if (animRotateOptions.Length > 5)
+                                {
+                                    string indexStr = anim_rotate_index.ToString();
+                                    // объявлаем переменные и изображение для перемещения
+                                    variables += TabInString(4) + "let " + optionNameStart +
+                                        "rotate_animation_img_" + indexStr + " = '';" + Environment.NewLine;
+                                    items += Environment.NewLine + TabInString(6) +
+                                        optionNameStart + "rotate_animation_img_" + indexStr + " = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                            animRotateOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                                    // создаем свойства для анимации
+                                    string anim_angl = Rotate_Animation_Options(anim_rotate, false);
+                                    variables += TabInString(4) + "let " + optionNameStart +
+                                        "rotate_animation_param_" + indexStr + " = null;" + Environment.NewLine;
+                                    items += Environment.NewLine + TabInString(6) +
+                                        optionNameStart + "rotate_animation_param_" + indexStr + " = {" +
+                                            anim_angl + TabInString(6) + "};" + Environment.NewLine;
+
+                                    // переменные для отслеживания времени анимации
+                                    variables += TabInString(4) + "let " + optionNameStart +
+                                        "rotate_animation_lastTime_" + indexStr + " = 0;" + Environment.NewLine;
+                                    variables += TabInString(4) + "let " + "timer_anim_rotate_" + indexStr + ";" + Environment.NewLine;
+                                    if (anim_rotate.anim_two_sides)
+                                    {
+                                        variables += TabInString(4) + "let " + "timer_anim_rotate_" + indexStr +
+                                            "_mirror = false;" + Environment.NewLine;
+                                    }
+                                    if (items.IndexOf("let now = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
+                                        items += Environment.NewLine + TabInString(6) + "let now = hmSensor.createSensor(hmSensor.id.TIME);" + Environment.NewLine;
+
+
+                                    // создаем свойства для зеркальной анимации
+                                    if (anim_rotate.anim_two_sides)
+                                    {
+                                        anim_angl = Rotate_Animation_Options(anim_rotate, true);
+                                        variables += TabInString(4) + "let " + optionNameStart +
+                                            "rotate_animation_param_" + indexStr + "_mirror = null;" + Environment.NewLine;
+                                        items += Environment.NewLine + TabInString(6) +
+                                            optionNameStart + "rotate_animation_param_" + indexStr + "_mirror = {" +
+                                                anim_angl + TabInString(6) + "};" + Environment.NewLine;
+                                    }
+
+                                    // функция вызова зеркального движения
+                                    if (anim_rotate.anim_two_sides)
+                                    {
+                                        items += Environment.NewLine + TabInString(6) +
+                                            "function anim_rotate_" + indexStr + "_mirror" + "() {";
+                                        items += Environment.NewLine + TabInString(7) + optionNameStart + "rotate_animation_img_" +
+                                            indexStr + ".setProperty(hmUI.prop.ANIM, " + optionNameStart +
+                                            "rotate_animation_param_" + indexStr + "_mirror);";
+                                        items += TabInString(7) + optionNameStart + "rotate_animation_lastTime_" +
+                                            indexStr + " = now.utc;" + Environment.NewLine;
+                                        items += TabInString(6) + "};" + Environment.NewLine;
+                                    }
+
+                                    // функция вызова повтора анимации
+                                    //if (anim_rotate.repeat_count > 0) // если ограничено число повторений
+                                    //{
+                                    items += Environment.NewLine + TabInString(6) +
+                                        "function anim_rotate_" + indexStr + "_complete_call" + "() {" + Environment.NewLine;
+
+                                    items += TabInString(7) + optionNameStart +
+                                    "rotate_animation_count_" + indexStr + " = " + optionNameStart +
+                                    "rotate_animation_count_" + indexStr + " - 1;" + Environment.NewLine;
+                                    items += TabInString(7) + "if(normal_rotate_animation_count_" + indexStr +
+                                        " < -1) normal_rotate_animation_count_" + indexStr + " = - 1;" + Environment.NewLine;
+
+                                    items += TabInString(8) + optionNameStart + "rotate_animation_img_" +
+                                        indexStr + ".setProperty(hmUI.prop.ANIM, " + optionNameStart +
+                                        "rotate_animation_param_" + indexStr + ");" + Environment.NewLine;
+
+                                    items += TabInString(8) + optionNameStart + "rotate_animation_lastTime_" +
+                                        indexStr + " = now.utc;" + Environment.NewLine;
+                                    items += TabInString(7) + "if(" + optionNameStart + "rotate_animation_count_" +
+                                        indexStr + " == 0) stop_anim_rotate_" +
+                                        indexStr + "();" + Environment.NewLine;
+
+                                    items += TabInString(6) + "}; // end animation callback function" + Environment.NewLine;
+                                    items += TabInString(6) + Environment.NewLine;
+
+                                    // функция остановки таймера
+                                    items += TabInString(6) + "function stop_anim_rotate_" +
+                                        indexStr + "() {" + Environment.NewLine;
+                                    items += TabInString(7) + "if (timer_anim_rotate_" +
+                                        indexStr + ") {" + Environment.NewLine;
+                                    items += TabInString(8) + "timer.stopTimer(timer_anim_rotate_" +
+                                        indexStr + ");" + Environment.NewLine;
+                                    items += TabInString(8) + "timer_anim_rotate_" +
+                                        indexStr + " = undefined;" + Environment.NewLine;
+                                    items += TabInString(7) + "};" + Environment.NewLine;
+                                    items += TabInString(6) + "}; // end stop_anim_rotate function" + Environment.NewLine;
+
+                                    variables += TabInString(4) + "let " + optionNameStart +
+                                        "rotate_animation_count_" + indexStr + " = " +
+                                        anim_rotate.repeat_count.ToString() + ";" + Environment.NewLine;
+
+                                    if (resume_call.IndexOf("let nawAnimationTime = now.utc;") < 0)
+                                        resume_call += Environment.NewLine + TabInString(8) + "let nawAnimationTime = now.utc;;" + Environment.NewLine;
+                                    resume_call += TabInString(8) + Environment.NewLine;
+
+                                    resume_call += TabInString(8) + "let delay_anim_rotate_" + indexStr + " = 0;" + Environment.NewLine;
+                                    resume_call += TabInString(8) + "let repeat_anim_rotate_" +
+                                            indexStr + " = " + anim_rotate.anim_duration.ToString() + ";" + Environment.NewLine;
+                                    resume_call += TabInString(8) + "delay_anim_rotate_" + indexStr + " = repeat_anim_rotate_" +
+                                        indexStr + " - (nawAnimationTime - normal_rotate_animation_lastTime_" + indexStr + ");" + Environment.NewLine;
+                                    resume_call += TabInString(8) + "if(delay_anim_rotate_" + indexStr + " < 0) delay_anim_rotate_" + indexStr + " = 0; " + Environment.NewLine;
+                                    if (anim_rotate.anim_two_sides)
+                                    {
+                                        resume_call += TabInString(8) + "if((nawAnimationTime - normal_rotate_animation_lastTime_" +
+                                            indexStr + ") > repeat_anim_rotate_" + indexStr + "*2) {" + Environment.NewLine;
+                                    }
+                                    else
+                                    {
+                                        resume_call += TabInString(8) + "if((nawAnimationTime - normal_rotate_animation_lastTime_" +
+                                            indexStr + ") > repeat_anim_rotate_" + indexStr + ") {" + Environment.NewLine;
+                                    }
+                                    resume_call += TabInString(9) + "normal_rotate_animation_count_" + indexStr + " = " +
+                                        anim_rotate.repeat_count.ToString() + ";" + Environment.NewLine;
+                                    resume_call += TabInString(9) + "timer_anim_rotate_" + indexStr + "_mirror = false;" + Environment.NewLine;
+                                    resume_call += TabInString(8) + "};" + Environment.NewLine + Environment.NewLine;
+
+                                    resume_call += TabInString(8) + "if (!timer_anim_rotate_" + indexStr + ") {" + Environment.NewLine;
+                                    resume_call += TabInString(9) + "timer_anim_rotate_" + indexStr + " = timer.createTimer(delay_anim_rotate_" +
+                                        indexStr + ", repeat_anim_rotate_" + indexStr + ", (function (option) {" + Environment.NewLine;
+
+                                    if (anim_rotate.anim_two_sides)
+                                    {
+                                        resume_call += TabInString(10) + "if(timer_anim_rotate_" + indexStr + "_mirror) {" + Environment.NewLine;
+                                        resume_call += TabInString(11) + "anim_rotate_" + indexStr + "_mirror()" + Environment.NewLine;
+                                        resume_call += TabInString(10) + "} else {" + Environment.NewLine;
+                                        resume_call += TabInString(11) + "anim_rotate_" + indexStr + "_complete_call()" + Environment.NewLine;
+                                        resume_call += TabInString(10) + "};" + Environment.NewLine;
+                                        resume_call += TabInString(10) + "timer_anim_rotate_" + indexStr + "_mirror = !timer_anim_rotate_" +
+                                            indexStr + "_mirror;" + Environment.NewLine;
+                                    }
+                                    else
+                                    {
+
+                                        resume_call += TabInString(10) + "anim_rotate_" + indexStr + "_complete_call()" + Environment.NewLine;
+                                    }
+
+                                    resume_call += TabInString(9) + "})); // end timer create" + Environment.NewLine;
+                                    resume_call += TabInString(8) + "};" + Environment.NewLine;
+
+
+                                    pause_call += TabInString(8) + "stop_anim_rotate_" + indexStr + "();" + Environment.NewLine;
+
+
+                                    animRotateOptions = Rotate_Animation_OptionsForRead(anim_rotate, optionNameStart,
+                                        show_level, anim_rotate_index);
+                                    items += animRotateOptions;
+                                }
+                                anim_rotate_index++;
+                            }
+                        }
+                    }
+                    break;
+                    #endregion
+            }
+        }
+
         private string FILL_RECT_Options(hmUI_widget_FILL_RECT fill_rect, string show_level)
         {
             string options = Environment.NewLine;
@@ -4860,41 +8916,57 @@ namespace Watch_Face_Editor
             return options;
         }
 
-        private string IMG_Options(hmUI_widget_IMG img, string show_level)
+        private string IMG_Options(hmUI_widget_IMG img, string show_level, int tabOffset = 0)
         {
             string options = Environment.NewLine;
             if (img == null) return options;
             if (img.src == null) return options;
             if (img.src.Length > 0)
             {
-                options += TabInString(7) + "x: " + img.x.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "y: " + img.y.ToString() + "," + Environment.NewLine;
-                if (img.w != null) options += TabInString(7) + "w: " + img.w.ToString() + "," + Environment.NewLine;
-                if (img.h != null) options += TabInString(7) + "h: " + img.h.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "src: '" + img.src + ".png'," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "x: " + img.x.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "y: " + img.y.ToString() + "," + Environment.NewLine;
+                if (img.w != null) options += TabInString(7 + tabOffset) + "w: " + img.w.ToString() + "," + Environment.NewLine;
+                if (img.h != null) options += TabInString(7 + tabOffset) + "h: " + img.h.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "src: '" + img.src + ".png'," + Environment.NewLine;
                 if (show_level != null && show_level.Length > 0)
                 {
-                    options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine; 
+                    options += TabInString(7 + tabOffset) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine; 
                 } 
             }
             return options;
         }
 
-        private string IMG_Separator_Options(hmUI_widget_IMG_NUMBER img_number, string show_level)
+        private string MASK_Options(string src)
+        {
+            string options = Environment.NewLine;
+            if (src == null) return options;
+            if (src.Length > 0)
+            {
+                options += TabInString(7) + "x: 0," + Environment.NewLine;
+                options += TabInString(7) + "y: 0," + Environment.NewLine;
+                options += TabInString(7) + "w: 480," + Environment.NewLine;
+                options += TabInString(7) + "h: 480," + Environment.NewLine;
+                options += TabInString(7) + "src: '" + src + ".png'," + Environment.NewLine;
+                options += TabInString(7) + "show_level: hmUI.show_level.ONLY_EDIT," + Environment.NewLine;
+            }
+            return options;
+        }
+
+        private string IMG_Separator_Options(hmUI_widget_IMG_NUMBER img_number, string show_level, int tabOffset = 0)
         {
             string options = Environment.NewLine;
             if (img_number == null) return options;
             if (img_number.icon != null && img_number.icon.Length > 0)
             {
-                options += TabInString(7) + "x: " + img_number.iconPosX.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "y: " + img_number.iconPosY.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "src: '" + img_number.icon + ".png'," + Environment.NewLine;
-                options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "x: " + img_number.iconPosX.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "y: " + img_number.iconPosY.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "src: '" + img_number.icon + ".png'," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
             }
             return options;
         }
 
-        private string IMG_NUMBER_Options(hmUI_widget_IMG_NUMBER img_number, string type, string show_level)
+        private string IMG_NUMBER_Options(hmUI_widget_IMG_NUMBER img_number, string type, string show_level, int tabOffset = 0)
         {
             string options = Environment.NewLine;
             if (img_number == null) return options;
@@ -4918,59 +8990,58 @@ namespace Watch_Face_Editor
                     if (i < imgPosition + 9) img_array += ",";
                 }
                 img_array += "]";
-                options += TabInString(7) + "x: " + img_number.imageX.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "y: " + img_number.imageY.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "font_array: " + img_array + "," + Environment.NewLine;
-                if (img_number.zero) options += TabInString(7) + "padding: true," + Environment.NewLine;
-                else options += TabInString(7) + "padding: false," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "x: " + img_number.imageX.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "y: " + img_number.imageY.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "font_array: " + img_array + "," + Environment.NewLine;
+                if (img_number.zero) options += TabInString(7 + tabOffset) + "padding: true," + Environment.NewLine;
+                else options += TabInString(7 + tabOffset) + "padding: false," + Environment.NewLine;
 
-                //options += TabInString(7) + "padding: " + img_number.zero.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "h_space: " + img_number.space.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "h_space: " + img_number.space.ToString() + "," + Environment.NewLine;
                 if (img_number.unit != null && img_number.unit.Length > 0)
                 {
                     string unit = "'" + img_number.unit + ".png'";
-                    options += TabInString(7) + "unit_sc: " + unit + "," + Environment.NewLine;
-                    options += TabInString(7) + "unit_tc: " + unit + "," + Environment.NewLine;
-                    options += TabInString(7) + "unit_en: " + unit + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "unit_sc: " + unit + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "unit_tc: " + unit + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "unit_en: " + unit + "," + Environment.NewLine;
                 }
 
                 if (img_number.imperial_unit != null && img_number.imperial_unit.Length > 0)
                 {
                     string unit = "'" + img_number.imperial_unit + ".png'";
-                    options += TabInString(7) + "imperial_unit_sc: " + unit + "," + Environment.NewLine;
-                    options += TabInString(7) + "imperial_unit_tc: " + unit + "," + Environment.NewLine;
-                    options += TabInString(7) + "imperial_unit_en: " + unit + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "imperial_unit_sc: " + unit + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "imperial_unit_tc: " + unit + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "imperial_unit_en: " + unit + "," + Environment.NewLine;
                 }
 
                 if (img_number.negative_image != null && img_number.negative_image.Length > 0)
                 {
                     string negative_image = "'" + img_number.negative_image + ".png'";
-                    options += TabInString(7) + "negative_image: " + negative_image + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "negative_image: " + negative_image + "," + Environment.NewLine;
                 }
 
                 if (img_number.invalid_image != null && img_number.invalid_image.Length > 0)
                 {
                     string invalid_image = "'" + img_number.invalid_image + ".png'";
-                    options += TabInString(7) + "invalid_image: " + invalid_image + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "invalid_image: " + invalid_image + "," + Environment.NewLine;
                 }
 
                 if (img_number.dot_image != null && img_number.dot_image.Length > 0)
                 {
                     string dot_path = "'" + img_number.dot_image + ".png'";
-                    options += TabInString(7) + "dot_image: " + dot_path + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "dot_image: " + dot_path + "," + Environment.NewLine;
                 }
 
-                options += TabInString(7) + "align_h: hmUI.align." + img_number.align.ToUpper() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "align_h: hmUI.align." + img_number.align.ToUpper() + "," + Environment.NewLine;
 
 
                 if (type.Length > 0)
                 {
-                    options += TabInString(7) + "type: hmUI.data_type." + type + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "type: hmUI.data_type." + type + "," + Environment.NewLine;
                 }
 
                 if (show_level.Length > 0)
                 {
-                    options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
                 }
             }
             return options;
@@ -5059,6 +9130,8 @@ namespace Watch_Face_Editor
                 if (img_number_minute.unit != null && img_number_minute.unit.Length > 0)
                 {
                     string minute_unit = "'" + img_number_minute.unit + ".png'";
+                    options += TabInString(7) + "minute_unit_sc: " + minute_unit + "," + Environment.NewLine;
+                    options += TabInString(7) + "minute_unit_tc: " + minute_unit + "," + Environment.NewLine;
                     options += TabInString(7) + "minute_unit_en: " + minute_unit + "," + Environment.NewLine;
                 }
                 options += TabInString(7) + "minute_align: hmUI.align." + img_number_minute.align.ToUpper() + "," + Environment.NewLine;
@@ -5107,6 +9180,8 @@ namespace Watch_Face_Editor
                 if (img_number_second.unit != null && img_number_second.unit.Length > 0)
                 {
                     string second_unit = "'" + img_number_second.unit + ".png'";
+                    options += TabInString(7) + "second_unit_sc: " + second_unit + "," + Environment.NewLine;
+                    options += TabInString(7) + "second_unit_tc: " + second_unit + "," + Environment.NewLine;
                     options += TabInString(7) + "second_unit_en: " + second_unit + "," + Environment.NewLine;
                 }
                 options += TabInString(7) + "second_align: hmUI.align." + img_number_second.align.ToUpper() + "," + Environment.NewLine;
@@ -5226,34 +9301,34 @@ namespace Watch_Face_Editor
             return options;
         }
 
-        private string DATE_POINTER_Options(hmUI_widget_IMG_POINTER img_pointer, string type, string show_level)
+        private string DATE_POINTER_Options(hmUI_widget_IMG_POINTER img_pointer, string type, string show_level, int tabOffset = 0)
         {
             string options = Environment.NewLine;
             if (img_pointer == null) return options;
             if (img_pointer.src != null && img_pointer.src.Length > 0)
             {
-                options += TabInString(7) + "src: '" + img_pointer.src + ".png'," + Environment.NewLine;
-                options += TabInString(7) + "center_x: " + img_pointer.center_x.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "center_y: " + img_pointer.center_y.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "posX: " + img_pointer.pos_x.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "posY: " + img_pointer.pos_y.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "start_angle: " + img_pointer.start_angle.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "end_angle: " + img_pointer.end_angle.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "src: '" + img_pointer.src + ".png'," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "center_x: " + img_pointer.center_x.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "center_y: " + img_pointer.center_y.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "posX: " + img_pointer.pos_x.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "posY: " + img_pointer.pos_y.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "start_angle: " + img_pointer.start_angle.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "end_angle: " + img_pointer.end_angle.ToString() + "," + Environment.NewLine;
 
                 if (img_pointer.scale != null && img_pointer.scale.Length > 0)
                 {
-                    options += TabInString(7) + "scale_sc: '" + img_pointer.scale + ".png'," + Environment.NewLine;
-                    options += TabInString(7) + "scale_tc: '" + img_pointer.scale + ".png'," + Environment.NewLine;
-                    options += TabInString(7) + "scale_en: '" + img_pointer.scale + ".png'," + Environment.NewLine;
-                    options += TabInString(7) + "scale_x: " + img_pointer.scale_x.ToString() + "," + Environment.NewLine;
-                    options += TabInString(7) + "scale_y: " + img_pointer.scale_y.ToString() + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "scale_sc: '" + img_pointer.scale + ".png'," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "scale_tc: '" + img_pointer.scale + ".png'," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "scale_en: '" + img_pointer.scale + ".png'," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "scale_x: " + img_pointer.scale_x.ToString() + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "scale_y: " + img_pointer.scale_y.ToString() + "," + Environment.NewLine;
                 }
 
                 if (img_pointer.cover_path != null && img_pointer.cover_path.Length > 0)
                 {
-                    options += TabInString(7) + "cover_path: '" + img_pointer.cover_path + ".png'," + Environment.NewLine;
-                    options += TabInString(7) + "cover_x: " + img_pointer.cover_x.ToString() + "," + Environment.NewLine;
-                    options += TabInString(7) + "cover_y: " + img_pointer.cover_y.ToString() + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "cover_path: '" + img_pointer.cover_path + ".png'," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "cover_x: " + img_pointer.cover_x.ToString() + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "cover_y: " + img_pointer.cover_y.ToString() + "," + Environment.NewLine;
                 }
                 //else
                 //{
@@ -5264,69 +9339,62 @@ namespace Watch_Face_Editor
 
                 if (type.Length > 0)
                 {
-                    options += TabInString(7) + "type: hmUI.date." + type + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "type: hmUI.date." + type + "," + Environment.NewLine;
                 }
 
                 //options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
                 if (show_level.Length > 0)
                 {
-                    options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
                 }
             }
             return options;
         }
 
-        private string IMG_POINTER_Options(hmUI_widget_IMG_POINTER img_pointer, string type, string show_level)
+        private string IMG_POINTER_Options(hmUI_widget_IMG_POINTER img_pointer, string type, string show_level, int tabOffset = 0)
         {
             string options = Environment.NewLine;
             if(img_pointer == null) return options;
             if (img_pointer.src != null && img_pointer.src.Length > 0)
             {
-                options += TabInString(7) + "src: '" + img_pointer.src + ".png'," + Environment.NewLine;
-                options += TabInString(7) + "center_x: " + img_pointer.center_x.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "center_y: " + img_pointer.center_y.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "x: " + img_pointer.pos_x.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "y: " + img_pointer.pos_y.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "start_angle: " + img_pointer.start_angle.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "end_angle: " + img_pointer.end_angle.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "src: '" + img_pointer.src + ".png'," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "center_x: " + img_pointer.center_x.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "center_y: " + img_pointer.center_y.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "x: " + img_pointer.pos_x.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "y: " + img_pointer.pos_y.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "start_angle: " + img_pointer.start_angle.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "end_angle: " + img_pointer.end_angle.ToString() + "," + Environment.NewLine;
 
                 if (img_pointer.scale != null && img_pointer.scale.Length > 0)
                 {
-                    options += TabInString(7) + "scale_sc: '" + img_pointer.scale + ".png'," + Environment.NewLine;
-                    options += TabInString(7) + "scale_tc: '" + img_pointer.scale + ".png'," + Environment.NewLine;
-                    options += TabInString(7) + "scale_en: '" + img_pointer.scale + ".png'," + Environment.NewLine;
-                    options += TabInString(7) + "scale_x: " + img_pointer.scale_x.ToString() + "," + Environment.NewLine;
-                    options += TabInString(7) + "scale_y: " + img_pointer.scale_y.ToString() + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "scale_sc: '" + img_pointer.scale + ".png'," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "scale_tc: '" + img_pointer.scale + ".png'," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "scale_en: '" + img_pointer.scale + ".png'," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "scale_x: " + img_pointer.scale_x.ToString() + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "scale_y: " + img_pointer.scale_y.ToString() + "," + Environment.NewLine;
                 }
 
                 if (img_pointer.cover_path != null && img_pointer.cover_path.Length > 0)
                 {
-                    options += TabInString(7) + "cover_path: '" + img_pointer.cover_path + ".png'," + Environment.NewLine;
-                    options += TabInString(7) + "cover_x: " + img_pointer.cover_x.ToString() + "," + Environment.NewLine;
-                    options += TabInString(7) + "cover_y: " + img_pointer.cover_y.ToString() + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "cover_path: '" + img_pointer.cover_path + ".png'," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "cover_x: " + img_pointer.cover_x.ToString() + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "cover_y: " + img_pointer.cover_y.ToString() + "," + Environment.NewLine;
                 }
-                //else
-                //{
-                //    options += TabInString(7) + "cover_path: ''," + Environment.NewLine;
-                //    options += TabInString(7) + "cover_x: 0," + Environment.NewLine;
-                //    options += TabInString(7) + "cover_y: 0," + Environment.NewLine;
-                //}
 
                 if (type.Length > 0)
                 {
-                    options += TabInString(7) + "type: hmUI.data_type." + type + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "type: hmUI.data_type." + type + "," + Environment.NewLine;
                 }
 
-                //options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
                 if (show_level.Length > 0)
                 {
-                    options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
                 }
             }
             return options;
         }
 
-        private string IMG_NUMBER_Day_Options(hmUI_widget_IMG_NUMBER img_number_day, string show_level)
+        private string IMG_NUMBER_Day_Options(hmUI_widget_IMG_NUMBER img_number_day, string show_level, int tabOffset = 0)
         {
             string options = Environment.NewLine;
             if (img_number_day == null) return options;
@@ -5351,34 +9419,34 @@ namespace Watch_Face_Editor
                     if (i < imgPosition + count - 1) day_array += ",";
                 }
                 day_array += "]";
-                options += TabInString(7) + "day_startX: " + img_number_day.imageX.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "day_startY: " + img_number_day.imageY.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "day_sc_array: " + day_array + "," + Environment.NewLine;
-                options += TabInString(7) + "day_tc_array: " + day_array + "," + Environment.NewLine;
-                options += TabInString(7) + "day_en_array: " + day_array + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "day_startX: " + img_number_day.imageX.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "day_startY: " + img_number_day.imageY.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "day_sc_array: " + day_array + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "day_tc_array: " + day_array + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "day_en_array: " + day_array + "," + Environment.NewLine;
 
-                if (img_number_day.zero) options += TabInString(7) + "day_zero: 1," + Environment.NewLine;
-                else options += TabInString(7) + "day_zero: 0," + Environment.NewLine;
-                options += TabInString(7) + "day_space: " + img_number_day.space.ToString() + "," + Environment.NewLine;
+                if (img_number_day.zero) options += TabInString(7 + tabOffset) + "day_zero: 1," + Environment.NewLine;
+                else options += TabInString(7 + tabOffset) + "day_zero: 0," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "day_space: " + img_number_day.space.ToString() + "," + Environment.NewLine;
                 if (img_number_day.unit != null && img_number_day.unit.Length > 0)
                 {
                     string day_unit = "'" + img_number_day.unit + ".png'";
-                    options += TabInString(7) + "day_unit_sc: " + day_unit + "," + Environment.NewLine;
-                    options += TabInString(7) + "day_unit_tc: " + day_unit + "," + Environment.NewLine;
-                    options += TabInString(7) + "day_unit_en: " + day_unit + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "day_unit_sc: " + day_unit + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "day_unit_tc: " + day_unit + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "day_unit_en: " + day_unit + "," + Environment.NewLine;
                 }
-                options += TabInString(7) + "day_align: hmUI.align." + img_number_day.align.ToUpper() + "," + Environment.NewLine;
-                options += TabInString(7) + "day_is_character: false," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "day_align: hmUI.align." + img_number_day.align.ToUpper() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "day_is_character: false," + Environment.NewLine;
 
                 if (show_level.Length > 0)
                 {
-                    options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
                 }
             }
             return options;
         }
 
-        private string IMG_NUMBER_Month_Options(hmUI_widget_IMG_NUMBER img_number_month, string show_level)
+        private string IMG_NUMBER_Month_Options(hmUI_widget_IMG_NUMBER img_number_month, string show_level, int tabOffset = 0)
         {
             string options = Environment.NewLine;
             if (img_number_month == null) return options;
@@ -5403,34 +9471,34 @@ namespace Watch_Face_Editor
                     if (i < imgPosition + count - 1) month_array += ",";
                 }
                 month_array += "]";
-                options += TabInString(7) + "month_startX: " + img_number_month.imageX.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "month_startY: " + img_number_month.imageY.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "month_sc_array: " + month_array + "," + Environment.NewLine;
-                options += TabInString(7) + "month_tc_array: " + month_array + "," + Environment.NewLine;
-                options += TabInString(7) + "month_en_array: " + month_array + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "month_startX: " + img_number_month.imageX.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "month_startY: " + img_number_month.imageY.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "month_sc_array: " + month_array + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "month_tc_array: " + month_array + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "month_en_array: " + month_array + "," + Environment.NewLine;
 
-                if (img_number_month.zero) options += TabInString(7) + "month_zero: 1," + Environment.NewLine;
-                else options += TabInString(7) + "month_zero: 0," + Environment.NewLine;
-                options += TabInString(7) + "month_space: " + img_number_month.space.ToString() + "," + Environment.NewLine;
+                if (img_number_month.zero) options += TabInString(7 + tabOffset) + "month_zero: 1," + Environment.NewLine;
+                else options += TabInString(7 + tabOffset) + "month_zero: 0," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "month_space: " + img_number_month.space.ToString() + "," + Environment.NewLine;
                 if (img_number_month.unit != null && img_number_month.unit.Length > 0)
                 {
                     string month_unit = "'" + img_number_month.unit + ".png'";
-                    options += TabInString(7) + "month_unit_sc: " + month_unit + "," + Environment.NewLine;
-                    options += TabInString(7) + "month_unit_tc: " + month_unit + "," + Environment.NewLine;
-                    options += TabInString(7) + "month_unit_en: " + month_unit + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "month_unit_sc: " + month_unit + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "month_unit_tc: " + month_unit + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "month_unit_en: " + month_unit + "," + Environment.NewLine;
                 }
-                options += TabInString(7) + "month_align: hmUI.align." + img_number_month.align.ToUpper() + "," + Environment.NewLine;
-                options += TabInString(7) + "month_is_character: false," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "month_align: hmUI.align." + img_number_month.align.ToUpper() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "month_is_character: false," + Environment.NewLine;
 
                 if (show_level.Length > 0)
                 {
-                    options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
                 }
             }
             return options;
         }
 
-        private string IMG_NUMBER_Year_Options(hmUI_widget_IMG_NUMBER img_number_year, string show_level)
+        private string IMG_NUMBER_Year_Options(hmUI_widget_IMG_NUMBER img_number_year, string show_level, int tabOffset = 0)
         {
             string options = Environment.NewLine;
             if (img_number_year == null) return options;
@@ -5455,34 +9523,34 @@ namespace Watch_Face_Editor
                     if (i < imgPosition + count - 1) year_array += ",";
                 }
                 year_array += "]";
-                options += TabInString(7) + "year_startX: " + img_number_year.imageX.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "year_startY: " + img_number_year.imageY.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "year_sc_array: " + year_array + "," + Environment.NewLine;
-                options += TabInString(7) + "year_tc_array: " + year_array + "," + Environment.NewLine;
-                options += TabInString(7) + "year_en_array: " + year_array + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "year_startX: " + img_number_year.imageX.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "year_startY: " + img_number_year.imageY.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "year_sc_array: " + year_array + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "year_tc_array: " + year_array + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "year_en_array: " + year_array + "," + Environment.NewLine;
 
-                if (img_number_year.zero) options += TabInString(7) + "year_zero: 1," + Environment.NewLine;
-                else options += TabInString(7) + "year_zero: 0," + Environment.NewLine;
-                options += TabInString(7) + "year_space: " + img_number_year.space.ToString() + "," + Environment.NewLine;
+                if (img_number_year.zero) options += TabInString(7 + tabOffset) + "year_zero: 1," + Environment.NewLine;
+                else options += TabInString(7 + tabOffset) + "year_zero: 0," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "year_space: " + img_number_year.space.ToString() + "," + Environment.NewLine;
                 if (img_number_year.unit != null && img_number_year.unit.Length > 0)
                 {
                     string year_unit = "'" + img_number_year.unit + ".png'";
-                    options += TabInString(7) + "year_unit_sc: " + year_unit + "," + Environment.NewLine;
-                    options += TabInString(7) + "year_unit_tc: " + year_unit + "," + Environment.NewLine;
-                    options += TabInString(7) + "year_unit_en: " + year_unit + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "year_unit_sc: " + year_unit + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "year_unit_tc: " + year_unit + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "year_unit_en: " + year_unit + "," + Environment.NewLine;
                 }
-                options += TabInString(7) + "year_align: hmUI.align." + img_number_year.align.ToUpper() + "," + Environment.NewLine;
-                options += TabInString(7) + "year_is_character: false," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "year_align: hmUI.align." + img_number_year.align.ToUpper() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "year_is_character: false," + Environment.NewLine;
 
                 if (show_level.Length > 0)
                 {
-                    options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
                 }
             }
             return options;
         }
 
-        private string IMG_IMAGES_Month_Options(hmUI_widget_IMG_LEVEL img_month, string show_level)
+        private string IMG_IMAGES_Month_Options(hmUI_widget_IMG_LEVEL img_month, string show_level, int tabOffset = 0)
         {
             string options = Environment.NewLine;
             if (img_month == null) return options;
@@ -5507,23 +9575,23 @@ namespace Watch_Face_Editor
                     if (i < imgPosition + count - 1) month_array += ",";
                 }
                 month_array += "]";
-                options += TabInString(7) + "month_startX: " + img_month.X.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "month_startY: " + img_month.Y.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "month_sc_array: " + month_array + "," + Environment.NewLine;
-                options += TabInString(7) + "month_tc_array: " + month_array + "," + Environment.NewLine;
-                options += TabInString(7) + "month_en_array: " + month_array + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "month_startX: " + img_month.X.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "month_startY: " + img_month.Y.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "month_sc_array: " + month_array + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "month_tc_array: " + month_array + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "month_en_array: " + month_array + "," + Environment.NewLine;
 
-                options += TabInString(7) + "month_is_character: true ," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "month_is_character: true ," + Environment.NewLine;
 
                 if (show_level.Length > 0)
                 {
-                    options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
                 }
             }
             return options;
         }
 
-        private string IMG_IMAGES_Week_Options(hmUI_widget_IMG_LEVEL img_week, string show_level)
+        private string IMG_IMAGES_Week_Options(hmUI_widget_IMG_LEVEL img_week, string show_level, int tabOffset = 0)
         {
             string options = Environment.NewLine;
             if (img_week == null) return options;
@@ -5548,21 +9616,21 @@ namespace Watch_Face_Editor
                     if (i < imgPosition + count-1) week_array += ",";
                 }
                 week_array += "]";
-                options += TabInString(7) + "x: " + img_week.X.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "y: " + img_week.Y.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "week_en: " + week_array + "," + Environment.NewLine;
-                options += TabInString(7) + "week_tc: " + week_array + "," + Environment.NewLine;
-                options += TabInString(7) + "week_sc: " + week_array + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "x: " + img_week.X.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "y: " + img_week.Y.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "week_en: " + week_array + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "week_tc: " + week_array + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "week_sc: " + week_array + "," + Environment.NewLine;
 
                 if (show_level.Length > 0)
                 {
-                    options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
                 }
             }
             return options;
         }
 
-        private string IMG_IMAGES_Options(hmUI_widget_IMG_LEVEL img_level, string type, string show_level)
+        private string IMG_IMAGES_Options(hmUI_widget_IMG_LEVEL img_level, string type, string show_level, int tabOffset = 0)
         {
             string options = Environment.NewLine;
             if (img_level == null) return options;
@@ -5587,25 +9655,25 @@ namespace Watch_Face_Editor
                     if (i < imgPosition + count - 1) img_array += ",";
                 }
                 img_array += "]";
-                options += TabInString(7) + "x: " + img_level.X.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "y: " + img_level.Y.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "image_array: " + img_array + "," + Environment.NewLine;
-                options += TabInString(7) + "image_length: " + img_level.image_length.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "x: " + img_level.X.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "y: " + img_level.Y.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "image_array: " + img_array + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "image_length: " + img_level.image_length.ToString() + "," + Environment.NewLine;
 
                 if (type.Length > 0)
                 {
-                    options += TabInString(7) + "type: hmUI.data_type." + type + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "type: hmUI.data_type." + type + "," + Environment.NewLine;
                 }
 
                 if (show_level.Length > 0)
                 {
-                    options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
                 }
             }
             return options;
         }
 
-        private string IMG_PROGRESS_Options(hmUI_widget_IMG_PROGRESS img_progress, string type, string show_level)
+        private string IMG_PROGRESS_Options(hmUI_widget_IMG_PROGRESS img_progress, string type, string show_level, int tabOffset = 0)
         {
             string options = Environment.NewLine;
             if (img_progress == null) return options;
@@ -5650,82 +9718,82 @@ namespace Watch_Face_Editor
                 y_array += "]";
 
 
-                options += TabInString(7) + "x: " + x_array + "," + Environment.NewLine;
-                options += TabInString(7) + "y: " + y_array + "," + Environment.NewLine;
-                options += TabInString(7) + "image_array: " + img_array + "," + Environment.NewLine;
-                options += TabInString(7) + "image_length: " + img_progress.image_length.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "x: " + x_array + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "y: " + y_array + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "image_array: " + img_array + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "image_length: " + img_progress.image_length.ToString() + "," + Environment.NewLine;
 
                 if (type.Length > 0)
                 {
-                    options += TabInString(7) + "type: hmUI.data_type." + type + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "type: hmUI.data_type." + type + "," + Environment.NewLine;
                 }
 
                 if (show_level.Length > 0)
                 {
-                    options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
                 }
             }
             return options;
         }
 
-        private string Circle_Scale_Options(Circle_Scale circle_scale, string optionNameStart, string type, string show_level)
+        private string Circle_Scale_Options(Circle_Scale circle_scale, string optionNameStart, string type, string show_level, int tabOffset = 0)
         {
             string options = Environment.NewLine;
-            options += TabInString(6) + "// " + optionNameStart + type.ToLower() + 
+            options += TabInString(6 + tabOffset) + "// " + optionNameStart + type.ToLower() + 
                 "_circle_scale = hmUI.createWidget(hmUI.widget.Circle_Scale, {" + Environment.NewLine;
-            options += TabInString(7) + "// center_x: " + circle_scale.center_x.ToString() + "," + Environment.NewLine;
-            options += TabInString(7) + "// center_y: " + circle_scale.center_y.ToString() + "," + Environment.NewLine;
-            options += TabInString(7) + "// start_angle: " + circle_scale.start_angle.ToString() + "," + Environment.NewLine;
-            options += TabInString(7) + "// end_angle: " + circle_scale.end_angle.ToString() + "," + Environment.NewLine;
-            options += TabInString(7) + "// radius: " + circle_scale.radius.ToString() + "," + Environment.NewLine;
-            options += TabInString(7) + "// line_width: " + circle_scale.line_width.ToString() + "," + Environment.NewLine;
-            options += TabInString(7) + "// color: " + circle_scale.color + "," + Environment.NewLine;
-            options += TabInString(7) + "// mirror: " + circle_scale.mirror.ToString() + "," + Environment.NewLine;
-            options += TabInString(7) + "// inversion: " + circle_scale.inversion.ToString() + "," + Environment.NewLine;
-            options += TabInString(7) + "// type: hmUI.data_type." + type.ToUpper() + "," + Environment.NewLine; 
-            options += TabInString(7) + "// show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
-            options += TabInString(6) + "// });" + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// center_x: " + circle_scale.center_x.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// center_y: " + circle_scale.center_y.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// start_angle: " + circle_scale.start_angle.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// end_angle: " + circle_scale.end_angle.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// radius: " + circle_scale.radius.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// line_width: " + circle_scale.line_width.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// color: " + circle_scale.color + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// mirror: " + circle_scale.mirror.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// inversion: " + circle_scale.inversion.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// type: hmUI.data_type." + type.ToUpper() + "," + Environment.NewLine; 
+            options += TabInString(7 + tabOffset) + "// show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+            options += TabInString(6 + tabOffset) + "// });" + Environment.NewLine;
 
             return options;
         }
 
         private string Linear_Scale_Options(Linear_Scale linear_scale, string optionNameStart, string type, 
-            string typeCaption, string show_level)
+            string typeCaption, string show_level, int tabOffset = 0)
         {
             string options = Environment.NewLine;
             if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
             {
-                options += TabInString(6) + "" + optionNameStart + typeCaption.ToLower() +
+                options += TabInString(6 + tabOffset) + "" + optionNameStart + typeCaption.ToLower() +
                 "_linear_scale_pointer_img = hmUI.createWidget(hmUI.widget.IMG);" + Environment.NewLine;
                 if (linear_scale.mirror)
                 {
-                    options += TabInString(6) + "" + optionNameStart + typeCaption.ToLower() +
+                    options += TabInString(6 + tabOffset) + "" + optionNameStart + typeCaption.ToLower() +
                 "_linear_scale_pointer_img_mirror = hmUI.createWidget(hmUI.widget.IMG);" + Environment.NewLine;
                 }
             }
-            options += TabInString(6) + "// " + optionNameStart + typeCaption.ToLower() +
+            options += TabInString(6 + tabOffset) + "// " + optionNameStart + typeCaption.ToLower() +
                 "_linear_scale = hmUI.createWidget(hmUI.widget.Linear_Scale, {" + Environment.NewLine;
-            options += TabInString(7) + "// start_x: " + linear_scale.start_x.ToString() + "," + Environment.NewLine;
-            options += TabInString(7) + "// start_y: " + linear_scale.start_y.ToString() + "," + Environment.NewLine;
-            options += TabInString(7) + "// color: " + linear_scale.color + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// start_x: " + linear_scale.start_x.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// start_y: " + linear_scale.start_y.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// color: " + linear_scale.color + "," + Environment.NewLine;
             if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
-                options += TabInString(7) + "// pointer: '" + linear_scale.pointer + ".png'," + Environment.NewLine;
-            options += TabInString(7) + "// lenght: " + linear_scale.lenght.ToString() + "," + Environment.NewLine;
-            options += TabInString(7) + "// line_width: " + linear_scale.line_width.ToString() + "," + Environment.NewLine;
-            options += TabInString(7) + "// vertical: " + linear_scale.vertical.ToString() + "," + Environment.NewLine;
-            options += TabInString(7) + "// mirror: " + linear_scale.mirror.ToString() + "," + Environment.NewLine;
-            options += TabInString(7) + "// inversion: " + linear_scale.inversion.ToString() + "," + Environment.NewLine;
-            options += TabInString(7) + "// type: hmUI.data_type." + type.ToUpper() + "," + Environment.NewLine;
-            options += TabInString(7) + "// show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
-            options += TabInString(6) + "// });" + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "// pointer: '" + linear_scale.pointer + ".png'," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// lenght: " + linear_scale.lenght.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// line_width: " + linear_scale.line_width.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// vertical: " + linear_scale.vertical.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// mirror: " + linear_scale.mirror.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// inversion: " + linear_scale.inversion.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// type: hmUI.data_type." + type.ToUpper() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+            options += TabInString(6 + tabOffset) + "// });" + Environment.NewLine;
 
             return options;
         }
 
-        private string Circle_Scale_WidgetDelegate_Options(Circle_Scale circle_scale, string optionNameStart, string type)
+        private string Circle_Scale_WidgetDelegate_Options(Circle_Scale circle_scale, string optionNameStart, string type, int tabOffset = 0)
         {
             string options = Environment.NewLine;
-            options += TabInString(9) + "// " + optionNameStart + type + "_circle_scale" + Environment.NewLine;
+            options += TabInString(9 + tabOffset) + "// " + optionNameStart + type + "_circle_scale" + Environment.NewLine;
 
             // исходные параметры
             int start_angle = circle_scale.start_angle - 90;
@@ -5741,54 +9809,54 @@ namespace Watch_Face_Editor
             int line_width = circle_scale.line_width;
             string color = circle_scale.color;
 
-            options += TabInString(9) + "// initial parameters" + Environment.NewLine;
-            options += TabInString(9) + "let start_angle_" + optionNameStart + type + " = " +
+            options += TabInString(9 + tabOffset) + "// initial parameters" + Environment.NewLine;
+            options += TabInString(9 + tabOffset) + "let start_angle_" + optionNameStart + type + " = " +
                 start_angle.ToString() + ";" + Environment.NewLine;
-            options += TabInString(9) + "let end_angle_" + optionNameStart + type + " = " +
+            options += TabInString(9 + tabOffset) + "let end_angle_" + optionNameStart + type + " = " +
                 end_angle.ToString() + ";" + Environment.NewLine;
-            options += TabInString(9) + "let center_x_" + optionNameStart + type + " = " +
+            options += TabInString(9 + tabOffset) + "let center_x_" + optionNameStart + type + " = " +
                 center_x.ToString() + ";" + Environment.NewLine;
-            options += TabInString(9) + "let center_y_" + optionNameStart + type + " = " +
+            options += TabInString(9 + tabOffset) + "let center_y_" + optionNameStart + type + " = " +
                 center_y.ToString() + ";" + Environment.NewLine;
-            options += TabInString(9) + "let radius_" + optionNameStart + type + " = " +
+            options += TabInString(9 + tabOffset) + "let radius_" + optionNameStart + type + " = " +
                 radius.ToString() + ";" + Environment.NewLine;
-            options += TabInString(9) + "let line_width_cs_" + optionNameStart + type + " = " +
+            options += TabInString(9 + tabOffset) + "let line_width_cs_" + optionNameStart + type + " = " +
                 line_width.ToString() + ";" + Environment.NewLine;
-            options += TabInString(9) + "let color_cs_" + optionNameStart + type + " = " +
+            options += TabInString(9 + tabOffset) + "let color_cs_" + optionNameStart + type + " = " +
                 color + ";" + Environment.NewLine;
 
             // расчетные параметры
-            options += TabInString(9) + Environment.NewLine;
-            options += TabInString(9) + "// calculated parameters" + Environment.NewLine;
-            options += TabInString(9) + "let arcX_" + optionNameStart + type + " = center_x_" + optionNameStart + 
+            options += TabInString(9 + tabOffset) + Environment.NewLine;
+            options += TabInString(9 + tabOffset) + "// calculated parameters" + Environment.NewLine;
+            options += TabInString(9 + tabOffset) + "let arcX_" + optionNameStart + type + " = center_x_" + optionNameStart + 
                 type + " - radius_" + optionNameStart + type + ";" + Environment.NewLine;
-            options += TabInString(9) + "let arcY_" + optionNameStart + type + " = center_y_" + optionNameStart +
+            options += TabInString(9 + tabOffset) + "let arcY_" + optionNameStart + type + " = center_y_" + optionNameStart +
                 type + " - radius_" + optionNameStart + type + ";" + Environment.NewLine;
-            options += TabInString(9) + "let CircleWidth_" + optionNameStart + type + " = 2 * radius_" + 
+            options += TabInString(9 + tabOffset) + "let CircleWidth_" + optionNameStart + type + " = 2 * radius_" + 
                 optionNameStart + type + ";" + Environment.NewLine;
 
-            options += TabInString(9) + "let angle_offset_" + optionNameStart + type + " = end_angle_" + optionNameStart + 
+            options += TabInString(9 + tabOffset) + "let angle_offset_" + optionNameStart + type + " = end_angle_" + optionNameStart + 
                 type + " - start_angle_" + optionNameStart + type + ";" + Environment.NewLine;
-            options += TabInString(9) + "angle_offset_" + optionNameStart + type + " = angle_offset_" + optionNameStart + 
+            options += TabInString(9 + tabOffset) + "angle_offset_" + optionNameStart + type + " = angle_offset_" + optionNameStart + 
                 type + " * progress_cs_" + optionNameStart + type + ";" + Environment.NewLine;
-            options += TabInString(9) + "let end_angle_" + optionNameStart + type + "_draw = start_angle_" + optionNameStart + 
+            options += TabInString(9 + tabOffset) + "let end_angle_" + optionNameStart + type + "_draw = start_angle_" + optionNameStart + 
                 type + " + angle_offset_" + optionNameStart + type + ";" + Environment.NewLine;
-            options += TabInString(9) + Environment.NewLine;
-            options += TabInString(9) + optionNameStart + type + "_circle_scale.setProperty(hmUI.prop.MORE, {" + Environment.NewLine;
-            options += TabInString(10) + "x: arcX_" + optionNameStart + type + "," + Environment.NewLine;
-            options += TabInString(10) + "y: arcY_" + optionNameStart + type + "," + Environment.NewLine;
-            options += TabInString(10) + "w: CircleWidth_" + optionNameStart + type + "," + Environment.NewLine;
-            options += TabInString(10) + "h: CircleWidth_" + optionNameStart + type + "," + Environment.NewLine;
-            options += TabInString(10) + "start_angle: start_angle_" + optionNameStart + type + "," + Environment.NewLine;
-            options += TabInString(10) + "end_angle: end_angle_" + optionNameStart + type + "_draw," + Environment.NewLine;
-            options += TabInString(10) + "color: color_cs_" + optionNameStart + type + "," + Environment.NewLine;
-            options += TabInString(10) + "line_width: line_width_cs_" + optionNameStart + type + "," + Environment.NewLine;
-            options += TabInString(9) + "});" + Environment.NewLine;
+            options += TabInString(9 + tabOffset) + Environment.NewLine;
+            options += TabInString(9 + tabOffset) + optionNameStart + type + "_circle_scale.setProperty(hmUI.prop.MORE, {" + Environment.NewLine;
+            options += TabInString(10 + tabOffset) + "x: arcX_" + optionNameStart + type + "," + Environment.NewLine;
+            options += TabInString(10 + tabOffset) + "y: arcY_" + optionNameStart + type + "," + Environment.NewLine;
+            options += TabInString(10 + tabOffset) + "w: CircleWidth_" + optionNameStart + type + "," + Environment.NewLine;
+            options += TabInString(10 + tabOffset) + "h: CircleWidth_" + optionNameStart + type + "," + Environment.NewLine;
+            options += TabInString(10 + tabOffset) + "start_angle: start_angle_" + optionNameStart + type + "," + Environment.NewLine;
+            options += TabInString(10 + tabOffset) + "end_angle: end_angle_" + optionNameStart + type + "_draw," + Environment.NewLine;
+            options += TabInString(10 + tabOffset) + "color: color_cs_" + optionNameStart + type + "," + Environment.NewLine;
+            options += TabInString(10 + tabOffset) + "line_width: line_width_cs_" + optionNameStart + type + "," + Environment.NewLine;
+            options += TabInString(9 + tabOffset) + "});" + Environment.NewLine;
 
             if (circle_scale.mirror)
             {
-                options += TabInString(9) + Environment.NewLine;
-                options += TabInString(9) + "// " + optionNameStart + type + "_circle_scale_mirror" + Environment.NewLine;
+                options += TabInString(9 + tabOffset) + Environment.NewLine;
+                options += TabInString(9 + tabOffset) + "// " + optionNameStart + type + "_circle_scale_mirror" + Environment.NewLine;
 
                 // исходные параметры
                 start_angle = circle_scale.start_angle - 90;
@@ -5802,35 +9870,35 @@ namespace Watch_Face_Editor
                     end_angle = temp;
                 }
 
-                options += TabInString(9) + "// initial parameters mirror" + Environment.NewLine;
-                options += TabInString(9) + "let start_angle_" + optionNameStart + type + "_mirror = " +
+                options += TabInString(9 + tabOffset) + "// initial parameters mirror" + Environment.NewLine;
+                options += TabInString(9 + tabOffset) + "let start_angle_" + optionNameStart + type + "_mirror = " +
                     start_angle.ToString() + ";" + Environment.NewLine;
-                options += TabInString(9) + "let end_angle_" + optionNameStart + type + "_mirror = " +
+                options += TabInString(9 + tabOffset) + "let end_angle_" + optionNameStart + type + "_mirror = " +
                     end_angle.ToString() + ";" + Environment.NewLine;
 
                 // расчетные параметры
-                options += TabInString(9) + Environment.NewLine;
-                options += TabInString(9) + "// calculated parameters mirror" + Environment.NewLine;
+                options += TabInString(9 + tabOffset) + Environment.NewLine;
+                options += TabInString(9 + tabOffset) + "// calculated parameters mirror" + Environment.NewLine;
 
-                options += TabInString(9) + "let angle_offset_" + optionNameStart + type + "_mirror = end_angle_" + 
+                options += TabInString(9 + tabOffset) + "let angle_offset_" + optionNameStart + type + "_mirror = end_angle_" + 
                     optionNameStart + type + "_mirror - start_angle_" + optionNameStart + type + "_mirror;" + 
                     Environment.NewLine;
-                options += TabInString(9) + "angle_offset_" + optionNameStart + type + "_mirror = angle_offset_" + 
+                options += TabInString(9 + tabOffset) + "angle_offset_" + optionNameStart + type + "_mirror = angle_offset_" + 
                     optionNameStart + type + "_mirror * progress_cs_" + optionNameStart + type + ";" + Environment.NewLine;
-                options += TabInString(9) + "let end_angle_" + optionNameStart + type + "_draw_mirror = start_angle_" + 
+                options += TabInString(9 + tabOffset) + "let end_angle_" + optionNameStart + type + "_draw_mirror = start_angle_" + 
                     optionNameStart + type + "_mirror + angle_offset_" + optionNameStart + type + "_mirror;" + 
                     Environment.NewLine;
-                options += TabInString(9) + Environment.NewLine;
-                options += TabInString(9) + optionNameStart + type + "_circle_scale_mirror.setProperty(hmUI.prop.MORE, {" + Environment.NewLine;
-                options += TabInString(10) + "x: arcX_" + optionNameStart + type + "," + Environment.NewLine;
-                options += TabInString(10) + "y: arcY_" + optionNameStart + type + "," + Environment.NewLine;
-                options += TabInString(10) + "w: CircleWidth_" + optionNameStart + type + "," + Environment.NewLine;
-                options += TabInString(10) + "h: CircleWidth_" + optionNameStart + type + "," + Environment.NewLine;
-                options += TabInString(10) + "start_angle: start_angle_" + optionNameStart + type + "_mirror," + Environment.NewLine;
-                options += TabInString(10) + "end_angle: end_angle_" + optionNameStart + type + "_draw_mirror," + Environment.NewLine;
-                options += TabInString(10) + "color: color_cs_" + optionNameStart + type + "," + Environment.NewLine;
-                options += TabInString(10) + "line_width: line_width_cs_" + optionNameStart + type + "," + Environment.NewLine;
-                options += TabInString(9) + "});" + Environment.NewLine;
+                options += TabInString(9 + tabOffset) + Environment.NewLine;
+                options += TabInString(9 + tabOffset) + optionNameStart + type + "_circle_scale_mirror.setProperty(hmUI.prop.MORE, {" + Environment.NewLine;
+                options += TabInString(10 + tabOffset) + "x: arcX_" + optionNameStart + type + "," + Environment.NewLine;
+                options += TabInString(10 + tabOffset) + "y: arcY_" + optionNameStart + type + "," + Environment.NewLine;
+                options += TabInString(10 + tabOffset) + "w: CircleWidth_" + optionNameStart + type + "," + Environment.NewLine;
+                options += TabInString(10 + tabOffset) + "h: CircleWidth_" + optionNameStart + type + "," + Environment.NewLine;
+                options += TabInString(10 + tabOffset) + "start_angle: start_angle_" + optionNameStart + type + "_mirror," + Environment.NewLine;
+                options += TabInString(10 + tabOffset) + "end_angle: end_angle_" + optionNameStart + type + "_draw_mirror," + Environment.NewLine;
+                options += TabInString(10 + tabOffset) + "color: color_cs_" + optionNameStart + type + "," + Environment.NewLine;
+                options += TabInString(10 + tabOffset) + "line_width: line_width_cs_" + optionNameStart + type + "," + Environment.NewLine;
+                options += TabInString(9 + tabOffset) + "});" + Environment.NewLine;
             }
 
             return options;
@@ -6538,6 +10606,60 @@ namespace Watch_Face_Editor
                 options += TabInString(7) + "tips_x: " + editable_pointers.tips_x.ToString() + "," + Environment.NewLine;
                 options += TabInString(7) + "tips_y: " + editable_pointers.tips_y.ToString() + "," + Environment.NewLine;
                 options += TabInString(7) + "tips_bg: '" + editable_pointers.tips_bg + ".png'," + Environment.NewLine;
+
+
+            }
+            return options;
+        }
+
+        private string Editable_Elements_Options(WATCHFACE_EDIT_GROUP editable_elements, int index)
+        {
+            string options = Environment.NewLine;
+            if (editable_elements == null) return options;
+            if (editable_elements.optional_types_list != null && editable_elements.optional_types_list.Count > 0)
+            {
+                int x = editable_elements.x;
+                int y = editable_elements.y;
+                int tips_x = editable_elements.tips_x;
+                int tips_y = editable_elements.tips_y;
+                int offset_x = tips_x - x;
+                int offset_y = tips_y - y;
+
+                options += TabInString(7) + "edit_id: 1002" + index.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "x: " + x.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "y: " + y.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "w: " + editable_elements.w.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "h: " + editable_elements.h.ToString() + "," + Environment.NewLine;
+                if(editable_elements.select_image != null && editable_elements.select_image.Length > 0)
+                    options += TabInString(7) + "select_image: '" + editable_elements.select_image + ".png'," + Environment.NewLine;
+                if (editable_elements.un_select_image != null && editable_elements.un_select_image.Length > 0)
+                    options += TabInString(7) + "un_select_image: '" + editable_elements.un_select_image + ".png'," + Environment.NewLine;
+                options += TabInString(7) + "default_type: hmUI.edit_type." + editable_elements.optional_types_list[0].type + "," + Environment.NewLine;
+                options += TabInString(7) + "optional_types: [" + Environment.NewLine;
+                int count = 0;
+                for (int i = 0; i < editable_elements.optional_types_list.Count; i++)
+                {
+                    Optional_Types_List typeList = editable_elements.optional_types_list[i];
+                    if (typeList.type != null && typeList.type.Length > 0 && typeList.preview != null && typeList.preview.Length > 0)
+                    {
+                        options += TabInString(8) + "{ type: hmUI.edit_type." + typeList.type +
+                                       ", preview: '" + typeList.preview + ".png' }," + Environment.NewLine;
+                        count++;
+                    }
+                }
+
+                options += TabInString(7) + "]," + Environment.NewLine;
+
+                //options += TabInString(7) + "count: " + editable_elements.Elements.Count.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "count: " + count.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "tips_BG: '" + editable_elements.tips_BG + ".png'," + Environment.NewLine;
+                //options += TabInString(7) + "tips_x: " + editable_elements.tips_x.ToString() + "," + Environment.NewLine;
+                //options += TabInString(7) + "tips_y: " + editable_elements.tips_y.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "tips_x: " + offset_x.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "tips_y: " + offset_y.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "tips_width: " + editable_elements.tips_width.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "tips_margin: " + editable_elements.tips_margin.ToString() + "," + Environment.NewLine;
+                //options += TabInString(7) + "show_level: hmUI.show_level.ONLY_NORMAL | hmUI.show_level.ONLY_EDIT," + Environment.NewLine;
 
 
             }

@@ -48,7 +48,7 @@ namespace Watch_Face_Editor
             }
             if(Watch_Face.ElementEditablePointers != null)
             {
-
+                Scale_EditablePointers(Watch_Face.ElementEditablePointers, scale);
             }
         }
 
@@ -93,6 +93,7 @@ namespace Watch_Face_Editor
                 Scale_EDITABLE_POINTER(pointers.minute, scale);
                 Scale_EDITABLE_POINTER(pointers.hour, scale);
             }
+            Scale_IMG(edit_pointers.cover, scale);
         }
 
         private void Scale_Frame_Animation(hmUI_widget_IMG_ANIM anim_frame, float scale)

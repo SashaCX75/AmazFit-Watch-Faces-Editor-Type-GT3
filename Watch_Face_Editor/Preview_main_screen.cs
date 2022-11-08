@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using ImageMagick;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -12,6 +13,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using LineCap = System.Drawing.Drawing2D.LineCap;
 
 namespace Watch_Face_Editor
 {
@@ -174,1692 +176,50 @@ namespace Watch_Face_Editor
             {
                 foreach (Object element in Elements)
                 {
-                    hmUI_widget_IMG_LEVEL img_level = null;
-                    hmUI_widget_IMG_PROGRESS img_prorgess = null;
-                    hmUI_widget_IMG_NUMBER img_number = null;
-                    hmUI_widget_IMG_NUMBER img_number_target = null;
-                    hmUI_widget_IMG_POINTER img_pointer = null;
-                    Circle_Scale circle_scale = null;
-                    Linear_Scale linear_scale = null;
-                    hmUI_widget_IMG icon = null;
-
-                    int elementValue = 0;
-                    int value_lenght = 3;
-                    int goal = 10000;
-                    float progress = 0;
-
-                    int valueImgIndex = -1;
-                    int valueSegmentIndex = -1;
-                    int imgCount = 0;
-                    int segmentCount = 0;
-
-                    string type = element.GetType().Name;
-                    switch (type)
-                    {
-                        #region ElementDigitalTime
-                        case "ElementDigitalTime":
-                            ElementDigitalTime DigitalTime = (ElementDigitalTime)element;
-                            if(!DigitalTime.visible) continue;
-                            int time_offsetX = -1;
-                            int time_offsetY = -1;
-                            int time_spasing = 0;
-                            bool am_pm = false;
-
-                            // определяем формат времени fm/pm
-                            if (DigitalTime.AmPm != null && DigitalTime.AmPm.am_img != null
-                                    && DigitalTime.AmPm.am_img.Length > 0 && DigitalTime.AmPm.pm_img != null
-                                    && DigitalTime.AmPm.pm_img.Length > 0 &&
-                                    DigitalTime.AmPm.visible && checkBox_ShowIn12hourFormat.Checked) am_pm = true;
-
-                            for (int index = 1; index <= 4; index++)
-                            {
-                                if (DigitalTime.Hour != null && DigitalTime.Hour.img_First != null
-                                    && DigitalTime.Hour.img_First.Length > 0 &&
-                                    index == DigitalTime.Hour.position && DigitalTime.Hour.visible)
-                                {
-                                    int imageIndex = ListImages.IndexOf(DigitalTime.Hour.img_First);
-                                    int x = DigitalTime.Hour.imageX;
-                                    int y = DigitalTime.Hour.imageY;
-                                    time_offsetY = y;
-                                    int spasing = DigitalTime.Hour.space;
-                                    time_spasing = spasing;
-                                    int alignment = AlignmentToInt(DigitalTime.Hour.align);
-                                    bool addZero = DigitalTime.Hour.zero;
-                                    //addZero = true;
-                                    int value = WatchFacePreviewSet.Time.Hours;
-                                    int separator_index = -1;
-                                    if (DigitalTime.Hour.unit != null && DigitalTime.Hour.unit.Length > 0)
-                                        separator_index = ListImages.IndexOf(DigitalTime.Hour.unit);
-
-                                    if (ProgramSettings.ShowIn12hourFormat && DigitalTime.AmPm != null)
-                                    {
-                                        if (am_pm)
-                                        {
-                                            if (value > 11) value -= 12;
-                                            if (value == 0) value = 12;
-                                        }
-                                    }
-
-                                    time_offsetX = Draw_dagital_text(gPanel, imageIndex, x, y,
-                                                        spasing, alignment, value, addZero, 2, separator_index, BBorder);
-
-                                    if (DigitalTime.Hour.icon != null && DigitalTime.Hour.icon.Length > 0)
-                                    {
-                                        imageIndex = ListImages.IndexOf(DigitalTime.Hour.icon);
-                                        x = DigitalTime.Hour.iconPosX;
-                                        y = DigitalTime.Hour.iconPosY;
-
-                                        src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                        gPanel.DrawImage(src, x, y);
-                                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
-                                    }
-                                }
-
-                                if (DigitalTime.Minute != null && DigitalTime.Minute.img_First != null
-                                    && DigitalTime.Minute.img_First.Length > 0 &&
-                                    index == DigitalTime.Minute.position && DigitalTime.Minute.visible)
-                                {
-                                    int imageIndex = ListImages.IndexOf(DigitalTime.Minute.img_First);
-                                    int x = DigitalTime.Minute.imageX;
-                                    int y = DigitalTime.Minute.imageY;
-                                    int spasing = DigitalTime.Minute.space;
-                                    time_spasing = spasing;
-                                    int alignment = AlignmentToInt(DigitalTime.Minute.align);
-                                    bool addZero = DigitalTime.Minute.zero;
-                                    //addZero = true;
-                                    if (DigitalTime.Minute.follow && time_offsetX > -1 &&
-                                        DigitalTime.Minute.position > DigitalTime.Hour.position)
-                                    {
-                                        x = time_offsetX;
-                                        alignment = 0;
-                                        y = time_offsetY;
-                                        spasing = time_spasing;
-                                    }
-                                    time_offsetY = y;
-                                    int value = WatchFacePreviewSet.Time.Minutes;
-                                    int separator_index = -1;
-                                    if (DigitalTime.Minute.unit != null && DigitalTime.Minute.unit.Length > 0)
-                                        separator_index = ListImages.IndexOf(DigitalTime.Minute.unit);
-
-                                    time_offsetX = Draw_dagital_text(gPanel, imageIndex, x, y,
-                                                        spasing, alignment, value, addZero, 2, separator_index, BBorder);
-
-                                    if (DigitalTime.Minute.icon != null && DigitalTime.Minute.icon.Length > 0)
-                                    {
-                                        imageIndex = ListImages.IndexOf(DigitalTime.Minute.icon);
-                                        x = DigitalTime.Minute.iconPosX;
-                                        y = DigitalTime.Minute.iconPosY;
-
-                                        src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                        gPanel.DrawImage(src, x, y);
-                                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
-                                    }
-                                }
-
-                                if (DigitalTime.Second != null && DigitalTime.Second.img_First != null
-                                    && DigitalTime.Second.img_First.Length > 0 &&
-                                    index == DigitalTime.Second.position && DigitalTime.Second.visible)
-                                {
-                                    int imageIndex = ListImages.IndexOf(DigitalTime.Second.img_First);
-                                    int x = DigitalTime.Second.imageX;
-                                    int y = DigitalTime.Second.imageY;
-                                    int spasing = DigitalTime.Second.space;
-                                    time_spasing = spasing;
-                                    int alignment = AlignmentToInt(DigitalTime.Second.align);
-                                    bool addZero = DigitalTime.Second.zero;
-                                    //addZero = true;
-                                    if (DigitalTime.Second.follow && time_offsetX > -1 &&
-                                        DigitalTime.Second.position > DigitalTime.Minute.position)
-                                    {
-                                        x = time_offsetX;
-                                        alignment = 0;
-                                        y = time_offsetY;
-                                        spasing = time_spasing;
-                                    }
-                                    time_offsetY = y;
-                                    int value = WatchFacePreviewSet.Time.Seconds;
-                                    int separator_index = -1;
-                                    if (DigitalTime.Second.unit != null && DigitalTime.Second.unit.Length > 0)
-                                        separator_index = ListImages.IndexOf(DigitalTime.Second.unit);
-
-
-                                    time_offsetX = Draw_dagital_text(gPanel, imageIndex, x, y,
-                                                        spasing, alignment, value, addZero, 2, separator_index, BBorder);
-
-                                    if (DigitalTime.Second.icon != null && DigitalTime.Second.icon.Length > 0)
-                                    {
-                                        imageIndex = ListImages.IndexOf(DigitalTime.Second.icon);
-                                        x = DigitalTime.Second.iconPosX;
-                                        y = DigitalTime.Second.iconPosY;
-
-                                        src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                        gPanel.DrawImage(src, x, y);
-                                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
-                                    }
-                                }
-
-                                if (am_pm && index == DigitalTime.AmPm.position)
-                                {
-                                    if(WatchFacePreviewSet.Time.Hours > 11)
-                                    {
-                                        int imageIndex = ListImages.IndexOf(DigitalTime.AmPm.pm_img);
-                                        int x = DigitalTime.AmPm.pm_x;
-                                        int y = DigitalTime.AmPm.pm_y;
-
-                                        src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                        gPanel.DrawImage(src, x, y);
-                                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
-                                    }
-                                    else
-                                    {
-                                        int imageIndex = ListImages.IndexOf(DigitalTime.AmPm.am_img);
-                                        int x = DigitalTime.AmPm.am_x;
-                                        int y = DigitalTime.AmPm.am_y;
-
-                                        src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                        gPanel.DrawImage(src, x, y);
-                                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
-                                    }
-                                }
-                            }
-
-                            break;
-                        #endregion
-
-                        #region ElementAnalogTime
-                        case "ElementAnalogTime":
-                            ElementAnalogTime AnalogTime = (ElementAnalogTime)element;
-                            if (!AnalogTime.visible) continue;
-
-                            for (int index = 1; index <= 3; index++)
-                            {
-                                if (AnalogTime.Hour != null && AnalogTime.Hour.src != null
-                                    && AnalogTime.Hour.src.Length > 0 &&
-                                    index == AnalogTime.Hour.position && AnalogTime.Hour.visible)
-                                {
-                                    int x = AnalogTime.Hour.center_x;
-                                    int y = AnalogTime.Hour.center_y;
-                                    int offsetX = AnalogTime.Hour.pos_x;
-                                    int offsetY = AnalogTime.Hour.pos_y;
-                                    int image_index = ListImages.IndexOf(AnalogTime.Hour.src);
-                                    int hour = WatchFacePreviewSet.Time.Hours;
-                                    int min = WatchFacePreviewSet.Time.Minutes;
-                                    //int sec = Watch_Face_Preview_Set.TimeW.Seconds;
-                                    if (hour >= 12) hour = hour - 12;
-                                    float angle = 360 * hour / 12 + 360 * min / (60 * 12);
-                                    DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
-
-                                    if (AnalogTime.Hour.cover_path != null && AnalogTime.Hour.cover_path.Length > 0)
-                                    {
-                                        image_index = ListImages.IndexOf(AnalogTime.Hour.cover_path);
-                                        x = AnalogTime.Hour.cover_x;
-                                        y = AnalogTime.Hour.cover_y;
-
-                                        src = OpenFileStream(ListImagesFullName[image_index]);
-                                        gPanel.DrawImage(src, x, y);
-                                    }
-                                }
-
-                                if (AnalogTime.Minute != null && AnalogTime.Minute.src != null
-                                    && AnalogTime.Minute.src.Length > 0 &&
-                                    index == AnalogTime.Minute.position && AnalogTime.Minute.visible)
-                                {
-                                    int x = AnalogTime.Minute.center_x;
-                                    int y = AnalogTime.Minute.center_y;
-                                    int offsetX = AnalogTime.Minute.pos_x;
-                                    int offsetY = AnalogTime.Minute.pos_y;
-                                    int image_index = ListImages.IndexOf(AnalogTime.Minute.src);
-                                    int min = WatchFacePreviewSet.Time.Minutes;
-                                    float angle = 360 * min / 60;
-                                    DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
-
-                                    if (AnalogTime.Minute.cover_path != null && AnalogTime.Minute.cover_path.Length > 0)
-                                    {
-                                        image_index = ListImages.IndexOf(AnalogTime.Minute.cover_path);
-                                        x = AnalogTime.Minute.cover_x;
-                                        y = AnalogTime.Minute.cover_y;
-
-                                        src = OpenFileStream(ListImagesFullName[image_index]);
-                                        gPanel.DrawImage(src, x, y);
-                                    }
-                                }
-
-                                if (AnalogTime.Second != null && AnalogTime.Second.src != null
-                                    && AnalogTime.Second.src.Length > 0 &&
-                                    index == AnalogTime.Second.position && AnalogTime.Second.visible)
-                                {
-                                    int x = AnalogTime.Second.center_x;
-                                    int y = AnalogTime.Second.center_y;
-                                    int offsetX = AnalogTime.Second.pos_x;
-                                    int offsetY = AnalogTime.Second.pos_y;
-                                    int image_index = ListImages.IndexOf(AnalogTime.Second.src);
-                                    int sec = WatchFacePreviewSet.Time.Seconds;
-                                    float angle = 360 * sec / 60;
-                                    DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
-
-                                    if (AnalogTime.Second.cover_path != null && AnalogTime.Second.cover_path.Length > 0)
-                                    {
-                                        image_index = ListImages.IndexOf(AnalogTime.Second.cover_path);
-                                        x = AnalogTime.Second.cover_x;
-                                        y = AnalogTime.Second.cover_y;
-
-                                        src = OpenFileStream(ListImagesFullName[image_index]);
-                                        gPanel.DrawImage(src, x, y);
-                                    }
-                                }
-                            }
-
-                            break;
-                        #endregion
-
-                        #region ElementEditablePointers
-                        /*case "ElementEditablePointers":
-                            ElementEditablePointers EditablePointers = (ElementEditablePointers)element;
-                            if (!EditablePointers.visible) continue;
-                            if (EditablePointers.config == null || EditablePointers.config.Count == 0 ||
-                                EditablePointers.selected_pointers < 0 || 
-                                EditablePointers.selected_pointers >= EditablePointers.config.Count) continue;
-
-                            PointersList pointers_list = EditablePointers.config[EditablePointers.selected_pointers];
-
-                            if (pointers_list.hour != null && pointers_list.hour.src != null
-                                    && pointers_list.hour.src.Length > 0)
-                            {
-                                int x = pointers_list.hour.center_x;
-                                int y = pointers_list.hour.center_y;
-                                int offsetX = pointers_list.hour.pos_x;
-                                int offsetY = pointers_list.hour.pos_y;
-                                int image_index = ListImages.IndexOf(pointers_list.hour.src);
-                                int hour = WatchFacePreviewSet.Time.Hours;
-                                int min = WatchFacePreviewSet.Time.Minutes;
-                                //int sec = Watch_Face_Preview_Set.TimeW.Seconds;
-                                if (hour >= 12) hour = hour - 12;
-                                float angle = 360 * hour / 12 + 360 * min / (60 * 12);
-                                DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
-
-                                if (pointers_list.hour.cover_path != null && pointers_list.hour.cover_path.Length > 0)
-                                {
-                                    image_index = ListImages.IndexOf(pointers_list.hour.cover_path);
-                                    x = pointers_list.hour.cover_x;
-                                    y = pointers_list.hour.cover_y;
-
-                                    src = OpenFileStream(ListImagesFullName[image_index]);
-                                    gPanel.DrawImage(src, x, y);
-                                }
-                            }
-
-                            if (pointers_list.minute != null && pointers_list.minute.src != null
-                                && pointers_list.minute.src.Length > 0)
-                            {
-                                int x = pointers_list.minute.center_x;
-                                int y = pointers_list.minute.center_y;
-                                int offsetX = pointers_list.minute.pos_x;
-                                int offsetY = pointers_list.minute.pos_y;
-                                int image_index = ListImages.IndexOf(pointers_list.minute.src);
-                                int min = WatchFacePreviewSet.Time.Minutes;
-                                float angle = 360 * min / 60;
-                                DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
-
-                                if (pointers_list.minute.cover_path != null && pointers_list.minute.cover_path.Length > 0)
-                                {
-                                    image_index = ListImages.IndexOf(pointers_list.minute.cover_path);
-                                    x = pointers_list.minute.cover_x;
-                                    y = pointers_list.minute.cover_y;
-
-                                    src = OpenFileStream(ListImagesFullName[image_index]);
-                                    gPanel.DrawImage(src, x, y);
-                                }
-                            }
-
-                            if (pointers_list.second != null && pointers_list.second.src != null
-                                && pointers_list.second.src.Length > 0 &&
-                                (radioButton_ScreenNormal.Checked || EditablePointers.AOD_show))
-                            {
-                                int x = pointers_list.second.center_x;
-                                int y = pointers_list.second.center_y;
-                                int offsetX = pointers_list.second.pos_x;
-                                int offsetY = pointers_list.second.pos_y;
-                                int image_index = ListImages.IndexOf(pointers_list.second.src);
-                                int sec = WatchFacePreviewSet.Time.Seconds;
-                                float angle = 360 * sec / 60;
-                                DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
-
-                                if (pointers_list.second.cover_path != null && pointers_list.second.cover_path.Length > 0)
-                                {
-                                    image_index = ListImages.IndexOf(pointers_list.second.cover_path);
-                                    x = pointers_list.second.cover_x;
-                                    y = pointers_list.second.cover_y;
-
-                                    src = OpenFileStream(ListImagesFullName[image_index]);
-                                    gPanel.DrawImage(src, x, y);
-                                }
-                            }
-
-                            break;*/
-                        #endregion
-
-                        #region ElementDateDay
-                        case "ElementDateDay":
-                            ElementDateDay DateDay = (ElementDateDay)element;
-                            if (!DateDay.visible) continue;
-
-                            for (int index = 1; index <= 2; index++)
-                            {
-                                if (DateDay.Number != null && DateDay.Number.img_First != null
-                                    && DateDay.Number.img_First.Length > 0 &&
-                                    index == DateDay.Number.position && DateDay.Number.visible)
-                                {
-                                    int imageIndex = ListImages.IndexOf(DateDay.Number.img_First);
-                                    int x = DateDay.Number.imageX;
-                                    int y = DateDay.Number.imageY;
-                                    int spasing = DateDay.Number.space;
-                                    time_spasing = spasing;
-                                    int alignment = AlignmentToInt(DateDay.Number.align);
-                                    bool addZero = DateDay.Number.zero;
-                                    //addZero = true;
-                                    int value = WatchFacePreviewSet.Date.Day;
-                                    int separator_index = -1;
-                                    if (DateDay.Number.unit != null && DateDay.Number.unit.Length > 0)
-                                        separator_index = ListImages.IndexOf(DateDay.Number.unit);
-
-                                    Draw_dagital_text(gPanel, imageIndex, x, y,
-                                        spasing, alignment, value, addZero, 2, separator_index, BBorder);
-
-                                    if (DateDay.Number.icon != null && DateDay.Number.icon.Length > 0)
-                                    {
-                                        imageIndex = ListImages.IndexOf(DateDay.Number.icon);
-                                        x = DateDay.Number.iconPosX;
-                                        y = DateDay.Number.iconPosY;
-
-                                        src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                        gPanel.DrawImage(src, x, y);
-                                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
-                                    }
-                                }
-
-                                if (DateDay.Pointer != null && DateDay.Pointer.src != null
-                                    && DateDay.Pointer.src.Length > 0 &&
-                                    index == DateDay.Pointer.position && DateDay.Pointer.visible)
-                                {
-                                    int x = DateDay.Pointer.center_x;
-                                    int y = DateDay.Pointer.center_y;
-                                    int offsetX = DateDay.Pointer.pos_x;
-                                    int offsetY = DateDay.Pointer.pos_y;
-                                    int startAngle = DateDay.Pointer.start_angle;
-                                    int endAngle = DateDay.Pointer.end_angle;
-                                    int image_index = ListImages.IndexOf(DateDay.Pointer.src);
-                                    int Day = WatchFacePreviewSet.Date.Day;
-                                    //Day--;
-                                    int angle = (int)(startAngle + Day * (endAngle - startAngle) / 31f);
-
-                                    if (DateDay.Pointer.scale != null && DateDay.Pointer.scale.Length > 0)
-                                    {
-                                        int image_index_scale = ListImages.IndexOf(DateDay.Pointer.scale);
-                                        int x_scale = DateDay.Pointer.scale_x;
-                                        int y_scale = DateDay.Pointer.scale_y;
-
-                                        src = OpenFileStream(ListImagesFullName[image_index_scale]);
-                                        gPanel.DrawImage(src, x_scale, y_scale);
-                                    }
-
-                                    DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
-
-                                    if (DateDay.Pointer.cover_path != null && DateDay.Pointer.cover_path.Length > 0)
-                                    {
-                                        image_index = ListImages.IndexOf(DateDay.Pointer.cover_path);
-                                        x = DateDay.Pointer.cover_x;
-                                        y = DateDay.Pointer.cover_y;
-
-                                        src = OpenFileStream(ListImagesFullName[image_index]);
-                                        gPanel.DrawImage(src, x, y);
-                                    }
-                                }
-                            }
-
-                            break;
-                        #endregion
-
-                        #region ElementDateMonth
-                        case "ElementDateMonth":
-                            ElementDateMonth DateMonth = (ElementDateMonth)element;
-                            if (!DateMonth.visible) continue;
-
-                            for (int index = 1; index <= 3; index++)
-                            {
-                                if (DateMonth.Number != null && DateMonth.Number.img_First != null
-                                    && DateMonth.Number.img_First.Length > 0 &&
-                                    index == DateMonth.Number.position && DateMonth.Number.visible)
-                                {
-                                    int imageIndex = ListImages.IndexOf(DateMonth.Number.img_First);
-                                    int x = DateMonth.Number.imageX;
-                                    int y = DateMonth.Number.imageY;
-                                    int spasing = DateMonth.Number.space;
-                                    int alignment = AlignmentToInt(DateMonth.Number.align);
-                                    bool addZero = DateMonth.Number.zero;
-                                    //addZero = true;
-                                    int value = WatchFacePreviewSet.Date.Month;
-                                    int separator_index = -1;
-                                    if (DateMonth.Number.unit != null && DateMonth.Number.unit.Length > 0)
-                                        separator_index = ListImages.IndexOf(DateMonth.Number.unit);
-
-                                    Draw_dagital_text(gPanel, imageIndex, x, y,
-                                        spasing, alignment, value, addZero, 2, separator_index, BBorder);
-
-                                    if (DateMonth.Number.icon != null && DateMonth.Number.icon.Length > 0)
-                                    {
-                                        imageIndex = ListImages.IndexOf(DateMonth.Number.icon);
-                                        x = DateMonth.Number.iconPosX;
-                                        y = DateMonth.Number.iconPosY;
-
-                                        src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                        gPanel.DrawImage(src, x, y);
-                                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
-                                    }
-                                }
-
-                                if (DateMonth.Pointer != null && DateMonth.Pointer.src != null
-                                    && DateMonth.Pointer.src.Length > 0 &&
-                                    index == DateMonth.Pointer.position && DateMonth.Pointer.visible)
-                                {
-                                    int x = DateMonth.Pointer.center_x;
-                                    int y = DateMonth.Pointer.center_y;
-                                    int offsetX = DateMonth.Pointer.pos_x;
-                                    int offsetY = DateMonth.Pointer.pos_y;
-                                    int startAngle = DateMonth.Pointer.start_angle;
-                                    int endAngle = DateMonth.Pointer.end_angle;
-                                    int image_index = ListImages.IndexOf(DateMonth.Pointer.src);
-                                    int Month = WatchFacePreviewSet.Date.Month;
-                                    //Month--;
-                                    int angle = (int)(startAngle + Month * (endAngle - startAngle) / 12f);
-
-                                    if (DateMonth.Pointer.scale != null && DateMonth.Pointer.scale.Length > 0)
-                                    {
-                                        int image_index_scale = ListImages.IndexOf(DateMonth.Pointer.scale);
-                                        int x_scale = DateMonth.Pointer.scale_x;
-                                        int y_scale = DateMonth.Pointer.scale_y;
-
-                                        src = OpenFileStream(ListImagesFullName[image_index_scale]);
-                                        gPanel.DrawImage(src, x_scale, y_scale);
-                                    }
-
-                                    DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
-
-                                    if (DateMonth.Pointer.cover_path != null && DateMonth.Pointer.cover_path.Length > 0)
-                                    {
-                                        image_index = ListImages.IndexOf(DateMonth.Pointer.cover_path);
-                                        x = DateMonth.Pointer.cover_x;
-                                        y = DateMonth.Pointer.cover_y;
-
-                                        src = OpenFileStream(ListImagesFullName[image_index]);
-                                        gPanel.DrawImage(src, x, y);
-                                    }
-                                }
-
-                                if (DateMonth.Images != null && DateMonth.Images.img_First != null
-                                    && DateMonth.Images.img_First.Length > 0 &&
-                                    index == DateMonth.Images.position && DateMonth.Images.visible)
-                                {
-                                    int imageIndex = ListImages.IndexOf(DateMonth.Images.img_First);
-                                    int x = DateMonth.Images.X;
-                                    int y = DateMonth.Images.Y;
-                                    imageIndex = imageIndex + WatchFacePreviewSet.Date.Month - 1;
-
-                                    if (imageIndex < ListImagesFullName.Count)
-                                    {
-                                        src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                        gPanel.DrawImage(src, x, y);
-                                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
-                                    }
-                                }
-
-                            }
-
-                            break;
-                        #endregion
-
-                        #region ElementDateYear
-                        case "ElementDateYear":
-                            ElementDateYear DateYear = (ElementDateYear)element;
-                            if (!DateYear.visible) continue;
-
-                            if (DateYear.Number != null && DateYear.Number.img_First != null
-                                    && DateYear.Number.img_First.Length > 0)
-                            {
-                                int imageIndex = ListImages.IndexOf(DateYear.Number.img_First);
-                                int x = DateYear.Number.imageX;
-                                int y = DateYear.Number.imageY;
-                                int spasing = DateYear.Number.space;
-                                //int alignment = AlignmentToInt(DateYear.Number.align);
-                                int alignment = 0;
-                                bool addZero = DateYear.Number.zero;
-                                int value = WatchFacePreviewSet.Date.Year; 
-                                if (!addZero) value = value % 100;
-                                int separator_index = -1;
-                                if (DateYear.Number.unit != null && DateYear.Number.unit.Length > 0)
-                                    separator_index = ListImages.IndexOf(DateYear.Number.unit);
-
-                                Draw_dagital_text(gPanel, imageIndex, x, y,
-                                    spasing, alignment, value, addZero, 4, separator_index, BBorder);
-
-                                if (DateYear.Number.icon != null && DateYear.Number.icon.Length > 0)
-                                {
-                                    imageIndex = ListImages.IndexOf(DateYear.Number.icon);
-                                    x = DateYear.Number.iconPosX;
-                                    y = DateYear.Number.iconPosY;
-
-                                    src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                    gPanel.DrawImage(src, x, y);
-                                    //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
-                                }
-                            }
-
-                            break;
-                        #endregion
-
-                        #region ElementDateWeek
-                        case "ElementDateWeek":
-                            ElementDateWeek DateWeek = (ElementDateWeek)element;
-                            if (!DateWeek.visible) continue;
-
-                            for (int index = 1; index <= 2; index++)
-                            {
-                                if (DateWeek.Pointer != null && DateWeek.Pointer.src != null
-                                    && DateWeek.Pointer.src.Length > 0 &&
-                                    index == DateWeek.Pointer.position && DateWeek.Pointer.visible)
-                                {
-                                    int x = DateWeek.Pointer.center_x;
-                                    int y = DateWeek.Pointer.center_y;
-                                    int offsetX = DateWeek.Pointer.pos_x;
-                                    int offsetY = DateWeek.Pointer.pos_y;
-                                    int startAngle = DateWeek.Pointer.start_angle;
-                                    int endAngle = DateWeek.Pointer.end_angle;
-                                    int image_index = ListImages.IndexOf(DateWeek.Pointer.src);
-                                    int WeekDay = WatchFacePreviewSet.Date.WeekDay;
-                                    //WeekDay++;
-                                    //if (WeekDay < 0) WeekDay = 6;
-                                    //if (WeekDay > 7) WeekDay = 1;
-                                    int angle = (int)(startAngle + WeekDay * (endAngle - startAngle) / 7f);
-
-                                    if (DateWeek.Pointer.scale != null && DateWeek.Pointer.scale.Length > 0)
-                                    {
-                                        int image_index_scale = ListImages.IndexOf(DateWeek.Pointer.scale);
-                                        int x_scale = DateWeek.Pointer.scale_x;
-                                        int y_scale = DateWeek.Pointer.scale_y;
-
-                                        src = OpenFileStream(ListImagesFullName[image_index_scale]);
-                                        gPanel.DrawImage(src, x_scale, y_scale);
-                                    }
-
-                                    DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
-
-                                    if (DateWeek.Pointer.cover_path != null && DateWeek.Pointer.cover_path.Length > 0)
-                                    {
-                                        image_index = ListImages.IndexOf(DateWeek.Pointer.cover_path);
-                                        x = DateWeek.Pointer.cover_x;
-                                        y = DateWeek.Pointer.cover_y;
-
-                                        src = OpenFileStream(ListImagesFullName[image_index]);
-                                        gPanel.DrawImage(src, x, y);
-                                    }
-                                }
-
-                                if (DateWeek.Images != null && DateWeek.Images.img_First != null
-                                    && DateWeek.Images.img_First.Length > 0 &&
-                                    index == DateWeek.Images.position && DateWeek.Images.visible)
-                                {
-                                    int imageIndex = ListImages.IndexOf(DateWeek.Images.img_First);
-                                    int x = DateWeek.Images.X;
-                                    int y = DateWeek.Images.Y;
-                                    imageIndex = imageIndex + WatchFacePreviewSet.Date.WeekDay - 1;
-
-                                    if (imageIndex < ListImagesFullName.Count)
-                                    {
-                                        src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                        gPanel.DrawImage(src, x, y);
-                                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
-                                    }
-                                }
-                            }
-
-                            break;
-                        #endregion
-
-                        #region ElementStatuses
-                        case "ElementStatuses":
-                            ElementStatuses statusElement = (ElementStatuses)element;
-                            if (!statusElement.visible) continue;
-
-                            hmUI_widget_IMG_STATUS img_status_alarm = statusElement.Alarm;
-                            hmUI_widget_IMG_STATUS img_status_bluetooth = statusElement.Bluetooth;
-                            hmUI_widget_IMG_STATUS img_status_dnd = statusElement.DND;
-                            hmUI_widget_IMG_STATUS img_status_lock = statusElement.Lock;
-
-                            for (int index = 1; index <= 4; index++)
-                            {
-                                if (img_status_alarm != null && img_status_alarm.src != null &&
-                                img_status_alarm.src.Length > 0 && index == img_status_alarm.position &&
-                                img_status_alarm.visible)
-                                {
-                                    if (WatchFacePreviewSet.Status.Alarm)
-                                    {
-                                        int imageIndex = ListImages.IndexOf(img_status_alarm.src);
-                                        int x = img_status_alarm.x;
-                                        int y = img_status_alarm.y;
-
-                                        if (imageIndex < ListImagesFullName.Count)
-                                        {
-                                            src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                            gPanel.DrawImage(src, x, y);
-                                            //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
-                                        } 
-                                    }
-                                }
-
-                                if (img_status_bluetooth != null && img_status_bluetooth.src != null &&
-                                img_status_bluetooth.src.Length > 0 && index == img_status_bluetooth.position &&
-                                img_status_bluetooth.visible)
-                                {
-                                    if (!WatchFacePreviewSet.Status.Bluetooth)
-                                    {
-                                        int imageIndex = ListImages.IndexOf(img_status_bluetooth.src);
-                                        int x = img_status_bluetooth.x;
-                                        int y = img_status_bluetooth.y;
-
-                                        if (imageIndex < ListImagesFullName.Count)
-                                        {
-                                            src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                            gPanel.DrawImage(src, x, y);
-                                            //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
-                                        } 
-                                    }
-                                }
-
-                                if (img_status_dnd != null && img_status_dnd.src != null &&
-                                img_status_dnd.src.Length > 0 && index == img_status_dnd.position &&
-                                img_status_dnd.visible)
-                                {
-                                    if (WatchFacePreviewSet.Status.DoNotDisturb)
-                                    {
-                                        int imageIndex = ListImages.IndexOf(img_status_dnd.src);
-                                        int x = img_status_dnd.x;
-                                        int y = img_status_dnd.y;
-
-                                        if (imageIndex < ListImagesFullName.Count)
-                                        {
-                                            src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                            gPanel.DrawImage(src, x, y);
-                                            //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
-                                        } 
-                                    }
-                                }
-
-                                if (img_status_lock != null && img_status_lock.src != null &&
-                                img_status_lock.src.Length > 0 && index == img_status_lock.position &&
-                                img_status_lock.visible)
-                                {
-                                    if (WatchFacePreviewSet.Status.Lock)
-                                    {
-                                        int imageIndex = ListImages.IndexOf(img_status_lock.src);
-                                        int x = img_status_lock.x;
-                                        int y = img_status_lock.y;
-
-                                        if (imageIndex < ListImagesFullName.Count)
-                                        {
-                                            src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                            gPanel.DrawImage(src, x, y);
-                                            //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
-                                        } 
-                                    }
-                                }
-                            }
-                            break;
-                        #endregion
-
-                        #region ElementShortcuts
-                        case "ElementShortcuts":
-                            ElementShortcuts shortcutsElement = (ElementShortcuts)element;
-                            if (!shortcutsElement.visible && !Shortcuts_In_Gif) continue;
-
-                            hmUI_widget_IMG_CLICK img_click_step = shortcutsElement.Step;
-                            hmUI_widget_IMG_CLICK img_click_heart = shortcutsElement.Heart;
-                            hmUI_widget_IMG_CLICK img_click_spo2 = shortcutsElement.SPO2;
-                            hmUI_widget_IMG_CLICK img_click_pai = shortcutsElement.PAI;
-                            hmUI_widget_IMG_CLICK img_click_stress = shortcutsElement.Stress;
-                            hmUI_widget_IMG_CLICK img_click_weather = shortcutsElement.Weather;
-                            hmUI_widget_IMG_CLICK img_click_altimeter = shortcutsElement.Altimeter;
-                            hmUI_widget_IMG_CLICK img_click_sunrise = shortcutsElement.Sunrise;
-                            hmUI_widget_IMG_CLICK img_click_alarm = shortcutsElement.Alarm;
-                            hmUI_widget_IMG_CLICK img_click_sleep = shortcutsElement.Sleep;
-                            hmUI_widget_IMG_CLICK img_click_countdown = shortcutsElement.Countdown;
-                            hmUI_widget_IMG_CLICK img_click_stopwatch = shortcutsElement.Stopwatch;
-
-                            for (int index = 1; index <= 15; index++)
-                            {
-                                if (img_click_step != null && index == img_click_step.position)
-                                {
-                                    DrawShortcuts(gPanel, img_click_step, showShortcuts,
-                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
-                                }
-                                if (img_click_heart != null && index == img_click_heart.position)
-                                {
-                                    DrawShortcuts(gPanel, img_click_heart, showShortcuts,
-                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
-                                }
-                                if (img_click_spo2 != null && index == img_click_spo2.position)
-                                {
-                                    DrawShortcuts(gPanel, img_click_spo2, showShortcuts,
-                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
-                                }
-                                if (img_click_pai != null && index == img_click_pai.position)
-                                {
-                                    DrawShortcuts(gPanel, img_click_pai, showShortcuts,
-                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
-                                }
-                                if (img_click_stress != null && index == img_click_stress.position)
-                                {
-                                    DrawShortcuts(gPanel, img_click_stress, showShortcuts,
-                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
-                                }
-                                if (img_click_weather != null && index == img_click_weather.position)
-                                {
-                                    DrawShortcuts(gPanel, img_click_weather, showShortcuts,
-                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
-                                }
-                                if (img_click_altimeter != null && index == img_click_altimeter.position)
-                                {
-                                    DrawShortcuts(gPanel, img_click_altimeter, showShortcuts,
-                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
-                                }
-                                if (img_click_sunrise != null && index == img_click_sunrise.position)
-                                {
-                                    DrawShortcuts(gPanel, img_click_sunrise, showShortcuts,
-                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
-                                }
-                                if (img_click_alarm != null && index == img_click_alarm.position)
-                                {
-                                    DrawShortcuts(gPanel, img_click_alarm, showShortcuts,
-                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
-                                }
-                                if (img_click_sleep != null && index == img_click_sleep.position)
-                                {
-                                    DrawShortcuts(gPanel, img_click_sleep, showShortcuts,
-                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
-                                }
-                                if (img_click_countdown != null && index == img_click_countdown.position)
-                                {
-                                    DrawShortcuts(gPanel, img_click_countdown, showShortcuts,
-                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
-                                }
-                                if (img_click_stopwatch != null && index == img_click_stopwatch.position)
-                                {
-                                    DrawShortcuts(gPanel, img_click_stopwatch, showShortcuts,
-                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
-                                }
-                            }
-                            break;
-                        #endregion
-
-
-
-                        #region ElementSteps
-                        case "ElementSteps":
-                            ElementSteps activityElementSteps = (ElementSteps)element;
-                            if (!activityElementSteps.visible) continue;
-
-                            img_level = activityElementSteps.Images;
-                            img_prorgess = activityElementSteps.Segments;
-                            img_number = activityElementSteps.Number;
-                            img_number_target = activityElementSteps.Number_Target;
-                            img_pointer = activityElementSteps.Pointer;
-                            circle_scale = activityElementSteps.Circle_Scale;
-                            linear_scale = activityElementSteps.Linear_Scale;
-                            icon = activityElementSteps.Icon;
-
-                            elementValue = WatchFacePreviewSet.Activity.Steps;
-                            value_lenght = 5;
-                            goal = WatchFacePreviewSet.Activity.StepsGoal;
-                            progress = (float)WatchFacePreviewSet.Activity.Steps / WatchFacePreviewSet.Activity.StepsGoal;
-
-                            if (img_level != null && img_level.image_length > 0)
-                            {
-                                imgCount = img_level.image_length;
-                                valueImgIndex = (int)((imgCount-1) * progress);
-                                if (progress < 0.01) valueImgIndex = -1;
-                                if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
-                            }
-                            if (img_prorgess != null && img_prorgess.image_length > 0)
-                            {
-                                segmentCount = img_prorgess.image_length;
-                                valueSegmentIndex = (int)((segmentCount-1) * progress);
-                                if (progress < 0.01) valueSegmentIndex = -1;
-                                if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
-                            }
-
-                            DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
-                                img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
-                                progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
-                                showCentrHend, "ElementSteps");
-
-
-                            break;
-                        #endregion
-
-                        #region ElementBattery
-                        case "ElementBattery":
-                            ElementBattery activityElementBattery = (ElementBattery)element;
-                            if (!activityElementBattery.visible) continue;
-
-                            img_level = activityElementBattery.Images;
-                            img_prorgess = activityElementBattery.Segments;
-                            img_number = activityElementBattery.Number;
-                            //img_number_target = activityElementBattery.Number_Target;
-                            img_pointer = activityElementBattery.Pointer;
-                            circle_scale = activityElementBattery.Circle_Scale;
-                            linear_scale = activityElementBattery.Linear_Scale;
-                            icon = activityElementBattery.Icon;
-
-                            elementValue = WatchFacePreviewSet.Battery;
-                            value_lenght = 3;
-                            goal = 100;
-                            progress = (float)WatchFacePreviewSet.Battery / 100f;
-
-                            if (img_level != null && img_level.image_length > 0)
-                            {
-                                imgCount = img_level.image_length;
-                                float imgIndex = imgCount * progress;
-                                valueImgIndex = (int)imgIndex;
-                                valueImgIndex--;
-                                if (valueImgIndex < 0) valueImgIndex = 0;
-                                if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
-                            }
-                            if (img_prorgess != null && img_prorgess.image_length > 0)
-                            {
-                                segmentCount = img_prorgess.image_length;
-                                float imgIndex = segmentCount * progress;
-                                valueSegmentIndex = (int)imgIndex;
-                                valueSegmentIndex--;
-                                if (valueSegmentIndex < 0) valueSegmentIndex = 0;
-                                if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
-                            }
-
-                            DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
-                                img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
-                                progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
-                                showCentrHend, "ElementBattery");
-
-
-                            break;
-                        #endregion
-
-                        #region ElementCalories
-                        case "ElementCalories":
-                            ElementCalories activityElementCalories = (ElementCalories)element;
-                            if (!activityElementCalories.visible) continue;
-
-                            img_level = activityElementCalories.Images;
-                            img_prorgess = activityElementCalories.Segments;
-                            img_number = activityElementCalories.Number;
-                            img_number_target = activityElementCalories.Number_Target;
-                            img_pointer = activityElementCalories.Pointer;
-                            circle_scale = activityElementCalories.Circle_Scale;
-                            linear_scale = activityElementCalories.Linear_Scale;
-                            icon = activityElementCalories.Icon;
-
-                            elementValue = WatchFacePreviewSet.Activity.Calories;
-                            value_lenght = 4;
-                            goal = 300;
-                            progress = (float)WatchFacePreviewSet.Activity.Calories / 300f;
-
-                            if (img_level != null && img_level.image_length > 0)
-                            {
-                                imgCount = img_level.image_length;
-                                valueImgIndex = (int)((imgCount - 1) * progress);
-                                //if (progress < 0.01) valueImgIndex = -1;
-                                if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
-                            }
-                            if (img_prorgess != null && img_prorgess.image_length > 0)
-                            {
-                                segmentCount = img_prorgess.image_length;
-                                valueSegmentIndex = (int)((segmentCount - 1) * progress);
-                                //if (progress < 0.01) valueSegmentIndex = -1;
-                                if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
-                            }
-
-                            DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
-                                img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
-                                progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
-                                showCentrHend, "ElementCalories");
-
-
-                            break;
-                        #endregion
-
-                        #region ElementHeart
-                        case "ElementHeart":
-                            ElementHeart activityElementHeart = (ElementHeart)element;
-                            if (!activityElementHeart.visible) continue;
-
-                            img_level = activityElementHeart.Images;
-                            img_prorgess = activityElementHeart.Segments;
-                            img_number = activityElementHeart.Number;
-                            img_pointer = activityElementHeart.Pointer;
-                            circle_scale = activityElementHeart.Circle_Scale;
-                            linear_scale = activityElementHeart.Linear_Scale;
-                            icon = activityElementHeart.Icon;
-
-                            elementValue = WatchFacePreviewSet.Activity.HeartRate;
-                            value_lenght = 3;
-                            goal = 179;
-                            progress = (WatchFacePreviewSet.Activity.HeartRate - 71) / (179f - 71);
-
-                            //if (img_level != null && img_level.image_length > 0)
-                            //{
-                            //    imgCount = img_level.image_length;
-                            //    valueImgIndex = (int)((imgCount - 1) * progress);
-                            //    if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
-                            //}
-                            //if (img_prorgess != null && img_prorgess.image_length > 0)
-                            //{
-                            //    segmentCount = img_prorgess.image_length;
-                            //    valueSegmentIndex = (int)((segmentCount - 1) * progress);
-                            //    if (progress < 0.01) valueSegmentIndex = -1;
-                            //    if (valueSegmentIndex >= segmentCount) valueImgIndex = (int)(segmentCount - 1);
-                            //}
-                            if (elementValue < 90)
-                            {
-                                valueImgIndex = 0;
-                                valueSegmentIndex = 0;
-                            }
-                            if (elementValue >= 90 && elementValue < 108)
-                            {
-                                valueImgIndex = 1;
-                                valueSegmentIndex = 1;
-                            }
-                            if (elementValue >= 108 && elementValue < 126)
-                            {
-                                valueImgIndex = 2;
-                                valueSegmentIndex = 2;
-                            }
-                            if (elementValue >= 126 && elementValue < 144)
-                            {
-                                valueImgIndex = 3;
-                                valueSegmentIndex = 3;
-                            }
-                            if (elementValue >= 144 && elementValue < 162)
-                            {
-                                valueImgIndex = 4;
-                                valueSegmentIndex = 4;
-                            }
-                            if (elementValue >= 162)
-                            {
-                                valueImgIndex = 5;
-                                valueSegmentIndex = 5;
-                            }
-
-                            DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
-                                img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
-                                progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
-                                showCentrHend, "ElementHeart");
-
-
-                            break;
-                        #endregion
-
-                        #region ElementPAI
-                        case "ElementPAI":
-                            ElementPAI activityElementPAI = (ElementPAI)element;
-                            if (!activityElementPAI.visible) continue;
-
-                            img_level = activityElementPAI.Images;
-                            img_prorgess = activityElementPAI.Segments;
-                            img_number = activityElementPAI.Number;
-                            img_number_target = activityElementPAI.Number_Target;
-                            img_pointer = activityElementPAI.Pointer;
-                            circle_scale = activityElementPAI.Circle_Scale;
-                            linear_scale = activityElementPAI.Linear_Scale;
-                            icon = activityElementPAI.Icon;
-
-                            elementValue = 5;
-                            value_lenght = 3;
-                            goal = WatchFacePreviewSet.Activity.PAI;
-                            progress = (float)WatchFacePreviewSet.Activity.PAI / 100f;
-
-                            if (img_level != null && img_level.image_length > 0)
-                            {
-                                imgCount = img_level.image_length;
-                                valueImgIndex = (int)((imgCount - 1) * progress);
-                                //if (progress < 0.01) valueImgIndex = -1;
-                                if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
-                            }
-                            if (img_prorgess != null && img_prorgess.image_length > 0)
-                            {
-                                segmentCount = img_prorgess.image_length;
-                                valueSegmentIndex = (int)((segmentCount - 1) * progress);
-                                //if (progress < 0.01) valueSegmentIndex = -1;
-                                if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
-                            }
-
-                            DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
-                                img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
-                                progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
-                                showCentrHend, "ElementPAI");
-
-
-                            break;
-                        #endregion
-
-                        #region ElementDistance
-                        case "ElementDistance":
-                            ElementDistance activityElementDistance = (ElementDistance)element;
-                            if (!activityElementDistance.visible) continue;
-                            if (activityElementDistance.Number == null || 
-                                activityElementDistance.Number.img_First == null || 
-                                activityElementDistance.Number.img_First.Length == 0) continue;
-
-                            img_number = activityElementDistance.Number;
-
-                            elementValue = WatchFacePreviewSet.Activity.Distance;
-                            double distance_value = elementValue / 1000f;
-                            value_lenght = 4;
-                            int image_Index = ListImages.IndexOf(img_number.img_First);
-                            int pos_x = img_number.imageX;
-                            int pos_y = img_number.imageY;
-                            int distance_spasing = img_number.space;
-                            int distance_alignment = AlignmentToInt(img_number.align);
-                            //bool distance_addZero = img_number.zero;
-                            bool distance_addZero = false;
-                            int distance_separator_index = -1;
-                            if (img_number.unit != null && img_number.unit.Length > 0)
-                                distance_separator_index = ListImages.IndexOf(img_number.unit);
-                            int decumalPoint_index = -1;
-                            if (img_number.dot_image != null && img_number.dot_image.Length > 0)
-                                decumalPoint_index = ListImages.IndexOf(img_number.dot_image);
-
-                            Draw_dagital_text_dacumal(gPanel, image_Index, pos_x, pos_y,
-                                distance_spasing, distance_alignment, distance_value, distance_addZero, value_lenght, 
-                                distance_separator_index, decumalPoint_index, 2, BBorder);
-
-                            if (img_number.icon != null && img_number.icon.Length > 0)
-                            {
-                                image_Index = ListImages.IndexOf(img_number.icon);
-                                pos_x = img_number.iconPosX;
-                                pos_y = img_number.iconPosY;
-
-                                src = OpenFileStream(ListImagesFullName[image_Index]);
-                                gPanel.DrawImage(src, pos_x, pos_y);
-                                //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
-                            }
-
-                            break;
-                        #endregion
-
-                        #region ElementStand
-                        case "ElementStand":
-                            ElementStand activityElementStand = (ElementStand)element;
-                            if (!activityElementStand.visible) continue;
-
-                            img_level = activityElementStand.Images;
-                            img_prorgess = activityElementStand.Segments;
-                            img_number = activityElementStand.Number;
-                            img_number_target = activityElementStand.Number_Target;
-                            img_pointer = activityElementStand.Pointer;
-                            circle_scale = activityElementStand.Circle_Scale;
-                            linear_scale = activityElementStand.Linear_Scale;
-                            icon = activityElementStand.Icon;
-
-                            elementValue = WatchFacePreviewSet.Activity.StandUp;
-                            value_lenght = 2;
-                            goal = 12;
-                            progress = (float)WatchFacePreviewSet.Activity.StandUp / 12f;
-
-                            if (img_level != null && img_level.image_length > 0)
-                            {
-                                imgCount = img_level.image_length;
-                                valueImgIndex = (int)((imgCount - 1) * progress);
-                                //if (progress < 0.01) valueImgIndex = -1;
-                                if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
-                            }
-                            if (img_prorgess != null && img_prorgess.image_length > 0)
-                            {
-                                segmentCount = img_prorgess.image_length;
-                                valueSegmentIndex = (int)((segmentCount - 1) * progress);
-                                //if (progress < 0.01) valueSegmentIndex = -1;
-                                if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
-                            }
-
-                            DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
-                                img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
-                                progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
-                                showCentrHend, "ElementStand");
-
-
-                            break;
-                        #endregion
-
-                        #region ElementActivity
-                        case "ElementActivity":
-                            ElementActivity activityElementActivity = (ElementActivity)element;
-                            if (!activityElementActivity.visible) continue;
-
-                            img_level = activityElementActivity.Images;
-                            img_prorgess = activityElementActivity.Segments;
-                            img_number = activityElementActivity.Number;
-                            img_number_target = activityElementActivity.Number_Target;
-                            img_pointer = activityElementActivity.Pointer;
-                            circle_scale = activityElementActivity.Circle_Scale;
-                            linear_scale = activityElementActivity.Linear_Scale;
-                            icon = activityElementActivity.Icon;
-
-                            elementValue = WatchFacePreviewSet.Activity.Steps;
-                            value_lenght = 5;
-                            goal = WatchFacePreviewSet.Activity.StepsGoal;
-                            progress = (float)WatchFacePreviewSet.Activity.Steps / WatchFacePreviewSet.Activity.StepsGoal;
-
-                            if (img_level != null && img_level.image_length > 0)
-                            {
-                                imgCount = img_level.image_length;
-                                valueImgIndex = (int)((imgCount - 1) * progress);
-                                if (progress < 0.01) valueImgIndex = -1;
-                                if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
-                            }
-                            if (img_prorgess != null && img_prorgess.image_length > 0)
-                            {
-                                segmentCount = img_prorgess.image_length;
-                                valueSegmentIndex = (int)((segmentCount - 1) * progress);
-                                if (progress < 0.01) valueSegmentIndex = -1;
-                                if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
-                            }
-
-                            // пересчитываем данные если отображаем как калории
-                            if (activityElementActivity.showCalories)
-                            {
-                                elementValue = WatchFacePreviewSet.Activity.Calories;
-                                value_lenght = 4;
-                                goal = 300;
-                                progress = (float)WatchFacePreviewSet.Activity.Calories / 300f;
-
-                                if (img_level != null && img_level.image_length > 0)
-                                {
-                                    imgCount = img_level.image_length;
-                                    valueImgIndex = (int)((imgCount - 1) * progress);
-                                    //if (progress < 0.01) valueImgIndex = -1;
-                                    if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
-                                }
-                                if (img_prorgess != null && img_prorgess.image_length > 0)
-                                {
-                                    segmentCount = img_prorgess.image_length;
-                                    valueSegmentIndex = (int)((segmentCount - 1) * progress);
-                                    //if (progress < 0.01) valueSegmentIndex = -1;
-                                    if (valueSegmentIndex >= segmentCount) valueImgIndex = (int)(segmentCount - 1);
-                                }
-                            }
-
-                            DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
-                                img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
-                                progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
-                                showCentrHend, "ElementActivity");
-
-
-                            break;
-                        #endregion
-
-                        #region ElementSpO2
-                        case "ElementSpO2":
-                            ElementSpO2 activityElementSpO2 = (ElementSpO2)element;
-                            if (!activityElementSpO2.visible) continue;
-
-                            img_number = activityElementSpO2.Number;
-
-                            elementValue = 97;
-                            value_lenght = 3;
-                            goal = 100;
-                            progress = 0;
-
-
-                            DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
-                                img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
-                                progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
-                                showCentrHend, "ElementSpO2");
-
-
-                            break;
-                        #endregion
-
-                        #region ElementStress
-                        case "ElementStress":
-                            ElementStress activityElementStress = (ElementStress)element;
-                            if (!activityElementStress.visible) continue;
-
-                            img_level = activityElementStress.Images;
-                            img_prorgess = activityElementStress.Segments;
-                            img_number = activityElementStress.Number;
-                            img_pointer = activityElementStress.Pointer;
-                            icon = activityElementStress.Icon;
-
-                            elementValue = WatchFacePreviewSet.Activity.Stress;
-                            value_lenght = 3;
-                            goal = 100;
-                            progress = (float)WatchFacePreviewSet.Activity.Stress / 100f;
-
-                            if (img_level != null && img_level.image_length > 0)
-                            {
-                                imgCount = img_level.image_length;
-                                valueImgIndex = (int)((imgCount - 1) * progress);
-                                if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
-                                if (elementValue == 0) valueImgIndex = -1;
-                            }
-                            if (img_prorgess != null && img_prorgess.image_length > 0)
-                            {
-                                segmentCount = img_prorgess.image_length;
-                                valueSegmentIndex = (int)((segmentCount - 1) * progress);
-                                if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
-                                if (elementValue == 0) valueSegmentIndex = -1;
-                            }
-
-                            DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
-                                img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
-                                progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
-                                showCentrHend, "ElementStress");
-
-
-                            break;
-                        #endregion
-
-                        #region ElementFatBurning
-                        case "ElementFatBurning":
-                            ElementFatBurning activityElementFatBurning = (ElementFatBurning)element;
-                            if (!activityElementFatBurning.visible) continue;
-
-                            img_level = activityElementFatBurning.Images;
-                            img_prorgess = activityElementFatBurning.Segments;
-                            img_number = activityElementFatBurning.Number;
-                            img_number_target = activityElementFatBurning.Number_Target;
-                            img_pointer = activityElementFatBurning.Pointer;
-                            circle_scale = activityElementFatBurning.Circle_Scale;
-                            linear_scale = activityElementFatBurning.Linear_Scale;
-                            icon = activityElementFatBurning.Icon;
-
-                            elementValue = WatchFacePreviewSet.Activity.FatBurning;
-                            value_lenght = 3;
-                            goal = 30;
-                            progress = (float)WatchFacePreviewSet.Activity.FatBurning / 30f;
-
-                            if (img_level != null && img_level.image_length > 0)
-                            {
-                                imgCount = img_level.image_length;
-                                valueImgIndex = (int)((imgCount - 1) * progress);
-                                if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
-                                if (elementValue == 0) valueImgIndex = -1;
-                            }
-                            if (img_prorgess != null && img_prorgess.image_length > 0)
-                            {
-                                segmentCount = img_prorgess.image_length;
-                                valueSegmentIndex = (int)((segmentCount - 1) * progress);
-                                if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
-                                if (elementValue == 0) valueSegmentIndex = -1;
-                            }
-
-                            DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
-                                img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
-                                progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
-                                showCentrHend, "ElementFatBurning");
-
-
-                            break;
-                        #endregion
-
-
-
-                        #region ElementWeather
-                        case "ElementWeather":
-                            ElementWeather activityElementWeather = (ElementWeather)element;
-                            if (!activityElementWeather.visible) continue;
-
-                            img_level = activityElementWeather.Images;
-                            img_number = activityElementWeather.Number;
-                            hmUI_widget_IMG_NUMBER img_number_min = activityElementWeather.Number_Min;
-                            hmUI_widget_IMG_NUMBER img_number_max = activityElementWeather.Number_Max;
-                            hmUI_widget_TEXT city_name = activityElementWeather.City_Name;
-                            icon = activityElementWeather.Icon;
-
-                            int value_current = WatchFacePreviewSet.Weather.Temperature;
-                            int value_min = WatchFacePreviewSet.Weather.TemperatureMin;
-                            int value_max = WatchFacePreviewSet.Weather.TemperatureMax;
-                            int icon_index = WatchFacePreviewSet.Weather.Icon; 
-                            bool showTemperature = WatchFacePreviewSet.Weather.showTemperature;
-
-                            DrawWeather(gPanel, img_level, img_number, img_number_min, img_number_max,
-                                city_name, icon, value_current, value_min, value_max, value_lenght, icon_index,
-                                BBorder, showTemperature);
-
-
-                            break;
-                        #endregion
-
-                        #region ElementUVIndex
-                        case "ElementUVIndex":
-                            ElementUVIndex activityElementUVIndex = (ElementUVIndex)element;
-                            if (!activityElementUVIndex.visible) continue;
-
-                            img_level = activityElementUVIndex.Images;
-                            img_prorgess = activityElementUVIndex.Segments;
-                            img_number = activityElementUVIndex.Number;
-                            //img_number_target = activityElementBattery.Number_Target;
-                            img_pointer = activityElementUVIndex.Pointer;
-                            icon = activityElementUVIndex.Icon;
-
-                            elementValue = WatchFacePreviewSet.Weather.UVindex;
-                            value_lenght = 1;
-                            goal = 5;
-                            progress = (float)WatchFacePreviewSet.Weather.UVindex / 5f;
-
-                            if (img_level != null && img_level.image_length > 0)
-                            {
-                                imgCount = img_level.image_length;
-                                valueImgIndex = (int)(imgCount * progress);
-                                valueImgIndex--;
-                                if (valueImgIndex < 0) valueImgIndex = 0;
-                                if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
-                                if (imgCount == 5)
-                                {
-                                    switch (elementValue)
-                                    {
-                                        case 0:
-                                        case 1:
-                                        case 2:
-                                            valueImgIndex = 0;
-                                            break;
-                                        case 3:
-                                        case 4:
-                                        case 5:
-                                            valueImgIndex = 1;
-                                            break;
-                                        case 6:
-                                        case 7:
-                                            valueImgIndex = 2;
-                                            break;
-                                        case 8:
-                                        case 9:
-                                        case 10:
-                                            valueImgIndex = 3;
-                                            break;
-                                        default:
-                                            valueImgIndex = 4;
-                                            break;
-                                    }
-                                }
-                            }
-                            if (img_prorgess != null && img_prorgess.image_length > 0)
-                            {
-                                segmentCount = img_prorgess.image_length;
-                                valueSegmentIndex = (int)(segmentCount * progress);
-                                valueSegmentIndex--;
-                                if (valueSegmentIndex < 0) valueSegmentIndex = 0;
-                                if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
-                                if (segmentCount == 5)
-                                {
-                                    switch (elementValue)
-                                    {
-                                        case 0:
-                                        case 1:
-                                        case 2:
-                                            valueSegmentIndex = 0;
-                                            break;
-                                        case 3:
-                                        case 4:
-                                        case 5:
-                                            valueSegmentIndex = 1;
-                                            break;
-                                        case 6:
-                                        case 7:
-                                            valueSegmentIndex = 2;
-                                            break;
-                                        case 8:
-                                        case 9:
-                                        case 10:
-                                            valueSegmentIndex = 3;
-                                            break;
-                                        default:
-                                            valueSegmentIndex = 4;
-                                            break;
-                                    }
-                                }
-                            }
-
-                            DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
-                                img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
-                                progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
-                                showCentrHend, "ElementUVIndex");
-
-
-                            break;
-                        #endregion
-
-                        #region ElementHumidity
-                        case "ElementHumidity":
-                            ElementHumidity activityElementHumidity = (ElementHumidity)element;
-                            if (!activityElementHumidity.visible) continue;
-
-                            img_level = activityElementHumidity.Images;
-                            img_prorgess = activityElementHumidity.Segments;
-                            img_number = activityElementHumidity.Number;
-                            //img_number_target = activityElementBattery.Number_Target;
-                            img_pointer = activityElementHumidity.Pointer;
-                            icon = activityElementHumidity.Icon;
-
-                            elementValue = WatchFacePreviewSet.Weather.Humidity;
-                            value_lenght = 1;
-                            goal = 100;
-                            progress = (float)WatchFacePreviewSet.Weather.Humidity / 100f;
-
-                            if (img_level != null && img_level.image_length > 0)
-                            {
-                                imgCount = img_level.image_length;
-                                valueImgIndex = (int)(imgCount * progress);
-                                valueImgIndex--;
-                                if (valueImgIndex < 0) valueImgIndex = 0;
-                                if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
-                            }
-                            if (img_prorgess != null && img_prorgess.image_length > 0)
-                            {
-                                segmentCount = img_prorgess.image_length;
-                                valueSegmentIndex = (int)(segmentCount * progress);
-                                valueSegmentIndex--;
-                                if (valueSegmentIndex < 0) valueSegmentIndex = 0;
-                                if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
-                            }
-
-                            DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
-                                img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
-                                progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
-                                showCentrHend, "ElementHumidity");
-
-
-                            break;
-                        #endregion
-
-                        #region ElementAltimeter
-                        case "ElementAltimeter":
-                            ElementAltimeter activityElementAltimeter = (ElementAltimeter)element;
-                            if (!activityElementAltimeter.visible) continue;
-
-                            img_number = activityElementAltimeter.Number;
-                            img_pointer = activityElementAltimeter.Pointer;
-                            icon = activityElementAltimeter.Icon;
-
-                            elementValue = WatchFacePreviewSet.Weather.AirPressure;
-                            value_lenght = 4;
-                            goal = 1170-195;
-                            progress = (WatchFacePreviewSet.Weather.AirPressure - 195) / 975f;
-
-                            if (img_level != null && img_level.image_length > 0)
-                            {
-                                imgCount = img_level.image_length;
-                                valueImgIndex = (int)((imgCount - 1) * progress);
-                                if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
-                            }
-                            if (img_prorgess != null && img_prorgess.image_length > 0)
-                            {
-                                segmentCount = img_prorgess.image_length;
-                                valueSegmentIndex = (int)((segmentCount - 1) * progress);
-                                if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
-                            }
-
-                            DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
-                                img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
-                                progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
-                                showCentrHend, "ElementAltimeter");
-
-
-                            break;
-                        #endregion
-
-                        #region ElementSunrise
-                        case "ElementSunrise":
-                            ElementSunrise activityElementSunrise = (ElementSunrise)element;
-                            if (!activityElementSunrise.visible) continue;
-
-                            img_level = activityElementSunrise.Images;
-                            img_prorgess = activityElementSunrise.Segments;
-                            img_number = activityElementSunrise.Sunrise;
-                            img_number_target = activityElementSunrise.Sunset;
-                            img_pointer = activityElementSunrise.Pointer;
-                            icon = activityElementSunrise.Icon;
-
-                            int minSunrise = WatchFacePreviewSet.Time.Minutes;
-                            int hourSunrise = WatchFacePreviewSet.Time.Hours;
-
-                            DrawSunrise(gPanel, img_level, img_prorgess, img_number, img_number_target, activityElementSunrise.Sunset_Sunrise,
-                                img_pointer, icon, hourSunrise, minSunrise, BBorder, showProgressArea, showCentrHend);
-
-
-                            break;
-                        #endregion
-
-                        #region ElementWind
-                        case "ElementWind":
-                            ElementWind activityElementWind = (ElementWind)element;
-                            if (!activityElementWind.visible) continue;
-
-                            img_level = activityElementWind.Images;
-                            img_prorgess = activityElementWind.Segments;
-                            img_number = activityElementWind.Number;
-                            img_pointer = activityElementWind.Pointer;
-                            icon = activityElementWind.Icon;
-
-                            elementValue = WatchFacePreviewSet.Weather.WindForce;
-                            value_lenght = 1;
-                            goal = 12;
-                            progress = (float)WatchFacePreviewSet.Weather.WindForce / 12f;
-
-                            if (img_level != null && img_level.image_length > 0)
-                            {
-                                imgCount = img_level.image_length;
-                                valueImgIndex = (int)((imgCount - 1) * progress);
-                                valueImgIndex = elementValue - 2;
-                                if (valueImgIndex < 0) valueImgIndex = 0;
-                                if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
-                            }
-                            if (img_prorgess != null && img_prorgess.image_length > 0)
-                            {
-                                segmentCount = img_prorgess.image_length;
-                                valueSegmentIndex = (int)((segmentCount - 1) * progress);
-                                valueSegmentIndex = elementValue - 2;
-                                if (valueSegmentIndex < 0) valueSegmentIndex = 0;
-                                if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
-                            }
-
-                            DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
-                                img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
-                                progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
-                                showCentrHend, "ElementWind");
-
-
-                            break;
-                        #endregion
-
-                        #region ElementMoon
-                        case "ElementMoon":
-                            ElementMoon activityElementMoon = (ElementMoon)element;
-                            if (!activityElementMoon.visible) continue;
-
-                            img_level = activityElementMoon.Images;
-
-                            elementValue = 100;
-                            value_lenght = 3;
-                            goal = 100;
-                            //progress = 0;
-
-                            int year = WatchFacePreviewSet.Date.Year;
-                            int month = WatchFacePreviewSet.Date.Month;
-                            int day = WatchFacePreviewSet.Date.Day;
-                            double moon_age = MoonAge(day, month, year);
-                            //int moonPhase = (int)(8 * moon_age / 29);
-
-                            imgCount = img_level.image_length;
-                            valueImgIndex = (int)Math.Round((imgCount - 1) * moon_age / 29);
-                            //valueImgIndex = (int)Math.Round((imgCount - 1) * moon_age / 29.53f);
-                            //valueImgIndex = moonPhase - 1;
-                            if (valueImgIndex < 0) valueImgIndex = (int)(imgCount - 1);
-                            if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
-
-
-                            DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
-                                img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
-                                progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
-                                showCentrHend, "ElementMoon");
-
-
-                            break;
-                        #endregion
-
-                        #region ElementAnimation
-                        case "ElementAnimation":
-                            ElementAnimation elementAnimation = (ElementAnimation)element;
-                            if (!elementAnimation.visible) continue;
-
-                            for (int indexAnim = 1; indexAnim <= 3; indexAnim++)
-                            {
-                                hmUI_widget_IMG_ANIM_List frame_Animation_List = elementAnimation.Frame_Animation_List;
-                                if (frame_Animation_List != null && frame_Animation_List.visible && 
-                                    frame_Animation_List.position == indexAnim && frame_Animation_List.Frame_Animation != null)
-                                {
-                                    foreach (hmUI_widget_IMG_ANIM animation_frame in frame_Animation_List.Frame_Animation)
-                                    {
-                                        if(animation_frame.visible) DrawAnimationFrame(gPanel, animation_frame, time_value_sec);
-                                    }
-                                }
-
-                                Motion_Animation_List motion_Animation_List = elementAnimation.Motion_Animation_List;
-                                if (motion_Animation_List != null && motion_Animation_List.visible &&
-                                    motion_Animation_List.position == indexAnim && motion_Animation_List.Motion_Animation != null)
-                                {
-                                    foreach (Motion_Animation motion_Animation in motion_Animation_List.Motion_Animation)
-                                    {
-                                        if (motion_Animation.visible) DrawAnimationMotion(gPanel, motion_Animation, time_value_sec);
-                                    }
-                                }
-
-                                Rotate_Animation_List rotate_Animation_List = elementAnimation.Rotate_Animation_List;
-                                if (rotate_Animation_List != null && rotate_Animation_List.visible &&
-                                    rotate_Animation_List.position == indexAnim && rotate_Animation_List.Rotate_Animation != null)
-                                {
-                                    foreach (Rotate_Animation rotate_Animation in rotate_Animation_List.Rotate_Animation)
-                                    {
-                                        if (rotate_Animation.visible) DrawAnimationRotate(gPanel, rotate_Animation, time_value_sec, showCentrHend);
-                                    }
-                                } 
-                            }
-
-
-                            break;
-                            #endregion
-
-                    }
+                    Draw_elements(element, gPanel, scale, crop, WMesh, BMesh, BBorder, showShortcuts, showShortcutsArea, showShortcutsBorder,
+                        showShortcutsImage, showAnimation, showProgressArea, showCentrHend, showWidgetsArea, link, Shortcuts_In_Gif, time_value_sec,
+                        showEeditMode, edit_mode);
                 }
             }
             #endregion
             //src.Dispose();
+
+            #region EditableElements
+            Elements = null;
+            if (Watch_Face != null && Watch_Face.Editable_Elements != null && Watch_Face.Editable_Elements.Watchface_edit_group != null &&
+                Watch_Face.Editable_Elements.Watchface_edit_group.Count > 0)
+            {
+                foreach(WATCHFACE_EDIT_GROUP edit_group in Watch_Face.Editable_Elements.Watchface_edit_group)
+                {
+                    int selected_element = edit_group.selected_element;
+                    if (selected_element >= 0 && edit_group.Elements != null && selected_element < edit_group.Elements.Count)
+                    {
+                        string type = edit_group.Elements[selected_element].GetType().Name;
+                        //bool showDate = true;
+                        if(type == "ElementDateDay" || type == "ElementDateMonth" || type == "ElementDateYear")
+                        {
+                            foreach(Object element in edit_group.Elements)
+                            {
+                                type = element.GetType().Name;
+                                if (type == "ElementDateDay" || type == "ElementDateMonth" || type == "ElementDateYear")
+                                {
+                                    Draw_elements(element, gPanel, scale, crop, WMesh, BMesh, BBorder, showShortcuts,
+                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage, showAnimation, showProgressArea, showCentrHend,
+                                        showWidgetsArea, link, Shortcuts_In_Gif, time_value_sec, showEeditMode, edit_mode);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            Draw_elements(edit_group.Elements[selected_element], gPanel, scale, crop, WMesh, BMesh, BBorder, showShortcuts, 
+                                showShortcutsArea, showShortcutsBorder, showShortcutsImage, showAnimation, showProgressArea, showCentrHend,
+                                showWidgetsArea, link, Shortcuts_In_Gif, time_value_sec, showEeditMode, edit_mode);
+                        }
+         
+                    }
+                }
+            }
+            #endregion
 
             #region EditablePointers
             if (Watch_Face != null && Watch_Face.ElementEditablePointers != null &&
@@ -2006,8 +366,1700 @@ namespace Watch_Face_Editor
                 //gPanel.DrawImage(mask, new Rectangle(0, 0, mask.Width, mask.Height));
                 mask.Dispose();
             }
+            src.Dispose();
         }
 
+        public void Draw_elements(Object element, Graphics gPanel, float scale, bool crop, bool WMesh, bool BMesh, bool BBorder,
+            bool showShortcuts, bool showShortcutsArea, bool showShortcutsBorder, bool showShortcutsImage,
+            bool showAnimation, bool showProgressArea, bool showCentrHend,
+            bool showWidgetsArea, int link, bool Shortcuts_In_Gif, float time_value_sec, bool showEeditMode, int edit_mode)
+        {
+            Bitmap src = new Bitmap(1, 1);
+            hmUI_widget_IMG_LEVEL img_level = null;
+            hmUI_widget_IMG_PROGRESS img_prorgess = null;
+            hmUI_widget_IMG_NUMBER img_number = null;
+            hmUI_widget_IMG_NUMBER img_number_target = null;
+            hmUI_widget_IMG_POINTER img_pointer = null;
+            Circle_Scale circle_scale = null;
+            Linear_Scale linear_scale = null;
+            hmUI_widget_IMG icon = null;
+
+            int elementValue = 0;
+            int value_lenght = 3;
+            int goal = 10000;
+            float progress = 0;
+
+            int valueImgIndex = -1;
+            int valueSegmentIndex = -1;
+            int imgCount = 0;
+            int segmentCount = 0;
+
+            string type = element.GetType().Name;
+            switch (type)
+            {
+                #region ElementDigitalTime
+                case "ElementDigitalTime":
+                    ElementDigitalTime DigitalTime = (ElementDigitalTime)element;
+                    if (!DigitalTime.visible) return;
+                    int time_offsetX = -1;
+                    int time_offsetY = -1;
+                    int time_spasing = 0;
+                    bool am_pm = false;
+
+                    // определяем формат времени fm/pm
+                    if (DigitalTime.AmPm != null && DigitalTime.AmPm.am_img != null
+                            && DigitalTime.AmPm.am_img.Length > 0 && DigitalTime.AmPm.pm_img != null
+                            && DigitalTime.AmPm.pm_img.Length > 0 &&
+                            DigitalTime.AmPm.visible && checkBox_ShowIn12hourFormat.Checked) am_pm = true;
+
+                    for (int index = 1; index <= 4; index++)
+                    {
+                        if (DigitalTime.Hour != null && DigitalTime.Hour.img_First != null
+                            && DigitalTime.Hour.img_First.Length > 0 &&
+                            index == DigitalTime.Hour.position && DigitalTime.Hour.visible)
+                        {
+                            int imageIndex = ListImages.IndexOf(DigitalTime.Hour.img_First);
+                            int x = DigitalTime.Hour.imageX;
+                            int y = DigitalTime.Hour.imageY;
+                            time_offsetY = y;
+                            int spasing = DigitalTime.Hour.space;
+                            time_spasing = spasing;
+                            int alignment = AlignmentToInt(DigitalTime.Hour.align);
+                            bool addZero = DigitalTime.Hour.zero;
+                            //addZero = true;
+                            int value = WatchFacePreviewSet.Time.Hours;
+                            int separator_index = -1;
+                            if (DigitalTime.Hour.unit != null && DigitalTime.Hour.unit.Length > 0)
+                                separator_index = ListImages.IndexOf(DigitalTime.Hour.unit);
+
+                            if (ProgramSettings.ShowIn12hourFormat && DigitalTime.AmPm != null)
+                            {
+                                if (am_pm)
+                                {
+                                    if (value > 11) value -= 12;
+                                    if (value == 0) value = 12;
+                                }
+                            }
+
+                            time_offsetX = Draw_dagital_text(gPanel, imageIndex, x, y,
+                                                spasing, alignment, value, addZero, 2, separator_index, BBorder);
+
+                            if (DigitalTime.Hour.icon != null && DigitalTime.Hour.icon.Length > 0)
+                            {
+                                imageIndex = ListImages.IndexOf(DigitalTime.Hour.icon);
+                                x = DigitalTime.Hour.iconPosX;
+                                y = DigitalTime.Hour.iconPosY;
+
+                                src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                gPanel.DrawImage(src, x, y);
+                                //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                            }
+                        }
+
+                        if (DigitalTime.Minute != null && DigitalTime.Minute.img_First != null
+                            && DigitalTime.Minute.img_First.Length > 0 &&
+                            index == DigitalTime.Minute.position && DigitalTime.Minute.visible)
+                        {
+                            int imageIndex = ListImages.IndexOf(DigitalTime.Minute.img_First);
+                            int x = DigitalTime.Minute.imageX;
+                            int y = DigitalTime.Minute.imageY;
+                            int spasing = DigitalTime.Minute.space;
+                            time_spasing = spasing;
+                            int alignment = AlignmentToInt(DigitalTime.Minute.align);
+                            bool addZero = DigitalTime.Minute.zero;
+                            //addZero = true;
+                            if (DigitalTime.Minute.follow && time_offsetX > -1 &&
+                                DigitalTime.Minute.position > DigitalTime.Hour.position)
+                            {
+                                x = time_offsetX;
+                                alignment = 0;
+                                y = time_offsetY;
+                                spasing = time_spasing;
+                            }
+                            time_offsetY = y;
+                            int value = WatchFacePreviewSet.Time.Minutes;
+                            int separator_index = -1;
+                            if (DigitalTime.Minute.unit != null && DigitalTime.Minute.unit.Length > 0)
+                                separator_index = ListImages.IndexOf(DigitalTime.Minute.unit);
+
+                            time_offsetX = Draw_dagital_text(gPanel, imageIndex, x, y,
+                                                spasing, alignment, value, addZero, 2, separator_index, BBorder);
+
+                            if (DigitalTime.Minute.icon != null && DigitalTime.Minute.icon.Length > 0)
+                            {
+                                imageIndex = ListImages.IndexOf(DigitalTime.Minute.icon);
+                                x = DigitalTime.Minute.iconPosX;
+                                y = DigitalTime.Minute.iconPosY;
+
+                                src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                gPanel.DrawImage(src, x, y);
+                                //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                            }
+                        }
+
+                        if (DigitalTime.Second != null && DigitalTime.Second.img_First != null
+                            && DigitalTime.Second.img_First.Length > 0 &&
+                            index == DigitalTime.Second.position && DigitalTime.Second.visible)
+                        {
+                            int imageIndex = ListImages.IndexOf(DigitalTime.Second.img_First);
+                            int x = DigitalTime.Second.imageX;
+                            int y = DigitalTime.Second.imageY;
+                            int spasing = DigitalTime.Second.space;
+                            time_spasing = spasing;
+                            int alignment = AlignmentToInt(DigitalTime.Second.align);
+                            bool addZero = DigitalTime.Second.zero;
+                            //addZero = true;
+                            if (DigitalTime.Second.follow && time_offsetX > -1 &&
+                                DigitalTime.Second.position > DigitalTime.Minute.position)
+                            {
+                                x = time_offsetX;
+                                alignment = 0;
+                                y = time_offsetY;
+                                spasing = time_spasing;
+                            }
+                            time_offsetY = y;
+                            int value = WatchFacePreviewSet.Time.Seconds;
+                            int separator_index = -1;
+                            if (DigitalTime.Second.unit != null && DigitalTime.Second.unit.Length > 0)
+                                separator_index = ListImages.IndexOf(DigitalTime.Second.unit);
+
+
+                            time_offsetX = Draw_dagital_text(gPanel, imageIndex, x, y,
+                                                spasing, alignment, value, addZero, 2, separator_index, BBorder);
+
+                            if (DigitalTime.Second.icon != null && DigitalTime.Second.icon.Length > 0)
+                            {
+                                imageIndex = ListImages.IndexOf(DigitalTime.Second.icon);
+                                x = DigitalTime.Second.iconPosX;
+                                y = DigitalTime.Second.iconPosY;
+
+                                src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                gPanel.DrawImage(src, x, y);
+                                //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                            }
+                        }
+
+                        if (am_pm && index == DigitalTime.AmPm.position)
+                        {
+                            if (WatchFacePreviewSet.Time.Hours > 11)
+                            {
+                                int imageIndex = ListImages.IndexOf(DigitalTime.AmPm.pm_img);
+                                int x = DigitalTime.AmPm.pm_x;
+                                int y = DigitalTime.AmPm.pm_y;
+
+                                src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                gPanel.DrawImage(src, x, y);
+                                //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                            }
+                            else
+                            {
+                                int imageIndex = ListImages.IndexOf(DigitalTime.AmPm.am_img);
+                                int x = DigitalTime.AmPm.am_x;
+                                int y = DigitalTime.AmPm.am_y;
+
+                                src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                gPanel.DrawImage(src, x, y);
+                                //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                            }
+                        }
+                    }
+
+                    break;
+                #endregion
+
+                #region ElementAnalogTime
+                case "ElementAnalogTime":
+                    ElementAnalogTime AnalogTime = (ElementAnalogTime)element;
+                    if (!AnalogTime.visible) return;
+
+                    for (int index = 1; index <= 3; index++)
+                    {
+                        if (AnalogTime.Hour != null && AnalogTime.Hour.src != null
+                            && AnalogTime.Hour.src.Length > 0 &&
+                            index == AnalogTime.Hour.position && AnalogTime.Hour.visible)
+                        {
+                            int x = AnalogTime.Hour.center_x;
+                            int y = AnalogTime.Hour.center_y;
+                            int offsetX = AnalogTime.Hour.pos_x;
+                            int offsetY = AnalogTime.Hour.pos_y;
+                            int image_index = ListImages.IndexOf(AnalogTime.Hour.src);
+                            int hour = WatchFacePreviewSet.Time.Hours;
+                            int min = WatchFacePreviewSet.Time.Minutes;
+                            //int sec = Watch_Face_Preview_Set.TimeW.Seconds;
+                            if (hour >= 12) hour = hour - 12;
+                            float angle = 360 * hour / 12 + 360 * min / (60 * 12);
+                            DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+
+                            if (AnalogTime.Hour.cover_path != null && AnalogTime.Hour.cover_path.Length > 0)
+                            {
+                                image_index = ListImages.IndexOf(AnalogTime.Hour.cover_path);
+                                x = AnalogTime.Hour.cover_x;
+                                y = AnalogTime.Hour.cover_y;
+
+                                src = OpenFileStream(ListImagesFullName[image_index]);
+                                gPanel.DrawImage(src, x, y);
+                            }
+                        }
+
+                        if (AnalogTime.Minute != null && AnalogTime.Minute.src != null
+                            && AnalogTime.Minute.src.Length > 0 &&
+                            index == AnalogTime.Minute.position && AnalogTime.Minute.visible)
+                        {
+                            int x = AnalogTime.Minute.center_x;
+                            int y = AnalogTime.Minute.center_y;
+                            int offsetX = AnalogTime.Minute.pos_x;
+                            int offsetY = AnalogTime.Minute.pos_y;
+                            int image_index = ListImages.IndexOf(AnalogTime.Minute.src);
+                            int min = WatchFacePreviewSet.Time.Minutes;
+                            float angle = 360 * min / 60;
+                            DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+
+                            if (AnalogTime.Minute.cover_path != null && AnalogTime.Minute.cover_path.Length > 0)
+                            {
+                                image_index = ListImages.IndexOf(AnalogTime.Minute.cover_path);
+                                x = AnalogTime.Minute.cover_x;
+                                y = AnalogTime.Minute.cover_y;
+
+                                src = OpenFileStream(ListImagesFullName[image_index]);
+                                gPanel.DrawImage(src, x, y);
+                            }
+                        }
+
+                        if (AnalogTime.Second != null && AnalogTime.Second.src != null
+                            && AnalogTime.Second.src.Length > 0 &&
+                            index == AnalogTime.Second.position && AnalogTime.Second.visible)
+                        {
+                            int x = AnalogTime.Second.center_x;
+                            int y = AnalogTime.Second.center_y;
+                            int offsetX = AnalogTime.Second.pos_x;
+                            int offsetY = AnalogTime.Second.pos_y;
+                            int image_index = ListImages.IndexOf(AnalogTime.Second.src);
+                            int sec = WatchFacePreviewSet.Time.Seconds;
+                            float angle = 360 * sec / 60;
+                            DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+
+                            if (AnalogTime.Second.cover_path != null && AnalogTime.Second.cover_path.Length > 0)
+                            {
+                                image_index = ListImages.IndexOf(AnalogTime.Second.cover_path);
+                                x = AnalogTime.Second.cover_x;
+                                y = AnalogTime.Second.cover_y;
+
+                                src = OpenFileStream(ListImagesFullName[image_index]);
+                                gPanel.DrawImage(src, x, y);
+                            }
+                        }
+                    }
+
+                    break;
+                #endregion
+
+                #region ElementEditablePointers
+                /*case "ElementEditablePointers":
+                    ElementEditablePointers EditablePointers = (ElementEditablePointers)element;
+                    if (!EditablePointers.visible) continue;
+                    if (EditablePointers.config == null || EditablePointers.config.Count == 0 ||
+                        EditablePointers.selected_pointers < 0 || 
+                        EditablePointers.selected_pointers >= EditablePointers.config.Count) continue;
+
+                    PointersList pointers_list = EditablePointers.config[EditablePointers.selected_pointers];
+
+                    if (pointers_list.hour != null && pointers_list.hour.src != null
+                            && pointers_list.hour.src.Length > 0)
+                    {
+                        int x = pointers_list.hour.center_x;
+                        int y = pointers_list.hour.center_y;
+                        int offsetX = pointers_list.hour.pos_x;
+                        int offsetY = pointers_list.hour.pos_y;
+                        int image_index = ListImages.IndexOf(pointers_list.hour.src);
+                        int hour = WatchFacePreviewSet.Time.Hours;
+                        int min = WatchFacePreviewSet.Time.Minutes;
+                        //int sec = Watch_Face_Preview_Set.TimeW.Seconds;
+                        if (hour >= 12) hour = hour - 12;
+                        float angle = 360 * hour / 12 + 360 * min / (60 * 12);
+                        DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+
+                        if (pointers_list.hour.cover_path != null && pointers_list.hour.cover_path.Length > 0)
+                        {
+                            image_index = ListImages.IndexOf(pointers_list.hour.cover_path);
+                            x = pointers_list.hour.cover_x;
+                            y = pointers_list.hour.cover_y;
+
+                            src = OpenFileStream(ListImagesFullName[image_index]);
+                            gPanel.DrawImage(src, x, y);
+                        }
+                    }
+
+                    if (pointers_list.minute != null && pointers_list.minute.src != null
+                        && pointers_list.minute.src.Length > 0)
+                    {
+                        int x = pointers_list.minute.center_x;
+                        int y = pointers_list.minute.center_y;
+                        int offsetX = pointers_list.minute.pos_x;
+                        int offsetY = pointers_list.minute.pos_y;
+                        int image_index = ListImages.IndexOf(pointers_list.minute.src);
+                        int min = WatchFacePreviewSet.Time.Minutes;
+                        float angle = 360 * min / 60;
+                        DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+
+                        if (pointers_list.minute.cover_path != null && pointers_list.minute.cover_path.Length > 0)
+                        {
+                            image_index = ListImages.IndexOf(pointers_list.minute.cover_path);
+                            x = pointers_list.minute.cover_x;
+                            y = pointers_list.minute.cover_y;
+
+                            src = OpenFileStream(ListImagesFullName[image_index]);
+                            gPanel.DrawImage(src, x, y);
+                        }
+                    }
+
+                    if (pointers_list.second != null && pointers_list.second.src != null
+                        && pointers_list.second.src.Length > 0 &&
+                        (radioButton_ScreenNormal.Checked || EditablePointers.AOD_show))
+                    {
+                        int x = pointers_list.second.center_x;
+                        int y = pointers_list.second.center_y;
+                        int offsetX = pointers_list.second.pos_x;
+                        int offsetY = pointers_list.second.pos_y;
+                        int image_index = ListImages.IndexOf(pointers_list.second.src);
+                        int sec = WatchFacePreviewSet.Time.Seconds;
+                        float angle = 360 * sec / 60;
+                        DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+
+                        if (pointers_list.second.cover_path != null && pointers_list.second.cover_path.Length > 0)
+                        {
+                            image_index = ListImages.IndexOf(pointers_list.second.cover_path);
+                            x = pointers_list.second.cover_x;
+                            y = pointers_list.second.cover_y;
+
+                            src = OpenFileStream(ListImagesFullName[image_index]);
+                            gPanel.DrawImage(src, x, y);
+                        }
+                    }
+
+                    break;*/
+                #endregion
+
+                #region ElementDateDay
+                case "ElementDateDay":
+                    ElementDateDay DateDay = (ElementDateDay)element;
+                    if (!DateDay.visible) return;
+
+                    for (int index = 1; index <= 15; index++)
+                    {
+                        if (DateDay.Number != null && DateDay.Number.img_First != null
+                            && DateDay.Number.img_First.Length > 0 &&
+                            index == DateDay.Number.position && DateDay.Number.visible)
+                        {
+                            int imageIndex = ListImages.IndexOf(DateDay.Number.img_First);
+                            int x = DateDay.Number.imageX;
+                            int y = DateDay.Number.imageY;
+                            int spasing = DateDay.Number.space;
+                            time_spasing = spasing;
+                            int alignment = AlignmentToInt(DateDay.Number.align);
+                            bool addZero = DateDay.Number.zero;
+                            //addZero = true;
+                            int value = WatchFacePreviewSet.Date.Day;
+                            int separator_index = -1;
+                            if (DateDay.Number.unit != null && DateDay.Number.unit.Length > 0)
+                                separator_index = ListImages.IndexOf(DateDay.Number.unit);
+
+                            Draw_dagital_text(gPanel, imageIndex, x, y,
+                                spasing, alignment, value, addZero, 2, separator_index, BBorder);
+
+                            if (DateDay.Number.icon != null && DateDay.Number.icon.Length > 0)
+                            {
+                                imageIndex = ListImages.IndexOf(DateDay.Number.icon);
+                                x = DateDay.Number.iconPosX;
+                                y = DateDay.Number.iconPosY;
+
+                                src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                gPanel.DrawImage(src, x, y);
+                                //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                            }
+                        }
+
+                        if (DateDay.Pointer != null && DateDay.Pointer.src != null
+                            && DateDay.Pointer.src.Length > 0 &&
+                            index == DateDay.Pointer.position && DateDay.Pointer.visible)
+                        {
+                            int x = DateDay.Pointer.center_x;
+                            int y = DateDay.Pointer.center_y;
+                            int offsetX = DateDay.Pointer.pos_x;
+                            int offsetY = DateDay.Pointer.pos_y;
+                            int startAngle = DateDay.Pointer.start_angle;
+                            int endAngle = DateDay.Pointer.end_angle;
+                            int image_index = ListImages.IndexOf(DateDay.Pointer.src);
+                            int Day = WatchFacePreviewSet.Date.Day;
+                            //Day--;
+                            int angle = (int)(startAngle + Day * (endAngle - startAngle) / 31f);
+
+                            if (DateDay.Pointer.scale != null && DateDay.Pointer.scale.Length > 0)
+                            {
+                                int image_index_scale = ListImages.IndexOf(DateDay.Pointer.scale);
+                                int x_scale = DateDay.Pointer.scale_x;
+                                int y_scale = DateDay.Pointer.scale_y;
+
+                                src = OpenFileStream(ListImagesFullName[image_index_scale]);
+                                gPanel.DrawImage(src, x_scale, y_scale);
+                            }
+
+                            DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+
+                            if (DateDay.Pointer.cover_path != null && DateDay.Pointer.cover_path.Length > 0)
+                            {
+                                image_index = ListImages.IndexOf(DateDay.Pointer.cover_path);
+                                x = DateDay.Pointer.cover_x;
+                                y = DateDay.Pointer.cover_y;
+
+                                src = OpenFileStream(ListImagesFullName[image_index]);
+                                gPanel.DrawImage(src, x, y);
+                            }
+                        }
+                    }
+
+                    break;
+                #endregion
+
+                #region ElementDateMonth
+                case "ElementDateMonth":
+                    ElementDateMonth DateMonth = (ElementDateMonth)element;
+                    if (!DateMonth.visible) return;
+
+                    for (int index = 1; index <= 15; index++)
+                    {
+                        if (DateMonth.Number != null && DateMonth.Number.img_First != null
+                            && DateMonth.Number.img_First.Length > 0 &&
+                            index == DateMonth.Number.position && DateMonth.Number.visible)
+                        {
+                            int imageIndex = ListImages.IndexOf(DateMonth.Number.img_First);
+                            int x = DateMonth.Number.imageX;
+                            int y = DateMonth.Number.imageY;
+                            int spasing = DateMonth.Number.space;
+                            int alignment = AlignmentToInt(DateMonth.Number.align);
+                            bool addZero = DateMonth.Number.zero;
+                            //addZero = true;
+                            int value = WatchFacePreviewSet.Date.Month;
+                            int separator_index = -1;
+                            if (DateMonth.Number.unit != null && DateMonth.Number.unit.Length > 0)
+                                separator_index = ListImages.IndexOf(DateMonth.Number.unit);
+
+                            Draw_dagital_text(gPanel, imageIndex, x, y,
+                                spasing, alignment, value, addZero, 2, separator_index, BBorder);
+
+                            if (DateMonth.Number.icon != null && DateMonth.Number.icon.Length > 0)
+                            {
+                                imageIndex = ListImages.IndexOf(DateMonth.Number.icon);
+                                x = DateMonth.Number.iconPosX;
+                                y = DateMonth.Number.iconPosY;
+
+                                src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                gPanel.DrawImage(src, x, y);
+                                //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                            }
+                        }
+
+                        if (DateMonth.Pointer != null && DateMonth.Pointer.src != null
+                            && DateMonth.Pointer.src.Length > 0 &&
+                            index == DateMonth.Pointer.position && DateMonth.Pointer.visible)
+                        {
+                            int x = DateMonth.Pointer.center_x;
+                            int y = DateMonth.Pointer.center_y;
+                            int offsetX = DateMonth.Pointer.pos_x;
+                            int offsetY = DateMonth.Pointer.pos_y;
+                            int startAngle = DateMonth.Pointer.start_angle;
+                            int endAngle = DateMonth.Pointer.end_angle;
+                            int image_index = ListImages.IndexOf(DateMonth.Pointer.src);
+                            int Month = WatchFacePreviewSet.Date.Month;
+                            //Month--;
+                            int angle = (int)(startAngle + Month * (endAngle - startAngle) / 12f);
+
+                            if (DateMonth.Pointer.scale != null && DateMonth.Pointer.scale.Length > 0)
+                            {
+                                int image_index_scale = ListImages.IndexOf(DateMonth.Pointer.scale);
+                                int x_scale = DateMonth.Pointer.scale_x;
+                                int y_scale = DateMonth.Pointer.scale_y;
+
+                                src = OpenFileStream(ListImagesFullName[image_index_scale]);
+                                gPanel.DrawImage(src, x_scale, y_scale);
+                            }
+
+                            DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+
+                            if (DateMonth.Pointer.cover_path != null && DateMonth.Pointer.cover_path.Length > 0)
+                            {
+                                image_index = ListImages.IndexOf(DateMonth.Pointer.cover_path);
+                                x = DateMonth.Pointer.cover_x;
+                                y = DateMonth.Pointer.cover_y;
+
+                                src = OpenFileStream(ListImagesFullName[image_index]);
+                                gPanel.DrawImage(src, x, y);
+                            }
+                        }
+
+                        if (DateMonth.Images != null && DateMonth.Images.img_First != null
+                            && DateMonth.Images.img_First.Length > 0 &&
+                            index == DateMonth.Images.position && DateMonth.Images.visible)
+                        {
+                            int imageIndex = ListImages.IndexOf(DateMonth.Images.img_First);
+                            int x = DateMonth.Images.X;
+                            int y = DateMonth.Images.Y;
+                            imageIndex = imageIndex + WatchFacePreviewSet.Date.Month - 1;
+
+                            if (imageIndex < ListImagesFullName.Count)
+                            {
+                                src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                gPanel.DrawImage(src, x, y);
+                                //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                            }
+                        }
+
+                    }
+
+                    break;
+                #endregion
+
+                #region ElementDateYear
+                case "ElementDateYear":
+                    ElementDateYear DateYear = (ElementDateYear)element;
+                    if (!DateYear.visible) return;
+
+                    if (DateYear.Number != null && DateYear.Number.img_First != null
+                            && DateYear.Number.img_First.Length > 0)
+                    {
+                        int imageIndex = ListImages.IndexOf(DateYear.Number.img_First);
+                        int x = DateYear.Number.imageX;
+                        int y = DateYear.Number.imageY;
+                        int spasing = DateYear.Number.space;
+                        //int alignment = AlignmentToInt(DateYear.Number.align);
+                        int alignment = 0;
+                        bool addZero = DateYear.Number.zero;
+                        int value = WatchFacePreviewSet.Date.Year;
+                        if (!addZero) value = value % 100;
+                        int separator_index = -1;
+                        if (DateYear.Number.unit != null && DateYear.Number.unit.Length > 0)
+                            separator_index = ListImages.IndexOf(DateYear.Number.unit);
+
+                        Draw_dagital_text(gPanel, imageIndex, x, y,
+                            spasing, alignment, value, addZero, 4, separator_index, BBorder);
+
+                        if (DateYear.Number.icon != null && DateYear.Number.icon.Length > 0)
+                        {
+                            imageIndex = ListImages.IndexOf(DateYear.Number.icon);
+                            x = DateYear.Number.iconPosX;
+                            y = DateYear.Number.iconPosY;
+
+                            src = OpenFileStream(ListImagesFullName[imageIndex]);
+                            gPanel.DrawImage(src, x, y);
+                            //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                        }
+                    }
+
+                    break;
+                #endregion
+
+                #region ElementDateWeek
+                case "ElementDateWeek":
+                    ElementDateWeek DateWeek = (ElementDateWeek)element;
+                    if (!DateWeek.visible) return;
+
+                    for (int index = 1; index <= 15; index++)
+                    {
+                        if (DateWeek.Pointer != null && DateWeek.Pointer.src != null
+                            && DateWeek.Pointer.src.Length > 0 &&
+                            index == DateWeek.Pointer.position && DateWeek.Pointer.visible)
+                        {
+                            int x = DateWeek.Pointer.center_x;
+                            int y = DateWeek.Pointer.center_y;
+                            int offsetX = DateWeek.Pointer.pos_x;
+                            int offsetY = DateWeek.Pointer.pos_y;
+                            int startAngle = DateWeek.Pointer.start_angle;
+                            int endAngle = DateWeek.Pointer.end_angle;
+                            int image_index = ListImages.IndexOf(DateWeek.Pointer.src);
+                            int WeekDay = WatchFacePreviewSet.Date.WeekDay;
+                            //WeekDay++;
+                            //if (WeekDay < 0) WeekDay = 6;
+                            //if (WeekDay > 7) WeekDay = 1;
+                            int angle = (int)(startAngle + WeekDay * (endAngle - startAngle) / 7f);
+
+                            if (DateWeek.Pointer.scale != null && DateWeek.Pointer.scale.Length > 0)
+                            {
+                                int image_index_scale = ListImages.IndexOf(DateWeek.Pointer.scale);
+                                int x_scale = DateWeek.Pointer.scale_x;
+                                int y_scale = DateWeek.Pointer.scale_y;
+
+                                src = OpenFileStream(ListImagesFullName[image_index_scale]);
+                                gPanel.DrawImage(src, x_scale, y_scale);
+                            }
+
+                            DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+
+                            if (DateWeek.Pointer.cover_path != null && DateWeek.Pointer.cover_path.Length > 0)
+                            {
+                                image_index = ListImages.IndexOf(DateWeek.Pointer.cover_path);
+                                x = DateWeek.Pointer.cover_x;
+                                y = DateWeek.Pointer.cover_y;
+
+                                src = OpenFileStream(ListImagesFullName[image_index]);
+                                gPanel.DrawImage(src, x, y);
+                            }
+                        }
+
+                        if (DateWeek.Images != null && DateWeek.Images.img_First != null
+                            && DateWeek.Images.img_First.Length > 0 &&
+                            index == DateWeek.Images.position && DateWeek.Images.visible)
+                        {
+                            int imageIndex = ListImages.IndexOf(DateWeek.Images.img_First);
+                            int x = DateWeek.Images.X;
+                            int y = DateWeek.Images.Y;
+                            imageIndex = imageIndex + WatchFacePreviewSet.Date.WeekDay - 1;
+
+                            if (imageIndex < ListImagesFullName.Count)
+                            {
+                                src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                gPanel.DrawImage(src, x, y);
+                                //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                            }
+                        }
+                    }
+
+                    break;
+                #endregion
+
+                #region ElementStatuses
+                case "ElementStatuses":
+                    ElementStatuses statusElement = (ElementStatuses)element;
+                    if (!statusElement.visible) return;
+
+                    hmUI_widget_IMG_STATUS img_status_alarm = statusElement.Alarm;
+                    hmUI_widget_IMG_STATUS img_status_bluetooth = statusElement.Bluetooth;
+                    hmUI_widget_IMG_STATUS img_status_dnd = statusElement.DND;
+                    hmUI_widget_IMG_STATUS img_status_lock = statusElement.Lock;
+
+                    for (int index = 1; index <= 4; index++)
+                    {
+                        if (img_status_alarm != null && img_status_alarm.src != null &&
+                        img_status_alarm.src.Length > 0 && index == img_status_alarm.position &&
+                        img_status_alarm.visible)
+                        {
+                            if (WatchFacePreviewSet.Status.Alarm)
+                            {
+                                int imageIndex = ListImages.IndexOf(img_status_alarm.src);
+                                int x = img_status_alarm.x;
+                                int y = img_status_alarm.y;
+
+                                if (imageIndex < ListImagesFullName.Count)
+                                {
+                                    src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                    gPanel.DrawImage(src, x, y);
+                                    //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                                }
+                            }
+                        }
+
+                        if (img_status_bluetooth != null && img_status_bluetooth.src != null &&
+                        img_status_bluetooth.src.Length > 0 && index == img_status_bluetooth.position &&
+                        img_status_bluetooth.visible)
+                        {
+                            if (!WatchFacePreviewSet.Status.Bluetooth)
+                            {
+                                int imageIndex = ListImages.IndexOf(img_status_bluetooth.src);
+                                int x = img_status_bluetooth.x;
+                                int y = img_status_bluetooth.y;
+
+                                if (imageIndex < ListImagesFullName.Count)
+                                {
+                                    src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                    gPanel.DrawImage(src, x, y);
+                                    //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                                }
+                            }
+                        }
+
+                        if (img_status_dnd != null && img_status_dnd.src != null &&
+                        img_status_dnd.src.Length > 0 && index == img_status_dnd.position &&
+                        img_status_dnd.visible)
+                        {
+                            if (WatchFacePreviewSet.Status.DoNotDisturb)
+                            {
+                                int imageIndex = ListImages.IndexOf(img_status_dnd.src);
+                                int x = img_status_dnd.x;
+                                int y = img_status_dnd.y;
+
+                                if (imageIndex < ListImagesFullName.Count)
+                                {
+                                    src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                    gPanel.DrawImage(src, x, y);
+                                    //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                                }
+                            }
+                        }
+
+                        if (img_status_lock != null && img_status_lock.src != null &&
+                        img_status_lock.src.Length > 0 && index == img_status_lock.position &&
+                        img_status_lock.visible)
+                        {
+                            if (WatchFacePreviewSet.Status.Lock)
+                            {
+                                int imageIndex = ListImages.IndexOf(img_status_lock.src);
+                                int x = img_status_lock.x;
+                                int y = img_status_lock.y;
+
+                                if (imageIndex < ListImagesFullName.Count)
+                                {
+                                    src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                    gPanel.DrawImage(src, x, y);
+                                    //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                                }
+                            }
+                        }
+                    }
+                    break;
+                #endregion
+
+                #region ElementShortcuts
+                case "ElementShortcuts":
+                    ElementShortcuts shortcutsElement = (ElementShortcuts)element;
+                    if (!shortcutsElement.visible && !Shortcuts_In_Gif) return;
+
+                    hmUI_widget_IMG_CLICK img_click_step = shortcutsElement.Step;
+                    hmUI_widget_IMG_CLICK img_click_heart = shortcutsElement.Heart;
+                    hmUI_widget_IMG_CLICK img_click_spo2 = shortcutsElement.SPO2;
+                    hmUI_widget_IMG_CLICK img_click_pai = shortcutsElement.PAI;
+                    hmUI_widget_IMG_CLICK img_click_stress = shortcutsElement.Stress;
+                    hmUI_widget_IMG_CLICK img_click_weather = shortcutsElement.Weather;
+                    hmUI_widget_IMG_CLICK img_click_altimeter = shortcutsElement.Altimeter;
+                    hmUI_widget_IMG_CLICK img_click_sunrise = shortcutsElement.Sunrise;
+                    hmUI_widget_IMG_CLICK img_click_alarm = shortcutsElement.Alarm;
+                    hmUI_widget_IMG_CLICK img_click_sleep = shortcutsElement.Sleep;
+                    hmUI_widget_IMG_CLICK img_click_countdown = shortcutsElement.Countdown;
+                    hmUI_widget_IMG_CLICK img_click_stopwatch = shortcutsElement.Stopwatch;
+
+                    for (int index = 1; index <= 15; index++)
+                    {
+                        if (img_click_step != null && index == img_click_step.position)
+                        {
+                            DrawShortcuts(gPanel, img_click_step, showShortcuts,
+                                showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                        }
+                        if (img_click_heart != null && index == img_click_heart.position)
+                        {
+                            DrawShortcuts(gPanel, img_click_heart, showShortcuts,
+                                showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                        }
+                        if (img_click_spo2 != null && index == img_click_spo2.position)
+                        {
+                            DrawShortcuts(gPanel, img_click_spo2, showShortcuts,
+                                showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                        }
+                        if (img_click_pai != null && index == img_click_pai.position)
+                        {
+                            DrawShortcuts(gPanel, img_click_pai, showShortcuts,
+                                showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                        }
+                        if (img_click_stress != null && index == img_click_stress.position)
+                        {
+                            DrawShortcuts(gPanel, img_click_stress, showShortcuts,
+                                showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                        }
+                        if (img_click_weather != null && index == img_click_weather.position)
+                        {
+                            DrawShortcuts(gPanel, img_click_weather, showShortcuts,
+                                showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                        }
+                        if (img_click_altimeter != null && index == img_click_altimeter.position)
+                        {
+                            DrawShortcuts(gPanel, img_click_altimeter, showShortcuts,
+                                showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                        }
+                        if (img_click_sunrise != null && index == img_click_sunrise.position)
+                        {
+                            DrawShortcuts(gPanel, img_click_sunrise, showShortcuts,
+                                showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                        }
+                        if (img_click_alarm != null && index == img_click_alarm.position)
+                        {
+                            DrawShortcuts(gPanel, img_click_alarm, showShortcuts,
+                                showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                        }
+                        if (img_click_sleep != null && index == img_click_sleep.position)
+                        {
+                            DrawShortcuts(gPanel, img_click_sleep, showShortcuts,
+                                showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                        }
+                        if (img_click_countdown != null && index == img_click_countdown.position)
+                        {
+                            DrawShortcuts(gPanel, img_click_countdown, showShortcuts,
+                                showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                        }
+                        if (img_click_stopwatch != null && index == img_click_stopwatch.position)
+                        {
+                            DrawShortcuts(gPanel, img_click_stopwatch, showShortcuts,
+                                showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                        }
+                    }
+                    break;
+                #endregion
+
+
+
+                #region ElementSteps
+                case "ElementSteps":
+                    ElementSteps activityElementSteps = (ElementSteps)element;
+                    if (!activityElementSteps.visible) return;
+
+                    img_level = activityElementSteps.Images;
+                    img_prorgess = activityElementSteps.Segments;
+                    img_number = activityElementSteps.Number;
+                    img_number_target = activityElementSteps.Number_Target;
+                    img_pointer = activityElementSteps.Pointer;
+                    circle_scale = activityElementSteps.Circle_Scale;
+                    linear_scale = activityElementSteps.Linear_Scale;
+                    icon = activityElementSteps.Icon;
+
+                    elementValue = WatchFacePreviewSet.Activity.Steps;
+                    value_lenght = 5;
+                    goal = WatchFacePreviewSet.Activity.StepsGoal;
+                    progress = (float)WatchFacePreviewSet.Activity.Steps / WatchFacePreviewSet.Activity.StepsGoal;
+
+                    if (img_level != null && img_level.image_length > 0)
+                    {
+                        imgCount = img_level.image_length;
+                        valueImgIndex = (int)((imgCount - 1) * progress);
+                        if (progress < 0.01) valueImgIndex = -1;
+                        if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                    }
+                    if (img_prorgess != null && img_prorgess.image_length > 0)
+                    {
+                        segmentCount = img_prorgess.image_length;
+                        valueSegmentIndex = (int)((segmentCount - 1) * progress);
+                        if (progress < 0.01) valueSegmentIndex = -1;
+                        if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
+                    }
+
+                    DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                        img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                        progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                        showCentrHend, "ElementSteps");
+
+
+                    break;
+                #endregion
+
+                #region ElementBattery
+                case "ElementBattery":
+                    ElementBattery activityElementBattery = (ElementBattery)element;
+                    if (!activityElementBattery.visible) return;
+
+                    img_level = activityElementBattery.Images;
+                    img_prorgess = activityElementBattery.Segments;
+                    img_number = activityElementBattery.Number;
+                    //img_number_target = activityElementBattery.Number_Target;
+                    img_pointer = activityElementBattery.Pointer;
+                    circle_scale = activityElementBattery.Circle_Scale;
+                    linear_scale = activityElementBattery.Linear_Scale;
+                    icon = activityElementBattery.Icon;
+
+                    elementValue = WatchFacePreviewSet.Battery;
+                    value_lenght = 3;
+                    goal = 100;
+                    progress = (float)WatchFacePreviewSet.Battery / 100f;
+
+                    if (img_level != null && img_level.image_length > 0)
+                    {
+                        imgCount = img_level.image_length;
+                        float imgIndex = imgCount * progress;
+                        valueImgIndex = (int)imgIndex;
+                        valueImgIndex--;
+                        if (valueImgIndex < 0) valueImgIndex = 0;
+                        if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                    }
+                    if (img_prorgess != null && img_prorgess.image_length > 0)
+                    {
+                        segmentCount = img_prorgess.image_length;
+                        float imgIndex = segmentCount * progress;
+                        valueSegmentIndex = (int)imgIndex;
+                        valueSegmentIndex--;
+                        if (valueSegmentIndex < 0) valueSegmentIndex = 0;
+                        if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
+                    }
+
+                    DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                        img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                        progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                        showCentrHend, "ElementBattery");
+
+
+                    break;
+                #endregion
+
+                #region ElementCalories
+                case "ElementCalories":
+                    ElementCalories activityElementCalories = (ElementCalories)element;
+                    if (!activityElementCalories.visible) return;
+
+                    img_level = activityElementCalories.Images;
+                    img_prorgess = activityElementCalories.Segments;
+                    img_number = activityElementCalories.Number;
+                    img_number_target = activityElementCalories.Number_Target;
+                    img_pointer = activityElementCalories.Pointer;
+                    circle_scale = activityElementCalories.Circle_Scale;
+                    linear_scale = activityElementCalories.Linear_Scale;
+                    icon = activityElementCalories.Icon;
+
+                    elementValue = WatchFacePreviewSet.Activity.Calories;
+                    value_lenght = 4;
+                    goal = 300;
+                    progress = (float)WatchFacePreviewSet.Activity.Calories / 300f;
+
+                    if (img_level != null && img_level.image_length > 0)
+                    {
+                        imgCount = img_level.image_length;
+                        valueImgIndex = (int)((imgCount - 1) * progress);
+                        //if (progress < 0.01) valueImgIndex = -1;
+                        if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                    }
+                    if (img_prorgess != null && img_prorgess.image_length > 0)
+                    {
+                        segmentCount = img_prorgess.image_length;
+                        valueSegmentIndex = (int)((segmentCount - 1) * progress);
+                        //if (progress < 0.01) valueSegmentIndex = -1;
+                        if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
+                    }
+
+                    DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                        img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                        progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                        showCentrHend, "ElementCalories");
+
+
+                    break;
+                #endregion
+
+                #region ElementHeart
+                case "ElementHeart":
+                    ElementHeart activityElementHeart = (ElementHeart)element;
+                    if (!activityElementHeart.visible) return;
+
+                    img_level = activityElementHeart.Images;
+                    img_prorgess = activityElementHeart.Segments;
+                    img_number = activityElementHeart.Number;
+                    img_pointer = activityElementHeart.Pointer;
+                    circle_scale = activityElementHeart.Circle_Scale;
+                    linear_scale = activityElementHeart.Linear_Scale;
+                    icon = activityElementHeart.Icon;
+
+                    elementValue = WatchFacePreviewSet.Activity.HeartRate;
+                    value_lenght = 3;
+                    goal = 179;
+                    progress = (WatchFacePreviewSet.Activity.HeartRate - 71) / (179f - 71);
+
+                    //if (img_level != null && img_level.image_length > 0)
+                    //{
+                    //    imgCount = img_level.image_length;
+                    //    valueImgIndex = (int)((imgCount - 1) * progress);
+                    //    if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                    //}
+                    //if (img_prorgess != null && img_prorgess.image_length > 0)
+                    //{
+                    //    segmentCount = img_prorgess.image_length;
+                    //    valueSegmentIndex = (int)((segmentCount - 1) * progress);
+                    //    if (progress < 0.01) valueSegmentIndex = -1;
+                    //    if (valueSegmentIndex >= segmentCount) valueImgIndex = (int)(segmentCount - 1);
+                    //}
+                    if (elementValue < 90)
+                    {
+                        valueImgIndex = 0;
+                        valueSegmentIndex = 0;
+                    }
+                    if (elementValue >= 90 && elementValue < 108)
+                    {
+                        valueImgIndex = 1;
+                        valueSegmentIndex = 1;
+                    }
+                    if (elementValue >= 108 && elementValue < 126)
+                    {
+                        valueImgIndex = 2;
+                        valueSegmentIndex = 2;
+                    }
+                    if (elementValue >= 126 && elementValue < 144)
+                    {
+                        valueImgIndex = 3;
+                        valueSegmentIndex = 3;
+                    }
+                    if (elementValue >= 144 && elementValue < 162)
+                    {
+                        valueImgIndex = 4;
+                        valueSegmentIndex = 4;
+                    }
+                    if (elementValue >= 162)
+                    {
+                        valueImgIndex = 5;
+                        valueSegmentIndex = 5;
+                    }
+
+                    DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                        img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                        progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                        showCentrHend, "ElementHeart");
+
+
+                    break;
+                #endregion
+
+                #region ElementPAI
+                case "ElementPAI":
+                    ElementPAI activityElementPAI = (ElementPAI)element;
+                    if (!activityElementPAI.visible) return;
+
+                    img_level = activityElementPAI.Images;
+                    img_prorgess = activityElementPAI.Segments;
+                    img_number = activityElementPAI.Number;
+                    img_number_target = activityElementPAI.Number_Target;
+                    img_pointer = activityElementPAI.Pointer;
+                    circle_scale = activityElementPAI.Circle_Scale;
+                    linear_scale = activityElementPAI.Linear_Scale;
+                    icon = activityElementPAI.Icon;
+
+                    elementValue = 5;
+                    value_lenght = 3;
+                    goal = WatchFacePreviewSet.Activity.PAI;
+                    progress = (float)WatchFacePreviewSet.Activity.PAI / 100f;
+
+                    if (img_level != null && img_level.image_length > 0)
+                    {
+                        imgCount = img_level.image_length;
+                        valueImgIndex = (int)((imgCount - 1) * progress);
+                        //if (progress < 0.01) valueImgIndex = -1;
+                        if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                    }
+                    if (img_prorgess != null && img_prorgess.image_length > 0)
+                    {
+                        segmentCount = img_prorgess.image_length;
+                        valueSegmentIndex = (int)((segmentCount - 1) * progress);
+                        //if (progress < 0.01) valueSegmentIndex = -1;
+                        if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
+                    }
+
+                    DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                        img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                        progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                        showCentrHend, "ElementPAI");
+
+
+                    break;
+                #endregion
+
+                #region ElementDistance
+                case "ElementDistance":
+                    ElementDistance activityElementDistance = (ElementDistance)element;
+                    if (!activityElementDistance.visible) return;
+                    if (activityElementDistance.Number == null ||
+                        activityElementDistance.Number.img_First == null ||
+                        activityElementDistance.Number.img_First.Length == 0) return;
+
+                    img_number = activityElementDistance.Number;
+
+                    elementValue = WatchFacePreviewSet.Activity.Distance;
+                    double distance_value = elementValue / 1000f;
+                    value_lenght = 4;
+                    int image_Index = ListImages.IndexOf(img_number.img_First);
+                    int pos_x = img_number.imageX;
+                    int pos_y = img_number.imageY;
+                    int distance_spasing = img_number.space;
+                    int distance_alignment = AlignmentToInt(img_number.align);
+                    //bool distance_addZero = img_number.zero;
+                    bool distance_addZero = false;
+                    int distance_separator_index = -1;
+                    if (img_number.unit != null && img_number.unit.Length > 0)
+                        distance_separator_index = ListImages.IndexOf(img_number.unit);
+                    int decumalPoint_index = -1;
+                    if (img_number.dot_image != null && img_number.dot_image.Length > 0)
+                        decumalPoint_index = ListImages.IndexOf(img_number.dot_image);
+
+                    Draw_dagital_text_dacumal(gPanel, image_Index, pos_x, pos_y,
+                        distance_spasing, distance_alignment, distance_value, distance_addZero, value_lenght,
+                        distance_separator_index, decumalPoint_index, 2, BBorder);
+
+                    if (img_number.icon != null && img_number.icon.Length > 0)
+                    {
+                        image_Index = ListImages.IndexOf(img_number.icon);
+                        pos_x = img_number.iconPosX;
+                        pos_y = img_number.iconPosY;
+
+                        src = OpenFileStream(ListImagesFullName[image_Index]);
+                        gPanel.DrawImage(src, pos_x, pos_y);
+                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                    }
+
+                    break;
+                #endregion
+
+                #region ElementStand
+                case "ElementStand":
+                    ElementStand activityElementStand = (ElementStand)element;
+                    if (!activityElementStand.visible) return;
+
+                    img_level = activityElementStand.Images;
+                    img_prorgess = activityElementStand.Segments;
+                    img_number = activityElementStand.Number;
+                    img_number_target = activityElementStand.Number_Target;
+                    img_pointer = activityElementStand.Pointer;
+                    circle_scale = activityElementStand.Circle_Scale;
+                    linear_scale = activityElementStand.Linear_Scale;
+                    icon = activityElementStand.Icon;
+
+                    elementValue = WatchFacePreviewSet.Activity.StandUp;
+                    value_lenght = 2;
+                    goal = 12;
+                    progress = (float)WatchFacePreviewSet.Activity.StandUp / 12f;
+
+                    if (img_level != null && img_level.image_length > 0)
+                    {
+                        imgCount = img_level.image_length;
+                        valueImgIndex = (int)((imgCount - 1) * progress);
+                        //if (progress < 0.01) valueImgIndex = -1;
+                        if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                    }
+                    if (img_prorgess != null && img_prorgess.image_length > 0)
+                    {
+                        segmentCount = img_prorgess.image_length;
+                        valueSegmentIndex = (int)((segmentCount - 1) * progress);
+                        //if (progress < 0.01) valueSegmentIndex = -1;
+                        if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
+                    }
+
+                    DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                        img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                        progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                        showCentrHend, "ElementStand");
+
+
+                    break;
+                #endregion
+
+                #region ElementActivity
+                case "ElementActivity":
+                    ElementActivity activityElementActivity = (ElementActivity)element;
+                    if (!activityElementActivity.visible) return;
+
+                    img_level = activityElementActivity.Images;
+                    img_prorgess = activityElementActivity.Segments;
+                    img_number = activityElementActivity.Number;
+                    img_number_target = activityElementActivity.Number_Target;
+                    img_pointer = activityElementActivity.Pointer;
+                    circle_scale = activityElementActivity.Circle_Scale;
+                    linear_scale = activityElementActivity.Linear_Scale;
+                    icon = activityElementActivity.Icon;
+
+                    elementValue = WatchFacePreviewSet.Activity.Steps;
+                    value_lenght = 5;
+                    goal = WatchFacePreviewSet.Activity.StepsGoal;
+                    progress = (float)WatchFacePreviewSet.Activity.Steps / WatchFacePreviewSet.Activity.StepsGoal;
+
+                    if (img_level != null && img_level.image_length > 0)
+                    {
+                        imgCount = img_level.image_length;
+                        valueImgIndex = (int)((imgCount - 1) * progress);
+                        if (progress < 0.01) valueImgIndex = -1;
+                        if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                    }
+                    if (img_prorgess != null && img_prorgess.image_length > 0)
+                    {
+                        segmentCount = img_prorgess.image_length;
+                        valueSegmentIndex = (int)((segmentCount - 1) * progress);
+                        if (progress < 0.01) valueSegmentIndex = -1;
+                        if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
+                    }
+
+                    // пересчитываем данные если отображаем как калории
+                    if (activityElementActivity.showCalories)
+                    {
+                        elementValue = WatchFacePreviewSet.Activity.Calories;
+                        value_lenght = 4;
+                        goal = 300;
+                        progress = (float)WatchFacePreviewSet.Activity.Calories / 300f;
+
+                        if (img_level != null && img_level.image_length > 0)
+                        {
+                            imgCount = img_level.image_length;
+                            valueImgIndex = (int)((imgCount - 1) * progress);
+                            //if (progress < 0.01) valueImgIndex = -1;
+                            if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                        }
+                        if (img_prorgess != null && img_prorgess.image_length > 0)
+                        {
+                            segmentCount = img_prorgess.image_length;
+                            valueSegmentIndex = (int)((segmentCount - 1) * progress);
+                            //if (progress < 0.01) valueSegmentIndex = -1;
+                            if (valueSegmentIndex >= segmentCount) valueImgIndex = (int)(segmentCount - 1);
+                        }
+                    }
+
+                    DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                        img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                        progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                        showCentrHend, "ElementActivity");
+
+
+                    break;
+                #endregion
+
+                #region ElementSpO2
+                case "ElementSpO2":
+                    ElementSpO2 activityElementSpO2 = (ElementSpO2)element;
+                    if (!activityElementSpO2.visible) return;
+
+                    img_number = activityElementSpO2.Number;
+
+                    elementValue = 97;
+                    value_lenght = 3;
+                    goal = 100;
+                    progress = 0;
+
+
+                    DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                        img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                        progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                        showCentrHend, "ElementSpO2");
+
+
+                    break;
+                #endregion
+
+                #region ElementStress
+                case "ElementStress":
+                    ElementStress activityElementStress = (ElementStress)element;
+                    if (!activityElementStress.visible) return;
+
+                    img_level = activityElementStress.Images;
+                    img_prorgess = activityElementStress.Segments;
+                    img_number = activityElementStress.Number;
+                    img_pointer = activityElementStress.Pointer;
+                    icon = activityElementStress.Icon;
+
+                    elementValue = WatchFacePreviewSet.Activity.Stress;
+                    value_lenght = 3;
+                    goal = 100;
+                    progress = (float)WatchFacePreviewSet.Activity.Stress / 100f;
+
+                    if (img_level != null && img_level.image_length > 0)
+                    {
+                        imgCount = img_level.image_length;
+                        valueImgIndex = (int)((imgCount - 1) * progress);
+                        if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                        if (elementValue == 0) valueImgIndex = -1;
+                    }
+                    if (img_prorgess != null && img_prorgess.image_length > 0)
+                    {
+                        segmentCount = img_prorgess.image_length;
+                        valueSegmentIndex = (int)((segmentCount - 1) * progress);
+                        if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
+                        if (elementValue == 0) valueSegmentIndex = -1;
+                    }
+
+                    DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                        img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                        progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                        showCentrHend, "ElementStress");
+
+
+                    break;
+                #endregion
+
+                #region ElementFatBurning
+                case "ElementFatBurning":
+                    ElementFatBurning activityElementFatBurning = (ElementFatBurning)element;
+                    if (!activityElementFatBurning.visible) return;
+
+                    img_level = activityElementFatBurning.Images;
+                    img_prorgess = activityElementFatBurning.Segments;
+                    img_number = activityElementFatBurning.Number;
+                    img_number_target = activityElementFatBurning.Number_Target;
+                    img_pointer = activityElementFatBurning.Pointer;
+                    circle_scale = activityElementFatBurning.Circle_Scale;
+                    linear_scale = activityElementFatBurning.Linear_Scale;
+                    icon = activityElementFatBurning.Icon;
+
+                    elementValue = WatchFacePreviewSet.Activity.FatBurning;
+                    value_lenght = 3;
+                    goal = 30;
+                    progress = (float)WatchFacePreviewSet.Activity.FatBurning / 30f;
+
+                    if (img_level != null && img_level.image_length > 0)
+                    {
+                        imgCount = img_level.image_length;
+                        valueImgIndex = (int)((imgCount - 1) * progress);
+                        if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                        if (elementValue == 0) valueImgIndex = -1;
+                    }
+                    if (img_prorgess != null && img_prorgess.image_length > 0)
+                    {
+                        segmentCount = img_prorgess.image_length;
+                        valueSegmentIndex = (int)((segmentCount - 1) * progress);
+                        if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
+                        if (elementValue == 0) valueSegmentIndex = -1;
+                    }
+
+                    DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                        img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                        progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                        showCentrHend, "ElementFatBurning");
+
+
+                    break;
+                #endregion
+
+
+
+                #region ElementWeather
+                case "ElementWeather":
+                    ElementWeather activityElementWeather = (ElementWeather)element;
+                    if (!activityElementWeather.visible) return;
+
+                    img_level = activityElementWeather.Images;
+                    img_number = activityElementWeather.Number;
+                    hmUI_widget_IMG_NUMBER img_number_min = activityElementWeather.Number_Min;
+                    hmUI_widget_IMG_NUMBER img_number_max = activityElementWeather.Number_Max;
+                    hmUI_widget_TEXT city_name = activityElementWeather.City_Name;
+                    icon = activityElementWeather.Icon;
+
+                    int value_current = WatchFacePreviewSet.Weather.Temperature;
+                    int value_min = WatchFacePreviewSet.Weather.TemperatureMin;
+                    int value_max = WatchFacePreviewSet.Weather.TemperatureMax;
+                    int icon_index = WatchFacePreviewSet.Weather.Icon;
+                    bool showTemperature = WatchFacePreviewSet.Weather.showTemperature;
+
+                    DrawWeather(gPanel, img_level, img_number, img_number_min, img_number_max,
+                        city_name, icon, value_current, value_min, value_max, value_lenght, icon_index,
+                        BBorder, showTemperature);
+
+
+                    break;
+                #endregion
+
+                #region ElementUVIndex
+                case "ElementUVIndex":
+                    ElementUVIndex activityElementUVIndex = (ElementUVIndex)element;
+                    if (!activityElementUVIndex.visible) return;
+
+                    img_level = activityElementUVIndex.Images;
+                    img_prorgess = activityElementUVIndex.Segments;
+                    img_number = activityElementUVIndex.Number;
+                    //img_number_target = activityElementBattery.Number_Target;
+                    img_pointer = activityElementUVIndex.Pointer;
+                    icon = activityElementUVIndex.Icon;
+
+                    elementValue = WatchFacePreviewSet.Weather.UVindex;
+                    value_lenght = 1;
+                    goal = 5;
+                    progress = (float)WatchFacePreviewSet.Weather.UVindex / 5f;
+
+                    if (img_level != null && img_level.image_length > 0)
+                    {
+                        imgCount = img_level.image_length;
+                        valueImgIndex = (int)(imgCount * progress);
+                        valueImgIndex--;
+                        if (valueImgIndex < 0) valueImgIndex = 0;
+                        if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                        if (imgCount == 5)
+                        {
+                            switch (elementValue)
+                            {
+                                case 0:
+                                case 1:
+                                case 2:
+                                    valueImgIndex = 0;
+                                    break;
+                                case 3:
+                                case 4:
+                                case 5:
+                                    valueImgIndex = 1;
+                                    break;
+                                case 6:
+                                case 7:
+                                    valueImgIndex = 2;
+                                    break;
+                                case 8:
+                                case 9:
+                                case 10:
+                                    valueImgIndex = 3;
+                                    break;
+                                default:
+                                    valueImgIndex = 4;
+                                    break;
+                            }
+                        }
+                    }
+                    if (img_prorgess != null && img_prorgess.image_length > 0)
+                    {
+                        segmentCount = img_prorgess.image_length;
+                        valueSegmentIndex = (int)(segmentCount * progress);
+                        valueSegmentIndex--;
+                        if (valueSegmentIndex < 0) valueSegmentIndex = 0;
+                        if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
+                        if (segmentCount == 5)
+                        {
+                            switch (elementValue)
+                            {
+                                case 0:
+                                case 1:
+                                case 2:
+                                    valueSegmentIndex = 0;
+                                    break;
+                                case 3:
+                                case 4:
+                                case 5:
+                                    valueSegmentIndex = 1;
+                                    break;
+                                case 6:
+                                case 7:
+                                    valueSegmentIndex = 2;
+                                    break;
+                                case 8:
+                                case 9:
+                                case 10:
+                                    valueSegmentIndex = 3;
+                                    break;
+                                default:
+                                    valueSegmentIndex = 4;
+                                    break;
+                            }
+                        }
+                    }
+
+                    DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                        img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                        progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                        showCentrHend, "ElementUVIndex");
+
+
+                    break;
+                #endregion
+
+                #region ElementHumidity
+                case "ElementHumidity":
+                    ElementHumidity activityElementHumidity = (ElementHumidity)element;
+                    if (!activityElementHumidity.visible) return;
+
+                    img_level = activityElementHumidity.Images;
+                    img_prorgess = activityElementHumidity.Segments;
+                    img_number = activityElementHumidity.Number;
+                    //img_number_target = activityElementBattery.Number_Target;
+                    img_pointer = activityElementHumidity.Pointer;
+                    icon = activityElementHumidity.Icon;
+
+                    elementValue = WatchFacePreviewSet.Weather.Humidity;
+                    value_lenght = 1;
+                    goal = 100;
+                    progress = (float)WatchFacePreviewSet.Weather.Humidity / 100f;
+
+                    if (img_level != null && img_level.image_length > 0)
+                    {
+                        imgCount = img_level.image_length;
+                        valueImgIndex = (int)(imgCount * progress);
+                        valueImgIndex--;
+                        if (valueImgIndex < 0) valueImgIndex = 0;
+                        if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                    }
+                    if (img_prorgess != null && img_prorgess.image_length > 0)
+                    {
+                        segmentCount = img_prorgess.image_length;
+                        valueSegmentIndex = (int)(segmentCount * progress);
+                        valueSegmentIndex--;
+                        if (valueSegmentIndex < 0) valueSegmentIndex = 0;
+                        if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
+                    }
+
+                    DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                        img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                        progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                        showCentrHend, "ElementHumidity");
+
+
+                    break;
+                #endregion
+
+                #region ElementAltimeter
+                case "ElementAltimeter":
+                    ElementAltimeter activityElementAltimeter = (ElementAltimeter)element;
+                    if (!activityElementAltimeter.visible) return;
+
+                    img_number = activityElementAltimeter.Number;
+                    img_pointer = activityElementAltimeter.Pointer;
+                    icon = activityElementAltimeter.Icon;
+
+                    elementValue = WatchFacePreviewSet.Weather.AirPressure;
+                    value_lenght = 4;
+                    goal = 1170 - 195;
+                    progress = (WatchFacePreviewSet.Weather.AirPressure - 195) / 975f;
+
+                    if (img_level != null && img_level.image_length > 0)
+                    {
+                        imgCount = img_level.image_length;
+                        valueImgIndex = (int)((imgCount - 1) * progress);
+                        if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                    }
+                    if (img_prorgess != null && img_prorgess.image_length > 0)
+                    {
+                        segmentCount = img_prorgess.image_length;
+                        valueSegmentIndex = (int)((segmentCount - 1) * progress);
+                        if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
+                    }
+
+                    DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                        img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                        progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                        showCentrHend, "ElementAltimeter");
+
+
+                    break;
+                #endregion
+
+                #region ElementSunrise
+                case "ElementSunrise":
+                    ElementSunrise activityElementSunrise = (ElementSunrise)element;
+                    if (!activityElementSunrise.visible) return;
+
+                    img_level = activityElementSunrise.Images;
+                    img_prorgess = activityElementSunrise.Segments;
+                    img_number = activityElementSunrise.Sunrise;
+                    img_number_target = activityElementSunrise.Sunset;
+                    img_pointer = activityElementSunrise.Pointer;
+                    icon = activityElementSunrise.Icon;
+
+                    int minSunrise = WatchFacePreviewSet.Time.Minutes;
+                    int hourSunrise = WatchFacePreviewSet.Time.Hours;
+
+                    DrawSunrise(gPanel, img_level, img_prorgess, img_number, img_number_target, activityElementSunrise.Sunset_Sunrise,
+                        img_pointer, icon, hourSunrise, minSunrise, BBorder, showProgressArea, showCentrHend);
+
+
+                    break;
+                #endregion
+
+                #region ElementWind
+                case "ElementWind":
+                    ElementWind activityElementWind = (ElementWind)element;
+                    if (!activityElementWind.visible) return;
+
+                    img_level = activityElementWind.Images;
+                    img_prorgess = activityElementWind.Segments;
+                    img_number = activityElementWind.Number;
+                    img_pointer = activityElementWind.Pointer;
+                    icon = activityElementWind.Icon;
+
+                    elementValue = WatchFacePreviewSet.Weather.WindForce;
+                    value_lenght = 1;
+                    goal = 12;
+                    progress = (float)WatchFacePreviewSet.Weather.WindForce / 12f;
+
+                    if (img_level != null && img_level.image_length > 0)
+                    {
+                        imgCount = img_level.image_length;
+                        valueImgIndex = (int)((imgCount - 1) * progress);
+                        valueImgIndex = elementValue - 2;
+                        if (valueImgIndex < 0) valueImgIndex = 0;
+                        if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                    }
+                    if (img_prorgess != null && img_prorgess.image_length > 0)
+                    {
+                        segmentCount = img_prorgess.image_length;
+                        valueSegmentIndex = (int)((segmentCount - 1) * progress);
+                        valueSegmentIndex = elementValue - 2;
+                        if (valueSegmentIndex < 0) valueSegmentIndex = 0;
+                        if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
+                    }
+
+                    DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                        img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                        progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                        showCentrHend, "ElementWind");
+
+
+                    break;
+                #endregion
+
+                #region ElementMoon
+                case "ElementMoon":
+                    ElementMoon activityElementMoon = (ElementMoon)element;
+                    if (!activityElementMoon.visible) return;
+
+                    img_level = activityElementMoon.Images;
+
+                    elementValue = 100;
+                    value_lenght = 3;
+                    goal = 100;
+                    //progress = 0;
+
+                    int year = WatchFacePreviewSet.Date.Year;
+                    int month = WatchFacePreviewSet.Date.Month;
+                    int day = WatchFacePreviewSet.Date.Day;
+                    double moon_age = MoonAge(day, month, year);
+                    //int moonPhase = (int)(8 * moon_age / 29);
+
+                    imgCount = img_level.image_length;
+                    valueImgIndex = (int)Math.Round((imgCount - 1) * moon_age / 29);
+                    //valueImgIndex = (int)Math.Round((imgCount - 1) * moon_age / 29.53f);
+                    //valueImgIndex = moonPhase - 1;
+                    if (valueImgIndex < 0) valueImgIndex = (int)(imgCount - 1);
+                    if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+
+
+                    DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                        img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                        progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                        showCentrHend, "ElementMoon");
+
+
+                    break;
+                #endregion
+
+                #region ElementAnimation
+                case "ElementAnimation":
+                    ElementAnimation elementAnimation = (ElementAnimation)element;
+                    if (!elementAnimation.visible) return;
+
+                    for (int indexAnim = 1; indexAnim <= 3; indexAnim++)
+                    {
+                        hmUI_widget_IMG_ANIM_List frame_Animation_List = elementAnimation.Frame_Animation_List;
+                        if (frame_Animation_List != null && frame_Animation_List.visible &&
+                            frame_Animation_List.position == indexAnim && frame_Animation_List.Frame_Animation != null)
+                        {
+                            foreach (hmUI_widget_IMG_ANIM animation_frame in frame_Animation_List.Frame_Animation)
+                            {
+                                if (animation_frame.visible) DrawAnimationFrame(gPanel, animation_frame, time_value_sec);
+                            }
+                        }
+
+                        Motion_Animation_List motion_Animation_List = elementAnimation.Motion_Animation_List;
+                        if (motion_Animation_List != null && motion_Animation_List.visible &&
+                            motion_Animation_List.position == indexAnim && motion_Animation_List.Motion_Animation != null)
+                        {
+                            foreach (Motion_Animation motion_Animation in motion_Animation_List.Motion_Animation)
+                            {
+                                if (motion_Animation.visible) DrawAnimationMotion(gPanel, motion_Animation, time_value_sec);
+                            }
+                        }
+
+                        Rotate_Animation_List rotate_Animation_List = elementAnimation.Rotate_Animation_List;
+                        if (rotate_Animation_List != null && rotate_Animation_List.visible &&
+                            rotate_Animation_List.position == indexAnim && rotate_Animation_List.Rotate_Animation != null)
+                        {
+                            foreach (Rotate_Animation rotate_Animation in rotate_Animation_List.Rotate_Animation)
+                            {
+                                if (rotate_Animation.visible) DrawAnimationRotate(gPanel, rotate_Animation, time_value_sec, showCentrHend);
+                            }
+                        }
+                    }
+
+
+                    break;
+                    #endregion
+
+            }
+            src.Dispose();
+        }
+            
         public void Preview_edit_screen(Graphics gPanel, int edit_mode, float scale, bool crop)
         {
             Bitmap src = new Bitmap(1, 1);
@@ -2038,6 +2090,7 @@ namespace Watch_Face_Editor
             #endregion
 
             Editable_Background editable_background = null;
+            EditableElements editable_elements = null;
             ElementEditablePointers editable_pointers = null;
 
             #region Background
@@ -2057,6 +2110,90 @@ namespace Watch_Face_Editor
                         editable_background.BackgroundList[index].preview.Length > 0)
                     {
                         src = OpenFileStream(editable_background.BackgroundList[index].preview);
+                        gPanel.DrawImage(src, 0, 0);
+                    }
+                }
+            }
+            #endregion
+
+            #region EditableElements
+            if (Watch_Face != null && Watch_Face.Editable_Elements != null)
+                editable_elements = Watch_Face.Editable_Elements;
+            if (editable_elements != null)
+            {
+                if (editable_elements.visible &&
+                    editable_elements.Watchface_edit_group != null &&
+                    editable_elements.Watchface_edit_group.Count > 0)
+                {
+                    // предпросмотр элемента
+                    for(int i = 0; i < editable_elements.Watchface_edit_group.Count; i++)
+                    {
+                        int element_index = editable_elements.Watchface_edit_group[i].selected_element;
+                        if (element_index >= 0 && element_index < editable_elements.Watchface_edit_group[i].optional_types_list.Count &&
+                            editable_elements.Watchface_edit_group[i].optional_types_list[element_index].preview != null &&
+                            editable_elements.Watchface_edit_group[i].optional_types_list[element_index].preview.Length > 0)
+                        {
+                            int h = 0;
+                            int w = 0;
+                            src = OpenFileStream(editable_elements.Watchface_edit_group[i].optional_types_list[0].preview);
+                            if (src != null)
+                            {
+                                h = src.Height;
+                                w = src.Width; 
+                            }
+                            src = OpenFileStream(editable_elements.Watchface_edit_group[i].optional_types_list[element_index].preview);
+                            if (src != null)
+                            {
+                                int x = editable_elements.Watchface_edit_group[i].x + editable_elements.Watchface_edit_group[i].w / 2 - w / 2;
+                                int y = editable_elements.Watchface_edit_group[i].y + editable_elements.Watchface_edit_group[i].h / 2 - h / 2;
+                                //gPanel.DrawImage(src, x, y);
+                                if (w > 0 && h > 0)
+                                {
+                                    Rectangle cropRect = new Rectangle(0, 0, w, h);
+                                    //Rectangle cropRect = new Rectangle(...);
+                                    //Bitmap src = Image.FromFile(fileName) as Bitmap;
+                                    Bitmap target = new Bitmap(cropRect.Width, cropRect.Height);
+
+                                    using (Graphics g = Graphics.FromImage(target))
+                                    {
+                                        g.DrawImage(src, new Rectangle(0, 0, target.Width, target.Height),
+                                                         cropRect, GraphicsUnit.Pixel);
+                                    }
+                                    gPanel.DrawImage(target, x, y);
+                                } 
+                            }
+                        }
+
+                        element_index = editable_elements.selected_zone;
+                        if(element_index == i) // рамка выделеного элемента
+                        {
+                            if (i >= 0 && i < editable_elements.Watchface_edit_group.Count &&
+                            editable_elements.Watchface_edit_group[i].select_image != null &&
+                            editable_elements.Watchface_edit_group[i].select_image.Length > 0)
+                            {
+                                int x = editable_elements.Watchface_edit_group[i].x;
+                                int y = editable_elements.Watchface_edit_group[i].y;
+                                src = OpenFileStream(editable_elements.Watchface_edit_group[i].select_image);
+                                gPanel.DrawImage(src, x, y);
+                            }
+                        }
+                        else // рамка невыделеного элемента
+                        {
+                            if (i >= 0 && i < editable_elements.Watchface_edit_group.Count &&
+                            editable_elements.Watchface_edit_group[i].un_select_image != null &&
+                            editable_elements.Watchface_edit_group[i].un_select_image.Length > 0)
+                            {
+                                int x = editable_elements.Watchface_edit_group[i].x;
+                                int y = editable_elements.Watchface_edit_group[i].y;
+                                src = OpenFileStream(editable_elements.Watchface_edit_group[i].un_select_image);
+                                gPanel.DrawImage(src, x, y);
+                            }
+                        }
+                    }
+
+                    if (editable_elements.mask != null && editable_elements.mask.Length > 0)
+                    {
+                        src = OpenFileStream(editable_elements.mask);
                         gPanel.DrawImage(src, 0, 0);
                     }
                 }
@@ -2117,6 +2254,96 @@ namespace Watch_Face_Editor
 
                     Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr,
                         align_h, align_v, text_style, false);
+                }
+            }
+
+            if (edit_mode == 2 && editable_elements != null)
+            {
+                if (editable_elements.fg_mask != null && editable_elements.fg_mask.Length > 0)
+                {
+                    src = OpenFileStream(editable_elements.fg_mask);
+                    gPanel.DrawImage(src, 0, 0);
+                }
+                int selected_zone = editable_elements.selected_zone;
+                if (selected_zone >= 0 && editable_elements.Watchface_edit_group != null &&
+                    selected_zone < editable_elements.Watchface_edit_group.Count)
+                {
+                    if (editable_elements.Watchface_edit_group[selected_zone].tips_BG != null &&
+                        editable_elements.Watchface_edit_group[selected_zone].tips_BG.Length > 0)
+                    {
+                        int tips_x = editable_elements.Watchface_edit_group[selected_zone].tips_x;
+                        int tips_y = editable_elements.Watchface_edit_group[selected_zone].tips_y;
+                        int tips_width = editable_elements.Watchface_edit_group[selected_zone].tips_width;
+                        src = OpenFileStream(editable_elements.Watchface_edit_group[selected_zone].tips_BG);
+                        int width = tips_width;
+                        int height = src.Height;
+                        if (width > 1 && height > 1)
+                        {
+                            Rectangle cropRect = new Rectangle(0, 0, width, height);
+                            Bitmap tempBitmap = new Bitmap(width, height);
+                            using (Graphics g = Graphics.FromImage(tempBitmap))
+                            {
+                                g.DrawImage(src, new Rectangle(0, 0, tempBitmap.Width, tempBitmap.Height),
+                                                 cropRect, GraphicsUnit.Pixel);
+                            }
+                            src = tempBitmap;
+                        }
+                        gPanel.DrawImage(src, tips_x, tips_y);
+
+                        int selected_element = editable_elements.Watchface_edit_group[selected_zone].selected_element;
+                        if (selected_element >= 0 && editable_elements.Watchface_edit_group[selected_zone].optional_types_list != null &&
+                            selected_element < editable_elements.Watchface_edit_group[selected_zone].optional_types_list.Count)
+                        {
+                            int margin = editable_elements.Watchface_edit_group[selected_zone].tips_margin;
+                            int h = src.Height;
+                            int w = tips_width - margin;
+                            //int w = src.Width - 10;
+                            int x = tips_x + margin / 2;
+                            int y = tips_y;
+
+                            int size = 19;
+                            int space_h = 0;
+                            int space_v = 0;
+
+                            Color color = Color.Black;
+                            string align_h = "CENTER_H";
+                            string align_v = "CENTER_V";
+                            string text_style = "ELLIPSIS";
+                            string valueStr = "";
+                            string type = editable_elements.Watchface_edit_group[selected_zone].optional_types_list[selected_element].type;
+                            switch (type)
+                            {
+                                case "DATE":
+                                    valueStr = Properties.ElementsString.TypeNameDate;
+                                    break;
+                                case "BATTERY":
+                                    valueStr = Properties.ElementsString.TypeNameBattery;
+                                    break;
+                                case "STEP":
+                                    valueStr = Properties.ElementsString.TypeNameStep;
+                                    break;
+                                case "CAL":
+                                    valueStr = Properties.ElementsString.TypeNameCalories;
+                                    break;
+                                case "HEART":
+                                    valueStr = Properties.ElementsString.TypeNameHeart;
+                                    break;
+                                case "PAI_DAILY":
+                                    valueStr = Properties.ElementsString.TypeNamePAI;
+                                    break;
+                                case "DISTANCE":
+                                    valueStr = Properties.ElementsString.TypeNameDistance;
+                                    break;
+
+                                default:
+                                    valueStr = "Error";
+                                    break;
+                            }
+
+                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr,
+                            align_h, align_v, text_style, false); 
+                        }
+                    } 
                 }
             }
 
@@ -2321,7 +2548,7 @@ namespace Watch_Face_Editor
             if (progress > 1) progress = 1;
             Bitmap src = new Bitmap(1, 1);
 
-            for (int index = 1; index <= 10; index++)
+            for (int index = 1; index <= 15; index++)
             {
                 if (images != null && images.img_First != null && images.img_First.Length > 0 &&
                     index == images.position && images.visible)
@@ -4495,6 +4722,18 @@ namespace Watch_Face_Editor
             image.Composite(combineMask, ImageMagick.CompositeOperator.In, ImageMagick.Channels.Alpha);
 
             Logger.WriteLine("* ApplyMask (end)");
+            return image.ToBitmap();
+        }
+
+        public Bitmap ApplyWidgetMask(Bitmap inputImage, string fg_mask)
+        {
+            Logger.WriteLine("* ApplyWidgetMask");
+            ImageMagick.MagickImage image = new ImageMagick.MagickImage(inputImage);
+            ImageMagick.MagickImage combineMask = new ImageMagick.MagickImage(fg_mask);
+            combineMask.Level(127, 128, Channels.Alpha);
+            image.Composite(combineMask, ImageMagick.CompositeOperator.Xor, Channels.Alpha);
+
+            Logger.WriteLine("* ApplyWidgetMask (end)");
             return image.ToBitmap();
         }
 

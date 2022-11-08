@@ -989,11 +989,17 @@
     <EmbeddedResource Include="Elements\UCtrl_EditableElements_Elm.resx">
       <DependentUpon>UCtrl_EditableElements_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_EditableElemets_Opt.en.resx">
+      <DependentUpon>UCtrl_EditableElemets_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_EditableElemets_Opt.resx">
       <DependentUpon>UCtrl_EditableElemets_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_EditableBackground_Opt.zh.resx">
       <DependentUpon>UCtrl_EditableBackground_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_EditableElemets_Opt.uk.resx">
+      <DependentUpon>UCtrl_EditableElemets_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_EditableTimePointer_Opt.en.resx">
       <DependentUpon>UCtrl_EditableTimePointer_Opt.cs</DependentUpon>

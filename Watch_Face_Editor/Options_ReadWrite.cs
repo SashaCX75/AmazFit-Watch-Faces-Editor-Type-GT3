@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrayNotify;
 
 namespace Watch_Face_Editor
@@ -65,6 +67,18 @@ namespace Watch_Face_Editor
             if (Watch_Face_temp.ElementEditablePointers != null) 
                 Watch_Face_return.ElementEditablePointers = Watch_Face_temp.ElementEditablePointers;
 
+            if (Watch_Face_temp.Editable_Elements != null)
+                Watch_Face_return.Editable_Elements = Watch_Face_temp.Editable_Elements;
+            if(Watch_Face_temp.Editable_Elements != null && Watch_Face_temp.Editable_Elements.Watchface_edit_group != null &&
+                Watch_Face_temp.Editable_Elements.Watchface_edit_group.Count > 0)
+            {
+                for (int i = 0; i < Watch_Face_temp.Editable_Elements.Watchface_edit_group.Count; i++)
+                {
+                    List<object> NewElements = ObjectsToElements(Watch_Face_temp.Editable_Elements.Watchface_edit_group[i].Elements);
+                    Watch_Face_return.Editable_Elements.Watchface_edit_group[i].Elements = NewElements;
+                }
+            }
+
             return Watch_Face_return;
         }
 
@@ -72,6 +86,7 @@ namespace Watch_Face_Editor
         private List<object> ObjectsToElements(List<object> elements)
         {
             List<object> NewElements = new List<object>();
+            if(elements == null || elements.Count == 0) return NewElements;
             foreach (object element in elements)
             {
                 string elementStr = element.ToString();
@@ -118,7 +133,7 @@ namespace Watch_Face_Editor
                         break;
                     #endregion
 
-                    #region ElementEditablePointers
+                    /*#region ElementEditablePointers
                     case "ElementEditablePointers":
                         ElementEditablePointers EditablePointers = null;
                         try
@@ -136,7 +151,7 @@ namespace Watch_Face_Editor
                         }
                         if (EditablePointers != null) NewElements.Add(EditablePointers);
                         break;
-                    #endregion
+                    #endregion*/
 
                     #region DateDay
                     case "DateDay":
@@ -811,6 +826,7 @@ namespace Watch_Face_Editor
             PreviewView = false;
 
             uCtrl_Icon_Opt.SettingsClear();
+            uCtrl_Icon_Opt.Visible = true;
 
             uCtrl_Icon_Opt._Icon = img;
 
@@ -822,8 +838,7 @@ namespace Watch_Face_Editor
                 return;
             }
 
-            if (img.src != null)
-                uCtrl_Icon_Opt.SetIcon(img.src);
+            if (img.src != null) uCtrl_Icon_Opt.SetIcon(img.src);
             uCtrl_Icon_Opt.numericUpDown_iconX.Value = img.x;
             uCtrl_Icon_Opt.numericUpDown_iconY.Value = img.y;
 
@@ -1174,6 +1189,111 @@ namespace Watch_Face_Editor
 
             uCtrl_EditableTimePointer_Opt.checkBox_secondInAOD.Checked = editablePointers.AOD_show;
             uCtrl_EditableTimePointer_Opt.checkBox_edit_mode.Checked = editablePointers.showEeditMode;
+
+            PreviewView = true;
+        }
+
+        /// <summary>Читаем настройки для отображения редактируемых зон</summary>
+        private void Read_EditableElements_Options(EditableElements editableElements)
+        {
+            PreviewView = false;
+
+            uCtrl_EditableElements_Opt.SettingsClear();
+            uCtrl_EditableElements_Opt.Visible = true;
+            uCtrl_EditableElements_Opt._EditableElemets = editableElements;
+
+
+            if (editableElements == null)
+            {
+                PreviewView = true;
+                return;
+            }
+            if (editableElements.Watchface_edit_group == null || editableElements.Watchface_edit_group.Count == 0 ||
+                editableElements.selected_zone >= editableElements.Watchface_edit_group.Count)
+            {
+                PreviewView = true;
+                return;
+            }
+            uCtrl_EditableElements_Opt.SetZoneCount(editableElements.Watchface_edit_group.Count);
+            uCtrl_EditableElements_Opt.SetZoneIndex(editableElements.selected_zone);
+
+            uCtrl_EditableElements_Opt.checkBox_showInAOD.Checked = editableElements.AOD_show;
+            uCtrl_EditableElements_Opt.checkBox_edit_mode.Checked = editableElements.showEeditMode;
+
+            uCtrl_EditableElements_Opt.SetMask(editableElements.mask);
+            uCtrl_EditableElements_Opt.SetFgMask(editableElements.fg_mask);
+
+            int index = editableElements.selected_zone;
+            if (editableElements.Watchface_edit_group != null && index >= 0 && editableElements.Watchface_edit_group.Count > index)
+            {
+                WATCHFACE_EDIT_GROUP zonesList = editableElements.Watchface_edit_group[index];
+
+                uCtrl_EditableElements_Opt.numericUpDown_zone_X.Value = zonesList.x;
+                uCtrl_EditableElements_Opt.numericUpDown_zone_Y.Value = zonesList.y;
+                uCtrl_EditableElements_Opt.numericUpDown_zone_H.Value = zonesList.h;
+                uCtrl_EditableElements_Opt.numericUpDown_zone_W.Value = zonesList.w;
+
+                uCtrl_EditableElements_Opt.SetTip(zonesList.tips_BG);
+                uCtrl_EditableElements_Opt.numericUpDown_tipX.Value = zonesList.tips_x;
+                uCtrl_EditableElements_Opt.numericUpDown_tipY.Value = zonesList.tips_y;
+                uCtrl_EditableElements_Opt.numericUpDown_tips_width.Value = zonesList.tips_width;
+                uCtrl_EditableElements_Opt.numericUpDown_tips_margin.Value = zonesList.tips_margin;
+
+                uCtrl_EditableElements_Opt.SetSelectImage(zonesList.select_image);
+                uCtrl_EditableElements_Opt.SetUnSelectImage(zonesList.un_select_image);
+            }
+
+            Read_EditableElements_ElementOptions(editableElements);
+            PreviewView = true;
+        }
+
+        /// <summary>Читаем настройки выбраной зоны для отображения редактируемых зон</summary>
+        private void Read_EditableElements_ElementOptions(EditableElements editableElements)
+        {
+            PreviewView = false;
+
+            if (editableElements == null)
+            {
+                PreviewView = true;
+                return;
+            }
+            if (editableElements.Watchface_edit_group == null || editableElements.Watchface_edit_group.Count == 0 ||
+                editableElements.selected_zone >= editableElements.Watchface_edit_group.Count)
+            {
+                PreviewView = true;
+                return;
+            }
+
+            int index = editableElements.selected_zone;
+            if (editableElements.Watchface_edit_group != null && index >= 0 && editableElements.Watchface_edit_group.Count > index)
+            {
+                WATCHFACE_EDIT_GROUP zonesList = editableElements.Watchface_edit_group[index];
+
+                if (zonesList != null && zonesList.Elements != null && zonesList.Elements.Count > 0)
+                {
+                    List<string> elementName = GetElementsNameList(zonesList.Elements);
+                    uCtrl_EditableElements_Opt.SetElementsCount(elementName);
+                    uCtrl_EditableElements_Opt.SetElementsIndex(zonesList.selected_element);
+
+                    uCtrl_EditableElements_Opt.numericUpDown_zone_X.Value = zonesList.x;
+                    uCtrl_EditableElements_Opt.numericUpDown_zone_Y.Value = zonesList.y;
+                    uCtrl_EditableElements_Opt.numericUpDown_zone_H.Value = zonesList.h;
+                    uCtrl_EditableElements_Opt.numericUpDown_zone_W.Value = zonesList.w;
+
+                    uCtrl_EditableElements_Opt.SetTip(zonesList.tips_BG);
+                    uCtrl_EditableElements_Opt.numericUpDown_tipX.Value = zonesList.tips_x;
+                    uCtrl_EditableElements_Opt.numericUpDown_tipY.Value = zonesList.tips_y;
+                    uCtrl_EditableElements_Opt.numericUpDown_tips_width.Value = zonesList.tips_width;
+                    uCtrl_EditableElements_Opt.numericUpDown_tips_margin.Value = zonesList.tips_margin;
+
+                    uCtrl_EditableElements_Opt.SetSelectImage(zonesList.select_image);
+                    uCtrl_EditableElements_Opt.SetUnSelectImage(zonesList.un_select_image);
+                }
+                else {
+                    uCtrl_EditableElements_Opt.SetElementsCount(0);
+                    uCtrl_EditableElements_Opt.SetVisibilityOptions(null);
+                }
+            }
 
             PreviewView = true;
         }
@@ -2246,15 +2366,16 @@ namespace Watch_Face_Editor
             BackgroundList background_list = new BackgroundList();
             background_list.path = uCtrl_EditableBackground_Opt.GetImage();
             background_list.preview = uCtrl_EditableBackground_Opt.GetPreview();
-            if (background.BackgroundList.Count <= index || index < 0)
+            if ((background.BackgroundList.Count <= index || index < 0) || (background.BackgroundList.Count == index + 1 && index >= 0))
             {
                 background.BackgroundList.Add(background_list);
+                ++index;
             }
             else
             {
-                background.BackgroundList.Insert(index, background_list);
+                background.BackgroundList.Insert(++index, background_list);
             }
-            background.selected_background = ++index;
+            background.selected_background = index;
             Read_EditableBackground_Options(background);
 
             JSON_Modified = true;
@@ -2437,16 +2558,15 @@ namespace Watch_Face_Editor
                     false, false, link, false, -1, false, 0);
                 if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
 
-                ;
-                Image loadedImage = null;
-                using (FileStream stream = new FileStream(preview, FileMode.Open, FileAccess.Read))
-                {
-                    loadedImage = Image.FromStream(stream);
-                }
+                //Image loadedImage = null;
+                //using (FileStream stream = new FileStream(preview, FileMode.Open, FileAccess.Read))
+                //{
+                //    loadedImage = Image.FromStream(stream);
+                //}
                 bitmap.Save(preview, ImageFormat.Png);
 
                 bitmap.Dispose();
-                loadedImage.Dispose();
+                //loadedImage.Dispose();
 
                 LoadImage(Path.GetDirectoryName(preview) + @"\");
                 //HideAllElemenrOptions();
@@ -2518,15 +2638,16 @@ namespace Watch_Face_Editor
 
             pointers_list.preview = uCtrl_EditableTimePointer_Opt.GetPreview();
 
-            if (editablePointers.config.Count <= index || index < 0)
+            if ((editablePointers.config.Count <= index || index < 0) || (editablePointers.config.Count == index + 1 && index >= 0))
             {
                 editablePointers.config.Add(pointers_list);
+                ++index;
             }
             else
             {
-                editablePointers.config.Insert(index, pointers_list);
+                editablePointers.config.Insert(++index, pointers_list);
             }
-            editablePointers.selected_pointers = ++index;
+            editablePointers.selected_pointers = index;
             Read_EditablePointers_Options(editablePointers);
 
             JSON_Modified = true;
@@ -2703,16 +2824,15 @@ namespace Watch_Face_Editor
                 Creat_preview_editable_pointers(gPanel, 1.0f, false);
                 if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
 
-                ;
-                Image loadedImage = null;
-                using (FileStream stream = new FileStream(preview, FileMode.Open, FileAccess.Read))
-                {
-                    loadedImage = Image.FromStream(stream);
-                }
+                //Image loadedImage = null;
+                //using (FileStream stream = new FileStream(preview, FileMode.Open, FileAccess.Read))
+                //{
+                //    loadedImage = Image.FromStream(stream);
+                //}
                 bitmap.Save(preview, ImageFormat.Png);
 
                 bitmap.Dispose();
-                loadedImage.Dispose();
+                //loadedImage.Dispose();
 
                 LoadImage(Path.GetDirectoryName(preview) + @"\");
                 //HideAllElemenrOptions();
@@ -2793,6 +2913,153 @@ namespace Watch_Face_Editor
             string colorStr = ColorTranslator.ToHtml(new_color);
             colorStr = colorStr.Replace("#", "0xFF");
             return colorStr;
+        }
+
+        private List<string> GetElementsNameList(List<Object> elements)
+        {
+            List<string> elementName = new List<string>();
+            foreach (Object element in elements)
+            {
+                //string elementStr = element.ToString();
+                //string type = GetTypeFromSring(elementStr);
+                string type = element.GetType().Name;
+                switch (type)
+                {
+                    #region DateDay
+                    case "ElementDateDay":
+                        elementName.Add(Properties.ElementsString.TypeDay);
+                        break;
+                    #endregion
+
+                    #region DateMonth
+                    case "ElementDateMonth":
+                        elementName.Add(Properties.ElementsString.TypeMonth);
+                        break;
+                    #endregion
+
+                    #region DateYear
+                    case "ElementDateYear":
+                        elementName.Add(Properties.ElementsString.TypeYear);
+                        break;
+                    #endregion
+
+                    #region DateWeek
+                    case "ElementDateWeek":
+                        elementName.Add(Properties.ElementsString.TypeDay);
+                        break;
+                    #endregion
+
+                    #region ElementBattery
+                    case "ElementBattery":
+                        elementName.Add(Properties.ElementsString.TypeBattery);
+                        break;
+                    #endregion
+
+                    #region ElementSteps
+                    case "ElementSteps":
+                        elementName.Add(Properties.ElementsString.TypeSteps);
+                        break;
+                    #endregion
+
+                    #region ElementCalories
+                    case "ElementCalories":
+                        elementName.Add(Properties.ElementsString.TypeCalories);
+                        break;
+                    #endregion
+
+                    #region ElementHeart
+                    case "ElementHeart":
+                        elementName.Add(Properties.ElementsString.TypeHeart);
+                        break;
+                    #endregion
+
+                    #region ElementPAI
+                    case "ElementPAI":
+                        elementName.Add(Properties.ElementsString.TypePAI);
+                        break;
+                    #endregion
+
+                    #region ElementDistance
+                    case "ElementDistance":
+                        elementName.Add(Properties.ElementsString.TypeDistance);
+                        break;
+                    #endregion
+
+                    #region ElementStand
+                    case "ElementStand":
+                        elementName.Add(Properties.ElementsString.TypeStand);
+                        break;
+                    #endregion
+
+                    #region ElementActivity
+                    //case "ElementActivity":
+                    //    elementName.Add(Properties.ElementsString.TypeActivity);
+                    //    break;
+                    #endregion
+
+                    #region ElementSpO2
+                    case "ElementSpO2":
+                        elementName.Add(Properties.ElementsString.TypeSpO2);
+                        break;
+                    #endregion
+
+                    #region ElementStress
+                    case "ElementStress":
+                        elementName.Add(Properties.ElementsString.TypeStress);
+                        break;
+                    #endregion
+
+                    #region ElementFatBurning
+                    case "ElementFatBurning":
+                        elementName.Add(Properties.ElementsString.TypeFatBurning);
+                        break;
+                    #endregion
+
+
+                    #region ElementWeather
+                    case "ElementWeather":
+                        elementName.Add(Properties.ElementsString.TypeWeather);
+                        break;
+                    #endregion
+
+                    #region ElementUVIndex
+                    case "ElementUVIndex":
+                        elementName.Add(Properties.ElementsString.TypeUVIndex);
+                        break;
+                    #endregion
+
+                    #region ElementHumidity
+                    case "ElementHumidity":
+                        elementName.Add(Properties.ElementsString.TypeHumidity);
+                        break;
+                    #endregion
+
+                    #region ElementAltimeter
+                    case "ElementAltimeter":
+                        elementName.Add(Properties.ElementsString.TypeAltimeter);
+                        break;
+                    #endregion
+
+                    #region ElementSunrise
+                    case "ElementSunrise":
+                        elementName.Add(Properties.ElementsString.TypeSunrise);
+                        break;
+                    #endregion
+
+                    #region ElementWind
+                    case "ElementWind":
+                        elementName.Add(Properties.ElementsString.TypeWind);
+                        break;
+                    #endregion
+
+                    #region ElementMoon
+                    case "ElementMoon":
+                        elementName.Add(Properties.ElementsString.TypeMoon);
+                        break;
+                        #endregion
+                }
+            }
+            return elementName;
         }
 
     }
