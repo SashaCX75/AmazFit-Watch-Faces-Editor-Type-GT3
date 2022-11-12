@@ -242,17 +242,17 @@
   <data name="label05.Text" xml:space="preserve">
     <value>Coordenadas Icono</value>
   </data>
+  <data name="label09.Text" xml:space="preserve">
+    <value>Alineación</value>
+  </data>
+  <data name="label_imageDecimalPoint.Text" xml:space="preserve">
+    <value>Separador decimal</value>
+  </data>
   <data name="label_imageError.Text" xml:space="preserve">
     <value>Imagen de error</value>
   </data>
-  <data name="label07.Text" xml:space="preserve">
-    <value>Separador decimal</value>
-  </data>
   <data name="label_unit.Text" xml:space="preserve">
     <value>Unidad</value>
-  </data>
-  <data name="label09.Text" xml:space="preserve">
-    <value>Alineación</value>
   </data>
   <data name="label_unit_miles.Text" xml:space="preserve">
     <value>Unidad (ml)</value>

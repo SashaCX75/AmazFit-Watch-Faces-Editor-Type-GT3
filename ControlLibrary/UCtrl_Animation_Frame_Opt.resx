@@ -182,6 +182,7 @@
   </data>
   <data name="label03.Text" xml:space="preserve">
     <value>X:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;numericUpDown_images_count.ZOrder" xml:space="preserve">
     <value>14</value>
@@ -549,6 +550,7 @@
   </data>
   <data name="label04.Text" xml:space="preserve">
     <value>Y:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;label_prefix.Parent" xml:space="preserve">
     <value>$this</value>
@@ -849,6 +851,7 @@
   </data>
   <data name="label_prefix.Text" xml:space="preserve">
     <value>-</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="checkBox_anim_repeat.TabIndex" type="System.Int32, mscorlib">
     <value>178</value>
@@ -921,13 +924,13 @@
   <data name="&gt;&gt;label4.Name" xml:space="preserve">
     <value>label4</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <metadata name="contextMenuStrip_Y.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  </data>
+  <data name="contextMenuStrip_Y.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>160, 11</value>
-  </metadata>
-  <metadata name="contextMenuStrip_X.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  </data>
+  <data name="contextMenuStrip_X.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>8, 14</value>
-  </metadata>
+  </data>
 </root>

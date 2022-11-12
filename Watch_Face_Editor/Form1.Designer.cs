@@ -645,6 +645,7 @@ namespace Watch_Face_Editor
             // 
             resources.ApplyResources(this.comboBox_AddAir, "comboBox_AddAir");
             this.comboBox_AddAir.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_AddAir.DropDownWidth = 150;
             this.comboBox_AddAir.FormattingEnabled = true;
             this.comboBox_AddAir.Items.AddRange(new object[] {
             resources.GetString("comboBox_AddAir.Items"),
@@ -2023,7 +2024,8 @@ namespace Watch_Face_Editor
             resources.GetString("comboBox_Language.Items2"),
             resources.GetString("comboBox_Language.Items3"),
             resources.GetString("comboBox_Language.Items4"),
-            resources.GetString("comboBox_Language.Items5")});
+            resources.GetString("comboBox_Language.Items5"),
+            resources.GetString("comboBox_Language.Items6")});
             this.comboBox_Language.Name = "comboBox_Language";
             this.comboBox_Language.SelectedIndexChanged += new System.EventHandler(this.comboBox_Language_SelectedIndexChanged);
             // 

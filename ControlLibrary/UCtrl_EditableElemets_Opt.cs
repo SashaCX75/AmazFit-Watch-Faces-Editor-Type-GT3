@@ -44,9 +44,11 @@ namespace ControlLibrary
 
         public UCtrl_EditableElemets_Opt()
         {
+            Logger.WriteLine("* UCtrl_EditableElemets_Opt");
             InitializeComponent();
             setValue = false;
             currentDPI = tabControl1.Height / 462f;
+            Logger.WriteLine("* currentDPI = " + currentDPI.ToString());
 
             button_collapse.Controls.Add(pictureBox_Arrow_Right); 
             button_collapse.Controls.Add(pictureBox_Arrow_Down);
@@ -1553,7 +1555,7 @@ namespace ControlLibrary
             checkBox_edit_mode.Checked = false;
 
             //visibilityElement = true;
-            button_collapse.Visible = false;
+            //button_collapse.Visible = false;
             Collapse = false;
             SettingsElementClear();
 
@@ -1599,6 +1601,9 @@ namespace ControlLibrary
 
             button_PreviewAdd.Enabled = false;
             //button_PreviewRefresh.Enabled = false;
+
+            SetVisibilityOptions(null);
+            comboBox_Preview_image.Text = null;
 
             setValue = setValueTemp;
         }
@@ -1936,11 +1941,13 @@ namespace ControlLibrary
 
         private void button_collapse_SizeChanged(object sender, EventArgs e)
         {
-            if (tabControl1.Height > 580)
+            Logger.WriteLine("* currentDPI = " + currentDPI.ToString());
+            if (tabControl1.Height > 580) //if (tabControl1.Height > 580)
             {
                 float currentDPI = tabControl1.Height / 462f;
-                button_collapse.Image = (Image)(new Bitmap(button_collapse.Image,
-                    new Size((int)(16 * currentDPI), (int)(16 * currentDPI))));
+                Logger.WriteLine("* currentDPI = " + currentDPI.ToString());
+                //button_collapse.Image = (Image)(new Bitmap(button_collapse.Image,
+                //    new Size((int)(16 * currentDPI), (int)(16 * currentDPI))));
 
                 Control.ControlCollection controlCollection = tableLayoutPanel_element.Controls;
                 for (int i = 0; i < controlCollection.Count; i++)
@@ -1973,6 +1980,43 @@ namespace ControlLibrary
                     }
                 }
 
+            }
+        }
+    }
+
+    static class Logger
+    {
+        //----------------------------------------------------------
+        // Статический метод записи строки в файл лога без переноса
+        //----------------------------------------------------------
+        public static void Write(string text)
+        {
+            try
+            {
+                //using (StreamWriter sw = new StreamWriter(Application.StartupPath + "\\Program log.txt", true))
+                //{
+                //    sw.Write(text);
+                //}
+            }
+            catch (Exception)
+            {
+            }
+        }
+
+        //---------------------------------------------------------
+        // Статический метод записи строки в файл лога с переносом
+        //---------------------------------------------------------
+        public static void WriteLine(string message)
+        {
+            try
+            {
+                //using (StreamWriter sw = new StreamWriter(Application.StartupPath + "\\EditableElemets_Opt log.txt", true))
+                //{
+                //    sw.WriteLine(String.Format("{0,-23} {1}", DateTime.Now.ToString() + ":", message));
+                //}
+            }
+            catch (Exception)
+            {
             }
         }
     }

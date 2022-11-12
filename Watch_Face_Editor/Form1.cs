@@ -120,6 +120,10 @@ namespace Watch_Face_Editor
                     {
                         ProgramSettings.language = "Українська";
                     }
+                    if (language == "de")
+                    {
+                        ProgramSettings.language = "Deutsch";
+                    }
                     //if (language == "hu")
                     //{
                     //    ProgramSettings.language = "Magyar";
@@ -308,6 +312,9 @@ namespace Watch_Face_Editor
                 case "Українська":
                     richTextBox_Tips.Rtf = Properties.Resources.tips_uk;
                     break;
+                case "Deutsch":
+                    richTextBox_Tips.Rtf = Properties.Resources.tips_de;
+                    break;
                 case "Chinese/简体中文":
                     richTextBox_Tips.Rtf = Properties.Resources.tips_zh;
                     break;
@@ -415,60 +422,62 @@ namespace Watch_Face_Editor
         private void SetLanguage()
         {
             Logger.WriteLine("* SetLanguage");
-            if (ProgramSettings.language == "English")
+            switch (ProgramSettings.language)
             {
-                Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en");
-            }
-            else if (ProgramSettings.language == "Español")
-            {
-                Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("es");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("es");
-            }
-            else if (ProgramSettings.language == "Português")
-            {
-                Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("pt");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("pt");
-            }
-            else if (ProgramSettings.language == "Čeština")
-            {
-                Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("cs");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("cs");
-            }
-            else if (ProgramSettings.language == "Magyar")
-            {
-                Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("hu");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("hu");
-            }
-            else if (ProgramSettings.language == "Slovenčina")
-            {
-                Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("sk");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("sk");
-            }
-            else if (ProgramSettings.language == "French")
-            {
-                Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("fr");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("fr");
-            }
-            else if (ProgramSettings.language == "Chinese/简体中文")
-            {
-                Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("zh");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("zh");
-            }
-            else if (ProgramSettings.language == "Italian" || ProgramSettings.language == "Italiano")
-            {
-                Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("it");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("it");
-            }
-            else if (ProgramSettings.language == "Українська")
-            {
-                Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("uk");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("uk");
-            }
-            else
-            {
-                Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("ru");
-                Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("ru");
+                case "Русский":
+                    Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("ru");
+                    Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("ru");
+                    break;
+                case "English":
+                    Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en");
+                    Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en");
+                    break;
+                case "Español":
+                    Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("es");
+                    Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("es");
+                    break;
+                case "Português":
+                    Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("pt");
+                    Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("pt");
+                    break;
+                case "Čeština":
+                    Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("cs");
+                    Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("cs");
+                    break;
+                case "Magyar":
+                    Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("hu");
+                    Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("hu");
+                    break;
+                case "Slovenčina":
+                    Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("sk");
+                    Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("sk");
+                    break;
+                case "French":
+                    Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("fr");
+                    Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("fr");
+                    break;
+                case "Chinese/简体中文":
+                    Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("zh");
+                    Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("zh");
+                    break;
+                case "Italian":
+                case "Italiano":
+                    Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("it");
+                    Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("it");
+                    break;
+                case "Українська":
+                    Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("uk");
+                    Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("uk");
+                    break;
+                case "Deutsch":
+                    Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("de");
+                    Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("de");
+                    break;
+
+                default:
+                    Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en");
+                    Thread.CurrentThread.CurrentUICulture = CultureInfo.GetCultureInfo("en");
+                    break;
             }
             Logger.WriteLine("* SetLanguage (end)");
         }

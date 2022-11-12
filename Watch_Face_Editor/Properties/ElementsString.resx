@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ElementExists" xml:space="preserve">
+    <value>Такой элемент уже есть</value>
+  </data>
   <data name="TypeAltimeter" xml:space="preserve">
     <value>Барометр</value>
   </data>
@@ -167,6 +170,11 @@ watch</comment>
     <comment>Check the translation on the 
 watch</comment>
   </data>
+  <data name="TypeNameFatBurning" xml:space="preserve">
+    <value>Жиросжигание</value>
+    <comment>Check the translation on the 
+watch</comment>
+  </data>
   <data name="TypeNameHeart" xml:space="preserve">
     <value>Сердцебиение</value>
     <comment>Check the translation on the 
@@ -177,8 +185,23 @@ watch</comment>
     <comment>Check the translation on the 
 watch</comment>
   </data>
+  <data name="TypeNameSpO2" xml:space="preserve">
+    <value>Кислород в крови</value>
+    <comment>Check the translation on the 
+watch</comment>
+  </data>
+  <data name="TypeNameStand" xml:space="preserve">
+    <value>Стою</value>
+    <comment>Check the translation on the 
+watch</comment>
+  </data>
   <data name="TypeNameStep" xml:space="preserve">
     <value>К-во шагов</value>
+    <comment>Check the translation on the 
+watch</comment>
+  </data>
+  <data name="TypeNameStress" xml:space="preserve">
+    <value>Стресс</value>
     <comment>Check the translation on the 
 watch</comment>
   </data>

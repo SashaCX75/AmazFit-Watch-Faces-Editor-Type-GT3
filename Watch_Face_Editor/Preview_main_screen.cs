@@ -2334,6 +2334,18 @@ namespace Watch_Face_Editor
                                 case "DISTANCE":
                                     valueStr = Properties.ElementsString.TypeNameDistance;
                                     break;
+                                case "STAND":
+                                    valueStr = Properties.ElementsString.TypeNameStand;
+                                    break;
+                                case "STRESS":
+                                    valueStr = Properties.ElementsString.TypeNameStress;
+                                    break;
+                                case "FAT_BURNING":
+                                    valueStr = Properties.ElementsString.TypeNameFatBurning;
+                                    break;
+                                case "SPO2":
+                                    valueStr = Properties.ElementsString.TypeNameSpO2;
+                                    break;
 
                                 default:
                                     valueStr = "Error";

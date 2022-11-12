@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Dialog_Title_Dial_Settings" xml:space="preserve">
+    <value>Auswählen einer Einstellungsdatei für das Zifferblatt</value>
+  </data>
+  <data name="Dialog_Title_Image" xml:space="preserve">
+    <value>Bilddateien auswählen</value>
+  </data>
+  <data name="Dialog_Title_New_Project" xml:space="preserve">
+    <value>Erstelle ein neues Projekt</value>
+  </data>
+  <data name="Dialog_Title_PreviewStates" xml:space="preserve">
+    <value>Auswählen einer Einstellungsdatei für die Vorschau</value>
+  </data>
+  <data name="Dialog_Title_SaveGIF" xml:space="preserve">
+    <value>animierte Vorschau speichern</value>
+  </data>
+  <data name="Dialog_Title_SavePNG" xml:space="preserve">
+    <value>Vorschau speichern</value>
+  </data>
+  <data name="Dialog_Title_Unpack" xml:space="preserve">
+    <value>Auswählen eines Zifferblattes</value>
+  </data>
+  <data name="Dialog_Title_WatchSkin" xml:space="preserve">
+    <value>Auswählen einer Bilddatei</value>
+  </data>
+  <data name="Elemet_Activity" xml:space="preserve">
+    <value>Aktivitäten</value>
+  </data>
+  <data name="Elemet_Air" xml:space="preserve">
+    <value>Luft</value>
+  </data>
+  <data name="Elemet_Date" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="Elemet_System" xml:space="preserve">
+    <value>System</value>
+  </data>
+  <data name="Elemet_Time" xml:space="preserve">
+    <value>Zeit</value>
+  </data>
+  <data name="FilterGif" xml:space="preserve">
+    <value>GIF Dateien (*.gif)|*.gif</value>
+  </data>
+  <data name="FilterJson" xml:space="preserve">
+    <value>Json-Dateien (*.json) | *.json</value>
+  </data>
+  <data name="FilterPng" xml:space="preserve">
+    <value>PNG Dateien (*.png)|*.png</value>
+  </data>
+  <data name="FilterZip" xml:space="preserve">
+    <value>Zip-Datei vom Zifferblatt (* .zip) | * .zip</value>
+  </data>
+  <data name="FollowMinute" xml:space="preserve">
+    <value>Folge den Stunden</value>
+  </data>
+  <data name="FollowSecond" xml:space="preserve">
+    <value>Folge den Minuten</value>
+  </data>
+  <data name="Form_Preview" xml:space="preserve">
+    <value>Vorschau</value>
+  </data>
+  <data name="Form_PreviewX" xml:space="preserve">
+    <value>Vorschau [X =</value>
+  </data>
+  <data name="Message_AnimationAOD_Text" xml:space="preserve">
+    <value>Sie können dem AOD-Bildschirm keine Animation hinzufügen.</value>
+  </data>
+  <data name="Message_ConvertingCompleted_Text" xml:space="preserve">
+    <value>Es wurde ein neues Zifferblatt erstellt.</value>
+  </data>
+  <data name="Message_CopyCoord" xml:space="preserve">
+    <value>Koordinaten kopiert</value>
+  </data>
+  <data name="Message_Delet_Caption" xml:space="preserve">
+    <value>Löschung</value>
+  </data>
+  <data name="Message_Delet_Text1" xml:space="preserve">
+    <value>Sind Sie sicher, dass Sie die Datei dauerhaft löschen wollen?</value>
+  </data>
+  <data name="Message_Delet_Text11" xml:space="preserve">
+    <value>Sind Sie sicher, dass Sie die Dateien dauerhaft löschen wollen?</value>
+  </data>
+  <data name="Message_Delet_Text2" xml:space="preserve">
+    <value>"?</value>
+  </data>
+  <data name="Message_Delet_Text21" xml:space="preserve">
+    <value>?</value>
+  </data>
+  <data name="Message_EditableElementsAOD_Text" xml:space="preserve">
+    <value>Sie können dem AOD-Bildschirm keine bearbeitbaren Elemente hinzufügen.</value>
+  </data>
+  <data name="Message_EditablePointerAOD_Text" xml:space="preserve">
+    <value>Sie können dem AOD-Bildschirm keine bearbeitbaren Zeiger hinzufügen.</value>
+  </data>
+  <data name="Message_ErrorReadJS" xml:space="preserve">
+    <value>Struktur des Ziffernblatts kann nicht erkannt werden</value>
+  </data>
+  <data name="Message_Error_Caption" xml:space="preserve">
+    <value>Fehler</value>
+  </data>
+  <data name="Message_Error_Image_Text1" xml:space="preserve">
+    <value>Das Bild kann nicht geöffnet werden:</value>
+  </data>
+  <data name="Message_Error_Image_Text2" xml:space="preserve">
+    <value>. Sie haben keine Berechtigung, die Datei zu lesen, oder das Bild ist beschädigt.</value>
+  </data>
+  <data name="Message_GoToFile_Caption" xml:space="preserve">
+    <value>Zur Datei gehen</value>
+  </data>
+  <data name="Message_GoToFile_Text" xml:space="preserve">
+    <value>Zur Datei gehen?</value>
+  </data>
+  <data name="Message_Image32bit" xml:space="preserve">
+    <value>Das Bild darf nicht monochrom sein und muss im 32-Bit-Format vorliegen.</value>
+  </data>
+  <data name="Message_ImageCount_Error" xml:space="preserve">
+    <value>Die ausgewählten Bilder liegen außerhalb des Bereichs der verfügbaren Bilder.</value>
+  </data>
+  <data name="Message_ImageFix_Error" xml:space="preserve">
+    <value>Fehler bei der Bildkonvertierung</value>
+  </data>
+  <data name="Message_JsonError_Text" xml:space="preserve">
+    <value>Ungültige JSON-Datei.</value>
+  </data>
+  <data name="Message_JsonReadError_Text" xml:space="preserve">
+    <value>Fehler beim Lesen von JSON-Datei.</value>
+  </data>
+  <data name="Message_LoadPreviewStates_Caption" xml:space="preserve">
+    <value>Vorschau-Einstellungen herunterladen</value>
+  </data>
+  <data name="Message_LoadPreviewStates_Text" xml:space="preserve">
+    <value>Eine vorhandene Datei mit einer Reihe von Vorschaueinstellungen herunterladen?</value>
+  </data>
+  <data name="Message_Restart_Caption" xml:space="preserve">
+    <value>Neustart</value>
+  </data>
+  <data name="Message_Restart_Text1" xml:space="preserve">
+    <value>Um die Einstellungen zu übernehmen, müssen Sie das Programm neu starten.</value>
+  </data>
+  <data name="Message_Restart_Text2" xml:space="preserve">
+    <value>Das Programm neu starten?</value>
+  </data>
+  <data name="Message_SaveOnly1234_Text" xml:space="preserve">
+    <value>Um voreingestellte Parameter zu speichern, setzen Sie mindestens ein Feld "Kalorien" auf einen anderen Wert als "1234".</value>
+  </data>
+  <data name="Message_Save_JSON_Modified_Caption" xml:space="preserve">
+    <value>Projekt speichern</value>
+  </data>
+  <data name="Message_Save_JSON_Modified_Text1" xml:space="preserve">
+    <value>Möchten Sie Änderungen am Projekt speichern "</value>
+  </data>
+  <data name="Message_Save_new_JSON" xml:space="preserve">
+    <value>Das aktuelle Projekt ist noch nicht gespeichert worden. Möchten Sie es speichern?</value>
+  </data>
+  <data name="Message_ShortcutsAOD_Text" xml:space="preserve">
+    <value>Sie können dem AOD-Bildschirm keine Verknüpfungen hinzufügen.</value>
+  </data>
+  <data name="Message_WarningConverting_Text1" xml:space="preserve">
+    <value>Ordner</value>
+  </data>
+  <data name="Message_WarningConverting_Text2" xml:space="preserve">
+    <value>bereits vorhanden. Ersetzen?</value>
+  </data>
+  <data name="Message_WarningPreview_Text1" xml:space="preserve">
+    <value>Die Größe der Vorschaubilder weicht vom Standard ab</value>
+  </data>
+  <data name="Message_WarningPreview_Text2" xml:space="preserve">
+    <value>Vorhandene Abmessungen verwenden?</value>
+  </data>
+  <data name="Message_Warning_Assets_Exist1" xml:space="preserve">
+    <value>Es gibt bereits einen Ordner mit Bildern in diesem Ordner.</value>
+  </data>
+  <data name="Message_Warning_Assets_Exist2" xml:space="preserve">
+    <value>Es wird empfohlen, ein Projekt in einem leeren Ordner zu erstellen.</value>
+  </data>
+  <data name="Message_Warning_Assets_Exist3" xml:space="preserve">
+    <value>Ein Projekt im ausgewählten Ordner erstellen?</value>
+  </data>
+  <data name="Message_Warning_Caption" xml:space="preserve">
+    <value>Warnung</value>
+  </data>
+  <data name="Message_Warning_Image_Exist1" xml:space="preserve">
+    <value>Das Projekt hat bereits ein Bild:</value>
+  </data>
+  <data name="Message_Warning_Image_Exist2" xml:space="preserve">
+    <value>Ersetzen Sie es durch ein neues Bild?</value>
+  </data>
+  <data name="Message_Warning_Information" xml:space="preserve">
+    <value>Information</value>
+  </data>
+  <data name="Message_Wrong_Original_Image" xml:space="preserve">
+    <value>Ungültiges Bildformat</value>
+  </data>
+  <data name="Message_Wrong_Preview_Exists" xml:space="preserve">
+    <value>Vorschaubild konnte nicht erstellt werden. Vielleicht ist ein solches Bild bereits vorhanden.</value>
+  </data>
+  <data name="Tip_Background" xml:space="preserve">
+    <value>Hintergrund</value>
+  </data>
+  <data name="Tip_Pointer" xml:space="preserve">
+    <value>Zeiger</value>
+  </data>
+</root>

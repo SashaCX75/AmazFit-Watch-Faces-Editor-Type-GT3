@@ -117,38 +117,36 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label22.Text" xml:space="preserve">
-    <value>Temperatura máxima</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="checkBox_WeatherSet_Temp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 17</value>
+  </data>
+  <data name="checkBox_Lock_Set.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 18</value>
+  </data>
+  <data name="checkBox_Alarm_Set.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 18</value>
+  </data>
+  <data name="button_Set.Text" xml:space="preserve">
+    <value>Valores</value>
+  </data>
+  <data name="checkBox_Alarm_Set.Text" xml:space="preserve">
+    <value>Alarma</value>
+  </data>
+  <data name="checkBox_DND_Set.Text" xml:space="preserve">
+    <value>No molestar</value>
+  </data>
+  <data name="checkBox_Lock_Set.Text" xml:space="preserve">
+    <value>Cerrar con llave</value>
+  </data>
+  <data name="checkBox_WeatherSet_Temp.Text" xml:space="preserve">
+    <value>Temperatura actual</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items" xml:space="preserve">
     <value>Nublado</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items1" xml:space="preserve">
     <value>Probabilidad de lluvia</value>
-  </data>
-  <data name="comboBox_WeatherSet_Icon.Items2" xml:space="preserve">
-    <value>Probabilidad de nieve</value>
-  </data>
-  <data name="comboBox_WeatherSet_Icon.Items3" xml:space="preserve">
-    <value>Soleado</value>
-  </data>
-  <data name="comboBox_WeatherSet_Icon.Items4" xml:space="preserve">
-    <value>Nublado</value>
-  </data>
-  <data name="comboBox_WeatherSet_Icon.Items5" xml:space="preserve">
-    <value>Lluvia ligera</value>
-  </data>
-  <data name="comboBox_WeatherSet_Icon.Items6" xml:space="preserve">
-    <value>Nieve ligera</value>
-  </data>
-  <data name="comboBox_WeatherSet_Icon.Items7" xml:space="preserve">
-    <value>Lluvia moderada</value>
-  </data>
-  <data name="comboBox_WeatherSet_Icon.Items8" xml:space="preserve">
-    <value>Nieve moderada</value>
-  </data>
-  <data name="comboBox_WeatherSet_Icon.Items9" xml:space="preserve">
-    <value>Fuerte nevada</value>
   </data>
   <data name="comboBox_WeatherSet_Icon.Items10" xml:space="preserve">
     <value>Lluvia Pesada</value>
@@ -180,6 +178,9 @@
   <data name="comboBox_WeatherSet_Icon.Items19" xml:space="preserve">
     <value>lluvia con granizo</value>
   </data>
+  <data name="comboBox_WeatherSet_Icon.Items2" xml:space="preserve">
+    <value>Probabilidad de nieve</value>
+  </data>
   <data name="comboBox_WeatherSet_Icon.Items20" xml:space="preserve">
     <value>Fuerte lluvia con granizo</value>
   </data>
@@ -207,92 +208,91 @@
   <data name="comboBox_WeatherSet_Icon.Items28" xml:space="preserve">
     <value>Noche clara</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="checkBox_WeatherSet_Temp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 17</value>
+  <data name="comboBox_WeatherSet_Icon.Items3" xml:space="preserve">
+    <value>Soleado</value>
   </data>
-  <data name="checkBox_WeatherSet_Temp.Text" xml:space="preserve">
-    <value>Temperatura actual</value>
+  <data name="comboBox_WeatherSet_Icon.Items4" xml:space="preserve">
+    <value>Nublado</value>
   </data>
-  <data name="label21.Text" xml:space="preserve">
-    <value>Temperatura mínima</value>
+  <data name="comboBox_WeatherSet_Icon.Items5" xml:space="preserve">
+    <value>Lluvia ligera</value>
   </data>
-  <data name="label20.Text" xml:space="preserve">
-    <value>Presión del aire</value>
+  <data name="comboBox_WeatherSet_Icon.Items6" xml:space="preserve">
+    <value>Nieve ligera</value>
   </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value>Altitud</value>
+  <data name="comboBox_WeatherSet_Icon.Items7" xml:space="preserve">
+    <value>Lluvia moderada</value>
   </data>
-  <data name="label18.Text" xml:space="preserve">
-    <value>Fuerza del viento</value>
+  <data name="comboBox_WeatherSet_Icon.Items8" xml:space="preserve">
+    <value>Nieve moderada</value>
   </data>
-  <data name="label17.Text" xml:space="preserve">
-    <value>Humedad</value>
-  </data>
-  <data name="label16.Text" xml:space="preserve">
-    <value>Calidad del aire</value>
-  </data>
-  <data name="label15.Text" xml:space="preserve">
-    <value>Índice UV</value>
-  </data>
-  <data name="label14.Text" xml:space="preserve">
-    <value>Icono del tiempo</value>
-  </data>
-  <data name="groupBox_Air.Text" xml:space="preserve">
-    <value>Atmósfera</value>
-  </data>
-  <data name="checkBox_DND_Set.Text" xml:space="preserve">
-    <value>No molestar</value>
-  </data>
-  <data name="checkBox_Lock_Set.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 18</value>
-  </data>
-  <data name="checkBox_Lock_Set.Text" xml:space="preserve">
-    <value>Cerrar con llave</value>
-  </data>
-  <data name="checkBox_Alarm_Set.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 18</value>
-  </data>
-  <data name="checkBox_Alarm_Set.Text" xml:space="preserve">
-    <value>Alarma</value>
-  </data>
-  <data name="label13.Text" xml:space="preserve">
-    <value>La quema de grasa</value>
-  </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value>Estrés</value>
-  </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value>Levantarse</value>
-  </data>
-  <data name="label08.Text" xml:space="preserve">
-    <value>Objetivo de pasos</value>
-  </data>
-  <data name="label07.Text" xml:space="preserve">
-    <value>Pasos</value>
-  </data>
-  <data name="label06.Text" xml:space="preserve">
-    <value>Distancia</value>
-  </data>
-  <data name="label05.Text" xml:space="preserve">
-    <value>Ritmo cardiaco</value>
-  </data>
-  <data name="label04.Text" xml:space="preserve">
-    <value>Calorías</value>
-  </data>
-  <data name="label03.Text" xml:space="preserve">
-    <value>Batería</value>
-  </data>
-  <data name="label02.Text" xml:space="preserve">
-    <value>Hora</value>
-  </data>
-  <data name="label01.Text" xml:space="preserve">
-    <value>Fecha</value>
+  <data name="comboBox_WeatherSet_Icon.Items9" xml:space="preserve">
+    <value>Fuerte nevada</value>
   </data>
   <data name="groupBox_Activity.Text" xml:space="preserve">
     <value>Actividades</value>
   </data>
-  <data name="button_Set.Text" xml:space="preserve">
-    <value>Valores</value>
+  <data name="groupBox_Air.Text" xml:space="preserve">
+    <value>Tiempo</value>
+  </data>
+  <data name="label01.Text" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="label02.Text" xml:space="preserve">
+    <value>Hora</value>
+  </data>
+  <data name="label03.Text" xml:space="preserve">
+    <value>Batería</value>
+  </data>
+  <data name="label04.Text" xml:space="preserve">
+    <value>Calorías</value>
+  </data>
+  <data name="label05.Text" xml:space="preserve">
+    <value>Ritmo cardiaco</value>
+  </data>
+  <data name="label06.Text" xml:space="preserve">
+    <value>Distancia</value>
+  </data>
+  <data name="label07.Text" xml:space="preserve">
+    <value>Pasos</value>
+  </data>
+  <data name="label08.Text" xml:space="preserve">
+    <value>Objetivo de pasos</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Levantarse</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Estrés</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>La quema de grasa</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Icono del tiempo</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>Índice UV</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>Calidad del aire</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>Humedad</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Fuerza del viento</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>Altitud</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>Presión del aire</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Temperatura mínima</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Temperatura máxima</value>
   </data>
 </root>

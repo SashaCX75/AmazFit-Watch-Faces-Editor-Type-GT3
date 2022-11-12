@@ -117,35 +117,38 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="button_GenerateID.Text" xml:space="preserve">
-    <value>Generar</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="radioButton_Background_color.Size" type="System.Drawing.Size, System.Drawing">
     <value>49, 17</value>
   </data>
-  <data name="radioButton_Background_color.Text" xml:space="preserve">
-    <value>Color</value>
-  </data>
   <data name="radioButton_Background_image.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 17</value>
-  </data>
-  <data name="radioButton_Background_image.Text" xml:space="preserve">
-    <value>Imagen</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>37, 13</value>
   </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Previo</value>
-  </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>118, 13</value>
+  </data>
+  <data name="label_ID.Location" type="System.Drawing.Point, System.Drawing">
+    <value>189, 65</value>
+  </data>
+  <data name="button_GenerateID.Text" xml:space="preserve">
+    <value>Generar</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>ID de la esfera del reloj:</value>
   </data>
-  <data name="label_ID.Location" type="System.Drawing.Point, System.Drawing">
-    <value>189, 65</value>
+  <data name="label_EditableBackground_Hint.Text" xml:space="preserve">
+    <value>Se utilizará el fondo editable de la pantalla principal</value>
+  </data>
+  <data name="radioButton_Background_color.Text" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="radioButton_Background_image.Text" xml:space="preserve">
+    <value>Imagen</value>
+  </data>
+  <data name="radioButton_EditableBackground.Text" xml:space="preserve">
+    <value>Fondo editable</value>
   </data>
 </root>

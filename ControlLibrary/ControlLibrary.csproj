@@ -51,6 +51,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Strings.de.Designer.cs">
+      <DependentUpon>Strings.de.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Properties\Strings.uk.Designer.cs">
       <DependentUpon>Strings.uk.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -379,11 +384,15 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Elements\UCtrl_Activity_Elm.de.resx">
+      <DependentUpon>UCtrl_Activity_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Activity_Elm.en.resx">
       <DependentUpon>UCtrl_Activity_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Activity_Elm.es.resx">
       <DependentUpon>UCtrl_Activity_Elm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Activity_Elm.it.resx">
       <DependentUpon>UCtrl_Activity_Elm.cs</DependentUpon>
@@ -397,6 +406,9 @@
     <EmbeddedResource Include="Elements\UCtrl_Activity_Elm.zh.resx">
       <DependentUpon>UCtrl_Activity_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Altimeter_Elm.de.resx">
+      <DependentUpon>UCtrl_Altimeter_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Altimeter_Elm.es.resx">
       <DependentUpon>UCtrl_Altimeter_Elm.cs</DependentUpon>
     </EmbeddedResource>
@@ -409,8 +421,12 @@
     <EmbeddedResource Include="Elements\UCtrl_Altimeter_Elm.zh.resx">
       <DependentUpon>UCtrl_Altimeter_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_AnalogTime_Elm.de.resx">
+      <DependentUpon>UCtrl_AnalogTime_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_AnalogTime_Elm.es.resx">
       <DependentUpon>UCtrl_AnalogTime_Elm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_AnalogTime_Elm.it.resx">
       <DependentUpon>UCtrl_AnalogTime_Elm.cs</DependentUpon>
@@ -421,7 +437,13 @@
     <EmbeddedResource Include="Elements\UCtrl_AnalogTime_Elm.zh.resx">
       <DependentUpon>UCtrl_AnalogTime_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Animation_Elm.de.resx">
+      <DependentUpon>UCtrl_Animation_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Animation_Elm.en.resx">
+      <DependentUpon>UCtrl_Animation_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Animation_Elm.es.resx">
       <DependentUpon>UCtrl_Animation_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Animation_Elm.uk.resx">
@@ -429,6 +451,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Animation_Elm.zh.resx">
       <DependentUpon>UCtrl_Animation_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Background_Elm.de.resx">
+      <DependentUpon>UCtrl_Background_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Background_Elm.es.resx">
       <DependentUpon>UCtrl_Background_Elm.cs</DependentUpon>
@@ -441,6 +466,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Background_Elm.zh.resx">
       <DependentUpon>UCtrl_Background_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Battery_Elm.de.resx">
+      <DependentUpon>UCtrl_Battery_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Battery_Elm.en.resx">
       <DependentUpon>UCtrl_Battery_Elm.cs</DependentUpon>
@@ -457,6 +485,9 @@
     <EmbeddedResource Include="Elements\UCtrl_Battery_Elm.zh.resx">
       <DependentUpon>UCtrl_Battery_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Calories_Elm.de.resx">
+      <DependentUpon>UCtrl_Calories_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Calories_Elm.en.resx">
       <DependentUpon>UCtrl_Calories_Elm.cs</DependentUpon>
     </EmbeddedResource>
@@ -472,6 +503,9 @@
     <EmbeddedResource Include="Elements\UCtrl_Calories_Elm.zh.resx">
       <DependentUpon>UCtrl_Calories_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_DateDay_Elm.de.resx">
+      <DependentUpon>UCtrl_DateDay_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_DateDay_Elm.es.resx">
       <DependentUpon>UCtrl_DateDay_Elm.cs</DependentUpon>
     </EmbeddedResource>
@@ -483,6 +517,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_DateDay_Elm.zh.resx">
       <DependentUpon>UCtrl_DateDay_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_DateMonth_Elm.de.resx">
+      <DependentUpon>UCtrl_DateMonth_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_DateMonth_Elm.es.resx">
       <DependentUpon>UCtrl_DateMonth_Elm.cs</DependentUpon>
@@ -496,6 +533,9 @@
     <EmbeddedResource Include="Elements\UCtrl_DateMonth_Elm.zh.resx">
       <DependentUpon>UCtrl_DateMonth_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_DateWeek_Elm.de.resx">
+      <DependentUpon>UCtrl_DateWeek_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_DateWeek_Elm.es.resx">
       <DependentUpon>UCtrl_DateWeek_Elm.cs</DependentUpon>
     </EmbeddedResource>
@@ -507,6 +547,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_DateWeek_Elm.zh.resx">
       <DependentUpon>UCtrl_DateWeek_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_DateYear_Elm.de.resx">
+      <DependentUpon>UCtrl_DateYear_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_DateYear_Elm.es.resx">
       <DependentUpon>UCtrl_DateYear_Elm.cs</DependentUpon>
@@ -520,6 +563,9 @@
     <EmbeddedResource Include="Elements\UCtrl_DateYear_Elm.zh.resx">
       <DependentUpon>UCtrl_DateYear_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_DigitalTime_Elm.de.resx">
+      <DependentUpon>UCtrl_DigitalTime_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_DigitalTime_Elm.es.resx">
       <DependentUpon>UCtrl_DigitalTime_Elm.cs</DependentUpon>
     </EmbeddedResource>
@@ -531,6 +577,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_DigitalTime_Elm.zh.resx">
       <DependentUpon>UCtrl_DigitalTime_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Distance_Elm.de.resx">
+      <DependentUpon>UCtrl_Distance_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Distance_Elm.en.resx">
       <DependentUpon>UCtrl_Distance_Elm.cs</DependentUpon>
@@ -547,13 +596,25 @@
     <EmbeddedResource Include="Elements\UCtrl_Distance_Elm.zh.resx">
       <DependentUpon>UCtrl_Distance_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_EditableElements_Elm.de.resx">
+      <DependentUpon>UCtrl_EditableElements_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_EditableElements_Elm.en.resx">
+      <DependentUpon>UCtrl_EditableElements_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_EditableElements_Elm.es.resx">
       <DependentUpon>UCtrl_EditableElements_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_EditableElements_Elm.uk.resx">
       <DependentUpon>UCtrl_EditableElements_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_EditableTimePointer_Elm.de.resx">
+      <DependentUpon>UCtrl_EditableTimePointer_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_EditableTimePointer_Elm.en.resx">
+      <DependentUpon>UCtrl_EditableTimePointer_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_EditableTimePointer_Elm.es.resx">
       <DependentUpon>UCtrl_EditableTimePointer_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_EditableTimePointer_Elm.uk.resx">
@@ -561,6 +622,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_EditableTimePointer_Elm.zh.resx">
       <DependentUpon>UCtrl_EditableTimePointer_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_FatBurning_Elm.de.resx">
+      <DependentUpon>UCtrl_FatBurning_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_FatBurning_Elm.es.resx">
       <DependentUpon>UCtrl_FatBurning_Elm.cs</DependentUpon>
@@ -573,6 +637,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_FatBurning_Elm.zh.resx">
       <DependentUpon>UCtrl_FatBurning_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Heart_Elm.de.resx">
+      <DependentUpon>UCtrl_Heart_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Heart_Elm.en.resx">
       <DependentUpon>UCtrl_Heart_Elm.cs</DependentUpon>
@@ -589,6 +656,9 @@
     <EmbeddedResource Include="Elements\UCtrl_Heart_Elm.zh.resx">
       <DependentUpon>UCtrl_Heart_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Humidity_Elm.de.resx">
+      <DependentUpon>UCtrl_Humidity_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Humidity_Elm.en.resx">
       <DependentUpon>UCtrl_Humidity_Elm.cs</DependentUpon>
     </EmbeddedResource>
@@ -604,6 +674,9 @@
     <EmbeddedResource Include="Elements\UCtrl_Humidity_Elm.zh.resx">
       <DependentUpon>UCtrl_Humidity_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Moon_Elm.de.resx">
+      <DependentUpon>UCtrl_Moon_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Moon_Elm.es.resx">
       <DependentUpon>UCtrl_Moon_Elm.cs</DependentUpon>
     </EmbeddedResource>
@@ -615,6 +688,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Moon_Elm.zh.resx">
       <DependentUpon>UCtrl_Moon_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_PAI_Elm.de.resx">
+      <DependentUpon>UCtrl_PAI_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_PAI_Elm.en.resx">
       <DependentUpon>UCtrl_PAI_Elm.cs</DependentUpon>
@@ -630,6 +706,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_PAI_Elm.zh.resx">
       <DependentUpon>UCtrl_PAI_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Shortcuts_Elm.de.resx">
+      <DependentUpon>UCtrl_Shortcuts_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Shortcuts_Elm.en.resx">
       <DependentUpon>UCtrl_Shortcuts_Elm.cs</DependentUpon>
@@ -647,6 +726,9 @@
     <EmbeddedResource Include="Elements\UCtrl_Shortcuts_Elm.zh.resx">
       <DependentUpon>UCtrl_Shortcuts_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_SpO2_Elm.de.resx">
+      <DependentUpon>UCtrl_SpO2_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_SpO2_Elm.en.resx">
       <DependentUpon>UCtrl_SpO2_Elm.cs</DependentUpon>
     </EmbeddedResource>
@@ -661,6 +743,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_SpO2_Elm.zh.resx">
       <DependentUpon>UCtrl_SpO2_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Stand_Elm.de.resx">
+      <DependentUpon>UCtrl_Stand_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Stand_Elm.en.resx">
       <DependentUpon>UCtrl_Stand_Elm.cs</DependentUpon>
@@ -677,6 +762,9 @@
     <EmbeddedResource Include="Elements\UCtrl_Stand_Elm.zh.resx">
       <DependentUpon>UCtrl_Stand_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Statuses_Elm.de.resx">
+      <DependentUpon>UCtrl_Statuses_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Statuses_Elm.en.resx">
       <DependentUpon>UCtrl_Statuses_Elm.cs</DependentUpon>
     </EmbeddedResource>
@@ -691,6 +779,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Statuses_Elm.zh.resx">
       <DependentUpon>UCtrl_Statuses_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Steps_Elm.de.resx">
+      <DependentUpon>UCtrl_Steps_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Steps_Elm.en.resx">
       <DependentUpon>UCtrl_Steps_Elm.cs</DependentUpon>
@@ -707,6 +798,9 @@
     <EmbeddedResource Include="Elements\UCtrl_Steps_Elm.zh.resx">
       <DependentUpon>UCtrl_Steps_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Stress_Elm.de.resx">
+      <DependentUpon>UCtrl_Stress_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Stress_Elm.en.resx">
       <DependentUpon>UCtrl_Stress_Elm.cs</DependentUpon>
     </EmbeddedResource>
@@ -722,6 +816,9 @@
     <EmbeddedResource Include="Elements\UCtrl_Stress_Elm.zh.resx">
       <DependentUpon>UCtrl_Stress_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Sunrise_Elm.de.resx">
+      <DependentUpon>UCtrl_Sunrise_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Sunrise_Elm.es.resx">
       <DependentUpon>UCtrl_Sunrise_Elm.cs</DependentUpon>
     </EmbeddedResource>
@@ -733,6 +830,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Sunrise_Elm.zh.resx">
       <DependentUpon>UCtrl_Sunrise_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_UVIndex_Elm.de.resx">
+      <DependentUpon>UCtrl_UVIndex_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_UVIndex_Elm.en.resx">
       <DependentUpon>UCtrl_UVIndex_Elm.cs</DependentUpon>
@@ -748,6 +848,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_UVIndex_Elm.zh.resx">
       <DependentUpon>UCtrl_UVIndex_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Weather_Elm.de.resx">
+      <DependentUpon>UCtrl_Weather_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Weather_Elm.en.resx">
       <DependentUpon>UCtrl_Weather_Elm.cs</DependentUpon>
@@ -766,6 +869,9 @@
     <EmbeddedResource Include="Elements\UCtrl_Weather_Elm.zh.resx">
       <DependentUpon>UCtrl_Weather_Elm.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Wind_Elm.de.resx">
+      <DependentUpon>UCtrl_Wind_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Wind_Elm.en.resx">
       <DependentUpon>UCtrl_Wind_Elm.cs</DependentUpon>
@@ -786,6 +892,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Strings.de.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Strings.de.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Strings.uk.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -810,6 +920,9 @@
     <EmbeddedResource Include="Properties\Strings.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_AmPm_Opt.de.resx">
+      <DependentUpon>UCtrl_AmPm_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_AmPm_Opt.en.resx">
       <DependentUpon>UCtrl_AmPm_Opt.cs</DependentUpon>
@@ -844,7 +957,13 @@
     <EmbeddedResource Include="Elements\UCtrl_Animation_Elm.resx">
       <DependentUpon>UCtrl_Animation_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Animation_Frame_Opt.de.resx">
+      <DependentUpon>UCtrl_Animation_Frame_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Animation_Frame_Opt.en.resx">
+      <DependentUpon>UCtrl_Animation_Frame_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Animation_Frame_Opt.es.resx">
       <DependentUpon>UCtrl_Animation_Frame_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Animation_Frame_Opt.resx">
@@ -856,7 +975,14 @@
     <EmbeddedResource Include="UCtrl_Animation_Frame_Opt.zh.resx">
       <DependentUpon>UCtrl_Animation_Frame_Opt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Animation_Motion_Opt.de.resx">
+      <DependentUpon>UCtrl_Animation_Motion_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Animation_Motion_Opt.en.resx">
+      <DependentUpon>UCtrl_Animation_Motion_Opt.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Animation_Motion_Opt.es.resx">
       <DependentUpon>UCtrl_Animation_Motion_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Animation_Motion_Opt.resx">
@@ -868,7 +994,14 @@
     <EmbeddedResource Include="UCtrl_Animation_Motion_Opt.zh.resx">
       <DependentUpon>UCtrl_Animation_Motion_Opt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Animation_Rotate_Opt.de.resx">
+      <DependentUpon>UCtrl_Animation_Rotate_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Animation_Rotate_Opt.en.resx">
+      <DependentUpon>UCtrl_Animation_Rotate_Opt.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Animation_Rotate_Opt.es.resx">
       <DependentUpon>UCtrl_Animation_Rotate_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Animation_Rotate_Opt.resx">
@@ -879,6 +1012,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Animation_Rotate_Opt.zh.resx">
       <DependentUpon>UCtrl_Animation_Rotate_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Background_Opt.de.resx">
+      <DependentUpon>UCtrl_Background_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Background_Opt.en.resx">
       <DependentUpon>UCtrl_Background_Opt.cs</DependentUpon>
@@ -941,6 +1077,9 @@
     <EmbeddedResource Include="Elements\UCtrl_Altimeter_Elm.resx">
       <DependentUpon>UCtrl_Altimeter_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Circle_Scale_Opt.de.resx">
+      <DependentUpon>UCtrl_Circle_Scale_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Circle_Scale_Opt.en.resx">
       <DependentUpon>UCtrl_Circle_Scale_Opt.cs</DependentUpon>
     </EmbeddedResource>
@@ -974,7 +1113,13 @@
     <EmbeddedResource Include="Elements\UCtrl_FatBurning_Elm.resx">
       <DependentUpon>UCtrl_FatBurning_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_EditableBackground_Opt.de.resx">
+      <DependentUpon>UCtrl_EditableBackground_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_EditableBackground_Opt.en.resx">
+      <DependentUpon>UCtrl_EditableBackground_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_EditableBackground_Opt.es.resx">
       <DependentUpon>UCtrl_EditableBackground_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_EditableBackground_Opt.resx">
@@ -989,7 +1134,13 @@
     <EmbeddedResource Include="Elements\UCtrl_EditableElements_Elm.resx">
       <DependentUpon>UCtrl_EditableElements_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_EditableElemets_Opt.de.resx">
+      <DependentUpon>UCtrl_EditableElemets_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_EditableElemets_Opt.en.resx">
+      <DependentUpon>UCtrl_EditableElemets_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_EditableElemets_Opt.es.resx">
       <DependentUpon>UCtrl_EditableElemets_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_EditableElemets_Opt.resx">
@@ -1001,7 +1152,13 @@
     <EmbeddedResource Include="UCtrl_EditableElemets_Opt.uk.resx">
       <DependentUpon>UCtrl_EditableElemets_Opt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_EditableTimePointer_Opt.de.resx">
+      <DependentUpon>UCtrl_EditableTimePointer_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_EditableTimePointer_Opt.en.resx">
+      <DependentUpon>UCtrl_EditableTimePointer_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_EditableTimePointer_Opt.es.resx">
       <DependentUpon>UCtrl_EditableTimePointer_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_EditableTimePointer_Opt.resx">
@@ -1012,6 +1169,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_EditableTimePointer_Opt.zh.resx">
       <DependentUpon>UCtrl_EditableTimePointer_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Icon_Opt.de.resx">
+      <DependentUpon>UCtrl_Icon_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Icon_Opt.en.resx">
       <DependentUpon>UCtrl_Icon_Opt.cs</DependentUpon>
@@ -1031,6 +1191,9 @@
     <EmbeddedResource Include="UCtrl_Icon_Opt.zh.resx">
       <DependentUpon>UCtrl_Icon_Opt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Images_Opt.de.resx">
+      <DependentUpon>UCtrl_Images_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Images_Opt.en.resx">
       <DependentUpon>UCtrl_Images_Opt.cs</DependentUpon>
     </EmbeddedResource>
@@ -1048,6 +1211,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Images_Opt.zh.resx">
       <DependentUpon>UCtrl_Images_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Linear_Scale_Opt.de.resx">
+      <DependentUpon>UCtrl_Linear_Scale_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Linear_Scale_Opt.en.resx">
       <DependentUpon>UCtrl_Linear_Scale_Opt.cs</DependentUpon>
@@ -1076,6 +1242,9 @@
     <EmbeddedResource Include="Elements\UCtrl_Moon_Elm.resx">
       <DependentUpon>UCtrl_Moon_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Pointer_Opt.de.resx">
+      <DependentUpon>UCtrl_Pointer_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Pointer_Opt.en.resx">
       <DependentUpon>UCtrl_Pointer_Opt.cs</DependentUpon>
     </EmbeddedResource>
@@ -1094,6 +1263,9 @@
     <EmbeddedResource Include="UCtrl_Pointer_Opt.zh.resx">
       <DependentUpon>UCtrl_Pointer_Opt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Segments_Opt.de.resx">
+      <DependentUpon>UCtrl_Segments_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Segments_Opt.en.resx">
       <DependentUpon>UCtrl_Segments_Opt.cs</DependentUpon>
     </EmbeddedResource>
@@ -1111,6 +1283,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Segments_Opt.zh.resx">
       <DependentUpon>UCtrl_Segments_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Set.de.resx">
+      <DependentUpon>UCtrl_Set.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Set.en.resx">
       <DependentUpon>UCtrl_Set.cs</DependentUpon>
@@ -1139,6 +1314,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Set.zh.resx">
       <DependentUpon>UCtrl_Set.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Shortcut_Opt.de.resx">
+      <DependentUpon>UCtrl_Shortcut_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Shortcut_Opt.en.resx">
       <DependentUpon>UCtrl_Shortcut_Opt.cs</DependentUpon>
@@ -1173,6 +1351,9 @@
     <EmbeddedResource Include="Elements\UCtrl_Stress_Elm.resx">
       <DependentUpon>UCtrl_Stress_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Text_Opt.de.resx">
+      <DependentUpon>UCtrl_Text_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Text_Opt.en.resx">
       <DependentUpon>UCtrl_Text_Opt.cs</DependentUpon>
     </EmbeddedResource>
@@ -1195,6 +1376,9 @@
       <DependentUpon>UCtrl_Weather_Elm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Text_SystemFont_Opt.de.resx">
+      <DependentUpon>UCtrl_Text_SystemFont_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Text_SystemFont_Opt.en.resx">
       <DependentUpon>UCtrl_Text_SystemFont_Opt.cs</DependentUpon>
     </EmbeddedResource>
@@ -1212,6 +1396,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Text_SystemFont_Opt.zh.resx">
       <DependentUpon>UCtrl_Text_SystemFont_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Text_Weather_Opt.de.resx">
+      <DependentUpon>UCtrl_Text_Weather_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Text_Weather_Opt.en.resx">
       <DependentUpon>UCtrl_Text_Weather_Opt.cs</DependentUpon>

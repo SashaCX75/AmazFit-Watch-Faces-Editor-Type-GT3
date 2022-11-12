@@ -61,6 +61,15 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Такой элемент уже есть.
+        /// </summary>
+        internal static string ElementExists {
+            get {
+                return ResourceManager.GetString("ElementExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Барометр.
         /// </summary>
         internal static string TypeAltimeter {
@@ -187,6 +196,15 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Жиросжигание.
+        /// </summary>
+        internal static string TypeNameFatBurning {
+            get {
+                return ResourceManager.GetString("TypeNameFatBurning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Сердцебиение.
         /// </summary>
         internal static string TypeNameHeart {
@@ -205,11 +223,38 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Кислород в крови.
+        /// </summary>
+        internal static string TypeNameSpO2 {
+            get {
+                return ResourceManager.GetString("TypeNameSpO2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Стою.
+        /// </summary>
+        internal static string TypeNameStand {
+            get {
+                return ResourceManager.GetString("TypeNameStand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на К-во шагов.
         /// </summary>
         internal static string TypeNameStep {
             get {
                 return ResourceManager.GetString("TypeNameStep", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Стресс.
+        /// </summary>
+        internal static string TypeNameStress {
+            get {
+                return ResourceManager.GetString("TypeNameStress", resourceCulture);
             }
         }
         

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrl_EditableTimePointer_Opt));
             this.comboBox_select_pointerSet = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -40,12 +41,12 @@
             this.label06 = new System.Windows.Forms.Label();
             this.comboBox_hourPointer_image = new System.Windows.Forms.ComboBox();
             this.numericUpDown_hourPointer_X = new System.Windows.Forms.NumericUpDown();
-            this.contextMenuStrip_X = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenuStrip_X = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.вставитьКоординатуХToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.копироватьToolStripMenuItemX = new System.Windows.Forms.ToolStripMenuItem();
             this.вставитьToolStripMenuItemX = new System.Windows.Forms.ToolStripMenuItem();
             this.numericUpDown_hourPointer_Y = new System.Windows.Forms.NumericUpDown();
-            this.contextMenuStrip_Y = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenuStrip_Y = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.вставитьКоординатуYToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.копироватьToolStripMenuItemY = new System.Windows.Forms.ToolStripMenuItem();
             this.вставитьToolStripMenuItemY = new System.Windows.Forms.ToolStripMenuItem();
@@ -800,6 +801,7 @@
             // 
             resources.ApplyResources(this.tabPage_hour, "tabPage_hour");
             this.tabPage_hour.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage_hour.Controls.Add(this.label02);
             this.tabPage_hour.Controls.Add(this.numericUpDown_hourPointer_offset_X);
             this.tabPage_hour.Controls.Add(this.comboBox_hourPointer_image);
             this.tabPage_hour.Controls.Add(this.numericUpDown_hourPointer_offset_Y);
@@ -809,7 +811,6 @@
             this.tabPage_hour.Controls.Add(this.label07);
             this.tabPage_hour.Controls.Add(this.label01);
             this.tabPage_hour.Controls.Add(this.label06);
-            this.tabPage_hour.Controls.Add(this.label02);
             this.tabPage_hour.Controls.Add(this.numericUpDown_hourPointer_Y);
             this.tabPage_hour.Controls.Add(this.numericUpDown_hourPointer_X);
             this.tabPage_hour.Name = "tabPage_hour";
@@ -818,6 +819,7 @@
             // 
             resources.ApplyResources(this.tabPage_minute, "tabPage_minute");
             this.tabPage_minute.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage_minute.Controls.Add(this.label5);
             this.tabPage_minute.Controls.Add(this.numericUpDown_minutePointer_offset_X);
             this.tabPage_minute.Controls.Add(this.label6);
             this.tabPage_minute.Controls.Add(this.numericUpDown_minutePointer_offset_Y);
@@ -825,7 +827,6 @@
             this.tabPage_minute.Controls.Add(this.label2);
             this.tabPage_minute.Controls.Add(this.label7);
             this.tabPage_minute.Controls.Add(this.label3);
-            this.tabPage_minute.Controls.Add(this.label5);
             this.tabPage_minute.Controls.Add(this.label4);
             this.tabPage_minute.Controls.Add(this.numericUpDown_minutePointer_Y);
             this.tabPage_minute.Controls.Add(this.comboBox_minutePointer_image);
@@ -836,6 +837,7 @@
             // 
             resources.ApplyResources(this.tabPage_second, "tabPage_second");
             this.tabPage_second.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage_second.Controls.Add(this.label12);
             this.tabPage_second.Controls.Add(this.numericUpDown_secondPointer_offset_X);
             this.tabPage_second.Controls.Add(this.label13);
             this.tabPage_second.Controls.Add(this.numericUpDown_secondPointer_offset_Y);
@@ -843,7 +845,6 @@
             this.tabPage_second.Controls.Add(this.label9);
             this.tabPage_second.Controls.Add(this.label14);
             this.tabPage_second.Controls.Add(this.label10);
-            this.tabPage_second.Controls.Add(this.label12);
             this.tabPage_second.Controls.Add(this.label11);
             this.tabPage_second.Controls.Add(this.numericUpDown_secondPointer_Y);
             this.tabPage_second.Controls.Add(this.comboBox_secondPointer_image);

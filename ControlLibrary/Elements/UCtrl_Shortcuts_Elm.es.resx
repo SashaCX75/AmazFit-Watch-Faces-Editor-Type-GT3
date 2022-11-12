@@ -148,7 +148,7 @@
     <value>Nivel de estrés</value>
   </data>
   <data name="button_Sunrise.Text" xml:space="preserve">
-    <value>La salida del sol puesta de sol</value>
+    <value>Salida del sol/Puesta de sol</value>
   </data>
   <data name="button_Weather.Text" xml:space="preserve">
     <value>Temperatura del aire</value>

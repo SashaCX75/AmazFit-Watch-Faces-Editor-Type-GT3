@@ -137,9 +137,6 @@
   <data name="numericUpDown_iconY.TabIndex" type="System.Int32, mscorlib">
     <value>184</value>
   </data>
-  <data name="label08.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>BottomCenter</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label1084.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -161,9 +158,6 @@
   </data>
   <data name="&gt;&gt;label1084.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBox_unit_f.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label09.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -192,11 +186,8 @@
   <data name="label09.Text" xml:space="preserve">
     <value>Выравнивание</value>
   </data>
-  <data name="comboBox_image.MaxDropDownItems" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="вставитьКоординатуХToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>203, 26</value>
+  <data name="numericUpDown_spacing.Location" type="System.Drawing.Point, System.Drawing">
+    <value>193, 160</value>
   </data>
   <data name="&gt;&gt;label02.Parent" xml:space="preserve">
     <value>$this</value>
@@ -209,9 +200,6 @@
   </data>
   <data name="label05.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
-  </data>
-  <data name="comboBox_alignment.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 21</value>
   </data>
   <data name="label03.Text" xml:space="preserve">
     <value>Отступы</value>
@@ -237,6 +225,9 @@
   <data name="label07.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
   <data name="checkBox_addZero.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -258,11 +249,11 @@
   <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
     <value>204, 82</value>
   </data>
-  <data name="вставитьКоординатуYToolStripMenuItem.Text" xml:space="preserve">
-    <value>Вставить координату Y</value>
+  <data name="label03.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="label1085.Location" type="System.Drawing.Point, System.Drawing">
-    <value>103, 36</value>
+  <data name="comboBox_icon.MaxDropDownItems" type="System.Int32, mscorlib">
+    <value>25</value>
   </data>
   <data name="&gt;&gt;вставитьToolStripMenuItemY.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -279,6 +270,9 @@
   <data name="&gt;&gt;label10.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;numericUpDown_imageY.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
   <data name="comboBox_alignment.Items" xml:space="preserve">
     <value>По левому краю</value>
   </data>
@@ -291,14 +285,14 @@
   <data name="label04.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="вставитьToolStripMenuItemX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>203, 26</value>
+  <data name="&gt;&gt;numericUpDown_imageY.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label1086.ZOrder" xml:space="preserve">
     <value>29</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="вставитьКоординатуYToolStripMenuItem.Text" xml:space="preserve">
+    <value>Вставить координату Y</value>
   </data>
   <data name="&gt;&gt;label1086.Name" xml:space="preserve">
     <value>label1086</value>
@@ -333,14 +327,11 @@
   <data name="&gt;&gt;label04.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;comboBox_unit_c.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="numericUpDown_spacing.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 20</value>
   </data>
-  <data name="&gt;&gt;label09.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="вставитьКоординатуYToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>203, 26</value>
   </data>
   <data name="label01.Text" xml:space="preserve">
     <value>Стартовое изображение</value>
@@ -401,23 +392,6 @@
   <data name="&gt;&gt;копироватьToolStripMenuItemY.Name" xml:space="preserve">
     <value>копироватьToolStripMenuItemY</value>
   </data>
-  <data name="вставитьToolStripMenuItemX.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAArVJREFUOE9l
-        UktPE2EUnbY8WuQlPgq0iBoSdIHgo/ggmhgTX6hkCo2wUAqJRYpAjKk7f4A7XRhRaGuEEF1QAf0RbHSB
-        EbRFSgulpbQz04Lr471DDQUnOZmbc88997v3+wT+CvS5xqaTNT0NtSaH2HKrt7PT7rTb7c7u7m4VHDPX
-        Zr3Ta6mrdpyrr+kpLS4wqsX8FRl01sd3LXj35iWmJ32YmZmB3+9HKBRSwTFzX6Y/Ydz7Cn2tFlSVl1kz
-        5WSg14n9bRZ8nZ3DhG8KwyNuuD0eeDxeFW63R+UmfJP4NjsPR8tpVFXsE7eq6Ssx5Ij9trP4PufHj/lf
-        8C8s4ndwCYtLIRUcB4jjHGucdIJDlft3GgzaGhEIhrCwGEQwFEZoeQXhlYgKjpeI41wgGMZAx3kyyDpB
-        MRkM2CxYjsQQJnFkNYpobA2xtbgKjpnjHGsGO5pwqKIsy4B28Ih2EIsnsRqNYS2+jvVEEklJUsExc5xj
-        TR+NW2068L/BelJRhYmkBFlWoKTSKjhmTjUmjbOtcdcI+hyxVzwFSUmr3RKSDEVJIZVOq1BSKUjEcY41
-        D610jdkj0DsQH9xugJzaQIJF/wyoO4Nj5jjHmq7mepjLswwK6QRdN+oouYl45gTqCFTIkBUly2AT96+f
-        4Ie0bbAnXyfeu3ockryxtTyaV8rsgSHJtMzE1jLjSRntV47BbNy7bWDI04rtl2uRlNOI07VxpyR15K4M
-        jpmLRKKY/xlAs8UEk7F0p4HtUg2U9B/qQt1o01KmuyzT/DRGPJ6gF7mMz1OTuHnGtOsEudpW28WjGPUO
-        Y8zzGh/eD8M37sHH0RGMed9i1DOEoRfP8eyJA9caj0C8cBiVB0taM+WCoBEEM13l01yN4MrXCi5DjuAq
-        zqO/TnAxx2CuMF/jKtTrXEWk1Wk1ZkEQhL+gXkz+KXzH3gAAAABJRU5ErkJggg==
-</value>
-  </data>
   <data name="comboBox_imageError.Location" type="System.Drawing.Point, System.Drawing">
     <value>101, 160</value>
   </data>
@@ -427,8 +401,8 @@
   <data name="comboBox_image.TabIndex" type="System.Int32, mscorlib">
     <value>174</value>
   </data>
-  <data name="comboBox_unit_f.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="вставитьКоординатуХToolStripMenuItem.Text" xml:space="preserve">
+    <value>Вставить координату Х</value>
   </data>
   <data name="&gt;&gt;label07.Parent" xml:space="preserve">
     <value>$this</value>
@@ -439,8 +413,8 @@
   <data name="&gt;&gt;comboBox_image.ZOrder" xml:space="preserve">
     <value>16</value>
   </data>
-  <data name="label1086.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="comboBox_unit_c.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 160</value>
   </data>
   <data name="&gt;&gt;label06.ZOrder" xml:space="preserve">
     <value>9</value>
@@ -457,8 +431,8 @@
   <data name="&gt;&gt;comboBox_imageMinus.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="&gt;&gt;numericUpDown_imageY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label08.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomCenter</value>
   </data>
   <data name="&gt;&gt;label09.Name" xml:space="preserve">
     <value>label09</value>
@@ -469,8 +443,8 @@
   <data name="&gt;&gt;numericUpDown_spacing.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="копироватьToolStripMenuItemY.Text" xml:space="preserve">
-    <value>Копировать</value>
+  <data name="&gt;&gt;label1084.ZOrder" xml:space="preserve">
+    <value>27</value>
   </data>
   <data name="&gt;&gt;label04.ZOrder" xml:space="preserve">
     <value>24</value>
@@ -481,8 +455,8 @@
   <data name="&gt;&gt;comboBox_alignment.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label02.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="comboBox_unit_c.TabIndex" type="System.Int32, mscorlib">
+    <value>190</value>
   </data>
   <data name="&gt;&gt;comboBox_imageError.Name" xml:space="preserve">
     <value>comboBox_imageError</value>
@@ -505,6 +479,79 @@
   <data name="&gt;&gt;comboBox_imageError.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
+  <data name="&gt;&gt;numericUpDown_imageX.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label01.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;checkBox_addZero.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="label1083.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;label09.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="label07.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="копироватьToolStripMenuItemY.Text" xml:space="preserve">
+    <value>Копировать</value>
+  </data>
+  <data name="numericUpDown_iconY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 20</value>
+  </data>
+  <data name="label01.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 30</value>
+  </data>
+  <data name="comboBox_unit_f.Location" type="System.Drawing.Point, System.Drawing">
+    <value>157, 286</value>
+  </data>
+  <data name="label1085.Text" xml:space="preserve">
+    <value>X:</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="&gt;&gt;numericUpDown_iconY.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="label09.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;comboBox_unit_f.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="label1086.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;вставитьToolStripMenuItemX.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label02.TabIndex" type="System.Int32, mscorlib">
+    <value>186</value>
+  </data>
+  <data name="&gt;&gt;comboBox_unit_f.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;comboBox_image.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStrip_Y.Name" xml:space="preserve">
+    <value>contextMenuStrip_Y</value>
+  </data>
+  <data name="&gt;&gt;label06.Name" xml:space="preserve">
+    <value>label06</value>
+  </data>
+  <data name="вставитьToolStripMenuItemX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>203, 26</value>
+  </data>
+  <data name="label02.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label1085.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 36</value>
+  </data>
   <data name="копироватьToolStripMenuItemY.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAnJJREFUOE+l
@@ -521,54 +568,6 @@
         gfobN285p6dNt5F2ps/+r+K4P4wyYm9nlNBiAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="&gt;&gt;label01.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;checkBox_addZero.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="label01.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 30</value>
-  </data>
-  <data name="label07.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;label1086.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numericUpDown_imageX.ZOrder" xml:space="preserve">
-    <value>18</value>
-  </data>
-  <data name="comboBox_unit_f.Location" type="System.Drawing.Point, System.Drawing">
-    <value>157, 286</value>
-  </data>
-  <data name="label1085.Text" xml:space="preserve">
-    <value>X:</value>
-  </data>
-  <data name="&gt;&gt;numericUpDown_iconY.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="label09.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;comboBox_unit_f.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="label02.TabIndex" type="System.Int32, mscorlib">
-    <value>186</value>
-  </data>
-  <data name="&gt;&gt;comboBox_unit_f.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;comboBox_image.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;numericUpDown_imageY.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
   <data name="comboBox_imageError.TabIndex" type="System.Int32, mscorlib">
     <value>195</value>
   </data>
@@ -578,23 +577,14 @@
   <data name="&gt;&gt;label08.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkBox_follow.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="label06.Location" type="System.Drawing.Point, System.Drawing">
     <value>99, 127</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>UCtrl_Text_Weather_Opt</value>
   </data>
-  <data name="label04.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 80</value>
-  </data>
-  <data name="&gt;&gt;label1086.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStrip_Y.Name" xml:space="preserve">
-    <value>contextMenuStrip_Y</value>
+  <data name="&gt;&gt;label07.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label01.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -621,11 +611,11 @@
         gfobN285p6dNt5F2ps/+r+K4P4wyYm9nlNBiAAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="вставитьToolStripMenuItemX.Text" xml:space="preserve">
+    <value>Вставить</value>
+  </data>
   <data name="label05.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 13</value>
-  </data>
-  <data name="numericUpDown_spacing.Location" type="System.Drawing.Point, System.Drawing">
-    <value>193, 160</value>
   </data>
   <data name="label06.Text" xml:space="preserve">
     <value>Изображение при ошибке</value>
@@ -636,8 +626,11 @@
   <data name="&gt;&gt;comboBox_unit_c.Name" xml:space="preserve">
     <value>comboBox_unit_c</value>
   </data>
-  <data name="label02.Location" type="System.Drawing.Point, System.Drawing">
-    <value>103, 17</value>
+  <data name="label1086.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 99</value>
+  </data>
+  <data name="вставитьКоординатуХToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>203, 26</value>
   </data>
   <data name="&gt;&gt;comboBox_imageMinus.Parent" xml:space="preserve">
     <value>$this</value>
@@ -645,14 +638,11 @@
   <data name="&gt;&gt;label08.Name" xml:space="preserve">
     <value>label08</value>
   </data>
-  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>150, 253</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label1083.Name" xml:space="preserve">
     <value>label1083</value>
-  </data>
-  <data name="&gt;&gt;копироватьToolStripMenuItemX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label07.TabIndex" type="System.Int32, mscorlib">
     <value>196</value>
@@ -660,17 +650,11 @@
   <data name="label01.TabIndex" type="System.Int32, mscorlib">
     <value>173</value>
   </data>
-  <data name="вставитьToolStripMenuItemX.Text" xml:space="preserve">
-    <value>Вставить</value>
+  <data name="&gt;&gt;label1086.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="label05.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
-  </data>
-  <data name="&gt;&gt;comboBox_icon.ZOrder" xml:space="preserve">
-    <value>17</value>
-  </data>
-  <data name="&gt;&gt;checkBox_follow.Name" xml:space="preserve">
-    <value>checkBox_follow</value>
   </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -685,6 +669,15 @@
         v//mQ5XiBhMmTGD7+fNn7t+/f/dp9cj+t1mkBvTC7wO/f//OX7hoIQdUGWHw7v27LLcZxv8dZtkCw+Mf
         YZvRQX9/PxvQkJx3797lIWxmYAAA7pt3k8xS7ogAAAAASUVORK5CYII=
 </value>
+  </data>
+  <data name="&gt;&gt;comboBox_icon.ZOrder" xml:space="preserve">
+    <value>17</value>
+  </data>
+  <data name="&gt;&gt;checkBox_follow.Name" xml:space="preserve">
+    <value>checkBox_follow</value>
+  </data>
+  <data name="&gt;&gt;numericUpDown_iconX.Name" xml:space="preserve">
+    <value>numericUpDown_iconX</value>
   </data>
   <data name="checkBox_addZero.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 250</value>
@@ -712,12 +705,16 @@
   </data>
   <data name="label1084.Text" xml:space="preserve">
     <value>Y:</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
+    <value>Вставить</value>
   </data>
   <data name="label07.Text" xml:space="preserve">
     <value>Символ "-"</value>
   </data>
-  <data name="numericUpDown_imageY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 20</value>
+  <data name="&gt;&gt;numericUpDown_imageX.ZOrder" xml:space="preserve">
+    <value>18</value>
   </data>
   <data name="label07.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>BottomCenter</value>
@@ -728,8 +725,8 @@
   <data name="numericUpDown_imageX.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 20</value>
   </data>
-  <data name="&gt;&gt;вставитьToolStripMenuItemX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;comboBox_unit_c.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;comboBox_unit_c.Parent" xml:space="preserve">
     <value>$this</value>
@@ -737,8 +734,9 @@
   <data name="копироватьToolStripMenuItemX.Size" type="System.Drawing.Size, System.Drawing">
     <value>203, 26</value>
   </data>
-  <data name="label03.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="label1086.Text" xml:space="preserve">
+    <value>X:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="label05.TabIndex" type="System.Int32, mscorlib">
     <value>185</value>
@@ -746,17 +744,20 @@
   <data name="копироватьToolStripMenuItemY.Size" type="System.Drawing.Size, System.Drawing">
     <value>203, 26</value>
   </data>
+  <data name="numericUpDown_iconX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 20</value>
+  </data>
   <data name="comboBox_image.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 21</value>
   </data>
   <data name="&gt;&gt;label01.ZOrder" xml:space="preserve">
     <value>22</value>
   </data>
+  <data name="&gt;&gt;label1086.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="label1083.TabIndex" type="System.Int32, mscorlib">
     <value>182</value>
-  </data>
-  <data name="comboBox_icon.MaxDropDownItems" type="System.Int32, mscorlib">
-    <value>25</value>
   </data>
   <data name="comboBox_unit_c.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 21</value>
@@ -764,8 +765,8 @@
   <data name="&gt;&gt;label07.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <data name="label06.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="comboBox_unit_f.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="comboBox_imageMinus.MaxDropDownItems" type="System.Int32, mscorlib">
     <value>25</value>
@@ -781,6 +782,7 @@
   </data>
   <data name="label1083.Text" xml:space="preserve">
     <value>Y:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;contextMenuStrip_X.Name" xml:space="preserve">
     <value>contextMenuStrip_X</value>
@@ -800,8 +802,8 @@
   <data name="label05.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;label07.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;копироватьToolStripMenuItemX.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label09.ZOrder" xml:space="preserve">
     <value>15</value>
@@ -809,23 +811,23 @@
   <data name="label06.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 30</value>
   </data>
-  <data name="вставитьКоординатуYToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>203, 26</value>
+  <data name="label02.Location" type="System.Drawing.Point, System.Drawing">
+    <value>103, 17</value>
   </data>
-  <data name="comboBox_unit_c.TabIndex" type="System.Int32, mscorlib">
-    <value>190</value>
+  <data name="comboBox_imageMinus.TabIndex" type="System.Int32, mscorlib">
+    <value>197</value>
   </data>
   <data name="comboBox_icon.TabIndex" type="System.Int32, mscorlib">
     <value>180</value>
   </data>
-  <data name="вставитьКоординатуХToolStripMenuItem.Text" xml:space="preserve">
-    <value>Вставить координату Х</value>
+  <data name="label04.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 80</value>
   </data>
   <data name="&gt;&gt;label02.ZOrder" xml:space="preserve">
     <value>23</value>
   </data>
-  <data name="comboBox_imageMinus.TabIndex" type="System.Int32, mscorlib">
-    <value>197</value>
+  <data name="&gt;&gt;вставитьToolStripMenuItemX.Name" xml:space="preserve">
+    <value>вставитьToolStripMenuItemX</value>
   </data>
   <data name="&gt;&gt;вставитьКоординатуYToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -845,9 +847,6 @@
   <data name="&gt;&gt;comboBox_icon.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="comboBox_unit_c.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 160</value>
-  </data>
   <data name="label05.Text" xml:space="preserve">
     <value>Координаты иконки</value>
   </data>
@@ -860,8 +859,8 @@
   <data name="&gt;&gt;label10.Name" xml:space="preserve">
     <value>label10</value>
   </data>
-  <data name="&gt;&gt;label1084.Name" xml:space="preserve">
-    <value>label1084</value>
+  <data name="label1084.Location" type="System.Drawing.Point, System.Drawing">
+    <value>176, 36</value>
   </data>
   <data name="checkBox_follow.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -907,8 +906,8 @@
   <data name="label03.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label1084.Location" type="System.Drawing.Point, System.Drawing">
-    <value>176, 36</value>
+  <data name="label10.TabIndex" type="System.Int32, mscorlib">
+    <value>199</value>
   </data>
   <data name="checkBox_addZero.TabIndex" type="System.Int32, mscorlib">
     <value>192</value>
@@ -916,8 +915,8 @@
   <data name="&gt;&gt;comboBox_icon.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label1083.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="label06.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="&gt;&gt;checkBox_follow.ZOrder" xml:space="preserve">
     <value>7</value>
@@ -949,8 +948,8 @@
   <data name="numericUpDown_imageX.TabIndex" type="System.Int32, mscorlib">
     <value>177</value>
   </data>
-  <data name="&gt;&gt;label1084.ZOrder" xml:space="preserve">
-    <value>27</value>
+  <data name="comboBox_image.MaxDropDownItems" type="System.Int32, mscorlib">
+    <value>25</value>
   </data>
   <data name="label08.Text" xml:space="preserve">
     <value>Единицы измерения (°C )</value>
@@ -958,8 +957,22 @@
   <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
-  <data name="&gt;&gt;label06.Name" xml:space="preserve">
-    <value>label06</value>
+  <data name="вставитьToolStripMenuItemX.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAArVJREFUOE9l
+        UktPE2EUnbY8WuQlPgq0iBoSdIHgo/ggmhgTX6hkCo2wUAqJRYpAjKk7f4A7XRhRaGuEEF1QAf0RbHSB
+        EbRFSgulpbQz04Lr471DDQUnOZmbc88997v3+wT+CvS5xqaTNT0NtSaH2HKrt7PT7rTb7c7u7m4VHDPX
+        Zr3Ta6mrdpyrr+kpLS4wqsX8FRl01sd3LXj35iWmJ32YmZmB3+9HKBRSwTFzX6Y/Ydz7Cn2tFlSVl1kz
+        5WSg14n9bRZ8nZ3DhG8KwyNuuD0eeDxeFW63R+UmfJP4NjsPR8tpVFXsE7eq6Ssx5Ij9trP4PufHj/lf
+        8C8s4ndwCYtLIRUcB4jjHGucdIJDlft3GgzaGhEIhrCwGEQwFEZoeQXhlYgKjpeI41wgGMZAx3kyyDpB
+        MRkM2CxYjsQQJnFkNYpobA2xtbgKjpnjHGsGO5pwqKIsy4B28Ih2EIsnsRqNYS2+jvVEEklJUsExc5xj
+        TR+NW2068L/BelJRhYmkBFlWoKTSKjhmTjUmjbOtcdcI+hyxVzwFSUmr3RKSDEVJIZVOq1BSKUjEcY41
+        D610jdkj0DsQH9xugJzaQIJF/wyoO4Nj5jjHmq7mepjLswwK6QRdN+oouYl45gTqCFTIkBUly2AT96+f
+        4Ie0bbAnXyfeu3ockryxtTyaV8rsgSHJtMzE1jLjSRntV47BbNy7bWDI04rtl2uRlNOI07VxpyR15K4M
+        jpmLRKKY/xlAs8UEk7F0p4HtUg2U9B/qQt1o01KmuyzT/DRGPJ6gF7mMz1OTuHnGtOsEudpW28WjGPUO
+        Y8zzGh/eD8M37sHH0RGMed9i1DOEoRfP8eyJA9caj0C8cBiVB0taM+WCoBEEM13l01yN4MrXCi5DjuAq
+        zqO/TnAxx2CuMF/jKtTrXEWk1Wk1ZkEQhL+gXkz+KXzH3gAAAABJRU5ErkJggg==
+</value>
   </data>
   <data name="&gt;&gt;label1085.ZOrder" xml:space="preserve">
     <value>28</value>
@@ -1003,8 +1016,8 @@
   <data name="label09.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;numericUpDown_imageX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>150, 253</value>
   </data>
   <data name="label1083.Location" type="System.Drawing.Point, System.Drawing">
     <value>176, 99</value>
@@ -1012,14 +1025,11 @@
   <data name="label1083.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="numericUpDown_iconX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 20</value>
+  <data name="label06.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="&gt;&gt;comboBox_image.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label10.TabIndex" type="System.Int32, mscorlib">
-    <value>199</value>
   </data>
   <data name="&gt;&gt;label1083.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1027,8 +1037,8 @@
   <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
     <value>204, 82</value>
   </data>
-  <data name="&gt;&gt;вставитьToolStripMenuItemX.Name" xml:space="preserve">
-    <value>вставитьToolStripMenuItemX</value>
+  <data name="&gt;&gt;checkBox_follow.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="comboBox_imageError.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 21</value>
@@ -1045,23 +1055,17 @@
   <data name="&gt;&gt;numericUpDown_imageX.Name" xml:space="preserve">
     <value>numericUpDown_imageX</value>
   </data>
-  <data name="label1086.Location" type="System.Drawing.Point, System.Drawing">
-    <value>103, 99</value>
+  <data name="&gt;&gt;comboBox_unit_f.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
-    <value>Вставить</value>
+  <data name="&gt;&gt;label1084.Name" xml:space="preserve">
+    <value>label1084</value>
   </data>
   <data name="&gt;&gt;label05.ZOrder" xml:space="preserve">
     <value>25</value>
   </data>
-  <data name="label1086.Text" xml:space="preserve">
-    <value>X:</value>
-  </data>
   <data name="numericUpDown_iconY.Location" type="System.Drawing.Point, System.Drawing">
     <value>193, 97</value>
-  </data>
-  <data name="label06.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="label1085.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 13</value>
@@ -1069,8 +1073,8 @@
   <data name="label03.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 13</value>
   </data>
-  <data name="&gt;&gt;numericUpDown_iconX.Name" xml:space="preserve">
-    <value>numericUpDown_iconX</value>
+  <data name="numericUpDown_imageY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 20</value>
   </data>
   <data name="label1086.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1078,8 +1082,8 @@
   <data name="comboBox_imageMinus.Location" type="System.Drawing.Point, System.Drawing">
     <value>157, 223</value>
   </data>
-  <data name="numericUpDown_iconY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 20</value>
+  <data name="comboBox_alignment.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 21</value>
   </data>
   <data name="comboBox_icon.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 97</value>
@@ -1099,13 +1103,13 @@
   <data name="label05.Location" type="System.Drawing.Point, System.Drawing">
     <value>103, 80</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <metadata name="contextMenuStrip_Y.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  </data>
+  <data name="contextMenuStrip_Y.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>168, 24</value>
-  </metadata>
-  <metadata name="contextMenuStrip_X.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  </data>
+  <data name="contextMenuStrip_X.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>-1, 16</value>
-  </metadata>
+  </data>
 </root>

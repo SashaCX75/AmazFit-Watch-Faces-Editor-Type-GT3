@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using ControlLibrary;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -214,6 +215,30 @@ namespace Watch_Face_Editor
                     newElement = new ElementDistance();
                     newElementName = "ElementDistance";
                     break;
+                case "Stand":
+                    optional_types = new Optional_Types_List();
+                    optional_types.type = "STAND";
+                    newElement = new ElementStand();
+                    newElementName = "ElementStand";
+                    break;
+                case "Stress":
+                    optional_types = new Optional_Types_List();
+                    optional_types.type = "STRESS";
+                    newElement = new ElementStress();
+                    newElementName = "ElementStress";
+                    break;
+                case "FatBurning":
+                    optional_types = new Optional_Types_List();
+                    optional_types.type = "FAT_BURNING";
+                    newElement = new ElementFatBurning();
+                    newElementName = "ElementFatBurning";
+                    break;
+                case "SpO2":
+                    optional_types = new Optional_Types_List();
+                    optional_types.type = "SPO2";
+                    newElement = new ElementSpO2();
+                    newElementName = "ElementSpO2";
+                    break;
             }
 
             if (optional_types == null || newElement == null) return;
@@ -222,7 +247,7 @@ namespace Watch_Face_Editor
             //if (!exists) Elements.Add(dateDay);
             if (exists)
             {
-                MessageBox.Show("Такой элемент уже есть", Properties.FormStrings.Message_Warning_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(Properties.ElementsString.ElementExists, Properties.FormStrings.Message_Warning_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -257,15 +282,21 @@ namespace Watch_Face_Editor
             if (watchface_edit_group.Elements == null || watchface_edit_group.Elements.Count <= index) return;
 
 
-            if (watchface_edit_group.Elements.Count > index) watchface_edit_group.Elements.RemoveAt(index);
-            watchface_edit_group.selected_element = --index;
+            if (watchface_edit_group.Elements.Count > index) 
+            {
+                watchface_edit_group.Elements.RemoveAt(index);
+                watchface_edit_group.optional_types_list.RemoveAt(index);
+            }
+            --index;
             if (index < 0 && watchface_edit_group.Elements != null && watchface_edit_group.Elements.Count > 0)
-                watchface_edit_group.selected_element = 0;
+                index = 0;
+            watchface_edit_group.selected_element = index;
 
             List<string> elementName = GetElementsNameList(watchface_edit_group.Elements);
             uCtrl_EditableElements_Opt.SettingsElementClear();
             uCtrl_EditableElements_Opt.SetElementsCount(elementName);
-            uCtrl_EditableElements_Opt.SetElementsIndex(index);
+            if(index < 0) uCtrl_EditableElements_Opt.SettingsElementClear();
+            else uCtrl_EditableElements_Opt.SetElementsIndex(index);
 
             JSON_Modified = true;
             PreviewImage();
@@ -567,6 +598,16 @@ namespace Watch_Face_Editor
                     subElements.Add("Circle_scale");
                     subElements.Add("Linear_scale");
                     subElements.Add("Icon");
+
+                    ElementStand stand = (ElementStand)element;
+                    if (stand.Images != null) uCtrl_EditableElements_Opt.checkBox_Images.Checked = stand.Images.visible;
+                    if (stand.Segments != null) uCtrl_EditableElements_Opt.checkBox_Segments.Checked = stand.Segments.visible;
+                    if (stand.Number != null) uCtrl_EditableElements_Opt.checkBox_Number.Checked = stand.Number.visible;
+                    if (stand.Number_Target != null) uCtrl_EditableElements_Opt.checkBox_Number_Target.Checked = stand.Number_Target.visible;
+                    if (stand.Pointer != null) uCtrl_EditableElements_Opt.checkBox_Pointer.Checked = stand.Pointer.visible;
+                    if (stand.Circle_Scale != null) uCtrl_EditableElements_Opt.checkBox_Circle_Scale.Checked = stand.Circle_Scale.visible;
+                    if (stand.Linear_Scale != null) uCtrl_EditableElements_Opt.checkBox_Linear_Scale.Checked = stand.Linear_Scale.visible;
+                    if (stand.Icon != null) uCtrl_EditableElements_Opt.checkBox_Icon.Checked = stand.Icon.visible;
                     break;
                 #endregion
 
@@ -586,6 +627,16 @@ namespace Watch_Face_Editor
                     subElements.Add("Circle_scale");
                     subElements.Add("Linear_scale");
                     subElements.Add("Icon");
+
+                    ElementActivity activity = (ElementActivity)element;
+                    if (activity.Images != null) uCtrl_EditableElements_Opt.checkBox_Images.Checked = activity.Images.visible;
+                    if (activity.Segments != null) uCtrl_EditableElements_Opt.checkBox_Segments.Checked = activity.Segments.visible;
+                    if (activity.Number != null) uCtrl_EditableElements_Opt.checkBox_Number.Checked = activity.Number.visible;
+                    if (activity.Number_Target != null) uCtrl_EditableElements_Opt.checkBox_Number_Target.Checked = activity.Number_Target.visible;
+                    if (activity.Pointer != null) uCtrl_EditableElements_Opt.checkBox_Pointer.Checked = activity.Pointer.visible;
+                    if (activity.Circle_Scale != null) uCtrl_EditableElements_Opt.checkBox_Circle_Scale.Checked = activity.Circle_Scale.visible;
+                    if (activity.Linear_Scale != null) uCtrl_EditableElements_Opt.checkBox_Linear_Scale.Checked = activity.Linear_Scale.visible;
+                    if (activity.Icon != null) uCtrl_EditableElements_Opt.checkBox_Icon.Checked = activity.Icon.visible;
                     break;
                 #endregion
 
@@ -605,6 +656,9 @@ namespace Watch_Face_Editor
                     //subElements.Add("Circle_scale");
                     //subElements.Add("Linear_scale");
                     //subElements.Add("Icon");
+
+                    ElementSpO2 spo2 = (ElementSpO2)element;
+                    if (spo2.Number != null) uCtrl_EditableElements_Opt.checkBox_Number.Checked = spo2.Number.visible;
                     break;
                 #endregion
 
@@ -624,6 +678,13 @@ namespace Watch_Face_Editor
                     //subElements.Add("Circle_scale");
                     //subElements.Add("Linear_scale");
                     subElements.Add("Icon");
+
+                    ElementStress stress = (ElementStress)element;
+                    if (stress.Images != null) uCtrl_EditableElements_Opt.checkBox_Images.Checked = stress.Images.visible;
+                    if (stress.Segments != null) uCtrl_EditableElements_Opt.checkBox_Segments.Checked = stress.Segments.visible;
+                    if (stress.Number != null) uCtrl_EditableElements_Opt.checkBox_Number.Checked = stress.Number.visible;
+                    if (stress.Pointer != null) uCtrl_EditableElements_Opt.checkBox_Pointer.Checked = stress.Pointer.visible;
+                    if (stress.Icon != null) uCtrl_EditableElements_Opt.checkBox_Icon.Checked = stress.Icon.visible;
                     break;
                 #endregion
 
@@ -643,6 +704,16 @@ namespace Watch_Face_Editor
                     subElements.Add("Circle_scale");
                     subElements.Add("Linear_scale");
                     subElements.Add("Icon");
+
+                    ElementFatBurning fat_burning = (ElementFatBurning)element;
+                    if (fat_burning.Images != null) uCtrl_EditableElements_Opt.checkBox_Images.Checked = fat_burning.Images.visible;
+                    if (fat_burning.Segments != null) uCtrl_EditableElements_Opt.checkBox_Segments.Checked = fat_burning.Segments.visible;
+                    if (fat_burning.Number != null) uCtrl_EditableElements_Opt.checkBox_Number.Checked = fat_burning.Number.visible;
+                    if (fat_burning.Number_Target != null) uCtrl_EditableElements_Opt.checkBox_Number_Target.Checked = fat_burning.Number_Target.visible;
+                    if (fat_burning.Pointer != null) uCtrl_EditableElements_Opt.checkBox_Pointer.Checked = fat_burning.Pointer.visible;
+                    if (fat_burning.Circle_Scale != null) uCtrl_EditableElements_Opt.checkBox_Circle_Scale.Checked = fat_burning.Circle_Scale.visible;
+                    if (fat_burning.Linear_Scale != null) uCtrl_EditableElements_Opt.checkBox_Linear_Scale.Checked = fat_burning.Linear_Scale.visible;
+                    if (fat_burning.Icon != null) uCtrl_EditableElements_Opt.checkBox_Icon.Checked = fat_burning.Icon.visible;
                     break;
                 #endregion
 
@@ -1317,96 +1388,213 @@ namespace Watch_Face_Editor
 
                 #region ElementStand
                 case "ElementStand":
-                    subElements.Add("Images");
-                    subElements.Add("Segments");
-                    subElements.Add("Pointer");
-                    subElements.Add("Number");
-                    subElements.Add("Number_target");
-                    //subElements.Add("Number_min");
-                    //subElements.Add("Number_max");
-                    //subElements.Add("Sunset");
-                    //subElements.Add("Sunrise");
-                    //subElements.Add("Sunset_sunrise");
-                    //subElements.Add("Sity_name");
-                    subElements.Add("Circle_scale");
-                    subElements.Add("Linear_scale");
-                    subElements.Add("Icon");
-                    break;
-                #endregion
-
-                #region ElementActivity
-                case "ElementActivity":
-                    subElements.Add("Images");
-                    subElements.Add("Segments");
-                    subElements.Add("Pointer");
-                    subElements.Add("Number");
-                    subElements.Add("Number_target");
-                    //subElements.Add("Number_min");
-                    //subElements.Add("Number_max");
-                    //subElements.Add("Sunset");
-                    //subElements.Add("Sunrise");
-                    //subElements.Add("Sunset_sunrise");
-                    //subElements.Add("Sity_name");
-                    subElements.Add("Circle_scale");
-                    subElements.Add("Linear_scale");
-                    subElements.Add("Icon");
+                    ElementStand stand = (ElementStand)element;
+                    switch (uCtrl_EditableElements_Opt.selectedElement)
+                    {
+                        case "Images":
+                            if (uCtrl_EditableElements_Opt.checkBox_Images.Checked)
+                            {
+                                hmUI_widget_IMG_LEVEL img_level = stand.Images;
+                                Read_ImgLevel_Options(img_level, 10, true);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Segments":
+                            if (uCtrl_EditableElements_Opt.checkBox_Segments.Checked)
+                            {
+                                hmUI_widget_IMG_PROGRESS img_prorgess = stand.Segments;
+                                Read_ImgProrgess_Options(img_prorgess, 10, false);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Number":
+                            if (uCtrl_EditableElements_Opt.checkBox_Number.Checked)
+                            {
+                                hmUI_widget_IMG_NUMBER img_number = stand.Number;
+                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Number_Target":
+                            if (uCtrl_EditableElements_Opt.checkBox_Number_Target.Checked)
+                            {
+                                hmUI_widget_IMG_NUMBER img_number = stand.Number_Target;
+                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Pointer":
+                            if (uCtrl_EditableElements_Opt.checkBox_Pointer.Checked)
+                            {
+                                hmUI_widget_IMG_POINTER img_pointer = stand.Pointer;
+                                Read_ImgPointer_Options(img_pointer, true);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Circle_Scale":
+                            if (uCtrl_EditableElements_Opt.checkBox_Circle_Scale.Checked)
+                            {
+                                Circle_Scale circle_scale = stand.Circle_Scale;
+                                Read_CircleScale_Options(circle_scale);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Linear_Scale":
+                            if (uCtrl_EditableElements_Opt.checkBox_Linear_Scale.Checked)
+                            {
+                                Linear_Scale linear_scale = stand.Linear_Scale;
+                                Read_LinearScale_Options(linear_scale);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Icon":
+                            if (uCtrl_EditableElements_Opt.checkBox_Icon.Checked)
+                            {
+                                hmUI_widget_IMG icon = stand.Icon;
+                                Read_Icon_Options(icon);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                    }
                     break;
                 #endregion
 
                 #region ElementSpO2
                 case "ElementSpO2":
-                    //subElements.Add("Images");
-                    //subElements.Add("Segments");
-                    //subElements.Add("Pointer");
-                    subElements.Add("Number");
-                    //subElements.Add("Number_target");
-                    //subElements.Add("Number_min");
-                    //subElements.Add("Number_max");
-                    //subElements.Add("Sunset");
-                    //subElements.Add("Sunrise");
-                    //subElements.Add("Sunset_sunrise");
-                    //subElements.Add("Sity_name");
-                    //subElements.Add("Circle_scale");
-                    //subElements.Add("Linear_scale");
-                    //subElements.Add("Icon");
+                    ElementSpO2 spo2 = (ElementSpO2)element;
+                    switch (uCtrl_EditableElements_Opt.selectedElement)
+                    {
+                        case "Number":
+                            if (uCtrl_EditableElements_Opt.checkBox_Number.Checked)
+                            {
+                                hmUI_widget_IMG_NUMBER img_number = spo2.Number;
+                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                    }
                     break;
                 #endregion
 
                 #region ElementStress
                 case "ElementStress":
-                    subElements.Add("Images");
-                    subElements.Add("Segments");
-                    subElements.Add("Pointer");
-                    subElements.Add("Number");
-                    //subElements.Add("Number_target");
-                    //subElements.Add("Number_min");
-                    //subElements.Add("Number_max");
-                    //subElements.Add("Sunset");
-                    //subElements.Add("Sunrise");
-                    //subElements.Add("Sunset_sunrise");
-                    //subElements.Add("Sity_name");
-                    //subElements.Add("Circle_scale");
-                    //subElements.Add("Linear_scale");
-                    subElements.Add("Icon");
+                    ElementStress stress = (ElementStress)element;
+                    switch (uCtrl_EditableElements_Opt.selectedElement)
+                    {
+                        case "Images":
+                            if (uCtrl_EditableElements_Opt.checkBox_Images.Checked)
+                            {
+                                hmUI_widget_IMG_LEVEL img_level = stress.Images;
+                                Read_ImgLevel_Options(img_level, 10, true);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Segments":
+                            if (uCtrl_EditableElements_Opt.checkBox_Segments.Checked)
+                            {
+                                hmUI_widget_IMG_PROGRESS img_prorgess = stress.Segments;
+                                Read_ImgProrgess_Options(img_prorgess, 10, false);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Number":
+                            if (uCtrl_EditableElements_Opt.checkBox_Number.Checked)
+                            {
+                                hmUI_widget_IMG_NUMBER img_number = stress.Number;
+                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Pointer":
+                            if (uCtrl_EditableElements_Opt.checkBox_Pointer.Checked)
+                            {
+                                hmUI_widget_IMG_POINTER img_pointer = stress.Pointer;
+                                Read_ImgPointer_Options(img_pointer, true);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Icon":
+                            if (uCtrl_EditableElements_Opt.checkBox_Icon.Checked)
+                            {
+                                hmUI_widget_IMG icon = stress.Icon;
+                                Read_Icon_Options(icon);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                    }
                     break;
                 #endregion
 
                 #region ElementFatBurning
                 case "ElementFatBurning":
-                    subElements.Add("Images");
-                    subElements.Add("Segments");
-                    subElements.Add("Pointer");
-                    subElements.Add("Number");
-                    subElements.Add("Number_target");
-                    //subElements.Add("Number_min");
-                    //subElements.Add("Number_max");
-                    //subElements.Add("Sunset");
-                    //subElements.Add("Sunrise");
-                    //subElements.Add("Sunset_sunrise");
-                    //subElements.Add("Sity_name");
-                    subElements.Add("Circle_scale");
-                    subElements.Add("Linear_scale");
-                    subElements.Add("Icon");
+                    ElementFatBurning fat_burning = (ElementFatBurning)element;
+                    switch (uCtrl_EditableElements_Opt.selectedElement)
+                    {
+                        case "Images":
+                            if (uCtrl_EditableElements_Opt.checkBox_Images.Checked)
+                            {
+                                hmUI_widget_IMG_LEVEL img_level = fat_burning.Images;
+                                Read_ImgLevel_Options(img_level, 10, true);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Segments":
+                            if (uCtrl_EditableElements_Opt.checkBox_Segments.Checked)
+                            {
+                                hmUI_widget_IMG_PROGRESS img_prorgess = fat_burning.Segments;
+                                Read_ImgProrgess_Options(img_prorgess, 10, false);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Number":
+                            if (uCtrl_EditableElements_Opt.checkBox_Number.Checked)
+                            {
+                                hmUI_widget_IMG_NUMBER img_number = fat_burning.Number;
+                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Number_Target":
+                            if (uCtrl_EditableElements_Opt.checkBox_Number_Target.Checked)
+                            {
+                                hmUI_widget_IMG_NUMBER img_number = fat_burning.Number_Target;
+                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Pointer":
+                            if (uCtrl_EditableElements_Opt.checkBox_Pointer.Checked)
+                            {
+                                hmUI_widget_IMG_POINTER img_pointer = fat_burning.Pointer;
+                                Read_ImgPointer_Options(img_pointer, true);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Circle_Scale":
+                            if (uCtrl_EditableElements_Opt.checkBox_Circle_Scale.Checked)
+                            {
+                                Circle_Scale circle_scale = fat_burning.Circle_Scale;
+                                Read_CircleScale_Options(circle_scale);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Linear_Scale":
+                            if (uCtrl_EditableElements_Opt.checkBox_Linear_Scale.Checked)
+                            {
+                                Linear_Scale linear_scale = fat_burning.Linear_Scale;
+                                Read_LinearScale_Options(linear_scale);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Icon":
+                            if (uCtrl_EditableElements_Opt.checkBox_Icon.Checked)
+                            {
+                                hmUI_widget_IMG icon = fat_burning.Icon;
+                                Read_Icon_Options(icon);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                    }
                     break;
                 #endregion
 
@@ -1668,7 +1856,7 @@ namespace Watch_Face_Editor
                     if (steps.Icon == null) steps.Icon = new hmUI_widget_IMG();
 
                     if (elementOptions.ContainsKey("Images")) steps.Images.position = elementOptions["Images"];
-                    if (elementOptions.ContainsKey("Segments")) steps.Images.position = elementOptions["Segments"];
+                    if (elementOptions.ContainsKey("Segments")) steps.Segments.position = elementOptions["Segments"];
                     if (elementOptions.ContainsKey("Number")) steps.Number.position = elementOptions["Number"];
                     if (elementOptions.ContainsKey("Number_Target")) steps.Number_Target.position = elementOptions["Number_Target"];
                     if (elementOptions.ContainsKey("Pointer")) steps.Pointer.position = elementOptions["Pointer"];
@@ -1718,7 +1906,7 @@ namespace Watch_Face_Editor
                     if (battery.Icon == null) battery.Icon = new hmUI_widget_IMG();
 
                     if (elementOptions.ContainsKey("Images")) battery.Images.position = elementOptions["Images"];
-                    if (elementOptions.ContainsKey("Segments")) battery.Images.position = elementOptions["Segments"];
+                    if (elementOptions.ContainsKey("Segments")) battery.Segments.position = elementOptions["Segments"];
                     if (elementOptions.ContainsKey("Number")) battery.Number.position = elementOptions["Number"];
                     if (elementOptions.ContainsKey("Pointer")) battery.Pointer.position = elementOptions["Pointer"];
                     if (elementOptions.ContainsKey("Circle_Scale")) battery.Circle_Scale.position = elementOptions["Circle_Scale"];
@@ -1765,7 +1953,7 @@ namespace Watch_Face_Editor
                     if (calories.Icon == null) calories.Icon = new hmUI_widget_IMG();
 
                     if (elementOptions.ContainsKey("Images")) calories.Images.position = elementOptions["Images"];
-                    if (elementOptions.ContainsKey("Segments")) calories.Images.position = elementOptions["Segments"];
+                    if (elementOptions.ContainsKey("Segments")) calories.Segments.position = elementOptions["Segments"];
                     if (elementOptions.ContainsKey("Number")) calories.Number.position = elementOptions["Number"];
                     if (elementOptions.ContainsKey("Number_Target")) calories.Number_Target.position = elementOptions["Number_Target"];
                     if (elementOptions.ContainsKey("Pointer")) calories.Pointer.position = elementOptions["Pointer"];
@@ -1815,7 +2003,7 @@ namespace Watch_Face_Editor
                     if (heart.Icon == null) heart.Icon = new hmUI_widget_IMG();
 
                     if (elementOptions.ContainsKey("Images")) heart.Images.position = elementOptions["Images"];
-                    if (elementOptions.ContainsKey("Segments")) heart.Images.position = elementOptions["Segments"];
+                    if (elementOptions.ContainsKey("Segments")) heart.Segments.position = elementOptions["Segments"];
                     if (elementOptions.ContainsKey("Number")) heart.Number.position = elementOptions["Number"];
                     if (elementOptions.ContainsKey("Pointer")) heart.Pointer.position = elementOptions["Pointer"];
                     if (elementOptions.ContainsKey("Circle_Scale")) heart.Circle_Scale.position = elementOptions["Circle_Scale"];
@@ -1862,7 +2050,7 @@ namespace Watch_Face_Editor
                     if (pai.Icon == null) pai.Icon = new hmUI_widget_IMG();
 
                     if (elementOptions.ContainsKey("Images")) pai.Images.position = elementOptions["Images"];
-                    if (elementOptions.ContainsKey("Segments")) pai.Images.position = elementOptions["Segments"];
+                    if (elementOptions.ContainsKey("Segments")) pai.Segments.position = elementOptions["Segments"];
                     if (elementOptions.ContainsKey("Number")) pai.Number.position = elementOptions["Number"];
                     //if (elementOptions.ContainsKey("Number_Target")) pai.Number_Target.position = elementOptions["Number_Target"];
                     if (elementOptions.ContainsKey("Pointer")) pai.Pointer.position = elementOptions["Pointer"];
@@ -1918,96 +2106,206 @@ namespace Watch_Face_Editor
 
                 #region ElementStand
                 case "ElementStand":
-                    subElements.Add("Images");
-                    subElements.Add("Segments");
-                    subElements.Add("Pointer");
-                    subElements.Add("Number");
-                    subElements.Add("Number_target");
-                    //subElements.Add("Number_min");
-                    //subElements.Add("Number_max");
-                    //subElements.Add("Sunset");
-                    //subElements.Add("Sunrise");
-                    //subElements.Add("Sunset_sunrise");
-                    //subElements.Add("Sity_name");
-                    subElements.Add("Circle_scale");
-                    subElements.Add("Linear_scale");
-                    subElements.Add("Icon");
+                    ElementStand stand = (ElementStand)element;
+                    if (stand.Images == null) stand.Images = new hmUI_widget_IMG_LEVEL();
+                    if (stand.Segments == null) stand.Segments = new hmUI_widget_IMG_PROGRESS();
+                    if (stand.Number == null) stand.Number = new hmUI_widget_IMG_NUMBER();
+                    if (stand.Number_Target == null) stand.Number_Target = new hmUI_widget_IMG_NUMBER();
+                    if (stand.Pointer == null) stand.Pointer = new hmUI_widget_IMG_POINTER();
+                    if (stand.Circle_Scale == null) stand.Circle_Scale = new Circle_Scale();
+                    if (stand.Linear_Scale == null) stand.Linear_Scale = new Linear_Scale();
+                    if (stand.Icon == null) stand.Icon = new hmUI_widget_IMG();
+
+                    if (elementOptions.ContainsKey("Images")) stand.Images.position = elementOptions["Images"];
+                    if (elementOptions.ContainsKey("Segments")) stand.Segments.position = elementOptions["Segments"];
+                    if (elementOptions.ContainsKey("Number")) stand.Number.position = elementOptions["Number"];
+                    if (elementOptions.ContainsKey("Number_Target")) stand.Number_Target.position = elementOptions["Number_Target"];
+                    if (elementOptions.ContainsKey("Pointer")) stand.Pointer.position = elementOptions["Pointer"];
+                    if (elementOptions.ContainsKey("Circle_Scale")) stand.Circle_Scale.position = elementOptions["Circle_Scale"];
+                    if (elementOptions.ContainsKey("Linear_Scale")) stand.Linear_Scale.position = elementOptions["Linear_Scale"];
+                    if (elementOptions.ContainsKey("Icon")) stand.Icon.position = elementOptions["Icon"];
+
+                    switch (name)
+                    {
+                        case "checkBox_Images":
+                            stand.Images.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Segments":
+                            stand.Segments.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Number":
+                            stand.Number.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Number_Target":
+                            stand.Number_Target.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Pointer":
+                            stand.Pointer.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Circle_Scale":
+                            stand.Circle_Scale.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Linear_Scale":
+                            stand.Linear_Scale.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Icon":
+                            stand.Icon.visible = checkBox.Checked;
+                            break;
+                    }
                     break;
                 #endregion
 
                 #region ElementActivity
                 case "ElementActivity":
-                    subElements.Add("Images");
-                    subElements.Add("Segments");
-                    subElements.Add("Pointer");
-                    subElements.Add("Number");
-                    subElements.Add("Number_target");
-                    //subElements.Add("Number_min");
-                    //subElements.Add("Number_max");
-                    //subElements.Add("Sunset");
-                    //subElements.Add("Sunrise");
-                    //subElements.Add("Sunset_sunrise");
-                    //subElements.Add("Sity_name");
-                    subElements.Add("Circle_scale");
-                    subElements.Add("Linear_scale");
-                    subElements.Add("Icon");
+                    ElementActivity activity = (ElementActivity)element;
+                    if (activity.Images == null) activity.Images = new hmUI_widget_IMG_LEVEL();
+                    if (activity.Segments == null) activity.Segments = new hmUI_widget_IMG_PROGRESS();
+                    if (activity.Number == null) activity.Number = new hmUI_widget_IMG_NUMBER();
+                    if (activity.Number_Target == null) activity.Number_Target = new hmUI_widget_IMG_NUMBER();
+                    if (activity.Pointer == null) activity.Pointer = new hmUI_widget_IMG_POINTER();
+                    if (activity.Circle_Scale == null) activity.Circle_Scale = new Circle_Scale();
+                    if (activity.Linear_Scale == null) activity.Linear_Scale = new Linear_Scale();
+                    if (activity.Icon == null) activity.Icon = new hmUI_widget_IMG();
+
+                    if (elementOptions.ContainsKey("Images")) activity.Images.position = elementOptions["Images"];
+                    if (elementOptions.ContainsKey("Segments")) activity.Segments.position = elementOptions["Segments"];
+                    if (elementOptions.ContainsKey("Number")) activity.Number.position = elementOptions["Number"];
+                    if (elementOptions.ContainsKey("Number_Target")) activity.Number_Target.position = elementOptions["Number_Target"];
+                    if (elementOptions.ContainsKey("Pointer")) activity.Pointer.position = elementOptions["Pointer"];
+                    if (elementOptions.ContainsKey("Circle_Scale")) activity.Circle_Scale.position = elementOptions["Circle_Scale"];
+                    if (elementOptions.ContainsKey("Linear_Scale")) activity.Linear_Scale.position = elementOptions["Linear_Scale"];
+                    if (elementOptions.ContainsKey("Icon")) activity.Icon.position = elementOptions["Icon"];
+
+                    switch (name)
+                    {
+                        case "checkBox_Images":
+                            activity.Images.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Segments":
+                            activity.Segments.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Number":
+                            activity.Number.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Number_Target":
+                            activity.Number_Target.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Pointer":
+                            activity.Pointer.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Circle_Scale":
+                            activity.Circle_Scale.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Linear_Scale":
+                            activity.Linear_Scale.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Icon":
+                            activity.Icon.visible = checkBox.Checked;
+                            break;
+                    }
                     break;
                 #endregion
 
                 #region ElementSpO2
                 case "ElementSpO2":
-                    //subElements.Add("Images");
-                    //subElements.Add("Segments");
-                    //subElements.Add("Pointer");
-                    subElements.Add("Number");
-                    //subElements.Add("Number_target");
-                    //subElements.Add("Number_min");
-                    //subElements.Add("Number_max");
-                    //subElements.Add("Sunset");
-                    //subElements.Add("Sunrise");
-                    //subElements.Add("Sunset_sunrise");
-                    //subElements.Add("Sity_name");
-                    //subElements.Add("Circle_scale");
-                    //subElements.Add("Linear_scale");
-                    //subElements.Add("Icon");
+                    ElementSpO2 spo2 = (ElementSpO2)element;
+                    if (spo2.Number == null) spo2.Number = new hmUI_widget_IMG_NUMBER();
+
+                    if (elementOptions.ContainsKey("Number")) spo2.Number.position = elementOptions["Number"];
+
+                    switch (name)
+                    {
+                        case "checkBox_Number":
+                            spo2.Number.visible = checkBox.Checked;
+                            break;
+                    }
                     break;
                 #endregion
 
                 #region ElementStress
                 case "ElementStress":
-                    subElements.Add("Images");
-                    subElements.Add("Segments");
-                    subElements.Add("Pointer");
-                    subElements.Add("Number");
-                    //subElements.Add("Number_target");
-                    //subElements.Add("Number_min");
-                    //subElements.Add("Number_max");
-                    //subElements.Add("Sunset");
-                    //subElements.Add("Sunrise");
-                    //subElements.Add("Sunset_sunrise");
-                    //subElements.Add("Sity_name");
-                    //subElements.Add("Circle_scale");
-                    //subElements.Add("Linear_scale");
-                    subElements.Add("Icon");
+                    ElementStress stress = (ElementStress)element;
+                    if (stress.Images == null) stress.Images = new hmUI_widget_IMG_LEVEL();
+                    if (stress.Segments == null) stress.Segments = new hmUI_widget_IMG_PROGRESS();
+                    if (stress.Number == null) stress.Number = new hmUI_widget_IMG_NUMBER();
+                    if (stress.Pointer == null) stress.Pointer = new hmUI_widget_IMG_POINTER();
+                    if (stress.Icon == null) stress.Icon = new hmUI_widget_IMG();
+
+                    if (elementOptions.ContainsKey("Images")) stress.Images.position = elementOptions["Images"];
+                    if (elementOptions.ContainsKey("Segments")) stress.Segments.position = elementOptions["Segments"];
+                    if (elementOptions.ContainsKey("Number")) stress.Number.position = elementOptions["Number"];
+                    if (elementOptions.ContainsKey("Pointer")) stress.Pointer.position = elementOptions["Pointer"];
+                    if (elementOptions.ContainsKey("Icon")) stress.Icon.position = elementOptions["Icon"];
+
+                    switch (name)
+                    {
+                        case "checkBox_Images":
+                            stress.Images.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Segments":
+                            stress.Segments.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Number":
+                            stress.Number.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Pointer":
+                            stress.Pointer.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Icon":
+                            stress.Icon.visible = checkBox.Checked;
+                            break;
+                    }
                     break;
                 #endregion
 
                 #region ElementFatBurning
                 case "ElementFatBurning":
-                    subElements.Add("Images");
-                    subElements.Add("Segments");
-                    subElements.Add("Pointer");
-                    subElements.Add("Number");
-                    subElements.Add("Number_target");
-                    //subElements.Add("Number_min");
-                    //subElements.Add("Number_max");
-                    //subElements.Add("Sunset");
-                    //subElements.Add("Sunrise");
-                    //subElements.Add("Sunset_sunrise");
-                    //subElements.Add("Sity_name");
-                    subElements.Add("Circle_scale");
-                    subElements.Add("Linear_scale");
-                    subElements.Add("Icon");
+                    ElementFatBurning fat_burning = (ElementFatBurning)element;
+                    if (fat_burning.Images == null) fat_burning.Images = new hmUI_widget_IMG_LEVEL();
+                    if (fat_burning.Segments == null) fat_burning.Segments = new hmUI_widget_IMG_PROGRESS();
+                    if (fat_burning.Number == null) fat_burning.Number = new hmUI_widget_IMG_NUMBER();
+                    if (fat_burning.Number_Target == null) fat_burning.Number_Target = new hmUI_widget_IMG_NUMBER();
+                    if (fat_burning.Pointer == null) fat_burning.Pointer = new hmUI_widget_IMG_POINTER();
+                    if (fat_burning.Circle_Scale == null) fat_burning.Circle_Scale = new Circle_Scale();
+                    if (fat_burning.Linear_Scale == null) fat_burning.Linear_Scale = new Linear_Scale();
+                    if (fat_burning.Icon == null) fat_burning.Icon = new hmUI_widget_IMG();
+
+                    if (elementOptions.ContainsKey("Images")) fat_burning.Images.position = elementOptions["Images"];
+                    if (elementOptions.ContainsKey("Segments")) fat_burning.Segments.position = elementOptions["Segments"];
+                    if (elementOptions.ContainsKey("Number")) fat_burning.Number.position = elementOptions["Number"];
+                    if (elementOptions.ContainsKey("Number_Target")) fat_burning.Number_Target.position = elementOptions["Number_Target"];
+                    if (elementOptions.ContainsKey("Pointer")) fat_burning.Pointer.position = elementOptions["Pointer"];
+                    if (elementOptions.ContainsKey("Circle_Scale")) fat_burning.Circle_Scale.position = elementOptions["Circle_Scale"];
+                    if (elementOptions.ContainsKey("Linear_Scale")) fat_burning.Linear_Scale.position = elementOptions["Linear_Scale"];
+                    if (elementOptions.ContainsKey("Icon")) fat_burning.Icon.position = elementOptions["Icon"];
+
+                    switch (name)
+                    {
+                        case "checkBox_Images":
+                            fat_burning.Images.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Segments":
+                            fat_burning.Segments.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Number":
+                            fat_burning.Number.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Number_Target":
+                            fat_burning.Number_Target.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Pointer":
+                            fat_burning.Pointer.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Circle_Scale":
+                            fat_burning.Circle_Scale.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Linear_Scale":
+                            fat_burning.Linear_Scale.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Icon":
+                            fat_burning.Icon.visible = checkBox.Checked;
+                            break;
+                    }
                     break;
                 #endregion
 
@@ -2570,29 +2868,111 @@ namespace Watch_Face_Editor
 
                 #region ElementStand
                 case "ElementStand":
-                  
+                    ElementStand stand = (ElementStand)element;
+                    if (stand != null)
+                    {
+                        if (stand.Images == null) stand.Images = new hmUI_widget_IMG_LEVEL();
+                        if (stand.Segments == null) stand.Segments = new hmUI_widget_IMG_PROGRESS();
+                        if (stand.Number == null) stand.Number = new hmUI_widget_IMG_NUMBER();
+                        if (stand.Number_Target == null) stand.Number_Target = new hmUI_widget_IMG_NUMBER();
+                        if (stand.Pointer == null) stand.Pointer = new hmUI_widget_IMG_POINTER();
+                        if (stand.Circle_Scale == null) stand.Circle_Scale = new Circle_Scale();
+                        if (stand.Linear_Scale == null) stand.Linear_Scale = new Linear_Scale();
+                        if (stand.Icon == null) stand.Icon = new hmUI_widget_IMG();
+
+                        if (elementOptions.ContainsKey("Images")) stand.Images.position = elementOptions["Images"];
+                        if (elementOptions.ContainsKey("Segments")) stand.Segments.position = elementOptions["Segments"];
+                        if (elementOptions.ContainsKey("Number")) stand.Number.position = elementOptions["Number"];
+                        if (elementOptions.ContainsKey("Number_Target")) stand.Number_Target.position = elementOptions["Number_Target"];
+                        if (elementOptions.ContainsKey("Pointer")) stand.Pointer.position = elementOptions["Pointer"];
+                        if (elementOptions.ContainsKey("Circle_Scale")) stand.Circle_Scale.position = elementOptions["Circle_Scale"];
+                        if (elementOptions.ContainsKey("Linear_Scale")) stand.Linear_Scale.position = elementOptions["Linear_Scale"];
+                        if (elementOptions.ContainsKey("Icon")) stand.Icon.position = elementOptions["Icon"];
+                    }
+                    break;
                 #endregion
 
                 #region ElementActivity
                 case "ElementActivity":
-                
+                    ElementActivity activity = (ElementActivity)element;
+                    if (activity != null)
+                    {
+                        if (activity.Images == null) activity.Images = new hmUI_widget_IMG_LEVEL();
+                        if (activity.Segments == null) activity.Segments = new hmUI_widget_IMG_PROGRESS();
+                        if (activity.Number == null) activity.Number = new hmUI_widget_IMG_NUMBER();
+                        if (activity.Number_Target == null) activity.Number_Target = new hmUI_widget_IMG_NUMBER();
+                        if (activity.Pointer == null) activity.Pointer = new hmUI_widget_IMG_POINTER();
+                        if (activity.Circle_Scale == null) activity.Circle_Scale = new Circle_Scale();
+                        if (activity.Linear_Scale == null) activity.Linear_Scale = new Linear_Scale();
+                        if (activity.Icon == null) activity.Icon = new hmUI_widget_IMG();
+
+                        if (elementOptions.ContainsKey("Images")) activity.Images.position = elementOptions["Images"];
+                        if (elementOptions.ContainsKey("Segments")) activity.Segments.position = elementOptions["Segments"];
+                        if (elementOptions.ContainsKey("Number")) activity.Number.position = elementOptions["Number"];
+                        if (elementOptions.ContainsKey("Number_Target")) activity.Number_Target.position = elementOptions["Number_Target"];
+                        if (elementOptions.ContainsKey("Pointer")) activity.Pointer.position = elementOptions["Pointer"];
+                        if (elementOptions.ContainsKey("Circle_Scale")) activity.Circle_Scale.position = elementOptions["Circle_Scale"];
+                        if (elementOptions.ContainsKey("Linear_Scale")) activity.Linear_Scale.position = elementOptions["Linear_Scale"];
+                        if (elementOptions.ContainsKey("Icon")) activity.Icon.position = elementOptions["Icon"];
+                    }
                     break;
                 #endregion
 
                 #region ElementSpO2
                 case "ElementSpO2":
-                    
+                    ElementSpO2 spo2 = (ElementSpO2)element;
+                    if (spo2 != null)
+                    {
+                        if (spo2.Number == null) spo2.Number = new hmUI_widget_IMG_NUMBER();
+
+                        if (elementOptions.ContainsKey("Number")) spo2.Number.position = elementOptions["Number"];
+                    }
+                    break;
                 #endregion
 
                 #region ElementStress
                 case "ElementStress":
-                   
+                    ElementStress stress = (ElementStress)element;
+                    if (stress != null)
+                    {
+                        if (stress.Images == null) stress.Images = new hmUI_widget_IMG_LEVEL();
+                        if (stress.Segments == null) stress.Segments = new hmUI_widget_IMG_PROGRESS();
+                        if (stress.Number == null) stress.Number = new hmUI_widget_IMG_NUMBER();
+                        if (stress.Pointer == null) stress.Pointer = new hmUI_widget_IMG_POINTER();
+                        if (stress.Icon == null) stress.Icon = new hmUI_widget_IMG();
+
+                        if (elementOptions.ContainsKey("Images")) stress.Images.position = elementOptions["Images"];
+                        if (elementOptions.ContainsKey("Segments")) stress.Segments.position = elementOptions["Segments"];
+                        if (elementOptions.ContainsKey("Number")) stress.Number.position = elementOptions["Number"];
+                        if (elementOptions.ContainsKey("Pointer")) stress.Pointer.position = elementOptions["Pointer"];
+                        if (elementOptions.ContainsKey("Icon")) stress.Icon.position = elementOptions["Icon"];
+                    }
                     break;
                 #endregion
 
                 #region ElementFatBurning
                 case "ElementFatBurning":
-                    
+                    ElementFatBurning fat_burning = (ElementFatBurning)element;
+                    if (fat_burning != null)
+                    {
+                        if (fat_burning.Images == null) fat_burning.Images = new hmUI_widget_IMG_LEVEL();
+                        if (fat_burning.Segments == null) fat_burning.Segments = new hmUI_widget_IMG_PROGRESS();
+                        if (fat_burning.Number == null) fat_burning.Number = new hmUI_widget_IMG_NUMBER();
+                        if (fat_burning.Number_Target == null) fat_burning.Number_Target = new hmUI_widget_IMG_NUMBER();
+                        if (fat_burning.Pointer == null) fat_burning.Pointer = new hmUI_widget_IMG_POINTER();
+                        if (fat_burning.Circle_Scale == null) fat_burning.Circle_Scale = new Circle_Scale();
+                        if (fat_burning.Linear_Scale == null) fat_burning.Linear_Scale = new Linear_Scale();
+                        if (fat_burning.Icon == null) fat_burning.Icon = new hmUI_widget_IMG();
+
+                        if (elementOptions.ContainsKey("Images")) fat_burning.Images.position = elementOptions["Images"];
+                        if (elementOptions.ContainsKey("Segments")) fat_burning.Segments.position = elementOptions["Segments"];
+                        if (elementOptions.ContainsKey("Number")) fat_burning.Number.position = elementOptions["Number"];
+                        if (elementOptions.ContainsKey("Number_Target")) fat_burning.Number_Target.position = elementOptions["Number_Target"];
+                        if (elementOptions.ContainsKey("Pointer")) fat_burning.Pointer.position = elementOptions["Pointer"];
+                        if (elementOptions.ContainsKey("Circle_Scale")) fat_burning.Circle_Scale.position = elementOptions["Circle_Scale"];
+                        if (elementOptions.ContainsKey("Linear_Scale")) fat_burning.Linear_Scale.position = elementOptions["Linear_Scale"];
+                        if (elementOptions.ContainsKey("Icon")) fat_burning.Icon.position = elementOptions["Icon"];
+                    }
                     break;
                 #endregion
 
