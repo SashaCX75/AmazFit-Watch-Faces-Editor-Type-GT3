@@ -58,6 +58,8 @@ namespace ControlLibrary
 
             pictureBox_Arrow_Down.Location = new Point(1, 2);
             pictureBox_Arrow_Down.BackColor = Color.Transparent;
+            //Collapse = true;
+            button_collapse.Visible = false;
         }
         
         /// <summary>Сворачиваение элемента</summary>

@@ -146,7 +146,7 @@
     <value>Größe des Bereichs</value>
   </data>
   <data name="label01.Text" xml:space="preserve">
-    <value>Ausgewählte Bereichsgrenze</value>
+    <value>Ausgewählte Bereichsgrenze*</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Nicht gewählte Bereichsgrenze</value>
@@ -475,7 +475,7 @@
 </value>
   </data>
   <data name="button_Sunset.Text" xml:space="preserve">
-    <value>Numerisch (Untergang)</value>
+    <value>Numerisch  (Untergang)</value>
   </data>
   <data name="button_Sunrise.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -505,7 +505,7 @@
 </value>
   </data>
   <data name="button_Sunset_Sunrise.Text" xml:space="preserve">
-    <value>Numerisch (Beides)</value>
+    <value>Numerisch (Im Wechsel)</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Auswahl der Elemente</value>

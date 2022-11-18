@@ -238,8 +238,8 @@ namespace Watch_Face_Editor
                                     case "radioButton_wind":
                                         type = "Wind";
                                         break;
-                                    case "Altimeter":
-                                        type = "SpO2";
+                                    case "radioButton_altimeter":
+                                        type = "Altimeter";
                                         break;
                                     case "radioButton_moon":
                                         type = "Moon";

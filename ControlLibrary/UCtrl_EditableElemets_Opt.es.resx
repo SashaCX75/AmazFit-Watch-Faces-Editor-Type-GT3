@@ -146,7 +146,7 @@
     <value>tamaño de la zona</value>
   </data>
   <data name="label01.Text" xml:space="preserve">
-    <value>Borde de la zona seleccionada</value>
+    <value>Borde de la zona seleccionada *</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>borde de la zona no seleccionada</value>

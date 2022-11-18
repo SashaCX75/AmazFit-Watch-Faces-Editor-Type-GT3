@@ -10419,7 +10419,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Sunrise_Elm.checkBox_Segments.Checked)
                         {
                             img_prorgess = sunrise.Segments;
-                            Read_ImgProrgess_Options(img_prorgess, 10, false);
+                            Read_ImgProrgess_Options(img_prorgess, 2, true);
                             ShowElemenrOptions("Segments");
                         }
                         else HideAllElemenrOptions();
@@ -15144,6 +15144,66 @@ namespace Watch_Face_Editor
         private void uCtrl_EditableBackground_Opt_VisibleChanged(object sender, EventArgs e)
         {
             PreviewImage();
+        }
+
+        private void button_SaveAs_Click(object sender, EventArgs e)
+        {
+            Logger.WriteLine("* Project_SaveAs");
+            // сохранение если файл не сохранен
+            if (SaveRequest() == DialogResult.Cancel) return;
+
+            //string subPath = Application.StartupPath + @"\Watch_face\";
+            string subPath = Path.GetDirectoryName(FullFileDir);
+            if (!Directory.Exists(subPath)) Directory.CreateDirectory(subPath);
+            CommonOpenFileDialog dialog = new CommonOpenFileDialog();
+            dialog.IsFolderPicker = true;
+
+            dialog.InitialDirectory = subPath;
+            dialog.EnsureValidNames = false;
+            dialog.Title = Properties.FormStrings.Dialog_Title_Save_As;
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok && FullFileDir != null)
+            {
+                Logger.WriteLine("* Project_SaveAs_Click");
+                string fullfilename = Path.GetFileNameWithoutExtension(dialog.FileName);
+                string assetsDir = Path.Combine(FullFileDir, "assets");
+                fullfilename = Path.Combine(dialog.FileName, fullfilename) + ".json";
+                string dirName = Path.GetDirectoryName(fullfilename) + @"\assets\";
+                if (Directory.Exists(dirName))
+                {
+                    DialogResult dialogResult = MessageBox.Show(Properties.FormStrings.Message_Warning_Assets_Exist1 +
+                        Environment.NewLine + Properties.FormStrings.Message_Warning_Assets_Exist2 + Environment.NewLine +
+                        Properties.FormStrings.Message_Warning_Assets_Exist3, Properties.FormStrings.Message_Warning_Caption,
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                    if (dialogResult == DialogResult.No) return;
+                }      
+                if (Path.GetExtension(fullfilename) != ".json") fullfilename = fullfilename + ".json";
+                FileName = Path.GetFileName(fullfilename);
+                FullFileDir = Path.GetDirectoryName(fullfilename);
+                if (Directory.Exists(assetsDir))
+                {
+                    string newAssetsDir = Path.Combine(FullFileDir, "assets");
+                    if (!Directory.Exists(newAssetsDir)) Directory.CreateDirectory(newAssetsDir);
+
+                    //Создать идентичное дерево каталогов
+                    foreach (string dirPath in Directory.GetDirectories(assetsDir, "*", SearchOption.AllDirectories))
+                        Directory.CreateDirectory(dirPath.Replace(assetsDir, newAssetsDir));
+
+                    //Скопировать все файлы. И перезаписать(если такие существуют)
+                    foreach (string newPath in Directory.GetFiles(assetsDir, "*.*", SearchOption.AllDirectories))
+                        File.Copy(newPath, newPath.Replace(assetsDir, newAssetsDir), true);
+                }
+                if (Watch_Face == null) Watch_Face = new WATCH_FACE();
+                if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
+                Random rnd = new Random();
+                int rndID = rnd.Next(1000, 10000000);
+                Watch_Face.WatchFace_Info.WatchFaceId = rndID;
+
+                //JSON_Modified = false;
+                //FormText();
+                save_JSON_File(fullfilename);
+                LoadJson(fullfilename);
+            }
+            Logger.WriteLine("* Project_SaveAs (end)");
         }
     }
 }

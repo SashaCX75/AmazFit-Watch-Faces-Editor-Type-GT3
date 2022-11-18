@@ -205,7 +205,7 @@ namespace Watch_Face_Editor
                     break;
                 case "PAI":
                     optional_types = new Optional_Types_List();
-                    optional_types.type = "PAI_DAILY";
+                    optional_types.type = "PAI";
                     newElement = new ElementPAI();
                     newElementName = "ElementPAI";
                     break;
@@ -238,6 +238,49 @@ namespace Watch_Face_Editor
                     optional_types.type = "SPO2";
                     newElement = new ElementSpO2();
                     newElementName = "ElementSpO2";
+                    break;
+
+                case "Weather":
+                    optional_types = new Optional_Types_List();
+                    optional_types.type = "TEMPERATURE";
+                    newElement = new ElementWeather();
+                    newElementName = "ElementWeather";
+                    break;
+                case "UVI":
+                    optional_types = new Optional_Types_List();
+                    optional_types.type = "UVI";
+                    newElement = new ElementUVIndex();
+                    newElementName = "ElementUVIndex";
+                    break;
+                case "Humidity":
+                    optional_types = new Optional_Types_List();
+                    optional_types.type = "HUMIDITY";
+                    newElement = new ElementHumidity();
+                    newElementName = "ElementHumidity";
+                    break;
+                case "Sunrise":
+                    optional_types = new Optional_Types_List();
+                    optional_types.type = "SUN";
+                    newElement = new ElementSunrise();
+                    newElementName = "ElementSunrise";
+                    break;
+                case "Altimeter":
+                    optional_types = new Optional_Types_List();
+                    optional_types.type = "ALTIMETER";
+                    newElement = new ElementAltimeter();
+                    newElementName = "ElementAltimeter";
+                    break;
+                case "Wind":
+                    optional_types = new Optional_Types_List();
+                    optional_types.type = "WIND";
+                    newElement = new ElementWind();
+                    newElementName = "ElementWind";
+                    break;
+                case "Moon":
+                    optional_types = new Optional_Types_List();
+                    optional_types.type = "MOON";
+                    newElement = new ElementMoon();
+                    newElementName = "ElementMoon";
                     break;
             }
 
@@ -722,8 +765,8 @@ namespace Watch_Face_Editor
                 #region ElementWeather
                 case "ElementWeather":
                     subElements.Add("Images");
-                    subElements.Add("Segments");
-                    subElements.Add("Pointer");
+                    //subElements.Add("Segments");
+                    //subElements.Add("Pointer");
                     subElements.Add("Number");
                     //subElements.Add("Number_target");
                     subElements.Add("Number_min");
@@ -731,10 +774,18 @@ namespace Watch_Face_Editor
                     //subElements.Add("Sunset");
                     //subElements.Add("Sunrise");
                     //subElements.Add("Sunset_sunrise");
-                    //subElements.Add("Sity_name");
+                    subElements.Add("CityName");
                     //subElements.Add("Circle_scale");
                     //subElements.Add("Linear_scale");
                     subElements.Add("Icon");
+
+                    ElementWeather weather = (ElementWeather)element;
+                    if (weather.Images != null) uCtrl_EditableElements_Opt.checkBox_Images.Checked = weather.Images.visible;
+                    if (weather.Number != null) uCtrl_EditableElements_Opt.checkBox_Number.Checked = weather.Number.visible;
+                    if (weather.Number_Max != null) uCtrl_EditableElements_Opt.checkBox_Number_Max.Checked = weather.Number_Max.visible;
+                    if (weather.Number_Min != null) uCtrl_EditableElements_Opt.checkBox_Number_Min.Checked = weather.Number_Min.visible;
+                    if (weather.City_Name != null) uCtrl_EditableElements_Opt.checkBox_Text_CityName.Checked = weather.City_Name.visible;
+                    if (weather.Icon != null) uCtrl_EditableElements_Opt.checkBox_Icon.Checked = weather.Icon.visible;
                     break;
                 #endregion
 
@@ -754,6 +805,13 @@ namespace Watch_Face_Editor
                     //subElements.Add("Circle_scale");
                     //subElements.Add("Linear_scale");
                     subElements.Add("Icon");
+
+                    ElementUVIndex uv_index = (ElementUVIndex)element;
+                    if (uv_index.Images != null) uCtrl_EditableElements_Opt.checkBox_Images.Checked = uv_index.Images.visible;
+                    if (uv_index.Segments != null) uCtrl_EditableElements_Opt.checkBox_Segments.Checked = uv_index.Segments.visible;
+                    if (uv_index.Number != null) uCtrl_EditableElements_Opt.checkBox_Number.Checked = uv_index.Number.visible;
+                    if (uv_index.Pointer != null) uCtrl_EditableElements_Opt.checkBox_Pointer.Checked = uv_index.Pointer.visible;
+                    if (uv_index.Icon != null) uCtrl_EditableElements_Opt.checkBox_Icon.Checked = uv_index.Icon.visible;
                     break;
                 #endregion
 
@@ -773,6 +831,13 @@ namespace Watch_Face_Editor
                     //subElements.Add("Circle_scale");
                     //subElements.Add("Linear_scale");
                     subElements.Add("Icon");
+
+                    ElementHumidity humidity = (ElementHumidity)element;
+                    if (humidity.Images != null) uCtrl_EditableElements_Opt.checkBox_Images.Checked = humidity.Images.visible;
+                    if (humidity.Segments != null) uCtrl_EditableElements_Opt.checkBox_Segments.Checked = humidity.Segments.visible;
+                    if (humidity.Number != null) uCtrl_EditableElements_Opt.checkBox_Number.Checked = humidity.Number.visible;
+                    if (humidity.Pointer != null) uCtrl_EditableElements_Opt.checkBox_Pointer.Checked = humidity.Pointer.visible;
+                    if (humidity.Icon != null) uCtrl_EditableElements_Opt.checkBox_Icon.Checked = humidity.Icon.visible;
                     break;
                 #endregion
 
@@ -792,6 +857,11 @@ namespace Watch_Face_Editor
                     //subElements.Add("Circle_scale");
                     //subElements.Add("Linear_scale");
                     subElements.Add("Icon");
+
+                    ElementAltimeter altimeter = (ElementAltimeter)element;
+                    if (altimeter.Number != null) uCtrl_EditableElements_Opt.checkBox_Number.Checked = altimeter.Number.visible;
+                    if (altimeter.Pointer != null) uCtrl_EditableElements_Opt.checkBox_Pointer.Checked = altimeter.Pointer.visible;
+                    if (altimeter.Icon != null) uCtrl_EditableElements_Opt.checkBox_Icon.Checked = altimeter.Icon.visible;
                     break;
                 #endregion
 
@@ -806,11 +876,20 @@ namespace Watch_Face_Editor
                     //subElements.Add("Number_max");
                     subElements.Add("Sunset");
                     subElements.Add("Sunrise");
-                    subElements.Add("Sunset_sunrise");
+                    subElements.Add("Sunset_Sunrise");
                     //subElements.Add("Sity_name");
                     //subElements.Add("Circle_scale");
                     //subElements.Add("Linear_scale");
                     subElements.Add("Icon");
+
+                    ElementSunrise sunrise = (ElementSunrise)element;
+                    if (sunrise.Images != null) uCtrl_EditableElements_Opt.checkBox_Images.Checked = sunrise.Images.visible;
+                    if (sunrise.Segments != null) uCtrl_EditableElements_Opt.checkBox_Segments.Checked = sunrise.Segments.visible;
+                    if (sunrise.Sunrise != null) uCtrl_EditableElements_Opt.checkBox_Sunrise.Checked = sunrise.Sunrise.visible;
+                    if (sunrise.Sunset != null) uCtrl_EditableElements_Opt.checkBox_Sunset.Checked = sunrise.Sunset.visible;
+                    if (sunrise.Sunset_Sunrise != null) uCtrl_EditableElements_Opt.checkBox_Sunset_Sunrise.Checked = sunrise.Sunset_Sunrise.visible;
+                    if (sunrise.Pointer != null) uCtrl_EditableElements_Opt.checkBox_Pointer.Checked = sunrise.Pointer.visible;
+                    if (sunrise.Icon != null) uCtrl_EditableElements_Opt.checkBox_Icon.Checked = sunrise.Icon.visible;
                     break;
                 #endregion
 
@@ -830,6 +909,13 @@ namespace Watch_Face_Editor
                     //subElements.Add("Circle_scale");
                     //subElements.Add("Linear_scale");
                     subElements.Add("Icon");
+
+                    ElementWind wind = (ElementWind)element;
+                    if (wind.Images != null) uCtrl_EditableElements_Opt.checkBox_Images.Checked = wind.Images.visible;
+                    if (wind.Segments != null) uCtrl_EditableElements_Opt.checkBox_Segments.Checked = wind.Segments.visible;
+                    if (wind.Number != null) uCtrl_EditableElements_Opt.checkBox_Number.Checked = wind.Number.visible;
+                    if (wind.Pointer != null) uCtrl_EditableElements_Opt.checkBox_Pointer.Checked = wind.Pointer.visible;
+                    if (wind.Icon != null) uCtrl_EditableElements_Opt.checkBox_Icon.Checked = wind.Icon.visible;
                     break;
                 #endregion
 
@@ -849,6 +935,9 @@ namespace Watch_Face_Editor
                     //subElements.Add("Circle_scale");
                     //subElements.Add("Linear_scale");
                     //subElements.Add("Icon");
+
+                    ElementMoon moon = (ElementMoon)element;
+                    if (moon.Images != null) uCtrl_EditableElements_Opt.checkBox_Images.Checked = moon.Images.visible;
                     break;
                     #endregion
             }
@@ -1602,139 +1691,339 @@ namespace Watch_Face_Editor
 
                 #region ElementWeather
                 case "ElementWeather":
-                    subElements.Add("Images");
-                    subElements.Add("Segments");
-                    subElements.Add("Pointer");
-                    subElements.Add("Number");
-                    //subElements.Add("Number_target");
-                    subElements.Add("Number_min");
-                    subElements.Add("Number_max");
-                    //subElements.Add("Sunset");
-                    //subElements.Add("Sunrise");
-                    //subElements.Add("Sunset_sunrise");
-                    //subElements.Add("Sity_name");
-                    //subElements.Add("Circle_scale");
-                    //subElements.Add("Linear_scale");
-                    subElements.Add("Icon");
+                    ElementWeather weather = (ElementWeather)element;
+                    switch (uCtrl_EditableElements_Opt.selectedElement)
+                    {
+                        case "Images":
+                            if (uCtrl_EditableElements_Opt.checkBox_Images.Checked)
+                            {
+                                hmUI_widget_IMG_LEVEL img_level = weather.Images;
+                                Read_ImgLevel_Options(img_level, 29, false);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Number":
+                            if (uCtrl_EditableElements_Opt.checkBox_Number.Checked)
+                            {
+                                hmUI_widget_IMG_NUMBER img_number = weather.Number;
+                                Read_ImgNumberWeather_Options(img_number, false, "", true, false);
+                                //ShowElemenrOptions("Text_Weather");
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            //else HideAllElemenrOptions();
+                            break;
+                        case "Number_Min":
+                            if (uCtrl_EditableElements_Opt.checkBox_Number_Min.Checked)
+                            {
+                                hmUI_widget_IMG_NUMBER img_number = weather.Number_Min;
+                                Read_ImgNumberWeather_Options(img_number, false, "", true, false);
+                                //ShowElemenrOptions("Text_Weather");
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            //else HideAllElemenrOptions();
+                            break;
+                        case "Number_Max":
+                            if (uCtrl_EditableElements_Opt.checkBox_Number_Max.Checked)
+                            {
+                                hmUI_widget_IMG_NUMBER img_number = weather.Number_Max;
+                                Read_ImgNumberWeather_Options(img_number, false, "", true, false);
+                                //ShowElemenrOptions("Text_Weather");
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            //else HideAllElemenrOptions();
+                            break;
+                        case "CityName":
+                            if (uCtrl_EditableElements_Opt.checkBox_Text_CityName.Checked)
+                            {
+                                hmUI_widget_TEXT text = weather.City_Name;
+                                Read_Text_Options(text);
+                                //ShowElemenrOptions("SystemFont");
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            //else HideAllElemenrOptions();
+                            break;
+                        case "Icon":
+                            if (uCtrl_EditableElements_Opt.checkBox_Icon.Checked)
+                            {
+                                hmUI_widget_IMG icon = weather.Icon;
+                                Read_Icon_Options(icon);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                    }
                     break;
                 #endregion
 
                 #region ElementUVIndex
                 case "ElementUVIndex":
-                    subElements.Add("Images");
-                    subElements.Add("Segments");
-                    subElements.Add("Pointer");
-                    subElements.Add("Number");
-                    //subElements.Add("Number_target");
-                    //subElements.Add("Number_min");
-                    //subElements.Add("Number_max");
-                    //subElements.Add("Sunset");
-                    //subElements.Add("Sunrise");
-                    //subElements.Add("Sunset_sunrise");
-                    //subElements.Add("Sity_name");
-                    //subElements.Add("Circle_scale");
-                    //subElements.Add("Linear_scale");
-                    subElements.Add("Icon");
+                    ElementUVIndex uv_index = (ElementUVIndex)element;
+                    switch (uCtrl_EditableElements_Opt.selectedElement)
+                    {
+                        case "Images":
+                            if (uCtrl_EditableElements_Opt.checkBox_Images.Checked)
+                            {
+                                hmUI_widget_IMG_LEVEL img_level = uv_index.Images;
+                                Read_ImgLevel_Options(img_level, 10, true);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Segments":
+                            if (uCtrl_EditableElements_Opt.checkBox_Segments.Checked)
+                            {
+                                hmUI_widget_IMG_PROGRESS img_prorgess = uv_index.Segments;
+                                Read_ImgProrgess_Options(img_prorgess, 10, false);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Number":
+                            if (uCtrl_EditableElements_Opt.checkBox_Number.Checked)
+                            {
+                                hmUI_widget_IMG_NUMBER img_number = uv_index.Number;
+                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Pointer":
+                            if (uCtrl_EditableElements_Opt.checkBox_Pointer.Checked)
+                            {
+                                hmUI_widget_IMG_POINTER img_pointer = uv_index.Pointer;
+                                Read_ImgPointer_Options(img_pointer, true);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Icon":
+                            if (uCtrl_EditableElements_Opt.checkBox_Icon.Checked)
+                            {
+                                hmUI_widget_IMG icon = uv_index.Icon;
+                                Read_Icon_Options(icon);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                    }
                     break;
                 #endregion
 
                 #region ElementHumidity
                 case "ElementHumidity":
-                    subElements.Add("Images");
-                    subElements.Add("Segments");
-                    subElements.Add("Pointer");
-                    subElements.Add("Number");
-                    //subElements.Add("Number_target");
-                    //subElements.Add("Number_min");
-                    //subElements.Add("Number_max");
-                    //subElements.Add("Sunset");
-                    //subElements.Add("Sunrise");
-                    //subElements.Add("Sunset_sunrise");
-                    //subElements.Add("Sity_name");
-                    //subElements.Add("Circle_scale");
-                    //subElements.Add("Linear_scale");
-                    subElements.Add("Icon");
+                    ElementHumidity humidity = (ElementHumidity)element;
+                    switch (uCtrl_EditableElements_Opt.selectedElement)
+                    {
+                        case "Images":
+                            if (uCtrl_EditableElements_Opt.checkBox_Images.Checked)
+                            {
+                                hmUI_widget_IMG_LEVEL img_level = humidity.Images;
+                                Read_ImgLevel_Options(img_level, 10, true);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Segments":
+                            if (uCtrl_EditableElements_Opt.checkBox_Segments.Checked)
+                            {
+                                hmUI_widget_IMG_PROGRESS img_prorgess = humidity.Segments;
+                                Read_ImgProrgess_Options(img_prorgess, 10, false);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Number":
+                            if (uCtrl_EditableElements_Opt.checkBox_Number.Checked)
+                            {
+                                hmUI_widget_IMG_NUMBER img_number = humidity.Number;
+                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Pointer":
+                            if (uCtrl_EditableElements_Opt.checkBox_Pointer.Checked)
+                            {
+                                hmUI_widget_IMG_POINTER img_pointer = humidity.Pointer;
+                                Read_ImgPointer_Options(img_pointer, true);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Icon":
+                            if (uCtrl_EditableElements_Opt.checkBox_Icon.Checked)
+                            {
+                                hmUI_widget_IMG icon = humidity.Icon;
+                                Read_Icon_Options(icon);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                    }
                     break;
                 #endregion
 
                 #region ElementAltimeter
                 case "ElementAltimeter":
-                    //subElements.Add("Images");
-                    //subElements.Add("Segments");
-                    subElements.Add("Pointer");
-                    subElements.Add("Number");
-                    //subElements.Add("Number_target");
-                    //subElements.Add("Number_min");
-                    //subElements.Add("Number_max");
-                    //subElements.Add("Sunset");
-                    //subElements.Add("Sunrise");
-                    //subElements.Add("Sunset_sunrise");
-                    //subElements.Add("Sity_name");
-                    //subElements.Add("Circle_scale");
-                    //subElements.Add("Linear_scale");
-                    subElements.Add("Icon");
+                    ElementAltimeter altimeter = (ElementAltimeter)element;
+                    switch (uCtrl_EditableElements_Opt.selectedElement)
+                    {
+                        case "Number":
+                            if (uCtrl_EditableElements_Opt.checkBox_Number.Checked)
+                            {
+                                hmUI_widget_IMG_NUMBER img_number = altimeter.Number;
+                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Pointer":
+                            if (uCtrl_EditableElements_Opt.checkBox_Pointer.Checked)
+                            {
+                                hmUI_widget_IMG_POINTER img_pointer = altimeter.Pointer;
+                                Read_ImgPointer_Options(img_pointer, true);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Icon":
+                            if (uCtrl_EditableElements_Opt.checkBox_Icon.Checked)
+                            {
+                                hmUI_widget_IMG icon = altimeter.Icon;
+                                Read_Icon_Options(icon);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                    }
                     break;
                 #endregion
 
                 #region ElementSunrise
                 case "ElementSunrise":
-                    subElements.Add("Images");
-                    subElements.Add("Segments");
-                    subElements.Add("Pointer");
-                    //subElements.Add("Number");
-                    //subElements.Add("Number_target");
-                    //subElements.Add("Number_min");
-                    //subElements.Add("Number_max");
-                    subElements.Add("Sunset");
-                    subElements.Add("Sunrise");
-                    subElements.Add("Sunset_sunrise");
-                    //subElements.Add("Sity_name");
-                    //subElements.Add("Circle_scale");
-                    //subElements.Add("Linear_scale");
-                    subElements.Add("Icon");
+                    ElementSunrise sunrise = (ElementSunrise)element;
+                    switch (uCtrl_EditableElements_Opt.selectedElement)
+                    {
+                        case "Images":
+                            if (uCtrl_EditableElements_Opt.checkBox_Images.Checked)
+                            {
+                                hmUI_widget_IMG_LEVEL img_level = sunrise.Images;
+                                Read_ImgLevel_Options(img_level, 2, true);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Segments":
+                            if (uCtrl_EditableElements_Opt.checkBox_Segments.Checked)
+                            {
+                                hmUI_widget_IMG_PROGRESS img_prorgess = sunrise.Segments;
+                                Read_ImgProrgess_Options(img_prorgess, 2, true);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Sunrise":
+                            if (uCtrl_EditableElements_Opt.checkBox_Sunrise.Checked)
+                            {
+                                hmUI_widget_IMG_NUMBER img_number = sunrise.Sunrise;
+                                Read_ImgNumber_Options(img_number, false, false, "", true, true, false, true);
+                                //ShowElemenrOptions("Text");
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            //else HideAllElemenrOptions();
+                            break;
+                        case "Sunset":
+                            if (uCtrl_EditableElements_Opt.checkBox_Sunset.Checked)
+                            {
+                                hmUI_widget_IMG_NUMBER img_number = sunrise.Sunset;
+                                Read_ImgNumber_Options(img_number, false, false, "", true, true, false, true);
+                                //ShowElemenrOptions("Text");
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            //else HideAllElemenrOptions();
+                            break;
+                        case "Sunset_Sunrise":
+                            if (uCtrl_EditableElements_Opt.checkBox_Sunset_Sunrise.Checked)
+                            {
+                                hmUI_widget_IMG_NUMBER img_number = sunrise.Sunset_Sunrise;
+                                Read_ImgNumber_Options(img_number, false, false, "", true, true, false, true);
+                                //ShowElemenrOptions("Text");
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            //else HideAllElemenrOptions();
+                            break;
+                        case "Pointer":
+                            if (uCtrl_EditableElements_Opt.checkBox_Pointer.Checked)
+                            {
+                                hmUI_widget_IMG_POINTER img_pointer = sunrise.Pointer;
+                                Read_ImgPointer_Options(img_pointer, true);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Icon":
+                            if (uCtrl_EditableElements_Opt.checkBox_Icon.Checked)
+                            {
+                                hmUI_widget_IMG icon = sunrise.Icon;
+                                Read_Icon_Options(icon);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                    }
                     break;
                 #endregion
 
                 #region ElementWind
                 case "ElementWind":
-                    subElements.Add("Images");
-                    subElements.Add("Segments");
-                    subElements.Add("Pointer");
-                    subElements.Add("Number");
-                    //subElements.Add("Number_target");
-                    //subElements.Add("Number_min");
-                    //subElements.Add("Number_max");
-                    //subElements.Add("Sunset");
-                    //subElements.Add("Sunrise");
-                    //subElements.Add("Sunset_sunrise");
-                    //subElements.Add("Sity_name");
-                    //subElements.Add("Circle_scale");
-                    //subElements.Add("Linear_scale");
-                    subElements.Add("Icon");
+                    ElementWind wind = (ElementWind)element;
+                    switch (uCtrl_EditableElements_Opt.selectedElement)
+                    {
+                        case "Images":
+                            if (uCtrl_EditableElements_Opt.checkBox_Images.Checked)
+                            {
+                                hmUI_widget_IMG_LEVEL img_level = wind.Images;
+                                Read_ImgLevel_Options(img_level, 10, true);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Segments":
+                            if (uCtrl_EditableElements_Opt.checkBox_Segments.Checked)
+                            {
+                                hmUI_widget_IMG_PROGRESS img_prorgess = wind.Segments;
+                                Read_ImgProrgess_Options(img_prorgess, 10, false);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Number":
+                            if (uCtrl_EditableElements_Opt.checkBox_Number.Checked)
+                            {
+                                hmUI_widget_IMG_NUMBER img_number = wind.Number;
+                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Pointer":
+                            if (uCtrl_EditableElements_Opt.checkBox_Pointer.Checked)
+                            {
+                                hmUI_widget_IMG_POINTER img_pointer = wind.Pointer;
+                                Read_ImgPointer_Options(img_pointer, true);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                        case "Icon":
+                            if (uCtrl_EditableElements_Opt.checkBox_Icon.Checked)
+                            {
+                                hmUI_widget_IMG icon = wind.Icon;
+                                Read_Icon_Options(icon);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                    }
                     break;
                 #endregion
 
                 #region ElementMoon
                 case "ElementMoon":
-                    subElements.Add("Images");
-                    //subElements.Add("Segments");
-                    //subElements.Add("Pointer");
-                    //subElements.Add("Number");
-                    //subElements.Add("Number_target");
-                    //subElements.Add("Number_min");
-                    //subElements.Add("Number_max");
-                    //subElements.Add("Sunset");
-                    //subElements.Add("Sunrise");
-                    //subElements.Add("Sunset_sunrise");
-                    //subElements.Add("Sity_name");
-                    //subElements.Add("Circle_scale");
-                    //subElements.Add("Linear_scale");
-                    //subElements.Add("Icon");
+                    ElementMoon moon = (ElementMoon)element;
+                    switch (uCtrl_EditableElements_Opt.selectedElement)
+                    {
+                        case "Images":
+                            if (uCtrl_EditableElements_Opt.checkBox_Images.Checked)
+                            {
+                                hmUI_widget_IMG_LEVEL img_level = moon.Images;
+                                Read_ImgLevel_Options(img_level, 30, true);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
+                    }
                     break;
                     #endregion
             }
 
-
+            PreviewImage();
         }
 
         private void uCtrl_EditableElements_Opt_VisibleOptionsChanged(object sender, EventArgs eventArgs)
@@ -2313,134 +2602,238 @@ namespace Watch_Face_Editor
 
                 #region ElementWeather
                 case "ElementWeather":
-                    subElements.Add("Images");
-                    subElements.Add("Segments");
-                    subElements.Add("Pointer");
-                    subElements.Add("Number");
-                    //subElements.Add("Number_target");
-                    subElements.Add("Number_min");
-                    subElements.Add("Number_max");
-                    //subElements.Add("Sunset");
-                    //subElements.Add("Sunrise");
-                    //subElements.Add("Sunset_sunrise");
-                    //subElements.Add("Sity_name");
-                    //subElements.Add("Circle_scale");
-                    //subElements.Add("Linear_scale");
-                    subElements.Add("Icon");
+                    ElementWeather weather = (ElementWeather)element;
+                    if (weather.Images == null) weather.Images = new hmUI_widget_IMG_LEVEL();
+                    if (weather.Number == null) weather.Number = new hmUI_widget_IMG_NUMBER();
+                    if (weather.Number_Max == null) weather.Number_Max = new hmUI_widget_IMG_NUMBER();
+                    if (weather.Number_Min == null) weather.Number_Min = new hmUI_widget_IMG_NUMBER();
+                    if (weather.City_Name == null) weather.City_Name = new hmUI_widget_TEXT();
+                    if (weather.Icon == null) weather.Icon = new hmUI_widget_IMG();
+
+                    if (elementOptions.ContainsKey("Images")) weather.Images.position = elementOptions["Images"];
+                    if (elementOptions.ContainsKey("Number")) weather.Number.position = elementOptions["Number"];
+                    if (elementOptions.ContainsKey("Number_Max")) weather.Number_Max.position = elementOptions["Number_Max"];
+                    if (elementOptions.ContainsKey("Number_Min")) weather.Number_Min.position = elementOptions["Number_Min"];
+                    if (elementOptions.ContainsKey("CityName")) weather.City_Name.position = elementOptions["CityName"];
+                    if (elementOptions.ContainsKey("Icon")) weather.Icon.position = elementOptions["Icon"];
+
+                    switch (name)
+                    {
+                        case "checkBox_Images":
+                            weather.Images.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Number":
+                            weather.Number.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Number_Max":
+                            weather.Number_Max.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Number_Min":
+                            weather.Number_Min.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Text_CityName":
+                            weather.City_Name.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Icon":
+                            weather.Icon.visible = checkBox.Checked;
+                            break;
+                    }
                     break;
                 #endregion
 
                 #region ElementUVIndex
                 case "ElementUVIndex":
-                    subElements.Add("Images");
-                    subElements.Add("Segments");
-                    subElements.Add("Pointer");
-                    subElements.Add("Number");
-                    //subElements.Add("Number_target");
-                    //subElements.Add("Number_min");
-                    //subElements.Add("Number_max");
-                    //subElements.Add("Sunset");
-                    //subElements.Add("Sunrise");
-                    //subElements.Add("Sunset_sunrise");
-                    //subElements.Add("Sity_name");
-                    //subElements.Add("Circle_scale");
-                    //subElements.Add("Linear_scale");
-                    subElements.Add("Icon");
+                    ElementUVIndex uv_index = (ElementUVIndex)element;
+                    if (uv_index.Images == null) uv_index.Images = new hmUI_widget_IMG_LEVEL();
+                    if (uv_index.Segments == null) uv_index.Segments = new hmUI_widget_IMG_PROGRESS();
+                    if (uv_index.Number == null) uv_index.Number = new hmUI_widget_IMG_NUMBER();
+                    if (uv_index.Pointer == null) uv_index.Pointer = new hmUI_widget_IMG_POINTER();
+                    if (uv_index.Icon == null) uv_index.Icon = new hmUI_widget_IMG();
+
+                    if (elementOptions.ContainsKey("Images")) uv_index.Images.position = elementOptions["Images"];
+                    if (elementOptions.ContainsKey("Segments")) uv_index.Segments.position = elementOptions["Segments"];
+                    if (elementOptions.ContainsKey("Number")) uv_index.Number.position = elementOptions["Number"];
+                    if (elementOptions.ContainsKey("Pointer")) uv_index.Pointer.position = elementOptions["Pointer"];
+                    if (elementOptions.ContainsKey("Icon")) uv_index.Icon.position = elementOptions["Icon"];
+
+                    switch (name)
+                    {
+                        case "checkBox_Images":
+                            uv_index.Images.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Segments":
+                            uv_index.Segments.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Number":
+                            uv_index.Number.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Pointer":
+                            uv_index.Pointer.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Icon":
+                            uv_index.Icon.visible = checkBox.Checked;
+                            break;
+                    }
                     break;
                 #endregion
 
                 #region ElementHumidity
                 case "ElementHumidity":
-                    subElements.Add("Images");
-                    subElements.Add("Segments");
-                    subElements.Add("Pointer");
-                    subElements.Add("Number");
-                    //subElements.Add("Number_target");
-                    //subElements.Add("Number_min");
-                    //subElements.Add("Number_max");
-                    //subElements.Add("Sunset");
-                    //subElements.Add("Sunrise");
-                    //subElements.Add("Sunset_sunrise");
-                    //subElements.Add("Sity_name");
-                    //subElements.Add("Circle_scale");
-                    //subElements.Add("Linear_scale");
-                    subElements.Add("Icon");
+                    ElementHumidity humidity = (ElementHumidity)element;
+                    if (humidity.Images == null) humidity.Images = new hmUI_widget_IMG_LEVEL();
+                    if (humidity.Segments == null) humidity.Segments = new hmUI_widget_IMG_PROGRESS();
+                    if (humidity.Number == null) humidity.Number = new hmUI_widget_IMG_NUMBER();
+                    if (humidity.Pointer == null) humidity.Pointer = new hmUI_widget_IMG_POINTER();
+                    if (humidity.Icon == null) humidity.Icon = new hmUI_widget_IMG();
+
+                    if (elementOptions.ContainsKey("Images")) humidity.Images.position = elementOptions["Images"];
+                    if (elementOptions.ContainsKey("Segments")) humidity.Segments.position = elementOptions["Segments"];
+                    if (elementOptions.ContainsKey("Number")) humidity.Number.position = elementOptions["Number"];
+                    if (elementOptions.ContainsKey("Pointer")) humidity.Pointer.position = elementOptions["Pointer"];
+                    if (elementOptions.ContainsKey("Icon")) humidity.Icon.position = elementOptions["Icon"];
+
+                    switch (name)
+                    {
+                        case "checkBox_Images":
+                            humidity.Images.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Segments":
+                            humidity.Segments.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Number":
+                            humidity.Number.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Pointer":
+                            humidity.Pointer.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Icon":
+                            humidity.Icon.visible = checkBox.Checked;
+                            break;
+                    }
                     break;
                 #endregion
 
                 #region ElementAltimeter
                 case "ElementAltimeter":
-                    //subElements.Add("Images");
-                    //subElements.Add("Segments");
-                    subElements.Add("Pointer");
-                    subElements.Add("Number");
-                    //subElements.Add("Number_target");
-                    //subElements.Add("Number_min");
-                    //subElements.Add("Number_max");
-                    //subElements.Add("Sunset");
-                    //subElements.Add("Sunrise");
-                    //subElements.Add("Sunset_sunrise");
-                    //subElements.Add("Sity_name");
-                    //subElements.Add("Circle_scale");
-                    //subElements.Add("Linear_scale");
-                    subElements.Add("Icon");
+                    ElementAltimeter altimeter = (ElementAltimeter)element;
+                    if (altimeter.Number == null) altimeter.Number = new hmUI_widget_IMG_NUMBER();
+                    if (altimeter.Pointer == null) altimeter.Pointer = new hmUI_widget_IMG_POINTER();
+                    if (altimeter.Icon == null) altimeter.Icon = new hmUI_widget_IMG();
+
+                    if (elementOptions.ContainsKey("Number")) altimeter.Number.position = elementOptions["Number"];
+                    if (elementOptions.ContainsKey("Pointer")) altimeter.Pointer.position = elementOptions["Pointer"];
+                    if (elementOptions.ContainsKey("Icon")) altimeter.Icon.position = elementOptions["Icon"];
+
+                    switch (name)
+                    {
+                        case "checkBox_Number":
+                            altimeter.Number.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Pointer":
+                            altimeter.Pointer.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Icon":
+                            altimeter.Icon.visible = checkBox.Checked;
+                            break;
+                    }
                     break;
                 #endregion
 
                 #region ElementSunrise
                 case "ElementSunrise":
-                    subElements.Add("Images");
-                    subElements.Add("Segments");
-                    subElements.Add("Pointer");
-                    //subElements.Add("Number");
-                    //subElements.Add("Number_target");
-                    //subElements.Add("Number_min");
-                    //subElements.Add("Number_max");
-                    subElements.Add("Sunset");
-                    subElements.Add("Sunrise");
-                    subElements.Add("Sunset_sunrise");
-                    //subElements.Add("Sity_name");
-                    //subElements.Add("Circle_scale");
-                    //subElements.Add("Linear_scale");
-                    subElements.Add("Icon");
+                    ElementSunrise sunrise = (ElementSunrise)element;
+                    if (sunrise.Images == null) sunrise.Images = new hmUI_widget_IMG_LEVEL();
+                    if (sunrise.Segments == null) sunrise.Segments = new hmUI_widget_IMG_PROGRESS();
+                    if (sunrise.Sunrise == null) sunrise.Sunrise = new hmUI_widget_IMG_NUMBER();
+                    if (sunrise.Sunset == null) sunrise.Sunset = new hmUI_widget_IMG_NUMBER();
+                    if (sunrise.Sunset_Sunrise == null) sunrise.Sunset_Sunrise = new hmUI_widget_IMG_NUMBER();
+                    if (sunrise.Pointer == null) sunrise.Pointer = new hmUI_widget_IMG_POINTER();
+                    if (sunrise.Icon == null) sunrise.Icon = new hmUI_widget_IMG();
+
+                    if (elementOptions.ContainsKey("Images")) sunrise.Images.position = elementOptions["Images"];
+                    if (elementOptions.ContainsKey("Segments")) sunrise.Segments.position = elementOptions["Segments"];
+                    if (elementOptions.ContainsKey("Sunrise")) sunrise.Sunrise.position = elementOptions["Sunrise"];
+                    if (elementOptions.ContainsKey("Sunset")) sunrise.Sunset.position = elementOptions["Sunset"];
+                    if (elementOptions.ContainsKey("Sunset_Sunrise")) sunrise.Sunset_Sunrise.position = elementOptions["Sunset_Sunrise"];
+                    if (elementOptions.ContainsKey("Pointer")) sunrise.Pointer.position = elementOptions["Pointer"];
+                    if (elementOptions.ContainsKey("Icon")) sunrise.Icon.position = elementOptions["Icon"];
+
+                    switch (name)
+                    {
+                        case "checkBox_Images":
+                            sunrise.Images.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Segments":
+                            sunrise.Segments.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Sunrise":
+                            sunrise.Sunrise.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Sunset":
+                            sunrise.Sunset.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Sunset_Sunrise":
+                            sunrise.Sunset_Sunrise.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Pointer":
+                            sunrise.Pointer.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Icon":
+                            sunrise.Icon.visible = checkBox.Checked;
+                            break;
+                    }
                     break;
                 #endregion
 
                 #region ElementWind
                 case "ElementWind":
-                    subElements.Add("Images");
-                    subElements.Add("Segments");
-                    subElements.Add("Pointer");
-                    subElements.Add("Number");
-                    //subElements.Add("Number_target");
-                    //subElements.Add("Number_min");
-                    //subElements.Add("Number_max");
-                    //subElements.Add("Sunset");
-                    //subElements.Add("Sunrise");
-                    //subElements.Add("Sunset_sunrise");
-                    //subElements.Add("Sity_name");
-                    //subElements.Add("Circle_scale");
-                    //subElements.Add("Linear_scale");
-                    subElements.Add("Icon");
+                    ElementWind wind = (ElementWind)element;
+                    if (wind.Images == null) wind.Images = new hmUI_widget_IMG_LEVEL();
+                    if (wind.Segments == null) wind.Segments = new hmUI_widget_IMG_PROGRESS();
+                    if (wind.Number == null) wind.Number = new hmUI_widget_IMG_NUMBER();
+                    if (wind.Pointer == null) wind.Pointer = new hmUI_widget_IMG_POINTER();
+                    if (wind.Icon == null) wind.Icon = new hmUI_widget_IMG();
+
+                    if (elementOptions.ContainsKey("Images")) wind.Images.position = elementOptions["Images"];
+                    if (elementOptions.ContainsKey("Segments")) wind.Segments.position = elementOptions["Segments"];
+                    if (elementOptions.ContainsKey("Number")) wind.Number.position = elementOptions["Number"];
+                    if (elementOptions.ContainsKey("Pointer")) wind.Pointer.position = elementOptions["Pointer"];
+                    if (elementOptions.ContainsKey("Icon")) wind.Icon.position = elementOptions["Icon"];
+
+                    switch (name)
+                    {
+                        case "checkBox_Images":
+                            wind.Images.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Segments":
+                            wind.Segments.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Number":
+                            wind.Number.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Pointer":
+                            wind.Pointer.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Icon":
+                            wind.Icon.visible = checkBox.Checked;
+                            break;
+                    }
                     break;
                 #endregion
 
                 #region ElementMoon
                 case "ElementMoon":
-                    subElements.Add("Images");
-                    //subElements.Add("Segments");
-                    //subElements.Add("Pointer");
-                    //subElements.Add("Number");
-                    //subElements.Add("Number_target");
-                    //subElements.Add("Number_min");
-                    //subElements.Add("Number_max");
-                    //subElements.Add("Sunset");
-                    //subElements.Add("Sunrise");
-                    //subElements.Add("Sunset_sunrise");
-                    //subElements.Add("Sity_name");
-                    //subElements.Add("Circle_scale");
-                    //subElements.Add("Linear_scale");
-                    //subElements.Add("Icon");
+                    ElementMoon moon = (ElementMoon)element;
+                    if (moon.Images == null) moon.Images = new hmUI_widget_IMG_LEVEL();
+
+                    if (elementOptions.ContainsKey("Images")) moon.Images.position = elementOptions["Images"];
+
+                    switch (name)
+                    {
+                        case "checkBox_Images":
+                            moon.Images.visible = checkBox.Checked;
+                            break;
+                    }
                     break;
                     #endregion
             }
@@ -2534,12 +2927,12 @@ namespace Watch_Face_Editor
 
                 // определяем имя файла для сохранения и сохраняем файл
                 int i = 1;
-                string tempName = "ez(" + (selected_zone + 1).ToString() + ")_" + optional_types_list.type + "_preview";
+                string tempName = "ez(" + (selected_zone + 1).ToString() + ")_" + optional_types_list.type;
                 string NamePreview = tempName + ".png";
                 string PathPreview = FullFileDir + @"\assets\" + NamePreview;
                 while (File.Exists(PathPreview) && i < 10)
                 {
-                    NamePreview = tempName + i.ToString() + ".png";
+                    NamePreview = tempName + "_" + i.ToString() + ".png";
                     PathPreview = FullFileDir + @"\assets\" + NamePreview;
                     i++;
                     if (i > 9)
@@ -2980,43 +3373,135 @@ namespace Watch_Face_Editor
 
                 #region ElementWeather
                 case "ElementWeather":
-                    
+                    ElementWeather weather = (ElementWeather)element;
+                    if (weather != null)
+                    {
+                        if (weather.Images == null) weather.Images = new hmUI_widget_IMG_LEVEL();
+                        if (weather.Number == null) weather.Number = new hmUI_widget_IMG_NUMBER();
+                        if (weather.Number_Max == null) weather.Number_Max = new hmUI_widget_IMG_NUMBER();
+                        if (weather.Number_Min == null) weather.Number_Min = new hmUI_widget_IMG_NUMBER();
+                        if (weather.City_Name == null) weather.City_Name = new hmUI_widget_TEXT()
+;                        if (weather.Icon == null) weather.Icon = new hmUI_widget_IMG();
+
+                        if (elementOptions.ContainsKey("Images")) weather.Images.position = elementOptions["Images"];
+                        if (elementOptions.ContainsKey("Number")) weather.Number.position = elementOptions["Number"];
+                        if (elementOptions.ContainsKey("Number_Max")) weather.Number_Max.position = elementOptions["Number_Max"];
+                        if (elementOptions.ContainsKey("Number_Min")) weather.Number_Min.position = elementOptions["Number_Min"];
+                        if (elementOptions.ContainsKey("CityName")) weather.City_Name.position = elementOptions["CityName"];
+                        if (elementOptions.ContainsKey("Icon")) weather.Icon.position = elementOptions["Icon"];
+                    }
                     break;
                 #endregion
 
                 #region ElementUVIndex
                 case "ElementUVIndex":
-                    
+                    ElementUVIndex uv_index = (ElementUVIndex)element;
+                    if (uv_index != null)
+                    {
+                        if (uv_index.Images == null) uv_index.Images = new hmUI_widget_IMG_LEVEL();
+                        if (uv_index.Segments == null) uv_index.Segments = new hmUI_widget_IMG_PROGRESS();
+                        if (uv_index.Number == null) uv_index.Number = new hmUI_widget_IMG_NUMBER();
+                        if (uv_index.Pointer == null) uv_index.Pointer = new hmUI_widget_IMG_POINTER();
+                        if (uv_index.Icon == null) uv_index.Icon = new hmUI_widget_IMG();
+
+                        if (elementOptions.ContainsKey("Images")) uv_index.Images.position = elementOptions["Images"];
+                        if (elementOptions.ContainsKey("Segments")) uv_index.Segments.position = elementOptions["Segments"];
+                        if (elementOptions.ContainsKey("Number")) uv_index.Number.position = elementOptions["Number"];
+                        if (elementOptions.ContainsKey("Pointer")) uv_index.Pointer.position = elementOptions["Pointer"];
+                        if (elementOptions.ContainsKey("Icon")) uv_index.Icon.position = elementOptions["Icon"];
+                    }
                     break;
                 #endregion
 
                 #region ElementHumidity
                 case "ElementHumidity":
-                   
+                    ElementHumidity humidity = (ElementHumidity)element;
+                    if (humidity != null)
+                    {
+                        if (humidity.Images == null) humidity.Images = new hmUI_widget_IMG_LEVEL();
+                        if (humidity.Segments == null) humidity.Segments = new hmUI_widget_IMG_PROGRESS();
+                        if (humidity.Number == null) humidity.Number = new hmUI_widget_IMG_NUMBER();
+                        if (humidity.Pointer == null) humidity.Pointer = new hmUI_widget_IMG_POINTER();
+                        if (humidity.Icon == null) humidity.Icon = new hmUI_widget_IMG();
+
+                        if (elementOptions.ContainsKey("Images")) humidity.Images.position = elementOptions["Images"];
+                        if (elementOptions.ContainsKey("Segments")) humidity.Segments.position = elementOptions["Segments"];
+                        if (elementOptions.ContainsKey("Number")) humidity.Number.position = elementOptions["Number"];
+                        if (elementOptions.ContainsKey("Pointer")) humidity.Pointer.position = elementOptions["Pointer"];
+                        if (elementOptions.ContainsKey("Icon")) humidity.Icon.position = elementOptions["Icon"];
+                    }
                     break;
                 #endregion
 
                 #region ElementAltimeter
                 case "ElementAltimeter":
-                    
+                    ElementAltimeter altimeter = (ElementAltimeter)element;
+                    if (altimeter != null)
+                    {
+                        if (altimeter.Number == null) altimeter.Number = new hmUI_widget_IMG_NUMBER();
+                        if (altimeter.Pointer == null) altimeter.Pointer = new hmUI_widget_IMG_POINTER();
+                        if (altimeter.Icon == null) altimeter.Icon = new hmUI_widget_IMG();
+
+                        if (elementOptions.ContainsKey("Number")) altimeter.Number.position = elementOptions["Number"];
+                        if (elementOptions.ContainsKey("Pointer")) altimeter.Pointer.position = elementOptions["Pointer"];
+                        if (elementOptions.ContainsKey("Icon")) altimeter.Icon.position = elementOptions["Icon"];
+                    }
                     break;
                 #endregion
 
                 #region ElementSunrise
                 case "ElementSunrise":
-                   
+                    ElementSunrise sunrise = (ElementSunrise)element;
+                    if (sunrise != null)
+                    {
+                        if (sunrise.Images == null) sunrise.Images = new hmUI_widget_IMG_LEVEL();
+                        if (sunrise.Segments == null) sunrise.Segments = new hmUI_widget_IMG_PROGRESS();
+                        if (sunrise.Sunrise == null) sunrise.Sunrise = new hmUI_widget_IMG_NUMBER();
+                        if (sunrise.Sunset == null) sunrise.Sunset = new hmUI_widget_IMG_NUMBER();
+                        if (sunrise.Sunset_Sunrise == null) sunrise.Sunset_Sunrise = new hmUI_widget_IMG_NUMBER();
+                        if (sunrise.Pointer == null) sunrise.Pointer = new hmUI_widget_IMG_POINTER();
+                        if (sunrise.Icon == null) sunrise.Icon = new hmUI_widget_IMG();
+
+                        if (elementOptions.ContainsKey("Images")) sunrise.Images.position = elementOptions["Images"];
+                        if (elementOptions.ContainsKey("Segments")) sunrise.Segments.position = elementOptions["Segments"];
+                        if (elementOptions.ContainsKey("Sunrise")) sunrise.Sunrise.position = elementOptions["Sunrise"];
+                        if (elementOptions.ContainsKey("Sunset")) sunrise.Sunset.position = elementOptions["Sunset"];
+                        if (elementOptions.ContainsKey("Sunset_Sunrise")) sunrise.Sunset_Sunrise.position = elementOptions["Sunset_Sunrise"];
+                        if (elementOptions.ContainsKey("Pointer")) sunrise.Pointer.position = elementOptions["Pointer"];
+                        if (elementOptions.ContainsKey("Icon")) sunrise.Icon.position = elementOptions["Icon"];
+                    }
                     break;
                 #endregion
 
                 #region ElementWind
                 case "ElementWind":
-                    
+                    ElementWind wind = (ElementWind)element;
+                    if (wind != null)
+                    {
+                        if (wind.Images == null) wind.Images = new hmUI_widget_IMG_LEVEL();
+                        if (wind.Segments == null) wind.Segments = new hmUI_widget_IMG_PROGRESS();
+                        if (wind.Number == null) wind.Number = new hmUI_widget_IMG_NUMBER();
+                        if (wind.Pointer == null) wind.Pointer = new hmUI_widget_IMG_POINTER();
+                        if (wind.Icon == null) wind.Icon = new hmUI_widget_IMG();
+
+                        if (elementOptions.ContainsKey("Images")) wind.Images.position = elementOptions["Images"];
+                        if (elementOptions.ContainsKey("Segments")) wind.Segments.position = elementOptions["Segments"];
+                        if (elementOptions.ContainsKey("Number")) wind.Number.position = elementOptions["Number"];
+                        if (elementOptions.ContainsKey("Pointer")) wind.Pointer.position = elementOptions["Pointer"];
+                        if (elementOptions.ContainsKey("Icon")) wind.Icon.position = elementOptions["Icon"];
+                    }
                     break;
                 #endregion
 
                 #region ElementMoon
                 case "ElementMoon":
-                    
+                    ElementMoon moon = (ElementMoon)element;
+                    if (moon != null)
+                    {
+                        if (moon.Images == null) moon.Images = new hmUI_widget_IMG_LEVEL();
+
+                        if (elementOptions.ContainsKey("Images")) moon.Images.position = elementOptions["Images"];
+                    }
                     break;
                     #endregion
             }

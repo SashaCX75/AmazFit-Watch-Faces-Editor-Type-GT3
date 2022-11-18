@@ -49,7 +49,7 @@ namespace Watch_Face_Editor
         {
             if (showEeditMode && edit_mode > 0) 
             {
-                Preview_edit_screen(gPanel, edit_mode, scale, crop);
+                Preview_edit_screen(gPanel, edit_mode, scale, crop, WMesh, BMesh);
                 return;
             }
             int offSet_X = 227;
@@ -1986,29 +1986,32 @@ namespace Watch_Face_Editor
 
                     img_level = activityElementMoon.Images;
 
-                    elementValue = 100;
-                    value_lenght = 3;
-                    goal = 100;
-                    //progress = 0;
+                    if (img_level != null)
+                    {
+                        elementValue = 100;
+                        value_lenght = 3;
+                        goal = 100;
+                        //progress = 0;
 
-                    int year = WatchFacePreviewSet.Date.Year;
-                    int month = WatchFacePreviewSet.Date.Month;
-                    int day = WatchFacePreviewSet.Date.Day;
-                    double moon_age = MoonAge(day, month, year);
-                    //int moonPhase = (int)(8 * moon_age / 29);
+                        int year = WatchFacePreviewSet.Date.Year;
+                        int month = WatchFacePreviewSet.Date.Month;
+                        int day = WatchFacePreviewSet.Date.Day;
+                        double moon_age = MoonAge(day, month, year);
+                        //int moonPhase = (int)(8 * moon_age / 29);
 
-                    imgCount = img_level.image_length;
-                    valueImgIndex = (int)Math.Round((imgCount - 1) * moon_age / 29);
-                    //valueImgIndex = (int)Math.Round((imgCount - 1) * moon_age / 29.53f);
-                    //valueImgIndex = moonPhase - 1;
-                    if (valueImgIndex < 0) valueImgIndex = (int)(imgCount - 1);
-                    if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                        imgCount = img_level.image_length;
+                        valueImgIndex = (int)Math.Round((imgCount - 1) * moon_age / 29);
+                        //valueImgIndex = (int)Math.Round((imgCount - 1) * moon_age / 29.53f);
+                        //valueImgIndex = moonPhase - 1;
+                        if (valueImgIndex < 0) valueImgIndex = (int)(imgCount - 1);
+                        if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
 
 
-                    DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
-                        img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
-                        progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
-                        showCentrHend, "ElementMoon");
+                        DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                            img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                            progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                            showCentrHend, "ElementMoon"); 
+                    }
 
 
                     break;
@@ -2060,7 +2063,7 @@ namespace Watch_Face_Editor
             src.Dispose();
         }
             
-        public void Preview_edit_screen(Graphics gPanel, int edit_mode, float scale, bool crop)
+        public void Preview_edit_screen(Graphics gPanel, int edit_mode, float scale, bool crop, bool WMesh, bool BMesh)
         {
             Bitmap src = new Bitmap(1, 1);
 
@@ -2087,6 +2090,8 @@ namespace Watch_Face_Editor
                     break;
             }
             gPanel.DrawImage(src, 0, 0);
+            int offSet_X = src.Width / 2;
+            int offSet_Y = src.Height / 2;
             #endregion
 
             Editable_Background editable_background = null;
@@ -2328,7 +2333,7 @@ namespace Watch_Face_Editor
                                 case "HEART":
                                     valueStr = Properties.ElementsString.TypeNameHeart;
                                     break;
-                                case "PAI_DAILY":
+                                case "PAI":
                                     valueStr = Properties.ElementsString.TypeNamePAI;
                                     break;
                                 case "DISTANCE":
@@ -2345,6 +2350,28 @@ namespace Watch_Face_Editor
                                     break;
                                 case "SPO2":
                                     valueStr = Properties.ElementsString.TypeNameSpO2;
+                                    break;
+
+                                case "TEMPERATURE":
+                                    valueStr = Properties.ElementsString.TypeNameWeather;
+                                    break;
+                                case "UVI":
+                                    valueStr = Properties.ElementsString.TypeNameUVI;
+                                    break;
+                                case "HUMIDITY":
+                                    valueStr = Properties.ElementsString.TypeNameHumidity;
+                                    break;
+                                case "ALTIMETER":
+                                    valueStr = Properties.ElementsString.TypeNameAltimeter;
+                                    break;
+                                case "SUN":
+                                    valueStr = Properties.ElementsString.TypeNameSunrise;
+                                    break;
+                                case "WIND":
+                                    valueStr = Properties.ElementsString.TypeNameWind;
+                                    break;
+                                case "MOON":
+                                    valueStr = Properties.ElementsString.TypeNameMoon;
                                     break;
 
                                 default:
@@ -2394,6 +2421,52 @@ namespace Watch_Face_Editor
                         align_h, align_v, text_style, false);
                 }
             }
+
+            #region Mesh
+            Logger.WriteLine("PreviewToBitmap (Mesh)");
+
+            if (WMesh)
+            {
+                Pen pen = new Pen(Color.White, 2);
+                int LineDistance = 30;
+                if (scale >= 1) LineDistance = 15;
+                if (scale >= 2) LineDistance = 10;
+                if (scale >= 2) pen.Width = 1;
+                //if (panel_Preview.Height > 300) LineDistance = 15;
+                //if (panel_Preview.Height > 690) LineDistance = 10;
+                for (int i = 0; i < 30; i++)
+                {
+                    gPanel.DrawLine(pen, new Point(offSet_X + i * LineDistance, 0), new Point(offSet_X + i * LineDistance, 480));
+                    gPanel.DrawLine(pen, new Point(offSet_X - i * LineDistance, 0), new Point(offSet_X - i * LineDistance, 480));
+
+                    gPanel.DrawLine(pen, new Point(0, offSet_Y + i * LineDistance), new Point(480, offSet_Y + i * LineDistance));
+                    gPanel.DrawLine(pen, new Point(0, offSet_Y - i * LineDistance), new Point(480, offSet_Y - i * LineDistance));
+
+                    if (i == 0) pen.Width = pen.Width / 3f;
+                }
+            }
+
+            if (BMesh)
+            {
+                Pen pen = new Pen(Color.Black, 2);
+                int LineDistance = 30;
+                if (scale >= 1) LineDistance = 15;
+                if (scale >= 2) LineDistance = 10;
+                if (scale >= 2) pen.Width = 1;
+                //if (panel_Preview.Height > 300) LineDistance = 15;
+                //if (panel_Preview.Height > 690) LineDistance = 10;
+                for (int i = 0; i < 30; i++)
+                {
+                    gPanel.DrawLine(pen, new Point(offSet_X + i * LineDistance, 0), new Point(offSet_X + i * LineDistance, 480));
+                    gPanel.DrawLine(pen, new Point(offSet_X - i * LineDistance, 0), new Point(offSet_X - i * LineDistance, 480));
+
+                    gPanel.DrawLine(pen, new Point(0, offSet_Y + i * LineDistance), new Point(480, offSet_Y + i * LineDistance));
+                    gPanel.DrawLine(pen, new Point(0, offSet_Y - i * LineDistance), new Point(480, offSet_Y - i * LineDistance));
+
+                    if (i == 0) pen.Width = pen.Width / 3f;
+                }
+            }
+            #endregion
 
             if (crop)
             {
@@ -2808,7 +2881,7 @@ namespace Watch_Face_Editor
         {
             Bitmap src = new Bitmap(1, 1);
 
-            for (int index = 1; index <= 10; index++)
+            for (int index = 1; index <= 15; index++)
             {
                 if (images != null && images.img_First != null && images.img_First.Length > 0 &&
                     index == images.position && images.visible)
@@ -3020,7 +3093,7 @@ namespace Watch_Face_Editor
             if (progress < 0) progress = 0;
             Bitmap src = new Bitmap(1, 1);
 
-            for (int index = 1; index <= 10; index++)
+            for (int index = 1; index <= 15; index++)
             {
                 if (sun && images != null && images.img_First != null && images.img_First.Length > 0 &&
                     index == images.position && images.visible)

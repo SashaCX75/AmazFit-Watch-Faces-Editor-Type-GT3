@@ -120,6 +120,9 @@
   <data name="button_Alarm.Text" xml:space="preserve">
     <value>Alarm</value>
   </data>
+  <data name="button_Bluetooth.Text" xml:space="preserve">
+    <value>Bluetooth (aus)</value>
+  </data>
   <data name="button_DND.Text" xml:space="preserve">
     <value>Nicht stören</value>
   </data>

@@ -151,4 +151,7 @@
   <data name="label_EditableBackground_Hint.Text" xml:space="preserve">
     <value>Es wird der bearbeitbare Hintergrund des Hauptbildschirms verwendet.</value>
   </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Vorschau</value>
+  </data>
 </root>

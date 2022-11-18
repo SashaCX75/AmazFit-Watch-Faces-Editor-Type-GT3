@@ -50,6 +50,26 @@ namespace Watch_Face_Editor
             {
                 Scale_EditablePointers(Watch_Face.ElementEditablePointers, scale);
             }
+            if (Watch_Face.Editable_Elements != null && Watch_Face.Editable_Elements.Watchface_edit_group != null)
+            {
+                foreach(WATCHFACE_EDIT_GROUP edit_group in Watch_Face.Editable_Elements.Watchface_edit_group)
+                {
+                    edit_group.x = (int)Math.Round(edit_group.x * scale, MidpointRounding.AwayFromZero);
+                    edit_group.y = (int)Math.Round(edit_group.y * scale, MidpointRounding.AwayFromZero);
+                    edit_group.h = (int)Math.Round(edit_group.h * scale, MidpointRounding.AwayFromZero);
+                    edit_group.w = (int)Math.Round(edit_group.w * scale, MidpointRounding.AwayFromZero);
+
+                    edit_group.tips_x = (int)Math.Round(edit_group.tips_x * scale, MidpointRounding.AwayFromZero);
+                    edit_group.tips_y = (int)Math.Round(edit_group.tips_y * scale, MidpointRounding.AwayFromZero);
+                    edit_group.tips_width = (int)Math.Round(edit_group.tips_width * scale, MidpointRounding.AwayFromZero);
+                    edit_group.tips_margin = (int)Math.Round(edit_group.tips_margin * scale, MidpointRounding.AwayFromZero);
+
+                    foreach (object elements in edit_group.Elements)
+                    {
+                        ScaleElements(elements, scale);
+                    }
+                }
+            }
         }
 
         private void Scale_FILL_RECT(hmUI_widget_FILL_RECT fill_rect, float scale)

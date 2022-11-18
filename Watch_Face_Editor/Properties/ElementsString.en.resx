@@ -150,6 +150,11 @@
   <data name="TypeMoon" xml:space="preserve">
     <value>Moon phases</value>
   </data>
+  <data name="TypeNameAltimeter" xml:space="preserve">
+    <value>Air Pressure</value>
+    <comment>Check the translation on the 
+watch</comment>
+  </data>
   <data name="TypeNameBattery" xml:space="preserve">
     <value>Battery</value>
     <comment>Check the translation on the 
@@ -175,13 +180,58 @@ watch</comment>
     <comment>Check the translation on the 
 watch</comment>
   </data>
+  <data name="TypeNameHumidity" xml:space="preserve">
+    <value>Humidity</value>
+    <comment>Check the translation on the 
+watch</comment>
+  </data>
+  <data name="TypeNameMoon" xml:space="preserve">
+    <value>Moon Phase</value>
+    <comment>Check the translation on the 
+watch</comment>
+  </data>
   <data name="TypeNamePAI" xml:space="preserve">
-    <value>PAI Today</value>
+    <value>Total PAI</value>
+    <comment>Check the translation on the 
+watch</comment>
+  </data>
+  <data name="TypeNameSpO2" xml:space="preserve">
+    <value>Blood Oxygen</value>
+    <comment>Check the translation on the 
+watch</comment>
+  </data>
+  <data name="TypeNameStand" xml:space="preserve">
+    <value>Stand</value>
     <comment>Check the translation on the 
 watch</comment>
   </data>
   <data name="TypeNameStep" xml:space="preserve">
     <value>Steps</value>
+    <comment>Check the translation on the 
+watch</comment>
+  </data>
+  <data name="TypeNameStress" xml:space="preserve">
+    <value>Stress</value>
+    <comment>Check the translation on the 
+watch</comment>
+  </data>
+  <data name="TypeNameSunrise" xml:space="preserve">
+    <value>Sun &amp; Moon</value>
+    <comment>Check the translation on the 
+watch</comment>
+  </data>
+  <data name="TypeNameUVI" xml:space="preserve">
+    <value>UV Index</value>
+    <comment>Check the translation on the 
+watch</comment>
+  </data>
+  <data name="TypeNameWeather" xml:space="preserve">
+    <value>Temperature</value>
+    <comment>Check the translation on the 
+watch</comment>
+  </data>
+  <data name="TypeNameWind" xml:space="preserve">
+    <value>Wind Scale</value>
     <comment>Check the translation on the 
 watch</comment>
   </data>

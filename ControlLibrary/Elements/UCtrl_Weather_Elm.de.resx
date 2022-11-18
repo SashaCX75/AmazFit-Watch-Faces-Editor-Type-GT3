@@ -163,11 +163,11 @@
     <value>Bilder</value>
   </data>
   <data name="button_Images.ToolTip" xml:space="preserve">
-    <value>1. bewölkt
+    <value>1. Bewölkt
 2. Chance auf Regen
 3. Chance auf Schnee
 4. Sonnig
-5. Bewölkt
+5. Bedeckt
 6. Leichter Regen
 7. Leichter Schnee
 8. Mäßiger Regen
@@ -194,11 +194,11 @@
 29. Klare Nacht</value>
   </data>
   <data name="panel_Images.ToolTip" xml:space="preserve">
-    <value>1. bewölkt
+    <value>1. Bewölkt
 2. Chance auf Regen
 3. Chance auf Schnee
 4. Sonnig
-5. Bewölkt
+5. Bedeckt
 6. Leichter Regen
 7. Leichter Schnee
 8. Mäßiger Regen

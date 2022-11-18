@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="button_del.Text" xml:space="preserve">
-    <value>Hintergrund entfernen</value>
+    <value>Hintergrund (-)</value>
   </data>
   <data name="button_add.Text" xml:space="preserve">
-    <value>Hintergrund hinzufügen</value>
+    <value>Hintergrund (+)</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Auswahl des Hintergrunds</value>

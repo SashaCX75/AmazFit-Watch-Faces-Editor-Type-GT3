@@ -270,7 +270,8 @@
     <value>Koordinaten des Drehzentrums</value>
   </data>
   <data name="label01.Text" xml:space="preserve">
-    <value>Bild vom Stundenzeiger</value>
+    <value>Bild vom 
+Stundenzeiger</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>Mitte der Zeigerrotation</value>
@@ -279,7 +280,8 @@
     <value>Koordinaten des Drehzentrums</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
-    <value>Bild vom Minutenzeiger</value>
+    <value>Bild vom 
+Minutenzeiger</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
     <value>Mitte der Zeigerrotation</value>
@@ -288,7 +290,8 @@
     <value>Koordinaten des Drehzentrums</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
-    <value>Bild vom Sekundenzeiger</value>
+    <value>Bild vom 
+Sekundenzeiger</value>
   </data>
   <data name="label16.Text" xml:space="preserve">
     <value>Rahmen hervorheben</value>

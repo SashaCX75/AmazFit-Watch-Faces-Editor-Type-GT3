@@ -47,6 +47,7 @@ namespace ControlLibrary
             this.pictureBox_Show = new System.Windows.Forms.PictureBox();
             this.pictureBox_Del = new System.Windows.Forms.PictureBox();
             this.button_ElementName = new System.Windows.Forms.Button();
+            this.panel_ShowAnimation = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel_FrameAnimation.SuspendLayout();
             this.panel_MotionAnimation.SuspendLayout();
@@ -56,13 +57,14 @@ namespace ControlLibrary
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Arrow_Right)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Show)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Del)).BeginInit();
+            this.panel_ShowAnimation.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
-            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.AllowDrop = true;
-            this.tableLayoutPanel1.Controls.Add(this.button_ShowAnimation, 0, 3);
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+            this.tableLayoutPanel1.Controls.Add(this.panel_ShowAnimation, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.panel_FrameAnimation, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel_MotionAnimation, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel_RotateAnimation, 0, 2);
@@ -79,10 +81,10 @@ namespace ControlLibrary
             // 
             // panel_FrameAnimation
             // 
-            resources.ApplyResources(this.panel_FrameAnimation, "panel_FrameAnimation");
             this.panel_FrameAnimation.BackColor = System.Drawing.SystemColors.Control;
             this.panel_FrameAnimation.Controls.Add(this.checkBox_FrameAnimation);
             this.panel_FrameAnimation.Controls.Add(this.button_FrameAnimation);
+            resources.ApplyResources(this.panel_FrameAnimation, "panel_FrameAnimation");
             this.panel_FrameAnimation.Name = "panel_FrameAnimation";
             this.panel_FrameAnimation.Click += new System.EventHandler(this.panel_FrameAnimation_Click);
             this.panel_FrameAnimation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -98,10 +100,10 @@ namespace ControlLibrary
             // 
             // button_FrameAnimation
             // 
-            resources.ApplyResources(this.button_FrameAnimation, "button_FrameAnimation");
             this.button_FrameAnimation.FlatAppearance.BorderSize = 0;
             this.button_FrameAnimation.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_FrameAnimation.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_FrameAnimation, "button_FrameAnimation");
             this.button_FrameAnimation.Image = global::ControlLibrary.Properties.Resources.frame_anim;
             this.button_FrameAnimation.Name = "button_FrameAnimation";
             this.button_FrameAnimation.UseVisualStyleBackColor = true;
@@ -112,10 +114,10 @@ namespace ControlLibrary
             // 
             // panel_MotionAnimation
             // 
-            resources.ApplyResources(this.panel_MotionAnimation, "panel_MotionAnimation");
             this.panel_MotionAnimation.BackColor = System.Drawing.SystemColors.Control;
             this.panel_MotionAnimation.Controls.Add(this.checkBox_MotionAnimation);
             this.panel_MotionAnimation.Controls.Add(this.button_MotionAnimation);
+            resources.ApplyResources(this.panel_MotionAnimation, "panel_MotionAnimation");
             this.panel_MotionAnimation.Name = "panel_MotionAnimation";
             this.panel_MotionAnimation.Click += new System.EventHandler(this.panel_MotionAnimation_Click);
             this.panel_MotionAnimation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -131,10 +133,10 @@ namespace ControlLibrary
             // 
             // button_MotionAnimation
             // 
-            resources.ApplyResources(this.button_MotionAnimation, "button_MotionAnimation");
             this.button_MotionAnimation.FlatAppearance.BorderSize = 0;
             this.button_MotionAnimation.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_MotionAnimation.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_MotionAnimation, "button_MotionAnimation");
             this.button_MotionAnimation.Image = global::ControlLibrary.Properties.Resources.motion_anim;
             this.button_MotionAnimation.Name = "button_MotionAnimation";
             this.button_MotionAnimation.UseVisualStyleBackColor = true;
@@ -145,10 +147,10 @@ namespace ControlLibrary
             // 
             // panel_RotateAnimation
             // 
-            resources.ApplyResources(this.panel_RotateAnimation, "panel_RotateAnimation");
             this.panel_RotateAnimation.BackColor = System.Drawing.SystemColors.Control;
             this.panel_RotateAnimation.Controls.Add(this.button_RotateAnimation);
             this.panel_RotateAnimation.Controls.Add(this.checkBox_RotateAnimation);
+            resources.ApplyResources(this.panel_RotateAnimation, "panel_RotateAnimation");
             this.panel_RotateAnimation.Name = "panel_RotateAnimation";
             this.panel_RotateAnimation.Click += new System.EventHandler(this.panel_RotateAnimation_Click);
             this.panel_RotateAnimation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -157,10 +159,10 @@ namespace ControlLibrary
             // 
             // button_RotateAnimation
             // 
-            resources.ApplyResources(this.button_RotateAnimation, "button_RotateAnimation");
             this.button_RotateAnimation.FlatAppearance.BorderSize = 0;
             this.button_RotateAnimation.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_RotateAnimation.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_RotateAnimation, "button_RotateAnimation");
             this.button_RotateAnimation.Image = global::ControlLibrary.Properties.Resources.rotate_anim;
             this.button_RotateAnimation.Name = "button_RotateAnimation";
             this.button_RotateAnimation.UseVisualStyleBackColor = true;
@@ -178,8 +180,8 @@ namespace ControlLibrary
             // 
             // pictureBox_Arrow_Down
             // 
-            resources.ApplyResources(this.pictureBox_Arrow_Down, "pictureBox_Arrow_Down");
             this.pictureBox_Arrow_Down.BackgroundImage = global::ControlLibrary.Properties.Resources.arrow_down;
+            resources.ApplyResources(this.pictureBox_Arrow_Down, "pictureBox_Arrow_Down");
             this.pictureBox_Arrow_Down.Name = "pictureBox_Arrow_Down";
             this.pictureBox_Arrow_Down.TabStop = false;
             this.pictureBox_Arrow_Down.Click += new System.EventHandler(this.button_ElementName_Click);
@@ -194,8 +196,8 @@ namespace ControlLibrary
             // 
             // pictureBox_Arrow_Right
             // 
-            resources.ApplyResources(this.pictureBox_Arrow_Right, "pictureBox_Arrow_Right");
             this.pictureBox_Arrow_Right.BackgroundImage = global::ControlLibrary.Properties.Resources.arrow_right;
+            resources.ApplyResources(this.pictureBox_Arrow_Right, "pictureBox_Arrow_Right");
             this.pictureBox_Arrow_Right.Name = "pictureBox_Arrow_Right";
             this.pictureBox_Arrow_Right.TabStop = false;
             this.pictureBox_Arrow_Right.Click += new System.EventHandler(this.button_ElementName_Click);
@@ -210,16 +212,16 @@ namespace ControlLibrary
             // 
             // pictureBox_Del
             // 
-            resources.ApplyResources(this.pictureBox_Del, "pictureBox_Del");
             this.pictureBox_Del.BackgroundImage = global::ControlLibrary.Properties.Resources.outline_delete_forever_black_24;
+            resources.ApplyResources(this.pictureBox_Del, "pictureBox_Del");
             this.pictureBox_Del.Name = "pictureBox_Del";
             this.pictureBox_Del.TabStop = false;
             this.pictureBox_Del.Click += new System.EventHandler(this.pictureBox_Del_Click);
             // 
             // button_ElementName
             // 
-            resources.ApplyResources(this.button_ElementName, "button_ElementName");
             this.button_ElementName.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_ElementName, "button_ElementName");
             this.button_ElementName.Image = global::ControlLibrary.Properties.Resources.animation;
             this.button_ElementName.Name = "button_ElementName";
             this.button_ElementName.UseVisualStyleBackColor = false;
@@ -228,6 +230,12 @@ namespace ControlLibrary
             this.button_ElementName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button_ElementName_MouseDown);
             this.button_ElementName.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button_ElementName_MouseMove);
             this.button_ElementName.MouseUp += new System.Windows.Forms.MouseEventHandler(this.button_ElementName_MouseUp);
+            // 
+            // panel_ShowAnimation
+            // 
+            this.panel_ShowAnimation.Controls.Add(this.button_ShowAnimation);
+            resources.ApplyResources(this.panel_ShowAnimation, "panel_ShowAnimation");
+            this.panel_ShowAnimation.Name = "panel_ShowAnimation";
             // 
             // UCtrl_Animation_Elm
             // 
@@ -242,7 +250,6 @@ namespace ControlLibrary
             this.Controls.Add(this.button_ElementName);
             this.Name = "UCtrl_Animation_Elm";
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
             this.panel_FrameAnimation.ResumeLayout(false);
             this.panel_FrameAnimation.PerformLayout();
             this.panel_MotionAnimation.ResumeLayout(false);
@@ -254,6 +261,8 @@ namespace ControlLibrary
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Arrow_Right)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Show)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Del)).EndInit();
+            this.panel_ShowAnimation.ResumeLayout(false);
+            this.panel_ShowAnimation.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -278,5 +287,6 @@ namespace ControlLibrary
         public System.Windows.Forms.CheckBox checkBox_RotateAnimation;
         protected System.Windows.Forms.Button button_ElementName;
         private System.Windows.Forms.Button button_ShowAnimation;
+        private System.Windows.Forms.Panel panel_ShowAnimation;
     }
 }

@@ -165,9 +165,6 @@
   <data name="TypeNameHeart" xml:space="preserve">
     <value>Herzschlag</value>
   </data>
-  <data name="TypeNamePAI" xml:space="preserve">
-    <value>PAI Heute</value>
-  </data>
   <data name="TypeNameStep" xml:space="preserve">
     <value>Schritte</value>
   </data>
@@ -187,7 +184,7 @@
     <value>Stress</value>
   </data>
   <data name="TypeSunrise" xml:space="preserve">
-    <value>Sonnenaufgang/-untergang</value>
+    <value>Sonne</value>
   </data>
   <data name="TypeUVIndex" xml:space="preserve">
     <value>UV-Index</value>

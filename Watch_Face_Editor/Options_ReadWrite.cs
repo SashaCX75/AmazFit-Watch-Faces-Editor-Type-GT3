@@ -1467,6 +1467,7 @@ namespace Watch_Face_Editor
             PreviewView = false;
 
             uCtrl_Text_SystemFont_Opt.SettingsClear();
+            uCtrl_Text_SystemFont_Opt.Visible = true;
 
             uCtrl_Text_SystemFont_Opt._ElementWithSystemFont = system_font;
 

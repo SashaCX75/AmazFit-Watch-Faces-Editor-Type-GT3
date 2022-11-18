@@ -160,6 +160,15 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Давление воздуха.
+        /// </summary>
+        internal static string TypeNameAltimeter {
+            get {
+                return ResourceManager.GetString("TypeNameAltimeter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Батарея.
         /// </summary>
         internal static string TypeNameBattery {
@@ -196,7 +205,7 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Жиросжигание.
+        ///   Ищет локализованную строку, похожую на Fat burning.
         /// </summary>
         internal static string TypeNameFatBurning {
             get {
@@ -214,7 +223,25 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на PAI сегодня.
+        ///   Ищет локализованную строку, похожую на Влажность.
+        /// </summary>
+        internal static string TypeNameHumidity {
+            get {
+                return ResourceManager.GetString("TypeNameHumidity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Фаза луны.
+        /// </summary>
+        internal static string TypeNameMoon {
+            get {
+                return ResourceManager.GetString("TypeNameMoon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Всего PAI.
         /// </summary>
         internal static string TypeNamePAI {
             get {
@@ -255,6 +282,42 @@ namespace Watch_Face_Editor.Properties {
         internal static string TypeNameStress {
             get {
                 return ResourceManager.GetString("TypeNameStress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Солнце и луна.
+        /// </summary>
+        internal static string TypeNameSunrise {
+            get {
+                return ResourceManager.GetString("TypeNameSunrise", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на УФ-индекс.
+        /// </summary>
+        internal static string TypeNameUVI {
+            get {
+                return ResourceManager.GetString("TypeNameUVI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Температура.
+        /// </summary>
+        internal static string TypeNameWeather {
+            get {
+                return ResourceManager.GetString("TypeNameWeather", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Сила ветра.
+        /// </summary>
+        internal static string TypeNameWind {
+            get {
+                return ResourceManager.GetString("TypeNameWind", resourceCulture);
             }
         }
         

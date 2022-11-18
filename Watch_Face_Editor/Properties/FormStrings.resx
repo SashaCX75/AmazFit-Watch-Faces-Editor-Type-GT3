@@ -135,6 +135,9 @@
   <data name="Dialog_Title_SavePNG" xml:space="preserve">
     <value>Сохранить предпросмотр</value>
   </data>
+  <data name="Dialog_Title_Save_As" xml:space="preserve">
+    <value>Сохранить проект как...</value>
+  </data>
   <data name="Dialog_Title_Unpack" xml:space="preserve">
     <value>Выбор файла циферблата</value>
   </data>

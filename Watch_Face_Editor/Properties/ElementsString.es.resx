@@ -165,9 +165,6 @@
   <data name="TypeNameHeart" xml:space="preserve">
     <value>Ritmo cardiaco</value>
   </data>
-  <data name="TypeNamePAI" xml:space="preserve">
-    <value>PAI Hoy</value>
-  </data>
   <data name="TypeNameStep" xml:space="preserve">
     <value>Pasos</value>
   </data>

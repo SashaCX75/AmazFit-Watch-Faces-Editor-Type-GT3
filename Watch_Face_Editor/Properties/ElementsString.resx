@@ -150,6 +150,11 @@
   <data name="TypeMoon" xml:space="preserve">
     <value>Фазы луны</value>
   </data>
+  <data name="TypeNameAltimeter" xml:space="preserve">
+    <value>Давление воздуха</value>
+    <comment>Check the translation on the 
+watch</comment>
+  </data>
   <data name="TypeNameBattery" xml:space="preserve">
     <value>Батарея</value>
     <comment>Check the translation on the 
@@ -171,17 +176,26 @@ watch</comment>
 watch</comment>
   </data>
   <data name="TypeNameFatBurning" xml:space="preserve">
-    <value>Жиросжигание</value>
-    <comment>Check the translation on the 
-watch</comment>
+    <value>Fat burning</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="TypeNameHeart" xml:space="preserve">
     <value>Сердцебиение</value>
     <comment>Check the translation on the 
 watch</comment>
   </data>
+  <data name="TypeNameHumidity" xml:space="preserve">
+    <value>Влажность</value>
+    <comment>Check the translation on the 
+watch</comment>
+  </data>
+  <data name="TypeNameMoon" xml:space="preserve">
+    <value>Фаза луны</value>
+    <comment>Check the translation on the 
+watch</comment>
+  </data>
   <data name="TypeNamePAI" xml:space="preserve">
-    <value>PAI сегодня</value>
+    <value>Всего PAI</value>
     <comment>Check the translation on the 
 watch</comment>
   </data>
@@ -202,6 +216,26 @@ watch</comment>
   </data>
   <data name="TypeNameStress" xml:space="preserve">
     <value>Стресс</value>
+    <comment>Check the translation on the 
+watch</comment>
+  </data>
+  <data name="TypeNameSunrise" xml:space="preserve">
+    <value>Солнце и луна</value>
+    <comment>Check the translation on the 
+watch</comment>
+  </data>
+  <data name="TypeNameUVI" xml:space="preserve">
+    <value>УФ-индекс</value>
+    <comment>Check the translation on the 
+watch</comment>
+  </data>
+  <data name="TypeNameWeather" xml:space="preserve">
+    <value>Температура</value>
+    <comment>Check the translation on the 
+watch</comment>
+  </data>
+  <data name="TypeNameWind" xml:space="preserve">
+    <value>Сила ветра</value>
     <comment>Check the translation on the 
 watch</comment>
   </data>

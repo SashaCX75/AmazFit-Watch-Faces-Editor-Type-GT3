@@ -224,8 +224,7 @@
     <value>106, 30</value>
   </data>
   <data name="radioButton_sunrise.Text" xml:space="preserve">
-    <value>Sonnenaufgang/
--untergang</value>
+    <value>Sonne</value>
   </data>
   <data name="radioButton_humidity.Size" type="System.Drawing.Size, System.Drawing">
     <value>98, 17</value>

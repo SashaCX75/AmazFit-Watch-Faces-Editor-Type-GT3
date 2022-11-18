@@ -97,6 +97,15 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Сохранить проект как....
+        /// </summary>
+        internal static string Dialog_Title_Save_As {
+            get {
+                return ResourceManager.GetString("Dialog_Title_Save_As", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Сохранить анимированный предпросмотр.
         /// </summary>
         internal static string Dialog_Title_SaveGIF {

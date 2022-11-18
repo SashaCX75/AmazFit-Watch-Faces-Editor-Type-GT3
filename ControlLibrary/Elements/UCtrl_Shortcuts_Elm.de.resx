@@ -134,7 +134,7 @@
     <value>165, 24</value>
   </data>
   <data name="button_Sunrise.Text" xml:space="preserve">
-    <value>Sonnenaufgang/-untergang</value>
+    <value>Sonne</value>
   </data>
   <data name="button_Step.Text" xml:space="preserve">
     <value>Schritte</value>
