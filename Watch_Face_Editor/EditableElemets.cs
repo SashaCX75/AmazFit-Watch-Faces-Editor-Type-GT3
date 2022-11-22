@@ -177,6 +177,12 @@ namespace Watch_Face_Editor
                     newElement = new ElementDateYear();
                     newElementName = "ElementDateYear";
                     break;
+                case "Week":
+                    optional_types = new Optional_Types_List();
+                    optional_types.type = "WEEK";
+                    newElement = new ElementDateWeek();
+                    newElementName = "ElementDateWeek";
+                    break;
 
                 case "Battery":
                     optional_types = new Optional_Types_List();
@@ -242,7 +248,8 @@ namespace Watch_Face_Editor
 
                 case "Weather":
                     optional_types = new Optional_Types_List();
-                    optional_types.type = "TEMPERATURE";
+                    optional_types.type = "WEATHER";
+                    //optional_types.type = "TEMPERATURE";
                     newElement = new ElementWeather();
                     newElementName = "ElementWeather";
                     break;
@@ -942,7 +949,8 @@ namespace Watch_Face_Editor
                     #endregion
             }
 
-            ReadElementPos(element);
+            Dictionary<int, string> optionsPosition = ReadElementPos(element);
+            uCtrl_EditableElements_Opt.SetOptionsPosition(optionsPosition);
             uCtrl_EditableElements_Opt.SetPreviewElement(watchface_edit_group.optional_types_list[watchface_edit_group.selected_element].preview);
             uCtrl_EditableElements_Opt.SetVisibilityOptions(subElements);
 

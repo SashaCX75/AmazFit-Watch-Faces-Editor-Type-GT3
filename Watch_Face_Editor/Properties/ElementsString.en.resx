@@ -220,13 +220,23 @@ watch</comment>
     <comment>Check the translation on the 
 watch</comment>
   </data>
+  <data name="TypeNameTemperature" xml:space="preserve">
+    <value>Temperature</value>
+    <comment>Check the translation on the 
+watch</comment>
+  </data>
   <data name="TypeNameUVI" xml:space="preserve">
     <value>UV Index</value>
     <comment>Check the translation on the 
 watch</comment>
   </data>
   <data name="TypeNameWeather" xml:space="preserve">
-    <value>Temperature</value>
+    <value>Weather</value>
+    <comment>Check the translation on the 
+watch</comment>
+  </data>
+  <data name="TypeNameWeek" xml:space="preserve">
+    <value>Day of the Week</value>
     <comment>Check the translation on the 
 watch</comment>
   </data>

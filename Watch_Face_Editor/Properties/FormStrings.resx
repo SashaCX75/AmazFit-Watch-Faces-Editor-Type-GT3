@@ -203,6 +203,7 @@
   </data>
   <data name="Message_Delet_Text2" xml:space="preserve">
     <value>"?</value>
+    <comment>НЕ вставлять после перевода с общим списком, только отдельно</comment>
   </data>
   <data name="Message_Delet_Text21" xml:space="preserve">
     <value>?</value>

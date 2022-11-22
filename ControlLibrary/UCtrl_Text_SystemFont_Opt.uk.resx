@@ -305,4 +305,16 @@
   <data name="label5.Text" xml:space="preserve">
     <value>* Розмір і положення напису може відрізнятись від відображення на годиннику.Перевіряйте положення напису на реальному пристрої.</value>
   </data>
+  <data name="comboBox_alignmentHorizontal.Items1" xml:space="preserve">
+    <value>По центру</value>
+  </data>
+  <data name="comboBox_alignmentHorizontal.Items2" xml:space="preserve">
+    <value>По правому краю</value>
+  </data>
+  <data name="comboBox_alignmentVertical.Items1" xml:space="preserve">
+    <value>По центру</value>
+  </data>
+  <data name="label07.Text" xml:space="preserve">
+    <value>Ширина</value>
+  </data>
 </root>

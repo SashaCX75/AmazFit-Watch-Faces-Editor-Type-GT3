@@ -150,6 +150,9 @@
   <data name="TypeMoon" xml:space="preserve">
     <value>Mond-Phasen</value>
   </data>
+  <data name="TypeNameAltimeter" xml:space="preserve">
+    <value>Luftdruck</value>
+  </data>
   <data name="TypeNameBattery" xml:space="preserve">
     <value>Batterie</value>
   </data>
@@ -165,8 +168,41 @@
   <data name="TypeNameHeart" xml:space="preserve">
     <value>Herzschlag</value>
   </data>
+  <data name="TypeNameHumidity" xml:space="preserve">
+    <value>Luftfeuchtigkeit</value>
+  </data>
+  <data name="TypeNameMoon" xml:space="preserve">
+    <value>Mondphase</value>
+  </data>
+  <data name="TypeNamePAI" xml:space="preserve">
+    <value>Total PAI</value>
+  </data>
+  <data name="TypeNameSpO2" xml:space="preserve">
+    <value>Blutsauerstoff</value>
+  </data>
+  <data name="TypeNameStand" xml:space="preserve">
+    <value>Stand</value>
+  </data>
   <data name="TypeNameStep" xml:space="preserve">
     <value>Schritte</value>
+  </data>
+  <data name="TypeNameStress" xml:space="preserve">
+    <value>Stress</value>
+  </data>
+  <data name="TypeNameSunrise" xml:space="preserve">
+    <value>Sonne &amp; Mond</value>
+  </data>
+  <data name="TypeNameTemperature" xml:space="preserve">
+    <value>Temperatur</value>
+  </data>
+  <data name="TypeNameUVI" xml:space="preserve">
+    <value>UV Index</value>
+  </data>
+  <data name="TypeNameWeather" xml:space="preserve">
+    <value>Wetter</value>
+  </data>
+  <data name="TypeNameWind" xml:space="preserve">
+    <value>Windstärke</value>
   </data>
   <data name="TypePAI" xml:space="preserve">
     <value>PAI</value>
@@ -197,5 +233,8 @@
   </data>
   <data name="TypeWind" xml:space="preserve">
     <value>Windstärke</value>
+  </data>
+  <data name="TypeYear" xml:space="preserve">
+    <value>Jahr</value>
   </data>
 </root>

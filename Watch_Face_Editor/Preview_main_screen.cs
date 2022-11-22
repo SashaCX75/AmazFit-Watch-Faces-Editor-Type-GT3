@@ -186,8 +186,9 @@ namespace Watch_Face_Editor
 
             #region EditableElements
             Elements = null;
-            if (Watch_Face != null && Watch_Face.Editable_Elements != null && Watch_Face.Editable_Elements.Watchface_edit_group != null &&
-                Watch_Face.Editable_Elements.Watchface_edit_group.Count > 0)
+            if (Watch_Face != null && Watch_Face.Editable_Elements != null && Watch_Face.Editable_Elements.visible 
+                && Watch_Face.Editable_Elements.Watchface_edit_group != null && Watch_Face.Editable_Elements.Watchface_edit_group.Count > 0 &&
+                (link == 0 || Watch_Face.Editable_Elements.AOD_show))
             {
                 foreach(WATCHFACE_EDIT_GROUP edit_group in Watch_Face.Editable_Elements.Watchface_edit_group)
                 {
@@ -2102,7 +2103,7 @@ namespace Watch_Face_Editor
             Background background = null;
             if (Watch_Face != null && Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
                 background = Watch_Face.ScreenNormal.Background;
-            if (background != null)
+            if (background != null && background.visible)
             {
                 if (background.Editable_Background != null && background.Editable_Background.enable_edit_bg &&
                     background.Editable_Background.BackgroundList != null &&
@@ -2124,7 +2125,7 @@ namespace Watch_Face_Editor
             #region EditableElements
             if (Watch_Face != null && Watch_Face.Editable_Elements != null)
                 editable_elements = Watch_Face.Editable_Elements;
-            if (editable_elements != null)
+            if (editable_elements != null && editable_elements.visible)
             {
                 if (editable_elements.visible &&
                     editable_elements.Watchface_edit_group != null &&
@@ -2208,7 +2209,7 @@ namespace Watch_Face_Editor
             #region EditablePointers
             if (Watch_Face != null && Watch_Face.ElementEditablePointers != null)
                 editable_pointers = Watch_Face.ElementEditablePointers;
-            if (editable_pointers != null)
+            if (editable_pointers != null && editable_pointers.visible)
             {
                 if (editable_pointers.visible &&
                     editable_pointers.config != null &&
@@ -2226,7 +2227,7 @@ namespace Watch_Face_Editor
             }
             #endregion
 
-            if (edit_mode == 1 && editable_background != null)
+            if (edit_mode == 1 && editable_background != null && background.visible)
             {
                 if (editable_background.fg != null && editable_background.fg.Length > 0)
                 {
@@ -2262,7 +2263,7 @@ namespace Watch_Face_Editor
                 }
             }
 
-            if (edit_mode == 2 && editable_elements != null)
+            if (edit_mode == 2 && editable_elements != null && editable_elements.visible)
             {
                 if (editable_elements.fg_mask != null && editable_elements.fg_mask.Length > 0)
                 {
@@ -2321,6 +2322,9 @@ namespace Watch_Face_Editor
                                 case "DATE":
                                     valueStr = Properties.ElementsString.TypeNameDate;
                                     break;
+                                case "WEEK":
+                                    valueStr = Properties.ElementsString.TypeNameWeek;
+                                    break;
                                 case "BATTERY":
                                     valueStr = Properties.ElementsString.TypeNameBattery;
                                     break;
@@ -2353,6 +2357,9 @@ namespace Watch_Face_Editor
                                     break;
 
                                 case "TEMPERATURE":
+                                    valueStr = Properties.ElementsString.TypeNameTemperature;
+                                    break;
+                                case "WEATHER":
                                     valueStr = Properties.ElementsString.TypeNameWeather;
                                     break;
                                 case "UVI":
@@ -2386,7 +2393,7 @@ namespace Watch_Face_Editor
                 }
             }
 
-            if (edit_mode == 3 && editable_pointers != null)
+            if (edit_mode == 3 && editable_pointers != null && editable_pointers.visible)
             {
                 if (editable_pointers.fg != null && editable_pointers.fg.Length > 0)
                 {

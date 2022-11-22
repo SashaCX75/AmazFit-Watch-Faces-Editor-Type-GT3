@@ -135,6 +135,9 @@
   <data name="Dialog_Title_SavePNG" xml:space="preserve">
     <value>Vorschau speichern</value>
   </data>
+  <data name="Dialog_Title_Save_As" xml:space="preserve">
+    <value>Projekt speichern unter…</value>
+  </data>
   <data name="Dialog_Title_Unpack" xml:space="preserve">
     <value>Auswählen eines Zifferblattes</value>
   </data>

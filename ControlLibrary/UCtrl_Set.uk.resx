@@ -283,4 +283,22 @@
   <data name="button_Set.Text" xml:space="preserve">
     <value>Набір параметрів</value>
   </data>
+  <data name="checkBox_Alarm_Set.Text" xml:space="preserve">
+    <value>Будильник</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items13" xml:space="preserve">
+    <value>Туман</value>
+  </data>
+  <data name="groupBox_Air.Text" xml:space="preserve">
+    <value>Атмосфера</value>
+  </data>
+  <data name="label01.Text" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="label03.Text" xml:space="preserve">
+    <value>Батарея</value>
+  </data>
+  <data name="label05.Text" xml:space="preserve">
+    <value>Пульс</value>
+  </data>
 </root>

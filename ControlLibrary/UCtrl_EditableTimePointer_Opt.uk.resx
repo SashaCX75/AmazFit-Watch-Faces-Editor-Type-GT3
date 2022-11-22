@@ -335,4 +335,7 @@
   <data name="tabPage_second.Text" xml:space="preserve">
     <value>Секундна стрілка</value>
   </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Координати центра обертання</value>
+  </data>
 </root>

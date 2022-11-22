@@ -6136,10 +6136,10 @@ namespace Watch_Face_Editor
 
             // сравниваем строки
             int ret = toCompare1.CompareTo(toCompare2);
-            Console.WriteLine("Compare1=" + toCompare1);
-            Console.WriteLine("Compare2=" + toCompare2);
-            Console.WriteLine("return=" + ret.ToString());
-            Console.WriteLine(" ");
+            //Console.WriteLine("Compare1=" + toCompare1);
+            //Console.WriteLine("Compare2=" + toCompare2);
+            //Console.WriteLine("return=" + ret.ToString());
+            //Console.WriteLine(" ");
 
             return toCompare1.CompareTo(toCompare2);
         }

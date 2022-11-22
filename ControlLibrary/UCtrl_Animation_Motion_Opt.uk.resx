@@ -263,4 +263,22 @@
   <data name="checkBox_visible.Text" xml:space="preserve">
     <value>Відображати анімацію</value>
   </data>
+  <data name="вставитьToolStripMenuItemX.Text" xml:space="preserve">
+    <value>Вставити</value>
+  </data>
+  <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
+    <value>Вставити</value>
+  </data>
+  <data name="вставитьКоординатуYToolStripMenuItem.Text" xml:space="preserve">
+    <value>Вставити координату X</value>
+  </data>
+  <data name="вставитьКоординатуХToolStripMenuItem.Text" xml:space="preserve">
+    <value>Вставити координату X</value>
+  </data>
+  <data name="копироватьToolStripMenuItemX.Text" xml:space="preserve">
+    <value>Копіювати</value>
+  </data>
+  <data name="копироватьToolStripMenuItemY.Text" xml:space="preserve">
+    <value>Копіювати</value>
+  </data>
 </root>

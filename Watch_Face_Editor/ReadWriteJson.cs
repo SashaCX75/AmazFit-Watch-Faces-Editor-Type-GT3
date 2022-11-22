@@ -8,6 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Watch_Face_Editor
 {
@@ -22,6 +23,8 @@ namespace Watch_Face_Editor
             string pause_call = "";
             string options = "";
             if (Watch_Face == null) return;
+
+            // элементы основного экрана
             if (Watch_Face.ScreenNormal != null)
             {
                 if (Watch_Face.ScreenNormal.Background != null && Watch_Face.ScreenNormal.Background.visible)
@@ -73,6 +76,7 @@ namespace Watch_Face_Editor
                 }
             }
 
+            // элементы экрана AOD
             items = items + Environment.NewLine + Environment.NewLine; 
             if (Watch_Face.ScreenAOD != null)
             {
@@ -117,7 +121,8 @@ namespace Watch_Face_Editor
                 }
             }
 
-            if(Watch_Face.Editable_Elements != null && Watch_Face.Editable_Elements.Watchface_edit_group != null &&
+            // редактируемые элементы
+            if (Watch_Face.Editable_Elements != null && Watch_Face.Editable_Elements.Watchface_edit_group != null &&
                 Watch_Face.Editable_Elements.Watchface_edit_group.Count > 0)
             {
                 if (!Watch_Face.Editable_Elements.visible) return;
@@ -263,7 +268,8 @@ namespace Watch_Face_Editor
                         if (fat_burning.Length > 5) fat_burning = Environment.NewLine + TabInString(7) + "case 1300002:" + fat_burning + TabInString(8) + "break;" + Environment.NewLine;
                         if (spo2.Length > 5) spo2 = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.SPO2:" + spo2 + TabInString(8) + "break;" + Environment.NewLine;
 
-                        if (weather.Length > 5) weather = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.TEMPERATURE:" + weather + TabInString(8) + "break;" + Environment.NewLine;
+                        if (weather.Length > 5) weather = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.WEATHER:" + weather + TabInString(8) + "break;" + Environment.NewLine;
+                        //if (weather.Length > 5) weather = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.TEMPERATURE:" + weather + TabInString(8) + "break;" + Environment.NewLine;
                         if (uv_index.Length > 5) uv_index = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.UVI:" + uv_index + TabInString(8) + "break;" + Environment.NewLine;
                         if (humidity.Length > 5) humidity = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.HUMIDITY:" + humidity + TabInString(8) + "break;" + Environment.NewLine;
                         if (altimeter.Length > 5) altimeter = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.ALTIMETER:" + altimeter + TabInString(8) + "break;" + Environment.NewLine;
@@ -9956,6 +9962,12 @@ namespace Watch_Face_Editor
                                 options += TabInString(8) + "{ type: 1300002, preview: '" + typeList.preview +
                                     ".png', title_sc: 'Fat burning', title_tc: 'Fat burning', title_en: 'Fat burning' }," + Environment.NewLine;
                                 break;
+                            case "DATE":
+                                if (!options.Contains("{ type: hmUI.edit_type.DATE"))
+                                    options += TabInString(8) + "{ type: hmUI.edit_type." + typeList.type +
+                                               ", preview: '" + typeList.preview + ".png' }," + Environment.NewLine;
+                                else count--;
+                                break;
 
                             default:
                                 options += TabInString(8) + "{ type: hmUI.edit_type." + typeList.type +
@@ -10886,14 +10898,14 @@ namespace Watch_Face_Editor
                                 continue;
                             }
 
-                            if (objectName.Length==0)
+                            if (objectName.Length == 0)
                             {
                                 if (firstImgNormal && img.show_level == "ONLY_NORMAL")
                                 {
                                     firstImgNormal = false;
-                                    if ((img.w == 454 && img.h == 454) || (img.w == 480 && img.h == 480) || 
-                                        (img.w == 390 && img.h == 450) || (img.w == 466 && img.h == 466) || 
-                                        (img.w == 194 && img.h == 368) || (img.w == 336 && img.h == 384))
+                                    if ((img.w == 454 && img.h == 454) || (img.w == 480 && img.h == 480) ||  // gtr 3; gtr 3 pro
+                                        (img.w == 390 && img.h == 450) || (img.w == 466 && img.h == 466) ||  // gts 3; gtr 4
+                                        (img.w == 194 && img.h == 368) || (img.w == 336 && img.h == 384))  // band 7; gts 4 mini
                                     {
                                         if (Watch_Face.ScreenNormal.Background == null)
                                             Watch_Face.ScreenNormal.Background = new Background();
@@ -10967,9 +10979,33 @@ namespace Watch_Face_Editor
                             foreach (KeyValuePair<string, string> entry in parametrs)
                             {
                                 //Console.WriteLine(entry.Key + " : " + entry.Value);
-                                if(entry.Key != "ObjectType")
+                                if(entry.Key != "ObjectType" && entry.Key != "GroupIndex")
                                 {
-                                    List<string>editableElementsList = GetFunctionsList(entry.Value);
+                                    if (Watch_Face.Editable_Elements != null && Watch_Face.Editable_Elements.Watchface_edit_group != null)
+                                    {
+                                        int group_index = 1;
+                                        string group_index_str = "1";
+                                        if (parametrs.ContainsKey("GroupIndex")) group_index_str = parametrs["GroupIndex"];
+                                        Int32.TryParse(group_index_str, out group_index);
+                                        if(Watch_Face.Editable_Elements.Watchface_edit_group.Count >= group_index)
+                                        {
+                                            WATCHFACE_EDIT_GROUP edit_group_switch = Watch_Face.Editable_Elements.Watchface_edit_group[group_index - 1];
+                                            if (edit_group_switch.Elements == null) edit_group_switch.Elements = new List<object>();
+                                            elementsList = edit_group_switch.Elements;
+                                            List<string> functions_switch_List = GetFunctionsList(entry.Value);
+                                            if (functions_switch_List != null && functions_switch_List.Count > 0)
+                                            {
+                                                foreach(string functions_switch in functions_switch_List)
+                                                {
+                                                    Dictionary<string, string> parametrs_switch = ParseParametrsInString(functions_switch);
+                                                    ParametrsToObject(elementsList, parametrs_switch, entry.Key);
+                                                }
+                                            }
+                                            //Dictionary<string, string> parametrs_switch = ParseParametrsInString(entry.Value);
+                                            //ParametrsToObject(elementsList, parametrs_switch, entry.Key);
+
+                                        }
+                                    }
                                 }
                             }
 
@@ -11010,47 +11046,7 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenAOD.Elements;
                             }
-                            if (elementsList != null)
-                            {
-                                ElementDigitalTime digitalTime = (ElementDigitalTime)elementsList.Find(e => e.GetType().Name == "ElementDigitalTime");
-                                if(digitalTime == null) 
-                                {
-                                    //elementsList.Add(img_time);
-                                    elementsList.Add(new ElementDigitalTime());
-                                    digitalTime = (ElementDigitalTime)elementsList.Find(e => e.GetType().Name == "ElementDigitalTime");
-                                }
-                                if (digitalTime != null)
-                                {
-                                    int offset = 0;
-                                    if (digitalTime.Hour != null) offset++;
-                                    if (digitalTime.Minute != null) offset++;
-                                    if (digitalTime.Second != null) offset++;
-                                    if (digitalTime.AmPm != null) offset++;
-
-                                    if(img_time.Hour != null)
-                                    {
-                                        img_time.Hour.position = img_time.Hour.position + offset;
-                                        digitalTime.Hour = img_time.Hour;
-                                    }
-                                    if (img_time.Minute != null)
-                                    {
-                                        img_time.Minute.position = img_time.Minute.position + offset;
-                                        digitalTime.Minute = img_time.Minute;
-                                    }
-                                    if (img_time.Second != null)
-                                    {
-                                        img_time.Second.position = img_time.Second.position + offset;
-                                        digitalTime.Second = img_time.Second;
-                                    }
-                                    if (img_time.AmPm != null)
-                                    {
-                                        img_time.AmPm.position = img_time.AmPm.position + offset;
-                                        digitalTime.AmPm = img_time.AmPm;
-                                    }
-                                }
-                            }
-
-
+                            ParametrsToObject(elementsList, parametrs);
                             break;
                         #endregion
 
@@ -11070,41 +11066,7 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenAOD.Elements;
                             }
-                            if (elementsList != null)
-                            {
-                                ElementAnalogTime analogTime = (ElementAnalogTime)elementsList.Find(e => e.GetType().Name == "ElementAnalogTime");
-                                if (analogTime == null) 
-                                {
-                                    //elementsList.Add(pointer_time);
-                                    elementsList.Add(new ElementAnalogTime());
-                                    analogTime = (ElementAnalogTime)elementsList.Find(e => e.GetType().Name == "ElementAnalogTime");
-                                }
-                                if (analogTime != null)
-                                {
-                                    int offset = 0;
-                                    if (analogTime.Hour != null) offset++;
-                                    if (analogTime.Minute != null) offset++;
-                                    if (analogTime.Second != null) offset++;
-
-                                    if (pointer_time.Hour != null)
-                                    {
-                                        pointer_time.Hour.position = pointer_time.Hour.position + offset;
-                                        analogTime.Hour = pointer_time.Hour;
-                                    }
-                                    if (pointer_time.Minute != null)
-                                    {
-                                        pointer_time.Minute.position = pointer_time.Minute.position + offset;
-                                        analogTime.Minute = pointer_time.Minute;
-                                    }
-                                    if (pointer_time.Second != null)
-                                    {
-                                        pointer_time.Second.position = pointer_time.Second.position + offset;
-                                        analogTime.Second = pointer_time.Second;
-                                    }
-                                }
-                            }
-
-
+                            ParametrsToObject(elementsList, parametrs);
                             break;
                         #endregion
 
@@ -11175,96 +11137,7 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenAOD.Elements;
                             }
-
-                            if (elementsList != null && img_number_list != null)
-                            {
-                                foreach(hmUI_widget_IMG_NUMBER img_number in img_number_list)
-                                {
-                                    if(img_number.type == "DAY")
-                                    {
-                                        int offsetNumber = 1;
-                                        ElementDateDay dateDay = (ElementDateDay)elementsList.Find(e => e.GetType().Name == "ElementDateDay");
-                                        if (dateDay == null)
-                                        {
-                                            elementsList.Add(new ElementDateDay());
-                                            dateDay = (ElementDateDay)elementsList.Find(e => e.GetType().Name == "ElementDateDay");
-                                        }
-                                        if (dateDay != null)
-                                        {
-                                            if (dateDay.Pointer != null) offsetNumber++;
-                                            dateDay.Number = img_number;
-                                            dateDay.Number.position = offsetNumber;
-                                            dateDay.Number.visible = true;
-                                            //dateDay.Pointer = new hmUI_widget_IMG_POINTER();
-                                            //newPointer = dateDay.Pointer;
-                                        }
-                                    }
-
-                                    if (img_number.type == "MONTH")
-                                    {
-                                        int offsetNumber = 1;
-                                        ElementDateMonth dateMonth = (ElementDateMonth)elementsList.Find(e => e.GetType().Name == "ElementDateMonth");
-                                        if (dateMonth == null)
-                                        {
-                                            elementsList.Add(new ElementDateMonth());
-                                            dateMonth = (ElementDateMonth)elementsList.Find(e => e.GetType().Name == "ElementDateMonth");
-                                        }
-                                        if (dateMonth != null)
-                                        {
-                                            if (dateMonth.Pointer != null) offsetNumber++;
-                                            if (dateMonth.Images != null) offsetNumber++;
-                                            dateMonth.Number = img_number;
-                                            dateMonth.Number.position = offsetNumber;
-                                            dateMonth.Number.visible = true;
-                                            //dateDay.Pointer = new hmUI_widget_IMG_POINTER();
-                                            //newPointer = dateDay.Pointer;
-                                        }
-                                    }
-
-                                    if (img_number.type == "YEAR")
-                                    {
-                                        ElementDateYear dateYear = (ElementDateYear)elementsList.Find(e => e.GetType().Name == "ElementDateYear");
-                                        if (dateYear == null)
-                                        {
-                                            elementsList.Add(new ElementDateYear());
-                                            dateYear = (ElementDateYear)elementsList.Find(e => e.GetType().Name == "ElementDateYear");
-                                        }
-                                        if (dateYear != null)
-                                        {
-                                            dateYear.Number = img_number;
-                                            dateYear.Number.visible = true;
-                                        }
-                                    }
-                                }
-
-                            }
-
-                            if (elementsList != null && img_level_list != null)
-                            {
-                                foreach (hmUI_widget_IMG_LEVEL img_level in img_level_list)
-                                {
-                                    if (img_level.type == "MONTH")
-                                    {
-                                        int offsetNumber = 1;
-                                        ElementDateMonth dateMonth = (ElementDateMonth)elementsList.Find(e => e.GetType().Name == "ElementDateMonth");
-                                        if (dateMonth == null) elementsList.Add(new ElementDateMonth());
-                                        dateMonth = (ElementDateMonth)elementsList.Find(e => e.GetType().Name == "ElementDateMonth");
-                                        if (dateMonth != null)
-                                        {
-                                            if (dateMonth.Pointer != null) offsetNumber++;
-                                            if (dateMonth.Number != null) offsetNumber++;
-                                            dateMonth.Images = img_level;
-                                            dateMonth.Images.position = offsetNumber;
-                                            dateMonth.Images.visible = true;
-                                            //dateDay.Pointer = new hmUI_widget_IMG_POINTER();
-                                            //newPointer = dateDay.Pointer;
-                                        }
-                                    }
-                                }
-
-                            }
-
-
+                            ParametrsToObject(elementsList, parametrs);
                             break;
                         #endregion
 
@@ -11284,67 +11157,7 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenAOD.Elements;
                             }
-
-                            //int offsetPointer = 1;
-                            //hmUI_widget_IMG_POINTER newPointer = null;
-                            if (elementsList != null && img_pointer.type == "DAY")
-                            {
-                                int offsetPointer = 1;
-                                ElementDateDay dateDay = (ElementDateDay)elementsList.Find(e => e.GetType().Name == "ElementDateDay");
-                                if (dateDay == null)
-                                {
-                                    elementsList.Add(new ElementDateDay());
-                                    dateDay = (ElementDateDay)elementsList.Find(e => e.GetType().Name == "ElementDateDay");
-                                }
-                                if (dateDay != null)
-                                {
-                                    if (dateDay.Number != null) offsetPointer++;
-                                    dateDay.Pointer = img_pointer;
-                                    dateDay.Pointer.position = offsetPointer;
-                                    dateDay.Pointer.visible = true;
-                                    //dateDay.Pointer = new hmUI_widget_IMG_POINTER();
-                                    //newPointer = dateDay.Pointer;
-                                }
-                            }
-                            if (elementsList != null && img_pointer.type == "MONTH")
-                            {
-                                int offsetPointer = 1;
-                                ElementDateMonth dateMonth = (ElementDateMonth)elementsList.Find(e => e.GetType().Name == "ElementDateMonth");
-                                if (dateMonth == null)
-                                {
-                                    elementsList.Add(new ElementDateMonth());
-                                    dateMonth = (ElementDateMonth)elementsList.Find(e => e.GetType().Name == "ElementDateMonth");
-                                }
-                                if (dateMonth != null)
-                                {
-                                    if (dateMonth.Number != null) offsetPointer++;
-                                    if (dateMonth.Images != null) offsetPointer++;
-                                    dateMonth.Pointer = img_pointer;
-                                    dateMonth.Pointer.position = offsetPointer;
-                                    dateMonth.Pointer.visible = true;
-                                    //dateMonth.Pointer = new hmUI_widget_IMG_POINTER();
-                                    //newPointer = dateMonth.Pointer;
-                                }
-                            }
-                            if (elementsList != null && img_pointer.type == "WEEK")
-                            {
-                                int offsetPointer = 1;
-                                ElementDateWeek dateWeek = (ElementDateWeek)elementsList.Find(e => e.GetType().Name == "ElementDateWeek");
-                                if (dateWeek == null)
-                                {
-                                    elementsList.Add(new ElementDateWeek());
-                                    dateWeek = (ElementDateWeek)elementsList.Find(e => e.GetType().Name == "ElementDateWeek");
-                                }
-                                if (dateWeek != null)
-                                {
-                                    if (dateWeek.Images != null) offsetPointer++;
-                                    dateWeek.Pointer = img_pointer;
-                                    dateWeek.Pointer.position = offsetPointer;
-                                    dateWeek.Pointer.visible = true;
-                                    //dateWeek.Pointer = new hmUI_widget_IMG_POINTER();
-                                    //newPointer = dateWeek.Pointer;
-                                }
-                            }
+                            ParametrsToObject(elementsList, parametrs);
                             break;
                         #endregion
 
@@ -11364,32 +11177,33 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenAOD.Elements;
                             }
-                            if (elementsList != null)
-                            {
-                                int offsetImages = 1;
-                                ElementDateWeek dateWeek_img = (ElementDateWeek)elementsList.Find(e => e.GetType().Name == "ElementDateWeek");
-                                if (dateWeek_img == null)
-                                {
-                                    elementsList.Add(new ElementDateWeek());
-                                    dateWeek_img = (ElementDateWeek)elementsList.Find(e => e.GetType().Name == "ElementDateWeek");
-                                }
-                                if (dateWeek_img != null)
-                                {
-                                    if (dateWeek_img.Pointer != null) offsetImages++;
-                                    dateWeek_img.Images = imgWeek;
-                                    dateWeek_img.Images.position = offsetImages;
-                                    dateWeek_img.Images.visible = true;
-                                }
-                            }
-                            else
-                            {
-                                ElementDateWeek dateWeek = null;
-                                dateWeek = (ElementDateWeek)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDateWeek");
-                                if (dateWeek != null)
-                                {
-                                    dateWeek.Images = imgWeek;
-                                }
-                            }
+                            ParametrsToObject(elementsList, parametrs);
+                            //if (elementsList != null)
+                            //{
+                            //    int offsetImages = 1;
+                            //    ElementDateWeek dateWeek_img = (ElementDateWeek)elementsList.Find(e => e.GetType().Name == "ElementDateWeek");
+                            //    if (dateWeek_img == null)
+                            //    {
+                            //        elementsList.Add(new ElementDateWeek());
+                            //        dateWeek_img = (ElementDateWeek)elementsList.Find(e => e.GetType().Name == "ElementDateWeek");
+                            //    }
+                            //    if (dateWeek_img != null)
+                            //    {
+                            //        if (dateWeek_img.Pointer != null) offsetImages++;
+                            //        dateWeek_img.Images = imgWeek;
+                            //        dateWeek_img.Images.position = offsetImages;
+                            //        dateWeek_img.Images.visible = true;
+                            //    }
+                            //}
+                            //else
+                            //{
+                            //    ElementDateWeek dateWeek = null;
+                            //    dateWeek = (ElementDateWeek)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDateWeek");
+                            //    if (dateWeek != null)
+                            //    {
+                            //        dateWeek.Images = imgWeek;
+                            //    }
+                            //}
 
                             break;
                         #endregion
@@ -11410,452 +11224,7 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenAOD.Elements;
                             }
-
-                            if (elementsList != null && imgLevel.type == "STEP")
-                            {
-                                ElementSteps steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
-                                if (steps == null)
-                                {
-                                    elementsList.Add(new ElementSteps());
-                                    steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
-                                }
-                                if (steps != null)
-                                {
-                                    int offset = 1;
-                                    //if (steps.Images != null) offset++;
-                                    if (steps.Segments != null) offset++;
-                                    if (steps.Number != null) offset++;
-                                    if (steps.Number_Target != null) offset++;
-                                    if (steps.Pointer != null) offset++;
-                                    if (steps.Circle_Scale != null) offset++;
-                                    if (steps.Linear_Scale != null) offset++;
-                                    if (steps.Icon != null) offset++;
-
-                                    steps.Images = new hmUI_widget_IMG_LEVEL();
-                                    steps.Images.img_First = imgLevel.img_First;
-                                    steps.Images.image_length = imgLevel.image_length;
-                                    steps.Images.X = imgLevel.X;
-                                    steps.Images.Y = imgLevel.Y;
-                                    steps.Images.visible = true;
-                                    steps.Images.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgLevel.type == "BATTERY")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementBattery battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
-                                if (battery == null)
-                                {
-                                    elementsList.Add(new ElementBattery());
-                                    battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
-                                }
-                                if (battery != null)
-                                {
-                                    int offset = 1;
-                                    //if (steps.Images != null) offset++;
-                                    if (battery.Segments != null) offset++;
-                                    if (battery.Number != null) offset++;
-                                    if (battery.Pointer != null) offset++;
-                                    if (battery.Circle_Scale != null) offset++;
-                                    if (battery.Linear_Scale != null) offset++;
-                                    if (battery.Icon != null) offset++;
-
-                                    battery.Images = new hmUI_widget_IMG_LEVEL();
-                                    battery.Images.img_First = imgLevel.img_First;
-                                    battery.Images.image_length = imgLevel.image_length;
-                                    battery.Images.X = imgLevel.X;
-                                    battery.Images.Y = imgLevel.Y;
-                                    battery.Images.visible = true;
-                                    battery.Images.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgLevel.type == "CAL")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementCalories calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
-                                if (calorie == null)
-                                {
-                                    elementsList.Add(new ElementCalories());
-                                    calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
-                                }
-                                if (calorie != null)
-                                {
-                                    int offset = 1;
-                                    //if (steps.Images != null) offset++;
-                                    if (calorie.Segments != null) offset++;
-                                    if (calorie.Number != null) offset++;
-                                    if (calorie.Number_Target != null) offset++;
-                                    if (calorie.Pointer != null) offset++;
-                                    if (calorie.Circle_Scale != null) offset++;
-                                    if (calorie.Linear_Scale != null) offset++;
-                                    if (calorie.Icon != null) offset++;
-
-                                    calorie.Images = new hmUI_widget_IMG_LEVEL();
-                                    calorie.Images.img_First = imgLevel.img_First;
-                                    calorie.Images.image_length = imgLevel.image_length;
-                                    calorie.Images.X = imgLevel.X;
-                                    calorie.Images.Y = imgLevel.Y;
-                                    calorie.Images.visible = true;
-                                    calorie.Images.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgLevel.type == "HEART")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementHeart heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
-                                if (heart == null)
-                                {
-                                    elementsList.Add(new ElementHeart());
-                                    heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
-                                }
-                                if (heart != null)
-                                {
-                                    int offset = 1;
-                                    //if (steps.Images != null) offset++;
-                                    if (heart.Segments != null) offset++;
-                                    if (heart.Number != null) offset++;
-                                    if (heart.Pointer != null) offset++;
-                                    if (heart.Circle_Scale != null) offset++;
-                                    if (heart.Linear_Scale != null) offset++;
-                                    if (heart.Icon != null) offset++;
-
-                                    heart.Images = new hmUI_widget_IMG_LEVEL();
-                                    heart.Images.img_First = imgLevel.img_First;
-                                    heart.Images.image_length = imgLevel.image_length;
-                                    heart.Images.image_length = 6;
-                                    heart.Images.X = imgLevel.X;
-                                    heart.Images.Y = imgLevel.Y;
-                                    heart.Images.visible = true;
-                                    heart.Images.position = offset;
-                                    if(imgLevel.image_length!=6)
-                                        MessageBox.Show("Количество изображений для отображения пульса должно быть равным 6.", 
-                                            Properties.FormStrings.Message_Warning_Caption,MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                            }
-
-                            if (elementsList != null && imgLevel.type == "PAI_WEEKLY")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementPAI pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
-                                if (pai == null)
-                                {
-                                    elementsList.Add(new ElementPAI());
-                                    pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
-                                }
-                                if (pai != null)
-                                {
-                                    int offset = 1;
-                                    //if (steps.Images != null) offset++;
-                                    if (pai.Segments != null) offset++;
-                                    if (pai.Number != null) offset++;
-                                    if (pai.Number_Target != null) offset++;
-                                    if (pai.Pointer != null) offset++;
-                                    if (pai.Circle_Scale != null) offset++;
-                                    if (pai.Linear_Scale != null) offset++;
-                                    if (pai.Icon != null) offset++;
-
-                                    pai.Images = new hmUI_widget_IMG_LEVEL();
-                                    pai.Images.img_First = imgLevel.img_First;
-                                    pai.Images.image_length = imgLevel.image_length;
-                                    pai.Images.X = imgLevel.X;
-                                    pai.Images.Y = imgLevel.Y;
-                                    pai.Images.visible = true;
-                                    pai.Images.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgLevel.type == "STAND")
-                            {
-                                ElementStand stand = (ElementStand)elementsList.Find(e => e.GetType().Name == "ElementStand");
-                                if (stand == null)
-                                {
-                                    elementsList.Add(new ElementStand());
-                                    stand = (ElementStand)elementsList.Find(e => e.GetType().Name == "ElementStand");
-                                }
-                                if (stand != null)
-                                {
-                                    int offset = 1;
-                                    //if (stand.Images != null) offset++;
-                                    if (stand.Segments != null) offset++;
-                                    if (stand.Number != null) offset++;
-                                    if (stand.Number_Target != null) offset++;
-                                    if (stand.Pointer != null) offset++;
-                                    if (stand.Circle_Scale != null) offset++;
-                                    if (stand.Linear_Scale != null) offset++;
-                                    if (stand.Icon != null) offset++;
-
-                                    stand.Images = new hmUI_widget_IMG_LEVEL();
-                                    stand.Images.img_First = imgLevel.img_First;
-                                    stand.Images.image_length = imgLevel.image_length;
-                                    stand.Images.X = imgLevel.X;
-                                    stand.Images.Y = imgLevel.Y;
-                                    stand.Images.visible = true;
-                                    stand.Images.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgLevel.type == "ACTIVITY")
-                            {
-                                ElementActivity activity = (ElementActivity)elementsList.Find(e => e.GetType().Name == "ElementActivity");
-                                if (activity == null)
-                                {
-                                    elementsList.Add(new ElementActivity());
-                                    activity = (ElementActivity)elementsList.Find(e => e.GetType().Name == "ElementActivity");
-                                }
-                                if (activity != null)
-                                {
-                                    int offset = 1;
-                                    //if (activity.Images != null) offset++;
-                                    if (activity.Segments != null) offset++;
-                                    if (activity.Number != null) offset++;
-                                    if (activity.Number_Target != null) offset++;
-                                    if (activity.Pointer != null) offset++;
-                                    if (activity.Circle_Scale != null) offset++;
-                                    if (activity.Linear_Scale != null) offset++;
-                                    if (activity.Icon != null) offset++;
-
-                                    activity.Images = new hmUI_widget_IMG_LEVEL();
-                                    activity.Images.img_First = imgLevel.img_First;
-                                    activity.Images.image_length = imgLevel.image_length;
-                                    activity.Images.X = imgLevel.X;
-                                    activity.Images.Y = imgLevel.Y;
-                                    activity.Images.visible = true;
-                                    activity.Images.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgLevel.type == "STRESS")
-                            {
-                                ElementStress stress = (ElementStress)elementsList.Find(e => e.GetType().Name == "ElementStress");
-                                if (stress == null)
-                                {
-                                    elementsList.Add(new ElementStress());
-                                    stress = (ElementStress)elementsList.Find(e => e.GetType().Name == "ElementStress");
-                                }
-                                if (stress != null)
-                                {
-                                    int offset = 1;
-                                    //if (stress.Images != null) offset++;
-                                    if (stress.Segments != null) offset++;
-                                    if (stress.Number != null) offset++;
-                                    if (stress.Pointer != null) offset++;
-                                    if (stress.Icon != null) offset++;
-
-                                    stress.Images = new hmUI_widget_IMG_LEVEL();
-                                    stress.Images.img_First = imgLevel.img_First;
-                                    stress.Images.image_length = imgLevel.image_length;
-                                    stress.Images.X = imgLevel.X;
-                                    stress.Images.Y = imgLevel.Y;
-                                    stress.Images.visible = true;
-                                    stress.Images.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgLevel.type == "FAT_BURNING")
-                            {
-                                ElementFatBurning fat_burning = (ElementFatBurning)elementsList.Find(e => e.GetType().Name == "ElementFatBurning");
-                                if (fat_burning == null)
-                                {
-                                    elementsList.Add(new ElementFatBurning());
-                                    fat_burning = (ElementFatBurning)elementsList.Find(e => e.GetType().Name == "ElementFatBurning");
-                                }
-                                if (fat_burning != null)
-                                {
-                                    int offset = 1;
-                                    //if (fat_burning.Images != null) offset++;
-                                    if (fat_burning.Segments != null) offset++;
-                                    if (fat_burning.Number != null) offset++;
-                                    if (fat_burning.Number_Target != null) offset++;
-                                    if (fat_burning.Pointer != null) offset++;
-                                    if (fat_burning.Circle_Scale != null) offset++;
-                                    if (fat_burning.Linear_Scale != null) offset++;
-                                    if (fat_burning.Icon != null) offset++;
-
-                                    fat_burning.Images = new hmUI_widget_IMG_LEVEL();
-                                    fat_burning.Images.img_First = imgLevel.img_First;
-                                    fat_burning.Images.image_length = imgLevel.image_length;
-                                    fat_burning.Images.X = imgLevel.X;
-                                    fat_burning.Images.Y = imgLevel.Y;
-                                    fat_burning.Images.visible = true;
-                                    fat_burning.Images.position = offset;
-                                }
-                            }
-
-
-
-                            if (elementsList != null && imgLevel.type == "WEATHER_CURRENT")
-                            {
-                                ElementWeather weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
-                                if (weather == null)
-                                {
-                                    elementsList.Add(new ElementWeather());
-                                    weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
-                                }
-                                if (weather != null)
-                                {
-                                    int offset = 1;
-                                    //if (weather.Images != null) offset++;
-                                    if (weather.Number != null) offset++;
-                                    if (weather.Number_Min != null) offset++;
-                                    if (weather.Number_Max != null) offset++;
-                                    if (weather.City_Name != null) offset++;
-                                    if (weather.Icon != null) offset++;
-
-                                    weather.Images = new hmUI_widget_IMG_LEVEL();
-                                    weather.Images.img_First = imgLevel.img_First;
-                                    weather.Images.image_length = imgLevel.image_length;
-                                    weather.Images.X = imgLevel.X;
-                                    weather.Images.Y = imgLevel.Y;
-                                    weather.Images.visible = true;
-                                    weather.Images.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgLevel.type == "UVI")
-                            {
-                                ElementUVIndex uv_index = (ElementUVIndex)elementsList.Find(e => e.GetType().Name == "ElementUVIndex");
-                                if (uv_index == null)
-                                {
-                                    elementsList.Add(new ElementUVIndex());
-                                    uv_index = (ElementUVIndex)elementsList.Find(e => e.GetType().Name == "ElementUVIndex");
-                                }
-                                if (uv_index != null)
-                                {
-                                    int offset = 1;
-                                    //if (uv_index.Images != null) offset++;
-                                    if (uv_index.Segments != null) offset++;
-                                    if (uv_index.Number != null) offset++;
-                                    if (uv_index.Pointer != null) offset++;
-                                    if (uv_index.Icon != null) offset++;
-
-                                    uv_index.Images = new hmUI_widget_IMG_LEVEL();
-                                    uv_index.Images.img_First = imgLevel.img_First;
-                                    uv_index.Images.image_length = imgLevel.image_length;
-                                    uv_index.Images.X = imgLevel.X;
-                                    uv_index.Images.Y = imgLevel.Y;
-                                    uv_index.Images.visible = true;
-                                    uv_index.Images.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgLevel.type == "HUMIDITY")
-                            {
-                                ElementHumidity humidity = (ElementHumidity)elementsList.Find(e => e.GetType().Name == "ElementHumidity");
-                                if (humidity == null)
-                                {
-                                    elementsList.Add(new ElementHumidity());
-                                    humidity = (ElementHumidity)elementsList.Find(e => e.GetType().Name == "ElementHumidity");
-                                }
-                                if (humidity != null)
-                                {
-                                    int offset = 1;
-                                    //if (humidity.Images != null) offset++;
-                                    if (humidity.Segments != null) offset++;
-                                    if (humidity.Number != null) offset++;
-                                    if (humidity.Pointer != null) offset++;
-                                    if (humidity.Icon != null) offset++;
-
-                                    humidity.Images = new hmUI_widget_IMG_LEVEL();
-                                    humidity.Images.img_First = imgLevel.img_First;
-                                    humidity.Images.image_length = imgLevel.image_length;
-                                    humidity.Images.X = imgLevel.X;
-                                    humidity.Images.Y = imgLevel.Y;
-                                    humidity.Images.visible = true;
-                                    humidity.Images.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgLevel.type == "SUN_CURRENT")
-                            {
-                                ElementSunrise sunrise = (ElementSunrise)elementsList.Find(e => e.GetType().Name == "ElementSunrise");
-                                if (sunrise == null)
-                                {
-                                    elementsList.Add(new ElementSunrise());
-                                    sunrise = (ElementSunrise)elementsList.Find(e => e.GetType().Name == "ElementSunrise");
-                                }
-                                if (sunrise != null)
-                                {
-                                    int offset = 1;
-                                    //if (sunrise.Images != null) offset++;
-                                    if (sunrise.Segments != null) offset++;
-                                    if (sunrise.Sunrise != null) offset++;
-                                    if (sunrise.Sunset != null) offset++;
-                                    if (sunrise.Sunset_Sunrise != null) offset++;
-                                    if (sunrise.Pointer != null) offset++;
-                                    if (sunrise.Icon != null) offset++;
-
-                                    sunrise.Images = new hmUI_widget_IMG_LEVEL();
-                                    sunrise.Images.img_First = imgLevel.img_First;
-                                    sunrise.Images.image_length = imgLevel.image_length;
-                                    sunrise.Images.X = imgLevel.X;
-                                    sunrise.Images.Y = imgLevel.Y;
-                                    sunrise.Images.visible = true;
-                                    sunrise.Images.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgLevel.type == "WIND")
-                            {
-                                ElementWind wind = (ElementWind)elementsList.Find(e => e.GetType().Name == "ElementWind");
-                                if (wind == null)
-                                {
-                                    elementsList.Add(new ElementWind());
-                                    wind = (ElementWind)elementsList.Find(e => e.GetType().Name == "ElementWind");
-                                }
-                                if (wind != null)
-                                {
-                                    int offset = 1;
-                                    //if (wind.Images != null) offset++;
-                                    if (wind.Segments != null) offset++;
-                                    if (wind.Number != null) offset++;
-                                    if (wind.Pointer != null) offset++;
-                                    if (wind.Icon != null) offset++;
-
-                                    wind.Images = new hmUI_widget_IMG_LEVEL();
-                                    wind.Images.img_First = imgLevel.img_First;
-                                    wind.Images.image_length = imgLevel.image_length;
-                                    wind.Images.X = imgLevel.X;
-                                    wind.Images.Y = imgLevel.Y;
-                                    wind.Images.visible = true;
-                                    wind.Images.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgLevel.type == "MOON")
-                            {
-                                ElementMoon moon = (ElementMoon)elementsList.Find(e => e.GetType().Name == "ElementMoon");
-                                if (moon == null)
-                                {
-                                    elementsList.Add(new ElementMoon());
-                                    moon = (ElementMoon)elementsList.Find(e => e.GetType().Name == "ElementMoon");
-                                }
-                                if (moon != null)
-                                {
-                                    //int offset = 1;
-                                    ////if (moon.Images != null) offset++;
-                                    //if (moon.Segments != null) offset++;
-                                    //if (moon.Number != null) offset++;
-                                    //if (moon.Number_Target != null) offset++;
-                                    //if (moon.Pointer != null) offset++;
-                                    //if (moon.Circle_Scale != null) offset++;
-                                    //if (moon.Linear_Scale != null) offset++;
-                                    //if (moon.Icon != null) offset++;
-
-                                    moon.Images = new hmUI_widget_IMG_LEVEL();
-                                    moon.Images.img_First = imgLevel.img_First;
-                                    moon.Images.image_length = imgLevel.image_length;
-                                    moon.Images.X = imgLevel.X;
-                                    moon.Images.Y = imgLevel.Y;
-                                    moon.Images.visible = true;
-                                    moon.Images.position = 1;
-                                }
-                            }
-
-
-
+                            ParametrsToObject(elementsList, parametrs);
                             break;
                         #endregion
 
@@ -11875,390 +11244,7 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenAOD.Elements;
                             }
-
-                            if (elementsList != null && imgProgress.type == "STEP")
-                            {
-                                ElementSteps steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
-                                if (steps == null)
-                                {
-                                    elementsList.Add(new ElementSteps());
-                                    steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
-                                }
-                                if (steps != null)
-                                {
-                                    int offset = 1;
-                                    if (steps.Images != null) offset++;
-                                    //if (steps.Segments != null) offset++;
-                                    if (steps.Number != null) offset++;
-                                    if (steps.Number_Target != null) offset++;
-                                    if (steps.Pointer != null) offset++;
-                                    if (steps.Circle_Scale != null) offset++;
-                                    if (steps.Linear_Scale != null) offset++;
-                                    if (steps.Icon != null) offset++;
-
-                                    steps.Segments = new hmUI_widget_IMG_PROGRESS();
-                                    steps.Segments.img_First = imgProgress.img_First;
-                                    steps.Segments.image_length = imgProgress.image_length;
-                                    steps.Segments.X = imgProgress.X;
-                                    steps.Segments.Y = imgProgress.Y;
-                                    steps.Segments.visible = true;
-                                    steps.Segments.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgProgress.type == "BATTERY")
-                            {
-                                ElementBattery battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
-                                if (battery == null)
-                                {
-                                    elementsList.Add(new ElementBattery());
-                                    battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
-                                }
-                                if (battery != null)
-                                {
-                                    int offset = 1;
-                                    if (battery.Images != null) offset++;
-                                    //if (steps.Segments != null) offset++;
-                                    if (battery.Number != null) offset++;
-                                    if (battery.Pointer != null) offset++;
-                                    if (battery.Circle_Scale != null) offset++;
-                                    if (battery.Linear_Scale != null) offset++;
-                                    if (battery.Icon != null) offset++;
-
-                                    battery.Segments = new hmUI_widget_IMG_PROGRESS();
-                                    battery.Segments.img_First = imgProgress.img_First;
-                                    battery.Segments.image_length = imgProgress.image_length;
-                                    battery.Segments.X = imgProgress.X;
-                                    battery.Segments.Y = imgProgress.Y;
-                                    battery.Segments.visible = true;
-                                    battery.Segments.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgProgress.type == "CAL")
-                            {
-                                ElementCalories calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
-                                if (calorie == null)
-                                {
-                                    elementsList.Add(new ElementCalories());
-                                    calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
-                                }
-                                if (calorie != null)
-                                {
-                                    int offset = 1;
-                                    if (calorie.Images != null) offset++;
-                                    //if (steps.Segments != null) offset++;
-                                    if (calorie.Number != null) offset++;
-                                    if (calorie.Number_Target != null) offset++;
-                                    if (calorie.Pointer != null) offset++;
-                                    if (calorie.Circle_Scale != null) offset++;
-                                    if (calorie.Linear_Scale != null) offset++;
-                                    if (calorie.Icon != null) offset++;
-
-                                    calorie.Segments = new hmUI_widget_IMG_PROGRESS();
-                                    calorie.Segments.img_First = imgProgress.img_First;
-                                    calorie.Segments.image_length = imgProgress.image_length;
-                                    calorie.Segments.X = imgProgress.X;
-                                    calorie.Segments.Y = imgProgress.Y;
-                                    calorie.Segments.visible = true;
-                                    calorie.Segments.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgProgress.type == "HEART")
-                            {
-                                ElementHeart heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
-                                if (heart == null)
-                                {
-                                    elementsList.Add(new ElementHeart());
-                                    heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
-                                }
-                                if (heart != null)
-                                {
-                                    int offset = 1;
-                                    if (heart.Images != null) offset++;
-                                    //if (steps.Segments != null) offset++;
-                                    if (heart.Number != null) offset++;
-                                    if (heart.Pointer != null) offset++;
-                                    if (heart.Circle_Scale != null) offset++;
-                                    if (heart.Linear_Scale != null) offset++;
-                                    if (heart.Icon != null) offset++;
-
-                                    heart.Segments = new hmUI_widget_IMG_PROGRESS();
-                                    heart.Segments.img_First = imgProgress.img_First;
-                                    //heart.Segments.image_length = imgProgress.image_length;
-                                    heart.Segments.image_length = 6;
-                                    heart.Segments.X = imgProgress.X;
-                                    heart.Segments.Y = imgProgress.Y;
-                                    heart.Segments.visible = true;
-                                    heart.Segments.position = offset;
-                                    if (imgProgress.image_length != 6)
-                                        MessageBox.Show("Количество изображений для отображения пульса должно быть равным 6.",
-                                            Properties.FormStrings.Message_Warning_Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                            }
-
-                            if (elementsList != null && imgProgress.type == "PAI_WEEKLY")
-                            {
-                                ElementPAI pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
-                                if (pai == null)
-                                {
-                                    elementsList.Add(new ElementPAI());
-                                    pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
-                                }
-                                if (pai != null)
-                                {
-                                    int offset = 1;
-                                    if (pai.Images != null) offset++;
-                                    //if (steps.Segments != null) offset++;
-                                    if (pai.Number != null) offset++;
-                                    if (pai.Number_Target != null) offset++;
-                                    if (pai.Pointer != null) offset++;
-                                    if (pai.Circle_Scale != null) offset++;
-                                    if (pai.Linear_Scale != null) offset++;
-                                    if (pai.Icon != null) offset++;
-
-                                    pai.Segments = new hmUI_widget_IMG_PROGRESS();
-                                    pai.Segments.img_First = imgProgress.img_First;
-                                    pai.Segments.image_length = imgProgress.image_length;
-                                    pai.Segments.X = imgProgress.X;
-                                    pai.Segments.Y = imgProgress.Y;
-                                    pai.Segments.visible = true;
-                                    pai.Segments.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgProgress.type == "STAND")
-                            {
-                                ElementStand stand = (ElementStand)elementsList.Find(e => e.GetType().Name == "ElementStand");
-                                if (stand == null)
-                                {
-                                    elementsList.Add(new ElementStand());
-                                    stand = (ElementStand)elementsList.Find(e => e.GetType().Name == "ElementStand");
-                                }
-                                if (stand != null)
-                                {
-                                    int offset = 1;
-                                    if (stand.Images != null) offset++;
-                                    //if (stand.Segments != null) offset++;
-                                    if (stand.Number != null) offset++;
-                                    if (stand.Number_Target != null) offset++;
-                                    if (stand.Pointer != null) offset++;
-                                    if (stand.Circle_Scale != null) offset++;
-                                    if (stand.Linear_Scale != null) offset++;
-                                    if (stand.Icon != null) offset++;
-
-                                    stand.Segments = new hmUI_widget_IMG_PROGRESS();
-                                    stand.Segments.img_First = imgProgress.img_First;
-                                    stand.Segments.image_length = imgProgress.image_length;
-                                    stand.Segments.X = imgProgress.X;
-                                    stand.Segments.Y = imgProgress.Y;
-                                    stand.Segments.visible = true;
-                                    stand.Segments.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgProgress.type == "ACTIVITY")
-                            {
-                                ElementActivity activity = (ElementActivity)elementsList.Find(e => e.GetType().Name == "ElementActivity");
-                                if (activity == null)
-                                {
-                                    elementsList.Add(new ElementActivity());
-                                    activity = (ElementActivity)elementsList.Find(e => e.GetType().Name == "ElementActivity");
-                                }
-                                if (activity != null)
-                                {
-                                    int offset = 1;
-                                    if (activity.Images != null) offset++;
-                                    //if (activity.Segments != null) offset++;
-                                    if (activity.Number != null) offset++;
-                                    if (activity.Number_Target != null) offset++;
-                                    if (activity.Pointer != null) offset++;
-                                    if (activity.Circle_Scale != null) offset++;
-                                    if (activity.Linear_Scale != null) offset++;
-                                    if (activity.Icon != null) offset++;
-
-                                    activity.Segments = new hmUI_widget_IMG_PROGRESS();
-                                    activity.Segments.img_First = imgProgress.img_First;
-                                    activity.Segments.image_length = imgProgress.image_length;
-                                    activity.Segments.X = imgProgress.X;
-                                    activity.Segments.Y = imgProgress.Y;
-                                    activity.Segments.visible = true;
-                                    activity.Segments.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgProgress.type == "STRESS")
-                            {
-                                ElementStress stress = (ElementStress)elementsList.Find(e => e.GetType().Name == "ElementStress");
-                                if (stress == null)
-                                {
-                                    elementsList.Add(new ElementStress());
-                                    stress = (ElementStress)elementsList.Find(e => e.GetType().Name == "ElementStress");
-                                }
-                                if (stress != null)
-                                {
-                                    int offset = 1;
-                                    if (stress.Images != null) offset++;
-                                    //if (stress.Segments != null) offset++;
-                                    if (stress.Number != null) offset++;
-                                    if (stress.Pointer != null) offset++;
-                                    if (stress.Icon != null) offset++;
-
-                                    stress.Segments = new hmUI_widget_IMG_PROGRESS();
-                                    stress.Segments.img_First = imgProgress.img_First;
-                                    stress.Segments.image_length = imgProgress.image_length;
-                                    stress.Segments.X = imgProgress.X;
-                                    stress.Segments.Y = imgProgress.Y;
-                                    stress.Segments.visible = true;
-                                    stress.Segments.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgProgress.type == "FAT_BURNING")
-                            {
-                                ElementFatBurning fat_burning = (ElementFatBurning)elementsList.Find(e => e.GetType().Name == "ElementFatBurning");
-                                if (fat_burning == null)
-                                {
-                                    elementsList.Add(new ElementFatBurning());
-                                    fat_burning = (ElementFatBurning)elementsList.Find(e => e.GetType().Name == "ElementFatBurning");
-                                }
-                                if (fat_burning != null)
-                                {
-                                    int offset = 1;
-                                    if (fat_burning.Images != null) offset++;
-                                    //if (fat_burning.Segments != null) offset++;
-                                    if (fat_burning.Number != null) offset++;
-                                    if (fat_burning.Number_Target != null) offset++;
-                                    if (fat_burning.Pointer != null) offset++;
-                                    if (fat_burning.Circle_Scale != null) offset++;
-                                    if (fat_burning.Linear_Scale != null) offset++;
-                                    if (fat_burning.Icon != null) offset++;
-
-                                    fat_burning.Segments = new hmUI_widget_IMG_PROGRESS();
-                                    fat_burning.Segments.img_First = imgProgress.img_First;
-                                    fat_burning.Segments.image_length = imgProgress.image_length;
-                                    fat_burning.Segments.X = imgProgress.X;
-                                    fat_burning.Segments.Y = imgProgress.Y;
-                                    fat_burning.Segments.visible = true;
-                                    fat_burning.Segments.position = offset;
-                                }
-                            }
-
-
-
-                            if (elementsList != null && imgProgress.type == "UVI")
-                            {
-                                ElementUVIndex uv_index = (ElementUVIndex)elementsList.Find(e => e.GetType().Name == "ElementUVIndex");
-                                if (uv_index == null)
-                                {
-                                    elementsList.Add(new ElementUVIndex());
-                                    uv_index = (ElementUVIndex)elementsList.Find(e => e.GetType().Name == "ElementUVIndex");
-                                }
-                                if (uv_index != null)
-                                {
-                                    int offset = 1;
-                                    if (uv_index.Images != null) offset++;
-                                    //if (uv_index.Segments != null) offset++;
-                                    if (uv_index.Number != null) offset++;
-                                    if (uv_index.Pointer != null) offset++;
-                                    if (uv_index.Icon != null) offset++;
-
-                                    uv_index.Segments = new hmUI_widget_IMG_PROGRESS();
-                                    uv_index.Segments.img_First = imgProgress.img_First;
-                                    uv_index.Segments.image_length = imgProgress.image_length;
-                                    uv_index.Segments.X = imgProgress.X;
-                                    uv_index.Segments.Y = imgProgress.Y;
-                                    uv_index.Segments.visible = true;
-                                    uv_index.Segments.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgProgress.type == "HUMIDITY")
-                            {
-                                ElementHumidity humidity = (ElementHumidity)elementsList.Find(e => e.GetType().Name == "ElementHumidity");
-                                if (humidity == null)
-                                {
-                                    elementsList.Add(new ElementHumidity());
-                                    humidity = (ElementHumidity)elementsList.Find(e => e.GetType().Name == "ElementHumidity");
-                                }
-                                if (humidity != null)
-                                {
-                                    int offset = 1;
-                                    if (humidity.Images != null) offset++;
-                                    //if (humidity.Segments != null) offset++;
-                                    if (humidity.Number != null) offset++;
-                                    if (humidity.Pointer != null) offset++;
-                                    if (humidity.Icon != null) offset++;
-
-                                    humidity.Segments = new hmUI_widget_IMG_PROGRESS();
-                                    humidity.Segments.img_First = imgProgress.img_First;
-                                    humidity.Segments.image_length = imgProgress.image_length;
-                                    humidity.Segments.X = imgProgress.X;
-                                    humidity.Segments.Y = imgProgress.Y;
-                                    humidity.Segments.visible = true;
-                                    humidity.Segments.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgProgress.type == "SUN_CURRENT")
-                            {
-                                ElementSunrise sunrise = (ElementSunrise)elementsList.Find(e => e.GetType().Name == "ElementSunrise");
-                                if (sunrise == null)
-                                {
-                                    elementsList.Add(new ElementSunrise());
-                                    sunrise = (ElementSunrise)elementsList.Find(e => e.GetType().Name == "ElementSunrise");
-                                }
-                                if (sunrise != null)
-                                {
-                                    int offset = 1;
-                                    if (sunrise.Images != null) offset++;
-                                    //if (sunrise.Segments != null) offset++;
-                                    if (sunrise.Sunrise != null) offset++;
-                                    if (sunrise.Sunset != null) offset++;
-                                    if (sunrise.Sunset_Sunrise != null) offset++;
-                                    if (sunrise.Pointer != null) offset++;
-                                    if (sunrise.Icon != null) offset++;
-
-                                    sunrise.Segments = new hmUI_widget_IMG_PROGRESS();
-                                    sunrise.Segments.img_First = imgProgress.img_First;
-                                    sunrise.Segments.image_length = imgProgress.image_length;
-                                    sunrise.Segments.X = imgProgress.X;
-                                    sunrise.Segments.Y = imgProgress.Y;
-                                    sunrise.Segments.visible = true;
-                                    sunrise.Segments.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgProgress.type == "WIND")
-                            {
-                                ElementWind wind = (ElementWind)elementsList.Find(e => e.GetType().Name == "ElementWind");
-                                if (wind == null)
-                                {
-                                    elementsList.Add(new ElementWind());
-                                    wind = (ElementWind)elementsList.Find(e => e.GetType().Name == "ElementWind");
-                                }
-                                if (wind != null)
-                                {
-                                    int offset = 1;
-                                    if (wind.Images != null) offset++;
-                                    //if (wind.Segments != null) offset++;
-                                    if (wind.Number != null) offset++;
-                                    if (wind.Pointer != null) offset++;
-                                    if (wind.Icon != null) offset++;
-
-                                    wind.Segments = new hmUI_widget_IMG_PROGRESS();
-                                    wind.Segments.img_First = imgProgress.img_First;
-                                    wind.Segments.image_length = imgProgress.image_length;
-                                    wind.Segments.X = imgProgress.X;
-                                    wind.Segments.Y = imgProgress.Y;
-                                    wind.Segments.visible = true;
-                                    wind.Segments.position = offset;
-                                }
-                            }
-
-
-
+                            ParametrsToObject(elementsList, parametrs);
                             break;
                         #endregion
 
@@ -12278,984 +11264,7 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenAOD.Elements;
                             }
-
-                            if (elementsList != null && imgNumber.type == "STEP")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementSteps steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
-                                if (steps == null)
-                                {
-                                    elementsList.Add(new ElementSteps());
-                                    steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
-                                }
-                                if (steps != null)
-                                {
-                                    int offset = 1;
-                                    if (steps.Images != null) offset++;
-                                    if (steps.Segments != null) offset++;
-                                    //if (steps.Number != null) offset++;
-                                    if (steps.Number_Target != null) offset++;
-                                    if (steps.Pointer != null) offset++;
-                                    if (steps.Circle_Scale != null) offset++;
-                                    if (steps.Linear_Scale != null) offset++;
-                                    if (steps.Icon != null) offset++;
-
-                                    steps.Number = new hmUI_widget_IMG_NUMBER();
-                                    steps.Number.img_First = imgNumber.img_First;
-                                    steps.Number.imageX = imgNumber.imageX;
-                                    steps.Number.imageY = imgNumber.imageY;
-                                    steps.Number.space = imgNumber.space;
-                                    steps.Number.zero = imgNumber.zero;
-                                    steps.Number.unit = imgNumber.unit;
-                                    steps.Number.imperial_unit = imgNumber.imperial_unit;
-                                    steps.Number.negative_image = imgNumber.negative_image;
-                                    steps.Number.invalid_image = imgNumber.invalid_image;
-                                    steps.Number.dot_image = imgNumber.dot_image;
-                                    steps.Number.align = imgNumber.align;
-                                    steps.Number.visible = true;
-                                    steps.Number.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgNumber.type == "STEP_TARGET")
-                            {
-                                ElementSteps steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
-                                if (steps == null)
-                                {
-                                    elementsList.Add(new ElementSteps());
-                                    steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
-                                }
-                                if (steps != null)
-                                {
-                                    int offset = 1;
-                                    if (steps.Images != null) offset++;
-                                    if (steps.Segments != null) offset++;
-                                    if (steps.Number != null) offset++;
-                                    //if (steps.Number_Target != null) offset++;
-                                    if (steps.Pointer != null) offset++;
-                                    if (steps.Circle_Scale != null) offset++;
-                                    if (steps.Linear_Scale != null) offset++;
-                                    if (steps.Icon != null) offset++;
-
-                                    steps.Number_Target = new hmUI_widget_IMG_NUMBER();
-                                    steps.Number_Target.img_First = imgNumber.img_First;
-                                    steps.Number_Target.imageX = imgNumber.imageX;
-                                    steps.Number_Target.imageY = imgNumber.imageY;
-                                    steps.Number_Target.space = imgNumber.space;
-                                    steps.Number_Target.zero = imgNumber.zero;
-                                    steps.Number_Target.unit = imgNumber.unit;
-                                    steps.Number_Target.imperial_unit = imgNumber.imperial_unit;
-                                    steps.Number_Target.negative_image = imgNumber.negative_image;
-                                    steps.Number_Target.invalid_image = imgNumber.invalid_image;
-                                    steps.Number_Target.dot_image = imgNumber.dot_image;
-                                    steps.Number_Target.align = imgNumber.align;
-                                    steps.Number_Target.visible = true;
-                                    steps.Number_Target.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgNumber.type == "BATTERY")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementBattery battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
-                                if (battery == null)
-                                {
-                                    elementsList.Add(new ElementBattery());
-                                    battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
-                                }
-                                if (battery != null)
-                                {
-                                    int offset = 1;
-                                    if (battery.Images != null) offset++;
-                                    if (battery.Segments != null) offset++;
-                                    //if (steps.Number != null) offset++;
-                                    if (battery.Pointer != null) offset++;
-                                    if (battery.Circle_Scale != null) offset++;
-                                    if (battery.Linear_Scale != null) offset++;
-                                    if (battery.Icon != null) offset++;
-
-                                    battery.Number = new hmUI_widget_IMG_NUMBER();
-                                    battery.Number.img_First = imgNumber.img_First;
-                                    battery.Number.imageX = imgNumber.imageX;
-                                    battery.Number.imageY = imgNumber.imageY;
-                                    battery.Number.space = imgNumber.space;
-                                    battery.Number.zero = imgNumber.zero;
-                                    battery.Number.unit = imgNumber.unit;
-                                    battery.Number.imperial_unit = imgNumber.imperial_unit;
-                                    battery.Number.negative_image = imgNumber.negative_image;
-                                    battery.Number.invalid_image = imgNumber.invalid_image;
-                                    battery.Number.dot_image = imgNumber.dot_image;
-                                    battery.Number.align = imgNumber.align;
-                                    battery.Number.visible = true;
-                                    battery.Number.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgNumber.type == "CAL")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementCalories calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
-                                if (calorie == null)
-                                {
-                                    elementsList.Add(new ElementCalories());
-                                    calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
-                                }
-                                if (calorie != null)
-                                {
-                                    int offset = 1;
-                                    if (calorie.Images != null) offset++;
-                                    if (calorie.Segments != null) offset++;
-                                    //if (steps.Number != null) offset++;
-                                    if (calorie.Number_Target != null) offset++;
-                                    if (calorie.Pointer != null) offset++;
-                                    if (calorie.Circle_Scale != null) offset++;
-                                    if (calorie.Linear_Scale != null) offset++;
-                                    if (calorie.Icon != null) offset++;
-
-                                    calorie.Number = new hmUI_widget_IMG_NUMBER();
-                                    calorie.Number.img_First = imgNumber.img_First;
-                                    calorie.Number.imageX = imgNumber.imageX;
-                                    calorie.Number.imageY = imgNumber.imageY;
-                                    calorie.Number.space = imgNumber.space;
-                                    calorie.Number.zero = imgNumber.zero;
-                                    calorie.Number.unit = imgNumber.unit;
-                                    calorie.Number.imperial_unit = imgNumber.imperial_unit;
-                                    calorie.Number.negative_image = imgNumber.negative_image;
-                                    calorie.Number.invalid_image = imgNumber.invalid_image;
-                                    calorie.Number.dot_image = imgNumber.dot_image;
-                                    calorie.Number.align = imgNumber.align;
-                                    calorie.Number.visible = true;
-                                    calorie.Number.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgNumber.type == "CAL_TARGET")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementCalories calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
-                                if (calorie == null)
-                                {
-                                    elementsList.Add(new ElementCalories());
-                                    calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
-                                }
-                                if (calorie != null)
-                                {
-                                    int offset = 1;
-                                    if (calorie.Images != null) offset++;
-                                    if (calorie.Segments != null) offset++;
-                                    if (calorie.Number != null) offset++;
-                                    //if (steps.Number_Target != null) offset++;
-                                    if (calorie.Pointer != null) offset++;
-                                    if (calorie.Circle_Scale != null) offset++;
-                                    if (calorie.Linear_Scale != null) offset++;
-                                    if (calorie.Icon != null) offset++;
-
-                                    calorie.Number_Target = new hmUI_widget_IMG_NUMBER();
-                                    calorie.Number_Target.img_First = imgNumber.img_First;
-                                    calorie.Number_Target.imageX = imgNumber.imageX;
-                                    calorie.Number_Target.imageY = imgNumber.imageY;
-                                    calorie.Number_Target.space = imgNumber.space;
-                                    calorie.Number_Target.zero = imgNumber.zero;
-                                    calorie.Number_Target.unit = imgNumber.unit;
-                                    calorie.Number_Target.imperial_unit = imgNumber.imperial_unit;
-                                    calorie.Number_Target.negative_image = imgNumber.negative_image;
-                                    calorie.Number_Target.invalid_image = imgNumber.invalid_image;
-                                    calorie.Number_Target.dot_image = imgNumber.dot_image;
-                                    calorie.Number_Target.align = imgNumber.align;
-                                    calorie.Number_Target.visible = true;
-                                    calorie.Number_Target.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgNumber.type == "HEART")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementHeart heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
-                                if (heart == null)
-                                {
-                                    elementsList.Add(new ElementHeart());
-                                    heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
-                                }
-                                if (heart != null)
-                                {
-                                    int offset = 1;
-                                    if (heart.Images != null) offset++;
-                                    if (heart.Segments != null) offset++;
-                                    //if (steps.Number != null) offset++;
-                                    if (heart.Pointer != null) offset++;
-                                    if (heart.Circle_Scale != null) offset++;
-                                    if (heart.Linear_Scale != null) offset++;
-                                    if (heart.Icon != null) offset++;
-
-                                    heart.Number = new hmUI_widget_IMG_NUMBER();
-                                    heart.Number.img_First = imgNumber.img_First;
-                                    heart.Number.imageX = imgNumber.imageX;
-                                    heart.Number.imageY = imgNumber.imageY;
-                                    heart.Number.space = imgNumber.space;
-                                    heart.Number.zero = imgNumber.zero;
-                                    heart.Number.unit = imgNumber.unit;
-                                    heart.Number.imperial_unit = imgNumber.imperial_unit;
-                                    heart.Number.negative_image = imgNumber.negative_image;
-                                    heart.Number.invalid_image = imgNumber.invalid_image;
-                                    heart.Number.dot_image = imgNumber.dot_image;
-                                    heart.Number.align = imgNumber.align;
-                                    heart.Number.visible = true;
-                                    heart.Number.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgNumber.type == "PAI_DAILY")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementPAI pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
-                                if (pai == null)
-                                {
-                                    elementsList.Add(new ElementPAI());
-                                    pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
-                                }
-                                if (pai != null)
-                                {
-                                    int offset = 1;
-                                    if (pai.Images != null) offset++;
-                                    if (pai.Segments != null) offset++;
-                                    //if (steps.Number != null) offset++;
-                                    if (pai.Number_Target != null) offset++;
-                                    if (pai.Pointer != null) offset++;
-                                    if (pai.Circle_Scale != null) offset++;
-                                    if (pai.Linear_Scale != null) offset++;
-                                    if (pai.Icon != null) offset++;
-
-                                    pai.Number = new hmUI_widget_IMG_NUMBER();
-                                    pai.Number.img_First = imgNumber.img_First;
-                                    pai.Number.imageX = imgNumber.imageX;
-                                    pai.Number.imageY = imgNumber.imageY;
-                                    pai.Number.space = imgNumber.space;
-                                    pai.Number.zero = imgNumber.zero;
-                                    pai.Number.unit = imgNumber.unit;
-                                    pai.Number.imperial_unit = imgNumber.imperial_unit;
-                                    pai.Number.negative_image = imgNumber.negative_image;
-                                    pai.Number.invalid_image = imgNumber.invalid_image;
-                                    pai.Number.dot_image = imgNumber.dot_image;
-                                    pai.Number.align = imgNumber.align;
-                                    pai.Number.visible = true;
-                                    pai.Number.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgNumber.type == "PAI_WEEKLY")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementPAI pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
-                                if (pai == null)
-                                {
-                                    elementsList.Add(new ElementPAI());
-                                    pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
-                                }
-                                if (pai != null)
-                                {
-                                    int offset = 1;
-                                    if (pai.Images != null) offset++;
-                                    if (pai.Segments != null) offset++;
-                                    if (pai.Number != null) offset++;
-                                    //if (steps.Number_Target != null) offset++;
-                                    if (pai.Pointer != null) offset++;
-                                    if (pai.Circle_Scale != null) offset++;
-                                    if (pai.Linear_Scale != null) offset++;
-                                    if (pai.Icon != null) offset++;
-
-                                    pai.Number_Target = new hmUI_widget_IMG_NUMBER();
-                                    pai.Number_Target.img_First = imgNumber.img_First;
-                                    pai.Number_Target.imageX = imgNumber.imageX;
-                                    pai.Number_Target.imageY = imgNumber.imageY;
-                                    pai.Number_Target.space = imgNumber.space;
-                                    pai.Number_Target.zero = imgNumber.zero;
-                                    pai.Number_Target.unit = imgNumber.unit;
-                                    pai.Number_Target.imperial_unit = imgNumber.imperial_unit;
-                                    pai.Number_Target.negative_image = imgNumber.negative_image;
-                                    pai.Number_Target.invalid_image = imgNumber.invalid_image;
-                                    pai.Number_Target.dot_image = imgNumber.dot_image;
-                                    pai.Number_Target.align = imgNumber.align;
-                                    pai.Number_Target.visible = true;
-                                    pai.Number_Target.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgNumber.type == "DISTANCE")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementDistance distance = (ElementDistance)elementsList.Find(e => e.GetType().Name == "ElementDistance");
-                                if (distance == null)
-                                {
-                                    elementsList.Add(new ElementDistance());
-                                    distance = (ElementDistance)elementsList.Find(e => e.GetType().Name == "ElementDistance");
-                                }
-                                if (distance != null)
-                                {
-                                    distance.Number = new hmUI_widget_IMG_NUMBER();
-                                    distance.Number.img_First = imgNumber.img_First;
-                                    distance.Number.imageX = imgNumber.imageX;
-                                    distance.Number.imageY = imgNumber.imageY;
-                                    distance.Number.space = imgNumber.space;
-                                    distance.Number.zero = imgNumber.zero;
-                                    distance.Number.unit = imgNumber.unit;
-                                    distance.Number.imperial_unit = imgNumber.imperial_unit;
-                                    distance.Number.negative_image = imgNumber.negative_image;
-                                    distance.Number.invalid_image = imgNumber.invalid_image;
-                                    distance.Number.dot_image = imgNumber.dot_image;
-                                    distance.Number.align = imgNumber.align;
-                                    distance.Number.visible = true;
-                                    distance.Number.position = 1;
-                                }
-                            }
-
-                            if (elementsList != null && imgNumber.type == "STAND")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementStand stand = (ElementStand)elementsList.Find(e => e.GetType().Name == "ElementStand");
-                                if (stand == null)
-                                {
-                                    elementsList.Add(new ElementStand());
-                                    stand = (ElementStand)elementsList.Find(e => e.GetType().Name == "ElementStand");
-                                }
-                                if (stand != null)
-                                {
-                                    int offset = 1;
-                                    if (stand.Images != null) offset++;
-                                    if (stand.Segments != null) offset++;
-                                    //if (stand.Number != null) offset++;
-                                    if (stand.Number_Target != null) offset++;
-                                    if (stand.Pointer != null) offset++;
-                                    if (stand.Circle_Scale != null) offset++;
-                                    if (stand.Linear_Scale != null) offset++;
-                                    if (stand.Icon != null) offset++;
-
-                                    stand.Number = new hmUI_widget_IMG_NUMBER();
-                                    stand.Number.img_First = imgNumber.img_First;
-                                    stand.Number.imageX = imgNumber.imageX;
-                                    stand.Number.imageY = imgNumber.imageY;
-                                    stand.Number.space = imgNumber.space;
-                                    stand.Number.zero = imgNumber.zero;
-                                    stand.Number.unit = imgNumber.unit;
-                                    stand.Number.imperial_unit = imgNumber.imperial_unit;
-                                    stand.Number.negative_image = imgNumber.negative_image;
-                                    stand.Number.invalid_image = imgNumber.invalid_image;
-                                    stand.Number.dot_image = imgNumber.dot_image;
-                                    stand.Number.align = imgNumber.align;
-                                    stand.Number.visible = true;
-                                    stand.Number.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgNumber.type == "STAND_TARGET")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementStand stand = (ElementStand)elementsList.Find(e => e.GetType().Name == "ElementStand");
-                                if (stand == null)
-                                {
-                                    elementsList.Add(new ElementStand());
-                                    stand = (ElementStand)elementsList.Find(e => e.GetType().Name == "ElementStand");
-                                }
-                                if (stand != null)
-                                {
-                                    int offset = 1;
-                                    if (stand.Images != null) offset++;
-                                    if (stand.Segments != null) offset++;
-                                    if (stand.Number != null) offset++;
-                                    //if (stand.Number_Target != null) offset++;
-                                    if (stand.Pointer != null) offset++;
-                                    if (stand.Circle_Scale != null) offset++;
-                                    if (stand.Linear_Scale != null) offset++;
-                                    if (stand.Icon != null) offset++;
-
-                                    stand.Number_Target = new hmUI_widget_IMG_NUMBER();
-                                    stand.Number_Target.img_First = imgNumber.img_First;
-                                    stand.Number_Target.imageX = imgNumber.imageX;
-                                    stand.Number_Target.imageY = imgNumber.imageY;
-                                    stand.Number_Target.space = imgNumber.space;
-                                    stand.Number_Target.zero = imgNumber.zero;
-                                    stand.Number_Target.unit = imgNumber.unit;
-                                    stand.Number_Target.imperial_unit = imgNumber.imperial_unit;
-                                    stand.Number_Target.negative_image = imgNumber.negative_image;
-                                    stand.Number_Target.invalid_image = imgNumber.invalid_image;
-                                    stand.Number_Target.dot_image = imgNumber.dot_image;
-                                    stand.Number_Target.align = imgNumber.align;
-                                    stand.Number_Target.visible = true;
-                                    stand.Number_Target.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgNumber.type == "ACTIVITY")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementActivity activity = (ElementActivity)elementsList.Find(e => e.GetType().Name == "ElementActivity");
-                                if (activity == null)
-                                {
-                                    elementsList.Add(new ElementActivity());
-                                    activity = (ElementActivity)elementsList.Find(e => e.GetType().Name == "ElementActivity");
-                                }
-                                if (activity != null)
-                                {
-                                    int offset = 1;
-                                    if (activity.Images != null) offset++;
-                                    if (activity.Segments != null) offset++;
-                                    //if (activity.Number != null) offset++;
-                                    if (activity.Number_Target != null) offset++;
-                                    if (activity.Pointer != null) offset++;
-                                    if (activity.Circle_Scale != null) offset++;
-                                    if (activity.Linear_Scale != null) offset++;
-                                    if (activity.Icon != null) offset++;
-
-                                    activity.Number = new hmUI_widget_IMG_NUMBER();
-                                    activity.Number.img_First = imgNumber.img_First;
-                                    activity.Number.imageX = imgNumber.imageX;
-                                    activity.Number.imageY = imgNumber.imageY;
-                                    activity.Number.space = imgNumber.space;
-                                    activity.Number.zero = imgNumber.zero;
-                                    activity.Number.unit = imgNumber.unit;
-                                    activity.Number.imperial_unit = imgNumber.imperial_unit;
-                                    activity.Number.negative_image = imgNumber.negative_image;
-                                    activity.Number.invalid_image = imgNumber.invalid_image;
-                                    activity.Number.dot_image = imgNumber.dot_image;
-                                    activity.Number.align = imgNumber.align;
-                                    activity.Number.visible = true;
-                                    activity.Number.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgNumber.type == "ACTIVITY_TARGET")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementActivity activity = (ElementActivity)elementsList.Find(e => e.GetType().Name == "ElementActivity");
-                                if (activity == null)
-                                {
-                                    elementsList.Add(new ElementActivity());
-                                    activity = (ElementActivity)elementsList.Find(e => e.GetType().Name == "ElementActivity");
-                                }
-                                if (activity != null)
-                                {
-                                    int offset = 1;
-                                    if (activity.Images != null) offset++;
-                                    if (activity.Segments != null) offset++;
-                                    if (activity.Number != null) offset++;
-                                    //if (activity.Number_Target != null) offset++;
-                                    if (activity.Pointer != null) offset++;
-                                    if (activity.Circle_Scale != null) offset++;
-                                    if (activity.Linear_Scale != null) offset++;
-                                    if (activity.Icon != null) offset++;
-
-                                    activity.Number_Target = new hmUI_widget_IMG_NUMBER();
-                                    activity.Number_Target.img_First = imgNumber.img_First;
-                                    activity.Number_Target.imageX = imgNumber.imageX;
-                                    activity.Number_Target.imageY = imgNumber.imageY;
-                                    activity.Number_Target.space = imgNumber.space;
-                                    activity.Number_Target.zero = imgNumber.zero;
-                                    activity.Number_Target.unit = imgNumber.unit;
-                                    activity.Number_Target.imperial_unit = imgNumber.imperial_unit;
-                                    activity.Number_Target.negative_image = imgNumber.negative_image;
-                                    activity.Number_Target.invalid_image = imgNumber.invalid_image;
-                                    activity.Number_Target.dot_image = imgNumber.dot_image;
-                                    activity.Number_Target.align = imgNumber.align;
-                                    activity.Number_Target.visible = true;
-                                    activity.Number_Target.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgNumber.type == "SPO2")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementSpO2 spo2 = (ElementSpO2)elementsList.Find(e => e.GetType().Name == "ElementSpO2");
-                                if (spo2 == null)
-                                {
-                                    elementsList.Add(new ElementSpO2());
-                                    spo2 = (ElementSpO2)elementsList.Find(e => e.GetType().Name == "ElementSpO2");
-                                }
-                                if (spo2 != null)
-                                {
-                                    spo2.Number = new hmUI_widget_IMG_NUMBER();
-                                    spo2.Number.img_First = imgNumber.img_First;
-                                    spo2.Number.imageX = imgNumber.imageX;
-                                    spo2.Number.imageY = imgNumber.imageY;
-                                    spo2.Number.space = imgNumber.space;
-                                    spo2.Number.zero = imgNumber.zero;
-                                    spo2.Number.unit = imgNumber.unit;
-                                    spo2.Number.imperial_unit = imgNumber.imperial_unit;
-                                    spo2.Number.negative_image = imgNumber.negative_image;
-                                    spo2.Number.invalid_image = imgNumber.invalid_image;
-                                    spo2.Number.dot_image = imgNumber.dot_image;
-                                    spo2.Number.align = imgNumber.align;
-                                    spo2.Number.visible = true;
-                                    spo2.Number.position = 1;
-                                }
-                            }
-
-                            if (elementsList != null && imgNumber.type == "STRESS")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementStress stress = (ElementStress)elementsList.Find(e => e.GetType().Name == "ElementStress");
-                                if (stress == null)
-                                {
-                                    elementsList.Add(new ElementStress());
-                                    stress = (ElementStress)elementsList.Find(e => e.GetType().Name == "ElementStress");
-                                }
-                                if (stress != null)
-                                {
-                                    int offset = 1;
-                                    if (stress.Images != null) offset++;
-                                    if (stress.Segments != null) offset++;
-                                    //if (stress.Number != null) offset++;
-                                    if (stress.Pointer != null) offset++;
-                                    if (stress.Icon != null) offset++;
-
-                                    stress.Number = new hmUI_widget_IMG_NUMBER();
-                                    stress.Number.img_First = imgNumber.img_First;
-                                    stress.Number.imageX = imgNumber.imageX;
-                                    stress.Number.imageY = imgNumber.imageY;
-                                    stress.Number.space = imgNumber.space;
-                                    stress.Number.zero = imgNumber.zero;
-                                    stress.Number.unit = imgNumber.unit;
-                                    stress.Number.imperial_unit = imgNumber.imperial_unit;
-                                    stress.Number.negative_image = imgNumber.negative_image;
-                                    stress.Number.invalid_image = imgNumber.invalid_image;
-                                    stress.Number.dot_image = imgNumber.dot_image;
-                                    stress.Number.align = imgNumber.align;
-                                    stress.Number.visible = true;
-                                    stress.Number.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgNumber.type == "FAT_BURNING")
-                            {
-                                ElementFatBurning fat_burning = (ElementFatBurning)elementsList.Find(e => e.GetType().Name == "ElementFatBurning");
-                                if (fat_burning == null)
-                                {
-                                    elementsList.Add(new ElementFatBurning());
-                                    fat_burning = (ElementFatBurning)elementsList.Find(e => e.GetType().Name == "ElementFatBurning");
-                                }
-                                if (fat_burning != null)
-                                {
-                                    int offset = 1;
-                                    if (fat_burning.Images != null) offset++;
-                                    if (fat_burning.Segments != null) offset++;
-                                    //if (fat_burning.Number != null) offset++;
-                                    if (fat_burning.Number_Target != null) offset++;
-                                    if (fat_burning.Pointer != null) offset++;
-                                    if (fat_burning.Circle_Scale != null) offset++;
-                                    if (fat_burning.Linear_Scale != null) offset++;
-                                    if (fat_burning.Icon != null) offset++;
-
-                                    fat_burning.Number = new hmUI_widget_IMG_NUMBER();
-                                    fat_burning.Number.img_First = imgNumber.img_First;
-                                    fat_burning.Number.imageX = imgNumber.imageX;
-                                    fat_burning.Number.imageY = imgNumber.imageY;
-                                    fat_burning.Number.space = imgNumber.space;
-                                    fat_burning.Number.zero = imgNumber.zero;
-                                    fat_burning.Number.unit = imgNumber.unit;
-                                    fat_burning.Number.imperial_unit = imgNumber.imperial_unit;
-                                    fat_burning.Number.negative_image = imgNumber.negative_image;
-                                    fat_burning.Number.invalid_image = imgNumber.invalid_image;
-                                    fat_burning.Number.dot_image = imgNumber.dot_image;
-                                    fat_burning.Number.align = imgNumber.align;
-                                    fat_burning.Number.visible = true;
-                                    fat_burning.Number.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgNumber.type == "FAT_BURNING_TARGET")
-                            {
-                                ElementFatBurning fat_burning = (ElementFatBurning)elementsList.Find(e => e.GetType().Name == "ElementFatBurning");
-                                if (fat_burning == null)
-                                {
-                                    elementsList.Add(new ElementFatBurning());
-                                    fat_burning = (ElementFatBurning)elementsList.Find(e => e.GetType().Name == "ElementFatBurning");
-                                }
-                                if (fat_burning != null)
-                                {
-                                    int offset = 1;
-                                    if (fat_burning.Images != null) offset++;
-                                    if (fat_burning.Segments != null) offset++;
-                                    if (fat_burning.Number != null) offset++;
-                                    //if (fat_burning.Number_Target != null) offset++;
-                                    if (fat_burning.Pointer != null) offset++;
-                                    if (fat_burning.Circle_Scale != null) offset++;
-                                    if (fat_burning.Linear_Scale != null) offset++;
-                                    if (fat_burning.Icon != null) offset++;
-
-                                    fat_burning.Number_Target = new hmUI_widget_IMG_NUMBER();
-                                    fat_burning.Number_Target.img_First = imgNumber.img_First;
-                                    fat_burning.Number_Target.imageX = imgNumber.imageX;
-                                    fat_burning.Number_Target.imageY = imgNumber.imageY;
-                                    fat_burning.Number_Target.space = imgNumber.space;
-                                    fat_burning.Number_Target.zero = imgNumber.zero;
-                                    fat_burning.Number_Target.unit = imgNumber.unit;
-                                    fat_burning.Number_Target.imperial_unit = imgNumber.imperial_unit;
-                                    fat_burning.Number_Target.negative_image = imgNumber.negative_image;
-                                    fat_burning.Number_Target.invalid_image = imgNumber.invalid_image;
-                                    fat_burning.Number_Target.dot_image = imgNumber.dot_image;
-                                    fat_burning.Number_Target.align = imgNumber.align;
-                                    fat_burning.Number_Target.visible = true;
-                                    fat_burning.Number_Target.position = offset;
-                                }
-                            }
-
-
-
-                            if (elementsList != null && imgNumber.type == "WEATHER_CURRENT")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementWeather weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
-                                if (weather == null)
-                                {
-                                    elementsList.Add(new ElementWeather());
-                                    weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
-                                }
-                                if (weather != null)
-                                {
-                                    int offset = 1;
-                                    if (weather.Images != null) offset++;
-                                    //if (weather.Number != null) offset++;
-                                    if (weather.Number_Min != null) offset++;
-                                    if (weather.Number_Max != null) offset++;
-                                    if (weather.City_Name != null) offset++;
-                                    if (weather.Icon != null) offset++;
-
-                                    weather.Number = new hmUI_widget_IMG_NUMBER();
-                                    weather.Number.img_First = imgNumber.img_First;
-                                    weather.Number.imageX = imgNumber.imageX;
-                                    weather.Number.imageY = imgNumber.imageY;
-                                    weather.Number.space = imgNumber.space;
-                                    weather.Number.zero = imgNumber.zero;
-                                    weather.Number.unit = imgNumber.unit;
-                                    weather.Number.imperial_unit = imgNumber.imperial_unit;
-                                    weather.Number.negative_image = imgNumber.negative_image;
-                                    weather.Number.invalid_image = imgNumber.invalid_image;
-                                    weather.Number.dot_image = imgNumber.dot_image;
-                                    weather.Number.align = imgNumber.align;
-                                    weather.Number.visible = true;
-                                    weather.Number.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgNumber.type == "WEATHER_LOW")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementWeather weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
-                                if (weather == null)
-                                {
-                                    elementsList.Add(new ElementWeather());
-                                    weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
-                                }
-                                if (weather != null)
-                                {
-                                    int offset = 1;
-                                    if (weather.Images != null) offset++;
-                                    if (weather.Number != null) offset++;
-                                    //if (weather.Number_Min != null) offset++;
-                                    if (weather.Number_Max != null) offset++;
-                                    if (weather.City_Name != null) offset++;
-                                    if (weather.Icon != null) offset++;
-
-                                    weather.Number_Min = new hmUI_widget_IMG_NUMBER();
-                                    weather.Number_Min.img_First = imgNumber.img_First;
-                                    weather.Number_Min.imageX = imgNumber.imageX;
-                                    weather.Number_Min.imageY = imgNumber.imageY;
-                                    weather.Number_Min.space = imgNumber.space;
-                                    weather.Number_Min.zero = imgNumber.zero;
-                                    weather.Number_Min.unit = imgNumber.unit;
-                                    weather.Number_Min.imperial_unit = imgNumber.imperial_unit;
-                                    weather.Number_Min.negative_image = imgNumber.negative_image;
-                                    weather.Number_Min.invalid_image = imgNumber.invalid_image;
-                                    weather.Number_Min.dot_image = imgNumber.dot_image;
-                                    weather.Number_Min.align = imgNumber.align;
-                                    weather.Number_Min.visible = true;
-                                    weather.Number_Min.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgNumber.type == "WEATHER_HIGH")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementWeather weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
-                                if (weather == null)
-                                {
-                                    elementsList.Add(new ElementWeather());
-                                    weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
-                                }
-                                if (weather != null)
-                                {
-                                    int offset = 1;
-                                    if (weather.Images != null) offset++;
-                                    if (weather.Number != null) offset++;
-                                    if (weather.Number_Min != null) offset++;
-                                    //if (weather.Number_Max != null) offset++;
-                                    if (weather.City_Name != null) offset++;
-                                    if (weather.Icon != null) offset++;
-
-                                    weather.Number_Max = new hmUI_widget_IMG_NUMBER();
-                                    weather.Number_Max.img_First = imgNumber.img_First;
-                                    weather.Number_Max.imageX = imgNumber.imageX;
-                                    weather.Number_Max.imageY = imgNumber.imageY;
-                                    weather.Number_Max.space = imgNumber.space;
-                                    weather.Number_Max.zero = imgNumber.zero;
-                                    weather.Number_Max.unit = imgNumber.unit;
-                                    weather.Number_Max.imperial_unit = imgNumber.imperial_unit;
-                                    weather.Number_Max.negative_image = imgNumber.negative_image;
-                                    weather.Number_Max.invalid_image = imgNumber.invalid_image;
-                                    weather.Number_Max.dot_image = imgNumber.dot_image;
-                                    weather.Number_Max.align = imgNumber.align;
-                                    weather.Number_Max.visible = true;
-                                    weather.Number_Max.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgNumber.type == "UVI")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementUVIndex uv_index = (ElementUVIndex)elementsList.Find(e => e.GetType().Name == "ElementUVIndex");
-                                if (uv_index == null)
-                                {
-                                    elementsList.Add(new ElementUVIndex());
-                                    uv_index = (ElementUVIndex)elementsList.Find(e => e.GetType().Name == "ElementUVIndex");
-                                }
-                                if (uv_index != null)
-                                {
-                                    int offset = 1;
-                                    if (uv_index.Images != null) offset++;
-                                    if (uv_index.Segments != null) offset++;
-                                    //if (uv_index.Number != null) offset++;
-                                    if (uv_index.Pointer != null) offset++;
-                                    if (uv_index.Icon != null) offset++;
-
-                                    uv_index.Number = new hmUI_widget_IMG_NUMBER();
-                                    uv_index.Number.img_First = imgNumber.img_First;
-                                    uv_index.Number.imageX = imgNumber.imageX;
-                                    uv_index.Number.imageY = imgNumber.imageY;
-                                    uv_index.Number.space = imgNumber.space;
-                                    uv_index.Number.zero = imgNumber.zero;
-                                    uv_index.Number.unit = imgNumber.unit;
-                                    uv_index.Number.imperial_unit = imgNumber.imperial_unit;
-                                    uv_index.Number.negative_image = imgNumber.negative_image;
-                                    uv_index.Number.invalid_image = imgNumber.invalid_image;
-                                    uv_index.Number.dot_image = imgNumber.dot_image;
-                                    uv_index.Number.align = imgNumber.align;
-                                    uv_index.Number.visible = true;
-                                    uv_index.Number.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgNumber.type == "HUMIDITY")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementHumidity humidity = (ElementHumidity)elementsList.Find(e => e.GetType().Name == "ElementHumidity");
-                                if (humidity == null)
-                                {
-                                    elementsList.Add(new ElementHumidity());
-                                    humidity = (ElementHumidity)elementsList.Find(e => e.GetType().Name == "ElementHumidity");
-                                }
-                                if (humidity != null)
-                                {
-                                    int offset = 1;
-                                    if (humidity.Images != null) offset++;
-                                    if (humidity.Segments != null) offset++;
-                                    //if (humidity.Number != null) offset++;
-                                    if (humidity.Pointer != null) offset++;
-                                    if (humidity.Icon != null) offset++;
-
-                                    humidity.Number = new hmUI_widget_IMG_NUMBER();
-                                    humidity.Number.img_First = imgNumber.img_First;
-                                    humidity.Number.imageX = imgNumber.imageX;
-                                    humidity.Number.imageY = imgNumber.imageY;
-                                    humidity.Number.space = imgNumber.space;
-                                    humidity.Number.zero = imgNumber.zero;
-                                    humidity.Number.unit = imgNumber.unit;
-                                    humidity.Number.imperial_unit = imgNumber.imperial_unit;
-                                    humidity.Number.negative_image = imgNumber.negative_image;
-                                    humidity.Number.invalid_image = imgNumber.invalid_image;
-                                    humidity.Number.dot_image = imgNumber.dot_image;
-                                    humidity.Number.align = imgNumber.align;
-                                    humidity.Number.visible = true;
-                                    humidity.Number.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgNumber.type == "ALTIMETER")
-                            {
-                                ElementAltimeter altimeter = (ElementAltimeter)elementsList.Find(e => e.GetType().Name == "ElementAltimeter");
-                                if (altimeter == null)
-                                {
-                                    elementsList.Add(new ElementAltimeter());
-                                    altimeter = (ElementAltimeter)elementsList.Find(e => e.GetType().Name == "ElementAltimeter");
-                                }
-                                if (altimeter != null)
-                                {
-                                    int offset = 1;
-                                    //if (altimeter.Number != null) offset++;
-                                    if (altimeter.Pointer != null) offset++;
-                                    if (altimeter.Icon != null) offset++;
-
-                                    altimeter.Number = new hmUI_widget_IMG_NUMBER();
-                                    altimeter.Number.img_First = imgNumber.img_First;
-                                    altimeter.Number.imageX = imgNumber.imageX;
-                                    altimeter.Number.imageY = imgNumber.imageY;
-                                    altimeter.Number.space = imgNumber.space;
-                                    altimeter.Number.zero = imgNumber.zero;
-                                    altimeter.Number.unit = imgNumber.unit;
-                                    altimeter.Number.imperial_unit = imgNumber.imperial_unit;
-                                    altimeter.Number.negative_image = imgNumber.negative_image;
-                                    altimeter.Number.invalid_image = imgNumber.invalid_image;
-                                    altimeter.Number.dot_image = imgNumber.dot_image;
-                                    altimeter.Number.align = imgNumber.align;
-                                    altimeter.Number.visible = true;
-                                    altimeter.Number.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgNumber.type == "SUN_RISE")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementSunrise sunrise = (ElementSunrise)elementsList.Find(e => e.GetType().Name == "ElementSunrise");
-                                if (sunrise == null)
-                                {
-                                    elementsList.Add(new ElementSunrise());
-                                    sunrise = (ElementSunrise)elementsList.Find(e => e.GetType().Name == "ElementSunrise");
-                                }
-                                if (sunrise != null)
-                                {
-                                    int offset = 1;
-                                    if (sunrise.Images != null) offset++;
-                                    if (sunrise.Segments != null) offset++;
-                                    //if (sunrise.Sunrise != null) offset++;
-                                    if (sunrise.Sunset != null) offset++;
-                                    if (sunrise.Sunset_Sunrise != null) offset++;
-                                    if (sunrise.Pointer != null) offset++;
-                                    if (sunrise.Icon != null) offset++;
-
-                                    sunrise.Sunrise = new hmUI_widget_IMG_NUMBER();
-                                    sunrise.Sunrise.img_First = imgNumber.img_First;
-                                    sunrise.Sunrise.imageX = imgNumber.imageX;
-                                    sunrise.Sunrise.imageY = imgNumber.imageY;
-                                    sunrise.Sunrise.space = imgNumber.space;
-                                    sunrise.Sunrise.zero = imgNumber.zero;
-                                    sunrise.Sunrise.unit = imgNumber.unit;
-                                    sunrise.Sunrise.imperial_unit = imgNumber.imperial_unit;
-                                    sunrise.Sunrise.negative_image = imgNumber.negative_image;
-                                    sunrise.Sunrise.invalid_image = imgNumber.invalid_image;
-                                    sunrise.Sunrise.dot_image = imgNumber.dot_image;
-                                    sunrise.Sunrise.align = imgNumber.align;
-                                    sunrise.Sunrise.visible = true;
-                                    sunrise.Sunrise.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgNumber.type == "SUN_SET")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementSunrise sunrise = (ElementSunrise)elementsList.Find(e => e.GetType().Name == "ElementSunrise");
-                                if (sunrise == null)
-                                {
-                                    elementsList.Add(new ElementSunrise());
-                                    sunrise = (ElementSunrise)elementsList.Find(e => e.GetType().Name == "ElementSunrise");
-                                }
-                                if (sunrise != null)
-                                {
-                                    int offset = 1;
-                                    if (sunrise.Images != null) offset++;
-                                    if (sunrise.Segments != null) offset++;
-                                    if (sunrise.Sunrise != null) offset++;
-                                    //if (sunrise.Sunset != null) offset++;
-                                    if (sunrise.Sunset_Sunrise != null) offset++;
-                                    if (sunrise.Pointer != null) offset++;
-                                    if (sunrise.Icon != null) offset++;
-
-                                    sunrise.Sunset = new hmUI_widget_IMG_NUMBER();
-                                    sunrise.Sunset.img_First = imgNumber.img_First;
-                                    sunrise.Sunset.imageX = imgNumber.imageX;
-                                    sunrise.Sunset.imageY = imgNumber.imageY;
-                                    sunrise.Sunset.space = imgNumber.space;
-                                    sunrise.Sunset.zero = imgNumber.zero;
-                                    sunrise.Sunset.unit = imgNumber.unit;
-                                    sunrise.Sunset.imperial_unit = imgNumber.imperial_unit;
-                                    sunrise.Sunset.negative_image = imgNumber.negative_image;
-                                    sunrise.Sunset.invalid_image = imgNumber.invalid_image;
-                                    sunrise.Sunset.dot_image = imgNumber.dot_image;
-                                    sunrise.Sunset.align = imgNumber.align;
-                                    sunrise.Sunset.visible = true;
-                                    sunrise.Sunset.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgNumber.type == "SUN_CURRENT")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementSunrise sunrise = (ElementSunrise)elementsList.Find(e => e.GetType().Name == "ElementSunrise");
-                                if (sunrise == null)
-                                {
-                                    elementsList.Add(new ElementSunrise());
-                                    sunrise = (ElementSunrise)elementsList.Find(e => e.GetType().Name == "ElementSunrise");
-                                }
-                                if (sunrise != null)
-                                {
-                                    int offset = 1;
-                                    if (sunrise.Images != null) offset++;
-                                    if (sunrise.Segments != null) offset++;
-                                    if (sunrise.Sunrise != null) offset++;
-                                    //if (sunrise.Sunset_Sunrise != null) offset++;
-                                    if (sunrise.Sunset != null) offset++;
-                                    if (sunrise.Pointer != null) offset++;
-                                    if (sunrise.Icon != null) offset++;
-
-                                    sunrise.Sunset_Sunrise = new hmUI_widget_IMG_NUMBER();
-                                    sunrise.Sunset_Sunrise.img_First = imgNumber.img_First;
-                                    sunrise.Sunset_Sunrise.imageX = imgNumber.imageX;
-                                    sunrise.Sunset_Sunrise.imageY = imgNumber.imageY;
-                                    sunrise.Sunset_Sunrise.space = imgNumber.space;
-                                    sunrise.Sunset_Sunrise.zero = imgNumber.zero;
-                                    sunrise.Sunset_Sunrise.unit = imgNumber.unit;
-                                    sunrise.Sunset_Sunrise.imperial_unit = imgNumber.imperial_unit;
-                                    sunrise.Sunset_Sunrise.negative_image = imgNumber.negative_image;
-                                    sunrise.Sunset_Sunrise.invalid_image = imgNumber.invalid_image;
-                                    sunrise.Sunset_Sunrise.dot_image = imgNumber.dot_image;
-                                    sunrise.Sunset_Sunrise.align = imgNumber.align;
-                                    sunrise.Sunset_Sunrise.visible = true;
-                                    sunrise.Sunset_Sunrise.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgNumber.type == "WIND")
-                            {
-                                ElementWind wind = (ElementWind)elementsList.Find(e => e.GetType().Name == "ElementWind");
-                                if (wind == null)
-                                {
-                                    elementsList.Add(new ElementWind());
-                                    wind = (ElementWind)elementsList.Find(e => e.GetType().Name == "ElementWind");
-                                }
-                                if (wind != null)
-                                {
-                                    int offset = 1;
-                                    if (wind.Images != null) offset++;
-                                    if (wind.Segments != null) offset++;
-                                    //if (wind.Number != null) offset++;
-                                    if (wind.Pointer != null) offset++;
-                                    if (wind.Icon != null) offset++;
-
-                                    wind.Number = new hmUI_widget_IMG_NUMBER();
-                                    wind.Number.img_First = imgNumber.img_First;
-                                    wind.Number.imageX = imgNumber.imageX;
-                                    wind.Number.imageY = imgNumber.imageY;
-                                    wind.Number.space = imgNumber.space;
-                                    wind.Number.zero = imgNumber.zero;
-                                    wind.Number.unit = imgNumber.unit;
-                                    wind.Number.imperial_unit = imgNumber.imperial_unit;
-                                    wind.Number.negative_image = imgNumber.negative_image;
-                                    wind.Number.invalid_image = imgNumber.invalid_image;
-                                    wind.Number.dot_image = imgNumber.dot_image;
-                                    wind.Number.align = imgNumber.align;
-                                    wind.Number.visible = true;
-                                    wind.Number.position = offset;
-                                }
-                            }
-
-
-
+                            ParametrsToObject(elementsList, parametrs);
                             break;
                         #endregion
 
@@ -13275,544 +11284,7 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenAOD.Elements;
                             }
-
-                            if (elementsList != null && imgPointer.type == "STEP")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementSteps steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
-                                if (steps == null)
-                                {
-                                    elementsList.Add(new ElementSteps());
-                                    steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
-                                }
-                                if (steps != null)
-                                {
-                                    int offset = 1;
-                                    if (steps.Images != null) offset++;
-                                    if (steps.Segments != null) offset++;
-                                    if (steps.Number != null) offset++;
-                                    if (steps.Number_Target != null) offset++;
-                                    //if (steps.Pointer != null) offset++;
-                                    if (steps.Circle_Scale != null) offset++;
-                                    if (steps.Linear_Scale != null) offset++;
-                                    if (steps.Icon != null) offset++;
-
-                                    steps.Pointer = new hmUI_widget_IMG_POINTER();
-                                    steps.Pointer.src = imgPointer.src;
-                                    steps.Pointer.center_x = imgPointer.center_x;
-                                    steps.Pointer.center_y = imgPointer.center_y;
-                                    steps.Pointer.pos_x = imgPointer.pos_x;
-                                    steps.Pointer.pos_y = imgPointer.pos_y;
-                                    steps.Pointer.start_angle = imgPointer.start_angle;
-                                    steps.Pointer.end_angle = imgPointer.end_angle;
-                                    steps.Pointer.cover_path = imgPointer.cover_path;
-                                    steps.Pointer.cover_x = imgPointer.cover_x;
-                                    steps.Pointer.cover_y = imgPointer.cover_y;
-                                    steps.Pointer.scale = imgPointer.scale;
-                                    steps.Pointer.scale_x = imgPointer.scale_x;
-                                    steps.Pointer.scale_y = imgPointer.scale_y;
-                                    steps.Pointer.visible = true;
-                                    steps.Pointer.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgPointer.type == "BATTERY")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementBattery battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
-                                if (battery == null)
-                                {
-                                    elementsList.Add(new ElementBattery());
-                                    battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
-                                }
-                                if (battery != null)
-                                {
-                                    int offset = 1;
-                                    if (battery.Images != null) offset++;
-                                    if (battery.Segments != null) offset++;
-                                    if (battery.Number != null) offset++;
-                                    //if (steps.Pointer != null) offset++;
-                                    if (battery.Circle_Scale != null) offset++;
-                                    if (battery.Linear_Scale != null) offset++;
-                                    if (battery.Icon != null) offset++;
-
-                                    battery.Pointer = new hmUI_widget_IMG_POINTER();
-                                    battery.Pointer.src = imgPointer.src;
-                                    battery.Pointer.center_x = imgPointer.center_x;
-                                    battery.Pointer.center_y = imgPointer.center_y;
-                                    battery.Pointer.pos_x = imgPointer.pos_x;
-                                    battery.Pointer.pos_y = imgPointer.pos_y;
-                                    battery.Pointer.start_angle = imgPointer.start_angle;
-                                    battery.Pointer.end_angle = imgPointer.end_angle;
-                                    battery.Pointer.cover_path = imgPointer.cover_path;
-                                    battery.Pointer.cover_x = imgPointer.cover_x;
-                                    battery.Pointer.cover_y = imgPointer.cover_y;
-                                    battery.Pointer.scale = imgPointer.scale;
-                                    battery.Pointer.scale_x = imgPointer.scale_x;
-                                    battery.Pointer.scale_y = imgPointer.scale_y;
-                                    battery.Pointer.visible = true;
-                                    battery.Pointer.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgPointer.type == "CAL")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementCalories calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
-                                if (calorie == null)
-                                {
-                                    elementsList.Add(new ElementCalories());
-                                    calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
-                                }
-                                if (calorie != null)
-                                {
-                                    int offset = 1;
-                                    if (calorie.Images != null) offset++;
-                                    if (calorie.Segments != null) offset++;
-                                    if (calorie.Number != null) offset++;
-                                    if (calorie.Number_Target != null) offset++;
-                                    //if (steps.Pointer != null) offset++;
-                                    if (calorie.Circle_Scale != null) offset++;
-                                    if (calorie.Linear_Scale != null) offset++;
-                                    if (calorie.Icon != null) offset++;
-
-                                    calorie.Pointer = new hmUI_widget_IMG_POINTER();
-                                    calorie.Pointer.src = imgPointer.src;
-                                    calorie.Pointer.center_x = imgPointer.center_x;
-                                    calorie.Pointer.center_y = imgPointer.center_y;
-                                    calorie.Pointer.pos_x = imgPointer.pos_x;
-                                    calorie.Pointer.pos_y = imgPointer.pos_y;
-                                    calorie.Pointer.start_angle = imgPointer.start_angle;
-                                    calorie.Pointer.end_angle = imgPointer.end_angle;
-                                    calorie.Pointer.cover_path = imgPointer.cover_path;
-                                    calorie.Pointer.cover_x = imgPointer.cover_x;
-                                    calorie.Pointer.cover_y = imgPointer.cover_y;
-                                    calorie.Pointer.scale = imgPointer.scale;
-                                    calorie.Pointer.scale_x = imgPointer.scale_x;
-                                    calorie.Pointer.scale_y = imgPointer.scale_y;
-                                    calorie.Pointer.visible = true;
-                                    calorie.Pointer.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgPointer.type == "HEART")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementHeart heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
-                                if (heart == null)
-                                {
-                                    elementsList.Add(new ElementHeart());
-                                    heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
-                                }
-                                if (heart != null)
-                                {
-                                    int offset = 1;
-                                    if (heart.Images != null) offset++;
-                                    if (heart.Segments != null) offset++;
-                                    if (heart.Number != null) offset++;
-                                    //if (steps.Pointer != null) offset++;
-                                    if (heart.Circle_Scale != null) offset++;
-                                    if (heart.Linear_Scale != null) offset++;
-                                    if (heart.Icon != null) offset++;
-
-                                    heart.Pointer = new hmUI_widget_IMG_POINTER();
-                                    heart.Pointer.src = imgPointer.src;
-                                    heart.Pointer.center_x = imgPointer.center_x;
-                                    heart.Pointer.center_y = imgPointer.center_y;
-                                    heart.Pointer.pos_x = imgPointer.pos_x;
-                                    heart.Pointer.pos_y = imgPointer.pos_y;
-                                    heart.Pointer.start_angle = imgPointer.start_angle;
-                                    heart.Pointer.end_angle = imgPointer.end_angle;
-                                    heart.Pointer.cover_path = imgPointer.cover_path;
-                                    heart.Pointer.cover_x = imgPointer.cover_x;
-                                    heart.Pointer.cover_y = imgPointer.cover_y;
-                                    heart.Pointer.scale = imgPointer.scale;
-                                    heart.Pointer.scale_x = imgPointer.scale_x;
-                                    heart.Pointer.scale_y = imgPointer.scale_y;
-                                    heart.Pointer.visible = true;
-                                    heart.Pointer.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgPointer.type == "PAI_WEEKLY")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementPAI pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
-                                if (pai == null)
-                                {
-                                    elementsList.Add(new ElementPAI());
-                                    pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
-                                }
-                                if (pai != null)
-                                {
-                                    int offset = 1;
-                                    if (pai.Images != null) offset++;
-                                    if (pai.Segments != null) offset++;
-                                    if (pai.Number != null) offset++;
-                                    if (pai.Number_Target != null) offset++;
-                                    //if (steps.Pointer != null) offset++;
-                                    if (pai.Circle_Scale != null) offset++;
-                                    if (pai.Linear_Scale != null) offset++;
-                                    if (pai.Icon != null) offset++;
-
-                                    pai.Pointer = new hmUI_widget_IMG_POINTER();
-                                    pai.Pointer.src = imgPointer.src;
-                                    pai.Pointer.center_x = imgPointer.center_x;
-                                    pai.Pointer.center_y = imgPointer.center_y;
-                                    pai.Pointer.pos_x = imgPointer.pos_x;
-                                    pai.Pointer.pos_y = imgPointer.pos_y;
-                                    pai.Pointer.start_angle = imgPointer.start_angle;
-                                    pai.Pointer.end_angle = imgPointer.end_angle;
-                                    pai.Pointer.cover_path = imgPointer.cover_path;
-                                    pai.Pointer.cover_x = imgPointer.cover_x;
-                                    pai.Pointer.cover_y = imgPointer.cover_y;
-                                    pai.Pointer.scale = imgPointer.scale;
-                                    pai.Pointer.scale_x = imgPointer.scale_x;
-                                    pai.Pointer.scale_y = imgPointer.scale_y;
-                                    pai.Pointer.visible = true;
-                                    pai.Pointer.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgPointer.type == "STAND")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementStand stand = (ElementStand)elementsList.Find(e => e.GetType().Name == "ElementStand");
-                                if (stand == null)
-                                {
-                                    elementsList.Add(new ElementStand());
-                                    stand = (ElementStand)elementsList.Find(e => e.GetType().Name == "ElementStand");
-                                }
-                                if (stand != null)
-                                {
-                                    int offset = 1;
-                                    if (stand.Images != null) offset++;
-                                    if (stand.Segments != null) offset++;
-                                    if (stand.Number != null) offset++;
-                                    if (stand.Number_Target != null) offset++;
-                                    //if (stand.Pointer != null) offset++;
-                                    if (stand.Circle_Scale != null) offset++;
-                                    if (stand.Linear_Scale != null) offset++;
-                                    if (stand.Icon != null) offset++;
-
-                                    stand.Pointer = new hmUI_widget_IMG_POINTER();
-                                    stand.Pointer.src = imgPointer.src;
-                                    stand.Pointer.center_x = imgPointer.center_x;
-                                    stand.Pointer.center_y = imgPointer.center_y;
-                                    stand.Pointer.pos_x = imgPointer.pos_x;
-                                    stand.Pointer.pos_y = imgPointer.pos_y;
-                                    stand.Pointer.start_angle = imgPointer.start_angle;
-                                    stand.Pointer.end_angle = imgPointer.end_angle;
-                                    stand.Pointer.cover_path = imgPointer.cover_path;
-                                    stand.Pointer.cover_x = imgPointer.cover_x;
-                                    stand.Pointer.cover_y = imgPointer.cover_y;
-                                    stand.Pointer.scale = imgPointer.scale;
-                                    stand.Pointer.scale_x = imgPointer.scale_x;
-                                    stand.Pointer.scale_y = imgPointer.scale_y;
-                                    stand.Pointer.visible = true;
-                                    stand.Pointer.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgPointer.type == "ACTIVITY")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementActivity activity = (ElementActivity)elementsList.Find(e => e.GetType().Name == "ElementActivity");
-                                if (activity == null)
-                                {
-                                    elementsList.Add(new ElementActivity());
-                                    activity = (ElementActivity)elementsList.Find(e => e.GetType().Name == "ElementActivity");
-                                }
-                                if (activity != null)
-                                {
-                                    int offset = 1;
-                                    if (activity.Images != null) offset++;
-                                    if (activity.Segments != null) offset++;
-                                    if (activity.Number != null) offset++;
-                                    if (activity.Number_Target != null) offset++;
-                                    //if (activity.Pointer != null) offset++;
-                                    if (activity.Circle_Scale != null) offset++;
-                                    if (activity.Linear_Scale != null) offset++;
-                                    if (activity.Icon != null) offset++;
-
-                                    activity.Pointer = new hmUI_widget_IMG_POINTER();
-                                    activity.Pointer.src = imgPointer.src;
-                                    activity.Pointer.center_x = imgPointer.center_x;
-                                    activity.Pointer.center_y = imgPointer.center_y;
-                                    activity.Pointer.pos_x = imgPointer.pos_x;
-                                    activity.Pointer.pos_y = imgPointer.pos_y;
-                                    activity.Pointer.start_angle = imgPointer.start_angle;
-                                    activity.Pointer.end_angle = imgPointer.end_angle;
-                                    activity.Pointer.cover_path = imgPointer.cover_path;
-                                    activity.Pointer.cover_x = imgPointer.cover_x;
-                                    activity.Pointer.cover_y = imgPointer.cover_y;
-                                    activity.Pointer.scale = imgPointer.scale;
-                                    activity.Pointer.scale_x = imgPointer.scale_x;
-                                    activity.Pointer.scale_y = imgPointer.scale_y;
-                                    activity.Pointer.visible = true;
-                                    activity.Pointer.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgPointer.type == "STRESS")
-                            {
-                                ElementStress stress = (ElementStress)elementsList.Find(e => e.GetType().Name == "ElementStress");
-                                if (stress == null)
-                                {
-                                    elementsList.Add(new ElementStress());
-                                    stress = (ElementStress)elementsList.Find(e => e.GetType().Name == "ElementStress");
-                                }
-                                if (stress != null)
-                                {
-                                    int offset = 1;
-                                    if (stress.Images != null) offset++;
-                                    if (stress.Segments != null) offset++;
-                                    if (stress.Number != null) offset++;
-                                    //if (stress.Pointer != null) offset++;
-                                    if (stress.Icon != null) offset++;
-
-                                    stress.Pointer = new hmUI_widget_IMG_POINTER();
-                                    stress.Pointer.src = imgPointer.src;
-                                    stress.Pointer.center_x = imgPointer.center_x;
-                                    stress.Pointer.center_y = imgPointer.center_y;
-                                    stress.Pointer.pos_x = imgPointer.pos_x;
-                                    stress.Pointer.pos_y = imgPointer.pos_y;
-                                    stress.Pointer.start_angle = imgPointer.start_angle;
-                                    stress.Pointer.end_angle = imgPointer.end_angle;
-                                    stress.Pointer.cover_path = imgPointer.cover_path;
-                                    stress.Pointer.cover_x = imgPointer.cover_x;
-                                    stress.Pointer.cover_y = imgPointer.cover_y;
-                                    stress.Pointer.scale = imgPointer.scale;
-                                    stress.Pointer.scale_x = imgPointer.scale_x;
-                                    stress.Pointer.scale_y = imgPointer.scale_y;
-                                    stress.Pointer.visible = true;
-                                    stress.Pointer.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgPointer.type == "FAT_BURNING")
-                            {
-                                ElementFatBurning fat_burning = (ElementFatBurning)elementsList.Find(e => e.GetType().Name == "ElementFatBurning");
-                                if (fat_burning == null)
-                                {
-                                    elementsList.Add(new ElementFatBurning());
-                                    fat_burning = (ElementFatBurning)elementsList.Find(e => e.GetType().Name == "ElementFatBurning");
-                                }
-                                if (fat_burning != null)
-                                {
-                                    int offset = 1;
-                                    if (fat_burning.Images != null) offset++;
-                                    if (fat_burning.Segments != null) offset++;
-                                    if (fat_burning.Number != null) offset++;
-                                    if (fat_burning.Number_Target != null) offset++;
-                                    //if (fat_burning.Pointer != null) offset++;
-                                    if (fat_burning.Circle_Scale != null) offset++;
-                                    if (fat_burning.Linear_Scale != null) offset++;
-                                    if (fat_burning.Icon != null) offset++;
-
-                                    fat_burning.Pointer = new hmUI_widget_IMG_POINTER();
-                                    fat_burning.Pointer.src = imgPointer.src;
-                                    fat_burning.Pointer.center_x = imgPointer.center_x;
-                                    fat_burning.Pointer.center_y = imgPointer.center_y;
-                                    fat_burning.Pointer.pos_x = imgPointer.pos_x;
-                                    fat_burning.Pointer.pos_y = imgPointer.pos_y;
-                                    fat_burning.Pointer.start_angle = imgPointer.start_angle;
-                                    fat_burning.Pointer.end_angle = imgPointer.end_angle;
-                                    fat_burning.Pointer.cover_path = imgPointer.cover_path;
-                                    fat_burning.Pointer.cover_x = imgPointer.cover_x;
-                                    fat_burning.Pointer.cover_y = imgPointer.cover_y;
-                                    fat_burning.Pointer.scale = imgPointer.scale;
-                                    fat_burning.Pointer.scale_x = imgPointer.scale_x;
-                                    fat_burning.Pointer.scale_y = imgPointer.scale_y;
-                                    fat_burning.Pointer.visible = true;
-                                    fat_burning.Pointer.position = offset;
-                                }
-                            }
-
-
-
-                            if (elementsList != null && imgPointer.type == "UVI")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementUVIndex uv_index = (ElementUVIndex)elementsList.Find(e => e.GetType().Name == "ElementUVIndex");
-                                if (uv_index == null)
-                                {
-                                    elementsList.Add(new ElementUVIndex());
-                                    uv_index = (ElementUVIndex)elementsList.Find(e => e.GetType().Name == "ElementUVIndex");
-                                }
-                                if (uv_index != null)
-                                {
-                                    int offset = 1;
-                                    if (uv_index.Images != null) offset++;
-                                    if (uv_index.Segments != null) offset++;
-                                    if (uv_index.Number != null) offset++;
-                                    //if (uv_index.Pointer != null) offset++;
-                                    if (uv_index.Icon != null) offset++;
-
-                                    uv_index.Pointer = new hmUI_widget_IMG_POINTER();
-                                    uv_index.Pointer.src = imgPointer.src;
-                                    uv_index.Pointer.center_x = imgPointer.center_x;
-                                    uv_index.Pointer.center_y = imgPointer.center_y;
-                                    uv_index.Pointer.pos_x = imgPointer.pos_x;
-                                    uv_index.Pointer.pos_y = imgPointer.pos_y;
-                                    uv_index.Pointer.start_angle = imgPointer.start_angle;
-                                    uv_index.Pointer.end_angle = imgPointer.end_angle;
-                                    uv_index.Pointer.cover_path = imgPointer.cover_path;
-                                    uv_index.Pointer.cover_x = imgPointer.cover_x;
-                                    uv_index.Pointer.cover_y = imgPointer.cover_y;
-                                    uv_index.Pointer.scale = imgPointer.scale;
-                                    uv_index.Pointer.scale_x = imgPointer.scale_x;
-                                    uv_index.Pointer.scale_y = imgPointer.scale_y;
-                                    uv_index.Pointer.visible = true;
-                                    uv_index.Pointer.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgPointer.type == "HUMIDITY")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementHumidity humidity = (ElementHumidity)elementsList.Find(e => e.GetType().Name == "ElementHumidity");
-                                if (humidity == null)
-                                {
-                                    elementsList.Add(new ElementHumidity());
-                                    humidity = (ElementHumidity)elementsList.Find(e => e.GetType().Name == "ElementHumidity");
-                                }
-                                if (humidity != null)
-                                {
-                                    int offset = 1;
-                                    if (humidity.Images != null) offset++;
-                                    if (humidity.Segments != null) offset++;
-                                    if (humidity.Number != null) offset++;
-                                    //if (humidity.Pointer != null) offset++;
-                                    if (humidity.Icon != null) offset++;
-
-                                    humidity.Pointer = new hmUI_widget_IMG_POINTER();
-                                    humidity.Pointer.src = imgPointer.src;
-                                    humidity.Pointer.center_x = imgPointer.center_x;
-                                    humidity.Pointer.center_y = imgPointer.center_y;
-                                    humidity.Pointer.pos_x = imgPointer.pos_x;
-                                    humidity.Pointer.pos_y = imgPointer.pos_y;
-                                    humidity.Pointer.start_angle = imgPointer.start_angle;
-                                    humidity.Pointer.end_angle = imgPointer.end_angle;
-                                    humidity.Pointer.cover_path = imgPointer.cover_path;
-                                    humidity.Pointer.cover_x = imgPointer.cover_x;
-                                    humidity.Pointer.cover_y = imgPointer.cover_y;
-                                    humidity.Pointer.scale = imgPointer.scale;
-                                    humidity.Pointer.scale_x = imgPointer.scale_x;
-                                    humidity.Pointer.scale_y = imgPointer.scale_y;
-                                    humidity.Pointer.visible = true;
-                                    humidity.Pointer.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgPointer.type == "ALTIMETER")
-                            {
-                                ElementAltimeter altimeter = (ElementAltimeter)elementsList.Find(e => e.GetType().Name == "ElementAltimeter");
-                                if (altimeter == null)
-                                {
-                                    elementsList.Add(new ElementAltimeter());
-                                    altimeter = (ElementAltimeter)elementsList.Find(e => e.GetType().Name == "ElementAltimeter");
-                                }
-                                if (altimeter != null)
-                                {
-                                    int offset = 1;
-                                    if (altimeter.Number != null) offset++;
-                                    //if (altimeter.Pointer != null) offset++;
-                                    if (altimeter.Icon != null) offset++;
-
-                                    altimeter.Pointer = new hmUI_widget_IMG_POINTER();
-                                    altimeter.Pointer.src = imgPointer.src;
-                                    altimeter.Pointer.center_x = imgPointer.center_x;
-                                    altimeter.Pointer.center_y = imgPointer.center_y;
-                                    altimeter.Pointer.pos_x = imgPointer.pos_x;
-                                    altimeter.Pointer.pos_y = imgPointer.pos_y;
-                                    altimeter.Pointer.start_angle = imgPointer.start_angle;
-                                    altimeter.Pointer.end_angle = imgPointer.end_angle;
-                                    altimeter.Pointer.cover_path = imgPointer.cover_path;
-                                    altimeter.Pointer.cover_x = imgPointer.cover_x;
-                                    altimeter.Pointer.cover_y = imgPointer.cover_y;
-                                    altimeter.Pointer.scale = imgPointer.scale;
-                                    altimeter.Pointer.scale_x = imgPointer.scale_x;
-                                    altimeter.Pointer.scale_y = imgPointer.scale_y;
-                                    altimeter.Pointer.visible = true;
-                                    altimeter.Pointer.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgPointer.type == "SUN_CURRENT")
-                            {
-                                ElementSunrise sunrise = (ElementSunrise)elementsList.Find(e => e.GetType().Name == "ElementSunrise");
-                                if (sunrise == null)
-                                {
-                                    elementsList.Add(new ElementSunrise());
-                                    sunrise = (ElementSunrise)elementsList.Find(e => e.GetType().Name == "ElementSunrise");
-                                }
-                                if (sunrise != null)
-                                {
-                                    int offset = 1;
-                                    if (sunrise.Images != null) offset++;
-                                    if (sunrise.Segments != null) offset++;
-                                    if (sunrise.Sunrise != null) offset++;
-                                    if (sunrise.Sunset != null) offset++;
-                                    if (sunrise.Sunset_Sunrise != null) offset++;
-                                    //if (sunrise.Pointer != null) offset++;
-                                    if (sunrise.Icon != null) offset++;
-
-                                    sunrise.Pointer = new hmUI_widget_IMG_POINTER();
-                                    sunrise.Pointer.src = imgPointer.src;
-                                    sunrise.Pointer.center_x = imgPointer.center_x;
-                                    sunrise.Pointer.center_y = imgPointer.center_y;
-                                    sunrise.Pointer.pos_x = imgPointer.pos_x;
-                                    sunrise.Pointer.pos_y = imgPointer.pos_y;
-                                    sunrise.Pointer.start_angle = imgPointer.start_angle;
-                                    sunrise.Pointer.end_angle = imgPointer.end_angle;
-                                    sunrise.Pointer.cover_path = imgPointer.cover_path;
-                                    sunrise.Pointer.cover_x = imgPointer.cover_x;
-                                    sunrise.Pointer.cover_y = imgPointer.cover_y;
-                                    sunrise.Pointer.scale = imgPointer.scale;
-                                    sunrise.Pointer.scale_x = imgPointer.scale_x;
-                                    sunrise.Pointer.scale_y = imgPointer.scale_y;
-                                    sunrise.Pointer.visible = true;
-                                    sunrise.Pointer.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && imgPointer.type == "WIND")
-                            {
-                                ElementWind wind = (ElementWind)elementsList.Find(e => e.GetType().Name == "ElementWind");
-                                if (wind == null)
-                                {
-                                    elementsList.Add(new ElementWind());
-                                    wind = (ElementWind)elementsList.Find(e => e.GetType().Name == "ElementWind");
-                                }
-                                if (wind != null)
-                                {
-                                    int offset = 1;
-                                    if (wind.Images != null) offset++;
-                                    if (wind.Segments != null) offset++;
-                                    if (wind.Number != null) offset++;
-                                    //if (wind.Pointer != null) offset++;
-                                    if (wind.Icon != null) offset++;
-
-                                    wind.Pointer = new hmUI_widget_IMG_POINTER();
-                                    wind.Pointer.src = imgPointer.src;
-                                    wind.Pointer.center_x = imgPointer.center_x;
-                                    wind.Pointer.center_y = imgPointer.center_y;
-                                    wind.Pointer.pos_x = imgPointer.pos_x;
-                                    wind.Pointer.pos_y = imgPointer.pos_y;
-                                    wind.Pointer.start_angle = imgPointer.start_angle;
-                                    wind.Pointer.end_angle = imgPointer.end_angle;
-                                    wind.Pointer.cover_path = imgPointer.cover_path;
-                                    wind.Pointer.cover_x = imgPointer.cover_x;
-                                    wind.Pointer.cover_y = imgPointer.cover_y;
-                                    wind.Pointer.scale = imgPointer.scale;
-                                    wind.Pointer.scale_x = imgPointer.scale_x;
-                                    wind.Pointer.scale_y = imgPointer.scale_y;
-                                    wind.Pointer.visible = true;
-                                    wind.Pointer.position = offset;
-                                }
-                            }
-
+                            ParametrsToObject(elementsList, parametrs);
                             break;
                         #endregion
 
@@ -13832,257 +11304,7 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenAOD.Elements;
                             }
-
-                            if (elementsList != null && img_Circle_Scale.type == "STEP")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementSteps steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
-                                if (steps == null)
-                                {
-                                    elementsList.Add(new ElementSteps());
-                                    steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
-                                }
-                                if (steps != null)
-                                {
-                                    int offset = 1;
-                                    if (steps.Images != null) offset++;
-                                    if (steps.Segments != null) offset++;
-                                    if (steps.Number != null) offset++;
-                                    if (steps.Number_Target != null) offset++;
-                                    if (steps.Pointer != null) offset++;
-                                    //if (steps.Circle_Scale != null) offset++;
-                                    if (steps.Linear_Scale != null) offset++;
-                                    if (steps.Icon != null) offset++;
-
-                                    steps.Circle_Scale = new Circle_Scale();
-                                    steps.Circle_Scale.center_x = img_Circle_Scale.center_x;
-                                    steps.Circle_Scale.center_y = img_Circle_Scale.center_y;
-                                    steps.Circle_Scale.start_angle = img_Circle_Scale.start_angle;
-                                    steps.Circle_Scale.end_angle = img_Circle_Scale.end_angle;
-                                    steps.Circle_Scale.color = img_Circle_Scale.color;
-                                    steps.Circle_Scale.radius = img_Circle_Scale.radius;
-                                    steps.Circle_Scale.line_width = img_Circle_Scale.line_width;
-                                    steps.Circle_Scale.mirror = img_Circle_Scale.mirror;
-                                    steps.Circle_Scale.inversion = img_Circle_Scale.inversion;
-                                    steps.Circle_Scale.visible = true;
-                                    steps.Circle_Scale.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && img_Circle_Scale.type == "BATTERY")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementBattery battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
-                                if (battery == null)
-                                {
-                                    elementsList.Add(new ElementBattery());
-                                    battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
-                                }
-                                if (battery != null)
-                                {
-                                    int offset = 1;
-                                    if (battery.Images != null) offset++;
-                                    if (battery.Segments != null) offset++;
-                                    if (battery.Number != null) offset++;
-                                    if (battery.Pointer != null) offset++;
-                                    //if (steps.Circle_Scale != null) offset++;
-                                    if (battery.Linear_Scale != null) offset++;
-                                    if (battery.Icon != null) offset++;
-
-                                    battery.Circle_Scale = new Circle_Scale();
-                                    battery.Circle_Scale.center_x = img_Circle_Scale.center_x;
-                                    battery.Circle_Scale.center_y = img_Circle_Scale.center_y;
-                                    battery.Circle_Scale.start_angle = img_Circle_Scale.start_angle;
-                                    battery.Circle_Scale.end_angle = img_Circle_Scale.end_angle;
-                                    battery.Circle_Scale.color = img_Circle_Scale.color;
-                                    battery.Circle_Scale.radius = img_Circle_Scale.radius;
-                                    battery.Circle_Scale.line_width = img_Circle_Scale.line_width;
-                                    battery.Circle_Scale.mirror = img_Circle_Scale.mirror;
-                                    battery.Circle_Scale.inversion = img_Circle_Scale.inversion;
-                                    battery.Circle_Scale.visible = true;
-                                    battery.Circle_Scale.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && img_Circle_Scale.type == "CAL")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementCalories calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
-                                if (calorie == null)
-                                {
-                                    elementsList.Add(new ElementCalories());
-                                    calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
-                                }
-                                if (calorie != null)
-                                {
-                                    int offset = 1;
-                                    if (calorie.Images != null) offset++;
-                                    if (calorie.Segments != null) offset++;
-                                    if (calorie.Number != null) offset++;
-                                    if (calorie.Number_Target != null) offset++;
-                                    if (calorie.Pointer != null) offset++;
-                                    //if (steps.Circle_Scale != null) offset++;
-                                    if (calorie.Linear_Scale != null) offset++;
-                                    if (calorie.Icon != null) offset++;
-
-                                    calorie.Circle_Scale = new Circle_Scale();
-                                    calorie.Circle_Scale.center_x = img_Circle_Scale.center_x;
-                                    calorie.Circle_Scale.center_y = img_Circle_Scale.center_y;
-                                    calorie.Circle_Scale.start_angle = img_Circle_Scale.start_angle;
-                                    calorie.Circle_Scale.end_angle = img_Circle_Scale.end_angle;
-                                    calorie.Circle_Scale.color = img_Circle_Scale.color;
-                                    calorie.Circle_Scale.radius = img_Circle_Scale.radius;
-                                    calorie.Circle_Scale.line_width = img_Circle_Scale.line_width;
-                                    calorie.Circle_Scale.mirror = img_Circle_Scale.mirror;
-                                    calorie.Circle_Scale.inversion = img_Circle_Scale.inversion;
-                                    calorie.Circle_Scale.visible = true;
-                                    calorie.Circle_Scale.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && img_Circle_Scale.type == "HEART")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementHeart heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
-                                if (heart == null)
-                                {
-                                    elementsList.Add(new ElementHeart());
-                                    heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
-                                }
-                                if (heart != null)
-                                {
-                                    int offset = 1;
-                                    if (heart.Images != null) offset++;
-                                    if (heart.Segments != null) offset++;
-                                    if (heart.Number != null) offset++;
-                                    if (heart.Pointer != null) offset++;
-                                    //if (steps.Circle_Scale != null) offset++;
-                                    if (heart.Linear_Scale != null) offset++;
-                                    if (heart.Icon != null) offset++;
-
-                                    heart.Circle_Scale = new Circle_Scale();
-                                    heart.Circle_Scale.center_x = img_Circle_Scale.center_x;
-                                    heart.Circle_Scale.center_y = img_Circle_Scale.center_y;
-                                    heart.Circle_Scale.start_angle = img_Circle_Scale.start_angle;
-                                    heart.Circle_Scale.end_angle = img_Circle_Scale.end_angle;
-                                    heart.Circle_Scale.color = img_Circle_Scale.color;
-                                    heart.Circle_Scale.radius = img_Circle_Scale.radius;
-                                    heart.Circle_Scale.line_width = img_Circle_Scale.line_width;
-                                    heart.Circle_Scale.mirror = img_Circle_Scale.mirror;
-                                    heart.Circle_Scale.inversion = img_Circle_Scale.inversion;
-                                    heart.Circle_Scale.visible = true;
-                                    heart.Circle_Scale.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && img_Circle_Scale.type == "PAI_WEEKLY")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementPAI pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
-                                if (pai == null)
-                                {
-                                    elementsList.Add(new ElementPAI());
-                                    pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
-                                }
-                                if (pai != null)
-                                {
-                                    int offset = 1;
-                                    if (pai.Images != null) offset++;
-                                    if (pai.Segments != null) offset++;
-                                    if (pai.Number != null) offset++;
-                                    if (pai.Number_Target != null) offset++;
-                                    if (pai.Pointer != null) offset++;
-                                    //if (steps.Circle_Scale != null) offset++;
-                                    if (pai.Linear_Scale != null) offset++;
-                                    if (pai.Icon != null) offset++;
-
-                                    pai.Circle_Scale = new Circle_Scale();
-                                    pai.Circle_Scale.center_x = img_Circle_Scale.center_x;
-                                    pai.Circle_Scale.center_y = img_Circle_Scale.center_y;
-                                    pai.Circle_Scale.start_angle = img_Circle_Scale.start_angle;
-                                    pai.Circle_Scale.end_angle = img_Circle_Scale.end_angle;
-                                    pai.Circle_Scale.color = img_Circle_Scale.color;
-                                    pai.Circle_Scale.radius = img_Circle_Scale.radius;
-                                    pai.Circle_Scale.line_width = img_Circle_Scale.line_width;
-                                    pai.Circle_Scale.mirror = img_Circle_Scale.mirror;
-                                    pai.Circle_Scale.inversion = img_Circle_Scale.inversion;
-                                    pai.Circle_Scale.visible = true;
-                                    pai.Circle_Scale.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && img_Circle_Scale.type == "STAND")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementStand stand = (ElementStand)elementsList.Find(e => e.GetType().Name == "ElementStand");
-                                if (stand == null)
-                                {
-                                    elementsList.Add(new ElementStand());
-                                    stand = (ElementStand)elementsList.Find(e => e.GetType().Name == "ElementStand");
-                                }
-                                if (stand != null)
-                                {
-                                    int offset = 1;
-                                    if (stand.Images != null) offset++;
-                                    if (stand.Segments != null) offset++;
-                                    if (stand.Number != null) offset++;
-                                    if (stand.Number_Target != null) offset++;
-                                    if (stand.Pointer != null) offset++;
-                                    //if (stand.Circle_Scale != null) offset++;
-                                    if (stand.Linear_Scale != null) offset++;
-                                    if (stand.Icon != null) offset++;
-
-                                    stand.Circle_Scale = new Circle_Scale();
-                                    stand.Circle_Scale.center_x = img_Circle_Scale.center_x;
-                                    stand.Circle_Scale.center_y = img_Circle_Scale.center_y;
-                                    stand.Circle_Scale.start_angle = img_Circle_Scale.start_angle;
-                                    stand.Circle_Scale.end_angle = img_Circle_Scale.end_angle;
-                                    stand.Circle_Scale.color = img_Circle_Scale.color;
-                                    stand.Circle_Scale.radius = img_Circle_Scale.radius;
-                                    stand.Circle_Scale.line_width = img_Circle_Scale.line_width;
-                                    stand.Circle_Scale.mirror = img_Circle_Scale.mirror;
-                                    stand.Circle_Scale.inversion = img_Circle_Scale.inversion;
-                                    stand.Circle_Scale.visible = true;
-                                    stand.Circle_Scale.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && img_Circle_Scale.type == "ACTIVITY")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementActivity activity = (ElementActivity)elementsList.Find(e => e.GetType().Name == "ElementActivity");
-                                if (activity == null)
-                                {
-                                    elementsList.Add(new ElementActivity());
-                                    activity = (ElementActivity)elementsList.Find(e => e.GetType().Name == "ElementActivity");
-                                }
-                                if (activity != null)
-                                {
-                                    int offset = 1;
-                                    if (activity.Images != null) offset++;
-                                    if (activity.Segments != null) offset++;
-                                    if (activity.Number != null) offset++;
-                                    if (activity.Number_Target != null) offset++;
-                                    if (activity.Pointer != null) offset++;
-                                    //if (activity.Circle_Scale != null) offset++;
-                                    if (activity.Linear_Scale != null) offset++;
-                                    if (activity.Icon != null) offset++;
-
-                                    activity.Circle_Scale = new Circle_Scale();
-                                    activity.Circle_Scale.center_x = img_Circle_Scale.center_x;
-                                    activity.Circle_Scale.center_y = img_Circle_Scale.center_y;
-                                    activity.Circle_Scale.start_angle = img_Circle_Scale.start_angle;
-                                    activity.Circle_Scale.end_angle = img_Circle_Scale.end_angle;
-                                    activity.Circle_Scale.color = img_Circle_Scale.color;
-                                    activity.Circle_Scale.radius = img_Circle_Scale.radius;
-                                    activity.Circle_Scale.line_width = img_Circle_Scale.line_width;
-                                    activity.Circle_Scale.mirror = img_Circle_Scale.mirror;
-                                    activity.Circle_Scale.inversion = img_Circle_Scale.inversion;
-                                    activity.Circle_Scale.visible = true;
-                                    activity.Circle_Scale.position = offset;
-                                }
-                            }
-
+                            ParametrsToObject(elementsList, parametrs);
                             break;
                         #endregion
 
@@ -14102,257 +11324,7 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenAOD.Elements;
                             }
-
-                            if (elementsList != null && img_Linear_Scale.type == "STEP")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementSteps steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
-                                if (steps == null)
-                                {
-                                    elementsList.Add(new ElementSteps());
-                                    steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
-                                }
-                                if (steps != null)
-                                {
-                                    int offset = 1;
-                                    if (steps.Images != null) offset++;
-                                    if (steps.Segments != null) offset++;
-                                    if (steps.Number != null) offset++;
-                                    if (steps.Number_Target != null) offset++;
-                                    if (steps.Pointer != null) offset++;
-                                    if (steps.Circle_Scale != null) offset++;
-                                    //if (steps.Linear_Scale != null) offset++;
-                                    if (steps.Icon != null) offset++;
-
-                                    steps.Linear_Scale = new Linear_Scale();
-                                    steps.Linear_Scale.start_x = img_Linear_Scale.start_x;
-                                    steps.Linear_Scale.start_y = img_Linear_Scale.start_y;
-                                    steps.Linear_Scale.color = img_Linear_Scale.color;
-                                    steps.Linear_Scale.lenght = img_Linear_Scale.lenght;
-                                    steps.Linear_Scale.line_width = img_Linear_Scale.line_width;
-                                    steps.Linear_Scale.mirror = img_Linear_Scale.mirror;
-                                    steps.Linear_Scale.inversion = img_Linear_Scale.inversion;
-                                    steps.Linear_Scale.vertical = img_Linear_Scale.vertical;
-                                    steps.Linear_Scale.pointer = img_Linear_Scale.pointer;
-                                    steps.Linear_Scale.visible = true;
-                                    steps.Linear_Scale.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && img_Linear_Scale.type == "BATTERY")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementBattery battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
-                                if (battery == null)
-                                {
-                                    elementsList.Add(new ElementBattery());
-                                    battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
-                                }
-                                if (battery != null)
-                                {
-                                    int offset = 1;
-                                    if (battery.Images != null) offset++;
-                                    if (battery.Segments != null) offset++;
-                                    if (battery.Number != null) offset++;
-                                    if (battery.Pointer != null) offset++;
-                                    if (battery.Circle_Scale != null) offset++;
-                                    //if (steps.Linear_Scale != null) offset++;
-                                    if (battery.Icon != null) offset++;
-
-                                    battery.Linear_Scale = new Linear_Scale();
-                                    battery.Linear_Scale.start_x = img_Linear_Scale.start_x;
-                                    battery.Linear_Scale.start_y = img_Linear_Scale.start_y;
-                                    battery.Linear_Scale.color = img_Linear_Scale.color;
-                                    battery.Linear_Scale.lenght = img_Linear_Scale.lenght;
-                                    battery.Linear_Scale.line_width = img_Linear_Scale.line_width;
-                                    battery.Linear_Scale.mirror = img_Linear_Scale.mirror;
-                                    battery.Linear_Scale.inversion = img_Linear_Scale.inversion;
-                                    battery.Linear_Scale.vertical = img_Linear_Scale.vertical;
-                                    battery.Linear_Scale.pointer = img_Linear_Scale.pointer;
-                                    battery.Linear_Scale.visible = true;
-                                    battery.Linear_Scale.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && img_Linear_Scale.type == "CAL")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementCalories calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
-                                if (calorie == null)
-                                {
-                                    elementsList.Add(new ElementCalories());
-                                    calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
-                                }
-                                if (calorie != null)
-                                {
-                                    int offset = 1;
-                                    if (calorie.Images != null) offset++;
-                                    if (calorie.Segments != null) offset++;
-                                    if (calorie.Number != null) offset++;
-                                    if (calorie.Number_Target != null) offset++;
-                                    if (calorie.Pointer != null) offset++;
-                                    if (calorie.Circle_Scale != null) offset++;
-                                    //if (steps.Linear_Scale != null) offset++;
-                                    if (calorie.Icon != null) offset++;
-
-                                    calorie.Linear_Scale = new Linear_Scale();
-                                    calorie.Linear_Scale.start_x = img_Linear_Scale.start_x;
-                                    calorie.Linear_Scale.start_y = img_Linear_Scale.start_y;
-                                    calorie.Linear_Scale.color = img_Linear_Scale.color;
-                                    calorie.Linear_Scale.lenght = img_Linear_Scale.lenght;
-                                    calorie.Linear_Scale.line_width = img_Linear_Scale.line_width;
-                                    calorie.Linear_Scale.mirror = img_Linear_Scale.mirror;
-                                    calorie.Linear_Scale.inversion = img_Linear_Scale.inversion;
-                                    calorie.Linear_Scale.vertical = img_Linear_Scale.vertical;
-                                    calorie.Linear_Scale.pointer = img_Linear_Scale.pointer;
-                                    calorie.Linear_Scale.visible = true;
-                                    calorie.Linear_Scale.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && img_Linear_Scale.type == "HEART")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementHeart heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
-                                if (heart == null)
-                                {
-                                    elementsList.Add(new ElementHeart());
-                                    heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
-                                }
-                                if (heart != null)
-                                {
-                                    int offset = 1;
-                                    if (heart.Images != null) offset++;
-                                    if (heart.Segments != null) offset++;
-                                    if (heart.Number != null) offset++;
-                                    if (heart.Pointer != null) offset++;
-                                    if (heart.Circle_Scale != null) offset++;
-                                    //if (steps.Linear_Scale != null) offset++;
-                                    if (heart.Icon != null) offset++;
-
-                                    heart.Linear_Scale = new Linear_Scale();
-                                    heart.Linear_Scale.start_x = img_Linear_Scale.start_x;
-                                    heart.Linear_Scale.start_y = img_Linear_Scale.start_y;
-                                    heart.Linear_Scale.color = img_Linear_Scale.color;
-                                    heart.Linear_Scale.lenght = img_Linear_Scale.lenght;
-                                    heart.Linear_Scale.line_width = img_Linear_Scale.line_width;
-                                    heart.Linear_Scale.mirror = img_Linear_Scale.mirror;
-                                    heart.Linear_Scale.inversion = img_Linear_Scale.inversion;
-                                    heart.Linear_Scale.vertical = img_Linear_Scale.vertical;
-                                    heart.Linear_Scale.pointer = img_Linear_Scale.pointer;
-                                    heart.Linear_Scale.visible = true;
-                                    heart.Linear_Scale.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && img_Linear_Scale.type == "PAI_WEEKLY")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementPAI pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
-                                if (pai == null)
-                                {
-                                    elementsList.Add(new ElementPAI());
-                                    pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
-                                }
-                                if (pai != null)
-                                {
-                                    int offset = 1;
-                                    if (pai.Images != null) offset++;
-                                    if (pai.Segments != null) offset++;
-                                    if (pai.Number != null) offset++;
-                                    if (pai.Number_Target != null) offset++;
-                                    if (pai.Pointer != null) offset++;
-                                    if (pai.Circle_Scale != null) offset++;
-                                    //if (steps.Linear_Scale != null) offset++;
-                                    if (pai.Icon != null) offset++;
-
-                                    pai.Linear_Scale = new Linear_Scale();
-                                    pai.Linear_Scale.start_x = img_Linear_Scale.start_x;
-                                    pai.Linear_Scale.start_y = img_Linear_Scale.start_y;
-                                    pai.Linear_Scale.color = img_Linear_Scale.color;
-                                    pai.Linear_Scale.lenght = img_Linear_Scale.lenght;
-                                    pai.Linear_Scale.line_width = img_Linear_Scale.line_width;
-                                    pai.Linear_Scale.mirror = img_Linear_Scale.mirror;
-                                    pai.Linear_Scale.inversion = img_Linear_Scale.inversion;
-                                    pai.Linear_Scale.vertical = img_Linear_Scale.vertical;
-                                    pai.Linear_Scale.pointer = img_Linear_Scale.pointer;
-                                    pai.Linear_Scale.visible = true;
-                                    pai.Linear_Scale.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && img_Linear_Scale.type == "STAND")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementStand stand = (ElementStand)elementsList.Find(e => e.GetType().Name == "ElementStand");
-                                if (stand == null)
-                                {
-                                    elementsList.Add(new ElementStand());
-                                    stand = (ElementStand)elementsList.Find(e => e.GetType().Name == "ElementStand");
-                                }
-                                if (stand != null)
-                                {
-                                    int offset = 1;
-                                    if (stand.Images != null) offset++;
-                                    if (stand.Segments != null) offset++;
-                                    if (stand.Number != null) offset++;
-                                    if (stand.Number_Target != null) offset++;
-                                    if (stand.Pointer != null) offset++;
-                                    if (stand.Circle_Scale != null) offset++;
-                                    //if (stand.Linear_Scale != null) offset++;
-                                    if (stand.Icon != null) offset++;
-
-                                    stand.Linear_Scale = new Linear_Scale();
-                                    stand.Linear_Scale.start_x = img_Linear_Scale.start_x;
-                                    stand.Linear_Scale.start_y = img_Linear_Scale.start_y;
-                                    stand.Linear_Scale.color = img_Linear_Scale.color;
-                                    stand.Linear_Scale.lenght = img_Linear_Scale.lenght;
-                                    stand.Linear_Scale.line_width = img_Linear_Scale.line_width;
-                                    stand.Linear_Scale.mirror = img_Linear_Scale.mirror;
-                                    stand.Linear_Scale.inversion = img_Linear_Scale.inversion;
-                                    stand.Linear_Scale.vertical = img_Linear_Scale.vertical;
-                                    stand.Linear_Scale.pointer = img_Linear_Scale.pointer;
-                                    stand.Linear_Scale.visible = true;
-                                    stand.Linear_Scale.position = offset;
-                                }
-                            }
-
-                            if (elementsList != null && img_Linear_Scale.type == "ACTIVITY")
-                            //if (objectName.EndsWith("step_image_progress_img_level"))
-                            {
-                                ElementActivity activity = (ElementActivity)elementsList.Find(e => e.GetType().Name == "ElementActivity");
-                                if (activity == null)
-                                {
-                                    elementsList.Add(new ElementActivity());
-                                    activity = (ElementActivity)elementsList.Find(e => e.GetType().Name == "ElementActivity");
-                                }
-                                if (activity != null)
-                                {
-                                    int offset = 1;
-                                    if (activity.Images != null) offset++;
-                                    if (activity.Segments != null) offset++;
-                                    if (activity.Number != null) offset++;
-                                    if (activity.Number_Target != null) offset++;
-                                    if (activity.Pointer != null) offset++;
-                                    if (activity.Circle_Scale != null) offset++;
-                                    //if (activity.Linear_Scale != null) offset++;
-                                    if (activity.Icon != null) offset++;
-
-                                    activity.Linear_Scale = new Linear_Scale();
-                                    activity.Linear_Scale.start_x = img_Linear_Scale.start_x;
-                                    activity.Linear_Scale.start_y = img_Linear_Scale.start_y;
-                                    activity.Linear_Scale.color = img_Linear_Scale.color;
-                                    activity.Linear_Scale.lenght = img_Linear_Scale.lenght;
-                                    activity.Linear_Scale.line_width = img_Linear_Scale.line_width;
-                                    activity.Linear_Scale.mirror = img_Linear_Scale.mirror;
-                                    activity.Linear_Scale.inversion = img_Linear_Scale.inversion;
-                                    activity.Linear_Scale.vertical = img_Linear_Scale.vertical;
-                                    activity.Linear_Scale.pointer = img_Linear_Scale.pointer;
-                                    activity.Linear_Scale.visible = true;
-                                    activity.Linear_Scale.position = offset;
-                                }
-                            }
-
+                            ParametrsToObject(elementsList, parametrs);
                             break;
                         #endregion
 
@@ -14372,63 +11344,7 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenAOD.Elements;
                             }
-
-                            ElementStatuses elementStatuses = (ElementStatuses)elementsList.Find(e => e.GetType().Name == "ElementStatuses");
-                            if (elementStatuses == null)
-                            {
-                                elementsList.Add(new ElementStatuses());
-                                elementStatuses = (ElementStatuses)elementsList.Find(e => e.GetType().Name == "ElementStatuses");
-                            }
-                            if (elementStatuses != null)
-                            {
-                                int index = 1;
-                                switch (imgStatus.type) 
-                                {
-                                    case "CLOCK":
-                                        //if (elementStatuses.Alarm != null) index++;
-                                        if (elementStatuses.Bluetooth != null) index++;
-                                        if (elementStatuses.DND != null) index++;
-                                        if (elementStatuses.Lock != null) index++;
-
-                                        imgStatus.type = "Alarm";
-                                        imgStatus.position = index;
-                                        elementStatuses.Alarm = imgStatus;
-                                        break;
-
-                                    case "DISCONNECT":
-                                        if (elementStatuses.Alarm != null) index++;
-                                        //if (elementStatuses.Bluetooth != null) index++;
-                                        if (elementStatuses.DND != null) index++;
-                                        if (elementStatuses.Lock != null) index++;
-
-                                        imgStatus.type = "Bluetooth";
-                                        imgStatus.position = index;
-                                        elementStatuses.Bluetooth = imgStatus;
-                                        break;
-
-                                    case "DISTURB":
-                                        if (elementStatuses.Alarm != null) index++;
-                                        if (elementStatuses.Bluetooth != null) index++;
-                                        //if (elementStatuses.DND != null) index++;
-                                        if (elementStatuses.Lock != null) index++;
-
-                                        imgStatus.type = "DND";
-                                        imgStatus.position = index;
-                                        elementStatuses.DND = imgStatus;
-                                        break;
-
-                                    case "LOCK":
-                                        if (elementStatuses.Alarm != null) index++;
-                                        if (elementStatuses.Bluetooth != null) index++;
-                                        if (elementStatuses.DND != null) index++;
-                                        //if (elementStatuses.Lock != null) index++;
-
-                                        imgStatus.type = "Lock";
-                                        imgStatus.position = index;
-                                        elementStatuses.Lock = imgStatus;
-                                        break;
-                                }
-                            }
+                            ParametrsToObject(elementsList, parametrs);
                             break;
                         #endregion
 
@@ -14448,237 +11364,7 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenAOD.Elements;
                             }
-
-                            ElementShortcuts elementShortcuts = (ElementShortcuts)elementsList.Find(e => e.GetType().Name == "ElementShortcuts");
-                            if (elementShortcuts == null)
-                            {
-                                elementsList.Add(new ElementShortcuts());
-                                elementShortcuts = (ElementShortcuts)elementsList.Find(e => e.GetType().Name == "ElementShortcuts");
-                            }
-                            if (elementShortcuts != null)
-                            {
-                                int index = 1;
-                                switch (imgShortcut.type)
-                                {
-                                    case "STEP":
-                                        //if (elementShortcuts.Step != null) index++;
-                                        if (elementShortcuts.Heart != null) index++;
-                                        if (elementShortcuts.SPO2 != null) index++;
-                                        if (elementShortcuts.PAI != null) index++;
-                                        if (elementShortcuts.Stress != null) index++;
-                                        if (elementShortcuts.Weather != null) index++;
-                                        if (elementShortcuts.Altimeter != null) index++;
-                                        if (elementShortcuts.Sunrise != null) index++;
-                                        if (elementShortcuts.Alarm != null) index++;
-                                        if (elementShortcuts.Sleep != null) index++;
-                                        if (elementShortcuts.Countdown != null) index++;
-                                        if (elementShortcuts.Stopwatch != null) index++;
-
-                                        imgShortcut.position = index;
-                                        elementShortcuts.Step = imgShortcut;
-                                        break;
-
-                                    case "HEART":
-                                        if (elementShortcuts.Step != null) index++;
-                                        //if (elementShortcuts.Heart != null) index++;
-                                        if (elementShortcuts.SPO2 != null) index++;
-                                        if (elementShortcuts.PAI != null) index++;
-                                        if (elementShortcuts.Stress != null) index++;
-                                        if (elementShortcuts.Weather != null) index++;
-                                        if (elementShortcuts.Altimeter != null) index++;
-                                        if (elementShortcuts.Sunrise != null) index++;
-                                        if (elementShortcuts.Alarm != null) index++;
-                                        if (elementShortcuts.Sleep != null) index++;
-                                        if (elementShortcuts.Countdown != null) index++;
-                                        if (elementShortcuts.Stopwatch != null) index++;
-
-                                        imgShortcut.position = index;
-                                        elementShortcuts.Heart = imgShortcut;
-                                        break;
-
-                                    case "SPO2":
-                                        if (elementShortcuts.Step != null) index++;
-                                        if (elementShortcuts.Heart != null) index++;
-                                        //if (elementShortcuts.SPO2 != null) index++;
-                                        if (elementShortcuts.PAI != null) index++;
-                                        if (elementShortcuts.Stress != null) index++;
-                                        if (elementShortcuts.Weather != null) index++;
-                                        if (elementShortcuts.Altimeter != null) index++;
-                                        if (elementShortcuts.Sunrise != null) index++;
-                                        if (elementShortcuts.Alarm != null) index++;
-                                        if (elementShortcuts.Sleep != null) index++;
-                                        if (elementShortcuts.Countdown != null) index++;
-                                        if (elementShortcuts.Stopwatch != null) index++;
-
-                                        imgShortcut.position = index;
-                                        elementShortcuts.SPO2 = imgShortcut;
-                                        break;
-
-                                    case "PAI":
-                                    case "PAI_WEEKLY":
-                                        if (elementShortcuts.Step != null) index++;
-                                        if (elementShortcuts.Heart != null) index++;
-                                        if (elementShortcuts.SPO2 != null) index++;
-                                        //if (elementShortcuts.PAI != null) index++;
-                                        if (elementShortcuts.Stress != null) index++;
-                                        if (elementShortcuts.Weather != null) index++;
-                                        if (elementShortcuts.Altimeter != null) index++;
-                                        if (elementShortcuts.Sunrise != null) index++;
-                                        if (elementShortcuts.Alarm != null) index++;
-                                        if (elementShortcuts.Sleep != null) index++;
-                                        if (elementShortcuts.Countdown != null) index++;
-                                        if (elementShortcuts.Stopwatch != null) index++;
-
-                                        imgShortcut.position = index;
-                                        elementShortcuts.PAI = imgShortcut;
-                                        break;
-
-                                    case "STRESS":
-                                        if (elementShortcuts.Step != null) index++;
-                                        if (elementShortcuts.Heart != null) index++;
-                                        if (elementShortcuts.SPO2 != null) index++;
-                                        if (elementShortcuts.PAI != null) index++;
-                                        //if (elementShortcuts.Stress != null) index++;
-                                        if (elementShortcuts.Weather != null) index++;
-                                        if (elementShortcuts.Altimeter != null) index++;
-                                        if (elementShortcuts.Sunrise != null) index++;
-                                        if (elementShortcuts.Alarm != null) index++;
-                                        if (elementShortcuts.Sleep != null) index++;
-                                        if (elementShortcuts.Countdown != null) index++;
-                                        if (elementShortcuts.Stopwatch != null) index++;
-
-                                        imgShortcut.position = index;
-                                        elementShortcuts.Stress = imgShortcut;
-                                        break;
-
-                                    case "WEATHER_CURRENT":
-                                        if (elementShortcuts.Step != null) index++;
-                                        if (elementShortcuts.Heart != null) index++;
-                                        if (elementShortcuts.SPO2 != null) index++;
-                                        if (elementShortcuts.PAI != null) index++;
-                                        if (elementShortcuts.Stress != null) index++;
-                                        //if (elementShortcuts.Weather != null) index++;
-                                        if (elementShortcuts.Altimeter != null) index++;
-                                        if (elementShortcuts.Sunrise != null) index++;
-                                        if (elementShortcuts.Alarm != null) index++;
-                                        if (elementShortcuts.Sleep != null) index++;
-                                        if (elementShortcuts.Countdown != null) index++;
-                                        if (elementShortcuts.Stopwatch != null) index++;
-
-                                        imgShortcut.position = index;
-                                        elementShortcuts.Weather = imgShortcut;
-                                        break;
-
-                                    case "ALTIMETER":
-                                        if (elementShortcuts.Step != null) index++;
-                                        if (elementShortcuts.Heart != null) index++;
-                                        if (elementShortcuts.SPO2 != null) index++;
-                                        if (elementShortcuts.PAI != null) index++;
-                                        if (elementShortcuts.Stress != null) index++;
-                                        if (elementShortcuts.Weather != null) index++;
-                                        //if (elementShortcuts.Altimeter != null) index++;
-                                        if (elementShortcuts.Sunrise != null) index++;
-                                        if (elementShortcuts.Alarm != null) index++;
-                                        if (elementShortcuts.Sleep != null) index++;
-                                        if (elementShortcuts.Countdown != null) index++;
-                                        if (elementShortcuts.Stopwatch != null) index++;
-
-                                        imgShortcut.position = index;
-                                        elementShortcuts.Altimeter = imgShortcut;
-                                        break;
-
-                                    case "SUN_CURRENT":
-                                        if (elementShortcuts.Step != null) index++;
-                                        if (elementShortcuts.Heart != null) index++;
-                                        if (elementShortcuts.SPO2 != null) index++;
-                                        if (elementShortcuts.PAI != null) index++;
-                                        if (elementShortcuts.Stress != null) index++;
-                                        if (elementShortcuts.Weather != null) index++;
-                                        if (elementShortcuts.Altimeter != null) index++;
-                                        //if (elementShortcuts.Sunrise != null) index++;
-                                        if (elementShortcuts.Alarm != null) index++;
-                                        if (elementShortcuts.Sleep != null) index++;
-                                        if (elementShortcuts.Countdown != null) index++;
-                                        if (elementShortcuts.Stopwatch != null) index++;
-
-                                        imgShortcut.position = index;
-                                        elementShortcuts.Sunrise = imgShortcut;
-                                        break;
-
-                                    case "ALARM_CLOCK":
-                                        if (elementShortcuts.Step != null) index++;
-                                        if (elementShortcuts.Heart != null) index++;
-                                        if (elementShortcuts.SPO2 != null) index++;
-                                        if (elementShortcuts.PAI != null) index++;
-                                        if (elementShortcuts.Stress != null) index++;
-                                        if (elementShortcuts.Weather != null) index++;
-                                        if (elementShortcuts.Altimeter != null) index++;
-                                        if (elementShortcuts.Sunrise != null) index++;
-                                        //if (elementShortcuts.Alarm != null) index++;
-                                        if (elementShortcuts.Sleep != null) index++;
-                                        if (elementShortcuts.Countdown != null) index++;
-                                        if (elementShortcuts.Stopwatch != null) index++;
-
-                                        imgShortcut.position = index;
-                                        elementShortcuts.Alarm = imgShortcut;
-                                        break;
-
-                                    case "SLEEP":
-                                        if (elementShortcuts.Step != null) index++;
-                                        if (elementShortcuts.Heart != null) index++;
-                                        if (elementShortcuts.SPO2 != null) index++;
-                                        if (elementShortcuts.PAI != null) index++;
-                                        if (elementShortcuts.Stress != null) index++;
-                                        if (elementShortcuts.Weather != null) index++;
-                                        if (elementShortcuts.Altimeter != null) index++;
-                                        if (elementShortcuts.Sunrise != null) index++;
-                                        if (elementShortcuts.Alarm != null) index++;
-                                        //if (elementShortcuts.Sleep != null) index++;
-                                        if (elementShortcuts.Countdown != null) index++;
-                                        if (elementShortcuts.Stopwatch != null) index++;
-
-                                        imgShortcut.position = index;
-                                        elementShortcuts.Sleep = imgShortcut;
-                                        break;
-
-                                    case "COUNT_DOWN":
-                                        if (elementShortcuts.Step != null) index++;
-                                        if (elementShortcuts.Heart != null) index++;
-                                        if (elementShortcuts.SPO2 != null) index++;
-                                        if (elementShortcuts.PAI != null) index++;
-                                        if (elementShortcuts.Stress != null) index++;
-                                        if (elementShortcuts.Weather != null) index++;
-                                        if (elementShortcuts.Altimeter != null) index++;
-                                        if (elementShortcuts.Sunrise != null) index++;
-                                        if (elementShortcuts.Alarm != null) index++;
-                                        if (elementShortcuts.Sleep != null) index++;
-                                        //if (elementShortcuts.Countdown != null) index++;
-                                        if (elementShortcuts.Stopwatch != null) index++;
-
-                                        imgShortcut.position = index;
-                                        elementShortcuts.Countdown = imgShortcut;
-                                        break;
-
-                                    case "STOP_WATCH":
-                                        if (elementShortcuts.Step != null) index++;
-                                        if (elementShortcuts.Heart != null) index++;
-                                        if (elementShortcuts.SPO2 != null) index++;
-                                        if (elementShortcuts.PAI != null) index++;
-                                        if (elementShortcuts.Stress != null) index++;
-                                        if (elementShortcuts.Weather != null) index++;
-                                        if (elementShortcuts.Altimeter != null) index++;
-                                        if (elementShortcuts.Sunrise != null) index++;
-                                        if (elementShortcuts.Alarm != null) index++;
-                                        if (elementShortcuts.Sleep != null) index++;
-                                        if (elementShortcuts.Countdown != null) index++;
-                                        //if (elementShortcuts.Stopwatch != null) index++;
-
-                                        imgShortcut.position = index;
-                                        elementShortcuts.Stopwatch = imgShortcut;
-                                        break;
-
-                                }
-                            }
+                            ParametrsToObject(elementsList, parametrs);
                             break;
                         #endregion
 
@@ -14698,47 +11384,7 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenAOD.Elements;
                             }
-
-                            if (elementsList != null && objectName.EndsWith("city_name_text"))
-                            {
-                                ElementWeather weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
-                                if (weather == null)
-                                {
-                                    elementsList.Add(new ElementWeather());
-                                    weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
-                                }
-                                if (weather != null)
-                                {
-                                    int offset = 1;
-                                    if (weather.Images != null) offset++;
-                                    if (weather.Number != null) offset++;
-                                    if (weather.Number_Min != null) offset++;
-                                    if (weather.Number_Max != null) offset++;
-                                    //if (weather.City_Name != null) offset++;
-                                    if (weather.Icon != null) offset++;
-
-                                    weather.City_Name = new hmUI_widget_TEXT();
-                                    weather.City_Name.x = text.x;
-                                    weather.City_Name.y = text.y;
-                                    weather.City_Name.w = text.w;
-                                    weather.City_Name.h = text.h;
-
-                                    weather.City_Name.color = text.color;
-
-                                    weather.City_Name.text_size = text.text_size;
-                                    weather.City_Name.char_space = text.char_space;
-                                    weather.City_Name.line_space = text.line_space;
-
-                                    weather.City_Name.align_h = text.align_h;
-                                    weather.City_Name.align_v = text.align_v;
-                                    weather.City_Name.text_style = text.text_style;
-
-                                    weather.City_Name.visible = true;
-                                    weather.City_Name.position = offset;
-                                }
-                            }
-
-
+                            ParametrsToObject(elementsList, parametrs);
                             break;
                         #endregion
 
@@ -14758,35 +11404,7 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenAOD.Elements;
                             }
-
-                            if (elementsList != null /*&& objectName.IndexOf("frame_animation") > 0*/)
-                            {
-                                ElementAnimation animationElement = (ElementAnimation)elementsList.Find(e => e.GetType().Name == "ElementAnimation");
-                                if (animationElement == null)
-                                {
-                                    elementsList.Add(new ElementAnimation());
-                                    animationElement = (ElementAnimation)elementsList.Find(e => e.GetType().Name == "ElementAnimation");
-                                }
-                                if (animationElement != null)
-                                {
-                                    int offset = 1;
-                                    //if (animationElement.Frame_Animation_List != null) offset++;
-                                    if (animationElement.Motion_Animation_List != null) offset++;
-                                    if (animationElement.Rotate_Animation_List != null) offset++;
-
-                                    if (animationElement.Frame_Animation_List == null)
-                                        animationElement.Frame_Animation_List = new hmUI_widget_IMG_ANIM_List();
-                                    if (animationElement.Frame_Animation_List.Frame_Animation == null)
-                                        animationElement.Frame_Animation_List.Frame_Animation = new List<hmUI_widget_IMG_ANIM>();
-                                    animationElement.Frame_Animation_List.Frame_Animation.Add(animation);
-
-                                    animationElement.Frame_Animation_List.visible = true;
-                                    animationElement.Frame_Animation_List.position = offset;
-                                    animationElement.Frame_Animation_List.selected_animation = 0;
-                                }
-                            }
-
-
+                            ParametrsToObject(elementsList, parametrs);
                             break;
                         #endregion
 
@@ -14806,35 +11424,7 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenAOD.Elements;
                             }
-
-                            if (elementsList != null /*&& objectName.IndexOf("frame_animation") > 0*/)
-                            {
-                                ElementAnimation animationElement = (ElementAnimation)elementsList.Find(e => e.GetType().Name == "ElementAnimation");
-                                if (animationElement == null)
-                                {
-                                    elementsList.Add(new ElementAnimation());
-                                    animationElement = (ElementAnimation)elementsList.Find(e => e.GetType().Name == "ElementAnimation");
-                                }
-                                if (animationElement != null)
-                                {
-                                    int offset = 1;
-                                    if (animationElement.Frame_Animation_List != null) offset++;
-                                    //if (animationElement.Motion_Animation_List != null) offset++;
-                                    if (animationElement.Rotate_Animation_List != null) offset++;
-
-                                    if (animationElement.Motion_Animation_List == null)
-                                        animationElement.Motion_Animation_List = new Motion_Animation_List();
-                                    if (animationElement.Motion_Animation_List.Motion_Animation == null)
-                                        animationElement.Motion_Animation_List.Motion_Animation = new List<Motion_Animation>();
-                                    animationElement.Motion_Animation_List.Motion_Animation.Add(motion_animation);
-
-                                    animationElement.Motion_Animation_List.visible = true;
-                                    animationElement.Motion_Animation_List.position = offset;
-                                    animationElement.Motion_Animation_List.selected_animation = 0;
-                                }
-                            }
-
-
+                            ParametrsToObject(elementsList, parametrs);
                             break;
                         #endregion
 
@@ -14854,44 +11444,245 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenAOD.Elements;
                             }
-
-                            if (elementsList != null /*&& objectName.IndexOf("frame_animation") > 0*/)
-                            {
-                                ElementAnimation animationElement = (ElementAnimation)elementsList.Find(e => e.GetType().Name == "ElementAnimation");
-                                if (animationElement == null)
-                                {
-                                    elementsList.Add(new ElementAnimation());
-                                    animationElement = (ElementAnimation)elementsList.Find(e => e.GetType().Name == "ElementAnimation");
-                                }
-                                if (animationElement != null)
-                                {
-                                    int offset = 1;
-                                    if (animationElement.Frame_Animation_List != null) offset++;
-                                    if (animationElement.Motion_Animation_List != null) offset++;
-                                    //if (animationElement.Rotate_Animation_List != null) offset++;
-
-                                    if (animationElement.Rotate_Animation_List == null)
-                                        animationElement.Rotate_Animation_List = new Rotate_Animation_List();
-                                    if (animationElement.Rotate_Animation_List.Rotate_Animation == null)
-                                        animationElement.Rotate_Animation_List.Rotate_Animation = new List<Rotate_Animation>();
-                                    animationElement.Rotate_Animation_List.Rotate_Animation.Add(rotate_animation);
-
-                                    animationElement.Rotate_Animation_List.visible = true;
-                                    animationElement.Rotate_Animation_List.position = offset;
-                                    animationElement.Rotate_Animation_List.selected_animation = 0;
-                                }
-                            }
-
-
+                            ParametrsToObject(elementsList, parametrs);
                             break;
                             #endregion
                     }
                 }
 
             }
+
+            if (Watch_Face.Editable_Elements != null) FixEditableElementsCount();
         }
+
+        private void FixEditableElementsCount()
+        {
+            if (Watch_Face.Editable_Elements.Watchface_edit_group == null ||
+                Watch_Face.Editable_Elements.Watchface_edit_group.Count == 0) return;
+            Watch_Face.Editable_Elements.selected_zone = 0;
+            int zone = 1;
+            foreach(WATCHFACE_EDIT_GROUP edit_group in Watch_Face.Editable_Elements.Watchface_edit_group)
+            {
+                if(edit_group.Elements != null && edit_group.Elements.Count > 0)
+                {
+                    //edit_group.selected_element = 1;
+                    List<Optional_Types_List> optional_types_list = new List<Optional_Types_List>();
+                    for (int i = edit_group.Elements.Count -1; i >= 0; i--) // перебираем все элементы
+                    {
+                        object element = edit_group.Elements[i];
+                        string type = element.GetType().Name;
+                        string editableElementType = null;
+                        switch (type)
+                        {
+                            case "ElementDateDay":
+                                editableElementType = "DATE";
+                                break;
+
+                            case "ElementDateMonth":
+                                editableElementType = "DATE";
+                                break;
+
+                            case "ElementDateYear":
+                                editableElementType = "DATE";
+                                break;
+
+                            case "ElementDateWeek":
+                                editableElementType = "WEEK";
+                                break;
+
+
+                            case "ElementBattery":
+                                editableElementType = "BATTERY";
+                                break;
+
+                            case "ElementSteps":
+                                editableElementType = "STEP";
+                                break;
+                            case "ElementCalories":
+                                editableElementType = "CAL";
+                                break;
+                            case "ElementHeart":
+                                editableElementType = "HEART";
+                                break;
+                            case "ElementPAI":
+                                editableElementType = "PAI";
+                                break;
+                            case "ElementDistance":
+                                editableElementType = "DISTANCE";
+                                break;
+                            case "ElementStand":
+                                editableElementType = "STAND";
+                                break;
+                            case "ElementSpO2":
+                                editableElementType = "SPO2";
+                                break;
+                            case "ElementStress":
+                                editableElementType = "STRESS";
+                                break;
+                            case "ElementFatBurning":
+                                editableElementType = "FAT_BURNING";
+                                break;
+
+
+
+                            case "ElementWeather":
+                                editableElementType = "WEATHER";
+                                //editableElementType = "TEMPERATURE";
+                                break;
+                            case "ElementUVIndex":
+                                editableElementType = "UVI";
+                                break;
+                            case "ElementHumidity":
+                                editableElementType = "HUMIDITY";
+                                break;
+                            case "ElementAltimeter":
+                                editableElementType = "ALTIMETER";
+                                break;
+                            case "ElementSunrise":
+                                editableElementType = "SUN";
+                                break;
+                            case "ElementWind":
+                                editableElementType = "WIND";
+                                break;
+                            case "ElementMoon":
+                                editableElementType = "MOON";
+                                break;
+                        }
+
+                        bool foundPreview = false;
+                        if (editableElementType != null && edit_group.optional_types_list != null && edit_group.optional_types_list.Count > 0)
+                        {
+                            for (int j = 0; j < edit_group.optional_types_list.Count; j++) // перебираем все предпросмотры
+                            {
+                                if (editableElementType == edit_group.optional_types_list[j].type)
+                                {
+                                    Optional_Types_List optional_types = new Optional_Types_List();
+                                    optional_types.preview = edit_group.optional_types_list[j].preview;
+                                    optional_types.type = edit_group.optional_types_list[j].type;
+                                    Console.WriteLine("zone = " + zone + "; type = " + optional_types.type + "; preview = " + optional_types.preview);
+                                    //optional_types_list.Add(optional_types);
+                                    optional_types_list.Insert(0, optional_types);
+                                    foundPreview = true;
+                                    break;
+                                }
+                            }
+                        }
+                        if (!foundPreview) edit_group.Elements.RemoveAt(i);
+                    }
+                    edit_group.optional_types_list = optional_types_list;
+
+                    //if (edit_group.Elements.Count < edit_group.optional_types_list.Count) DelUnusedPreview(edit_group);
+
+                    if (edit_group.Elements.Count != edit_group.optional_types_list.Count)
+                    {
+                        edit_group.Elements = new List<object>();
+                        edit_group.optional_types_list = new List<Optional_Types_List>();
+                    }
+                    if (edit_group.Elements.Count > 0) edit_group.selected_element = 0;
+                }
+                zone++;
+            }
+        }
+
+        /*private void DelUnusedPreview(WATCHFACE_EDIT_GROUP edit_group)
+        {
+            for (int j = edit_group.optional_types_list.Count - 1; j >= 0; j--) // перебираем все предпросмотры
+            {
+                bool foundPreview = false;
+                for (int i = edit_group.Elements.Count - 1; i >= 0; i--) // перебираем все элементы
+                {
+                    object element = edit_group.Elements[i];
+                    string type = element.GetType().Name;
+                    string editableElementType = null;
+                    switch (type)
+                    {
+                        case "ElementDateDay":
+                            editableElementType = "DATE";
+                            break;
+
+                        case "ElementDateMonth":
+                            editableElementType = "DATE";
+                            break;
+
+                        case "ElementDateYear":
+                            editableElementType = "DATE";
+                            break;
+
+                        case "ElementDateWeek":
+                            editableElementType = "DATE";
+                            break;
+
+
+                        case "ElementBattery":
+                            editableElementType = "BATTERY";
+                            break;
+
+                        case "ElementSteps":
+                            editableElementType = "STEP";
+                            break;
+                        case "ElementCalories":
+                            editableElementType = "CAL";
+                            break;
+                        case "ElementHeart":
+                            editableElementType = "HEART";
+                            break;
+                        case "ElementPAI":
+                            editableElementType = "PAI";
+                            break;
+                        case "ElementDistance":
+                            editableElementType = "DISTANCE";
+                            break;
+                        case "ElementStand":
+                            editableElementType = "STAND";
+                            break;
+                        case "ElementSpO2":
+                            editableElementType = "SPO2";
+                            break;
+                        case "ElementStress":
+                            editableElementType = "STRESS";
+                            break;
+                        case "ElementFatBurning":
+                            editableElementType = "FAT_BURNING";
+                            break;
+
+
+
+                        case "ElementWeather":
+                            editableElementType = "WEATHER";
+                            //editableElementType = "TEMPERATURE";
+                            break;
+                        case "ElementUVIndex":
+                            editableElementType = "UVI";
+                            break;
+                        case "ElementHumidity":
+                            editableElementType = "HUMIDITY";
+                            break;
+                        case "ElementAltimeter":
+                            editableElementType = "ALTIMETER";
+                            break;
+                        case "ElementSunrise":
+                            editableElementType = "SUN";
+                            break;
+                        case "ElementWind":
+                            editableElementType = "WIND";
+                            break;
+                        case "ElementMoon":
+                            editableElementType = "MOON";
+                            break;
+                    }
+
+                    if (editableElementType != null && editableElementType == edit_group.optional_types_list[j].type)
+                    {
+                        foundPreview = true;
+                        break;
+                    }
+                }
+                if (!foundPreview) edit_group.optional_types_list.RemoveAt(j);
+            }
+        }*/
+
         /// <summary>Преобразуем параметры в объекты</summary>
-        private void ParametrsToObject (List<object> elementsList, Dictionary<string, string> parametrs)
+        private void ParametrsToObject (List<object> elementsList, Dictionary<string, string> parametrs, string type = "")
         {
             if (elementsList == null) return;
             if (parametrs.ContainsKey("ObjectType"))
@@ -14901,6 +11692,453 @@ namespace Watch_Face_Editor
                 if (parametrs.ContainsKey("ObjectName")) objectName = parametrs["ObjectName"];
                 switch (objectType)
                 {
+                    #region IMG
+                    case "IMG":
+                        hmUI_widget_IMG img = Object_IMG(parametrs);
+
+                        if (type == "DATE")
+                        {
+                            bool exists = elementsList.Exists(e => e.GetType().Name == "ElementDateMonth");
+                            if (exists)
+                            {
+                                ElementDateMonth dateMonth = (ElementDateMonth)elementsList.Find(e => e.GetType().Name == "ElementDateMonth");
+                                if (dateMonth != null && dateMonth.Number != null)
+                                {
+                                    dateMonth.Number.icon = img.src;
+                                    dateMonth.Number.iconPosX = img.x;
+                                    dateMonth.Number.iconPosY = img.y;
+                                }
+                            }
+                            else
+                            {
+                                exists = elementsList.Exists(e => e.GetType().Name == "ElementDateDay");
+                                if (exists)
+                                {
+                                    ElementDateDay dateDay = (ElementDateDay)elementsList.Find(e => e.GetType().Name == "ElementDateDay");
+                                    if (dateDay != null && dateDay.Number != null)
+                                    {
+                                        dateDay.Number.icon = img.src;
+                                        dateDay.Number.iconPosX = img.x;
+                                        dateDay.Number.iconPosY = img.y;
+                                    }
+                                }
+                                else
+                                {
+                                    exists = elementsList.Exists(e => e.GetType().Name == "ElementDateYear");
+                                    if (exists)
+                                    {
+                                        ElementDateDay dateYear = (ElementDateDay)elementsList.Find(e => e.GetType().Name == "ElementDateYear");
+                                        if (dateYear != null && dateYear.Number != null)
+                                        {
+                                            dateYear.Number.icon = img.src;
+                                            dateYear.Number.iconPosX = img.x;
+                                            dateYear.Number.iconPosY = img.y;
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+
+                        if (type == "BATTERY")
+                        {
+                            ElementBattery battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
+                            if (battery == null)
+                            {
+                                elementsList.Add(new ElementBattery());
+                                battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
+                            }
+                            if (battery != null)
+                            {
+                                int offset = 1;
+                                if (battery.Images != null) offset++;
+                                if (battery.Segments != null) offset++;
+                                if (battery.Number != null) offset++;
+                                if (battery.Pointer != null) offset++;
+                                if (battery.Circle_Scale != null) offset++;
+                                if (battery.Linear_Scale != null) offset++;
+
+                                battery.Icon = new hmUI_widget_IMG();
+                                battery.Icon.src = img.src;
+                                battery.Icon.x = img.x;
+                                battery.Icon.y = img.y;
+                                battery.Icon.visible = true;
+                                battery.Icon.position = offset;
+                            }
+                        }
+
+                        if (type == "STEP")
+                        {
+                            ElementSteps steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
+                            if (steps == null)
+                            {
+                                elementsList.Add(new ElementSteps());
+                                steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
+                            }
+                            if (steps != null)
+                            {
+                                int offset = 1;
+                                if (steps.Images != null) offset++;
+                                if (steps.Segments != null) offset++;
+                                if (steps.Number != null) offset++;
+                                if (steps.Number_Target != null) offset++;
+                                if (steps.Pointer != null) offset++;
+                                if (steps.Circle_Scale != null) offset++;
+                                if (steps.Linear_Scale != null) offset++;
+
+                                steps.Icon = new hmUI_widget_IMG();
+                                steps.Icon.src = img.src;
+                                steps.Icon.x = img.x;
+                                steps.Icon.y = img.y;
+                                steps.Icon.visible = true;
+                                steps.Icon.position = offset;
+                            }
+                        }
+
+                        if (type == "CAL")
+                        {
+                            ElementCalories calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
+                            if (calorie == null)
+                            {
+                                elementsList.Add(new ElementCalories());
+                                calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
+                            }
+                            if (calorie != null)
+                            {
+                                int offset = 1;
+                                if (calorie.Images != null) offset++;
+                                if (calorie.Segments != null) offset++;
+                                if (calorie.Number != null) offset++;
+                                if (calorie.Number_Target != null) offset++;
+                                if (calorie.Pointer != null) offset++;
+                                if (calorie.Circle_Scale != null) offset++;
+                                if (calorie.Linear_Scale != null) offset++;
+
+                                calorie.Icon = new hmUI_widget_IMG();
+                                calorie.Icon.src = img.src;
+                                calorie.Icon.x = img.x;
+                                calorie.Icon.y = img.y;
+                                calorie.Icon.visible = true;
+                                calorie.Icon.position = offset;
+                            }
+                        }
+
+                        if (type == "HEART")
+                        {
+                            ElementHeart heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
+                            if (heart == null)
+                            {
+                                elementsList.Add(new ElementHeart());
+                                heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
+                            }
+                            if (heart != null)
+                            {
+                                int offset = 1;
+                                if (heart.Images != null) offset++;
+                                if (heart.Segments != null) offset++;
+                                if (heart.Number != null) offset++;
+                                if (heart.Pointer != null) offset++;
+                                if (heart.Circle_Scale != null) offset++;
+                                if (heart.Linear_Scale != null) offset++;
+
+                                heart.Icon = new hmUI_widget_IMG();
+                                heart.Icon.src = img.src;
+                                heart.Icon.x = img.x;
+                                heart.Icon.y = img.y;
+                                heart.Icon.visible = true;
+                                heart.Icon.position = offset;
+                            }
+                        }
+
+                        if (type == "PAI")
+                        {
+                            ElementPAI pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
+                            if (pai == null)
+                            {
+                                elementsList.Add(new ElementPAI());
+                                pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
+                            }
+                            if (pai != null)
+                            {
+                                int offset = 1;
+                                if (pai.Images != null) offset++;
+                                if (pai.Segments != null) offset++;
+                                if (pai.Number != null) offset++;
+                                if (pai.Number_Target != null) offset++;
+                                if (pai.Pointer != null) offset++;
+                                if (pai.Circle_Scale != null) offset++;
+                                if (pai.Linear_Scale != null) offset++;
+
+                                pai.Icon = new hmUI_widget_IMG();
+                                pai.Icon.src = img.src;
+                                pai.Icon.x = img.x;
+                                pai.Icon.y = img.y;
+                                pai.Icon.visible = true;
+                                pai.Icon.position = offset;
+                            }
+                        }
+
+                        if (type == "DISTANCE")
+                        {
+                            ElementDistance distance = (ElementDistance)elementsList.Find(e => e.GetType().Name == "ElementDistance");
+                            if (distance != null && distance.Number != null)
+                            {
+                                distance.Number.icon = img.src;
+                                distance.Number.iconPosX = img.x;
+                                distance.Number.iconPosY = img.y;
+                            }
+
+                        }
+
+                        if (type == "STAND")
+                        {
+                            ElementStand stand = (ElementStand)elementsList.Find(e => e.GetType().Name == "ElementStand");
+                            if (stand == null)
+                            {
+                                elementsList.Add(new ElementStand());
+                                stand = (ElementStand)elementsList.Find(e => e.GetType().Name == "ElementStand");
+                            }
+                            if (stand != null)
+                            {
+                                int offset = 1;
+                                if (stand.Images != null) offset++;
+                                if (stand.Segments != null) offset++;
+                                if (stand.Number != null) offset++;
+                                if (stand.Number_Target != null) offset++;
+                                if (stand.Pointer != null) offset++;
+                                if (stand.Circle_Scale != null) offset++;
+                                if (stand.Linear_Scale != null) offset++;
+
+                                stand.Icon = new hmUI_widget_IMG();
+                                stand.Icon.src = img.src;
+                                stand.Icon.x = img.x;
+                                stand.Icon.y = img.y;
+                                stand.Icon.visible = true;
+                                stand.Icon.position = offset;
+                            }
+                        }
+
+                        if (type == "STRESS")
+                        {
+                            ElementStress stress = (ElementStress)elementsList.Find(e => e.GetType().Name == "ElementStress");
+                            if (stress == null)
+                            {
+                                elementsList.Add(new ElementStress());
+                                stress = (ElementStress)elementsList.Find(e => e.GetType().Name == "ElementStress");
+                            }
+                            if (stress != null)
+                            {
+                                int offset = 1;
+                                if (stress.Images != null) offset++;
+                                if (stress.Segments != null) offset++;
+                                if (stress.Number != null) offset++;
+                                if (stress.Pointer != null) offset++;
+
+                                stress.Icon = new hmUI_widget_IMG();
+                                stress.Icon.src = img.src;
+                                stress.Icon.x = img.x;
+                                stress.Icon.y = img.y;
+                                stress.Icon.visible = true;
+                                stress.Icon.position = offset;
+                            }
+                        }
+
+                        if (type == "FAT_BURNING")
+                        {
+                            ElementFatBurning fat_burning = (ElementFatBurning)elementsList.Find(e => e.GetType().Name == "ElementFatBurning");
+                            if (fat_burning == null)
+                            {
+                                elementsList.Add(new ElementFatBurning());
+                                fat_burning = (ElementFatBurning)elementsList.Find(e => e.GetType().Name == "ElementFatBurning");
+                            }
+                            if (fat_burning != null)
+                            {
+                                int offset = 1;
+                                if (fat_burning.Images != null) offset++;
+                                if (fat_burning.Segments != null) offset++;
+                                if (fat_burning.Number != null) offset++;
+                                if (fat_burning.Number_Target != null) offset++;
+                                if (fat_burning.Pointer != null) offset++;
+                                if (fat_burning.Circle_Scale != null) offset++;
+                                if (fat_burning.Linear_Scale != null) offset++;
+
+                                fat_burning.Icon = new hmUI_widget_IMG();
+                                fat_burning.Icon.src = img.src;
+                                fat_burning.Icon.x = img.x;
+                                fat_burning.Icon.y = img.y;
+                                fat_burning.Icon.visible = true;
+                                fat_burning.Icon.position = offset;
+                            }
+                        }
+
+                        if (type == "SPO2")
+                        {
+                            ElementSpO2 spo2 = (ElementSpO2)elementsList.Find(e => e.GetType().Name == "ElementSpO2");
+                            if (spo2 != null && spo2.Number != null)
+                            {
+                                spo2.Number.icon = img.src;
+                                spo2.Number.iconPosX = img.x;
+                                spo2.Number.iconPosY = img.y;
+                            }
+
+                        }
+
+
+
+                        if (type == "WEATHER")
+                        {
+                            ElementWeather weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
+                            if (weather == null)
+                            {
+                                elementsList.Add(new ElementWeather());
+                                weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
+                            }
+                            if (weather != null)
+                            {
+                                int offset = 1;
+                                if (weather.Images != null) offset++;
+                                if (weather.Number != null) offset++;
+                                if (weather.Number_Min != null) offset++;
+                                if (weather.Number_Max != null) offset++;
+                                if (weather.City_Name != null) offset++;
+
+                                weather.Icon = new hmUI_widget_IMG();
+                                weather.Icon.src = img.src;
+                                weather.Icon.x = img.x;
+                                weather.Icon.y = img.y;
+                                weather.Icon.visible = true;
+                                weather.Icon.position = offset;
+                            }
+                        }
+
+                        if (type == "UVI")
+                        {
+                            ElementUVIndex uv_index = (ElementUVIndex)elementsList.Find(e => e.GetType().Name == "ElementUVIndex");
+                            if (uv_index == null)
+                            {
+                                elementsList.Add(new ElementUVIndex());
+                                uv_index = (ElementUVIndex)elementsList.Find(e => e.GetType().Name == "ElementUVIndex");
+                            }
+                            if (uv_index != null)
+                            {
+                                int offset = 1;
+                                if (uv_index.Images != null) offset++;
+                                if (uv_index.Segments != null) offset++;
+                                if (uv_index.Number != null) offset++;
+                                if (uv_index.Pointer != null) offset++;
+
+                                uv_index.Icon = new hmUI_widget_IMG();
+                                uv_index.Icon.src = img.src;
+                                uv_index.Icon.x = img.x;
+                                uv_index.Icon.y = img.y;
+                                uv_index.Icon.visible = true;
+                                uv_index.Icon.position = offset;
+                            }
+                        }
+
+                        if (type == "HUMIDITY")
+                        {
+                            ElementHumidity humidity = (ElementHumidity)elementsList.Find(e => e.GetType().Name == "ElementHumidity");
+                            if (humidity == null)
+                            {
+                                elementsList.Add(new ElementHumidity());
+                                humidity = (ElementHumidity)elementsList.Find(e => e.GetType().Name == "ElementHumidity");
+                            }
+                            if (humidity != null)
+                            {
+                                int offset = 1;
+                                if (humidity.Images != null) offset++;
+                                if (humidity.Segments != null) offset++;
+                                if (humidity.Number != null) offset++;
+                                if (humidity.Pointer != null) offset++;
+
+                                humidity.Icon = new hmUI_widget_IMG();
+                                humidity.Icon.src = img.src;
+                                humidity.Icon.x = img.x;
+                                humidity.Icon.y = img.y;
+                                humidity.Icon.visible = true;
+                                humidity.Icon.position = offset;
+                            }
+                        }
+
+                        if (type == "ALTIMETER")
+                        {
+                            ElementAltimeter altimeter = (ElementAltimeter)elementsList.Find(e => e.GetType().Name == "ElementAltimeter");
+                            if (altimeter == null)
+                            {
+                                elementsList.Add(new ElementAltimeter());
+                                altimeter = (ElementAltimeter)elementsList.Find(e => e.GetType().Name == "ElementAltimeter");
+                            }
+                            if (altimeter != null)
+                            {
+                                int offset = 1;
+                                if (altimeter.Number != null) offset++;
+                                if (altimeter.Pointer != null) offset++;
+
+                                altimeter.Icon = new hmUI_widget_IMG();
+                                altimeter.Icon.src = img.src;
+                                altimeter.Icon.x = img.x;
+                                altimeter.Icon.y = img.y;
+                                altimeter.Icon.visible = true;
+                                altimeter.Icon.position = offset;
+                            }
+                        }
+
+                        if (type == "SUN")
+                        {
+                            ElementSunrise sunrise = (ElementSunrise)elementsList.Find(e => e.GetType().Name == "ElementSunrise");
+                            if (sunrise == null)
+                            {
+                                elementsList.Add(new ElementSunrise());
+                                sunrise = (ElementSunrise)elementsList.Find(e => e.GetType().Name == "ElementSunrise");
+                            }
+                            if (sunrise != null)
+                            {
+                                int offset = 1;
+                                if (sunrise.Images != null) offset++;
+                                if (sunrise.Segments != null) offset++;
+                                if (sunrise.Sunrise != null) offset++;
+                                if (sunrise.Sunset != null) offset++;
+                                if (sunrise.Sunset_Sunrise != null) offset++;
+                                if (sunrise.Pointer != null) offset++;
+
+                                sunrise.Icon = new hmUI_widget_IMG();
+                                sunrise.Icon.src = img.src;
+                                sunrise.Icon.x = img.x;
+                                sunrise.Icon.y = img.y;
+                                sunrise.Icon.visible = true;
+                                sunrise.Icon.position = offset;
+                            }
+                        }
+
+                        if (type == "WIND")
+                        {
+                            ElementWind wind = (ElementWind)elementsList.Find(e => e.GetType().Name == "ElementWind");
+                            if (wind == null)
+                            {
+                                elementsList.Add(new ElementWind());
+                                wind = (ElementWind)elementsList.Find(e => e.GetType().Name == "ElementWind");
+                            }
+                            if (wind != null)
+                            {
+                                int offset = 1;
+                                if (wind.Images != null) offset++;
+                                if (wind.Segments != null) offset++;
+                                if (wind.Number != null) offset++;
+                                if (wind.Pointer != null) offset++;
+
+                                wind.Icon = new hmUI_widget_IMG();
+                                wind.Icon.src = img.src;
+                                wind.Icon.x = img.x;
+                                wind.Icon.y = img.y;
+                                wind.Icon.visible = true;
+                                wind.Icon.position = offset;
+                            }
+                        }
+
+                        break;
+                    #endregion
+
                     #region IMG_TIME
                     case "IMG_TIME":
                         ElementDigitalTime img_time = Object_DigitalTime(parametrs);
@@ -18550,7 +15788,7 @@ namespace Watch_Face_Editor
                     if (firstIndex >= 0)
                     {
                         int stringStartIndex = valueStr.Remove(firstIndex).LastIndexOf("\n");
-                        valueStr = valueStr.Remove(0, stringStartIndex);
+                        if (stringStartIndex > 0 && stringStartIndex < valueStr.Length) valueStr = valueStr.Remove(0, stringStartIndex);
                         valueStr = valueStr.TrimStart();
 
                         GetParametrsList.Add(valueStr);
@@ -18581,15 +15819,16 @@ namespace Watch_Face_Editor
         {
             Dictionary<string, string> returnParametrs = new Dictionary<string, string>();
 
+            if (str.StartsWith("switch"))
+            {
+                returnParametrs = ParseParametrsInSwitch(str);
+                return returnParametrs;
+            }
+
             int endIndex = str.IndexOf("=");
             if (endIndex < 0)
             {
                 if (str.StartsWith("hmUI.createWidget")) returnParametrs = ParseParametrsInString_v2(str);
-                return returnParametrs;
-            }
-            if (str.StartsWith("switch"))
-            {
-                returnParametrs = ParseParametrsInSwitch(str);
                 return returnParametrs;
             }
             string valueNameStr = str.Remove(endIndex);
@@ -18749,20 +15988,34 @@ namespace Watch_Face_Editor
             string valueNameStr = str.Trim();
 
             returnParametrs.Add("ObjectType", "switch");
-            int pos = valueNameStr.IndexOf("case hmUI.edit_type.");
+
+            int posStart = valueNameStr.IndexOf("(editType_");
+            valueNameStr = valueNameStr.Remove(0, posStart + "(editType_".Length);
+            int posEnd = valueNameStr.IndexOf(")");
+            string group_index_str = valueNameStr.Substring(0, posEnd);
+            returnParametrs.Add("GroupIndex", group_index_str);
+
+            int pos = valueNameStr.IndexOf("case ");
             while(pos >= 0)
             {
-                valueNameStr = valueNameStr.Remove(0, pos + "case hmUI.edit_type.".Length);
-                int posStart = valueNameStr.IndexOf(":");
+                valueNameStr = valueNameStr.Remove(0, pos + "case ".Length);
+                posStart = valueNameStr.IndexOf("hmUI.edit_type.");
+                posEnd = valueNameStr.IndexOf(":");
+                if (posStart >= 0 && posStart < posEnd) valueNameStr = valueNameStr.Remove(0, posStart + "hmUI.edit_type.".Length);
+                posStart = valueNameStr.IndexOf(":");
                 string type = valueNameStr.Substring(0, posStart);
-                valueNameStr = valueNameStr.Remove(0, posStart + 1);
-                int posEnd = valueNameStr.IndexOf("break;");
+                if (type == "1300001") type = "PAI";
+                if (type == "1300002") type = "FAT_BURNING";
+                if (posStart > 0) valueNameStr = valueNameStr.Remove(0, posStart + 1);
+                posEnd = valueNameStr.IndexOf("break;");
                 string value = valueNameStr.Substring(0, posEnd);
+                posStart = value.IndexOf("hmUI.createWidget");
+                if(posStart > 0) value = value.Remove(0, posStart);
                 value.Trim();
                 returnParametrs.Add(type, value);
 
                 valueNameStr = valueNameStr.Remove(0, posEnd + "break;".Length);
-                pos = valueNameStr.IndexOf("case hmUI.edit_type.");
+                pos = valueNameStr.IndexOf("case ");
             }
 
             return returnParametrs;

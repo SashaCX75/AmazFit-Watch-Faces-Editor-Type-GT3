@@ -2946,7 +2946,7 @@ namespace Watch_Face_Editor
 
                     #region DateWeek
                     case "ElementDateWeek":
-                        elementName.Add(Properties.ElementsString.TypeDay);
+                        elementName.Add(Properties.ElementsString.TypeWeek);
                         break;
                     #endregion
 

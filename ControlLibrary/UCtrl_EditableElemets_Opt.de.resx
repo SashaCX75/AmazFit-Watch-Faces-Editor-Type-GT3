@@ -131,7 +131,7 @@
     <value>Elemente in AOD anzeigen</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
-    <value>untere Maske</value>
+    <value>Untere Maske</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>Obere Maske</value>
@@ -517,7 +517,7 @@
     <value>Element hinzufügen</value>
   </data>
   <data name="tabPageElementSettings.Text" xml:space="preserve">
-    <value>Einstelungen der Elemente</value>
+    <value>Einstellungen der Elemente</value>
   </data>
   <data name="button_collapse.Text" xml:space="preserve">
     <value>Erweitern / Zuklappen</value>

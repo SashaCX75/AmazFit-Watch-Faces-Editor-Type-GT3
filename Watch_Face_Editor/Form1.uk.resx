@@ -613,8 +613,8 @@
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
-        DQAAAk1TRnQBSQFMAgEBBgEAAcQBMQHEATEBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACm
+        DQAAAk1TRnQBSQFMAgEBBgEAAcQBMQHIATEBEAEAARABAAT/AQkBEAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -672,7 +672,7 @@
         AX4B4QEPAQ0BhgGAAQEBPgF+AfABDwEGAcICAAI+AfgBHwFDAWABAAEgAT8BPgH4AT8BYQGwAQABQAE/
         AR4B4AEnATAB2AEAAYABPAEeAeEBAwFYAWwBAQEAATwBHgHhAQcBbAE2AQEBAAE/Af4B4QEfATYBGgEB
         AwAB8AEfAQsBDAQAAfgBPwFNAYYBgAEBAgAB/AE/AQIBwgGAAQEBBAEAAf4BHwFDAWABwAEDAYQBAAH+
-        AZ8CAAHwAQ8B9wHnAf4BHws=
+        AZ8CAAHwAQ8B9wHnAf4BHxYACw==
 </value>
   </data>
   <data name="button_pack_zip.Text" xml:space="preserve">
@@ -1937,5 +1937,41 @@
         AAAAAAAAAAAAAO+BPCbvgT1I74I+SO+BPSYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8PwAA4AcAAMAD
         AACAAQAAgAEAAIABAAAAAAAAAAAAAAAAAAAAAAAAgAEAAIABAACAAQAAwAMAAOAHAAD8PwAA
 </value>
+  </data>
+  <data name="button_SaveAs.Text" xml:space="preserve">
+    <value>Зберегти проект як...</value>
+  </data>
+  <data name="comboBox_AddActivity.Items3" xml:space="preserve">
+    <value>Пульс</value>
+  </data>
+  <data name="comboBox_AddAir.Items" xml:space="preserve">
+    <value>Атмосфера</value>
+  </data>
+  <data name="comboBox_AddAir.Items1" xml:space="preserve">
+    <value>Погода</value>
+  </data>
+  <data name="comboBox_AddAir.Items6" xml:space="preserve">
+    <value>Барометр</value>
+  </data>
+  <data name="comboBox_AddBackground.Items" xml:space="preserve">
+    <value>Фон</value>
+  </data>
+  <data name="comboBox_AddDate.Items" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="comboBox_AddDate.Items1" xml:space="preserve">
+    <value>Число</value>
+  </data>
+  <data name="comboBox_AddSystem.Items" xml:space="preserve">
+    <value>Система</value>
+  </data>
+  <data name="comboBox_AddSystem.Items1" xml:space="preserve">
+    <value>Заряд</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>*** Для моделей GTS серії із-за різного співвідношення сторін та різного скруглення кутів повноцінне масштабування не можливе, частина зображення знизу та по кутах може бути обрізана.</value>
+  </data>
+  <data name="label407.Text" xml:space="preserve">
+    <value>Автор:</value>
   </data>
 </root>

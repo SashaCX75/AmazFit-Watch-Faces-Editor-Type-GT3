@@ -153,4 +153,7 @@
   <data name="button_Icon.Text" xml:space="preserve">
     <value>Іконка</value>
   </data>
+  <data name="button_ElementName.Text" xml:space="preserve">
+    <value>Пульс</value>
+  </data>
 </root>

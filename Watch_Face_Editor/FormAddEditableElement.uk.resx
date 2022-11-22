@@ -1474,4 +1474,28 @@
   <data name="$this.Text" xml:space="preserve">
     <value>Додавання елементів</value>
   </data>
+  <data name="groupBox_air.Text" xml:space="preserve">
+    <value>Атмосфера</value>
+  </data>
+  <data name="groupBox_date.Text" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="groupBox_system.Text" xml:space="preserve">
+    <value>Система</value>
+  </data>
+  <data name="radioButton_altimeter.Text" xml:space="preserve">
+    <value>Барометр</value>
+  </data>
+  <data name="radioButton_battery.Text" xml:space="preserve">
+    <value>Заряд</value>
+  </data>
+  <data name="radioButton_date.Text" xml:space="preserve">
+    <value>Число</value>
+  </data>
+  <data name="radioButton_heart.Text" xml:space="preserve">
+    <value>Пульс</value>
+  </data>
+  <data name="radioButton_weather.Text" xml:space="preserve">
+    <value>Погода</value>
+  </data>
 </root>

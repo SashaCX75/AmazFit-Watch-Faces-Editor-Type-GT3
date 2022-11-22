@@ -295,6 +295,15 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Температура.
+        /// </summary>
+        internal static string TypeNameTemperature {
+            get {
+                return ResourceManager.GetString("TypeNameTemperature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на УФ-индекс.
         /// </summary>
         internal static string TypeNameUVI {
@@ -304,11 +313,20 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Температура.
+        ///   Ищет локализованную строку, похожую на Погода.
         /// </summary>
         internal static string TypeNameWeather {
             get {
                 return ResourceManager.GetString("TypeNameWeather", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на День недели.
+        /// </summary>
+        internal static string TypeNameWeek {
+            get {
+                return ResourceManager.GetString("TypeNameWeek", resourceCulture);
             }
         }
         

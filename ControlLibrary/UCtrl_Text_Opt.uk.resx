@@ -303,4 +303,10 @@
     <value>Одиниці 
 виміру (ml)</value>
   </data>
+  <data name="comboBox_alignment.Items1" xml:space="preserve">
+    <value>По центру</value>
+  </data>
+  <data name="comboBox_alignment.Items2" xml:space="preserve">
+    <value>По правому краю</value>
+  </data>
 </root>

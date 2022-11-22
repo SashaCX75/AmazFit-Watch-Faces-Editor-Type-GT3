@@ -1256,6 +1256,7 @@ namespace ControlLibrary
         /// <summary>Устанавливаем порядок опций в элементе</summary>
         public void SetOptionsPosition(Dictionary<int, string> elementOptions)
         {
+            SetAllElementsVisibility();
             int elementCount = tableLayoutPanel_element.RowCount;
             for (int key = elementCount - 1; key >= 0; key--)
             {
@@ -1398,6 +1399,24 @@ namespace ControlLibrary
                 }
             }
             return elementOptions;
+        }
+
+        private void SetAllElementsVisibility()
+        {
+            panel_Images.Visible = true;
+            panel_Segments.Visible = true;
+            panel_Number.Visible = true;
+            panel_Number_Target.Visible = true;
+            panel_Number_Min.Visible = true;
+            panel_Number_Max.Visible = true;
+            panel_Sunset.Visible = true;
+            panel_Sunrise.Visible = true;
+            panel_Sunset_Sunrise.Visible = true;
+            panel_Pointer.Visible = true;
+            panel_Circle_Scale.Visible = true;
+            panel_Linear_Scale.Visible = true;
+            panel_Text_CityName.Visible = true;
+            panel_Icon.Visible = true;
         }
 
         /// <summary>Устанавливаем порядок опций в элементе</summary>

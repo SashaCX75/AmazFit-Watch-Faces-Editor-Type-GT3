@@ -126,4 +126,7 @@
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Статуси</value>
   </data>
+  <data name="button_Alarm.Text" xml:space="preserve">
+    <value>Будильник</value>
+  </data>
 </root>

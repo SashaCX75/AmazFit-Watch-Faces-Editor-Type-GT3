@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ElementExists" xml:space="preserve">
+    <value>Такий елемент уже є</value>
+  </data>
   <data name="TypeAltimeter" xml:space="preserve">
     <value>Барометр</value>
   </data>
@@ -146,6 +149,65 @@
   </data>
   <data name="TypeMoon" xml:space="preserve">
     <value>Фази місяця</value>
+  </data>
+  <data name="TypeNameAltimeter" xml:space="preserve">
+    <value>Тиск</value>
+  </data>
+  <data name="TypeNameBattery" xml:space="preserve">
+    <value>Заряд</value>
+  </data>
+  <data name="TypeNameCalories" xml:space="preserve">
+    <value>Калорії</value>
+  </data>
+  <data name="TypeNameDate" xml:space="preserve">
+    <value>Дата</value>
+  </data>
+  <data name="TypeNameDistance" xml:space="preserve">
+    <value>Дистанція</value>
+  </data>
+  <data name="TypeNameHeart" xml:space="preserve">
+    <value>Серцебиття</value>
+  </data>
+  <data name="TypeNameHumidity" xml:space="preserve">
+    <value>Вологість</value>
+  </data>
+  <data name="TypeNameMoon" xml:space="preserve">
+    <value>Фази місяця</value>
+  </data>
+  <data name="TypeNamePAI" xml:space="preserve">
+    <value>Усього PAI</value>
+  </data>
+  <data name="TypeNameSpO2" xml:space="preserve">
+    <value>Кисень у крові</value>
+  </data>
+  <data name="TypeNameStand" xml:space="preserve">
+    <value>Стою</value>
+  </data>
+  <data name="TypeNameStep" xml:space="preserve">
+    <value>Кроки</value>
+  </data>
+  <data name="TypeNameStress" xml:space="preserve">
+    <value>Стрес</value>
+  </data>
+  <data name="TypeNameSunrise" xml:space="preserve">
+    <value>Сонце і Місяць</value>
+  </data>
+  <data name="TypeNameTemperature" xml:space="preserve">
+    <value>Температура</value>
+  </data>
+  <data name="TypeNameUVI" xml:space="preserve">
+    <value>УФ індекс</value>
+  </data>
+  <data name="TypeNameWeather" xml:space="preserve">
+    <value>Погода</value>
+  </data>
+  <data name="TypeNameWeek" xml:space="preserve">
+    <value>День тижня</value>
+    <comment>Check the translation on the 
+watch</comment>
+  </data>
+  <data name="TypeNameWind" xml:space="preserve">
+    <value>Сила вітру</value>
   </data>
   <data name="TypePAI" xml:space="preserve">
     <value>PAI</value>

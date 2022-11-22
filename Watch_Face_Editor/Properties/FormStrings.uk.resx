@@ -135,17 +135,41 @@
   <data name="Dialog_Title_SavePNG" xml:space="preserve">
     <value>Зберегти попередній перегляд</value>
   </data>
+  <data name="Dialog_Title_Save_As" xml:space="preserve">
+    <value>Зберегти проект як...</value>
+  </data>
   <data name="Dialog_Title_Unpack" xml:space="preserve">
     <value>Вибір файла циферблата</value>
   </data>
   <data name="Dialog_Title_WatchSkin" xml:space="preserve">
     <value>Вибір файла зображення годинника</value>
   </data>
+  <data name="Elemet_Activity" xml:space="preserve">
+    <value>Активності</value>
+  </data>
+  <data name="Elemet_Air" xml:space="preserve">
+    <value>Атмосфера</value>
+  </data>
   <data name="Elemet_Date" xml:space="preserve">
     <value>Дата</value>
   </data>
   <data name="Elemet_System" xml:space="preserve">
     <value>Система</value>
+  </data>
+  <data name="Elemet_Time" xml:space="preserve">
+    <value>Час</value>
+  </data>
+  <data name="FilterGif" xml:space="preserve">
+    <value>GIF файли (*.gif)|*.gif</value>
+  </data>
+  <data name="FilterJson" xml:space="preserve">
+    <value>Json файли (*.json) | *.json</value>
+  </data>
+  <data name="FilterPng" xml:space="preserve">
+    <value>PNG файли (*.png)|*.png</value>
+  </data>
+  <data name="FilterZip" xml:space="preserve">
+    <value>Zip файл циферблата (*.zip) | *.zip</value>
   </data>
   <data name="FollowMinute" xml:space="preserve">
     <value>Слідувати за годинами</value>
@@ -171,23 +195,17 @@
   <data name="Message_Delet_Caption" xml:space="preserve">
     <value>Видалення</value>
   </data>
+  <data name="Message_Delet_Text1" xml:space="preserve">
+    <value>Ви дійсно хочете безповоротно видалити файл "</value>
+  </data>
   <data name="Message_Delet_Text11" xml:space="preserve">
     <value>Ви дійсно хочете безповоротно видалити файли :</value>
   </data>
   <data name="Message_Delet_Text2" xml:space="preserve">
-    <value>?
-Message_Error_Image_Text2	. Ви не маєте права читати файл, або зображення пошкоджено.
-Message_Delet_Text21	?
-FilterGif	GIF Файли (* .gif) | * .gif
-FilterJson	JSON файли (* .json) | * .json
-FilterPng	PNG файли (* .png) | * .png
-FilterZip	ZIP-файл циферблата (* .zip) | * .zip
-Elemet_Activity	Активності
-Elemet_Air	Атмосфера
-Message_Warning_Image_Exist1	У проекті вже існує зображення:
-Message_Warning_Assets_Exist1	У цій папці вже існує папка з зображеннями.
-Elemet_Time	Час
-Message_Delet_Text1	Ви дійсно хочете безповоротно видалити файл </value>
+    <value>"?</value>
+  </data>
+  <data name="Message_Delet_Text21" xml:space="preserve">
+    <value />
   </data>
   <data name="Message_EditableElementsAOD_Text" xml:space="preserve">
     <value>Ви не можете додавати  редаговані елементи екран AOD.</value>
@@ -203,6 +221,9 @@ Message_Delet_Text1	Ви дійсно хочете безповоротно ви
   </data>
   <data name="Message_Error_Image_Text1" xml:space="preserve">
     <value>Неможливо відкрити зображення:</value>
+  </data>
+  <data name="Message_Error_Image_Text2" xml:space="preserve">
+    <value>. У вас немає прав на читання файлу або зображення пошкоджене.</value>
   </data>
   <data name="Message_GoToFile_Caption" xml:space="preserve">
     <value>Перейти до файлу</value>
@@ -267,6 +288,9 @@ Message_Delet_Text1	Ви дійсно хочете безповоротно ви
   <data name="Message_WarningPreview_Text2" xml:space="preserve">
     <value>Використовувати існуючі розміри?</value>
   </data>
+  <data name="Message_Warning_Assets_Exist1" xml:space="preserve">
+    <value>У цій папці вже існує папка із зображеннями.</value>
+  </data>
   <data name="Message_Warning_Assets_Exist2" xml:space="preserve">
     <value>Рекомендовано створювати проект у окремій папці.</value>
   </data>
@@ -275,6 +299,9 @@ Message_Delet_Text1	Ви дійсно хочете безповоротно ви
   </data>
   <data name="Message_Warning_Caption" xml:space="preserve">
     <value>Попередження</value>
+  </data>
+  <data name="Message_Warning_Image_Exist1" xml:space="preserve">
+    <value>У проекті вже існує зображення:</value>
   </data>
   <data name="Message_Warning_Image_Exist2" xml:space="preserve">
     <value>Замінити його новим зображенням?</value>
@@ -287,5 +314,11 @@ Message_Delet_Text1	Ви дійсно хочете безповоротно ви
   </data>
   <data name="Message_Wrong_Preview_Exists" xml:space="preserve">
     <value>Не вдалося створити зображення попереднього перегляду. Можливо, це зображення вже існує.</value>
+  </data>
+  <data name="Tip_Background" xml:space="preserve">
+    <value>Фон</value>
+  </data>
+  <data name="Tip_Pointer" xml:space="preserve">
+    <value>Стрілки </value>
   </data>
 </root>

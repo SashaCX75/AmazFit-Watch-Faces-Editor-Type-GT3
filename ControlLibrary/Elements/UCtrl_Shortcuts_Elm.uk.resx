@@ -144,4 +144,13 @@
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Ярлики</value>
   </data>
+  <data name="button_Alarm.Text" xml:space="preserve">
+    <value>Будильник</value>
+  </data>
+  <data name="button_Heart.Text" xml:space="preserve">
+    <value>Пульс</value>
+  </data>
+  <data name="button_Sleep.Text" xml:space="preserve">
+    <value>Сон</value>
+  </data>
 </root>
