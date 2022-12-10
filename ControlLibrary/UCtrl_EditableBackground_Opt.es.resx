@@ -289,7 +289,7 @@
     <value>BottomCenter</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
-    <value>Resaltar el marco</value>
+    <value>Imagen en primer plano</value>
   </data>
   <data name="checkBox_edit_mode.Size" type="System.Drawing.Size, System.Drawing">
     <value>179, 17</value>
@@ -297,13 +297,13 @@
   <data name="checkBox_edit_mode.Text" xml:space="preserve">
     <value>Vista previa del modo de edición</value>
   </data>
+  <data name="groupBox_EditableBackground.Text" xml:space="preserve">
+    <value>Fondo editable</value>
+  </data>
   <data name="button_PreviewAdd.Text" xml:space="preserve">
     <value>Crear vista previa</value>
   </data>
   <data name="button_PreviewRefresh.Text" xml:space="preserve">
     <value>Actualizar vista previa</value>
-  </data>
-  <data name="groupBox_EditableBackground.Text" xml:space="preserve">
-    <value>Fondo editable</value>
   </data>
 </root>

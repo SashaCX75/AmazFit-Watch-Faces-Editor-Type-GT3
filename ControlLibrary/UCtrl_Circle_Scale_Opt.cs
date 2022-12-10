@@ -278,5 +278,41 @@ namespace ControlLibrary
             setValue = false;
         }
         #endregion
+
+        private void numericUpDown_scaleCircle_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down))
+            {
+                NumericUpDown numericUpDown = sender as NumericUpDown;
+                if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_scaleCircleX")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_scaleCircleY.DownButton();
+                }
+                if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_scaleCircleX")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_scaleCircleY.UpButton();
+                }
+
+                if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_scaleCircleY")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_scaleCircleY.DownButton();
+                }
+                if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_scaleCircleY")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_scaleCircleY.UpButton();
+                }
+
+                if (e.KeyCode == Keys.Left && (numericUpDown.Name == "numericUpDown_scaleCircleX" || numericUpDown.Name == "numericUpDown_scaleCircleY"))
+                    numericUpDown_scaleCircleX.DownButton();
+                if (e.KeyCode == Keys.Right && (numericUpDown.Name == "numericUpDown_scaleCircleX" || numericUpDown.Name == "numericUpDown_scaleCircleY"))
+                    numericUpDown_scaleCircleX.UpButton();
+
+                e.Handled = true;
+            }
+        }
     }
 }

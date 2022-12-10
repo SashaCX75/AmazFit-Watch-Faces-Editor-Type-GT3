@@ -69,8 +69,8 @@ namespace ControlLibrary
             // 
             // numericUpDown_scaleCircleX
             // 
-            resources.ApplyResources(this.numericUpDown_scaleCircleX, "numericUpDown_scaleCircleX");
             this.numericUpDown_scaleCircleX.ContextMenuStrip = this.contextMenuStrip_X;
+            resources.ApplyResources(this.numericUpDown_scaleCircleX, "numericUpDown_scaleCircleX");
             this.numericUpDown_scaleCircleX.Maximum = new decimal(new int[] {
             999,
             0,
@@ -83,17 +83,18 @@ namespace ControlLibrary
             -2147483648});
             this.numericUpDown_scaleCircleX.Name = "numericUpDown_scaleCircleX";
             this.numericUpDown_scaleCircleX.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_scaleCircleX.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_scaleCircle_KeyDown);
             this.numericUpDown_scaleCircleX.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesX_MouseDoubleClick);
             // 
             // contextMenuStrip_X
             // 
-            resources.ApplyResources(this.contextMenuStrip_X, "contextMenuStrip_X");
             this.contextMenuStrip_X.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip_X.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вставитьКоординатуХToolStripMenuItem,
             this.копироватьToolStripMenuItemX,
             this.вставитьToolStripMenuItemX});
             this.contextMenuStrip_X.Name = "contextMenuStrip_X";
+            resources.ApplyResources(this.contextMenuStrip_X, "contextMenuStrip_X");
             this.contextMenuStrip_X.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_X_Opening);
             // 
             // вставитьКоординатуХToolStripMenuItem
@@ -116,8 +117,8 @@ namespace ControlLibrary
             // 
             // numericUpDown_scaleCircleY
             // 
-            resources.ApplyResources(this.numericUpDown_scaleCircleY, "numericUpDown_scaleCircleY");
             this.numericUpDown_scaleCircleY.ContextMenuStrip = this.contextMenuStrip_Y;
+            resources.ApplyResources(this.numericUpDown_scaleCircleY, "numericUpDown_scaleCircleY");
             this.numericUpDown_scaleCircleY.Maximum = new decimal(new int[] {
             999,
             0,
@@ -130,17 +131,18 @@ namespace ControlLibrary
             -2147483648});
             this.numericUpDown_scaleCircleY.Name = "numericUpDown_scaleCircleY";
             this.numericUpDown_scaleCircleY.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_scaleCircleY.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_scaleCircle_KeyDown);
             this.numericUpDown_scaleCircleY.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesY_MouseDoubleClick);
             // 
             // contextMenuStrip_Y
             // 
-            resources.ApplyResources(this.contextMenuStrip_Y, "contextMenuStrip_Y");
             this.contextMenuStrip_Y.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip_Y.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вставитьКоординатуYToolStripMenuItem,
             this.копироватьToolStripMenuItemY,
             this.вставитьToolStripMenuItemY});
             this.contextMenuStrip_Y.Name = "contextMenuStrip_X";
+            resources.ApplyResources(this.contextMenuStrip_Y, "contextMenuStrip_Y");
             this.contextMenuStrip_Y.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Y_Opening);
             // 
             // вставитьКоординатуYToolStripMenuItem
@@ -301,10 +303,10 @@ namespace ControlLibrary
             // 
             // comboBox_scaleCircle_color
             // 
-            resources.ApplyResources(this.comboBox_scaleCircle_color, "comboBox_scaleCircle_color");
             this.comboBox_scaleCircle_color.BackColor = System.Drawing.Color.DarkOrange;
             this.comboBox_scaleCircle_color.DropDownHeight = 1;
             this.comboBox_scaleCircle_color.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_scaleCircle_color, "comboBox_scaleCircle_color");
             this.comboBox_scaleCircle_color.Name = "comboBox_scaleCircle_color";
             this.comboBox_scaleCircle_color.Click += new System.EventHandler(this.comboBox_scaleLinear_color_Click);
             // 

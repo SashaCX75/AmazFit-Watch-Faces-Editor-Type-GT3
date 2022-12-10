@@ -174,6 +174,8 @@
             -2147483648});
             this.numericUpDown_hourPointer_offset_X.Name = "numericUpDown_hourPointer_offset_X";
             this.numericUpDown_hourPointer_offset_X.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_hourPointer_offset_X.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_hourPointer_offset_KeyDown);
+            this.numericUpDown_hourPointer_offset_X.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_hourPointer_offset_X_MouseDoubleClick);
             // 
             // numericUpDown_hourPointer_offset_Y
             // 
@@ -190,6 +192,8 @@
             -2147483648});
             this.numericUpDown_hourPointer_offset_Y.Name = "numericUpDown_hourPointer_offset_Y";
             this.numericUpDown_hourPointer_offset_Y.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_hourPointer_offset_Y.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_hourPointer_offset_KeyDown);
+            this.numericUpDown_hourPointer_offset_Y.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_hourPointer_offset_Y_MouseDoubleClick);
             // 
             // label03
             // 
@@ -235,6 +239,7 @@
             -2147483648});
             this.numericUpDown_hourPointer_X.Name = "numericUpDown_hourPointer_X";
             this.numericUpDown_hourPointer_X.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_hourPointer_X.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_hourPointer_KeyDown);
             this.numericUpDown_hourPointer_X.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesX_MouseDoubleClick);
             // 
             // contextMenuStrip_X
@@ -282,6 +287,7 @@
             -2147483648});
             this.numericUpDown_hourPointer_Y.Name = "numericUpDown_hourPointer_Y";
             this.numericUpDown_hourPointer_Y.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_hourPointer_Y.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_hourPointer_KeyDown);
             this.numericUpDown_hourPointer_Y.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesY_MouseDoubleClick);
             // 
             // contextMenuStrip_Y
@@ -348,6 +354,8 @@
             -2147483648});
             this.numericUpDown_minutePointer_offset_X.Name = "numericUpDown_minutePointer_offset_X";
             this.numericUpDown_minutePointer_offset_X.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_minutePointer_offset_X.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_minutePointer_offset_KeyDown);
+            this.numericUpDown_minutePointer_offset_X.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_minutePointer_offset_X_MouseDoubleClick);
             // 
             // numericUpDown_minutePointer_offset_Y
             // 
@@ -364,6 +372,8 @@
             -2147483648});
             this.numericUpDown_minutePointer_offset_Y.Name = "numericUpDown_minutePointer_offset_Y";
             this.numericUpDown_minutePointer_offset_Y.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_minutePointer_offset_Y.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_minutePointer_offset_KeyDown);
+            this.numericUpDown_minutePointer_offset_Y.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_minutePointer_offset_Y_MouseDoubleClick);
             // 
             // label2
             // 
@@ -409,6 +419,7 @@
             -2147483648});
             this.numericUpDown_minutePointer_X.Name = "numericUpDown_minutePointer_X";
             this.numericUpDown_minutePointer_X.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_minutePointer_X.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_minutePointer_KeyDown);
             this.numericUpDown_minutePointer_X.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesX_MouseDoubleClick);
             // 
             // numericUpDown_minutePointer_Y
@@ -427,6 +438,7 @@
             -2147483648});
             this.numericUpDown_minutePointer_Y.Name = "numericUpDown_minutePointer_Y";
             this.numericUpDown_minutePointer_Y.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_minutePointer_Y.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_minutePointer_KeyDown);
             this.numericUpDown_minutePointer_Y.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesY_MouseDoubleClick);
             // 
             // label5
@@ -464,6 +476,8 @@
             -2147483648});
             this.numericUpDown_secondPointer_offset_X.Name = "numericUpDown_secondPointer_offset_X";
             this.numericUpDown_secondPointer_offset_X.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_secondPointer_offset_X.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_secondPointer_offset_KeyDown);
+            this.numericUpDown_secondPointer_offset_X.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_secondPointer_offset_X_MouseDoubleClick);
             // 
             // numericUpDown_secondPointer_offset_Y
             // 
@@ -480,6 +494,8 @@
             -2147483648});
             this.numericUpDown_secondPointer_offset_Y.Name = "numericUpDown_secondPointer_offset_Y";
             this.numericUpDown_secondPointer_offset_Y.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_secondPointer_offset_Y.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_secondPointer_offset_KeyDown);
+            this.numericUpDown_secondPointer_offset_Y.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_secondPointer_offset_Y_MouseDoubleClick);
             // 
             // label9
             // 
@@ -525,6 +541,7 @@
             -2147483648});
             this.numericUpDown_secondPointer_X.Name = "numericUpDown_secondPointer_X";
             this.numericUpDown_secondPointer_X.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_secondPointer_X.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_secondPointer_KeyDown);
             this.numericUpDown_secondPointer_X.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesX_MouseDoubleClick);
             // 
             // numericUpDown_secondPointer_Y
@@ -543,6 +560,7 @@
             -2147483648});
             this.numericUpDown_secondPointer_Y.Name = "numericUpDown_secondPointer_Y";
             this.numericUpDown_secondPointer_Y.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_secondPointer_Y.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_secondPointer_KeyDown);
             this.numericUpDown_secondPointer_Y.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesY_MouseDoubleClick);
             // 
             // label12
@@ -619,6 +637,7 @@
             -2147483648});
             this.numericUpDown_tipX.Name = "numericUpDown_tipX";
             this.numericUpDown_tipX.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_tipX.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_tip_KeyDown);
             this.numericUpDown_tipX.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesX_MouseDoubleClick);
             // 
             // numericUpDown_tipY
@@ -637,6 +656,7 @@
             -2147483648});
             this.numericUpDown_tipY.Name = "numericUpDown_tipY";
             this.numericUpDown_tipY.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_tipY.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_tip_KeyDown);
             this.numericUpDown_tipY.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesY_MouseDoubleClick);
             // 
             // label17
@@ -755,6 +775,7 @@
             -2147483648});
             this.numericUpDown_pointer_centr_Y.Name = "numericUpDown_pointer_centr_Y";
             this.numericUpDown_pointer_centr_Y.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_pointer_centr_Y.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_pointer_centr_KeyDown);
             this.numericUpDown_pointer_centr_Y.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesY_MouseDoubleClick);
             // 
             // numericUpDown_pointer_centr_X
@@ -773,6 +794,7 @@
             -2147483648});
             this.numericUpDown_pointer_centr_X.Name = "numericUpDown_pointer_centr_X";
             this.numericUpDown_pointer_centr_X.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_pointer_centr_X.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_pointer_centr_KeyDown);
             this.numericUpDown_pointer_centr_X.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesX_MouseDoubleClick);
             // 
             // comboBox_pointer_imageCentr

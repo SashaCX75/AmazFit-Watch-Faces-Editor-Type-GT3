@@ -70,6 +70,10 @@ namespace ControlLibrary
             if (highlight_element) button_ElementName.BackColor = SystemColors.ActiveCaption;
             else button_ElementName.BackColor = SystemColors.Control;
         }
+        public void Visible_ShowDel(bool visible)
+        {
+            pictureBox_Del.Visible = visible;
+        }
 
         private void button_ElementName_MouseDown(object sender, MouseEventArgs e)
         {

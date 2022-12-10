@@ -677,5 +677,323 @@ namespace ControlLibrary
                 PreviewRefresh(this, eventArgs, comboBox_select_pointerSet.SelectedIndex);
             }
         }
+
+        private void numericUpDown_hourPointer_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down))
+            {
+                NumericUpDown numericUpDown = sender as NumericUpDown;
+                if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_hourPointer_X")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_hourPointer_Y.DownButton();
+                }
+                if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_hourPointer_X")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_hourPointer_Y.UpButton();
+                }
+
+                if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_hourPointer_Y")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_hourPointer_Y.DownButton();
+                }
+                if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_hourPointer_Y")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_hourPointer_Y.UpButton();
+                }
+
+                if (e.KeyCode == Keys.Left && (numericUpDown.Name == "numericUpDown_hourPointer_X" || numericUpDown.Name == "numericUpDown_hourPointer_Y"))
+                    numericUpDown_hourPointer_X.DownButton();
+                if (e.KeyCode == Keys.Right && (numericUpDown.Name == "numericUpDown_hourPointer_X" || numericUpDown.Name == "numericUpDown_hourPointer_Y"))
+                    numericUpDown_hourPointer_X.UpButton();
+
+                e.Handled = true;
+            }
+        }
+
+        private void numericUpDown_minutePointer_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down))
+            {
+                NumericUpDown numericUpDown = sender as NumericUpDown;
+                if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_minutePointer_X")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_minutePointer_Y.DownButton();
+                }
+                if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_minutePointer_X")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_minutePointer_Y.UpButton();
+                }
+
+                if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_minutePointer_Y")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_minutePointer_Y.DownButton();
+                }
+                if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_minutePointer_Y")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_minutePointer_Y.UpButton();
+                }
+
+                if (e.KeyCode == Keys.Left && (numericUpDown.Name == "numericUpDown_minutePointer_X" || numericUpDown.Name == "numericUpDown_minutePointer_Y"))
+                    numericUpDown_minutePointer_X.DownButton();
+                if (e.KeyCode == Keys.Right && (numericUpDown.Name == "numericUpDown_minutePointer_X" || numericUpDown.Name == "numericUpDown_minutePointer_Y"))
+                    numericUpDown_minutePointer_X.UpButton();
+
+                e.Handled = true;
+            }
+        }
+
+        private void numericUpDown_pointer_centr_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down))
+            {
+                NumericUpDown numericUpDown = sender as NumericUpDown;
+                if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_pointer_centr_X")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_pointer_centr_Y.DownButton();
+                }
+                if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_pointer_centr_X")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_pointer_centr_Y.UpButton();
+                }
+
+                if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_pointer_centr_Y")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_pointer_centr_Y.DownButton();
+                }
+                if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_pointer_centr_Y")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_pointer_centr_Y.UpButton();
+                }
+
+                if (e.KeyCode == Keys.Left && (numericUpDown.Name == "numericUpDown_pointer_centr_X" || numericUpDown.Name == "numericUpDown_pointer_centr_Y"))
+                    numericUpDown_pointer_centr_X.DownButton();
+                if (e.KeyCode == Keys.Right && (numericUpDown.Name == "numericUpDown_pointer_centr_X" || numericUpDown.Name == "numericUpDown_pointer_centr_Y"))
+                    numericUpDown_pointer_centr_X.UpButton();
+
+                e.Handled = true;
+            }
+        }
+
+        private void numericUpDown_tip_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down))
+            {
+                NumericUpDown numericUpDown = sender as NumericUpDown;
+                if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_tipX")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_tipY.DownButton();
+                }
+                if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_tipX")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_tipY.UpButton();
+                }
+
+                if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_tipY")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_tipY.DownButton();
+                }
+                if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_tipY")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_tipY.UpButton();
+                }
+
+                if (e.KeyCode == Keys.Left && (numericUpDown.Name == "numericUpDown_tipX" || numericUpDown.Name == "numericUpDown_tipY"))
+                    numericUpDown_tipX.DownButton();
+                if (e.KeyCode == Keys.Right && (numericUpDown.Name == "numericUpDown_tipX" || numericUpDown.Name == "numericUpDown_tipY"))
+                    numericUpDown_tipX.UpButton();
+
+                e.Handled = true;
+            }
+        }
+
+        private void numericUpDown_secondPointer_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down))
+            {
+                NumericUpDown numericUpDown = sender as NumericUpDown;
+                if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_secondPointer_X")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_secondPointer_Y.DownButton();
+                }
+                if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_secondPointer_X")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_secondPointer_Y.UpButton();
+                }
+
+                if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_secondPointer_Y")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_secondPointer_Y.DownButton();
+                }
+                if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_secondPointer_Y")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_secondPointer_Y.UpButton();
+                }
+
+                if (e.KeyCode == Keys.Left && (numericUpDown.Name == "numericUpDown_secondPointer_X" || numericUpDown.Name == "numericUpDown_secondPointer_Y"))
+                    numericUpDown_secondPointer_X.DownButton();
+                if (e.KeyCode == Keys.Right && (numericUpDown.Name == "numericUpDown_secondPointer_X" || numericUpDown.Name == "numericUpDown_secondPointer_Y"))
+                    numericUpDown_secondPointer_X.UpButton();
+
+                e.Handled = true;
+            }
+        }
+
+        private void numericUpDown_hourPointer_offset_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down))
+            {
+                NumericUpDown numericUpDown = sender as NumericUpDown;
+                if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_hourPointer_offset_X")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_hourPointer_offset_Y.UpButton();
+                }
+                if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_hourPointer_offset_X")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_hourPointer_offset_Y.DownButton();
+                }
+                if (e.KeyCode == Keys.Left && (numericUpDown.Name == "numericUpDown_hourPointer_offset_X" || numericUpDown.Name == "numericUpDown_hourPointer_offset_Y"))
+                    numericUpDown_hourPointer_offset_X.UpButton();
+                if (e.KeyCode == Keys.Right && (numericUpDown.Name == "numericUpDown_hourPointer_offset_X" || numericUpDown.Name == "numericUpDown_hourPointer_offset_Y"))
+                    numericUpDown_hourPointer_offset_X.DownButton();
+
+                e.Handled = true;
+            }
+        }
+
+        private void numericUpDown_minutePointer_offset_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down))
+            {
+                NumericUpDown numericUpDown = sender as NumericUpDown;
+                if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_minutePointer_offset_X")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_minutePointer_offset_Y.UpButton();
+                }
+                if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_minutePointer_offset_X")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_minutePointer_offset_Y.DownButton();
+                }
+                if (e.KeyCode == Keys.Left && (numericUpDown.Name == "numericUpDown_minutePointer_offset_X" || numericUpDown.Name == "numericUpDown_minutePointer_offset_Y"))
+                    numericUpDown_minutePointer_offset_X.UpButton();
+                if (e.KeyCode == Keys.Right && (numericUpDown.Name == "numericUpDown_minutePointer_offset_X" || numericUpDown.Name == "numericUpDown_minutePointer_offset_Y"))
+                    numericUpDown_minutePointer_offset_X.DownButton();
+
+                e.Handled = true;
+            }
+        }
+
+        private void numericUpDown_secondPointer_offset_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down))
+            {
+                NumericUpDown numericUpDown = sender as NumericUpDown;
+                if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_secondPointer_offset_X")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_secondPointer_offset_Y.UpButton();
+                }
+                if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_secondPointer_offset_X")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_secondPointer_offset_Y.DownButton();
+                }
+                if (e.KeyCode == Keys.Left && (numericUpDown.Name == "numericUpDown_secondPointer_offset_X" || numericUpDown.Name == "numericUpDown_secondPointer_offset_Y"))
+                    numericUpDown_secondPointer_offset_X.UpButton();
+                if (e.KeyCode == Keys.Right && (numericUpDown.Name == "numericUpDown_secondPointer_offset_X" || numericUpDown.Name == "numericUpDown_secondPointer_offset_Y"))
+                    numericUpDown_secondPointer_offset_X.DownButton();
+
+                e.Handled = true;
+            }
+        }
+
+        private void numericUpDown_secondPointer_offset_X_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (MouseСoordinates.X < 0) return;
+            NumericUpDown numericUpDown = sender as NumericUpDown;
+            if (e.X <= numericUpDown.Controls[1].Width + 1)
+            {
+                // Click is in text area
+                numericUpDown.Value = MouseСoordinates.X - numericUpDown_secondPointer_offset_X.Value;
+            }
+        }
+
+        private void numericUpDown_secondPointer_offset_Y_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (MouseСoordinates.Y < 0) return;
+            NumericUpDown numericUpDown = sender as NumericUpDown;
+            if (e.X <= numericUpDown.Controls[1].Width + 1)
+            {
+                // Click is in text area
+                numericUpDown.Value = MouseСoordinates.Y - numericUpDown_secondPointer_offset_Y.Value;
+            }
+        }
+
+        private void numericUpDown_minutePointer_offset_X_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (MouseСoordinates.Y < 0) return;
+            NumericUpDown numericUpDown = sender as NumericUpDown;
+            if (e.X <= numericUpDown.Controls[1].Width + 1)
+            {
+                // Click is in text area
+                numericUpDown.Value = MouseСoordinates.Y - numericUpDown_minutePointer_offset_Y.Value;
+            }
+        }
+
+        private void numericUpDown_minutePointer_offset_Y_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (MouseСoordinates.Y < 0) return;
+            NumericUpDown numericUpDown = sender as NumericUpDown;
+            if (e.X <= numericUpDown.Controls[1].Width + 1)
+            {
+                // Click is in text area
+                numericUpDown.Value = MouseСoordinates.Y - numericUpDown_minutePointer_offset_Y.Value;
+            }
+        }
+
+        private void numericUpDown_hourPointer_offset_X_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (MouseСoordinates.Y < 0) return;
+            NumericUpDown numericUpDown = sender as NumericUpDown;
+            if (e.X <= numericUpDown.Controls[1].Width + 1)
+            {
+                // Click is in text area
+                numericUpDown.Value = MouseСoordinates.Y - numericUpDown_hourPointer_offset_Y.Value;
+            }
+        }
+
+        private void numericUpDown_hourPointer_offset_Y_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (MouseСoordinates.Y < 0) return;
+            NumericUpDown numericUpDown = sender as NumericUpDown;
+            if (e.X <= numericUpDown.Controls[1].Width + 1)
+            {
+                // Click is in text area
+                numericUpDown.Value = MouseСoordinates.Y - numericUpDown_hourPointer_offset_Y.Value;
+            }
+        }
     }
 }

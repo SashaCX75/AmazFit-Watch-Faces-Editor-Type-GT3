@@ -51,7 +51,9 @@ namespace Watch_Face_Editor
                     {
                         variables += TabInString(4) + "let editBg = ''" + Environment.NewLine;
                         Editable_Background editable_Background = Watch_Face.ScreenNormal.Background.Editable_Background;
-                        options = Editable_Background_Options(editable_Background, "ONLY_NORMAL");
+                        string level = "";
+                        if(!editable_Background.AOD_show) level = "hmUI.show_level.ONLY_NORMAL | hmUI.show_level.ONLY_EDIT";
+                        options = Editable_Background_Options(editable_Background, level);
                         items += TabInString(6) + "editBg = hmUI.createWidget(hmUI.widget.WATCHFACE_EDIT_BG, {" +
                             options + TabInString(6) + "});" + Environment.NewLine;
                     }
@@ -123,9 +125,8 @@ namespace Watch_Face_Editor
 
             // редактируемые элементы
             if (Watch_Face.Editable_Elements != null && Watch_Face.Editable_Elements.Watchface_edit_group != null &&
-                Watch_Face.Editable_Elements.Watchface_edit_group.Count > 0)
+                Watch_Face.Editable_Elements.Watchface_edit_group.Count > 0 && Watch_Face.Editable_Elements.visible)
             {
-                if (!Watch_Face.Editable_Elements.visible) return;
 
                 for (int i = 1; i <= Watch_Face.Editable_Elements.Watchface_edit_group.Count; i++)
                 {
@@ -322,10 +323,9 @@ namespace Watch_Face_Editor
                 }
             }
 
-            if (Watch_Face.ElementEditablePointers != null)
+            if (Watch_Face.ElementEditablePointers != null && Watch_Face.ElementEditablePointers.visible)
             {
                 ElementEditablePointers EditablePointers = Watch_Face.ElementEditablePointers;
-                if (!EditablePointers.visible) return;
 
                 string editablePointersOptions = Editable_Pointers_Options(EditablePointers);
 
@@ -7211,180 +7211,6 @@ namespace Watch_Face_Editor
                         // Circle_Scale
                         if (index == circleScalePosition && circle_scale != null)
                         {
-                            variables += TabInString(4) + "let " + optionNameStart +
-                                "fat_burning_circle_scale = ''" + Environment.NewLine;
-
-                            items += circleScaleOptions;
-
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
-                                items += Environment.NewLine + TabInString(8) + "let screenType = hmSetting.getScreenType();";
-                            if (optionNameStart == "normal_")
-                                items += Environment.NewLine + TabInString(8) + "if (screenType != hmSetting.screen_type.AOD) {";
-                            else items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.AOD) {";
-
-                            //items += Environment.NewLine + TabInString(7) +
-                            //    optionNameStart + "fat_burning_circle_scale = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
-                            //        circleScaleOptions + TabInString(7) + "});" + Environment.NewLine;
-
-                            items += Environment.NewLine + TabInString(7) +
-                                optionNameStart + "fat_burning_circle_scale = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
-
-                            if (circle_scale.mirror)
-                            {
-                                variables += TabInString(4) + "let " + optionNameStart +
-                                "fat_burning_circle_scale_mirror = ''" + Environment.NewLine;
-
-                                items += TabInString(7) + optionNameStart +
-                                    "fat_burning_circle_scale_mirror = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
-                            }
-
-                            items += TabInString(8) + "};" + Environment.NewLine;
-
-                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update scales FAT_BURNING');" + Environment.NewLine;
-                            if (items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0 &&
-                                exist_items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0)
-                            {
-                                items += TabInString(8) + Environment.NewLine;
-                                items += TabInString(8) + "const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);" + Environment.NewLine;
-                                if (exist_items.IndexOf("fat_burning.addEventListener") < 0)
-                                {
-                                    items += TabInString(8) + "fat_burning.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
-                                    items += TabInString(7) + "scale_call();" + Environment.NewLine;
-                                    items += TabInString(8) + "});" + Environment.NewLine;
-                                }
-                            }
-
-                            if (resume_function.IndexOf("progressFatBurning") < 0 &&
-                                exist_resume_call.IndexOf("progressFatBurning") < 0)
-                            {
-                                resume_function += TabInString(8) + Environment.NewLine;
-                                resume_function += TabInString(8) + "let valueFatBurning = fat_burning.current;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let targetFatBurning = fat_burning.target;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let progressFatBurning = valueFatBurning/targetFatBurning;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "if (progressFatBurning > 1) progressFatBurning = 1;" + Environment.NewLine;
-                            }
-
-                            if (circle_scale.inversion)
-                            {
-                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
-                                "fat_burning = 1 - progressFatBurning;" + Environment.NewLine;
-                            }
-                            else
-                            {
-                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
-                                "fat_burning = progressFatBurning;" + Environment.NewLine;
-                            }
-                            if (optionNameStart == "normal_")
-                            {
-                                resume_function += Environment.NewLine + TabInString(8) +
-                                    "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "fat_burning");
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
-                            }
-                            else
-                            {
-                                resume_function += Environment.NewLine + TabInString(8) +
-                                    "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "fat_burning");
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
-                            }
-
-
-
-
-                        }
-
-                        // Linear_Scale
-                        if (index == linearScalePosition && linear_scale != null)
-                        {
-                            variables += TabInString(4) + "let " + optionNameStart +
-                                "fat_burning_linear_scale = ''" + Environment.NewLine;
-                            if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
-                                variables += TabInString(4) + "let " + optionNameStart +
-                                    "fat_burning_linear_scale_pointer_img = ''" + Environment.NewLine;
-
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
-                                items += Environment.NewLine + TabInString(8) + "let screenType = hmSetting.getScreenType();";
-                            if (optionNameStart == "normal_")
-                                items += Environment.NewLine + TabInString(8) + "if (screenType != hmSetting.screen_type.AOD) {";
-                            else items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.AOD) {";
-
-                            items += Environment.NewLine + TabInString(7) +
-                                optionNameStart + "fat_burning_linear_scale = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
-
-                            if (linear_scale.mirror)
-                            {
-                                variables += TabInString(4) + "let " + optionNameStart +
-                                "fat_burning_linear_scale_mirror = ''" + Environment.NewLine;
-                                if (linear_scale.pointer != null && linear_scale.pointer.Length > 0)
-                                    variables += TabInString(4) + "let " + optionNameStart +
-                                        "fat_burning_linear_scale_pointer_img_mirror = ''" + Environment.NewLine;
-
-                                items += TabInString(7) + optionNameStart +
-                                    "fat_burning_linear_scale_mirror = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
-                            }
-
-                            items += TabInString(8) + "};" + Environment.NewLine;
-
-                            items += linearScaleOptions;
-
-
-                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update scales FAT_BURNING');" + Environment.NewLine;
-                            if (items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0 &&
-                                exist_items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0)
-                            {
-                                items += TabInString(8) + Environment.NewLine;
-                                items += TabInString(8) + "const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);" + Environment.NewLine;
-                                if (exist_items.IndexOf("fat_burning.addEventListener") < 0)
-                                {
-                                    items += TabInString(8) + "fat_burning.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
-                                    items += TabInString(7) + "scale_call();" + Environment.NewLine;
-                                    items += TabInString(8) + "});" + Environment.NewLine;
-                                }
-                            }
-
-                            if (resume_function.IndexOf("progressFatBurning") < 0 &&
-                                exist_resume_call.IndexOf("progressFatBurning") < 0)
-                            {
-                                resume_function += TabInString(8) + Environment.NewLine;
-                                resume_function += TabInString(8) + "let valueFatBurning = fat_burning.current;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let targetFatBurning = fat_burning.target;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let progressFatBurning = valueFatBurning/targetFatBurning;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "if (progressFatBurning > 1) progressFatBurning = 1;" + Environment.NewLine;
-                            }
-                            if (linear_scale.inversion)
-                            {
-                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
-                                "fat_burning = 1 - progressFatBurning;" + Environment.NewLine;
-                            }
-                            else
-                            {
-                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
-                                "fat_burning = progressFatBurning;" + Environment.NewLine;
-                            }
-                            if (optionNameStart == "normal_")
-                            {
-                                resume_function += Environment.NewLine + TabInString(8) +
-                                    "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "fat_burning", show_level);
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
-                            }
-                            else
-                            {
-                                resume_function += Environment.NewLine + TabInString(8) +
-                                    "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "fat_burning", show_level);
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
-                            }
-
-
-
-
-                        }
-
-                        // Circle_Scale
-                        if (index == circleScalePosition && circle_scale != null)
-                        {
                             string variableName = optionNameStart + "fat_burning_circle_scale";
                             variables += TabInString(4) + "let " + variableName + " = null;" + Environment.NewLine;
 
@@ -7411,12 +7237,12 @@ namespace Watch_Face_Editor
                             items += TabInString(8) + "};" + Environment.NewLine;
 
                             resume_function += Environment.NewLine + TabInString(8) + "console.log('update editable circle_scale FAT_BURNING');" + Environment.NewLine;
-                            if (items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURNING);") < 0 &&
-                                exist_items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURNING);") < 0 &&
-                                main_items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURNING);") < 0)
+                            if (items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0 &&
+                                exist_items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0 &&
+                                main_items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0)
                             {
                                 main_items += TabInString(6) + Environment.NewLine;
-                                main_items += TabInString(6) + "const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURNING);" + Environment.NewLine;
+                                main_items += TabInString(6) + "const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);" + Environment.NewLine;
                                 if (exist_items.IndexOf("fat_burning.addEventListener") < 0)
                                 {
                                     items += TabInString(8) + "fat_burning.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
@@ -7492,12 +7318,12 @@ namespace Watch_Face_Editor
 
 
                             resume_function += Environment.NewLine + TabInString(8) + "console.log('update editable linear_scale FAT_BURNING');" + Environment.NewLine;
-                            if (items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURNING);") < 0 &&
-                                exist_items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURNING);") < 0 &&
-                                main_items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURNING);") < 0)
+                            if (items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0 &&
+                                exist_items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0 &&
+                                main_items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0)
                             {
                                 main_items += TabInString(6) + Environment.NewLine;
-                                main_items += TabInString(6) + "const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURNING);" + Environment.NewLine;
+                                main_items += TabInString(6) + "const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);" + Environment.NewLine;
                                 if (exist_items.IndexOf("fat_burning.addEventListener") < 0)
                                 {
                                     items += TabInString(8) + "fat_burning.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
@@ -9836,6 +9662,8 @@ namespace Watch_Face_Editor
                 options += TabInString(7) + "tips_y: " + editable_background.tips_y.ToString() + "," + Environment.NewLine;
 
                 //options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+                if(show_level != null && show_level.Length > 0) 
+                    options += TabInString(7) + "show_level: " + show_level + "," + Environment.NewLine;
             }
             return options;
         }
@@ -17094,7 +16922,7 @@ namespace Watch_Face_Editor
                 {
                     imgName = parametrs["imperial_unit_en"].Replace("'", "").Replace("\"", "");
                     imgName = Path.GetFileNameWithoutExtension(imgName);
-                    imgNumber.unit = imgName;
+                    imgNumber.imperial_unit = imgName;
                 }
                 if (parametrs.ContainsKey("negative_image") && parametrs["negative_image"].Length > 0)
                 {

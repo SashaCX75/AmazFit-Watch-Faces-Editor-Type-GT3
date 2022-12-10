@@ -63,6 +63,10 @@ namespace ControlLibrary
         {
             return highlight_element;
         }
+        public void Visible_ShowDel(bool visible)
+        {
+            pictureBox_Del.Visible = visible;
+        }
 
         public void ResetHighlightState()
         {

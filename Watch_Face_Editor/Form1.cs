@@ -2543,6 +2543,11 @@ namespace Watch_Face_Editor
                 }
                 e.SuppressKeyPress = true;  // Stops other controls on the form receiving event.
             }
+
+            //if (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
+            //{
+            //    if (uCtrl_Text_Opt.Visible) uCtrl_Text_Opt.CursorKeyPressed(e.KeyCode.ToString());
+            //}
         }
 
         private void save_JSON_File(String fullfilename)
@@ -4346,6 +4351,7 @@ namespace Watch_Face_Editor
                     uCtrl_Background_Elm.SetVisibilityElementStatus(Watch_Face.ScreenAOD.Background.visible);
                     uCtrl_Background_Elm.Visible = true;
                 }
+
             }
 
             List<object> elements = new List<object>();
@@ -5419,13 +5425,19 @@ namespace Watch_Face_Editor
 
             if (Watch_Face.Editable_Elements != null)
             {
-                EditableElements editableElements = Watch_Face.Editable_Elements;
-                uCtrl_EditableElements_Elm.SetVisibilityElementStatus(editableElements.visible);
+                if (radioButton_ScreenNormal.Checked || Watch_Face.Editable_Elements.AOD_show)
+                {
+                    EditableElements editableElements = Watch_Face.Editable_Elements;
+                    uCtrl_EditableElements_Elm.SetVisibilityElementStatus(editableElements.visible);
 
-                uCtrl_EditableElements_Elm.Visible = true;
-                SetElementPositionInGUI(editableElements.GetType().Name, count - elementsCount - 2);
-                //SetElementPositionInGUI(type, i + 1); 
-                elementsCount++;
+                    if (radioButton_ScreenNormal.Checked) uCtrl_EditableElements_Elm.Visible_ShowDel(true);
+                    else uCtrl_EditableElements_Elm.Visible_ShowDel(false);
+
+                    uCtrl_EditableElements_Elm.Visible = true;
+                    SetElementPositionInGUI(editableElements.GetType().Name, count - elementsCount - 2);
+                    //SetElementPositionInGUI(type, i + 1); 
+                    elementsCount++; 
+                }
             }
 
 
@@ -5434,11 +5446,14 @@ namespace Watch_Face_Editor
                 ElementEditablePointers EditablePointers = Watch_Face.ElementEditablePointers;
                 uCtrl_EditableTimePointer_Elm.SetVisibilityElementStatus(EditablePointers.visible);
 
+                if (radioButton_ScreenNormal.Checked) uCtrl_EditableTimePointer_Elm.Visible_ShowDel(true);
+                else uCtrl_EditableTimePointer_Elm.Visible_ShowDel(false);
+
                 uCtrl_EditableTimePointer_Elm.Visible = true;
                 SetElementPositionInGUI("ElementEditablePointers", count - elementsCount - 2);
-                //SetElementPositionInGUI(type, i + 1); 
+                //SetElementPositionInGUI(type, i + 1);  
             }
-            
+
             PreviewView = true;
         }
 
@@ -7151,8 +7166,8 @@ namespace Watch_Face_Editor
                         background.BackgroundColor.w = 466;
                         break;
                     case "Amazfit Band 7":
-                        background.BackgroundColor.h = 194;
-                        background.BackgroundColor.w = 368;
+                        background.BackgroundColor.h = 368;
+                        background.BackgroundColor.w = 194;
                         break;
                     case "GTS 4 mini":
                         background.BackgroundColor.h = 384;
@@ -7183,8 +7198,8 @@ namespace Watch_Face_Editor
                         background.BackgroundImage.w = 466;
                         break;
                     case "Amazfit Band 7":
-                        background.BackgroundImage.h = 194;
-                        background.BackgroundImage.w = 368;
+                        background.BackgroundImage.h = 368;
+                        background.BackgroundImage.w = 194;
                         break;
                     case "GTS 4 mini":
                         background.BackgroundImage.h = 384;
@@ -11118,6 +11133,8 @@ namespace Watch_Face_Editor
                 }
 
             }
+            if (Watch_Face != null && Watch_Face.Editable_Elements != null) Watch_Face.Editable_Elements.AOD_show = true;
+            //if (Watch_Face != null && Watch_Face.ElementEditablePointers != null) Watch_Face.ElementEditablePointers.AOD_show = true;
             ShowElemetsWatchFace();
             JSON_Modified = true;
             PreviewView = true;
@@ -15205,6 +15222,7 @@ namespace Watch_Face_Editor
             }
             Logger.WriteLine("* Project_SaveAs (end)");
         }
+
     }
 }
 

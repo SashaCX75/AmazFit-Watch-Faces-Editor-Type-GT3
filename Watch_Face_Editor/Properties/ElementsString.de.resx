@@ -154,7 +154,7 @@
     <value>Luftdruck</value>
   </data>
   <data name="TypeNameBattery" xml:space="preserve">
-    <value>Batterie</value>
+    <value>Akku</value>
   </data>
   <data name="TypeNameCalories" xml:space="preserve">
     <value>Kalorien</value>
@@ -165,23 +165,26 @@
   <data name="TypeNameDistance" xml:space="preserve">
     <value>Distanz</value>
   </data>
+  <data name="TypeNameFatBurning" xml:space="preserve">
+    <value>Fett verbrannt</value>
+  </data>
   <data name="TypeNameHeart" xml:space="preserve">
-    <value>Herzschlag</value>
+    <value>Herzfrequenz</value>
   </data>
   <data name="TypeNameHumidity" xml:space="preserve">
     <value>Luftfeuchtigkeit</value>
   </data>
   <data name="TypeNameMoon" xml:space="preserve">
-    <value>Mondphase</value>
+    <value>Mondphasen</value>
   </data>
   <data name="TypeNamePAI" xml:space="preserve">
-    <value>Total PAI</value>
+    <value>Gesamt-PAI</value>
   </data>
   <data name="TypeNameSpO2" xml:space="preserve">
     <value>Blutsauerstoff</value>
   </data>
   <data name="TypeNameStand" xml:space="preserve">
-    <value>Stand</value>
+    <value>Stehen</value>
   </data>
   <data name="TypeNameStep" xml:space="preserve">
     <value>Schritte</value>
@@ -196,19 +199,22 @@
     <value>Temperatur</value>
   </data>
   <data name="TypeNameUVI" xml:space="preserve">
-    <value>UV Index</value>
+    <value>UV-Index</value>
   </data>
   <data name="TypeNameWeather" xml:space="preserve">
     <value>Wetter</value>
   </data>
+  <data name="TypeNameWeek" xml:space="preserve">
+    <value>Wochentag</value>
+  </data>
   <data name="TypeNameWind" xml:space="preserve">
-    <value>Windstärke</value>
+    <value>Wind</value>
   </data>
   <data name="TypePAI" xml:space="preserve">
     <value>PAI</value>
   </data>
   <data name="TypeSpO2" xml:space="preserve">
-    <value>Mond-Phasen</value>
+    <value>Sauerstoff im Blut</value>
   </data>
   <data name="TypeStand" xml:space="preserve">
     <value>Stand</value>

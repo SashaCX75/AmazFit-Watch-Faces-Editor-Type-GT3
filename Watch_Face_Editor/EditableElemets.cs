@@ -1337,7 +1337,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Images.Checked)
                             {
                                 hmUI_widget_IMG_LEVEL img_level = heart.Images;
-                                Read_ImgLevel_Options(img_level, 10, true);
+                                Read_ImgLevel_Options(img_level, 6, false);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1345,7 +1345,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Segments.Checked)
                             {
                                 hmUI_widget_IMG_PROGRESS img_prorgess = heart.Segments;
-                                Read_ImgProrgess_Options(img_prorgess, 10, false);
+                                Read_ImgProrgess_Options(img_prorgess, 6, true);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1771,7 +1771,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Images.Checked)
                             {
                                 hmUI_widget_IMG_LEVEL img_level = uv_index.Images;
-                                Read_ImgLevel_Options(img_level, 10, true);
+                                Read_ImgLevel_Options(img_level, 5, false);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1779,7 +1779,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Segments.Checked)
                             {
                                 hmUI_widget_IMG_PROGRESS img_prorgess = uv_index.Segments;
-                                Read_ImgProrgess_Options(img_prorgess, 10, false);
+                                Read_ImgProrgess_Options(img_prorgess, 5, true);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;

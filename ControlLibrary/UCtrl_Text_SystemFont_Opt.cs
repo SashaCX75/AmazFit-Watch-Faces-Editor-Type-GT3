@@ -401,7 +401,11 @@ namespace ControlLibrary
             if (e.X <= numericUpDown.Controls[1].Width + 1)
             {
                 // Click is in text area
-                numericUpDown.Value = MouseСoordinates.X - numericUpDown_X.Value;
+                if ((MouseСoordinates.X - numericUpDown_X.Value) > 0)
+                {
+                    numericUpDown.Value = MouseСoordinates.X - numericUpDown_X.Value;
+                }
+                else numericUpDown.Value = 1;
             }
         }
 
@@ -412,7 +416,11 @@ namespace ControlLibrary
             if (e.X <= numericUpDown.Controls[1].Width + 1)
             {
                 // Click is in text area
-                numericUpDown.Value = MouseСoordinates.Y - numericUpDown_Y.Value;
+                if ((MouseСoordinates.Y - numericUpDown_Y.Value) > 0)
+                {
+                    numericUpDown.Value = MouseСoordinates.Y - numericUpDown_Y.Value;
+                }
+                else numericUpDown.Value = 1;
             }
         }
 
@@ -484,5 +492,77 @@ namespace ControlLibrary
             setValue = false;
         }
         #endregion
+
+        private void numericUpDown_Pos_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down))
+            {
+                NumericUpDown numericUpDown = sender as NumericUpDown;
+                if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_X")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_Y.DownButton();
+                }
+                if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_X")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_Y.UpButton();
+                }
+
+                if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_Y")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_Y.DownButton();
+                }
+                if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_Y")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_Y.UpButton();
+                }
+
+                if (e.KeyCode == Keys.Left && (numericUpDown.Name == "numericUpDown_X" || numericUpDown.Name == "numericUpDown_Y"))
+                    numericUpDown_X.DownButton();
+                if (e.KeyCode == Keys.Right && (numericUpDown.Name == "numericUpDown_X" || numericUpDown.Name == "numericUpDown_Y"))
+                    numericUpDown_X.UpButton();
+
+                e.Handled = true;
+            }
+        }
+
+        private void numericUpDown_size_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down))
+            {
+                NumericUpDown numericUpDown = sender as NumericUpDown;
+                if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_Width")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_Height.DownButton();
+                }
+                if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_Width")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_Height.UpButton();
+                }
+
+                if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_Height")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_Height.DownButton();
+                }
+                if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_Height")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_Height.UpButton();
+                }
+
+                if (e.KeyCode == Keys.Left && (numericUpDown.Name == "numericUpDown_Width" || numericUpDown.Name == "numericUpDown_Height"))
+                    numericUpDown_Width.DownButton();
+                if (e.KeyCode == Keys.Right && (numericUpDown.Name == "numericUpDown_Width" || numericUpDown.Name == "numericUpDown_Height"))
+                    numericUpDown_Width.UpButton();
+
+                e.Handled = true;
+            }
+        }
     }
 }

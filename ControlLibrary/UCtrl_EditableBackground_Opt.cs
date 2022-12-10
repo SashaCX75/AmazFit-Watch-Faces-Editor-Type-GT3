@@ -584,5 +584,41 @@ namespace ControlLibrary
                 PreviewRefresh(this, eventArgs, comboBox_select_background.SelectedIndex);
             }
         }
+
+        private void numericUpDown_tip_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down))
+            {
+                NumericUpDown numericUpDown = sender as NumericUpDown;
+                if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_tipX")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_tipY.DownButton();
+                }
+                if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_tipX")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_tipY.UpButton();
+                }
+
+                if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_tipY")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_tipY.DownButton();
+                }
+                if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_tipY")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_tipY.UpButton();
+                }
+
+                if (e.KeyCode == Keys.Left && (numericUpDown.Name == "numericUpDown_tipX" || numericUpDown.Name == "numericUpDown_tipY"))
+                    numericUpDown_tipX.DownButton();
+                if (e.KeyCode == Keys.Right && (numericUpDown.Name == "numericUpDown_tipX" || numericUpDown.Name == "numericUpDown_tipY"))
+                    numericUpDown_tipX.UpButton();
+
+                e.Handled = true;
+            }
+        }
     }
 }

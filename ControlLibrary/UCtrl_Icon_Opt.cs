@@ -321,5 +321,41 @@ namespace ControlLibrary
         }
 
         #endregion
+
+        private void numericUpDown_icon_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down))
+            {
+                NumericUpDown numericUpDown = sender as NumericUpDown;
+                if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_iconX")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_iconY.DownButton();
+                }
+                if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_iconX")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_iconY.UpButton();
+                }
+
+                if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_iconY")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_iconY.DownButton();
+                }
+                if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_iconY")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_iconY.UpButton();
+                }
+
+                if (e.KeyCode == Keys.Left && (numericUpDown.Name == "numericUpDown_iconX" || numericUpDown.Name == "numericUpDown_iconY"))
+                    numericUpDown_iconX.DownButton();
+                if (e.KeyCode == Keys.Right && (numericUpDown.Name == "numericUpDown_iconX" || numericUpDown.Name == "numericUpDown_iconY"))
+                    numericUpDown_iconX.UpButton();
+
+                e.Handled = true;
+            }
+        }
     }
 }

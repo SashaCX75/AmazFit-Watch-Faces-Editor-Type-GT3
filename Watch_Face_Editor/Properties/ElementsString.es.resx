@@ -150,6 +150,9 @@
   <data name="TypeMoon" xml:space="preserve">
     <value>Fases de la luna</value>
   </data>
+  <data name="TypeNameAltimeter" xml:space="preserve">
+    <value>Presión del aire</value>
+  </data>
   <data name="TypeNameBattery" xml:space="preserve">
     <value>Bateria</value>
   </data>
@@ -165,14 +168,50 @@
   <data name="TypeNameHeart" xml:space="preserve">
     <value>Ritmo cardiaco</value>
   </data>
+  <data name="TypeNameHumidity" xml:space="preserve">
+    <value>Humedad</value>
+  </data>
+  <data name="TypeNameMoon" xml:space="preserve">
+    <value>Fase lunar</value>
+  </data>
+  <data name="TypeNamePAI" xml:space="preserve">
+    <value>PAI totales</value>
+  </data>
+  <data name="TypeNameSpO2" xml:space="preserve">
+    <value>Oxigeno en la sangre</value>
+  </data>
+  <data name="TypeNameStand" xml:space="preserve">
+    <value>Pararse</value>
+  </data>
   <data name="TypeNameStep" xml:space="preserve">
     <value>Pasos</value>
+  </data>
+  <data name="TypeNameStress" xml:space="preserve">
+    <value>Estrés</value>
+  </data>
+  <data name="TypeNameSunrise" xml:space="preserve">
+    <value>Sol y Luna</value>
+  </data>
+  <data name="TypeNameTemperature" xml:space="preserve">
+    <value>Temperatura</value>
+  </data>
+  <data name="TypeNameUVI" xml:space="preserve">
+    <value>Índice UV</value>
+  </data>
+  <data name="TypeNameWeather" xml:space="preserve">
+    <value>Tiempo</value>
+  </data>
+  <data name="TypeNameWeek" xml:space="preserve">
+    <value>Día de la semana</value>
+  </data>
+  <data name="TypeNameWind" xml:space="preserve">
+    <value>Escala de viento</value>
   </data>
   <data name="TypePAI" xml:space="preserve">
     <value>PAI</value>
   </data>
   <data name="TypeSpO2" xml:space="preserve">
-    <value>Fases de la luna</value>
+    <value>Oxígeno en sangre</value>
   </data>
   <data name="TypeStand" xml:space="preserve">
     <value>Estar de pie</value>

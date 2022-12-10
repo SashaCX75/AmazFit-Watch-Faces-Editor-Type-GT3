@@ -69,10 +69,10 @@ namespace ControlLibrary
             // 
             // comboBox_scaleLinear_image_pointer
             // 
-            resources.ApplyResources(this.comboBox_scaleLinear_image_pointer, "comboBox_scaleLinear_image_pointer");
             this.comboBox_scaleLinear_image_pointer.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_scaleLinear_image_pointer.DropDownWidth = 135;
             this.comboBox_scaleLinear_image_pointer.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_scaleLinear_image_pointer, "comboBox_scaleLinear_image_pointer");
             this.comboBox_scaleLinear_image_pointer.Name = "comboBox_scaleLinear_image_pointer";
             this.comboBox_scaleLinear_image_pointer.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
             this.comboBox_scaleLinear_image_pointer.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
@@ -87,8 +87,8 @@ namespace ControlLibrary
             // 
             // numericUpDown_scaleLinearX
             // 
-            resources.ApplyResources(this.numericUpDown_scaleLinearX, "numericUpDown_scaleLinearX");
             this.numericUpDown_scaleLinearX.ContextMenuStrip = this.contextMenuStrip_X;
+            resources.ApplyResources(this.numericUpDown_scaleLinearX, "numericUpDown_scaleLinearX");
             this.numericUpDown_scaleLinearX.Maximum = new decimal(new int[] {
             999,
             0,
@@ -101,17 +101,18 @@ namespace ControlLibrary
             -2147483648});
             this.numericUpDown_scaleLinearX.Name = "numericUpDown_scaleLinearX";
             this.numericUpDown_scaleLinearX.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_scaleLinearX.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_scaleLinear_KeyDown);
             this.numericUpDown_scaleLinearX.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesX_MouseDoubleClick);
             // 
             // contextMenuStrip_X
             // 
-            resources.ApplyResources(this.contextMenuStrip_X, "contextMenuStrip_X");
             this.contextMenuStrip_X.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip_X.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вставитьКоординатуХToolStripMenuItem,
             this.копироватьToolStripMenuItemX,
             this.вставитьToolStripMenuItemX});
             this.contextMenuStrip_X.Name = "contextMenuStrip_X";
+            resources.ApplyResources(this.contextMenuStrip_X, "contextMenuStrip_X");
             this.contextMenuStrip_X.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_X_Opening);
             // 
             // вставитьКоординатуХToolStripMenuItem
@@ -134,8 +135,8 @@ namespace ControlLibrary
             // 
             // numericUpDown_scaleLinearY
             // 
-            resources.ApplyResources(this.numericUpDown_scaleLinearY, "numericUpDown_scaleLinearY");
             this.numericUpDown_scaleLinearY.ContextMenuStrip = this.contextMenuStrip_Y;
+            resources.ApplyResources(this.numericUpDown_scaleLinearY, "numericUpDown_scaleLinearY");
             this.numericUpDown_scaleLinearY.Maximum = new decimal(new int[] {
             999,
             0,
@@ -148,17 +149,18 @@ namespace ControlLibrary
             -2147483648});
             this.numericUpDown_scaleLinearY.Name = "numericUpDown_scaleLinearY";
             this.numericUpDown_scaleLinearY.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_scaleLinearY.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_scaleLinear_KeyDown);
             this.numericUpDown_scaleLinearY.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesY_MouseDoubleClick);
             // 
             // contextMenuStrip_Y
             // 
-            resources.ApplyResources(this.contextMenuStrip_Y, "contextMenuStrip_Y");
             this.contextMenuStrip_Y.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip_Y.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вставитьКоординатуYToolStripMenuItem,
             this.копироватьToolStripMenuItemY,
             this.вставитьToolStripMenuItemY});
             this.contextMenuStrip_Y.Name = "contextMenuStrip_X";
+            resources.ApplyResources(this.contextMenuStrip_Y, "contextMenuStrip_Y");
             this.contextMenuStrip_Y.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Y_Opening);
             // 
             // вставитьКоординатуYToolStripMenuItem
@@ -248,10 +250,10 @@ namespace ControlLibrary
             // 
             // comboBox_scaleLinear_color
             // 
-            resources.ApplyResources(this.comboBox_scaleLinear_color, "comboBox_scaleLinear_color");
             this.comboBox_scaleLinear_color.BackColor = System.Drawing.Color.DarkOrange;
             this.comboBox_scaleLinear_color.DropDownHeight = 1;
             this.comboBox_scaleLinear_color.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_scaleLinear_color, "comboBox_scaleLinear_color");
             this.comboBox_scaleLinear_color.Name = "comboBox_scaleLinear_color";
             this.comboBox_scaleLinear_color.Click += new System.EventHandler(this.comboBox_scaleLinear_color_Click);
             // 
@@ -262,9 +264,9 @@ namespace ControlLibrary
             // 
             // groupBox_Orientation
             // 
-            resources.ApplyResources(this.groupBox_Orientation, "groupBox_Orientation");
             this.groupBox_Orientation.Controls.Add(this.radioButton_vertical);
             this.groupBox_Orientation.Controls.Add(this.radioButton_horizontal);
+            resources.ApplyResources(this.groupBox_Orientation, "groupBox_Orientation");
             this.groupBox_Orientation.Name = "groupBox_Orientation";
             this.groupBox_Orientation.TabStop = false;
             // 

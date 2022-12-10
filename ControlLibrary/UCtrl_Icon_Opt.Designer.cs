@@ -54,10 +54,10 @@ namespace ControlLibrary
             // 
             // comboBox_icon_image
             // 
-            resources.ApplyResources(this.comboBox_icon_image, "comboBox_icon_image");
             this.comboBox_icon_image.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_icon_image.DropDownWidth = 135;
             this.comboBox_icon_image.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_icon_image, "comboBox_icon_image");
             this.comboBox_icon_image.Name = "comboBox_icon_image";
             this.comboBox_icon_image.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
             this.comboBox_icon_image.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
@@ -67,8 +67,8 @@ namespace ControlLibrary
             // 
             // numericUpDown_iconX
             // 
-            resources.ApplyResources(this.numericUpDown_iconX, "numericUpDown_iconX");
             this.numericUpDown_iconX.ContextMenuStrip = this.contextMenuStrip_X;
+            resources.ApplyResources(this.numericUpDown_iconX, "numericUpDown_iconX");
             this.numericUpDown_iconX.Maximum = new decimal(new int[] {
             999,
             0,
@@ -81,17 +81,18 @@ namespace ControlLibrary
             -2147483648});
             this.numericUpDown_iconX.Name = "numericUpDown_iconX";
             this.numericUpDown_iconX.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_iconX.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_icon_KeyDown);
             this.numericUpDown_iconX.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesX_MouseDoubleClick);
             // 
             // contextMenuStrip_X
             // 
-            resources.ApplyResources(this.contextMenuStrip_X, "contextMenuStrip_X");
             this.contextMenuStrip_X.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip_X.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вставитьКоординатуХToolStripMenuItem,
             this.копироватьToolStripMenuItemX,
             this.вставитьToolStripMenuItemX});
             this.contextMenuStrip_X.Name = "contextMenuStrip_X";
+            resources.ApplyResources(this.contextMenuStrip_X, "contextMenuStrip_X");
             this.contextMenuStrip_X.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_X_Opening);
             // 
             // вставитьКоординатуХToolStripMenuItem
@@ -114,8 +115,8 @@ namespace ControlLibrary
             // 
             // numericUpDown_iconY
             // 
-            resources.ApplyResources(this.numericUpDown_iconY, "numericUpDown_iconY");
             this.numericUpDown_iconY.ContextMenuStrip = this.contextMenuStrip_Y;
+            resources.ApplyResources(this.numericUpDown_iconY, "numericUpDown_iconY");
             this.numericUpDown_iconY.Maximum = new decimal(new int[] {
             999,
             0,
@@ -128,17 +129,18 @@ namespace ControlLibrary
             -2147483648});
             this.numericUpDown_iconY.Name = "numericUpDown_iconY";
             this.numericUpDown_iconY.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_iconY.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_icon_KeyDown);
             this.numericUpDown_iconY.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesY_MouseDoubleClick);
             // 
             // contextMenuStrip_Y
             // 
-            resources.ApplyResources(this.contextMenuStrip_Y, "contextMenuStrip_Y");
             this.contextMenuStrip_Y.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip_Y.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вставитьКоординатуYToolStripMenuItem,
             this.копироватьToolStripMenuItemY,
             this.вставитьToolStripMenuItemY});
             this.contextMenuStrip_Y.Name = "contextMenuStrip_X";
+            resources.ApplyResources(this.contextMenuStrip_Y, "contextMenuStrip_Y");
             this.contextMenuStrip_Y.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Y_Opening);
             // 
             // вставитьКоординатуYToolStripMenuItem

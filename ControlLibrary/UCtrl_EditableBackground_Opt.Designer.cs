@@ -158,6 +158,7 @@
             -2147483648});
             this.numericUpDown_tipX.Name = "numericUpDown_tipX";
             this.numericUpDown_tipX.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_tipX.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_tip_KeyDown);
             this.numericUpDown_tipX.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesX_MouseDoubleClick);
             // 
             // contextMenuStrip_X
@@ -205,6 +206,7 @@
             -2147483648});
             this.numericUpDown_tipY.Name = "numericUpDown_tipY";
             this.numericUpDown_tipY.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_tipY.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_tip_KeyDown);
             this.numericUpDown_tipY.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesY_MouseDoubleClick);
             // 
             // contextMenuStrip_Y

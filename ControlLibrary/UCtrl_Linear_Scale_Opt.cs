@@ -404,5 +404,41 @@ namespace ControlLibrary
             setValue = false;
         }
         #endregion
+
+        private void numericUpDown_scaleLinear_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down))
+            {
+                NumericUpDown numericUpDown = sender as NumericUpDown;
+                if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_scaleLinearX")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_scaleLinearY.DownButton();
+                }
+                if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_scaleLinearX")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_scaleLinearY.UpButton();
+                }
+
+                if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_scaleLinearY")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_scaleLinearY.DownButton();
+                }
+                if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_scaleLinearY")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_scaleLinearY.UpButton();
+                }
+
+                if (e.KeyCode == Keys.Left && (numericUpDown.Name == "numericUpDown_scaleLinearX" || numericUpDown.Name == "numericUpDown_scaleLinearY"))
+                    numericUpDown_scaleLinearX.DownButton();
+                if (e.KeyCode == Keys.Right && (numericUpDown.Name == "numericUpDown_scaleLinearX" || numericUpDown.Name == "numericUpDown_scaleLinearY"))
+                    numericUpDown_scaleLinearX.UpButton();
+
+                e.Handled = true;
+            }
+        }
     }
 }

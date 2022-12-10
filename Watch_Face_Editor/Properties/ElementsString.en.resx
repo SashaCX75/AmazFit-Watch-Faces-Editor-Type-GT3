@@ -249,7 +249,7 @@ watch</comment>
     <value>PAI</value>
   </data>
   <data name="TypeSpO2" xml:space="preserve">
-    <value>Moon phases</value>
+    <value>Oxygen in blood</value>
   </data>
   <data name="TypeStand" xml:space="preserve">
     <value>Stand</value>

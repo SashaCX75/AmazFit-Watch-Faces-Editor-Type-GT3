@@ -278,6 +278,9 @@
   <data name="label2.Text" xml:space="preserve">
     <value>Центр обертання стрілки</value>
   </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Координати центра обертання</value>
+  </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Зображення хвилинної стрілки</value>
   </data>
@@ -334,8 +337,5 @@
   </data>
   <data name="tabPage_second.Text" xml:space="preserve">
     <value>Секундна стрілка</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Координати центра обертання</value>
   </data>
 </root>

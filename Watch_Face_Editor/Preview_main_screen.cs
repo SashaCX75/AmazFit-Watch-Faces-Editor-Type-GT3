@@ -135,7 +135,7 @@ namespace Watch_Face_Editor
                         background.Editable_Background.BackgroundList[index].path.Length > 0)
                     {
                         src = OpenFileStream(background.Editable_Background.BackgroundList[index].path);
-                        gPanel.DrawImage(src, 0, 0);
+                        if (src != null) gPanel.DrawImage(src, 0, 0);
                     }
                 }
                 if (background.BackgroundImage != null && background.BackgroundImage.src != null && 
@@ -146,7 +146,7 @@ namespace Watch_Face_Editor
                     int y = background.BackgroundImage.y;
                     //int w = background.BackgroundImage.w;
                     //int h = background.BackgroundImage.h;
-                    gPanel.DrawImage(src, x, y);
+                    if (src != null) gPanel.DrawImage(src, x, y);
                 }
                 if (background.BackgroundColor != null && background.visible)
                 {
@@ -285,7 +285,7 @@ namespace Watch_Face_Editor
                         int pos_y = EditablePointers.cover.y;
 
                         src = OpenFileStream(ListImagesFullName[image_Index]);
-                        gPanel.DrawImage(src, pos_x, pos_y);
+                        if (src != null) gPanel.DrawImage(src, pos_x, pos_y);
                     }
                 }
 
@@ -367,7 +367,7 @@ namespace Watch_Face_Editor
                 //gPanel.DrawImage(mask, new Rectangle(0, 0, mask.Width, mask.Height));
                 mask.Dispose();
             }
-            src.Dispose();
+            if (src != null) src.Dispose();
         }
 
         public void Draw_elements(Object element, Graphics gPanel, float scale, bool crop, bool WMesh, bool BMesh, bool BBorder,
@@ -452,7 +452,7 @@ namespace Watch_Face_Editor
                                 y = DigitalTime.Hour.iconPosY;
 
                                 src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                gPanel.DrawImage(src, x, y);
+                                if (src != null) gPanel.DrawImage(src, x, y);
                                 //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                             }
                         }
@@ -493,7 +493,7 @@ namespace Watch_Face_Editor
                                 y = DigitalTime.Minute.iconPosY;
 
                                 src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                gPanel.DrawImage(src, x, y);
+                                if (src != null) gPanel.DrawImage(src, x, y);
                                 //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                             }
                         }
@@ -535,7 +535,7 @@ namespace Watch_Face_Editor
                                 y = DigitalTime.Second.iconPosY;
 
                                 src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                gPanel.DrawImage(src, x, y);
+                                if (src != null) gPanel.DrawImage(src, x, y);
                                 //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                             }
                         }
@@ -549,7 +549,7 @@ namespace Watch_Face_Editor
                                 int y = DigitalTime.AmPm.pm_y;
 
                                 src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                gPanel.DrawImage(src, x, y);
+                                if (src != null) gPanel.DrawImage(src, x, y);
                                 //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                             }
                             else
@@ -559,7 +559,7 @@ namespace Watch_Face_Editor
                                 int y = DigitalTime.AmPm.am_y;
 
                                 src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                gPanel.DrawImage(src, x, y);
+                                if (src != null) gPanel.DrawImage(src, x, y);
                                 //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                             }
                         }
@@ -598,7 +598,7 @@ namespace Watch_Face_Editor
                                 y = AnalogTime.Hour.cover_y;
 
                                 src = OpenFileStream(ListImagesFullName[image_index]);
-                                gPanel.DrawImage(src, x, y);
+                                if (src != null) gPanel.DrawImage(src, x, y);
                             }
                         }
 
@@ -622,7 +622,7 @@ namespace Watch_Face_Editor
                                 y = AnalogTime.Minute.cover_y;
 
                                 src = OpenFileStream(ListImagesFullName[image_index]);
-                                gPanel.DrawImage(src, x, y);
+                                if (src != null) gPanel.DrawImage(src, x, y);
                             }
                         }
 
@@ -646,7 +646,7 @@ namespace Watch_Face_Editor
                                 y = AnalogTime.Second.cover_y;
 
                                 src = OpenFileStream(ListImagesFullName[image_index]);
-                                gPanel.DrawImage(src, x, y);
+                                if (src != null) gPanel.DrawImage(src, x, y);
                             }
                         }
                     }
@@ -774,7 +774,7 @@ namespace Watch_Face_Editor
                                 y = DateDay.Number.iconPosY;
 
                                 src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                gPanel.DrawImage(src, x, y);
+                                if (src != null) gPanel.DrawImage(src, x, y);
                                 //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                             }
                         }
@@ -801,7 +801,7 @@ namespace Watch_Face_Editor
                                 int y_scale = DateDay.Pointer.scale_y;
 
                                 src = OpenFileStream(ListImagesFullName[image_index_scale]);
-                                gPanel.DrawImage(src, x_scale, y_scale);
+                                if (src != null) gPanel.DrawImage(src, x_scale, y_scale);
                             }
 
                             DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
@@ -813,7 +813,7 @@ namespace Watch_Face_Editor
                                 y = DateDay.Pointer.cover_y;
 
                                 src = OpenFileStream(ListImagesFullName[image_index]);
-                                gPanel.DrawImage(src, x, y);
+                                if (src != null) gPanel.DrawImage(src, x, y);
                             }
                         }
                     }
@@ -854,7 +854,7 @@ namespace Watch_Face_Editor
                                 y = DateMonth.Number.iconPosY;
 
                                 src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                gPanel.DrawImage(src, x, y);
+                                if (src != null) gPanel.DrawImage(src, x, y);
                                 //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                             }
                         }
@@ -881,7 +881,7 @@ namespace Watch_Face_Editor
                                 int y_scale = DateMonth.Pointer.scale_y;
 
                                 src = OpenFileStream(ListImagesFullName[image_index_scale]);
-                                gPanel.DrawImage(src, x_scale, y_scale);
+                                if (src != null) gPanel.DrawImage(src, x_scale, y_scale);
                             }
 
                             DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
@@ -893,7 +893,7 @@ namespace Watch_Face_Editor
                                 y = DateMonth.Pointer.cover_y;
 
                                 src = OpenFileStream(ListImagesFullName[image_index]);
-                                gPanel.DrawImage(src, x, y);
+                                if (src != null) gPanel.DrawImage(src, x, y);
                             }
                         }
 
@@ -909,7 +909,7 @@ namespace Watch_Face_Editor
                             if (imageIndex < ListImagesFullName.Count)
                             {
                                 src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                gPanel.DrawImage(src, x, y);
+                                if (src != null) gPanel.DrawImage(src, x, y);
                                 //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                             }
                         }
@@ -950,7 +950,7 @@ namespace Watch_Face_Editor
                             y = DateYear.Number.iconPosY;
 
                             src = OpenFileStream(ListImagesFullName[imageIndex]);
-                            gPanel.DrawImage(src, x, y);
+                            if (src != null) gPanel.DrawImage(src, x, y);
                             //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                         }
                     }
@@ -989,7 +989,7 @@ namespace Watch_Face_Editor
                                 int y_scale = DateWeek.Pointer.scale_y;
 
                                 src = OpenFileStream(ListImagesFullName[image_index_scale]);
-                                gPanel.DrawImage(src, x_scale, y_scale);
+                                if (src != null) gPanel.DrawImage(src, x_scale, y_scale);
                             }
 
                             DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
@@ -1001,7 +1001,7 @@ namespace Watch_Face_Editor
                                 y = DateWeek.Pointer.cover_y;
 
                                 src = OpenFileStream(ListImagesFullName[image_index]);
-                                gPanel.DrawImage(src, x, y);
+                                if (src != null) gPanel.DrawImage(src, x, y);
                             }
                         }
 
@@ -1017,7 +1017,7 @@ namespace Watch_Face_Editor
                             if (imageIndex < ListImagesFullName.Count)
                             {
                                 src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                gPanel.DrawImage(src, x, y);
+                                if (src != null) gPanel.DrawImage(src, x, y);
                                 //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                             }
                         }
@@ -1051,7 +1051,7 @@ namespace Watch_Face_Editor
                                 if (imageIndex < ListImagesFullName.Count)
                                 {
                                     src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                    gPanel.DrawImage(src, x, y);
+                                    if (src != null) gPanel.DrawImage(src, x, y);
                                     //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                                 }
                             }
@@ -1070,7 +1070,7 @@ namespace Watch_Face_Editor
                                 if (imageIndex < ListImagesFullName.Count)
                                 {
                                     src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                    gPanel.DrawImage(src, x, y);
+                                    if (src != null) gPanel.DrawImage(src, x, y);
                                     //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                                 }
                             }
@@ -1089,7 +1089,7 @@ namespace Watch_Face_Editor
                                 if (imageIndex < ListImagesFullName.Count)
                                 {
                                     src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                    gPanel.DrawImage(src, x, y);
+                                    if (src != null) gPanel.DrawImage(src, x, y);
                                     //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                                 }
                             }
@@ -1108,7 +1108,7 @@ namespace Watch_Face_Editor
                                 if (imageIndex < ListImagesFullName.Count)
                                 {
                                     src = OpenFileStream(ListImagesFullName[imageIndex]);
-                                    gPanel.DrawImage(src, x, y);
+                                    if (src != null) gPanel.DrawImage(src, x, y);
                                     //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                                 }
                             }
@@ -1488,7 +1488,7 @@ namespace Watch_Face_Editor
                         pos_y = img_number.iconPosY;
 
                         src = OpenFileStream(ListImagesFullName[image_Index]);
-                        gPanel.DrawImage(src, pos_x, pos_y);
+                        if (src != null) gPanel.DrawImage(src, pos_x, pos_y);
                         //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                     }
 
@@ -2061,9 +2061,13 @@ namespace Watch_Face_Editor
                     #endregion
 
             }
-            src.Dispose();
+            if (src != null) src.Dispose();
         }
-            
+
+        /// <param name="edit_mode">Выбор отображаемого режима редактирования. 
+        /// 1 - редактируемый задний фон
+        /// 2 - редактируемые элементы
+        /// 3 - редактируемые стрелки</param>
         public void Preview_edit_screen(Graphics gPanel, int edit_mode, float scale, bool crop, bool WMesh, bool BMesh)
         {
             Bitmap src = new Bitmap(1, 1);
@@ -2171,29 +2175,32 @@ namespace Watch_Face_Editor
                         }
 
                         element_index = editable_elements.selected_zone;
-                        if(element_index == i) // рамка выделеного элемента
+                        if (edit_mode == 2) // рисуем рамки элементов
                         {
-                            if (i >= 0 && i < editable_elements.Watchface_edit_group.Count &&
-                            editable_elements.Watchface_edit_group[i].select_image != null &&
-                            editable_elements.Watchface_edit_group[i].select_image.Length > 0)
+                            if (element_index == i) // рамка выделеного элемента
                             {
-                                int x = editable_elements.Watchface_edit_group[i].x;
-                                int y = editable_elements.Watchface_edit_group[i].y;
-                                src = OpenFileStream(editable_elements.Watchface_edit_group[i].select_image);
-                                gPanel.DrawImage(src, x, y);
+                                if (i >= 0 && i < editable_elements.Watchface_edit_group.Count &&
+                                editable_elements.Watchface_edit_group[i].select_image != null &&
+                                editable_elements.Watchface_edit_group[i].select_image.Length > 0)
+                                {
+                                    int x = editable_elements.Watchface_edit_group[i].x;
+                                    int y = editable_elements.Watchface_edit_group[i].y;
+                                    src = OpenFileStream(editable_elements.Watchface_edit_group[i].select_image);
+                                    gPanel.DrawImage(src, x, y);
+                                }
                             }
-                        }
-                        else // рамка невыделеного элемента
-                        {
-                            if (i >= 0 && i < editable_elements.Watchface_edit_group.Count &&
-                            editable_elements.Watchface_edit_group[i].un_select_image != null &&
-                            editable_elements.Watchface_edit_group[i].un_select_image.Length > 0)
+                            else // рамка невыделеного элемента
                             {
-                                int x = editable_elements.Watchface_edit_group[i].x;
-                                int y = editable_elements.Watchface_edit_group[i].y;
-                                src = OpenFileStream(editable_elements.Watchface_edit_group[i].un_select_image);
-                                gPanel.DrawImage(src, x, y);
-                            }
+                                if (i >= 0 && i < editable_elements.Watchface_edit_group.Count &&
+                                editable_elements.Watchface_edit_group[i].un_select_image != null &&
+                                editable_elements.Watchface_edit_group[i].un_select_image.Length > 0)
+                                {
+                                    int x = editable_elements.Watchface_edit_group[i].x;
+                                    int y = editable_elements.Watchface_edit_group[i].y;
+                                    src = OpenFileStream(editable_elements.Watchface_edit_group[i].un_select_image);
+                                    gPanel.DrawImage(src, x, y);
+                                }
+                            } 
                         }
                     }
 

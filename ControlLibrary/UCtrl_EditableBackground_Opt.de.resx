@@ -133,6 +133,9 @@
     <value>Vorschau</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 82</value>
+  </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
@@ -198,7 +201,7 @@
   <data name="вставитьToolStripMenuItemX.Text" xml:space="preserve">
     <value>Einfügen</value>
   </data>
-  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 82</value>
   </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -266,9 +269,6 @@
   <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
     <value>Einfügen</value>
   </data>
-  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 82</value>
-  </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Hintergrund der QuickInfo</value>
   </data>
@@ -279,7 +279,7 @@
     <value>Koordinaten der QuickInfo</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
-    <value>Rahmen hervorheben</value>
+    <value>Bild im Vordergrund</value>
   </data>
   <data name="checkBox_edit_mode.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 17</value>
@@ -287,13 +287,13 @@
   <data name="checkBox_edit_mode.Text" xml:space="preserve">
     <value>Vorschau im Bearbeitungsmodus</value>
   </data>
+  <data name="groupBox_EditableBackground.Text" xml:space="preserve">
+    <value>Editierbarer Hintergrund</value>
+  </data>
   <data name="button_PreviewAdd.Text" xml:space="preserve">
     <value>Vorschau erstellen</value>
   </data>
   <data name="button_PreviewRefresh.Text" xml:space="preserve">
     <value>Vorschau aktualisieren</value>
-  </data>
-  <data name="groupBox_EditableBackground.Text" xml:space="preserve">
-    <value>Editierbarer Hintergrund</value>
   </data>
 </root>

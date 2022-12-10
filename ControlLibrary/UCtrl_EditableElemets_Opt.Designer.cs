@@ -180,7 +180,6 @@
             // 
             // tabPageGeneralSettings
             // 
-            resources.ApplyResources(this.tabPageGeneralSettings, "tabPageGeneralSettings");
             this.tabPageGeneralSettings.BackColor = System.Drawing.SystemColors.Control;
             this.tabPageGeneralSettings.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabPageGeneralSettings.Controls.Add(this.checkBox_edit_mode);
@@ -218,6 +217,7 @@
             this.tabPageGeneralSettings.Controls.Add(this.label1);
             this.tabPageGeneralSettings.Controls.Add(this.button_zoneAdd);
             this.tabPageGeneralSettings.Controls.Add(this.button_zoneDel);
+            resources.ApplyResources(this.tabPageGeneralSettings, "tabPageGeneralSettings");
             this.tabPageGeneralSettings.Name = "tabPageGeneralSettings";
             // 
             // checkBox_edit_mode
@@ -241,10 +241,10 @@
             // 
             // comboBox_mask
             // 
-            resources.ApplyResources(this.comboBox_mask, "comboBox_mask");
             this.comboBox_mask.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_mask.DropDownWidth = 135;
             this.comboBox_mask.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_mask, "comboBox_mask");
             this.comboBox_mask.Name = "comboBox_mask";
             this.comboBox_mask.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
             this.comboBox_mask.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
@@ -254,10 +254,10 @@
             // 
             // comboBox_fg_mask
             // 
-            resources.ApplyResources(this.comboBox_fg_mask, "comboBox_fg_mask");
             this.comboBox_fg_mask.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_fg_mask.DropDownWidth = 135;
             this.comboBox_fg_mask.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_fg_mask, "comboBox_fg_mask");
             this.comboBox_fg_mask.Name = "comboBox_fg_mask";
             this.comboBox_fg_mask.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
             this.comboBox_fg_mask.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
@@ -322,6 +322,7 @@
             0,
             0});
             this.numericUpDown_zone_W.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_zone_W.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_zone_size_KeyDown);
             this.numericUpDown_zone_W.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_width_MouseDoubleClick);
             // 
             // numericUpDown_zone_H
@@ -339,6 +340,7 @@
             0,
             0});
             this.numericUpDown_zone_H.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_zone_H.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_zone_size_KeyDown);
             this.numericUpDown_zone_H.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_height_MouseDoubleClick);
             // 
             // label2
@@ -363,10 +365,10 @@
             // 
             // comboBox_select_image
             // 
-            resources.ApplyResources(this.comboBox_select_image, "comboBox_select_image");
             this.comboBox_select_image.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_select_image.DropDownWidth = 135;
             this.comboBox_select_image.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_select_image, "comboBox_select_image");
             this.comboBox_select_image.Name = "comboBox_select_image";
             this.comboBox_select_image.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
             this.comboBox_select_image.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
@@ -376,10 +378,10 @@
             // 
             // comboBox_un_select_image
             // 
-            resources.ApplyResources(this.comboBox_un_select_image, "comboBox_un_select_image");
             this.comboBox_un_select_image.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_un_select_image.DropDownWidth = 135;
             this.comboBox_un_select_image.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_un_select_image, "comboBox_un_select_image");
             this.comboBox_un_select_image.Name = "comboBox_un_select_image";
             this.comboBox_un_select_image.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
             this.comboBox_un_select_image.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
@@ -414,8 +416,8 @@
             // 
             // numericUpDown_tipY
             // 
-            resources.ApplyResources(this.numericUpDown_tipY, "numericUpDown_tipY");
             this.numericUpDown_tipY.ContextMenuStrip = this.contextMenuStrip_Y;
+            resources.ApplyResources(this.numericUpDown_tipY, "numericUpDown_tipY");
             this.numericUpDown_tipY.Maximum = new decimal(new int[] {
             999,
             0,
@@ -428,17 +430,18 @@
             -2147483648});
             this.numericUpDown_tipY.Name = "numericUpDown_tipY";
             this.numericUpDown_tipY.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_tipY.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_tip_KeyDown);
             this.numericUpDown_tipY.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesY_MouseDoubleClick);
             // 
             // contextMenuStrip_Y
             // 
-            resources.ApplyResources(this.contextMenuStrip_Y, "contextMenuStrip_Y");
             this.contextMenuStrip_Y.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip_Y.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вставитьКоординатуYToolStripMenuItem,
             this.копироватьToolStripMenuItemY,
             this.вставитьToolStripMenuItemY});
             this.contextMenuStrip_Y.Name = "contextMenuStrip_X";
+            resources.ApplyResources(this.contextMenuStrip_Y, "contextMenuStrip_Y");
             this.contextMenuStrip_Y.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Y_Opening);
             // 
             // вставитьКоординатуYToolStripMenuItem
@@ -458,8 +461,8 @@
             // 
             // numericUpDown_tipX
             // 
-            resources.ApplyResources(this.numericUpDown_tipX, "numericUpDown_tipX");
             this.numericUpDown_tipX.ContextMenuStrip = this.contextMenuStrip_X;
+            resources.ApplyResources(this.numericUpDown_tipX, "numericUpDown_tipX");
             this.numericUpDown_tipX.Maximum = new decimal(new int[] {
             999,
             0,
@@ -472,17 +475,18 @@
             -2147483648});
             this.numericUpDown_tipX.Name = "numericUpDown_tipX";
             this.numericUpDown_tipX.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_tipX.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_tip_KeyDown);
             this.numericUpDown_tipX.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesX_MouseDoubleClick);
             // 
             // contextMenuStrip_X
             // 
-            resources.ApplyResources(this.contextMenuStrip_X, "contextMenuStrip_X");
             this.contextMenuStrip_X.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip_X.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вставитьКоординатуХToolStripMenuItem,
             this.копироватьToolStripMenuItemX,
             this.вставитьToolStripMenuItemX});
             this.contextMenuStrip_X.Name = "contextMenuStrip_X";
+            resources.ApplyResources(this.contextMenuStrip_X, "contextMenuStrip_X");
             this.contextMenuStrip_X.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_X_Opening);
             // 
             // вставитьКоординатуХToolStripMenuItem
@@ -502,10 +506,10 @@
             // 
             // comboBox_tip
             // 
-            resources.ApplyResources(this.comboBox_tip, "comboBox_tip");
             this.comboBox_tip.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_tip.DropDownWidth = 135;
             this.comboBox_tip.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_tip, "comboBox_tip");
             this.comboBox_tip.Name = "comboBox_tip";
             this.comboBox_tip.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
             this.comboBox_tip.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
@@ -530,8 +534,8 @@
             // 
             // numericUpDown_zone_Y
             // 
-            resources.ApplyResources(this.numericUpDown_zone_Y, "numericUpDown_zone_Y");
             this.numericUpDown_zone_Y.ContextMenuStrip = this.contextMenuStrip_Y;
+            resources.ApplyResources(this.numericUpDown_zone_Y, "numericUpDown_zone_Y");
             this.numericUpDown_zone_Y.Maximum = new decimal(new int[] {
             999,
             0,
@@ -544,12 +548,13 @@
             -2147483648});
             this.numericUpDown_zone_Y.Name = "numericUpDown_zone_Y";
             this.numericUpDown_zone_Y.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_zone_Y.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_zone_KeyDown);
             this.numericUpDown_zone_Y.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesY_MouseDoubleClick);
             // 
             // numericUpDown_zone_X
             // 
-            resources.ApplyResources(this.numericUpDown_zone_X, "numericUpDown_zone_X");
             this.numericUpDown_zone_X.ContextMenuStrip = this.contextMenuStrip_X;
+            resources.ApplyResources(this.numericUpDown_zone_X, "numericUpDown_zone_X");
             this.numericUpDown_zone_X.Maximum = new decimal(new int[] {
             999,
             0,
@@ -562,13 +567,14 @@
             -2147483648});
             this.numericUpDown_zone_X.Name = "numericUpDown_zone_X";
             this.numericUpDown_zone_X.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_zone_X.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_zone_KeyDown);
             this.numericUpDown_zone_X.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesX_MouseDoubleClick);
             // 
             // comboBox_select_zone
             // 
-            resources.ApplyResources(this.comboBox_select_zone, "comboBox_select_zone");
             this.comboBox_select_zone.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_select_zone.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_select_zone, "comboBox_select_zone");
             this.comboBox_select_zone.Name = "comboBox_select_zone";
             this.comboBox_select_zone.SelectedIndexChanged += new System.EventHandler(this.comboBox_select_zone_SelectedIndexChanged);
             // 
@@ -593,30 +599,30 @@
             // 
             // tabPageElementSettings
             // 
-            resources.ApplyResources(this.tabPageElementSettings, "tabPageElementSettings");
             this.tabPageElementSettings.BackColor = System.Drawing.SystemColors.Control;
             this.tabPageElementSettings.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tabPageElementSettings.Controls.Add(this.panel3);
             this.tabPageElementSettings.Controls.Add(this.panel2);
             this.tabPageElementSettings.Controls.Add(this.panel1);
+            resources.ApplyResources(this.tabPageElementSettings, "tabPageElementSettings");
             this.tabPageElementSettings.Name = "tabPageElementSettings";
             // 
             // panel3
             // 
-            resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Controls.Add(this.comboBox_Preview_image);
             this.panel3.Controls.Add(this.button_PreviewAdd);
             this.panel3.Controls.Add(this.label21);
             this.panel3.Controls.Add(this.button_PreviewRefresh);
+            resources.ApplyResources(this.panel3, "panel3");
             this.panel3.Name = "panel3";
             this.panel3.LocationChanged += new System.EventHandler(this.panel3_LocationChanged);
             // 
             // comboBox_Preview_image
             // 
-            resources.ApplyResources(this.comboBox_Preview_image, "comboBox_Preview_image");
             this.comboBox_Preview_image.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_Preview_image.DropDownWidth = 135;
             this.comboBox_Preview_image.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_Preview_image, "comboBox_Preview_image");
             this.comboBox_Preview_image.Name = "comboBox_Preview_image";
             this.comboBox_Preview_image.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
             this.comboBox_Preview_image.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
@@ -651,8 +657,8 @@
             // 
             // tableLayoutPanel_element
             // 
-            resources.ApplyResources(this.tableLayoutPanel_element, "tableLayoutPanel_element");
             this.tableLayoutPanel_element.AllowDrop = true;
+            resources.ApplyResources(this.tableLayoutPanel_element, "tableLayoutPanel_element");
             this.tableLayoutPanel_element.Controls.Add(this.panel_Number_Target, 0, 3);
             this.tableLayoutPanel_element.Controls.Add(this.panel_Linear_Scale, 0, 12);
             this.tableLayoutPanel_element.Controls.Add(this.panel_Circle_Scale, 0, 11);
@@ -673,11 +679,11 @@
             // 
             // panel_Number_Target
             // 
-            resources.ApplyResources(this.panel_Number_Target, "panel_Number_Target");
             this.panel_Number_Target.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Number_Target.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_Number_Target.Controls.Add(this.button_Number_Target);
             this.panel_Number_Target.Controls.Add(this.checkBox_Number_Target);
+            resources.ApplyResources(this.panel_Number_Target, "panel_Number_Target");
             this.panel_Number_Target.Name = "panel_Number_Target";
             this.panel_Number_Target.Click += new System.EventHandler(this.panel_Number_Target_Click);
             this.panel_Number_Target.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -686,10 +692,10 @@
             // 
             // button_Number_Target
             // 
-            resources.ApplyResources(this.button_Number_Target, "button_Number_Target");
             this.button_Number_Target.FlatAppearance.BorderSize = 0;
             this.button_Number_Target.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Number_Target.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Number_Target, "button_Number_Target");
             this.button_Number_Target.Name = "button_Number_Target";
             this.button_Number_Target.UseVisualStyleBackColor = true;
             this.button_Number_Target.Click += new System.EventHandler(this.panel_Number_Target_Click);
@@ -706,11 +712,11 @@
             // 
             // panel_Linear_Scale
             // 
-            resources.ApplyResources(this.panel_Linear_Scale, "panel_Linear_Scale");
             this.panel_Linear_Scale.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Linear_Scale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_Linear_Scale.Controls.Add(this.button_Linear_Scale);
             this.panel_Linear_Scale.Controls.Add(this.checkBox_Linear_Scale);
+            resources.ApplyResources(this.panel_Linear_Scale, "panel_Linear_Scale");
             this.panel_Linear_Scale.Name = "panel_Linear_Scale";
             this.panel_Linear_Scale.Click += new System.EventHandler(this.panel_Linear_Scale_Click);
             this.panel_Linear_Scale.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -719,10 +725,10 @@
             // 
             // button_Linear_Scale
             // 
-            resources.ApplyResources(this.button_Linear_Scale, "button_Linear_Scale");
             this.button_Linear_Scale.FlatAppearance.BorderSize = 0;
             this.button_Linear_Scale.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Linear_Scale.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Linear_Scale, "button_Linear_Scale");
             this.button_Linear_Scale.Name = "button_Linear_Scale";
             this.button_Linear_Scale.UseVisualStyleBackColor = true;
             this.button_Linear_Scale.Click += new System.EventHandler(this.panel_Linear_Scale_Click);
@@ -739,11 +745,11 @@
             // 
             // panel_Circle_Scale
             // 
-            resources.ApplyResources(this.panel_Circle_Scale, "panel_Circle_Scale");
             this.panel_Circle_Scale.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Circle_Scale.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_Circle_Scale.Controls.Add(this.button_Circle_Scale);
             this.panel_Circle_Scale.Controls.Add(this.checkBox_Circle_Scale);
+            resources.ApplyResources(this.panel_Circle_Scale, "panel_Circle_Scale");
             this.panel_Circle_Scale.Name = "panel_Circle_Scale";
             this.panel_Circle_Scale.Click += new System.EventHandler(this.panel_Circle_Scale_Click);
             this.panel_Circle_Scale.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -752,10 +758,10 @@
             // 
             // button_Circle_Scale
             // 
-            resources.ApplyResources(this.button_Circle_Scale, "button_Circle_Scale");
             this.button_Circle_Scale.FlatAppearance.BorderSize = 0;
             this.button_Circle_Scale.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Circle_Scale.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Circle_Scale, "button_Circle_Scale");
             this.button_Circle_Scale.Name = "button_Circle_Scale";
             this.button_Circle_Scale.UseVisualStyleBackColor = true;
             this.button_Circle_Scale.Click += new System.EventHandler(this.panel_Circle_Scale_Click);
@@ -772,11 +778,11 @@
             // 
             // panel_Pointer
             // 
-            resources.ApplyResources(this.panel_Pointer, "panel_Pointer");
             this.panel_Pointer.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Pointer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_Pointer.Controls.Add(this.button_Pointer);
             this.panel_Pointer.Controls.Add(this.checkBox_Pointer);
+            resources.ApplyResources(this.panel_Pointer, "panel_Pointer");
             this.panel_Pointer.Name = "panel_Pointer";
             this.panel_Pointer.Click += new System.EventHandler(this.panel_Pointer_Click);
             this.panel_Pointer.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -785,10 +791,10 @@
             // 
             // button_Pointer
             // 
-            resources.ApplyResources(this.button_Pointer, "button_Pointer");
             this.button_Pointer.FlatAppearance.BorderSize = 0;
             this.button_Pointer.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Pointer.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Pointer, "button_Pointer");
             this.button_Pointer.Name = "button_Pointer";
             this.button_Pointer.UseVisualStyleBackColor = true;
             this.button_Pointer.Click += new System.EventHandler(this.panel_Pointer_Click);
@@ -805,11 +811,11 @@
             // 
             // panel_Icon
             // 
-            resources.ApplyResources(this.panel_Icon, "panel_Icon");
             this.panel_Icon.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Icon.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_Icon.Controls.Add(this.button_Icon);
             this.panel_Icon.Controls.Add(this.checkBox_Icon);
+            resources.ApplyResources(this.panel_Icon, "panel_Icon");
             this.panel_Icon.Name = "panel_Icon";
             this.panel_Icon.Click += new System.EventHandler(this.panel_Icon_Click);
             this.panel_Icon.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -818,10 +824,10 @@
             // 
             // button_Icon
             // 
-            resources.ApplyResources(this.button_Icon, "button_Icon");
             this.button_Icon.FlatAppearance.BorderSize = 0;
             this.button_Icon.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Icon.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Icon, "button_Icon");
             this.button_Icon.Name = "button_Icon";
             this.button_Icon.UseVisualStyleBackColor = true;
             this.button_Icon.Click += new System.EventHandler(this.panel_Icon_Click);
@@ -838,11 +844,11 @@
             // 
             // panel_Text_CityName
             // 
-            resources.ApplyResources(this.panel_Text_CityName, "panel_Text_CityName");
             this.panel_Text_CityName.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Text_CityName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_Text_CityName.Controls.Add(this.button_Text_CityName);
             this.panel_Text_CityName.Controls.Add(this.checkBox_Text_CityName);
+            resources.ApplyResources(this.panel_Text_CityName, "panel_Text_CityName");
             this.panel_Text_CityName.Name = "panel_Text_CityName";
             this.panel_Text_CityName.Click += new System.EventHandler(this.panel_Text_CityName_Click);
             this.panel_Text_CityName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -851,10 +857,10 @@
             // 
             // button_Text_CityName
             // 
-            resources.ApplyResources(this.button_Text_CityName, "button_Text_CityName");
             this.button_Text_CityName.FlatAppearance.BorderSize = 0;
             this.button_Text_CityName.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Text_CityName.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Text_CityName, "button_Text_CityName");
             this.button_Text_CityName.Name = "button_Text_CityName";
             this.button_Text_CityName.UseVisualStyleBackColor = true;
             this.button_Text_CityName.Click += new System.EventHandler(this.panel_Text_CityName_Click);
@@ -871,11 +877,11 @@
             // 
             // panel_Images
             // 
-            resources.ApplyResources(this.panel_Images, "panel_Images");
             this.panel_Images.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Images.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_Images.Controls.Add(this.checkBox_Images);
             this.panel_Images.Controls.Add(this.button_Images);
+            resources.ApplyResources(this.panel_Images, "panel_Images");
             this.panel_Images.Name = "panel_Images";
             this.panel_Images.Click += new System.EventHandler(this.panel_Images_Click);
             this.panel_Images.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -891,10 +897,10 @@
             // 
             // button_Images
             // 
-            resources.ApplyResources(this.button_Images, "button_Images");
             this.button_Images.FlatAppearance.BorderSize = 0;
             this.button_Images.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Images.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Images, "button_Images");
             this.button_Images.Name = "button_Images";
             this.button_Images.UseVisualStyleBackColor = true;
             this.button_Images.Click += new System.EventHandler(this.panel_Images_Click);
@@ -904,11 +910,11 @@
             // 
             // panel_Segments
             // 
-            resources.ApplyResources(this.panel_Segments, "panel_Segments");
             this.panel_Segments.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Segments.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_Segments.Controls.Add(this.checkBox_Segments);
             this.panel_Segments.Controls.Add(this.button_Segments);
+            resources.ApplyResources(this.panel_Segments, "panel_Segments");
             this.panel_Segments.Name = "panel_Segments";
             this.panel_Segments.Click += new System.EventHandler(this.panel_Segments_Click);
             this.panel_Segments.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -924,10 +930,10 @@
             // 
             // button_Segments
             // 
-            resources.ApplyResources(this.button_Segments, "button_Segments");
             this.button_Segments.FlatAppearance.BorderSize = 0;
             this.button_Segments.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Segments.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Segments, "button_Segments");
             this.button_Segments.Name = "button_Segments";
             this.button_Segments.UseVisualStyleBackColor = true;
             this.button_Segments.Click += new System.EventHandler(this.panel_Segments_Click);
@@ -937,11 +943,11 @@
             // 
             // panel_Number
             // 
-            resources.ApplyResources(this.panel_Number, "panel_Number");
             this.panel_Number.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Number.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_Number.Controls.Add(this.button_Number);
             this.panel_Number.Controls.Add(this.checkBox_Number);
+            resources.ApplyResources(this.panel_Number, "panel_Number");
             this.panel_Number.Name = "panel_Number";
             this.panel_Number.Click += new System.EventHandler(this.panel_Number_Click);
             this.panel_Number.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -950,10 +956,10 @@
             // 
             // button_Number
             // 
-            resources.ApplyResources(this.button_Number, "button_Number");
             this.button_Number.FlatAppearance.BorderSize = 0;
             this.button_Number.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Number.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Number, "button_Number");
             this.button_Number.Name = "button_Number";
             this.button_Number.UseVisualStyleBackColor = true;
             this.button_Number.Click += new System.EventHandler(this.panel_Number_Click);
@@ -970,11 +976,11 @@
             // 
             // panel_Number_Min
             // 
-            resources.ApplyResources(this.panel_Number_Min, "panel_Number_Min");
             this.panel_Number_Min.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Number_Min.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_Number_Min.Controls.Add(this.button_Number_Min);
             this.panel_Number_Min.Controls.Add(this.checkBox_Number_Min);
+            resources.ApplyResources(this.panel_Number_Min, "panel_Number_Min");
             this.panel_Number_Min.Name = "panel_Number_Min";
             this.panel_Number_Min.Click += new System.EventHandler(this.panel_Number_Min_Click);
             this.panel_Number_Min.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -983,10 +989,10 @@
             // 
             // button_Number_Min
             // 
-            resources.ApplyResources(this.button_Number_Min, "button_Number_Min");
             this.button_Number_Min.FlatAppearance.BorderSize = 0;
             this.button_Number_Min.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Number_Min.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Number_Min, "button_Number_Min");
             this.button_Number_Min.Name = "button_Number_Min";
             this.button_Number_Min.UseVisualStyleBackColor = true;
             this.button_Number_Min.Click += new System.EventHandler(this.panel_Number_Min_Click);
@@ -1003,11 +1009,11 @@
             // 
             // panel_Number_Max
             // 
-            resources.ApplyResources(this.panel_Number_Max, "panel_Number_Max");
             this.panel_Number_Max.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Number_Max.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_Number_Max.Controls.Add(this.button_Number_Max);
             this.panel_Number_Max.Controls.Add(this.checkBox_Number_Max);
+            resources.ApplyResources(this.panel_Number_Max, "panel_Number_Max");
             this.panel_Number_Max.Name = "panel_Number_Max";
             this.panel_Number_Max.Click += new System.EventHandler(this.panel_Number_Max_Click);
             this.panel_Number_Max.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -1016,10 +1022,10 @@
             // 
             // button_Number_Max
             // 
-            resources.ApplyResources(this.button_Number_Max, "button_Number_Max");
             this.button_Number_Max.FlatAppearance.BorderSize = 0;
             this.button_Number_Max.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Number_Max.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Number_Max, "button_Number_Max");
             this.button_Number_Max.Name = "button_Number_Max";
             this.button_Number_Max.UseVisualStyleBackColor = true;
             this.button_Number_Max.Click += new System.EventHandler(this.panel_Number_Max_Click);
@@ -1036,11 +1042,11 @@
             // 
             // panel_Sunset
             // 
-            resources.ApplyResources(this.panel_Sunset, "panel_Sunset");
             this.panel_Sunset.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Sunset.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_Sunset.Controls.Add(this.button_Sunset);
             this.panel_Sunset.Controls.Add(this.checkBox_Sunset);
+            resources.ApplyResources(this.panel_Sunset, "panel_Sunset");
             this.panel_Sunset.Name = "panel_Sunset";
             this.panel_Sunset.Click += new System.EventHandler(this.panel_Sunset_Click);
             this.panel_Sunset.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -1049,10 +1055,10 @@
             // 
             // button_Sunset
             // 
-            resources.ApplyResources(this.button_Sunset, "button_Sunset");
             this.button_Sunset.FlatAppearance.BorderSize = 0;
             this.button_Sunset.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Sunset.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Sunset, "button_Sunset");
             this.button_Sunset.Name = "button_Sunset";
             this.button_Sunset.UseVisualStyleBackColor = true;
             this.button_Sunset.Click += new System.EventHandler(this.panel_Sunset_Click);
@@ -1069,11 +1075,11 @@
             // 
             // panel_Sunrise
             // 
-            resources.ApplyResources(this.panel_Sunrise, "panel_Sunrise");
             this.panel_Sunrise.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Sunrise.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_Sunrise.Controls.Add(this.button_Sunrise);
             this.panel_Sunrise.Controls.Add(this.checkBox_Sunrise);
+            resources.ApplyResources(this.panel_Sunrise, "panel_Sunrise");
             this.panel_Sunrise.Name = "panel_Sunrise";
             this.panel_Sunrise.Click += new System.EventHandler(this.panel_Sunrise_Click);
             this.panel_Sunrise.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -1082,10 +1088,10 @@
             // 
             // button_Sunrise
             // 
-            resources.ApplyResources(this.button_Sunrise, "button_Sunrise");
             this.button_Sunrise.FlatAppearance.BorderSize = 0;
             this.button_Sunrise.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Sunrise.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Sunrise, "button_Sunrise");
             this.button_Sunrise.Name = "button_Sunrise";
             this.button_Sunrise.UseVisualStyleBackColor = true;
             this.button_Sunrise.Click += new System.EventHandler(this.panel_Sunrise_Click);
@@ -1102,11 +1108,11 @@
             // 
             // panel_Sunset_Sunrise
             // 
-            resources.ApplyResources(this.panel_Sunset_Sunrise, "panel_Sunset_Sunrise");
             this.panel_Sunset_Sunrise.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Sunset_Sunrise.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_Sunset_Sunrise.Controls.Add(this.button_Sunset_Sunrise);
             this.panel_Sunset_Sunrise.Controls.Add(this.checkBox_Sunset_Sunrise);
+            resources.ApplyResources(this.panel_Sunset_Sunrise, "panel_Sunset_Sunrise");
             this.panel_Sunset_Sunrise.Name = "panel_Sunset_Sunrise";
             this.panel_Sunset_Sunrise.Click += new System.EventHandler(this.panel_Sunset_Sunrise_Click);
             this.panel_Sunset_Sunrise.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -1115,10 +1121,10 @@
             // 
             // button_Sunset_Sunrise
             // 
-            resources.ApplyResources(this.button_Sunset_Sunrise, "button_Sunset_Sunrise");
             this.button_Sunset_Sunrise.FlatAppearance.BorderSize = 0;
             this.button_Sunset_Sunrise.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Sunset_Sunrise.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Sunset_Sunrise, "button_Sunset_Sunrise");
             this.button_Sunset_Sunrise.Name = "button_Sunset_Sunrise";
             this.button_Sunset_Sunrise.UseVisualStyleBackColor = true;
             this.button_Sunset_Sunrise.Click += new System.EventHandler(this.panel_Sunset_Sunrise_Click);
@@ -1135,11 +1141,11 @@
             // 
             // panel1
             // 
-            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.comboBox_select_element);
             this.panel1.Controls.Add(this.button_elementDel);
             this.panel1.Controls.Add(this.button_elementAdd);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
             // label6
@@ -1149,10 +1155,10 @@
             // 
             // comboBox_select_element
             // 
-            resources.ApplyResources(this.comboBox_select_element, "comboBox_select_element");
             this.comboBox_select_element.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_select_element.DropDownWidth = 110;
             this.comboBox_select_element.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_select_element, "comboBox_select_element");
             this.comboBox_select_element.Name = "comboBox_select_element";
             this.comboBox_select_element.SelectedIndexChanged += new System.EventHandler(this.comboBox_select_element_SelectedIndexChanged);
             // 

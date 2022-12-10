@@ -279,7 +279,7 @@
     <value>Координати підказки</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
-    <value>Рамка виділення</value>
+    <value>Верхнє зображення</value>
   </data>
   <data name="checkBox_edit_mode.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 17</value>
