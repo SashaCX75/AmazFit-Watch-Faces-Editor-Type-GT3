@@ -14529,7 +14529,7 @@ namespace Watch_Face_Editor
 
 
                     Logger.WriteLine("SaveGIF_Editable_Pointers");
-                    // Editable_Background
+                    // Editable_Pointers
                     if (Watch_Face.ElementEditablePointers != null && 
                         Watch_Face.ElementEditablePointers.visible &&
                         Watch_Face.ElementEditablePointers.config != null &&
@@ -14556,6 +14556,60 @@ namespace Watch_Face_Editor
                         }
                         Watch_Face.ElementEditablePointers.selected_pointers = p_index;
                     }
+
+                    Logger.WriteLine("SaveGIF_Editable_Elements edit mode");
+                    // Editable_Elements edit mode
+                    if(Watch_Face.Editable_Elements != null &&
+                        Watch_Face.Editable_Elements.visible  &&
+                        Watch_Face.Editable_Elements.Watchface_edit_group != null &&
+                        Watch_Face.Editable_Elements.Watchface_edit_group.Count > 0)
+                    {
+                        int zone_index = Watch_Face.Editable_Elements.selected_zone;
+                        int[] e_index = new int[Watch_Face.Editable_Elements.Watchface_edit_group.Count];
+                        for(int index = 0; index < Watch_Face.Editable_Elements.Watchface_edit_group.Count; index++)
+                        {
+                            e_index[index] = Watch_Face.Editable_Elements.Watchface_edit_group[index].selected_element;
+                        }
+                        //int link = radioButton_ScreenNormal.Checked ? 0 : 1;
+                        int link_AOD = 0;
+                        for (int index = 0; index < Watch_Face.Editable_Elements.Watchface_edit_group.Count; index++) // поочередно выбираем все зоны
+                        {
+                            bitmap = bitmapTemp;
+                            gPanel = Graphics.FromImage(bitmap);
+                            Watch_Face.Editable_Elements.selected_zone = index;
+                            WATCHFACE_EDIT_GROUP e_g = Watch_Face.Editable_Elements.Watchface_edit_group[index];
+                            if (e_g.Elements != null && e_g.Elements.Count > 0)
+                            {
+                                // перебираем все зоны и меняем в них выбраные элементы
+                                for (int group_index = 0; group_index < Watch_Face.Editable_Elements.Watchface_edit_group.Count; group_index++)
+                                {
+                                    WATCHFACE_EDIT_GROUP edit_group = Watch_Face.Editable_Elements.Watchface_edit_group[group_index];
+                                    int element_index = index;
+                                    while (element_index >= edit_group.Elements.Count)
+                                    {
+                                        element_index = element_index - edit_group.Elements.Count;
+                                    }
+                                    edit_group.selected_element = element_index;
+                                }
+                            }
+                            Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true,
+                                            false, false, false, link_AOD, false, -1, true, 2);
+                            if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
+                            else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
+                            // Add first image and set the animation delay to 100ms
+                            MagickImage item_bg_edit = new MagickImage(bitmap);
+                            //ExifProfile profile = item.GetExifProfile();
+                            collection.Add(item_bg_edit);
+                            //collection[collection.Count - 1].AnimationDelay = 100;
+                            collection[collection.Count - 1].AnimationDelay = (int)(100 * numericUpDown_Gif_Speed.Value);
+                        }
+                        for (int index = 0; index < Watch_Face.Editable_Elements.Watchface_edit_group.Count; index++)
+                        {
+                            Watch_Face.Editable_Elements.Watchface_edit_group[index].selected_element = e_index[index];
+                        }
+                        Watch_Face.Editable_Elements.selected_zone = zone_index;
+                    }
+
 
                     // Optionally reduce colors
                     QuantizeSettings settings = new QuantizeSettings();

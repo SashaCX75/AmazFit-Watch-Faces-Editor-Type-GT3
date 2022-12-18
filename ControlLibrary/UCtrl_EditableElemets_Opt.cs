@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -1139,7 +1140,7 @@ namespace ControlLibrary
                 if (OptionsMoved != null)
                 {
                     EventArgs eventArgs = new EventArgs();
-                    OptionsMoved(this, eventArgs, GetOptionsPosition());
+                    OptionsMoved(this, eventArgs, GetOptionsPosition2());
                 }
             }
         }
@@ -1394,9 +1395,255 @@ namespace ControlLibrary
                         case "panel_Icon":
                             elementOptions.Add("Icon", index);
                             break;
-                    } 
+                    }
                     index++;
                 }
+            }
+            if (elementOptions.Count != tableLayoutPanel_element.RowCount) elementOptions = FixsPosition(elementOptions);
+            return elementOptions;
+        }
+
+        private Dictionary<string, int> FixsPosition(Dictionary<string, int> elementOptions)
+        {
+            if (!elementOptions.ContainsKey("Images"))
+            {
+                int index = 1;
+                while (elementOptions.ContainsValue(index)){ index++; }
+                elementOptions.Add("Images", index);
+            }
+            if (!elementOptions.ContainsKey("Segments"))
+            {
+                int index = 1;
+                while (elementOptions.ContainsValue(index)) { index++; }
+                elementOptions.Add("Segments", index);
+            }
+            if (!elementOptions.ContainsKey("Number"))
+            {
+                int index = 1;
+                while (elementOptions.ContainsValue(index)) { index++; }
+                elementOptions.Add("Number", index);
+            }
+            if (!elementOptions.ContainsKey("Number_Target"))
+            {
+                int index = 1;
+                while (elementOptions.ContainsValue(index)) { index++; }
+                elementOptions.Add("Number_Target", index);
+            }
+            if (!elementOptions.ContainsKey("Number_Min"))
+            {
+                int index = 1;
+                while (elementOptions.ContainsValue(index)) { index++; }
+                elementOptions.Add("Number_Min", index);
+            }
+            if (!elementOptions.ContainsKey("Number_Max"))
+            {
+                int index = 1;
+                while (elementOptions.ContainsValue(index)) { index++; }
+                elementOptions.Add("Number_Max", index);
+            }
+            if (!elementOptions.ContainsKey("Sunset"))
+            {
+                int index = 1;
+                while (elementOptions.ContainsValue(index)) { index++; }
+                elementOptions.Add("Sunset", index);
+            }
+            if (!elementOptions.ContainsKey("Sunrise"))
+            {
+                int index = 1;
+                while (elementOptions.ContainsValue(index)) { index++; }
+                elementOptions.Add("Sunrise", index);
+            }
+            if (!elementOptions.ContainsKey("Sunset_Sunrise"))
+            {
+                int index = 1;
+                while (elementOptions.ContainsValue(index)) { index++; }
+                elementOptions.Add("Sunset_Sunrise", index);
+            }
+            if (!elementOptions.ContainsKey("Pointer"))
+            {
+                int index = 1;
+                while (elementOptions.ContainsValue(index)) { index++; }
+                elementOptions.Add("Pointer", index);
+            }
+            if (!elementOptions.ContainsKey("Circle_Scale"))
+            {
+                int index = 1;
+                while (elementOptions.ContainsValue(index)) { index++; }
+                elementOptions.Add("Circle_Scale", index);
+            }
+            if (!elementOptions.ContainsKey("Linear_Scale"))
+            {
+                int index = 1;
+                while (elementOptions.ContainsValue(index)) { index++; }
+                elementOptions.Add("Linear_Scale", index);
+            }
+            if (!elementOptions.ContainsKey("CityName"))
+            {
+                int index = 1;
+                while (elementOptions.ContainsValue(index)) { index++; }
+                elementOptions.Add("CityName", index);
+            }
+            if (!elementOptions.ContainsKey("Icon"))
+            {
+                int index = 1;
+                while (elementOptions.ContainsValue(index)) { index++; }
+                elementOptions.Add("Icon", index);
+            }
+            return elementOptions;
+        }
+
+        /// <summary>Получаем порядок опций в элементе v2</summary>
+        public Dictionary<string, int> GetOptionsPosition2()
+        {
+            Dictionary<string, int> elementOptions = new Dictionary<string, int>();
+            int offset = tableLayoutPanel_element.RowCount;
+
+            if (panel_Images.Visible) elementOptions.Add("Images", offset - tableLayoutPanel_element.GetRow(panel_Images));
+            if (panel_Segments.Visible) elementOptions.Add("Segments", offset - tableLayoutPanel_element.GetRow(panel_Segments));
+            if (panel_Number.Visible) elementOptions.Add("Number", offset - tableLayoutPanel_element.GetRow(panel_Number));
+            if (panel_Number_Target.Visible) elementOptions.Add("Number_Target", offset - tableLayoutPanel_element.GetRow(panel_Number_Target));
+            if (panel_Number_Min.Visible) elementOptions.Add("Number_Min", offset - tableLayoutPanel_element.GetRow(panel_Number_Min));
+            if (panel_Number_Max.Visible) elementOptions.Add("Number_Max", offset - tableLayoutPanel_element.GetRow(panel_Number_Max));
+            if (panel_Sunset.Visible) elementOptions.Add("Sunset", offset - tableLayoutPanel_element.GetRow(panel_Sunset));
+            if (panel_Sunrise.Visible) elementOptions.Add("Sunrise", offset - tableLayoutPanel_element.GetRow(panel_Sunrise));
+            if (panel_Sunset_Sunrise.Visible) elementOptions.Add("Sunset_Sunrise", offset - tableLayoutPanel_element.GetRow(panel_Sunset_Sunrise));
+            if (panel_Pointer.Visible) elementOptions.Add("Pointer", offset - tableLayoutPanel_element.GetRow(panel_Pointer));
+            if (panel_Text_CityName.Visible) elementOptions.Add("CityName", offset - tableLayoutPanel_element.GetRow(panel_Text_CityName));
+            if (panel_Circle_Scale.Visible) elementOptions.Add("Circle_Scale", offset - tableLayoutPanel_element.GetRow(panel_Circle_Scale));
+            if (panel_Linear_Scale.Visible) elementOptions.Add("Linear_Scale", offset - tableLayoutPanel_element.GetRow(panel_Linear_Scale));
+            if (panel_Icon.Visible) elementOptions.Add("Icon", offset - tableLayoutPanel_element.GetRow(panel_Icon));
+
+            FixsPosition2(elementOptions);
+            return elementOptions;
+        }
+
+        private Dictionary<string, int> FixsPosition2(Dictionary<string, int> elementOptions)
+        {
+            for (int i = 1; i <= elementOptions.Count; i++)
+            {
+                if (!elementOptions.ContainsValue(i))
+                {
+                    int searchIndex = i + 1;
+                    while (!elementOptions.ContainsValue(searchIndex) && searchIndex < tableLayoutPanel_element.RowCount)
+                    {
+                        searchIndex++;
+                    }
+                    for (int index = elementOptions.Count - 1; index >= 0; index--)
+                    {
+                        if (elementOptions.ElementAt(index).Value == searchIndex)
+                        {
+                            string key = elementOptions.ElementAt(index).Key;
+                            elementOptions[key] = i;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            for (int i = elementOptions.Count; i > 0; i--)
+            {
+                int searchIndex = i - 1;
+                while (!elementOptions.ContainsValue(searchIndex) && searchIndex > 0)
+                {
+                    searchIndex--;
+                }
+                if (!elementOptions.ContainsValue(i))
+                {
+                    for (int index = 0; index < elementOptions.Count; index++)
+                    {
+                        if (elementOptions.ElementAt(index).Value == searchIndex)
+                        {
+                            string key = elementOptions.ElementAt(index).Key;
+                            elementOptions[key] = i;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (!elementOptions.ContainsKey("Images"))
+            {
+                int index = 1;
+                while (elementOptions.ContainsValue(index)) { index++; }
+                elementOptions.Add("Images", index);
+            }
+            if (!elementOptions.ContainsKey("Segments"))
+            {
+                int index = 1;
+                while (elementOptions.ContainsValue(index)) { index++; }
+                elementOptions.Add("Segments", index);
+            }
+            if (!elementOptions.ContainsKey("Number"))
+            {
+                int index = 1;
+                while (elementOptions.ContainsValue(index)) { index++; }
+                elementOptions.Add("Number", index);
+            }
+            if (!elementOptions.ContainsKey("Number_Target"))
+            {
+                int index = 1;
+                while (elementOptions.ContainsValue(index)) { index++; }
+                elementOptions.Add("Number_Target", index);
+            }
+            if (!elementOptions.ContainsKey("Number_Min"))
+            {
+                int index = 1;
+                while (elementOptions.ContainsValue(index)) { index++; }
+                elementOptions.Add("Number_Min", index);
+            }
+            if (!elementOptions.ContainsKey("Number_Max"))
+            {
+                int index = 1;
+                while (elementOptions.ContainsValue(index)) { index++; }
+                elementOptions.Add("Number_Max", index);
+            }
+            if (!elementOptions.ContainsKey("Sunset"))
+            {
+                int index = 1;
+                while (elementOptions.ContainsValue(index)) { index++; }
+                elementOptions.Add("Sunset", index);
+            }
+            if (!elementOptions.ContainsKey("Sunrise"))
+            {
+                int index = 1;
+                while (elementOptions.ContainsValue(index)) { index++; }
+                elementOptions.Add("Sunrise", index);
+            }
+            if (!elementOptions.ContainsKey("Sunset_Sunrise"))
+            {
+                int index = 1;
+                while (elementOptions.ContainsValue(index)) { index++; }
+                elementOptions.Add("Sunset_Sunrise", index);
+            }
+            if (!elementOptions.ContainsKey("Pointer"))
+            {
+                int index = 1;
+                while (elementOptions.ContainsValue(index)) { index++; }
+                elementOptions.Add("Pointer", index);
+            }
+            if (!elementOptions.ContainsKey("Circle_Scale"))
+            {
+                int index = 1;
+                while (elementOptions.ContainsValue(index)) { index++; }
+                elementOptions.Add("Circle_Scale", index);
+            }
+            if (!elementOptions.ContainsKey("Linear_Scale"))
+            {
+                int index = 1;
+                while (elementOptions.ContainsValue(index)) { index++; }
+                elementOptions.Add("Linear_Scale", index);
+            }
+            if (!elementOptions.ContainsKey("CityName"))
+            {
+                int index = 1;
+                while (elementOptions.ContainsValue(index)) { index++; }
+                elementOptions.Add("CityName", index);
+            }
+            if (!elementOptions.ContainsKey("Icon"))
+            {
+                int index = 1;
+                while (elementOptions.ContainsValue(index)) { index++; }
+                elementOptions.Add("Icon", index);
             }
             return elementOptions;
         }

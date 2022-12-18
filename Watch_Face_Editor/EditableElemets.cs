@@ -2047,7 +2047,7 @@ namespace Watch_Face_Editor
                 watchface_edit_group.Elements.Count <= watchface_edit_group.selected_element) return;
 
             List<string> subElements = new List<string>();
-            Dictionary<string, int> elementOptions = uCtrl_EditableElements_Opt.GetOptionsPosition();
+            Dictionary<string, int> elementOptions = uCtrl_EditableElements_Opt.GetOptionsPosition2();
             CheckBox checkBox = (CheckBox)sender;
             string name = checkBox.Name;
 

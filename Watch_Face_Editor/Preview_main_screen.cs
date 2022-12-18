@@ -1421,9 +1421,9 @@ namespace Watch_Face_Editor
                     linear_scale = activityElementPAI.Linear_Scale;
                     icon = activityElementPAI.Icon;
 
-                    elementValue = 5;
+                    elementValue = WatchFacePreviewSet.Activity.PAI;
                     value_lenght = 3;
-                    goal = WatchFacePreviewSet.Activity.PAI;
+                    goal = 100;
                     progress = (float)WatchFacePreviewSet.Activity.PAI / 100f;
 
                     if (img_level != null && img_level.image_length > 0)
