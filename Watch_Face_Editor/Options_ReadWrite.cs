@@ -1561,6 +1561,10 @@ namespace Watch_Face_Editor
                             background.BackgroundImage.h = 384;
                             background.BackgroundImage.w = 336;
                             break;
+                        case "Falcon":
+                            background.BackgroundImage.h = 416;
+                            background.BackgroundImage.w = 416;
+                            break;
                         case "GTS 4":
                             background.BackgroundImage.h = 450;
                             background.BackgroundImage.w = 390;
@@ -1636,6 +1640,10 @@ namespace Watch_Face_Editor
                         background.BackgroundColor.h = 384;
                         background.BackgroundColor.w = 336;
                         break;
+                    case "Falcon":
+                        background.BackgroundColor.h = 416;
+                        background.BackgroundColor.w = 416;
+                        break;
                     case "GTS 4":
                         background.BackgroundColor.h = 450;
                         background.BackgroundColor.w = 390;
@@ -1707,6 +1715,10 @@ namespace Watch_Face_Editor
                         case "GTS 4 mini":
                             background.Editable_Background.h = 384;
                             background.Editable_Background.w = 336;
+                            break;
+                        case "Falcon":
+                            background.Editable_Background.h = 416;
+                            background.Editable_Background.w = 416;
                             break;
                         case "GTS 4":
                             background.Editable_Background.h = 450;
@@ -2457,6 +2469,10 @@ namespace Watch_Face_Editor
                         bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
                         break;
+                    case "Falcon":
+                        bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
+                        break;
                 }
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
@@ -2551,6 +2567,10 @@ namespace Watch_Face_Editor
                     case "GTS 4 mini":
                         bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
+                        break;
+                    case "Falcon":
+                        bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
                         break;
                 }
                 Graphics gPanel = Graphics.FromImage(bitmap);
@@ -2728,6 +2748,10 @@ namespace Watch_Face_Editor
                         bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
                         break;
+                    case "Falcon":
+                        bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
+                        break;
                 }
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 Creat_preview_editable_pointers(gPanel, 1.0f, false);
@@ -2819,6 +2843,10 @@ namespace Watch_Face_Editor
                     case "GTS 4 mini":
                         bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
+                        break;
+                    case "Falcon":
+                        bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
                         break;
                 }
                 Graphics gPanel = Graphics.FromImage(bitmap);

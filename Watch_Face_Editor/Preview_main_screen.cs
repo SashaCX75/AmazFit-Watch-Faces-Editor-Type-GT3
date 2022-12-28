@@ -83,6 +83,9 @@ namespace Watch_Face_Editor
                 case "GTS 4 mini":
                     src = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
                     break;
+                case "Falcon":
+                    src = OpenFileStream(Application.StartupPath + @"\Mask\mask_falcon.png");
+                    break;
             }
             offSet_X = src.Width / 2;
             offSet_Y = src.Height / 2;
@@ -360,6 +363,9 @@ namespace Watch_Face_Editor
                         break;
                     case "GTS 4 mini":
                         mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
+                        break;
+                    case "Falcon":
+                        mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_falcon.png");
                         break;
                 }
                 mask = FormColor(mask);
@@ -2093,6 +2099,9 @@ namespace Watch_Face_Editor
                 case "GTS 4 mini":
                     src = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
                     break;
+                case "Falcon":
+                    src = OpenFileStream(Application.StartupPath + @"\Mask\mask_falcon.png");
+                    break;
             }
             gPanel.DrawImage(src, 0, 0);
             int offSet_X = src.Width / 2;
@@ -2504,6 +2513,9 @@ namespace Watch_Face_Editor
                     case "GTS 4 mini":
                         mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
                         break;
+                    case "Falcon":
+                        mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_falcon.png");
+                        break;
                 }
                 mask = FormColor(mask);
                 gPanel.DrawImage(mask, 0, 0);
@@ -2606,6 +2618,9 @@ namespace Watch_Face_Editor
                         break;
                     case "GTS 4 mini":
                         mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
+                        break;
+                    case "Falcon":
+                        mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_falcon.png");
                         break;
                 }
                 mask = FormColor(mask);
@@ -4952,6 +4967,8 @@ namespace Watch_Face_Editor
                 mask = new Bitmap(Application.StartupPath + @"\Mask\mask_band_7.png");
             if (ProgramSettings.Watch_Model == "GTS 4 mini")
                 mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
+            if (ProgramSettings.Watch_Model == "Falcon")
+                mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
             if (ProgramSettings.Watch_Model == "GTS 4")
                 mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
 

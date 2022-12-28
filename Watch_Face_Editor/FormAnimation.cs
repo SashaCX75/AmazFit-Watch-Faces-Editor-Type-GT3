@@ -87,6 +87,11 @@ namespace Watch_Face_Editor
                         pictureBox_AnimatiomPreview.Size = new Size(338, 386);
                         this.Size = new Size((int)(338 + 20 * currentDPI), (int)(386 + 100 * currentDPI));
                         break;
+
+                    case "Falcon":
+                        pictureBox_AnimatiomPreview.Size = new Size(418, 418);
+                        this.Size = new Size((int)(418 + 20 * currentDPI), (int)(418 + 100 * currentDPI));
+                        break;
                 }
                 scalePreview = 1f;
             }
@@ -126,6 +131,11 @@ namespace Watch_Face_Editor
                         pictureBox_AnimatiomPreview.Size = new Size(506, 578);
                         this.Size = new Size((int)(506 + 20 * currentDPI), (int)(578 + 100 * currentDPI));
                         break;
+
+                    case "Falcon":
+                        pictureBox_AnimatiomPreview.Size = new Size(626, 626);
+                        this.Size = new Size((int)(626 + 20 * currentDPI), (int)(626 + 100 * currentDPI));
+                        break;
                 }
                 scalePreview = 1.5f;
             }
@@ -164,6 +174,11 @@ namespace Watch_Face_Editor
                     case "GTS 4 mini":
                         pictureBox_AnimatiomPreview.Size = new Size(673, 769);
                         this.Size = new Size((int)(673 + 20 * currentDPI), (int)(769 + 100 * currentDPI));
+                        break;
+
+                    case "Falcon":
+                        pictureBox_AnimatiomPreview.Size = new Size(833, 833);
+                        this.Size = new Size((int)(833 + 20 * currentDPI), (int)(833 + 100 * currentDPI));
                         break;
                 }
                 scalePreview = 2f;
@@ -214,6 +229,11 @@ namespace Watch_Face_Editor
                     case "GTS 4 mini":
                         bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
+                        break;
+
+                    case "Falcon":
+                        bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
                         break;
                 }
                 Bitmap bitmapTemp = new Bitmap(bitmap.Width, bitmap.Height, PixelFormat.Format32bppArgb);

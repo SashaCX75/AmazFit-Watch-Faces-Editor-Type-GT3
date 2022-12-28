@@ -9462,6 +9462,10 @@ namespace Watch_Face_Editor
                         options += TabInString(7 + tab_offset) + "w: 336," + Environment.NewLine;
                         options += TabInString(7 + tab_offset) + "h: 384," + Environment.NewLine;
                         break;
+                    case "Falcon":
+                        options += TabInString(7 + tab_offset) + "w: 415," + Environment.NewLine;
+                        options += TabInString(7 + tab_offset) + "h: 415," + Environment.NewLine;
+                        break;
                 }
                 options += TabInString(7 + tab_offset) + "pos_x: " + anim.x_start.ToString() + "," + Environment.NewLine;
                 options += TabInString(7 + tab_offset) + "pos_y: " + anim.y_start.ToString() + "," + Environment.NewLine;
@@ -9563,6 +9567,10 @@ namespace Watch_Face_Editor
                     case "GTS4_mini":
                         options += TabInString(7 + tab_offset) + "w: 336," + Environment.NewLine;
                         options += TabInString(7 + tab_offset) + "h: 384," + Environment.NewLine;
+                        break;
+                    case "Falcon":
+                        options += TabInString(7 + tab_offset) + "w: 417," + Environment.NewLine;
+                        options += TabInString(7 + tab_offset) + "h: 417," + Environment.NewLine;
                         break;
                 }
                 options += TabInString(7 + tab_offset) + "pos_x: " + (anim.center_x - anim.pos_x).ToString() + "," + Environment.NewLine;
@@ -10733,7 +10741,8 @@ namespace Watch_Face_Editor
                                     firstImgNormal = false;
                                     if ((img.w == 454 && img.h == 454) || (img.w == 480 && img.h == 480) ||  // gtr 3; gtr 3 pro
                                         (img.w == 390 && img.h == 450) || (img.w == 466 && img.h == 466) ||  // gts 3; gtr 4
-                                        (img.w == 194 && img.h == 368) || (img.w == 336 && img.h == 384))  // band 7; gts 4 mini
+                                        (img.w == 194 && img.h == 368) || (img.w == 336 && img.h == 384) ||  // band 7; gts 4 mini
+                                        (img.w == 416 && img.h == 416))  // falcon
                                     {
                                         if (Watch_Face.ScreenNormal.Background == null)
                                             Watch_Face.ScreenNormal.Background = new Background();
@@ -10745,7 +10754,8 @@ namespace Watch_Face_Editor
                                     firstImgAOD = false;
                                     if ((img.w == 454 && img.h == 454) || (img.w == 480 && img.h == 480) ||
                                         (img.w == 390 && img.h == 450) || (img.w == 466 && img.h == 466) ||
-                                        (img.w == 194 && img.h == 368) || (img.w == 336 && img.h == 384))
+                                        (img.w == 194 && img.h == 368) || (img.w == 336 && img.h == 384) ||
+                                        (img.w == 416 && img.h == 416))
                                     {
                                         if (Watch_Face.ScreenAOD.Background == null)
                                             Watch_Face.ScreenAOD.Background = new Background();
@@ -10868,7 +10878,11 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenNormal.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenNormal.Elements;
                             }
-                            else if (objectName.StartsWith("idle"))
+                            else if (objectName.StartsWith("idle") ||
+                                ((img_time.Hour != null && (img_time.Hour.show_level == "ONLY_AOD") || (img_time.Hour.show_level == "ONAL_AOD")) ||
+                                (img_time.Minute != null && (img_time.Minute.show_level == "ONLY_AOD") || (img_time.Minute.show_level == "ONAL_AOD")) ||
+                                (img_time.Second != null && (img_time.Second.show_level == "ONLY_AOD") || (img_time.Second.show_level == "ONAL_AOD")) ||
+                                (img_time.AmPm != null && (img_time.AmPm.show_level == "ONLY_AOD") || (img_time.AmPm.show_level == "ONAL_AOD"))))
                             {
                                 if (Watch_Face.ScreenAOD.Elements == null)
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
@@ -15139,220 +15153,256 @@ namespace Watch_Face_Editor
                             switch (imgShortcut.type)
                             {
                                 case "STEP":
-                                    //if (elementShortcuts.Step != null) index++;
-                                    if (elementShortcuts.Heart != null) index++;
-                                    if (elementShortcuts.SPO2 != null) index++;
-                                    if (elementShortcuts.PAI != null) index++;
-                                    if (elementShortcuts.Stress != null) index++;
-                                    if (elementShortcuts.Weather != null) index++;
-                                    if (elementShortcuts.Altimeter != null) index++;
-                                    if (elementShortcuts.Sunrise != null) index++;
-                                    if (elementShortcuts.Alarm != null) index++;
-                                    if (elementShortcuts.Sleep != null) index++;
-                                    if (elementShortcuts.Countdown != null) index++;
-                                    if (elementShortcuts.Stopwatch != null) index++;
+                                    if (elementShortcuts.Step == null)
+                                    {
+                                        //if (elementShortcuts.Step != null) index++;
+                                        if (elementShortcuts.Heart != null) index++;
+                                        if (elementShortcuts.SPO2 != null) index++;
+                                        if (elementShortcuts.PAI != null) index++;
+                                        if (elementShortcuts.Stress != null) index++;
+                                        if (elementShortcuts.Weather != null) index++;
+                                        if (elementShortcuts.Altimeter != null) index++;
+                                        if (elementShortcuts.Sunrise != null) index++;
+                                        if (elementShortcuts.Alarm != null) index++;
+                                        if (elementShortcuts.Sleep != null) index++;
+                                        if (elementShortcuts.Countdown != null) index++;
+                                        if (elementShortcuts.Stopwatch != null) index++;
 
-                                    imgShortcut.position = index;
-                                    elementShortcuts.Step = imgShortcut;
+                                        imgShortcut.position = index;
+                                        elementShortcuts.Step = imgShortcut;
+                                    }
                                     break;
 
                                 case "HEART":
-                                    if (elementShortcuts.Step != null) index++;
-                                    //if (elementShortcuts.Heart != null) index++;
-                                    if (elementShortcuts.SPO2 != null) index++;
-                                    if (elementShortcuts.PAI != null) index++;
-                                    if (elementShortcuts.Stress != null) index++;
-                                    if (elementShortcuts.Weather != null) index++;
-                                    if (elementShortcuts.Altimeter != null) index++;
-                                    if (elementShortcuts.Sunrise != null) index++;
-                                    if (elementShortcuts.Alarm != null) index++;
-                                    if (elementShortcuts.Sleep != null) index++;
-                                    if (elementShortcuts.Countdown != null) index++;
-                                    if (elementShortcuts.Stopwatch != null) index++;
+                                    if (elementShortcuts.Heart == null)
+                                    {
+                                        if (elementShortcuts.Step != null) index++;
+                                        //if (elementShortcuts.Heart != null) index++;
+                                        if (elementShortcuts.SPO2 != null) index++;
+                                        if (elementShortcuts.PAI != null) index++;
+                                        if (elementShortcuts.Stress != null) index++;
+                                        if (elementShortcuts.Weather != null) index++;
+                                        if (elementShortcuts.Altimeter != null) index++;
+                                        if (elementShortcuts.Sunrise != null) index++;
+                                        if (elementShortcuts.Alarm != null) index++;
+                                        if (elementShortcuts.Sleep != null) index++;
+                                        if (elementShortcuts.Countdown != null) index++;
+                                        if (elementShortcuts.Stopwatch != null) index++;
 
-                                    imgShortcut.position = index;
-                                    elementShortcuts.Heart = imgShortcut;
+                                        imgShortcut.position = index;
+                                        elementShortcuts.Heart = imgShortcut;
+                                    }
                                     break;
 
                                 case "SPO2":
-                                    if (elementShortcuts.Step != null) index++;
-                                    if (elementShortcuts.Heart != null) index++;
-                                    //if (elementShortcuts.SPO2 != null) index++;
-                                    if (elementShortcuts.PAI != null) index++;
-                                    if (elementShortcuts.Stress != null) index++;
-                                    if (elementShortcuts.Weather != null) index++;
-                                    if (elementShortcuts.Altimeter != null) index++;
-                                    if (elementShortcuts.Sunrise != null) index++;
-                                    if (elementShortcuts.Alarm != null) index++;
-                                    if (elementShortcuts.Sleep != null) index++;
-                                    if (elementShortcuts.Countdown != null) index++;
-                                    if (elementShortcuts.Stopwatch != null) index++;
+                                    if (elementShortcuts.SPO2 == null)
+                                    {
+                                        if (elementShortcuts.Step != null) index++;
+                                        if (elementShortcuts.Heart != null) index++;
+                                        //if (elementShortcuts.SPO2 != null) index++;
+                                        if (elementShortcuts.PAI != null) index++;
+                                        if (elementShortcuts.Stress != null) index++;
+                                        if (elementShortcuts.Weather != null) index++;
+                                        if (elementShortcuts.Altimeter != null) index++;
+                                        if (elementShortcuts.Sunrise != null) index++;
+                                        if (elementShortcuts.Alarm != null) index++;
+                                        if (elementShortcuts.Sleep != null) index++;
+                                        if (elementShortcuts.Countdown != null) index++;
+                                        if (elementShortcuts.Stopwatch != null) index++;
 
-                                    imgShortcut.position = index;
-                                    elementShortcuts.SPO2 = imgShortcut;
+                                        imgShortcut.position = index;
+                                        elementShortcuts.SPO2 = imgShortcut;
+                                    }
                                     break;
 
                                 case "PAI":
                                 case "PAI_WEEKLY":
-                                    if (elementShortcuts.Step != null) index++;
-                                    if (elementShortcuts.Heart != null) index++;
-                                    if (elementShortcuts.SPO2 != null) index++;
-                                    //if (elementShortcuts.PAI != null) index++;
-                                    if (elementShortcuts.Stress != null) index++;
-                                    if (elementShortcuts.Weather != null) index++;
-                                    if (elementShortcuts.Altimeter != null) index++;
-                                    if (elementShortcuts.Sunrise != null) index++;
-                                    if (elementShortcuts.Alarm != null) index++;
-                                    if (elementShortcuts.Sleep != null) index++;
-                                    if (elementShortcuts.Countdown != null) index++;
-                                    if (elementShortcuts.Stopwatch != null) index++;
+                                    if (elementShortcuts.PAI == null)
+                                    {
+                                        if (elementShortcuts.Step != null) index++;
+                                        if (elementShortcuts.Heart != null) index++;
+                                        if (elementShortcuts.SPO2 != null) index++;
+                                        //if (elementShortcuts.PAI != null) index++;
+                                        if (elementShortcuts.Stress != null) index++;
+                                        if (elementShortcuts.Weather != null) index++;
+                                        if (elementShortcuts.Altimeter != null) index++;
+                                        if (elementShortcuts.Sunrise != null) index++;
+                                        if (elementShortcuts.Alarm != null) index++;
+                                        if (elementShortcuts.Sleep != null) index++;
+                                        if (elementShortcuts.Countdown != null) index++;
+                                        if (elementShortcuts.Stopwatch != null) index++;
 
-                                    imgShortcut.position = index;
-                                    elementShortcuts.PAI = imgShortcut;
+                                        imgShortcut.position = index;
+                                        elementShortcuts.PAI = imgShortcut;
+                                    }
                                     break;
 
                                 case "STRESS":
-                                    if (elementShortcuts.Step != null) index++;
-                                    if (elementShortcuts.Heart != null) index++;
-                                    if (elementShortcuts.SPO2 != null) index++;
-                                    if (elementShortcuts.PAI != null) index++;
-                                    //if (elementShortcuts.Stress != null) index++;
-                                    if (elementShortcuts.Weather != null) index++;
-                                    if (elementShortcuts.Altimeter != null) index++;
-                                    if (elementShortcuts.Sunrise != null) index++;
-                                    if (elementShortcuts.Alarm != null) index++;
-                                    if (elementShortcuts.Sleep != null) index++;
-                                    if (elementShortcuts.Countdown != null) index++;
-                                    if (elementShortcuts.Stopwatch != null) index++;
+                                    if (elementShortcuts.Stress == null)
+                                    {
+                                        if (elementShortcuts.Step != null) index++;
+                                        if (elementShortcuts.Heart != null) index++;
+                                        if (elementShortcuts.SPO2 != null) index++;
+                                        if (elementShortcuts.PAI != null) index++;
+                                        //if (elementShortcuts.Stress != null) index++;
+                                        if (elementShortcuts.Weather != null) index++;
+                                        if (elementShortcuts.Altimeter != null) index++;
+                                        if (elementShortcuts.Sunrise != null) index++;
+                                        if (elementShortcuts.Alarm != null) index++;
+                                        if (elementShortcuts.Sleep != null) index++;
+                                        if (elementShortcuts.Countdown != null) index++;
+                                        if (elementShortcuts.Stopwatch != null) index++;
 
-                                    imgShortcut.position = index;
-                                    elementShortcuts.Stress = imgShortcut;
+                                        imgShortcut.position = index;
+                                        elementShortcuts.Stress = imgShortcut;
+                                    }
                                     break;
 
                                 case "WEATHER_CURRENT":
-                                    if (elementShortcuts.Step != null) index++;
-                                    if (elementShortcuts.Heart != null) index++;
-                                    if (elementShortcuts.SPO2 != null) index++;
-                                    if (elementShortcuts.PAI != null) index++;
-                                    if (elementShortcuts.Stress != null) index++;
-                                    //if (elementShortcuts.Weather != null) index++;
-                                    if (elementShortcuts.Altimeter != null) index++;
-                                    if (elementShortcuts.Sunrise != null) index++;
-                                    if (elementShortcuts.Alarm != null) index++;
-                                    if (elementShortcuts.Sleep != null) index++;
-                                    if (elementShortcuts.Countdown != null) index++;
-                                    if (elementShortcuts.Stopwatch != null) index++;
+                                    if (elementShortcuts.Weather == null)
+                                    {
+                                        if (elementShortcuts.Step != null) index++;
+                                        if (elementShortcuts.Heart != null) index++;
+                                        if (elementShortcuts.SPO2 != null) index++;
+                                        if (elementShortcuts.PAI != null) index++;
+                                        if (elementShortcuts.Stress != null) index++;
+                                        //if (elementShortcuts.Weather != null) index++;
+                                        if (elementShortcuts.Altimeter != null) index++;
+                                        if (elementShortcuts.Sunrise != null) index++;
+                                        if (elementShortcuts.Alarm != null) index++;
+                                        if (elementShortcuts.Sleep != null) index++;
+                                        if (elementShortcuts.Countdown != null) index++;
+                                        if (elementShortcuts.Stopwatch != null) index++;
 
-                                    imgShortcut.position = index;
-                                    elementShortcuts.Weather = imgShortcut;
+                                        imgShortcut.position = index;
+                                        elementShortcuts.Weather = imgShortcut;
+                                    }
                                     break;
 
                                 case "ALTIMETER":
-                                    if (elementShortcuts.Step != null) index++;
-                                    if (elementShortcuts.Heart != null) index++;
-                                    if (elementShortcuts.SPO2 != null) index++;
-                                    if (elementShortcuts.PAI != null) index++;
-                                    if (elementShortcuts.Stress != null) index++;
-                                    if (elementShortcuts.Weather != null) index++;
-                                    //if (elementShortcuts.Altimeter != null) index++;
-                                    if (elementShortcuts.Sunrise != null) index++;
-                                    if (elementShortcuts.Alarm != null) index++;
-                                    if (elementShortcuts.Sleep != null) index++;
-                                    if (elementShortcuts.Countdown != null) index++;
-                                    if (elementShortcuts.Stopwatch != null) index++;
+                                    if (elementShortcuts.Altimeter == null)
+                                    {
+                                        if (elementShortcuts.Step != null) index++;
+                                        if (elementShortcuts.Heart != null) index++;
+                                        if (elementShortcuts.SPO2 != null) index++;
+                                        if (elementShortcuts.PAI != null) index++;
+                                        if (elementShortcuts.Stress != null) index++;
+                                        if (elementShortcuts.Weather != null) index++;
+                                        //if (elementShortcuts.Altimeter != null) index++;
+                                        if (elementShortcuts.Sunrise != null) index++;
+                                        if (elementShortcuts.Alarm != null) index++;
+                                        if (elementShortcuts.Sleep != null) index++;
+                                        if (elementShortcuts.Countdown != null) index++;
+                                        if (elementShortcuts.Stopwatch != null) index++;
 
-                                    imgShortcut.position = index;
-                                    elementShortcuts.Altimeter = imgShortcut;
+                                        imgShortcut.position = index;
+                                        elementShortcuts.Altimeter = imgShortcut;
+                                    }
                                     break;
 
                                 case "SUN_CURRENT":
-                                    if (elementShortcuts.Step != null) index++;
-                                    if (elementShortcuts.Heart != null) index++;
-                                    if (elementShortcuts.SPO2 != null) index++;
-                                    if (elementShortcuts.PAI != null) index++;
-                                    if (elementShortcuts.Stress != null) index++;
-                                    if (elementShortcuts.Weather != null) index++;
-                                    if (elementShortcuts.Altimeter != null) index++;
-                                    //if (elementShortcuts.Sunrise != null) index++;
-                                    if (elementShortcuts.Alarm != null) index++;
-                                    if (elementShortcuts.Sleep != null) index++;
-                                    if (elementShortcuts.Countdown != null) index++;
-                                    if (elementShortcuts.Stopwatch != null) index++;
+                                    if (elementShortcuts.Sunrise == null)
+                                    {
+                                        if (elementShortcuts.Step != null) index++;
+                                        if (elementShortcuts.Heart != null) index++;
+                                        if (elementShortcuts.SPO2 != null) index++;
+                                        if (elementShortcuts.PAI != null) index++;
+                                        if (elementShortcuts.Stress != null) index++;
+                                        if (elementShortcuts.Weather != null) index++;
+                                        if (elementShortcuts.Altimeter != null) index++;
+                                        //if (elementShortcuts.Sunrise != null) index++;
+                                        if (elementShortcuts.Alarm != null) index++;
+                                        if (elementShortcuts.Sleep != null) index++;
+                                        if (elementShortcuts.Countdown != null) index++;
+                                        if (elementShortcuts.Stopwatch != null) index++;
 
-                                    imgShortcut.position = index;
-                                    elementShortcuts.Sunrise = imgShortcut;
+                                        imgShortcut.position = index;
+                                        elementShortcuts.Sunrise = imgShortcut;
+                                    }
                                     break;
 
                                 case "ALARM_CLOCK":
-                                    if (elementShortcuts.Step != null) index++;
-                                    if (elementShortcuts.Heart != null) index++;
-                                    if (elementShortcuts.SPO2 != null) index++;
-                                    if (elementShortcuts.PAI != null) index++;
-                                    if (elementShortcuts.Stress != null) index++;
-                                    if (elementShortcuts.Weather != null) index++;
-                                    if (elementShortcuts.Altimeter != null) index++;
-                                    if (elementShortcuts.Sunrise != null) index++;
-                                    //if (elementShortcuts.Alarm != null) index++;
-                                    if (elementShortcuts.Sleep != null) index++;
-                                    if (elementShortcuts.Countdown != null) index++;
-                                    if (elementShortcuts.Stopwatch != null) index++;
+                                    if (elementShortcuts.Alarm == null)
+                                    {
+                                        if (elementShortcuts.Step != null) index++;
+                                        if (elementShortcuts.Heart != null) index++;
+                                        if (elementShortcuts.SPO2 != null) index++;
+                                        if (elementShortcuts.PAI != null) index++;
+                                        if (elementShortcuts.Stress != null) index++;
+                                        if (elementShortcuts.Weather != null) index++;
+                                        if (elementShortcuts.Altimeter != null) index++;
+                                        if (elementShortcuts.Sunrise != null) index++;
+                                        //if (elementShortcuts.Alarm != null) index++;
+                                        if (elementShortcuts.Sleep != null) index++;
+                                        if (elementShortcuts.Countdown != null) index++;
+                                        if (elementShortcuts.Stopwatch != null) index++;
 
-                                    imgShortcut.position = index;
-                                    elementShortcuts.Alarm = imgShortcut;
+                                        imgShortcut.position = index;
+                                        elementShortcuts.Alarm = imgShortcut;
+                                    }
                                     break;
 
                                 case "SLEEP":
-                                    if (elementShortcuts.Step != null) index++;
-                                    if (elementShortcuts.Heart != null) index++;
-                                    if (elementShortcuts.SPO2 != null) index++;
-                                    if (elementShortcuts.PAI != null) index++;
-                                    if (elementShortcuts.Stress != null) index++;
-                                    if (elementShortcuts.Weather != null) index++;
-                                    if (elementShortcuts.Altimeter != null) index++;
-                                    if (elementShortcuts.Sunrise != null) index++;
-                                    if (elementShortcuts.Alarm != null) index++;
-                                    //if (elementShortcuts.Sleep != null) index++;
-                                    if (elementShortcuts.Countdown != null) index++;
-                                    if (elementShortcuts.Stopwatch != null) index++;
+                                    if (elementShortcuts.Sleep == null)
+                                    {
+                                        if (elementShortcuts.Step != null) index++;
+                                        if (elementShortcuts.Heart != null) index++;
+                                        if (elementShortcuts.SPO2 != null) index++;
+                                        if (elementShortcuts.PAI != null) index++;
+                                        if (elementShortcuts.Stress != null) index++;
+                                        if (elementShortcuts.Weather != null) index++;
+                                        if (elementShortcuts.Altimeter != null) index++;
+                                        if (elementShortcuts.Sunrise != null) index++;
+                                        if (elementShortcuts.Alarm != null) index++;
+                                        //if (elementShortcuts.Sleep != null) index++;
+                                        if (elementShortcuts.Countdown != null) index++;
+                                        if (elementShortcuts.Stopwatch != null) index++;
 
-                                    imgShortcut.position = index;
-                                    elementShortcuts.Sleep = imgShortcut;
+                                        imgShortcut.position = index;
+                                        elementShortcuts.Sleep = imgShortcut;
+                                    }
                                     break;
 
                                 case "COUNT_DOWN":
-                                    if (elementShortcuts.Step != null) index++;
-                                    if (elementShortcuts.Heart != null) index++;
-                                    if (elementShortcuts.SPO2 != null) index++;
-                                    if (elementShortcuts.PAI != null) index++;
-                                    if (elementShortcuts.Stress != null) index++;
-                                    if (elementShortcuts.Weather != null) index++;
-                                    if (elementShortcuts.Altimeter != null) index++;
-                                    if (elementShortcuts.Sunrise != null) index++;
-                                    if (elementShortcuts.Alarm != null) index++;
-                                    if (elementShortcuts.Sleep != null) index++;
-                                    //if (elementShortcuts.Countdown != null) index++;
-                                    if (elementShortcuts.Stopwatch != null) index++;
+                                    if (elementShortcuts.Countdown == null)
+                                    {
+                                        if (elementShortcuts.Step != null) index++;
+                                        if (elementShortcuts.Heart != null) index++;
+                                        if (elementShortcuts.SPO2 != null) index++;
+                                        if (elementShortcuts.PAI != null) index++;
+                                        if (elementShortcuts.Stress != null) index++;
+                                        if (elementShortcuts.Weather != null) index++;
+                                        if (elementShortcuts.Altimeter != null) index++;
+                                        if (elementShortcuts.Sunrise != null) index++;
+                                        if (elementShortcuts.Alarm != null) index++;
+                                        if (elementShortcuts.Sleep != null) index++;
+                                        //if (elementShortcuts.Countdown != null) index++;
+                                        if (elementShortcuts.Stopwatch != null) index++;
 
-                                    imgShortcut.position = index;
-                                    elementShortcuts.Countdown = imgShortcut;
+                                        imgShortcut.position = index;
+                                        elementShortcuts.Countdown = imgShortcut;
+                                    }
                                     break;
 
                                 case "STOP_WATCH":
-                                    if (elementShortcuts.Step != null) index++;
-                                    if (elementShortcuts.Heart != null) index++;
-                                    if (elementShortcuts.SPO2 != null) index++;
-                                    if (elementShortcuts.PAI != null) index++;
-                                    if (elementShortcuts.Stress != null) index++;
-                                    if (elementShortcuts.Weather != null) index++;
-                                    if (elementShortcuts.Altimeter != null) index++;
-                                    if (elementShortcuts.Sunrise != null) index++;
-                                    if (elementShortcuts.Alarm != null) index++;
-                                    if (elementShortcuts.Sleep != null) index++;
-                                    if (elementShortcuts.Countdown != null) index++;
-                                    //if (elementShortcuts.Stopwatch != null) index++;
+                                    if (elementShortcuts.Stopwatch == null)
+                                    {
+                                        if (elementShortcuts.Step != null) index++;
+                                        if (elementShortcuts.Heart != null) index++;
+                                        if (elementShortcuts.SPO2 != null) index++;
+                                        if (elementShortcuts.PAI != null) index++;
+                                        if (elementShortcuts.Stress != null) index++;
+                                        if (elementShortcuts.Weather != null) index++;
+                                        if (elementShortcuts.Altimeter != null) index++;
+                                        if (elementShortcuts.Sunrise != null) index++;
+                                        if (elementShortcuts.Alarm != null) index++;
+                                        if (elementShortcuts.Sleep != null) index++;
+                                        if (elementShortcuts.Countdown != null) index++;
+                                        //if (elementShortcuts.Stopwatch != null) index++;
 
-                                    imgShortcut.position = index;
-                                    elementShortcuts.Stopwatch = imgShortcut;
+                                        imgShortcut.position = index;
+                                        elementShortcuts.Stopwatch = imgShortcut;
+                                    }
                                     break;
 
                             }

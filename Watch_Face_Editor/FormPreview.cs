@@ -59,6 +59,10 @@ namespace Watch_Face_Editor
                         pictureBox_Preview.Size = new Size(171, 195);
                         this.Size = new Size(171 + (int)(22 * currentDPI), 195 + (int)(66 * currentDPI));
                         break;
+                    case "Falcon":
+                        pictureBox_Preview.Size = new Size(211, 211);
+                        this.Size = new Size((int)(211 + 20 * currentDPI), (int)(211 + 100 * currentDPI));
+                        break;
                 }
                 scale = 0.5f;
             }
@@ -92,6 +96,10 @@ namespace Watch_Face_Editor
                     case "GTS 4 mini":
                         pictureBox_Preview.Size = new Size(338, 386);
                         this.Size = new Size(338 + (int)(22 * currentDPI), 386 + (int)(66 * currentDPI));
+                        break;
+                    case "Falcon":
+                        pictureBox_Preview.Size = new Size(418, 418);
+                        this.Size = new Size((int)(418 + 20 * currentDPI), (int)(418 + 100 * currentDPI));
                         break;
                 }
                 scale = 1f;
@@ -127,6 +135,10 @@ namespace Watch_Face_Editor
                         pictureBox_Preview.Size = new Size(506, 578);
                         this.Size = new Size(506 + (int)(22 * currentDPI), 578 + (int)(66 * currentDPI));
                         break;
+                    case "Falcon":
+                        pictureBox_Preview.Size = new Size(626, 626);
+                        this.Size = new Size((int)(626 + 20 * currentDPI), (int)(626 + 100 * currentDPI));
+                        break;
                 }
                 scale = 1.5f;
             }
@@ -161,6 +173,10 @@ namespace Watch_Face_Editor
                         pictureBox_Preview.Size = new Size(673, 769);
                         this.Size = new Size(673 + (int)(22 * currentDPI), 769 + (int)(66 * currentDPI));
                         break;
+                    case "Falcon":
+                        pictureBox_Preview.Size = new Size(833, 833);
+                        this.Size = new Size((int)(833 + 20 * currentDPI), (int)(833 + 100 * currentDPI));
+                        break;
                 }
                 scale = 2f;
             }
@@ -194,6 +210,10 @@ namespace Watch_Face_Editor
                     case "GTS 4 mini":
                         pictureBox_Preview.Size = new Size(841, 961);
                         this.Size = new Size(841 + (int)(22 * currentDPI), 961 + (int)(66 * currentDPI));
+                        break;
+                    case "Falcon":
+                        pictureBox_Preview.Size = new Size(1041, 1041);
+                        this.Size = new Size((int)(1041 + 20 * currentDPI), (int)(1041 + 100 * currentDPI));
                         break;
                 }
                 scale = 2.5f;

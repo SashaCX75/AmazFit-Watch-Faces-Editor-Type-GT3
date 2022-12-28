@@ -41,7 +41,7 @@ namespace Watch_Face_Editor
 
                     using (var fileStream = File.OpenRead(fileNameFull))
                     {
-                        image = new ImageMagick.MagickImage(fileStream, ImageMagick.MagickFormat.Tga );
+                        image = new ImageMagick.MagickImage(fileStream, ImageMagick.MagickFormat.Tga);
                     }
 
                     image.Format = ImageMagick.MagickFormat.Png32;

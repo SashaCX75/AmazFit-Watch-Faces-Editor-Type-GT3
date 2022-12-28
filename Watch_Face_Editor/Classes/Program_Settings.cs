@@ -64,6 +64,7 @@ namespace Watch_Face_Editor
         public string WatchSkin_T_Rex_2 = @"\Skin\WatchSkin_T_Rex_2.json";
         public string WatchSkin_GTR_4 = @"\Skin\WatchSkin_GTR_4.json";
         public string WatchSkin_GTS_4_mini = @"\Skin\WatchSkin_GTS_4_mini.json";
+        public string WatchSkin_Falcon = @"\Skin\WatchSkin_Falcon.json";
         public string WatchSkin_Amazfit_Band_7 = @"\Skin\WatchSkin_Amazfit_Band_7.json";
         public bool WatchSkin_Use = false;
     }

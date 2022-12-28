@@ -20,9 +20,6 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace Watch_Face_Editor
 {
@@ -246,6 +243,9 @@ namespace Watch_Face_Editor
                     break;
                 case "GTS 4 mini":
                     textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_4_mini;
+                    break;
+                case "Falcon":
+                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_Falcon;
                     break;
                 case "GTS 4":
                     textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_3;
@@ -528,6 +528,7 @@ namespace Watch_Face_Editor
                 if (comboBox_watch_model.Text == "GTR 4") ProgramSettings.WatchSkin_GTR_4 = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "Amazfit Band 7") ProgramSettings.WatchSkin_Amazfit_Band_7 = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "GTS 4 mini") ProgramSettings.WatchSkin_GTS_4_mini = textBox_WatchSkin_Path.Text;
+                if (comboBox_watch_model.Text == "Falcon") ProgramSettings.WatchSkin_Falcon = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "GTS 4") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
             }
 
@@ -603,6 +604,9 @@ namespace Watch_Face_Editor
                     break;
                 case "GTS 4 mini":
                     FormName = "GTS 4 mini watch face editor";
+                    break;
+                case "Falcon":
+                    FormName = "Falcon watch face editor";
                     break;
                 case "GTS 4":
                     FormName = "GTS 4 watch face editor";
@@ -713,6 +717,9 @@ namespace Watch_Face_Editor
                         break;
                     case "GTS 4 mini":
                         ProgramSettings.WatchSkin_GTS_4_mini = textBox_WatchSkin_Path.Text;
+                        break;
+                    case "Falcon":
+                        ProgramSettings.WatchSkin_Falcon = textBox_WatchSkin_Path.Text;
                         break;
                     case "GTS 4":
                         ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
@@ -1983,6 +1990,9 @@ namespace Watch_Face_Editor
                     case "GTS4_mini":
                         comboBox_watch_model.Text = "GTS 4 mini";
                         break;
+                    case "Falcon":
+                        comboBox_watch_model.Text = "Falcon";
+                        break;
                     case "GTS4":
                         comboBox_watch_model.Text = "GTS 4";
                         break;
@@ -2283,6 +2293,14 @@ namespace Watch_Face_Editor
                         Watch_Face.ScreenNormal.Background.BackgroundColor.h = 384;
                         Watch_Face.ScreenNormal.Background.BackgroundColor.w = 336;
                         break;
+                    case "Falcon":
+                        Watch_Face.WatchFace_Info.DeviceName = "Falcon";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 416;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 416;
+                        break;
                     case "GTS 4":
                         Watch_Face.WatchFace_Info.DeviceName = "GTS4";
                         Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
@@ -2424,6 +2442,14 @@ namespace Watch_Face_Editor
                         Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
                         Watch_Face.ScreenNormal.Background.BackgroundColor.h = 384;
                         Watch_Face.ScreenNormal.Background.BackgroundColor.w = 336;
+                        break;
+                    case "Falcon":
+                        Watch_Face.WatchFace_Info.DeviceName = "Falcon";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 416;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 416;
                         break;
                     case "GTS 4":
                         Watch_Face.WatchFace_Info.DeviceName = "GTS4";
@@ -2592,6 +2618,9 @@ namespace Watch_Face_Editor
                 case "GTS 4 mini":
                     bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
                     break;
+                case "Falcon":
+                    bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
+                    break;
             }
             Graphics gPanel = Graphics.FromImage(bitmap);
             #endregion
@@ -2698,6 +2727,9 @@ namespace Watch_Face_Editor
                         case "GTS 4 mini":
                             bitmapPreviewResize = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
                             break;
+                        case "Falcon":
+                            bitmapPreviewResize = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
+                            break;
                     }
                     Graphics gPanelPreviewResize = Graphics.FromImage(bitmapPreviewResize);
                     #endregion
@@ -2773,6 +2805,9 @@ namespace Watch_Face_Editor
                     break;
                 case "GTS 4 mini":
                     bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
+                    break;
+                case "Falcon":
+                    bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
                     break;
             }
             Graphics gPanel = Graphics.FromImage(bitmap);
@@ -3336,6 +3371,13 @@ namespace Watch_Face_Editor
                         Watch_Face.ScreenNormal.Background.BackgroundColor.h = 384;
                         Watch_Face.ScreenNormal.Background.BackgroundColor.w = 336;
                         break;
+                    case "Falcon":
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 416;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 416;
+                        break;
                 }
                 Watch_Face.ScreenNormal.Background.visible = true;
                 JSON_Modified = true;
@@ -3391,6 +3433,13 @@ namespace Watch_Face_Editor
                         Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
                         Watch_Face.ScreenAOD.Background.BackgroundColor.h = 384;
                         Watch_Face.ScreenAOD.Background.BackgroundColor.w = 336;
+                        break;
+                    case "Falcon":
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.x = 0;
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.h = 416;
+                        Watch_Face.ScreenAOD.Background.BackgroundColor.w = 416;
                         break;
                 }
                 Watch_Face.ScreenAOD.Background.visible = true;
@@ -5640,6 +5689,7 @@ namespace Watch_Face_Editor
                 if (comboBox_watch_model.Text == "GTR 4") ProgramSettings.WatchSkin_GTR_4 = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "Amazfit Band 7") ProgramSettings.WatchSkin_Amazfit_Band_7 = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "GTS 4 mini") ProgramSettings.WatchSkin_GTS_4_mini = textBox_WatchSkin_Path.Text;
+                if (comboBox_watch_model.Text == "Falcon") ProgramSettings.WatchSkin_Falcon = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "GTS 4") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
             }
 
@@ -5700,6 +5750,7 @@ namespace Watch_Face_Editor
                 if (comboBox_watch_model.Text == "GTR 4") ProgramSettings.WatchSkin_GTR_4 = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "Amazfit Band 7") ProgramSettings.WatchSkin_Amazfit_Band_7 = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "GTS 4 mini") ProgramSettings.WatchSkin_GTS_4_mini = textBox_WatchSkin_Path.Text;
+                if (comboBox_watch_model.Text == "Falcon") ProgramSettings.WatchSkin_Falcon = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "GTS 4") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
             }
 
@@ -6825,6 +6876,9 @@ namespace Watch_Face_Editor
                 case "GTS 4 mini":
                     pictureBox_Preview.Size = new Size((int)(171 * currentDPI), (int)(195 * currentDPI));
                     break;
+                case "Falcon":
+                    pictureBox_Preview.Size = new Size((int)(211 * currentDPI), (int)(211 * currentDPI));
+                    break;
             }
 
             // изменяем размер панели для предпросмотра если она не влазит
@@ -7084,6 +7138,40 @@ namespace Watch_Face_Editor
                         }
                     }
                     break;
+                case "Falcon":
+                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_Falcon;
+
+                    if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
+                    Watch_Face.WatchFace_Info.DeviceName = "Falcon";
+
+                    if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
+                    {
+                        if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
+                        {
+                            Watch_Face.ScreenNormal.Background.BackgroundColor.w = 416;
+                            Watch_Face.ScreenNormal.Background.BackgroundColor.h = 416;
+                        }
+                        if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
+                        {
+                            Watch_Face.ScreenNormal.Background.BackgroundImage.w = 416;
+                            Watch_Face.ScreenNormal.Background.BackgroundImage.h = 416;
+                        }
+                    }
+
+                    if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
+                    {
+                        if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
+                        {
+                            Watch_Face.ScreenAOD.Background.BackgroundColor.w = 416;
+                            Watch_Face.ScreenAOD.Background.BackgroundColor.h = 416;
+                        }
+                        if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
+                        {
+                            Watch_Face.ScreenAOD.Background.BackgroundImage.w = 416;
+                            Watch_Face.ScreenAOD.Background.BackgroundImage.h = 416;
+                        }
+                    }
+                    break;
                 case "GTS 4":
                     textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_3;
 
@@ -7173,6 +7261,10 @@ namespace Watch_Face_Editor
                         background.BackgroundColor.h = 384;
                         background.BackgroundColor.w = 336;
                         break;
+                    case "Falcon":
+                        background.BackgroundColor.h = 416;
+                        background.BackgroundColor.w = 416;
+                        break;
                 }
             }
             if (background.BackgroundImage != null)
@@ -7205,6 +7297,10 @@ namespace Watch_Face_Editor
                         background.BackgroundImage.h = 384;
                         background.BackgroundImage.w = 336;
                         break;
+                    case "Falcon":
+                        background.BackgroundImage.h = 416;
+                        background.BackgroundImage.w = 416;
+                        break;
                 }
             }
         }
@@ -7217,7 +7313,7 @@ namespace Watch_Face_Editor
             if (FullFileDir == null) return;
             string tempDir = Application.StartupPath + @"\Temp";
             string templatesFileDir = Application.StartupPath + @"\File_templates";
-            //goto link;
+            
             //if (Directory.Exists(tempDir)) Directory.Delete(tempDir, true);
             if (Directory.Exists(tempDir)) DeleteDirectory(tempDir);
             Directory.CreateDirectory(tempDir);
@@ -7254,7 +7350,95 @@ namespace Watch_Face_Editor
                 }
             }
 
-            string appText = File.ReadAllText(templatesFileDir + @"\app.json");
+            App_WatchFace app = new App_WatchFace();
+            app.app.appName = Path.GetFileNameWithoutExtension(FileName);
+            app.i18n.enUS.appName = Path.GetFileNameWithoutExtension(FileName);
+            if (Watch_Face != null && Watch_Face.WatchFace_Info != null)
+            {
+                if (Watch_Face.WatchFace_Info.WatchFaceId > 999 && Watch_Face.WatchFace_Info.WatchFaceId < 10000000)
+                {
+                    app.app.appId = Watch_Face.WatchFace_Info.WatchFaceId;
+                }
+                if (Watch_Face.WatchFace_Info.Preview != null && Watch_Face.WatchFace_Info.Preview.Length > 0)
+                {
+                    app.app.icon = Watch_Face.WatchFace_Info.Preview + ".png";
+                    app.app.cover.Add(Watch_Face.WatchFace_Info.Preview + ".png");
+                    app.i18n.enUS.icon = Watch_Face.WatchFace_Info.Preview + ".png";
+                }
+            }
+            if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Elements != null)
+            {
+                List<object> Elements = Watch_Face.ScreenNormal.Elements;
+                bool exists = Elements.Exists(el => el.GetType().Name == "ElementAnimation"); // проверяем чтотакой элемент есть
+                if (exists) app.module.watchface.hightCost = 1;
+            }
+            if (Watch_Face.ScreenAOD != null) app.module.watchface.lockscreen = 1;
+            if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
+            {
+                if (Watch_Face.ScreenNormal.Background.Editable_Background != null &&
+                    Watch_Face.ScreenNormal.Background.Editable_Background.enable_edit_bg) app.module.watchface.editable = 1;
+            }
+            if (Watch_Face.Editable_Elements != null && Watch_Face.Editable_Elements.visible) app.module.watchface.editable = 1;
+            switch (ProgramSettings.Watch_Model)
+            {
+                case "GTR 3 Pro":
+                    app.platforms.Add(new Platform() { name = "Amazfit GTR 3 Pro", deviceSource = 229 });
+                    app.platforms.Add(new Platform() { name = "Amazfit GTR 3 Pro", deviceSource = 230 });
+                    app.platforms.Add(new Platform() { name = "Amazfit GTR 3 Pro", deviceSource = 6095106 });
+
+                    app.designWidth = 480;
+                    break;
+                case "GTS 3":
+                case "GTS 4":
+                    app.platforms.Add(new Platform() { name = "Amazfit GTS 3", deviceSource = 224 });
+                    app.platforms.Add(new Platform() { name = "Amazfit GTS 3", deviceSource = 225 });
+                    app.platforms.Add(new Platform() { name = "Amazfit GTS 4", deviceSource = 7995648 });
+                    app.platforms.Add(new Platform() { name = "Amazfit GTS 4", deviceSource = 7995649 });
+
+                    app.designWidth = 390;
+                    break;
+                case "GTR 4":
+                    app.platforms.Add(new Platform() { name = "Amazfit GTR 4", deviceSource = 7930112 });
+                    app.platforms.Add(new Platform() { name = "Amazfit GTR 4", deviceSource = 7930113 });
+
+                    app.designWidth = 466;
+                    break;
+                case "Amazfit Band 7":
+                    app.platforms.Add(new Platform() { name = "Amazfit Band 7", deviceSource = 252 });
+                    app.platforms.Add(new Platform() { name = "Amazfit Band 7", deviceSource = 253 });
+                    app.platforms.Add(new Platform() { name = "Amazfit Band 7", deviceSource = 254 });
+
+                    app.designWidth = 194;
+                    break;
+                case "GTS 4 mini":
+                    app.platforms.Add(new Platform() { name = "Amazfit GTS 4 Mini", deviceSource = 246 });
+                    app.platforms.Add(new Platform() { name = "Amazfit GTS 4 Mini", deviceSource = 247 });
+
+                    app.designWidth = 336;
+                    break;
+                case "Falcon":
+                    app.platforms.Add(new Platform() { name = "Amazfit Falcon", deviceSource = 414 });
+                    app.platforms.Add(new Platform() { name = "Amazfit Falcon", deviceSource = 415 });
+
+                    app.designWidth = 416;
+                    break;
+
+                default:
+                    app.platforms.Add(new Platform() { name = "Amazfit GTR 3", deviceSource = 226 });
+                    app.platforms.Add(new Platform() { name = "Amazfit GTR 3", deviceSource = 227 });
+                    app.platforms.Add(new Platform() { name = "Amazfit T-Rex 2", deviceSource = 418 });
+                    app.platforms.Add(new Platform() { name = "Amazfit T-Rex 2", deviceSource = 419 });
+
+                    app.designWidth = 454;
+                    break;
+            }
+            string appText = JsonConvert.SerializeObject(app, Formatting.Indented, new JsonSerializerSettings
+            {
+                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                NullValueHandling = NullValueHandling.Ignore
+            });
+
+            /*string appText = File.ReadAllText(templatesFileDir + @"\app.json");
             appText = appText.Replace("\"appName\": \"New_Project\"", 
                 "\"appName\": \"" + Path.GetFileNameWithoutExtension(FileName) + "\"");
             if (Watch_Face != null && Watch_Face.WatchFace_Info != null)
@@ -7285,7 +7469,7 @@ namespace Watch_Face_Editor
             }
             if (Watch_Face.Editable_Elements != null && Watch_Face.Editable_Elements.visible) appText = appText.Replace("\"editable\": 0", "\"editable\": 1");
             if (Watch_Face.ElementEditablePointers != null && Watch_Face.ElementEditablePointers.visible) appText = appText.Replace("\"editable\": 0", "\"editable\": 1");
-
+*/
             File.WriteAllText(tempDir + @"\app.json", appText, Encoding.UTF8);
             File.Copy(templatesFileDir + @"\app.js", tempDir + @"\app.js");
 
@@ -7502,6 +7686,11 @@ namespace Watch_Face_Editor
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
                         PreviewHeight = 256;
                         break;
+                    case "Falcon":
+                        bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
+                        PreviewHeight = 280;
+                        break;
                 }
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
@@ -7571,6 +7760,11 @@ namespace Watch_Face_Editor
                         bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
                         PreviewHeight = 256;
+                        break;
+                    case "Falcon":
+                        bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
+                        PreviewHeight = 280;
                         break;
                 }
                 Graphics gPanel = Graphics.FromImage(bitmap);
@@ -7849,6 +8043,9 @@ namespace Watch_Face_Editor
                                     case 336:
                                         Watch_Face.WatchFace_Info.DeviceName = "GTS4_mini";
                                         break;
+                                    case 416:
+                                        Watch_Face.WatchFace_Info.DeviceName = "Falcon";
+                                        break;
 
                                     default:
                                         Background background = Watch_Face.ScreenNormal.Background;
@@ -7892,6 +8089,11 @@ namespace Watch_Face_Editor
                                                     background.BackgroundColor.h = 384;
                                                     background.BackgroundColor.w = 336;
                                                     Watch_Face.WatchFace_Info.DeviceName = "GTS4_mini";
+                                                    break;
+                                                case "Falcon":
+                                                    background.BackgroundColor.h = 416;
+                                                    background.BackgroundColor.w = 416;
+                                                    Watch_Face.WatchFace_Info.DeviceName = "Falcon";
                                                     break;
                                                 //case "GTS 4":
                                                 //    background.BackgroundColor.h = 450;
@@ -7947,6 +8149,11 @@ namespace Watch_Face_Editor
                                                         w = 336;
                                                         Watch_Face.WatchFace_Info.DeviceName = "GTS4_mini";
                                                         break;
+                                                    case "Falcon":
+                                                        h = 416;
+                                                        w = 416;
+                                                        Watch_Face.WatchFace_Info.DeviceName = "Falcon";
+                                                        break;
                                                     //case "GTS 4":
                                                     //    h = 450;
                                                     //    w = 390;
@@ -7994,6 +8201,11 @@ namespace Watch_Face_Editor
                                                         background.BackgroundImage.h = 384;
                                                         background.BackgroundImage.w = 336;
                                                         Watch_Face.WatchFace_Info.DeviceName = "GTS4_mini";
+                                                        break;
+                                                    case "Falcon":
+                                                        background.BackgroundImage.h = 416;
+                                                        background.BackgroundImage.w = 416;
+                                                        Watch_Face.WatchFace_Info.DeviceName = "Falcon";
                                                         break;
                                                     case "GTS 4":
                                                         background.BackgroundImage.h = 450;
@@ -8054,6 +8266,11 @@ namespace Watch_Face_Editor
                                             backgroundEmpty.BackgroundColor.h = 384;
                                             backgroundEmpty.BackgroundColor.w = 336;
                                             Watch_Face.WatchFace_Info.DeviceName = "GTS4_mini";
+                                            break;
+                                        case "Falcon":
+                                            backgroundEmpty.BackgroundColor.h = 416;
+                                            backgroundEmpty.BackgroundColor.w = 416;
+                                            Watch_Face.WatchFace_Info.DeviceName = "Falcon";
                                             break;
                                         case "GTS 4":
                                             backgroundEmpty.BackgroundColor.h = 450;
@@ -14248,6 +14465,10 @@ namespace Watch_Face_Editor
                         bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
                         break;
+                    case "Falcon":
+                        bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
+                        break;
                 }
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
@@ -14296,6 +14517,10 @@ namespace Watch_Face_Editor
                     case "GTS 4 mini":
                         bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
+                        break;
+                    case "Falcon":
+                        bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falconi.png");
                         break;
                 }
                 Bitmap bitmapTemp = new Bitmap(bitmap.Width, bitmap.Height, PixelFormat.Format32bppArgb);
@@ -14717,6 +14942,10 @@ namespace Watch_Face_Editor
                         comboBox_ConvertingInput_Model.Text = "336 (GTS 4 mini)";
                         comboBox_ConvertingOutput_Model.Text = "390 (GTS 3)";
                         break;
+                    case "Falcon":
+                        comboBox_ConvertingInput_Model.Text = "416 (Falcon)";
+                        comboBox_ConvertingOutput_Model.Text = "454 (GTR 3)";
+                        break;
                     case "GTS 4":
                         comboBox_ConvertingInput_Model.Text = "390 (GTS 4)";
                         comboBox_ConvertingOutput_Model.Text = "336 (GTS 4 mini)";
@@ -14751,6 +14980,9 @@ namespace Watch_Face_Editor
                 case "390 (GTS 3)":
                     numericUpDown_ConvertingInput_Custom.Value = 390;
                     break;
+                case "416 (Falcon)":
+                    numericUpDown_ConvertingInput_Custom.Value = 416;
+                    break;
                 case "454 (GTR 3)":
                     numericUpDown_ConvertingInput_Custom.Value = 454;
                     break;
@@ -14780,6 +15012,9 @@ namespace Watch_Face_Editor
                     break;
                 case "390 (GTS 3)":
                     numericUpDown_ConvertingOutput_Custom.Value = 390;
+                    break;
+                case "416 (Falcon)":
+                    numericUpDown_ConvertingOutput_Custom.Value = 416;
                     break;
                 case "454 (GTR 3)":
                     numericUpDown_ConvertingOutput_Custom.Value = 454;
@@ -14818,6 +15053,10 @@ namespace Watch_Face_Editor
                     case "390 (GTS 3)":
                         suffix = "_GTS_3";
                         DeviceName = "GTS3";
+                        break;
+                    case "416 (Falcon)":
+                        suffix = "_Falcon";
+                        DeviceName = "Falcon";
                         break;
                     case "454 (GTR 3)":
                         suffix = "_GTR_3";
@@ -15276,7 +15515,6 @@ namespace Watch_Face_Editor
             }
             Logger.WriteLine("* Project_SaveAs (end)");
         }
-
     }
 }
 

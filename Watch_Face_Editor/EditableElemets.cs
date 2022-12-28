@@ -2900,6 +2900,10 @@ namespace Watch_Face_Editor
                         bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
                         break;
+                    case "Falcon":
+                        bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
+                        break;
                 }
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
@@ -3030,6 +3034,10 @@ namespace Watch_Face_Editor
                     case "GTS 4 mini":
                         bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
+                        break;
+                    case "Falcon":
+                        bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
                         break;
                 }
                 Graphics gPanel = Graphics.FromImage(bitmap);
