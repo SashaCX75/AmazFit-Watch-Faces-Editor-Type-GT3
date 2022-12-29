@@ -135,6 +135,9 @@
   <data name="Dialog_Title_SavePNG" xml:space="preserve">
     <value>保存预览</value>
   </data>
+  <data name="Dialog_Title_Save_As" xml:space="preserve">
+    <value>将项目另存为</value>
+  </data>
   <data name="Dialog_Title_Unpack" xml:space="preserve">
     <value>选择一个表盘文件</value>
   </data>
@@ -180,11 +183,35 @@
   <data name="Form_PreviewX" xml:space="preserve">
     <value>预览 [X =</value>
   </data>
+  <data name="Message_AnimationAOD_Text" xml:space="preserve">
+    <value>无法将动画添加到AOD屏幕。</value>
+  </data>
   <data name="Message_ConvertingCompleted_Text" xml:space="preserve">
     <value>已创建一个新的表盘。</value>
   </data>
   <data name="Message_CopyCoord" xml:space="preserve">
     <value>坐标复制</value>
+  </data>
+  <data name="Message_Delet_Caption" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="Message_Delet_Text1" xml:space="preserve">
+    <value>是否确实要永久删除文件“</value>
+  </data>
+  <data name="Message_Delet_Text11" xml:space="preserve">
+    <value>是否确实要永久删除文件：</value>
+  </data>
+  <data name="Message_Delet_Text2" xml:space="preserve">
+    <value>"？</value>
+  </data>
+  <data name="Message_Delet_Text21" xml:space="preserve">
+    <value>？</value>
+  </data>
+  <data name="Message_EditableElementsAOD_Text" xml:space="preserve">
+    <value>不能将可编辑元素添加到AOD屏幕。</value>
+  </data>
+  <data name="Message_EditablePointerAOD_Text" xml:space="preserve">
+    <value>不能向AOD屏幕添加可编辑指针。</value>
   </data>
   <data name="Message_ErrorReadJS" xml:space="preserve">
     <value>无法识别表盘的结构</value>
@@ -287,5 +314,11 @@
   </data>
   <data name="Message_Wrong_Preview_Exists" xml:space="preserve">
     <value>未能创建预览图像。也许这样的图像已经出现了。</value>
+  </data>
+  <data name="Tip_Background" xml:space="preserve">
+    <value>背景</value>
+  </data>
+  <data name="Tip_Pointer" xml:space="preserve">
+    <value>指针</value>
   </data>
 </root>
