@@ -22,6 +22,8 @@ namespace Watch_Face_Editor
 
         /// <summary>AOD экран</summary>
         public ElementEditablePointers ElementEditablePointers { get; set; }
+
+        public ElementShortcuts Shortcuts { get; set; }
     }
 
     public class WatchFace_Info

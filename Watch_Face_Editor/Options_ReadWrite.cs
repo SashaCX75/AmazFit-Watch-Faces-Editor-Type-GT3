@@ -48,6 +48,14 @@ namespace Watch_Face_Editor
                     Watch_Face_return.ScreenNormal.Elements = new List<object>();
                     List<object> NewElements = ObjectsToElements(Watch_Face_temp.ScreenNormal.Elements);
                     Watch_Face_return.ScreenNormal.Elements = NewElements;
+
+                    ElementShortcuts shortcuts = (ElementShortcuts)NewElements.Find(e1 => e1.GetType().Name == "ElementShortcuts");
+                    if (shortcuts != null) 
+                    { 
+                        Watch_Face_return.Shortcuts = (ElementShortcuts)shortcuts.Clone();
+                        int index = NewElements.FindIndex(e => e.GetType().Name == "ElementShortcuts");
+                        NewElements.RemoveAt(index);
+                    }
                 }
             }
 
@@ -78,6 +86,9 @@ namespace Watch_Face_Editor
                     Watch_Face_return.Editable_Elements.Watchface_edit_group[i].Elements = NewElements;
                 }
             }
+
+            if (Watch_Face_temp.Shortcuts != null)
+                Watch_Face_return.Shortcuts = Watch_Face_temp.Shortcuts;
 
             return Watch_Face_return;
         }

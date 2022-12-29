@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace Watch_Face_Editor
 {
@@ -69,6 +70,22 @@ namespace Watch_Face_Editor
                         ScaleElements(elements, scale);
                     }
                 }
+            }
+            if (Watch_Face.Shortcuts != null)
+            {
+                ElementShortcuts elementShortcuts = Watch_Face.Shortcuts;
+                Scale_IMG_CLICK(elementShortcuts.Step, scale);
+                Scale_IMG_CLICK(elementShortcuts.Heart, scale);
+                Scale_IMG_CLICK(elementShortcuts.SPO2, scale);
+                Scale_IMG_CLICK(elementShortcuts.PAI, scale);
+                Scale_IMG_CLICK(elementShortcuts.Stress, scale);
+                Scale_IMG_CLICK(elementShortcuts.Weather, scale);
+                Scale_IMG_CLICK(elementShortcuts.Altimeter, scale);
+                Scale_IMG_CLICK(elementShortcuts.Sunrise, scale);
+                Scale_IMG_CLICK(elementShortcuts.Alarm, scale);
+                Scale_IMG_CLICK(elementShortcuts.Sleep, scale);
+                Scale_IMG_CLICK(elementShortcuts.Countdown, scale);
+                Scale_IMG_CLICK(elementShortcuts.Stopwatch, scale);
             }
         }
 
@@ -215,21 +232,21 @@ namespace Watch_Face_Editor
                     Scale_IMG_STATUS(elementStatuses.DND, scale);
                     Scale_IMG_STATUS(elementStatuses.Lock, scale);
                     break;
-                case "ElementShortcuts":
-                    ElementShortcuts elementShortcuts = (ElementShortcuts)elements;
-                    Scale_IMG_CLICK(elementShortcuts.Step, scale);
-                    Scale_IMG_CLICK(elementShortcuts.Heart, scale);
-                    Scale_IMG_CLICK(elementShortcuts.SPO2, scale);
-                    Scale_IMG_CLICK(elementShortcuts.PAI, scale);
-                    Scale_IMG_CLICK(elementShortcuts.Stress, scale);
-                    Scale_IMG_CLICK(elementShortcuts.Weather, scale);
-                    Scale_IMG_CLICK(elementShortcuts.Altimeter, scale);
-                    Scale_IMG_CLICK(elementShortcuts.Sunrise, scale);
-                    Scale_IMG_CLICK(elementShortcuts.Alarm, scale);
-                    Scale_IMG_CLICK(elementShortcuts.Sleep, scale);
-                    Scale_IMG_CLICK(elementShortcuts.Countdown, scale);
-                    Scale_IMG_CLICK(elementShortcuts.Stopwatch, scale);
-                    break;
+                //case "ElementShortcuts":
+                //    ElementShortcuts elementShortcuts = (ElementShortcuts)elements;
+                //    Scale_IMG_CLICK(elementShortcuts.Step, scale);
+                //    Scale_IMG_CLICK(elementShortcuts.Heart, scale);
+                //    Scale_IMG_CLICK(elementShortcuts.SPO2, scale);
+                //    Scale_IMG_CLICK(elementShortcuts.PAI, scale);
+                //    Scale_IMG_CLICK(elementShortcuts.Stress, scale);
+                //    Scale_IMG_CLICK(elementShortcuts.Weather, scale);
+                //    Scale_IMG_CLICK(elementShortcuts.Altimeter, scale);
+                //    Scale_IMG_CLICK(elementShortcuts.Sunrise, scale);
+                //    Scale_IMG_CLICK(elementShortcuts.Alarm, scale);
+                //    Scale_IMG_CLICK(elementShortcuts.Sleep, scale);
+                //    Scale_IMG_CLICK(elementShortcuts.Countdown, scale);
+                //    Scale_IMG_CLICK(elementShortcuts.Stopwatch, scale);
+                //    break;
 
                 case "ElementSteps":
                     ElementSteps elementSteps = (ElementSteps)elements;

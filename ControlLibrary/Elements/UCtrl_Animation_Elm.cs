@@ -23,6 +23,9 @@ namespace ControlLibrary
         public int position = -1; // позиция в наборе элеменетов
         public string selectedElement; // название выбраного элемента
 
+        private bool motion_animation = true;
+        private bool rotate_animation = true;
+
         Point cursorPos = new Point(0, 0);
 
         public UCtrl_Animation_Elm()
@@ -80,6 +83,36 @@ namespace ControlLibrary
         [Description("Происходит при нажатии кнопки предпросмотра анимации")]
         public event ShowAnimationHandler ShowAnimation;
         public delegate void ShowAnimationHandler(object sender, EventArgs eventArgs);
+
+        /// <summary>Анимация движения доступна"</summary>
+        [Description("Анимация движения доступна")]
+        public virtual bool MotionAnimation
+        {
+            get
+            {
+                return motion_animation;
+            }
+            set
+            {
+                motion_animation = value;
+                panel_MotionAnimation.Enabled = motion_animation;
+            }
+        }
+
+        /// <summary>Анимация вращения доступна"</summary>
+        [Description("Анимация вращения доступна")]
+        public virtual bool RotateAnimation
+        {
+            get
+            {
+                return rotate_animation;
+            }
+            set
+            {
+                rotate_animation = value;
+                panel_RotateAnimation.Enabled = rotate_animation;
+            }
+        }
 
         private void button_ElementName_Click(object sender, EventArgs e)
         {

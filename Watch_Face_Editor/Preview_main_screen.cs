@@ -296,6 +296,91 @@ namespace Watch_Face_Editor
             }
             #endregion
 
+            #region ElementShortcuts
+            if (Watch_Face != null && Watch_Face.Shortcuts != null &&
+                Watch_Face.Shortcuts.visible)
+            {
+                ElementShortcuts shortcutsElement = Watch_Face.Shortcuts;
+
+                hmUI_widget_IMG_CLICK img_click_step = shortcutsElement.Step;
+                hmUI_widget_IMG_CLICK img_click_heart = shortcutsElement.Heart;
+                hmUI_widget_IMG_CLICK img_click_spo2 = shortcutsElement.SPO2;
+                hmUI_widget_IMG_CLICK img_click_pai = shortcutsElement.PAI;
+                hmUI_widget_IMG_CLICK img_click_stress = shortcutsElement.Stress;
+                hmUI_widget_IMG_CLICK img_click_weather = shortcutsElement.Weather;
+                hmUI_widget_IMG_CLICK img_click_altimeter = shortcutsElement.Altimeter;
+                hmUI_widget_IMG_CLICK img_click_sunrise = shortcutsElement.Sunrise;
+                hmUI_widget_IMG_CLICK img_click_alarm = shortcutsElement.Alarm;
+                hmUI_widget_IMG_CLICK img_click_sleep = shortcutsElement.Sleep;
+                hmUI_widget_IMG_CLICK img_click_countdown = shortcutsElement.Countdown;
+                hmUI_widget_IMG_CLICK img_click_stopwatch = shortcutsElement.Stopwatch;
+
+                for (int index = 1; index <= 15; index++)
+                {
+                    if (img_click_step != null && index == img_click_step.position)
+                    {
+                        DrawShortcuts(gPanel, img_click_step, showShortcuts,
+                            showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                    }
+                    if (img_click_heart != null && index == img_click_heart.position)
+                    {
+                        DrawShortcuts(gPanel, img_click_heart, showShortcuts,
+                            showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                    }
+                    if (img_click_spo2 != null && index == img_click_spo2.position)
+                    {
+                        DrawShortcuts(gPanel, img_click_spo2, showShortcuts,
+                            showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                    }
+                    if (img_click_pai != null && index == img_click_pai.position)
+                    {
+                        DrawShortcuts(gPanel, img_click_pai, showShortcuts,
+                            showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                    }
+                    if (img_click_stress != null && index == img_click_stress.position)
+                    {
+                        DrawShortcuts(gPanel, img_click_stress, showShortcuts,
+                            showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                    }
+                    if (img_click_weather != null && index == img_click_weather.position)
+                    {
+                        DrawShortcuts(gPanel, img_click_weather, showShortcuts,
+                            showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                    }
+                    if (img_click_altimeter != null && index == img_click_altimeter.position)
+                    {
+                        DrawShortcuts(gPanel, img_click_altimeter, showShortcuts,
+                            showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                    }
+                    if (img_click_sunrise != null && index == img_click_sunrise.position)
+                    {
+                        DrawShortcuts(gPanel, img_click_sunrise, showShortcuts,
+                            showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                    }
+                    if (img_click_alarm != null && index == img_click_alarm.position)
+                    {
+                        DrawShortcuts(gPanel, img_click_alarm, showShortcuts,
+                            showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                    }
+                    if (img_click_sleep != null && index == img_click_sleep.position)
+                    {
+                        DrawShortcuts(gPanel, img_click_sleep, showShortcuts,
+                            showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                    }
+                    if (img_click_countdown != null && index == img_click_countdown.position)
+                    {
+                        DrawShortcuts(gPanel, img_click_countdown, showShortcuts,
+                            showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                    }
+                    if (img_click_stopwatch != null && index == img_click_stopwatch.position)
+                    {
+                        DrawShortcuts(gPanel, img_click_stopwatch, showShortcuts,
+                            showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
+                    }
+                }
+            }
+            #endregion
+
             #region Mesh
             Logger.WriteLine("PreviewToBitmap (Mesh)");
 
@@ -1123,7 +1208,7 @@ namespace Watch_Face_Editor
                     break;
                 #endregion
 
-                #region ElementShortcuts
+               /* #region ElementShortcuts
                 case "ElementShortcuts":
                     ElementShortcuts shortcutsElement = (ElementShortcuts)element;
                     if (!shortcutsElement.visible && !Shortcuts_In_Gif) return;
@@ -1205,7 +1290,7 @@ namespace Watch_Face_Editor
                         }
                     }
                     break;
-                #endregion
+                #endregion*/
 
 
 

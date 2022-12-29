@@ -20,6 +20,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace Watch_Face_Editor
 {
@@ -3721,7 +3722,7 @@ namespace Watch_Face_Editor
         /// <summary>Добавляем ярлыки в циферблат</summary>
         private void AddShortcuts()
         {
-            if (!PreviewView) return;
+            /*if (!PreviewView) return;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (radioButton_ScreenNormal.Checked)
@@ -3746,6 +3747,12 @@ namespace Watch_Face_Editor
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementShortcuts"); // проверяем что такого элемента нет
             //if (!exists) Elements.Insert(0, shortcuts);
             if (!exists) Elements.Add(shortcuts);
+            uCtrl_Shortcuts_Elm.SettingsClear();*/
+
+            if (!PreviewView) return;
+            if (Watch_Face == null) Watch_Face = new WATCH_FACE();
+            if (Watch_Face.Shortcuts == null) Watch_Face.Shortcuts = new ElementShortcuts();
+            Watch_Face.Shortcuts.visible = true;
             uCtrl_Shortcuts_Elm.SettingsClear();
         }
 
@@ -4626,7 +4633,7 @@ namespace Watch_Face_Editor
                             break;
                         #endregion
 
-                        #region ElementShortcuts
+                        /*#region ElementShortcuts
                         case "ElementShortcuts":
                             ElementShortcuts Shortcuts = (ElementShortcuts)element;
                             uCtrl_Shortcuts_Elm.SetVisibilityElementStatus(Shortcuts.visible);
@@ -4697,7 +4704,7 @@ namespace Watch_Face_Editor
                             SetElementPositionInGUI(type, count - i - 2);
                             //SetElementPositionInGUI(type, i + 1);
                             break;
-                        #endregion
+                        #endregion*/
 
                         #region ElementAnimation
                         case "ElementAnimation":
@@ -4708,6 +4715,16 @@ namespace Watch_Face_Editor
                             {
                                 uCtrl_Animation_Elm.checkBox_FrameAnimation.Checked = Animation.Frame_Animation_List.visible;
                                 elementOptions.Add(Animation.Frame_Animation_List.position, "FrameAnimation");
+                                if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4")
+                                {
+                                    uCtrl_Animation_Elm.MotionAnimation = false;
+                                    uCtrl_Animation_Elm.RotateAnimation = false;
+                                }
+                                else
+                                {
+                                    uCtrl_Animation_Elm.MotionAnimation = true;
+                                    uCtrl_Animation_Elm.RotateAnimation = true;
+                                }
                             }
 
                             if (Animation.Motion_Animation_List != null)
@@ -5484,7 +5501,6 @@ namespace Watch_Face_Editor
 
                     uCtrl_EditableElements_Elm.Visible = true;
                     SetElementPositionInGUI(editableElements.GetType().Name, count - elementsCount - 2);
-                    //SetElementPositionInGUI(type, i + 1); 
                     elementsCount++; 
                 }
             }
@@ -5500,7 +5516,78 @@ namespace Watch_Face_Editor
 
                 uCtrl_EditableTimePointer_Elm.Visible = true;
                 SetElementPositionInGUI("ElementEditablePointers", count - elementsCount - 2);
-                //SetElementPositionInGUI(type, i + 1);  
+                elementsCount++;
+            }
+
+            if (Watch_Face.Shortcuts != null)
+            {
+                ElementShortcuts Shortcuts = Watch_Face.Shortcuts;
+                uCtrl_Shortcuts_Elm.SetVisibilityElementStatus(Shortcuts.visible);
+                elementOptions = new Dictionary<int, string>();
+                if (Shortcuts.Step != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_Step.Checked = Shortcuts.Step.visible;
+                    elementOptions.Add(Shortcuts.Step.position, "Step");
+                }
+                if (Shortcuts.Heart != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_Heart.Checked = Shortcuts.Heart.visible;
+                    elementOptions.Add(Shortcuts.Heart.position, "Heart");
+                }
+                if (Shortcuts.SPO2 != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_SPO2.Checked = Shortcuts.SPO2.visible;
+                    elementOptions.Add(Shortcuts.SPO2.position, "SPO2");
+                }
+                if (Shortcuts.PAI != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_PAI.Checked = Shortcuts.PAI.visible;
+                    elementOptions.Add(Shortcuts.PAI.position, "PAI");
+                }
+                if (Shortcuts.Stress != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_Stress.Checked = Shortcuts.Stress.visible;
+                    elementOptions.Add(Shortcuts.Stress.position, "Stress");
+                }
+                if (Shortcuts.Weather != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_Weather.Checked = Shortcuts.Weather.visible;
+                    elementOptions.Add(Shortcuts.Weather.position, "Weather");
+                }
+                if (Shortcuts.Altimeter != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_Altimeter.Checked = Shortcuts.Altimeter.visible;
+                    elementOptions.Add(Shortcuts.Altimeter.position, "Altimeter");
+                }
+                if (Shortcuts.Sunrise != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_Sunrise.Checked = Shortcuts.Sunrise.visible;
+                    elementOptions.Add(Shortcuts.Sunrise.position, "Sunrise");
+                }
+                if (Shortcuts.Alarm != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_Alarm.Checked = Shortcuts.Alarm.visible;
+                    elementOptions.Add(Shortcuts.Alarm.position, "Alarm");
+                }
+                if (Shortcuts.Sleep != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_Sleep.Checked = Shortcuts.Sleep.visible;
+                    elementOptions.Add(Shortcuts.Sleep.position, "Sleep");
+                }
+                if (Shortcuts.Countdown != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_Countdown.Checked = Shortcuts.Countdown.visible;
+                    elementOptions.Add(Shortcuts.Countdown.position, "Countdown");
+                }
+                if (Shortcuts.Stopwatch != null)
+                {
+                    uCtrl_Shortcuts_Elm.checkBox_Stopwatch.Checked = Shortcuts.Stopwatch.visible;
+                    elementOptions.Add(Shortcuts.Stopwatch.position, "Stopwatch");
+                }
+                uCtrl_Shortcuts_Elm.SetOptionsPosition(elementOptions);
+
+                uCtrl_Shortcuts_Elm.Visible = true;
+                SetElementPositionInGUI("ElementShortcuts", count - elementsCount - 2);
             }
 
             PreviewView = true;
@@ -5985,9 +6072,9 @@ namespace Watch_Face_Editor
                     objectName = "ElementDateWeek";
                     break;
 
-                case "UCtrl_Shortcuts_Elm":
-                    objectName = "ElementShortcuts";
-                    break;
+                //case "UCtrl_Shortcuts_Elm":
+                //    objectName = "ElementShortcuts";
+                //    break;
                 case "UCtrl_Statuses_Elm":
                     objectName = "ElementStatuses";
                     break;
@@ -6108,6 +6195,22 @@ namespace Watch_Face_Editor
             if (Watch_Face != null && Watch_Face.Editable_Elements != null)
             {
                 Watch_Face.Editable_Elements = null;
+
+                PreviewView = false;
+                ShowElemetsWatchFace();
+                PreviewView = true;
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Shortcuts_Elm_DelElement(object sender, EventArgs eventArgs)
+        {
+            if (Watch_Face != null && Watch_Face.Shortcuts != null)
+            {
+                Watch_Face.Shortcuts = null;
 
                 PreviewView = false;
                 ShowElemetsWatchFace();
@@ -7220,6 +7323,17 @@ namespace Watch_Face_Editor
 
             if (Watch_Face != null && Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
                 ChangSizeBackground(Watch_Face.ScreenAOD.Background);
+
+            if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4")
+            {
+                uCtrl_Animation_Elm.MotionAnimation = false;
+                uCtrl_Animation_Elm.RotateAnimation = false;
+            }
+            else
+            {
+                uCtrl_Animation_Elm.MotionAnimation = true;
+                uCtrl_Animation_Elm.RotateAnimation = true;
+            }
 
             PreviewImage();
             JSON_Modified = true;
@@ -8960,28 +9074,29 @@ namespace Watch_Face_Editor
 
         private void uCtrl_Shortcuts_Elm_SelectChanged(object sender, EventArgs eventArgs)
         {
+            if (Watch_Face == null) return;
             string selectElement = uCtrl_Shortcuts_Elm.selectedElement;
             if (selectElement.Length == 0) HideAllElemenrOptions();
             ResetHighlightState("Shortcuts");
 
-            ElementShortcuts shortcuts = null;
-            if (radioButton_ScreenNormal.Checked)
-            {
-                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
-                    Watch_Face.ScreenNormal.Elements != null)
-                {
-                    //bool exists = Elements.Exists(e => e.GetType().Name == "ElementDigitalTime");
-                    shortcuts = (ElementShortcuts)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementShortcuts");
-                }
-            }
-            else
-            {
-                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
-                    Watch_Face.ScreenAOD.Elements != null)
-                {
-                    shortcuts = (ElementShortcuts)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementShortcuts");
-                }
-            }
+            ElementShortcuts shortcuts = Watch_Face.Shortcuts;
+            //if (radioButton_ScreenNormal.Checked)
+            //{
+            //    if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+            //        Watch_Face.ScreenNormal.Elements != null)
+            //    {
+            //        //bool exists = Elements.Exists(e => e.GetType().Name == "ElementDigitalTime");
+            //        shortcuts = (ElementShortcuts)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementShortcuts");
+            //    }
+            //}
+            //else
+            //{
+            //    if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+            //        Watch_Face.ScreenAOD.Elements != null)
+            //    {
+            //        shortcuts = (ElementShortcuts)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementShortcuts");
+            //    }
+            //}
             if (shortcuts != null)
             {
                 hmUI_widget_IMG_CLICK img_click = null;
@@ -11364,29 +11479,29 @@ namespace Watch_Face_Editor
             if (!PreviewView) return;
             if (Watch_Face == null) return;
 
-            ElementShortcuts shortcuts = null;
-            if (radioButton_ScreenNormal.Checked)
-            {
-                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
-                    Watch_Face.ScreenNormal.Elements != null)
-                {
-                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementShortcuts");
-                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
-                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementShortcuts());
-                    shortcuts = (ElementShortcuts)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementShortcuts");
-                }
-            }
-            else
-            {
-                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
-                    Watch_Face.ScreenAOD.Elements != null)
-                {
-                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementShortcuts");
-                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
-                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementShortcuts());
-                    shortcuts = (ElementShortcuts)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementShortcuts");
-                }
-            }
+            ElementShortcuts shortcuts = Watch_Face.Shortcuts;
+            //if (radioButton_ScreenNormal.Checked)
+            //{
+            //    if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+            //        Watch_Face.ScreenNormal.Elements != null)
+            //    {
+            //        bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementShortcuts");
+            //        //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+            //        if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementShortcuts());
+            //        shortcuts = (ElementShortcuts)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementShortcuts");
+            //    }
+            //}
+            //else
+            //{
+            //    if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+            //        Watch_Face.ScreenAOD.Elements != null)
+            //    {
+            //        bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementShortcuts");
+            //        //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+            //        if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementShortcuts());
+            //        shortcuts = (ElementShortcuts)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementShortcuts");
+            //    }
+            //}
 
             if (shortcuts != null)
             {
@@ -12320,24 +12435,25 @@ namespace Watch_Face_Editor
 
         private void uCtrl_Shortcuts_Elm_VisibleElementChanged(object sender, EventArgs eventArgs, bool visible)
         {
-            ElementShortcuts shortcuts = null;
-            if (radioButton_ScreenNormal.Checked)
-            {
-                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
-                    Watch_Face.ScreenNormal.Elements != null)
-                {
-                    //bool exists = Elements.Exists(e => e.GetType().Name == "ElementAnalogTime");
-                    shortcuts = (ElementShortcuts)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementShortcuts");
-                }
-            }
-            else
-            {
-                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
-                    Watch_Face.ScreenAOD.Elements != null)
-                {
-                    shortcuts = (ElementShortcuts)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementShortcuts");
-                }
-            }
+            if (Watch_Face == null) return;
+            ElementShortcuts shortcuts = Watch_Face.Shortcuts;
+            //if (radioButton_ScreenNormal.Checked)
+            //{
+            //    if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+            //        Watch_Face.ScreenNormal.Elements != null)
+            //    {
+            //        //bool exists = Elements.Exists(e => e.GetType().Name == "ElementAnalogTime");
+            //        shortcuts = (ElementShortcuts)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementShortcuts");
+            //    }
+            //}
+            //else
+            //{
+            //    if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+            //        Watch_Face.ScreenAOD.Elements != null)
+            //    {
+            //        shortcuts = (ElementShortcuts)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementShortcuts");
+            //    }
+            //}
             if (shortcuts != null)
             {
                 shortcuts.visible = visible;
@@ -12960,29 +13076,29 @@ namespace Watch_Face_Editor
             if (!PreviewView) return;
             if (Watch_Face == null) return;
 
-            ElementShortcuts statuses = null;
-            if (radioButton_ScreenNormal.Checked)
-            {
-                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
-                    Watch_Face.ScreenNormal.Elements != null)
-                {
-                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementShortcuts");
-                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
-                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementShortcuts());
-                    statuses = (ElementShortcuts)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementShortcuts");
-                }
-            }
-            else
-            {
-                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
-                    Watch_Face.ScreenAOD.Elements != null)
-                {
-                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementShortcuts");
-                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
-                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementShortcuts());
-                    statuses = (ElementShortcuts)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementShortcuts");
-                }
-            }
+            ElementShortcuts statuses = Watch_Face.Shortcuts;
+            //if (radioButton_ScreenNormal.Checked)
+            //{
+            //    if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+            //        Watch_Face.ScreenNormal.Elements != null)
+            //    {
+            //        bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementShortcuts");
+            //        //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+            //        if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementShortcuts());
+            //        statuses = (ElementShortcuts)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementShortcuts");
+            //    }
+            //}
+            //else
+            //{
+            //    if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+            //        Watch_Face.ScreenAOD.Elements != null)
+            //    {
+            //        bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementShortcuts");
+            //        //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+            //        if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementShortcuts());
+            //        statuses = (ElementShortcuts)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementShortcuts");
+            //    }
+            //}
 
             if (statuses != null)
             {
@@ -14520,7 +14636,7 @@ namespace Watch_Face_Editor
                         break;
                     case "Falcon":
                         bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falconi.png");
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
                         break;
                 }
                 Bitmap bitmapTemp = new Bitmap(bitmap.Width, bitmap.Height, PixelFormat.Format32bppArgb);
@@ -14651,12 +14767,12 @@ namespace Watch_Face_Editor
 
                     Logger.WriteLine("SaveGIF_Shortcuts");
                     bool Shortcuts_In_Gif = checkBox_Shortcuts_In_Gif.Checked;
-                    bool exists = false;
-                    if (Watch_Face != null && Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Elements != null) 
-                    exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementShortcuts"); // проверяем что такого элемента нет
-                    Logger.WriteLine("SaveGIF_Shortcuts");
+                    //bool exists = false;
+                    //if (Watch_Face != null && Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Elements != null) 
+                    //exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementShortcuts"); // проверяем что такого элемента нет
+                    //Logger.WriteLine("SaveGIF_Shortcuts");
                     // Shortcuts
-                    if (Shortcuts_In_Gif && exists)
+                    if (Shortcuts_In_Gif && Watch_Face.Shortcuts != null && Watch_Face.Shortcuts.visible)
                     {
                         bitmap = bitmapTemp;
                         gPanel = Graphics.FromImage(bitmap);
