@@ -7,7 +7,7 @@
     <ProjectGuid>{EDB5EFC6-242B-44DF-A1AF-426B4F330245}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Watch_Face_Editor</RootNamespace>
-    <AssemblyName>Watch_Face_Editor</AssemblyName>
+    <AssemblyName>Watch_Face_Editor_%28ZeppOS%29</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

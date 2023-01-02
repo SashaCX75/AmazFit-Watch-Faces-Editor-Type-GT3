@@ -201,6 +201,7 @@ namespace ControlLibrary
             0,
             0});
             this.numericUpDown_scaleLinear_length.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_scaleLinear_length.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_scaleLinear_length_MouseDoubleClick);
             // 
             // numericUpDown_scaleLinear_width
             // 

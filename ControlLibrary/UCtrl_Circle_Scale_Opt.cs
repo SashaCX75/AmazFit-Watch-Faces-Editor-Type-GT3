@@ -314,5 +314,19 @@ namespace ControlLibrary
                 e.Handled = true;
             }
         }
+
+        private void numericUpDown_scaleCircle_radius_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (MouseСoordinates.X < 0 && MouseСoordinates.Y < 0) return;
+            NumericUpDown numericUpDown = sender as NumericUpDown;
+            if (e.X <= numericUpDown.Controls[1].Width + 1)
+            {
+                // Click is in text area
+                int x = (int)(MouseСoordinates.X - numericUpDown_scaleCircleX.Value);
+                int y = (int)(MouseСoordinates.Y - numericUpDown_scaleCircleY.Value);
+                int r = (int)Math.Round( Math.Sqrt(x * x + y * y), MidpointRounding.AwayFromZero);
+                numericUpDown_scaleCircle_radius.Value = r;
+            }
+        }
     }
 }

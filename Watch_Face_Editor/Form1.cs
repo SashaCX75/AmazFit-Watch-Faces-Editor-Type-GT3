@@ -5519,7 +5519,7 @@ namespace Watch_Face_Editor
                 elementsCount++;
             }
 
-            if (Watch_Face.Shortcuts != null)
+            if (Watch_Face.Shortcuts != null && radioButton_ScreenNormal.Checked)
             {
                 ElementShortcuts Shortcuts = Watch_Face.Shortcuts;
                 uCtrl_Shortcuts_Elm.SetVisibilityElementStatus(Shortcuts.visible);

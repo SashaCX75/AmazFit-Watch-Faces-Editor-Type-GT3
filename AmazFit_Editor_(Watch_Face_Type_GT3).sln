@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31729.503
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Watch_Face_Editor", "Watch_Face_Editor\Watch_Face_Editor.csproj", "{EDB5EFC6-242B-44DF-A1AF-426B4F330245}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Watch_Face_Editor_(ZeppOS)", "Watch_Face_Editor\Watch_Face_Editor_(ZeppOS).csproj", "{EDB5EFC6-242B-44DF-A1AF-426B4F330245}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlLibrary", "ControlLibrary\ControlLibrary.csproj", "{62353A5F-D872-408A-8999-06C08A03CC66}"
 EndProject

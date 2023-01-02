@@ -183,6 +183,7 @@ namespace ControlLibrary
             0,
             0});
             this.numericUpDown_scaleCircle_radius.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            this.numericUpDown_scaleCircle_radius.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_scaleCircle_radius_MouseDoubleClick);
             // 
             // numericUpDown_scaleCircle_width
             // 

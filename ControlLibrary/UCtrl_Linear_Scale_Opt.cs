@@ -440,5 +440,29 @@ namespace ControlLibrary
                 e.Handled = true;
             }
         }
+
+        private void numericUpDown_scaleLinear_length_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (radioButton_horizontal.Checked)
+            {
+                if (MouseСoordinates.X < 0) return;
+                NumericUpDown numericUpDown = sender as NumericUpDown;
+                if (e.X <= numericUpDown.Controls[1].Width + 1)
+                {
+                    // Click is in text area
+                    numericUpDown.Value = MouseСoordinates.X - numericUpDown_scaleLinearX.Value;
+                } 
+            }
+            else
+            {
+                if (MouseСoordinates.Y < 0) return;
+                NumericUpDown numericUpDown = sender as NumericUpDown;
+                if (e.X <= numericUpDown.Controls[1].Width + 1)
+                {
+                    // Click is in text area
+                    numericUpDown.Value = MouseСoordinates.Y - numericUpDown_scaleLinearY.Value;
+                }
+            }
+        }
     }
 }
