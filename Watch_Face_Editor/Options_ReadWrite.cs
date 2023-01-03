@@ -90,6 +90,9 @@ namespace Watch_Face_Editor
             if (Watch_Face_temp.Shortcuts != null)
                 Watch_Face_return.Shortcuts = Watch_Face_temp.Shortcuts;
 
+            if (Watch_Face_temp.DisconnectAlert != null)
+                Watch_Face_return.DisconnectAlert = Watch_Face_temp.DisconnectAlert;
+
             return Watch_Face_return;
         }
 
@@ -1496,6 +1499,42 @@ namespace Watch_Face_Editor
             uCtrl_Text_SystemFont_Opt.SetHorizontalAlignment(system_font.align_h);
             uCtrl_Text_SystemFont_Opt.SetVerticalAlignment(system_font.align_v);
             uCtrl_Text_SystemFont_Opt.SetTextStyle(system_font.text_style);
+
+            PreviewView = true;
+        }
+
+        /// <summary>Читаем настройки для отображения редактируемых стрелок</summary>
+        private void Read_DisconnectAlert_Options(DisconnectAlert disconnectAlert)
+        {
+            PreviewView = false;
+
+            uCtrl_DisconnectAlert_Opt.SettingsClear();
+
+            uCtrl_DisconnectAlert_Opt.Visible = true;
+
+            //userCtrl_Background_Options.SettingsClear();
+
+            if (disconnectAlert == null)
+            {
+                PreviewView = true;
+                return;
+            }
+
+            if (disconnectAlert.BluetoothOff != null)
+            {
+                uCtrl_DisconnectAlert_Opt.checkBox_disconneсnt_vibrate.Checked = disconnectAlert.BluetoothOff.vibrate;
+                uCtrl_DisconnectAlert_Opt.checkBox_disconneсnt_toast.Checked = disconnectAlert.BluetoothOff.toastShow;
+                uCtrl_DisconnectAlert_Opt.SetVibratetDisconneсnt(disconnectAlert.BluetoothOff.vibrateType);
+                uCtrl_DisconnectAlert_Opt.textBox_disconneсnt_toast_text.Text = disconnectAlert.BluetoothOff.toastText; 
+            }
+
+            if (disconnectAlert.BluetoothOn != null)
+            {
+                uCtrl_DisconnectAlert_Opt.checkBox_conneсnt_vibrate.Checked = disconnectAlert.BluetoothOn.vibrate;
+                uCtrl_DisconnectAlert_Opt.checkBox_conneсnt_toast.Checked = disconnectAlert.BluetoothOn.toastShow;
+                uCtrl_DisconnectAlert_Opt.SetVibratetConneсnt(disconnectAlert.BluetoothOn.vibrateType);
+                uCtrl_DisconnectAlert_Opt.textBox_conneсnt_toast_text.Text = disconnectAlert.BluetoothOn.toastText; 
+            }
 
             PreviewView = true;
         }
@@ -2929,6 +2968,31 @@ namespace Watch_Face_Editor
 
             editablePointers.AOD_show = uCtrl_EditableTimePointer_Opt.checkBox_secondInAOD.Checked;
             editablePointers.showEeditMode = uCtrl_EditableTimePointer_Opt.checkBox_edit_mode.Checked;
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_DisconnectAlert_Opt_ValueChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            DisconnectAlert disconnectAlert = Watch_Face.DisconnectAlert;
+            if (disconnectAlert == null) return;
+
+            if (disconnectAlert.BluetoothOff == null) disconnectAlert.BluetoothOff = new BluetoothStateAlert();
+            if (disconnectAlert.BluetoothOn == null) disconnectAlert.BluetoothOn = new BluetoothStateAlert();
+
+            disconnectAlert.BluetoothOff.vibrate = uCtrl_DisconnectAlert_Opt.checkBox_disconneсnt_vibrate.Checked;
+            disconnectAlert.BluetoothOff.vibrateType = uCtrl_DisconnectAlert_Opt.GetVibratetDisconneсnt();
+            disconnectAlert.BluetoothOff.toastShow = uCtrl_DisconnectAlert_Opt.checkBox_disconneсnt_toast.Checked;
+            disconnectAlert.BluetoothOff.toastText = uCtrl_DisconnectAlert_Opt.textBox_disconneсnt_toast_text.Text;
+
+            disconnectAlert.BluetoothOn.vibrate = uCtrl_DisconnectAlert_Opt.checkBox_conneсnt_vibrate.Checked;
+            disconnectAlert.BluetoothOn.vibrateType = uCtrl_DisconnectAlert_Opt.GetVibratetConneсnt();
+            disconnectAlert.BluetoothOn.toastShow = uCtrl_DisconnectAlert_Opt.checkBox_conneсnt_toast.Checked;
+            disconnectAlert.BluetoothOn.toastText = uCtrl_DisconnectAlert_Opt.textBox_conneсnt_toast_text.Text;
 
             JSON_Modified = true;
             PreviewImage();

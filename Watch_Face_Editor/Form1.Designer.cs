@@ -133,7 +133,10 @@ namespace Watch_Face_Editor
             this.uCtrl_Moon_Elm = new ControlLibrary.UCtrl_Moon_Elm();
             this.panel_UC_Animation = new System.Windows.Forms.Panel();
             this.uCtrl_Animation_Elm = new ControlLibrary.UCtrl_Animation_Elm();
+            this.panel_UC_DisconnectAlert = new System.Windows.Forms.Panel();
+            this.uCtrl_DisconnectAlert_Elm = new ControlLibrary.UCtrl_DisconnectAlert_Elm();
             this.panel_ElementsOpt = new System.Windows.Forms.Panel();
+            this.uCtrl_DisconnectAlert_Opt = new ControlLibrary.UCtrl_DisconnectAlert_Opt();
             this.uCtrl_EditableTimePointer_Opt = new ControlLibrary.UCtrl_EditableTimePointer_Opt();
             this.uCtrl_Animation_Rotate_Opt = new ControlLibrary.UCtrl_Animation_Rotate_Opt();
             this.uCtrl_Animation_Motion_Opt = new ControlLibrary.UCtrl_Animation_Motion_Opt();
@@ -315,6 +318,7 @@ namespace Watch_Face_Editor
             this.panel_UC_Wind.SuspendLayout();
             this.panel_UC_Moon.SuspendLayout();
             this.panel_UC_Animation.SuspendLayout();
+            this.panel_UC_DisconnectAlert.SuspendLayout();
             this.panel_ElementsOpt.SuspendLayout();
             this.panel_MainScreen_AOD.SuspendLayout();
             this.tabPage_Show_Set.SuspendLayout();
@@ -644,7 +648,8 @@ namespace Watch_Face_Editor
             resources.GetString("comboBox_AddSystem.Items2"),
             resources.GetString("comboBox_AddSystem.Items3"),
             resources.GetString("comboBox_AddSystem.Items4"),
-            resources.GetString("comboBox_AddSystem.Items5")});
+            resources.GetString("comboBox_AddSystem.Items5"),
+            resources.GetString("comboBox_AddSystem.Items6")});
             resources.ApplyResources(this.comboBox_AddSystem, "comboBox_AddSystem");
             this.comboBox_AddSystem.Name = "comboBox_AddSystem";
             this.comboBox_AddSystem.DropDownClosed += new System.EventHandler(this.comboBox_AddSystem_DropDownClosed);
@@ -730,36 +735,37 @@ namespace Watch_Face_Editor
             // 
             this.tableLayoutPanel_ElemetsWatchFace.AllowDrop = true;
             resources.ApplyResources(this.tableLayoutPanel_ElemetsWatchFace, "tableLayoutPanel_ElemetsWatchFace");
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_EditableElements, 0, 3);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DigitalTime, 0, 2);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_AnalogTime, 0, 1);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateDay, 0, 4);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateMonth, 0, 5);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateYear, 0, 6);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Background, 0, 29);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateWeek, 0, 7);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Steps, 0, 10);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Statuses, 0, 9);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Shortcuts, 0, 8);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Battery, 0, 11);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Heart, 0, 12);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Calories, 0, 13);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_PAI, 0, 14);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Distance, 0, 15);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Weather, 0, 19);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Stand, 0, 16);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Activity, 0, 17);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_SpO2, 0, 18);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_UVIndex, 0, 20);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Humidity, 0, 21);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Stress, 0, 22);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_FatBurning, 0, 23);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Altimeter, 0, 24);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_EditableTimePointer, 0, 0);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Sunrise, 0, 25);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Wind, 0, 26);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Moon, 0, 27);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Animation, 0, 28);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_EditableElements, 0, 4);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DigitalTime, 0, 3);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_AnalogTime, 0, 2);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateDay, 0, 5);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateMonth, 0, 6);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateYear, 0, 7);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Background, 0, 30);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateWeek, 0, 8);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Steps, 0, 11);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Statuses, 0, 10);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Shortcuts, 0, 9);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Battery, 0, 12);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Heart, 0, 13);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Calories, 0, 14);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_PAI, 0, 15);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Distance, 0, 16);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Weather, 0, 20);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Stand, 0, 17);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Activity, 0, 18);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_SpO2, 0, 19);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_UVIndex, 0, 21);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Humidity, 0, 22);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Stress, 0, 23);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_FatBurning, 0, 24);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Altimeter, 0, 25);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_EditableTimePointer, 0, 1);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Sunrise, 0, 26);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Wind, 0, 27);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Moon, 0, 28);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Animation, 0, 29);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DisconnectAlert, 0, 0);
             this.tableLayoutPanel_ElemetsWatchFace.Name = "tableLayoutPanel_ElemetsWatchFace";
             this.tableLayoutPanel_ElemetsWatchFace.DragOver += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragOver);
             // 
@@ -1302,7 +1308,9 @@ namespace Watch_Face_Editor
             // uCtrl_Animation_Elm
             // 
             resources.ApplyResources(this.uCtrl_Animation_Elm, "uCtrl_Animation_Elm");
+            this.uCtrl_Animation_Elm.MotionAnimation = true;
             this.uCtrl_Animation_Elm.Name = "uCtrl_Animation_Elm";
+            this.uCtrl_Animation_Elm.RotateAnimation = true;
             this.uCtrl_Animation_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_Animation_Elm.VisibleElementChangedHandler(this.uCtrl_Animation_Elm_VisibleElementChanged);
             this.uCtrl_Animation_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_Animation_Elm.VisibleOptionsChangedHandler(this.uCtrl_Animation_Elm_VisibleOptionsChanged);
             this.uCtrl_Animation_Elm.OptionsMoved += new ControlLibrary.UCtrl_Animation_Elm.OptionsMovedHandler(this.uCtrl_Animation_Elm_OptionsMoved);
@@ -1313,10 +1321,25 @@ namespace Watch_Face_Editor
             this.uCtrl_Animation_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
             this.uCtrl_Animation_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
             // 
+            // panel_UC_DisconnectAlert
+            // 
+            resources.ApplyResources(this.panel_UC_DisconnectAlert, "panel_UC_DisconnectAlert");
+            this.panel_UC_DisconnectAlert.Controls.Add(this.uCtrl_DisconnectAlert_Elm);
+            this.panel_UC_DisconnectAlert.Name = "panel_UC_DisconnectAlert";
+            // 
+            // uCtrl_DisconnectAlert_Elm
+            // 
+            resources.ApplyResources(this.uCtrl_DisconnectAlert_Elm, "uCtrl_DisconnectAlert_Elm");
+            this.uCtrl_DisconnectAlert_Elm.Name = "uCtrl_DisconnectAlert_Elm";
+            this.uCtrl_DisconnectAlert_Elm.SelectChanged += new ControlLibrary.UCtrl_DisconnectAlert_Elm.SelectChangedHandler(this.uCtrl_DisconnectAlert_Elm_SelectChanged);
+            this.uCtrl_DisconnectAlert_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_DisconnectAlert_Elm.VisibleElementChangedHandler(this.uCtrl_DisconnectAlert_Elm_VisibleElementChanged);
+            this.uCtrl_DisconnectAlert_Elm.DelElement += new ControlLibrary.UCtrl_DisconnectAlert_Elm.DelElementHandler(this.uCtrl_DisconnectAlert_Elm_DelElement);
+            // 
             // panel_ElementsOpt
             // 
             resources.ApplyResources(this.panel_ElementsOpt, "panel_ElementsOpt");
             this.panel_ElementsOpt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_ElementsOpt.Controls.Add(this.uCtrl_DisconnectAlert_Opt);
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_EditableTimePointer_Opt);
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_Animation_Rotate_Opt);
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_Animation_Motion_Opt);
@@ -1336,6 +1359,12 @@ namespace Watch_Face_Editor
             this.panel_ElementsOpt.Controls.Add(this.userCtrl_Background_Options);
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_EditableElements_Opt);
             this.panel_ElementsOpt.Name = "panel_ElementsOpt";
+            // 
+            // uCtrl_DisconnectAlert_Opt
+            // 
+            resources.ApplyResources(this.uCtrl_DisconnectAlert_Opt, "uCtrl_DisconnectAlert_Opt");
+            this.uCtrl_DisconnectAlert_Opt.Name = "uCtrl_DisconnectAlert_Opt";
+            this.uCtrl_DisconnectAlert_Opt.ValueChanged += new ControlLibrary.UCtrl_DisconnectAlert_Opt.ValueChangedHandler(this.uCtrl_DisconnectAlert_Opt_ValueChanged);
             // 
             // uCtrl_EditableTimePointer_Opt
             // 
@@ -2604,6 +2633,8 @@ namespace Watch_Face_Editor
             this.panel_UC_Moon.PerformLayout();
             this.panel_UC_Animation.ResumeLayout(false);
             this.panel_UC_Animation.PerformLayout();
+            this.panel_UC_DisconnectAlert.ResumeLayout(false);
+            this.panel_UC_DisconnectAlert.PerformLayout();
             this.panel_ElementsOpt.ResumeLayout(false);
             this.panel_MainScreen_AOD.ResumeLayout(false);
             this.panel_MainScreen_AOD.PerformLayout();
@@ -2877,6 +2908,9 @@ namespace Watch_Face_Editor
         private ControlLibrary.UCtrl_EditableElements_Elm uCtrl_EditableElements_Elm;
         private ControlLibrary.UCtrl_EditableElemets_Opt uCtrl_EditableElements_Opt;
         private System.Windows.Forms.Button button_SaveAs;
+        private System.Windows.Forms.Panel panel_UC_DisconnectAlert;
+        private ControlLibrary.UCtrl_DisconnectAlert_Elm uCtrl_DisconnectAlert_Elm;
+        private ControlLibrary.UCtrl_DisconnectAlert_Opt uCtrl_DisconnectAlert_Opt;
     }
 }
 

@@ -349,6 +349,15 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Вы не можете добавить этот элемент на экран AOD..
+        /// </summary>
+        internal static string Message_ElementAOD_Text {
+            get {
+                return ResourceManager.GetString("Message_ElementAOD_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Ошибка.
         /// </summary>
         internal static string Message_Error_Caption {

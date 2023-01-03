@@ -2328,6 +2328,7 @@ namespace Watch_Face_Editor
             }
             #endregion
 
+            // подсказки на экране редактирования
             if (edit_mode == 1 && editable_background != null && background.visible)
             {
                 if (editable_background.fg != null && editable_background.fg.Length > 0)
@@ -2358,8 +2359,10 @@ namespace Watch_Face_Editor
                     string text_style = "ELLIPSIS";
                     string valueStr = Properties.FormStrings.Tip_Background + (index + 1).ToString() +
                         "/" + editable_background.BackgroundList.Count.ToString();
+                    if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4") 
+                        valueStr = Properties.FormStrings.Tip_Background.TrimEnd();
 
-                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr,
+                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr,
                         align_h, align_v, text_style, false);
                 }
             }
@@ -2524,6 +2527,8 @@ namespace Watch_Face_Editor
                     string text_style = "ELLIPSIS";
                     string valueStr = Properties.FormStrings.Tip_Pointer + (index + 1).ToString() +
                         "/" + editable_pointers.config.Count.ToString();
+                    if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4")
+                        valueStr = Properties.FormStrings.Tip_Pointer.TrimEnd();
 
                     Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr,
                         align_h, align_v, text_style, false);

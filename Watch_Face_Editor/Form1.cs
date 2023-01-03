@@ -385,6 +385,7 @@ namespace Watch_Face_Editor
             uCtrl_Animation_Rotate_Opt.AutoSize = true;
             uCtrl_EditableTimePointer_Opt.AutoSize = true;
             uCtrl_EditableElements_Opt.AutoSize = true;
+            uCtrl_DisconnectAlert_Opt.AutoSize = true;
 
             button_CreatePreview.Location = button_RefreshPreview.Location;
 
@@ -1537,6 +1538,9 @@ namespace Watch_Face_Editor
                 case "EditableElements":
                     uCtrl_EditableElements_Opt.Visible = true;
                     break;
+                case "DisconnectAlert":
+                    uCtrl_DisconnectAlert_Opt.Visible = true;
+                    break;
             }
 
             if (optionsName == "EditableTimePointer" || optionsName == "EditableElements" ||
@@ -1565,6 +1569,7 @@ namespace Watch_Face_Editor
             uCtrl_Animation_Rotate_Opt.Visible = false;
             uCtrl_EditableTimePointer_Opt.Visible = false;
             uCtrl_EditableElements_Opt.Visible = false;
+            uCtrl_DisconnectAlert_Opt.Visible = false;
         }
 
         private void ResetHighlightState(string selectElementName)
@@ -1601,6 +1606,8 @@ namespace Watch_Face_Editor
             if (selectElementName != "Sunrise") uCtrl_Sunrise_Elm.ResetHighlightState();
             if (selectElementName != "Wind") uCtrl_Wind_Elm.ResetHighlightState();
             if (selectElementName != "Moon") uCtrl_Moon_Elm.ResetHighlightState();
+
+            if (selectElementName != "DisconnectAlert") uCtrl_DisconnectAlert_Elm.ResetHighlightState();
 
 
             if (selectElementName != "Animation") 
@@ -3279,6 +3286,22 @@ namespace Watch_Face_Editor
                 //    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
                 //    panel_WatchfaceElements.VerticalScroll.Maximum);
             }
+            if (comboBox_AddSystem.SelectedIndex == 5)
+            {
+                if (radioButton_ScreenNormal.Checked)
+                {
+                    AddDisconnectAlert();
+                    ShowElemetsWatchFace();
+                    JSON_Modified = true;
+                    FormText();
+                }
+                else MessageBox.Show(Properties.FormStrings.Message_ElementAOD_Text, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                //panel_WatchfaceElements.AutoScrollPosition = new Point(
+                //    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                //    panel_WatchfaceElements.VerticalScroll.Maximum);
+            }
 
             PreviewView = false;
             //if (comboBox_AddTime.SelectedIndex >= 0) MessageBox.Show(comboBox_AddTime.Text);
@@ -3566,7 +3589,16 @@ namespace Watch_Face_Editor
 
             if (Watch_Face.Editable_Elements == null) Watch_Face.Editable_Elements = new EditableElements();
             Watch_Face.Editable_Elements.visible = true;
-            //uCtrl_EditableElements_Opt.SettingsClear();
+        }
+
+        /// <summary>Добавляем оповещение об обрыве связи</summary>
+        private void AddDisconnectAlert()
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) Watch_Face = new WATCH_FACE();
+
+            if (Watch_Face.DisconnectAlert == null) Watch_Face.DisconnectAlert = new DisconnectAlert();
+            Watch_Face.DisconnectAlert.enable = true;
         }
 
         /// <summary>Добавляем дату в циферблат</summary>
@@ -4379,6 +4411,8 @@ namespace Watch_Face_Editor
             uCtrl_Sunrise_Elm.Visible = false;
             uCtrl_Wind_Elm.Visible = false;
             uCtrl_Moon_Elm.Visible = false;
+
+            uCtrl_DisconnectAlert_Elm.Visible = false;
 
 
             int count = tableLayoutPanel_ElemetsWatchFace.RowCount;
@@ -5489,6 +5523,7 @@ namespace Watch_Face_Editor
 
             int elementsCount = elements.Count;
 
+
             if (Watch_Face.Editable_Elements != null)
             {
                 if (radioButton_ScreenNormal.Checked || Watch_Face.Editable_Elements.AOD_show)
@@ -5505,7 +5540,6 @@ namespace Watch_Face_Editor
                 }
             }
 
-
             if (Watch_Face.ElementEditablePointers != null)
             {
                 ElementEditablePointers EditablePointers = Watch_Face.ElementEditablePointers;
@@ -5516,6 +5550,16 @@ namespace Watch_Face_Editor
 
                 uCtrl_EditableTimePointer_Elm.Visible = true;
                 SetElementPositionInGUI("ElementEditablePointers", count - elementsCount - 2);
+                elementsCount++;
+            }
+
+            if (Watch_Face.DisconnectAlert != null && radioButton_ScreenNormal.Checked)
+            {
+                DisconnectAlert Disconnect_Alert = Watch_Face.DisconnectAlert;
+                uCtrl_DisconnectAlert_Elm.SetVisibilityElementStatus(Disconnect_Alert.enable);
+
+                uCtrl_DisconnectAlert_Elm.Visible = true;
+                SetElementPositionInGUI("DisconnectAlert", count - elementsCount - 2);
                 elementsCount++;
             }
 
@@ -5690,6 +5734,10 @@ namespace Watch_Face_Editor
                     break;
                 case "ElementMoon":
                     panel = panel_UC_Moon;
+                    break;
+
+                case "DisconnectAlert":
+                    panel = panel_UC_DisconnectAlert;
                     break;
             }
             if (panel == null) return;
@@ -6211,6 +6259,22 @@ namespace Watch_Face_Editor
             if (Watch_Face != null && Watch_Face.Shortcuts != null)
             {
                 Watch_Face.Shortcuts = null;
+
+                PreviewView = false;
+                ShowElemetsWatchFace();
+                PreviewView = true;
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_DisconnectAlert_Elm_DelElement(object sender, EventArgs eventArgs)
+        {
+            if (Watch_Face != null && Watch_Face.DisconnectAlert != null)
+            {
+                Watch_Face.DisconnectAlert = null;
 
                 PreviewView = false;
                 ShowElemetsWatchFace();
@@ -10939,6 +11003,25 @@ namespace Watch_Face_Editor
             }
         }
 
+        private void uCtrl_DisconnectAlert_Elm_SelectChanged(object sender, EventArgs eventArgs)
+        {
+            ResetHighlightState("DisconnectAlert");
+
+            DisconnectAlert disconnectAlert = null;
+            if (Watch_Face != null && Watch_Face.DisconnectAlert != null) disconnectAlert = Watch_Face.DisconnectAlert;
+
+            if (disconnectAlert != null)
+            {
+                //hmUI_widget_IMG_NUMBER img_number = null;
+
+                //if (distance.Number == null) distance.Number = new hmUI_widget_IMG_NUMBER();
+                //img_number = distance.Number;
+                Read_DisconnectAlert_Options(disconnectAlert);
+                ShowElemenrOptions("DisconnectAlert");
+
+            }
+        }
+
         #endregion
 
         private void uCtrl_DateDay_Elm_VisibleOptionsChanged(object sender, EventArgs eventArgs)
@@ -13062,6 +13145,21 @@ namespace Watch_Face_Editor
             if (moon != null)
             {
                 moon.visible = visible;
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_DisconnectAlert_Elm_VisibleElementChanged(object sender, EventArgs eventArgs, bool visible)
+        {
+            DisconnectAlert disconnectAlert = null;
+            if (Watch_Face != null && Watch_Face.DisconnectAlert != null) disconnectAlert = Watch_Face.DisconnectAlert;
+
+            if (disconnectAlert != null)
+            {
+                disconnectAlert.enable = visible;
             }
 
             JSON_Modified = true;

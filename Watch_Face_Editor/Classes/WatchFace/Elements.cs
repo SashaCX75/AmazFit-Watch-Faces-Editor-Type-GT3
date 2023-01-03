@@ -886,4 +886,17 @@ namespace Watch_Face_Editor
             }
         }
 
+    /// <summary>Оповещение при изменении состояния связи</summary>
+    public class BluetoothStateAlert
+    {
+        /// <summary>Вибрация при изменении статуса</summary>
+        public bool vibrate = false;
+        /// <summary>Тип вибрации</summary>
+        public int vibrateType = 9;
+        /// <summary>Оповещение при изменении статуса</summary>
+        public bool toastShow = false;
+        /// <summary>Текст оповещения</summary>
+        public string toastText = "";
+    }
+
 }

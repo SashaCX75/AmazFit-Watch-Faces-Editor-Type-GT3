@@ -218,6 +218,18 @@
     <Compile Include="Elements\UCtrl_FatBurning_Elm.Designer.cs">
       <DependentUpon>UCtrl_FatBurning_Elm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Elements\UCtrl_DisconnectAlert_Elm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\UCtrl_DisconnectAlert_Elm.Designer.cs">
+      <DependentUpon>UCtrl_DisconnectAlert_Elm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCtrl_DisconnectAlert_Opt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCtrl_DisconnectAlert_Opt.Designer.cs">
+      <DependentUpon>UCtrl_DisconnectAlert_Opt.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCtrl_EditableBackground_Opt.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -1116,6 +1128,12 @@
     <EmbeddedResource Include="Elements\UCtrl_FatBurning_Elm.resx">
       <DependentUpon>UCtrl_FatBurning_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_DisconnectAlert_Elm.resx">
+      <DependentUpon>UCtrl_DisconnectAlert_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_DisconnectAlert_Opt.resx">
+      <DependentUpon>UCtrl_DisconnectAlert_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_EditableBackground_Opt.de.resx">
       <DependentUpon>UCtrl_EditableBackground_Opt.cs</DependentUpon>
     </EmbeddedResource>
@@ -1608,6 +1626,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\category.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bluetooth.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

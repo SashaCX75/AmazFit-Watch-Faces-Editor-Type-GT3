@@ -24,6 +24,8 @@ namespace Watch_Face_Editor
         public ElementEditablePointers ElementEditablePointers { get; set; }
 
         public ElementShortcuts Shortcuts { get; set; }
+
+        public DisconnectAlert DisconnectAlert { get; set; }
     }
 
     public class WatchFace_Info
@@ -4108,6 +4110,18 @@ namespace Watch_Face_Editor
 
         /// <summary>Видимость элемента</summary>
         public bool visible = false;
+    }
+
+    public class DisconnectAlert
+    {
+        /// <summary>Оповещение при разрыве связи</summary>
+        public BluetoothStateAlert BluetoothOff { get; set; }
+
+        /// <summary>Оповещение при востановление связи</summary>
+        public BluetoothStateAlert BluetoothOn { get; set; }
+
+        /// <summary>Использование элемента</summary>
+        public bool enable = true;
     }
 }
 
