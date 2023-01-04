@@ -142,7 +142,9 @@ namespace Watch_Face_Editor
             this.ClientSize = new System.Drawing.Size(462, 485);
             this.Controls.Add(this.pictureBox_Preview);
             this.Controls.Add(this.panel1);
+            this.DataBindings.Add(new System.Windows.Forms.Binding("Location", global::Watch_Face_Editor.Properties.Settings.Default, "PreviewLocation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Location = global::Watch_Face_Editor.Properties.Settings.Default.PreviewLocation;
             this.MaximizeBox = false;
             this.Name = "Form_Preview";
             this.ShowInTaskbar = false;

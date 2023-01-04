@@ -15,6 +15,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -59,7 +60,7 @@ namespace Watch_Face_Editor
             if (File.Exists(Application.StartupPath + "\\Program log.txt")) File.Delete(Application.StartupPath + @"\Program log.txt");
             Logger.WriteLine("* Form1");
 
-            //SplashScreenStart();
+            SplashScreenStart();
 
             ProgramSettings = new Program_Settings();
             try
@@ -78,11 +79,19 @@ namespace Watch_Face_Editor
                 else
                 {
                     Properties.Settings.Default.FormLocation = new Point(0, 0);
+                    Properties.Settings.Default.PreviewLocation = new Point(0, 0);
                     Properties.Settings.Default.Save();
+
+                    string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
+                    {
+                        //DefaultValueHandling = DefaultValueHandling.Ignore,
+                        NullValueHandling = NullValueHandling.Ignore
+                    });
+                    File.WriteAllText(Application.StartupPath + @"\Settings.json", JSON_String, Encoding.UTF8);
                 }
 
 
-
+                if (ProgramSettings == null) ProgramSettings = new Program_Settings();
                 if ((ProgramSettings.language == null) || (ProgramSettings.language.Length < 2))
                 {
                     string language = System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
@@ -90,42 +99,17 @@ namespace Watch_Face_Editor
                     //ProgramSettings.language = "Русский";
                     ProgramSettings.language = "English";
                     Logger.WriteLine("language = " + language);
-                    if (language == "ru")
+                    switch (language)
                     {
-                        ProgramSettings.language = "Русский";
+                        case "ru": ProgramSettings.language = "Русский"; break;
+                        case "en": ProgramSettings.language = "English"; break;
+                        case "es": ProgramSettings.language = "Español"; break;
+                        case "it": ProgramSettings.language = "Italiano"; break;
+                        case "zh": ProgramSettings.language = "Chinese/简体中文"; break;
+                        case "uk": ProgramSettings.language = "Українська"; break;
+                        case "de": ProgramSettings.language = "Deutsch"; break;
                     }
-                    if (language == "en")
-                    {
-                        ProgramSettings.language = "English";
-                    }
-                    if (language == "es")
-                    {
-                        ProgramSettings.language = "Español";
-                    }
-                    //if (language == "fr")
-                    //{
-                    //    ProgramSettings.language = "French";
-                    //}
-                    if (language == "it")
-                    {
-                        ProgramSettings.language = "Italiano";
-                    }
-                    if (language == "zh")
-                    {
-                        ProgramSettings.language = "Chinese/简体中文";
-                    }
-                    if (language == "uk")
-                    {
-                        ProgramSettings.language = "Українська";
-                    }
-                    if (language == "de")
-                    {
-                        ProgramSettings.language = "Deutsch";
-                    }
-                    //if (language == "hu")
-                    //{
-                    //    ProgramSettings.language = "Magyar";
-                    //}
+                  
                 }
                 //Logger.WriteLine("Определили язык");
                 SetLanguage();
@@ -187,16 +171,47 @@ namespace Watch_Face_Editor
             Logger.WriteLine("* Form1 (end)");
         }
 
+        private void SplashScreenStart()
+        {
+            Logger.WriteLine("* SplashScreenStart");
+            //SplashScreen.SplashScreen formSplashScreen = new SplashScreen.SplashScreen();
+            //formSplashScreen.Show();
+            string splashScreenPath = Application.StartupPath + @"\Libs\SplashScreen.exe";
+            if (File.Exists(splashScreenPath))
+            {
+                ProcessStartInfo startInfo = new ProcessStartInfo();
+                startInfo.FileName = splashScreenPath;
+                Process exeProcess = Process.Start(startInfo);
+
+                exeProcess.Dispose();
+                //exeProcess.CloseMainWindow();
+            }
+            Logger.WriteLine("* SplashScreenStart (end)");
+
+        }
+
+
+        /// <summary>
+        /// Find window by Caption only. Note you must pass IntPtr.Zero as the first parameter.
+        /// </summary>
+        [DllImport("user32.dll", EntryPoint = "FindWindow", SetLastError = true)]
+        static extern IntPtr FindWindowByCaption(IntPtr ZeroOnly, string lpWindowName);
+
+        [DllImport("user32.dll", CharSet = CharSet.Auto)]
+        static extern IntPtr SendMessage(IntPtr hWnd, UInt32 Msg, IntPtr wParam, IntPtr lParam);
+
+        const UInt32 WM_CLOSE = 0x0010;
+
         private void Form1_Load(object sender, EventArgs e)
         {
             Logger.WriteLine("* Form1_Load");
             // закрываем SplashScreen
-            //IntPtr windowPtr = FindWindowByCaption(IntPtr.Zero, "AmazFit WatchFace editor SplashScreen");
-            //if (windowPtr != IntPtr.Zero)
-            //{
-            //    Logger.WriteLine("* SplashScreen_CLOSE");
-            //    SendMessage(windowPtr, WM_CLOSE, IntPtr.Zero, IntPtr.Zero);
-            //}
+            IntPtr windowPtr = FindWindowByCaption(IntPtr.Zero, "AmazFit WatchFace editor (ZeppOS) SplashScreen");
+            if (windowPtr != IntPtr.Zero)
+            {
+                Logger.WriteLine("* SplashScreen_CLOSE");
+                SendMessage(windowPtr, WM_CLOSE, IntPtr.Zero, IntPtr.Zero);
+            }
 
             /*// Set window location
             if (Properties.Settings.Default.FormLocation != null)

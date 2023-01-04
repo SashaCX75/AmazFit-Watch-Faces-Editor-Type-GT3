@@ -590,6 +590,12 @@
     <EmbeddedResource Include="Elements\UCtrl_DigitalTime_Elm.zh.resx">
       <DependentUpon>UCtrl_DigitalTime_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_DisconnectAlert_Elm.en.resx">
+      <DependentUpon>UCtrl_DisconnectAlert_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_DisconnectAlert_Elm.uk.resx">
+      <DependentUpon>UCtrl_DisconnectAlert_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Distance_Elm.de.resx">
       <DependentUpon>UCtrl_Distance_Elm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1131,7 +1137,13 @@
     <EmbeddedResource Include="Elements\UCtrl_DisconnectAlert_Elm.resx">
       <DependentUpon>UCtrl_DisconnectAlert_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_DisconnectAlert_Opt.en.resx">
+      <DependentUpon>UCtrl_DisconnectAlert_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_DisconnectAlert_Opt.resx">
+      <DependentUpon>UCtrl_DisconnectAlert_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_DisconnectAlert_Opt.uk.resx">
       <DependentUpon>UCtrl_DisconnectAlert_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_EditableBackground_Opt.de.resx">

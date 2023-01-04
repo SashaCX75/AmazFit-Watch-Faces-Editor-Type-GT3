@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Watch_Face_Editor_(ZeppOS)"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlLibrary", "ControlLibrary\ControlLibrary.csproj", "{62353A5F-D872-408A-8999-06C08A03CC66}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SplashScreen", "SplashScreen\SplashScreen.csproj", "{C9C98C7A-C2FF-4AF3-BA1C-B2E303062420}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{62353A5F-D872-408A-8999-06C08A03CC66}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62353A5F-D872-408A-8999-06C08A03CC66}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62353A5F-D872-408A-8999-06C08A03CC66}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9C98C7A-C2FF-4AF3-BA1C-B2E303062420}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9C98C7A-C2FF-4AF3-BA1C-B2E303062420}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9C98C7A-C2FF-4AF3-BA1C-B2E303062420}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9C98C7A-C2FF-4AF3-BA1C-B2E303062420}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
