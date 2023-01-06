@@ -1568,7 +1568,7 @@ namespace Watch_Face_Editor
                     if (img_number.dot_image != null && img_number.dot_image.Length > 0)
                         decumalPoint_index = ListImages.IndexOf(img_number.dot_image);
 
-                    Draw_dagital_text_dacumal(gPanel, image_Index, pos_x, pos_y,
+                    Draw_dagital_text_decimal(gPanel, image_Index, pos_x, pos_y,
                         distance_spasing, distance_alignment, distance_value, distance_addZero, value_lenght,
                         distance_separator_index, decumalPoint_index, 2, BBorder);
 
@@ -3281,7 +3281,7 @@ namespace Watch_Face_Editor
                     if (sunrise.dot_image != null && sunrise.dot_image.Length > 0)
                         decumalPoint_index = ListImages.IndexOf(sunrise.dot_image);
 
-                    Draw_dagital_text_dacumal(gPanel, image_Index, pos_x, pos_y,
+                    Draw_dagital_text_decimal(gPanel, image_Index, pos_x, pos_y,
                         sunrise_spasing, sunrise_alignment, sunrise_value, sunrise_addZero, 4,
                         sunrise_separator_index, decumalPoint_index, 2, BBorder, "ElementSunrise");
 
@@ -3315,7 +3315,7 @@ namespace Watch_Face_Editor
                     if (sunset.dot_image != null && sunset.dot_image.Length > 0)
                         decumalPoint_index = ListImages.IndexOf(sunset.dot_image);
 
-                    Draw_dagital_text_dacumal(gPanel, image_Index, pos_x, pos_y,
+                    Draw_dagital_text_decimal(gPanel, image_Index, pos_x, pos_y,
                         sunset_spasing, sunset_alignment, sunset_value, sunset_addZero, 4,
                         sunset_separator_index, decumalPoint_index, 2, BBorder, "ElementSunrise");
 
@@ -3350,7 +3350,7 @@ namespace Watch_Face_Editor
                     if (sunset_sunrise.dot_image != null && sunset_sunrise.dot_image.Length > 0)
                         decumalPoint_index = ListImages.IndexOf(sunset_sunrise.dot_image);
 
-                    Draw_dagital_text_dacumal(gPanel, image_Index, pos_x, pos_y,
+                    Draw_dagital_text_decimal(gPanel, image_Index, pos_x, pos_y,
                         sunset_sunrise_spasing, sunset_sunrise_alignment, sunset_sunrise_value, sunset_sunrise_addZero, 4,
                         sunset_sunrise_separator_index, decumalPoint_index, 2, BBorder, "ElementSunrise");
 
@@ -3990,7 +3990,8 @@ namespace Watch_Face_Editor
                             //src = new Bitmap(ListImagesFullName[i]);
                             src = OpenFileStream(ListImagesFullName[i]);
                             graphics.DrawImage(src, new Rectangle(PointX, PointY, src.Width, src.Height));
-                            PointX = PointX + src.Width + spacing;
+                            //PointX = PointX + src.Width + spacing;
+                            PointX = PointX + widthD + spacing;
                             //src.Dispose();
                         }
                     }
@@ -4345,7 +4346,7 @@ namespace Watch_Face_Editor
         /// <param name="decimalPoint_index">Символ десятичного разделителя</param>
         /// <param name="decCount">Число знаков после запятой</param>
         /// <param name="BBorder">Рисовать рамку по координатам, вокруг элементов с выравниванием</param>
-        private int Draw_dagital_text_dacumal(Graphics graphics, int image_index, int x, int y, int spacing,
+        private int Draw_dagital_text_decimal(Graphics graphics, int image_index, int x, int y, int spacing,
             int alignment, double value, bool addZero, int value_lenght, int separator_index,
             int decimalPoint_index, int decCount, bool BBorder, string elementName = "")
         {

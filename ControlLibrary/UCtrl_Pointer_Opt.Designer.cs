@@ -29,15 +29,16 @@ namespace ControlLibrary
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrl_Pointer_Opt));
             this.comboBox_pointer_image = new System.Windows.Forms.ComboBox();
             this.numericUpDown_pointer_X = new System.Windows.Forms.NumericUpDown();
-            this.contextMenuStrip_X = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenuStrip_X = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.вставитьКоординатуХToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.копироватьToolStripMenuItemX = new System.Windows.Forms.ToolStripMenuItem();
             this.вставитьToolStripMenuItemX = new System.Windows.Forms.ToolStripMenuItem();
             this.numericUpDown_pointer_Y = new System.Windows.Forms.NumericUpDown();
-            this.contextMenuStrip_Y = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenuStrip_Y = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.вставитьКоординатуYToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.копироватьToolStripMenuItemY = new System.Windows.Forms.ToolStripMenuItem();
             this.вставитьToolStripMenuItemY = new System.Windows.Forms.ToolStripMenuItem();

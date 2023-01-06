@@ -34,7 +34,7 @@ namespace Watch_Face_Editor
         public string DeviceName { get; set; }
 
         /// <summary>Id циферблата</summary>
-        public int WatchFaceId { get; set; }
+        public int WatchFaceId { get; set; } = 1234567;
 
         /// <summary>Изображение предпросмотра</summary>
         public string Preview { get; set; }

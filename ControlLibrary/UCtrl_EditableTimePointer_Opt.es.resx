@@ -267,7 +267,7 @@
     <value>185, 82</value>
   </data>
   <data name="label02.Location" type="System.Drawing.Point, System.Drawing">
-    <value>103, 4</value>
+    <value>103, 1</value>
   </data>
   <data name="label02.Text" xml:space="preserve">
     <value>Coordenadas del centro 

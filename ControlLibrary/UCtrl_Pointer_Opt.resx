@@ -146,36 +146,6 @@
   <metadata name="contextMenuStrip_X.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 82</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStrip_X.Name" xml:space="preserve">
-    <value>contextMenuStrip_X</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStrip_X.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="numericUpDown_pointer_X.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 34</value>
-  </data>
-  <data name="numericUpDown_pointer_X.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 20</value>
-  </data>
-  <data name="numericUpDown_pointer_X.TabIndex" type="System.Int32, mscorlib">
-    <value>117</value>
-  </data>
-  <data name="&gt;&gt;numericUpDown_pointer_X.Name" xml:space="preserve">
-    <value>numericUpDown_pointer_X</value>
-  </data>
-  <data name="&gt;&gt;numericUpDown_pointer_X.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numericUpDown_pointer_X.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;numericUpDown_pointer_X.ZOrder" xml:space="preserve">
-    <value>26</value>
-  </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
@@ -241,39 +211,39 @@
   <data name="вставитьToolStripMenuItemX.Text" xml:space="preserve">
     <value>Вставить</value>
   </data>
+  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 82</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStrip_X.Name" xml:space="preserve">
+    <value>contextMenuStrip_X</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStrip_X.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="numericUpDown_pointer_X.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 34</value>
+  </data>
+  <data name="numericUpDown_pointer_X.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 20</value>
+  </data>
+  <data name="numericUpDown_pointer_X.TabIndex" type="System.Int32, mscorlib">
+    <value>117</value>
+  </data>
+  <data name="&gt;&gt;numericUpDown_pointer_X.Name" xml:space="preserve">
+    <value>numericUpDown_pointer_X</value>
+  </data>
+  <data name="&gt;&gt;numericUpDown_pointer_X.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDown_pointer_X.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;numericUpDown_pointer_X.ZOrder" xml:space="preserve">
+    <value>26</value>
+  </data>
   <metadata name="contextMenuStrip_Y.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>164, 16</value>
   </metadata>
-  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 82</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStrip_Y.Name" xml:space="preserve">
-    <value>contextMenuStrip_Y</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStrip_Y.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="numericUpDown_pointer_Y.Location" type="System.Drawing.Point, System.Drawing">
-    <value>193, 34</value>
-  </data>
-  <data name="numericUpDown_pointer_Y.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 20</value>
-  </data>
-  <data name="numericUpDown_pointer_Y.TabIndex" type="System.Int32, mscorlib">
-    <value>118</value>
-  </data>
-  <data name="&gt;&gt;numericUpDown_pointer_Y.Name" xml:space="preserve">
-    <value>numericUpDown_pointer_Y</value>
-  </data>
-  <data name="&gt;&gt;numericUpDown_pointer_Y.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numericUpDown_pointer_Y.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;numericUpDown_pointer_Y.ZOrder" xml:space="preserve">
-    <value>27</value>
-  </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
@@ -339,18 +309,48 @@
   <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
     <value>Вставить</value>
   </data>
+  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 82</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStrip_Y.Name" xml:space="preserve">
+    <value>contextMenuStrip_Y</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStrip_Y.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="numericUpDown_pointer_Y.Location" type="System.Drawing.Point, System.Drawing">
+    <value>193, 34</value>
+  </data>
+  <data name="numericUpDown_pointer_Y.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 20</value>
+  </data>
+  <data name="numericUpDown_pointer_Y.TabIndex" type="System.Int32, mscorlib">
+    <value>118</value>
+  </data>
+  <data name="&gt;&gt;numericUpDown_pointer_Y.Name" xml:space="preserve">
+    <value>numericUpDown_pointer_Y</value>
+  </data>
+  <data name="&gt;&gt;numericUpDown_pointer_Y.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDown_pointer_Y.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;numericUpDown_pointer_Y.ZOrder" xml:space="preserve">
+    <value>27</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label02.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="label02.Location" type="System.Drawing.Point, System.Drawing">
-    <value>99, 3</value>
+    <value>99, 0</value>
   </data>
   <data name="label02.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
   <data name="label02.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 27</value>
+    <value>144, 30</value>
   </data>
   <data name="label02.TabIndex" type="System.Int32, mscorlib">
     <value>119</value>
@@ -509,13 +509,13 @@
     <value>NoControl</value>
   </data>
   <data name="label03.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 66</value>
+    <value>3, 63</value>
   </data>
   <data name="label03.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
   <data name="label03.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 27</value>
+    <value>130, 30</value>
   </data>
   <data name="label03.TabIndex" type="System.Int32, mscorlib">
     <value>126</value>

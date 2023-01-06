@@ -62,6 +62,14 @@ namespace Watch_Face_Editor
 
             SplashScreenStart();
 
+            Point centrPosition = new Point(0, 0);
+            centrPosition.X = (SystemInformation.PrimaryMonitorSize.Width - 1100) / 2;
+            centrPosition.Y = (SystemInformation.PrimaryMonitorSize.Height - 721) / 2;
+
+            Point centrPositionPreview = new Point(0, 0);
+            centrPositionPreview.X = (SystemInformation.PrimaryMonitorSize.Width - 478) / 2;
+            centrPositionPreview.Y = (SystemInformation.PrimaryMonitorSize.Height - 524) / 2;
+
             ProgramSettings = new Program_Settings();
             try
             {
@@ -78,8 +86,8 @@ namespace Watch_Face_Editor
                 }
                 else
                 {
-                    Properties.Settings.Default.FormLocation = new Point(0, 0);
-                    Properties.Settings.Default.PreviewLocation = new Point(0, 0);
+                    Properties.Settings.Default.FormLocation = centrPosition;
+                    Properties.Settings.Default.PreviewLocation = centrPositionPreview;
                     Properties.Settings.Default.Save();
 
                     string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
@@ -92,6 +100,24 @@ namespace Watch_Face_Editor
 
 
                 if (ProgramSettings == null) ProgramSettings = new Program_Settings();
+                Size size = new Size();
+                int screenOffsetX = 0;
+                //Получаем высоту главного экрана и сумму ширины двух мониторов.
+                size.Height = SystemInformation.PrimaryMonitorSize.Height;
+                //size.Width = Screen.AllScreens[0].WorkingArea.Width + Screen.AllScreens[1].WorkingArea.Width;
+                foreach (Screen screen in Screen.AllScreens)
+                {
+                    size.Width += screen.WorkingArea.Width;
+                    if (screen.WorkingArea.X < screenOffsetX) screenOffsetX = screen.WorkingArea.X;
+                }
+                size.Width -= screenOffsetX;
+                if (Properties.Settings.Default.FormLocation.X >= size.Width || Properties.Settings.Default.FormLocation.Y >= size.Height || 
+                    Properties.Settings.Default.FormLocation.X < screenOffsetX - 550)
+                    Properties.Settings.Default.FormLocation = centrPosition;
+                if (Properties.Settings.Default.PreviewLocation.X >= size.Width || Properties.Settings.Default.PreviewLocation.Y >= size.Height ||
+                    Properties.Settings.Default.PreviewLocation.X < screenOffsetX - 240)
+                    Properties.Settings.Default.PreviewLocation = centrPositionPreview;
+
                 if ((ProgramSettings.language == null) || (ProgramSettings.language.Length < 2))
                 {
                     string language = System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
@@ -7403,7 +7429,7 @@ namespace Watch_Face_Editor
             if (Watch_Face != null && Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
                 ChangSizeBackground(Watch_Face.ScreenAOD.Background);
 
-            if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4")
+            if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4"  || ProgramSettings.Watch_Model == "T-Rex 2")
             {
                 uCtrl_Animation_Elm.MotionAnimation = false;
                 uCtrl_Animation_Elm.RotateAnimation = false;
@@ -7562,16 +7588,32 @@ namespace Watch_Face_Editor
             if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Elements != null)
             {
                 List<object> Elements = Watch_Face.ScreenNormal.Elements;
-                bool exists = Elements.Exists(el => el.GetType().Name == "ElementAnimation"); // проверяем чтотакой элемент есть
-                if (exists) app.module.watchface.hightCost = 1;
+                //bool exists = Elements.Exists(el => el.GetType().Name == "ElementAnimation"); // проверяем чтотакой элемент есть
+                //if (exists) app.module.watchface.hightCost = 1;
+                ElementAnimation animation = (ElementAnimation)Watch_Face.ScreenNormal.Elements.Find(ea => ea.GetType().Name == "ElementAnimation");
+                if (animation != null)
+                {
+                    if (animation.visible)
+                    {
+                        bool anim_exists = false;
+                        if (animation.Frame_Animation_List != null && animation.Frame_Animation_List.visible) anim_exists = true;
+                        if (animation.Motion_Animation_List != null && animation.Motion_Animation_List.visible) anim_exists = true;
+                        if (animation.Rotate_Animation_List != null && animation.Rotate_Animation_List.visible) anim_exists = true;
+                        if (anim_exists) app.module.watchface.hightCost = 1;
+                    }
+                }
             }
             if (Watch_Face.ScreenAOD != null) app.module.watchface.lockscreen = 1;
             if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
             {
                 if (Watch_Face.ScreenNormal.Background.Editable_Background != null &&
-                    Watch_Face.ScreenNormal.Background.Editable_Background.enable_edit_bg) app.module.watchface.editable = 1;
+                    Watch_Face.ScreenNormal.Background.Editable_Background.enable_edit_bg &&
+                    Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundList != null &&
+                    Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundList.Count > 0) app.module.watchface.editable = 1;
             }
             if (Watch_Face.Editable_Elements != null && Watch_Face.Editable_Elements.visible) app.module.watchface.editable = 1;
+            if (Watch_Face.ElementEditablePointers != null && Watch_Face.ElementEditablePointers.visible && 
+                Watch_Face.ElementEditablePointers.config != null && Watch_Face.ElementEditablePointers.config.Count > 0) app.module.watchface.editable = 1;
             switch (ProgramSettings.Watch_Model)
             {
                 case "GTR 3 Pro":

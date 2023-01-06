@@ -32,31 +32,40 @@ namespace Watch_Face_Editor
                 {
                     if(Watch_Face.ScreenNormal.Background.BackgroundColor != null)
                     {
-                        variables += TabInString(4) + "let normal_background_bg = ''" + Environment.NewLine;
                         hmUI_widget_FILL_RECT backgroundColor = Watch_Face.ScreenNormal.Background.BackgroundColor;
                         //if (backgroundColor.show_level == null) backgroundColor.show_level = "ONLY_NORMAL";
                         options = FILL_RECT_Options(backgroundColor, "ONLY_NORMAL");
-                        items += TabInString(6) + "normal_background_bg = hmUI.createWidget(hmUI.widget.FILL_RECT, {" +
-                            options + TabInString(6) + "});" + Environment.NewLine;
+                        if (options.Length > 5)
+                        {
+                            variables += TabInString(4) + "let normal_background_bg = ''" + Environment.NewLine;
+                            items += TabInString(6) + "normal_background_bg = hmUI.createWidget(hmUI.widget.FILL_RECT, {" +
+                                              options + TabInString(6) + "});" + Environment.NewLine; 
+                        }
                     }
                     if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
                     {
-                        variables += TabInString(4) + "let normal_background_bg_img = ''" + Environment.NewLine;
                         hmUI_widget_IMG backgroundImage = Watch_Face.ScreenNormal.Background.BackgroundImage;
                         //if (backgroundImage.show_level == null) backgroundImage.show_level = "ONLY_NORMAL";
                         options = IMG_Options(backgroundImage, "ONLY_NORMAL");
-                        items += TabInString(6) + "normal_background_bg_img = hmUI.createWidget(hmUI.widget.IMG, {" +
-                            options + TabInString(6) + "});" + Environment.NewLine;
+                        if (options.Length > 5)
+                        {
+                            variables += TabInString(4) + "let normal_background_bg_img = ''" + Environment.NewLine;
+                            items += TabInString(6) + "normal_background_bg_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                               options + TabInString(6) + "});" + Environment.NewLine; 
+                        }
                     }
                     if (Watch_Face.ScreenNormal.Background.Editable_Background != null)
                     {
-                        variables += TabInString(4) + "let editBg = ''" + Environment.NewLine;
                         Editable_Background editable_Background = Watch_Face.ScreenNormal.Background.Editable_Background;
                         string level = "";
                         if(!editable_Background.AOD_show) level = "hmUI.show_level.ONLY_NORMAL | hmUI.show_level.ONLY_EDIT";
                         options = Editable_Background_Options(editable_Background, level);
-                        items += TabInString(6) + "editBg = hmUI.createWidget(hmUI.widget.WATCHFACE_EDIT_BG, {" +
-                            options + TabInString(6) + "});" + Environment.NewLine;
+                        if (options.Length > 5)
+                        {
+                            variables += TabInString(4) + "let editBg = ''" + Environment.NewLine;
+                            items += TabInString(6) + "editBg = hmUI.createWidget(hmUI.widget.WATCHFACE_EDIT_BG, {" +
+                                                options + TabInString(6) + "});" + Environment.NewLine; 
+                        }
                     }
                 }
                 if (Watch_Face.ScreenNormal.Elements != null && Watch_Face.ScreenNormal.Elements.Count > 0)
@@ -14995,9 +15004,9 @@ namespace Watch_Face_Editor
 
                     #region Circle_Scale
                     case "Circle_Scale":
-                        Circle_Scale img_Circle_Scale = Object_Circle_Scale(parametrs);
+                        Circle_Scale circle_Scale = Object_Circle_Scale(parametrs);
 
-                        if (img_Circle_Scale.type == "STEP")
+                        if (circle_Scale.type == "STEP")
                         {
                             ElementSteps steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
                             if (steps == null)
@@ -15018,21 +15027,21 @@ namespace Watch_Face_Editor
                                 if (steps.Icon != null) offset++;
 
                                 steps.Circle_Scale = new Circle_Scale();
-                                steps.Circle_Scale.center_x = img_Circle_Scale.center_x;
-                                steps.Circle_Scale.center_y = img_Circle_Scale.center_y;
-                                steps.Circle_Scale.start_angle = img_Circle_Scale.start_angle;
-                                steps.Circle_Scale.end_angle = img_Circle_Scale.end_angle;
-                                steps.Circle_Scale.color = img_Circle_Scale.color;
-                                steps.Circle_Scale.radius = img_Circle_Scale.radius;
-                                steps.Circle_Scale.line_width = img_Circle_Scale.line_width;
-                                steps.Circle_Scale.mirror = img_Circle_Scale.mirror;
-                                steps.Circle_Scale.inversion = img_Circle_Scale.inversion;
+                                steps.Circle_Scale.center_x = circle_Scale.center_x;
+                                steps.Circle_Scale.center_y = circle_Scale.center_y;
+                                steps.Circle_Scale.start_angle = circle_Scale.start_angle;
+                                steps.Circle_Scale.end_angle = circle_Scale.end_angle;
+                                steps.Circle_Scale.color = circle_Scale.color;
+                                steps.Circle_Scale.radius = circle_Scale.radius;
+                                steps.Circle_Scale.line_width = circle_Scale.line_width;
+                                steps.Circle_Scale.mirror = circle_Scale.mirror;
+                                steps.Circle_Scale.inversion = circle_Scale.inversion;
                                 steps.Circle_Scale.visible = true;
                                 steps.Circle_Scale.position = offset;
                             }
                         }
 
-                        if (img_Circle_Scale.type == "BATTERY")
+                        if (circle_Scale.type == "BATTERY")
                         {
                             ElementBattery battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
                             if (battery == null)
@@ -15052,21 +15061,21 @@ namespace Watch_Face_Editor
                                 if (battery.Icon != null) offset++;
 
                                 battery.Circle_Scale = new Circle_Scale();
-                                battery.Circle_Scale.center_x = img_Circle_Scale.center_x;
-                                battery.Circle_Scale.center_y = img_Circle_Scale.center_y;
-                                battery.Circle_Scale.start_angle = img_Circle_Scale.start_angle;
-                                battery.Circle_Scale.end_angle = img_Circle_Scale.end_angle;
-                                battery.Circle_Scale.color = img_Circle_Scale.color;
-                                battery.Circle_Scale.radius = img_Circle_Scale.radius;
-                                battery.Circle_Scale.line_width = img_Circle_Scale.line_width;
-                                battery.Circle_Scale.mirror = img_Circle_Scale.mirror;
-                                battery.Circle_Scale.inversion = img_Circle_Scale.inversion;
+                                battery.Circle_Scale.center_x = circle_Scale.center_x;
+                                battery.Circle_Scale.center_y = circle_Scale.center_y;
+                                battery.Circle_Scale.start_angle = circle_Scale.start_angle;
+                                battery.Circle_Scale.end_angle = circle_Scale.end_angle;
+                                battery.Circle_Scale.color = circle_Scale.color;
+                                battery.Circle_Scale.radius = circle_Scale.radius;
+                                battery.Circle_Scale.line_width = circle_Scale.line_width;
+                                battery.Circle_Scale.mirror = circle_Scale.mirror;
+                                battery.Circle_Scale.inversion = circle_Scale.inversion;
                                 battery.Circle_Scale.visible = true;
                                 battery.Circle_Scale.position = offset;
                             }
                         }
 
-                        if (img_Circle_Scale.type == "CAL")
+                        if (circle_Scale.type == "CAL")
                         {
                             ElementCalories calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
                             if (calorie == null)
@@ -15087,21 +15096,21 @@ namespace Watch_Face_Editor
                                 if (calorie.Icon != null) offset++;
 
                                 calorie.Circle_Scale = new Circle_Scale();
-                                calorie.Circle_Scale.center_x = img_Circle_Scale.center_x;
-                                calorie.Circle_Scale.center_y = img_Circle_Scale.center_y;
-                                calorie.Circle_Scale.start_angle = img_Circle_Scale.start_angle;
-                                calorie.Circle_Scale.end_angle = img_Circle_Scale.end_angle;
-                                calorie.Circle_Scale.color = img_Circle_Scale.color;
-                                calorie.Circle_Scale.radius = img_Circle_Scale.radius;
-                                calorie.Circle_Scale.line_width = img_Circle_Scale.line_width;
-                                calorie.Circle_Scale.mirror = img_Circle_Scale.mirror;
-                                calorie.Circle_Scale.inversion = img_Circle_Scale.inversion;
+                                calorie.Circle_Scale.center_x = circle_Scale.center_x;
+                                calorie.Circle_Scale.center_y = circle_Scale.center_y;
+                                calorie.Circle_Scale.start_angle = circle_Scale.start_angle;
+                                calorie.Circle_Scale.end_angle = circle_Scale.end_angle;
+                                calorie.Circle_Scale.color = circle_Scale.color;
+                                calorie.Circle_Scale.radius = circle_Scale.radius;
+                                calorie.Circle_Scale.line_width = circle_Scale.line_width;
+                                calorie.Circle_Scale.mirror = circle_Scale.mirror;
+                                calorie.Circle_Scale.inversion = circle_Scale.inversion;
                                 calorie.Circle_Scale.visible = true;
                                 calorie.Circle_Scale.position = offset;
                             }
                         }
 
-                        if (img_Circle_Scale.type == "HEART")
+                        if (circle_Scale.type == "HEART")
                         {
                             ElementHeart heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
                             if (heart == null)
@@ -15121,21 +15130,21 @@ namespace Watch_Face_Editor
                                 if (heart.Icon != null) offset++;
 
                                 heart.Circle_Scale = new Circle_Scale();
-                                heart.Circle_Scale.center_x = img_Circle_Scale.center_x;
-                                heart.Circle_Scale.center_y = img_Circle_Scale.center_y;
-                                heart.Circle_Scale.start_angle = img_Circle_Scale.start_angle;
-                                heart.Circle_Scale.end_angle = img_Circle_Scale.end_angle;
-                                heart.Circle_Scale.color = img_Circle_Scale.color;
-                                heart.Circle_Scale.radius = img_Circle_Scale.radius;
-                                heart.Circle_Scale.line_width = img_Circle_Scale.line_width;
-                                heart.Circle_Scale.mirror = img_Circle_Scale.mirror;
-                                heart.Circle_Scale.inversion = img_Circle_Scale.inversion;
+                                heart.Circle_Scale.center_x = circle_Scale.center_x;
+                                heart.Circle_Scale.center_y = circle_Scale.center_y;
+                                heart.Circle_Scale.start_angle = circle_Scale.start_angle;
+                                heart.Circle_Scale.end_angle = circle_Scale.end_angle;
+                                heart.Circle_Scale.color = circle_Scale.color;
+                                heart.Circle_Scale.radius = circle_Scale.radius;
+                                heart.Circle_Scale.line_width = circle_Scale.line_width;
+                                heart.Circle_Scale.mirror = circle_Scale.mirror;
+                                heart.Circle_Scale.inversion = circle_Scale.inversion;
                                 heart.Circle_Scale.visible = true;
                                 heart.Circle_Scale.position = offset;
                             }
                         }
 
-                        if (img_Circle_Scale.type == "PAI_WEEKLY")
+                        if (circle_Scale.type == "PAI_WEEKLY")
                         {
                             ElementPAI pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
                             if (pai == null)
@@ -15156,21 +15165,21 @@ namespace Watch_Face_Editor
                                 if (pai.Icon != null) offset++;
 
                                 pai.Circle_Scale = new Circle_Scale();
-                                pai.Circle_Scale.center_x = img_Circle_Scale.center_x;
-                                pai.Circle_Scale.center_y = img_Circle_Scale.center_y;
-                                pai.Circle_Scale.start_angle = img_Circle_Scale.start_angle;
-                                pai.Circle_Scale.end_angle = img_Circle_Scale.end_angle;
-                                pai.Circle_Scale.color = img_Circle_Scale.color;
-                                pai.Circle_Scale.radius = img_Circle_Scale.radius;
-                                pai.Circle_Scale.line_width = img_Circle_Scale.line_width;
-                                pai.Circle_Scale.mirror = img_Circle_Scale.mirror;
-                                pai.Circle_Scale.inversion = img_Circle_Scale.inversion;
+                                pai.Circle_Scale.center_x = circle_Scale.center_x;
+                                pai.Circle_Scale.center_y = circle_Scale.center_y;
+                                pai.Circle_Scale.start_angle = circle_Scale.start_angle;
+                                pai.Circle_Scale.end_angle = circle_Scale.end_angle;
+                                pai.Circle_Scale.color = circle_Scale.color;
+                                pai.Circle_Scale.radius = circle_Scale.radius;
+                                pai.Circle_Scale.line_width = circle_Scale.line_width;
+                                pai.Circle_Scale.mirror = circle_Scale.mirror;
+                                pai.Circle_Scale.inversion = circle_Scale.inversion;
                                 pai.Circle_Scale.visible = true;
                                 pai.Circle_Scale.position = offset;
                             }
                         }
 
-                        if (img_Circle_Scale.type == "STAND")
+                        if (circle_Scale.type == "STAND")
                         {
                             ElementStand stand = (ElementStand)elementsList.Find(e => e.GetType().Name == "ElementStand");
                             if (stand == null)
@@ -15191,21 +15200,21 @@ namespace Watch_Face_Editor
                                 if (stand.Icon != null) offset++;
 
                                 stand.Circle_Scale = new Circle_Scale();
-                                stand.Circle_Scale.center_x = img_Circle_Scale.center_x;
-                                stand.Circle_Scale.center_y = img_Circle_Scale.center_y;
-                                stand.Circle_Scale.start_angle = img_Circle_Scale.start_angle;
-                                stand.Circle_Scale.end_angle = img_Circle_Scale.end_angle;
-                                stand.Circle_Scale.color = img_Circle_Scale.color;
-                                stand.Circle_Scale.radius = img_Circle_Scale.radius;
-                                stand.Circle_Scale.line_width = img_Circle_Scale.line_width;
-                                stand.Circle_Scale.mirror = img_Circle_Scale.mirror;
-                                stand.Circle_Scale.inversion = img_Circle_Scale.inversion;
+                                stand.Circle_Scale.center_x = circle_Scale.center_x;
+                                stand.Circle_Scale.center_y = circle_Scale.center_y;
+                                stand.Circle_Scale.start_angle = circle_Scale.start_angle;
+                                stand.Circle_Scale.end_angle = circle_Scale.end_angle;
+                                stand.Circle_Scale.color = circle_Scale.color;
+                                stand.Circle_Scale.radius = circle_Scale.radius;
+                                stand.Circle_Scale.line_width = circle_Scale.line_width;
+                                stand.Circle_Scale.mirror = circle_Scale.mirror;
+                                stand.Circle_Scale.inversion = circle_Scale.inversion;
                                 stand.Circle_Scale.visible = true;
                                 stand.Circle_Scale.position = offset;
                             }
                         }
 
-                        if (img_Circle_Scale.type == "ACTIVITY")
+                        if (circle_Scale.type == "ACTIVITY")
                         {
                             ElementActivity activity = (ElementActivity)elementsList.Find(e => e.GetType().Name == "ElementActivity");
                             if (activity == null)
@@ -15226,17 +15235,52 @@ namespace Watch_Face_Editor
                                 if (activity.Icon != null) offset++;
 
                                 activity.Circle_Scale = new Circle_Scale();
-                                activity.Circle_Scale.center_x = img_Circle_Scale.center_x;
-                                activity.Circle_Scale.center_y = img_Circle_Scale.center_y;
-                                activity.Circle_Scale.start_angle = img_Circle_Scale.start_angle;
-                                activity.Circle_Scale.end_angle = img_Circle_Scale.end_angle;
-                                activity.Circle_Scale.color = img_Circle_Scale.color;
-                                activity.Circle_Scale.radius = img_Circle_Scale.radius;
-                                activity.Circle_Scale.line_width = img_Circle_Scale.line_width;
-                                activity.Circle_Scale.mirror = img_Circle_Scale.mirror;
-                                activity.Circle_Scale.inversion = img_Circle_Scale.inversion;
+                                activity.Circle_Scale.center_x = circle_Scale.center_x;
+                                activity.Circle_Scale.center_y = circle_Scale.center_y;
+                                activity.Circle_Scale.start_angle = circle_Scale.start_angle;
+                                activity.Circle_Scale.end_angle = circle_Scale.end_angle;
+                                activity.Circle_Scale.color = circle_Scale.color;
+                                activity.Circle_Scale.radius = circle_Scale.radius;
+                                activity.Circle_Scale.line_width = circle_Scale.line_width;
+                                activity.Circle_Scale.mirror = circle_Scale.mirror;
+                                activity.Circle_Scale.inversion = circle_Scale.inversion;
                                 activity.Circle_Scale.visible = true;
                                 activity.Circle_Scale.position = offset;
+                            }
+                        }
+
+                        if (circle_Scale.type == "FAT_BURNING")
+                        {
+                            ElementFatBurning fat_burning = (ElementFatBurning)elementsList.Find(e => e.GetType().Name == "ElementFatBurning");
+                            if (fat_burning == null)
+                            {
+                                elementsList.Add(new ElementFatBurning());
+                                fat_burning = (ElementFatBurning)elementsList.Find(e => e.GetType().Name == "ElementFatBurning");
+                            }
+                            if (fat_burning != null)
+                            {
+                                int offset = 1;
+                                if (fat_burning.Images != null) offset++;
+                                if (fat_burning.Segments != null) offset++;
+                                if (fat_burning.Number != null) offset++;
+                                if (fat_burning.Number_Target != null) offset++;
+                                if (fat_burning.Pointer != null) offset++;
+                                //if (fat_burning.Circle_Scale != null) offset++;
+                                if (fat_burning.Linear_Scale != null) offset++;
+                                if (fat_burning.Icon != null) offset++;
+
+                                fat_burning.Circle_Scale = new Circle_Scale();
+                                fat_burning.Circle_Scale.center_x = circle_Scale.center_x;
+                                fat_burning.Circle_Scale.center_y = circle_Scale.center_y;
+                                fat_burning.Circle_Scale.start_angle = circle_Scale.start_angle;
+                                fat_burning.Circle_Scale.end_angle = circle_Scale.end_angle;
+                                fat_burning.Circle_Scale.color = circle_Scale.color;
+                                fat_burning.Circle_Scale.radius = circle_Scale.radius;
+                                fat_burning.Circle_Scale.line_width = circle_Scale.line_width;
+                                fat_burning.Circle_Scale.mirror = circle_Scale.mirror;
+                                fat_burning.Circle_Scale.inversion = circle_Scale.inversion;
+                                fat_burning.Circle_Scale.visible = true;
+                                fat_burning.Circle_Scale.position = offset;
                             }
                         }
 
@@ -15245,9 +15289,9 @@ namespace Watch_Face_Editor
 
                     #region Linear_Scale
                     case "Linear_Scale":
-                        Linear_Scale img_Linear_Scale = Object_Linear_Scale(parametrs);
+                        Linear_Scale linear_Scale = Object_Linear_Scale(parametrs);
 
-                        if (img_Linear_Scale.type == "STEP")
+                        if (linear_Scale.type == "STEP")
                         {
                             ElementSteps steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
                             if (steps == null)
@@ -15268,21 +15312,21 @@ namespace Watch_Face_Editor
                                 if (steps.Icon != null) offset++;
 
                                 steps.Linear_Scale = new Linear_Scale();
-                                steps.Linear_Scale.start_x = img_Linear_Scale.start_x;
-                                steps.Linear_Scale.start_y = img_Linear_Scale.start_y;
-                                steps.Linear_Scale.color = img_Linear_Scale.color;
-                                steps.Linear_Scale.lenght = img_Linear_Scale.lenght;
-                                steps.Linear_Scale.line_width = img_Linear_Scale.line_width;
-                                steps.Linear_Scale.mirror = img_Linear_Scale.mirror;
-                                steps.Linear_Scale.inversion = img_Linear_Scale.inversion;
-                                steps.Linear_Scale.vertical = img_Linear_Scale.vertical;
-                                steps.Linear_Scale.pointer = img_Linear_Scale.pointer;
+                                steps.Linear_Scale.start_x = linear_Scale.start_x;
+                                steps.Linear_Scale.start_y = linear_Scale.start_y;
+                                steps.Linear_Scale.color = linear_Scale.color;
+                                steps.Linear_Scale.lenght = linear_Scale.lenght;
+                                steps.Linear_Scale.line_width = linear_Scale.line_width;
+                                steps.Linear_Scale.mirror = linear_Scale.mirror;
+                                steps.Linear_Scale.inversion = linear_Scale.inversion;
+                                steps.Linear_Scale.vertical = linear_Scale.vertical;
+                                steps.Linear_Scale.pointer = linear_Scale.pointer;
                                 steps.Linear_Scale.visible = true;
                                 steps.Linear_Scale.position = offset;
                             }
                         }
 
-                        if (img_Linear_Scale.type == "BATTERY")
+                        if (linear_Scale.type == "BATTERY")
                         {
                             ElementBattery battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
                             if (battery == null)
@@ -15302,21 +15346,21 @@ namespace Watch_Face_Editor
                                 if (battery.Icon != null) offset++;
 
                                 battery.Linear_Scale = new Linear_Scale();
-                                battery.Linear_Scale.start_x = img_Linear_Scale.start_x;
-                                battery.Linear_Scale.start_y = img_Linear_Scale.start_y;
-                                battery.Linear_Scale.color = img_Linear_Scale.color;
-                                battery.Linear_Scale.lenght = img_Linear_Scale.lenght;
-                                battery.Linear_Scale.line_width = img_Linear_Scale.line_width;
-                                battery.Linear_Scale.mirror = img_Linear_Scale.mirror;
-                                battery.Linear_Scale.inversion = img_Linear_Scale.inversion;
-                                battery.Linear_Scale.vertical = img_Linear_Scale.vertical;
-                                battery.Linear_Scale.pointer = img_Linear_Scale.pointer;
+                                battery.Linear_Scale.start_x = linear_Scale.start_x;
+                                battery.Linear_Scale.start_y = linear_Scale.start_y;
+                                battery.Linear_Scale.color = linear_Scale.color;
+                                battery.Linear_Scale.lenght = linear_Scale.lenght;
+                                battery.Linear_Scale.line_width = linear_Scale.line_width;
+                                battery.Linear_Scale.mirror = linear_Scale.mirror;
+                                battery.Linear_Scale.inversion = linear_Scale.inversion;
+                                battery.Linear_Scale.vertical = linear_Scale.vertical;
+                                battery.Linear_Scale.pointer = linear_Scale.pointer;
                                 battery.Linear_Scale.visible = true;
                                 battery.Linear_Scale.position = offset;
                             }
                         }
 
-                        if (img_Linear_Scale.type == "CAL")
+                        if (linear_Scale.type == "CAL")
                         {
                             ElementCalories calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
                             if (calorie == null)
@@ -15337,21 +15381,21 @@ namespace Watch_Face_Editor
                                 if (calorie.Icon != null) offset++;
 
                                 calorie.Linear_Scale = new Linear_Scale();
-                                calorie.Linear_Scale.start_x = img_Linear_Scale.start_x;
-                                calorie.Linear_Scale.start_y = img_Linear_Scale.start_y;
-                                calorie.Linear_Scale.color = img_Linear_Scale.color;
-                                calorie.Linear_Scale.lenght = img_Linear_Scale.lenght;
-                                calorie.Linear_Scale.line_width = img_Linear_Scale.line_width;
-                                calorie.Linear_Scale.mirror = img_Linear_Scale.mirror;
-                                calorie.Linear_Scale.inversion = img_Linear_Scale.inversion;
-                                calorie.Linear_Scale.vertical = img_Linear_Scale.vertical;
-                                calorie.Linear_Scale.pointer = img_Linear_Scale.pointer;
+                                calorie.Linear_Scale.start_x = linear_Scale.start_x;
+                                calorie.Linear_Scale.start_y = linear_Scale.start_y;
+                                calorie.Linear_Scale.color = linear_Scale.color;
+                                calorie.Linear_Scale.lenght = linear_Scale.lenght;
+                                calorie.Linear_Scale.line_width = linear_Scale.line_width;
+                                calorie.Linear_Scale.mirror = linear_Scale.mirror;
+                                calorie.Linear_Scale.inversion = linear_Scale.inversion;
+                                calorie.Linear_Scale.vertical = linear_Scale.vertical;
+                                calorie.Linear_Scale.pointer = linear_Scale.pointer;
                                 calorie.Linear_Scale.visible = true;
                                 calorie.Linear_Scale.position = offset;
                             }
                         }
 
-                        if (img_Linear_Scale.type == "HEART")
+                        if (linear_Scale.type == "HEART")
                         {
                             ElementHeart heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
                             if (heart == null)
@@ -15371,21 +15415,21 @@ namespace Watch_Face_Editor
                                 if (heart.Icon != null) offset++;
 
                                 heart.Linear_Scale = new Linear_Scale();
-                                heart.Linear_Scale.start_x = img_Linear_Scale.start_x;
-                                heart.Linear_Scale.start_y = img_Linear_Scale.start_y;
-                                heart.Linear_Scale.color = img_Linear_Scale.color;
-                                heart.Linear_Scale.lenght = img_Linear_Scale.lenght;
-                                heart.Linear_Scale.line_width = img_Linear_Scale.line_width;
-                                heart.Linear_Scale.mirror = img_Linear_Scale.mirror;
-                                heart.Linear_Scale.inversion = img_Linear_Scale.inversion;
-                                heart.Linear_Scale.vertical = img_Linear_Scale.vertical;
-                                heart.Linear_Scale.pointer = img_Linear_Scale.pointer;
+                                heart.Linear_Scale.start_x = linear_Scale.start_x;
+                                heart.Linear_Scale.start_y = linear_Scale.start_y;
+                                heart.Linear_Scale.color = linear_Scale.color;
+                                heart.Linear_Scale.lenght = linear_Scale.lenght;
+                                heart.Linear_Scale.line_width = linear_Scale.line_width;
+                                heart.Linear_Scale.mirror = linear_Scale.mirror;
+                                heart.Linear_Scale.inversion = linear_Scale.inversion;
+                                heart.Linear_Scale.vertical = linear_Scale.vertical;
+                                heart.Linear_Scale.pointer = linear_Scale.pointer;
                                 heart.Linear_Scale.visible = true;
                                 heart.Linear_Scale.position = offset;
                             }
                         }
 
-                        if (img_Linear_Scale.type == "PAI_WEEKLY")
+                        if (linear_Scale.type == "PAI_WEEKLY")
                         {
                             ElementPAI pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
                             if (pai == null)
@@ -15406,21 +15450,21 @@ namespace Watch_Face_Editor
                                 if (pai.Icon != null) offset++;
 
                                 pai.Linear_Scale = new Linear_Scale();
-                                pai.Linear_Scale.start_x = img_Linear_Scale.start_x;
-                                pai.Linear_Scale.start_y = img_Linear_Scale.start_y;
-                                pai.Linear_Scale.color = img_Linear_Scale.color;
-                                pai.Linear_Scale.lenght = img_Linear_Scale.lenght;
-                                pai.Linear_Scale.line_width = img_Linear_Scale.line_width;
-                                pai.Linear_Scale.mirror = img_Linear_Scale.mirror;
-                                pai.Linear_Scale.inversion = img_Linear_Scale.inversion;
-                                pai.Linear_Scale.vertical = img_Linear_Scale.vertical;
-                                pai.Linear_Scale.pointer = img_Linear_Scale.pointer;
+                                pai.Linear_Scale.start_x = linear_Scale.start_x;
+                                pai.Linear_Scale.start_y = linear_Scale.start_y;
+                                pai.Linear_Scale.color = linear_Scale.color;
+                                pai.Linear_Scale.lenght = linear_Scale.lenght;
+                                pai.Linear_Scale.line_width = linear_Scale.line_width;
+                                pai.Linear_Scale.mirror = linear_Scale.mirror;
+                                pai.Linear_Scale.inversion = linear_Scale.inversion;
+                                pai.Linear_Scale.vertical = linear_Scale.vertical;
+                                pai.Linear_Scale.pointer = linear_Scale.pointer;
                                 pai.Linear_Scale.visible = true;
                                 pai.Linear_Scale.position = offset;
                             }
                         }
 
-                        if (img_Linear_Scale.type == "STAND")
+                        if (linear_Scale.type == "STAND")
                         {
                             ElementStand stand = (ElementStand)elementsList.Find(e => e.GetType().Name == "ElementStand");
                             if (stand == null)
@@ -15441,21 +15485,21 @@ namespace Watch_Face_Editor
                                 if (stand.Icon != null) offset++;
 
                                 stand.Linear_Scale = new Linear_Scale();
-                                stand.Linear_Scale.start_x = img_Linear_Scale.start_x;
-                                stand.Linear_Scale.start_y = img_Linear_Scale.start_y;
-                                stand.Linear_Scale.color = img_Linear_Scale.color;
-                                stand.Linear_Scale.lenght = img_Linear_Scale.lenght;
-                                stand.Linear_Scale.line_width = img_Linear_Scale.line_width;
-                                stand.Linear_Scale.mirror = img_Linear_Scale.mirror;
-                                stand.Linear_Scale.inversion = img_Linear_Scale.inversion;
-                                stand.Linear_Scale.vertical = img_Linear_Scale.vertical;
-                                stand.Linear_Scale.pointer = img_Linear_Scale.pointer;
+                                stand.Linear_Scale.start_x = linear_Scale.start_x;
+                                stand.Linear_Scale.start_y = linear_Scale.start_y;
+                                stand.Linear_Scale.color = linear_Scale.color;
+                                stand.Linear_Scale.lenght = linear_Scale.lenght;
+                                stand.Linear_Scale.line_width = linear_Scale.line_width;
+                                stand.Linear_Scale.mirror = linear_Scale.mirror;
+                                stand.Linear_Scale.inversion = linear_Scale.inversion;
+                                stand.Linear_Scale.vertical = linear_Scale.vertical;
+                                stand.Linear_Scale.pointer = linear_Scale.pointer;
                                 stand.Linear_Scale.visible = true;
                                 stand.Linear_Scale.position = offset;
                             }
                         }
 
-                        if (img_Linear_Scale.type == "ACTIVITY")
+                        if (linear_Scale.type == "ACTIVITY")
                         {
                             ElementActivity activity = (ElementActivity)elementsList.Find(e => e.GetType().Name == "ElementActivity");
                             if (activity == null)
@@ -15476,17 +15520,52 @@ namespace Watch_Face_Editor
                                 if (activity.Icon != null) offset++;
 
                                 activity.Linear_Scale = new Linear_Scale();
-                                activity.Linear_Scale.start_x = img_Linear_Scale.start_x;
-                                activity.Linear_Scale.start_y = img_Linear_Scale.start_y;
-                                activity.Linear_Scale.color = img_Linear_Scale.color;
-                                activity.Linear_Scale.lenght = img_Linear_Scale.lenght;
-                                activity.Linear_Scale.line_width = img_Linear_Scale.line_width;
-                                activity.Linear_Scale.mirror = img_Linear_Scale.mirror;
-                                activity.Linear_Scale.inversion = img_Linear_Scale.inversion;
-                                activity.Linear_Scale.vertical = img_Linear_Scale.vertical;
-                                activity.Linear_Scale.pointer = img_Linear_Scale.pointer;
+                                activity.Linear_Scale.start_x = linear_Scale.start_x;
+                                activity.Linear_Scale.start_y = linear_Scale.start_y;
+                                activity.Linear_Scale.color = linear_Scale.color;
+                                activity.Linear_Scale.lenght = linear_Scale.lenght;
+                                activity.Linear_Scale.line_width = linear_Scale.line_width;
+                                activity.Linear_Scale.mirror = linear_Scale.mirror;
+                                activity.Linear_Scale.inversion = linear_Scale.inversion;
+                                activity.Linear_Scale.vertical = linear_Scale.vertical;
+                                activity.Linear_Scale.pointer = linear_Scale.pointer;
                                 activity.Linear_Scale.visible = true;
                                 activity.Linear_Scale.position = offset;
+                            }
+                        }
+
+                        if (linear_Scale.type == "FAT_BURNING")
+                        {
+                            ElementFatBurning fat_burning = (ElementFatBurning)elementsList.Find(e => e.GetType().Name == "ElementFatBurning");
+                            if (fat_burning == null)
+                            {
+                                elementsList.Add(new ElementFatBurning());
+                                fat_burning = (ElementFatBurning)elementsList.Find(e => e.GetType().Name == "ElementFatBurning");
+                            }
+                            if (fat_burning != null)
+                            {
+                                int offset = 1;
+                                if (fat_burning.Images != null) offset++;
+                                if (fat_burning.Segments != null) offset++;
+                                if (fat_burning.Number != null) offset++;
+                                if (fat_burning.Number_Target != null) offset++;
+                                if (fat_burning.Pointer != null) offset++;
+                                if (fat_burning.Circle_Scale != null) offset++;
+                                //if (fat_burning.Linear_Scale != null) offset++;
+                                if (fat_burning.Icon != null) offset++;
+
+                                fat_burning.Linear_Scale = new Linear_Scale();
+                                fat_burning.Linear_Scale.start_x = linear_Scale.start_x;
+                                fat_burning.Linear_Scale.start_y = linear_Scale.start_y;
+                                fat_burning.Linear_Scale.color = linear_Scale.color;
+                                fat_burning.Linear_Scale.lenght = linear_Scale.lenght;
+                                fat_burning.Linear_Scale.line_width = linear_Scale.line_width;
+                                fat_burning.Linear_Scale.mirror = linear_Scale.mirror;
+                                fat_burning.Linear_Scale.inversion = linear_Scale.inversion;
+                                fat_burning.Linear_Scale.vertical = linear_Scale.vertical;
+                                fat_burning.Linear_Scale.pointer = linear_Scale.pointer;
+                                fat_burning.Linear_Scale.visible = true;
+                                fat_burning.Linear_Scale.position = offset;
                             }
                         }
 
