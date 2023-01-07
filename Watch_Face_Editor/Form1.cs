@@ -444,7 +444,29 @@ namespace Watch_Face_Editor
                 button_pack_zip.Image = (Image)(new Bitmap(button_pack_zip.Image,
                     new Size((int)(16 * currentDPI), (int)(16 * currentDPI))));
             }
+            fitText(button_SaveGIF);
+            fitText(button_SavePNG);
             Logger.WriteLine("* Form1_Shown(end)");
+        }
+
+        public void fitText(Control control)
+        {
+            Graphics graphics = control.CreateGraphics();
+            Font drawFont = control.Font;
+            //Font drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+            StringFormat strFormat = new StringFormat();
+            strFormat.FormatFlags = StringFormatFlags.FitBlackBox;
+            strFormat.Alignment = StringAlignment.Near;
+            strFormat.LineAlignment = StringAlignment.Near;
+            Size strSize = TextRenderer.MeasureText(graphics, control.Text, drawFont);
+            double controlWidth = control.Width - control.Margin.Left - control.Margin.Right;
+            double scale = controlWidth / strSize.Width;
+            if (scale < 1) 
+            {
+                Font newFont = new Font(control.Font.FontFamily, (float)(control.Font.Size * scale), control.Font.Style);
+                control.Font = newFont;
+            }
+
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -7728,9 +7750,10 @@ namespace Watch_Face_Editor
             int pos_destory = indexText.IndexOf("heart_rate.addEventListener");
             if (pos_destory > 0)
             {
-                pos_destory = indexText.IndexOf("console.log('index page.js on destory invoke')");
+                //pos_destory = indexText.IndexOf("console.log('index page.js on destory invoke')");
+                pos_destory = indexText.IndexOf("n.log(\"index page.js on destroy invoke\")");
                 indexText = indexText.Insert(pos_destory, "heart_rate.removeEventListener(heart.event.CURRENT, hrCurrListener);"
-                    + Environment.NewLine + TabInString(6));
+                    + Environment.NewLine + TabInString(8));
             }
             indexText = indexText.Replace("\r", "");
 
@@ -15786,6 +15809,8 @@ namespace Watch_Face_Editor
             }
             Logger.WriteLine("* Project_SaveAs (end)");
         }
+
+       
     }
 }
 

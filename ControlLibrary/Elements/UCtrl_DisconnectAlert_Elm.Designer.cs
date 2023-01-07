@@ -84,6 +84,7 @@
             this.Controls.Add(this.pictureBox_Del);
             this.Controls.Add(this.button_ElementName);
             this.Name = "UCtrl_DisconnectAlert_Elm";
+            this.Load += new System.EventHandler(this.UCtrl_DisconnectAlert_Elm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_NotShow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Show)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Del)).EndInit();

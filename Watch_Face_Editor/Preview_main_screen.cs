@@ -297,8 +297,7 @@ namespace Watch_Face_Editor
             #endregion
 
             #region ElementShortcuts
-            if (Watch_Face != null && Watch_Face.Shortcuts != null &&
-                Watch_Face.Shortcuts.visible)
+            if (radioButton_ScreenNormal.Checked && Watch_Face != null && Watch_Face.Shortcuts != null && Watch_Face.Shortcuts.visible)
             {
                 ElementShortcuts shortcutsElement = Watch_Face.Shortcuts;
 
