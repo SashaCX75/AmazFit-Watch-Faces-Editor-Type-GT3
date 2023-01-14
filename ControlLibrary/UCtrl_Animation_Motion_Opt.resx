@@ -177,9 +177,9 @@
   <data name="&gt;&gt;checkBox_anim_two_sides.ZOrder" xml:space="preserve">
     <value>18</value>
   </data>
-  <metadata name="contextMenuStrip_X.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="contextMenuStrip_X.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>16, 16</value>
-  </metadata>
+  </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
@@ -275,9 +275,9 @@
   <data name="&gt;&gt;numericUpDown_start_x.ZOrder" xml:space="preserve">
     <value>19</value>
   </data>
-  <metadata name="contextMenuStrip_Y.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="contextMenuStrip_Y.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>168, 16</value>
-  </metadata>
+  </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
@@ -444,6 +444,7 @@
   </data>
   <data name="label04.Text" xml:space="preserve">
     <value>Y:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;label04.Name" xml:space="preserve">
     <value>label04</value>
@@ -474,6 +475,7 @@
   </data>
   <data name="label03.Text" xml:space="preserve">
     <value>X:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;label03.Name" xml:space="preserve">
     <value>label03</value>
@@ -669,6 +671,7 @@
   </data>
   <data name="label08.Text" xml:space="preserve">
     <value>Y:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;label08.Name" xml:space="preserve">
     <value>label08</value>
@@ -699,6 +702,7 @@
   </data>
   <data name="label07.Text" xml:space="preserve">
     <value>X:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;label07.Name" xml:space="preserve">
     <value>label07</value>
@@ -998,9 +1002,9 @@
   <data name="&gt;&gt;checkBox_visible.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>

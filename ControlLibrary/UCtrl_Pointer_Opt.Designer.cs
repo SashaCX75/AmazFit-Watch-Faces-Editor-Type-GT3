@@ -267,12 +267,12 @@ namespace ControlLibrary
             // 
             resources.ApplyResources(this.numericUpDown_pointer_startAngle, "numericUpDown_pointer_startAngle");
             this.numericUpDown_pointer_startAngle.Maximum = new decimal(new int[] {
-            999,
+            9999,
             0,
             0,
             0});
             this.numericUpDown_pointer_startAngle.Minimum = new decimal(new int[] {
-            999,
+            9999,
             0,
             0,
             -2147483648});
@@ -283,12 +283,12 @@ namespace ControlLibrary
             // 
             resources.ApplyResources(this.numericUpDown_pointer_endAngle, "numericUpDown_pointer_endAngle");
             this.numericUpDown_pointer_endAngle.Maximum = new decimal(new int[] {
-            999,
+            9999,
             0,
             0,
             0});
             this.numericUpDown_pointer_endAngle.Minimum = new decimal(new int[] {
-            999,
+            9999,
             0,
             0,
             -2147483648});

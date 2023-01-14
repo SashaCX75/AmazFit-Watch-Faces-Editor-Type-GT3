@@ -407,8 +407,8 @@ namespace Watch_Face_Editor
                                 items += TabInString(8) + "if(!status) {" + Environment.NewLine;
                                 if (Disconnect_Alert.BluetoothOff.toastShow && Disconnect_Alert.BluetoothOff.toastText.Length > 0)
                                 {
-                                    items += TabInString(9) + "hmUI.showToast({text: \"" +
-                                        Disconnect_Alert.BluetoothOff.toastText + "\"});" + Environment.NewLine;
+                                    string toastText = Disconnect_Alert.BluetoothOff.toastText.Replace(Environment.NewLine, "\\r\\n");
+                                    items += TabInString(9) + "hmUI.showToast({text: \"" + toastText + "\"});" + Environment.NewLine;
                                 }
                                 if (Disconnect_Alert.BluetoothOff.vibrate)
                                 {
@@ -424,8 +424,8 @@ namespace Watch_Face_Editor
                                 items += TabInString(8) + "if(status) {" + Environment.NewLine;
                                 if (Disconnect_Alert.BluetoothOn.toastShow && Disconnect_Alert.BluetoothOn.toastText.Length > 0)
                                 {
-                                    items += TabInString(9) + "hmUI.showToast({text: \"" +
-                                        Disconnect_Alert.BluetoothOn.toastText + "\"});" + Environment.NewLine;
+                                    string toastText = Disconnect_Alert.BluetoothOn.toastText.Replace(Environment.NewLine, "\\r\\n");
+                                    items += TabInString(9) + "hmUI.showToast({text: \"" + toastText + "\"});" + Environment.NewLine;
                                 }
                                 if (Disconnect_Alert.BluetoothOn.vibrate)
                                 {
@@ -440,6 +440,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) + "// end vibration when connecting or disconnecting" + Environment.NewLine;
 
                             resume_call += TabInString(8) + "checkConnection();" + Environment.NewLine;
+                            resume_call += TabInString(8) + "stopVibro();" + Environment.NewLine;
+
+                            pause_call += TabInString(8) + "stopVibro();" + Environment.NewLine;
 
                             if (items.IndexOf("const vibrate = hmSensor.createSensor(hmSensor.id.VIBRATE);") < 0)
                             {
@@ -461,8 +464,6 @@ namespace Watch_Face_Editor
                                 items += TabInString(6) + "}" + Environment.NewLine;
                                 items += Environment.NewLine + TabInString(6) + "// end vibrate function" + Environment.NewLine;
                             }
-
-                            pause_call += TabInString(8) + "stopVibro();" + Environment.NewLine;
                         }  
                     }
                 }
@@ -9964,8 +9965,9 @@ namespace Watch_Face_Editor
                 }
                 if (disconnectAlert.BluetoothOff.toastShow)
                 {
+                    string toastText = disconnectAlert.BluetoothOff.toastText.Replace(Environment.NewLine, "\\r\\n");
                     options += TabInString(7 + tabOffset) + "// disconneсnt_toast_text: " +
-                                disconnectAlert.BluetoothOff.toastText + "," + Environment.NewLine;  
+                                toastText + "," + Environment.NewLine;  
                 }
             }
             if (disconnectAlert.BluetoothOn != null)
@@ -9977,8 +9979,9 @@ namespace Watch_Face_Editor
                 }
                 if (disconnectAlert.BluetoothOn.toastShow)
                 {
+                    string toastText = disconnectAlert.BluetoothOn.toastText.Replace(Environment.NewLine, "\\r\\n");
                     options += TabInString(7 + tabOffset) + "// conneсnt_toast_text: " +
-                              disconnectAlert.BluetoothOn.toastText + "," + Environment.NewLine; 
+                              toastText + "," + Environment.NewLine; 
                 }
             }
             options += TabInString(6 + tabOffset) + "// });" + Environment.NewLine;
@@ -17834,7 +17837,7 @@ namespace Watch_Face_Editor
             if (parametrs.ContainsKey("// disconneсnt_toast_text") && parametrs["// disconneсnt_toast_text"].Length > 0)
             {
                 if (disconnectAlert.BluetoothOff == null) disconnectAlert.BluetoothOff = new BluetoothStateAlert();
-                disconnectAlert.BluetoothOff.toastText = parametrs["// disconneсnt_toast_text"];
+                disconnectAlert.BluetoothOff.toastText = parametrs["// disconneсnt_toast_text"].Replace("\\r\\n", Environment.NewLine);
                 disconnectAlert.BluetoothOff.toastShow = true;
             }
 
@@ -17847,7 +17850,7 @@ namespace Watch_Face_Editor
             if (parametrs.ContainsKey("// conneсnt_toast_text") && parametrs["// conneсnt_toast_text"].Length > 0)
             {
                 if (disconnectAlert.BluetoothOn == null) disconnectAlert.BluetoothOn = new BluetoothStateAlert();
-                disconnectAlert.BluetoothOn.toastText = parametrs["// conneсnt_toast_text"];
+                disconnectAlert.BluetoothOn.toastText = parametrs["// conneсnt_toast_text"].Replace("\\r\\n", Environment.NewLine);
                 disconnectAlert.BluetoothOn.toastShow = true;
             }
 

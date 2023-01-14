@@ -207,11 +207,17 @@
   <data name="Message_Delet_Text21" xml:space="preserve">
     <value>?</value>
   </data>
+  <data name="Message_DontDelZip" xml:space="preserve">
+    <value>Es ist nicht möglich, eine bestehende Zifferblattdatei zu löschen.</value>
+  </data>
   <data name="Message_EditableElementsAOD_Text" xml:space="preserve">
     <value>Sie können dem AOD-Bildschirm keine bearbeitbaren Elemente hinzufügen.</value>
   </data>
   <data name="Message_EditablePointerAOD_Text" xml:space="preserve">
     <value>Sie können dem AOD-Bildschirm keine bearbeitbaren Zeiger hinzufügen.</value>
+  </data>
+  <data name="Message_ElementAOD_Text" xml:space="preserve">
+    <value>Sie können dieses Element nicht zum AOD hinzufügen.</value>
   </data>
   <data name="Message_ErrorReadJS" xml:space="preserve">
     <value>Struktur des Ziffernblatts kann nicht erkannt werden</value>

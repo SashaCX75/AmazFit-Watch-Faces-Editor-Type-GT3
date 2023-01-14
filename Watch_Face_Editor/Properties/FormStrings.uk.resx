@@ -207,11 +207,17 @@
   <data name="Message_Delet_Text21" xml:space="preserve">
     <value />
   </data>
+  <data name="Message_DontDelZip" xml:space="preserve">
+    <value>Не можна видалити існуючий файл циферблата.</value>
+  </data>
   <data name="Message_EditableElementsAOD_Text" xml:space="preserve">
     <value>Ви не можете додавати  редаговані елементи екран AOD.</value>
   </data>
   <data name="Message_EditablePointerAOD_Text" xml:space="preserve">
     <value>Ви не можете додавати  редаговані стрілкина екран AOD.</value>
+  </data>
+  <data name="Message_ElementAOD_Text" xml:space="preserve">
+    <value>Ви не можете додати цей елемент на екран AOD.</value>
   </data>
   <data name="Message_ErrorReadJS" xml:space="preserve">
     <value>Не вдалося визначити структуру циферблату</value>

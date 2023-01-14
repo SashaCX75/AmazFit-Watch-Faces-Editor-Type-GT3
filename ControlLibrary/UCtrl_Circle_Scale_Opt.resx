@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="contextMenuStrip_X.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>12, 19</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="contextMenuStrip_X.TrayLocation" type="System.Drawing.Point, System.Drawing">
+    <value>12, 19</value>
+  </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
@@ -217,9 +217,9 @@
   <data name="&gt;&gt;numericUpDown_scaleCircleX.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
-  <metadata name="contextMenuStrip_Y.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="contextMenuStrip_Y.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>173, 19</value>
-  </metadata>
+  </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
@@ -408,6 +408,7 @@
   </data>
   <data name="label04.Text" xml:space="preserve">
     <value>Y:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;label04.Name" xml:space="preserve">
     <value>label04</value>
@@ -438,6 +439,7 @@
   </data>
   <data name="label03.Text" xml:space="preserve">
     <value>X:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;label03.Name" xml:space="preserve">
     <value>label03</value>
@@ -771,9 +773,9 @@
   <data name="&gt;&gt;comboBox_scaleCircle_color.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>

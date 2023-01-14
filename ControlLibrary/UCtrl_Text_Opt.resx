@@ -167,9 +167,9 @@
   <data name="&gt;&gt;comboBox_icon.ZOrder" xml:space="preserve">
     <value>17</value>
   </data>
-  <metadata name="contextMenuStrip_X.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="contextMenuStrip_X.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>14, 10</value>
-  </metadata>
+  </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
@@ -265,9 +265,9 @@
   <data name="&gt;&gt;numericUpDown_imageX.ZOrder" xml:space="preserve">
     <value>18</value>
   </data>
-  <metadata name="contextMenuStrip_Y.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="contextMenuStrip_Y.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>175, 10</value>
-  </metadata>
+  </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
@@ -552,6 +552,7 @@
   </data>
   <data name="label1083.Text" xml:space="preserve">
     <value>Y:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;label1083.Name" xml:space="preserve">
     <value>label1083</value>
@@ -582,6 +583,7 @@
   </data>
   <data name="label1084.Text" xml:space="preserve">
     <value>Y:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;label1084.Name" xml:space="preserve">
     <value>label1084</value>
@@ -612,6 +614,7 @@
   </data>
   <data name="label1085.Text" xml:space="preserve">
     <value>X:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;label1085.Name" xml:space="preserve">
     <value>label1085</value>
@@ -642,6 +645,7 @@
   </data>
   <data name="label1086.Text" xml:space="preserve">
     <value>X:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;label1086.Name" xml:space="preserve">
     <value>label1086</value>
@@ -909,6 +913,7 @@
   </data>
   <data name="checkBox_follow.Text" xml:space="preserve">
     <value>Следовать за</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;checkBox_follow.Name" xml:space="preserve">
     <value>checkBox_follow</value>
@@ -1057,9 +1062,9 @@
   <data name="&gt;&gt;label_unit_miles.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>

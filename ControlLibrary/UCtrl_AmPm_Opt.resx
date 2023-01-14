@@ -117,10 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="contextMenuStrip_Y.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>165, 14</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="contextMenuStrip_Y.TrayLocation" type="System.Drawing.Point, System.Drawing">
+    <value>165, 14</value>
+  </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
@@ -195,9 +195,9 @@
   <data name="&gt;&gt;contextMenuStrip_Y.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <metadata name="contextMenuStrip_X.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="contextMenuStrip_X.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>10, 13</value>
-  </metadata>
+  </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
@@ -345,6 +345,7 @@
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>X:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;label3.Name" xml:space="preserve">
     <value>label3</value>
@@ -396,6 +397,7 @@
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>Y:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;label8.Name" xml:space="preserve">
     <value>label8</value>
@@ -426,6 +428,7 @@
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Y:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;label4.Name" xml:space="preserve">
     <value>label4</value>
@@ -513,6 +516,7 @@
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>PM</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;label5.Name" xml:space="preserve">
     <value>label5</value>
@@ -543,6 +547,7 @@
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>X:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;label7.Name" xml:space="preserve">
     <value>label7</value>
@@ -618,6 +623,7 @@
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>AM</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;label1.Name" xml:space="preserve">
     <value>label1</value>
@@ -652,9 +658,9 @@
   <data name="&gt;&gt;numericUpDown_PM_Y.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>

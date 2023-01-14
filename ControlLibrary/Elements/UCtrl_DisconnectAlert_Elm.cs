@@ -168,7 +168,8 @@ namespace ControlLibrary
             strFormat.Alignment = StringAlignment.Near;
             strFormat.LineAlignment = StringAlignment.Near;
             Size strSize = TextRenderer.MeasureText(graphics, control.Text, drawFont);
-            double controlWidth = control.Width - control.Margin.Left - control.Margin.Right - 65;
+            //double controlWidth = control.Width - control.Margin.Left - control.Margin.Right - 65;
+            double controlWidth = pictureBox_NotShow.Location.X - control.Margin.Left - control.Padding.Left - 14;
             double scale = controlWidth / strSize.Width;
             if (scale < 1)
             {

@@ -1503,7 +1503,7 @@ namespace Watch_Face_Editor
             PreviewView = true;
         }
 
-        /// <summary>Читаем настройки для отображения редактируемых стрелок</summary>
+        /// <summary>Читаем настройки для отображения оповещения об обрыве связи</summary>
         private void Read_DisconnectAlert_Options(DisconnectAlert disconnectAlert)
         {
             PreviewView = false;
@@ -1535,6 +1535,27 @@ namespace Watch_Face_Editor
                 uCtrl_DisconnectAlert_Opt.SetVibratetConneсnt(disconnectAlert.BluetoothOn.vibrateType);
                 uCtrl_DisconnectAlert_Opt.textBox_conneсnt_toast_text.Text = disconnectAlert.BluetoothOn.toastText; 
             }
+
+            PreviewView = true;
+        }
+
+        /// <summary>Читаем настройки для отображения плавной секундной стрелки</summary>
+        private void Read_Smooth_Second_Options(Smooth_Second smoothSecond)
+        {
+            PreviewView = false;
+
+            uCtrl_SmoothSeconds_Opt.SettingsClear();
+            uCtrl_SmoothSeconds_Opt.Visible = true;
+
+            uCtrl_SmoothSeconds_Opt._SmoothSeconds = smoothSecond;
+            if (smoothSecond == null)
+            {
+                PreviewView = true;
+                return;
+            }
+            if (smoothSecond.type == 1) uCtrl_SmoothSeconds_Opt.radioButton_type1.Checked = true;
+            else uCtrl_SmoothSeconds_Opt.radioButton_type2.Checked = true;
+            uCtrl_SmoothSeconds_Opt.numericUpDown_fps.Value = smoothSecond.fps;
 
             PreviewView = true;
         }

@@ -1025,6 +1025,7 @@
   </data>
   <data name="checkBox_Bluetooth_Set.Text" xml:space="preserve">
     <value>Bluetooth</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="label19.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>BottomCenter</value>

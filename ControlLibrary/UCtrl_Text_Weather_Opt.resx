@@ -800,6 +800,7 @@
   </data>
   <data name="label1083.Text" xml:space="preserve">
     <value>Y:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;label1083.Name" xml:space="preserve">
     <value>label1083</value>
@@ -830,6 +831,7 @@
   </data>
   <data name="label1084.Text" xml:space="preserve">
     <value>Y:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;label1084.Name" xml:space="preserve">
     <value>label1084</value>
@@ -860,6 +862,7 @@
   </data>
   <data name="label1085.Text" xml:space="preserve">
     <value>X:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;label1085.Name" xml:space="preserve">
     <value>label1085</value>
@@ -890,6 +893,7 @@
   </data>
   <data name="label1086.Text" xml:space="preserve">
     <value>X:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;label1086.Name" xml:space="preserve">
     <value>label1086</value>
@@ -903,9 +907,9 @@
   <data name="&gt;&gt;label1086.ZOrder" xml:space="preserve">
     <value>29</value>
   </data>
-  <metadata name="contextMenuStrip_Y.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="contextMenuStrip_Y.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>168, 24</value>
-  </metadata>
+  </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
@@ -980,9 +984,9 @@
   <data name="&gt;&gt;contextMenuStrip_Y.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <metadata name="contextMenuStrip_X.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="contextMenuStrip_X.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>-1, 16</value>
-  </metadata>
+  </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
@@ -1057,9 +1061,9 @@
   <data name="&gt;&gt;contextMenuStrip_X.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>

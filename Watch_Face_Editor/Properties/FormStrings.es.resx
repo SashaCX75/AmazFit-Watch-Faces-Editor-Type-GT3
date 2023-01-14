@@ -135,6 +135,9 @@
   <data name="Dialog_Title_SavePNG" xml:space="preserve">
     <value>Guardar vista previa</value>
   </data>
+  <data name="Dialog_Title_Save_As" xml:space="preserve">
+    <value>Guardar proyecto como...</value>
+  </data>
   <data name="Dialog_Title_Unpack" xml:space="preserve">
     <value>Seleccione un archivo de observación</value>
   </data>
@@ -204,11 +207,17 @@
   <data name="Message_Delet_Text21" xml:space="preserve">
     <value>?</value>
   </data>
+  <data name="Message_DontDelZip" xml:space="preserve">
+    <value>No es posible eliminar un archivo de esfera de reloj existente.</value>
+  </data>
   <data name="Message_EditableElementsAOD_Text" xml:space="preserve">
     <value>No puede agregar elementos editables a la pantalla AOD.</value>
   </data>
   <data name="Message_EditablePointerAOD_Text" xml:space="preserve">
     <value>No puede agregar punteros editables a la pantalla AOD.</value>
+  </data>
+  <data name="Message_ElementAOD_Text" xml:space="preserve">
+    <value>No puede agregar este elemento a una pantalla AOD.</value>
   </data>
   <data name="Message_ErrorReadJS" xml:space="preserve">
     <value>No se puede reconocer la estructura de la esfera del reloj</value>

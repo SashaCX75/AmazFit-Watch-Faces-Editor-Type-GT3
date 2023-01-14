@@ -31,10 +31,10 @@ namespace Watch_Face_Editor
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage_Edit = new System.Windows.Forms.TabPage();
             this.button_SaveAs = new System.Windows.Forms.Button();
@@ -135,7 +135,10 @@ namespace Watch_Face_Editor
             this.uCtrl_Animation_Elm = new ControlLibrary.UCtrl_Animation_Elm();
             this.panel_UC_DisconnectAlert = new System.Windows.Forms.Panel();
             this.uCtrl_DisconnectAlert_Elm = new ControlLibrary.UCtrl_DisconnectAlert_Elm();
+            this.panel_UC_AnalogTimePro = new System.Windows.Forms.Panel();
+            this.uCtrl_AnalogTimePro_Elm = new ControlLibrary.UCtrl_AnalogTimePro_Elm();
             this.panel_ElementsOpt = new System.Windows.Forms.Panel();
+            this.uCtrl_SmoothSeconds_Opt = new ControlLibrary.UCtrl_SmoothSeconds_Opt();
             this.uCtrl_DisconnectAlert_Opt = new ControlLibrary.UCtrl_DisconnectAlert_Opt();
             this.uCtrl_EditableTimePointer_Opt = new ControlLibrary.UCtrl_EditableTimePointer_Opt();
             this.uCtrl_Animation_Rotate_Opt = new ControlLibrary.UCtrl_Animation_Rotate_Opt();
@@ -319,6 +322,7 @@ namespace Watch_Face_Editor
             this.panel_UC_Moon.SuspendLayout();
             this.panel_UC_Animation.SuspendLayout();
             this.panel_UC_DisconnectAlert.SuspendLayout();
+            this.panel_UC_AnalogTimePro.SuspendLayout();
             this.panel_ElementsOpt.SuspendLayout();
             this.panel_MainScreen_AOD.SuspendLayout();
             this.tabPage_Show_Set.SuspendLayout();
@@ -405,8 +409,8 @@ namespace Watch_Face_Editor
             // Number
             // 
             this.Number.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Number.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Number.DefaultCellStyle = dataGridViewCellStyle5;
             this.Number.FillWeight = 25F;
             resources.ApplyResources(this.Number, "Number");
             this.Number.Name = "Number";
@@ -431,11 +435,11 @@ namespace Watch_Face_Editor
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.NullValue = null;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.NullValue = null;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle6;
             this.Column1.FillWeight = 70F;
             resources.ApplyResources(this.Column1, "Column1");
             this.Column1.Name = "Column1";
@@ -484,8 +488,8 @@ namespace Watch_Face_Editor
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewTextBoxColumn1.FillWeight = 25F;
             resources.ApplyResources(this.dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
@@ -510,11 +514,11 @@ namespace Watch_Face_Editor
             // dataGridViewImageColumn2
             // 
             this.dataGridViewImageColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.NullValue = null;
-            this.dataGridViewImageColumn2.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.NullValue = null;
+            this.dataGridViewImageColumn2.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewImageColumn2.FillWeight = 70F;
             resources.ApplyResources(this.dataGridViewImageColumn2, "dataGridViewImageColumn2");
             this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
@@ -735,37 +739,38 @@ namespace Watch_Face_Editor
             // 
             this.tableLayoutPanel_ElemetsWatchFace.AllowDrop = true;
             resources.ApplyResources(this.tableLayoutPanel_ElemetsWatchFace, "tableLayoutPanel_ElemetsWatchFace");
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_EditableElements, 0, 4);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DigitalTime, 0, 3);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_AnalogTime, 0, 2);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateDay, 0, 5);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateMonth, 0, 6);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateYear, 0, 7);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Background, 0, 30);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateWeek, 0, 8);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Steps, 0, 11);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Statuses, 0, 10);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Shortcuts, 0, 9);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Battery, 0, 12);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Heart, 0, 13);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Calories, 0, 14);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_PAI, 0, 15);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Distance, 0, 16);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Weather, 0, 20);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Stand, 0, 17);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Activity, 0, 18);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_SpO2, 0, 19);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_UVIndex, 0, 21);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Humidity, 0, 22);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Stress, 0, 23);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_FatBurning, 0, 24);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Altimeter, 0, 25);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_EditableElements, 0, 5);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DigitalTime, 0, 4);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_AnalogTime, 0, 3);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateDay, 0, 6);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateMonth, 0, 7);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateYear, 0, 8);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Background, 0, 31);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateWeek, 0, 9);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Steps, 0, 12);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Statuses, 0, 11);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Shortcuts, 0, 10);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Battery, 0, 13);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Heart, 0, 14);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Calories, 0, 15);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_PAI, 0, 16);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Distance, 0, 17);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Weather, 0, 21);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Stand, 0, 18);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Activity, 0, 19);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_SpO2, 0, 20);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_UVIndex, 0, 22);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Humidity, 0, 23);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Stress, 0, 24);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_FatBurning, 0, 25);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Altimeter, 0, 26);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_EditableTimePointer, 0, 1);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Sunrise, 0, 26);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Wind, 0, 27);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Moon, 0, 28);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Animation, 0, 29);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Sunrise, 0, 27);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Wind, 0, 28);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Moon, 0, 29);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Animation, 0, 30);
             this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DisconnectAlert, 0, 0);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_AnalogTimePro, 0, 2);
             this.tableLayoutPanel_ElemetsWatchFace.Name = "tableLayoutPanel_ElemetsWatchFace";
             this.tableLayoutPanel_ElemetsWatchFace.DragOver += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragOver);
             // 
@@ -1335,10 +1340,29 @@ namespace Watch_Face_Editor
             this.uCtrl_DisconnectAlert_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_DisconnectAlert_Elm.VisibleElementChangedHandler(this.uCtrl_DisconnectAlert_Elm_VisibleElementChanged);
             this.uCtrl_DisconnectAlert_Elm.DelElement += new ControlLibrary.UCtrl_DisconnectAlert_Elm.DelElementHandler(this.uCtrl_DisconnectAlert_Elm_DelElement);
             // 
+            // panel_UC_AnalogTimePro
+            // 
+            resources.ApplyResources(this.panel_UC_AnalogTimePro, "panel_UC_AnalogTimePro");
+            this.panel_UC_AnalogTimePro.Controls.Add(this.uCtrl_AnalogTimePro_Elm);
+            this.panel_UC_AnalogTimePro.Name = "panel_UC_AnalogTimePro";
+            // 
+            // uCtrl_AnalogTimePro_Elm
+            // 
+            resources.ApplyResources(this.uCtrl_AnalogTimePro_Elm, "uCtrl_AnalogTimePro_Elm");
+            this.uCtrl_AnalogTimePro_Elm.Name = "uCtrl_AnalogTimePro_Elm";
+            this.uCtrl_AnalogTimePro_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_AnalogTimePro_Elm.VisibleElementChangedHandler(this.uCtrl_AnalogTimePro_Elm_VisibleElementChanged);
+            this.uCtrl_AnalogTimePro_Elm.OptionsMoved += new ControlLibrary.UCtrl_AnalogTimePro_Elm.OptionsMovedHandler(this.uCtrl_AnalogTimePro_Elm_OptionsMoved);
+            this.uCtrl_AnalogTimePro_Elm.SelectChanged += new ControlLibrary.UCtrl_AnalogTimePro_Elm.SelectChangedHandler(this.uCtrl_AnalogTimePro_Elm_SelectChanged);
+            this.uCtrl_AnalogTimePro_Elm.DelElement += new ControlLibrary.UCtrl_AnalogTimePro_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
+            this.uCtrl_AnalogTimePro_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.uCtrl_AnalogTimePro_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.uCtrl_AnalogTimePro_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
             // panel_ElementsOpt
             // 
             resources.ApplyResources(this.panel_ElementsOpt, "panel_ElementsOpt");
             this.panel_ElementsOpt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_ElementsOpt.Controls.Add(this.uCtrl_SmoothSeconds_Opt);
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_DisconnectAlert_Opt);
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_EditableTimePointer_Opt);
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_Animation_Rotate_Opt);
@@ -1359,6 +1383,11 @@ namespace Watch_Face_Editor
             this.panel_ElementsOpt.Controls.Add(this.userCtrl_Background_Options);
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_EditableElements_Opt);
             this.panel_ElementsOpt.Name = "panel_ElementsOpt";
+            // 
+            // uCtrl_SmoothSeconds_Opt
+            // 
+            resources.ApplyResources(this.uCtrl_SmoothSeconds_Opt, "uCtrl_SmoothSeconds_Opt");
+            this.uCtrl_SmoothSeconds_Opt.Name = "uCtrl_SmoothSeconds_Opt";
             // 
             // uCtrl_DisconnectAlert_Opt
             // 
@@ -2635,6 +2664,8 @@ namespace Watch_Face_Editor
             this.panel_UC_Animation.PerformLayout();
             this.panel_UC_DisconnectAlert.ResumeLayout(false);
             this.panel_UC_DisconnectAlert.PerformLayout();
+            this.panel_UC_AnalogTimePro.ResumeLayout(false);
+            this.panel_UC_AnalogTimePro.PerformLayout();
             this.panel_ElementsOpt.ResumeLayout(false);
             this.panel_MainScreen_AOD.ResumeLayout(false);
             this.panel_MainScreen_AOD.PerformLayout();
@@ -2911,6 +2942,9 @@ namespace Watch_Face_Editor
         private System.Windows.Forms.Panel panel_UC_DisconnectAlert;
         private ControlLibrary.UCtrl_DisconnectAlert_Elm uCtrl_DisconnectAlert_Elm;
         private ControlLibrary.UCtrl_DisconnectAlert_Opt uCtrl_DisconnectAlert_Opt;
+        private System.Windows.Forms.Panel panel_UC_AnalogTimePro;
+        private ControlLibrary.UCtrl_AnalogTimePro_Elm uCtrl_AnalogTimePro_Elm;
+        private ControlLibrary.UCtrl_SmoothSeconds_Opt uCtrl_SmoothSeconds_Opt;
     }
 }
 

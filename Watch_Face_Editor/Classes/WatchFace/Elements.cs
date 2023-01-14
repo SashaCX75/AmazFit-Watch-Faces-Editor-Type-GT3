@@ -899,4 +899,19 @@ namespace Watch_Face_Editor
         public string toastText = "";
     }
 
+    /// <summary>Плавная секундная стрелка</summary>
+    public class Smooth_Second
+    {
+        /// <summary>Позиция в наборе элементов</summary>
+        public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = false;
+
+        /// <summary>Тип секундной стрелки</summary>
+        public int type = 1;
+
+        /// <summary>Частота кадров</summary>
+        public int fps = 15;
+    }
 }

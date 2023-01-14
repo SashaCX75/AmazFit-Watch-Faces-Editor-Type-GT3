@@ -401,6 +401,130 @@ namespace Watch_Face_Editor
         }
     }
 
+    public class ElementAnalogTimePro : ICloneable
+    {
+        public string elementName = "AnalogTimePro";
+
+        ///// <summary>Позиция в наборе элементов</summary>
+        //public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = true;
+
+        public hmUI_widget_IMG_POINTER Second { get; set; }
+        public hmUI_widget_IMG_POINTER Minute { get; set; }
+        public hmUI_widget_IMG_POINTER Hour { get; set; }
+
+        public Smooth_Second SmoothSecond { get; set; }
+        
+
+        /// <summary>Основной экран или AOD</summary>
+        public string show_level = "";
+
+        public object Clone()
+        {
+            Smooth_Second SmoothSecond = null;
+            if (this.SmoothSecond != null)
+            {
+                SmoothSecond = new Smooth_Second
+                {
+                    position = this.SmoothSecond.position,
+                    visible = this.SmoothSecond.visible,
+                    type = this.SmoothSecond.type,
+                    fps = this.SmoothSecond.fps,
+                };
+            }
+
+            hmUI_widget_IMG_POINTER Second = null;
+            if (this.Second != null)
+            {
+                Second = new hmUI_widget_IMG_POINTER
+                {
+                    src = this.Second.src,
+                    center_x = this.Second.center_x,
+                    center_y = this.Second.center_y,
+                    pos_x = this.Second.pos_x,
+                    pos_y = this.Second.pos_y,
+                    start_angle = this.Second.start_angle,
+                    end_angle = this.Second.end_angle,
+                    cover_path = this.Second.cover_path,
+                    cover_x = this.Second.cover_x,
+                    cover_y = this.Second.cover_y,
+                    scale = this.Second.scale,
+                    scale_x = this.Second.scale_x,
+                    scale_y = this.Second.scale_y,
+
+                    position = this.Second.position,
+                    visible = this.Second.visible,
+                    show_level = this.Second.show_level,
+                    type = this.Second.type,
+                };
+            }
+
+            hmUI_widget_IMG_POINTER Minute = null;
+            if (this.Minute != null)
+            {
+                Minute = new hmUI_widget_IMG_POINTER
+                {
+                    src = this.Minute.src,
+                    center_x = this.Minute.center_x,
+                    center_y = this.Minute.center_y,
+                    pos_x = this.Minute.pos_x,
+                    pos_y = this.Minute.pos_y,
+                    start_angle = this.Minute.start_angle,
+                    end_angle = this.Minute.end_angle,
+                    cover_path = this.Minute.cover_path,
+                    cover_x = this.Minute.cover_x,
+                    cover_y = this.Minute.cover_y,
+                    scale = this.Minute.scale,
+                    scale_x = this.Minute.scale_x,
+                    scale_y = this.Minute.scale_y,
+
+                    position = this.Minute.position,
+                    visible = this.Minute.visible,
+                    show_level = this.Minute.show_level,
+                    type = this.Minute.type,
+                };
+            }
+
+            hmUI_widget_IMG_POINTER Hour = null;
+            if (this.Hour != null)
+            {
+                Hour = new hmUI_widget_IMG_POINTER
+                {
+                    src = this.Hour.src,
+                    center_x = this.Hour.center_x,
+                    center_y = this.Hour.center_y,
+                    pos_x = this.Hour.pos_x,
+                    pos_y = this.Hour.pos_y,
+                    start_angle = this.Hour.start_angle,
+                    end_angle = this.Hour.end_angle,
+                    cover_path = this.Hour.cover_path,
+                    cover_x = this.Hour.cover_x,
+                    cover_y = this.Hour.cover_y,
+                    scale = this.Hour.scale,
+                    scale_x = this.Hour.scale_x,
+                    scale_y = this.Hour.scale_y,
+
+                    position = this.Hour.position,
+                    visible = this.Hour.visible,
+                    show_level = this.Hour.show_level,
+                    type = this.Hour.type,
+                };
+            }
+
+            return new ElementAnalogTimePro
+            {
+                elementName = this.elementName,
+                visible = this.visible,
+                SmoothSecond = SmoothSecond,
+                Second = Second,
+                Minute = Minute,
+                Hour = Hour,
+            };
+        }
+    }
+
     public class ElementEditablePointers
     {
         public string elementName = "ElementEditablePointers";

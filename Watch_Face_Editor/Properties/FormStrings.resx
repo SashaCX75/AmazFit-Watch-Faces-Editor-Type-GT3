@@ -208,6 +208,9 @@
   <data name="Message_Delet_Text21" xml:space="preserve">
     <value>?</value>
   </data>
+  <data name="Message_DontDelZip" xml:space="preserve">
+    <value>Невозможно удалить существующий файл циферблата.</value>
+  </data>
   <data name="Message_EditableElementsAOD_Text" xml:space="preserve">
     <value>Вы не можете добавлять настраиваемые элементы на экран AOD.</value>
   </data>

@@ -57,16 +57,16 @@ namespace ControlLibrary
             // 
             // pictureBox_Del
             // 
-            resources.ApplyResources(this.pictureBox_Del, "pictureBox_Del");
             this.pictureBox_Del.BackgroundImage = global::ControlLibrary.Properties.Resources.outline_delete_forever_black_24;
+            resources.ApplyResources(this.pictureBox_Del, "pictureBox_Del");
             this.pictureBox_Del.Name = "pictureBox_Del";
             this.pictureBox_Del.TabStop = false;
             this.pictureBox_Del.Click += new System.EventHandler(this.pictureBox_Del_Click);
             // 
             // button_ElementName
             // 
-            resources.ApplyResources(this.button_ElementName, "button_ElementName");
             this.button_ElementName.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_ElementName, "button_ElementName");
             this.button_ElementName.Image = global::ControlLibrary.Properties.Resources.location;
             this.button_ElementName.Name = "button_ElementName";
             this.button_ElementName.UseVisualStyleBackColor = false;
@@ -85,6 +85,7 @@ namespace ControlLibrary
             this.Controls.Add(this.pictureBox_Del);
             this.Controls.Add(this.button_ElementName);
             this.Name = "UCtrl_Distance_Elm";
+            this.Load += new System.EventHandler(this.UCtrl_Distance_Elm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_NotShow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Show)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Del)).EndInit();

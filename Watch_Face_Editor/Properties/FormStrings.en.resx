@@ -207,11 +207,17 @@
   <data name="Message_Delet_Text21" xml:space="preserve">
     <value>?</value>
   </data>
+  <data name="Message_DontDelZip" xml:space="preserve">
+    <value>It is not possible to delete an existing watch face file.</value>
+  </data>
   <data name="Message_EditableElementsAOD_Text" xml:space="preserve">
     <value>You cannot add editable elements to the AOD screen.</value>
   </data>
   <data name="Message_EditablePointerAOD_Text" xml:space="preserve">
     <value>You cannot add editable pointers to the AOD screen.</value>
+  </data>
+  <data name="Message_ElementAOD_Text" xml:space="preserve">
+    <value>You cannot add this element to an AOD screen.</value>
   </data>
   <data name="Message_ErrorReadJS" xml:space="preserve">
     <value>Unable to recognize the structure of the watch face</value>

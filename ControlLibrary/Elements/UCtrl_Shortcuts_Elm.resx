@@ -767,6 +767,7 @@
   </data>
   <data name="button_PAI.Text" xml:space="preserve">
     <value>PAI</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;button_Stress.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1443,7 +1444,7 @@
   <data name="panel_Heart.Size" type="System.Drawing.Size, System.Drawing">
     <value>218, 24</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
 </root>

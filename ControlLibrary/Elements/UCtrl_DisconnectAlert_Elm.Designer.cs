@@ -56,16 +56,16 @@
             // 
             // pictureBox_Del
             // 
-            this.pictureBox_Del.BackgroundImage = global::ControlLibrary.Properties.Resources.outline_delete_forever_black_24;
             resources.ApplyResources(this.pictureBox_Del, "pictureBox_Del");
+            this.pictureBox_Del.BackgroundImage = global::ControlLibrary.Properties.Resources.outline_delete_forever_black_24;
             this.pictureBox_Del.Name = "pictureBox_Del";
             this.pictureBox_Del.TabStop = false;
             this.pictureBox_Del.Click += new System.EventHandler(this.pictureBox_Del_Click);
             // 
             // button_ElementName
             // 
-            this.button_ElementName.BackColor = System.Drawing.SystemColors.Control;
             resources.ApplyResources(this.button_ElementName, "button_ElementName");
+            this.button_ElementName.BackColor = System.Drawing.SystemColors.Control;
             this.button_ElementName.Image = global::ControlLibrary.Properties.Resources.bluetooth;
             this.button_ElementName.Name = "button_ElementName";
             this.button_ElementName.UseVisualStyleBackColor = false;

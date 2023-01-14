@@ -152,5 +152,31 @@ namespace ControlLibrary
 
             setValue = false;
         }
+
+        private void UCtrl_Distance_Elm_Load(object sender, EventArgs e)
+        {
+            fitText(button_ElementName);
+        }
+
+        public void fitText(Control control)
+        {
+            Graphics graphics = control.CreateGraphics();
+            Font drawFont = control.Font;
+            //Font drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+            StringFormat strFormat = new StringFormat();
+            strFormat.FormatFlags = StringFormatFlags.FitBlackBox;
+            strFormat.Alignment = StringAlignment.Near;
+            strFormat.LineAlignment = StringAlignment.Near;
+            Size strSize = TextRenderer.MeasureText(graphics, control.Text, drawFont);
+            //double controlWidth = control.Width - control.Margin.Left - control.Margin.Right - control.Padding.Left - 65;
+            double controlWidth = pictureBox_NotShow.Location.X - control.Margin.Left - control.Padding.Left - 14;
+            double scale = controlWidth / strSize.Width;
+            if (scale < 1)
+            {
+                Font newFont = new Font(control.Font.FontFamily, (float)(control.Font.Size * scale), control.Font.Style);
+                control.Font = newFont;
+            }
+
+        }
     }
 }

@@ -126,6 +126,7 @@
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>X:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;numericUpDown_secondPointer_offset_Y.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -535,6 +536,7 @@
   </data>
   <data name="label25.Text" xml:space="preserve">
     <value>X:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="button_PreviewAdd.TabIndex" type="System.Int32, mscorlib">
     <value>219</value>
@@ -634,6 +636,7 @@
   </data>
   <data name="label14.Text" xml:space="preserve">
     <value>Y:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="label14.TabIndex" type="System.Int32, mscorlib">
     <value>134</value>
@@ -694,12 +697,14 @@
   </data>
   <data name="label17.Text" xml:space="preserve">
     <value>X:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;label23.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
   <data name="label11.Text" xml:space="preserve">
     <value>X:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -924,6 +929,7 @@
   </data>
   <data name="label19.Text" xml:space="preserve">
     <value>Y:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 30</value>
@@ -1113,6 +1119,7 @@
   </data>
   <data name="label24.Text" xml:space="preserve">
     <value>Y:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="label12.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>BottomCenter</value>
@@ -1196,6 +1203,7 @@
   </data>
   <data name="label06.Text" xml:space="preserve">
     <value>X:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;numericUpDown_secondPointer_Y.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1274,6 +1282,7 @@
   </data>
   <data name="label04.Text" xml:space="preserve">
     <value>X:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1300,6 +1309,7 @@
   </data>
   <data name="label07.Text" xml:space="preserve">
     <value>Y:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="button_del.Location" type="System.Drawing.Point, System.Drawing">
     <value>132, 62</value>
@@ -1360,6 +1370,7 @@
   </data>
   <data name="label05.Text" xml:space="preserve">
     <value>Y:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;label13.Parent" xml:space="preserve">
     <value>tabPage_second</value>
@@ -1429,6 +1440,7 @@
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>Y:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_minutePointer_image.TabIndex" type="System.Int32, mscorlib">
     <value>132</value>
@@ -1717,6 +1729,7 @@
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>X:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;numericUpDown_hourPointer_X.ZOrder" xml:space="preserve">
     <value>11</value>
@@ -1735,6 +1748,7 @@
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>Y:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;comboBox_select_pointerSet.Parent" xml:space="preserve">
     <value>panel2</value>
@@ -1750,6 +1764,7 @@
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>Y:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="label25.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2032,6 +2047,7 @@
   </data>
   <data name="label15.Text" xml:space="preserve">
     <value>X:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="label19.TabIndex" type="System.Int32, mscorlib">
     <value>211</value>
@@ -2164,13 +2180,13 @@
   <data name="&gt;&gt;button_add.Parent" xml:space="preserve">
     <value>panel2</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <metadata name="contextMenuStrip_Y.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  </data>
+  <data name="contextMenuStrip_Y.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>168, 15</value>
-  </metadata>
-  <metadata name="contextMenuStrip_X.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  </data>
+  <data name="contextMenuStrip_X.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>11, 14</value>
-  </metadata>
+  </data>
 </root>

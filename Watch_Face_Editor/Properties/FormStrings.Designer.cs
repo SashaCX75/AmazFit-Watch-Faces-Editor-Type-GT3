@@ -331,6 +331,15 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Невозможно удалить существующий файл циферблата..
+        /// </summary>
+        internal static string Message_DontDelZip {
+            get {
+                return ResourceManager.GetString("Message_DontDelZip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Вы не можете добавлять настраиваемые элементы на экран AOD..
         /// </summary>
         internal static string Message_EditableElementsAOD_Text {

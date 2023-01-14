@@ -116,6 +116,12 @@
     <Compile Include="Elements\UCtrl_Animation_Elm.Designer.cs">
       <DependentUpon>UCtrl_Animation_Elm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Elements\UCtrl_AnalogTimePro_Elm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\UCtrl_AnalogTimePro_Elm.Designer.cs">
+      <DependentUpon>UCtrl_AnalogTimePro_Elm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCtrl_Animation_Frame_Opt.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -357,6 +363,12 @@
     <Compile Include="Elements\UCtrl_Stress_Elm.Designer.cs">
       <DependentUpon>UCtrl_Stress_Elm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UCtrl_SmoothSeconds_Opt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCtrl_SmoothSeconds_Opt.Designer.cs">
+      <DependentUpon>UCtrl_SmoothSeconds_Opt.cs</DependentUpon>
+    </Compile>
     <Compile Include="UCtrl_Text_Opt.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -432,6 +444,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Altimeter_Elm.zh.resx">
       <DependentUpon>UCtrl_Altimeter_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_AnalogTimePro_Elm.de.resx">
+      <DependentUpon>UCtrl_AnalogTimePro_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_AnalogTimePro_Elm.en.resx">
+      <DependentUpon>UCtrl_AnalogTimePro_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_AnalogTimePro_Elm.es.resx">
+      <DependentUpon>UCtrl_AnalogTimePro_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_AnalogTimePro_Elm.uk.resx">
+      <DependentUpon>UCtrl_AnalogTimePro_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_AnalogTime_Elm.de.resx">
       <DependentUpon>UCtrl_AnalogTime_Elm.cs</DependentUpon>
@@ -590,7 +614,13 @@
     <EmbeddedResource Include="Elements\UCtrl_DigitalTime_Elm.zh.resx">
       <DependentUpon>UCtrl_DigitalTime_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_DisconnectAlert_Elm.de.resx">
+      <DependentUpon>UCtrl_DisconnectAlert_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_DisconnectAlert_Elm.en.resx">
+      <DependentUpon>UCtrl_DisconnectAlert_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_DisconnectAlert_Elm.es.resx">
       <DependentUpon>UCtrl_DisconnectAlert_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_DisconnectAlert_Elm.uk.resx">
@@ -978,6 +1008,9 @@
     <EmbeddedResource Include="Elements\UCtrl_Animation_Elm.resx">
       <DependentUpon>UCtrl_Animation_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_AnalogTimePro_Elm.resx">
+      <DependentUpon>UCtrl_AnalogTimePro_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Animation_Frame_Opt.de.resx">
       <DependentUpon>UCtrl_Animation_Frame_Opt.cs</DependentUpon>
     </EmbeddedResource>
@@ -1137,7 +1170,13 @@
     <EmbeddedResource Include="Elements\UCtrl_DisconnectAlert_Elm.resx">
       <DependentUpon>UCtrl_DisconnectAlert_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_DisconnectAlert_Opt.de.resx">
+      <DependentUpon>UCtrl_DisconnectAlert_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_DisconnectAlert_Opt.en.resx">
+      <DependentUpon>UCtrl_DisconnectAlert_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_DisconnectAlert_Opt.es.resx">
       <DependentUpon>UCtrl_DisconnectAlert_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_DisconnectAlert_Opt.resx">
@@ -1386,6 +1425,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Stress_Elm.resx">
       <DependentUpon>UCtrl_Stress_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_SmoothSeconds_Opt.de.resx">
+      <DependentUpon>UCtrl_SmoothSeconds_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_SmoothSeconds_Opt.en.resx">
+      <DependentUpon>UCtrl_SmoothSeconds_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_SmoothSeconds_Opt.es.resx">
+      <DependentUpon>UCtrl_SmoothSeconds_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_SmoothSeconds_Opt.resx">
+      <DependentUpon>UCtrl_SmoothSeconds_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_SmoothSeconds_Opt.uk.resx">
+      <DependentUpon>UCtrl_SmoothSeconds_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Text_Opt.de.resx">
       <DependentUpon>UCtrl_Text_Opt.cs</DependentUpon>
@@ -1641,6 +1695,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bluetooth.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\toggle_on.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
