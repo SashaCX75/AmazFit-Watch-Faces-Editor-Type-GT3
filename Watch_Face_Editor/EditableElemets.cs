@@ -602,7 +602,7 @@ namespace Watch_Face_Editor
                     if (pai.Images != null) uCtrl_EditableElements_Opt.checkBox_Images.Checked = pai.Images.visible;
                     if (pai.Segments != null) uCtrl_EditableElements_Opt.checkBox_Segments.Checked = pai.Segments.visible;
                     if (pai.Number != null) uCtrl_EditableElements_Opt.checkBox_Number.Checked = pai.Number.visible;
-                    //if (pai.Number_Target != null) uCtrl_EditableElements_Opt.checkBox_Number_Target.Checked = pai.Number_Target.visible;
+                    //if (pai.Number_Target != null) uCtrl_EditableElements_Opt.checkBox_Number_Target.Checked = pai.Number_Target.enable;
                     if (pai.Pointer != null) uCtrl_EditableElements_Opt.checkBox_Pointer.Checked = pai.Pointer.visible;
                     if (pai.Circle_Scale != null) uCtrl_EditableElements_Opt.checkBox_Circle_Scale.Checked = pai.Circle_Scale.visible;
                     if (pai.Linear_Scale != null) uCtrl_EditableElements_Opt.checkBox_Linear_Scale.Checked = pai.Linear_Scale.visible;
@@ -2367,7 +2367,7 @@ namespace Watch_Face_Editor
                             pai.Number.visible = checkBox.Checked;
                             break;
                         //case "checkBox_Number_Target":
-                        //    pai.Number_Target.visible = checkBox.Checked;
+                        //    pai.Number_Target.enable = checkBox.Checked;
                         //    break;
                         case "checkBox_Pointer":
                             pai.Pointer.visible = checkBox.Checked;
@@ -3608,7 +3608,7 @@ namespace Watch_Face_Editor
                     #region ElementShortcuts
                     //case "ElementShortcuts":
                     //    ElementShortcuts Shortcuts = (ElementShortcuts)element;
-                    //    uCtrl_Shortcuts_Elm.SetVisibilityElementStatus(Shortcuts.visible);
+                    //    uCtrl_Shortcuts_Elm.SetVisibilityElementStatus(Shortcuts.enable);
                     //    break;
                     #endregion
 

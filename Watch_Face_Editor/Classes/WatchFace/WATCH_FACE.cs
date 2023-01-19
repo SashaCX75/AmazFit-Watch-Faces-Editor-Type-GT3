@@ -102,7 +102,7 @@ namespace Watch_Face_Editor
                     w = this.BackgroundColor.w,
 
                     //position = this.BackgroundImage.position,
-                    //visible = this.BackgroundImage.visible,
+                    //enable = this.BackgroundImage.enable,
                     color = this.BackgroundColor.color,
                     show_level = this.BackgroundColor.show_level,
                 };
@@ -416,7 +416,11 @@ namespace Watch_Face_Editor
         public hmUI_widget_IMG_POINTER Hour { get; set; }
 
         public Smooth_Second SmoothSecond { get; set; }
-        
+
+        public bool Format_24hour { get; set; } = false;
+
+        public int Format_24hour_position = -1;
+
 
         /// <summary>Основной экран или AOD</summary>
         public string show_level = "";
@@ -429,7 +433,7 @@ namespace Watch_Face_Editor
                 SmoothSecond = new Smooth_Second
                 {
                     position = this.SmoothSecond.position,
-                    visible = this.SmoothSecond.visible,
+                    enable = this.SmoothSecond.enable,
                     type = this.SmoothSecond.type,
                     fps = this.SmoothSecond.fps,
                 };
@@ -517,6 +521,8 @@ namespace Watch_Face_Editor
             {
                 elementName = this.elementName,
                 visible = this.visible,
+                Format_24hour = this.Format_24hour,
+                Format_24hour_position = this.Format_24hour_position,
                 SmoothSecond = SmoothSecond,
                 Second = Second,
                 Minute = Minute,
@@ -3448,7 +3454,7 @@ namespace Watch_Face_Editor
                     inversion = this.Circle_Scale.inversion,
 
                     position = this.Circle_Scale.position,
-                    visible = this.Circle_Scale.visible,
+                    enable = this.Circle_Scale.enable,
                     show_level = this.Circle_Scale.show_level,
                     type = this.Circle_Scale.type,
                 };
@@ -3470,7 +3476,7 @@ namespace Watch_Face_Editor
                     vertical = this.Linear_Scale.vertical,
 
                     position = this.Linear_Scale.position,
-                    visible = this.Linear_Scale.visible,
+                    enable = this.Linear_Scale.enable,
                     show_level = this.Linear_Scale.show_level,
                     type = this.Linear_Scale.type,
                 };
@@ -3634,7 +3640,7 @@ namespace Watch_Face_Editor
                     inversion = this.Circle_Scale.inversion,
 
                     position = this.Circle_Scale.position,
-                    visible = this.Circle_Scale.visible,
+                    enable = this.Circle_Scale.enable,
                     show_level = this.Circle_Scale.show_level,
                     type = this.Circle_Scale.type,
                 };
@@ -3656,7 +3662,7 @@ namespace Watch_Face_Editor
                     vertical = this.Linear_Scale.vertical,
 
                     position = this.Linear_Scale.position,
-                    visible = this.Linear_Scale.visible,
+                    enable = this.Linear_Scale.enable,
                     show_level = this.Linear_Scale.show_level,
                     type = this.Linear_Scale.type,
                 };

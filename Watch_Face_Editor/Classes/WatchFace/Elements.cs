@@ -171,7 +171,7 @@ namespace Watch_Face_Editor
         //public int position = -1;
 
         ///// <summary>Видимость элемента</summary>
-        //public bool visible = false;
+        //public bool enable = false;
 
         public int x { get; set; }
         public int y { get; set; }
@@ -906,7 +906,7 @@ namespace Watch_Face_Editor
         public int position = -1;
 
         /// <summary>Видимость элемента</summary>
-        public bool visible = false;
+        public bool enable = false;
 
         /// <summary>Тип секундной стрелки</summary>
         public int type = 1;

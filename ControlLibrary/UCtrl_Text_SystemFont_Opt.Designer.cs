@@ -132,8 +132,8 @@ namespace ControlLibrary
             // 
             // numericUpDown_X
             // 
-            this.numericUpDown_X.ContextMenuStrip = this.contextMenuStrip_X;
             resources.ApplyResources(this.numericUpDown_X, "numericUpDown_X");
+            this.numericUpDown_X.ContextMenuStrip = this.contextMenuStrip_X;
             this.numericUpDown_X.Maximum = new decimal(new int[] {
             999,
             0,
@@ -151,13 +151,13 @@ namespace ControlLibrary
             // 
             // contextMenuStrip_X
             // 
+            resources.ApplyResources(this.contextMenuStrip_X, "contextMenuStrip_X");
             this.contextMenuStrip_X.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip_X.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вставитьКоординатуХToolStripMenuItem,
             this.копироватьToolStripMenuItemX,
             this.вставитьToolStripMenuItemX});
             this.contextMenuStrip_X.Name = "contextMenuStrip_X";
-            resources.ApplyResources(this.contextMenuStrip_X, "contextMenuStrip_X");
             this.contextMenuStrip_X.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_X_Opening);
             // 
             // вставитьКоординатуХToolStripMenuItem
@@ -180,8 +180,8 @@ namespace ControlLibrary
             // 
             // numericUpDown_Y
             // 
-            this.numericUpDown_Y.ContextMenuStrip = this.contextMenuStrip_Y;
             resources.ApplyResources(this.numericUpDown_Y, "numericUpDown_Y");
+            this.numericUpDown_Y.ContextMenuStrip = this.contextMenuStrip_Y;
             this.numericUpDown_Y.Maximum = new decimal(new int[] {
             999,
             0,
@@ -199,13 +199,13 @@ namespace ControlLibrary
             // 
             // contextMenuStrip_Y
             // 
+            resources.ApplyResources(this.contextMenuStrip_Y, "contextMenuStrip_Y");
             this.contextMenuStrip_Y.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip_Y.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вставитьКоординатуYToolStripMenuItem,
             this.копироватьToolStripMenuItemY,
             this.вставитьToolStripMenuItemY});
             this.contextMenuStrip_Y.Name = "contextMenuStrip_X";
-            resources.ApplyResources(this.contextMenuStrip_Y, "contextMenuStrip_Y");
             this.contextMenuStrip_Y.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Y_Opening);
             // 
             // вставитьКоординатуYToolStripMenuItem
@@ -290,13 +290,13 @@ namespace ControlLibrary
             // 
             // comboBox_alignmentHorizontal
             // 
+            resources.ApplyResources(this.comboBox_alignmentHorizontal, "comboBox_alignmentHorizontal");
             this.comboBox_alignmentHorizontal.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_alignmentHorizontal.FormattingEnabled = true;
             this.comboBox_alignmentHorizontal.Items.AddRange(new object[] {
             resources.GetString("comboBox_alignmentHorizontal.Items"),
             resources.GetString("comboBox_alignmentHorizontal.Items1"),
             resources.GetString("comboBox_alignmentHorizontal.Items2")});
-            resources.ApplyResources(this.comboBox_alignmentHorizontal, "comboBox_alignmentHorizontal");
             this.comboBox_alignmentHorizontal.Name = "comboBox_alignmentHorizontal";
             this.comboBox_alignmentHorizontal.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
             // 
@@ -307,13 +307,13 @@ namespace ControlLibrary
             // 
             // comboBox_alignmentVertical
             // 
+            resources.ApplyResources(this.comboBox_alignmentVertical, "comboBox_alignmentVertical");
             this.comboBox_alignmentVertical.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_alignmentVertical.FormattingEnabled = true;
             this.comboBox_alignmentVertical.Items.AddRange(new object[] {
             resources.GetString("comboBox_alignmentVertical.Items"),
             resources.GetString("comboBox_alignmentVertical.Items1"),
             resources.GetString("comboBox_alignmentVertical.Items2")});
-            resources.ApplyResources(this.comboBox_alignmentVertical, "comboBox_alignmentVertical");
             this.comboBox_alignmentVertical.Name = "comboBox_alignmentVertical";
             this.comboBox_alignmentVertical.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
             // 
@@ -324,10 +324,10 @@ namespace ControlLibrary
             // 
             // comboBox_Color
             // 
+            resources.ApplyResources(this.comboBox_Color, "comboBox_Color");
             this.comboBox_Color.BackColor = System.Drawing.Color.DarkOrange;
             this.comboBox_Color.DropDownHeight = 1;
             this.comboBox_Color.FormattingEnabled = true;
-            resources.ApplyResources(this.comboBox_Color, "comboBox_Color");
             this.comboBox_Color.Name = "comboBox_Color";
             this.comboBox_Color.Click += new System.EventHandler(this.comboBox_Color_Click);
             // 
@@ -359,13 +359,13 @@ namespace ControlLibrary
             // 
             // comboBox_textStyle
             // 
+            resources.ApplyResources(this.comboBox_textStyle, "comboBox_textStyle");
             this.comboBox_textStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_textStyle.FormattingEnabled = true;
             this.comboBox_textStyle.Items.AddRange(new object[] {
             resources.GetString("comboBox_textStyle.Items"),
             resources.GetString("comboBox_textStyle.Items1"),
             resources.GetString("comboBox_textStyle.Items2")});
-            resources.ApplyResources(this.comboBox_textStyle, "comboBox_textStyle");
             this.comboBox_textStyle.Name = "comboBox_textStyle";
             this.comboBox_textStyle.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
             // 

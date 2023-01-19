@@ -17,6 +17,7 @@ namespace ControlLibrary
         bool highlight_minutes = false;
         bool highlight_seconds = false;
         bool highlight_smooth_seconds = false;
+        bool highlight_format_24hour = false;
 
         bool visibility_elements = false; // развернут список с элементами
         bool visibilityElement = true; // элемент оторажается на предпросмотре
@@ -143,6 +144,19 @@ namespace ControlLibrary
                 button_SmoothSeconds.FlatAppearance.MouseOverBackColor = SystemColors.Control;
                 button_SmoothSeconds.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
+
+            if (highlight_format_24hour)
+            {
+                panel_Format_24hour.BackColor = SystemColors.ActiveCaption;
+                button_Format_24hour.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Format_24hour.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Format_24hour.BackColor = SystemColors.Control;
+                button_Format_24hour.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Format_24hour.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
         }
 
         public void ResetHighlightState()
@@ -153,45 +167,9 @@ namespace ControlLibrary
             highlight_minutes = false;
             highlight_seconds = false;
             highlight_smooth_seconds = false;
+            highlight_format_24hour = false;
 
-            if (highlight_hours)
-            {
-                panel_Hours.BackColor = SystemColors.ActiveCaption;
-                button_Hours.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Hours.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Hours.BackColor = SystemColors.Control;
-                button_Hours.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Hours.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_minutes)
-            {
-                panel_Minutes.BackColor = SystemColors.ActiveCaption;
-                button_Minutes.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Minutes.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Minutes.BackColor = SystemColors.Control;
-                button_Minutes.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Minutes.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_seconds)
-            {
-                panel_Seconds.BackColor = SystemColors.ActiveCaption;
-                button_Seconds.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Seconds.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Seconds.BackColor = SystemColors.Control;
-                button_Seconds.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Seconds.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
+            SetHighlightState();
         }
 
         private void panel_Hours_Click(object sender, EventArgs e)
@@ -202,6 +180,7 @@ namespace ControlLibrary
             highlight_minutes = false;
             highlight_seconds = false;
             highlight_smooth_seconds = false;
+            highlight_format_24hour = false;
 
             SetHighlightState();
 
@@ -220,6 +199,7 @@ namespace ControlLibrary
             highlight_minutes = true;
             highlight_seconds = false;
             highlight_smooth_seconds = false;
+            highlight_format_24hour = false;
 
             SetHighlightState();
 
@@ -238,6 +218,7 @@ namespace ControlLibrary
             highlight_minutes = false;
             highlight_seconds = true;
             highlight_smooth_seconds = false;
+            highlight_format_24hour = false;
 
             SetHighlightState();
 
@@ -256,6 +237,26 @@ namespace ControlLibrary
             highlight_minutes = false;
             highlight_seconds = false;
             highlight_smooth_seconds = true;
+            highlight_format_24hour = false;
+
+            SetHighlightState();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Format_24hour_Click(object sender, EventArgs e)
+        {
+            selectedElement = "Format_24hour";
+
+            highlight_hours = false;
+            highlight_minutes = false;
+            highlight_seconds = false;
+            highlight_smooth_seconds = false;
+            highlight_format_24hour = true;
 
             SetHighlightState();
 
@@ -396,9 +397,9 @@ namespace ControlLibrary
 
             pictureBox_Del.Location = new Point(button_ElementName.Width - pictureBox_Del.Width - 4, 2);
 
-            if (tableLayoutPanel1.Height > 130)
+            if (tableLayoutPanel1.Height > 155)
             {
-                float currentDPI = tableLayoutPanel1.Height / 76f;
+                float currentDPI = tableLayoutPanel1.Height / 126f;
                 button_ElementName.Image = (Image)(new Bitmap(button_ElementName.Image,
                     new Size((int)(16 * currentDPI), (int)(16 * currentDPI))));
 
@@ -507,6 +508,9 @@ namespace ControlLibrary
                 case "SmoothSecond":
                     checkBox_SmoothSeconds.Checked = status;
                     break;
+                case "Format_24hour":
+                    checkBox_Format_24hour.Checked = status;
+                    break;
             }
             setValue = false;
         }
@@ -534,6 +538,9 @@ namespace ControlLibrary
                             break;
                         case "SmoothSecond":
                             panel = panel_SmoothSeconds;
+                            break;
+                        case "Format_24hour":
+                            panel = panel_Format_24hour;
                             break;
                     }
                 }
@@ -589,6 +596,9 @@ namespace ControlLibrary
                     case "panel_SmoothSeconds":
                         elementOptions.Add("SmoothSecond", count - i);
                         break;
+                    case "panel_Format_24hour":
+                        elementOptions.Add("Format_24hour", count - i);
+                        break;
                 }
             }
             return elementOptions;
@@ -599,16 +609,18 @@ namespace ControlLibrary
             setValue = true;
 
             Dictionary<int, string> elementOptions = new Dictionary<int, string>();
-            elementOptions.Add(4, "SmoothSecond");
-            elementOptions.Add(3, "Second");
-            elementOptions.Add(2, "Minute");
-            elementOptions.Add(1, "Hour");
+            elementOptions.Add(5, "SmoothSecond");
+            elementOptions.Add(4, "Second");
+            elementOptions.Add(3, "Minute");
+            elementOptions.Add(2, "Hour");
+            elementOptions.Add(1, "Format_24hour");
             SetOptionsPosition(elementOptions);
 
             checkBox_Hours.Checked = false;
             checkBox_Minutes.Checked = false;
             checkBox_Seconds.Checked = false;
             checkBox_SmoothSeconds.Checked = false;
+            checkBox_Format_24hour.Checked = false;
 
             visibility_elements = false;
             tableLayoutPanel1.Visible = visibility_elements;

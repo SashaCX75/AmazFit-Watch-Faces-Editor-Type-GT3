@@ -218,10 +218,10 @@
     <value>Windstärke</value>
   </data>
   <data name="radioButton_sunrise.Location" type="System.Drawing.Point, System.Drawing">
-    <value>282, 12</value>
+    <value>290, 19</value>
   </data>
   <data name="radioButton_sunrise.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 30</value>
+    <value>56, 17</value>
   </data>
   <data name="radioButton_sunrise.Text" xml:space="preserve">
     <value>Sonne</value>
@@ -260,7 +260,7 @@
     <value>System</value>
   </data>
   <data name="button_add.Text" xml:space="preserve">
-    <value>hinzufügen</value>
+    <value>Hinzufügen</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

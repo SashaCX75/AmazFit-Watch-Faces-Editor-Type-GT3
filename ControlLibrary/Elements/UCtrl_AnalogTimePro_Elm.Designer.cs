@@ -35,6 +35,9 @@
             this.pictureBox_Show = new System.Windows.Forms.PictureBox();
             this.pictureBox_Del = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel_Format_24hour = new System.Windows.Forms.Panel();
+            this.button_Format_24hour = new System.Windows.Forms.Button();
+            this.checkBox_Format_24hour = new System.Windows.Forms.CheckBox();
             this.panel_SmoothSeconds = new System.Windows.Forms.Panel();
             this.button_SmoothSeconds = new System.Windows.Forms.Button();
             this.checkBox_SmoothSeconds = new System.Windows.Forms.CheckBox();
@@ -54,6 +57,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Show)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Del)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
+            this.panel_Format_24hour.SuspendLayout();
             this.panel_SmoothSeconds.SuspendLayout();
             this.panel_Minutes.SuspendLayout();
             this.panel_Hours.SuspendLayout();
@@ -104,6 +108,7 @@
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.AllowDrop = true;
+            this.tableLayoutPanel1.Controls.Add(this.panel_Format_24hour, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.panel_SmoothSeconds, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel_Minutes, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel_Hours, 0, 3);
@@ -111,6 +116,39 @@
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragDrop);
             this.tableLayoutPanel1.DragOver += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragOver);
+            // 
+            // panel_Format_24hour
+            // 
+            resources.ApplyResources(this.panel_Format_24hour, "panel_Format_24hour");
+            this.panel_Format_24hour.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_Format_24hour.Controls.Add(this.button_Format_24hour);
+            this.panel_Format_24hour.Controls.Add(this.checkBox_Format_24hour);
+            this.panel_Format_24hour.Name = "panel_Format_24hour";
+            this.panel_Format_24hour.Click += new System.EventHandler(this.panel_Format_24hour_Click);
+            this.panel_Format_24hour.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.panel_Format_24hour.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.panel_Format_24hour.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // button_Format_24hour
+            // 
+            resources.ApplyResources(this.button_Format_24hour, "button_Format_24hour");
+            this.button_Format_24hour.FlatAppearance.BorderSize = 0;
+            this.button_Format_24hour.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.button_Format_24hour.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.button_Format_24hour.Image = global::ControlLibrary.Properties.Resources.toggle_on;
+            this.button_Format_24hour.Name = "button_Format_24hour";
+            this.button_Format_24hour.UseVisualStyleBackColor = true;
+            this.button_Format_24hour.Click += new System.EventHandler(this.panel_Format_24hour_Click);
+            this.button_Format_24hour.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.button_Format_24hour.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.button_Format_24hour.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // checkBox_Format_24hour
+            // 
+            resources.ApplyResources(this.checkBox_Format_24hour, "checkBox_Format_24hour");
+            this.checkBox_Format_24hour.Name = "checkBox_Format_24hour";
+            this.checkBox_Format_24hour.UseVisualStyleBackColor = true;
+            this.checkBox_Format_24hour.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
             // 
             // panel_SmoothSeconds
             // 
@@ -275,6 +313,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Show)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Del)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel_Format_24hour.ResumeLayout(false);
+            this.panel_Format_24hour.PerformLayout();
             this.panel_SmoothSeconds.ResumeLayout(false);
             this.panel_SmoothSeconds.PerformLayout();
             this.panel_Minutes.ResumeLayout(false);
@@ -309,5 +349,8 @@
         private System.Windows.Forms.Panel panel_SmoothSeconds;
         private System.Windows.Forms.Button button_SmoothSeconds;
         public System.Windows.Forms.CheckBox checkBox_SmoothSeconds;
+        private System.Windows.Forms.Panel panel_Format_24hour;
+        private System.Windows.Forms.Button button_Format_24hour;
+        public System.Windows.Forms.CheckBox checkBox_Format_24hour;
     }
 }

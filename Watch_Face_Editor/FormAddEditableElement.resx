@@ -117,19 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="radioButton_battery.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>413, 326</value>
+  </data>
   <data name="radioButton_battery.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 17</value>
   </data>
   <data name="radioButton_stand.Location" type="System.Drawing.Point, System.Drawing">
     <value>96, 42</value>
-  </data>
-  <data name="&gt;&gt;button_cancel.Name" xml:space="preserve">
-    <value>button_cancel</value>
   </data>
   <data name="radioButton_humidity.Text" xml:space="preserve">
     <value>Влажность</value>
@@ -137,6 +133,7 @@
   <data name="radioButton_date.Size" type="System.Drawing.Size, System.Drawing">
     <value>57, 17</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="radioButton_month.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -158,8 +155,8 @@
   <data name="radioButton_steps.Text" xml:space="preserve">
     <value>Шаги</value>
   </data>
-  <data name="&gt;&gt;groupBox_date.Name" xml:space="preserve">
-    <value>groupBox_date</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>* Число, месяц и год на часах будут выбираться как один элемент</value>
   </data>
   <data name="groupBox_system.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 249</value>
@@ -172,12 +169,6 @@
   </data>
   <data name="radioButton_moon.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 17</value>
-  </data>
-  <data name="&gt;&gt;radioButton_wind.Name" xml:space="preserve">
-    <value>radioButton_wind</value>
-  </data>
-  <data name="&gt;&gt;radioButton_weather.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_add.Name" xml:space="preserve">
     <value>button_add</value>
@@ -194,20 +185,11 @@
   <data name="&gt;&gt;radioButton_stand.Name" xml:space="preserve">
     <value>radioButton_stand</value>
   </data>
-  <data name="button_add.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;groupBox_air.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="radioButton_year.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;radioButton_calories.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;radioButton_calories.Parent" xml:space="preserve">
     <value>groupBox_activity</value>
-  </data>
-  <data name="&gt;&gt;groupBox_air.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="radioButton_wind.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -215,11 +197,14 @@
   <data name="radioButton_wind.Text" xml:space="preserve">
     <value>Сила ветра</value>
   </data>
-  <data name="radioButton_year.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="radioButton_battery.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 19</value>
   </data>
   <data name="&gt;&gt;radioButton_calories.Name" xml:space="preserve">
     <value>radioButton_calories</value>
+  </data>
+  <data name="&gt;&gt;radioButton_month.Name" xml:space="preserve">
+    <value>radioButton_month</value>
   </data>
   <data name="&gt;&gt;radioButton_weather.Name" xml:space="preserve">
     <value>radioButton_weather</value>
@@ -233,8 +218,8 @@
   <data name="radioButton_calories.Location" type="System.Drawing.Point, System.Drawing">
     <value>96, 19</value>
   </data>
-  <data name="radioButton_moon.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="radioButton_UVI.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;button_add.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -254,9 +239,6 @@
   <data name="radioButton_humidity.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;radioButton_weather.Parent" xml:space="preserve">
-    <value>groupBox_air</value>
-  </data>
   <data name="radioButton_week.Location" type="System.Drawing.Point, System.Drawing">
     <value>276, 19</value>
   </data>
@@ -265,9 +247,6 @@
   </data>
   <data name="&gt;&gt;radioButton_heart.Name" xml:space="preserve">
     <value>radioButton_heart</value>
-  </data>
-  <data name="&gt;&gt;radioButton_sunrise.Name" xml:space="preserve">
-    <value>radioButton_sunrise</value>
   </data>
   <data name="&gt;&gt;groupBox_date.Parent" xml:space="preserve">
     <value>$this</value>
@@ -284,23 +263,17 @@
   <data name="&gt;&gt;groupBox_activity.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="radioButton_altimeter.Text" xml:space="preserve">
-    <value>Барометр</value>
-  </data>
   <data name="groupBox_activity.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 83</value>
   </data>
   <data name="radioButton_stress.Size" type="System.Drawing.Size, System.Drawing">
     <value>61, 17</value>
   </data>
-  <data name="radioButton_weather.Text" xml:space="preserve">
-    <value>Погода</value>
+  <data name="&gt;&gt;groupBox_date.Name" xml:space="preserve">
+    <value>groupBox_date</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>* Число, месяц и год на часах будут выбираться как один элемент</value>
-  </data>
-  <data name="&gt;&gt;radioButton_humidity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="groupBox_air.Text" xml:space="preserve">
+    <value>Атмосфера</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FormAddEditableElement</value>
@@ -320,6 +293,9 @@
   <data name="groupBox_system.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
+  <data name="&gt;&gt;radioButton_altimeter.Parent" xml:space="preserve">
+    <value>groupBox_air</value>
+  </data>
   <data name="&gt;&gt;radioButton_month.Parent" xml:space="preserve">
     <value>groupBox_date</value>
   </data>
@@ -329,8 +305,8 @@
   <data name="&gt;&gt;radioButton_SpO2.Name" xml:space="preserve">
     <value>radioButton_SpO2</value>
   </data>
-  <data name="radioButton_date.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;radioButton_battery.Parent" xml:space="preserve">
+    <value>groupBox_system</value>
   </data>
   <data name="&gt;&gt;radioButton_humidity.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -347,8 +323,8 @@
   <data name="radioButton_UVI.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 17</value>
   </data>
-  <data name="&gt;&gt;radioButton_calories.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;radioButton_week.Parent" xml:space="preserve">
+    <value>groupBox_date</value>
   </data>
   <data name="&gt;&gt;radioButton_heart.ZOrder" xml:space="preserve">
     <value>6</value>
@@ -365,8 +341,8 @@
   <data name="radioButton_distance.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;radioButton_weather.ZOrder" xml:space="preserve">
-    <value>6</value>
+  <data name="&gt;&gt;radioButton_distance.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="groupBox_system.Size" type="System.Drawing.Size, System.Drawing">
     <value>396, 43</value>
@@ -387,9 +363,6 @@
   <data name="&gt;&gt;groupBox_date.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="&gt;&gt;radioButton_moon.Parent" xml:space="preserve">
-    <value>groupBox_air</value>
-  </data>
   <data name="radioButton_wind.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 42</value>
   </data>
@@ -408,9 +381,6 @@
   <data name="radioButton_stand.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 17</value>
   </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>413, 326</value>
-  </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>347, 13</value>
   </data>
@@ -423,17 +393,20 @@
   <data name="radioButton_sunrise.Size" type="System.Drawing.Size, System.Drawing">
     <value>101, 17</value>
   </data>
-  <data name="&gt;&gt;radioButton_altimeter.Parent" xml:space="preserve">
-    <value>groupBox_air</value>
+  <data name="radioButton_weather.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 19</value>
   </data>
   <data name="radioButton_week.Size" type="System.Drawing.Size, System.Drawing">
     <value>91, 17</value>
   </data>
+  <data name="&gt;&gt;radioButton_humidity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="radioButton_date.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 19</value>
   </data>
-  <data name="radioButton_heart.Location" type="System.Drawing.Point, System.Drawing">
-    <value>186, 19</value>
+  <data name="radioButton_fat_burning.Location" type="System.Drawing.Point, System.Drawing">
+    <value>276, 42</value>
   </data>
   <data name="&gt;&gt;radioButton_year.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -462,20 +435,26 @@
   <data name="&gt;&gt;radioButton_fat_burning.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;radioButton_steps.Name" xml:space="preserve">
-    <value>radioButton_steps</value>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Добавление элементов</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="button_add.Location" type="System.Drawing.Point, System.Drawing">
     <value>252, 298</value>
   </data>
-  <data name="radioButton_steps.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;radioButton_wind.Name" xml:space="preserve">
+    <value>radioButton_wind</value>
   </data>
   <data name="&gt;&gt;radioButton_fat_burning.Parent" xml:space="preserve">
     <value>groupBox_activity</value>
   </data>
   <data name="&gt;&gt;radioButton_calories.ZOrder" xml:space="preserve">
     <value>7</value>
+  </data>
+  <data name="radioButton_moon.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
   </data>
   <data name="radioButton_fat_burning.Size" type="System.Drawing.Size, System.Drawing">
     <value>103, 17</value>
@@ -504,26 +483,20 @@
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
-  <data name="radioButton_fat_burning.Text" xml:space="preserve">
-    <value>Жиросжигание</value>
+  <data name="radioButton_altimeter.Text" xml:space="preserve">
+    <value>Барометр</value>
   </data>
   <data name="radioButton_date.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="radioButton_heart.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 17</value>
+  <data name="radioButton_year.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="radioButton_wind.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="radioButton_weather.Text" xml:space="preserve">
+    <value>Погода</value>
   </data>
   <data name="&gt;&gt;radioButton_humidity.Parent" xml:space="preserve">
     <value>groupBox_air</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Добавление элементов</value>
-  </data>
-  <data name="groupBox_air.Text" xml:space="preserve">
-    <value>Атмосфера</value>
   </data>
   <data name="radioButton_fat_burning.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -534,26 +507,14 @@
   <data name="groupBox_date.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="radioButton_humidity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>186, 19</value>
-  </data>
   <data name="radioButton_month.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="&gt;&gt;radioButton_moon.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="radioButton_battery.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 19</value>
   </data>
   <data name="radioButton_month.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 17</value>
   </data>
   <data name="radioButton_SpO2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="&gt;&gt;radioButton_week.Parent" xml:space="preserve">
-    <value>groupBox_date</value>
   </data>
   <data name="radioButton_PAI.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -570,8 +531,17 @@
   <data name="radioButton_UVI.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>groupBox_date</value>
+  <data name="groupBox_date.Size" type="System.Drawing.Size, System.Drawing">
+    <value>396, 65</value>
+  </data>
+  <data name="&gt;&gt;radioButton_UVI.Name" xml:space="preserve">
+    <value>radioButton_UVI</value>
+  </data>
+  <data name="&gt;&gt;radioButton_SpO2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="radioButton_heart.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 17</value>
   </data>
   <data name="radioButton_heart.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -579,11 +549,11 @@
   <data name="groupBox_system.Text" xml:space="preserve">
     <value>Система</value>
   </data>
-  <data name="&gt;&gt;radioButton_year.Parent" xml:space="preserve">
-    <value>groupBox_date</value>
+  <data name="&gt;&gt;radioButton_moon.Parent" xml:space="preserve">
+    <value>groupBox_air</value>
   </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="radioButton_year.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;button_cancel.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -1848,8 +1818,11 @@
         AACYGAAAmBgAAICAAACAgQAA/+MAAOAHAADwDwAA8A8AAPgfAAD4HwAA/D8AAP5/AAD+fwAA
 </value>
   </data>
-  <data name="&gt;&gt;radioButton_UVI.Name" xml:space="preserve">
-    <value>radioButton_UVI</value>
+  <data name="&gt;&gt;radioButton_month.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>groupBox_date</value>
   </data>
   <data name="radioButton_calories.Size" type="System.Drawing.Size, System.Drawing">
     <value>68, 17</value>
@@ -1872,8 +1845,8 @@
   <data name="&gt;&gt;button_add.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;radioButton_month.Name" xml:space="preserve">
-    <value>radioButton_month</value>
+  <data name="radioButton_humidity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>186, 19</value>
   </data>
   <data name="radioButton_weather.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1893,17 +1866,17 @@
   <data name="radioButton_stand.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="radioButton_week.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;radioButton_moon.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="groupBox_air.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="&gt;&gt;groupBox_system.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="radioButton_battery.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;radioButton_battery.Parent" xml:space="preserve">
-    <value>groupBox_system</value>
+  <data name="radioButton_week.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="groupBox_activity.Size" type="System.Drawing.Size, System.Drawing">
     <value>396, 89</value>
@@ -1911,35 +1884,38 @@
   <data name="&gt;&gt;radioButton_wind.Parent" xml:space="preserve">
     <value>groupBox_air</value>
   </data>
-  <data name="radioButton_battery.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="radioButton_altimeter.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 17</value>
   </data>
   <data name="&gt;&gt;radioButton_battery.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="radioButton_distance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 42</value>
+  <data name="&gt;&gt;groupBox_air.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="groupBox_date.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
+  <data name="&gt;&gt;radioButton_steps.Name" xml:space="preserve">
+    <value>radioButton_steps</value>
   </data>
-  <data name="radioButton_UVI.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="&gt;&gt;radioButton_steps.Parent" xml:space="preserve">
+    <value>groupBox_activity</value>
   </data>
   <data name="&gt;&gt;radioButton_battery.Name" xml:space="preserve">
     <value>radioButton_battery</value>
   </data>
-  <data name="&gt;&gt;radioButton_PAI.Parent" xml:space="preserve">
-    <value>groupBox_activity</value>
+  <data name="radioButton_month.Location" type="System.Drawing.Point, System.Drawing">
+    <value>96, 19</value>
+  </data>
+  <data name="radioButton_wind.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="radioButton_steps.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 19</value>
+  </data>
+  <data name="&gt;&gt;radioButton_stress.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;groupBox_system.Name" xml:space="preserve">
     <value>groupBox_system</value>
@@ -1953,7 +1929,7 @@
   <data name="button_cancel.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="&gt;&gt;radioButton_stress.Type" xml:space="preserve">
+  <data name="&gt;&gt;radioButton_weather.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;radioButton_date.Name" xml:space="preserve">
@@ -1971,8 +1947,8 @@
   <data name="&gt;&gt;radioButton_altimeter.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;radioButton_SpO2.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;button_cancel.Name" xml:space="preserve">
+    <value>button_cancel</value>
   </data>
   <data name="&gt;&gt;radioButton_PAI.Name" xml:space="preserve">
     <value>radioButton_PAI</value>
@@ -1986,8 +1962,8 @@
   <data name="&gt;&gt;radioButton_stress.Parent" xml:space="preserve">
     <value>groupBox_activity</value>
   </data>
-  <data name="radioButton_month.Location" type="System.Drawing.Point, System.Drawing">
-    <value>96, 19</value>
+  <data name="radioButton_fat_burning.Text" xml:space="preserve">
+    <value>Жиросжигание</value>
   </data>
   <data name="&gt;&gt;radioButton_SpO2.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1995,8 +1971,8 @@
   <data name="radioButton_SpO2.Size" type="System.Drawing.Size, System.Drawing">
     <value>116, 17</value>
   </data>
-  <data name="radioButton_weather.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 19</value>
+  <data name="&gt;&gt;radioButton_weather.Parent" xml:space="preserve">
+    <value>groupBox_air</value>
   </data>
   <data name="&gt;&gt;radioButton_wind.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2004,20 +1980,29 @@
   <data name="&gt;&gt;radioButton_stand.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="radioButton_stress.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
+  <data name="radioButton_week.Text" xml:space="preserve">
+    <value>День недели</value>
   </data>
   <data name="&gt;&gt;groupBox_system.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="groupBox_date.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 12</value>
+  </data>
   <data name="radioButton_weather.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="radioButton_SpO2.Text" xml:space="preserve">
-    <value>Кислород в крови</value>
+  <data name="radioButton_stress.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
   </data>
   <data name="&gt;&gt;radioButton_distance.Parent" xml:space="preserve">
     <value>groupBox_activity</value>
+  </data>
+  <data name="radioButton_calories.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButton_distance.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 42</value>
   </data>
   <data name="radioButton_humidity.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 17</value>
@@ -2025,14 +2010,17 @@
   <data name="&gt;&gt;radioButton_year.Name" xml:space="preserve">
     <value>radioButton_year</value>
   </data>
+  <data name="&gt;&gt;radioButton_SpO2.Parent" xml:space="preserve">
+    <value>groupBox_activity</value>
+  </data>
   <data name="&gt;&gt;radioButton_heart.Parent" xml:space="preserve">
     <value>groupBox_activity</value>
   </data>
   <data name="radioButton_sunrise.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;radioButton_distance.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="button_add.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
   </data>
   <data name="radioButton_battery.Text" xml:space="preserve">
     <value>Заряд</value>
@@ -2040,39 +2028,47 @@
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;radioButton_month.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="radioButton_moon.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;groupBox_air.Name" xml:space="preserve">
     <value>groupBox_air</value>
   </data>
-  <data name="&gt;&gt;radioButton_stress.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;radioButton_year.Parent" xml:space="preserve">
+    <value>groupBox_date</value>
+  </data>
+  <data name="&gt;&gt;radioButton_sunrise.Name" xml:space="preserve">
+    <value>radioButton_sunrise</value>
+  </data>
+  <data name="&gt;&gt;radioButton_PAI.Parent" xml:space="preserve">
+    <value>groupBox_activity</value>
   </data>
   <data name="radioButton_year.Location" type="System.Drawing.Point, System.Drawing">
     <value>186, 19</value>
   </data>
-  <data name="radioButton_week.Text" xml:space="preserve">
-    <value>День недели</value>
+  <data name="&gt;&gt;groupBox_air.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="radioButton_wind.Size" type="System.Drawing.Size, System.Drawing">
     <value>82, 17</value>
   </data>
-  <data name="radioButton_calories.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="radioButton_moon.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;radioButton_weather.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="&gt;&gt;radioButton_SpO2.Parent" xml:space="preserve">
-    <value>groupBox_activity</value>
+  <data name="radioButton_SpO2.Text" xml:space="preserve">
+    <value>Кислород в крови</value>
   </data>
   <data name="radioButton_moon.Location" type="System.Drawing.Point, System.Drawing">
     <value>186, 42</value>
   </data>
   <data name="radioButton_PAI.Text" xml:space="preserve">
     <value>PAI</value>
-    <comment>Do not translate</comment>
+  </data>
+  <data name="&gt;&gt;radioButton_stress.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;radioButton_date.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -2089,8 +2085,8 @@
   <data name="&gt;&gt;button_add.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="groupBox_date.Size" type="System.Drawing.Size, System.Drawing">
-    <value>396, 65</value>
+  <data name="radioButton_heart.Location" type="System.Drawing.Point, System.Drawing">
+    <value>186, 19</value>
   </data>
   <data name="&gt;&gt;radioButton_UVI.ZOrder" xml:space="preserve">
     <value>5</value>
@@ -2101,8 +2097,8 @@
   <data name="button_cancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
   </data>
-  <data name="&gt;&gt;radioButton_steps.Parent" xml:space="preserve">
-    <value>groupBox_activity</value>
+  <data name="radioButton_date.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="radioButton_weather.Size" type="System.Drawing.Size, System.Drawing">
     <value>62, 17</value>
@@ -2122,19 +2118,22 @@
   <data name="radioButton_PAI.Location" type="System.Drawing.Point, System.Drawing">
     <value>276, 19</value>
   </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;groupBox_system.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="radioButton_calories.Text" xml:space="preserve">
     <value>Калории</value>
   </data>
+  <data name="radioButton_steps.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="&gt;&gt;radioButton_wind.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="radioButton_fat_burning.Location" type="System.Drawing.Point, System.Drawing">
-    <value>276, 42</value>
+  <data name="radioButton_battery.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="$this.Localizable" type="System.Boolean, mscorlib">
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
 </root>

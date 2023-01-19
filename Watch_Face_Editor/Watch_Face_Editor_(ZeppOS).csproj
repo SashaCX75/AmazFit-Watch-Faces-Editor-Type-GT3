@@ -143,6 +143,11 @@
     <Compile Include="Classes\Program_Settings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Classes\Watch_Face_Preview_Set.cs" />
+    <Compile Include="Properties\ElementsString.cs.Designer.cs">
+      <DependentUpon>ElementsString.cs.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Properties\ElementsString.de.Designer.cs">
       <DependentUpon>ElementsString.de.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -167,6 +172,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ElementsString.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\FormStrings.cs.Designer.cs">
+      <DependentUpon>FormStrings.cs.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Properties\FormStrings.de.Designer.cs">
       <DependentUpon>FormStrings.de.resx</DependentUpon>
@@ -197,6 +207,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Classes\WatchSkin.cs" />
+    <EmbeddedResource Include="Form1.cs.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.de.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -223,6 +236,9 @@
       <DependentUpon>Form1.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormAddEditableElement.cs.resx">
+      <DependentUpon>FormAddEditableElement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormAddEditableElement.de.resx">
       <DependentUpon>FormAddEditableElement.cs</DependentUpon>
     </EmbeddedResource>
@@ -241,6 +257,9 @@
     <EmbeddedResource Include="FormAddEditableElement.zh.resx">
       <DependentUpon>FormAddEditableElement.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormAnimation.cs.resx">
+      <DependentUpon>FormAnimation.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormAnimation.de.resx">
       <DependentUpon>FormAnimation.cs</DependentUpon>
     </EmbeddedResource>
@@ -258,6 +277,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormAnimation.zh.resx">
       <DependentUpon>FormAnimation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFileExists.cs.resx">
+      <DependentUpon>FormFileExists.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormFileExists.de.resx">
       <DependentUpon>FormFileExists.cs</DependentUpon>
@@ -283,6 +305,10 @@
     <EmbeddedResource Include="FormPreview.resx">
       <DependentUpon>FormPreview.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\ElementsString.cs.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ElementsString.cs.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\ElementsString.de.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ElementsString.de.Designer.cs</LastGenOutput>
@@ -302,6 +328,10 @@
     <EmbeddedResource Include="Properties\ElementsString.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ElementsString.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\FormStrings.cs.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FormStrings.cs.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\FormStrings.de.resx">
       <Generator>ResXFileCodeGenerator</Generator>

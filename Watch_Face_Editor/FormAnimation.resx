@@ -149,7 +149,6 @@
   </data>
   <data name="radioButton_xlarge.Text" xml:space="preserve">
     <value>x2</value>
-    <comment>Do not translate</comment>
   </data>
   <data name="radioButton_normal.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 4</value>
@@ -171,7 +170,6 @@
   </data>
   <data name="radioButton_large.Text" xml:space="preserve">
     <value>x1,5</value>
-    <comment>Do not translate</comment>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1594,7 +1592,6 @@
   </data>
   <data name="radioButton_normal.Text" xml:space="preserve">
     <value>x1</value>
-    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;button_AnimationReset.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1671,10 +1668,10 @@
   <data name="&gt;&gt;button_SaveAnimation.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
-  </data>
-  <data name="$this.Localizable" type="System.Boolean, mscorlib">
+  </metadata>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
 </root>

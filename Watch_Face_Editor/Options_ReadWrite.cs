@@ -147,6 +147,26 @@ namespace Watch_Face_Editor
                         break;
                     #endregion
 
+                    #region AnalogTimePro
+                    case "AnalogTimePro":
+                        ElementAnalogTimePro AnalogTimePro = null;
+                        try
+                        {
+                            AnalogTimePro = JsonConvert.DeserializeObject<ElementAnalogTimePro>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (AnalogTimePro != null) NewElements.Add(AnalogTimePro);
+                        break;
+                    #endregion
+
                     /*#region ElementEditablePointers
                     case "ElementEditablePointers":
                         ElementEditablePointers EditablePointers = null;
@@ -1813,7 +1833,7 @@ namespace Watch_Face_Editor
                     }
                 }
             }
-            //background.visible = userCtrl_Background_Options.Visible;
+            //background.enable = userCtrl_Background_Options.Visible;
 
             JSON_Modified = true;
             PreviewImage();
@@ -3014,6 +3034,21 @@ namespace Watch_Face_Editor
             disconnectAlert.BluetoothOn.vibrateType = uCtrl_DisconnectAlert_Opt.GetVibratetConneсnt();
             disconnectAlert.BluetoothOn.toastShow = uCtrl_DisconnectAlert_Opt.checkBox_conneсnt_toast.Checked;
             disconnectAlert.BluetoothOn.toastText = uCtrl_DisconnectAlert_Opt.textBox_conneсnt_toast_text.Text;
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_SmoothSeconds_Opt_ValueChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            Smooth_Second smoothSecon = (Smooth_Second)uCtrl_SmoothSeconds_Opt._SmoothSeconds;
+            if (smoothSecon == null) return;
+
+            smoothSecon.type = uCtrl_SmoothSeconds_Opt.radioButton_type1.Checked ? 1 : 2;
+            smoothSecon.fps = (int)uCtrl_SmoothSeconds_Opt.numericUpDown_fps.Value;
 
             JSON_Modified = true;
             PreviewImage();

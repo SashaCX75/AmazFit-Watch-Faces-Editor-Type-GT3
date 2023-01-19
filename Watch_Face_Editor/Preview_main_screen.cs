@@ -460,6 +460,29 @@ namespace Watch_Face_Editor
             if (src != null) src.Dispose();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="gPanel"></param>
+        /// <param name="scale"></param>
+        /// <param name="crop"></param>
+        /// <param name="WMesh"></param>
+        /// <param name="BMesh"></param>
+        /// <param name="BBorder"></param>
+        /// <param name="showShortcuts"></param>
+        /// <param name="showShortcutsArea"></param>
+        /// <param name="showShortcutsBorder"></param>
+        /// <param name="showShortcutsImage"></param>
+        /// <param name="showAnimation"></param>
+        /// <param name="showProgressArea"></param>
+        /// <param name="showCentrHend"></param>
+        /// <param name="showWidgetsArea"></param>
+        /// <param name="link"></param>
+        /// <param name="Shortcuts_In_Gif"></param>
+        /// <param name="time_value_sec"></param>
+        /// <param name="showEeditMode"></param>
+        /// <param name="edit_mode"></param>
         public void Draw_elements(Object element, Graphics gPanel, float scale, bool crop, bool WMesh, bool BMesh, bool BBorder,
             bool showShortcuts, bool showShortcutsArea, bool showShortcutsBorder, bool showShortcutsImage,
             bool showAnimation, bool showProgressArea, bool showCentrHend,
@@ -744,10 +767,110 @@ namespace Watch_Face_Editor
                     break;
                 #endregion
 
+                #region ElementAnalogTimePro
+                case "ElementAnalogTimePro":
+                    ElementAnalogTimePro AnalogTimePro = (ElementAnalogTimePro)element;
+                    if (!AnalogTimePro.visible) return;
+
+                    for (int index = 1; index <= 3; index++)
+                    {
+                        if (AnalogTimePro.Hour != null && AnalogTimePro.Hour.src != null
+                            && AnalogTimePro.Hour.src.Length > 0 &&
+                            index == AnalogTimePro.Hour.position && AnalogTimePro.Hour.visible)
+                        {
+                            int x = AnalogTimePro.Hour.center_x;
+                            int y = AnalogTimePro.Hour.center_y;
+                            int offsetX = AnalogTimePro.Hour.pos_x;
+                            int offsetY = AnalogTimePro.Hour.pos_y;
+                            int image_index = ListImages.IndexOf(AnalogTimePro.Hour.src);
+                            int hour = WatchFacePreviewSet.Time.Hours;
+                            int min = WatchFacePreviewSet.Time.Minutes;
+                            //int sec = Watch_Face_Preview_Set.TimeW.Seconds;
+                            int startAngl = AnalogTimePro.Hour.start_angle;
+                            int endAngl = AnalogTimePro.Hour.end_angle;
+                            int fullAngl = endAngl - startAngl;
+                            int fullHour = 24;
+                            if (!AnalogTimePro.Format_24hour)
+                            {
+                                if (hour >= 12) hour = hour - 12;
+                                fullHour = 12;
+                            }
+                            float angle = fullAngl * hour / fullHour + fullAngl * min / (60 * fullHour);
+                            DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+
+                            if (AnalogTimePro.Hour.cover_path != null && AnalogTimePro.Hour.cover_path.Length > 0)
+                            {
+                                image_index = ListImages.IndexOf(AnalogTimePro.Hour.cover_path);
+                                x = AnalogTimePro.Hour.cover_x;
+                                y = AnalogTimePro.Hour.cover_y;
+
+                                src = OpenFileStream(ListImagesFullName[image_index]);
+                                if (src != null) gPanel.DrawImage(src, x, y);
+                            }
+                        }
+
+                        if (AnalogTimePro.Minute != null && AnalogTimePro.Minute.src != null
+                            && AnalogTimePro.Minute.src.Length > 0 &&
+                            index == AnalogTimePro.Minute.position && AnalogTimePro.Minute.visible)
+                        {
+                            int x = AnalogTimePro.Minute.center_x;
+                            int y = AnalogTimePro.Minute.center_y;
+                            int offsetX = AnalogTimePro.Minute.pos_x;
+                            int offsetY = AnalogTimePro.Minute.pos_y;
+                            int startAngl = AnalogTimePro.Minute.start_angle;
+                            int endAngl = AnalogTimePro.Minute.end_angle;
+                            int fullAngl = endAngl - startAngl;
+                            int image_index = ListImages.IndexOf(AnalogTimePro.Minute.src);
+                            int min = WatchFacePreviewSet.Time.Minutes;
+                            float angle = fullAngl * min / 60;
+                            DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+
+                            if (AnalogTimePro.Minute.cover_path != null && AnalogTimePro.Minute.cover_path.Length > 0)
+                            {
+                                image_index = ListImages.IndexOf(AnalogTimePro.Minute.cover_path);
+                                x = AnalogTimePro.Minute.cover_x;
+                                y = AnalogTimePro.Minute.cover_y;
+
+                                src = OpenFileStream(ListImagesFullName[image_index]);
+                                if (src != null) gPanel.DrawImage(src, x, y);
+                            }
+                        }
+
+                        if (AnalogTimePro.Second != null && AnalogTimePro.Second.src != null
+                            && AnalogTimePro.Second.src.Length > 0 &&
+                            index == AnalogTimePro.Second.position && AnalogTimePro.Second.visible)
+                        {
+                            int x = AnalogTimePro.Second.center_x;
+                            int y = AnalogTimePro.Second.center_y;
+                            int offsetX = AnalogTimePro.Second.pos_x;
+                            int offsetY = AnalogTimePro.Second.pos_y;
+                            int startAngl = AnalogTimePro.Second.start_angle;
+                            int endAngl = AnalogTimePro.Second.end_angle;
+                            int fullAngl = endAngl - startAngl;
+                            int image_index = ListImages.IndexOf(AnalogTimePro.Second.src);
+                            int sec = WatchFacePreviewSet.Time.Seconds;
+                            float angle = fullAngl * sec / 60;
+                            DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+
+                            if (AnalogTimePro.Second.cover_path != null && AnalogTimePro.Second.cover_path.Length > 0)
+                            {
+                                image_index = ListImages.IndexOf(AnalogTimePro.Second.cover_path);
+                                x = AnalogTimePro.Second.cover_x;
+                                y = AnalogTimePro.Second.cover_y;
+
+                                src = OpenFileStream(ListImagesFullName[image_index]);
+                                if (src != null) gPanel.DrawImage(src, x, y);
+                            }
+                        }
+                    }
+
+                    break;
+                #endregion
+
                 #region ElementEditablePointers
                 /*case "ElementEditablePointers":
                     ElementEditablePointers EditablePointers = (ElementEditablePointers)element;
-                    if (!EditablePointers.visible) continue;
+                    if (!EditablePointers.enable) continue;
                     if (EditablePointers.config == null || EditablePointers.config.Count == 0 ||
                         EditablePointers.selected_pointers < 0 || 
                         EditablePointers.selected_pointers >= EditablePointers.config.Count) continue;
@@ -1210,7 +1333,7 @@ namespace Watch_Face_Editor
                /* #region ElementShortcuts
                 case "ElementShortcuts":
                     ElementShortcuts shortcutsElement = (ElementShortcuts)element;
-                    if (!shortcutsElement.visible && !Shortcuts_In_Gif) return;
+                    if (!shortcutsElement.enable && !Shortcuts_In_Gif) return;
 
                     hmUI_widget_IMG_CLICK img_click_step = shortcutsElement.Step;
                     hmUI_widget_IMG_CLICK img_click_heart = shortcutsElement.Heart;

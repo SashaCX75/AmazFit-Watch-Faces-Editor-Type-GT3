@@ -135,6 +135,8 @@ namespace Watch_Face_Editor
                         case "zh": ProgramSettings.language = "Chinese/简体中文"; break;
                         case "uk": ProgramSettings.language = "Українська"; break;
                         case "de": ProgramSettings.language = "Deutsch"; break;
+                        case "cs": ProgramSettings.language = "Čeština"; break;
+                        case "fr": ProgramSettings.language = "French"; break;
                     }
                   
                 }
@@ -1615,6 +1617,9 @@ namespace Watch_Face_Editor
                 case "DisconnectAlert":
                     uCtrl_DisconnectAlert_Opt.Visible = true;
                     break;
+                case "SmoothSecond":
+                    uCtrl_SmoothSeconds_Opt.Visible = true;
+                    break;
             }
 
             if (optionsName == "EditableTimePointer" || optionsName == "EditableElements" ||
@@ -1644,6 +1649,7 @@ namespace Watch_Face_Editor
             uCtrl_EditableTimePointer_Opt.Visible = false;
             uCtrl_EditableElements_Opt.Visible = false;
             uCtrl_DisconnectAlert_Opt.Visible = false;
+            uCtrl_SmoothSeconds_Opt.Visible = false;
         }
 
         private void ResetHighlightState(string selectElementName)
@@ -1712,6 +1718,7 @@ namespace Watch_Face_Editor
             uCtrl_Background_Elm.SettingsClear();
             uCtrl_DigitalTime_Elm.SettingsClear();
             uCtrl_AnalogTime_Elm.SettingsClear();
+            uCtrl_AnalogTimePro_Elm.SettingsClear();
             uCtrl_EditableTimePointer_Elm.SettingsClear();
             uCtrl_EditableElements_Elm.SettingsClear();
 
@@ -1923,7 +1930,7 @@ namespace Watch_Face_Editor
         }
         private void uCtrl_AnalogTimePro_Elm_SelectChanged(object sender, EventArgs eventArgs)
         {
-            string selectElement = uCtrl_AnalogTime_Elm.selectedElement;
+            string selectElement = uCtrl_AnalogTimePro_Elm.selectedElement;
             if (selectElement.Length == 0) HideAllElemenrOptions();
             ResetHighlightState("AnalogTimePro");
 
@@ -1985,9 +1992,8 @@ namespace Watch_Face_Editor
                         if (uCtrl_AnalogTimePro_Elm.checkBox_SmoothSeconds.Checked)
                         {
                             Smooth_Second smoothSecond = analogTime.SmoothSecond;
-                            Read_ImgPointer_Options(img_pointer, false);
-                            uCtrl_Pointer_Opt.TimeMode = false;
-                            ShowElemenrOptions("Pointer");
+                            Read_Smooth_Second_Options(smoothSecond);
+                            ShowElemenrOptions("SmoothSecond");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -3740,7 +3746,7 @@ namespace Watch_Face_Editor
                 else Elements.Insert(Elements.Count - 1, analogTime);
             }
             //if (!exists) Elements.Insert(0, analogTime);
-            uCtrl_AnalogTime_Elm.SettingsClear();
+            uCtrl_AnalogTimePro_Elm.SettingsClear();
         }
 
         /// <summary>Добавляем редактируемые стрелки</summary>
@@ -3767,7 +3773,7 @@ namespace Watch_Face_Editor
             }
 
             ElementEditablePointers editablePointers = new ElementEditablePointers();
-            editablePointers.visible = true;
+            editablePointers.enable = true;
             //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementEditablePointers"); // проверяем что такого элемента нет
             bool existsShortcuts = Elements.Exists(e => e.GetType().Name == "ElementShortcuts"); // проверяем что нет ярлыков
@@ -3975,7 +3981,7 @@ namespace Watch_Face_Editor
             }
 
             ElementShortcuts shortcuts = new ElementShortcuts();
-            shortcuts.visible = true;
+            shortcuts.enable = true;
             //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementShortcuts"); // проверяем что такого элемента нет
             //if (!exists) Elements.Insert(0, shortcuts);
@@ -4581,6 +4587,7 @@ namespace Watch_Face_Editor
             uCtrl_Background_Elm.Visible = false;
             uCtrl_DigitalTime_Elm.Visible = false;
             uCtrl_AnalogTime_Elm.Visible = false;
+            uCtrl_AnalogTimePro_Elm.Visible = false;
             uCtrl_EditableTimePointer_Elm.Visible = false;
             uCtrl_EditableElements_Elm.Visible = false;
 
@@ -4735,10 +4742,47 @@ namespace Watch_Face_Editor
                             break;
                         #endregion
 
+                        #region ElementAnalogTimePro
+                        case "ElementAnalogTimePro":
+                            ElementAnalogTimePro AnalogTimePro = (ElementAnalogTimePro)element;
+                            uCtrl_AnalogTimePro_Elm.SetVisibilityElementStatus(AnalogTimePro.visible);
+                            elementOptions = new Dictionary<int, string>();
+                            if (AnalogTimePro.Second != null)
+                            {
+                                uCtrl_AnalogTimePro_Elm.checkBox_Seconds.Checked = AnalogTimePro.Second.visible;
+                                elementOptions.Add(AnalogTimePro.Second.position, "Second");
+                            }
+                            if (AnalogTimePro.Minute != null)
+                            {
+                                uCtrl_AnalogTimePro_Elm.checkBox_Minutes.Checked = AnalogTimePro.Minute.visible;
+                                elementOptions.Add(AnalogTimePro.Minute.position, "Minute");
+                            }
+                            if (AnalogTimePro.Hour != null)
+                            {
+                                uCtrl_AnalogTimePro_Elm.checkBox_Hours.Checked = AnalogTimePro.Hour.visible;
+                                elementOptions.Add(AnalogTimePro.Hour.position, "Hour");
+                            }
+                            if (AnalogTimePro.SmoothSecond != null)
+                            {
+                                uCtrl_AnalogTimePro_Elm.checkBox_SmoothSeconds.Checked = AnalogTimePro.SmoothSecond.enable;
+                                elementOptions.Add(AnalogTimePro.SmoothSecond.position, "SmoothSecond");
+                            }
+
+                            uCtrl_AnalogTimePro_Elm.checkBox_Format_24hour.Checked = AnalogTimePro.Format_24hour;
+                            elementOptions.Add(AnalogTimePro.Format_24hour_position, "Format_24hour");
+
+                            uCtrl_AnalogTimePro_Elm.SetOptionsPosition(elementOptions);
+
+                            uCtrl_AnalogTimePro_Elm.Visible = true;
+                            SetElementPositionInGUI(type, count - i - 2);
+                            //SetElementPositionInGUI(type, i + 1);
+                            break;
+                        #endregion
+
                         /*#region ElementEditablePointers
                         case "ElementEditablePointers":
                             ElementEditablePointers EditablePointers = (ElementEditablePointers)element;
-                            uCtrl_EditableTimePointer_Elm.SetVisibilityElementStatus(EditablePointers.visible);
+                            uCtrl_EditableTimePointer_Elm.SetVisibilityElementStatus(EditablePointers.enable);
 
                             uCtrl_EditableTimePointer_Elm.Visible = true;
                             SetElementPositionInGUI(type, count - i - 2);
@@ -4871,66 +4915,66 @@ namespace Watch_Face_Editor
                         /*#region ElementShortcuts
                         case "ElementShortcuts":
                             ElementShortcuts Shortcuts = (ElementShortcuts)element;
-                            uCtrl_Shortcuts_Elm.SetVisibilityElementStatus(Shortcuts.visible);
+                            uCtrl_Shortcuts_Elm.SetVisibilityElementStatus(Shortcuts.enable);
                             elementOptions = new Dictionary<int, string>();
                             if (Shortcuts.Step != null)
                             {
-                                uCtrl_Shortcuts_Elm.checkBox_Step.Checked = Shortcuts.Step.visible;
+                                uCtrl_Shortcuts_Elm.checkBox_Step.Checked = Shortcuts.Step.enable;
                                 elementOptions.Add(Shortcuts.Step.position, "Step");
                             }
                             if (Shortcuts.Heart != null)
                             {
-                                uCtrl_Shortcuts_Elm.checkBox_Heart.Checked = Shortcuts.Heart.visible;
+                                uCtrl_Shortcuts_Elm.checkBox_Heart.Checked = Shortcuts.Heart.enable;
                                 elementOptions.Add(Shortcuts.Heart.position, "Heart");
                             }
                             if (Shortcuts.SPO2 != null)
                             {
-                                uCtrl_Shortcuts_Elm.checkBox_SPO2.Checked = Shortcuts.SPO2.visible;
+                                uCtrl_Shortcuts_Elm.checkBox_SPO2.Checked = Shortcuts.SPO2.enable;
                                 elementOptions.Add(Shortcuts.SPO2.position, "SPO2");
                             }
                             if (Shortcuts.PAI != null)
                             {
-                                uCtrl_Shortcuts_Elm.checkBox_PAI.Checked = Shortcuts.PAI.visible;
+                                uCtrl_Shortcuts_Elm.checkBox_PAI.Checked = Shortcuts.PAI.enable;
                                 elementOptions.Add(Shortcuts.PAI.position, "PAI");
                             }
                             if (Shortcuts.Stress != null)
                             {
-                                uCtrl_Shortcuts_Elm.checkBox_Stress.Checked = Shortcuts.Stress.visible;
+                                uCtrl_Shortcuts_Elm.checkBox_Stress.Checked = Shortcuts.Stress.enable;
                                 elementOptions.Add(Shortcuts.Stress.position, "Stress");
                             }
                             if (Shortcuts.Weather != null)
                             {
-                                uCtrl_Shortcuts_Elm.checkBox_Weather.Checked = Shortcuts.Weather.visible;
+                                uCtrl_Shortcuts_Elm.checkBox_Weather.Checked = Shortcuts.Weather.enable;
                                 elementOptions.Add(Shortcuts.Weather.position, "Weather");
                             }
                             if (Shortcuts.Altimeter != null)
                             {
-                                uCtrl_Shortcuts_Elm.checkBox_Altimeter.Checked = Shortcuts.Altimeter.visible;
+                                uCtrl_Shortcuts_Elm.checkBox_Altimeter.Checked = Shortcuts.Altimeter.enable;
                                 elementOptions.Add(Shortcuts.Altimeter.position, "Altimeter");
                             }
                             if (Shortcuts.Sunrise != null)
                             {
-                                uCtrl_Shortcuts_Elm.checkBox_Sunrise.Checked = Shortcuts.Sunrise.visible;
+                                uCtrl_Shortcuts_Elm.checkBox_Sunrise.Checked = Shortcuts.Sunrise.enable;
                                 elementOptions.Add(Shortcuts.Sunrise.position, "Sunrise");
                             }
                             if (Shortcuts.Alarm != null)
                             {
-                                uCtrl_Shortcuts_Elm.checkBox_Alarm.Checked = Shortcuts.Alarm.visible;
+                                uCtrl_Shortcuts_Elm.checkBox_Alarm.Checked = Shortcuts.Alarm.enable;
                                 elementOptions.Add(Shortcuts.Alarm.position, "Alarm");
                             }
                             if (Shortcuts.Sleep != null)
                             {
-                                uCtrl_Shortcuts_Elm.checkBox_Sleep.Checked = Shortcuts.Sleep.visible;
+                                uCtrl_Shortcuts_Elm.checkBox_Sleep.Checked = Shortcuts.Sleep.enable;
                                 elementOptions.Add(Shortcuts.Sleep.position, "Sleep");
                             }
                             if (Shortcuts.Countdown != null)
                             {
-                                uCtrl_Shortcuts_Elm.checkBox_Countdown.Checked = Shortcuts.Countdown.visible;
+                                uCtrl_Shortcuts_Elm.checkBox_Countdown.Checked = Shortcuts.Countdown.enable;
                                 elementOptions.Add(Shortcuts.Countdown.position, "Countdown");
                             }
                             if (Shortcuts.Stopwatch != null)
                             {
-                                uCtrl_Shortcuts_Elm.checkBox_Stopwatch.Checked = Shortcuts.Stopwatch.visible;
+                                uCtrl_Shortcuts_Elm.checkBox_Stopwatch.Checked = Shortcuts.Stopwatch.enable;
                                 elementOptions.Add(Shortcuts.Stopwatch.position, "Stopwatch");
                             }
                             uCtrl_Shortcuts_Elm.SetOptionsPosition(elementOptions);
@@ -5847,6 +5891,9 @@ namespace Watch_Face_Editor
             {
                 case "ElementAnalogTime":
                     panel = panel_UC_AnalogTime;
+                    break;
+                case "ElementAnalogTimePro":
+                    panel = panel_UC_AnalogTimePro;
                     break;
                 case "ElementDigitalTime":
                     panel = panel_UC_DigitalTime;
@@ -7877,8 +7924,8 @@ namespace Watch_Face_Editor
                 if (Watch_Face.ScreenNormal.Background.Editable_Background != null &&
                     Watch_Face.ScreenNormal.Background.Editable_Background.enable_edit_bg) appText = appText.Replace("\"editable\": 0", "\"editable\": 1");
             }
-            if (Watch_Face.Editable_Elements != null && Watch_Face.Editable_Elements.visible) appText = appText.Replace("\"editable\": 0", "\"editable\": 1");
-            if (Watch_Face.ElementEditablePointers != null && Watch_Face.ElementEditablePointers.visible) appText = appText.Replace("\"editable\": 0", "\"editable\": 1");
+            if (Watch_Face.Editable_Elements != null && Watch_Face.Editable_Elements.enable) appText = appText.Replace("\"editable\": 0", "\"editable\": 1");
+            if (Watch_Face.ElementEditablePointers != null && Watch_Face.ElementEditablePointers.enable) appText = appText.Replace("\"editable\": 0", "\"editable\": 1");
 */
             File.WriteAllText(tempDir + @"\app.json", appText, Encoding.UTF8);
             File.Copy(templatesFileDir + @"\app.js", tempDir + @"\app.js");
@@ -9004,6 +9051,77 @@ namespace Watch_Face_Editor
             {
                 analogTime.visible = visible;
             }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_AnalogTimePro_Elm_VisibleOptionsChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementAnalogTimePro analogTime = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementAnalogTimePro");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementAnalogTimePro());
+                    analogTime = (ElementAnalogTimePro)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTimePro");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementAnalogTimePro");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementAnalogTimePro());
+                    analogTime = (ElementAnalogTimePro)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementAnalogTimePro");
+                }
+            }
+
+            if (analogTime != null)
+            {
+                if (analogTime.Hour == null) analogTime.Hour = new hmUI_widget_IMG_POINTER();
+                if (analogTime.Minute == null) analogTime.Minute = new hmUI_widget_IMG_POINTER();
+                if (analogTime.Second == null) analogTime.Second = new hmUI_widget_IMG_POINTER();
+                if (analogTime.SmoothSecond == null) analogTime.SmoothSecond = new Smooth_Second();
+
+                Dictionary<string, int> elementOptions = uCtrl_AnalogTimePro_Elm.GetOptionsPosition();
+                if (elementOptions.ContainsKey("Hour")) analogTime.Hour.position = elementOptions["Hour"];
+                if (elementOptions.ContainsKey("Minute")) analogTime.Minute.position = elementOptions["Minute"];
+                if (elementOptions.ContainsKey("Second")) analogTime.Second.position = elementOptions["Second"];
+                if (elementOptions.ContainsKey("SmoothSecond")) analogTime.SmoothSecond.position = elementOptions["SmoothSecond"];
+                if (elementOptions.ContainsKey("Format_24hour")) analogTime.Format_24hour_position = elementOptions["Format_24hour"];
+
+                CheckBox checkBox = (CheckBox)sender;
+                string name = checkBox.Name;
+                switch (name)
+                {
+                    case "checkBox_Hours":
+                        analogTime.Hour.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Minutes":
+                        analogTime.Minute.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Seconds":
+                        analogTime.Second.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_SmoothSeconds":
+                        analogTime.SmoothSecond.enable = checkBox.Checked;
+                        break;
+                    case "checkBox_Format_24hour":
+                        analogTime.Format_24hour = checkBox.Checked;
+                        break;
+                }
+
+            }
+
+            uCtrl_AnalogTimePro_Elm_SelectChanged(sender, eventArgs);
 
             JSON_Modified = true;
             PreviewImage();
@@ -11681,6 +11799,13 @@ namespace Watch_Face_Editor
                         case "ElementAnalogTime":
                             ElementAnalogTime AnalogTime = (ElementAnalogTime)element;
                             Watch_Face.ScreenAOD.Elements.Add((ElementAnalogTime)AnalogTime.Clone());
+                            break;
+                        #endregion
+
+                        #region ElementAnalogTimePro
+                        case "ElementAnalogTimePro":
+                            ElementAnalogTimePro AnalogTimePro = (ElementAnalogTimePro)element;
+                            Watch_Face.ScreenAOD.Elements.Add((ElementAnalogTimePro)AnalogTimePro.Clone());
                             break;
                         #endregion
 
@@ -16039,8 +16164,7 @@ namespace Watch_Face_Editor
             Logger.WriteLine("* Project_SaveAs (end)");
         }
 
-       
-
+        
     }
 }
 

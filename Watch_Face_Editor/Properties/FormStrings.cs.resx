@@ -1,0 +1,327 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Dialog_Title_Dial_Settings" xml:space="preserve">
+    <value>Vyberte soubor nastavení ciferníku</value>
+  </data>
+  <data name="Dialog_Title_Image" xml:space="preserve">
+    <value>Vyberte Soubory obrázků</value>
+  </data>
+  <data name="Dialog_Title_New_Project" xml:space="preserve">
+    <value>Vytvoření nového projektu</value>
+  </data>
+  <data name="Dialog_Title_PreviewStates" xml:space="preserve">
+    <value>Výběr souboru nastavení náhledu</value>
+  </data>
+  <data name="Dialog_Title_SaveGIF" xml:space="preserve">
+    <value>Uložit animovaný náhled</value>
+  </data>
+  <data name="Dialog_Title_SavePNG" xml:space="preserve">
+    <value>Uložit náhled</value>
+  </data>
+  <data name="Dialog_Title_Save_As" xml:space="preserve">
+    <value>Uložit projekt jako...</value>
+  </data>
+  <data name="Dialog_Title_Unpack" xml:space="preserve">
+    <value>Výběr souboru ciferníku</value>
+  </data>
+  <data name="Dialog_Title_WatchSkin" xml:space="preserve">
+    <value>Výběr souboru obrázku hodin</value>
+  </data>
+  <data name="Elemet_Activity" xml:space="preserve">
+    <value>Aktivity</value>
+  </data>
+  <data name="Elemet_Air" xml:space="preserve">
+    <value>Atmosféra/Vzduch</value>
+  </data>
+  <data name="Elemet_Date" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="Elemet_System" xml:space="preserve">
+    <value>Systém</value>
+  </data>
+  <data name="Elemet_Time" xml:space="preserve">
+    <value>Čas</value>
+  </data>
+  <data name="FilterGif" xml:space="preserve">
+    <value>Soubory GIF (*.gif)|*.gif</value>
+  </data>
+  <data name="FilterJson" xml:space="preserve">
+    <value>Soubor Json (*.json) | *.json</value>
+  </data>
+  <data name="FilterPng" xml:space="preserve">
+    <value>Soubor PNG (*.png)|*.png</value>
+  </data>
+  <data name="FilterZip" xml:space="preserve">
+    <value>Zip soubor ciferníku (*.zip) | *.zip</value>
+  </data>
+  <data name="FollowMinute" xml:space="preserve">
+    <value>Postupujte podle hodin</value>
+  </data>
+  <data name="FollowSecond" xml:space="preserve">
+    <value>Postupujte podle minut</value>
+  </data>
+  <data name="Form_Preview" xml:space="preserve">
+    <value>Náhled</value>
+  </data>
+  <data name="Form_PreviewX" xml:space="preserve">
+    <value>Náhled [X=</value>
+  </data>
+  <data name="Message_AnimationAOD_Text" xml:space="preserve">
+    <value>Na obrazovku AOD nelze přidat animaci.</value>
+  </data>
+  <data name="Message_ConvertingCompleted_Text" xml:space="preserve">
+    <value>Byl vytvořen nový ciferník.</value>
+  </data>
+  <data name="Message_CopyCoord" xml:space="preserve">
+    <value>Souřadnice zkopírovány</value>
+  </data>
+  <data name="Message_Delet_Caption" xml:space="preserve">
+    <value>Odstranění</value>
+  </data>
+  <data name="Message_Delet_Text1" xml:space="preserve">
+    <value>Opravdu chcete trvale smazat soubor "</value>
+  </data>
+  <data name="Message_Delet_Text11" xml:space="preserve">
+    <value>Opravdu chcete trvale smazat soubory:</value>
+  </data>
+  <data name="Message_Delet_Text21" xml:space="preserve">
+    <value>?</value>
+  </data>
+  <data name="Message_DontDelZip" xml:space="preserve">
+    <value>Není možné odstranit existující soubor ciferníku.</value>
+  </data>
+  <data name="Message_EditableElementsAOD_Text" xml:space="preserve">
+    <value>Na obrazovku AOD nelze přidávat vlastní položky.</value>
+  </data>
+  <data name="Message_EditablePointerAOD_Text" xml:space="preserve">
+    <value>Na obrazovku AOD nelze přidat vlastní šipky.</value>
+  </data>
+  <data name="Message_ElementAOD_Text" xml:space="preserve">
+    <value>Tento prvek nemůžete přidat na obrazovku AOD.</value>
+  </data>
+  <data name="Message_ErrorReadJS" xml:space="preserve">
+    <value>Nepodařilo se rozpoznat strukturu ciferníku</value>
+  </data>
+  <data name="Message_Error_Caption" xml:space="preserve">
+    <value>Chyba</value>
+  </data>
+  <data name="Message_Error_Image_Text1" xml:space="preserve">
+    <value>Nelze otevřít obrázek:</value>
+  </data>
+  <data name="Message_Error_Image_Text2" xml:space="preserve">
+    <value>. Nemáte oprávnění soubor číst nebo je obraz poškozen.</value>
+  </data>
+  <data name="Message_GoToFile_Caption" xml:space="preserve">
+    <value>Přejít na soubor</value>
+  </data>
+  <data name="Message_GoToFile_Text" xml:space="preserve">
+    <value>Přejít na soubor</value>
+  </data>
+  <data name="Message_Image32bit" xml:space="preserve">
+    <value>Obrázek nesmí být monochromatický a musí být v 32bitovém formátu</value>
+  </data>
+  <data name="Message_ImageCount_Error" xml:space="preserve">
+    <value>Vybrané obrázky jsou mimo rozsah dostupných obrázků.</value>
+  </data>
+  <data name="Message_ImageFix_Error" xml:space="preserve">
+    <value>Chyba převodu obrázku</value>
+  </data>
+  <data name="Message_JsonError_Text" xml:space="preserve">
+    <value>Neplatný soubor JSON.</value>
+  </data>
+  <data name="Message_JsonReadError_Text" xml:space="preserve">
+    <value>Chyba při čtení souboru JSON. !!!</value>
+  </data>
+  <data name="Message_LoadPreviewStates_Caption" xml:space="preserve">
+    <value>Načítání nastavení náhledu</value>
+  </data>
+  <data name="Message_LoadPreviewStates_Text" xml:space="preserve">
+    <value>Stáhnout existující soubor se sadou nastavení náhledu PreviewStates.json?</value>
+  </data>
+  <data name="Message_Restart_Caption" xml:space="preserve">
+    <value>Restartujte</value>
+  </data>
+  <data name="Message_Restart_Text1" xml:space="preserve">
+    <value>Chcete-li nastavení použít, musíte program restartovat.</value>
+  </data>
+  <data name="Message_Restart_Text2" xml:space="preserve">
+    <value>Restartovat program?</value>
+  </data>
+  <data name="Message_SaveOnly1234_Text" xml:space="preserve">
+    <value>Chcete-li uložit přednastavené parametry, nastavte alespoň jedno pole "Kalorie" na hodnotu jinou než "1234".</value>
+  </data>
+  <data name="Message_Save_JSON_Modified_Caption" xml:space="preserve">
+    <value>Ukládání projektu</value>
+  </data>
+  <data name="Message_Save_JSON_Modified_Text1" xml:space="preserve">
+    <value>Chcete uložit změny v projektu?</value>
+  </data>
+  <data name="Message_Save_new_JSON" xml:space="preserve">
+    <value>Aktuální projekt ještě nebyl uložen. Chcete to zachovat?</value>
+  </data>
+  <data name="Message_ShortcutsAOD_Text" xml:space="preserve">
+    <value>Na obrazovku AOD nelze přidávat zástupce.</value>
+  </data>
+  <data name="Message_WarningConverting_Text1" xml:space="preserve">
+    <value>Adresář</value>
+  </data>
+  <data name="Message_WarningConverting_Text2" xml:space="preserve">
+    <value>již existuje. Nahradit?</value>
+  </data>
+  <data name="Message_WarningPreview_Text1" xml:space="preserve">
+    <value>Velikosti obrázků pro náhled se liší od standardních.</value>
+  </data>
+  <data name="Message_WarningPreview_Text2" xml:space="preserve">
+    <value>Použít stávající dimenze?</value>
+  </data>
+  <data name="Message_Warning_Assets_Exist1" xml:space="preserve">
+    <value>V této složce již existuje složka obrázků.</value>
+  </data>
+  <data name="Message_Warning_Assets_Exist2" xml:space="preserve">
+    <value>Doporučuje se vytvořit projekt v samostatné složce.</value>
+  </data>
+  <data name="Message_Warning_Assets_Exist3" xml:space="preserve">
+    <value>Vytvořit projekt ve vybrané složce?</value>
+  </data>
+  <data name="Message_Warning_Caption" xml:space="preserve">
+    <value>Varování</value>
+  </data>
+  <data name="Message_Warning_Image_Exist1" xml:space="preserve">
+    <value>V projektu již existuje obrázek:</value>
+  </data>
+  <data name="Message_Warning_Image_Exist2" xml:space="preserve">
+    <value>Nahradit ho novým obrázkem?</value>
+  </data>
+  <data name="Message_Warning_Information" xml:space="preserve">
+    <value>Informace</value>
+  </data>
+  <data name="Message_Wrong_Original_Image" xml:space="preserve">
+    <value>Neplatný zdrojový formát obrázku</value>
+  </data>
+  <data name="Message_Wrong_Preview_Exists" xml:space="preserve">
+    <value>Vytvoření náhledu obrázku se nezdařilo. Možná už takový obrázek existuje.</value>
+  </data>
+  <data name="Tip_Background" xml:space="preserve">
+    <value>Pozadí</value>
+  </data>
+  <data name="Tip_Pointer" xml:space="preserve">
+    <value>Šipky</value>
+  </data>
+</root>

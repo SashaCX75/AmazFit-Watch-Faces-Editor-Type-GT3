@@ -117,29 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
-    <value>109, 135</value>
-  </data>
-  <data name="&gt;&gt;tabPage_second.Parent" xml:space="preserve">
-    <value>tabControl1</value>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>tabPage_second</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>X:</value>
-    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;numericUpDown_secondPointer_offset_Y.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 64</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="panel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="label22.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="&gt;&gt;label02.Name" xml:space="preserve">
     <value>label02</value>
@@ -153,9 +142,6 @@
   <data name="&gt;&gt;label9.Name" xml:space="preserve">
     <value>label9</value>
   </data>
-  <data name="&gt;&gt;numericUpDown_hourPointer_offset_X.Parent" xml:space="preserve">
-    <value>tabPage_hour</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label04.TabIndex" type="System.Int32, mscorlib">
     <value>133</value>
@@ -163,11 +149,11 @@
   <data name="numericUpDown_pointer_centr_Y.TabIndex" type="System.Int32, mscorlib">
     <value>222</value>
   </data>
-  <data name="comboBox_pointer_imageCentr.MaxDropDownItems" type="System.Int32, mscorlib">
-    <value>25</value>
+  <data name="numericUpDown_hourPointer_X.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 20</value>
   </data>
-  <data name="label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="label18.TabIndex" type="System.Int32, mscorlib">
+    <value>208</value>
   </data>
   <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -175,8 +161,8 @@
   <data name="&gt;&gt;comboBox_secondPointer_image.Parent" xml:space="preserve">
     <value>tabPage_second</value>
   </data>
-  <data name="label10.TabIndex" type="System.Int32, mscorlib">
-    <value>139</value>
+  <data name="numericUpDown_hourPointer_offset_X.TabIndex" type="System.Int32, mscorlib">
+    <value>140</value>
   </data>
   <data name="label20.Text" xml:space="preserve">
     <value>Координаты подсказки</value>
@@ -184,8 +170,8 @@
   <data name="&gt;&gt;numericUpDown_hourPointer_Y.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
-  <data name="&gt;&gt;button_del.Parent" xml:space="preserve">
-    <value>panel2</value>
+  <data name="&gt;&gt;checkBox_edit_mode.Name" xml:space="preserve">
+    <value>checkBox_edit_mode</value>
   </data>
   <data name="numericUpDown_secondPointer_offset_Y.Location" type="System.Drawing.Point, System.Drawing">
     <value>95, 98</value>
@@ -199,11 +185,12 @@
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 100</value>
   </data>
-  <data name="label15.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;numericUpDown_pointer_centr_Y.Parent" xml:space="preserve">
+    <value>panel1</value>
   </data>
-  <data name="&gt;&gt;label17.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="panel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="label16.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -211,11 +198,14 @@
   <data name="label23.Text" xml:space="preserve">
     <value>Координаты верхнего изображения</value>
   </data>
+  <data name="&gt;&gt;numericUpDown_secondPointer_Y.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
   <data name="&gt;&gt;numericUpDown_minutePointer_offset_X.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label23.TabIndex" type="System.Int32, mscorlib">
-    <value>223</value>
+  <data name="&gt;&gt;contextMenuStrip_X.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label18.Name" xml:space="preserve">
     <value>label18</value>
@@ -223,17 +213,11 @@
   <data name="&gt;&gt;numericUpDown_hourPointer_Y.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
-    <value>222</value>
-  </data>
-  <data name="&gt;&gt;label18.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
   <data name="&gt;&gt;numericUpDown_tipY.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
-  <data name="&gt;&gt;numericUpDown_tipX.ZOrder" xml:space="preserve">
-    <value>12</value>
+  <data name="&gt;&gt;numericUpDown_hourPointer_offset_X.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;comboBox_Preview_image.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -247,14 +231,11 @@
   <data name="label03.TabIndex" type="System.Int32, mscorlib">
     <value>142</value>
   </data>
-  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 82</value>
+  <data name="&gt;&gt;вставитьToolStripMenuItemY.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;comboBox_foreground.Name" xml:space="preserve">
-    <value>comboBox_foreground</value>
-  </data>
-  <data name="comboBox_tip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 21</value>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 13</value>
   </data>
   <data name="&gt;&gt;comboBox_minutePointer_image.ZOrder" xml:space="preserve">
     <value>10</value>
@@ -262,8 +243,8 @@
   <data name="label01.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 1</value>
   </data>
-  <data name="&gt;&gt;tabPage_minute.Name" xml:space="preserve">
-    <value>tabPage_minute</value>
+  <data name="numericUpDown_hourPointer_offset_X.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 98</value>
   </data>
   <data name="label02.Text" xml:space="preserve">
     <value>Координаты центра вращения</value>
@@ -277,17 +258,27 @@
   <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label9.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>BottomCenter</value>
-  </data>
   <data name="&gt;&gt;button_add.Name" xml:space="preserve">
     <value>button_add</value>
   </data>
-  <data name="button_PreviewAdd.Text" xml:space="preserve">
-    <value>Создать предпросмотр</value>
+  <data name="&gt;&gt;label24.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;вставитьКоординатуХToolStripMenuItem.Name" xml:space="preserve">
-    <value>вставитьКоординатуХToolStripMenuItem</value>
+  <data name="копироватьToolStripMenuItemY.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAnJJREFUOE+l
+        UUtvEmEUHY3RuueRaDfu6lZKl+rKXYmLmtR/4NK9ujDammiqKWB8IENjXahB5VFr1YXRajsgLeX9HArD
+        AMN7gHZ9vfeDFJLqypuczJ2bc853vvtxVKfHx49pNJoTWq12TKfTjen1+pM6AvYarRbnuuOM+K+y2Zf8
+        4WgcovEkJFIZSKazCBHiyTTQPILz8xcuXh7QD5fNzgtEjCExiQbxRAqFMQiFo7C9E4ZgKAIzM1euGwyG
+        iclJ48Q5g+GscWrq1EDOcS+XXwmimIfcbh4Kkgw+fwDWfwng+70Fge0dZkLpovEUhCIxCKLx/QcLawM5
+        x71+81aQSmWQERVFQUHoQJRMZyCdFRlSeDVKR/OFh48+DuQc53z3XqgoVajW6tBotiAai0MCySImyheK
+        UCjKICEKUhFy+QKbmy3WocEHl0sgIUFtq3hSBoUSFOUylCsKKNUaA/WlcoUlffL02dDA5fYIrXYbWq02
+        qN0OZDCujMSCJEG90UTjJkuXwFf58XOTzZ7bXgwN3MxAZQZttQNZMXdwagRfZxdjq50e9Ho92BD8QFw7
+        zx82aJIBfrOiCLV6nf0HtoK4uCTs7e+z5yxXKozDOxyjV3ALzUab7YBS0BUoJiWhWR1BC9zY9MG37+ss
+        Je9YGkng8fqauINhghzUao2+Ic5pRqI++v88P5Jgfu7essezEkGjsNe7Evn85atcqzdYCjKlVC00o55M
+        aTd35+adAzmrI4ijA3Amk+lat7fXT4Snqp0uA/VkLJcUmL06e4e4fy2j0XjJYn28trhoXjWbLasWi/UT
+        gfobN285p6dNt5F2ps/+r+K4P4wyYm9nlNBiAAAAAElFTkSuQmCC
+</value>
   </data>
   <data name="&gt;&gt;comboBox_secondPointer_image.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -298,14 +289,14 @@
   <data name="numericUpDown_minutePointer_offset_Y.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 20</value>
   </data>
-  <data name="&gt;&gt;вставитьКоординатуYToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 30</value>
   </data>
-  <data name="label23.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="label24.Text" xml:space="preserve">
+    <value>Y:</value>
   </data>
-  <data name="label06.TabIndex" type="System.Int32, mscorlib">
-    <value>138</value>
+  <data name="&gt;&gt;button_PreviewRefresh.Parent" xml:space="preserve">
+    <value>panel2</value>
   </data>
   <data name="label01.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>BottomLeft</value>
@@ -316,8 +307,11 @@
   <data name="label12.TabIndex" type="System.Int32, mscorlib">
     <value>137</value>
   </data>
-  <data name="&gt;&gt;копироватьToolStripMenuItemX.Name" xml:space="preserve">
-    <value>копироватьToolStripMenuItemX</value>
+  <data name="&gt;&gt;label07.Name" xml:space="preserve">
+    <value>label07</value>
+  </data>
+  <data name="&gt;&gt;label23.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>193</value>
@@ -325,8 +319,8 @@
   <data name="panel2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>105, 37</value>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 100</value>
   </data>
   <data name="&gt;&gt;label17.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -336,6 +330,9 @@
   </data>
   <data name="comboBox_minutePointer_image.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 21</value>
+  </data>
+  <data name="&gt;&gt;label21.Parent" xml:space="preserve">
+    <value>panel2</value>
   </data>
   <data name="&gt;&gt;вставитьToolStripMenuItemX.Name" xml:space="preserve">
     <value>вставитьToolStripMenuItemX</value>
@@ -352,8 +349,8 @@
   <data name="comboBox_foreground.Location" type="System.Drawing.Point, System.Drawing">
     <value>132, 35</value>
   </data>
-  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 13</value>
+  <data name="label20.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="numericUpDown_hourPointer_X.Location" type="System.Drawing.Point, System.Drawing">
     <value>122, 35</value>
@@ -370,29 +367,23 @@
   <data name="label20.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label25.TabIndex" type="System.Int32, mscorlib">
-    <value>219</value>
-  </data>
   <data name="button_PreviewAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;вставитьToolStripMenuItemY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="numericUpDown_secondPointer_Y.TabIndex" type="System.Int32, mscorlib">
     <value>136</value>
   </data>
-  <data name="&gt;&gt;label25.Name" xml:space="preserve">
-    <value>label25</value>
+  <data name="label2.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomCenter</value>
   </data>
-  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
-    <value>tabPage_second</value>
+  <data name="tabPage_hour.Text" xml:space="preserve">
+    <value>Часовая стрелка</value>
   </data>
   <data name="&gt;&gt;label24.Name" xml:space="preserve">
     <value>label24</value>
   </data>
-  <data name="&gt;&gt;numericUpDown_tipY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
     <value>78, 100</value>
@@ -406,14 +397,14 @@
   <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="&gt;&gt;label07.ZOrder" xml:space="preserve">
-    <value>7</value>
+  <data name="&gt;&gt;comboBox_select_pointerSet.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;копироватьToolStripMenuItemY.Name" xml:space="preserve">
     <value>копироватьToolStripMenuItemY</value>
   </data>
-  <data name="label02.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;button_add.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="numericUpDown_pointer_centr_X.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 20</value>
@@ -427,11 +418,14 @@
   <data name="&gt;&gt;label7.Parent" xml:space="preserve">
     <value>tabPage_minute</value>
   </data>
+  <data name="numericUpDown_secondPointer_Y.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 20</value>
+  </data>
   <data name="&gt;&gt;label01.Name" xml:space="preserve">
     <value>label01</value>
   </data>
-  <data name="&gt;&gt;label11.Name" xml:space="preserve">
-    <value>label11</value>
+  <data name="button_PreviewAdd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>96, 92</value>
   </data>
   <data name="numericUpDown_hourPointer_Y.Location" type="System.Drawing.Point, System.Drawing">
     <value>195, 35</value>
@@ -439,11 +433,14 @@
   <data name="tabControl1.Appearance" type="System.Windows.Forms.TabAppearance, System.Windows.Forms">
     <value>FlatButtons</value>
   </data>
+  <data name="&gt;&gt;comboBox_select_pointerSet.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
   <data name="&gt;&gt;label17.Name" xml:space="preserve">
     <value>label17</value>
   </data>
-  <data name="button_del.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>tabPage_minute</value>
   </data>
   <data name="&gt;&gt;label7.Name" xml:space="preserve">
     <value>label7</value>
@@ -451,8 +448,8 @@
   <data name="&gt;&gt;checkBox_edit_mode.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
-  <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
-    <value>7</value>
+  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
+    <value>tabPage_second</value>
   </data>
   <data name="вставитьToolStripMenuItemY.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -495,17 +492,17 @@
   <data name="&gt;&gt;numericUpDown_hourPointer_Y.Name" xml:space="preserve">
     <value>numericUpDown_hourPointer_Y</value>
   </data>
-  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
-    <value>tabPage_minute</value>
+  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;numericUpDown_pointer_centr_Y.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;numericUpDown_pointer_centr_Y.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
   <data name="tabPage_minute.Size" type="System.Drawing.Size, System.Drawing">
     <value>250, 121</value>
+  </data>
+  <data name="label10.TabIndex" type="System.Int32, mscorlib">
+    <value>139</value>
   </data>
   <data name="&gt;&gt;label18.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -522,36 +519,41 @@
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>138</value>
   </data>
-  <data name="comboBox_secondPointer_image.TabIndex" type="System.Int32, mscorlib">
-    <value>132</value>
+  <data name="label07.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 13</value>
   </data>
   <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;comboBox_tip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
-  <data name="&gt;&gt;копироватьToolStripMenuItemX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="button_del.TabIndex" type="System.Int32, mscorlib">
+    <value>196</value>
   </data>
-  <data name="label25.Text" xml:space="preserve">
-    <value>X:</value>
-    <comment>Do not translate</comment>
+  <data name="label22.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomLeft</value>
   </data>
-  <data name="button_PreviewAdd.TabIndex" type="System.Int32, mscorlib">
-    <value>219</value>
+  <data name="label03.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 30</value>
   </data>
-  <data name="&gt;&gt;numericUpDown_minutePointer_X.Name" xml:space="preserve">
-    <value>numericUpDown_minutePointer_X</value>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;копироватьToolStripMenuItemX.Name" xml:space="preserve">
+    <value>копироватьToolStripMenuItemX</value>
+  </data>
+  <data name="comboBox_secondPointer_image.TabIndex" type="System.Int32, mscorlib">
+    <value>132</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Изображение секундной стрелки</value>
+  </data>
   <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 99</value>
-  </data>
-  <data name="label21.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 30</value>
   </data>
   <data name="label02.Location" type="System.Drawing.Point, System.Drawing">
     <value>101, 1</value>
@@ -565,14 +567,11 @@
   <data name="label21.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="numericUpDown_pointer_centr_X.Location" type="System.Drawing.Point, System.Drawing">
-    <value>126, 37</value>
-  </data>
   <data name="checkBox_secondInAOD.TabIndex" type="System.Int32, mscorlib">
     <value>215</value>
   </data>
-  <data name="&gt;&gt;checkBox_secondInAOD.ZOrder" xml:space="preserve">
-    <value>15</value>
+  <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
+    <value>9</value>
   </data>
   <data name="label10.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -586,38 +585,38 @@
   <data name="checkBox_edit_mode.TabIndex" type="System.Int32, mscorlib">
     <value>216</value>
   </data>
-  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="button_PreviewAdd.TabIndex" type="System.Int32, mscorlib">
+    <value>219</value>
   </data>
-  <data name="label01.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;button_PreviewRefresh.Name" xml:space="preserve">
+    <value>button_PreviewRefresh</value>
   </data>
   <data name="label23.Location" type="System.Drawing.Point, System.Drawing">
     <value>105, 2</value>
   </data>
-  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
-    <value>223</value>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
   </data>
   <data name="&gt;&gt;numericUpDown_hourPointer_offset_Y.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;numericUpDown_minutePointer_Y.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="button_PreviewRefresh.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="&gt;&gt;button_PreviewAdd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label01.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label06.Parent" xml:space="preserve">
     <value>tabPage_hour</value>
   </data>
-  <data name="&gt;&gt;вставитьКоординатуХToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="button_add.Text" xml:space="preserve">
+    <value>Добавить набор стрелок</value>
+  </data>
+  <data name="label14.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="comboBox_minutePointer_image.MaxDropDownItems" type="System.Int32, mscorlib">
     <value>25</value>
-  </data>
-  <data name="label03.Text" xml:space="preserve">
-    <value>Центр вращения стрелки</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 13</value>
@@ -625,18 +624,14 @@
   <data name="label18.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label8.TabIndex" type="System.Int32, mscorlib">
-    <value>133</value>
+  <data name="comboBox_pointer_imageCentr.MaxDropDownItems" type="System.Int32, mscorlib">
+    <value>25</value>
   </data>
   <data name="numericUpDown_minutePointer_X.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 20</value>
   </data>
-  <data name="label19.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="label14.Text" xml:space="preserve">
     <value>Y:</value>
-    <comment>Do not translate</comment>
   </data>
   <data name="label14.TabIndex" type="System.Int32, mscorlib">
     <value>134</value>
@@ -650,14 +645,11 @@
   <data name="&gt;&gt;numericUpDown_secondPointer_X.Name" xml:space="preserve">
     <value>numericUpDown_secondPointer_X</value>
   </data>
-  <data name="&gt;&gt;button_PreviewRefresh.Name" xml:space="preserve">
-    <value>button_PreviewRefresh</value>
-  </data>
   <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
     <value>101, 1</value>
   </data>
-  <data name="копироватьToolStripMenuItemY.Text" xml:space="preserve">
-    <value>Копировать</value>
+  <data name="label17.Text" xml:space="preserve">
+    <value>X:</value>
   </data>
   <data name="numericUpDown_minutePointer_Y.TabIndex" type="System.Int32, mscorlib">
     <value>136</value>
@@ -668,14 +660,8 @@
   <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 30</value>
-  </data>
-  <data name="label24.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;comboBox_select_pointerSet.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;button_PreviewAdd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label24.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 13</value>
@@ -683,8 +669,8 @@
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 1</value>
   </data>
-  <data name="&gt;&gt;label04.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;comboBox_tip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_del.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -692,19 +678,14 @@
   <data name="comboBox_foreground.MaxDropDownItems" type="System.Int32, mscorlib">
     <value>25</value>
   </data>
+  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="&gt;&gt;numericUpDown_minutePointer_offset_Y.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="label17.Text" xml:space="preserve">
-    <value>X:</value>
-    <comment>Do not translate</comment>
-  </data>
   <data name="&gt;&gt;label23.Parent" xml:space="preserve">
     <value>panel1</value>
-  </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value>X:</value>
-    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -732,17 +713,14 @@
         YZvRQX9/PxvQkJx3797lIWxmYAAA7pt3k8xS7ogAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="&gt;&gt;tabPage_hour.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
     <value>134</value>
   </data>
   <data name="label05.Location" type="System.Drawing.Point, System.Drawing">
     <value>178, 37</value>
   </data>
-  <data name="&gt;&gt;comboBox_pointer_imageCentr.ZOrder" xml:space="preserve">
-    <value>6</value>
+  <data name="label06.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 100</value>
   </data>
   <data name="&gt;&gt;label12.Name" xml:space="preserve">
     <value>label12</value>
@@ -750,8 +728,8 @@
   <data name="&gt;&gt;label15.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+  <data name="label25.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="label04.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -759,8 +737,8 @@
   <data name="&gt;&gt;numericUpDown_minutePointer_offset_Y.Name" xml:space="preserve">
     <value>numericUpDown_minutePointer_offset_Y</value>
   </data>
-  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
-    <value>132, 1</value>
+  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 13</value>
   </data>
   <data name="&gt;&gt;label06.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -768,8 +746,8 @@
   <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="button_PreviewRefresh.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="&gt;&gt;button_PreviewAdd.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>139</value>
@@ -786,20 +764,20 @@
   <data name="comboBox_secondPointer_image.MaxDropDownItems" type="System.Int32, mscorlib">
     <value>25</value>
   </data>
-  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 30</value>
+  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
+    <value>tabPage_second</value>
   </data>
   <data name="&gt;&gt;label05.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 100</value>
+  <data name="comboBox_tip.MaxDropDownItems" type="System.Int32, mscorlib">
+    <value>25</value>
   </data>
   <data name="label20.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="label16.TabIndex" type="System.Int32, mscorlib">
-    <value>206</value>
+  <data name="comboBox_Preview_image.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 21</value>
   </data>
   <data name="checkBox_secondInAOD.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -807,8 +785,8 @@
   <data name="&gt;&gt;label03.Name" xml:space="preserve">
     <value>label03</value>
   </data>
-  <data name="&gt;&gt;checkBox_edit_mode.ZOrder" xml:space="preserve">
-    <value>14</value>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="button_PreviewRefresh.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -819,14 +797,14 @@
   <data name="label04.Location" type="System.Drawing.Point, System.Drawing">
     <value>105, 37</value>
   </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;label17.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label18.Text" xml:space="preserve">
     <value>Фон подсказки</value>
-  </data>
-  <data name="&gt;&gt;checkBox_edit_mode.Name" xml:space="preserve">
-    <value>checkBox_edit_mode</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
     <value>Центр вращения стрелки</value>
@@ -837,8 +815,8 @@
   <data name="&gt;&gt;numericUpDown_secondPointer_Y.Name" xml:space="preserve">
     <value>numericUpDown_secondPointer_Y</value>
   </data>
-  <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
-    <value>9</value>
+  <data name="numericUpDown_minutePointer_offset_Y.Location" type="System.Drawing.Point, System.Drawing">
+    <value>95, 98</value>
   </data>
   <data name="label06.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 13</value>
@@ -849,11 +827,11 @@
   <data name="&gt;&gt;comboBox_tip.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
-  <data name="numericUpDown_pointer_centr_X.TabIndex" type="System.Int32, mscorlib">
-    <value>221</value>
+  <data name="&gt;&gt;numericUpDown_pointer_centr_X.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
-  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>8</value>
+  <data name="label19.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="&gt;&gt;contextMenuStrip_Y.Type" xml:space="preserve">
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -861,11 +839,8 @@
   <data name="вставитьToolStripMenuItemX.Size" type="System.Drawing.Size, System.Drawing">
     <value>203, 26</value>
   </data>
-  <data name="numericUpDown_hourPointer_offset_X.TabIndex" type="System.Int32, mscorlib">
-    <value>140</value>
-  </data>
-  <data name="&gt;&gt;comboBox_pointer_imageCentr.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;вставитьКоординатуХToolStripMenuItem.Name" xml:space="preserve">
+    <value>вставитьКоординатуХToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;numericUpDown_tipX.Name" xml:space="preserve">
     <value>numericUpDown_tipX</value>
@@ -873,23 +848,20 @@
   <data name="&gt;&gt;label07.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
-    <value>tabPage_minute</value>
+  <data name="&gt;&gt;label07.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
     <value>tabControl1</value>
   </data>
-  <data name="&gt;&gt;numericUpDown_hourPointer_offset_Y.Name" xml:space="preserve">
-    <value>numericUpDown_hourPointer_offset_Y</value>
+  <data name="&gt;&gt;label18.Parent" xml:space="preserve">
+    <value>panel1</value>
   </data>
   <data name="button_del.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="checkBox_edit_mode.Text" xml:space="preserve">
-    <value>Предпросмотр режима редактирования</value>
-  </data>
-  <data name="numericUpDown_tipX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 20</value>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>tabPage_minute</value>
   </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Text" xml:space="preserve">
     <value>Вставить координату Х</value>
@@ -899,9 +871,6 @@
   </data>
   <data name="&gt;&gt;label04.Name" xml:space="preserve">
     <value>label04</value>
-  </data>
-  <data name="panel1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
   </data>
   <data name="&gt;&gt;label4.Name" xml:space="preserve">
     <value>label4</value>
@@ -915,8 +884,8 @@
   <data name="label24.Location" type="System.Drawing.Point, System.Drawing">
     <value>182, 39</value>
   </data>
-  <data name="numericUpDown_secondPointer_Y.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 20</value>
+  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="comboBox_hourPointer_image.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 21</value>
@@ -929,10 +898,9 @@
   </data>
   <data name="label19.Text" xml:space="preserve">
     <value>Y:</value>
-    <comment>Do not translate</comment>
   </data>
-  <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 30</value>
+  <data name="button_PreviewRefresh.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="label22.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 3</value>
@@ -940,23 +908,17 @@
   <data name="&gt;&gt;panel2.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;вставитьToolStripMenuItemY.Name" xml:space="preserve">
-    <value>вставитьToolStripMenuItemY</value>
-  </data>
   <data name="label03.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>BottomCenter</value>
   </data>
-  <data name="&gt;&gt;label25.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numericUpDown_pointer_centr_X.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="button_PreviewAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>96, 92</value>
-  </data>
   <data name="&gt;&gt;вставитьToolStripMenuItemX.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>tabPage_second</value>
+  </data>
+  <data name="копироватьToolStripMenuItemX.Text" xml:space="preserve">
+    <value>Копировать</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 64</value>
@@ -967,14 +929,17 @@
   <data name="&gt;&gt;label7.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>8</value>
+  <data name="&gt;&gt;label25.Name" xml:space="preserve">
+    <value>label25</value>
   </data>
   <data name="&gt;&gt;comboBox_Preview_image.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
   <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 13</value>
+  </data>
+  <data name="&gt;&gt;numericUpDown_hourPointer_offset_Y.Name" xml:space="preserve">
+    <value>numericUpDown_hourPointer_offset_Y</value>
   </data>
   <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
     <value>178, 37</value>
@@ -987,6 +952,9 @@
   </data>
   <data name="&gt;&gt;numericUpDown_secondPointer_offset_X.Name" xml:space="preserve">
     <value>numericUpDown_secondPointer_offset_X</value>
+  </data>
+  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 30</value>
   </data>
   <data name="&gt;&gt;comboBox_hourPointer_image.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -1006,14 +974,14 @@
   <data name="label07.Location" type="System.Drawing.Point, System.Drawing">
     <value>78, 100</value>
   </data>
-  <data name="&gt;&gt;comboBox_secondPointer_image.Name" xml:space="preserve">
-    <value>comboBox_secondPointer_image</value>
+  <data name="comboBox_hourPointer_image.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 35</value>
+  </data>
+  <data name="label01.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="&gt;&gt;label05.Parent" xml:space="preserve">
     <value>tabPage_hour</value>
-  </data>
-  <data name="&gt;&gt;button_PreviewRefresh.Parent" xml:space="preserve">
-    <value>panel2</value>
   </data>
   <data name="&gt;&gt;label5.Name" xml:space="preserve">
     <value>label5</value>
@@ -1030,20 +998,17 @@
   <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 13</value>
   </data>
-  <data name="tabPage_hour.Text" xml:space="preserve">
-    <value>Часовая стрелка</value>
-  </data>
   <data name="label06.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label20.TabIndex" type="System.Int32, mscorlib">
-    <value>214</value>
+  <data name="&gt;&gt;вставитьToolStripMenuItemY.Name" xml:space="preserve">
+    <value>вставитьToolStripMenuItemY</value>
   </data>
   <data name="checkBox_secondInAOD.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 64</value>
   </data>
-  <data name="label20.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;label20.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="numericUpDown_secondPointer_X.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 20</value>
@@ -1051,11 +1016,11 @@
   <data name="numericUpDown_tipX.Location" type="System.Drawing.Point, System.Drawing">
     <value>126, 133</value>
   </data>
-  <data name="&gt;&gt;label8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
   </data>
-  <data name="comboBox_Preview_image.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 21</value>
+  <data name="&gt;&gt;tabPage_second.Name" xml:space="preserve">
+    <value>tabPage_second</value>
   </data>
   <data name="label12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1069,35 +1034,32 @@
   <data name="&gt;&gt;numericUpDown_minutePointer_Y.Parent" xml:space="preserve">
     <value>tabPage_minute</value>
   </data>
-  <data name="comboBox_tip.MaxDropDownItems" type="System.Int32, mscorlib">
-    <value>25</value>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label07.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 13</value>
+  <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="comboBox_secondPointer_image.Location" type="System.Drawing.Point, System.Drawing">
     <value>5, 35</value>
   </data>
-  <data name="label15.TabIndex" type="System.Int32, mscorlib">
-    <value>133</value>
+  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
+    <value>109, 135</value>
   </data>
-  <data name="label06.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 100</value>
+  <data name="&gt;&gt;вставитьКоординатуХToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 13</value>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>tabPage_minute</value>
   </data>
   <data name="&gt;&gt;numericUpDown_hourPointer_offset_Y.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="tabPage_hour.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 121</value>
+  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>222</value>
   </data>
-  <data name="numericUpDown_minutePointer_offset_Y.Location" type="System.Drawing.Point, System.Drawing">
-    <value>95, 98</value>
-  </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>78, 100</value>
+  <data name="numericUpDown_tipX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 20</value>
   </data>
   <data name="&gt;&gt;label6.Name" xml:space="preserve">
     <value>label6</value>
@@ -1105,11 +1067,8 @@
   <data name="numericUpDown_minutePointer_offset_X.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 20</value>
   </data>
-  <data name="tabPage_second.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;tabPage_minute.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="label8.TabIndex" type="System.Int32, mscorlib">
+    <value>133</value>
   </data>
   <data name="&gt;&gt;label6.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1117,9 +1076,8 @@
   <data name="&gt;&gt;label22.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label24.Text" xml:space="preserve">
-    <value>Y:</value>
-    <comment>Do not translate</comment>
+  <data name="numericUpDown_pointer_centr_X.TabIndex" type="System.Int32, mscorlib">
+    <value>221</value>
   </data>
   <data name="label12.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>BottomCenter</value>
@@ -1127,14 +1085,14 @@
   <data name="&gt;&gt;numericUpDown_hourPointer_Y.Parent" xml:space="preserve">
     <value>tabPage_hour</value>
   </data>
-  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="numericUpDown_hourPointer_offset_X.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 20</value>
   </data>
-  <data name="&gt;&gt;button_add.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;numericUpDown_secondPointer_offset_X.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
   <data name="comboBox_hourPointer_image.MaxDropDownItems" type="System.Int32, mscorlib">
     <value>25</value>
@@ -1142,20 +1100,32 @@
   <data name="&gt;&gt;label21.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button_PreviewAdd.Parent" xml:space="preserve">
-    <value>panel2</value>
+  <data name="вставитьToolStripMenuItemY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>203, 26</value>
   </data>
-  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 13</value>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="tabControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
+    <value>132, 1</value>
+  </data>
+  <data name="&gt;&gt;label13.Name" xml:space="preserve">
+    <value>label13</value>
   </data>
   <data name="label16.Text" xml:space="preserve">
     <value>Рамка выделения</value>
   </data>
+  <data name="numericUpDown_secondPointer_offset_X.TabIndex" type="System.Int32, mscorlib">
+    <value>140</value>
+  </data>
   <data name="numericUpDown_secondPointer_offset_X.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 20</value>
   </data>
-  <data name="&gt;&gt;numericUpDown_hourPointer_X.Name" xml:space="preserve">
-    <value>numericUpDown_hourPointer_X</value>
+  <data name="&gt;&gt;button_PreviewAdd.Parent" xml:space="preserve">
+    <value>panel2</value>
   </data>
   <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1163,11 +1133,11 @@
   <data name="numericUpDown_pointer_centr_Y.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 20</value>
   </data>
-  <data name="&gt;&gt;tabPage_second.Name" xml:space="preserve">
-    <value>tabPage_second</value>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>tabPage_minute</value>
   </data>
-  <data name="вставитьКоординатуYToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>203, 26</value>
+  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="label22.TabIndex" type="System.Int32, mscorlib">
     <value>217</value>
@@ -1189,8 +1159,8 @@
         zqO/TnAxx2CuMF/jKtTrXEWk1Wk1ZkEQhL+gXkz+KXzH3gAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="&gt;&gt;label05.Name" xml:space="preserve">
+    <value>label05</value>
   </data>
   <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -1201,12 +1171,14 @@
   <data name="вставитьКоординатуХToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>203, 26</value>
   </data>
+  <data name="&gt;&gt;label04.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="label06.Text" xml:space="preserve">
     <value>X:</value>
-    <comment>Do not translate</comment>
   </data>
-  <data name="&gt;&gt;numericUpDown_secondPointer_Y.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label25.Text" xml:space="preserve">
+    <value>X:</value>
   </data>
   <data name="numericUpDown_minutePointer_offset_Y.TabIndex" type="System.Int32, mscorlib">
     <value>141</value>
@@ -1214,23 +1186,20 @@
   <data name="&gt;&gt;label16.Parent" xml:space="preserve">
     <value>panel2</value>
   </data>
-  <data name="&gt;&gt;label04.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 30</value>
   </data>
   <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
     <value>Вставить</value>
   </data>
-  <data name="label2.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>BottomCenter</value>
+  <data name="label16.TabIndex" type="System.Int32, mscorlib">
+    <value>206</value>
   </data>
   <data name="&gt;&gt;numericUpDown_secondPointer_offset_Y.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>UCtrl_EditableTimePointer_Opt</value>
-  </data>
-  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 30</value>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>258, 180</value>
   </data>
   <data name="label17.TabIndex" type="System.Int32, mscorlib">
     <value>210</value>
@@ -1238,8 +1207,8 @@
   <data name="label9.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="numericUpDown_hourPointer_X.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 20</value>
+  <data name="&gt;&gt;checkBox_edit_mode.ZOrder" xml:space="preserve">
+    <value>14</value>
   </data>
   <data name="label11.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1250,14 +1219,17 @@
   <data name="label07.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>258, 180</value>
+  <data name="label20.TabIndex" type="System.Int32, mscorlib">
+    <value>214</value>
   </data>
-  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
-    <value>tabPage_second</value>
+  <data name="checkBox_edit_mode.Text" xml:space="preserve">
+    <value>Предпросмотр режима редактирования</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>258, 153</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 13</value>
   </data>
   <data name="&gt;&gt;numericUpDown_minutePointer_X.Parent" xml:space="preserve">
     <value>tabPage_minute</value>
@@ -1277,12 +1249,11 @@
   <data name="&gt;&gt;label03.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="&gt;&gt;label22.Name" xml:space="preserve">
-    <value>label22</value>
+  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 82</value>
   </data>
   <data name="label04.Text" xml:space="preserve">
     <value>X:</value>
-    <comment>Do not translate</comment>
   </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1298,8 +1269,14 @@
         YZvRQX9/PxvQkJx3797lIWxmYAAA7pt3k8xS7ogAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="button_add.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 62</value>
+  </data>
   <data name="label21.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>BottomLeft</value>
+  </data>
+  <data name="tabPage_second.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
   <data name="&gt;&gt;label25.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -1307,24 +1284,23 @@
   <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="&gt;&gt;button_PreviewRefresh.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
   <data name="label07.Text" xml:space="preserve">
     <value>Y:</value>
-    <comment>Do not translate</comment>
   </data>
   <data name="button_del.Location" type="System.Drawing.Point, System.Drawing">
     <value>132, 62</value>
   </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>panel2</value>
+  <data name="&gt;&gt;label04.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label3.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPage_minute.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label13.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomLeft</value>
   </data>
   <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
     <value>7</value>
@@ -1332,14 +1308,14 @@
   <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
     <value>144, 30</value>
   </data>
-  <data name="&gt;&gt;numericUpDown_minutePointer_X.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
+  <data name="comboBox_tip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 21</value>
   </data>
   <data name="numericUpDown_hourPointer_X.TabIndex" type="System.Int32, mscorlib">
     <value>135</value>
+  </data>
+  <data name="label9.TabIndex" type="System.Int32, mscorlib">
+    <value>142</value>
   </data>
   <data name="&gt;&gt;button_PreviewRefresh.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1370,7 +1346,6 @@
   </data>
   <data name="label05.Text" xml:space="preserve">
     <value>Y:</value>
-    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;label13.Parent" xml:space="preserve">
     <value>tabPage_second</value>
@@ -1381,8 +1356,8 @@
   <data name="&gt;&gt;numericUpDown_pointer_centr_Y.Name" xml:space="preserve">
     <value>numericUpDown_pointer_centr_Y</value>
   </data>
-  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
-    <value>tabPage_second</value>
+  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 82</value>
   </data>
   <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 13</value>
@@ -1405,23 +1380,39 @@
   <data name="label05.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;numericUpDown_secondPointer_offset_X.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;button_del.Parent" xml:space="preserve">
+    <value>panel2</value>
   </data>
-  <data name="&gt;&gt;label13.Name" xml:space="preserve">
-    <value>label13</value>
+  <data name="&gt;&gt;numericUpDown_hourPointer_X.Name" xml:space="preserve">
+    <value>numericUpDown_hourPointer_X</value>
+  </data>
+  <data name="panel1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;comboBox_minutePointer_image.Name" xml:space="preserve">
     <value>comboBox_minutePointer_image</value>
   </data>
-  <data name="button_PreviewAdd.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="&gt;&gt;копироватьToolStripMenuItemX.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="копироватьToolStripMenuItemX.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAnJJREFUOE+l
+        UUtvEmEUHY3RuueRaDfu6lZKl+rKXYmLmtR/4NK9ujDammiqKWB8IENjXahB5VFr1YXRajsgLeX9HArD
+        AMN7gHZ9vfeDFJLqypuczJ2bc853vvtxVKfHx49pNJoTWq12TKfTjen1+pM6AvYarRbnuuOM+K+y2Zf8
+        4WgcovEkJFIZSKazCBHiyTTQPILz8xcuXh7QD5fNzgtEjCExiQbxRAqFMQiFo7C9E4ZgKAIzM1euGwyG
+        iclJ48Q5g+GscWrq1EDOcS+XXwmimIfcbh4Kkgw+fwDWfwng+70Fge0dZkLpovEUhCIxCKLx/QcLawM5
+        x71+81aQSmWQERVFQUHoQJRMZyCdFRlSeDVKR/OFh48+DuQc53z3XqgoVajW6tBotiAai0MCySImyheK
+        UCjKICEKUhFy+QKbmy3WocEHl0sgIUFtq3hSBoUSFOUylCsKKNUaA/WlcoUlffL02dDA5fYIrXYbWq02
+        qN0OZDCujMSCJEG90UTjJkuXwFf58XOTzZ7bXgwN3MxAZQZttQNZMXdwagRfZxdjq50e9Ho92BD8QFw7
+        zx82aJIBfrOiCLV6nf0HtoK4uCTs7e+z5yxXKozDOxyjV3ALzUab7YBS0BUoJiWhWR1BC9zY9MG37+ss
+        Je9YGkng8fqauINhghzUao2+Ic5pRqI++v88P5Jgfu7essezEkGjsNe7Evn85atcqzdYCjKlVC00o55M
+        aTd35+adAzmrI4ijA3Amk+lat7fXT4Snqp0uA/VkLJcUmL06e4e4fy2j0XjJYn28trhoXjWbLasWi/UT
+        gfobN285p6dNt5F2ps/+r+K4P4wyYm9nlNBiAAAAAElFTkSuQmCC
+</value>
   </data>
   <data name="label17.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="&gt;&gt;label23.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="label05.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 13</value>
@@ -1435,42 +1426,38 @@
   <data name="label02.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>BottomCenter</value>
   </data>
-  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 82</value>
+  <data name="&gt;&gt;tabPage_minute.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Y:</value>
-    <comment>Do not translate</comment>
+  <data name="label9.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomCenter</value>
   </data>
-  <data name="comboBox_minutePointer_image.TabIndex" type="System.Int32, mscorlib">
-    <value>132</value>
+  <data name="&gt;&gt;comboBox_secondPointer_image.Name" xml:space="preserve">
+    <value>comboBox_secondPointer_image</value>
   </data>
   <data name="label23.Size" type="System.Drawing.Size, System.Drawing">
     <value>144, 30</value>
   </data>
-  <data name="&gt;&gt;label19.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
   <data name="button_del.Text" xml:space="preserve">
     <value>Удалить набор стрелок</value>
   </data>
-  <data name="label21.TabIndex" type="System.Int32, mscorlib">
-    <value>217</value>
+  <data name="button_PreviewAdd.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>UCtrl_EditableTimePointer_Opt</value>
   </data>
   <data name="&gt;&gt;numericUpDown_hourPointer_offset_X.Name" xml:space="preserve">
     <value>numericUpDown_hourPointer_offset_X</value>
+  </data>
+  <data name="label5.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomCenter</value>
   </data>
   <data name="numericUpDown_minutePointer_offset_X.Location" type="System.Drawing.Point, System.Drawing">
     <value>22, 98</value>
   </data>
   <data name="&gt;&gt;label02.Parent" xml:space="preserve">
     <value>tabPage_hour</value>
-  </data>
-  <data name="&gt;&gt;tabPage_hour.Parent" xml:space="preserve">
-    <value>tabControl1</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -1481,17 +1468,17 @@
   <data name="label2.Text" xml:space="preserve">
     <value>Центр вращения стрелки</value>
   </data>
-  <data name="&gt;&gt;comboBox_foreground.ZOrder" xml:space="preserve">
-    <value>6</value>
+  <data name="label01.TabIndex" type="System.Int32, mscorlib">
+    <value>131</value>
   </data>
-  <data name="&gt;&gt;label24.Parent" xml:space="preserve">
-    <value>panel1</value>
+  <data name="button_del.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="label03.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
-  <data name="checkBox_secondInAOD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230, 37</value>
+  <data name="&gt;&gt;numericUpDown_minutePointer_X.Name" xml:space="preserve">
+    <value>numericUpDown_minutePointer_X</value>
   </data>
   <data name="numericUpDown_secondPointer_X.TabIndex" type="System.Int32, mscorlib">
     <value>135</value>
@@ -1502,8 +1489,8 @@
   <data name="&gt;&gt;numericUpDown_minutePointer_X.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
-  <data name="&gt;&gt;comboBox_select_pointerSet.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="label23.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="&gt;&gt;вставитьКоординатуYToolStripMenuItem.Name" xml:space="preserve">
     <value>вставитьКоординатуYToolStripMenuItem</value>
@@ -1511,8 +1498,8 @@
   <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
-    <value>tabPage_minute</value>
+  <data name="label03.Text" xml:space="preserve">
+    <value>Центр вращения стрелки</value>
   </data>
   <data name="&gt;&gt;numericUpDown_secondPointer_Y.Parent" xml:space="preserve">
     <value>tabPage_second</value>
@@ -1526,20 +1513,20 @@
   <data name="label13.TabIndex" type="System.Int32, mscorlib">
     <value>131</value>
   </data>
-  <data name="&gt;&gt;label05.Name" xml:space="preserve">
-    <value>label05</value>
+  <data name="&gt;&gt;numericUpDown_minutePointer_Y.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label16.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>BottomLeft</value>
   </data>
-  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 30</value>
+  <data name="&gt;&gt;comboBox_pointer_imageCentr.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="&gt;&gt;numericUpDown_pointer_centr_X.Name" xml:space="preserve">
     <value>numericUpDown_pointer_centr_X</value>
   </data>
-  <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 13</value>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Y:</value>
   </data>
   <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1559,14 +1546,14 @@
   <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;numericUpDown_hourPointer_X.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label24.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="&gt;&gt;label10.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label18.TabIndex" type="System.Int32, mscorlib">
-    <value>208</value>
+  <data name="&gt;&gt;label16.Name" xml:space="preserve">
+    <value>label16</value>
   </data>
   <data name="копироватьToolStripMenuItemY.Size" type="System.Drawing.Size, System.Drawing">
     <value>203, 26</value>
@@ -1574,23 +1561,23 @@
   <data name="comboBox_foreground.TabIndex" type="System.Int32, mscorlib">
     <value>207</value>
   </data>
-  <data name="label03.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 30</value>
+  <data name="&gt;&gt;label02.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
-  <data name="&gt;&gt;checkBox_secondInAOD.Name" xml:space="preserve">
-    <value>checkBox_secondInAOD</value>
+  <data name="label23.TabIndex" type="System.Int32, mscorlib">
+    <value>223</value>
+  </data>
+  <data name="&gt;&gt;label22.Name" xml:space="preserve">
+    <value>label22</value>
   </data>
   <data name="label04.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label15.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
-  <data name="label10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;comboBox_pointer_imageCentr.Name" xml:space="preserve">
-    <value>comboBox_pointer_imageCentr</value>
+  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
+    <value>10</value>
   </data>
   <data name="comboBox_foreground.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 21</value>
@@ -1601,11 +1588,8 @@
   <data name="&gt;&gt;panel1.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;comboBox_select_pointerSet.Name" xml:space="preserve">
-    <value>comboBox_select_pointerSet</value>
-  </data>
-  <data name="&gt;&gt;button_add.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="label10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="tabPage_hour.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 25</value>
@@ -1616,8 +1600,11 @@
   <data name="label24.TabIndex" type="System.Int32, mscorlib">
     <value>220</value>
   </data>
-  <data name="&gt;&gt;label24.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;numericUpDown_minutePointer_offset_X.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;numericUpDown_secondPointer_X.Parent" xml:space="preserve">
+    <value>tabPage_second</value>
   </data>
   <data name="&gt;&gt;numericUpDown_tipX.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -1631,17 +1618,17 @@
   <data name="&gt;&gt;label12.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="comboBox_Preview_image.MaxDropDownItems" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="label25.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;comboBox_pointer_imageCentr.Name" xml:space="preserve">
+    <value>comboBox_pointer_imageCentr</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>Координаты центра вращения</value>
   </data>
-  <data name="numericUpDown_secondPointer_Y.Location" type="System.Drawing.Point, System.Drawing">
-    <value>195, 35</value>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 303</value>
+  </data>
+  <data name="&gt;&gt;checkBox_secondInAOD.ZOrder" xml:space="preserve">
+    <value>15</value>
   </data>
   <data name="&gt;&gt;label11.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1649,14 +1636,11 @@
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 13</value>
   </data>
-  <data name="button_PreviewAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 23</value>
-  </data>
   <data name="numericUpDown_tipY.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 20</value>
   </data>
-  <data name="&gt;&gt;label20.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label06.TabIndex" type="System.Int32, mscorlib">
+    <value>138</value>
   </data>
   <data name="&gt;&gt;checkBox_secondInAOD.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -1676,17 +1660,14 @@
   <data name="label12.Text" xml:space="preserve">
     <value>Координаты центра вращения</value>
   </data>
-  <data name="tabControl1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
   <data name="&gt;&gt;comboBox_foreground.Parent" xml:space="preserve">
     <value>panel2</value>
   </data>
-  <data name="comboBox_hourPointer_image.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 35</value>
+  <data name="button_PreviewAdd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 23</value>
   </data>
-  <data name="label14.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="label15.TabIndex" type="System.Int32, mscorlib">
+    <value>133</value>
   </data>
   <data name="comboBox_select_pointerSet.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 35</value>
@@ -1694,11 +1675,8 @@
   <data name="&gt;&gt;numericUpDown_minutePointer_Y.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="panel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 10</value>
-  </data>
-  <data name="&gt;&gt;label01.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>105, 37</value>
   </data>
   <data name="&gt;&gt;numericUpDown_pointer_centr_Y.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1706,17 +1684,26 @@
   <data name="numericUpDown_secondPointer_offset_Y.TabIndex" type="System.Int32, mscorlib">
     <value>141</value>
   </data>
+  <data name="копироватьToolStripMenuItemY.Text" xml:space="preserve">
+    <value>Копировать</value>
+  </data>
   <data name="comboBox_Preview_image.TabIndex" type="System.Int32, mscorlib">
     <value>218</value>
+  </data>
+  <data name="label1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomLeft</value>
   </data>
   <data name="button_PreviewRefresh.TabIndex" type="System.Int32, mscorlib">
     <value>220</value>
   </data>
-  <data name="&gt;&gt;label02.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="label15.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="numericUpDown_minutePointer_offset_X.TabIndex" type="System.Int32, mscorlib">
     <value>140</value>
+  </data>
+  <data name="&gt;&gt;checkBox_secondInAOD.Name" xml:space="preserve">
+    <value>checkBox_secondInAOD</value>
   </data>
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -1724,12 +1711,11 @@
   <data name="&gt;&gt;label13.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
-    <value>10</value>
+  <data name="comboBox_Preview_image.MaxDropDownItems" type="System.Int32, mscorlib">
+    <value>25</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>X:</value>
-    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;numericUpDown_hourPointer_X.ZOrder" xml:space="preserve">
     <value>11</value>
@@ -1737,24 +1723,23 @@
   <data name="&gt;&gt;numericUpDown_tipX.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;копироватьToolStripMenuItemY.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;tabPage_hour.Parent" xml:space="preserve">
+    <value>tabControl1</value>
   </data>
-  <data name="&gt;&gt;numericUpDown_secondPointer_Y.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="numericUpDown_secondPointer_offset_X.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 98</value>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>Y:</value>
-    <comment>Do not translate</comment>
   </data>
-  <data name="&gt;&gt;comboBox_select_pointerSet.Parent" xml:space="preserve">
-    <value>panel2</value>
+  <data name="numericUpDown_secondPointer_Y.Location" type="System.Drawing.Point, System.Drawing">
+    <value>195, 35</value>
   </data>
   <data name="label8.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="label2.TabIndex" type="System.Int32, mscorlib">
+    <value>142</value>
   </data>
   <data name="&gt;&gt;numericUpDown_hourPointer_offset_X.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -1764,7 +1749,6 @@
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>Y:</value>
-    <comment>Do not translate</comment>
   </data>
   <data name="label25.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1772,38 +1756,38 @@
   <data name="&gt;&gt;label03.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label13.Text" xml:space="preserve">
-    <value>Изображение секундной стрелки</value>
+  <data name="label21.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 30</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 30</value>
   </data>
-  <data name="label6.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>BottomLeft</value>
+  <data name="&gt;&gt;tabPage_hour.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;panel2.Name" xml:space="preserve">
     <value>panel2</value>
   </data>
-  <data name="&gt;&gt;label07.Parent" xml:space="preserve">
-    <value>tabPage_hour</value>
+  <data name="&gt;&gt;tabPage_minute.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="button_del.TabIndex" type="System.Int32, mscorlib">
-    <value>196</value>
+  <data name="&gt;&gt;копироватьToolStripMenuItemY.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label05.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="button_PreviewRefresh.Location" type="System.Drawing.Point, System.Drawing">
-    <value>96, 117</value>
+  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
+    <value>223</value>
   </data>
   <data name="&gt;&gt;tabPage_second.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Изображение минутной стрелки</value>
+  <data name="label15.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="comboBox_tip.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 133</value>
@@ -1817,8 +1801,11 @@
   <data name="&gt;&gt;label3.Parent" xml:space="preserve">
     <value>tabPage_minute</value>
   </data>
-  <data name="label5.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>BottomCenter</value>
+  <data name="вставитьКоординатуYToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>203, 26</value>
+  </data>
+  <data name="&gt;&gt;label07.Parent" xml:space="preserve">
+    <value>tabPage_hour</value>
   </data>
   <data name="&gt;&gt;comboBox_Preview_image.Name" xml:space="preserve">
     <value>comboBox_Preview_image</value>
@@ -1826,29 +1813,32 @@
   <data name="&gt;&gt;label01.Parent" xml:space="preserve">
     <value>tabPage_hour</value>
   </data>
-  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 1</value>
+  <data name="label22.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;label16.Name" xml:space="preserve">
-    <value>label16</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+  <data name="label03.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="numericUpDown_minutePointer_Y.Location" type="System.Drawing.Point, System.Drawing">
     <value>195, 35</value>
   </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label11.Text" xml:space="preserve">
+    <value>X:</value>
   </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
+  <data name="&gt;&gt;comboBox_select_pointerSet.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label15.Name" xml:space="preserve">
+    <value>label15</value>
+  </data>
+  <data name="tabPage_hour.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 121</value>
   </data>
   <data name="&gt;&gt;label04.Parent" xml:space="preserve">
     <value>tabPage_hour</value>
   </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>tabPage_minute</value>
+  <data name="label02.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="tabPage_hour.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1868,14 +1858,20 @@
   <data name="comboBox_hourPointer_image.TabIndex" type="System.Int32, mscorlib">
     <value>132</value>
   </data>
-  <data name="label1.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>BottomLeft</value>
+  <data name="&gt;&gt;comboBox_foreground.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
-  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
+    <value>tabPage_second</value>
+  </data>
+  <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 13</value>
   </data>
   <data name="&gt;&gt;label21.Name" xml:space="preserve">
     <value>label21</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="comboBox_pointer_imageCentr.TabIndex" type="System.Int32, mscorlib">
     <value>218</value>
@@ -1886,23 +1882,23 @@
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="button_PreviewRefresh.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
+  <data name="&gt;&gt;вставитьКоординатуYToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="копироватьToolStripMenuItemX.Text" xml:space="preserve">
-    <value>Копировать</value>
+  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
   <data name="checkBox_secondInAOD.Text" xml:space="preserve">
     <value>Отображать секундную стрелку в режиме AOD</value>
   </data>
-  <data name="&gt;&gt;button_PreviewAdd.Name" xml:space="preserve">
-    <value>button_PreviewAdd</value>
+  <data name="&gt;&gt;label25.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="tabPage_minute.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;button_PreviewAdd.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="label25.TabIndex" type="System.Int32, mscorlib">
+    <value>219</value>
   </data>
   <data name="numericUpDown_tipX.TabIndex" type="System.Int32, mscorlib">
     <value>212</value>
@@ -1910,17 +1906,20 @@
   <data name="&gt;&gt;label19.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="label6.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>BottomLeft</value>
+  </data>
   <data name="&gt;&gt;numericUpDown_secondPointer_X.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="numericUpDown_secondPointer_X.Location" type="System.Drawing.Point, System.Drawing">
     <value>122, 35</value>
   </data>
-  <data name="label7.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;button_PreviewAdd.Name" xml:space="preserve">
+    <value>button_PreviewAdd</value>
   </data>
-  <data name="tabPage_minute.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 25</value>
+  <data name="&gt;&gt;numericUpDown_tipY.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label2.Name" xml:space="preserve">
     <value>label2</value>
@@ -1928,11 +1927,11 @@
   <data name="&gt;&gt;contextMenuStrip_X.Name" xml:space="preserve">
     <value>contextMenuStrip_X</value>
   </data>
-  <data name="label01.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 30</value>
+  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 1</value>
   </data>
-  <data name="numericUpDown_secondPointer_offset_X.TabIndex" type="System.Int32, mscorlib">
-    <value>140</value>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
   </data>
   <data name="label6.TabIndex" type="System.Int32, mscorlib">
     <value>131</value>
@@ -1943,14 +1942,17 @@
   <data name="&gt;&gt;tabPage_hour.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>X:</value>
+  </data>
   <data name="numericUpDown_secondPointer_offset_Y.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 20</value>
   </data>
-  <data name="&gt;&gt;button_PreviewRefresh.ZOrder" xml:space="preserve">
-    <value>7</value>
+  <data name="&gt;&gt;tabPage_minute.Name" xml:space="preserve">
+    <value>tabPage_minute</value>
   </data>
-  <data name="&gt;&gt;contextMenuStrip_X.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="numericUpDown_pointer_centr_X.Location" type="System.Drawing.Point, System.Drawing">
+    <value>126, 37</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>144, 30</value>
@@ -1958,26 +1960,23 @@
   <data name="&gt;&gt;tabPage_minute.Parent" xml:space="preserve">
     <value>tabControl1</value>
   </data>
-  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;numericUpDown_hourPointer_offset_X.Parent" xml:space="preserve">
+    <value>tabPage_hour</value>
   </data>
-  <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>142</value>
+  <data name="button_PreviewAdd.Text" xml:space="preserve">
+    <value>Создать предпросмотр</value>
   </data>
-  <data name="label23.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;label24.Parent" xml:space="preserve">
+    <value>panel1</value>
   </data>
-  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
-    <value>tabPage_second</value>
+  <data name="&gt;&gt;comboBox_foreground.Name" xml:space="preserve">
+    <value>comboBox_foreground</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>258, 545</value>
   </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 303</value>
-  </data>
-  <data name="label9.TabIndex" type="System.Int32, mscorlib">
-    <value>142</value>
+  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 30</value>
   </data>
   <data name="comboBox_secondPointer_image.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 21</value>
@@ -2006,48 +2005,53 @@
   <data name="numericUpDown_hourPointer_offset_Y.Location" type="System.Drawing.Point, System.Drawing">
     <value>95, 98</value>
   </data>
+  <data name="&gt;&gt;label23.Name" xml:space="preserve">
+    <value>label23</value>
+  </data>
   <data name="numericUpDown_pointer_centr_Y.Location" type="System.Drawing.Point, System.Drawing">
     <value>199, 37</value>
   </data>
-  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
-    <value>tabPage_second</value>
+  <data name="&gt;&gt;comboBox_pointer_imageCentr.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="вставитьToolStripMenuItemY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>203, 26</value>
+  <data name="label01.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 30</value>
   </data>
-  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="numericUpDown_secondPointer_offset_X.Location" type="System.Drawing.Point, System.Drawing">
+    <value>22, 98</value>
   </data>
-  <data name="button_add.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 62</value>
+  <data name="&gt;&gt;label19.Parent" xml:space="preserve">
+    <value>panel1</value>
   </data>
-  <data name="&gt;&gt;numericUpDown_minutePointer_offset_X.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="label23.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;numericUpDown_hourPointer_X.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label25.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 13</value>
   </data>
-  <data name="&gt;&gt;numericUpDown_hourPointer_offset_X.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
   </data>
   <data name="&gt;&gt;comboBox_minutePointer_image.Parent" xml:space="preserve">
     <value>tabPage_minute</value>
   </data>
-  <data name="&gt;&gt;label07.Name" xml:space="preserve">
-    <value>label07</value>
+  <data name="&gt;&gt;numericUpDown_secondPointer_Y.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label06.Name" xml:space="preserve">
     <value>label06</value>
   </data>
-  <data name="comboBox_tip.TabIndex" type="System.Int32, mscorlib">
-    <value>209</value>
+  <data name="&gt;&gt;label23.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="label15.Text" xml:space="preserve">
-    <value>X:</value>
-    <comment>Do not translate</comment>
+  <data name="&gt;&gt;tabPage_second.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="button_PreviewRefresh.Location" type="System.Drawing.Point, System.Drawing">
+    <value>96, 117</value>
   </data>
   <data name="label19.TabIndex" type="System.Int32, mscorlib">
     <value>211</value>
@@ -2055,14 +2059,14 @@
   <data name="label03.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label22.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>BottomLeft</value>
-  </data>
   <data name="&gt;&gt;label8.Name" xml:space="preserve">
     <value>label8</value>
   </data>
   <data name="checkBox_edit_mode.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label25.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -2073,30 +2077,17 @@
   <data name="&gt;&gt;comboBox_pointer_imageCentr.Parent" xml:space="preserve">
     <value>panel1</value>
   </data>
-  <data name="&gt;&gt;numericUpDown_secondPointer_X.Parent" xml:space="preserve">
-    <value>tabPage_second</value>
+  <data name="checkBox_secondInAOD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>230, 37</value>
   </data>
-  <data name="&gt;&gt;label21.Parent" xml:space="preserve">
-    <value>panel2</value>
+  <data name="label21.TabIndex" type="System.Int32, mscorlib">
+    <value>217</value>
   </data>
-  <data name="&gt;&gt;label23.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Изображение минутной стрелки</value>
   </data>
-  <data name="копироватьToolStripMenuItemY.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAnJJREFUOE+l
-        UUtvEmEUHY3RuueRaDfu6lZKl+rKXYmLmtR/4NK9ujDammiqKWB8IENjXahB5VFr1YXRajsgLeX9HArD
-        AMN7gHZ9vfeDFJLqypuczJ2bc853vvtxVKfHx49pNJoTWq12TKfTjen1+pM6AvYarRbnuuOM+K+y2Zf8
-        4WgcovEkJFIZSKazCBHiyTTQPILz8xcuXh7QD5fNzgtEjCExiQbxRAqFMQiFo7C9E4ZgKAIzM1euGwyG
-        iclJ48Q5g+GscWrq1EDOcS+XXwmimIfcbh4Kkgw+fwDWfwng+70Fge0dZkLpovEUhCIxCKLx/QcLawM5
-        x71+81aQSmWQERVFQUHoQJRMZyCdFRlSeDVKR/OFh48+DuQc53z3XqgoVajW6tBotiAai0MCySImyheK
-        UCjKICEKUhFy+QKbmy3WocEHl0sgIUFtq3hSBoUSFOUylCsKKNUaA/WlcoUlffL02dDA5fYIrXYbWq02
-        qN0OZDCujMSCJEG90UTjJkuXwFf58XOTzZ7bXgwN3MxAZQZttQNZMXdwagRfZxdjq50e9Ho92BD8QFw7
-        zx82aJIBfrOiCLV6nf0HtoK4uCTs7e+z5yxXKozDOxyjV3ALzUab7YBS0BUoJiWhWR1BC9zY9MG37+ss
-        Je9YGkng8fqauINhghzUao2+Ic5pRqI++v88P5Jgfu7essezEkGjsNe7Evn85atcqzdYCjKlVC00o55M
-        aTd35+adAzmrI4ijA3Amk+lat7fXT4Snqp0uA/VkLJcUmL06e4e4fy2j0XjJYn28trhoXjWbLasWi/UT
-        gfobN285p6dNt5F2ps/+r+K4P4wyYm9nlNBiAAAAAElFTkSuQmCC
-</value>
+  <data name="&gt;&gt;numericUpDown_minutePointer_X.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label15.Parent" xml:space="preserve">
     <value>tabPage_second</value>
@@ -2107,8 +2098,8 @@
   <data name="tabPage_second.Text" xml:space="preserve">
     <value>Секундная стрелка</value>
   </data>
-  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;numericUpDown_tipX.ZOrder" xml:space="preserve">
+    <value>12</value>
   </data>
   <data name="label07.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2116,8 +2107,8 @@
   <data name="&gt;&gt;button_del.Name" xml:space="preserve">
     <value>button_del</value>
   </data>
-  <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="tabPage_minute.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 25</value>
   </data>
   <data name="label19.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2131,25 +2122,28 @@
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 13</value>
   </data>
-  <data name="label13.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>BottomLeft</value>
+  <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;label15.Name" xml:space="preserve">
-    <value>label15</value>
-  </data>
-  <data name="button_add.Text" xml:space="preserve">
-    <value>Добавить набор стрелок</value>
-  </data>
-  <data name="&gt;&gt;label23.Name" xml:space="preserve">
-    <value>label23</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label01.TabIndex" type="System.Int32, mscorlib">
-    <value>131</value>
+  <data name="&gt;&gt;label24.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
-  <data name="&gt;&gt;label24.Type" xml:space="preserve">
+  <data name="panel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 10</value>
+  </data>
+  <data name="comboBox_minutePointer_image.TabIndex" type="System.Int32, mscorlib">
+    <value>132</value>
+  </data>
+  <data name="&gt;&gt;button_add.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label22.Text" xml:space="preserve">
@@ -2158,35 +2152,25 @@
   <data name="&gt;&gt;panel1.Name" xml:space="preserve">
     <value>panel1</value>
   </data>
-  <data name="копироватьToolStripMenuItemX.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAnJJREFUOE+l
-        UUtvEmEUHY3RuueRaDfu6lZKl+rKXYmLmtR/4NK9ujDammiqKWB8IENjXahB5VFr1YXRajsgLeX9HArD
-        AMN7gHZ9vfeDFJLqypuczJ2bc853vvtxVKfHx49pNJoTWq12TKfTjen1+pM6AvYarRbnuuOM+K+y2Zf8
-        4WgcovEkJFIZSKazCBHiyTTQPILz8xcuXh7QD5fNzgtEjCExiQbxRAqFMQiFo7C9E4ZgKAIzM1euGwyG
-        iclJ48Q5g+GscWrq1EDOcS+XXwmimIfcbh4Kkgw+fwDWfwng+70Fge0dZkLpovEUhCIxCKLx/QcLawM5
-        x71+81aQSmWQERVFQUHoQJRMZyCdFRlSeDVKR/OFh48+DuQc53z3XqgoVajW6tBotiAai0MCySImyheK
-        UCjKICEKUhFy+QKbmy3WocEHl0sgIUFtq3hSBoUSFOUylCsKKNUaA/WlcoUlffL02dDA5fYIrXYbWq02
-        qN0OZDCujMSCJEG90UTjJkuXwFf58XOTzZ7bXgwN3MxAZQZttQNZMXdwagRfZxdjq50e9Ho92BD8QFw7
-        zx82aJIBfrOiCLV6nf0HtoK4uCTs7e+z5yxXKozDOxyjV3ALzUab7YBS0BUoJiWhWR1BC9zY9MG37+ss
-        Je9YGkng8fqauINhghzUao2+Ic5pRqI++v88P5Jgfu7essezEkGjsNe7Evn85atcqzdYCjKlVC00o55M
-        aTd35+adAzmrI4ijA3Amk+lat7fXT4Snqp0uA/VkLJcUmL06e4e4fy2j0XjJYn28trhoXjWbLasWi/UT
-        gfobN285p6dNt5F2ps/+r+K4P4wyYm9nlNBiAAAAAElFTkSuQmCC
-</value>
+  <data name="comboBox_tip.TabIndex" type="System.Int32, mscorlib">
+    <value>209</value>
   </data>
-  <data name="numericUpDown_hourPointer_offset_X.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 98</value>
+  <data name="&gt;&gt;comboBox_select_pointerSet.Name" xml:space="preserve">
+    <value>comboBox_select_pointerSet</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>78, 100</value>
   </data>
   <data name="&gt;&gt;button_add.Parent" xml:space="preserve">
     <value>panel2</value>
   </data>
-  <data name="$this.Localizable" type="System.Boolean, mscorlib">
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
-  <data name="contextMenuStrip_Y.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  </metadata>
+  <metadata name="contextMenuStrip_Y.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>168, 15</value>
-  </data>
-  <data name="contextMenuStrip_X.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  </metadata>
+  <metadata name="contextMenuStrip_X.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>11, 14</value>
-  </data>
+  </metadata>
 </root>

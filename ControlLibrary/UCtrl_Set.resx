@@ -1025,7 +1025,6 @@
   </data>
   <data name="checkBox_Bluetooth_Set.Text" xml:space="preserve">
     <value>Bluetooth</value>
-    <comment>Do not translate</comment>
   </data>
   <data name="label19.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>BottomCenter</value>
@@ -1122,7 +1121,6 @@
   </data>
   <data name="label09.Text" xml:space="preserve">
     <value>PAI</value>
-    <comment>Do not translate</comment>
   </data>
   <data name="dateTimePicker_Date_Set.Size" type="System.Drawing.Size, System.Drawing">
     <value>91, 20</value>
@@ -1568,7 +1566,7 @@
   <data name="label19.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="$this.Localizable" type="System.Boolean, mscorlib">
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
+  </metadata>
 </root>

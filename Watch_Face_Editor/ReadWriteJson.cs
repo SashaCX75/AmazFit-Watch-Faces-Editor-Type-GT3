@@ -788,7 +788,7 @@ namespace Watch_Face_Editor
                 /*#region ElementEditablePointers
                 case "ElementEditablePointers":
                     ElementEditablePointers EditablePointers = (ElementEditablePointers)element;
-                    if (!EditablePointers.visible) return;
+                    if (!EditablePointers.enable) return;
 
                     string editablePointersOptions = Editable_Pointers_Options(EditablePointers);
 
@@ -6509,7 +6509,7 @@ namespace Watch_Face_Editor
 
                         numberOptions_separator = IMG_Separator_Options(img_number, show_level, 2);
                     }
-                    //if (PAI.Number_Target != null && PAI.Number_Target.visible)
+                    //if (PAI.Number_Target != null && PAI.Number_Target.enable)
                     //{
                     //    numberTargetPosition = PAI.Number_Target.position;
                     //    hmUI_widget_IMG_NUMBER img_number = PAI.Number_Target;
@@ -11193,7 +11193,7 @@ namespace Watch_Face_Editor
                             //        if (dateWeek_img.Pointer != null) offsetImages++;
                             //        dateWeek_img.Images = imgWeek;
                             //        dateWeek_img.Images.position = offsetImages;
-                            //        dateWeek_img.Images.visible = true;
+                            //        dateWeek_img.Images.enable = true;
                             //    }
                             //}
                             //else
