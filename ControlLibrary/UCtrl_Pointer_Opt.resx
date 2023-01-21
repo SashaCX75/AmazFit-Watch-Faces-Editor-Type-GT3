@@ -120,6 +120,10 @@
   <data name="&gt;&gt;label09.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
+    <value>176, 290</value>
+  </data>
   <data name="&gt;&gt;label02.Name" xml:space="preserve">
     <value>label02</value>
   </data>
@@ -130,8 +134,8 @@
   <data name="comboBox_pointer_image.TabIndex" type="System.Int32, mscorlib">
     <value>114</value>
   </data>
-  <data name="label04.TabIndex" type="System.Int32, mscorlib">
-    <value>115</value>
+  <data name="numericUpDown_pointer_Y.Location" type="System.Drawing.Point, System.Drawing">
+    <value>193, 34</value>
   </data>
   <data name="numericUpDown_pointer_centr_Y.TabIndex" type="System.Int32, mscorlib">
     <value>136</value>
@@ -155,9 +159,8 @@
   <data name="&gt;&gt;numericUpDown_pointer_offset_X.ZOrder" xml:space="preserve">
     <value>20</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="numericUpDown_pointer_offset_Y.Location" type="System.Drawing.Point, System.Drawing">
-    <value>93, 97</value>
+  <data name="&gt;&gt;contextMenuStrip_X.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;numericUpDown_pointer_endAngle.ZOrder" xml:space="preserve">
     <value>17</value>
@@ -183,11 +186,11 @@
   <data name="&gt;&gt;label08.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="копироватьToolStripMenuItemY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>203, 26</value>
-  </data>
   <data name="comboBox_pointer_image.MaxDropDownItems" type="System.Int32, mscorlib">
     <value>25</value>
+  </data>
+  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 13</value>
   </data>
   <data name="&gt;&gt;numericUpDown_pointer_offset_Y.Parent" xml:space="preserve">
     <value>$this</value>
@@ -201,8 +204,8 @@
   <data name="label01.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>BottomLeft</value>
   </data>
-  <data name="&gt;&gt;numericUpDown_pointer_Y.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="label12.TabIndex" type="System.Int32, mscorlib">
+    <value>133</value>
   </data>
   <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
     <value>76, 126</value>
@@ -224,9 +227,6 @@
   </data>
   <data name="&gt;&gt;label10.Name" xml:space="preserve">
     <value>label10</value>
-  </data>
-  <data name="&gt;&gt;numericUpDown_pointer_startAngle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label14.Parent" xml:space="preserve">
     <value>$this</value>
@@ -293,6 +293,9 @@
   <data name="&gt;&gt;numericUpDown_pointer_centr_Y.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
+  <data name="comboBox_pointer_imageCentr.MaxDropDownItems" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
   <data name="label03.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 63</value>
   </data>
@@ -323,6 +326,9 @@
   <data name="label05.TabIndex" type="System.Int32, mscorlib">
     <value>116</value>
   </data>
+  <data name="label08.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
   <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
     <value>176, 227</value>
   </data>
@@ -341,8 +347,8 @@
   <data name="numericUpDown_pointer_startAngle.TabIndex" type="System.Int32, mscorlib">
     <value>127</value>
   </data>
-  <data name="comboBox_pointer_imageCentr.MaxDropDownItems" type="System.Int32, mscorlib">
-    <value>25</value>
+  <data name="&gt;&gt;numericUpDown_pointer_startAngle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label07.ZOrder" xml:space="preserve">
     <value>23</value>
@@ -370,9 +376,6 @@
   </data>
   <data name="label17.Text" xml:space="preserve">
     <value>Y:</value>
-  </data>
-  <data name="label12.TabIndex" type="System.Int32, mscorlib">
-    <value>133</value>
   </data>
   <data name="&gt;&gt;numericUpDown_pointer_background_Y.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -412,8 +415,8 @@
   <data name="label05.Location" type="System.Drawing.Point, System.Drawing">
     <value>176, 36</value>
   </data>
-  <data name="&gt;&gt;label12.Name" xml:space="preserve">
-    <value>label12</value>
+  <data name="label13.TabIndex" type="System.Int32, mscorlib">
+    <value>134</value>
   </data>
   <data name="&gt;&gt;label15.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -463,6 +466,9 @@
   <data name="label06.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 13</value>
   </data>
+  <data name="label04.TabIndex" type="System.Int32, mscorlib">
+    <value>115</value>
+  </data>
   <data name="numericUpDown_pointer_endAngle.Location" type="System.Drawing.Point, System.Drawing">
     <value>93, 160</value>
   </data>
@@ -487,8 +493,8 @@
   <data name="&gt;&gt;label07.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label08.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="&gt;&gt;numericUpDown_pointer_Y.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="numericUpDown_pointer_offset_X.TabIndex" type="System.Int32, mscorlib">
     <value>124</value>
@@ -499,11 +505,17 @@
   <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 253</value>
   </data>
+  <data name="&gt;&gt;numericUpDown_pointer_startAngle.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
   <data name="&gt;&gt;вставитьToolStripMenuItemY.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label06.ZOrder" xml:space="preserve">
     <value>24</value>
+  </data>
+  <data name="&gt;&gt;comboBox_pointer_imageCentr.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="вставитьToolStripMenuItemY.Size" type="System.Drawing.Size, System.Drawing">
     <value>203, 26</value>
@@ -517,9 +529,6 @@
   <data name="&gt;&gt;вставитьToolStripMenuItemX.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="numericUpDown_pointer_background_Y.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 20</value>
-  </data>
   <data name="label14.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>BottomLeft</value>
   </data>
@@ -529,8 +538,8 @@
   <data name="копироватьToolStripMenuItemX.Size" type="System.Drawing.Size, System.Drawing">
     <value>203, 26</value>
   </data>
-  <data name="&gt;&gt;numericUpDown_pointer_startAngle.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="numericUpDown_pointer_background_X.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 288</value>
   </data>
   <data name="numericUpDown_pointer_X.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 20</value>
@@ -577,11 +586,8 @@
   <data name="label07.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 13</value>
   </data>
-  <data name="label14.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
-    <value>176, 290</value>
+  <data name="label15.TabIndex" type="System.Int32, mscorlib">
+    <value>144</value>
   </data>
   <data name="label06.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 99</value>
@@ -592,8 +598,11 @@
   <data name="&gt;&gt;label01.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;contextMenuStrip_X.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label14.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
+  </data>
+  <data name="numericUpDown_pointer_offset_Y.Location" type="System.Drawing.Point, System.Drawing">
+    <value>93, 97</value>
   </data>
   <data name="numericUpDown_pointer_centr_X.TabIndex" type="System.Int32, mscorlib">
     <value>135</value>
@@ -612,6 +621,9 @@
   </data>
   <data name="&gt;&gt;label13.Name" xml:space="preserve">
     <value>label13</value>
+  </data>
+  <data name="&gt;&gt;label12.Name" xml:space="preserve">
+    <value>label12</value>
   </data>
   <data name="numericUpDown_pointer_centr_Y.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 20</value>
@@ -693,14 +705,22 @@
   <data name="&gt;&gt;label03.ZOrder" xml:space="preserve">
     <value>22</value>
   </data>
-  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 82</value>
-  </data>
   <data name="label04.Text" xml:space="preserve">
     <value>X:</value>
   </data>
-  <data name="numericUpDown_pointer_background_X.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 288</value>
+  <data name="вставитьКоординатуYToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
+        8O+++t+i/Eg9AxYAkrPEI6ddeLyewbx4T/2sdcf/nzp/DYxPX7gOxmcuXv/fufHx/9UH7/4/e+kmGJ+7
+        fAuMz1+5/T+++8B+jcxd9mDTTpy9/P/lp/8k4c2bNyNcduLMxf+vP/+H4w3b9v8vraxHwcjyILx+/XqE
+        AcdPX/j/9ut/OJ4ycz6YLqmoReEj4zVr1kAMMC05XL9q/43/H779x8BllbVYxUE4onXPfmAg2oNDs2/L
+        4/+ffvzHwBVVdVjFQRgeCyBw9MSp/19//sfAVTV1WMVBePLspYgwOHr85P/vv/6j4Bu37/+3tbP/P2vO
+        fLjYrz8QDGLPmzcPYcCRY8fhkrjwn7///y+4Nvn/8tvT/v/+++//rFmzkAw4chSsABcGqv//D4hz9sT+
+        Lz+aBBT7+//KlStrJ85fzwYORO/KTfsbGxvrm5qa6pubm+tbWlrqq1sm1IPkJmy+9yd/W+5//xUe/3P3
+        x/8vBhqQuivkf+vJ4v9XHn2uZwAmx3p4kkQDILkVR56tdJvh+t9sotH/gLX2/yO2Ov43X6D1P367z/+f
+        v//mQ5XiBhMmTGD7+fNn7t+/f/dp9cj+t1mkBvTC7wO/f//OX7hoIQdUGWHw7v27LLcZxv8dZtkCw+Mf
+        YZvRQX9/PxvQkJx3797lIWxmYAAA7pt3k8xS7ogAAAAASUVORK5CYII=
+</value>
   </data>
   <data name="label01.Text" xml:space="preserve">
     <value>Изображение стрелки</value>
@@ -756,20 +776,6 @@
   <data name="label05.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="вставитьКоординатуYToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
-        8O+++t+i/Eg9AxYAkrPEI6ddeLyewbx4T/2sdcf/nzp/DYxPX7gOxmcuXv/fufHx/9UH7/4/e+kmGJ+7
-        fAuMz1+5/T+++8B+jcxd9mDTTpy9/P/lp/8k4c2bNyNcduLMxf+vP/+H4w3b9v8vraxHwcjyILx+/XqE
-        AcdPX/j/9ut/OJ4ycz6YLqmoReEj4zVr1kAMMC05XL9q/43/H779x8BllbVYxUE4onXPfmAg2oNDs2/L
-        4/+ffvzHwBVVdVjFQRgeCyBw9MSp/19//sfAVTV1WMVBePLspYgwOHr85P/vv/6j4Bu37/+3tbP/P2vO
-        fLjYrz8QDGLPmzcPYcCRY8fhkrjwn7///y+4Nvn/8tvT/v/+++//rFmzkAw4chSsABcGqv//D4hz9sT+
-        Lz+aBBT7+//KlStrJ85fzwYORO/KTfsbGxvrm5qa6pubm+tbWlrqq1sm1IPkJmy+9yd/W+5//xUe/3P3
-        x/8vBhqQuivkf+vJ4v9XHn2uZwAmx3p4kkQDILkVR56tdJvh+t9sotH/gLX2/yO2Ov43X6D1P367z/+f
-        v//mQ5XiBhMmTGD7+fNn7t+/f/dp9cj+t1mkBvTC7wO/f//OX7hoIQdUGWHw7v27LLcZxv8dZtkCw+Mf
-        YZvRQX9/PxvQkJx3797lIWxmYAAA7pt3k8xS7ogAAAAASUVORK5CYII=
-</value>
-  </data>
   <data name="label15.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -782,11 +788,8 @@
   <data name="label02.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>BottomCenter</value>
   </data>
-  <data name="numericUpDown_pointer_Y.Location" type="System.Drawing.Point, System.Drawing">
-    <value>193, 34</value>
-  </data>
-  <data name="&gt;&gt;comboBox_pointer_imageCentr.ZOrder" xml:space="preserve">
-    <value>9</value>
+  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
+    <value>204, 82</value>
   </data>
   <data name="label08.Text" xml:space="preserve">
     <value>Верхнее изображение</value>
@@ -818,8 +821,14 @@
   <data name="numericUpDown_pointer_X.Location" type="System.Drawing.Point, System.Drawing">
     <value>120, 34</value>
   </data>
+  <data name="numericUpDown_pointer_centr_X.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 225</value>
+  </data>
   <data name="label03.Text" xml:space="preserve">
     <value>Центр вращения стрелки</value>
+  </data>
+  <data name="&gt;&gt;numericUpDown_pointer_offset_Y.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="comboBox_pointer_imageCentr.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 21</value>
@@ -830,14 +839,11 @@
   <data name="label11.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>BottomCenter</value>
   </data>
-  <data name="label13.TabIndex" type="System.Int32, mscorlib">
-    <value>134</value>
-  </data>
   <data name="&gt;&gt;label05.Name" xml:space="preserve">
     <value>label05</value>
   </data>
-  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 13</value>
+  <data name="&gt;&gt;comboBox_pointer_imageCentr.ZOrder" xml:space="preserve">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;label01.ZOrder" xml:space="preserve">
     <value>29</value>
@@ -851,8 +857,8 @@
   <data name="&gt;&gt;label10.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label15.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="копироватьToolStripMenuItemY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>203, 26</value>
   </data>
   <data name="label03.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 30</value>
@@ -878,8 +884,8 @@
   <data name="&gt;&gt;comboBox_pointer_imageCentr.Name" xml:space="preserve">
     <value>comboBox_pointer_imageCentr</value>
   </data>
-  <data name="&gt;&gt;numericUpDown_pointer_offset_Y.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;numericUpDown_pointer_background_Y.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="&gt;&gt;comboBox_pointer_imageBackground.Parent" xml:space="preserve">
     <value>$this</value>
@@ -901,9 +907,6 @@
   </data>
   <data name="label12.Text" xml:space="preserve">
     <value>X:</value>
-  </data>
-  <data name="label15.TabIndex" type="System.Int32, mscorlib">
-    <value>144</value>
   </data>
   <data name="&gt;&gt;numericUpDown_pointer_offset_X.Name" xml:space="preserve">
     <value>numericUpDown_pointer_offset_X</value>
@@ -932,8 +935,8 @@
   <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
     <value>7</value>
   </data>
-  <data name="&gt;&gt;comboBox_pointer_imageCentr.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="&gt;&gt;numericUpDown_pointer_startAngle.Name" xml:space="preserve">
+    <value>numericUpDown_pointer_startAngle</value>
   </data>
   <data name="label10.Text" xml:space="preserve">
     <value>Начальный угол</value>
@@ -970,9 +973,6 @@
   </data>
   <data name="numericUpDown_pointer_offset_X.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 20</value>
-  </data>
-  <data name="&gt;&gt;numericUpDown_pointer_startAngle.Name" xml:space="preserve">
-    <value>numericUpDown_pointer_startAngle</value>
   </data>
   <data name="&gt;&gt;numericUpDown_pointer_offset_X.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1040,14 +1040,11 @@
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
-  <data name="numericUpDown_pointer_centr_X.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 225</value>
+  <data name="numericUpDown_pointer_background_Y.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 20</value>
   </data>
   <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
     <value>103, 290</value>
-  </data>
-  <data name="&gt;&gt;numericUpDown_pointer_background_Y.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>250, 430</value>
@@ -1103,6 +1100,9 @@
         aTd35+adAzmrI4ijA3Amk+lat7fXT4Snqp0uA/VkLJcUmL06e4e4fy2j0XjJYn28trhoXjWbLasWi/UT
         gfobN285p6dNt5F2ps/+r+K4P4wyYm9nlNBiAAAAAElFTkSuQmCC
 </value>
+  </data>
+  <data name="&gt;&gt;label15.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="comboBox_pointer_imageCentr.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 223</value>

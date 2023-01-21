@@ -158,7 +158,7 @@ namespace ControlLibrary
             fitText(button_ElementName);
         }
 
-        public void fitText(Control control)
+        public void fitText(Button control)
         {
             Graphics graphics = control.CreateGraphics();
             Font drawFont = control.Font;
@@ -169,7 +169,7 @@ namespace ControlLibrary
             strFormat.LineAlignment = StringAlignment.Near;
             Size strSize = TextRenderer.MeasureText(graphics, control.Text, drawFont);
             //double controlWidth = control.Width - control.Margin.Left - control.Margin.Right - control.Padding.Left - 65;
-            double controlWidth = pictureBox_NotShow.Location.X - control.Margin.Left - control.Padding.Left - 14;
+            double controlWidth = pictureBox_Show.Location.X - control.Margin.Left - control.Padding.Left - control.Image.Width - 8;
             double scale = controlWidth / strSize.Width;
             if (scale < 1)
             {

@@ -475,7 +475,7 @@
 </value>
   </data>
   <data name="button_Sunset.Text" xml:space="preserve">
-    <value>Číselné hodnoty (západ slunce)</value>
+    <value>Čís. hodnoty (západ slunce)</value>
   </data>
   <data name="button_Sunrise.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -488,7 +488,7 @@
 </value>
   </data>
   <data name="button_Sunrise.Text" xml:space="preserve">
-    <value>Číselné hodnoty (východ slunce)</value>
+    <value>Čís. hodnoty (východ slunce)</value>
   </data>
   <data name="button_Sunset_Sunrise.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -501,7 +501,7 @@
 </value>
   </data>
   <data name="button_Sunset_Sunrise.Text" xml:space="preserve">
-    <value>Číselné hodnoty (východ/západ slunce)</value>
+    <value>Čís. hodnoty (východ/západ slunce)</value>
   </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Výběr prvku</value>

@@ -29,7 +29,6 @@ namespace Watch_Face_Editor
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -44,7 +43,7 @@ namespace Watch_Face_Editor
             this.NameFile = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnImage = new System.Windows.Forms.DataGridViewImageColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.contextMenuStrip_RemoveImage = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip_RemoveImage = new System.Windows.Forms.ContextMenuStrip();
             this.удалитьИзображениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.обновитьСписокИзображенийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView_AnimImagesList = new System.Windows.Forms.DataGridView();
@@ -268,7 +267,7 @@ namespace Watch_Face_Editor
             this.checkBox_WebW = new System.Windows.Forms.CheckBox();
             this.button_PreviewBig = new System.Windows.Forms.Button();
             this.label_version = new System.Windows.Forms.Label();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.imageList1 = new System.Windows.Forms.ImageList();
             this.button_pack_zip = new System.Windows.Forms.Button();
             this.button_unpack_zip = new System.Windows.Forms.Button();
             this.pictureBox_Preview = new System.Windows.Forms.PictureBox();
@@ -2098,7 +2097,8 @@ namespace Watch_Face_Editor
             resources.GetString("comboBox_Language.Items4"),
             resources.GetString("comboBox_Language.Items5"),
             resources.GetString("comboBox_Language.Items6"),
-            resources.GetString("comboBox_Language.Items7")});
+            resources.GetString("comboBox_Language.Items7"),
+            resources.GetString("comboBox_Language.Items8")});
             this.comboBox_Language.Name = "comboBox_Language";
             this.comboBox_Language.SelectedIndexChanged += new System.EventHandler(this.comboBox_Language_SelectedIndexChanged);
             // 

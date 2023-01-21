@@ -1,0 +1,316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Température maximale</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="numericUpDown_WeatherSet_Temp.Location" type="System.Drawing.Point, System.Drawing">
+    <value>131, 50</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items" xml:space="preserve">
+    <value>Nuageux</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items1" xml:space="preserve">
+    <value>Risque de pluie</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items2" xml:space="preserve">
+    <value>Risque de neige</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items3" xml:space="preserve">
+    <value>Ensoleillé</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items4" xml:space="preserve">
+    <value>Couvert</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items5" xml:space="preserve">
+    <value>Pluie légère</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items6" xml:space="preserve">
+    <value>Neige légère</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items7" xml:space="preserve">
+    <value>Pluie modérée</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items8" xml:space="preserve">
+    <value>Neige modérée</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items9" xml:space="preserve">
+    <value>Fortes chutes de neige</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items10" xml:space="preserve">
+    <value>Forte pluie</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items11" xml:space="preserve">
+    <value>Tempête de sable</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items12" xml:space="preserve">
+    <value>Neige fondue</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items13" xml:space="preserve">
+    <value>Brouillard</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items14" xml:space="preserve">
+    <value>Brume</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items15" xml:space="preserve">
+    <value>Orage</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items16" xml:space="preserve">
+    <value>Tempête De Neige</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items17" xml:space="preserve">
+    <value>Poussiéreux</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items18" xml:space="preserve">
+    <value>Forte averse</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items19" xml:space="preserve">
+    <value>Pluie avec grêle</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items20" xml:space="preserve">
+    <value>Forte pluie avec grêle</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items21" xml:space="preserve">
+    <value>Forte pluie</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items22" xml:space="preserve">
+    <value>Tempête de poussière</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items23" xml:space="preserve">
+    <value>Forte tempête de sable</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items24" xml:space="preserve">
+    <value>Forte pluie</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items25" xml:space="preserve">
+    <value>Météo inconnue</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items26" xml:space="preserve">
+    <value>Nuit nuageuse</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items27" xml:space="preserve">
+    <value>Nuit pluvieuse</value>
+  </data>
+  <data name="comboBox_WeatherSet_Icon.Items28" xml:space="preserve">
+    <value>Nuit claire</value>
+  </data>
+  <data name="checkBox_WeatherSet_Temp.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 17</value>
+  </data>
+  <data name="checkBox_WeatherSet_Temp.Text" xml:space="preserve">
+    <value>Température actuelle</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Température minimale</value>
+  </data>
+  <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
+    <value>158, 73</value>
+  </data>
+  <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 28</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>pression atmosphérique</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>Altitude</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Force du vent</value>
+  </data>
+  <data name="label17.Text" xml:space="preserve">
+    <value>Humidité</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>Qualité de l'air</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>Indice UV</value>
+  </data>
+  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 13</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>Icône météo</value>
+  </data>
+  <data name="groupBox_Air.Text" xml:space="preserve">
+    <value>Atmosphère</value>
+  </data>
+  <data name="checkBox_DND_Set.Text" xml:space="preserve">
+    <value>Ne pas déranger</value>
+  </data>
+  <data name="checkBox_Lock_Set.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 18</value>
+  </data>
+  <data name="checkBox_Lock_Set.Text" xml:space="preserve">
+    <value>Verrouillage</value>
+  </data>
+  <data name="checkBox_Alarm_Set.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 18</value>
+  </data>
+  <data name="checkBox_Alarm_Set.Text" xml:space="preserve">
+    <value>Alarme</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>Graisse brûlée</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Stress</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Échauffement</value>
+  </data>
+  <data name="label08.Text" xml:space="preserve">
+    <value>Objectif de pas</value>
+  </data>
+  <data name="label07.Text" xml:space="preserve">
+    <value>Pas</value>
+  </data>
+  <data name="label06.Text" xml:space="preserve">
+    <value>Distance</value>
+  </data>
+  <data name="label05.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 50</value>
+  </data>
+  <data name="label05.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 28</value>
+  </data>
+  <data name="label05.Text" xml:space="preserve">
+    <value>Pulsations cardiaques</value>
+  </data>
+  <data name="label04.Text" xml:space="preserve">
+    <value>Calories</value>
+  </data>
+  <data name="label03.Text" xml:space="preserve">
+    <value>Batterie</value>
+  </data>
+  <data name="label02.Text" xml:space="preserve">
+    <value>Heure</value>
+  </data>
+  <data name="label01.Text" xml:space="preserve">
+    <value>date</value>
+  </data>
+  <data name="groupBox_Activity.Text" xml:space="preserve">
+    <value>Activités</value>
+  </data>
+  <data name="button_Set.Text" xml:space="preserve">
+    <value>valeurs</value>
+  </data>
+</root>

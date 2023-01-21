@@ -133,10 +133,10 @@
   <data name="&gt;&gt;label3.Parent" xml:space="preserve">
     <value>groupBox_EditableBackground</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="comboBox_select_background.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 50</value>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="numericUpDown_tipX.Location" type="System.Drawing.Point, System.Drawing">
     <value>123, 239</value>
   </data>
@@ -146,16 +146,19 @@
   <data name="&gt;&gt;button_add.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="&gt;&gt;comboBox_Preview_image.Parent" xml:space="preserve">
-    <value>groupBox_EditableBackground</value>
+  <data name="&gt;&gt;button_PreviewRefresh.Name" xml:space="preserve">
+    <value>button_PreviewRefresh</value>
   </data>
   <data name="&gt;&gt;label4.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>17</value>
+  <data name="вставитьToolStripMenuItemX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>203, 26</value>
   </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>203, 26</value>
+  </data>
+  <data name="вставитьКоординатуYToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>203, 26</value>
   </data>
   <data name="label2.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
@@ -164,20 +167,20 @@
   <data name="label01.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 76</value>
   </data>
-  <data name="comboBox_image.MaxDropDownItems" type="System.Int32, mscorlib">
-    <value>25</value>
+  <data name="comboBox_image.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 21</value>
   </data>
   <data name="&gt;&gt;button_PreviewAdd.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="&gt;&gt;label02.Name" xml:space="preserve">
-    <value>label02</value>
   </data>
   <data name="&gt;&gt;label02.Parent" xml:space="preserve">
     <value>groupBox_EditableBackground</value>
   </data>
   <data name="&gt;&gt;вставитьКоординатуХToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_add.Parent" xml:space="preserve">
+    <value>groupBox_EditableBackground</value>
   </data>
   <data name="label03.Text" xml:space="preserve">
     <value>X:</value>
@@ -194,12 +197,11 @@
   <data name="button_del.Text" xml:space="preserve">
     <value>Удалить фон</value>
   </data>
+  <data name="button_add.Text" xml:space="preserve">
+    <value>Добавить фон</value>
+  </data>
   <data name="&gt;&gt;вставитьToolStripMenuItemY.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="button_PreviewAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="label04.Size" type="System.Drawing.Size, System.Drawing">
     <value>17, 13</value>
@@ -222,17 +224,15 @@
   <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
     <value>204, 82</value>
   </data>
-  <data name="&gt;&gt;comboBox_foreground.ZOrder" xml:space="preserve">
-    <value>7</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label02.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Text" xml:space="preserve">
     <value>Вставить координату Y</value>
   </data>
   <data name="&gt;&gt;label04.Parent" xml:space="preserve">
     <value>groupBox_EditableBackground</value>
-  </data>
-  <data name="label01.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>258, 412</value>
@@ -279,6 +279,9 @@
   <data name="button_del.TabIndex" type="System.Int32, mscorlib">
     <value>192</value>
   </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 30</value>
+  </data>
   <data name="button_del.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -294,9 +297,6 @@
   <data name="&gt;&gt;label01.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;вставитьToolStripMenuItemY.Name" xml:space="preserve">
-    <value>вставитьToolStripMenuItemY</value>
-  </data>
   <data name="вставитьToolStripMenuItemX.Text" xml:space="preserve">
     <value>Вставить</value>
   </data>
@@ -306,14 +306,14 @@
   <data name="&gt;&gt;numericUpDown_tipY.Type" xml:space="preserve">
     <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Верхнее изображение</value>
+  </data>
   <data name="comboBox_foreground.Size" type="System.Drawing.Size, System.Drawing">
     <value>76, 21</value>
   </data>
   <data name="label01.Text" xml:space="preserve">
     <value>Фоновое изображение</value>
-  </data>
-  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
   </data>
   <data name="comboBox_image.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 110</value>
@@ -351,14 +351,17 @@
   <data name="label02.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="label03.Size" type="System.Drawing.Size, System.Drawing">
+    <value>17, 13</value>
+  </data>
   <data name="&gt;&gt;groupBox_EditableBackground.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;comboBox_select_background.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="comboBox_image.TabIndex" type="System.Int32, mscorlib">
     <value>188</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStrip_X.Name" xml:space="preserve">
-    <value>contextMenuStrip_X</value>
   </data>
   <data name="&gt;&gt;label04.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -366,14 +369,20 @@
   <data name="&gt;&gt;comboBox_image.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 16</value>
+  <data name="копироватьToolStripMenuItemY.Text" xml:space="preserve">
+    <value>Копировать</value>
   </data>
   <data name="button_PreviewAdd.Location" type="System.Drawing.Point, System.Drawing">
     <value>98, 149</value>
   </data>
+  <data name="comboBox_Preview_image.MaxDropDownItems" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
   <data name="&gt;&gt;numericUpDown_tipY.Name" xml:space="preserve">
     <value>numericUpDown_tipY</value>
+  </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="button_PreviewAdd.TabIndex" type="System.Int32, mscorlib">
     <value>207</value>
@@ -384,11 +393,14 @@
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 30</value>
   </data>
-  <data name="label02.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>17</value>
   </data>
   <data name="&gt;&gt;label3.Name" xml:space="preserve">
     <value>label3</value>
+  </data>
+  <data name="button_add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>112, 23</value>
   </data>
   <data name="&gt;&gt;label2.Name" xml:space="preserve">
     <value>label2</value>
@@ -399,17 +411,14 @@
   <data name="&gt;&gt;button_del.Parent" xml:space="preserve">
     <value>groupBox_EditableBackground</value>
   </data>
-  <data name="копироватьToolStripMenuItemY.Text" xml:space="preserve">
-    <value>Копировать</value>
+  <data name="button_PreviewRefresh.Text" xml:space="preserve">
+    <value>Обновить предпросмотр</value>
   </data>
   <data name="comboBox_tip.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 239</value>
   </data>
   <data name="comboBox_foreground.Location" type="System.Drawing.Point, System.Drawing">
     <value>124, 110</value>
-  </data>
-  <data name="numericUpDown_tipX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 20</value>
   </data>
   <data name="label03.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -454,9 +463,6 @@
   <data name="&gt;&gt;button_PreviewRefresh.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="comboBox_select_background.TabIndex" type="System.Int32, mscorlib">
-    <value>190</value>
-  </data>
   <data name="button_PreviewRefresh.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -490,14 +496,20 @@
   <data name="&gt;&gt;button_del.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="comboBox_foreground.MaxDropDownItems" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
   <data name="&gt;&gt;contextMenuStrip_Y.Name" xml:space="preserve">
     <value>contextMenuStrip_Y</value>
   </data>
-  <data name="button_add.Text" xml:space="preserve">
-    <value>Добавить фон</value>
+  <data name="label01.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
+  </data>
+  <data name="&gt;&gt;вставитьToolStripMenuItemX.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="groupBox_EditableBackground.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -516,9 +528,6 @@
   </data>
   <data name="&gt;&gt;comboBox_tip.Name" xml:space="preserve">
     <value>comboBox_tip</value>
-  </data>
-  <data name="копироватьToolStripMenuItemX.Text" xml:space="preserve">
-    <value>Копировать</value>
   </data>
   <data name="button_PreviewAdd.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 23</value>
@@ -544,20 +553,14 @@
   <data name="label01.TabIndex" type="System.Int32, mscorlib">
     <value>187</value>
   </data>
-  <data name="&gt;&gt;button_PreviewRefresh.Name" xml:space="preserve">
-    <value>button_PreviewRefresh</value>
-  </data>
   <data name="comboBox_Preview_image.TabIndex" type="System.Int32, mscorlib">
     <value>194</value>
   </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>6</value>
+  <data name="button_PreviewAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="&gt;&gt;comboBox_select_background.Name" xml:space="preserve">
     <value>comboBox_select_background</value>
-  </data>
-  <data name="button_PreviewRefresh.Text" xml:space="preserve">
-    <value>Обновить предпросмотр</value>
   </data>
   <data name="&gt;&gt;вставитьКоординатуХToolStripMenuItem.Name" xml:space="preserve">
     <value>вставитьКоординатуХToolStripMenuItem</value>
@@ -574,9 +577,6 @@
   <data name="&gt;&gt;checkBox_edit_mode.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
-    <value>Вставить</value>
-  </data>
   <data name="numericUpDown_tipY.TabIndex" type="System.Int32, mscorlib">
     <value>200</value>
   </data>
@@ -589,8 +589,8 @@
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
     <value>124, 76</value>
   </data>
-  <data name="&gt;&gt;вставитьToolStripMenuItemX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="comboBox_select_background.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 50</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>80, 30</value>
@@ -607,8 +607,8 @@
   <data name="&gt;&gt;numericUpDown_tipY.Parent" xml:space="preserve">
     <value>groupBox_EditableBackground</value>
   </data>
-  <data name="comboBox_image.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 21</value>
+  <data name="&gt;&gt;вставитьToolStripMenuItemY.Name" xml:space="preserve">
+    <value>вставитьToolStripMenuItemY</value>
   </data>
   <data name="button_PreviewRefresh.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -622,17 +622,20 @@
   <data name="&gt;&gt;button_del.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
+  <data name="checkBox_edit_mode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>230, 17</value>
+  </data>
   <data name="&gt;&gt;label4.Parent" xml:space="preserve">
     <value>groupBox_EditableBackground</value>
   </data>
   <data name="label3.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>BottomLeft</value>
   </data>
-  <data name="comboBox_foreground.MaxDropDownItems" type="System.Int32, mscorlib">
-    <value>25</value>
+  <data name="&gt;&gt;contextMenuStrip_X.Name" xml:space="preserve">
+    <value>contextMenuStrip_X</value>
   </data>
-  <data name="&gt;&gt;label03.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 16</value>
   </data>
   <data name="&gt;&gt;button_del.Name" xml:space="preserve">
     <value>button_del</value>
@@ -652,8 +655,8 @@
   <data name="label02.Location" type="System.Drawing.Point, System.Drawing">
     <value>106, 222</value>
   </data>
-  <data name="checkBox_edit_mode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>230, 17</value>
+  <data name="numericUpDown_tipX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 20</value>
   </data>
   <data name="&gt;&gt;label3.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -667,14 +670,17 @@
   <data name="&gt;&gt;checkBox_edit_mode.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;comboBox_image.Name" xml:space="preserve">
-    <value>comboBox_image</value>
+  <data name="label04.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="button_PreviewRefresh.Location" type="System.Drawing.Point, System.Drawing">
     <value>98, 174</value>
   </data>
   <data name="&gt;&gt;comboBox_tip.Parent" xml:space="preserve">
     <value>groupBox_EditableBackground</value>
+  </data>
+  <data name="button_del.Location" type="System.Drawing.Point, System.Drawing">
+    <value>124, 48</value>
   </data>
   <data name="&gt;&gt;groupBox_EditableBackground.Name" xml:space="preserve">
     <value>groupBox_EditableBackground</value>
@@ -701,9 +707,6 @@
     <value>button_add</value>
   </data>
   <data name="&gt;&gt;comboBox_foreground.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBox_image.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
@@ -753,8 +756,8 @@
   <data name="&gt;&gt;label03.Parent" xml:space="preserve">
     <value>groupBox_EditableBackground</value>
   </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Верхнее изображение</value>
+  <data name="копироватьToolStripMenuItemX.Text" xml:space="preserve">
+    <value>Копировать</value>
   </data>
   <data name="&gt;&gt;label02.ZOrder" xml:space="preserve">
     <value>19</value>
@@ -765,11 +768,11 @@
   <data name="&gt;&gt;comboBox_foreground.Parent" xml:space="preserve">
     <value>groupBox_EditableBackground</value>
   </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>80, 30</value>
+  <data name="comboBox_select_background.TabIndex" type="System.Int32, mscorlib">
+    <value>190</value>
   </data>
-  <data name="вставитьToolStripMenuItemX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>203, 26</value>
+  <data name="comboBox_image.MaxDropDownItems" type="System.Int32, mscorlib">
+    <value>25</value>
   </data>
   <data name="вставитьToolStripMenuItemX.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -809,8 +812,8 @@
   <data name="&gt;&gt;копироватьToolStripMenuItemX.Name" xml:space="preserve">
     <value>копироватьToolStripMenuItemX</value>
   </data>
-  <data name="вставитьКоординатуYToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>203, 26</value>
+  <data name="&gt;&gt;comboBox_image.Name" xml:space="preserve">
+    <value>comboBox_image</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
     <value>12</value>
@@ -824,14 +827,11 @@
   <data name="&gt;&gt;numericUpDown_tipX.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
-  <data name="button_add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 23</value>
-  </data>
-  <data name="label04.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;comboBox_select_background.Type" xml:space="preserve">
+  <data name="&gt;&gt;comboBox_image.Type" xml:space="preserve">
     <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;comboBox_foreground.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="checkBox_edit_mode.Text" xml:space="preserve">
     <value>Предпросмотр режима редактирования</value>
@@ -845,14 +845,14 @@
   <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;button_add.Parent" xml:space="preserve">
+  <data name="&gt;&gt;comboBox_Preview_image.Parent" xml:space="preserve">
     <value>groupBox_EditableBackground</value>
   </data>
   <data name="label04.Text" xml:space="preserve">
     <value>Y:</value>
   </data>
-  <data name="comboBox_Preview_image.MaxDropDownItems" type="System.Int32, mscorlib">
-    <value>25</value>
+  <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
+    <value>Вставить</value>
   </data>
   <data name="label04.Location" type="System.Drawing.Point, System.Drawing">
     <value>179, 241</value>
@@ -860,8 +860,8 @@
   <data name="&gt;&gt;numericUpDown_tipX.Parent" xml:space="preserve">
     <value>groupBox_EditableBackground</value>
   </data>
-  <data name="label03.Size" type="System.Drawing.Size, System.Drawing">
-    <value>17, 13</value>
+  <data name="&gt;&gt;label02.Name" xml:space="preserve">
+    <value>label02</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 142</value>
@@ -883,8 +883,8 @@
   <data name="&gt;&gt;копироватьToolStripMenuItemX.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="button_del.Location" type="System.Drawing.Point, System.Drawing">
-    <value>124, 48</value>
+  <data name="&gt;&gt;label03.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBox_edit_mode.Parent" xml:space="preserve">
     <value>groupBox_EditableBackground</value>
