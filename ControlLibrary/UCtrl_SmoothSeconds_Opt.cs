@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,7 +16,22 @@ namespace ControlLibrary
     {
         private bool setValue; // режим задания параметров
         private List<string> ListImagesFullName = new List<string>(); // перечень путей к файлам с картинками
+        private bool AODmode;
         public Object _SmoothSeconds;
+
+        [Description("Отображается на экране AOD")]
+        public bool AOD
+        {
+            get
+            {
+                return AODmode;
+            }
+            set
+            {
+                AODmode = value;
+                radioButton_type1.Enabled = !AODmode;
+            }
+        }
 
         public UCtrl_SmoothSeconds_Opt()
         {

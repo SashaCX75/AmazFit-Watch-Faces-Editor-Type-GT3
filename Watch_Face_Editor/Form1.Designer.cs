@@ -29,11 +29,12 @@ namespace Watch_Face_Editor
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage_Edit = new System.Windows.Forms.TabPage();
             this.button_SaveAs = new System.Windows.Forms.Button();
@@ -43,7 +44,7 @@ namespace Watch_Face_Editor
             this.NameFile = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnImage = new System.Windows.Forms.DataGridViewImageColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.contextMenuStrip_RemoveImage = new System.Windows.Forms.ContextMenuStrip();
+            this.contextMenuStrip_RemoveImage = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.удалитьИзображениеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.обновитьСписокИзображенийToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView_AnimImagesList = new System.Windows.Forms.DataGridView();
@@ -267,7 +268,7 @@ namespace Watch_Face_Editor
             this.checkBox_WebW = new System.Windows.Forms.CheckBox();
             this.button_PreviewBig = new System.Windows.Forms.Button();
             this.label_version = new System.Windows.Forms.Label();
-            this.imageList1 = new System.Windows.Forms.ImageList();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.button_pack_zip = new System.Windows.Forms.Button();
             this.button_unpack_zip = new System.Windows.Forms.Button();
             this.pictureBox_Preview = new System.Windows.Forms.PictureBox();
@@ -408,8 +409,8 @@ namespace Watch_Face_Editor
             // Number
             // 
             this.Number.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Number.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Number.DefaultCellStyle = dataGridViewCellStyle5;
             this.Number.FillWeight = 25F;
             resources.ApplyResources(this.Number, "Number");
             this.Number.Name = "Number";
@@ -434,11 +435,11 @@ namespace Watch_Face_Editor
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.NullValue = null;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.NullValue = null;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle6;
             this.Column1.FillWeight = 70F;
             resources.ApplyResources(this.Column1, "Column1");
             this.Column1.Name = "Column1";
@@ -487,8 +488,8 @@ namespace Watch_Face_Editor
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewTextBoxColumn1.FillWeight = 25F;
             resources.ApplyResources(this.dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
@@ -513,11 +514,11 @@ namespace Watch_Face_Editor
             // dataGridViewImageColumn2
             // 
             this.dataGridViewImageColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.NullValue = null;
-            this.dataGridViewImageColumn2.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.NullValue = null;
+            this.dataGridViewImageColumn2.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewImageColumn2.FillWeight = 70F;
             resources.ApplyResources(this.dataGridViewImageColumn2, "dataGridViewImageColumn2");
             this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
@@ -787,6 +788,9 @@ namespace Watch_Face_Editor
             this.uCtrl_EditableElements_Elm.SelectChanged += new ControlLibrary.UCtrl_EditableElements_Elm.SelectChangedHandler(this.uCtrl_EditableElements_Elm_SelectChanged);
             this.uCtrl_EditableElements_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_EditableElements_Elm.VisibleElementChangedHandler(this.uCtrl_EditableElements_Elm_VisibleElementChanged);
             this.uCtrl_EditableElements_Elm.DelElement += new ControlLibrary.UCtrl_EditableElements_Elm.DelElementHandler(this.uCtrl_EditableElements_Elm_DelElement);
+            this.uCtrl_EditableElements_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.uCtrl_EditableElements_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.uCtrl_EditableElements_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
             // 
             // panel_UC_DigitalTime
             // 
@@ -896,6 +900,9 @@ namespace Watch_Face_Editor
             this.uCtrl_Background_Elm.SelectChanged += new ControlLibrary.UCtrl_Background_Elm.SelectChangedHandler(this.uCtrl_Background_Elm_SelectChanged);
             this.uCtrl_Background_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_Background_Elm.VisibleElementChangedHandler(this.uCtrl_Background_Elm_VisibleElemenChanged);
             this.uCtrl_Background_Elm.DelElement += new ControlLibrary.UCtrl_Background_Elm.DelElementHandler(this.uCtrl_Background_Elm_DelElement);
+            this.uCtrl_Background_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.uCtrl_Background_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.uCtrl_Background_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
             // 
             // panel_UC_DateWeek
             // 
@@ -1248,6 +1255,9 @@ namespace Watch_Face_Editor
             this.uCtrl_EditableTimePointer_Elm.SelectChanged += new ControlLibrary.UCtrl_EditableTimePointer_Elm.SelectChangedHandler(this.uCtrl_EditableTimePointer_Elm_SelectChanged);
             this.uCtrl_EditableTimePointer_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_EditableTimePointer_Elm.VisibleElementChangedHandler(this.uCtrl_EditableTimePointer_Elm_VisibleElementChanged);
             this.uCtrl_EditableTimePointer_Elm.DelElement += new ControlLibrary.UCtrl_EditableTimePointer_Elm.DelElementHandler(this.uCtrl_EditableTimePointer_Elm_DelElement);
+            this.uCtrl_EditableTimePointer_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.uCtrl_EditableTimePointer_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.uCtrl_EditableTimePointer_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
             // 
             // panel_UC_Sunrise
             // 
@@ -1339,6 +1349,9 @@ namespace Watch_Face_Editor
             this.uCtrl_DisconnectAlert_Elm.SelectChanged += new ControlLibrary.UCtrl_DisconnectAlert_Elm.SelectChangedHandler(this.uCtrl_DisconnectAlert_Elm_SelectChanged);
             this.uCtrl_DisconnectAlert_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_DisconnectAlert_Elm.VisibleElementChangedHandler(this.uCtrl_DisconnectAlert_Elm_VisibleElementChanged);
             this.uCtrl_DisconnectAlert_Elm.DelElement += new ControlLibrary.UCtrl_DisconnectAlert_Elm.DelElementHandler(this.uCtrl_DisconnectAlert_Elm_DelElement);
+            this.uCtrl_DisconnectAlert_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.uCtrl_DisconnectAlert_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.uCtrl_DisconnectAlert_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
             // 
             // panel_UC_AnalogTimePro
             // 
@@ -1388,6 +1401,7 @@ namespace Watch_Face_Editor
             // uCtrl_SmoothSeconds_Opt
             // 
             resources.ApplyResources(this.uCtrl_SmoothSeconds_Opt, "uCtrl_SmoothSeconds_Opt");
+            this.uCtrl_SmoothSeconds_Opt.AOD = false;
             this.uCtrl_SmoothSeconds_Opt.Name = "uCtrl_SmoothSeconds_Opt";
             this.uCtrl_SmoothSeconds_Opt.ValueChanged += new ControlLibrary.UCtrl_SmoothSeconds_Opt.ValueChangedHandler(this.uCtrl_SmoothSeconds_Opt_ValueChanged);
             // 

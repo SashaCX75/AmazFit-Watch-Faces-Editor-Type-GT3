@@ -614,7 +614,7 @@ namespace ControlLibrary
                 int dY = Math.Abs(cursorY - cursorPos.Y);
                 if (dX > 5 || dY > 5)
                     panel.DoDragDrop(sender, DragDropEffects.Move);
-                //panel.DoDragDrop(sender, DragDropEffects.Move);
+                //  panel.DoDragDrop(sender, DragDropEffects.Move);
             }
         }
 

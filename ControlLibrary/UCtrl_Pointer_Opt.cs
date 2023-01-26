@@ -517,12 +517,12 @@ namespace ControlLibrary
                 if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_pointer_offset_Y")
                 {
                     e.SuppressKeyPress = false;
-                    numericUpDown_pointer_offset_Y.DownButton();
+                    numericUpDown_pointer_offset_Y.UpButton();
                 }
                 if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_pointer_offset_Y")
                 {
                     e.SuppressKeyPress = false;
-                    numericUpDown_pointer_offset_Y.UpButton();
+                    numericUpDown_pointer_offset_Y.DownButton();
                 }
 
                 if (e.KeyCode == Keys.Left && (numericUpDown.Name == "numericUpDown_pointer_offset_X" || numericUpDown.Name == "numericUpDown_pointer_offset_Y"))

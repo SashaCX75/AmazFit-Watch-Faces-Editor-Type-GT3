@@ -772,7 +772,7 @@ namespace Watch_Face_Editor
                     ElementAnalogTimePro AnalogTimePro = (ElementAnalogTimePro)element;
                     if (!AnalogTimePro.visible) return;
 
-                    for (int index = 1; index <= 3; index++)
+                    for (int index = 1; index <= 5; index++)
                     {
                         if (AnalogTimePro.Hour != null && AnalogTimePro.Hour.src != null
                             && AnalogTimePro.Hour.src.Length > 0 &&

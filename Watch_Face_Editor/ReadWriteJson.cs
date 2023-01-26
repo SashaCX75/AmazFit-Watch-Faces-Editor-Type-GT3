@@ -19,10 +19,11 @@ namespace Watch_Face_Editor
         {
             variables = Environment.NewLine;
             items = Environment.NewLine;
-            string resume_function = "";
+            string scale_update_function = "";
             string resume_call = "";
             string pause_call = "";
             string options = "";
+            string time_update = "";
             if (Watch_Face == null) return;
 
             // элементы основного экрана
@@ -77,13 +78,15 @@ namespace Watch_Face_Editor
                         string out_resume_function = "";
                         string out_resume_call = "";
                         string out_pause_call = "";
+                        string out_time_update = "";
                         AddElementToJS(element, "ONLY_NORMAL", out outVariables, out outItems, out out_resume_function,
-                            items, resume_function, out out_resume_call, out out_pause_call);
+                            items, scale_update_function, out out_resume_call, out out_pause_call, time_update, out out_time_update);
                         variables += outVariables;
                         items += outItems;
-                        resume_function += out_resume_function;
+                        scale_update_function += out_resume_function;
                         resume_call += out_resume_call;
                         pause_call += out_pause_call;
+                        time_update += out_time_update;
                     }
                 }
             }
@@ -122,13 +125,15 @@ namespace Watch_Face_Editor
                         string out_resume_function = "";
                         string out_resume_call = "";
                         string out_pause_call = "";
+                        string out_time_update = "";
                         AddElementToJS(element, "ONLY_AOD", out outVariables, out outItems, out out_resume_function,
-                            items, resume_function, out out_resume_call, out out_pause_call);
+                            items, scale_update_function, out out_resume_call, out out_pause_call, time_update, out out_time_update);
                         variables += outVariables;
                         items += outItems;
-                        resume_function += out_resume_function;
+                        scale_update_function += out_resume_function;
                         resume_call += out_resume_call;
                         pause_call += out_pause_call;
+                        time_update += out_time_update;
                     }
                 }
             }
@@ -178,7 +183,7 @@ namespace Watch_Face_Editor
                             string show_level = "ONLY_NORMAL";
                             if (Watch_Face.Editable_Elements.AOD_show) show_level = "ONLY_NORMAL | hmUI.show_level.ONLY_AOD";
                             AddEditableElementToJS(element, show_level, optionNameStart, out outVariables, out outItems, out outMainItems, 
-                                out out_resume_function, items, resume_function, out out_resume_call, out out_pause_call);
+                                out out_resume_function, items, scale_update_function, out out_resume_call, out out_pause_call);
 
                             string type = element.GetType().Name;
                             switch (type)
@@ -260,7 +265,7 @@ namespace Watch_Face_Editor
                             variables += outVariables;
                             //items += outItems;
                             items += outMainItems;
-                            resume_function += out_resume_function;
+                            scale_update_function += out_resume_function;
                             resume_call += out_resume_call;
                             pause_call += out_pause_call;
                         }
@@ -478,28 +483,47 @@ namespace Watch_Face_Editor
                 string out_resume_function = "";
                 string out_resume_call = "";
                 string out_pause_call = "";
+                string out_time_update = "";
                 AddElementToJS(Watch_Face.Shortcuts, "ONLY_NORMAL", out outVariables, out outItems, out out_resume_function,
-                    items, resume_function, out out_resume_call, out out_pause_call);
+                    items, scale_update_function, out out_resume_call, out out_pause_call, time_update, out out_time_update);
                 variables += outVariables;
                 items += outItems;
-                resume_function += out_resume_function;
+                scale_update_function += out_resume_function;
                 resume_call += out_resume_call;
                 pause_call += out_pause_call;
             }
 
-            if (resume_function.Length > 5 || resume_call.Length > 0 || pause_call.Length > 0)
+            if (time_update.Length > 5)
             {
-                if (resume_function.Length > 5)
+                if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                    items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                //if (items.IndexOf("let now = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
+                //    items += Environment.NewLine + TabInString(6) + "let now = hmSensor.createSensor(hmSensor.id.TIME);" + Environment.NewLine;
+
+                if (items.IndexOf("timeSensor =") >= 0) variables += TabInString(4) + "let timeSensor = ''" + Environment.NewLine;
+
+                items += Environment.NewLine + TabInString(6) + "function time_update(updateHour = false, updateMinute = false) {";
+                items += Environment.NewLine + TabInString(7) + "let hour = timeSensor.hour;";
+                items += Environment.NewLine + TabInString(7) + "let minute = timeSensor.minute;";
+                items += Environment.NewLine + TabInString(7) + "let second = timeSensor.second;";
+                items += time_update;
+                items += Environment.NewLine + TabInString(6) + "};" + Environment.NewLine;
+            }
+
+            if (scale_update_function.Length > 5 || resume_call.Length > 0 || pause_call.Length > 0 || time_update.Length > 5)
+            {
+                if (scale_update_function.Length > 5)
                 {
                     items += Environment.NewLine + TabInString(6) + "function scale_call() {";
-                    items += Environment.NewLine + resume_function;
+                    items += Environment.NewLine + scale_update_function;
                     items += Environment.NewLine + TabInString(6) + "};" + Environment.NewLine; 
                 }
                 items += Environment.NewLine + TabInString(6) +
                     "const widgetDelegate = hmUI.createWidget(hmUI.widget.WIDGET_DELEGATE, {";
                 items += Environment.NewLine + TabInString(7) + "resume_call: (function () {";
-                if (resume_function.Length > 5) items += Environment.NewLine + TabInString(8) + "scale_call();";
-                if(resume_call.Length > 0) items += Environment.NewLine + resume_call;
+                if (scale_update_function.Length > 5) items += Environment.NewLine + TabInString(8) + "scale_call();";
+                if (time_update.Length > 5) items += Environment.NewLine + TabInString(8) + "time_update(true, true);";
+                if (resume_call.Length > 0) items += Environment.NewLine + resume_call;
                 items += Environment.NewLine + TabInString(7) + "}),";
                 if (pause_call.Length > 0)
                 {
@@ -522,16 +546,17 @@ namespace Watch_Face_Editor
         }
 
         private void AddElementToJS(Object element, string show_level, out string variables, out string items,
-            out string resume_function,  string exist_items, string exist_resume_call,
-            out string resume_call, out string pause_call)
+            out string scale_update_function,  string exist_items, string exist_resume_call,
+            out string resume_call, out string pause_call, string exist_time_update, out string time_update)
         {
             string optionNameStart = "normal_";
             if (show_level == "ONLY_AOD") optionNameStart = "idle_";
             variables = "";
             items = "";
-            resume_function = "";
+            scale_update_function = "";
             resume_call = "";
             pause_call = "";
+            time_update = "";
             string options = "";
             string type = element.GetType().Name;
 
@@ -785,35 +810,375 @@ namespace Watch_Face_Editor
                     break;
                 #endregion
 
-                /*#region ElementEditablePointers
-                case "ElementEditablePointers":
-                    ElementEditablePointers EditablePointers = (ElementEditablePointers)element;
-                    if (!EditablePointers.enable) return;
+                #region ElementAnalogTimePro
+                case "ElementAnalogTimePro":
+                    ElementAnalogTimePro AnalogTimePro = (ElementAnalogTimePro)element;
+                    if (!AnalogTimePro.visible) return;
+                    int hourPointerProPosition = 99;
+                    int minutePointerProPosition = 99;
+                    int secondPointerProPosition = 99;
+                    string optionsPointerProHour = "";
+                    string optionsPointerProMinute = "";
+                    string optionsPointerProSecond = "";
+                    string readOptionsPointerProHour = "";
+                    string readOptionsPointerProMinute = "";
+                    string readOptionsPointerProSecond = "";
+                    string coverPointerProHour = "";
+                    string coverPointerProMinute = "";
+                    string coverPointerProSecond = "";
 
-                    string editablePointersOptions = Editable_Pointers_Options(EditablePointers);
-
-                    if (editablePointersOptions.Length > 5)
+                    if (AnalogTimePro.Hour != null && AnalogTimePro.Hour.visible)
                     {
-                        variables += TabInString(4) + "let editableTimePointers = ''" + Environment.NewLine;
-                        items += Environment.NewLine + TabInString(6) +
-                            "const pointerEdit = hmUI.createWidget(hmUI.widget.WATCHFACE_EDIT_POINTER, {" +
-                                editablePointersOptions + TabInString(6) + "});" + Environment.NewLine;
-                        if (!EditablePointers.AOD_show)
-                        {
-                            items += TabInString(6) + "const screenTypeForETP = hmSetting.getScreenType();" + Environment.NewLine;
-                            items += TabInString(6) + "const aodModel = screenTypeForETP == hmSetting.screen_type.AOD;" + Environment.NewLine;
-                            items += TabInString(6) + "const pointerProp = pointerEdit.getProperty(hmUI.prop.CURRENT_CONFIG, !aodModel);" + Environment.NewLine; 
-                        }
-                        else
-                        {
-                            items += TabInString(6) + "const pointerProp = pointerEdit.getProperty(hmUI.prop.CURRENT_CONFIG, true);" + Environment.NewLine;
-                        }
+                        hourPointerProPosition = AnalogTimePro.Hour.position;
+                        hmUI_widget_IMG_POINTER img_pointer_hour = AnalogTimePro.Hour;
+                        optionsPointerProHour = TIME_PRO_POINTER_Options(img_pointer_hour, show_level);
+                        readOptionsPointerProHour = TIME_PRO_POINTER_OptionsRead(img_pointer_hour, optionNameStart, "hour", show_level);
 
-                        items += TabInString(6) + "editableTimePointers = hmUI.createWidget(hmUI.widget.TIME_POINTER, pointerProp);" + Environment.NewLine;  
+                        coverPointerProHour = IMG_Pointer_Cover_Options(img_pointer_hour, show_level);
+                    }
+                    if (AnalogTimePro.Minute != null && AnalogTimePro.Minute.visible)
+                    {
+                        minutePointerProPosition = AnalogTimePro.Minute.position;
+                        hmUI_widget_IMG_POINTER img_pointer_minute = AnalogTimePro.Minute;
+                        optionsPointerProMinute = TIME_PRO_POINTER_Options(img_pointer_minute, show_level);
+                        readOptionsPointerProMinute = TIME_PRO_POINTER_OptionsRead(img_pointer_minute, optionNameStart, "minute", show_level);
+
+                        coverPointerProMinute = IMG_Pointer_Cover_Options(img_pointer_minute, show_level);
+                    }
+                    if (AnalogTimePro.Second != null && AnalogTimePro.Second.visible)
+                    {
+                        secondPointerProPosition = AnalogTimePro.Second.position;
+                        hmUI_widget_IMG_POINTER img_pointer_second = AnalogTimePro.Second;
+                        optionsPointerProSecond = TIME_PRO_POINTER_Options(img_pointer_second, show_level);
+                        readOptionsPointerProSecond = TIME_PRO_POINTER_OptionsRead(img_pointer_second, optionNameStart, "second", show_level);
+
+                        coverPointerProSecond = IMG_Pointer_Cover_Options(img_pointer_second, show_level);
                     }
 
+                    for (int index = 1; index <= 5; index++)
+                    {
+                        // часы
+                        if (index == hourPointerProPosition && optionsPointerProHour.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "analog_clock_pro_hour_pointer_img = ''" + Environment.NewLine;
+                            //if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                            //    exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            //    items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+
+                            if (items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0 &&
+                                exist_items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "const deviceInfo = hmSetting.getDeviceInfo();";
+                            if (items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0 &&
+                                exist_items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
+                                items += Environment.NewLine + TabInString(6) + "if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);";
+                            if (items.IndexOf("timeSensor.addEventListener(timeSensor.event.MINUTEEND, function() {") < 0 &&
+                                exist_items.IndexOf("timeSensor.addEventListener(timeSensor.event.MINUTEEND, function() {") < 0)
+                            {
+                                items += Environment.NewLine + TabInString(6) + "timeSensor.addEventListener(timeSensor.event.MINUTEEND, function() {";
+                                items += Environment.NewLine + TabInString(7) + "time_update(true, true);";
+                                items += Environment.NewLine + TabInString(6) + "});" + Environment.NewLine;
+                            }
+
+                            items += readOptionsPointerProHour + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "analog_clock_pro_hour_pointer_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    optionsPointerProHour + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (coverPointerProHour.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart + 
+                                    "analog_clock_pro_hour_cover_pointer_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "analog_clock_pro_hour_cover_pointer_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    coverPointerProHour + TabInString(6) + "});" + Environment.NewLine;
+                            }
+
+                            time_update += Environment.NewLine + TabInString(7) + "let hour_" + optionNameStart + " = hour;";
+                            if (!AnalogTimePro.Format_24hour) 
+                            {
+                                time_update += Environment.NewLine + TabInString(7) + 
+                                    "if (hour_" + optionNameStart + " > 11) hour_" + optionNameStart + " -= 12;";
+                                time_update += Environment.NewLine + TabInString(7) +
+                                    "let " + optionNameStart + "angle_hour = " + AnalogTimePro.Hour.start_angle.ToString() + " + " + 
+                                    AnalogTimePro.Hour.end_angle.ToString() + "*hour_" + optionNameStart + "/12 - (" + (AnalogTimePro.Hour.end_angle - 
+                                    AnalogTimePro.Hour.start_angle).ToString() + "/12)*minute/60;";
+                            }
+                            else
+                            {
+                                time_update += Environment.NewLine + TabInString(7) +
+                                    "let " + optionNameStart + "angle_hour = " + AnalogTimePro.Hour.start_angle.ToString() + " + " +
+                                    AnalogTimePro.Hour.end_angle.ToString() + "*hour_" + optionNameStart + "/24 - (" + (AnalogTimePro.Hour.end_angle -
+                                    AnalogTimePro.Hour.start_angle).ToString() + "/24)*minute/60;";
+                            }
+                            time_update += Environment.NewLine + TabInString(7) +
+                                    "if (updateHour && " + optionNameStart + "analog_clock_pro_hour_pointer_img) " + 
+                                    optionNameStart + "analog_clock_pro_hour_pointer_img.setProperty(hmUI.prop.ANGLE, " + 
+                                    optionNameStart + "angle_hour);";
+
+                        }
+
+                        // минуты
+                        if (index == minutePointerProPosition && optionsPointerProMinute.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "analog_clock_pro_minute_pointer_img = ''" + Environment.NewLine;
+
+                            if (items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0 &&
+                                exist_items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "const deviceInfo = hmSetting.getDeviceInfo();";
+
+                            if (AnalogTimePro.SmoothSecond == null || !AnalogTimePro.SmoothSecond.enable)  // перескакивает между минутами
+                            {
+                                if (items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0 &&
+                                    exist_items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
+                                    items += Environment.NewLine + TabInString(6) + "if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);";
+                                if (items.IndexOf("timeSensor.addEventListener(timeSensor.event.MINUTEEND, function() {") < 0 &&
+                                    exist_items.IndexOf("timeSensor.addEventListener(timeSensor.event.MINUTEEND, function() {") < 0)
+                                {
+                                    items += Environment.NewLine + TabInString(6) + "timeSensor.addEventListener(timeSensor.event.MINUTEEND, function() {";
+                                    items += Environment.NewLine + TabInString(7) + "time_update(true, true);";
+                                    items += Environment.NewLine + TabInString(6) + "});" + Environment.NewLine;
+                                }
+
+                                time_update += Environment.NewLine + TabInString(7) +
+                                    "let " + optionNameStart + "angle_minute = " + AnalogTimePro.Minute.start_angle.ToString() + " + " +
+                                    (AnalogTimePro.Minute.end_angle - AnalogTimePro.Minute.start_angle).ToString() + "*minute/60;";
+                            }
+                            else  // минутная стрелка движеться плавно
+                            {
+                                if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                    exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                    items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                                if (optionNameStart == "normal_")
+                                {
+                                    resume_call += TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {" + Environment.NewLine;
+
+                                }
+                                else
+                                {
+                                    resume_call += TabInString(8) + "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                }
+                                string timerName = optionNameStart + "timerUpdateSec";
+                                if (resume_call.IndexOf(timerName + " = timer.createTimer") < 0)
+                                {
+                                    variables += TabInString(4) + "let " + timerName + " = undefined;" + Environment.NewLine;
+                                    resume_call += TabInString(9) + "if (!" + timerName + ") {" + Environment.NewLine;
+                                    resume_call += TabInString(10) + "let animDelay = timeSensor.utc % 1000;" + Environment.NewLine;
+                                    resume_call += TabInString(10) + "let animRepeat = 1000;" + Environment.NewLine;
+                                    resume_call += TabInString(10) + timerName + " = timer.createTimer(animDelay, animRepeat, (function (option) {" + Environment.NewLine;
+                                    resume_call += TabInString(11) + "time_update(false, true);" + Environment.NewLine;
+                                    resume_call += TabInString(10) + "}));  // end timer " + Environment.NewLine;
+                                    resume_call += TabInString(9) + "};  // end timer check" + Environment.NewLine;
+                                    resume_call += TabInString(8) + "};  // end screenType" + Environment.NewLine + Environment.NewLine;
+
+                                    pause_call += TabInString(8) + "if (" + timerName + ") {" + Environment.NewLine;
+                                    pause_call += TabInString(9) + "timer.stopTimer(" + timerName + ");" + Environment.NewLine;
+                                    pause_call += TabInString(9) + timerName + " = undefined;" + Environment.NewLine;
+                                    pause_call += TabInString(8) + "}" + Environment.NewLine;
+                                }
+                                else  // если такой таймер уже есть
+                                {
+                                    int strInden = resume_call.IndexOf(timerName + " = timer.createTimer");
+                                    strInden = resume_call.IndexOf("time_update(false, false);", strInden);
+                                    resume_call.Remove(strInden, "time_update(false, false);".Length);
+                                    resume_call.Insert(strInden, "time_update(false, true);");
+                                }
+
+                                time_update += Environment.NewLine + TabInString(7) +
+                                    "let " + optionNameStart + "angle_minute = " + AnalogTimePro.Minute.start_angle.ToString() + " + " +
+                                    (AnalogTimePro.Minute.end_angle - AnalogTimePro.Minute.start_angle).ToString() + "*(minute + second/60)/60;";
+
+                            }
+
+                            items += readOptionsPointerProMinute + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "analog_clock_pro_minute_pointer_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    optionsPointerProMinute + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (coverPointerProMinute.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "analog_clock_pro_minute_cover_pointer_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "analog_clock_pro_minute_cover_pointer_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    coverPointerProMinute + TabInString(6) + "});" + Environment.NewLine;
+                            }
+
+                            ////time_update += Environment.NewLine + TabInString(7) + "let minute_" + optionNameStart + " = minute;";
+                            //time_update += Environment.NewLine + TabInString(7) +
+                            //    "let " + optionNameStart + "angle_minute = " + AnalogTimePro.Minute.start_angle.ToString() + " + " +
+                            //        (AnalogTimePro.Minute.end_angle - AnalogTimePro.Minute.start_angle).ToString() + "*minute/60;";
+                            time_update += Environment.NewLine + TabInString(7) +
+                                    "if (updateMinute && " + optionNameStart + "analog_clock_pro_minute_pointer_img) " +
+                                    optionNameStart + "analog_clock_pro_minute_pointer_img.setProperty(hmUI.prop.ANGLE, " +
+                                    optionNameStart + "angle_minute);";
+
+                        }
+
+                        // секунды
+                        if (index == secondPointerProPosition && optionsPointerProSecond.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "analog_clock_pro_second_pointer_img = ''" + Environment.NewLine;
+
+                            if (items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0 &&
+                                exist_items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "const deviceInfo = hmSetting.getDeviceInfo();";
+
+                            items += readOptionsPointerProSecond + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "analog_clock_pro_second_pointer_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    optionsPointerProSecond + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (AnalogTimePro.SmoothSecond == null || !AnalogTimePro.SmoothSecond.enable)  // обычный ход стрелки
+                            {
+                                if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                    exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                    items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                                if (optionNameStart == "normal_")
+                                {
+                                    resume_call += TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {" + Environment.NewLine;
+
+                                }
+                                else
+                                {
+                                    resume_call += TabInString(8) + "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                }
+                                string timerName = optionNameStart + "timerUpdateSec";
+                                if (resume_call.IndexOf(timerName + " = timer.createTimer") < 0)
+                                {
+                                    variables += TabInString(4) + "let " + timerName + " = undefined;" + Environment.NewLine;
+                                    resume_call += TabInString(9) + "if (!" + timerName + ") {" + Environment.NewLine;
+                                    //resume_call += TabInString(10) + "let animDelay = 0;" + Environment.NewLine;
+                                    resume_call += TabInString(10) + "let animDelay = timeSensor.utc % 1000;" + Environment.NewLine;
+                                    resume_call += TabInString(10) + "let animRepeat = 1000;" + Environment.NewLine;
+                                    resume_call += TabInString(10) + timerName + " = timer.createTimer(animDelay, animRepeat, (function (option) {" + Environment.NewLine;
+                                    resume_call += TabInString(11) + "time_update(false, false);" + Environment.NewLine;
+                                    resume_call += TabInString(10) + "}));  // end timer " + Environment.NewLine;
+                                    resume_call += TabInString(9) + "};  // end timer check" + Environment.NewLine;
+                                    resume_call += TabInString(8) + "};  // end screenType" + Environment.NewLine + Environment.NewLine;
+
+                                    pause_call += TabInString(8) + "if (" + timerName + ") {" + Environment.NewLine;
+                                    pause_call += TabInString(9) + "timer.stopTimer(" + timerName + ");" + Environment.NewLine;
+                                    pause_call += TabInString(9) + timerName + " = undefined;" + Environment.NewLine;
+                                    pause_call += TabInString(8) + "}" + Environment.NewLine;
+
+                                    time_update += Environment.NewLine + TabInString(7) +
+                                        "let " + optionNameStart + "angle_second = " + AnalogTimePro.Second.start_angle.ToString() + " + " +
+                                        (AnalogTimePro.Second.end_angle - AnalogTimePro.Second.start_angle).ToString() + "*second/60;";
+
+                                    time_update += Environment.NewLine + TabInString(7) +
+                                            "if (" + optionNameStart + "analog_clock_pro_second_pointer_img) " +
+                                            optionNameStart + "analog_clock_pro_second_pointer_img.setProperty(hmUI.prop.ANGLE, " +
+                                            optionNameStart + "angle_second);"; 
+                                }
+                            }
+                            else  // секундная стрелка движеться плавно
+                            {
+                                if (AnalogTimePro.SmoothSecond.type == 1)
+                                {
+                                    if(optionNameStart == "normal_")
+                                    {
+                                        items += Environment.NewLine + TabInString(6) + "function startSecAnim(sec) {";
+                                        items += Environment.NewLine + TabInString(7) + "const secAnim = {";
+                                        items += Environment.NewLine + TabInString(8) + "anim_rate: 'linear',";
+                                        items += Environment.NewLine + TabInString(8) + "anim_duration: 5000,";
+                                        items += Environment.NewLine + TabInString(8) + "anim_from: sec,";
+                                        items += Environment.NewLine + TabInString(8) + "anim_to: sec + 5000 * 6 / 1000,";
+                                        items += Environment.NewLine + TabInString(8) + "repeat_count: 1,";
+                                        items += Environment.NewLine + TabInString(8) + "anim_fps: " + AnalogTimePro.SmoothSecond.fps.ToString() + ",";
+                                        items += Environment.NewLine + TabInString(8) + "anim_key: 'angle',";
+                                        items += Environment.NewLine + TabInString(8) + "anim_status: 1,";
+                                        items += Environment.NewLine + TabInString(7) + "}";
+                                        items += Environment.NewLine + TabInString(7) + optionNameStart + 
+                                            "analog_clock_pro_second_pointer_img.setProperty(hmUI.prop.ANIM, secAnim);";
+                                        items += Environment.NewLine + TabInString(6) + "}";
+
+                                        string timerName = optionNameStart + "timerUpdateSecSmooth";
+                                        variables += TabInString(4) + "let " + timerName + " = undefined;" + Environment.NewLine;
+                                        variables += TabInString(4) + "let lastTime = 0;" + Environment.NewLine;
+
+                                        resume_call += TabInString(8) + "let sec = (timeSensor.second * 6) + (((timeSensor.utc % 1000) / 1000) * 6);" + Environment.NewLine;
+                                        resume_call += TabInString(8) + optionNameStart +
+                                            "analog_clock_pro_second_pointer_img.setProperty(hmUI.prop.ANGLE, sec);" + Environment.NewLine;
+
+                                        resume_call += TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {" + Environment.NewLine;
+                                        resume_call += TabInString(9) + "if (!" + timerName + ") {" + Environment.NewLine;
+                                        resume_call += TabInString(10) + "let duration = 0;" + Environment.NewLine;
+                                        resume_call += TabInString(10) + "let diffTime = timeSensor.utc - lastTime;" + Environment.NewLine;
+                                        resume_call += TabInString(10) + "if (diffTime < 5000) duration = 5000 - diffTime;" + Environment.NewLine;
+                                        resume_call += TabInString(10) + timerName + " = timer.createTimer(duration, 5000, (function (option) {" + Environment.NewLine;
+                                        resume_call += TabInString(11) + "lastTime = timeSensor.utc;" + Environment.NewLine;
+                                        resume_call += TabInString(11) + "sec = (timeSensor.second * 6) + (((timeSensor.utc % 1000) / 1000) * 6);" + Environment.NewLine;
+                                        resume_call += TabInString(11) + "startSecAnim(sec);" + Environment.NewLine;
+                                        resume_call += TabInString(10) + "}));  // end timer " + Environment.NewLine;
+                                        resume_call += TabInString(9) + "};  // end timer check" + Environment.NewLine;
+                                        resume_call += TabInString(8) + "};  // end screenType" + Environment.NewLine + Environment.NewLine;
+
+                                        pause_call += TabInString(8) + "if (" + timerName + ") {" + Environment.NewLine;
+                                        pause_call += TabInString(9) + "timer.stopTimer(" + timerName + ");" + Environment.NewLine;
+                                        pause_call += TabInString(9) + timerName + " = undefined;" + Environment.NewLine;
+                                        pause_call += TabInString(8) + "}" + Environment.NewLine;
+                                    }
+                                }
+                                else
+                                {
+                                    if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                    exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                        items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                                    if (optionNameStart == "normal_")
+                                    {
+                                        resume_call += TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {" + Environment.NewLine;
+
+                                    }
+                                    else
+                                    {
+                                        resume_call += TabInString(8) + "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                    }
+                                    string timerName = optionNameStart + "timerUpdateSecSmooth";
+                                    variables += TabInString(4) + "let " + timerName + " = undefined;" + Environment.NewLine;
+                                    resume_call += TabInString(9) + "if (!" + timerName + ") {" + Environment.NewLine;
+                                    resume_call += TabInString(10) + "let animDelay = 0;" + Environment.NewLine;
+                                    //resume_call += TabInString(10) + "let animDelay = timeSensor.utc % 1000;" + Environment.NewLine;
+                                    resume_call += TabInString(10) + "let animRepeat = 1000/" + AnalogTimePro.SmoothSecond.fps.ToString() + ";" + Environment.NewLine;
+                                    resume_call += TabInString(10) + timerName + " = timer.createTimer(animDelay, animRepeat, (function (option) {" + Environment.NewLine;
+                                    resume_call += TabInString(11) + "time_update(false, false);" + Environment.NewLine;
+                                    resume_call += TabInString(10) + "}));  // end timer " + Environment.NewLine;
+                                    resume_call += TabInString(9) + "};  // end timer check" + Environment.NewLine;
+                                    resume_call += TabInString(8) + "};  // end screenType" + Environment.NewLine + Environment.NewLine;
+
+                                    pause_call += TabInString(8) + "if (" + timerName + ") {" + Environment.NewLine;
+                                    pause_call += TabInString(9) + "timer.stopTimer(" + timerName + ");" + Environment.NewLine;
+                                    pause_call += TabInString(9) + timerName + " = undefined;" + Environment.NewLine;
+                                    pause_call += TabInString(8) + "}" + Environment.NewLine;
+
+                                    time_update += Environment.NewLine + TabInString(7) +
+                                        "let " + optionNameStart + "angle_second = " + AnalogTimePro.Second.start_angle.ToString() + " + " +
+                                        (AnalogTimePro.Second.end_angle - AnalogTimePro.Second.start_angle).ToString() + "*(second + (timeSensor.utc % 1000)/1000)/60;";
+
+                                    time_update += Environment.NewLine + TabInString(7) +
+                                            "if (" + optionNameStart + "analog_clock_pro_second_pointer_img) " +
+                                            optionNameStart + "analog_clock_pro_second_pointer_img.setProperty(hmUI.prop.ANGLE, " +
+                                            optionNameStart + "angle_second);";
+                                }
+                            }
+
+                            if (coverPointerProSecond.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "analog_clock_pro_second_cover_pointer_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) + optionNameStart +
+                                    "analog_clock_pro_second_cover_pointer_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    coverPointerProSecond + TabInString(6) + "});" + Environment.NewLine;
+                            }
+
+                        }
+                    }
+
+
                     break;
-                #endregion*/
+                #endregion
 
                 #region ElementDateDay
                 case "ElementDateDay":
@@ -1480,7 +1845,8 @@ namespace Watch_Face_Editor
 
                             items += circleScaleOptions;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (optionNameStart == "normal_")
                                 items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
@@ -1504,7 +1870,7 @@ namespace Watch_Face_Editor
 
                             items += TabInString(6) + "};" + Environment.NewLine;
 
-                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update scales STEP');" + Environment.NewLine;
+                            scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales STEP');" + Environment.NewLine;
                             if (items.IndexOf("const step = hmSensor.createSensor(hmSensor.id.STEP);") < 0 &&
                                 exist_items.IndexOf("const step = hmSensor.createSensor(hmSensor.id.STEP);") < 0)
                             {
@@ -1518,39 +1884,39 @@ namespace Watch_Face_Editor
                                 }
                             }
 
-                            if (resume_function.IndexOf("progressStep") < 0 &&
+                            if (scale_update_function.IndexOf("progressStep") < 0 &&
                                 exist_resume_call.IndexOf("progressStep") < 0)
                             {
-                                resume_function += TabInString(8) + Environment.NewLine;
-                                resume_function += TabInString(8) + "let valueStep = step.current;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let targetStep = step.target;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let progressStep = valueStep/targetStep;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "if (progressStep > 1) progressStep = 1;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let valueStep = step.current;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let targetStep = step.target;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let progressStep = valueStep/targetStep;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "if (progressStep > 1) progressStep = 1;" + Environment.NewLine;
                             }
 
                             if (circle_scale.inversion)
                             {
-                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                scale_update_function += TabInString(8) + "let progress_cs_" + optionNameStart +
                                 "step = 1 - progressStep;" + Environment.NewLine;
                             }
                             else
                             {
-                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                scale_update_function += TabInString(8) + "let progress_cs_" + optionNameStart +
                                 "step = progressStep;" + Environment.NewLine;
                             }
                             if (optionNameStart == "normal_")
                             {
-                                resume_function += Environment.NewLine + TabInString(8) + 
+                                scale_update_function += Environment.NewLine + TabInString(8) + 
                                     "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "step");
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                                scale_update_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "step");
+                                scale_update_function += TabInString(8) + "};" + Environment.NewLine;
                             }
                             else
                             {
-                                resume_function += Environment.NewLine + TabInString(8) + 
+                                scale_update_function += Environment.NewLine + TabInString(8) + 
                                     "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "step");
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                                scale_update_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "step");
+                                scale_update_function += TabInString(8) + "};" + Environment.NewLine;
                             }
 
 
@@ -1567,7 +1933,8 @@ namespace Watch_Face_Editor
                                 variables += TabInString(4) + "let " + optionNameStart +
                                     "step_linear_scale_pointer_img = ''" + Environment.NewLine;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (optionNameStart == "normal_")
                                 items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
@@ -1593,7 +1960,7 @@ namespace Watch_Face_Editor
                             items += linearScaleOptions;
 
 
-                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update scales STEP');" + Environment.NewLine;
+                            scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales STEP');" + Environment.NewLine;
                             if (items.IndexOf("const step = hmSensor.createSensor(hmSensor.id.STEP);") < 0 &&
                                 exist_items.IndexOf("const step = hmSensor.createSensor(hmSensor.id.STEP);") < 0)
                             {
@@ -1607,38 +1974,38 @@ namespace Watch_Face_Editor
                                 }
                             }
 
-                            if (resume_function.IndexOf("progressStep") < 0 &&
+                            if (scale_update_function.IndexOf("progressStep") < 0 &&
                                 exist_resume_call.IndexOf("progressStep") < 0)
                             {
-                                resume_function += TabInString(8) + Environment.NewLine;
-                                resume_function += TabInString(8) + "let valueStep = step.current;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let targetStep = step.target;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let progressStep = valueStep/targetStep;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "if (progressStep > 1) progressStep = 1;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let valueStep = step.current;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let targetStep = step.target;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let progressStep = valueStep/targetStep;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "if (progressStep > 1) progressStep = 1;" + Environment.NewLine;
                             }
                             if (linear_scale.inversion)
                             {
-                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                scale_update_function += TabInString(8) + "let progress_ls_" + optionNameStart +
                                 "step = 1 - progressStep;" + Environment.NewLine;
                             }
                             else
                             {
-                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                scale_update_function += TabInString(8) + "let progress_ls_" + optionNameStart +
                                 "step = progressStep;" + Environment.NewLine;
                             }
                             if (optionNameStart == "normal_")
                             {
-                                resume_function += Environment.NewLine + TabInString(8) + 
+                                scale_update_function += Environment.NewLine + TabInString(8) + 
                                     "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "step", show_level);
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                                scale_update_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "step", show_level);
+                                scale_update_function += TabInString(8) + "};" + Environment.NewLine;
                             }
                             else
                             {
-                                resume_function += Environment.NewLine + TabInString(8) + 
+                                scale_update_function += Environment.NewLine + TabInString(8) + 
                                     "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "step", show_level);
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                                scale_update_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "step", show_level);
+                                scale_update_function += TabInString(8) + "};" + Environment.NewLine;
                             }
 
 
@@ -1775,7 +2142,8 @@ namespace Watch_Face_Editor
 
                             items += circleScaleOptions;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (optionNameStart == "normal_")
                                 items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
@@ -1796,7 +2164,7 @@ namespace Watch_Face_Editor
                             items += TabInString(6) + "};" + Environment.NewLine;
 
 
-                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update scales BATTERY');" + Environment.NewLine;
+                            scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales BATTERY');" + Environment.NewLine;
                             if (items.IndexOf("const battery = hmSensor.createSensor(hmSensor.id.BATTERY);") < 0 &&
                                 exist_items.IndexOf("const battery = hmSensor.createSensor(hmSensor.id.BATTERY);") < 0)
                             {
@@ -1810,40 +2178,40 @@ namespace Watch_Face_Editor
                                 }
                             }
 
-                            if (resume_function.IndexOf("progressBattery") < 0 &&
+                            if (scale_update_function.IndexOf("progressBattery") < 0 &&
                                 exist_resume_call.IndexOf("progressBattery") < 0)
                             {
-                                resume_function += TabInString(8) + Environment.NewLine;
-                                resume_function += TabInString(8) + "let valueBattery = battery.current;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let targetBattery = 100;" + Environment.NewLine;
-                                //resume_function += TabInString(8) + "let targetBattery = battery.target;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let progressBattery = valueBattery/targetBattery;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "if (progressBattery > 1) progressBattery = 1;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let valueBattery = battery.current;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let targetBattery = 100;" + Environment.NewLine;
+                                //scale_update_function += TabInString(8) + "let targetBattery = battery.target;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let progressBattery = valueBattery/targetBattery;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "if (progressBattery > 1) progressBattery = 1;" + Environment.NewLine;
                             }
 
                             if (circle_scale.inversion)
                             {
-                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                scale_update_function += TabInString(8) + "let progress_cs_" + optionNameStart +
                                 "battery = 1 - progressBattery;" + Environment.NewLine;
                             }
                             else
                             {
-                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                scale_update_function += TabInString(8) + "let progress_cs_" + optionNameStart +
                                 "battery = progressBattery;" + Environment.NewLine;
                             }
                             if (optionNameStart == "normal_")
                             {
-                                resume_function += Environment.NewLine + TabInString(8) +
+                                scale_update_function += Environment.NewLine + TabInString(8) +
                                     "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "battery");
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                                scale_update_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "battery");
+                                scale_update_function += TabInString(8) + "};" + Environment.NewLine;
                             }
                             else
                             {
-                                resume_function += Environment.NewLine + TabInString(8) +
+                                scale_update_function += Environment.NewLine + TabInString(8) +
                                     "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "battery");
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                                scale_update_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "battery");
+                                scale_update_function += TabInString(8) + "};" + Environment.NewLine;
                             }
 
 
@@ -1860,7 +2228,8 @@ namespace Watch_Face_Editor
                                 variables += TabInString(4) + "let " + optionNameStart +
                                     "battery_linear_scale_pointer_img = ''" + Environment.NewLine;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (optionNameStart == "normal_")
                                 items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
@@ -1886,7 +2255,7 @@ namespace Watch_Face_Editor
                             items += linearScaleOptions;
 
 
-                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update scales BATTERY');" + Environment.NewLine;
+                            scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales BATTERY');" + Environment.NewLine;
                             if (items.IndexOf("const battery = hmSensor.createSensor(hmSensor.id.BATTERY);") < 0 &&
                                 exist_items.IndexOf("const battery = hmSensor.createSensor(hmSensor.id.BATTERY);") < 0)
                             {
@@ -1900,40 +2269,40 @@ namespace Watch_Face_Editor
                                 }
                             }
 
-                            if (resume_function.IndexOf("progressBattery") < 0 &&
+                            if (scale_update_function.IndexOf("progressBattery") < 0 &&
                                 exist_resume_call.IndexOf("progressBattery") < 0)
                             {
-                                resume_function += TabInString(8) + Environment.NewLine;
-                                resume_function += TabInString(8) + "let valueBattery = battery.current;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let targetBattery = 100;" + Environment.NewLine;
-                                //resume_function += TabInString(8) + "let targetBattery = battery.target;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let progressBattery = valueBattery/targetBattery;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "if (progressBattery > 1) progressBattery = 1;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let valueBattery = battery.current;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let targetBattery = 100;" + Environment.NewLine;
+                                //scale_update_function += TabInString(8) + "let targetBattery = battery.target;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let progressBattery = valueBattery/targetBattery;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "if (progressBattery > 1) progressBattery = 1;" + Environment.NewLine;
                             }
 
                             if (linear_scale.inversion)
                             {
-                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                scale_update_function += TabInString(8) + "let progress_ls_" + optionNameStart +
                                 "battery = 1 - progressBattery;" + Environment.NewLine;
                             }
                             else
                             {
-                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                scale_update_function += TabInString(8) + "let progress_ls_" + optionNameStart +
                                 "battery = progressBattery;" + Environment.NewLine;
                             }
                             if (optionNameStart == "normal_")
                             {
-                                resume_function += Environment.NewLine + TabInString(8) +
+                                scale_update_function += Environment.NewLine + TabInString(8) +
                                     "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "battery", show_level);
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                                scale_update_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "battery", show_level);
+                                scale_update_function += TabInString(8) + "};" + Environment.NewLine;
                             }
                             else
                             {
-                                resume_function += Environment.NewLine + TabInString(8) +
+                                scale_update_function += Environment.NewLine + TabInString(8) +
                                     "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "battery", show_level);
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                                scale_update_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "battery", show_level);
+                                scale_update_function += TabInString(8) + "};" + Environment.NewLine;
                             }
 
 
@@ -2097,7 +2466,8 @@ namespace Watch_Face_Editor
 
                             items += circleScaleOptions;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (optionNameStart == "normal_")
                                 items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
@@ -2118,7 +2488,7 @@ namespace Watch_Face_Editor
                             items += TabInString(6) + "};" + Environment.NewLine;
 
 
-                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update scales CALORIE');" + Environment.NewLine;
+                            scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales CALORIE');" + Environment.NewLine;
                             if (items.IndexOf("const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);") < 0 &&
                                 exist_items.IndexOf("const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);") < 0)
                             {
@@ -2132,39 +2502,39 @@ namespace Watch_Face_Editor
                                 }
                             }
 
-                            if (resume_function.IndexOf("progressCalories") < 0 &&
+                            if (scale_update_function.IndexOf("progressCalories") < 0 &&
                                 exist_resume_call.IndexOf("progressCalories") < 0)
                             {
-                                resume_function += TabInString(8) + Environment.NewLine;
-                                resume_function += TabInString(8) + "let valueCalories = calorie.current;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let targetCalories = calorie.target;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let progressCalories = valueCalories/targetCalories;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "if (progressCalories > 1) progressCalories = 1;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let valueCalories = calorie.current;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let targetCalories = calorie.target;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let progressCalories = valueCalories/targetCalories;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "if (progressCalories > 1) progressCalories = 1;" + Environment.NewLine;
                             }
 
                             if (circle_scale.inversion)
                             {
-                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                scale_update_function += TabInString(8) + "let progress_cs_" + optionNameStart +
                                 "calorie = 1 - progressCalories;" + Environment.NewLine;
                             }
                             else
                             {
-                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                scale_update_function += TabInString(8) + "let progress_cs_" + optionNameStart +
                                 "calorie = progressCalories;" + Environment.NewLine;
                             }
                             if (optionNameStart == "normal_")
                             {
-                                resume_function += Environment.NewLine + TabInString(8) +
+                                scale_update_function += Environment.NewLine + TabInString(8) +
                                     "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "calorie");
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                                scale_update_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "calorie");
+                                scale_update_function += TabInString(8) + "};" + Environment.NewLine;
                             }
                             else
                             {
-                                resume_function += Environment.NewLine + TabInString(8) +
+                                scale_update_function += Environment.NewLine + TabInString(8) +
                                     "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "calorie");
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                                scale_update_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "calorie");
+                                scale_update_function += TabInString(8) + "};" + Environment.NewLine;
                             }
 
 
@@ -2181,7 +2551,8 @@ namespace Watch_Face_Editor
                                 variables += TabInString(4) + "let " + optionNameStart +
                                     "calorie_linear_scale_pointer_img = ''" + Environment.NewLine;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (optionNameStart == "normal_")
                                 items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
@@ -2207,7 +2578,7 @@ namespace Watch_Face_Editor
                             items += linearScaleOptions;
 
 
-                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update scales CALORIE');" + Environment.NewLine;
+                            scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales CALORIE');" + Environment.NewLine;
                             if (items.IndexOf("const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);") < 0 &&
                                 exist_items.IndexOf("const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);") < 0)
                             {
@@ -2221,39 +2592,39 @@ namespace Watch_Face_Editor
                                 }
                             }
 
-                            if (resume_function.IndexOf("progressCalories") < 0 &&
+                            if (scale_update_function.IndexOf("progressCalories") < 0 &&
                                 exist_resume_call.IndexOf("progressCalories") < 0)
                             {
-                                resume_function += TabInString(8) + Environment.NewLine;
-                                resume_function += TabInString(8) + "let valueCalories = calorie.current;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let targetCalories = calorie.target;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let progressCalories = valueCalories/targetCalories;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "if (progressCalories > 1) progressCalories = 1;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let valueCalories = calorie.current;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let targetCalories = calorie.target;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let progressCalories = valueCalories/targetCalories;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "if (progressCalories > 1) progressCalories = 1;" + Environment.NewLine;
                             }
 
                             if (linear_scale.inversion)
                             {
-                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                scale_update_function += TabInString(8) + "let progress_ls_" + optionNameStart +
                                 "calorie = 1 - progressCalories;" + Environment.NewLine;
                             }
                             else
                             {
-                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                scale_update_function += TabInString(8) + "let progress_ls_" + optionNameStart +
                                 "calorie = progressCalories;" + Environment.NewLine;
                             }
                             if (optionNameStart == "normal_")
                             {
-                                resume_function += Environment.NewLine + TabInString(8) +
+                                scale_update_function += Environment.NewLine + TabInString(8) +
                                     "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "calorie", show_level);
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                                scale_update_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "calorie", show_level);
+                                scale_update_function += TabInString(8) + "};" + Environment.NewLine;
                             }
                             else
                             {
-                                resume_function += Environment.NewLine + TabInString(8) +
+                                scale_update_function += Environment.NewLine + TabInString(8) +
                                     "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "calorie", show_level);
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                                scale_update_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "calorie", show_level);
+                                scale_update_function += TabInString(8) + "};" + Environment.NewLine;
                             }
 
 
@@ -2390,7 +2761,8 @@ namespace Watch_Face_Editor
 
                             items += circleScaleOptions;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (optionNameStart == "normal_")
                                 items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
@@ -2415,7 +2787,7 @@ namespace Watch_Face_Editor
                             items += TabInString(6) + "};" + Environment.NewLine;
 
 
-                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update scales HEART');" + Environment.NewLine;
+                            scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales HEART');" + Environment.NewLine;
                             if (items.IndexOf("const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);") < 0 &&
                                 exist_items.IndexOf("const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);") < 0)
                             {
@@ -2428,42 +2800,42 @@ namespace Watch_Face_Editor
                                     items += TabInString(6) + "});" + Environment.NewLine; 
                                 }
                             }
-                            if (resume_function.IndexOf("progressHeartRate") < 0 &&
+                            if (scale_update_function.IndexOf("progressHeartRate") < 0 &&
                                 exist_resume_call.IndexOf("progressHeartRate") < 0)
                             {
-                                resume_function += TabInString(8) + Environment.NewLine;
-                                //resume_function += TabInString(8) + "const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let valueHeartRate = heart_rate.last;" + Environment.NewLine;
-                                //resume_function += TabInString(8) + "let valueHeartRate = heart_rate.current;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let targetHeartRate = 179;" + Environment.NewLine;
-                                //resume_function += TabInString(8) + "let targetHeartRate = heart_rate.target;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let progressHeartRate = (valueHeartRate - 71)/(targetHeartRate - 71);" + Environment.NewLine;
-                                resume_function += TabInString(8) + "if (progressHeartRate < 0) progressHeartRate = 0;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "if (progressHeartRate > 1) progressHeartRate = 1;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + Environment.NewLine;
+                                //scale_update_function += TabInString(8) + "const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let valueHeartRate = heart_rate.last;" + Environment.NewLine;
+                                //scale_update_function += TabInString(8) + "let valueHeartRate = heart_rate.current;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let targetHeartRate = 179;" + Environment.NewLine;
+                                //scale_update_function += TabInString(8) + "let targetHeartRate = heart_rate.target;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let progressHeartRate = (valueHeartRate - 71)/(targetHeartRate - 71);" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "if (progressHeartRate < 0) progressHeartRate = 0;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "if (progressHeartRate > 1) progressHeartRate = 1;" + Environment.NewLine;
                             }
                             if (circle_scale.inversion)
                             {
-                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                scale_update_function += TabInString(8) + "let progress_cs_" + optionNameStart +
                                 "heart_rate = 1 - progressHeartRate;" + Environment.NewLine;
                             }
                             else
                             {
-                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                scale_update_function += TabInString(8) + "let progress_cs_" + optionNameStart +
                                 "heart_rate = progressHeartRate;" + Environment.NewLine;
                             }
                             if (optionNameStart == "normal_")
                             {
-                                resume_function += Environment.NewLine + TabInString(8) +
+                                scale_update_function += Environment.NewLine + TabInString(8) +
                                     "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "heart_rate");
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                                scale_update_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "heart_rate");
+                                scale_update_function += TabInString(8) + "};" + Environment.NewLine;
                             }
                             else
                             {
-                                resume_function += Environment.NewLine + TabInString(8) +
+                                scale_update_function += Environment.NewLine + TabInString(8) +
                                     "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "heart_rate");
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                                scale_update_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "heart_rate");
+                                scale_update_function += TabInString(8) + "};" + Environment.NewLine;
                             }
 
 
@@ -2480,7 +2852,8 @@ namespace Watch_Face_Editor
                                 variables += TabInString(4) + "let " + optionNameStart +
                                     "heart_rate_linear_scale_pointer_img = ''" + Environment.NewLine;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (optionNameStart == "normal_")
                                 items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
@@ -2506,7 +2879,7 @@ namespace Watch_Face_Editor
                             items += linearScaleOptions;
 
 
-                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update scales HEART');" + Environment.NewLine;
+                            scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales HEART');" + Environment.NewLine;
                             if (items.IndexOf("const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);") < 0 &&
                                 exist_items.IndexOf("const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);") < 0)
                             {
@@ -2520,43 +2893,43 @@ namespace Watch_Face_Editor
                                 }
                             }
                             
-                            if (resume_function.IndexOf("progressHeartRate") < 0 &&
+                            if (scale_update_function.IndexOf("progressHeartRate") < 0 &&
                                 exist_resume_call.IndexOf("progressHeartRate") < 0)
                             {
-                                resume_function += TabInString(8) + Environment.NewLine;
-                                //resume_function += TabInString(8) + "const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let valueHeartRate = heart_rate.last;" + Environment.NewLine;
-                                //resume_function += TabInString(8) + "let valueHeartRate = heart_rate.current;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let targetHeartRate = 179;" + Environment.NewLine;
-                                //resume_function += TabInString(8) + "let targetHeartRate = heart_rate.target;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let progressHeartRate = (valueHeartRate - 71)/(targetHeartRate - 71);" + Environment.NewLine;
-                                resume_function += TabInString(8) + "if (progressHeartRate < 0) progressHeartRate = 0;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "if (progressHeartRate > 1) progressHeartRate = 1;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + Environment.NewLine;
+                                //scale_update_function += TabInString(8) + "const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let valueHeartRate = heart_rate.last;" + Environment.NewLine;
+                                //scale_update_function += TabInString(8) + "let valueHeartRate = heart_rate.current;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let targetHeartRate = 179;" + Environment.NewLine;
+                                //scale_update_function += TabInString(8) + "let targetHeartRate = heart_rate.target;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let progressHeartRate = (valueHeartRate - 71)/(targetHeartRate - 71);" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "if (progressHeartRate < 0) progressHeartRate = 0;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "if (progressHeartRate > 1) progressHeartRate = 1;" + Environment.NewLine;
                             }
                             
                             if (linear_scale.inversion)
                             {
-                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                scale_update_function += TabInString(8) + "let progress_ls_" + optionNameStart +
                                 "heart_rate = 1 - progressHeartRate;" + Environment.NewLine;
                             }
                             else
                             {
-                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                scale_update_function += TabInString(8) + "let progress_ls_" + optionNameStart +
                                 "heart_rate = progressHeartRate;" + Environment.NewLine;
                             }
                             if (optionNameStart == "normal_")
                             {
-                                resume_function += Environment.NewLine + TabInString(8) +
+                                scale_update_function += Environment.NewLine + TabInString(8) +
                                     "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "heart_rate", show_level);
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                                scale_update_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "heart_rate", show_level);
+                                scale_update_function += TabInString(8) + "};" + Environment.NewLine;
                             }
                             else
                             {
-                                resume_function += Environment.NewLine + TabInString(8) +
+                                scale_update_function += Environment.NewLine + TabInString(8) +
                                     "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "heart_rate", show_level);
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                                scale_update_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "heart_rate", show_level);
+                                scale_update_function += TabInString(8) + "};" + Environment.NewLine;
                             }
 
 
@@ -2720,7 +3093,8 @@ namespace Watch_Face_Editor
 
                             items += circleScaleOptions;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (optionNameStart == "normal_")
                                 items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
@@ -2745,7 +3119,7 @@ namespace Watch_Face_Editor
                             items += TabInString(6) + "};" + Environment.NewLine;
 
 
-                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update scales PAI');" + Environment.NewLine;
+                            scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales PAI');" + Environment.NewLine;
                             if (items.IndexOf("const pai = hmSensor.createSensor(hmSensor.id.PAI);") < 0 &&
                                 exist_items.IndexOf("const pai = hmSensor.createSensor(hmSensor.id.PAI);") < 0)
                             {
@@ -2759,40 +3133,40 @@ namespace Watch_Face_Editor
                                 }
                             }
 
-                            if (resume_function.IndexOf("progressPAI") < 0 &&
+                            if (scale_update_function.IndexOf("progressPAI") < 0 &&
                                 exist_resume_call.IndexOf("progressPAI") < 0)
                             {
-                                resume_function += TabInString(8) + Environment.NewLine;
-                                resume_function += TabInString(8) + "let valuePAI = pai.totalpai;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let targetPAI = 100;" + Environment.NewLine;
-                                //resume_function += TabInString(8) + "let targetPAI = pai.target;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let progressPAI = valuePAI/targetPAI;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "if (progressPAI > 1) progressPAI = 1;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let valuePAI = pai.totalpai;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let targetPAI = 100;" + Environment.NewLine;
+                                //scale_update_function += TabInString(8) + "let targetPAI = pai.target;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let progressPAI = valuePAI/targetPAI;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "if (progressPAI > 1) progressPAI = 1;" + Environment.NewLine;
                             }
 
                             if (circle_scale.inversion)
                             {
-                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                scale_update_function += TabInString(8) + "let progress_cs_" + optionNameStart +
                                 "pai = 1 - progressPAI;" + Environment.NewLine;
                             }
                             else
                             {
-                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                scale_update_function += TabInString(8) + "let progress_cs_" + optionNameStart +
                                 "pai = progressPAI;" + Environment.NewLine;
                             }
                             if (optionNameStart == "normal_")
                             {
-                                resume_function += Environment.NewLine + TabInString(8) +
+                                scale_update_function += Environment.NewLine + TabInString(8) +
                                     "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "pai");
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                                scale_update_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "pai");
+                                scale_update_function += TabInString(8) + "};" + Environment.NewLine;
                             }
                             else
                             {
-                                resume_function += Environment.NewLine + TabInString(8) +
+                                scale_update_function += Environment.NewLine + TabInString(8) +
                                     "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "pai");
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                                scale_update_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "pai");
+                                scale_update_function += TabInString(8) + "};" + Environment.NewLine;
                             }
 
 
@@ -2809,7 +3183,8 @@ namespace Watch_Face_Editor
                                 variables += TabInString(4) + "let " + optionNameStart +
                                     "pai_linear_scale_pointer_img = ''" + Environment.NewLine;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (optionNameStart == "normal_")
                                 items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
@@ -2835,7 +3210,7 @@ namespace Watch_Face_Editor
                             items += linearScaleOptions;
 
 
-                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update scales PAI');" + Environment.NewLine;
+                            scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales PAI');" + Environment.NewLine;
                             if (items.IndexOf("const pai = hmSensor.createSensor(hmSensor.id.PAI);") < 0 &&
                                 exist_items.IndexOf("const pai = hmSensor.createSensor(hmSensor.id.PAI);") < 0)
                             {
@@ -2849,40 +3224,40 @@ namespace Watch_Face_Editor
                                 }
                             }
 
-                            if (resume_function.IndexOf("progressPAI") < 0 &&
+                            if (scale_update_function.IndexOf("progressPAI") < 0 &&
                                 exist_resume_call.IndexOf("progressPAI") < 0)
                             {
-                                resume_function += TabInString(8) + Environment.NewLine;
-                                resume_function += TabInString(8) + "let valuePAI = pai.totalpai;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let targetPAI = 100;" + Environment.NewLine;
-                                //resume_function += TabInString(8) + "let targetPAI = pai.target;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let progressPAI = valuePAI/targetPAI;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "if (progressPAI > 1) progressPAI = 1;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let valuePAI = pai.totalpai;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let targetPAI = 100;" + Environment.NewLine;
+                                //scale_update_function += TabInString(8) + "let targetPAI = pai.target;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let progressPAI = valuePAI/targetPAI;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "if (progressPAI > 1) progressPAI = 1;" + Environment.NewLine;
                             }
 
                             if (linear_scale.inversion)
                             {
-                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                scale_update_function += TabInString(8) + "let progress_ls_" + optionNameStart +
                                 "pai = 1 - progressPAI;" + Environment.NewLine;
                             }
                             else
                             {
-                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                scale_update_function += TabInString(8) + "let progress_ls_" + optionNameStart +
                                 "pai = progressPAI;" + Environment.NewLine;
                             }
                             if (optionNameStart == "normal_")
                             {
-                                resume_function += Environment.NewLine + TabInString(8) +
+                                scale_update_function += Environment.NewLine + TabInString(8) +
                                     "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "pai", show_level);
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                                scale_update_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "pai", show_level);
+                                scale_update_function += TabInString(8) + "};" + Environment.NewLine;
                             }
                             else
                             {
-                                resume_function += Environment.NewLine + TabInString(8) +
+                                scale_update_function += Environment.NewLine + TabInString(8) +
                                     "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "pai", show_level);
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                                scale_update_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "pai", show_level);
+                                scale_update_function += TabInString(8) + "};" + Environment.NewLine;
                             }
 
 
@@ -3081,7 +3456,8 @@ namespace Watch_Face_Editor
 
                             items += circleScaleOptions;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (optionNameStart == "normal_")
                                 items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
@@ -3101,7 +3477,7 @@ namespace Watch_Face_Editor
 
                             items += TabInString(6) + "};" + Environment.NewLine;
 
-                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update scales STAND');" + Environment.NewLine;
+                            scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales STAND');" + Environment.NewLine;
                             if (items.IndexOf("const stand = hmSensor.createSensor(hmSensor.id.STAND);") < 0 &&
                                 exist_items.IndexOf("const stand = hmSensor.createSensor(hmSensor.id.STAND);") < 0)
                             {
@@ -3115,39 +3491,39 @@ namespace Watch_Face_Editor
                                 }
                             }
 
-                            if (resume_function.IndexOf("progressStand") < 0 &&
+                            if (scale_update_function.IndexOf("progressStand") < 0 &&
                                 exist_resume_call.IndexOf("progressStand") < 0)
                             {
-                                resume_function += TabInString(8) + Environment.NewLine;
-                                resume_function += TabInString(8) + "let valueStand = stand.current;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let targetStand = stand.target;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let progressStand = valueStand/targetStand;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "if (progressStand > 1) progressStand = 1;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let valueStand = stand.current;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let targetStand = stand.target;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let progressStand = valueStand/targetStand;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "if (progressStand > 1) progressStand = 1;" + Environment.NewLine;
                             }
 
                             if (circle_scale.inversion)
                             {
-                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                scale_update_function += TabInString(8) + "let progress_cs_" + optionNameStart +
                                 "stand = 1 - progressStand;" + Environment.NewLine;
                             }
                             else
                             {
-                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                scale_update_function += TabInString(8) + "let progress_cs_" + optionNameStart +
                                 "stand = progressStand;" + Environment.NewLine;
                             }
                             if (optionNameStart == "normal_")
                             {
-                                resume_function += Environment.NewLine + TabInString(8) +
+                                scale_update_function += Environment.NewLine + TabInString(8) +
                                     "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "stand");
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                                scale_update_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "stand");
+                                scale_update_function += TabInString(8) + "};" + Environment.NewLine;
                             }
                             else
                             {
-                                resume_function += Environment.NewLine + TabInString(8) +
+                                scale_update_function += Environment.NewLine + TabInString(8) +
                                     "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "stand");
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                                scale_update_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "stand");
+                                scale_update_function += TabInString(8) + "};" + Environment.NewLine;
                             }
 
                         }
@@ -3161,7 +3537,8 @@ namespace Watch_Face_Editor
                                 variables += TabInString(4) + "let " + optionNameStart +
                                     "stand_linear_scale_pointer_img = ''" + Environment.NewLine;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (optionNameStart == "normal_")
                                 items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
@@ -3187,7 +3564,7 @@ namespace Watch_Face_Editor
                             items += linearScaleOptions;
 
 
-                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update scales STAND');" + Environment.NewLine;
+                            scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales STAND');" + Environment.NewLine;
                             if (items.IndexOf("const stand = hmSensor.createSensor(hmSensor.id.STAND);") < 0 &&
                                 exist_items.IndexOf("const stand = hmSensor.createSensor(hmSensor.id.STAND);") < 0)
                             {
@@ -3201,38 +3578,38 @@ namespace Watch_Face_Editor
                                 }
                             }
 
-                            if (resume_function.IndexOf("progressStand") < 0 &&
+                            if (scale_update_function.IndexOf("progressStand") < 0 &&
                                 exist_resume_call.IndexOf("progressStand") < 0)
                             {
-                                resume_function += TabInString(8) + Environment.NewLine;
-                                resume_function += TabInString(8) + "let valueStand = stand.current;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let targetStand = stand.target;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let progressStand = valueStand/targetStand;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "if (progressStand > 1) progressStand = 1;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let valueStand = stand.current;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let targetStand = stand.target;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let progressStand = valueStand/targetStand;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "if (progressStand > 1) progressStand = 1;" + Environment.NewLine;
                             }
                             if (linear_scale.inversion)
                             {
-                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                scale_update_function += TabInString(8) + "let progress_ls_" + optionNameStart +
                                 "stand = 1 - progressStand;" + Environment.NewLine;
                             }
                             else
                             {
-                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                scale_update_function += TabInString(8) + "let progress_ls_" + optionNameStart +
                                 "stand = progressStand;" + Environment.NewLine;
                             }
                             if (optionNameStart == "normal_")
                             {
-                                resume_function += Environment.NewLine + TabInString(8) +
+                                scale_update_function += Environment.NewLine + TabInString(8) +
                                     "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "stand", show_level);
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                                scale_update_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "stand", show_level);
+                                scale_update_function += TabInString(8) + "};" + Environment.NewLine;
                             }
                             else
                             {
-                                resume_function += Environment.NewLine + TabInString(8) +
+                                scale_update_function += Environment.NewLine + TabInString(8) +
                                     "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "stand", show_level);
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                                scale_update_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "stand", show_level);
+                                scale_update_function += TabInString(8) + "};" + Environment.NewLine;
                             }
 
                         }
@@ -3393,7 +3770,8 @@ namespace Watch_Face_Editor
 
                             items += circleScaleOptions;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (optionNameStart == "normal_")
                                 items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
@@ -3413,7 +3791,7 @@ namespace Watch_Face_Editor
 
                             items += TabInString(6) + "};" + Environment.NewLine;
 
-                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update scales ACTIVITY');" + Environment.NewLine;
+                            scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales ACTIVITY');" + Environment.NewLine;
                             if (items.IndexOf("const activity = hmSensor.createSensor(hmSensor.id.ACTIVITY);") < 0 &&
                                 exist_items.IndexOf("const activity = hmSensor.createSensor(hmSensor.id.ACTIVITY);") < 0)
                             {
@@ -3427,39 +3805,39 @@ namespace Watch_Face_Editor
                                 }
                             }
 
-                            if (resume_function.IndexOf("progressActivity") < 0 &&
+                            if (scale_update_function.IndexOf("progressActivity") < 0 &&
                                 exist_resume_call.IndexOf("progressActivity") < 0)
                             {
-                                resume_function += TabInString(8) + Environment.NewLine;
-                                resume_function += TabInString(8) + "let valueActivity = activity.current;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let targetActivity = activity.target;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let progressActivity = valueActivity/targetActivity;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "if (progressActivity > 1) progressActivity = 1;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let valueActivity = activity.current;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let targetActivity = activity.target;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let progressActivity = valueActivity/targetActivity;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "if (progressActivity > 1) progressActivity = 1;" + Environment.NewLine;
                             }
 
                             if (circle_scale.inversion)
                             {
-                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                scale_update_function += TabInString(8) + "let progress_cs_" + optionNameStart +
                                 "activity = 1 - progressActivity;" + Environment.NewLine;
                             }
                             else
                             {
-                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                scale_update_function += TabInString(8) + "let progress_cs_" + optionNameStart +
                                 "activity = progressActivity;" + Environment.NewLine;
                             }
                             if (optionNameStart == "normal_")
                             {
-                                resume_function += Environment.NewLine + TabInString(8) +
+                                scale_update_function += Environment.NewLine + TabInString(8) +
                                     "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "activity");
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                                scale_update_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "activity");
+                                scale_update_function += TabInString(8) + "};" + Environment.NewLine;
                             }
                             else
                             {
-                                resume_function += Environment.NewLine + TabInString(8) +
+                                scale_update_function += Environment.NewLine + TabInString(8) +
                                     "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "activity");
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                                scale_update_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "activity");
+                                scale_update_function += TabInString(8) + "};" + Environment.NewLine;
                             }
 
                         }
@@ -3473,7 +3851,8 @@ namespace Watch_Face_Editor
                                 variables += TabInString(4) + "let " + optionNameStart +
                                     "activity_linear_scale_pointer_img = ''" + Environment.NewLine;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (optionNameStart == "normal_")
                                 items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
@@ -3499,7 +3878,7 @@ namespace Watch_Face_Editor
                             items += linearScaleOptions;
 
 
-                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update scales ACTIVITY');" + Environment.NewLine;
+                            scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales ACTIVITY');" + Environment.NewLine;
                             if (items.IndexOf("const activity = hmSensor.createSensor(hmSensor.id.ACTIVITY);") < 0 &&
                                 exist_items.IndexOf("const activity = hmSensor.createSensor(hmSensor.id.ACTIVITY);") < 0)
                             {
@@ -3513,38 +3892,38 @@ namespace Watch_Face_Editor
                                 }
                             }
 
-                            if (resume_function.IndexOf("progressActivity") < 0 &&
+                            if (scale_update_function.IndexOf("progressActivity") < 0 &&
                                 exist_resume_call.IndexOf("progressActivity") < 0)
                             {
-                                resume_function += TabInString(8) + Environment.NewLine;
-                                resume_function += TabInString(8) + "let valueActivity = activity.current;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let targetActivity = activity.target;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let progressActivity = valueActivity/targetActivity;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "if (progressActivity > 1) progressActivity = 1;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let valueActivity = activity.current;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let targetActivity = activity.target;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let progressActivity = valueActivity/targetActivity;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "if (progressActivity > 1) progressActivity = 1;" + Environment.NewLine;
                             }
                             if (linear_scale.inversion)
                             {
-                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                scale_update_function += TabInString(8) + "let progress_ls_" + optionNameStart +
                                 "activity = 1 - progressActivity;" + Environment.NewLine;
                             }
                             else
                             {
-                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                scale_update_function += TabInString(8) + "let progress_ls_" + optionNameStart +
                                 "activity = progressActivity;" + Environment.NewLine;
                             }
                             if (optionNameStart == "normal_")
                             {
-                                resume_function += Environment.NewLine + TabInString(8) +
+                                scale_update_function += Environment.NewLine + TabInString(8) +
                                     "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "activity", show_level);
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                                scale_update_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "activity", show_level);
+                                scale_update_function += TabInString(8) + "};" + Environment.NewLine;
                             }
                             else
                             {
-                                resume_function += Environment.NewLine + TabInString(8) +
+                                scale_update_function += Environment.NewLine + TabInString(8) +
                                     "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "activity", show_level);
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                                scale_update_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "activity", show_level);
+                                scale_update_function += TabInString(8) + "};" + Environment.NewLine;
                             }
 
 
@@ -3849,7 +4228,8 @@ namespace Watch_Face_Editor
 
                             items += circleScaleOptions;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (optionNameStart == "normal_")
                                 items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
@@ -3873,7 +4253,7 @@ namespace Watch_Face_Editor
 
                             items += TabInString(6) + "};" + Environment.NewLine;
 
-                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update scales FAT_BURNING');" + Environment.NewLine;
+                            scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales FAT_BURNING');" + Environment.NewLine;
                             if (items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0 &&
                                 exist_items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0)
                             {
@@ -3887,39 +4267,39 @@ namespace Watch_Face_Editor
                                 }
                             }
 
-                            if (resume_function.IndexOf("progressFatBurning") < 0 &&
+                            if (scale_update_function.IndexOf("progressFatBurning") < 0 &&
                                 exist_resume_call.IndexOf("progressFatBurning") < 0)
                             {
-                                resume_function += TabInString(8) + Environment.NewLine;
-                                resume_function += TabInString(8) + "let valueFatBurning = fat_burning.current;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let targetFatBurning = fat_burning.target;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let progressFatBurning = valueFatBurning/targetFatBurning;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "if (progressFatBurning > 1) progressFatBurning = 1;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let valueFatBurning = fat_burning.current;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let targetFatBurning = fat_burning.target;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let progressFatBurning = valueFatBurning/targetFatBurning;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "if (progressFatBurning > 1) progressFatBurning = 1;" + Environment.NewLine;
                             }
 
                             if (circle_scale.inversion)
                             {
-                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                scale_update_function += TabInString(8) + "let progress_cs_" + optionNameStart +
                                 "fat_burning = 1 - progressFatBurning;" + Environment.NewLine;
                             }
                             else
                             {
-                                resume_function += TabInString(8) + "let progress_cs_" + optionNameStart +
+                                scale_update_function += TabInString(8) + "let progress_cs_" + optionNameStart +
                                 "fat_burning = progressFatBurning;" + Environment.NewLine;
                             }
                             if (optionNameStart == "normal_")
                             {
-                                resume_function += Environment.NewLine + TabInString(8) +
+                                scale_update_function += Environment.NewLine + TabInString(8) +
                                     "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "fat_burning");
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                                scale_update_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "fat_burning");
+                                scale_update_function += TabInString(8) + "};" + Environment.NewLine;
                             }
                             else
                             {
-                                resume_function += Environment.NewLine + TabInString(8) +
+                                scale_update_function += Environment.NewLine + TabInString(8) +
                                     "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "fat_burning");
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                                scale_update_function += Circle_Scale_WidgetDelegate_Options(circle_scale, optionNameStart, "fat_burning");
+                                scale_update_function += TabInString(8) + "};" + Environment.NewLine;
                             }
 
 
@@ -3936,7 +4316,8 @@ namespace Watch_Face_Editor
                                 variables += TabInString(4) + "let " + optionNameStart +
                                     "fat_burning_linear_scale_pointer_img = ''" + Environment.NewLine;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (optionNameStart == "normal_")
                                 items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
@@ -3962,7 +4343,7 @@ namespace Watch_Face_Editor
                             items += linearScaleOptions;
 
 
-                            resume_function += Environment.NewLine + TabInString(8) + "console.log('update scales FAT_BURNING');" + Environment.NewLine;
+                            scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales FAT_BURNING');" + Environment.NewLine;
                             if (items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0 &&
                                 exist_items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0)
                             {
@@ -3976,38 +4357,38 @@ namespace Watch_Face_Editor
                                 }
                             }
 
-                            if (resume_function.IndexOf("progressFatBurning") < 0 &&
+                            if (scale_update_function.IndexOf("progressFatBurning") < 0 &&
                                 exist_resume_call.IndexOf("progressFatBurning") < 0)
                             {
-                                resume_function += TabInString(8) + Environment.NewLine;
-                                resume_function += TabInString(8) + "let valueFatBurning = fat_burning.current;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let targetFatBurning = fat_burning.target;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "let progressFatBurning = valueFatBurning/targetFatBurning;" + Environment.NewLine;
-                                resume_function += TabInString(8) + "if (progressFatBurning > 1) progressFatBurning = 1;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let valueFatBurning = fat_burning.current;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let targetFatBurning = fat_burning.target;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "let progressFatBurning = valueFatBurning/targetFatBurning;" + Environment.NewLine;
+                                scale_update_function += TabInString(8) + "if (progressFatBurning > 1) progressFatBurning = 1;" + Environment.NewLine;
                             }
                             if (linear_scale.inversion)
                             {
-                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                scale_update_function += TabInString(8) + "let progress_ls_" + optionNameStart +
                                 "fat_burning = 1 - progressFatBurning;" + Environment.NewLine;
                             }
                             else
                             {
-                                resume_function += TabInString(8) + "let progress_ls_" + optionNameStart +
+                                scale_update_function += TabInString(8) + "let progress_ls_" + optionNameStart +
                                 "fat_burning = progressFatBurning;" + Environment.NewLine;
                             }
                             if (optionNameStart == "normal_")
                             {
-                                resume_function += Environment.NewLine + TabInString(8) +
+                                scale_update_function += Environment.NewLine + TabInString(8) +
                                     "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "fat_burning", show_level);
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                                scale_update_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "fat_burning", show_level);
+                                scale_update_function += TabInString(8) + "};" + Environment.NewLine;
                             }
                             else
                             {
-                                resume_function += Environment.NewLine + TabInString(8) +
+                                scale_update_function += Environment.NewLine + TabInString(8) +
                                     "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                resume_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "fat_burning", show_level);
-                                resume_function += TabInString(8) + "};" + Environment.NewLine;
+                                scale_update_function += Linear_Scale_WidgetDelegate_Options(linear_scale, optionNameStart, "fat_burning", show_level);
+                                scale_update_function += TabInString(8) + "};" + Environment.NewLine;
                             }
 
 
@@ -4169,17 +4550,17 @@ namespace Watch_Face_Editor
                                 optionNameStart + "city_name_text = hmUI.createWidget(hmUI.widget.TEXT, {" +
                                     cityNameOptions + TabInString(6) + "});" + Environment.NewLine;
 
-                            resume_function += Environment.NewLine + TabInString(7) + "console.log('Wearther city name');" + Environment.NewLine;
+                            scale_update_function += Environment.NewLine + TabInString(7) + "console.log('Wearther city name');" + Environment.NewLine;
 
-                            if (resume_function.IndexOf("const weatherSensor = hmSensor.createSensor(hmSensor.id.WEATHER);") < 0 &&
+                            if (scale_update_function.IndexOf("const weatherSensor = hmSensor.createSensor(hmSensor.id.WEATHER);") < 0 &&
                                 exist_resume_call.IndexOf("const weatherSensor = hmSensor.createSensor(hmSensor.id.WEATHER);") < 0)
                             {
-                                resume_function += TabInString(7) + 
+                                scale_update_function += TabInString(7) + 
                                     "const weatherSensor = hmSensor.createSensor(hmSensor.id.WEATHER);" + Environment.NewLine;
-                                resume_function += TabInString(7) +
+                                scale_update_function += TabInString(7) +
                                     "const weatherData = weatherSensor.getForecastWeather();" + Environment.NewLine;
                             }
-                            resume_function += TabInString(7) + optionNameStart +
+                            scale_update_function += TabInString(7) + optionNameStart +
                                 "city_name_text.setProperty(hmUI.prop.TEXT, weatherData.cityName);" + Environment.NewLine;
 
 
@@ -8221,6 +8602,24 @@ namespace Watch_Face_Editor
             return options;
         }
 
+        private string IMG_Pointer_Cover_Options(hmUI_widget_IMG_POINTER img_pointer, string show_level, int tabOffset = 0)
+        {
+            string options = Environment.NewLine;
+            if (img_pointer == null) return options;
+            if (img_pointer.cover_path == null) return options;
+            if (img_pointer.cover_path.Length > 0)
+            {
+                options += TabInString(7 + tabOffset) + "x: " + img_pointer.cover_x.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "y: " + img_pointer.cover_y.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "src: '" + img_pointer.cover_path + ".png'," + Environment.NewLine;
+                if (show_level != null && show_level.Length > 0)
+                {
+                    options += TabInString(7 + tabOffset) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+                }
+            }
+            return options;
+        }
+
         private string IMG_NUMBER_Options(hmUI_widget_IMG_NUMBER img_number, string type, string show_level, int tabOffset = 0)
         {
             string options = Environment.NewLine;
@@ -8642,6 +9041,77 @@ namespace Watch_Face_Editor
                 }
 
                 if (show_level.Length > 0)
+                {
+                    options += TabInString(7 + tabOffset) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+                }
+            }
+            return options;
+        }
+
+        private string TIME_PRO_POINTER_OptionsRead(hmUI_widget_IMG_POINTER img_pointer, string optionNameStart, string type, string show_level, int tabOffset = 0)
+        {
+            string options = Environment.NewLine;
+            if (img_pointer == null) return options;
+            if (img_pointer.src != null && img_pointer.src.Length > 0)
+            {
+                options += TabInString(6 + tabOffset) + "// " + optionNameStart + "analog_clock_pro_" + type.ToLower() + 
+                    "_pointer_img = hmUI.createWidget(hmUI.widget.TIME_POINTER, {" + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "// src: '" + img_pointer.src + ".png'," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "// center_x: " + img_pointer.center_x.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "// center_y: " + img_pointer.center_y.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "// x: " + img_pointer.pos_x.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "// y: " + img_pointer.pos_y.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "// start_angle: " + img_pointer.start_angle.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "// end_angle: " + img_pointer.end_angle.ToString() + "," + Environment.NewLine;
+
+                if (img_pointer.scale != null && img_pointer.scale.Length > 0)
+                {
+                    options += TabInString(7 + tabOffset) + "// scale_sc: '" + img_pointer.scale + ".png'," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "// scale_tc: '" + img_pointer.scale + ".png'," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "// scale_en: '" + img_pointer.scale + ".png'," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "// scale_x: " + img_pointer.scale_x.ToString() + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "// scale_y: " + img_pointer.scale_y.ToString() + "," + Environment.NewLine;
+                }
+
+                if (img_pointer.cover_path != null && img_pointer.cover_path.Length > 0)
+                {
+                    options += TabInString(7 + tabOffset) + "// cover_path: '" + img_pointer.cover_path + ".png'," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "// cover_x: " + img_pointer.cover_x.ToString() + "," + Environment.NewLine;
+                    options += TabInString(7 + tabOffset) + "// cover_y: " + img_pointer.cover_y.ToString() + "," + Environment.NewLine;
+                }
+
+                if (type.Length > 0)
+                {
+                    options += TabInString(7 + tabOffset) + "// type: hmUI.data_type." + type + "," + Environment.NewLine;
+                }
+
+                if (show_level.Length > 0)
+                {
+                    options += TabInString(7 + tabOffset) + "// show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+                }
+                options += TabInString(6 + tabOffset) + "// });" + Environment.NewLine;
+            }
+            return options;
+        }
+
+        private string TIME_PRO_POINTER_Options(hmUI_widget_IMG_POINTER img, string show_level, int tabOffset = 0)
+        {
+            string options = Environment.NewLine;
+            if (img == null) return options;
+            if (img.src == null) return options;
+            if (img.src.Length > 0)
+            {
+                options += TabInString(7 + tabOffset) + "x: 0," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "y: 0," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "w: deviceInfo.width," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "h: deviceInfo.height," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "pos_x: " + img.center_x.ToString() + " - " + img.pos_x.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "pos_y: " + img.center_y.ToString() + " - " + img.pos_y.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "center_x: " + img.center_x.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "center_y: " + img.center_y.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "src: '" + img.src + ".png'," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "angle: 0," + Environment.NewLine;
+                if (show_level != null && show_level.Length > 0)
                 {
                     options += TabInString(7 + tabOffset) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
                 }

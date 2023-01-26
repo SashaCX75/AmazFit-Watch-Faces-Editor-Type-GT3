@@ -366,6 +366,12 @@ namespace Watch_Face_Editor
                 case "Español":
                     richTextBox_Tips.Rtf = Properties.Resources.tips_es;
                     break;
+                case "Čeština":
+                    richTextBox_Tips.Rtf = Properties.Resources.tips_cs;
+                    break;
+                case "French":
+                    richTextBox_Tips.Rtf = Properties.Resources.tips_fr;
+                    break;
                 default:
                     richTextBox_Tips.Rtf = Properties.Resources.tips_en;
                     break;
@@ -1165,6 +1171,12 @@ namespace Watch_Face_Editor
                 int cursorY = Cursor.Position.Y;
                 int dX = Math.Abs(cursorX - cursorPos.X);
                 int dY = Math.Abs(cursorY - cursorPos.Y);
+                if (panel.Name == "panel_UC_Background" || panel.Name == "panel_UC_Shortcuts" || panel.Name == "panel_UC_DisconnectAlert" || 
+                    panel.Name == "panel_UC_EditableTimePointer" || panel.Name == "panel_UC_EditableElements")
+                {
+                    panel.DoDragDrop(sender, DragDropEffects.None);
+                    return;
+                }
                 if (dX > 5 || dY > 5)
                     panel.DoDragDrop(sender, DragDropEffects.Move);
             }
@@ -1180,6 +1192,7 @@ namespace Watch_Face_Editor
         private void tableLayoutPanel1_DragOver(object sender, DragEventArgs e)
         {
             bool typeReturn = true;
+            //return;
             //if (e.Data.GetDataPresent(typeof(UCtrl_Background_Elm))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(UCtrl_DigitalTime_Elm))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(UCtrl_AnalogTime_Elm))) typeReturn = false;
@@ -1213,7 +1226,7 @@ namespace Watch_Face_Editor
             if (e.Data.GetDataPresent(typeof(UCtrl_Sunrise_Elm))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(UCtrl_Wind_Elm))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(UCtrl_Moon_Elm))) typeReturn = false;
-            if (typeReturn) return;
+            //if (typeReturn) return;
             int dY = tableLayoutPanel_ElemetsWatchFace.PointToScreen(Point.Empty).Y;
             int posY = e.Y - dY;
             if (posY < 5) return;
@@ -1306,9 +1319,9 @@ namespace Watch_Face_Editor
 
 
                     case "ControlLibrary.UCtrl_Shortcuts_Elm":
-                        ElementShortcuts shortcuts =
-                            (ElementShortcuts)Elements.Find(e1 => e1.GetType().Name == "ElementShortcuts");
-                        index = Elements.IndexOf(shortcuts);
+                        //ElementShortcuts shortcuts =
+                        //    (ElementShortcuts)Elements.Find(e1 => e1.GetType().Name == "ElementShortcuts");
+                        //index = Elements.IndexOf(shortcuts);
                         draggedUCtrl_Elm = (UCtrl_Shortcuts_Elm)e.Data.GetData(typeof(UCtrl_Shortcuts_Elm));
                         if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
                         break;
@@ -1476,10 +1489,38 @@ namespace Watch_Face_Editor
                         draggedUCtrl_Elm = (UCtrl_Moon_Elm)e.Data.GetData(typeof(UCtrl_Moon_Elm));
                         if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
                         break;
+
+                    case "ControlLibrary.UCtrl_EditableElements_Elm":
+                        //EditableElements editableElements =
+                        //    (EditableElements)Elements.Find(e1 => e1.GetType().Name == "ElementEditablePointers");
+                        //index = Elements.IndexOf(editablePointers);
+                        draggedUCtrl_Elm = (UCtrl_EditableElements_Elm)e.Data.GetData(typeof(UCtrl_EditableElements_Elm));
+                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                        break;
+
+                    case "ControlLibrary.UCtrl_DisconnectAlert_Elm":
+                        //EditableElements editableElements =
+                        //    (EditableElements)Elements.Find(e1 => e1.GetType().Name == "ElementEditablePointers");
+                        //index = Elements.IndexOf(editablePointers);
+                        draggedUCtrl_Elm = (UCtrl_DisconnectAlert_Elm)e.Data.GetData(typeof(UCtrl_DisconnectAlert_Elm));
+                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                        break;
+
+                    case "ControlLibrary.UCtrl_Background_Elm":
+                        //EditableElements editableElements =
+                        //    (EditableElements)Elements.Find(e1 => e1.GetType().Name == "ElementEditablePointers");
+                        //index = Elements.IndexOf(editablePointers);
+                        draggedUCtrl_Elm = (UCtrl_Background_Elm)e.Data.GetData(typeof(UCtrl_Background_Elm));
+                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                        break;
                 }
 
-
                 if (draggedPanel == null) return;
+                if (typeReturn || index < 0)
+                {
+                    draggedPanel.Tag = null;
+                    return;
+                }
 
                 Point pt = tableLayoutPanel_ElemetsWatchFace.PointToClient(new Point(e.X, e.Y));
                 Control control = tableLayoutPanel_ElemetsWatchFace.GetChildAtPoint(pt);
@@ -1489,6 +1530,8 @@ namespace Watch_Face_Editor
                     if (control.Name == "panel_UC_Background") return;
                     if (control.Name == "panel_UC_Shortcuts") return;
                     if (control.Name == "panel_UC_EditableTimePointer") return;
+                    if (control.Name == "panel_UC_EditableElements") return;
+                    if (control.Name == "panel_UC_DisconnectAlert") return;
                     var pos = tableLayoutPanel_ElemetsWatchFace.GetPositionFromControl(control);
                     var posOld = tableLayoutPanel_ElemetsWatchFace.GetPositionFromControl(draggedPanel);
                     int indexNew = tableLayoutPanel_ElemetsWatchFace.RowCount - 2 - pos.Row;
@@ -1993,9 +2036,15 @@ namespace Watch_Face_Editor
                         {
                             Smooth_Second smoothSecond = analogTime.SmoothSecond;
                             Read_Smooth_Second_Options(smoothSecond);
+                            uCtrl_SmoothSeconds_Opt.AOD = radioButton_ScreenIdle.Checked;
+                            if (radioButton_ScreenIdle.Checked && smoothSecond == null) uCtrl_SmoothSeconds_Opt.radioButton_type2.Checked = true;
                             ShowElemenrOptions("SmoothSecond");
                         }
                         else HideAllElemenrOptions();
+                        break;
+
+                    case "Format_24hour":
+                        HideAllElemenrOptions();
                         break;
                 }
 
@@ -3104,19 +3153,14 @@ namespace Watch_Face_Editor
             }
             if (comboBox_AddTime.SelectedIndex == 3)
             {
-                if (radioButton_ScreenNormal.Checked)
-                {
-                    AddAnalogTimePro();
-                    ShowElemetsWatchFace();
-                    JSON_Modified = true;
-                    FormText();
+                AddAnalogTimePro();
+                ShowElemetsWatchFace();
+                JSON_Modified = true;
+                FormText();
 
-                    //panel_WatchfaceElements.AutoScrollPosition = new Point(
-                    //    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                    //    panel_WatchfaceElements.VerticalScroll.Maximum); 
-                }
-                else MessageBox.Show(Properties.FormStrings.Message_EditablePointerAOD_Text, Properties.FormStrings.Message_Warning_Caption,
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //panel_WatchfaceElements.AutoScrollPosition = new Point(
+                //    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                //    panel_WatchfaceElements.VerticalScroll.Maximum); 
             }
             PreviewView = false;
             //if (comboBox_AddTime.SelectedIndex >= 0) MessageBox.Show(comboBox_AddTime.Text);
@@ -3719,6 +3763,7 @@ namespace Watch_Face_Editor
             if (!PreviewView) return;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
+            ElementAnalogTimePro analogTime = new ElementAnalogTimePro();
             if (radioButton_ScreenNormal.Checked)
             {
                 if (Watch_Face.ScreenNormal == null) Watch_Face.ScreenNormal = new ScreenNormal();
@@ -3733,9 +3778,11 @@ namespace Watch_Face_Editor
 
                 if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
                     Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
+
+                if (analogTime.SmoothSecond != null) analogTime.SmoothSecond.type = 2;
             }
 
-            ElementAnalogTimePro analogTime = new ElementAnalogTimePro();
+            //ElementAnalogTimePro analogTime = new ElementAnalogTimePro();
             analogTime.visible = true;
             //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementAnalogTimePro"); // проверяем что такого элемента нет
@@ -3961,33 +4008,6 @@ namespace Watch_Face_Editor
         /// <summary>Добавляем ярлыки в циферблат</summary>
         private void AddShortcuts()
         {
-            /*if (!PreviewView) return;
-            List<object> Elements = new List<object>();
-            if (Watch_Face == null) Watch_Face = new WATCH_FACE();
-            if (radioButton_ScreenNormal.Checked)
-            {
-                if (Watch_Face.ScreenNormal == null) Watch_Face.ScreenNormal = new ScreenNormal();
-                if (Watch_Face.ScreenNormal.Elements == null) Watch_Face.ScreenNormal.Elements = new List<object>();
-                Elements = Watch_Face.ScreenNormal.Elements;
-            }
-            else
-            {
-                if (Watch_Face.ScreenAOD == null) Watch_Face.ScreenAOD = new ScreenAOD();
-                if (Watch_Face.ScreenAOD.Elements == null) Watch_Face.ScreenAOD.Elements = new List<object>();
-                Elements = Watch_Face.ScreenAOD.Elements;
-
-                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
-                    Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
-            }
-
-            ElementShortcuts shortcuts = new ElementShortcuts();
-            shortcuts.enable = true;
-            //digitalTime.position = Elements.Count;
-            bool exists = Elements.Exists(e => e.GetType().Name == "ElementShortcuts"); // проверяем что такого элемента нет
-            //if (!exists) Elements.Insert(0, shortcuts);
-            if (!exists) Elements.Add(shortcuts);
-            uCtrl_Shortcuts_Elm.SettingsClear();*/
-
             if (!PreviewView) return;
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (Watch_Face.Shortcuts == null) Watch_Face.Shortcuts = new ElementShortcuts();
@@ -9089,7 +9109,11 @@ namespace Watch_Face_Editor
                 if (analogTime.Hour == null) analogTime.Hour = new hmUI_widget_IMG_POINTER();
                 if (analogTime.Minute == null) analogTime.Minute = new hmUI_widget_IMG_POINTER();
                 if (analogTime.Second == null) analogTime.Second = new hmUI_widget_IMG_POINTER();
-                if (analogTime.SmoothSecond == null) analogTime.SmoothSecond = new Smooth_Second();
+                if (analogTime.SmoothSecond == null) 
+                {
+                    analogTime.SmoothSecond = new Smooth_Second();
+                    if (radioButton_ScreenIdle.Checked) analogTime.SmoothSecond.type = 2;
+                }
 
                 Dictionary<string, int> elementOptions = uCtrl_AnalogTimePro_Elm.GetOptionsPosition();
                 if (elementOptions.ContainsKey("Hour")) analogTime.Hour.position = elementOptions["Hour"];
@@ -11805,7 +11829,9 @@ namespace Watch_Face_Editor
                         #region ElementAnalogTimePro
                         case "ElementAnalogTimePro":
                             ElementAnalogTimePro AnalogTimePro = (ElementAnalogTimePro)element;
-                            Watch_Face.ScreenAOD.Elements.Add((ElementAnalogTimePro)AnalogTimePro.Clone());
+                            ElementAnalogTimePro AnalogTimePro_temp = (ElementAnalogTimePro)AnalogTimePro.Clone();
+                            if (AnalogTimePro_temp.SmoothSecond != null) AnalogTimePro_temp.SmoothSecond.type = 2;
+                            Watch_Face.ScreenAOD.Elements.Add(AnalogTimePro_temp);
                             break;
                         #endregion
 

@@ -54,7 +54,7 @@
             this.radioButton_type2.TabStop = true;
             this.toolTipTypeHint.SetToolTip(this.radioButton_type2, resources.GetString("radioButton_type2.ToolTip"));
             this.radioButton_type2.UseVisualStyleBackColor = true;
-            this.radioButton_type2.AppearanceChanged += new System.EventHandler(this.radioButton_CheckedChanged);
+            this.radioButton_type2.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // toolTipTypeHint
             // 
@@ -72,7 +72,6 @@
             0,
             0});
             this.numericUpDown_fps.Name = "numericUpDown_fps";
-            this.toolTipTypeHint.SetToolTip(this.numericUpDown_fps, resources.GetString("numericUpDown_fps.ToolTip"));
             this.numericUpDown_fps.Value = new decimal(new int[] {
             15,
             0,
@@ -84,7 +83,6 @@
             // 
             resources.ApplyResources(this.label01, "label01");
             this.label01.Name = "label01";
-            this.toolTipTypeHint.SetToolTip(this.label01, resources.GetString("label01.ToolTip"));
             // 
             // UCtrl_SmoothSeconds_Opt
             // 
@@ -95,7 +93,6 @@
             this.Controls.Add(this.radioButton_type2);
             this.Controls.Add(this.radioButton_type1);
             this.Name = "UCtrl_SmoothSeconds_Opt";
-            this.toolTipTypeHint.SetToolTip(this, resources.GetString("$this.ToolTip"));
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_fps)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

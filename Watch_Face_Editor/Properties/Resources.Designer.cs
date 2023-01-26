@@ -201,6 +201,17 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на {\rtf1\adeflang1025\ansi\ansicpg1250\uc1\adeff0\deff0\stshfdbch31505\stshfloch31506\stshfhich31506\stshfbi0\deflang1029\deflangfe1029\themelang1033\themelangfe1042\themelangcs0{\fonttbl{\f0\fbidi \froman\fcharset238\fprq2{\*\panose 02020603050405020304}Times New Roman;}
+        ///{\f2\fbidi \fmodern\fcharset238\fprq1{\*\panose 02070309020205020404}Courier New;}{\f3\fbidi \froman\fcharset2\fprq2{\*\panose 05050102010706020507}Symbol;}{\f10\fbidi \fnil\fcharset2\fprq2{\*\panose 05000000000000000000}Wingdings;}
+        ///{\f34\ [остаток строки не уместился]&quot;;.
+        /// </summary>
+        internal static string tips_cs {
+            get {
+                return ResourceManager.GetString("tips_cs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на {\rtf1\adeflang1025\ansi\ansicpg1252\uc1\adeff0\deff0\stshfdbch31505\stshfloch31506\stshfhich31506\stshfbi0\deflang1031\deflangfe1031\themelang1033\themelangfe1042\themelangcs0{\fonttbl{\f0\fbidi \froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}{\f2\fbidi \fmodern\fcharset0\fprq1{\*\panose 02070309020205020404}Courier New;}
         ///{\f3\fbidi \froman\fcharset2\fprq2{\*\panose 05050102010706020507}Symbol;}{\f10\fbidi \fnil\fcharset2\fprq2{\*\panose 05000000000000000000}Wingdings;}{\f34\fbidi  [остаток строки не уместился]&quot;;.
         /// </summary>
@@ -227,6 +238,17 @@ namespace Watch_Face_Editor.Properties {
         internal static string tips_es {
             get {
                 return ResourceManager.GetString("tips_es", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на {\rtf1\adeflang1025\ansi\ansicpg1252\uc1\adeff0\deff0\stshfdbch0\stshfloch0\stshfhich0\stshfbi0\deflang1036\deflangfe1036{\fonttbl{\f0\froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}{\f10\fnil\fcharset2\fprq2{\*\panose 05000000000000000000}Wingdings;}
+        ///{\f156\fswiss\fcharset0\fprq2{\*\panose 020f0502020204030204}Calibri;}{\f721\froman\fcharset238\fprq2 Times New Roman CE;}{\f722\froman\fcharset204\fprq2 Times New Roman Cyr;}{\f724\froman\fcharset161\fprq2 Times New Roman Greek;}
+        ///{\f [остаток строки не уместился]&quot;;.
+        /// </summary>
+        internal static string tips_fr {
+            get {
+                return ResourceManager.GetString("tips_fr", resourceCulture);
             }
         }
         
