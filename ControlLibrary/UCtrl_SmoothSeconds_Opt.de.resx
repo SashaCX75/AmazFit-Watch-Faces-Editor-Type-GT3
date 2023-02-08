@@ -136,4 +136,23 @@
   <data name="radioButton_type2.ToolTip" xml:space="preserve">
     <value>Universelle Methode. Weniger reibungsloser Ablauf des Sekundenzeigers (es macht keinen Sinn, fps über 6 einzustellen).</value>
   </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>223, 49</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>   Typ 1 - Funktioniert nicht bei Modellen mit 
+ZeppOS 2 und einigen anderen, und auch im 
+AOD-Modus nicht.</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 136</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>243, 39</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>   Typ 2 - Universelle Methode. Weniger Laufruhe 
+des Sekundenzeigers (es macht keinen Sinn, die 
+fps über 6 einzustellen).</value>
+  </data>
 </root>

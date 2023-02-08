@@ -121,62 +121,62 @@
   <data name="checkBox_disconneсnt_toast.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 17</value>
   </data>
-  <data name="checkBox_disconneсnt_toast.Text" xml:space="preserve">
-    <value>Mitteilung</value>
-  </data>
-  <data name="comboBox_disconneсnt_vibrate_type.Items" xml:space="preserve">
-    <value>Kurz</value>
-  </data>
-  <data name="comboBox_disconneсnt_vibrate_type.Items1" xml:space="preserve">
-    <value>Mittel</value>
-  </data>
-  <data name="comboBox_disconneсnt_vibrate_type.Items2" xml:space="preserve">
-    <value>Lang</value>
-  </data>
-  <data name="comboBox_disconneсnt_vibrate_type.Items3" xml:space="preserve">
-    <value>Lang (kontinuierlich)</value>
-  </data>
-  <data name="label_disconneсnt_vibrate.Text" xml:space="preserve">
-    <value>Vibrations- Typ</value>
-  </data>
   <data name="checkBox_disconneсnt_vibrate.Size" type="System.Drawing.Size, System.Drawing">
     <value>67, 17</value>
-  </data>
-  <data name="checkBox_disconneсnt_vibrate.Text" xml:space="preserve">
-    <value>Vibration</value>
-  </data>
-  <data name="groupBox_disconneсnt.Text" xml:space="preserve">
-    <value>Verbindung verloren</value>
   </data>
   <data name="checkBox_conneсnt_toast.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 17</value>
   </data>
-  <data name="checkBox_conneсnt_toast.Text" xml:space="preserve">
-    <value>Mitteilung</value>
-  </data>
-  <data name="comboBox_conneсnt_vibrate_type.Items" xml:space="preserve">
-    <value>Kurz</value>
-  </data>
-  <data name="comboBox_conneсnt_vibrate_type.Items1" xml:space="preserve">
-    <value>Mittel</value>
-  </data>
-  <data name="comboBox_conneсnt_vibrate_type.Items2" xml:space="preserve">
-    <value>Lang</value>
-  </data>
-  <data name="comboBox_conneсnt_vibrate_type.Items3" xml:space="preserve">
-    <value>Lang (kontinuierlich)</value>
-  </data>
-  <data name="label_conneсnt_vibrate.Text" xml:space="preserve">
-    <value>Vibrations- Typ</value>
-  </data>
   <data name="checkBox_conneсnt_vibrate.Size" type="System.Drawing.Size, System.Drawing">
     <value>67, 17</value>
   </data>
-  <data name="checkBox_conneсnt_vibrate.Text" xml:space="preserve">
+  <data name="checkBox_conneсt_toast.Text" xml:space="preserve">
+    <value>Mitteilung</value>
+  </data>
+  <data name="checkBox_conneсt_vibrate.Text" xml:space="preserve">
     <value>Vibration</value>
   </data>
-  <data name="groupBox_conneсnt.Text" xml:space="preserve">
+  <data name="checkBox_disconneсt_toast.Text" xml:space="preserve">
+    <value>Mitteilung</value>
+  </data>
+  <data name="checkBox_disconneсt_vibrate.Text" xml:space="preserve">
+    <value>Vibration</value>
+  </data>
+  <data name="comboBox_conneсt_vibrate_type.Items" xml:space="preserve">
+    <value>Kurz</value>
+  </data>
+  <data name="comboBox_conneсt_vibrate_type.Items1" xml:space="preserve">
+    <value>Mittel</value>
+  </data>
+  <data name="comboBox_conneсt_vibrate_type.Items2" xml:space="preserve">
+    <value>Lang</value>
+  </data>
+  <data name="comboBox_conneсt_vibrate_type.Items3" xml:space="preserve">
+    <value>Lang (kontinuierlich)</value>
+  </data>
+  <data name="comboBox_disconneсt_vibrate_type.Items" xml:space="preserve">
+    <value>Kurz</value>
+  </data>
+  <data name="comboBox_disconneсt_vibrate_type.Items1" xml:space="preserve">
+    <value>Mittel</value>
+  </data>
+  <data name="comboBox_disconneсt_vibrate_type.Items2" xml:space="preserve">
+    <value>Lang</value>
+  </data>
+  <data name="comboBox_disconneсt_vibrate_type.Items3" xml:space="preserve">
+    <value>Lang (kontinuierlich)</value>
+  </data>
+  <data name="groupBox_conneсt.Text" xml:space="preserve">
     <value>Verbindung wiederhergestellt</value>
+  </data>
+  <data name="groupBox_disconneсt.Text" xml:space="preserve">
+    <value>Verbindung verloren</value>
+  </data>
+  <data name="label_conneсt_vibrate.Text" xml:space="preserve">
+    <value>Vibrations- Typ</value>
+  </data>
+  <data name="label_disconneсt_vibrate.Text" xml:space="preserve">
+    <value>Vibrations- Typ</value>
   </data>
   <data name="label_hint.Text" xml:space="preserve">
     <value>Damit diese Funktion funktioniert, muss AOD auf der Uhr aktiviert sein.</value>

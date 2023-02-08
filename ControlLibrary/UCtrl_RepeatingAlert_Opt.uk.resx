@@ -117,38 +117,95 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label_hint.Text" xml:space="preserve">
+    <value>Для роботи цієї функції на годиннику має бути включений AOD.</value>
+  </data>
+  <data name="comboBox_repeat_period_time.Items" xml:space="preserve">
+    <value>Кожні 30 хвилин</value>
+  </data>
+  <data name="comboBox_repeat_period_time.Items1" xml:space="preserve">
+    <value>Кожні 20 хвилин</value>
+  </data>
+  <data name="comboBox_repeat_period_time.Items2" xml:space="preserve">
+    <value>Кожні 15 хвилин</value>
+  </data>
+  <data name="comboBox_repeat_period_time.Items3" xml:space="preserve">
+    <value>Кожні 10 хвилин</value>
+  </data>
+  <data name="comboBox_repeat_period_time.Items4" xml:space="preserve">
+    <value>Кожні 5 хвилин</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="radioButton_type1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 17</value>
+  <data name="label_repeat_period.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 13</value>
   </data>
-  <data name="radioButton_type1.Text" xml:space="preserve">
-    <value>Typ 1</value>
+  <data name="label_repeat_period.Text" xml:space="preserve">
+    <value>Період повторення</value>
   </data>
-  <data name="radioButton_type1.ToolTip" xml:space="preserve">
-    <value>Nefunguje na modelech se ZeppOS 2 a některými dalšími, stejně jako v režimu AOD.</value>
+  <data name="checkBox_repeat_period_toast.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 17</value>
   </data>
-  <data name="radioButton_type2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 17</value>
+  <data name="checkBox_repeat_period_toast.Text" xml:space="preserve">
+    <value>Повідомлення</value>
   </data>
-  <data name="radioButton_type2.Text" xml:space="preserve">
-    <value>Typ 2</value>
+  <data name="comboBox_repeat_period_vibrate_type.Items" xml:space="preserve">
+    <value>Коротка</value>
   </data>
-  <data name="radioButton_type2.ToolTip" xml:space="preserve">
-    <value>Univerzální metoda. Méně plynulý chod vteřinové ručičky (nemá smysl nastavovat fps nad 6).</value>
+  <data name="comboBox_repeat_period_vibrate_type.Items1" xml:space="preserve">
+    <value>Середня</value>
   </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 36</value>
+  <data name="comboBox_repeat_period_vibrate_type.Items2" xml:space="preserve">
+    <value>Довга</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>   Typ 1 – Nefunguje na modelech se ZeppOS 2
-a některé další, stejně jako v režimu AOD.</value>
+  <data name="comboBox_repeat_period_vibrate_type.Items3" xml:space="preserve">
+    <value>Довга (безперервна)</value>
   </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 39</value>
+  <data name="label_repeat_period_vibrate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 13</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>   Typ 2 - Obecná metoda. Méně plynulý pohyb 
-vteřinové ručičky (nemá smysl nastavit fps více 
-než 6).</value>
+  <data name="label_repeat_period_vibrate.Text" xml:space="preserve">
+    <value>Тип вібрації</value>
+  </data>
+  <data name="checkBox_repeat_period_vibrate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 17</value>
+  </data>
+  <data name="checkBox_repeat_period_vibrate.Text" xml:space="preserve">
+    <value>Вібрація</value>
+  </data>
+  <data name="groupBox_repeat_period.Text" xml:space="preserve">
+    <value>Періодичний сигнал</value>
+  </data>
+  <data name="checkBox_hour_toast.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 17</value>
+  </data>
+  <data name="checkBox_hour_toast.Text" xml:space="preserve">
+    <value>Повідомлення</value>
+  </data>
+  <data name="comboBox_hour_vibrate_type.Items" xml:space="preserve">
+    <value>Коротка</value>
+  </data>
+  <data name="comboBox_hour_vibrate_type.Items1" xml:space="preserve">
+    <value>Середня</value>
+  </data>
+  <data name="comboBox_hour_vibrate_type.Items2" xml:space="preserve">
+    <value>Довга</value>
+  </data>
+  <data name="comboBox_hour_vibrate_type.Items3" xml:space="preserve">
+    <value>Довга (безперервна)</value>
+  </data>
+  <data name="label_hour_vibrate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 13</value>
+  </data>
+  <data name="label_hour_vibrate.Text" xml:space="preserve">
+    <value>Тип вібрації</value>
+  </data>
+  <data name="checkBox_hour_vibrate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 17</value>
+  </data>
+  <data name="checkBox_hour_vibrate.Text" xml:space="preserve">
+    <value>Вібрація</value>
+  </data>
+  <data name="groupBox_hour.Text" xml:space="preserve">
+    <value>Сигнал щогодини</value>
   </data>
 </root>

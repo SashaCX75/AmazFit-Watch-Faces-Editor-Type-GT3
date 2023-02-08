@@ -389,24 +389,8 @@ namespace Watch_Face_Editor
         private void Form1_Shown(object sender, EventArgs e)
         {
             Logger.WriteLine("* Form1_Shown");
-            Logger.WriteLine("Загружаем файл из значения аргумента " + StartFileNameJson);
-            if ((StartFileNameJson != null) && (StartFileNameJson.Length > 0))
-            {
-                Logger.WriteLine("Загружаем Json файл из значения аргумента " + StartFileNameJson);
-                FileName = Path.GetFileName(StartFileNameJson);
-                FullFileDir = Path.GetDirectoryName(StartFileNameJson);
-                LoadJson(StartFileNameJson);
-                StartFileNameJson = "";
-            }
-            //else if ((StartFileNameBin != null) && (StartFileNameBin.Length > 0))
-            //{
-            //    Logger.WriteLine("Загружаем bin файл из значения аргумента " + StartFileNameBin);
-            //    zip_unpack_bin(StartFileNameBin);
-            //    StartFileNameBin = "";
-            //}
-            //JSON_Modified = false;
-            //FormText();
-            //Logger.WriteLine("Загрузили файл из значения аргумента " + StartFileNameJson);
+            JSON_Modified = false;
+            FormText();
 
             // изменяем размер панели для предпросмотра если она не влазит
             if (pictureBox_Preview.Top + pictureBox_Preview.Height > label_watch_model.Top)
@@ -436,6 +420,7 @@ namespace Watch_Face_Editor
             uCtrl_EditableTimePointer_Opt.AutoSize = true;
             uCtrl_EditableElements_Opt.AutoSize = true;
             uCtrl_DisconnectAlert_Opt.AutoSize = true;
+            uCtrl_RepeatingAlert_Opt.AutoSize = true;
             uCtrl_SmoothSeconds_Opt.AutoSize = true;
 
             button_CreatePreview.Location = button_RefreshPreview.Location;
@@ -457,6 +442,21 @@ namespace Watch_Face_Editor
             fitText(button_SaveGIF);
             fitText(button_SavePNG);
             Logger.WriteLine("* Form1_Shown(end)");
+
+            if (StartFileNameJson != null && StartFileNameJson.Length > 0)
+            {
+                Logger.WriteLine("Загружаем Json файл из значения аргумента " + StartFileNameJson);
+                FileName = Path.GetFileName(StartFileNameJson);
+                FullFileDir = Path.GetDirectoryName(StartFileNameJson);
+                LoadJson(StartFileNameJson);
+                StartFileNameJson = "";
+            }
+            else if (StartFileNameZip != null && StartFileNameZip.Length > 0)
+            {
+                Logger.WriteLine("Загружаем zip файл из значения аргумента " + StartFileNameZip);
+                Unpack_Zip(StartFileNameZip);
+                StartFileNameZip = "";
+            }
         }
 
         public void fitText(Control control)
@@ -1172,7 +1172,8 @@ namespace Watch_Face_Editor
                 int dX = Math.Abs(cursorX - cursorPos.X);
                 int dY = Math.Abs(cursorY - cursorPos.Y);
                 if (panel.Name == "panel_UC_Background" || panel.Name == "panel_UC_Shortcuts" || panel.Name == "panel_UC_DisconnectAlert" || 
-                    panel.Name == "panel_UC_EditableTimePointer" || panel.Name == "panel_UC_EditableElements")
+                    panel.Name == "panel_UC_EditableTimePointer" || panel.Name == "panel_UC_EditableElements" || 
+                    panel.Name == "panel_UC_RepeatingAlert")
                 {
                     panel.DoDragDrop(sender, DragDropEffects.None);
                     return;
@@ -1513,6 +1514,14 @@ namespace Watch_Face_Editor
                         draggedUCtrl_Elm = (UCtrl_Background_Elm)e.Data.GetData(typeof(UCtrl_Background_Elm));
                         if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
                         break;
+
+                    case "ControlLibrary.UCtrl_RepeatingAlert_Elm":
+                        //EditableElements editableElements =
+                        //    (EditableElements)Elements.Find(e1 => e1.GetType().Name == "ElementEditablePointers");
+                        //index = Elements.IndexOf(editablePointers);
+                        draggedUCtrl_Elm = (UCtrl_RepeatingAlert_Elm)e.Data.GetData(typeof(UCtrl_RepeatingAlert_Elm));
+                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                        break;
                 }
 
                 if (draggedPanel == null) return;
@@ -1532,6 +1541,7 @@ namespace Watch_Face_Editor
                     if (control.Name == "panel_UC_EditableTimePointer") return;
                     if (control.Name == "panel_UC_EditableElements") return;
                     if (control.Name == "panel_UC_DisconnectAlert") return;
+                    if (control.Name == "panel_UC_RepeatingAlert") return;
                     var pos = tableLayoutPanel_ElemetsWatchFace.GetPositionFromControl(control);
                     var posOld = tableLayoutPanel_ElemetsWatchFace.GetPositionFromControl(draggedPanel);
                     int indexNew = tableLayoutPanel_ElemetsWatchFace.RowCount - 2 - pos.Row;
@@ -1660,6 +1670,9 @@ namespace Watch_Face_Editor
                 case "DisconnectAlert":
                     uCtrl_DisconnectAlert_Opt.Visible = true;
                     break;
+                case "RepeatingAlert":
+                    uCtrl_RepeatingAlert_Opt.Visible = true;
+                    break;
                 case "SmoothSecond":
                     uCtrl_SmoothSeconds_Opt.Visible = true;
                     break;
@@ -1692,6 +1705,7 @@ namespace Watch_Face_Editor
             uCtrl_EditableTimePointer_Opt.Visible = false;
             uCtrl_EditableElements_Opt.Visible = false;
             uCtrl_DisconnectAlert_Opt.Visible = false;
+            uCtrl_RepeatingAlert_Opt.Visible = false;
             uCtrl_SmoothSeconds_Opt.Visible = false;
         }
 
@@ -1732,6 +1746,7 @@ namespace Watch_Face_Editor
             if (selectElementName != "Moon") uCtrl_Moon_Elm.ResetHighlightState();
 
             if (selectElementName != "DisconnectAlert") uCtrl_DisconnectAlert_Elm.ResetHighlightState();
+            if (selectElementName != "RepeatingAlert") uCtrl_RepeatingAlert_Elm.ResetHighlightState();
 
 
             if (selectElementName != "Animation") 
@@ -1793,6 +1808,8 @@ namespace Watch_Face_Editor
             uCtrl_Sunrise_Elm.SettingsClear();
             uCtrl_Wind_Elm.SettingsClear();
             uCtrl_Moon_Elm.SettingsClear();
+
+            uCtrl_RepeatingAlert_Elm.SettingsClear();
         }
 
         private void uCtrl_Background_Elm_SelectChanged(object sender, EventArgs eventArgs)
@@ -2803,8 +2820,8 @@ namespace Watch_Face_Editor
         // формируем изображение для предпросмотра
         private void PreviewImage()
         {
-            Logger.WriteLine("* PreviewImage");
             if (!PreviewView) return;
+            Logger.WriteLine("* PreviewImage");
             //Graphics gPanel = panel_Preview.CreateGraphics();
             //gPanel.Clear(panel_Preview.BackColor);
             float scale = 1.0f;
@@ -3517,6 +3534,22 @@ namespace Watch_Face_Editor
                 //    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
                 //    panel_WatchfaceElements.VerticalScroll.Maximum);
             }
+            if (comboBox_AddSystem.SelectedIndex == 6)
+            {
+                if (radioButton_ScreenNormal.Checked)
+                {
+                    AddRepeatingAlert();
+                    ShowElemetsWatchFace();
+                    JSON_Modified = true;
+                    FormText();
+                }
+                else MessageBox.Show(Properties.FormStrings.Message_ElementAOD_Text, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                //panel_WatchfaceElements.AutoScrollPosition = new Point(
+                //    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                //    panel_WatchfaceElements.VerticalScroll.Maximum);
+            }
 
             PreviewView = false;
             //if (comboBox_AddTime.SelectedIndex >= 0) MessageBox.Show(comboBox_AddTime.Text);
@@ -3853,6 +3886,16 @@ namespace Watch_Face_Editor
 
             if (Watch_Face.DisconnectAlert == null) Watch_Face.DisconnectAlert = new DisconnectAlert();
             Watch_Face.DisconnectAlert.enable = true;
+        }
+
+        /// <summary>Добавляем повторяющиеся оповещение</summary>
+        private void AddRepeatingAlert()
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) Watch_Face = new WATCH_FACE();
+
+            if (Watch_Face.RepeatAlert == null) Watch_Face.RepeatAlert = new RepeatAlert();
+            Watch_Face.RepeatAlert.enable = true;
         }
 
         /// <summary>Добавляем дату в циферблат</summary>
@@ -4641,6 +4684,7 @@ namespace Watch_Face_Editor
             uCtrl_Moon_Elm.Visible = false;
 
             uCtrl_DisconnectAlert_Elm.Visible = false;
+            uCtrl_RepeatingAlert_Elm.Visible = false;
 
 
             int count = tableLayoutPanel_ElemetsWatchFace.RowCount;
@@ -5818,6 +5862,16 @@ namespace Watch_Face_Editor
                 elementsCount++;
             }
 
+            if (Watch_Face.RepeatAlert != null && radioButton_ScreenNormal.Checked)
+            {
+                RepeatAlert Repeat_Alert = Watch_Face.RepeatAlert;
+                uCtrl_RepeatingAlert_Elm.SetVisibilityElementStatus(Repeat_Alert.enable);
+
+                uCtrl_RepeatingAlert_Elm.Visible = true;
+                SetElementPositionInGUI("RepeatAlert", count - elementsCount - 2);
+                elementsCount++;
+            }
+
             if (Watch_Face.DisconnectAlert != null && radioButton_ScreenNormal.Checked)
             {
                 DisconnectAlert Disconnect_Alert = Watch_Face.DisconnectAlert;
@@ -6006,6 +6060,9 @@ namespace Watch_Face_Editor
 
                 case "DisconnectAlert":
                     panel = panel_UC_DisconnectAlert;
+                    break;
+                case "RepeatAlert":
+                    panel = panel_UC_RepeatingAlert;
                     break;
             }
             if (panel == null) return;
@@ -6557,6 +6614,22 @@ namespace Watch_Face_Editor
             FormText();
         }
 
+        private void uCtrl_RepeatingAlert_Elm_DelElement(object sender, EventArgs eventArgs)
+        {
+            if (Watch_Face != null && Watch_Face.RepeatAlert != null)
+            {
+                Watch_Face.RepeatAlert = null;
+
+                PreviewView = false;
+                ShowElemetsWatchFace();
+                PreviewView = true;
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
         private FileInfo[] FileInfoSort(FileInfo[] fileInfo)
         {
             progressBar1.Value = 0;
@@ -7089,12 +7162,6 @@ namespace Watch_Face_Editor
 
             PreviewView = true;
             //PreviewImage();
-        }
-
-        // записываем параметры в JsonPreview
-        private void button_JsonPreview_Write_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void button_JsonPreview_Read_Click(object sender, EventArgs e)
@@ -9378,6 +9445,8 @@ namespace Watch_Face_Editor
             FormText();
         }
 
+        #region SelectChanged
+
         private void uCtrl_DateDay_Elm_SelectChanged(object sender, EventArgs eventArgs)
         {
             string selectElement = uCtrl_DateDay_Elm.selectedElement;
@@ -9868,7 +9937,6 @@ namespace Watch_Face_Editor
             }
         }
 
-        #region SelectChanged
         private void uCtrl_Steps_Elm_SelectChanged(object sender, EventArgs eventArgs)
         {
             string selectElement = uCtrl_Steps_Elm.selectedElement;
@@ -11463,12 +11531,23 @@ namespace Watch_Face_Editor
 
             if (disconnectAlert != null)
             {
-                //hmUI_widget_IMG_NUMBER img_number = null;
-
-                //if (distance.Number == null) distance.Number = new hmUI_widget_IMG_NUMBER();
-                //img_number = distance.Number;
                 Read_DisconnectAlert_Options(disconnectAlert);
                 ShowElemenrOptions("DisconnectAlert");
+
+            }
+        }
+
+        private void uCtrl_RepeatingAlert_Elm_SelectChanged(object sender, EventArgs eventArgs)
+        {
+            ResetHighlightState("RepeatingAlert");
+
+            RepeatAlert repeatingAlert = null;
+            if (Watch_Face != null && Watch_Face.RepeatAlert != null) repeatingAlert = Watch_Face.RepeatAlert;
+
+            if (repeatingAlert != null)
+            {
+                Read_RepeatingAlert_Options(repeatingAlert);
+                ShowElemenrOptions("RepeatingAlert");
 
             }
         }
@@ -13623,7 +13702,22 @@ namespace Watch_Face_Editor
             }
 
             JSON_Modified = true;
-            PreviewImage();
+            //PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_RepeatingAlert_Elm_VisibleElementChanged(object sender, EventArgs eventArgs, bool visible)
+        {
+            RepeatAlert repeatAlert = null;
+            if (Watch_Face != null && Watch_Face.RepeatAlert != null) repeatAlert = Watch_Face.RepeatAlert;
+
+            if (repeatAlert != null)
+            {
+                repeatAlert.enable = visible;
+            }
+
+            JSON_Modified = true;
+            //PreviewImage();
             FormText();
         }
 
@@ -16189,8 +16283,6 @@ namespace Watch_Face_Editor
             }
             Logger.WriteLine("* Project_SaveAs (end)");
         }
-
-        
     }
 }
 
@@ -16238,6 +16330,7 @@ static class Logger
             //{
             //    sw.WriteLine(String.Format("{0,-23} {1}", DateTime.Now.ToString() + ":", message));
             //}
+            Console.WriteLine(String.Format("{0,-23} {1}", DateTime.Now.ToString() + ":", message));
         }
         catch (Exception)
         {

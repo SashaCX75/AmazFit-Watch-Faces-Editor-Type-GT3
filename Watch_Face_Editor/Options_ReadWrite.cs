@@ -93,6 +93,9 @@ namespace Watch_Face_Editor
             if (Watch_Face_temp.DisconnectAlert != null)
                 Watch_Face_return.DisconnectAlert = Watch_Face_temp.DisconnectAlert;
 
+            if (Watch_Face_temp.RepeatAlert != null)
+                Watch_Face_return.RepeatAlert = Watch_Face_temp.RepeatAlert;
+
             return Watch_Face_return;
         }
 
@@ -1542,18 +1545,55 @@ namespace Watch_Face_Editor
 
             if (disconnectAlert.BluetoothOff != null)
             {
-                uCtrl_DisconnectAlert_Opt.checkBox_disconneсnt_vibrate.Checked = disconnectAlert.BluetoothOff.vibrate;
-                uCtrl_DisconnectAlert_Opt.checkBox_disconneсnt_toast.Checked = disconnectAlert.BluetoothOff.toastShow;
+                uCtrl_DisconnectAlert_Opt.checkBox_disconneсt_vibrate.Checked = disconnectAlert.BluetoothOff.vibrate;
+                uCtrl_DisconnectAlert_Opt.checkBox_disconneсt_toast.Checked = disconnectAlert.BluetoothOff.toastShow;
                 uCtrl_DisconnectAlert_Opt.SetVibratetDisconneсnt(disconnectAlert.BluetoothOff.vibrateType);
-                uCtrl_DisconnectAlert_Opt.textBox_disconneсnt_toast_text.Text = disconnectAlert.BluetoothOff.toastText; 
+                uCtrl_DisconnectAlert_Opt.textBox_disconneсt_toast_text.Text = disconnectAlert.BluetoothOff.toastText; 
             }
 
             if (disconnectAlert.BluetoothOn != null)
             {
-                uCtrl_DisconnectAlert_Opt.checkBox_conneсnt_vibrate.Checked = disconnectAlert.BluetoothOn.vibrate;
-                uCtrl_DisconnectAlert_Opt.checkBox_conneсnt_toast.Checked = disconnectAlert.BluetoothOn.toastShow;
+                uCtrl_DisconnectAlert_Opt.checkBox_conneсt_vibrate.Checked = disconnectAlert.BluetoothOn.vibrate;
+                uCtrl_DisconnectAlert_Opt.checkBox_conneсt_toast.Checked = disconnectAlert.BluetoothOn.toastShow;
                 uCtrl_DisconnectAlert_Opt.SetVibratetConneсnt(disconnectAlert.BluetoothOn.vibrateType);
-                uCtrl_DisconnectAlert_Opt.textBox_conneсnt_toast_text.Text = disconnectAlert.BluetoothOn.toastText; 
+                uCtrl_DisconnectAlert_Opt.textBox_conneсt_toast_text.Text = disconnectAlert.BluetoothOn.toastText; 
+            }
+
+            PreviewView = true;
+        }
+
+        /// <summary>Читаем настройки для отображения повторяющихся сигналов</summary>
+        private void Read_RepeatingAlert_Options(RepeatAlert repeatingAlert)
+        {
+            PreviewView = false;
+
+            uCtrl_RepeatingAlert_Opt.SettingsClear();
+
+            uCtrl_RepeatingAlert_Opt.Visible = true;
+
+            //userCtrl_Background_Options.SettingsClear();
+
+            if (repeatingAlert == null)
+            {
+                PreviewView = true;
+                return;
+            }
+
+            if (repeatingAlert.EveryHour != null)
+            {
+                uCtrl_RepeatingAlert_Opt.checkBox_hour_vibrate.Checked = repeatingAlert.EveryHour.vibrate;
+                uCtrl_RepeatingAlert_Opt.checkBox_hour_toast.Checked = repeatingAlert.EveryHour.toastShow;
+                uCtrl_RepeatingAlert_Opt.SetVibratetHour(repeatingAlert.EveryHour.vibrateType);
+                uCtrl_RepeatingAlert_Opt.textBox_hour_toast_text.Text = repeatingAlert.EveryHour.toastText;
+            }
+
+            if (repeatingAlert.RepeatingAlert != null)
+            {
+                uCtrl_RepeatingAlert_Opt.checkBox_repeat_period_vibrate.Checked = repeatingAlert.RepeatingAlert.vibrate;
+                uCtrl_RepeatingAlert_Opt.checkBox_repeat_period_toast.Checked = repeatingAlert.RepeatingAlert.toastShow;
+                uCtrl_RepeatingAlert_Opt.SetVibratetRepeatPeriod(repeatingAlert.RepeatingAlert.vibrateType);
+                uCtrl_RepeatingAlert_Opt.SetVibratetRepeatPeriodTime(repeatingAlert.RepeatingAlert.repeatPeriod);
+                uCtrl_RepeatingAlert_Opt.textBox_repeat_period_toast_text.Text = repeatingAlert.RepeatingAlert.toastText;
             }
 
             PreviewView = true;
@@ -3025,18 +3065,44 @@ namespace Watch_Face_Editor
             if (disconnectAlert.BluetoothOff == null) disconnectAlert.BluetoothOff = new BluetoothStateAlert();
             if (disconnectAlert.BluetoothOn == null) disconnectAlert.BluetoothOn = new BluetoothStateAlert();
 
-            disconnectAlert.BluetoothOff.vibrate = uCtrl_DisconnectAlert_Opt.checkBox_disconneсnt_vibrate.Checked;
+            disconnectAlert.BluetoothOff.vibrate = uCtrl_DisconnectAlert_Opt.checkBox_disconneсt_vibrate.Checked;
             disconnectAlert.BluetoothOff.vibrateType = uCtrl_DisconnectAlert_Opt.GetVibratetDisconneсnt();
-            disconnectAlert.BluetoothOff.toastShow = uCtrl_DisconnectAlert_Opt.checkBox_disconneсnt_toast.Checked;
-            disconnectAlert.BluetoothOff.toastText = uCtrl_DisconnectAlert_Opt.textBox_disconneсnt_toast_text.Text;
+            disconnectAlert.BluetoothOff.toastShow = uCtrl_DisconnectAlert_Opt.checkBox_disconneсt_toast.Checked;
+            disconnectAlert.BluetoothOff.toastText = uCtrl_DisconnectAlert_Opt.textBox_disconneсt_toast_text.Text;
 
-            disconnectAlert.BluetoothOn.vibrate = uCtrl_DisconnectAlert_Opt.checkBox_conneсnt_vibrate.Checked;
+            disconnectAlert.BluetoothOn.vibrate = uCtrl_DisconnectAlert_Opt.checkBox_conneсt_vibrate.Checked;
             disconnectAlert.BluetoothOn.vibrateType = uCtrl_DisconnectAlert_Opt.GetVibratetConneсnt();
-            disconnectAlert.BluetoothOn.toastShow = uCtrl_DisconnectAlert_Opt.checkBox_conneсnt_toast.Checked;
-            disconnectAlert.BluetoothOn.toastText = uCtrl_DisconnectAlert_Opt.textBox_conneсnt_toast_text.Text;
+            disconnectAlert.BluetoothOn.toastShow = uCtrl_DisconnectAlert_Opt.checkBox_conneсt_toast.Checked;
+            disconnectAlert.BluetoothOn.toastText = uCtrl_DisconnectAlert_Opt.textBox_conneсt_toast_text.Text;
 
             JSON_Modified = true;
-            PreviewImage();
+            //PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_RepeatingAlert_Opt_ValueChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            RepeatAlert repeatAlert = Watch_Face.RepeatAlert;
+            if (repeatAlert == null) return;
+
+            if (repeatAlert.EveryHour == null) repeatAlert.EveryHour = new PeriodicAlert();
+            if (repeatAlert.RepeatingAlert == null) repeatAlert.RepeatingAlert = new PeriodicAlert();
+
+            repeatAlert.EveryHour.vibrate = uCtrl_RepeatingAlert_Opt.checkBox_hour_vibrate.Checked;
+            repeatAlert.EveryHour.vibrateType = uCtrl_RepeatingAlert_Opt.GetVibratetHour();
+            repeatAlert.EveryHour.toastShow = uCtrl_RepeatingAlert_Opt.checkBox_hour_toast.Checked;
+            repeatAlert.EveryHour.toastText = uCtrl_RepeatingAlert_Opt.textBox_hour_toast_text.Text;
+
+            repeatAlert.RepeatingAlert.vibrate = uCtrl_RepeatingAlert_Opt.checkBox_repeat_period_vibrate.Checked;
+            repeatAlert.RepeatingAlert.vibrateType = uCtrl_RepeatingAlert_Opt.GetVibratetRepeatPeriod();
+            repeatAlert.RepeatingAlert.repeatPeriod = uCtrl_RepeatingAlert_Opt.GetVibratetRepeatPeriodTime();
+            repeatAlert.RepeatingAlert.toastShow = uCtrl_RepeatingAlert_Opt.checkBox_repeat_period_toast.Checked;
+            repeatAlert.RepeatingAlert.toastText = uCtrl_RepeatingAlert_Opt.textBox_repeat_period_toast_text.Text;
+
+            JSON_Modified = true;
+            //PreviewImage();
             FormText();
         }
 

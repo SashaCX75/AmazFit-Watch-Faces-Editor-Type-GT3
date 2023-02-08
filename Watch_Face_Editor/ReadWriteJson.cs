@@ -445,9 +445,9 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) + "// end vibration when connecting or disconnecting" + Environment.NewLine;
 
                             resume_call += TabInString(8) + "checkConnection();" + Environment.NewLine;
-                            resume_call += TabInString(8) + "stopVibro();" + Environment.NewLine;
+                            if (resume_call.IndexOf("stopVibro();") < 0) resume_call += TabInString(8) + "stopVibro();" + Environment.NewLine;
 
-                            pause_call += TabInString(8) + "stopVibro();" + Environment.NewLine;
+                            if (pause_call.IndexOf("stopVibro();") < 0) pause_call += TabInString(8) + "stopVibro();" + Environment.NewLine;
 
                             if (items.IndexOf("const vibrate = hmSensor.createSensor(hmSensor.id.VIBRATE);") < 0)
                             {
@@ -458,6 +458,7 @@ namespace Watch_Face_Editor
                                     "function vibro(scene = 25) {" + Environment.NewLine;
                                 items += TabInString(7) + "let stopDelay = 50;" + Environment.NewLine;
                                 items += TabInString(7) + "stopVibro();" + Environment.NewLine;
+                                items += TabInString(7) + "vibrate.stop();" + Environment.NewLine;
                                 items += TabInString(7) + "vibrate.scene = scene;" + Environment.NewLine;
                                 items += TabInString(7) + "if(scene < 23 || scene > 25) stopDelay = 1300;" + Environment.NewLine;
                                 items += TabInString(7) + "vibrate.start();" + Environment.NewLine;
@@ -470,6 +471,120 @@ namespace Watch_Face_Editor
                                 items += Environment.NewLine + TabInString(6) + "// end vibrate function" + Environment.NewLine;
                             }
                         }  
+                    }
+                }
+
+            }
+
+            // переодический сигнал
+            if (Watch_Face.RepeatAlert != null && Watch_Face.RepeatAlert.enable)
+            {
+                RepeatAlert Repeat_Alert = Watch_Face.RepeatAlert;
+
+                if (Repeat_Alert != null && Repeat_Alert.enable)
+                {
+                    if ((Repeat_Alert.EveryHour != null && (Repeat_Alert.EveryHour.vibrate || Repeat_Alert.EveryHour.toastShow) ||
+                        (Repeat_Alert.RepeatingAlert != null && (Repeat_Alert.RepeatingAlert.vibrate || Repeat_Alert.RepeatingAlert.toastShow))
+                        ))
+                    {
+                        string disconnectAlertOptions = RepeatAlert_Options(Repeat_Alert);
+
+                        if (disconnectAlertOptions.Length > 15)
+                        {
+                            items += TabInString(6) + disconnectAlertOptions + Environment.NewLine;
+
+                            if (items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
+                                items += Environment.NewLine + TabInString(6) + "if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);";
+                            if (items.IndexOf("timeSensor.addEventListener(timeSensor.event.MINUTEEND, function() {") < 0)
+                            {
+                                items += Environment.NewLine + TabInString(6) + "timeSensor.addEventListener(timeSensor.event.MINUTEEND, function() {";
+                                items += Environment.NewLine + TabInString(7) + "repeat_alerts();";
+                                items += Environment.NewLine + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                int pos = items.IndexOf("timeSensor.addEventListener(timeSensor.event.MINUTEEND, function() {");
+                                items = items.Insert(pos + "timeSensor.addEventListener(timeSensor.event.MINUTEEND, function() {".Length, 
+                                    Environment.NewLine + TabInString(7) + "repeat_alerts();");
+                            }
+
+                            items += TabInString(6) + "// repeat alerts" + Environment.NewLine;
+                            items += TabInString(6) + "function repeat_alerts() {" + Environment.NewLine;
+
+                            if (Repeat_Alert.EveryHour != null && (Repeat_Alert.EveryHour.vibrate ||
+                                 (Repeat_Alert.EveryHour.toastShow && Repeat_Alert.EveryHour.toastText.Length > 0)))
+                            {
+                                items += TabInString(7) + "let hourEnd = false;" + Environment.NewLine;
+                                items += TabInString(7) + "if(timeSensor.minute == 0) {" + Environment.NewLine;
+                                items += TabInString(8) + "hourEnd = true;" + Environment.NewLine;
+                                if (Repeat_Alert.EveryHour.toastShow && Repeat_Alert.EveryHour.toastText.Length > 0)
+                                {
+                                    string toastText = Repeat_Alert.EveryHour.toastText.Replace(Environment.NewLine, "\\r\\n");
+                                    items += TabInString(8) + "hmUI.showToast({text: \"" + toastText + "\"});" + Environment.NewLine;
+                                }
+                                if (Repeat_Alert.EveryHour.vibrate)
+                                {
+                                    items += TabInString(8) + "vibro(" +
+                                        Repeat_Alert.EveryHour.vibrateType.ToString() + ");" + Environment.NewLine;
+                                }
+                                items += TabInString(7) + "}" + Environment.NewLine;
+                            }
+
+                            if (Repeat_Alert.RepeatingAlert != null && (Repeat_Alert.RepeatingAlert.vibrate ||
+                                (Repeat_Alert.RepeatingAlert.toastShow && Repeat_Alert.RepeatingAlert.toastText.Length > 0)))
+                            {
+                                if (items.IndexOf("let hourEnd = false;") < 0)
+                                {
+                                    items += TabInString(7) + "if(timeSensor.minute % " + Repeat_Alert.RepeatingAlert.repeatPeriod.ToString() +
+                                        " == 0) {" + Environment.NewLine;
+                                }
+                                else
+                                {
+                                    items += TabInString(7) + "if(timeSensor.minute % " + Repeat_Alert.RepeatingAlert.repeatPeriod.ToString() +
+                                        " == 0 && !hourEnd) {" + Environment.NewLine;
+                                }
+                                if (Repeat_Alert.RepeatingAlert.toastShow && Repeat_Alert.RepeatingAlert.toastText.Length > 0)
+                                {
+                                    string toastText = Repeat_Alert.RepeatingAlert.toastText.Replace(Environment.NewLine, "\\r\\n");
+                                    items += TabInString(8) + "hmUI.showToast({text: \"" + toastText + "\"});" + Environment.NewLine;
+                                }
+                                if (Repeat_Alert.RepeatingAlert.vibrate)
+                                {
+                                    items += TabInString(8) + "vibro(" +
+                                        Repeat_Alert.RepeatingAlert.vibrateType.ToString() + ");" + Environment.NewLine;
+                                }
+                                items += TabInString(7) + "}" + Environment.NewLine;
+                            }
+
+                            items += TabInString(6) + "};" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) + "// end repeat alerts" + Environment.NewLine;
+
+                            if (resume_call.IndexOf("stopVibro();") < 0) resume_call += TabInString(8) + "stopVibro();" + Environment.NewLine;
+
+                            if (pause_call.IndexOf("stopVibro();") < 0) pause_call += TabInString(8) + "stopVibro();" + Environment.NewLine;
+
+                            if (items.IndexOf("const vibrate = hmSensor.createSensor(hmSensor.id.VIBRATE);") < 0)
+                            {
+                                items += TabInString(6) + "// vibrate function" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) + "const vibrate = hmSensor.createSensor(hmSensor.id.VIBRATE);" + Environment.NewLine;
+                                items += TabInString(6) + "let timer_StopVibrate = null;" + Environment.NewLine;
+                                items += Environment.NewLine + Environment.NewLine + TabInString(6) +
+                                    "function vibro(scene = 25) {" + Environment.NewLine;
+                                items += TabInString(7) + "let stopDelay = 50;" + Environment.NewLine;
+                                items += TabInString(7) + "stopVibro();" + Environment.NewLine;
+                                items += TabInString(7) + "vibrate.stop();" + Environment.NewLine;
+                                items += TabInString(7) + "vibrate.scene = scene;" + Environment.NewLine;
+                                items += TabInString(7) + "if(scene < 23 || scene > 25) stopDelay = 1300;" + Environment.NewLine;
+                                items += TabInString(7) + "vibrate.start();" + Environment.NewLine;
+                                items += TabInString(7) + "timer_StopVibrate = timer.createTimer(stopDelay, 3000, stopVibro, {});" + Environment.NewLine;
+                                items += TabInString(6) + "}" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) + "function stopVibro(){" + Environment.NewLine;
+                                items += TabInString(7) + "vibrate.stop();" + Environment.NewLine;
+                                items += TabInString(7) + "if(timer_StopVibrate) timer.stopTimer(timer_StopVibrate);" + Environment.NewLine;
+                                items += TabInString(6) + "}" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) + "// end vibrate function" + Environment.NewLine;
+                            }
+                        }
                     }
                 }
 
@@ -506,7 +621,7 @@ namespace Watch_Face_Editor
                 items += Environment.NewLine + TabInString(7) + "let hour = timeSensor.hour;";
                 items += Environment.NewLine + TabInString(7) + "let minute = timeSensor.minute;";
                 items += Environment.NewLine + TabInString(7) + "let second = timeSensor.second;";
-                items += time_update;
+                items += Environment.NewLine + time_update;
                 items += Environment.NewLine + TabInString(6) + "};" + Environment.NewLine;
             }
 
@@ -817,12 +932,14 @@ namespace Watch_Face_Editor
                     int hourPointerProPosition = 99;
                     int minutePointerProPosition = 99;
                     int secondPointerProPosition = 99;
+                    int smoothSecondPointerProPosition = 99;
                     string optionsPointerProHour = "";
                     string optionsPointerProMinute = "";
                     string optionsPointerProSecond = "";
                     string readOptionsPointerProHour = "";
                     string readOptionsPointerProMinute = "";
                     string readOptionsPointerProSecond = "";
+                    string readOptionsPointerProSmoothSecond = "";
                     string coverPointerProHour = "";
                     string coverPointerProMinute = "";
                     string coverPointerProSecond = "";
@@ -832,7 +949,7 @@ namespace Watch_Face_Editor
                         hourPointerProPosition = AnalogTimePro.Hour.position;
                         hmUI_widget_IMG_POINTER img_pointer_hour = AnalogTimePro.Hour;
                         optionsPointerProHour = TIME_PRO_POINTER_Options(img_pointer_hour, show_level);
-                        readOptionsPointerProHour = TIME_PRO_POINTER_OptionsRead(img_pointer_hour, optionNameStart, "hour", show_level);
+                        readOptionsPointerProHour = TIME_PRO_POINTER_OptionsRead(img_pointer_hour, optionNameStart, "hour", show_level, AnalogTimePro.Format_24hour);
 
                         coverPointerProHour = IMG_Pointer_Cover_Options(img_pointer_hour, show_level);
                     }
@@ -853,6 +970,11 @@ namespace Watch_Face_Editor
                         readOptionsPointerProSecond = TIME_PRO_POINTER_OptionsRead(img_pointer_second, optionNameStart, "second", show_level);
 
                         coverPointerProSecond = IMG_Pointer_Cover_Options(img_pointer_second, show_level);
+                    }
+                    if (AnalogTimePro.SmoothSecond != null && AnalogTimePro.SmoothSecond.enable)
+                    {
+                        smoothSecondPointerProPosition = AnalogTimePro.SmoothSecond.position;
+                        readOptionsPointerProSmoothSecond = TIME_PRO_SMOOTH_POINTER_OptionsRead(AnalogTimePro.SmoothSecond, optionNameStart);
                     }
 
                     for (int index = 1; index <= 5; index++)
@@ -894,27 +1016,30 @@ namespace Watch_Face_Editor
                                     coverPointerProHour + TabInString(6) + "});" + Environment.NewLine;
                             }
 
-                            time_update += Environment.NewLine + TabInString(7) + "let hour_" + optionNameStart + " = hour;";
+                            time_update += Environment.NewLine + TabInString(7) + "if (updateHour) {";
+                            time_update += Environment.NewLine + TabInString(8) + "let " + optionNameStart + "hour = hour;";
+                            string tempAngleName = optionNameStart + "fullAngle_hour";
+                            time_update += Environment.NewLine + TabInString(8) + "let " + tempAngleName +
+                                " = " + (AnalogTimePro.Hour.end_angle - AnalogTimePro.Hour.start_angle).ToString() + ";" ;
                             if (!AnalogTimePro.Format_24hour) 
                             {
-                                time_update += Environment.NewLine + TabInString(7) + 
-                                    "if (hour_" + optionNameStart + " > 11) hour_" + optionNameStart + " -= 12;";
-                                time_update += Environment.NewLine + TabInString(7) +
-                                    "let " + optionNameStart + "angle_hour = " + AnalogTimePro.Hour.start_angle.ToString() + " + " + 
-                                    AnalogTimePro.Hour.end_angle.ToString() + "*hour_" + optionNameStart + "/12 - (" + (AnalogTimePro.Hour.end_angle - 
-                                    AnalogTimePro.Hour.start_angle).ToString() + "/12)*minute/60;";
+                                time_update += Environment.NewLine + TabInString(8) + 
+                                    "if (" + optionNameStart + "hour > 11) " + optionNameStart + "hour -= 12;";
+                                time_update += Environment.NewLine + TabInString(8) +
+                                    "let " + optionNameStart + "angle_hour = " + AnalogTimePro.Hour.start_angle.ToString() + " + " +
+                                    tempAngleName + "*" + optionNameStart + "hour/12 + (" + tempAngleName + "/12)*minute/60;";
                             }
                             else
                             {
-                                time_update += Environment.NewLine + TabInString(7) +
+                                time_update += Environment.NewLine + TabInString(8) +
                                     "let " + optionNameStart + "angle_hour = " + AnalogTimePro.Hour.start_angle.ToString() + " + " +
-                                    AnalogTimePro.Hour.end_angle.ToString() + "*hour_" + optionNameStart + "/24 - (" + (AnalogTimePro.Hour.end_angle -
-                                    AnalogTimePro.Hour.start_angle).ToString() + "/24)*minute/60;";
+                                    tempAngleName + "*" + optionNameStart + "hour/24 + (" + tempAngleName + "/24)*minute/60;";
                             }
-                            time_update += Environment.NewLine + TabInString(7) +
-                                    "if (updateHour && " + optionNameStart + "analog_clock_pro_hour_pointer_img) " + 
+                            time_update += Environment.NewLine + TabInString(8) +
+                                    "if (" + optionNameStart + "analog_clock_pro_hour_pointer_img) " + 
                                     optionNameStart + "analog_clock_pro_hour_pointer_img.setProperty(hmUI.prop.ANGLE, " + 
                                     optionNameStart + "angle_hour);";
+                            time_update += Environment.NewLine + TabInString(7) + "};" + Environment.NewLine;
 
                         }
 
@@ -927,6 +1052,11 @@ namespace Watch_Face_Editor
                             if (items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0 &&
                                 exist_items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "const deviceInfo = hmSetting.getDeviceInfo();";
+
+                            string tempAngleName = optionNameStart + "fullAngle_minute";
+                            time_update += Environment.NewLine + TabInString(7) + "if (updateMinute) {";
+                            time_update += Environment.NewLine + TabInString(8) + "let " + tempAngleName +
+                                " = " + (AnalogTimePro.Minute.end_angle - AnalogTimePro.Minute.start_angle).ToString() + ";";
 
                             if (AnalogTimePro.SmoothSecond == null || !AnalogTimePro.SmoothSecond.enable)  // перескакивает между минутами
                             {
@@ -941,15 +1071,18 @@ namespace Watch_Face_Editor
                                     items += Environment.NewLine + TabInString(6) + "});" + Environment.NewLine;
                                 }
 
-                                time_update += Environment.NewLine + TabInString(7) +
+                                time_update += Environment.NewLine + TabInString(8) +
                                     "let " + optionNameStart + "angle_minute = " + AnalogTimePro.Minute.start_angle.ToString() + " + " +
-                                    (AnalogTimePro.Minute.end_angle - AnalogTimePro.Minute.start_angle).ToString() + "*minute/60;";
+                                    tempAngleName + "*minute/60;";
                             }
                             else  // минутная стрелка движеться плавно
                             {
                                 if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
                                     exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                     items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                                if (items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0 &&
+                                exist_items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
+                                    items += Environment.NewLine + TabInString(6) + "if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);";
                                 if (optionNameStart == "normal_")
                                 {
                                     resume_call += TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {" + Environment.NewLine;
@@ -985,9 +1118,10 @@ namespace Watch_Face_Editor
                                     resume_call.Insert(strInden, "time_update(false, true);");
                                 }
 
-                                time_update += Environment.NewLine + TabInString(7) +
+                                time_update += Environment.NewLine + TabInString(8) +
                                     "let " + optionNameStart + "angle_minute = " + AnalogTimePro.Minute.start_angle.ToString() + " + " +
-                                    (AnalogTimePro.Minute.end_angle - AnalogTimePro.Minute.start_angle).ToString() + "*(minute + second/60)/60;";
+                                    tempAngleName + "*(minute + second/60)/60;";
+
 
                             }
 
@@ -1009,10 +1143,11 @@ namespace Watch_Face_Editor
                             //time_update += Environment.NewLine + TabInString(7) +
                             //    "let " + optionNameStart + "angle_minute = " + AnalogTimePro.Minute.start_angle.ToString() + " + " +
                             //        (AnalogTimePro.Minute.end_angle - AnalogTimePro.Minute.start_angle).ToString() + "*minute/60;";
-                            time_update += Environment.NewLine + TabInString(7) +
-                                    "if (updateMinute && " + optionNameStart + "analog_clock_pro_minute_pointer_img) " +
+                            time_update += Environment.NewLine + TabInString(8) +
+                                    "if (" + optionNameStart + "analog_clock_pro_minute_pointer_img) " +
                                     optionNameStart + "analog_clock_pro_minute_pointer_img.setProperty(hmUI.prop.ANGLE, " +
                                     optionNameStart + "angle_minute);";
+                            time_update += Environment.NewLine + TabInString(7) + "};" + Environment.NewLine;
 
                         }
 
@@ -1025,11 +1160,18 @@ namespace Watch_Face_Editor
                             if (items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0 &&
                                 exist_items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "const deviceInfo = hmSetting.getDeviceInfo();";
+                            if (items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0 &&
+                                exist_items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
+                                items += Environment.NewLine + TabInString(6) + "if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);";
 
                             items += readOptionsPointerProSecond + Environment.NewLine;
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "analog_clock_pro_second_pointer_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                     optionsPointerProSecond + TabInString(6) + "});" + Environment.NewLine;
+
+                            string tempAngleName = optionNameStart + "fullAngle_second";
+                            //time_update += Environment.NewLine + TabInString(7) + "let " + tempAngleName +
+                            //    " = " + (AnalogTimePro.Second.end_angle - AnalogTimePro.Second.start_angle).ToString() + ";";
 
                             if (AnalogTimePro.SmoothSecond == null || !AnalogTimePro.SmoothSecond.enable)  // обычный ход стрелки
                             {
@@ -1064,14 +1206,16 @@ namespace Watch_Face_Editor
                                     pause_call += TabInString(9) + timerName + " = undefined;" + Environment.NewLine;
                                     pause_call += TabInString(8) + "}" + Environment.NewLine;
 
+                                    time_update += Environment.NewLine + TabInString(7) + "let " + tempAngleName +
+                                        " = " + (AnalogTimePro.Second.end_angle - AnalogTimePro.Second.start_angle).ToString() + ";";
                                     time_update += Environment.NewLine + TabInString(7) +
                                         "let " + optionNameStart + "angle_second = " + AnalogTimePro.Second.start_angle.ToString() + " + " +
-                                        (AnalogTimePro.Second.end_angle - AnalogTimePro.Second.start_angle).ToString() + "*second/60;";
+                                        tempAngleName + "*second/60;";
 
                                     time_update += Environment.NewLine + TabInString(7) +
                                             "if (" + optionNameStart + "analog_clock_pro_second_pointer_img) " +
                                             optionNameStart + "analog_clock_pro_second_pointer_img.setProperty(hmUI.prop.ANGLE, " +
-                                            optionNameStart + "angle_second);"; 
+                                            optionNameStart + "angle_second);" + Environment.NewLine; 
                                 }
                             }
                             else  // секундная стрелка движеться плавно
@@ -1080,12 +1224,13 @@ namespace Watch_Face_Editor
                                 {
                                     if(optionNameStart == "normal_")
                                     {
-                                        items += Environment.NewLine + TabInString(6) + "function startSecAnim(sec) {";
+                                        items += Environment.NewLine + TabInString(6) + "function startSecAnim(sec, animDuration) {";
                                         items += Environment.NewLine + TabInString(7) + "const secAnim = {";
                                         items += Environment.NewLine + TabInString(8) + "anim_rate: 'linear',";
-                                        items += Environment.NewLine + TabInString(8) + "anim_duration: 5000,";
+                                        items += Environment.NewLine + TabInString(8) + "anim_duration: animDuration,";
                                         items += Environment.NewLine + TabInString(8) + "anim_from: sec,";
-                                        items += Environment.NewLine + TabInString(8) + "anim_to: sec + 5000 * 6 / 1000,";
+                                        items += Environment.NewLine + TabInString(8) + "anim_to: sec + (" + 
+                                            (AnalogTimePro.Second.end_angle - AnalogTimePro.Second.start_angle).ToString() + "*(animDuration*6/1000))/360,";
                                         items += Environment.NewLine + TabInString(8) + "repeat_count: 1,";
                                         items += Environment.NewLine + TabInString(8) + "anim_fps: " + AnalogTimePro.SmoothSecond.fps.ToString() + ",";
                                         items += Environment.NewLine + TabInString(8) + "anim_key: 'angle',";
@@ -1099,19 +1244,25 @@ namespace Watch_Face_Editor
                                         variables += TabInString(4) + "let " + timerName + " = undefined;" + Environment.NewLine;
                                         variables += TabInString(4) + "let lastTime = 0;" + Environment.NewLine;
 
-                                        resume_call += TabInString(8) + "let sec = (timeSensor.second * 6) + (((timeSensor.utc % 1000) / 1000) * 6);" + Environment.NewLine;
+                                        resume_call += TabInString(8) + "let secAngle = " + AnalogTimePro.Second.start_angle.ToString() + " + (" + 
+                                            (AnalogTimePro.Second.end_angle - AnalogTimePro.Second.start_angle).ToString() + 
+                                            "*6)*(timeSensor.second + ((timeSensor.utc % 1000) / 1000))/360;" + Environment.NewLine;
                                         resume_call += TabInString(8) + optionNameStart +
-                                            "analog_clock_pro_second_pointer_img.setProperty(hmUI.prop.ANGLE, sec);" + Environment.NewLine;
+                                            "analog_clock_pro_second_pointer_img.setProperty(hmUI.prop.ANGLE, secAngle);" + Environment.NewLine;
 
                                         resume_call += TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {" + Environment.NewLine;
                                         resume_call += TabInString(9) + "if (!" + timerName + ") {" + Environment.NewLine;
                                         resume_call += TabInString(10) + "let duration = 0;" + Environment.NewLine;
+                                        resume_call += TabInString(10) + "let animDuration = 5000;" + Environment.NewLine;
+                                        resume_call += TabInString(10) + "if (timeSensor.second > 55) animDuration = 1000*(60.1 - (timeSensor.second - (timeSensor.utc % 1000) / 1000));" + Environment.NewLine;
                                         resume_call += TabInString(10) + "let diffTime = timeSensor.utc - lastTime;" + Environment.NewLine;
-                                        resume_call += TabInString(10) + "if (diffTime < 5000) duration = 5000 - diffTime;" + Environment.NewLine;
-                                        resume_call += TabInString(10) + timerName + " = timer.createTimer(duration, 5000, (function (option) {" + Environment.NewLine;
+                                        resume_call += TabInString(10) + "if (diffTime < animDuration) duration = animDuration - diffTime;" + Environment.NewLine;
+                                        resume_call += TabInString(10) + timerName + " = timer.createTimer(duration, animDuration, (function (option) {" + Environment.NewLine;
                                         resume_call += TabInString(11) + "lastTime = timeSensor.utc;" + Environment.NewLine;
-                                        resume_call += TabInString(11) + "sec = (timeSensor.second * 6) + (((timeSensor.utc % 1000) / 1000) * 6);" + Environment.NewLine;
-                                        resume_call += TabInString(11) + "startSecAnim(sec);" + Environment.NewLine;
+                                        resume_call += TabInString(11) + "secAngle = " + AnalogTimePro.Second.start_angle.ToString() + " + (" +
+                                            (AnalogTimePro.Second.end_angle - AnalogTimePro.Second.start_angle).ToString() +
+                                            "*6)*(timeSensor.second + ((timeSensor.utc % 1000) / 1000))/360;" + Environment.NewLine;
+                                        resume_call += TabInString(11) + "startSecAnim(secAngle, animDuration);" + Environment.NewLine;
                                         resume_call += TabInString(10) + "}));  // end timer " + Environment.NewLine;
                                         resume_call += TabInString(9) + "};  // end timer check" + Environment.NewLine;
                                         resume_call += TabInString(8) + "};  // end screenType" + Environment.NewLine + Environment.NewLine;
@@ -1153,14 +1304,16 @@ namespace Watch_Face_Editor
                                     pause_call += TabInString(9) + timerName + " = undefined;" + Environment.NewLine;
                                     pause_call += TabInString(8) + "}" + Environment.NewLine;
 
+                                    time_update += Environment.NewLine + TabInString(7) + "let " + tempAngleName +
+                                        " = " + (AnalogTimePro.Second.end_angle - AnalogTimePro.Second.start_angle).ToString() + ";";
                                     time_update += Environment.NewLine + TabInString(7) +
                                         "let " + optionNameStart + "angle_second = " + AnalogTimePro.Second.start_angle.ToString() + " + " +
-                                        (AnalogTimePro.Second.end_angle - AnalogTimePro.Second.start_angle).ToString() + "*(second + (timeSensor.utc % 1000)/1000)/60;";
+                                        tempAngleName + "*(second + (timeSensor.utc % 1000)/1000)/60;";
 
                                     time_update += Environment.NewLine + TabInString(7) +
                                             "if (" + optionNameStart + "analog_clock_pro_second_pointer_img) " +
                                             optionNameStart + "analog_clock_pro_second_pointer_img.setProperty(hmUI.prop.ANGLE, " +
-                                            optionNameStart + "angle_second);";
+                                            optionNameStart + "angle_second);" + Environment.NewLine;
                                 }
                             }
 
@@ -1173,6 +1326,13 @@ namespace Watch_Face_Editor
                                     coverPointerProSecond + TabInString(6) + "});" + Environment.NewLine;
                             }
 
+                        }
+
+
+                        // плавные секунды
+                        if (index == smoothSecondPointerProPosition && readOptionsPointerProSmoothSecond.Length > 5)
+                        {
+                            items += readOptionsPointerProSmoothSecond + Environment.NewLine;
                         }
                     }
 
@@ -4550,7 +4710,7 @@ namespace Watch_Face_Editor
                                 optionNameStart + "city_name_text = hmUI.createWidget(hmUI.widget.TEXT, {" +
                                     cityNameOptions + TabInString(6) + "});" + Environment.NewLine;
 
-                            scale_update_function += Environment.NewLine + TabInString(7) + "console.log('Wearther city name');" + Environment.NewLine;
+                            scale_update_function += Environment.NewLine + TabInString(7) + "console.log('Weather city name');" + Environment.NewLine;
 
                             if (scale_update_function.IndexOf("const weatherSensor = hmSensor.createSensor(hmSensor.id.WEATHER);") < 0 &&
                                 exist_resume_call.IndexOf("const weatherSensor = hmSensor.createSensor(hmSensor.id.WEATHER);") < 0)
@@ -9048,14 +9208,15 @@ namespace Watch_Face_Editor
             return options;
         }
 
-        private string TIME_PRO_POINTER_OptionsRead(hmUI_widget_IMG_POINTER img_pointer, string optionNameStart, string type, string show_level, int tabOffset = 0)
+        private string TIME_PRO_POINTER_OptionsRead(hmUI_widget_IMG_POINTER img_pointer, string optionNameStart, string type, 
+            string show_level, bool format24h = false, int tabOffset = 0)
         {
             string options = Environment.NewLine;
             if (img_pointer == null) return options;
             if (img_pointer.src != null && img_pointer.src.Length > 0)
             {
                 options += TabInString(6 + tabOffset) + "// " + optionNameStart + "analog_clock_pro_" + type.ToLower() + 
-                    "_pointer_img = hmUI.createWidget(hmUI.widget.TIME_POINTER, {" + Environment.NewLine;
+                    "_pointer_img = hmUI.createWidget(hmUI.widget.TIME_POINTER_PRO, {" + Environment.NewLine;
                 options += TabInString(7 + tabOffset) + "// src: '" + img_pointer.src + ".png'," + Environment.NewLine;
                 options += TabInString(7 + tabOffset) + "// center_x: " + img_pointer.center_x.ToString() + "," + Environment.NewLine;
                 options += TabInString(7 + tabOffset) + "// center_y: " + img_pointer.center_y.ToString() + "," + Environment.NewLine;
@@ -9089,8 +9250,24 @@ namespace Watch_Face_Editor
                 {
                     options += TabInString(7 + tabOffset) + "// show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
                 }
+
+                if (format24h)
+                {
+                    options += TabInString(7 + tabOffset) + "// format24h: true," + Environment.NewLine;
+                }
                 options += TabInString(6 + tabOffset) + "// });" + Environment.NewLine;
             }
+            return options;
+        }
+
+        private string TIME_PRO_SMOOTH_POINTER_OptionsRead(Smooth_Second smooth_second, string optionNameStart, int tabOffset = 0)
+        {
+            string options = Environment.NewLine;
+            if (smooth_second == null) return options;
+            options += TabInString(6 + tabOffset) + "// " + optionNameStart + "analog_clock_pro_smooth_second = hmUI.createWidget(hmUI.widget.SMOOTH_SRCOND, {" + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// type: " + smooth_second.type.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// fps: " + smooth_second.fps.ToString() + "," + Environment.NewLine;
+            options += TabInString(6 + tabOffset) + "// });" + Environment.NewLine;
             return options;
         }
 
@@ -10231,6 +10408,8 @@ namespace Watch_Face_Editor
             string options = Environment.NewLine;
             if (editable_background == null) return options;
             if (!editable_background.enable_edit_bg) return options;
+            //if (editable_background.fg == null || editable_background.fg.Length < 1) return options;
+            //if (editable_background.tips_bg == null || editable_background.tips_bg.Length < 1) return options;
             if (editable_background.BackgroundList == null || editable_background.BackgroundList.Count == 0) return options;
             if (editable_background.BackgroundList[0].path.Length > 0)
             {
@@ -10459,7 +10638,50 @@ namespace Watch_Face_Editor
             return options;
         }
 
-        
+        private string RepeatAlert_Options(RepeatAlert repeatAlert, int tabOffset = 0)
+        {
+            string options = Environment.NewLine;
+            if (repeatAlert == null) return options;
+            options += TabInString(6 + tabOffset) + "// repeatAlert = hmUI.createWidget(hmUI.widget.RepeatAlert, {" + Environment.NewLine;
+            if (repeatAlert.EveryHour != null)
+            {
+                if (repeatAlert.EveryHour.vibrate)
+                {
+                    options += TabInString(7 + tabOffset) + "// everyHour_vibrate_type: " +
+                                repeatAlert.EveryHour.vibrateType.ToString() + "," + Environment.NewLine;
+                }
+                if (repeatAlert.EveryHour.toastShow)
+                {
+                    string toastText = repeatAlert.EveryHour.toastText.Replace(Environment.NewLine, "\\r\\n");
+                    options += TabInString(7 + tabOffset) + "// everyHour_toast_text: " +
+                                toastText + "," + Environment.NewLine;
+                }
+            }
+            if (repeatAlert.RepeatingAlert != null)
+            {
+                if (repeatAlert.RepeatingAlert.vibrate)
+                {
+                    options += TabInString(7 + tabOffset) + "// repeatingAlert_vibrate_type: " +
+                               repeatAlert.RepeatingAlert.vibrateType.ToString() + "," + Environment.NewLine;
+                }
+                if (repeatAlert.RepeatingAlert.toastShow)
+                {
+                    string toastText = repeatAlert.RepeatingAlert.toastText.Replace(Environment.NewLine, "\\r\\n");
+                    options += TabInString(7 + tabOffset) + "// repeatingAlert_toast_text: " +
+                              toastText + "," + Environment.NewLine;
+                }
+                if (repeatAlert.RepeatingAlert.vibrate || repeatAlert.RepeatingAlert.toastShow)
+                {
+                    options += TabInString(7 + tabOffset) + "// repeatingAlert_repeat_period: " +
+                               repeatAlert.RepeatingAlert.repeatPeriod.ToString() + "," + Environment.NewLine;
+                }
+            }
+            options += TabInString(6 + tabOffset) + "// });" + Environment.NewLine;
+
+            return options;
+        }
+
+
         private string TabInString(int count)
         {
             string returnStr = "";
@@ -11541,6 +11763,27 @@ namespace Watch_Face_Editor
                             break;
                         #endregion
 
+                        #region TIME_POINTER_PRO
+                        case "TIME_POINTER_PRO":
+                            bool format24h = false;
+                            hmUI_widget_IMG_POINTER imgPointerPro = Object_IMG_POINTER_PRO(parametrs, out format24h);
+                            elementsList = null;
+                            if (imgPointerPro.show_level == "ONLY_NORMAL" || objectName.StartsWith("normal"))
+                            {
+                                if (Watch_Face.ScreenNormal.Elements == null)
+                                    Watch_Face.ScreenNormal.Elements = new List<object>();
+                                elementsList = Watch_Face.ScreenNormal.Elements;
+                            }
+                            else if (imgPointerPro.show_level == "ONLY_AOD" || imgPointerPro.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
+                            {
+                                if (Watch_Face.ScreenAOD.Elements == null)
+                                    Watch_Face.ScreenAOD.Elements = new List<object>();
+                                elementsList = Watch_Face.ScreenAOD.Elements;
+                            }
+                            ParametrsToObject(elementsList, parametrs);
+                            break; 
+                        #endregion
+
                         #region WATCHFACE_EDIT_POINTER
                         case "WATCHFACE_EDIT_POINTER":
                             int pos = parametrString.IndexOf("WATCHFACE_EDIT_POINTER");
@@ -12189,7 +12432,15 @@ namespace Watch_Face_Editor
 
                             if (disconnectAlert != null) Watch_Face.DisconnectAlert = disconnectAlert;
                             break;
-                            #endregion
+                        #endregion
+
+                        #region RepeatAlert
+                        case "RepeatAlert":
+                            RepeatAlert repeatAlert = Object_RepeatAlert(parametrs);
+
+                            if (repeatAlert != null) Watch_Face.RepeatAlert = repeatAlert;
+                            break;
+                        #endregion
                     }
                 }
 
@@ -12957,6 +13208,36 @@ namespace Watch_Face_Editor
                                 pointer_time.Second.position = pointer_time.Second.position + offset;
                                 analogTime.Second = pointer_time.Second;
                             }
+                        }
+
+                        break;
+                    #endregion
+
+                    #region TIME_POINTER_PRO
+                    case "TIME_POINTER_PRO":
+                        bool format24h = false;
+                        hmUI_widget_IMG_POINTER imgPointerPro = Object_IMG_POINTER_PRO(parametrs, out format24h);
+                        ElementAnalogTimePro analogTimePro = (ElementAnalogTimePro)elementsList.Find(e => e.GetType().Name == "ElementAnalogTimePro");
+                        if (analogTimePro == null)
+                        {
+                            //elementsList.Add(pointer_time);
+                            elementsList.Add(new ElementAnalogTimePro());
+                            analogTimePro = (ElementAnalogTimePro)elementsList.Find(e => e.GetType().Name == "ElementAnalogTimePro");
+                        }
+                        if (analogTimePro != null && imgPointerPro.type != null)
+                        {
+                            int offset = 2;
+                            if (analogTimePro.Hour != null) offset++;
+                            if (analogTimePro.Minute != null) offset++;
+                            if (analogTimePro.Second != null) offset++;
+                            if (analogTimePro.SmoothSecond != null) offset++;
+                            analogTimePro.Format_24hour_position = 1;
+                            imgPointerPro.position = offset;
+
+                            if (imgPointerPro.type == "hour") analogTimePro.Hour = imgPointerPro;
+                            if (imgPointerPro.type == "minute") analogTimePro.Minute = imgPointerPro;
+                            if (imgPointerPro.type == "second") analogTimePro.Second = imgPointerPro;
+                            if (format24h) analogTimePro.Format_24hour = true;
                         }
 
                         break;
@@ -17552,6 +17833,79 @@ namespace Watch_Face_Editor
             return elementPointer;
         }
 
+        private hmUI_widget_IMG_POINTER Object_IMG_POINTER_PRO(Dictionary<string, string> parametrs, out bool format24h)
+        {
+            format24h = false;
+            hmUI_widget_IMG_POINTER elementPointer = new hmUI_widget_IMG_POINTER();
+            int value;
+            //int index = 1;
+            if (parametrs.ContainsKey("// src"))
+            {
+                string imgName = parametrs["// src"].Replace("'", "").Replace("\"", "");
+                imgName = Path.GetFileNameWithoutExtension(imgName);
+                elementPointer.src = imgName;
+
+                if (parametrs.ContainsKey("// center_x") && Int32.TryParse(parametrs["// center_x"], out value))
+                    elementPointer.center_x = value;
+                if (parametrs.ContainsKey("// center_y") && Int32.TryParse(parametrs["// center_y"], out value))
+                    elementPointer.center_y = value;
+
+                if (parametrs.ContainsKey("// x") && Int32.TryParse(parametrs["// x"], out value))
+                    elementPointer.pos_x = value;
+                if (parametrs.ContainsKey("// y") && Int32.TryParse(parametrs["// y"], out value))
+                    elementPointer.pos_y = value;
+
+                if (parametrs.ContainsKey("// start_angle") && Int32.TryParse(parametrs["// start_angle"], out value))
+                    elementPointer.start_angle = value;
+                if (parametrs.ContainsKey("// end_angle") && Int32.TryParse(parametrs["// end_angle"], out value))
+                    elementPointer.end_angle = value;
+
+                if (parametrs.ContainsKey("// cover_path"))
+                {
+                    imgName = parametrs["// cover_path"].Replace("'", "").Replace("\"", "");
+                    imgName = Path.GetFileNameWithoutExtension(imgName);
+                    elementPointer.cover_path = imgName;
+
+                    if (parametrs.ContainsKey("// cover_x") && Int32.TryParse(parametrs["// cover_x"], out value))
+                        elementPointer.cover_x = value;
+                    if (parametrs.ContainsKey("// cover_y") && Int32.TryParse(parametrs["// cover_y"], out value))
+                        elementPointer.cover_y = value;
+                }
+
+                if (parametrs.ContainsKey("// scale_en"))
+                {
+                    imgName = parametrs["// scale_en"].Replace("'", "").Replace("\"", "");
+                    imgName = Path.GetFileNameWithoutExtension(imgName);
+                    elementPointer.scale = imgName;
+
+                    if (parametrs.ContainsKey("// scale_x") && Int32.TryParse(parametrs["// scale_x"], out value))
+                        elementPointer.scale_x = value;
+                    if (parametrs.ContainsKey("// scale_y") && Int32.TryParse(parametrs["// scale_y"], out value))
+                        elementPointer.scale_y = value;
+                }
+
+                if (parametrs.ContainsKey("// type"))
+                {
+                    imgName = parametrs["// type"].Replace("hmUI.data_type.", "");
+                    elementPointer.type = imgName;
+                }
+
+                if (parametrs.ContainsKey("// show_level"))
+                {
+                    imgName = parametrs["// show_level"].Replace("hmUI.show_level.", "");
+                    elementPointer.show_level = imgName;
+                }
+
+                if (parametrs.ContainsKey("// format24h")) format24h = StringToBool(parametrs["// format24h"]);
+
+                elementPointer.visible = true;
+                elementPointer.position = 1;
+                //index++;
+            }
+
+            return elementPointer;
+        }
+
         private List<hmUI_widget_IMG_NUMBER> Object_ImgDate(Dictionary<string, string> parametrs)
         {
             List<hmUI_widget_IMG_NUMBER> elementImgDate = new List<hmUI_widget_IMG_NUMBER>();
@@ -18326,6 +18680,47 @@ namespace Watch_Face_Editor
 
 
             return disconnectAlert;
+        }
+
+        private RepeatAlert Object_RepeatAlert(Dictionary<string, string> parametrs)
+        {
+            RepeatAlert repeatAlert = new RepeatAlert();
+            int value;
+
+            if (parametrs.ContainsKey("// everyHour_vibrate_type") && Int32.TryParse(parametrs["// everyHour_vibrate_type"], out value))
+            {
+                if (repeatAlert.EveryHour == null) repeatAlert.EveryHour = new PeriodicAlert();
+                repeatAlert.EveryHour.vibrateType = value;
+                repeatAlert.EveryHour.vibrate = true;
+            }
+            if (parametrs.ContainsKey("// everyHour_toast_text") && parametrs["// everyHour_toast_text"].Length > 0)
+            {
+                if (repeatAlert.EveryHour == null) repeatAlert.EveryHour = new PeriodicAlert();
+                repeatAlert.EveryHour.toastText = parametrs["// everyHour_toast_text"].Replace("\\r\\n", Environment.NewLine);
+                repeatAlert.EveryHour.toastShow = true;
+            }
+
+            if (parametrs.ContainsKey("// repeatingAlert_vibrate_type") && Int32.TryParse(parametrs["// repeatingAlert_vibrate_type"], out value))
+            {
+                if (repeatAlert.RepeatingAlert == null) repeatAlert.RepeatingAlert = new PeriodicAlert();
+                repeatAlert.RepeatingAlert.vibrateType = value;
+                repeatAlert.RepeatingAlert.vibrate = true;
+            }
+            if (parametrs.ContainsKey("// repeatingAlert_toast_text") && parametrs["// repeatingAlert_toast_text"].Length > 0)
+            {
+                if (repeatAlert.RepeatingAlert == null) repeatAlert.RepeatingAlert = new PeriodicAlert();
+                repeatAlert.RepeatingAlert.toastText = parametrs["// repeatingAlert_toast_text"].Replace("\\r\\n", Environment.NewLine);
+                repeatAlert.RepeatingAlert.toastShow = true;
+            }
+            if (parametrs.ContainsKey("// repeatingAlert_repeat_period") && Int32.TryParse(parametrs["// repeatingAlert_repeat_period"], out value))
+            {
+                if (repeatAlert.RepeatingAlert == null) repeatAlert.RepeatingAlert = new PeriodicAlert();
+                repeatAlert.RepeatingAlert.repeatPeriod = value;
+                repeatAlert.RepeatingAlert.vibrate = true;
+            }
+
+
+            return repeatAlert;
         }
 
         private bool StringToBool(string str)

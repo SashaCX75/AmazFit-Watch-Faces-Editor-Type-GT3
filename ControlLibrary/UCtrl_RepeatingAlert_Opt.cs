@@ -10,21 +10,22 @@ using System.Windows.Forms;
 
 namespace ControlLibrary
 {
-    public partial class UCtrl_DisconnectAlert_Opt : UserControl
+    public partial class UCtrl_RepeatingAlert_Opt : UserControl
     {
         private bool setValue; // режим задания параметров
 
-        public UCtrl_DisconnectAlert_Opt()
+        public UCtrl_RepeatingAlert_Opt()
         {
             InitializeComponent();
             setValue = true;
-            comboBox_disconneсt_vibrate_type.SelectedIndex = 0;
-            comboBox_conneсt_vibrate_type.SelectedIndex = 0;
+            comboBox_hour_vibrate_type.SelectedIndex = 0;
+            comboBox_repeat_period_vibrate_type.SelectedIndex = 0;
+            comboBox_repeat_period_time.SelectedIndex = 0;
             setValue = false;
         }
 
-        /// <summary>Устанавливает номер типа вибрации при обрыве связи 25=короткая; 0=средняя; 9=длинная; 27=длинная непрерывная</summary>
-        public void SetVibratetDisconneсnt(int type)
+        /// <summary>Устанавливает номер типа вибрации каждый час 25=короткая; 0=средняя; 9=длинная; 27=длинная непрерывная</summary>
+        public void SetVibratetHour(int type)
         {
             int result;
             switch (type)
@@ -47,14 +48,14 @@ namespace ControlLibrary
                     break;
 
             }
-            comboBox_disconneсt_vibrate_type.SelectedIndex = result;
+            comboBox_hour_vibrate_type.SelectedIndex = result;
         }
 
-        /// <summary>Возвращает номер типа вибрации при обрыве связи 25=короткая; 0=средняя; 9=длинная; 27=длинная непрерывная</summary>
-        public int GetVibratetDisconneсnt()
+        /// <summary>Возвращает номер типа вибрации каждый час 25=короткая; 0=средняя; 9=длинная; 27=длинная непрерывная</summary>
+        public int GetVibratetHour()
         {
             int result;
-            switch (comboBox_disconneсt_vibrate_type.SelectedIndex)
+            switch (comboBox_hour_vibrate_type.SelectedIndex)
             {
                 case 0:
                     result = 25;
@@ -76,14 +77,9 @@ namespace ControlLibrary
             }
             return result;
         }
-        /// <summary>Возвращает SelectedIndex выпадающего списка</summary>
-        public int GetSelectedIndexVibratetDisconneсnt()
-        {
-            return comboBox_disconneсt_vibrate_type.SelectedIndex;
-        }
 
-        /// <summary>Устанавливает номер типа вибрации при востановлении связи 25=короткая; 0=средняя; 9=длинная; 27=длинная непрерывная</summary>
-        public void SetVibratetConneсnt(int type)
+        /// <summary>Устанавливает номер типа вибрации для повторяющихся сигналов 25=короткая; 0=средняя; 9=длинная; 27=длинная непрерывная</summary>
+        public void SetVibratetRepeatPeriod(int type)
         {
             int result;
             switch (type)
@@ -106,14 +102,14 @@ namespace ControlLibrary
                     break;
 
             }
-            comboBox_conneсt_vibrate_type.SelectedIndex = result;
+            comboBox_repeat_period_vibrate_type.SelectedIndex = result;
         }
 
-        /// <summary>Возвращает номер типа вибрации при востановлении связи 25=короткая; 0=средняя; 9=длинная; 27=длинная непрерывная</summary>
-        public int GetVibratetConneсnt()
+        /// <summary>Возвращает номер типа вибрации для повторяющихся сигналов 25=короткая; 0=средняя; 9=длинная; 27=длинная непрерывная</summary>
+        public int GetVibratetRepeatPeriod()
         {
             int result;
-            switch (comboBox_conneсt_vibrate_type.SelectedIndex)
+            switch (comboBox_repeat_period_vibrate_type.SelectedIndex)
             {
                 case 0:
                     result = 25;
@@ -135,10 +131,67 @@ namespace ControlLibrary
             }
             return result;
         }
-        /// <summary>Возвращает SelectedIndex выпадающего списка</summary>
-        public int GetSelectedIndexVibratetConneсnt()
+
+
+
+        /// <summary>Устанавливает номер типа вибрации каждые 30 минут 25=короткая; 0=средняя; 9=длинная; 27=длинная непрерывная</summary>
+        public void SetVibratetRepeatPeriodTime(int type)
         {
-            return comboBox_conneсt_vibrate_type.SelectedIndex;
+            int result;
+            switch (type)
+            {
+                case 30:
+                    result = 0;
+                    break;
+                case 20:
+                    result = 1;
+                    break;
+                case 15:
+                    result = 2;
+                    break;
+                case 10:
+                    result = 3;
+                    break;
+                case 5:
+                    result = 4;
+                    break;
+
+                default:
+                    result = 0;
+                    break;
+
+            }
+            comboBox_repeat_period_time.SelectedIndex = result;
+        }
+
+        /// <summary>Возвращает номер типа вибрации каждые 30 минут 25=короткая; 0=средняя; 9=длинная; 27=длинная непрерывная</summary>
+        public int GetVibratetRepeatPeriodTime()
+        {
+            int result;
+            switch (comboBox_repeat_period_time.SelectedIndex)
+            {
+                case 0:
+                    result = 30;
+                    break;
+                case 1:
+                    result = 20;
+                    break;
+                case 2:
+                    result = 15;
+                    break;
+                case 3:
+                    result = 10;
+                    break;
+                case 4:
+                    result = 5;
+                    break;
+
+                default:
+                    result = 30;
+                    break;
+
+            }
+            return result;
         }
 
         [Browsable(true)]
@@ -215,28 +268,6 @@ namespace ControlLibrary
             }
         }
 
-        private void checkBox_disconneсt_vibrate_CheckStateChanged(object sender, EventArgs e)
-        {
-            label_disconneсt_vibrate.Enabled = checkBox_disconneсt_vibrate.Checked;
-            comboBox_disconneсt_vibrate_type.Enabled = checkBox_disconneсt_vibrate.Checked;
-        }
-
-        private void checkBox_conneсt_vibrate_CheckStateChanged(object sender, EventArgs e)
-        {
-            label_conneсt_vibrate.Enabled = checkBox_conneсt_vibrate.Checked;
-            comboBox_conneсt_vibrate_type.Enabled = checkBox_conneсt_vibrate.Checked;
-        }
-
-        private void checkBox_disconneсt_toast_CheckStateChanged(object sender, EventArgs e)
-        {
-            textBox_disconneсt_toast_text.Enabled = checkBox_disconneсt_toast.Checked;
-        }
-
-        private void checkBox_conneсt_toast_CheckStateChanged(object sender, EventArgs e)
-        {
-            textBox_conneсt_toast_text.Enabled = checkBox_conneсt_toast.Checked;
-        }
-
         #region Settings Set/Clear
 
         /// <summary>Очищает выпадающие списки с картинками, сбрасывает данные на значения по умолчанию</summary>
@@ -244,19 +275,42 @@ namespace ControlLibrary
         {
             setValue = true;
 
-            textBox_disconneсt_toast_text.Text = "";
-            checkBox_disconneсt_toast.Checked = false;
-            comboBox_disconneсt_vibrate_type.SelectedIndex = 2;
-            checkBox_disconneсt_vibrate.Checked = false;
+            textBox_hour_toast_text.Text = "";
+            checkBox_hour_toast.Checked = false;
+            comboBox_hour_vibrate_type.SelectedIndex = 2;
+            checkBox_hour_vibrate.Checked = false;
 
-            textBox_conneсt_toast_text.Text = "";
-            checkBox_conneсt_toast.Checked = false;
-            comboBox_conneсt_vibrate_type.SelectedIndex = 2;
-            checkBox_conneсt_vibrate.Checked = false;
+            textBox_repeat_period_toast_text.Text = "";
+            checkBox_repeat_period_toast.Checked = false;
+            comboBox_repeat_period_vibrate_type.SelectedIndex = 2;
+            checkBox_repeat_period_vibrate.Checked = false;
+            comboBox_repeat_period_time.SelectedIndex = 0;
 
             setValue = false;
         }
 
         #endregion
+
+        private void checkBox_hour_vibrate_CheckStateChanged(object sender, EventArgs e)
+        {
+            label_hour_vibrate.Enabled = checkBox_hour_vibrate.Checked;
+            comboBox_hour_vibrate_type.Enabled = checkBox_hour_vibrate.Checked;
+        }
+
+        private void checkBox_hour_toast_CheckStateChanged(object sender, EventArgs e)
+        {
+            textBox_hour_toast_text.Enabled = checkBox_hour_toast.Checked;
+        }
+
+        private void checkBox_repeat_period_vibrate_CheckStateChanged(object sender, EventArgs e)
+        {
+            label_repeat_period_vibrate.Enabled = checkBox_repeat_period_vibrate.Checked;
+            comboBox_repeat_period_vibrate_type.Enabled = checkBox_repeat_period_vibrate.Checked;
+        }
+
+        private void checkBox_repeat_period_toast_CheckStateChanged(object sender, EventArgs e)
+        {
+            textBox_repeat_period_toast_text.Enabled = checkBox_repeat_period_toast.Checked;
+        }
     }
 }

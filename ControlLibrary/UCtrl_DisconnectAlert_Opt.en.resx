@@ -118,70 +118,70 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="checkBox_disconneсnt_toast.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="checkBox_disconneсt_toast.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 17</value>
   </data>
-  <data name="checkBox_disconneсnt_toast.Text" xml:space="preserve">
+  <data name="checkBox_disconneсt_toast.Text" xml:space="preserve">
     <value>Message</value>
   </data>
-  <data name="comboBox_disconneсnt_vibrate_type.Items" xml:space="preserve">
+  <data name="comboBox_disconneсt_vibrate_type.Items" xml:space="preserve">
     <value>Short</value>
   </data>
-  <data name="comboBox_disconneсnt_vibrate_type.Items1" xml:space="preserve">
+  <data name="comboBox_disconneсt_vibrate_type.Items1" xml:space="preserve">
     <value>Medium</value>
   </data>
-  <data name="comboBox_disconneсnt_vibrate_type.Items2" xml:space="preserve">
+  <data name="comboBox_disconneсt_vibrate_type.Items2" xml:space="preserve">
     <value>Long</value>
   </data>
-  <data name="comboBox_disconneсnt_vibrate_type.Items3" xml:space="preserve">
+  <data name="comboBox_disconneсt_vibrate_type.Items3" xml:space="preserve">
     <value>Long (continuous)</value>
   </data>
-  <data name="label_disconneсnt_vibrate.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="label_disconneсt_vibrate.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 13</value>
   </data>
-  <data name="label_disconneсnt_vibrate.Text" xml:space="preserve">
+  <data name="label_disconneсt_vibrate.Text" xml:space="preserve">
     <value>Vibration type</value>
   </data>
-  <data name="checkBox_disconneсnt_vibrate.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="checkBox_disconneсt_vibrate.Size" type="System.Drawing.Size, System.Drawing">
     <value>67, 17</value>
   </data>
-  <data name="checkBox_disconneсnt_vibrate.Text" xml:space="preserve">
+  <data name="checkBox_disconneсt_vibrate.Text" xml:space="preserve">
     <value>Vibration</value>
   </data>
-  <data name="groupBox_disconneсnt.Text" xml:space="preserve">
+  <data name="groupBox_disconneсt.Text" xml:space="preserve">
     <value>Connection lost</value>
   </data>
-  <data name="checkBox_conneсnt_toast.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="checkBox_conneсt_toast.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 17</value>
   </data>
-  <data name="checkBox_conneсnt_toast.Text" xml:space="preserve">
+  <data name="checkBox_conneсt_toast.Text" xml:space="preserve">
     <value>Message</value>
   </data>
-  <data name="comboBox_conneсnt_vibrate_type.Items" xml:space="preserve">
+  <data name="comboBox_conneсt_vibrate_type.Items" xml:space="preserve">
     <value>Short</value>
   </data>
-  <data name="comboBox_conneсnt_vibrate_type.Items1" xml:space="preserve">
+  <data name="comboBox_conneсt_vibrate_type.Items1" xml:space="preserve">
     <value>Medium</value>
   </data>
-  <data name="comboBox_conneсnt_vibrate_type.Items2" xml:space="preserve">
+  <data name="comboBox_conneсt_vibrate_type.Items2" xml:space="preserve">
     <value>Long</value>
   </data>
-  <data name="comboBox_conneсnt_vibrate_type.Items3" xml:space="preserve">
+  <data name="comboBox_conneсt_vibrate_type.Items3" xml:space="preserve">
     <value>Long (continuous)</value>
   </data>
-  <data name="label_conneсnt_vibrate.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="label_conneсt_vibrate.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 13</value>
   </data>
-  <data name="label_conneсnt_vibrate.Text" xml:space="preserve">
+  <data name="label_conneсt_vibrate.Text" xml:space="preserve">
     <value>Vibration type</value>
   </data>
-  <data name="checkBox_conneсnt_vibrate.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="checkBox_conneсt_vibrate.Size" type="System.Drawing.Size, System.Drawing">
     <value>67, 17</value>
   </data>
-  <data name="checkBox_conneсnt_vibrate.Text" xml:space="preserve">
+  <data name="checkBox_conneсt_vibrate.Text" xml:space="preserve">
     <value>Vibration</value>
   </data>
-  <data name="groupBox_conneсnt.Text" xml:space="preserve">
+  <data name="groupBox_conneсt.Text" xml:space="preserve">
     <value>Connection restored</value>
   </data>
   <data name="label_hint.Text" xml:space="preserve">

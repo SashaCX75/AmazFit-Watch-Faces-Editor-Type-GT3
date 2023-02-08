@@ -109,6 +109,8 @@ namespace Watch_Face_Editor
                 if (Watch_Face != null && Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null &&
                     Watch_Face.ScreenNormal.Background.Editable_Background != null &&
                     Watch_Face.ScreenNormal.Background.Editable_Background.enable_edit_bg &&
+                    /*Watch_Face.ScreenNormal.Background.Editable_Background.fg != null && Watch_Face.ScreenNormal.Background.Editable_Background.fg.Length > 0 &&
+                     Watch_Face.ScreenNormal.Background.Editable_Background.tips_bg != null && Watch_Face.ScreenNormal.Background.Editable_Background.tips_bg.Length > 0 &&*/
                     (Watch_Face.ScreenNormal.Background.Editable_Background.AOD_show || background == null))
                 {
                     Background backgroundAOD = Watch_Face.ScreenNormal.Background;
@@ -130,7 +132,9 @@ namespace Watch_Face_Editor
             {
                 if (background.Editable_Background != null && background.Editable_Background.enable_edit_bg &&
                     background.Editable_Background.BackgroundList != null &&
-                    background.Editable_Background.BackgroundList.Count > 0 && background.visible)
+                    background.Editable_Background.BackgroundList.Count > 0 && background.visible /*&&
+                    Watch_Face.ScreenNormal.Background.Editable_Background.fg != null && Watch_Face.ScreenNormal.Background.Editable_Background.fg.Length > 0 &&
+                    Watch_Face.ScreenNormal.Background.Editable_Background.tips_bg != null && Watch_Face.ScreenNormal.Background.Editable_Background.tips_bg.Length > 0*/)
                 {
                     int index = background.Editable_Background.selected_background;
                     if (index >= 0 && index < background.Editable_Background.BackgroundList.Count &&
@@ -795,7 +799,7 @@ namespace Watch_Face_Editor
                                 if (hour >= 12) hour = hour - 12;
                                 fullHour = 12;
                             }
-                            float angle = fullAngl * hour / fullHour + fullAngl * min / (60 * fullHour);
+                            float angle = startAngl + fullAngl * hour / fullHour + fullAngl * min / (60 * fullHour);
                             DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
 
                             if (AnalogTimePro.Hour.cover_path != null && AnalogTimePro.Hour.cover_path.Length > 0)
@@ -822,7 +826,7 @@ namespace Watch_Face_Editor
                             int fullAngl = endAngl - startAngl;
                             int image_index = ListImages.IndexOf(AnalogTimePro.Minute.src);
                             int min = WatchFacePreviewSet.Time.Minutes;
-                            float angle = fullAngl * min / 60;
+                            float angle = startAngl + fullAngl * min / 60;
                             DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
 
                             if (AnalogTimePro.Minute.cover_path != null && AnalogTimePro.Minute.cover_path.Length > 0)
@@ -849,7 +853,7 @@ namespace Watch_Face_Editor
                             int fullAngl = endAngl - startAngl;
                             int image_index = ListImages.IndexOf(AnalogTimePro.Second.src);
                             int sec = WatchFacePreviewSet.Time.Seconds;
-                            float angle = fullAngl * sec / 60;
+                            float angle = startAngl + fullAngl * sec / 60;
                             DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
 
                             if (AnalogTimePro.Second.cover_path != null && AnalogTimePro.Second.cover_path.Length > 0)
@@ -2104,8 +2108,12 @@ namespace Watch_Face_Editor
 
                     elementValue = WatchFacePreviewSet.Weather.AirPressure;
                     value_lenght = 4;
-                    goal = 1170 - 195;
-                    progress = (WatchFacePreviewSet.Weather.AirPressure - 195) / 975f;
+                    goal = 1200;
+                    //goal = 1170 - 195;
+                    //progress = (WatchFacePreviewSet.Weather.AirPressure - 195) / 975f;
+                    progress = WatchFacePreviewSet.Weather.AirPressure / 1200f;
+                    progress = (int)(progress * 100);
+                    progress = progress / 100f;
 
                     if (img_level != null && img_level.image_length > 0)
                     {
@@ -4043,9 +4051,10 @@ namespace Watch_Face_Editor
             }
 
             //int DateLenght = widthD * 2 + widthM + widthCF + 1;
-            int DateLenght = widthD * 3 + widthCF + 1;
+            int DateLenght = widthD * 3 + 1;
             //if (alignment == 2 && AvailabilityIcon) DateLenght = DateLenght - widthCF;
-            if (spacing != 0) DateLenght = DateLenght + 3 * spacing;
+            if (spacing != 0) DateLenght = DateLenght + 2 * spacing;
+            if (unit_index >= 0 && unit_index < ListImagesFullName.Count) DateLenght = DateLenght + widthCF + spacing;
             //if (widthM == 0) DateLenght = DateLenght - spacing;
             //if (alignment == 2 && AvailabilityIcon) DateLenght = DateLenght - spacing;
 

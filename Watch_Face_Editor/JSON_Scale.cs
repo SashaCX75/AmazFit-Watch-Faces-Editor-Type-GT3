@@ -205,6 +205,12 @@ namespace Watch_Face_Editor
                     Scale_IMG_POINTER(elementAnalogTime.Minute, scale);
                     Scale_IMG_POINTER(elementAnalogTime.Second, scale);
                     break;
+                case "ElementAnalogTimePro":
+                    ElementAnalogTimePro elementAnalogTimePro = (ElementAnalogTimePro)elements;
+                    Scale_IMG_POINTER(elementAnalogTimePro.Hour, scale);
+                    Scale_IMG_POINTER(elementAnalogTimePro.Minute, scale);
+                    Scale_IMG_POINTER(elementAnalogTimePro.Second, scale);
+                    break;
                 case "ElementDateDay":
                     ElementDateDay elementDateDay = (ElementDateDay)elements;
                     Scale_IMG_NUMBER(elementDateDay.Number, scale);

@@ -1,0 +1,603 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="comboBox_repeat_period_vibrate_type.Items1" xml:space="preserve">
+    <value>Средняя</value>
+  </data>
+  <data name="&gt;&gt;checkBox_repeat_period_toast.Name" xml:space="preserve">
+    <value>checkBox_repeat_period_toast</value>
+  </data>
+  <data name="checkBox_repeat_period_toast.Text" xml:space="preserve">
+    <value>Сообщение</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="checkBox_repeat_period_toast.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox_repeat_period_toast.TabIndex" type="System.Int32, mscorlib">
+    <value>165</value>
+  </data>
+  <data name="textBox_hour_toast_text.TabIndex" type="System.Int32, mscorlib">
+    <value>166</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="checkBox_hour_vibrate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 19</value>
+  </data>
+  <data name="groupBox_repeat_period.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 100</value>
+  </data>
+  <data name="comboBox_repeat_period_vibrate_type.Items3" xml:space="preserve">
+    <value>Длинная (непрерывная)</value>
+  </data>
+  <data name="label_hour_vibrate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 13</value>
+  </data>
+  <data name="comboBox_repeat_period_vibrate_type.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="textBox_hour_toast_text.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="checkBox_hour_toast.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 17</value>
+  </data>
+  <data name="label_repeat_period.TabIndex" type="System.Int32, mscorlib">
+    <value>167</value>
+  </data>
+  <data name="label_hint.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 260</value>
+  </data>
+  <data name="label_repeat_period_vibrate.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label_repeat_period.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 29</value>
+  </data>
+  <data name="&gt;&gt;comboBox_hour_vibrate_type.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;textBox_hour_toast_text.Name" xml:space="preserve">
+    <value>textBox_hour_toast_text</value>
+  </data>
+  <data name="&gt;&gt;label_hour_vibrate.Parent" xml:space="preserve">
+    <value>groupBox_hour</value>
+  </data>
+  <data name="&gt;&gt;comboBox_hour_vibrate_type.Name" xml:space="preserve">
+    <value>comboBox_hour_vibrate_type</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label_hour_vibrate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBox_repeat_period_toast.Location" type="System.Drawing.Point, System.Drawing">
+    <value>122, 79</value>
+  </data>
+  <data name="groupBox_repeat_period.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="label_hint.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="&gt;&gt;comboBox_repeat_period_time.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="label_hour_vibrate.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="comboBox_repeat_period_time.Items3" xml:space="preserve">
+    <value>Каждые 10 минут</value>
+  </data>
+  <data name="&gt;&gt;label_hint.Name" xml:space="preserve">
+    <value>label_hint</value>
+  </data>
+  <data name="&gt;&gt;groupBox_hour.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox_hour.Name" xml:space="preserve">
+    <value>groupBox_hour</value>
+  </data>
+  <data name="groupBox_hour.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>255, 334</value>
+  </data>
+  <data name="&gt;&gt;label_hour_vibrate.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label_hour_vibrate.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;groupBox_repeat_period.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;checkBox_hour_vibrate.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox_hour.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;checkBox_repeat_period_toast.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label_hint.Text" xml:space="preserve">
+    <value>Для работы данной функции на часах должен быть включен AOD.</value>
+  </data>
+  <data name="&gt;&gt;checkBox_hour_vibrate.Parent" xml:space="preserve">
+    <value>groupBox_hour</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>UCtrl_RepeatingAlert_Opt</value>
+  </data>
+  <data name="label_hint.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;label_hint.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_hour_toast.Name" xml:space="preserve">
+    <value>checkBox_hour_toast</value>
+  </data>
+  <data name="checkBox_hour_vibrate.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="textBox_hour_toast_text.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 50</value>
+  </data>
+  <data name="comboBox_hour_vibrate_type.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="comboBox_repeat_period_vibrate_type.Items" xml:space="preserve">
+    <value>Короткая</value>
+  </data>
+  <data name="groupBox_repeat_period.Size" type="System.Drawing.Size, System.Drawing">
+    <value>249, 160</value>
+  </data>
+  <data name="&gt;&gt;label_repeat_period.Name" xml:space="preserve">
+    <value>label_repeat_period</value>
+  </data>
+  <data name="checkBox_hour_vibrate.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="comboBox_repeat_period_time.Items2" xml:space="preserve">
+    <value>Каждые 15 минут</value>
+  </data>
+  <data name="comboBox_repeat_period_vibrate_type.Items2" xml:space="preserve">
+    <value>Длинная</value>
+  </data>
+  <data name="&gt;&gt;comboBox_repeat_period_time.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_repeat_period.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="checkBox_hour_vibrate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 17</value>
+  </data>
+  <data name="&gt;&gt;groupBox_hour.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label_repeat_period.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 13</value>
+  </data>
+  <data name="&gt;&gt;checkBox_hour_toast.Parent" xml:space="preserve">
+    <value>groupBox_hour</value>
+  </data>
+  <data name="comboBox_hour_vibrate_type.Items" xml:space="preserve">
+    <value>Короткая</value>
+  </data>
+  <data name="&gt;&gt;textBox_repeat_period_toast_text.Parent" xml:space="preserve">
+    <value>groupBox_repeat_period</value>
+  </data>
+  <data name="comboBox_repeat_period_time.Items" xml:space="preserve">
+    <value>Каждые 30 минут</value>
+  </data>
+  <data name="&gt;&gt;checkBox_hour_vibrate.Name" xml:space="preserve">
+    <value>checkBox_hour_vibrate</value>
+  </data>
+  <data name="comboBox_hour_vibrate_type.Items1" xml:space="preserve">
+    <value>Средняя</value>
+  </data>
+  <data name="comboBox_hour_vibrate_type.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 70</value>
+  </data>
+  <data name="checkBox_repeat_period_vibrate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 17</value>
+  </data>
+  <data name="checkBox_repeat_period_vibrate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 79</value>
+  </data>
+  <data name="comboBox_repeat_period_time.TabIndex" type="System.Int32, mscorlib">
+    <value>168</value>
+  </data>
+  <data name="comboBox_repeat_period_time.Items4" xml:space="preserve">
+    <value>Каждые 5 минут</value>
+  </data>
+  <data name="label_hour_vibrate.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;groupBox_repeat_period.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="comboBox_repeat_period_vibrate_type.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 130</value>
+  </data>
+  <data name="&gt;&gt;checkBox_repeat_period_toast.Parent" xml:space="preserve">
+    <value>groupBox_repeat_period</value>
+  </data>
+  <data name="textBox_hour_toast_text.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;label_hour_vibrate.Name" xml:space="preserve">
+    <value>label_hour_vibrate</value>
+  </data>
+  <data name="comboBox_repeat_period_time.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 45</value>
+  </data>
+  <data name="&gt;&gt;label_repeat_period_vibrate.Parent" xml:space="preserve">
+    <value>groupBox_repeat_period</value>
+  </data>
+  <data name="checkBox_repeat_period_toast.Size" type="System.Drawing.Size, System.Drawing">
+    <value>84, 17</value>
+  </data>
+  <data name="&gt;&gt;checkBox_hour_vibrate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="checkBox_hour_vibrate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 0</value>
+  </data>
+  <data name="&gt;&gt;checkBox_repeat_period_vibrate.Parent" xml:space="preserve">
+    <value>groupBox_repeat_period</value>
+  </data>
+  <data name="label_hint.Size" type="System.Drawing.Size, System.Drawing">
+    <value>249, 34</value>
+  </data>
+  <data name="&gt;&gt;groupBox_repeat_period.Name" xml:space="preserve">
+    <value>groupBox_repeat_period</value>
+  </data>
+  <data name="&gt;&gt;comboBox_hour_vibrate_type.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_repeat_period.Parent" xml:space="preserve">
+    <value>groupBox_repeat_period</value>
+  </data>
+  <data name="&gt;&gt;textBox_repeat_period_toast_text.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label_repeat_period.Text" xml:space="preserve">
+    <value>Период повторения</value>
+  </data>
+  <data name="label_hour_vibrate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 54</value>
+  </data>
+  <data name="checkBox_hour_toast.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label_hint.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="checkBox_repeat_period_vibrate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;checkBox_repeat_period_vibrate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label_repeat_period_vibrate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;textBox_hour_toast_text.Parent" xml:space="preserve">
+    <value>groupBox_hour</value>
+  </data>
+  <data name="checkBox_repeat_period_vibrate.Text" xml:space="preserve">
+    <value>Вибрация</value>
+  </data>
+  <data name="checkBox_hour_toast.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBox_hour_toast.TabIndex" type="System.Int32, mscorlib">
+    <value>165</value>
+  </data>
+  <data name="&gt;&gt;textBox_repeat_period_toast_text.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label_repeat_period.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;comboBox_hour_vibrate_type.Parent" xml:space="preserve">
+    <value>groupBox_hour</value>
+  </data>
+  <data name="comboBox_repeat_period_vibrate_type.TabIndex" type="System.Int32, mscorlib">
+    <value>164</value>
+  </data>
+  <data name="groupBox_hour.Size" type="System.Drawing.Size, System.Drawing">
+    <value>249, 100</value>
+  </data>
+  <data name="label_repeat_period_vibrate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 114</value>
+  </data>
+  <data name="groupBox_hour.Text" xml:space="preserve">
+    <value>Сигнал каждый час</value>
+  </data>
+  <data name="comboBox_repeat_period_time.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 21</value>
+  </data>
+  <data name="label_repeat_period.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;comboBox_repeat_period_vibrate_type.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_hour_toast.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="comboBox_hour_vibrate_type.Items3" xml:space="preserve">
+    <value>Длинная (непрерывная)</value>
+  </data>
+  <data name="&gt;&gt;label_repeat_period_vibrate.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;comboBox_repeat_period_time.Name" xml:space="preserve">
+    <value>comboBox_repeat_period_time</value>
+  </data>
+  <data name="textBox_repeat_period_toast_text.Location" type="System.Drawing.Point, System.Drawing">
+    <value>122, 101</value>
+  </data>
+  <data name="&gt;&gt;label_repeat_period_vibrate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textBox_repeat_period_toast_text.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="comboBox_repeat_period_time.Items1" xml:space="preserve">
+    <value>Каждые 20 минут</value>
+  </data>
+  <data name="&gt;&gt;label_hint.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="textBox_repeat_period_toast_text.TabIndex" type="System.Int32, mscorlib">
+    <value>166</value>
+  </data>
+  <data name="&gt;&gt;comboBox_repeat_period_time.Parent" xml:space="preserve">
+    <value>groupBox_repeat_period</value>
+  </data>
+  <data name="&gt;&gt;checkBox_repeat_period_vibrate.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="textBox_hour_toast_text.Location" type="System.Drawing.Point, System.Drawing">
+    <value>122, 41</value>
+  </data>
+  <data name="textBox_repeat_period_toast_text.Size" type="System.Drawing.Size, System.Drawing">
+    <value>120, 50</value>
+  </data>
+  <data name="checkBox_hour_vibrate.Text" xml:space="preserve">
+    <value>Вибрация</value>
+  </data>
+  <data name="label_hour_vibrate.Text" xml:space="preserve">
+    <value>Тип вибрации</value>
+  </data>
+  <data name="checkBox_hour_toast.Text" xml:space="preserve">
+    <value>Сообщение</value>
+  </data>
+  <data name="checkBox_repeat_period_vibrate.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="comboBox_hour_vibrate_type.Items2" xml:space="preserve">
+    <value>Длинная</value>
+  </data>
+  <data name="&gt;&gt;checkBox_repeat_period_toast.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_repeat_period_vibrate.Name" xml:space="preserve">
+    <value>label_repeat_period_vibrate</value>
+  </data>
+  <data name="comboBox_repeat_period_vibrate_type.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 21</value>
+  </data>
+  <data name="comboBox_hour_vibrate_type.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 21</value>
+  </data>
+  <data name="label_repeat_period_vibrate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>77, 13</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="textBox_repeat_period_toast_text.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="checkBox_hour_toast.Location" type="System.Drawing.Point, System.Drawing">
+    <value>122, 19</value>
+  </data>
+  <data name="groupBox_repeat_period.Text" xml:space="preserve">
+    <value>Периодический сигнал</value>
+  </data>
+  <data name="label_repeat_period_vibrate.Text" xml:space="preserve">
+    <value>Тип вибрации</value>
+  </data>
+  <data name="groupBox_hour.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label_hour_vibrate.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label_repeat_period.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;comboBox_repeat_period_vibrate_type.Parent" xml:space="preserve">
+    <value>groupBox_repeat_period</value>
+  </data>
+  <data name="&gt;&gt;textBox_hour_toast_text.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;comboBox_repeat_period_vibrate_type.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="groupBox_repeat_period.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;textBox_repeat_period_toast_text.Name" xml:space="preserve">
+    <value>textBox_repeat_period_toast_text</value>
+  </data>
+  <data name="comboBox_hour_vibrate_type.TabIndex" type="System.Int32, mscorlib">
+    <value>164</value>
+  </data>
+  <data name="&gt;&gt;textBox_hour_toast_text.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBox_hour_toast.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="checkBox_repeat_period_vibrate.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="checkBox_repeat_period_toast.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;label_hint.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="label_repeat_period_vibrate.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;comboBox_repeat_period_vibrate_type.Name" xml:space="preserve">
+    <value>comboBox_repeat_period_vibrate_type</value>
+  </data>
+  <data name="&gt;&gt;checkBox_repeat_period_vibrate.Name" xml:space="preserve">
+    <value>checkBox_repeat_period_vibrate</value>
+  </data>
+  <data name="label_repeat_period_vibrate.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="groupBox_hour.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
+  </data>
+  <data name="&gt;&gt;groupBox_repeat_period.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+</root>

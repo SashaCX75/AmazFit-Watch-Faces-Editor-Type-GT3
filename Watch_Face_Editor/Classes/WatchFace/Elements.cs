@@ -914,4 +914,18 @@ namespace Watch_Face_Editor
         /// <summary>Частота кадров</summary>
         public int fps = 15;
     }
+
+    public class PeriodicAlert
+    {
+
+        /// <summary>Вибрация при изменении статуса</summary>
+        public bool vibrate = false;
+        /// <summary>Тип вибрации</summary>
+        public int vibrateType = 9;
+        /// <summary>Оповещение при изменении статуса</summary>
+        public bool toastShow = false;
+        /// <summary>Текст оповещения</summary>
+        public string toastText = "";
+        public int repeatPeriod = 60;
+    }
 }

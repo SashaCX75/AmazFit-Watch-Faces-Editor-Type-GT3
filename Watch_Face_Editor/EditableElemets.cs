@@ -1158,7 +1158,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Pointer.Checked)
                             {
                                 hmUI_widget_IMG_POINTER img_pointer = steps.Pointer;
-                                Read_ImgPointer_Options(img_pointer, true);
+                                Read_ImgPointer_Options(img_pointer, false);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1223,7 +1223,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Pointer.Checked)
                             {
                                 hmUI_widget_IMG_POINTER img_pointer = battery.Pointer;
-                                Read_ImgPointer_Options(img_pointer, true);
+                                Read_ImgPointer_Options(img_pointer, false);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1296,7 +1296,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Pointer.Checked)
                             {
                                 hmUI_widget_IMG_POINTER img_pointer = calories.Pointer;
-                                Read_ImgPointer_Options(img_pointer, true);
+                                Read_ImgPointer_Options(img_pointer, false);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1361,7 +1361,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Pointer.Checked)
                             {
                                 hmUI_widget_IMG_POINTER img_pointer = heart.Pointer;
-                                Read_ImgPointer_Options(img_pointer, true);
+                                Read_ImgPointer_Options(img_pointer, false);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1434,7 +1434,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Pointer.Checked)
                             {
                                 hmUI_widget_IMG_POINTER img_pointer = pai.Pointer;
-                                Read_ImgPointer_Options(img_pointer, true);
+                                Read_ImgPointer_Options(img_pointer, false);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1524,7 +1524,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Pointer.Checked)
                             {
                                 hmUI_widget_IMG_POINTER img_pointer = stand.Pointer;
-                                Read_ImgPointer_Options(img_pointer, true);
+                                Read_ImgPointer_Options(img_pointer, false);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1606,7 +1606,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Pointer.Checked)
                             {
                                 hmUI_widget_IMG_POINTER img_pointer = stress.Pointer;
-                                Read_ImgPointer_Options(img_pointer, true);
+                                Read_ImgPointer_Options(img_pointer, false);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1663,7 +1663,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Pointer.Checked)
                             {
                                 hmUI_widget_IMG_POINTER img_pointer = fat_burning.Pointer;
-                                Read_ImgPointer_Options(img_pointer, true);
+                                Read_ImgPointer_Options(img_pointer, false);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1795,7 +1795,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Pointer.Checked)
                             {
                                 hmUI_widget_IMG_POINTER img_pointer = uv_index.Pointer;
-                                Read_ImgPointer_Options(img_pointer, true);
+                                Read_ImgPointer_Options(img_pointer, false);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1844,7 +1844,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Pointer.Checked)
                             {
                                 hmUI_widget_IMG_POINTER img_pointer = humidity.Pointer;
-                                Read_ImgPointer_Options(img_pointer, true);
+                                Read_ImgPointer_Options(img_pointer, false);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1877,7 +1877,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Pointer.Checked)
                             {
                                 hmUI_widget_IMG_POINTER img_pointer = altimeter.Pointer;
-                                Read_ImgPointer_Options(img_pointer, true);
+                                Read_ImgPointer_Options(img_pointer, false);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1948,7 +1948,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Pointer.Checked)
                             {
                                 hmUI_widget_IMG_POINTER img_pointer = sunrise.Pointer;
-                                Read_ImgPointer_Options(img_pointer, true);
+                                Read_ImgPointer_Options(img_pointer, false);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1997,7 +1997,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Pointer.Checked)
                             {
                                 hmUI_widget_IMG_POINTER img_pointer = wind.Pointer;
-                                Read_ImgPointer_Options(img_pointer, true);
+                                Read_ImgPointer_Options(img_pointer, false);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;

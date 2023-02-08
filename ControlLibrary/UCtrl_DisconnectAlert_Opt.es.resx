@@ -121,68 +121,68 @@
   <data name="checkBox_disconneсnt_toast.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 17</value>
   </data>
-  <data name="checkBox_disconneсnt_toast.Text" xml:space="preserve">
-    <value>Mensaje</value>
-  </data>
-  <data name="comboBox_disconneсnt_vibrate_type.Items" xml:space="preserve">
-    <value>Pequeño</value>
-  </data>
-  <data name="comboBox_disconneсnt_vibrate_type.Items1" xml:space="preserve">
-    <value>Medio</value>
-  </data>
-  <data name="comboBox_disconneсnt_vibrate_type.Items2" xml:space="preserve">
-    <value>Largo</value>
-  </data>
-  <data name="comboBox_disconneсnt_vibrate_type.Items3" xml:space="preserve">
-    <value>Largo (continuo)</value>
-  </data>
   <data name="label_disconneсnt_vibrate.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 13</value>
-  </data>
-  <data name="label_disconneсnt_vibrate.Text" xml:space="preserve">
-    <value>tipo de vibración</value>
   </data>
   <data name="checkBox_disconneсnt_vibrate.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 17</value>
   </data>
-  <data name="checkBox_disconneсnt_vibrate.Text" xml:space="preserve">
-    <value>Vibración</value>
-  </data>
-  <data name="groupBox_disconneсnt.Text" xml:space="preserve">
-    <value>Conexión perdida</value>
-  </data>
   <data name="checkBox_conneсnt_toast.Size" type="System.Drawing.Size, System.Drawing">
     <value>66, 17</value>
-  </data>
-  <data name="checkBox_conneсnt_toast.Text" xml:space="preserve">
-    <value>Mensaje</value>
-  </data>
-  <data name="comboBox_conneсnt_vibrate_type.Items" xml:space="preserve">
-    <value>Pequeño</value>
-  </data>
-  <data name="comboBox_conneсnt_vibrate_type.Items1" xml:space="preserve">
-    <value>Medio</value>
-  </data>
-  <data name="comboBox_conneсnt_vibrate_type.Items2" xml:space="preserve">
-    <value>Largo</value>
-  </data>
-  <data name="comboBox_conneсnt_vibrate_type.Items3" xml:space="preserve">
-    <value>Largo (continuo)</value>
   </data>
   <data name="label_conneсnt_vibrate.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 13</value>
   </data>
-  <data name="label_conneсnt_vibrate.Text" xml:space="preserve">
-    <value>tipo de vibración</value>
-  </data>
   <data name="checkBox_conneсnt_vibrate.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 17</value>
   </data>
-  <data name="checkBox_conneсnt_vibrate.Text" xml:space="preserve">
+  <data name="checkBox_conneсt_toast.Text" xml:space="preserve">
+    <value>Mensaje</value>
+  </data>
+  <data name="checkBox_conneсt_vibrate.Text" xml:space="preserve">
     <value>Vibración</value>
   </data>
-  <data name="groupBox_conneсnt.Text" xml:space="preserve">
+  <data name="checkBox_disconneсt_toast.Text" xml:space="preserve">
+    <value>Mensaje</value>
+  </data>
+  <data name="checkBox_disconneсt_vibrate.Text" xml:space="preserve">
+    <value>Vibración</value>
+  </data>
+  <data name="comboBox_conneсt_vibrate_type.Items" xml:space="preserve">
+    <value>Pequeño</value>
+  </data>
+  <data name="comboBox_conneсt_vibrate_type.Items1" xml:space="preserve">
+    <value>Medio</value>
+  </data>
+  <data name="comboBox_conneсt_vibrate_type.Items2" xml:space="preserve">
+    <value>Largo</value>
+  </data>
+  <data name="comboBox_conneсt_vibrate_type.Items3" xml:space="preserve">
+    <value>Largo (continuo)</value>
+  </data>
+  <data name="comboBox_disconneсt_vibrate_type.Items" xml:space="preserve">
+    <value>Pequeño</value>
+  </data>
+  <data name="comboBox_disconneсt_vibrate_type.Items1" xml:space="preserve">
+    <value>Medio</value>
+  </data>
+  <data name="comboBox_disconneсt_vibrate_type.Items2" xml:space="preserve">
+    <value>Largo</value>
+  </data>
+  <data name="comboBox_disconneсt_vibrate_type.Items3" xml:space="preserve">
+    <value>Largo (continuo)</value>
+  </data>
+  <data name="groupBox_conneсt.Text" xml:space="preserve">
     <value>Conexión restaurada</value>
+  </data>
+  <data name="groupBox_disconneсt.Text" xml:space="preserve">
+    <value>Conexión perdida</value>
+  </data>
+  <data name="label_conneсt_vibrate.Text" xml:space="preserve">
+    <value>tipo de vibración</value>
+  </data>
+  <data name="label_disconneсt_vibrate.Text" xml:space="preserve">
+    <value>tipo de vibración</value>
   </data>
   <data name="label_hint.Text" xml:space="preserve">
     <value>Para que esta función funcione, AOD debe estar habilitado en el reloj.</value>

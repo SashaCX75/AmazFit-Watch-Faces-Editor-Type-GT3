@@ -26,6 +26,8 @@ namespace Watch_Face_Editor
         public ElementShortcuts Shortcuts { get; set; }
 
         public DisconnectAlert DisconnectAlert { get; set; }
+
+        public RepeatAlert RepeatAlert { get; set; }
     }
 
     public class WatchFace_Info
@@ -4249,6 +4251,15 @@ namespace Watch_Face_Editor
 
         /// <summary>Оповещение при востановление связи</summary>
         public BluetoothStateAlert BluetoothOn { get; set; }
+
+        /// <summary>Использование элемента</summary>
+        public bool enable = true;
+    }
+
+    public class RepeatAlert
+    {
+        public PeriodicAlert EveryHour { get; set; }
+        public PeriodicAlert RepeatingAlert { get; set; }
 
         /// <summary>Использование элемента</summary>
         public bool enable = true;

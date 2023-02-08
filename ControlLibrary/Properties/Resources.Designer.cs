@@ -413,6 +413,16 @@ namespace ControlLibrary.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap repeating_signal {
+            get {
+                object obj = ResourceManager.GetObject("repeating signal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap rotate_anim {
             get {
                 object obj = ResourceManager.GetObject("rotate_anim", resourceCulture);

@@ -147,4 +147,7 @@
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Analoge Zeit (Pro)</value>
   </data>
+  <data name="button_Format_24hour.Text" xml:space="preserve">
+    <value>24-Stunden-Zeitformat</value>
+  </data>
 </root>

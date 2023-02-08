@@ -147,4 +147,7 @@
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Analogový čas (Pro)</value>
   </data>
+  <data name="button_Format_24hour.Text" xml:space="preserve">
+    <value>24hodinový formát času</value>
+  </data>
 </root>

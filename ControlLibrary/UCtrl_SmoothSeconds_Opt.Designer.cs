@@ -35,6 +35,8 @@
             this.toolTipTypeHint = new System.Windows.Forms.ToolTip(this.components);
             this.numericUpDown_fps = new System.Windows.Forms.NumericUpDown();
             this.label01 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_fps)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,10 +86,22 @@
             resources.ApplyResources(this.label01, "label01");
             this.label01.Name = "label01";
             // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
             // UCtrl_SmoothSeconds_Opt
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.numericUpDown_fps);
             this.Controls.Add(this.label01);
             this.Controls.Add(this.radioButton_type2);
@@ -105,5 +119,7 @@
         public System.Windows.Forms.RadioButton radioButton_type2;
         public System.Windows.Forms.NumericUpDown numericUpDown_fps;
         public System.Windows.Forms.Label label01;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
     }
 }
