@@ -1613,8 +1613,21 @@ namespace Watch_Face_Editor
                 PreviewView = true;
                 return;
             }
-            if (smoothSecond.type == 1) uCtrl_SmoothSeconds_Opt.radioButton_type1.Checked = true;
-            else uCtrl_SmoothSeconds_Opt.radioButton_type2.Checked = true;
+            switch(smoothSecond.type)
+            {
+                case 1:
+                    uCtrl_SmoothSeconds_Opt.radioButton_type1.Checked = true;
+                    break;
+                case 2:
+                    uCtrl_SmoothSeconds_Opt.radioButton_type2.Checked = true;
+                    break;
+                case 3:
+                    uCtrl_SmoothSeconds_Opt.radioButton_type3.Checked = true;
+                    break;
+                case 4:
+                    uCtrl_SmoothSeconds_Opt.radioButton_type4.Checked = true;
+                    break;
+            }
             uCtrl_SmoothSeconds_Opt.numericUpDown_fps.Value = smoothSecond.fps;
 
             PreviewView = true;
@@ -3113,7 +3126,7 @@ namespace Watch_Face_Editor
             Smooth_Second smoothSecon = (Smooth_Second)uCtrl_SmoothSeconds_Opt._SmoothSeconds;
             if (smoothSecon == null) return;
 
-            smoothSecon.type = uCtrl_SmoothSeconds_Opt.radioButton_type1.Checked ? 1 : 2;
+            smoothSecon.type = uCtrl_SmoothSeconds_Opt.GetSmothType();
             smoothSecon.fps = (int)uCtrl_SmoothSeconds_Opt.numericUpDown_fps.Value;
 
             JSON_Modified = true;

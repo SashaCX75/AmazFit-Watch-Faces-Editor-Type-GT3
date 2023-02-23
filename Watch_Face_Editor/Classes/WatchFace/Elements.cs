@@ -913,6 +913,9 @@ namespace Watch_Face_Editor
 
         /// <summary>Частота кадров</summary>
         public int fps = 15;
+
+        /// <summary>Основной экран или AOD</summary>
+        public string show_level = "";
     }
 
     public class PeriodicAlert

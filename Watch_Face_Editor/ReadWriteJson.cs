@@ -608,6 +608,8 @@ namespace Watch_Face_Editor
                 pause_call += out_pause_call;
             }
 
+            if (items.IndexOf("timeSensor =") >= 0) variables += TabInString(4) + "let timeSensor = ''" + Environment.NewLine;
+
             if (time_update.Length > 5)
             {
                 if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
@@ -615,7 +617,7 @@ namespace Watch_Face_Editor
                 //if (items.IndexOf("let now = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
                 //    items += Environment.NewLine + TabInString(6) + "let now = hmSensor.createSensor(hmSensor.id.TIME);" + Environment.NewLine;
 
-                if (items.IndexOf("timeSensor =") >= 0) variables += TabInString(4) + "let timeSensor = ''" + Environment.NewLine;
+                //if (items.IndexOf("timeSensor =") >= 0) variables += TabInString(4) + "let timeSensor = ''" + Environment.NewLine;
 
                 items += Environment.NewLine + TabInString(6) + "function time_update(updateHour = false, updateMinute = false) {";
                 items += Environment.NewLine + TabInString(7) + "let hour = timeSensor.hour;";
@@ -974,7 +976,7 @@ namespace Watch_Face_Editor
                     if (AnalogTimePro.SmoothSecond != null && AnalogTimePro.SmoothSecond.enable)
                     {
                         smoothSecondPointerProPosition = AnalogTimePro.SmoothSecond.position;
-                        readOptionsPointerProSmoothSecond = TIME_PRO_SMOOTH_POINTER_OptionsRead(AnalogTimePro.SmoothSecond, optionNameStart);
+                        readOptionsPointerProSmoothSecond = TIME_PRO_SMOOTH_POINTER_OptionsRead(AnalogTimePro.SmoothSecond, optionNameStart, show_level);
                     }
 
                     for (int index = 1; index <= 5; index++)
@@ -1154,27 +1156,27 @@ namespace Watch_Face_Editor
                         // секунды
                         if (index == secondPointerProPosition && optionsPointerProSecond.Length > 5)
                         {
-                            variables += TabInString(4) + "let " + optionNameStart +
-                                "analog_clock_pro_second_pointer_img = ''" + Environment.NewLine;
-
-                            if (items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0 &&
-                                exist_items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0)
-                                items += Environment.NewLine + TabInString(6) + "const deviceInfo = hmSetting.getDeviceInfo();";
-                            if (items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0 &&
-                                exist_items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
-                                items += Environment.NewLine + TabInString(6) + "if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);";
-
-                            items += readOptionsPointerProSecond + Environment.NewLine;
-                            items += Environment.NewLine + TabInString(6) +
-                                optionNameStart + "analog_clock_pro_second_pointer_img = hmUI.createWidget(hmUI.widget.IMG, {" +
-                                    optionsPointerProSecond + TabInString(6) + "});" + Environment.NewLine;
-
                             string tempAngleName = optionNameStart + "fullAngle_second";
                             //time_update += Environment.NewLine + TabInString(7) + "let " + tempAngleName +
                             //    " = " + (AnalogTimePro.Second.end_angle - AnalogTimePro.Second.start_angle).ToString() + ";";
 
                             if (AnalogTimePro.SmoothSecond == null || !AnalogTimePro.SmoothSecond.enable)  // обычный ход стрелки
                             {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "analog_clock_pro_second_pointer_img = ''" + Environment.NewLine;
+
+                                if (items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0 &&
+                                    exist_items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0)
+                                    items += Environment.NewLine + TabInString(6) + "const deviceInfo = hmSetting.getDeviceInfo();";
+                                if (items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0 &&
+                                    exist_items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
+                                    items += Environment.NewLine + TabInString(6) + "if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);";
+
+                                items += readOptionsPointerProSecond + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "analog_clock_pro_second_pointer_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        optionsPointerProSecond + TabInString(6) + "});" + Environment.NewLine;
+
                                 if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
                                     exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                     items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
@@ -1224,6 +1226,25 @@ namespace Watch_Face_Editor
                                 {
                                     if(optionNameStart == "normal_")
                                     {
+                                        variables += TabInString(4) + "let " + optionNameStart +
+                                            "analog_clock_pro_second_pointer_img = ''" + Environment.NewLine;
+
+                                        if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                            exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                            items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+
+                                        if (items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0 &&
+                                            exist_items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0)
+                                            items += Environment.NewLine + TabInString(6) + "const deviceInfo = hmSetting.getDeviceInfo();";
+                                        if (items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0 &&
+                                            exist_items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
+                                            items += Environment.NewLine + TabInString(6) + "if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);";
+
+                                        items += readOptionsPointerProSecond + Environment.NewLine;
+                                        items += Environment.NewLine + TabInString(6) +
+                                            optionNameStart + "analog_clock_pro_second_pointer_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                                optionsPointerProSecond + TabInString(6) + "});" + Environment.NewLine;
+
                                         items += Environment.NewLine + TabInString(6) + "function startSecAnim(sec, animDuration) {";
                                         items += Environment.NewLine + TabInString(7) + "const secAnim = {";
                                         items += Environment.NewLine + TabInString(8) + "anim_rate: 'linear',";
@@ -1273,10 +1294,25 @@ namespace Watch_Face_Editor
                                         pause_call += TabInString(8) + "}" + Environment.NewLine;
                                     }
                                 }
-                                else
+                                else if (AnalogTimePro.SmoothSecond.type == 2)
                                 {
+                                    variables += TabInString(4) + "let " + optionNameStart +
+                                        "analog_clock_pro_second_pointer_img = ''" + Environment.NewLine;
+
+                                    if (items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0 &&
+                                        exist_items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0)
+                                        items += Environment.NewLine + TabInString(6) + "const deviceInfo = hmSetting.getDeviceInfo();";
+                                    if (items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0 &&
+                                        exist_items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
+                                        items += Environment.NewLine + TabInString(6) + "if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);";
+
+                                    items += readOptionsPointerProSecond + Environment.NewLine;
+                                    items += Environment.NewLine + TabInString(6) +
+                                        optionNameStart + "analog_clock_pro_second_pointer_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                            optionsPointerProSecond + TabInString(6) + "});" + Environment.NewLine;
+
                                     if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                    exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                        exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                         items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                                     if (optionNameStart == "normal_")
                                     {
@@ -1315,12 +1351,109 @@ namespace Watch_Face_Editor
                                             optionNameStart + "analog_clock_pro_second_pointer_img.setProperty(hmUI.prop.ANGLE, " +
                                             optionNameStart + "angle_second);" + Environment.NewLine;
                                 }
+                                else if (AnalogTimePro.SmoothSecond.type == 3)
+                                {
+                                    coverPointerProSecond = "";
+                                    if (optionNameStart == "normal_" &&  AnalogTimePro.Second.start_angle == 0 && AnalogTimePro.Second.end_angle == 360)
+                                    {
+                                        optionsPointerProSecond = IMG_POINTER_Smooth_Second_Options(AnalogTimePro.Second, AnalogTimePro.SmoothSecond.fps, show_level);
+                                        if (optionsPointerProSecond.Length > 5)
+                                        {
+                                            items += readOptionsPointerProSecond + Environment.NewLine;
+                                            variables += TabInString(4) + "let " + optionNameStart +
+                                                "analog_clock_time_pointer_smooth_second = ''" + Environment.NewLine;
+                                            items += Environment.NewLine + TabInString(6) +
+                                                optionNameStart + "analog_clock_time_pointer_smooth_second = hmUI.createWidget(hmUI.widget.TIME_POINTER, {" +
+                                                    optionsPointerProSecond + TabInString(6) + "});" + Environment.NewLine;
+                                        }
+
+                                    }
+                                }
+                                else if (AnalogTimePro.SmoothSecond.type == 4)
+                                {
+                                    if (optionNameStart == "normal_")
+                                    {
+                                        variables += TabInString(4) + "let " + optionNameStart +
+                                            "analog_clock_pro_second_pointer_img = ''" + Environment.NewLine;
+
+                                        if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                            exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                            items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+
+                                        if (items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0 &&
+                                            exist_items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0)
+                                            items += Environment.NewLine + TabInString(6) + "const deviceInfo = hmSetting.getDeviceInfo();";
+                                        if (items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0 &&
+                                            exist_items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
+                                            items += Environment.NewLine + TabInString(6) + "if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);";
+
+                                        items += readOptionsPointerProSecond + Environment.NewLine;
+                                        items += Environment.NewLine + TabInString(6) +
+                                            optionNameStart + "analog_clock_pro_second_pointer_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                                optionsPointerProSecond + TabInString(6) + "});" + Environment.NewLine;
+
+                                        items += Environment.NewLine + TabInString(6) + "function startSecAnim(sec, animDuration) {";
+                                        items += Environment.NewLine + TabInString(7) + "const secAnim = {";
+                                        items += Environment.NewLine + TabInString(8) + "anim_steps: [{";
+                                        items += Environment.NewLine + TabInString(9) + "anim_rate: 'linear',";
+                                        items += Environment.NewLine + TabInString(9) + "anim_duration: animDuration,";
+                                        items += Environment.NewLine + TabInString(9) + "anim_from: sec,";
+                                        items += Environment.NewLine + TabInString(9) + "anim_to: sec + (" +
+                                            (AnalogTimePro.Second.end_angle - AnalogTimePro.Second.start_angle).ToString() + "*(animDuration*6/1000))/360,";
+                                        items += Environment.NewLine + TabInString(9) + "anim_key: 'angle',";
+                                        items += Environment.NewLine + TabInString(8) + "}],";
+                                        items += Environment.NewLine + TabInString(8) + "anim_fps: " + AnalogTimePro.SmoothSecond.fps.ToString() + ",";
+                                        //items += Environment.NewLine + TabInString(8) + "anim_status: 1,";
+                                        items += Environment.NewLine + TabInString(8) + "anim_auto_start: 1,";
+                                        //items += Environment.NewLine + TabInString(8) + "repeat_count: 1,";
+                                        items += Environment.NewLine + TabInString(8) + "anim_repeat: 1,";
+                                        items += Environment.NewLine + TabInString(8) + "anim_auto_destroy: 1,";
+                                        items += Environment.NewLine + TabInString(7) + "}";
+                                        items += Environment.NewLine + TabInString(7) + optionNameStart +
+                                            "analog_clock_pro_second_pointer_img.setProperty(hmUI.prop.ANIM, secAnim);";
+                                        items += Environment.NewLine + TabInString(6) + "}";
+
+                                        string timerName = optionNameStart + "timerUpdateSecSmooth";
+                                        variables += TabInString(4) + "let " + timerName + " = undefined;" + Environment.NewLine;
+                                        variables += TabInString(4) + "let lastTime = 0;" + Environment.NewLine;
+
+                                        resume_call += TabInString(8) + "let secAngle = " + AnalogTimePro.Second.start_angle.ToString() + " + (" +
+                                            (AnalogTimePro.Second.end_angle - AnalogTimePro.Second.start_angle).ToString() +
+                                            "*6)*(timeSensor.second + ((timeSensor.utc % 1000) / 1000))/360;" + Environment.NewLine;
+                                        resume_call += TabInString(8) + optionNameStart +
+                                            "analog_clock_pro_second_pointer_img.setProperty(hmUI.prop.ANGLE, secAngle);" + Environment.NewLine;
+
+                                        resume_call += TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {" + Environment.NewLine;
+                                        resume_call += TabInString(9) + "if (!" + timerName + ") {" + Environment.NewLine;
+                                        resume_call += TabInString(10) + "let duration = 0;" + Environment.NewLine;
+                                        resume_call += TabInString(10) + "let animDuration = 5000;" + Environment.NewLine;
+                                        resume_call += TabInString(10) + "if (timeSensor.second > 55) animDuration = 1000*(60.1 - (timeSensor.second - (timeSensor.utc % 1000) / 1000));" + Environment.NewLine;
+                                        resume_call += TabInString(10) + "let diffTime = timeSensor.utc - lastTime;" + Environment.NewLine;
+                                        resume_call += TabInString(10) + "if (diffTime < animDuration) duration = animDuration - diffTime;" + Environment.NewLine;
+                                        resume_call += TabInString(10) + timerName + " = timer.createTimer(duration, animDuration, (function (option) {" + Environment.NewLine;
+                                        resume_call += TabInString(11) + "lastTime = timeSensor.utc;" + Environment.NewLine;
+                                        resume_call += TabInString(11) + "secAngle = " + AnalogTimePro.Second.start_angle.ToString() + " + (" +
+                                            (AnalogTimePro.Second.end_angle - AnalogTimePro.Second.start_angle).ToString() +
+                                            "*6)*(timeSensor.second + ((timeSensor.utc % 1000) / 1000))/360;" + Environment.NewLine;
+                                        resume_call += TabInString(11) + "startSecAnim(secAngle, animDuration);" + Environment.NewLine;
+                                        resume_call += TabInString(10) + "}));  // end timer " + Environment.NewLine;
+                                        resume_call += TabInString(9) + "};  // end timer check" + Environment.NewLine;
+                                        resume_call += TabInString(8) + "};  // end screenType" + Environment.NewLine + Environment.NewLine;
+
+                                        pause_call += TabInString(8) + "if (" + timerName + ") {" + Environment.NewLine;
+                                        pause_call += TabInString(9) + "timer.stopTimer(" + timerName + ");" + Environment.NewLine;
+                                        pause_call += TabInString(9) + timerName + " = undefined;" + Environment.NewLine;
+                                        pause_call += TabInString(8) + "}" + Environment.NewLine;
+                                    }
+                                }
                             }
 
                             if (coverPointerProSecond.Length > 5)
                             {
                                 variables += TabInString(4) + "let " + optionNameStart +
                                     "analog_clock_pro_second_cover_pointer_img = ''" + Environment.NewLine;
+
+                                //items += readOptionsPointerProSecond + Environment.NewLine;
                                 items += Environment.NewLine + TabInString(6) + optionNameStart +
                                     "analog_clock_pro_second_cover_pointer_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                     coverPointerProSecond + TabInString(6) + "});" + Environment.NewLine;
@@ -9115,6 +9248,36 @@ namespace Watch_Face_Editor
             return options;
         }
 
+        private string IMG_POINTER_Smooth_Second_Options(hmUI_widget_IMG_POINTER img_pointer_second, int fps, string show_level)
+        {
+            string options = Environment.NewLine;
+            if (img_pointer_second == null) return options;
+            if (img_pointer_second.src != null && img_pointer_second.src.Length > 0)
+            {
+                options += TabInString(7) + "second_path: '" + img_pointer_second.src + ".png'," + Environment.NewLine;
+                options += TabInString(7) + "second_centerX: " + img_pointer_second.center_x.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "second_centerY: " + img_pointer_second.center_y.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "second_posX: " + img_pointer_second.pos_x.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "second_posY: " + img_pointer_second.pos_y.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "fresh_frequency: " + fps.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "fresh_freqency: " + fps.ToString() + "," + Environment.NewLine;
+
+                if (img_pointer_second.cover_path != null && img_pointer_second.cover_path.Length > 0)
+                {
+                    options += TabInString(7) + "second_cover_path: '" + img_pointer_second.cover_path + ".png'," + Environment.NewLine;
+                    options += TabInString(7) + "second_cover_x: " + img_pointer_second.cover_x.ToString() + "," + Environment.NewLine;
+                    options += TabInString(7) + "second_cover_y: " + img_pointer_second.cover_y.ToString() + "," + Environment.NewLine;
+                }
+
+                //options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+                if (show_level.Length > 0)
+                {
+                    options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+                }
+            }
+            return options;
+        }
+
         private string DATE_POINTER_Options(hmUI_widget_IMG_POINTER img_pointer, string type, string show_level, int tabOffset = 0)
         {
             string options = Environment.NewLine;
@@ -9260,13 +9423,16 @@ namespace Watch_Face_Editor
             return options;
         }
 
-        private string TIME_PRO_SMOOTH_POINTER_OptionsRead(Smooth_Second smooth_second, string optionNameStart, int tabOffset = 0)
+        private string TIME_PRO_SMOOTH_POINTER_OptionsRead(Smooth_Second smooth_second, string optionNameStart, string show_level, int tabOffset = 0)
         {
             string options = Environment.NewLine;
             if (smooth_second == null) return options;
-            options += TabInString(6 + tabOffset) + "// " + optionNameStart + "analog_clock_pro_smooth_second = hmUI.createWidget(hmUI.widget.SMOOTH_SRCOND, {" + Environment.NewLine;
+            options += TabInString(6 + tabOffset) + "// " + optionNameStart + "analog_clock_pro_smooth_second = hmUI.createWidget(hmUI.widget.SMOOTH_SECOND, {" + Environment.NewLine;
             options += TabInString(7 + tabOffset) + "// type: " + smooth_second.type.ToString() + "," + Environment.NewLine;
             options += TabInString(7 + tabOffset) + "// fps: " + smooth_second.fps.ToString() + "," + Environment.NewLine;
+
+            if (show_level.Length > 0) options += TabInString(7 + tabOffset) + "// show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+
             options += TabInString(6 + tabOffset) + "// });" + Environment.NewLine;
             return options;
         }
@@ -11781,7 +11947,27 @@ namespace Watch_Face_Editor
                                 elementsList = Watch_Face.ScreenAOD.Elements;
                             }
                             ParametrsToObject(elementsList, parametrs);
-                            break; 
+                            break;
+                        #endregion
+
+                        #region SMOOTH_SECOND
+                        case "SMOOTH_SECOND":
+                            Smooth_Second smoothSecond = Object_SMOOTH_SECOND(parametrs);
+                            elementsList = null;
+                            if (smoothSecond.show_level == "ONLY_NORMAL" || objectName.StartsWith("normal"))
+                            {
+                                if (Watch_Face.ScreenNormal.Elements == null)
+                                    Watch_Face.ScreenNormal.Elements = new List<object>();
+                                elementsList = Watch_Face.ScreenNormal.Elements;
+                            }
+                            else if (smoothSecond.show_level == "ONLY_AOD" || smoothSecond.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
+                            {
+                                if (Watch_Face.ScreenAOD.Elements == null)
+                                    Watch_Face.ScreenAOD.Elements = new List<object>();
+                                elementsList = Watch_Face.ScreenAOD.Elements;
+                            }
+                            ParametrsToObject(elementsList, parametrs);
+                            break;
                         #endregion
 
                         #region WATCHFACE_EDIT_POINTER
@@ -11892,33 +12078,6 @@ namespace Watch_Face_Editor
                                 elementsList = Watch_Face.ScreenAOD.Elements;
                             }
                             ParametrsToObject(elementsList, parametrs);
-                            //if (elementsList != null)
-                            //{
-                            //    int offsetImages = 1;
-                            //    ElementDateWeek dateWeek_img = (ElementDateWeek)elementsList.Find(e => e.GetType().Name == "ElementDateWeek");
-                            //    if (dateWeek_img == null)
-                            //    {
-                            //        elementsList.Add(new ElementDateWeek());
-                            //        dateWeek_img = (ElementDateWeek)elementsList.Find(e => e.GetType().Name == "ElementDateWeek");
-                            //    }
-                            //    if (dateWeek_img != null)
-                            //    {
-                            //        if (dateWeek_img.Pointer != null) offsetImages++;
-                            //        dateWeek_img.Images = imgWeek;
-                            //        dateWeek_img.Images.position = offsetImages;
-                            //        dateWeek_img.Images.enable = true;
-                            //    }
-                            //}
-                            //else
-                            //{
-                            //    ElementDateWeek dateWeek = null;
-                            //    dateWeek = (ElementDateWeek)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDateWeek");
-                            //    if (dateWeek != null)
-                            //    {
-                            //        dateWeek.Images = imgWeek;
-                            //    }
-                            //}
-
                             break;
                         #endregion
 
@@ -13178,6 +13337,7 @@ namespace Watch_Face_Editor
 
                     #region TIME_POINTER
                     case "TIME_POINTER":
+                        if(objectName.EndsWith("_smooth_second")) break;
                         ElementAnalogTime pointer_time = Object_AnalogTime(parametrs);
                         ElementAnalogTime analogTime = (ElementAnalogTime)elementsList.Find(e => e.GetType().Name == "ElementAnalogTime");
                         if (analogTime == null)
@@ -13238,6 +13398,31 @@ namespace Watch_Face_Editor
                             if (imgPointerPro.type == "minute") analogTimePro.Minute = imgPointerPro;
                             if (imgPointerPro.type == "second") analogTimePro.Second = imgPointerPro;
                             if (format24h) analogTimePro.Format_24hour = true;
+                        }
+
+                        break;
+                    #endregion
+
+                    #region SMOOTH_SECOND
+                    case "SMOOTH_SECOND":
+                        Smooth_Second smooth_Second = Object_SMOOTH_SECOND(parametrs);
+                        ElementAnalogTimePro analogTimeSmoth = (ElementAnalogTimePro)elementsList.Find(e => e.GetType().Name == "ElementAnalogTimePro");
+                        if (analogTimeSmoth == null)
+                        {
+                            //elementsList.Add(pointer_time);
+                            elementsList.Add(new ElementAnalogTimePro());
+                            analogTimePro = (ElementAnalogTimePro)elementsList.Find(e => e.GetType().Name == "ElementAnalogTimePro");
+                        }
+                        if (analogTimeSmoth != null)
+                        {
+                            int offset = 2;
+                            if (analogTimeSmoth.Hour != null) offset++;
+                            if (analogTimeSmoth.Minute != null) offset++;
+                            if (analogTimeSmoth.Second != null) offset++;
+                            //if (analogTimeSmoth.SmoothSecond != null) offset++;
+                            smooth_Second.position = offset;
+
+                            analogTimeSmoth.SmoothSecond = smooth_Second;
                         }
 
                         break;
@@ -17904,6 +18089,28 @@ namespace Watch_Face_Editor
             }
 
             return elementPointer;
+        }
+
+        private Smooth_Second Object_SMOOTH_SECOND(Dictionary<string, string> parametrs)
+        {
+            Smooth_Second smoothSecond = new Smooth_Second();
+            int value;
+
+            if (parametrs.ContainsKey("// type") && Int32.TryParse(parametrs["// type"], out value))
+                smoothSecond.type = value;
+            if (parametrs.ContainsKey("// fps") && Int32.TryParse(parametrs["// fps"], out value))
+                smoothSecond.fps = value;
+
+            if (parametrs.ContainsKey("// show_level"))
+            {
+                string imgName = parametrs["// show_level"].Replace("hmUI.show_level.", "");
+                smoothSecond.show_level = imgName;
+            }
+
+            smoothSecond.enable = true;
+            smoothSecond.position = 1;
+
+            return smoothSecond;
         }
 
         private List<hmUI_widget_IMG_NUMBER> Object_ImgDate(Dictionary<string, string> parametrs)

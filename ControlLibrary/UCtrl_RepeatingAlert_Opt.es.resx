@@ -117,70 +117,95 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label_hint.Text" xml:space="preserve">
+    <value>Para que esta función funcione, AOD debe estar habilitado en el reloj.</value>
+  </data>
+  <data name="groupBox_repeat_period.Text" xml:space="preserve">
+    <value>Alerta periódica</value>
+  </data>
+  <data name="comboBox_repeat_period_time.Items" xml:space="preserve">
+    <value>cada 30 minutos</value>
+  </data>
+  <data name="comboBox_repeat_period_time.Items1" xml:space="preserve">
+    <value>cada 20 minutos</value>
+  </data>
+  <data name="comboBox_repeat_period_time.Items2" xml:space="preserve">
+    <value>cada 15 minutos</value>
+  </data>
+  <data name="comboBox_repeat_period_time.Items3" xml:space="preserve">
+    <value>cada 10 minutos</value>
+  </data>
+  <data name="comboBox_repeat_period_time.Items4" xml:space="preserve">
+    <value>cada 5 minutos</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="radioButton_type1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 17</value>
+  <data name="label_repeat_period.Size" type="System.Drawing.Size, System.Drawing">
+    <value>109, 13</value>
   </data>
-  <data name="radioButton_type1.Text" xml:space="preserve">
-    <value>Typ 1</value>
+  <data name="label_repeat_period.Text" xml:space="preserve">
+    <value>Período de repetición</value>
   </data>
-  <data name="radioButton_type1.ToolTip" xml:space="preserve">
-    <value>Funktioniert nicht bei Modellen mit ZeppOS 2 und einigen anderen, und auch nicht im AOD-Modus.</value>
+  <data name="checkBox_repeat_period_toast.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 17</value>
   </data>
-  <data name="radioButton_type2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 17</value>
+  <data name="checkBox_repeat_period_toast.Text" xml:space="preserve">
+    <value>Mensaje</value>
   </data>
-  <data name="radioButton_type2.Text" xml:space="preserve">
-    <value>Typ 2</value>
+  <data name="comboBox_repeat_period_vibrate_type.Items" xml:space="preserve">
+    <value>Pequeño</value>
   </data>
-  <data name="radioButton_type2.ToolTip" xml:space="preserve">
-    <value>Universelle Methode. Weniger reibungsloser Ablauf des Sekundenzeigers (es macht keinen Sinn, fps über 6 einzustellen).</value>
+  <data name="comboBox_repeat_period_vibrate_type.Items1" xml:space="preserve">
+    <value>Medio</value>
   </data>
-  <data name="radioButton_type3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 17</value>
+  <data name="comboBox_repeat_period_vibrate_type.Items2" xml:space="preserve">
+    <value>Largo</value>
   </data>
-  <data name="radioButton_type3.Text" xml:space="preserve">
-    <value>Typ 3</value>
+  <data name="comboBox_repeat_period_vibrate_type.Items3" xml:space="preserve">
+    <value>Largo (continuo)</value>
   </data>
-  <data name="radioButton_type3.ToolTip" xml:space="preserve">
-    <value>Funktioniert flüssiger als Typ 2, nur bei Modellen mit ZeppOS 2. 
-Funktioniert nicht bei AOD. Der Startwinkel muss 0 sein, der 
-Endwinkel 360. Wenn aktiviert, gibt es Probleme mit der 
-Aktualisierung anderer Zeitelemente</value>
+  <data name="label_repeat_period_vibrate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 13</value>
   </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>223, 49</value>
+  <data name="label_repeat_period_vibrate.Text" xml:space="preserve">
+    <value>Tipo de vibración</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>   Typ 1 - Funktioniert nicht bei Modellen mit 
-ZeppOS 2 und einigen anderen, und auch im 
-AOD-Modus nicht.</value>
+  <data name="checkBox_repeat_period_vibrate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 17</value>
   </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 136</value>
+  <data name="checkBox_repeat_period_vibrate.Text" xml:space="preserve">
+    <value>Vibración</value>
   </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>243, 49</value>
+  <data name="groupBox_hour.Text" xml:space="preserve">
+    <value>Alerta cada hora</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>   Typ 2 - Universelle Methode. Weniger Laufruhe 
-des Sekundenzeigers (es macht keinen Sinn, die 
-fps über 6 einzustellen).</value>
+  <data name="checkBox_hour_toast.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 17</value>
   </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 185</value>
+  <data name="checkBox_hour_toast.Text" xml:space="preserve">
+    <value>Mensaje</value>
   </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 65</value>
+  <data name="comboBox_hour_vibrate_type.Items" xml:space="preserve">
+    <value>Pequeño</value>
   </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>   Typ 3 - Funktioniert flüssiger als Typ 2, nur bei 
-Modellen mit ZeppOS 2. Funktioniert nicht bei 
-AOD. Der Startwinkel muss 0 sein, der Endwinkel 
-360. Wenn aktiviert, gibt es Probleme mit der 
-Aktualisierung anderer Zeitelemente.</value>
+  <data name="comboBox_hour_vibrate_type.Items1" xml:space="preserve">
+    <value>Medio</value>
   </data>
-  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 295</value>
+  <data name="comboBox_hour_vibrate_type.Items2" xml:space="preserve">
+    <value>Largo</value>
+  </data>
+  <data name="comboBox_hour_vibrate_type.Items3" xml:space="preserve">
+    <value>Largo (continuo)</value>
+  </data>
+  <data name="label_hour_vibrate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 13</value>
+  </data>
+  <data name="label_hour_vibrate.Text" xml:space="preserve">
+    <value>Tipo de vibración</value>
+  </data>
+  <data name="checkBox_hour_vibrate.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 17</value>
+  </data>
+  <data name="checkBox_hour_vibrate.Text" xml:space="preserve">
+    <value>Vibración</value>
   </data>
 </root>

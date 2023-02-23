@@ -150,13 +150,13 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;radioButton_type1.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>9</value>
   </data>
   <data name="radioButton_type2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="radioButton_type2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>124, 3</value>
+    <value>99, 3</value>
   </data>
   <data name="radioButton_type2.Size" type="System.Drawing.Size, System.Drawing">
     <value>53, 17</value>
@@ -180,7 +180,78 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;radioButton_type2.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>8</value>
+  </data>
+  <data name="radioButton_type3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="radioButton_type3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButton_type3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>194, 4</value>
+  </data>
+  <data name="radioButton_type3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 17</value>
+  </data>
+  <data name="radioButton_type3.TabIndex" type="System.Int32, mscorlib">
+    <value>172</value>
+  </data>
+  <data name="radioButton_type3.Text" xml:space="preserve">
+    <value>Тип 3</value>
+  </data>
+  <data name="radioButton_type3.ToolTip" xml:space="preserve">
+    <value>Работает более плавно чем тип 2, только на моделях с ZeppOS 2. Не работает 
+на АОД. Начальный угол должен быть 0, конечный 360. При включении появляются 
+проблемы с обновление других элементов времени.</value>
+  </data>
+  <data name="&gt;&gt;radioButton_type3.Name" xml:space="preserve">
+    <value>radioButton_type3</value>
+  </data>
+  <data name="&gt;&gt;radioButton_type3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButton_type3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;radioButton_type3.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="radioButton_type4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButton_type4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButton_type4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>99, 26</value>
+  </data>
+  <data name="radioButton_type4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 17</value>
+  </data>
+  <data name="radioButton_type4.TabIndex" type="System.Int32, mscorlib">
+    <value>174</value>
+  </data>
+  <data name="radioButton_type4.Text" xml:space="preserve">
+    <value>Тип 4</value>
+  </data>
+  <data name="radioButton_type4.ToolTip" xml:space="preserve">
+    <value>Работает более плавно чем тип 2, только на моделях с ZeppOS 2. Не работает 
+на АОД. Начальный угол должен быть 0, конечный 360. При включении появляются 
+проблемы с обновление других элементов времени.</value>
+  </data>
+  <data name="&gt;&gt;radioButton_type4.Name" xml:space="preserve">
+    <value>radioButton_type4</value>
+  </data>
+  <data name="&gt;&gt;radioButton_type4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButton_type4.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;radioButton_type4.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="numericUpDown_fps.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 55</value>
@@ -201,9 +272,8 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;numericUpDown_fps.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>6</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label01.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -232,7 +302,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label01.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>7</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -266,7 +336,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>5</value>
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -277,8 +347,11 @@
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 128</value>
   </data>
+  <data name="label2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 10</value>
+  </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>240, 39</value>
+    <value>240, 49</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>171</value>
@@ -298,8 +371,83 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 177</value>
+  </data>
+  <data name="label3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 10</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>236, 88</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>173</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>   Тип 3 - Работает более плавно чем тип 2, 
+только на моделях с ZeppOS 2. Не работает 
+на АОД. Начальный угол должен быть 0, 
+конечный 360. При включении появляются 
+проблемы с обновление других элементов 
+времени.</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 265</value>
+  </data>
+  <data name="label4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 10</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>211, 36</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>175</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>   Тип 4 - Работает только на моделях с 
+ZeppOS 2, не работает в режиме AOD.</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>en</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -307,7 +455,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 190</value>
+    <value>255, 312</value>
   </data>
   <data name="&gt;&gt;toolTipTypeHint.Name" xml:space="preserve">
     <value>toolTipTypeHint</value>

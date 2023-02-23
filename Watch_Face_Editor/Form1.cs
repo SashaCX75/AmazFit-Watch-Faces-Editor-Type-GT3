@@ -8478,10 +8478,13 @@ namespace Watch_Face_Editor
 
                 progressBar1.Maximum = allFiles.Count;
                 int progress = 0;
+                bool fix_color = true;
+                if (comboBox_watch_model.Text == "Amazfit Band 7" && comboBox_watch_model.Text == "GTS 4 mini") fix_color = false;
                 foreach (string fileNames in allFiles)
                 {
                     //Console.WriteLine(fileNames);
-                    TgaToPng(tempDir + @"\assets" + fileNames, projectPath + @"\assets" + fileNames, comboBox_watch_model.Text);
+                    //TgaToPng(tempDir + @"\assets" + fileNames, projectPath + @"\assets" + fileNames, comboBox_watch_model.Text);
+                    ImageAutoDetectReadFormat(tempDir + @"\assets" + fileNames, projectPath + @"\assets" + fileNames, fix_color);
                     progress++;
                     progressBar1.Value = progress;
                 }
@@ -8871,7 +8874,7 @@ namespace Watch_Face_Editor
 #endif
         }
 
-        private void TgaToPng(string file)
+        /*private void TgaToPng(string file)
         {
             try
             {
@@ -8920,7 +8923,7 @@ namespace Watch_Face_Editor
                 MessageBox.Show("Не верный формат исходного файла" + Environment.NewLine +
                     exp);
             }
-        }
+        }*/
 
         /// <summary>Получаем список файлов в папке</summary>
         /// <param name="start_path">Начальная папка для просмотра</param>

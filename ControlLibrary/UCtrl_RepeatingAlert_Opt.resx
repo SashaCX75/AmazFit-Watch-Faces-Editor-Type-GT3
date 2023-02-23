@@ -158,9 +158,6 @@
   <data name="checkBox_hour_toast.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 17</value>
   </data>
-  <data name="label_repeat_period.TabIndex" type="System.Int32, mscorlib">
-    <value>167</value>
-  </data>
   <data name="label_hint.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 260</value>
   </data>
@@ -182,13 +179,13 @@
   <data name="&gt;&gt;comboBox_hour_vibrate_type.Name" xml:space="preserve">
     <value>comboBox_hour_vibrate_type</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="label_hour_vibrate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="checkBox_hour_vibrate.Text" xml:space="preserve">
+    <value>Вибрация</value>
   </data>
   <data name="checkBox_repeat_period_toast.Location" type="System.Drawing.Point, System.Drawing">
     <value>122, 79</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="groupBox_repeat_period.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
@@ -227,9 +224,6 @@
   </data>
   <data name="&gt;&gt;groupBox_repeat_period.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="&gt;&gt;checkBox_hour_vibrate.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -273,14 +267,8 @@
   <data name="groupBox_repeat_period.Size" type="System.Drawing.Size, System.Drawing">
     <value>249, 160</value>
   </data>
-  <data name="&gt;&gt;label_repeat_period.Name" xml:space="preserve">
-    <value>label_repeat_period</value>
-  </data>
   <data name="checkBox_hour_vibrate.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
-  </data>
-  <data name="comboBox_repeat_period_time.Items2" xml:space="preserve">
-    <value>Каждые 15 минут</value>
   </data>
   <data name="comboBox_repeat_period_vibrate_type.Items2" xml:space="preserve">
     <value>Длинная</value>
@@ -290,6 +278,9 @@
   </data>
   <data name="&gt;&gt;label_repeat_period.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label_hour_vibrate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="checkBox_hour_vibrate.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 17</value>
@@ -327,6 +318,9 @@
   <data name="checkBox_repeat_period_vibrate.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 79</value>
   </data>
+  <data name="&gt;&gt;label_hour_vibrate.Name" xml:space="preserve">
+    <value>label_hour_vibrate</value>
+  </data>
   <data name="comboBox_repeat_period_time.TabIndex" type="System.Int32, mscorlib">
     <value>168</value>
   </data>
@@ -335,6 +329,9 @@
   </data>
   <data name="label_hour_vibrate.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="textBox_repeat_period_toast_text.Location" type="System.Drawing.Point, System.Drawing">
+    <value>122, 101</value>
   </data>
   <data name="&gt;&gt;groupBox_repeat_period.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -345,11 +342,11 @@
   <data name="&gt;&gt;checkBox_repeat_period_toast.Parent" xml:space="preserve">
     <value>groupBox_repeat_period</value>
   </data>
-  <data name="textBox_hour_toast_text.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="groupBox_hour.Text" xml:space="preserve">
+    <value>Сигнал каждый час</value>
   </data>
-  <data name="&gt;&gt;label_hour_vibrate.Name" xml:space="preserve">
-    <value>label_hour_vibrate</value>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
   </data>
   <data name="comboBox_repeat_period_time.Location" type="System.Drawing.Point, System.Drawing">
     <value>6, 45</value>
@@ -408,6 +405,9 @@
   <data name="label_repeat_period_vibrate.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
+  <data name="checkBox_repeat_period_toast.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="&gt;&gt;textBox_hour_toast_text.Parent" xml:space="preserve">
     <value>groupBox_hour</value>
   </data>
@@ -417,11 +417,14 @@
   <data name="checkBox_hour_toast.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="textBox_hour_toast_text.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
   <data name="checkBox_hour_toast.TabIndex" type="System.Int32, mscorlib">
     <value>165</value>
   </data>
-  <data name="&gt;&gt;textBox_repeat_period_toast_text.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label_repeat_period.Name" xml:space="preserve">
+    <value>label_repeat_period</value>
   </data>
   <data name="label_repeat_period.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -438,8 +441,8 @@
   <data name="label_repeat_period_vibrate.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 114</value>
   </data>
-  <data name="groupBox_hour.Text" xml:space="preserve">
-    <value>Сигнал каждый час</value>
+  <data name="&gt;&gt;checkBox_hour_vibrate.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="comboBox_repeat_period_time.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 21</value>
@@ -462,8 +465,8 @@
   <data name="&gt;&gt;comboBox_repeat_period_time.Name" xml:space="preserve">
     <value>comboBox_repeat_period_time</value>
   </data>
-  <data name="textBox_repeat_period_toast_text.Location" type="System.Drawing.Point, System.Drawing">
-    <value>122, 101</value>
+  <data name="&gt;&gt;textBox_repeat_period_toast_text.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label_repeat_period_vibrate.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -476,6 +479,9 @@
   </data>
   <data name="&gt;&gt;label_hint.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="&gt;&gt;textBox_hour_toast_text.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="textBox_repeat_period_toast_text.TabIndex" type="System.Int32, mscorlib">
     <value>166</value>
@@ -492,8 +498,8 @@
   <data name="textBox_repeat_period_toast_text.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 50</value>
   </data>
-  <data name="checkBox_hour_vibrate.Text" xml:space="preserve">
-    <value>Вибрация</value>
+  <data name="label_repeat_period.TabIndex" type="System.Int32, mscorlib">
+    <value>167</value>
   </data>
   <data name="label_hour_vibrate.Text" xml:space="preserve">
     <value>Тип вибрации</value>
@@ -522,9 +528,6 @@
   <data name="label_repeat_period_vibrate.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 13</value>
   </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
-  </data>
   <data name="textBox_repeat_period_toast_text.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -542,9 +545,6 @@
   </data>
   <data name="&gt;&gt;label_hour_vibrate.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label_repeat_period.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="&gt;&gt;comboBox_repeat_period_vibrate_type.Parent" xml:space="preserve">
     <value>groupBox_repeat_period</value>
@@ -564,8 +564,8 @@
   <data name="comboBox_hour_vibrate_type.TabIndex" type="System.Int32, mscorlib">
     <value>164</value>
   </data>
-  <data name="&gt;&gt;textBox_hour_toast_text.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="comboBox_repeat_period_time.Items2" xml:space="preserve">
+    <value>Каждые 15 минут</value>
   </data>
   <data name="&gt;&gt;checkBox_hour_toast.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -573,8 +573,8 @@
   <data name="checkBox_repeat_period_vibrate.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="checkBox_repeat_period_toast.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;label_repeat_period.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;label_hint.Parent" xml:space="preserve">
     <value>$this</value>

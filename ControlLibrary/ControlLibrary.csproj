@@ -921,6 +921,9 @@
     <EmbeddedResource Include="Elements\UCtrl_RepeatingAlert_Elm.en.resx">
       <DependentUpon>UCtrl_RepeatingAlert_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_RepeatingAlert_Elm.es.resx">
+      <DependentUpon>UCtrl_RepeatingAlert_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_RepeatingAlert_Elm.uk.resx">
       <DependentUpon>UCtrl_RepeatingAlert_Elm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1666,6 +1669,9 @@
       <DependentUpon>UCtrl_RepeatingAlert_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_RepeatingAlert_Opt.en.resx">
+      <DependentUpon>UCtrl_RepeatingAlert_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_RepeatingAlert_Opt.es.resx">
       <DependentUpon>UCtrl_RepeatingAlert_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_RepeatingAlert_Opt.resx">

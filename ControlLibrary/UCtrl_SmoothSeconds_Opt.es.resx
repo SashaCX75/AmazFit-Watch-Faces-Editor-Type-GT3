@@ -136,4 +136,58 @@
   <data name="radioButton_type2.ToolTip" xml:space="preserve">
     <value>Método universal. Funcionamiento menos fluido del segundero (No poner fps por encima de 6).</value>
   </data>
+  <data name="radioButton_type3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 17</value>
+  </data>
+  <data name="radioButton_type3.Text" xml:space="preserve">
+    <value>Tipo 3</value>
+  </data>
+  <data name="radioButton_type3.ToolTip" xml:space="preserve">
+    <value>Funciona mejor que el tipo 2, solo en modelos con ZeppOS 2. No funciona en AOD.
+El ángulo inicial debe ser 0, el ángulo final 360. Cuando está habilitado, hay problemas
+con la actualización de otros elementos de tiempo.</value>
+  </data>
+  <data name="numericUpDown_fps.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label01.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>237, 36</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value> Tipo 1 - No funciona en modelos con ZeppOS 2
+y algunos otros, y también en modo AOD.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>248, 49</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value> Tipo 2 - Método universal. Funcionamiento menos 
+suavede la segunda mano (no tiene sentido 
+poner fps por encima de 6).</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>228, 65</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value> Tipo 3 - Funciona mejor que el tipo 2, solo en
+modelos con ZeppOS 2. No funciona en AOD.
+El ángulo inicial debe ser 0, el ángulo final 360.
+Cuando está habilitado, hay problemas con la 
+actualización otros elementos del tiempo.</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
+  </data>
 </root>

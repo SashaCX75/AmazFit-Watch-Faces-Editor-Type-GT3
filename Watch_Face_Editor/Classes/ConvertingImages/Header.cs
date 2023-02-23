@@ -14,6 +14,8 @@ namespace Watch_Face_Editor
         public byte[] _header;
         int ColorMapCount;
         byte ColorMapEntrySize;
+        byte ExistsColorMap;
+        byte ImageType;
         public int Width { get; }
         public int Height { get; }
 
@@ -22,12 +24,14 @@ namespace Watch_Face_Editor
             _header = new byte[HeaderSize];
             Array.Copy(streamBuffer, 0, _header, 0, HeaderSize);
             ImageIDLength = _header[0];
+            ExistsColorMap = _header[1];
+            ImageType = _header[2];
             ColorMapCount = BitConverter.ToUInt16(_header, 5);
             ColorMapEntrySize = _header[7];
             Width = BitConverter.ToUInt16(_header, 12);
             Height = BitConverter.ToUInt16(_header, 14);
 
-            if (_header[1] != 1 || _header[2] != 1) 
+            if (!(_header[1] == 0 && _header[2] == 2) && !(_header[1] == 1 && _header[2] == 1)) 
             {
                 if (MessageBox.Show("Ошибка обработки изображения \"" + fileName + "\"." + Environment.NewLine +
                                 "Попытаться сохранить изображение?", Properties.FormStrings.Message_Error_Caption,
@@ -55,6 +59,15 @@ namespace Watch_Face_Editor
         public int GetColorMapCount()
         {
             return ColorMapCount;
+        }
+
+        public int GetExistsColorMap()
+        {
+            return ExistsColorMap;
+        }
+        public int GetImageType()
+        {
+            return ImageType;
         }
 
         public void SetColorMapCount(int value)

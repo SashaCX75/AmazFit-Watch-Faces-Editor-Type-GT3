@@ -30,7 +30,19 @@ namespace ControlLibrary
             {
                 AODmode = value;
                 radioButton_type1.Enabled = !AODmode;
+                radioButton_type3.Enabled = !AODmode;
             }
+        }
+
+        /// <summary>Получаем тип плавной секундной стрелки</summary>
+        public int GetSmothType()
+        {
+            int type = 1;
+            if (radioButton_type1.Checked) type = 1;
+            if (radioButton_type2.Checked) type = 2;
+            if (radioButton_type3.Checked) type = 3;
+            if (radioButton_type4.Checked) type = 4;
+            return type;
         }
 
         public UCtrl_SmoothSeconds_Opt()

@@ -33,10 +33,14 @@
             this.radioButton_type1 = new System.Windows.Forms.RadioButton();
             this.radioButton_type2 = new System.Windows.Forms.RadioButton();
             this.toolTipTypeHint = new System.Windows.Forms.ToolTip(this.components);
+            this.radioButton_type3 = new System.Windows.Forms.RadioButton();
+            this.radioButton_type4 = new System.Windows.Forms.RadioButton();
             this.numericUpDown_fps = new System.Windows.Forms.NumericUpDown();
             this.label01 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_fps)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,6 +68,24 @@
             this.toolTipTypeHint.InitialDelay = 500;
             this.toolTipTypeHint.IsBalloon = true;
             this.toolTipTypeHint.ReshowDelay = 100;
+            // 
+            // radioButton_type3
+            // 
+            resources.ApplyResources(this.radioButton_type3, "radioButton_type3");
+            this.radioButton_type3.Name = "radioButton_type3";
+            this.radioButton_type3.TabStop = true;
+            this.toolTipTypeHint.SetToolTip(this.radioButton_type3, resources.GetString("radioButton_type3.ToolTip"));
+            this.radioButton_type3.UseVisualStyleBackColor = true;
+            this.radioButton_type3.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
+            // 
+            // radioButton_type4
+            // 
+            resources.ApplyResources(this.radioButton_type4, "radioButton_type4");
+            this.radioButton_type4.Name = "radioButton_type4";
+            this.radioButton_type4.TabStop = true;
+            this.toolTipTypeHint.SetToolTip(this.radioButton_type4, resources.GetString("radioButton_type4.ToolTip"));
+            this.radioButton_type4.UseVisualStyleBackColor = true;
+            this.radioButton_type4.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // numericUpDown_fps
             // 
@@ -96,10 +118,24 @@
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // label4
+            // 
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            // 
             // UCtrl_SmoothSeconds_Opt
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.radioButton_type4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.radioButton_type3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.numericUpDown_fps);
@@ -121,5 +157,9 @@
         public System.Windows.Forms.Label label01;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        public System.Windows.Forms.RadioButton radioButton_type3;
+        private System.Windows.Forms.Label label3;
+        public System.Windows.Forms.RadioButton radioButton_type4;
+        private System.Windows.Forms.Label label4;
     }
 }

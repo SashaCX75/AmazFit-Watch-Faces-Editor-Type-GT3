@@ -136,6 +136,17 @@
   <data name="radioButton_type2.ToolTip" xml:space="preserve">
     <value>Univerzální metoda. Méně plynulý chod vteřinové ručičky (nemá smysl nastavovat fps nad 6).</value>
   </data>
+  <data name="radioButton_type3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 17</value>
+  </data>
+  <data name="radioButton_type3.Text" xml:space="preserve">
+    <value>Typ 3</value>
+  </data>
+  <data name="radioButton_type3.ToolTip" xml:space="preserve">
+    <value>Funguje plynuleji než typ 2, pouze u modelů se ZeppOS 2. Nefunguje na AOD. 
+Počáteční úhel musí být 0, konec 360. Je-li povoleno, dochází k problémům s 
+aktualizací ostatních časových prvků.</value>
+  </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>233, 36</value>
   </data>
@@ -144,11 +155,21 @@
 a některé další, stejně jako v režimu AOD.</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>234, 39</value>
+    <value>234, 49</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>   Typ 2 - Obecná metoda. Méně plynulý pohyb 
 vteřinové ručičky (nemá smysl nastavit fps více 
 než 6).</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>225, 65</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>   Typ 3 – Funguje plynuleji než typ 2, pouze u 
+modelů se ZeppOS 2. Nefunguje na AOD. 
+Počáteční úhel musí být 0, konec 360. Je-li 
+povoleno, dochází k problémům s aktualizací 
+ostatních časových prvků.</value>
   </data>
 </root>

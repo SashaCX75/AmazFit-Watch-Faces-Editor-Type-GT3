@@ -123,6 +123,14 @@
   <data name="radioButton_type2.ToolTip" xml:space="preserve">
     <value>Універсальний метод. Менш плавний хід секундної стрілки (немає сенсу встановлювати fps більше 6).</value>
   </data>
+  <data name="radioButton_type3.ToolTip" xml:space="preserve">
+    <value>Працює більш плавно, ніж тип 2, тільки на моделях з ZeppOS 2. Не працює 
+на АОД. Початковий кут має бути 0, кінцевий кут 360. При включенні виникають проблеми 
+з оновленням інших елементів часу.</value>
+  </data>
+  <data name="radioButton_type4.ToolTip" xml:space="preserve">
+    <value>Працює тільки на моделях з ZeppOS 2, не працює в режимі AOD.</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>249, 36</value>
@@ -132,11 +140,28 @@
 деяких інших, а також у режимі AOD.</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>246, 39</value>
+    <value>246, 49</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>   Тип 2 - Універсальний метод. Менш плавний 
 хід секундної стрілки (немає сенсу 
 встановлювати fps більше 6).</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>241, 75</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>   Тип 3 - Працює більш плавно, ніж тип 2, 
+тільки на моделях з ZeppOS 2. Не працює 
+на АОД. Початковий кут має бути 0, кінцевий 
+кут 360. При включенні виникають проблеми 
+з оновленням інших елементів часу.</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>252, 36</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>   Тип 4 - Працює тільки на моделях з ZeppOS 2,
+не працює в режимі AOD.</value>
   </data>
 </root>

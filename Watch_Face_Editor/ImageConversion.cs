@@ -11,8 +11,172 @@ namespace Watch_Face_Editor
 {
     public partial class Form1 : Form
     {
+
+        /// <summary>Определяем тип файла и способ его конвертации в Png</summary>
+        private string ImageAutoDetectReadFormat(string fileNameFull, string targetFileName, bool fix_color)
+        {
+            string path = "";
+            if (File.Exists(fileNameFull))
+            {
+                try
+                {
+                    string fileName = Path.GetFileNameWithoutExtension(fileNameFull);
+                    //path = Path.GetDirectoryName(fileNameFull);
+                    string targetFolder = Path.Combine(Path.GetDirectoryName(fileNameFull), "Png");
+                    if (!Directory.Exists(targetFolder)) Directory.CreateDirectory(targetFolder);
+                    //string targetFileName = Path.Combine(targetFolder, fileName + ".png");
+                    //path = Path.GetDirectoryName(fileNameFull);
+                    using (var fileStream = File.OpenRead(fileNameFull))
+                    {
+                        byte[] _streamBuffer;
+                        _streamBuffer = new byte[fileStream.Length];
+                        fileStream.Read(_streamBuffer, 0, (int)fileStream.Length);
+
+                        Header header = new Header(_streamBuffer);
+                        if (header.GetExistsColorMap() == 1 && header.GetImageType() == 1) path = TgaToPng(fileNameFull, targetFileName, fix_color);
+                        if (header.GetExistsColorMap() == 0 && header.GetImageType() == 2) path = TgaARGBToPng(fileNameFull, targetFileName, fix_color);
+                    }
+                }
+                catch (Exception exp)
+                {
+                    MessageBox.Show("Не верный формат исходного файла" + Environment.NewLine +
+                        exp);
+                }
+            }
+            return path;
+        }
+
+        /// <summary>Преобразуем ARGB Tga в Png</summary>
+        private string TgaARGBToPng(string file, string targetFile, bool fix_color)
+        {
+            string path = "";
+            if (File.Exists(file))
+            {
+                try
+                {
+                    //string fileNameFull = openFileDialog.FileName;
+                    ImageMagick.MagickImage image;
+                    string fileNameFull = file;
+                    string fileName = Path.GetFileNameWithoutExtension(fileNameFull);
+                    path = Path.GetDirectoryName(fileNameFull);
+                    //fileName = Path.Combine(path, fileName);
+                    int RealWidth = -1;
+                    using (var fileStream = File.OpenRead(fileNameFull))
+                    {
+                        byte[] _streamBuffer;
+                        _streamBuffer = new byte[fileStream.Length];
+                        fileStream.Read(_streamBuffer, 0, (int)fileStream.Length);
+
+                        Header header = new Header(_streamBuffer, Path.GetFileName(fileNameFull));
+                        ImageDescription imageDescription = new ImageDescription(_streamBuffer, header.GetImageIDLength());
+                        RealWidth = imageDescription.GetRealWidth();
+                    }
+
+                    using (var fileStream = File.OpenRead(fileNameFull))
+                    {
+                        image = new ImageMagick.MagickImage(fileStream, ImageMagick.MagickFormat.Tga);
+                    }
+
+                    image.Format = ImageMagick.MagickFormat.Png32;
+                    if (RealWidth > 0 && RealWidth != image.Width)
+                    {
+                        int height = image.Height;
+                        image = (ImageMagick.MagickImage)image.Clone(RealWidth, height);
+                    }
+
+                    ImageMagick.IMagickImage Blue = image.Separate(ImageMagick.Channels.Blue).First();
+                    ImageMagick.IMagickImage Red = image.Separate(ImageMagick.Channels.Red).First();
+                    ImageMagick.IMagickImage Alpha = image.Separate(ImageMagick.Channels.Red).First();
+                    if (fix_color)
+                    {
+                        image.Composite(Red, ImageMagick.CompositeOperator.Replace, ImageMagick.Channels.Blue);
+                        image.Composite(Blue, ImageMagick.CompositeOperator.Replace, ImageMagick.Channels.Red);
+                    }
+                    image.Write(targetFile);
+                }
+                catch (Exception exp)
+                {
+                    if (exp.Message != "Отсутствует карта цветов")
+                    {
+                        MessageBox.Show("Не верный формат исходного файла." + Environment.NewLine +
+                                        "Файл \"" + Path.GetFileName(targetFile) + "\" не был сохранен." +
+                                        Environment.NewLine + exp);
+                    }
+                }
+            }
+            path = Path.GetDirectoryName(targetFile);
+            return path;
+        }
+
         /// <summary>Преобразуем Tga в Png</summary>
-        private string TgaToPng(string file, string targetFile, string model)
+        private string TgaToPng(string file, string targetFile, bool fix_color)
+        {
+            string path = "";
+            if (File.Exists(file))
+            {
+                try
+                {
+                    //string fileNameFull = openFileDialog.FileName;
+                    ImageMagick.MagickImage image;
+                    string fileNameFull = file;
+                    string fileName = Path.GetFileNameWithoutExtension(fileNameFull);
+                    path = Path.GetDirectoryName(fileNameFull);
+                    //fileName = Path.Combine(path, fileName);
+                    int RealWidth = -1;
+                    bool colored = true;
+                    using (var fileStream = File.OpenRead(fileNameFull))
+                    {
+                        byte[] _streamBuffer;
+                        _streamBuffer = new byte[fileStream.Length];
+                        fileStream.Read(_streamBuffer, 0, (int)fileStream.Length);
+
+                        Header header = new Header(_streamBuffer, Path.GetFileName(fileNameFull));
+                        if (header.GetColorMapCount() == 0) colored = false;
+                        ImageDescription imageDescription = new ImageDescription(_streamBuffer, header.GetImageIDLength());
+                        RealWidth = imageDescription.GetRealWidth();
+                    }
+
+                    using (var fileStream = File.OpenRead(fileNameFull))
+                    {
+                        image = new ImageMagick.MagickImage(fileStream, ImageMagick.MagickFormat.Tga);
+                    }
+
+                    image.Format = ImageMagick.MagickFormat.Png32;
+                    if (RealWidth > 0 && RealWidth != image.Width)
+                    {
+                        int height = image.Height;
+                        image = (ImageMagick.MagickImage)image.Clone(RealWidth, height);
+                    }
+
+                    ImageMagick.IMagickImage Blue = image.Separate(ImageMagick.Channels.Blue).First();
+                    ImageMagick.IMagickImage Red = image.Separate(ImageMagick.Channels.Red).First();
+                    ImageMagick.IMagickImage Alpha = image.Separate(ImageMagick.Channels.Red).First();
+                    if (fix_color)
+                    {
+                        image.Composite(Red, ImageMagick.CompositeOperator.Replace, ImageMagick.Channels.Blue);
+                        image.Composite(Blue, ImageMagick.CompositeOperator.Replace, ImageMagick.Channels.Red);
+                    }
+                    if (!colored)
+                    {
+                        image.Composite(Alpha, ImageMagick.CompositeOperator.CopyAlpha, ImageMagick.Channels.Alpha);
+                    }
+
+                    image.Write(targetFile);
+                }
+                catch (Exception exp)
+                {
+                    if (exp.Message != "Отсутствует карта цветов")
+                    {
+                        MessageBox.Show("Не верный формат исходного файла." + Environment.NewLine +
+                                        "Файл \"" + Path.GetFileName(targetFile) + "\" не был сохранен." +
+                                        Environment.NewLine + exp);
+                    }
+                }
+            }
+            path = Path.GetDirectoryName(targetFile);
+            return path;
+        }
+        /*private string TgaToPng(string file, string targetFile, string model)
         {
             string path = "";
             if (File.Exists(file))
@@ -80,7 +244,7 @@ namespace Watch_Face_Editor
                 }
             }
             return path;
-        }
+        }*/
 
         /// <summary>Преобразуем Png в Tga</summary>
         private string PngToTga(string fileNameFull, string targetFolder, string model)
@@ -124,7 +288,7 @@ namespace Watch_Face_Editor
                             gfx.DrawImage(bitmap, 0, 0, bitmap.Width, bitmap.Height);
                             image = new ImageMagick.MagickImage(bitmapNew);
                             image_temp = new ImageMagick.MagickImage(bitmapNew);
-                        } 
+                        }
                     }
                     ImageMagick.Pixel pixel = image.GetPixels().GetPixel(0, 0);
                     //pixel = new ImageMagick.Pixel(0, 0, 4);
