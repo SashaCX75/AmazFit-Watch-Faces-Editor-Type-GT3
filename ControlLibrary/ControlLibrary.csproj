@@ -497,6 +497,9 @@
     <EmbeddedResource Include="Elements\UCtrl_AnalogTimePro_Elm.uk.resx">
       <DependentUpon>UCtrl_AnalogTimePro_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_AnalogTimePro_Elm.zh.resx">
+      <DependentUpon>UCtrl_AnalogTimePro_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_AnalogTime_Elm.cs.resx">
       <DependentUpon>UCtrl_AnalogTime_Elm.cs</DependentUpon>
     </EmbeddedResource>
@@ -732,6 +735,9 @@
     <EmbeddedResource Include="Elements\UCtrl_DisconnectAlert_Elm.uk.resx">
       <DependentUpon>UCtrl_DisconnectAlert_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_DisconnectAlert_Elm.zh.resx">
+      <DependentUpon>UCtrl_DisconnectAlert_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Distance_Elm.cs.resx">
       <DependentUpon>UCtrl_Distance_Elm.cs</DependentUpon>
     </EmbeddedResource>
@@ -925,6 +931,9 @@
       <DependentUpon>UCtrl_RepeatingAlert_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_RepeatingAlert_Elm.uk.resx">
+      <DependentUpon>UCtrl_RepeatingAlert_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_RepeatingAlert_Elm.zh.resx">
       <DependentUpon>UCtrl_RepeatingAlert_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Shortcuts_Elm.cs.resx">
@@ -1464,6 +1473,9 @@
     <EmbeddedResource Include="UCtrl_DisconnectAlert_Opt.uk.resx">
       <DependentUpon>UCtrl_DisconnectAlert_Opt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_DisconnectAlert_Opt.zh.resx">
+      <DependentUpon>UCtrl_DisconnectAlert_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_EditableBackground_Opt.cs.resx">
       <DependentUpon>UCtrl_EditableBackground_Opt.cs</DependentUpon>
     </EmbeddedResource>
@@ -1680,6 +1692,9 @@
     <EmbeddedResource Include="UCtrl_RepeatingAlert_Opt.uk.resx">
       <DependentUpon>UCtrl_RepeatingAlert_Opt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_RepeatingAlert_Opt.zh.resx">
+      <DependentUpon>UCtrl_RepeatingAlert_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Segments_Opt.cs.resx">
       <DependentUpon>UCtrl_Segments_Opt.cs</DependentUpon>
     </EmbeddedResource>
@@ -1805,6 +1820,9 @@
       <DependentUpon>UCtrl_SmoothSeconds_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_SmoothSeconds_Opt.uk.resx">
+      <DependentUpon>UCtrl_SmoothSeconds_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_SmoothSeconds_Opt.zh.resx">
       <DependentUpon>UCtrl_SmoothSeconds_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Text_Opt.cs.resx">
