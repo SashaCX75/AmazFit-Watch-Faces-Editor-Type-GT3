@@ -147,11 +147,14 @@
 El ángulo inicial debe ser 0, el ángulo final 360. Cuando está habilitado, hay problemas
 con la actualización de otros elementos de tiempo.</value>
   </data>
-  <data name="numericUpDown_fps.ToolTip" xml:space="preserve">
-    <value />
+  <data name="radioButton_type4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 17</value>
   </data>
-  <data name="label01.ToolTip" xml:space="preserve">
-    <value />
+  <data name="radioButton_type4.Text" xml:space="preserve">
+    <value>Tipo 4</value>
+  </data>
+  <data name="radioButton_type4.ToolTip" xml:space="preserve">
+    <value>Funciona solo en modelos con ZeppOS 2. No funciona en modo AOD.</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>237, 36</value>
@@ -159,9 +162,6 @@ con la actualización de otros elementos de tiempo.</value>
   <data name="label1.Text" xml:space="preserve">
     <value> Tipo 1 - No funciona en modelos con ZeppOS 2
 y algunos otros, y también en modo AOD.</value>
-  </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>248, 49</value>
@@ -171,11 +171,8 @@ y algunos otros, y también en modo AOD.</value>
 suavede la segunda mano (no tiene sentido 
 poner fps por encima de 6).</value>
   </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>228, 65</value>
+    <value>228, 75</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value> Tipo 3 - Funciona mejor que el tipo 2, solo en
@@ -184,10 +181,11 @@ El ángulo inicial debe ser 0, el ángulo final 360.
 Cuando está habilitado, hay problemas con la 
 actualización otros elementos del tiempo.</value>
   </data>
-  <data name="label3.ToolTip" xml:space="preserve">
-    <value />
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>257, 36</value>
   </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
+  <data name="label4.Text" xml:space="preserve">
+    <value>   Tipo 4 - Funciona solo en modelos con ZeppOS 2. 
+No funciona en modo AOD.</value>
   </data>
 </root>

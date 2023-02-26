@@ -96,6 +96,7 @@
             0,
             0});
             this.numericUpDown_fps.Name = "numericUpDown_fps";
+            this.toolTipTypeHint.SetToolTip(this.numericUpDown_fps, resources.GetString("numericUpDown_fps.ToolTip"));
             this.numericUpDown_fps.Value = new decimal(new int[] {
             15,
             0,
@@ -107,26 +108,31 @@
             // 
             resources.ApplyResources(this.label01, "label01");
             this.label01.Name = "label01";
+            this.toolTipTypeHint.SetToolTip(this.label01, resources.GetString("label01.ToolTip"));
             // 
             // label1
             // 
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
+            this.toolTipTypeHint.SetToolTip(this.label1, resources.GetString("label1.ToolTip"));
             // 
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
+            this.toolTipTypeHint.SetToolTip(this.label2, resources.GetString("label2.ToolTip"));
             // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
+            this.toolTipTypeHint.SetToolTip(this.label3, resources.GetString("label3.ToolTip"));
             // 
             // label4
             // 
             resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
+            this.toolTipTypeHint.SetToolTip(this.label4, resources.GetString("label4.ToolTip"));
             // 
             // UCtrl_SmoothSeconds_Opt
             // 
@@ -143,6 +149,7 @@
             this.Controls.Add(this.radioButton_type2);
             this.Controls.Add(this.radioButton_type1);
             this.Name = "UCtrl_SmoothSeconds_Opt";
+            this.toolTipTypeHint.SetToolTip(this, resources.GetString("$this.ToolTip"));
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_fps)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

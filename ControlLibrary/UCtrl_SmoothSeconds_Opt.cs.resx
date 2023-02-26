@@ -147,6 +147,15 @@
 Počáteční úhel musí být 0, konec 360. Je-li povoleno, dochází k problémům s 
 aktualizací ostatních časových prvků.</value>
   </data>
+  <data name="radioButton_type4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 17</value>
+  </data>
+  <data name="radioButton_type4.Text" xml:space="preserve">
+    <value>Typ 4</value>
+  </data>
+  <data name="radioButton_type4.ToolTip" xml:space="preserve">
+    <value>Funguje pouze na modelech s Zeppos 2, nefunguje v režimu AOD</value>
+  </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>233, 36</value>
   </data>
@@ -163,7 +172,7 @@ vteřinové ručičky (nemá smysl nastavit fps více
 než 6).</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>225, 65</value>
+    <value>225, 75</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>   Typ 3 – Funguje plynuleji než typ 2, pouze u 
@@ -171,5 +180,15 @@ modelů se ZeppOS 2. Nefunguje na AOD.
 Počáteční úhel musí být 0, konec 360. Je-li 
 povoleno, dochází k problémům s aktualizací 
 ostatních časových prvků.</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 252</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>248, 36</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>   Typ 4 - Funguje pouze na modelech s Zeppos 2, 
+nefunguje v režimu AOD</value>
   </data>
 </root>
