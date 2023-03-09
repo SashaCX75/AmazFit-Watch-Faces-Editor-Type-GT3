@@ -23,11 +23,13 @@ namespace Watch_Face_Editor
         /// <summary>AOD экран</summary>
         public ElementEditablePointers ElementEditablePointers { get; set; }
 
-        public ElementShortcuts Shortcuts { get; set; }
-
         public DisconnectAlert DisconnectAlert { get; set; }
 
         public RepeatAlert RepeatAlert { get; set; }
+
+        public TopImage TopImage { get; set; }
+
+        public ElementShortcuts Shortcuts { get; set; }
     }
 
     public class WatchFace_Info
@@ -4014,6 +4016,7 @@ namespace Watch_Face_Editor
         public hmUI_widget_IMG_PROGRESS Segments { get; set; }
         public hmUI_widget_IMG_NUMBER Number { get; set; }
         public hmUI_widget_IMG_POINTER Pointer { get; set; }
+        public hmUI_widget_IMG_LEVEL Direction { get; set; }
         public hmUI_widget_IMG Icon { get; set; }
 
         public object Clone()
@@ -4107,6 +4110,23 @@ namespace Watch_Face_Editor
                 };
             }
 
+            hmUI_widget_IMG_LEVEL Direction = null;
+            if (this.Direction != null)
+            {
+                Direction = new hmUI_widget_IMG_LEVEL
+                {
+                    X = this.Direction.X,
+                    Y = this.Direction.Y,
+                    img_First = this.Direction.img_First,
+                    image_length = this.Direction.image_length,
+
+                    position = this.Direction.position,
+                    visible = this.Direction.visible,
+                    show_level = this.Direction.show_level,
+                    type = this.Direction.type,
+                };
+            }
+
             hmUI_widget_IMG Icon = null;
             if (this.Icon != null)
             {
@@ -4133,6 +4153,7 @@ namespace Watch_Face_Editor
                 Segments = Segments,
                 Number = Number,
                 Pointer = Pointer,
+                Direction = Direction,
                 Icon = Icon,
             };
         }
@@ -4176,6 +4197,48 @@ namespace Watch_Face_Editor
                 visible = this.visible,
 
                 Images = Images,
+            };
+        }
+    }
+
+    public class ElementImage : ICloneable
+    {
+        public string elementName = "ElementImage";
+
+        ///// <summary>Позиция в наборе элементов</summary>
+        //public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = true;
+
+        public hmUI_widget_IMG Icon { get; set; }
+
+        public object Clone()
+        {
+
+            hmUI_widget_IMG Icon = null;
+            if (this.Icon != null)
+            {
+                Icon = new hmUI_widget_IMG
+                {
+                    x = this.Icon.x,
+                    y = this.Icon.y,
+                    w = this.Icon.w,
+                    h = this.Icon.h,
+                    src = this.Icon.src,
+
+                    position = this.Icon.position,
+                    visible = this.Icon.visible,
+                    show_level = this.Icon.show_level,
+                };
+            }
+
+            return new ElementImage
+            {
+                elementName = this.elementName,
+                visible = this.visible,
+
+                Icon = Icon,
             };
         }
     }
@@ -4263,6 +4326,22 @@ namespace Watch_Face_Editor
 
         /// <summary>Использование элемента</summary>
         public bool enable = true;
+    }
+
+    public class TopImage
+    {
+        public string elementName = "TopImage";
+
+        ///// <summary>Позиция в наборе элементов</summary>
+        //public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = true;
+
+        public hmUI_widget_IMG Icon { get; set; }
+
+        /// <summary>Отображать изображение на эеране АОД</summary>
+        public bool showInAOD = false;
     }
 }
 

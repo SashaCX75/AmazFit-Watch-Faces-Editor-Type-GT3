@@ -17,6 +17,7 @@ namespace ControlLibrary
         bool highlight_segments = false;
         bool highlight_number = false;
         bool highlight_pointer = false;
+        bool highlight_direction = false;
         bool highlight_icon = false;
 
         bool visibility_elements = false; // развернут список с элементами
@@ -93,6 +94,7 @@ namespace ControlLibrary
             highlight_segments = false;
             highlight_number = false;
             highlight_pointer = false;
+            highlight_direction = false;
             highlight_icon = false;
 
             SelectElement();
@@ -152,6 +154,19 @@ namespace ControlLibrary
                 button_Pointer.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
+            if (highlight_direction)
+            {
+                panel_Direction.BackColor = SystemColors.ActiveCaption;
+                button_Direction.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Direction.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Direction.BackColor = SystemColors.Control;
+                button_Direction.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Direction.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
             if (highlight_icon)
             {
                 panel_Icon.BackColor = SystemColors.ActiveCaption;
@@ -174,6 +189,7 @@ namespace ControlLibrary
             highlight_segments = false;
             highlight_number = false;
             highlight_pointer = false;
+            highlight_direction = false;
             highlight_icon = false;
 
             SelectElement();
@@ -193,6 +209,7 @@ namespace ControlLibrary
             highlight_segments = true;
             highlight_number = false;
             highlight_pointer = false;
+            highlight_direction = false;
             highlight_icon = false;
 
             SelectElement();
@@ -212,6 +229,7 @@ namespace ControlLibrary
             highlight_segments = false;
             highlight_number = true;
             highlight_pointer = false;
+            highlight_direction = false;
             highlight_icon = false;
 
             SelectElement();
@@ -231,6 +249,27 @@ namespace ControlLibrary
             highlight_segments = false;
             highlight_number = false;
             highlight_pointer = true;
+            highlight_direction = false;
+            highlight_icon = false;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Direction_Click(object sender, EventArgs e)
+        {
+            selectedElement = "Direction";
+
+            highlight_images = false;
+            highlight_segments = false;
+            highlight_number = false;
+            highlight_pointer = false;
+            highlight_direction = true;
             highlight_icon = false;
 
             SelectElement();
@@ -250,6 +289,7 @@ namespace ControlLibrary
             highlight_segments = false;
             highlight_number = false;
             highlight_pointer = false;
+            highlight_direction = false;
             highlight_icon = true;
 
             SelectElement();
@@ -502,6 +542,9 @@ namespace ControlLibrary
                 case "Pointer":
                     checkBox_Pointer.Checked = status;
                     break;
+                case "Direction":
+                    checkBox_Direction.Checked = status;
+                    break;
                 case "Icon":
                     checkBox_Icon.Checked = status;
                     break;
@@ -532,6 +575,9 @@ namespace ControlLibrary
                             break;
                         case "Pointer":
                             panel = panel_Pointer;
+                            break;
+                        case "Direction":
+                            panel = panel_Direction;
                             break;
                         case "Icon":
                             panel = panel_Icon;
@@ -590,6 +636,9 @@ namespace ControlLibrary
                     case "panel_Pointer":
                         elementOptions.Add("Pointer", count - i);
                         break;
+                    case "panel_Direction":
+                        elementOptions.Add("Direction", count - i);
+                        break;
                     case "panel_Icon":
                         elementOptions.Add("Icon", count - i);
                         break;
@@ -604,16 +653,18 @@ namespace ControlLibrary
 
             Dictionary<int, string> elementOptions = new Dictionary<int, string>();
             elementOptions.Add(1, "Icon");
-            elementOptions.Add(2, "Pointer");
-            elementOptions.Add(3, "Number");
-            elementOptions.Add(4, "Segments");
-            elementOptions.Add(5, "Images");
+            elementOptions.Add(2, "Direction");
+            elementOptions.Add(3, "Pointer");
+            elementOptions.Add(4, "Number");
+            elementOptions.Add(5, "Segments");
+            elementOptions.Add(6, "Images");
             SetOptionsPosition(elementOptions);
 
             checkBox_Images.Checked = false;
             checkBox_Segments.Checked = false;
             checkBox_Number.Checked = false;
             checkBox_Pointer.Checked = false;
+            checkBox_Direction.Checked = false;
             checkBox_Icon.Checked = false;
 
             visibility_elements = false;

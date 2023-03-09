@@ -87,6 +87,10 @@ namespace Watch_Face_Editor
                 Scale_IMG_CLICK(elementShortcuts.Countdown, scale);
                 Scale_IMG_CLICK(elementShortcuts.Stopwatch, scale);
             }
+            if (Watch_Face.TopImage != null && Watch_Face.TopImage.Icon != null)
+            {
+                Scale_IMG(Watch_Face.TopImage.Icon, scale);
+            }
         }
 
         private void Scale_FILL_RECT(hmUI_widget_FILL_RECT fill_rect, float scale)
@@ -413,6 +417,10 @@ namespace Watch_Face_Editor
                 case "ElementAnimation":
                     ElementAnimation elementAnimation = (ElementAnimation)elements;
                     Scale_Animation(elementAnimation, scale);
+                    break;
+                case "ElementImage":
+                    ElementImage elementImage = (ElementImage)elements;
+                    Scale_IMG(elementImage.Icon, scale);
                     break;
             }
         }

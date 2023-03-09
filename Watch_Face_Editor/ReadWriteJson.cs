@@ -31,11 +31,18 @@ namespace Watch_Face_Editor
             {
                 if (Watch_Face.ScreenNormal.Background != null && Watch_Face.ScreenNormal.Background.visible)
                 {
-                    if(Watch_Face.ScreenNormal.Background.BackgroundColor != null)
+                    string show_level = "ONLY_NORMAL";
+                    if (Watch_Face.Editable_Elements != null && Watch_Face.Editable_Elements.visible) 
+                        show_level = "hmUI.show_level.ONLY_NORMAL | hmUI.show_level.ONLY_EDIT";
+                    if (Watch_Face.ElementEditablePointers != null && Watch_Face.ElementEditablePointers.visible &&
+                        Watch_Face.ElementEditablePointers.config != null && Watch_Face.ElementEditablePointers.config.Count > 0)
+                        show_level = "hmUI.show_level.ONLY_NORMAL | hmUI.show_level.ONLY_EDIT";
+
+                    if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
                     {
                         hmUI_widget_FILL_RECT backgroundColor = Watch_Face.ScreenNormal.Background.BackgroundColor;
                         //if (backgroundColor.show_level == null) backgroundColor.show_level = "ONLY_NORMAL";
-                        options = FILL_RECT_Options(backgroundColor, "ONLY_NORMAL");
+                        options = FILL_RECT_Options(backgroundColor, show_level);
                         if (options.Length > 5)
                         {
                             variables += TabInString(4) + "let normal_background_bg = ''" + Environment.NewLine;
@@ -47,7 +54,7 @@ namespace Watch_Face_Editor
                     {
                         hmUI_widget_IMG backgroundImage = Watch_Face.ScreenNormal.Background.BackgroundImage;
                         //if (backgroundImage.show_level == null) backgroundImage.show_level = "ONLY_NORMAL";
-                        options = IMG_Options(backgroundImage, "ONLY_NORMAL");
+                        options = IMG_Options(backgroundImage, show_level);
                         if (options.Length > 5)
                         {
                             variables += TabInString(4) + "let normal_background_bg_img = ''" + Environment.NewLine;
@@ -281,7 +288,8 @@ namespace Watch_Face_Editor
                         if (distance.Length > 5) distance = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.DISTANCE:" + distance + TabInString(8) + "break;" + Environment.NewLine;
                         if (stand.Length > 5) stand = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.STAND:" + stand + TabInString(8) + "break;" + Environment.NewLine;
                         if (stress.Length > 5) stress = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.STRESS:" + stress + TabInString(8) + "break;" + Environment.NewLine;
-                        if (fat_burning.Length > 5) fat_burning = Environment.NewLine + TabInString(7) + "case 1300002:" + fat_burning + TabInString(8) + "break;" + Environment.NewLine;
+                        if (fat_burning.Length > 5) fat_burning = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.FAT_BURN:" + fat_burning + TabInString(8) + "break;" + Environment.NewLine;
+                        //if (fat_burning.Length > 5) fat_burning = Environment.NewLine + TabInString(7) + "case 1300002:" + fat_burning + TabInString(8) + "break;" + Environment.NewLine;
                         if (spo2.Length > 5) spo2 = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.SPO2:" + spo2 + TabInString(8) + "break;" + Environment.NewLine;
 
                         if (weather.Length > 5) weather = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.WEATHER:" + weather + TabInString(8) + "break;" + Environment.NewLine;
@@ -588,6 +596,26 @@ namespace Watch_Face_Editor
                     }
                 }
 
+            }
+
+            if (Watch_Face.TopImage != null && Watch_Face.TopImage.visible)
+            {
+                if (Watch_Face.TopImage.Icon != null)
+                {
+                    hmUI_widget_IMG img_icon = Watch_Face.TopImage.Icon;
+                    string show_level = "ONLY_NORMAL";
+                    if(Watch_Face.TopImage.showInAOD) show_level = "hmUI.show_level.ONLY_NORMAL | hmUI.show_level.ONLY_AOD";
+                    string iconOptions = IMG_Options(img_icon, show_level);
+
+
+                    // Icon
+                    if (iconOptions.Length > 5)
+                    {
+                        variables += TabInString(4) + "let image_top_img = ''" + Environment.NewLine;
+                        items += Environment.NewLine + TabInString(6) + "image_top_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                iconOptions + TabInString(6) + "});" + Environment.NewLine;
+                    }
+                }
             }
 
             // ярлыки
@@ -5322,6 +5350,8 @@ namespace Watch_Face_Editor
                 #region ElementWind
                 case "ElementWind":
                     ElementWind Wind = (ElementWind)element;
+                    int directionPosition = 99;
+                    string directionOptions = "";
 
                     if (!Wind.visible) return;
                     if (Wind.Images != null && Wind.Images.visible)
@@ -5349,6 +5379,13 @@ namespace Watch_Face_Editor
                         pointerPosition = Wind.Pointer.position;
                         hmUI_widget_IMG_POINTER img_pointer = Wind.Pointer;
                         pointerOptions = IMG_POINTER_Options(img_pointer, "WIND", show_level);
+                    }
+
+                    if (Wind.Direction != null && Wind.Direction.visible)
+                    {
+                        directionPosition = Wind.Direction.position;
+                        hmUI_widget_IMG_LEVEL img_images = Wind.Direction;
+                        directionOptions = IMG_IMAGES_Options(img_images, "WIND_DIRECTION", show_level);
                     }
 
                     if (Wind.Icon != null && Wind.Icon.visible)
@@ -5409,6 +5446,16 @@ namespace Watch_Face_Editor
                                     pointerOptions + TabInString(6) + "});" + Environment.NewLine;
                         }
 
+                        // Direction
+                        if (index == directionPosition && directionOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "wind_direction_image_progress_img_level = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "wind_direction_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
+                                    directionOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
                         // Icon
                         if (index == iconPosition && iconOptions.Length > 5)
                         {
@@ -5444,6 +5491,30 @@ namespace Watch_Face_Editor
                         items += Environment.NewLine + TabInString(6) +
                             optionNameStart + "moon_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
                                 imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+                    }
+                    break;
+                #endregion
+
+                #region ElementImage
+                case "ElementImage":
+                    ElementImage Image = (ElementImage)element;
+
+                    if (!Image.visible) return;
+
+                    if (Image.Icon != null)
+                    {
+                        hmUI_widget_IMG img_icon = Image.Icon;
+                        iconOptions = IMG_Options(img_icon, show_level);
+                    }
+
+                    // Icon
+                    if (iconOptions.Length > 5)
+                    {
+                        variables += TabInString(4) + "let " + optionNameStart +
+                            "image_img = ''" + Environment.NewLine;
+                        items += Environment.NewLine + TabInString(6) +
+                            optionNameStart + "image_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                iconOptions + TabInString(6) + "});" + Environment.NewLine;
                     }
                     break;
                 #endregion
@@ -8841,7 +8912,11 @@ namespace Watch_Face_Editor
             options += TabInString(7) + "w: " + fill_rect.w.ToString() + "," + Environment.NewLine;
             options += TabInString(7) + "h: " + fill_rect.h.ToString() + "," + Environment.NewLine;
             options += TabInString(7) + "color: '" + fill_rect.color + "'," + Environment.NewLine;
-            options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+            if (show_level != null && show_level.Length > 0)
+            {
+                if (show_level.StartsWith("hmUI.show_level")) options += TabInString(7) + "show_level: " + show_level + "," + Environment.NewLine;
+                else options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+            }
             return options;
         }
 
@@ -8859,7 +8934,8 @@ namespace Watch_Face_Editor
                 options += TabInString(7 + tabOffset) + "src: '" + img.src + ".png'," + Environment.NewLine;
                 if (show_level != null && show_level.Length > 0)
                 {
-                    options += TabInString(7 + tabOffset) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine; 
+                    if(show_level.StartsWith("hmUI.show_level")) options += TabInString(7 + tabOffset) + "show_level: " + show_level + "," + Environment.NewLine;
+                    else options += TabInString(7 + tabOffset) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine; 
                 } 
             }
             return options;
@@ -10409,6 +10485,7 @@ namespace Watch_Face_Editor
 
         private string Motion_Animation_Options(Motion_Animation anim,bool x_anim,bool mirror)
         {
+            if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4") return Motion_Animation_Options_2(anim, x_anim, mirror);
             string options = Environment.NewLine;
             if (anim == null) return options;
             if (!anim.visible) return options;
@@ -10434,6 +10511,41 @@ namespace Watch_Face_Editor
                 options += TabInString(7) + "anim_fps: " + anim.anim_fps.ToString() + "," + Environment.NewLine;
                 if (x_anim) options += TabInString(7) + "anim_key: \"pos_x\"," + Environment.NewLine;
                 else options += TabInString(7) + "anim_key: \"pos_y\"," + Environment.NewLine;
+            }
+            return options;
+        }
+        private string Motion_Animation_Options_2(Motion_Animation anim, bool x_anim, bool mirror)
+        {
+            string options = Environment.NewLine;
+            if (anim == null) return options;
+            if (!anim.visible) return options;
+            if (anim.src == null) return options;
+            if (anim.src.Length > 0)
+            {
+                options += TabInString(7) + "anim_steps: [{" + Environment.NewLine;
+                options += TabInString(8) + "anim_rate: 'linear'," + Environment.NewLine;
+                options += TabInString(8) + "anim_duration: " + anim.anim_duration.ToString() + "," + Environment.NewLine;
+                if (!mirror)
+                {
+                    if (x_anim) options += TabInString(8) + "anim_from: " + anim.x_start.ToString() + "," + Environment.NewLine;
+                    else options += TabInString(8) + "anim_from: " + anim.y_start.ToString() + "," + Environment.NewLine;
+                    if (x_anim) options += TabInString(8) + "anim_to: " + anim.x_end.ToString() + "," + Environment.NewLine;
+                    else options += TabInString(8) + "anim_to: " + anim.y_end.ToString() + "," + Environment.NewLine;
+                }
+                else
+                {
+                    if (x_anim) options += TabInString(8) + "anim_from: " + anim.x_end.ToString() + "," + Environment.NewLine;
+                    else options += TabInString(8) + "anim_from: " + anim.y_end.ToString() + "," + Environment.NewLine;
+                    if (x_anim) options += TabInString(8) + "anim_to: " + anim.x_start.ToString() + "," + Environment.NewLine;
+                    else options += TabInString(8) + "anim_to: " + anim.y_start.ToString() + "," + Environment.NewLine;
+                }
+                if (x_anim) options += TabInString(8) + "anim_key: \"pos_x\"," + Environment.NewLine;
+                else options += TabInString(8) + "anim_key: \"pos_y\"," + Environment.NewLine;
+                options += TabInString(7) + "}]," + Environment.NewLine;
+                options += TabInString(7) + "anim_fps: " + anim.anim_fps.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "anim_auto_start: 1," + Environment.NewLine;
+                options += TabInString(7) + "anim_repeat: 1," + Environment.NewLine;
+                options += TabInString(7) + "anim_auto_destroy: 1," + Environment.NewLine;
             }
             return options;
         }
@@ -10518,6 +10630,7 @@ namespace Watch_Face_Editor
 
         private string Rotate_Animation_Options(Rotate_Animation anim, bool mirror)
         {
+            if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4") return Rotate_Animation_Options_2(anim, mirror);
             string options = Environment.NewLine;
             if (anim == null) return options;
             if (!anim.visible) return options;
@@ -10538,6 +10651,36 @@ namespace Watch_Face_Editor
                 }
                 options += TabInString(7) + "anim_fps: " + anim.anim_fps.ToString() + "," + Environment.NewLine;
                 options += TabInString(7) + "anim_key: \"angle\"," + Environment.NewLine;
+            }
+            return options;
+        }
+        private string Rotate_Animation_Options_2(Rotate_Animation anim, bool mirror)
+        {
+            string options = Environment.NewLine;
+            if (anim == null) return options;
+            if (!anim.visible) return options;
+            if (anim.src == null) return options;
+            if (anim.src.Length > 0)
+            {
+                options += TabInString(7) + "anim_steps: [{" + Environment.NewLine;
+                options += TabInString(8) + "anim_rate: 'linear'," + Environment.NewLine;
+                options += TabInString(8) + "anim_duration: " + anim.anim_duration.ToString() + "," + Environment.NewLine;
+                if (!mirror)
+                {
+                    options += TabInString(8) + "anim_from: " + anim.start_angle.ToString() + "," + Environment.NewLine;
+                    options += TabInString(8) + "anim_to: " + anim.end_angle.ToString() + "," + Environment.NewLine;
+                }
+                else
+                {
+                    options += TabInString(8) + "anim_from: " + anim.end_angle.ToString() + "," + Environment.NewLine;
+                    options += TabInString(8) + "anim_to: " + anim.start_angle.ToString() + "," + Environment.NewLine;
+                }
+                options += TabInString(8) + "anim_key: \"angle\"," + Environment.NewLine;
+                options += TabInString(7) + "}]," + Environment.NewLine;
+                options += TabInString(7) + "anim_fps: " + anim.anim_fps.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "anim_auto_start: 1," + Environment.NewLine;
+                options += TabInString(7) + "anim_repeat: 1," + Environment.NewLine;
+                options += TabInString(7) + "anim_auto_destroy: 1," + Environment.NewLine;
             }
             return options;
         }
@@ -10714,7 +10857,11 @@ namespace Watch_Face_Editor
                     options += TabInString(7) + "select_image: '" + editable_elements.select_image + ".png'," + Environment.NewLine;
                 if (editable_elements.un_select_image != null && editable_elements.un_select_image.Length > 0)
                     options += TabInString(7) + "un_select_image: '" + editable_elements.un_select_image + ".png'," + Environment.NewLine;
-                options += TabInString(7) + "default_type: hmUI.edit_type." + editable_elements.optional_types_list[0].type + "," + Environment.NewLine;
+                if (editable_elements.optional_types_list[0].type == "FAT_BURNING")
+                {
+                    options += TabInString(7) + "default_type: hmUI.edit_type.FAT_BURN," + Environment.NewLine;
+                }
+                else options += TabInString(7) + "default_type: hmUI.edit_type." + editable_elements.optional_types_list[0].type + "," + Environment.NewLine;
                 options += TabInString(7) + "optional_types: [" + Environment.NewLine;
                 int count = 0;
                 for (int i = 0; i < editable_elements.optional_types_list.Count; i++)
@@ -10729,9 +10876,12 @@ namespace Watch_Face_Editor
                             //        ".png', title_sc: 'PAI', title_tc: 'PAI', title_en: 'PAI' }," + Environment.NewLine;
                             //    break;
                             case "FAT_BURNING":
-                                options += TabInString(8) + "{ type: 1300002, preview: '" + typeList.preview +
-                                    ".png', title_sc: 'Fat burning', title_tc: 'Fat burning', title_en: 'Fat burning' }," + Environment.NewLine;
+                                options += TabInString(8) + "{ type: hmUI.edit_type.FAT_BURN, preview: '" + typeList.preview + ".png'}," + Environment.NewLine;
                                 break;
+                            //case "FAT_BURNING":
+                            //    options += TabInString(8) + "{ type: 1300002, preview: '" + typeList.preview +
+                            //        ".png', title_sc: 'Fat burning', title_tc: 'Fat burning', title_en: 'Fat burning' }," + Environment.NewLine;
+                            //    break;
                             case "DATE":
                                 if (!options.Contains("{ type: hmUI.edit_type.DATE"))
                                     options += TabInString(8) + "{ type: hmUI.edit_type." + typeList.type +
@@ -10752,6 +10902,13 @@ namespace Watch_Face_Editor
 
                 //options += TabInString(7) + "count: " + editable_elements.Elements.Count.ToString() + "," + Environment.NewLine;
                 options += TabInString(7) + "count: " + count.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "select_list: {" + Environment.NewLine;
+                options += TabInString(8) + "title_font_size: 34," + Environment.NewLine;
+                options += TabInString(8) + "title_align_h: hmUI.align.CENTER_H," + Environment.NewLine;
+                options += TabInString(8) + "list_item_vspace: 8," + Environment.NewLine;
+                options += TabInString(8) + "list_tips_text_font_size: 32," + Environment.NewLine;
+                options += TabInString(8) + "list_tips_text_align_h: hmUI.align.LEFT" + Environment.NewLine;
+                options += TabInString(7) + "}," + Environment.NewLine;
                 options += TabInString(7) + "tips_BG: '" + editable_elements.tips_BG + ".png'," + Environment.NewLine;
                 //options += TabInString(7) + "tips_x: " + editable_elements.tips_x.ToString() + "," + Environment.NewLine;
                 //options += TabInString(7) + "tips_y: " + editable_elements.tips_y.ToString() + "," + Environment.NewLine;
@@ -10856,11 +11013,34 @@ namespace Watch_Face_Editor
         }
 
         /// <summary>Распознаем текст и преобразуем JS в Json</summary>
-        private void JSToJson(string fileHame)
+        private void JSToJson(string fileName)
         {
             Watch_Face = null;
-            if (!File.Exists(fileHame)) return;
-            string functionText = File.ReadAllText(fileHame);
+            if (!File.Exists(fileName)) return;
+            string functionText = File.ReadAllText(fileName);
+            // вычищаем код от функций которые могот помешать парсингу
+            int startPosDel = functionText.IndexOf("//start of ignored block");
+            int endPosDel = functionText.IndexOf("//end of ignored block");
+            if (startPosDel > 0 && startPosDel < endPosDel)
+            {
+                int lenght = endPosDel - startPosDel + "//end of ignored block".Length;
+                functionText = functionText.Remove(startPosDel, lenght);
+            }
+            startPosDel = functionText.IndexOf("function getApp() {");
+            endPosDel = functionText.IndexOf("init_view()");
+            if (startPosDel > 0 && startPosDel < endPosDel)
+            {
+                endPosDel = functionText.IndexOf("}");
+                if (startPosDel < endPosDel) functionText = functionText.Remove(startPosDel, endPosDel - startPosDel + 1);
+            }
+            startPosDel = functionText.IndexOf("function getCurrentPage() {");
+            endPosDel = functionText.IndexOf("init_view()");
+            if (startPosDel > 0 && startPosDel < endPosDel)
+            {
+                endPosDel = functionText.IndexOf("}");
+                if (startPosDel < endPosDel) functionText = functionText.Remove(startPosDel, endPosDel - startPosDel + 1);
+            }
+
             functionText = functionText.Replace("\r", "");
             functionText = functionText.Replace("\n", Environment.NewLine);
             Regex regex = new Regex(@"{px:\w}");
@@ -10869,6 +11049,9 @@ namespace Watch_Face_Editor
             functionText = regex.Replace(functionText, "px:x");
             //functionText = functionText.Replace("{px:n}", "px:n");
             //functionText = functionText.Replace("{px:g}", "px:g");
+            functionText = functionText.Replace("const {px}", "const px");
+            // конец очистки кода
+
             string functionName = "";
             while (functionName != "init_view()" && functionText.Length > 10)
             {
@@ -11736,6 +11919,24 @@ namespace Watch_Face_Editor
                                 }
                             }
 
+                            if (objectName.EndsWith("image_img"))
+                            {
+
+                                ElementImage image = (ElementImage)elementsList.Find(e => e.GetType().Name == "ElementImage");
+                                if (image == null)
+                                {
+                                    elementsList.Add(new ElementImage());
+                                    image = (ElementImage)elementsList.Find(e => e.GetType().Name == "ElementImage");
+                                }
+                                if (image != null)
+                                {
+                                    image.Icon = new hmUI_widget_IMG();
+                                    image.Icon.src = img.src;
+                                    image.Icon.x = img.x;
+                                    image.Icon.y = img.y;
+                                }
+                            }
+
                             if (objectName == "editableTimePointers_cover_img")
                             {
                                 ElementEditablePointers editablePointers = Watch_Face.ElementEditablePointers;
@@ -11747,6 +11948,21 @@ namespace Watch_Face_Editor
                                     editablePointers.cover.y = img.y;
                                     editablePointers.cover.visible = true;
                                     editablePointers.cover.position = -1;
+                                }
+                                continue;
+                            }
+
+                            if (objectName == "image_top_img")
+                            {
+                                if (Watch_Face.TopImage == null) Watch_Face.TopImage = new TopImage();
+                                TopImage topImage = Watch_Face.TopImage;
+                                if (topImage != null)
+                                {
+                                    topImage.Icon = new hmUI_widget_IMG();
+                                    topImage.Icon.src = img.src;
+                                    topImage.Icon.x = img.x;
+                                    topImage.Icon.y = img.y;
+                                    if (img.show_level == "ONLY_NORMAL | ONLY_AOD") topImage.showInAOD = true;
                                 }
                                 continue;
                             }
@@ -17008,6 +17224,7 @@ namespace Watch_Face_Editor
                 while (openCount != closingPCount)
                 {
                     lastIndex = str.IndexOf("}", lastIndex + 1);
+                    //if (lastIndex < 0) return "";
                     returnString = str.Substring(firstIndex + 1, lastIndex - firstIndex - 1);
                     openCount = new Regex("{").Matches(returnString).Count;
                     closingPCount = new Regex("}").Matches(returnString).Count;
@@ -17183,7 +17400,17 @@ namespace Watch_Face_Editor
             endIndex = str.IndexOf("}", startIndex);
 
             if (str.IndexOf("WATCHFACE_EDIT_BG") > 0) endIndex = str.IndexOf("}", str.IndexOf("]"));
-            if (str.IndexOf("WATCHFACE_EDIT_GROUP") > 0) endIndex = str.IndexOf("}", str.IndexOf("]"));
+            if (str.IndexOf("WATCHFACE_EDIT_GROUP") > 0)
+            {
+                if(str.IndexOf("select_list") > 0)
+                {
+                    int tempStartIndex = str.IndexOf("}", str.IndexOf("select_list"));
+                    int tempEndIndex = str.IndexOf("}", tempStartIndex + 1);
+                    endIndex = str.IndexOf("}", str.IndexOf("]"));
+                    if (tempEndIndex > endIndex) endIndex = tempEndIndex;
+                }
+                else endIndex = str.IndexOf("}", str.IndexOf("]"));
+            }
 
             str = str.Substring(startIndex, endIndex - startIndex);
             str = str.Trim();
@@ -17214,6 +17441,7 @@ namespace Watch_Face_Editor
                     string valueName = valueStr.Substring(0, startIndex);
                     if (valueName == "bg_config") valueStr = str.Substring(1, str.IndexOf("]"));
                     if (valueName == "optional_types") valueStr = str.Substring(1, str.IndexOf("]"));
+                    if (valueName == "select_list") valueStr = str.Substring(1, str.IndexOf("}"));
                     valueStr = valueStr.Remove(0, startIndex + 1);
                     valueStr = valueStr.Trim();
 
@@ -17227,6 +17455,7 @@ namespace Watch_Face_Editor
                 //str = str.TrimEnd(',');
                 endIndex = str.IndexOf(Environment.NewLine);
                 if (str.StartsWith("bg_config")) endIndex = str.IndexOf(Environment.NewLine, str.IndexOf("]"));
+                if (str.StartsWith("select_list")) endIndex = str.IndexOf(Environment.NewLine, str.IndexOf("}"));
             }
 
             return returnParametrs;
@@ -17332,6 +17561,7 @@ namespace Watch_Face_Editor
                 string type = valueNameStr.Substring(0, posStart);
                 if (type == "1300001") type = "PAI";
                 if (type == "1300002") type = "FAT_BURNING";
+                if (type == "FAT_BURN") type = "FAT_BURNING";
                 if (posStart > 0) valueNameStr = valueNameStr.Remove(0, posStart + 1);
                 posEnd = valueNameStr.IndexOf("break;");
                 string value = valueNameStr.Substring(0, posEnd);
@@ -17366,6 +17596,7 @@ namespace Watch_Face_Editor
                 if (parametrs.ContainsKey("show_level"))
                 {
                     imgName = parametrs["show_level"].Replace("hmUI.show_level.", "");
+                    if (imgName == "ONLY_NORMAL | ONLY_EDIT") imgName = "ONLY_NORMAL";
                     img.show_level = imgName;
                 }
                 img.visible = true;
@@ -17537,6 +17768,7 @@ namespace Watch_Face_Editor
                                 str_value = str_value.Replace("hmUI.edit_type.", "");
                                 if (str_value == "1300001") str_value = "PAI";
                                 if (str_value == "1300002") str_value = "FAT_BURNING";
+                                if (str_value == "FAT_BURN") str_value = "FAT_BURNING";
                                 type = str_value;
                             }
                         }

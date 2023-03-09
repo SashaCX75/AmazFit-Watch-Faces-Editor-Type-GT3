@@ -300,6 +300,29 @@ namespace Watch_Face_Editor
             }
             #endregion
 
+            #region TopImage
+            if (Watch_Face != null && Watch_Face.TopImage != null && Watch_Face.TopImage.visible && Watch_Face.TopImage.Icon != null)
+            {
+                if (link == 0 || Watch_Face.TopImage.showInAOD)
+                {
+                    hmUI_widget_IMG icon = Watch_Face.TopImage.Icon;
+                    if (icon != null && icon.src != null && icon.src.Length > 0)
+                    {
+                        int imageIndex = ListImages.IndexOf(icon.src);
+                        int x = icon.x;
+                        int y = icon.y;
+
+                        if (imageIndex < ListImagesFullName.Count)
+                        {
+                            src = OpenFileStream(ListImagesFullName[imageIndex]);
+                            gPanel.DrawImage(src, x, y);
+                            //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                        }
+                    } 
+                }
+            }
+            #endregion
+
             #region ElementShortcuts
             if (radioButton_ScreenNormal.Checked && Watch_Face != null && Watch_Face.Shortcuts != null && Watch_Face.Shortcuts.visible)
             {
@@ -2241,6 +2264,22 @@ namespace Watch_Face_Editor
                     break;
                 #endregion
 
+                #region ElementImage
+                case "ElementImage":
+                    ElementImage activityElementImage = (ElementImage)element;
+                    if (!activityElementImage.visible) return;
+
+                    icon = activityElementImage.Icon;
+
+                    DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
+                        img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                        progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                        showCentrHend, "ElementImage");
+
+
+                    break;
+                #endregion
+
                 #region ElementAnimation
                 case "ElementAnimation":
                     ElementAnimation elementAnimation = (ElementAnimation)element;
@@ -2335,6 +2374,22 @@ namespace Watch_Face_Editor
                 background = Watch_Face.ScreenNormal.Background;
             if (background != null && background.visible)
             {
+                if (background.BackgroundColor != null && background.visible)
+                {
+                    Color color = StringToColor(background.BackgroundColor.color);
+                    gPanel.Clear(color);
+                }
+                if (background != null)
+                {
+                    if (background.BackgroundImage != null && background.BackgroundImage.src != null &&
+                        background.BackgroundImage.src.Length > 0 && background.visible)
+                    {
+                        src = OpenFileStream(background.BackgroundImage.src);
+                        int x = background.BackgroundImage.x;
+                        int y = background.BackgroundImage.y;
+                        if (src != null) gPanel.DrawImage(src, x, y);
+                    }
+                }
                 if (background.Editable_Background != null && background.Editable_Background.enable_edit_bg &&
                     background.Editable_Background.BackgroundList != null &&
                     background.Editable_Background.BackgroundList.Count > 0 && background.visible)
@@ -2503,8 +2558,11 @@ namespace Watch_Face_Editor
             {
                 if (editable_elements.fg_mask != null && editable_elements.fg_mask.Length > 0)
                 {
-                    src = OpenFileStream(editable_elements.fg_mask);
-                    gPanel.DrawImage(src, 0, 0);
+                    if (ProgramSettings.Watch_Model != "GTR 4" && ProgramSettings.Watch_Model != "GTS 4")
+                    {
+                        src = OpenFileStream(editable_elements.fg_mask);
+                        gPanel.DrawImage(src, 0, 0); 
+                    }
                 }
                 int selected_zone = editable_elements.selected_zone;
                 if (selected_zone >= 0 && editable_elements.Watchface_edit_group != null &&

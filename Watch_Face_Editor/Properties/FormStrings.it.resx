@@ -135,6 +135,9 @@
   <data name="Dialog_Title_SavePNG" xml:space="preserve">
     <value>Salva l'anteprima</value>
   </data>
+  <data name="Dialog_Title_Save_As" xml:space="preserve">
+    <value>Salva il Progetto come..</value>
+  </data>
   <data name="Dialog_Title_Unpack" xml:space="preserve">
     <value>Seleziona il file della watch face</value>
   </data>
@@ -180,6 +183,9 @@
   <data name="Form_PreviewX" xml:space="preserve">
     <value>Anteprima [X =</value>
   </data>
+  <data name="Message_AnimationAOD_Text" xml:space="preserve">
+    <value>Non è possibile aggiungere animazioni alla schermata AOD.</value>
+  </data>
   <data name="Message_ConvertingCompleted_Text" xml:space="preserve">
     <value>Una nuova watch face è stata creata</value>
   </data>
@@ -192,8 +198,26 @@
   <data name="Message_Delet_Text1" xml:space="preserve">
     <value>Sei sicuro di voler eliminare in modo definitivo il file "</value>
   </data>
+  <data name="Message_Delet_Text11" xml:space="preserve">
+    <value>Sei sicuro di voler eliminare in modo definitivo il file "</value>
+  </data>
   <data name="Message_Delet_Text2" xml:space="preserve">
     <value>"?</value>
+  </data>
+  <data name="Message_Delet_Text21" xml:space="preserve">
+    <value>?</value>
+  </data>
+  <data name="Message_DontDelZip" xml:space="preserve">
+    <value>Non è possibile eliminare un file di quadrante dell'orologio esistente.</value>
+  </data>
+  <data name="Message_EditableElementsAOD_Text" xml:space="preserve">
+    <value>Non è possibile aggiungere elementi modificabili alla schermata di AOD</value>
+  </data>
+  <data name="Message_EditablePointerAOD_Text" xml:space="preserve">
+    <value>Non è possibile aggiungere puntatori modificabili alla schermata di AOD</value>
+  </data>
+  <data name="Message_ElementAOD_Text" xml:space="preserve">
+    <value>Non è possibile aggiungere questi elementi alla schermata di AOD</value>
   </data>
   <data name="Message_ErrorReadJS" xml:space="preserve">
     <value>Impossibile ricostruire la struttura della watch face</value>
@@ -296,5 +320,11 @@
   </data>
   <data name="Message_Wrong_Preview_Exists" xml:space="preserve">
     <value>Impossibile creare l'immagine di anteprima. Forse un'immagine simile esiste già.</value>
+  </data>
+  <data name="Tip_Background" xml:space="preserve">
+    <value>Sfondo</value>
+  </data>
+  <data name="Tip_Pointer" xml:space="preserve">
+    <value>Puntatore</value>
   </data>
 </root>

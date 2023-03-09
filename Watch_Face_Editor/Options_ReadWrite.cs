@@ -96,6 +96,9 @@ namespace Watch_Face_Editor
             if (Watch_Face_temp.RepeatAlert != null)
                 Watch_Face_return.RepeatAlert = Watch_Face_temp.RepeatAlert;
 
+            if (Watch_Face_temp.TopImage != null)
+                Watch_Face_return.TopImage = Watch_Face_temp.TopImage;
+
             return Watch_Face_return;
         }
 
@@ -668,6 +671,26 @@ namespace Watch_Face_Editor
                                 Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                         if (Moon != null) NewElements.Add(Moon);
+                        break;
+                    #endregion
+
+                    #region ElementImage
+                    case "ElementImage":
+                        ElementImage Image = null;
+                        try
+                        {
+                            Image = JsonConvert.DeserializeObject<ElementImage>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (Image != null) NewElements.Add(Image);
                         break;
                     #endregion
 

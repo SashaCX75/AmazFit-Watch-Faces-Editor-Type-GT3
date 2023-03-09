@@ -153,6 +153,11 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
+    <Compile Include="Properties\ElementsString.it.Designer.cs">
+      <DependentUpon>ElementsString.it.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Properties\ElementsString.fr.Designer.cs">
       <DependentUpon>ElementsString.fr.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -264,6 +269,9 @@
     <EmbeddedResource Include="FormAddEditableElement.fr.resx">
       <DependentUpon>FormAddEditableElement.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormAddEditableElement.it.resx">
+      <DependentUpon>FormAddEditableElement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormAddEditableElement.resx">
       <DependentUpon>FormAddEditableElement.cs</DependentUpon>
     </EmbeddedResource>
@@ -286,6 +294,9 @@
       <DependentUpon>FormAnimation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAnimation.fr.resx">
+      <DependentUpon>FormAnimation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAnimation.it.resx">
       <DependentUpon>FormAnimation.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAnimation.resx">
@@ -334,6 +345,10 @@
     <EmbeddedResource Include="Properties\ElementsString.de.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ElementsString.de.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\ElementsString.it.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ElementsString.it.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\ElementsString.fr.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -433,6 +448,7 @@
     <None Include="Resources\tips_en.rtf" />
     <None Include="Resources\tips_es.rtf" />
     <None Include="Resources\tips_fr.rtf" />
+    <None Include="Resources\tips_it.rtf" />
     <None Include="Resources\tips_ru.rtf" />
     <None Include="Resources\tips_uk.rtf" />
     <None Include="Resources\tips_zh.rtf" />
