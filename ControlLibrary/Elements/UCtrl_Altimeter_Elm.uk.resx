@@ -161,7 +161,4 @@
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Барометр</value>
   </data>
-  <data name="button_Images.Text" xml:space="preserve">
-    <value>Зображення</value>
-  </data>
 </root>

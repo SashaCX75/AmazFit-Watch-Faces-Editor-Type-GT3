@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrl_Set));
             this.groupBox_Air = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBox_WindDirection = new System.Windows.Forms.ComboBox();
             this.label22 = new System.Windows.Forms.Label();
             this.numericUpDown_AirPressure_Set = new System.Windows.Forms.NumericUpDown();
             this.numericUpDown_Altitude_Set = new System.Windows.Forms.NumericUpDown();
@@ -106,6 +108,8 @@
             // groupBox_Air
             // 
             resources.ApplyResources(this.groupBox_Air, "groupBox_Air");
+            this.groupBox_Air.Controls.Add(this.label1);
+            this.groupBox_Air.Controls.Add(this.comboBox_WindDirection);
             this.groupBox_Air.Controls.Add(this.label22);
             this.groupBox_Air.Controls.Add(this.numericUpDown_AirPressure_Set);
             this.groupBox_Air.Controls.Add(this.numericUpDown_Altitude_Set);
@@ -129,6 +133,29 @@
             this.groupBox_Air.Name = "groupBox_Air";
             this.groupBox_Air.TabStop = false;
             this.groupBox_Air.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox_Paint);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // comboBox_WindDirection
+            // 
+            resources.ApplyResources(this.comboBox_WindDirection, "comboBox_WindDirection");
+            this.comboBox_WindDirection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_WindDirection.DropDownWidth = 135;
+            this.comboBox_WindDirection.FormattingEnabled = true;
+            this.comboBox_WindDirection.Items.AddRange(new object[] {
+            resources.GetString("comboBox_WindDirection.Items"),
+            resources.GetString("comboBox_WindDirection.Items1"),
+            resources.GetString("comboBox_WindDirection.Items2"),
+            resources.GetString("comboBox_WindDirection.Items3"),
+            resources.GetString("comboBox_WindDirection.Items4"),
+            resources.GetString("comboBox_WindDirection.Items5"),
+            resources.GetString("comboBox_WindDirection.Items6"),
+            resources.GetString("comboBox_WindDirection.Items7")});
+            this.comboBox_WindDirection.Name = "comboBox_WindDirection";
+            this.comboBox_WindDirection.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
             // 
             // label22
             // 
@@ -755,5 +782,7 @@
         private System.Windows.Forms.Label label02;
         private System.Windows.Forms.Label label01;
         private System.Windows.Forms.Button button_Set;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBox_WindDirection;
     }
 }

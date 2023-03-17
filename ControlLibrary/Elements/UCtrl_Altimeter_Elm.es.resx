@@ -155,16 +155,10 @@
   <data name="button_Icon.Text" xml:space="preserve">
     <value>Icono</value>
   </data>
-  <data name="button_Images.Text" xml:space="preserve">
-    <value>Imágenes</value>
-  </data>
   <data name="button_Number.Text" xml:space="preserve">
     <value>Valores numéricos</value>
   </data>
   <data name="button_Pointer.Text" xml:space="preserve">
     <value>Puntero</value>
-  </data>
-  <data name="button_Segments.Text" xml:space="preserve">
-    <value>Imágenes independientes</value>
   </data>
 </root>

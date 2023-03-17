@@ -423,29 +423,29 @@ namespace ControlLibrary
                 if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_pos_x")
                 {
                     e.SuppressKeyPress = false;
-                    numericUpDown_pos_y.DownButton();
+                    numericUpDown_pos_y.UpButton();
                 }
                 if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_pos_x")
                 {
                     e.SuppressKeyPress = false;
-                    numericUpDown_pos_y.UpButton();
+                    numericUpDown_pos_y.DownButton();
                 }
 
                 if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_pos_y")
                 {
                     e.SuppressKeyPress = false;
-                    numericUpDown_pos_y.DownButton();
+                    numericUpDown_pos_y.UpButton();
                 }
                 if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_pos_y")
                 {
                     e.SuppressKeyPress = false;
-                    numericUpDown_pos_y.UpButton();
+                    numericUpDown_pos_y.DownButton();
                 }
 
                 if (e.KeyCode == Keys.Left && (numericUpDown.Name == "numericUpDown_pos_x" || numericUpDown.Name == "numericUpDown_pos_y"))
-                    numericUpDown_pos_x.DownButton();
-                if (e.KeyCode == Keys.Right && (numericUpDown.Name == "numericUpDown_pos_x" || numericUpDown.Name == "numericUpDown_pos_y"))
                     numericUpDown_pos_x.UpButton();
+                if (e.KeyCode == Keys.Right && (numericUpDown.Name == "numericUpDown_pos_x" || numericUpDown.Name == "numericUpDown_pos_y"))
+                    numericUpDown_pos_x.DownButton();
 
                 e.Handled = true;
             }
@@ -458,14 +458,27 @@ namespace ControlLibrary
                 NumericUpDown numericUpDown = sender as NumericUpDown;
                 if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_center_x")
                 {
-                    numericUpDown_center_x.DownButton();
-                    numericUpDown_center_y.UpButton();
+                    e.SuppressKeyPress = false;
+                    numericUpDown_center_y.DownButton();
                 }
                 if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_center_x")
                 {
-                    numericUpDown_center_x.UpButton();
+                    e.SuppressKeyPress = false;
+                    numericUpDown_center_y.UpButton();
+                }
+
+
+                if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_center_y")
+                {
+                    e.SuppressKeyPress = false;
                     numericUpDown_center_y.DownButton();
                 }
+                if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_center_y")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_center_y.UpButton();
+                }
+
                 if (e.KeyCode == Keys.Left && (numericUpDown.Name == "numericUpDown_center_x" || numericUpDown.Name == "numericUpDown_center_y"))
                     numericUpDown_center_x.DownButton();
                 if (e.KeyCode == Keys.Right && (numericUpDown.Name == "numericUpDown_center_x" || numericUpDown.Name == "numericUpDown_center_y"))

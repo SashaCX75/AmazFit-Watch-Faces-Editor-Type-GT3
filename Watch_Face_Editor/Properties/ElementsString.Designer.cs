@@ -205,7 +205,7 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Fat burning.
+        ///   Ищет локализованную строку, похожую на Звук сжигания жира.
         /// </summary>
         internal static string TypeNameFatBurning {
             get {

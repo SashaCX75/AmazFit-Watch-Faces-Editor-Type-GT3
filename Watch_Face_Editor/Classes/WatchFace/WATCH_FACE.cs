@@ -4300,6 +4300,9 @@ namespace Watch_Face_Editor
         /// <summary>Отображать элементы в режиме АОД</summary>
         public bool AOD_show { get; set; } = false;
 
+        /// <summary>Отображать элементы перед остальными</summary>
+        public bool display_first { get; set; } = false;
+
         /// <summary>Отображать в режиме редактирования</summary>
         public bool showEeditMode { get; set; } = false;
 

@@ -33,6 +33,7 @@ namespace ControlLibrary
         bool highlight_city_name = false;
         bool highlight_circle_scale = false;
         bool highlight_linear_scale = false;
+        bool highlight_wind_direction = false;
         bool highlight_icon = false;
 
         float currentDPI; // масштаб экрана
@@ -502,6 +503,7 @@ namespace ControlLibrary
             highlight_city_name = false;
             highlight_circle_scale = false;
             highlight_linear_scale = false;
+            highlight_wind_direction = false;
             highlight_icon = false;
 
             SelectElement();
@@ -679,6 +681,19 @@ namespace ControlLibrary
                 button_Linear_Scale.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
+            if (highlight_wind_direction)
+            {
+                panel_Direction.BackColor = SystemColors.ActiveCaption;
+                button_Direction.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Icon.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Direction.BackColor = SystemColors.Control;
+                button_Direction.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Direction.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
             if (highlight_icon)
             {
                 panel_Icon.BackColor = SystemColors.ActiveCaption;
@@ -710,6 +725,7 @@ namespace ControlLibrary
             highlight_circle_scale = false;
             highlight_linear_scale = false;
             highlight_city_name = false;
+            highlight_wind_direction = false;
             highlight_icon = false;
 
             SelectElement();
@@ -738,6 +754,7 @@ namespace ControlLibrary
             highlight_circle_scale = false;
             highlight_linear_scale = false;
             highlight_city_name = false;
+            highlight_wind_direction = false;
             highlight_icon = false;
 
             SelectElement();
@@ -766,6 +783,7 @@ namespace ControlLibrary
             highlight_circle_scale = false;
             highlight_linear_scale = false;
             highlight_city_name = false;
+            highlight_wind_direction = false;
             highlight_icon = false;
 
             SelectElement();
@@ -794,6 +812,7 @@ namespace ControlLibrary
             highlight_circle_scale = false;
             highlight_linear_scale = false;
             highlight_city_name = false;
+            highlight_wind_direction = false;
             highlight_icon = false;
 
             SelectElement();
@@ -822,6 +841,7 @@ namespace ControlLibrary
             highlight_circle_scale = false;
             highlight_linear_scale = false;
             highlight_city_name = false;
+            highlight_wind_direction = false;
             highlight_icon = false;
 
             SelectElement();
@@ -850,6 +870,7 @@ namespace ControlLibrary
             highlight_circle_scale = false;
             highlight_linear_scale = false;
             highlight_city_name = false;
+            highlight_wind_direction = false;
             highlight_icon = false;
 
             SelectElement();
@@ -878,6 +899,7 @@ namespace ControlLibrary
             highlight_circle_scale = false;
             highlight_linear_scale = false;
             highlight_city_name = false;
+            highlight_wind_direction = false;
             highlight_icon = false;
 
             SelectElement();
@@ -906,6 +928,7 @@ namespace ControlLibrary
             highlight_circle_scale = false;
             highlight_linear_scale = false;
             highlight_city_name = false;
+            highlight_wind_direction = false;
             highlight_icon = false;
 
             SelectElement();
@@ -934,6 +957,7 @@ namespace ControlLibrary
             highlight_circle_scale = false;
             highlight_linear_scale = false;
             highlight_city_name = false;
+            highlight_wind_direction = false;
             highlight_icon = false;
 
             SelectElement();
@@ -962,6 +986,36 @@ namespace ControlLibrary
             highlight_circle_scale = false;
             highlight_linear_scale = false;
             highlight_city_name = false;
+            highlight_wind_direction = false;
+            highlight_icon = false;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Direction_Click(object sender, EventArgs e)
+        {
+            selectedElement = "Wind_Direction";
+
+            highlight_images = false;
+            highlight_segments = false;
+            highlight_number = false;
+            highlight_number_target = false;
+            highlight_number_min = false;
+            highlight_number_max = false;
+            highlight_sunset = false;
+            highlight_sunrise = false;
+            highlight_sunset_sunrise = false;
+            highlight_pointer = false;
+            highlight_circle_scale = false;
+            highlight_linear_scale = false;
+            highlight_city_name = false;
+            highlight_wind_direction = true;
             highlight_icon = false;
 
             SelectElement();
@@ -990,6 +1044,7 @@ namespace ControlLibrary
             highlight_circle_scale = true;
             highlight_linear_scale = false;
             highlight_city_name = false;
+            highlight_wind_direction = false;
             highlight_icon = false;
 
             SelectElement();
@@ -1018,6 +1073,7 @@ namespace ControlLibrary
             highlight_circle_scale = false;
             highlight_linear_scale = true;
             highlight_city_name = false;
+            highlight_wind_direction = false;
             highlight_icon = false;
 
             SelectElement();
@@ -1046,6 +1102,7 @@ namespace ControlLibrary
             highlight_circle_scale = false;
             highlight_linear_scale = false;
             highlight_city_name = true;
+            highlight_wind_direction = false;
             highlight_icon = false;
 
             SelectElement();
@@ -1074,6 +1131,7 @@ namespace ControlLibrary
             highlight_circle_scale = false;
             highlight_linear_scale = false;
             highlight_city_name = false;
+            highlight_wind_direction = false;
             highlight_icon = true;
 
             SelectElement();
@@ -1247,6 +1305,9 @@ namespace ControlLibrary
                 case "CityName":
                     checkBox_Text_CityName.Checked = status;
                     break;
+                case "Wind_Direction":
+                    checkBox_Direction.Checked = status;
+                    break;
                 case "Icon":
                     checkBox_Icon.Checked = status;
                     break;
@@ -1306,6 +1367,9 @@ namespace ControlLibrary
                         case "CityName":
                             panel = panel_Text_CityName;
                             break;
+                        case "Wind_Direction":
+                            panel = panel_Direction;
+                            break;
                         case "Icon":
                             panel = panel_Icon;
                             break;
@@ -1342,7 +1406,7 @@ namespace ControlLibrary
         }
 
         /// <summary>Получаем порядок опций в элементе</summary>
-        public Dictionary<string, int> GetOptionsPosition()
+        /*public Dictionary<string, int> GetOptionsPosition()
         {
             Dictionary<string, int> elementOptions = new Dictionary<string, int>();
             int index = 1;
@@ -1392,6 +1456,9 @@ namespace ControlLibrary
                         case "panel_Text_CityName":
                             elementOptions.Add("CityName", index);
                             break;
+                        case "panel_Direction":
+                            elementOptions.Add("Wind_Direction", index);
+                            break;
                         case "panel_Icon":
                             elementOptions.Add("Icon", index);
                             break;
@@ -1401,9 +1468,9 @@ namespace ControlLibrary
             }
             if (elementOptions.Count != tableLayoutPanel_element.RowCount) elementOptions = FixsPosition(elementOptions);
             return elementOptions;
-        }
+        }*/
 
-        private Dictionary<string, int> FixsPosition(Dictionary<string, int> elementOptions)
+        /*private Dictionary<string, int> FixsPosition(Dictionary<string, int> elementOptions)
         {
             if (!elementOptions.ContainsKey("Images"))
             {
@@ -1483,6 +1550,12 @@ namespace ControlLibrary
                 while (elementOptions.ContainsValue(index)) { index++; }
                 elementOptions.Add("CityName", index);
             }
+            if (!elementOptions.ContainsKey("Wind_Direction"))
+            {
+                int index = 1;
+                while (elementOptions.ContainsValue(index)) { index++; }
+                elementOptions.Add("Wind_Direction", index);
+            }
             if (!elementOptions.ContainsKey("Icon"))
             {
                 int index = 1;
@@ -1490,7 +1563,7 @@ namespace ControlLibrary
                 elementOptions.Add("Icon", index);
             }
             return elementOptions;
-        }
+        }*/
 
         /// <summary>Получаем порядок опций в элементе v2</summary>
         public Dictionary<string, int> GetOptionsPosition2()
@@ -1511,6 +1584,7 @@ namespace ControlLibrary
             if (panel_Text_CityName.Visible) elementOptions.Add("CityName", offset - tableLayoutPanel_element.GetRow(panel_Text_CityName));
             if (panel_Circle_Scale.Visible) elementOptions.Add("Circle_Scale", offset - tableLayoutPanel_element.GetRow(panel_Circle_Scale));
             if (panel_Linear_Scale.Visible) elementOptions.Add("Linear_Scale", offset - tableLayoutPanel_element.GetRow(panel_Linear_Scale));
+            if (panel_Direction.Visible) elementOptions.Add("Wind_Direction", offset - tableLayoutPanel_element.GetRow(panel_Direction));
             if (panel_Icon.Visible) elementOptions.Add("Icon", offset - tableLayoutPanel_element.GetRow(panel_Icon));
 
             FixsPosition2(elementOptions);
@@ -1639,6 +1713,12 @@ namespace ControlLibrary
                 while (elementOptions.ContainsValue(index)) { index++; }
                 elementOptions.Add("CityName", index);
             }
+            if (!elementOptions.ContainsKey("Wind_Direction"))
+            {
+                int index = 1;
+                while (elementOptions.ContainsValue(index)) { index++; }
+                elementOptions.Add("Wind_Direction", index);
+            }
             if (!elementOptions.ContainsKey("Icon"))
             {
                 int index = 1;
@@ -1663,6 +1743,7 @@ namespace ControlLibrary
             panel_Circle_Scale.Visible = true;
             panel_Linear_Scale.Visible = true;
             panel_Text_CityName.Visible = true;
+            panel_Direction.Visible = true;
             panel_Icon.Visible = true;
         }
 
@@ -1683,53 +1764,8 @@ namespace ControlLibrary
             panel_Circle_Scale.Visible = elementOptions.Contains("Circle_scale") ? true : false;
             panel_Linear_Scale.Visible = elementOptions.Contains("Linear_scale") ? true : false;
             panel_Text_CityName.Visible = elementOptions.Contains("CityName") ? true : false;
+            panel_Direction.Visible = elementOptions.Contains("Wind_Direction") ? true : false;
             panel_Icon.Visible = elementOptions.Contains("Icon") ? true : false;
-
-            //for (int i = 0; i < elementOptions.Count; i++)
-            //{
-            //    switch (elementOptions[i])
-            //    {
-            //        case "Images":
-            //            panel_Images.Visible = true;
-            //            break;
-            //        case "Segments":
-            //            panel_Segments.Visible = true;
-            //            break;
-            //        case "Number":
-            //            panel_Number.Visible = true;
-            //            break;
-            //        case "Number_Min":
-            //            panel_Number_Min.Visible = true;
-            //            break;
-            //        case "Number_Max":
-            //            panel_Number_Max.Visible = true;
-            //            break;
-            //        case "Sunset":
-            //            panel_Sunset.Visible = true;
-            //            break;
-            //        case "Sunrise":
-            //            panel_Sunrise.Visible = true;
-            //            break;
-            //        case "Sunset_Sunrise":
-            //            panel_Sunset_Sunrise.Visible = true;
-            //            break;
-            //        case "Pointer":
-            //            panel_Pointer.Visible = true;
-            //            break;
-            //        case "Circle_Scale":
-            //            panel_Circle_Scale.Visible = true;
-            //            break;
-            //        case "Linear_Scale":
-            //            panel_Linear_Scale.Visible = true;
-            //            break;
-            //        case "CityName":
-            //            panel_Text_CityName.Visible = true;
-            //            break;
-            //        case "Icon":
-            //            panel_Icon.Visible = true;
-            //            break;
-            //    }
-            //}
 
             if (tabControl1.SelectedTab.Name == "tabPageElementSettings")
             {
@@ -1840,16 +1876,17 @@ namespace ControlLibrary
             elementOptions.Add(2, "Linear_Scale");
             elementOptions.Add(3, "Circle_Scale");
             elementOptions.Add(4, "CityName");
-            elementOptions.Add(5, "Pointer");
-            elementOptions.Add(6, "Sunset_Sunrise");
-            elementOptions.Add(7, "Sunrise");
-            elementOptions.Add(8, "Sunset");
-            elementOptions.Add(9, "Number_Max");
-            elementOptions.Add(10, "Number_Min");
-            elementOptions.Add(11, "Number_Target");
-            elementOptions.Add(12, "Number");
-            elementOptions.Add(13, "Segments");
-            elementOptions.Add(14, "Images");
+            elementOptions.Add(5, "Wind_Direction");
+            elementOptions.Add(6, "Pointer");
+            elementOptions.Add(7, "Sunset_Sunrise");
+            elementOptions.Add(8, "Sunrise");
+            elementOptions.Add(9, "Sunset");
+            elementOptions.Add(10, "Number_Max");
+            elementOptions.Add(11, "Number_Min");
+            elementOptions.Add(12, "Number_Target");
+            elementOptions.Add(13, "Number");
+            elementOptions.Add(14, "Segments");
+            elementOptions.Add(15, "Images");
             SetOptionsPosition(elementOptions);
 
             checkBox_Images.Checked = false;
@@ -1865,6 +1902,7 @@ namespace ControlLibrary
             checkBox_Circle_Scale.Checked = false;
             checkBox_Linear_Scale.Checked = false;
             checkBox_Text_CityName.Checked = false;
+            checkBox_Direction.Checked = false;
             checkBox_Icon.Checked = false;
 
             button_PreviewAdd.Enabled = false;
@@ -1874,42 +1912,6 @@ namespace ControlLibrary
             comboBox_Preview_image.Text = null;
 
             setValue = setValueTemp;
-        }
-
-        public void SetElementsType(string type)
-        {
-            panel_Images.Visible = false;
-            panel_Segments.Visible = false;
-            panel_Number.Visible = false;
-            panel_Number_Min.Visible = false;
-            panel_Number_Max.Visible = false;
-            panel_Sunset.Visible = false;
-            panel_Sunrise.Visible = false;
-            panel_Sunset_Sunrise.Visible = false;
-            panel_Pointer.Visible = false;
-            panel_Text_CityName.Visible = false;
-            panel_Circle_Scale.Visible = false;
-            panel_Linear_Scale.Visible = false;
-            panel_Icon.Visible = false;
-
-            switch (type)
-            {
-                case "ElementBattery":
-                    panel_Images.Visible = true;
-                    panel_Segments.Visible = true;
-                    panel_Number.Visible = true;
-                    panel_Number_Min.Visible = false;
-                    panel_Number_Max.Visible = false;
-                    panel_Sunset.Visible = false;
-                    panel_Sunrise.Visible = false;
-                    panel_Sunset_Sunrise.Visible = false;
-                    panel_Pointer.Visible = true;
-                    panel_Text_CityName.Visible = false;
-                    panel_Circle_Scale.Visible = true;
-                    panel_Linear_Scale.Visible = true;
-                    panel_Icon.Visible = true;
-                    break;
-            }
         }
         #endregion
 
@@ -2220,7 +2222,7 @@ namespace ControlLibrary
             Logger.WriteLine("* currentDPI = " + currentDPI.ToString());
             if (tabControl1.Height > 580) //if (tabControl1.Height > 580)
             {
-                float currentDPI = tabControl1.Height / 462f;
+                float currentDPI = tabControl1.Height / 474f;
                 Logger.WriteLine("* currentDPI = " + currentDPI.ToString());
                 //button_collapse.Image = (Image)(new Bitmap(button_collapse.Image,
                 //    new Size((int)(16 * currentDPI), (int)(16 * currentDPI))));
@@ -2364,6 +2366,29 @@ namespace ControlLibrary
                     numericUpDown_tipX.UpButton();
 
                 e.Handled = true;
+            }
+        }
+
+        private void checkBox_display_first_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox checkBox = sender as CheckBox;
+            if (checkBox.Name == "checkBox_display_first")
+            {
+                if (checkBox.Checked)
+                {
+                    checkBox_showInAOD.Enabled = false;
+                    checkBox_showInAOD.Checked = false; 
+                }
+                else checkBox_showInAOD.Enabled = true;
+            }
+            if (checkBox.Name == "checkBox_showInAOD")
+            {
+                if (checkBox.Checked)
+                {
+                    checkBox_display_first.Enabled = false;
+                    checkBox_display_first.Checked = false;
+                }
+                else checkBox_display_first.Enabled = true;
             }
         }
     }

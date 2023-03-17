@@ -1985,7 +1985,6 @@ namespace Watch_Face_Editor
             img_number.invalid_image = uCtrl_Text_Weather_Opt.GetImageError();
             img_number.zero = uCtrl_Text_Weather_Opt.checkBox_addZero.Checked;
 
-
             JSON_Modified = true;
             PreviewImage();
             FormText();

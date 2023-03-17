@@ -150,4 +150,27 @@
   <data name="button_Segments.Text" xml:space="preserve">
     <value>Imágenes independientes</value>
   </data>
+  <data name="button_Direction.Text" xml:space="preserve">
+    <value>Dirección del viento</value>
+  </data>
+  <data name="button_Direction.ToolTip" xml:space="preserve">
+    <value>N - norte
+NE - noreste
+E - este
+SE - sureste
+S - sur
+SO - suroeste
+W - oeste
+NW - noroeste</value>
+  </data>
+  <data name="panel_Direction.ToolTip" xml:space="preserve">
+    <value>N - norte
+NE - noreste
+E - este
+SE - sureste
+S - sur
+SO - suroeste
+W - oeste
+NW - noroeste</value>
+  </data>
 </root>

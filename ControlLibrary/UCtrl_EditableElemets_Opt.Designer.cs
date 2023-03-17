@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrl_EditableElemets_Opt));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageGeneralSettings = new System.Windows.Forms.TabPage();
+            this.checkBox_display_first = new System.Windows.Forms.CheckBox();
             this.checkBox_edit_mode = new System.Windows.Forms.CheckBox();
             this.checkBox_showInAOD = new System.Windows.Forms.CheckBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -83,6 +84,9 @@
             this.button_PreviewRefresh = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel_element = new System.Windows.Forms.TableLayoutPanel();
+            this.panel_Direction = new System.Windows.Forms.Panel();
+            this.button_Direction = new System.Windows.Forms.Button();
+            this.checkBox_Direction = new System.Windows.Forms.CheckBox();
             this.panel_Number_Target = new System.Windows.Forms.Panel();
             this.button_Number_Target = new System.Windows.Forms.Button();
             this.checkBox_Number_Target = new System.Windows.Forms.CheckBox();
@@ -149,6 +153,7 @@
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tableLayoutPanel_element.SuspendLayout();
+            this.panel_Direction.SuspendLayout();
             this.panel_Number_Target.SuspendLayout();
             this.panel_Linear_Scale.SuspendLayout();
             this.panel_Circle_Scale.SuspendLayout();
@@ -183,6 +188,7 @@
             resources.ApplyResources(this.tabPageGeneralSettings, "tabPageGeneralSettings");
             this.tabPageGeneralSettings.BackColor = System.Drawing.SystemColors.Control;
             this.tabPageGeneralSettings.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tabPageGeneralSettings.Controls.Add(this.checkBox_display_first);
             this.tabPageGeneralSettings.Controls.Add(this.checkBox_edit_mode);
             this.tabPageGeneralSettings.Controls.Add(this.checkBox_showInAOD);
             this.tabPageGeneralSettings.Controls.Add(this.label9);
@@ -220,6 +226,14 @@
             this.tabPageGeneralSettings.Controls.Add(this.button_zoneDel);
             this.tabPageGeneralSettings.Name = "tabPageGeneralSettings";
             // 
+            // checkBox_display_first
+            // 
+            resources.ApplyResources(this.checkBox_display_first, "checkBox_display_first");
+            this.checkBox_display_first.Name = "checkBox_display_first";
+            this.checkBox_display_first.UseVisualStyleBackColor = true;
+            this.checkBox_display_first.CheckedChanged += new System.EventHandler(this.checkBox_display_first_CheckedChanged);
+            this.checkBox_display_first.Click += new System.EventHandler(this.checkBox_Click);
+            // 
             // checkBox_edit_mode
             // 
             resources.ApplyResources(this.checkBox_edit_mode, "checkBox_edit_mode");
@@ -232,6 +246,7 @@
             resources.ApplyResources(this.checkBox_showInAOD, "checkBox_showInAOD");
             this.checkBox_showInAOD.Name = "checkBox_showInAOD";
             this.checkBox_showInAOD.UseVisualStyleBackColor = true;
+            this.checkBox_showInAOD.CheckedChanged += new System.EventHandler(this.checkBox_display_first_CheckedChanged);
             this.checkBox_showInAOD.Click += new System.EventHandler(this.checkBox_Click);
             // 
             // label9
@@ -659,12 +674,13 @@
             // 
             resources.ApplyResources(this.tableLayoutPanel_element, "tableLayoutPanel_element");
             this.tableLayoutPanel_element.AllowDrop = true;
+            this.tableLayoutPanel_element.Controls.Add(this.panel_Direction, 0, 10);
             this.tableLayoutPanel_element.Controls.Add(this.panel_Number_Target, 0, 3);
-            this.tableLayoutPanel_element.Controls.Add(this.panel_Linear_Scale, 0, 12);
-            this.tableLayoutPanel_element.Controls.Add(this.panel_Circle_Scale, 0, 11);
+            this.tableLayoutPanel_element.Controls.Add(this.panel_Linear_Scale, 0, 13);
+            this.tableLayoutPanel_element.Controls.Add(this.panel_Circle_Scale, 0, 12);
             this.tableLayoutPanel_element.Controls.Add(this.panel_Pointer, 0, 9);
-            this.tableLayoutPanel_element.Controls.Add(this.panel_Icon, 0, 13);
-            this.tableLayoutPanel_element.Controls.Add(this.panel_Text_CityName, 0, 10);
+            this.tableLayoutPanel_element.Controls.Add(this.panel_Icon, 0, 14);
+            this.tableLayoutPanel_element.Controls.Add(this.panel_Text_CityName, 0, 11);
             this.tableLayoutPanel_element.Controls.Add(this.panel_Images, 0, 0);
             this.tableLayoutPanel_element.Controls.Add(this.panel_Segments, 0, 1);
             this.tableLayoutPanel_element.Controls.Add(this.panel_Number, 0, 2);
@@ -676,6 +692,39 @@
             this.tableLayoutPanel_element.Name = "tableLayoutPanel_element";
             this.tableLayoutPanel_element.DragDrop += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel_element_DragDrop);
             this.tableLayoutPanel_element.DragOver += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel_element_DragOver);
+            // 
+            // panel_Direction
+            // 
+            resources.ApplyResources(this.panel_Direction, "panel_Direction");
+            this.panel_Direction.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_Direction.Controls.Add(this.button_Direction);
+            this.panel_Direction.Controls.Add(this.checkBox_Direction);
+            this.panel_Direction.Name = "panel_Direction";
+            this.panel_Direction.Click += new System.EventHandler(this.panel_Direction_Click);
+            this.panel_Direction.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.panel_Direction.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.panel_Direction.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // button_Direction
+            // 
+            resources.ApplyResources(this.button_Direction, "button_Direction");
+            this.button_Direction.FlatAppearance.BorderSize = 0;
+            this.button_Direction.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.button_Direction.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.button_Direction.Image = global::ControlLibrary.Properties.Resources.direction;
+            this.button_Direction.Name = "button_Direction";
+            this.button_Direction.UseVisualStyleBackColor = true;
+            this.button_Direction.Click += new System.EventHandler(this.panel_Direction_Click);
+            this.button_Direction.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.button_Direction.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.button_Direction.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // checkBox_Direction
+            // 
+            resources.ApplyResources(this.checkBox_Direction, "checkBox_Direction");
+            this.checkBox_Direction.Name = "checkBox_Direction";
+            this.checkBox_Direction.UseVisualStyleBackColor = true;
+            this.checkBox_Direction.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
             // 
             // panel_Number_Target
             // 
@@ -1227,6 +1276,8 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.tableLayoutPanel_element.ResumeLayout(false);
+            this.panel_Direction.ResumeLayout(false);
+            this.panel_Direction.PerformLayout();
             this.panel_Number_Target.ResumeLayout(false);
             this.panel_Number_Target.PerformLayout();
             this.panel_Linear_Scale.ResumeLayout(false);
@@ -1367,5 +1418,9 @@
         private System.Windows.Forms.Button button_collapse;
         private System.Windows.Forms.PictureBox pictureBox_Arrow_Down;
         private System.Windows.Forms.PictureBox pictureBox_Arrow_Right;
+        public System.Windows.Forms.CheckBox checkBox_display_first;
+        private System.Windows.Forms.Panel panel_Direction;
+        private System.Windows.Forms.Button button_Direction;
+        public System.Windows.Forms.CheckBox checkBox_Direction;
     }
 }

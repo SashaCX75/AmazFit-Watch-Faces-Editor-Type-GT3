@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="button_SaveAs.Text" xml:space="preserve">
+    <value>Salva il Progetto come..</value>
+  </data>
   <data name="Number.HeaderText" xml:space="preserve">
     <value>N°</value>
   </data>
@@ -145,6 +148,21 @@
   <data name="contextMenuStrip_RemoveImage.Size" type="System.Drawing.Size, System.Drawing">
     <value>242, 48</value>
   </data>
+  <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
+    <value>Nr.</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
+    <value>Nome del file</value>
+  </data>
+  <data name="dataGridViewImageColumn1.HeaderText" xml:space="preserve">
+    <value>Immagine</value>
+  </data>
+  <data name="dataGridViewImageColumn2.HeaderText" xml:space="preserve">
+    <value>Immagine</value>
+  </data>
+  <data name="button_Add_Anim_Images.Text" xml:space="preserve">
+    <value>Aggiungi immagine di animazione</value>
+  </data>
   <data name="button_Add_Images.Text" xml:space="preserve">
     <value>Aggiungi immagini</value>
   </data>
@@ -168,6 +186,24 @@
   </data>
   <data name="comboBox_AddSystem.Items3" xml:space="preserve">
     <value>Shortcuts</value>
+  </data>
+  <data name="comboBox_AddSystem.Items4" xml:space="preserve">
+    <value>Animazione</value>
+  </data>
+  <data name="comboBox_AddSystem.Items5" xml:space="preserve">
+    <value>Elemento Modificabile</value>
+  </data>
+  <data name="comboBox_AddSystem.Items6" xml:space="preserve">
+    <value>Avviso Bluetooh</value>
+  </data>
+  <data name="comboBox_AddSystem.Items7" xml:space="preserve">
+    <value>Avvisi Periodici</value>
+  </data>
+  <data name="comboBox_AddSystem.Items8" xml:space="preserve">
+    <value>Immagine</value>
+  </data>
+  <data name="comboBox_AddSystem.Items9" xml:space="preserve">
+    <value>Immagine in alto</value>
   </data>
   <data name="comboBox_AddAir.Items" xml:space="preserve">
     <value>Ambiente</value>
@@ -244,6 +280,12 @@
   <data name="comboBox_AddTime.Items2" xml:space="preserve">
     <value>Orologio digitale</value>
   </data>
+  <data name="comboBox_AddTime.Items3" xml:space="preserve">
+    <value>Puntatore Modificabile</value>
+  </data>
+  <data name="comboBox_AddTime.Items4" xml:space="preserve">
+    <value>Ora analogica (Pro)</value>
+  </data>
   <data name="groupBox_AddElemets.Text" xml:space="preserve">
     <value>Aggiungi elementi alla watch face</value>
   </data>
@@ -319,6 +361,9 @@
   <data name="tabPage_Edit.Text" xml:space="preserve">
     <value>Modifica</value>
   </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>*** Per i modelli della serie GTS, a causa delle diverse proporzioni e del diverso arrotondamento degli angoli, il ridimensionamento completo non è possibile, parte dell'immagine sottostante e agli angoli potrebbe essere tagliata.</value>
+  </data>
   <data name="label_ConvertingHelp03.Size" type="System.Drawing.Size, System.Drawing">
     <value>238, 13</value>
   </data>
@@ -346,20 +391,14 @@
   <data name="button_Converting.Text" xml:space="preserve">
     <value>Convertire</value>
   </data>
-  <data name="radioButton_ConvertingOutput_Custom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 17</value>
-  </data>
-  <data name="radioButton_ConvertingOutput_Custom.Text" xml:space="preserve">
-    <value>Dimensione personalizzata</value>
+  <data name="comboBox_ConvertingOutput_Model.Items" xml:space="preserve">
+    <value>Formato personalizzato</value>
   </data>
   <data name="groupBox10.Text" xml:space="preserve">
     <value>Modello di destinazione</value>
   </data>
-  <data name="radioButton_ConvertingInput_Custom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>150, 17</value>
-  </data>
-  <data name="radioButton_ConvertingInput_Custom.Text" xml:space="preserve">
-    <value>Dimensione personalizzata</value>
+  <data name="comboBox_ConvertingInput_Model.Items" xml:space="preserve">
+    <value>Formato personalizzato</value>
   </data>
   <data name="groupBox9.Text" xml:space="preserve">
     <value>Modello originale</value>
@@ -463,6 +502,9 @@
   <data name="groupBox7.Text" xml:space="preserve">
     <value>Azione dopo la compattazione della watch face</value>
   </data>
+  <data name="button_PreviewStates_PathGet.Text" xml:space="preserve">
+    <value>Sfogliare</value>
+  </data>
   <data name="radioButton_Settings_Open_Download_Your_File.Size" type="System.Drawing.Size, System.Drawing">
     <value>192, 17</value>
   </data>
@@ -532,8 +574,19 @@
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Azione se il nome della watch face scompattata è già esistente</value>
   </data>
+  <data name="label483.Size" type="System.Drawing.Size, System.Drawing">
+    <value>253, 39</value>
+  </data>
+  <data name="label483.Text" xml:space="preserve">
+    <value>Velocità di animazione dell'anteprima dell'animazione
+(alta velocità - animazione più fluida,
+più carico di sistema)</value>
+  </data>
   <data name="tabPage_Settings.Text" xml:space="preserve">
     <value>Impostazioni</value>
+  </data>
+  <data name="tabPage_Tips.Text" xml:space="preserve">
+    <value>Consigli per l'uso</value>
   </data>
   <data name="label415.Size" type="System.Drawing.Size, System.Drawing">
     <value>125, 13</value>
@@ -552,6 +605,11 @@
   </data>
   <data name="label413.Text" xml:space="preserve">
     <value>Utilità per convertire le immagini dai quadranti orologio al normale formato PNG:</value>
+  </data>
+  <data name="label_donate.Text" xml:space="preserve">
+    <value>
+Dona all'autore
+PayPal: sashacx75@gmail.com</value>
   </data>
   <data name="label409.Text" xml:space="preserve">
     <value>Questo programma è un editor per le watch faces per GTR 3, GTS 3. Poiché le watch faces sono programmi quasi a tutti gli effetti, è impossibile implementare tutte le funzionalità disponibili in questo editor. L'editor dovrebbe riconoscere la maggior parte delle watch faces create al suo interno o su dev.huami.com. Ma non è in grado di riconoscere i quadranti dall'app Zepp.</value>
@@ -620,8 +678,8 @@
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACm
-        DQAAAk1TRnQBSQFMAgEBBgEAAfwBLQEAAS4BEAEAARABAAT/AQkBEAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
+        DQAAAk1TRnQBSQFMAgEBBgEAAQwBLgEMAS4BEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -679,7 +737,7 @@
         AX4B4QEPAQ0BhgGAAQEBPgF+AfABDwEGAcICAAI+AfgBHwFDAWABAAEgAT8BPgH4AT8BYQGwAQABQAE/
         AR4B4AEnATAB2AEAAYABPAEeAeEBAwFYAWwBAQEAATwBHgHhAQcBbAE2AQEBAAE/Af4B4QEfATYBGgEB
         AwAB8AEfAQsBDAQAAfgBPwFNAYYBgAEBAgAB/AE/AQIBwgGAAQEBBAEAAf4BHwFDAWABwAEDAYQBAAH+
-        AZ8CAAHwAQ8B9wHnAf4BHxYACw==
+        AZ8CAAHwAQ8B9wHnAf4BHws=
 </value>
   </data>
   <data name="button_pack_zip.Text" xml:space="preserve">
@@ -687,6 +745,12 @@
   </data>
   <data name="button_unpack_zip.Text" xml:space="preserve">
     <value>Scompatta la watch face</value>
+  </data>
+  <data name="label_watch_model.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 13</value>
+  </data>
+  <data name="label_watch_model.Text" xml:space="preserve">
+    <value>Modello del Watch</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1938,61 +2002,5 @@
         AAAAAAAAAAAAAO+BPCbvgT1I74I+SO+BPSYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8PwAA4AcAAMAD
         AACAAQAAgAEAAIABAAAAAAAAAAAAAAAAAAAAAAAAgAEAAIABAACAAQAAwAMAAOAHAAD8PwAA
 </value>
-  </data>
-  <data name="button_Add_Anim_Images.Text" xml:space="preserve">
-    <value>Aggiungi immagine di animazione</value>
-  </data>
-  <data name="button_PreviewStates_PathGet.Text" xml:space="preserve">
-    <value>Sfogliare</value>
-  </data>
-  <data name="button_SaveAs.Text" xml:space="preserve">
-    <value>Salva il Progetto come..</value>
-  </data>
-  <data name="comboBox_AddSystem.Items4" xml:space="preserve">
-    <value>Animazione</value>
-  </data>
-  <data name="comboBox_AddSystem.Items5" xml:space="preserve">
-    <value>Elemento Modificabile</value>
-  </data>
-  <data name="comboBox_AddSystem.Items6" xml:space="preserve">
-    <value>Avviso Bluetooh</value>
-  </data>
-  <data name="comboBox_AddSystem.Items7" xml:space="preserve">
-    <value>Avvisi Periodici</value>
-  </data>
-  <data name="comboBox_AddTime.Items3" xml:space="preserve">
-    <value>Puntatore Modificabile</value>
-  </data>
-  <data name="comboBox_AddTime.Items4" xml:space="preserve">
-    <value>Ora analogica (Pro)</value>
-  </data>
-  <data name="comboBox_ConvertingInput_Model.Items" xml:space="preserve">
-    <value>Formato personalizzato</value>
-  </data>
-  <data name="comboBox_ConvertingOutput_Model.Items" xml:space="preserve">
-    <value>Formato personalizzato</value>
-  </data>
-  <data name="dataGridViewImageColumn1.HeaderText" xml:space="preserve">
-    <value>Immagine</value>
-  </data>
-  <data name="dataGridViewImageColumn2.HeaderText" xml:space="preserve">
-    <value>Immagine</value>
-  </data>
-  <data name="dataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
-    <value>Nome del file</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>*** Per i modelli della serie GTS, a causa delle diverse proporzioni e del diverso arrotondamento degli angoli, il ridimensionamento completo non è possibile, parte dell'immagine sottostante e agli angoli potrebbe essere tagliata.</value>
-  </data>
-  <data name="label483.Text" xml:space="preserve">
-    <value>Velocità di animazione dell'anteprima dell'animazione
-(alta velocità - animazione più fluida,
-più carico di sistema)</value>
-  </data>
-  <data name="label_watch_model.Text" xml:space="preserve">
-    <value>Modello del Watch</value>
-  </data>
-  <data name="tabPage_Tips.Text" xml:space="preserve">
-    <value>Consigli per l'uso</value>
   </data>
 </root>

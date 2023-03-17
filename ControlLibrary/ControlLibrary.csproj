@@ -900,7 +900,19 @@
     <EmbeddedResource Include="Elements\UCtrl_Humidity_Elm.zh.resx">
       <DependentUpon>UCtrl_Humidity_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Image_Elm.cs.resx">
+      <DependentUpon>UCtrl_Image_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Image_Elm.de.resx">
+      <DependentUpon>UCtrl_Image_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Image_Elm.en.resx">
+      <DependentUpon>UCtrl_Image_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Image_Elm.es.resx">
+      <DependentUpon>UCtrl_Image_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Image_Elm.it.resx">
       <DependentUpon>UCtrl_Image_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Image_Elm.uk.resx">
@@ -1138,7 +1150,19 @@
     <EmbeddedResource Include="Elements\UCtrl_Sunrise_Elm.zh.resx">
       <DependentUpon>UCtrl_Sunrise_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_TopImage_Elm.cs.resx">
+      <DependentUpon>UCtrl_TopImage_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_TopImage_Elm.de.resx">
+      <DependentUpon>UCtrl_TopImage_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_TopImage_Elm.en.resx">
+      <DependentUpon>UCtrl_TopImage_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_TopImage_Elm.es.resx">
+      <DependentUpon>UCtrl_TopImage_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_TopImage_Elm.it.resx">
       <DependentUpon>UCtrl_TopImage_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_TopImage_Elm.resx">

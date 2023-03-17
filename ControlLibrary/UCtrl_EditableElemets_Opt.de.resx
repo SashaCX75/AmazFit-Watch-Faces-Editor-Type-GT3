@@ -543,4 +543,10 @@
         QzsKo8r55YdW91fxFUYnjE4YnTA6YfSJdgPSvLhM8DVkIAAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="button_Direction.Text" xml:space="preserve">
+    <value>Windrichtung</value>
+  </data>
+  <data name="checkBox_display_first.Text" xml:space="preserve">
+    <value>Unterhalb anderer Elemente anzeigen</value>
+  </data>
 </root>

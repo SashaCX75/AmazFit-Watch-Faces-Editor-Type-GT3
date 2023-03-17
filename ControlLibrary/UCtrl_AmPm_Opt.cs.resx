@@ -266,4 +266,10 @@
   <data name="label2.Text" xml:space="preserve">
     <value>AM souřadnice</value>
   </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>AM</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>PM</value>
+  </data>
 </root>

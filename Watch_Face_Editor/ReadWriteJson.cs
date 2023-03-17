@@ -76,6 +76,208 @@ namespace Watch_Face_Editor
                         }
                     }
                 }
+
+                // редактируемые элементы перед остальными элементами
+                if (Watch_Face.Editable_Elements != null && Watch_Face.Editable_Elements.display_first && Watch_Face.Editable_Elements.Watchface_edit_group != null &&
+                    Watch_Face.Editable_Elements.Watchface_edit_group.Count > 0 && Watch_Face.Editable_Elements.visible)
+                {
+
+                    for (int i = 1; i <= Watch_Face.Editable_Elements.Watchface_edit_group.Count; i++)
+                    {
+                        if (Watch_Face.Editable_Elements.Watchface_edit_group[i - 1].Elements != null &&
+                            Watch_Face.Editable_Elements.Watchface_edit_group[i - 1].Elements.Count > 0 &&
+                            Watch_Face.Editable_Elements.Watchface_edit_group[i - 1].optional_types_list != null &&
+                            Watch_Face.Editable_Elements.Watchface_edit_group[i - 1].optional_types_list.Count > 0)
+                        {
+                            string date = "";
+                            string week = "";
+                            string step = "";
+                            string battery = "";
+                            string calories = "";
+                            string heart = "";
+                            string pai = "";
+                            string distance = "";
+                            string stand = "";
+                            string stress = "";
+                            string fat_burning = "";
+                            string spo2 = "";
+
+                            string weather = "";
+                            string uv_index = "";
+                            string humidity = "";
+                            string altimeter = "";
+                            string sunrise = "";
+                            string wind = "";
+                            string moon = "";
+
+                            foreach (Object element in Watch_Face.Editable_Elements.Watchface_edit_group[i - 1].Elements)
+                            {
+                                string outVariables = "";
+                                string outItems = "";
+                                string outMainItems = "";
+                                string out_resume_function = "";
+                                string out_resume_call = "";
+                                string out_pause_call = "";
+                                string optionNameStart = "editableZone_" + i.ToString() + "_";
+                                string show_level = "ONLY_NORMAL";
+                                if (Watch_Face.Editable_Elements.AOD_show) show_level = "ONLY_NORMAL | hmUI.show_level.ONLY_AOD";
+                                AddEditableElementToJS(element, show_level, optionNameStart, out outVariables, out outItems, out outMainItems,
+                                    out out_resume_function, items, scale_update_function, out out_resume_call, out out_pause_call);
+
+                                string type = element.GetType().Name;
+                                switch (type)
+                                {
+                                    case "ElementDateDay":
+                                        if (outItems.Length > 5) date += outItems;
+                                        break;
+
+                                    case "ElementDateMonth":
+                                        if (outItems.Length > 5) date += outItems;
+                                        break;
+
+                                    case "ElementDateYear":
+                                        if (outItems.Length > 5) date += outItems;
+                                        break;
+
+                                    case "ElementDateWeek":
+                                        if (outItems.Length > 5) week += outItems;
+                                        break;
+
+
+                                    case "ElementBattery":
+                                        if (outItems.Length > 5) battery += outItems;
+                                        break;
+
+                                    case "ElementSteps":
+                                        if (outItems.Length > 5) step += outItems;
+                                        break;
+                                    case "ElementCalories":
+                                        if (outItems.Length > 5) calories += outItems;
+                                        break;
+                                    case "ElementHeart":
+                                        if (outItems.Length > 5) heart += outItems;
+                                        break;
+                                    case "ElementPAI":
+                                        if (outItems.Length > 5) pai += outItems;
+                                        break;
+                                    case "ElementDistance":
+                                        if (outItems.Length > 5) distance += outItems;
+                                        break;
+                                    case "ElementStand":
+                                        if (outItems.Length > 5) stand += outItems;
+                                        break;
+                                    case "ElementSpO2":
+                                        if (outItems.Length > 5) spo2 += outItems;
+                                        break;
+                                    case "ElementStress":
+                                        if (outItems.Length > 5) stress += outItems;
+                                        break;
+                                    case "ElementFatBurning":
+                                        if (outItems.Length > 5) fat_burning += outItems;
+                                        break;
+
+
+
+                                    case "ElementWeather":
+                                        if (outItems.Length > 5) weather += outItems;
+                                        break;
+                                    case "ElementUVIndex":
+                                        if (outItems.Length > 5) uv_index += outItems;
+                                        break;
+                                    case "ElementHumidity":
+                                        if (outItems.Length > 5) humidity += outItems;
+                                        break;
+                                    case "ElementAltimeter":
+                                        if (outItems.Length > 5) altimeter += outItems;
+                                        break;
+                                    case "ElementSunrise":
+                                        if (outItems.Length > 5) sunrise += outItems;
+                                        break;
+                                    case "ElementWind":
+                                        if (outItems.Length > 5) wind += outItems;
+                                        break;
+                                    case "ElementMoon":
+                                        if (outItems.Length > 5) moon += outItems;
+                                        break;
+                                }
+
+                                variables += outVariables;
+                                //items += outItems;
+                                items += outMainItems;
+                                scale_update_function += out_resume_function;
+                                resume_call += out_resume_call;
+                                pause_call += out_pause_call;
+                            }
+
+                            if (date.Length > 5) date = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.DATE:" + date + TabInString(8) + "break;" + Environment.NewLine;
+                            if (week.Length > 5) week = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.WEEK:" + week + TabInString(8) + "break;" + Environment.NewLine;
+                            if (battery.Length > 5) battery = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.BATTERY:" + battery + TabInString(8) + "break;" + Environment.NewLine;
+                            if (step.Length > 5) step = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.STEP:" + step + TabInString(8) + "break;" + Environment.NewLine;
+                            if (calories.Length > 5) calories = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.CAL:" + calories + TabInString(8) + "break;" + Environment.NewLine;
+                            if (heart.Length > 5) heart = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.HEART:" + heart + TabInString(8) + "break;" + Environment.NewLine;
+                            if (pai.Length > 5) pai = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.PAI:" + pai + TabInString(8) + "break;" + Environment.NewLine;
+                            //if (pai.Length > 5) pai = Environment.NewLine + TabInString(7) + "case 1300001:" + pai + TabInString(8) + "break;" + Environment.NewLine;
+                            if (distance.Length > 5) distance = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.DISTANCE:" + distance + TabInString(8) + "break;" + Environment.NewLine;
+                            if (stand.Length > 5) stand = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.STAND:" + stand + TabInString(8) + "break;" + Environment.NewLine;
+                            if (stress.Length > 5) stress = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.STRESS:" + stress + TabInString(8) + "break;" + Environment.NewLine;
+                            if (fat_burning.Length > 5) fat_burning = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.FAT_BURN:" + fat_burning + TabInString(8) + "break;" + Environment.NewLine;
+                            //if (fat_burning.Length > 5) fat_burning = Environment.NewLine + TabInString(7) + "case 1300002:" + fat_burning + TabInString(8) + "break;" + Environment.NewLine;
+                            if (spo2.Length > 5) spo2 = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.SPO2:" + spo2 + TabInString(8) + "break;" + Environment.NewLine;
+
+                            if (weather.Length > 5) weather = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.WEATHER:" + weather + TabInString(8) + "break;" + Environment.NewLine;
+                            //if (weather.Length > 5) weather = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.TEMPERATURE:" + weather + TabInString(8) + "break;" + Environment.NewLine;
+                            if (uv_index.Length > 5) uv_index = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.UVI:" + uv_index + TabInString(8) + "break;" + Environment.NewLine;
+                            if (humidity.Length > 5) humidity = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.HUMIDITY:" + humidity + TabInString(8) + "break;" + Environment.NewLine;
+                            if (altimeter.Length > 5) altimeter = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.ALTIMETER:" + altimeter + TabInString(8) + "break;" + Environment.NewLine;
+                            if (sunrise.Length > 5) sunrise = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.SUN:" + sunrise + TabInString(8) + "break;" + Environment.NewLine;
+                            if (wind.Length > 5) wind = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.WIND:" + wind + TabInString(8) + "break;" + Environment.NewLine;
+                            if (moon.Length > 5) moon = Environment.NewLine + TabInString(7) + "case hmUI.edit_type.MOON:" + moon + TabInString(8) + "break;" + Environment.NewLine;
+
+                            string editablePointersOptions = Editable_Elements_Options(Watch_Face.Editable_Elements.Watchface_edit_group[i - 1], i);
+                            if (editablePointersOptions.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + "editGroup_" + i.ToString() + "  = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) + "editGroup_" + i.ToString() + " = hmUI.createWidget(hmUI.widget.WATCHFACE_EDIT_GROUP, {" +
+                                        editablePointersOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                                items += Environment.NewLine + TabInString(6) + "const editType_" + i.ToString() +
+                                    " = editGroup_" + i.ToString() + ".getProperty(hmUI.prop.CURRENT_TYPE);" + Environment.NewLine;
+
+                                string switchText = date + week + battery + step + calories + heart + pai + distance + stand + stress + fat_burning + spo2 +
+                                    weather + uv_index + humidity + altimeter + sunrise + wind + moon;
+
+                                if (switchText.Length > 5)
+                                {
+                                    items += Environment.NewLine + TabInString(6) + "switch (editType_" + i.ToString() + ") {";
+                                    items += switchText;
+                                    items += TabInString(6) + "}; // end switch" + Environment.NewLine;
+                                }
+                            }
+                        }
+                    }
+
+                    if (Watch_Face.Editable_Elements.mask != null && Watch_Face.Editable_Elements.mask.Length > 0)
+                    {
+                        string maskOptions = MASK_Options(Watch_Face.Editable_Elements.mask);
+                        if (maskOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + "mask = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) + "mask = hmUI.createWidget(hmUI.widget.WATCHFACE_EDIT_MASK, {" +
+                                    maskOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+                    }
+                    if (Watch_Face.Editable_Elements.fg_mask != null && Watch_Face.Editable_Elements.fg_mask.Length > 0)
+                    {
+                        string maskOptions = MASK_Options(Watch_Face.Editable_Elements.fg_mask);
+                        if (maskOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + "fg_mask = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) + "fg_mask = hmUI.createWidget(hmUI.widget.WATCHFACE_EDIT_FG_MASK, {" +
+                                    maskOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+                    }
+                }
+
                 if (Watch_Face.ScreenNormal.Elements != null && Watch_Face.ScreenNormal.Elements.Count > 0)
                 {
                     foreach(Object element in Watch_Face.ScreenNormal.Elements)
@@ -145,8 +347,8 @@ namespace Watch_Face_Editor
                 }
             }
 
-            // редактируемые элементы
-            if (Watch_Face.Editable_Elements != null && Watch_Face.Editable_Elements.Watchface_edit_group != null &&
+            // редактируемые элементы в конце
+            if (Watch_Face.Editable_Elements != null && !Watch_Face.Editable_Elements.display_first && Watch_Face.Editable_Elements.Watchface_edit_group != null &&
                 Watch_Face.Editable_Elements.Watchface_edit_group.Count > 0 && Watch_Face.Editable_Elements.visible)
             {
 
@@ -5802,9 +6004,9 @@ namespace Watch_Face_Editor
                                         items += Environment.NewLine + TabInString(7) + optionNameStart + "rotate_animation_img_" +
                                             indexStr + ".setProperty(hmUI.prop.ANIM, " + optionNameStart +
                                             "rotate_animation_param_" + indexStr + "_mirror);";
-                                        items += TabInString(7) + optionNameStart + "rotate_animation_lastTime_" +
-                                            indexStr + " = now.utc;" + Environment.NewLine;
-                                        items += TabInString(6) + "};" + Environment.NewLine;
+                                        items += Environment.NewLine + TabInString(7) + optionNameStart + "rotate_animation_lastTime_" +
+                                            indexStr + " = now.utc;";
+                                        items += Environment.NewLine + TabInString(6) + "};" + Environment.NewLine;
                                     }
 
                                     // функция вызова повтора анимации
@@ -8789,6 +8991,8 @@ namespace Watch_Face_Editor
                 #region ElementWind
                 case "ElementWind":
                     ElementWind Wind = (ElementWind)element;
+                    int directionPosition = 99;
+                    string directionOptions = "";
 
                     if (!Wind.visible) return;
                     if (Wind.Images != null && Wind.Images.visible)
@@ -8817,12 +9021,18 @@ namespace Watch_Face_Editor
                         hmUI_widget_IMG_POINTER img_pointer = Wind.Pointer;
                         pointerOptions = IMG_POINTER_Options(img_pointer, "WIND", show_level, 2);
                     }
+                    if (Wind.Direction != null && Wind.Direction.visible)
+                    {
+                        directionPosition = Wind.Images.position;
+                        hmUI_widget_IMG_LEVEL img_images = Wind.Direction;
+                        directionOptions = IMG_IMAGES_Options(img_images, "WIND_DIRECTION", show_level, 2);
+                    }
 
                     if (Wind.Icon != null && Wind.Icon.visible)
                     {
                         iconPosition = Wind.Icon.position;
                         hmUI_widget_IMG img_icon = Wind.Icon;
-                        iconOptions = IMG_Options(img_icon, show_level);
+                        iconOptions = IMG_Options(img_icon, show_level, 2);
                     }
 
                     for (int index = 1; index <= 15; index++)
@@ -8865,6 +9075,15 @@ namespace Watch_Face_Editor
                                 "hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
                                     pointerOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
+
+                        // Wind direction
+                        if (index == directionPosition && directionOptions.Length > 5)
+                        {
+                            items += Environment.NewLine + TabInString(8) +
+                                "hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
+                                    directionOptions + TabInString(8) + "});" + Environment.NewLine;
+                        }
+
 
                         // Icon
                         if (index == iconPosition && iconOptions.Length > 5)
@@ -10485,7 +10704,8 @@ namespace Watch_Face_Editor
 
         private string Motion_Animation_Options(Motion_Animation anim,bool x_anim,bool mirror)
         {
-            if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4") return Motion_Animation_Options_2(anim, x_anim, mirror);
+            if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2") 
+                return Motion_Animation_Options_2(anim, x_anim, mirror);
             string options = Environment.NewLine;
             if (anim == null) return options;
             if (!anim.visible) return options;
@@ -10630,7 +10850,8 @@ namespace Watch_Face_Editor
 
         private string Rotate_Animation_Options(Rotate_Animation anim, bool mirror)
         {
-            if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4") return Rotate_Animation_Options_2(anim, mirror);
+            if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2") 
+                return Rotate_Animation_Options_2(anim, mirror);
             string options = Environment.NewLine;
             if (anim == null) return options;
             if (!anim.visible) return options;
@@ -11908,6 +12129,7 @@ namespace Watch_Face_Editor
                                         if (wind.Segments != null) offset++;
                                         if (wind.Number != null) offset++;
                                         if (wind.Pointer != null) offset++;
+                                        if (wind.Direction != null) offset++;
 
                                         wind.Icon = new hmUI_widget_IMG();
                                         wind.Icon.src = img.src;
@@ -13495,6 +13717,7 @@ namespace Watch_Face_Editor
                                 if (wind.Segments != null) offset++;
                                 if (wind.Number != null) offset++;
                                 if (wind.Pointer != null) offset++;
+                                if (wind.Direction != null) offset++;
 
                                 wind.Icon = new hmUI_widget_IMG();
                                 wind.Icon.src = img.src;
@@ -14226,6 +14449,7 @@ namespace Watch_Face_Editor
                                 if (wind.Segments != null) offset++;
                                 if (wind.Number != null) offset++;
                                 if (wind.Pointer != null) offset++;
+                                if (wind.Direction != null) offset++;
                                 if (wind.Icon != null) offset++;
 
                                 wind.Images = new hmUI_widget_IMG_LEVEL();
@@ -14235,6 +14459,34 @@ namespace Watch_Face_Editor
                                 wind.Images.Y = imgLevel.Y;
                                 wind.Images.visible = true;
                                 wind.Images.position = offset;
+                            }
+                        }
+
+                        if (imgLevel.type == "WIND_DIRECTION")
+                        {
+                            ElementWind wind = (ElementWind)elementsList.Find(e => e.GetType().Name == "ElementWind");
+                            if (wind == null)
+                            {
+                                elementsList.Add(new ElementWind());
+                                wind = (ElementWind)elementsList.Find(e => e.GetType().Name == "ElementWind");
+                            }
+                            if (wind != null)
+                            {
+                                int offset = 1;
+                                if (wind.Images != null) offset++;
+                                if (wind.Segments != null) offset++;
+                                if (wind.Number != null) offset++;
+                                if (wind.Pointer != null) offset++;
+                                //if (wind.Direction != null) offset++;
+                                if (wind.Icon != null) offset++;
+
+                                wind.Direction = new hmUI_widget_IMG_LEVEL();
+                                wind.Direction.img_First = imgLevel.img_First;
+                                wind.Direction.image_length = imgLevel.image_length;
+                                wind.Direction.X = imgLevel.X;
+                                wind.Direction.Y = imgLevel.Y;
+                                wind.Direction.visible = true;
+                                wind.Direction.position = offset;
                             }
                         }
 
@@ -14645,6 +14897,7 @@ namespace Watch_Face_Editor
                                 //if (wind.Segments != null) offset++;
                                 if (wind.Number != null) offset++;
                                 if (wind.Pointer != null) offset++;
+                                if (wind.Direction != null) offset++;
                                 if (wind.Icon != null) offset++;
 
                                 wind.Segments = new hmUI_widget_IMG_PROGRESS();
@@ -15599,6 +15852,7 @@ namespace Watch_Face_Editor
                                 if (wind.Segments != null) offset++;
                                 //if (wind.Number != null) offset++;
                                 if (wind.Pointer != null) offset++;
+                                if (wind.Direction != null) offset++;
                                 if (wind.Icon != null) offset++;
 
                                 wind.Number = new hmUI_widget_IMG_NUMBER();
@@ -16133,6 +16387,7 @@ namespace Watch_Face_Editor
                                 if (wind.Segments != null) offset++;
                                 if (wind.Number != null) offset++;
                                 //if (wind.Pointer != null) offset++;
+                                if (wind.Direction != null) offset++;
                                 if (wind.Icon != null) offset++;
 
                                 wind.Pointer = new hmUI_widget_IMG_POINTER();

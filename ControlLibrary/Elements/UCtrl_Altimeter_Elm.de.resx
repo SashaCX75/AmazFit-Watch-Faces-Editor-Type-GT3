@@ -155,16 +155,10 @@
   <data name="button_Icon.Text" xml:space="preserve">
     <value>Symbol</value>
   </data>
-  <data name="button_Images.Text" xml:space="preserve">
-    <value>Bilder</value>
-  </data>
   <data name="button_Number.Text" xml:space="preserve">
     <value>Numerische Werte</value>
   </data>
   <data name="button_Pointer.Text" xml:space="preserve">
     <value>Zeiger</value>
-  </data>
-  <data name="button_Segments.Text" xml:space="preserve">
-    <value>Eigenständige Bilder</value>
   </data>
 </root>

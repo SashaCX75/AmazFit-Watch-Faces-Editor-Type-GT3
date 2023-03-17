@@ -117,6 +117,33 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Напрямок вітру</value>
+  </data>
+  <data name="comboBox_WindDirection.Items" xml:space="preserve">
+    <value>N - північ</value>
+  </data>
+  <data name="comboBox_WindDirection.Items1" xml:space="preserve">
+    <value>NE - північний схід</value>
+  </data>
+  <data name="comboBox_WindDirection.Items2" xml:space="preserve">
+    <value>E - схід</value>
+  </data>
+  <data name="comboBox_WindDirection.Items3" xml:space="preserve">
+    <value>SE - південний схід</value>
+  </data>
+  <data name="comboBox_WindDirection.Items4" xml:space="preserve">
+    <value>S - південь</value>
+  </data>
+  <data name="comboBox_WindDirection.Items5" xml:space="preserve">
+    <value>SW - південний захід</value>
+  </data>
+  <data name="comboBox_WindDirection.Items6" xml:space="preserve">
+    <value>W - захід</value>
+  </data>
+  <data name="comboBox_WindDirection.Items7" xml:space="preserve">
+    <value>NW - північний захід</value>
+  </data>
   <data name="label22.Text" xml:space="preserve">
     <value>Максимальна температура</value>
   </data>
@@ -282,23 +309,5 @@
   </data>
   <data name="button_Set.Text" xml:space="preserve">
     <value>Набір параметрів</value>
-  </data>
-  <data name="checkBox_Alarm_Set.Text" xml:space="preserve">
-    <value>Будильник</value>
-  </data>
-  <data name="comboBox_WeatherSet_Icon.Items13" xml:space="preserve">
-    <value>Туман</value>
-  </data>
-  <data name="groupBox_Air.Text" xml:space="preserve">
-    <value>Атмосфера</value>
-  </data>
-  <data name="label01.Text" xml:space="preserve">
-    <value>Дата</value>
-  </data>
-  <data name="label03.Text" xml:space="preserve">
-    <value>Батарея</value>
-  </data>
-  <data name="label05.Text" xml:space="preserve">
-    <value>Пульс</value>
   </data>
 </root>

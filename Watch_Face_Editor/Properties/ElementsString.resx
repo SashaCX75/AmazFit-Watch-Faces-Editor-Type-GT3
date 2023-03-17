@@ -176,8 +176,9 @@ watch</comment>
 watch</comment>
   </data>
   <data name="TypeNameFatBurning" xml:space="preserve">
-    <value>Fat burning</value>
-    <comment>Do not translate</comment>
+    <value>Звук сжигания жира</value>
+    <comment>Check the translation on the 
+watch</comment>
   </data>
   <data name="TypeNameHeart" xml:space="preserve">
     <value>Сердцебиение</value>

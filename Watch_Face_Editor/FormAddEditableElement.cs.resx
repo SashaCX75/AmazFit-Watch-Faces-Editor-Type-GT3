@@ -269,7 +269,7 @@
     <value>60, 17</value>
   </data>
   <data name="radioButton_battery.Text" xml:space="preserve">
-    <value>Nabíjet</value>
+    <value>Baterie</value>
   </data>
   <data name="groupBox_system.Text" xml:space="preserve">
     <value>Systém</value>

@@ -120,11 +120,68 @@
   <data name="ElementExists" xml:space="preserve">
     <value>Tento prvek již existuje.</value>
   </data>
+  <data name="TypeAltimeter" xml:space="preserve">
+    <value>Barometr</value>
+  </data>
+  <data name="TypeBattery" xml:space="preserve">
+    <value>Baterie</value>
+  </data>
+  <data name="TypeCalories" xml:space="preserve">
+    <value>Kalorie</value>
+  </data>
+  <data name="TypeDay" xml:space="preserve">
+    <value>Den</value>
+  </data>
+  <data name="TypeDistance" xml:space="preserve">
+    <value>Vzdálenost</value>
+  </data>
+  <data name="TypeFatBurning" xml:space="preserve">
+    <value>Spalování tuků</value>
+  </data>
   <data name="TypeHeart" xml:space="preserve">
     <value>Puls</value>
   </data>
+  <data name="TypeHumidity" xml:space="preserve">
+    <value>Vlhkost vzduchu</value>
+  </data>
+  <data name="TypeMonth" xml:space="preserve">
+    <value>Měsíc</value>
+  </data>
+  <data name="TypeMoon" xml:space="preserve">
+    <value>Měsíční fáze</value>
+  </data>
+  <data name="TypeNameAltimeter" xml:space="preserve">
+    <value>Tlak vzduchu</value>
+  </data>
+  <data name="TypeNameBattery" xml:space="preserve">
+    <value>Baterie</value>
+  </data>
+  <data name="TypeNameCalories" xml:space="preserve">
+    <value>Kalorie</value>
+  </data>
+  <data name="TypeNameDate" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="TypeNameDistance" xml:space="preserve">
+    <value>Vzdálenost</value>
+  </data>
+  <data name="TypeNameFatBurning" xml:space="preserve">
+    <value>Spálený tuk</value>
+  </data>
+  <data name="TypeNameHeart" xml:space="preserve">
+    <value>Srdeční tep</value>
+  </data>
+  <data name="TypeNameHumidity" xml:space="preserve">
+    <value>Vlhkost vzduchu</value>
+  </data>
+  <data name="TypeNameMoon" xml:space="preserve">
+    <value>Měsíční fáze</value>
+  </data>
   <data name="TypeNamePAI" xml:space="preserve">
     <value>Celková PAI</value>
+  </data>
+  <data name="TypeNameSpO2" xml:space="preserve">
+    <value>Kyslíku v krvi</value>
   </data>
   <data name="TypeNameStand" xml:space="preserve">
     <value>stojím</value>
@@ -147,11 +204,17 @@
   <data name="TypeNameWeather" xml:space="preserve">
     <value>Počasí</value>
   </data>
+  <data name="TypeNameWeek" xml:space="preserve">
+    <value>Den v týdnu</value>
+  </data>
   <data name="TypeNameWind" xml:space="preserve">
     <value>Síla větru</value>
   </data>
   <data name="TypePAI" xml:space="preserve">
     <value>PAI</value>
+  </data>
+  <data name="TypeSpO2" xml:space="preserve">
+    <value>Kyslíku v krvi</value>
   </data>
   <data name="TypeStand" xml:space="preserve">
     <value>Zahřát</value>
@@ -170,6 +233,9 @@
   </data>
   <data name="TypeWeather" xml:space="preserve">
     <value>Počasí</value>
+  </data>
+  <data name="TypeWeek" xml:space="preserve">
+    <value>Den v týdnu</value>
   </data>
   <data name="TypeWind" xml:space="preserve">
     <value>Síla větru</value>

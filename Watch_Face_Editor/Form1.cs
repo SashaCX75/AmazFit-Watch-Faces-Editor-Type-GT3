@@ -869,6 +869,8 @@ namespace Watch_Face_Editor
             Air.TryGetValue("Humidity", out Humidity);
             int WindForce;
             Air.TryGetValue("WindForce", out WindForce);
+            int WindDirection;
+            Air.TryGetValue("WindDirection", out WindDirection);
             int Altitude;
             Air.TryGetValue("Altitude", out Altitude);
             int AirPressure;
@@ -927,6 +929,7 @@ namespace Watch_Face_Editor
             WatchFacePreviewSet.Weather.AirQuality = AirQuality;
             WatchFacePreviewSet.Weather.Humidity = Humidity;
             WatchFacePreviewSet.Weather.WindForce = WindForce;
+            WatchFacePreviewSet.Weather.WindDirection = WindDirection;
             WatchFacePreviewSet.Weather.Altitude = Altitude;
             WatchFacePreviewSet.Weather.AirPressure = AirPressure;
             WatchFacePreviewSet.SetNumber = userControl_Set.SetNumber;
@@ -5160,7 +5163,7 @@ namespace Watch_Face_Editor
                             {
                                 uCtrl_Animation_Elm.checkBox_FrameAnimation.Checked = Animation.Frame_Animation_List.visible;
                                 elementOptions.Add(Animation.Frame_Animation_List.position, "FrameAnimation");
-                                if (ProgramSettings.Watch_Model == "T-Rex 2" /*ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4"*/)
+                                /*if (ProgramSettings.Watch_Model == "T-Rex 2" *//*ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4"*//*)
                                 {
                                     uCtrl_Animation_Elm.MotionAnimation = false;
                                     uCtrl_Animation_Elm.RotateAnimation = false;
@@ -5169,7 +5172,7 @@ namespace Watch_Face_Editor
                                 {
                                     uCtrl_Animation_Elm.MotionAnimation = true;
                                     uCtrl_Animation_Elm.RotateAnimation = true;
-                                }
+                                }*/
                             }
 
                             if (Animation.Motion_Animation_List != null)
@@ -6958,6 +6961,7 @@ namespace Watch_Face_Editor
             int humidity = rnd.Next(30, 100);
             int UVindex = rnd.Next(0, 13);
             int windForce = rnd.Next(0, 13);
+            int windDirection = rnd.Next(0, 8);
 
             WatchFacePreviewSet.Date.Year = year;
             WatchFacePreviewSet.Date.Month = month;
@@ -6996,6 +7000,7 @@ namespace Watch_Face_Editor
             WatchFacePreviewSet.Weather.Humidity = humidity;
             WatchFacePreviewSet.Weather.UVindex = UVindex;
             WatchFacePreviewSet.Weather.WindForce = windForce;
+            WatchFacePreviewSet.Weather.WindDirection = windDirection;
             PreviewImage();
         }
 
@@ -7203,6 +7208,7 @@ namespace Watch_Face_Editor
                     Air.Add("AirQuality", ps.AirQuality);
                     Air.Add("Humidity", ps.Humidity);
                     Air.Add("WindForce", ps.WindForce);
+                    Air.Add("WindDirection", ps.WindDirection);
                     Air.Add("Altitude", ps.Altitude);
                     Air.Add("AirPressure", ps.AirPressure);
 
@@ -7427,6 +7433,7 @@ namespace Watch_Face_Editor
                     ps.AirQuality = Air["AirQuality"];
                     ps.Humidity = Air["Humidity"];
                     ps.WindForce = Air["WindForce"];
+                    ps.WindDirection = Air["WindDirection"];
                     ps.Altitude = Air["Altitude"];
                     ps.AirPressure = Air["AirPressure"];
 
@@ -8161,9 +8168,13 @@ namespace Watch_Face_Editor
             if (pos_destory > 0)
             {
                 //pos_destory = indexText.IndexOf("console.log('index page.js on destory invoke')");
-                pos_destory = indexText.IndexOf("n.log(\"index page.js on destroy invoke\")");
-                indexText = indexText.Insert(pos_destory, "heart_rate.removeEventListener(heart.event.CURRENT, hrCurrListener);"
-                    + Environment.NewLine + TabInString(8));
+                //pos_destory = indexText.IndexOf("n.log(\"index page.js on destroy invoke\")");
+                pos_destory = indexText.IndexOf("logger.log(\"index page.js on destroy invoke\")");
+                if (pos_destory > 0)
+                {
+                    indexText = indexText.Insert(pos_destory, "heart_rate.removeEventListener(heart.event.CURRENT, hrCurrListener);"
+                                + Environment.NewLine + TabInString(8)); 
+                }
             }
             indexText = indexText.Replace("\r", "");
 
@@ -8597,7 +8608,7 @@ namespace Watch_Face_Editor
                 progressBar1.Maximum = allFiles.Count;
                 int progress = 0;
                 bool fix_color = true;
-                if (comboBox_watch_model.Text == "Amazfit Band 7" && comboBox_watch_model.Text == "GTS 4 mini") fix_color = false;
+                if (comboBox_watch_model.Text == "Amazfit Band 7" || comboBox_watch_model.Text == "GTS 4 mini") fix_color = false;
                 foreach (string fileNames in allFiles)
                 {
                     //Console.WriteLine(fileNames);
@@ -11600,7 +11611,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Wind_Elm.checkBox_Direction.Checked)
                         {
                             img_level = wind.Direction;
-                            Read_ImgLevel_Options(img_level, 9, false);
+                            Read_ImgLevel_Options(img_level, 8, false);
                             ShowElemenrOptions("Images");
                         }
                         else HideAllElemenrOptions();
@@ -15922,6 +15933,60 @@ namespace Watch_Face_Editor
             Logger.WriteLine("* SaveGIF (end)");
         }
 
+        private void button_SavePNG_shortcut_Click(object sender, EventArgs e)
+        {
+            Logger.WriteLine("* SavePNG_shortcut");
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.InitialDirectory = FullFileDir;
+            saveFileDialog.Filter = Properties.FormStrings.FilterPng;
+            saveFileDialog.FileName = "Preview.png";
+            //openFileDialog.Filter = "PNG Files: (*.png)|*.png";
+            saveFileDialog.RestoreDirectory = true;
+            saveFileDialog.Title = Properties.FormStrings.Dialog_Title_SavePNG;
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
+                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
+                switch (ProgramSettings.Watch_Model)
+                {
+                    case "GTR 3 Pro":
+                        bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
+                        break;
+                    case "GTS 3":
+                    case "GTS 4":
+                        bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
+                        break;
+                    case "GTR 4":
+                        bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_4.png");
+                        break;
+                    case "Amazfit Band 7":
+                        bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_band_7.png");
+                        break;
+                    case "GTS 4 mini":
+                        bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
+                        break;
+                    case "Falcon":
+                        bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
+                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
+                        break;
+                }
+                Graphics gPanel = Graphics.FromImage(bitmap);
+                //int link = radioButton_ScreenNormal.Checked ? 0 : 1;
+                int link_AOD = 0;
+                Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true,
+                    false, false, false, link_AOD, true, -1, false, 0);
+                if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
+                else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
+                bitmap.Save(saveFileDialog.FileName, ImageFormat.Png);
+            }
+            Logger.WriteLine("* SavePNG_shortcut(end)");
+        }
+
         private void button_Reset_Click(object sender, EventArgs e)
         {
             if (File.Exists(Application.StartupPath + @"\Settings.json"))
@@ -16539,6 +16604,8 @@ namespace Watch_Face_Editor
             }
             Logger.WriteLine("* Project_SaveAs (end)");
         }
+
+        
     }
 }
 

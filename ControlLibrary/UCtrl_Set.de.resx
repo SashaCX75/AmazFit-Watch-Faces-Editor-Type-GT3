@@ -307,4 +307,31 @@
   <data name="button_Set.Text" xml:space="preserve">
     <value>Werte</value>
   </data>
+  <data name="comboBox_WindDirection.Items" xml:space="preserve">
+    <value>N - Norden</value>
+  </data>
+  <data name="comboBox_WindDirection.Items1" xml:space="preserve">
+    <value>NO - Nordosten</value>
+  </data>
+  <data name="comboBox_WindDirection.Items2" xml:space="preserve">
+    <value>O - Osten</value>
+  </data>
+  <data name="comboBox_WindDirection.Items3" xml:space="preserve">
+    <value>SO - Südosten</value>
+  </data>
+  <data name="comboBox_WindDirection.Items4" xml:space="preserve">
+    <value>S - Süden</value>
+  </data>
+  <data name="comboBox_WindDirection.Items5" xml:space="preserve">
+    <value>SW - Südwesten</value>
+  </data>
+  <data name="comboBox_WindDirection.Items6" xml:space="preserve">
+    <value>W - Westen</value>
+  </data>
+  <data name="comboBox_WindDirection.Items7" xml:space="preserve">
+    <value>NW - Nordwesten</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Windrichtung</value>
+  </data>
 </root>

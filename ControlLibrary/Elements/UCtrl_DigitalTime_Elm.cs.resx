@@ -129,4 +129,7 @@
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Digitální čas</value>
   </data>
+  <data name="button_AmPm.Text" xml:space="preserve">
+    <value>AM/PM</value>
+  </data>
 </root>

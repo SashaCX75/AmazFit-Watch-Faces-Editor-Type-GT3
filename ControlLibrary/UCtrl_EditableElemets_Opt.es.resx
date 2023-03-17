@@ -549,4 +549,10 @@
         QzsKo8r55YdW91fxFUYnjE4YnTA6YfSJdgPSvLhM8DVkIAAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="button_Direction.Text" xml:space="preserve">
+    <value>Dirección del viento</value>
+  </data>
+  <data name="checkBox_display_first.Text" xml:space="preserve">
+    <value>Mostrar debajo de otros elementos</value>
+  </data>
 </root>

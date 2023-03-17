@@ -165,6 +165,9 @@
   <data name="TypeNameDistance" xml:space="preserve">
     <value>Відстань</value>
   </data>
+  <data name="TypeNameFatBurning" xml:space="preserve">
+    <value>Спалюваня жиру</value>
+  </data>
   <data name="TypeNameHeart" xml:space="preserve">
     <value>Серцебиття</value>
   </data>

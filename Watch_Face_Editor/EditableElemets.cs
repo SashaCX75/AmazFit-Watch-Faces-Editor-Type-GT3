@@ -130,6 +130,7 @@ namespace Watch_Face_Editor
             editableElements.mask = uCtrl_EditableElements_Opt.GetMask();
             editableElements.fg_mask = uCtrl_EditableElements_Opt.GetFgMask();
 
+            editableElements.display_first = uCtrl_EditableElements_Opt.checkBox_display_first.Checked;
             editableElements.AOD_show = uCtrl_EditableElements_Opt.checkBox_showInAOD.Checked;
             editableElements.showEeditMode = uCtrl_EditableElements_Opt.checkBox_edit_mode.Checked;
 
@@ -915,6 +916,7 @@ namespace Watch_Face_Editor
                     //subElements.Add("Sity_name");
                     //subElements.Add("Circle_scale");
                     //subElements.Add("Linear_scale");
+                    subElements.Add("Wind_Direction");
                     subElements.Add("Icon");
 
                     ElementWind wind = (ElementWind)element;
@@ -922,6 +924,7 @@ namespace Watch_Face_Editor
                     if (wind.Segments != null) uCtrl_EditableElements_Opt.checkBox_Segments.Checked = wind.Segments.visible;
                     if (wind.Number != null) uCtrl_EditableElements_Opt.checkBox_Number.Checked = wind.Number.visible;
                     if (wind.Pointer != null) uCtrl_EditableElements_Opt.checkBox_Pointer.Checked = wind.Pointer.visible;
+                    if (wind.Direction != null) uCtrl_EditableElements_Opt.checkBox_Direction.Checked = wind.Direction.visible;
                     if (wind.Icon != null) uCtrl_EditableElements_Opt.checkBox_Icon.Checked = wind.Icon.visible;
                     break;
                 #endregion
@@ -2001,6 +2004,14 @@ namespace Watch_Face_Editor
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
+                        case "Wind_Direction":
+                            if (uCtrl_EditableElements_Opt.checkBox_Direction.Checked)
+                            {
+                                hmUI_widget_IMG_LEVEL img_level = wind.Direction;
+                                Read_ImgLevel_Options(img_level, 8, false);
+                                uCtrl_EditableElements_Opt.Collapse = true;
+                            }
+                            break;
                         case "Icon":
                             if (uCtrl_EditableElements_Opt.checkBox_Icon.Checked)
                             {
@@ -2800,12 +2811,14 @@ namespace Watch_Face_Editor
                     if (wind.Segments == null) wind.Segments = new hmUI_widget_IMG_PROGRESS();
                     if (wind.Number == null) wind.Number = new hmUI_widget_IMG_NUMBER();
                     if (wind.Pointer == null) wind.Pointer = new hmUI_widget_IMG_POINTER();
+                    if (wind.Direction == null) wind.Direction = new hmUI_widget_IMG_LEVEL();
                     if (wind.Icon == null) wind.Icon = new hmUI_widget_IMG();
 
                     if (elementOptions.ContainsKey("Images")) wind.Images.position = elementOptions["Images"];
                     if (elementOptions.ContainsKey("Segments")) wind.Segments.position = elementOptions["Segments"];
                     if (elementOptions.ContainsKey("Number")) wind.Number.position = elementOptions["Number"];
                     if (elementOptions.ContainsKey("Pointer")) wind.Pointer.position = elementOptions["Pointer"];
+                    if (elementOptions.ContainsKey("Wind_Direction")) wind.Direction.position = elementOptions["Wind_Direction"];
                     if (elementOptions.ContainsKey("Icon")) wind.Icon.position = elementOptions["Icon"];
 
                     switch (name)
@@ -2821,6 +2834,9 @@ namespace Watch_Face_Editor
                             break;
                         case "checkBox_Pointer":
                             wind.Pointer.visible = checkBox.Checked;
+                            break;
+                        case "checkBox_Direction":
+                            wind.Direction.visible = checkBox.Checked;
                             break;
                         case "checkBox_Icon":
                             wind.Icon.visible = checkBox.Checked;
@@ -3498,12 +3514,14 @@ namespace Watch_Face_Editor
                         if (wind.Segments == null) wind.Segments = new hmUI_widget_IMG_PROGRESS();
                         if (wind.Number == null) wind.Number = new hmUI_widget_IMG_NUMBER();
                         if (wind.Pointer == null) wind.Pointer = new hmUI_widget_IMG_POINTER();
+                        if (wind.Direction == null) wind.Direction = new hmUI_widget_IMG_LEVEL();
                         if (wind.Icon == null) wind.Icon = new hmUI_widget_IMG();
 
                         if (elementOptions.ContainsKey("Images")) wind.Images.position = elementOptions["Images"];
                         if (elementOptions.ContainsKey("Segments")) wind.Segments.position = elementOptions["Segments"];
                         if (elementOptions.ContainsKey("Number")) wind.Number.position = elementOptions["Number"];
                         if (elementOptions.ContainsKey("Pointer")) wind.Pointer.position = elementOptions["Pointer"];
+                        if (elementOptions.ContainsKey("Wind_Direction")) wind.Direction.position = elementOptions["Wind_Direction"];
                         if (elementOptions.ContainsKey("Icon")) wind.Icon.position = elementOptions["Icon"];
                     }
                     break;
@@ -3812,6 +3830,7 @@ namespace Watch_Face_Editor
                         if (Wind.Segments != null) elementOptions.Add(Wind.Segments.position, "Segments");
                         if (Wind.Number != null) elementOptions.Add(Wind.Number.position, "Number");
                         if (Wind.Pointer != null) elementOptions.Add(Wind.Pointer.position, "Pointer");
+                        if (Wind.Direction != null) elementOptions.Add(Wind.Direction.position, "Wind_Direction");
                         if (Wind.Icon != null) elementOptions.Add(Wind.Icon.position, "Icon");
                         break;
                     #endregion

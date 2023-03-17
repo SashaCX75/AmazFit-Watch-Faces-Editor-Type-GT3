@@ -175,6 +175,11 @@ watch</comment>
     <comment>Check the translation on the 
 watch</comment>
   </data>
+  <data name="TypeNameFatBurning" xml:space="preserve">
+    <value>Fat-burning</value>
+    <comment>Check the translation on the 
+watch</comment>
+  </data>
   <data name="TypeNameHeart" xml:space="preserve">
     <value>Heart Rate</value>
     <comment>Check the translation on the 

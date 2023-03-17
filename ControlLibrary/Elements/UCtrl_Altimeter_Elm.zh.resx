@@ -155,16 +155,10 @@
   <data name="button_Icon.Text" xml:space="preserve">
     <value>图标</value>
   </data>
-  <data name="button_Images.Text" xml:space="preserve">
-    <value>图像</value>
-  </data>
   <data name="button_Number.Text" xml:space="preserve">
     <value>数值</value>
   </data>
   <data name="button_Pointer.Text" xml:space="preserve">
     <value>指针</value>
-  </data>
-  <data name="button_Segments.Text" xml:space="preserve">
-    <value>独立图像</value>
   </data>
 </root>

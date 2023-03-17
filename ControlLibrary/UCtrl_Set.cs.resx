@@ -310,4 +310,31 @@
   <data name="button_Set.Text" xml:space="preserve">
     <value>Sada parametrů</value>
   </data>
+  <data name="comboBox_WindDirection.Items" xml:space="preserve">
+    <value>N - sever</value>
+  </data>
+  <data name="comboBox_WindDirection.Items1" xml:space="preserve">
+    <value>SV - severovýchod</value>
+  </data>
+  <data name="comboBox_WindDirection.Items2" xml:space="preserve">
+    <value>E - východ</value>
+  </data>
+  <data name="comboBox_WindDirection.Items3" xml:space="preserve">
+    <value>SE- jihovýchod</value>
+  </data>
+  <data name="comboBox_WindDirection.Items4" xml:space="preserve">
+    <value>S - jih</value>
+  </data>
+  <data name="comboBox_WindDirection.Items5" xml:space="preserve">
+    <value>SW - jihozápad</value>
+  </data>
+  <data name="comboBox_WindDirection.Items6" xml:space="preserve">
+    <value>W - západ</value>
+  </data>
+  <data name="comboBox_WindDirection.Items7" xml:space="preserve">
+    <value>SZ - severozápad</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Směr větru</value>
+  </data>
 </root>

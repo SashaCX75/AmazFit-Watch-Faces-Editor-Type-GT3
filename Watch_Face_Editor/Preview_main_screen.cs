@@ -167,8 +167,47 @@ namespace Watch_Face_Editor
             }
             #endregion
 
-            #region Elements
             List<Object> Elements = null;
+            #region EditableElements
+            Elements = null;
+            if (Watch_Face != null && Watch_Face.Editable_Elements != null && Watch_Face.Editable_Elements.display_first &&
+                Watch_Face.Editable_Elements.visible && Watch_Face.Editable_Elements.Watchface_edit_group != null &&
+                Watch_Face.Editable_Elements.Watchface_edit_group.Count > 0 && (link == 0 || Watch_Face.Editable_Elements.AOD_show))
+            {
+                foreach (WATCHFACE_EDIT_GROUP edit_group in Watch_Face.Editable_Elements.Watchface_edit_group)
+                {
+                    int selected_element = edit_group.selected_element;
+                    if (selected_element >= 0 && edit_group.Elements != null && selected_element < edit_group.Elements.Count)
+                    {
+                        string type = edit_group.Elements[selected_element].GetType().Name;
+                        //bool showDate = true;
+                        if (type == "ElementDateDay" || type == "ElementDateMonth" || type == "ElementDateYear")
+                        {
+                            foreach (Object element in edit_group.Elements)
+                            {
+                                type = element.GetType().Name;
+                                if (type == "ElementDateDay" || type == "ElementDateMonth" || type == "ElementDateYear")
+                                {
+                                    Draw_elements(element, gPanel, scale, crop, WMesh, BMesh, BBorder, showShortcuts,
+                                        showShortcutsArea, showShortcutsBorder, showShortcutsImage, showAnimation, showProgressArea, showCentrHend,
+                                        showWidgetsArea, link, Shortcuts_In_Gif, time_value_sec, showEeditMode, edit_mode);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            Draw_elements(edit_group.Elements[selected_element], gPanel, scale, crop, WMesh, BMesh, BBorder, showShortcuts,
+                                showShortcutsArea, showShortcutsBorder, showShortcutsImage, showAnimation, showProgressArea, showCentrHend,
+                                showWidgetsArea, link, Shortcuts_In_Gif, time_value_sec, showEeditMode, edit_mode);
+                        }
+
+                    }
+                }
+            }
+            #endregion
+
+            #region Elements
+            Elements = null;
             if (link == 0)
             {
                 if (Watch_Face != null && Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Elements != null)
@@ -193,9 +232,9 @@ namespace Watch_Face_Editor
 
             #region EditableElements
             Elements = null;
-            if (Watch_Face != null && Watch_Face.Editable_Elements != null && Watch_Face.Editable_Elements.visible 
-                && Watch_Face.Editable_Elements.Watchface_edit_group != null && Watch_Face.Editable_Elements.Watchface_edit_group.Count > 0 &&
-                (link == 0 || Watch_Face.Editable_Elements.AOD_show))
+            if (Watch_Face != null && Watch_Face.Editable_Elements != null && !Watch_Face.Editable_Elements.display_first && 
+                Watch_Face.Editable_Elements.visible && Watch_Face.Editable_Elements.Watchface_edit_group != null && 
+                Watch_Face.Editable_Elements.Watchface_edit_group.Count > 0 && (link == 0 || Watch_Face.Editable_Elements.AOD_show))
             {
                 foreach(WATCHFACE_EDIT_GROUP edit_group in Watch_Face.Editable_Elements.Watchface_edit_group)
                 {
@@ -2193,12 +2232,14 @@ namespace Watch_Face_Editor
                     img_prorgess = activityElementWind.Segments;
                     img_number = activityElementWind.Number;
                     img_pointer = activityElementWind.Pointer;
+                    hmUI_widget_IMG_LEVEL img_direction = activityElementWind.Direction;
                     icon = activityElementWind.Icon;
 
                     elementValue = WatchFacePreviewSet.Weather.WindForce;
                     value_lenght = 1;
                     goal = 12;
                     progress = (float)WatchFacePreviewSet.Weather.WindForce / 12f;
+                    int valueImgDirectionIndex = WatchFacePreviewSet.Weather.WindDirection;
 
                     if (img_level != null && img_level.image_length > 0)
                     {
@@ -2217,10 +2258,8 @@ namespace Watch_Face_Editor
                         if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
                     }
 
-                    DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
-                        img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
-                        progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
-                        showCentrHend, "ElementWind");
+                    DrawWind(gPanel, img_level, img_prorgess, img_number, img_pointer, img_direction, icon, elementValue, value_lenght, goal,
+                        progress, valueImgIndex, valueSegmentIndex, valueImgDirectionIndex, BBorder, showProgressArea, showCentrHend);
 
 
                     break;
@@ -2546,7 +2585,7 @@ namespace Watch_Face_Editor
                     string text_style = "ELLIPSIS";
                     string valueStr = Properties.FormStrings.Tip_Background + (index + 1).ToString() +
                         "/" + editable_background.BackgroundList.Count.ToString();
-                    if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4") 
+                    if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2") 
                         valueStr = Properties.FormStrings.Tip_Background.TrimEnd();
 
                         Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr,
@@ -2558,7 +2597,7 @@ namespace Watch_Face_Editor
             {
                 if (editable_elements.fg_mask != null && editable_elements.fg_mask.Length > 0)
                 {
-                    if (ProgramSettings.Watch_Model != "GTR 4" && ProgramSettings.Watch_Model != "GTS 4")
+                    if (ProgramSettings.Watch_Model != "GTR 4" && ProgramSettings.Watch_Model != "GTS 4" && ProgramSettings.Watch_Model != "T-Rex 2")
                     {
                         src = OpenFileStream(editable_elements.fg_mask);
                         gPanel.DrawImage(src, 0, 0); 
@@ -2717,7 +2756,7 @@ namespace Watch_Face_Editor
                     string text_style = "ELLIPSIS";
                     string valueStr = Properties.FormStrings.Tip_Pointer + (index + 1).ToString() +
                         "/" + editable_pointers.config.Count.ToString();
-                    if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4")
+                    if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2")
                         valueStr = Properties.FormStrings.Tip_Pointer.TrimEnd();
 
                     Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr,
@@ -3608,6 +3647,222 @@ namespace Watch_Face_Editor
                 }
 
 
+
+            }
+
+            src.Dispose();
+        }
+
+        /// <summary>Рисуем все параметры элемента</summary>
+        /// <param name="gPanel">Поверхность для рисования</param>
+        /// <param name="images">Параметры для изображения</param>
+        /// <param name="segments">Параметры для сегментов</param>
+        /// <param name="number">Параметры цифрового значения</param>
+        /// <param name="pointer">Параметры для стрелочного указателя</param>
+        /// <param name="icon">Параметры для иконки</param>
+        /// <param name="value">Значение показателя</param>
+        /// <param name="value_lenght">Максимальная длина для отображения значения</param>
+        /// <param name="goal">Значение цели для показателя</param>
+        /// <param name="progress">Прогресс показателя</param>
+        /// <param name="valueImgIndex">Позиция картинки из заданного массива для отображения показателя картинками</param>
+        /// <param name="valueSegmentIndex">Позиция картинки из заданного массива для отображения показателя сегментами</param>
+        /// <param name="valueImgDirectionIndex">Позиция картинки для направления ветра</param>
+        /// <param name="BBorder">Рисовать рамку по координатам, вокруг элементов с выравниванием</param>
+        /// <param name="showProgressArea">Подсвечивать круговую шкалу при наличии фонового изображения</param>
+        /// <param name="showCentrHend">Подсвечивать центр стрелки</param>
+        private void DrawWind(Graphics gPanel, hmUI_widget_IMG_LEVEL images, hmUI_widget_IMG_PROGRESS segments,
+            hmUI_widget_IMG_NUMBER number, hmUI_widget_IMG_POINTER pointer, hmUI_widget_IMG_LEVEL img_direction,
+            hmUI_widget_IMG icon, float value, int value_lenght, int goal, float progress, int valueImgIndex, 
+            int valueSegmentIndex, int valueImgDirectionIndex, bool BBorder, bool showProgressArea, bool showCentrHend)
+        {
+            if (progress < 0) progress = 0;
+            if (progress > 1) progress = 1;
+            Bitmap src = new Bitmap(1, 1);
+
+            for (int index = 1; index <= 15; index++)
+            {
+                if (images != null && images.img_First != null && images.img_First.Length > 0 &&
+                    index == images.position && images.visible)
+                {
+                    if (valueImgIndex >= 0)
+                    {
+                        int imageIndex = ListImages.IndexOf(images.img_First);
+                        int x = images.X;
+                        int y = images.Y;
+                        int width = 0;
+                        int height = 0;
+
+                        src = OpenFileStream(ListImagesFullName[imageIndex]);
+                        width = src.Width;
+                        height = src.Height;
+
+                        imageIndex = imageIndex + valueImgIndex;
+
+                        if (imageIndex < ListImagesFullName.Count)
+                        {
+                            src = OpenFileStream(ListImagesFullName[imageIndex]);
+                            if (width > 0 && height > 0)
+                            {
+                                Rectangle cropRect = new Rectangle(0, 0, width, height);
+                                Bitmap target = new Bitmap(cropRect.Width, cropRect.Height);
+
+                                using (Graphics g = Graphics.FromImage(target))
+                                {
+                                    g.DrawImage(src, new Rectangle(0, 0, target.Width, target.Height),
+                                                     cropRect, GraphicsUnit.Pixel);
+                                }
+                                gPanel.DrawImage(target, x, y);
+                            }
+                            else
+                            {
+                                gPanel.DrawImage(src, x, y);
+
+                            }
+                        }
+                    }
+                }
+
+                if (segments != null && segments.img_First != null && segments.img_First.Length > 0 &&
+                    index == segments.position && segments.visible)
+                {
+                    if (valueSegmentIndex >= 0)
+                    {
+                        int imageIndex = ListImages.IndexOf(segments.img_First);
+                        for (int i = 0; i <= valueSegmentIndex; i++)
+                        {
+                            int imgIndex = imageIndex + i;
+
+                            if (imgIndex < ListImagesFullName.Count && i < segments.X.Count)
+                            {
+                                int x = segments.X[i];
+                                int y = segments.Y[i];
+                                src = OpenFileStream(ListImagesFullName[imgIndex]);
+                                gPanel.DrawImage(src, x, y);
+                                //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                            }
+                        }
+                    }
+                }
+
+                if (number != null && number.img_First != null && number.img_First.Length > 0 &&
+                    index == number.position && number.visible)
+                {
+                    int imageIndex = ListImages.IndexOf(number.img_First);
+                    int x = number.imageX;
+                    int y = number.imageY;
+                    int spasing = number.space;
+                    int alignment = AlignmentToInt(number.align);
+                    bool addZero = number.zero;
+                    int separator_index = -1;
+                    if (number.unit != null && number.unit.Length > 0)
+                        separator_index = ListImages.IndexOf(number.unit);
+
+                    Draw_dagital_text(gPanel, imageIndex, x, y,
+                        spasing, alignment, (int)value, addZero, value_lenght, separator_index, BBorder, "ElementWind");
+
+                    if (number.icon != null && number.icon.Length > 0)
+                    {
+                        imageIndex = ListImages.IndexOf(number.icon);
+                        x = number.iconPosX;
+                        y = number.iconPosY;
+
+                        src = OpenFileStream(ListImagesFullName[imageIndex]);
+                        gPanel.DrawImage(src, x, y);
+                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                    }
+                }
+
+                if (pointer != null && pointer.src != null && pointer.src.Length > 0 &&
+                    index == pointer.position && pointer.visible)
+                {
+                    int x = pointer.center_x;
+                    int y = pointer.center_y;
+                    int offsetX = pointer.pos_x;
+                    int offsetY = pointer.pos_y;
+                    int startAngle = pointer.start_angle;
+                    int endAngle = pointer.end_angle;
+                    int image_index = ListImages.IndexOf(pointer.src);
+
+                    float angle = startAngle + progress * (endAngle - startAngle);
+
+                    if (pointer.scale != null && pointer.scale.Length > 0)
+                    {
+                        int image_index_scale = ListImages.IndexOf(pointer.scale);
+                        int x_scale = pointer.scale_x;
+                        int y_scale = pointer.scale_y;
+
+                        src = OpenFileStream(ListImagesFullName[image_index_scale]);
+                        gPanel.DrawImage(src, x_scale, y_scale);
+                    }
+
+                    DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+
+                    if (pointer.cover_path != null && pointer.cover_path.Length > 0)
+                    {
+                        image_index = ListImages.IndexOf(pointer.cover_path);
+                        x = pointer.cover_x;
+                        y = pointer.cover_y;
+
+                        src = OpenFileStream(ListImagesFullName[image_index]);
+                        gPanel.DrawImage(src, x, y);
+                    }
+                }
+
+                if (img_direction != null && img_direction.img_First != null && img_direction.img_First.Length > 0 &&
+                   index == img_direction.position && img_direction.visible)
+                {
+                    if (valueImgDirectionIndex >= 0)
+                    {
+                        int imageIndex = ListImages.IndexOf(img_direction.img_First);
+                        int x = img_direction.X;
+                        int y = img_direction.Y;
+                        int width = 0;
+                        int height = 0;
+
+                        src = OpenFileStream(ListImagesFullName[imageIndex]);
+                        width = src.Width;
+                        height = src.Height;
+
+                        imageIndex = imageIndex + valueImgDirectionIndex;
+
+                        if (imageIndex < ListImagesFullName.Count)
+                        {
+                            src = OpenFileStream(ListImagesFullName[imageIndex]);
+                            if (width > 0 && height > 0)
+                            {
+                                Rectangle cropRect = new Rectangle(0, 0, width, height);
+                                Bitmap target = new Bitmap(cropRect.Width, cropRect.Height);
+
+                                using (Graphics g = Graphics.FromImage(target))
+                                {
+                                    g.DrawImage(src, new Rectangle(0, 0, target.Width, target.Height),
+                                                     cropRect, GraphicsUnit.Pixel);
+                                }
+                                gPanel.DrawImage(target, x, y);
+                            }
+                            else
+                            {
+                                gPanel.DrawImage(src, x, y);
+
+                            }
+                        }
+                    }
+                }
+
+                if (icon != null && icon.src != null && icon.src.Length > 0 &&
+                    index == icon.position && icon.visible)
+                {
+                    int imageIndex = ListImages.IndexOf(icon.src);
+                    int x = icon.x;
+                    int y = icon.y;
+
+                    if (imageIndex < ListImagesFullName.Count)
+                    {
+                        src = OpenFileStream(ListImagesFullName[imageIndex]);
+                        gPanel.DrawImage(src, x, y);
+                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                    }
+                }
 
             }
 
