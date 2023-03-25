@@ -22,6 +22,7 @@ namespace ControlLibrary
         {
             InitializeComponent();
             setValue = false;
+            comboBox_scaleLinear_lineCap.SelectedIndex = 1;
         }
 
         private void comboBox_scaleLinear_color_Click(object sender, EventArgs e)
@@ -95,6 +96,53 @@ namespace ControlLibrary
         public Color GetColorScale()
         {
             return comboBox_scaleLinear_color.BackColor;
+        }
+
+        /// <summary>Устанавливает тип окончания линии "Rounded", "Flat"</summary>
+        public void SetLineCap(string alignment)
+        {
+            int result;
+            switch (alignment)
+            {
+                case "Rounded":
+                    result = 0;
+                    break;
+                case "Flat":
+                    result = 1;
+                    break;
+
+                default:
+                    result = 0;
+                    break;
+
+            }
+            comboBox_scaleLinear_lineCap.SelectedIndex = result;
+        }
+
+        /// <summary>Возвращает тип окончания линии строкой "Rounded", "Flat"</summary>
+        public string GetLineCap()
+        {
+            string result;
+            switch (comboBox_scaleLinear_lineCap.SelectedIndex)
+            {
+                case 0:
+                    result = "Rounded";
+                    break;
+                case 1:
+                    result = "Flat";
+                    break;
+
+                default:
+                    result = "Rounded";
+                    break;
+
+            }
+            return result;
+        }
+        /// <summary>Возвращает SelectedIndex выпадающего списка</summary>
+        public int GetSelectedIndexLineCap()
+        {
+            return comboBox_scaleLinear_lineCap.SelectedIndex;
         }
 
         [Browsable(true)]
@@ -366,6 +414,7 @@ namespace ControlLibrary
             comboBox_scaleLinear_image_pointer.Items.AddRange(ListImages.ToArray());
 
             ListImagesFullName = _ListImagesFullName;
+            comboBox_scaleLinear_lineCap.SelectedIndex = 1;
 
             int count = ListImages.Count;
             if (count == 0)
@@ -463,6 +512,12 @@ namespace ControlLibrary
                     numericUpDown.Value = MouseСoordinates.Y - numericUpDown_scaleLinearY.Value;
                 }
             }
+        }
+
+        private void checkBox_mirror_Click(object sender, EventArgs e)
+        {
+            //comboBox_scaleLinear_lineCap.Enabled = !checkBox_mirror.Checked;
+            //label2.Enabled = !checkBox_mirror.Checked;
         }
     }
 }

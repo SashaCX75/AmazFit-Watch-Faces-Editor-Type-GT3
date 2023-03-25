@@ -1391,6 +1391,7 @@ namespace Watch_Face_Editor
                     color = this.Circle_Scale.color,
                     radius = this.Circle_Scale.radius,
                     line_width = this.Circle_Scale.line_width,
+                    line_cap = this.Circle_Scale.line_cap,
                     mirror = this.Circle_Scale.mirror,
                     inversion = this.Circle_Scale.inversion,
 
@@ -1578,6 +1579,7 @@ namespace Watch_Face_Editor
                     color = this.Circle_Scale.color,
                     radius = this.Circle_Scale.radius,
                     line_width = this.Circle_Scale.line_width,
+                    line_cap = this.Circle_Scale.line_cap,
                     mirror = this.Circle_Scale.mirror,
                     inversion = this.Circle_Scale.inversion,
 
@@ -1793,6 +1795,7 @@ namespace Watch_Face_Editor
                     color = this.Circle_Scale.color,
                     radius = this.Circle_Scale.radius,
                     line_width = this.Circle_Scale.line_width,
+                    line_cap = this.Circle_Scale.line_cap,
                     mirror = this.Circle_Scale.mirror,
                     inversion = this.Circle_Scale.inversion,
 
@@ -1980,6 +1983,7 @@ namespace Watch_Face_Editor
                     color = this.Circle_Scale.color,
                     radius = this.Circle_Scale.radius,
                     line_width = this.Circle_Scale.line_width,
+                    line_cap = this.Circle_Scale.line_cap,
                     mirror = this.Circle_Scale.mirror,
                     inversion = this.Circle_Scale.inversion,
 
@@ -2194,6 +2198,7 @@ namespace Watch_Face_Editor
                     color = this.Circle_Scale.color,
                     radius = this.Circle_Scale.radius,
                     line_width = this.Circle_Scale.line_width,
+                    line_cap = this.Circle_Scale.line_cap,
                     mirror = this.Circle_Scale.mirror,
                     inversion = this.Circle_Scale.inversion,
 
@@ -2462,6 +2467,7 @@ namespace Watch_Face_Editor
                     color = this.Circle_Scale.color,
                     radius = this.Circle_Scale.radius,
                     line_width = this.Circle_Scale.line_width,
+                    line_cap = this.Circle_Scale.line_cap,
                     mirror = this.Circle_Scale.mirror,
                     inversion = this.Circle_Scale.inversion,
 
@@ -2681,6 +2687,7 @@ namespace Watch_Face_Editor
                     color = this.Circle_Scale.color,
                     radius = this.Circle_Scale.radius,
                     line_width = this.Circle_Scale.line_width,
+                    line_cap = this.Circle_Scale.line_cap,
                     mirror = this.Circle_Scale.mirror,
                     inversion = this.Circle_Scale.inversion,
 
@@ -3088,6 +3095,7 @@ namespace Watch_Face_Editor
                     color = this.Circle_Scale.color,
                     radius = this.Circle_Scale.radius,
                     line_width = this.Circle_Scale.line_width,
+                    line_cap = this.Circle_Scale.line_cap,
                     mirror = this.Circle_Scale.mirror,
                     inversion = this.Circle_Scale.inversion,
 

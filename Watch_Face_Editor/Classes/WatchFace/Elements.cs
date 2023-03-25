@@ -396,6 +396,9 @@ namespace Watch_Face_Editor
         /// <summary>Толщина линии</summary>
         public int line_width { get; set; } = 5;
 
+        /// <summary>Тип окончания линии</summary>
+        public string line_cap { get; set; } = "Rounded";
+
         /// <summary>Тип активности</summary>
         public string type { get; set; }
 
@@ -436,6 +439,9 @@ namespace Watch_Face_Editor
 
         /// <summary>Толщина линии</summary>
         public int line_width { get; set; } = 5;
+
+        /// <summary>Тип окончания линии</summary>
+        public string line_cap { get; set; } = "Flat";
 
         /// <summary>Тип активности</summary>
         public string type { get; set; }

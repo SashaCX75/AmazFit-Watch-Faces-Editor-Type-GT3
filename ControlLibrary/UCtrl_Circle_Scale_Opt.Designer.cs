@@ -57,6 +57,8 @@ namespace ControlLibrary
             this.checkBox_mirror = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox_scaleCircle_color = new System.Windows.Forms.ComboBox();
+            this.comboBox_scaleCircle_lineCap = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_scaleCircleX)).BeginInit();
             this.contextMenuStrip_X.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_scaleCircleY)).BeginInit();
@@ -311,10 +313,28 @@ namespace ControlLibrary
             this.comboBox_scaleCircle_color.Name = "comboBox_scaleCircle_color";
             this.comboBox_scaleCircle_color.Click += new System.EventHandler(this.comboBox_scaleLinear_color_Click);
             // 
+            // comboBox_scaleCircle_lineCap
+            // 
+            resources.ApplyResources(this.comboBox_scaleCircle_lineCap, "comboBox_scaleCircle_lineCap");
+            this.comboBox_scaleCircle_lineCap.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_scaleCircle_lineCap.FormattingEnabled = true;
+            this.comboBox_scaleCircle_lineCap.Items.AddRange(new object[] {
+            resources.GetString("comboBox_scaleCircle_lineCap.Items"),
+            resources.GetString("comboBox_scaleCircle_lineCap.Items1")});
+            this.comboBox_scaleCircle_lineCap.Name = "comboBox_scaleCircle_lineCap";
+            this.comboBox_scaleCircle_lineCap.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
             // UCtrl_Circle_Scale_Opt
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.comboBox_scaleCircle_lineCap);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBox_scaleCircle_color);
             this.Controls.Add(this.label02);
@@ -374,5 +394,7 @@ namespace ControlLibrary
         public System.Windows.Forms.CheckBox checkBox_mirror;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox_scaleCircle_color;
+        private System.Windows.Forms.ComboBox comboBox_scaleCircle_lineCap;
+        private System.Windows.Forms.Label label2;
     }
 }

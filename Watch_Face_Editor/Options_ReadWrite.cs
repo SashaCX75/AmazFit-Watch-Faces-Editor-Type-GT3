@@ -1364,6 +1364,9 @@ namespace Watch_Face_Editor
             PreviewView = false;
 
             uCtrl_Circle_Scale_Opt.SettingsClear();
+            if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2")
+                uCtrl_Circle_Scale_Opt.LineCap = true;
+            else uCtrl_Circle_Scale_Opt.LineCap = false;
 
             uCtrl_Circle_Scale_Opt.Visible = true;
 
@@ -1381,6 +1384,8 @@ namespace Watch_Face_Editor
 
             uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircle_startAngle.Value = circle_scale.start_angle;
             uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircle_endAngle.Value = circle_scale.end_angle;
+
+            uCtrl_Circle_Scale_Opt.SetLineCap(circle_scale.line_cap);
 
             uCtrl_Circle_Scale_Opt.SetColorScale(StringToColor(circle_scale.color));
 
@@ -1421,6 +1426,7 @@ namespace Watch_Face_Editor
 
             uCtrl_Linear_Scale_Opt.numericUpDown_scaleLinear_length.Value = linear_scale.lenght;
             uCtrl_Linear_Scale_Opt.numericUpDown_scaleLinear_width.Value = linear_scale.line_width;
+            uCtrl_Linear_Scale_Opt.SetLineCap(linear_scale.line_cap);
 
             uCtrl_Linear_Scale_Opt.SetColorScale(StringToColor(linear_scale.color));
 
@@ -2097,6 +2103,8 @@ namespace Watch_Face_Editor
             circle_scale.start_angle = (int)uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircle_startAngle.Value;
             circle_scale.end_angle = (int)uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircle_endAngle.Value;
 
+            circle_scale.line_cap = uCtrl_Circle_Scale_Opt.GetLineCap();
+
             circle_scale.color = ColorToString(uCtrl_Circle_Scale_Opt.GetColorScale());
 
             circle_scale.mirror = uCtrl_Circle_Scale_Opt.checkBox_mirror.Checked;
@@ -2121,7 +2129,8 @@ namespace Watch_Face_Editor
             linear_scale.start_y = (int)uCtrl_Linear_Scale_Opt.numericUpDown_scaleLinearY.Value;
 
             linear_scale.lenght = (int)uCtrl_Linear_Scale_Opt.numericUpDown_scaleLinear_length.Value;
-            linear_scale.line_width = (int)uCtrl_Linear_Scale_Opt.numericUpDown_scaleLinear_width.Value;
+            linear_scale.line_width = (int)Math.Abs(uCtrl_Linear_Scale_Opt.numericUpDown_scaleLinear_width.Value);
+            linear_scale.line_cap = uCtrl_Linear_Scale_Opt.GetLineCap();
 
             linear_scale.vertical = uCtrl_Linear_Scale_Opt.radioButton_vertical.Checked;
 

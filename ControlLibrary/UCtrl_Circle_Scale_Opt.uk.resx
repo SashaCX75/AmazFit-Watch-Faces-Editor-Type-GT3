@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 82</value>
+  </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
@@ -183,7 +186,7 @@
   <data name="вставитьToolStripMenuItemX.Text" xml:space="preserve">
     <value>Вставити</value>
   </data>
-  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
     <value>205, 82</value>
   </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -251,9 +254,6 @@
   <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
     <value>Вставити</value>
   </data>
-  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 82</value>
-  </data>
   <data name="label01.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 13</value>
   </data>
@@ -297,5 +297,20 @@
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Колір</value>
+  </data>
+  <data name="comboBox_scaleCircle_lineCap.Items" xml:space="preserve">
+    <value>Кругле</value>
+  </data>
+  <data name="comboBox_scaleCircle_lineCap.Items1" xml:space="preserve">
+    <value>Плоске</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>124, 106</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 30</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Закінчення лінії</value>
   </data>
 </root>

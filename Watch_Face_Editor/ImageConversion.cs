@@ -32,7 +32,7 @@ namespace Watch_Face_Editor
                         _streamBuffer = new byte[fileStream.Length];
                         fileStream.Read(_streamBuffer, 0, (int)fileStream.Length);
 
-                        Header header = new Header(_streamBuffer);
+                        Header header = new Header(_streamBuffer, fileNameFull, targetFileName);
                         if (header.GetExistsColorMap() == 1 && header.GetImageType() == 1) path = TgaToPng(fileNameFull, targetFileName, fix_color);
                         if (header.GetExistsColorMap() == 0 && header.GetImageType() == 2) path = TgaARGBToPng(fileNameFull, targetFileName, fix_color);
                     }
@@ -176,75 +176,6 @@ namespace Watch_Face_Editor
             path = Path.GetDirectoryName(targetFile);
             return path;
         }
-        /*private string TgaToPng(string file, string targetFile, string model)
-        {
-            string path = "";
-            if (File.Exists(file))
-            {
-                try
-                {
-                    //string fileNameFull = openFileDialog.FileName;
-                    ImageMagick.MagickImage image;
-                    string fileNameFull = file;
-                    string fileName = Path.GetFileNameWithoutExtension(fileNameFull);
-                    path = Path.GetDirectoryName(fileNameFull);
-                    //fileName = Path.Combine(path, fileName);
-                    int RealWidth = -1;
-                    bool colored = true;
-                    using (var fileStream = File.OpenRead(fileNameFull))
-                    {
-                        byte[] _streamBuffer;
-                        _streamBuffer = new byte[fileStream.Length];
-                        fileStream.Read(_streamBuffer, 0, (int)fileStream.Length);
-
-                        Header header = new Header(_streamBuffer, Path.GetFileName(fileNameFull));
-                        if (header.GetColorMapCount() == 0) colored = false;
-                        ImageDescription imageDescription = new ImageDescription(_streamBuffer, header.GetImageIDLength());
-                        RealWidth = imageDescription.GetRealWidth();
-                    }
-
-                    using (var fileStream = File.OpenRead(fileNameFull))
-                    {
-                        image = new ImageMagick.MagickImage(fileStream, ImageMagick.MagickFormat.Tga);
-                    }
-
-                    image.Format = ImageMagick.MagickFormat.Png32;
-                    if (RealWidth > 0 && RealWidth != image.Width)
-                    {
-                        int height = image.Height;
-                        image = (ImageMagick.MagickImage)image.Clone(RealWidth, height);
-                    }
-
-                    ImageMagick.IMagickImage Blue = image.Separate(ImageMagick.Channels.Blue).First();
-                    ImageMagick.IMagickImage Red = image.Separate(ImageMagick.Channels.Red).First(); 
-                    ImageMagick.IMagickImage Alpha = image.Separate(ImageMagick.Channels.Red).First();
-                    if (model != "Amazfit Band 7" && model != "GTS 4 mini")
-                    {
-                        image.Composite(Red, ImageMagick.CompositeOperator.Replace, ImageMagick.Channels.Blue);
-                        image.Composite(Blue, ImageMagick.CompositeOperator.Replace, ImageMagick.Channels.Red); 
-                    }
-                    if (!colored) 
-                        //if (!colored)
-                        {
-                        //image.Negate();
-                        image.Composite(Alpha, ImageMagick.CompositeOperator.CopyAlpha, ImageMagick.Channels.Alpha);
-                        //image.Negate();
-                    }
-
-                    image.Write(targetFile);
-                }
-                catch (Exception exp)
-                {
-                    if (exp.Message != "Отсутствует карта цветов")
-                    {
-                        MessageBox.Show("Не верный формат исходного файла." + Environment.NewLine +
-                                        "Файл \"" + Path.GetFileName(targetFile) + "\" не был сохранен." + 
-                                        Environment.NewLine + exp); 
-                    }
-                }
-            }
-            return path;
-        }*/
 
         /// <summary>Преобразуем Png в Tga</summary>
         private string PngToTga(string fileNameFull, string targetFolder, string model)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,7 @@ namespace Watch_Face_Editor
         public int Width { get; }
         public int Height { get; }
 
-        public Header(byte[] streamBuffer, string fileName = "")
+        public Header(byte[] streamBuffer, string fileNameFull = "", string targetFileName = "")
         {
             _header = new byte[HeaderSize];
             Array.Copy(streamBuffer, 0, _header, 0, HeaderSize);
@@ -33,10 +34,18 @@ namespace Watch_Face_Editor
 
             if (!(_header[1] == 0 && _header[2] == 2) && !(_header[1] == 1 && _header[2] == 1)) 
             {
-                if (MessageBox.Show("Ошибка обработки изображения \"" + fileName + "\"." + Environment.NewLine +
+                if (MessageBox.Show("Ошибка обработки изображения \"" + Path.GetFileName(fileNameFull) + "\"." + Environment.NewLine +
                                 "Попытаться сохранить изображение?", Properties.FormStrings.Message_Error_Caption,
                                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 { 
+                    if((_header[1] == (int)'P' && _header[2] == (int)'N' && _header[3] == (int)'G') || 
+                        (_header[1] == (int)'p' && _header[2] == (int)'n' && _header[3] == (int)'g'))
+                    {
+                        if(File.Exists(fileNameFull)) 
+                        {
+                            File.Copy(fileNameFull, targetFileName, true);
+                        }
+                    }
                 }
                 else 
                 { 

@@ -18,10 +18,13 @@ namespace ControlLibrary
         private List<string> ListImagesFullName = new List<string>(); // перечень путей к файлам с картинками
         public Object _CircleScale;
 
+        private bool LineCap_mode = false;
+
         public UCtrl_Circle_Scale_Opt()
         {
             InitializeComponent();
             setValue = false;
+            comboBox_scaleCircle_lineCap.SelectedIndex = 0;
         }
 
         private void comboBox_scaleLinear_color_Click(object sender, EventArgs e)
@@ -78,6 +81,69 @@ namespace ControlLibrary
             return comboBox_scaleCircle_color.BackColor;
         }
 
+        /// <summary>Устанавливает тип окончания линии "Rounded", "Flat"</summary>
+        public void SetLineCap(string alignment)
+        {
+            int result;
+            switch (alignment)
+            {
+                case "Rounded":
+                    result = 0;
+                    break;
+                case "Flat":
+                    result = 1;
+                    break;
+
+                default:
+                    result = 0;
+                    break;
+
+            }
+            comboBox_scaleCircle_lineCap.SelectedIndex = result;
+        }
+
+        /// <summary>Возвращает тип окончания линии строкой "Rounded", "Flat"</summary>
+        public string GetLineCap()
+        {
+            string result;
+            switch (comboBox_scaleCircle_lineCap.SelectedIndex)
+            {
+                case 0:
+                    result = "Rounded";
+                    break;
+                case 1:
+                    result = "Flat";
+                    break;
+
+                default:
+                    result = "Rounded";
+                    break;
+
+            }
+            return result;
+        }
+        /// <summary>Возвращает SelectedIndex выпадающего списка</summary>
+        public int GetSelectedIndexLineCap()
+        {
+            return comboBox_scaleCircle_lineCap.SelectedIndex;
+        }
+
+        /// <summary>Режим отображения типа окончания линий</summary>
+        [Description("Доступность выбора окончания линии")]
+        public virtual bool LineCap
+        {
+            get
+            {
+                return LineCap_mode;
+            }
+            set
+            {
+                LineCap_mode = value;
+                comboBox_scaleCircle_lineCap.Enabled = value;
+                label2.Enabled = value;
+            }
+        }
+
         [Browsable(true)]
         [Description("Происходит при изменении выбора элемента")]
         public event ValueChangedHandler ValueChanged;
@@ -86,6 +152,15 @@ namespace ControlLibrary
         #region Standard events
 
         private void checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ValueChanged != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                ValueChanged(this, eventArgs);
+            }
+        }
+
+        private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ValueChanged != null && !setValue)
             {
@@ -274,6 +349,7 @@ namespace ControlLibrary
 
             checkBox_mirror.Checked = false;
             checkBox_inversion.Checked = false;
+            comboBox_scaleCircle_lineCap.SelectedIndex = 0;
 
             setValue = false;
         }

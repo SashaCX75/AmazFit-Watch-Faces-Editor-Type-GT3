@@ -58,6 +58,8 @@ namespace ControlLibrary
             this.checkBox_mirror = new System.Windows.Forms.CheckBox();
             this.checkBox_inversion = new System.Windows.Forms.CheckBox();
             this.label08 = new System.Windows.Forms.Label();
+            this.comboBox_scaleLinear_lineCap = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_scaleLinearX)).BeginInit();
             this.contextMenuStrip_X.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_scaleLinearY)).BeginInit();
@@ -292,6 +294,7 @@ namespace ControlLibrary
             this.checkBox_mirror.Name = "checkBox_mirror";
             this.checkBox_mirror.UseVisualStyleBackColor = true;
             this.checkBox_mirror.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
+            this.checkBox_mirror.Click += new System.EventHandler(this.checkBox_mirror_Click);
             // 
             // checkBox_inversion
             // 
@@ -305,10 +308,28 @@ namespace ControlLibrary
             resources.ApplyResources(this.label08, "label08");
             this.label08.Name = "label08";
             // 
+            // comboBox_scaleLinear_lineCap
+            // 
+            resources.ApplyResources(this.comboBox_scaleLinear_lineCap, "comboBox_scaleLinear_lineCap");
+            this.comboBox_scaleLinear_lineCap.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_scaleLinear_lineCap.FormattingEnabled = true;
+            this.comboBox_scaleLinear_lineCap.Items.AddRange(new object[] {
+            resources.GetString("comboBox_scaleLinear_lineCap.Items"),
+            resources.GetString("comboBox_scaleLinear_lineCap.Items1")});
+            this.comboBox_scaleLinear_lineCap.Name = "comboBox_scaleLinear_lineCap";
+            this.comboBox_scaleLinear_lineCap.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            // 
             // UCtrl_Linear_Scale_Opt
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.comboBox_scaleLinear_lineCap);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label08);
             this.Controls.Add(this.checkBox_inversion);
             this.Controls.Add(this.checkBox_mirror);
@@ -369,5 +390,7 @@ namespace ControlLibrary
         public System.Windows.Forms.RadioButton radioButton_horizontal;
         public System.Windows.Forms.CheckBox checkBox_mirror;
         public System.Windows.Forms.CheckBox checkBox_inversion;
+        private System.Windows.Forms.ComboBox comboBox_scaleLinear_lineCap;
+        private System.Windows.Forms.Label label2;
     }
 }

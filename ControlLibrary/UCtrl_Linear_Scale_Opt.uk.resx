@@ -304,4 +304,13 @@
 збільшення показників розмір шкали 
 зменшуватиметься.</value>
   </data>
+  <data name="comboBox_scaleLinear_lineCap.Items" xml:space="preserve">
+    <value>Кругле</value>
+  </data>
+  <data name="comboBox_scaleLinear_lineCap.Items1" xml:space="preserve">
+    <value>Плоске</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Закінчення лінії</value>
+  </data>
 </root>

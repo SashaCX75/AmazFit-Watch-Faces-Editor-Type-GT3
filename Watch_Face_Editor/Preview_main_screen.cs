@@ -3159,10 +3159,25 @@ namespace Watch_Face_Editor
                     Color color = StringToColor(circleScale.color);
                     float fullAngle = endAngle - startAngle;
 
-                    DrawScaleCircle(gPanel, x, y, radius, width, 0, startAngle, fullAngle, progress,
+                    string flatness = circleScale.line_cap;
+                    int lineCap = 3;
+                    if (inversion)
+                    {
+                        if (flatness == "Rounded") lineCap = 0;
+                    }
+                    else
+                    {
+                        if (flatness == "Rounded")
+                        {
+                            if (mirror) lineCap = 2;
+                            else lineCap = 0;
+                        } 
+                    }
+
+                    DrawScaleCircle(gPanel, x, y, radius, width, lineCap, startAngle, fullAngle, progress,
                         color, inversion, showProgressArea);
 
-                    if(mirror) DrawScaleCircle(gPanel, x, y, radius, width, 0, startAngle, -fullAngle, progress,
+                    if (mirror) DrawScaleCircle(gPanel, x, y, radius, width, lineCap, startAngle, -fullAngle, progress,
                          color, inversion, showProgressArea);
                 }
 
@@ -3172,6 +3187,7 @@ namespace Watch_Face_Editor
                     int y = linearScale.start_y;
                     int lenght = linearScale.lenght;
                     int width = linearScale.line_width;
+                    string line_cap = linearScale.line_cap;
                     bool mirror = linearScale.mirror;
                     bool inversion = linearScale.inversion;
                     bool vertical = linearScale.vertical;
@@ -3180,10 +3196,10 @@ namespace Watch_Face_Editor
                     if (linearScale.pointer != null && linearScale.pointer.Length > 0)
                         pointer_index = ListImages.IndexOf(linearScale.pointer);
 
-                    DrawScaleLinear(gPanel, x, y, lenght, width, pointer_index, vertical, progress,
+                    DrawScaleLinear(gPanel, x, y, lenght, width, line_cap, pointer_index, vertical, progress,
                         color, inversion, showProgressArea);
 
-                    if (mirror) DrawScaleLinear(gPanel, x, y, -lenght, width, pointer_index, vertical, progress,
+                    if (mirror) DrawScaleLinear(gPanel, x, y, -lenght, width, line_cap, pointer_index, vertical, progress,
                         color, inversion, showProgressArea);
                 }
 
@@ -4980,6 +4996,7 @@ namespace Watch_Face_Editor
             int lineCap, float startAngle, float fullAngle, float position, Color color,
             bool inversion, bool showProgressArea)
         {
+            if (radius <= width) return;
             Logger.WriteLine("* DrawScaleCircle");
             startAngle = startAngle - 90;
             if (position > 1) position = 1;
@@ -4995,19 +5012,19 @@ namespace Watch_Face_Editor
 
             switch (lineCap)
             {
+                case 0:
+                    pen.EndCap = LineCap.Round;
+                    pen.StartCap = LineCap.Round;
+                    break;
                 case 1:
-                    pen.EndCap = LineCap.Triangle;
-                    pen.StartCap = LineCap.Triangle;
+                    pen.EndCap = LineCap.Flat;
+                    pen.StartCap = LineCap.Round;
                     break;
                 case 2:
-                    pen.EndCap = LineCap.Flat;
+                    pen.EndCap = LineCap.Round;
                     pen.StartCap = LineCap.Flat;
                     break;
-                case 90:
-                    pen.EndCap = LineCap.Triangle;
-                    pen.StartCap = LineCap.Triangle;
-                    break;
-                case 180:
+                case 3:
                     pen.EndCap = LineCap.Flat;
                     pen.StartCap = LineCap.Flat;
                     break;
@@ -5031,12 +5048,35 @@ namespace Watch_Face_Editor
 
             try
             {
-                //graphics.DrawArc(pen, arcX, arcY, CircleWidth, CircleWidth, startAngle, valueAngle);
                 int s = Math.Sign(valueAngle);
-                float start_angl = (float)(startAngle + 0.08 * s * width);
-                float end_angl = (float)(valueAngle - 0.16 * s * width);
-                //graphics.DrawArc(pen, arcX, arcY, CircleWidth, CircleWidth,
-                //    (float)(startAngle - 0.007 * s * width), (float)(valueAngle + 0.015 * s * width));
+                double arcLenght = s * Math.PI * (2 * radius - width) * valueAngle / 360;
+                //if (pen.EndCap == LineCap.Round && pen.StartCap == LineCap.Round)
+                //{
+                    if (arcLenght < width)
+                    {
+                        pen.EndCap = LineCap.Flat;
+                        pen.StartCap = LineCap.Flat;
+                    } 
+                //}
+                //else if (pen.EndCap == LineCap.Round || pen.StartCap == LineCap.Round)
+                //{
+                //    if (arcLenght < width/2)
+                //    {
+                //        pen.EndCap = LineCap.Flat;
+                //        pen.StartCap = LineCap.Flat;
+                //    }
+                //}
+                double anglOffset = (width / 2) * 360 / (2 * radius * Math.PI);
+                float start_angl = startAngle;
+                float end_angl = valueAngle;
+                if(pen.StartCap == LineCap.Round)
+                {
+                    start_angl = (float)(start_angl + s * anglOffset);
+                    end_angl = (float)(end_angl - s * anglOffset);
+                }
+                if(pen.EndCap == LineCap.Round) end_angl = (float)(end_angl - s * anglOffset);
+                //float start_angl = (float)(startAngle + 0.08 * s * width);
+                //float end_angl = (float)(valueAngle - 0.16 * s * width);
                 graphics.DrawArc(pen, arcX, arcY, CircleWidth, CircleWidth,start_angl, end_angl);
                 //TODO исправить отрисовку при большой толщине
             }
@@ -5096,16 +5136,22 @@ namespace Watch_Face_Editor
         /// <param name="y">Координата Y</param>
         /// <param name="lenght">Длина шкалы</param>
         /// <param name="width">Толщина линии</param>
-        /// <param name="pointer">Изображение указателя</param>
+        /// <param name="lineCap">Тип окончания линии</param>
+        /// <param name="pointer_index">Изображение указателя</param>
         /// <param name="vertical">Вертикальная или горизонтальная</param>
         /// <param name="position">Отображаемая величина от 0 до 1</param>
         /// <param name="color">Цвет шкалы</param>
         /// <param name="inversion">Инверсия шкалы</param>
         /// <param name="showProgressArea">Подсвечивать полную длину шкалы</param>
-        private void DrawScaleLinear(Graphics graphics, int x, int y, int lenght, int width, int pointer_index,
+        private void DrawScaleLinear(Graphics graphics, int x, int y, int lenght, int width, string lineCap, int pointer_index,
             bool vertical, float position, Color color, bool inversion, bool showProgressArea)
         {
             Logger.WriteLine("* DrawScaleLinear");
+            if (lineCap == "Rounded")
+            {
+                DrawScaleLinearRounded(graphics, x, y, lenght, width, lineCap, pointer_index, vertical, position, color, inversion, showProgressArea);
+                return;
+            }
             var src = new Bitmap(1, 1);
             if (position > 1) position = 1;
             if (!vertical)
@@ -5163,6 +5209,154 @@ namespace Watch_Face_Editor
                     Rectangle rc = new Rectangle(x, y, width, realLenght);
                     if (realLenght < 0) rc = new Rectangle(x, y + realLenght, width, -realLenght);
                     graphics.FillRectangle(br, rc);
+
+                    if (pointer_index >= 0 && pointer_index < ListImagesFullName.Count)
+                    {
+                        src = OpenFileStream(ListImagesFullName[pointer_index]);
+                        int pos_x = x + width / 2 - src.Width / 2;
+                        int pos_y = y + realLenght - src.Height / 2;
+                        graphics.DrawImage(src, pos_x, pos_y);
+                    }
+
+                    if (showProgressArea)
+                    {
+                        HatchBrush myHatchBrush = new HatchBrush(HatchStyle.Percent20, Color.White, Color.Transparent);
+
+                        rc = new Rectangle(x, y, width, lenght);
+                        if (lenght < 0) rc = new Rectangle(x, y + lenght, width, -lenght);
+                        graphics.FillRectangle(myHatchBrush, rc);
+
+                        myHatchBrush = new HatchBrush(HatchStyle.Percent10, Color.Black, Color.Transparent);
+                        graphics.FillRectangle(myHatchBrush, rc);
+                    }
+                }
+                catch (Exception)
+                {
+                }
+            }
+
+            Logger.WriteLine("* DrawScaleLinear (end)");
+
+        }
+
+        /// <summary>Линейная шкала закругленная</summary>
+        /// <param name="graphics">Поверхность для рисования</param>
+        /// <param name="x">Координата X</param>
+        /// <param name="y">Координата Y</param>
+        /// <param name="lenght">Длина шкалы</param>
+        /// <param name="width">Толщина линии</param>
+        /// <param name="lineCap">Тип окончания линии</param>
+        /// <param name="pointer_index">Изображение указателя</param>
+        /// <param name="vertical">Вертикальная или горизонтальная</param>
+        /// <param name="position">Отображаемая величина от 0 до 1</param>
+        /// <param name="color">Цвет шкалы</param>
+        /// <param name="inversion">Инверсия шкалы</param>
+        /// <param name="showProgressArea">Подсвечивать полную длину шкалы</param>
+        private void DrawScaleLinearRounded(Graphics graphics, int x, int y, int lenght, int width, string lineCap, int pointer_index,
+            bool vertical, float position, Color color, bool inversion, bool showProgressArea)
+        {
+            Logger.WriteLine("* DrawScaleLinear");
+            var src = new Bitmap(1, 1);
+            if (position > 1) position = 1;
+            if (!vertical)
+            {
+                if (inversion)
+                {
+                    x = x + lenght;
+                    lenght = -lenght;
+                    position = 1 - position;
+                }
+                try
+                {
+                    int realLenght = (int)(lenght * position);
+                    Brush br = new SolidBrush(color); 
+                    Rectangle rc = new Rectangle();
+                    if (Math.Abs(realLenght) > width)
+                    {
+                        int radius = width / 2;
+                        rc = new Rectangle(x + radius, y, realLenght - width, width);
+                        Rectangle rcStart = new Rectangle(x, y, width, width);
+                        Rectangle rcEnd = new Rectangle(x + realLenght - width, y, width, width);
+                        if (realLenght < 0)
+                        {
+                            rc = new Rectangle(x + realLenght + radius, y, -realLenght - width, width);
+                            rcStart = new Rectangle(x + realLenght, y, width, width);
+                            rcEnd = new Rectangle(x - width, y, width, width);
+                        }
+                        graphics.FillRectangle(br, rc);
+                        //br = new SolidBrush(Color.Red);
+                        graphics.FillEllipse(br, rcStart);
+                        //br = new SolidBrush(Color.Blue);
+                        graphics.FillEllipse(br, rcEnd); 
+                    }
+                    else
+                    {
+                        rc = new Rectangle(x, y, realLenght, width);
+                        //br = new SolidBrush(Color.Green);
+                        graphics.FillEllipse(br, rc);
+                    }
+
+                    if (pointer_index >= 0 && pointer_index < ListImagesFullName.Count)
+                    {
+                        src = OpenFileStream(ListImagesFullName[pointer_index]);
+                        int pos_x = x + realLenght - src.Width / 2;
+                        int pos_y = y + width / 2 - src.Height / 2;
+                        graphics.DrawImage(src, pos_x, pos_y);
+                    }
+
+                    if (showProgressArea)
+                    {
+                        HatchBrush myHatchBrush = new HatchBrush(HatchStyle.Percent20, Color.White, Color.Transparent);
+
+                        rc = new Rectangle(x, y, lenght, width);
+                        if (lenght < 0) rc = new Rectangle(x + lenght, y, -lenght, width);
+                        graphics.FillRectangle(myHatchBrush, rc);
+
+                        myHatchBrush = new HatchBrush(HatchStyle.Percent10, Color.Black, Color.Transparent);
+                        graphics.FillRectangle(myHatchBrush, rc);
+                    }
+                }
+                catch (Exception)
+                {
+                }
+            }
+            else
+            {
+                if (inversion)
+                {
+                    y = y + lenght;
+                    lenght = -lenght;
+                    position = 1 - position;
+                }
+                try
+                {
+                    int realLenght = (int)(lenght * position);
+                    Brush br = new SolidBrush(color);
+                    Rectangle rc = new Rectangle();
+                    if (Math.Abs(realLenght) > width)
+                    {
+                        int radius = width / 2;
+                        rc = new Rectangle(x, y, width, realLenght);
+                        Rectangle rcStart = new Rectangle(x, y, width, width);
+                        Rectangle rcEnd = new Rectangle(x, y + realLenght - width, width, width);
+                        if (realLenght < 0)
+                        {
+                            rc = new Rectangle(x, y + realLenght, width, -realLenght);
+                            rcStart = new Rectangle(x, y + realLenght, width, width);
+                            rcEnd = new Rectangle(x, y - width, width, width);
+                        }
+                        graphics.FillRectangle(br, rc);
+                        br = new SolidBrush(Color.Red);
+                        graphics.FillEllipse(br, rcStart);
+                        br = new SolidBrush(Color.Blue);
+                        graphics.FillEllipse(br, rcEnd);
+                    }
+                    else
+                    {
+                        rc = new Rectangle(x, y, width, realLenght);
+                        br = new SolidBrush(Color.Green);
+                        graphics.FillEllipse(br, rc);
+                    }
 
                     if (pointer_index >= 0 && pointer_index < ListImagesFullName.Count)
                     {
