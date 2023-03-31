@@ -797,6 +797,14 @@ namespace Watch_Face_Editor
             uCtrl_Text_Opt.OptionalSymbol = _optionalSymbol;
             uCtrl_Text_Opt.PaddingZero = _padingZero;
             uCtrl_Text_Opt.Visible = true;
+            if (!_optionalSymbol)
+            {
+                if (img_number.dot_image != null)
+                {
+                    JSON_Modified = true;
+                    img_number.dot_image = null;
+                }
+            }
 
             uCtrl_Text_Opt._ElementWithText = img_number;
 
@@ -2097,8 +2105,8 @@ namespace Watch_Face_Editor
             circle_scale.center_x = (int)uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircleX.Value;
             circle_scale.center_y = (int)uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircleY.Value;
 
-            circle_scale.radius = (int)uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircle_radius.Value;
-            circle_scale.line_width = (int)uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircle_width.Value;
+            circle_scale.radius = (int)(int)Math.Abs(uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircle_radius.Value);
+            circle_scale.line_width = (int)(int)Math.Abs(uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircle_width.Value);
 
             circle_scale.start_angle = (int)uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircle_startAngle.Value;
             circle_scale.end_angle = (int)uCtrl_Circle_Scale_Opt.numericUpDown_scaleCircle_endAngle.Value;

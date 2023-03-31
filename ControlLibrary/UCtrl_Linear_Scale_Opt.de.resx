@@ -309,4 +309,13 @@
   <data name="label08.Text" xml:space="preserve">
     <value>* Wenn die Umkehrung aktiviert ist, verringern steigende Werte den Fortschritt.</value>
   </data>
+  <data name="comboBox_scaleLinear_lineCap.Items" xml:space="preserve">
+    <value>Rund</value>
+  </data>
+  <data name="comboBox_scaleLinear_lineCap.Items1" xml:space="preserve">
+    <value>Flach</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Ende der Zeile</value>
+  </data>
 </root>

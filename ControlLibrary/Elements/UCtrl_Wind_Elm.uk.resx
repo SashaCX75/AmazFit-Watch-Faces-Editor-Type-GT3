@@ -173,14 +173,4 @@ NW - північний захід</value>
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Сила вітру</value>
   </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value>N - північ
-NE - північний схід
-E - схід
-SE - південний схід
-S - південь
-SW - південний захід
-W - захід
-NW - північний захід</value>
-  </data>
 </root>

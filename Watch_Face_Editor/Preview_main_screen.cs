@@ -5398,38 +5398,40 @@ namespace Watch_Face_Editor
         private void DrawShortcuts(Graphics graphics, hmUI_widget_IMG_CLICK shortcut, bool showShortcuts,
              bool showShortcutsArea, bool showShortcutsBorder, bool showShortcutsImage, bool Shortcuts_In_Gif)
         {
-            if (shortcut != null && shortcut.src != null && shortcut.src.Length > 0 && shortcut.visible)
+            if (shortcut != null /*&& shortcut.src != null && shortcut.src.Length > 0*/ && shortcut.visible)
             {
-                int imageIndex = ListImages.IndexOf(shortcut.src);
+                //int imageIndex = ListImages.IndexOf(shortcut.src);
                 int x = shortcut.x;
                 int y = shortcut.y;
                 int width = shortcut.w;
                 int height = shortcut.h;
 
-                if (imageIndex < ListImagesFullName.Count)
+                if (shortcut.src != null && shortcut.src.Length > 0)
                 {
-                    Bitmap src = OpenFileStream(ListImagesFullName[imageIndex]);
-                    int pos_x = x + width / 2 - src.Width / 2;
-                    int pos_y = y + height / 2 - src.Height / 2;
-                    if (pos_x >= x && pos_y >= y)
+                    int imageIndex = ListImages.IndexOf(shortcut.src);
+                    if (imageIndex < ListImagesFullName.Count)
                     {
-                        graphics.DrawImage(src, pos_x, pos_y);
-                    }
-                    else if (width > 0 && height > 0)
-                    {
-                        Rectangle cropRect = new Rectangle(x - pos_x, y - pos_y, width, height);
-                        //Rectangle cropRect = new Rectangle(...);
-                        //Bitmap src = Image.FromFile(fileName) as Bitmap;
-                        Bitmap target = new Bitmap(cropRect.Width, cropRect.Height);
-
-                        using (Graphics g = Graphics.FromImage(target))
+                        Bitmap src = OpenFileStream(ListImagesFullName[imageIndex]);
+                        int pos_x = x + width / 2 - src.Width / 2;
+                        int pos_y = y + height / 2 - src.Height / 2;
+                        if (pos_x >= x && pos_y >= y)
                         {
-                            g.DrawImage(src, new Rectangle(0, 0, target.Width, target.Height),
-                                             cropRect, GraphicsUnit.Pixel);
+                            graphics.DrawImage(src, pos_x, pos_y);
                         }
-                        graphics.DrawImage(target, x, y);
+                        else if (width > 0 && height > 0)
+                        {
+                            Rectangle cropRect = new Rectangle(x - pos_x, y - pos_y, width, height);
+                            Bitmap target = new Bitmap(cropRect.Width, cropRect.Height);
+
+                            using (Graphics g = Graphics.FromImage(target))
+                            {
+                                g.DrawImage(src, new Rectangle(0, 0, target.Width, target.Height),
+                                                 cropRect, GraphicsUnit.Pixel);
+                            }
+                            graphics.DrawImage(target, x, y);
+                        }
+                        src.Dispose();
                     }
-                    src.Dispose();
                 }
 
                 if (showShortcuts)
@@ -5455,38 +5457,7 @@ namespace Watch_Face_Editor
                             graphics.DrawRectangle(pen2, rect);
                         }
                     }
-
-                    /*if (showShortcutsImage)
-                    {
-                        if (imageIndex < ListImagesFullName.Count)
-                        {
-                            Bitmap src = OpenFileStream(ListImagesFullName[imageIndex]);
-                            int pos_x = x + width / 2 - src.Width / 2;
-                            int pos_y = y + height / 2 - src.Height / 2;
-                            if (pos_x >= x && pos_y >= y)
-                            {
-                                graphics.DrawImage(src, pos_x, pos_y);
-                            }
-                            else
-                            {
-                                Rectangle cropRect = new Rectangle(x - pos_x, y - pos_y, width, height);
-                                //Rectangle cropRect = new Rectangle(...);
-                                //Bitmap src = Image.FromFile(fileName) as Bitmap;
-                                Bitmap target = new Bitmap(cropRect.Width, cropRect.Height);
-
-                                using (Graphics g = Graphics.FromImage(target))
-                                {
-                                    g.DrawImage(src, new Rectangle(0, 0, target.Width, target.Height),
-                                                     cropRect,
-                                                     GraphicsUnit.Pixel);
-                                }
-                                graphics.DrawImage(target, x, y);
-                            }
-                            src.Dispose();
-                        }
-                    } */
                 }
-
 
                 if (Shortcuts_In_Gif)
                 {

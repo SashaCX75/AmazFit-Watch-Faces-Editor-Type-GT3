@@ -358,9 +358,6 @@
   <data name="radioButton_ConvertingOutput_Custom.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 17</value>
   </data>
-  <data name="radioButton_ConvertingOutput_Custom.Text" xml:space="preserve">
-    <value>自定义大小</value>
-  </data>
   <data name="groupBox10.Text" xml:space="preserve">
     <value>目标机型</value>
   </data>
@@ -369,9 +366,6 @@
   </data>
   <data name="radioButton_ConvertingInput_Custom.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 17</value>
-  </data>
-  <data name="radioButton_ConvertingInput_Custom.Text" xml:space="preserve">
-    <value>自定义大小</value>
   </data>
   <data name="groupBox9.Text" xml:space="preserve">
     <value>原始机型</value>
@@ -639,7 +633,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACm
-        DQAAAk1TRnQBSQFMAgEBBgEAATABKAFEASgBEAEAARABAAT/AQkBEAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAATABKAFIASgBEAEAARABAAT/AQkBEAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA

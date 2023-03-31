@@ -117,36 +117,297 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="button_SaveAs.Text" xml:space="preserve">
+    <value>Guardar proyecto como...</value>
+  </data>
+  <data name="Number.HeaderText" xml:space="preserve">
+    <value>#</value>
+  </data>
+  <data name="NameFile.HeaderText" xml:space="preserve">
+    <value>Nombre del archivo</value>
+  </data>
+  <data name="ColumnImage.HeaderText" xml:space="preserve">
+    <value>Imagen</value>
+  </data>
+  <data name="Column1.HeaderText" xml:space="preserve">
+    <value>Imagen</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="удалитьИзображениеToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 22</value>
   </data>
+  <data name="удалитьИзображениеToolStripMenuItem.Text" xml:space="preserve">
+    <value>Borrar Imagen</value>
+  </data>
   <data name="обновитьСписокИзображенийToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>220, 22</value>
+  </data>
+  <data name="обновитьСписокИзображенийToolStripMenuItem.Text" xml:space="preserve">
+    <value>Actualizar lista de imágenes</value>
   </data>
   <data name="contextMenuStrip_RemoveImage.Size" type="System.Drawing.Size, System.Drawing">
     <value>221, 48</value>
   </data>
+  <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
+    <value>Nº</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
+    <value>Nombre del archivo</value>
+  </data>
+  <data name="dataGridViewImageColumn1.HeaderText" xml:space="preserve">
+    <value>Imagen</value>
+  </data>
+  <data name="dataGridViewImageColumn2.HeaderText" xml:space="preserve">
+    <value>Imagen</value>
+  </data>
+  <data name="button_Add_Anim_Images.Text" xml:space="preserve">
+    <value>Agregar imágenes de animación</value>
+  </data>
+  <data name="button_Add_Images.Text" xml:space="preserve">
+    <value>Añadir imágenes</value>
+  </data>
+  <data name="button_SaveJson.Text" xml:space="preserve">
+    <value>Guardar Json</value>
+  </data>
+  <data name="button_OpenDir.Text" xml:space="preserve">
+    <value>Abrir Carpeta</value>
+  </data>
+  <data name="comboBox_AddBackground.Items" xml:space="preserve">
+    <value>Fondo esfera</value>
+  </data>
+  <data name="comboBox_AddSystem.Items" xml:space="preserve">
+    <value>Sistema</value>
+  </data>
+  <data name="comboBox_AddSystem.Items1" xml:space="preserve">
+    <value>Bateria</value>
+  </data>
+  <data name="comboBox_AddSystem.Items2" xml:space="preserve">
+    <value>Estados</value>
+  </data>
+  <data name="comboBox_AddSystem.Items3" xml:space="preserve">
+    <value>Atajos</value>
+  </data>
+  <data name="comboBox_AddSystem.Items4" xml:space="preserve">
+    <value>Animación</value>
+  </data>
+  <data name="comboBox_AddSystem.Items5" xml:space="preserve">
+    <value>Elementos editables</value>
+  </data>
+  <data name="comboBox_AddSystem.Items6" xml:space="preserve">
+    <value>Alerta Bluetooth</value>
+  </data>
+  <data name="comboBox_AddSystem.Items7" xml:space="preserve">
+    <value>Alertas periódicas</value>
+  </data>
+  <data name="comboBox_AddSystem.Items8" xml:space="preserve">
+    <value>Imagen</value>
+  </data>
+  <data name="comboBox_AddSystem.Items9" xml:space="preserve">
+    <value>Imagen superior</value>
+  </data>
+  <data name="comboBox_AddAir.Items" xml:space="preserve">
+    <value>Tiempo</value>
+  </data>
+  <data name="comboBox_AddAir.Items1" xml:space="preserve">
+    <value>Clima</value>
+  </data>
+  <data name="comboBox_AddAir.Items2" xml:space="preserve">
+    <value>ïndice UV</value>
+  </data>
+  <data name="comboBox_AddAir.Items3" xml:space="preserve">
+    <value>Humedad</value>
+  </data>
+  <data name="comboBox_AddAir.Items4" xml:space="preserve">
+    <value>Salida del sol/Puesta de sol</value>
+  </data>
+  <data name="comboBox_AddAir.Items5" xml:space="preserve">
+    <value>Fuerza del viento</value>
+  </data>
+  <data name="comboBox_AddAir.Items6" xml:space="preserve">
+    <value>Barómetro</value>
+  </data>
+  <data name="comboBox_AddAir.Items7" xml:space="preserve">
+    <value>Fases de la luna</value>
+  </data>
+  <data name="comboBox_AddActivity.Items" xml:space="preserve">
+    <value>Actividad</value>
+  </data>
+  <data name="comboBox_AddActivity.Items1" xml:space="preserve">
+    <value>Pasos</value>
+  </data>
+  <data name="comboBox_AddActivity.Items2" xml:space="preserve">
+    <value>Calorias</value>
+  </data>
+  <data name="comboBox_AddActivity.Items3" xml:space="preserve">
+    <value>Pulso</value>
+  </data>
+  <data name="comboBox_AddActivity.Items5" xml:space="preserve">
+    <value>Distancia</value>
+  </data>
+  <data name="comboBox_AddActivity.Items6" xml:space="preserve">
+    <value>Estar de pie</value>
+  </data>
+  <data name="comboBox_AddActivity.Items7" xml:space="preserve">
+    <value>Oxígeno en sangre</value>
+  </data>
+  <data name="comboBox_AddActivity.Items8" xml:space="preserve">
+    <value>Quema de grasa</value>
+  </data>
+  <data name="comboBox_AddActivity.Items9" xml:space="preserve">
+    <value>Estrés</value>
+  </data>
+  <data name="comboBox_AddDate.Items" xml:space="preserve">
+    <value>Fecha</value>
+  </data>
+  <data name="comboBox_AddDate.Items1" xml:space="preserve">
+    <value>Dia</value>
+  </data>
+  <data name="comboBox_AddDate.Items2" xml:space="preserve">
+    <value>Mes</value>
+  </data>
+  <data name="comboBox_AddDate.Items3" xml:space="preserve">
+    <value>Año</value>
+  </data>
+  <data name="comboBox_AddDate.Items4" xml:space="preserve">
+    <value>Dia de la semana</value>
+  </data>
+  <data name="comboBox_AddTime.Items" xml:space="preserve">
+    <value>Hora</value>
+  </data>
+  <data name="comboBox_AddTime.Items1" xml:space="preserve">
+    <value>Hora analógica</value>
+  </data>
+  <data name="comboBox_AddTime.Items2" xml:space="preserve">
+    <value>Hora Digital</value>
+  </data>
+  <data name="comboBox_AddTime.Items3" xml:space="preserve">
+    <value>Punteros editables</value>
+  </data>
+  <data name="comboBox_AddTime.Items4" xml:space="preserve">
+    <value>Hora analogica (Pro)</value>
+  </data>
+  <data name="groupBox_AddElemets.Text" xml:space="preserve">
+    <value>Agregar elementos a la esfera del reloj</value>
+  </data>
+  <data name="button_CopyAOD.Text" xml:space="preserve">
+    <value>Copiar elementos a AOD</value>
+  </data>
+  <data name="button_RandomPreview.Text" xml:space="preserve">
+    <value>Vista previa aleatoria</value>
+  </data>
   <data name="radioButton_ScreenNormal.Size" type="System.Drawing.Size, System.Drawing">
     <value>105, 17</value>
+  </data>
+  <data name="radioButton_ScreenNormal.Text" xml:space="preserve">
+    <value>Pantalla principal</value>
+  </data>
+  <data name="tabPage_Edit_Elements.Text" xml:space="preserve">
+    <value>Edición</value>
+  </data>
+  <data name="userCtrl_Set12.ButtonText" xml:space="preserve">
+    <value>Valores 12</value>
+  </data>
+  <data name="userCtrl_Set11.ButtonText" xml:space="preserve">
+    <value>Valores 11</value>
+  </data>
+  <data name="userCtrl_Set10.ButtonText" xml:space="preserve">
+    <value>Valores 10</value>
+  </data>
+  <data name="userCtrl_Set9.ButtonText" xml:space="preserve">
+    <value>Valores 9</value>
+  </data>
+  <data name="userCtrl_Set8.ButtonText" xml:space="preserve">
+    <value>Valores 8</value>
+  </data>
+  <data name="userCtrl_Set7.ButtonText" xml:space="preserve">
+    <value>Valores 7</value>
+  </data>
+  <data name="userCtrl_Set6.ButtonText" xml:space="preserve">
+    <value>Valores 6</value>
+  </data>
+  <data name="userCtrl_Set5.ButtonText" xml:space="preserve">
+    <value>Valores 5</value>
+  </data>
+  <data name="userCtrl_Set4.ButtonText" xml:space="preserve">
+    <value>Valores 4</value>
+  </data>
+  <data name="userCtrl_Set3.ButtonText" xml:space="preserve">
+    <value>Valores 3</value>
+  </data>
+  <data name="userCtrl_Set2.ButtonText" xml:space="preserve">
+    <value>Valores 2</value>
+  </data>
+  <data name="userCtrl_Set1.ButtonText" xml:space="preserve">
+    <value>Valores 1</value>
+  </data>
+  <data name="button_JsonPreview_Random.Text" xml:space="preserve">
+    <value>Valor aleatorio</value>
+  </data>
+  <data name="button_JsonPreview_Read.Text" xml:space="preserve">
+    <value>Cargar valor</value>
+  </data>
+  <data name="button_JsonPreview_Write.Text" xml:space="preserve">
+    <value>Guardar valores de vista previa</value>
+  </data>
+  <data name="tabPage_Show_Set.Text" xml:space="preserve">
+    <value>Datos para vista previa</value>
+  </data>
+  <data name="button_New_Project.Text" xml:space="preserve">
+    <value>Crear Nuevo Proyecto</value>
+  </data>
+  <data name="button_JSON.Text" xml:space="preserve">
+    <value>Proyecto abierto</value>
+  </data>
+  <data name="tabPage_Edit.Text" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>*** Para los modelos de la serie GTS, debido a las diferentes relaciones de aspecto y el diferente redondeo de las esquinas, no es posible escalar por completo, y parte de la imagen de abajo y en las esquinas pueden estar recortadas.</value>
   </data>
   <data name="label_ConvertingHelp03.Size" type="System.Drawing.Size, System.Drawing">
     <value>282, 13</value>
   </data>
+  <data name="label_ConvertingHelp03.Text" xml:space="preserve">
+    <value>!!! ¡Compruebe el dial resultante después de la conversión!</value>
+  </data>
   <data name="label_ConvertingHelp02.Size" type="System.Drawing.Size, System.Drawing">
     <value>685, 13</value>
+  </data>
+  <data name="label_ConvertingHelp02.Text" xml:space="preserve">
+    <value>** La conversión cambiará el tamaño de las imágenes, el radio del círculo, el ancho de la línea, recalculando las coordenadas de los elementos.</value>
   </data>
   <data name="label_ConvertingHelp01.Size" type="System.Drawing.Size, System.Drawing">
     <value>413, 13</value>
   </data>
+  <data name="label_ConvertingHelp01.Text" xml:space="preserve">
+    <value>* Se creará un nuevo directorio junto al directorio existente para el marcado resultante.</value>
+  </data>
   <data name="label_ConvertingHelp.Size" type="System.Drawing.Size, System.Drawing">
     <value>246, 13</value>
   </data>
-  <data name="radioButton_ConvertingOutput_Custom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 17</value>
+  <data name="label_ConvertingHelp.Text" xml:space="preserve">
+    <value>Abra la esfera del reloj deseada o guarde la actual.</value>
   </data>
-  <data name="radioButton_ConvertingInput_Custom.Size" type="System.Drawing.Size, System.Drawing">
-    <value>132, 17</value>
+  <data name="button_Converting.Text" xml:space="preserve">
+    <value>Convertir</value>
+  </data>
+  <data name="comboBox_ConvertingOutput_Model.Items" xml:space="preserve">
+    <value>tamaño personalizado</value>
+  </data>
+  <data name="groupBox10.Text" xml:space="preserve">
+    <value>modelo de destino</value>
+  </data>
+  <data name="comboBox_ConvertingInput_Model.Items" xml:space="preserve">
+    <value>tamaño personalizado</value>
+  </data>
+  <data name="groupBox9.Text" xml:space="preserve">
+    <value>modelo inicial</value>
+  </data>
+  <data name="tabPageConverting.Text" xml:space="preserve">
+    <value>Convirtiendo</value>
+  </data>
+  <data name="button_Reset.Text" xml:space="preserve">
+    <value>Reiniciar</value>
   </data>
   <data name="numericUpDown_Gif_Speed.Location" type="System.Drawing.Point, System.Drawing">
     <value>550, 253</value>
@@ -154,29 +415,68 @@
   <data name="checkBox_AllWidgetsInGif.Size" type="System.Drawing.Size, System.Drawing">
     <value>379, 17</value>
   </data>
+  <data name="checkBox_AllWidgetsInGif.Text" xml:space="preserve">
+    <value>Mostrar todos los elementos de las zonas editadas al guardar un archivo gif</value>
+  </data>
+  <data name="button_WatchSkin_PathGet.Text" xml:space="preserve">
+    <value>Navegar</value>
+  </data>
   <data name="checkBox_WatchSkin_Use.Size" type="System.Drawing.Size, System.Drawing">
     <value>239, 17</value>
+  </data>
+  <data name="checkBox_WatchSkin_Use.Text" xml:space="preserve">
+    <value>Usa la imagen del reloj al guardar *.png y *.gif</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Ver imagen</value>
   </data>
   <data name="label355.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 13</value>
   </data>
+  <data name="label355.Text" xml:space="preserve">
+    <value>Velocidad de animación GIF</value>
+  </data>
   <data name="checkBox_ShowIn12hourFormat.Size" type="System.Drawing.Size, System.Drawing">
     <value>278, 17</value>
+  </data>
+  <data name="checkBox_ShowIn12hourFormat.Text" xml:space="preserve">
+    <value>Si es posible, muestra la hora en formato de 12 horas.</value>
+  </data>
+  <data name="button_SavePNG_shortcut.Text" xml:space="preserve">
+    <value>Guardar vista previa de accesos directos</value>
   </data>
   <data name="checkBox_Shortcuts_In_Gif.Size" type="System.Drawing.Size, System.Drawing">
     <value>278, 17</value>
   </data>
+  <data name="checkBox_Shortcuts_In_Gif.Text" xml:space="preserve">
+    <value>Resalte los accesos directos al guardar un archivo gif</value>
+  </data>
   <data name="checkBox_Shortcuts_Image.Size" type="System.Drawing.Size, System.Drawing">
     <value>283, 17</value>
+  </data>
+  <data name="checkBox_Shortcuts_Image.Text" xml:space="preserve">
+    <value>Mostrar la imagen que se muestra cuando se hace clic</value>
   </data>
   <data name="checkBox_Shortcuts_Border.Size" type="System.Drawing.Size, System.Drawing">
     <value>160, 17</value>
   </data>
+  <data name="checkBox_Shortcuts_Border.Text" xml:space="preserve">
+    <value>Encuadre alrededor del área</value>
+  </data>
   <data name="checkBox_Shortcuts_Area.Size" type="System.Drawing.Size, System.Drawing">
     <value>126, 17</value>
   </data>
+  <data name="checkBox_Shortcuts_Area.Text" xml:space="preserve">
+    <value>Cuadrícula punteada</value>
+  </data>
+  <data name="groupBox8.Text" xml:space="preserve">
+    <value>Tipo de resaltado del área de acceso directo</value>
+  </data>
   <data name="checkBox_JsonWarnings.Size" type="System.Drawing.Size, System.Drawing">
     <value>250, 17</value>
+  </data>
+  <data name="checkBox_JsonWarnings.Text" xml:space="preserve">
+    <value>Mostrar advertencia al guardar el archivo JSON</value>
   </data>
   <data name="comboBox_Language.Location" type="System.Drawing.Point, System.Drawing">
     <value>462, 399</value>
@@ -184,69 +484,204 @@
   <data name="label356.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 13</value>
   </data>
+  <data name="label356.Text" xml:space="preserve">
+    <value>Lenguaje:</value>
+  </data>
   <data name="radioButton_Settings_Pack_DoNotning.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 17</value>
+  </data>
+  <data name="radioButton_Settings_Pack_DoNotning.Text" xml:space="preserve">
+    <value>No hacer nada</value>
   </data>
   <data name="radioButton_Settings_Pack_GoToFile.Size" type="System.Drawing.Size, System.Drawing">
     <value>101, 17</value>
   </data>
+  <data name="radioButton_Settings_Pack_GoToFile.Text" xml:space="preserve">
+    <value>Abrir .zip creado</value>
+  </data>
   <data name="radioButton_Settings_Pack_Dialog.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 17</value>
+  </data>
+  <data name="radioButton_Settings_Pack_Dialog.Text" xml:space="preserve">
+    <value>Dejar elegir</value>
+  </data>
+  <data name="groupBox7.Text" xml:space="preserve">
+    <value>Acción después de empaquetar la esfera del reloj</value>
+  </data>
+  <data name="button_PreviewStates_PathGet.Text" xml:space="preserve">
+    <value>Navegar</value>
   </data>
   <data name="radioButton_Settings_Open_Download_Your_File.Size" type="System.Drawing.Size, System.Drawing">
     <value>196, 17</value>
   </data>
+  <data name="radioButton_Settings_Open_Download_Your_File.Text" xml:space="preserve">
+    <value>Cargar Preview.States seleccionado</value>
+  </data>
   <data name="radioButton_Settings_Open_DoNotning.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 17</value>
+  </data>
+  <data name="radioButton_Settings_Open_DoNotning.Text" xml:space="preserve">
+    <value>No hacer nada</value>
   </data>
   <data name="radioButton_Settings_Open_Download.Size" type="System.Drawing.Size, System.Drawing">
     <value>322, 17</value>
   </data>
+  <data name="radioButton_Settings_Open_Download.Text" xml:space="preserve">
+    <value>Cargue Preview.States desde la carpeta del proyecto (si existe)</value>
+  </data>
   <data name="radioButton_Settings_Open_Dialog.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 17</value>
+  </data>
+  <data name="radioButton_Settings_Open_Dialog.Text" xml:space="preserve">
+    <value>Dejar elegir</value>
+  </data>
+  <data name="groupBox6.Text" xml:space="preserve">
+    <value>Después de abrir el proyecto</value>
   </data>
   <data name="radioButton_Settings_AfterUnpack_DoNothing.Size" type="System.Drawing.Size, System.Drawing">
     <value>96, 17</value>
   </data>
+  <data name="radioButton_Settings_AfterUnpack_DoNothing.Text" xml:space="preserve">
+    <value>No hacer nada</value>
+  </data>
   <data name="radioButton_Settings_AfterUnpack_Download.Size" type="System.Drawing.Size, System.Drawing">
     <value>199, 17</value>
+  </data>
+  <data name="radioButton_Settings_AfterUnpack_Download.Text" xml:space="preserve">
+    <value>Cargue el proyecto desempaquetado</value>
   </data>
   <data name="radioButton_Settings_AfterUnpack_Dialog.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 17</value>
   </data>
+  <data name="radioButton_Settings_AfterUnpack_Dialog.Text" xml:space="preserve">
+    <value>Dejar elegir</value>
+  </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>Acción después de desempaquetar la esfera del reloj</value>
+  </data>
   <data name="radioButton_Settings_Unpack_Replace.Size" type="System.Drawing.Size, System.Drawing">
     <value>81, 17</value>
+  </data>
+  <data name="radioButton_Settings_Unpack_Replace.Text" xml:space="preserve">
+    <value>Reemplazar</value>
   </data>
   <data name="radioButton_Settings_Unpack_Save.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 17</value>
   </data>
+  <data name="radioButton_Settings_Unpack_Save.Text" xml:space="preserve">
+    <value>Guardar ambos</value>
+  </data>
   <data name="radioButton_Settings_Unpack_Dialog.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 17</value>
+  </data>
+  <data name="radioButton_Settings_Unpack_Dialog.Text" xml:space="preserve">
+    <value>Dejar elegir</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Acción si los nombres de las carátulas desempaquetadas coinciden</value>
+  </data>
+  <data name="label483.Size" type="System.Drawing.Size, System.Drawing">
+    <value>269, 39</value>
+  </data>
+  <data name="label483.Text" xml:space="preserve">
+    <value>Velocidad de animación de la vista previa de animación
+(alta velocidad - animación más fluida,
+más carga del sistema)</value>
+  </data>
+  <data name="tabPage_Settings.Text" xml:space="preserve">
+    <value>Ajustes</value>
+  </data>
+  <data name="tabPage_Tips.Text" xml:space="preserve">
+    <value>Consejos de uso</value>
   </data>
   <data name="label415.Size" type="System.Drawing.Size, System.Drawing">
     <value>137, 13</value>
   </data>
+  <data name="label415.Text" xml:space="preserve">
+    <value>Ayudado con la traducción:</value>
+  </data>
   <data name="label412.Size" type="System.Drawing.Size, System.Drawing">
     <value>144, 13</value>
+  </data>
+  <data name="label412.Text" xml:space="preserve">
+    <value>El programa fue probado por:</value>
   </data>
   <data name="label413.Size" type="System.Drawing.Size, System.Drawing">
     <value>357, 13</value>
   </data>
+  <data name="label413.Text" xml:space="preserve">
+    <value>Utilidad para convertir imágenes de esferas de reloj a formato PNG normal:</value>
+  </data>
+  <data name="label_donate.Text" xml:space="preserve">
+    <value>Donar al autor
+Paypal: sashacx75@gmail.com</value>
+  </data>
+  <data name="label409.Text" xml:space="preserve">
+    <value>El programa es un editor para diales GTR 3, GTS 3. Dado que los diales son programas casi completos, es imposible implementar toda la funcionalidad disponible para diales en este editor. El editor debería poder reconocer la mayoría de las esferas de reloj creadas en él o en dev.huami.com. Pero no puede reconocer las carátulas de reloj de la aplicación Zepp.</value>
+  </data>
   <data name="label407.Size" type="System.Drawing.Size, System.Drawing">
     <value>35, 13</value>
+  </data>
+  <data name="label407.Text" xml:space="preserve">
+    <value>Autor:</value>
   </data>
   <data name="label406.Size" type="System.Drawing.Size, System.Drawing">
     <value>45, 13</value>
   </data>
+  <data name="label406.Text" xml:space="preserve">
+    <value>Version:</value>
+  </data>
+  <data name="tabPage_About.Text" xml:space="preserve">
+    <value>Acerca de</value>
+  </data>
+  <data name="checkBox_WidgetsArea.Text" xml:space="preserve">
+    <value>Resaltar zonas editables</value>
+  </data>
+  <data name="checkBox_center_marker.Text" xml:space="preserve">
+    <value>Resalte el centro de rotación de los punteros</value>
+  </data>
+  <data name="button_CreatePreview.Text" xml:space="preserve">
+    <value>Generar vista previa</value>
+  </data>
+  <data name="button_RefreshPreview.Text" xml:space="preserve">
+    <value>Actualizar vista previa</value>
+  </data>
+  <data name="checkBox_CircleScaleImage.Text" xml:space="preserve">
+    <value>Resalte todo el espacio ocupado por el progreso del círculo y la línea</value>
+  </data>
+  <data name="checkBox_Show_Shortcuts.Text" xml:space="preserve">
+    <value>Mostrar área de acceso directo</value>
+  </data>
+  <data name="checkBox_crop.Text" xml:space="preserve">
+    <value>Recorta la imagen para que se ajuste a la pantalla (puede funcionar lentamente)</value>
+  </data>
+  <data name="checkBox_border.Text" xml:space="preserve">
+    <value>Borde alrededor de objetos alineados</value>
+  </data>
+  <data name="button_SaveGIF.Text" xml:space="preserve">
+    <value>Guardar GIF</value>
+  </data>
+  <data name="button_SavePNG.Text" xml:space="preserve">
+    <value>Guardar PNG</value>
+  </data>
   <data name="checkBox_WebB.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 17</value>
+  </data>
+  <data name="checkBox_WebB.Text" xml:space="preserve">
+    <value>Rejilla negra</value>
+  </data>
+  <data name="checkBox_WebW.Text" xml:space="preserve">
+    <value>Rejilla blanca</value>
+  </data>
+  <data name="button_PreviewBig.Text" xml:space="preserve">
+    <value>Agrandar</value>
   </data>
   <data name="imageList1.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACm
-        DQAAAk1TRnQBSQFMAgEBBgEAAagBLQHAAS0BEAEAARABAAT/AQkBEAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
+        DQAAAk1TRnQBSQFMAgEBBgEAAcwBLQHMAS0BEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -304,8 +739,20 @@
         AX4B4QEPAQ0BhgGAAQEBPgF+AfABDwEGAcICAAI+AfgBHwFDAWABAAEgAT8BPgH4AT8BYQGwAQABQAE/
         AR4B4AEnATAB2AEAAYABPAEeAeEBAwFYAWwBAQEAATwBHgHhAQcBbAE2AQEBAAE/Af4B4QEfATYBGgEB
         AwAB8AEfAQsBDAQAAfgBPwFNAYYBgAEBAgAB/AE/AQIBwgGAAQEBBAEAAf4BHwFDAWABwAEDAYQBAAH+
-        AZ8CAAHwAQ8B9wHnAf4BHxYACw==
+        AZ8CAAHwAQ8B9wHnAf4BHws=
 </value>
+  </data>
+  <data name="button_pack_zip.Text" xml:space="preserve">
+    <value>Empaquetar la esfera</value>
+  </data>
+  <data name="button_unpack_zip.Text" xml:space="preserve">
+    <value>Desempaquetar la esfera</value>
+  </data>
+  <data name="label_watch_model.Size" type="System.Drawing.Size, System.Drawing">
+    <value>61, 13</value>
+  </data>
+  <data name="label_watch_model.Text" xml:space="preserve">
+    <value>Ver Modelo</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1557,449 +2004,5 @@
         AAAAAAAAAAAAAO+BPCbvgT1I74I+SO+BPSYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8PwAA4AcAAMAD
         AACAAQAAgAEAAIABAAAAAAAAAAAAAAAAAAAAAAAAgAEAAIABAACAAQAAwAMAAOAHAAD8PwAA
 </value>
-  </data>
-  <data name="button_Add_Anim_Images.Text" xml:space="preserve">
-    <value>Agregar imágenes de animación</value>
-  </data>
-  <data name="button_Add_Images.Text" xml:space="preserve">
-    <value>Añadir imágenes</value>
-  </data>
-  <data name="button_Converting.Text" xml:space="preserve">
-    <value>Convertir</value>
-  </data>
-  <data name="button_CopyAOD.Text" xml:space="preserve">
-    <value>Copiar elementos a AOD</value>
-  </data>
-  <data name="button_CreatePreview.Text" xml:space="preserve">
-    <value>Generar vista previa</value>
-  </data>
-  <data name="button_JSON.Text" xml:space="preserve">
-    <value>Proyecto abierto</value>
-  </data>
-  <data name="button_JsonPreview_Random.Text" xml:space="preserve">
-    <value>Valor aleatorio</value>
-  </data>
-  <data name="button_JsonPreview_Read.Text" xml:space="preserve">
-    <value>Cargar valor</value>
-  </data>
-  <data name="button_JsonPreview_Write.Text" xml:space="preserve">
-    <value>Guardar valores de vista previa</value>
-  </data>
-  <data name="button_New_Project.Text" xml:space="preserve">
-    <value>Crear Nuevo Proyecto</value>
-  </data>
-  <data name="button_OpenDir.Text" xml:space="preserve">
-    <value>Abrir Carpeta</value>
-  </data>
-  <data name="button_pack_zip.Text" xml:space="preserve">
-    <value>Empaquetar la esfera</value>
-  </data>
-  <data name="button_PreviewBig.Text" xml:space="preserve">
-    <value>Agrandar</value>
-  </data>
-  <data name="button_PreviewStates_PathGet.Text" xml:space="preserve">
-    <value>Navegar</value>
-  </data>
-  <data name="button_RandomPreview.Text" xml:space="preserve">
-    <value>Vista previa aleatoria</value>
-  </data>
-  <data name="button_RefreshPreview.Text" xml:space="preserve">
-    <value>Actualizar vista previa</value>
-  </data>
-  <data name="button_Reset.Text" xml:space="preserve">
-    <value>Reiniciar</value>
-  </data>
-  <data name="button_SaveGIF.Text" xml:space="preserve">
-    <value>Guardar GIF</value>
-  </data>
-  <data name="button_SaveJson.Text" xml:space="preserve">
-    <value>Guardar Json</value>
-  </data>
-  <data name="button_SavePNG.Text" xml:space="preserve">
-    <value>Guardar PNG</value>
-  </data>
-  <data name="button_unpack_zip.Text" xml:space="preserve">
-    <value>Desempaquetar la esfera</value>
-  </data>
-  <data name="button_WatchSkin_PathGet.Text" xml:space="preserve">
-    <value>Navegar</value>
-  </data>
-  <data name="checkBox_AllWidgetsInGif.Text" xml:space="preserve">
-    <value>Mostrar todos los elementos de las zonas editadas al guardar un archivo gif</value>
-  </data>
-  <data name="checkBox_border.Text" xml:space="preserve">
-    <value>Borde alrededor de objetos alineados</value>
-  </data>
-  <data name="checkBox_center_marker.Text" xml:space="preserve">
-    <value>Resalte el centro de rotación de los punteros</value>
-  </data>
-  <data name="checkBox_CircleScaleImage.Text" xml:space="preserve">
-    <value>Resalte todo el espacio ocupado por el progreso del círculo y la línea</value>
-  </data>
-  <data name="checkBox_crop.Text" xml:space="preserve">
-    <value>Recorta la imagen para que se ajuste a la pantalla (puede funcionar lentamente)</value>
-  </data>
-  <data name="checkBox_JsonWarnings.Text" xml:space="preserve">
-    <value>Mostrar advertencia al guardar el archivo JSON</value>
-  </data>
-  <data name="checkBox_Shortcuts_Area.Text" xml:space="preserve">
-    <value>Cuadrícula punteada</value>
-  </data>
-  <data name="checkBox_Shortcuts_Border.Text" xml:space="preserve">
-    <value>Encuadre alrededor del área</value>
-  </data>
-  <data name="checkBox_Shortcuts_Image.Text" xml:space="preserve">
-    <value>Mostrar la imagen que se muestra cuando se hace clic</value>
-  </data>
-  <data name="checkBox_Shortcuts_In_Gif.Text" xml:space="preserve">
-    <value>Resalte los accesos directos al guardar un archivo gif</value>
-  </data>
-  <data name="checkBox_ShowIn12hourFormat.Text" xml:space="preserve">
-    <value>Si es posible, muestra la hora en formato de 12 horas.</value>
-  </data>
-  <data name="checkBox_Show_Shortcuts.Text" xml:space="preserve">
-    <value>Mostrar área de acceso directo</value>
-  </data>
-  <data name="checkBox_WatchSkin_Use.Text" xml:space="preserve">
-    <value>Usa la imagen del reloj al guardar *.png y *.gif</value>
-  </data>
-  <data name="checkBox_WebB.Text" xml:space="preserve">
-    <value>Rejilla negra</value>
-  </data>
-  <data name="checkBox_WebW.Text" xml:space="preserve">
-    <value>Rejilla blanca</value>
-  </data>
-  <data name="checkBox_WidgetsArea.Text" xml:space="preserve">
-    <value>Resaltar zonas editables</value>
-  </data>
-  <data name="Column1.HeaderText" xml:space="preserve">
-    <value>Imagen</value>
-  </data>
-  <data name="ColumnImage.HeaderText" xml:space="preserve">
-    <value>Imagen</value>
-  </data>
-  <data name="comboBox_AddActivity.Items" xml:space="preserve">
-    <value>Actividad</value>
-  </data>
-  <data name="comboBox_AddActivity.Items1" xml:space="preserve">
-    <value>Pasos</value>
-  </data>
-  <data name="comboBox_AddActivity.Items2" xml:space="preserve">
-    <value>Calorias</value>
-  </data>
-  <data name="comboBox_AddActivity.Items3" xml:space="preserve">
-    <value>Pulso</value>
-  </data>
-  <data name="comboBox_AddActivity.Items5" xml:space="preserve">
-    <value>Distancia</value>
-  </data>
-  <data name="comboBox_AddActivity.Items6" xml:space="preserve">
-    <value>Estar de pie</value>
-  </data>
-  <data name="comboBox_AddActivity.Items7" xml:space="preserve">
-    <value>Oxígeno en sangre</value>
-  </data>
-  <data name="comboBox_AddActivity.Items8" xml:space="preserve">
-    <value>Quema de grasa</value>
-  </data>
-  <data name="comboBox_AddActivity.Items9" xml:space="preserve">
-    <value>Estrés</value>
-  </data>
-  <data name="comboBox_AddAir.Items" xml:space="preserve">
-    <value>Tiempo</value>
-  </data>
-  <data name="comboBox_AddAir.Items1" xml:space="preserve">
-    <value>Clima</value>
-  </data>
-  <data name="comboBox_AddAir.Items2" xml:space="preserve">
-    <value>ïndice UV</value>
-  </data>
-  <data name="comboBox_AddAir.Items3" xml:space="preserve">
-    <value>Humedad</value>
-  </data>
-  <data name="comboBox_AddAir.Items4" xml:space="preserve">
-    <value>Salida del sol/Puesta de sol</value>
-  </data>
-  <data name="comboBox_AddAir.Items5" xml:space="preserve">
-    <value>Fuerza del viento</value>
-  </data>
-  <data name="comboBox_AddAir.Items6" xml:space="preserve">
-    <value>Barómetro</value>
-  </data>
-  <data name="comboBox_AddAir.Items7" xml:space="preserve">
-    <value>Fases de la luna</value>
-  </data>
-  <data name="comboBox_AddBackground.Items" xml:space="preserve">
-    <value>Fondo esfera</value>
-  </data>
-  <data name="comboBox_AddDate.Items" xml:space="preserve">
-    <value>Fecha</value>
-  </data>
-  <data name="comboBox_AddDate.Items1" xml:space="preserve">
-    <value>Dia</value>
-  </data>
-  <data name="comboBox_AddDate.Items2" xml:space="preserve">
-    <value>Mes</value>
-  </data>
-  <data name="comboBox_AddDate.Items3" xml:space="preserve">
-    <value>Año</value>
-  </data>
-  <data name="comboBox_AddDate.Items4" xml:space="preserve">
-    <value>Dia de la semana</value>
-  </data>
-  <data name="comboBox_AddSystem.Items" xml:space="preserve">
-    <value>Sistema</value>
-  </data>
-  <data name="comboBox_AddSystem.Items1" xml:space="preserve">
-    <value>Bateria</value>
-  </data>
-  <data name="comboBox_AddSystem.Items2" xml:space="preserve">
-    <value>Estados</value>
-  </data>
-  <data name="comboBox_AddSystem.Items3" xml:space="preserve">
-    <value>Atajos</value>
-  </data>
-  <data name="comboBox_AddSystem.Items4" xml:space="preserve">
-    <value>Animación</value>
-  </data>
-  <data name="comboBox_AddSystem.Items5" xml:space="preserve">
-    <value>Elementos editables</value>
-  </data>
-  <data name="comboBox_AddTime.Items" xml:space="preserve">
-    <value>Hora</value>
-  </data>
-  <data name="comboBox_AddTime.Items1" xml:space="preserve">
-    <value>Hora analógica</value>
-  </data>
-  <data name="comboBox_AddTime.Items2" xml:space="preserve">
-    <value>Hora Digital</value>
-  </data>
-  <data name="comboBox_AddTime.Items3" xml:space="preserve">
-    <value>Punteros editables</value>
-  </data>
-  <data name="comboBox_ConvertingInput_Model.Items" xml:space="preserve">
-    <value>tamaño personalizado</value>
-  </data>
-  <data name="comboBox_ConvertingOutput_Model.Items" xml:space="preserve">
-    <value>tamaño personalizado</value>
-  </data>
-  <data name="dataGridViewImageColumn1.HeaderText" xml:space="preserve">
-    <value>Imagen</value>
-  </data>
-  <data name="dataGridViewImageColumn2.HeaderText" xml:space="preserve">
-    <value>Imagen</value>
-  </data>
-  <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
-    <value>Nº</value>
-  </data>
-  <data name="dataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
-    <value>Nombre del archivo</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Acción si los nombres de las carátulas desempaquetadas coinciden</value>
-  </data>
-  <data name="groupBox10.Text" xml:space="preserve">
-    <value>modelo de destino</value>
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Ver imagen</value>
-  </data>
-  <data name="groupBox5.Text" xml:space="preserve">
-    <value>Acción después de desempaquetar la esfera del reloj</value>
-  </data>
-  <data name="groupBox6.Text" xml:space="preserve">
-    <value>Después de abrir el proyecto</value>
-  </data>
-  <data name="groupBox7.Text" xml:space="preserve">
-    <value>Acción después de empaquetar la esfera del reloj</value>
-  </data>
-  <data name="groupBox8.Text" xml:space="preserve">
-    <value>Tipo de resaltado del área de acceso directo</value>
-  </data>
-  <data name="groupBox9.Text" xml:space="preserve">
-    <value>modelo inicial</value>
-  </data>
-  <data name="groupBox_AddElemets.Text" xml:space="preserve">
-    <value>Agregar elementos a la esfera del reloj</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>*** Para los modelos de la serie GTS, debido a las diferentes relaciones de aspecto y el diferente redondeo de las esquinas, no es posible escalar por completo, y parte de la imagen de abajo y en las esquinas pueden estar recortadas.</value>
-  </data>
-  <data name="label355.Text" xml:space="preserve">
-    <value>Velocidad de animación GIF</value>
-  </data>
-  <data name="label356.Text" xml:space="preserve">
-    <value>Lenguaje:</value>
-  </data>
-  <data name="label406.Text" xml:space="preserve">
-    <value>Version:</value>
-  </data>
-  <data name="label407.Text" xml:space="preserve">
-    <value>Autor:</value>
-  </data>
-  <data name="label409.Text" xml:space="preserve">
-    <value>El programa es un editor para diales GTR 3, GTS 3. Dado que los diales son programas casi completos, es imposible implementar toda la funcionalidad disponible para diales en este editor. El editor debería poder reconocer la mayoría de las esferas de reloj creadas en él o en dev.huami.com. Pero no puede reconocer las carátulas de reloj de la aplicación Zepp.</value>
-  </data>
-  <data name="label412.Text" xml:space="preserve">
-    <value>El programa fue probado por:</value>
-  </data>
-  <data name="label413.Text" xml:space="preserve">
-    <value>Utilidad para convertir imágenes de esferas de reloj a formato PNG normal:</value>
-  </data>
-  <data name="label415.Text" xml:space="preserve">
-    <value>Ayudado con la traducción:</value>
-  </data>
-  <data name="label483.Text" xml:space="preserve">
-    <value>Velocidad de animación de la vista previa de animación
-(alta velocidad - animación más fluida,
-más carga del sistema)</value>
-  </data>
-  <data name="label_ConvertingHelp.Text" xml:space="preserve">
-    <value>Abra la esfera del reloj deseada o guarde la actual.</value>
-  </data>
-  <data name="label_ConvertingHelp01.Text" xml:space="preserve">
-    <value>* Se creará un nuevo directorio junto al directorio existente para el marcado resultante.</value>
-  </data>
-  <data name="label_ConvertingHelp02.Text" xml:space="preserve">
-    <value>** La conversión cambiará el tamaño de las imágenes, el radio del círculo, el ancho de la línea, recalculando las coordenadas de los elementos.</value>
-  </data>
-  <data name="label_ConvertingHelp03.Text" xml:space="preserve">
-    <value>!!! ¡Compruebe el dial resultante después de la conversión!</value>
-  </data>
-  <data name="label_donate.Text" xml:space="preserve">
-    <value>Donar al autor
-Paypal: sashacx75@gmail.com</value>
-  </data>
-  <data name="label_watch_model.Text" xml:space="preserve">
-    <value>Ver Modelo</value>
-  </data>
-  <data name="NameFile.HeaderText" xml:space="preserve">
-    <value>Nombre del archivo</value>
-  </data>
-  <data name="Number.HeaderText" xml:space="preserve">
-    <value>#</value>
-  </data>
-  <data name="radioButton_ScreenNormal.Text" xml:space="preserve">
-    <value>Pantalla principal</value>
-  </data>
-  <data name="radioButton_Settings_AfterUnpack_Dialog.Text" xml:space="preserve">
-    <value>Dejar elegir</value>
-  </data>
-  <data name="radioButton_Settings_AfterUnpack_DoNothing.Text" xml:space="preserve">
-    <value>No hacer nada</value>
-  </data>
-  <data name="radioButton_Settings_AfterUnpack_Download.Text" xml:space="preserve">
-    <value>Cargue el proyecto desempaquetado</value>
-  </data>
-  <data name="radioButton_Settings_Open_Dialog.Text" xml:space="preserve">
-    <value>Dejar elegir</value>
-  </data>
-  <data name="radioButton_Settings_Open_DoNotning.Text" xml:space="preserve">
-    <value>No hacer nada</value>
-  </data>
-  <data name="radioButton_Settings_Open_Download.Text" xml:space="preserve">
-    <value>Cargue Preview.States desde la carpeta del proyecto (si existe)</value>
-  </data>
-  <data name="radioButton_Settings_Open_Download_Your_File.Text" xml:space="preserve">
-    <value>Cargar Preview.States seleccionado</value>
-  </data>
-  <data name="radioButton_Settings_Pack_Dialog.Text" xml:space="preserve">
-    <value>Dejar elegir</value>
-  </data>
-  <data name="radioButton_Settings_Pack_DoNotning.Text" xml:space="preserve">
-    <value>No hacer nada</value>
-  </data>
-  <data name="radioButton_Settings_Pack_GoToFile.Text" xml:space="preserve">
-    <value>Abrir .zip creado</value>
-  </data>
-  <data name="radioButton_Settings_Unpack_Dialog.Text" xml:space="preserve">
-    <value>Dejar elegir</value>
-  </data>
-  <data name="radioButton_Settings_Unpack_Replace.Text" xml:space="preserve">
-    <value>Reemplazar</value>
-  </data>
-  <data name="radioButton_Settings_Unpack_Save.Text" xml:space="preserve">
-    <value>Guardar ambos</value>
-  </data>
-  <data name="tabPageConverting.Text" xml:space="preserve">
-    <value>Convirtiendo</value>
-  </data>
-  <data name="tabPage_About.Text" xml:space="preserve">
-    <value>Acerca de</value>
-  </data>
-  <data name="tabPage_Edit.Text" xml:space="preserve">
-    <value>Editar</value>
-  </data>
-  <data name="tabPage_Edit_Elements.Text" xml:space="preserve">
-    <value>Edición</value>
-  </data>
-  <data name="tabPage_Settings.Text" xml:space="preserve">
-    <value>Ajustes</value>
-  </data>
-  <data name="tabPage_Show_Set.Text" xml:space="preserve">
-    <value>Datos para vista previa</value>
-  </data>
-  <data name="tabPage_Tips.Text" xml:space="preserve">
-    <value>Consejos de uso</value>
-  </data>
-  <data name="userCtrl_Set1.ButtonText" xml:space="preserve">
-    <value>Valores 1</value>
-  </data>
-  <data name="userCtrl_Set10.ButtonText" xml:space="preserve">
-    <value>Valores 10</value>
-  </data>
-  <data name="userCtrl_Set11.ButtonText" xml:space="preserve">
-    <value>Valores 11</value>
-  </data>
-  <data name="userCtrl_Set12.ButtonText" xml:space="preserve">
-    <value>Valores 12</value>
-  </data>
-  <data name="userCtrl_Set2.ButtonText" xml:space="preserve">
-    <value>Valores 2</value>
-  </data>
-  <data name="userCtrl_Set3.ButtonText" xml:space="preserve">
-    <value>Valores 3</value>
-  </data>
-  <data name="userCtrl_Set4.ButtonText" xml:space="preserve">
-    <value>Valores 4</value>
-  </data>
-  <data name="userCtrl_Set5.ButtonText" xml:space="preserve">
-    <value>Valores 5</value>
-  </data>
-  <data name="userCtrl_Set6.ButtonText" xml:space="preserve">
-    <value>Valores 6</value>
-  </data>
-  <data name="userCtrl_Set7.ButtonText" xml:space="preserve">
-    <value>Valores 7</value>
-  </data>
-  <data name="userCtrl_Set8.ButtonText" xml:space="preserve">
-    <value>Valores 8</value>
-  </data>
-  <data name="userCtrl_Set9.ButtonText" xml:space="preserve">
-    <value>Valores 9</value>
-  </data>
-  <data name="обновитьСписокИзображенийToolStripMenuItem.Text" xml:space="preserve">
-    <value>Actualizar lista de imágenes</value>
-  </data>
-  <data name="удалитьИзображениеToolStripMenuItem.Text" xml:space="preserve">
-    <value>Borrar Imagen</value>
-  </data>
-  <data name="button_SaveAs.Text" xml:space="preserve">
-    <value>Guardar proyecto como...</value>
-  </data>
-  <data name="comboBox_AddSystem.Items6" xml:space="preserve">
-    <value>Alerta Bluetooth</value>
-  </data>
-  <data name="comboBox_AddSystem.Items7" xml:space="preserve">
-    <value>Alertas periódicas</value>
-  </data>
-  <data name="comboBox_AddTime.Items4" xml:space="preserve">
-    <value>Hora analogica (Pro)</value>
-  </data>
-  <data name="comboBox_AddSystem.Items8" xml:space="preserve">
-    <value>Imagen</value>
-  </data>
-  <data name="comboBox_AddSystem.Items9" xml:space="preserve">
-    <value>Imagen superior</value>
   </data>
 </root>

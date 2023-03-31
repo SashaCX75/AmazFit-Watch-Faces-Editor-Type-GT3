@@ -264,4 +264,13 @@ disminuirá la cantidad de progreso.</value>
   <data name="копироватьToolStripMenuItemY.Text" xml:space="preserve">
     <value>Copiar</value>
   </data>
+  <data name="comboBox_scaleLinear_lineCap.Items" xml:space="preserve">
+    <value>Redondo</value>
+  </data>
+  <data name="comboBox_scaleLinear_lineCap.Items1" xml:space="preserve">
+    <value>Plano</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Fin de línea</value>
+  </data>
 </root>

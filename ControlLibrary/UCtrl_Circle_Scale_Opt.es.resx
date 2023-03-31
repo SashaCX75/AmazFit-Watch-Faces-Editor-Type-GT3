@@ -297,4 +297,13 @@ disminuirá la cantidad de progreso.</value>
   <data name="label1.Text" xml:space="preserve">
     <value>Color</value>
   </data>
+  <data name="comboBox_scaleCircle_lineCap.Items" xml:space="preserve">
+    <value>Redondo</value>
+  </data>
+  <data name="comboBox_scaleCircle_lineCap.Items1" xml:space="preserve">
+    <value>Plano</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Fin de línea</value>
+  </data>
 </root>

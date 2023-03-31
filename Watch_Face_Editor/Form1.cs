@@ -1,5 +1,6 @@
 ﻿using ControlLibrary;
 using ImageMagick;
+using Microsoft.Win32;
 using Microsoft.WindowsAPICodePack.Dialogs;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -60,6 +61,7 @@ namespace Watch_Face_Editor
         {
             if (File.Exists(Application.StartupPath + "\\Program log.txt")) File.Delete(Application.StartupPath + @"\Program log.txt");
             Logger.WriteLine("* Form1");
+            Logger.WriteLine("Application.StartupPath: " + Application.StartupPath);
 
             SplashScreenStart();
 
@@ -98,7 +100,25 @@ namespace Watch_Face_Editor
                     });
                     File.WriteAllText(Application.StartupPath + @"\Settings.json", JSON_String, Encoding.UTF8);
                 }
+                Logger.WriteLine("FormLocation = " + Properties.Settings.Default.FormLocation.ToString());
 
+#if DEBUG
+                const string subkey = @"SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\";
+
+                using (var ndpKey = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32).OpenSubKey(subkey))
+                {
+                    if (ndpKey != null && ndpKey.GetValue("Release") != null)
+                    {
+                        Console.WriteLine($".NET Framework Version: {CheckFor45PlusVersion((int)ndpKey.GetValue("Release"))}");
+                        Logger.WriteLine($".NET Framework Version: {CheckFor45PlusVersion((int)ndpKey.GetValue("Release"))}");
+                    }
+                    else
+                    {
+                        Console.WriteLine(".NET Framework Version 4.5 or later is not detected.");
+                        Logger.WriteLine(".NET Framework Version 4.5 or later is not detected.");
+                    }
+                }
+#endif
 
                 if (ProgramSettings == null) ProgramSettings = new Program_Settings();
                 Size size = new Size();
@@ -161,12 +181,6 @@ namespace Watch_Face_Editor
             Settings_Load = false;
             currentDPI = tabControl1.Height / 670f;
 
-#if !DEBUG
-            //comboBox_AddAir.Items.RemoveAt(6);
-            //comboBox_AddAir.Items.RemoveAt(5);
-            //comboBox_AddAir.Items.RemoveAt(4);
-#endif
-
             #region sistem font
             //byte[] fontData = Properties.Resources.OpenSans_Regular;
             byte[] fontData = Properties.Resources.Roboto_Regular;
@@ -218,7 +232,6 @@ namespace Watch_Face_Editor
             Logger.WriteLine("* SplashScreenStart (end)");
 
         }
-
 
         /// <summary>
         /// Find window by Caption only. Note you must pass IntPtr.Zero as the first parameter.
@@ -1604,25 +1617,6 @@ namespace Watch_Face_Editor
                             }
                         }
                     }
-
-                    //if (pos != posOld && pos.Row < posOld.Row)
-                    //{
-                    //    if (pt.Y < control.Location.Y + control.Height * 0.4)
-                    //    {
-                    //        tableLayoutPanel_ElemetsWatchFace.SetRow(draggedPanel, pos.Row);
-                    //        if (pos.Row < posOld.Row) tableLayoutPanel_ElemetsWatchFace.SetRow(control, pos.Row + 1);
-                    //        else tableLayoutPanel_ElemetsWatchFace.SetRow(control, pos.Row - 1);
-                    //    }
-                    //}
-                    //if (pos != posOld && pos.Row > posOld.Row)
-                    //{
-                    //    if (pt.Y > control.Location.Y + control.Height * 0.6)
-                    //    {
-                    //        tableLayoutPanel_ElemetsWatchFace.SetRow(draggedPanel, pos.Row);
-                    //        if (pos.Row < posOld.Row) tableLayoutPanel_ElemetsWatchFace.SetRow(control, pos.Row + 1);
-                    //        else tableLayoutPanel_ElemetsWatchFace.SetRow(control, pos.Row - 1);
-                    //    }
-                    //}
                     draggedPanel.Tag = null;
                 }
             }
@@ -4737,7 +4731,7 @@ namespace Watch_Face_Editor
 
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementImage"); // проверяем что такого элемента нет
             if (!exists) Elements.Insert(0, image);
-            uCtrl_Moon_Elm.SettingsClear();
+            uCtrl_Icon_Opt.SettingsClear();
         }
 
 
@@ -16605,7 +16599,36 @@ namespace Watch_Face_Editor
             Logger.WriteLine("* Project_SaveAs (end)");
         }
 
-        
+        // Checking the version using >= enables forward compatibility.
+        string CheckFor45PlusVersion(int releaseKey)
+        {
+            if (releaseKey >= 533320)
+                return "4.8.1 or later";
+            if (releaseKey >= 528040)
+                return "4.8";
+            if (releaseKey >= 461808)
+                return "4.7.2";
+            if (releaseKey >= 461308)
+                return "4.7.1";
+            if (releaseKey >= 460798)
+                return "4.7";
+            if (releaseKey >= 394802)
+                return "4.6.2";
+            if (releaseKey >= 394254)
+                return "4.6.1";
+            if (releaseKey >= 393295)
+                return "4.6";
+            if (releaseKey >= 379893)
+                return "4.5.2";
+            if (releaseKey >= 378675)
+                return "4.5.1";
+            if (releaseKey >= 378389)
+                return "4.5";
+            // This code should never execute. A non-null release key should mean
+            // that 4.5 or later is installed.
+            return "No 4.5 or later version detected";
+        }
+
     }
 }
 
@@ -16632,10 +16655,12 @@ static class Logger
     {
         try
         {
-            //using (StreamWriter sw = new StreamWriter(Application.StartupPath + "\\Program log.txt", true))
-            //{
-            //    sw.Write(text);
-            //}
+#if DEBUG
+            using (StreamWriter sw = new StreamWriter(Application.StartupPath + "\\Program log.txt", true))
+            {
+                sw.Write(text);
+            }
+#endif
         }
         catch (Exception)
         {
@@ -16647,17 +16672,19 @@ static class Logger
     //---------------------------------------------------------
     public static void WriteLine(string message)
     {
+#if DEBUG
         try
         {
-            //using (StreamWriter sw = new StreamWriter(Application.StartupPath + "\\Program log.txt", true))
-            //{
-            //    sw.WriteLine(String.Format("{0,-23} {1}", DateTime.Now.ToString() + ":", message));
-            //}
-            Console.WriteLine(String.Format("{0,-23} {1}", DateTime.Now.ToString() + ":", message));
+            using (StreamWriter sw = new StreamWriter(Application.StartupPath + "\\Program log.txt", true))
+            {
+                sw.WriteLine(String.Format("{0,-23} {1}", DateTime.Now.ToString() + ":", message));
+            }
         }
         catch (Exception)
         {
         }
+#endif
+        Console.WriteLine(String.Format("{0,-23} {1}", DateTime.Now.ToString() + ":", message));
     }
 }
 

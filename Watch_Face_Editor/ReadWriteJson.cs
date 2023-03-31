@@ -10819,6 +10819,8 @@ namespace Watch_Face_Editor
                 options += TabInString(10) + "y: start_y_" + optionNameStart + type + "_draw_mirror," + Environment.NewLine;
                 options += TabInString(10) + "w: lenght_ls_" + optionNameStart + type + "_draw_mirror," + Environment.NewLine;
                 options += TabInString(10) + "h: line_width_ls_" + optionNameStart + type + "_draw_mirror," + Environment.NewLine;
+                if (linear_scale.line_cap == "Rounded")
+                    options += TabInString(10) + "radius: " + (linear_scale.line_width / 2).ToString() + "," + Environment.NewLine;
                 options += TabInString(10) + "color: color_ls_" + optionNameStart + type + "," + Environment.NewLine;
                 options += TabInString(9) + "});" + Environment.NewLine;
 
@@ -10894,17 +10896,20 @@ namespace Watch_Face_Editor
         {
             string options = Environment.NewLine;
             if (img_click == null) return options;
-            if (img_click.src == null) return options;
-            if (img_click.src.Length > 0)
-            {
+            //if (img_click.src == null) return options;
+            //if (img_click.src.Length > 0)
+            //{
                 options += TabInString(7) + "x: " + img_click.x.ToString() + "," + Environment.NewLine;
                 options += TabInString(7) + "y: " + img_click.y.ToString() + "," + Environment.NewLine;
                 options += TabInString(7) + "w: " + img_click.w.ToString() + "," + Environment.NewLine;
                 options += TabInString(7) + "h: " + img_click.h.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "src: '" + img_click.src + ".png'," + Environment.NewLine;
+            if (img_click.src != null && img_click.src.Length > 0)
+            {
+                options += TabInString(7) + "src: '" + img_click.src + ".png'," + Environment.NewLine; 
+            }
                 options += TabInString(7) + "type: hmUI.data_type." + type + "," + Environment.NewLine;
                 options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
-            }
+            //}
             return options;
         }
 
@@ -12490,6 +12495,8 @@ namespace Watch_Face_Editor
                                     image.Icon.src = img.src;
                                     image.Icon.x = img.x;
                                     image.Icon.y = img.y;
+                                    image.Icon.position = 1;
+                                    image.Icon.visible = true;
                                 }
                             }
 
@@ -17069,7 +17076,7 @@ namespace Watch_Face_Editor
                                 steps.Linear_Scale.color = linear_Scale.color;
                                 steps.Linear_Scale.lenght = linear_Scale.lenght;
                                 steps.Linear_Scale.line_width = linear_Scale.line_width;
-                                steps.Circle_Scale.line_cap = linear_Scale.line_cap;
+                                steps.Linear_Scale.line_cap = linear_Scale.line_cap;
                                 steps.Linear_Scale.mirror = linear_Scale.mirror;
                                 steps.Linear_Scale.inversion = linear_Scale.inversion;
                                 steps.Linear_Scale.vertical = linear_Scale.vertical;
@@ -17104,7 +17111,7 @@ namespace Watch_Face_Editor
                                 battery.Linear_Scale.color = linear_Scale.color;
                                 battery.Linear_Scale.lenght = linear_Scale.lenght;
                                 battery.Linear_Scale.line_width = linear_Scale.line_width;
-                                battery.Circle_Scale.line_cap = linear_Scale.line_cap;
+                                battery.Linear_Scale.line_cap = linear_Scale.line_cap;
                                 battery.Linear_Scale.mirror = linear_Scale.mirror;
                                 battery.Linear_Scale.inversion = linear_Scale.inversion;
                                 battery.Linear_Scale.vertical = linear_Scale.vertical;
@@ -17140,7 +17147,7 @@ namespace Watch_Face_Editor
                                 calorie.Linear_Scale.color = linear_Scale.color;
                                 calorie.Linear_Scale.lenght = linear_Scale.lenght;
                                 calorie.Linear_Scale.line_width = linear_Scale.line_width;
-                                calorie.Circle_Scale.line_cap = linear_Scale.line_cap;
+                                calorie.Linear_Scale.line_cap = linear_Scale.line_cap;
                                 calorie.Linear_Scale.mirror = linear_Scale.mirror;
                                 calorie.Linear_Scale.inversion = linear_Scale.inversion;
                                 calorie.Linear_Scale.vertical = linear_Scale.vertical;
@@ -17175,7 +17182,7 @@ namespace Watch_Face_Editor
                                 heart.Linear_Scale.color = linear_Scale.color;
                                 heart.Linear_Scale.lenght = linear_Scale.lenght;
                                 heart.Linear_Scale.line_width = linear_Scale.line_width;
-                                heart.Circle_Scale.line_cap = linear_Scale.line_cap;
+                                heart.Linear_Scale.line_cap = linear_Scale.line_cap;
                                 heart.Linear_Scale.mirror = linear_Scale.mirror;
                                 heart.Linear_Scale.inversion = linear_Scale.inversion;
                                 heart.Linear_Scale.vertical = linear_Scale.vertical;
@@ -17211,7 +17218,7 @@ namespace Watch_Face_Editor
                                 pai.Linear_Scale.color = linear_Scale.color;
                                 pai.Linear_Scale.lenght = linear_Scale.lenght;
                                 pai.Linear_Scale.line_width = linear_Scale.line_width;
-                                pai.Circle_Scale.line_cap = linear_Scale.line_cap;
+                                pai.Linear_Scale.line_cap = linear_Scale.line_cap;
                                 pai.Linear_Scale.mirror = linear_Scale.mirror;
                                 pai.Linear_Scale.inversion = linear_Scale.inversion;
                                 pai.Linear_Scale.vertical = linear_Scale.vertical;
@@ -17247,7 +17254,7 @@ namespace Watch_Face_Editor
                                 stand.Linear_Scale.color = linear_Scale.color;
                                 stand.Linear_Scale.lenght = linear_Scale.lenght;
                                 stand.Linear_Scale.line_width = linear_Scale.line_width;
-                                stand.Circle_Scale.line_cap = linear_Scale.line_cap;
+                                stand.Linear_Scale.line_cap = linear_Scale.line_cap;
                                 stand.Linear_Scale.mirror = linear_Scale.mirror;
                                 stand.Linear_Scale.inversion = linear_Scale.inversion;
                                 stand.Linear_Scale.vertical = linear_Scale.vertical;
@@ -17283,7 +17290,7 @@ namespace Watch_Face_Editor
                                 activity.Linear_Scale.color = linear_Scale.color;
                                 activity.Linear_Scale.lenght = linear_Scale.lenght;
                                 activity.Linear_Scale.line_width = linear_Scale.line_width;
-                                activity.Circle_Scale.line_cap = linear_Scale.line_cap;
+                                activity.Linear_Scale.line_cap = linear_Scale.line_cap;
                                 activity.Linear_Scale.mirror = linear_Scale.mirror;
                                 activity.Linear_Scale.inversion = linear_Scale.inversion;
                                 activity.Linear_Scale.vertical = linear_Scale.vertical;
@@ -17319,7 +17326,7 @@ namespace Watch_Face_Editor
                                 fat_burning.Linear_Scale.color = linear_Scale.color;
                                 fat_burning.Linear_Scale.lenght = linear_Scale.lenght;
                                 fat_burning.Linear_Scale.line_width = linear_Scale.line_width;
-                                fat_burning.Circle_Scale.line_cap = linear_Scale.line_cap;
+                                fat_burning.Linear_Scale.line_cap = linear_Scale.line_cap;
                                 fat_burning.Linear_Scale.mirror = linear_Scale.mirror;
                                 fat_burning.Linear_Scale.inversion = linear_Scale.inversion;
                                 fat_burning.Linear_Scale.vertical = linear_Scale.vertical;
@@ -19529,7 +19536,7 @@ namespace Watch_Face_Editor
                 string imgName = parametrs["src"].Replace("'", "").Replace("\"", "");
                 imgName = Path.GetFileNameWithoutExtension(imgName);
                 img_shortcut.src = imgName;
-
+            }
                 if (parametrs.ContainsKey("x") && Int32.TryParse(parametrs["x"], out value)) img_shortcut.x = value;
                 if (parametrs.ContainsKey("y") && Int32.TryParse(parametrs["y"], out value)) img_shortcut.y = value;
                 if (parametrs.ContainsKey("w") && Int32.TryParse(parametrs["w"], out value)) img_shortcut.w = value;
@@ -19537,18 +19544,18 @@ namespace Watch_Face_Editor
 
                 if (parametrs.ContainsKey("type"))
                 {
-                    imgName = parametrs["type"].Replace("hmUI.data_type.", "");
-                    img_shortcut.type = imgName;
+                    string typeName = parametrs["type"].Replace("hmUI.data_type.", "");
+                    img_shortcut.type = typeName;
                 }
 
                 if (parametrs.ContainsKey("show_level"))
                 {
-                    imgName = parametrs["show_level"].Replace("hmUI.show_level.", "");
-                    img_shortcut.show_level = imgName;
+                    string levelName = parametrs["show_level"].Replace("hmUI.show_level.", "");
+                    img_shortcut.show_level = levelName;
                 }
                 img_shortcut.visible = true;
                 img_shortcut.position = 1;
-            }
+            //}
 
             return img_shortcut;
         }
