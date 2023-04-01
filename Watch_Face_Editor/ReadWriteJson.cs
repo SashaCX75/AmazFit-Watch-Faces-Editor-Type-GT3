@@ -13690,12 +13690,36 @@ namespace Watch_Face_Editor
                                 if (battery.Circle_Scale != null) offset++;
                                 if (battery.Linear_Scale != null) offset++;
 
-                                battery.Icon = new hmUI_widget_IMG();
-                                battery.Icon.src = img.src;
-                                battery.Icon.x = img.x;
-                                battery.Icon.y = img.y;
-                                battery.Icon.visible = true;
-                                battery.Icon.position = offset;
+                                if (battery.Icon == null)
+                                {
+                                    battery.Icon = new hmUI_widget_IMG();
+                                    battery.Icon.src = img.src;
+                                    battery.Icon.x = img.x;
+                                    battery.Icon.y = img.y;
+                                    battery.Icon.visible = true;
+                                    battery.Icon.position = offset; 
+                                }
+                                else if (battery.Number != null && battery.Number.icon == null)
+                                {
+                                    if (battery.Icon.position < battery.Number.position)
+                                    {
+                                        battery.Number.icon = img.src;
+                                        battery.Number.iconPosX = img.x;
+                                        battery.Number.iconPosY = img.y; 
+                                    }
+                                    else
+                                    {
+                                        battery.Number.icon = battery.Icon.src;
+                                        battery.Number.iconPosX = battery.Icon.x;
+                                        battery.Number.iconPosY = battery.Icon.y;
+
+                                        battery.Icon.src = img.src;
+                                        battery.Icon.x = img.x;
+                                        battery.Icon.y = img.y;
+                                        battery.Icon.visible = true;
+                                        battery.Icon.position = offset;
+                                    }
+                                }
                             }
                         }
 
@@ -13718,12 +13742,36 @@ namespace Watch_Face_Editor
                                 if (steps.Circle_Scale != null) offset++;
                                 if (steps.Linear_Scale != null) offset++;
 
-                                steps.Icon = new hmUI_widget_IMG();
-                                steps.Icon.src = img.src;
-                                steps.Icon.x = img.x;
-                                steps.Icon.y = img.y;
-                                steps.Icon.visible = true;
-                                steps.Icon.position = offset;
+                                if (steps.Icon == null)
+                                {
+                                    steps.Icon = new hmUI_widget_IMG();
+                                    steps.Icon.src = img.src;
+                                    steps.Icon.x = img.x;
+                                    steps.Icon.y = img.y;
+                                    steps.Icon.visible = true;
+                                    steps.Icon.position = offset;
+                                }
+                                else if (steps.Number != null && steps.Number.icon == null)
+                                {
+                                    if (steps.Icon.position < steps.Number.position)
+                                    {
+                                        steps.Number.icon = img.src;
+                                        steps.Number.iconPosX = img.x;
+                                        steps.Number.iconPosY = img.y;
+                                    }
+                                    else
+                                    {
+                                        steps.Number.icon = steps.Icon.src;
+                                        steps.Number.iconPosX = steps.Icon.x;
+                                        steps.Number.iconPosY = steps.Icon.y;
+
+                                        steps.Icon.src = img.src;
+                                        steps.Icon.x = img.x;
+                                        steps.Icon.y = img.y;
+                                        steps.Icon.visible = true;
+                                        steps.Icon.position = offset;
+                                    }
+                                }
                             }
                         }
 
@@ -13746,12 +13794,36 @@ namespace Watch_Face_Editor
                                 if (calorie.Circle_Scale != null) offset++;
                                 if (calorie.Linear_Scale != null) offset++;
 
-                                calorie.Icon = new hmUI_widget_IMG();
-                                calorie.Icon.src = img.src;
-                                calorie.Icon.x = img.x;
-                                calorie.Icon.y = img.y;
-                                calorie.Icon.visible = true;
-                                calorie.Icon.position = offset;
+                                if (calorie.Icon == null)
+                                {
+                                    calorie.Icon = new hmUI_widget_IMG();
+                                    calorie.Icon.src = img.src;
+                                    calorie.Icon.x = img.x;
+                                    calorie.Icon.y = img.y;
+                                    calorie.Icon.visible = true;
+                                    calorie.Icon.position = offset;
+                                }
+                                else if (calorie.Number != null && calorie.Number.icon == null)
+                                {
+                                    if (calorie.Icon.position < calorie.Number.position)
+                                    {
+                                        calorie.Number.icon = img.src;
+                                        calorie.Number.iconPosX = img.x;
+                                        calorie.Number.iconPosY = img.y;
+                                    }
+                                    else
+                                    {
+                                        calorie.Number.icon = calorie.Icon.src;
+                                        calorie.Number.iconPosX = calorie.Icon.x;
+                                        calorie.Number.iconPosY = calorie.Icon.y;
+
+                                        calorie.Icon.src = img.src;
+                                        calorie.Icon.x = img.x;
+                                        calorie.Icon.y = img.y;
+                                        calorie.Icon.visible = true;
+                                        calorie.Icon.position = offset;
+                                    }
+                                }
                             }
                         }
 
@@ -13773,12 +13845,36 @@ namespace Watch_Face_Editor
                                 if (heart.Circle_Scale != null) offset++;
                                 if (heart.Linear_Scale != null) offset++;
 
-                                heart.Icon = new hmUI_widget_IMG();
-                                heart.Icon.src = img.src;
-                                heart.Icon.x = img.x;
-                                heart.Icon.y = img.y;
-                                heart.Icon.visible = true;
-                                heart.Icon.position = offset;
+                                if (heart.Icon == null)
+                                {
+                                    heart.Icon = new hmUI_widget_IMG();
+                                    heart.Icon.src = img.src;
+                                    heart.Icon.x = img.x;
+                                    heart.Icon.y = img.y;
+                                    heart.Icon.visible = true;
+                                    heart.Icon.position = offset;
+                                }
+                                else if (heart.Number != null && heart.Number.icon == null)
+                                {
+                                    if (heart.Icon.position < heart.Number.position)
+                                    {
+                                        heart.Number.icon = img.src;
+                                        heart.Number.iconPosX = img.x;
+                                        heart.Number.iconPosY = img.y;
+                                    }
+                                    else
+                                    {
+                                        heart.Number.icon = heart.Icon.src;
+                                        heart.Number.iconPosX = heart.Icon.x;
+                                        heart.Number.iconPosY = heart.Icon.y;
+
+                                        heart.Icon.src = img.src;
+                                        heart.Icon.x = img.x;
+                                        heart.Icon.y = img.y;
+                                        heart.Icon.visible = true;
+                                        heart.Icon.position = offset;
+                                    }
+                                }
                             }
                         }
 
@@ -13801,12 +13897,36 @@ namespace Watch_Face_Editor
                                 if (pai.Circle_Scale != null) offset++;
                                 if (pai.Linear_Scale != null) offset++;
 
-                                pai.Icon = new hmUI_widget_IMG();
-                                pai.Icon.src = img.src;
-                                pai.Icon.x = img.x;
-                                pai.Icon.y = img.y;
-                                pai.Icon.visible = true;
-                                pai.Icon.position = offset;
+                                if (pai.Icon == null)
+                                {
+                                    pai.Icon = new hmUI_widget_IMG();
+                                    pai.Icon.src = img.src;
+                                    pai.Icon.x = img.x;
+                                    pai.Icon.y = img.y;
+                                    pai.Icon.visible = true;
+                                    pai.Icon.position = offset;
+                                }
+                                else if (pai.Number != null && pai.Number.icon == null)
+                                {
+                                    if (pai.Icon.position < pai.Number.position)
+                                    {
+                                        pai.Number.icon = img.src;
+                                        pai.Number.iconPosX = img.x;
+                                        pai.Number.iconPosY = img.y;
+                                    }
+                                    else
+                                    {
+                                        pai.Number.icon = pai.Icon.src;
+                                        pai.Number.iconPosX = pai.Icon.x;
+                                        pai.Number.iconPosY = pai.Icon.y;
+
+                                        pai.Icon.src = img.src;
+                                        pai.Icon.x = img.x;
+                                        pai.Icon.y = img.y;
+                                        pai.Icon.visible = true;
+                                        pai.Icon.position = offset;
+                                    }
+                                }
                             }
                         }
 
@@ -13841,12 +13961,36 @@ namespace Watch_Face_Editor
                                 if (stand.Circle_Scale != null) offset++;
                                 if (stand.Linear_Scale != null) offset++;
 
-                                stand.Icon = new hmUI_widget_IMG();
-                                stand.Icon.src = img.src;
-                                stand.Icon.x = img.x;
-                                stand.Icon.y = img.y;
-                                stand.Icon.visible = true;
-                                stand.Icon.position = offset;
+                                if (stand.Icon == null)
+                                {
+                                    stand.Icon = new hmUI_widget_IMG();
+                                    stand.Icon.src = img.src;
+                                    stand.Icon.x = img.x;
+                                    stand.Icon.y = img.y;
+                                    stand.Icon.visible = true;
+                                    stand.Icon.position = offset;
+                                }
+                                else if (stand.Number != null && stand.Number.icon == null)
+                                {
+                                    if (stand.Icon.position < stand.Number.position)
+                                    {
+                                        stand.Number.icon = img.src;
+                                        stand.Number.iconPosX = img.x;
+                                        stand.Number.iconPosY = img.y;
+                                    }
+                                    else
+                                    {
+                                        stand.Number.icon = stand.Icon.src;
+                                        stand.Number.iconPosX = stand.Icon.x;
+                                        stand.Number.iconPosY = stand.Icon.y;
+
+                                        stand.Icon.src = img.src;
+                                        stand.Icon.x = img.x;
+                                        stand.Icon.y = img.y;
+                                        stand.Icon.visible = true;
+                                        stand.Icon.position = offset;
+                                    }
+                                }
                             }
                         }
 
@@ -13866,12 +14010,36 @@ namespace Watch_Face_Editor
                                 if (stress.Number != null) offset++;
                                 if (stress.Pointer != null) offset++;
 
-                                stress.Icon = new hmUI_widget_IMG();
-                                stress.Icon.src = img.src;
-                                stress.Icon.x = img.x;
-                                stress.Icon.y = img.y;
-                                stress.Icon.visible = true;
-                                stress.Icon.position = offset;
+                                if (stress.Icon == null)
+                                {
+                                    stress.Icon = new hmUI_widget_IMG();
+                                    stress.Icon.src = img.src;
+                                    stress.Icon.x = img.x;
+                                    stress.Icon.y = img.y;
+                                    stress.Icon.visible = true;
+                                    stress.Icon.position = offset;
+                                }
+                                else if (stress.Number != null && stress.Number.icon == null)
+                                {
+                                    if (stress.Icon.position < stress.Number.position)
+                                    {
+                                        stress.Number.icon = img.src;
+                                        stress.Number.iconPosX = img.x;
+                                        stress.Number.iconPosY = img.y;
+                                    }
+                                    else
+                                    {
+                                        stress.Number.icon = stress.Icon.src;
+                                        stress.Number.iconPosX = stress.Icon.x;
+                                        stress.Number.iconPosY = stress.Icon.y;
+
+                                        stress.Icon.src = img.src;
+                                        stress.Icon.x = img.x;
+                                        stress.Icon.y = img.y;
+                                        stress.Icon.visible = true;
+                                        stress.Icon.position = offset;
+                                    }
+                                }
                             }
                         }
 
@@ -13894,12 +14062,36 @@ namespace Watch_Face_Editor
                                 if (fat_burning.Circle_Scale != null) offset++;
                                 if (fat_burning.Linear_Scale != null) offset++;
 
-                                fat_burning.Icon = new hmUI_widget_IMG();
-                                fat_burning.Icon.src = img.src;
-                                fat_burning.Icon.x = img.x;
-                                fat_burning.Icon.y = img.y;
-                                fat_burning.Icon.visible = true;
-                                fat_burning.Icon.position = offset;
+                                if (fat_burning.Icon == null)
+                                {
+                                    fat_burning.Icon = new hmUI_widget_IMG();
+                                    fat_burning.Icon.src = img.src;
+                                    fat_burning.Icon.x = img.x;
+                                    fat_burning.Icon.y = img.y;
+                                    fat_burning.Icon.visible = true;
+                                    fat_burning.Icon.position = offset;
+                                }
+                                else if (fat_burning.Number != null && fat_burning.Number.icon == null)
+                                {
+                                    if (fat_burning.Icon.position < fat_burning.Number.position)
+                                    {
+                                        fat_burning.Number.icon = img.src;
+                                        fat_burning.Number.iconPosX = img.x;
+                                        fat_burning.Number.iconPosY = img.y;
+                                    }
+                                    else
+                                    {
+                                        fat_burning.Number.icon = fat_burning.Icon.src;
+                                        fat_burning.Number.iconPosX = fat_burning.Icon.x;
+                                        fat_burning.Number.iconPosY = fat_burning.Icon.y;
+
+                                        fat_burning.Icon.src = img.src;
+                                        fat_burning.Icon.x = img.x;
+                                        fat_burning.Icon.y = img.y;
+                                        fat_burning.Icon.visible = true;
+                                        fat_burning.Icon.position = offset;
+                                    }
+                                }
                             }
                         }
 
@@ -13934,12 +14126,78 @@ namespace Watch_Face_Editor
                                 if (weather.Number_Max != null) offset++;
                                 if (weather.City_Name != null) offset++;
 
-                                weather.Icon = new hmUI_widget_IMG();
-                                weather.Icon.src = img.src;
-                                weather.Icon.x = img.x;
-                                weather.Icon.y = img.y;
-                                weather.Icon.visible = true;
-                                weather.Icon.position = offset;
+                                if (weather.Icon == null)
+                                {
+                                    weather.Icon = new hmUI_widget_IMG();
+                                    weather.Icon.src = img.src;
+                                    weather.Icon.x = img.x;
+                                    weather.Icon.y = img.y;
+                                    weather.Icon.visible = true;
+                                    weather.Icon.position = offset;
+                                }
+                                else if (weather.Number != null && weather.Number.icon == null)
+                                {
+                                    if (weather.Icon.position < weather.Number.position)
+                                    {
+                                        weather.Number.icon = img.src;
+                                        weather.Number.iconPosX = img.x;
+                                        weather.Number.iconPosY = img.y;
+                                    }
+                                    else
+                                    {
+                                        weather.Number.icon = weather.Icon.src;
+                                        weather.Number.iconPosX = weather.Icon.x;
+                                        weather.Number.iconPosY = weather.Icon.y;
+
+                                        weather.Icon.src = img.src;
+                                        weather.Icon.x = img.x;
+                                        weather.Icon.y = img.y;
+                                        weather.Icon.visible = true;
+                                        weather.Icon.position = offset;
+                                    }
+                                }
+                                else if (weather.Number_Max != null && weather.Number_Max.icon == null)
+                                {
+                                    if (weather.Icon.position < weather.Number_Max.position)
+                                    {
+                                        weather.Number_Max.icon = img.src;
+                                        weather.Number_Max.iconPosX = img.x;
+                                        weather.Number_Max.iconPosY = img.y;
+                                    }
+                                    else
+                                    {
+                                        weather.Number_Max.icon = weather.Icon.src;
+                                        weather.Number_Max.iconPosX = weather.Icon.x;
+                                        weather.Number_Max.iconPosY = weather.Icon.y;
+
+                                        weather.Icon.src = img.src;
+                                        weather.Icon.x = img.x;
+                                        weather.Icon.y = img.y;
+                                        weather.Icon.visible = true;
+                                        weather.Icon.position = offset;
+                                    }
+                                }
+                                else if (weather.Number_Min != null && weather.Number_Min.icon == null)
+                                {
+                                    if (weather.Icon.position < weather.Number_Min.position)
+                                    {
+                                        weather.Number_Min.icon = img.src;
+                                        weather.Number_Min.iconPosX = img.x;
+                                        weather.Number_Min.iconPosY = img.y;
+                                    }
+                                    else
+                                    {
+                                        weather.Number_Min.icon = weather.Icon.src;
+                                        weather.Number_Min.iconPosX = weather.Icon.x;
+                                        weather.Number_Min.iconPosY = weather.Icon.y;
+
+                                        weather.Icon.src = img.src;
+                                        weather.Icon.x = img.x;
+                                        weather.Icon.y = img.y;
+                                        weather.Icon.visible = true;
+                                        weather.Icon.position = offset;
+                                    }
+                                }
                             }
                         }
 
@@ -13959,12 +14217,36 @@ namespace Watch_Face_Editor
                                 if (uv_index.Number != null) offset++;
                                 if (uv_index.Pointer != null) offset++;
 
-                                uv_index.Icon = new hmUI_widget_IMG();
-                                uv_index.Icon.src = img.src;
-                                uv_index.Icon.x = img.x;
-                                uv_index.Icon.y = img.y;
-                                uv_index.Icon.visible = true;
-                                uv_index.Icon.position = offset;
+                                if (uv_index.Icon == null)
+                                {
+                                    uv_index.Icon = new hmUI_widget_IMG();
+                                    uv_index.Icon.src = img.src;
+                                    uv_index.Icon.x = img.x;
+                                    uv_index.Icon.y = img.y;
+                                    uv_index.Icon.visible = true;
+                                    uv_index.Icon.position = offset;
+                                }
+                                else if (uv_index.Number != null && uv_index.Number.icon == null)
+                                {
+                                    if (uv_index.Icon.position < uv_index.Number.position)
+                                    {
+                                        uv_index.Number.icon = img.src;
+                                        uv_index.Number.iconPosX = img.x;
+                                        uv_index.Number.iconPosY = img.y;
+                                    }
+                                    else
+                                    {
+                                        uv_index.Number.icon = uv_index.Icon.src;
+                                        uv_index.Number.iconPosX = uv_index.Icon.x;
+                                        uv_index.Number.iconPosY = uv_index.Icon.y;
+
+                                        uv_index.Icon.src = img.src;
+                                        uv_index.Icon.x = img.x;
+                                        uv_index.Icon.y = img.y;
+                                        uv_index.Icon.visible = true;
+                                        uv_index.Icon.position = offset;
+                                    }
+                                }
                             }
                         }
 
@@ -13984,12 +14266,36 @@ namespace Watch_Face_Editor
                                 if (humidity.Number != null) offset++;
                                 if (humidity.Pointer != null) offset++;
 
-                                humidity.Icon = new hmUI_widget_IMG();
-                                humidity.Icon.src = img.src;
-                                humidity.Icon.x = img.x;
-                                humidity.Icon.y = img.y;
-                                humidity.Icon.visible = true;
-                                humidity.Icon.position = offset;
+                                if (humidity.Icon == null)
+                                {
+                                    humidity.Icon = new hmUI_widget_IMG();
+                                    humidity.Icon.src = img.src;
+                                    humidity.Icon.x = img.x;
+                                    humidity.Icon.y = img.y;
+                                    humidity.Icon.visible = true;
+                                    humidity.Icon.position = offset;
+                                }
+                                else if (humidity.Number != null && humidity.Number.icon == null)
+                                {
+                                    if (humidity.Icon.position < humidity.Number.position)
+                                    {
+                                        humidity.Number.icon = img.src;
+                                        humidity.Number.iconPosX = img.x;
+                                        humidity.Number.iconPosY = img.y;
+                                    }
+                                    else
+                                    {
+                                        humidity.Number.icon = humidity.Icon.src;
+                                        humidity.Number.iconPosX = humidity.Icon.x;
+                                        humidity.Number.iconPosY = humidity.Icon.y;
+
+                                        humidity.Icon.src = img.src;
+                                        humidity.Icon.x = img.x;
+                                        humidity.Icon.y = img.y;
+                                        humidity.Icon.visible = true;
+                                        humidity.Icon.position = offset;
+                                    }
+                                }
                             }
                         }
 
@@ -14007,12 +14313,36 @@ namespace Watch_Face_Editor
                                 if (altimeter.Number != null) offset++;
                                 if (altimeter.Pointer != null) offset++;
 
-                                altimeter.Icon = new hmUI_widget_IMG();
-                                altimeter.Icon.src = img.src;
-                                altimeter.Icon.x = img.x;
-                                altimeter.Icon.y = img.y;
-                                altimeter.Icon.visible = true;
-                                altimeter.Icon.position = offset;
+                                if (altimeter.Icon == null)
+                                {
+                                    altimeter.Icon = new hmUI_widget_IMG();
+                                    altimeter.Icon.src = img.src;
+                                    altimeter.Icon.x = img.x;
+                                    altimeter.Icon.y = img.y;
+                                    altimeter.Icon.visible = true;
+                                    altimeter.Icon.position = offset;
+                                }
+                                else if (altimeter.Number != null && altimeter.Number.icon == null)
+                                {
+                                    if (altimeter.Icon.position < altimeter.Number.position)
+                                    {
+                                        altimeter.Number.icon = img.src;
+                                        altimeter.Number.iconPosX = img.x;
+                                        altimeter.Number.iconPosY = img.y;
+                                    }
+                                    else
+                                    {
+                                        altimeter.Number.icon = altimeter.Icon.src;
+                                        altimeter.Number.iconPosX = altimeter.Icon.x;
+                                        altimeter.Number.iconPosY = altimeter.Icon.y;
+
+                                        altimeter.Icon.src = img.src;
+                                        altimeter.Icon.x = img.x;
+                                        altimeter.Icon.y = img.y;
+                                        altimeter.Icon.visible = true;
+                                        altimeter.Icon.position = offset;
+                                    }
+                                }
                             }
                         }
 
@@ -14034,12 +14364,78 @@ namespace Watch_Face_Editor
                                 if (sunrise.Sunset_Sunrise != null) offset++;
                                 if (sunrise.Pointer != null) offset++;
 
-                                sunrise.Icon = new hmUI_widget_IMG();
-                                sunrise.Icon.src = img.src;
-                                sunrise.Icon.x = img.x;
-                                sunrise.Icon.y = img.y;
-                                sunrise.Icon.visible = true;
-                                sunrise.Icon.position = offset;
+                                if (sunrise.Icon == null)
+                                {
+                                    sunrise.Icon = new hmUI_widget_IMG();
+                                    sunrise.Icon.src = img.src;
+                                    sunrise.Icon.x = img.x;
+                                    sunrise.Icon.y = img.y;
+                                    sunrise.Icon.visible = true;
+                                    sunrise.Icon.position = offset;
+                                }
+                                else if (sunrise.Sunrise != null && sunrise.Sunrise.icon == null)
+                                {
+                                    if (sunrise.Icon.position < sunrise.Sunrise.position)
+                                    {
+                                        sunrise.Sunrise.icon = img.src;
+                                        sunrise.Sunrise.iconPosX = img.x;
+                                        sunrise.Sunrise.iconPosY = img.y;
+                                    }
+                                    else
+                                    {
+                                        sunrise.Sunrise.icon = sunrise.Icon.src;
+                                        sunrise.Sunrise.iconPosX = sunrise.Icon.x;
+                                        sunrise.Sunrise.iconPosY = sunrise.Icon.y;
+
+                                        sunrise.Icon.src = img.src;
+                                        sunrise.Icon.x = img.x;
+                                        sunrise.Icon.y = img.y;
+                                        sunrise.Icon.visible = true;
+                                        sunrise.Icon.position = offset;
+                                    }
+                                }
+                                else if (sunrise.Sunset != null && sunrise.Sunset.icon == null)
+                                {
+                                    if (sunrise.Icon.position < sunrise.Sunset.position)
+                                    {
+                                        sunrise.Sunset.icon = img.src;
+                                        sunrise.Sunset.iconPosX = img.x;
+                                        sunrise.Sunset.iconPosY = img.y;
+                                    }
+                                    else
+                                    {
+                                        sunrise.Sunset.icon = sunrise.Icon.src;
+                                        sunrise.Sunset.iconPosX = sunrise.Icon.x;
+                                        sunrise.Sunset.iconPosY = sunrise.Icon.y;
+
+                                        sunrise.Icon.src = img.src;
+                                        sunrise.Icon.x = img.x;
+                                        sunrise.Icon.y = img.y;
+                                        sunrise.Icon.visible = true;
+                                        sunrise.Icon.position = offset;
+                                    }
+                                }
+                                else if (sunrise.Sunset_Sunrise != null && sunrise.Sunset_Sunrise.icon == null)
+                                {
+                                    if (sunrise.Icon.position < sunrise.Sunset_Sunrise.position)
+                                    {
+                                        sunrise.Sunset_Sunrise.icon = img.src;
+                                        sunrise.Sunset_Sunrise.iconPosX = img.x;
+                                        sunrise.Sunset_Sunrise.iconPosY = img.y;
+                                    }
+                                    else
+                                    {
+                                        sunrise.Sunset_Sunrise.icon = sunrise.Icon.src;
+                                        sunrise.Sunset_Sunrise.iconPosX = sunrise.Icon.x;
+                                        sunrise.Sunset_Sunrise.iconPosY = sunrise.Icon.y;
+
+                                        sunrise.Icon.src = img.src;
+                                        sunrise.Icon.x = img.x;
+                                        sunrise.Icon.y = img.y;
+                                        sunrise.Icon.visible = true;
+                                        sunrise.Icon.position = offset;
+                                    }
+                                }
                             }
                         }
 
@@ -14060,12 +14456,36 @@ namespace Watch_Face_Editor
                                 if (wind.Pointer != null) offset++;
                                 if (wind.Direction != null) offset++;
 
-                                wind.Icon = new hmUI_widget_IMG();
-                                wind.Icon.src = img.src;
-                                wind.Icon.x = img.x;
-                                wind.Icon.y = img.y;
-                                wind.Icon.visible = true;
-                                wind.Icon.position = offset;
+                                if (wind.Icon == null)
+                                {
+                                    wind.Icon = new hmUI_widget_IMG();
+                                    wind.Icon.src = img.src;
+                                    wind.Icon.x = img.x;
+                                    wind.Icon.y = img.y;
+                                    wind.Icon.visible = true;
+                                    wind.Icon.position = offset;
+                                }
+                                else if (wind.Number != null && wind.Number.icon == null)
+                                {
+                                    if (wind.Icon.position < wind.Number.position)
+                                    {
+                                        wind.Number.icon = img.src;
+                                        wind.Number.iconPosX = img.x;
+                                        wind.Number.iconPosY = img.y;
+                                    }
+                                    else
+                                    {
+                                        wind.Number.icon = wind.Icon.src;
+                                        wind.Number.iconPosX = wind.Icon.x;
+                                        wind.Number.iconPosY = wind.Icon.y;
+
+                                        wind.Icon.src = img.src;
+                                        wind.Icon.x = img.x;
+                                        wind.Icon.y = img.y;
+                                        wind.Icon.visible = true;
+                                        wind.Icon.position = offset;
+                                    }
+                                }
                             }
                         }
 
