@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,6 +22,8 @@ namespace ControlLibrary
         private bool Distance_mode;
         private bool Year_mode = false;
         private bool Sunrise_mode = false;
+        private bool Angle_mode = false;
+        private bool Angle_visible_mode = true;
 
         //private Point location_unit;
         private Point location_unit_miles;
@@ -238,29 +241,22 @@ namespace ControlLibrary
             {
                 OptionalSymbol_mode = value;
                 comboBox_imageDecimalPoint.Visible = OptionalSymbol_mode;
-                label_imageDecimalPoint.Visible = OptionalSymbol_mode; 
-                
-                /*int offsetPositionX = label03.Location.X - numericUpDown_spacing.Location.X;
-                if (!Distance_mode && !OptionalSymbol_mode)
-                {
-                    Point location = numericUpDown_spacing.Location;
-                    location.X = numericUpDown_iconX.Location.X;
-                    numericUpDown_spacing.Location = location;
+                label_imageDecimalPoint.Visible = OptionalSymbol_mode;
 
-                    location = label03.Location;
-                    location.X = numericUpDown_iconX.Location.X + offsetPositionX;
-                    label03.Location = location;
+                if (OptionalSymbol_mode)
+                {
+                    Point location = new Point(numericUpDown_angle.Location.X, location_unit_miles.Y);
+                    numericUpDown_angle.Location = location;
+                    location = new Point(label_angle.Location.X, location_unit_miles_label.Y);
+                    label_angle.Location = location;
                 }
                 else
                 {
-                    Point location = numericUpDown_spacing.Location;
-                    location.X = numericUpDown_iconY.Location.X;
-                    numericUpDown_spacing.Location = location;
-
-                    location = label03.Location;
-                    location.X = numericUpDown_iconY.Location.X + offsetPositionX;
-                    label03.Location = location;
-                }*/
+                    Point location = new Point(numericUpDown_angle.Location.X, location_imageDecimalPoint.Y);
+                    numericUpDown_angle.Location = location;
+                    location = new Point(label_angle.Location.X, location_imageDecimalPoint_label.Y);
+                    label_angle.Location = location;
+                }
             }
         }
 
@@ -432,6 +428,38 @@ namespace ControlLibrary
             }
         }
 
+        /// <summary>Доступность режима изменеия угла</summary>
+        [Description("Доступность режима изменеия угла")]
+        public virtual bool Angle
+        {
+            get
+            {
+                return Angle_mode;
+            }
+            set
+            {
+                Angle_mode = value;
+                numericUpDown_angle.Enabled = Angle_mode;
+                label_angle.Enabled = Angle_mode;
+            }
+        }
+
+        /// <summary>Доступность режима изменеия угла</summary>
+        [Description("Доступность режима изменеия угла")]
+        public virtual bool AngleVisible
+        {
+            get
+            {
+                return Angle_visible_mode;
+            }
+            set
+            {
+                Angle_visible_mode = value;
+                numericUpDown_angle.Visible = Angle_visible_mode;
+                label_angle.Visible = Angle_visible_mode;
+            }
+        }
+
         /// <summary>Устанавливает надпись "Следовать за..."</summary>
         [Localizable(true)]
         [Description("Устанавливает надпись \"Следовать за...\"")]
@@ -593,6 +621,16 @@ namespace ControlLibrary
         {
             setValue = true;
 
+            ImageError = false;
+            OptionalSymbol = false;
+            PaddingZero = false;
+            Follow = false;
+            Distance = false;
+            Year = false;
+            Sunrise = false;
+            Angle = false;
+            AngleVisible = true;
+
             comboBox_image.Text = null;
             comboBox_icon.Text = null;
             comboBox_unit.Text = null;
@@ -606,6 +644,7 @@ namespace ControlLibrary
             numericUpDown_iconY.Value = 0;
 
             numericUpDown_spacing.Value = 0;
+            numericUpDown_angle.Value = 0;
 
             comboBox_alignment.SelectedIndex = 0;
             checkBox_addZero.Checked = false;

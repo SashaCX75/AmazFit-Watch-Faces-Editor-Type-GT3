@@ -99,6 +99,9 @@ namespace Watch_Face_Editor
         /// <summary>Десятичный разделитель</summary>
         public string dot_image { get; set; }
 
+        /// <summary>Наклон надписи</summary>
+        public int angle { get; set; }
+
         ///// <summary>Следовать за часами. 0-не следовать; 1-следовать</summary>
         /// <summary>Следовать за предшественником</summary>
         public bool follow { get; set; }

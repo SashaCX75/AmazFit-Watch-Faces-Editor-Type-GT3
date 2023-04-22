@@ -307,10 +307,7 @@
   <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
     <value>205, 82</value>
   </data>
-  <data name="comboBox_alignment.Items1" xml:space="preserve">
-    <value>По центру</value>
-  </data>
-  <data name="comboBox_alignment.Items2" xml:space="preserve">
-    <value>По правому краю</value>
+  <data name="label_angle.Text" xml:space="preserve">
+    <value>Кут</value>
   </data>
 </root>

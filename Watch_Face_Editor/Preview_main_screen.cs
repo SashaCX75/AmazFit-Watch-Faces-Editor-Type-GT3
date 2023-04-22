@@ -604,6 +604,7 @@ namespace Watch_Face_Editor
                             time_offsetY = y;
                             int spasing = DigitalTime.Hour.space;
                             time_spasing = spasing;
+                            int angle = DigitalTime.Hour.angle;
                             int alignment = AlignmentToInt(DigitalTime.Hour.align);
                             bool addZero = DigitalTime.Hour.zero;
                             //addZero = true;
@@ -622,7 +623,7 @@ namespace Watch_Face_Editor
                             }
 
                             time_offsetX = Draw_dagital_text(gPanel, imageIndex, x, y,
-                                                spasing, alignment, value, addZero, 2, separator_index, BBorder);
+                                                spasing, alignment, value, addZero, 2, separator_index, angle, BBorder);
 
                             if (DigitalTime.Hour.icon != null && DigitalTime.Hour.icon.Length > 0)
                             {
@@ -645,6 +646,7 @@ namespace Watch_Face_Editor
                             int y = DigitalTime.Minute.imageY;
                             int spasing = DigitalTime.Minute.space;
                             time_spasing = spasing;
+                            int angle = DigitalTime.Minute.angle;
                             int alignment = AlignmentToInt(DigitalTime.Minute.align);
                             bool addZero = DigitalTime.Minute.zero;
                             //addZero = true;
@@ -663,7 +665,7 @@ namespace Watch_Face_Editor
                                 separator_index = ListImages.IndexOf(DigitalTime.Minute.unit);
 
                             time_offsetX = Draw_dagital_text(gPanel, imageIndex, x, y,
-                                                spasing, alignment, value, addZero, 2, separator_index, BBorder);
+                                                spasing, alignment, value, addZero, 2, separator_index, angle, BBorder);
 
                             if (DigitalTime.Minute.icon != null && DigitalTime.Minute.icon.Length > 0)
                             {
@@ -686,6 +688,7 @@ namespace Watch_Face_Editor
                             int y = DigitalTime.Second.imageY;
                             int spasing = DigitalTime.Second.space;
                             time_spasing = spasing;
+                            int angle = DigitalTime.Second.angle;
                             int alignment = AlignmentToInt(DigitalTime.Second.align);
                             bool addZero = DigitalTime.Second.zero;
                             //addZero = true;
@@ -705,7 +708,7 @@ namespace Watch_Face_Editor
 
 
                             time_offsetX = Draw_dagital_text(gPanel, imageIndex, x, y,
-                                                spasing, alignment, value, addZero, 2, separator_index, BBorder);
+                                                spasing, alignment, value, addZero, 2, separator_index, angle, BBorder);
 
                             if (DigitalTime.Second.icon != null && DigitalTime.Second.icon.Length > 0)
                             {
@@ -1044,7 +1047,7 @@ namespace Watch_Face_Editor
                                 separator_index = ListImages.IndexOf(DateDay.Number.unit);
 
                             Draw_dagital_text(gPanel, imageIndex, x, y,
-                                spasing, alignment, value, addZero, 2, separator_index, BBorder);
+                                spasing, alignment, value, addZero, 2, separator_index, 0, BBorder);
 
                             if (DateDay.Number.icon != null && DateDay.Number.icon.Length > 0)
                             {
@@ -1124,7 +1127,7 @@ namespace Watch_Face_Editor
                                 separator_index = ListImages.IndexOf(DateMonth.Number.unit);
 
                             Draw_dagital_text(gPanel, imageIndex, x, y,
-                                spasing, alignment, value, addZero, 2, separator_index, BBorder);
+                                spasing, alignment, value, addZero, 2, separator_index, 0, BBorder);
 
                             if (DateMonth.Number.icon != null && DateMonth.Number.icon.Length > 0)
                             {
@@ -1220,7 +1223,7 @@ namespace Watch_Face_Editor
                             separator_index = ListImages.IndexOf(DateYear.Number.unit);
 
                         Draw_dagital_text(gPanel, imageIndex, x, y,
-                            spasing, alignment, value, addZero, 4, separator_index, BBorder);
+                            spasing, alignment, value, addZero, 4, separator_index, 0, BBorder);
 
                         if (DateYear.Number.icon != null && DateYear.Number.icon.Length > 0)
                         {
@@ -1748,6 +1751,7 @@ namespace Watch_Face_Editor
                     int pos_x = img_number.imageX;
                     int pos_y = img_number.imageY;
                     int distance_spasing = img_number.space;
+                    int angl = img_number.angle;
                     int distance_alignment = AlignmentToInt(img_number.align);
                     //bool distance_addZero = img_number.zero;
                     bool distance_addZero = false;
@@ -1760,7 +1764,7 @@ namespace Watch_Face_Editor
 
                     Draw_dagital_text_decimal(gPanel, image_Index, pos_x, pos_y,
                         distance_spasing, distance_alignment, distance_value, distance_addZero, value_lenght,
-                        distance_separator_index, decumalPoint_index, 2, BBorder);
+                        distance_separator_index, decumalPoint_index, 2, angl, BBorder);
 
                     if (img_number.icon != null && img_number.icon.Length > 0)
                     {
@@ -3053,6 +3057,7 @@ namespace Watch_Face_Editor
                     int x = number.imageX;
                     int y = number.imageY;
                     int spasing = number.space;
+                    int angle = number.angle;
                     int alignment = AlignmentToInt(number.align);
                     bool addZero = number.zero;
                     int separator_index = -1;
@@ -3060,7 +3065,7 @@ namespace Watch_Face_Editor
                         separator_index = ListImages.IndexOf(number.unit);
 
                     Draw_dagital_text(gPanel, imageIndex, x, y,
-                        spasing, alignment, (int)value, addZero, value_lenght, separator_index, BBorder, elementName);
+                        spasing, alignment, (int)value, addZero, value_lenght, separator_index, angle, BBorder, elementName);
 
                     if (number.icon != null && number.icon.Length > 0)
                     {
@@ -3081,6 +3086,7 @@ namespace Watch_Face_Editor
                     int x = numberTarget.imageX;
                     int y = numberTarget.imageY;
                     int spasing = numberTarget.space;
+                    int angle = numberTarget.angle;
                     int alignment = AlignmentToInt(numberTarget.align);
                     bool addZero = numberTarget.zero;
                     int separator_index = -1;
@@ -3088,7 +3094,7 @@ namespace Watch_Face_Editor
                         separator_index = ListImages.IndexOf(numberTarget.unit);
 
                     Draw_dagital_text(gPanel, imageIndex, x, y,
-                        spasing, alignment, (int)goal, addZero, value_lenght, separator_index, BBorder);
+                        spasing, alignment, (int)goal, addZero, value_lenght, separator_index, angle, BBorder);
 
                     if (numberTarget.icon != null && numberTarget.icon.Length > 0)
                     {
@@ -3275,6 +3281,7 @@ namespace Watch_Face_Editor
                     int spasing = number.space;
                     int alignment = AlignmentToInt(number.align);
                     bool addZero = false;
+                    int angle = number.angle;
                     int separator_index = -1;
                     if (number.unit != null && number.unit.Length > 0)
                         separator_index = ListImages.IndexOf(number.unit);
@@ -3288,12 +3295,12 @@ namespace Watch_Face_Editor
                     if (showTemperature)
                     {
                         Draw_weather_text(gPanel, imageIndex, x, y, spasing, alignment, value, addZero, 
-                            imageMinus_index, separator_index, BBorder, -1, false);
+                            imageMinus_index, separator_index, angle, BBorder, -1, false);
                     }
                     else if (imageError_index >= 0)
                     {
                         Draw_weather_text(gPanel, imageIndex, x, y,
-                                        spasing, alignment, value, addZero, imageMinus_index, separator_index,
+                                        spasing, alignment, value, addZero, imageMinus_index, separator_index, angle,
                                         BBorder, imageError_index, true);
                     }
 
@@ -3318,6 +3325,7 @@ namespace Watch_Face_Editor
                     int spasing = numberMin.space;
                     int alignment = AlignmentToInt(numberMin.align);
                     bool addZero = false;
+                    int angle = numberMin.angle;
                     int separator_index = -1;
                     if (numberMin.unit != null && numberMin.unit.Length > 0)
                         separator_index = ListImages.IndexOf(numberMin.unit);
@@ -3331,12 +3339,12 @@ namespace Watch_Face_Editor
                     if (showTemperature)
                     {
                         Draw_weather_text(gPanel, imageIndex, x, y, spasing, alignment, valueMin, addZero,
-                            imageMinus_index, separator_index, BBorder, -1, false);
+                            imageMinus_index, separator_index, angle, BBorder, -1, false);
                     }
                     else if (imageError_index >= 0)
                     {
                         Draw_weather_text(gPanel, imageIndex, x, y,
-                                        spasing, alignment, valueMin, addZero, imageMinus_index, separator_index,
+                                        spasing, alignment, valueMin, addZero, imageMinus_index, separator_index, angle,
                                         BBorder, imageError_index, true);
                     }
 
@@ -3361,6 +3369,7 @@ namespace Watch_Face_Editor
                     int spasing = numberMax.space;
                     int alignment = AlignmentToInt(numberMax.align);
                     bool addZero = false;
+                    int angle = numberMax.angle;
                     int separator_index = -1;
                     if (numberMax.unit != null && numberMax.unit.Length > 0)
                         separator_index = ListImages.IndexOf(numberMax.unit);
@@ -3374,12 +3383,12 @@ namespace Watch_Face_Editor
                     if (showTemperature)
                     {
                         Draw_weather_text(gPanel, imageIndex, x, y, spasing, alignment, valueMax, addZero,
-                            imageMinus_index, separator_index, BBorder, -1, false);
+                            imageMinus_index, separator_index, angle, BBorder, -1, false);
                     }
                     else if (imageError_index >= 0)
                     {
                         Draw_weather_text(gPanel, imageIndex, x, y,
-                                        spasing, alignment, valueMax, addZero, imageMinus_index, separator_index,
+                                        spasing, alignment, valueMax, addZero, imageMinus_index, separator_index, angle,
                                         BBorder, imageError_index, true);
                     }
 
@@ -3516,6 +3525,7 @@ namespace Watch_Face_Editor
                     int pos_x = sunrise.imageX;
                     int pos_y = sunrise.imageY;
                     int sunrise_spasing = sunrise.space;
+                    int angl = sunrise.angle;
                     int sunrise_alignment = AlignmentToInt(sunrise.align);
                     //bool distance_addZero = img_number.zero;
                     bool sunrise_addZero = true;
@@ -3528,7 +3538,7 @@ namespace Watch_Face_Editor
 
                     Draw_dagital_text_decimal(gPanel, image_Index, pos_x, pos_y,
                         sunrise_spasing, sunrise_alignment, sunrise_value, sunrise_addZero, 4,
-                        sunrise_separator_index, decumalPoint_index, 2, BBorder, "ElementSunrise");
+                        sunrise_separator_index, decumalPoint_index, 2, angl, BBorder, "ElementSunrise");
 
                     if (sunrise.icon != null && sunrise.icon.Length > 0)
                     {
@@ -3550,6 +3560,7 @@ namespace Watch_Face_Editor
                     int pos_x = sunset.imageX;
                     int pos_y = sunset.imageY;
                     int sunset_spasing = sunset.space;
+                    int angl = sunset.angle;
                     int sunset_alignment = AlignmentToInt(sunset.align);
                     //bool distance_addZero = img_number.zero;
                     bool sunset_addZero = true;
@@ -3562,7 +3573,7 @@ namespace Watch_Face_Editor
 
                     Draw_dagital_text_decimal(gPanel, image_Index, pos_x, pos_y,
                         sunset_spasing, sunset_alignment, sunset_value, sunset_addZero, 4,
-                        sunset_separator_index, decumalPoint_index, 2, BBorder, "ElementSunrise");
+                        sunset_separator_index, decumalPoint_index, 2, angl, BBorder, "ElementSunrise");
 
                     if (sunset.icon != null && sunset.icon.Length > 0)
                     {
@@ -3585,6 +3596,7 @@ namespace Watch_Face_Editor
                     int pos_x = sunset_sunrise.imageX;
                     int pos_y = sunset_sunrise.imageY;
                     int sunset_sunrise_spasing = sunset_sunrise.space;
+                    int angl = sunset_sunrise.angle;
                     int sunset_sunrise_alignment = AlignmentToInt(sunset_sunrise.align);
                     //bool distance_addZero = img_number.zero;
                     bool sunset_sunrise_addZero = true;
@@ -3597,7 +3609,7 @@ namespace Watch_Face_Editor
 
                     Draw_dagital_text_decimal(gPanel, image_Index, pos_x, pos_y,
                         sunset_sunrise_spasing, sunset_sunrise_alignment, sunset_sunrise_value, sunset_sunrise_addZero, 4,
-                        sunset_sunrise_separator_index, decumalPoint_index, 2, BBorder, "ElementSunrise");
+                        sunset_sunrise_separator_index, decumalPoint_index, 2, angl, BBorder, "ElementSunrise");
 
                     if (sunset_sunrise.icon != null && sunset_sunrise.icon.Length > 0)
                     {
@@ -3767,6 +3779,7 @@ namespace Watch_Face_Editor
                     int x = number.imageX;
                     int y = number.imageY;
                     int spasing = number.space;
+                    int angle = number.angle;
                     int alignment = AlignmentToInt(number.align);
                     bool addZero = number.zero;
                     int separator_index = -1;
@@ -3774,7 +3787,7 @@ namespace Watch_Face_Editor
                         separator_index = ListImages.IndexOf(number.unit);
 
                     Draw_dagital_text(gPanel, imageIndex, x, y,
-                        spasing, alignment, (int)value, addZero, value_lenght, separator_index, BBorder, "ElementWind");
+                        spasing, alignment, (int)value, addZero, value_lenght, separator_index, angle, BBorder, "ElementWind");
 
                     if (number.icon != null && number.icon.Length > 0)
                     {
@@ -4192,23 +4205,17 @@ namespace Watch_Face_Editor
         /// <param name="addZero">Отображать начальные нули</param>
         /// <param name="value_lenght">Количество отображаемых символов</param>
         /// <param name="separator_index">Символ разделителя (единиц измерения)</param>
+        /// <param name="angle">Угол наклона текста</param>
         /// <param name="BBorder">Рисовать рамку по координатам, вокруг элементов с выравниванием</param>
         /// <param name="elementName">Название элемента (при необходимости)</param>
         private int Draw_dagital_text(Graphics graphics, int image_index, int x, int y, int spacing,
-            int alignment, int value, bool addZero, int value_lenght, int separator_index, bool BBorder, 
+            int alignment, int value, bool addZero, int value_lenght, int separator_index, int angle, bool BBorder, 
             string elementName = "")
         {
             if (image_index < 0 || image_index >= ListImagesFullName.Count) return 0;
-            //while (spacing > 127)
-            //{
-            //    spacing = spacing - 256;
-            //}
-            //while (spacing < -128)
-            //{
-            //    spacing = spacing + 256;
-            //}
 
             int result = 0;
+            if (ProgramSettings.Watch_Model != "GTR 4" && ProgramSettings.Watch_Model != "GTS 4") angle = 0;
             Logger.WriteLine("* Draw_dagital_text");
             var src = new Bitmap(1, 1);
             int _number;
@@ -4256,22 +4263,52 @@ namespace Watch_Face_Editor
             }
             DateLenghtReal = DateLenghtReal - spacing;
 
-            int PointX = 0;
+            //int PointX = 0;
+            //int PointY = y;
+            //switch (alignment)
+            //{
+            //    case 0:
+            //        PointX = x;
+            //        break;
+            //    case 1:
+            //        PointX = x + DateLenght / 2 - DateLenghtReal / 2;
+            //        break;
+            //    case 2:
+            //        PointX = x + DateLenght - DateLenghtReal;
+            //        break;
+            //    default:
+            //        PointX = x;
+            //        break;
+            //}
+
+            int PointX = x;
+            int offsetX = 0;
             int PointY = y;
             switch (alignment)
             {
                 case 0:
-                    PointX = x;
+                    offsetX = 0;
                     break;
                 case 1:
-                    PointX = x + DateLenght / 2 - DateLenghtReal / 2;
+                    offsetX = DateLenght / 2 - DateLenghtReal / 2;
                     break;
                 case 2:
-                    PointX = x + DateLenght - DateLenghtReal;
+                    offsetX = DateLenght - DateLenghtReal;
                     break;
                 default:
-                    PointX = x;
+                    offsetX = 0;
                     break;
+            }
+
+            if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2")
+            {
+                int pivot_point_offset_x = 0;
+                int pivot_point_offset_y = 0;
+                Calculation_pivot_point_offset(width, height, angle, out pivot_point_offset_x, out pivot_point_offset_y);
+                graphics.TranslateTransform(PointX, PointY);
+                graphics.TranslateTransform(pivot_point_offset_x, pivot_point_offset_y);
+                graphics.RotateTransform(angle);
+                graphics.TranslateTransform(-PointX, -PointY);
             }
 
             Logger.WriteLine("Draw value");
@@ -4285,7 +4322,7 @@ namespace Watch_Face_Editor
                     {
                         string s = ListImagesFullName[i];
                         src = OpenFileStream(ListImagesFullName[i]);
-                        graphics.DrawImage(src, PointX, PointY);
+                        graphics.DrawImage(src, PointX + offsetX, PointY);
                         //PointX = PointX + src.Width + spacing;
                         PointX = PointX + width + spacing;
                         //src.Dispose();
@@ -4294,11 +4331,11 @@ namespace Watch_Face_Editor
 
             }
             //result = PointX - spacing;
-            result = PointX;
+            result = PointX + offsetX;
             if (separator_index > -1)
             {
                 src = OpenFileStream(ListImagesFullName[separator_index]);
-                graphics.DrawImage(src, PointX, PointY);
+                graphics.DrawImage(src, PointX + offsetX, PointY);
                 //graphics.DrawImage(src, new Rectangle(PointX, PointY, src.Width, src.Height));
                 result = result + src.Width + spacing;
             }
@@ -4318,38 +4355,78 @@ namespace Watch_Face_Editor
                     graphics.DrawRectangle(pen2, rect);
                 }
             }
+            graphics.ResetTransform();
 
             Logger.WriteLine("* Draw_dagital_text (end)");
             return result;
         }
-        
+
+        private void Calculation_pivot_point_offset(int width, int height, float angle, out int pivot_point_offset_x, out int pivot_point_offset_y)
+        {
+            while (angle >= 360)
+            {
+                angle -= 360;
+            }
+            while (angle < 0)
+            {
+                angle += 360;
+            }
+            pivot_point_offset_x = 0;
+            pivot_point_offset_y = 0;
+            if ((width == 0 && height == 0) || angle == 0) return;
+            double angle_radian = Math.PI * angle / 180.0;
+            if (angle > 0 && angle <= 90)
+            {
+                pivot_point_offset_x = (int)(height * Math.Sin(angle_radian));
+                return;
+            }
+            if (angle > 90 && angle <= 180)
+            {
+                double d_angle = Math.Atan2(height, width);
+                d_angle += angle_radian;
+                double diagonal = Math.Sqrt(height * height + width * width); 
+                pivot_point_offset_x = (int)(-diagonal * Math.Cos(d_angle));
+                pivot_point_offset_y = (int)(-height * Math.Cos(angle_radian));
+                return;
+            }
+            if (angle > 180 && angle <= 270)
+            {
+                double d_angle = Math.Atan2(height, width);
+                d_angle += angle_radian;
+                double diagonal = Math.Sqrt(height * height + width * width);
+                pivot_point_offset_x = (int)(-width * Math.Cos(angle_radian));
+                pivot_point_offset_y = (int)(-diagonal * Math.Sin(d_angle));
+                return;
+            }
+            if (angle > 270 && angle <= 360)
+            {
+                pivot_point_offset_y = (int)(-width * Math.Sin(angle_radian));
+                return;
+            }
+
+        }
+
         /// <summary>Рисует погоду числом</summary>
-         /// <param name="graphics">Поверхность для рисования</param>
-         /// <param name="image_index">Номер изображения</param>
-         /// <param name="x">Координата X</param>
-         /// <param name="y">Координата y</param>
-         /// <param name="spacing">Величина отступа</param>
-         /// <param name="alignment">Выравнивание</param>
-         /// <param name="value">Отображаемая величина</param>
-         /// <param name="addZero">Отображать начальные нули</param>
-         /// <param name="image_minus_index">Символ "-"</param>
-         /// <param name="unit_index">Символ единиц измерения</param>
-         /// <param name="BBorder">Рисовать рамку по координатам, вокруг элементов с выравниванием</param>
-         /// <param name="imageError_index">Иконка ошибки данны</param>
-         /// <param name="errorData">отображать ошибку данный</param>
+        /// <param name="graphics">Поверхность для рисования</param>
+        /// <param name="image_index">Номер изображения</param>
+        /// <param name="x">Координата X</param>
+        /// <param name="y">Координата y</param>
+        /// <param name="spacing">Величина отступа</param>
+        /// <param name="alignment">Выравнивание</param>
+        /// <param name="value">Отображаемая величина</param>
+        /// <param name="addZero">Отображать начальные нули</param>
+        /// <param name="image_minus_index">Символ "-"</param>
+        /// <param name="unit_index">Символ единиц измерения</param>
+        /// <param name="angle">Угол наклона текста</param>
+        /// <param name="BBorder">Рисовать рамку по координатам, вокруг элементов с выравниванием</param>
+        /// <param name="imageError_index">Иконка ошибки данны</param>
+        /// <param name="errorData">отображать ошибку данный</param>
         private int Draw_weather_text(Graphics graphics, int image_index, int x, int y, int spacing,
-            int alignment, int value, bool addZero, int image_minus_index, int unit_index, bool BBorder,
+            int alignment, int value, bool addZero, int image_minus_index, int unit_index, int angle, bool BBorder,
             int imageError_index = -1, bool errorData = false)
         {
-            //while (spacing > 127)
-            //{
-            //    spacing = spacing - 255;
-            //}
-            //while (spacing < -127)
-            //{
-            //    spacing = spacing + 255;
-            //}
             int result = 0;
+            if (ProgramSettings.Watch_Model != "GTR 4" && ProgramSettings.Watch_Model != "GTS 4") angle = 0;
             Logger.WriteLine("* Draw_weather_text");
             var src = new Bitmap(1, 1);
             int _number;
@@ -4420,27 +4497,57 @@ namespace Watch_Face_Editor
 
             DateLenghtReal = DateLenghtReal - spacing;
 
-            int PointX = 0;
+            //int PointX = 0;
+            //int PointY = y;
+            //switch (alignment)
+            //{
+            //    case 0:
+            //        PointX = x;
+            //        break;
+            //    case 1:
+            //        PointX = x + DateLenght / 2 - DateLenghtReal / 2;
+            //        break;
+            //    case 2:
+            //        PointX = x + DateLenght - DateLenghtReal;
+            //        break;
+            //    default:
+            //        PointX = x;
+            //        break;
+            //}
+
+            int PointX = x;
+            int offsetX = 0;
             int PointY = y;
             switch (alignment)
             {
                 case 0:
-                    PointX = x;
+                    offsetX = 0;
                     break;
                 case 1:
-                    PointX = x + DateLenght / 2 - DateLenghtReal / 2;
+                    offsetX = DateLenght / 2 - DateLenghtReal / 2;
                     break;
                 case 2:
-                    PointX = x + DateLenght - DateLenghtReal;
+                    offsetX = DateLenght - DateLenghtReal;
                     break;
                 default:
-                    PointX = x;
+                    offsetX = 0;
                     break;
             }
 
             Logger.WriteLine("Draw value");
             if (!errorData)
             {
+                if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2")
+                {
+                    int pivot_point_offset_x = 0;
+                    int pivot_point_offset_y = 0;
+                    Calculation_pivot_point_offset(widthD, height, angle, out pivot_point_offset_x, out pivot_point_offset_y);
+                    graphics.TranslateTransform(PointX, PointY);
+                    graphics.TranslateTransform(pivot_point_offset_x, pivot_point_offset_y);
+                    graphics.RotateTransform(angle);
+                    graphics.TranslateTransform(-PointX, -PointY);
+                }
+
                 foreach (char ch in CH)
                 {
                     _number = 0;
@@ -4451,7 +4558,7 @@ namespace Watch_Face_Editor
                         {
                             //src = new Bitmap(ListImagesFullName[i]);
                             src = OpenFileStream(ListImagesFullName[i]);
-                            graphics.DrawImage(src, new Rectangle(PointX, PointY, src.Width, src.Height));
+                            graphics.DrawImage(src, new Rectangle(PointX + offsetX, PointY, src.Width, src.Height));
                             //PointX = PointX + src.Width + spacing;
                             PointX = PointX + widthD + spacing;
                             //src.Dispose();
@@ -4463,40 +4570,65 @@ namespace Watch_Face_Editor
                         {
                             //src = new Bitmap(ListImagesFullName[dec]);
                             src = OpenFileStream(ListImagesFullName[image_minus_index]);
-                            graphics.DrawImage(src, new Rectangle(PointX, PointY, src.Width, src.Height));
+                            graphics.DrawImage(src, new Rectangle(PointX + offsetX, PointY, src.Width, src.Height));
                             PointX = PointX + src.Width + spacing;
                             //src.Dispose();
                         }
                     }
 
                 }
-                result = PointX - spacing;
+                result = PointX - spacing + offsetX;
                 if (unit_index > -1)
                 {
                     src = OpenFileStream(ListImagesFullName[unit_index]);
-                    graphics.DrawImage(src, new Rectangle(PointX, PointY, src.Width, src.Height));
+                    graphics.DrawImage(src, new Rectangle(PointX + offsetX, PointY, src.Width, src.Height));
                     result = result + src.Width + spacing;
                 }
             }
             else if (imageError_index >= 0)
             {
                 src = OpenFileStream(ListImagesFullName[imageError_index]);
+                //switch (alignment)
+                //{
+                //    case 0:
+                //        PointX = x;
+                //        break;
+                //    case 1:
+                //        PointX = x + (DateLenght - src.Width) / 2;
+                //        break;
+                //    case 2:
+                //        PointX = x + DateLenght - src.Width;
+                //        break;
+                //    default:
+                //        PointX = x;
+                //        break;
+                //}
                 switch (alignment)
                 {
                     case 0:
-                        PointX = x;
+                        offsetX = 0;
                         break;
                     case 1:
-                        PointX = x + (DateLenght - src.Width) / 2;
+                        offsetX = (DateLenght - src.Width) / 2;
                         break;
                     case 2:
-                        PointX = x + DateLenght - src.Width;
+                        offsetX = DateLenght - src.Width;
                         break;
                     default:
-                        PointX = x;
+                        offsetX = 0;
                         break;
                 }
-                graphics.DrawImage(src, PointX, PointY);
+                if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2")
+                {
+                    int pivot_point_offset_x = 0;
+                    int pivot_point_offset_y = 0;
+                    Calculation_pivot_point_offset(widthD, height, angle, out pivot_point_offset_x, out pivot_point_offset_y);
+                    graphics.TranslateTransform(PointX, PointY);
+                    graphics.TranslateTransform(pivot_point_offset_x, pivot_point_offset_y);
+                    graphics.RotateTransform(angle);
+                    graphics.TranslateTransform(-PointX, -PointY);
+                }
+                graphics.DrawImage(src, PointX + offsetX, PointY);
             }
             src.Dispose();
 
@@ -4514,6 +4646,7 @@ namespace Watch_Face_Editor
                     graphics.DrawRectangle(pen2, rect);
                 }
             }
+            graphics.ResetTransform();
 
             Logger.WriteLine("* Draw_weather_text (end)");
             return result;
@@ -4807,21 +4940,15 @@ namespace Watch_Face_Editor
         /// <param name="separator_index">Символ разделителя (единиц измерения)</param>
         /// <param name="decimalPoint_index">Символ десятичного разделителя</param>
         /// <param name="decCount">Число знаков после запятой</param>
+        /// <param name="angle">Угол наклона текста</param>
         /// <param name="BBorder">Рисовать рамку по координатам, вокруг элементов с выравниванием</param>
         private int Draw_dagital_text_decimal(Graphics graphics, int image_index, int x, int y, int spacing,
             int alignment, double value, bool addZero, int value_lenght, int separator_index,
-            int decimalPoint_index, int decCount, bool BBorder, string elementName = "")
+            int decimalPoint_index, int decCount, int angle, bool BBorder, string elementName = "")
         {
             Logger.WriteLine("* Draw_dagital_text");
+            if (ProgramSettings.Watch_Model != "GTR 4" && ProgramSettings.Watch_Model != "GTS 4") angle = 0;
             value = Math.Round(value, decCount, MidpointRounding.AwayFromZero);
-            //while (spacing > 127)
-            //{
-            //    spacing = spacing - 255;
-            //}
-            //while (spacing < -127)
-            //{
-            //    spacing = spacing + 255;
-            //}
             //var Digit = new Bitmap(ListImagesFullName[image_index]);
             //var Delimit = new Bitmap(1, 1);
             //if (dec >= 0) Delimit = new Bitmap(ListImagesFullName[dec]);
@@ -4907,22 +5034,52 @@ namespace Watch_Face_Editor
             DateLenghtReal = DateLenghtReal - spacing;
 
 
-            int PointX = 0;
+            //int PointX = 0;
+            //int PointY = y;
+            //switch (alignment)
+            //{
+            //    case 0:
+            //        PointX = x;
+            //        break;
+            //    case 1:
+            //        PointX = x + DateLenght / 2 - DateLenghtReal / 2;
+            //        break;
+            //    case 2:
+            //        PointX = x + DateLenght - DateLenghtReal;
+            //        break;
+            //    default:
+            //        PointX = x;
+            //        break;
+            //}
+
+            int PointX = x;
+            int offsetX = 0;
             int PointY = y;
             switch (alignment)
             {
                 case 0:
-                    PointX = x;
+                    offsetX = 0;
                     break;
                 case 1:
-                    PointX = x + DateLenght / 2 - DateLenghtReal / 2;
+                    offsetX = DateLenght / 2 - DateLenghtReal / 2;
                     break;
                 case 2:
-                    PointX = x + DateLenght - DateLenghtReal;
+                    offsetX = DateLenght - DateLenghtReal;
                     break;
                 default:
-                    PointX = x;
+                    offsetX = 0;
                     break;
+            }
+
+            if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2")
+            {
+                int pivot_point_offset_x = 0;
+                int pivot_point_offset_y = 0;
+                Calculation_pivot_point_offset(width, height, angle, out pivot_point_offset_x, out pivot_point_offset_y);
+                graphics.TranslateTransform(PointX, PointY);
+                graphics.TranslateTransform(pivot_point_offset_x, pivot_point_offset_y);
+                graphics.RotateTransform(angle);
+                graphics.TranslateTransform(-PointX, -PointY);
             }
 
             Logger.WriteLine("Draw value");
@@ -4935,7 +5092,7 @@ namespace Watch_Face_Editor
                     if (i < ListImagesFullName.Count)
                     {
                         src = OpenFileStream(ListImagesFullName[i]);
-                        graphics.DrawImage(src, PointX, PointY);
+                        graphics.DrawImage(src, PointX + offsetX, PointY);
                         //PointX = PointX + src.Width + spacing;
                         PointX = PointX + width + spacing;
                     }
@@ -4945,17 +5102,17 @@ namespace Watch_Face_Editor
                     if (decimalPoint_index >= 0 && decimalPoint_index < ListImagesFullName.Count)
                     {
                         src = OpenFileStream(ListImagesFullName[decimalPoint_index]);
-                        graphics.DrawImage(src, PointX, PointY);
+                        graphics.DrawImage(src, PointX + offsetX, PointY);
                         PointX = PointX + src.Width + spacing;
                     }
                 }
 
             }
-            int result = PointX;
+            int result = PointX + offsetX;
             if (separator_index > -1)
             {
                 src = OpenFileStream(ListImagesFullName[separator_index]);
-                graphics.DrawImage(src, new Rectangle(PointX, PointY, src.Width, src.Height));
+                graphics.DrawImage(src, new Rectangle(PointX + offsetX, PointY, src.Width, src.Height));
                 result = result + src.Width + spacing;
             }
             src.Dispose();
@@ -4974,6 +5131,7 @@ namespace Watch_Face_Editor
                     graphics.DrawRectangle(pen2, rect);
                 }
             }
+            graphics.ResetTransform();
 
             Logger.WriteLine("* Draw_dagital_text (end)");
             return result;

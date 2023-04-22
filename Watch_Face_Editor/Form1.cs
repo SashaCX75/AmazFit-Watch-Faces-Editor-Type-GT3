@@ -1906,7 +1906,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_DigitalTime_Elm.checkBox_Hours.Checked)
                         {
                             img_number = digitalTime.Hour;
-                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             ShowElemenrOptions("Text");
                         }
                         else HideAllElemenrOptions();
@@ -1915,7 +1915,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_DigitalTime_Elm.checkBox_Minutes.Checked)
                         {
                             img_number = digitalTime.Minute;
-                            Read_ImgNumber_Options(img_number, false, true, Properties.FormStrings.FollowMinute, false, false, true);
+                            Read_ImgNumber_Options(img_number, false, true, Properties.FormStrings.FollowMinute, false, false, true, true);
                             ShowElemenrOptions("Text");
                         }
                         else HideAllElemenrOptions();
@@ -1924,7 +1924,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_DigitalTime_Elm.checkBox_Seconds.Checked)
                         {
                             img_number = digitalTime.Second;
-                            Read_ImgNumber_Options(img_number, false, true, Properties.FormStrings.FollowSecond, false, false, true);
+                            Read_ImgNumber_Options(img_number, false, true, Properties.FormStrings.FollowSecond, false, false, true, true);
                             ShowElemenrOptions("Text"); 
                         }
                         else HideAllElemenrOptions();
@@ -8784,7 +8784,7 @@ namespace Watch_Face_Editor
                                         else
                                         {
                                             if(background.Editable_Background != null && 
-                                                background.Editable_Background.BackgroundList == null &&
+                                                background.Editable_Background.BackgroundList != null &&
                                                 background.Editable_Background.BackgroundList.Count > 0)
                                             {
                                                 int h = 454;
@@ -9609,7 +9609,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_DateDay_Elm.checkBox_Number.Checked)
                         {
                             img_number = dateDay.Number;
-                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true, false);
                             ShowElemenrOptions("Text");
                         }
                         else HideAllElemenrOptions();
@@ -9673,7 +9673,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_DateMonth_Elm.checkBox_Number.Checked)
                         {
                             img_number = dateMonth.Number;
-                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true, false);
                             ShowElemenrOptions("Text");
                         }
                         else HideAllElemenrOptions();
@@ -9722,7 +9722,7 @@ namespace Watch_Face_Editor
 
                 if (dateYear.Number == null) dateYear.Number = new hmUI_widget_IMG_NUMBER();
                 img_number = dateYear.Number;
-                Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                Read_ImgNumber_Options(img_number, false, false, "", false, false, true, false);
                 uCtrl_Text_Opt.Year = true;
                 ShowElemenrOptions("Text");
 
@@ -10122,7 +10122,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Steps_Elm.checkBox_Number.Checked)
                         {
                             img_number = steps.Number;
-                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             ShowElemenrOptions("Text");
                         }
                         else HideAllElemenrOptions();
@@ -10131,7 +10131,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Steps_Elm.checkBox_Number_Target.Checked)
                         {
                             img_number = steps.Number_Target;
-                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             ShowElemenrOptions("Text");
                         }
                         else HideAllElemenrOptions();
@@ -10235,7 +10235,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Battery_Elm.checkBox_Number.Checked)
                         {
                             img_number = battery.Number;
-                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             ShowElemenrOptions("Text");
                         }
                         else HideAllElemenrOptions();
@@ -10339,7 +10339,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Heart_Elm.checkBox_Number.Checked)
                         {
                             img_number = heart.Number;
-                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             uCtrl_Text_Opt.ImageError = true;
                             ShowElemenrOptions("Text");
                         }
@@ -10444,7 +10444,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Calories_Elm.checkBox_Number.Checked)
                         {
                             img_number = calories.Number;
-                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             ShowElemenrOptions("Text");
                         }
                         else HideAllElemenrOptions();
@@ -10453,7 +10453,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Calories_Elm.checkBox_Number_Target.Checked)
                         {
                             img_number = calories.Number_Target;
-                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             ShowElemenrOptions("Text");
                         }
                         else HideAllElemenrOptions();
@@ -10557,7 +10557,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_PAI_Elm.checkBox_Number.Checked)
                         {
                             img_number = pai.Number;
-                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             ShowElemenrOptions("Text");
                         }
                         else HideAllElemenrOptions();
@@ -10566,7 +10566,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_PAI_Elm.checkBox_Number_Target.Checked)
                         {
                             img_number = pai.Number_Target;
-                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             ShowElemenrOptions("Text");
                         }
                         else HideAllElemenrOptions();
@@ -10640,7 +10640,7 @@ namespace Watch_Face_Editor
 
                 if (distance.Number == null) distance.Number = new hmUI_widget_IMG_NUMBER();
                 img_number = distance.Number;
-                Read_ImgNumber_Options(img_number, true, false, "", false, true, false);
+                Read_ImgNumber_Options(img_number, true, false, "", false, true, false, true);
                 ShowElemenrOptions("Text");
 
             }
@@ -10704,7 +10704,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Stand_Elm.checkBox_Number.Checked)
                         {
                             img_number = stand.Number;
-                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             ShowElemenrOptions("Text");
                         }
                         else HideAllElemenrOptions();
@@ -10713,7 +10713,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Stand_Elm.checkBox_Number_Target.Checked)
                         {
                             img_number = stand.Number_Target;
-                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             ShowElemenrOptions("Text");
                         }
                         else HideAllElemenrOptions();
@@ -10817,7 +10817,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Activity_Elm.checkBox_Number.Checked)
                         {
                             img_number = activity.Number;
-                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             ShowElemenrOptions("Text");
                         }
                         else HideAllElemenrOptions();
@@ -10826,7 +10826,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Activity_Elm.checkBox_Number_Target.Checked)
                         {
                             img_number = activity.Number_Target;
-                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             ShowElemenrOptions("Text");
                         }
                         else HideAllElemenrOptions();
@@ -10900,7 +10900,7 @@ namespace Watch_Face_Editor
 
                 if (spo2.Number == null) spo2.Number = new hmUI_widget_IMG_NUMBER();
                 img_number = spo2.Number;
-                Read_ImgNumber_Options(img_number, false, false, "", true, false, true);
+                Read_ImgNumber_Options(img_number, false, false, "", true, false, true, true);
                 ShowElemenrOptions("Text");
 
             }
@@ -10962,7 +10962,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Stress_Elm.checkBox_Number.Checked)
                         {
                             img_number = stress.Number;
-                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             ShowElemenrOptions("Text");
                         }
                         else HideAllElemenrOptions();
@@ -11048,7 +11048,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_FatBurning_Elm.checkBox_Number.Checked)
                         {
                             img_number = fat_burning.Number;
-                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             ShowElemenrOptions("Text");
                         }
                         else HideAllElemenrOptions();
@@ -11057,7 +11057,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_FatBurning_Elm.checkBox_Number_Target.Checked)
                         {
                             img_number = fat_burning.Number_Target;
-                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             ShowElemenrOptions("Text");
                         }
                         else HideAllElemenrOptions();
@@ -11253,7 +11253,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_UVIndex_Elm.checkBox_Number.Checked)
                         {
                             img_number = uv_index.Number;
-                            Read_ImgNumber_Options(img_number, false, false, "", true, false, false);
+                            Read_ImgNumber_Options(img_number, false, false, "", true, false, false, true);
                             ShowElemenrOptions("Text");
                         }
                         else HideAllElemenrOptions();
@@ -11337,7 +11337,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Humidity_Elm.checkBox_Number.Checked)
                         {
                             img_number = humidity.Number;
-                            Read_ImgNumber_Options(img_number, false, false, "", false, false, false);
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, false, true);
                             ShowElemenrOptions("Text");
                         }
                         else HideAllElemenrOptions();
@@ -11401,7 +11401,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Altimeter_Elm.checkBox_Number.Checked)
                         {
                             img_number = altimeter.Number;
-                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             ShowElemenrOptions("Text");
                         }
                         else HideAllElemenrOptions();
@@ -11485,7 +11485,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Sunrise_Elm.checkBox_Sunrise.Checked)
                         {
                             img_number = sunrise.Sunrise;
-                            Read_ImgNumber_Options(img_number, false, false, "", true, true, false, true);
+                            Read_ImgNumber_Options(img_number, false, false, "", true, true, false, true, true);
                             ShowElemenrOptions("Text");
                         }
                         else HideAllElemenrOptions();
@@ -11494,7 +11494,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Sunrise_Elm.checkBox_Sunset.Checked)
                         {
                             img_number = sunrise.Sunset;
-                            Read_ImgNumber_Options(img_number, false, false, "", true, true, false, true);
+                            Read_ImgNumber_Options(img_number, false, false, "", true, true, false, true, true);
                             ShowElemenrOptions("Text");
                         }
                         else HideAllElemenrOptions();
@@ -11503,7 +11503,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Sunrise_Elm.checkBox_Sunset_Sunrise.Checked)
                         {
                             img_number = sunrise.Sunset_Sunrise;
-                            Read_ImgNumber_Options(img_number, false, false, "", true, true, false, true);
+                            Read_ImgNumber_Options(img_number, false, false, "", true, true, false, true, true);
                             ShowElemenrOptions("Text");
                         }
                         else HideAllElemenrOptions();
@@ -11587,7 +11587,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Wind_Elm.checkBox_Number.Checked)
                         {
                             img_number = wind.Number;
-                            Read_ImgNumber_Options(img_number, false, false, "", false, false, false);
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, false, true);
                             ShowElemenrOptions("Text");
                         }
                         else HideAllElemenrOptions();

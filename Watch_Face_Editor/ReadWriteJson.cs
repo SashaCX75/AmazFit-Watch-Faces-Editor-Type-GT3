@@ -6643,6 +6643,8 @@ namespace Watch_Face_Editor
                         if (index == circleScalePosition && circle_scale != null && circleScaleProgressOptions.Length > 5)
                         {
                             string variableName = optionNameStart + "step_circle_scale";
+                            string optionNameMirror = "";
+                            if (circle_scale.mirror) optionNameMirror = optionNameStart + "step_circle_scale_mirror";
                             variables += TabInString(4) + "let " + variableName +  " = null;" + Environment.NewLine;
 
                             items += circleScaleOptions;
@@ -6716,7 +6718,7 @@ namespace Watch_Face_Editor
                             string progress_name = "progress_cs_" + optionNameStart + "step";
                             resume_function += Environment.NewLine + TabInString(8) +
                                     "if (" + variableName + ") {" + Environment.NewLine;
-                            resume_function += Circle_Scale_Progress_WidgetDelegate_Options(circle_scale, variableName, variableName + "_mirror", 
+                            resume_function += Circle_Scale_Progress_WidgetDelegate_Options(circle_scale, variableName, optionNameMirror, 
                                 progress_name, show_level);
                             resume_function += TabInString(8) + "};" + Environment.NewLine;
                         }
@@ -6914,6 +6916,8 @@ namespace Watch_Face_Editor
                         if (index == circleScalePosition && circle_scale != null && circleScaleProgressOptions.Length > 5)
                         {
                             string variableName = optionNameStart + "battery_circle_scale";
+                            string optionNameMirror = "";
+                            if (circle_scale.mirror) optionNameMirror = optionNameStart + "battery_circle_scale_mirror";
                             variables += TabInString(4) + "let " + variableName + " = null;" + Environment.NewLine;
 
                             items += circleScaleOptions;
@@ -6987,7 +6991,7 @@ namespace Watch_Face_Editor
                             string progress_name = "progress_cs_" + optionNameStart + "battery";
                             resume_function += Environment.NewLine + TabInString(8) +
                                     "if (" + variableName + ") {" + Environment.NewLine;
-                            resume_function += Circle_Scale_Progress_WidgetDelegate_Options(circle_scale, variableName, variableName + "_mirror",
+                            resume_function += Circle_Scale_Progress_WidgetDelegate_Options(circle_scale, variableName, optionNameMirror,
                                 progress_name, show_level);
                             resume_function += TabInString(8) + "};" + Environment.NewLine;
 
@@ -7212,6 +7216,8 @@ namespace Watch_Face_Editor
                         if (index == circleScalePosition && circle_scale != null && circleScaleProgressOptions.Length > 5)
                         {
                             string variableName = optionNameStart + "calorie_circle_scale";
+                            string optionNameMirror = "";
+                            if (circle_scale.mirror) optionNameMirror = optionNameStart + "calorie_circle_scale_mirror";
                             variables += TabInString(4) + "let " + variableName + " = null;" + Environment.NewLine;
 
                             items += circleScaleOptions;
@@ -7285,7 +7291,7 @@ namespace Watch_Face_Editor
                             string progress_name = "progress_cs_" + optionNameStart + "calorie";
                             resume_function += Environment.NewLine + TabInString(8) +
                                     "if (" + variableName + ") {" + Environment.NewLine;
-                            resume_function += Circle_Scale_Progress_WidgetDelegate_Options(circle_scale, variableName, variableName + "_mirror",
+                            resume_function += Circle_Scale_Progress_WidgetDelegate_Options(circle_scale, variableName, optionNameMirror,
                                 progress_name, show_level);
                             resume_function += TabInString(8) + "};" + Environment.NewLine;
 
@@ -7484,6 +7490,8 @@ namespace Watch_Face_Editor
                         if (index == circleScalePosition && circle_scale != null && circleScaleProgressOptions.Length > 5)
                         {
                             string variableName = optionNameStart + "heart_rate_circle_scale";
+                            string optionNameMirror = "";
+                            if (circle_scale.mirror) optionNameMirror = optionNameStart + "heart_rate_circle_scale_mirror";
                             variables += TabInString(4) + "let " + variableName + " = null;" + Environment.NewLine;
 
                             items += circleScaleOptions;
@@ -7558,7 +7566,7 @@ namespace Watch_Face_Editor
                             string progress_name = "progress_cs_" + optionNameStart + "heart_rate";
                             resume_function += Environment.NewLine + TabInString(8) +
                                     "if (" + variableName + ") {" + Environment.NewLine;
-                            resume_function += Circle_Scale_Progress_WidgetDelegate_Options(circle_scale, variableName, variableName + "_mirror",
+                            resume_function += Circle_Scale_Progress_WidgetDelegate_Options(circle_scale, variableName, optionNameMirror,
                                 progress_name, show_level);
                             resume_function += TabInString(8) + "};" + Environment.NewLine;
 
@@ -7784,6 +7792,8 @@ namespace Watch_Face_Editor
                         if (index == circleScalePosition && circle_scale != null && circleScaleProgressOptions.Length > 5)
                         {
                             string variableName = optionNameStart + "pai_circle_scale";
+                            string optionNameMirror = "";
+                            if (circle_scale.mirror) optionNameMirror = optionNameStart + "pai_circle_scale_mirror";
                             variables += TabInString(4) + "let " + variableName + " = null;" + Environment.NewLine;
 
                             items += circleScaleOptions;
@@ -7857,7 +7867,7 @@ namespace Watch_Face_Editor
                             string progress_name = "progress_cs_" + optionNameStart + "pai";
                             resume_function += Environment.NewLine + TabInString(8) +
                                     "if (" + variableName + ") {" + Environment.NewLine;
-                            resume_function += Circle_Scale_Progress_WidgetDelegate_Options(circle_scale, variableName, variableName + "_mirror",
+                            resume_function += Circle_Scale_Progress_WidgetDelegate_Options(circle_scale, variableName, optionNameMirror,
                                 progress_name, show_level);
                             resume_function += TabInString(8) + "};" + Environment.NewLine;
 
@@ -8110,6 +8120,8 @@ namespace Watch_Face_Editor
                         if (index == circleScalePosition && circle_scale != null)
                         {
                             string variableName = optionNameStart + "stand_circle_scale";
+                            string optionNameMirror = "";
+                            if (circle_scale.mirror) optionNameMirror = optionNameStart + "stand_circle_scale_mirror";
                             variables += TabInString(4) + "let " + variableName + " = null;" + Environment.NewLine;
 
                             items += circleScaleOptions;
@@ -8183,7 +8195,7 @@ namespace Watch_Face_Editor
                             string progress_name = "progress_cs_" + optionNameStart + "stand";
                             resume_function += Environment.NewLine + TabInString(8) +
                                     "if (" + variableName + ") {" + Environment.NewLine;
-                            resume_function += Circle_Scale_Progress_WidgetDelegate_Options(circle_scale, variableName, variableName + "_mirror",
+                            resume_function += Circle_Scale_Progress_WidgetDelegate_Options(circle_scale, variableName, optionNameMirror,
                                 progress_name, show_level);
                             resume_function += TabInString(8) + "};" + Environment.NewLine;
 
@@ -8530,6 +8542,8 @@ namespace Watch_Face_Editor
                         if (index == circleScalePosition && circle_scale != null)
                         {
                             string variableName = optionNameStart + "fat_burning_circle_scale";
+                            string optionNameMirror = "";
+                            if (circle_scale.mirror) optionNameMirror = optionNameStart + "fat_burning_scale_mirror";
                             variables += TabInString(4) + "let " + variableName + " = null;" + Environment.NewLine;
 
                             items += circleScaleOptions;
@@ -8603,7 +8617,7 @@ namespace Watch_Face_Editor
                             string progress_name = "progress_cs_" + optionNameStart + "fat_burning";
                             resume_function += Environment.NewLine + TabInString(8) +
                                     "if (" + variableName + ") {" + Environment.NewLine;
-                            resume_function += Circle_Scale_Progress_WidgetDelegate_Options(circle_scale, variableName, variableName + "_mirror",
+                            resume_function += Circle_Scale_Progress_WidgetDelegate_Options(circle_scale, variableName, optionNameMirror,
                                 progress_name, show_level);
                             resume_function += TabInString(8) + "};" + Environment.NewLine;
 
@@ -9501,6 +9515,7 @@ namespace Watch_Face_Editor
                 else options += TabInString(7 + tabOffset) + "padding: false," + Environment.NewLine;
 
                 options += TabInString(7 + tabOffset) + "h_space: " + img_number.space.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "angle: " + img_number.angle.ToString() + "," + Environment.NewLine;
                 if (img_number.unit != null && img_number.unit.Length > 0)
                 {
                     string unit = "'" + img_number.unit + ".png'";
@@ -9581,6 +9596,7 @@ namespace Watch_Face_Editor
                 if (img_number_hour.zero) options += TabInString(7) + "hour_zero: 1," + Environment.NewLine;
                 else options += TabInString(7) + "hour_zero: 0," + Environment.NewLine;
                 options += TabInString(7) + "hour_space: " + img_number_hour.space.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "hour_angle: " + img_number_hour.angle.ToString() + "," + Environment.NewLine;
                 if (img_number_hour.unit != null && img_number_hour.unit.Length > 0)
                 {
                     string hour_unit = "'" + img_number_hour.unit + ".png'";
@@ -9629,6 +9645,7 @@ namespace Watch_Face_Editor
                 if (img_number_minute.zero) options += TabInString(7) + "minute_zero: 1," + Environment.NewLine;
                 else options += TabInString(7) + "minute_zero: 0," + Environment.NewLine;
                 options += TabInString(7) + "minute_space: " + img_number_minute.space.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "minute_angle: " + img_number_minute.angle.ToString() + "," + Environment.NewLine;
                 if (img_number_minute.follow) options += TabInString(7) + "minute_follow: 1," + Environment.NewLine;
                 else options += TabInString(7) + "minute_follow: 0," + Environment.NewLine;
                 if (img_number_minute.unit != null && img_number_minute.unit.Length > 0)
@@ -9679,6 +9696,7 @@ namespace Watch_Face_Editor
                 if (img_number_second.zero) options += TabInString(7) + "second_zero: 1," + Environment.NewLine;
                 else options += TabInString(7) + "second_zero: 0," + Environment.NewLine;
                 options += TabInString(7) + "second_space: " + img_number_second.space.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "second_angle: " + img_number_second.angle.ToString() + "," + Environment.NewLine;
                 if (img_number_second.follow) options += TabInString(7) + "second_follow: 1," + Environment.NewLine;
                 else options += TabInString(7) + "second_follow: 0," + Environment.NewLine;
                 if (img_number_second.unit != null && img_number_second.unit.Length > 0)
@@ -11615,7 +11633,7 @@ namespace Watch_Face_Editor
             string functionName = "";
             while (functionName != "init_view()" && functionText.Length > 10)
             {
-                functionText = GetFunction(functionText, out functionName);
+                functionText = GetFunction(functionText, out functionName, true);
             }
             List<string> functionsList = GetFunctionsList(functionText);
 
@@ -15704,6 +15722,7 @@ namespace Watch_Face_Editor
                                 steps.Number.imageX = imgNumber.imageX;
                                 steps.Number.imageY = imgNumber.imageY;
                                 steps.Number.space = imgNumber.space;
+                                steps.Number.angle = imgNumber.angle;
                                 steps.Number.zero = imgNumber.zero;
                                 steps.Number.unit = imgNumber.unit;
                                 steps.Number.imperial_unit = imgNumber.imperial_unit;
@@ -15741,6 +15760,7 @@ namespace Watch_Face_Editor
                                 steps.Number_Target.imageX = imgNumber.imageX;
                                 steps.Number_Target.imageY = imgNumber.imageY;
                                 steps.Number_Target.space = imgNumber.space;
+                                steps.Number_Target.angle = imgNumber.angle;
                                 steps.Number_Target.zero = imgNumber.zero;
                                 steps.Number_Target.unit = imgNumber.unit;
                                 steps.Number_Target.imperial_unit = imgNumber.imperial_unit;
@@ -15777,6 +15797,7 @@ namespace Watch_Face_Editor
                                 battery.Number.imageX = imgNumber.imageX;
                                 battery.Number.imageY = imgNumber.imageY;
                                 battery.Number.space = imgNumber.space;
+                                battery.Number.angle = imgNumber.angle;
                                 battery.Number.zero = imgNumber.zero;
                                 battery.Number.unit = imgNumber.unit;
                                 battery.Number.imperial_unit = imgNumber.imperial_unit;
@@ -15814,6 +15835,7 @@ namespace Watch_Face_Editor
                                 calorie.Number.imageX = imgNumber.imageX;
                                 calorie.Number.imageY = imgNumber.imageY;
                                 calorie.Number.space = imgNumber.space;
+                                calorie.Number.angle = imgNumber.angle;
                                 calorie.Number.zero = imgNumber.zero;
                                 calorie.Number.unit = imgNumber.unit;
                                 calorie.Number.imperial_unit = imgNumber.imperial_unit;
@@ -15851,6 +15873,7 @@ namespace Watch_Face_Editor
                                 calorie.Number_Target.imageX = imgNumber.imageX;
                                 calorie.Number_Target.imageY = imgNumber.imageY;
                                 calorie.Number_Target.space = imgNumber.space;
+                                calorie.Number_Target.angle = imgNumber.angle;
                                 calorie.Number_Target.zero = imgNumber.zero;
                                 calorie.Number_Target.unit = imgNumber.unit;
                                 calorie.Number_Target.imperial_unit = imgNumber.imperial_unit;
@@ -15887,6 +15910,7 @@ namespace Watch_Face_Editor
                                 heart.Number.imageX = imgNumber.imageX;
                                 heart.Number.imageY = imgNumber.imageY;
                                 heart.Number.space = imgNumber.space;
+                                heart.Number.angle = imgNumber.angle;
                                 heart.Number.zero = imgNumber.zero;
                                 heart.Number.unit = imgNumber.unit;
                                 heart.Number.imperial_unit = imgNumber.imperial_unit;
@@ -15924,6 +15948,7 @@ namespace Watch_Face_Editor
                                 pai.Number.imageX = imgNumber.imageX;
                                 pai.Number.imageY = imgNumber.imageY;
                                 pai.Number.space = imgNumber.space;
+                                pai.Number.angle = imgNumber.angle;
                                 pai.Number.zero = imgNumber.zero;
                                 pai.Number.unit = imgNumber.unit;
                                 pai.Number.imperial_unit = imgNumber.imperial_unit;
@@ -15961,6 +15986,7 @@ namespace Watch_Face_Editor
                                 pai.Number_Target.imageX = imgNumber.imageX;
                                 pai.Number_Target.imageY = imgNumber.imageY;
                                 pai.Number_Target.space = imgNumber.space;
+                                pai.Number_Target.angle = imgNumber.angle;
                                 pai.Number_Target.zero = imgNumber.zero;
                                 pai.Number_Target.unit = imgNumber.unit;
                                 pai.Number_Target.imperial_unit = imgNumber.imperial_unit;
@@ -15988,6 +16014,7 @@ namespace Watch_Face_Editor
                                 distance.Number.imageX = imgNumber.imageX;
                                 distance.Number.imageY = imgNumber.imageY;
                                 distance.Number.space = imgNumber.space;
+                                distance.Number.angle = imgNumber.angle;
                                 distance.Number.zero = imgNumber.zero;
                                 distance.Number.unit = imgNumber.unit;
                                 distance.Number.imperial_unit = imgNumber.imperial_unit;
@@ -16025,6 +16052,7 @@ namespace Watch_Face_Editor
                                 stand.Number.imageX = imgNumber.imageX;
                                 stand.Number.imageY = imgNumber.imageY;
                                 stand.Number.space = imgNumber.space;
+                                stand.Number.angle = imgNumber.angle;
                                 stand.Number.zero = imgNumber.zero;
                                 stand.Number.unit = imgNumber.unit;
                                 stand.Number.imperial_unit = imgNumber.imperial_unit;
@@ -16062,6 +16090,7 @@ namespace Watch_Face_Editor
                                 stand.Number_Target.imageX = imgNumber.imageX;
                                 stand.Number_Target.imageY = imgNumber.imageY;
                                 stand.Number_Target.space = imgNumber.space;
+                                stand.Number_Target.angle = imgNumber.angle;
                                 stand.Number_Target.zero = imgNumber.zero;
                                 stand.Number_Target.unit = imgNumber.unit;
                                 stand.Number_Target.imperial_unit = imgNumber.imperial_unit;
@@ -16099,6 +16128,7 @@ namespace Watch_Face_Editor
                                 activity.Number.imageX = imgNumber.imageX;
                                 activity.Number.imageY = imgNumber.imageY;
                                 activity.Number.space = imgNumber.space;
+                                activity.Number.angle = imgNumber.angle;
                                 activity.Number.zero = imgNumber.zero;
                                 activity.Number.unit = imgNumber.unit;
                                 activity.Number.imperial_unit = imgNumber.imperial_unit;
@@ -16136,6 +16166,7 @@ namespace Watch_Face_Editor
                                 activity.Number_Target.imageX = imgNumber.imageX;
                                 activity.Number_Target.imageY = imgNumber.imageY;
                                 activity.Number_Target.space = imgNumber.space;
+                                activity.Number_Target.angle = imgNumber.angle;
                                 activity.Number_Target.zero = imgNumber.zero;
                                 activity.Number_Target.unit = imgNumber.unit;
                                 activity.Number_Target.imperial_unit = imgNumber.imperial_unit;
@@ -16163,6 +16194,7 @@ namespace Watch_Face_Editor
                                 spo2.Number.imageX = imgNumber.imageX;
                                 spo2.Number.imageY = imgNumber.imageY;
                                 spo2.Number.space = imgNumber.space;
+                                spo2.Number.angle = imgNumber.angle;
                                 spo2.Number.zero = imgNumber.zero;
                                 spo2.Number.unit = imgNumber.unit;
                                 spo2.Number.imperial_unit = imgNumber.imperial_unit;
@@ -16197,6 +16229,7 @@ namespace Watch_Face_Editor
                                 stress.Number.imageX = imgNumber.imageX;
                                 stress.Number.imageY = imgNumber.imageY;
                                 stress.Number.space = imgNumber.space;
+                                stress.Number.angle = imgNumber.angle;
                                 stress.Number.zero = imgNumber.zero;
                                 stress.Number.unit = imgNumber.unit;
                                 stress.Number.imperial_unit = imgNumber.imperial_unit;
@@ -16234,6 +16267,7 @@ namespace Watch_Face_Editor
                                 fat_burning.Number.imageX = imgNumber.imageX;
                                 fat_burning.Number.imageY = imgNumber.imageY;
                                 fat_burning.Number.space = imgNumber.space;
+                                fat_burning.Number.angle = imgNumber.angle;
                                 fat_burning.Number.zero = imgNumber.zero;
                                 fat_burning.Number.unit = imgNumber.unit;
                                 fat_burning.Number.imperial_unit = imgNumber.imperial_unit;
@@ -16271,6 +16305,7 @@ namespace Watch_Face_Editor
                                 fat_burning.Number_Target.imageX = imgNumber.imageX;
                                 fat_burning.Number_Target.imageY = imgNumber.imageY;
                                 fat_burning.Number_Target.space = imgNumber.space;
+                                fat_burning.Number_Target.angle = imgNumber.angle;
                                 fat_burning.Number_Target.zero = imgNumber.zero;
                                 fat_burning.Number_Target.unit = imgNumber.unit;
                                 fat_burning.Number_Target.imperial_unit = imgNumber.imperial_unit;
@@ -16308,6 +16343,7 @@ namespace Watch_Face_Editor
                                 weather.Number.imageX = imgNumber.imageX;
                                 weather.Number.imageY = imgNumber.imageY;
                                 weather.Number.space = imgNumber.space;
+                                weather.Number.angle = imgNumber.angle;
                                 weather.Number.zero = imgNumber.zero;
                                 weather.Number.unit = imgNumber.unit;
                                 weather.Number.imperial_unit = imgNumber.imperial_unit;
@@ -16343,6 +16379,7 @@ namespace Watch_Face_Editor
                                 weather.Number_Min.imageX = imgNumber.imageX;
                                 weather.Number_Min.imageY = imgNumber.imageY;
                                 weather.Number_Min.space = imgNumber.space;
+                                weather.Number_Min.angle = imgNumber.angle;
                                 weather.Number_Min.zero = imgNumber.zero;
                                 weather.Number_Min.unit = imgNumber.unit;
                                 weather.Number_Min.imperial_unit = imgNumber.imperial_unit;
@@ -16378,6 +16415,7 @@ namespace Watch_Face_Editor
                                 weather.Number_Max.imageX = imgNumber.imageX;
                                 weather.Number_Max.imageY = imgNumber.imageY;
                                 weather.Number_Max.space = imgNumber.space;
+                                weather.Number_Max.angle = imgNumber.angle;
                                 weather.Number_Max.zero = imgNumber.zero;
                                 weather.Number_Max.unit = imgNumber.unit;
                                 weather.Number_Max.imperial_unit = imgNumber.imperial_unit;
@@ -16412,6 +16450,7 @@ namespace Watch_Face_Editor
                                 uv_index.Number.imageX = imgNumber.imageX;
                                 uv_index.Number.imageY = imgNumber.imageY;
                                 uv_index.Number.space = imgNumber.space;
+                                uv_index.Number.angle = imgNumber.angle;
                                 uv_index.Number.zero = imgNumber.zero;
                                 uv_index.Number.unit = imgNumber.unit;
                                 uv_index.Number.imperial_unit = imgNumber.imperial_unit;
@@ -16446,6 +16485,7 @@ namespace Watch_Face_Editor
                                 humidity.Number.imageX = imgNumber.imageX;
                                 humidity.Number.imageY = imgNumber.imageY;
                                 humidity.Number.space = imgNumber.space;
+                                humidity.Number.angle = imgNumber.angle;
                                 humidity.Number.zero = imgNumber.zero;
                                 humidity.Number.unit = imgNumber.unit;
                                 humidity.Number.imperial_unit = imgNumber.imperial_unit;
@@ -16478,6 +16518,7 @@ namespace Watch_Face_Editor
                                 altimeter.Number.imageX = imgNumber.imageX;
                                 altimeter.Number.imageY = imgNumber.imageY;
                                 altimeter.Number.space = imgNumber.space;
+                                altimeter.Number.angle = imgNumber.angle;
                                 altimeter.Number.zero = imgNumber.zero;
                                 altimeter.Number.unit = imgNumber.unit;
                                 altimeter.Number.imperial_unit = imgNumber.imperial_unit;
@@ -16514,6 +16555,7 @@ namespace Watch_Face_Editor
                                 sunrise.Sunrise.imageX = imgNumber.imageX;
                                 sunrise.Sunrise.imageY = imgNumber.imageY;
                                 sunrise.Sunrise.space = imgNumber.space;
+                                sunrise.Sunrise.angle = imgNumber.angle;
                                 sunrise.Sunrise.zero = imgNumber.zero;
                                 sunrise.Sunrise.unit = imgNumber.unit;
                                 sunrise.Sunrise.imperial_unit = imgNumber.imperial_unit;
@@ -16550,6 +16592,7 @@ namespace Watch_Face_Editor
                                 sunrise.Sunset.imageX = imgNumber.imageX;
                                 sunrise.Sunset.imageY = imgNumber.imageY;
                                 sunrise.Sunset.space = imgNumber.space;
+                                sunrise.Sunset.angle = imgNumber.angle;
                                 sunrise.Sunset.zero = imgNumber.zero;
                                 sunrise.Sunset.unit = imgNumber.unit;
                                 sunrise.Sunset.imperial_unit = imgNumber.imperial_unit;
@@ -16586,6 +16629,7 @@ namespace Watch_Face_Editor
                                 sunrise.Sunset_Sunrise.imageX = imgNumber.imageX;
                                 sunrise.Sunset_Sunrise.imageY = imgNumber.imageY;
                                 sunrise.Sunset_Sunrise.space = imgNumber.space;
+                                sunrise.Sunset_Sunrise.angle = imgNumber.angle;
                                 sunrise.Sunset_Sunrise.zero = imgNumber.zero;
                                 sunrise.Sunset_Sunrise.unit = imgNumber.unit;
                                 sunrise.Sunset_Sunrise.imperial_unit = imgNumber.imperial_unit;
@@ -16621,6 +16665,7 @@ namespace Watch_Face_Editor
                                 wind.Number.imageX = imgNumber.imageX;
                                 wind.Number.imageY = imgNumber.imageY;
                                 wind.Number.space = imgNumber.space;
+                                wind.Number.angle = imgNumber.angle;
                                 wind.Number.zero = imgNumber.zero;
                                 wind.Number.unit = imgNumber.unit;
                                 wind.Number.imperial_unit = imgNumber.imperial_unit;
@@ -18239,41 +18284,44 @@ namespace Watch_Face_Editor
 
 
         /// <summary>Возвращает имя функции и все его содержимое</summary>
-        private string GetFunction(string str, out string parametrName)
+        private string GetFunction(string str, out string parametrName, bool notFonction = false)
         {
             string returnString = "";
-            parametrName = "";
-            returnString = str.Trim(new char[] { '{', '}' });
-            //returnString = str.TrimStart(char.Parse("{"));
-            //returnString = str.TrimEnd(char.Parse("{"));
-            int firstIndex = str.IndexOf("{");
-            int lastIndex = str.IndexOf("}");
-            if (lastIndex > firstIndex)
+            //parametrName = "";
+            do
             {
-                returnString = str.Substring(firstIndex + 1, lastIndex - firstIndex - 1);
-                int openCount = new Regex("{").Matches(returnString).Count;
-                int closingPCount = new Regex("}").Matches(returnString).Count;
-                while (openCount != closingPCount)
+                returnString = "";
+                parametrName = "";
+                returnString = str.Trim(new char[] { '{', '}' });
+                int firstIndex = str.IndexOf("{");
+                int lastIndex = str.IndexOf("}");
+                if (lastIndex > firstIndex)
                 {
-                    lastIndex = str.IndexOf("}", lastIndex + 1);
-                    //if (lastIndex < 0) return "";
                     returnString = str.Substring(firstIndex + 1, lastIndex - firstIndex - 1);
-                    openCount = new Regex("{").Matches(returnString).Count;
-                    closingPCount = new Regex("}").Matches(returnString).Count;
+                    int openCount = new Regex("{").Matches(returnString).Count;
+                    int closingPCount = new Regex("}").Matches(returnString).Count;
+                    while (openCount != closingPCount)
+                    {
+                        lastIndex = str.IndexOf("}", lastIndex + 1);
+                        //if (lastIndex < 0) return "";
+                        returnString = str.Substring(firstIndex + 1, lastIndex - firstIndex - 1);
+                        openCount = new Regex("{").Matches(returnString).Count;
+                        closingPCount = new Regex("}").Matches(returnString).Count;
+                    }
+
+                    parametrName = str.Remove(firstIndex);
+                    int stringStartIndex = parametrName.LastIndexOf("\n");
+                    if (stringStartIndex > 0) parametrName = parametrName.Remove(0, stringStartIndex);
+                    parametrName = parametrName.Trim();
+                    //int i1 = str.IndexOf(Environment.NewLine);
+                    if (notFonction && parametrName.StartsWith("function "))
+                    {
+                        str = str.Remove(0, lastIndex+1);
+                        str = str.TrimStart();
+                    }
                 }
-
-                parametrName = str.Remove(firstIndex);
-                int stringStartIndex = parametrName.LastIndexOf("\n");
-                if(stringStartIndex > 0) parametrName = parametrName.Remove(0, stringStartIndex);
-                parametrName = parametrName.Trim();
-                int i1 = str.IndexOf(Environment.NewLine);
-                //returnString = str.Substring(firstIndex + 1, lastIndex - firstIndex - 1);
-                //int i = returnString.Length;
-
-                //int i4 = new Regex("{").Matches(returnString).Count;
-                //int i3 = new Regex("}").Matches(returnString).Count;
-            }
-            else returnString = "";
+                else returnString = ""; 
+            } while (notFonction && parametrName.StartsWith("function "));
 
             return returnString;
         }
@@ -18549,8 +18597,15 @@ namespace Watch_Face_Editor
                 if (startIndex > 0)
                 {
                     string valueName = valueStr.Substring(0, startIndex);
-                    if (valueName == "bg_config") valueStr = str.Substring(1, str.IndexOf("]"));
+                    //if (valueName == "bg_config") valueStr = str.Substring(1, str.IndexOf("]"));
                     valueStr = valueStr.Remove(0, startIndex + 1);
+                    if (valueStr.IndexOf("[") > 0 && str.IndexOf("]") > str.IndexOf("["))
+                    {
+                        endIndex = str.IndexOf("]")+1;
+                        valueStr = str.Substring(0, endIndex);
+                        startIndex = valueStr.IndexOf(":");
+                        valueStr = valueStr.Remove(0, startIndex + 1);
+                    }
                     valueStr = valueStr.Trim();
 
                     if (returnParametrs.ContainsKey(valueName)) returnParametrs.Remove(valueName);
@@ -18562,7 +18617,7 @@ namespace Watch_Face_Editor
                 //str = str.Trim();
                 //str = str.TrimEnd(',');
                 endIndex = str.IndexOf(',');
-                if (str.StartsWith("bg_config")) endIndex = str.IndexOf(',', str.IndexOf("]"));
+                //if (str.StartsWith("bg_config")) endIndex = str.IndexOf(',', str.IndexOf("]"));
             }
 
             return returnParametrs;
@@ -18693,9 +18748,31 @@ namespace Watch_Face_Editor
                                 preview = Path.GetFileNameWithoutExtension(str_value);
                             }
                         }
+                        if (tempStr.StartsWith("'preview':"))
+                        {
+                            lenght = "'preview':".Length;
+                            str_value = tempStr.Substring(lenght, tempStr.Length - lenght);
+                            str_value = str_value.Trim();
+                            if (str_value.Length > 3)
+                            {
+                                str_value = str_value.Replace("'", "").Replace("\"", "");
+                                preview = Path.GetFileNameWithoutExtension(str_value);
+                            }
+                        }
                         if (tempStr.StartsWith("path:"))
                         {
                             lenght = "path:".Length;
+                            str_value = tempStr.Substring(lenght, tempStr.Length - lenght);
+                            str_value = str_value.Trim();
+                            if (str_value.Length > 3)
+                            {
+                                str_value = str_value.Replace("'", "").Replace("\"", "");
+                                path = Path.GetFileNameWithoutExtension(str_value);
+                            }
+                        }
+                        if (tempStr.StartsWith("'path':"))
+                        {
+                            lenght = "'path':".Length;
                             str_value = tempStr.Substring(lenght, tempStr.Length - lenght);
                             str_value = str_value.Trim();
                             if (str_value.Length > 3)
@@ -18851,7 +18928,8 @@ namespace Watch_Face_Editor
             {
                 elementDigitalTime.Hour = new hmUI_widget_IMG_NUMBER();
                 string[] hour_array = parametrs["hour_array"].Split(',');
-                string imgName = hour_array[0].Replace("\"", "").Replace("[", "").Replace("]", "");
+                string imgName = hour_array[0].Replace("\"", "").Replace("[", "").Replace("]", "").Replace("'", "").Replace(Environment.NewLine, "");
+                imgName = imgName.Trim();
                 imgName = Path.GetFileNameWithoutExtension(imgName);
                 elementDigitalTime.Hour.img_First = imgName;
                 if (parametrs.ContainsKey("hour_startX") && Int32.TryParse(parametrs["hour_startX"], out value))
@@ -18860,6 +18938,8 @@ namespace Watch_Face_Editor
                     elementDigitalTime.Hour.imageY = value;
                 if (parametrs.ContainsKey("hour_space") && Int32.TryParse(parametrs["hour_space"], out value))
                     elementDigitalTime.Hour.space = value;
+                if (parametrs.ContainsKey("hour_angle") && Int32.TryParse(parametrs["hour_angle"], out value))
+                    elementDigitalTime.Hour.angle = value;
                 if (parametrs.ContainsKey("hour_zero"))
                 {
                     //if (parametrs["hour_zero"] == "1") elementDigitalTime.hour.zero = true;
@@ -18890,7 +18970,8 @@ namespace Watch_Face_Editor
             {
                 elementDigitalTime.Minute = new hmUI_widget_IMG_NUMBER();
                 string[] minute_array = parametrs["minute_array"].Split(',');
-                string imgName = minute_array[0].Replace("\"", "").Replace("[", "").Replace("]", "");
+                string imgName = minute_array[0].Replace("\"", "").Replace("[", "").Replace("]", "").Replace("'", "").Replace(Environment.NewLine, "");
+                imgName = imgName.Trim();
                 imgName = Path.GetFileNameWithoutExtension(imgName);
                 elementDigitalTime.Minute.img_First = imgName;
                 if (parametrs.ContainsKey("minute_startX") && Int32.TryParse(parametrs["minute_startX"], out value))
@@ -18899,6 +18980,8 @@ namespace Watch_Face_Editor
                     elementDigitalTime.Minute.imageY = value;
                 if (parametrs.ContainsKey("minute_space") && Int32.TryParse(parametrs["minute_space"], out value))
                     elementDigitalTime.Minute.space = value;
+                if (parametrs.ContainsKey("minute_angle") && Int32.TryParse(parametrs["minute_angle"], out value))
+                    elementDigitalTime.Minute.angle = value;
                 if (parametrs.ContainsKey("minute_zero"))
                 {
                     //if (parametrs["minute_zero"] == "1") elementDigitalTime.minute.zero = true;
@@ -18935,7 +19018,8 @@ namespace Watch_Face_Editor
             {
                 elementDigitalTime.Second = new hmUI_widget_IMG_NUMBER();
                 string[] second_array = parametrs["second_array"].Split(',');
-                string imgName = second_array[0].Replace("\"", "").Replace("[", "").Replace("]", "");
+                string imgName = second_array[0].Replace("\"", "").Replace("[", "").Replace("]", "").Replace("'", "").Replace(Environment.NewLine, "");
+                imgName = imgName.Trim();
                 imgName = Path.GetFileNameWithoutExtension(imgName);
                 elementDigitalTime.Second.img_First = imgName;
                 if (parametrs.ContainsKey("second_startX") && Int32.TryParse(parametrs["second_startX"], out value))
@@ -18944,6 +19028,8 @@ namespace Watch_Face_Editor
                     elementDigitalTime.Second.imageY = value;
                 if (parametrs.ContainsKey("second_space") && Int32.TryParse(parametrs["second_space"], out value))
                     elementDigitalTime.Second.space = value;
+                if (parametrs.ContainsKey("second_angle") && Int32.TryParse(parametrs["second_angle"], out value))
+                    elementDigitalTime.Second.angle = value;
                 if (parametrs.ContainsKey("second_zero"))
                 {
                     //if (parametrs["second_zero"] == "1") elementDigitalTime.second.zero = true;
@@ -19388,7 +19474,8 @@ namespace Watch_Face_Editor
                 {
                     hmUI_widget_IMG_NUMBER dayNumber = new hmUI_widget_IMG_NUMBER();
                     string[] day_array = parametrs["day_en_array"].Split(',');
-                    string imgName = day_array[0].Replace("\"", "").Replace("[", "").Replace("]", "");
+                    string imgName = day_array[0].Replace("\"", "").Replace("[", "").Replace("]", "").Replace("'", "").Replace(Environment.NewLine, "");
+                    imgName = imgName.Trim();
                     imgName = Path.GetFileNameWithoutExtension(imgName);
                     dayNumber.img_First = imgName;
                     if (parametrs.ContainsKey("day_startX") && Int32.TryParse(parametrs["day_startX"], out value))
@@ -19438,7 +19525,8 @@ namespace Watch_Face_Editor
                 {
                     hmUI_widget_IMG_NUMBER monthNumber = new hmUI_widget_IMG_NUMBER();
                     string[] month_array = parametrs["month_en_array"].Split(',');
-                    string imgName = month_array[0].Replace("\"", "").Replace("[", "").Replace("]", "");
+                    string imgName = month_array[0].Replace("\"", "").Replace("[", "").Replace("]", "").Replace("'", "").Replace(Environment.NewLine, "");
+                    imgName = imgName.Trim();
                     imgName = Path.GetFileNameWithoutExtension(imgName);
                     monthNumber.img_First = imgName;
                     if (parametrs.ContainsKey("month_startX") && Int32.TryParse(parametrs["month_startX"], out value))
@@ -19482,7 +19570,8 @@ namespace Watch_Face_Editor
                 {
                     hmUI_widget_IMG_NUMBER yearNumber = new hmUI_widget_IMG_NUMBER();
                     string[] year_array = parametrs["year_en_array"].Split(',');
-                    string imgName = year_array[0].Replace("\"", "").Replace("[", "").Replace("]", "");
+                    string imgName = year_array[0].Replace("\"", "").Replace("[", "").Replace("]", "").Replace("'", "").Replace(Environment.NewLine, "");
+                    imgName = imgName.Trim();
                     imgName = Path.GetFileNameWithoutExtension(imgName);
                     yearNumber.img_First = imgName;
                     if (parametrs.ContainsKey("year_startX") && Int32.TryParse(parametrs["year_startX"], out value))
@@ -19534,7 +19623,8 @@ namespace Watch_Face_Editor
                 {
                     hmUI_widget_IMG_LEVEL dayNumber = new hmUI_widget_IMG_LEVEL();
                     string[] day_array = parametrs["day_en_array"].Split(',');
-                    string imgName = day_array[0].Replace("\"", "").Replace("[", "").Replace("]", "");
+                    string imgName = day_array[0].Replace("\"", "").Replace("[", "").Replace("]", "").Replace("'", "").Replace(Environment.NewLine, "");
+                    imgName = imgName.Trim();
                     imgName = Path.GetFileNameWithoutExtension(imgName);
                     dayNumber.img_First = imgName;
                     if (parametrs.ContainsKey("day_startX") && Int32.TryParse(parametrs["day_startX"], out value))
@@ -19568,7 +19658,8 @@ namespace Watch_Face_Editor
                 {
                     hmUI_widget_IMG_LEVEL monthNumber = new hmUI_widget_IMG_LEVEL();
                     string[] month_array = parametrs["month_en_array"].Split(',');
-                    string imgName = month_array[0].Replace("\"", "").Replace("[", "").Replace("]", "");
+                    string imgName = month_array[0].Replace("\"", "").Replace("[", "").Replace("]", "").Replace("'", "").Replace(Environment.NewLine, "");
+                    imgName = imgName.Trim();
                     imgName = Path.GetFileNameWithoutExtension(imgName);
                     monthNumber.img_First = imgName;
                     if (parametrs.ContainsKey("month_startX") && Int32.TryParse(parametrs["month_startX"], out value))
@@ -19596,7 +19687,8 @@ namespace Watch_Face_Editor
                 {
                     hmUI_widget_IMG_LEVEL yearNumber = new hmUI_widget_IMG_LEVEL();
                     string[] year_array = parametrs["year_en_array"].Split(',');
-                    string imgName = year_array[0].Replace("\"", "").Replace("[", "").Replace("]", "");
+                    string imgName = year_array[0].Replace("\"", "").Replace("[", "").Replace("]", "").Replace("'", "").Replace(Environment.NewLine, "");
+                    imgName = imgName.Trim();
                     imgName = Path.GetFileNameWithoutExtension(imgName);
                     yearNumber.img_First = imgName;
                     if (parametrs.ContainsKey("year_startX") && Int32.TryParse(parametrs["year_startX"], out value))
@@ -19628,7 +19720,8 @@ namespace Watch_Face_Editor
             if (parametrs.ContainsKey("week_en"))
             {
                 string[] day__array = parametrs["week_en"].Split(',');
-                string imgName = day__array[0].Replace("\"", "").Replace("[", "").Replace("]", "");
+                string imgName = day__array[0].Replace("\"", "").Replace("[", "").Replace("]", "").Replace("'", "").Replace(Environment.NewLine, "");
+                imgName = imgName.Trim();
                 imgName = Path.GetFileNameWithoutExtension(imgName);
                 imgWeek.img_First = imgName;
 
@@ -19655,7 +19748,8 @@ namespace Watch_Face_Editor
             if (parametrs.ContainsKey("image_array"))
             {
                 string[] image_array = parametrs["image_array"].Split(',');
-                string imgName = image_array[0].Replace("\"", "").Replace("[", "").Replace("]", "");
+                string imgName = image_array[0].Replace("\"", "").Replace("[", "").Replace("]", "").Replace("'", "").Replace(Environment.NewLine, "");
+                imgName = imgName.Trim();
                 imgName = Path.GetFileNameWithoutExtension(imgName);
                 imgLevel.img_First = imgName;
 
@@ -19689,7 +19783,8 @@ namespace Watch_Face_Editor
             if (parametrs.ContainsKey("image_array"))
             {
                 string[] image_array = parametrs["image_array"].Split(',');
-                string imgName = image_array[0].Replace("\"", "").Replace("[", "").Replace("]", "");
+                string imgName = image_array[0].Replace("\"", "").Replace("[", "").Replace("]", "").Replace("'", "").Replace(Environment.NewLine, "");
+                imgName = imgName.Trim();
                 imgName = Path.GetFileNameWithoutExtension(imgName);
                 imgProgress.img_First = imgName;
                 if (parametrs.ContainsKey("image_length") && Int32.TryParse(parametrs["image_length"], out value)) imgProgress.image_length = value;
@@ -19760,13 +19855,15 @@ namespace Watch_Face_Editor
             if (parametrs.ContainsKey("font_array"))
             {
                 string[] image_array = parametrs["font_array"].Split(',');
-                string imgName = image_array[0].Replace("\"", "").Replace("[", "").Replace("]", "");
+                string imgName = image_array[0].Replace("\"", "").Replace("[", "").Replace("]", "").Replace("'", "").Replace(Environment.NewLine, "");
+                imgName = imgName.Trim();
                 imgName = Path.GetFileNameWithoutExtension(imgName);
                 imgNumber.img_First = imgName;
 
                 if (parametrs.ContainsKey("x") && Int32.TryParse(parametrs["x"], out value)) imgNumber.imageX = value;
                 if (parametrs.ContainsKey("y") && Int32.TryParse(parametrs["y"], out value)) imgNumber.imageY = value;
                 if (parametrs.ContainsKey("h_space") && Int32.TryParse(parametrs["h_space"], out value)) imgNumber.space = value;
+                if (parametrs.ContainsKey("angle") && Int32.TryParse(parametrs["angle"], out value)) imgNumber.angle = value;
                 if (parametrs.ContainsKey("zero")) imgNumber.zero = StringToBool(parametrs["zero"]);
                 if (parametrs.ContainsKey("align_h")) imgNumber.align = parametrs["align_h"].Replace("hmUI.align.","");
                 if (parametrs.ContainsKey("unit_en") && parametrs["unit_en"].Length > 0) 

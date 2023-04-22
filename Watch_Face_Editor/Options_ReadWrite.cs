@@ -782,8 +782,17 @@ namespace Watch_Face_Editor
         }
 
         /// <summary>Читаем настройки для отображения числа картинками</summary>
+        /// <param name="img_number">Элемент hmUI_widget_IMG_NUMBER для отображения настроек</param>
+        /// <param name="_dastance">Режим отображения для дистанции</param>
+        /// <param name="_follow">Отображение параметра "Следовать за ..."</param>
+        /// <param name="_followText">Текст для параметра параметра "Следовать за ..."</param>
+        /// <param name="_imageError">Отображение настроек изображения при ошибке</param>
+        /// <param name="_optionalSymbol">Отображение настроек дополнительного символа</param>
+        /// <param name="_padingZero">Отображение настроек ведущих нулей</param>
+        /// <param name="_sunrise">Режим отображения для восхода/заката</param>
+        /// <param name="_angleVisible">Видимость настроек угла</param>
         private void Read_ImgNumber_Options(hmUI_widget_IMG_NUMBER img_number, bool _dastance, bool _follow, string _followText,
-            bool _imageError, bool _optionalSymbol, bool _padingZero, bool _sunrise = false)
+            bool _imageError, bool _optionalSymbol, bool _padingZero, bool _angleVisible, bool _sunrise = false)
         {
             PreviewView = false;
 
@@ -796,6 +805,7 @@ namespace Watch_Face_Editor
             uCtrl_Text_Opt.ImageError = _imageError;
             uCtrl_Text_Opt.OptionalSymbol = _optionalSymbol;
             uCtrl_Text_Opt.PaddingZero = _padingZero;
+            uCtrl_Text_Opt.AngleVisible = _angleVisible;
             uCtrl_Text_Opt.Visible = true;
             if (!_optionalSymbol)
             {
@@ -806,9 +816,10 @@ namespace Watch_Face_Editor
                 }
             }
 
-            uCtrl_Text_Opt._ElementWithText = img_number;
+            if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4")
+                uCtrl_Text_Opt.Angle = true;
 
-            //userCtrl_Background_Options.SettingsClear();
+            uCtrl_Text_Opt._ElementWithText = img_number;
 
             if (img_number == null)
             {
@@ -830,6 +841,7 @@ namespace Watch_Face_Editor
             uCtrl_Text_Opt.SetImageDecimalPoint(img_number.dot_image);
             //uCtrl_Text_Opt.SetImageDecimalPointOrMinus
             uCtrl_Text_Opt.numericUpDown_spacing.Value = img_number.space;
+            uCtrl_Text_Opt.numericUpDown_angle.Value = img_number.angle;
 
             uCtrl_Text_Opt.SetAlignment(img_number.align);
             //uCtrl_Text_Opt.SetImageError
@@ -856,9 +868,10 @@ namespace Watch_Face_Editor
             uCtrl_Text_Weather_Opt.PaddingZero = _padingZero;
             uCtrl_Text_Weather_Opt.Visible = true;
 
-            uCtrl_Text_Weather_Opt._ElementWithText = img_number;
+            if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2")
+                uCtrl_Text_Weather_Opt.Angle = true;
 
-            //userCtrl_Background_Options.SettingsClear();
+            uCtrl_Text_Weather_Opt._ElementWithText = img_number;
 
             if (img_number == null)
             {
@@ -879,6 +892,7 @@ namespace Watch_Face_Editor
             uCtrl_Text_Weather_Opt.SetImageError(img_number.invalid_image);
             uCtrl_Text_Weather_Opt.SetImageMinus(img_number.negative_image);
             uCtrl_Text_Weather_Opt.numericUpDown_spacing.Value = img_number.space;
+            uCtrl_Text_Weather_Opt.numericUpDown_angle.Value = img_number.angle;
 
             uCtrl_Text_Weather_Opt.SetAlignment(img_number.align);
 
@@ -1965,6 +1979,7 @@ namespace Watch_Face_Editor
             img_number.imageX = (int)uCtrl_Text_Opt.numericUpDown_imageX.Value;
             img_number.imageY = (int)uCtrl_Text_Opt.numericUpDown_imageY.Value;
             img_number.space = (int)uCtrl_Text_Opt.numericUpDown_spacing.Value;
+            img_number.angle = (int)uCtrl_Text_Opt.numericUpDown_angle.Value;
             img_number.unit = uCtrl_Text_Opt.GetUnit();
             img_number.imperial_unit = uCtrl_Text_Opt.GetUnitMile();
             img_number.dot_image = uCtrl_Text_Opt.GetImageDecimalPoint();
@@ -1993,6 +2008,7 @@ namespace Watch_Face_Editor
             img_number.imageX = (int)uCtrl_Text_Weather_Opt.numericUpDown_imageX.Value;
             img_number.imageY = (int)uCtrl_Text_Weather_Opt.numericUpDown_imageY.Value;
             img_number.space = (int)uCtrl_Text_Weather_Opt.numericUpDown_spacing.Value;
+            img_number.angle = (int)uCtrl_Text_Weather_Opt.numericUpDown_angle.Value;
             img_number.unit = uCtrl_Text_Weather_Opt.GetUnit_C();
             img_number.imperial_unit = uCtrl_Text_Weather_Opt.GetUnit_F();
             img_number.negative_image = uCtrl_Text_Weather_Opt.GetImageMinus();

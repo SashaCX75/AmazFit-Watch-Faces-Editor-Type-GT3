@@ -302,13 +302,16 @@
   <data name="label03.Text" xml:space="preserve">
     <value>Spacing</value>
   </data>
-  <data name="label_unit_miles.Text" xml:space="preserve">
-    <value>Units (ml)</value>
+  <data name="label_imageError.Text" xml:space="preserve">
+    <value>Error image</value>
   </data>
   <data name="label_imageDecimalPoint.Text" xml:space="preserve">
     <value>Decimal separator</value>
   </data>
-  <data name="label_imageError.Text" xml:space="preserve">
-    <value>Error image</value>
+  <data name="label_unit_miles.Text" xml:space="preserve">
+    <value>Units (ml)</value>
+  </data>
+  <data name="label_angle.Text" xml:space="preserve">
+    <value>Angle</value>
   </data>
 </root>

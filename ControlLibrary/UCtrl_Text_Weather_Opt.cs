@@ -17,6 +17,7 @@ namespace ControlLibrary
         private bool ImageError_mode;
         private bool Padding_zero;
         private bool Follow_mode;
+        private bool Angle_mode = false;
 
         private List<string> ListImagesFullName = new List<string>(); // перечень путей к файлам с картинками
         public Object _ElementWithText;
@@ -232,6 +233,22 @@ namespace ControlLibrary
             }
         }
 
+        /// <summary>Доступность режима изменеия угла</summary>
+        [Description("Доступность режима изменеия угла")]
+        public virtual bool Angle
+        {
+            get
+            {
+                return Angle_mode;
+            }
+            set
+            {
+                Angle_mode = value;
+                numericUpDown_angle.Enabled = Angle_mode;
+                label_angle.Enabled = Angle_mode;
+            }
+        }
+
         /// <summary>Устанавливает надпись "Следовать за..."</summary>
         [Localizable(true)]
         [Description("Устанавливает надпись \"Следовать за...\"")]
@@ -392,6 +409,11 @@ namespace ControlLibrary
         public void SettingsClear()
         {
             setValue = true;
+
+            ImageError = false;
+            PaddingZero = false;
+            Follow = false;
+            Angle = false;
 
             comboBox_image.Text = null;
             comboBox_icon.Text = null;

@@ -67,6 +67,8 @@ namespace ControlLibrary
             this.label_imageError = new System.Windows.Forms.Label();
             this.label_imageDecimalPoint = new System.Windows.Forms.Label();
             this.label_unit_miles = new System.Windows.Forms.Label();
+            this.numericUpDown_angle = new System.Windows.Forms.NumericUpDown();
+            this.label_angle = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_imageX)).BeginInit();
             this.contextMenuStrip_X.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_imageY)).BeginInit();
@@ -74,6 +76,7 @@ namespace ControlLibrary
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_iconX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_iconY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_spacing)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_angle)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBox_image
@@ -401,10 +404,33 @@ namespace ControlLibrary
             resources.ApplyResources(this.label_unit_miles, "label_unit_miles");
             this.label_unit_miles.Name = "label_unit_miles";
             // 
+            // numericUpDown_angle
+            // 
+            resources.ApplyResources(this.numericUpDown_angle, "numericUpDown_angle");
+            this.numericUpDown_angle.Maximum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            0});
+            this.numericUpDown_angle.Minimum = new decimal(new int[] {
+            999,
+            0,
+            0,
+            -2147483648});
+            this.numericUpDown_angle.Name = "numericUpDown_angle";
+            this.numericUpDown_angle.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
+            // 
+            // label_angle
+            // 
+            resources.ApplyResources(this.label_angle, "label_angle");
+            this.label_angle.Name = "label_angle";
+            // 
             // UCtrl_Text_Opt
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.numericUpDown_angle);
+            this.Controls.Add(this.label_angle);
             this.Controls.Add(this.comboBox_unit_miles);
             this.Controls.Add(this.numericUpDown_spacing);
             this.Controls.Add(this.checkBox_addZero);
@@ -441,6 +467,7 @@ namespace ControlLibrary
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_iconX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_iconY)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_spacing)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_angle)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -484,5 +511,7 @@ namespace ControlLibrary
         public System.Windows.Forms.NumericUpDown numericUpDown_iconX;
         public System.Windows.Forms.NumericUpDown numericUpDown_iconY;
         public System.Windows.Forms.NumericUpDown numericUpDown_spacing;
+        public System.Windows.Forms.NumericUpDown numericUpDown_angle;
+        private System.Windows.Forms.Label label_angle;
     }
 }

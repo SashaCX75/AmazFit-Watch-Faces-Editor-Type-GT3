@@ -1020,7 +1020,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Number.Checked)
                             {
                                 hmUI_widget_IMG_NUMBER img_number = dateDay.Number;
-                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true, false);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1053,7 +1053,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Number.Checked)
                             {
                                 hmUI_widget_IMG_NUMBER img_number = dateMonth.Number;
-                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true, false);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1078,7 +1078,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Number.Checked)
                             {
                                 hmUI_widget_IMG_NUMBER img_number = dateYear.Number;
-                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true, false);
                                 uCtrl_Text_Opt.Year = true;
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
@@ -1145,7 +1145,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Number.Checked)
                             {
                                 hmUI_widget_IMG_NUMBER img_number = steps.Number;
-                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1153,7 +1153,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Number_Target.Checked)
                             {
                                 hmUI_widget_IMG_NUMBER img_number = steps.Number_Target;
-                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1218,7 +1218,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Number.Checked)
                             {
                                 hmUI_widget_IMG_NUMBER img_number = battery.Number;
-                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1283,7 +1283,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Number.Checked)
                             {
                                 hmUI_widget_IMG_NUMBER img_number = calories.Number;
-                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1291,7 +1291,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Number_Target.Checked)
                             {
                                 hmUI_widget_IMG_NUMBER img_number = calories.Number_Target;
-                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1356,7 +1356,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Number.Checked)
                             {
                                 hmUI_widget_IMG_NUMBER img_number = heart.Number;
-                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1421,7 +1421,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Number.Checked)
                             {
                                 hmUI_widget_IMG_NUMBER img_number = pai.Number;
-                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1478,7 +1478,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Number.Checked)
                             {
                                 hmUI_widget_IMG_NUMBER img_number = distance.Number;
-                                Read_ImgNumber_Options(img_number, true, false, "", false, true, false);
+                                Read_ImgNumber_Options(img_number, true, false, "", false, true, false, true);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1511,7 +1511,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Number.Checked)
                             {
                                 hmUI_widget_IMG_NUMBER img_number = stand.Number;
-                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1519,7 +1519,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Number_Target.Checked)
                             {
                                 hmUI_widget_IMG_NUMBER img_number = stand.Number_Target;
-                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1568,7 +1568,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Number.Checked)
                             {
                                 hmUI_widget_IMG_NUMBER img_number = spo2.Number;
-                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1601,7 +1601,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Number.Checked)
                             {
                                 hmUI_widget_IMG_NUMBER img_number = stress.Number;
-                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1650,7 +1650,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Number.Checked)
                             {
                                 hmUI_widget_IMG_NUMBER img_number = fat_burning.Number;
-                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1658,7 +1658,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Number_Target.Checked)
                             {
                                 hmUI_widget_IMG_NUMBER img_number = fat_burning.Number_Target;
-                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1790,7 +1790,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Number.Checked)
                             {
                                 hmUI_widget_IMG_NUMBER img_number = uv_index.Number;
-                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1839,7 +1839,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Number.Checked)
                             {
                                 hmUI_widget_IMG_NUMBER img_number = humidity.Number;
-                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1872,7 +1872,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Number.Checked)
                             {
                                 hmUI_widget_IMG_NUMBER img_number = altimeter.Number;
-                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
@@ -1921,7 +1921,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Sunrise.Checked)
                             {
                                 hmUI_widget_IMG_NUMBER img_number = sunrise.Sunrise;
-                                Read_ImgNumber_Options(img_number, false, false, "", true, true, false, true);
+                                Read_ImgNumber_Options(img_number, false, false, "", true, true, false, true, true);
                                 //ShowElemenrOptions("Text");
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
@@ -1931,7 +1931,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Sunset.Checked)
                             {
                                 hmUI_widget_IMG_NUMBER img_number = sunrise.Sunset;
-                                Read_ImgNumber_Options(img_number, false, false, "", true, true, false, true);
+                                Read_ImgNumber_Options(img_number, false, false, "", true, true, false, true, true);
                                 //ShowElemenrOptions("Text");
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
@@ -1941,7 +1941,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Sunset_Sunrise.Checked)
                             {
                                 hmUI_widget_IMG_NUMBER img_number = sunrise.Sunset_Sunrise;
-                                Read_ImgNumber_Options(img_number, false, false, "", true, true, false, true);
+                                Read_ImgNumber_Options(img_number, false, false, "", true, true, false, true, true);
                                 //ShowElemenrOptions("Text");
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
@@ -1992,7 +1992,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Number.Checked)
                             {
                                 hmUI_widget_IMG_NUMBER img_number = wind.Number;
-                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true);
+                                Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }
                             break;
