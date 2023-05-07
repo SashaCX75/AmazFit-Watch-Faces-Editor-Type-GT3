@@ -56,26 +56,55 @@ namespace Watch_Face_Editor
             }
         }
 
-        private void ARGB_BGRA(string model)
+        private void ARGB_BGRA(int fix_color)
         {
-            for (int i = 0; i < Colors.Count; i++)
+            if (fix_color == 1 || fix_color == 2)
             {
-                byte A = Colors[i].A;
-                byte R = Colors[i].R;
-                byte G = Colors[i].G;
-                byte B = Colors[i].B;
-                float scale = A / 255f;
-                R = (byte)(R * scale);
-                G = (byte)(G * scale);
-                B = (byte)(B * scale);
-                if (model == "Amazfit Band 7" || model == "GTS 4 mini") Colors[i] = Color.FromArgb(B, G, R, A);
-                else Colors[i] = Color.FromArgb(R, G, B, A);
+                for (int i = 0; i < Colors.Count; i++)
+                {
+                    byte A = Colors[i].A;
+                    byte R = Colors[i].R;
+                    byte G = Colors[i].G;
+                    byte B = Colors[i].B;
+                    float scale = A / 255f;
+                    R = (byte)(R * scale);
+                    G = (byte)(G * scale);
+                    B = (byte)(B * scale);
+                    if (fix_color == 2) Colors[i] = Color.FromArgb(B, G, R, A);
+                    else Colors[i] = Color.FromArgb(R, G, B, A);
+                }
+            }
+            if (fix_color == 3 && Colors.Count == 256)
+            {
+                Color[] tempColor = new Color[256];
+                Colors.CopyTo(tempColor);
+                for (int i = 0; i < 256; i++)
+                {
+                    int index = 0;
+                    for (int x = 0; x < 16; x++)
+                    {
+                        for (int y = 0; y < 16; y++)
+                        {
+                            byte A = tempColor[x + y * 16].A;
+                            byte R = tempColor[x + y * 16].R;
+                            byte G = tempColor[x + y * 16].G;
+                            byte B = tempColor[x + y * 16].B;
+                            float scale = A / 255f;
+                            R = (byte)(R * scale);
+                            G = (byte)(G * scale);
+                            B = (byte)(B * scale);
+                            Colors[index] = Color.FromArgb(B, G, R, A);
+                            index++;
+                        }
+                    }
+
+                }
             }
         }
 
-        public void ColorsFix(bool argb_brga, int colorMapCount, byte colorMapEntrySize, string model)
+        public void ColorsFix(bool argb_brga, int colorMapCount, byte colorMapEntrySize, int fix_color)
         {
-            if (argb_brga) ARGB_BGRA(model);
+            if (argb_brga) ARGB_BGRA(fix_color);
 
             ColorMapCount = colorMapCount;
             ColorMapEntrySize = colorMapEntrySize;

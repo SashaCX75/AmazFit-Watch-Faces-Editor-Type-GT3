@@ -22,7 +22,7 @@ namespace ControlLibrary
         bool highlight_icon = false;
 
         bool visibility_elements = false; // развернут список с элементами
-        bool visibilityElement = true; // элемент оторажается на предпросмотре
+        bool visibilityElement = true; // элемент отображается на предпросмотре
 
         public int position = -1; // позиция в наборе элеменетов
         public string selectedElement; // название выбраного элемента

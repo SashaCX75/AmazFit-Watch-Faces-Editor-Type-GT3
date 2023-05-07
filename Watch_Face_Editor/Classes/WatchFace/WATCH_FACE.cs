@@ -2276,6 +2276,9 @@ namespace Watch_Face_Editor
         public bool visible = true;
 
         public hmUI_widget_IMG_NUMBER Number { get; set; }
+        public Text_Rotation Text_rotation { get; set; }
+        public Text_Circle Text_circle { get; set; }
+        public hmUI_widget_IMG Icon { get; set; }
 
         public object Clone()
         {
@@ -2307,12 +2310,75 @@ namespace Watch_Face_Editor
                 };
             }
 
+            Text_Rotation Text_rotation = null;
+            if (this.Text_rotation != null)
+            {
+                Text_rotation = new Text_Rotation
+                {
+                    rotation_point_X = this.Text_rotation.rotation_point_X,
+                    rotation_point_Y = this.Text_rotation.rotation_point_Y,
+                    angle = this.Text_rotation.angle,
+                    space = this.Text_rotation.space,
+                    img_First = this.Text_rotation.img_First,
+                    image_width = this.Text_rotation.image_width,
+                    image_height = this.Text_rotation.image_height,
+                    unit = this.Text_rotation.unit,
+                    unit_width = this.Text_rotation.unit_width,
+                    imperial_unit = this.Text_rotation.imperial_unit,
+                    dot_image = this.Text_rotation.dot_image,
+                    dot_image_width = this.Text_rotation.dot_image_width,
+                    error_image = this.Text_rotation.error_image,
+                    error_width = this.Text_rotation.error_width,
+                    vertical_alignment = this.Text_rotation.vertical_alignment,
+                    horizontal_alignment = this.Text_rotation.horizontal_alignment,
+                    unit_in_alignment = this.Text_rotation.unit_in_alignment,
+
+                    position = this.Text_rotation.position,
+                    visible = this.Text_rotation.visible,
+                    show_level = this.Number.show_level,
+                    type = this.Text_rotation.type,
+                };
+            }
+
+            Text_Circle Text_circle = null;
+            if (this.Text_circle != null)
+            {
+                Text_circle = new Text_Circle
+                {
+                    circle_center_X = this.Text_circle.circle_center_X,
+                    circle_center_Y = this.Text_circle.circle_center_Y,
+                    angle = this.Text_circle.angle,
+                    char_space_angle = this.Text_circle.char_space_angle,
+                    img_First = this.Text_circle.img_First,
+                    //image_width = this.Text_circle.image_width,
+                    //image_height = this.Text_circle.image_height,
+                    unit = this.Text_circle.unit,
+                    //unit_width = this.Text_circle.unit_width,
+                    imperial_unit = this.Text_circle.imperial_unit,
+                    dot_image = this.Text_circle.dot_image,
+                    //dot_image_width = this.Text_circle.dot_image_width,
+                    error_image = this.Text_circle.error_image,
+                    //error_width = this.Text_circle.error_width,
+                    vertical_alignment = this.Text_circle.vertical_alignment,
+                    horizontal_alignment = this.Text_circle.horizontal_alignment,
+                    reverse_direction = this.Text_circle.reverse_direction,
+                    unit_in_alignment = this.Text_circle.unit_in_alignment,
+
+                    position = this.Text_circle.position,
+                    visible = this.Text_circle.visible,
+                    show_level = this.Number.show_level,
+                    type = this.Text_circle.type,
+                };
+            }
+
             return new ElementDistance
             {
                 elementName = this.elementName,
                 visible = this.visible,
 
                 Number = Number,
+                Text_rotation = Text_rotation,
+                Text_circle = Text_circle,
             };
         }
     }

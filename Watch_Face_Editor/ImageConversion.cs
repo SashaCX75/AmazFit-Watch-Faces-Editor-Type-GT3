@@ -1,8 +1,10 @@
-﻿using System;
+﻿using ImageMagick;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,7 +15,7 @@ namespace Watch_Face_Editor
     {
 
         /// <summary>Определяем тип файла и способ его конвертации в Png</summary>
-        private string ImageAutoDetectReadFormat(string fileNameFull, string targetFileName, bool fix_color)
+        private string ImageAutoDetectReadFormat(string fileNameFull, string targetFileName, int fix_color)
         {
             string path = "";
             if (File.Exists(fileNameFull))
@@ -47,7 +49,7 @@ namespace Watch_Face_Editor
         }
 
         /// <summary>Преобразуем ARGB Tga в Png</summary>
-        private string TgaARGBToPng(string file, string targetFile, bool fix_color)
+        private string TgaARGBToPng(string file, string targetFile, int fix_color)
         {
             string path = "";
             if (File.Exists(file))
@@ -84,14 +86,14 @@ namespace Watch_Face_Editor
                         image = (ImageMagick.MagickImage)image.Clone(RealWidth, height);
                     }
 
-                    ImageMagick.IMagickImage Blue = image.Separate(ImageMagick.Channels.Blue).First();
-                    ImageMagick.IMagickImage Red = image.Separate(ImageMagick.Channels.Red).First();
-                    ImageMagick.IMagickImage Alpha = image.Separate(ImageMagick.Channels.Red).First();
-                    if (fix_color)
-                    {
-                        image.Composite(Red, ImageMagick.CompositeOperator.Replace, ImageMagick.Channels.Blue);
-                        image.Composite(Blue, ImageMagick.CompositeOperator.Replace, ImageMagick.Channels.Red);
-                    }
+                    //ImageMagick.IMagickImage Blue = image.Separate(ImageMagick.Channels.Blue).First();
+                    //ImageMagick.IMagickImage Red = image.Separate(ImageMagick.Channels.Red).First();
+                    //ImageMagick.IMagickImage Alpha = image.Separate(ImageMagick.Channels.Red).First();
+                    //if (fix_color)
+                    //{
+                    //    image.Composite(Red, ImageMagick.CompositeOperator.Replace, ImageMagick.Channels.Blue);
+                    //    image.Composite(Blue, ImageMagick.CompositeOperator.Replace, ImageMagick.Channels.Red);
+                    //}
                     image.Write(targetFile);
                 }
                 catch (Exception exp)
@@ -109,7 +111,7 @@ namespace Watch_Face_Editor
         }
 
         /// <summary>Преобразуем Tga в Png</summary>
-        private string TgaToPng(string file, string targetFile, bool fix_color)
+        private string TgaToPng(string file, string targetFile, int fix_color)
         {
             string path = "";
             if (File.Exists(file))
@@ -151,17 +153,72 @@ namespace Watch_Face_Editor
                     ImageMagick.IMagickImage Blue = image.Separate(ImageMagick.Channels.Blue).First();
                     ImageMagick.IMagickImage Red = image.Separate(ImageMagick.Channels.Red).First();
                     ImageMagick.IMagickImage Alpha = image.Separate(ImageMagick.Channels.Red).First();
-                    if (fix_color)
+                    if (fix_color == 1)
                     {
                         image.Composite(Red, ImageMagick.CompositeOperator.Replace, ImageMagick.Channels.Blue);
                         image.Composite(Blue, ImageMagick.CompositeOperator.Replace, ImageMagick.Channels.Red);
+                        if (!colored)
+                        {
+                            image.Composite(Alpha, ImageMagick.CompositeOperator.CopyAlpha, ImageMagick.Channels.Alpha);
+                        }
+                        image.Write(targetFile, MagickFormat.Png);
                     }
-                    if (!colored)
+                    if (fix_color == 2)
                     {
-                        image.Composite(Alpha, ImageMagick.CompositeOperator.CopyAlpha, ImageMagick.Channels.Alpha);
+                        if (!colored)
+                        {
+                            image.Composite(Alpha, ImageMagick.CompositeOperator.CopyAlpha, ImageMagick.Channels.Alpha);
+                        }
+                        image.Write(targetFile, MagickFormat.Png);
                     }
+                    if (fix_color == 3)
+                    {
+                        if (image.ColormapSize == 256)
+                        {
+                            MagickColor[,] colorMap = new MagickColor[16, 16];
+                            int index = 0;
+                            for (int x = 0; x < 16; x++)
+                            {
+                                for (int y = 0; y < 16; y++)
+                                {
+                                    colorMap[x, y] = image.GetColormap(index);
+                                    index++;
+                                }
+                            }
+                            index = 0;
+                            for (int x = 0; x < 16; x++)
+                            {
+                                for (int y = 0; y < 16; y++)
+                                {
+                                    image.SetColormap(index, colorMap[y, x]);
+                                    index++;
+                                }
+                            }
+                            index = 0;
+                            for (int x = 0; x < 16; x++)
+                            {
+                                for (int y = 0; y < 16; y++)
+                                {
+                                    colorMap[x, y] = image.GetColormap(index);
+                                    index++;
+                                }
+                            }
+                        }
+                        if (!colored)
+                        {
+                            image.Composite(Alpha, ImageMagick.CompositeOperator.CopyAlpha, ImageMagick.Channels.Alpha);
+                        }
 
-                    image.Write(targetFile);
+                        image.Format = MagickFormat.Png32;
+                        image.Write(targetFile + "_temp", MagickFormat.Png);
+
+                        using (var fileStream = File.OpenRead(targetFile + "_temp"))
+                        {
+                            image = new ImageMagick.MagickImage(fileStream, ImageMagick.MagickFormat.Png32);
+                            image.Write(targetFile, ImageMagick.MagickFormat.Png32);
+                        }
+                        File.Delete(targetFile + "_temp");
+                    }
                 }
                 catch (Exception exp)
                 {
@@ -178,7 +235,7 @@ namespace Watch_Face_Editor
         }
 
         /// <summary>Преобразуем Png в Tga</summary>
-        private string PngToTga(string fileNameFull, string targetFolder, string model)
+        private string PngToTga(string fileNameFull, string targetFolder, int fix_color, bool fix_size)
         {
             if (File.Exists(fileNameFull))
             {
@@ -204,7 +261,8 @@ namespace Watch_Face_Editor
                     ImageWidth = image.Width;
                     int newWidth = ImageWidth;
                     int newHeight = image.Height;
-                    if (model != "Amazfit Band 7" && model != "GTS 4 mini")
+                    if (fix_size)
+                    //if (model != "Amazfit Band 7" && model != "GTS 4 mini")
                     {
                         while (newWidth % 16 != 0)
                         {
@@ -258,11 +316,13 @@ namespace Watch_Face_Editor
                     }
 
 
-                    //image.Format = ImageMagick.MagickFormat.Tga;
-                    //List<string> colorMapList = new List<string>();
                     for (int i = 0; i < image.ColormapSize; i++)
                     {
                         colorMapList.Add(image.GetColormap(i));
+                    }
+                    while (fix_color == 3 && colorMapList.Count < 256)
+                    {
+                        colorMapList.Add(Color.FromArgb(0, 0, 0, 0));
                     }
                     if (transparent && colorMapList.Count == 2)
                     {

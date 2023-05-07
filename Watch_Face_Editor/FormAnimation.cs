@@ -89,6 +89,7 @@ namespace Watch_Face_Editor
                         break;
 
                     case "Falcon":
+                    case "GTR mini":
                         pictureBox_AnimatiomPreview.Size = new Size(418, 418);
                         this.Size = new Size((int)(418 + 20 * currentDPI), (int)(418 + 100 * currentDPI));
                         break;
@@ -133,6 +134,7 @@ namespace Watch_Face_Editor
                         break;
 
                     case "Falcon":
+                    case "GTR mini":
                         pictureBox_AnimatiomPreview.Size = new Size(626, 626);
                         this.Size = new Size((int)(626 + 20 * currentDPI), (int)(626 + 100 * currentDPI));
                         break;
@@ -177,6 +179,7 @@ namespace Watch_Face_Editor
                         break;
 
                     case "Falcon":
+                    case "GTR mini":
                         pictureBox_AnimatiomPreview.Size = new Size(833, 833);
                         this.Size = new Size((int)(833 + 20 * currentDPI), (int)(833 + 100 * currentDPI));
                         break;
@@ -232,6 +235,7 @@ namespace Watch_Face_Editor
                         break;
 
                     case "Falcon":
+                    case "GTR mini":
                         bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
                         break;

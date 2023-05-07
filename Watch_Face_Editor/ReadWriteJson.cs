@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.Drawing;
+using System.Windows.Forms.VisualStyles;
 
 namespace Watch_Face_Editor
 {
@@ -24,6 +26,7 @@ namespace Watch_Face_Editor
             string pause_call = "";
             string options = "";
             string time_update = "";
+            string text_update = "";
             if (Watch_Face == null) return;
 
             // элементы основного экрана
@@ -288,14 +291,17 @@ namespace Watch_Face_Editor
                         string out_resume_call = "";
                         string out_pause_call = "";
                         string out_time_update = "";
+                        string out_text_update = "";
                         AddElementToJS(element, "ONLY_NORMAL", out outVariables, out outItems, out out_resume_function,
-                            items, scale_update_function, out out_resume_call, out out_pause_call, time_update, out out_time_update);
+                            items, scale_update_function, out out_resume_call, out out_pause_call, time_update, out out_time_update,
+                            text_update, out out_text_update);
                         variables += outVariables;
                         items += outItems;
                         scale_update_function += out_resume_function;
                         resume_call += out_resume_call;
                         pause_call += out_pause_call;
                         time_update += out_time_update;
+                        text_update += out_text_update;
                     }
                 }
             }
@@ -335,14 +341,17 @@ namespace Watch_Face_Editor
                         string out_resume_call = "";
                         string out_pause_call = "";
                         string out_time_update = "";
+                        string out_text_update = "";
                         AddElementToJS(element, "ONLY_AOD", out outVariables, out outItems, out out_resume_function,
-                            items, scale_update_function, out out_resume_call, out out_pause_call, time_update, out out_time_update);
+                            items, scale_update_function, out out_resume_call, out out_pause_call, time_update, out out_time_update,
+                            text_update, out out_text_update);
                         variables += outVariables;
                         items += outItems;
                         scale_update_function += out_resume_function;
                         resume_call += out_resume_call;
                         pause_call += out_pause_call;
                         time_update += out_time_update;
+                        text_update += out_text_update;
                     }
                 }
             }
@@ -829,8 +838,10 @@ namespace Watch_Face_Editor
                 string out_resume_call = "";
                 string out_pause_call = "";
                 string out_time_update = "";
+                string out_text_update = "";
                 AddElementToJS(Watch_Face.Shortcuts, "ONLY_NORMAL", out outVariables, out outItems, out out_resume_function,
-                    items, scale_update_function, out out_resume_call, out out_pause_call, time_update, out out_time_update);
+                    items, scale_update_function, out out_resume_call, out out_pause_call, time_update, out out_time_update,
+                            text_update, out out_text_update);
                 variables += outVariables;
                 items += outItems;
                 scale_update_function += out_resume_function;
@@ -857,7 +868,17 @@ namespace Watch_Face_Editor
                 items += Environment.NewLine + TabInString(6) + "};" + Environment.NewLine;
             }
 
-            if (scale_update_function.Length > 5 || resume_call.Length > 0 || pause_call.Length > 0 || time_update.Length > 5)
+            if (text_update.Length > 5)
+            {
+                if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                    items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+
+                items += Environment.NewLine + TabInString(6) + "function text_update() {";
+                items += Environment.NewLine + text_update;
+                items += Environment.NewLine + TabInString(6) + "};" + Environment.NewLine;
+            }
+
+            if (scale_update_function.Length > 5 || resume_call.Length > 0 || pause_call.Length > 0 || time_update.Length > 5 || text_update.Length > 5)
             {
                 if (scale_update_function.Length > 5)
                 {
@@ -870,6 +891,7 @@ namespace Watch_Face_Editor
                 items += Environment.NewLine + TabInString(7) + "resume_call: (function () {";
                 if (scale_update_function.Length > 5) items += Environment.NewLine + TabInString(8) + "scale_call();";
                 if (time_update.Length > 5) items += Environment.NewLine + TabInString(8) + "time_update(true, true);";
+                if (text_update.Length > 5) items += Environment.NewLine + TabInString(8) + "text_update();";
                 if (resume_call.Length > 0) items += Environment.NewLine + resume_call;
                 items += Environment.NewLine + TabInString(7) + "}),";
                 if (pause_call.Length > 0)
@@ -892,9 +914,21 @@ namespace Watch_Face_Editor
             }
         }
 
+        /// <param name="element">Элемент для добавления в циферблат</param>
+        /// <param name="show_level">На каком экране отображается элемент</param>
+        /// <param name="variables">Перечень переменных</param>
+        /// <param name="items">Код дабавляемоко элемента</param>
+        /// <param name="scale_update_function">Код для функции обновления прогресса</param>
+        /// <param name="exist_items">Код ранее добавленых элементов</param>
+        /// <param name="exist_resume_call">Ранее добавленный код для обновления при включении экрана</param>
+        /// <param name="resume_call">Код для обновления при включении экрана</param>
+        /// <param name="pause_call">Код для обновления при выключении циферблата</param>
+        /// <param name="exist_time_update">Ранее добавленный код для обновления времени</param>
+        /// <param name="time_update">Код для обновления времени</param>
         private void AddElementToJS(Object element, string show_level, out string variables, out string items,
             out string scale_update_function,  string exist_items, string exist_resume_call,
-            out string resume_call, out string pause_call, string exist_time_update, out string time_update)
+            out string resume_call, out string pause_call, string exist_time_update, out string time_update,
+            string exist_text_update, out string text_update)
         {
             string optionNameStart = "normal_";
             if (show_level == "ONLY_AOD") optionNameStart = "idle_";
@@ -904,6 +938,7 @@ namespace Watch_Face_Editor
             resume_call = "";
             pause_call = "";
             time_update = "";
+            text_update = "";
             string options = "";
             string type = element.GetType().Name;
 
@@ -3910,7 +3945,7 @@ namespace Watch_Face_Editor
                     ElementDistance Distance = (ElementDistance)element;
 
                     if (!Distance.visible) return;
-                    if (Distance.Number != null)
+                    if (Distance.Number != null && Distance.Number.visible)
                     {
                         numberPosition = Distance.Number.position;
                         hmUI_widget_IMG_NUMBER img_number = Distance.Number;
@@ -3919,22 +3954,240 @@ namespace Watch_Face_Editor
                         numberOptions_separator = IMG_Separator_Options(img_number, show_level);
                     }
 
-                    // Number
-                    if ( numberOptions.Length > 5)
+                    int textCirclePosition = -1;
+                    Text_Circle text_circle = null;
+                    string textCircleOptions = "";
+                    //string textCircleFunctionOptions = "";
+                    if (Distance.Text_circle != null && Distance.Text_circle.visible)
                     {
-                        variables += TabInString(4) + "let " + optionNameStart +
-                            "distance_text_text_img = ''" + Environment.NewLine;
-                        items += Environment.NewLine + TabInString(6) +
-                            optionNameStart + "distance_text_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
-                                numberOptions + TabInString(6) + "});" + Environment.NewLine;
+                        textCirclePosition = Distance.Text_circle.position;
+                        text_circle = Distance.Text_circle;
 
-                        if (numberOptions_separator.Length > 5)
+                        textCircleOptions = Text_Circle_Options(text_circle, optionNameStart, "DISTANCE", show_level, true);
+                        //textCircleFunctionOptions = Text_Circle_Function_Options(text_circle, optionNameStart, show_level, true);
+                    }
+
+                    for (int index = 1; index <= 10; index++)
+                    {
+                        // Number
+                        if (index == numberPosition && numberOptions.Length > 5)
                         {
                             variables += TabInString(4) + "let " + optionNameStart +
-                                "distance_text_separator_img = ''" + Environment.NewLine;
+                                "distance_text_text_img = ''" + Environment.NewLine;
                             items += Environment.NewLine + TabInString(6) +
-                                optionNameStart + "distance_text_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
-                                    numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                                optionNameStart + "distance_text_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "distance_text_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "distance_text_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Text_Circle
+                        if (index == textCirclePosition && textCircleOptions.Length > 5)
+                        {
+                            string variableStartName = optionNameStart + "distance_";
+                            Bitmap src = null;
+                            int image_index = ListImages.IndexOf(text_circle.img_First);
+                            src = OpenFileStream(ListImagesFullName[image_index]);
+                            int img_width = src.Width;
+                            int img_height = src.Height;
+
+                            int radius = text_circle.radius;
+                            if (!text_circle.reverse_direction)
+                            {
+                                if (text_circle.vertical_alignment == "CENTER_V") radius += img_height / 2;
+                                if (text_circle.vertical_alignment == "BOTTOM") radius += img_height;
+                            }
+                            else
+                            {
+                                if (text_circle.vertical_alignment == "CENTER_V") radius -= img_height / 2;
+                                if (text_circle.vertical_alignment == "BOTTOM") radius -= img_height;
+                                radius = -radius;
+                            }
+
+                            variables += TabInString(4) + "let " + variableStartName + "TextCircle = new Array(5);" + Environment.NewLine;
+                            variables += TabInString(4) + "let " + variableStartName + "TextCircle_ASCIIARRAY = new Array(10);" + Environment.NewLine;
+                            variables += TabInString(4) + "let " + variableStartName + "TextCircle_img_width = " + img_width.ToString() + ";" + Environment.NewLine;
+                            variables += TabInString(4) + "let " + variableStartName + "TextCircle_img_height = " + img_height.ToString() + ";" + Environment.NewLine;
+                            
+                            items += Environment.NewLine + TabInString(6) +
+                                "// " + variableStartName + "text_text_img = hmUI.createWidget(hmUI.widget.Text_Circle, {" +
+                                    textCircleOptions + TabInString(6) + "// });" + Environment.NewLine;
+
+                            //items += Environment.NewLine + TabInString(6) + "for (let i = 0; i < 10; i++) {";
+                            image_index = ListImages.IndexOf(text_circle.img_First);
+                            for (int i = 0; i < 10; i++)
+                            {
+                                items += Environment.NewLine + TabInString(6) + variableStartName + "TextCircle_ASCIIARRAY[" +
+                                                    i.ToString() + "] = '" + ListImages[image_index++] + ".png\';  // set of images with numbers"; 
+                            }
+                            //items += Environment.NewLine + TabInString(6) + "};";
+                            items += Environment.NewLine;
+
+                            img_height = 454;
+                            img_width = 454;
+                            switch (ProgramSettings.Watch_Model)
+                            {
+                                case "GTR 3":
+                                    img_height = 454;
+                                    img_width = 454;
+                                    break;
+                                case "GTR 3 Pro":
+                                    img_height = 480;
+                                    img_width = 480;
+                                    break;
+                                case "GTS 3":
+                                    img_height = 450;
+                                    img_width = 390;
+                                    break;
+                                case "T-Rex 2":
+                                    img_height = 454;
+                                    img_width = 454;
+                                    break;
+                                case "T-Rex Ultra":
+                                    img_height = 454;
+                                    img_width = 454;
+                                    break;
+                                case "GTR 4":
+                                    img_height = 466;
+                                    img_width = 466;
+                                    break;
+                                case "Amazfit Band 7":
+                                    img_height = 368;
+                                    img_width = 194;
+                                    break;
+                                case "GTS 4 mini":
+                                    img_height = 384;
+                                    img_width = 336;
+                                    break;
+                                case "Falcon":
+                                    img_height = 416;
+                                    img_width = 416;
+                                    break;
+                                case "GTR mini":
+                                    img_height = 416;
+                                    img_width = 416;
+                                    break;
+                                case "GTS 4":
+                                    img_height = 450;
+                                    img_width = 390;
+                                    break;
+                            }
+
+                            items += Environment.NewLine + TabInString(6) + "for (let i = 0; i < 5; i++) {";
+                            items += Environment.NewLine + TabInString(7) + variableStartName + "TextCircle[i] = hmUI.createWidget(hmUI.widget.IMG, {";
+                            items += Environment.NewLine + TabInString(8) + "x: 0,";
+                            items += Environment.NewLine + TabInString(8) + "y: 0,";
+                            items += Environment.NewLine + TabInString(8) + "w: " + img_width.ToString() + ",";
+                            items += Environment.NewLine + TabInString(8) + "h: " + img_height.ToString() + ",";
+                            items += Environment.NewLine + TabInString(8) + "center_x: " + text_circle.circle_center_X.ToString() + ",";
+                            items += Environment.NewLine + TabInString(8) + "center_y: " + text_circle.circle_center_Y.ToString() + ",";
+                            items += Environment.NewLine + TabInString(8) + "pos_x: " + text_circle.circle_center_X.ToString() + " - " + variableStartName + "TextCircle_img_width / 2,";
+                            items += Environment.NewLine + TabInString(8) + "pos_y: " + text_circle.circle_center_Y.ToString() + " - " + radius.ToString() + ",";
+                            items += Environment.NewLine + TabInString(8) + "src: '" + text_circle.img_First + ".png',";
+                            items += Environment.NewLine + TabInString(7) + "});";
+                            items += Environment.NewLine + TabInString(6) + "};" + Environment.NewLine;
+
+                            if (text_circle.unit != null && text_circle.unit.Length > 0)
+                            {
+                                image_index = ListImages.IndexOf(text_circle.unit);
+                                src = OpenFileStream(ListImagesFullName[image_index]);
+                                int unit_width = src.Width;
+
+                                variables += TabInString(4) + "let " + variableStartName + "TextCircle_unit = null;" + Environment.NewLine;
+                                variables += TabInString(4) + "let " + variableStartName + "TextCircle_unit_width = " + unit_width.ToString() + ";" + Environment.NewLine;
+
+                                items += Environment.NewLine + TabInString(6) + variableStartName + "TextCircle_unit = hmUI.createWidget(hmUI.widget.IMG, {";
+                                items += Environment.NewLine + TabInString(7) + "x: 0,";
+                                items += Environment.NewLine + TabInString(7) + "y: 0,";
+                                items += Environment.NewLine + TabInString(7) + "w: " + img_width.ToString() + ",";
+                                items += Environment.NewLine + TabInString(7) + "h: " + img_height.ToString() + ",";
+                                items += Environment.NewLine + TabInString(7) + "center_x: " + text_circle.circle_center_X.ToString() + ",";
+                                items += Environment.NewLine + TabInString(7) + "center_y: " + text_circle.circle_center_Y.ToString() + ",";
+                                items += Environment.NewLine + TabInString(7) + "pos_x: " + text_circle.circle_center_X.ToString() + " - " + variableStartName + "TextCircle_unit_width / 2,";
+                                items += Environment.NewLine + TabInString(7) + "pos_y: " + text_circle.circle_center_Y.ToString() + " - " + radius.ToString() + ",";
+                                items += Environment.NewLine + TabInString(7) + "src: '" + text_circle.unit + ".png',";
+                                items += Environment.NewLine + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                            if (text_circle.imperial_unit != null && text_circle.imperial_unit.Length > 0)
+                            {
+                                items += Environment.NewLine + TabInString(6) + "const mileageUnit = hmSetting.getMileageUnit();";
+                                items += Environment.NewLine + TabInString(6) + "if (mileageUnit == 1) {";
+                                items += Environment.NewLine + TabInString(7) + variableStartName + 
+                                    "TextCircle_unit.setProperty(hmUI.prop.SRC, '" + text_circle.imperial_unit + ".png');";
+                                items += Environment.NewLine + TabInString(6) + "};" + Environment.NewLine;
+                            }
+
+                            if (text_circle.dot_image != null && text_circle.dot_image.Length > 0)
+                            {
+                                image_index = ListImages.IndexOf(text_circle.dot_image);
+                                src = OpenFileStream(ListImagesFullName[image_index]);
+                                int dot_width = src.Width;
+
+                                variables += TabInString(4) + "let " + variableStartName + "TextCircle_dot_width = " + dot_width.ToString() + ";" + Environment.NewLine;
+                            }
+
+                            if (text_circle.error_image != null && text_circle.error_image.Length > 0)
+                            {
+                                image_index = ListImages.IndexOf(text_circle.error_image);
+                                src = OpenFileStream(ListImagesFullName[image_index]);
+                                int dot_width = src.Width;
+
+                                variables += TabInString(4) + "let " + variableStartName + "TextCircle_error_img_width = " + dot_width.ToString() + ";" + Environment.NewLine;
+                            }
+                            if (items.IndexOf("const distance = hmSensor.createSensor(hmSensor.id.DISTANCE);") < 0 &&
+                                exist_items.IndexOf("const distance = hmSensor.createSensor(hmSensor.id.DISTANCE);") < 0)
+                            {
+                                items += TabInString(6) + Environment.NewLine;
+                                items += TabInString(6) + "const distance = hmSensor.createSensor(hmSensor.id.DISTANCE);" + Environment.NewLine;
+                                if (exist_items.IndexOf("distance.addEventListener") < 0)
+                                {
+                                    items += TabInString(6) + "distance.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
+                                    items += TabInString(7) + "text_update();" + Environment.NewLine;
+                                    items += TabInString(6) + "});" + Environment.NewLine;
+                                }
+                            }
+                            if (items.IndexOf("function toDegree (radian) {") < 0 &&
+                                exist_items.IndexOf("function toDegree (radian) {") < 0)
+                            {
+                                items += TabInString(6) + Environment.NewLine;
+                                items += TabInString(6) + "function toDegree (radian) {" + Environment.NewLine;
+                                items += TabInString(7) + "return radian * (180 / Math.PI);" + Environment.NewLine;
+                                items += TabInString(6) + "};" + Environment.NewLine;
+                            }
+
+
+                            text_update += Environment.NewLine + TabInString(7) + "console.log('update text circle DISTANCE');" + Environment.NewLine;
+                            if (text_update.IndexOf("let distanceCurrent = distance.current;") < 0 &&
+                                exist_text_update.IndexOf("let distanceCurrent = distance.current;") < 0)
+                            {
+                                text_update += TabInString(7) + "let distanceCurrent = distance.current;" + Environment.NewLine;
+                                text_update += TabInString(7) + "let distanceString = (distanceCurrent / 1000).toFixed(2);" + Environment.NewLine;
+                                if (text_circle.zero) 
+                                    text_update += TabInString(7) + "distanceString = distanceString.padStart(5, '0');" + Environment.NewLine;
+                                //items += TabInString(6) + "let distanceString = String(distanceCurrent);" + Environment.NewLine;
+                            }
+                            if (optionNameStart == "normal_")
+                            {
+                                text_update += Environment.NewLine + TabInString(7) +
+                                    "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                text_update += Text_Circle_Function_Options(text_circle, variableStartName, "distanceCurrent", "distanceString", true, "DISTANCE") + Environment.NewLine;
+                                text_update += TabInString(7) + "};" + Environment.NewLine;
+                            }
+                            else
+                            {
+                                text_update += Environment.NewLine + TabInString(7) +
+                                    "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                                text_update += Text_Circle_Function_Options(text_circle, variableStartName, "distanceCurrent", "distanceString", true, "DISTANCE") + Environment.NewLine;
+                                text_update += TabInString(7) + "};" + Environment.NewLine;
+                            }
+
                         }
                     }
                     break;
@@ -10894,6 +11147,353 @@ namespace Watch_Face_Editor
             return options;
         }
 
+        private string Text_Circle_Options(Text_Circle text_circle, string optionNameStart, string type, string show_level, bool need_dot_image, int tabOffset = 0)
+        {
+            string options = Environment.NewLine;
+            if (text_circle == null) return options;
+            if (text_circle.img_First == null || text_circle.img_First.Length == 0) return options;
+            if (need_dot_image && (text_circle.dot_image == null || text_circle.dot_image.Length == 0)) return options;
+
+            string img = text_circle.img_First;
+            int imgPosition = ListImages.IndexOf(img);
+            if (imgPosition + 9 > ListImages.Count)
+            {
+                MessageBox.Show(Properties.FormStrings.Message_ImageCount_Error + Environment.NewLine +
+                    "type: hmUI.data_type." + type, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return options;
+            }
+            string img_array = "[";
+            for (int i = imgPosition; i < imgPosition + 10; i++)
+            {
+                string file_name = "\"" + ListImages[i] + ".png" + "\"";
+                img_array += file_name;
+                if (i < imgPosition + 9) img_array += ",";
+            }
+            img_array += "]";
+            options += TabInString(7 + tabOffset) + "// circle_center_X: " + text_circle.circle_center_X.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// circle_center_Y: " + text_circle.circle_center_Y.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// font_array: " + img_array + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// radius: " + text_circle.radius.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// angle: " + text_circle.angle.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// char_space_angle: " + text_circle.char_space_angle.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// angle: " + text_circle.angle.ToString() + "," + Environment.NewLine;
+
+            if (text_circle.unit != null && text_circle.unit.Length > 0)
+            {
+                string unit = "'" + text_circle.unit + ".png'";
+                options += TabInString(7 + tabOffset) + "// unit: " + unit + "," + Environment.NewLine;
+            }
+
+            if (text_circle.imperial_unit != null && text_circle.imperial_unit.Length > 0)
+            {
+                string unit = "'" + text_circle.imperial_unit + ".png'";
+                options += TabInString(7 + tabOffset) + "// imperial_unit: " + unit + "," + Environment.NewLine;
+            }
+
+            if (text_circle.dot_image != null && text_circle.dot_image.Length > 0)
+            {
+                string dot_image = "'" + text_circle.dot_image + ".png'";
+                options += TabInString(7 + tabOffset) + "// dot_image: " + dot_image + "," + Environment.NewLine;
+            }
+
+            if (text_circle.error_image != null && text_circle.error_image.Length > 0)
+            {
+                string error_image = "'" + text_circle.error_image + ".png'";
+                options += TabInString(7 + tabOffset) + "// error_image: " + error_image + "," + Environment.NewLine;
+            }
+
+            if (text_circle.zero) options += TabInString(7 + tabOffset) + "// zero: true," + Environment.NewLine;
+            else options += TabInString(7 + tabOffset) + "// zero: false," + Environment.NewLine;
+            if (text_circle.reverse_direction) options += TabInString(7 + tabOffset) + "// reverse_direction: true," + Environment.NewLine;
+            else options += TabInString(7 + tabOffset) + "// reverse_direction: false," + Environment.NewLine;
+            if (text_circle.unit_in_alignment) options += TabInString(7 + tabOffset) + "// unit_in_alignment: true," + Environment.NewLine;
+            else options += TabInString(7 + tabOffset) + "// unit_in_alignment: false," + Environment.NewLine;
+
+            options += TabInString(7 + tabOffset) + "// vertical_alignment: " + text_circle.vertical_alignment + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "// horizontal_alignment: " + text_circle.horizontal_alignment + "," + Environment.NewLine;
+
+
+            if (type.Length > 0)
+            {
+                options += TabInString(7 + tabOffset) + "// type: hmUI.data_type." + type + "," + Environment.NewLine;
+            }
+
+            if (show_level.Length > 0)
+            {
+                options += TabInString(7 + tabOffset) + "// show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+            }
+
+            return options;
+        }
+
+        private string Text_Circle_Function_Options(Text_Circle text_circle, string optionNameStart, string intValueName, string strValueName, 
+            bool need_dot_image, string type, int tabOffset = 0)
+        {
+            string options = "";
+            if (text_circle == null) return options;
+            if (text_circle.img_First == null || text_circle.img_First.Length == 0) return options;
+            if (need_dot_image && (text_circle.dot_image == null || text_circle.dot_image.Length == 0)) return options;
+
+            // скрываем все символы
+            options += TabInString(8 + tabOffset) + "for (var i = 1; i < 5; i++) {  // hide all symbols" + Environment.NewLine;
+            options += TabInString(9 + tabOffset) + optionNameStart + "TextCircle[i].setProperty(hmUI.prop.VISIBLE, false);" + Environment.NewLine;
+            options += TabInString(8 + tabOffset) + "};" + Environment.NewLine;
+            options += TabInString(8 + tabOffset) + optionNameStart + "TextCircle_unit.setProperty(hmUI.prop.VISIBLE, false);" + Environment.NewLine;
+
+            if (!text_circle.reverse_direction)
+                options += TabInString(8 + tabOffset) + "let char_Angle = " + text_circle.angle.ToString() + ";" + Environment.NewLine;
+            else options += TabInString(8 + tabOffset) + "let char_Angle = " + (text_circle.angle + 180).ToString() + ";" + Environment.NewLine;
+            options += TabInString(8 + tabOffset) + "if (" + intValueName + " != null && " + intValueName + " != undefined && isFinite(" + 
+                strValueName + ") && " + strValueName + ".length > 0 && " + strValueName + 
+                ".length < 6) {  // display data if it was possible to get it" + Environment.NewLine;
+
+            // вычисляем углы поворота для символов
+            string img_angle_name = optionNameStart + "TextCircle_img_angle";
+            options += TabInString(9 + tabOffset) + "let " + img_angle_name + " = 0;" + Environment.NewLine;
+            //options += TabInString(9 + tabOffset) + "let " + optionNameStart + "TextCircle_error_img_angle = 0;" + Environment.NewLine;
+            options += TabInString(9 + tabOffset) + "let " + optionNameStart + "TextCircle_dot_img_angle = 0;" + Environment.NewLine;
+            options += TabInString(9 + tabOffset) + "let " + optionNameStart + "TextCircle_unit_angle = 0;" + Environment.NewLine;
+            //if (text_circle.imperial_unit != null && text_circle.imperial_unit.Length > 0)
+            //{
+            //    options += TabInString(9 + tabOffset) + "let " + optionNameStart + "imperial_unit_angle = 0;" + Environment.NewLine;
+            //}
+
+            options += TabInString(9 + tabOffset) + img_angle_name + " = toDegree(Math.atan2(" +
+                optionNameStart + "TextCircle_img_width/2, " + text_circle.radius.ToString() + "));" + Environment.NewLine;
+            //if (text_circle.error_image != null && text_circle.error_image.Length > 0)
+            //{
+            //    options += TabInString(9 + tabOffset) + optionNameStart + "TextCircle_error_angle = toDegree(Math.atan2(" +
+            //            optionNameStart + "TextCircle_error_img_width/2, " + text_circle.radius.ToString() + "));" + Environment.NewLine;
+            //}
+            if (text_circle.dot_image != null && text_circle.dot_image.Length > 0)
+            {
+                options += TabInString(9 + tabOffset) + optionNameStart + "TextCircle_dot_img_angle = toDegree(Math.atan2(" +
+                        optionNameStart + "TextCircle_dot_width/2, " + text_circle.radius.ToString() + "));" + Environment.NewLine;
+            }
+            if (text_circle.unit != null && text_circle.unit.Length > 0)
+            {
+                options += TabInString(9 + tabOffset) + optionNameStart + "TextCircle_unit_angle = toDegree(Math.atan2(" +
+                        optionNameStart + "TextCircle_unit_width/2, " + text_circle.radius.ToString() + "));" + Environment.NewLine;
+            }
+            string angleOffsetName = optionNameStart + "TextCircle_angleOffset";
+            
+            // вычисляем смещение угла в зависимисти от выравнивания
+            switch (text_circle.horizontal_alignment)
+            {
+                case "CENTER_H":
+                    options += TabInString(9 + tabOffset) + "// alignment = CENTER_H" + Environment.NewLine;
+                    options += TabInString(9 + tabOffset) + "let " + angleOffsetName + " = " + img_angle_name +
+                        " * (" + strValueName + ".length - 1);" + Environment.NewLine;
+
+                    if (type == "DISTANCE")
+                    {
+                        options += TabInString(9 + tabOffset) + angleOffsetName + " = " + angleOffsetName + " - " + img_angle_name +
+                            " + " + optionNameStart + "TextCircle_dot_img_angle;" + Environment.NewLine;
+                    }
+                    if (text_circle.char_space_angle != 0)
+                    {
+                        options += TabInString(9 + tabOffset) + angleOffsetName + " = " + angleOffsetName + " + " +
+                                        text_circle.char_space_angle.ToString() + " * (" + strValueName + ".length - 1) / 2;" + Environment.NewLine; 
+                    }
+                    if (text_circle.unit_in_alignment && text_circle.unit != null && text_circle.unit.Length > 0)
+                    {
+                        options += TabInString(9 + tabOffset) + angleOffsetName + " = " + angleOffsetName + " + (" + img_angle_name + " + " + 
+                            optionNameStart + "TextCircle_unit_angle + " + text_circle.char_space_angle.ToString() + ") / 2;" + Environment.NewLine; 
+                    }
+                    if (text_circle.reverse_direction && text_circle.unit != null && text_circle.unit.Length > 0)
+                    {
+                        options += TabInString(9 + tabOffset) + angleOffsetName + " = -" + angleOffsetName + ";" + Environment.NewLine;
+                    }
+                    options += TabInString(9 + tabOffset) + "char_Angle -= " + angleOffsetName + ";" + Environment.NewLine;
+                    options += TabInString(9 + tabOffset) + "// alignment end" + Environment.NewLine;
+
+                    //angleOffset = angleOffset + spacing * (value.Length - 1) / 2f;
+                    //if (unit_width > 0 && unit_in_alignment) angleOffset = angleOffset + (image_angle + unit_angle + spacing) / 2f;
+                    //if (reverse_direction) angleOffset = -angleOffset;
+                    //graphics.RotateTransform((float)(angle - angleOffset));
+                    break;
+                case "RIGHT":
+                    options += TabInString(9 + tabOffset) + "// alignment = RIGHT" + Environment.NewLine;
+                    options += TabInString(9 + tabOffset) + "let " + angleOffsetName + " = " + img_angle_name +
+                        " * (" + strValueName + ".length - 1);" + Environment.NewLine;
+
+                    if (type == "DISTANCE")
+                    {
+                        options += TabInString(9 + tabOffset) + angleOffsetName + " = " + angleOffsetName + " - " + img_angle_name +
+                            " + " + optionNameStart + "TextCircle_dot_img_angle;" + Environment.NewLine;
+                    }
+                    if (text_circle.char_space_angle != 0)
+                    {
+                        options += TabInString(9 + tabOffset) + angleOffsetName + " = " + angleOffsetName + " + " +
+                                        text_circle.char_space_angle.ToString() + " * (" + strValueName + ".length - 1) / 2;" + Environment.NewLine; 
+                    }
+                    if (text_circle.unit_in_alignment && text_circle.unit != null && text_circle.unit.Length > 0)
+                    {
+                        options += TabInString(9 + tabOffset) + angleOffsetName + " = " + angleOffsetName + " + (" + img_angle_name + " + " +
+                            optionNameStart + "TextCircle_unit_angle + " + text_circle.char_space_angle.ToString() + ") / 2;" + Environment.NewLine;
+                    }
+                    if (text_circle.reverse_direction && text_circle.unit != null && text_circle.unit.Length > 0)
+                    {
+                        options += TabInString(9 + tabOffset) + angleOffsetName + " = -" + angleOffsetName + ";" + Environment.NewLine;
+                    }
+                    options += TabInString(9 + tabOffset) + "char_Angle -= 2 * " + angleOffsetName + ";" + Environment.NewLine;
+                    options += TabInString(9 + tabOffset) + "// alignment end" + Environment.NewLine;
+
+
+                    //angleOffset = 2 * angleOffset + spacing * (value.Length - 1);
+                    //if (unit_width > 0 && unit_in_alignment) angleOffset = angleOffset + image_angle + unit_angle + spacing;
+                    //if (reverse_direction) angleOffset = -angleOffset;
+                    //graphics.RotateTransform((float)(angle - angleOffset));
+                    break;
+            }
+
+            options += TabInString(9 + tabOffset) + Environment.NewLine;
+            options += TabInString(9 + tabOffset) + "let firstSymbol = true;" + Environment.NewLine;
+            options += TabInString(9 + tabOffset) + "let index = 0;" + Environment.NewLine;
+            //options += TabInString(9 + tabOffset) + "let char_Angle = " + text_circle.angle.ToString() + " - " + angleOffsetName + ";" + Environment.NewLine;
+            options += TabInString(9 + tabOffset) + "for (let char of " + strValueName + ") {" + Environment.NewLine;
+            options += TabInString(10 + tabOffset) + "let charCode = char.charCodeAt()-48;" + Environment.NewLine;
+            //options += TabInString(10 + tabOffset) + "if (charCode < 0) continue;" + Environment.NewLine;
+            options += TabInString(10 + tabOffset) + "if (index >= 5) break;" + Environment.NewLine;
+
+            // digit 
+            options += TabInString(10 + tabOffset) + "if (charCode >= 0 && charCode < 10) { " + Environment.NewLine;
+            if (text_circle.reverse_direction)
+            {
+                options += TabInString(11 + tabOffset) + "if (!firstSymbol) char_Angle -= " + img_angle_name + ";" + Environment.NewLine; 
+            }
+            else
+            {
+                options += TabInString(11 + tabOffset) + "if (!firstSymbol) char_Angle += " + img_angle_name + ";" + Environment.NewLine;
+            }
+            options += TabInString(11 + tabOffset) + "firstSymbol = false;" + Environment.NewLine;
+            options += TabInString(11 + tabOffset) + optionNameStart + "TextCircle[index].setProperty(hmUI.prop.ANGLE, char_Angle);" + Environment.NewLine;
+            options += TabInString(11 + tabOffset) + optionNameStart + "TextCircle[index].setProperty(hmUI.prop.POS_X, " + text_circle.circle_center_X.ToString() +
+                " - " + optionNameStart + "TextCircle_img_width / 2);" + Environment.NewLine;
+            options += TabInString(11 + tabOffset) + optionNameStart + "TextCircle[index].setProperty(hmUI.prop.SRC, " + 
+                optionNameStart + "TextCircle_ASCIIARRAY[charCode]);" + Environment.NewLine;
+            //options += TabInString(11 + tabOffset) + optionNameStart + "TextCircle[index].setProperty(hmUI.prop.MORE, {" + Environment.NewLine;
+            //options += TabInString(12 + tabOffset) + "pos_x: " + optionNameStart + "TextCircle_img_width / 2," + Environment.NewLine;
+            //options += TabInString(12 + tabOffset) + "angle: char_Angle," + Environment.NewLine;
+            //options += TabInString(12 + tabOffset) + "src: " + optionNameStart + "TextCircle_ASCIIARRAY[charCode]," + Environment.NewLine;
+            //options += TabInString(11 + tabOffset) + "});" + Environment.NewLine;
+            options += TabInString(11 + tabOffset) + optionNameStart + "TextCircle[index].setProperty(hmUI.prop.VISIBLE, true);" + Environment.NewLine;
+            if (text_circle.char_space_angle == 0)
+            {
+                if (text_circle.reverse_direction)
+                {
+                    options += TabInString(11 + tabOffset) + "char_Angle -= " + img_angle_name + ";" + Environment.NewLine;  
+                }
+                else
+                {
+                    options += TabInString(11 + tabOffset) + "char_Angle += " + img_angle_name + ";" + Environment.NewLine;
+                }
+            }
+            else if (text_circle.reverse_direction)
+            {
+                options += TabInString(11 + tabOffset) + "char_Angle -= " + img_angle_name + " + " +
+                    text_circle.char_space_angle.ToString() + ";" + Environment.NewLine;
+            }
+            else options += TabInString(11 + tabOffset) + "char_Angle += " + img_angle_name + " + " +
+                    text_circle.char_space_angle.ToString() + ";" + Environment.NewLine;
+            options += TabInString(11 + tabOffset) + "index++;" + Environment.NewLine;
+            if (text_circle.dot_image != null && text_circle.dot_image.Length > 0)
+                options += TabInString(10 + tabOffset) + "}  // end if digit" + Environment.NewLine;  // end if digit 
+            else options += TabInString(10 + tabOffset) + "};  // end if digit" + Environment.NewLine;  // end if digit 
+
+            // dot point
+            if (text_circle.dot_image != null && text_circle.dot_image.Length > 0)
+            {
+                options += TabInString(10 + tabOffset) + "else { " + Environment.NewLine;
+                if (text_circle.reverse_direction)
+                {
+                    options += TabInString(11 + tabOffset) + "if (!firstSymbol) char_Angle -= " + optionNameStart + "TextCircle_dot_img_angle; " + Environment.NewLine; 
+                }
+                else
+                {
+                    options += TabInString(11 + tabOffset) + "if (!firstSymbol) char_Angle += " + optionNameStart + "TextCircle_dot_img_angle; " + Environment.NewLine;
+                }
+                options += TabInString(11 + tabOffset) + "firstSymbol = false;" + Environment.NewLine;
+                options += TabInString(11 + tabOffset) + optionNameStart + "TextCircle[index].setProperty(hmUI.prop.ANGLE, char_Angle);" + Environment.NewLine;
+                options += TabInString(11 + tabOffset) + optionNameStart + "TextCircle[index].setProperty(hmUI.prop.POS_X, " + text_circle.circle_center_X.ToString() +
+                    " - " + optionNameStart + "TextCircle_dot_width / 2);" + Environment.NewLine;
+                options += TabInString(11 + tabOffset) + optionNameStart + "TextCircle[index].setProperty(hmUI.prop.SRC, '" +
+                    text_circle.dot_image + ".png');" + Environment.NewLine;
+                options += TabInString(11 + tabOffset) + optionNameStart + "TextCircle[index].setProperty(hmUI.prop.VISIBLE, true);" + Environment.NewLine;
+                if (text_circle.char_space_angle == 0)
+                {
+                    if (text_circle.reverse_direction)
+                    {
+                        options += TabInString(11 + tabOffset) + "char_Angle -= " + optionNameStart + "TextCircle_dot_img_angle;" + Environment.NewLine; 
+                    }
+                    else
+                    {
+                        options += TabInString(11 + tabOffset) + "char_Angle += " + optionNameStart + "TextCircle_dot_img_angle;" + Environment.NewLine;
+                    }
+                }
+                else if (text_circle.reverse_direction)
+                {
+                    options += TabInString(11 + tabOffset) + "char_Angle -= " + optionNameStart + "TextCircle_dot_img_angle + " +
+                        text_circle.char_space_angle.ToString() + ";" + Environment.NewLine;
+                }
+                else options += TabInString(11 + tabOffset) + "char_Angle = " + optionNameStart + "TextCircle_dot_img_angle + " +
+                        text_circle.char_space_angle.ToString() + Environment.NewLine;
+                options += TabInString(11 + tabOffset) + "index++;" + Environment.NewLine;
+                options += TabInString(10 + tabOffset) + "};  // end if dot point " + Environment.NewLine;  // end dot point 
+            }
+
+            options += TabInString(9 + tabOffset) + "};  // end char of string" + Environment.NewLine;  // end char of string
+
+            // unit
+            if (text_circle.unit != null && text_circle.unit.Length > 0)
+            {
+                if (text_circle.reverse_direction)
+                {
+                    options += TabInString(9 + tabOffset) + "char_Angle -= " + optionNameStart + "TextCircle_unit_angle;" + Environment.NewLine; 
+                }
+                else
+                {
+                    options += TabInString(9 + tabOffset) + "char_Angle += " + optionNameStart + "TextCircle_unit_angle;" + Environment.NewLine;
+                }
+                options += TabInString(9 + tabOffset) + optionNameStart + "TextCircle_unit.setProperty(hmUI.prop.ANGLE, char_Angle);" + Environment.NewLine;
+                //options += TabInString(9 + tabOffset) + optionNameStart + "TextCircle_unit[index].setProperty(hmUI.prop.POS_X, " + text_circle.circle_center_X.ToString() +
+                //    " - " + optionNameStart + "TextCircle_unit_width / 2);" + Environment.NewLine;
+                //options += TabInString(9 + tabOffset) + optionNameStart + "TextCircle_unit[index].setProperty(hmUI.prop.SRC, '" +
+                //    text_circle.dot_image + ".png');" + Environment.NewLine;
+                options += TabInString(9 + tabOffset) + optionNameStart + "TextCircle_unit.setProperty(hmUI.prop.VISIBLE, true);" + Environment.NewLine;
+                //if (text_circle.char_space_angle == 0)
+                //{
+                //    options += TabInString(9 + tabOffset) + "char_Angle += " + optionNameStart + "TextCircle_unit_angle;" + Environment.NewLine;
+                //}
+                //else if (text_circle.reverse_direction)
+                //{
+                //    options += TabInString(9 + tabOffset) + "char_Angle += " + optionNameStart + "TextCircle_unit_angle - " +
+                //        text_circle.char_space_angle.ToString() + ";" + Environment.NewLine;
+                //}
+                //else options += TabInString(9 + tabOffset) + "char_Angle += " + optionNameStart + "TextCircle_unit_angle + " +
+                //        text_circle.char_space_angle.ToString() + Environment.NewLine;
+                //options += TabInString(9 + tabOffset) + "index++;" + Environment.NewLine;
+                //options += TabInString(9 + tabOffset) + "};  // end if unit" + Environment.NewLine;  // end unit
+            }
+
+            options += TabInString(8 + tabOffset) + "}  // end isFinite" + Environment.NewLine;  // end isFinite
+
+            if (text_circle.error_image != null && text_circle.error_image.Length > 0)
+            {
+                options += TabInString(8 + tabOffset) + "else {" + Environment.NewLine;
+                options += TabInString(9 + tabOffset) + optionNameStart + "TextCircle[0].setProperty(hmUI.prop.ANGLE, char_Angle);" + Environment.NewLine;
+                options += TabInString(9 + tabOffset) + optionNameStart + "TextCircle[0].setProperty(hmUI.prop.POS_X, " + text_circle.circle_center_X.ToString() +
+                    " - " + optionNameStart + "TextCircle_error_img_width / 2);" + Environment.NewLine;
+                options += TabInString(9 + tabOffset) + optionNameStart + "TextCircle[0].setProperty(hmUI.prop.SRC, '" +
+                    text_circle.error_image + ".png');" + Environment.NewLine;
+                options += TabInString(9 + tabOffset) + optionNameStart + "TextCircle[0].setProperty(hmUI.prop.VISIBLE, true);" + Environment.NewLine;
+                options += TabInString(8 + tabOffset) + "};  // end else isFinite" + Environment.NewLine; 
+            }
+
+            return options;
+        }
+
         private string IMG_STATUS_Options(hmUI_widget_IMG_STATUS img_status, string type, string show_level)
         {
             string options = Environment.NewLine;
@@ -11023,6 +11623,7 @@ namespace Watch_Face_Editor
                 {
                     case "GTR3":
                     case "T_Rex_2":
+                    case "T_Rex_Ultra":
                         options += TabInString(7 + tab_offset) + "w: 453," + Environment.NewLine;
                         options += TabInString(7 + tab_offset) + "h: 453," + Environment.NewLine;
                         break;
@@ -11047,6 +11648,7 @@ namespace Watch_Face_Editor
                         options += TabInString(7 + tab_offset) + "h: 384," + Environment.NewLine;
                         break;
                     case "Falcon":
+                    case "GTR_mini":
                         options += TabInString(7 + tab_offset) + "w: 415," + Environment.NewLine;
                         options += TabInString(7 + tab_offset) + "h: 415," + Environment.NewLine;
                         break;
@@ -11061,7 +11663,8 @@ namespace Watch_Face_Editor
 
         private string Motion_Animation_Options(Motion_Animation anim,bool x_anim,bool mirror)
         {
-            if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2") 
+            if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2" || 
+                ProgramSettings.Watch_Model == "T-Rex Ultra" || ProgramSettings.Watch_Model == "GTR mini") 
                 return Motion_Animation_Options_2(anim, x_anim, mirror);
             string options = Environment.NewLine;
             if (anim == null) return options;
@@ -11166,6 +11769,7 @@ namespace Watch_Face_Editor
                 {
                     case "GTR3":
                     case "T_Rex_2":
+                    case "T_Rex_Ultra":
                         options += TabInString(7 + tab_offset) + "w: 455," + Environment.NewLine;
                         options += TabInString(7 + tab_offset) + "h: 455," + Environment.NewLine;
                         break;
@@ -11190,6 +11794,7 @@ namespace Watch_Face_Editor
                         options += TabInString(7 + tab_offset) + "h: 384," + Environment.NewLine;
                         break;
                     case "Falcon":
+                    case "GTR_mini":
                         options += TabInString(7 + tab_offset) + "w: 417," + Environment.NewLine;
                         options += TabInString(7 + tab_offset) + "h: 417," + Environment.NewLine;
                         break;
@@ -11207,7 +11812,8 @@ namespace Watch_Face_Editor
 
         private string Rotate_Animation_Options(Rotate_Animation anim, bool mirror)
         {
-            if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2") 
+            if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2" ||
+                ProgramSettings.Watch_Model == "T-Rex Ultra" || ProgramSettings.Watch_Model == "GTR mini") 
                 return Rotate_Animation_Options_2(anim, mirror);
             string options = Environment.NewLine;
             if (anim == null) return options;

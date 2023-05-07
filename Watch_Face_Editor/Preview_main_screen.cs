@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 using System.Xml.Linq;
 using LineCap = System.Drawing.Drawing2D.LineCap;
 
@@ -84,6 +85,7 @@ namespace Watch_Face_Editor
                     src = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
                     break;
                 case "Falcon":
+                case "GTR mini":
                     src = OpenFileStream(Application.StartupPath + @"\Mask\mask_falcon.png");
                     break;
             }
@@ -515,6 +517,7 @@ namespace Watch_Face_Editor
                         mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
                         break;
                     case "Falcon":
+                    case "GTR mini":
                         mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_falcon.png");
                         break;
                 }
@@ -1738,44 +1741,16 @@ namespace Watch_Face_Editor
                 case "ElementDistance":
                     ElementDistance activityElementDistance = (ElementDistance)element;
                     if (!activityElementDistance.visible) return;
-                    if (activityElementDistance.Number == null ||
-                        activityElementDistance.Number.img_First == null ||
-                        activityElementDistance.Number.img_First.Length == 0) return;
 
                     img_number = activityElementDistance.Number;
+                    Text_Rotation text_rotation = activityElementDistance.Text_rotation;
+                    Text_Circle text_circle = activityElementDistance.Text_circle;
+                    icon = activityElementDistance.Icon;
 
                     elementValue = WatchFacePreviewSet.Activity.Distance;
-                    double distance_value = elementValue / 1000f;
-                    value_lenght = 4;
-                    int image_Index = ListImages.IndexOf(img_number.img_First);
-                    int pos_x = img_number.imageX;
-                    int pos_y = img_number.imageY;
-                    int distance_spasing = img_number.space;
-                    int angl = img_number.angle;
-                    int distance_alignment = AlignmentToInt(img_number.align);
-                    //bool distance_addZero = img_number.zero;
-                    bool distance_addZero = false;
-                    int distance_separator_index = -1;
-                    if (img_number.unit != null && img_number.unit.Length > 0)
-                        distance_separator_index = ListImages.IndexOf(img_number.unit);
-                    int decumalPoint_index = -1;
-                    if (img_number.dot_image != null && img_number.dot_image.Length > 0)
-                        decumalPoint_index = ListImages.IndexOf(img_number.dot_image);
+                    double distance_value = Math.Round(elementValue / 1000f, 2);
 
-                    Draw_dagital_text_decimal(gPanel, image_Index, pos_x, pos_y,
-                        distance_spasing, distance_alignment, distance_value, distance_addZero, value_lenght,
-                        distance_separator_index, decumalPoint_index, 2, angl, BBorder);
-
-                    if (img_number.icon != null && img_number.icon.Length > 0)
-                    {
-                        image_Index = ListImages.IndexOf(img_number.icon);
-                        pos_x = img_number.iconPosX;
-                        pos_y = img_number.iconPosY;
-
-                        src = OpenFileStream(ListImagesFullName[image_Index]);
-                        if (src != null) gPanel.DrawImage(src, pos_x, pos_y);
-                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
-                    }
+                    DrawDistance(gPanel, img_number, text_rotation, text_circle, icon, distance_value, BBorder, showProgressArea, showCentrHend);
 
                     break;
                 #endregion
@@ -2399,6 +2374,7 @@ namespace Watch_Face_Editor
                     src = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
                     break;
                 case "Falcon":
+                case "GTR mini":
                     src = OpenFileStream(Application.StartupPath + @"\Mask\mask_falcon.png");
                     break;
             }
@@ -2837,6 +2813,7 @@ namespace Watch_Face_Editor
                         mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
                         break;
                     case "Falcon":
+                    case "GTR mini":
                         mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_falcon.png");
                         break;
                 }
@@ -2943,6 +2920,7 @@ namespace Watch_Face_Editor
                         mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
                         break;
                     case "Falcon":
+                    case "GTR mini":
                         mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_falcon.png");
                         break;
                 }
@@ -2985,7 +2963,7 @@ namespace Watch_Face_Editor
             if (progress > 1) progress = 1;
             Bitmap src = new Bitmap(1, 1);
 
-            for (int index = 1; index <= 15; index++)
+            for (int index = 1; index <= 25; index++)
             {
                 if (images != null && images.img_First != null && images.img_First.Length > 0 &&
                     index == images.position && images.visible)
@@ -3223,6 +3201,93 @@ namespace Watch_Face_Editor
                         //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                     }
                 }
+
+            }
+
+            src.Dispose();
+        }
+
+        /// <summary>Рисуем дистанцию</summary>
+        /// <param name="number">Параметры цифрового значения</param>
+        /// <param name="Text_rotation">Параметры текста под углом</param>
+        /// <param name="Text_circle">Параметры текста по окружности</param>
+        /// <param name="icon">Параметры для иконки</param>
+        /// <param name="distance_value">Значение показателя</param>
+        /// <param name="BBorder">Рисовать рамку по координатам, вокруг элементов с выравниванием</param>
+        /// <param name="showProgressArea">Подсвечивать круговую шкалу при наличии фонового изображения</param>
+        /// <param name="showCentrHend">Подсвечивать центр стрелки</param>
+        private void DrawDistance(Graphics gPanel, hmUI_widget_IMG_NUMBER number, Text_Rotation text_rotation,
+            Text_Circle text_circle, hmUI_widget_IMG icon, double distance_value, bool BBorder, bool showProgressArea, bool showCentrHend)
+        {
+            Bitmap src = new Bitmap(1, 1);
+
+            for (int index = 1; index <= 15; index++)
+            {
+                if (number != null && number.img_First != null && number.img_First.Length > 0 &&
+                    index == number.position && number.visible)
+                {
+                    int value_lenght = 4;
+                    int image_Index = ListImages.IndexOf(number.img_First);
+                    int pos_x = number.imageX;
+                    int pos_y = number.imageY;
+                    int distance_spasing = number.space;
+                    int angle = number.angle;
+                    int distance_alignment = AlignmentToInt(number.align);
+                    //bool distance_addZero = img_number.zero;
+                    bool distance_addZero = false;
+                    int distance_separator_index = -1;
+                    if (number.unit != null && number.unit.Length > 0)
+                        distance_separator_index = ListImages.IndexOf(number.unit);
+                    int decumalPoint_index = -1;
+                    if (number.dot_image != null && number.dot_image.Length > 0)
+                        decumalPoint_index = ListImages.IndexOf(number.dot_image);
+
+                    Draw_dagital_text_decimal(gPanel, image_Index, pos_x, pos_y,
+                        distance_spasing, distance_alignment, distance_value, distance_addZero, value_lenght,
+                        distance_separator_index, decumalPoint_index, 2, angle, BBorder);
+                }
+
+                if(text_circle != null && text_circle.img_First != null && text_circle.img_First.Length > 0 &&
+                    text_circle.dot_image != null && text_circle.dot_image.Length > 0 && index == text_circle.position && text_circle.visible)
+                {
+                    int centr_x = text_circle.circle_center_X;
+                    int centr_y = text_circle.circle_center_Y;
+                    int radius = text_circle.radius;
+                    int spacing = text_circle.char_space_angle;
+                    float angle = text_circle.angle;
+                    bool zero = text_circle.zero;
+                    int image_index = ListImages.IndexOf(text_circle.img_First);
+                    int unit_index = ListImages.IndexOf(text_circle.unit);
+                    int dot_image_index = ListImages.IndexOf(text_circle.dot_image);
+                    string vertical_alignment = text_circle.vertical_alignment;
+                    string horizontal_alignment = text_circle.horizontal_alignment;
+                    bool reverse_direction = text_circle.reverse_direction;
+                    bool unit_in_alignment = text_circle.unit_in_alignment;
+                    string value = distance_value.ToString();
+                    if (text_circle.zero) value = value.PadLeft(5, '0');
+
+                    Draw_dagital_text_rotate(gPanel, centr_x, centr_y, radius, spacing, angle, zero,
+                        image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
+                        vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
+                        value, 4, BBorder, "ElementDistance");
+                }
+
+                if (icon != null && icon.src != null && icon.src.Length > 0 &&
+                    index == icon.position && icon.visible)
+                {
+                    int imageIndex = ListImages.IndexOf(icon.src);
+                    int x = icon.x;
+                    int y = icon.y;
+
+                    if (imageIndex < ListImagesFullName.Count)
+                    {
+                        src = OpenFileStream(ListImagesFullName[imageIndex]);
+                        gPanel.DrawImage(src, x, y);
+                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                    }
+                }
+
+
 
             }
 
@@ -3681,7 +3746,7 @@ namespace Watch_Face_Editor
             src.Dispose();
         }
 
-        /// <summary>Рисуем все параметры элемента</summary>
+        /// <summary>Рисуем все параметры элемента ветер</summary>
         /// <param name="gPanel">Поверхность для рисования</param>
         /// <param name="images">Параметры для изображения</param>
         /// <param name="segments">Параметры для сегментов</param>
@@ -4215,7 +4280,8 @@ namespace Watch_Face_Editor
             if (image_index < 0 || image_index >= ListImagesFullName.Count) return 0;
 
             int result = 0;
-            if (ProgramSettings.Watch_Model != "GTR 4" && ProgramSettings.Watch_Model != "GTS 4") angle = 0;
+            if (ProgramSettings.Watch_Model != "GTR 4" && ProgramSettings.Watch_Model != "GTS 4" && 
+                ProgramSettings.Watch_Model != "GTR mini" && ProgramSettings.Watch_Model != "T-Rex Ultra") angle = 0;
             Logger.WriteLine("* Draw_dagital_text");
             var src = new Bitmap(1, 1);
             int _number;
@@ -4300,7 +4366,9 @@ namespace Watch_Face_Editor
                     break;
             }
 
-            if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2")
+            Matrix transformMatrix = graphics.Transform;
+            if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" ||
+                ProgramSettings.Watch_Model == "GTR mini" || ProgramSettings.Watch_Model == "T-Rex Ultra")
             {
                 int pivot_point_offset_x = 0;
                 int pivot_point_offset_y = 0;
@@ -4355,7 +4423,8 @@ namespace Watch_Face_Editor
                     graphics.DrawRectangle(pen2, rect);
                 }
             }
-            graphics.ResetTransform();
+            //graphics.ResetTransform();
+            graphics.Transform = transformMatrix;
 
             Logger.WriteLine("* Draw_dagital_text (end)");
             return result;
@@ -4426,7 +4495,8 @@ namespace Watch_Face_Editor
             int imageError_index = -1, bool errorData = false)
         {
             int result = 0;
-            if (ProgramSettings.Watch_Model != "GTR 4" && ProgramSettings.Watch_Model != "GTS 4") angle = 0;
+            if (ProgramSettings.Watch_Model != "GTR 4" && ProgramSettings.Watch_Model != "GTS 4" &&
+                ProgramSettings.Watch_Model != "GTR mini" && ProgramSettings.Watch_Model != "T-Rex Ultra") angle = 0;
             Logger.WriteLine("* Draw_weather_text");
             var src = new Bitmap(1, 1);
             int _number;
@@ -4535,6 +4605,7 @@ namespace Watch_Face_Editor
             }
 
             Logger.WriteLine("Draw value");
+            Matrix transformMatrix = graphics.Transform;
             if (!errorData)
             {
                 if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2")
@@ -4646,7 +4717,8 @@ namespace Watch_Face_Editor
                     graphics.DrawRectangle(pen2, rect);
                 }
             }
-            graphics.ResetTransform();
+            //graphics.ResetTransform();
+            graphics.Transform = transformMatrix;
 
             Logger.WriteLine("* Draw_weather_text (end)");
             return result;
@@ -4834,6 +4906,219 @@ namespace Watch_Face_Editor
             Logger.WriteLine("* Draw_text (end)");
         }
 
+        /// <summary>Пишем число по окружности</summary>
+        /// <param name="graphics">Поверхность для рисования</param>
+        /// <param name="x">Координата X</param>
+        /// <param name="y">Координата y</param>
+        /// <param name="radius">Радиус y</param>
+        /// <param name="spacing">Угол между символами</param>
+        /// <param name="angle">Угол поворота надписи в градусах</param>
+        /// <param name="zero">Отображать начальные нули</param>
+        /// <param name="image_index">Номер начального изображения</param>
+        /// <param name="image_width">Ширина символа</param>
+        /// <param name="image_height">Высота символа</param>
+        /// <param name="unit_index">Номер символа единиц измерения</param>
+        /// <param name="unit_width">Ширина символа единиц измерения</param>
+        /// <param name="dot_image_index">Номер символа десятичного разделителя</param>
+        /// <param name="dot_image_width">Ширина символа десятичного разделителя</param>
+        /// <param name="vertical_alignment">Выравнивание символов по вертикали относительно окружности (TOP, CENTER_V, BOTTOM)</param>
+        /// <param name="horizontal_alignment">Выравнивание символов по горизонтали относительно окружности (LEFT, CENTER_H, RIGHT)</param>
+        /// <param name="reverse_direction">Обратное направление</param>
+        /// <param name="unit_in_alignment">Учитывать единицы измерения при выравнивании</param>
+        /// 
+        /// <param name="value">Отображаемая величина</param>
+        /// <param name="value_lenght">Количество отображаемых символов</param>
+        /// <param name="BBorder">Рисовать рамку по координатам, вокруг элементов с выравниванием</param>
+        /// <param name="elementName">Название элемента</param>
+        private void Draw_dagital_text_rotate(Graphics graphics, int x, int y, int radius, int spacing, float angle, bool zero,
+            int image_index, /*int image_width, int image_height,*/ int unit_index, /*int unit_width,*/ int dot_image_index, /*int dot_image_width,*/
+            string vertical_alignment, string horizontal_alignment, bool reverse_direction, bool unit_in_alignment, 
+            string value, int value_lenght, bool BBorder, string elementName = "")
+        {
+            Logger.WriteLine("* Draw_dagital_text_rotate");
+            //value = "-10";
+            //elementName = "ElementWeather";
+            if (image_index < 0 || image_index >= ListImagesFullName.Count) return;
+            Bitmap src = null;
+            src = OpenFileStream(ListImagesFullName[image_index]);
+            if (src == null) return;
+            int image_width = src.Width;
+            int image_height = src.Height;
+
+            int unit_width = -1;
+            if (unit_index >= 0 && unit_index < ListImagesFullName.Count)
+            {
+                src = OpenFileStream(ListImagesFullName[unit_index]);
+                if (src != null) unit_width = src.Width; 
+            }
+
+            int dot_image_width = -1;
+            if (dot_image_index >= 0 && dot_image_index < ListImagesFullName.Count)
+            {
+                src = OpenFileStream(ListImagesFullName[dot_image_index]);
+                if (src != null) dot_image_width = src.Width; 
+            }
+
+            double image_angle = 0;
+            double unit_angle = 0;
+            double dot_image_angle = 0;
+            //spacing = spacing / 2f;
+            image_angle = ToDegree(Math.Atan2(image_width / 2f, radius));
+            unit_angle = ToDegree(Math.Atan2(unit_width / 2f, radius));
+            dot_image_angle = ToDegree(Math.Atan2(dot_image_width / 2f, radius));
+
+            Matrix transformMatrix = graphics.Transform;
+            graphics.TranslateTransform(x, y);
+            double angleOffset = image_angle * (value.Length - 1);
+            if ((elementName == "ElementDistance" || elementName == "ElementSunrise") && dot_image_width > 0)
+                angleOffset = angleOffset - image_angle + dot_image_angle;
+            //if (elementName == "ElementWeather" && dot_image_width > 0 && value.StartsWith("-"))
+            //    angleOffset = angleOffset - image_angle + dot_image_angle;
+            //if (unit_width > 0 && unit_in_alignment) angleOffset = angleOffset + image_angle + unit_angle + spacing;
+            //if (reverse_direction) angleOffset = -angleOffset;
+            //if (reverse_direction) spacing = -spacing;
+
+            switch (horizontal_alignment)
+            {
+                case "LEFT":
+                    graphics.RotateTransform(angle);
+                    break;
+                case "CENTER_H":
+                    //angleOffset = image_angle * (value.Length - 1) + spacing * (value.Length - 2);
+                    //if ((elementName == "ElementDistance" || elementName == "ElementSunrise") && dot_image_width > 0) 
+                    //    angleOffset = angleOffset - image_angle + dot_image_angle;
+                    //if (elementName == "ElementWeather" && dot_image_width > 0 && value.StartsWith("-")) 
+                    //    angleOffset = angleOffset - image_angle + dot_image_angle;
+                    //if (unit_width > 0 && unit_in_alignment) angleOffset = angleOffset + unit_angle + spacing;
+                    angleOffset = angleOffset + spacing * (value.Length - 1) / 2f;
+                    if (unit_width > 0 && unit_in_alignment) angleOffset = angleOffset + (image_angle + unit_angle + spacing) / 2f;
+                    if (elementName == "ElementWeather" && dot_image_width > 0 && value.StartsWith("-"))
+                        angleOffset = angleOffset + (dot_image_angle - image_angle) / 2f;
+                    if (reverse_direction) angleOffset = -angleOffset;
+                    graphics.RotateTransform((float)(angle - angleOffset));
+                    break;
+                case "RIGHT":
+                    //angleOffset = image_angle * (value.Length - 1) + spacing * (value.Length - 2);
+                    //if ((elementName == "ElementDistance" || elementName == "ElementSunrise") && dot_image_width > 0)
+                    //    angleOffset = angleOffset - image_angle + dot_image_angle;
+                    //if (elementName == "ElementWeather" && dot_image_width > 0 && value.StartsWith("-"))
+                    //    angleOffset = angleOffset - image_angle + dot_image_angle;
+                    //if (unit_width > 0 && unit_in_alignment) angleOffset = angleOffset + unit_angle + spacing;
+                    angleOffset = 2 * angleOffset + spacing * (value.Length - 1);
+                    if (unit_width > 0 && unit_in_alignment) angleOffset = angleOffset + image_angle + unit_angle + spacing;
+                    if (elementName == "ElementWeather" && dot_image_width > 0 && value.StartsWith("-"))
+                        angleOffset = angleOffset - image_angle + dot_image_angle;
+                    if (reverse_direction) angleOffset = -angleOffset;
+                    graphics.RotateTransform((float)(angle - angleOffset));
+                    break;
+            }
+            if (reverse_direction) spacing = -spacing;
+
+            try
+            {
+                bool firstSymbol = true;
+                if (!reverse_direction)
+                {
+                    if (vertical_alignment == "CENTER_V") radius += image_height / 2;
+                    if (vertical_alignment == "BOTTOM") radius += image_height;
+
+                    foreach (char ch in value)
+                    {
+                        int index = 0;
+                        if (Int32.TryParse(ch.ToString(), out index)) // если число 
+                        {
+                            src = OpenFileStream(ListImagesFullName[image_index + index]);
+                            if (src != null)
+                            {
+                                if (!firstSymbol) graphics.RotateTransform((float)image_angle);
+                                firstSymbol = false;
+                                graphics.DrawImage(src, -image_width / 2, -radius);
+                                graphics.RotateTransform((float)(image_angle + spacing));
+                            }
+                        }
+                        else // если разделитель 
+                        {
+                            src = OpenFileStream(ListImagesFullName[dot_image_index]);
+                            if (src != null)
+                            {
+                                //if (firstSymbol) graphics.RotateTransform(-(float)image_angle);
+                                if (!firstSymbol) graphics.RotateTransform((float)dot_image_angle);
+                                firstSymbol = false;
+                                graphics.DrawImage(src, -dot_image_width / 2, -radius);
+                                graphics.RotateTransform((float)(dot_image_angle + spacing));
+                            }
+                        }
+                    }
+                    if (unit_width > 0) // единицы измерения
+                    {
+                        src = OpenFileStream(ListImagesFullName[unit_index]);
+                        if (src != null)
+                        {
+                            graphics.RotateTransform((float)unit_angle);
+                            graphics.DrawImage(src, -unit_width / 2, -radius);
+                            //graphics.RotateTransform((float)dot_image_angle);
+                        }
+                    } 
+                }
+                else // обратное направление
+                {
+                    if (vertical_alignment == "CENTER_V") radius -= image_height / 2;
+                    if (vertical_alignment == "BOTTOM") radius -= image_height;
+
+                    graphics.RotateTransform(180);
+                    foreach (char ch in value)
+                    {
+                        int index = 0;
+                        if (Int32.TryParse(ch.ToString(), out index)) // если число 
+                        {
+                            src = OpenFileStream(ListImagesFullName[image_index + index]);
+                            if (src != null)
+                            {
+                                if (!firstSymbol) graphics.RotateTransform(-(float)image_angle);
+                                firstSymbol = false;
+                                graphics.DrawImage(src, -image_width / 2, radius);
+                                graphics.RotateTransform(-(float)(image_angle - spacing));
+                            }
+                        }
+                        else // если разделитель 
+                        {
+                            src = OpenFileStream(ListImagesFullName[dot_image_index]);
+                            if (src != null)
+                            {
+                                //if (firstSymbol) graphics.RotateTransform((float)image_angle);
+                                if (!firstSymbol) graphics.RotateTransform(-(float)dot_image_angle);
+                                firstSymbol = false;
+                                graphics.DrawImage(src, -dot_image_width / 2, radius);
+                                graphics.RotateTransform(-(float)(dot_image_angle - spacing));
+                            }
+                        }
+                    }
+                    if (unit_width > 0) // единицы измерения
+                    {
+                        src = OpenFileStream(ListImagesFullName[unit_index]);
+                        if (src != null)
+                        {
+                            graphics.RotateTransform(-(float)unit_angle);
+                            graphics.DrawImage(src, -unit_width / 2, radius);
+                            //graphics.RotateTransform((float)dot_image_angle);
+                        }
+                    }
+                }
+            }
+            finally
+            {
+                graphics.Transform = transformMatrix;
+                src.Dispose();
+            }
+
+            Logger.WriteLine("* Draw_dagital_text_rotate (end)");
+        }
+
+        private double ToDegree(double radian)
+        {
+            return radian * (180 / Math.PI);
+        }
+
         /// <summary>Пишем число системным шрифтом по окружности</summary>
         /// <param name="graphics">Поверхность для рисования</param>
         /// <param name="x">Координата X</param>
@@ -4882,6 +5167,7 @@ namespace Watch_Face_Editor
             int PointX = (int)(-0.3 * offsetX);
 
             Logger.WriteLine("Draw value");
+            Matrix transformMatrix = graphics.Transform;
             SolidBrush drawBrush = new SolidBrush(color);
             graphics.TranslateTransform(x, y);
 
@@ -4918,9 +5204,8 @@ namespace Watch_Face_Editor
             }
             finally
             {
-                //graphics.RotateTransform(-angle);
-                //graphics.TranslateTransform(-x, -y);
-                graphics.ResetTransform();
+                //graphics.ResetTransform();
+                graphics.Transform = transformMatrix;
             }
 
             Logger.WriteLine("* Draw_text_rotate (end)");
@@ -4947,7 +5232,8 @@ namespace Watch_Face_Editor
             int decimalPoint_index, int decCount, int angle, bool BBorder, string elementName = "")
         {
             Logger.WriteLine("* Draw_dagital_text");
-            if (ProgramSettings.Watch_Model != "GTR 4" && ProgramSettings.Watch_Model != "GTS 4") angle = 0;
+            if (ProgramSettings.Watch_Model != "GTR 4" && ProgramSettings.Watch_Model != "GTS 4" &&
+                ProgramSettings.Watch_Model != "GTR mini" && ProgramSettings.Watch_Model != "T-Rex Ultra") angle = 0;
             value = Math.Round(value, decCount, MidpointRounding.AwayFromZero);
             //var Digit = new Bitmap(ListImagesFullName[image_index]);
             //var Delimit = new Bitmap(1, 1);
@@ -5071,7 +5357,9 @@ namespace Watch_Face_Editor
                     break;
             }
 
-            if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2")
+            Matrix transformMatrix = graphics.Transform;
+            if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" ||
+                ProgramSettings.Watch_Model == "GTR mini" || ProgramSettings.Watch_Model == "T-Rex Ultra")
             {
                 int pivot_point_offset_x = 0;
                 int pivot_point_offset_y = 0;
@@ -5131,7 +5419,8 @@ namespace Watch_Face_Editor
                     graphics.DrawRectangle(pen2, rect);
                 }
             }
-            graphics.ResetTransform();
+            //graphics.ResetTransform();
+            graphics.Transform = transformMatrix;
 
             Logger.WriteLine("* Draw_dagital_text (end)");
             return result;
@@ -5828,6 +6117,8 @@ namespace Watch_Face_Editor
             if (ProgramSettings.Watch_Model == "GTS 4 mini")
                 mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
             if (ProgramSettings.Watch_Model == "Falcon")
+                mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
+            if (ProgramSettings.Watch_Model == "GTR mini")
                 mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
             if (ProgramSettings.Watch_Model == "GTS 4")
                 mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");

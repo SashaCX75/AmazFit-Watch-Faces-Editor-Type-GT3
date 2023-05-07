@@ -216,12 +216,6 @@
     <Compile Include="Elements\UCtrl_Heart_Elm.Designer.cs">
       <DependentUpon>UCtrl_Heart_Elm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Elements\UCtrl_Distance_Elm.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Elements\UCtrl_Distance_Elm.Designer.cs">
-      <DependentUpon>UCtrl_Distance_Elm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Elements\UCtrl_Humidity_Elm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -245,6 +239,12 @@
     </Compile>
     <Compile Include="UCtrl_DisconnectAlert_Opt.Designer.cs">
       <DependentUpon>UCtrl_DisconnectAlert_Opt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Elements\UCtrl_Distance_Elm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\UCtrl_Distance_Elm.Designer.cs">
+      <DependentUpon>UCtrl_Distance_Elm.cs</DependentUpon>
     </Compile>
     <Compile Include="UCtrl_EditableBackground_Opt.cs">
       <SubType>UserControl</SubType>
@@ -396,6 +396,12 @@
     </Compile>
     <Compile Include="UCtrl_SmoothSeconds_Opt.Designer.cs">
       <DependentUpon>UCtrl_SmoothSeconds_Opt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCtrl_Text_Circle_Opt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCtrl_Text_Circle_Opt.Designer.cs">
+      <DependentUpon>UCtrl_Text_Circle_Opt.cs</DependentUpon>
     </Compile>
     <Compile Include="UCtrl_Text_Opt.cs">
       <SubType>UserControl</SubType>
@@ -759,28 +765,10 @@
     <EmbeddedResource Include="Elements\UCtrl_DisconnectAlert_Elm.zh.resx">
       <DependentUpon>UCtrl_DisconnectAlert_Elm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Elements\UCtrl_Distance_Elm.cs.resx">
-      <DependentUpon>UCtrl_Distance_Elm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Elements\UCtrl_Distance_Elm.de.resx">
-      <DependentUpon>UCtrl_Distance_Elm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Distance_Elm.en.resx">
       <DependentUpon>UCtrl_Distance_Elm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Elements\UCtrl_Distance_Elm.es.resx">
-      <DependentUpon>UCtrl_Distance_Elm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Elements\UCtrl_Distance_Elm.fr.resx">
-      <DependentUpon>UCtrl_Distance_Elm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Elements\UCtrl_Distance_Elm.it.resx">
-      <DependentUpon>UCtrl_Distance_Elm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Distance_Elm.uk.resx">
-      <DependentUpon>UCtrl_Distance_Elm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Elements\UCtrl_Distance_Elm.zh.resx">
       <DependentUpon>UCtrl_Distance_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_EditableElements_Elm.cs.resx">
@@ -1510,9 +1498,6 @@
     <EmbeddedResource Include="Elements\UCtrl_Heart_Elm.resx">
       <DependentUpon>UCtrl_Heart_Elm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Elements\UCtrl_Distance_Elm.resx">
-      <DependentUpon>UCtrl_Distance_Elm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Circle_Scale_Opt.uk.resx">
       <DependentUpon>UCtrl_Circle_Scale_Opt.cs</DependentUpon>
     </EmbeddedResource>
@@ -1557,6 +1542,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_DisconnectAlert_Opt.zh.resx">
       <DependentUpon>UCtrl_DisconnectAlert_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Distance_Elm.resx">
+      <DependentUpon>UCtrl_Distance_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_EditableBackground_Opt.cs.resx">
       <DependentUpon>UCtrl_EditableBackground_Opt.cs</DependentUpon>
@@ -1924,6 +1912,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_SmoothSeconds_Opt.zh.resx">
       <DependentUpon>UCtrl_SmoothSeconds_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Text_Circle_Opt.en.resx">
+      <DependentUpon>UCtrl_Text_Circle_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Text_Circle_Opt.resx">
+      <DependentUpon>UCtrl_Text_Circle_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Text_Circle_Opt.uk.resx">
+      <DependentUpon>UCtrl_Text_Circle_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Text_Opt.cs.resx">
       <DependentUpon>UCtrl_Text_Opt.cs</DependentUpon>

@@ -61,7 +61,9 @@ namespace Watch_Face_Editor
         public string WatchSkin_GTR_3 = @"\Skin\WatchSkin_GTR_3.json";
         public string WatchSkin_GTR_3_Pro = @"\Skin\WatchSkin_GTR_3_Pro.json";
         public string WatchSkin_GTS_3 = @"\Skin\WatchSkin_GTS_3.json";
+        public string WatchSkin_GTR_mini = "";
         public string WatchSkin_T_Rex_2 = @"\Skin\WatchSkin_T_Rex_2.json";
+        public string WatchSkin_T_Rex_Ultra = @"\Skin\WatchSkin_T_Rex_2.json";
         public string WatchSkin_GTR_4 = @"\Skin\WatchSkin_GTR_4.json";
         public string WatchSkin_GTS_4_mini = @"\Skin\WatchSkin_GTS_4_mini.json";
         public string WatchSkin_Falcon = @"\Skin\WatchSkin_Falcon.json";

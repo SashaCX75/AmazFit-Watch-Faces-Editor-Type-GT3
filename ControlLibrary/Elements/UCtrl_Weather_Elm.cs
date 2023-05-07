@@ -17,8 +17,8 @@ namespace ControlLibrary
         bool highlight_number = false;
         bool highlight_number_min = false;
         bool highlight_number_max = false;
-        //bool highlight_pointer = false;
-        //bool highlight_circle_scale = false;
+        //bool highlight_text_rotation = false;
+        //bool highlight_text_circle = false;
         //bool highlight_linear_scale = false;
         bool highlight_city_name = false;
         bool highlight_icon = false;
@@ -97,8 +97,8 @@ namespace ControlLibrary
             highlight_number = false;
             highlight_number_min = false;
             highlight_number_max = false;
-            //highlight_pointer = false;
-            //highlight_circle_scale = false;
+            //highlight_text_rotation = false;
+            //highlight_text_circle = false;
             //highlight_linear_scale = false;
             highlight_city_name = false;
             highlight_icon = false;
@@ -160,7 +160,7 @@ namespace ControlLibrary
                 button_Number_Max.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
-            /*if (highlight_pointer)
+            /*if (highlight_text_rotation)
             {
                 panel_Pointer.BackColor = SystemColors.ActiveCaption;
                 button_Pointer.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
@@ -173,7 +173,7 @@ namespace ControlLibrary
                 button_Pointer.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
-            if (highlight_circle_scale)
+            if (highlight_text_circle)
             {
                 panel_Circle_Scale.BackColor = SystemColors.ActiveCaption;
                 button_Circle_Scale.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
@@ -234,8 +234,8 @@ namespace ControlLibrary
             highlight_number = false;
             highlight_number_min = false;
             highlight_number_max = false;
-            //highlight_pointer = false;
-            //highlight_circle_scale = false;
+            //highlight_text_rotation = false;
+            //highlight_text_circle = false;
             //highlight_linear_scale = false;
             highlight_city_name = false;
             highlight_icon = false;
@@ -257,8 +257,8 @@ namespace ControlLibrary
             highlight_number = true;
             highlight_number_min = false;
             highlight_number_max = false;
-            //highlight_pointer = false;
-            //highlight_circle_scale = false;
+            //highlight_text_rotation = false;
+            //highlight_text_circle = false;
             //highlight_linear_scale = false;
             highlight_city_name = false;
             highlight_icon = false;
@@ -280,8 +280,8 @@ namespace ControlLibrary
             highlight_number = false;
             highlight_number_min = true;
             highlight_number_max = false;
-            //highlight_pointer = false;
-            //highlight_circle_scale = false;
+            //highlight_text_rotation = false;
+            //highlight_text_circle = false;
             //highlight_linear_scale = false;
             highlight_city_name = false;
             highlight_icon = false;
@@ -303,8 +303,8 @@ namespace ControlLibrary
             highlight_number = false;
             highlight_number_min = false;
             highlight_number_max = true;
-            //highlight_pointer = false;
-            //highlight_circle_scale = false;
+            //highlight_text_rotation = false;
+            //highlight_text_circle = false;
             //highlight_linear_scale = false;
             highlight_city_name = false;
             highlight_icon = false;
@@ -326,8 +326,8 @@ namespace ControlLibrary
             highlight_number = false;
             highlight_number_min = false;
             highlight_number_max = false;
-            highlight_pointer = true;
-            highlight_circle_scale = false;
+            highlight_text_rotation = true;
+            highlight_text_circle = false;
             highlight_linear_scale = false;
             highlight_city_name = false;
             highlight_icon = false;
@@ -349,8 +349,8 @@ namespace ControlLibrary
             highlight_number = false;
             highlight_number_min = false;
             highlight_number_max = false;
-            highlight_pointer = false;
-            highlight_circle_scale = true;
+            highlight_text_rotation = false;
+            highlight_text_circle = true;
             highlight_linear_scale = false;
             highlight_city_name = false;
             highlight_icon = false;
@@ -371,8 +371,8 @@ namespace ControlLibrary
             highlight_images = false;
             highlight_number = false;
             highlight_number_max = false;
-            highlight_pointer = false;
-            highlight_circle_scale = false;
+            highlight_text_rotation = false;
+            highlight_text_circle = false;
             highlight_linear_scale = true;
             highlight_city_name = false;
             highlight_icon = false;
@@ -394,8 +394,8 @@ namespace ControlLibrary
             highlight_number = false;
             highlight_number_min = false;
             highlight_number_max = false;
-            //highlight_pointer = false;
-            //highlight_circle_scale = false;
+            //highlight_text_rotation = false;
+            //highlight_text_circle = false;
             //highlight_linear_scale = false;
             highlight_city_name = true;
             highlight_icon = false;
@@ -417,8 +417,8 @@ namespace ControlLibrary
             highlight_number = false;
             highlight_number_min = false;
             highlight_number_max = false;
-            //highlight_pointer = false;
-            //highlight_circle_scale = false;
+            //highlight_text_rotation = false;
+            //highlight_text_circle = false;
             //highlight_linear_scale = false;
             highlight_city_name = false;
             highlight_icon = true;

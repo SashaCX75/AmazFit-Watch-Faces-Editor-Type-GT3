@@ -113,6 +113,152 @@ namespace Watch_Face_Editor
         public string type { get; set; }
     }
 
+    /// <summary>Данные по окружности</summary>
+    public class Text_Rotation
+    {
+        /// <summary>Позиция в наборе элементов</summary>
+        public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = false;
+
+        /// <summary>X координата центра вращения</summary>
+        public int rotation_point_X { get; set; }
+
+        /// <summary>Y координата центра вращения</summary>
+        public int rotation_point_Y { get; set; }
+
+        /// <summary>Угол наклона текста</summary>
+        public int angle { get; set; }
+
+        /// <summary>Отступы</summary>
+        public int space { get; set; }
+        
+        /// <summary>Отображение ведущих нулей</summary>
+        public bool zero { get; set; }
+
+        /// <summary>Первая картинка из набора для отображения</summary>
+        public string img_First { get; set; }
+
+        /// <summary>Ширина символа</summary>
+        public int image_width { get; set; }
+
+        /// <summary>Высота символа</summary>
+        public int image_height { get; set; }
+
+        /// <summary>Единицы измерения</summary>
+        public string unit { get; set; }
+
+        /// <summary>Ширина символа единиц измерения</summary>
+        public int unit_width { get; set; }
+
+        /// <summary>Единицы измерения (американские)</summary>
+        public string imperial_unit { get; set; }
+
+        /// <summary>Десятичный разделитель</summary>
+        public string dot_image { get; set; }
+
+        /// <summary>ширина символа разделителя</summary>
+        public int dot_image_width { get; set; }
+
+        /// <summary>Символ ошибки</summary>
+        public string error_image { get; set; }
+
+        /// <summary>ширина символа ошибки</summary>
+        public int error_width { get; set; }
+
+        /// <summary>Выравнивание символов по вертикали относительно окружности</summary>
+        public string vertical_alignment { get; set; } = "BOTTOM";
+
+        /// <summary>Выравнивание символов по горизонтали относительно окружности</summary>
+        public string horizontal_alignment { get; set; } = "LEFT";
+
+        /// <summary>Учитывать единицы измерения при выравнивании</summary>
+        public bool unit_in_alignment { get; set; }
+
+        /// <summary>Основной экран или AOD</summary>
+        public string show_level = "";
+
+        /// <summary>Тип активности</summary>
+        public string type { get; set; }
+    }
+
+    /// <summary>Данные по окружности</summary>
+    public class Text_Circle
+    {
+        /// <summary>Позиция в наборе элементов</summary>
+        public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool visible = false;
+
+        /// <summary>X координата центра окружности</summary>
+        public int circle_center_X { get; set; }
+
+        /// <summary>Y координата центра окружности</summary>
+        public int circle_center_Y { get; set; }
+
+        /// <summary>Радиус окружности</summary>
+        public int radius { get; set; } = 100;
+
+        /// <summary>Угол поворота текста</summary>
+        public int angle { get; set; }
+
+        /// <summary>Угол между символами</summary>
+        public int char_space_angle { get; set; }
+
+        /// <summary>Отображение ведущих нулей</summary>
+        public bool zero { get; set; }
+
+        /// <summary>Первая картинка из набора для отображения</summary>
+        public string img_First { get; set; }
+
+        /// <summary>Ширина символа</summary>
+        //public int image_width { get; set; }
+
+        /// <summary>Высота символа</summary>
+        //public int image_height { get; set; }
+
+        /// <summary>Единицы измерения</summary>
+        public string unit { get; set; }
+
+        /// <summary>Ширина символа единиц измерения</summary>
+        //public int unit_width { get; set; }
+
+        /// <summary>Единицы измерения (американские)</summary>
+        public string imperial_unit { get; set; }
+
+        /// <summary>Десятичный разделитель</summary>
+        public string dot_image { get; set; }
+
+        /// <summary>ширина символа разделителя</summary>
+        //public int dot_image_width { get; set; }
+
+        /// <summary>Символ ошибки</summary>
+        public string error_image { get; set; }
+
+        /// <summary>ширина символа ошибки</summary>
+        //public int error_width { get; set; }
+
+        /// <summary>Выравнивание символов по вертикали относительно окружности</summary>
+        public string vertical_alignment { get; set; } = "BOTTOM";
+
+        /// <summary>Выравнивание символов по горизонтали относительно окружности</summary>
+        public string horizontal_alignment { get; set; } = "LEFT";
+
+        /// <summary>Обратное направление</summary>
+        public bool reverse_direction { get; set; }
+
+        /// <summary>Учитывать единицы измерения при выравнивании</summary>
+        public bool unit_in_alignment { get; set; } = true;
+
+        /// <summary>Основной экран или AOD</summary>
+        public string show_level = "";
+
+        /// <summary>Тип активности</summary>
+        public string type { get; set; }
+    }
+
     /// <summary>Данные набором изображения (отображается только одно изображение</summary>
     public class hmUI_widget_IMG_LEVEL
     {
