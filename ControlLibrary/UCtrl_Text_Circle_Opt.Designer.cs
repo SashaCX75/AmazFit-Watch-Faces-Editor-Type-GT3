@@ -66,6 +66,7 @@
             this.numericUpDown_radius = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.checkBox_unit_in_alignment = new System.Windows.Forms.CheckBox();
+            this.label_minus_image = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_centr_X)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_centr_Y)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_spacing)).BeginInit();
@@ -397,10 +398,16 @@
             this.checkBox_unit_in_alignment.UseVisualStyleBackColor = true;
             this.checkBox_unit_in_alignment.Click += new System.EventHandler(this.checkBox_Click);
             // 
+            // label_minus_image
+            // 
+            resources.ApplyResources(this.label_minus_image, "label_minus_image");
+            this.label_minus_image.Name = "label_minus_image";
+            // 
             // UCtrl_Text_Circle_Opt
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label_minus_image);
             this.Controls.Add(this.checkBox_unit_in_alignment);
             this.Controls.Add(this.numericUpDown_radius);
             this.Controls.Add(this.label3);
@@ -480,5 +487,6 @@
         public System.Windows.Forms.NumericUpDown numericUpDown_radius;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.CheckBox checkBox_unit_in_alignment;
+        protected System.Windows.Forms.Label label_minus_image;
     }
 }

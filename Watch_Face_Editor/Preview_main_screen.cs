@@ -561,7 +561,11 @@ namespace Watch_Face_Editor
             hmUI_widget_IMG_LEVEL img_level = null;
             hmUI_widget_IMG_PROGRESS img_prorgess = null;
             hmUI_widget_IMG_NUMBER img_number = null;
+            hmUI_widget_IMG_NUMBER text_rotation = null;
+            Text_Circle text_circle = null;
             hmUI_widget_IMG_NUMBER img_number_target = null;
+            hmUI_widget_IMG_NUMBER text_rotation_target = null;
+            Text_Circle text_circle_target = null;
             hmUI_widget_IMG_POINTER img_pointer = null;
             Circle_Scale circle_scale = null;
             Linear_Scale linear_scale = null;
@@ -1496,7 +1500,11 @@ namespace Watch_Face_Editor
                     img_level = activityElementSteps.Images;
                     img_prorgess = activityElementSteps.Segments;
                     img_number = activityElementSteps.Number;
+                    text_rotation = activityElementSteps.Text_rotation;
+                    text_circle = activityElementSteps.Text_circle;
                     img_number_target = activityElementSteps.Number_Target;
+                    text_rotation_target = activityElementSteps.Text_rotation_Target;
+                    text_circle_target = activityElementSteps.Text_circle_Target;
                     img_pointer = activityElementSteps.Pointer;
                     circle_scale = activityElementSteps.Circle_Scale;
                     linear_scale = activityElementSteps.Linear_Scale;
@@ -1522,8 +1530,8 @@ namespace Watch_Face_Editor
                         if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
                     }
 
-                    DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
-                        img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                    DrawActivity(gPanel, img_level, img_prorgess, img_number, text_rotation, text_circle, img_number_target,
+                        text_rotation_target, text_circle_target,img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
                         progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
                         showCentrHend, "ElementSteps");
 
@@ -1569,8 +1577,8 @@ namespace Watch_Face_Editor
                         if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
                     }
 
-                    DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
-                        img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                    DrawActivity(gPanel, img_level, img_prorgess, img_number, text_rotation, text_circle, img_number_target,
+                        text_rotation_target, text_circle_target, img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
                         progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
                         showCentrHend, "ElementBattery");
 
@@ -1612,8 +1620,8 @@ namespace Watch_Face_Editor
                         if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
                     }
 
-                    DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
-                        img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                    DrawActivity(gPanel, img_level, img_prorgess, img_number, text_rotation, text_circle, img_number_target,
+                        text_rotation_target, text_circle_target, img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
                         progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
                         showCentrHend, "ElementCalories");
 
@@ -1683,8 +1691,8 @@ namespace Watch_Face_Editor
                         valueSegmentIndex = 5;
                     }
 
-                    DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
-                        img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                    DrawActivity(gPanel, img_level, img_prorgess, img_number, text_rotation, text_circle, img_number_target,
+                        text_rotation_target, text_circle_target, img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
                         progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
                         showCentrHend, "ElementHeart");
 
@@ -1728,8 +1736,8 @@ namespace Watch_Face_Editor
                         if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
                     }
 
-                    DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
-                        img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                    DrawActivity(gPanel, img_level, img_prorgess, img_number, text_rotation, text_circle, img_number_target,
+                        text_rotation_target, text_circle_target, img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
                         progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
                         showCentrHend, "ElementPAI");
 
@@ -1743,14 +1751,14 @@ namespace Watch_Face_Editor
                     if (!activityElementDistance.visible) return;
 
                     img_number = activityElementDistance.Number;
-                    Text_Rotation text_rotation = activityElementDistance.Text_rotation;
-                    Text_Circle text_circle = activityElementDistance.Text_circle;
+                    text_rotation = activityElementDistance.Text_rotation;
+                    text_circle = activityElementDistance.Text_circle;
                     icon = activityElementDistance.Icon;
 
                     elementValue = WatchFacePreviewSet.Activity.Distance;
                     double distance_value = Math.Round(elementValue / 1000f, 2);
 
-                    DrawDistance(gPanel, img_number, text_rotation, text_circle, icon, distance_value, BBorder, showProgressArea, showCentrHend);
+                    DrawDistance(gPanel, img_number, text_rotation, text_circle, icon, distance_value, BBorder, showCentrHend);
 
                     break;
                 #endregion
@@ -1789,8 +1797,8 @@ namespace Watch_Face_Editor
                         if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
                     }
 
-                    DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
-                        img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                    DrawActivity(gPanel, img_level, img_prorgess, img_number, text_rotation, text_circle, img_number_target,
+                        text_rotation_target, text_circle_target, img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
                         progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
                         showCentrHend, "ElementStand");
 
@@ -1856,8 +1864,8 @@ namespace Watch_Face_Editor
                         }
                     }
 
-                    DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
-                        img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                    DrawActivity(gPanel, img_level, img_prorgess, img_number, text_rotation, text_circle, img_number_target,
+                        text_rotation_target, text_circle_target, img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
                         progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
                         showCentrHend, "ElementActivity");
 
@@ -1878,8 +1886,8 @@ namespace Watch_Face_Editor
                     progress = 0;
 
 
-                    DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
-                        img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                    DrawActivity(gPanel, img_level, img_prorgess, img_number, text_rotation, text_circle, img_number_target,
+                        text_rotation_target, text_circle_target, img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
                         progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
                         showCentrHend, "ElementSpO2");
 
@@ -1918,8 +1926,8 @@ namespace Watch_Face_Editor
                         if (elementValue == 0) valueSegmentIndex = -1;
                     }
 
-                    DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
-                        img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                    DrawActivity(gPanel, img_level, img_prorgess, img_number, text_rotation, text_circle, img_number_target,
+                        text_rotation_target, text_circle_target, img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
                         progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
                         showCentrHend, "ElementStress");
 
@@ -1961,8 +1969,8 @@ namespace Watch_Face_Editor
                         if (elementValue == 0) valueSegmentIndex = -1;
                     }
 
-                    DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
-                        img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                    DrawActivity(gPanel, img_level, img_prorgess, img_number, text_rotation, text_circle, img_number_target,
+                        text_rotation_target, text_circle_target, img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
                         progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
                         showCentrHend, "ElementFatBurning");
 
@@ -2088,8 +2096,8 @@ namespace Watch_Face_Editor
                         }
                     }
 
-                    DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
-                        img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                    DrawActivity(gPanel, img_level, img_prorgess, img_number, text_rotation, text_circle, img_number_target,
+                        text_rotation_target, text_circle_target, img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
                         progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
                         showCentrHend, "ElementUVIndex");
 
@@ -2131,8 +2139,8 @@ namespace Watch_Face_Editor
                         if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
                     }
 
-                    DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
-                        img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                    DrawActivity(gPanel, img_level, img_prorgess, img_number, text_rotation, text_circle, img_number_target,
+                        text_rotation_target, text_circle_target, img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
                         progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
                         showCentrHend, "ElementHumidity");
 
@@ -2171,8 +2179,8 @@ namespace Watch_Face_Editor
                         if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
                     }
 
-                    DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
-                        img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                    DrawActivity(gPanel, img_level, img_prorgess, img_number, text_rotation, text_circle, img_number_target,
+                        text_rotation_target, text_circle_target, img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
                         progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
                         showCentrHend, "ElementAltimeter");
 
@@ -2272,8 +2280,8 @@ namespace Watch_Face_Editor
                         if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
 
 
-                        DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
-                            img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                        DrawActivity(gPanel, img_level, img_prorgess, img_number, text_rotation, text_circle, img_number_target,
+                        text_rotation_target, text_circle_target, img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
                             progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
                             showCentrHend, "ElementMoon"); 
                     }
@@ -2289,8 +2297,8 @@ namespace Watch_Face_Editor
 
                     icon = activityElementImage.Icon;
 
-                    DrawActivity(gPanel, img_level, img_prorgess, img_number, img_number_target,
-                        img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                    DrawActivity(gPanel, img_level, img_prorgess, img_number, text_rotation, text_circle, img_number_target,
+                        text_rotation_target, text_circle_target, img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
                         progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
                         showCentrHend, "ElementImage");
 
@@ -2936,7 +2944,11 @@ namespace Watch_Face_Editor
         /// <param name="images">Параметры для изображения</param>
         /// <param name="segments">Параметры для сегментов</param>
         /// <param name="number">Параметры цифрового значения</param>
+        /// <param name="text_rotation">Параметры текста под углом</param>
+        /// <param name="text_circle">Параметры текста по окружности</param>
         /// <param name="numberTarget">Параметры цифрового значения цели</param>
+        /// <param name="text_rotationTarget">Параметры текста цели под углом</param>
+        /// <param name="text_circleTarget">Параметры текста цели по окружности</param>
         /// <param name="pointer">Параметры для стрелочного указателя</param>
         /// <param name="circleScale">Параметры для круговой шкалы</param>
         /// <param name="linearScale">Параметры для линейной шкалы</param>
@@ -2953,8 +2965,8 @@ namespace Watch_Face_Editor
         /// <param name="elementName">Имя отображаемого элемента</param>
         /// <param name="ActivityGoal_Calories">Для активности отображаем шаги ли калории</param>
         private void DrawActivity(Graphics gPanel, hmUI_widget_IMG_LEVEL images, hmUI_widget_IMG_PROGRESS segments,
-            hmUI_widget_IMG_NUMBER number, hmUI_widget_IMG_NUMBER numberTarget,
-            hmUI_widget_IMG_POINTER pointer, Circle_Scale circleScale, Linear_Scale linearScale,
+            hmUI_widget_IMG_NUMBER number, hmUI_widget_IMG_NUMBER text_rotation, Text_Circle text_circle, hmUI_widget_IMG_NUMBER numberTarget,
+            hmUI_widget_IMG_NUMBER text_rotationTarget, Text_Circle text_circleTarget, hmUI_widget_IMG_POINTER pointer, Circle_Scale circleScale, Linear_Scale linearScale,
             hmUI_widget_IMG icon, float value, int value_lenght, int goal, float progress,
             int valueImgIndex, int valueSegmentIndex, bool BBorder, bool showProgressArea, bool showCentrHend, string elementName,
             bool ActivityGoal_Calories = false)
@@ -3057,6 +3069,54 @@ namespace Watch_Face_Editor
                     }
                 }
 
+                if (text_rotation != null && text_rotation.img_First != null && text_rotation.img_First.Length > 0 &&
+                    index == text_rotation.position && text_rotation.visible)
+                {
+                    int pos_x = text_rotation.imageX;
+                    int pos_y = text_rotation.imageY;
+                    int spacing = text_rotation.space;
+                    float angle = text_rotation.angle;
+                    bool addZero = text_rotation.zero;
+                    int image_index = ListImages.IndexOf(text_rotation.img_First);
+                    int unit_index = ListImages.IndexOf(text_rotation.unit);
+                    int dot_image_index = ListImages.IndexOf(text_rotation.dot_image);
+                    string horizontal_alignment = text_rotation.align;
+                    bool unit_in_alignment = text_rotation.unit_in_alignment;
+
+                    string valueStr = ((int)value).ToString();
+                    if (text_rotation.zero) valueStr = valueStr.PadLeft(value_lenght, '0');
+
+                    Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
+                        image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
+                        valueStr, value_lenght, BBorder, elementName);
+                }
+
+                if (text_circle != null && text_circle.img_First != null && text_circle.img_First.Length > 0 &&
+                    index == text_circle.position && text_circle.visible)
+                {
+                    int centr_x = text_circle.circle_center_X;
+                    int centr_y = text_circle.circle_center_Y;
+                    int radius = text_circle.radius;
+                    int spacing = text_circle.char_space_angle;
+                    float angle = text_circle.angle;
+                    bool addZero = text_circle.zero;
+                    int image_index = ListImages.IndexOf(text_circle.img_First);
+                    int unit_index = ListImages.IndexOf(text_circle.unit);
+                    int dot_image_index = ListImages.IndexOf(text_circle.dot_image);
+                    string vertical_alignment = text_circle.vertical_alignment;
+                    string horizontal_alignment = text_circle.horizontal_alignment;
+                    bool reverse_direction = text_circle.reverse_direction;
+                    bool unit_in_alignment = text_circle.unit_in_alignment;
+
+                    string valueStr = ((int)value).ToString();
+                    if (text_circle.zero) valueStr = valueStr.PadLeft(value_lenght, '0');
+
+                    Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
+                        image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
+                        vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
+                        valueStr, value_lenght, BBorder, elementName);
+                }
+
                 if (numberTarget != null && numberTarget.img_First != null && numberTarget.img_First.Length > 0 &&
                     index == numberTarget.position && numberTarget.visible)
                 {
@@ -3084,6 +3144,54 @@ namespace Watch_Face_Editor
                         gPanel.DrawImage(src, x, y);
                         //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                     }
+                }
+
+                if (text_rotationTarget != null && text_rotationTarget.img_First != null && text_rotationTarget.img_First.Length > 0 &&
+                    index == text_rotationTarget.position && text_rotationTarget.visible)
+                {
+                    int pos_x = text_rotationTarget.imageX;
+                    int pos_y = text_rotationTarget.imageY;
+                    int spacing = text_rotationTarget.space;
+                    float angle = text_rotationTarget.angle;
+                    bool addZero = text_rotationTarget.zero;
+                    int image_index = ListImages.IndexOf(text_rotationTarget.img_First);
+                    int unit_index = ListImages.IndexOf(text_rotationTarget.unit);
+                    int dot_image_index = ListImages.IndexOf(text_rotationTarget.dot_image);
+                    string horizontal_alignment = text_rotationTarget.align;
+                    bool unit_in_alignment = text_rotationTarget.unit_in_alignment;
+
+                    string valueStr = goal.ToString();
+                    if (text_rotationTarget.zero) valueStr = valueStr.PadLeft(value_lenght, '0');
+
+                    Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
+                        image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
+                        valueStr, value_lenght, BBorder, elementName);
+                }
+
+                if (text_circleTarget != null && text_circleTarget.img_First != null && text_circleTarget.img_First.Length > 0 &&
+                    index == text_circleTarget.position && text_circleTarget.visible)
+                {
+                    int centr_x = text_circleTarget.circle_center_X;
+                    int centr_y = text_circleTarget.circle_center_Y;
+                    int radius = text_circleTarget.radius;
+                    int spacing = text_circleTarget.char_space_angle;
+                    float angle = text_circleTarget.angle;
+                    bool addZero = text_circleTarget.zero;
+                    int image_index = ListImages.IndexOf(text_circleTarget.img_First);
+                    int unit_index = ListImages.IndexOf(text_circleTarget.unit);
+                    int dot_image_index = ListImages.IndexOf(text_circleTarget.dot_image);
+                    string vertical_alignment = text_circleTarget.vertical_alignment;
+                    string horizontal_alignment = text_circleTarget.horizontal_alignment;
+                    bool reverse_direction = text_circleTarget.reverse_direction;
+                    bool unit_in_alignment = text_circleTarget.unit_in_alignment;
+
+                    string valueStr = goal.ToString();
+                    if (text_circleTarget.zero) valueStr = valueStr.PadLeft(value_lenght, '0');
+
+                    Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
+                        image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
+                        vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
+                        valueStr, value_lenght, BBorder, elementName);
                 }
 
                 if (pointer != null && pointer.src != null && pointer.src.Length > 0 &&
@@ -3209,15 +3317,15 @@ namespace Watch_Face_Editor
 
         /// <summary>Рисуем дистанцию</summary>
         /// <param name="number">Параметры цифрового значения</param>
-        /// <param name="Text_rotation">Параметры текста под углом</param>
-        /// <param name="Text_circle">Параметры текста по окружности</param>
+        /// <param name="text_rotation">Параметры текста под углом</param>
+        /// <param name="text_circle">Параметры текста по окружности</param>
         /// <param name="icon">Параметры для иконки</param>
         /// <param name="distance_value">Значение показателя</param>
         /// <param name="BBorder">Рисовать рамку по координатам, вокруг элементов с выравниванием</param>
         /// <param name="showProgressArea">Подсвечивать круговую шкалу при наличии фонового изображения</param>
         /// <param name="showCentrHend">Подсвечивать центр стрелки</param>
-        private void DrawDistance(Graphics gPanel, hmUI_widget_IMG_NUMBER number, Text_Rotation text_rotation,
-            Text_Circle text_circle, hmUI_widget_IMG icon, double distance_value, bool BBorder, bool showProgressArea, bool showCentrHend)
+        private void DrawDistance(Graphics gPanel, hmUI_widget_IMG_NUMBER number, hmUI_widget_IMG_NUMBER text_rotation,
+            Text_Circle text_circle, hmUI_widget_IMG icon, double distance_value, bool BBorder, bool showCentrHend)
         {
             Bitmap src = new Bitmap(1, 1);
 
@@ -3247,7 +3355,35 @@ namespace Watch_Face_Editor
                         distance_separator_index, decumalPoint_index, 2, angle, BBorder);
                 }
 
-                if(text_circle != null && text_circle.img_First != null && text_circle.img_First.Length > 0 &&
+                if (text_rotation != null && text_rotation.img_First != null && text_rotation.img_First.Length > 0 &&
+                    text_rotation.dot_image != null && text_rotation.dot_image.Length > 0 && index == text_rotation.position && text_rotation.visible)
+                {
+                    int pos_x = text_rotation.imageX;
+                    int pos_y = text_rotation.imageY;
+                    int spacing = text_rotation.space;
+                    float angle = text_rotation.angle;
+                    bool addZero = text_rotation.zero;
+                    int image_index = ListImages.IndexOf(text_rotation.img_First);
+                    int unit_index = ListImages.IndexOf(text_rotation.unit);
+                    int dot_image_index = ListImages.IndexOf(text_rotation.dot_image);
+                    string horizontal_alignment = text_rotation.align;
+                    bool unit_in_alignment = text_rotation.unit_in_alignment;
+
+                    string value = distance_value.ToString();
+                    string decimalSeparator = Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+                    if (value.IndexOf(decimalSeparator) < 0) value = value + decimalSeparator;
+                    while (value.IndexOf(decimalSeparator) > value.Length - 2 - 1)
+                    {
+                        value = value + "0";
+                    }
+                    if (text_rotation.zero) value = value.PadLeft(5, '0');
+
+                    Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
+                        image_index, unit_index,dot_image_index, horizontal_alignment, unit_in_alignment,
+                        value, 4, BBorder, "ElementDistance");
+                }
+
+                if (text_circle != null && text_circle.img_First != null && text_circle.img_First.Length > 0 &&
                     text_circle.dot_image != null && text_circle.dot_image.Length > 0 && index == text_circle.position && text_circle.visible)
                 {
                     int centr_x = text_circle.circle_center_X;
@@ -3255,7 +3391,7 @@ namespace Watch_Face_Editor
                     int radius = text_circle.radius;
                     int spacing = text_circle.char_space_angle;
                     float angle = text_circle.angle;
-                    bool zero = text_circle.zero;
+                    bool addZero = text_circle.zero;
                     int image_index = ListImages.IndexOf(text_circle.img_First);
                     int unit_index = ListImages.IndexOf(text_circle.unit);
                     int dot_image_index = ListImages.IndexOf(text_circle.dot_image);
@@ -3263,10 +3399,17 @@ namespace Watch_Face_Editor
                     string horizontal_alignment = text_circle.horizontal_alignment;
                     bool reverse_direction = text_circle.reverse_direction;
                     bool unit_in_alignment = text_circle.unit_in_alignment;
+
                     string value = distance_value.ToString();
+                    string decimalSeparator = Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+                    if (value.IndexOf(decimalSeparator) < 0) value = value + decimalSeparator;
+                    while (value.IndexOf(decimalSeparator) > value.Length - 2 - 1)
+                    {
+                        value = value + "0";
+                    }
                     if (text_circle.zero) value = value.PadLeft(5, '0');
 
-                    Draw_dagital_text_rotate(gPanel, centr_x, centr_y, radius, spacing, angle, zero,
+                    Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
                         image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
                         vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
                         value, 4, BBorder, "ElementDistance");
@@ -3286,8 +3429,6 @@ namespace Watch_Face_Editor
                         //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                     }
                 }
-
-
 
             }
 
@@ -4906,6 +5047,158 @@ namespace Watch_Face_Editor
             Logger.WriteLine("* Draw_text (end)");
         }
 
+        /// <summary>Пишем число под угломи</summary>
+        /// <param name="graphics">Поверхность для рисования</param>
+        /// <param name="x">Координата X</param>
+        /// <param name="y">Координата y</param>
+        /// <param name="spacing">Угол между символами</param>
+        /// <param name="angle">Угол поворота надписи в градусах</param>
+        /// <param name="zero">Отображать начальные нули</param>
+        /// <param name="image_index">Номер начального изображения</param>
+        /// <param name="image_width">Ширина символа</param>
+        /// <param name="image_height">Высота символа</param>
+        /// <param name="unit_index">Номер символа единиц измерения</param>
+        /// <param name="unit_width">Ширина символа единиц измерения</param>
+        /// <param name="dot_image_index">Номер символа десятичного разделителя</param>
+        /// <param name="dot_image_width">Ширина символа десятичного разделителя</param>
+        /// <param name="horizontal_alignment">Выравнивание символов по горизонтали относительно окружности (LEFT, CENTER_H, RIGHT)</param>
+        /// <param name="unit_in_alignment">Учитывать единицы измерения при выравнивании</param>
+        /// <param name="value">Отображаемая величина</param>
+        /// <param name="value_lenght">Количество отображаемых символов</param>
+        /// <param name="BBorder">Рисовать рамку по координатам, вокруг элементов с выравниванием</param>
+        /// <param name="elementName">Название элемента</param>
+        private void Draw_dagital_text_rotate(Graphics graphics, int x, int y, int spacing, float angle, bool zero,
+            int image_index, int unit_index, int dot_image_index, 
+            string horizontal_alignment, bool unit_in_alignment,
+            string value, int value_lenght, bool BBorder, string elementName = "")
+        {
+            Logger.WriteLine("* Draw_dagital_text_rotate");
+            //value = "-10";
+            //elementName = "ElementWeather";
+            if (image_index < 0 || image_index >= ListImagesFullName.Count) return;
+            Bitmap src = null;
+            src = OpenFileStream(ListImagesFullName[image_index]);
+            if (src == null) return;
+            int image_width = src.Width;
+            int image_height = src.Height;
+
+            int unit_width = -1;
+            if (unit_index >= 0 && unit_index < ListImagesFullName.Count)
+            {
+                src = OpenFileStream(ListImagesFullName[unit_index]);
+                if (src != null) unit_width = src.Width;
+            }
+
+            int dot_image_width = -1;
+            if (dot_image_index >= 0 && dot_image_index < ListImagesFullName.Count)
+            {
+                src = OpenFileStream(ListImagesFullName[dot_image_index]);
+                if (src != null) dot_image_width = src.Width;
+            }
+
+            Matrix transformMatrix = graphics.Transform;
+            graphics.TranslateTransform(x, y);
+            graphics.RotateTransform(angle);
+            int posOffset = 0;
+            int DateLenght = image_width * value.Length + spacing * (value.Length - 1);
+            if ((elementName == "ElementDistance" || elementName == "ElementSunrise") && dot_image_width > 0)
+                DateLenght = DateLenght - image_width + dot_image_width;
+            if (elementName == "ElementWeather" && dot_image_width > 0 && value.StartsWith("-"))
+                DateLenght = DateLenght - image_width + dot_image_width;
+            if (unit_in_alignment && unit_width > 0) DateLenght = DateLenght + unit_width + spacing;
+
+
+            switch (horizontal_alignment)
+            {
+                //case "LEFT":
+                //    posOffset = 0;
+                //    break;
+                case "CENTER_H":
+                    posOffset = -DateLenght / 2;
+                    break;
+                case "RIGHT":
+                    posOffset = -DateLenght;
+                    break;
+            }
+
+            try
+            {
+                foreach (char ch in value)
+                {
+                    int index = 0;
+                    if (Int32.TryParse(ch.ToString(), out index)) // если число 
+                    {
+                        src = OpenFileStream(ListImagesFullName[image_index + index]);
+                        if (src != null)
+                        {
+                            graphics.DrawImage(src, posOffset, 0);
+                            posOffset += image_width + spacing;
+                        }
+                    }
+                    else // если разделитель 
+                    {
+                        src = OpenFileStream(ListImagesFullName[dot_image_index]);
+                        if (src != null)
+                        {
+                            graphics.DrawImage(src, posOffset, 0);
+                            posOffset += dot_image_width + spacing;
+                        }
+                    }
+                }
+                if (unit_width > 0) // единицы измерения
+                {
+                    src = OpenFileStream(ListImagesFullName[unit_index]);
+                    if (src != null)
+                    {
+                        graphics.DrawImage(src, posOffset, 0);
+                    }
+                }
+            }
+            finally
+            {
+                graphics.Transform = transformMatrix;
+                src.Dispose();
+            }
+
+            if (BBorder)
+            {
+                DateLenght = image_width * value_lenght + spacing * (value_lenght - 1);
+                if ((elementName == "ElementDistance" || elementName == "ElementSunrise") && dot_image_width > 0)
+                    DateLenght = DateLenght + spacing + dot_image_width;
+                if (unit_in_alignment && unit_width > 0)
+                    DateLenght = DateLenght + spacing + unit_width;
+
+                switch (horizontal_alignment)
+                {
+                    case "LEFT":
+                        posOffset = 0;
+                        break;
+                    case "CENTER_H":
+                        posOffset = -DateLenght / 2;
+                        break;
+                    case "RIGHT":
+                        posOffset = -DateLenght;
+                        break;
+                }
+                graphics.TranslateTransform(x, y);
+                graphics.RotateTransform(angle);
+                Logger.WriteLine("DrawBorder");
+                Rectangle rect = new Rectangle(posOffset, 0, DateLenght - 1, image_height - 1);
+                using (Pen pen1 = new Pen(Color.White, 1))
+                {
+                    graphics.DrawRectangle(pen1, rect);
+                }
+                using (Pen pen2 = new Pen(Color.Black, 1))
+                {
+                    pen2.DashStyle = DashStyle.Dot;
+                    graphics.DrawRectangle(pen2, rect);
+                }
+                graphics.Transform = transformMatrix;
+            }
+
+            Logger.WriteLine("* Draw_dagital_text_rotate (end)");
+        }
+
         /// <summary>Пишем число по окружности</summary>
         /// <param name="graphics">Поверхность для рисования</param>
         /// <param name="x">Координата X</param>
@@ -4930,12 +5223,12 @@ namespace Watch_Face_Editor
         /// <param name="value_lenght">Количество отображаемых символов</param>
         /// <param name="BBorder">Рисовать рамку по координатам, вокруг элементов с выравниванием</param>
         /// <param name="elementName">Название элемента</param>
-        private void Draw_dagital_text_rotate(Graphics graphics, int x, int y, int radius, int spacing, float angle, bool zero,
+        private void Draw_dagital_text_on_circle(Graphics graphics, int x, int y, int radius, int spacing, float angle, bool zero,
             int image_index, /*int image_width, int image_height,*/ int unit_index, /*int unit_width,*/ int dot_image_index, /*int dot_image_width,*/
             string vertical_alignment, string horizontal_alignment, bool reverse_direction, bool unit_in_alignment, 
             string value, int value_lenght, bool BBorder, string elementName = "")
         {
-            Logger.WriteLine("* Draw_dagital_text_rotate");
+            Logger.WriteLine("* Draw_dagital_text_on_circle");
             //value = "-10";
             //elementName = "ElementWeather";
             if (image_index < 0 || image_index >= ListImagesFullName.Count) return;
@@ -4964,24 +5257,28 @@ namespace Watch_Face_Editor
             double dot_image_angle = 0;
             //spacing = spacing / 2f;
             image_angle = ToDegree(Math.Atan2(image_width / 2f, radius));
-            unit_angle = ToDegree(Math.Atan2(unit_width / 2f, radius));
-            dot_image_angle = ToDegree(Math.Atan2(dot_image_width / 2f, radius));
+            if (unit_width > 0) unit_angle = ToDegree(Math.Atan2(unit_width / 2f, radius));
+            if (dot_image_width > 0) dot_image_angle = ToDegree(Math.Atan2(dot_image_width / 2f, radius));
 
             Matrix transformMatrix = graphics.Transform;
             graphics.TranslateTransform(x, y);
             double angleOffset = image_angle * (value.Length - 1);
             if ((elementName == "ElementDistance" || elementName == "ElementSunrise") && dot_image_width > 0)
                 angleOffset = angleOffset - image_angle + dot_image_angle;
-            //if (elementName == "ElementWeather" && dot_image_width > 0 && value.StartsWith("-"))
-            //    angleOffset = angleOffset - image_angle + dot_image_angle;
-            //if (unit_width > 0 && unit_in_alignment) angleOffset = angleOffset + image_angle + unit_angle + spacing;
-            //if (reverse_direction) angleOffset = -angleOffset;
-            //if (reverse_direction) spacing = -spacing;
+            if (elementName == "ElementWeather" && dot_image_width > 0 && value.StartsWith("-"))
+                angleOffset = angleOffset - image_angle + dot_image_angle;
+
+            float startAngle = 0;
+            double fullAngle = value_lenght * image_angle * 2 + (value_lenght - 1) * spacing;
+            if (unit_width > 0 & unit_in_alignment) fullAngle += unit_angle * 2 + spacing;
+            if (dot_image_width > 0) fullAngle += dot_image_angle * 2 + spacing;
+            Pen pen = new Pen(Color.White, image_height);
 
             switch (horizontal_alignment)
             {
                 case "LEFT":
                     graphics.RotateTransform(angle);
+                    startAngle = angle;
                     break;
                 case "CENTER_H":
                     //angleOffset = image_angle * (value.Length - 1) + spacing * (value.Length - 2);
@@ -4996,6 +5293,16 @@ namespace Watch_Face_Editor
                         angleOffset = angleOffset + (dot_image_angle - image_angle) / 2f;
                     if (reverse_direction) angleOffset = -angleOffset;
                     graphics.RotateTransform((float)(angle - angleOffset));
+                    if (unit_in_alignment && unit_width >= 0)
+                    {
+                        if (reverse_direction) startAngle = (float)(angle + fullAngle / 2 - (image_angle + unit_angle) / 2);
+                        else startAngle = (float)(angle - fullAngle / 2 + (image_angle + unit_angle) / 2); 
+                    }
+                    else
+                    {
+                        if (reverse_direction) startAngle = (float)(angle + fullAngle / 2 - image_angle);
+                        else startAngle = (float)(angle - fullAngle / 2 + image_angle);
+                    }
                     break;
                 case "RIGHT":
                     //angleOffset = image_angle * (value.Length - 1) + spacing * (value.Length - 2);
@@ -5010,6 +5317,16 @@ namespace Watch_Face_Editor
                         angleOffset = angleOffset - image_angle + dot_image_angle;
                     if (reverse_direction) angleOffset = -angleOffset;
                     graphics.RotateTransform((float)(angle - angleOffset));
+                    if (unit_in_alignment && unit_width >= 0)
+                    {
+                        if (reverse_direction) startAngle = (float)(angle + fullAngle - image_angle - unit_angle);
+                        else startAngle = (float)(angle - fullAngle + image_angle + unit_angle); 
+                    }
+                    else
+                    {
+                        if (reverse_direction) startAngle = (float)(angle + fullAngle - 2 * image_angle);
+                        else startAngle = (float)(angle - fullAngle + 2 * image_angle);
+                    }
                     break;
             }
             if (reverse_direction) spacing = -spacing;
@@ -5111,7 +5428,51 @@ namespace Watch_Face_Editor
                 src.Dispose();
             }
 
-            Logger.WriteLine("* Draw_dagital_text_rotate (end)");
+            if (BBorder)
+            {
+                float radiusArc = radius;
+                if (!reverse_direction)
+                {
+                    startAngle -= 90 + (float)image_angle;
+                    radiusArc = radius - image_height;
+                    radiusArc += image_height / 2f;
+                }
+                else
+                {
+                    startAngle -= 90 - (float)image_angle;
+                    radiusArc = radius + image_height;
+                    radiusArc -= image_height / 2f;
+                    fullAngle = -fullAngle;
+                }
+                // подсвечивание поле надписи заливкой
+                HatchBrush myHatchBrush = new HatchBrush(HatchStyle.Percent20, Color.White, Color.Transparent);
+                pen.Brush = myHatchBrush;
+                graphics.DrawArc(pen, x - radiusArc, y - radiusArc, 2 * radiusArc, 2 * radiusArc, startAngle, (float)fullAngle);
+                myHatchBrush = new HatchBrush(HatchStyle.Percent10, Color.Black, Color.Transparent);
+                pen.Brush = myHatchBrush;
+                graphics.DrawArc(pen, x - radiusArc, y - radiusArc, 2 * radiusArc, 2 * radiusArc, startAngle, (float)fullAngle);
+
+                // подсвечивание внешней и внутреней дуги 
+                using (Pen pen1 = new Pen(Color.White, 1))
+                {
+                    graphics.DrawArc(pen1, x - radius, y - radius, 2 * radius, 2 * radius, startAngle, (float)fullAngle);
+                    int ArcWidth = (int)(radius - image_height);
+                    if (reverse_direction) ArcWidth = (int)(radius + image_height);
+                    if (ArcWidth < 1) ArcWidth = 1;
+                    graphics.DrawArc(pen1, x - ArcWidth, x - ArcWidth, 2 * ArcWidth, 2 * ArcWidth, startAngle, (float)fullAngle);
+                }
+                using (Pen pen1 = new Pen(Color.Black, 1))
+                {
+                    pen1.DashStyle = DashStyle.Dash;
+                    graphics.DrawArc(pen1, x - radius, y - radius, 2 * radius, 2 * radius, startAngle, (float)fullAngle);
+                    int ArcWidth = (int)(radius - image_height);
+                    if (reverse_direction) ArcWidth = (int)(radius + image_height);
+                    if (ArcWidth < 1) ArcWidth = 1;
+                    graphics.DrawArc(pen1, x - ArcWidth, x - ArcWidth, 2 * ArcWidth, 2 * ArcWidth, startAngle, (float)fullAngle);
+                }
+            }
+
+            Logger.WriteLine("* Draw_dagital_text_on_circle (end)");
         }
 
         private double ToDegree(double radian)

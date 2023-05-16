@@ -355,7 +355,7 @@ namespace ControlLibrary
             }
         }
 
-        /// <summary>Режим отображения года</summary>
+        /// <summary>Режим отображения восхода</summary>
         [Description("Режим отображения восхода")]
         public virtual bool Sunrise
         {
@@ -648,8 +648,6 @@ namespace ControlLibrary
 
             comboBox_alignment.SelectedIndex = 0;
             checkBox_addZero.Checked = false;
-
-            this.Year = false;
 
             setValue = false;
         }

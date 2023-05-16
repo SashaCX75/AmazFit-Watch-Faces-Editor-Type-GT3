@@ -106,6 +106,9 @@ namespace Watch_Face_Editor
         /// <summary>Следовать за предшественником</summary>
         public bool follow { get; set; }
 
+        /// <summary>Учитывать единици ищмерения при выравнивании</summary>
+        public bool unit_in_alignment { get; set; }
+
         /// <summary>Основной экран или AOD</summary>
         public string show_level = "";
 

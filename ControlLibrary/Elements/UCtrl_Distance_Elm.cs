@@ -564,7 +564,7 @@ namespace ControlLibrary
             SetOptionsPosition(elementOptions);
 
             checkBox_Number.Checked = false;
-            checkBox_Text_circle.Checked = false;
+            checkBox_Text_rotation.Checked = false;
             checkBox_Text_circle.Checked = false;
             checkBox_Icon.Checked = false;
 

@@ -856,6 +856,60 @@ namespace Watch_Face_Editor
         }
 
         /// <summary>Читаем настройки для отображения числа картинками</summary>
+        /// <param name="img_number">Элемент hmUI_widget_IMG_NUMBER для отображения настроек</param>
+        /// <param name="_dastance">Режим отображения для дистанции</param>
+        /// <param name="_optionalSymbol">Отображение настроек дополнительного символа</param>
+        /// <param name="_padingZero">Отображение настроек ведущих нулей</param>
+        /// <param name="_sunrise">Режим отображения для восхода/заката</param>
+        /// <param name="_weather">Режим отображения для погоды</param>
+        /// <param name="_year">Режим отображения для года</param>
+        private void Read_ImgNumber_Rotate_Options(hmUI_widget_IMG_NUMBER img_number, bool _dastance, bool _sunrise, bool _weather, bool _year,
+            bool _optionalSymbol, bool _padingZero)
+        {
+            PreviewView = false;
+
+            uCtrl_Text_Rotate_Opt.SettingsClear();
+
+            uCtrl_Text_Rotate_Opt.Distance = _dastance;
+            uCtrl_Text_Rotate_Opt.Sunrise = _sunrise;
+            uCtrl_Text_Rotate_Opt.Weather = _weather;
+            uCtrl_Text_Rotate_Opt.Year = _year;
+            uCtrl_Text_Rotate_Opt.ImageError = true;
+            uCtrl_Text_Rotate_Opt.OptionalSymbol = _optionalSymbol;
+            uCtrl_Text_Rotate_Opt.PaddingZero = _padingZero;
+            uCtrl_Text_Rotate_Opt.Visible = true;
+
+            uCtrl_Text_Rotate_Opt._ElementWithText = img_number;
+
+            if (img_number == null)
+            {
+                PreviewView = true;
+                return;
+            }
+            if (img_number.img_First != null)
+                uCtrl_Text_Rotate_Opt.SetImage(img_number.img_First);
+            uCtrl_Text_Rotate_Opt.numericUpDown_imageX.Value = img_number.imageX;
+            uCtrl_Text_Rotate_Opt.numericUpDown_imageY.Value = img_number.imageY;
+
+            uCtrl_Text_Rotate_Opt.SetUnit(img_number.unit);
+            uCtrl_Text_Rotate_Opt.SetUnitMile(img_number.imperial_unit);
+            uCtrl_Text_Rotate_Opt.SetImageError(img_number.invalid_image);
+            uCtrl_Text_Rotate_Opt.SetImageDecimalPointOrMinus(img_number.dot_image);
+            //uCtrl_Text_Rotate_Opt.SetImageDecimalPointOrMinus
+            uCtrl_Text_Rotate_Opt.numericUpDown_spacing.Value = img_number.space;
+            uCtrl_Text_Rotate_Opt.numericUpDown_angle.Value = img_number.angle;
+
+            uCtrl_Text_Rotate_Opt.SetAlignment(img_number.align);
+
+            uCtrl_Text_Rotate_Opt.checkBox_addZero.Checked = img_number.zero;
+            uCtrl_Text_Rotate_Opt.checkBox_unit_in_alignment.Checked = img_number.unit_in_alignment;
+
+            //uCtrl_Text_Rotate_Opt.SetUnitMile
+
+            PreviewView = true;
+        }
+
+        /// <summary>Читаем настройки для отображения числа картинками</summary>
         /// <param name="text_rotation">Элемент Text_Rotation для отображения настроек</param>
         /// <param name="_dastance">Режим отображения для дистанции</param>
         /// <param name="_optionalSymbol">Отображение настроек дополнительного символа</param>
@@ -903,7 +957,7 @@ namespace Watch_Face_Editor
             //uCtrl_Text_Rotation_Opt.SetUnit(text_rotation.unit);
             //uCtrl_Text_Rotation_Opt.SetUnitImperial(text_rotation.imperial_unit);
             //uCtrl_Text_Rotation_Opt.SetImageError(text_rotation.error_image);
-            //uCtrl_Text_Rotation_Opt.SetImageDecimalPoint(text_rotation.dot_image);
+            //uCtrl_Text_Rotation_Opt.SetImageDecimalPointOrMinus(text_rotation.dot_image);
 
             //uCtrl_Text_Rotation_Opt.SetHorizontalAlignment(text_rotation.horizontal_alignment);
             //uCtrl_Text_Rotation_Opt.SetHorizontalAlignment(text_rotation.horizontal_alignment);
@@ -3369,6 +3423,32 @@ namespace Watch_Face_Editor
             //text_circle.image_height = uCtrl_Text_Circle_Opt.image_height;
             //text_circle.unit_width = uCtrl_Text_Circle_Opt.unit_width;
             //text_circle.error_width = uCtrl_Text_Circle_Opt.error_width;
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Text_Rotate_Opt_ValueChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            hmUI_widget_IMG_NUMBER img_number = (hmUI_widget_IMG_NUMBER)uCtrl_Text_Rotate_Opt._ElementWithText;
+            if (img_number == null) return;
+
+            img_number.align = uCtrl_Text_Rotate_Opt.GetAlignment();
+            img_number.unit_in_alignment = uCtrl_Text_Rotate_Opt.checkBox_unit_in_alignment.Checked;
+            img_number.img_First = uCtrl_Text_Rotate_Opt.GetImage();
+            img_number.imageX = (int)uCtrl_Text_Rotate_Opt.numericUpDown_imageX.Value;
+            img_number.imageY = (int)uCtrl_Text_Rotate_Opt.numericUpDown_imageY.Value;
+            img_number.space = (int)uCtrl_Text_Rotate_Opt.numericUpDown_spacing.Value;
+            img_number.angle = (int)uCtrl_Text_Rotate_Opt.numericUpDown_angle.Value;
+            img_number.unit = uCtrl_Text_Rotate_Opt.GetUnit();
+            img_number.imperial_unit = uCtrl_Text_Rotate_Opt.GetUnitMile();
+            img_number.dot_image = uCtrl_Text_Rotate_Opt.GetImageDecimalPointOrMinus();
+            img_number.invalid_image = uCtrl_Text_Rotate_Opt.GetImageError();
+            img_number.zero = uCtrl_Text_Rotate_Opt.checkBox_addZero.Checked;
+
 
             JSON_Modified = true;
             PreviewImage();

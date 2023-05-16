@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -12,13 +11,13 @@ using System.Windows.Forms;
 
 namespace ControlLibrary
 {
-    public partial class UCtrl_Text_Circle_Opt : UserControl
+    public partial class UCtrl_Text_Rotate_Opt : UserControl
     {
         private bool setValue; // режим задания параметров
-        //private bool Image_error;
-        private bool Optional_symbol;
+        private bool ImageError_mode;
+        private bool OptionalSymbol_mode;
         private bool Padding_zero;
-        private bool Distance_mode = false;
+        private bool Distance_mode;
         private bool Year_mode = false;
         private bool Sunrise_mode = false;
         private bool Weather_mode = false;
@@ -33,23 +32,17 @@ namespace ControlLibrary
         private Point location_imageError_label;
         private String unit_label_text;
 
-        public int image_width = -1; // ширина изображения
-        public int image_height = -1; // высота изображения
-        public int unit_width = -1; // ширина изображения единиц измерения
-        public int dot_image_width = -1; // ширина изображения разделителя
-        public int error_width = -1; // ширина изображения ошибки
-
         private List<string> ListImagesFullName = new List<string>(); // перечень путей к файлам с картинками
         public Object _ElementWithText;
-        public UCtrl_Text_Circle_Opt()
+        public UCtrl_Text_Rotate_Opt()
         {
             InitializeComponent();
             setValue = true;
-            comboBox_h_alignment.SelectedIndex = 0;
+            comboBox_alignment.SelectedIndex = 0;
             setValue = false;
 
             //location_unit = comboBox_unit.Location;
-            location_unit_miles = comboBox_unit_imperial.Location;
+            location_unit_miles = comboBox_unit_miles.Location;
             location_imageDecimalPoint = comboBox_imageDecimalPoint.Location;
             location_imageError = comboBox_imageError.Location;
             //location_unit_label = label08.Location; // km
@@ -74,6 +67,12 @@ namespace ControlLibrary
             return comboBox_image.Text;
         }
 
+        /// <summary>Возвращает SelectedIndex выпадающего списка</summary>
+        public int GetSelectedIndexImage()
+        {
+            return comboBox_image.SelectedIndex;
+        }
+
         public void SetUnit(string value)
         {
             comboBox_unit.Text = value;
@@ -86,17 +85,27 @@ namespace ControlLibrary
             if (comboBox_unit.SelectedIndex < 0) return "";
             return comboBox_unit.Text;
         }
-
-        public void SetUnitImperial(string value)
+        /// <summary>Возвращает SelectedIndex выпадающего списка</summary>
+        public int GetSelectedIndexUnit()
         {
-            comboBox_unit_imperial.Text = value;
-            if (comboBox_unit_imperial.SelectedIndex < 0) comboBox_unit_imperial.Text = "";
+            return comboBox_unit.SelectedIndex;
+        }
+
+        public void SetUnitMile(string value)
+        {
+            comboBox_unit_miles.Text = value;
+            if (comboBox_unit_miles.SelectedIndex < 0) comboBox_unit_miles.Text = "";
         }
         /// <summary>Возвращает название выбранной картинки</summary>
-        public string GetUnitImperial()
+        public string GetUnitMile()
         {
-            if (comboBox_unit_imperial.SelectedIndex < 0) return "";
-            return comboBox_unit_imperial.Text;
+            if (comboBox_unit_miles.SelectedIndex < 0) return "";
+            return comboBox_unit_miles.Text;
+        }
+        /// <summary>Возвращает SelectedIndex выпадающего списка</summary>
+        public int GetSelectedIndexUnitMile()
+        {
+            return comboBox_unit_miles.SelectedIndex;
         }
 
         public void SetImageError(string value)
@@ -112,21 +121,25 @@ namespace ControlLibrary
             return comboBox_imageError.Text;
         }
 
-        public void SetImageDecimalPoint(string value)
+        public void SetImageDecimalPointOrMinus(string value)
         {
             comboBox_imageDecimalPoint.Text = value;
             if (comboBox_imageDecimalPoint.SelectedIndex < 0) comboBox_imageDecimalPoint.Text = "";
         }
 
         /// <summary>Возвращает название выбранной картинки</summary>
-        public string GetImageDecimalPoint()
+        public string GetImageDecimalPointOrMinus()
         {
             if (comboBox_imageDecimalPoint.SelectedIndex < 0) return "";
             return comboBox_imageDecimalPoint.Text;
         }
+        /// <summary>Возвращает SelectedIndex выпадающего списка</summary>
+        public int GetSelectedIndexImageDecimalPointOrMinus()
+        {
+            return comboBox_imageDecimalPoint.SelectedIndex;
+        }
 
-        /// <summary>Устанавливает гирозонтальное выравнивание строкой "LEFT", "RIGHT", "CENTER_H"</summary>
-        public void SetHorizontalAlignment(string alignment)
+        public void SetAlignment(string alignment)
         {
             int result;
             switch (alignment)
@@ -146,14 +159,14 @@ namespace ControlLibrary
                     break;
 
             }
-            comboBox_h_alignment.SelectedIndex = result;
+            comboBox_alignment.SelectedIndex = result;
         }
 
         /// <summary>Возвращает выравнивание строкой "LEFT", "RIGHT", "CENTER_H"</summary>
-        public string GetHorizontalAlignment()
+        public string GetAlignment()
         {
             string result;
-            switch (comboBox_h_alignment.SelectedIndex)
+            switch (comboBox_alignment.SelectedIndex)
             {
                 case 0:
                     result = "LEFT";
@@ -172,72 +185,27 @@ namespace ControlLibrary
             }
             return result;
         }
-
-
-        /// <summary>Устанавливает вертикальное выравнивание строкой "TOP", "BOTTOM", "CENTER_V"</summary>
-        public void SetVerticalAlignment(string alignment)
+        /// <summary>Возвращает SelectedIndex выпадающего списка</summary>
+        public int GetSelectedIndexAlignment()
         {
-            int result;
-            switch (alignment)
-            {
-                case "TOP":
-                    result = 0;
-                    break;
-                case "CENTER_V":
-                    result = 1;
-                    break;
-                case "BOTTOM":
-                    result = 2;
-                    break;
-
-                default:
-                    result = 0;
-                    break;
-
-            }
-            comboBox_v_alignment.SelectedIndex = result;
+            return comboBox_alignment.SelectedIndex;
         }
 
-        /// <summary>Возвращает вертикальное выравнивание строкой "TOP", "BOTTOM", "CENTER_V"</summary>
-        public string GetVerticalAlignment()
-        {
-            string result;
-            switch (comboBox_v_alignment.SelectedIndex)
-            {
-                case 0:
-                    result = "TOP";
-                    break;
-                case 1:
-                    result = "CENTER_V";
-                    break;
-                case 2:
-                    result = "BOTTOM";
-                    break;
-
-                default:
-                    result = "TOP";
-                    break;
-
-            }
-            return result;
-        }
-
-
-        /*/// <summary>Отображение поля изображения при ошибке</summary>
+        /// <summary>Отображение поля изображения при ошибке</summary>
         [Description("Отображение поля изображения при ошибке")]
         public virtual bool ImageError
         {
             get
             {
-                return Image_error;
+                return ImageError_mode;
             }
             set
             {
-                Image_error = value;
-                comboBox_imageError.Visible = Image_error;
-                label_imageError.Visible = Image_error;
+                ImageError_mode = value;
+                comboBox_imageError.Visible = ImageError_mode;
+                label_imageError.Visible = ImageError_mode;
             }
-        }*/
+        }
 
         /// <summary>Отображение поля изображения десятичного разделителя</summary>
         [Description("Отображение поля изображения десятичного разделителя")]
@@ -245,13 +213,28 @@ namespace ControlLibrary
         {
             get
             {
-                return Optional_symbol;
+                return OptionalSymbol_mode;
             }
             set
             {
-                Optional_symbol = value;
-                comboBox_imageDecimalPoint.Visible = Optional_symbol;
-                label_imageDecimalPoint.Visible = Optional_symbol;
+                OptionalSymbol_mode = value;
+                comboBox_imageDecimalPoint.Visible = OptionalSymbol_mode;
+                label_imageDecimalPoint.Visible = OptionalSymbol_mode;
+
+                if (OptionalSymbol_mode)
+                {
+                    Point location = new Point(numericUpDown_angle.Location.X, location_unit_miles.Y);
+                    numericUpDown_angle.Location = location;
+                    location = new Point(label_angle.Location.X, location_unit_miles_label.Y);
+                    label_angle.Location = location;
+                }
+                else
+                {
+                    Point location = new Point(numericUpDown_angle.Location.X, location_imageDecimalPoint.Y);
+                    numericUpDown_angle.Location = location;
+                    location = new Point(label_angle.Location.X, location_imageDecimalPoint_label.Y);
+                    label_angle.Location = location;
+                }
             }
         }
 
@@ -281,35 +264,31 @@ namespace ControlLibrary
             set
             {
                 Distance_mode = value;
-                if (value)
+                if (Distance_mode)
                 {
                     //Distance = false;
                     Year = false;
                     Sunrise = false;
                     Weather = false;
-                }
-                if (Distance_mode)
-                {
+
                     label_unit.Text = unit_label_text + " (km)";
                     label_unit_miles.Text = unit_label_text + " (ml)";
-                }
-                else
-                {
-                    label_unit.Text = unit_label_text;
-                }
 
-                if (Distance_mode)
-                {
                     comboBox_imageDecimalPoint.Location = location_imageDecimalPoint;
                     comboBox_imageError.Location = location_unit_miles;
-                    comboBox_unit_imperial.Location = location_imageError;
+                    comboBox_unit_miles.Location = location_imageError;
 
                     label_imageDecimalPoint.Location = location_imageDecimalPoint_label;
                     label_unit_miles.Location = location_imageError_label;
                     label_imageError.Location = location_unit_miles_label;
 
-                    comboBox_unit_imperial.Visible = true;
+                    comboBox_unit_miles.Visible = true;
                     label_unit_miles.Visible = true;
+                }
+                else
+                {
+                    label_unit.Text = unit_label_text;
+                    label_unit_miles.Text = unit_label_text;
                 }
             }
         }
@@ -325,15 +304,13 @@ namespace ControlLibrary
             set
             {
                 Year_mode = value;
-                if (value)
+                if (Year_mode)
                 {
                     Distance = false;
                     //Year = false;
                     Sunrise = false;
                     Weather = false;
-                }
-                if (Year_mode)
-                {
+
                     checkBox_addZero.Text = Properties.Strings.UCtrl_Text_Opt_Year_true;
                 }
                 else
@@ -343,7 +320,7 @@ namespace ControlLibrary
             }
         }
 
-        /// <summary>Режим отображения года</summary>
+        /// <summary>Режим отображения восхода</summary>
         [Description("Режим отображения восхода")]
         public virtual bool Sunrise
         {
@@ -354,37 +331,32 @@ namespace ControlLibrary
             set
             {
                 Sunrise_mode = value;
-                if (value)
+                if (Sunrise_mode)
                 {
                     Distance = false;
                     Year = false;
-                    //Sunrise = false; 
+                    //Sunrise = false;
                     Weather = false;
-                }
-                if (Sunrise_mode)
-                {
-                    label_imageDecimalPoint.Text = Properties.Strings.UCtrl_Text_Opt_Sunrise_true;
-                }
-                else
-                {
-                    label_imageDecimalPoint.Text = Properties.Strings.UCtrl_Text_Opt_Sunrise_false;
-                }
 
-                if (Sunrise_mode)
-                {
+                    label_imageDecimalPoint.Text = Properties.Strings.UCtrl_Text_Opt_Sunrise_true;
+
                     comboBox_imageDecimalPoint.Location = location_imageError;
                     comboBox_imageError.Location = location_imageDecimalPoint;
-                    comboBox_unit_imperial.Location = location_unit_miles;
+                    comboBox_unit_miles.Location = location_unit_miles;
 
                     label_imageDecimalPoint.Location = location_imageError_label;
                     label_imageError.Location = location_imageDecimalPoint_label;
                     label_unit_miles.Location = location_unit_miles_label;
                 }
+                else
+                {
+                    label_imageDecimalPoint.Text = Properties.Strings.UCtrl_Text_Opt_Sunrise_false;
+                }
             }
         }
 
-        /// <summary>Режим для погоды</summary>
-        [Description("Режим для погоды")]
+        /// <summary>Режим отображения погоды</summary>
+        [Description("Режим отображения погоды")]
         public virtual bool Weather
         {
             get
@@ -394,39 +366,33 @@ namespace ControlLibrary
             set
             {
                 Weather_mode = value;
-                if (value)
+                if (Weather_mode)
                 {
                     Distance = false;
                     Year = false;
                     Sunrise = false;
                     //Weather = false;
-                }
-                if (Weather_mode)
-                {
-                    label_unit.Text = unit_label_text + " (°C)";
-                    label_unit_miles.Text = unit_label_text + " (°F)";
-                }
-                else
-                {
-                    label_unit.Text = unit_label_text;
-                    label_minus_image.Visible = false;
-                }
 
-                if (Weather_mode)
-                {
+                    label_unit.Text = unit_label_text + " (°C))";
+                    label_unit_miles.Text = unit_label_text + " (°F)";
+
                     comboBox_imageDecimalPoint.Location = location_imageDecimalPoint;
                     comboBox_imageError.Location = location_unit_miles;
-                    comboBox_unit_imperial.Location = location_imageError;
+                    comboBox_unit_miles.Location = location_imageError;
 
                     label_imageDecimalPoint.Location = location_imageDecimalPoint_label;
                     label_minus_image.Location = location_imageDecimalPoint_label;
                     label_unit_miles.Location = location_imageError_label;
                     label_imageError.Location = location_unit_miles_label;
 
-                    comboBox_unit_imperial.Visible = true;
+                    comboBox_unit_miles.Visible = true;
                     label_unit_miles.Visible = true;
                     label_minus_image.Visible = true;
                     label_imageDecimalPoint.Visible = false;
+                }
+                else
+                {
+                    label_minus_image.Visible = false;
                 }
             }
         }
@@ -453,22 +419,6 @@ namespace ControlLibrary
                 ComboBox comboBox = sender as ComboBox;
                 comboBox.Text = "";
                 comboBox.SelectedIndex = -1;
-                switch (comboBox.Name)
-                {
-                    case "comboBox_image":
-                        image_width = -1; // ширина изображения
-                        image_height = -1; // высота изображения
-                        break;
-                    case "comboBox_unit":
-                        unit_width = -1; // ширина изображения единиц измерения
-                        break;
-                    case "comboBox_imageError":
-                        error_width = -1; // ширина изображения ошибки
-                        break;
-                    case "comboBox_imageDecimalPoint":
-                        dot_image_width = -1; // ширина изображения разделителя
-                        break;
-                }
                 if (ValueChanged != null && !setValue)
                 {
                     EventArgs eventArgs = new EventArgs();
@@ -529,55 +479,6 @@ namespace ControlLibrary
 
         private void comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ComboBox comboBox = sender as ComboBox;
-            int imageIndex = comboBox.SelectedIndex;
-            Bitmap src = null;
-            if (imageIndex >= 0 && imageIndex < ListImagesFullName.Count) src = OpenFileStream(ListImagesFullName[imageIndex]);
-            switch (comboBox.Name)
-            {
-                case "comboBox_image":
-                    if (src != null)
-                    {
-                        image_width = src.Width; 
-                        image_height = src.Height;
-                    }
-                    else
-                    {
-                        image_width = -1; // ширина изображения
-                        image_height = -1; // высота изображения
-                    }
-                    break;
-                case "comboBox_unit":
-                    if (src != null)
-                    {
-                        unit_width = src.Width;
-                    }
-                    else
-                    {
-                        unit_width = -1; // ширина изображения единиц измерения 
-                    }
-                    break;
-                case "comboBox_imageError":
-                    if (src != null)
-                    {
-                        error_width = src.Width;
-                    }
-                    else
-                    {
-                        error_width = -1; // ширина изображения ошибки 
-                    }
-                    break;
-                case "comboBox_imageDecimalPoint":
-                    if (src != null)
-                    {
-                        dot_image_width = src.Width;
-                    }
-                    else
-                    {
-                        dot_image_width = -1; // ширина изображения разделителя 
-                    }
-                    break;
-            }
             if (ValueChanged != null && !setValue)
             {
                 EventArgs eventArgs = new EventArgs();
@@ -592,13 +493,13 @@ namespace ControlLibrary
         {
             comboBox_image.Items.Clear();
             comboBox_unit.Items.Clear();
-            comboBox_unit_imperial.Items.Clear();
+            comboBox_unit_miles.Items.Clear();
             comboBox_imageError.Items.Clear();
             comboBox_imageDecimalPoint.Items.Clear();
 
             comboBox_image.Items.AddRange(ListImages.ToArray());
             comboBox_unit.Items.AddRange(ListImages.ToArray());
-            comboBox_unit_imperial.Items.AddRange(ListImages.ToArray());
+            comboBox_unit_miles.Items.AddRange(ListImages.ToArray());
 
             comboBox_imageError.Items.AddRange(ListImages.ToArray());
             comboBox_imageDecimalPoint.Items.AddRange(ListImages.ToArray());
@@ -610,7 +511,7 @@ namespace ControlLibrary
             {
                 comboBox_image.DropDownHeight = 1;
                 comboBox_unit.DropDownHeight = 1;
-                comboBox_unit_imperial.DropDownHeight = 1;
+                comboBox_unit_miles.DropDownHeight = 1;
                 comboBox_imageError.DropDownHeight = 1;
                 comboBox_imageDecimalPoint.DropDownHeight = 1;
             }
@@ -618,7 +519,7 @@ namespace ControlLibrary
             {
                 comboBox_image.DropDownHeight = 35 * count + 1;
                 comboBox_unit.DropDownHeight = 35 * count + 1;
-                comboBox_unit_imperial.DropDownHeight = 35 * count + 1;
+                comboBox_unit_miles.DropDownHeight = 35 * count + 1;
                 comboBox_imageError.DropDownHeight = 35 * count + 1;
                 comboBox_imageDecimalPoint.DropDownHeight = 35 * count + 1;
             }
@@ -626,7 +527,7 @@ namespace ControlLibrary
             {
                 comboBox_image.DropDownHeight = 106;
                 comboBox_unit.DropDownHeight = 106;
-                comboBox_unit_imperial.DropDownHeight = 106;
+                comboBox_unit_miles.DropDownHeight = 106;
                 comboBox_imageError.DropDownHeight = 106;
                 comboBox_imageDecimalPoint.DropDownHeight = 106;
             }
@@ -637,9 +538,9 @@ namespace ControlLibrary
         {
             setValue = true;
 
-            //ImageError = false;
+            ImageError = false;
             OptionalSymbol = false;
-            PaddingZero = true;
+            PaddingZero = false;
             Distance = false;
             Year = false;
             Sunrise = false;
@@ -650,35 +551,26 @@ namespace ControlLibrary
             comboBox_imageError.Text = null;
             comboBox_imageDecimalPoint.Text = null;
 
-            numericUpDown_centr_X.Value = 0;
-            numericUpDown_centr_Y.Value = 0;
+            numericUpDown_imageX.Value = 0;
+            numericUpDown_imageY.Value = 0;
 
-            numericUpDown_angle.Value = 0;
-            numericUpDown_radius.Value = 100;
             numericUpDown_spacing.Value = 0;
+            numericUpDown_angle.Value = 0;
 
-            comboBox_h_alignment.SelectedIndex = 0;
-            comboBox_v_alignment.SelectedIndex = 0;
-            checkBox_reverse_direction.Checked = false;
+            comboBox_alignment.SelectedIndex = 0;
             checkBox_addZero.Checked = false;
-            checkBox_addZero.Checked = true;
+            checkBox_unit_in_alignment.Checked = false;
 
             comboBox_imageDecimalPoint.Location = location_imageDecimalPoint;
             comboBox_imageError.Location = location_imageError;
-            comboBox_unit_imperial.Location = location_unit_miles;
+            comboBox_unit_miles.Location = location_unit_miles;
 
             label_imageDecimalPoint.Location = location_imageDecimalPoint_label;
             label_imageError.Location = location_imageError_label;
             label_unit_miles.Location = location_unit_miles_label;
-
-            comboBox_unit_imperial.Visible = false;
+            comboBox_unit_miles.Visible = false;
             label_unit_miles.Visible = false;
-
-            image_width = -1; // ширина изображения
-            image_height = -1; // высота изображения
-            unit_width = -1; // ширина изображения единиц измерения
-            dot_image_width = -1; // ширина изображения разделителя
-            error_width = -1; // ширина изображения ошибки
+            label_minus_image.Visible = false;
 
             setValue = false;
         }
@@ -850,48 +742,37 @@ namespace ControlLibrary
             if (e.Control && (e.KeyCode == Keys.Left || e.KeyCode == Keys.Right || e.KeyCode == Keys.Up || e.KeyCode == Keys.Down))
             {
                 NumericUpDown numericUpDown = sender as NumericUpDown;
-                if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_centr_X")
+                if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_imageX")
                 {
                     e.SuppressKeyPress = false;
-                    numericUpDown_centr_Y.DownButton();
+                    numericUpDown_imageY.DownButton();
                 }
-                if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_centr_X")
+                if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_imageX")
                 {
                     e.SuppressKeyPress = false;
-                    numericUpDown_centr_Y.UpButton();
-                }
-
-                if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_centr_Y")
-                {
-                    e.SuppressKeyPress = false;
-                    numericUpDown_centr_Y.DownButton();
-                }
-                if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_centr_Y")
-                {
-                    e.SuppressKeyPress = false;
-                    numericUpDown_centr_Y.UpButton();
+                    numericUpDown_imageY.UpButton();
                 }
 
-                if (e.KeyCode == Keys.Left && (numericUpDown.Name == "numericUpDown_centr_X" || numericUpDown.Name == "numericUpDown_centr_Y"))
-                    numericUpDown_centr_X.DownButton();
-                if (e.KeyCode == Keys.Right && (numericUpDown.Name == "numericUpDown_centr_X" || numericUpDown.Name == "numericUpDown_centr_Y"))
-                    numericUpDown_centr_X.UpButton();
+                if (e.KeyCode == Keys.Up && numericUpDown.Name == "numericUpDown_imageY")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_imageY.DownButton();
+                }
+                if (e.KeyCode == Keys.Down && numericUpDown.Name == "numericUpDown_imageY")
+                {
+                    e.SuppressKeyPress = false;
+                    numericUpDown_imageY.UpButton();
+                }
+
+                if (e.KeyCode == Keys.Left && (numericUpDown.Name == "numericUpDown_imageX" || numericUpDown.Name == "numericUpDown_imageY"))
+                    numericUpDown_imageX.DownButton();
+                if (e.KeyCode == Keys.Right && (numericUpDown.Name == "numericUpDown_imageX" || numericUpDown.Name == "numericUpDown_imageY"))
+                    numericUpDown_imageX.UpButton();
 
                 e.Handled = true;
             }
         }
-        private Bitmap OpenFileStream(string fileName)
-        {
-            Bitmap src = null;
-            if (File.Exists(fileName))
-            {
-                using (FileStream stream = new FileStream(fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
-                {
-                    src = new Bitmap(Image.FromStream(stream));
-                }
-            }
-            return src;
-        }
+
 
     }
 }

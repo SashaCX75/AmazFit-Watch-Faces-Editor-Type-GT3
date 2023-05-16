@@ -191,6 +191,7 @@ namespace Watch_Face_Editor
                     imageX = this.Second.imageX,
                     imageY = this.Second.imageY,
                     space = this.Second.space,
+                    angle = this.Second.angle,
                     zero = this.Second.zero,
                     align = this.Second.align,
                     img_First = this.Second.img_First,
@@ -219,6 +220,7 @@ namespace Watch_Face_Editor
                     imageX = this.Minute.imageX,
                     imageY = this.Minute.imageY,
                     space = this.Minute.space,
+                    angle = this.Minute.angle,
                     zero = this.Minute.zero,
                     align = this.Minute.align,
                     img_First = this.Minute.img_First,
@@ -247,6 +249,7 @@ namespace Watch_Face_Editor
                     imageX = this.Hour.imageX,
                     imageY = this.Hour.imageY,
                     space = this.Hour.space,
+                    angle = this.Hour.angle,
                     zero = this.Hour.zero,
                     align = this.Hour.align,
                     img_First = this.Hour.img_First,
@@ -622,6 +625,7 @@ namespace Watch_Face_Editor
                     imageX = this.Number.imageX,
                     imageY = this.Number.imageY,
                     space = this.Number.space,
+                    angle = this.Number.angle,
                     zero = this.Number.zero,
                     align = this.Number.align,
                     img_First = this.Number.img_First,
@@ -702,6 +706,7 @@ namespace Watch_Face_Editor
                     imageX = this.Number.imageX,
                     imageY = this.Number.imageY,
                     space = this.Number.space,
+                    angle = this.Number.angle,
                     zero = this.Number.zero,
                     align = this.Number.align,
                     img_First = this.Number.img_First,
@@ -772,6 +777,7 @@ namespace Watch_Face_Editor
                     imageX = this.Number.imageX,
                     imageY = this.Number.imageY,
                     space = this.Number.space,
+                    angle = this.Number.angle,
                     zero = this.Number.zero,
                     align = this.Number.align,
                     img_First = this.Number.img_First,
@@ -1241,6 +1247,8 @@ namespace Watch_Face_Editor
         }
     }
 
+
+
     public class ElementSteps : ICloneable
     {
         public string elementName = "ElementSteps";
@@ -1254,7 +1262,11 @@ namespace Watch_Face_Editor
         public hmUI_widget_IMG_LEVEL Images { get; set; }
         public hmUI_widget_IMG_PROGRESS Segments { get; set; }
         public hmUI_widget_IMG_NUMBER Number { get; set; }
+        public hmUI_widget_IMG_NUMBER Text_rotation { get; set; }
+        public Text_Circle Text_circle { get; set; }
         public hmUI_widget_IMG_NUMBER Number_Target { get; set; }
+        public hmUI_widget_IMG_NUMBER Text_rotation_Target { get; set; }
+        public Text_Circle Text_circle_Target { get; set; }
         public hmUI_widget_IMG_POINTER Pointer { get; set; }
         public Circle_Scale Circle_Scale { get; set; }
         public Linear_Scale Linear_Scale { get; set; }
@@ -1305,6 +1317,7 @@ namespace Watch_Face_Editor
                     imageX = this.Number.imageX,
                     imageY = this.Number.imageY,
                     space = this.Number.space,
+                    angle = this.Number.angle,
                     zero = this.Number.zero,
                     align = this.Number.align,
                     img_First = this.Number.img_First,
@@ -1325,6 +1338,64 @@ namespace Watch_Face_Editor
                 };
             }
 
+            hmUI_widget_IMG_NUMBER Text_rotation = null;
+            if (this.Text_rotation != null)
+            {
+                Text_rotation = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Text_rotation.imageX,
+                    imageY = this.Text_rotation.imageY,
+                    space = this.Text_rotation.space,
+                    angle = this.Text_rotation.angle,
+                    zero = this.Text_rotation.zero,
+                    align = this.Text_rotation.align,
+                    img_First = this.Text_rotation.img_First,
+                    unit = this.Text_rotation.unit,
+                    imperial_unit = this.Text_rotation.imperial_unit,
+                    icon = this.Text_rotation.icon,
+                    iconPosX = this.Text_rotation.iconPosX,
+                    iconPosY = this.Text_rotation.iconPosY,
+                    negative_image = this.Text_rotation.negative_image,
+                    invalid_image = this.Text_rotation.invalid_image,
+                    dot_image = this.Text_rotation.dot_image,
+                    unit_in_alignment = this.Text_rotation.unit_in_alignment,
+
+                    position = this.Text_rotation.position,
+                    visible = this.Text_rotation.visible,
+                    show_level = this.Text_rotation.show_level,
+                    type = this.Text_rotation.type,
+                };
+            }
+
+            Text_Circle Text_circle = null;
+            if (this.Text_circle != null)
+            {
+                Text_circle = new Text_Circle
+                {
+                    circle_center_X = this.Text_circle.circle_center_X,
+                    circle_center_Y = this.Text_circle.circle_center_Y,
+                    radius = this.Text_circle.radius,
+                    angle = this.Text_circle.angle,
+                    char_space_angle = this.Text_circle.char_space_angle,
+                    zero = this.Text_circle.zero,
+                    img_First = this.Text_circle.img_First,
+                    unit = this.Text_circle.unit,
+                    imperial_unit = this.Text_circle.imperial_unit,
+                    dot_image = this.Text_circle.dot_image,
+                    error_image = this.Text_circle.error_image,
+                    //error_width = this.Text_circle.error_width,
+                    vertical_alignment = this.Text_circle.vertical_alignment,
+                    horizontal_alignment = this.Text_circle.horizontal_alignment,
+                    reverse_direction = this.Text_circle.reverse_direction,
+                    unit_in_alignment = this.Text_circle.unit_in_alignment,
+
+                    position = this.Text_circle.position,
+                    visible = this.Text_circle.visible,
+                    show_level = this.Number.show_level,
+                    type = this.Text_circle.type,
+                };
+            }
+
             hmUI_widget_IMG_NUMBER Number_Target = null;
             if (this.Number_Target != null)
             {
@@ -1333,6 +1404,7 @@ namespace Watch_Face_Editor
                     imageX = this.Number_Target.imageX,
                     imageY = this.Number_Target.imageY,
                     space = this.Number_Target.space,
+                    angle = this.Number_Target.angle,
                     zero = this.Number_Target.zero,
                     align = this.Number_Target.align,
                     img_First = this.Number_Target.img_First,
@@ -1350,6 +1422,63 @@ namespace Watch_Face_Editor
                     visible = this.Number_Target.visible,
                     show_level = this.Number_Target.show_level,
                     type = this.Number_Target.type,
+                };
+            }
+
+            hmUI_widget_IMG_NUMBER Text_rotation_Target = null;
+            if (this.Text_rotation_Target != null)
+            {
+                Text_rotation_Target = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Text_rotation_Target.imageX,
+                    imageY = this.Text_rotation_Target.imageY,
+                    space = this.Text_rotation_Target.space,
+                    angle = this.Text_rotation_Target.angle,
+                    zero = this.Text_rotation_Target.zero,
+                    align = this.Text_rotation_Target.align,
+                    img_First = this.Text_rotation_Target.img_First,
+                    unit = this.Text_rotation_Target.unit,
+                    imperial_unit = this.Text_rotation_Target.imperial_unit,
+                    icon = this.Text_rotation_Target.icon,
+                    iconPosX = this.Text_rotation_Target.iconPosX,
+                    iconPosY = this.Text_rotation_Target.iconPosY,
+                    negative_image = this.Text_rotation_Target.negative_image,
+                    invalid_image = this.Text_rotation_Target.invalid_image,
+                    dot_image = this.Text_rotation_Target.dot_image,
+                    unit_in_alignment = this.Text_rotation_Target.unit_in_alignment,
+
+                    position = this.Text_rotation_Target.position,
+                    visible = this.Text_rotation_Target.visible,
+                    show_level = this.Text_rotation_Target.show_level,
+                    type = this.Text_rotation_Target.type,
+                };
+            }
+
+            Text_Circle Text_circle_Target = null;
+            if (this.Text_circle_Target != null)
+            {
+                Text_circle_Target = new Text_Circle
+                {
+                    circle_center_X = this.Text_circle_Target.circle_center_X,
+                    circle_center_Y = this.Text_circle_Target.circle_center_Y,
+                    radius = this.Text_circle_Target.radius,
+                    angle = this.Text_circle_Target.angle,
+                    char_space_angle = this.Text_circle_Target.char_space_angle,
+                    zero = this.Text_circle_Target.zero,
+                    img_First = this.Text_circle_Target.img_First,
+                    unit = this.Text_circle_Target.unit,
+                    imperial_unit = this.Text_circle_Target.imperial_unit,
+                    dot_image = this.Text_circle_Target.dot_image,
+                    error_image = this.Text_circle_Target.error_image,
+                    vertical_alignment = this.Text_circle_Target.vertical_alignment,
+                    horizontal_alignment = this.Text_circle_Target.horizontal_alignment,
+                    reverse_direction = this.Text_circle_Target.reverse_direction,
+                    unit_in_alignment = this.Text_circle_Target.unit_in_alignment,
+
+                    position = this.Text_circle_Target.position,
+                    visible = this.Text_circle_Target.visible,
+                    show_level = this.Number.show_level,
+                    type = this.Text_circle_Target.type,
                 };
             }
 
@@ -1521,6 +1650,7 @@ namespace Watch_Face_Editor
                     imageX = this.Number.imageX,
                     imageY = this.Number.imageY,
                     space = this.Number.space,
+                    angle = this.Number.angle,
                     zero = this.Number.zero,
                     align = this.Number.align,
                     img_First = this.Number.img_First,
@@ -1709,6 +1839,7 @@ namespace Watch_Face_Editor
                     imageX = this.Number.imageX,
                     imageY = this.Number.imageY,
                     space = this.Number.space,
+                    angle = this.Number.angle,
                     zero = this.Number.zero,
                     align = this.Number.align,
                     img_First = this.Number.img_First,
@@ -1737,6 +1868,7 @@ namespace Watch_Face_Editor
                     imageX = this.Number_Target.imageX,
                     imageY = this.Number_Target.imageY,
                     space = this.Number_Target.space,
+                    angle = this.Number_Target.angle,
                     zero = this.Number_Target.zero,
                     align = this.Number_Target.align,
                     img_First = this.Number_Target.img_First,
@@ -1925,6 +2057,7 @@ namespace Watch_Face_Editor
                     imageX = this.Number.imageX,
                     imageY = this.Number.imageY,
                     space = this.Number.space,
+                    angle = this.Number.angle,
                     zero = this.Number.zero,
                     align = this.Number.align,
                     img_First = this.Number.img_First,
@@ -2113,6 +2246,7 @@ namespace Watch_Face_Editor
                     imageX = this.Number.imageX,
                     imageY = this.Number.imageY,
                     space = this.Number.space,
+                    angle = this.Number.angle,
                     zero = this.Number.zero,
                     align = this.Number.align,
                     img_First = this.Number.img_First,
@@ -2141,6 +2275,7 @@ namespace Watch_Face_Editor
                     imageX = this.Number_Target.imageX,
                     imageY = this.Number_Target.imageY,
                     space = this.Number_Target.space,
+                    angle = this.Number_Target.angle,
                     zero = this.Number_Target.zero,
                     align = this.Number_Target.align,
                     img_First = this.Number_Target.img_First,
@@ -2276,7 +2411,7 @@ namespace Watch_Face_Editor
         public bool visible = true;
 
         public hmUI_widget_IMG_NUMBER Number { get; set; }
-        public Text_Rotation Text_rotation { get; set; }
+        public hmUI_widget_IMG_NUMBER Text_rotation { get; set; }
         public Text_Circle Text_circle { get; set; }
         public hmUI_widget_IMG Icon { get; set; }
 
@@ -2290,6 +2425,7 @@ namespace Watch_Face_Editor
                     imageX = this.Number.imageX,
                     imageY = this.Number.imageY,
                     space = this.Number.space,
+                    angle = this.Number.angle,
                     zero = this.Number.zero,
                     align = this.Number.align,
                     img_First = this.Number.img_First,
@@ -2310,35 +2446,64 @@ namespace Watch_Face_Editor
                 };
             }
 
-            Text_Rotation Text_rotation = null;
+            hmUI_widget_IMG_NUMBER Text_rotation = null;
             if (this.Text_rotation != null)
             {
-                Text_rotation = new Text_Rotation
+                Text_rotation = new hmUI_widget_IMG_NUMBER
                 {
-                    rotation_point_X = this.Text_rotation.rotation_point_X,
-                    rotation_point_Y = this.Text_rotation.rotation_point_Y,
-                    angle = this.Text_rotation.angle,
+                    imageX = this.Text_rotation.imageX,
+                    imageY = this.Text_rotation.imageY,
                     space = this.Text_rotation.space,
+                    angle = this.Text_rotation.angle,
+                    zero = this.Text_rotation.zero,
+                    align = this.Text_rotation.align,
                     img_First = this.Text_rotation.img_First,
-                    image_width = this.Text_rotation.image_width,
-                    image_height = this.Text_rotation.image_height,
                     unit = this.Text_rotation.unit,
-                    unit_width = this.Text_rotation.unit_width,
                     imperial_unit = this.Text_rotation.imperial_unit,
+                    icon = this.Text_rotation.icon,
+                    iconPosX = this.Text_rotation.iconPosX,
+                    iconPosY = this.Text_rotation.iconPosY,
+                    negative_image = this.Text_rotation.negative_image,
+                    invalid_image = this.Text_rotation.invalid_image,
                     dot_image = this.Text_rotation.dot_image,
-                    dot_image_width = this.Text_rotation.dot_image_width,
-                    error_image = this.Text_rotation.error_image,
-                    error_width = this.Text_rotation.error_width,
-                    vertical_alignment = this.Text_rotation.vertical_alignment,
-                    horizontal_alignment = this.Text_rotation.horizontal_alignment,
                     unit_in_alignment = this.Text_rotation.unit_in_alignment,
 
                     position = this.Text_rotation.position,
                     visible = this.Text_rotation.visible,
-                    show_level = this.Number.show_level,
+                    show_level = this.Text_rotation.show_level,
                     type = this.Text_rotation.type,
                 };
             }
+
+            //Text_Rotation Text_rotation = null;
+            //if (this.Text_rotation != null)
+            //{
+            //    Text_rotation = new Text_Rotation
+            //    {
+            //        rotation_point_X = this.Text_rotation.rotation_point_X,
+            //        rotation_point_Y = this.Text_rotation.rotation_point_Y,
+            //        angle = this.Text_rotation.angle,
+            //        space = this.Text_rotation.space,
+            //        img_First = this.Text_rotation.img_First,
+            //        image_width = this.Text_rotation.image_width,
+            //        image_height = this.Text_rotation.image_height,
+            //        unit = this.Text_rotation.unit,
+            //        unit_width = this.Text_rotation.unit_width,
+            //        imperial_unit = this.Text_rotation.imperial_unit,
+            //        dot_image = this.Text_rotation.dot_image,
+            //        dot_image_width = this.Text_rotation.dot_image_width,
+            //        error_image = this.Text_rotation.error_image,
+            //        error_width = this.Text_rotation.error_width,
+            //        vertical_alignment = this.Text_rotation.vertical_alignment,
+            //        horizontal_alignment = this.Text_rotation.horizontal_alignment,
+            //        unit_in_alignment = this.Text_rotation.unit_in_alignment,
+
+            //        position = this.Text_rotation.position,
+            //        visible = this.Text_rotation.visible,
+            //        show_level = this.Number.show_level,
+            //        type = this.Text_rotation.type,
+            //    };
+            //}
 
             Text_Circle Text_circle = null;
             if (this.Text_circle != null)
@@ -2347,8 +2512,10 @@ namespace Watch_Face_Editor
                 {
                     circle_center_X = this.Text_circle.circle_center_X,
                     circle_center_Y = this.Text_circle.circle_center_Y,
+                    radius = this.Text_circle.radius,
                     angle = this.Text_circle.angle,
                     char_space_angle = this.Text_circle.char_space_angle,
+                    zero = this.Text_circle.zero,
                     img_First = this.Text_circle.img_First,
                     //image_width = this.Text_circle.image_width,
                     //image_height = this.Text_circle.image_height,
@@ -2371,6 +2538,23 @@ namespace Watch_Face_Editor
                 };
             }
 
+            hmUI_widget_IMG Icon = null;
+            if (this.Icon != null)
+            {
+                Icon = new hmUI_widget_IMG
+                {
+                    x = this.Icon.x,
+                    y = this.Icon.y,
+                    w = this.Icon.w,
+                    h = this.Icon.h,
+                    src = this.Icon.src,
+
+                    position = this.Icon.position,
+                    visible = this.Icon.visible,
+                    show_level = this.Icon.show_level,
+                };
+            }
+
             return new ElementDistance
             {
                 elementName = this.elementName,
@@ -2379,6 +2563,7 @@ namespace Watch_Face_Editor
                 Number = Number,
                 Text_rotation = Text_rotation,
                 Text_circle = Text_circle,
+                Icon = Icon,
             };
         }
     }
@@ -2447,6 +2632,7 @@ namespace Watch_Face_Editor
                     imageX = this.Number.imageX,
                     imageY = this.Number.imageY,
                     space = this.Number.space,
+                    angle = this.Number.angle,
                     zero = this.Number.zero,
                     align = this.Number.align,
                     img_First = this.Number.img_First,
@@ -2475,6 +2661,7 @@ namespace Watch_Face_Editor
                     imageX = this.Number_Target.imageX,
                     imageY = this.Number_Target.imageY,
                     space = this.Number_Target.space,
+                    angle = this.Number_Target.angle,
                     zero = this.Number_Target.zero,
                     align = this.Number_Target.align,
                     img_First = this.Number_Target.img_First,
@@ -2667,6 +2854,7 @@ namespace Watch_Face_Editor
                     imageX = this.Number.imageX,
                     imageY = this.Number.imageY,
                     space = this.Number.space,
+                    angle = this.Number.angle,
                     zero = this.Number.zero,
                     align = this.Number.align,
                     img_First = this.Number.img_First,
@@ -2695,6 +2883,7 @@ namespace Watch_Face_Editor
                     imageX = this.Number_Target.imageX,
                     imageY = this.Number_Target.imageY,
                     space = this.Number_Target.space,
+                    angle = this.Number_Target.angle,
                     zero = this.Number_Target.zero,
                     align = this.Number_Target.align,
                     img_First = this.Number_Target.img_First,
@@ -2843,6 +3032,7 @@ namespace Watch_Face_Editor
                     imageX = this.Number.imageX,
                     imageY = this.Number.imageY,
                     space = this.Number.space,
+                    angle = this.Number.angle,
                     zero = this.Number.zero,
                     align = this.Number.align,
                     img_First = this.Number.img_First,
@@ -2934,6 +3124,7 @@ namespace Watch_Face_Editor
                     imageX = this.Number.imageX,
                     imageY = this.Number.imageY,
                     space = this.Number.space,
+                    angle = this.Number.angle,
                     zero = this.Number.zero,
                     align = this.Number.align,
                     img_First = this.Number.img_First,
@@ -3075,6 +3266,7 @@ namespace Watch_Face_Editor
                     imageX = this.Number.imageX,
                     imageY = this.Number.imageY,
                     space = this.Number.space,
+                    angle = this.Number.angle,
                     zero = this.Number.zero,
                     align = this.Number.align,
                     img_First = this.Number.img_First,
@@ -3103,6 +3295,7 @@ namespace Watch_Face_Editor
                     imageX = this.Number_Target.imageX,
                     imageY = this.Number_Target.imageY,
                     space = this.Number_Target.space,
+                    angle = this.Number_Target.angle,
                     zero = this.Number_Target.zero,
                     align = this.Number_Target.align,
                     img_First = this.Number_Target.img_First,
@@ -3275,6 +3468,7 @@ namespace Watch_Face_Editor
                     imageX = this.Number.imageX,
                     imageY = this.Number.imageY,
                     space = this.Number.space,
+                    angle = this.Number.angle,
                     zero = this.Number.zero,
                     align = this.Number.align,
                     img_First = this.Number.img_First,
@@ -3303,6 +3497,7 @@ namespace Watch_Face_Editor
                     imageX = this.Number_Min.imageX,
                     imageY = this.Number_Min.imageY,
                     space = this.Number_Min.space,
+                    angle = this.Number_Min.angle,
                     zero = this.Number_Min.zero,
                     align = this.Number_Min.align,
                     img_First = this.Number_Min.img_First,
@@ -3331,6 +3526,7 @@ namespace Watch_Face_Editor
                     imageX = this.Number_Max.imageX,
                     imageY = this.Number_Max.imageY,
                     space = this.Number_Max.space,
+                    angle = this.Number_Max.angle,
                     zero = this.Number_Max.zero,
                     align = this.Number_Max.align,
                     img_First = this.Number_Max.img_First,
@@ -3470,6 +3666,7 @@ namespace Watch_Face_Editor
                     imageX = this.Number.imageX,
                     imageY = this.Number.imageY,
                     space = this.Number.space,
+                    angle = this.Number.angle,
                     zero = this.Number.zero,
                     align = this.Number.align,
                     img_First = this.Number.img_First,
@@ -3656,6 +3853,7 @@ namespace Watch_Face_Editor
                     imageX = this.Number.imageX,
                     imageY = this.Number.imageY,
                     space = this.Number.space,
+                    angle = this.Number.angle,
                     zero = this.Number.zero,
                     align = this.Number.align,
                     img_First = this.Number.img_First,
@@ -3803,6 +4001,7 @@ namespace Watch_Face_Editor
                     imageX = this.Number.imageX,
                     imageY = this.Number.imageY,
                     space = this.Number.space,
+                    angle = this.Number.angle,
                     zero = this.Number.zero,
                     align = this.Number.align,
                     img_First = this.Number.img_First,
@@ -3941,6 +4140,7 @@ namespace Watch_Face_Editor
                     imageX = this.Sunrise.imageX,
                     imageY = this.Sunrise.imageY,
                     space = this.Sunrise.space,
+                    angle = this.Sunrise.angle,
                     zero = this.Sunrise.zero,
                     align = this.Sunrise.align,
                     img_First = this.Sunrise.img_First,
@@ -3969,6 +4169,7 @@ namespace Watch_Face_Editor
                     imageX = this.Sunset.imageX,
                     imageY = this.Sunset.imageY,
                     space = this.Sunset.space,
+                    angle = this.Sunset.angle,
                     zero = this.Sunset.zero,
                     align = this.Sunset.align,
                     img_First = this.Sunset.img_First,
@@ -3997,6 +4198,7 @@ namespace Watch_Face_Editor
                     imageX = this.Sunset_Sunrise.imageX,
                     imageY = this.Sunset_Sunrise.imageY,
                     space = this.Sunset_Sunrise.space,
+                    angle = this.Sunset_Sunrise.angle,
                     zero = this.Sunset_Sunrise.zero,
                     align = this.Sunset_Sunrise.align,
                     img_First = this.Sunset_Sunrise.img_First,
@@ -4138,6 +4340,7 @@ namespace Watch_Face_Editor
                     imageX = this.Number.imageX,
                     imageY = this.Number.imageY,
                     space = this.Number.space,
+                    angle = this.Number.angle,
                     zero = this.Number.zero,
                     align = this.Number.align,
                     img_First = this.Number.img_First,

@@ -144,6 +144,7 @@ namespace Watch_Face_Editor
             this.panel_UC_TopImage = new System.Windows.Forms.Panel();
             this.uCtrl_TopImage_Elm = new ControlLibrary.UCtrl_TopImage_Elm();
             this.panel_ElementsOpt = new System.Windows.Forms.Panel();
+            this.uCtrl_Text_Rotate_Opt = new ControlLibrary.UCtrl_Text_Rotate_Opt();
             this.uCtrl_Text_Circle_Opt = new ControlLibrary.UCtrl_Text_Circle_Opt();
             this.uCtrl_RepeatingAlert_Opt = new ControlLibrary.UCtrl_RepeatingAlert_Opt();
             this.uCtrl_SmoothSeconds_Opt = new ControlLibrary.UCtrl_SmoothSeconds_Opt();
@@ -1448,6 +1449,7 @@ namespace Watch_Face_Editor
             // 
             resources.ApplyResources(this.panel_ElementsOpt, "panel_ElementsOpt");
             this.panel_ElementsOpt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_ElementsOpt.Controls.Add(this.uCtrl_Text_Rotate_Opt);
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_Text_Circle_Opt);
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_RepeatingAlert_Opt);
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_SmoothSeconds_Opt);
@@ -1472,6 +1474,19 @@ namespace Watch_Face_Editor
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_EditableElements_Opt);
             this.panel_ElementsOpt.Name = "panel_ElementsOpt";
             // 
+            // uCtrl_Text_Rotate_Opt
+            // 
+            this.uCtrl_Text_Rotate_Opt.Distance = false;
+            resources.ApplyResources(this.uCtrl_Text_Rotate_Opt, "uCtrl_Text_Rotate_Opt");
+            this.uCtrl_Text_Rotate_Opt.ImageError = false;
+            this.uCtrl_Text_Rotate_Opt.Name = "uCtrl_Text_Rotate_Opt";
+            this.uCtrl_Text_Rotate_Opt.OptionalSymbol = false;
+            this.uCtrl_Text_Rotate_Opt.PaddingZero = false;
+            this.uCtrl_Text_Rotate_Opt.Sunrise = false;
+            this.uCtrl_Text_Rotate_Opt.Weather = false;
+            this.uCtrl_Text_Rotate_Opt.Year = false;
+            this.uCtrl_Text_Rotate_Opt.ValueChanged += new ControlLibrary.UCtrl_Text_Rotate_Opt.ValueChangedHandler(this.uCtrl_Text_Rotate_Opt_ValueChanged);
+            // 
             // uCtrl_Text_Circle_Opt
             // 
             this.uCtrl_Text_Circle_Opt.Distance = false;
@@ -1480,6 +1495,7 @@ namespace Watch_Face_Editor
             this.uCtrl_Text_Circle_Opt.OptionalSymbol = false;
             this.uCtrl_Text_Circle_Opt.PaddingZero = false;
             this.uCtrl_Text_Circle_Opt.Sunrise = false;
+            this.uCtrl_Text_Circle_Opt.Weather = false;
             this.uCtrl_Text_Circle_Opt.Year = false;
             this.uCtrl_Text_Circle_Opt.ValueChanged += new ControlLibrary.UCtrl_Text_Circle_Opt.ValueChangedHandler(this.uCtrl_Text_Circle_Opt_ValueChanged);
             // 
@@ -3087,6 +3103,7 @@ namespace Watch_Face_Editor
         private ControlLibrary.UCtrl_TopImage_Elm uCtrl_TopImage_Elm;
         private System.Windows.Forms.Button button_SavePNG_shortcut;
         private ControlLibrary.UCtrl_Text_Circle_Opt uCtrl_Text_Circle_Opt;
+        private ControlLibrary.UCtrl_Text_Rotate_Opt uCtrl_Text_Rotate_Opt;
     }
 }
 

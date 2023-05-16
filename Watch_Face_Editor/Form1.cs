@@ -427,7 +427,7 @@ namespace Watch_Face_Editor
             userCtrl_Background_Options.Visible = false;
             uCtrl_EditableBackground_Opt.AutoSize = true;
             uCtrl_Text_Opt.AutoSize = true;
-            //uCtrl_Text_Opt.AutoSize = true;
+            uCtrl_Text_Rotate_Opt.AutoSize = true;
             uCtrl_Text_Circle_Opt.AutoSize = true;
             uCtrl_Text_Weather_Opt.AutoSize = true;
             uCtrl_AmPm_Opt.AutoSize = true;
@@ -1664,7 +1664,7 @@ namespace Watch_Face_Editor
                     uCtrl_Text_Opt.Visible = true;
                     break;
                 case "Text_rotation":
-                    //uCtrl_Text_Rotation_Opt.Visible = true;
+                    uCtrl_Text_Rotate_Opt.Visible = true;
                     break;
                 case "Text_circle":
                     uCtrl_Text_Circle_Opt.Visible = true;
@@ -1736,7 +1736,7 @@ namespace Watch_Face_Editor
             userCtrl_Background_Options.Visible = false;
             uCtrl_EditableBackground_Opt.Visible = false;
             uCtrl_Text_Opt.Visible = false;
-            //uCtrl_Text_Rotation_Opt.Visible = false;
+            uCtrl_Text_Rotate_Opt.Visible = false;
             uCtrl_Text_Circle_Opt.Visible = false;
             uCtrl_Text_Weather_Opt.Visible = false;
             uCtrl_AmPm_Opt.Visible = false;
@@ -2378,7 +2378,7 @@ namespace Watch_Face_Editor
             userCtrl_Background_Options.ComboBoxAddItems(ListImages, ListImagesFullName);
             uCtrl_EditableBackground_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
             uCtrl_Text_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
-            //uCtrl_Text_Rotation_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
+            uCtrl_Text_Rotate_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
             uCtrl_Text_Circle_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
             uCtrl_Text_Weather_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
             uCtrl_AmPm_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
@@ -5287,10 +5287,30 @@ namespace Watch_Face_Editor
                                 uCtrl_Steps_Elm.checkBox_Number.Checked = Steps.Number.visible;
                                 elementOptions.Add(Steps.Number.position, "Number");
                             }
+                            if (Steps.Text_rotation != null)
+                            {
+                                uCtrl_Steps_Elm.checkBox_Text_rotation.Checked = Steps.Text_rotation.visible;
+                                elementOptions.Add(Steps.Text_rotation.position, "Text_rotation");
+                            }
+                            if (Steps.Text_circle != null)
+                            {
+                                uCtrl_Steps_Elm.checkBox_Text_circle.Checked = Steps.Text_circle.visible;
+                                elementOptions.Add(Steps.Text_circle.position, "Text_circle");
+                            }
                             if (Steps.Number_Target != null)
                             {
                                 uCtrl_Steps_Elm.checkBox_Number_Target.Checked = Steps.Number_Target.visible;
                                 elementOptions.Add(Steps.Number_Target.position, "Number_Target");
+                            }
+                            if (Steps.Text_rotation_Target != null)
+                            {
+                                uCtrl_Steps_Elm.checkBox_Text_rotation_Target.Checked = Steps.Text_rotation_Target.visible;
+                                elementOptions.Add(Steps.Text_rotation_Target.position, "Text_rotation_Target");
+                            }
+                            if (Steps.Text_circle_Target != null)
+                            {
+                                uCtrl_Steps_Elm.checkBox_Text_circle_Target.Checked = Steps.Text_circle_Target.visible;
+                                elementOptions.Add(Steps.Text_circle_Target.position, "Text_circle_Target");
                             }
                             if (Steps.Pointer != null)
                             {
@@ -10353,6 +10373,8 @@ namespace Watch_Face_Editor
                 hmUI_widget_IMG_LEVEL img_level = null;
                 hmUI_widget_IMG_PROGRESS img_prorgess = null;
                 hmUI_widget_IMG_NUMBER img_number = null;
+                hmUI_widget_IMG_NUMBER text_rotation = null;
+                Text_Circle text_circle = null;
                 hmUI_widget_IMG_POINTER img_pointer = null;
                 Circle_Scale circle_scale = null;
                 Linear_Scale linear_scale = null;
@@ -10387,12 +10409,48 @@ namespace Watch_Face_Editor
                         }
                         else HideAllElemenrOptions();
                         break;
+                    case "Text_rotation":
+                        if (uCtrl_Steps_Elm.checkBox_Text_rotation.Checked)
+                        {
+                            text_rotation = steps.Text_rotation;
+                            Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
+                            ShowElemenrOptions("Text_rotation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_circle":
+                        if (uCtrl_Steps_Elm.checkBox_Text_circle.Checked)
+                        {
+                            text_circle = steps.Text_circle;
+                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            ShowElemenrOptions("Text_circle");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
                     case "Number_Target":
                         if (uCtrl_Steps_Elm.checkBox_Number_Target.Checked)
                         {
                             img_number = steps.Number_Target;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_rotation_Target":
+                        if (uCtrl_Steps_Elm.checkBox_Text_rotation_Target.Checked)
+                        {
+                            text_rotation = steps.Text_rotation_Target;
+                            Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
+                            ShowElemenrOptions("Text_rotation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_circle_Target":
+                        if (uCtrl_Steps_Elm.checkBox_Text_circle_Target.Checked)
+                        {
+                            text_circle = steps.Text_circle_Target;
+                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            ShowElemenrOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -10899,7 +10957,7 @@ namespace Watch_Face_Editor
             if (distance != null)
             {
                 hmUI_widget_IMG_NUMBER img_number = null;
-                Text_Rotation text_rotation = null;
+                hmUI_widget_IMG_NUMBER text_rotation = null;
                 Text_Circle text_circle = null;
                 hmUI_widget_IMG icon = null;
 
@@ -10909,7 +10967,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Distance_Elm.checkBox_Number.Checked)
                         {
                             img_number = distance.Number;
-                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
+                            Read_ImgNumber_Options(img_number, true, false, "", false, true, true, true);
                             ShowElemenrOptions("Text");
                         }
                         else HideAllElemenrOptions();
@@ -10918,7 +10976,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Distance_Elm.checkBox_Text_rotation.Checked)
                         {
                             text_rotation = distance.Text_rotation;
-                            Read_TextRotation_Options(text_rotation, true, false, false, true, true);
+                            Read_ImgNumber_Rotate_Options(text_rotation, true, false, false, false, true, true);
                             ShowElemenrOptions("Text_rotation");
                         }
                         else HideAllElemenrOptions();
@@ -12784,7 +12842,11 @@ namespace Watch_Face_Editor
                 if (steps.Images == null) steps.Images = new hmUI_widget_IMG_LEVEL();
                 if (steps.Segments == null) steps.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (steps.Number == null) steps.Number = new hmUI_widget_IMG_NUMBER();
+                if (steps.Text_rotation == null) steps.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                if (steps.Text_circle == null) steps.Text_circle = new Text_Circle();
                 if (steps.Number_Target == null) steps.Number_Target = new hmUI_widget_IMG_NUMBER();
+                if (steps.Text_rotation == null) steps.Text_rotation_Target = new hmUI_widget_IMG_NUMBER();
+                if (steps.Text_circle == null) steps.Text_circle_Target = new Text_Circle();
                 if (steps.Pointer == null) steps.Pointer = new hmUI_widget_IMG_POINTER();
                 if (steps.Circle_Scale == null) steps.Circle_Scale = new Circle_Scale();
                 if (steps.Linear_Scale == null) steps.Linear_Scale = new Linear_Scale();
@@ -12793,7 +12855,11 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) steps.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) steps.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) steps.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Text_rotation")) steps.Text_rotation.position = elementOptions["Text_rotation"];
+                if (elementOptions.ContainsKey("Text_circle")) steps.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Number_Target")) steps.Number_Target.position = elementOptions["Number_Target"];
+                if (elementOptions.ContainsKey("Text_rotation_Target")) steps.Text_rotation.position = elementOptions["Text_rotation_Target"];
+                if (elementOptions.ContainsKey("Text_circle_Target")) steps.Text_circle.position = elementOptions["Text_circle_Target"];
                 if (elementOptions.ContainsKey("Pointer")) steps.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Circle_Scale")) steps.Circle_Scale.position = elementOptions["Circle_Scale"];
                 if (elementOptions.ContainsKey("Linear_Scale")) steps.Linear_Scale.position = elementOptions["Linear_Scale"];
@@ -13056,7 +13122,7 @@ namespace Watch_Face_Editor
             if (distance != null)
             {
                 if (distance.Number == null) distance.Number = new hmUI_widget_IMG_NUMBER();
-                if (distance.Text_rotation == null) distance.Text_rotation = new Text_Rotation();
+                if (distance.Text_rotation == null) distance.Text_rotation = new hmUI_widget_IMG_NUMBER();
                 if (distance.Text_circle == null) distance.Text_circle = new Text_Circle();
                 if (distance.Icon == null) distance.Icon = new hmUI_widget_IMG();
 
@@ -14603,7 +14669,11 @@ namespace Watch_Face_Editor
                 if (steps.Images == null) steps.Images = new hmUI_widget_IMG_LEVEL();
                 if (steps.Segments == null) steps.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (steps.Number == null) steps.Number = new hmUI_widget_IMG_NUMBER();
+                if (steps.Text_rotation == null) steps.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                if (steps.Text_circle == null) steps.Text_circle = new Text_Circle();
                 if (steps.Number_Target == null) steps.Number_Target = new hmUI_widget_IMG_NUMBER();
+                if (steps.Text_rotation_Target == null) steps.Text_rotation_Target = new hmUI_widget_IMG_NUMBER();
+                if (steps.Text_circle_Target == null) steps.Text_circle_Target = new Text_Circle();
                 if (steps.Pointer == null) steps.Pointer = new hmUI_widget_IMG_POINTER();
                 if (steps.Circle_Scale == null) steps.Circle_Scale = new Circle_Scale();
                 if (steps.Linear_Scale == null) steps.Linear_Scale = new Linear_Scale();
@@ -14613,7 +14683,11 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) steps.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) steps.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) steps.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Text_rotation")) steps.Text_rotation.position = elementOptions["Text_rotation"];
+                if (elementOptions.ContainsKey("Text_circle")) steps.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Number_Target")) steps.Number_Target.position = elementOptions["Number_Target"];
+                if (elementOptions.ContainsKey("Text_rotation")) steps.Text_rotation_Target.position = elementOptions["Text_rotation_Target"];
+                if (elementOptions.ContainsKey("Text_circle")) steps.Text_circle_Target.position = elementOptions["Text_circle_Target"];
                 if (elementOptions.ContainsKey("Pointer")) steps.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Circle_Scale")) steps.Circle_Scale.position = elementOptions["Circle_Scale"];
                 if (elementOptions.ContainsKey("Linear_Scale")) steps.Linear_Scale.position = elementOptions["Linear_Scale"];
@@ -14632,8 +14706,20 @@ namespace Watch_Face_Editor
                     case "checkBox_Number":
                         steps.Number.visible = checkBox.Checked;
                         break;
+                    case "checkBox_Text_rotation":
+                        steps.Text_rotation.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_circle":
+                        steps.Text_circle.visible = checkBox.Checked;
+                        break;
                     case "checkBox_Number_Target":
                         steps.Number_Target.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_rotation_Target":
+                        steps.Text_rotation_Target.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_circle_Target":
+                        steps.Text_circle_Target.visible = checkBox.Checked;
                         break;
                     case "checkBox_Pointer":
                         steps.Pointer.visible = checkBox.Checked;
@@ -15034,11 +15120,11 @@ namespace Watch_Face_Editor
             if (distance != null)
             {
                 if (distance.Number == null) distance.Number = new hmUI_widget_IMG_NUMBER();
-                if (distance.Text_rotation == null) distance.Text_rotation = new Text_Rotation();
+                if (distance.Text_rotation == null) distance.Text_rotation = new hmUI_widget_IMG_NUMBER();
                 if (distance.Text_circle == null) distance.Text_circle = new Text_Circle();
                 if (distance.Icon == null) distance.Icon = new hmUI_widget_IMG();
 
-                Dictionary<string, int> elementOptions = uCtrl_PAI_Elm.GetOptionsPosition();
+                Dictionary<string, int> elementOptions = uCtrl_Distance_Elm.GetOptionsPosition();
                 if (elementOptions.ContainsKey("Number")) distance.Number.position = elementOptions["Number"];
                 if (elementOptions.ContainsKey("Text_rotation")) distance.Text_rotation.position = elementOptions["Text_rotation"];
                 if (elementOptions.ContainsKey("Text_circle")) distance.Text_circle.position = elementOptions["Text_circle"];

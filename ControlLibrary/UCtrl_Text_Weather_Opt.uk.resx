@@ -129,9 +129,6 @@
   <data name="label06.Text" xml:space="preserve">
     <value>Зображення при помилці</value>
   </data>
-  <data name="label07.Text" xml:space="preserve">
-    <value>Символ"-"</value>
-  </data>
   <data name="label10.Text" xml:space="preserve">
     <value>Одиниці 
 виміру (°F)</value>
