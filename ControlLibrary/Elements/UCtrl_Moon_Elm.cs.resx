@@ -120,14 +120,4 @@
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Měsíční fáze</value>
   </data>
-  <data name="button_ElementName.ToolTip" xml:space="preserve">
-    <value>1. Mladý měsíc
-2. První čtvrt Měsíce
-3. Dorůstající Měsíc
-4. Úplněk
-5. Ubývající měsíc
-6. Poslední čtvrtměsíc
-7. Starý měsíc
-8. Nový měsíc</value>
-  </data>
 </root>

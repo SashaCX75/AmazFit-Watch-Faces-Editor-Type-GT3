@@ -128,7 +128,7 @@
             this.numericUpDown_centr_Y.Name = "numericUpDown_centr_Y";
             this.numericUpDown_centr_Y.ValueChanged += new System.EventHandler(this.numericUpDown_ValueChanged);
             this.numericUpDown_centr_Y.KeyDown += new System.Windows.Forms.KeyEventHandler(this.numericUpDown_image_KeyDown);
-            this.numericUpDown_centr_Y.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesX_MouseDoubleClick);
+            this.numericUpDown_centr_Y.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.numericUpDown_picturesY_MouseDoubleClick);
             // 
             // label02
             // 

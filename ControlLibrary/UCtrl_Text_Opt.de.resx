@@ -311,4 +311,7 @@
   <data name="label_unit_miles.Text" xml:space="preserve">
     <value>Einheit (ml)</value>
   </data>
+  <data name="label_angle.Text" xml:space="preserve">
+    <value>Winkel</value>
+  </data>
 </root>

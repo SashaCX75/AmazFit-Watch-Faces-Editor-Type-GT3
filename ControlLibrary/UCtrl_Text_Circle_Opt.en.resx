@@ -332,4 +332,7 @@
   <data name="checkBox_unit_in_alignment.Text" xml:space="preserve">
     <value>Consider units of measure when aligning</value>
   </data>
+  <data name="label_minus_image.Text" xml:space="preserve">
+    <value>Symbol "-"</value>
+  </data>
 </root>

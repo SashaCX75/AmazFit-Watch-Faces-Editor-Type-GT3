@@ -31,6 +31,18 @@ namespace ControlLibrary
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrl_Calories_Elm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel_Text_circle_Target = new System.Windows.Forms.Panel();
+            this.button_Text_circle_Target = new System.Windows.Forms.Button();
+            this.checkBox_Text_circle_Target = new System.Windows.Forms.CheckBox();
+            this.panel_Text_rotation_Target = new System.Windows.Forms.Panel();
+            this.button_Text_rotation_Target = new System.Windows.Forms.Button();
+            this.checkBox_Text_rotation_Target = new System.Windows.Forms.CheckBox();
+            this.panel_Text_circle = new System.Windows.Forms.Panel();
+            this.button_Text_circle = new System.Windows.Forms.Button();
+            this.checkBox_Text_circle = new System.Windows.Forms.CheckBox();
+            this.panel_Text_rotation = new System.Windows.Forms.Panel();
+            this.button_Text_rotation = new System.Windows.Forms.Button();
+            this.checkBox_Text_rotation = new System.Windows.Forms.CheckBox();
             this.panel_Linear_Scale = new System.Windows.Forms.Panel();
             this.button_Linear_Scale = new System.Windows.Forms.Button();
             this.checkBox_Linear_Scale = new System.Windows.Forms.CheckBox();
@@ -62,6 +74,10 @@ namespace ControlLibrary
             this.pictureBox_Del = new System.Windows.Forms.PictureBox();
             this.button_ElementName = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
+            this.panel_Text_circle_Target.SuspendLayout();
+            this.panel_Text_rotation_Target.SuspendLayout();
+            this.panel_Text_circle.SuspendLayout();
+            this.panel_Text_rotation.SuspendLayout();
             this.panel_Linear_Scale.SuspendLayout();
             this.panel_Images.SuspendLayout();
             this.panel_Segments.SuspendLayout();
@@ -81,17 +97,149 @@ namespace ControlLibrary
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.AllowDrop = true;
-            this.tableLayoutPanel1.Controls.Add(this.panel_Linear_Scale, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Text_circle_Target, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Text_rotation_Target, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Text_circle, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Text_rotation, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Linear_Scale, 0, 10);
             this.tableLayoutPanel1.Controls.Add(this.panel_Images, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel_Segments, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel_Number, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.panel_Number_Target, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.panel_Pointer, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.panel_Circle_Scale, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.panel_Icon, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Number_Target, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Pointer, 0, 8);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Circle_Scale, 0, 9);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Icon, 0, 11);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragDrop);
             this.tableLayoutPanel1.DragOver += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragOver);
+            // 
+            // panel_Text_circle_Target
+            // 
+            resources.ApplyResources(this.panel_Text_circle_Target, "panel_Text_circle_Target");
+            this.panel_Text_circle_Target.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_Text_circle_Target.Controls.Add(this.button_Text_circle_Target);
+            this.panel_Text_circle_Target.Controls.Add(this.checkBox_Text_circle_Target);
+            this.panel_Text_circle_Target.Name = "panel_Text_circle_Target";
+            this.panel_Text_circle_Target.Click += new System.EventHandler(this.panel_Text_circle_Target_Click);
+            this.panel_Text_circle_Target.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.panel_Text_circle_Target.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.panel_Text_circle_Target.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // button_Text_circle_Target
+            // 
+            resources.ApplyResources(this.button_Text_circle_Target, "button_Text_circle_Target");
+            this.button_Text_circle_Target.FlatAppearance.BorderSize = 0;
+            this.button_Text_circle_Target.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.button_Text_circle_Target.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.button_Text_circle_Target.Name = "button_Text_circle_Target";
+            this.button_Text_circle_Target.UseVisualStyleBackColor = true;
+            this.button_Text_circle_Target.Click += new System.EventHandler(this.panel_Text_circle_Target_Click);
+            this.button_Text_circle_Target.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.button_Text_circle_Target.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.button_Text_circle_Target.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // checkBox_Text_circle_Target
+            // 
+            resources.ApplyResources(this.checkBox_Text_circle_Target, "checkBox_Text_circle_Target");
+            this.checkBox_Text_circle_Target.Name = "checkBox_Text_circle_Target";
+            this.checkBox_Text_circle_Target.UseVisualStyleBackColor = true;
+            this.checkBox_Text_circle_Target.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
+            // 
+            // panel_Text_rotation_Target
+            // 
+            resources.ApplyResources(this.panel_Text_rotation_Target, "panel_Text_rotation_Target");
+            this.panel_Text_rotation_Target.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_Text_rotation_Target.Controls.Add(this.button_Text_rotation_Target);
+            this.panel_Text_rotation_Target.Controls.Add(this.checkBox_Text_rotation_Target);
+            this.panel_Text_rotation_Target.Name = "panel_Text_rotation_Target";
+            this.panel_Text_rotation_Target.Click += new System.EventHandler(this.panel_Text_rotation_Target_Click);
+            this.panel_Text_rotation_Target.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.panel_Text_rotation_Target.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.panel_Text_rotation_Target.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // button_Text_rotation_Target
+            // 
+            resources.ApplyResources(this.button_Text_rotation_Target, "button_Text_rotation_Target");
+            this.button_Text_rotation_Target.FlatAppearance.BorderSize = 0;
+            this.button_Text_rotation_Target.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.button_Text_rotation_Target.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.button_Text_rotation_Target.Name = "button_Text_rotation_Target";
+            this.button_Text_rotation_Target.UseVisualStyleBackColor = true;
+            this.button_Text_rotation_Target.Click += new System.EventHandler(this.panel_Text_rotation_Target_Click);
+            this.button_Text_rotation_Target.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.button_Text_rotation_Target.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.button_Text_rotation_Target.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // checkBox_Text_rotation_Target
+            // 
+            resources.ApplyResources(this.checkBox_Text_rotation_Target, "checkBox_Text_rotation_Target");
+            this.checkBox_Text_rotation_Target.Name = "checkBox_Text_rotation_Target";
+            this.checkBox_Text_rotation_Target.UseVisualStyleBackColor = true;
+            this.checkBox_Text_rotation_Target.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
+            // 
+            // panel_Text_circle
+            // 
+            resources.ApplyResources(this.panel_Text_circle, "panel_Text_circle");
+            this.panel_Text_circle.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_Text_circle.Controls.Add(this.button_Text_circle);
+            this.panel_Text_circle.Controls.Add(this.checkBox_Text_circle);
+            this.panel_Text_circle.Name = "panel_Text_circle";
+            this.panel_Text_circle.Click += new System.EventHandler(this.panel_Text_circle_Click);
+            this.panel_Text_circle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.panel_Text_circle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.panel_Text_circle.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // button_Text_circle
+            // 
+            resources.ApplyResources(this.button_Text_circle, "button_Text_circle");
+            this.button_Text_circle.FlatAppearance.BorderSize = 0;
+            this.button_Text_circle.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.button_Text_circle.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.button_Text_circle.Name = "button_Text_circle";
+            this.button_Text_circle.UseVisualStyleBackColor = true;
+            this.button_Text_circle.Click += new System.EventHandler(this.panel_Text_circle_Click);
+            this.button_Text_circle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.button_Text_circle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.button_Text_circle.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // checkBox_Text_circle
+            // 
+            resources.ApplyResources(this.checkBox_Text_circle, "checkBox_Text_circle");
+            this.checkBox_Text_circle.Name = "checkBox_Text_circle";
+            this.checkBox_Text_circle.UseVisualStyleBackColor = true;
+            this.checkBox_Text_circle.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
+            // 
+            // panel_Text_rotation
+            // 
+            resources.ApplyResources(this.panel_Text_rotation, "panel_Text_rotation");
+            this.panel_Text_rotation.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_Text_rotation.Controls.Add(this.button_Text_rotation);
+            this.panel_Text_rotation.Controls.Add(this.checkBox_Text_rotation);
+            this.panel_Text_rotation.Name = "panel_Text_rotation";
+            this.panel_Text_rotation.Click += new System.EventHandler(this.panel_Text_rotation_Click);
+            this.panel_Text_rotation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.panel_Text_rotation.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.panel_Text_rotation.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // button_Text_rotation
+            // 
+            resources.ApplyResources(this.button_Text_rotation, "button_Text_rotation");
+            this.button_Text_rotation.FlatAppearance.BorderSize = 0;
+            this.button_Text_rotation.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.button_Text_rotation.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.button_Text_rotation.Name = "button_Text_rotation";
+            this.button_Text_rotation.UseVisualStyleBackColor = true;
+            this.button_Text_rotation.Click += new System.EventHandler(this.panel_Text_rotation_Click);
+            this.button_Text_rotation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.button_Text_rotation.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.button_Text_rotation.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // checkBox_Text_rotation
+            // 
+            resources.ApplyResources(this.checkBox_Text_rotation, "checkBox_Text_rotation");
+            this.checkBox_Text_rotation.Name = "checkBox_Text_rotation";
+            this.checkBox_Text_rotation.UseVisualStyleBackColor = true;
+            this.checkBox_Text_rotation.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
             // 
             // panel_Linear_Scale
             // 
@@ -421,6 +569,14 @@ namespace ControlLibrary
             this.Controls.Add(this.button_ElementName);
             this.Name = "UCtrl_Calories_Elm";
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel_Text_circle_Target.ResumeLayout(false);
+            this.panel_Text_circle_Target.PerformLayout();
+            this.panel_Text_rotation_Target.ResumeLayout(false);
+            this.panel_Text_rotation_Target.PerformLayout();
+            this.panel_Text_circle.ResumeLayout(false);
+            this.panel_Text_circle.PerformLayout();
+            this.panel_Text_rotation.ResumeLayout(false);
+            this.panel_Text_rotation.PerformLayout();
             this.panel_Linear_Scale.ResumeLayout(false);
             this.panel_Linear_Scale.PerformLayout();
             this.panel_Images.ResumeLayout(false);
@@ -480,5 +636,17 @@ namespace ControlLibrary
         private System.Windows.Forms.Button button_Icon;
         public System.Windows.Forms.CheckBox checkBox_Icon;
         private System.Windows.Forms.Button button_ElementName;
+        private System.Windows.Forms.Panel panel_Text_rotation;
+        private System.Windows.Forms.Button button_Text_rotation;
+        public System.Windows.Forms.CheckBox checkBox_Text_rotation;
+        private System.Windows.Forms.Panel panel_Text_circle;
+        private System.Windows.Forms.Button button_Text_circle;
+        public System.Windows.Forms.CheckBox checkBox_Text_circle;
+        private System.Windows.Forms.Panel panel_Text_rotation_Target;
+        private System.Windows.Forms.Button button_Text_rotation_Target;
+        public System.Windows.Forms.CheckBox checkBox_Text_rotation_Target;
+        private System.Windows.Forms.Panel panel_Text_circle_Target;
+        private System.Windows.Forms.Button button_Text_circle_Target;
+        public System.Windows.Forms.CheckBox checkBox_Text_circle_Target;
     }
 }

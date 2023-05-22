@@ -117,6 +117,45 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="button_Text_circle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
+        EAAAjBIAAP1NAACBPgAAWesAARIPAAA85gAAGc66ySIyAAABJmlDQ1BBZG9iZSBSR0IgKDE5OTgpAAAo
+        z2NgYDJwdHFyZRJgYMjNKykKcndSiIiMUmA/z8DGwMwABonJxQWOAQE+IHZefl4qAwb4do2BEURf1gWZ
+        xUAa4EouKCoB0n+A2CgltTiZgYHRAMjOLi8pAIozzgGyRZKywewNIHZRSJAzkH0EyOZLh7CvgNhJEPYT
+        ELsI6Akg+wtIfTqYzcQBNgfClgGxS1IrQPYyOOcXVBZlpmeUKBhaWloqOKbkJ6UqBFcWl6TmFit45iXn
+        FxXkFyWWpKYA1ULcBwaCEIWgENMAarTQZKAyAMUDhPU5EBy+jGJnEGIIkFxaVAZlMjIZE+YjzJgjwcDg
+        v5SBgeUPQsykl4FhgQ4DA/9UhJiaIQODgD4Dw745AMDGT/0ZOjZcAAAACXBIWXMAAAsMAAALDAE/QCLI
+        AAABAUlEQVQ4T5WSDRHCMBSDJ2ESkIADkIADkIADkIADkDIH4IA5GA5Gvrdm10G3g9xl17VN3k9flaPv
+        +6DQ8StuE1l36azmUwIHL5FbrXgRVyL7Z7ERw0hcixPY9SAeh2URZEOQiQliNhD/AoSYPMXaNfNZMnAp
+        xk6UNLThRs1zQEyGdzE3eYhkEdFpWAlkdRVpIoEwM9iLFGhMfmAg5oID5NFBlMFiI34a+BAS+evZhNHA
+        EQzXvCQGNzEM/CSGJ29JDGh8W3pGap3ri8Gwjc+IgGj/DBJKnnGEO4zJflgWEZHFYnnOhAsMzSntUQqz
+        4MYSebY3darLRvTCTW3TmbMVquoNr1ZmWoWICBcAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="button_Text_circle.Text" xml:space="preserve">
+    <value>Value on a circle</value>
+  </data>
+  <data name="button_Text_rotation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
+        EAAAjBIAAP1NAACBPgAAWesAARIPAAA85gAAGc66ySIyAAABJmlDQ1BBZG9iZSBSR0IgKDE5OTgpAAAo
+        z2NgYDJwdHFyZRJgYMjNKykKcndSiIiMUmA/z8DGwMwABonJxQWOAQE+IHZefl4qAwb4do2BEURf1gWZ
+        xUAa4EouKCoB0n+A2CgltTiZgYHRAMjOLi8pAIozzgGyRZKywewNIHZRSJAzkH0EyOZLh7CvgNhJEPYT
+        ELsI6Akg+wtIfTqYzcQBNgfClgGxS1IrQPYyOOcXVBZlpmeUKBhaWloqOKbkJ6UqBFcWl6TmFit45iXn
+        FxXkFyWWpKYA1ULcBwaCEIWgENMAarTQZKAyAMUDhPU5EBy+jGJnEGIIkFxaVAZlMjIZE+YjzJgjwcDg
+        v5SBgeUPQsykl4FhgQ4DA/9UhJiaIQODgD4Dw745AMDGT/0ZOjZcAAAACXBIWXMAAAsMAAALDAE/QCLI
+        AAAA50lEQVQ4T6XSPWoCQQDF8YG1C+IFVHIHtfAEeoGks5EIIqbICTyBvZW9WAlpPUKwsI5HsDARG2X9
+        v1lW1nFn/Xrwk92R91gXTRiGT0k9vEf0YUwJM3TwooNbkhyo6R6/2GCECjKTHFAW+EQTc+iLH3SRx0Xc
+        gR5WCOydMVPsccAWbziLO1DAP94xhMotvEJPlkMDO6jUdweUMf4Ql91UsYZ3oA4dDOzdeeKyXnQbH2kD
+        yhLf0eUpyXJZByTwDej3TqJLm7SyjW9AfyS9MMVbVnwDcTLLStZAEZll5doTfMFbVk4DjwvNEZW8Chyw
+        KOoAAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="button_Text_rotation.Text" xml:space="preserve">
+    <value>Value at angle</value>
+  </data>
   <data name="button_Linear_Scale.Text" xml:space="preserve">
     <value>Linear progress</value>
   </data>
@@ -129,7 +168,6 @@
   <data name="button_Number.Text" xml:space="preserve">
     <value>Numerical values</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="button_Pointer.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH

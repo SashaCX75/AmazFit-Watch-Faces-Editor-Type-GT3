@@ -120,14 +120,4 @@
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Фази місяця</value>
   </data>
-  <data name="button_ElementName.ToolTip" xml:space="preserve">
-    <value>1. Молодий місяць
-2. Перша чверть місяця
-3. Прибуваючий місяць
-4. Повний місяць
-5. Спадаючий місяць
-6. Остання чверть місяця
-7. Старий місяць
-8. Новий місяць</value>
-  </data>
 </root>

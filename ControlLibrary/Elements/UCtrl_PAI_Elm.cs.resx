@@ -177,4 +177,10 @@
         Gjq6wO17AAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="button_Text_circle_Target.Text" xml:space="preserve">
+    <value>Kruhová data (týden)</value>
+  </data>
+  <data name="button_Text_rotation_Target.Text" xml:space="preserve">
+    <value>Data úhlu (týden)</value>
+  </data>
 </root>

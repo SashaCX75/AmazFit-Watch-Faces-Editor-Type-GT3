@@ -120,14 +120,4 @@
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Mond-Phase</value>
   </data>
-  <data name="button_ElementName.ToolTip" xml:space="preserve">
-    <value>1. wachsende Mondsichel
-2. Erstes Viertel
-3. Wachsender Halbmond
-5. Vollmond
-5. Abnehmender Halbmond
-6. Letztes Viertel
-7. Abnehmende Mondsichel
-8. Neumond</value>
-  </data>
 </root>

@@ -1547,7 +1547,8 @@ namespace Watch_Face_Editor
                     img_level = activityElementBattery.Images;
                     img_prorgess = activityElementBattery.Segments;
                     img_number = activityElementBattery.Number;
-                    //img_number_target = activityElementBattery.Number_Target;
+                    text_rotation = activityElementBattery.Text_rotation;
+                    text_circle = activityElementBattery.Text_circle;
                     img_pointer = activityElementBattery.Pointer;
                     circle_scale = activityElementBattery.Circle_Scale;
                     linear_scale = activityElementBattery.Linear_Scale;
@@ -1594,7 +1595,11 @@ namespace Watch_Face_Editor
                     img_level = activityElementCalories.Images;
                     img_prorgess = activityElementCalories.Segments;
                     img_number = activityElementCalories.Number;
+                    text_rotation = activityElementCalories.Text_rotation;
+                    text_circle = activityElementCalories.Text_circle;
                     img_number_target = activityElementCalories.Number_Target;
+                    text_rotation_target = activityElementCalories.Text_rotation_Target;
+                    text_circle_target = activityElementCalories.Text_circle_Target;
                     img_pointer = activityElementCalories.Pointer;
                     circle_scale = activityElementCalories.Circle_Scale;
                     linear_scale = activityElementCalories.Linear_Scale;
@@ -1637,6 +1642,8 @@ namespace Watch_Face_Editor
                     img_level = activityElementHeart.Images;
                     img_prorgess = activityElementHeart.Segments;
                     img_number = activityElementHeart.Number;
+                    text_rotation = activityElementHeart.Text_rotation;
+                    text_circle = activityElementHeart.Text_circle;
                     img_pointer = activityElementHeart.Pointer;
                     circle_scale = activityElementHeart.Circle_Scale;
                     linear_scale = activityElementHeart.Linear_Scale;
@@ -1709,6 +1716,8 @@ namespace Watch_Face_Editor
                     img_prorgess = activityElementPAI.Segments;
                     img_number = activityElementPAI.Number;
                     img_number_target = activityElementPAI.Number_Target;
+                    text_rotation_target = activityElementPAI.Text_rotation_Target;
+                    text_circle_target = activityElementPAI.Text_circle_Target;
                     img_pointer = activityElementPAI.Pointer;
                     circle_scale = activityElementPAI.Circle_Scale;
                     linear_scale = activityElementPAI.Linear_Scale;
@@ -1771,7 +1780,11 @@ namespace Watch_Face_Editor
                     img_level = activityElementStand.Images;
                     img_prorgess = activityElementStand.Segments;
                     img_number = activityElementStand.Number;
+                    text_rotation = activityElementStand.Text_rotation;
+                    text_circle = activityElementStand.Text_circle;
                     img_number_target = activityElementStand.Number_Target;
+                    text_rotation_target = activityElementStand.Text_rotation_Target;
+                    text_circle_target = activityElementStand.Text_circle_Target;
                     img_pointer = activityElementStand.Pointer;
                     circle_scale = activityElementStand.Circle_Scale;
                     linear_scale = activityElementStand.Linear_Scale;
@@ -1879,6 +1892,8 @@ namespace Watch_Face_Editor
                     if (!activityElementSpO2.visible) return;
 
                     img_number = activityElementSpO2.Number;
+                    text_rotation = activityElementSpO2.Text_rotation;
+                    text_circle = activityElementSpO2.Text_circle;
 
                     elementValue = 97;
                     value_lenght = 3;
@@ -1943,7 +1958,11 @@ namespace Watch_Face_Editor
                     img_level = activityElementFatBurning.Images;
                     img_prorgess = activityElementFatBurning.Segments;
                     img_number = activityElementFatBurning.Number;
+                    text_rotation = activityElementFatBurning.Text_rotation;
+                    text_circle = activityElementFatBurning.Text_circle;
                     img_number_target = activityElementFatBurning.Number_Target;
+                    text_rotation_target = activityElementFatBurning.Text_rotation_Target;
+                    text_circle_target = activityElementFatBurning.Text_circle_Target;
                     img_pointer = activityElementFatBurning.Pointer;
                     circle_scale = activityElementFatBurning.Circle_Scale;
                     linear_scale = activityElementFatBurning.Linear_Scale;
@@ -3114,7 +3133,7 @@ namespace Watch_Face_Editor
                     Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
                         image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
                         vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
-                        valueStr, value_lenght, BBorder, elementName);
+                        valueStr, value_lenght, BBorder, showCentrHend, elementName);
                 }
 
                 if (numberTarget != null && numberTarget.img_First != null && numberTarget.img_First.Length > 0 &&
@@ -3191,7 +3210,7 @@ namespace Watch_Face_Editor
                     Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
                         image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
                         vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
-                        valueStr, value_lenght, BBorder, elementName);
+                        valueStr, value_lenght, BBorder, showCentrHend, elementName);
                 }
 
                 if (pointer != null && pointer.src != null && pointer.src.Length > 0 &&
@@ -3267,10 +3286,10 @@ namespace Watch_Face_Editor
                     }
 
                     DrawScaleCircle(gPanel, x, y, radius, width, lineCap, startAngle, fullAngle, progress,
-                        color, inversion, showProgressArea);
+                        color, inversion, showProgressArea, showCentrHend);
 
                     if (mirror) DrawScaleCircle(gPanel, x, y, radius, width, lineCap, startAngle, -fullAngle, progress,
-                         color, inversion, showProgressArea);
+                         color, inversion, showProgressArea, showCentrHend);
                 }
 
                 if (linearScale != null && index == linearScale.position && linearScale.visible)
@@ -3353,6 +3372,16 @@ namespace Watch_Face_Editor
                     Draw_dagital_text_decimal(gPanel, image_Index, pos_x, pos_y,
                         distance_spasing, distance_alignment, distance_value, distance_addZero, value_lenght,
                         distance_separator_index, decumalPoint_index, 2, angle, BBorder);
+
+                    if (number.icon != null && number.icon.Length > 0)
+                    {
+                        image_Index = ListImages.IndexOf(number.icon);
+                        pos_x = number.iconPosX;
+                        pos_y = number.iconPosY;
+
+                        src = OpenFileStream(ListImagesFullName[image_Index]);
+                        gPanel.DrawImage(src, pos_x, pos_y);
+                    }
                 }
 
                 if (text_rotation != null && text_rotation.img_First != null && text_rotation.img_First.Length > 0 &&
@@ -3412,7 +3441,7 @@ namespace Watch_Face_Editor
                     Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
                         image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
                         vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
-                        value, 4, BBorder, "ElementDistance");
+                        value, 4, BBorder, showCentrHend, "ElementDistance");
                 }
 
                 if (icon != null && icon.src != null && icon.src.Length > 0 &&
@@ -5226,7 +5255,7 @@ namespace Watch_Face_Editor
         private void Draw_dagital_text_on_circle(Graphics graphics, int x, int y, int radius, int spacing, float angle, bool zero,
             int image_index, /*int image_width, int image_height,*/ int unit_index, /*int unit_width,*/ int dot_image_index, /*int dot_image_width,*/
             string vertical_alignment, string horizontal_alignment, bool reverse_direction, bool unit_in_alignment, 
-            string value, int value_lenght, bool BBorder, string elementName = "")
+            string value, int value_lenght, bool BBorder, bool showCentrHend, string elementName = "")
         {
             Logger.WriteLine("* Draw_dagital_text_on_circle");
             //value = "-10";
@@ -5452,14 +5481,14 @@ namespace Watch_Face_Editor
                 pen.Brush = myHatchBrush;
                 graphics.DrawArc(pen, x - radiusArc, y - radiusArc, 2 * radiusArc, 2 * radiusArc, startAngle, (float)fullAngle);
 
-                // подсвечивание внешней и внутреней дуги 
+                // подсвечивание внешней и внутреней дуги
                 using (Pen pen1 = new Pen(Color.White, 1))
                 {
                     graphics.DrawArc(pen1, x - radius, y - radius, 2 * radius, 2 * radius, startAngle, (float)fullAngle);
                     int ArcWidth = (int)(radius - image_height);
                     if (reverse_direction) ArcWidth = (int)(radius + image_height);
                     if (ArcWidth < 1) ArcWidth = 1;
-                    graphics.DrawArc(pen1, x - ArcWidth, x - ArcWidth, 2 * ArcWidth, 2 * ArcWidth, startAngle, (float)fullAngle);
+                    graphics.DrawArc(pen1, x - ArcWidth, y - ArcWidth, 2 * ArcWidth, 2 * ArcWidth, startAngle, (float)fullAngle);
                 }
                 using (Pen pen1 = new Pen(Color.Black, 1))
                 {
@@ -5468,7 +5497,23 @@ namespace Watch_Face_Editor
                     int ArcWidth = (int)(radius - image_height);
                     if (reverse_direction) ArcWidth = (int)(radius + image_height);
                     if (ArcWidth < 1) ArcWidth = 1;
-                    graphics.DrawArc(pen1, x - ArcWidth, x - ArcWidth, 2 * ArcWidth, 2 * ArcWidth, startAngle, (float)fullAngle);
+                    graphics.DrawArc(pen1, x - ArcWidth, y - ArcWidth, 2 * ArcWidth, 2 * ArcWidth, startAngle, (float)fullAngle);
+                }
+            }
+
+            if (showCentrHend)
+            {
+                Logger.WriteLine("Draw showCentrHend");
+                using (Pen pen1 = new Pen(Color.White, 1))
+                {
+                    graphics.DrawLine(pen1, new Point(x - 5, y), new Point(x + 5, y));
+                    graphics.DrawLine(pen1, new Point(x, y - 5), new Point(x, y + 5));
+                }
+                using (Pen pen2 = new Pen(Color.Black, 1))
+                {
+                    pen2.DashStyle = DashStyle.Dot;
+                    graphics.DrawLine(pen2, new Point(x - 5, y), new Point(x + 5, y));
+                    graphics.DrawLine(pen2, new Point(x, y - 5), new Point(x, y + 5));
                 }
             }
 
@@ -5802,7 +5847,7 @@ namespace Watch_Face_Editor
         /// <param name="showProgressArea">Подсвечивать полную длину шкалы</param>
         private void DrawScaleCircle(Graphics graphics, int x, int y, float radius, float width,
             int lineCap, float startAngle, float fullAngle, float position, Color color,
-            bool inversion, bool showProgressArea)
+            bool inversion, bool showProgressArea, bool showCentrHend)
         {
             if (radius <= width) return;
             Logger.WriteLine("* DrawScaleCircle");
@@ -5932,6 +5977,22 @@ namespace Watch_Face_Editor
                     int ArcWidth = (int)(CircleWidth - width);
                     if (ArcWidth < 1) ArcWidth = 1;
                     graphics.DrawArc(pen2, srcX + width, srcY + width, ArcWidth, ArcWidth, startAngle, fullAngle);
+                }
+            }
+
+            if (showCentrHend)
+            {
+                Logger.WriteLine("Draw showCentrHend");
+                using (Pen pen1 = new Pen(Color.White, 1))
+                {
+                    graphics.DrawLine(pen1, new Point(x - 5, y), new Point(x + 5, y));
+                    graphics.DrawLine(pen1, new Point(x, y - 5), new Point(x, y + 5));
+                }
+                using (Pen pen2 = new Pen(Color.Black, 1))
+                {
+                    pen2.DashStyle = DashStyle.Dot;
+                    graphics.DrawLine(pen2, new Point(x - 5, y), new Point(x + 5, y));
+                    graphics.DrawLine(pen2, new Point(x, y - 5), new Point(x, y + 5));
                 }
             }
             Logger.WriteLine("* DrawScaleCircle (end)");

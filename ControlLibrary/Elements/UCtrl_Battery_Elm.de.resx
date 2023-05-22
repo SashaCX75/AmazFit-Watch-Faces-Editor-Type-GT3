@@ -156,4 +156,10 @@
   <data name="button_Segments.Text" xml:space="preserve">
     <value>Eigenständige Bilder</value>
   </data>
+  <data name="button_Text_circle.Text" xml:space="preserve">
+    <value>Daten im Kreis</value>
+  </data>
+  <data name="button_Text_rotation.Text" xml:space="preserve">
+    <value>Daten im Winkel</value>
+  </data>
 </root>

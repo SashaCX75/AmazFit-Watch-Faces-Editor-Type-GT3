@@ -159,4 +159,16 @@
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Kroky</value>
   </data>
+  <data name="button_Text_circle.Text" xml:space="preserve">
+    <value>Údaje o kruhu</value>
+  </data>
+  <data name="button_Text_circle_Target.Text" xml:space="preserve">
+    <value>Kruhová data (cíl)</value>
+  </data>
+  <data name="button_Text_rotation.Text" xml:space="preserve">
+    <value>Hodnota v úhlu</value>
+  </data>
+  <data name="button_Text_rotation_Target.Text" xml:space="preserve">
+    <value>Data úhlu (cíl)</value>
+  </data>
 </root>

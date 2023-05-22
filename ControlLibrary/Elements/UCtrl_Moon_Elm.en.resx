@@ -120,17 +120,4 @@
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Moon phase</value>
   </data>
-  <data name="button_ElementName.ToolTip" xml:space="preserve">
-    <value>1. Waxing Crescent
-2. First Quarter
-3. Waxing Gibbous
-5. Full Moon
-5. Waning Gibbous
-6. Last Quarter
-7. Waning Crescent
-8. New Moon</value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
-  </data>
 </root>

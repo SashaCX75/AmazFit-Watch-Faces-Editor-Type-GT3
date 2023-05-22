@@ -177,4 +177,10 @@
   <data name="button_Segments.Text" xml:space="preserve">
     <value>Eigenständige Bilder</value>
   </data>
+  <data name="button_Text_circle_Target.Text" xml:space="preserve">
+    <value>Daten im Kreis (Woche)</value>
+  </data>
+  <data name="button_Text_rotation_Target.Text" xml:space="preserve">
+    <value>Daten im Winkel (Woche)</value>
+  </data>
 </root>

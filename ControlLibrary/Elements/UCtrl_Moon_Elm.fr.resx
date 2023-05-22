@@ -120,14 +120,4 @@
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Phases de lune</value>
   </data>
-  <data name="button_ElementName.ToolTip" xml:space="preserve">
-    <value>1. Premier croissant
-2. Premier quartier
-3. Gibbeuse croissante
-4. Pleine lune
-5. Gibbeuse décroissante
-6. Dernier quartier
-7. Dernier croissant
-8. Nouvelle lune</value>
-  </data>
 </root>

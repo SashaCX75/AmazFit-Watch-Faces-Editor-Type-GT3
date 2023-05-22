@@ -2133,8 +2133,8 @@ namespace Watch_Face_Editor
             {
                 //hmUI_widget_IMG_NUMBER img_number = null;
 
-                //if (distance.Number == null) distance.Number = new hmUI_widget_IMG_NUMBER();
-                //img_number = distance.Number;
+                //if (SpO2.Number == null) SpO2.Number = new hmUI_widget_IMG_NUMBER();
+                //img_number = SpO2.Number;
                 Read_EditablePointers_Options(editablePointers);
                 ShowElemenrOptions("EditableTimePointer");
 
@@ -2152,8 +2152,8 @@ namespace Watch_Face_Editor
             {
                 //hmUI_widget_IMG_NUMBER img_number = null;
 
-                //if (distance.Number == null) distance.Number = new hmUI_widget_IMG_NUMBER();
-                //img_number = distance.Number;
+                //if (SpO2.Number == null) SpO2.Number = new hmUI_widget_IMG_NUMBER();
+                //img_number = SpO2.Number;
                 Read_EditableElements_Options(editableElement);
                 ShowElemenrOptions("EditableElements");
 
@@ -4493,9 +4493,9 @@ namespace Watch_Face_Editor
 
             ElementSpO2 spo2 = new ElementSpO2();
             spo2.visible = true;
-            spo2.Number = new hmUI_widget_IMG_NUMBER();
-            spo2.Number.position = 1;
-            spo2.Number.visible = true;
+            //spo2.Number = new hmUI_widget_IMG_NUMBER();
+            //spo2.Number.position = 1;
+            //spo2.Number.visible = true;
             //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementSpO2"); // проверяем что такого элемента нет
             if (!exists) Elements.Insert(0, spo2);
@@ -5361,6 +5361,16 @@ namespace Watch_Face_Editor
                                 uCtrl_Battery_Elm.checkBox_Number.Checked = Battery.Number.visible;
                                 elementOptions.Add(Battery.Number.position, "Number");
                             }
+                            if (Battery.Text_rotation != null)
+                            {
+                                uCtrl_Battery_Elm.checkBox_Text_rotation.Checked = Battery.Text_rotation.visible;
+                                elementOptions.Add(Battery.Text_rotation.position, "Text_rotation");
+                            }
+                            if (Battery.Text_circle != null)
+                            {
+                                uCtrl_Battery_Elm.checkBox_Text_circle.Checked = Battery.Text_circle.visible;
+                                elementOptions.Add(Battery.Text_circle.position, "Text_circle");
+                            }
                             if (Battery.Pointer != null)
                             {
                                 uCtrl_Battery_Elm.checkBox_Pointer.Checked = Battery.Pointer.visible;
@@ -5410,10 +5420,30 @@ namespace Watch_Face_Editor
                                 uCtrl_Calories_Elm.checkBox_Number.Checked = Calories.Number.visible;
                                 elementOptions.Add(Calories.Number.position, "Number");
                             }
+                            if (Calories.Text_rotation != null)
+                            {
+                                uCtrl_Calories_Elm.checkBox_Text_rotation.Checked = Calories.Text_rotation.visible;
+                                elementOptions.Add(Calories.Text_rotation.position, "Text_rotation");
+                            }
+                            if (Calories.Text_circle != null)
+                            {
+                                uCtrl_Calories_Elm.checkBox_Text_circle.Checked = Calories.Text_circle.visible;
+                                elementOptions.Add(Calories.Text_circle.position, "Text_circle");
+                            }
                             if (Calories.Number_Target != null)
                             {
                                 uCtrl_Calories_Elm.checkBox_Number_Target.Checked = Calories.Number_Target.visible;
                                 elementOptions.Add(Calories.Number_Target.position, "Number_Target");
+                            }
+                            if (Calories.Text_rotation_Target != null)
+                            {
+                                uCtrl_Calories_Elm.checkBox_Text_rotation_Target.Checked = Calories.Text_rotation_Target.visible;
+                                elementOptions.Add(Calories.Text_rotation_Target.position, "Text_rotation_Target");
+                            }
+                            if (Calories.Text_circle_Target != null)
+                            {
+                                uCtrl_Calories_Elm.checkBox_Text_circle_Target.Checked = Calories.Text_circle_Target.visible;
+                                elementOptions.Add(Calories.Text_circle_Target.position, "Text_circle_Target");
                             }
                             if (Calories.Pointer != null)
                             {
@@ -5463,6 +5493,16 @@ namespace Watch_Face_Editor
                             {
                                 uCtrl_Heart_Elm.checkBox_Number.Checked = Heart.Number.visible;
                                 elementOptions.Add(Heart.Number.position, "Number");
+                            }
+                            if (Heart.Text_rotation != null)
+                            {
+                                uCtrl_Heart_Elm.checkBox_Text_rotation.Checked = Heart.Text_rotation.visible;
+                                elementOptions.Add(Heart.Text_rotation.position, "Text_rotation");
+                            }
+                            if (Heart.Text_circle != null)
+                            {
+                                uCtrl_Heart_Elm.checkBox_Text_circle.Checked = Heart.Text_circle.visible;
+                                elementOptions.Add(Heart.Text_circle.position, "Text_circle");
                             }
                             if (Heart.Pointer != null)
                             {
@@ -5517,6 +5557,16 @@ namespace Watch_Face_Editor
                             {
                                 uCtrl_PAI_Elm.checkBox_Number_Target.Checked = PAI.Number_Target.visible;
                                 elementOptions.Add(PAI.Number_Target.position, "Number_Target");
+                            }
+                            if (PAI.Text_rotation_Target != null)
+                            {
+                                uCtrl_PAI_Elm.checkBox_Text_rotation_Target.Checked = PAI.Text_rotation_Target.visible;
+                                elementOptions.Add(PAI.Text_rotation_Target.position, "Text_rotation_Target");
+                            }
+                            if (PAI.Text_circle_Target != null)
+                            {
+                                uCtrl_PAI_Elm.checkBox_Text_circle_Target.Checked = PAI.Text_circle_Target.visible;
+                                elementOptions.Add(PAI.Text_circle_Target.position, "Text_circle_Target");
                             }
                             if (PAI.Pointer != null)
                             {
@@ -5601,10 +5651,30 @@ namespace Watch_Face_Editor
                                 uCtrl_Stand_Elm.checkBox_Number.Checked = Stand.Number.visible;
                                 elementOptions.Add(Stand.Number.position, "Number");
                             }
+                            if (Stand.Text_rotation != null)
+                            {
+                                uCtrl_Stand_Elm.checkBox_Text_rotation.Checked = Stand.Text_rotation.visible;
+                                elementOptions.Add(Stand.Text_rotation.position, "Text_rotation");
+                            }
+                            if (Stand.Text_circle != null)
+                            {
+                                uCtrl_Stand_Elm.checkBox_Text_circle.Checked = Stand.Text_circle.visible;
+                                elementOptions.Add(Stand.Text_circle.position, "Text_circle");
+                            }
                             if (Stand.Number_Target != null)
                             {
                                 uCtrl_Stand_Elm.checkBox_Number_Target.Checked = Stand.Number_Target.visible;
                                 elementOptions.Add(Stand.Number_Target.position, "Number_Target");
+                            }
+                            if (Stand.Text_rotation_Target != null)
+                            {
+                                uCtrl_Stand_Elm.checkBox_Text_rotation_Target.Checked = Stand.Text_rotation_Target.visible;
+                                elementOptions.Add(Stand.Text_rotation_Target.position, "Text_rotation_Target");
+                            }
+                            if (Stand.Text_circle_Target != null)
+                            {
+                                uCtrl_Stand_Elm.checkBox_Text_circle_Target.Checked = Stand.Text_circle_Target.visible;
+                                elementOptions.Add(Stand.Text_circle_Target.position, "Text_circle_Target");
                             }
                             if (Stand.Pointer != null)
                             {
@@ -5693,10 +5763,35 @@ namespace Watch_Face_Editor
                         case "ElementSpO2":
                             ElementSpO2 SpO2 = (ElementSpO2)element;
                             uCtrl_SpO2_Elm.SetVisibilityElementStatus(SpO2.visible);
+                            elementOptions = new Dictionary<int, string>();
+                            if (SpO2.Number != null)
+                            {
+                                uCtrl_SpO2_Elm.checkBox_Number.Checked = SpO2.Number.visible;
+                                elementOptions.Add(SpO2.Number.position, "Number");
+                            }
+                            if (SpO2.Text_rotation != null)
+                            {
+                                uCtrl_SpO2_Elm.checkBox_Text_rotation.Checked = SpO2.Text_rotation.visible;
+                                elementOptions.Add(SpO2.Text_rotation.position, "Text_rotation");
+                            }
+                            if (SpO2.Text_circle != null)
+                            {
+                                uCtrl_SpO2_Elm.checkBox_Text_circle.Checked = SpO2.Text_circle.visible;
+                                elementOptions.Add(SpO2.Text_circle.position, "Text_circle");
+                            }
+                            if (SpO2.Icon != null)
+                            {
+                                uCtrl_SpO2_Elm.checkBox_Icon.Checked = SpO2.Icon.visible;
+                                elementOptions.Add(SpO2.Icon.position, "Icon");
+                            }
+
+                            uCtrl_SpO2_Elm.SetOptionsPosition(elementOptions);
 
                             uCtrl_SpO2_Elm.Visible = true;
                             SetElementPositionInGUI(type, count - i - 2);
-                            //SetElementPositionInGUI(type, i + 1);
+
+                            //uCtrl_SpO2_Elm.Visible = true;
+                            //SetElementPositionInGUI(type, count - i - 2);
                             break;
                         #endregion
 
@@ -5759,10 +5854,30 @@ namespace Watch_Face_Editor
                                 uCtrl_FatBurning_Elm.checkBox_Number.Checked = FatBurning.Number.visible;
                                 elementOptions.Add(FatBurning.Number.position, "Number");
                             }
+                            if (FatBurning.Text_rotation != null)
+                            {
+                                uCtrl_FatBurning_Elm.checkBox_Text_rotation.Checked = FatBurning.Text_rotation.visible;
+                                elementOptions.Add(FatBurning.Text_rotation.position, "Text_rotation");
+                            }
+                            if (FatBurning.Text_circle != null)
+                            {
+                                uCtrl_FatBurning_Elm.checkBox_Text_circle.Checked = FatBurning.Text_circle.visible;
+                                elementOptions.Add(FatBurning.Text_circle.position, "Text_circle");
+                            }
                             if (FatBurning.Number_Target != null)
                             {
                                 uCtrl_FatBurning_Elm.checkBox_Number_Target.Checked = FatBurning.Number_Target.visible;
                                 elementOptions.Add(FatBurning.Number_Target.position, "Number_Target");
+                            }
+                            if (FatBurning.Text_rotation_Target != null)
+                            {
+                                uCtrl_FatBurning_Elm.checkBox_Text_rotation_Target.Checked = FatBurning.Text_rotation_Target.visible;
+                                elementOptions.Add(FatBurning.Text_rotation_Target.position, "Text_rotation_Target");
+                            }
+                            if (FatBurning.Text_circle_Target != null)
+                            {
+                                uCtrl_FatBurning_Elm.checkBox_Text_circle_Target.Checked = FatBurning.Text_circle_Target.visible;
+                                elementOptions.Add(FatBurning.Text_circle_Target.position, "Text_circle_Target");
                             }
                             if (FatBurning.Pointer != null)
                             {
@@ -10524,6 +10639,8 @@ namespace Watch_Face_Editor
                 hmUI_widget_IMG_LEVEL img_level = null;
                 hmUI_widget_IMG_PROGRESS img_prorgess = null;
                 hmUI_widget_IMG_NUMBER img_number = null;
+                hmUI_widget_IMG_NUMBER text_rotation = null;
+                Text_Circle text_circle = null;
                 hmUI_widget_IMG_POINTER img_pointer = null;
                 Circle_Scale circle_scale = null;
                 Linear_Scale linear_scale = null;
@@ -10555,6 +10672,24 @@ namespace Watch_Face_Editor
                             img_number = battery.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_rotation":
+                        if (uCtrl_Battery_Elm.checkBox_Text_rotation.Checked)
+                        {
+                            text_rotation = battery.Text_rotation;
+                            Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
+                            ShowElemenrOptions("Text_rotation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_circle":
+                        if (uCtrl_Battery_Elm.checkBox_Text_circle.Checked)
+                        {
+                            text_circle = battery.Text_circle;
+                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            ShowElemenrOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -10628,6 +10763,8 @@ namespace Watch_Face_Editor
                 hmUI_widget_IMG_LEVEL img_level = null;
                 hmUI_widget_IMG_PROGRESS img_prorgess = null;
                 hmUI_widget_IMG_NUMBER img_number = null;
+                hmUI_widget_IMG_NUMBER text_rotation = null;
+                Text_Circle text_circle = null;
                 hmUI_widget_IMG_POINTER img_pointer = null;
                 Circle_Scale circle_scale = null;
                 Linear_Scale linear_scale = null;
@@ -10660,6 +10797,24 @@ namespace Watch_Face_Editor
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             uCtrl_Text_Opt.ImageError = true;
                             ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_rotation":
+                        if (uCtrl_Heart_Elm.checkBox_Text_rotation.Checked)
+                        {
+                            text_rotation = heart.Text_rotation;
+                            Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
+                            ShowElemenrOptions("Text_rotation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_circle":
+                        if (uCtrl_Heart_Elm.checkBox_Text_circle.Checked)
+                        {
+                            text_circle = heart.Text_circle;
+                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            ShowElemenrOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -10733,6 +10888,8 @@ namespace Watch_Face_Editor
                 hmUI_widget_IMG_LEVEL img_level = null;
                 hmUI_widget_IMG_PROGRESS img_prorgess = null;
                 hmUI_widget_IMG_NUMBER img_number = null;
+                hmUI_widget_IMG_NUMBER text_rotation = null;
+                Text_Circle text_circle = null;
                 hmUI_widget_IMG_POINTER img_pointer = null;
                 Circle_Scale circle_scale = null;
                 Linear_Scale linear_scale = null;
@@ -10767,12 +10924,48 @@ namespace Watch_Face_Editor
                         }
                         else HideAllElemenrOptions();
                         break;
+                    case "Text_rotation":
+                        if (uCtrl_Calories_Elm.checkBox_Text_rotation.Checked)
+                        {
+                            text_rotation = calories.Text_rotation;
+                            Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
+                            ShowElemenrOptions("Text_rotation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_circle":
+                        if (uCtrl_Calories_Elm.checkBox_Text_circle.Checked)
+                        {
+                            text_circle = calories.Text_circle;
+                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            ShowElemenrOptions("Text_circle");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
                     case "Number_Target":
                         if (uCtrl_Calories_Elm.checkBox_Number_Target.Checked)
                         {
                             img_number = calories.Number_Target;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_rotation_Target":
+                        if (uCtrl_Calories_Elm.checkBox_Text_rotation_Target.Checked)
+                        {
+                            text_rotation = calories.Text_rotation_Target;
+                            Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
+                            ShowElemenrOptions("Text_rotation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_circle_Target":
+                        if (uCtrl_Calories_Elm.checkBox_Text_circle_Target.Checked)
+                        {
+                            text_circle = calories.Text_circle_Target;
+                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            ShowElemenrOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -10846,6 +11039,8 @@ namespace Watch_Face_Editor
                 hmUI_widget_IMG_LEVEL img_level = null;
                 hmUI_widget_IMG_PROGRESS img_prorgess = null;
                 hmUI_widget_IMG_NUMBER img_number = null;
+                hmUI_widget_IMG_NUMBER text_rotation = null;
+                Text_Circle text_circle = null;
                 hmUI_widget_IMG_POINTER img_pointer = null;
                 Circle_Scale circle_scale = null;
                 Linear_Scale linear_scale = null;
@@ -10886,6 +11081,24 @@ namespace Watch_Face_Editor
                             img_number = pai.Number_Target;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_rotation_Target":
+                        if (uCtrl_PAI_Elm.checkBox_Text_rotation_Target.Checked)
+                        {
+                            text_rotation = pai.Text_rotation_Target;
+                            Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
+                            ShowElemenrOptions("Text_rotation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_circle_Target":
+                        if (uCtrl_PAI_Elm.checkBox_Text_circle_Target.Checked)
+                        {
+                            text_circle = pai.Text_circle_Target;
+                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            ShowElemenrOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -11033,6 +11246,8 @@ namespace Watch_Face_Editor
                 hmUI_widget_IMG_LEVEL img_level = null;
                 hmUI_widget_IMG_PROGRESS img_prorgess = null;
                 hmUI_widget_IMG_NUMBER img_number = null;
+                hmUI_widget_IMG_NUMBER text_rotation = null;
+                Text_Circle text_circle = null;
                 hmUI_widget_IMG_POINTER img_pointer = null;
                 Circle_Scale circle_scale = null;
                 Linear_Scale linear_scale = null;
@@ -11067,12 +11282,48 @@ namespace Watch_Face_Editor
                         }
                         else HideAllElemenrOptions();
                         break;
+                    case "Text_rotation":
+                        if (uCtrl_Stand_Elm.checkBox_Text_rotation.Checked)
+                        {
+                            text_rotation = stand.Text_rotation;
+                            Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
+                            ShowElemenrOptions("Text_rotation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_circle":
+                        if (uCtrl_Stand_Elm.checkBox_Text_circle.Checked)
+                        {
+                            text_circle = stand.Text_circle;
+                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            ShowElemenrOptions("Text_circle");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
                     case "Number_Target":
                         if (uCtrl_Stand_Elm.checkBox_Number_Target.Checked)
                         {
                             img_number = stand.Number_Target;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_rotation_Target":
+                        if (uCtrl_Stand_Elm.checkBox_Text_rotation_Target.Checked)
+                        {
+                            text_rotation = stand.Text_rotation_Target;
+                            Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
+                            ShowElemenrOptions("Text_rotation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_circle_Target":
+                        if (uCtrl_Stand_Elm.checkBox_Text_circle_Target.Checked)
+                        {
+                            text_circle = stand.Text_circle_Target;
+                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            ShowElemenrOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -11232,7 +11483,78 @@ namespace Watch_Face_Editor
 
         private void uCtrl_SpO2_Elm_SelectChanged(object sender, EventArgs eventArgs)
         {
+            string selectElement = uCtrl_SpO2_Elm.selectedElement;
+            if (selectElement.Length == 0) HideAllElemenrOptions();
             ResetHighlightState("SpO2");
+
+            ElementSpO2 SpO2 = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    //bool exists = Elements.Exists(e => e.GetType().Name == "ElementDigitalTime");
+                    SpO2 = (ElementSpO2)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementSpO2");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    SpO2 = (ElementSpO2)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementSpO2");
+                }
+            }
+            if (SpO2 != null)
+            {
+                hmUI_widget_IMG_NUMBER img_number = null;
+                hmUI_widget_IMG_NUMBER text_rotation = null;
+                Text_Circle text_circle = null;
+                hmUI_widget_IMG icon = null;
+
+                switch (selectElement)
+                {
+                    case "Number":
+                        if (uCtrl_SpO2_Elm.checkBox_Number.Checked)
+                        {
+                            img_number = SpO2.Number;
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
+                            ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_rotation":
+                        if (uCtrl_SpO2_Elm.checkBox_Text_rotation.Checked)
+                        {
+                            text_rotation = SpO2.Text_rotation;
+                            Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
+                            ShowElemenrOptions("Text_rotation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_circle":
+                        if (uCtrl_SpO2_Elm.checkBox_Text_circle.Checked)
+                        {
+                            text_circle = SpO2.Text_circle;
+                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            ShowElemenrOptions("Text_circle");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Icon":
+                        if (uCtrl_SpO2_Elm.checkBox_Icon.Checked)
+                        {
+                            icon = SpO2.Icon;
+                            Read_Icon_Options(icon);
+                            ShowElemenrOptions("Icon");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                }
+
+            }
+
+            /*ResetHighlightState("SpO2");
 
             ElementSpO2 spo2 = null;
             if (radioButton_ScreenNormal.Checked)
@@ -11255,13 +11577,15 @@ namespace Watch_Face_Editor
             if (spo2 != null)
             {
                 hmUI_widget_IMG_NUMBER img_number = null;
+                hmUI_widget_IMG_NUMBER text_rotation = null;
+                Text_Circle text_circle = null;
 
                 if (spo2.Number == null) spo2.Number = new hmUI_widget_IMG_NUMBER();
                 img_number = spo2.Number;
                 Read_ImgNumber_Options(img_number, false, false, "", true, false, true, true);
                 ShowElemenrOptions("Text");
 
-            }
+            }*/
         }
 
         private void uCtrl_Stress_Elm_SelectChanged(object sender, EventArgs eventArgs)
@@ -11377,6 +11701,8 @@ namespace Watch_Face_Editor
                 hmUI_widget_IMG_LEVEL img_level = null;
                 hmUI_widget_IMG_PROGRESS img_prorgess = null;
                 hmUI_widget_IMG_NUMBER img_number = null;
+                hmUI_widget_IMG_NUMBER text_rotation = null;
+                Text_Circle text_circle = null;
                 hmUI_widget_IMG_POINTER img_pointer = null;
                 Circle_Scale circle_scale = null;
                 Linear_Scale linear_scale = null;
@@ -11411,12 +11737,48 @@ namespace Watch_Face_Editor
                         }
                         else HideAllElemenrOptions();
                         break;
+                    case "Text_rotation":
+                        if (uCtrl_FatBurning_Elm.checkBox_Text_rotation.Checked)
+                        {
+                            text_rotation = fat_burning.Text_rotation;
+                            Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
+                            ShowElemenrOptions("Text_rotation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_circle":
+                        if (uCtrl_FatBurning_Elm.checkBox_Text_circle.Checked)
+                        {
+                            text_circle = fat_burning.Text_circle;
+                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            ShowElemenrOptions("Text_circle");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
                     case "Number_Target":
                         if (uCtrl_FatBurning_Elm.checkBox_Number_Target.Checked)
                         {
                             img_number = fat_burning.Number_Target;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_rotation_Target":
+                        if (uCtrl_FatBurning_Elm.checkBox_Text_rotation_Target.Checked)
+                        {
+                            text_rotation = fat_burning.Text_rotation_Target;
+                            Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
+                            ShowElemenrOptions("Text_rotation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_circle_Target":
+                        if (uCtrl_FatBurning_Elm.checkBox_Text_circle_Target.Checked)
+                        {
+                            text_circle = fat_burning.Text_circle_Target;
+                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            ShowElemenrOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -12845,8 +13207,8 @@ namespace Watch_Face_Editor
                 if (steps.Text_rotation == null) steps.Text_rotation = new hmUI_widget_IMG_NUMBER();
                 if (steps.Text_circle == null) steps.Text_circle = new Text_Circle();
                 if (steps.Number_Target == null) steps.Number_Target = new hmUI_widget_IMG_NUMBER();
-                if (steps.Text_rotation == null) steps.Text_rotation_Target = new hmUI_widget_IMG_NUMBER();
-                if (steps.Text_circle == null) steps.Text_circle_Target = new Text_Circle();
+                if (steps.Text_rotation_Target == null) steps.Text_rotation_Target = new hmUI_widget_IMG_NUMBER();
+                if (steps.Text_circle_Target == null) steps.Text_circle_Target = new Text_Circle();
                 if (steps.Pointer == null) steps.Pointer = new hmUI_widget_IMG_POINTER();
                 if (steps.Circle_Scale == null) steps.Circle_Scale = new Circle_Scale();
                 if (steps.Linear_Scale == null) steps.Linear_Scale = new Linear_Scale();
@@ -12858,8 +13220,8 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Text_rotation")) steps.Text_rotation.position = elementOptions["Text_rotation"];
                 if (elementOptions.ContainsKey("Text_circle")) steps.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Number_Target")) steps.Number_Target.position = elementOptions["Number_Target"];
-                if (elementOptions.ContainsKey("Text_rotation_Target")) steps.Text_rotation.position = elementOptions["Text_rotation_Target"];
-                if (elementOptions.ContainsKey("Text_circle_Target")) steps.Text_circle.position = elementOptions["Text_circle_Target"];
+                if (elementOptions.ContainsKey("Text_rotation_Target")) steps.Text_rotation_Target.position = elementOptions["Text_rotation_Target"];
+                if (elementOptions.ContainsKey("Text_circle_Target")) steps.Text_circle_Target.position = elementOptions["Text_circle_Target"];
                 if (elementOptions.ContainsKey("Pointer")) steps.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Circle_Scale")) steps.Circle_Scale.position = elementOptions["Circle_Scale"];
                 if (elementOptions.ContainsKey("Linear_Scale")) steps.Linear_Scale.position = elementOptions["Linear_Scale"];
@@ -12906,6 +13268,8 @@ namespace Watch_Face_Editor
                 if (battery.Images == null) battery.Images = new hmUI_widget_IMG_LEVEL();
                 if (battery.Segments == null) battery.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (battery.Number == null) battery.Number = new hmUI_widget_IMG_NUMBER();
+                if (battery.Text_rotation == null) battery.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                if (battery.Text_circle == null) battery.Text_circle = new Text_Circle();
                 if (battery.Pointer == null) battery.Pointer = new hmUI_widget_IMG_POINTER();
                 if (battery.Circle_Scale == null) battery.Circle_Scale = new Circle_Scale();
                 if (battery.Linear_Scale == null) battery.Linear_Scale = new Linear_Scale();
@@ -12914,6 +13278,8 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) battery.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) battery.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) battery.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Text_rotation")) battery.Text_rotation.position = elementOptions["Text_rotation"];
+                if (elementOptions.ContainsKey("Text_circle")) battery.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Pointer")) battery.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Circle_Scale")) battery.Circle_Scale.position = elementOptions["Circle_Scale"];
                 if (elementOptions.ContainsKey("Linear_Scale")) battery.Linear_Scale.position = elementOptions["Linear_Scale"];
@@ -12960,6 +13326,8 @@ namespace Watch_Face_Editor
                 if (heart.Images == null) heart.Images = new hmUI_widget_IMG_LEVEL();
                 if (heart.Segments == null) heart.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (heart.Number == null) heart.Number = new hmUI_widget_IMG_NUMBER();
+                if (heart.Text_rotation == null) heart.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                if (heart.Text_circle == null) heart.Text_circle = new Text_Circle();
                 if (heart.Pointer == null) heart.Pointer = new hmUI_widget_IMG_POINTER();
                 if (heart.Circle_Scale == null) heart.Circle_Scale = new Circle_Scale();
                 if (heart.Linear_Scale == null) heart.Linear_Scale = new Linear_Scale();
@@ -12968,6 +13336,8 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) heart.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) heart.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) heart.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Text_rotation")) heart.Text_rotation.position = elementOptions["Text_rotation"];
+                if (elementOptions.ContainsKey("Text_circle")) heart.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Pointer")) heart.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Circle_Scale")) heart.Circle_Scale.position = elementOptions["Circle_Scale"];
                 if (elementOptions.ContainsKey("Linear_Scale")) heart.Linear_Scale.position = elementOptions["Linear_Scale"];
@@ -13014,7 +13384,11 @@ namespace Watch_Face_Editor
                 if (calories.Images == null) calories.Images = new hmUI_widget_IMG_LEVEL();
                 if (calories.Segments == null) calories.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (calories.Number == null) calories.Number = new hmUI_widget_IMG_NUMBER();
+                if (calories.Text_rotation == null) calories.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                if (calories.Text_circle == null) calories.Text_circle = new Text_Circle();
                 if (calories.Number_Target == null) calories.Number_Target = new hmUI_widget_IMG_NUMBER();
+                if (calories.Text_rotation_Target == null) calories.Text_rotation_Target = new hmUI_widget_IMG_NUMBER();
+                if (calories.Text_circle_Target == null) calories.Text_circle_Target = new Text_Circle();
                 if (calories.Pointer == null) calories.Pointer = new hmUI_widget_IMG_POINTER();
                 if (calories.Circle_Scale == null) calories.Circle_Scale = new Circle_Scale();
                 if (calories.Linear_Scale == null) calories.Linear_Scale = new Linear_Scale();
@@ -13023,7 +13397,11 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) calories.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) calories.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) calories.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Text_rotation")) calories.Text_rotation.position = elementOptions["Text_rotation"];
+                if (elementOptions.ContainsKey("Text_circle")) calories.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Number_Target")) calories.Number_Target.position = elementOptions["Number_Target"];
+                if (elementOptions.ContainsKey("Text_rotation_Target")) calories.Text_rotation_Target.position = elementOptions["Text_rotation_Target"];
+                if (elementOptions.ContainsKey("Text_circle_Target")) calories.Text_circle_Target.position = elementOptions["Text_circle_Target"];
                 if (elementOptions.ContainsKey("Pointer")) calories.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Circle_Scale")) calories.Circle_Scale.position = elementOptions["Circle_Scale"];
                 if (elementOptions.ContainsKey("Linear_Scale")) calories.Linear_Scale.position = elementOptions["Linear_Scale"];
@@ -13071,6 +13449,8 @@ namespace Watch_Face_Editor
                 if (pai.Segments == null) pai.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (pai.Number == null) pai.Number = new hmUI_widget_IMG_NUMBER();
                 if (pai.Number_Target == null) pai.Number_Target = new hmUI_widget_IMG_NUMBER();
+                if (pai.Text_rotation_Target == null) pai.Text_rotation_Target = new hmUI_widget_IMG_NUMBER();
+                if (pai.Text_circle_Target == null) pai.Text_circle_Target = new Text_Circle();
                 if (pai.Pointer == null) pai.Pointer = new hmUI_widget_IMG_POINTER();
                 if (pai.Circle_Scale == null) pai.Circle_Scale = new Circle_Scale();
                 if (pai.Linear_Scale == null) pai.Linear_Scale = new Linear_Scale();
@@ -13080,6 +13460,8 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Segments")) pai.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) pai.Number.position = elementOptions["Number"];
                 if (elementOptions.ContainsKey("Number_Target")) pai.Number_Target.position = elementOptions["Number_Target"];
+                if (elementOptions.ContainsKey("Text_rotation_Target")) pai.Text_rotation_Target.position = elementOptions["Text_rotation_Target"];
+                if (elementOptions.ContainsKey("Text_circle_Target")) pai.Text_circle_Target.position = elementOptions["Text_circle_Target"];
                 if (elementOptions.ContainsKey("Pointer")) pai.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Circle_Scale")) pai.Circle_Scale.position = elementOptions["Circle_Scale"];
                 if (elementOptions.ContainsKey("Linear_Scale")) pai.Linear_Scale.position = elementOptions["Linear_Scale"];
@@ -13172,7 +13554,11 @@ namespace Watch_Face_Editor
                 if (stand.Images == null) stand.Images = new hmUI_widget_IMG_LEVEL();
                 if (stand.Segments == null) stand.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (stand.Number == null) stand.Number = new hmUI_widget_IMG_NUMBER();
+                if (stand.Text_rotation == null) stand.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                if (stand.Text_circle == null) stand.Text_circle = new Text_Circle();
                 if (stand.Number_Target == null) stand.Number_Target = new hmUI_widget_IMG_NUMBER();
+                if (stand.Text_rotation_Target == null) stand.Text_rotation_Target = new hmUI_widget_IMG_NUMBER();
+                if (stand.Text_circle_Target == null) stand.Text_circle_Target = new Text_Circle();
                 if (stand.Pointer == null) stand.Pointer = new hmUI_widget_IMG_POINTER();
                 if (stand.Circle_Scale == null) stand.Circle_Scale = new Circle_Scale();
                 if (stand.Linear_Scale == null) stand.Linear_Scale = new Linear_Scale();
@@ -13181,7 +13567,11 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) stand.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) stand.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) stand.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Text_rotation")) stand.Text_rotation.position = elementOptions["Text_rotation"];
+                if (elementOptions.ContainsKey("Text_circle")) stand.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Number_Target")) stand.Number_Target.position = elementOptions["Number_Target"];
+                if (elementOptions.ContainsKey("Text_rotation_Target")) stand.Text_rotation_Target.position = elementOptions["Text_rotation_Target"];
+                if (elementOptions.ContainsKey("Text_circle_Target")) stand.Text_circle_Target.position = elementOptions["Text_circle_Target"];
                 if (elementOptions.ContainsKey("Pointer")) stand.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Circle_Scale")) stand.Circle_Scale.position = elementOptions["Circle_Scale"];
                 if (elementOptions.ContainsKey("Linear_Scale")) stand.Linear_Scale.position = elementOptions["Linear_Scale"];
@@ -13242,6 +13632,52 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Circle_Scale")) activity.Circle_Scale.position = elementOptions["Circle_Scale"];
                 if (elementOptions.ContainsKey("Linear_Scale")) activity.Linear_Scale.position = elementOptions["Linear_Scale"];
                 if (elementOptions.ContainsKey("Icon")) activity.Icon.position = elementOptions["Icon"];
+
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_SpO2_Elm_OptionsMoved(object sender, EventArgs eventArgs, Dictionary<string, int> elementOptions)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementSpO2 SpO2 = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementSpO2");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementSpO2());
+                    SpO2 = (ElementSpO2)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementSpO2");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementSpO2");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementSpO2());
+                    SpO2 = (ElementSpO2)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementSpO2");
+                }
+            }
+
+            if (SpO2 != null)
+            {
+                if (SpO2.Number == null) SpO2.Number = new hmUI_widget_IMG_NUMBER();
+                if (SpO2.Text_rotation == null) SpO2.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                if (SpO2.Text_circle == null) SpO2.Text_circle = new Text_Circle();
+                if (SpO2.Icon == null) SpO2.Icon = new hmUI_widget_IMG();
+
+                if (elementOptions.ContainsKey("Number")) SpO2.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Text_rotation")) SpO2.Text_rotation.position = elementOptions["Text_rotation"];
+                if (elementOptions.ContainsKey("Text_circle")) SpO2.Text_circle.position = elementOptions["Text_circle"];
+                if (elementOptions.ContainsKey("Icon")) SpO2.Icon.position = elementOptions["Icon"];
 
             }
 
@@ -13334,7 +13770,11 @@ namespace Watch_Face_Editor
                 if (fat_burning.Images == null) fat_burning.Images = new hmUI_widget_IMG_LEVEL();
                 if (fat_burning.Segments == null) fat_burning.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (fat_burning.Number == null) fat_burning.Number = new hmUI_widget_IMG_NUMBER();
+                if (fat_burning.Text_rotation == null) fat_burning.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                if (fat_burning.Text_circle == null) fat_burning.Text_circle = new Text_Circle();
                 if (fat_burning.Number_Target == null) fat_burning.Number_Target = new hmUI_widget_IMG_NUMBER();
+                if (fat_burning.Text_rotation_Target == null) fat_burning.Text_rotation_Target = new hmUI_widget_IMG_NUMBER();
+                if (fat_burning.Text_circle_Target == null) fat_burning.Text_circle_Target = new Text_Circle();
                 if (fat_burning.Pointer == null) fat_burning.Pointer = new hmUI_widget_IMG_POINTER();
                 if (fat_burning.Circle_Scale == null) fat_burning.Circle_Scale = new Circle_Scale();
                 if (fat_burning.Linear_Scale == null) fat_burning.Linear_Scale = new Linear_Scale();
@@ -13343,7 +13783,11 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) fat_burning.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) fat_burning.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) fat_burning.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Text_rotation")) fat_burning.Text_rotation.position = elementOptions["Text_rotation"];
+                if (elementOptions.ContainsKey("Text_circle")) fat_burning.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Number_Target")) fat_burning.Number_Target.position = elementOptions["Number_Target"];
+                if (elementOptions.ContainsKey("Text_rotation_Target")) fat_burning.Text_rotation_Target.position = elementOptions["Text_rotation_Target"];
+                if (elementOptions.ContainsKey("Text_circle_Target")) fat_burning.Text_circle_Target.position = elementOptions["Text_circle_Target"];
                 if (elementOptions.ContainsKey("Pointer")) fat_burning.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Circle_Scale")) fat_burning.Circle_Scale.position = elementOptions["Circle_Scale"];
                 if (elementOptions.ContainsKey("Linear_Scale")) fat_burning.Linear_Scale.position = elementOptions["Linear_Scale"];
@@ -14686,8 +15130,8 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Text_rotation")) steps.Text_rotation.position = elementOptions["Text_rotation"];
                 if (elementOptions.ContainsKey("Text_circle")) steps.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Number_Target")) steps.Number_Target.position = elementOptions["Number_Target"];
-                if (elementOptions.ContainsKey("Text_rotation")) steps.Text_rotation_Target.position = elementOptions["Text_rotation_Target"];
-                if (elementOptions.ContainsKey("Text_circle")) steps.Text_circle_Target.position = elementOptions["Text_circle_Target"];
+                if (elementOptions.ContainsKey("Text_rotation_Target")) steps.Text_rotation_Target.position = elementOptions["Text_rotation_Target"];
+                if (elementOptions.ContainsKey("Text_circle_Target")) steps.Text_circle_Target.position = elementOptions["Text_circle_Target"];
                 if (elementOptions.ContainsKey("Pointer")) steps.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Circle_Scale")) steps.Circle_Scale.position = elementOptions["Circle_Scale"];
                 if (elementOptions.ContainsKey("Linear_Scale")) steps.Linear_Scale.position = elementOptions["Linear_Scale"];
@@ -14778,6 +15222,8 @@ namespace Watch_Face_Editor
                 if (battery.Images == null) battery.Images = new hmUI_widget_IMG_LEVEL();
                 if (battery.Segments == null) battery.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (battery.Number == null) battery.Number = new hmUI_widget_IMG_NUMBER();
+                if (battery.Text_rotation == null) battery.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                if (battery.Text_circle == null) battery.Text_circle = new Text_Circle();
                 if (battery.Pointer == null) battery.Pointer = new hmUI_widget_IMG_POINTER();
                 if (battery.Circle_Scale == null) battery.Circle_Scale = new Circle_Scale();
                 if (battery.Linear_Scale == null) battery.Linear_Scale = new Linear_Scale();
@@ -14787,6 +15233,8 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) battery.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) battery.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) battery.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Text_rotation")) battery.Text_rotation.position = elementOptions["Text_rotation"];
+                if (elementOptions.ContainsKey("Text_circle")) battery.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Pointer")) battery.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Circle_Scale")) battery.Circle_Scale.position = elementOptions["Circle_Scale"];
                 if (elementOptions.ContainsKey("Linear_Scale")) battery.Linear_Scale.position = elementOptions["Linear_Scale"];
@@ -14804,6 +15252,12 @@ namespace Watch_Face_Editor
                         break;
                     case "checkBox_Number":
                         battery.Number.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_rotation":
+                        battery.Text_rotation.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_circle":
+                        battery.Text_circle.visible = checkBox.Checked;
                         break;
                     case "checkBox_Pointer":
                         battery.Pointer.visible = checkBox.Checked;
@@ -14862,6 +15316,8 @@ namespace Watch_Face_Editor
                 if (heart.Images == null) heart.Images = new hmUI_widget_IMG_LEVEL();
                 if (heart.Segments == null) heart.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (heart.Number == null) heart.Number = new hmUI_widget_IMG_NUMBER();
+                if (heart.Text_rotation == null) heart.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                if (heart.Text_circle == null) heart.Text_circle = new Text_Circle();
                 if (heart.Pointer == null) heart.Pointer = new hmUI_widget_IMG_POINTER();
                 if (heart.Circle_Scale == null) heart.Circle_Scale = new Circle_Scale();
                 if (heart.Linear_Scale == null) heart.Linear_Scale = new Linear_Scale();
@@ -14871,6 +15327,8 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) heart.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) heart.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) heart.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Text_rotation")) heart.Text_rotation.position = elementOptions["Text_rotation"];
+                if (elementOptions.ContainsKey("Text_circle")) heart.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Pointer")) heart.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Circle_Scale")) heart.Circle_Scale.position = elementOptions["Circle_Scale"];
                 if (elementOptions.ContainsKey("Linear_Scale")) heart.Linear_Scale.position = elementOptions["Linear_Scale"];
@@ -14888,6 +15346,12 @@ namespace Watch_Face_Editor
                         break;
                     case "checkBox_Number":
                         heart.Number.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_rotation":
+                        heart.Text_rotation.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_circle":
+                        heart.Text_circle.visible = checkBox.Checked;
                         break;
                     case "checkBox_Pointer":
                         heart.Pointer.visible = checkBox.Checked;
@@ -14946,7 +15410,11 @@ namespace Watch_Face_Editor
                 if (calories.Images == null) calories.Images = new hmUI_widget_IMG_LEVEL();
                 if (calories.Segments == null) calories.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (calories.Number == null) calories.Number = new hmUI_widget_IMG_NUMBER();
+                if (calories.Text_rotation == null) calories.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                if (calories.Text_circle == null) calories.Text_circle = new Text_Circle();
                 if (calories.Number_Target == null) calories.Number_Target = new hmUI_widget_IMG_NUMBER();
+                if (calories.Text_rotation_Target == null) calories.Text_rotation_Target = new hmUI_widget_IMG_NUMBER();
+                if (calories.Text_circle_Target == null) calories.Text_circle_Target = new Text_Circle();
                 if (calories.Pointer == null) calories.Pointer = new hmUI_widget_IMG_POINTER();
                 if (calories.Circle_Scale == null) calories.Circle_Scale = new Circle_Scale();
                 if (calories.Linear_Scale == null) calories.Linear_Scale = new Linear_Scale();
@@ -14956,7 +15424,11 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) calories.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) calories.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) calories.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Text_rotation")) calories.Text_rotation.position = elementOptions["Text_rotation"];
+                if (elementOptions.ContainsKey("Text_circle")) calories.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Number_Target")) calories.Number_Target.position = elementOptions["Number_Target"];
+                if (elementOptions.ContainsKey("Text_rotation_Target")) calories.Text_rotation_Target.position = elementOptions["Text_rotation_Target"];
+                if (elementOptions.ContainsKey("Text_circle_Target")) calories.Text_circle_Target.position = elementOptions["Text_circle_Target"];
                 if (elementOptions.ContainsKey("Pointer")) calories.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Circle_Scale")) calories.Circle_Scale.position = elementOptions["Circle_Scale"];
                 if (elementOptions.ContainsKey("Linear_Scale")) calories.Linear_Scale.position = elementOptions["Linear_Scale"];
@@ -14975,8 +15447,20 @@ namespace Watch_Face_Editor
                     case "checkBox_Number":
                         calories.Number.visible = checkBox.Checked;
                         break;
+                    case "checkBox_Text_rotation":
+                        calories.Text_rotation.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_circle":
+                        calories.Text_circle.visible = checkBox.Checked;
+                        break;
                     case "checkBox_Number_Target":
                         calories.Number_Target.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_rotation_Target":
+                        calories.Text_rotation_Target.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_circle_Target":
+                        calories.Text_circle_Target.visible = checkBox.Checked;
                         break;
                     case "checkBox_Pointer":
                         calories.Pointer.visible = checkBox.Checked;
@@ -15036,6 +15520,8 @@ namespace Watch_Face_Editor
                 if (pai.Segments == null) pai.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (pai.Number == null) pai.Number = new hmUI_widget_IMG_NUMBER();
                 if (pai.Number_Target == null) pai.Number_Target = new hmUI_widget_IMG_NUMBER();
+                if (pai.Text_rotation_Target == null) pai.Text_rotation_Target = new hmUI_widget_IMG_NUMBER();
+                if (pai.Text_circle_Target == null) pai.Text_circle_Target = new Text_Circle();
                 if (pai.Pointer == null) pai.Pointer = new hmUI_widget_IMG_POINTER();
                 if (pai.Circle_Scale == null) pai.Circle_Scale = new Circle_Scale();
                 if (pai.Linear_Scale == null) pai.Linear_Scale = new Linear_Scale();
@@ -15046,6 +15532,8 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Segments")) pai.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) pai.Number.position = elementOptions["Number"];
                 if (elementOptions.ContainsKey("Number_Target")) pai.Number_Target.position = elementOptions["Number_Target"];
+                if (elementOptions.ContainsKey("Text_rotation_Target")) pai.Text_rotation_Target.position = elementOptions["Text_rotation_Target"];
+                if (elementOptions.ContainsKey("Text_circle_Target")) pai.Text_circle_Target.position = elementOptions["Text_circle_Target"];
                 if (elementOptions.ContainsKey("Pointer")) pai.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Circle_Scale")) pai.Circle_Scale.position = elementOptions["Circle_Scale"];
                 if (elementOptions.ContainsKey("Linear_Scale")) pai.Linear_Scale.position = elementOptions["Linear_Scale"];
@@ -15066,6 +15554,12 @@ namespace Watch_Face_Editor
                         break;
                     case "checkBox_Number_Target":
                         pai.Number_Target.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_rotation_Target":
+                        pai.Text_rotation_Target.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_circle_Target":
+                        pai.Text_circle_Target.visible = checkBox.Checked;
                         break;
                     case "checkBox_Pointer":
                         pai.Pointer.visible = checkBox.Checked;
@@ -15191,7 +15685,11 @@ namespace Watch_Face_Editor
                 if (stand.Images == null) stand.Images = new hmUI_widget_IMG_LEVEL();
                 if (stand.Segments == null) stand.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (stand.Number == null) stand.Number = new hmUI_widget_IMG_NUMBER();
+                if (stand.Text_rotation == null) stand.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                if (stand.Text_circle == null) stand.Text_circle = new Text_Circle();
                 if (stand.Number_Target == null) stand.Number_Target = new hmUI_widget_IMG_NUMBER();
+                if (stand.Text_rotation_Target == null) stand.Text_rotation_Target = new hmUI_widget_IMG_NUMBER();
+                if (stand.Text_circle_Target == null) stand.Text_circle_Target = new Text_Circle();
                 if (stand.Pointer == null) stand.Pointer = new hmUI_widget_IMG_POINTER();
                 if (stand.Circle_Scale == null) stand.Circle_Scale = new Circle_Scale();
                 if (stand.Linear_Scale == null) stand.Linear_Scale = new Linear_Scale();
@@ -15201,7 +15699,11 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) stand.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) stand.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) stand.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Text_rotation")) stand.Text_rotation.position = elementOptions["Text_rotation"];
+                if (elementOptions.ContainsKey("Text_circle")) stand.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Number_Target")) stand.Number_Target.position = elementOptions["Number_Target"];
+                if (elementOptions.ContainsKey("Text_rotation_Target")) stand.Text_rotation_Target.position = elementOptions["Text_rotation_Target"];
+                if (elementOptions.ContainsKey("Text_circle_Target")) stand.Text_circle_Target.position = elementOptions["Text_circle_Target"];
                 if (elementOptions.ContainsKey("Pointer")) stand.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Circle_Scale")) stand.Circle_Scale.position = elementOptions["Circle_Scale"];
                 if (elementOptions.ContainsKey("Linear_Scale")) stand.Linear_Scale.position = elementOptions["Linear_Scale"];
@@ -15220,8 +15722,20 @@ namespace Watch_Face_Editor
                     case "checkBox_Number":
                         stand.Number.visible = checkBox.Checked;
                         break;
+                    case "checkBox_Text_rotation":
+                        stand.Text_rotation.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_circle":
+                        stand.Text_circle.visible = checkBox.Checked;
+                        break;
                     case "checkBox_Number_Target":
                         stand.Number_Target.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_rotation_Target":
+                        stand.Text_rotation_Target.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_circle_Target":
+                        stand.Text_circle_Target.visible = checkBox.Checked;
                         break;
                     case "checkBox_Pointer":
                         stand.Pointer.visible = checkBox.Checked;
@@ -15329,6 +15843,73 @@ namespace Watch_Face_Editor
             }
 
             uCtrl_Activity_Elm_SelectChanged(sender, eventArgs);
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_SpO2_Elm_VisibleOptionsChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementSpO2 SpO2 = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementSpO2");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementSpO2());
+                    SpO2 = (ElementSpO2)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementSpO2");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementSpO2");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementSpO2());
+                    SpO2 = (ElementSpO2)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementSpO2");
+                }
+            }
+
+            if (SpO2 != null)
+            {
+                if (SpO2.Number == null) SpO2.Number = new hmUI_widget_IMG_NUMBER();
+                if (SpO2.Text_rotation == null) SpO2.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                if (SpO2.Text_circle == null) SpO2.Text_circle = new Text_Circle();
+                if (SpO2.Icon == null) SpO2.Icon = new hmUI_widget_IMG();
+
+                Dictionary<string, int> elementOptions = uCtrl_SpO2_Elm.GetOptionsPosition();
+                if (elementOptions.ContainsKey("Number")) SpO2.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Text_rotation")) SpO2.Text_rotation.position = elementOptions["Text_rotation"];
+                if (elementOptions.ContainsKey("Text_circle")) SpO2.Text_circle.position = elementOptions["Text_circle"];
+                if (elementOptions.ContainsKey("Icon")) SpO2.Icon.position = elementOptions["Icon"];
+
+                CheckBox checkBox = (CheckBox)sender;
+                string name = checkBox.Name;
+                switch (name)
+                {
+                    case "checkBox_Number":
+                        SpO2.Number.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_rotation":
+                        SpO2.Text_rotation.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_circle":
+                        SpO2.Text_circle.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Icon":
+                        SpO2.Icon.visible = checkBox.Checked;
+                        break;
+                }
+
+            }
+
+            uCtrl_SpO2_Elm_SelectChanged(sender, eventArgs);
 
             JSON_Modified = true;
             PreviewImage();
@@ -15443,7 +16024,11 @@ namespace Watch_Face_Editor
                 if (fat_burning.Images == null) fat_burning.Images = new hmUI_widget_IMG_LEVEL();
                 if (fat_burning.Segments == null) fat_burning.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (fat_burning.Number == null) fat_burning.Number = new hmUI_widget_IMG_NUMBER();
+                if (fat_burning.Text_rotation == null) fat_burning.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                if (fat_burning.Text_circle == null) fat_burning.Text_circle = new Text_Circle();
                 if (fat_burning.Number_Target == null) fat_burning.Number_Target = new hmUI_widget_IMG_NUMBER();
+                if (fat_burning.Text_rotation_Target == null) fat_burning.Text_rotation_Target = new hmUI_widget_IMG_NUMBER();
+                if (fat_burning.Text_circle_Target == null) fat_burning.Text_circle_Target = new Text_Circle();
                 if (fat_burning.Pointer == null) fat_burning.Pointer = new hmUI_widget_IMG_POINTER();
                 if (fat_burning.Circle_Scale == null) fat_burning.Circle_Scale = new Circle_Scale();
                 if (fat_burning.Linear_Scale == null) fat_burning.Linear_Scale = new Linear_Scale();
@@ -15453,7 +16038,11 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) fat_burning.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) fat_burning.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) fat_burning.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Text_rotation")) fat_burning.Text_rotation.position = elementOptions["Text_rotation"];
+                if (elementOptions.ContainsKey("Text_circle")) fat_burning.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Number_Target")) fat_burning.Number_Target.position = elementOptions["Number_Target"];
+                if (elementOptions.ContainsKey("Text_rotation_Target")) fat_burning.Text_rotation_Target.position = elementOptions["Text_rotation_Target"];
+                if (elementOptions.ContainsKey("Text_circle_Target")) fat_burning.Text_circle_Target.position = elementOptions["Text_circle_Target"];
                 if (elementOptions.ContainsKey("Pointer")) fat_burning.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Circle_Scale")) fat_burning.Circle_Scale.position = elementOptions["Circle_Scale"];
                 if (elementOptions.ContainsKey("Linear_Scale")) fat_burning.Linear_Scale.position = elementOptions["Linear_Scale"];
@@ -15472,8 +16061,20 @@ namespace Watch_Face_Editor
                     case "checkBox_Number":
                         fat_burning.Number.visible = checkBox.Checked;
                         break;
+                    case "checkBox_Text_rotation":
+                        fat_burning.Text_rotation.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_circle":
+                        fat_burning.Text_circle.visible = checkBox.Checked;
+                        break;
                     case "checkBox_Number_Target":
                         fat_burning.Number_Target.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_rotation_Target":
+                        fat_burning.Text_rotation_Target.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_circle_Target":
+                        fat_burning.Text_circle_Target.visible = checkBox.Checked;
                         break;
                     case "checkBox_Pointer":
                         fat_burning.Pointer.visible = checkBox.Checked;
@@ -17158,6 +17759,7 @@ namespace Watch_Face_Editor
             // that 4.5 or later is installed.
             return "No 4.5 or later version detected";
         }
+
     }
 }
 

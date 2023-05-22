@@ -1179,6 +1179,8 @@ namespace Watch_Face_Editor
             resources.ApplyResources(this.uCtrl_SpO2_Elm, "uCtrl_SpO2_Elm");
             this.uCtrl_SpO2_Elm.Name = "uCtrl_SpO2_Elm";
             this.uCtrl_SpO2_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_Distance_Elm.VisibleElementChangedHandler(this.uCtrl_SpO2_Elm_VisibleElementChanged);
+            this.uCtrl_SpO2_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_Distance_Elm.VisibleOptionsChangedHandler(this.uCtrl_SpO2_Elm_VisibleOptionsChanged);
+            this.uCtrl_SpO2_Elm.OptionsMoved += new ControlLibrary.UCtrl_Distance_Elm.OptionsMovedHandler(this.uCtrl_SpO2_Elm_OptionsMoved);
             this.uCtrl_SpO2_Elm.SelectChanged += new ControlLibrary.UCtrl_Distance_Elm.SelectChangedHandler(this.uCtrl_SpO2_Elm_SelectChanged);
             this.uCtrl_SpO2_Elm.DelElement += new ControlLibrary.UCtrl_Distance_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
             this.uCtrl_SpO2_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -1345,9 +1347,9 @@ namespace Watch_Face_Editor
             // 
             resources.ApplyResources(this.uCtrl_Moon_Elm, "uCtrl_Moon_Elm");
             this.uCtrl_Moon_Elm.Name = "uCtrl_Moon_Elm";
-            this.uCtrl_Moon_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_Distance_Elm.VisibleElementChangedHandler(this.uCtrl_Moon_Elm_VisibleElementChanged);
-            this.uCtrl_Moon_Elm.SelectChanged += new ControlLibrary.UCtrl_Distance_Elm.SelectChangedHandler(this.uCtrl_Moon_Elm_SelectChanged);
-            this.uCtrl_Moon_Elm.DelElement += new ControlLibrary.UCtrl_Distance_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
+            this.uCtrl_Moon_Elm.SelectChanged += new ControlLibrary.UCtrl_Moon_Elm.SelectChangedHandler(this.uCtrl_Moon_Elm_SelectChanged);
+            this.uCtrl_Moon_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_Moon_Elm.VisibleElementChangedHandler(this.uCtrl_Moon_Elm_VisibleElementChanged);
+            this.uCtrl_Moon_Elm.DelElement += new ControlLibrary.UCtrl_Moon_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
             this.uCtrl_Moon_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
             this.uCtrl_Moon_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
             this.uCtrl_Moon_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);

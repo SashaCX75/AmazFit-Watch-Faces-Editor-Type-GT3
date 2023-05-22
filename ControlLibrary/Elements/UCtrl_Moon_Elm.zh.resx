@@ -117,20 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>月相</value>
-  </data>
-  <data name="button_ElementName.ToolTip" xml:space="preserve">
-    <value>1. 上峨嵋月
-2. 上弦月
-3. 凸月
-5. 满月
-5. 凸月
-6. 下弦月
-7. 下峨嵋月
-8. 新月</value>
   </data>
 </root>

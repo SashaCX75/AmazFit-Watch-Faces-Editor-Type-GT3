@@ -120,14 +120,4 @@
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Fase lunar</value>
   </data>
-  <data name="button_ElementName.ToolTip" xml:space="preserve">
-    <value>1. Creciente
-2. Primer Trimestre
-3. Gibosa creciente
-5. Luna Llena
-5. Gibosa menguante
-6. Último cuarto
-7. Creciente menguante
-8. Luna Nueva</value>
-  </data>
 </root>

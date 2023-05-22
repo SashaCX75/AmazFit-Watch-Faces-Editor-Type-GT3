@@ -32,6 +32,10 @@ namespace ControlLibrary
         private Point location_imageError_label;
         private String unit_label_text;
 
+        private Point location_addZero;
+        private Point location_unit_in_alignment;
+        int checkBox_location_offset;
+
         private List<string> ListImagesFullName = new List<string>(); // перечень путей к файлам с картинками
         public Object _ElementWithText;
         public UCtrl_Text_Rotate_Opt()
@@ -50,7 +54,11 @@ namespace ControlLibrary
             location_imageDecimalPoint_label = label_imageDecimalPoint.Location; // десятичный разделитель
             location_imageError_label = label_imageError.Location; // изображение при ошибке
             unit_label_text = label_unit.Text;
-        }
+
+            location_addZero = checkBox_addZero.Location;
+            location_unit_in_alignment = checkBox_unit_in_alignment.Location;
+            checkBox_location_offset = location_addZero.Y - location_imageDecimalPoint_label.Y;
+    }
 
 
         /// <summary>Задает название выбранной картинки</summary>
@@ -221,19 +229,34 @@ namespace ControlLibrary
                 comboBox_imageDecimalPoint.Visible = OptionalSymbol_mode;
                 label_imageDecimalPoint.Visible = OptionalSymbol_mode;
 
-                if (OptionalSymbol_mode)
+                //if (OptionalSymbol_mode)
+                //{
+                //    Point location = new Point(numericUpDown_angle.Location.X, location_unit_miles.Y);
+                //    numericUpDown_angle.Location = location;
+                //    location = new Point(label_angle.Location.X, location_unit_miles_label.Y);
+                //    label_angle.Location = location;
+                //}
+                //else
+                //{
+                //    Point location = new Point(numericUpDown_angle.Location.X, location_imageDecimalPoint.Y);
+                //    numericUpDown_angle.Location = location;
+                //    location = new Point(label_angle.Location.X, location_imageDecimalPoint_label.Y);
+                //    label_angle.Location = location;
+                //}
+
+                if (!OptionalSymbol_mode && !Distance_mode && !Sunrise_mode && !Weather_mode)
                 {
-                    Point location = new Point(numericUpDown_angle.Location.X, location_unit_miles.Y);
-                    numericUpDown_angle.Location = location;
-                    location = new Point(label_angle.Location.X, location_unit_miles_label.Y);
-                    label_angle.Location = location;
+                    Point location = new Point(location_addZero.X, location_addZero.Y - checkBox_location_offset);
+                    checkBox_addZero.Location = location;
+                    location = new Point(location_unit_in_alignment.X, location_unit_in_alignment.Y - checkBox_location_offset);
+                    checkBox_unit_in_alignment.Location = location;
                 }
                 else
                 {
-                    Point location = new Point(numericUpDown_angle.Location.X, location_imageDecimalPoint.Y);
-                    numericUpDown_angle.Location = location;
-                    location = new Point(label_angle.Location.X, location_imageDecimalPoint_label.Y);
-                    label_angle.Location = location;
+                    Point location = new Point(location_addZero.X, location_addZero.Y);
+                    checkBox_addZero.Location = location;
+                    location = new Point(location_unit_in_alignment.X, location_unit_in_alignment.Y);
+                    checkBox_unit_in_alignment.Location = location;
                 }
             }
         }
@@ -289,6 +312,21 @@ namespace ControlLibrary
                 {
                     label_unit.Text = unit_label_text;
                     label_unit_miles.Text = unit_label_text;
+                }
+
+                if (!OptionalSymbol_mode && !Distance_mode && !Sunrise_mode && !Weather_mode)
+                {
+                    Point location = new Point(location_addZero.X, location_addZero.Y - checkBox_location_offset);
+                    checkBox_addZero.Location = location;
+                    location = new Point(location_unit_in_alignment.X, location_unit_in_alignment.Y - checkBox_location_offset);
+                    checkBox_unit_in_alignment.Location = location;
+                }
+                else
+                {
+                    Point location = new Point(location_addZero.X, location_addZero.Y);
+                    checkBox_addZero.Location = location;
+                    location = new Point(location_unit_in_alignment.X, location_unit_in_alignment.Y);
+                    checkBox_unit_in_alignment.Location = location;
                 }
             }
         }
@@ -352,6 +390,21 @@ namespace ControlLibrary
                 {
                     label_imageDecimalPoint.Text = Properties.Strings.UCtrl_Text_Opt_Sunrise_false;
                 }
+
+                if (!OptionalSymbol_mode && !Distance_mode && !Sunrise_mode && !Weather_mode)
+                {
+                    Point location = new Point(location_addZero.X, location_addZero.Y - checkBox_location_offset);
+                    checkBox_addZero.Location = location;
+                    location = new Point(location_unit_in_alignment.X, location_unit_in_alignment.Y - checkBox_location_offset);
+                    checkBox_unit_in_alignment.Location = location;
+                }
+                else
+                {
+                    Point location = new Point(location_addZero.X, location_addZero.Y);
+                    checkBox_addZero.Location = location;
+                    location = new Point(location_unit_in_alignment.X, location_unit_in_alignment.Y);
+                    checkBox_unit_in_alignment.Location = location;
+                }
             }
         }
 
@@ -393,6 +446,21 @@ namespace ControlLibrary
                 else
                 {
                     label_minus_image.Visible = false;
+                }
+
+                if (!OptionalSymbol_mode && !Distance_mode && !Sunrise_mode && !Weather_mode)
+                {
+                    Point location = new Point(location_addZero.X, location_addZero.Y - checkBox_location_offset);
+                    checkBox_addZero.Location = location;
+                    location = new Point(location_unit_in_alignment.X, location_unit_in_alignment.Y - checkBox_location_offset);
+                    checkBox_unit_in_alignment.Location = location;
+                }
+                else
+                {
+                    Point location = new Point(location_addZero.X, location_addZero.Y);
+                    checkBox_addZero.Location = location;
+                    location = new Point(location_unit_in_alignment.X, location_unit_in_alignment.Y);
+                    checkBox_unit_in_alignment.Location = location;
                 }
             }
         }
