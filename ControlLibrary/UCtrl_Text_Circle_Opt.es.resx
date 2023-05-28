@@ -117,9 +117,60 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label01.Text" xml:space="preserve">
+    <value>Primera imagen</value>
+  </data>
+  <data name="label02.Text" xml:space="preserve">
+    <value>Coordenadaa del centro</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label04.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 13</value>
+  <data name="label03.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 13</value>
+  </data>
+  <data name="label03.Text" xml:space="preserve">
+    <value>Espaciado</value>
+  </data>
+  <data name="label_imageError.Text" xml:space="preserve">
+    <value>imagen de error</value>
+  </data>
+  <data name="label_unit.Text" xml:space="preserve">
+    <value>Unidades</value>
+  </data>
+  <data name="label_imageDecimalPoint.Text" xml:space="preserve">
+    <value>Separador decimal</value>
+  </data>
+  <data name="comboBox_h_alignment.Items" xml:space="preserve">
+    <value>Izquierda</value>
+  </data>
+  <data name="comboBox_h_alignment.Items1" xml:space="preserve">
+    <value>Centrar</value>
+  </data>
+  <data name="comboBox_h_alignment.Items2" xml:space="preserve">
+    <value>Derecha</value>
+  </data>
+  <data name="label09.Text" xml:space="preserve">
+    <value>Alineamiento horizontal</value>
+  </data>
+  <data name="label_unit_miles.Text" xml:space="preserve">
+    <value>Unidades (ml)</value>
+  </data>
+  <data name="comboBox_v_alignment.Items" xml:space="preserve">
+    <value>Top</value>
+  </data>
+  <data name="comboBox_v_alignment.Items1" xml:space="preserve">
+    <value>Centrar</value>
+  </data>
+  <data name="comboBox_v_alignment.Items2" xml:space="preserve">
+    <value>Fondo</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Alineamiento vertical</value>
+  </data>
+  <data name="checkBox_reverse_direction.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 17</value>
+  </data>
+  <data name="checkBox_reverse_direction.Text" xml:space="preserve">
+    <value>Direccion contraria</value>
   </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -134,6 +185,12 @@
         v//mQ5XiBhMmTGD7+fNn7t+/f/dp9cj+t1mkBvTC7wO/f//OX7hoIQdUGWHw7v27LLcZxv8dZtkCw+Mf
         YZvRQX9/PxvQkJx3797lIWxmYAAA7pt3k8xS7ogAAAAASUVORK5CYII=
 </value>
+  </data>
+  <data name="вставитьКоординатуYToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 26</value>
+  </data>
+  <data name="вставитьКоординатуYToolStripMenuItem.Text" xml:space="preserve">
+    <value>Insertar coordenada Y</value>
   </data>
   <data name="копироватьToolStripMenuItemY.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -150,6 +207,12 @@
         aTd35+adAzmrI4ijA3Amk+lat7fXT4Snqp0uA/VkLJcUmL06e4e4fy2j0XjJYn28trhoXjWbLasWi/UT
         gfobN285p6dNt5F2ps/+r+K4P4wyYm9nlNBiAAAAAElFTkSuQmCC
 </value>
+  </data>
+  <data name="копироватьToolStripMenuItemY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 26</value>
+  </data>
+  <data name="копироватьToolStripMenuItemY.Text" xml:space="preserve">
+    <value>Copiar</value>
   </data>
   <data name="вставитьToolStripMenuItemY.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -168,6 +231,15 @@
         zqO/TnAxx2CuMF/jKtTrXEWk1Wk1ZkEQhL+gXkz+KXzH3gAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="вставитьToolStripMenuItemY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 26</value>
+  </data>
+  <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
+    <value>Insertar</value>
+  </data>
+  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 82</value>
+  </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
@@ -181,6 +253,12 @@
         v//mQ5XiBhMmTGD7+fNn7t+/f/dp9cj+t1mkBvTC7wO/f//OX7hoIQdUGWHw7v27LLcZxv8dZtkCw+Mf
         YZvRQX9/PxvQkJx3797lIWxmYAAA7pt3k8xS7ogAAAAASUVORK5CYII=
 </value>
+  </data>
+  <data name="вставитьКоординатуХToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 26</value>
+  </data>
+  <data name="вставитьКоординатуХToolStripMenuItem.Text" xml:space="preserve">
+    <value>Insertar coordenada X</value>
   </data>
   <data name="копироватьToolStripMenuItemX.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -197,6 +275,12 @@
         aTd35+adAzmrI4ijA3Amk+lat7fXT4Snqp0uA/VkLJcUmL06e4e4fy2j0XjJYn28trhoXjWbLasWi/UT
         gfobN285p6dNt5F2ps/+r+K4P4wyYm9nlNBiAAAAAElFTkSuQmCC
 </value>
+  </data>
+  <data name="копироватьToolStripMenuItemX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 26</value>
+  </data>
+  <data name="копироватьToolStripMenuItemX.Text" xml:space="preserve">
+    <value>Copiar</value>
   </data>
   <data name="вставитьToolStripMenuItemX.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -215,70 +299,34 @@
         zqO/TnAxx2CuMF/jKtTrXEWk1Wk1ZkEQhL+gXkz+KXzH3gAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="вставитьToolStripMenuItemX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 26</value>
+  </data>
+  <data name="вставитьToolStripMenuItemX.Text" xml:space="preserve">
+    <value>Insertar</value>
+  </data>
+  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 82</value>
+  </data>
+  <data name="checkBox_addZero.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 17</value>
+  </data>
   <data name="checkBox_addZero.Text" xml:space="preserve">
     <value>Añadir ceros a la izquierda</value>
   </data>
-  <data name="checkBox_follow.Text" xml:space="preserve">
-    <value>Sigue al predecesor</value>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 13</value>
   </data>
-  <data name="comboBox_alignment.Items" xml:space="preserve">
-    <value>Izquierda</value>
-  </data>
-  <data name="comboBox_alignment.Items1" xml:space="preserve">
-    <value>Centrar</value>
-  </data>
-  <data name="comboBox_alignment.Items2" xml:space="preserve">
-    <value>Derecha</value>
-  </data>
-  <data name="label01.Text" xml:space="preserve">
-    <value>Primera imagen</value>
-  </data>
-  <data name="label02.Text" xml:space="preserve">
-    <value>Coordenadas</value>
-  </data>
-  <data name="label03.Text" xml:space="preserve">
-    <value>Espaciado</value>
-  </data>
-  <data name="label04.Text" xml:space="preserve">
-    <value>Icono</value>
-  </data>
-  <data name="label05.Text" xml:space="preserve">
-    <value>Coordenadas del icono</value>
-  </data>
-  <data name="label06.Text" xml:space="preserve">
-    <value>imagen de error</value>
-  </data>
-  <data name="label07.Text" xml:space="preserve">
-    <value>Simbolo "-"</value>
-  </data>
-  <data name="label08.Text" xml:space="preserve">
-    <value>Unidad (°C)</value>
-  </data>
-  <data name="label09.Text" xml:space="preserve">
-    <value>Alineación</value>
-  </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value>Unidad (°F)</value>
-  </data>
-  <data name="вставитьToolStripMenuItemX.Text" xml:space="preserve">
-    <value>Pegar</value>
-  </data>
-  <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
-    <value>Pegar</value>
-  </data>
-  <data name="вставитьКоординатуYToolStripMenuItem.Text" xml:space="preserve">
-    <value>Pegar coordenada Y</value>
-  </data>
-  <data name="вставитьКоординатуХToolStripMenuItem.Text" xml:space="preserve">
-    <value>Pegar coordenada X</value>
-  </data>
-  <data name="копироватьToolStripMenuItemX.Text" xml:space="preserve">
-    <value>Copiar</value>
-  </data>
-  <data name="копироватьToolStripMenuItemY.Text" xml:space="preserve">
-    <value>Copiar</value>
-  </data>
-  <data name="label_angle.Text" xml:space="preserve">
+  <data name="label2.Text" xml:space="preserve">
     <value>Ángulo</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Radio</value>
+  </data>
+  <data name="checkBox_unit_in_alignment.Text" xml:space="preserve">
+    <value>Tenga en cuenta las unidades de medida al alinear</value>
+  </data>
+  <data name="label_minus_image.Text" xml:space="preserve">
+    <value>Simbolo "-"</value>
   </data>
 </root>

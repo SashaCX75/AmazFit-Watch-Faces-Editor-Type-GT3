@@ -117,56 +117,45 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label_angle.Text" xml:space="preserve">
+    <value>Ángulo</value>
+  </data>
+  <data name="checkBox_addZero.Text" xml:space="preserve">
+    <value>Añadir ceros a la izquierda</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="label04.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 13</value>
+  <data name="label03.Size" type="System.Drawing.Size, System.Drawing">
+    <value>57, 13</value>
   </data>
-  <data name="вставитьКоординатуYToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
-        8O+++t+i/Eg9AxYAkrPEI6ddeLyewbx4T/2sdcf/nzp/DYxPX7gOxmcuXv/fufHx/9UH7/4/e+kmGJ+7
-        fAuMz1+5/T+++8B+jcxd9mDTTpy9/P/lp/8k4c2bNyNcduLMxf+vP/+H4w3b9v8vraxHwcjyILx+/XqE
-        AcdPX/j/9ut/OJ4ycz6YLqmoReEj4zVr1kAMMC05XL9q/43/H779x8BllbVYxUE4onXPfmAg2oNDs2/L
-        4/+ffvzHwBVVdVjFQRgeCyBw9MSp/19//sfAVTV1WMVBePLspYgwOHr85P/vv/6j4Bu37/+3tbP/P2vO
-        fLjYrz8QDGLPmzcPYcCRY8fhkrjwn7///y+4Nvn/8tvT/v/+++//rFmzkAw4chSsABcGqv//D4hz9sT+
-        Lz+aBBT7+//KlStrJ85fzwYORO/KTfsbGxvrm5qa6pubm+tbWlrqq1sm1IPkJmy+9yd/W+5//xUe/3P3
-        x/8vBhqQuivkf+vJ4v9XHn2uZwAmx3p4kkQDILkVR56tdJvh+t9sotH/gLX2/yO2Ov43X6D1P367z/+f
-        v//mQ5XiBhMmTGD7+fNn7t+/f/dp9cj+t1mkBvTC7wO/f//OX7hoIQdUGWHw7v27LLcZxv8dZtkCw+Mf
-        YZvRQX9/PxvQkJx3797lIWxmYAAA7pt3k8xS7ogAAAAASUVORK5CYII=
-</value>
+  <data name="label03.Text" xml:space="preserve">
+    <value>Espaciado</value>
   </data>
-  <data name="копироватьToolStripMenuItemY.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAnJJREFUOE+l
-        UUtvEmEUHY3RuueRaDfu6lZKl+rKXYmLmtR/4NK9ujDammiqKWB8IENjXahB5VFr1YXRajsgLeX9HArD
-        AMN7gHZ9vfeDFJLqypuczJ2bc853vvtxVKfHx49pNJoTWq12TKfTjen1+pM6AvYarRbnuuOM+K+y2Zf8
-        4WgcovEkJFIZSKazCBHiyTTQPILz8xcuXh7QD5fNzgtEjCExiQbxRAqFMQiFo7C9E4ZgKAIzM1euGwyG
-        iclJ48Q5g+GscWrq1EDOcS+XXwmimIfcbh4Kkgw+fwDWfwng+70Fge0dZkLpovEUhCIxCKLx/QcLawM5
-        x71+81aQSmWQERVFQUHoQJRMZyCdFRlSeDVKR/OFh48+DuQc53z3XqgoVajW6tBotiAai0MCySImyheK
-        UCjKICEKUhFy+QKbmy3WocEHl0sgIUFtq3hSBoUSFOUylCsKKNUaA/WlcoUlffL02dDA5fYIrXYbWq02
-        qN0OZDCujMSCJEG90UTjJkuXwFf58XOTzZ7bXgwN3MxAZQZttQNZMXdwagRfZxdjq50e9Ho92BD8QFw7
-        zx82aJIBfrOiCLV6nf0HtoK4uCTs7e+z5yxXKozDOxyjV3ALzUab7YBS0BUoJiWhWR1BC9zY9MG37+ss
-        Je9YGkng8fqauINhghzUao2+Ic5pRqI++v88P5Jgfu7essezEkGjsNe7Evn85atcqzdYCjKlVC00o55M
-        aTd35+adAzmrI4ijA3Amk+lat7fXT4Snqp0uA/VkLJcUmL06e4e4fy2j0XjJYn28trhoXjWbLasWi/UT
-        gfobN285p6dNt5F2ps/+r+K4P4wyYm9nlNBiAAAAAElFTkSuQmCC
-</value>
+  <data name="label_imageError.Text" xml:space="preserve">
+    <value>imagen de error</value>
   </data>
-  <data name="вставитьToolStripMenuItemY.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAArVJREFUOE9l
-        UktPE2EUnbY8WuQlPgq0iBoSdIHgo/ggmhgTX6hkCo2wUAqJRYpAjKk7f4A7XRhRaGuEEF1QAf0RbHSB
-        EbRFSgulpbQz04Lr471DDQUnOZmbc88997v3+wT+CvS5xqaTNT0NtSaH2HKrt7PT7rTb7c7u7m4VHDPX
-        Zr3Ta6mrdpyrr+kpLS4wqsX8FRl01sd3LXj35iWmJ32YmZmB3+9HKBRSwTFzX6Y/Ydz7Cn2tFlSVl1kz
-        5WSg14n9bRZ8nZ3DhG8KwyNuuD0eeDxeFW63R+UmfJP4NjsPR8tpVFXsE7eq6Ssx5Ij9trP4PufHj/lf
-        8C8s4ndwCYtLIRUcB4jjHGucdIJDlft3GgzaGhEIhrCwGEQwFEZoeQXhlYgKjpeI41wgGMZAx3kyyDpB
-        MRkM2CxYjsQQJnFkNYpobA2xtbgKjpnjHGsGO5pwqKIsy4B28Ih2EIsnsRqNYS2+jvVEEklJUsExc5xj
-        TR+NW2068L/BelJRhYmkBFlWoKTSKjhmTjUmjbOtcdcI+hyxVzwFSUmr3RKSDEVJIZVOq1BSKUjEcY41
-        D610jdkj0DsQH9xugJzaQIJF/wyoO4Nj5jjHmq7mepjLswwK6QRdN+oouYl45gTqCFTIkBUly2AT96+f
-        4Ie0bbAnXyfeu3ockryxtTyaV8rsgSHJtMzE1jLjSRntV47BbNy7bWDI04rtl2uRlNOI07VxpyR15K4M
-        jpmLRKKY/xlAs8UEk7F0p4HtUg2U9B/qQt1o01KmuyzT/DRGPJ6gF7mMz1OTuHnGtOsEudpW28WjGPUO
-        Y8zzGh/eD8M37sHH0RGMed9i1DOEoRfP8eyJA9caj0C8cBiVB0taM+WCoBEEM13l01yN4MrXCi5DjuAq
-        zqO/TnAxx2CuMF/jKtTrXEWk1Wk1ZkEQhL+gXkz+KXzH3gAAAABJRU5ErkJggg==
-</value>
+  <data name="label_imageDecimalPoint.Text" xml:space="preserve">
+    <value>Separador decimal</value>
+  </data>
+  <data name="label_unit_miles.Text" xml:space="preserve">
+    <value>Unidades (ml)</value>
+  </data>
+  <data name="comboBox_alignment.Items" xml:space="preserve">
+    <value>Izquierda</value>
+  </data>
+  <data name="comboBox_alignment.Items1" xml:space="preserve">
+    <value>Centrar</value>
+  </data>
+  <data name="comboBox_alignment.Items2" xml:space="preserve">
+    <value>Derecha</value>
+  </data>
+  <data name="label_unit.Text" xml:space="preserve">
+    <value>Unidades</value>
+  </data>
+  <data name="label09.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 13</value>
+  </data>
+  <data name="label09.Text" xml:space="preserve">
+    <value>Alineación</value>
   </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -181,6 +170,12 @@
         v//mQ5XiBhMmTGD7+fNn7t+/f/dp9cj+t1mkBvTC7wO/f//OX7hoIQdUGWHw7v27LLcZxv8dZtkCw+Mf
         YZvRQX9/PxvQkJx3797lIWxmYAAA7pt3k8xS7ogAAAAASUVORK5CYII=
 </value>
+  </data>
+  <data name="вставитьКоординатуХToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 26</value>
+  </data>
+  <data name="вставитьКоординатуХToolStripMenuItem.Text" xml:space="preserve">
+    <value>Insertar coordenada X</value>
   </data>
   <data name="копироватьToolStripMenuItemX.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -197,6 +192,12 @@
         aTd35+adAzmrI4ijA3Amk+lat7fXT4Snqp0uA/VkLJcUmL06e4e4fy2j0XjJYn28trhoXjWbLasWi/UT
         gfobN285p6dNt5F2ps/+r+K4P4wyYm9nlNBiAAAAAElFTkSuQmCC
 </value>
+  </data>
+  <data name="копироватьToolStripMenuItemX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 26</value>
+  </data>
+  <data name="копироватьToolStripMenuItemX.Text" xml:space="preserve">
+    <value>Copiar</value>
   </data>
   <data name="вставитьToolStripMenuItemX.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -215,70 +216,96 @@
         zqO/TnAxx2CuMF/jKtTrXEWk1Wk1ZkEQhL+gXkz+KXzH3gAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="checkBox_addZero.Text" xml:space="preserve">
-    <value>Añadir ceros a la izquierda</value>
-  </data>
-  <data name="checkBox_follow.Text" xml:space="preserve">
-    <value>Sigue al predecesor</value>
-  </data>
-  <data name="comboBox_alignment.Items" xml:space="preserve">
-    <value>Izquierda</value>
-  </data>
-  <data name="comboBox_alignment.Items1" xml:space="preserve">
-    <value>Centrar</value>
-  </data>
-  <data name="comboBox_alignment.Items2" xml:space="preserve">
-    <value>Derecha</value>
-  </data>
-  <data name="label01.Text" xml:space="preserve">
-    <value>Primera imagen</value>
-  </data>
-  <data name="label02.Text" xml:space="preserve">
-    <value>Coordenadas</value>
-  </data>
-  <data name="label03.Text" xml:space="preserve">
-    <value>Espaciado</value>
-  </data>
-  <data name="label04.Text" xml:space="preserve">
-    <value>Icono</value>
-  </data>
-  <data name="label05.Text" xml:space="preserve">
-    <value>Coordenadas del icono</value>
-  </data>
-  <data name="label06.Text" xml:space="preserve">
-    <value>imagen de error</value>
-  </data>
-  <data name="label07.Text" xml:space="preserve">
-    <value>Simbolo "-"</value>
-  </data>
-  <data name="label08.Text" xml:space="preserve">
-    <value>Unidad (°C)</value>
-  </data>
-  <data name="label09.Text" xml:space="preserve">
-    <value>Alineación</value>
-  </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value>Unidad (°F)</value>
+  <data name="вставитьToolStripMenuItemX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 26</value>
   </data>
   <data name="вставитьToolStripMenuItemX.Text" xml:space="preserve">
-    <value>Pegar</value>
+    <value>Insertar</value>
   </data>
-  <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
-    <value>Pegar</value>
+  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 82</value>
+  </data>
+  <data name="вставитьКоординатуYToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
+        8O+++t+i/Eg9AxYAkrPEI6ddeLyewbx4T/2sdcf/nzp/DYxPX7gOxmcuXv/fufHx/9UH7/4/e+kmGJ+7
+        fAuMz1+5/T+++8B+jcxd9mDTTpy9/P/lp/8k4c2bNyNcduLMxf+vP/+H4w3b9v8vraxHwcjyILx+/XqE
+        AcdPX/j/9ut/OJ4ycz6YLqmoReEj4zVr1kAMMC05XL9q/43/H779x8BllbVYxUE4onXPfmAg2oNDs2/L
+        4/+ffvzHwBVVdVjFQRgeCyBw9MSp/19//sfAVTV1WMVBePLspYgwOHr85P/vv/6j4Bu37/+3tbP/P2vO
+        fLjYrz8QDGLPmzcPYcCRY8fhkrjwn7///y+4Nvn/8tvT/v/+++//rFmzkAw4chSsABcGqv//D4hz9sT+
+        Lz+aBBT7+//KlStrJ85fzwYORO/KTfsbGxvrm5qa6pubm+tbWlrqq1sm1IPkJmy+9yd/W+5//xUe/3P3
+        x/8vBhqQuivkf+vJ4v9XHn2uZwAmx3p4kkQDILkVR56tdJvh+t9sotH/gLX2/yO2Ov43X6D1P367z/+f
+        v//mQ5XiBhMmTGD7+fNn7t+/f/dp9cj+t1mkBvTC7wO/f//OX7hoIQdUGWHw7v27LLcZxv8dZtkCw+Mf
+        YZvRQX9/PxvQkJx3797lIWxmYAAA7pt3k8xS7ogAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="вставитьКоординатуYToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 26</value>
   </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Text" xml:space="preserve">
-    <value>Pegar coordenada Y</value>
+    <value>Insertar coordenada Y</value>
   </data>
-  <data name="вставитьКоординатуХToolStripMenuItem.Text" xml:space="preserve">
-    <value>Pegar coordenada X</value>
+  <data name="копироватьToolStripMenuItemY.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAnJJREFUOE+l
+        UUtvEmEUHY3RuueRaDfu6lZKl+rKXYmLmtR/4NK9ujDammiqKWB8IENjXahB5VFr1YXRajsgLeX9HArD
+        AMN7gHZ9vfeDFJLqypuczJ2bc853vvtxVKfHx49pNJoTWq12TKfTjen1+pM6AvYarRbnuuOM+K+y2Zf8
+        4WgcovEkJFIZSKazCBHiyTTQPILz8xcuXh7QD5fNzgtEjCExiQbxRAqFMQiFo7C9E4ZgKAIzM1euGwyG
+        iclJ48Q5g+GscWrq1EDOcS+XXwmimIfcbh4Kkgw+fwDWfwng+70Fge0dZkLpovEUhCIxCKLx/QcLawM5
+        x71+81aQSmWQERVFQUHoQJRMZyCdFRlSeDVKR/OFh48+DuQc53z3XqgoVajW6tBotiAai0MCySImyheK
+        UCjKICEKUhFy+QKbmy3WocEHl0sgIUFtq3hSBoUSFOUylCsKKNUaA/WlcoUlffL02dDA5fYIrXYbWq02
+        qN0OZDCujMSCJEG90UTjJkuXwFf58XOTzZ7bXgwN3MxAZQZttQNZMXdwagRfZxdjq50e9Ho92BD8QFw7
+        zx82aJIBfrOiCLV6nf0HtoK4uCTs7e+z5yxXKozDOxyjV3ALzUab7YBS0BUoJiWhWR1BC9zY9MG37+ss
+        Je9YGkng8fqauINhghzUao2+Ic5pRqI++v88P5Jgfu7essezEkGjsNe7Evn85atcqzdYCjKlVC00o55M
+        aTd35+adAzmrI4ijA3Amk+lat7fXT4Snqp0uA/VkLJcUmL06e4e4fy2j0XjJYn28trhoXjWbLasWi/UT
+        gfobN285p6dNt5F2ps/+r+K4P4wyYm9nlNBiAAAAAElFTkSuQmCC
+</value>
   </data>
-  <data name="копироватьToolStripMenuItemX.Text" xml:space="preserve">
-    <value>Copiar</value>
+  <data name="копироватьToolStripMenuItemY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 26</value>
   </data>
   <data name="копироватьToolStripMenuItemY.Text" xml:space="preserve">
     <value>Copiar</value>
   </data>
-  <data name="label_angle.Text" xml:space="preserve">
-    <value>Ángulo</value>
+  <data name="вставитьToolStripMenuItemY.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAArVJREFUOE9l
+        UktPE2EUnbY8WuQlPgq0iBoSdIHgo/ggmhgTX6hkCo2wUAqJRYpAjKk7f4A7XRhRaGuEEF1QAf0RbHSB
+        EbRFSgulpbQz04Lr471DDQUnOZmbc88997v3+wT+CvS5xqaTNT0NtSaH2HKrt7PT7rTb7c7u7m4VHDPX
+        Zr3Ta6mrdpyrr+kpLS4wqsX8FRl01sd3LXj35iWmJ32YmZmB3+9HKBRSwTFzX6Y/Ydz7Cn2tFlSVl1kz
+        5WSg14n9bRZ8nZ3DhG8KwyNuuD0eeDxeFW63R+UmfJP4NjsPR8tpVFXsE7eq6Ssx5Ij9trP4PufHj/lf
+        8C8s4ndwCYtLIRUcB4jjHGucdIJDlft3GgzaGhEIhrCwGEQwFEZoeQXhlYgKjpeI41wgGMZAx3kyyDpB
+        MRkM2CxYjsQQJnFkNYpobA2xtbgKjpnjHGsGO5pwqKIsy4B28Ih2EIsnsRqNYS2+jvVEEklJUsExc5xj
+        TR+NW2068L/BelJRhYmkBFlWoKTSKjhmTjUmjbOtcdcI+hyxVzwFSUmr3RKSDEVJIZVOq1BSKUjEcY41
+        D610jdkj0DsQH9xugJzaQIJF/wyoO4Nj5jjHmq7mepjLswwK6QRdN+oouYl45gTqCFTIkBUly2AT96+f
+        4Ie0bbAnXyfeu3ockryxtTyaV8rsgSHJtMzE1jLjSRntV47BbNy7bWDI04rtl2uRlNOI07VxpyR15K4M
+        jpmLRKKY/xlAs8UEk7F0p4HtUg2U9B/qQt1o01KmuyzT/DRGPJ6gF7mMz1OTuHnGtOsEudpW28WjGPUO
+        Y8zzGh/eD8M37sHH0RGMed9i1DOEoRfP8eyJA9caj0C8cBiVB0taM+WCoBEEM13l01yN4MrXCi5DjuAq
+        zqO/TnAxx2CuMF/jKtTrXEWk1Wk1ZkEQhL+gXkz+KXzH3gAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="вставитьToolStripMenuItemY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 26</value>
+  </data>
+  <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
+    <value>Insertar</value>
+  </data>
+  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 82</value>
+  </data>
+  <data name="label01.Text" xml:space="preserve">
+    <value>Primera imagen</value>
+  </data>
+  <data name="label02.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 13</value>
+  </data>
+  <data name="label02.Text" xml:space="preserve">
+    <value>Coordenadas</value>
+  </data>
+  <data name="checkBox_unit_in_alignment.Text" xml:space="preserve">
+    <value>Tenga en cuenta las unidades de medida al alinear</value>
+  </data>
+  <data name="label_minus_image.Text" xml:space="preserve">
+    <value>Simbolo "-"</value>
   </data>
 </root>

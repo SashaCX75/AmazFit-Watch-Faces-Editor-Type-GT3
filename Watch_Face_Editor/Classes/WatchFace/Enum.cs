@@ -14,4 +14,12 @@
         RIGHT = 2,
         CENTER_V = 3
     }
+
+    public enum text_style
+    {
+        CHAR_WRAP = 0,
+        WRAP = 1,
+        ELLIPSIS = 2,
+        NONE = 3
+    }
 }

@@ -153,4 +153,16 @@
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Distancia</value>
   </data>
+  <data name="button_Icon.Text" xml:space="preserve">
+    <value>Icono</value>
+  </data>
+  <data name="button_Number.Text" xml:space="preserve">
+    <value>Valores numéricos</value>
+  </data>
+  <data name="button_Text_circle.Text" xml:space="preserve">
+    <value>Valor en un círculo</value>
+  </data>
+  <data name="button_Text_rotation.Text" xml:space="preserve">
+    <value>Valor en ángulo</value>
+  </data>
 </root>

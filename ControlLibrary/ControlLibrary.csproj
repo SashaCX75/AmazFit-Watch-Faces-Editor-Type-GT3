@@ -1946,6 +1946,9 @@
     <EmbeddedResource Include="UCtrl_Text_Circle_Opt.en.resx">
       <DependentUpon>UCtrl_Text_Circle_Opt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Text_Circle_Opt.es.resx">
+      <DependentUpon>UCtrl_Text_Circle_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Text_Circle_Opt.it.resx">
       <DependentUpon>UCtrl_Text_Circle_Opt.cs</DependentUpon>
     </EmbeddedResource>
@@ -1993,6 +1996,9 @@
       <DependentUpon>UCtrl_Text_Rotate_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Text_Rotate_Opt.en.resx">
+      <DependentUpon>UCtrl_Text_Rotate_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Text_Rotate_Opt.es.resx">
       <DependentUpon>UCtrl_Text_Rotate_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Text_Rotate_Opt.it.resx">

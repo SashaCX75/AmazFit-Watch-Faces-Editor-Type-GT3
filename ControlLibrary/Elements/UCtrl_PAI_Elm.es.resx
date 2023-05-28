@@ -177,4 +177,10 @@
   <data name="button_Segments.Text" xml:space="preserve">
     <value>Imágenes independientes</value>
   </data>
+  <data name="button_Text_circle_Target.Text" xml:space="preserve">
+    <value>Valor en un círculo (semana)</value>
+  </data>
+  <data name="button_Text_rotation_Target.Text" xml:space="preserve">
+    <value>Valor en ángulo (semana)</value>
+  </data>
 </root>
