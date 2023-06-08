@@ -63,6 +63,9 @@ namespace ControlLibrary
             this.comboBox_textStyle = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.comboBox_fonts = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.button_AddFont = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Width)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Height)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_X)).BeginInit();
@@ -379,10 +382,33 @@ namespace ControlLibrary
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
             // 
+            // comboBox_fonts
+            // 
+            resources.ApplyResources(this.comboBox_fonts, "comboBox_fonts");
+            this.comboBox_fonts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_fonts.FormattingEnabled = true;
+            this.comboBox_fonts.Name = "comboBox_fonts";
+            this.comboBox_fonts.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
+            // 
+            // label6
+            // 
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.Name = "label6";
+            // 
+            // button_AddFont
+            // 
+            resources.ApplyResources(this.button_AddFont, "button_AddFont");
+            this.button_AddFont.Name = "button_AddFont";
+            this.button_AddFont.UseVisualStyleBackColor = true;
+            this.button_AddFont.Click += new System.EventHandler(this.button_AddFont_Click);
+            // 
             // UCtrl_Text_SystemFont_Opt
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button_AddFont);
+            this.Controls.Add(this.comboBox_fonts);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.comboBox_textStyle);
             this.Controls.Add(this.label4);
@@ -456,5 +482,8 @@ namespace ControlLibrary
         private System.Windows.Forms.ToolStripMenuItem копироватьToolStripMenuItemX;
         private System.Windows.Forms.ToolStripMenuItem вставитьToolStripMenuItemX;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox comboBox_fonts;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button button_AddFont;
     }
 }

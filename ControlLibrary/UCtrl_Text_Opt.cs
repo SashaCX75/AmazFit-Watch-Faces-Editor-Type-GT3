@@ -542,6 +542,7 @@ namespace ControlLibrary
             }
             //e.Graphics.DrawImage(imageList1.Images[e.Index], rectangle);
             myFont = new Font(family, size);
+
             StringFormat lineAlignment = new StringFormat();
             //lineAlignment.Alignment = StringAlignment.Center;
             lineAlignment.LineAlignment = StringAlignment.Center;

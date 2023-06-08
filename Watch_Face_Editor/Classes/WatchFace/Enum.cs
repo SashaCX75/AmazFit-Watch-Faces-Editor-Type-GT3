@@ -17,9 +17,9 @@
 
     public enum text_style
     {
-        CHAR_WRAP = 0,
-        WRAP = 1,
-        ELLIPSIS = 2,
-        NONE = 3
+        CHAR_WRAP = 0, // перенос по буквам
+        WRAP = 1, // перенос по словам
+        ELLIPSIS = 2, // без переноса
+        NONE = 3 // бегущая строка
     }
 }

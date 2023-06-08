@@ -117,6 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Dialog_FontFilter" xml:space="preserve">
+    <value>Font file (*.ttf) | *.ttf</value>
+  </data>
+  <data name="Dialog_Title_Font_Add" xml:space="preserve">
+    <value>Select font file</value>
+  </data>
+  <data name="Message_Warning_Caption" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="Message_Warning_Font_Exist1" xml:space="preserve">
+    <value>The project already has a font: </value>
+  </data>
+  <data name="Message_Warning_Font_Exist2" xml:space="preserve">
+    <value>Replace it with a new font?</value>
+  </data>
+  <data name="SystemFont" xml:space="preserve">
+    <value>System Font</value>
+  </data>
   <data name="UCtrl_Text_Opt_Sunrise_false" xml:space="preserve">
     <value>Decimal separator</value>
   </data>

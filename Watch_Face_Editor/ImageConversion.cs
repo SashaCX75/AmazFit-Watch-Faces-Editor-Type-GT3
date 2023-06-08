@@ -161,7 +161,7 @@ namespace Watch_Face_Editor
                         {
                             image.Composite(Alpha, ImageMagick.CompositeOperator.CopyAlpha, ImageMagick.Channels.Alpha);
                         }
-                        image.Write(targetFile, MagickFormat.Png);
+                        image.Write(targetFile, MagickFormat.Png32);
                     }
                     if (fix_color == 2)
                     {
@@ -169,7 +169,7 @@ namespace Watch_Face_Editor
                         {
                             image.Composite(Alpha, ImageMagick.CompositeOperator.CopyAlpha, ImageMagick.Channels.Alpha);
                         }
-                        image.Write(targetFile, MagickFormat.Png);
+                        image.Write(targetFile, MagickFormat.Png32);
                     }
                     if (fix_color == 3)
                     {

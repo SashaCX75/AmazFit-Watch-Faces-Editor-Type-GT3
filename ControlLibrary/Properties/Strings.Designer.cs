@@ -61,6 +61,60 @@ namespace ControlLibrary.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Файл шрифта (*.ttf) | *.ttf.
+        /// </summary>
+        internal static string Dialog_FontFilter {
+            get {
+                return ResourceManager.GetString("Dialog_FontFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Выберите файл шрифта.
+        /// </summary>
+        internal static string Dialog_Title_Font_Add {
+            get {
+                return ResourceManager.GetString("Dialog_Title_Font_Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Предупреждение.
+        /// </summary>
+        internal static string Message_Warning_Caption {
+            get {
+                return ResourceManager.GetString("Message_Warning_Caption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на В проекте уже существует шрифт: .
+        /// </summary>
+        internal static string Message_Warning_Font_Exist1 {
+            get {
+                return ResourceManager.GetString("Message_Warning_Font_Exist1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Заменить его новым шрифтом?.
+        /// </summary>
+        internal static string Message_Warning_Font_Exist2 {
+            get {
+                return ResourceManager.GetString("Message_Warning_Font_Exist2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Системный шрифт.
+        /// </summary>
+        internal static string SystemFont {
+            get {
+                return ResourceManager.GetString("SystemFont", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Десятичный разделитель.
         /// </summary>
         internal static string UCtrl_Text_Opt_Sunrise_false {

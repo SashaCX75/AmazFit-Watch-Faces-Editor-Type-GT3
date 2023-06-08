@@ -1732,8 +1732,13 @@ namespace Watch_Face_Editor
 
             uCtrl_Text_SystemFont_Opt.SettingsClear();
             uCtrl_Text_SystemFont_Opt.Visible = true;
+            if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || 
+                ProgramSettings.Watch_Model == "GTR mini" || ProgramSettings.Watch_Model == "T-Rex Ultra")
+                uCtrl_Text_SystemFont_Opt.UserFont = true;
 
             uCtrl_Text_SystemFont_Opt._ElementWithSystemFont = system_font;
+            //uCtrl_Text_SystemFont_Opt.fonts_path = FullFileDir + @"\assets\fonts\";
+            uCtrl_Text_SystemFont_Opt.AddFonts(FullFileDir + @"\assets\fonts\");
 
             uCtrl_Text_SystemFont_Opt.numericUpDown_X.Value = system_font.x;
             uCtrl_Text_SystemFont_Opt.numericUpDown_Y.Value = system_font.y;
@@ -1749,6 +1754,8 @@ namespace Watch_Face_Editor
             uCtrl_Text_SystemFont_Opt.SetHorizontalAlignment(system_font.align_h);
             uCtrl_Text_SystemFont_Opt.SetVerticalAlignment(system_font.align_v);
             uCtrl_Text_SystemFont_Opt.SetTextStyle(system_font.text_style);
+
+            uCtrl_Text_SystemFont_Opt.SetFont(system_font.font);
 
             PreviewView = true;
         }
@@ -2434,6 +2441,8 @@ namespace Watch_Face_Editor
             systemFont.align_h = uCtrl_Text_SystemFont_Opt.GetHorizontalAlignment();
             systemFont.align_v = uCtrl_Text_SystemFont_Opt.GetVerticalAlignment();
             systemFont.text_style = uCtrl_Text_SystemFont_Opt.GetTextStyle();
+
+            systemFont.font = uCtrl_Text_SystemFont_Opt.GetFont();
 
             JSON_Modified = true;
             PreviewImage();

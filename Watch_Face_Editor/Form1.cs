@@ -1930,6 +1930,8 @@ namespace Watch_Face_Editor
             if (digitalTime != null)
             {
                 hmUI_widget_IMG_NUMBER img_number = null;
+                hmUI_widget_IMG_NUMBER text_rotation = null;
+                Text_Circle text_circle = null;
 
                 switch (selectElement)
                 {
@@ -1966,6 +1968,62 @@ namespace Watch_Face_Editor
                             hmUI_widget_IMG_TIME_am_pm am_pm = digitalTime.AmPm;
                             Read_AM_PM_Options(am_pm);
                             ShowElemenrOptions("AmPm");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+
+                    case "Hour_rotation":
+                        if (uCtrl_DigitalTime_Elm.checkBox_Hours_rotation.Checked)
+                        {
+                            text_rotation = digitalTime.Hour_rotation;
+                            Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
+                            ShowElemenrOptions("Text_rotation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Minute_rotation":
+                        if (uCtrl_DigitalTime_Elm.checkBox_Minutes_rotation.Checked)
+                        {
+                            text_rotation = digitalTime.Minute_rotation;
+                            Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
+                            ShowElemenrOptions("Text_rotation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Second_rotation":
+                        if (uCtrl_DigitalTime_Elm.checkBox_Seconds_rotation.Checked)
+                        {
+                            text_rotation = digitalTime.Second_rotation;
+                            Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
+                            ShowElemenrOptions("Text_rotation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+
+                    case "Hour_circle":
+                        if (uCtrl_DigitalTime_Elm.checkBox_Hours_circle.Checked)
+                        {
+                            text_circle = digitalTime.Hour_circle;
+                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            ShowElemenrOptions("Text_circle");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Minute_circle":
+                        if (uCtrl_DigitalTime_Elm.checkBox_Minutes_circle.Checked)
+                        {
+                            text_circle = digitalTime.Minute_circle;
+                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            ShowElemenrOptions("Text_circle");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Second_circle":
+                        if (uCtrl_DigitalTime_Elm.checkBox_Seconds_circle.Checked)
+                        {
+                            text_circle = digitalTime.Second_circle;
+                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            ShowElemenrOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -4943,7 +5001,45 @@ namespace Watch_Face_Editor
                                 uCtrl_DigitalTime_Elm.checkBox_AmPm.Checked = DigitalTime.AmPm.visible;
                                 elementOptions.Add(DigitalTime.AmPm.position, "AmPm");
                             }
-                                
+
+                            if (DigitalTime.Second_rotation != null && !elementOptions.ContainsKey(DigitalTime.Second_rotation.position) &&
+                                !elementOptions.ContainsValue("Second_rotation"))
+                            {
+                                uCtrl_DigitalTime_Elm.checkBox_Seconds_rotation.Checked = DigitalTime.Second_rotation.visible;
+                                elementOptions.Add(DigitalTime.Second_rotation.position, "Second_rotation");
+                            }
+                            if (DigitalTime.Minute_rotation != null && !elementOptions.ContainsKey(DigitalTime.Minute_rotation.position) &&
+                                !elementOptions.ContainsValue("Minute_rotation"))
+                            {
+                                uCtrl_DigitalTime_Elm.checkBox_Minutes_rotation.Checked = DigitalTime.Minute_rotation.visible;
+                                elementOptions.Add(DigitalTime.Minute_rotation.position, "Minute_rotation");
+                            }
+                            if (DigitalTime.Hour_rotation != null && !elementOptions.ContainsKey(DigitalTime.Hour_rotation.position) &&
+                                !elementOptions.ContainsValue("Hour_rotation"))
+                            {
+                                uCtrl_DigitalTime_Elm.checkBox_Hours_rotation.Checked = DigitalTime.Hour_rotation.visible;
+                                elementOptions.Add(DigitalTime.Hour_rotation.position, "Hour_rotation");
+                            }
+
+                            if (DigitalTime.Second_circle != null && !elementOptions.ContainsKey(DigitalTime.Second_circle.position) &&
+                                !elementOptions.ContainsValue("Second_circle"))
+                            {
+                                uCtrl_DigitalTime_Elm.checkBox_Seconds_circle.Checked = DigitalTime.Second_circle.visible;
+                                elementOptions.Add(DigitalTime.Second_circle.position, "Second_circle");
+                            }
+                            if (DigitalTime.Minute_circle != null && !elementOptions.ContainsKey(DigitalTime.Minute_circle.position) &&
+                                !elementOptions.ContainsValue("Minute_circle"))
+                            {
+                                uCtrl_DigitalTime_Elm.checkBox_Minutes_circle.Checked = DigitalTime.Minute_circle.visible;
+                                elementOptions.Add(DigitalTime.Minute_circle.position, "Minute_circle");
+                            }
+                            if (DigitalTime.Hour_circle != null && !elementOptions.ContainsKey(DigitalTime.Hour_circle.position) &&
+                                !elementOptions.ContainsValue("Hour_circle"))
+                            {
+                                uCtrl_DigitalTime_Elm.checkBox_Hours_circle.Checked = DigitalTime.Hour_circle.visible;
+                                elementOptions.Add(DigitalTime.Hour_circle.position, "Hour_circle");
+                            }
+
                             uCtrl_DigitalTime_Elm.SetOptionsPosition(elementOptions);
 
                             uCtrl_DigitalTime_Elm.Visible = true;
@@ -6674,11 +6770,27 @@ namespace Watch_Face_Editor
                 if (digitalTime.Second == null) digitalTime.Second = new hmUI_widget_IMG_NUMBER();
                 if (digitalTime.AmPm == null) digitalTime.AmPm = new hmUI_widget_IMG_TIME_am_pm();
 
+                if (digitalTime.Hour_rotation == null) digitalTime.Hour_rotation = new hmUI_widget_IMG_NUMBER();
+                if (digitalTime.Minute_rotation == null) digitalTime.Minute_rotation = new hmUI_widget_IMG_NUMBER();
+                if (digitalTime.Second_rotation == null) digitalTime.Second_rotation = new hmUI_widget_IMG_NUMBER();
+
+                if (digitalTime.Hour_circle == null) digitalTime.Hour_circle = new Text_Circle();
+                if (digitalTime.Minute_circle == null) digitalTime.Minute_circle = new Text_Circle();
+                if (digitalTime.Second_circle == null) digitalTime.Second_circle = new Text_Circle();
+
                 Dictionary<string, int> elementOptions = uCtrl_DigitalTime_Elm.GetOptionsPosition();
                 if (elementOptions.ContainsKey("Hour")) digitalTime.Hour.position = elementOptions["Hour"];
                 if (elementOptions.ContainsKey("Minute")) digitalTime.Minute.position = elementOptions["Minute"];
                 if (elementOptions.ContainsKey("Second")) digitalTime.Second.position = elementOptions["Second"];
                 if (elementOptions.ContainsKey("AmPm")) digitalTime.AmPm.position = elementOptions["AmPm"];
+
+                if (elementOptions.ContainsKey("Hour_rotation")) digitalTime.Hour_rotation.position = elementOptions["Hour_rotation"];
+                if (elementOptions.ContainsKey("Minute_rotation")) digitalTime.Minute_rotation.position = elementOptions["Minute_rotation"];
+                if (elementOptions.ContainsKey("Second_rotation")) digitalTime.Second_rotation.position = elementOptions["Second_rotation"];
+
+                if (elementOptions.ContainsKey("Hour_circle")) digitalTime.Hour_circle.position = elementOptions["Hour_circle"];
+                if (elementOptions.ContainsKey("Minute_circle")) digitalTime.Minute_circle.position = elementOptions["Minute_circle"];
+                if (elementOptions.ContainsKey("Second_circle")) digitalTime.Second_circle.position = elementOptions["Second_circle"];
 
                 CheckBox checkBox = (CheckBox)sender;
                 string name = checkBox.Name;
@@ -6695,6 +6807,26 @@ namespace Watch_Face_Editor
                         break;
                     case "checkBox_AmPm":
                         digitalTime.AmPm.visible = checkBox.Checked;
+                        break;
+
+                    case "checkBox_Hours_rotation":
+                        digitalTime.Hour_rotation.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Minutes_rotation":
+                        digitalTime.Minute_rotation.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Seconds_rotation":
+                        digitalTime.Second_rotation.visible = checkBox.Checked;
+                        break;
+
+                    case "checkBox_Hours_circle":
+                        digitalTime.Hour_circle.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Minutes_circle":
+                        digitalTime.Minute_circle.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Seconds_circle":
+                        digitalTime.Second_circle.visible = checkBox.Checked;
                         break;
                 }
 
@@ -6743,11 +6875,27 @@ namespace Watch_Face_Editor
                 if (digitalTime.Second == null) digitalTime.Second = new hmUI_widget_IMG_NUMBER();
                 if (digitalTime.AmPm == null) digitalTime.AmPm = new hmUI_widget_IMG_TIME_am_pm();
 
+                if (digitalTime.Hour_rotation == null) digitalTime.Hour_rotation = new hmUI_widget_IMG_NUMBER();
+                if (digitalTime.Minute_rotation == null) digitalTime.Minute_rotation = new hmUI_widget_IMG_NUMBER();
+                if (digitalTime.Second_rotation == null) digitalTime.Second_rotation = new hmUI_widget_IMG_NUMBER();
+
+                if (digitalTime.Hour_circle == null) digitalTime.Hour_circle = new Text_Circle();
+                if (digitalTime.Minute_circle == null) digitalTime.Minute_circle = new Text_Circle();
+                if (digitalTime.Second_circle == null) digitalTime.Second_circle = new Text_Circle();
+
                 //Dictionary<string, int> elementOptions = uCtrl_DigitalTime_Elm.GetOptionsPosition();
                 if (elementOptions.ContainsKey("Hour")) digitalTime.Hour.position = elementOptions["Hour"];
                 if (elementOptions.ContainsKey("Minute")) digitalTime.Minute.position = elementOptions["Minute"];
                 if (elementOptions.ContainsKey("Second")) digitalTime.Second.position = elementOptions["Second"];
                 if (elementOptions.ContainsKey("AmPm")) digitalTime.AmPm.position = elementOptions["AmPm"];
+
+                if (elementOptions.ContainsKey("Hour_rotation")) digitalTime.Hour_rotation.position = elementOptions["Hour_rotation"];
+                if (elementOptions.ContainsKey("Minute_rotation")) digitalTime.Minute_rotation.position = elementOptions["Minute_rotation"];
+                if (elementOptions.ContainsKey("Second_rotation")) digitalTime.Second_rotation.position = elementOptions["Second_rotation"];
+
+                if (elementOptions.ContainsKey("Hour_circle")) digitalTime.Hour_circle.position = elementOptions["Hour_circle"];
+                if (elementOptions.ContainsKey("Minute_circle")) digitalTime.Minute_circle.position = elementOptions["Minute_circle"];
+                if (elementOptions.ContainsKey("Second_circle")) digitalTime.Second_circle.position = elementOptions["Second_circle"];
 
             }
 
@@ -8469,6 +8617,10 @@ namespace Watch_Face_Editor
 
             File.WriteAllText(tempDir + @"\app.json", appText, Encoding.UTF8);
             File.Copy(templatesFileDir + @"\app.js", tempDir + @"\app.js");
+            if (Directory.Exists(FullFileDir + @"\assets\fonts"))
+            {
+                CopyDirectory(FullFileDir + @"\assets\fonts", tempDir + @"\assets\fonts", false);
+            }
 
             // преобразуем настройки в текстовый файл
             string variables = "";
@@ -8927,6 +9079,11 @@ namespace Watch_Face_Editor
                 {
                     //Console.WriteLine(dirNames);
                     Directory.CreateDirectory(projectPath + @"\assets" + dirNames);
+                }
+                List<string> allFontsFiles = GetRecursFiles(tempDir + @"\assets", "*.ttf", 5, tempDir + @"\assets");
+                foreach (string fileNames in allFontsFiles)
+                {
+                    File.Copy(tempDir + @"\assets" + fileNames, projectPath + @"\assets" + fileNames);
                 }
 
                 List<string> allFiles = GetRecursFiles(tempDir + @"\assets", "*.png", 5, tempDir + @"\assets");
@@ -17760,6 +17917,39 @@ namespace Watch_Face_Editor
             return "No 4.5 or later version detected";
         }
 
+
+        static void CopyDirectory(string sourceDir, string destinationDir, bool recursive)
+        {
+            // Get information about the source directory
+            var dir = new DirectoryInfo(sourceDir);
+
+            // Check if the source directory exists
+            if (!dir.Exists)
+                throw new DirectoryNotFoundException($"Source directory not found: {dir.FullName}");
+
+            // Cache directories before we start copying
+            DirectoryInfo[] dirs = dir.GetDirectories();
+
+            // Create the destination directory
+            Directory.CreateDirectory(destinationDir);
+
+            // Get the files in the source directory and copy to the destination directory
+            foreach (FileInfo file in dir.GetFiles())
+            {
+                string targetFilePath = Path.Combine(destinationDir, file.Name);
+                file.CopyTo(targetFilePath);
+            }
+
+            // If recursive and copying subdirectories, recursively call this method
+            if (recursive)
+            {
+                foreach (DirectoryInfo subDir in dirs)
+                {
+                    string newDestinationDir = Path.Combine(destinationDir, subDir.Name);
+                    CopyDirectory(subDir.FullName, newDestinationDir, true);
+                }
+            }
+        }
     }
 }
 

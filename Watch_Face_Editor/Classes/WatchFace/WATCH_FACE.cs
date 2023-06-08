@@ -180,6 +180,12 @@ namespace Watch_Face_Editor
         public hmUI_widget_IMG_NUMBER Minute { get; set; }
         public hmUI_widget_IMG_NUMBER Hour { get; set; }
         public hmUI_widget_IMG_TIME_am_pm AmPm { get; set; }
+        public hmUI_widget_IMG_NUMBER Second_rotation { get; set; }
+        public hmUI_widget_IMG_NUMBER Minute_rotation { get; set; }
+        public hmUI_widget_IMG_NUMBER Hour_rotation { get; set; }
+        public Text_Circle Second_circle { get; set; }
+        public Text_Circle Minute_circle { get; set; }
+        public Text_Circle Hour_circle { get; set; }
 
         public object Clone()
         {
@@ -288,6 +294,181 @@ namespace Watch_Face_Editor
                 };
             }
 
+            hmUI_widget_IMG_NUMBER Second_rotation = null;
+            if (this.Second_rotation != null)
+            {
+                Second_rotation = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Second_rotation.imageX,
+                    imageY = this.Second_rotation.imageY,
+                    space = this.Second_rotation.space,
+                    angle = this.Second_rotation.angle,
+                    zero = this.Second_rotation.zero,
+                    align = this.Second_rotation.align,
+                    img_First = this.Second_rotation.img_First,
+                    unit = this.Second_rotation.unit,
+                    imperial_unit = this.Second_rotation.imperial_unit,
+                    icon = this.Second_rotation.icon,
+                    iconPosX = this.Second_rotation.iconPosX,
+                    iconPosY = this.Second_rotation.iconPosY,
+                    negative_image = this.Second_rotation.negative_image,
+                    invalid_image = this.Second_rotation.invalid_image,
+                    dot_image = this.Second_rotation.dot_image,
+                    unit_in_alignment = this.Second_rotation.unit_in_alignment,
+
+                    position = this.Second_rotation.position,
+                    visible = this.Second_rotation.visible,
+                    show_level = this.Second_rotation.show_level,
+                    type = this.Second_rotation.type,
+                };
+            }
+
+            hmUI_widget_IMG_NUMBER Minute_rotation = null;
+            if (this.Minute_rotation != null)
+            {
+                Minute_rotation = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Minute_rotation.imageX,
+                    imageY = this.Minute_rotation.imageY,
+                    space = this.Minute_rotation.space,
+                    angle = this.Minute_rotation.angle,
+                    zero = this.Minute_rotation.zero,
+                    align = this.Minute_rotation.align,
+                    img_First = this.Minute_rotation.img_First,
+                    unit = this.Minute_rotation.unit,
+                    imperial_unit = this.Minute_rotation.imperial_unit,
+                    icon = this.Minute_rotation.icon,
+                    iconPosX = this.Minute_rotation.iconPosX,
+                    iconPosY = this.Minute_rotation.iconPosY,
+                    negative_image = this.Minute_rotation.negative_image,
+                    invalid_image = this.Minute_rotation.invalid_image,
+                    dot_image = this.Minute_rotation.dot_image,
+                    unit_in_alignment = this.Minute_rotation.unit_in_alignment,
+
+                    position = this.Minute_rotation.position,
+                    visible = this.Minute_rotation.visible,
+                    show_level = this.Minute_rotation.show_level,
+                    type = this.Minute_rotation.type,
+                };
+            }
+
+            hmUI_widget_IMG_NUMBER Hour_rotation = null;
+            if (this.Hour_rotation != null)
+            {
+                Hour_rotation = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Hour_rotation.imageX,
+                    imageY = this.Hour_rotation.imageY,
+                    space = this.Hour_rotation.space,
+                    angle = this.Hour_rotation.angle,
+                    zero = this.Hour_rotation.zero,
+                    align = this.Hour_rotation.align,
+                    img_First = this.Hour_rotation.img_First,
+                    unit = this.Hour_rotation.unit,
+                    imperial_unit = this.Hour_rotation.imperial_unit,
+                    icon = this.Hour_rotation.icon,
+                    iconPosX = this.Hour_rotation.iconPosX,
+                    iconPosY = this.Hour_rotation.iconPosY,
+                    negative_image = this.Hour_rotation.negative_image,
+                    invalid_image = this.Hour_rotation.invalid_image,
+                    dot_image = this.Hour_rotation.dot_image,
+                    unit_in_alignment = this.Hour_rotation.unit_in_alignment,
+
+                    position = this.Hour_rotation.position,
+                    visible = this.Hour_rotation.visible,
+                    show_level = this.Hour_rotation.show_level,
+                    type = this.Hour_rotation.type,
+                };
+            }
+
+            Text_Circle Second_circle = null;
+            if (this.Second_circle != null)
+            {
+                Second_circle = new Text_Circle
+                {
+                    circle_center_X = this.Second_circle.circle_center_X,
+                    circle_center_Y = this.Second_circle.circle_center_Y,
+                    radius = this.Second_circle.radius,
+                    angle = this.Second_circle.angle,
+                    char_space_angle = this.Second_circle.char_space_angle,
+                    zero = this.Second_circle.zero,
+                    img_First = this.Second_circle.img_First,
+                    unit = this.Second_circle.unit,
+                    imperial_unit = this.Second_circle.imperial_unit,
+                    dot_image = this.Second_circle.dot_image,
+                    error_image = this.Second_circle.error_image,
+                    //error_width = this.Second_circle.error_width,
+                    vertical_alignment = this.Second_circle.vertical_alignment,
+                    horizontal_alignment = this.Second_circle.horizontal_alignment,
+                    reverse_direction = this.Second_circle.reverse_direction,
+                    unit_in_alignment = this.Second_circle.unit_in_alignment,
+
+                    position = this.Second_circle.position,
+                    visible = this.Second_circle.visible,
+                    show_level = this.Second_circle.show_level,
+                    type = this.Second_circle.type,
+                };
+            }
+
+            Text_Circle Minute_circle = null;
+            if (this.Minute_circle != null)
+            {
+                Minute_circle = new Text_Circle
+                {
+                    circle_center_X = this.Minute_circle.circle_center_X,
+                    circle_center_Y = this.Minute_circle.circle_center_Y,
+                    radius = this.Minute_circle.radius,
+                    angle = this.Minute_circle.angle,
+                    char_space_angle = this.Minute_circle.char_space_angle,
+                    zero = this.Minute_circle.zero,
+                    img_First = this.Minute_circle.img_First,
+                    unit = this.Minute_circle.unit,
+                    imperial_unit = this.Minute_circle.imperial_unit,
+                    dot_image = this.Minute_circle.dot_image,
+                    error_image = this.Minute_circle.error_image,
+                    //error_width = this.Minute_circle.error_width,
+                    vertical_alignment = this.Minute_circle.vertical_alignment,
+                    horizontal_alignment = this.Minute_circle.horizontal_alignment,
+                    reverse_direction = this.Minute_circle.reverse_direction,
+                    unit_in_alignment = this.Minute_circle.unit_in_alignment,
+
+                    position = this.Minute_circle.position,
+                    visible = this.Minute_circle.visible,
+                    show_level = this.Second_circle.show_level,
+                    type = this.Minute_circle.type,
+                };
+            }
+
+            Text_Circle Hour_circle = null;
+            if (this.Hour_circle != null)
+            {
+                Hour_circle = new Text_Circle
+                {
+                    circle_center_X = this.Hour_circle.circle_center_X,
+                    circle_center_Y = this.Hour_circle.circle_center_Y,
+                    radius = this.Hour_circle.radius,
+                    angle = this.Hour_circle.angle,
+                    char_space_angle = this.Hour_circle.char_space_angle,
+                    zero = this.Hour_circle.zero,
+                    img_First = this.Hour_circle.img_First,
+                    unit = this.Hour_circle.unit,
+                    imperial_unit = this.Hour_circle.imperial_unit,
+                    dot_image = this.Hour_circle.dot_image,
+                    error_image = this.Hour_circle.error_image,
+                    //error_width = this.Hour_circle.error_width,
+                    vertical_alignment = this.Hour_circle.vertical_alignment,
+                    horizontal_alignment = this.Hour_circle.horizontal_alignment,
+                    reverse_direction = this.Hour_circle.reverse_direction,
+                    unit_in_alignment = this.Hour_circle.unit_in_alignment,
+
+                    position = this.Hour_circle.position,
+                    visible = this.Hour_circle.visible,
+                    show_level = this.Second_circle.show_level,
+                    type = this.Hour_circle.type,
+                };
+            }
+
+
             return new ElementDigitalTime
             {
                 elementName = this.elementName,
@@ -296,6 +477,14 @@ namespace Watch_Face_Editor
                 Minute = Minute,
                 Hour = Hour,
                 AmPm = AmPm,
+
+                Second_rotation = Second_rotation,
+                Minute_rotation = Minute_rotation,
+                Hour_rotation = Hour_rotation,
+
+                Second_circle = Second_circle,
+                Minute_circle = Minute_circle,
+                Hour_circle = Hour_circle,
             };
         }
     }
@@ -1391,7 +1580,7 @@ namespace Watch_Face_Editor
 
                     position = this.Text_circle.position,
                     visible = this.Text_circle.visible,
-                    show_level = this.Number.show_level,
+                    show_level = this.Text_circle.show_level,
                     type = this.Text_circle.type,
                 };
             }
@@ -1477,7 +1666,7 @@ namespace Watch_Face_Editor
 
                     position = this.Text_circle_Target.position,
                     visible = this.Text_circle_Target.visible,
-                    show_level = this.Number.show_level,
+                    show_level = this.Text_circle_Target.show_level,
                     type = this.Text_circle_Target.type,
                 };
             }
@@ -1730,7 +1919,7 @@ namespace Watch_Face_Editor
 
                     position = this.Text_circle.position,
                     visible = this.Text_circle.visible,
-                    show_level = this.Number.show_level,
+                    show_level = this.Text_circle.show_level,
                     type = this.Text_circle.type,
                 };
             }
@@ -1983,7 +2172,7 @@ namespace Watch_Face_Editor
 
                     position = this.Text_circle.position,
                     visible = this.Text_circle.visible,
-                    show_level = this.Number.show_level,
+                    show_level = this.Text_circle.show_level,
                     type = this.Text_circle.type,
                 };
             }
@@ -2069,7 +2258,7 @@ namespace Watch_Face_Editor
 
                     position = this.Text_circle_Target.position,
                     visible = this.Text_circle_Target.visible,
-                    show_level = this.Number.show_level,
+                    show_level = this.Text_circle_Target.show_level,
                     type = this.Text_circle_Target.type,
                 };
             }
@@ -2322,7 +2511,7 @@ namespace Watch_Face_Editor
 
                     position = this.Text_circle.position,
                     visible = this.Text_circle.visible,
-                    show_level = this.Number.show_level,
+                    show_level = this.Text_circle.show_level,
                     type = this.Text_circle.type,
                 };
             }
@@ -2600,7 +2789,7 @@ namespace Watch_Face_Editor
 
                     position = this.Text_circle_Target.position,
                     visible = this.Text_circle_Target.visible,
-                    show_level = this.Number.show_level,
+                    show_level = this.Text_circle_Target.show_level,
                     type = this.Text_circle_Target.type,
                 };
             }
@@ -2845,7 +3034,7 @@ namespace Watch_Face_Editor
 
                     position = this.Text_circle.position,
                     visible = this.Text_circle.visible,
-                    show_level = this.Number.show_level,
+                    show_level = this.Text_circle.show_level,
                     type = this.Text_circle.type,
                 };
             }
@@ -3022,7 +3211,7 @@ namespace Watch_Face_Editor
 
                     position = this.Text_circle.position,
                     visible = this.Text_circle.visible,
-                    show_level = this.Number.show_level,
+                    show_level = this.Text_circle.show_level,
                     type = this.Text_circle.type,
                 };
             }
@@ -3108,7 +3297,7 @@ namespace Watch_Face_Editor
 
                     position = this.Text_circle_Target.position,
                     visible = this.Text_circle_Target.visible,
-                    show_level = this.Number.show_level,
+                    show_level = this.Text_circle_Target.show_level,
                     type = this.Text_circle_Target.type,
                 };
             }
@@ -3544,7 +3733,7 @@ namespace Watch_Face_Editor
 
                     position = this.Text_circle.position,
                     visible = this.Text_circle.visible,
-                    show_level = this.Number.show_level,
+                    show_level = this.Text_circle.show_level,
                     type = this.Text_circle.type,
                 };
             }
@@ -3860,7 +4049,7 @@ namespace Watch_Face_Editor
 
                     position = this.Text_circle.position,
                     visible = this.Text_circle.visible,
-                    show_level = this.Number.show_level,
+                    show_level = this.Text_circle.show_level,
                     type = this.Text_circle.type,
                 };
             }
@@ -3946,7 +4135,7 @@ namespace Watch_Face_Editor
 
                     position = this.Text_circle_Target.position,
                     visible = this.Text_circle_Target.visible,
-                    show_level = this.Number.show_level,
+                    show_level = this.Text_circle_Target.show_level,
                     type = this.Text_circle_Target.type,
                 };
             }

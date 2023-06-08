@@ -599,7 +599,7 @@ namespace Watch_Face_Editor
                             && DigitalTime.AmPm.pm_img.Length > 0 &&
                             DigitalTime.AmPm.visible && checkBox_ShowIn12hourFormat.Checked) am_pm = true;
 
-                    for (int index = 1; index <= 4; index++)
+                    for (int index = 1; index <= 15; index++)
                     {
                         if (DigitalTime.Hour != null && DigitalTime.Hour.img_First != null
                             && DigitalTime.Hour.img_First.Length > 0 &&
@@ -751,6 +751,157 @@ namespace Watch_Face_Editor
                                 if (src != null) gPanel.DrawImage(src, x, y);
                                 //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                             }
+                        }
+
+
+                        if (DigitalTime.Hour_rotation != null && DigitalTime.Hour_rotation.img_First != null && DigitalTime.Hour_rotation.img_First.Length > 0 &&
+                            index == DigitalTime.Hour_rotation.position && DigitalTime.Hour_rotation.visible)
+                        {
+                            int pos_x = DigitalTime.Hour_rotation.imageX;
+                            int pos_y = DigitalTime.Hour_rotation.imageY;
+                            int spacing = DigitalTime.Hour_rotation.space;
+                            float angle = DigitalTime.Hour_rotation.angle;
+                            bool addZero = DigitalTime.Hour_rotation.zero;
+                            int image_index = ListImages.IndexOf(DigitalTime.Hour_rotation.img_First);
+                            int unit_index = ListImages.IndexOf(DigitalTime.Hour_rotation.unit);
+                            int dot_image_index = ListImages.IndexOf(DigitalTime.Hour_rotation.dot_image);
+                            string horizontal_alignment = DigitalTime.Hour_rotation.align;
+                            bool unit_in_alignment = DigitalTime.Hour_rotation.unit_in_alignment;
+
+                            int value = WatchFacePreviewSet.Time.Hours;
+                            string valueStr = value.ToString();
+                            if (DigitalTime.Hour_rotation.zero) valueStr = valueStr.PadLeft(2, '0');
+
+                            Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
+                                image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
+                                valueStr, 2, BBorder, "ElementDigitalTime");
+                        }
+
+                        if (DigitalTime.Minute_rotation != null && DigitalTime.Minute_rotation.img_First != null && DigitalTime.Minute_rotation.img_First.Length > 0 &&
+                            index == DigitalTime.Minute_rotation.position && DigitalTime.Minute_rotation.visible)
+                        {
+                            int pos_x = DigitalTime.Minute_rotation.imageX;
+                            int pos_y = DigitalTime.Minute_rotation.imageY;
+                            int spacing = DigitalTime.Minute_rotation.space;
+                            float angle = DigitalTime.Minute_rotation.angle;
+                            bool addZero = DigitalTime.Minute_rotation.zero;
+                            int image_index = ListImages.IndexOf(DigitalTime.Minute_rotation.img_First);
+                            int unit_index = ListImages.IndexOf(DigitalTime.Minute_rotation.unit);
+                            int dot_image_index = ListImages.IndexOf(DigitalTime.Minute_rotation.dot_image);
+                            string horizontal_alignment = DigitalTime.Minute_rotation.align;
+                            bool unit_in_alignment = DigitalTime.Minute_rotation.unit_in_alignment;
+
+                            int value = WatchFacePreviewSet.Time.Minutes;
+                            string valueStr = value.ToString();
+                            if (DigitalTime.Minute_rotation.zero) valueStr = valueStr.PadLeft(2, '0');
+
+                            Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
+                                image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
+                                valueStr, 2, BBorder, "ElementDigitalTime");
+                        }
+
+                        if (DigitalTime.Second_rotation != null && DigitalTime.Second_rotation.img_First != null && DigitalTime.Second_rotation.img_First.Length > 0 &&
+                            index == DigitalTime.Second_rotation.position && DigitalTime.Second_rotation.visible)
+                        {
+                            int pos_x = DigitalTime.Second_rotation.imageX;
+                            int pos_y = DigitalTime.Second_rotation.imageY;
+                            int spacing = DigitalTime.Second_rotation.space;
+                            float angle = DigitalTime.Second_rotation.angle;
+                            bool addZero = DigitalTime.Second_rotation.zero;
+                            int image_index = ListImages.IndexOf(DigitalTime.Second_rotation.img_First);
+                            int unit_index = ListImages.IndexOf(DigitalTime.Second_rotation.unit);
+                            int dot_image_index = ListImages.IndexOf(DigitalTime.Second_rotation.dot_image);
+                            string horizontal_alignment = DigitalTime.Second_rotation.align;
+                            bool unit_in_alignment = DigitalTime.Second_rotation.unit_in_alignment;
+
+                            int value = WatchFacePreviewSet.Time.Seconds;
+                            string valueStr = value.ToString();
+                            if (DigitalTime.Second_rotation.zero) valueStr = valueStr.PadLeft(2, '0');
+
+                            Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
+                                image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
+                                valueStr, 2, BBorder, "ElementDigitalTime");
+                        }
+
+                        if (DigitalTime.Hour_circle != null && DigitalTime.Hour_circle.img_First != null && DigitalTime.Hour_circle.img_First.Length > 0 &&
+                            index == DigitalTime.Hour_circle.position && DigitalTime.Hour_circle.visible)
+                        {
+                            int centr_x = DigitalTime.Hour_circle.circle_center_X;
+                            int centr_y = DigitalTime.Hour_circle.circle_center_Y;
+                            int radius = DigitalTime.Hour_circle.radius;
+                            int spacing = DigitalTime.Hour_circle.char_space_angle;
+                            float angle = DigitalTime.Hour_circle.angle;
+                            bool addZero = DigitalTime.Hour_circle.zero;
+                            int image_index = ListImages.IndexOf(DigitalTime.Hour_circle.img_First);
+                            int unit_index = ListImages.IndexOf(DigitalTime.Hour_circle.unit);
+                            int dot_image_index = ListImages.IndexOf(DigitalTime.Hour_circle.dot_image);
+                            string vertical_alignment = DigitalTime.Hour_circle.vertical_alignment;
+                            string horizontal_alignment = DigitalTime.Hour_circle.horizontal_alignment;
+                            bool reverse_direction = DigitalTime.Hour_circle.reverse_direction;
+                            bool unit_in_alignment = DigitalTime.Hour_circle.unit_in_alignment;
+
+                            int value = WatchFacePreviewSet.Time.Hours;
+                            string valueStr = value.ToString();
+                            if (DigitalTime.Hour_circle.zero) valueStr = valueStr.PadLeft(2, '0');
+
+                            Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
+                                image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
+                                vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
+                                valueStr, 2, BBorder, showCentrHend, "ElementDigitalTime");
+                        }
+
+                        if (DigitalTime.Minute_circle != null && DigitalTime.Minute_circle.img_First != null && DigitalTime.Minute_circle.img_First.Length > 0 &&
+                            index == DigitalTime.Minute_circle.position && DigitalTime.Minute_circle.visible)
+                        {
+                            int centr_x = DigitalTime.Minute_circle.circle_center_X;
+                            int centr_y = DigitalTime.Minute_circle.circle_center_Y;
+                            int radius = DigitalTime.Minute_circle.radius;
+                            int spacing = DigitalTime.Minute_circle.char_space_angle;
+                            float angle = DigitalTime.Minute_circle.angle;
+                            bool addZero = DigitalTime.Minute_circle.zero;
+                            int image_index = ListImages.IndexOf(DigitalTime.Minute_circle.img_First);
+                            int unit_index = ListImages.IndexOf(DigitalTime.Minute_circle.unit);
+                            int dot_image_index = ListImages.IndexOf(DigitalTime.Minute_circle.dot_image);
+                            string vertical_alignment = DigitalTime.Minute_circle.vertical_alignment;
+                            string horizontal_alignment = DigitalTime.Minute_circle.horizontal_alignment;
+                            bool reverse_direction = DigitalTime.Minute_circle.reverse_direction;
+                            bool unit_in_alignment = DigitalTime.Minute_circle.unit_in_alignment;
+
+                            int value = WatchFacePreviewSet.Time.Minutes;
+                            string valueStr = value.ToString();
+                            if (DigitalTime.Minute_circle.zero) valueStr = valueStr.PadLeft(2, '0');
+
+                            Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
+                                image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
+                                vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
+                                valueStr, 2, BBorder, showCentrHend, "ElementDigitalTime");
+                        }
+
+                        if (DigitalTime.Second_circle != null && DigitalTime.Second_circle.img_First != null && DigitalTime.Second_circle.img_First.Length > 0 &&
+                            index == DigitalTime.Second_circle.position && DigitalTime.Second_circle.visible)
+                        {
+                            int centr_x = DigitalTime.Second_circle.circle_center_X;
+                            int centr_y = DigitalTime.Second_circle.circle_center_Y;
+                            int radius = DigitalTime.Second_circle.radius;
+                            int spacing = DigitalTime.Second_circle.char_space_angle;
+                            float angle = DigitalTime.Second_circle.angle;
+                            bool addZero = DigitalTime.Second_circle.zero;
+                            int image_index = ListImages.IndexOf(DigitalTime.Second_circle.img_First);
+                            int unit_index = ListImages.IndexOf(DigitalTime.Second_circle.unit);
+                            int dot_image_index = ListImages.IndexOf(DigitalTime.Second_circle.dot_image);
+                            string vertical_alignment = DigitalTime.Second_circle.vertical_alignment;
+                            string horizontal_alignment = DigitalTime.Second_circle.horizontal_alignment;
+                            bool reverse_direction = DigitalTime.Second_circle.reverse_direction;
+                            bool unit_in_alignment = DigitalTime.Second_circle.unit_in_alignment;
+
+                            int value = WatchFacePreviewSet.Time.Seconds;
+                            string valueStr = value.ToString();
+                            if (DigitalTime.Second_circle.zero) valueStr = valueStr.PadLeft(2, '0');
+
+                            Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
+                                image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
+                                vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
+                                valueStr, 2, BBorder, showCentrHend, "ElementDigitalTime");
                         }
                     }
 
@@ -3673,8 +3824,22 @@ namespace Watch_Face_Editor
                     string text_style = cityName.text_style;
                     string valueStr = "City Name";
 
-                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr,
-                        align_h, align_v, text_style, BBorder);
+                    if (cityName.font != null && cityName.font.Length > 3)
+                    {
+                        string font_fileName = FullFileDir + @"\assets\fonts\" + cityName.font;
+                        if (File.Exists(font_fileName))
+                        {
+                            System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection();
+                            fonts.AddFontFile(font_fileName);
+                            Font drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                            align_h, align_v, text_style, BBorder);
+                        }
+                    }
+                    else
+                    {
+                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                    }
                 }
 
             }
@@ -5050,6 +5215,190 @@ namespace Watch_Face_Editor
                         posX = posX + strSize.Width + spacing_h - offsetX;
                     }
                     PointY += (float)(1.47 * size + 0.55 * spacing_v);
+                }
+                graphics.DrawImage(bitmap, x, y);
+
+                if (BBorder)
+                {
+                    Rectangle rect = new Rectangle(x, y, w, h);
+                    Logger.WriteLine("DrawBorder");
+                    //Rectangle rect = new Rectangle(0, (int)(-0.75 * size), result - x - 1, (int)(0.75 * size));
+                    using (Pen pen1 = new Pen(Color.White, 1))
+                    {
+                        graphics.DrawRectangle(pen1, rect);
+                    }
+                    using (Pen pen2 = new Pen(Color.Black, 1))
+                    {
+                        pen2.DashStyle = DashStyle.Dot;
+                        graphics.DrawRectangle(pen2, rect);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+            }
+
+            Logger.WriteLine("* Draw_text (end)");
+        }
+
+        /// <summary>Пишем число внешним шрифтом</summary>
+        /// <param name="graphics">Поверхность для рисования</param>
+        /// <param name="x">Координата X</param>
+        /// <param name="y">Координата y</param>
+        /// <param name="w">Ширина</param>
+        /// <param name="h">Высота</param>
+        /// <param name="drawFont">Шрифт</param>
+        /// <param name="size">Размер шрифта</param>
+        /// <param name="spacing_h">Величина отступа</param>
+        /// <param name="spacing_v">Межстрочный интервал</param>
+        /// <param name="color">Цвет шрифта</param>
+        /// <param name="align_h">Горизонтальное выравнивание</param>
+        /// <param name="align_v">Вертикальное выравнивание</param>
+        /// <param name="text_style">Стиль вписывания текста</param>
+        /// <param name="BBorder">Рисовать рамку по координатам, вокруг элементов с выравниванием</param>
+        private void Draw_text_userFont(Graphics graphics, int x, int y, int w, int h, Font drawFont, float size, int spacing_h, int spacing_v,
+            Color color, string value, string align_h, string align_v, string text_style, bool BBorder)
+        {
+            if (w < 5 || h < 5) return;
+            Bitmap bitmap = new Bitmap(Convert.ToInt32(w), Convert.ToInt32(h), PixelFormat.Format32bppArgb);
+            Graphics gPanel = Graphics.FromImage(bitmap);
+            //Font drawFont = new Font("Times New Roman", size, GraphicsUnit.World);
+            //Font drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+            StringFormat strFormat = new StringFormat();
+            strFormat.FormatFlags = StringFormatFlags.FitBlackBox;
+            strFormat.Alignment = StringAlignment.Near;
+            strFormat.LineAlignment = StringAlignment.Near;
+            Size strSize1 = TextRenderer.MeasureText(graphics, "0", drawFont);
+            Size strSize2 = TextRenderer.MeasureText(graphics, "00" + Environment.NewLine + "0", drawFont);
+            int chWidth = strSize2.Width - strSize1.Width;
+            int offsetX = strSize1.Width - chWidth;
+            int chHeight = strSize2.Height - strSize1.Height;
+            //float offsetY = strSize2.Height - strSize1.Height;
+            //float offsetY = strSize1.Height - size;
+            //offsetY = 0;
+            List<string> text = new List<string>();
+            switch (text_style)
+            {
+                case "NONE":
+                    text.Add(value);
+                    break;
+                case "WRAP":
+                    //text.Add(value);
+                    string[] words = value.Split(new char[] { ' ' });
+                    for (int i = 0; i < words.Length; i++)
+                    {
+                        string draw_string = words[i];
+                        Size strSize = TextRenderer.MeasureText(graphics, draw_string, drawFont);
+                        int strLenght = strSize.Width + (draw_string.Length - 1) * spacing_h - offsetX;
+                        //strLenght += (draw_string.Length - 1) * spacing_h;
+                        if (strLenght <= w) // слово помещается в рамку
+                        {
+                            if (i + 1 < words.Length) // есть еще слова
+                            {
+                                while (i + 1 < words.Length && strLenght < w)
+                                {
+                                    string new_draw_string = draw_string + " " + words[i + 1];
+                                    strSize = TextRenderer.MeasureText(graphics, new_draw_string, drawFont);
+                                    strLenght = strSize.Width + (draw_string.Length - 1) * spacing_h - offsetX;
+                                    strLenght += (new_draw_string.Length - 1) * spacing_h;
+                                    if (strLenght <= w)
+                                    {
+                                        i++;
+                                        draw_string = new_draw_string;
+                                    }
+                                }
+                                text.Add(draw_string);
+                            }
+                            else // последнее слово
+                            {
+                                text.Add(draw_string);
+                            }
+                        }
+                        else // слово больше рамки
+                        {
+                            int index = draw_string.Length;
+                            while (strLenght > w && index > 1)
+                            {
+                                index--;
+                                string subStr = draw_string.Substring(0, index);
+                                strSize = TextRenderer.MeasureText(graphics, subStr, drawFont);
+                                strLenght = strSize.Width + (draw_string.Length - 1) * spacing_h - offsetX;
+                                if (strLenght <= w)
+                                {
+                                    text.Add(subStr);
+                                    draw_string = draw_string.Remove(0, index);
+                                    index = draw_string.Length;
+                                    strSize = TextRenderer.MeasureText(graphics, draw_string, drawFont);
+                                    strLenght = strSize.Width + (draw_string.Length - 1) * spacing_h - offsetX;
+                                }
+                            }
+                            text.Add(draw_string);
+                        }
+                    }
+
+                    break;
+                case "CHAR_WRAP":
+                    text.Add(value);
+                    break;
+                case "ELLIPSIS":
+                    text.Add(value);
+                    break;
+
+                default:
+                    text.Add(value);
+                    break;
+            }
+
+            Logger.WriteLine("* Draw_text");
+
+            float PointX = (float)(-0.3 * offsetX);
+            //float PointY = (float)(1.2 * offsetY);
+            float PointY = 0;
+
+            float textHeight = (float)((text.Count * chHeight) + (text.Count * 0.46 * spacing_v));
+            //float textHeight = (float)((text.Count * chHeight) + ((text.Count - 1) * 0.46 * spacing_v));
+            if (align_v == "BOTTOM")
+            {
+                PointY = PointY + h - textHeight;
+            }
+            if (align_v == "CENTER_V")
+            {
+                PointY = PointY + (h - textHeight) / 2;
+            }
+
+            Logger.WriteLine("Draw value");
+            SolidBrush drawBrush = new SolidBrush(color);
+
+            try
+            {
+                foreach (string draw_string in text)
+                {
+                    //gPanel.DrawString(draw_string, drawFont, drawBrush, PointX, PointY, strFormat);
+                    float posX = PointX;
+                    float posY = PointY;
+
+                    if (align_h == "RIGHT")
+                    {
+                        Size strSize = TextRenderer.MeasureText(graphics, draw_string, drawFont);
+                        float textLenght = strSize.Width + (draw_string.Length - 1) * spacing_h - offsetX;
+                        posX = (float)(w - 0.3 * offsetX - textLenght);
+                    }
+                    if (align_h == "CENTER_H")
+                    {
+                        Size strSize = TextRenderer.MeasureText(graphics, draw_string, drawFont);
+                        float textLenght = strSize.Width + (draw_string.Length - 1) * spacing_h - offsetX;
+                        posX = (float)(w / 2 - 0.3 * offsetX - textLenght / 2);
+                    }
+
+                    foreach (char ch in draw_string)
+                    {
+                        string str = ch.ToString();
+                        Size strSize = TextRenderer.MeasureText(graphics, str, drawFont);
+                        gPanel.DrawString(str, drawFont, drawBrush, posX, posY, strFormat);
+
+                        posX = posX + strSize.Width + spacing_h - offsetX;
+                    }
+                    PointY += (float)(chHeight + 0.46 * spacing_v);
                 }
                 graphics.DrawImage(bitmap, x, y);
 

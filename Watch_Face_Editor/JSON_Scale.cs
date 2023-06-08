@@ -202,6 +202,14 @@ namespace Watch_Face_Editor
                     Scale_IMG_NUMBER(elementDigitalTime.Hour, scale);
                     Scale_IMG_NUMBER(elementDigitalTime.Minute, scale);
                     Scale_IMG_NUMBER(elementDigitalTime.Second, scale);
+
+                    Scale_IMG_NUMBER(elementDigitalTime.Hour_rotation, scale);
+                    Scale_IMG_NUMBER(elementDigitalTime.Minute_rotation, scale);
+                    Scale_IMG_NUMBER(elementDigitalTime.Second_rotation, scale);
+
+                    Scale_Text_Circle(elementDigitalTime.Hour_circle, scale);
+                    Scale_Text_Circle(elementDigitalTime.Minute_circle, scale);
+                    Scale_Text_Circle(elementDigitalTime.Second_circle, scale);
                     break;
                 case "ElementAnalogTime":
                     ElementAnalogTime elementAnalogTime = (ElementAnalogTime)elements;

@@ -69,5 +69,8 @@ namespace Watch_Face_Editor
         public string WatchSkin_Falcon = @"\Skin\WatchSkin_Falcon.json";
         public string WatchSkin_Amazfit_Band_7 = @"\Skin\WatchSkin_Amazfit_Band_7.json";
         public bool WatchSkin_Use = false;
+
+        public string CacheFonts = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz " +
+                "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя  ҐЄІЇґєії " + "_-.,:;`'";
     }
 }

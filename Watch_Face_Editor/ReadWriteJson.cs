@@ -27,6 +27,7 @@ namespace Watch_Face_Editor
             string options = "";
             string time_update = "";
             string text_update = "";
+            string fonts_cache = "";
             if (Watch_Face == null) return;
 
             // элементы основного экрана
@@ -294,7 +295,7 @@ namespace Watch_Face_Editor
                         //string out_text_update = "";
                         AddElementToJS(element, "ONLY_NORMAL", out outVariables, out outItems, ref scale_update_function,
                             ref items, ref resume_call, ref pause_call, ref time_update,
-                            ref text_update);
+                            ref text_update, ref fonts_cache);
                         variables += outVariables;
                         items += outItems;
                         //scale_update_function += out_scale_update_function;
@@ -344,7 +345,7 @@ namespace Watch_Face_Editor
                         //string out_text_update = "";
                         AddElementToJS(element, "ONLY_AOD", out outVariables, out outItems, ref scale_update_function,
                             ref items, ref resume_call, ref pause_call, ref time_update,
-                            ref text_update);
+                            ref text_update, ref fonts_cache);
                         variables += outVariables;
                         items += outItems;
                         //scale_update_function += out_scale_update_function;
@@ -841,7 +842,7 @@ namespace Watch_Face_Editor
                 //string out_text_update = "";
                 AddElementToJS(Watch_Face.Shortcuts, "ONLY_NORMAL", out outVariables, out outItems, ref scale_update_function,
                     ref items, ref resume_call, ref pause_call, ref time_update,
-                    ref text_update);
+                    ref text_update, ref fonts_cache);
                 variables += outVariables;
                 items += outItems;
                 //scale_update_function += out_scale_update_function;
@@ -903,6 +904,8 @@ namespace Watch_Face_Editor
                 items += Environment.NewLine + TabInString(6) + "});";
             }
 
+            if (fonts_cache.Length > 5) items = fonts_cache + items;
+
             int firstPos = items.IndexOf("let screenType = hmSetting.getScreenType();");
             int lastPos = items.LastIndexOf("let screenType = hmSetting.getScreenType();");
             while (firstPos > 0 && firstPos < lastPos)
@@ -926,7 +929,7 @@ namespace Watch_Face_Editor
         /// <param name="time_update">Код для обновления времени</param>
         private void AddElementToJS(Object element, string show_level, out string variables, out string items,
             ref string scale_update_function, ref  string exist_items,
-            ref string resume_call, ref string pause_call, ref string time_update, ref string text_update)
+            ref string resume_call, ref string pause_call, ref string time_update, ref string text_update, ref string fonts_cache)
         {
             string optionNameStart = "normal_";
             if (show_level == "ONLY_AOD") optionNameStart = "idle_";
@@ -992,6 +995,21 @@ namespace Watch_Face_Editor
                     string optionsMinute_separator = "";
                     string optionsSecond_separator = "";
                     string optionsAmPm = "";
+
+                    int hourPosition_rotation = 99;
+                    int minutePosition_rotation = 99;
+                    int secondPosition_rotation = 99;
+                    string optionsHour_rotation = "";
+                    string optionsMinute_rotation = "";
+                    string optionsSecond_rotation = "";
+
+                    int hourPosition_circle = 99;
+                    int minutePosition_circle = 99;
+                    int secondPosition_circle = 99;
+                    string optionsHour_circle = "";
+                    string optionsMinute_circle = "";
+                    string optionsSecond_circle = "";
+
                     if (DigitalTime.Hour != null && DigitalTime.Hour.visible)
                     {
                         hourPosition = DigitalTime.Hour.position;
@@ -1023,8 +1041,52 @@ namespace Watch_Face_Editor
                         optionsAmPm = AmPm_Options(am_pm, show_level);
                     }
 
+                    if (DigitalTime.Hour_rotation != null && DigitalTime.Hour_rotation.visible)
+                    {
+                        hourPosition_rotation = DigitalTime.Hour_rotation.position;
+                        text_rotate = DigitalTime.Hour_rotation;
+
+                        optionsHour_rotation = Text_Rotate_Options(text_rotate, "HOUR", show_level, false);
+                    }
+                    if (DigitalTime.Minute_rotation != null && DigitalTime.Minute_rotation.visible)
+                    {
+                        minutePosition_rotation = DigitalTime.Minute_rotation.position;
+                        text_rotate = DigitalTime.Minute_rotation;
+
+                        optionsMinute_rotation = Text_Rotate_Options(text_rotate, "MINUTE", show_level, false);
+                    }
+                    if (DigitalTime.Second_rotation != null && DigitalTime.Second_rotation.visible)
+                    {
+                        secondPosition_rotation = DigitalTime.Second_rotation.position;
+                        text_rotate = DigitalTime.Second_rotation;
+
+                        optionsSecond_rotation = Text_Rotate_Options(text_rotate, "SECOND", show_level, false);
+                    }
+
+                    if (DigitalTime.Hour_circle != null && DigitalTime.Hour_circle.visible)
+                    {
+                        hourPosition_circle = DigitalTime.Hour_circle.position;
+                        text_circle = DigitalTime.Hour_circle;
+
+                        optionsHour_circle = Text_Circle_Options(text_circle, "HOUR", show_level, false);
+                    }
+                    if (DigitalTime.Minute_circle != null && DigitalTime.Minute_circle.visible)
+                    {
+                        minutePosition_circle = DigitalTime.Minute_circle.position;
+                        text_circle = DigitalTime.Minute_circle;
+
+                        optionsMinute_circle = Text_Circle_Options(text_circle, "MINUTE", show_level, false);
+                    }
+                    if (DigitalTime.Second_circle != null && DigitalTime.Second_circle.visible)
+                    {
+                        secondPosition_circle = DigitalTime.Second_circle.position;
+                        text_circle = DigitalTime.Second_circle;
+
+                        optionsSecond_circle = Text_Circle_Options(text_circle, "SECOND", show_level, false);
+                    }
+
                     bool fullTime = false;
-                    for (int index = 1; index <= 4; index++)
+                    for (int index = 1; index <= 15; index++)
                     {
                         if (index == hourPosition && hourPosition < minutePosition && minutePosition < secondPosition)
                         {
@@ -1136,6 +1198,44 @@ namespace Watch_Face_Editor
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "digital_clock_img_time_AmPm = hmUI.createWidget(hmUI.widget.IMG_TIME, {" +
                                     optionsAmPm + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Hour_Rotate
+                        if (index == hourPosition_rotation && optionsHour_rotation.Length > 5)
+                        {
+                            AddTextRotationJS(DigitalTime.Hour_rotation, optionNameStart, "hour_", ref variables, ref items, exist_items, ref text_update,
+                                optionsHour_rotation, show_level, "timeNaw", "TIME", "valueHour", "hour", 2, ref resume_call, ref  pause_call);
+                        }
+                        // Minute_Rotate
+                        if (index == minutePosition_rotation && optionsMinute_rotation.Length > 5)
+                        {
+                            AddTextRotationJS(DigitalTime.Minute_rotation, optionNameStart, "minute_", ref variables, ref items, exist_items, ref text_update,
+                                optionsMinute_rotation, show_level, "timeNaw", "TIME", "valueMinute", "minute", 2, ref resume_call, ref pause_call);
+                        }
+                        // Second_Rotate
+                        if (index == hourPosition_rotation && optionsSecond_rotation.Length > 5)
+                        {
+                            AddTextRotationJS(DigitalTime.Second_rotation, optionNameStart, "second_", ref variables, ref items, exist_items, ref text_update,
+                                optionsSecond_rotation, show_level, "timeNaw", "TIME", "valueSecond", "second", 2, ref resume_call, ref pause_call);
+                        }
+
+                        // Hour_Circle
+                        if (index == hourPosition_circle && optionsHour_circle.Length > 5)
+                        {
+                            AddTextCircleJS(DigitalTime.Hour_circle, optionNameStart, "hour_", ref variables, ref items, exist_items, ref text_update,
+                                optionsHour_circle, show_level, "timeNaw", "TIME", "valueHour", "hour", 2, ref resume_call, ref pause_call);
+                        }
+                        // Minute_Circle
+                        if (index == minutePosition_circle && optionsMinute_circle.Length > 5)
+                        {
+                            AddTextCircleJS(DigitalTime.Minute_circle, optionNameStart, "minute_", ref variables, ref items, exist_items, ref text_update,
+                                optionsMinute_circle, show_level, "timeNaw", "TIME", "valueMinute", "minute", 2, ref resume_call, ref pause_call);
+                        }
+                        // Second_Circle
+                        if (index == secondPosition_circle && optionsSecond_circle.Length > 5)
+                        {
+                            AddTextCircleJS(DigitalTime.Second_circle, optionNameStart, "second_", ref variables, ref items, exist_items, ref text_update,
+                                optionsSecond_circle, show_level, "timeNaw", "TIME", "valueSecond", "second", 2, ref resume_call, ref pause_call);
                         }
                     }
                     break;
@@ -2413,7 +2513,7 @@ namespace Watch_Face_Editor
                         if (index == textRotatePosition && textRotateOptions.Length > 5)
                         {
                             AddTextRotationJS(Steps.Text_rotation, optionNameStart, "step_", ref variables, ref items, exist_items, ref text_update,
-                                textRotateOptions, show_level, "step", "STEP", "valueStep", "current", 5);
+                                textRotateOptions, show_level, "step", "STEP", "valueStep", "current", 5, ref resume_call, ref pause_call);
 
 
 
@@ -2616,7 +2716,7 @@ namespace Watch_Face_Editor
                         if (index == textCirclePosition && textCircleOptions.Length > 5)
                         {
                             AddTextCircleJS(Steps.Text_circle, optionNameStart, "step_", ref variables, ref items, exist_items, ref text_update,
-                                textCircleOptions, show_level, "step", "STEP", "valueStep", "current", 5);
+                                textCircleOptions, show_level, "step", "STEP", "valueStep", "current", 5, ref resume_call, ref pause_call);
 
 
 /*                            text_circle = Steps.Text_circle;
@@ -2862,7 +2962,7 @@ namespace Watch_Face_Editor
                         if (index == textRotateTargetPosition && textRotateTargetOptions.Length > 5)
                         {
                             AddTextRotationJS(Steps.Text_rotation_Target, optionNameStart, "step_target_", ref variables, ref items, exist_items, ref text_update,
-                                textRotateTargetOptions, show_level, "step", "STEP", "targetStep", "target", 5);
+                                textRotateTargetOptions, show_level, "step", "STEP", "targetStep", "target", 5, ref resume_call, ref pause_call);
 
 
                             /*text_rotate = Steps.Text_rotation_Target;
@@ -3064,7 +3164,7 @@ namespace Watch_Face_Editor
                         if (index == textCircleTargetPosition && textCircleTargetOptions.Length > 5)
                         {
                             AddTextCircleJS(Steps.Text_circle_Target, optionNameStart, "step_target_", ref variables, ref items, exist_items, ref text_update,
-                                textCircleTargetOptions, show_level, "step", "STEP", "targetStep", "target", 5);
+                                textCircleTargetOptions, show_level, "step", "STEP", "targetStep", "target", 5, ref resume_call, ref pause_call);
 
 
                             /*text_circle = Steps.Text_circle_Target;
@@ -3346,7 +3446,7 @@ namespace Watch_Face_Editor
                                 //    items += TabInString(6) + "});" + Environment.NewLine;
                                 //}
                             }
-                            AddListener(ref items, ref exist_items, "step", "scale_call();");
+                            AddListener(ref variables, ref items, ref exist_items, "step", "valueStep", "scale_call();", ref resume_call, ref pause_call, optionNameStart);
 
                             if (scale_update_function.IndexOf("progressStep") < 0)
                             {
@@ -3441,7 +3541,7 @@ namespace Watch_Face_Editor
                                 //    items += TabInString(6) + "});" + Environment.NewLine;
                                 //}
                             }
-                            AddListener(ref items, ref exist_items, "step", "scale_call();");
+                            AddListener(ref variables, ref items, ref exist_items, "step", "valueStep", "scale_call();", ref resume_call, ref pause_call, optionNameStart);
 
                             if (scale_update_function.IndexOf("progressStep") < 0)
                             {
@@ -3613,14 +3713,14 @@ namespace Watch_Face_Editor
                         if (index == textRotatePosition && textRotateOptions.Length > 5)
                         {
                             AddTextRotationJS(Battery.Text_rotation, optionNameStart, "battery_", ref variables, ref items, exist_items, ref text_update,
-                                textRotateOptions, show_level, "battery", "BATTERY", "valueBattery", "current", 3);
+                                textRotateOptions, show_level, "battery", "BATTERY", "valueBattery", "current", 3, ref resume_call, ref pause_call);
                         }
 
                         // Text_Circle
                         if (index == textCirclePosition && textCircleOptions.Length > 5)
                         {
                             AddTextCircleJS(Battery.Text_circle, optionNameStart, "battery_", ref variables, ref items, exist_items, ref text_update,
-                                textCircleOptions, show_level, "battery", "BATTERY", "valueBattery", "current", 3);
+                                textCircleOptions, show_level, "battery", "BATTERY", "valueBattery", "current", 3, ref resume_call, ref pause_call);
                         }
 
                         // Pointer
@@ -3987,14 +4087,14 @@ namespace Watch_Face_Editor
                         if (index == textRotatePosition && textRotateOptions.Length > 5)
                         {
                             AddTextRotationJS(Calories.Text_rotation, optionNameStart, "calorie_", ref variables, ref items, exist_items, ref text_update,
-                                textRotateOptions, show_level, "calorie", "CALORIE", "valueCalories", "current", 4);
+                                textRotateOptions, show_level, "calorie", "CALORIE", "valueCalories", "current", 4, ref resume_call, ref pause_call);
                         }
 
                         // Text_Circle
                         if (index == textCirclePosition && textCircleOptions.Length > 5)
                         {
                             AddTextCircleJS(Calories.Text_circle, optionNameStart, "calorie_", ref variables, ref items, exist_items, ref text_update,
-                                textCircleOptions, show_level, "calorie", "CALORIE", "valueCalories", "current", 4);
+                                textCircleOptions, show_level, "calorie", "CALORIE", "valueCalories", "current", 4, ref resume_call, ref pause_call);
                         }
 
                         // Number_Target
@@ -4020,14 +4120,14 @@ namespace Watch_Face_Editor
                         if (index == textRotateTargetPosition && textRotateTargetOptions.Length > 5)
                         {
                             AddTextRotationJS(Calories.Text_rotation_Target, optionNameStart, "calorie_target_", ref variables, ref items, exist_items, ref text_update,
-                                textRotateTargetOptions, show_level, "calorie", "CALORIE", "targetCalories", "target", 4);
+                                textRotateTargetOptions, show_level, "calorie", "CALORIE", "targetCalories", "target", 4, ref resume_call, ref pause_call);
                         }
 
                         // Text_Circle_Target
                         if (index == textCircleTargetPosition && textCircleTargetOptions.Length > 5)
                         {
                             AddTextCircleJS(Calories.Text_circle_Target, optionNameStart, "calorie_target_", ref variables, ref items, exist_items, ref text_update,
-                                textCircleTargetOptions, show_level, "calorie", "CALORIE", "targetCalories", "target", 4);
+                                textCircleTargetOptions, show_level, "calorie", "CALORIE", "targetCalories", "target", 4, ref resume_call, ref pause_call);
                         }
 
                         // Pointer
@@ -4368,14 +4468,14 @@ namespace Watch_Face_Editor
                         if (index == textRotatePosition && textRotateOptions.Length > 5)
                         {
                             AddTextRotationJS(Heart.Text_rotation, optionNameStart, "heart_rate_", ref variables, ref items, exist_items, ref text_update,
-                                textRotateOptions, show_level, "heart_rate", "HEART", "valueHeartRate", "last", 3);
+                                textRotateOptions, show_level, "heart_rate", "HEART", "valueHeartRate", "last", 3, ref resume_call, ref pause_call);
                         }
 
                         // Text_Circle
                         if (index == textCirclePosition && textCircleOptions.Length > 5)
                         {
                             AddTextCircleJS(Heart.Text_circle, optionNameStart, "heart_rate_", ref variables, ref items, exist_items, ref text_update,
-                                textCircleOptions, show_level, "heart_rate", "HEART", "valueHeartRate", "last", 3);
+                                textCircleOptions, show_level, "heart_rate", "HEART", "valueHeartRate", "last", 3, ref resume_call, ref pause_call);
                         }
 
                         // Pointer
@@ -4735,14 +4835,14 @@ namespace Watch_Face_Editor
                         if (index == textRotateTargetPosition && textRotateTargetOptions.Length > 5)
                         {
                             AddTextRotationJS(PAI.Text_rotation_Target, optionNameStart, "pai_total_", ref variables, ref items, exist_items, ref text_update,
-                                textRotateTargetOptions, show_level, "pai", "PAI", "totalPAI", "totalpai", 3);
+                                textRotateTargetOptions, show_level, "pai", "PAI", "totalPAI", "totalpai", 3, ref resume_call, ref pause_call);
                         }
 
                         // Text_Circle_Target
                         if (index == textCircleTargetPosition && textCircleTargetOptions.Length > 5)
                         {
                             AddTextCircleJS(PAI.Text_circle_Target, optionNameStart, "pai_total_", ref variables, ref items, exist_items, ref text_update,
-                                textCircleTargetOptions, show_level, "pai", "PAI", "totalPAI", "totalpai", 3);
+                                textCircleTargetOptions, show_level, "pai", "PAI", "totalPAI", "totalpai", 3, ref resume_call, ref pause_call);
                         }
 
                         // Pointer
@@ -5205,14 +5305,14 @@ namespace Watch_Face_Editor
                             {
                                 text_update += Environment.NewLine + TabInString(7) +
                                     "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                text_update += Text_Rotate_Function_Options(text_rotate, variableStartName, "distanceCurrent", variableStartName + "rotate_string", true, "DISTANCE") + Environment.NewLine;
+                                text_update += Text_Rotate_Function_Options(text_rotate, variableStartName, "distanceCurrent", variableStartName + "rotate_string", true, "DISTANCE", 5) + Environment.NewLine;
                                 text_update += TabInString(7) + "};" + Environment.NewLine;
                             }
                             else
                             {
                                 text_update += Environment.NewLine + TabInString(7) +
                                     "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                text_update += Text_Rotate_Function_Options(text_rotate, variableStartName, "distanceCurrent", variableStartName + "rotate_string", true, "DISTANCE") + Environment.NewLine;
+                                text_update += Text_Rotate_Function_Options(text_rotate, variableStartName, "distanceCurrent", variableStartName + "rotate_string", true, "DISTANCE", 5) + Environment.NewLine;
                                 text_update += TabInString(7) + "};" + Environment.NewLine;
                             }
 
@@ -5436,14 +5536,14 @@ namespace Watch_Face_Editor
                             {
                                 text_update += Environment.NewLine + TabInString(7) +
                                     "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                text_update += Text_Circle_Function_Options(text_circle, variableStartName, "distanceCurrent", variableStartName + "circle_string", true, "DISTANCE") + Environment.NewLine;
+                                text_update += Text_Circle_Function_Options(text_circle, variableStartName, "distanceCurrent", variableStartName + "circle_string", true, "DISTANCE", 5) + Environment.NewLine;
                                 text_update += TabInString(7) + "};" + Environment.NewLine;
                             }
                             else
                             {
                                 text_update += Environment.NewLine + TabInString(7) +
                                     "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                                text_update += Text_Circle_Function_Options(text_circle, variableStartName, "distanceCurrent", variableStartName + "circle_string", true, "DISTANCE") + Environment.NewLine;
+                                text_update += Text_Circle_Function_Options(text_circle, variableStartName, "distanceCurrent", variableStartName + "circle_string", true, "DISTANCE", 5) + Environment.NewLine;
                                 text_update += TabInString(7) + "};" + Environment.NewLine;
                             }
 
@@ -5603,7 +5703,7 @@ namespace Watch_Face_Editor
                         if (index == textRotatePosition && textRotateOptions.Length > 5)
                         {
                             AddTextRotationJS(Stand.Text_rotation, optionNameStart, "stand_", ref variables, ref items, exist_items, ref text_update,
-                                textRotateOptions, show_level, "stand", "STAND", "valueStand", "current", 2);
+                                textRotateOptions, show_level, "stand", "STAND", "valueStand", "current", 2, ref resume_call, ref pause_call);
 
 
                             /*text_rotate = Stand.Text_rotation;
@@ -5805,7 +5905,7 @@ namespace Watch_Face_Editor
                         if (index == textCirclePosition && textCircleOptions.Length > 5)
                         {
                             AddTextCircleJS(Stand.Text_circle, optionNameStart, "stand_", ref variables, ref items, exist_items, ref text_update,
-                                textCircleOptions, show_level, "stand", "STAND", "valueStand", "current", 2);
+                                textCircleOptions, show_level, "stand", "STAND", "valueStand", "current", 2, ref resume_call, ref pause_call);
 
 
                             /*text_circle = Stand.Text_circle;
@@ -6051,7 +6151,7 @@ namespace Watch_Face_Editor
                         if (index == textRotateTargetPosition && textRotateTargetOptions.Length > 5)
                         {
                             AddTextRotationJS(Stand.Text_rotation_Target, optionNameStart, "stand_target_", ref variables, ref items, exist_items, ref text_update,
-                                textRotateTargetOptions, show_level, "stand", "STAND", "targetStand", "target", 2);
+                                textRotateTargetOptions, show_level, "stand", "STAND", "targetStand", "target", 2, ref resume_call, ref pause_call);
 
 
                             /*text_rotate = Stand.Text_rotation_Target;
@@ -6253,7 +6353,7 @@ namespace Watch_Face_Editor
                         if (index == textCircleTargetPosition && textCircleTargetOptions.Length > 5)
                         {
                             AddTextCircleJS(Stand.Text_circle_Target, optionNameStart, "stand_target_", ref variables, ref items, exist_items, ref text_update,
-                                textCircleTargetOptions, show_level, "stand", "STAND", "targetStand", "target", 2);
+                                textCircleTargetOptions, show_level, "stand", "STAND", "targetStand", "target", 2, ref resume_call, ref pause_call);
 
 
                             /*text_circle = Stand.Text_circle_Target;
@@ -6525,7 +6625,7 @@ namespace Watch_Face_Editor
                                 //    items += TabInString(6) + "});" + Environment.NewLine;
                                 //}
                             }
-                            AddListener(ref items, ref exist_items, "stand", "scale_call();");
+                            AddListener(ref variables, ref items, ref exist_items, "stand", "valueStand", "scale_call();", ref resume_call, ref pause_call, optionNameStart);
 
                             if (scale_update_function.IndexOf("progressStand") < 0)
                             {
@@ -6617,7 +6717,7 @@ namespace Watch_Face_Editor
                                 //    items += TabInString(6) + "});" + Environment.NewLine;
                                 //}
                             }
-                            AddListener(ref items, ref exist_items, "stand", "scale_call();");
+                            AddListener(ref variables, ref items, ref exist_items, "stand", "valueStand", "scale_call();", ref resume_call, ref pause_call, optionNameStart);
 
                             if (scale_update_function.IndexOf("progressStand") < 0)
                             {
@@ -7060,7 +7160,7 @@ namespace Watch_Face_Editor
                         if (index == textRotatePosition && textRotateOptions.Length > 5)
                         {
                             AddTextRotationJS(SpO2.Text_rotation, optionNameStart, "spo2_", ref variables, ref items, exist_items, ref text_update,
-                                textRotateOptions, show_level, "spo2", "SPO2", "valueSpO2", "current", 3);
+                                textRotateOptions, show_level, "spo2", "SPO2", "valueSpO2", "current", 3, ref resume_call, ref pause_call);
 
                         }
 
@@ -7068,7 +7168,7 @@ namespace Watch_Face_Editor
                         if (index == textCirclePosition && textCircleOptions.Length > 5)
                         {
                             AddTextCircleJS(SpO2.Text_circle, optionNameStart, "spo2_", ref variables, ref items, exist_items, ref text_update,
-                                textCircleOptions, show_level, "spo2", "SPO2", "valueSpO2", "current", 3);
+                                textCircleOptions, show_level, "spo2", "SPO2", "valueSpO2", "current", 3, ref resume_call, ref pause_call);
                         }
 
                         // Icon
@@ -7331,7 +7431,7 @@ namespace Watch_Face_Editor
                         if (index == textRotatePosition && textRotateOptions.Length > 5)
                         {
                             AddTextRotationJS(FatBurning.Text_rotation, optionNameStart, "fat_burning_", ref variables, ref items, exist_items, ref text_update,
-                                textRotateOptions, show_level, "fat_burning", "FAT_BURRING", "valueFatBurning", "current", 3);
+                                textRotateOptions, show_level, "fat_burning", "FAT_BURRING", "valueFatBurning", "current", 3, ref resume_call, ref pause_call);
 
 
                             /*text_rotate = FatBurning.Text_rotation;
@@ -7527,7 +7627,7 @@ namespace Watch_Face_Editor
                         if (index == textCirclePosition && textCircleOptions.Length > 5)
                         {
                             AddTextCircleJS(FatBurning.Text_circle, optionNameStart, "fat_burning_", ref variables, ref items, exist_items, ref text_update,
-                                textCircleOptions, show_level, "fat_burning", "FAT_BURRING", "valueFatBurning", "current", 3);
+                                textCircleOptions, show_level, "fat_burning", "FAT_BURRING", "valueFatBurning", "current", 3, ref resume_call, ref pause_call);
 
 
                             /*text_circle = FatBurning.Text_circle;
@@ -7773,7 +7873,7 @@ namespace Watch_Face_Editor
                         if (index == textRotateTargetPosition && textRotateTargetOptions.Length > 5)
                         {
                             AddTextRotationJS(FatBurning.Text_rotation_Target, optionNameStart, "fat_burning_target_", ref variables, ref items, exist_items, ref text_update,
-                                textRotateTargetOptions, show_level, "fat_burning", "FAT_BURRING", "targetFatBurning", "target", 3);
+                                textRotateTargetOptions, show_level, "fat_burning", "FAT_BURRING", "targetFatBurning", "target", 3, ref resume_call, ref pause_call);
 
 
                             /*text_rotate = FatBurning.Text_rotation_Target;
@@ -7975,7 +8075,7 @@ namespace Watch_Face_Editor
                         if (index == textCircleTargetPosition && textCircleTargetOptions.Length > 5)
                         {
                             AddTextCircleJS(FatBurning.Text_circle_Target, optionNameStart, "fat_burning_target_fat_burning_target_", ref variables, ref items, exist_items, ref text_update,
-                                textCircleTargetOptions, show_level, "fat_burning", "FAT_BURRING", "targetFatBurning", "target", 3);
+                                textCircleTargetOptions, show_level, "fat_burning", "FAT_BURRING", "targetFatBurning", "target", 3, ref resume_call, ref pause_call);
 
 
                             /*text_circle = FatBurning.Text_circle_Target;
@@ -8247,7 +8347,7 @@ namespace Watch_Face_Editor
                                 //    items += TabInString(6) + "});" + Environment.NewLine;
                                 //}
                             }
-                            AddListener(ref items, ref exist_items, "fat_burning", "scale_call();");
+                            AddListener(ref variables, ref items, ref exist_items, "fat_burning", "valueFatBurning", "scale_call();", ref resume_call, ref pause_call, optionNameStart);
 
                             if (scale_update_function.IndexOf("progressFatBurning") < 0)
                             {
@@ -8339,7 +8439,7 @@ namespace Watch_Face_Editor
                                 //    items += TabInString(6) + "});" + Environment.NewLine;
                                 //}
                             }
-                            AddListener(ref items, ref exist_items, "fat_burning", "scale_call();");
+                            AddListener(ref variables, ref items, ref exist_items, "fat_burning", "valueFatBurning", "scale_call();", ref resume_call, ref pause_call, optionNameStart);
 
                             if (scale_update_function.IndexOf("progressFatBurning") < 0)
                             {
@@ -8527,6 +8627,21 @@ namespace Watch_Face_Editor
                         // City Name
                         if (index == cityNamePosition && cityNameOptions.Length > 5)
                         {
+                            if (Weather.City_Name.font != null && Weather.City_Name.font.Length > 3)
+                            {
+                                string cacheName = "let " + optionNameStart + "city_name_text_cache";
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    string cityNameCacheOptions = TEXT_Cache_Options(Weather.City_Name);
+                                    if (cityNameCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName +
+                                            " = hmUI.createWidget(hmUI.widget.TEXT, {" + cityNameCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
                             variables += TabInString(4) + "let " + optionNameStart +
                                 "city_name_text = ''" + Environment.NewLine;
                             items += Environment.NewLine + TabInString(6) +
@@ -8542,8 +8657,14 @@ namespace Watch_Face_Editor
                                 scale_update_function += TabInString(7) +
                                     "const weatherData = weatherSensor.getForecastWeather();" + Environment.NewLine;
                             }
+#if DEBUG
+                            scale_update_function += TabInString(7) + "// " + optionNameStart +
+                                "city_name_text.setProperty(hmUI.prop.TEXT, weatherData.cityName);" + Environment.NewLine;
+#endif
+#if !DEBUG
                             scale_update_function += TabInString(7) + optionNameStart +
                                 "city_name_text.setProperty(hmUI.prop.TEXT, weatherData.cityName);" + Environment.NewLine;
+#endif
 
 
                         }
@@ -14216,7 +14337,7 @@ namespace Watch_Face_Editor
         }
 
         private string Text_Circle_Function_Options(Text_Circle text_circle, string optionNameStart, string intValueName, string strValueName, 
-            bool need_dot_image, string type, int tabOffset = 0)
+            bool need_dot_image, string type, int valueLenght, int tabOffset = 0)
         {
             string options = "";
             if (text_circle == null) return options;
@@ -14224,7 +14345,7 @@ namespace Watch_Face_Editor
             if (need_dot_image && (text_circle.dot_image == null || text_circle.dot_image.Length == 0)) return options;
 
             // скрываем все символы
-            options += TabInString(8 + tabOffset) + "for (var i = 1; i < 5; i++) {  // hide all symbols" + Environment.NewLine;
+            options += TabInString(8 + tabOffset) + "for (var i = 1; i < " + valueLenght.ToString() + "; i++) {  // hide all symbols" + Environment.NewLine;
             options += TabInString(9 + tabOffset) + optionNameStart + "TextCircle[i].setProperty(hmUI.prop.VISIBLE, false);" + Environment.NewLine;
             options += TabInString(8 + tabOffset) + "};" + Environment.NewLine;
             if (text_circle.unit != null && text_circle.unit.Length > 0)
@@ -14341,7 +14462,7 @@ namespace Watch_Face_Editor
             options += TabInString(9 + tabOffset) + "for (let char of " + strValueName + ") {" + Environment.NewLine;
             options += TabInString(10 + tabOffset) + "let charCode = char.charCodeAt()-48;" + Environment.NewLine;
             //options += TabInString(10 + tabOffset) + "if (charCode < 0) continue;" + Environment.NewLine;
-            options += TabInString(10 + tabOffset) + "if (index >= 5) break;" + Environment.NewLine;
+            options += TabInString(10 + tabOffset) + "if (index >= " + valueLenght.ToString() + ") break;" + Environment.NewLine;
 
             // digit 
             options += TabInString(10 + tabOffset) + "if (charCode >= 0 && charCode < 10) { " + Environment.NewLine;
@@ -14568,7 +14689,7 @@ namespace Watch_Face_Editor
         }
 
         private string Text_Rotate_Function_Options(hmUI_widget_IMG_NUMBER text_rotate, string optionNameStart, string intValueName, string strValueName,
-            bool need_dot_image, string type, int tabOffset = 0)
+            bool need_dot_image, string type, int valueLenght, int tabOffset = 0)
         {
             string options = "";
             if (text_rotate == null) return options;
@@ -14576,7 +14697,7 @@ namespace Watch_Face_Editor
             if (need_dot_image && (text_rotate.dot_image == null || text_rotate.dot_image.Length == 0)) return options;
 
             // скрываем все символы
-            options += TabInString(8 + tabOffset) + "for (var i = 1; i < 5; i++) {  // hide all symbols" + Environment.NewLine;
+            options += TabInString(8 + tabOffset) + "for (var i = 1; i < " + valueLenght.ToString() + "; i++) {  // hide all symbols" + Environment.NewLine;
             options += TabInString(9 + tabOffset) + optionNameStart + "TextRotate[i].setProperty(hmUI.prop.VISIBLE, false);" + Environment.NewLine;
             options += TabInString(8 + tabOffset) + "};" + Environment.NewLine;
             if (text_rotate.unit != null && text_rotate.unit.Length > 0)
@@ -14644,7 +14765,7 @@ namespace Watch_Face_Editor
             options += TabInString(9 + tabOffset) + "let index = 0;" + Environment.NewLine;
             options += TabInString(9 + tabOffset) + "for (let char of " + strValueName + ") {" + Environment.NewLine;
             options += TabInString(10 + tabOffset) + "let charCode = char.charCodeAt()-48;" + Environment.NewLine;
-            options += TabInString(10 + tabOffset) + "if (index >= 5) break;" + Environment.NewLine;
+            options += TabInString(10 + tabOffset) + "if (index >= " + valueLenght.ToString() + ") break;" + Environment.NewLine;
 
             // digit 
             options += TabInString(10 + tabOffset) + "if (charCode >= 0 && charCode < 10) { " + Environment.NewLine;
@@ -14782,6 +14903,11 @@ namespace Watch_Face_Editor
             options += TabInString(7 + tabOffset) + "char_space: " + text.char_space.ToString() + "," + Environment.NewLine;
             options += TabInString(7 + tabOffset) + "line_space: " + text.line_space.ToString() + "," + Environment.NewLine;
 
+            if (text.font != null && text.font.Length > 3)
+            {
+                options += TabInString(7 + tabOffset) + "font: 'fonts/" + text.font + "'," + Environment.NewLine;
+            }
+
             options += TabInString(7 + tabOffset) + "color: " + text.color + "," + Environment.NewLine;
 
             options += TabInString(7 + tabOffset) + "align_h: hmUI.align." + text.align_h + "," + Environment.NewLine;
@@ -14789,13 +14915,84 @@ namespace Watch_Face_Editor
             options += TabInString(7 + tabOffset) + "text_style: hmUI.text_style." + text.text_style + "," + Environment.NewLine;
 
 #if DEBUG
-            options += TabInString(7 + tabOffset) + "text: \"City Name\"," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "text: 'City Name'," + Environment.NewLine;
 #endif
 
             if (show_level.Length > 0)
             {
                 options += TabInString(7 + tabOffset) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
             }
+
+            return options;
+        }
+
+        private string TEXT_Cache_Options(hmUI_widget_TEXT text, int tabOffset = 0)
+        {
+            string options = Environment.NewLine;
+            if (text == null) return options;
+            if (text.font == null || text.font.Length < 3) return options;
+            int x = 0;
+            int y = 0;
+            switch (ProgramSettings.Watch_Model)
+            {
+                case "GTS 4 mini":
+                    x = 336 - 2;
+                    y = 384 - 2;
+                    break;
+                case "GTS 3":
+                case "GTS 4":
+                    x = 390 - 2;
+                    y = 450 - 2;
+                    break;
+                case "GTR mini":
+                case "Falcon":
+                    x = 416 - 2;
+                    y = 416 - 2;
+                    break;
+                case "T-Rex Ultra":
+                case "T-Rex 2":
+                case "GTR 3":
+                    x = 454 - 2;
+                    y = 454 - 2;
+                    break;
+                case "GTR 4":
+                    x = 466 - 2;
+                    y = 466 - 2;
+                    break;
+                case "GTR 3 Pro":
+                    x = 480 - 2;
+                    y = 480 - 2;
+                    break;
+                case "Amazfit Band 7":
+                    x = 194 - 2;
+                    y = 368 - 2;
+                    break;
+
+                default:
+                    x = 454 - 2;
+                    y = 454 - 2;
+                    break;
+            }
+            options += TabInString(7 + tabOffset) + "x: " + x.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "y: " + y.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "w: " + ((int)(text.text_size * 1.2)).ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "h: " + ((int)(text.text_size * 1.2)).ToString() + "," + Environment.NewLine;
+
+            options += TabInString(7 + tabOffset) + "text_size: " + text.text_size.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "char_space: " + text.char_space.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "line_space: " + text.line_space.ToString() + "," + Environment.NewLine;
+
+            options += TabInString(7 + tabOffset) + "font: 'fonts/" + text.font + "'," + Environment.NewLine;
+
+            options += TabInString(7 + tabOffset) + "color: " + text.color + "," + Environment.NewLine;
+
+            options += TabInString(7 + tabOffset) + "align_h: hmUI.align." + text.align_h + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "align_v: hmUI.align." + text.align_v + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "text_style: hmUI.text_style.NONE," + Environment.NewLine;
+
+            options += TabInString(7 + tabOffset) + "text: \"" + ProgramSettings.CacheFonts + "\"," + Environment.NewLine;
+
+            options += TabInString(7 + tabOffset) + "show_level: hmUI.show_level.ONLY_NORMAL," + Environment.NewLine;
 
             return options;
         }
@@ -17253,7 +17450,7 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenAOD.Elements = new List<object>();
                                 elementsList = Watch_Face.ScreenAOD.Elements;
                             }
-                            ParametrsToObject(elementsList, parametrs);
+                            if (!objectName.EndsWith("_cache")) ParametrsToObject(elementsList, parametrs);
                             break;
                         #endregion
 
@@ -18549,6 +18746,14 @@ namespace Watch_Face_Editor
                             if (digitalTime.Second != null) offset++;
                             if (digitalTime.AmPm != null) offset++;
 
+                            if (digitalTime.Hour_rotation != null) offset++;
+                            if (digitalTime.Minute_rotation != null) offset++;
+                            if (digitalTime.Second_rotation != null) offset++;
+
+                            if (digitalTime.Hour_circle != null) offset++;
+                            if (digitalTime.Minute_circle != null) offset++;
+                            if (digitalTime.Second_circle != null) offset++;
+
                             if (img_time.Hour != null)
                             {
                                 img_time.Hour.position = img_time.Hour.position + offset;
@@ -18569,9 +18774,10 @@ namespace Watch_Face_Editor
                                 img_time.AmPm.position = img_time.AmPm.position + offset;
                                 digitalTime.AmPm = img_time.AmPm;
                             }
+
                         }
 
-                        break;
+                            break;
                     #endregion
 
                     #region TIME_POINTER
@@ -20803,6 +21009,129 @@ namespace Watch_Face_Editor
                     case "Text_Rotate":
                         hmUI_widget_IMG_NUMBER textRotate = Object_Text_Rotate(parametrs);
 
+                        if (textRotate.type == "HOUR")
+                        {
+                            ElementDigitalTime hour = (ElementDigitalTime)elementsList.Find(e => e.GetType().Name == "ElementDigitalTime");
+                            if (hour == null)
+                            {
+                                elementsList.Add(new ElementDigitalTime());
+                                hour = (ElementDigitalTime)elementsList.Find(e => e.GetType().Name == "ElementDigitalTime");
+                            }
+                            if (hour != null)
+                            {
+                                int offset = 1;
+                                if (hour.Hour != null) offset++;
+                                if (hour.Minute != null) offset++;
+                                if (hour.Second != null) offset++;
+                                if (hour.AmPm != null) offset++;
+                                //if (hour.Hour_rotation != null) offset++;
+                                if (hour.Minute_rotation != null) offset++;
+                                if (hour.Second_rotation != null) offset++;
+                                if (hour.Hour_circle != null) offset++;
+                                if (hour.Minute_circle != null) offset++;
+                                if (hour.Second_circle != null) offset++;
+
+                                hour.Hour_rotation = new hmUI_widget_IMG_NUMBER();
+                                hour.Hour_rotation.img_First = textRotate.img_First;
+                                hour.Hour_rotation.imageX = textRotate.imageX;
+                                hour.Hour_rotation.imageY = textRotate.imageY;
+                                hour.Hour_rotation.space = textRotate.space;
+                                hour.Hour_rotation.angle = textRotate.angle;
+                                hour.Hour_rotation.zero = textRotate.zero;
+                                hour.Hour_rotation.unit = textRotate.unit;
+                                hour.Hour_rotation.unit_in_alignment = textRotate.unit_in_alignment;
+                                hour.Hour_rotation.imperial_unit = textRotate.imperial_unit;
+                                hour.Hour_rotation.negative_image = textRotate.negative_image;
+                                hour.Hour_rotation.invalid_image = textRotate.invalid_image;
+                                hour.Hour_rotation.dot_image = textRotate.dot_image;
+                                hour.Hour_rotation.align = textRotate.align;
+                                hour.Hour_rotation.visible = true;
+                                hour.Hour_rotation.position = offset;
+                            }
+                        }
+
+                        if (textRotate.type == "MINUTE")
+                        {
+                            ElementDigitalTime minute = (ElementDigitalTime)elementsList.Find(e => e.GetType().Name == "ElementDigitalTime");
+                            if (minute == null)
+                            {
+                                elementsList.Add(new ElementDigitalTime());
+                                minute = (ElementDigitalTime)elementsList.Find(e => e.GetType().Name == "ElementDigitalTime");
+                            }
+                            if (minute != null)
+                            {
+                                int offset = 1;
+                                if (minute.Hour != null) offset++;
+                                if (minute.Minute != null) offset++;
+                                if (minute.Second != null) offset++;
+                                if (minute.AmPm != null) offset++;
+                                if (minute.Hour_rotation != null) offset++;
+                                //if (minute.Minute_rotation != null) offset++;
+                                if (minute.Second_rotation != null) offset++;
+                                if (minute.Hour_circle != null) offset++;
+                                if (minute.Minute_circle != null) offset++;
+                                if (minute.Second_circle != null) offset++;
+
+                                minute.Minute_rotation = new hmUI_widget_IMG_NUMBER();
+                                minute.Minute_rotation.img_First = textRotate.img_First;
+                                minute.Minute_rotation.imageX = textRotate.imageX;
+                                minute.Minute_rotation.imageY = textRotate.imageY;
+                                minute.Minute_rotation.space = textRotate.space;
+                                minute.Minute_rotation.angle = textRotate.angle;
+                                minute.Minute_rotation.zero = textRotate.zero;
+                                minute.Minute_rotation.unit = textRotate.unit;
+                                minute.Minute_rotation.unit_in_alignment = textRotate.unit_in_alignment;
+                                minute.Minute_rotation.imperial_unit = textRotate.imperial_unit;
+                                minute.Minute_rotation.negative_image = textRotate.negative_image;
+                                minute.Minute_rotation.invalid_image = textRotate.invalid_image;
+                                minute.Minute_rotation.dot_image = textRotate.dot_image;
+                                minute.Minute_rotation.align = textRotate.align;
+                                minute.Minute_rotation.visible = true;
+                                minute.Minute_rotation.position = offset;
+                            }
+                        }
+
+                        if (textRotate.type == "SECOND")
+                        {
+                            ElementDigitalTime second = (ElementDigitalTime)elementsList.Find(e => e.GetType().Name == "ElementDigitalTime");
+                            if (second == null)
+                            {
+                                elementsList.Add(new ElementDigitalTime());
+                                second = (ElementDigitalTime)elementsList.Find(e => e.GetType().Name == "ElementDigitalTime");
+                            }
+                            if (second != null)
+                            {
+                                int offset = 1;
+                                if (second.Hour != null) offset++;
+                                if (second.Minute != null) offset++;
+                                if (second.Second != null) offset++;
+                                if (second.AmPm != null) offset++;
+                                if (second.Hour_rotation != null) offset++;
+                                if (second.Minute_rotation != null) offset++;
+                                //if (second.Second_rotation != null) offset++;
+                                if (second.Hour_circle != null) offset++;
+                                if (second.Minute_circle != null) offset++;
+                                if (second.Second_circle != null) offset++;
+
+                                second.Second_rotation = new hmUI_widget_IMG_NUMBER();
+                                second.Second_rotation.img_First = textRotate.img_First;
+                                second.Second_rotation.imageX = textRotate.imageX;
+                                second.Second_rotation.imageY = textRotate.imageY;
+                                second.Second_rotation.space = textRotate.space;
+                                second.Second_rotation.angle = textRotate.angle;
+                                second.Second_rotation.zero = textRotate.zero;
+                                second.Second_rotation.unit = textRotate.unit;
+                                second.Second_rotation.unit_in_alignment = textRotate.unit_in_alignment;
+                                second.Second_rotation.imperial_unit = textRotate.imperial_unit;
+                                second.Second_rotation.negative_image = textRotate.negative_image;
+                                second.Second_rotation.invalid_image = textRotate.invalid_image;
+                                second.Second_rotation.dot_image = textRotate.dot_image;
+                                second.Second_rotation.align = textRotate.align;
+                                second.Second_rotation.visible = true;
+                                second.Second_rotation.position = offset;
+                            }
+                        }
+
                         if (textRotate.type == "STEP")
                         {
                             ElementSteps steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
@@ -21644,6 +21973,135 @@ namespace Watch_Face_Editor
                     #region Text_Circle
                     case "Text_Circle":
                         Text_Circle textCircle = Object_Text_Circle(parametrs);
+
+                        if (textCircle.type == "HOUR")
+                        {
+                            ElementDigitalTime hour = (ElementDigitalTime)elementsList.Find(e => e.GetType().Name == "ElementDigitalTime");
+                            if (hour == null)
+                            {
+                                elementsList.Add(new ElementDigitalTime());
+                                hour = (ElementDigitalTime)elementsList.Find(e => e.GetType().Name == "ElementDigitalTime");
+                            }
+                            if (hour != null)
+                            {
+                                int offset = 1;
+                                if (hour.Hour != null) offset++;
+                                if (hour.Minute != null) offset++;
+                                if (hour.Second != null) offset++;
+                                if (hour.AmPm != null) offset++;
+                                if (hour.Hour_rotation != null) offset++;
+                                if (hour.Minute_rotation != null) offset++;
+                                if (hour.Second_rotation != null) offset++;
+                                //if (hour.Hour_circle != null) offset++;
+                                if (hour.Minute_circle != null) offset++;
+                                if (hour.Second_circle != null) offset++;
+
+                                hour.Hour_circle = new Text_Circle();
+                                hour.Hour_circle.img_First = textCircle.img_First;
+                                hour.Hour_circle.circle_center_X = textCircle.circle_center_X;
+                                hour.Hour_circle.circle_center_Y = textCircle.circle_center_Y;
+                                hour.Hour_circle.char_space_angle = textCircle.char_space_angle;
+                                hour.Hour_circle.angle = textCircle.angle;
+                                hour.Hour_circle.radius = textCircle.radius;
+                                hour.Hour_circle.zero = textCircle.zero;
+                                hour.Hour_circle.unit = textCircle.unit;
+                                hour.Hour_circle.unit_in_alignment = textCircle.unit_in_alignment;
+                                hour.Hour_circle.imperial_unit = textCircle.imperial_unit;
+                                hour.Hour_circle.error_image = textCircle.error_image;
+                                hour.Hour_circle.dot_image = textCircle.dot_image;
+                                hour.Hour_circle.reverse_direction = textCircle.reverse_direction;
+                                hour.Hour_circle.horizontal_alignment = textCircle.horizontal_alignment;
+                                hour.Hour_circle.vertical_alignment = textCircle.vertical_alignment;
+                                hour.Hour_circle.visible = true;
+                                hour.Hour_circle.position = offset;
+                            }
+                        }
+
+                        if (textCircle.type == "MINUTE")
+                        {
+                            ElementDigitalTime minute = (ElementDigitalTime)elementsList.Find(e => e.GetType().Name == "ElementDigitalTime");
+                            if (minute == null)
+                            {
+                                elementsList.Add(new ElementDigitalTime());
+                                minute = (ElementDigitalTime)elementsList.Find(e => e.GetType().Name == "ElementDigitalTime");
+                            }
+                            if (minute != null)
+                            {
+                                int offset = 1;
+                                if (minute.Hour != null) offset++;
+                                if (minute.Minute != null) offset++;
+                                if (minute.Second != null) offset++;
+                                if (minute.AmPm != null) offset++;
+                                if (minute.Hour_rotation != null) offset++;
+                                if (minute.Minute_rotation != null) offset++;
+                                if (minute.Second_rotation != null) offset++;
+                                if (minute.Hour_circle != null) offset++;
+                                //if (minute.Minute_circle != null) offset++;
+                                if (minute.Second_circle != null) offset++;
+
+                                minute.Minute_circle = new Text_Circle();
+                                minute.Minute_circle.img_First = textCircle.img_First;
+                                minute.Minute_circle.circle_center_X = textCircle.circle_center_X;
+                                minute.Minute_circle.circle_center_Y = textCircle.circle_center_Y;
+                                minute.Minute_circle.char_space_angle = textCircle.char_space_angle;
+                                minute.Minute_circle.angle = textCircle.angle;
+                                minute.Minute_circle.radius = textCircle.radius;
+                                minute.Minute_circle.zero = textCircle.zero;
+                                minute.Minute_circle.unit = textCircle.unit;
+                                minute.Minute_circle.unit_in_alignment = textCircle.unit_in_alignment;
+                                minute.Minute_circle.imperial_unit = textCircle.imperial_unit;
+                                minute.Minute_circle.error_image = textCircle.error_image;
+                                minute.Minute_circle.dot_image = textCircle.dot_image;
+                                minute.Minute_circle.reverse_direction = textCircle.reverse_direction;
+                                minute.Minute_circle.horizontal_alignment = textCircle.horizontal_alignment;
+                                minute.Minute_circle.vertical_alignment = textCircle.vertical_alignment;
+                                minute.Minute_circle.visible = true;
+                                minute.Minute_circle.position = offset;
+                            }
+                        }
+
+                        if (textCircle.type == "SECOND")
+                        {
+                            ElementDigitalTime second = (ElementDigitalTime)elementsList.Find(e => e.GetType().Name == "ElementDigitalTime");
+                            if (second == null)
+                            {
+                                elementsList.Add(new ElementDigitalTime());
+                                second = (ElementDigitalTime)elementsList.Find(e => e.GetType().Name == "ElementDigitalTime");
+                            }
+                            if (second != null)
+                            {
+                                int offset = 1;
+                                if (second.Hour != null) offset++;
+                                if (second.Minute != null) offset++;
+                                if (second.Second != null) offset++;
+                                if (second.AmPm != null) offset++;
+                                if (second.Hour_rotation != null) offset++;
+                                if (second.Minute_rotation != null) offset++;
+                                if (second.Second_rotation != null) offset++;
+                                if (second.Hour_circle != null) offset++;
+                                if (second.Minute_circle != null) offset++;
+                                //if (hour.Second_circle != null) offset++;
+
+                                second.Second_circle = new Text_Circle();
+                                second.Second_circle.img_First = textCircle.img_First;
+                                second.Second_circle.circle_center_X = textCircle.circle_center_X;
+                                second.Second_circle.circle_center_Y = textCircle.circle_center_Y;
+                                second.Second_circle.char_space_angle = textCircle.char_space_angle;
+                                second.Second_circle.angle = textCircle.angle;
+                                second.Second_circle.radius = textCircle.radius;
+                                second.Second_circle.zero = textCircle.zero;
+                                second.Second_circle.unit = textCircle.unit;
+                                second.Second_circle.unit_in_alignment = textCircle.unit_in_alignment;
+                                second.Second_circle.imperial_unit = textCircle.imperial_unit;
+                                second.Second_circle.error_image = textCircle.error_image;
+                                second.Second_circle.dot_image = textCircle.dot_image;
+                                second.Second_circle.reverse_direction = textCircle.reverse_direction;
+                                second.Second_circle.horizontal_alignment = textCircle.horizontal_alignment;
+                                second.Second_circle.vertical_alignment = textCircle.vertical_alignment;
+                                second.Second_circle.visible = true;
+                                second.Second_circle.position = offset;
+                            }
+                        }
 
                         if (textCircle.type == "STEP")
                         {
@@ -23765,6 +24223,8 @@ namespace Watch_Face_Editor
 
                                 weather.City_Name.color = text.color;
 
+                                weather.City_Name.font = text.font;
+
                                 weather.City_Name.text_size = text.text_size;
                                 weather.City_Name.char_space = text.char_space;
                                 weather.City_Name.line_space = text.line_space;
@@ -25823,6 +26283,13 @@ namespace Watch_Face_Editor
             if (parametrs.ContainsKey("char_space") && Int32.TryParse(parametrs["char_space"], out value)) text.char_space = value;
             if (parametrs.ContainsKey("line_space") && Int32.TryParse(parametrs["line_space"], out value)) text.line_space = value;
 
+            if (parametrs.ContainsKey("font"))
+            {
+                paramName = parametrs["font"].Replace("'", "");
+                if (paramName.LastIndexOf("/") > 0) paramName = paramName.Remove(0, paramName.LastIndexOf("/") + 1);
+                text.font = paramName;
+            }
+
             if (parametrs.ContainsKey("color")) text.color = parametrs["color"].Replace("'", "");
 
             if (parametrs.ContainsKey("align_h"))
@@ -26037,44 +26504,92 @@ namespace Watch_Face_Editor
             return returnValue;
         }
 
-        private void AddListener(ref string items, ref string exist_items, string sensor, string newFunction)
+        private void AddListener(ref string variables, ref string items, ref string exist_items, string sensorName, string valueName, string newFunction, 
+            ref string resume_call, ref string pause_call, string optionNameStart)
         {
-            string sensorStr = sensor + ".addEventListener(hmSensor.event.CHANGE, function() {";
-            if (items.IndexOf(sensorStr) < 0 && exist_items.IndexOf(sensorStr) < 0)
+            if (valueName == "second")
             {
-                items += TabInString(6) + sensorStr + Environment.NewLine;
-                items += TabInString(7) + newFunction + Environment.NewLine;
-                items += TabInString(6) + "});" + Environment.NewLine;
+                if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                    exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                    items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                string timerName = optionNameStart + "timerTextUpdate";
+                if (resume_call.IndexOf(timerName + " = timer.createTimer") < 0)
+                {
+
+                    if (optionNameStart == "normal_")
+                    {
+                        resume_call += TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {" + Environment.NewLine;
+
+                    }
+                    else
+                    {
+                        resume_call += TabInString(8) + "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
+                    }
+                    string variablesTimerName = "let " + timerName + " =";
+                    if (variables.IndexOf(variablesTimerName) < 0)
+                    {
+                        variables += TabInString(4) + "let " + timerName + " = undefined;" + Environment.NewLine; 
+                    }
+                    resume_call += TabInString(9) + "if (!" + timerName + ") {" + Environment.NewLine;
+                    resume_call += TabInString(10) + timerName + " = timer.createTimer(0, 1000, (function (option) {" + Environment.NewLine;
+                    resume_call += TabInString(11) + "text_update();" + Environment.NewLine;
+                    resume_call += TabInString(10) + "}));  // end timer " + Environment.NewLine;
+                    resume_call += TabInString(9) + "};  // end timer check" + Environment.NewLine;
+                    resume_call += TabInString(8) + "};  // end screenType" + Environment.NewLine + Environment.NewLine;
+
+                    pause_call += TabInString(8) + "if (" + timerName + ") {" + Environment.NewLine;
+                    pause_call += TabInString(9) + "timer.stopTimer(" + timerName + ");" + Environment.NewLine;
+                    pause_call += TabInString(9) + timerName + " = undefined;" + Environment.NewLine;
+                    pause_call += TabInString(8) + "}" + Environment.NewLine;
+                }
             }
             else
             {
-                if (items.IndexOf(sensorStr) > 0)
+                string sensorStr = "";
+                if (valueName == "hour" || valueName == "minute")
                 {
-                    int startSensorPos = items.IndexOf(sensorStr);
-                    int endSensorPos = items.IndexOf("});", startSensorPos);
-                    if (items.IndexOf(newFunction, startSensorPos, endSensorPos - startSensorPos) < 0)
-                    {
-                        items = items.Insert(startSensorPos + sensorStr.Length, Environment.NewLine + TabInString(7) + newFunction);
-                    }
-
+                    sensorStr = sensorName + ".addEventListener(" + sensorName + ".event.MINUTEEND, function() {";
                 }
-                else if (exist_items.IndexOf(sensorStr) > 0)
+                else
                 {
-                    int startSensorPos = exist_items.IndexOf(sensorStr);
-                    int endSensorPos = exist_items.IndexOf("});", startSensorPos);
-                    if (exist_items.IndexOf(newFunction, startSensorPos, endSensorPos - startSensorPos) < 0)
-                    {
-                        exist_items = exist_items.Insert(startSensorPos + sensorStr.Length, Environment.NewLine + TabInString(7) + newFunction);
-                    }
-
+                    sensorStr = sensorName + ".addEventListener(hmSensor.event.CHANGE, function() {";
                 }
+                if (items.IndexOf(sensorStr) < 0 && exist_items.IndexOf(sensorStr) < 0)
+                {
+                    items += TabInString(6) + sensorStr + Environment.NewLine;
+                    items += TabInString(7) + newFunction + Environment.NewLine;
+                    items += TabInString(6) + "});" + Environment.NewLine;
+                }
+                else
+                {
+                    if (items.IndexOf(sensorStr) > 0)
+                    {
+                        int startSensorPos = items.IndexOf(sensorStr);
+                        int endSensorPos = items.IndexOf("});", startSensorPos);
+                        if (items.IndexOf(newFunction, startSensorPos, endSensorPos - startSensorPos) < 0)
+                        {
+                            items = items.Insert(startSensorPos + sensorStr.Length, Environment.NewLine + TabInString(7) + newFunction);
+                        }
+
+                    }
+                    else if (exist_items.IndexOf(sensorStr) > 0)
+                    {
+                        int startSensorPos = exist_items.IndexOf(sensorStr);
+                        int endSensorPos = exist_items.IndexOf("});", startSensorPos);
+                        if (exist_items.IndexOf(newFunction, startSensorPos, endSensorPos - startSensorPos) < 0)
+                        {
+                            exist_items = exist_items.Insert(startSensorPos + sensorStr.Length, Environment.NewLine + TabInString(7) + newFunction);
+                        }
+
+                    }
+                } 
             }
         }
 
         /// <summary>Добавляем код для наклоненного текста</summary>
         private void AddTextRotationJS(hmUI_widget_IMG_NUMBER text_rotate,string optionNameStart, string variableName, ref string variables, ref string items, 
             string exist_items, ref string text_update, string textRotateOptions, string show_level, string sensorName, string sensorID,
-            string valueName, string sensorTargetValue, int valueLenght)
+            string valueName, string sensorTargetValue, int valueLenght, ref string resume_call, ref string pause_call)
         {
             string variableStartName = optionNameStart + variableName;
             Bitmap src = null;
@@ -26083,7 +26598,7 @@ namespace Watch_Face_Editor
             int img_width = src.Width;
             int img_height = src.Height;
 
-            variables += TabInString(4) + "let " + variableStartName + "TextRotate = new Array(5);" + Environment.NewLine;
+            variables += TabInString(4) + "let " + variableStartName + "TextRotate = new Array(" + valueLenght.ToString() + ");" + Environment.NewLine;
             variables += TabInString(4) + "let " + variableStartName + "TextRotate_ASCIIARRAY = new Array(10);" + Environment.NewLine;
             variables += TabInString(4) + "let " + variableStartName + "TextRotate_img_width = " + img_width.ToString() + ";" + Environment.NewLine;
             //variables += TabInString(4) + "let " + variableStartName + "TextRotate_img_height = " + img_height.ToString() + ";" + Environment.NewLine;
@@ -26153,7 +26668,7 @@ namespace Watch_Face_Editor
             }
 
             items += Environment.NewLine + TabInString(6) + "//start of ignored block";
-            items += Environment.NewLine + TabInString(6) + "for (let i = 0; i < 5; i++) {";
+            items += Environment.NewLine + TabInString(6) + "for (let i = 0; i < " + valueLenght.ToString() + "; i++) {";
             items += Environment.NewLine + TabInString(7) + variableStartName + "TextRotate[i] = hmUI.createWidget(hmUI.widget.IMG, {";
             items += Environment.NewLine + TabInString(8) + "x: 0,";
             items += Environment.NewLine + TabInString(8) + "y: 0,";
@@ -26225,7 +26740,7 @@ namespace Watch_Face_Editor
                 items += TabInString(6) + Environment.NewLine;
                 items += TabInString(6) + "const " + sensorName + " = hmSensor.createSensor(hmSensor.id." + sensorID + ");" + Environment.NewLine;
             }
-            AddListener(ref items, ref exist_items, sensorName, "text_update();");
+            AddListener(ref variables, ref items, ref exist_items, sensorName, sensorTargetValue, "text_update();", ref resume_call, ref pause_call, optionNameStart);
 
             if (items.IndexOf("function toDegree (radian) {") < 0 &&
                 exist_items.IndexOf("function toDegree (radian) {") < 0)
@@ -26241,6 +26756,13 @@ namespace Watch_Face_Editor
             if (text_update.IndexOf("let " + valueName + " = " + sensorName + "." + sensorTargetValue + ";") < 0)
             {
                 text_update += TabInString(7) + "let " + valueName + " = " + sensorName + "." + sensorTargetValue + ";" + Environment.NewLine;
+                if (valueName == "valueHour")
+                {
+                    text_update += TabInString(7) + "if (!" + sensorName + ".is24Hour) {" + Environment.NewLine;
+                    text_update += TabInString(8) + valueName + " -= 12;" + Environment.NewLine;
+                    text_update += TabInString(8) + "if (" + valueName + " < 1) " + valueName + " += 12;" + Environment.NewLine;
+                    text_update += TabInString(7) + "};" + Environment.NewLine;
+                }
             }
 
             text_update += TabInString(7) + "let " + variableStartName + "rotate_string = parseInt(" + valueName + ").toString();" + Environment.NewLine;
@@ -26251,14 +26773,14 @@ namespace Watch_Face_Editor
             {
                 text_update += Environment.NewLine + TabInString(7) +
                     "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                text_update += Text_Rotate_Function_Options(text_rotate, variableStartName, valueName, variableStartName + "rotate_string", false, sensorID) + Environment.NewLine;
+                text_update += Text_Rotate_Function_Options(text_rotate, variableStartName, valueName, variableStartName + "rotate_string", false, sensorID, valueLenght) + Environment.NewLine;
                 text_update += TabInString(7) + "};" + Environment.NewLine;
             }
             else
             {
                 text_update += Environment.NewLine + TabInString(7) +
                     "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                text_update += Text_Rotate_Function_Options(text_rotate, variableStartName, valueName, variableStartName + "rotate_string", false, sensorID) + Environment.NewLine;
+                text_update += Text_Rotate_Function_Options(text_rotate, variableStartName, valueName, variableStartName + "rotate_string", false, sensorID, valueLenght) + Environment.NewLine;
                 text_update += TabInString(7) + "};" + Environment.NewLine;
             }
         }
@@ -26266,7 +26788,7 @@ namespace Watch_Face_Editor
         /// <summary>Добавляем код для текста по окружности</summary>
         private void AddTextCircleJS(Text_Circle text_circle, string optionNameStart, string variableName, ref string variables, ref string items,
             string exist_items, ref string text_update, string textCircleOptions, string show_level, string sensorName, string sensorID,
-            string valueName, string sensorTargetValue, int valueLenght)
+            string valueName, string sensorTargetValue, int valueLenght, ref string resume_call, ref string pause_call)
         {
             string variableStartName = optionNameStart + variableName;
             Bitmap src = null;
@@ -26288,7 +26810,7 @@ namespace Watch_Face_Editor
                 radius = -radius;
             }
 
-            variables += TabInString(4) + "let " + variableStartName + "TextCircle = new Array(5);" + Environment.NewLine;
+            variables += TabInString(4) + "let " + variableStartName + "TextCircle = new Array(" + valueLenght.ToString() + ");" + Environment.NewLine;
             variables += TabInString(4) + "let " + variableStartName + "TextCircle_ASCIIARRAY = new Array(10);" + Environment.NewLine;
             variables += TabInString(4) + "let " + variableStartName + "TextCircle_img_width = " + img_width.ToString() + ";" + Environment.NewLine;
             variables += TabInString(4) + "let " + variableStartName + "TextCircle_img_height = " + img_height.ToString() + ";" + Environment.NewLine;
@@ -26358,7 +26880,7 @@ namespace Watch_Face_Editor
             }
 
             items += Environment.NewLine + TabInString(6) + "//start of ignored block";
-            items += Environment.NewLine + TabInString(6) + "for (let i = 0; i < 5; i++) {";
+            items += Environment.NewLine + TabInString(6) + "for (let i = 0; i < " + valueLenght.ToString() + "; i++) {";
             items += Environment.NewLine + TabInString(7) + variableStartName + "TextCircle[i] = hmUI.createWidget(hmUI.widget.IMG, {";
             items += Environment.NewLine + TabInString(8) + "x: 0,";
             items += Environment.NewLine + TabInString(8) + "y: 0,";
@@ -26442,7 +26964,7 @@ namespace Watch_Face_Editor
                 items += TabInString(6) + Environment.NewLine;
                 items += TabInString(6) + "const " + sensorName + " = hmSensor.createSensor(hmSensor.id." + sensorID + ");" + Environment.NewLine;
             }
-            AddListener(ref items, ref exist_items, sensorName, "text_update();");
+            AddListener(ref variables, ref items, ref exist_items, sensorName, sensorTargetValue, "text_update();", ref resume_call, ref pause_call, optionNameStart);
 
             if (items.IndexOf("function toDegree (radian) {") < 0 &&
                 exist_items.IndexOf("function toDegree (radian) {") < 0)
@@ -26458,6 +26980,13 @@ namespace Watch_Face_Editor
             if (text_update.IndexOf("let " + valueName +" = " + sensorName + "." + sensorTargetValue + ";") < 0)
             {
                 text_update += TabInString(7) + "let " + valueName +" = " + sensorName + "." + sensorTargetValue + ";" + Environment.NewLine;
+                if (valueName == "valueHour")
+                {
+                    text_update += TabInString(7) + "if (!" + sensorName +  ".is24Hour) {" + Environment.NewLine;
+                    text_update += TabInString(8) + valueName + " -= 12;" + Environment.NewLine;
+                    text_update += TabInString(8) + "if (" + valueName + " < 1) " + valueName + " += 12;" + Environment.NewLine;
+                    text_update += TabInString(7) + "};" + Environment.NewLine;
+                }
             }
 
             text_update += TabInString(7) + "let " + variableStartName + "circle_string = parseInt(" + valueName +").toString();" + Environment.NewLine;
@@ -26468,14 +26997,14 @@ namespace Watch_Face_Editor
             {
                 text_update += Environment.NewLine + TabInString(7) +
                     "if (screenType != hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                text_update += Text_Circle_Function_Options(text_circle, variableStartName, valueName, variableStartName + "circle_string", false, sensorID) + Environment.NewLine;
+                text_update += Text_Circle_Function_Options(text_circle, variableStartName, valueName, variableStartName + "circle_string", false, sensorID, valueLenght) + Environment.NewLine;
                 text_update += TabInString(7) + "};" + Environment.NewLine;
             }
             else
             {
                 text_update += Environment.NewLine + TabInString(7) +
                     "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
-                text_update += Text_Circle_Function_Options(text_circle, variableStartName, valueName, variableStartName + "circle_string", false, sensorID) + Environment.NewLine;
+                text_update += Text_Circle_Function_Options(text_circle, variableStartName, valueName, variableStartName + "circle_string", false, sensorID, valueLenght) + Environment.NewLine;
                 text_update += TabInString(7) + "};" + Environment.NewLine;
             }
         }

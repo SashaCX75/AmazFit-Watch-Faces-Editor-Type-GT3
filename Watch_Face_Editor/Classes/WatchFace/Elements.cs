@@ -707,6 +707,9 @@ namespace Watch_Face_Editor
         /// <summary>Отступы</summary>
         public int char_space { get; set; }
 
+        /// <summary>Шрифт</summary>
+        public string font { get; set; } = "";
+
         /// <summary>Основной экран или AOD</summary>
         public string show_level = "";
 

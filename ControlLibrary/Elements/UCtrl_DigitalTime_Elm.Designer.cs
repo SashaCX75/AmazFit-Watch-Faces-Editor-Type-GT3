@@ -31,6 +31,24 @@ namespace ControlLibrary
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrl_DigitalTime_Elm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel_Hours_circle = new System.Windows.Forms.Panel();
+            this.button_Hours_circle = new System.Windows.Forms.Button();
+            this.checkBox_Hours_circle = new System.Windows.Forms.CheckBox();
+            this.panel_Minutes_circle = new System.Windows.Forms.Panel();
+            this.button_Minutes_circle = new System.Windows.Forms.Button();
+            this.checkBox_Minutes_circle = new System.Windows.Forms.CheckBox();
+            this.panel_Seconds_circle = new System.Windows.Forms.Panel();
+            this.button_Seconds_circle = new System.Windows.Forms.Button();
+            this.checkBox_Seconds_circle = new System.Windows.Forms.CheckBox();
+            this.panel_Hours_rotation = new System.Windows.Forms.Panel();
+            this.button_Hours_rotation = new System.Windows.Forms.Button();
+            this.checkBox_Hours_rotation = new System.Windows.Forms.CheckBox();
+            this.panel_Minutes_rotation = new System.Windows.Forms.Panel();
+            this.button_Minutes_rotation = new System.Windows.Forms.Button();
+            this.checkBox_Minutes_rotation = new System.Windows.Forms.CheckBox();
+            this.panel_Seconds_rotation = new System.Windows.Forms.Panel();
+            this.button_Seconds_rotation = new System.Windows.Forms.Button();
+            this.checkBox_Seconds_rotation = new System.Windows.Forms.CheckBox();
             this.panel_Minutes = new System.Windows.Forms.Panel();
             this.button_Minutes = new System.Windows.Forms.Button();
             this.checkBox_Minutes = new System.Windows.Forms.CheckBox();
@@ -50,6 +68,12 @@ namespace ControlLibrary
             this.pictureBox_Arrow_Down = new System.Windows.Forms.PictureBox();
             this.button_ElementName = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
+            this.panel_Hours_circle.SuspendLayout();
+            this.panel_Minutes_circle.SuspendLayout();
+            this.panel_Seconds_circle.SuspendLayout();
+            this.panel_Hours_rotation.SuspendLayout();
+            this.panel_Minutes_rotation.SuspendLayout();
+            this.panel_Seconds_rotation.SuspendLayout();
             this.panel_Minutes.SuspendLayout();
             this.panel_AmPm.SuspendLayout();
             this.panel_Hours.SuspendLayout();
@@ -63,8 +87,14 @@ namespace ControlLibrary
             // 
             // tableLayoutPanel1
             // 
-            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.AllowDrop = true;
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+            this.tableLayoutPanel1.Controls.Add(this.panel_Hours_circle, 0, 9);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Minutes_circle, 0, 8);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Seconds_circle, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Hours_rotation, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Minutes_rotation, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Seconds_rotation, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.panel_Minutes, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel_AmPm, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.panel_Hours, 0, 2);
@@ -73,12 +103,204 @@ namespace ControlLibrary
             this.tableLayoutPanel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragDrop);
             this.tableLayoutPanel1.DragOver += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragOver);
             // 
+            // panel_Hours_circle
+            // 
+            this.panel_Hours_circle.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_Hours_circle.Controls.Add(this.button_Hours_circle);
+            this.panel_Hours_circle.Controls.Add(this.checkBox_Hours_circle);
+            resources.ApplyResources(this.panel_Hours_circle, "panel_Hours_circle");
+            this.panel_Hours_circle.Name = "panel_Hours_circle";
+            this.panel_Hours_circle.Click += new System.EventHandler(this.panel_Hours_circle_Click);
+            this.panel_Hours_circle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.panel_Hours_circle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.panel_Hours_circle.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // button_Hours_circle
+            // 
+            this.button_Hours_circle.FlatAppearance.BorderSize = 0;
+            this.button_Hours_circle.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.button_Hours_circle.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Hours_circle, "button_Hours_circle");
+            this.button_Hours_circle.Name = "button_Hours_circle";
+            this.button_Hours_circle.UseVisualStyleBackColor = true;
+            this.button_Hours_circle.Click += new System.EventHandler(this.panel_Hours_circle_Click);
+            this.button_Hours_circle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.button_Hours_circle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.button_Hours_circle.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // checkBox_Hours_circle
+            // 
+            resources.ApplyResources(this.checkBox_Hours_circle, "checkBox_Hours_circle");
+            this.checkBox_Hours_circle.Name = "checkBox_Hours_circle";
+            this.checkBox_Hours_circle.UseVisualStyleBackColor = true;
+            this.checkBox_Hours_circle.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
+            // 
+            // panel_Minutes_circle
+            // 
+            this.panel_Minutes_circle.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_Minutes_circle.Controls.Add(this.button_Minutes_circle);
+            this.panel_Minutes_circle.Controls.Add(this.checkBox_Minutes_circle);
+            resources.ApplyResources(this.panel_Minutes_circle, "panel_Minutes_circle");
+            this.panel_Minutes_circle.Name = "panel_Minutes_circle";
+            this.panel_Minutes_circle.Click += new System.EventHandler(this.panel_Minutes_circle_Click);
+            this.panel_Minutes_circle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.panel_Minutes_circle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.panel_Minutes_circle.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // button_Minutes_circle
+            // 
+            this.button_Minutes_circle.FlatAppearance.BorderSize = 0;
+            this.button_Minutes_circle.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.button_Minutes_circle.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Minutes_circle, "button_Minutes_circle");
+            this.button_Minutes_circle.Name = "button_Minutes_circle";
+            this.button_Minutes_circle.UseVisualStyleBackColor = true;
+            this.button_Minutes_circle.Click += new System.EventHandler(this.panel_Minutes_circle_Click);
+            this.button_Minutes_circle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.button_Minutes_circle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.button_Minutes_circle.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // checkBox_Minutes_circle
+            // 
+            resources.ApplyResources(this.checkBox_Minutes_circle, "checkBox_Minutes_circle");
+            this.checkBox_Minutes_circle.Name = "checkBox_Minutes_circle";
+            this.checkBox_Minutes_circle.UseVisualStyleBackColor = true;
+            this.checkBox_Minutes_circle.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
+            // 
+            // panel_Seconds_circle
+            // 
+            this.panel_Seconds_circle.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_Seconds_circle.Controls.Add(this.button_Seconds_circle);
+            this.panel_Seconds_circle.Controls.Add(this.checkBox_Seconds_circle);
+            resources.ApplyResources(this.panel_Seconds_circle, "panel_Seconds_circle");
+            this.panel_Seconds_circle.Name = "panel_Seconds_circle";
+            this.panel_Seconds_circle.Click += new System.EventHandler(this.panel_Seconds_circle_Click);
+            this.panel_Seconds_circle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.panel_Seconds_circle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.panel_Seconds_circle.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // button_Seconds_circle
+            // 
+            this.button_Seconds_circle.FlatAppearance.BorderSize = 0;
+            this.button_Seconds_circle.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.button_Seconds_circle.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Seconds_circle, "button_Seconds_circle");
+            this.button_Seconds_circle.Name = "button_Seconds_circle";
+            this.button_Seconds_circle.UseVisualStyleBackColor = true;
+            this.button_Seconds_circle.Click += new System.EventHandler(this.panel_Seconds_circle_Click);
+            this.button_Seconds_circle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.button_Seconds_circle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.button_Seconds_circle.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // checkBox_Seconds_circle
+            // 
+            resources.ApplyResources(this.checkBox_Seconds_circle, "checkBox_Seconds_circle");
+            this.checkBox_Seconds_circle.Name = "checkBox_Seconds_circle";
+            this.checkBox_Seconds_circle.UseVisualStyleBackColor = true;
+            this.checkBox_Seconds_circle.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
+            // 
+            // panel_Hours_rotation
+            // 
+            this.panel_Hours_rotation.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_Hours_rotation.Controls.Add(this.button_Hours_rotation);
+            this.panel_Hours_rotation.Controls.Add(this.checkBox_Hours_rotation);
+            resources.ApplyResources(this.panel_Hours_rotation, "panel_Hours_rotation");
+            this.panel_Hours_rotation.Name = "panel_Hours_rotation";
+            this.panel_Hours_rotation.Click += new System.EventHandler(this.panel_Hours_rotation_Click);
+            this.panel_Hours_rotation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.panel_Hours_rotation.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.panel_Hours_rotation.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // button_Hours_rotation
+            // 
+            this.button_Hours_rotation.FlatAppearance.BorderSize = 0;
+            this.button_Hours_rotation.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.button_Hours_rotation.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Hours_rotation, "button_Hours_rotation");
+            this.button_Hours_rotation.Name = "button_Hours_rotation";
+            this.button_Hours_rotation.UseVisualStyleBackColor = true;
+            this.button_Hours_rotation.Click += new System.EventHandler(this.panel_Hours_rotation_Click);
+            this.button_Hours_rotation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.button_Hours_rotation.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.button_Hours_rotation.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // checkBox_Hours_rotation
+            // 
+            resources.ApplyResources(this.checkBox_Hours_rotation, "checkBox_Hours_rotation");
+            this.checkBox_Hours_rotation.Name = "checkBox_Hours_rotation";
+            this.checkBox_Hours_rotation.UseVisualStyleBackColor = true;
+            this.checkBox_Hours_rotation.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
+            // 
+            // panel_Minutes_rotation
+            // 
+            this.panel_Minutes_rotation.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_Minutes_rotation.Controls.Add(this.button_Minutes_rotation);
+            this.panel_Minutes_rotation.Controls.Add(this.checkBox_Minutes_rotation);
+            resources.ApplyResources(this.panel_Minutes_rotation, "panel_Minutes_rotation");
+            this.panel_Minutes_rotation.Name = "panel_Minutes_rotation";
+            this.panel_Minutes_rotation.Click += new System.EventHandler(this.panel_Minutes_rotation_Click);
+            this.panel_Minutes_rotation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.panel_Minutes_rotation.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.panel_Minutes_rotation.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // button_Minutes_rotation
+            // 
+            this.button_Minutes_rotation.FlatAppearance.BorderSize = 0;
+            this.button_Minutes_rotation.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.button_Minutes_rotation.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Minutes_rotation, "button_Minutes_rotation");
+            this.button_Minutes_rotation.Name = "button_Minutes_rotation";
+            this.button_Minutes_rotation.UseVisualStyleBackColor = true;
+            this.button_Minutes_rotation.Click += new System.EventHandler(this.panel_Minutes_rotation_Click);
+            this.button_Minutes_rotation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.button_Minutes_rotation.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.button_Minutes_rotation.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // checkBox_Minutes_rotation
+            // 
+            resources.ApplyResources(this.checkBox_Minutes_rotation, "checkBox_Minutes_rotation");
+            this.checkBox_Minutes_rotation.Name = "checkBox_Minutes_rotation";
+            this.checkBox_Minutes_rotation.UseVisualStyleBackColor = true;
+            this.checkBox_Minutes_rotation.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
+            // 
+            // panel_Seconds_rotation
+            // 
+            this.panel_Seconds_rotation.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_Seconds_rotation.Controls.Add(this.button_Seconds_rotation);
+            this.panel_Seconds_rotation.Controls.Add(this.checkBox_Seconds_rotation);
+            resources.ApplyResources(this.panel_Seconds_rotation, "panel_Seconds_rotation");
+            this.panel_Seconds_rotation.Name = "panel_Seconds_rotation";
+            this.panel_Seconds_rotation.Click += new System.EventHandler(this.panel_Seconds_rotation_Click);
+            this.panel_Seconds_rotation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.panel_Seconds_rotation.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.panel_Seconds_rotation.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // button_Seconds_rotation
+            // 
+            this.button_Seconds_rotation.FlatAppearance.BorderSize = 0;
+            this.button_Seconds_rotation.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.button_Seconds_rotation.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Seconds_rotation, "button_Seconds_rotation");
+            this.button_Seconds_rotation.Name = "button_Seconds_rotation";
+            this.button_Seconds_rotation.UseVisualStyleBackColor = true;
+            this.button_Seconds_rotation.Click += new System.EventHandler(this.panel_Seconds_rotation_Click);
+            this.button_Seconds_rotation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.button_Seconds_rotation.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.button_Seconds_rotation.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // checkBox_Seconds_rotation
+            // 
+            resources.ApplyResources(this.checkBox_Seconds_rotation, "checkBox_Seconds_rotation");
+            this.checkBox_Seconds_rotation.Name = "checkBox_Seconds_rotation";
+            this.checkBox_Seconds_rotation.UseVisualStyleBackColor = true;
+            this.checkBox_Seconds_rotation.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
+            // 
             // panel_Minutes
             // 
-            resources.ApplyResources(this.panel_Minutes, "panel_Minutes");
             this.panel_Minutes.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Minutes.Controls.Add(this.button_Minutes);
             this.panel_Minutes.Controls.Add(this.checkBox_Minutes);
+            resources.ApplyResources(this.panel_Minutes, "panel_Minutes");
             this.panel_Minutes.Name = "panel_Minutes";
             this.panel_Minutes.Click += new System.EventHandler(this.panel_Minutes_Click);
             this.panel_Minutes.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -87,10 +309,10 @@ namespace ControlLibrary
             // 
             // button_Minutes
             // 
-            resources.ApplyResources(this.button_Minutes, "button_Minutes");
             this.button_Minutes.FlatAppearance.BorderSize = 0;
             this.button_Minutes.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Minutes.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Minutes, "button_Minutes");
             this.button_Minutes.Image = global::ControlLibrary.Properties.Resources.text_icon;
             this.button_Minutes.Name = "button_Minutes";
             this.button_Minutes.UseVisualStyleBackColor = true;
@@ -108,10 +330,10 @@ namespace ControlLibrary
             // 
             // panel_AmPm
             // 
-            resources.ApplyResources(this.panel_AmPm, "panel_AmPm");
             this.panel_AmPm.BackColor = System.Drawing.SystemColors.Control;
             this.panel_AmPm.Controls.Add(this.button_AmPm);
             this.panel_AmPm.Controls.Add(this.checkBox_AmPm);
+            resources.ApplyResources(this.panel_AmPm, "panel_AmPm");
             this.panel_AmPm.Name = "panel_AmPm";
             this.panel_AmPm.Click += new System.EventHandler(this.panel_AmPm_Click);
             this.panel_AmPm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -120,10 +342,10 @@ namespace ControlLibrary
             // 
             // button_AmPm
             // 
-            resources.ApplyResources(this.button_AmPm, "button_AmPm");
             this.button_AmPm.FlatAppearance.BorderSize = 0;
             this.button_AmPm.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_AmPm.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_AmPm, "button_AmPm");
             this.button_AmPm.Image = global::ControlLibrary.Properties.Resources.outline_image_black_18;
             this.button_AmPm.Name = "button_AmPm";
             this.button_AmPm.UseVisualStyleBackColor = true;
@@ -141,10 +363,10 @@ namespace ControlLibrary
             // 
             // panel_Hours
             // 
-            resources.ApplyResources(this.panel_Hours, "panel_Hours");
             this.panel_Hours.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Hours.Controls.Add(this.checkBox_Hours);
             this.panel_Hours.Controls.Add(this.button_Hours);
+            resources.ApplyResources(this.panel_Hours, "panel_Hours");
             this.panel_Hours.Name = "panel_Hours";
             this.panel_Hours.Click += new System.EventHandler(this.panel_Hours_Click);
             this.panel_Hours.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -160,10 +382,10 @@ namespace ControlLibrary
             // 
             // button_Hours
             // 
-            resources.ApplyResources(this.button_Hours, "button_Hours");
             this.button_Hours.FlatAppearance.BorderSize = 0;
             this.button_Hours.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Hours.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Hours, "button_Hours");
             this.button_Hours.Image = global::ControlLibrary.Properties.Resources.text_icon;
             this.button_Hours.Name = "button_Hours";
             this.button_Hours.UseVisualStyleBackColor = true;
@@ -174,10 +396,10 @@ namespace ControlLibrary
             // 
             // panel_Seconds
             // 
-            resources.ApplyResources(this.panel_Seconds, "panel_Seconds");
             this.panel_Seconds.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Seconds.Controls.Add(this.button_Seconds);
             this.panel_Seconds.Controls.Add(this.checkBox_Seconds);
+            resources.ApplyResources(this.panel_Seconds, "panel_Seconds");
             this.panel_Seconds.Name = "panel_Seconds";
             this.panel_Seconds.Click += new System.EventHandler(this.panel_Seconds_Click);
             this.panel_Seconds.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -186,10 +408,10 @@ namespace ControlLibrary
             // 
             // button_Seconds
             // 
-            resources.ApplyResources(this.button_Seconds, "button_Seconds");
             this.button_Seconds.FlatAppearance.BorderSize = 0;
             this.button_Seconds.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Seconds.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Seconds, "button_Seconds");
             this.button_Seconds.Image = global::ControlLibrary.Properties.Resources.text_icon;
             this.button_Seconds.Name = "button_Seconds";
             this.button_Seconds.UseVisualStyleBackColor = true;
@@ -215,8 +437,8 @@ namespace ControlLibrary
             // 
             // pictureBox_Arrow_Right
             // 
-            resources.ApplyResources(this.pictureBox_Arrow_Right, "pictureBox_Arrow_Right");
             this.pictureBox_Arrow_Right.BackgroundImage = global::ControlLibrary.Properties.Resources.arrow_right;
+            resources.ApplyResources(this.pictureBox_Arrow_Right, "pictureBox_Arrow_Right");
             this.pictureBox_Arrow_Right.Name = "pictureBox_Arrow_Right";
             this.pictureBox_Arrow_Right.TabStop = false;
             this.pictureBox_Arrow_Right.Click += new System.EventHandler(this.button_ElementName_Click);
@@ -231,24 +453,24 @@ namespace ControlLibrary
             // 
             // pictureBox_Del
             // 
-            resources.ApplyResources(this.pictureBox_Del, "pictureBox_Del");
             this.pictureBox_Del.BackgroundImage = global::ControlLibrary.Properties.Resources.outline_delete_forever_black_24;
+            resources.ApplyResources(this.pictureBox_Del, "pictureBox_Del");
             this.pictureBox_Del.Name = "pictureBox_Del";
             this.pictureBox_Del.TabStop = false;
             this.pictureBox_Del.Click += new System.EventHandler(this.pictureBox_Del_Click);
             // 
             // pictureBox_Arrow_Down
             // 
-            resources.ApplyResources(this.pictureBox_Arrow_Down, "pictureBox_Arrow_Down");
             this.pictureBox_Arrow_Down.BackgroundImage = global::ControlLibrary.Properties.Resources.arrow_down;
+            resources.ApplyResources(this.pictureBox_Arrow_Down, "pictureBox_Arrow_Down");
             this.pictureBox_Arrow_Down.Name = "pictureBox_Arrow_Down";
             this.pictureBox_Arrow_Down.TabStop = false;
             this.pictureBox_Arrow_Down.Click += new System.EventHandler(this.button_ElementName_Click);
             // 
             // button_ElementName
             // 
-            resources.ApplyResources(this.button_ElementName, "button_ElementName");
             this.button_ElementName.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_ElementName, "button_ElementName");
             this.button_ElementName.Image = global::ControlLibrary.Properties.Resources.digital_clock_icon;
             this.button_ElementName.Name = "button_ElementName";
             this.button_ElementName.UseVisualStyleBackColor = false;
@@ -271,6 +493,18 @@ namespace ControlLibrary
             this.Controls.Add(this.button_ElementName);
             this.Name = "UCtrl_DigitalTime_Elm";
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel_Hours_circle.ResumeLayout(false);
+            this.panel_Hours_circle.PerformLayout();
+            this.panel_Minutes_circle.ResumeLayout(false);
+            this.panel_Minutes_circle.PerformLayout();
+            this.panel_Seconds_circle.ResumeLayout(false);
+            this.panel_Seconds_circle.PerformLayout();
+            this.panel_Hours_rotation.ResumeLayout(false);
+            this.panel_Hours_rotation.PerformLayout();
+            this.panel_Minutes_rotation.ResumeLayout(false);
+            this.panel_Minutes_rotation.PerformLayout();
+            this.panel_Seconds_rotation.ResumeLayout(false);
+            this.panel_Seconds_rotation.PerformLayout();
             this.panel_Minutes.ResumeLayout(false);
             this.panel_Minutes.PerformLayout();
             this.panel_AmPm.ResumeLayout(false);
@@ -310,5 +544,23 @@ namespace ControlLibrary
         public System.Windows.Forms.CheckBox checkBox_Minutes;
         public System.Windows.Forms.CheckBox checkBox_Hours;
         public System.Windows.Forms.CheckBox checkBox_AmPm;
+        private System.Windows.Forms.Panel panel_Hours_rotation;
+        private System.Windows.Forms.Button button_Hours_rotation;
+        public System.Windows.Forms.CheckBox checkBox_Hours_rotation;
+        private System.Windows.Forms.Panel panel_Minutes_rotation;
+        private System.Windows.Forms.Button button_Minutes_rotation;
+        public System.Windows.Forms.CheckBox checkBox_Minutes_rotation;
+        private System.Windows.Forms.Panel panel_Seconds_rotation;
+        private System.Windows.Forms.Button button_Seconds_rotation;
+        public System.Windows.Forms.CheckBox checkBox_Seconds_rotation;
+        private System.Windows.Forms.Panel panel_Hours_circle;
+        private System.Windows.Forms.Button button_Hours_circle;
+        public System.Windows.Forms.CheckBox checkBox_Hours_circle;
+        private System.Windows.Forms.Panel panel_Minutes_circle;
+        private System.Windows.Forms.Button button_Minutes_circle;
+        public System.Windows.Forms.CheckBox checkBox_Minutes_circle;
+        private System.Windows.Forms.Panel panel_Seconds_circle;
+        private System.Windows.Forms.Button button_Seconds_circle;
+        public System.Windows.Forms.CheckBox checkBox_Seconds_circle;
     }
 }
