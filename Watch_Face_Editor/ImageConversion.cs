@@ -181,7 +181,9 @@ namespace Watch_Face_Editor
                             {
                                 for (int y = 0; y < 16; y++)
                                 {
-                                    colorMap[x, y] = image.GetColormap(index);
+                                    // TODO :: Kartun, check x2
+                                    // colorMap[x, y] = image.GetColormap(index);
+                                    colorMap[x, y] = (ImageMagick.MagickColor)image.GetColormapColor(index);
                                     index++;
                                 }
                             }
@@ -190,7 +192,9 @@ namespace Watch_Face_Editor
                             {
                                 for (int y = 0; y < 16; y++)
                                 {
-                                    image.SetColormap(index, colorMap[y, x]);
+                                    // TODO :: Kartun, check
+                                    // image.SetColormap(index, colorMap[y, x]);
+                                    image.SetColormapColor(index, colorMap[y, x]);
                                     index++;
                                 }
                             }
@@ -199,7 +203,9 @@ namespace Watch_Face_Editor
                             {
                                 for (int y = 0; y < 16; y++)
                                 {
-                                    colorMap[x, y] = image.GetColormap(index);
+                                    // TODO :: Kartun, check
+                                    // colorMap[x, y] = image.GetColormap(index);
+                                    colorMap[x, y] = (ImageMagick.MagickColor)image.GetColormapColor(index);
                                     index++;
                                 }
                             }
@@ -275,11 +281,14 @@ namespace Watch_Face_Editor
                             Bitmap bitmapNew = new Bitmap(newWidth, newHeight);
                             Graphics gfx = Graphics.FromImage(bitmapNew);
                             gfx.DrawImage(bitmap, 0, 0, bitmap.Width, bitmap.Height);
-                            image = new ImageMagick.MagickImage(bitmapNew);
-                            image_temp = new ImageMagick.MagickImage(bitmapNew);
+                            image = new MagickImage(ImgConvert.CopyImageToByteArray(bitmapNew));
+                            image_temp = new ImageMagick.MagickImage(ImgConvert.CopyImageToByteArray(bitmapNew));
                         }
                     }
-                    ImageMagick.Pixel pixel = image.GetPixels().GetPixel(0, 0);
+                    // TODO :: Kartun, check
+                    // ImageMagick.Pixel pixel = image.GetPixels().GetPixel(0, 0);
+                    IPixel<ushort> pixel = image.GetPixels().GetPixel(0, 0);
+                    
                     //pixel = new ImageMagick.Pixel(0, 0, 4);
                     bool transparent = false;
                     //if (pixel.Channels == 4 && pixel[3] < 256) transparent = true;
@@ -304,8 +313,10 @@ namespace Watch_Face_Editor
                             }
                         }
                         image.GetPixels().SetPixel(0, 0, p);
+                        // TODO :: Kartun, check
                         pixel = image.GetPixels().GetPixel(0, 0);
                         image.ColorType = ImageMagick.ColorType.Palette;
+                        // TODO :: Kartun, check
                         pixel = image.GetPixels().GetPixel(0, 0);
                         if (image.ColorSpace != ImageMagick.ColorSpace.sRGB)
                         {
@@ -318,7 +329,9 @@ namespace Watch_Face_Editor
 
                     for (int i = 0; i < image.ColormapSize; i++)
                     {
-                        colorMapList.Add(image.GetColormap(i));
+                        //colorMapList.Add(image.GetColormap(i));
+                        // TODO :: Kartun, Confirm
+                        colorMapList.Add(image.GetColormapColor(i).ToColor());
                     }
                     while (fix_color == 3 && colorMapList.Count < 256)
                     {

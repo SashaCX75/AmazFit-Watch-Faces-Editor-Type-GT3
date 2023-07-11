@@ -17240,7 +17240,7 @@ namespace Watch_Face_Editor
                             if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
                             else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
                             // Add first image and set the animation delay to 100ms
-                            MagickImage item = new MagickImage(bitmap);
+                            MagickImage item = new MagickImage(ImgConvert.CopyImageToByteArray(bitmap));
                             //ExifProfile profile = item.GetExifProfile();
                             collection.Add(item);
                             //collection[collection.Count - 1].AnimationDelay = 100;
@@ -17268,7 +17268,7 @@ namespace Watch_Face_Editor
                         if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
                         else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
                         // Add first image and set the animation delay to 100ms
-                        MagickImage item_AOD = new MagickImage(bitmap);
+                        MagickImage item_AOD = new MagickImage(ImgConvert.CopyImageToByteArray(bitmap));
                         //ExifProfile profile = item.GetExifProfile();
                         collection.Add(item_AOD);
                         //collection[collection.Count - 1].AnimationDelay = 100;
@@ -17296,7 +17296,7 @@ namespace Watch_Face_Editor
                         if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
                         else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
                         // Add first image and set the animation delay to 100ms
-                        MagickImage item_AOD = new MagickImage(bitmap);
+                        MagickImage item_AOD = new MagickImage(ImgConvert.CopyImageToByteArray(bitmap));
                         //ExifProfile profile = item.GetExifProfile();
                         collection.Add(item_AOD);
                         //collection[collection.Count - 1].AnimationDelay = 100;
@@ -17315,7 +17315,7 @@ namespace Watch_Face_Editor
                         //}
                         if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
                         else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
-                        item_AOD = new MagickImage(bitmap);
+                        item_AOD = new MagickImage(ImgConvert.CopyImageToByteArray(bitmap));
                         //ExifProfile profile = item.GetExifProfile();
                         collection.Add(item_AOD);
                         //collection[collection.Count - 1].AnimationDelay = 100;
@@ -17343,7 +17343,7 @@ namespace Watch_Face_Editor
                             if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
                             else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
                             // Add first image and set the animation delay to 100ms
-                            MagickImage item_bg_edit = new MagickImage(bitmap);
+                            MagickImage item_bg_edit = new MagickImage(ImgConvert.CopyImageToByteArray(bitmap));
                             //ExifProfile profile = item.GetExifProfile();
                             collection.Add(item_bg_edit);
                             //collection[collection.Count - 1].AnimationDelay = 100;
@@ -17373,7 +17373,7 @@ namespace Watch_Face_Editor
                             if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
                             else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
                             // Add first image and set the animation delay to 100ms
-                            MagickImage item_bg_edit = new MagickImage(bitmap);
+                            MagickImage item_bg_edit = new MagickImage(ImgConvert.CopyImageToByteArray(bitmap));
                             //ExifProfile profile = item.GetExifProfile();
                             collection.Add(item_bg_edit);
                             //collection[collection.Count - 1].AnimationDelay = 100;
@@ -17422,7 +17422,7 @@ namespace Watch_Face_Editor
                             if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
                             else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
                             // Add first image and set the animation delay to 100ms
-                            MagickImage item_bg_edit = new MagickImage(bitmap);
+                            MagickImage item_bg_edit = new MagickImage(ImgConvert.CopyImageToByteArray(bitmap));
                             //ExifProfile profile = item.GetExifProfile();
                             collection.Add(item_bg_edit);
                             //collection[collection.Count - 1].AnimationDelay = 100;
