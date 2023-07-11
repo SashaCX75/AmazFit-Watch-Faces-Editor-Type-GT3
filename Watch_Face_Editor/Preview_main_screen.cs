@@ -6734,7 +6734,7 @@ namespace Watch_Face_Editor
             Logger.WriteLine("* FormColor");
             //int[] bgColors = { 203, 255, 240 };
             Color color = pictureBox_Preview.BackColor;
-            ImageMagick.MagickImage image = new ImageMagick.MagickImage(bitmap);
+            ImageMagick.MagickImage image = new ImageMagick.MagickImage(ImgConvert.CopyImageToByteArray(bitmap));
             // меняем прозрачный цвет на цвет фона
             image.Opaque(ImageMagick.MagickColor.FromRgba((byte)0, (byte)0, (byte)0, (byte)0),
                 ImageMagick.MagickColor.FromRgb(color.R, color.G, color.B));
@@ -6750,8 +6750,8 @@ namespace Watch_Face_Editor
         public Bitmap ApplyMask(Bitmap inputImage, Bitmap mask)
         {
             Logger.WriteLine("* ApplyMask");
-            ImageMagick.MagickImage image = new ImageMagick.MagickImage(inputImage);
-            ImageMagick.MagickImage combineMask = new ImageMagick.MagickImage(mask);
+            ImageMagick.MagickImage image = new ImageMagick.MagickImage(ImgConvert.CopyImageToByteArray(inputImage));
+            ImageMagick.MagickImage combineMask = new ImageMagick.MagickImage(ImgConvert.CopyImageToByteArray(mask));
 
             image.Composite(combineMask, ImageMagick.CompositeOperator.In, ImageMagick.Channels.Alpha);
 
@@ -6762,7 +6762,7 @@ namespace Watch_Face_Editor
         public Bitmap ApplyWidgetMask(Bitmap inputImage, string fg_mask)
         {
             Logger.WriteLine("* ApplyWidgetMask");
-            ImageMagick.MagickImage image = new ImageMagick.MagickImage(inputImage);
+            ImageMagick.MagickImage image = new ImageMagick.MagickImage(ImgConvert.CopyImageToByteArray(inputImage));
             ImageMagick.MagickImage combineMask = new ImageMagick.MagickImage(fg_mask);
             combineMask.Level(127, 128, Channels.Alpha);
             image.Composite(combineMask, ImageMagick.CompositeOperator.Xor, Channels.Alpha);
