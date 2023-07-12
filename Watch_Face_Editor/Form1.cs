@@ -8620,6 +8620,8 @@ namespace Watch_Face_Editor
                 case "GTR 4":
                     app.platforms.Add(new Platform() { name = "Amazfit GTR 4", deviceSource = 7930112 });
                     app.platforms.Add(new Platform() { name = "Amazfit GTR 4", deviceSource = 7930113 });
+                    app.platforms.Add(new Platform() { name = "Amazfit GTR 4 Limited Edition", deviceSource = 7864576 });
+                    app.platforms.Add(new Platform() { name = "Amazfit GTR 4 Limited Edition", deviceSource = 7864577 });
 
                     app.designWidth = 466;
                     break;
