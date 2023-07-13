@@ -70,6 +70,8 @@ namespace Watch_Face_Editor
         public string WatchSkin_Amazfit_Band_7 = @"\Skin\WatchSkin_Amazfit_Band_7.json";
         public bool WatchSkin_Use = false;
 
+        public string general_config = @"\config_data\configurations.json";
+
         public string CacheFonts = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz " +
                 "АБВГДЕЁЖЗИЙКЛМНОПРСТУФХЦЧШЩЪЫЬЭЮЯабвгдеёжзийклмнопрстуфхцчшщъыьэюя  ҐЄІЇґєії " + "_-.,:;`'";
     }

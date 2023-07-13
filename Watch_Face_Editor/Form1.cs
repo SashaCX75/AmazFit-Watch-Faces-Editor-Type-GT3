@@ -50,6 +50,9 @@ namespace Watch_Face_Editor
         List<Color> colorMapList = new List<Color>(); // карта цветов для конвертации изображений
         int ImageWidth; // ширина изображения для конвертации изображений
 
+        // Доступные конфигурации
+        Dictionary<string, Classes.AmazfitPlatform> AvailableConfigurations = new Dictionary<string, Classes.AmazfitPlatform>();
+
         Form_Preview formPreview;
 
 
@@ -103,6 +106,24 @@ namespace Watch_Face_Editor
                     File.WriteAllText(Application.StartupPath + @"\Settings.json", JSON_String, Encoding.UTF8);
                 }
                 Logger.WriteLine("FormLocation = " + Properties.Settings.Default.FormLocation.ToString());
+
+                // Основные настройки прочитались, можно читать таргеты
+                if (File.Exists(Application.StartupPath + ProgramSettings.general_config))
+                {
+                    AvailableConfigurations = Classes.Configurations.LoadFromFile(Application.StartupPath + ProgramSettings.general_config);
+                    Classes.Configurations.LoadFromFile(Application.StartupPath + ProgramSettings.general_config);
+                    Logger.WriteLine("Readed configurations from:" + ProgramSettings.general_config.ToString());
+
+                    foreach (var config in AvailableConfigurations)
+                    {
+                        //Logger.WriteLine($"Configuration: {config.Key}: {config.Value}");
+                        Logger.WriteLine($"Configuration: {config.Key} - {config.Value.ToString()}");
+                    }
+                }
+                else
+                {
+                    Logger.WriteLine("Configurations file are not found in " + ProgramSettings.general_config.ToString());
+                }
 
 #if DEBUG
                 const string subkey = @"SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\";
@@ -281,42 +302,48 @@ namespace Watch_Face_Editor
             
             checkBox_WatchSkin_Use.Checked = ProgramSettings.WatchSkin_Use;
             textBox_WatchSkin_Path.Enabled = ProgramSettings.WatchSkin_Use;
-            switch (ProgramSettings.Watch_Model)
-            {
-                case "GTR 3":
-                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_3;
-                    break;
-                case "GTR 3 Pro":
-                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_3_Pro;
-                    break;
-                case "GTS 3":
-                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_3;
-                    break;
-                case "T-Rex 2":
-                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_T_Rex_2;
-                    break;
-                case "T-Rex Ultra":
-                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_T_Rex_Ultra;
-                    break;
-                case "GTR 4":
-                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_4;
-                    break;
-                case "Amazfit Band 7":
-                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_Amazfit_Band_7;
-                    break;
-                case "GTS 4 mini":
-                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_4_mini;
-                    break;
-                case "Falcon":
-                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_Falcon;
-                    break;
-                case "GTR mini":
-                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_mini;
-                    break;
-                case "GTS 4":
-                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_3;
-                    break;
-            }
+            //switch (ProgramSettings.Watch_Model)
+            //{
+            //    case "GTR 3":
+            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_3;
+            //        break;
+            //    case "GTR 3 Pro":
+            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_3_Pro;
+            //        break;
+            //    case "GTS 3":
+            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_3;
+            //        break;
+            //    case "T-Rex 2":
+            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_T_Rex_2;
+            //        break;
+            //    case "T-Rex Ultra":
+            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_T_Rex_Ultra;
+            //        break;
+            //    case "GTR 4":
+            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_4;
+            //        break;
+            //    case "Amazfit Band 7":
+            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_Amazfit_Band_7;
+            //        break;
+            //    case "GTS 4 mini":
+            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_4_mini;
+            //        break;
+            //    case "Falcon":
+            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_Falcon;
+            //        break;
+            //    case "GTR mini":
+            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_mini;
+            //        break;
+            //    case "GTS 4":
+            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_3;
+            //        break;
+            //}
+            // StartBlock :: Kartun
+            Logger.WriteLine($"* Form1_Load {ProgramSettings.Watch_Model}");
+            Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
+            Logger.WriteLine($"Loaded configuration: {currPlatform}");
+            textBox_WatchSkin_Path.Text = @"\Skin\"  + currPlatform.watchSkin ;
+            // EndBlock :: Kartun
 
             textBox_PreviewStates_Path.Text = ProgramSettings.PreviewStates_Path;
 
@@ -622,6 +649,7 @@ namespace Watch_Face_Editor
             {
                 ProgramSettings.Watch_Model = comboBox_watch_model.Text;
 
+                // TODO :: Исправить
                 if (comboBox_watch_model.Text == "GTR 3") ProgramSettings.WatchSkin_GTR_3 = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "GTR 3 Pro") ProgramSettings.WatchSkin_GTR_3_Pro = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "GTS 3") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
@@ -685,45 +713,48 @@ namespace Watch_Face_Editor
             {
                 FormNameSufix = Path.GetFileNameWithoutExtension(FileName);
             }
-            switch (ProgramSettings.Watch_Model)
-            {
-                case "GTR 3":
-                    FormName = "GTR 3 watch face editor";
-                    break;
-                case "GTR 3 Pro":
-                    FormName = "GTR 3 Pro watch face editor";
-                    break;
-                case "GTS 3":
-                    FormName = "GTS 3 watch face editor";
-                    break;
-                case "T-Rex 2":
-                    FormName = "T-Rex 2 watch face editor";
-                    break;
-                case "T-Rex Ultra":
-                    FormName = "T-Rex Ultra watch face editor";
-                    break;
-                case "GTR 4":
-                    FormName = "GTR 4 watch face editor";
-                    break;
-                case "Amazfit Band 7":
-                    FormName = "Amazfit Band 7 watch face editor";
-                    break;
-                case "GTS 4 mini":
-                    FormName = "GTS 4 mini watch face editor";
-                    break;
-                case "Falcon":
-                    FormName = "Falcon watch face editor";
-                    break;
-                case "GTR mini":
-                    FormName = "GTR mini watch face editor";
-                    break;
-                case "GTS 4":
-                    FormName = "GTS 4 watch face editor";
-                    break;
-                default:
-                    FormName = "GTR 3 watch face editor";
-                    break;
-            }
+            //switch (ProgramSettings.Watch_Model)
+            //{
+            //    case "GTR 3":
+            //        FormName = "GTR 3 watch face editor";
+            //        break;
+            //    case "GTR 3 Pro":
+            //        FormName = "GTR 3 Pro watch face editor";
+            //        break;
+            //    case "GTS 3":
+            //        FormName = "GTS 3 watch face editor";
+            //        break;
+            //    case "T-Rex 2":
+            //        FormName = "T-Rex 2 watch face editor";
+            //        break;
+            //    case "T-Rex Ultra":
+            //        FormName = "T-Rex Ultra watch face editor";
+            //        break;
+            //    case "GTR 4":
+            //        FormName = "GTR 4 watch face editor";
+            //        break;
+            //    case "Amazfit Band 7":
+            //        FormName = "Amazfit Band 7 watch face editor";
+            //        break;
+            //    case "GTS 4 mini":
+            //        FormName = "GTS 4 mini watch face editor";
+            //        break;
+            //    case "Falcon":
+            //        FormName = "Falcon watch face editor";
+            //        break;
+            //    case "GTR mini":
+            //        FormName = "GTR mini watch face editor";
+            //        break;
+            //    case "GTS 4":
+            //        FormName = "GTS 4 watch face editor";
+            //        break;
+            //    default:
+            //        FormName = "GTR 3 watch face editor";
+            //        break;
+            //}
+            // TODO :: Check
+            // FIXME :: Это должно быть в ресурсах
+            FormName = $"{ProgramSettings.Watch_Model} watch face editor";
 
             if (FormNameSufix.Length == 0)
             {
@@ -804,6 +835,7 @@ namespace Watch_Face_Editor
                     fullfilename = fullfilename.Remove(0, Application.StartupPath.Length);
                 textBox_WatchSkin_Path.Text = fullfilename;
 
+                // TODO :: Понять зачем ...
                 switch (ProgramSettings.Watch_Model)
                 {
                     case "GTR 3":
@@ -2538,6 +2570,7 @@ namespace Watch_Face_Editor
 
         private void button_New_Project_Click(object sender, EventArgs e)
         {
+            // TODO :: Delete if not used !
             Logger.WriteLine("* New_Project");
             // сохранение если файл не сохранен
             if (SaveRequest() == DialogResult.Cancel) return;
@@ -2585,97 +2618,110 @@ namespace Watch_Face_Editor
                 Watch_Face.ScreenNormal.Background = new Background();
                 Watch_Face.ScreenNormal.Background.BackgroundColor = new hmUI_widget_FILL_RECT();
 
-                switch (ProgramSettings.Watch_Model)
-                {
-                    case "GTR 3":
-                        Watch_Face.WatchFace_Info.DeviceName = "GTR3";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
-                        break;
-                    case "GTR 3 Pro":
-                        Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 480;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 480;
-                        break;
-                    case "GTS 3":
-                        Watch_Face.WatchFace_Info.DeviceName = "GTS3";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
-                        break;
-                    case "T-Rex 2":
-                        Watch_Face.WatchFace_Info.DeviceName = "T_Rex_2";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
-                        break;
-                    case "T-Rex Ultra":
-                        Watch_Face.WatchFace_Info.DeviceName = "T_Rex_Ultra";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
-                        break;
-                    case "GTR 4":
-                        Watch_Face.WatchFace_Info.DeviceName = "GTR4";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 466;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 466;
-                        break;
-                    case "Amazfit Band 7":
-                        Watch_Face.WatchFace_Info.DeviceName = "Amazfit_Band_7";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 368;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 194;
-                        break;
-                    case "GTS 4 mini":
-                        Watch_Face.WatchFace_Info.DeviceName = "GTS4_mini";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 384;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 336;
-                        break;
-                    case "Falcon":
-                        Watch_Face.WatchFace_Info.DeviceName = "Falcon";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 416;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 416;
-                        break;
-                    case "GTR mini":
-                        Watch_Face.WatchFace_Info.DeviceName = "GTR_mini";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 416;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 416;
-                        break;
-                    case "GTS 4":
-                        Watch_Face.WatchFace_Info.DeviceName = "GTS4";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
-                        break;
-                }
+                // TODO :: Check
+                //switch (ProgramSettings.Watch_Model)
+                //{
+                //    case "GTR 3":
+                //        Watch_Face.WatchFace_Info.DeviceName = "GTR3";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
+                //        break;
+                //    case "GTR 3 Pro":
+                //        Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 480;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 480;
+                //        break;
+                //    case "GTS 3":
+                //        Watch_Face.WatchFace_Info.DeviceName = "GTS3";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
+                //        break;
+                //    case "T-Rex 2":
+                //        Watch_Face.WatchFace_Info.DeviceName = "T_Rex_2";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
+                //        break;
+                //    case "T-Rex Ultra":
+                //        Watch_Face.WatchFace_Info.DeviceName = "T_Rex_Ultra";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
+                //        break;
+                //    case "GTR 4":
+                //        Watch_Face.WatchFace_Info.DeviceName = "GTR4";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 466;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 466;
+                //        break;
+                //    case "Amazfit Band 7":
+                //        Watch_Face.WatchFace_Info.DeviceName = "Amazfit_Band_7";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 368;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 194;
+                //        break;
+                //    case "GTS 4 mini":
+                //        Watch_Face.WatchFace_Info.DeviceName = "GTS4_mini";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 384;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 336;
+                //        break;
+                //    case "Falcon":
+                //        Watch_Face.WatchFace_Info.DeviceName = "Falcon";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 416;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 416;
+                //        break;
+                //    case "GTR mini":
+                //        Watch_Face.WatchFace_Info.DeviceName = "GTR_mini";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 416;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 416;
+                //        break;
+                //    case "GTS 4":
+                //        Watch_Face.WatchFace_Info.DeviceName = "GTS4";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
+                //        break;
+                //}
+
+                // Startblock : Kartun
+                Logger.WriteLine($"Starting new project for {ProgramSettings.Watch_Model}");
+                Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
+                Logger.WriteLine($"Loaded configuration: {currPlatform}");
+                Watch_Face.WatchFace_Info.DeviceName = currPlatform.int_id;
+                Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                Watch_Face.ScreenNormal.Background.BackgroundColor.h = currPlatform.background.h;
+                Watch_Face.ScreenNormal.Background.BackgroundColor.w = currPlatform.background.w;
+                // Endblock : Kartun
 
                 string JSON_String = JsonConvert.SerializeObject(Watch_Face, Formatting.Indented, new JsonSerializerSettings
                 {
@@ -2700,7 +2746,7 @@ namespace Watch_Face_Editor
 
         private void button_New_Project_Click_New(object sender, EventArgs e)
         {
-            Logger.WriteLine("* New_Project");
+            Logger.WriteLine("* New_Project NEW!!!");
             // сохранение если файл не сохранен
             if (SaveRequest() == DialogResult.Cancel) return;
 
@@ -2751,97 +2797,109 @@ namespace Watch_Face_Editor
                 Watch_Face.ScreenNormal.Background = new Background();
                 Watch_Face.ScreenNormal.Background.BackgroundColor = new hmUI_widget_FILL_RECT();
 
-                switch (ProgramSettings.Watch_Model)
-                {
-                    case "GTR 3":
-                        Watch_Face.WatchFace_Info.DeviceName = "GTR3";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
-                        break;
-                    case "GTR 3 Pro":
-                        Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 480;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 480;
-                        break;
-                    case "GTS 3":
-                        Watch_Face.WatchFace_Info.DeviceName = "GTS3";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
-                        break;
-                    case "T-Rex 2":
-                        Watch_Face.WatchFace_Info.DeviceName = "T_Rex_2";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
-                        break;
-                    case "T-Rex Ultra":
-                        Watch_Face.WatchFace_Info.DeviceName = "T_Rex_Ultra";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
-                        break;
-                    case "GTR 4":
-                        Watch_Face.WatchFace_Info.DeviceName = "GTR4";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 466;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 466;
-                        break;
-                    case "Amazfit Band 7":
-                        Watch_Face.WatchFace_Info.DeviceName = "Amazfit_Band_7";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 368;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 194;
-                        break;
-                    case "GTS 4 mini":
-                        Watch_Face.WatchFace_Info.DeviceName = "GTS4_mini";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 384;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 336;
-                        break;
-                    case "Falcon":
-                        Watch_Face.WatchFace_Info.DeviceName = "Falcon";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 416;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 416;
-                        break;
-                    case "GTR mini":
-                        Watch_Face.WatchFace_Info.DeviceName = "GTR_mini";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 416;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 416;
-                        break;
-                    case "GTS 4":
-                        Watch_Face.WatchFace_Info.DeviceName = "GTS4";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
-                        break;
-                }
+                //switch (ProgramSettings.Watch_Model)
+                //{
+                //    case "GTR 3":
+                //        Watch_Face.WatchFace_Info.DeviceName = "GTR3";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
+                //        break;
+                //    case "GTR 3 Pro":
+                //        Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 480;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 480;
+                //        break;
+                //    case "GTS 3":
+                //        Watch_Face.WatchFace_Info.DeviceName = "GTS3";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
+                //        break;
+                //    case "T-Rex 2":
+                //        Watch_Face.WatchFace_Info.DeviceName = "T_Rex_2";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
+                //        break;
+                //    case "T-Rex Ultra":
+                //        Watch_Face.WatchFace_Info.DeviceName = "T_Rex_Ultra";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
+                //        break;
+                //    case "GTR 4":
+                //        Watch_Face.WatchFace_Info.DeviceName = "GTR4";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 466;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 466;
+                //        break;
+                //    case "Amazfit Band 7":
+                //        Watch_Face.WatchFace_Info.DeviceName = "Amazfit_Band_7";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 368;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 194;
+                //        break;
+                //    case "GTS 4 mini":
+                //        Watch_Face.WatchFace_Info.DeviceName = "GTS4_mini";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 384;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 336;
+                //        break;
+                //    case "Falcon":
+                //        Watch_Face.WatchFace_Info.DeviceName = "Falcon";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 416;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 416;
+                //        break;
+                //    case "GTR mini":
+                //        Watch_Face.WatchFace_Info.DeviceName = "GTR_mini";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 416;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 416;
+                //        break;
+                //    case "GTS 4":
+                //        Watch_Face.WatchFace_Info.DeviceName = "GTS4";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
+                //        break;
+                //}
+
+                // StartBlock :: Kartun
+                Logger.WriteLine($"Starting new project for {ProgramSettings.Watch_Model}");
+                Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
+                Logger.WriteLine($"Loaded configuration: {currPlatform}");
+                Watch_Face.WatchFace_Info.DeviceName = currPlatform.int_id;
+                Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                Watch_Face.ScreenNormal.Background.BackgroundColor.h = currPlatform.background.h;
+                Watch_Face.ScreenNormal.Background.BackgroundColor.w = currPlatform.background.w;
+                // EndBlock :: Kartun
 
                 string JSON_String = JsonConvert.SerializeObject(Watch_Face, Formatting.Indented, new JsonSerializerSettings
                 {
@@ -2982,29 +3040,35 @@ namespace Watch_Face_Editor
             #region BackgroundImage
             Logger.WriteLine("BackgroundImage");
             Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
-            switch (ProgramSettings.Watch_Model)
-            {
-                case "GTR 3 Pro":
-                    bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
-                    break;
-                case "GTS 3":
-                case "GTS 4":
-                    bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
-                    break;
-                case "GTR 4":
-                    bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
-                    break;
-                case "Amazfit Band 7":
-                    bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
-                    break;
-                case "GTS 4 mini":
-                    bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
-                    break;
-                case "Falcon":
-                case "GTR mini":
-                    bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
-                    break;
-            }
+            //switch (ProgramSettings.Watch_Model)
+            //{
+            //    case "GTR 3 Pro":
+            //        bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
+            //        break;
+            //    case "GTS 3":
+            //    case "GTS 4":
+            //        bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
+            //        break;
+            //    case "GTR 4":
+            //        bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
+            //        break;
+            //    case "Amazfit Band 7":
+            //        bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
+            //        break;
+            //    case "GTS 4 mini":
+            //        bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
+            //        break;
+            //    case "Falcon":
+            //    case "GTR mini":
+            //        bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
+            //        break;
+            //}
+            // StartBlock :: Kartun
+            Logger.WriteLine($"* PreviewImage for {ProgramSettings.Watch_Model}");
+            Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
+            Logger.WriteLine($"Loaded configuration: {currPlatform}");
+            bitmap = new Bitmap(Convert.ToInt32(currPlatform.background.w), Convert.ToInt32(currPlatform.background.h), PixelFormat.Format32bppArgb);
+            // EndBlock :: Kartun
             Graphics gPanel = Graphics.FromImage(bitmap);
             #endregion
 
@@ -3044,6 +3108,8 @@ namespace Watch_Face_Editor
         {
             bool showEeditMode = false;
             int edit_mode = 0;
+
+            Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
             if ((formPreview == null) || (!formPreview.Visible))
             {
                 formPreview = new Form_Preview(currentDPI);
@@ -3092,29 +3158,35 @@ namespace Watch_Face_Editor
 
                     #region BackgroundImage 
                     Bitmap bitmapPreviewResize = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
-                    switch (ProgramSettings.Watch_Model)
-                    {
-                        case "GTR 3 Pro":
-                            bitmapPreviewResize = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
-                            break;
-                        case "GTS 3":
-                        case "GTS 4":
-                            bitmapPreviewResize = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
-                            break;
-                        case "GTR 4":
-                            bitmapPreviewResize = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
-                            break;
-                        case "Amazfit Band 7":
-                            bitmapPreviewResize = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
-                            break;
-                        case "GTS 4 mini":
-                            bitmapPreviewResize = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
-                            break;
-                        case "Falcon":
-                        case "GTR mini":
-                            bitmapPreviewResize = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
-                            break;
-                    }
+                    //switch (ProgramSettings.Watch_Model)
+                    //{
+                    //    case "GTR 3 Pro":
+                    //        bitmapPreviewResize = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
+                    //        break;
+                    //    case "GTS 3":
+                    //    case "GTS 4":
+                    //        bitmapPreviewResize = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
+                    //        break;
+                    //    case "GTR 4":
+                    //        bitmapPreviewResize = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
+                    //        break;
+                    //    case "Amazfit Band 7":
+                    //        bitmapPreviewResize = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
+                    //        break;
+                    //    case "GTS 4 mini":
+                    //        bitmapPreviewResize = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
+                    //        break;
+                    //    case "Falcon":
+                    //    case "GTR mini":
+                    //        bitmapPreviewResize = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
+                    //        break;
+                    //}
+                    // StartBlock :: Kartun
+                    Logger.WriteLine($"BackgroundImage for {ProgramSettings.Watch_Model}");
+                    //Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
+                    Logger.WriteLine($"Loaded configuration: {currPlatform}");
+                    bitmapPreviewResize = new Bitmap(Convert.ToInt32(currPlatform.background.w), Convert.ToInt32(currPlatform.background.h), PixelFormat.Format32bppArgb);
+                    // EndBlock :: Kartun
                     Graphics gPanelPreviewResize = Graphics.FromImage(bitmapPreviewResize);
                     #endregion
 
@@ -3172,29 +3244,38 @@ namespace Watch_Face_Editor
 
             #region BackgroundImage 
             Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
-            switch (ProgramSettings.Watch_Model)
-            {
-                case "GTR 3 Pro":
-                    bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
-                    break;
-                case "GTS 3":
-                case "GTS 4":
-                    bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
-                    break;
-                case "GTR 4":
-                    bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
-                    break;
-                case "Amazfit Band 7":
-                    bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
-                    break;
-                case "GTS 4 mini":
-                    bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
-                    break;
-                case "Falcon":
-                case "GTR mini":
-                    bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
-                    break;
-            }
+            //switch (ProgramSettings.Watch_Model)
+            //{
+            //    case "GTR 3 Pro":
+            //        bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
+            //        break;
+            //    case "GTS 3":
+            //    case "GTS 4":
+            //        bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
+            //        break;
+            //    case "GTR 4":
+            //        bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
+            //        break;
+            //    case "Amazfit Band 7":
+            //        bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
+            //        break;
+            //    case "GTS 4 mini":
+            //        bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
+            //        break;
+            //    case "Falcon":
+            //    case "GTR mini":
+            //        bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
+            //        break;
+            //}
+
+            // StartBlock :: Kartun
+            Logger.WriteLine($"BackgroundImage for {ProgramSettings.Watch_Model}");
+            //Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
+            Logger.WriteLine($"Loaded configuration: {currPlatform}");
+            bitmap = new Bitmap(Convert.ToInt32(currPlatform.background.w), Convert.ToInt32(currPlatform.background.h), PixelFormat.Format32bppArgb);
+            // EndBlock :: Kartun
+
+
             Graphics gPanel = Graphics.FromImage(bitmap);
             #endregion
 
@@ -3774,67 +3855,82 @@ namespace Watch_Face_Editor
         {
             if (!PreviewView) return;
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
+            Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
+
+            // TODO :: Merge blocks !!!
             if (radioButton_ScreenNormal.Checked)
             {
                 if (Watch_Face.ScreenNormal == null) Watch_Face.ScreenNormal = new ScreenNormal();
                 if(Watch_Face.ScreenNormal.Background != null) return;
                 Watch_Face.ScreenNormal.Background = new Background();
                 Watch_Face.ScreenNormal.Background.BackgroundColor = new hmUI_widget_FILL_RECT();
-                switch (ProgramSettings.Watch_Model)
-                {
-                    case "GTR 3":
-                    case "T-Rex 2":
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
-                        break;
-                    case "GTR 3 Pro":
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 480;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 480;
-                        break;
-                    case "GTS 3":
-                    case "GTS 4":
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
-                        break;
-                    case "GTR 4":
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 466;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 466;
-                        break;
-                    case "Amazfit Band 7":
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 368;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 194;
-                        break;
-                    case "GTS 4 mini":
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 384;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 336;
-                        break;
-                    case "Falcon":
-                    case "GTR mini":
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 416;
-                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 416;
-                        break;
-                }
+                //switch (ProgramSettings.Watch_Model)
+                //{
+                //    case "GTR 3":
+                //    case "T-Rex 2":
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
+                //        break;
+                //    case "GTR 3 Pro":
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 480;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 480;
+                //        break;
+                //    case "GTS 3":
+                //    case "GTS 4":
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
+                //        break;
+                //    case "GTR 4":
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 466;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 466;
+                //        break;
+                //    case "Amazfit Band 7":
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 368;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 194;
+                //        break;
+                //    case "GTS 4 mini":
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 384;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 336;
+                //        break;
+                //    case "Falcon":
+                //    case "GTR mini":
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 416;
+                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 416;
+                //        break;
+                //}
+                // StartBlock :: Kartun
+                Logger.WriteLine($"* AddBackground for {ProgramSettings.Watch_Model}");
+
+                Logger.WriteLine($"Loaded configuration: {currPlatform}");
+                Watch_Face.WatchFace_Info.DeviceName = currPlatform.int_id;
+                Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                Watch_Face.ScreenNormal.Background.BackgroundColor.h = currPlatform.background.h;
+                Watch_Face.ScreenNormal.Background.BackgroundColor.w = currPlatform.background.w;
+                // EndBlock :: Kartun
+
                 Watch_Face.ScreenNormal.Background.visible = true;
                 JSON_Modified = true;
             }
@@ -3844,61 +3940,72 @@ namespace Watch_Face_Editor
                 if (Watch_Face.ScreenAOD.Background != null) return;
                 Watch_Face.ScreenAOD.Background = new Background();
                 Watch_Face.ScreenAOD.Background.BackgroundColor = new hmUI_widget_FILL_RECT();
-                switch (ProgramSettings.Watch_Model)
-                {
-                    case "GTR 3":
-                    case "T-Rex 2":
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.h = 454;
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.w = 454;
-                        break;
-                    case "GTR 3 Pro":
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.h = 480;
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.w = 480;
-                        break;
-                    case "GTS 3":
-                    case "GTS 4":
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.h = 450;
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.w = 390;
-                        break;
-                    case "GTR 4":
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.h = 466;
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.w = 466;
-                        break;
-                    case "Amazfit Band 7":
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.h = 368;
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.w = 194;
-                        break;
-                    case "GTS 4 mini":
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.h = 384;
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.w = 336;
-                        break;
-                    case "Falcon":
-                    case "GTR mini":
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.x = 0;
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.h = 416;
-                        Watch_Face.ScreenAOD.Background.BackgroundColor.w = 416;
-                        break;
-                }
+                //switch (ProgramSettings.Watch_Model)
+                //{
+                //    case "GTR 3":
+                //    case "T-Rex 2":
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.h = 454;
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.w = 454;
+                //        break;
+                //    case "GTR 3 Pro":
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.h = 480;
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.w = 480;
+                //        break;
+                //    case "GTS 3":
+                //    case "GTS 4":
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.h = 450;
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.w = 390;
+                //        break;
+                //    case "GTR 4":
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.h = 466;
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.w = 466;
+                //        break;
+                //    case "Amazfit Band 7":
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.h = 368;
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.w = 194;
+                //        break;
+                //    case "GTS 4 mini":
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.h = 384;
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.w = 336;
+                //        break;
+                //    case "Falcon":
+                //    case "GTR mini":
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.x = 0;
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.h = 416;
+                //        Watch_Face.ScreenAOD.Background.BackgroundColor.w = 416;
+                //        break;
+                //}
+                // StartBlock :: Kartun
+                Logger.WriteLine($"* AddBackground for {ProgramSettings.Watch_Model}");
+
+                Logger.WriteLine($"Loaded configuration: {currPlatform}");
+                Watch_Face.WatchFace_Info.DeviceName = currPlatform.int_id;
+                Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
+                Watch_Face.ScreenAOD.Background.BackgroundColor.x = 0;
+                Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
+                Watch_Face.ScreenAOD.Background.BackgroundColor.h = currPlatform.background.h;
+                Watch_Face.ScreenAOD.Background.BackgroundColor.w = currPlatform.background.w;
+                // EndBlock :: Kartun
                 Watch_Face.ScreenAOD.Background.visible = true;
                 JSON_Modified = true;
             }
@@ -6655,6 +6762,7 @@ namespace Watch_Face_Editor
             {
                 ProgramSettings.Watch_Model = comboBox_watch_model.Text;
 
+                // TODO :: Понять зачем
                 if (comboBox_watch_model.Text == "GTR 3") ProgramSettings.WatchSkin_GTR_3 = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "GTR 3 Pro") ProgramSettings.WatchSkin_GTR_3_Pro = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "GTS 3") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
@@ -6718,6 +6826,7 @@ namespace Watch_Face_Editor
             {
                 ProgramSettings.Watch_Model = comboBox_watch_model.Text;
 
+                // TODO :: Понять зачем
                 if (comboBox_watch_model.Text == "GTR 3") ProgramSettings.WatchSkin_GTR_3 = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "GTR 3 Pro") ProgramSettings.WatchSkin_GTR_3_Pro = textBox_WatchSkin_Path.Text;
                 if (comboBox_watch_model.Text == "GTS 3") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
@@ -7951,34 +8060,40 @@ namespace Watch_Face_Editor
         {
             if (comboBox_watch_model.SelectedIndex == -1) return;
             ProgramSettings.Watch_Model = comboBox_watch_model.Text;
-            switch (ProgramSettings.Watch_Model)
-            {
-                case "GTR 3":
-                case "T-Rex 2":
-                case "T-Rex Ultra":
-                    pictureBox_Preview.Size = new Size((int)(230 * currentDPI), (int)(230 * currentDPI));
-                    break;
-                case "GTR 3 Pro":
-                    pictureBox_Preview.Size = new Size((int)(230 * currentDPI), (int)(230 * currentDPI));
-                    break;
-                case "GTS 3":
-                case "GTS 4":
-                    pictureBox_Preview.Size = new Size((int)(198 * currentDPI), (int)(228 * currentDPI));
-                    break;
-                case "GTR 4":
-                    pictureBox_Preview.Size = new Size((int)(230 * currentDPI), (int)(230 * currentDPI));
-                    break;
-                case "Amazfit Band 7":
-                    pictureBox_Preview.Size = new Size((int)(100 * currentDPI), (int)(187 * currentDPI));
-                    break;
-                case "GTS 4 mini":
-                    pictureBox_Preview.Size = new Size((int)(171 * currentDPI), (int)(195 * currentDPI));
-                    break;
-                case "Falcon":
-                case "GTR mini":
-                    pictureBox_Preview.Size = new Size((int)(211 * currentDPI), (int)(211 * currentDPI));
-                    break;
-            }
+            //switch (ProgramSettings.Watch_Model)
+            //{
+            //    case "GTR 3":
+            //    case "T-Rex 2":
+            //    case "T-Rex Ultra":
+            //        pictureBox_Preview.Size = new Size((int)(230 * currentDPI), (int)(230 * currentDPI));
+            //        break;
+            //    case "GTR 3 Pro":
+            //        pictureBox_Preview.Size = new Size((int)(230 * currentDPI), (int)(230 * currentDPI));
+            //        break;
+            //    case "GTS 3":
+            //    case "GTS 4":
+            //        pictureBox_Preview.Size = new Size((int)(198 * currentDPI), (int)(228 * currentDPI));
+            //        break;
+            //    case "GTR 4":
+            //        pictureBox_Preview.Size = new Size((int)(230 * currentDPI), (int)(230 * currentDPI));
+            //        break;
+            //    case "Amazfit Band 7":
+            //        pictureBox_Preview.Size = new Size((int)(100 * currentDPI), (int)(187 * currentDPI));
+            //        break;
+            //    case "GTS 4 mini":
+            //        pictureBox_Preview.Size = new Size((int)(171 * currentDPI), (int)(195 * currentDPI));
+            //        break;
+            //    case "Falcon":
+            //    case "GTR mini":
+            //        pictureBox_Preview.Size = new Size((int)(211 * currentDPI), (int)(211 * currentDPI));
+            //        break;
+            //}
+            // StartBlock :: Kartun
+            Logger.WriteLine($"* comboBox_watch_model_SelectedIndexChanged : {ProgramSettings.Watch_Model}");
+            Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
+            Logger.WriteLine($"Loaded configuration: {currPlatform}");
+            pictureBox_Preview.Size = new Size((int)(currPlatform.scaling.w * currentDPI), (int)(currPlatform.scaling.h * currentDPI));
+            // EndBlock :: Kartun
 
             // изменяем размер панели для предпросмотра если она не влазит
             if (pictureBox_Preview.Top + pictureBox_Preview.Height > label_watch_model.Top)
@@ -8003,57 +8118,396 @@ namespace Watch_Face_Editor
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
 
-            switch (ProgramSettings.Watch_Model)
-            {
-                case "GTR 3":
-                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_3;
+            // TODO :: Finish !!!
+            //switch (ProgramSettings.Watch_Model)
+            //{
+            //    case "GTR 3":
+            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_3;
 
-                    Watch_Face.WatchFace_Info.DeviceName = "GTR3";
-                    if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
-                    {
-                        if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
-                        {
-                            Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
-                            Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
-                        }
-                        if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
-                        {
-                            Watch_Face.ScreenNormal.Background.BackgroundImage.w = 454;
-                            Watch_Face.ScreenNormal.Background.BackgroundImage.h = 454;
-                        }
-                    }
+            ////        Watch_Face.WatchFace_Info.DeviceName = "GTR3";
+            ////        if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
+            ////        {
+            ////            if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
+            ////            {
+            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
+            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
+            ////            }
+            ////            if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
+            ////            {
+            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.w = 454;
+            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.h = 454;
+            ////            }
+            ////        }
 
-                    if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
-                    {
-                        if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
-                        {
-                            Watch_Face.ScreenAOD.Background.BackgroundColor.w = 454;
-                            Watch_Face.ScreenAOD.Background.BackgroundColor.h = 454;
-                        }
-                        if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
-                        {
-                            Watch_Face.ScreenAOD.Background.BackgroundImage.w = 454;
-                            Watch_Face.ScreenAOD.Background.BackgroundImage.h = 454;
-                        }
-                    }
-                    break;
-                case "GTR 3 Pro":
-                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_3_Pro;
+            ////        if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
+            ////        {
+            ////            if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
+            ////            {
+            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.w = 454;
+            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.h = 454;
+            ////            }
+            ////            if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
+            ////            {
+            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.w = 454;
+            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.h = 454;
+            ////            }
+            ////        }
+            //        break;
+            //    case "GTR 3 Pro":
+            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_3_Pro;
+
+            ////        if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
+            ////        Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
+
+            ////        if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
+            ////        {
+            ////            if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
+            ////            {
+            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.w = 480;
+            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.h = 480;
+            ////            }
+            ////            if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
+            ////            {
+            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.w = 480;
+            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.h = 480;
+            ////            }
+            ////        }
+
+            ////        if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
+            ////        {
+            ////            if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
+            ////            {
+            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.w = 480;
+            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.h = 480;
+            ////            }
+            ////            if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
+            ////            {
+            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.w = 480;
+            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.h = 480;
+            ////            }
+            ////        }
+            //        break;
+            //    case "GTS 3":
+            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_3;
+
+            ////        if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
+            ////        Watch_Face.WatchFace_Info.DeviceName = "GTS3";
+
+            ////        if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
+            ////        {
+            ////            if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
+            ////            {
+            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
+            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
+            ////            }
+            ////            if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
+            ////            {
+            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.w = 390;
+            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.h = 450;
+            ////            }
+            ////        }
+
+            ////        if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
+            ////        {
+            ////            if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
+            ////            {
+            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.w = 390;
+            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.h = 450;
+            ////            }
+            ////            if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
+            ////            {
+            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.w = 390;
+            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.h = 450;
+            ////            }
+            ////        }
+            //        break;
+            //    case "T-Rex 2":
+            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_T_Rex_2;
+
+            ////        Watch_Face.WatchFace_Info.DeviceName = "T_Rex_2";
+            ////        if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
+            ////        {
+            ////            if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
+            ////            {
+            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
+            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
+            ////            }
+            ////            if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
+            ////            {
+            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.w = 454;
+            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.h = 454;
+            ////            }
+            ////        }
+
+            ////        if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
+            ////        {
+            ////            if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
+            ////            {
+            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.w = 454;
+            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.h = 454;
+            ////            }
+            ////            if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
+            ////            {
+            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.w = 454;
+            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.h = 454;
+            ////            }
+            ////        }
+            //        break;
+            //    case "T-Rex Ultra":
+            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_T_Rex_Ultra;
+
+            ////        Watch_Face.WatchFace_Info.DeviceName = "T_Rex_Ultra";
+            ////        if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
+            ////        {
+            ////            if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
+            ////            {
+            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
+            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
+            ////            }
+            ////            if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
+            ////            {
+            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.w = 454;
+            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.h = 454;
+            ////            }
+            ////        }
+
+            ////        if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
+            ////        {
+            ////            if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
+            ////            {
+            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.w = 454;
+            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.h = 454;
+            ////            }
+            ////            if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
+            ////            {
+            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.w = 454;
+            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.h = 454;
+            ////            }
+            ////        }
+            //        break;
+            //    case "GTR 4":
+            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_4;
+
+            ////        Watch_Face.WatchFace_Info.DeviceName = "GTR4";
+            ////        if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
+            ////        {
+            ////            if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
+            ////            {
+            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.w = 466;
+            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.h = 466;
+            ////            }
+            ////            if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
+            ////            {
+            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.w = 466;
+            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.h = 466;
+            ////            }
+            ////        }
+
+            ////        if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
+            ////        {
+            ////            if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
+            ////            {
+            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.w = 466;
+            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.h = 466;
+            ////            }
+            ////            if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
+            ////            {
+            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.w = 466;
+            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.h = 466;
+            ////            }
+            ////        }
+            //        break;
+            //    case "Amazfit Band 7":
+            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_Amazfit_Band_7;
+
+            ////        if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
+            ////        Watch_Face.WatchFace_Info.DeviceName = "Amazfit_Band_7";
+
+            ////        if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
+            ////        {
+            ////            if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
+            ////            {
+            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.w = 194;
+            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.h = 368;
+            ////            }
+            ////            if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
+            ////            {
+            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.w = 194;
+            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.h = 368;
+            ////            }
+            ////        }
+
+            ////        if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
+            ////        {
+            ////            if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
+            ////            {
+            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.w = 194;
+            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.h = 368;
+            ////            }
+            ////            if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
+            ////            {
+            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.w = 194;
+            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.h = 368;
+            ////            }
+            ////        }
+            //        break;
+            //    case "GTS 4 mini":
+            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_4_mini;
+
+            ////        if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
+            ////        Watch_Face.WatchFace_Info.DeviceName = "GTS4_mini";
+
+            ////        if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
+            ////        {
+            ////            if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
+            ////            {
+            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.w = 336;
+            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.h = 384;
+            ////            }
+            ////            if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
+            ////            {
+            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.w = 336;
+            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.h = 384;
+            ////            }
+            ////        }
+
+            ////        if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
+            ////        {
+            ////            if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
+            ////            {
+            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.w = 336;
+            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.h = 384;
+            ////            }
+            ////            if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
+            ////            {
+            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.w = 336;
+            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.h = 384;
+            ////            }
+            ////        }
+            //        break;
+            //    case "Falcon":
+            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_Falcon;
+
+            ////        if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
+            ////        Watch_Face.WatchFace_Info.DeviceName = "Falcon";
+
+            ////        if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
+            ////        {
+            ////            if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
+            ////            {
+            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.w = 416;
+            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.h = 416;
+            ////            }
+            ////            if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
+            ////            {
+            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.w = 416;
+            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.h = 416;
+            ////            }
+            ////        }
+
+            ////        if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
+            ////        {
+            ////            if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
+            ////            {
+            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.w = 416;
+            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.h = 416;
+            ////            }
+            ////            if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
+            ////            {
+            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.w = 416;
+            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.h = 416;
+            ////            }
+            ////        }
+            //        break;
+            //    case "GTR mini":
+            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_mini;
+
+            ////        if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
+            ////        Watch_Face.WatchFace_Info.DeviceName = "GTR_mini";
+
+            ////        if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
+            ////        {
+            ////            if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
+            ////            {
+            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.w = 416;
+            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.h = 416;
+            ////            }
+            ////            if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
+            ////            {
+            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.w = 416;
+            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.h = 416;
+            ////            }
+            ////        }
+
+            ////        if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
+            ////        {
+            ////            if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
+            ////            {
+            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.w = 416;
+            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.h = 416;
+            ////            }
+            ////            if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
+            ////            {
+            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.w = 416;
+            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.h = 416;
+            ////            }
+            ////        }
+            //        break;
+            //    case "GTS 4":
+            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_3;
+
+            ////        if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
+            ////        Watch_Face.WatchFace_Info.DeviceName = "GTS4";
+
+            ////        if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
+            ////        {
+            ////            if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
+            ////            {
+            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
+            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
+            ////            }
+            ////            if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
+            ////            {
+            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.w = 390;
+            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.h = 450;
+            ////            }
+            ////        }
+
+            ////        if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
+            ////        {
+            ////            if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
+            ////            {
+            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.w = 390;
+            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.h = 450;
+            ////            }
+            ////            if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
+            ////            {
+            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.w = 390;
+            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.h = 450;
+            ////            }
+            ////        }
+            //        break;
+            //}
+
+            // Startblock :: Kartun
+            // TODO :: Это надо доделать
+            //textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_3;
+                    textBox_WatchSkin_Path.Text = @"\Skin\" + currPlatform.watchSkin;
 
                     if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
-                    Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
+                    Watch_Face.WatchFace_Info.DeviceName = currPlatform.int_id;
 
                     if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
                     {
                         if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
                         {
-                            Watch_Face.ScreenNormal.Background.BackgroundColor.w = 480;
-                            Watch_Face.ScreenNormal.Background.BackgroundColor.h = 480;
+                            Watch_Face.ScreenNormal.Background.BackgroundColor.w = currPlatform.background.w;
+                            Watch_Face.ScreenNormal.Background.BackgroundColor.h = currPlatform.background.h;
                         }
                         if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
                         {
-                            Watch_Face.ScreenNormal.Background.BackgroundImage.w = 480;
-                            Watch_Face.ScreenNormal.Background.BackgroundImage.h = 480;
+                            Watch_Face.ScreenNormal.Background.BackgroundImage.w = currPlatform.background.w;
+                            Watch_Face.ScreenNormal.Background.BackgroundImage.h = currPlatform.background.h;
                         }
                     }
 
@@ -8061,317 +8515,16 @@ namespace Watch_Face_Editor
                     {
                         if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
                         {
-                            Watch_Face.ScreenAOD.Background.BackgroundColor.w = 480;
-                            Watch_Face.ScreenAOD.Background.BackgroundColor.h = 480;
+                            Watch_Face.ScreenAOD.Background.BackgroundColor.w = currPlatform.background.w;
+                            Watch_Face.ScreenAOD.Background.BackgroundColor.h = currPlatform.background.h;
                         }
                         if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
                         {
-                            Watch_Face.ScreenAOD.Background.BackgroundImage.w = 480;
-                            Watch_Face.ScreenAOD.Background.BackgroundImage.h = 480;
+                            Watch_Face.ScreenAOD.Background.BackgroundImage.w = currPlatform.background.w;
+                            Watch_Face.ScreenAOD.Background.BackgroundImage.h = currPlatform.background.h;
                         }
                     }
-                    break;
-                case "GTS 3":
-                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_3;
-
-                    if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
-                    Watch_Face.WatchFace_Info.DeviceName = "GTS3";
-
-                    if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
-                    {
-                        if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
-                        {
-                            Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
-                            Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
-                        }
-                        if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
-                        {
-                            Watch_Face.ScreenNormal.Background.BackgroundImage.w = 390;
-                            Watch_Face.ScreenNormal.Background.BackgroundImage.h = 450;
-                        }
-                    }
-
-                    if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
-                    {
-                        if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
-                        {
-                            Watch_Face.ScreenAOD.Background.BackgroundColor.w = 390;
-                            Watch_Face.ScreenAOD.Background.BackgroundColor.h = 450;
-                        }
-                        if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
-                        {
-                            Watch_Face.ScreenAOD.Background.BackgroundImage.w = 390;
-                            Watch_Face.ScreenAOD.Background.BackgroundImage.h = 450;
-                        }
-                    }
-                    break;
-                case "T-Rex 2":
-                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_T_Rex_2;
-
-                    Watch_Face.WatchFace_Info.DeviceName = "T_Rex_2";
-                    if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
-                    {
-                        if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
-                        {
-                            Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
-                            Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
-                        }
-                        if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
-                        {
-                            Watch_Face.ScreenNormal.Background.BackgroundImage.w = 454;
-                            Watch_Face.ScreenNormal.Background.BackgroundImage.h = 454;
-                        }
-                    }
-
-                    if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
-                    {
-                        if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
-                        {
-                            Watch_Face.ScreenAOD.Background.BackgroundColor.w = 454;
-                            Watch_Face.ScreenAOD.Background.BackgroundColor.h = 454;
-                        }
-                        if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
-                        {
-                            Watch_Face.ScreenAOD.Background.BackgroundImage.w = 454;
-                            Watch_Face.ScreenAOD.Background.BackgroundImage.h = 454;
-                        }
-                    }
-                    break;
-                case "T-Rex Ultra":
-                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_T_Rex_Ultra;
-
-                    Watch_Face.WatchFace_Info.DeviceName = "T_Rex_Ultra";
-                    if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
-                    {
-                        if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
-                        {
-                            Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
-                            Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
-                        }
-                        if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
-                        {
-                            Watch_Face.ScreenNormal.Background.BackgroundImage.w = 454;
-                            Watch_Face.ScreenNormal.Background.BackgroundImage.h = 454;
-                        }
-                    }
-
-                    if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
-                    {
-                        if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
-                        {
-                            Watch_Face.ScreenAOD.Background.BackgroundColor.w = 454;
-                            Watch_Face.ScreenAOD.Background.BackgroundColor.h = 454;
-                        }
-                        if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
-                        {
-                            Watch_Face.ScreenAOD.Background.BackgroundImage.w = 454;
-                            Watch_Face.ScreenAOD.Background.BackgroundImage.h = 454;
-                        }
-                    }
-                    break;
-                case "GTR 4":
-                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_4;
-
-                    Watch_Face.WatchFace_Info.DeviceName = "GTR4";
-                    if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
-                    {
-                        if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
-                        {
-                            Watch_Face.ScreenNormal.Background.BackgroundColor.w = 466;
-                            Watch_Face.ScreenNormal.Background.BackgroundColor.h = 466;
-                        }
-                        if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
-                        {
-                            Watch_Face.ScreenNormal.Background.BackgroundImage.w = 466;
-                            Watch_Face.ScreenNormal.Background.BackgroundImage.h = 466;
-                        }
-                    }
-
-                    if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
-                    {
-                        if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
-                        {
-                            Watch_Face.ScreenAOD.Background.BackgroundColor.w = 466;
-                            Watch_Face.ScreenAOD.Background.BackgroundColor.h = 466;
-                        }
-                        if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
-                        {
-                            Watch_Face.ScreenAOD.Background.BackgroundImage.w = 466;
-                            Watch_Face.ScreenAOD.Background.BackgroundImage.h = 466;
-                        }
-                    }
-                    break;
-                case "Amazfit Band 7":
-                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_Amazfit_Band_7;
-
-                    if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
-                    Watch_Face.WatchFace_Info.DeviceName = "Amazfit_Band_7";
-
-                    if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
-                    {
-                        if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
-                        {
-                            Watch_Face.ScreenNormal.Background.BackgroundColor.w = 194;
-                            Watch_Face.ScreenNormal.Background.BackgroundColor.h = 368;
-                        }
-                        if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
-                        {
-                            Watch_Face.ScreenNormal.Background.BackgroundImage.w = 194;
-                            Watch_Face.ScreenNormal.Background.BackgroundImage.h = 368;
-                        }
-                    }
-
-                    if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
-                    {
-                        if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
-                        {
-                            Watch_Face.ScreenAOD.Background.BackgroundColor.w = 194;
-                            Watch_Face.ScreenAOD.Background.BackgroundColor.h = 368;
-                        }
-                        if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
-                        {
-                            Watch_Face.ScreenAOD.Background.BackgroundImage.w = 194;
-                            Watch_Face.ScreenAOD.Background.BackgroundImage.h = 368;
-                        }
-                    }
-                    break;
-                case "GTS 4 mini":
-                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_4_mini;
-
-                    if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
-                    Watch_Face.WatchFace_Info.DeviceName = "GTS4_mini";
-
-                    if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
-                    {
-                        if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
-                        {
-                            Watch_Face.ScreenNormal.Background.BackgroundColor.w = 336;
-                            Watch_Face.ScreenNormal.Background.BackgroundColor.h = 384;
-                        }
-                        if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
-                        {
-                            Watch_Face.ScreenNormal.Background.BackgroundImage.w = 336;
-                            Watch_Face.ScreenNormal.Background.BackgroundImage.h = 384;
-                        }
-                    }
-
-                    if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
-                    {
-                        if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
-                        {
-                            Watch_Face.ScreenAOD.Background.BackgroundColor.w = 336;
-                            Watch_Face.ScreenAOD.Background.BackgroundColor.h = 384;
-                        }
-                        if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
-                        {
-                            Watch_Face.ScreenAOD.Background.BackgroundImage.w = 336;
-                            Watch_Face.ScreenAOD.Background.BackgroundImage.h = 384;
-                        }
-                    }
-                    break;
-                case "Falcon":
-                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_Falcon;
-
-                    if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
-                    Watch_Face.WatchFace_Info.DeviceName = "Falcon";
-
-                    if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
-                    {
-                        if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
-                        {
-                            Watch_Face.ScreenNormal.Background.BackgroundColor.w = 416;
-                            Watch_Face.ScreenNormal.Background.BackgroundColor.h = 416;
-                        }
-                        if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
-                        {
-                            Watch_Face.ScreenNormal.Background.BackgroundImage.w = 416;
-                            Watch_Face.ScreenNormal.Background.BackgroundImage.h = 416;
-                        }
-                    }
-
-                    if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
-                    {
-                        if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
-                        {
-                            Watch_Face.ScreenAOD.Background.BackgroundColor.w = 416;
-                            Watch_Face.ScreenAOD.Background.BackgroundColor.h = 416;
-                        }
-                        if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
-                        {
-                            Watch_Face.ScreenAOD.Background.BackgroundImage.w = 416;
-                            Watch_Face.ScreenAOD.Background.BackgroundImage.h = 416;
-                        }
-                    }
-                    break;
-                case "GTR mini":
-                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_mini;
-
-                    if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
-                    Watch_Face.WatchFace_Info.DeviceName = "GTR_mini";
-
-                    if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
-                    {
-                        if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
-                        {
-                            Watch_Face.ScreenNormal.Background.BackgroundColor.w = 416;
-                            Watch_Face.ScreenNormal.Background.BackgroundColor.h = 416;
-                        }
-                        if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
-                        {
-                            Watch_Face.ScreenNormal.Background.BackgroundImage.w = 416;
-                            Watch_Face.ScreenNormal.Background.BackgroundImage.h = 416;
-                        }
-                    }
-
-                    if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
-                    {
-                        if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
-                        {
-                            Watch_Face.ScreenAOD.Background.BackgroundColor.w = 416;
-                            Watch_Face.ScreenAOD.Background.BackgroundColor.h = 416;
-                        }
-                        if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
-                        {
-                            Watch_Face.ScreenAOD.Background.BackgroundImage.w = 416;
-                            Watch_Face.ScreenAOD.Background.BackgroundImage.h = 416;
-                        }
-                    }
-                    break;
-                case "GTS 4":
-                    textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_3;
-
-                    if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
-                    Watch_Face.WatchFace_Info.DeviceName = "GTS4";
-
-                    if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
-                    {
-                        if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
-                        {
-                            Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
-                            Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
-                        }
-                        if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
-                        {
-                            Watch_Face.ScreenNormal.Background.BackgroundImage.w = 390;
-                            Watch_Face.ScreenNormal.Background.BackgroundImage.h = 450;
-                        }
-                    }
-
-                    if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
-                    {
-                        if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
-                        {
-                            Watch_Face.ScreenAOD.Background.BackgroundColor.w = 390;
-                            Watch_Face.ScreenAOD.Background.BackgroundColor.h = 450;
-                        }
-                        if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
-                        {
-                            Watch_Face.ScreenAOD.Background.BackgroundImage.w = 390;
-                            Watch_Face.ScreenAOD.Background.BackgroundImage.h = 450;
-                        }
-                    }
-                    break;
-            }
+            // Endblock :: Kartun
 
             string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
             {
@@ -8407,81 +8560,86 @@ namespace Watch_Face_Editor
 
         private void ChangSizeBackground(Background background)
         {
-            if(background.BackgroundColor != null)
+            Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
+            if (background.BackgroundColor != null)
             {
-                switch (ProgramSettings.Watch_Model)
-                {
-                    case "GTR 3":
-                    case "T-Rex 2":
-                    case "T-Rex Ultra":
-                        background.BackgroundColor.h = 454;
-                        background.BackgroundColor.w = 454;
-                        break;
-                    case "GTR 3 Pro":
-                        background.BackgroundColor.h = 480;
-                        background.BackgroundColor.w = 480;
-                        break;
-                    case "GTS 3":
-                    case "GTS 4":
-                        background.BackgroundColor.h = 450;
-                        background.BackgroundColor.w = 390;
-                        break;
-                    case "GTR 4":
-                        background.BackgroundColor.h = 466;
-                        background.BackgroundColor.w = 466;
-                        break;
-                    case "Amazfit Band 7":
-                        background.BackgroundColor.h = 368;
-                        background.BackgroundColor.w = 194;
-                        break;
-                    case "GTS 4 mini":
-                        background.BackgroundColor.h = 384;
-                        background.BackgroundColor.w = 336;
-                        break;
-                    case "Falcon":
-                    case "GTR mini":
-                        background.BackgroundColor.h = 416;
-                        background.BackgroundColor.w = 416;
-                        break;
-                }
+                background.BackgroundColor.w = currPlatform.background.w;
+                background.BackgroundColor.h = currPlatform.background.h;
+                //switch (ProgramSettings.Watch_Model)
+                //{
+                //    case "GTR 3":
+                //    case "T-Rex 2":
+                //    case "T-Rex Ultra":
+                //        background.BackgroundColor.h = 454;
+                //        background.BackgroundColor.w = 454;
+                //        break;
+                //    case "GTR 3 Pro":
+                //        background.BackgroundColor.h = 480;
+                //        background.BackgroundColor.w = 480;
+                //        break;
+                //    case "GTS 3":
+                //    case "GTS 4":
+                //        background.BackgroundColor.h = 450;
+                //        background.BackgroundColor.w = 390;
+                //        break;
+                //    case "GTR 4":
+                //        background.BackgroundColor.h = 466;
+                //        background.BackgroundColor.w = 466;
+                //        break;
+                //    case "Amazfit Band 7":
+                //        background.BackgroundColor.h = 368;
+                //        background.BackgroundColor.w = 194;
+                //        break;
+                //    case "GTS 4 mini":
+                //        background.BackgroundColor.h = 384;
+                //        background.BackgroundColor.w = 336;
+                //        break;
+                //    case "Falcon":
+                //    case "GTR mini":
+                //        background.BackgroundColor.h = 416;
+                //        background.BackgroundColor.w = 416;
+                //        break;
+                //}
             }
             if (background.BackgroundImage != null)
             {
-                switch (ProgramSettings.Watch_Model)
-                {
-                    case "GTR 3":
-                    case "T-Rex 2":
-                    case "T-Rex Ultra":
-                        background.BackgroundImage.h = 454;
-                        background.BackgroundImage.w = 454;
-                        break;
-                    case "GTR 3 Pro":
-                        background.BackgroundImage.h = 480;
-                        background.BackgroundImage.w = 480;
-                        break;
-                    case "GTS 3":
-                    case "GTS 4":
-                        background.BackgroundImage.h = 450;
-                        background.BackgroundImage.w = 390;
-                        break;
-                    case "GTR 4":
-                        background.BackgroundImage.h = 466;
-                        background.BackgroundImage.w = 466;
-                        break;
-                    case "Amazfit Band 7":
-                        background.BackgroundImage.h = 368;
-                        background.BackgroundImage.w = 194;
-                        break;
-                    case "GTS 4 mini":
-                        background.BackgroundImage.h = 384;
-                        background.BackgroundImage.w = 336;
-                        break;
-                    case "Falcon":
-                    case "GTR mini":
-                        background.BackgroundImage.h = 416;
-                        background.BackgroundImage.w = 416;
-                        break;
-                }
+                background.BackgroundImage.w = currPlatform.background.w;
+                background.BackgroundImage.h = currPlatform.background.h;
+                //switch (ProgramSettings.Watch_Model)
+                //{
+                //    case "GTR 3":
+                //    case "T-Rex 2":
+                //    case "T-Rex Ultra":
+                //        background.BackgroundImage.h = 454;
+                //        background.BackgroundImage.w = 454;
+                //        break;
+                //    case "GTR 3 Pro":
+                //        background.BackgroundImage.h = 480;
+                //        background.BackgroundImage.w = 480;
+                //        break;
+                //    case "GTS 3":
+                //    case "GTS 4":
+                //        background.BackgroundImage.h = 450;
+                //        background.BackgroundImage.w = 390;
+                //        break;
+                //    case "GTR 4":
+                //        background.BackgroundImage.h = 466;
+                //        background.BackgroundImage.w = 466;
+                //        break;
+                //    case "Amazfit Band 7":
+                //        background.BackgroundImage.h = 368;
+                //        background.BackgroundImage.w = 194;
+                //        break;
+                //    case "GTS 4 mini":
+                //        background.BackgroundImage.h = 384;
+                //        background.BackgroundImage.w = 336;
+                //        break;
+                //    case "Falcon":
+                //    case "GTR mini":
+                //        background.BackgroundImage.h = 416;
+                //        background.BackgroundImage.w = 416;
+                //        break;
+                //}
             }
         }
 
@@ -8599,69 +8757,87 @@ namespace Watch_Face_Editor
             if (Watch_Face.Editable_Elements != null && Watch_Face.Editable_Elements.visible) app.module.watchface.editable = 1;
             if (Watch_Face.ElementEditablePointers != null && Watch_Face.ElementEditablePointers.visible && 
                 Watch_Face.ElementEditablePointers.config != null && Watch_Face.ElementEditablePointers.config.Count > 0) app.module.watchface.editable = 1;
-            switch (ProgramSettings.Watch_Model)
+            //switch (ProgramSettings.Watch_Model)
+            //{
+            //    case "GTR 3 Pro":
+            //        app.platforms.Add(new Platform() { name = "Amazfit GTR 3 Pro", deviceSource = 229 });
+            //        app.platforms.Add(new Platform() { name = "Amazfit GTR 3 Pro", deviceSource = 230 });
+            //        app.platforms.Add(new Platform() { name = "Amazfit GTR 3 Pro", deviceSource = 6095106 });
+
+            //        app.designWidth = 480;
+            //        break;
+            //    case "GTS 3":
+            //    case "GTS 4":
+            //        app.platforms.Add(new Platform() { name = "Amazfit GTS 3", deviceSource = 224 });
+            //        app.platforms.Add(new Platform() { name = "Amazfit GTS 3", deviceSource = 225 });
+            //        app.platforms.Add(new Platform() { name = "Amazfit GTS 4", deviceSource = 7995648 });
+            //        app.platforms.Add(new Platform() { name = "Amazfit GTS 4", deviceSource = 7995649 });
+
+            //        app.designWidth = 390;
+            //        break;
+            //    case "GTR 4":
+            //        app.platforms.Add(new Platform() { name = "Amazfit GTR 4", deviceSource = 7930112 });
+            //        app.platforms.Add(new Platform() { name = "Amazfit GTR 4", deviceSource = 7930113 });
+            //        app.platforms.Add(new Platform() { name = "Amazfit GTR 4 Limited Edition", deviceSource = 7864576 });
+            //        app.platforms.Add(new Platform() { name = "Amazfit GTR 4 Limited Edition", deviceSource = 7864577 });
+
+            //        app.designWidth = 466;
+            //        break;
+            //    case "Amazfit Band 7":
+            //        app.platforms.Add(new Platform() { name = "Amazfit Band 7", deviceSource = 252 });
+            //        app.platforms.Add(new Platform() { name = "Amazfit Band 7", deviceSource = 253 });
+            //        app.platforms.Add(new Platform() { name = "Amazfit Band 7", deviceSource = 254 });
+
+            //        app.designWidth = 194;
+            //        break;
+            //    case "GTS 4 mini":
+            //        app.platforms.Add(new Platform() { name = "Amazfit GTS 4 Mini", deviceSource = 246 });
+            //        app.platforms.Add(new Platform() { name = "Amazfit GTS 4 Mini", deviceSource = 247 });
+
+            //        app.designWidth = 336;
+            //        break;
+            //    case "Falcon":
+            //        app.platforms.Add(new Platform() { name = "Amazfit Falcon", deviceSource = 414 });
+            //        app.platforms.Add(new Platform() { name = "Amazfit Falcon", deviceSource = 415 });
+
+            //        app.designWidth = 416;
+            //        break;
+            //    case "GTR mini":
+            //        app.platforms.Add(new Platform() { name = "Amazfit GTR Mini", deviceSource = 250 });
+            //        app.platforms.Add(new Platform() { name = "Amazfit GTR Mini", deviceSource = 251 });
+
+            //        app.designWidth = 416;
+            //        break;
+
+            //    default:
+            //        app.platforms.Add(new Platform() { name = "Amazfit GTR 3", deviceSource = 226 });
+            //        app.platforms.Add(new Platform() { name = "Amazfit GTR 3", deviceSource = 227 });
+            //        app.platforms.Add(new Platform() { name = "Amazfit T-Rex 2", deviceSource = 418 });
+            //        app.platforms.Add(new Platform() { name = "Amazfit T-Rex 2", deviceSource = 419 });
+            //        app.platforms.Add(new Platform() { name = "Amazfit T-Rex Ultra", deviceSource = 6553856 });
+            //        app.platforms.Add(new Platform() { name = "Amazfit T-Rex Ultra", deviceSource = 6553857 });
+
+            //        app.designWidth = 454;
+            //        break;
+            //}
+
+            // StartBlock :: Kartun
+            Logger.WriteLine($"* button_pack_zip_Click for {ProgramSettings.Watch_Model}");
+            Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
+            Logger.WriteLine($"Loaded configuration: {currPlatform}");
+            app.designWidth = currPlatform.designWidth;
+            foreach(int id in currPlatform.ids)
             {
-                case "GTR 3 Pro":
-                    app.platforms.Add(new Platform() { name = "Amazfit GTR 3 Pro", deviceSource = 229 });
-                    app.platforms.Add(new Platform() { name = "Amazfit GTR 3 Pro", deviceSource = 230 });
-                    app.platforms.Add(new Platform() { name = "Amazfit GTR 3 Pro", deviceSource = 6095106 });
-
-                    app.designWidth = 480;
-                    break;
-                case "GTS 3":
-                case "GTS 4":
-                    app.platforms.Add(new Platform() { name = "Amazfit GTS 3", deviceSource = 224 });
-                    app.platforms.Add(new Platform() { name = "Amazfit GTS 3", deviceSource = 225 });
-                    app.platforms.Add(new Platform() { name = "Amazfit GTS 4", deviceSource = 7995648 });
-                    app.platforms.Add(new Platform() { name = "Amazfit GTS 4", deviceSource = 7995649 });
-
-                    app.designWidth = 390;
-                    break;
-                case "GTR 4":
-                    app.platforms.Add(new Platform() { name = "Amazfit GTR 4", deviceSource = 7930112 });
-                    app.platforms.Add(new Platform() { name = "Amazfit GTR 4", deviceSource = 7930113 });
-                    app.platforms.Add(new Platform() { name = "Amazfit GTR 4 Limited Edition", deviceSource = 7864576 });
-                    app.platforms.Add(new Platform() { name = "Amazfit GTR 4 Limited Edition", deviceSource = 7864577 });
-
-                    app.designWidth = 466;
-                    break;
-                case "Amazfit Band 7":
-                    app.platforms.Add(new Platform() { name = "Amazfit Band 7", deviceSource = 252 });
-                    app.platforms.Add(new Platform() { name = "Amazfit Band 7", deviceSource = 253 });
-                    app.platforms.Add(new Platform() { name = "Amazfit Band 7", deviceSource = 254 });
-
-                    app.designWidth = 194;
-                    break;
-                case "GTS 4 mini":
-                    app.platforms.Add(new Platform() { name = "Amazfit GTS 4 Mini", deviceSource = 246 });
-                    app.platforms.Add(new Platform() { name = "Amazfit GTS 4 Mini", deviceSource = 247 });
-
-                    app.designWidth = 336;
-                    break;
-                case "Falcon":
-                    app.platforms.Add(new Platform() { name = "Amazfit Falcon", deviceSource = 414 });
-                    app.platforms.Add(new Platform() { name = "Amazfit Falcon", deviceSource = 415 });
-
-                    app.designWidth = 416;
-                    break;
-                case "GTR mini":
-                    app.platforms.Add(new Platform() { name = "Amazfit GTR Mini", deviceSource = 250 });
-                    app.platforms.Add(new Platform() { name = "Amazfit GTR Mini", deviceSource = 251 });
-
-                    app.designWidth = 416;
-                    break;
-
-                default:
-                    app.platforms.Add(new Platform() { name = "Amazfit GTR 3", deviceSource = 226 });
-                    app.platforms.Add(new Platform() { name = "Amazfit GTR 3", deviceSource = 227 });
-                    app.platforms.Add(new Platform() { name = "Amazfit T-Rex 2", deviceSource = 418 });
-                    app.platforms.Add(new Platform() { name = "Amazfit T-Rex 2", deviceSource = 419 });
-                    app.platforms.Add(new Platform() { name = "Amazfit T-Rex Ultra", deviceSource = 6553856 });
-                    app.platforms.Add(new Platform() { name = "Amazfit T-Rex Ultra", deviceSource = 6553857 });
-
-                    app.designWidth = 454;
-                    break;
+                app.platforms.Add(new Platform() { name = currPlatform.name, deviceSource = id });
             }
+
+            //app.platforms.Add(new Platform() { name = "Amazfit GTR Mini", deviceSource = 251 });
+
+           
+            //bitmap = new Bitmap(Convert.ToInt32(currPlatform.background.w), Convert.ToInt32(currPlatform.background.h), PixelFormat.Format32bppArgb);
+            // EndBlock :: Kartun
+
+
             string appText = JsonConvert.SerializeObject(app, Formatting.Indented, new JsonSerializerSettings
             {
                 //DefaultValueHandling = DefaultValueHandling.Ignore,
@@ -8942,41 +9118,51 @@ namespace Watch_Face_Editor
                 Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
                 Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
                 int PreviewHeight = 306;
-                switch (ProgramSettings.Watch_Model)
-                {
-                    case "GTR 3 Pro":
-                        bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
-                        PreviewHeight = 324;
-                        break;
-                    case "GTS 3":
-                    case "GTS 4":
-                        bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
-                        PreviewHeight = 306;
-                        break;
-                    case "GTR 4":
-                        bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_4.png");
-                        PreviewHeight = 314;
-                        break;
-                    case "Amazfit Band 7":
-                        bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_band_7.png");
-                        PreviewHeight = 288;
-                        break;
-                    case "GTS 4 mini":
-                        bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
-                        PreviewHeight = 256;
-                        break;
-                    case "Falcon":
-                    case "GTR mini":
-                        bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
-                        PreviewHeight = 280;
-                        break;
-                }
+                //switch (ProgramSettings.Watch_Model)
+                //{
+                //    case "GTR 3 Pro":
+                //        bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
+                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
+                //        PreviewHeight = 324;
+                //        break;
+                //    case "GTS 3":
+                //    case "GTS 4":
+                //        bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
+                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
+                //        PreviewHeight = 306;
+                //        break;
+                //    case "GTR 4":
+                //        bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
+                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_4.png");
+                //        PreviewHeight = 314;
+                //        break;
+                //    case "Amazfit Band 7":
+                //        bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
+                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_band_7.png");
+                //        PreviewHeight = 288;
+                //        break;
+                //    case "GTS 4 mini":
+                //        bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
+                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
+                //        PreviewHeight = 256;
+                //        break;
+                //    case "Falcon":
+                //    case "GTR mini":
+                //        bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
+                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
+                //        PreviewHeight = 280;
+                //        break;
+                //}
+
+                // StartBlock :: Kartun
+                Logger.WriteLine($"* button_CreatePreview_Click for {ProgramSettings.Watch_Model}");
+                Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
+                Logger.WriteLine($"Loaded configuration: {currPlatform}");
+                bitmap = new Bitmap(Convert.ToInt32(currPlatform.background.w), Convert.ToInt32(currPlatform.background.h), PixelFormat.Format32bppArgb);
+                mask = new Bitmap(Application.StartupPath + @"\Mask\" + currPlatform.maskImage);
+                PreviewHeight = currPlatform.previewHeight;
+                // EndBlock :: Kartun
+
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
                 Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false, 
@@ -17042,35 +17228,43 @@ namespace Watch_Face_Editor
             {
                 Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
                 Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
-                switch (ProgramSettings.Watch_Model)
-                {
-                    case "GTR 3 Pro":
-                        bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
-                        break;
-                    case "GTS 3":
-                    case "GTS 4":
-                        bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
-                        break;
-                    case "GTR 4":
-                        bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_4.png");
-                        break;
-                    case "Amazfit Band 7":
-                        bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_band_7.png");
-                        break;
-                    case "GTS 4 mini":
-                        bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
-                        break;
-                    case "Falcon":
-                    case "GTR mini":
-                        bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
-                        break;
-                }
+                //switch (ProgramSettings.Watch_Model)
+                //{
+                //    case "GTR 3 Pro":
+                //        bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
+                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
+                //        break;
+                //    case "GTS 3":
+                //    case "GTS 4":
+                //        bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
+                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
+                //        break;
+                //    case "GTR 4":
+                //        bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
+                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_4.png");
+                //        break;
+                //    case "Amazfit Band 7":
+                //        bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
+                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_band_7.png");
+                //        break;
+                //    case "GTS 4 mini":
+                //        bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
+                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
+                //        break;
+                //    case "Falcon":
+                //    case "GTR mini":
+                //        bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
+                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
+                //        break;
+                //}
+                // StartBlock :: Kartun
+                Logger.WriteLine($"* button_SavePNG_Click for {ProgramSettings.Watch_Model}");
+                Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
+                Logger.WriteLine($"Loaded configuration: {currPlatform}");
+                bitmap = new Bitmap(Convert.ToInt32(currPlatform.background.w), Convert.ToInt32(currPlatform.background.h), PixelFormat.Format32bppArgb);
+                mask = new Bitmap(Application.StartupPath + @"\Mask\" + currPlatform.maskImage);
+                // EndBlock :: Kartun
+
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
                 Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false, 
@@ -17096,35 +17290,43 @@ namespace Watch_Face_Editor
             {
                 Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
                 Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
-                switch (ProgramSettings.Watch_Model)
-                {
-                    case "GTR 3 Pro":
-                        bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
-                        break;
-                    case "GTS 3":
-                    case "GTS 4":
-                        bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
-                        break;
-                    case "GTR 4":
-                        bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_4.png");
-                        break;
-                    case "Amazfit Band 7":
-                        bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_band_7.png");
-                        break;
-                    case "GTS 4 mini":
-                        bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
-                        break;
-                    case "Falcon":
-                    case "GTR mini":
-                        bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
-                        break;
-                }
+                //switch (ProgramSettings.Watch_Model)
+                //{
+                //    case "GTR 3 Pro":
+                //        bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
+                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
+                //        break;
+                //    case "GTS 3":
+                //    case "GTS 4":
+                //        bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
+                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
+                //        break;
+                //    case "GTR 4":
+                //        bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
+                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_4.png");
+                //        break;
+                //    case "Amazfit Band 7":
+                //        bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
+                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_band_7.png");
+                //        break;
+                //    case "GTS 4 mini":
+                //        bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
+                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
+                //        break;
+                //    case "Falcon":
+                //    case "GTR mini":
+                //        bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
+                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
+                //        break;
+                //}
+                // StartBlock :: Kartun
+                Logger.WriteLine($"* button_SavePNG_Click for {ProgramSettings.Watch_Model}");
+                Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
+                Logger.WriteLine($"Loaded configuration: {currPlatform}");
+                bitmap = new Bitmap(Convert.ToInt32(currPlatform.background.w), Convert.ToInt32(currPlatform.background.h), PixelFormat.Format32bppArgb);
+                mask = new Bitmap(Application.StartupPath + @"\Mask\" + currPlatform.maskImage);
+                // EndBlock :: Kartun
+
                 Bitmap bitmapTemp = new Bitmap(bitmap.Width, bitmap.Height, PixelFormat.Format32bppArgb);
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 bool save = false;
@@ -17514,35 +17716,43 @@ namespace Watch_Face_Editor
             {
                 Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
                 Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
-                switch (ProgramSettings.Watch_Model)
-                {
-                    case "GTR 3 Pro":
-                        bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
-                        break;
-                    case "GTS 3":
-                    case "GTS 4":
-                        bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
-                        break;
-                    case "GTR 4":
-                        bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_4.png");
-                        break;
-                    case "Amazfit Band 7":
-                        bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_band_7.png");
-                        break;
-                    case "GTS 4 mini":
-                        bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
-                        break;
-                    case "Falcon":
-                    case "GTR mini":
-                        bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
-                        break;
-                }
+                //switch (ProgramSettings.Watch_Model)
+                //{
+                //    case "GTR 3 Pro":
+                //        bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
+                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
+                //        break;
+                //    case "GTS 3":
+                //    case "GTS 4":
+                //        bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
+                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
+                //        break;
+                //    case "GTR 4":
+                //        bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
+                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_4.png");
+                //        break;
+                //    case "Amazfit Band 7":
+                //        bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
+                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_band_7.png");
+                //        break;
+                //    case "GTS 4 mini":
+                //        bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
+                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
+                //        break;
+                //    case "Falcon":
+                //    case "GTR mini":
+                //        bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
+                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
+                //        break;
+                //}
+                // StartBlock :: Kartun
+                Logger.WriteLine($"* button_SavePNG_shortcut_Click for {ProgramSettings.Watch_Model}");
+                Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
+                Logger.WriteLine($"Loaded configuration: {currPlatform}");
+                bitmap = new Bitmap(Convert.ToInt32(currPlatform.background.w), Convert.ToInt32(currPlatform.background.h), PixelFormat.Format32bppArgb);
+                mask = new Bitmap(Application.StartupPath + @"\Mask\" + currPlatform.maskImage);
+                // EndBlock :: Kartun
+
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 //int link = radioButton_ScreenNormal.Checked ? 0 : 1;
                 int link_AOD = 0;
