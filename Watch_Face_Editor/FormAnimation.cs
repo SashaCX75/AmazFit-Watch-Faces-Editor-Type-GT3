@@ -362,7 +362,7 @@ namespace Watch_Face_Editor
                             else if (form1.checkBox_crop.Checked) bitmap = form1.ApplyMask(bitmap, mask);
 
                             // Add first image and set the animation delay to 100ms
-                            MagickImage item = new MagickImage(bitmap);
+                            MagickImage item = new MagickImage(ImgConvert.CopyImageToByteArray(bitmap));
                             //ExifProfile profile = item.GetExifProfile();
                             collection.Add(item);
                             collection[collection.Count - 1].AnimationDelay = timer1.Interval / 10;
