@@ -226,17 +226,24 @@ namespace Watch_Face_Editor
                 case "ElementDateDay":
                     ElementDateDay elementDateDay = (ElementDateDay)elements;
                     Scale_IMG_NUMBER(elementDateDay.Number, scale);
+                    Scale_IMG_NUMBER(elementDateDay.Text_rotation, scale);
+                    Scale_Text_Circle(elementDateDay.Text_circle, scale);
                     Scale_IMG_POINTER(elementDateDay.Pointer, scale);
                     break;
                 case "ElementDateMonth":
                     ElementDateMonth elementDateMonth = (ElementDateMonth)elements;
                     Scale_IMG_NUMBER(elementDateMonth.Number, scale);
+                    Scale_IMG_NUMBER(elementDateMonth.Text_rotation, scale);
+                    Scale_Text_Circle(elementDateMonth.Text_circle, scale);
                     Scale_IMG_POINTER(elementDateMonth.Pointer, scale);
                     Scale_IMG_LEVEL(elementDateMonth.Images, scale);
                     break;
                 case "ElementDateYear":
                     ElementDateYear elementDateYear = (ElementDateYear)elements;
                     Scale_IMG_NUMBER(elementDateYear.Number, scale);
+                    Scale_IMG_NUMBER(elementDateYear.Text_rotation, scale);
+                    Scale_Text_Circle(elementDateYear.Text_circle, scale);
+                    Scale_IMG(elementDateYear.Icon, scale);
                     break;
                 case "ElementDateWeek":
                     ElementDateWeek elementDateWeek = (ElementDateWeek)elements;
@@ -338,6 +345,7 @@ namespace Watch_Face_Editor
                     Scale_IMG_NUMBER(elementDistance.Number, scale);
                     Scale_IMG_NUMBER(elementDistance.Text_rotation, scale);
                     Scale_Text_Circle(elementDistance.Text_circle, scale);
+                    Scale_IMG(elementDistance.Icon, scale);
                     break;
                 case "ElementStand":
                     ElementStand elementStand = (ElementStand)elements;

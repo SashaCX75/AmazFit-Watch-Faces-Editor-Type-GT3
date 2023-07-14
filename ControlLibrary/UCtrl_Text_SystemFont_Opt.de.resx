@@ -317,4 +317,10 @@
   <data name="label5.Text" xml:space="preserve">
     <value>* Die Größe und Position des Textes kann von der Abbildung auf der Uhr abweichen. Überprüfen Sie die Position des Textes auf dem echten Gerät.</value>
   </data>
+  <data name="button_AddFont.Text" xml:space="preserve">
+    <value>Hinzufügen</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Schrift</value>
+  </data>
 </root>

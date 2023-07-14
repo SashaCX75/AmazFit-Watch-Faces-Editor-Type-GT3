@@ -852,6 +852,103 @@ namespace Watch_Face_Editor
 
             if (items.IndexOf("timeSensor =") >= 0) variables += TabInString(4) + "let timeSensor = ''" + Environment.NewLine;
 
+            // добавляем пользовательские скрипты
+            string fileName = Path.Combine(FullFileDir, "user_functions.js");
+            if (File.Exists(fileName))
+            {
+                Logger.WriteLine("Load user_functions.js");
+                try
+                {
+                    string script_text = File.ReadAllText(fileName);
+                    if (script_text.Length > 5)
+                    {
+                        script_text = Environment.NewLine + TabInString(4) + "// start user_functions.js" + Environment.NewLine + 
+                            script_text + Environment.NewLine;
+                        script_text = script_text + TabInString(4) + "// end user_functions.js" + Environment.NewLine;
+                        variables = script_text + variables;
+                    }
+                }
+                catch (Exception)
+                {
+                }
+            }
+            fileName = Path.Combine(FullFileDir, "resume_call.js");
+            if (File.Exists(fileName))
+            {
+                Logger.WriteLine("Load resume_call.js");
+                try
+                {
+                    string script_text = File.ReadAllText(fileName);
+                    if (script_text.Length > 5)
+                    {
+                        script_text = Environment.NewLine + TabInString(8) + "// start resume_call.js" + Environment.NewLine +
+                            script_text + Environment.NewLine;
+                        script_text = script_text + TabInString(8) + "// end resume_call.js" + Environment.NewLine;
+                        resume_call = resume_call + script_text;
+                    }
+                }
+                catch (Exception)
+                {
+                }
+            }
+            fileName = Path.Combine(FullFileDir, "pause_call.js");
+            if (File.Exists(fileName))
+            {
+                Logger.WriteLine("Load pause_call.js");
+                try
+                {
+                    string script_text = File.ReadAllText(fileName);
+                    if (script_text.Length > 5)
+                    {
+                        script_text = Environment.NewLine + TabInString(8) + "// start pause_call.js" + Environment.NewLine +
+                            script_text + Environment.NewLine;
+                        script_text = script_text + TabInString(8) + "// end pause_call.js" + Environment.NewLine;
+                        pause_call = pause_call + script_text;
+                    }
+                }
+                catch (Exception)
+                {
+                }
+            }
+            fileName = Path.Combine(FullFileDir, "user_script_start.js");
+            if (File.Exists(fileName))
+            {
+                Logger.WriteLine("Load user_script_start.js");
+                try
+                {
+                    string script_text = File.ReadAllText(fileName);
+                    if (script_text.Length > 5)
+                    {
+                        script_text = Environment.NewLine + TabInString(6) + "// start user_script_start.js" + Environment.NewLine +
+                            script_text + Environment.NewLine;
+                        script_text = script_text + TabInString(6) + "// end user_script_start.js" + Environment.NewLine;
+                        items = script_text + items;
+                    }
+                }
+                catch (Exception)
+                {
+                }
+            }
+            fileName = Path.Combine(FullFileDir, "user_script_end.js");
+            if (File.Exists(fileName))
+            {
+                Logger.WriteLine("Load user_script_end.js");
+                try
+                {
+                    string script_text = File.ReadAllText(fileName);
+                    if (script_text.Length > 5)
+                    {
+                        script_text = Environment.NewLine + TabInString(6) + "// start user_script_end.js" + Environment.NewLine +
+                            script_text + Environment.NewLine;
+                        script_text = script_text + TabInString(6) + "// end user_script_end.js" + Environment.NewLine;
+                        items = items + script_text;
+                    }
+                }
+                catch (Exception)
+                {
+                }
+            }
+
             if (time_update.Length > 5)
             {
                 if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
@@ -1872,8 +1969,24 @@ namespace Watch_Face_Editor
                         optionsNumberDay_separator = IMG_Separator_Options(img_number, show_level);
                     }
 
-                    for (int index = 1; index <= 3; index++)
+                    if (DateDay.Text_rotation != null && DateDay.Text_rotation.visible)
                     {
+                        textRotatePosition = DateDay.Text_rotation.position;
+                        text_rotate = DateDay.Text_rotation;
+
+                        textRotateOptions = Text_Rotate_Options(text_rotate, "DAY", show_level, false);
+                    }
+                    if (DateDay.Text_circle != null && DateDay.Text_circle.visible)
+                    {
+                        textCirclePosition = DateDay.Text_circle.position;
+                        text_circle = DateDay.Text_circle;
+
+                        textCircleOptions = Text_Circle_Options(text_circle, "DAY", show_level, false);
+                    }
+
+                    for (int index = 1; index <= 15; index++)
+                    {
+                        // Pointer
                         if (index == pointerPositionDay && optionsPointerDay.Length > 5)
                         {
                             variables += TabInString(4) + "let " + optionNameStart +
@@ -1883,6 +1996,7 @@ namespace Watch_Face_Editor
                                     optionsPointerDay + TabInString(6) + "});" + Environment.NewLine;
                         }
 
+                        // Number
                         if (index == numberPositionDay && optionsNumberDay.Length > 5)
                         {
                             variables += TabInString(4) + "let " + optionNameStart +
@@ -1900,6 +2014,20 @@ namespace Watch_Face_Editor
                                         optionsNumberDay_separator + TabInString(6) + "});" + Environment.NewLine;
                             }
                         }
+
+                        // Text_Rotate
+                        if (index == textRotatePosition && textRotateOptions.Length > 5)
+                        {
+                            AddTextRotationJS(DateDay.Text_rotation, optionNameStart, "day_", ref variables, ref items, exist_items, ref text_update,
+                                textRotateOptions, show_level, "timeNaw", "TIME", "valueDay", "day", 2, ref resume_call, ref pause_call);
+                        }
+
+                        // Text_Circle
+                        if (index == textCirclePosition && textCircleOptions.Length > 5)
+                        {
+                            AddTextCircleJS(DateDay.Text_circle, optionNameStart, "day_", ref variables, ref items, exist_items, ref text_update,
+                                textCircleOptions, show_level, "timeNaw", "TIME", "valueDay", "day", 2, ref resume_call, ref pause_call);
+                        }
                     }
                     break;
                 #endregion
@@ -1915,6 +2043,7 @@ namespace Watch_Face_Editor
                     string optionsNumberMonth = "";
                     string optionsNumberMonth_separator = "";
                     string optionsImagesMonth = "";
+
                     if (DateMonth.Pointer != null && DateMonth.Pointer.visible)
                     {
                         pointerPositionMonth = DateMonth.Pointer.position;
@@ -1929,6 +2058,22 @@ namespace Watch_Face_Editor
 
                         optionsNumberMonth_separator = IMG_Separator_Options(img_number, show_level);
                     }
+
+                    if (DateMonth.Text_rotation != null && DateMonth.Text_rotation.visible)
+                    {
+                        textRotatePosition = DateMonth.Text_rotation.position;
+                        text_rotate = DateMonth.Text_rotation;
+
+                        textRotateOptions = Text_Rotate_Options(text_rotate, "MONTH", show_level, false);
+                    }
+                    if (DateMonth.Text_circle != null && DateMonth.Text_circle.visible)
+                    {
+                        textCirclePosition = DateMonth.Text_circle.position;
+                        text_circle = DateMonth.Text_circle;
+
+                        textCircleOptions = Text_Circle_Options(text_circle, "MONTH", show_level, false);
+                    }
+
                     if (DateMonth.Images != null && DateMonth.Images.visible)
                     {
                         imagesPositionMonth = DateMonth.Images.position;
@@ -1936,8 +2081,9 @@ namespace Watch_Face_Editor
                         optionsImagesMonth = IMG_IMAGES_Month_Options(img_images, show_level);
                     }
 
-                    for (int index = 1; index <= 3; index++)
+                    for (int index = 1; index <= 15; index++)
                     {
+                        // Pointer
                         if (index == pointerPositionMonth && optionsPointerMonth.Length > 5)
                         {
                             variables += TabInString(4) + "let " + optionNameStart +
@@ -1947,6 +2093,7 @@ namespace Watch_Face_Editor
                                     optionsPointerMonth + TabInString(6) + "});" + Environment.NewLine;
                         }
 
+                        // Number
                         if (index == numberPositionMonth && optionsNumberMonth.Length > 5)
                         {
                             variables += TabInString(4) + "let " + optionNameStart +
@@ -1965,6 +2112,21 @@ namespace Watch_Face_Editor
                             }
                         }
 
+                        // Text_Rotate
+                        if (index == textRotatePosition && textRotateOptions.Length > 5)
+                        {
+                            AddTextRotationJS(DateMonth.Text_rotation, optionNameStart, "month_", ref variables, ref items, exist_items, ref text_update,
+                                textRotateOptions, show_level, "timeNaw", "TIME", "valueMonth", "month", 2, ref resume_call, ref pause_call);
+                        }
+
+                        // Text_Circle
+                        if (index == textCirclePosition && textCircleOptions.Length > 5)
+                        {
+                            AddTextCircleJS(DateMonth.Text_circle, optionNameStart, "month_", ref variables, ref items, exist_items, ref text_update,
+                                textCircleOptions, show_level, "timeNaw", "TIME", "valueMonth", "month", 2, ref resume_call, ref pause_call);
+                        }
+
+                        // Images
                         if (index == imagesPositionMonth && optionsImagesMonth.Length > 5)
                         {
                             variables += TabInString(4) + "let " + optionNameStart +
@@ -1983,29 +2145,80 @@ namespace Watch_Face_Editor
                     if (!DateYear.visible) return;
                     string optionsNumberYear = "";
                     string optionsNumberYear_separator = "";
-                    if (DateYear.Number != null)
+                    if (DateYear.Number != null && DateYear.Number.visible)
                     {
+                        numberPosition = DateYear.Number.position;
                         hmUI_widget_IMG_NUMBER img_number = DateYear.Number;
                         optionsNumberYear = IMG_NUMBER_Year_Options(img_number, show_level);
 
                         optionsNumberYear_separator = IMG_Separator_Options(img_number, show_level);
                     }
 
-                    if (optionsNumberYear.Length > 5)
+                    if (DateYear.Text_rotation != null && DateYear.Text_rotation.visible)
                     {
-                        variables += TabInString(4) + "let " + optionNameStart +
-                            "date_img_date_year = ''" + Environment.NewLine;
-                        items += Environment.NewLine + TabInString(6) +
-                            optionNameStart + "date_img_date_year = hmUI.createWidget(hmUI.widget.IMG_DATE, {" +
-                                optionsNumberYear + TabInString(6) + "});" + Environment.NewLine;
+                        textRotatePosition = DateYear.Text_rotation.position;
+                        text_rotate = DateYear.Text_rotation;
 
-                        if (optionsNumberYear_separator.Length > 5)
+                        textRotateOptions = Text_Rotate_Options(text_rotate, "YEAR", show_level, false);
+                    }
+                    if (DateYear.Text_circle != null && DateYear.Text_circle.visible)
+                    {
+                        textCirclePosition = DateYear.Text_circle.position;
+                        text_circle = DateYear.Text_circle;
+
+                        textCircleOptions = Text_Circle_Options(text_circle, "YEAR", show_level, false);
+                    }
+
+                    if (DateYear.Icon != null && DateYear.Icon.visible)
+                    {
+                        iconPosition = DateYear.Icon.position;
+                        hmUI_widget_IMG img_icon = DateYear.Icon;
+                        iconOptions = IMG_Options(img_icon, show_level);
+                    }
+
+                    for (int index = 1; index <= 15; index++)
+                    {
+                        // Number
+                        if (index == numberPosition && optionsNumberYear.Length > 5)
                         {
                             variables += TabInString(4) + "let " + optionNameStart +
-                                "date_year_separator_img = ''" + Environment.NewLine;
+                                "date_img_date_year = ''" + Environment.NewLine;
                             items += Environment.NewLine + TabInString(6) +
-                                optionNameStart + "date_year_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
-                                    optionsNumberYear_separator + TabInString(6) + "});" + Environment.NewLine;
+                                optionNameStart + "date_img_date_year = hmUI.createWidget(hmUI.widget.IMG_DATE, {" +
+                                    optionsNumberYear + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (optionsNumberYear_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "date_year_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "date_year_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        optionsNumberYear_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Text_Rotate
+                        if (index == textRotatePosition && textRotateOptions.Length > 5)
+                        {
+                            AddTextRotationJS(DateYear.Text_rotation, optionNameStart, "year_", ref variables, ref items, exist_items, ref text_update,
+                                textRotateOptions, show_level, "timeNaw", "TIME", "valueYear", "year", 4, ref resume_call, ref pause_call);
+                        }
+
+                        // Text_Circle
+                        if (index == textCirclePosition && textCircleOptions.Length > 5)
+                        {
+                            AddTextCircleJS(DateYear.Text_circle, optionNameStart, "year_", ref variables, ref items, exist_items, ref text_update,
+                                textCircleOptions, show_level, "timeNaw", "TIME", "valueYear", "year", 4, ref resume_call, ref pause_call);
+                        }
+
+                        // Icon
+                        if (index == iconPosition && iconOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "year_icon_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "year_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    iconOptions + TabInString(6) + "});" + Environment.NewLine;
                         }
                     }
                     break;
@@ -9409,42 +9622,43 @@ namespace Watch_Face_Editor
                                     // функция вызова зеркального движения
                                     if (anim_motion.anim_two_sides)
                                     {
-                                        items += Environment.NewLine + TabInString(6) +
-                                            "function anim_motion_" + indexStr + "_mirror" + "() {";
-                                        items += Environment.NewLine + TabInString(7) + optionNameStart + "motion_animation_img_" +
-                                            indexStr + ".setProperty(hmUI.prop.ANIM, " + optionNameStart +
-                                            "motion_animation_paramX_" + indexStr + "_mirror);";
-                                        items += Environment.NewLine + TabInString(7) + optionNameStart + "motion_animation_img_" +
-                                            indexStr + ".setProperty(hmUI.prop.ANIM, " + optionNameStart +
-                                            "motion_animation_paramY_" + indexStr + "_mirror);" + Environment.NewLine;
-                                        items += TabInString(7) + optionNameStart + "motion_animation_lastTime_" + 
-                                            indexStr + " = now.utc;" + Environment.NewLine;
-                                        items += TabInString(6) + "};" + Environment.NewLine;
+                                        items += Environment.NewLine + TabInString(6) + "function anim_motion_" + indexStr + "_mirror" + "() {" + Environment.NewLine;
+
+                                        items += TabInString(7) + optionNameStart + "motion_animation_img_" + indexStr + ".setProperty(hmUI.prop.ANIM, " + 
+                                            optionNameStart + "motion_animation_paramX_" + indexStr + "_mirror);" + Environment.NewLine;
+                                        items += TabInString(7) + optionNameStart + "motion_animation_img_" + indexStr + ".setProperty(hmUI.prop.ANIM, " + 
+                                            optionNameStart + "motion_animation_paramY_" + indexStr + "_mirror);" + Environment.NewLine;
+                                        items += TabInString(7) + optionNameStart + "motion_animation_lastTime_" + indexStr + " = now.utc;" + Environment.NewLine;
+
+                                        items += TabInString(7) + optionNameStart + "motion_animation_count_" + indexStr + " = " + optionNameStart +
+                                            "motion_animation_count_" + indexStr + " - 1;" + Environment.NewLine;
+                                        items += TabInString(7) + "if(normal_motion_animation_count_" + indexStr +
+                                            " < -1) normal_motion_animation_count_" + indexStr + " = - 1;" + Environment.NewLine;
+                                        items += TabInString(7) + "if(" + optionNameStart + "motion_animation_count_" +
+                                            indexStr + " == 0) stop_anim_motion_" + indexStr + "();" + Environment.NewLine;
+
+                                        items += TabInString(6) + "}; // end animation_mirror callback function" + Environment.NewLine;
                                     }
 
                                     // функция вызова повтора анимации
                                     items += Environment.NewLine + TabInString(6) +
                                         "function anim_motion_" + indexStr + "_complete_call" + "() {" + Environment.NewLine;
 
-                                    items += TabInString(7) + optionNameStart +
-                                    "motion_animation_count_" + indexStr + " = " + optionNameStart +
-                                    "motion_animation_count_" + indexStr + " - 1;" + Environment.NewLine;
-                                    items += TabInString(7) + "if(normal_motion_animation_count_" + indexStr + 
-                                        " < -1) normal_motion_animation_count_" + indexStr + " = - 1;" + Environment.NewLine;
+                                    items += TabInString(7) + optionNameStart + "motion_animation_img_" + indexStr + ".setProperty(hmUI.prop.ANIM, " +
+                                        optionNameStart + "motion_animation_paramX_" + indexStr + ");" + Environment.NewLine;
+                                    items += TabInString(7) + optionNameStart + "motion_animation_img_" + indexStr + ".setProperty(hmUI.prop.ANIM, " +
+                                        optionNameStart + "motion_animation_paramY_" + indexStr + ");" + Environment.NewLine;
+                                    items += TabInString(8) + optionNameStart + "motion_animation_lastTime_" + indexStr + " = now.utc;" + Environment.NewLine;
 
-                                    items += TabInString(8) + optionNameStart + "motion_animation_img_" +
-                                        indexStr + ".setProperty(hmUI.prop.ANIM, " + optionNameStart +
-                                        "motion_animation_paramX_" + indexStr + ");" + Environment.NewLine;
-                                    items += TabInString(8) + optionNameStart + "motion_animation_img_" +
-                                        indexStr + ".setProperty(hmUI.prop.ANIM, " + optionNameStart +
-                                        "motion_animation_paramY_" + indexStr + ");" + Environment.NewLine;
-                                        
-                                    items += TabInString(8) + optionNameStart + "motion_animation_lastTime_" +
-                                        indexStr + " = now.utc;" + Environment.NewLine;
-
-                                    items += TabInString(7) + "if(" + optionNameStart + "motion_animation_count_" +
-                                        indexStr + " == 0) stop_anim_motion_" +
-                                        indexStr + "();" + Environment.NewLine;
+                                    if (!anim_motion.anim_two_sides)
+                                    {
+                                        items += TabInString(7) + optionNameStart + "motion_animation_count_" + indexStr + " = " + optionNameStart +
+                                                                      "motion_animation_count_" + indexStr + " - 1;" + Environment.NewLine;
+                                        items += TabInString(7) + "if(normal_motion_animation_count_" + indexStr +
+                                            " < -1) normal_motion_animation_count_" + indexStr + " = - 1;" + Environment.NewLine;
+                                        items += TabInString(7) + "if(" + optionNameStart + "motion_animation_count_" +
+                                            indexStr + " == 0) stop_anim_motion_" + indexStr + "();" + Environment.NewLine; 
+                                    }
 
                                     items += TabInString(6) + "}; // end animation callback function" + Environment.NewLine;
                                     items += TabInString(6) + Environment.NewLine;
@@ -9579,14 +9793,19 @@ namespace Watch_Face_Editor
                                     // функция вызова зеркального движения
                                     if (anim_rotate.anim_two_sides)
                                     {
-                                        items += Environment.NewLine + TabInString(6) +
-                                            "function anim_rotate_" + indexStr + "_mirror" + "() {";
-                                        items += Environment.NewLine + TabInString(7) + optionNameStart + "rotate_animation_img_" +
-                                            indexStr + ".setProperty(hmUI.prop.ANIM, " + optionNameStart +
-                                            "rotate_animation_param_" + indexStr + "_mirror);";
-                                        items += Environment.NewLine + TabInString(7) + optionNameStart + "rotate_animation_lastTime_" +
-                                            indexStr + " = now.utc;";
-                                        items += Environment.NewLine + TabInString(6) + "};" + Environment.NewLine;
+                                        items += Environment.NewLine + TabInString(6) + "function anim_rotate_" + indexStr + "_mirror" + "() {" + Environment.NewLine;
+                                        items += TabInString(7) + optionNameStart + "rotate_animation_img_" + indexStr + ".setProperty(hmUI.prop.ANIM, " + 
+                                            optionNameStart + "rotate_animation_param_" + indexStr + "_mirror);" + Environment.NewLine;
+                                        items += TabInString(7) + optionNameStart + "rotate_animation_lastTime_" + indexStr + " = now.utc;" + Environment.NewLine;
+
+                                        items += TabInString(7) + optionNameStart + "rotate_animation_count_" + indexStr + " = " + optionNameStart +
+                                            "rotate_animation_count_" + indexStr + " - 1;" + Environment.NewLine;
+                                        items += TabInString(7) + "if(normal_rotate_animation_count_" + indexStr +
+                                            " < -1) normal_rotate_animation_count_" + indexStr + " = - 1;" + Environment.NewLine;
+                                        items += TabInString(7) + "if(" + optionNameStart + "rotate_animation_count_" +
+                                            indexStr + " == 0) stop_anim_rotate_" + indexStr + "();" + Environment.NewLine;
+
+                                        items += Environment.NewLine + TabInString(6) + "}; // end animation_mirror callback function" + Environment.NewLine;
                                     }
 
                                     // функция вызова повтора анимации
@@ -9595,21 +9814,20 @@ namespace Watch_Face_Editor
                                     items += Environment.NewLine + TabInString(6) +
                                         "function anim_rotate_" + indexStr + "_complete_call" + "() {" + Environment.NewLine;
 
-                                    items += TabInString(7) + optionNameStart +
-                                    "rotate_animation_count_" + indexStr + " = " + optionNameStart +
-                                    "rotate_animation_count_" + indexStr + " - 1;" + Environment.NewLine;
-                                    items += TabInString(7) + "if(normal_rotate_animation_count_" + indexStr +
-                                        " < -1) normal_rotate_animation_count_" + indexStr + " = - 1;" + Environment.NewLine;
+                                    items += TabInString(7) + optionNameStart + "rotate_animation_img_" + indexStr + 
+                                        ".setProperty(hmUI.prop.ANIM, " + optionNameStart + "rotate_animation_param_" + indexStr + ");" + Environment.NewLine;
+                                    items += TabInString(7) + optionNameStart + "rotate_animation_lastTime_" + indexStr + " = now.utc;" + Environment.NewLine;
 
-                                    items += TabInString(8) + optionNameStart + "rotate_animation_img_" +
-                                        indexStr + ".setProperty(hmUI.prop.ANIM, " + optionNameStart +
-                                        "rotate_animation_param_" + indexStr + ");" + Environment.NewLine;
-
-                                    items += TabInString(8) + optionNameStart + "rotate_animation_lastTime_" +
-                                        indexStr + " = now.utc;" + Environment.NewLine;
-                                    items += TabInString(7) + "if(" + optionNameStart + "rotate_animation_count_" +
-                                        indexStr + " == 0) stop_anim_rotate_" +
-                                        indexStr + "();" + Environment.NewLine;
+                                    if (!anim_rotate.anim_two_sides)
+                                    {
+                                        items += TabInString(7) + optionNameStart + "rotate_animation_count_" + indexStr + " = " + optionNameStart +
+                                                                   "rotate_animation_count_" + indexStr + " - 1;" + Environment.NewLine;
+                                        items += TabInString(7) + "if(normal_rotate_animation_count_" + indexStr +
+                                            " < -1) normal_rotate_animation_count_" + indexStr + " = - 1;" + Environment.NewLine;
+                                        items += TabInString(7) + "if(" + optionNameStart + "rotate_animation_count_" +
+                                            indexStr + " == 0) stop_anim_rotate_" +
+                                            indexStr + "();" + Environment.NewLine; 
+                                    }
 
                                     items += TabInString(6) + "}; // end animation callback function" + Environment.NewLine;
                                     items += TabInString(6) + Environment.NewLine;
@@ -15521,13 +15739,16 @@ namespace Watch_Face_Editor
 
                 //options += TabInString(7) + "count: " + editable_elements.Elements.Count.ToString() + "," + Environment.NewLine;
                 options += TabInString(7) + "count: " + count.ToString() + "," + Environment.NewLine;
-                options += TabInString(7) + "select_list: {" + Environment.NewLine;
-                options += TabInString(8) + "title_font_size: 34," + Environment.NewLine;
-                options += TabInString(8) + "title_align_h: hmUI.align.CENTER_H," + Environment.NewLine;
-                options += TabInString(8) + "list_item_vspace: 8," + Environment.NewLine;
-                options += TabInString(8) + "list_tips_text_font_size: 32," + Environment.NewLine;
-                options += TabInString(8) + "list_tips_text_align_h: hmUI.align.LEFT" + Environment.NewLine;
-                options += TabInString(7) + "}," + Environment.NewLine;
+                if (comboBox_watch_model.Text != "GTS 4 mini")
+                {
+                    options += TabInString(7) + "select_list: {" + Environment.NewLine;
+                    options += TabInString(8) + "title_font_size: 34," + Environment.NewLine;
+                    options += TabInString(8) + "title_align_h: hmUI.align.CENTER_H," + Environment.NewLine;
+                    options += TabInString(8) + "list_item_vspace: 8," + Environment.NewLine;
+                    options += TabInString(8) + "list_tips_text_font_size: 32," + Environment.NewLine;
+                    options += TabInString(8) + "list_tips_text_align_h: hmUI.align.LEFT" + Environment.NewLine;
+                    options += TabInString(7) + "}," + Environment.NewLine; 
+                }
                 options += TabInString(7) + "tips_BG: '" + editable_elements.tips_BG + ".png'," + Environment.NewLine;
                 //options += TabInString(7) + "tips_x: " + editable_elements.tips_x.ToString() + "," + Environment.NewLine;
                 //options += TabInString(7) + "tips_y: " + editable_elements.tips_y.ToString() + "," + Environment.NewLine;
@@ -15632,12 +15853,19 @@ namespace Watch_Face_Editor
         }
 
         /// <summary>Распознаем текст и преобразуем JS в Json</summary>
-        private void JSToJson(string fileName)
+        private void JSToJson(string fileName, out string user_functions, out string user_script_start, out string user_script_end, out string resume_call, out string pause_call)
         {
+            user_functions = "";
+            user_script_start = "";
+            user_script_end = "";
+            resume_call = "";
+            pause_call = "";
+
             Watch_Face = null;
             if (!File.Exists(fileName)) return;
             string functionText = File.ReadAllText(fileName);
             // вычищаем код от функций которые могот помешать парсингу
+            #region code cleanup
             int startPosDel = functionText.IndexOf("//start of ignored block");
             int endPosDel = functionText.IndexOf("//end of ignored block");
             while (startPosDel > 0 && startPosDel < endPosDel)
@@ -15672,7 +15900,85 @@ namespace Watch_Face_Editor
             //functionText = functionText.Replace("{px:n}", "px:n");
             //functionText = functionText.Replace("{px:g}", "px:g");
             functionText = functionText.Replace("const {px}", "const px");
+            #endregion
             // конец очистки кода
+
+            #region user_script
+            string start_user_script = "// start user_functions.js";
+            string end_user_script = "// end user_functions.js";
+            int user_script_startPos = functionText.IndexOf(start_user_script);
+            int user_script_endPos = functionText.IndexOf(end_user_script);
+            if (user_script_startPos > 0 && user_script_startPos < user_script_endPos)
+            {
+                int lenght = user_script_endPos - user_script_startPos - start_user_script.Length;
+                string user_script_text = functionText.Substring(user_script_startPos + start_user_script.Length, lenght);
+                user_script_text = user_script_text.Trim();
+                user_functions = user_script_text;
+
+                lenght = user_script_endPos + end_user_script.Length - user_script_startPos;
+                functionText = functionText.Remove(user_script_startPos, lenght);
+            }
+
+            start_user_script = "// start user_script_start.js";
+            end_user_script = "// end user_script_start.js";
+            user_script_startPos = functionText.IndexOf(start_user_script);
+            user_script_endPos = functionText.IndexOf(end_user_script);
+            if (user_script_startPos > 0 && user_script_startPos < user_script_endPos)
+            {
+                int lenght = user_script_endPos - user_script_startPos - start_user_script.Length;
+                string user_script_text = functionText.Substring(user_script_startPos + start_user_script.Length, lenght);
+                user_script_text = user_script_text.Trim();
+                user_script_start = user_script_text;
+
+                lenght = user_script_endPos + end_user_script.Length - user_script_startPos;
+                functionText = functionText.Remove(user_script_startPos, lenght);
+            }
+
+            start_user_script = "// start user_script_end.js";
+            end_user_script = "// end user_script_end.js";
+            user_script_startPos = functionText.IndexOf(start_user_script);
+            user_script_endPos = functionText.IndexOf(end_user_script);
+            if (user_script_startPos > 0 && user_script_startPos < user_script_endPos)
+            {
+                int lenght = user_script_endPos - user_script_startPos - start_user_script.Length;
+                string user_script_text = functionText.Substring(user_script_startPos + start_user_script.Length, lenght);
+                user_script_text = user_script_text.Trim();
+                user_script_end = user_script_text;
+
+                lenght = user_script_endPos + end_user_script.Length - user_script_startPos;
+                functionText = functionText.Remove(user_script_startPos, lenght);
+            }
+
+            start_user_script = "// start resume_call.js";
+            end_user_script = "// end resume_call.js";
+            user_script_startPos = functionText.IndexOf(start_user_script);
+            user_script_endPos = functionText.IndexOf(end_user_script);
+            if (user_script_startPos > 0 && user_script_startPos < user_script_endPos)
+            {
+                int lenght = user_script_endPos - user_script_startPos - start_user_script.Length;
+                string user_script_text = functionText.Substring(user_script_startPos + start_user_script.Length, lenght);
+                user_script_text = user_script_text.Trim();
+                resume_call = user_script_text;
+
+                lenght = user_script_endPos + end_user_script.Length - user_script_startPos;
+                functionText = functionText.Remove(user_script_startPos, lenght);
+            }
+
+            start_user_script = "// start pause_call.js";
+            end_user_script = "// end pause_call.js";
+            user_script_startPos = functionText.IndexOf(start_user_script);
+            user_script_endPos = functionText.IndexOf(end_user_script);
+            if (user_script_startPos > 0 && user_script_startPos < user_script_endPos)
+            {
+                int lenght = user_script_endPos - user_script_startPos - start_user_script.Length;
+                string user_script_text = functionText.Substring(user_script_startPos + start_user_script.Length, lenght);
+                user_script_text = user_script_text.Trim();
+                pause_call = user_script_text;
+
+                lenght = user_script_endPos + end_user_script.Length - user_script_startPos;
+                functionText = functionText.Remove(user_script_startPos, lenght);
+            }
+            #endregion
 
             string functionName = "";
             while (functionName != "init_view()" && functionText.Length > 10)
@@ -16139,6 +16445,30 @@ namespace Watch_Face_Editor
 
                             if (objectName.EndsWith("icon_img"))
                             {
+
+                                if (objectName.EndsWith("year_icon_img"))
+                                {
+                                    ElementDateYear year = (ElementDateYear)elementsList.Find(e => e.GetType().Name == "ElementDateYear");
+                                    if (year == null)
+                                    {
+                                        elementsList.Add(new ElementDateYear());
+                                        year = (ElementDateYear)elementsList.Find(e => e.GetType().Name == "ElementDateYear");
+                                    }
+                                    if (year != null)
+                                    {
+                                        int offset = 1;
+                                        if (year.Number != null) offset++;
+                                        if (year.Text_rotation != null) offset++;
+                                        if (year.Text_circle != null) offset++;
+
+                                        year.Icon = new hmUI_widget_IMG();
+                                        year.Icon.src = img.src;
+                                        year.Icon.x = img.x;
+                                        year.Icon.y = img.y;
+                                        year.Icon.visible = true;
+                                        year.Icon.position = offset;
+                                    }
+                                }
 
                                 if (objectName.EndsWith("step_icon_img"))
                                 {
@@ -18884,7 +19214,6 @@ namespace Watch_Face_Editor
                             {
                                 if (img_number.type == "DAY")
                                 {
-                                    int offsetNumber = 1;
                                     ElementDateDay dateDay = (ElementDateDay)elementsList.Find(e => e.GetType().Name == "ElementDateDay");
                                     if (dateDay == null)
                                     {
@@ -18893,7 +19222,11 @@ namespace Watch_Face_Editor
                                     }
                                     if (dateDay != null)
                                     {
+                                        int offsetNumber = 1;
                                         if (dateDay.Pointer != null) offsetNumber++;
+                                        if (dateDay.Text_rotation != null) offsetNumber++;
+                                        if (dateDay.Text_circle != null) offsetNumber++;
+
                                         dateDay.Number = img_number;
                                         dateDay.Number.position = offsetNumber;
                                         dateDay.Number.visible = true;
@@ -18904,7 +19237,6 @@ namespace Watch_Face_Editor
 
                                 if (img_number.type == "MONTH")
                                 {
-                                    int offsetNumber = 1;
                                     ElementDateMonth dateMonth = (ElementDateMonth)elementsList.Find(e => e.GetType().Name == "ElementDateMonth");
                                     if (dateMonth == null)
                                     {
@@ -18913,8 +19245,12 @@ namespace Watch_Face_Editor
                                     }
                                     if (dateMonth != null)
                                     {
+                                        int offsetNumber = 1;
                                         if (dateMonth.Pointer != null) offsetNumber++;
                                         if (dateMonth.Images != null) offsetNumber++;
+                                        if (dateMonth.Text_rotation != null) offsetNumber++;
+                                        if (dateMonth.Text_circle != null) offsetNumber++;
+
                                         dateMonth.Number = img_number;
                                         dateMonth.Number.position = offsetNumber;
                                         dateMonth.Number.visible = true;
@@ -18933,7 +19269,13 @@ namespace Watch_Face_Editor
                                     }
                                     if (dateYear != null)
                                     {
+                                        int offsetNumber = 1;
+                                        if (dateYear.Text_rotation != null) offsetNumber++;
+                                        if (dateYear.Text_circle != null) offsetNumber++;
+                                        if (dateYear.Icon != null) offsetNumber++;
+
                                         dateYear.Number = img_number;
+                                        dateYear.Number.position = offsetNumber;
                                         dateYear.Number.visible = true;
                                     }
                                 }
@@ -18947,14 +19289,17 @@ namespace Watch_Face_Editor
                             {
                                 if (img_level.type == "MONTH")
                                 {
-                                    int offsetNumber = 1;
                                     ElementDateMonth dateMonth = (ElementDateMonth)elementsList.Find(e => e.GetType().Name == "ElementDateMonth");
                                     if (dateMonth == null) elementsList.Add(new ElementDateMonth());
                                     dateMonth = (ElementDateMonth)elementsList.Find(e => e.GetType().Name == "ElementDateMonth");
                                     if (dateMonth != null)
                                     {
+                                        int offsetNumber = 1;
                                         if (dateMonth.Pointer != null) offsetNumber++;
                                         if (dateMonth.Number != null) offsetNumber++;
+                                        if (dateMonth.Text_rotation != null) offsetNumber++;
+                                        if (dateMonth.Text_circle != null) offsetNumber++;
+
                                         dateMonth.Images = img_level;
                                         dateMonth.Images.position = offsetNumber;
                                         dateMonth.Images.visible = true;
@@ -18974,7 +19319,6 @@ namespace Watch_Face_Editor
                         hmUI_widget_IMG_POINTER img_pointer = Object_DATE_POINTER(parametrs);
                         if (img_pointer.type == "DAY")
                         {
-                            int offsetPointer = 1;
                             ElementDateDay dateDay = (ElementDateDay)elementsList.Find(e => e.GetType().Name == "ElementDateDay");
                             if (dateDay == null)
                             {
@@ -18983,7 +19327,11 @@ namespace Watch_Face_Editor
                             }
                             if (dateDay != null)
                             {
+                                int offsetPointer = 1;
                                 if (dateDay.Number != null) offsetPointer++;
+                                if (dateDay.Text_rotation != null) offsetPointer++;
+                                if (dateDay.Text_circle != null) offsetPointer++;
+
                                 dateDay.Pointer = img_pointer;
                                 dateDay.Pointer.position = offsetPointer;
                                 dateDay.Pointer.visible = true;
@@ -18993,7 +19341,6 @@ namespace Watch_Face_Editor
                         }
                         if (img_pointer.type == "MONTH")
                         {
-                            int offsetPointer = 1;
                             ElementDateMonth dateMonth = (ElementDateMonth)elementsList.Find(e => e.GetType().Name == "ElementDateMonth");
                             if (dateMonth == null)
                             {
@@ -19002,8 +19349,12 @@ namespace Watch_Face_Editor
                             }
                             if (dateMonth != null)
                             {
+                                int offsetPointer = 1;
                                 if (dateMonth.Number != null) offsetPointer++;
                                 if (dateMonth.Images != null) offsetPointer++;
+                                if (dateMonth.Text_rotation != null) offsetPointer++;
+                                if (dateMonth.Text_circle != null) offsetPointer++;
+
                                 dateMonth.Pointer = img_pointer;
                                 dateMonth.Pointer.position = offsetPointer;
                                 dateMonth.Pointer.visible = true;
@@ -21132,6 +21483,112 @@ namespace Watch_Face_Editor
                             }
                         }
 
+                        if (textRotate.type == "DAY")
+                        {
+                            ElementDateDay day = (ElementDateDay)elementsList.Find(e => e.GetType().Name == "ElementDateDay");
+                            if (day == null)
+                            {
+                                elementsList.Add(new ElementDateDay());
+                                day = (ElementDateDay)elementsList.Find(e => e.GetType().Name == "ElementDateDay");
+                            }
+                            if (day != null)
+                            {
+                                int offset = 1;
+                                if (day.Number != null) offset++;
+                                //if (day.Text_rotation != null) offset++;
+                                if (day.Text_circle != null) offset++;
+                                if (day.Pointer != null) offset++;
+
+                                day.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                                day.Text_rotation.img_First = textRotate.img_First;
+                                day.Text_rotation.imageX = textRotate.imageX;
+                                day.Text_rotation.imageY = textRotate.imageY;
+                                day.Text_rotation.space = textRotate.space;
+                                day.Text_rotation.angle = textRotate.angle;
+                                day.Text_rotation.zero = textRotate.zero;
+                                day.Text_rotation.unit = textRotate.unit;
+                                day.Text_rotation.unit_in_alignment = textRotate.unit_in_alignment;
+                                day.Text_rotation.imperial_unit = textRotate.imperial_unit;
+                                day.Text_rotation.negative_image = textRotate.negative_image;
+                                day.Text_rotation.invalid_image = textRotate.invalid_image;
+                                day.Text_rotation.dot_image = textRotate.dot_image;
+                                day.Text_rotation.align = textRotate.align;
+                                day.Text_rotation.visible = true;
+                                day.Text_rotation.position = offset;
+                            }
+                        }
+
+                        if (textRotate.type == "MONTH")
+                        {
+                            ElementDateMonth month = (ElementDateMonth)elementsList.Find(e => e.GetType().Name == "ElementDateMonth");
+                            if (month == null)
+                            {
+                                elementsList.Add(new ElementDateMonth());
+                                month = (ElementDateMonth)elementsList.Find(e => e.GetType().Name == "ElementDateMonth");
+                            }
+                            if (month != null)
+                            {
+                                int offset = 1;
+                                if (month.Images != null) offset++;
+                                if (month.Number != null) offset++;
+                                //if (month.Text_rotation != null) offset++;
+                                if (month.Text_circle != null) offset++;
+                                if (month.Pointer != null) offset++;
+
+                                month.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                                month.Text_rotation.img_First = textRotate.img_First;
+                                month.Text_rotation.imageX = textRotate.imageX;
+                                month.Text_rotation.imageY = textRotate.imageY;
+                                month.Text_rotation.space = textRotate.space;
+                                month.Text_rotation.angle = textRotate.angle;
+                                month.Text_rotation.zero = textRotate.zero;
+                                month.Text_rotation.unit = textRotate.unit;
+                                month.Text_rotation.unit_in_alignment = textRotate.unit_in_alignment;
+                                month.Text_rotation.imperial_unit = textRotate.imperial_unit;
+                                month.Text_rotation.negative_image = textRotate.negative_image;
+                                month.Text_rotation.invalid_image = textRotate.invalid_image;
+                                month.Text_rotation.dot_image = textRotate.dot_image;
+                                month.Text_rotation.align = textRotate.align;
+                                month.Text_rotation.visible = true;
+                                month.Text_rotation.position = offset;
+                            }
+                        }
+
+                        if (textRotate.type == "YEAR")
+                        {
+                            ElementDateYear year = (ElementDateYear)elementsList.Find(e => e.GetType().Name == "ElementDateYear");
+                            if (year == null)
+                            {
+                                elementsList.Add(new ElementDateYear());
+                                year = (ElementDateYear)elementsList.Find(e => e.GetType().Name == "ElementDateYear");
+                            }
+                            if (year != null)
+                            {
+                                int offset = 1;
+                                if (year.Number != null) offset++;
+                                //if (year.Text_rotation != null) offset++;
+                                if (year.Text_circle != null) offset++;
+                                if (year.Icon != null) offset++;
+
+                                year.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                                year.Text_rotation.img_First = textRotate.img_First;
+                                year.Text_rotation.imageX = textRotate.imageX;
+                                year.Text_rotation.imageY = textRotate.imageY;
+                                year.Text_rotation.space = textRotate.space;
+                                year.Text_rotation.angle = textRotate.angle;
+                                year.Text_rotation.zero = textRotate.zero;
+                                year.Text_rotation.unit = textRotate.unit;
+                                year.Text_rotation.unit_in_alignment = textRotate.unit_in_alignment;
+                                year.Text_rotation.imperial_unit = textRotate.imperial_unit;
+                                year.Text_rotation.negative_image = textRotate.negative_image;
+                                year.Text_rotation.invalid_image = textRotate.invalid_image;
+                                year.Text_rotation.dot_image = textRotate.dot_image;
+                                year.Text_rotation.align = textRotate.align;
+                                year.Text_rotation.visible = true;
+                                year.Text_rotation.position = offset;
+                            }
+                        }
+
                         if (textRotate.type == "STEP")
                         {
                             ElementSteps steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
@@ -22100,6 +22557,118 @@ namespace Watch_Face_Editor
                                 second.Second_circle.vertical_alignment = textCircle.vertical_alignment;
                                 second.Second_circle.visible = true;
                                 second.Second_circle.position = offset;
+                            }
+                        }
+
+                        if (textCircle.type == "DAY")
+                        {
+                            ElementDateDay day = (ElementDateDay)elementsList.Find(e => e.GetType().Name == "ElementDateDay");
+                            if (day == null)
+                            {
+                                elementsList.Add(new ElementDateDay());
+                                day = (ElementDateDay)elementsList.Find(e => e.GetType().Name == "ElementDateDay");
+                            }
+                            if (day != null)
+                            {
+                                int offset = 1;
+                                if (day.Number != null) offset++;
+                                if (day.Text_rotation != null) offset++;
+                                //if (day.Text_circle != null) offset++;
+                                if (day.Pointer != null) offset++;
+
+                                day.Text_circle = new Text_Circle();
+                                day.Text_circle.img_First = textCircle.img_First;
+                                day.Text_circle.circle_center_X = textCircle.circle_center_X;
+                                day.Text_circle.circle_center_Y = textCircle.circle_center_Y;
+                                day.Text_circle.char_space_angle = textCircle.char_space_angle;
+                                day.Text_circle.angle = textCircle.angle;
+                                day.Text_circle.radius = textCircle.radius;
+                                day.Text_circle.zero = textCircle.zero;
+                                day.Text_circle.unit = textCircle.unit;
+                                day.Text_circle.unit_in_alignment = textCircle.unit_in_alignment;
+                                day.Text_circle.imperial_unit = textCircle.imperial_unit;
+                                day.Text_circle.error_image = textCircle.error_image;
+                                day.Text_circle.dot_image = textCircle.dot_image;
+                                day.Text_circle.reverse_direction = textCircle.reverse_direction;
+                                day.Text_circle.horizontal_alignment = textCircle.horizontal_alignment;
+                                day.Text_circle.vertical_alignment = textCircle.vertical_alignment;
+                                day.Text_circle.visible = true;
+                                day.Text_circle.position = offset;
+                            }
+                        }
+
+                        if (textCircle.type == "MONTH")
+                        {
+                            ElementDateMonth month = (ElementDateMonth)elementsList.Find(e => e.GetType().Name == "ElementDateMonth");
+                            if (month == null)
+                            {
+                                elementsList.Add(new ElementDateMonth());
+                                month = (ElementDateMonth)elementsList.Find(e => e.GetType().Name == "ElementDateMonth");
+                            }
+                            if (month != null)
+                            {
+                                int offset = 1;
+                                if (month.Images != null) offset++;
+                                if (month.Number != null) offset++;
+                                if (month.Text_rotation != null) offset++;
+                                //if (month.Text_circle != null) offset++;
+                                if (month.Pointer != null) offset++;
+
+                                month.Text_circle = new Text_Circle();
+                                month.Text_circle.img_First = textCircle.img_First;
+                                month.Text_circle.circle_center_X = textCircle.circle_center_X;
+                                month.Text_circle.circle_center_Y = textCircle.circle_center_Y;
+                                month.Text_circle.char_space_angle = textCircle.char_space_angle;
+                                month.Text_circle.angle = textCircle.angle;
+                                month.Text_circle.radius = textCircle.radius;
+                                month.Text_circle.zero = textCircle.zero;
+                                month.Text_circle.unit = textCircle.unit;
+                                month.Text_circle.unit_in_alignment = textCircle.unit_in_alignment;
+                                month.Text_circle.imperial_unit = textCircle.imperial_unit;
+                                month.Text_circle.error_image = textCircle.error_image;
+                                month.Text_circle.dot_image = textCircle.dot_image;
+                                month.Text_circle.reverse_direction = textCircle.reverse_direction;
+                                month.Text_circle.horizontal_alignment = textCircle.horizontal_alignment;
+                                month.Text_circle.vertical_alignment = textCircle.vertical_alignment;
+                                month.Text_circle.visible = true;
+                                month.Text_circle.position = offset;
+                            }
+                        }
+
+                        if (textCircle.type == "YEAR")
+                        {
+                            ElementDateYear year = (ElementDateYear)elementsList.Find(e => e.GetType().Name == "ElementDateYear");
+                            if (year == null)
+                            {
+                                elementsList.Add(new ElementDateYear());
+                                year = (ElementDateYear)elementsList.Find(e => e.GetType().Name == "ElementDateYear");
+                            }
+                            if (year != null)
+                            {
+                                int offset = 1;
+                                if (year.Number != null) offset++;
+                                if (year.Text_rotation != null) offset++;
+                                //if (year.Text_circle != null) offset++;
+                                if (year.Icon != null) offset++;
+
+                                year.Text_circle = new Text_Circle();
+                                year.Text_circle.img_First = textCircle.img_First;
+                                year.Text_circle.circle_center_X = textCircle.circle_center_X;
+                                year.Text_circle.circle_center_Y = textCircle.circle_center_Y;
+                                year.Text_circle.char_space_angle = textCircle.char_space_angle;
+                                year.Text_circle.angle = textCircle.angle;
+                                year.Text_circle.radius = textCircle.radius;
+                                year.Text_circle.zero = textCircle.zero;
+                                year.Text_circle.unit = textCircle.unit;
+                                year.Text_circle.unit_in_alignment = textCircle.unit_in_alignment;
+                                year.Text_circle.imperial_unit = textCircle.imperial_unit;
+                                year.Text_circle.error_image = textCircle.error_image;
+                                year.Text_circle.dot_image = textCircle.dot_image;
+                                year.Text_circle.reverse_direction = textCircle.reverse_direction;
+                                year.Text_circle.horizontal_alignment = textCircle.horizontal_alignment;
+                                year.Text_circle.vertical_alignment = textCircle.vertical_alignment;
+                                year.Text_circle.visible = true;
+                                year.Text_circle.position = offset;
                             }
                         }
 
@@ -26507,7 +27076,8 @@ namespace Watch_Face_Editor
         private void AddListener(ref string variables, ref string items, ref string exist_items, string sensorName, string valueName, string newFunction, 
             ref string resume_call, ref string pause_call, string optionNameStart)
         {
-            if (valueName == "second")
+            if (valueName == "hour" || valueName == "minute" || valueName == "second" ||
+                valueName == "year" || valueName == "month" || valueName == "day")
             {
                 if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
                                     exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
@@ -26525,8 +27095,8 @@ namespace Watch_Face_Editor
                     {
                         resume_call += TabInString(8) + "if (screenType == hmSetting.screen_type.AOD) {" + Environment.NewLine;
                     }
-                    string variablesTimerName = "let " + timerName + " =";
-                    if (variables.IndexOf(variablesTimerName) < 0)
+                    //string variablesTimerName = "let " + timerName + " =";
+                    if (variables.IndexOf("let " + timerName + " =") < 0)
                     {
                         variables += TabInString(4) + "let " + timerName + " = undefined;" + Environment.NewLine; 
                     }
@@ -26545,15 +27115,20 @@ namespace Watch_Face_Editor
             }
             else
             {
-                string sensorStr = "";
+                string sensorStr = sensorName + ".addEventListener(hmSensor.event.CHANGE, function() {";
+                /*string sensorStr = "";
                 if (valueName == "hour" || valueName == "minute")
                 {
                     sensorStr = sensorName + ".addEventListener(" + sensorName + ".event.MINUTEEND, function() {";
                 }
+                else if(valueName == "year" || valueName == "month" || valueName == "day")
+                {
+                    sensorStr = sensorName + ".addEventListener(" + sensorName + ".event.DAYCHANGE, function() {";
+                }
                 else
                 {
                     sensorStr = sensorName + ".addEventListener(hmSensor.event.CHANGE, function() {";
-                }
+                }*/
                 if (items.IndexOf(sensorStr) < 0 && exist_items.IndexOf(sensorStr) < 0)
                 {
                     items += TabInString(6) + sensorStr + Environment.NewLine;
@@ -26742,17 +27317,17 @@ namespace Watch_Face_Editor
             }
             AddListener(ref variables, ref items, ref exist_items, sensorName, sensorTargetValue, "text_update();", ref resume_call, ref pause_call, optionNameStart);
 
-            if (items.IndexOf("function toDegree (radian) {") < 0 &&
-                exist_items.IndexOf("function toDegree (radian) {") < 0)
-            {
-                items += TabInString(6) + Environment.NewLine;
-                items += TabInString(6) + "function toDegree (radian) {" + Environment.NewLine;
-                items += TabInString(7) + "return radian * (180 / Math.PI);" + Environment.NewLine;
-                items += TabInString(6) + "};" + Environment.NewLine;
-            }
+            //if (items.IndexOf("function toDegree (radian) {") < 0 &&
+            //    exist_items.IndexOf("function toDegree (radian) {") < 0)
+            //{
+            //    items += TabInString(6) + Environment.NewLine;
+            //    items += TabInString(6) + "function toDegree (radian) {" + Environment.NewLine;
+            //    items += TabInString(7) + "return radian * (180 / Math.PI);" + Environment.NewLine;
+            //    items += TabInString(6) + "};" + Environment.NewLine;
+            //}
 
 
-            text_update += Environment.NewLine + TabInString(7) + "console.log('update text rotate " + sensorID + "');" + Environment.NewLine;
+            text_update += Environment.NewLine + TabInString(7) + "console.log('update text rotate " + variableName + sensorID + "');" + Environment.NewLine;
             if (text_update.IndexOf("let " + valueName + " = " + sensorName + "." + sensorTargetValue + ";") < 0)
             {
                 text_update += TabInString(7) + "let " + valueName + " = " + sensorName + "." + sensorTargetValue + ";" + Environment.NewLine;
@@ -26765,10 +27340,25 @@ namespace Watch_Face_Editor
                 }
             }
 
-            text_update += TabInString(7) + "let " + variableStartName + "rotate_string = parseInt(" + valueName + ").toString();" + Environment.NewLine;
-            if (text_rotate.zero)
-                text_update += TabInString(7) + variableStartName + "rotate_string = " + variableStartName + "rotate_string.padStart(" + 
-                    valueLenght.ToString() + ", '0');" + Environment.NewLine;
+            if (valueName == "valueYear")
+            {
+                if (text_rotate.zero)
+                {
+                    text_update += TabInString(7) + "let " + variableStartName + "rotate_string = parseInt(" + valueName + ").toString();" + Environment.NewLine;
+                }
+                else
+                {
+                    text_update += TabInString(7) + "let " + variableStartName + "rotate_string = parseInt(" + valueName + " % 100).toString();" + Environment.NewLine;
+                }
+            }
+            else
+            {
+                text_update += TabInString(7) + "let " + variableStartName + "rotate_string = parseInt(" + valueName + ").toString();" + Environment.NewLine;
+                if (text_rotate.zero)
+                    text_update += TabInString(7) + variableStartName + "rotate_string = " + variableStartName + "rotate_string.padStart(" +
+                        valueLenght.ToString() + ", '0');" + Environment.NewLine; 
+            }
+
             if (optionNameStart == "normal_")
             {
                 text_update += Environment.NewLine + TabInString(7) +
@@ -26976,7 +27566,7 @@ namespace Watch_Face_Editor
             }
 
 
-            text_update += Environment.NewLine + TabInString(7) + "console.log('update text circle " + sensorID + "');" + Environment.NewLine;
+            text_update += Environment.NewLine + TabInString(7) + "console.log('update text circle " + variableName + sensorID + "');" + Environment.NewLine;
             if (text_update.IndexOf("let " + valueName +" = " + sensorName + "." + sensorTargetValue + ";") < 0)
             {
                 text_update += TabInString(7) + "let " + valueName +" = " + sensorName + "." + sensorTargetValue + ";" + Environment.NewLine;
@@ -26989,10 +27579,25 @@ namespace Watch_Face_Editor
                 }
             }
 
-            text_update += TabInString(7) + "let " + variableStartName + "circle_string = parseInt(" + valueName +").toString();" + Environment.NewLine;
-            if (text_circle.zero)
-                text_update += TabInString(7) + variableStartName + "circle_string = " + variableStartName + "circle_string.padStart(" + 
-                    valueLenght.ToString() + ", '0');" + Environment.NewLine;
+            if (valueName == "valueYear")
+            {
+                if (text_circle.zero)
+                {
+                    text_update += TabInString(7) + "let " + variableStartName + "circle_string = parseInt(" + valueName + ").toString();" + Environment.NewLine;
+                }
+                else
+                {
+                    text_update += TabInString(7) + "let " + variableStartName + "circle_string = parseInt(" + valueName + " % 100).toString();" + Environment.NewLine;
+                }
+            }
+            else
+            {
+                text_update += TabInString(7) + "let " + variableStartName + "circle_string = parseInt(" + valueName + ").toString();" + Environment.NewLine;
+                if (text_circle.zero)
+                    text_update += TabInString(7) + variableStartName + "circle_string = " + variableStartName + "circle_string.padStart(" +
+                        valueLenght.ToString() + ", '0');" + Environment.NewLine; 
+            }
+
             if (optionNameStart == "normal_")
             {
                 text_update += Environment.NewLine + TabInString(7) +

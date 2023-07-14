@@ -174,12 +174,6 @@
     <Compile Include="Elements\UCtrl_DateWeek_Elm.Designer.cs">
       <DependentUpon>UCtrl_DateWeek_Elm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Elements\UCtrl_DateYear_Elm.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Elements\UCtrl_DateYear_Elm.Designer.cs">
-      <DependentUpon>UCtrl_DateYear_Elm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Elements\UCtrl_DigitalTime_Elm.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -233,6 +227,12 @@
     </Compile>
     <Compile Include="Elements\UCtrl_DisconnectAlert_Elm.Designer.cs">
       <DependentUpon>UCtrl_DisconnectAlert_Elm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Elements\UCtrl_DateYear_Elm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\UCtrl_DateYear_Elm.Designer.cs">
+      <DependentUpon>UCtrl_DateYear_Elm.cs</DependentUpon>
     </Compile>
     <Compile Include="UCtrl_DisconnectAlert_Opt.cs">
       <SubType>UserControl</SubType>
@@ -709,6 +709,9 @@
       <DependentUpon>UCtrl_DateYear_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_DateYear_Elm.de.resx">
+      <DependentUpon>UCtrl_DateYear_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_DateYear_Elm.en.resx">
       <DependentUpon>UCtrl_DateYear_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_DateYear_Elm.es.resx">
@@ -1470,12 +1473,6 @@
     <EmbeddedResource Include="Elements\UCtrl_DateWeek_Elm.resx">
       <DependentUpon>UCtrl_DateWeek_Elm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Elements\UCtrl_DateYear_Elm.en.resx">
-      <DependentUpon>UCtrl_DateYear_Elm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Elements\UCtrl_DateYear_Elm.resx">
-      <DependentUpon>UCtrl_DateYear_Elm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_DigitalTime_Elm.en.resx">
       <DependentUpon>UCtrl_DigitalTime_Elm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1542,6 +1539,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_DisconnectAlert_Elm.resx">
       <DependentUpon>UCtrl_DisconnectAlert_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_DateYear_Elm.resx">
+      <DependentUpon>UCtrl_DateYear_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_DisconnectAlert_Opt.cs.resx">
       <DependentUpon>UCtrl_DisconnectAlert_Opt.cs</DependentUpon>

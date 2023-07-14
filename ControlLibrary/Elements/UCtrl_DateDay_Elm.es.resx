@@ -126,4 +126,10 @@
   <data name="button_Pointer.Text" xml:space="preserve">
     <value>Puntero</value>
   </data>
+  <data name="button_Text_circle.Text" xml:space="preserve">
+    <value>Valor en un círculo</value>
+  </data>
+  <data name="button_Text_rotation.Text" xml:space="preserve">
+    <value>Valor en ángulo</value>
+  </data>
 </root>

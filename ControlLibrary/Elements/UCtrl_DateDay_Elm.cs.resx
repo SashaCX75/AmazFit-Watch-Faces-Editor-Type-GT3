@@ -126,4 +126,10 @@
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Den</value>
   </data>
+  <data name="button_Text_circle.Text" xml:space="preserve">
+    <value>Údaje o kruhu</value>
+  </data>
+  <data name="button_Text_rotation.Text" xml:space="preserve">
+    <value>Údaje v úhlu</value>
+  </data>
 </root>

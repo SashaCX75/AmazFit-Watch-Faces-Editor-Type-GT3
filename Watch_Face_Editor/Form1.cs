@@ -18,6 +18,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -5135,6 +5136,16 @@ namespace Watch_Face_Editor
                                 uCtrl_DateDay_Elm.checkBox_Number.Checked = DateDay.Number.visible;
                                 elementOptions.Add(DateDay.Number.position, "Number");
                             }
+                            if (DateDay.Text_rotation != null)
+                            {
+                                uCtrl_DateDay_Elm.checkBox_Text_rotation.Checked = DateDay.Text_rotation.visible;
+                                elementOptions.Add(DateDay.Text_rotation.position, "Text_rotation");
+                            }
+                            if (DateDay.Text_circle != null)
+                            {
+                                uCtrl_DateDay_Elm.checkBox_Text_circle.Checked = DateDay.Text_circle.visible;
+                                elementOptions.Add(DateDay.Text_circle.position, "Text_circle");
+                            }
                             if (DateDay.Pointer != null)
                             {
                                 uCtrl_DateDay_Elm.checkBox_Pointer.Checked = DateDay.Pointer.visible;
@@ -5159,6 +5170,16 @@ namespace Watch_Face_Editor
                                 uCtrl_DateMonth_Elm.checkBox_Number.Checked = DateMonth.Number.visible;
                                 elementOptions.Add(DateMonth.Number.position, "Number");
                             }
+                            if (DateMonth.Text_rotation != null)
+                            {
+                                uCtrl_DateMonth_Elm.checkBox_Text_rotation.Checked = DateMonth.Text_rotation.visible;
+                                elementOptions.Add(DateMonth.Text_rotation.position, "Text_rotation");
+                            }
+                            if (DateMonth.Text_circle != null)
+                            {
+                                uCtrl_DateMonth_Elm.checkBox_Text_circle.Checked = DateMonth.Text_circle.visible;
+                                elementOptions.Add(DateMonth.Text_circle.position, "Text_circle");
+                            }
                             if (DateMonth.Pointer != null)
                             {
                                 uCtrl_DateMonth_Elm.checkBox_Pointer.Checked = DateMonth.Pointer.visible;
@@ -5170,7 +5191,7 @@ namespace Watch_Face_Editor
                                 elementOptions.Add(DateMonth.Images.position, "Images");
                             }
 
-                            //uCtrl_DateMonth_Elm.SetOptionsPosition(elementOptions);
+                            uCtrl_DateMonth_Elm.SetOptionsPosition(elementOptions);
 
                             uCtrl_DateMonth_Elm.Visible = true;
                             SetElementPositionInGUI(type, count - i - 2);
@@ -5182,10 +5203,40 @@ namespace Watch_Face_Editor
                         case "ElementDateYear":
                             ElementDateYear DateYear = (ElementDateYear)element;
                             uCtrl_DateYear_Elm.SetVisibilityElementStatus(DateYear.visible);
+                            elementOptions = new Dictionary<int, string>();
+                            if (DateYear.Number != null)
+                            {
+                                uCtrl_DateYear_Elm.checkBox_Number.Checked = DateYear.Number.visible;
+                                elementOptions.Add(DateYear.Number.position, "Number");
+                            }
+                            if (DateYear.Text_rotation != null)
+                            {
+                                uCtrl_DateYear_Elm.checkBox_Text_rotation.Checked = DateYear.Text_rotation.visible;
+                                elementOptions.Add(DateYear.Text_rotation.position, "Text_rotation");
+                            }
+                            if (DateYear.Text_circle != null)
+                            {
+                                uCtrl_DateYear_Elm.checkBox_Text_circle.Checked = DateYear.Text_circle.visible;
+                                elementOptions.Add(DateYear.Text_circle.position, "Text_circle");
+                            }
+                            if (DateYear.Icon != null)
+                            {
+                                uCtrl_DateYear_Elm.checkBox_Icon.Checked = DateYear.Icon.visible;
+                                elementOptions.Add(DateYear.Icon.position, "Icon");
+                            }
+
+                            uCtrl_DateYear_Elm.SetOptionsPosition(elementOptions);
 
                             uCtrl_DateYear_Elm.Visible = true;
                             SetElementPositionInGUI(type, count - i - 2);
                             //SetElementPositionInGUI(type, i + 1);
+
+                            //ElementDateYear DateYear = (ElementDateYear)element;
+                            //uCtrl_DateYear_Elm.SetVisibilityElementStatus(DateYear.visible);
+
+                            //uCtrl_DateYear_Elm.Visible = true;
+                            //SetElementPositionInGUI(type, count - i - 2);
+                            ////SetElementPositionInGUI(type, i + 1);
                             break;
                         #endregion
 
@@ -8628,7 +8679,7 @@ namespace Watch_Face_Editor
             //string widgetDelegate = "";
 
             JsonToJS(out variables, out items);
-
+            
 
             string indexText = File.ReadAllText(templatesFileDir + @"\index.js");
             string versionText = "v " +
@@ -9129,7 +9180,13 @@ namespace Watch_Face_Editor
                     }
                 }
                 ///////////////////////////
-                JSToJson(tempDir + index_js); // создаем новый json файл циферблата
+                string user_functions = "";
+                string user_script_start = "";
+                string user_script_end = "";
+                string resume_call = "";
+                string pause_call = "";
+
+                JSToJson(tempDir + index_js, out user_functions, out user_script_start, out user_script_end, out resume_call, out pause_call); // создаем новый json файл циферблата
                 if (Watch_Face != null && Watch_Face.ScreenNormal != null)
                 {
                     if (File.Exists(tempDir + @"\app.json"))
@@ -9532,6 +9589,32 @@ namespace Watch_Face_Editor
                     }
                     string fullProjectName = Path.Combine(projectPath, projectName + ".json");
                     File.WriteAllText(fullProjectName, Watch_Face_String, Encoding.UTF8);
+
+                    if(user_functions.Length > 5)
+                    {
+                        string user_script_fileName = Path.Combine(projectPath, "user_functions.js");
+                        File.WriteAllText(user_script_fileName, user_functions, Encoding.UTF8);
+                    }
+                    if (user_script_start.Length > 5)
+                    {
+                        string user_script_fileName = Path.Combine(projectPath, "user_script_start.js");
+                        File.WriteAllText(user_script_fileName, user_script_start, Encoding.UTF8);
+                    }
+                    if (user_script_end.Length > 5)
+                    {
+                        string user_script_fileName = Path.Combine(projectPath, "user_script_end.js");
+                        File.WriteAllText(user_script_fileName, user_script_end, Encoding.UTF8);
+                    }
+                    if (resume_call.Length > 5)
+                    {
+                        string user_script_fileName = Path.Combine(projectPath, "resume_call.js");
+                        File.WriteAllText(user_script_fileName, resume_call, Encoding.UTF8);
+                    }
+                    if (pause_call.Length > 5)
+                    {
+                        string user_script_fileName = Path.Combine(projectPath, "pause_call.js");
+                        File.WriteAllText(user_script_fileName, pause_call, Encoding.UTF8);
+                    }
 
                     FileName = Path.GetFileName(fullProjectName);
                     FullFileDir = Path.GetDirectoryName(fullProjectName);
@@ -10154,6 +10237,8 @@ namespace Watch_Face_Editor
             {
                 hmUI_widget_IMG_POINTER img_pointer = null;
                 hmUI_widget_IMG_NUMBER img_number = null;
+                hmUI_widget_IMG_NUMBER text_rotation = null;
+                Text_Circle text_circle = null;
 
                 switch (selectElement)
                 {
@@ -10163,6 +10248,24 @@ namespace Watch_Face_Editor
                             img_number = dateDay.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, false);
                             ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_rotation":
+                        if (uCtrl_DateDay_Elm.checkBox_Text_rotation.Checked)
+                        {
+                            text_rotation = dateDay.Text_rotation;
+                            Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
+                            ShowElemenrOptions("Text_rotation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_circle":
+                        if (uCtrl_DateDay_Elm.checkBox_Text_circle.Checked)
+                        {
+                            text_circle = dateDay.Text_circle;
+                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            ShowElemenrOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -10208,6 +10311,8 @@ namespace Watch_Face_Editor
             {
                 hmUI_widget_IMG_POINTER img_pointer = null;
                 hmUI_widget_IMG_NUMBER img_number = null;
+                hmUI_widget_IMG_NUMBER text_rotation = null;
+                Text_Circle text_circle = null;
                 hmUI_widget_IMG_LEVEL img_level = null;
 
                 switch (selectElement)
@@ -10227,6 +10332,24 @@ namespace Watch_Face_Editor
                             img_number = dateMonth.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, false);
                             ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_rotation":
+                        if (uCtrl_DateMonth_Elm.checkBox_Text_rotation.Checked)
+                        {
+                            text_rotation = dateMonth.Text_rotation;
+                            Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, false, false, true);
+                            ShowElemenrOptions("Text_rotation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_circle":
+                        if (uCtrl_DateMonth_Elm.checkBox_Text_circle.Checked)
+                        {
+                            text_circle = dateMonth.Text_circle;
+                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            ShowElemenrOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -10269,14 +10392,61 @@ namespace Watch_Face_Editor
             }
             if (dateYear != null)
             {
-                string selectedElement = uCtrl_DateMonth_Elm.selectedElement;
-                hmUI_widget_IMG_NUMBER img_number = null;
+                //string selectedElement = uCtrl_DateMonth_Elm.selectedElement;
+                string selectElement = uCtrl_DateYear_Elm.selectedElement;
+                if (selectElement.Length == 0) HideAllElemenrOptions();
 
-                if (dateYear.Number == null) dateYear.Number = new hmUI_widget_IMG_NUMBER();
-                img_number = dateYear.Number;
-                Read_ImgNumber_Options(img_number, false, false, "", false, false, true, false);
-                uCtrl_Text_Opt.Year = true;
-                ShowElemenrOptions("Text");
+                hmUI_widget_IMG_NUMBER img_number = null;
+                hmUI_widget_IMG_NUMBER text_rotation = null;
+                Text_Circle text_circle = null;
+                hmUI_widget_IMG icon = null;
+
+                switch (selectElement)
+                {
+                    case "Number":
+                        if (uCtrl_DateYear_Elm.checkBox_Number.Checked)
+                        {
+                            img_number = dateYear.Number;
+                            Read_ImgNumber_Options(img_number, false, false, "", false, false, true, false);
+                            uCtrl_Text_Opt.Year = true;
+                            ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_rotation":
+                        if (uCtrl_DateYear_Elm.checkBox_Text_rotation.Checked)
+                        {
+                            text_rotation = dateYear.Text_rotation;
+                            Read_ImgNumber_Rotate_Options(text_rotation, false, false, false, true, false, true);
+                            ShowElemenrOptions("Text_rotation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_circle":
+                        if (uCtrl_DateYear_Elm.checkBox_Text_circle.Checked)
+                        {
+                            text_circle = dateYear.Text_circle;
+                            Read_TextCircle_Options(text_circle, false, false, true, false, true);
+                            ShowElemenrOptions("Text_circle");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Icon":
+                        if (uCtrl_DateYear_Elm.checkBox_Icon.Checked)
+                        {
+                            icon = dateYear.Icon;
+                            Read_Icon_Options(icon);
+                            ShowElemenrOptions("Icon");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                }
+
+                //if (dateYear.Number == null) dateYear.Number = new hmUI_widget_IMG_NUMBER();
+                //img_number = dateYear.Number;
+                //Read_ImgNumber_Options(img_number, false, false, "", false, false, true, false);
+                //uCtrl_Text_Opt.Year = true;
+                //ShowElemenrOptions("Text");
 
             }
         }
@@ -12649,10 +12819,14 @@ namespace Watch_Face_Editor
             if (dateDay != null)
             {
                 if (dateDay.Number == null) dateDay.Number = new hmUI_widget_IMG_NUMBER();
+                if (dateDay.Text_rotation == null) dateDay.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                if (dateDay.Text_circle == null) dateDay.Text_circle = new Text_Circle();
                 if (dateDay.Pointer == null) dateDay.Pointer = new hmUI_widget_IMG_POINTER();
 
                 Dictionary<string, int> elementOptions = uCtrl_DateDay_Elm.GetOptionsPosition();
                 if (elementOptions.ContainsKey("Number")) dateDay.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Text_rotation")) dateDay.Text_rotation.position = elementOptions["Text_rotation"];
+                if (elementOptions.ContainsKey("Text_circle")) dateDay.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Pointer")) dateDay.Pointer.position = elementOptions["Pointer"];
 
                 CheckBox checkBox = (CheckBox)sender;
@@ -12664,6 +12838,12 @@ namespace Watch_Face_Editor
                         break;
                     case "checkBox_Number":
                         dateDay.Number.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_rotation":
+                        dateDay.Text_rotation.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_circle":
+                        dateDay.Text_circle.visible = checkBox.Checked;
                         break;
                 }
 
@@ -12708,11 +12888,15 @@ namespace Watch_Face_Editor
             if (dateMonth != null)
             {
                 if (dateMonth.Number == null) dateMonth.Number = new hmUI_widget_IMG_NUMBER();
+                if (dateMonth.Text_rotation == null) dateMonth.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                if (dateMonth.Text_circle == null) dateMonth.Text_circle = new Text_Circle();
                 if (dateMonth.Pointer == null) dateMonth.Pointer = new hmUI_widget_IMG_POINTER();
                 if (dateMonth.Images == null) dateMonth.Images = new hmUI_widget_IMG_LEVEL();
 
                 Dictionary<string, int> elementOptions = uCtrl_DateMonth_Elm.GetOptionsPosition();
                 if (elementOptions.ContainsKey("Number")) dateMonth.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Text_rotation")) dateMonth.Text_rotation.position = elementOptions["Text_rotation"];
+                if (elementOptions.ContainsKey("Text_circle")) dateMonth.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Pointer")) dateMonth.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Images")) dateMonth.Images.position = elementOptions["Images"];
 
@@ -12726,6 +12910,12 @@ namespace Watch_Face_Editor
                     case "checkBox_Number":
                         dateMonth.Number.visible = checkBox.Checked;
                         break;
+                    case "checkBox_Text_rotation":
+                        dateMonth.Text_rotation.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_circle":
+                        dateMonth.Text_circle.visible = checkBox.Checked;
+                        break;
                     case "checkBox_Images":
                         dateMonth.Images.visible = checkBox.Checked;
                         break;
@@ -12734,6 +12924,73 @@ namespace Watch_Face_Editor
             }
 
             uCtrl_DateMonth_Elm_SelectChanged(sender, eventArgs);
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_DateYear_Elm_VisibleOptionsChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementDateYear dateYear = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementDateYear");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementDateYear());
+                    dateYear = (ElementDateYear)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDateYear");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementDateYear");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementDateYear());
+                    dateYear = (ElementDateYear)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementDateYear");
+                }
+            }
+
+            if (dateYear != null)
+            {
+                if (dateYear.Number == null) dateYear.Number = new hmUI_widget_IMG_NUMBER();
+                if (dateYear.Text_rotation == null) dateYear.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                if (dateYear.Text_circle == null) dateYear.Text_circle = new Text_Circle();
+                if (dateYear.Icon == null) dateYear.Icon = new hmUI_widget_IMG();
+
+                Dictionary<string, int> elementOptions = uCtrl_Distance_Elm.GetOptionsPosition();
+                if (elementOptions.ContainsKey("Number")) dateYear.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Text_rotation")) dateYear.Text_rotation.position = elementOptions["Text_rotation"];
+                if (elementOptions.ContainsKey("Text_circle")) dateYear.Text_circle.position = elementOptions["Text_circle"];
+                if (elementOptions.ContainsKey("Icon")) dateYear.Icon.position = elementOptions["Icon"];
+
+                CheckBox checkBox = (CheckBox)sender;
+                string name = checkBox.Name;
+                switch (name)
+                {
+                    case "checkBox_Number":
+                        dateYear.Number.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_rotation":
+                        dateYear.Text_rotation.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_circle":
+                        dateYear.Text_circle.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Icon":
+                        dateYear.Icon.visible = checkBox.Checked;
+                        break;
+                }
+
+            }
+
+            uCtrl_DateYear_Elm_SelectChanged(sender, eventArgs);
 
             JSON_Modified = true;
             PreviewImage();
@@ -12831,10 +13088,14 @@ namespace Watch_Face_Editor
             if (dateDay != null)
             {
                 if (dateDay.Number == null) dateDay.Number = new hmUI_widget_IMG_NUMBER();
+                if (dateDay.Text_rotation == null) dateDay.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                if (dateDay.Text_circle == null) dateDay.Text_circle = new Text_Circle();
                 if (dateDay.Pointer == null) dateDay.Pointer = new hmUI_widget_IMG_POINTER();
 
                 //Dictionary<string, int> elementOptions = uCtrl_AnalogTime_Elm.GetOptionsPosition();
                 if (elementOptions.ContainsKey("Number")) dateDay.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Text_rotation")) dateDay.Text_rotation.position = elementOptions["Text_rotation"];
+                if (elementOptions.ContainsKey("Text_circle")) dateDay.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Pointer")) dateDay.Pointer.position = elementOptions["Pointer"];
 
             }
@@ -12876,13 +13137,64 @@ namespace Watch_Face_Editor
             if (dateMonth != null)
             {
                 if (dateMonth.Number == null) dateMonth.Number = new hmUI_widget_IMG_NUMBER();
+                if (dateMonth.Text_rotation == null) dateMonth.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                if (dateMonth.Text_circle == null) dateMonth.Text_circle = new Text_Circle();
                 if (dateMonth.Pointer == null) dateMonth.Pointer = new hmUI_widget_IMG_POINTER();
                 if (dateMonth.Images == null) dateMonth.Images = new hmUI_widget_IMG_LEVEL();
 
                 //Dictionary<string, int> elementOptions = uCtrl_AnalogTime_Elm.GetOptionsPosition();
                 if (elementOptions.ContainsKey("Number")) dateMonth.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Text_rotation")) dateMonth.Text_rotation.position = elementOptions["Text_rotation"];
+                if (elementOptions.ContainsKey("Text_circle")) dateMonth.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Pointer")) dateMonth.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Images")) dateMonth.Images.position = elementOptions["Images"];
+
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_DateYear_Elm_OptionsMoved(object sender, EventArgs eventArgs, Dictionary<string, int> elementOptions)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementDateYear dateYear = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementDateYear");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementDateMonth());
+                    dateYear = (ElementDateYear)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementDateYear");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementDateYear");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementDateMonth());
+                    dateYear = (ElementDateYear)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementDateYear");
+                }
+            }
+
+            if (dateYear != null)
+            {
+                if (dateYear.Number == null) dateYear.Number = new hmUI_widget_IMG_NUMBER();
+                if (dateYear.Text_rotation == null) dateYear.Text_rotation = new hmUI_widget_IMG_NUMBER();
+                if (dateYear.Text_circle == null) dateYear.Text_circle = new Text_Circle();
+
+                //Dictionary<string, int> elementOptions = uCtrl_AnalogTime_Elm.GetOptionsPosition();
+                if (elementOptions.ContainsKey("Number")) dateYear.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Text_rotation")) dateYear.Text_rotation.position = elementOptions["Text_rotation"];
+                if (elementOptions.ContainsKey("Text_circle")) dateYear.Text_circle.position = elementOptions["Text_circle"];
 
             }
 
@@ -17518,6 +17830,37 @@ namespace Watch_Face_Editor
                 });
                 File.WriteAllText(newFullFileNameJson, newJson, Encoding.UTF8);
 
+                string scriptFileName = Path.Combine(FullFileDir, "user_functions.js");
+                if (File.Exists(scriptFileName))
+                {
+                    string scriptFileNameNew = Path.Combine(newFullDirName, "user_functions.js");
+                    File.Copy(scriptFileName, scriptFileNameNew);
+                }
+                scriptFileName = Path.Combine(FullFileDir, "user_script.js");
+                if (File.Exists(scriptFileName))
+                {
+                    string scriptFileNameNew = Path.Combine(newFullDirName, "user_script.js");
+                    File.Copy(scriptFileName, scriptFileNameNew);
+                }
+                scriptFileName = Path.Combine(FullFileDir, "resume_call.js");
+                if (File.Exists(scriptFileName))
+                {
+                    string scriptFileNameNew = Path.Combine(newFullDirName, "resume_call.js");
+                    File.Copy(scriptFileName, scriptFileNameNew);
+                }
+                scriptFileName = Path.Combine(FullFileDir, "pause_call.js");
+                if (File.Exists(scriptFileName))
+                {
+                    string scriptFileNameNew = Path.Combine(newFullDirName, "pause_call.js");
+                    File.Copy(scriptFileName, scriptFileNameNew);
+                }
+                scriptFileName = Path.Combine(FullFileDir, "Preview.States");
+                if (File.Exists(scriptFileName))
+                {
+                    string scriptFileNameNew = Path.Combine(newFullDirName, "Preview.States");
+                    File.Copy(scriptFileName, scriptFileNameNew);
+                }
+
                 FileName = Path.GetFileName(newFullFileNameJson);
                 FullFileDir = Path.GetDirectoryName(newFullFileNameJson);
 
@@ -17950,6 +18293,7 @@ namespace Watch_Face_Editor
                 }
             }
         }
+
     }
 }
 

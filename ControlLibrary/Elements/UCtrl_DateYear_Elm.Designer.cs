@@ -1,14 +1,13 @@
-﻿
-namespace ControlLibrary
+﻿namespace ControlLibrary
 {
     partial class UCtrl_DateYear_Elm
     {
-        /// <summary> 
+        /// <summary>
         /// Обязательная переменная конструктора.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
+        /// <summary>
         /// Освободить все используемые ресурсы.
         /// </summary>
         /// <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
@@ -21,82 +20,47 @@ namespace ControlLibrary
             base.Dispose(disposing);
         }
 
-        #region Код, автоматически созданный конструктором компонентов
+        #region Код, автоматически созданный конструктором форм Windows
 
-        /// <summary> 
+        /// <summary>
         /// Требуемый метод для поддержки конструктора — не изменяйте 
         /// содержимое этого метода с помощью редактора кода.
         /// </summary>
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrl_DateYear_Elm));
-            this.pictureBox_NotShow = new System.Windows.Forms.PictureBox();
-            this.pictureBox_Show = new System.Windows.Forms.PictureBox();
-            this.pictureBox_Del = new System.Windows.Forms.PictureBox();
-            this.button_ElementName = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_NotShow)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Show)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Del)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox_NotShow
+            // checkBox_Number
             // 
-            resources.ApplyResources(this.pictureBox_NotShow, "pictureBox_NotShow");
-            this.pictureBox_NotShow.BackgroundImage = global::ControlLibrary.Properties.Resources.outline_visibility_off_black_24;
-            this.pictureBox_NotShow.Name = "pictureBox_NotShow";
-            this.pictureBox_NotShow.TabStop = false;
-            this.pictureBox_NotShow.Click += new System.EventHandler(this.pictureBox_Show_Click);
+            resources.ApplyResources(this.checkBox_Number, "checkBox_Number");
             // 
-            // pictureBox_Show
+            // checkBox_Text_rotation
             // 
-            resources.ApplyResources(this.pictureBox_Show, "pictureBox_Show");
-            this.pictureBox_Show.BackgroundImage = global::ControlLibrary.Properties.Resources.outline_visibility_black_24;
-            this.pictureBox_Show.Name = "pictureBox_Show";
-            this.pictureBox_Show.TabStop = false;
-            this.pictureBox_Show.Click += new System.EventHandler(this.pictureBox_Show_Click);
+            resources.ApplyResources(this.checkBox_Text_rotation, "checkBox_Text_rotation");
             // 
-            // pictureBox_Del
+            // checkBox_Text_circle
             // 
-            resources.ApplyResources(this.pictureBox_Del, "pictureBox_Del");
-            this.pictureBox_Del.BackgroundImage = global::ControlLibrary.Properties.Resources.outline_delete_forever_black_24;
-            this.pictureBox_Del.Name = "pictureBox_Del";
-            this.pictureBox_Del.TabStop = false;
-            this.pictureBox_Del.Click += new System.EventHandler(this.pictureBox_Del_Click);
+            resources.ApplyResources(this.checkBox_Text_circle, "checkBox_Text_circle");
+            // 
+            // checkBox_Icon
+            // 
+            resources.ApplyResources(this.checkBox_Icon, "checkBox_Icon");
             // 
             // button_ElementName
             // 
             resources.ApplyResources(this.button_ElementName, "button_ElementName");
-            this.button_ElementName.BackColor = System.Drawing.SystemColors.Control;
             this.button_ElementName.Image = global::ControlLibrary.Properties.Resources.year_18;
-            this.button_ElementName.Name = "button_ElementName";
-            this.button_ElementName.UseVisualStyleBackColor = false;
-            this.button_ElementName.SizeChanged += new System.EventHandler(this.button_ElementName_SizeChanged);
-            this.button_ElementName.Click += new System.EventHandler(this.button_ElementName_Click);
-            this.button_ElementName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button_ElementName_MouseDown);
-            this.button_ElementName.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button_ElementName_MouseMove);
-            this.button_ElementName.MouseUp += new System.Windows.Forms.MouseEventHandler(this.button_ElementName_MouseUp);
             // 
             // UCtrl_DateYear_Elm
             // 
             resources.ApplyResources(this, "$this");
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pictureBox_NotShow);
-            this.Controls.Add(this.pictureBox_Show);
-            this.Controls.Add(this.pictureBox_Del);
-            this.Controls.Add(this.button_ElementName);
             this.Name = "UCtrl_DateYear_Elm";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_NotShow)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Show)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Del)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pictureBox_NotShow;
-        private System.Windows.Forms.PictureBox pictureBox_Show;
-        private System.Windows.Forms.PictureBox pictureBox_Del;
-        private System.Windows.Forms.Button button_ElementName;
     }
 }

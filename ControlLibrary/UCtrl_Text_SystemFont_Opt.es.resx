@@ -317,4 +317,10 @@
   <data name="копироватьToolStripMenuItemY.Text" xml:space="preserve">
     <value>Copiar</value>
   </data>
+  <data name="button_AddFont.Text" xml:space="preserve">
+    <value>Agregar</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Fuente</value>
+  </data>
 </root>

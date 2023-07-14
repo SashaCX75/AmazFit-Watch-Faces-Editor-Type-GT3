@@ -918,8 +918,16 @@ namespace ControlLibrary
             checkBox_Hours.Checked = false;
             checkBox_Minutes.Checked = false;
             checkBox_Seconds.Checked = false;
-            checkBox_AmPm.Checked = false; 
-            
+            checkBox_AmPm.Checked = false;
+
+            checkBox_Hours_rotation.Checked = false;
+            checkBox_Minutes_rotation.Checked = false;
+            checkBox_Seconds_rotation.Checked = false;
+
+            checkBox_Hours_circle.Checked = false;
+            checkBox_Minutes_circle.Checked = false;
+            checkBox_Seconds_circle.Checked = false;
+
             visibility_elements = false;
             tableLayoutPanel1.Visible = visibility_elements;
             pictureBox_Arrow_Down.Visible = visibility_elements;

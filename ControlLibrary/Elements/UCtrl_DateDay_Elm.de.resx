@@ -126,4 +126,10 @@
   <data name="button_Pointer.Text" xml:space="preserve">
     <value>Zeiger</value>
   </data>
+  <data name="button_Text_circle.Text" xml:space="preserve">
+    <value>Daten im Kreis</value>
+  </data>
+  <data name="button_Text_rotation.Text" xml:space="preserve">
+    <value>Daten im Winkel</value>
+  </data>
 </root>

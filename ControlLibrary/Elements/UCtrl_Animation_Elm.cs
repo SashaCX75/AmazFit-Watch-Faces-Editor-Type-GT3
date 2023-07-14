@@ -379,7 +379,7 @@ namespace ControlLibrary
                             if (nameButton == "Button")
                             {
                                 Button btn = (Button)panelCollection[j];
-                                btn.Image = (Image)(new Bitmap(btn.Image,
+                                if (btn.Name != "button_ShowAnimation") btn.Image = (Image)(new Bitmap(btn.Image, 
                                     new Size((int)(16 * currentDPI), (int)(16 * currentDPI))));
                             }
                         }

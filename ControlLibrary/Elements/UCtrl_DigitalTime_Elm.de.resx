@@ -126,10 +126,28 @@
   <data name="button_Hours.Text" xml:space="preserve">
     <value>Stunden</value>
   </data>
+  <data name="button_Hours_circle.Text" xml:space="preserve">
+    <value>Stunden im Kreis</value>
+  </data>
+  <data name="button_Hours_rotation.Text" xml:space="preserve">
+    <value>Stunden im Winkel</value>
+  </data>
   <data name="button_Minutes.Text" xml:space="preserve">
     <value>Minuten</value>
   </data>
+  <data name="button_Minutes_circle.Text" xml:space="preserve">
+    <value>Minuten im Kreis</value>
+  </data>
+  <data name="button_Minutes_rotation.Text" xml:space="preserve">
+    <value>Minuten im Winkel</value>
+  </data>
   <data name="button_Seconds.Text" xml:space="preserve">
     <value>Sekunden</value>
+  </data>
+  <data name="button_Seconds_circle.Text" xml:space="preserve">
+    <value>Sekunden im Kreis</value>
+  </data>
+  <data name="button_Seconds_rotation.Text" xml:space="preserve">
+    <value>Sekunden im Winkel</value>
   </data>
 </root>

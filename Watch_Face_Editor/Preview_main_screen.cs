@@ -770,7 +770,7 @@ namespace Watch_Face_Editor
 
                             int value = WatchFacePreviewSet.Time.Hours;
                             string valueStr = value.ToString();
-                            if (DigitalTime.Hour_rotation.zero) valueStr = valueStr.PadLeft(2, '0');
+                            if (addZero) valueStr = valueStr.PadLeft(2, '0');
 
                             Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
                                 image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
@@ -793,7 +793,7 @@ namespace Watch_Face_Editor
 
                             int value = WatchFacePreviewSet.Time.Minutes;
                             string valueStr = value.ToString();
-                            if (DigitalTime.Minute_rotation.zero) valueStr = valueStr.PadLeft(2, '0');
+                            if (addZero) valueStr = valueStr.PadLeft(2, '0');
 
                             Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
                                 image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
@@ -816,7 +816,7 @@ namespace Watch_Face_Editor
 
                             int value = WatchFacePreviewSet.Time.Seconds;
                             string valueStr = value.ToString();
-                            if (DigitalTime.Second_rotation.zero) valueStr = valueStr.PadLeft(2, '0');
+                            if (addZero) valueStr = valueStr.PadLeft(2, '0');
 
                             Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
                                 image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
@@ -842,7 +842,7 @@ namespace Watch_Face_Editor
 
                             int value = WatchFacePreviewSet.Time.Hours;
                             string valueStr = value.ToString();
-                            if (DigitalTime.Hour_circle.zero) valueStr = valueStr.PadLeft(2, '0');
+                            if (addZero) valueStr = valueStr.PadLeft(2, '0');
 
                             Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
                                 image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
@@ -869,7 +869,7 @@ namespace Watch_Face_Editor
 
                             int value = WatchFacePreviewSet.Time.Minutes;
                             string valueStr = value.ToString();
-                            if (DigitalTime.Minute_circle.zero) valueStr = valueStr.PadLeft(2, '0');
+                            if (addZero) valueStr = valueStr.PadLeft(2, '0');
 
                             Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
                                 image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
@@ -896,7 +896,7 @@ namespace Watch_Face_Editor
 
                             int value = WatchFacePreviewSet.Time.Seconds;
                             string valueStr = value.ToString();
-                            if (DigitalTime.Second_circle.zero) valueStr = valueStr.PadLeft(2, '0');
+                            if (addZero) valueStr = valueStr.PadLeft(2, '0');
 
                             Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
                                 image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
@@ -1219,6 +1219,55 @@ namespace Watch_Face_Editor
                             }
                         }
 
+                        if (DateDay.Text_rotation != null && DateDay.Text_rotation.img_First != null && DateDay.Text_rotation.img_First.Length > 0 &&
+                            index == DateDay.Text_rotation.position && DateDay.Text_rotation.visible)
+                        {
+                            value_lenght = 2;
+                            int pos_x = DateDay.Text_rotation.imageX;
+                            int pos_y = DateDay.Text_rotation.imageY;
+                            int spacing = DateDay.Text_rotation.space;
+                            float angle = DateDay.Text_rotation.angle;
+                            bool addZero = DateDay.Text_rotation.zero;
+                            int image_index = ListImages.IndexOf(DateDay.Text_rotation.img_First);
+                            int unit_index = ListImages.IndexOf(DateDay.Text_rotation.unit);
+                            int dot_image_index = ListImages.IndexOf(DateDay.Text_rotation.dot_image);
+                            string horizontal_alignment = DateDay.Text_rotation.align;
+                            bool unit_in_alignment = DateDay.Text_rotation.unit_in_alignment;
+
+                            string valueStr = (WatchFacePreviewSet.Date.Day).ToString();
+                            if (addZero) valueStr = valueStr.PadLeft(value_lenght, '0');
+
+                            Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
+                                image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
+                                valueStr, value_lenght, BBorder, "ElementDateDay");
+                        }
+
+                        if (DateDay.Text_circle != null && DateDay.Text_circle.img_First != null && DateDay.Text_circle.img_First.Length > 0 &&
+                            index == DateDay.Text_circle.position && DateDay.Text_circle.visible)
+                        {
+                            value_lenght = 2;
+                            int centr_x = DateDay.Text_circle.circle_center_X;
+                            int centr_y = DateDay.Text_circle.circle_center_Y;
+                            int radius = DateDay.Text_circle.radius;
+                            int spacing = DateDay.Text_circle.char_space_angle;
+                            float angle = DateDay.Text_circle.angle;
+                            bool addZero = DateDay.Text_circle.zero;
+                            int image_index = ListImages.IndexOf(DateDay.Text_circle.img_First);
+                            int unit_index = ListImages.IndexOf(DateDay.Text_circle.unit);
+                            int dot_image_index = ListImages.IndexOf(DateDay.Text_circle.dot_image);
+                            string vertical_alignment = DateDay.Text_circle.vertical_alignment;
+                            string horizontal_alignment = DateDay.Text_circle.horizontal_alignment;
+                            bool reverse_direction = DateDay.Text_circle.reverse_direction;
+                            bool unit_in_alignment = DateDay.Text_circle.unit_in_alignment;
+
+                            string valueStr = (WatchFacePreviewSet.Date.Day).ToString();
+                            if (addZero) valueStr = valueStr.PadLeft(value_lenght, '0');
+
+                            Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
+                                image_index,  unit_index, dot_image_index, vertical_alignment, horizontal_alignment, 
+                                reverse_direction, unit_in_alignment, valueStr, value_lenght, BBorder, showCentrHend, "ElementDateDay");
+                        }
+
                         if (DateDay.Pointer != null && DateDay.Pointer.src != null
                             && DateDay.Pointer.src.Length > 0 &&
                             index == DateDay.Pointer.position && DateDay.Pointer.visible)
@@ -1299,6 +1348,55 @@ namespace Watch_Face_Editor
                             }
                         }
 
+                        if (DateMonth.Text_rotation != null && DateMonth.Text_rotation.img_First != null && DateMonth.Text_rotation.img_First.Length > 0 &&
+                            index == DateMonth.Text_rotation.position && DateMonth.Text_rotation.visible)
+                        {
+                            value_lenght = 2;
+                            int pos_x = DateMonth.Text_rotation.imageX;
+                            int pos_y = DateMonth.Text_rotation.imageY;
+                            int spacing = DateMonth.Text_rotation.space;
+                            float angle = DateMonth.Text_rotation.angle;
+                            bool addZero = DateMonth.Text_rotation.zero;
+                            int image_index = ListImages.IndexOf(DateMonth.Text_rotation.img_First);
+                            int unit_index = ListImages.IndexOf(DateMonth.Text_rotation.unit);
+                            int dot_image_index = ListImages.IndexOf(DateMonth.Text_rotation.dot_image);
+                            string horizontal_alignment = DateMonth.Text_rotation.align;
+                            bool unit_in_alignment = DateMonth.Text_rotation.unit_in_alignment;
+
+                            string valueStr = (WatchFacePreviewSet.Date.Month).ToString();
+                            if (addZero) valueStr = valueStr.PadLeft(value_lenght, '0');
+
+                            Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
+                                image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
+                                valueStr, value_lenght, BBorder, "ElementDateMonth");
+                        }
+
+                        if (DateMonth.Text_circle != null && DateMonth.Text_circle.img_First != null && DateMonth.Text_circle.img_First.Length > 0 &&
+                            index == DateMonth.Text_circle.position && DateMonth.Text_circle.visible)
+                        {
+                            value_lenght = 2;
+                            int centr_x = DateMonth.Text_circle.circle_center_X;
+                            int centr_y = DateMonth.Text_circle.circle_center_Y;
+                            int radius = DateMonth.Text_circle.radius;
+                            int spacing = DateMonth.Text_circle.char_space_angle;
+                            float angle = DateMonth.Text_circle.angle;
+                            bool addZero = DateMonth.Text_circle.zero;
+                            int image_index = ListImages.IndexOf(DateMonth.Text_circle.img_First);
+                            int unit_index = ListImages.IndexOf(DateMonth.Text_circle.unit);
+                            int dot_image_index = ListImages.IndexOf(DateMonth.Text_circle.dot_image);
+                            string vertical_alignment = DateMonth.Text_circle.vertical_alignment;
+                            string horizontal_alignment = DateMonth.Text_circle.horizontal_alignment;
+                            bool reverse_direction = DateMonth.Text_circle.reverse_direction;
+                            bool unit_in_alignment = DateMonth.Text_circle.unit_in_alignment;
+
+                            string valueStr = (WatchFacePreviewSet.Date.Month).ToString();
+                            if (addZero) valueStr = valueStr.PadLeft(value_lenght, '0');
+
+                            Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
+                                image_index, unit_index, dot_image_index, vertical_alignment, horizontal_alignment,
+                                reverse_direction, unit_in_alignment, valueStr, value_lenght, BBorder, showCentrHend, "ElementDateMonth");
+                        }
+
                         if (DateMonth.Pointer != null && DateMonth.Pointer.src != null
                             && DateMonth.Pointer.src.Length > 0 &&
                             index == DateMonth.Pointer.position && DateMonth.Pointer.visible)
@@ -1364,8 +1462,11 @@ namespace Watch_Face_Editor
                     ElementDateYear DateYear = (ElementDateYear)element;
                     if (!DateYear.visible) return;
 
-                    if (DateYear.Number != null && DateYear.Number.img_First != null
-                            && DateYear.Number.img_First.Length > 0)
+                    for (int index = 1; index <= 15; index++)
+                    {
+                        if (DateYear.Number != null && DateYear.Number.img_First != null
+                            && DateYear.Number.img_First.Length > 0 &&
+                            index == DateYear.Number.position && DateYear.Number.visible)
                     {
                         int imageIndex = ListImages.IndexOf(DateYear.Number.img_First);
                         int x = DateYear.Number.imageX;
@@ -1393,6 +1494,58 @@ namespace Watch_Face_Editor
                             if (src != null) gPanel.DrawImage(src, x, y);
                             //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                         }
+                    }
+
+                        if (DateYear.Text_rotation != null && DateYear.Text_rotation.img_First != null && DateYear.Text_rotation.img_First.Length > 0 &&
+                                    index == DateYear.Text_rotation.position && DateYear.Text_rotation.visible)
+                        {
+                            value_lenght = 4;
+                            int pos_x = DateYear.Text_rotation.imageX;
+                            int pos_y = DateYear.Text_rotation.imageY;
+                            int spacing = DateYear.Text_rotation.space;
+                            float angle = DateYear.Text_rotation.angle;
+                            bool addZero = DateYear.Text_rotation.zero;
+                            int image_index = ListImages.IndexOf(DateYear.Text_rotation.img_First);
+                            int unit_index = ListImages.IndexOf(DateYear.Text_rotation.unit);
+                            int dot_image_index = ListImages.IndexOf(DateYear.Text_rotation.dot_image);
+                            string horizontal_alignment = DateYear.Text_rotation.align;
+                            bool unit_in_alignment = DateYear.Text_rotation.unit_in_alignment;
+
+                            string valueStr = (WatchFacePreviewSet.Date.Year).ToString();
+                            if (!addZero) valueStr = (WatchFacePreviewSet.Date.Year % 100).ToString();
+                            //if (addZero) valueStr = valueStr.PadLeft(value_lenght, '0');
+
+                            Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
+                                image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
+                                valueStr, value_lenght, BBorder, "ElementDateYear");
+                        }
+
+                        if (DateYear.Text_circle != null && DateYear.Text_circle.img_First != null && DateYear.Text_circle.img_First.Length > 0 &&
+                            index == DateYear.Text_circle.position && DateYear.Text_circle.visible)
+                        {
+                            value_lenght = 4;
+                            int centr_x = DateYear.Text_circle.circle_center_X;
+                            int centr_y = DateYear.Text_circle.circle_center_Y;
+                            int radius = DateYear.Text_circle.radius;
+                            int spacing = DateYear.Text_circle.char_space_angle;
+                            float angle = DateYear.Text_circle.angle;
+                            bool addZero = DateYear.Text_circle.zero;
+                            int image_index = ListImages.IndexOf(DateYear.Text_circle.img_First);
+                            int unit_index = ListImages.IndexOf(DateYear.Text_circle.unit);
+                            int dot_image_index = ListImages.IndexOf(DateYear.Text_circle.dot_image);
+                            string vertical_alignment = DateYear.Text_circle.vertical_alignment;
+                            string horizontal_alignment = DateYear.Text_circle.horizontal_alignment;
+                            bool reverse_direction = DateYear.Text_circle.reverse_direction;
+                            bool unit_in_alignment = DateYear.Text_circle.unit_in_alignment;
+
+                            string valueStr = (WatchFacePreviewSet.Date.Year).ToString();
+                            if (!addZero) valueStr = (WatchFacePreviewSet.Date.Year % 100).ToString();
+                            //if (addZero) valueStr = valueStr.PadLeft(value_lenght, '0');
+
+                            Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
+                                image_index, unit_index, dot_image_index, vertical_alignment, horizontal_alignment,
+                                reverse_direction, unit_in_alignment, valueStr, value_lenght, BBorder, showCentrHend, "ElementDateYear");
+                        } 
                     }
 
                     break;
@@ -3829,12 +3982,21 @@ namespace Watch_Face_Editor
                         string font_fileName = FullFileDir + @"\assets\fonts\" + cityName.font;
                         if (File.Exists(font_fileName))
                         {
-                            System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection();
-                            fonts.AddFontFile(font_fileName);
-                            Font drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+                            Font drawFont = null;
+                            using (System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection())
+                            {
+                                fonts.AddFontFile(font_fileName);
+                                drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+                            }
+                                
                             Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
                                             align_h, align_v, text_style, BBorder);
                         }
+                        else
+                        {
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                        }
+
                     }
                     else
                     {

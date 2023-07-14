@@ -15,6 +15,8 @@ namespace ControlLibrary
         private bool setValue; // режим задания параметров
         bool highlight_images = false;
         bool highlight_number = false;
+        bool highlight_text_rotation = false;
+        bool highlight_text_circle = false;
         bool highlight_pointer = false;
 
         bool visibility_elements = false; // развернут список с элементами
@@ -83,20 +85,21 @@ namespace ControlLibrary
             pictureBox_Arrow_Right.Visible = !visibility_elements;
         }
 
-        public bool GetHighlightState()
-        {
-            bool highlight = highlight_images || highlight_number || highlight_pointer;
-            return highlight;
-        }
-
         public void ResetHighlightState()
         {
             selectedElement = "";
 
             highlight_images = false;
             highlight_number = false;
+            highlight_text_rotation = false;
+            highlight_text_circle = false;
             highlight_pointer = false;
 
+            SelectElement();
+        }
+
+        private void SelectElement()
+        {
             if (highlight_images)
             {
                 panel_Images.BackColor = SystemColors.ActiveCaption;
@@ -121,6 +124,32 @@ namespace ControlLibrary
                 panel_Number.BackColor = SystemColors.Control;
                 button_Number.FlatAppearance.MouseOverBackColor = SystemColors.Control;
                 button_Number.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_text_rotation)
+            {
+                panel_Text_rotation.BackColor = SystemColors.ActiveCaption;
+                button_Text_rotation.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Text_rotation.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Text_rotation.BackColor = SystemColors.Control;
+                button_Text_rotation.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Text_rotation.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_text_circle)
+            {
+                panel_Text_circle.BackColor = SystemColors.ActiveCaption;
+                button_Text_circle.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Text_circle.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Text_circle.BackColor = SystemColors.Control;
+                button_Text_circle.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Text_circle.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
             if (highlight_pointer)
@@ -144,46 +173,11 @@ namespace ControlLibrary
 
             highlight_images = true;
             highlight_number = false;
+            highlight_text_rotation = false;
+            highlight_text_circle = false;
             highlight_pointer = false;
 
-            if (highlight_images)
-            {
-                panel_Images.BackColor = SystemColors.ActiveCaption;
-                button_Images.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Images.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Images.BackColor = SystemColors.Control;
-                button_Images.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Images.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_number)
-            {
-                panel_Number.BackColor = SystemColors.ActiveCaption;
-                button_Number.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Number.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Number.BackColor = SystemColors.Control;
-                button_Number.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Number.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_pointer)
-            {
-                panel_Pointer.BackColor = SystemColors.ActiveCaption;
-                button_Pointer.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Pointer.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Pointer.BackColor = SystemColors.Control;
-                button_Pointer.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Pointer.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
+            SelectElement();
 
             if (SelectChanged != null)
             {
@@ -198,46 +192,49 @@ namespace ControlLibrary
 
             highlight_images = false;
             highlight_number = true;
+            highlight_text_rotation = false;
+            highlight_text_circle = false;
             highlight_pointer = false;
 
-            if (highlight_images)
-            {
-                panel_Images.BackColor = SystemColors.ActiveCaption;
-                button_Images.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Images.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Images.BackColor = SystemColors.Control;
-                button_Images.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Images.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
+            SelectElement();
 
-            if (highlight_number)
+            if (SelectChanged != null)
             {
-                panel_Number.BackColor = SystemColors.ActiveCaption;
-                button_Number.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Number.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
             }
-            else
-            {
-                panel_Number.BackColor = SystemColors.Control;
-                button_Number.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Number.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
+        }
 
-            if (highlight_pointer)
+        private void panel_Text_rotation_Click(object sender, EventArgs e)
+        {
+            selectedElement = "Text_rotation";
+
+            highlight_images = false;
+            highlight_number = false;
+            highlight_text_rotation = true;
+            highlight_text_circle = false;
+            highlight_pointer = false;
+
+            SelectElement();
+
+            if (SelectChanged != null)
             {
-                panel_Pointer.BackColor = SystemColors.ActiveCaption;
-                button_Pointer.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Pointer.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
             }
-            else
-            {
-                panel_Pointer.BackColor = SystemColors.Control;
-                button_Pointer.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Pointer.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
+        }
+
+        private void panel_Text_circle_Click(object sender, EventArgs e)
+        {
+            selectedElement = "Text_circle";
+
+            highlight_images = false;
+            highlight_number = false;
+            highlight_text_rotation = false;
+            highlight_text_circle = true;
+            highlight_pointer = false;
+
+            SelectElement();
 
             if (SelectChanged != null)
             {
@@ -252,46 +249,11 @@ namespace ControlLibrary
 
             highlight_images = false;
             highlight_number = false;
+            highlight_text_rotation = false;
+            highlight_text_circle = false;
             highlight_pointer = true;
 
-            if (highlight_images)
-            {
-                panel_Images.BackColor = SystemColors.ActiveCaption;
-                button_Images.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Images.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Images.BackColor = SystemColors.Control;
-                button_Images.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Images.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_number)
-            {
-                panel_Number.BackColor = SystemColors.ActiveCaption;
-                button_Number.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Number.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Number.BackColor = SystemColors.Control;
-                button_Number.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Number.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
-
-            if (highlight_pointer)
-            {
-                panel_Pointer.BackColor = SystemColors.ActiveCaption;
-                button_Pointer.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
-                button_Pointer.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
-            }
-            else
-            {
-                panel_Pointer.BackColor = SystemColors.Control;
-                button_Pointer.FlatAppearance.MouseOverBackColor = SystemColors.Control;
-                button_Pointer.FlatAppearance.MouseDownBackColor = SystemColors.Control;
-            }
+            SelectElement();
 
             if (SelectChanged != null)
             {
@@ -430,9 +392,9 @@ namespace ControlLibrary
 
             pictureBox_Del.Location = new Point(button_ElementName.Width - pictureBox_Del.Width - 4, 2);
 
-            if (tableLayoutPanel1.Height > 95)
+            if (tableLayoutPanel1.Height > 160)
             {
-                float currentDPI = tableLayoutPanel1.Height / 76f;
+                float currentDPI = tableLayoutPanel1.Height / 126f;
                 button_ElementName.Image = (Image)(new Bitmap(button_ElementName.Image,
                     new Size((int)(16 * currentDPI), (int)(16 * currentDPI))));
 
@@ -535,6 +497,12 @@ namespace ControlLibrary
                 case "Number":
                     checkBox_Number.Checked = status;
                     break;
+                case "Text_rotation":
+                    checkBox_Text_rotation.Checked = status;
+                    break;
+                case "Text_circle":
+                    checkBox_Text_circle.Checked = status;
+                    break;
                 case "Pointer":
                     checkBox_Pointer.Checked = status;
                     break;
@@ -559,6 +527,12 @@ namespace ControlLibrary
                             break;
                         case "Number":
                             panel = panel_Number;
+                            break;
+                        case "Text_rotation":
+                            panel = panel_Text_rotation;
+                            break;
+                        case "Text_circle":
+                            panel = panel_Text_circle;
                             break;
                         case "Pointer":
                             panel = panel_Pointer;
@@ -611,6 +585,12 @@ namespace ControlLibrary
                     case "panel_Number":
                         elementOptions.Add("Number", count - i);
                         break;
+                    case "panel_Text_rotation":
+                        elementOptions.Add("Text_rotation", count - i);
+                        break;
+                    case "panel_Text_circle":
+                        elementOptions.Add("Text_circle", count - i);
+                        break;
                     case "panel_Pointer":
                         elementOptions.Add("Pointer", count - i);
                         break;
@@ -624,13 +604,17 @@ namespace ControlLibrary
             setValue = true;
 
             Dictionary<int, string> elementOptions = new Dictionary<int, string>();
-            elementOptions.Add(3, "Pointer");
-            elementOptions.Add(2, "Number");
-            elementOptions.Add(1, "Images");
+            elementOptions.Add(1, "Pointer");
+            elementOptions.Add(2, "Text_circle");
+            elementOptions.Add(3, "Text_rotation");
+            elementOptions.Add(4, "Number");
+            elementOptions.Add(5, "Images");
             SetOptionsPosition(elementOptions);
 
             checkBox_Images.Checked = false;
             checkBox_Number.Checked = false;
+            checkBox_Text_rotation.Checked = false;
+            checkBox_Text_circle.Checked = false;
             checkBox_Pointer.Checked = false;
 
             visibility_elements = false;
