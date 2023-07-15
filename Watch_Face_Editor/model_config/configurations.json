@@ -1,0 +1,402 @@
+{
+  "GTR 3 Pro": {
+    "name": "Amazfit GTR 3 Pro",
+    "int_id": "GTR3_Pro",
+    "designWidth": 480,
+    "deviceSource_ids": [
+      229,
+      230,
+      6095106
+    ],
+    "background": {
+      "w": 480,
+      "h": 480
+    },
+    "scaling_0_5": {
+      "w": 230,
+      "h": 230
+    },
+    "scaling_1_0": {
+      "w": 482,
+      "h": 482
+    },
+    "scaling_1_5": {
+      "w": 722,
+      "h": 722
+    },
+    "scaling_2_0": {
+      "w": 961,
+      "h": 961
+    },
+    "scaling_2_5": {
+      "w": 1201,
+      "h": 1201
+    },
+    "maskImage": "mask_gtr_3_pro.png",
+    "watchSkin": "WatchSkin_GTR_3_Pro.json",
+    "previewHeight": 324
+  },
+  "GTR 3": {
+    "name": "Amazfit GTR 3",
+    "int_id": "GTR3",
+    "designWidth": 454,
+    "deviceSource_ids": [
+      226,
+      227
+    ],
+    "background": {
+      "w": 454,
+      "h": 454
+    },
+    "scaling_0_5": {
+      "w": 230,
+      "h": 230
+    },
+    "scaling_1_0": {
+      "w": 456,
+      "h": 456
+    },
+    "scaling_1_5": {
+      "w": 683,
+      "h": 683
+    },
+    "scaling_2_0": {
+      "w": 909,
+      "h": 909
+    },
+    "scaling_2_5": {
+      "w": 1136,
+      "h": 1136
+    },
+    "maskImage": "mask_gtr_3.png",
+    "watchSkin": "WatchSkin_GTR_3.json",
+    "previewHeight": 306
+  },
+  "T-Rex 2": {
+    "name": "Amazfit T-Rex 2",
+    "int_id": "T_Rex_2",
+    "designWidth": 454,
+    "deviceSource_ids": [
+      418,
+      419
+    ],
+    "background": {
+      "w": 454,
+      "h": 454
+    },
+    "scaling_0_5": {
+      "w": 230,
+      "h": 230
+    },
+    "scaling_1_0": {
+      "w": 456,
+      "h": 456
+    },
+    "scaling_1_5": {
+      "w": 683,
+      "h": 683
+    },
+    "scaling_2_0": {
+      "w": 909,
+      "h": 909
+    },
+    "scaling_2_5": {
+      "w": 1136,
+      "h": 1136
+    },
+    "maskImage": "mask_gtr_3.png",
+    "watchSkin": "WatchSkin_T_Rex_2.json",
+    "previewHeight": 306
+  },
+  "T-Rex Ultra": {
+    "name": "Amazfit T-Rex Ultra",
+    "int_id": "T_Rex_Ultra",
+    "designWidth": 454,
+    "deviceSource_ids": [
+      6553856,
+      6553857
+    ],
+    "background": {
+      "w": 454,
+      "h": 454
+    },
+    "scaling_0_5": {
+      "w": 230,
+      "h": 230
+    },
+    "scaling_1_0": {
+      "w": 456,
+      "h": 456
+    },
+    "scaling_1_5": {
+      "w": 683,
+      "h": 683
+    },
+    "scaling_2_0": {
+      "w": 909,
+      "h": 909
+    },
+    "scaling_2_5": {
+      "w": 1136,
+      "h": 1136
+    },
+    "maskImage": "mask_gtr_3.png",
+    "watchSkin": "WatchSkin_T_Rex_2.json",
+    "previewHeight": 306
+  },
+  "Falcon": {
+    "name": "Amazfit Falcon",
+    "int_id": "",
+    "designWidth": 416,
+    "deviceSource_ids": [
+      414,
+      415
+    ],
+    "background": {
+      "w": 416,
+      "h": 416
+    },
+    "scaling_0_5": {
+      "w": 211,
+      "h": 211
+    },
+    "scaling_1_0": {
+      "w": 418,
+      "h": 418
+    },
+    "scaling_1_5": {
+      "w": 626,
+      "h": 626
+    },
+    "scaling_2_0": {
+      "w": 833,
+      "h": 833
+    },
+    "scaling_2_5": {
+      "w": 1041,
+      "h": 1041
+    },
+    "maskImage": "mask_falcon.png",
+    "watchSkin": "WatchSkin_Falcon.json",
+    "previewHeight": 280
+  },
+  "GTS 3": {
+    "name": "Amazfit GTS 3",
+    "int_id": "GTS3",
+    "designWidth": 390,
+    "deviceSource_ids": [
+      224,
+      225
+    ],
+    "background": {
+      "w": 390,
+      "h": 450
+    },
+    "scaling_0_5": {
+      "w": 198,
+      "h": 228
+    },
+    "scaling_1_0": {
+      "w": 392,
+      "h": 452
+    },
+    "scaling_1_5": {
+      "w": 587,
+      "h": 677
+    },
+    "scaling_2_0": {
+      "w": 781,
+      "h": 901
+    },
+    "scaling_2_5": {
+      "w": 976,
+      "h": 1126
+    },
+    "maskImage": "mask_gts_3.png",
+    "watchSkin": "WatchSkin_GTS_3.json",
+    "previewHeight": 306
+  },
+  "GTS 4 mini": {
+    "name": "GTS 4 mini",
+    "int_id": "GTS4_mini",
+    "designWidth": 336,
+    "deviceSource_ids": [
+      250,
+      251
+    ],
+    "background": {
+      "w": 336,
+      "h": 384
+    },
+    "scaling_0_5": {
+      "w": 171,
+      "h": 195
+    },
+    "scaling_1_0": {
+      "w": 338,
+      "h": 386
+    },
+    "scaling_1_5": {
+      "w": 506,
+      "h": 578
+    },
+    "scaling_2_0": {
+      "w": 673,
+      "h": 769
+    },
+    "scaling_2_5": {
+      "w": 841,
+      "h": 961
+    },
+    "maskImage": "mask_gts_4_mini.png",
+    "watchSkin": "WatchSkin_GTS_4_mini.json",
+    "previewHeight": 256
+  },
+  "Amazfit Band 7": {
+    "name": "Amazfit Band 7",
+    "int_id": "Amazfit_Band_7",
+    "designWidth": 194,
+    "deviceSource_ids": [
+      252,
+      253,
+      254
+    ],
+    "background": {
+      "w": 194,
+      "h": 368
+    },
+    "scaling_0_5": {
+      "w": 100,
+      "h": 187
+    },
+    "scaling_1_0": {
+      "w": 196,
+      "h": 370
+    },
+    "scaling_1_5": {
+      "w": 293,
+      "h": 554
+    },
+    "scaling_2_0": {
+      "w": 389,
+      "h": 737
+    },
+    "scaling_2_5": {
+      "w": 486,
+      "h": 921
+    },
+    "maskImage": "mask_band_7.png",
+    "watchSkin": "WatchSkin_Amazfit_Band_7.json",
+    "previewHeight": 288
+  },
+  "GTR 4": {
+    "name": "Amazfit GTR 4",
+    "int_id": "GTR4",
+    "designWidth": 466,
+    "deviceSource_ids": [
+      7930112,
+      7930113,
+      7864576,
+      7864577
+    ],
+    "background": {
+      "w": 466,
+      "h": 466
+    },
+    "scaling_0_5": {
+      "w": 230,
+      "h": 230
+    },
+    "scaling_1_0": {
+      "w": 468,
+      "h": 468
+    },
+    "scaling_1_5": {
+      "w": 701,
+      "h": 701
+    },
+    "scaling_2_0": {
+      "w": 933,
+      "h": 933
+    },
+    "scaling_2_5": {
+      "w": 976,
+      "h": 1126
+    },
+    "maskImage": "mask_gtr_4.png",
+    "watchSkin": "WatchSkin_GTR_4.json",
+    "previewHeight": 314
+  },
+  "GTR mini": {
+    "name": "Amazfit GTR Mini",
+    "int_id": "",
+    "designWidth": 416,
+    "deviceSource_ids": [
+      250,
+      251
+    ],
+    "background": {
+      "w": 416,
+      "h": 416
+    },
+    "scaling_0_5": {
+      "w": 211,
+      "h": 211
+    },
+    "scaling_1_0": {
+      "w": 418,
+      "h": 418
+    },
+    "scaling_1_5": {
+      "w": 626,
+      "h": 626
+    },
+    "scaling_2_0": {
+      "w": 833,
+      "h": 833
+    },
+    "scaling_2_5": {
+      "w": 1041,
+      "h": 1041
+    },
+    "maskImage": "mask_falcon.png",
+    "watchSkin": "",
+    "previewHeight": 280
+  },
+  "GTS 4": {
+    "name": "Amazfit GTS 4",
+    "int_id": "",
+    "designWidth": 390,
+    "deviceSource_ids": [
+      7995648,
+      7995649
+    ],
+    "background": {
+      "w": 390,
+      "h": 450
+    },
+    "scaling_0_5": {
+      "w": 198,
+      "h": 228
+    },
+    "scaling_1_0": {
+      "w": 392,
+      "h": 452
+    },
+    "scaling_1_5": {
+      "w": 587,
+      "h": 677
+    },
+    "scaling_2_0": {
+      "w": 781,
+      "h": 901
+    },
+    "scaling_2_5": {
+      "w": 841,
+      "h": 961
+    },
+    "maskImage": "mask_gts_3.png",
+    "watchSkin": "WatchSkin_GTS_3.json",
+    "previewHeight": 306
+  }
+}

@@ -65,7 +65,7 @@ namespace Watch_Face_Editor
 
             #region Black background
             Logger.WriteLine("Preview_screen (Black background)");
-            src = OpenFileStream(Application.StartupPath + @"\Mask\mask_gtr_3.png");
+            /*src = OpenFileStream(Application.StartupPath + @"\Mask\mask_gtr_3.png");
             switch (ProgramSettings.Watch_Model)
             {
                 case "GTR 3 Pro":
@@ -88,7 +88,8 @@ namespace Watch_Face_Editor
                 case "GTR mini":
                     src = OpenFileStream(Application.StartupPath + @"\Mask\mask_falcon.png");
                     break;
-            }
+            }*/
+            src = OpenFileStream(Application.StartupPath + @"\Mask\" + SelectedModel.maskImage);
             offSet_X = src.Width / 2;
             offSet_Y = src.Height / 2;
             gPanel.DrawImage(src, 0, 0);
@@ -497,7 +498,7 @@ namespace Watch_Face_Editor
             if (crop)
             {
                 Logger.WriteLine("PreviewToBitmap (crop)");
-                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
+                /*Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
                 switch (ProgramSettings.Watch_Model)
                 {
                     case "GTR 3 Pro":
@@ -520,7 +521,8 @@ namespace Watch_Face_Editor
                     case "GTR mini":
                         mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_falcon.png");
                         break;
-                }
+                }*/
+                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\" + SelectedModel.maskImage);
                 mask = FormColor(mask);
                 gPanel.DrawImage(mask, 0, 0);
                 //gPanel.DrawImage(mask, new Rectangle(0, 0, mask.Width, mask.Height));
@@ -2685,7 +2687,7 @@ namespace Watch_Face_Editor
 
             #region Black background
             Logger.WriteLine("Preview_edit_screen (Black background)");
-            src = OpenFileStream(Application.StartupPath + @"\Mask\mask_gtr_3.png");
+            /*src = OpenFileStream(Application.StartupPath + @"\Mask\mask_gtr_3.png");
             switch (ProgramSettings.Watch_Model)
             {
                 case "GTR 3 Pro":
@@ -2708,7 +2710,8 @@ namespace Watch_Face_Editor
                 case "GTR mini":
                     src = OpenFileStream(Application.StartupPath + @"\Mask\mask_falcon.png");
                     break;
-            }
+            }*/
+            src = OpenFileStream(Application.StartupPath + @"\Mask\" + SelectedModel.maskImage);
             gPanel.DrawImage(src, 0, 0);
             int offSet_X = src.Width / 2;
             int offSet_Y = src.Height / 2;
@@ -3124,30 +3127,31 @@ namespace Watch_Face_Editor
             if (crop)
             {
                 Logger.WriteLine("Preview_edit_screen (crop)");
-                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
-                switch (ProgramSettings.Watch_Model)
-                {
-                    case "GTR 3 Pro":
-                        mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
-                        break;
-                    case "GTS 3":
-                    case "GTS 4":
-                        mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_3.png");
-                        break;
-                    case "GTR 4":
-                        mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gtr_4.png");
-                        break;
-                    case "Amazfit Band 7":
-                        mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_band_7.png");
-                        break;
-                    case "GTS 4 mini":
-                        mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
-                        break;
-                    case "Falcon":
-                    case "GTR mini":
-                        mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_falcon.png");
-                        break;
-                }
+                /* Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
+                 switch (ProgramSettings.Watch_Model)
+                 {
+                     case "GTR 3 Pro":
+                         mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
+                         break;
+                     case "GTS 3":
+                     case "GTS 4":
+                         mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_3.png");
+                         break;
+                     case "GTR 4":
+                         mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gtr_4.png");
+                         break;
+                     case "Amazfit Band 7":
+                         mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_band_7.png");
+                         break;
+                     case "GTS 4 mini":
+                         mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
+                         break;
+                     case "Falcon":
+                     case "GTR mini":
+                         mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_falcon.png");
+                         break;
+                 }*/
+                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\" + SelectedModel.maskImage);
                 mask = FormColor(mask);
                 gPanel.DrawImage(mask, 0, 0);
                 //gPanel.DrawImage(mask, new Rectangle(0, 0, mask.Width, mask.Height));
@@ -3231,7 +3235,7 @@ namespace Watch_Face_Editor
             if (crop)
             {
                 Logger.WriteLine("PreviewToBitmap (crop)");
-                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
+                /*Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
                 switch (ProgramSettings.Watch_Model)
                 {
                     case "GTR 3 Pro":
@@ -3254,7 +3258,8 @@ namespace Watch_Face_Editor
                     case "GTR mini":
                         mask = OpenFileStream(Application.StartupPath + @"\Mask\mask_falcon.png");
                         break;
-                }
+                }*/
+                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\" + SelectedModel.maskImage);
                 mask = FormColor(mask);
                 gPanel.DrawImage(mask, 0, 0);
                 //gPanel.DrawImage(mask, new Rectangle(0, 0, mask.Width, mask.Height));
@@ -7013,7 +7018,8 @@ namespace Watch_Face_Editor
 
         public Bitmap ApplyWatchSkin(Bitmap bitmap)
         {
-            string Watch_Skin_file_name = textBox_WatchSkin_Path.Text;
+            string Watch_Skin_file_name = SelectedModel.watchSkin;
+            //string Watch_Skin_file_name = textBox_WatchSkin_Path.Text;
             if (!File.Exists(Watch_Skin_file_name))
                 Watch_Skin_file_name = Application.StartupPath + Watch_Skin_file_name;
 
@@ -7038,7 +7044,7 @@ namespace Watch_Face_Editor
             }
             else return bitmap;
 
-            Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
+            /*Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
             if (ProgramSettings.Watch_Model == "GTR 3 Pro")
                 mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
             if (ProgramSettings.Watch_Model == "GTS 3")
@@ -7054,7 +7060,8 @@ namespace Watch_Face_Editor
             if (ProgramSettings.Watch_Model == "GTR mini")
                 mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
             if (ProgramSettings.Watch_Model == "GTS 4")
-                mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
+                mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");*/
+            Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\" + SelectedModel.maskImage);
 
             bitmap = ApplyMask(bitmap, mask);
             //Graphics gPanel = Graphics.FromImage(bitmap);

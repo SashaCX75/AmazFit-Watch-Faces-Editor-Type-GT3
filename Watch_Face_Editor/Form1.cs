@@ -52,6 +52,7 @@ namespace Watch_Face_Editor
 
         // Доступные конфигурации
         Dictionary<string, Classes.AmazfitPlatform> AvailableConfigurations = new Dictionary<string, Classes.AmazfitPlatform>();
+        public Classes.AmazfitPlatform SelectedModel = new Classes.AmazfitPlatform();
 
         Form_Preview formPreview;
 
@@ -108,12 +109,16 @@ namespace Watch_Face_Editor
                 Logger.WriteLine("FormLocation = " + Properties.Settings.Default.FormLocation.ToString());
 
                 // Основные настройки прочитались, можно читать таргеты
-                if (File.Exists(Application.StartupPath + ProgramSettings.general_config))
+                if (File.Exists(Application.StartupPath + ProgramSettings.model_config))
                 {
-                    AvailableConfigurations = Classes.Configurations.LoadFromFile(Application.StartupPath + ProgramSettings.general_config);
-                    Classes.Configurations.LoadFromFile(Application.StartupPath + ProgramSettings.general_config);
-                    Logger.WriteLine("Readed configurations from:" + ProgramSettings.general_config.ToString());
-
+                    AvailableConfigurations = Classes.Configurations.LoadFromFile(Application.StartupPath + ProgramSettings.model_config);
+                    //Classes.Configurations.LoadFromFile(Application.StartupPath + ProgramSettings.model_config);
+                    Logger.WriteLine("Readed configurations from:" + ProgramSettings.model_config.ToString());
+                    if (AvailableConfigurations.Count == 0)
+                    {
+                        MessageBox.Show("Ошибка чтения конфигурации моделей");
+                        Application.Exit();
+                    }
                     foreach (var config in AvailableConfigurations)
                     {
                         //Logger.WriteLine($"Configuration: {config.Key}: {config.Value}");
@@ -122,7 +127,7 @@ namespace Watch_Face_Editor
                 }
                 else
                 {
-                    Logger.WriteLine("Configurations file are not found in " + ProgramSettings.general_config.ToString());
+                    Logger.WriteLine("Configurations file are not found in " + ProgramSettings.model_config.ToString());
                 }
 
 #if DEBUG
@@ -298,8 +303,26 @@ namespace Watch_Face_Editor
             progressBar1.Width = (int)(650 * currentDPI);
 
             Logger.WriteLine("Set Model_Watch");
-            comboBox_watch_model.Text = ProgramSettings.Watch_Model;
-            
+            //comboBox_watch_model.Text = ProgramSettings.Watch_Model;
+
+            comboBox_watch_model.Items.Clear();
+            foreach (var config in AvailableConfigurations)
+            {
+                comboBox_watch_model.Items.Add(config.Key);
+            }
+            if (AvailableConfigurations.ContainsKey(ProgramSettings.Watch_Model)) 
+            { 
+                //SelectedModel = AvailableConfigurations[ProgramSettings.Watch_Model];
+                comboBox_watch_model.Text = ProgramSettings.Watch_Model;
+            }
+            else
+            {
+                MessageBox.Show($"Не найдена конфигурация модели \"{ProgramSettings.Watch_Model}\"");
+                //Application.Exit();
+                comboBox_watch_model.SelectedIndex = 0;
+            }
+
+
             checkBox_WatchSkin_Use.Checked = ProgramSettings.WatchSkin_Use;
             textBox_WatchSkin_Path.Enabled = ProgramSettings.WatchSkin_Use;
             //switch (ProgramSettings.Watch_Model)
@@ -338,12 +361,14 @@ namespace Watch_Face_Editor
             //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_3;
             //        break;
             //}
-            // StartBlock :: Kartun
+
+            /*// StartBlock :: Kartun
             Logger.WriteLine($"* Form1_Load {ProgramSettings.Watch_Model}");
             Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
             Logger.WriteLine($"Loaded configuration: {currPlatform}");
             textBox_WatchSkin_Path.Text = @"\Skin\"  + currPlatform.watchSkin ;
-            // EndBlock :: Kartun
+            // EndBlock :: Kartun*/
+            textBox_WatchSkin_Path.Text = @"\Skin\" + SelectedModel.watchSkin; // времмено оставить
 
             textBox_PreviewStates_Path.Text = ProgramSettings.PreviewStates_Path;
 
@@ -649,18 +674,18 @@ namespace Watch_Face_Editor
             {
                 ProgramSettings.Watch_Model = comboBox_watch_model.Text;
 
-                // TODO :: Исправить
-                if (comboBox_watch_model.Text == "GTR 3") ProgramSettings.WatchSkin_GTR_3 = textBox_WatchSkin_Path.Text;
-                if (comboBox_watch_model.Text == "GTR 3 Pro") ProgramSettings.WatchSkin_GTR_3_Pro = textBox_WatchSkin_Path.Text;
-                if (comboBox_watch_model.Text == "GTS 3") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
-                if (comboBox_watch_model.Text == "T-Rex 2") ProgramSettings.WatchSkin_T_Rex_2 = textBox_WatchSkin_Path.Text;
-                if (comboBox_watch_model.Text == "T-Rex Ultra") ProgramSettings.WatchSkin_T_Rex_Ultra = textBox_WatchSkin_Path.Text;
-                if (comboBox_watch_model.Text == "GTR 4") ProgramSettings.WatchSkin_GTR_4 = textBox_WatchSkin_Path.Text;
-                if (comboBox_watch_model.Text == "Amazfit Band 7") ProgramSettings.WatchSkin_Amazfit_Band_7 = textBox_WatchSkin_Path.Text;
-                if (comboBox_watch_model.Text == "GTS 4 mini") ProgramSettings.WatchSkin_GTS_4_mini = textBox_WatchSkin_Path.Text;
-                if (comboBox_watch_model.Text == "Falcon") ProgramSettings.WatchSkin_Falcon = textBox_WatchSkin_Path.Text;
-                if (comboBox_watch_model.Text == "GTR mini") ProgramSettings.WatchSkin_GTR_mini = textBox_WatchSkin_Path.Text;
-                if (comboBox_watch_model.Text == "GTS 4") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
+                // TODO :: Исправить ... Перенести в конфигурации модели
+                //if (comboBox_watch_model.Text == "GTR 3") ProgramSettings.WatchSkin_GTR_3 = textBox_WatchSkin_Path.Text;
+                //if (comboBox_watch_model.Text == "GTR 3 Pro") ProgramSettings.WatchSkin_GTR_3_Pro = textBox_WatchSkin_Path.Text;
+                //if (comboBox_watch_model.Text == "GTS 3") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
+                //if (comboBox_watch_model.Text == "T-Rex 2") ProgramSettings.WatchSkin_T_Rex_2 = textBox_WatchSkin_Path.Text;
+                //if (comboBox_watch_model.Text == "T-Rex Ultra") ProgramSettings.WatchSkin_T_Rex_Ultra = textBox_WatchSkin_Path.Text;
+                //if (comboBox_watch_model.Text == "GTR 4") ProgramSettings.WatchSkin_GTR_4 = textBox_WatchSkin_Path.Text;
+                //if (comboBox_watch_model.Text == "Amazfit Band 7") ProgramSettings.WatchSkin_Amazfit_Band_7 = textBox_WatchSkin_Path.Text;
+                //if (comboBox_watch_model.Text == "GTS 4 mini") ProgramSettings.WatchSkin_GTS_4_mini = textBox_WatchSkin_Path.Text;
+                //if (comboBox_watch_model.Text == "Falcon") ProgramSettings.WatchSkin_Falcon = textBox_WatchSkin_Path.Text;
+                //if (comboBox_watch_model.Text == "GTR mini") ProgramSettings.WatchSkin_GTR_mini = textBox_WatchSkin_Path.Text;
+                //if (comboBox_watch_model.Text == "GTS 4") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
             }
 
             string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
@@ -775,7 +800,7 @@ namespace Watch_Face_Editor
         {
             bool b = checkBox_WatchSkin_Use.Checked;
             textBox_WatchSkin_Path.Enabled = b;
-            button_WatchSkin_PathGet.Enabled = b;
+            //button_WatchSkin_PathGet.Enabled = b;  // не нужно если путь к маске переносим в конфигурацию модели
         }
 
         private void groupBox_Paint(object sender, PaintEventArgs e)
@@ -835,43 +860,43 @@ namespace Watch_Face_Editor
                     fullfilename = fullfilename.Remove(0, Application.StartupPath.Length);
                 textBox_WatchSkin_Path.Text = fullfilename;
 
-                // TODO :: Понять зачем ...
-                switch (ProgramSettings.Watch_Model)
-                {
-                    case "GTR 3":
-                        ProgramSettings.WatchSkin_GTR_3 = textBox_WatchSkin_Path.Text;
-                        break;
-                    case "GTR 3 Pro":
-                        ProgramSettings.WatchSkin_GTR_3_Pro = textBox_WatchSkin_Path.Text;
-                        break;
-                    case "GTS 3":
-                        ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
-                        break;
-                    case "T-Rex 2":
-                        ProgramSettings.WatchSkin_T_Rex_2 = textBox_WatchSkin_Path.Text;
-                        break;
-                    case "T-Rex Ultra":
-                        ProgramSettings.WatchSkin_T_Rex_Ultra = textBox_WatchSkin_Path.Text;
-                        break;
-                    case "GTR 4":
-                        ProgramSettings.WatchSkin_GTR_4 = textBox_WatchSkin_Path.Text;
-                        break;
-                    case "Amazfit Band 7":
-                        ProgramSettings.WatchSkin_Amazfit_Band_7 = textBox_WatchSkin_Path.Text;
-                        break;
-                    case "GTS 4 mini":
-                        ProgramSettings.WatchSkin_GTS_4_mini = textBox_WatchSkin_Path.Text;
-                        break;
-                    case "Falcon":
-                        ProgramSettings.WatchSkin_Falcon = textBox_WatchSkin_Path.Text;
-                        break;
-                    case "GTR mini":
-                        ProgramSettings.WatchSkin_GTR_mini = textBox_WatchSkin_Path.Text;
-                        break;
-                    case "GTS 4":
-                        ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
-                        break;
-                }
+                // TODO :: Понять зачем ... Если путь переносим в конфигурацию модели то вся функция не нужна
+                //switch (ProgramSettings.Watch_Model)
+                //{
+                //    case "GTR 3":
+                //        ProgramSettings.WatchSkin_GTR_3 = textBox_WatchSkin_Path.Text;
+                //        break;
+                //    case "GTR 3 Pro":
+                //        ProgramSettings.WatchSkin_GTR_3_Pro = textBox_WatchSkin_Path.Text;
+                //        break;
+                //    case "GTS 3":
+                //        ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
+                //        break;
+                //    case "T-Rex 2":
+                //        ProgramSettings.WatchSkin_T_Rex_2 = textBox_WatchSkin_Path.Text;
+                //        break;
+                //    case "T-Rex Ultra":
+                //        ProgramSettings.WatchSkin_T_Rex_Ultra = textBox_WatchSkin_Path.Text;
+                //        break;
+                //    case "GTR 4":
+                //        ProgramSettings.WatchSkin_GTR_4 = textBox_WatchSkin_Path.Text;
+                //        break;
+                //    case "Amazfit Band 7":
+                //        ProgramSettings.WatchSkin_Amazfit_Band_7 = textBox_WatchSkin_Path.Text;
+                //        break;
+                //    case "GTS 4 mini":
+                //        ProgramSettings.WatchSkin_GTS_4_mini = textBox_WatchSkin_Path.Text;
+                //        break;
+                //    case "Falcon":
+                //        ProgramSettings.WatchSkin_Falcon = textBox_WatchSkin_Path.Text;
+                //        break;
+                //    case "GTR mini":
+                //        ProgramSettings.WatchSkin_GTR_mini = textBox_WatchSkin_Path.Text;
+                //        break;
+                //    case "GTS 4":
+                //        ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
+                //        break;
+                //}
 
                 string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
                 {
@@ -2341,7 +2366,8 @@ namespace Watch_Face_Editor
             ShowElemetsWatchFace();
             if (Watch_Face != null && Watch_Face.WatchFace_Info != null && Watch_Face.WatchFace_Info.DeviceName != null)
             {
-                switch (Watch_Face.WatchFace_Info.DeviceName)
+                comboBox_watch_model.Text = GetNewFormatDeviceName(Watch_Face.WatchFace_Info.DeviceName);
+                /*switch (Watch_Face.WatchFace_Info.DeviceName)
                 {
                     case "GTR3":
                         comboBox_watch_model.Text = "GTR 3";
@@ -2379,7 +2405,7 @@ namespace Watch_Face_Editor
                     default:
                         comboBox_watch_model.Text = "GTR 3";
                         break;
-                }
+                }*/
             }
             PreviewView = true;
 
@@ -2388,6 +2414,56 @@ namespace Watch_Face_Editor
             FormText();
 
             groupBox_AddElemets.Enabled = true;
+        }
+
+        private string GetNewFormatDeviceName(string formatName)
+        {
+            string newFormatName;
+            bool exist = AvailableConfigurations.ContainsKey(formatName); // проверяем что таккая конфигурация есть
+            if (exist) newFormatName = formatName;
+            else
+            {
+                switch (Watch_Face.WatchFace_Info.DeviceName)
+                {
+                    case "GTR3":
+                        newFormatName = "GTR 3";
+                        break;
+                    case "GTR3_Pro":
+                        newFormatName = "GTR 3 Pro";
+                        break;
+                    case "GTS3":
+                        newFormatName = "GTS 3";
+                        break;
+                    case "T_Rex_2":
+                        newFormatName = "T-Rex 2";
+                        break;
+                    case "T_Rex_Ultra":
+                        newFormatName = "T-Rex Ultra";
+                        break;
+                    case "GTR4":
+                        newFormatName = "GTR 4";
+                        break;
+                    case "Amazfit_Band_7":
+                        newFormatName = "Amazfit Band 7";
+                        break;
+                    case "GTS4_mini":
+                        newFormatName = "GTS 4 mini";
+                        break;
+                    case "GTR_mini":
+                        newFormatName = "GTR mini";
+                        break;
+                    case "Falcon":
+                        newFormatName = "Falcon";
+                        break;
+                    case "GTS4":
+                        newFormatName = "GTS 4";
+                        break;
+                    default:
+                        newFormatName = "GTR 3";
+                        break;
+                }
+            }
+            return newFormatName;
         }
 
         /// <summary>Загружаем файлы изображений в проект и в выпадающие списки</summary>
@@ -2711,17 +2787,23 @@ namespace Watch_Face_Editor
                 //        break;
                 //}
 
-                // Startblock : Kartun
-                Logger.WriteLine($"Starting new project for {ProgramSettings.Watch_Model}");
-                Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
-                Logger.WriteLine($"Loaded configuration: {currPlatform}");
-                Watch_Face.WatchFace_Info.DeviceName = currPlatform.int_id;
+                /* // Startblock : Kartun
+                 Logger.WriteLine($"Starting new project for {ProgramSettings.Watch_Model}");
+                 Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
+                 Logger.WriteLine($"Loaded configuration: {currPlatform}");
+                 Watch_Face.WatchFace_Info.DeviceName = currPlatform.int_id;
+                 Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                 Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                 Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                 Watch_Face.ScreenNormal.Background.BackgroundColor.h = currPlatform.background.h;
+                 Watch_Face.ScreenNormal.Background.BackgroundColor.w = currPlatform.background.w;
+                 // Endblock : Kartun*/
+                Watch_Face.WatchFace_Info.DeviceName = ProgramSettings.Watch_Model; // отказываемся от int_id
                 Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
                 Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
                 Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                Watch_Face.ScreenNormal.Background.BackgroundColor.h = currPlatform.background.h;
-                Watch_Face.ScreenNormal.Background.BackgroundColor.w = currPlatform.background.w;
-                // Endblock : Kartun
+                Watch_Face.ScreenNormal.Background.BackgroundColor.h = SelectedModel.background.h;
+                Watch_Face.ScreenNormal.Background.BackgroundColor.w = SelectedModel.background.w;
 
                 string JSON_String = JsonConvert.SerializeObject(Watch_Face, Formatting.Indented, new JsonSerializerSettings
                 {
@@ -2889,7 +2971,7 @@ namespace Watch_Face_Editor
                 //        break;
                 //}
 
-                // StartBlock :: Kartun
+                /*// StartBlock :: Kartun
                 Logger.WriteLine($"Starting new project for {ProgramSettings.Watch_Model}");
                 Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
                 Logger.WriteLine($"Loaded configuration: {currPlatform}");
@@ -2899,7 +2981,13 @@ namespace Watch_Face_Editor
                 Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
                 Watch_Face.ScreenNormal.Background.BackgroundColor.h = currPlatform.background.h;
                 Watch_Face.ScreenNormal.Background.BackgroundColor.w = currPlatform.background.w;
-                // EndBlock :: Kartun
+                // EndBlock :: Kartun*/
+                Watch_Face.WatchFace_Info.DeviceName = ProgramSettings.Watch_Model; // отказываеися от int_id
+                Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                Watch_Face.ScreenNormal.Background.BackgroundColor.h = SelectedModel.background.h;
+                Watch_Face.ScreenNormal.Background.BackgroundColor.w = SelectedModel.background.w;
 
                 string JSON_String = JsonConvert.SerializeObject(Watch_Face, Formatting.Indented, new JsonSerializerSettings
                 {
@@ -3039,7 +3127,7 @@ namespace Watch_Face_Editor
             //if (panel_Preview.Height < 300) scale = 0.5f;
             #region BackgroundImage
             Logger.WriteLine("BackgroundImage");
-            Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
+            //Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
             //switch (ProgramSettings.Watch_Model)
             //{
             //    case "GTR 3 Pro":
@@ -3063,12 +3151,13 @@ namespace Watch_Face_Editor
             //        bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
             //        break;
             //}
-            // StartBlock :: Kartun
+            /*// StartBlock :: Kartun
             Logger.WriteLine($"* PreviewImage for {ProgramSettings.Watch_Model}");
             Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
             Logger.WriteLine($"Loaded configuration: {currPlatform}");
             bitmap = new Bitmap(Convert.ToInt32(currPlatform.background.w), Convert.ToInt32(currPlatform.background.h), PixelFormat.Format32bppArgb);
-            // EndBlock :: Kartun
+            // EndBlock :: Kartun*/
+            Bitmap bitmap = new Bitmap(SelectedModel.background.w, SelectedModel.background.h, PixelFormat.Format32bppArgb);
             Graphics gPanel = Graphics.FromImage(bitmap);
             #endregion
 
@@ -3157,7 +3246,7 @@ namespace Watch_Face_Editor
                     File.WriteAllText(Application.StartupPath + @"\Settings.json", JSON_String, Encoding.UTF8);
 
                     #region BackgroundImage 
-                    Bitmap bitmapPreviewResize = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
+                    //Bitmap bitmapPreviewResize = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
                     //switch (ProgramSettings.Watch_Model)
                     //{
                     //    case "GTR 3 Pro":
@@ -3181,12 +3270,13 @@ namespace Watch_Face_Editor
                     //        bitmapPreviewResize = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
                     //        break;
                     //}
-                    // StartBlock :: Kartun
+                    /*// StartBlock :: Kartun
                     Logger.WriteLine($"BackgroundImage for {ProgramSettings.Watch_Model}");
                     //Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
                     Logger.WriteLine($"Loaded configuration: {currPlatform}");
                     bitmapPreviewResize = new Bitmap(Convert.ToInt32(currPlatform.background.w), Convert.ToInt32(currPlatform.background.h), PixelFormat.Format32bppArgb);
-                    // EndBlock :: Kartun
+                    // EndBlock :: Kartun*/
+                    Bitmap bitmapPreviewResize = new Bitmap(SelectedModel.background.w, SelectedModel.background.h, PixelFormat.Format32bppArgb);
                     Graphics gPanelPreviewResize = Graphics.FromImage(bitmapPreviewResize);
                     #endregion
 
@@ -3268,12 +3358,13 @@ namespace Watch_Face_Editor
             //        break;
             //}
 
-            // StartBlock :: Kartun
-            Logger.WriteLine($"BackgroundImage for {ProgramSettings.Watch_Model}");
-            //Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
-            Logger.WriteLine($"Loaded configuration: {currPlatform}");
-            bitmap = new Bitmap(Convert.ToInt32(currPlatform.background.w), Convert.ToInt32(currPlatform.background.h), PixelFormat.Format32bppArgb);
-            // EndBlock :: Kartun
+            /* // StartBlock :: Kartun
+             Logger.WriteLine($"BackgroundImage for {ProgramSettings.Watch_Model}");
+             //Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
+             Logger.WriteLine($"Loaded configuration: {currPlatform}");
+             bitmap = new Bitmap(Convert.ToInt32(currPlatform.background.w), Convert.ToInt32(currPlatform.background.h), PixelFormat.Format32bppArgb);
+             // EndBlock :: Kartun*/
+            bitmap = new Bitmap(Convert.ToInt32(SelectedModel.background.w), Convert.ToInt32(SelectedModel.background.h), PixelFormat.Format32bppArgb);
 
 
             Graphics gPanel = Graphics.FromImage(bitmap);
@@ -3919,7 +4010,7 @@ namespace Watch_Face_Editor
                 //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 416;
                 //        break;
                 //}
-                // StartBlock :: Kartun
+                /*// StartBlock :: Kartun
                 Logger.WriteLine($"* AddBackground for {ProgramSettings.Watch_Model}");
 
                 Logger.WriteLine($"Loaded configuration: {currPlatform}");
@@ -3929,7 +4020,13 @@ namespace Watch_Face_Editor
                 Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
                 Watch_Face.ScreenNormal.Background.BackgroundColor.h = currPlatform.background.h;
                 Watch_Face.ScreenNormal.Background.BackgroundColor.w = currPlatform.background.w;
-                // EndBlock :: Kartun
+                // EndBlock :: Kartun*/
+                Watch_Face.WatchFace_Info.DeviceName = ProgramSettings.Watch_Model;
+                Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
+                Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                Watch_Face.ScreenNormal.Background.BackgroundColor.h = SelectedModel.background.h;
+                Watch_Face.ScreenNormal.Background.BackgroundColor.w = SelectedModel.background.w;
 
                 Watch_Face.ScreenNormal.Background.visible = true;
                 JSON_Modified = true;
@@ -3995,7 +4092,7 @@ namespace Watch_Face_Editor
                 //        Watch_Face.ScreenAOD.Background.BackgroundColor.w = 416;
                 //        break;
                 //}
-                // StartBlock :: Kartun
+                /*// StartBlock :: Kartun
                 Logger.WriteLine($"* AddBackground for {ProgramSettings.Watch_Model}");
 
                 Logger.WriteLine($"Loaded configuration: {currPlatform}");
@@ -4005,7 +4102,13 @@ namespace Watch_Face_Editor
                 Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
                 Watch_Face.ScreenAOD.Background.BackgroundColor.h = currPlatform.background.h;
                 Watch_Face.ScreenAOD.Background.BackgroundColor.w = currPlatform.background.w;
-                // EndBlock :: Kartun
+                // EndBlock :: Kartun*/
+                Watch_Face.WatchFace_Info.DeviceName = ProgramSettings.Watch_Model;
+                Watch_Face.ScreenAOD.Background.BackgroundColor.color = "0xFF000000";
+                Watch_Face.ScreenAOD.Background.BackgroundColor.x = 0;
+                Watch_Face.ScreenAOD.Background.BackgroundColor.y = 0;
+                Watch_Face.ScreenAOD.Background.BackgroundColor.h = SelectedModel.background.h;
+                Watch_Face.ScreenAOD.Background.BackgroundColor.w = SelectedModel.background.w;
                 Watch_Face.ScreenAOD.Background.visible = true;
                 JSON_Modified = true;
             }
@@ -6762,18 +6865,18 @@ namespace Watch_Face_Editor
             {
                 ProgramSettings.Watch_Model = comboBox_watch_model.Text;
 
-                // TODO :: Понять зачем
-                if (comboBox_watch_model.Text == "GTR 3") ProgramSettings.WatchSkin_GTR_3 = textBox_WatchSkin_Path.Text;
-                if (comboBox_watch_model.Text == "GTR 3 Pro") ProgramSettings.WatchSkin_GTR_3_Pro = textBox_WatchSkin_Path.Text;
-                if (comboBox_watch_model.Text == "GTS 3") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
-                if (comboBox_watch_model.Text == "T-Rex 2") ProgramSettings.WatchSkin_T_Rex_2 = textBox_WatchSkin_Path.Text;
-                if (comboBox_watch_model.Text == "T-Rex Ultra") ProgramSettings.WatchSkin_T_Rex_Ultra = textBox_WatchSkin_Path.Text;
-                if (comboBox_watch_model.Text == "GTR 4") ProgramSettings.WatchSkin_GTR_4 = textBox_WatchSkin_Path.Text;
-                if (comboBox_watch_model.Text == "Amazfit Band 7") ProgramSettings.WatchSkin_Amazfit_Band_7 = textBox_WatchSkin_Path.Text;
-                if (comboBox_watch_model.Text == "GTS 4 mini") ProgramSettings.WatchSkin_GTS_4_mini = textBox_WatchSkin_Path.Text;
-                if (comboBox_watch_model.Text == "Falcon") ProgramSettings.WatchSkin_Falcon = textBox_WatchSkin_Path.Text;
-                if (comboBox_watch_model.Text == "GTR mini") ProgramSettings.WatchSkin_GTR_mini = textBox_WatchSkin_Path.Text;
-                if (comboBox_watch_model.Text == "GTS 4") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
+                // TODO :: Понять зачем ... Перенесли в конфигурацию модели
+                //if (comboBox_watch_model.Text == "GTR 3") ProgramSettings.WatchSkin_GTR_3 = textBox_WatchSkin_Path.Text;
+                //if (comboBox_watch_model.Text == "GTR 3 Pro") ProgramSettings.WatchSkin_GTR_3_Pro = textBox_WatchSkin_Path.Text;
+                //if (comboBox_watch_model.Text == "GTS 3") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
+                //if (comboBox_watch_model.Text == "T-Rex 2") ProgramSettings.WatchSkin_T_Rex_2 = textBox_WatchSkin_Path.Text;
+                //if (comboBox_watch_model.Text == "T-Rex Ultra") ProgramSettings.WatchSkin_T_Rex_Ultra = textBox_WatchSkin_Path.Text;
+                //if (comboBox_watch_model.Text == "GTR 4") ProgramSettings.WatchSkin_GTR_4 = textBox_WatchSkin_Path.Text;
+                //if (comboBox_watch_model.Text == "Amazfit Band 7") ProgramSettings.WatchSkin_Amazfit_Band_7 = textBox_WatchSkin_Path.Text;
+                //if (comboBox_watch_model.Text == "GTS 4 mini") ProgramSettings.WatchSkin_GTS_4_mini = textBox_WatchSkin_Path.Text;
+                //if (comboBox_watch_model.Text == "Falcon") ProgramSettings.WatchSkin_Falcon = textBox_WatchSkin_Path.Text;
+                //if (comboBox_watch_model.Text == "GTR mini") ProgramSettings.WatchSkin_GTR_mini = textBox_WatchSkin_Path.Text;
+                //if (comboBox_watch_model.Text == "GTS 4") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
             }
 
             string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
@@ -6826,18 +6929,18 @@ namespace Watch_Face_Editor
             {
                 ProgramSettings.Watch_Model = comboBox_watch_model.Text;
 
-                // TODO :: Понять зачем
-                if (comboBox_watch_model.Text == "GTR 3") ProgramSettings.WatchSkin_GTR_3 = textBox_WatchSkin_Path.Text;
-                if (comboBox_watch_model.Text == "GTR 3 Pro") ProgramSettings.WatchSkin_GTR_3_Pro = textBox_WatchSkin_Path.Text;
-                if (comboBox_watch_model.Text == "GTS 3") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
-                if (comboBox_watch_model.Text == "T-Rex 2") ProgramSettings.WatchSkin_T_Rex_2 = textBox_WatchSkin_Path.Text;
-                if (comboBox_watch_model.Text == "T-Rex Ultra") ProgramSettings.WatchSkin_T_Rex_Ultra = textBox_WatchSkin_Path.Text;
-                if (comboBox_watch_model.Text == "GTR 4") ProgramSettings.WatchSkin_GTR_4 = textBox_WatchSkin_Path.Text;
-                if (comboBox_watch_model.Text == "Amazfit Band 7") ProgramSettings.WatchSkin_Amazfit_Band_7 = textBox_WatchSkin_Path.Text;
-                if (comboBox_watch_model.Text == "GTS 4 mini") ProgramSettings.WatchSkin_GTS_4_mini = textBox_WatchSkin_Path.Text;
-                if (comboBox_watch_model.Text == "Falcon") ProgramSettings.WatchSkin_Falcon = textBox_WatchSkin_Path.Text;
-                if (comboBox_watch_model.Text == "GTR mini") ProgramSettings.WatchSkin_GTR_mini = textBox_WatchSkin_Path.Text;
-                if (comboBox_watch_model.Text == "GTS 4") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
+                // TODO :: Понять зачем ... Перенесли в конфигурацию модели
+                //if (comboBox_watch_model.Text == "GTR 3") ProgramSettings.WatchSkin_GTR_3 = textBox_WatchSkin_Path.Text;
+                //if (comboBox_watch_model.Text == "GTR 3 Pro") ProgramSettings.WatchSkin_GTR_3_Pro = textBox_WatchSkin_Path.Text;
+                //if (comboBox_watch_model.Text == "GTS 3") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
+                //if (comboBox_watch_model.Text == "T-Rex 2") ProgramSettings.WatchSkin_T_Rex_2 = textBox_WatchSkin_Path.Text;
+                //if (comboBox_watch_model.Text == "T-Rex Ultra") ProgramSettings.WatchSkin_T_Rex_Ultra = textBox_WatchSkin_Path.Text;
+                //if (comboBox_watch_model.Text == "GTR 4") ProgramSettings.WatchSkin_GTR_4 = textBox_WatchSkin_Path.Text;
+                //if (comboBox_watch_model.Text == "Amazfit Band 7") ProgramSettings.WatchSkin_Amazfit_Band_7 = textBox_WatchSkin_Path.Text;
+                //if (comboBox_watch_model.Text == "GTS 4 mini") ProgramSettings.WatchSkin_GTS_4_mini = textBox_WatchSkin_Path.Text;
+                //if (comboBox_watch_model.Text == "Falcon") ProgramSettings.WatchSkin_Falcon = textBox_WatchSkin_Path.Text;
+                //if (comboBox_watch_model.Text == "GTR mini") ProgramSettings.WatchSkin_GTR_mini = textBox_WatchSkin_Path.Text;
+                //if (comboBox_watch_model.Text == "GTS 4") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
             }
 
             string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
@@ -8088,12 +8191,18 @@ namespace Watch_Face_Editor
             //        pictureBox_Preview.Size = new Size((int)(211 * currentDPI), (int)(211 * currentDPI));
             //        break;
             //}
-            // StartBlock :: Kartun
+
+            //// StartBlock :: Kartun
+            //Logger.WriteLine($"* comboBox_watch_model_SelectedIndexChanged : {ProgramSettings.Watch_Model}");
+            //Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
+            //Logger.WriteLine($"Loaded configuration: {currPlatform}");
+            //pictureBox_Preview.Size = new Size((int)(currPlatform.scaling.w * currentDPI), (int)(currPlatform.scaling.h * currentDPI));
+            //// EndBlock :: Kartun
+
             Logger.WriteLine($"* comboBox_watch_model_SelectedIndexChanged : {ProgramSettings.Watch_Model}");
-            Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
-            Logger.WriteLine($"Loaded configuration: {currPlatform}");
-            pictureBox_Preview.Size = new Size((int)(currPlatform.scaling.w * currentDPI), (int)(currPlatform.scaling.h * currentDPI));
-            // EndBlock :: Kartun
+            SelectedModel = AvailableConfigurations[ProgramSettings.Watch_Model]; // глобальная переменная чтобы каждый раз не считывать
+            Logger.WriteLine($"Loaded configuration: {SelectedModel}");
+            pictureBox_Preview.Size = new Size((int)(SelectedModel.scaling_0_5.w * currentDPI), (int)(SelectedModel.scaling_0_5.h * currentDPI));
 
             // изменяем размер панели для предпросмотра если она не влазит
             if (pictureBox_Preview.Top + pictureBox_Preview.Height > label_watch_model.Top)
@@ -8492,38 +8601,39 @@ namespace Watch_Face_Editor
             // Startblock :: Kartun
             // TODO :: Это надо доделать
             //textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_3;
-                    textBox_WatchSkin_Path.Text = @"\Skin\" + currPlatform.watchSkin;
+            textBox_WatchSkin_Path.Text = @"\Skin\" + SelectedModel.watchSkin;
 
-                    if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
-                    Watch_Face.WatchFace_Info.DeviceName = currPlatform.int_id;
+            if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
+            //Watch_Face.WatchFace_Info.DeviceName = SelectedModel.int_id;  // Отказываемся от int_id
+            Watch_Face.WatchFace_Info.DeviceName = ProgramSettings.Watch_Model;
 
-                    if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
-                    {
-                        if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
-                        {
-                            Watch_Face.ScreenNormal.Background.BackgroundColor.w = currPlatform.background.w;
-                            Watch_Face.ScreenNormal.Background.BackgroundColor.h = currPlatform.background.h;
-                        }
-                        if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
-                        {
-                            Watch_Face.ScreenNormal.Background.BackgroundImage.w = currPlatform.background.w;
-                            Watch_Face.ScreenNormal.Background.BackgroundImage.h = currPlatform.background.h;
-                        }
-                    }
+            if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
+            {
+                if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
+                {
+                    Watch_Face.ScreenNormal.Background.BackgroundColor.w = SelectedModel.background.w;
+                    Watch_Face.ScreenNormal.Background.BackgroundColor.h = SelectedModel.background.h;
+                }
+                if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
+                {
+                    Watch_Face.ScreenNormal.Background.BackgroundImage.w = SelectedModel.background.w;
+                    Watch_Face.ScreenNormal.Background.BackgroundImage.h = SelectedModel.background.h;
+                }
+            }
 
-                    if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
-                    {
-                        if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
-                        {
-                            Watch_Face.ScreenAOD.Background.BackgroundColor.w = currPlatform.background.w;
-                            Watch_Face.ScreenAOD.Background.BackgroundColor.h = currPlatform.background.h;
-                        }
-                        if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
-                        {
-                            Watch_Face.ScreenAOD.Background.BackgroundImage.w = currPlatform.background.w;
-                            Watch_Face.ScreenAOD.Background.BackgroundImage.h = currPlatform.background.h;
-                        }
-                    }
+            if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
+            {
+                if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
+                {
+                    Watch_Face.ScreenAOD.Background.BackgroundColor.w = SelectedModel.background.w;
+                    Watch_Face.ScreenAOD.Background.BackgroundColor.h = SelectedModel.background.h;
+                }
+                if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
+                {
+                    Watch_Face.ScreenAOD.Background.BackgroundImage.w = SelectedModel.background.w;
+                    Watch_Face.ScreenAOD.Background.BackgroundImage.h = SelectedModel.background.h;
+                }
+            }
             // Endblock :: Kartun
 
             string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
@@ -8539,6 +8649,7 @@ namespace Watch_Face_Editor
             if (Watch_Face != null && Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
                 ChangSizeBackground(Watch_Face.ScreenAOD.Background);
 
+            // jnrk.xftv анимацию для моделей где она не работает
             if (ProgramSettings.Watch_Model == "T-Rex 2" /*ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4"*/)
             {
                 uCtrl_Animation_Elm.MotionAnimation = false;
@@ -8560,11 +8671,11 @@ namespace Watch_Face_Editor
 
         private void ChangSizeBackground(Background background)
         {
-            Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
+            //Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
             if (background.BackgroundColor != null)
             {
-                background.BackgroundColor.w = currPlatform.background.w;
-                background.BackgroundColor.h = currPlatform.background.h;
+                background.BackgroundColor.w = SelectedModel.background.w;
+                background.BackgroundColor.h = SelectedModel.background.h;
                 //switch (ProgramSettings.Watch_Model)
                 //{
                 //    case "GTR 3":
@@ -8603,8 +8714,8 @@ namespace Watch_Face_Editor
             }
             if (background.BackgroundImage != null)
             {
-                background.BackgroundImage.w = currPlatform.background.w;
-                background.BackgroundImage.h = currPlatform.background.h;
+                background.BackgroundImage.w = SelectedModel.background.w;
+                background.BackgroundImage.h = SelectedModel.background.h;
                 //switch (ProgramSettings.Watch_Model)
                 //{
                 //    case "GTR 3":
@@ -8821,7 +8932,7 @@ namespace Watch_Face_Editor
             //        break;
             //}
 
-            // StartBlock :: Kartun
+            /*// StartBlock :: Kartun
             Logger.WriteLine($"* button_pack_zip_Click for {ProgramSettings.Watch_Model}");
             Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
             Logger.WriteLine($"Loaded configuration: {currPlatform}");
@@ -8835,7 +8946,12 @@ namespace Watch_Face_Editor
 
            
             //bitmap = new Bitmap(Convert.ToInt32(currPlatform.background.w), Convert.ToInt32(currPlatform.background.h), PixelFormat.Format32bppArgb);
-            // EndBlock :: Kartun
+            // EndBlock :: Kartun*/
+            app.designWidth = SelectedModel.designWidth;
+            foreach (int id in SelectedModel.deviceSource_ids)
+            {
+                app.platforms.Add(new Platform() { name = SelectedModel.name, deviceSource = id });
+            }
 
 
             string appText = JsonConvert.SerializeObject(app, Formatting.Indented, new JsonSerializerSettings
@@ -9039,7 +9155,10 @@ namespace Watch_Face_Editor
                     button_CreatePreview_Click(null, null);
                     return;
                 }
-                Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
+                Bitmap bitmap = new Bitmap(SelectedModel.background.w, SelectedModel.background.h, PixelFormat.Format32bppArgb);
+                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\" + SelectedModel.maskImage);
+                int PreviewHeight = SelectedModel.previewHeight;
+                /*Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
                 Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
                 int PreviewHeight = 306;
                 switch (ProgramSettings.Watch_Model)
@@ -9076,7 +9195,7 @@ namespace Watch_Face_Editor
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
                         PreviewHeight = 280;
                         break;
-                }
+                }*/
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
                 Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false, 
@@ -9115,9 +9234,9 @@ namespace Watch_Face_Editor
             if (FileName != null && FullFileDir != null) // проект уже сохранен
             {
                 // формируем картинку для предпросмотра
-                Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
-                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
-                int PreviewHeight = 306;
+                //Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
+                //Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
+                //int PreviewHeight = 306;
                 //switch (ProgramSettings.Watch_Model)
                 //{
                 //    case "GTR 3 Pro":
@@ -9154,14 +9273,17 @@ namespace Watch_Face_Editor
                 //        break;
                 //}
 
-                // StartBlock :: Kartun
+                /*// StartBlock :: Kartun
                 Logger.WriteLine($"* button_CreatePreview_Click for {ProgramSettings.Watch_Model}");
                 Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
                 Logger.WriteLine($"Loaded configuration: {currPlatform}");
                 bitmap = new Bitmap(Convert.ToInt32(currPlatform.background.w), Convert.ToInt32(currPlatform.background.h), PixelFormat.Format32bppArgb);
                 mask = new Bitmap(Application.StartupPath + @"\Mask\" + currPlatform.maskImage);
                 PreviewHeight = currPlatform.previewHeight;
-                // EndBlock :: Kartun
+                // EndBlock :: Kartun*/
+                Bitmap bitmap = new Bitmap(SelectedModel.background.w, SelectedModel.background.h, PixelFormat.Format32bppArgb);
+                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\" + SelectedModel.maskImage);
+                int PreviewHeight = SelectedModel.previewHeight;
 
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
@@ -9435,22 +9557,28 @@ namespace Watch_Face_Editor
                                 switch (width)
                                 {
                                     case 454:
-                                        Watch_Face.WatchFace_Info.DeviceName = "GTR3";
+                                        Watch_Face.WatchFace_Info.DeviceName = "GTR 3";
+                                        //Watch_Face.WatchFace_Info.DeviceName = "GTR3";
                                         break;
                                     case 480:
-                                        Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
+                                        Watch_Face.WatchFace_Info.DeviceName = "GTR 3 Pro";
+                                        //Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
                                         break;
                                     case 390:
-                                        Watch_Face.WatchFace_Info.DeviceName = "GTS3";
+                                        Watch_Face.WatchFace_Info.DeviceName = "GTS 3";
+                                        //Watch_Face.WatchFace_Info.DeviceName = "GTS3";
                                         break;
                                     case 466:
-                                        Watch_Face.WatchFace_Info.DeviceName = "GTR4";
+                                        Watch_Face.WatchFace_Info.DeviceName = "GTR 4";
+                                        //Watch_Face.WatchFace_Info.DeviceName = "GTR4";
                                         break;
                                     case 194:
-                                        Watch_Face.WatchFace_Info.DeviceName = "Amazfit_Band_7";
+                                        Watch_Face.WatchFace_Info.DeviceName = "Amazfit Band 7";
+                                        //Watch_Face.WatchFace_Info.DeviceName = "Amazfit_Band_7";
                                         break;
                                     case 336:
-                                        Watch_Face.WatchFace_Info.DeviceName = "GTS4_mini";
+                                        Watch_Face.WatchFace_Info.DeviceName = "GTS 4 mini";
+                                        //Watch_Face.WatchFace_Info.DeviceName = "GTS4_mini";
                                         break;
                                     case 416:
                                         Watch_Face.WatchFace_Info.DeviceName = "Falcon";
@@ -9467,42 +9595,42 @@ namespace Watch_Face_Editor
                                             background.BackgroundColor.color = ColorToString(Color.Black);
                                             background.BackgroundColor.x = 0;
                                             background.BackgroundColor.y = 0;
-                                            switch (ProgramSettings.Watch_Model)
+                                            /*switch (ProgramSettings.Watch_Model)
                                             {
                                                 case "GTR 3":
                                                     background.BackgroundColor.h = 454;
                                                     background.BackgroundColor.w = 454;
-                                                    Watch_Face.WatchFace_Info.DeviceName = "GTR3";
+                                                    //Watch_Face.WatchFace_Info.DeviceName = "GTR3";
                                                     break;
                                                 case "T-Rex 2":
                                                     background.BackgroundColor.h = 454;
                                                     background.BackgroundColor.w = 454;
-                                                    Watch_Face.WatchFace_Info.DeviceName = "T_Rex_2";
+                                                    //Watch_Face.WatchFace_Info.DeviceName = "T_Rex_2";
                                                     break;
                                                 case "T-Rex Ultra":
                                                     background.BackgroundColor.h = 454;
                                                     background.BackgroundColor.w = 454;
-                                                    Watch_Face.WatchFace_Info.DeviceName = "T_Rex_Ultra";
+                                                    //Watch_Face.WatchFace_Info.DeviceName = "T_Rex_Ultra";
                                                     break;
                                                 case "GTR 3 Pro":
                                                     background.BackgroundColor.h = 480;
                                                     background.BackgroundColor.w = 480;
-                                                    Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
+                                                    //Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
                                                     break;
                                                 case "GTS 3":
                                                     background.BackgroundColor.h = 450;
                                                     background.BackgroundColor.w = 390;
-                                                    Watch_Face.WatchFace_Info.DeviceName = "GTS3";
+                                                    //Watch_Face.WatchFace_Info.DeviceName = "GTS3";
                                                     break;
                                                 case "GTR 4":
                                                     background.BackgroundColor.h = 466;
                                                     background.BackgroundColor.w = 466;
-                                                    Watch_Face.WatchFace_Info.DeviceName = "GTR4";
+                                                    //Watch_Face.WatchFace_Info.DeviceName = "GTR4";
                                                     break;
                                                 case "Amazfit Band 7":
                                                     background.BackgroundColor.h = 368;
                                                     background.BackgroundColor.w = 194;
-                                                    Watch_Face.WatchFace_Info.DeviceName = "Amazfit_Band_7";
+                                                    //Watch_Face.WatchFace_Info.DeviceName = "Amazfit_Band_7";
                                                     break;
                                                 case "GTS 4 mini":
                                                     background.BackgroundColor.h = 384;
@@ -9512,24 +9640,31 @@ namespace Watch_Face_Editor
                                                 case "Falcon":
                                                     background.BackgroundColor.h = 416;
                                                     background.BackgroundColor.w = 416;
-                                                    Watch_Face.WatchFace_Info.DeviceName = "Falcon";
+                                                    //Watch_Face.WatchFace_Info.DeviceName = "Falcon";
                                                     break;
                                                 case "GTR mini":
                                                     background.BackgroundColor.h = 416;
                                                     background.BackgroundColor.w = 416;
-                                                    Watch_Face.WatchFace_Info.DeviceName = "GTR_mini";
+                                                    //Watch_Face.WatchFace_Info.DeviceName = "GTR_mini";
                                                     break;
                                                 case "GTS 4":
                                                     background.BackgroundColor.h = 450;
                                                     background.BackgroundColor.w = 390;
-                                                    Watch_Face.WatchFace_Info.DeviceName = "GTS4";
+                                                    //Watch_Face.WatchFace_Info.DeviceName = "GTS4";
                                                     break;
                                                 default:
                                                     background.BackgroundColor.h = 454;
                                                     background.BackgroundColor.w = 454;
-                                                    Watch_Face.WatchFace_Info.DeviceName = "GTR3";
+                                                    //Watch_Face.WatchFace_Info.DeviceName = "GTR3";
                                                     break;
-                                            }
+                                            }*/
+                                            Watch_Face.WatchFace_Info.DeviceName = ProgramSettings.Watch_Model;
+                                            Logger.WriteLine($"Unpack Zip for {ProgramSettings.Watch_Model}");
+                                            Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
+                                            Logger.WriteLine($"Loaded configuration: {currPlatform}");
+                                            background.BackgroundColor.h = currPlatform.background.h;
+                                            background.BackgroundColor.w = currPlatform.background.w;
+
                                             background.BackgroundImage = null;
                                             Watch_Face.ScreenNormal.Background = background; 
                                         }
@@ -9539,7 +9674,7 @@ namespace Watch_Face_Editor
                                                 background.Editable_Background.BackgroundList != null &&
                                                 background.Editable_Background.BackgroundList.Count > 0)
                                             {
-                                                int h = 454;
+                                                /*int h = 454;
                                                 int w = 454;
                                                 switch (ProgramSettings.Watch_Model)
                                                 {
@@ -9605,11 +9740,17 @@ namespace Watch_Face_Editor
                                                         break;
                                                 }
                                                 background.Editable_Background.h = h;
-                                                background.Editable_Background.w = w;
+                                                background.Editable_Background.w = w;*/
+                                                Watch_Face.WatchFace_Info.DeviceName = ProgramSettings.Watch_Model;
+                                                Logger.WriteLine($"Unpack Zip for {ProgramSettings.Watch_Model}");
+                                                Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
+                                                Logger.WriteLine($"Loaded configuration: {currPlatform}");
+                                                background.Editable_Background.h = currPlatform.background.h;
+                                                background.Editable_Background.w = currPlatform.background.w;
                                             }
                                             else if (background.BackgroundImage != null)
                                             {
-                                                switch (ProgramSettings.Watch_Model)
+                                                /*switch (ProgramSettings.Watch_Model)
                                                 {
                                                     case "GTR 3":
                                                         background.BackgroundImage.h = 454;
@@ -9671,7 +9812,13 @@ namespace Watch_Face_Editor
                                                         background.BackgroundImage.w = 454;
                                                         Watch_Face.WatchFace_Info.DeviceName = "GTR3";
                                                         break;
-                                                }
+                                                }*/
+                                                Watch_Face.WatchFace_Info.DeviceName = ProgramSettings.Watch_Model;
+                                                Logger.WriteLine($"Unpack Zip for {ProgramSettings.Watch_Model}");
+                                                Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
+                                                Logger.WriteLine($"Loaded configuration: {currPlatform}");
+                                                background.BackgroundImage.h = currPlatform.background.h;
+                                                background.BackgroundImage.w = currPlatform.background.w;
                                             }
                                         }
                                         break;
@@ -9689,7 +9836,7 @@ namespace Watch_Face_Editor
                                     backgroundEmpty.BackgroundColor.color = ColorToString(Color.Black);
                                     backgroundEmpty.BackgroundColor.x = 0;
                                     backgroundEmpty.BackgroundColor.y = 0;
-                                    switch (ProgramSettings.Watch_Model)
+                                    /*switch (ProgramSettings.Watch_Model)
                                     {
                                         case "GTR 3":
                                             backgroundEmpty.BackgroundColor.h = 454;
@@ -9751,7 +9898,14 @@ namespace Watch_Face_Editor
                                             backgroundEmpty.BackgroundColor.w = 454;
                                             Watch_Face.WatchFace_Info.DeviceName = "GTR3";
                                             break;
-                                    }
+                                    }*/
+                                    Watch_Face.WatchFace_Info.DeviceName = ProgramSettings.Watch_Model;
+                                    Logger.WriteLine($"Unpack Zip for {ProgramSettings.Watch_Model}");
+                                    Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
+                                    Logger.WriteLine($"Loaded configuration: {currPlatform}");
+                                    backgroundEmpty.BackgroundColor.h = currPlatform.background.h;
+                                    backgroundEmpty.BackgroundColor.w = currPlatform.background.w;
+
                                     Watch_Face.ScreenNormal.Background = backgroundEmpty;
                                 }
                             }
@@ -17226,8 +17380,8 @@ namespace Watch_Face_Editor
             saveFileDialog.Title = Properties.FormStrings.Dialog_Title_SavePNG;
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
-                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
+                //Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
+                //Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
                 //switch (ProgramSettings.Watch_Model)
                 //{
                 //    case "GTR 3 Pro":
@@ -17257,13 +17411,15 @@ namespace Watch_Face_Editor
                 //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
                 //        break;
                 //}
-                // StartBlock :: Kartun
+                /*// StartBlock :: Kartun
                 Logger.WriteLine($"* button_SavePNG_Click for {ProgramSettings.Watch_Model}");
                 Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
                 Logger.WriteLine($"Loaded configuration: {currPlatform}");
                 bitmap = new Bitmap(Convert.ToInt32(currPlatform.background.w), Convert.ToInt32(currPlatform.background.h), PixelFormat.Format32bppArgb);
                 mask = new Bitmap(Application.StartupPath + @"\Mask\" + currPlatform.maskImage);
-                // EndBlock :: Kartun
+                // EndBlock :: Kartun*/
+                Bitmap bitmap = new Bitmap(SelectedModel.background.w, SelectedModel.background.h, PixelFormat.Format32bppArgb);
+                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\" + SelectedModel.maskImage);
 
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
@@ -17288,8 +17444,8 @@ namespace Watch_Face_Editor
             saveFileDialog.Title = Properties.FormStrings.Dialog_Title_SaveGIF;
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
-                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
+                //Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
+                //Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
                 //switch (ProgramSettings.Watch_Model)
                 //{
                 //    case "GTR 3 Pro":
@@ -17319,13 +17475,15 @@ namespace Watch_Face_Editor
                 //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
                 //        break;
                 //}
-                // StartBlock :: Kartun
+                /*// StartBlock :: Kartun
                 Logger.WriteLine($"* button_SavePNG_Click for {ProgramSettings.Watch_Model}");
                 Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
                 Logger.WriteLine($"Loaded configuration: {currPlatform}");
                 bitmap = new Bitmap(Convert.ToInt32(currPlatform.background.w), Convert.ToInt32(currPlatform.background.h), PixelFormat.Format32bppArgb);
                 mask = new Bitmap(Application.StartupPath + @"\Mask\" + currPlatform.maskImage);
-                // EndBlock :: Kartun
+                // EndBlock :: Kartun*/
+                Bitmap bitmap = new Bitmap(SelectedModel.background.w, SelectedModel.background.h, PixelFormat.Format32bppArgb);
+                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\" + SelectedModel.maskImage);
 
                 Bitmap bitmapTemp = new Bitmap(bitmap.Width, bitmap.Height, PixelFormat.Format32bppArgb);
                 Graphics gPanel = Graphics.FromImage(bitmap);
@@ -17714,8 +17872,8 @@ namespace Watch_Face_Editor
             saveFileDialog.Title = Properties.FormStrings.Dialog_Title_SavePNG;
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
-                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
+                //Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
+                //Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
                 //switch (ProgramSettings.Watch_Model)
                 //{
                 //    case "GTR 3 Pro":
@@ -17745,13 +17903,15 @@ namespace Watch_Face_Editor
                 //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
                 //        break;
                 //}
-                // StartBlock :: Kartun
+                /*// StartBlock :: Kartun
                 Logger.WriteLine($"* button_SavePNG_shortcut_Click for {ProgramSettings.Watch_Model}");
                 Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
                 Logger.WriteLine($"Loaded configuration: {currPlatform}");
                 bitmap = new Bitmap(Convert.ToInt32(currPlatform.background.w), Convert.ToInt32(currPlatform.background.h), PixelFormat.Format32bppArgb);
                 mask = new Bitmap(Application.StartupPath + @"\Mask\" + currPlatform.maskImage);
-                // EndBlock :: Kartun
+                // EndBlock :: Kartun*/
+                Bitmap bitmap = new Bitmap(SelectedModel.background.w, SelectedModel.background.h, PixelFormat.Format32bppArgb);
+                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\" + SelectedModel.maskImage);
 
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 //int link = radioButton_ScreenNormal.Checked ? 0 : 1;
