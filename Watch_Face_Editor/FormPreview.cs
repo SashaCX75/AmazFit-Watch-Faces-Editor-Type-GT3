@@ -24,14 +24,15 @@ namespace Watch_Face_Editor
 
         public void radioButton_CheckedChanged(object sender, EventArgs e)
         {
-            //Form1 f1 = this.Owner as Form1;//Получаем ссылку на первую форму
-            //f1.button1.PerformClick();
+            Form1 form1 = this.Owner as Form1;//Получаем ссылку на первую форму
+            Classes.AmazfitPlatform selectedModel = form1.SelectedModel;
+
             RadioButton radioButton = sender as RadioButton;
             if (radioButton != null && !radioButton.Checked) return;
             pictureBox_Preview.BackgroundImageLayout = ImageLayout.Zoom;
             if (radioButton_small.Checked)
             {
-                switch (Watch_Model)
+                /*switch (Watch_Model)
                 {
                     case "GTR 3":
                     case "T-Rex 2":
@@ -64,13 +65,15 @@ namespace Watch_Face_Editor
                         pictureBox_Preview.Size = new Size(211, 211);
                         this.Size = new Size((int)(211 + 20 * currentDPI), (int)(211 + 100 * currentDPI));
                         break;
-                }
+                }*/
+                pictureBox_Preview.Size = new Size(selectedModel.scaling_0_5.w, selectedModel.scaling_0_5.h);
+                this.Size = new Size(selectedModel.scaling_0_5.w + (int)(22 * currentDPI), selectedModel.scaling_0_5.h + (int)(66 * currentDPI));
                 scale = 0.5f;
             }
 
             if (radioButton_normal.Checked)
             {
-                switch (Watch_Model)
+                /*switch (Watch_Model)
                 {
                     case "GTR 3":
                     case "T-Rex 2":
@@ -103,13 +106,15 @@ namespace Watch_Face_Editor
                         pictureBox_Preview.Size = new Size(418, 418);
                         this.Size = new Size((int)(418 + 20 * currentDPI), (int)(418 + 100 * currentDPI));
                         break;
-                }
+                }*/
+                pictureBox_Preview.Size = new Size(selectedModel.scaling_1_0.w, selectedModel.scaling_1_0.h);
+                this.Size = new Size(selectedModel.scaling_1_0.w + (int)(22 * currentDPI), selectedModel.scaling_1_0.h + (int)(66 * currentDPI));
                 scale = 1f;
             }
 
             if (radioButton_large.Checked)
             {
-                switch (Watch_Model)
+                /*switch (Watch_Model)
                 {
                     case "GTR 3":
                     case "T-Rex 2":
@@ -142,13 +147,15 @@ namespace Watch_Face_Editor
                         pictureBox_Preview.Size = new Size(626, 626);
                         this.Size = new Size((int)(626 + 20 * currentDPI), (int)(626 + 100 * currentDPI));
                         break;
-                }
+                }*/
+                pictureBox_Preview.Size = new Size(selectedModel.scaling_1_5.w, selectedModel.scaling_1_5.h);
+                this.Size = new Size(selectedModel.scaling_1_5.w + (int)(22 * currentDPI), selectedModel.scaling_1_5.h + (int)(66 * currentDPI));
                 scale = 1.5f;
             }
 
             if (radioButton_xlarge.Checked)
             {
-                switch (Watch_Model)
+                /*switch (Watch_Model)
                 {
                     case "GTR 3":
                     case "T-Rex 2":
@@ -181,13 +188,15 @@ namespace Watch_Face_Editor
                         pictureBox_Preview.Size = new Size(833, 833);
                         this.Size = new Size((int)(833 + 20 * currentDPI), (int)(833 + 100 * currentDPI));
                         break;
-                }
+                }*/
+                pictureBox_Preview.Size = new Size(selectedModel.scaling_2_0.w, selectedModel.scaling_2_0.h);
+                this.Size = new Size(selectedModel.scaling_2_0.w + (int)(22 * currentDPI), selectedModel.scaling_2_0.h + (int)(66 * currentDPI));
                 scale = 2f;
             }
 
             if (radioButton_xxlarge.Checked)
             {
-                switch (Watch_Model)
+                /*switch (Watch_Model)
                 {
                     case "GTR 3":
                     case "T-Rex 2":
@@ -220,7 +229,9 @@ namespace Watch_Face_Editor
                         pictureBox_Preview.Size = new Size(1041, 1041);
                         this.Size = new Size((int)(1041 + 20 * currentDPI), (int)(1041 + 100 * currentDPI));
                         break;
-                }
+                }*/
+                pictureBox_Preview.Size = new Size(selectedModel.scaling_2_5.w, selectedModel.scaling_2_5.h);
+                this.Size = new Size(selectedModel.scaling_2_5.w + (int)(22 * currentDPI), selectedModel.scaling_2_5.h + (int)(66 * currentDPI));
                 scale = 2.5f;
             }
         }
