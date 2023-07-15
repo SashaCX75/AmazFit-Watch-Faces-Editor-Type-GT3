@@ -1909,7 +1909,7 @@ namespace Watch_Face_Editor
                     background.BackgroundImage.src = backgroundImg;
                     background.BackgroundImage.x = 0;
                     background.BackgroundImage.y = 0;
-                    switch (ProgramSettings.Watch_Model)
+                    /*switch (ProgramSettings.Watch_Model)
                     {
                         case "GTR 3":
                             background.BackgroundImage.h = 454;
@@ -1955,7 +1955,9 @@ namespace Watch_Face_Editor
                             background.BackgroundImage.h = 450;
                             background.BackgroundImage.w = 390;
                             break;
-                    }
+                    }*/
+                    background.BackgroundImage.h = SelectedModel.background.h;
+                    background.BackgroundImage.w = SelectedModel.background.w;
                     //background.BackgroundImage.show_level = "ONLY_NORMAL";
                     background.BackgroundColor = null;
                     if (background.Editable_Background != null) background.Editable_Background.enable_edit_bg = false;
@@ -1996,7 +1998,7 @@ namespace Watch_Face_Editor
                 background.BackgroundColor.color = ColorToString(userCtrl_Background_Options.GetColorBackground());
                 background.BackgroundColor.x = 0;
                 background.BackgroundColor.y = 0;
-                switch (ProgramSettings.Watch_Model)
+                /*switch (ProgramSettings.Watch_Model)
                 {
                     case "GTR 3":
                         background.BackgroundColor.h = 454;
@@ -2042,7 +2044,9 @@ namespace Watch_Face_Editor
                         background.BackgroundColor.h = 450;
                         background.BackgroundColor.w = 390;
                         break;
-                }
+                }*/
+                background.BackgroundColor.h = SelectedModel.background.h;
+                background.BackgroundColor.w = SelectedModel.background.w;
                 background.BackgroundImage = null;
                 if (background.Editable_Background != null) background.Editable_Background.enable_edit_bg = false;
                 uCtrl_EditableBackground_Opt.Visible = false;
@@ -2080,7 +2084,7 @@ namespace Watch_Face_Editor
                 {
                     if (background.Editable_Background == null)
                         background.Editable_Background = new Editable_Background();
-                    switch (ProgramSettings.Watch_Model)
+                    /*switch (ProgramSettings.Watch_Model)
                     {
                         case "GTR 3":
                             background.Editable_Background.h = 454;
@@ -2126,7 +2130,9 @@ namespace Watch_Face_Editor
                             background.Editable_Background.h = 450;
                             background.Editable_Background.w = 390;
                             break;
-                    }
+                    }*/
+                    background.Editable_Background.h = SelectedModel.background.h;
+                    background.Editable_Background.w = SelectedModel.background.w;
 
                     background.Editable_Background.enable_edit_bg = true;
                     Read_EditableBackground_Options(background.Editable_Background);
@@ -2852,37 +2858,39 @@ namespace Watch_Face_Editor
             if (FileName != null && FullFileDir != null) // проект уже сохранен
             {
                 // формируем картинку для предпросмотра
-                Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
-                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
-                switch (ProgramSettings.Watch_Model)
-                {
-                    case "GTR 3 Pro":
-                        bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
-                        break;
-                    case "GTS 3":
-                    case "GTS 4":
-                        bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
-                        break;
-                    case "GTR 4":
-                        bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_4.png");
-                        break;
-                    case "Amazfit Band 7":
-                        bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_band_7.png");
-                        break;
-                    case "GTS 4 mini":
-                        bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
-                        break;
-                    case "Falcon":
-                    case "GTR mini":
-                        bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
-                        break;
-                }
+                /* Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
+                 Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
+                 switch (ProgramSettings.Watch_Model)
+                 {
+                     case "GTR 3 Pro":
+                         bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
+                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
+                         break;
+                     case "GTS 3":
+                     case "GTS 4":
+                         bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
+                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
+                         break;
+                     case "GTR 4":
+                         bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
+                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_4.png");
+                         break;
+                     case "Amazfit Band 7":
+                         bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
+                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_band_7.png");
+                         break;
+                     case "GTS 4 mini":
+                         bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
+                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
+                         break;
+                     case "Falcon":
+                     case "GTR mini":
+                         bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
+                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
+                         break;
+                 }*/
+                Bitmap bitmap = new Bitmap(SelectedModel.background.w, SelectedModel.background.h, PixelFormat.Format32bppArgb);
+                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\" + SelectedModel.maskImage);
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
                 Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false,
@@ -2952,7 +2960,7 @@ namespace Watch_Face_Editor
                     uCtrl_EditableBackground_Opt_PreviewAdd(null, null, index);
                     return;
                 }
-                Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
+                /*Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
                 Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
                 switch (ProgramSettings.Watch_Model)
                 {
@@ -2982,7 +2990,9 @@ namespace Watch_Face_Editor
                         bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
                         break;
-                }
+                }*/
+                Bitmap bitmap = new Bitmap(SelectedModel.background.w, SelectedModel.background.h, PixelFormat.Format32bppArgb);
+                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\" + SelectedModel.maskImage);
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
                 Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false,
@@ -3133,37 +3143,39 @@ namespace Watch_Face_Editor
             if (FileName != null && FullFileDir != null) // проект уже сохранен
             {
                 // формируем картинку для предпросмотра
-                Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
-                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
-                switch (ProgramSettings.Watch_Model)
-                {
-                    case "GTR 3 Pro":
-                        bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
-                        break;
-                    case "GTS 3":
-                    case "GTS 4":
-                        bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
-                        break;
-                    case "GTR 4":
-                        bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_4.png");
-                        break;
-                    case "Amazfit Band 7":
-                        bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_band_7.png");
-                        break;
-                    case "GTS 4 mini":
-                        bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
-                        break;
-                    case "Falcon":
-                    case "GTR mini":
-                        bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
-                        break;
-                }
+                /* Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
+                 Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
+                 switch (ProgramSettings.Watch_Model)
+                 {
+                     case "GTR 3 Pro":
+                         bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
+                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
+                         break;
+                     case "GTS 3":
+                     case "GTS 4":
+                         bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
+                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
+                         break;
+                     case "GTR 4":
+                         bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
+                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_4.png");
+                         break;
+                     case "Amazfit Band 7":
+                         bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
+                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_band_7.png");
+                         break;
+                     case "GTS 4 mini":
+                         bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
+                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
+                         break;
+                     case "Falcon":
+                     case "GTR mini":
+                         bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
+                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
+                         break;
+                 }*/
+                Bitmap bitmap = new Bitmap(SelectedModel.background.w, SelectedModel.background.h, PixelFormat.Format32bppArgb);
+                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\" + SelectedModel.maskImage);
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 Creat_preview_editable_pointers(gPanel, 1.0f, false);
                 if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
@@ -3230,37 +3242,39 @@ namespace Watch_Face_Editor
                     uCtrl_EditableBackground_Opt_PreviewAdd(null, null, index);
                     return;
                 }
-                Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
-                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
-                switch (ProgramSettings.Watch_Model)
-                {
-                    case "GTR 3 Pro":
-                        bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
-                        break;
-                    case "GTS 3":
-                    case "GTS 4":
-                        bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
-                        break;
-                    case "GTR 4":
-                        bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_4.png");
-                        break;
-                    case "Amazfit Band 7":
-                        bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_band_7.png");
-                        break;
-                    case "GTS 4 mini":
-                        bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
-                        break;
-                    case "Falcon":
-                    case "GTR mini":
-                        bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
-                        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
-                        break;
-                }
+                /* Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
+                 Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
+                 switch (ProgramSettings.Watch_Model)
+                 {
+                     case "GTR 3 Pro":
+                         bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
+                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
+                         break;
+                     case "GTS 3":
+                     case "GTS 4":
+                         bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
+                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
+                         break;
+                     case "GTR 4":
+                         bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
+                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_4.png");
+                         break;
+                     case "Amazfit Band 7":
+                         bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
+                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_band_7.png");
+                         break;
+                     case "GTS 4 mini":
+                         bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
+                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
+                         break;
+                     case "Falcon":
+                     case "GTR mini":
+                         bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
+                         mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
+                         break;
+                 }*/
+                Bitmap bitmap = new Bitmap(SelectedModel.background.w, SelectedModel.background.h, PixelFormat.Format32bppArgb);
+                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\" + SelectedModel.maskImage);
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 Creat_preview_editable_pointers(gPanel, 1.0f, false);
                 if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
