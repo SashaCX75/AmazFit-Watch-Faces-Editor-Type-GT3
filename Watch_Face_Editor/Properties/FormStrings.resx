@@ -259,6 +259,12 @@
   <data name="Message_LoadPreviewStates_Text" xml:space="preserve">
     <value>Загрузить имеющийся файл с набором параметров предпросмотра PreviewStates.json?</value>
   </data>
+  <data name="Message_ModelConfig_Error" xml:space="preserve">
+    <value>Не найдена конфигурация модели: </value>
+  </data>
+  <data name="Message_ModelConfig_ReadError" xml:space="preserve">
+    <value>Ошибка чтения конфигурации моделей</value>
+  </data>
   <data name="Message_Restart_Caption" xml:space="preserve">
     <value>Перезагрузка</value>
   </data>
@@ -318,6 +324,9 @@
   </data>
   <data name="Message_Warning_Information" xml:space="preserve">
     <value>Информация</value>
+  </data>
+  <data name="Message_Wrong_ColorScheme" xml:space="preserve">
+    <value>Указана незвестная цветовая схема для модели: </value>
   </data>
   <data name="Message_Wrong_Original_Image" xml:space="preserve">
     <value>Неверный формат исходного изображения</value>
