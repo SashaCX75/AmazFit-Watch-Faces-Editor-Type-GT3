@@ -175,7 +175,7 @@ namespace Watch_Face_Editor
                     {
                         if (image.ColormapSize == 256)
                         {
-                            MagickColor[,] colorMap = new MagickColor[16, 16];
+                            IMagickColor<ushort>[,] colorMap = new IMagickColor<ushort>[16, 16];
                             int index = 0;
                             for (int x = 0; x < 16; x++)
                             {
@@ -183,7 +183,8 @@ namespace Watch_Face_Editor
                                 {
                                     // TODO :: Kartun, check x2
                                     // colorMap[x, y] = image.GetColormap(index);
-                                    colorMap[x, y] = (ImageMagick.MagickColor)image.GetColormapColor(index);
+                                    colorMap[x, y] = image.GetColormapColor(index);
+                                    IMagickColor<ushort> colorMap1 = image.GetColormapColor(index);
                                     index++;
                                 }
                             }
@@ -198,6 +199,7 @@ namespace Watch_Face_Editor
                                     index++;
                                 }
                             }
+#if DEBUG
                             index = 0;
                             for (int x = 0; x < 16; x++)
                             {
@@ -205,10 +207,11 @@ namespace Watch_Face_Editor
                                 {
                                     // TODO :: Kartun, check
                                     // colorMap[x, y] = image.GetColormap(index);
-                                    colorMap[x, y] = (ImageMagick.MagickColor)image.GetColormapColor(index);
+                                    colorMap[x, y] = image.GetColormapColor(index);
                                     index++;
                                 }
                             }
+#endif
                         }
                         if (!colored)
                         {
@@ -293,6 +296,7 @@ namespace Watch_Face_Editor
                     bool transparent = false;
                     //if (pixel.Channels == 4 && pixel[3] < 256) transparent = true;
 
+                    // пытаеммся преобразовать в формат 32bit но с картой цветов
                     image.ColorType = ImageMagick.ColorType.Palette;
                     if (image.ColorSpace != ImageMagick.ColorSpace.sRGB)
                     {
@@ -337,7 +341,7 @@ namespace Watch_Face_Editor
                     {
                         colorMapList.Add(Color.FromArgb(0, 0, 0, 0));
                     }
-                    if (transparent && colorMapList.Count == 2)
+                    if (transparent && colorMapList.Count == 2) // если двухцветное изображение
                     {
                         colorMapList[0] = Color.FromArgb(0, colorMapList[0].R, colorMapList[0].G, colorMapList[0].B);
                         colorMapList[1] = Color.FromArgb(0, colorMapList[1].R, colorMapList[1].G, colorMapList[1].B);

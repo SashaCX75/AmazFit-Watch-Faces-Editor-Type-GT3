@@ -34,7 +34,10 @@
     },
     "maskImage": "mask_gtr_3_pro.png",
     "watchSkin": "WatchSkin_GTR_3_Pro.json",
-    "previewHeight": 324
+    "previewHeight": 324,
+    "colorScheme": 1,
+    "fixSize": true,
+    "versionOS": 1
   },
   "GTR 3": {
     "name": "Amazfit GTR 3",
@@ -70,7 +73,10 @@
     },
     "maskImage": "mask_gtr_3.png",
     "watchSkin": "WatchSkin_GTR_3.json",
-    "previewHeight": 306
+    "previewHeight": 306,
+    "colorScheme": 1,
+    "fixSize": true,
+    "versionOS": 1
   },
   "T-Rex 2": {
     "name": "Amazfit T-Rex 2",
@@ -106,43 +112,10 @@
     },
     "maskImage": "mask_gtr_3.png",
     "watchSkin": "WatchSkin_T_Rex_2.json",
-    "previewHeight": 306
-  },
-  "T-Rex Ultra": {
-    "name": "Amazfit T-Rex Ultra",
-    "int_id": "T_Rex_Ultra",
-    "designWidth": 454,
-    "deviceSource_ids": [
-      6553856,
-      6553857
-    ],
-    "background": {
-      "w": 454,
-      "h": 454
-    },
-    "scaling_0_5": {
-      "w": 230,
-      "h": 230
-    },
-    "scaling_1_0": {
-      "w": 456,
-      "h": 456
-    },
-    "scaling_1_5": {
-      "w": 683,
-      "h": 683
-    },
-    "scaling_2_0": {
-      "w": 909,
-      "h": 909
-    },
-    "scaling_2_5": {
-      "w": 1136,
-      "h": 1136
-    },
-    "maskImage": "mask_gtr_3.png",
-    "watchSkin": "WatchSkin_T_Rex_2.json",
-    "previewHeight": 306
+    "previewHeight": 306,
+    "colorScheme": 1,
+    "fixSize": true,
+    "versionOS": 1
   },
   "Falcon": {
     "name": "Amazfit Falcon",
@@ -178,7 +151,10 @@
     },
     "maskImage": "mask_falcon.png",
     "watchSkin": "WatchSkin_Falcon.json",
-    "previewHeight": 280
+    "previewHeight": 280,
+    "colorScheme": 1,
+    "fixSize": true,
+    "versionOS": 1
   },
   "GTS 3": {
     "name": "Amazfit GTS 3",
@@ -214,15 +190,18 @@
     },
     "maskImage": "mask_gts_3.png",
     "watchSkin": "WatchSkin_GTS_3.json",
-    "previewHeight": 306
+    "previewHeight": 306,
+    "colorScheme": 1,
+    "fixSize": true,
+    "versionOS": 1
   },
   "GTS 4 mini": {
     "name": "GTS 4 mini",
     "int_id": "GTS4_mini",
     "designWidth": 336,
     "deviceSource_ids": [
-      250,
-      251
+      246,
+      247
     ],
     "background": {
       "w": 336,
@@ -250,7 +229,10 @@
     },
     "maskImage": "mask_gts_4_mini.png",
     "watchSkin": "WatchSkin_GTS_4_mini.json",
-    "previewHeight": 256
+    "previewHeight": 256,
+    "colorScheme": 2,
+    "fixSize": false,
+    "versionOS": 1
   },
   "Amazfit Band 7": {
     "name": "Amazfit Band 7",
@@ -287,7 +269,10 @@
     },
     "maskImage": "mask_band_7.png",
     "watchSkin": "WatchSkin_Amazfit_Band_7.json",
-    "previewHeight": 288
+    "previewHeight": 288,
+    "colorScheme": 2,
+    "fixSize": false,
+    "versionOS": 1
   },
   "GTR 4": {
     "name": "Amazfit GTR 4",
@@ -325,7 +310,10 @@
     },
     "maskImage": "mask_gtr_4.png",
     "watchSkin": "WatchSkin_GTR_4.json",
-    "previewHeight": 314
+    "previewHeight": 314,
+    "colorScheme": 1,
+    "fixSize": true,
+    "versionOS": 2.1
   },
   "GTR mini": {
     "name": "Amazfit GTR Mini",
@@ -361,7 +349,49 @@
     },
     "maskImage": "mask_falcon.png",
     "watchSkin": "",
-    "previewHeight": 280
+    "previewHeight": 280,
+    "colorScheme": 3,
+    "fixSize": false,
+    "versionOS": 2
+  },
+  "T-Rex Ultra": {
+    "name": "Amazfit T-Rex Ultra",
+    "int_id": "T_Rex_Ultra",
+    "designWidth": 454,
+    "deviceSource_ids": [
+      6553856,
+      6553857
+    ],
+    "background": {
+      "w": 454,
+      "h": 454
+    },
+    "scaling_0_5": {
+      "w": 230,
+      "h": 230
+    },
+    "scaling_1_0": {
+      "w": 456,
+      "h": 456
+    },
+    "scaling_1_5": {
+      "w": 683,
+      "h": 683
+    },
+    "scaling_2_0": {
+      "w": 909,
+      "h": 909
+    },
+    "scaling_2_5": {
+      "w": 1136,
+      "h": 1136
+    },
+    "maskImage": "mask_gtr_3.png",
+    "watchSkin": "WatchSkin_T_Rex_2.json",
+    "previewHeight": 306,
+    "colorScheme": 1,
+    "fixSize": true,
+    "versionOS": 2.1
   },
   "GTS 4": {
     "name": "Amazfit GTS 4",
@@ -397,6 +427,9 @@
     },
     "maskImage": "mask_gts_3.png",
     "watchSkin": "WatchSkin_GTS_3.json",
-    "previewHeight": 306
+    "previewHeight": 306,
+    "colorScheme": 1,
+    "fixSize": true,
+    "versionOS": 2.1
   }
 }

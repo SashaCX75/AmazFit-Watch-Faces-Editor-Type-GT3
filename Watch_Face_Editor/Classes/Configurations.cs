@@ -55,14 +55,23 @@ namespace Watch_Face_Editor.Classes
         // Размер preview
         public int previewHeight;
 
+        // путь к скину часов
         public string watchSkin;
+
+        // тип кодирования изображений
+        public int colorScheme;
+
+        // необходимость корректировки ширины изображения
+        public bool fixSize;
+
+        public float versionOS;
 
         public override string ToString() =>
         $"Name: {name}; designWidth: {designWidth}; Background: w: {background.w}, h: {background.h};";
 
         public AmazfitPlatform(string iName, string iIintId, int iDesignWidth, int[] iIds, PlatformBackground iBackground, 
                                PlatformBackground iScaling_0_5, PlatformBackground iScaling_1_0, PlatformBackground iScaling_1_5, PlatformBackground iScaling_2_0,
-                               PlatformBackground iScaling_2_5, string iMaskImage, int iPreviewHeight, string iWatchSkin)
+                               PlatformBackground iScaling_2_5, string iMaskImage, int iPreviewHeight, string iWatchSkin, int iColorScheme, bool iFixSize, int iVersionOS)
         {
             name = iName;
             //int_id = iIintId;
@@ -77,6 +86,9 @@ namespace Watch_Face_Editor.Classes
             maskImage = iMaskImage;
             previewHeight = iPreviewHeight;
             watchSkin = iWatchSkin;
+            colorScheme = iColorScheme;
+            fixSize = iFixSize;
+            versionOS = iVersionOS;
         }
     }
 

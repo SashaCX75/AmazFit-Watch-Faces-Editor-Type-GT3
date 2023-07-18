@@ -2899,11 +2899,11 @@ namespace Watch_Face_Editor
                     string text_style = "ELLIPSIS";
                     string valueStr = Properties.FormStrings.Tip_Background + (index + 1).ToString() +
                         "/" + editable_background.BackgroundList.Count.ToString();
-                    if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2") 
-                        valueStr = Properties.FormStrings.Tip_Background.TrimEnd();
+                    //if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2") 
+                    if (SelectedModel.versionOS >= 1.5) valueStr = Properties.FormStrings.Tip_Background.TrimEnd();
 
-                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr,
-                        align_h, align_v, text_style, false);
+                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr,
+                    align_h, align_v, text_style, false);
                 }
             }
 
@@ -2911,7 +2911,8 @@ namespace Watch_Face_Editor
             {
                 if (editable_elements.fg_mask != null && editable_elements.fg_mask.Length > 0)
                 {
-                    if (ProgramSettings.Watch_Model != "GTR 4" && ProgramSettings.Watch_Model != "GTS 4" && ProgramSettings.Watch_Model != "T-Rex 2")
+                    //if (ProgramSettings.Watch_Model != "GTR 4" && ProgramSettings.Watch_Model != "GTS 4" && ProgramSettings.Watch_Model != "T-Rex 2")
+                    if (SelectedModel.versionOS >= 1.5)
                     {
                         src = OpenFileStream(editable_elements.fg_mask);
                         gPanel.DrawImage(src, 0, 0); 
@@ -3070,8 +3071,8 @@ namespace Watch_Face_Editor
                     string text_style = "ELLIPSIS";
                     string valueStr = Properties.FormStrings.Tip_Pointer + (index + 1).ToString() +
                         "/" + editable_pointers.config.Count.ToString();
-                    if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2")
-                        valueStr = Properties.FormStrings.Tip_Pointer.TrimEnd();
+                    //if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2")
+                    if (SelectedModel.versionOS >= 1.5) valueStr = Properties.FormStrings.Tip_Pointer.TrimEnd();
 
                     Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr,
                         align_h, align_v, text_style, false);
@@ -4782,8 +4783,9 @@ namespace Watch_Face_Editor
             if (image_index < 0 || image_index >= ListImagesFullName.Count) return 0;
 
             int result = 0;
-            if (ProgramSettings.Watch_Model != "GTR 4" && ProgramSettings.Watch_Model != "GTS 4" && 
-                ProgramSettings.Watch_Model != "GTR mini" && ProgramSettings.Watch_Model != "T-Rex Ultra") angle = 0;
+            //if (ProgramSettings.Watch_Model != "GTR 4" && ProgramSettings.Watch_Model != "GTS 4" && 
+            //    ProgramSettings.Watch_Model != "GTR mini" && ProgramSettings.Watch_Model != "T-Rex Ultra") angle = 0;
+            if (SelectedModel.versionOS >= 2) angle = 0;
             Logger.WriteLine("* Draw_dagital_text");
             var src = new Bitmap(1, 1);
             int _number;
@@ -4869,8 +4871,9 @@ namespace Watch_Face_Editor
             }
 
             Matrix transformMatrix = graphics.Transform;
-            if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" ||
-                ProgramSettings.Watch_Model == "GTR mini" || ProgramSettings.Watch_Model == "T-Rex Ultra")
+            //if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" ||
+            //    ProgramSettings.Watch_Model == "GTR mini" || ProgramSettings.Watch_Model == "T-Rex Ultra")
+            if (SelectedModel.versionOS >= 2)
             {
                 int pivot_point_offset_x = 0;
                 int pivot_point_offset_y = 0;
@@ -4997,8 +5000,9 @@ namespace Watch_Face_Editor
             int imageError_index = -1, bool errorData = false)
         {
             int result = 0;
-            if (ProgramSettings.Watch_Model != "GTR 4" && ProgramSettings.Watch_Model != "GTS 4" &&
-                ProgramSettings.Watch_Model != "GTR mini" && ProgramSettings.Watch_Model != "T-Rex Ultra") angle = 0;
+            //if (ProgramSettings.Watch_Model != "GTR 4" && ProgramSettings.Watch_Model != "GTS 4" &&
+            //    ProgramSettings.Watch_Model != "GTR mini" && ProgramSettings.Watch_Model != "T-Rex Ultra") angle = 0;
+            if (SelectedModel.versionOS >= 2) angle = 0;
             Logger.WriteLine("* Draw_weather_text");
             var src = new Bitmap(1, 1);
             int _number;
@@ -5110,7 +5114,8 @@ namespace Watch_Face_Editor
             Matrix transformMatrix = graphics.Transform;
             if (!errorData)
             {
-                if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2")
+                //if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2")
+                if (SelectedModel.versionOS >= 1.5)
                 {
                     int pivot_point_offset_x = 0;
                     int pivot_point_offset_y = 0;
@@ -5191,7 +5196,8 @@ namespace Watch_Face_Editor
                         offsetX = 0;
                         break;
                 }
-                if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2")
+                //if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2")
+                if (SelectedModel.versionOS >= 1.5)
                 {
                     int pivot_point_offset_x = 0;
                     int pivot_point_offset_y = 0;
@@ -6154,8 +6160,9 @@ namespace Watch_Face_Editor
             int decimalPoint_index, int decCount, int angle, bool BBorder, string elementName = "")
         {
             Logger.WriteLine("* Draw_dagital_text");
-            if (ProgramSettings.Watch_Model != "GTR 4" && ProgramSettings.Watch_Model != "GTS 4" &&
-                ProgramSettings.Watch_Model != "GTR mini" && ProgramSettings.Watch_Model != "T-Rex Ultra") angle = 0;
+            //if (ProgramSettings.Watch_Model != "GTR 4" && ProgramSettings.Watch_Model != "GTS 4" &&
+            //    ProgramSettings.Watch_Model != "GTR mini" && ProgramSettings.Watch_Model != "T-Rex Ultra") angle = 0;
+            if (SelectedModel.versionOS >= 2) angle = 0;
             value = Math.Round(value, decCount, MidpointRounding.AwayFromZero);
             //var Digit = new Bitmap(ListImagesFullName[image_index]);
             //var Delimit = new Bitmap(1, 1);
@@ -6198,8 +6205,9 @@ namespace Watch_Face_Editor
             if (separator_index >= 0 && separator_index < ListImagesFullName.Count)
             {
                 src = OpenFileStream(ListImagesFullName[separator_index]);
-                if (comboBox_watch_model.Text == "T-Rex 2" || comboBox_watch_model.Text == "GTR 4" ||
-                    comboBox_watch_model.Text == "GTS 4")
+                //if (comboBox_watch_model.Text == "T-Rex 2" || comboBox_watch_model.Text == "GTR 4" ||
+                //    comboBox_watch_model.Text == "GTS 4")
+                if (SelectedModel.versionOS >= 1.5)
                 {
                     DateLenght = DateLenght + src.Width + spacing + spacing; 
                 }
@@ -6280,8 +6288,9 @@ namespace Watch_Face_Editor
             }
 
             Matrix transformMatrix = graphics.Transform;
-            if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" ||
-                ProgramSettings.Watch_Model == "GTR mini" || ProgramSettings.Watch_Model == "T-Rex Ultra")
+            //if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" ||
+            //    ProgramSettings.Watch_Model == "GTR mini" || ProgramSettings.Watch_Model == "T-Rex Ultra")
+            if (SelectedModel.versionOS >= 2)
             {
                 int pivot_point_offset_x = 0;
                 int pivot_point_offset_y = 0;

@@ -114,11 +114,6 @@ namespace Watch_Face_Editor
                     AvailableConfigurations = Classes.Configurations.LoadFromFile(Application.StartupPath + ProgramSettings.model_config);
                     //Classes.Configurations.LoadFromFile(Application.StartupPath + ProgramSettings.model_config);
                     Logger.WriteLine("Readed configurations from:" + ProgramSettings.model_config.ToString());
-                    if (AvailableConfigurations.Count == 0)
-                    {
-                        MessageBox.Show("Ошибка чтения конфигурации моделей");
-                        Application.Exit();
-                    }
                     foreach (var config in AvailableConfigurations)
                     {
                         //Logger.WriteLine($"Configuration: {config.Key}: {config.Value}");
@@ -305,6 +300,14 @@ namespace Watch_Face_Editor
             Logger.WriteLine("Set Model_Watch");
             //comboBox_watch_model.Text = ProgramSettings.Watch_Model;
 
+
+            if (AvailableConfigurations == null || AvailableConfigurations.Count == 0)
+            {
+                //MessageBox.Show("Ошибка чтения конфигурации моделей");
+                MessageBox.Show(Properties.FormStrings.Message_ModelConfig_ReadError,
+                    Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Application.Exit();
+            }
             comboBox_watch_model.Items.Clear();
             foreach (var config in AvailableConfigurations)
             {
@@ -317,7 +320,9 @@ namespace Watch_Face_Editor
             }
             else
             {
-                MessageBox.Show($"Не найдена конфигурация модели \"{ProgramSettings.Watch_Model}\"");
+                //MessageBox.Show($"Не найдена конфигурация модели \"{ProgramSettings.Watch_Model}\"");
+                MessageBox.Show(Properties.FormStrings.Message_ModelConfig_Error + ProgramSettings.Watch_Model, 
+                    Properties.FormStrings.Message_Warning_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 //Application.Exit();
                 comboBox_watch_model.SelectedIndex = 0;
             }
@@ -5590,16 +5595,6 @@ namespace Watch_Face_Editor
                             {
                                 uCtrl_Animation_Elm.checkBox_FrameAnimation.Checked = Animation.Frame_Animation_List.visible;
                                 elementOptions.Add(Animation.Frame_Animation_List.position, "FrameAnimation");
-                                /*if (ProgramSettings.Watch_Model == "T-Rex 2" *//*ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4"*//*)
-                                {
-                                    uCtrl_Animation_Elm.MotionAnimation = false;
-                                    uCtrl_Animation_Elm.RotateAnimation = false;
-                                }
-                                else
-                                {
-                                    uCtrl_Animation_Elm.MotionAnimation = true;
-                                    uCtrl_Animation_Elm.RotateAnimation = true;
-                                }*/
                             }
 
                             if (Animation.Motion_Animation_List != null)
@@ -8649,7 +8644,7 @@ namespace Watch_Face_Editor
             if (Watch_Face != null && Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
                 ChangSizeBackground(Watch_Face.ScreenAOD.Background);
 
-            // jnrk.xftv анимацию для моделей где она не работает
+            // отключаем анимацию для моделей где она не работает
             if (ProgramSettings.Watch_Model == "T-Rex 2" /*ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4"*/)
             {
                 uCtrl_Animation_Elm.MotionAnimation = false;
@@ -8790,17 +8785,25 @@ namespace Watch_Face_Editor
             progressBar1.Value = 0;
             progressBar1.Maximum = Images.Length;
             progressBar1.Visible = true;
-            bool fix_size = true;
-            int fix_color = 1;
-            if (comboBox_watch_model.Text == "Amazfit Band 7" || comboBox_watch_model.Text == "GTS 4 mini")
+            //bool fix_size = true;
+            //int fix_color = 1;
+            //if (comboBox_watch_model.Text == "Amazfit Band 7" || comboBox_watch_model.Text == "GTS 4 mini")
+            //{
+            //    fix_size = false;
+            //    fix_color = 2;
+            //}
+            //if (comboBox_watch_model.Text == "GTR mini")
+            //{
+            //    fix_size = false;
+            //    fix_color = 3;
+            //}
+            int fix_color = SelectedModel.colorScheme;
+            bool fix_size = SelectedModel.fixSize;
+            if (fix_color < 1 || fix_color > 3)
             {
-                fix_size = false;
-                fix_color = 2;
-            }
-            if (comboBox_watch_model.Text == "GTR mini")
-            {
-                fix_size = false;
-                fix_color = 3;
+                fix_color = 1;
+                MessageBox.Show(Properties.FormStrings.Message_Wrong_ColorScheme + SelectedModel.name, Properties.FormStrings.Message_Warning_Caption,
+                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             foreach (FileInfo file in Images)
             {
@@ -9452,9 +9455,16 @@ namespace Watch_Face_Editor
                 progressBar1.Maximum = allFiles.Count;
                 int progress = 0;
                 //bool fix_color = true;
-                int fix_color = 1;
-                if (comboBox_watch_model.Text == "Amazfit Band 7" || comboBox_watch_model.Text == "GTS 4 mini") fix_color = 2;
-                if (comboBox_watch_model.Text == "GTR mini") fix_color = 3;
+                //int fix_color = 1;
+                //if (comboBox_watch_model.Text == "Amazfit Band 7" || comboBox_watch_model.Text == "GTS 4 mini") fix_color = 2;
+                //if (comboBox_watch_model.Text == "GTR mini") fix_color = 3;
+                int fix_color = SelectedModel.colorScheme;
+                if (fix_color < 1 || fix_color > 3)
+                {
+                    fix_color = 1;
+                    MessageBox.Show(Properties.FormStrings.Message_Wrong_ColorScheme + SelectedModel.name, Properties.FormStrings.Message_Warning_Caption,
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
                 //if (comboBox_watch_model.Text == "Amazfit Band 7" || comboBox_watch_model.Text == "GTS 4 mini") fix_color = false;
                 foreach (string fileNames in allFiles)
                 {

@@ -816,9 +816,9 @@ namespace Watch_Face_Editor
                 }
             }
 
-            if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || 
-                ProgramSettings.Watch_Model == "GTR mini" || ProgramSettings.Watch_Model == "T-Rex Ultra")
-                uCtrl_Text_Opt.Angle = true;
+            //if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || 
+            //    ProgramSettings.Watch_Model == "GTR mini" || ProgramSettings.Watch_Model == "T-Rex Ultra")
+            if (SelectedModel.versionOS >= 2) uCtrl_Text_Opt.Angle = true;
 
             uCtrl_Text_Opt._ElementWithText = img_number;
 
@@ -1044,8 +1044,8 @@ namespace Watch_Face_Editor
             uCtrl_Text_Weather_Opt.PaddingZero = _padingZero;
             uCtrl_Text_Weather_Opt.Visible = true;
 
-            if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2")
-                uCtrl_Text_Weather_Opt.Angle = true;
+            //if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2")
+            if (SelectedModel.versionOS >= 2) uCtrl_Text_Weather_Opt.Angle = true;
 
             uCtrl_Text_Weather_Opt._ElementWithText = img_number;
 
@@ -1562,8 +1562,8 @@ namespace Watch_Face_Editor
             PreviewView = false;
 
             uCtrl_Circle_Scale_Opt.SettingsClear();
-            if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2")
-                uCtrl_Circle_Scale_Opt.LineCap = true;
+            //if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2")
+            if (SelectedModel.versionOS >= 2) uCtrl_Circle_Scale_Opt.LineCap = true;
             else uCtrl_Circle_Scale_Opt.LineCap = false;
 
             uCtrl_Circle_Scale_Opt.Visible = true;
@@ -1732,9 +1732,9 @@ namespace Watch_Face_Editor
 
             uCtrl_Text_SystemFont_Opt.SettingsClear();
             uCtrl_Text_SystemFont_Opt.Visible = true;
-            if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || 
-                ProgramSettings.Watch_Model == "GTR mini" || ProgramSettings.Watch_Model == "T-Rex Ultra")
-                uCtrl_Text_SystemFont_Opt.UserFont = true;
+            //if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || 
+            //    ProgramSettings.Watch_Model == "GTR mini" || ProgramSettings.Watch_Model == "T-Rex Ultra")
+            if (SelectedModel.versionOS >= 2) uCtrl_Text_SystemFont_Opt.UserFont = true;
 
             uCtrl_Text_SystemFont_Opt._ElementWithSystemFont = system_font;
             //uCtrl_Text_SystemFont_Opt.fonts_path = FullFileDir + @"\assets\fonts\";

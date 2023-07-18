@@ -484,6 +484,24 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Не найдена конфигурация модели: .
+        /// </summary>
+        internal static string Message_ModelConfig_Error {
+            get {
+                return ResourceManager.GetString("Message_ModelConfig_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ошибка чтения конфигурации моделей.
+        /// </summary>
+        internal static string Message_ModelConfig_ReadError {
+            get {
+                return ResourceManager.GetString("Message_ModelConfig_ReadError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Перезагрузка.
         /// </summary>
         internal static string Message_Restart_Caption {
@@ -660,6 +678,15 @@ namespace Watch_Face_Editor.Properties {
         internal static string Message_WarningPreview_Text2 {
             get {
                 return ResourceManager.GetString("Message_WarningPreview_Text2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Указана незвестная цветовая схема для модели: .
+        /// </summary>
+        internal static string Message_Wrong_ColorScheme {
+            get {
+                return ResourceManager.GetString("Message_Wrong_ColorScheme", resourceCulture);
             }
         }
         

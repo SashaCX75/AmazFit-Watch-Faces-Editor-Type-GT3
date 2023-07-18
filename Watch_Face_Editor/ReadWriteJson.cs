@@ -12853,8 +12853,9 @@ namespace Watch_Face_Editor
 
         private string Motion_Animation_Options(Motion_Animation anim,bool x_anim,bool mirror)
         {
-            if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2" || 
-                ProgramSettings.Watch_Model == "T-Rex Ultra" || ProgramSettings.Watch_Model == "GTR mini") 
+            //if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2" || 
+            //    ProgramSettings.Watch_Model == "T-Rex Ultra" || ProgramSettings.Watch_Model == "GTR mini") 
+            if (SelectedModel.versionOS >= 1.5)
                 return Motion_Animation_Options_2(anim, x_anim, mirror);
             string options = Environment.NewLine;
             if (anim == null) return options;
@@ -13005,8 +13006,9 @@ namespace Watch_Face_Editor
 
         private string Rotate_Animation_Options(Rotate_Animation anim, bool mirror)
         {
-            if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2" ||
-                ProgramSettings.Watch_Model == "T-Rex Ultra" || ProgramSettings.Watch_Model == "GTR mini") 
+            //if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || ProgramSettings.Watch_Model == "T-Rex 2" ||
+            //    ProgramSettings.Watch_Model == "T-Rex Ultra" || ProgramSettings.Watch_Model == "GTR mini") 
+            if (SelectedModel.versionOS >= 1.5)
                 return Rotate_Animation_Options_2(anim, mirror);
             string options = Environment.NewLine;
             if (anim == null) return options;
