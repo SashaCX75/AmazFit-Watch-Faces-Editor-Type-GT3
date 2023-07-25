@@ -2067,7 +2067,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_DigitalTime_Elm.checkBox_Hours_circle.Checked)
                         {
                             text_circle = digitalTime.Hour_circle;
-                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
                             ShowElemenrOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
@@ -2076,7 +2076,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_DigitalTime_Elm.checkBox_Minutes_circle.Checked)
                         {
                             text_circle = digitalTime.Minute_circle;
-                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
                             ShowElemenrOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
@@ -2085,7 +2085,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_DigitalTime_Elm.checkBox_Seconds_circle.Checked)
                         {
                             text_circle = digitalTime.Second_circle;
-                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
                             ShowElemenrOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
@@ -6282,10 +6282,30 @@ namespace Watch_Face_Editor
                                 uCtrl_Weather_Elm.checkBox_Number_Min.Checked = Weather.Number_Min.visible;
                                 elementOptions.Add(Weather.Number_Min.position, "Number_Min");
                             }
+                            if (Weather.Text_Min_rotation != null)
+                            {
+                                uCtrl_Weather_Elm.checkBox_Text_Min_rotation.Checked = Weather.Text_Min_rotation.visible;
+                                elementOptions.Add(Weather.Text_Min_rotation.position, "Text_Min_rotation");
+                            }
+                            if (Weather.Text_Min_circle != null)
+                            {
+                                uCtrl_Weather_Elm.checkBox_Text_Min_circle.Checked = Weather.Text_Min_circle.visible;
+                                elementOptions.Add(Weather.Text_Min_circle.position, "Text_Min_circle");
+                            }
                             if (Weather.Number_Max != null)
                             {
                                 uCtrl_Weather_Elm.checkBox_Number_Max.Checked = Weather.Number_Max.visible;
                                 elementOptions.Add(Weather.Number_Max.position, "Number_Max");
+                            }
+                            if (Weather.Text_Max_rotation != null)
+                            {
+                                uCtrl_Weather_Elm.checkBox_Text_Max_rotation.Checked = Weather.Text_Max_rotation.visible;
+                                elementOptions.Add(Weather.Text_Max_rotation.position, "Text_Max_rotation");
+                            }
+                            if (Weather.Text_Max_circle != null)
+                            {
+                                uCtrl_Weather_Elm.checkBox_Text_Max_circle.Checked = Weather.Text_Max_circle.visible;
+                                elementOptions.Add(Weather.Text_Max_circle.position, "Text_Max_circle");
                             }
                             if (Weather.City_Name != null)
                             {
@@ -6433,10 +6453,30 @@ namespace Watch_Face_Editor
                                 uCtrl_Sunrise_Elm.checkBox_Sunrise.Checked = Sunrise.Sunrise.visible;
                                 elementOptions.Add(Sunrise.Sunrise.position, "Sunrise");
                             }
+                            if (Sunrise.Sunrise_rotation != null)
+                            {
+                                uCtrl_Sunrise_Elm.checkBox_Sunrise_rotation.Checked = Sunrise.Sunrise_rotation.visible;
+                                elementOptions.Add(Sunrise.Sunrise_rotation.position, "Sunrise_rotation");
+                            }
+                            if (Sunrise.Sunrise_circle != null)
+                            {
+                                uCtrl_Sunrise_Elm.checkBox_Sunrise_circle.Checked = Sunrise.Sunrise_circle.visible;
+                                elementOptions.Add(Sunrise.Sunrise_circle.position, "Sunrise_circle");
+                            }
                             if (Sunrise.Sunset != null)
                             {
                                 uCtrl_Sunrise_Elm.checkBox_Sunset.Checked = Sunrise.Sunset.visible;
                                 elementOptions.Add(Sunrise.Sunset.position, "Sunset");
+                            }
+                            if (Sunrise.Sunset_rotation != null)
+                            {
+                                uCtrl_Sunrise_Elm.checkBox_Sunset_rotation.Checked = Sunrise.Sunset_rotation.visible;
+                                elementOptions.Add(Sunrise.Sunset_rotation.position, "Sunset_rotation");
+                            }
+                            if (Sunrise.Sunset_circle != null)
+                            {
+                                uCtrl_Sunrise_Elm.checkBox_Sunset_circle.Checked = Sunrise.Sunset_circle.visible;
+                                elementOptions.Add(Sunrise.Sunset_circle.position, "Sunset_circle");
                             }
                             if (Sunrise.Sunset_Sunrise != null)
                             {
@@ -10616,7 +10656,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_DateDay_Elm.checkBox_Text_circle.Checked)
                         {
                             text_circle = dateDay.Text_circle;
-                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
                             ShowElemenrOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
@@ -10700,7 +10740,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_DateMonth_Elm.checkBox_Text_circle.Checked)
                         {
                             text_circle = dateMonth.Text_circle;
-                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
                             ShowElemenrOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
@@ -10778,7 +10818,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_DateYear_Elm.checkBox_Text_circle.Checked)
                         {
                             text_circle = dateYear.Text_circle;
-                            Read_TextCircle_Options(text_circle, false, false, true, false, true);
+                            Read_TextCircle_Options(text_circle, false, false, false, true, false, true);
                             ShowElemenrOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
@@ -11216,7 +11256,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Steps_Elm.checkBox_Text_circle.Checked)
                         {
                             text_circle = steps.Text_circle;
-                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
                             ShowElemenrOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
@@ -11243,7 +11283,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Steps_Elm.checkBox_Text_circle_Target.Checked)
                         {
                             text_circle = steps.Text_circle_Target;
-                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
                             ShowElemenrOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
@@ -11367,7 +11407,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Battery_Elm.checkBox_Text_circle.Checked)
                         {
                             text_circle = battery.Text_circle;
-                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
                             ShowElemenrOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
@@ -11492,7 +11532,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Heart_Elm.checkBox_Text_circle.Checked)
                         {
                             text_circle = heart.Text_circle;
-                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
                             ShowElemenrOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
@@ -11616,7 +11656,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Calories_Elm.checkBox_Text_circle.Checked)
                         {
                             text_circle = calories.Text_circle;
-                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
                             ShowElemenrOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
@@ -11643,7 +11683,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Calories_Elm.checkBox_Text_circle_Target.Checked)
                         {
                             text_circle = calories.Text_circle_Target;
-                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
                             ShowElemenrOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
@@ -11776,7 +11816,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_PAI_Elm.checkBox_Text_circle_Target.Checked)
                         {
                             text_circle = pai.Text_circle_Target;
-                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
                             ShowElemenrOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
@@ -11877,7 +11917,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Distance_Elm.checkBox_Text_circle.Checked)
                         {
                             text_circle = distance.Text_circle;
-                            Read_TextCircle_Options(text_circle, true, false, false, true, true);
+                            Read_TextCircle_Options(text_circle, true, false, false, false, true, true);
                             ShowElemenrOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
@@ -11974,7 +12014,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Stand_Elm.checkBox_Text_circle.Checked)
                         {
                             text_circle = stand.Text_circle;
-                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
                             ShowElemenrOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
@@ -12001,7 +12041,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Stand_Elm.checkBox_Text_circle_Target.Checked)
                         {
                             text_circle = stand.Text_circle_Target;
-                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
                             ShowElemenrOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
@@ -12215,7 +12255,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_SpO2_Elm.checkBox_Text_circle.Checked)
                         {
                             text_circle = SpO2.Text_circle;
-                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
                             ShowElemenrOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
@@ -12232,39 +12272,6 @@ namespace Watch_Face_Editor
                 }
 
             }
-
-            /*ResetHighlightState("SpO2");
-
-            ElementSpO2 spo2 = null;
-            if (radioButton_ScreenNormal.Checked)
-            {
-                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
-                    Watch_Face.ScreenNormal.Elements != null)
-                {
-                    //bool exists = Elements.Exists(e => e.GetType().Name == "ElementDigitalTime");
-                    spo2 = (ElementSpO2)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementSpO2");
-                }
-            }
-            else
-            {
-                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
-                    Watch_Face.ScreenAOD.Elements != null)
-                {
-                    spo2 = (ElementSpO2)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementSpO2");
-                }
-            }
-            if (spo2 != null)
-            {
-                hmUI_widget_IMG_NUMBER img_number = null;
-                hmUI_widget_IMG_NUMBER text_rotation = null;
-                Text_Circle text_circle = null;
-
-                if (spo2.Number == null) spo2.Number = new hmUI_widget_IMG_NUMBER();
-                img_number = spo2.Number;
-                Read_ImgNumber_Options(img_number, false, false, "", true, false, true, true);
-                ShowElemenrOptions("Text");
-
-            }*/
         }
 
         private void uCtrl_Stress_Elm_SelectChanged(object sender, EventArgs eventArgs)
@@ -12429,7 +12436,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_FatBurning_Elm.checkBox_Text_circle.Checked)
                         {
                             text_circle = fat_burning.Text_circle;
-                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
                             ShowElemenrOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
@@ -12456,7 +12463,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_FatBurning_Elm.checkBox_Text_circle_Target.Checked)
                         {
                             text_circle = fat_burning.Text_circle_Target;
-                            Read_TextCircle_Options(text_circle, false, false, false, false, true);
+                            Read_TextCircle_Options(text_circle, false, false, false, false, false, true);
                             ShowElemenrOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
@@ -12532,6 +12539,8 @@ namespace Watch_Face_Editor
             {
                 hmUI_widget_IMG_LEVEL img_level = null;
                 hmUI_widget_IMG_NUMBER img_number = null;
+                hmUI_widget_IMG_NUMBER text_rotation = null;
+                Text_Circle text_circle = null;
                 hmUI_widget_TEXT text = null;
                 hmUI_widget_IMG icon = null;
 
@@ -12564,12 +12573,48 @@ namespace Watch_Face_Editor
                         }
                         else HideAllElemenrOptions();
                         break;
+                    case "Text_Min_rotation":
+                        if (uCtrl_Weather_Elm.checkBox_Text_Min_rotation.Checked)
+                        {
+                            text_rotation = weather.Text_Min_rotation;
+                            Read_ImgNumber_Rotate_Options(text_rotation, false, true, false, false, true, true);
+                            ShowElemenrOptions("Text_rotation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_Min_circle":
+                        if (uCtrl_Weather_Elm.checkBox_Text_Min_circle.Checked)
+                        {
+                            text_circle = weather.Text_Min_circle;
+                            Read_TextCircle_Options(text_circle, false, true, false, false, true, true);
+                            ShowElemenrOptions("Text_circle");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
                     case "Number_Max":
                         if (uCtrl_Weather_Elm.checkBox_Number_Max.Checked)
                         {
                             img_number = weather.Number_Max;
                             Read_ImgNumberWeather_Options(img_number, false, "", true, false);
                             ShowElemenrOptions("Text_Weather");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_Max_rotation":
+                        if (uCtrl_Weather_Elm.checkBox_Text_Max_rotation.Checked)
+                        {
+                            text_rotation = weather.Text_Max_rotation;
+                            Read_ImgNumber_Rotate_Options(text_rotation, false, true, false, false, true, true);
+                            ShowElemenrOptions("Text_rotation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Text_Max_circle":
+                        if (uCtrl_Weather_Elm.checkBox_Text_Max_circle.Checked)
+                        {
+                            text_circle = weather.Text_Max_circle;
+                            Read_TextCircle_Options(text_circle, false, true, false, false, true, true);
+                            ShowElemenrOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -12857,6 +12902,8 @@ namespace Watch_Face_Editor
                 hmUI_widget_IMG_LEVEL img_level = null;
                 hmUI_widget_IMG_PROGRESS img_prorgess = null;
                 hmUI_widget_IMG_NUMBER img_number = null;
+                hmUI_widget_IMG_NUMBER text_rotation = null;
+                Text_Circle text_circle = null;
                 hmUI_widget_IMG_POINTER img_pointer = null;
                 hmUI_widget_IMG icon = null;
 
@@ -12889,12 +12936,48 @@ namespace Watch_Face_Editor
                         }
                         else HideAllElemenrOptions();
                         break;
+                    case "Sunrise_rotation":
+                        if (uCtrl_Sunrise_Elm.checkBox_Sunrise_rotation.Checked)
+                        {
+                            text_rotation = sunrise.Sunrise_rotation;
+                            Read_ImgNumber_Rotate_Options(text_rotation, false, false, true, false, true, true);
+                            ShowElemenrOptions("Text_rotation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Sunrise_circle":
+                        if (uCtrl_Sunrise_Elm.checkBox_Sunrise_circle.Checked)
+                        {
+                            text_circle = sunrise.Sunrise_circle;
+                            Read_TextCircle_Options(text_circle, false, false, true, false, true, true);
+                            ShowElemenrOptions("Text_circle");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
                     case "Sunset":
                         if (uCtrl_Sunrise_Elm.checkBox_Sunset.Checked)
                         {
                             img_number = sunrise.Sunset;
                             Read_ImgNumber_Options(img_number, false, false, "", true, true, false, true, true);
                             ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Sunset_rotation":
+                        if (uCtrl_Sunrise_Elm.checkBox_Sunset_rotation.Checked)
+                        {
+                            text_rotation = sunrise.Sunset_rotation;
+                            Read_ImgNumber_Rotate_Options(text_rotation, false, false, true, false, true, true);
+                            ShowElemenrOptions("Text_rotation");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Sunset_circle":
+                        if (uCtrl_Sunrise_Elm.checkBox_Sunset_circle.Checked)
+                        {
+                            text_circle = sunrise.Sunset_circle;
+                            Read_TextCircle_Options(text_circle, false, false, true, false, true, true);
+                            ShowElemenrOptions("Text_circle");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -14657,14 +14740,22 @@ namespace Watch_Face_Editor
                 if (weather.Images == null) weather.Images = new hmUI_widget_IMG_LEVEL();
                 if (weather.Number == null) weather.Number = new hmUI_widget_IMG_NUMBER();
                 if (weather.Number_Min == null) weather.Number_Min = new hmUI_widget_IMG_NUMBER();
+                if (weather.Text_Min_rotation == null) weather.Text_Min_rotation = new hmUI_widget_IMG_NUMBER();
+                if (weather.Text_Min_circle == null) weather.Text_Min_circle = new Text_Circle();
                 if (weather.Number_Max == null) weather.Number_Max = new hmUI_widget_IMG_NUMBER();
+                if (weather.Text_Max_rotation == null) weather.Text_Max_rotation = new hmUI_widget_IMG_NUMBER();
+                if (weather.Text_Max_circle == null) weather.Text_Max_circle = new Text_Circle();
                 if (weather.City_Name == null) weather.City_Name = new hmUI_widget_TEXT();
                 if (weather.Icon == null) weather.Icon = new hmUI_widget_IMG();
 
                 if (elementOptions.ContainsKey("Images")) weather.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Number")) weather.Number.position = elementOptions["Number"];
                 if (elementOptions.ContainsKey("Number_Min")) weather.Number_Min.position = elementOptions["Number_Min"];
+                if (elementOptions.ContainsKey("Text_Min_rotation")) weather.Text_Min_rotation.position = elementOptions["Text_Min_rotation"];
+                if (elementOptions.ContainsKey("Text_Min_circle")) weather.Text_Min_circle.position = elementOptions["Text_Min_circle"];
                 if (elementOptions.ContainsKey("Number_Max")) weather.Number_Max.position = elementOptions["Number_Max"];
+                if (elementOptions.ContainsKey("Text_Max_rotation")) weather.Text_Max_rotation.position = elementOptions["Text_Max_rotation"];
+                if (elementOptions.ContainsKey("Text_Max_circle")) weather.Text_Max_circle.position = elementOptions["Text_Max_circle"];
                 if (elementOptions.ContainsKey("CityName")) weather.City_Name.position = elementOptions["CityName"];
                 if (elementOptions.ContainsKey("Icon")) weather.Icon.position = elementOptions["Icon"];
 
@@ -14855,14 +14946,22 @@ namespace Watch_Face_Editor
                 if (sunrise.Images == null) sunrise.Images = new hmUI_widget_IMG_LEVEL();
                 if (sunrise.Segments == null) sunrise.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (sunrise.Sunrise == null) sunrise.Sunrise = new hmUI_widget_IMG_NUMBER();
+                if (sunrise.Sunrise_rotation == null) sunrise.Sunrise_rotation = new hmUI_widget_IMG_NUMBER();
+                if (sunrise.Sunrise_circle == null) sunrise.Sunrise_circle = new Text_Circle();
                 if (sunrise.Sunset == null) sunrise.Sunset = new hmUI_widget_IMG_NUMBER();
+                if (sunrise.Sunset_rotation == null) sunrise.Sunset_rotation = new hmUI_widget_IMG_NUMBER();
+                if (sunrise.Sunset_circle == null) sunrise.Sunset_circle = new Text_Circle();
                 if (sunrise.Pointer == null) sunrise.Pointer = new hmUI_widget_IMG_POINTER();
                 if (sunrise.Icon == null) sunrise.Icon = new hmUI_widget_IMG();
 
                 if (elementOptions.ContainsKey("Images")) sunrise.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) sunrise.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Sunrise")) sunrise.Sunrise.position = elementOptions["Sunrise"];
+                if (elementOptions.ContainsKey("Sunrise_rotation")) sunrise.Sunrise_rotation.position = elementOptions["Sunrise_rotation"];
+                if (elementOptions.ContainsKey("Sunrise_circle")) sunrise.Sunrise_circle.position = elementOptions["Sunrise_circle"];
                 if (elementOptions.ContainsKey("Sunset")) sunrise.Sunset.position = elementOptions["Sunset"];
+                if (elementOptions.ContainsKey("Sunset_rotation")) sunrise.Sunset_rotation.position = elementOptions["Sunset_rotation"];
+                if (elementOptions.ContainsKey("Sunset_circle")) sunrise.Sunset_circle.position = elementOptions["Sunset_circle"];
                 if (elementOptions.ContainsKey("Pointer")) sunrise.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Icon")) sunrise.Icon.position = elementOptions["Icon"];
 
@@ -16956,7 +17055,11 @@ namespace Watch_Face_Editor
                 if (weather.Images == null) weather.Images = new hmUI_widget_IMG_LEVEL();
                 if (weather.Number == null) weather.Number = new hmUI_widget_IMG_NUMBER();
                 if (weather.Number_Min == null) weather.Number_Min = new hmUI_widget_IMG_NUMBER();
+                if (weather.Text_Min_rotation == null) weather.Text_Min_rotation = new hmUI_widget_IMG_NUMBER();
+                if (weather.Text_Min_circle == null) weather.Text_Min_circle = new Text_Circle();
                 if (weather.Number_Max == null) weather.Number_Max = new hmUI_widget_IMG_NUMBER();
+                if (weather.Text_Max_rotation == null) weather.Text_Max_rotation = new hmUI_widget_IMG_NUMBER();
+                if (weather.Text_Max_circle == null) weather.Text_Max_circle = new Text_Circle();
                 if (weather.City_Name == null) weather.City_Name = new hmUI_widget_TEXT();
                 if (weather.Icon == null) weather.Icon = new hmUI_widget_IMG();
 
@@ -16964,7 +17067,11 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) weather.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Number")) weather.Number.position = elementOptions["Number"];
                 if (elementOptions.ContainsKey("Number_Min")) weather.Number_Min.position = elementOptions["Number_Min"];
+                if (elementOptions.ContainsKey("Text_Min_rotation")) weather.Text_Min_rotation.position = elementOptions["Text_Min_rotation"];
+                if (elementOptions.ContainsKey("Text_Min_circle")) weather.Text_Min_circle.position = elementOptions["Text_Min_circle"];
                 if (elementOptions.ContainsKey("Number_Max")) weather.Number_Max.position = elementOptions["Number_Max"];
+                if (elementOptions.ContainsKey("Text_Max_rotation")) weather.Text_Max_rotation.position = elementOptions["Text_Max_rotation"];
+                if (elementOptions.ContainsKey("Text_Max_circle")) weather.Text_Max_circle.position = elementOptions["Text_Max_circle"];
                 if (elementOptions.ContainsKey("CityName")) weather.City_Name.position = elementOptions["CityName"];
                 if (elementOptions.ContainsKey("Icon")) weather.Icon.position = elementOptions["Icon"];
 
@@ -16981,8 +17088,20 @@ namespace Watch_Face_Editor
                     case "checkBox_Number_Min":
                         weather.Number_Min.visible = checkBox.Checked;
                         break;
+                    case "checkBox_Text_Min_rotation":
+                        weather.Text_Min_rotation.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_Min_circle":
+                        weather.Text_Min_circle.visible = checkBox.Checked;
+                        break;
                     case "checkBox_Number_Max":
                         weather.Number_Max.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_Max_rotation":
+                        weather.Text_Max_rotation.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Text_Max_circle":
+                        weather.Text_Max_circle.visible = checkBox.Checked;
                         break;
                     case "checkBox_Text_CityName":
                         weather.City_Name.visible = checkBox.Checked;
@@ -17247,7 +17366,11 @@ namespace Watch_Face_Editor
                 if (sunrise.Images == null) sunrise.Images = new hmUI_widget_IMG_LEVEL();
                 if (sunrise.Segments == null) sunrise.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (sunrise.Sunrise == null) sunrise.Sunrise = new hmUI_widget_IMG_NUMBER();
+                if (sunrise.Sunrise_rotation == null) sunrise.Sunrise_rotation = new hmUI_widget_IMG_NUMBER();
+                if (sunrise.Sunrise_circle == null) sunrise.Sunrise_circle = new Text_Circle();
                 if (sunrise.Sunset == null) sunrise.Sunset = new hmUI_widget_IMG_NUMBER();
+                if (sunrise.Sunset_rotation == null) sunrise.Sunset_rotation = new hmUI_widget_IMG_NUMBER();
+                if (sunrise.Sunset_circle == null) sunrise.Sunset_circle = new Text_Circle();
                 if (sunrise.Sunset_Sunrise == null) sunrise.Sunset_Sunrise = new hmUI_widget_IMG_NUMBER();
                 if (sunrise.Pointer == null) sunrise.Pointer = new hmUI_widget_IMG_POINTER();
                 if (sunrise.Icon == null) sunrise.Icon = new hmUI_widget_IMG();
@@ -17256,7 +17379,11 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) sunrise.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) sunrise.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Sunrise")) sunrise.Sunrise.position = elementOptions["Sunrise"];
+                if (elementOptions.ContainsKey("Sunrise_rotation")) sunrise.Sunrise_rotation.position = elementOptions["Sunrise_rotation"];
+                if (elementOptions.ContainsKey("Sunrise_circle")) sunrise.Sunrise_circle.position = elementOptions["Sunrise_circle"];
                 if (elementOptions.ContainsKey("Sunset")) sunrise.Sunset.position = elementOptions["Sunset"];
+                if (elementOptions.ContainsKey("Sunset_rotation")) sunrise.Sunset_rotation.position = elementOptions["Sunset_rotation"];
+                if (elementOptions.ContainsKey("Sunset_circle")) sunrise.Sunset_circle.position = elementOptions["Sunset_circle"];
                 if (elementOptions.ContainsKey("Sunset_Sunrise")) sunrise.Sunset_Sunrise.position = elementOptions["Sunset_Sunrise"];
                 if (elementOptions.ContainsKey("Pointer")) sunrise.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Icon")) sunrise.Icon.position = elementOptions["Icon"];
@@ -17274,8 +17401,20 @@ namespace Watch_Face_Editor
                     case "checkBox_Sunrise":
                         sunrise.Sunrise.visible = checkBox.Checked;
                         break;
+                    case "checkBox_Sunrise_rotation":
+                        sunrise.Sunrise_rotation.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Sunrise_circle":
+                        sunrise.Sunrise_circle.visible = checkBox.Checked;
+                        break;
                     case "checkBox_Sunset":
                         sunrise.Sunset.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Sunset_rotation":
+                        sunrise.Sunset_rotation.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Sunset_circle":
+                        sunrise.Sunset_circle.visible = checkBox.Checked;
                         break;
                     case "checkBox_Sunset_Sunrise":
                         sunrise.Sunset_Sunrise.visible = checkBox.Checked;

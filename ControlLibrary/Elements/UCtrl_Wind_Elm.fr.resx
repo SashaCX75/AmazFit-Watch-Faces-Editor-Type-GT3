@@ -150,4 +150,27 @@
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Force du vent</value>
   </data>
+  <data name="button_Direction.Text" xml:space="preserve">
+    <value>Direction du vent</value>
+  </data>
+  <data name="button_Direction.ToolTip" xml:space="preserve">
+    <value>N - nord
+NE - nord-est
+E - est
+SE - sud-est
+S - sud
+SW - sud-ouest
+W - ouest
+NW - nord-ouest</value>
+  </data>
+  <data name="panel_Direction.ToolTip" xml:space="preserve">
+    <value>N - nord
+NE - nord-est
+E - est
+SE - sud-est
+S - sud
+SW - sud-ouest
+W - ouest
+NW - nord-ouest</value>
+  </data>
 </root>

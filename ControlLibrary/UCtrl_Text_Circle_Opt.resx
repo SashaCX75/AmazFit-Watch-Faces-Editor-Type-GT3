@@ -127,8 +127,8 @@
   <data name="&gt;&gt;label02.Name" xml:space="preserve">
     <value>label02</value>
   </data>
-  <data name="comboBox_h_alignment.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 223</value>
+  <data name="&gt;&gt;comboBox_v_alignment.Name" xml:space="preserve">
+    <value>comboBox_v_alignment</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label04.TabIndex" type="System.Int32, mscorlib">
@@ -143,8 +143,8 @@
   <data name="comboBox_unit.MaxDropDownItems" type="System.Int32, mscorlib">
     <value>25</value>
   </data>
-  <data name="&gt;&gt;numericUpDown_angle.Name" xml:space="preserve">
-    <value>numericUpDown_angle</value>
+  <data name="&gt;&gt;comboBox_v_alignment.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="label03.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -356,6 +356,9 @@
   <data name="&gt;&gt;contextMenuStrip_Y.Name" xml:space="preserve">
     <value>contextMenuStrip_Y</value>
   </data>
+  <data name="label_unit.TabIndex" type="System.Int32, mscorlib">
+    <value>168</value>
+  </data>
   <data name="&gt;&gt;label_unit_miles.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -526,8 +529,8 @@
   <data name="&gt;&gt;checkBox_reverse_direction.Name" xml:space="preserve">
     <value>checkBox_reverse_direction</value>
   </data>
-  <data name="&gt;&gt;comboBox_v_alignment.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="comboBox_h_alignment.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 223</value>
   </data>
   <data name="label_minus_image.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>BottomCenter</value>
@@ -685,8 +688,8 @@
   <data name="label_imageError.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="label_unit.TabIndex" type="System.Int32, mscorlib">
-    <value>168</value>
+  <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="&gt;&gt;checkBox_reverse_direction.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -909,6 +912,9 @@
   <data name="&gt;&gt;label_unit_miles.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
+  <data name="&gt;&gt;numericUpDown_angle.Name" xml:space="preserve">
+    <value>numericUpDown_angle</value>
+  </data>
   <data name="&gt;&gt;label02.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -980,9 +986,6 @@
   </data>
   <data name="&gt;&gt;label01.Parent" xml:space="preserve">
     <value>$this</value>
-  </data>
-  <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
   </data>
   <data name="&gt;&gt;label04.Name" xml:space="preserve">
     <value>label04</value>
@@ -1064,9 +1067,6 @@
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBox_v_alignment.Name" xml:space="preserve">
-    <value>comboBox_v_alignment</value>
   </data>
   <data name="label_imageDecimalPoint.Size" type="System.Drawing.Size, System.Drawing">
     <value>90, 30</value>

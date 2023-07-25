@@ -117,6 +117,33 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Direction du vent</value>
+  </data>
+  <data name="comboBox_WindDirection.Items" xml:space="preserve">
+    <value>N - Nord</value>
+  </data>
+  <data name="comboBox_WindDirection.Items1" xml:space="preserve">
+    <value>NE - nord-est</value>
+  </data>
+  <data name="comboBox_WindDirection.Items2" xml:space="preserve">
+    <value>E - Est</value>
+  </data>
+  <data name="comboBox_WindDirection.Items3" xml:space="preserve">
+    <value>SE - sud-est</value>
+  </data>
+  <data name="comboBox_WindDirection.Items4" xml:space="preserve">
+    <value>S - Sud</value>
+  </data>
+  <data name="comboBox_WindDirection.Items5" xml:space="preserve">
+    <value>SW - sud-ouest</value>
+  </data>
+  <data name="comboBox_WindDirection.Items6" xml:space="preserve">
+    <value>W - Ouest</value>
+  </data>
+  <data name="comboBox_WindDirection.Items7" xml:space="preserve">
+    <value>NW - nord-ouest</value>
+  </data>
   <data name="label22.Text" xml:space="preserve">
     <value>Température maximale</value>
   </data>

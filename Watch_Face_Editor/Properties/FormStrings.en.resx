@@ -258,6 +258,12 @@
   <data name="Message_LoadPreviewStates_Text" xml:space="preserve">
     <value>Download an existing file with a set of preview settings PreviewStates.json?</value>
   </data>
+  <data name="Message_ModelConfig_Error" xml:space="preserve">
+    <value>Model configuration not found: </value>
+  </data>
+  <data name="Message_ModelConfig_ReadError" xml:space="preserve">
+    <value>Ошибка чтения конфигурации моделей</value>
+  </data>
   <data name="Message_Restart_Caption" xml:space="preserve">
     <value>Reboot</value>
   </data>

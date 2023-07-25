@@ -175,4 +175,16 @@
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Calories</value>
   </data>
+  <data name="button_Text_circle.Text" xml:space="preserve">
+    <value>Valeur en cercle</value>
+  </data>
+  <data name="button_Text_circle_Target.Text" xml:space="preserve">
+    <value>Valeur en cercle (objectif)</value>
+  </data>
+  <data name="button_Text_rotation.Text" xml:space="preserve">
+    <value>Valeur de l'angle</value>
+  </data>
+  <data name="button_Text_rotation_Target.Text" xml:space="preserve">
+    <value>Valeur de l'angle (objectif)</value>
+  </data>
 </root>

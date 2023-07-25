@@ -177,4 +177,10 @@
         Gjq6wO17AAAAAElFTkSuQmCC
 </value>
   </data>
+  <data name="button_Text_circle_Target.Text" xml:space="preserve">
+    <value>Valeur en cercle (semaine)</value>
+  </data>
+  <data name="button_Text_rotation_Target.Text" xml:space="preserve">
+    <value>Valeur de l'angle (semaine)</value>
+  </data>
 </root>

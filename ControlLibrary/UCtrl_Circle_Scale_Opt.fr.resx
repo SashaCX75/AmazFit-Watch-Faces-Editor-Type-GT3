@@ -297,4 +297,13 @@ lectures diminuera la quantité de progrès.</value>
   <data name="label1.Text" xml:space="preserve">
     <value>Couleur</value>
   </data>
+  <data name="comboBox_scaleCircle_lineCap.Items" xml:space="preserve">
+    <value>Rond</value>
+  </data>
+  <data name="comboBox_scaleCircle_lineCap.Items1" xml:space="preserve">
+    <value>Plat</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Fin de ligne</value>
+  </data>
 </root>

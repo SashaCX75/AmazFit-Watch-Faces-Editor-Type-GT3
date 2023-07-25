@@ -156,4 +156,10 @@
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Batterie (Niveau)</value>
   </data>
+  <data name="button_Text_circle.Text" xml:space="preserve">
+    <value>Valeur en cercle</value>
+  </data>
+  <data name="button_Text_rotation.Text" xml:space="preserve">
+    <value>Valeur de l'angle</value>
+  </data>
 </root>

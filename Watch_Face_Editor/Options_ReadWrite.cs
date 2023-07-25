@@ -863,7 +863,7 @@ namespace Watch_Face_Editor
         /// <param name="_sunrise">Режим отображения для восхода/заката</param>
         /// <param name="_weather">Режим отображения для погоды</param>
         /// <param name="_year">Режим отображения для года</param>
-        private void Read_ImgNumber_Rotate_Options(hmUI_widget_IMG_NUMBER img_number, bool _dastance, bool _sunrise, bool _weather, bool _year,
+        private void Read_ImgNumber_Rotate_Options(hmUI_widget_IMG_NUMBER img_number, bool _dastance, bool _weather, bool _sunrise, bool _year,
             bool _optionalSymbol, bool _padingZero)
         {
             PreviewView = false;
@@ -975,13 +975,14 @@ namespace Watch_Face_Editor
         /// <param name="_padingZero">Отображение настроек ведущих нулей</param>
         /// <param name="_sunrise">Режим отображения для восхода/заката</param>
         /// <param name="_angleVisible">Видимость настроек угла</param>
-        private void Read_TextCircle_Options(Text_Circle text_circle, bool _dastance, bool _sunrise, bool _year, bool _optionalSymbol, bool _padingZero)
+        private void Read_TextCircle_Options(Text_Circle text_circle, bool _dastance, bool _weather, bool _sunrise, bool _year, bool _optionalSymbol, bool _padingZero)
         {
             PreviewView = false;
 
             uCtrl_Text_Circle_Opt.SettingsClear();
 
             uCtrl_Text_Circle_Opt.Distance = _dastance;
+            uCtrl_Text_Circle_Opt.Weather = _weather;
             uCtrl_Text_Circle_Opt.Sunrise = _sunrise;
             //uCtrl_Text_Circle_Opt.ImageError = _imageError;
             uCtrl_Text_Circle_Opt.Year = _year;
