@@ -2310,10 +2310,18 @@ namespace Watch_Face_Editor
                     ElementWeather activityElementWeather = (ElementWeather)element;
                     if (!activityElementWeather.visible) return;
 
+                    value_lenght = 3;
                     img_level = activityElementWeather.Images;
                     img_number = activityElementWeather.Number;
+
                     hmUI_widget_IMG_NUMBER img_number_min = activityElementWeather.Number_Min;
+                    hmUI_widget_IMG_NUMBER text_Min_rotation = activityElementWeather.Text_Min_rotation;
+                    Text_Circle text_Min_circle = activityElementWeather.Text_Min_circle;
+
                     hmUI_widget_IMG_NUMBER img_number_max = activityElementWeather.Number_Max;
+                    hmUI_widget_IMG_NUMBER text_Max_rotation = activityElementWeather.Text_Max_rotation;
+                    Text_Circle text_Max_circle = activityElementWeather.Text_Max_circle;
+
                     hmUI_widget_TEXT city_name = activityElementWeather.City_Name;
                     icon = activityElementWeather.Icon;
 
@@ -2323,9 +2331,9 @@ namespace Watch_Face_Editor
                     int icon_index = WatchFacePreviewSet.Weather.Icon;
                     bool showTemperature = WatchFacePreviewSet.Weather.showTemperature;
 
-                    DrawWeather(gPanel, img_level, img_number, img_number_min, img_number_max,
-                        city_name, icon, value_current, value_min, value_max, value_lenght, icon_index,
-                        BBorder, showTemperature);
+                    DrawWeather(gPanel, img_level, img_number, img_number_min, text_Min_rotation, text_Min_circle,
+                        img_number_max, text_Max_rotation, text_Max_circle, city_name, icon, value_current, value_min, value_max, value_lenght, icon_index,
+                        BBorder, showTemperature, showCentrHend);
 
 
                     break;
@@ -2521,14 +2529,22 @@ namespace Watch_Face_Editor
                     img_level = activityElementSunrise.Images;
                     img_prorgess = activityElementSunrise.Segments;
                     img_number = activityElementSunrise.Sunrise;
+                    hmUI_widget_IMG_NUMBER sunrise_rotation = activityElementSunrise.Sunrise_rotation;
+                    Text_Circle sunrise_circle = activityElementSunrise.Sunrise_circle;
+
                     img_number_target = activityElementSunrise.Sunset;
+                    hmUI_widget_IMG_NUMBER sunset_rotation = activityElementSunrise.Sunset_rotation;
+                    Text_Circle sunset_circle = activityElementSunrise.Sunset_circle;
+
                     img_pointer = activityElementSunrise.Pointer;
                     icon = activityElementSunrise.Icon;
 
                     int minSunrise = WatchFacePreviewSet.Time.Minutes;
                     int hourSunrise = WatchFacePreviewSet.Time.Hours;
 
-                    DrawSunrise(gPanel, img_level, img_prorgess, img_number, img_number_target, activityElementSunrise.Sunset_Sunrise,
+                    DrawSunrise(gPanel, img_level, img_prorgess, img_number, sunrise_rotation, sunrise_circle,
+                        img_number_target, sunset_rotation, sunset_circle,
+                        activityElementSunrise.Sunset_Sunrise,
                         img_pointer, icon, hourSunrise, minSunrise, BBorder, showProgressArea, showCentrHend);
 
 
@@ -3790,9 +3806,10 @@ namespace Watch_Face_Editor
         /// <param name="BBorder">Рисовать рамку по координатам, вокруг элементов с выравниванием</param>
         /// <param name="showTemperature">Показывать температуру</param>
         private void DrawWeather(Graphics gPanel, hmUI_widget_IMG_LEVEL images, 
-            hmUI_widget_IMG_NUMBER number, hmUI_widget_IMG_NUMBER numberMin, hmUI_widget_IMG_NUMBER numberMax,
-            hmUI_widget_TEXT cityName, hmUI_widget_IMG icon, int value, int valueMin, int valueMax, int value_lenght,
-            int icon_index, bool BBorder, bool showTemperature)
+            hmUI_widget_IMG_NUMBER number, hmUI_widget_IMG_NUMBER numberMin, hmUI_widget_IMG_NUMBER textMin_rotation, Text_Circle textMin_circle, 
+            hmUI_widget_IMG_NUMBER numberMax, hmUI_widget_IMG_NUMBER textMax_rotation, Text_Circle textMax_circle, hmUI_widget_TEXT cityName, 
+            hmUI_widget_IMG icon, int value, int valueMin, int valueMax, int value_lenght,
+            int icon_index, bool BBorder, bool showTemperature, bool showCentrHend)
         {
             Bitmap src = new Bitmap(1, 1);
 
@@ -3905,6 +3922,64 @@ namespace Watch_Face_Editor
                     }
                 }
 
+                if (textMin_rotation != null && textMin_rotation.img_First != null && textMin_rotation.img_First.Length > 0 &&
+                    textMin_rotation.dot_image != null && textMin_rotation.dot_image.Length > 0 && index == textMin_rotation.position && textMin_rotation.visible)
+                {
+                    int pos_x = textMin_rotation.imageX;
+                    int pos_y = textMin_rotation.imageY;
+                    int spacing = textMin_rotation.space;
+                    float angle = textMin_rotation.angle;
+                    bool addZero = textMin_rotation.zero;
+                    int image_index = ListImages.IndexOf(textMin_rotation.img_First);
+                    int unit_index = ListImages.IndexOf(textMin_rotation.unit);
+                    int dot_image_index = ListImages.IndexOf(textMin_rotation.dot_image);
+                    string horizontal_alignment = textMin_rotation.align;
+                    bool unit_in_alignment = textMin_rotation.unit_in_alignment;
+
+                    string valueStr = valueMin.ToString();
+                    string symbolMinus = "-";
+                    if (textMin_rotation.zero) 
+                    { 
+                        valueStr = valueStr.PadLeft(3, '0'); 
+                        if (valueMin < 0) valueStr = symbolMinus +  Math.Abs(valueMin).ToString().PadLeft(3, '0');
+                    }
+
+                    Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
+                        image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
+                        valueStr, 3, BBorder, "ElementWeather");
+                }
+
+                if (textMin_circle != null && textMin_circle.img_First != null && textMin_circle.img_First.Length > 0 &&
+                    textMin_circle.dot_image != null && textMin_circle.dot_image.Length > 0 && index == textMin_circle.position && textMin_circle.visible)
+                {
+                    int centr_x = textMin_circle.circle_center_X;
+                    int centr_y = textMin_circle.circle_center_Y;
+                    int radius = textMin_circle.radius;
+                    int spacing = textMin_circle.char_space_angle;
+                    float angle = textMin_circle.angle;
+                    bool addZero = textMin_circle.zero;
+                    int image_index = ListImages.IndexOf(textMin_circle.img_First);
+                    int unit_index = ListImages.IndexOf(textMin_circle.unit);
+                    int dot_image_index = ListImages.IndexOf(textMin_circle.dot_image);
+                    string vertical_alignment = textMin_circle.vertical_alignment;
+                    string horizontal_alignment = textMin_circle.horizontal_alignment;
+                    bool reverse_direction = textMin_circle.reverse_direction;
+                    bool unit_in_alignment = textMin_circle.unit_in_alignment;
+
+                    string valueStr = valueMin.ToString();
+                    string symbolMinus = "-";
+                    if (textMin_circle.zero)
+                    {
+                        valueStr = valueStr.PadLeft(3, '0');
+                        if (valueMin < 0) valueStr = symbolMinus + Math.Abs(valueMin).ToString().PadLeft(3, '0');
+                    }
+
+                    Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
+                        image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
+                        vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
+                        valueStr, 3, BBorder, showCentrHend, "ElementWeather");
+                }
+
                 if (numberMax != null && numberMax.img_First != null && numberMax.img_First.Length > 0 &&
                     index == numberMax.position && numberMax.visible)
                 {
@@ -3947,6 +4022,64 @@ namespace Watch_Face_Editor
                         gPanel.DrawImage(src, x, y);
                         //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                     }
+                }
+
+                if (textMax_rotation != null && textMax_rotation.img_First != null && textMax_rotation.img_First.Length > 0 &&
+                    textMax_rotation.dot_image != null && textMax_rotation.dot_image.Length > 0 && index == textMax_rotation.position && textMax_rotation.visible)
+                {
+                    int pos_x = textMax_rotation.imageX;
+                    int pos_y = textMax_rotation.imageY;
+                    int spacing = textMax_rotation.space;
+                    float angle = textMax_rotation.angle;
+                    bool addZero = textMax_rotation.zero;
+                    int image_index = ListImages.IndexOf(textMax_rotation.img_First);
+                    int unit_index = ListImages.IndexOf(textMax_rotation.unit);
+                    int dot_image_index = ListImages.IndexOf(textMax_rotation.dot_image);
+                    string horizontal_alignment = textMax_rotation.align;
+                    bool unit_in_alignment = textMax_rotation.unit_in_alignment;
+
+                    string valueStr = valueMax.ToString();
+                    string symbolMinus = "-";
+                    if (textMax_rotation.zero)
+                    {
+                        valueStr = valueStr.PadLeft(3, '0');
+                        if (valueMax < 0) valueStr = symbolMinus + Math.Abs(valueMax).ToString().PadLeft(3, '0');
+                    }
+
+                    Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
+                        image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
+                        valueStr, 3, BBorder, "ElementWeather");
+                }
+
+                if (textMax_circle != null && textMax_circle.img_First != null && textMax_circle.img_First.Length > 0 &&
+                    textMax_circle.dot_image != null && textMax_circle.dot_image.Length > 0 && index == textMax_circle.position && textMax_circle.visible)
+                {
+                    int centr_x = textMax_circle.circle_center_X;
+                    int centr_y = textMax_circle.circle_center_Y;
+                    int radius = textMax_circle.radius;
+                    int spacing = textMax_circle.char_space_angle;
+                    float angle = textMax_circle.angle;
+                    bool addZero = textMax_circle.zero;
+                    int image_index = ListImages.IndexOf(textMax_circle.img_First);
+                    int unit_index = ListImages.IndexOf(textMax_circle.unit);
+                    int dot_image_index = ListImages.IndexOf(textMax_circle.dot_image);
+                    string vertical_alignment = textMax_circle.vertical_alignment;
+                    string horizontal_alignment = textMax_circle.horizontal_alignment;
+                    bool reverse_direction = textMax_circle.reverse_direction;
+                    bool unit_in_alignment = textMax_circle.unit_in_alignment;
+
+                    string valueStr = valueMax.ToString();
+                    string symbolMinus = "-";
+                    if (textMax_circle.zero)
+                    {
+                        valueStr = valueStr.PadLeft(3, '0');
+                        if (valueMax < 0) valueStr = symbolMinus + Math.Abs(valueMax).ToString().PadLeft(3, '0');
+                    }
+
+                    Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
+                        image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
+                        vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
+                        valueStr, 3, BBorder, showCentrHend, "ElementWeather");
                 }
 
                 if (icon != null && icon.src != null && icon.src.Length > 0 &&
@@ -4017,7 +4150,9 @@ namespace Watch_Face_Editor
 
         /// <summary>Рисуем восход, звкат</summary>
         private void DrawSunrise(Graphics gPanel, hmUI_widget_IMG_LEVEL images, hmUI_widget_IMG_PROGRESS segments,
-            hmUI_widget_IMG_NUMBER sunrise, hmUI_widget_IMG_NUMBER sunset, hmUI_widget_IMG_NUMBER sunset_sunrise, hmUI_widget_IMG_POINTER pointer,
+            hmUI_widget_IMG_NUMBER sunrise, hmUI_widget_IMG_NUMBER sunrise_rotation, Text_Circle sunrise_circle,
+            hmUI_widget_IMG_NUMBER sunset, hmUI_widget_IMG_NUMBER sunset_rotation, Text_Circle sunset_circle, 
+            hmUI_widget_IMG_NUMBER sunset_sunrise, hmUI_widget_IMG_POINTER pointer,
             hmUI_widget_IMG icon, int hour, int minute, bool BBorder, bool showProgressArea, bool showCentrHend)
         {
             TimeSpan time_now = new TimeSpan(hour, minute, 0);
@@ -4119,7 +4254,67 @@ namespace Watch_Face_Editor
                         //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                     }
                 }
-                
+
+                if (sunrise_rotation != null && sunrise_rotation.img_First != null && sunrise_rotation.img_First.Length > 0 &&
+                    sunrise_rotation.dot_image != null && sunrise_rotation.dot_image.Length > 0 && index == sunrise_rotation.position && sunrise_rotation.visible)
+                {
+                    int pos_x = sunrise_rotation.imageX;
+                    int pos_y = sunrise_rotation.imageY;
+                    int spacing = sunrise_rotation.space;
+                    float angle = sunrise_rotation.angle;
+                    bool addZero = sunrise_rotation.zero;
+                    int image_index = ListImages.IndexOf(sunrise_rotation.img_First);
+                    int unit_index = ListImages.IndexOf(sunrise_rotation.unit);
+                    int dot_image_index = ListImages.IndexOf(sunrise_rotation.dot_image);
+                    string horizontal_alignment = sunrise_rotation.align;
+                    bool unit_in_alignment = sunrise_rotation.unit_in_alignment;
+
+                    string value = 5.30f.ToString();
+                    string decimalSeparator = Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+                    if (value.IndexOf(decimalSeparator) < 0) value = value + decimalSeparator;
+                    while (value.IndexOf(decimalSeparator) > value.Length - 2 - 1)
+                    {
+                        value = value + "0";
+                    }
+                    if (sunrise_rotation.zero) value = value.PadLeft(5, '0');
+
+                    Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
+                        image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
+                        value, 4, BBorder, "ElementSunrise");
+                }
+
+                if (sunrise_circle != null && sunrise_circle.img_First != null && sunrise_circle.img_First.Length > 0 &&
+                    sunrise_circle.dot_image != null && sunrise_circle.dot_image.Length > 0 && index == sunrise_circle.position && sunrise_circle.visible)
+                {
+                    int centr_x = sunrise_circle.circle_center_X;
+                    int centr_y = sunrise_circle.circle_center_Y;
+                    int radius = sunrise_circle.radius;
+                    int spacing = sunrise_circle.char_space_angle;
+                    float angle = sunrise_circle.angle;
+                    bool addZero = sunrise_circle.zero;
+                    int image_index = ListImages.IndexOf(sunrise_circle.img_First);
+                    int unit_index = ListImages.IndexOf(sunrise_circle.unit);
+                    int dot_image_index = ListImages.IndexOf(sunrise_circle.dot_image);
+                    string vertical_alignment = sunrise_circle.vertical_alignment;
+                    string horizontal_alignment = sunrise_circle.horizontal_alignment;
+                    bool reverse_direction = sunrise_circle.reverse_direction;
+                    bool unit_in_alignment = sunrise_circle.unit_in_alignment;
+
+                    string value = 5.30f.ToString();
+                    string decimalSeparator = Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+                    if (value.IndexOf(decimalSeparator) < 0) value = value + decimalSeparator;
+                    while (value.IndexOf(decimalSeparator) > value.Length - 2 - 1)
+                    {
+                        value = value + "0";
+                    }
+                    if (sunrise_circle.zero) value = value.PadLeft(5, '0');
+
+                    Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
+                        image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
+                        vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
+                        value, 4, BBorder, showCentrHend, "ElementSunrise");
+                }
+
                 if (sunset != null && sunset.img_First != null && sunset.img_First.Length > 0 &&
                     index == sunset.position && sunset.visible)
                 {
@@ -4153,6 +4348,66 @@ namespace Watch_Face_Editor
                         gPanel.DrawImage(src, pos_x, pos_y);
                         //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                     }
+                }
+
+                if (sunset_rotation != null && sunset_rotation.img_First != null && sunset_rotation.img_First.Length > 0 &&
+                    sunset_rotation.dot_image != null && sunset_rotation.dot_image.Length > 0 && index == sunset_rotation.position && sunset_rotation.visible)
+                {
+                    int pos_x = sunset_rotation.imageX;
+                    int pos_y = sunset_rotation.imageY;
+                    int spacing = sunset_rotation.space;
+                    float angle = sunset_rotation.angle;
+                    bool addZero = sunset_rotation.zero;
+                    int image_index = ListImages.IndexOf(sunset_rotation.img_First);
+                    int unit_index = ListImages.IndexOf(sunset_rotation.unit);
+                    int dot_image_index = ListImages.IndexOf(sunset_rotation.dot_image);
+                    string horizontal_alignment = sunset_rotation.align;
+                    bool unit_in_alignment = sunset_rotation.unit_in_alignment;
+
+                    string value = 19.30f.ToString();
+                    string decimalSeparator = Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+                    if (value.IndexOf(decimalSeparator) < 0) value = value + decimalSeparator;
+                    while (value.IndexOf(decimalSeparator) > value.Length - 2 - 1)
+                    {
+                        value = value + "0";
+                    }
+                    if (sunset_rotation.zero) value = value.PadLeft(5, '0');
+
+                    Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
+                        image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
+                        value, 4, BBorder, "ElementSunrise");
+                }
+
+                if (sunset_circle != null && sunset_circle.img_First != null && sunset_circle.img_First.Length > 0 &&
+                    sunset_circle.dot_image != null && sunset_circle.dot_image.Length > 0 && index == sunset_circle.position && sunset_circle.visible)
+                {
+                    int centr_x = sunset_circle.circle_center_X;
+                    int centr_y = sunset_circle.circle_center_Y;
+                    int radius = sunset_circle.radius;
+                    int spacing = sunset_circle.char_space_angle;
+                    float angle = sunset_circle.angle;
+                    bool addZero = sunset_circle.zero;
+                    int image_index = ListImages.IndexOf(sunset_circle.img_First);
+                    int unit_index = ListImages.IndexOf(sunset_circle.unit);
+                    int dot_image_index = ListImages.IndexOf(sunset_circle.dot_image);
+                    string vertical_alignment = sunset_circle.vertical_alignment;
+                    string horizontal_alignment = sunset_circle.horizontal_alignment;
+                    bool reverse_direction = sunset_circle.reverse_direction;
+                    bool unit_in_alignment = sunset_circle.unit_in_alignment;
+
+                    string value = 19.30f.ToString();
+                    string decimalSeparator = Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+                    if (value.IndexOf(decimalSeparator) < 0) value = value + decimalSeparator;
+                    while (value.IndexOf(decimalSeparator) > value.Length - 2 - 1)
+                    {
+                        value = value + "0";
+                    }
+                    if (sunset_circle.zero) value = value.PadLeft(5, '0');
+
+                    Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
+                        image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
+                        vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
+                        value, 4, BBorder, showCentrHend, "ElementSunrise");
                 }
 
                 if (sunset_sunrise != null && sunset_sunrise.img_First != null && sunset_sunrise.img_First.Length > 0 &&
@@ -5715,6 +5970,8 @@ namespace Watch_Face_Editor
             {
                 DateLenght = image_width * value_lenght + spacing * (value_lenght - 1);
                 if ((elementName == "ElementDistance" || elementName == "ElementSunrise") && dot_image_width > 0)
+                    DateLenght = DateLenght + spacing + dot_image_width;
+                if (elementName == "ElementWeather" && dot_image_width > 0/* && value.StartsWith("-")*/)
                     DateLenght = DateLenght + spacing + dot_image_width;
                 if (unit_in_alignment && unit_width > 0)
                     DateLenght = DateLenght + spacing + unit_width;

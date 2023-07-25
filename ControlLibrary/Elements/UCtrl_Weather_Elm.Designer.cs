@@ -37,6 +37,18 @@ namespace ControlLibrary
             this.pictureBox_Show = new System.Windows.Forms.PictureBox();
             this.pictureBox_Del = new System.Windows.Forms.PictureBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel_Text_Max_circle = new System.Windows.Forms.Panel();
+            this.button_Text_Max_circle = new System.Windows.Forms.Button();
+            this.checkBox_Text_Max_circle = new System.Windows.Forms.CheckBox();
+            this.panel_Text_Max_rotation = new System.Windows.Forms.Panel();
+            this.button_Text_Max_rotation = new System.Windows.Forms.Button();
+            this.checkBox_Text_Max_rotation = new System.Windows.Forms.CheckBox();
+            this.panel_Text_Min_circle = new System.Windows.Forms.Panel();
+            this.button_Text_Min_circle = new System.Windows.Forms.Button();
+            this.checkBox_Text_Min_circle = new System.Windows.Forms.CheckBox();
+            this.panel_Text_Min_rotation = new System.Windows.Forms.Panel();
+            this.button_Text_Min_rotation = new System.Windows.Forms.Button();
+            this.checkBox_Text_Min_rotation = new System.Windows.Forms.CheckBox();
             this.panel_Text_CityName = new System.Windows.Forms.Panel();
             this.button_Text_CityName = new System.Windows.Forms.Button();
             this.checkBox_Text_CityName = new System.Windows.Forms.CheckBox();
@@ -63,6 +75,10 @@ namespace ControlLibrary
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Show)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Del)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
+            this.panel_Text_Max_circle.SuspendLayout();
+            this.panel_Text_Max_rotation.SuspendLayout();
+            this.panel_Text_Min_circle.SuspendLayout();
+            this.panel_Text_Min_rotation.SuspendLayout();
             this.panel_Text_CityName.SuspendLayout();
             this.panel_Number_Min.SuspendLayout();
             this.panel_Images.SuspendLayout();
@@ -115,15 +131,147 @@ namespace ControlLibrary
             // 
             this.tableLayoutPanel1.AllowDrop = true;
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
-            this.tableLayoutPanel1.Controls.Add(this.panel_Text_CityName, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Text_Max_circle, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Text_Max_rotation, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Text_Min_circle, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Text_Min_rotation, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Text_CityName, 0, 8);
             this.tableLayoutPanel1.Controls.Add(this.panel_Number_Min, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.panel_Images, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel_Number, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.panel_Number_Max, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.panel_Icon, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Number_Max, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Icon, 0, 9);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragDrop);
             this.tableLayoutPanel1.DragOver += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragOver);
+            // 
+            // panel_Text_Max_circle
+            // 
+            this.panel_Text_Max_circle.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_Text_Max_circle.Controls.Add(this.button_Text_Max_circle);
+            this.panel_Text_Max_circle.Controls.Add(this.checkBox_Text_Max_circle);
+            resources.ApplyResources(this.panel_Text_Max_circle, "panel_Text_Max_circle");
+            this.panel_Text_Max_circle.Name = "panel_Text_Max_circle";
+            this.panel_Text_Max_circle.Click += new System.EventHandler(this.panel_Text_Max_circle_Click);
+            this.panel_Text_Max_circle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.panel_Text_Max_circle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.panel_Text_Max_circle.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // button_Text_Max_circle
+            // 
+            this.button_Text_Max_circle.FlatAppearance.BorderSize = 0;
+            this.button_Text_Max_circle.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.button_Text_Max_circle.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Text_Max_circle, "button_Text_Max_circle");
+            this.button_Text_Max_circle.Name = "button_Text_Max_circle";
+            this.button_Text_Max_circle.UseVisualStyleBackColor = true;
+            this.button_Text_Max_circle.Click += new System.EventHandler(this.panel_Text_Max_circle_Click);
+            this.button_Text_Max_circle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.button_Text_Max_circle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.button_Text_Max_circle.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // checkBox_Text_Max_circle
+            // 
+            resources.ApplyResources(this.checkBox_Text_Max_circle, "checkBox_Text_Max_circle");
+            this.checkBox_Text_Max_circle.Name = "checkBox_Text_Max_circle";
+            this.checkBox_Text_Max_circle.UseVisualStyleBackColor = true;
+            this.checkBox_Text_Max_circle.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
+            // 
+            // panel_Text_Max_rotation
+            // 
+            this.panel_Text_Max_rotation.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_Text_Max_rotation.Controls.Add(this.button_Text_Max_rotation);
+            this.panel_Text_Max_rotation.Controls.Add(this.checkBox_Text_Max_rotation);
+            resources.ApplyResources(this.panel_Text_Max_rotation, "panel_Text_Max_rotation");
+            this.panel_Text_Max_rotation.Name = "panel_Text_Max_rotation";
+            this.panel_Text_Max_rotation.Click += new System.EventHandler(this.panel_Text_Max_rotation_Click);
+            this.panel_Text_Max_rotation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.panel_Text_Max_rotation.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.panel_Text_Max_rotation.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // button_Text_Max_rotation
+            // 
+            this.button_Text_Max_rotation.FlatAppearance.BorderSize = 0;
+            this.button_Text_Max_rotation.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.button_Text_Max_rotation.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Text_Max_rotation, "button_Text_Max_rotation");
+            this.button_Text_Max_rotation.Name = "button_Text_Max_rotation";
+            this.button_Text_Max_rotation.UseVisualStyleBackColor = true;
+            this.button_Text_Max_rotation.Click += new System.EventHandler(this.panel_Text_Max_rotation_Click);
+            this.button_Text_Max_rotation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.button_Text_Max_rotation.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.button_Text_Max_rotation.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // checkBox_Text_Max_rotation
+            // 
+            resources.ApplyResources(this.checkBox_Text_Max_rotation, "checkBox_Text_Max_rotation");
+            this.checkBox_Text_Max_rotation.Name = "checkBox_Text_Max_rotation";
+            this.checkBox_Text_Max_rotation.UseVisualStyleBackColor = true;
+            this.checkBox_Text_Max_rotation.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
+            // 
+            // panel_Text_Min_circle
+            // 
+            this.panel_Text_Min_circle.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_Text_Min_circle.Controls.Add(this.button_Text_Min_circle);
+            this.panel_Text_Min_circle.Controls.Add(this.checkBox_Text_Min_circle);
+            resources.ApplyResources(this.panel_Text_Min_circle, "panel_Text_Min_circle");
+            this.panel_Text_Min_circle.Name = "panel_Text_Min_circle";
+            this.panel_Text_Min_circle.Click += new System.EventHandler(this.panel_Text_Min_circle_Click);
+            this.panel_Text_Min_circle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.panel_Text_Min_circle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.panel_Text_Min_circle.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // button_Text_Min_circle
+            // 
+            this.button_Text_Min_circle.FlatAppearance.BorderSize = 0;
+            this.button_Text_Min_circle.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.button_Text_Min_circle.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Text_Min_circle, "button_Text_Min_circle");
+            this.button_Text_Min_circle.Name = "button_Text_Min_circle";
+            this.button_Text_Min_circle.UseVisualStyleBackColor = true;
+            this.button_Text_Min_circle.Click += new System.EventHandler(this.panel_Text_Min_circle_Click);
+            this.button_Text_Min_circle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.button_Text_Min_circle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.button_Text_Min_circle.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // checkBox_Text_Min_circle
+            // 
+            resources.ApplyResources(this.checkBox_Text_Min_circle, "checkBox_Text_Min_circle");
+            this.checkBox_Text_Min_circle.Name = "checkBox_Text_Min_circle";
+            this.checkBox_Text_Min_circle.UseVisualStyleBackColor = true;
+            this.checkBox_Text_Min_circle.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
+            // 
+            // panel_Text_Min_rotation
+            // 
+            this.panel_Text_Min_rotation.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_Text_Min_rotation.Controls.Add(this.button_Text_Min_rotation);
+            this.panel_Text_Min_rotation.Controls.Add(this.checkBox_Text_Min_rotation);
+            resources.ApplyResources(this.panel_Text_Min_rotation, "panel_Text_Min_rotation");
+            this.panel_Text_Min_rotation.Name = "panel_Text_Min_rotation";
+            this.panel_Text_Min_rotation.Click += new System.EventHandler(this.panel_Text_Min_rotation_Click);
+            this.panel_Text_Min_rotation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.panel_Text_Min_rotation.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.panel_Text_Min_rotation.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // button_Text_Min_rotation
+            // 
+            this.button_Text_Min_rotation.FlatAppearance.BorderSize = 0;
+            this.button_Text_Min_rotation.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.button_Text_Min_rotation.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Text_Min_rotation, "button_Text_Min_rotation");
+            this.button_Text_Min_rotation.Name = "button_Text_Min_rotation";
+            this.button_Text_Min_rotation.UseVisualStyleBackColor = true;
+            this.button_Text_Min_rotation.Click += new System.EventHandler(this.panel_Text_Min_rotation_Click);
+            this.button_Text_Min_rotation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.button_Text_Min_rotation.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.button_Text_Min_rotation.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // checkBox_Text_Min_rotation
+            // 
+            resources.ApplyResources(this.checkBox_Text_Min_rotation, "checkBox_Text_Min_rotation");
+            this.checkBox_Text_Min_rotation.Name = "checkBox_Text_Min_rotation";
+            this.checkBox_Text_Min_rotation.UseVisualStyleBackColor = true;
+            this.checkBox_Text_Min_rotation.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
             // 
             // panel_Text_CityName
             // 
@@ -363,6 +511,14 @@ namespace ControlLibrary
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Show)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Del)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel_Text_Max_circle.ResumeLayout(false);
+            this.panel_Text_Max_circle.PerformLayout();
+            this.panel_Text_Max_rotation.ResumeLayout(false);
+            this.panel_Text_Max_rotation.PerformLayout();
+            this.panel_Text_Min_circle.ResumeLayout(false);
+            this.panel_Text_Min_circle.PerformLayout();
+            this.panel_Text_Min_rotation.ResumeLayout(false);
+            this.panel_Text_Min_rotation.PerformLayout();
             this.panel_Text_CityName.ResumeLayout(false);
             this.panel_Text_CityName.PerformLayout();
             this.panel_Number_Min.ResumeLayout(false);
@@ -408,5 +564,17 @@ namespace ControlLibrary
         private System.Windows.Forms.Button button_Text_CityName;
         public System.Windows.Forms.CheckBox checkBox_Text_CityName;
         private System.Windows.Forms.ToolTip toolTip_Weather;
+        private System.Windows.Forms.Panel panel_Text_Min_rotation;
+        private System.Windows.Forms.Button button_Text_Min_rotation;
+        public System.Windows.Forms.CheckBox checkBox_Text_Min_rotation;
+        private System.Windows.Forms.Panel panel_Text_Min_circle;
+        private System.Windows.Forms.Button button_Text_Min_circle;
+        public System.Windows.Forms.CheckBox checkBox_Text_Min_circle;
+        private System.Windows.Forms.Panel panel_Text_Max_rotation;
+        private System.Windows.Forms.Button button_Text_Max_rotation;
+        public System.Windows.Forms.CheckBox checkBox_Text_Max_rotation;
+        private System.Windows.Forms.Panel panel_Text_Max_circle;
+        private System.Windows.Forms.Button button_Text_Max_circle;
+        public System.Windows.Forms.CheckBox checkBox_Text_Max_circle;
     }
 }

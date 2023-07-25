@@ -117,7 +117,46 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label_angle.Text" xml:space="preserve">
+    <value>Angle</value>
+  </data>
+  <data name="checkBox_addZero.Text" xml:space="preserve">
+    <value>Ajouter des zéros non significatifs</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label03.Size" type="System.Drawing.Size, System.Drawing">
+    <value>43, 13</value>
+  </data>
+  <data name="label03.Text" xml:space="preserve">
+    <value>Espace</value>
+  </data>
+  <data name="label_imageError.Text" xml:space="preserve">
+    <value>Image d'erreur</value>
+  </data>
+  <data name="label_imageDecimalPoint.Text" xml:space="preserve">
+    <value>Séparateur décimal</value>
+  </data>
+  <data name="label_unit_miles.Text" xml:space="preserve">
+    <value>Unités (ml)</value>
+  </data>
+  <data name="comboBox_alignment.Items" xml:space="preserve">
+    <value>Gauche</value>
+  </data>
+  <data name="comboBox_alignment.Items1" xml:space="preserve">
+    <value>Centré</value>
+  </data>
+  <data name="comboBox_alignment.Items2" xml:space="preserve">
+    <value>Droite</value>
+  </data>
+  <data name="label_unit.Text" xml:space="preserve">
+    <value>Unités</value>
+  </data>
+  <data name="label09.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 13</value>
+  </data>
+  <data name="label09.Text" xml:space="preserve">
+    <value>Alignement</value>
+  </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
@@ -201,10 +240,10 @@
 </value>
   </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 26</value>
+    <value>201, 26</value>
   </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Text" xml:space="preserve">
-    <value>Insérer la coordonnée Y</value>
+    <value>Insérer la coordonnée y</value>
   </data>
   <data name="копироватьToolStripMenuItemY.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -223,7 +262,7 @@
 </value>
   </data>
   <data name="копироватьToolStripMenuItemY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 26</value>
+    <value>201, 26</value>
   </data>
   <data name="копироватьToolStripMenuItemY.Text" xml:space="preserve">
     <value>Copie</value>
@@ -246,13 +285,13 @@
 </value>
   </data>
   <data name="вставитьToolStripMenuItemY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 26</value>
+    <value>201, 26</value>
   </data>
   <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
     <value>Insérer</value>
   </data>
   <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
-    <value>203, 82</value>
+    <value>202, 82</value>
   </data>
   <data name="label01.Text" xml:space="preserve">
     <value>Première image</value>
@@ -263,55 +302,10 @@
   <data name="label02.Text" xml:space="preserve">
     <value>Coordonnées</value>
   </data>
-  <data name="label04.Size" type="System.Drawing.Size, System.Drawing">
-    <value>34, 13</value>
+  <data name="checkBox_unit_in_alignment.Text" xml:space="preserve">
+    <value>Tenir compte des unités de mesure en alignant</value>
   </data>
-  <data name="label04.Text" xml:space="preserve">
-    <value>Icône</value>
-  </data>
-  <data name="label05.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 13</value>
-  </data>
-  <data name="label05.Text" xml:space="preserve">
-    <value>Coordonnées de l'icône</value>
-  </data>
-  <data name="comboBox_alignment.Items" xml:space="preserve">
-    <value>Gauche</value>
-  </data>
-  <data name="comboBox_alignment.Items1" xml:space="preserve">
-    <value>centré</value>
-  </data>
-  <data name="comboBox_alignment.Items2" xml:space="preserve">
-    <value>Droite</value>
-  </data>
-  <data name="label_unit.Text" xml:space="preserve">
-    <value>Unités</value>
-  </data>
-  <data name="label09.Size" type="System.Drawing.Size, System.Drawing">
-    <value>59, 13</value>
-  </data>
-  <data name="label09.Text" xml:space="preserve">
-    <value>Alignement</value>
-  </data>
-  <data name="checkBox_addZero.Text" xml:space="preserve">
-    <value>Ajouter des zéros non significatifs</value>
-  </data>
-  <data name="label03.Size" type="System.Drawing.Size, System.Drawing">
-    <value>43, 13</value>
-  </data>
-  <data name="label03.Text" xml:space="preserve">
-    <value>Espace</value>
-  </data>
-  <data name="label_imageError.Text" xml:space="preserve">
-    <value>Image d'erreur</value>
-  </data>
-  <data name="label_imageDecimalPoint.Text" xml:space="preserve">
-    <value>Séparateur décimal</value>
-  </data>
-  <data name="label_unit_miles.Text" xml:space="preserve">
-    <value>Unités (ml)</value>
-  </data>
-  <data name="label_angle.Text" xml:space="preserve">
-    <value>Angle</value>
+  <data name="label_minus_image.Text" xml:space="preserve">
+    <value>Symbole "-"</value>
   </data>
 </root>

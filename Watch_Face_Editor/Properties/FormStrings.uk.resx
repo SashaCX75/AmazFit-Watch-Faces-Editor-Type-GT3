@@ -258,6 +258,12 @@
   <data name="Message_LoadPreviewStates_Text" xml:space="preserve">
     <value>Завантажити наявний файл з набором параметрів попереднього переглялу PreviewStates.json?</value>
   </data>
+  <data name="Message_ModelConfig_Error" xml:space="preserve">
+    <value>Не знайдено конфігурацію моделі: </value>
+  </data>
+  <data name="Message_ModelConfig_ReadError" xml:space="preserve">
+    <value>Помилка читання конфігурації моделей</value>
+  </data>
   <data name="Message_Restart_Caption" xml:space="preserve">
     <value>Перезавантаження</value>
   </data>

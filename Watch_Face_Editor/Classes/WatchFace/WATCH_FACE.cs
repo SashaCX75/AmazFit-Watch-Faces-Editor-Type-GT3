@@ -4469,7 +4469,11 @@ namespace Watch_Face_Editor
         public hmUI_widget_IMG_LEVEL Images { get; set; }
         public hmUI_widget_IMG_NUMBER Number { get; set; }
         public hmUI_widget_IMG_NUMBER Number_Min { get; set; }
+        public hmUI_widget_IMG_NUMBER Text_Min_rotation { get; set; }
+        public Text_Circle Text_Min_circle { get; set; }
         public hmUI_widget_IMG_NUMBER Number_Max { get; set; }
+        public hmUI_widget_IMG_NUMBER Text_Max_rotation { get; set; }
+        public Text_Circle Text_Max_circle { get; set; }
         public hmUI_widget_TEXT City_Name { get; set; }
         public hmUI_widget_IMG Icon { get; set; }
 
@@ -4551,6 +4555,68 @@ namespace Watch_Face_Editor
                 };
             }
 
+            hmUI_widget_IMG_NUMBER Text_Min_rotation = null;
+            if (this.Text_Min_rotation != null)
+            {
+                Text_Min_rotation = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Text_Min_rotation.imageX,
+                    imageY = this.Text_Min_rotation.imageY,
+                    space = this.Text_Min_rotation.space,
+                    angle = this.Text_Min_rotation.angle,
+                    zero = this.Text_Min_rotation.zero,
+                    align = this.Text_Min_rotation.align,
+                    img_First = this.Text_Min_rotation.img_First,
+                    unit = this.Text_Min_rotation.unit,
+                    imperial_unit = this.Text_Min_rotation.imperial_unit,
+                    icon = this.Text_Min_rotation.icon,
+                    iconPosX = this.Text_Min_rotation.iconPosX,
+                    iconPosY = this.Text_Min_rotation.iconPosY,
+                    negative_image = this.Text_Min_rotation.negative_image,
+                    invalid_image = this.Text_Min_rotation.invalid_image,
+                    dot_image = this.Text_Min_rotation.dot_image,
+                    unit_in_alignment = this.Text_Min_rotation.unit_in_alignment,
+
+                    position = this.Text_Min_rotation.position,
+                    visible = this.Text_Min_rotation.visible,
+                    show_level = this.Text_Min_rotation.show_level,
+                    type = this.Text_Min_rotation.type,
+                };
+            }
+
+            Text_Circle Text_Min_circle = null;
+            if (this.Text_Min_circle != null)
+            {
+                Text_Min_circle = new Text_Circle
+                {
+                    circle_center_X = this.Text_Min_circle.circle_center_X,
+                    circle_center_Y = this.Text_Min_circle.circle_center_Y,
+                    radius = this.Text_Min_circle.radius,
+                    angle = this.Text_Min_circle.angle,
+                    char_space_angle = this.Text_Min_circle.char_space_angle,
+                    zero = this.Text_Min_circle.zero,
+                    img_First = this.Text_Min_circle.img_First,
+                    //image_width = this.Text_Min_circle.image_width,
+                    //image_height = this.Text_Min_circle.image_height,
+                    unit = this.Text_Min_circle.unit,
+                    //unit_width = this.Text_Min_circle.unit_width,
+                    imperial_unit = this.Text_Min_circle.imperial_unit,
+                    dot_image = this.Text_Min_circle.dot_image,
+                    //dot_image_width = this.Text_Min_circle.dot_image_width,
+                    error_image = this.Text_Min_circle.error_image,
+                    //error_width = this.Text_Min_circle.error_width,
+                    vertical_alignment = this.Text_Min_circle.vertical_alignment,
+                    horizontal_alignment = this.Text_Min_circle.horizontal_alignment,
+                    reverse_direction = this.Text_Min_circle.reverse_direction,
+                    unit_in_alignment = this.Text_Min_circle.unit_in_alignment,
+
+                    position = this.Text_Min_circle.position,
+                    visible = this.Text_Min_circle.visible,
+                    show_level = this.Text_Min_circle.show_level,
+                    type = this.Text_Min_circle.type,
+                };
+            }
+
             hmUI_widget_IMG_NUMBER Number_Max = null;
             if (this.Number_Max != null)
             {
@@ -4577,6 +4643,68 @@ namespace Watch_Face_Editor
                     visible = this.Number_Max.visible,
                     show_level = this.Number_Max.show_level,
                     type = this.Number_Max.type,
+                };
+            }
+
+            hmUI_widget_IMG_NUMBER Text_Max_rotation = null;
+            if (this.Text_Max_rotation != null)
+            {
+                Text_Max_rotation = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Text_Max_rotation.imageX,
+                    imageY = this.Text_Max_rotation.imageY,
+                    space = this.Text_Max_rotation.space,
+                    angle = this.Text_Max_rotation.angle,
+                    zero = this.Text_Max_rotation.zero,
+                    align = this.Text_Max_rotation.align,
+                    img_First = this.Text_Max_rotation.img_First,
+                    unit = this.Text_Max_rotation.unit,
+                    imperial_unit = this.Text_Max_rotation.imperial_unit,
+                    icon = this.Text_Max_rotation.icon,
+                    iconPosX = this.Text_Max_rotation.iconPosX,
+                    iconPosY = this.Text_Max_rotation.iconPosY,
+                    negative_image = this.Text_Max_rotation.negative_image,
+                    invalid_image = this.Text_Max_rotation.invalid_image,
+                    dot_image = this.Text_Max_rotation.dot_image,
+                    unit_in_alignment = this.Text_Max_rotation.unit_in_alignment,
+
+                    position = this.Text_Max_rotation.position,
+                    visible = this.Text_Max_rotation.visible,
+                    show_level = this.Text_Max_rotation.show_level,
+                    type = this.Text_Max_rotation.type,
+                };
+            }
+
+            Text_Circle Text_Max_circle = null;
+            if (this.Text_Max_circle != null)
+            {
+                Text_Max_circle = new Text_Circle
+                {
+                    circle_center_X = this.Text_Max_circle.circle_center_X,
+                    circle_center_Y = this.Text_Max_circle.circle_center_Y,
+                    radius = this.Text_Max_circle.radius,
+                    angle = this.Text_Max_circle.angle,
+                    char_space_angle = this.Text_Max_circle.char_space_angle,
+                    zero = this.Text_Max_circle.zero,
+                    img_First = this.Text_Max_circle.img_First,
+                    //image_width = this.Text_Max_circle.image_width,
+                    //image_height = this.Text_Max_circle.image_height,
+                    unit = this.Text_Max_circle.unit,
+                    //unit_width = this.Text_Max_circle.unit_width,
+                    imperial_unit = this.Text_Max_circle.imperial_unit,
+                    dot_image = this.Text_Max_circle.dot_image,
+                    //dot_image_width = this.Text_Max_circle.dot_image_width,
+                    error_image = this.Text_Max_circle.error_image,
+                    //error_width = this.Text_Max_circle.error_width,
+                    vertical_alignment = this.Text_Max_circle.vertical_alignment,
+                    horizontal_alignment = this.Text_Max_circle.horizontal_alignment,
+                    reverse_direction = this.Text_Max_circle.reverse_direction,
+                    unit_in_alignment = this.Text_Max_circle.unit_in_alignment,
+
+                    position = this.Text_Max_circle.position,
+                    visible = this.Text_Max_circle.visible,
+                    show_level = this.Text_Max_circle.show_level,
+                    type = this.Text_Max_circle.type,
                 };
             }
 
@@ -4629,7 +4757,11 @@ namespace Watch_Face_Editor
                 Images = Images,
                 Number = Number,
                 Number_Min = Number_Min,
+                Text_Min_rotation = Text_Min_rotation,
+                Text_Min_circle = Text_Min_circle,
                 Number_Max = Number_Max,
+                Text_Max_rotation = Text_Max_rotation,
+                Text_Max_circle = Text_Max_circle,
                 City_Name = City_Name,
                 Icon = Icon,
             };
@@ -5123,7 +5255,11 @@ namespace Watch_Face_Editor
         public hmUI_widget_IMG_LEVEL Images { get; set; }
         public hmUI_widget_IMG_PROGRESS Segments { get; set; }
         public hmUI_widget_IMG_NUMBER Sunrise { get; set; }
+        public hmUI_widget_IMG_NUMBER Sunrise_rotation { get; set; }
+        public Text_Circle Sunrise_circle { get; set; }
         public hmUI_widget_IMG_NUMBER Sunset { get; set; }
+        public hmUI_widget_IMG_NUMBER Sunset_rotation { get; set; }
+        public Text_Circle Sunset_circle { get; set; }
         public hmUI_widget_IMG_NUMBER Sunset_Sunrise { get; set; }
         public hmUI_widget_IMG_POINTER Pointer { get; set; }
         public hmUI_widget_IMG Icon { get; set; }
@@ -5194,6 +5330,68 @@ namespace Watch_Face_Editor
                 };
             }
 
+            hmUI_widget_IMG_NUMBER Sunrise_rotation = null;
+            if (this.Sunrise_rotation != null)
+            {
+                Sunrise_rotation = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Sunrise_rotation.imageX,
+                    imageY = this.Sunrise_rotation.imageY,
+                    space = this.Sunrise_rotation.space,
+                    angle = this.Sunrise_rotation.angle,
+                    zero = this.Sunrise_rotation.zero,
+                    align = this.Sunrise_rotation.align,
+                    img_First = this.Sunrise_rotation.img_First,
+                    unit = this.Sunrise_rotation.unit,
+                    imperial_unit = this.Sunrise_rotation.imperial_unit,
+                    icon = this.Sunrise_rotation.icon,
+                    iconPosX = this.Sunrise_rotation.iconPosX,
+                    iconPosY = this.Sunrise_rotation.iconPosY,
+                    negative_image = this.Sunrise_rotation.negative_image,
+                    invalid_image = this.Sunrise_rotation.invalid_image,
+                    dot_image = this.Sunrise_rotation.dot_image,
+                    unit_in_alignment = this.Sunrise_rotation.unit_in_alignment,
+
+                    position = this.Sunrise_rotation.position,
+                    visible = this.Sunrise_rotation.visible,
+                    show_level = this.Sunrise_rotation.show_level,
+                    type = this.Sunrise_rotation.type,
+                };
+            }
+
+            Text_Circle Sunrise_circle = null;
+            if (this.Sunrise_circle != null)
+            {
+                Sunrise_circle = new Text_Circle
+                {
+                    circle_center_X = this.Sunrise_circle.circle_center_X,
+                    circle_center_Y = this.Sunrise_circle.circle_center_Y,
+                    radius = this.Sunrise_circle.radius,
+                    angle = this.Sunrise_circle.angle,
+                    char_space_angle = this.Sunrise_circle.char_space_angle,
+                    zero = this.Sunrise_circle.zero,
+                    img_First = this.Sunrise_circle.img_First,
+                    //image_width = this.Sunrise_circle.image_width,
+                    //image_height = this.Sunrise_circle.image_height,
+                    unit = this.Sunrise_circle.unit,
+                    //unit_width = this.Sunrise_circle.unit_width,
+                    imperial_unit = this.Sunrise_circle.imperial_unit,
+                    dot_image = this.Sunrise_circle.dot_image,
+                    //dot_image_width = this.Sunrise_circle.dot_image_width,
+                    error_image = this.Sunrise_circle.error_image,
+                    //error_width = this.Sunrise_circle.error_width,
+                    vertical_alignment = this.Sunrise_circle.vertical_alignment,
+                    horizontal_alignment = this.Sunrise_circle.horizontal_alignment,
+                    reverse_direction = this.Sunrise_circle.reverse_direction,
+                    unit_in_alignment = this.Sunrise_circle.unit_in_alignment,
+
+                    position = this.Sunrise_circle.position,
+                    visible = this.Sunrise_circle.visible,
+                    show_level = this.Sunrise_circle.show_level,
+                    type = this.Sunrise_circle.type,
+                };
+            }
+
             hmUI_widget_IMG_NUMBER Sunset = null;
             if (this.Sunset != null)
             {
@@ -5220,6 +5418,68 @@ namespace Watch_Face_Editor
                     visible = this.Sunset.visible,
                     show_level = this.Sunset.show_level,
                     type = this.Sunset.type,
+                };
+            }
+
+            hmUI_widget_IMG_NUMBER Sunset_rotation = null;
+            if (this.Sunset_rotation != null)
+            {
+                Sunset_rotation = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Sunset_rotation.imageX,
+                    imageY = this.Sunset_rotation.imageY,
+                    space = this.Sunset_rotation.space,
+                    angle = this.Sunset_rotation.angle,
+                    zero = this.Sunset_rotation.zero,
+                    align = this.Sunset_rotation.align,
+                    img_First = this.Sunset_rotation.img_First,
+                    unit = this.Sunset_rotation.unit,
+                    imperial_unit = this.Sunset_rotation.imperial_unit,
+                    icon = this.Sunset_rotation.icon,
+                    iconPosX = this.Sunset_rotation.iconPosX,
+                    iconPosY = this.Sunset_rotation.iconPosY,
+                    negative_image = this.Sunset_rotation.negative_image,
+                    invalid_image = this.Sunset_rotation.invalid_image,
+                    dot_image = this.Sunset_rotation.dot_image,
+                    unit_in_alignment = this.Sunset_rotation.unit_in_alignment,
+
+                    position = this.Sunset_rotation.position,
+                    visible = this.Sunset_rotation.visible,
+                    show_level = this.Sunset_rotation.show_level,
+                    type = this.Sunset_rotation.type,
+                };
+            }
+
+            Text_Circle Sunset_circle = null;
+            if (this.Sunset_circle != null)
+            {
+                Sunset_circle = new Text_Circle
+                {
+                    circle_center_X = this.Sunset_circle.circle_center_X,
+                    circle_center_Y = this.Sunset_circle.circle_center_Y,
+                    radius = this.Sunset_circle.radius,
+                    angle = this.Sunset_circle.angle,
+                    char_space_angle = this.Sunset_circle.char_space_angle,
+                    zero = this.Sunset_circle.zero,
+                    img_First = this.Sunset_circle.img_First,
+                    //image_width = this.Sunset_circle.image_width,
+                    //image_height = this.Sunset_circle.image_height,
+                    unit = this.Sunset_circle.unit,
+                    //unit_width = this.Sunset_circle.unit_width,
+                    imperial_unit = this.Sunset_circle.imperial_unit,
+                    dot_image = this.Sunset_circle.dot_image,
+                    //dot_image_width = this.Sunset_circle.dot_image_width,
+                    error_image = this.Sunset_circle.error_image,
+                    //error_width = this.Sunset_circle.error_width,
+                    vertical_alignment = this.Sunset_circle.vertical_alignment,
+                    horizontal_alignment = this.Sunset_circle.horizontal_alignment,
+                    reverse_direction = this.Sunset_circle.reverse_direction,
+                    unit_in_alignment = this.Sunset_circle.unit_in_alignment,
+
+                    position = this.Sunset_circle.position,
+                    visible = this.Sunset_circle.visible,
+                    show_level = this.Sunset_circle.show_level,
+                    type = this.Sunset_circle.type,
                 };
             }
 
@@ -5303,7 +5563,11 @@ namespace Watch_Face_Editor
                 Images = Images,
                 Segments = Segments,
                 Sunrise = Sunrise,
+                Sunrise_rotation = Sunrise_rotation,
+                Sunrise_circle = Sunrise_circle,
                 Sunset = Sunset,
+                Sunset_rotation = Sunset_rotation,
+                Sunset_circle = Sunset_circle,
                 Sunset_Sunrise = Sunset_Sunrise,
                 Pointer = Pointer,
                 Icon = Icon,

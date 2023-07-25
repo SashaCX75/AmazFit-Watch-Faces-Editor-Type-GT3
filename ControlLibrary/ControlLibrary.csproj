@@ -930,6 +930,9 @@
     <EmbeddedResource Include="Elements\UCtrl_Image_Elm.es.resx">
       <DependentUpon>UCtrl_Image_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Image_Elm.fr.resx">
+      <DependentUpon>UCtrl_Image_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Image_Elm.it.resx">
       <DependentUpon>UCtrl_Image_Elm.cs</DependentUpon>
     </EmbeddedResource>
@@ -994,6 +997,9 @@
       <DependentUpon>UCtrl_RepeatingAlert_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_RepeatingAlert_Elm.es.resx">
+      <DependentUpon>UCtrl_RepeatingAlert_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_RepeatingAlert_Elm.fr.resx">
       <DependentUpon>UCtrl_RepeatingAlert_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_RepeatingAlert_Elm.it.resx">
@@ -1181,6 +1187,9 @@
       <DependentUpon>UCtrl_TopImage_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_TopImage_Elm.es.resx">
+      <DependentUpon>UCtrl_TopImage_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_TopImage_Elm.fr.resx">
       <DependentUpon>UCtrl_TopImage_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_TopImage_Elm.it.resx">
@@ -1795,6 +1804,9 @@
     <EmbeddedResource Include="UCtrl_RepeatingAlert_Opt.es.resx">
       <DependentUpon>UCtrl_RepeatingAlert_Opt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_RepeatingAlert_Opt.fr.resx">
+      <DependentUpon>UCtrl_RepeatingAlert_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_RepeatingAlert_Opt.it.resx">
       <DependentUpon>UCtrl_RepeatingAlert_Opt.cs</DependentUpon>
     </EmbeddedResource>
@@ -1952,6 +1964,9 @@
     <EmbeddedResource Include="UCtrl_Text_Circle_Opt.es.resx">
       <DependentUpon>UCtrl_Text_Circle_Opt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Text_Circle_Opt.fr.resx">
+      <DependentUpon>UCtrl_Text_Circle_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Text_Circle_Opt.it.resx">
       <DependentUpon>UCtrl_Text_Circle_Opt.cs</DependentUpon>
     </EmbeddedResource>
@@ -2002,6 +2017,9 @@
       <DependentUpon>UCtrl_Text_Rotate_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Text_Rotate_Opt.es.resx">
+      <DependentUpon>UCtrl_Text_Rotate_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Text_Rotate_Opt.fr.resx">
       <DependentUpon>UCtrl_Text_Rotate_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Text_Rotate_Opt.it.resx">

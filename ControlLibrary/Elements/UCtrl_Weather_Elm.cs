@@ -17,8 +17,10 @@ namespace ControlLibrary
         bool highlight_number = false;
         bool highlight_number_min = false;
         bool highlight_number_max = false;
-        //bool highlight_text_rotation = false;
-        //bool highlight_text_circle = false;
+        bool highlight_text_min_rotation = false;
+        bool highlight_text_min_circle = false;
+        bool highlight_text_max_rotation = false;
+        bool highlight_text_max_circle = false;
         //bool highlight_linear_scale = false;
         bool highlight_city_name = false;
         bool highlight_icon = false;
@@ -97,8 +99,10 @@ namespace ControlLibrary
             highlight_number = false;
             highlight_number_min = false;
             highlight_number_max = false;
-            //highlight_text_rotation = false;
-            //highlight_text_circle = false;
+            highlight_text_min_rotation = false;
+            highlight_text_min_circle = false;
+            highlight_text_max_rotation = false;
+            highlight_text_max_circle = false;
             //highlight_linear_scale = false;
             highlight_city_name = false;
             highlight_icon = false;
@@ -147,6 +151,32 @@ namespace ControlLibrary
                 button_Number_Min.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
+            if (highlight_text_min_rotation)
+            {
+                panel_Text_Min_rotation.BackColor = SystemColors.ActiveCaption;
+                button_Text_Min_rotation.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Text_Min_rotation.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Text_Min_rotation.BackColor = SystemColors.Control;
+                button_Text_Min_rotation.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Text_Min_rotation.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_text_min_circle)
+            {
+                panel_Text_Min_circle.BackColor = SystemColors.ActiveCaption;
+                button_Text_Min_circle.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Text_Min_circle.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Text_Min_circle.BackColor = SystemColors.Control;
+                button_Text_Min_circle.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Text_Min_circle.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
             if (highlight_number_max)
             {
                 panel_Number_Max.BackColor = SystemColors.ActiveCaption;
@@ -158,6 +188,32 @@ namespace ControlLibrary
                 panel_Number_Max.BackColor = SystemColors.Control;
                 button_Number_Max.FlatAppearance.MouseOverBackColor = SystemColors.Control;
                 button_Number_Max.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_text_max_rotation)
+            {
+                panel_Text_Max_rotation.BackColor = SystemColors.ActiveCaption;
+                button_Text_Max_rotation.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Text_Max_rotation.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Text_Max_rotation.BackColor = SystemColors.Control;
+                button_Text_Max_rotation.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Text_Max_rotation.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_text_max_circle)
+            {
+                panel_Text_Max_circle.BackColor = SystemColors.ActiveCaption;
+                button_Text_Max_circle.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Text_Max_circle.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Text_Max_circle.BackColor = SystemColors.Control;
+                button_Text_Max_circle.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Text_Max_circle.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
             /*if (highlight_text_rotation)
@@ -234,8 +290,10 @@ namespace ControlLibrary
             highlight_number = false;
             highlight_number_min = false;
             highlight_number_max = false;
-            //highlight_text_rotation = false;
-            //highlight_text_circle = false;
+            highlight_text_min_rotation = false;
+            highlight_text_min_circle = false;
+            highlight_text_max_rotation = false;
+            highlight_text_max_circle = false;
             //highlight_linear_scale = false;
             highlight_city_name = false;
             highlight_icon = false;
@@ -257,8 +315,10 @@ namespace ControlLibrary
             highlight_number = true;
             highlight_number_min = false;
             highlight_number_max = false;
-            //highlight_text_rotation = false;
-            //highlight_text_circle = false;
+            highlight_text_min_rotation = false;
+            highlight_text_min_circle = false;
+            highlight_text_max_rotation = false;
+            highlight_text_max_circle = false;
             //highlight_linear_scale = false;
             highlight_city_name = false;
             highlight_icon = false;
@@ -280,8 +340,60 @@ namespace ControlLibrary
             highlight_number = false;
             highlight_number_min = true;
             highlight_number_max = false;
-            //highlight_text_rotation = false;
-            //highlight_text_circle = false;
+            highlight_text_min_rotation = false;
+            highlight_text_min_circle = false;
+            highlight_text_max_rotation = false;
+            highlight_text_max_circle = false;
+            //highlight_linear_scale = false;
+            highlight_city_name = false;
+            highlight_icon = false;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Text_Min_rotation_Click(object sender, EventArgs e)
+        {
+            selectedElement = "Text_Min_rotation";
+
+            highlight_images = false;
+            highlight_number = false;
+            highlight_number_min = false;
+            highlight_number_max = false;
+            highlight_text_min_rotation = true;
+            highlight_text_min_circle = false;
+            highlight_text_max_rotation = false;
+            highlight_text_max_circle = false;
+            //highlight_linear_scale = false;
+            highlight_city_name = false;
+            highlight_icon = false;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Text_Min_circle_Click(object sender, EventArgs e)
+        {
+            selectedElement = "Text_Min_circle";
+
+            highlight_images = false;
+            highlight_number = false;
+            highlight_number_min = false;
+            highlight_number_max = false;
+            highlight_text_min_rotation = false;
+            highlight_text_min_circle = true;
+            highlight_text_max_rotation = false;
+            highlight_text_max_circle = false;
             //highlight_linear_scale = false;
             highlight_city_name = false;
             highlight_icon = false;
@@ -303,8 +415,60 @@ namespace ControlLibrary
             highlight_number = false;
             highlight_number_min = false;
             highlight_number_max = true;
-            //highlight_text_rotation = false;
-            //highlight_text_circle = false;
+            highlight_text_min_rotation = false;
+            highlight_text_min_circle = false;
+            highlight_text_max_rotation = false;
+            highlight_text_max_circle = false;
+            //highlight_linear_scale = false;
+            highlight_city_name = false;
+            highlight_icon = false;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Text_Max_rotation_Click(object sender, EventArgs e)
+        {
+            selectedElement = "Text_Max_rotation";
+
+            highlight_images = false;
+            highlight_number = false;
+            highlight_number_min = false;
+            highlight_number_max = false;
+            highlight_text_min_rotation = false;
+            highlight_text_min_circle = false;
+            highlight_text_max_rotation = true;
+            highlight_text_max_circle = false;
+            //highlight_linear_scale = false;
+            highlight_city_name = false;
+            highlight_icon = false;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Text_Max_circle_Click(object sender, EventArgs e)
+        {
+            selectedElement = "Text_Max_circle";
+
+            highlight_images = false;
+            highlight_number = false;
+            highlight_number_min = false;
+            highlight_number_max = false;
+            highlight_text_min_rotation = false;
+            highlight_text_min_circle = false;
+            highlight_text_max_rotation = false;
+            highlight_text_max_circle = true;
             //highlight_linear_scale = false;
             highlight_city_name = false;
             highlight_icon = false;
@@ -394,8 +558,10 @@ namespace ControlLibrary
             highlight_number = false;
             highlight_number_min = false;
             highlight_number_max = false;
-            //highlight_text_rotation = false;
-            //highlight_text_circle = false;
+            highlight_text_min_rotation = false;
+            highlight_text_min_circle = false;
+            highlight_text_max_rotation = false;
+            highlight_text_max_circle = false;
             //highlight_linear_scale = false;
             highlight_city_name = true;
             highlight_icon = false;
@@ -417,8 +583,10 @@ namespace ControlLibrary
             highlight_number = false;
             highlight_number_min = false;
             highlight_number_max = false;
-            //highlight_text_rotation = false;
-            //highlight_text_circle = false;
+            highlight_text_min_rotation = false;
+            highlight_text_min_circle = false;
+            highlight_text_max_rotation = false;
+            highlight_text_max_circle = false;
             //highlight_linear_scale = false;
             highlight_city_name = false;
             highlight_icon = true;
@@ -562,9 +730,9 @@ namespace ControlLibrary
 
             pictureBox_Del.Location = new Point(button_ElementName.Width - pictureBox_Del.Width - 4, 2);
 
-            if (tableLayoutPanel1.Height > 190)
+            if (tableLayoutPanel1.Height > 315)
             {
-                float currentDPI = tableLayoutPanel1.Height / 151f;
+                float currentDPI = tableLayoutPanel1.Height / 251f;
                 button_ElementName.Image = (Image)(new Bitmap(button_ElementName.Image,
                     new Size((int)(16 * currentDPI), (int)(16 * currentDPI))));
 
@@ -670,18 +838,21 @@ namespace ControlLibrary
                 case "Number_Min":
                     checkBox_Number_Min.Checked = status;
                     break;
+                case "Text_Min_rotation":
+                    checkBox_Text_Min_rotation.Checked = status;
+                    break;
+                case "Text_Min_circle":
+                    checkBox_Text_Min_circle.Checked = status;
+                    break;
                 case "Number_Max":
                     checkBox_Number_Max.Checked = status;
                     break;
-                //case "Pointer":
-                //    checkBox_Pointer.Checked = status;
-                //    break;
-                //case "Circle_Scale":
-                //    checkBox_Circle_Scale.Checked = status;
-                //    break;
-                //case "Linear_Scale":
-                //    checkBox_Linear_Scale.Checked = status;
-                //    break;
+                case "Text_Max_rotation":
+                    checkBox_Text_Max_rotation.Checked = status;
+                    break;
+                case "Text_Max_circle":
+                    checkBox_Text_Max_circle.Checked = status;
+                    break;
                 case "CityName":
                     checkBox_Text_CityName.Checked = status;
                     break;
@@ -713,18 +884,21 @@ namespace ControlLibrary
                         case "Number_Min":
                             panel = panel_Number_Min;
                             break;
+                        case "Text_Min_rotation":
+                            panel = panel_Text_Min_rotation;
+                            break;
+                        case "Text_Min_circle":
+                            panel = panel_Text_Min_circle;
+                            break;
                         case "Number_Max":
                             panel = panel_Number_Max;
                             break;
-                        //case "Pointer":
-                        //    panel = panel_Pointer;
-                        //    break;
-                        //case "Circle_Scale":
-                        //    panel = panel_Circle_Scale;
-                        //    break;
-                        //case "Linear_Scale":
-                        //    panel = panel_Linear_Scale;
-                        //    break;
+                        case "Text_Max_rotation":
+                            panel = panel_Text_Max_rotation;
+                            break;
+                        case "Text_Max_circle":
+                            panel = panel_Text_Max_circle;
+                            break;
                         case "CityName":
                             panel = panel_Text_CityName;
                             break;
@@ -782,18 +956,21 @@ namespace ControlLibrary
                     case "panel_Number_Min":
                         elementOptions.Add("Number_Min", count - i);
                         break;
+                    case "panel_Text_Min_rotation":
+                        elementOptions.Add("Text_Min_rotation", count - i);
+                        break;
+                    case "panel_Text_Min_circle":
+                        elementOptions.Add("Text_Min_circle", count - i);
+                        break;
                     case "panel_Number_Max":
                         elementOptions.Add("Number_Max", count - i);
                         break;
-                    //case "panel_Pointer":
-                    //    elementOptions.Add("Pointer", count - i);
-                    //    break;
-                    //case "panel_Circle_Scale":
-                    //    elementOptions.Add("Circle_Scale", count - i);
-                    //    break;
-                    //case "panel_Linear_Scale":
-                    //    elementOptions.Add("Linear_Scale", count - i);
-                    //    break;
+                    case "panel_Text_Max_rotation":
+                        elementOptions.Add("Text_Max_rotation", count - i);
+                        break;
+                    case "panel_Text_Max_circle":
+                        elementOptions.Add("Text_Max_circle", count - i);
+                        break;
                     case "panel_Text_CityName":
                         elementOptions.Add("CityName", count - i);
                         break;
@@ -812,22 +989,24 @@ namespace ControlLibrary
             Dictionary<int, string> elementOptions = new Dictionary<int, string>();
             elementOptions.Add(1, "Icon");
             elementOptions.Add(2, "CityName");
-            //elementOptions.Add(3, "Linear_Scale");
-            //elementOptions.Add(4, "Circle_Scale");
-            //elementOptions.Add(5, "Pointer");
-            elementOptions.Add(3, "Number_Max");
-            elementOptions.Add(4, "Number_Min");
-            elementOptions.Add(5, "Number");
-            elementOptions.Add(6, "Images");
+            elementOptions.Add(3, "Text_Max_circle");
+            elementOptions.Add(4, "Text_Max_rotation");
+            elementOptions.Add(5, "Number_Max");
+            elementOptions.Add(6, "Text_Min_circle");
+            elementOptions.Add(7, "Text_Min_rotation");
+            elementOptions.Add(8, "Number_Min");
+            elementOptions.Add(9, "Number");
+            elementOptions.Add(10, "Images");
             SetOptionsPosition(elementOptions);
 
             checkBox_Images.Checked = false;
             checkBox_Number.Checked = false;
             checkBox_Number_Min.Checked = false;
+            checkBox_Text_Min_rotation.Checked = false;
+            checkBox_Text_Min_circle.Checked = false;
             checkBox_Number_Max.Checked = false;
-            //checkBox_Pointer.Checked = false;
-            //checkBox_Circle_Scale.Checked = false;
-            //checkBox_Linear_Scale.Checked = false;
+            checkBox_Text_Max_rotation.Checked = false;
+            checkBox_Text_Max_circle.Checked = false;
             checkBox_Text_CityName.Checked = false;
             checkBox_Icon.Checked = false;
 

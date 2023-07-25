@@ -317,4 +317,10 @@
   <data name="label5.Text" xml:space="preserve">
     <value>* La taille et la position du texte peuvent différer de l'image sur la montre. Vérifiez la position du texte sur l'appareil réel.</value>
   </data>
+  <data name="button_AddFont.Text" xml:space="preserve">
+    <value>Ajouter</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Police</value>
+  </data>
 </root>

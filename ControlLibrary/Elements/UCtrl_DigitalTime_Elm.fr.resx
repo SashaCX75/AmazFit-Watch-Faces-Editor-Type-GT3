@@ -129,4 +129,22 @@
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Horloge numérique</value>
   </data>
+  <data name="button_Hours_circle.Text" xml:space="preserve">
+    <value>Heures en cercle</value>
+  </data>
+  <data name="button_Hours_rotation.Text" xml:space="preserve">
+    <value>Heures en angle</value>
+  </data>
+  <data name="button_Minutes_circle.Text" xml:space="preserve">
+    <value>Minutes en cercle</value>
+  </data>
+  <data name="button_Minutes_rotation.Text" xml:space="preserve">
+    <value>Minutes en angle</value>
+  </data>
+  <data name="button_Seconds_circle.Text" xml:space="preserve">
+    <value>Secondes dans un cercle</value>
+  </data>
+  <data name="button_Seconds_rotation.Text" xml:space="preserve">
+    <value>Secondes en angle</value>
+  </data>
 </root>

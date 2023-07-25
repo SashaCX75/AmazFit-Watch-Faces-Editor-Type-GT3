@@ -255,6 +255,12 @@
   <data name="Message_LoadPreviewStates_Text" xml:space="preserve">
     <value>Télécharger un fichier existant avec un ensemble de paramètres d'aperçu PreviewStates.json ?</value>
   </data>
+  <data name="Message_ModelConfig_Error" xml:space="preserve">
+    <value>Configuration du modèle introuvable : </value>
+  </data>
+  <data name="Message_ModelConfig_ReadError" xml:space="preserve">
+    <value>Erreur lors de la lecture de la configuration du modèle</value>
+  </data>
   <data name="Message_Restart_Caption" xml:space="preserve">
     <value>Redémarrer</value>
   </data>

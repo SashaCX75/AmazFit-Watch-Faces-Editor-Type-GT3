@@ -306,4 +306,13 @@
     <value>* Avec l'inversion activée, l'augmentation 
 des lectures diminuera la quantité de progrès.</value>
   </data>
+  <data name="comboBox_scaleLinear_lineCap.Items" xml:space="preserve">
+    <value>Rond</value>
+  </data>
+  <data name="comboBox_scaleLinear_lineCap.Items1" xml:space="preserve">
+    <value>Plat</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Fin de ligne</value>
+  </data>
 </root>

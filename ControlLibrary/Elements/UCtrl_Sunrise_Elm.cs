@@ -19,6 +19,10 @@ namespace ControlLibrary
         bool highlight_sunset = false;
         bool highlight_sunrise = false;
         bool highlight_sunset_sunrise = false;
+        bool highlight_sunset_rotation = false;
+        bool highlight_sunset_circle = false;
+        bool highlight_sunrise_rotation = false;
+        bool highlight_sunrise_circle = false;
         bool highlight_icon = false;
 
         bool visibility_elements = false; // развернут список с элементами
@@ -97,6 +101,10 @@ namespace ControlLibrary
             highlight_sunset = false;
             highlight_sunrise = false;
             highlight_sunset_sunrise = false;
+            highlight_sunset_rotation = false;
+            highlight_sunset_circle = false;
+            highlight_sunrise_rotation = false;
+            highlight_sunrise_circle = false;
             highlight_icon = false;
 
             SelectElement();
@@ -182,6 +190,58 @@ namespace ControlLibrary
                 button_Sunset_Sunrise.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
+            if (highlight_sunset_rotation)
+            {
+                panel_Sunset_rotation.BackColor = SystemColors.ActiveCaption;
+                button_Sunset_rotation.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Sunset_rotation.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Sunset_rotation.BackColor = SystemColors.Control;
+                button_Sunset_rotation.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Sunset_rotation.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_sunrise_rotation)
+            {
+                panel_Sunrise_rotation.BackColor = SystemColors.ActiveCaption;
+                button_Sunrise_rotation.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Sunrise_rotation.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Sunrise_rotation.BackColor = SystemColors.Control;
+                button_Sunrise_rotation.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Sunrise_rotation.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_sunset_circle)
+            {
+                panel_Sunset_circle.BackColor = SystemColors.ActiveCaption;
+                button_Sunset_circle.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Sunset_circle.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Sunset_circle.BackColor = SystemColors.Control;
+                button_Sunset_circle.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Sunset_circle.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_sunrise_circle)
+            {
+                panel_Sunrise_circle.BackColor = SystemColors.ActiveCaption;
+                button_Sunrise_circle.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Sunrise_circle.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Sunrise_circle.BackColor = SystemColors.Control;
+                button_Sunrise_circle.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Sunrise_circle.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
             if (highlight_icon)
             {
                 panel_Icon.BackColor = SystemColors.ActiveCaption;
@@ -206,6 +266,10 @@ namespace ControlLibrary
             highlight_sunset = false;
             highlight_sunrise = false;
             highlight_sunset_sunrise = false;
+            highlight_sunset_rotation = false;
+            highlight_sunset_circle = false;
+            highlight_sunrise_rotation = false;
+            highlight_sunrise_circle = false;
             highlight_icon = false;
 
             SelectElement();
@@ -227,6 +291,10 @@ namespace ControlLibrary
             highlight_sunset = false;
             highlight_sunrise = false;
             highlight_sunset_sunrise = false;
+            highlight_sunset_rotation = false;
+            highlight_sunset_circle = false;
+            highlight_sunrise_rotation = false;
+            highlight_sunrise_circle = false;
             highlight_icon = false;
 
             SelectElement();
@@ -248,6 +316,10 @@ namespace ControlLibrary
             highlight_sunset = false;
             highlight_sunrise = false;
             highlight_sunset_sunrise = false;
+            highlight_sunset_rotation = false;
+            highlight_sunset_circle = false;
+            highlight_sunrise_rotation = false;
+            highlight_sunrise_circle = false;
             highlight_icon = false;
 
             SelectElement();
@@ -269,6 +341,10 @@ namespace ControlLibrary
             highlight_sunset = true;
             highlight_sunrise = false;
             highlight_sunset_sunrise = false;
+            highlight_sunset_rotation = false;
+            highlight_sunset_circle = false;
+            highlight_sunrise_rotation = false;
+            highlight_sunrise_circle = false;
             highlight_icon = false;
 
             SelectElement();
@@ -290,6 +366,10 @@ namespace ControlLibrary
             highlight_sunset = false;
             highlight_sunrise = true;
             highlight_sunset_sunrise = false;
+            highlight_sunset_rotation = false;
+            highlight_sunset_circle = false;
+            highlight_sunrise_rotation = false;
+            highlight_sunrise_circle = false;
             highlight_icon = false;
 
             SelectElement();
@@ -311,6 +391,110 @@ namespace ControlLibrary
             highlight_sunset = false;
             highlight_sunrise = false;
             highlight_sunset_sunrise = true;
+            highlight_sunset_rotation = false;
+            highlight_sunset_circle = false;
+            highlight_sunrise_rotation = false;
+            highlight_sunrise_circle = false;
+            highlight_icon = false;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Sunset_rotation_Click(object sender, EventArgs e)
+        {
+            selectedElement = "Sunset_rotation";
+
+            highlight_images = false;
+            highlight_segments = false;
+            highlight_pointer = false;
+            highlight_sunset = false;
+            highlight_sunrise = false;
+            highlight_sunset_sunrise = false;
+            highlight_sunset_rotation = true;
+            highlight_sunset_circle = false;
+            highlight_sunrise_rotation = false;
+            highlight_sunrise_circle = false;
+            highlight_icon = false;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Sunset_circle_Click(object sender, EventArgs e)
+        {
+            selectedElement = "Sunset_circle";
+
+            highlight_images = false;
+            highlight_segments = false;
+            highlight_pointer = false;
+            highlight_sunset = false;
+            highlight_sunrise = false;
+            highlight_sunset_sunrise = false;
+            highlight_sunset_rotation = false;
+            highlight_sunset_circle = true;
+            highlight_sunrise_rotation = false;
+            highlight_sunrise_circle = false;
+            highlight_icon = false;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Sunrise_rotation_Click(object sender, EventArgs e)
+        {
+            selectedElement = "Sunrise_rotation";
+
+            highlight_images = false;
+            highlight_segments = false;
+            highlight_pointer = false;
+            highlight_sunset = false;
+            highlight_sunrise = false;
+            highlight_sunset_sunrise = false;
+            highlight_sunset_rotation = false;
+            highlight_sunset_circle = false;
+            highlight_sunrise_rotation = true;
+            highlight_sunrise_circle = false;
+            highlight_icon = false;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Sunrise_circle_Click(object sender, EventArgs e)
+        {
+            selectedElement = "Sunrise_circle";
+
+            highlight_images = false;
+            highlight_segments = false;
+            highlight_pointer = false;
+            highlight_sunset = false;
+            highlight_sunrise = false;
+            highlight_sunset_sunrise = false;
+            highlight_sunset_rotation = false;
+            highlight_sunset_circle = false;
+            highlight_sunrise_rotation = false;
+            highlight_sunrise_circle = true;
             highlight_icon = false;
 
             SelectElement();
@@ -332,6 +516,10 @@ namespace ControlLibrary
             highlight_sunset = false;
             highlight_sunrise = false;
             highlight_sunset_sunrise = false;
+            highlight_sunset_rotation = false;
+            highlight_sunset_circle = false;
+            highlight_sunrise_rotation = false;
+            highlight_sunrise_circle = false;
             highlight_icon = true;
 
             SelectElement();
@@ -473,9 +661,9 @@ namespace ControlLibrary
 
             pictureBox_Del.Location = new Point(button_ElementName.Width - pictureBox_Del.Width - 4, 2);
 
-            if (tableLayoutPanel1.Height > 190)
+            if (tableLayoutPanel1.Height > 350)
             {
-                float currentDPI = tableLayoutPanel1.Height / 151f;
+                float currentDPI = tableLayoutPanel1.Height / 276f;
                 button_ElementName.Image = (Image)(new Bitmap(button_ElementName.Image,
                     new Size((int)(16 * currentDPI), (int)(16 * currentDPI))));
 
@@ -590,6 +778,18 @@ namespace ControlLibrary
                 case "Sunset_Sunrise":
                     checkBox_Sunset_Sunrise.Checked = status;
                     break;
+                case "Sunset_rotation":
+                    checkBox_Sunset_rotation.Checked = status;
+                    break;
+                case "Sunrise_rotation":
+                    checkBox_Sunrise_rotation.Checked = status;
+                    break;
+                case "Sunset_circle":
+                    checkBox_Sunset_circle.Checked = status;
+                    break;
+                case "Sunrise_circle":
+                    checkBox_Sunrise_circle.Checked = status;
+                    break;
                 case "Icon":
                     checkBox_Icon.Checked = status;
                     break;
@@ -626,6 +826,18 @@ namespace ControlLibrary
                             break;
                         case "Sunset_Sunrise":
                             panel = panel_Sunset_Sunrise;
+                            break;
+                        case "Sunset_rotation":
+                            panel = panel_Sunset_rotation;
+                            break;
+                        case "Sunrise_rotation":
+                            panel = panel_Sunrise_rotation;
+                            break;
+                        case "Sunset_circle":
+                            panel = panel_Sunset_circle;
+                            break;
+                        case "Sunrise_circle":
+                            panel = panel_Sunrise_circle;
                             break;
                         case "Icon":
                             panel = panel_Icon;
@@ -690,6 +902,18 @@ namespace ControlLibrary
                     case "panel_Sunset_Sunrise":
                         elementOptions.Add("Sunset_Sunrise", count - i);
                         break;
+                    case "panel_Sunset_rotation":
+                        elementOptions.Add("Sunset_rotation", count - i);
+                        break;
+                    case "panel_Sunrise_rotation":
+                        elementOptions.Add("Sunrise_rotation", count - i);
+                        break;
+                    case "panel_Sunset_circle":
+                        elementOptions.Add("Sunset_circle", count - i);
+                        break;
+                    case "panel_Sunrise_circle":
+                        elementOptions.Add("Sunrise_circle", count - i);
+                        break;
                     case "panel_Icon":
                         elementOptions.Add("Icon", count - i);
                         break;
@@ -705,18 +929,26 @@ namespace ControlLibrary
             Dictionary<int, string> elementOptions = new Dictionary<int, string>();
             elementOptions.Add(1, "Icon");
             elementOptions.Add(2, "Sunset_Sunrise");
-            elementOptions.Add(3, "Sunrise");
-            elementOptions.Add(4, "Sunset");
-            elementOptions.Add(5, "Pointer");
-            elementOptions.Add(6, "Segments");
-            elementOptions.Add(7, "Images");
+            elementOptions.Add(3, "Sunrise_circle");
+            elementOptions.Add(4, "Sunrise_rotation");
+            elementOptions.Add(5, "Sunrise");
+            elementOptions.Add(6, "Sunset_circle");
+            elementOptions.Add(7, "Sunset_rotation");
+            elementOptions.Add(8, "Sunset");
+            elementOptions.Add(9, "Pointer");
+            elementOptions.Add(10, "Segments");
+            elementOptions.Add(11, "Images");
             SetOptionsPosition(elementOptions);
 
             checkBox_Images.Checked = false;
             checkBox_Segments.Checked = false;
             checkBox_Pointer.Checked = false;
             checkBox_Sunset.Checked = false;
+            checkBox_Sunset_rotation.Checked = false;
+            checkBox_Sunset_circle.Checked = false;
             checkBox_Sunrise.Checked = false;
+            checkBox_Sunset_rotation.Checked = false;
+            checkBox_Sunset_circle.Checked = false;
             checkBox_Sunset_Sunrise.Checked = false;
             checkBox_Icon.Checked = false;
 
