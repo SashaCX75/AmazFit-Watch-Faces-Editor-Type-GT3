@@ -1,11 +1,11 @@
 {
   "GTR 3 Pro": {
     "name": "Amazfit GTR 3 Pro",
-    "int_id": "GTR3_Pro",
     "designWidth": 480,
     "deviceSource_ids": [
       229,
       230,
+      242,
       6095106
     ],
     "background": {
@@ -41,7 +41,6 @@
   },
   "GTR 3": {
     "name": "Amazfit GTR 3",
-    "int_id": "GTR3",
     "designWidth": 454,
     "deviceSource_ids": [
       226,
@@ -80,7 +79,6 @@
   },
   "T-Rex 2": {
     "name": "Amazfit T-Rex 2",
-    "int_id": "T_Rex_2",
     "designWidth": 454,
     "deviceSource_ids": [
       418,
@@ -119,7 +117,6 @@
   },
   "Falcon": {
     "name": "Amazfit Falcon",
-    "int_id": "",
     "designWidth": 416,
     "deviceSource_ids": [
       414,
@@ -158,7 +155,6 @@
   },
   "GTS 3": {
     "name": "Amazfit GTS 3",
-    "int_id": "GTS3",
     "designWidth": 390,
     "deviceSource_ids": [
       224,
@@ -197,7 +193,6 @@
   },
   "GTS 4 mini": {
     "name": "GTS 4 mini",
-    "int_id": "GTS4_mini",
     "designWidth": 336,
     "deviceSource_ids": [
       246,
@@ -236,7 +231,6 @@
   },
   "Amazfit Band 7": {
     "name": "Amazfit Band 7",
-    "int_id": "Amazfit_Band_7",
     "designWidth": 194,
     "deviceSource_ids": [
       252,
@@ -274,9 +268,46 @@
     "fixSize": false,
     "versionOS": 1
   },
+  "Cheetah Pro": {
+    "name": "Amazfit Cheetah Pro",
+    "designWidth": 480,
+    "deviceSource_ids": [
+      8126720,
+      8126721
+    ],
+    "background": {
+      "w": 480,
+      "h": 480
+    },
+    "scaling_0_5": {
+      "w": 230,
+      "h": 230
+    },
+    "scaling_1_0": {
+      "w": 482,
+      "h": 482
+    },
+    "scaling_1_5": {
+      "w": 722,
+      "h": 722
+    },
+    "scaling_2_0": {
+      "w": 961,
+      "h": 961
+    },
+    "scaling_2_5": {
+      "w": 1201,
+      "h": 1201
+    },
+    "maskImage": "mask_gtr_3_pro.png",
+    "watchSkin": "WatchSkin_Cheetah.json",
+    "previewHeight": 324,
+    "colorScheme": 1,
+    "fixSize": true,
+    "versionOS": 2.1
+  },
   "GTR 4": {
     "name": "Amazfit GTR 4",
-    "int_id": "GTR4",
     "designWidth": 466,
     "deviceSource_ids": [
       7930112,
@@ -315,48 +346,46 @@
     "fixSize": true,
     "versionOS": 2.1
   },
-  "GTR mini": {
-    "name": "Amazfit GTR Mini",
-    "int_id": "",
-    "designWidth": 416,
+  "Cheetah": {
+    "name": "Amazfit Cheetah",
+    "designWidth": 454,
     "deviceSource_ids": [
-      250,
-      251
+      8192256,
+      8192257
     ],
     "background": {
-      "w": 416,
-      "h": 416
+      "w": 454,
+      "h": 454
     },
     "scaling_0_5": {
-      "w": 211,
-      "h": 211
+      "w": 230,
+      "h": 230
     },
     "scaling_1_0": {
-      "w": 418,
-      "h": 418
+      "w": 456,
+      "h": 456
     },
     "scaling_1_5": {
-      "w": 626,
-      "h": 626
+      "w": 683,
+      "h": 683
     },
     "scaling_2_0": {
-      "w": 833,
-      "h": 833
+      "w": 909,
+      "h": 909
     },
     "scaling_2_5": {
-      "w": 1041,
-      "h": 1041
+      "w": 1136,
+      "h": 1136
     },
-    "maskImage": "mask_falcon.png",
-    "watchSkin": "",
-    "previewHeight": 280,
-    "colorScheme": 3,
-    "fixSize": false,
-    "versionOS": 2
+    "maskImage": "mask_gtr_3.png",
+    "watchSkin": "WatchSkin_Cheetah.json",
+    "previewHeight": 306,
+    "colorScheme": 1,
+    "fixSize": true,
+    "versionOS": 2.1
   },
   "T-Rex Ultra": {
     "name": "Amazfit T-Rex Ultra",
-    "int_id": "T_Rex_Ultra",
     "designWidth": 454,
     "deviceSource_ids": [
       6553856,
@@ -393,9 +422,46 @@
     "fixSize": true,
     "versionOS": 2.1
   },
+  "GTR mini": {
+    "name": "Amazfit GTR Mini",
+    "designWidth": 416,
+    "deviceSource_ids": [
+      250,
+      251
+    ],
+    "background": {
+      "w": 416,
+      "h": 416
+    },
+    "scaling_0_5": {
+      "w": 211,
+      "h": 211
+    },
+    "scaling_1_0": {
+      "w": 418,
+      "h": 418
+    },
+    "scaling_1_5": {
+      "w": 626,
+      "h": 626
+    },
+    "scaling_2_0": {
+      "w": 833,
+      "h": 833
+    },
+    "scaling_2_5": {
+      "w": 1041,
+      "h": 1041
+    },
+    "maskImage": "mask_falcon.png",
+    "watchSkin": "",
+    "previewHeight": 280,
+    "colorScheme": 3,
+    "fixSize": false,
+    "versionOS": 2
+  },
   "GTS 4": {
     "name": "Amazfit GTS 4",
-    "int_id": "",
     "designWidth": 390,
     "deviceSource_ids": [
       7995648,

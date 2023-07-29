@@ -2200,6 +2200,7 @@ namespace Watch_Face_Editor
                     img_number = activityElementSpO2.Number;
                     text_rotation = activityElementSpO2.Text_rotation;
                     text_circle = activityElementSpO2.Text_circle;
+                    icon = activityElementSpO2.Icon;
 
                     elementValue = 97;
                     value_lenght = 3;
@@ -5040,7 +5041,7 @@ namespace Watch_Face_Editor
             int result = 0;
             //if (ProgramSettings.Watch_Model != "GTR 4" && ProgramSettings.Watch_Model != "GTS 4" && 
             //    ProgramSettings.Watch_Model != "GTR mini" && ProgramSettings.Watch_Model != "T-Rex Ultra") angle = 0;
-            if (SelectedModel.versionOS >= 2) angle = 0;
+            if (SelectedModel.versionOS < 2) angle = 0;
             Logger.WriteLine("* Draw_dagital_text");
             var src = new Bitmap(1, 1);
             int _number;
@@ -5257,7 +5258,7 @@ namespace Watch_Face_Editor
             int result = 0;
             //if (ProgramSettings.Watch_Model != "GTR 4" && ProgramSettings.Watch_Model != "GTS 4" &&
             //    ProgramSettings.Watch_Model != "GTR mini" && ProgramSettings.Watch_Model != "T-Rex Ultra") angle = 0;
-            if (SelectedModel.versionOS >= 2) angle = 0;
+            if (SelectedModel.versionOS < 2) angle = 0;
             Logger.WriteLine("* Draw_weather_text");
             var src = new Bitmap(1, 1);
             int _number;
@@ -6419,7 +6420,7 @@ namespace Watch_Face_Editor
             Logger.WriteLine("* Draw_dagital_text");
             //if (ProgramSettings.Watch_Model != "GTR 4" && ProgramSettings.Watch_Model != "GTS 4" &&
             //    ProgramSettings.Watch_Model != "GTR mini" && ProgramSettings.Watch_Model != "T-Rex Ultra") angle = 0;
-            if (SelectedModel.versionOS >= 2) angle = 0;
+            if (SelectedModel.versionOS < 2) angle = 0;
             value = Math.Round(value, decCount, MidpointRounding.AwayFromZero);
             //var Digit = new Bitmap(ListImagesFullName[image_index]);
             //var Delimit = new Bitmap(1, 1);
@@ -7287,7 +7288,9 @@ namespace Watch_Face_Editor
             string Watch_Skin_file_name = SelectedModel.watchSkin;
             //string Watch_Skin_file_name = textBox_WatchSkin_Path.Text;
             if (!File.Exists(Watch_Skin_file_name))
-                Watch_Skin_file_name = Application.StartupPath + Watch_Skin_file_name;
+                Watch_Skin_file_name = Path.Combine(Application.StartupPath, "Skin", Watch_Skin_file_name);
+            if (!File.Exists(Watch_Skin_file_name))
+                Watch_Skin_file_name = Path.Combine(Application.StartupPath, Watch_Skin_file_name);
 
             WatchSkin Watch_Skin = new WatchSkin();
             if (File.Exists(Watch_Skin_file_name))
