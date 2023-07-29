@@ -947,8 +947,8 @@ namespace ControlLibrary
             checkBox_Sunset_rotation.Checked = false;
             checkBox_Sunset_circle.Checked = false;
             checkBox_Sunrise.Checked = false;
-            checkBox_Sunset_rotation.Checked = false;
-            checkBox_Sunset_circle.Checked = false;
+            checkBox_Sunrise_rotation.Checked = false;
+            checkBox_Sunrise_circle.Checked = false;
             checkBox_Sunset_Sunrise.Checked = false;
             checkBox_Icon.Checked = false;
 

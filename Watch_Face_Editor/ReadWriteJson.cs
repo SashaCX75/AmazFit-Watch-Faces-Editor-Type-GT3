@@ -6254,6 +6254,16 @@ namespace Watch_Face_Editor
                     string numberMinOptions_separator = "";
                     string numberMaxOptions_separator = "";
 
+                    int numberMinRotatePosition = 99;
+                    int numberMinCirclePosition = 99;
+                    string numberMinRotateOptions = "";
+                    string numberMinCircleOptions = "";
+
+                    int numberMaxRotatePosition = 99;
+                    int numberMaxCirclePosition = 99;
+                    string numberMaxRotateOptions = "";
+                    string numberMaxCircleOptions = "";
+
                     if (!Weather.visible) return;
                     if (Weather.Images != null && Weather.Images.visible)
                     {
@@ -6269,6 +6279,7 @@ namespace Watch_Face_Editor
 
                         numberOptions_separator = IMG_Separator_Options(img_number, show_level);
                     }
+
                     if (Weather.Number_Min != null && Weather.Number_Min.visible)
                     {
                         numberMinPosition = Weather.Number_Min.position;
@@ -6277,6 +6288,21 @@ namespace Watch_Face_Editor
 
                         numberMinOptions_separator = IMG_Separator_Options(img_number, show_level);
                     }
+                    if (Weather.Text_Min_rotation != null && Weather.Text_Min_rotation.visible)
+                    {
+                        numberMinRotatePosition = Weather.Text_Min_rotation.position;
+                        text_rotate = Weather.Text_Min_rotation;
+
+                        numberMinRotateOptions = Text_Rotate_Options(text_rotate, "WEATHER_LOW", show_level, true);
+                    }
+                    if (Weather.Text_Min_circle != null && Weather.Text_Min_circle.visible)
+                    {
+                        numberMinCirclePosition = Weather.Text_Min_circle.position;
+                        text_circle = Weather.Text_Min_circle;
+
+                        numberMinCircleOptions = Text_Circle_Options(text_circle, "WEATHER_LOW", show_level, true);
+                    }
+
                     if (Weather.Number_Max != null && Weather.Number_Max.visible)
                     {
                         numberMaxPosition = Weather.Number_Max.position;
@@ -6285,6 +6311,21 @@ namespace Watch_Face_Editor
 
                         numberMaxOptions_separator = IMG_Separator_Options(img_number, show_level);
                     }
+                    if (Weather.Text_Max_rotation != null && Weather.Text_Max_rotation.visible)
+                    {
+                        numberMaxRotatePosition = Weather.Text_Max_rotation.position;
+                        text_rotate = Weather.Text_Max_rotation;
+
+                        numberMaxRotateOptions = Text_Rotate_Options(text_rotate, "WEATHER_HIGH", show_level, true);
+                    }
+                    if (Weather.Text_Max_circle != null && Weather.Text_Max_circle.visible)
+                    {
+                        numberMaxCirclePosition = Weather.Text_Max_circle.position;
+                        text_circle = Weather.Text_Max_circle;
+
+                        numberMaxCircleOptions = Text_Circle_Options(text_circle, "WEATHER_HIGH", show_level, true);
+                    }
+
                     if (Weather.City_Name != null && Weather.City_Name.visible)
                     {
                         cityNamePosition = Weather.City_Name.position;
@@ -6368,6 +6409,34 @@ namespace Watch_Face_Editor
                             }
                         }
 
+                        // Text_Rotate min
+                        if (index == numberMinRotatePosition && numberMinRotateOptions.Length > 5)
+                        {
+                            AddTextRotationJS(Weather.Text_Min_rotation, optionNameStart, "low_", ref variables, ref items, exist_items, ref text_update,
+                                numberMinRotateOptions, show_level, "weatherData", "forecastData", "temperatureLow", "low", 4, ref resume_call, ref pause_call);
+                        }
+
+                        // Text_Circle min
+                        if (index == numberMinCirclePosition && numberMinCircleOptions.Length > 5)
+                        {
+                            AddTextCircleJS(Weather.Text_Min_circle, optionNameStart, "low_", ref variables, ref items, exist_items, ref text_update,
+                                numberMinCircleOptions, show_level, "weatherData", "forecastData", "temperatureLow", "low", 4, ref resume_call, ref pause_call);
+                        }
+
+                        // Text_Rotate max
+                        if (index == numberMinRotatePosition && numberMaxRotateOptions.Length > 5)
+                        {
+                            AddTextRotationJS(Weather.Text_Max_rotation, optionNameStart, "high_", ref variables, ref items, exist_items, ref text_update,
+                                numberMaxRotateOptions, show_level, "weatherData", "forecastData", "temperatureHigh", "high", 4, ref resume_call, ref pause_call);
+                        }
+
+                        // Text_Circle max
+                        if (index == numberMaxCirclePosition && numberMaxCircleOptions.Length > 5)
+                        {
+                            AddTextCircleJS(Weather.Text_Max_circle, optionNameStart, "high_", ref variables, ref items, exist_items, ref text_update,
+                                numberMaxCircleOptions, show_level, "weatherData", "forecastData", "temperatureHigh", "high", 4, ref resume_call, ref pause_call);
+                        }
+
                         // City Name
                         if (index == cityNamePosition && cityNameOptions.Length > 5)
                         {
@@ -6388,18 +6457,22 @@ namespace Watch_Face_Editor
 
                             variables += TabInString(4) + "let " + optionNameStart +
                                 "city_name_text = ''" + Environment.NewLine;
+
+                            if (items.IndexOf("const weatherSensor = hmSensor.createSensor(hmSensor.id.WEATHER);") < 0)
+                            {
+                                items += TabInString(7) + "const weatherSensor = hmSensor.createSensor(hmSensor.id.WEATHER);" + Environment.NewLine;
+                            }
+
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "city_name_text = hmUI.createWidget(hmUI.widget.TEXT, {" +
                                     cityNameOptions + TabInString(6) + "});" + Environment.NewLine;
 
                             scale_update_function += Environment.NewLine + TabInString(7) + "console.log('Weather city name');" + Environment.NewLine;
 
-                            if (scale_update_function.IndexOf("const weatherSensor = hmSensor.createSensor(hmSensor.id.WEATHER);") < 0)
+                            if (scale_update_function.IndexOf("const weatherData = weatherSensor.getForecastWeather();") < 0)
                             {
-                                scale_update_function += TabInString(7) + 
-                                    "const weatherSensor = hmSensor.createSensor(hmSensor.id.WEATHER);" + Environment.NewLine;
                                 scale_update_function += TabInString(7) +
-                                    "const weatherData = weatherSensor.getForecastWeather();" + Environment.NewLine;
+                                    "let weatherData = weatherSensor.getForecastWeather();" + Environment.NewLine;
                             }
 #if DEBUG
                             scale_update_function += TabInString(7) + "// " + optionNameStart +
@@ -6718,6 +6791,16 @@ namespace Watch_Face_Editor
                     string numberSunCurrentOptions_separator = "";
                     int numberSunCurrentPosition = 99;
 
+                    int sunriseRotatePosition = 99;
+                    int sunriseCirclePosition = 99;
+                    string sunriseRotateOptions = "";
+                    string sunriseCircleOptions = "";
+
+                    int sunsetRotatePosition = 99;
+                    int sunsetCirclePosition = 99;
+                    string sunsetRotateOptions = "";
+                    string sunsetCircleOptions = "";
+
                     if (!Sunrise.visible) return;
                     if (Sunrise.Images != null && Sunrise.Images.visible)
                     {
@@ -6731,6 +6814,7 @@ namespace Watch_Face_Editor
                         hmUI_widget_IMG_PROGRESS img_progress = Sunrise.Segments;
                         segmentsOptions = IMG_PROGRESS_Options(img_progress, "SUN_CURRENT", show_level);
                     }
+
                     if (Sunrise.Sunrise != null && Sunrise.Sunrise.visible)
                     {
                         numberPosition = Sunrise.Sunrise.position;
@@ -6739,6 +6823,21 @@ namespace Watch_Face_Editor
 
                         numberOptions_separator = IMG_Separator_Options(img_number, show_level);
                     }
+                    if (Sunrise.Sunrise_rotation != null && Sunrise.Sunrise_rotation.visible)
+                    {
+                        sunriseRotatePosition = Sunrise.Sunrise_rotation.position;
+                        text_rotate = Sunrise.Sunrise_rotation;
+
+                        sunriseRotateOptions = Text_Rotate_Options(text_rotate, "SUNRISE", show_level, true);
+                    }
+                    if (Sunrise.Sunrise_circle != null && Sunrise.Sunrise_circle.visible)
+                    {
+                        sunriseCirclePosition = Sunrise.Sunrise_circle.position;
+                        text_circle = Sunrise.Sunrise_circle;
+
+                        sunriseCircleOptions = Text_Circle_Options(text_circle, "SUNRISE", show_level, true);
+                    }
+
                     if (Sunrise.Sunset != null && Sunrise.Sunset.visible)
                     {
                         numberTargetPosition = Sunrise.Sunset.position;
@@ -6747,6 +6846,21 @@ namespace Watch_Face_Editor
 
                         numberTargetOptions_separator = IMG_Separator_Options(img_number, show_level);
                     }
+                    if (Sunrise.Sunset_rotation != null && Sunrise.Sunset_rotation.visible)
+                    {
+                        sunsetRotatePosition = Sunrise.Sunset_rotation.position;
+                        text_rotate = Sunrise.Sunset_rotation;
+
+                        sunsetRotateOptions = Text_Rotate_Options(text_rotate, "SUNSET", show_level, true);
+                    }
+                    if (Sunrise.Sunset_circle != null && Sunrise.Sunset_circle.visible)
+                    {
+                        sunsetCirclePosition = Sunrise.Sunset_circle.position;
+                        text_circle = Sunrise.Sunset_circle;
+
+                        sunsetCircleOptions = Text_Circle_Options(text_circle, "SUNSET", show_level, true);
+                    }
+
                     if (Sunrise.Sunset_Sunrise != null && Sunrise.Sunset_Sunrise.visible)
                     {
                         numberSunCurrentPosition = Sunrise.Sunset_Sunrise.position;
@@ -6846,6 +6960,34 @@ namespace Watch_Face_Editor
                                     optionNameStart + "sun_current_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberSunCurrentOptions_separator + TabInString(6) + "});" + Environment.NewLine;
                             }
+                        }
+
+                        // Text_Rotate Sunrise
+                        if (index == sunriseRotatePosition && sunriseRotateOptions.Length > 5)
+                        {
+                            AddTextRotationJS(Sunrise.Sunrise_rotation, optionNameStart, "sunrise_", ref variables, ref items, exist_items, ref text_update,
+                                sunriseRotateOptions, show_level, "weatherData", "tideData", "sunriseTime", "sunrise", 5, ref resume_call, ref pause_call);
+                        }
+
+                        // Text_Circle Sunrise
+                        if (index == sunriseCirclePosition && sunriseCircleOptions.Length > 5)
+                        {
+                            AddTextCircleJS(Sunrise.Sunrise_circle, optionNameStart, "sunrise_", ref variables, ref items, exist_items, ref text_update,
+                                sunriseCircleOptions, show_level, "weatherData", "tideData", "sunriseTime", "sunrise", 5, ref resume_call, ref pause_call);
+                        }
+
+                        // Text_Rotate Sunset
+                        if (index == sunsetRotatePosition && sunsetRotateOptions.Length > 5)
+                        {
+                            AddTextRotationJS(Sunrise.Sunset_rotation, optionNameStart, "sunset_", ref variables, ref items, exist_items, ref text_update,
+                                sunsetRotateOptions, show_level, "weatherData", "tideData", "sunsetTime", "sunset", 5, ref resume_call, ref pause_call);
+                        }
+
+                        // Text_Circle Sunset
+                        if (index == sunsetCirclePosition && sunsetCircleOptions.Length > 5)
+                        {
+                            AddTextCircleJS(Sunrise.Sunset_circle, optionNameStart, "sunset_", ref variables, ref items, exist_items, ref text_update,
+                                sunsetCircleOptions, show_level, "weatherData", "tideData", "sunsetTime", "sunset", 5, ref resume_call, ref pause_call);
                         }
 
                         // Pointer
@@ -24853,14 +24995,62 @@ namespace Watch_Face_Editor
 
                 variables += TabInString(4) + "let " + variableStartName + "TextRotate_error_img_width = " + dot_width.ToString() + ";" + Environment.NewLine;
             }
-            if (items.IndexOf("const " + sensorName + " = hmSensor.createSensor(hmSensor.id." + sensorID + ");") < 0 &&
-                exist_items.IndexOf("const " + sensorName + " = hmSensor.createSensor(hmSensor.id." + sensorID + ");") < 0)
-            {
-                items += TabInString(6) + Environment.NewLine;
-                items += TabInString(6) + "const " + sensorName + " = hmSensor.createSensor(hmSensor.id." + sensorID + ");" + Environment.NewLine;
-            }
-            AddListener(ref variables, ref items, ref exist_items, sensorName, sensorTargetValue, "text_update();", ref resume_call, ref pause_call, optionNameStart);
 
+            if (sensorID == "forecastData" || sensorID == "tideData")
+            {
+                if (items.IndexOf("const weatherSensor = hmSensor.createSensor(hmSensor.id.WEATHER);") < 0)
+                {
+                    items += TabInString(6) + "const weatherSensor = hmSensor.createSensor(hmSensor.id.WEATHER);" + Environment.NewLine;
+                }
+
+                if (text_update.IndexOf("let weatherData = weatherSensor.getForecastWeather();") < 0)
+                {
+                    text_update += TabInString(7) + "let weatherData = weatherSensor.getForecastWeather();" + Environment.NewLine;
+                    //text_update += TabInString(7) + "let forecastData = weatherData.forecastData;" + Environment.NewLine;
+                    //text_update += TabInString(7) + "let tideData = weatherData.tideData;" + Environment.NewLine;
+                }
+
+                if (sensorID == "forecastData")
+                {
+                    if (text_update.IndexOf("let forecastData = weatherData.forecastData;") < 0)
+                        text_update += TabInString(7) + "let forecastData = weatherData.forecastData;" + Environment.NewLine;
+                    if (text_update.IndexOf("let " + variableName + "temp = -100;") < 0)
+                    {
+                        text_update += TabInString(7) + "let " + variableName + "temp = -100;" + Environment.NewLine;
+
+                        text_update += TabInString(7) + "if (forecastData.count > 0) {" + Environment.NewLine;
+                        text_update += TabInString(8) + variableName + "temp = forecastData.data[0]." + sensorTargetValue + ";" + Environment.NewLine;
+                        text_update += TabInString(7) + "}; // end forecastData;" + Environment.NewLine;
+                    }
+                }
+
+                if (sensorID == "tideData")
+                {
+                    if (text_update.IndexOf("let tideData = weatherData.tideData;") < 0) 
+                        text_update += TabInString(7) + "let tideData = weatherData.tideData;" + Environment.NewLine;
+                    if (text_update.IndexOf("let " + variableName + "hour = 0;") < 0)
+                    {
+                        text_update += TabInString(7) + "let " + valueName + "_hour = 0;" + Environment.NewLine;
+                        text_update += TabInString(7) + "let " + valueName + "_minute = 0;" + Environment.NewLine;
+
+                        text_update += TabInString(7) + "if (tideData.count > 0) {" + Environment.NewLine;
+                        text_update += TabInString(8) + valueName + "_hour = tideData.data[0]." + sensorTargetValue + ".hour;" + Environment.NewLine;
+                        text_update += TabInString(8) + valueName + "_minute = tideData.data[0]." + sensorTargetValue + ".minute;" + Environment.NewLine;
+                        text_update += TabInString(7) + "}; // end tideData;" + Environment.NewLine; 
+                    }
+                }
+            }
+            else
+            {
+                if (items.IndexOf("const " + sensorName + " = hmSensor.createSensor(hmSensor.id." + sensorID + ");") < 0 &&
+                    exist_items.IndexOf("const " + sensorName + " = hmSensor.createSensor(hmSensor.id." + sensorID + ");") < 0)
+                {
+                    items += TabInString(6) + Environment.NewLine;
+                    items += TabInString(6) + "const " + sensorName + " = hmSensor.createSensor(hmSensor.id." + sensorID + ");" + Environment.NewLine;
+                }
+                AddListener(ref variables, ref items, ref exist_items, sensorName, sensorTargetValue, "text_update();", ref resume_call, ref pause_call, optionNameStart);
+
+            }
             //if (items.IndexOf("function toDegree (radian) {") < 0 &&
             //    exist_items.IndexOf("function toDegree (radian) {") < 0)
             //{
@@ -24872,16 +25062,24 @@ namespace Watch_Face_Editor
 
 
             text_update += Environment.NewLine + TabInString(7) + "console.log('update text rotate " + variableName + sensorID + "');" + Environment.NewLine;
-            if (text_update.IndexOf("let " + valueName + " = " + sensorName + "." + sensorTargetValue + ";") < 0)
+            if (sensorID == "forecastData" || sensorID == "tideData" )
             {
-                text_update += TabInString(7) + "let " + valueName + " = " + sensorName + "." + sensorTargetValue + ";" + Environment.NewLine;
-                if (valueName == "valueHour")
+                if (text_update.IndexOf("let " + valueName + " = undefined;") < 0) 
+                    text_update += TabInString(7) + "let " + valueName + " = undefined;" + Environment.NewLine;
+            }
+            else
+            {
+                if (text_update.IndexOf("let " + valueName + " = " + sensorName + "." + sensorTargetValue + ";") < 0)
                 {
-                    text_update += TabInString(7) + "if (!" + sensorName + ".is24Hour) {" + Environment.NewLine;
-                    text_update += TabInString(8) + valueName + " -= 12;" + Environment.NewLine;
-                    text_update += TabInString(8) + "if (" + valueName + " < 1) " + valueName + " += 12;" + Environment.NewLine;
-                    text_update += TabInString(7) + "};" + Environment.NewLine;
-                }
+                    text_update += TabInString(7) + "let " + valueName + " = " + sensorName + "." + sensorTargetValue + ";" + Environment.NewLine;
+                    if (valueName == "valueHour")
+                    {
+                        text_update += TabInString(7) + "if (!" + sensorName + ".is24Hour) {" + Environment.NewLine;
+                        text_update += TabInString(8) + valueName + " -= 12;" + Environment.NewLine;
+                        text_update += TabInString(8) + "if (" + valueName + " < 1) " + valueName + " += 12;" + Environment.NewLine;
+                        text_update += TabInString(7) + "};" + Environment.NewLine;
+                    }
+                } 
             }
 
             if (valueName == "valueYear")
@@ -24894,6 +25092,40 @@ namespace Watch_Face_Editor
                 {
                     text_update += TabInString(7) + "let " + variableStartName + "rotate_string = parseInt(" + valueName + " % 100).toString();" + Environment.NewLine;
                 }
+            }
+            else if (valueName == "temperatureLow" || valueName == "temperatureHigh")
+            {
+                text_update += TabInString(7) + "let " + variableStartName + "rotate_string = undefined;" + Environment.NewLine;
+                text_update += TabInString(7) + "if (" + variableName + "temp > -100) {" + Environment.NewLine;
+                text_update += TabInString(8) + valueName + " = 0;" + Environment.NewLine;
+                if (text_rotate.zero)
+                {
+                    text_update += TabInString(8) + variableStartName + "rotate_string = String(Math.abs(" + variableName + "temp)).padStart(3, '0')" + Environment.NewLine;
+                    text_update += TabInString(8) + "if (Math.sign (" + variableName + "temp) < 0)" + variableStartName +
+                        "rotate_string = '-' + " + variableStartName + "rotate_string;" + Environment.NewLine;
+                }
+                else
+                {
+                    text_update += TabInString(8) + variableStartName + "rotate_string = String(" + variableName + "temp)" + Environment.NewLine;
+                }
+                text_update += TabInString(7) + "};" + Environment.NewLine;
+            }
+            else if (valueName == "sunriseTime" || valueName == "sunsetTime")
+            {
+                text_update += TabInString(7) + "let " + variableStartName + "rotate_string = undefined;" + Environment.NewLine;
+                text_update += TabInString(7) + "if (" + variableName + "hour != 0 && " + variableName + "minute != 0) {" + Environment.NewLine;
+                text_update += TabInString(8) + valueName + " = 0;" + Environment.NewLine;
+                if (text_rotate.zero)
+                {
+                    text_update += TabInString(8) + variableStartName + "rotate_string = String(" + variableName + "hour).padStart(2, '0')" +
+                        " + '.' + String(" + variableName + "minute).padStart(2, '0');" + Environment.NewLine;
+                }
+                else
+                {
+                    text_update += TabInString(8) + variableStartName + "rotate_string = String(" + variableName + "hour)" +
+                        " + '.' + String(" + variableName + "minute).padStart(2, '0');" + Environment.NewLine;
+                }
+                text_update += TabInString(7) + "};" + Environment.NewLine;
             }
             else
             {
@@ -25094,13 +25326,61 @@ namespace Watch_Face_Editor
 
                 variables += TabInString(4) + "let " + variableStartName + "TextCircle_error_img_width = " + dot_width.ToString() + ";" + Environment.NewLine;
             }
-            if (items.IndexOf("const " + sensorName + " = hmSensor.createSensor(hmSensor.id." + sensorID + ");") < 0 &&
-                exist_items.IndexOf("const " + sensorName + " = hmSensor.createSensor(hmSensor.id." + sensorID + ");") < 0)
+
+            if (sensorID == "forecastData" || sensorID == "tideData")
             {
-                items += TabInString(6) + Environment.NewLine;
-                items += TabInString(6) + "const " + sensorName + " = hmSensor.createSensor(hmSensor.id." + sensorID + ");" + Environment.NewLine;
+                if (items.IndexOf("const weatherSensor = hmSensor.createSensor(hmSensor.id.WEATHER);") < 0)
+                {
+                    items += TabInString(6) + "const weatherSensor = hmSensor.createSensor(hmSensor.id.WEATHER);" + Environment.NewLine;
+                }
+
+                if (text_update.IndexOf("let weatherData = weatherSensor.getForecastWeather();") < 0)
+                {
+                    text_update += TabInString(7) + "let weatherData = weatherSensor.getForecastWeather();" + Environment.NewLine;
+                    //text_update += TabInString(7) + "let forecastData = weatherData.forecastData;" + Environment.NewLine;
+                    //text_update += TabInString(7) + "let tideData = weatherData.tideData;" + Environment.NewLine;
+                }
+
+                if (sensorID == "forecastData")
+                {
+                    if (text_update.IndexOf("let forecastData = weatherData.forecastData;") < 0) 
+                        text_update += TabInString(7) + "let forecastData = weatherData.forecastData;" + Environment.NewLine;
+                    if (text_update.IndexOf("let " + variableName + "temp = -100;") < 0)
+                    {
+                        text_update += TabInString(7) + "let " + variableName + "temp = -100;" + Environment.NewLine;
+
+                        text_update += TabInString(7) + "if (forecastData.count > 0) {" + Environment.NewLine;
+                        text_update += TabInString(8) + variableName + "temp = forecastData.data[0]." + sensorTargetValue + ";" + Environment.NewLine;
+                        text_update += TabInString(7) + "}; // end forecastData;" + Environment.NewLine; 
+                    }
+                }
+
+                if (sensorID == "tideData")
+                {
+                    if (text_update.IndexOf("let tideData = weatherData.tideData;") < 0)
+                        text_update += TabInString(7) + "let tideData = weatherData.tideData;" + Environment.NewLine;
+                    if (text_update.IndexOf("let " + variableName + "hour = 0;") < 0)
+                    {
+                        text_update += TabInString(7) + "let " + variableName + "hour = 0;" + Environment.NewLine;
+                        text_update += TabInString(7) + "let " + variableName + "minute = 0;" + Environment.NewLine;
+
+                        text_update += TabInString(7) + "if (tideData.count > 0) {" + Environment.NewLine;
+                        text_update += TabInString(8) + variableName + "hour = tideData.data[0]." + sensorTargetValue + ".hour;" + Environment.NewLine;
+                        text_update += TabInString(8) + variableName + "minute = tideData.data[0]." + sensorTargetValue + ".minute;" + Environment.NewLine;
+                        text_update += TabInString(7) + "}; // end tideData;" + Environment.NewLine;
+                    }
+                }
             }
-            AddListener(ref variables, ref items, ref exist_items, sensorName, sensorTargetValue, "text_update();", ref resume_call, ref pause_call, optionNameStart);
+            else
+            {
+                if (items.IndexOf("const " + sensorName + " = hmSensor.createSensor(hmSensor.id." + sensorID + ");") < 0 &&
+                    exist_items.IndexOf("const " + sensorName + " = hmSensor.createSensor(hmSensor.id." + sensorID + ");") < 0)
+                {
+                    items += TabInString(6) + Environment.NewLine;
+                    items += TabInString(6) + "const " + sensorName + " = hmSensor.createSensor(hmSensor.id." + sensorID + ");" + Environment.NewLine;
+                }
+                AddListener(ref variables, ref items, ref exist_items, sensorName, sensorTargetValue, "text_update();", ref resume_call, ref pause_call, optionNameStart); 
+            }
 
             if (items.IndexOf("function toDegree (radian) {") < 0 &&
                 exist_items.IndexOf("function toDegree (radian) {") < 0)
@@ -25113,15 +25393,23 @@ namespace Watch_Face_Editor
 
 
             text_update += Environment.NewLine + TabInString(7) + "console.log('update text circle " + variableName + sensorID + "');" + Environment.NewLine;
-            if (text_update.IndexOf("let " + valueName +" = " + sensorName + "." + sensorTargetValue + ";") < 0)
+            if (sensorID == "forecastData" || sensorID == "tideData") 
             {
-                text_update += TabInString(7) + "let " + valueName +" = " + sensorName + "." + sensorTargetValue + ";" + Environment.NewLine;
-                if (valueName == "valueHour")
+                if (text_update.IndexOf("let " + valueName + " = undefined;") < 0)
+                    text_update += TabInString(7) + "let " + valueName + " = undefined;" + Environment.NewLine;
+            }
+            else
+            {
+                if (text_update.IndexOf("let " + valueName + " = " + sensorName + "." + sensorTargetValue + ";") < 0)
                 {
-                    text_update += TabInString(7) + "if (!" + sensorName +  ".is24Hour) {" + Environment.NewLine;
-                    text_update += TabInString(8) + valueName + " -= 12;" + Environment.NewLine;
-                    text_update += TabInString(8) + "if (" + valueName + " < 1) " + valueName + " += 12;" + Environment.NewLine;
-                    text_update += TabInString(7) + "};" + Environment.NewLine;
+                    text_update += TabInString(7) + "let " + valueName + " = " + sensorName + "." + sensorTargetValue + ";" + Environment.NewLine;
+                    if (valueName == "valueHour")
+                    {
+                        text_update += TabInString(7) + "if (!" + sensorName + ".is24Hour) {" + Environment.NewLine;
+                        text_update += TabInString(8) + valueName + " -= 12;" + Environment.NewLine;
+                        text_update += TabInString(8) + "if (" + valueName + " < 1) " + valueName + " += 12;" + Environment.NewLine;
+                        text_update += TabInString(7) + "};" + Environment.NewLine;
+                    }
                 }
             }
 
@@ -25135,6 +25423,40 @@ namespace Watch_Face_Editor
                 {
                     text_update += TabInString(7) + "let " + variableStartName + "circle_string = parseInt(" + valueName + " % 100).toString();" + Environment.NewLine;
                 }
+            }
+            else if (valueName == "temperatureLow" || valueName == "temperatureHigh")
+            {
+                text_update += TabInString(7) + "let " + variableStartName + "circle_string = undefined;" + Environment.NewLine;
+                text_update += TabInString(7) + "if (" + variableName + "temp > -100) {" + Environment.NewLine;
+                text_update += TabInString(8) + valueName + " = 0;" + Environment.NewLine;
+                if (text_circle.zero)
+                {
+                    text_update += TabInString(8) + variableStartName + "circle_string = String(Math.abs(" + variableName + "temp)).padStart(3, '0')" + Environment.NewLine;
+                    text_update += TabInString(8) + "if (Math.sign (" + variableName + "temp) < 0)" + variableStartName + 
+                        "circle_string = '-' + " + variableStartName + "circle_string;" + Environment.NewLine;
+                }
+                else
+                {
+                    text_update += TabInString(8) + variableStartName + "circle_string = String(" + variableName + "temp)" + Environment.NewLine;
+                }
+                text_update += TabInString(7) + "};" + Environment.NewLine;
+            }
+            else if (valueName == "sunriseTime" || valueName == "sunsetTime")
+            {
+                text_update += TabInString(7) + "let " + variableStartName + "circle_string = undefined;" + Environment.NewLine;
+                text_update += TabInString(7) + "if (" + variableName + "hour != 0 && " + variableName + "minute != 0) {" + Environment.NewLine;
+                text_update += TabInString(8) + valueName + " = 0;" + Environment.NewLine;
+                if (text_circle.zero)
+                {
+                    text_update += TabInString(8) + variableStartName + "circle_string = String(" + variableName + "hour).padStart(2, '0')" +
+                        " + '.' + String(" + variableName + "minute).padStart(2, '0');" + Environment.NewLine;
+                }
+                else
+                {
+                    text_update += TabInString(8) + variableStartName + "circle_string = String(" + variableName + "hour)" +
+                        " + '.' + String(" + variableName + "minute).padStart(2, '0');" + Environment.NewLine;
+                }
+                text_update += TabInString(7) + "};" + Environment.NewLine;
             }
             else
             {

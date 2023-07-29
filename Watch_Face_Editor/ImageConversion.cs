@@ -175,16 +175,16 @@ namespace Watch_Face_Editor
                     {
                         if (image.ColormapSize == 256)
                         {
-                            IMagickColor<ushort>[,] colorMap = new IMagickColor<ushort>[16, 16];
+                            //IMagickColor<ushort>[,] colorMap = new IMagickColor<ushort>[16, 16];
+                            MagickColor[,] colorMap = new MagickColor[16, 16];
                             int index = 0;
                             for (int x = 0; x < 16; x++)
                             {
                                 for (int y = 0; y < 16; y++)
                                 {
                                     // TODO :: Kartun, check x2
-                                    // colorMap[x, y] = image.GetColormap(index);
-                                    colorMap[x, y] = image.GetColormapColor(index);
-                                    IMagickColor<ushort> colorMap1 = image.GetColormapColor(index);
+                                    colorMap[x, y] = image.GetColormap(index);
+                                    //colorMap[x, y] = image.GetColormapColor(index);
                                     index++;
                                 }
                             }
@@ -194,8 +194,8 @@ namespace Watch_Face_Editor
                                 for (int y = 0; y < 16; y++)
                                 {
                                     // TODO :: Kartun, check
-                                    // image.SetColormap(index, colorMap[y, x]);
-                                    image.SetColormapColor(index, colorMap[y, x]);
+                                    image.SetColormap(index, colorMap[y, x]);
+                                    //image.SetColormapColor(index, colorMap[y, x]);
                                     index++;
                                 }
                             }
@@ -206,8 +206,8 @@ namespace Watch_Face_Editor
                                 for (int y = 0; y < 16; y++)
                                 {
                                     // TODO :: Kartun, check
-                                    // colorMap[x, y] = image.GetColormap(index);
-                                    colorMap[x, y] = image.GetColormapColor(index);
+                                    colorMap[x, y] = image.GetColormap(index);
+                                    //colorMap[x, y] = image.GetColormapColor(index);
                                     index++;
                                 }
                             }
@@ -289,9 +289,9 @@ namespace Watch_Face_Editor
                         }
                     }
                     // TODO :: Kartun, check
-                    // ImageMagick.Pixel pixel = image.GetPixels().GetPixel(0, 0);
-                    IPixel<ushort> pixel = image.GetPixels().GetPixel(0, 0);
-                    
+                    ImageMagick.Pixel pixel = image.GetPixels().GetPixel(0, 0);
+                    //IPixel<ushort> pixel = image.GetPixels().GetPixel(0, 0);
+
                     //pixel = new ImageMagick.Pixel(0, 0, 4);
                     bool transparent = false;
                     //if (pixel.Channels == 4 && pixel[3] < 256) transparent = true;
@@ -333,9 +333,10 @@ namespace Watch_Face_Editor
 
                     for (int i = 0; i < image.ColormapSize; i++)
                     {
-                        //colorMapList.Add(image.GetColormap(i));
+                        MagickColor ee = image.GetColormap(i);
+                        colorMapList.Add(image.GetColormap(i));
                         // TODO :: Kartun, Confirm
-                        colorMapList.Add(image.GetColormapColor(i).ToColor());
+                        //colorMapList.Add(image.GetColormapColor(i).ToColor());
                     }
                     while (fix_color == 3 && colorMapList.Count < 256)
                     {
