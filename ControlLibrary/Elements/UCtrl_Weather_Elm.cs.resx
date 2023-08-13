@@ -200,4 +200,16 @@
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Počasí</value>
   </data>
+  <data name="button_Text_Max_circle.Text" xml:space="preserve">
+    <value>Údaje o kruhu (max)</value>
+  </data>
+  <data name="button_Text_Max_rotation.Text" xml:space="preserve">
+    <value>Hodnota v úhlu (max)</value>
+  </data>
+  <data name="button_Text_Min_circle.Text" xml:space="preserve">
+    <value>Údaje o kruhu (min)</value>
+  </data>
+  <data name="button_Text_Min_rotation.Text" xml:space="preserve">
+    <value>Hodnota v úhlu (min)</value>
+  </data>
 </root>

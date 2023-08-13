@@ -21,6 +21,7 @@ namespace ControlLibrary
         private bool Year_mode = false;
         private bool Sunrise_mode = false;
         private bool Weather_mode = false;
+        private bool Imperial_unit_mode = false;
 
         //private Point location_unit;
         private Point location_unit_miles;
@@ -461,6 +462,31 @@ namespace ControlLibrary
                     checkBox_addZero.Location = location;
                     location = new Point(location_unit_in_alignment.X, location_unit_in_alignment.Y);
                     checkBox_unit_in_alignment.Location = location;
+                }
+            }
+        }
+
+        /// <summary>Доступность имперских единиц измерения</summary>
+        [Description("Доступность имперских единиц измерения")]
+        public virtual bool Imperial_unit
+        {
+            get
+            {
+                return Imperial_unit_mode;
+            }
+            set
+            {
+                Imperial_unit_mode = value;
+
+                if (Weather_mode)
+                {
+                    label_unit_miles.Enabled = Imperial_unit_mode;
+                    comboBox_unit_miles.Enabled = Imperial_unit_mode; 
+                }
+                else
+                {
+                    label_unit_miles.Enabled = true;
+                    comboBox_unit_miles.Enabled = true;
                 }
             }
         }

@@ -409,6 +409,10 @@ namespace Watch_Face_Editor
                     Scale_IMG_NUMBER(elementWeather.Number, scale);
                     Scale_IMG_NUMBER(elementWeather.Number_Min, scale);
                     Scale_IMG_NUMBER(elementWeather.Number_Max, scale);
+                    Scale_IMG_NUMBER(elementWeather.Text_Min_rotation, scale);
+                    Scale_Text_Circle(elementWeather.Text_Min_circle, scale);
+                    Scale_IMG_NUMBER(elementWeather.Text_Max_rotation, scale);
+                    Scale_Text_Circle(elementWeather.Text_Max_circle, scale);
                     Scale_TEXT(elementWeather.City_Name, scale);
                     Scale_IMG(elementWeather.Icon, scale);
                     break;
@@ -441,6 +445,10 @@ namespace Watch_Face_Editor
                     Scale_IMG_NUMBER(elementSunrise.Sunrise, scale);
                     Scale_IMG_NUMBER(elementSunrise.Sunset, scale);
                     Scale_IMG_NUMBER(elementSunrise.Sunset_Sunrise, scale);
+                    Scale_IMG_NUMBER(elementSunrise.Sunrise_rotation, scale);
+                    Scale_Text_Circle(elementSunrise.Sunrise_circle, scale);
+                    Scale_IMG_NUMBER(elementSunrise.Sunset_rotation, scale);
+                    Scale_Text_Circle(elementSunrise.Sunset_circle, scale);
                     Scale_IMG_POINTER(elementSunrise.Pointer, scale);
                     Scale_IMG(elementSunrise.Icon, scale);
                     break;

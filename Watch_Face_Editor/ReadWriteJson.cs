@@ -116,17 +116,17 @@ namespace Watch_Face_Editor
 
                             foreach (Object element in Watch_Face.Editable_Elements.Watchface_edit_group[i - 1].Elements)
                             {
-                                string outVariables = "";
+                                //string outVariables = "";
                                 string outItems = "";
-                                string outMainItems = "";
+                                //string outMainItems = "";
                                 //string out_scale_update_function = "";
                                 //string out_resume_call = "";
                                 //string out_pause_call = "";
                                 string optionNameStart = "editableZone_" + i.ToString() + "_";
                                 string show_level = "ONLY_NORMAL";
                                 if (Watch_Face.Editable_Elements.AOD_show) show_level = "ONLY_NORMAL | hmUI.show_level.ONLY_AOD";
-                                AddEditableElementToJS(element, show_level, optionNameStart, out outVariables, out outItems, out outMainItems,
-                                    ref scale_update_function, items, ref resume_call, ref pause_call);
+                                AddEditableElementToJS(element, show_level, optionNameStart, ref variables, out outItems, ref items,
+                                    ref scale_update_function, /*items,*/ ref resume_call, ref pause_call);
 
                                 string type = element.GetType().Name;
                                 switch (type)
@@ -205,9 +205,9 @@ namespace Watch_Face_Editor
                                         break;
                                 }
 
-                                variables += outVariables;
+                                //variables += outVariables;
                                 //items += outItems;
-                                items += outMainItems;
+                                //items += outMainItems;
                                 //scale_update_function += out_scale_update_function;
                                 //resume_call += out_resume_call;
                                 //pause_call += out_pause_call;
@@ -282,22 +282,23 @@ namespace Watch_Face_Editor
                     }
                 }
 
+                // элементы основного экрана
                 if (Watch_Face.ScreenNormal.Elements != null && Watch_Face.ScreenNormal.Elements.Count > 0)
                 {
                     foreach(Object element in Watch_Face.ScreenNormal.Elements)
                     {
-                        string outVariables = "";
-                        string outItems = "";
+                        //string outVariables = "";
+                        //string outItems = "";
                         //string out_scale_update_function = "";
                         //string out_resume_call = "";
                         //string out_pause_call = "";
                         //string out_time_update = "";
                         //string out_text_update = "";
-                        AddElementToJS(element, "ONLY_NORMAL", out outVariables, out outItems, ref scale_update_function,
-                            ref items, ref resume_call, ref pause_call, ref time_update,
+                        AddElementToJS(element, "ONLY_NORMAL", ref variables, ref items, ref scale_update_function,
+                            /*ref items,*/ ref resume_call, ref pause_call, ref time_update,
                             ref text_update, ref fonts_cache);
-                        variables += outVariables;
-                        items += outItems;
+                        //variables += outVariables;
+                        //items += outItems;
                         //scale_update_function += out_scale_update_function;
                         //resume_call += out_resume_call;
                         //pause_call += out_pause_call;
@@ -336,18 +337,18 @@ namespace Watch_Face_Editor
                 {
                     foreach (Object element in Watch_Face.ScreenAOD.Elements)
                     {
-                        string outVariables = "";
-                        string outItems = "";
+                        //string outVariables = "";
+                        //string outItems = "";
                         //string out_scale_update_function = "";
                         //string out_resume_call = "";
                         //string out_pause_call = "";
                         //string out_time_update = "";
                         //string out_text_update = "";
-                        AddElementToJS(element, "ONLY_AOD", out outVariables, out outItems, ref scale_update_function,
-                            ref items, ref resume_call, ref pause_call, ref time_update,
+                        AddElementToJS(element, "ONLY_AOD", ref variables, ref items, ref scale_update_function,
+                            /*ref items,*/ ref resume_call, ref pause_call, ref time_update,
                             ref text_update, ref fonts_cache);
-                        variables += outVariables;
-                        items += outItems;
+                        //variables += outVariables;
+                        //items += outItems;
                         //scale_update_function += out_scale_update_function;
                         //resume_call += out_resume_call;
                         //pause_call += out_pause_call;
@@ -392,17 +393,17 @@ namespace Watch_Face_Editor
 
                         foreach (Object element in Watch_Face.Editable_Elements.Watchface_edit_group[i - 1].Elements)
                         {
-                            string outVariables = "";
+                            //string outVariables = "";
                             string outItems = "";
-                            string outMainItems = "";
+                            //string outMainItems = "";
                             //string out_scale_update_function = "";
                             //string out_resume_call = "";
                             //string out_pause_call = "";
                             string optionNameStart = "editableZone_" + i.ToString() + "_";
                             string show_level = "ONLY_NORMAL";
                             if (Watch_Face.Editable_Elements.AOD_show) show_level = "ONLY_NORMAL | hmUI.show_level.ONLY_AOD";
-                            AddEditableElementToJS(element, show_level, optionNameStart, out outVariables, out outItems, out outMainItems,
-                                ref scale_update_function, items, ref resume_call, ref pause_call);
+                            AddEditableElementToJS(element, show_level, optionNameStart, ref variables, out outItems, ref items,
+                                ref scale_update_function, /*items,*/ ref resume_call, ref pause_call);
 
                             string type = element.GetType().Name;
                             switch (type)
@@ -481,9 +482,9 @@ namespace Watch_Face_Editor
                                     break;
                             }
 
-                            variables += outVariables;
+                            //variables += outVariables;
                             //items += outItems;
-                            items += outMainItems;
+                            //items += outMainItems;
                             //scale_update_function += out_scale_update_function;
                             //resume_call += out_resume_call;
                             //pause_call += out_pause_call;
@@ -833,18 +834,18 @@ namespace Watch_Face_Editor
             // ярлыки
             if (Watch_Face.Shortcuts != null && Watch_Face.Shortcuts.visible)
             {
-                string outVariables = "";
-                string outItems = "";
+                //string outVariables = "";
+                //string outItems = "";
                 //string out_scale_update_function = "";
                 //string out_resume_call = "";
                 //string out_pause_call = "";
                 //string out_time_update = "";
                 //string out_text_update = "";
-                AddElementToJS(Watch_Face.Shortcuts, "ONLY_NORMAL", out outVariables, out outItems, ref scale_update_function,
-                    ref items, ref resume_call, ref pause_call, ref time_update,
+                AddElementToJS(Watch_Face.Shortcuts, "ONLY_NORMAL", ref variables, ref items, ref scale_update_function,
+                    /*ref items,*/ ref resume_call, ref pause_call, ref time_update,
                     ref text_update, ref fonts_cache);
-                variables += outVariables;
-                items += outItems;
+                //variables += outVariables;
+                //items += outItems;
                 //scale_update_function += out_scale_update_function;
                 //resume_call += out_resume_call;
                 //pause_call += out_pause_call;
@@ -1024,14 +1025,14 @@ namespace Watch_Face_Editor
         /// <param name="resume_call">Код для обновления при включении экрана</param>
         /// <param name="pause_call">Код для обновления при выключении циферблата</param>
         /// <param name="time_update">Код для обновления времени</param>
-        private void AddElementToJS(Object element, string show_level, out string variables, out string items,
-            ref string scale_update_function, ref  string exist_items,
+        private void AddElementToJS(Object element, string show_level, ref string variables, ref string items,
+            ref string scale_update_function, /*ref  string exist_items,*/
             ref string resume_call, ref string pause_call, ref string time_update, ref string text_update, ref string fonts_cache)
         {
             string optionNameStart = "normal_";
             if (show_level == "ONLY_AOD") optionNameStart = "idle_";
-            variables = "";
-            items = "";
+            //variables = "";
+            //items = "";
             //scale_update_function = "";
             //resume_call = "";
             //pause_call = "";
@@ -1300,38 +1301,38 @@ namespace Watch_Face_Editor
                         // Hour_Rotate
                         if (index == hourPosition_rotation && optionsHour_rotation.Length > 5)
                         {
-                            AddTextRotationJS(DigitalTime.Hour_rotation, optionNameStart, "hour_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextRotationJS(DigitalTime.Hour_rotation, optionNameStart, "hour_", ref variables, ref items, ref text_update,
                                 optionsHour_rotation, show_level, "timeNaw", "TIME", "valueHour", "hour", 2, ref resume_call, ref  pause_call);
                         }
                         // Minute_Rotate
                         if (index == minutePosition_rotation && optionsMinute_rotation.Length > 5)
                         {
-                            AddTextRotationJS(DigitalTime.Minute_rotation, optionNameStart, "minute_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextRotationJS(DigitalTime.Minute_rotation, optionNameStart, "minute_", ref variables, ref items, ref text_update,
                                 optionsMinute_rotation, show_level, "timeNaw", "TIME", "valueMinute", "minute", 2, ref resume_call, ref pause_call);
                         }
                         // Second_Rotate
                         if (index == hourPosition_rotation && optionsSecond_rotation.Length > 5)
                         {
-                            AddTextRotationJS(DigitalTime.Second_rotation, optionNameStart, "second_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextRotationJS(DigitalTime.Second_rotation, optionNameStart, "second_", ref variables, ref items, ref text_update,
                                 optionsSecond_rotation, show_level, "timeNaw", "TIME", "valueSecond", "second", 2, ref resume_call, ref pause_call);
                         }
 
                         // Hour_Circle
                         if (index == hourPosition_circle && optionsHour_circle.Length > 5)
                         {
-                            AddTextCircleJS(DigitalTime.Hour_circle, optionNameStart, "hour_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextCircleJS(DigitalTime.Hour_circle, optionNameStart, "hour_", ref variables, ref items, ref text_update,
                                 optionsHour_circle, show_level, "timeNaw", "TIME", "valueHour", "hour", 2, ref resume_call, ref pause_call);
                         }
                         // Minute_Circle
                         if (index == minutePosition_circle && optionsMinute_circle.Length > 5)
                         {
-                            AddTextCircleJS(DigitalTime.Minute_circle, optionNameStart, "minute_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextCircleJS(DigitalTime.Minute_circle, optionNameStart, "minute_", ref variables, ref items, ref text_update,
                                 optionsMinute_circle, show_level, "timeNaw", "TIME", "valueMinute", "minute", 2, ref resume_call, ref pause_call);
                         }
                         // Second_Circle
                         if (index == secondPosition_circle && optionsSecond_circle.Length > 5)
                         {
-                            AddTextCircleJS(DigitalTime.Second_circle, optionNameStart, "second_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextCircleJS(DigitalTime.Second_circle, optionNameStart, "second_", ref variables, ref items, ref text_update,
                                 optionsSecond_circle, show_level, "timeNaw", "TIME", "valueSecond", "second", 2, ref resume_call, ref pause_call);
                         }
                     }
@@ -1458,18 +1459,12 @@ namespace Watch_Face_Editor
                         {
                             variables += TabInString(4) + "let " + optionNameStart +
                                 "analog_clock_pro_hour_pointer_img = ''" + Environment.NewLine;
-                            //if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                            //    exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
-                            //    items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
 
-                            if (items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0 &&
-                                exist_items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0)
+                            if (items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "const deviceInfo = hmSetting.getDeviceInfo();";
-                            if (items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0 &&
-                                exist_items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
+                            if (items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
                                 items += Environment.NewLine + TabInString(6) + "if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);";
-                            if (items.IndexOf("timeSensor.addEventListener(timeSensor.event.MINUTEEND, function() {") < 0 &&
-                                exist_items.IndexOf("timeSensor.addEventListener(timeSensor.event.MINUTEEND, function() {") < 0)
+                            if (items.IndexOf("timeSensor.addEventListener(timeSensor.event.MINUTEEND, function() {") < 0)
                             {
                                 items += Environment.NewLine + TabInString(6) + "timeSensor.addEventListener(timeSensor.event.MINUTEEND, function() {";
                                 items += Environment.NewLine + TabInString(7) + "time_update(true, true);";
@@ -1523,8 +1518,7 @@ namespace Watch_Face_Editor
                             variables += TabInString(4) + "let " + optionNameStart +
                                 "analog_clock_pro_minute_pointer_img = ''" + Environment.NewLine;
 
-                            if (items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0 &&
-                                exist_items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0)
+                            if (items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "const deviceInfo = hmSetting.getDeviceInfo();";
 
                             string tempAngleName = optionNameStart + "fullAngle_minute";
@@ -1534,11 +1528,9 @@ namespace Watch_Face_Editor
 
                             if (AnalogTimePro.SmoothSecond == null || !AnalogTimePro.SmoothSecond.enable)  // перескакивает между минутами
                             {
-                                if (items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0 &&
-                                    exist_items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
+                                if (items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
                                     items += Environment.NewLine + TabInString(6) + "if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);";
-                                if (items.IndexOf("timeSensor.addEventListener(timeSensor.event.MINUTEEND, function() {") < 0 &&
-                                    exist_items.IndexOf("timeSensor.addEventListener(timeSensor.event.MINUTEEND, function() {") < 0)
+                                if (items.IndexOf("timeSensor.addEventListener(timeSensor.event.MINUTEEND, function() {") < 0)
                                 {
                                     items += Environment.NewLine + TabInString(6) + "timeSensor.addEventListener(timeSensor.event.MINUTEEND, function() {";
                                     items += Environment.NewLine + TabInString(7) + "time_update(true, true);";
@@ -1551,11 +1543,9 @@ namespace Watch_Face_Editor
                             }
                             else  // минутная стрелка движеться плавно
                             {
-                                if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                    exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                     items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
-                                if (items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0 &&
-                                exist_items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
+                                if (items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
                                     items += Environment.NewLine + TabInString(6) + "if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);";
                                 if (optionNameStart == "normal_")
                                 {
@@ -1637,11 +1627,9 @@ namespace Watch_Face_Editor
                                 variables += TabInString(4) + "let " + optionNameStart +
                                     "analog_clock_pro_second_pointer_img = ''" + Environment.NewLine;
 
-                                if (items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0 &&
-                                    exist_items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0)
+                                if (items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0)
                                     items += Environment.NewLine + TabInString(6) + "const deviceInfo = hmSetting.getDeviceInfo();";
-                                if (items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0 &&
-                                    exist_items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
+                                if (items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
                                     items += Environment.NewLine + TabInString(6) + "if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);";
 
                                 items += readOptionsPointerProSecond + Environment.NewLine;
@@ -1649,8 +1637,7 @@ namespace Watch_Face_Editor
                                     optionNameStart + "analog_clock_pro_second_pointer_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         optionsPointerProSecond + TabInString(6) + "});" + Environment.NewLine;
 
-                                if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                    exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                     items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                                 if (optionNameStart == "normal_")
                                 {
@@ -1701,15 +1688,12 @@ namespace Watch_Face_Editor
                                         variables += TabInString(4) + "let " + optionNameStart +
                                             "analog_clock_pro_second_pointer_img = ''" + Environment.NewLine;
 
-                                        if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                            exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                        if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                             items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
 
-                                        if (items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0 &&
-                                            exist_items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0)
+                                        if (items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0)
                                             items += Environment.NewLine + TabInString(6) + "const deviceInfo = hmSetting.getDeviceInfo();";
-                                        if (items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0 &&
-                                            exist_items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
+                                        if (items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
                                             items += Environment.NewLine + TabInString(6) + "if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);";
 
                                         items += readOptionsPointerProSecond + Environment.NewLine;
@@ -1771,11 +1755,9 @@ namespace Watch_Face_Editor
                                     variables += TabInString(4) + "let " + optionNameStart +
                                         "analog_clock_pro_second_pointer_img = ''" + Environment.NewLine;
 
-                                    if (items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0 &&
-                                        exist_items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0)
+                                    if (items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0)
                                         items += Environment.NewLine + TabInString(6) + "const deviceInfo = hmSetting.getDeviceInfo();";
-                                    if (items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0 &&
-                                        exist_items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
+                                    if (items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
                                         items += Environment.NewLine + TabInString(6) + "if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);";
 
                                     items += readOptionsPointerProSecond + Environment.NewLine;
@@ -1783,8 +1765,7 @@ namespace Watch_Face_Editor
                                         optionNameStart + "analog_clock_pro_second_pointer_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                             optionsPointerProSecond + TabInString(6) + "});" + Environment.NewLine;
 
-                                    if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                        exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                    if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                         items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                                     if (optionNameStart == "normal_")
                                     {
@@ -1848,15 +1829,12 @@ namespace Watch_Face_Editor
                                         variables += TabInString(4) + "let " + optionNameStart +
                                             "analog_clock_pro_second_pointer_img = ''" + Environment.NewLine;
 
-                                        if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                            exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                        if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                             items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
 
-                                        if (items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0 &&
-                                            exist_items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0)
+                                        if (items.IndexOf("const deviceInfo = hmSetting.getDeviceInfo();") < 0)
                                             items += Environment.NewLine + TabInString(6) + "const deviceInfo = hmSetting.getDeviceInfo();";
-                                        if (items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0 &&
-                                            exist_items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
+                                        if (items.IndexOf("if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);") < 0)
                                             items += Environment.NewLine + TabInString(6) + "if (!timeSensor) timeSensor = hmSensor.createSensor(hmSensor.id.TIME);";
 
                                         items += readOptionsPointerProSecond + Environment.NewLine;
@@ -2018,14 +1996,14 @@ namespace Watch_Face_Editor
                         // Text_Rotate
                         if (index == textRotatePosition && textRotateOptions.Length > 5)
                         {
-                            AddTextRotationJS(DateDay.Text_rotation, optionNameStart, "day_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextRotationJS(DateDay.Text_rotation, optionNameStart, "day_", ref variables, ref items, ref text_update,
                                 textRotateOptions, show_level, "timeNaw", "TIME", "valueDay", "day", 2, ref resume_call, ref pause_call);
                         }
 
                         // Text_Circle
                         if (index == textCirclePosition && textCircleOptions.Length > 5)
                         {
-                            AddTextCircleJS(DateDay.Text_circle, optionNameStart, "day_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextCircleJS(DateDay.Text_circle, optionNameStart, "day_", ref variables, ref items, ref text_update,
                                 textCircleOptions, show_level, "timeNaw", "TIME", "valueDay", "day", 2, ref resume_call, ref pause_call);
                         }
                     }
@@ -2115,14 +2093,14 @@ namespace Watch_Face_Editor
                         // Text_Rotate
                         if (index == textRotatePosition && textRotateOptions.Length > 5)
                         {
-                            AddTextRotationJS(DateMonth.Text_rotation, optionNameStart, "month_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextRotationJS(DateMonth.Text_rotation, optionNameStart, "month_", ref variables, ref items, ref text_update,
                                 textRotateOptions, show_level, "timeNaw", "TIME", "valueMonth", "month", 2, ref resume_call, ref pause_call);
                         }
 
                         // Text_Circle
                         if (index == textCirclePosition && textCircleOptions.Length > 5)
                         {
-                            AddTextCircleJS(DateMonth.Text_circle, optionNameStart, "month_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextCircleJS(DateMonth.Text_circle, optionNameStart, "month_", ref variables, ref items, ref text_update,
                                 textCircleOptions, show_level, "timeNaw", "TIME", "valueMonth", "month", 2, ref resume_call, ref pause_call);
                         }
 
@@ -2200,14 +2178,14 @@ namespace Watch_Face_Editor
                         // Text_Rotate
                         if (index == textRotatePosition && textRotateOptions.Length > 5)
                         {
-                            AddTextRotationJS(DateYear.Text_rotation, optionNameStart, "year_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextRotationJS(DateYear.Text_rotation, optionNameStart, "year_", ref variables, ref items, ref text_update,
                                 textRotateOptions, show_level, "timeNaw", "TIME", "valueYear", "year", 4, ref resume_call, ref pause_call);
                         }
 
                         // Text_Circle
                         if (index == textCirclePosition && textCircleOptions.Length > 5)
                         {
-                            AddTextCircleJS(DateYear.Text_circle, optionNameStart, "year_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextCircleJS(DateYear.Text_circle, optionNameStart, "year_", ref variables, ref items, ref text_update,
                                 textCircleOptions, show_level, "timeNaw", "TIME", "valueYear", "year", 4, ref resume_call, ref pause_call);
                         }
 
@@ -2725,7 +2703,7 @@ namespace Watch_Face_Editor
                         // Text_Rotate
                         if (index == textRotatePosition && textRotateOptions.Length > 5)
                         {
-                            AddTextRotationJS(Steps.Text_rotation, optionNameStart, "step_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextRotationJS(Steps.Text_rotation, optionNameStart, "step_", ref variables, ref items, ref text_update,
                                 textRotateOptions, show_level, "step", "STEP", "valueStep", "current", 5, ref resume_call, ref pause_call);
 
                         }
@@ -2733,7 +2711,7 @@ namespace Watch_Face_Editor
                         // Text_Circle
                         if (index == textCirclePosition && textCircleOptions.Length > 5)
                         {
-                            AddTextCircleJS(Steps.Text_circle, optionNameStart, "step_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextCircleJS(Steps.Text_circle, optionNameStart, "step_", ref variables, ref items, ref text_update,
                                 textCircleOptions, show_level, "step", "STEP", "valueStep", "current", 5, ref resume_call, ref pause_call);
 
                         }
@@ -2760,7 +2738,7 @@ namespace Watch_Face_Editor
                         // Text_Rotate_Target
                         if (index == textRotateTargetPosition && textRotateTargetOptions.Length > 5)
                         {
-                            AddTextRotationJS(Steps.Text_rotation_Target, optionNameStart, "step_target_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextRotationJS(Steps.Text_rotation_Target, optionNameStart, "step_target_", ref variables, ref items, ref text_update,
                                 textRotateTargetOptions, show_level, "step", "STEP", "targetStep", "target", 5, ref resume_call, ref pause_call);
 
                         }
@@ -2768,7 +2746,7 @@ namespace Watch_Face_Editor
                         // Text_Circle_Target
                         if (index == textCircleTargetPosition && textCircleTargetOptions.Length > 5)
                         {
-                            AddTextCircleJS(Steps.Text_circle_Target, optionNameStart, "step_target_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextCircleJS(Steps.Text_circle_Target, optionNameStart, "step_target_", ref variables, ref items,ref text_update,
                                 textCircleTargetOptions, show_level, "step", "STEP", "targetStep", "target", 5, ref resume_call, ref pause_call);
 
                         }
@@ -2791,18 +2769,12 @@ namespace Watch_Face_Editor
 
                             items += circleScaleOptions;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
-                            //if (optionNameStart == "normal_")
-                            //    items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
-                            //else items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type.AOD) {";
 
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "step_circle_scale = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                     circleScaleProgressOptions + TabInString(6) + "});" + Environment.NewLine;
-                            //items += Environment.NewLine + TabInString(7) +
-                            //    optionNameStart + "step_circle_scale = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
 
                             if (circle_scale.mirror)
                             {
@@ -2820,19 +2792,12 @@ namespace Watch_Face_Editor
                             //items += TabInString(6) + "};" + Environment.NewLine;
 
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales STEP');" + Environment.NewLine;
-                            if (items.IndexOf("const step = hmSensor.createSensor(hmSensor.id.STEP);") < 0 &&
-                                exist_items.IndexOf("const step = hmSensor.createSensor(hmSensor.id.STEP);") < 0)
+                            if (items.IndexOf("const step = hmSensor.createSensor(hmSensor.id.STEP);") < 0)
                             {
                                 items += TabInString(6) + Environment.NewLine;
                                 items += TabInString(6) + "const step = hmSensor.createSensor(hmSensor.id.STEP);" + Environment.NewLine;
-                                //if (exist_items.IndexOf("step.addEventListener") < 0)
-                                //{
-                                //    items += TabInString(6) + "step.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
-                                //    items += TabInString(7) + "scale_call();" + Environment.NewLine;
-                                //    items += TabInString(6) + "});" + Environment.NewLine;
-                                //}
                             }
-                            AddListener(ref variables, ref items, ref exist_items, "step", "valueStep", "scale_call();", ref resume_call, ref pause_call, optionNameStart);
+                            AddListener(ref variables, ref items, "step", "valueStep", "scale_call();", ref resume_call, ref pause_call, optionNameStart);
 
                             if (scale_update_function.IndexOf("progressStep") < 0)
                             {
@@ -2887,8 +2852,7 @@ namespace Watch_Face_Editor
                                 variables += TabInString(4) + "let " + optionNameStart +
                                     "step_linear_scale_pointer_img = ''" + Environment.NewLine;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (optionNameStart == "normal_")
                                 items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
@@ -2915,19 +2879,12 @@ namespace Watch_Face_Editor
 
 
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales STEP');" + Environment.NewLine;
-                            if (items.IndexOf("const step = hmSensor.createSensor(hmSensor.id.STEP);") < 0 &&
-                                exist_items.IndexOf("const step = hmSensor.createSensor(hmSensor.id.STEP);") < 0)
+                            if (items.IndexOf("const step = hmSensor.createSensor(hmSensor.id.STEP);") < 0)
                             {
                                 items += TabInString(6) + Environment.NewLine;
                                 items += TabInString(6) + "const step = hmSensor.createSensor(hmSensor.id.STEP);" + Environment.NewLine;
-                                //if (exist_items.IndexOf("step.addEventListener") < 0)
-                                //{
-                                //    items += TabInString(6) + "step.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
-                                //    items += TabInString(7) + "scale_call();" + Environment.NewLine;
-                                //    items += TabInString(6) + "});" + Environment.NewLine;
-                                //}
                             }
-                            AddListener(ref variables, ref items, ref exist_items, "step", "valueStep", "scale_call();", ref resume_call, ref pause_call, optionNameStart);
+                            AddListener(ref variables, ref items, "step", "valueStep", "scale_call();", ref resume_call, ref pause_call, optionNameStart);
 
                             if (scale_update_function.IndexOf("progressStep") < 0)
                             {
@@ -3098,14 +3055,14 @@ namespace Watch_Face_Editor
                         // Text_Rotate
                         if (index == textRotatePosition && textRotateOptions.Length > 5)
                         {
-                            AddTextRotationJS(Battery.Text_rotation, optionNameStart, "battery_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextRotationJS(Battery.Text_rotation, optionNameStart, "battery_", ref variables, ref items, ref text_update,
                                 textRotateOptions, show_level, "battery", "BATTERY", "valueBattery", "current", 3, ref resume_call, ref pause_call);
                         }
 
                         // Text_Circle
                         if (index == textCirclePosition && textCircleOptions.Length > 5)
                         {
-                            AddTextCircleJS(Battery.Text_circle, optionNameStart, "battery_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextCircleJS(Battery.Text_circle, optionNameStart, "battery_", ref variables, ref items, ref text_update,
                                 textCircleOptions, show_level, "battery", "BATTERY", "valueBattery", "current", 3, ref resume_call, ref pause_call);
                         }
 
@@ -3127,15 +3084,8 @@ namespace Watch_Face_Editor
 
                             items += circleScaleOptions;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
-                            //if (optionNameStart == "normal_")
-                            //    items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
-                            //else items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type.AOD) {";
-
-                            //items += Environment.NewLine + TabInString(7) +
-                            //    optionNameStart + "battery_circle_scale = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
 
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "battery_circle_scale = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
@@ -3146,24 +3096,18 @@ namespace Watch_Face_Editor
                                 variables += TabInString(4) + "let " + optionNameStart +
                                 "battery_circle_scale_mirror = ''" + Environment.NewLine;
 
-                                //items += TabInString(7) + optionNameStart +
-                                //    "battery_circle_scale_mirror = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
-
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "battery_circle_scale_mirror = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                         circleScaleProgressMirrorOptions + TabInString(6) + "});" + Environment.NewLine;
                             }
 
-                            //items += TabInString(6) + "};" + Environment.NewLine;
-
 
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales BATTERY');" + Environment.NewLine;
-                            if (items.IndexOf("const battery = hmSensor.createSensor(hmSensor.id.BATTERY);") < 0 &&
-                                exist_items.IndexOf("const battery = hmSensor.createSensor(hmSensor.id.BATTERY);") < 0)
+                            if (items.IndexOf("const battery = hmSensor.createSensor(hmSensor.id.BATTERY);") < 0)
                             {
                                 items += TabInString(6) + Environment.NewLine;
                                 items += TabInString(6) + "const battery = hmSensor.createSensor(hmSensor.id.BATTERY);" + Environment.NewLine;
-                                if (exist_items.IndexOf("battery.addEventListener") < 0)
+                                if (items.IndexOf("battery.addEventListener") < 0)
                                 {
                                     items += TabInString(6) + "battery.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
                                     items += TabInString(7) + "scale_call();" + Environment.NewLine;
@@ -3236,8 +3180,7 @@ namespace Watch_Face_Editor
                                 variables += TabInString(4) + "let " + optionNameStart +
                                     "battery_linear_scale_pointer_img = ''" + Environment.NewLine;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (optionNameStart == "normal_")
                                 items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
@@ -3264,12 +3207,11 @@ namespace Watch_Face_Editor
 
 
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales BATTERY');" + Environment.NewLine;
-                            if (items.IndexOf("const battery = hmSensor.createSensor(hmSensor.id.BATTERY);") < 0 &&
-                                exist_items.IndexOf("const battery = hmSensor.createSensor(hmSensor.id.BATTERY);") < 0)
+                            if (items.IndexOf("const battery = hmSensor.createSensor(hmSensor.id.BATTERY);") < 0)
                             {
                                 items += TabInString(6) + Environment.NewLine;
                                 items += TabInString(6) + "const battery = hmSensor.createSensor(hmSensor.id.BATTERY);" + Environment.NewLine;
-                                if (exist_items.IndexOf("battery.addEventListener") < 0)
+                                if (items.IndexOf("battery.addEventListener") < 0)
                                 {
                                     items += TabInString(6) + "battery.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
                                     items += TabInString(7) + "scale_call();" + Environment.NewLine;
@@ -3472,14 +3414,14 @@ namespace Watch_Face_Editor
                         // Text_Rotate
                         if (index == textRotatePosition && textRotateOptions.Length > 5)
                         {
-                            AddTextRotationJS(Calories.Text_rotation, optionNameStart, "calorie_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextRotationJS(Calories.Text_rotation, optionNameStart, "calorie_", ref variables, ref items, ref text_update,
                                 textRotateOptions, show_level, "calorie", "CALORIE", "valueCalories", "current", 4, ref resume_call, ref pause_call);
                         }
 
                         // Text_Circle
                         if (index == textCirclePosition && textCircleOptions.Length > 5)
                         {
-                            AddTextCircleJS(Calories.Text_circle, optionNameStart, "calorie_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextCircleJS(Calories.Text_circle, optionNameStart, "calorie_", ref variables, ref items, ref text_update,
                                 textCircleOptions, show_level, "calorie", "CALORIE", "valueCalories", "current", 4, ref resume_call, ref pause_call);
                         }
 
@@ -3505,14 +3447,14 @@ namespace Watch_Face_Editor
                         // Text_Rotate_Target
                         if (index == textRotateTargetPosition && textRotateTargetOptions.Length > 5)
                         {
-                            AddTextRotationJS(Calories.Text_rotation_Target, optionNameStart, "calorie_target_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextRotationJS(Calories.Text_rotation_Target, optionNameStart, "calorie_target_", ref variables, ref items, ref text_update,
                                 textRotateTargetOptions, show_level, "calorie", "CALORIE", "targetCalories", "target", 4, ref resume_call, ref pause_call);
                         }
 
                         // Text_Circle_Target
                         if (index == textCircleTargetPosition && textCircleTargetOptions.Length > 5)
                         {
-                            AddTextCircleJS(Calories.Text_circle_Target, optionNameStart, "calorie_target_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextCircleJS(Calories.Text_circle_Target, optionNameStart, "calorie_target_", ref variables, ref items, ref text_update,
                                 textCircleTargetOptions, show_level, "calorie", "CALORIE", "targetCalories", "target", 4, ref resume_call, ref pause_call);
                         }
 
@@ -3534,15 +3476,8 @@ namespace Watch_Face_Editor
 
                             items += circleScaleOptions;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
-                            //if (optionNameStart == "normal_")
-                            //    items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
-                            //else items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type.AOD) {";
-
-                            //items += Environment.NewLine + TabInString(7) +
-                            //    optionNameStart + "calorie_circle_scale = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
 
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "calorie_circle_scale = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
@@ -3553,24 +3488,18 @@ namespace Watch_Face_Editor
                                 variables += TabInString(4) + "let " + optionNameStart +
                                 "calorie_circle_scale_mirror = ''" + Environment.NewLine;
 
-                                //items += TabInString(7) + optionNameStart +
-                                //    "calorie_circle_scale_mirror = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
-
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "calorie_circle_scale_mirror = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                         circleScaleProgressMirrorOptions + TabInString(6) + "});" + Environment.NewLine;
                             }
 
-                            //items += TabInString(6) + "};" + Environment.NewLine;
-
 
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales CALORIE');" + Environment.NewLine;
-                            if (items.IndexOf("const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);") < 0 &&
-                                exist_items.IndexOf("const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);") < 0)
+                            if (items.IndexOf("const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);") < 0)
                             {
                                 items += TabInString(6) + Environment.NewLine;
                                 items += TabInString(6) + "const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);" + Environment.NewLine;
-                                if (exist_items.IndexOf("calorie.addEventListener") < 0)
+                                if (items.IndexOf("calorie.addEventListener") < 0)
                                 {
                                     items += TabInString(6) + "calorie.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
                                     items += TabInString(7) + "scale_call();" + Environment.NewLine;
@@ -3642,8 +3571,7 @@ namespace Watch_Face_Editor
                                 variables += TabInString(4) + "let " + optionNameStart +
                                     "calorie_linear_scale_pointer_img = ''" + Environment.NewLine;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (optionNameStart == "normal_")
                                 items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
@@ -3670,12 +3598,11 @@ namespace Watch_Face_Editor
 
 
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales CALORIE');" + Environment.NewLine;
-                            if (items.IndexOf("const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);") < 0 &&
-                                exist_items.IndexOf("const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);") < 0)
+                            if (items.IndexOf("const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);") < 0)
                             {
                                 items += TabInString(6) + Environment.NewLine;
                                 items += TabInString(6) + "const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);" + Environment.NewLine;
-                                if (exist_items.IndexOf("calorie.addEventListener") < 0)
+                                if (items.IndexOf("calorie.addEventListener") < 0)
                                 {
                                     items += TabInString(6) + "calorie.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
                                     items += TabInString(7) + "scale_call();" + Environment.NewLine;
@@ -3853,14 +3780,14 @@ namespace Watch_Face_Editor
                         // Text_Rotate
                         if (index == textRotatePosition && textRotateOptions.Length > 5)
                         {
-                            AddTextRotationJS(Heart.Text_rotation, optionNameStart, "heart_rate_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextRotationJS(Heart.Text_rotation, optionNameStart, "heart_rate_", ref variables, ref items, ref text_update,
                                 textRotateOptions, show_level, "heart_rate", "HEART", "valueHeartRate", "last", 3, ref resume_call, ref pause_call);
                         }
 
                         // Text_Circle
                         if (index == textCirclePosition && textCircleOptions.Length > 5)
                         {
-                            AddTextCircleJS(Heart.Text_circle, optionNameStart, "heart_rate_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextCircleJS(Heart.Text_circle, optionNameStart, "heart_rate_", ref variables, ref items, ref text_update,
                                 textCircleOptions, show_level, "heart_rate", "HEART", "valueHeartRate", "last", 3, ref resume_call, ref pause_call);
                         }
 
@@ -3882,15 +3809,8 @@ namespace Watch_Face_Editor
 
                             items += circleScaleOptions;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 )
                                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
-                            //if (optionNameStart == "normal_")
-                            //    items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
-                            //else items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type.AOD) {";
-
-                            //items += Environment.NewLine + TabInString(7) +
-                            //    optionNameStart + "heart_rate_circle_scale = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
 
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "heart_rate_circle_scale = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
@@ -3901,24 +3821,18 @@ namespace Watch_Face_Editor
                                 variables += TabInString(4) + "let " + optionNameStart +
                                 "heart_rate_circle_scale_mirror = ''" + Environment.NewLine;
 
-                                //items += TabInString(7) + optionNameStart +
-                                //    "heart_rate_circle_scale_mirror = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
-
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "heart_rate_circle_scale_mirror = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                         circleScaleProgressMirrorOptions + TabInString(6) + "});" + Environment.NewLine;
                             }
 
-                            //items += TabInString(6) + "};" + Environment.NewLine;
-
 
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales HEART');" + Environment.NewLine;
-                            if (items.IndexOf("const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);") < 0 &&
-                                exist_items.IndexOf("const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);") < 0)
+                            if (items.IndexOf("const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);") < 0)
                             {
                                 items += TabInString(6) + Environment.NewLine;
                                 items += TabInString(6) + "const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);" + Environment.NewLine;
-                                if (exist_items.IndexOf("heart_rate.addEventListener") < 0)
+                                if (items.IndexOf("heart_rate.addEventListener") < 0)
                                 {
                                     items += TabInString(6) + "heart_rate.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
                                     items += TabInString(7) + "scale_call();" + Environment.NewLine;
@@ -3978,8 +3892,7 @@ namespace Watch_Face_Editor
                                 variables += TabInString(4) + "let " + optionNameStart +
                                     "heart_rate_linear_scale_pointer_img = ''" + Environment.NewLine;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (optionNameStart == "normal_")
                                 items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
@@ -4006,12 +3919,11 @@ namespace Watch_Face_Editor
 
 
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales HEART');" + Environment.NewLine;
-                            if (items.IndexOf("const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);") < 0 &&
-                                exist_items.IndexOf("const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);") < 0)
+                            if (items.IndexOf("const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);") < 0)
                             {
                                 items += TabInString(6) + Environment.NewLine;
                                 items += TabInString(6) + "const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);" + Environment.NewLine;
-                                if (exist_items.IndexOf("heart_rate.addEventListener") < 0)
+                                if (items.IndexOf("heart_rate.addEventListener") < 0)
                                 {
                                     items += TabInString(6) + "heart_rate.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
                                     items += TabInString(7) + "scale_call();" + Environment.NewLine;
@@ -4220,14 +4132,14 @@ namespace Watch_Face_Editor
                         // Text_Rotate_Target
                         if (index == textRotateTargetPosition && textRotateTargetOptions.Length > 5)
                         {
-                            AddTextRotationJS(PAI.Text_rotation_Target, optionNameStart, "pai_total_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextRotationJS(PAI.Text_rotation_Target, optionNameStart, "pai_total_", ref variables, ref items, ref text_update,
                                 textRotateTargetOptions, show_level, "pai", "PAI", "totalPAI", "totalpai", 3, ref resume_call, ref pause_call);
                         }
 
                         // Text_Circle_Target
                         if (index == textCircleTargetPosition && textCircleTargetOptions.Length > 5)
                         {
-                            AddTextCircleJS(PAI.Text_circle_Target, optionNameStart, "pai_total_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextCircleJS(PAI.Text_circle_Target, optionNameStart, "pai_total_", ref variables, ref items, ref text_update,
                                 textCircleTargetOptions, show_level, "pai", "PAI", "totalPAI", "totalpai", 3, ref resume_call, ref pause_call);
                         }
 
@@ -4249,15 +4161,8 @@ namespace Watch_Face_Editor
 
                             items += circleScaleOptions;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
-                            //if (optionNameStart == "normal_")
-                            //    items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
-                            //else items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type.AOD) {";
-
-                            //items += Environment.NewLine + TabInString(7) +
-                            //    optionNameStart + "pai_circle_scale = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
 
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "pai_circle_scale = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
@@ -4268,24 +4173,18 @@ namespace Watch_Face_Editor
                                 variables += TabInString(4) + "let " + optionNameStart +
                                 "pai_circle_scale_mirror = ''" + Environment.NewLine;
 
-                                //items += TabInString(7) + optionNameStart +
-                                //    "pai_circle_scale_mirror = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
-
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "pai_circle_scale_mirror = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                         circleScaleProgressMirrorOptions + TabInString(6) + "});" + Environment.NewLine;
                             }
 
-                            //items += TabInString(6) + "};" + Environment.NewLine;
-
 
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales PAI');" + Environment.NewLine;
-                            if (items.IndexOf("const pai = hmSensor.createSensor(hmSensor.id.PAI);") < 0 &&
-                                exist_items.IndexOf("const pai = hmSensor.createSensor(hmSensor.id.PAI);") < 0)
+                            if (items.IndexOf("const pai = hmSensor.createSensor(hmSensor.id.PAI);") < 0)
                             {
                                 items += TabInString(6) + Environment.NewLine;
                                 items += TabInString(6) + "const pai = hmSensor.createSensor(hmSensor.id.PAI);" + Environment.NewLine;
-                                if (exist_items.IndexOf("calorie.addEventListener") < 0)
+                                if (items.IndexOf("calorie.addEventListener") < 0)
                                 {
                                     items += TabInString(6) + "pai.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
                                     items += TabInString(7) + "scale_call();" + Environment.NewLine;
@@ -4343,8 +4242,7 @@ namespace Watch_Face_Editor
                                 variables += TabInString(4) + "let " + optionNameStart +
                                     "pai_linear_scale_pointer_img = ''" + Environment.NewLine;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (optionNameStart == "normal_")
                                 items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
@@ -4371,12 +4269,11 @@ namespace Watch_Face_Editor
 
 
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales PAI');" + Environment.NewLine;
-                            if (items.IndexOf("const pai = hmSensor.createSensor(hmSensor.id.PAI);") < 0 &&
-                                exist_items.IndexOf("const pai = hmSensor.createSensor(hmSensor.id.PAI);") < 0)
+                            if (items.IndexOf("const pai = hmSensor.createSensor(hmSensor.id.PAI);") < 0)
                             {
                                 items += TabInString(6) + Environment.NewLine;
                                 items += TabInString(6) + "const pai = hmSensor.createSensor(hmSensor.id.PAI);" + Environment.NewLine;
-                                if (exist_items.IndexOf("calorie.addEventListener") < 0)
+                                if (items.IndexOf("calorie.addEventListener") < 0)
                                 {
                                     items += TabInString(6) + "pai.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
                                     items += TabInString(7) + "scale_call();" + Environment.NewLine;
@@ -4629,8 +4526,7 @@ namespace Watch_Face_Editor
                             }
                             if (text_rotate.imperial_unit != null && text_rotate.imperial_unit.Length > 0)
                             {
-                                if (items.IndexOf("const mileageUnit = hmSetting.getMileageUnit();") < 0 && 
-                                    exist_items.IndexOf("const mileageUnit = hmSetting.getMileageUnit();") < 0)
+                                if (items.IndexOf("const mileageUnit = hmSetting.getMileageUnit();") < 0)
                                 {
                                     items += Environment.NewLine + TabInString(6) + "const mileageUnit = hmSetting.getMileageUnit();"; 
                                 }
@@ -4658,20 +4554,18 @@ namespace Watch_Face_Editor
 
                                 variables += TabInString(4) + "let " + variableStartName + "TextRotate_error_img_width = " + dot_width.ToString() + ";" + Environment.NewLine;
                             }
-                            if (items.IndexOf("const distance = hmSensor.createSensor(hmSensor.id.DISTANCE);") < 0 &&
-                                exist_items.IndexOf("const distance = hmSensor.createSensor(hmSensor.id.DISTANCE);") < 0)
+                            if (items.IndexOf("const distance = hmSensor.createSensor(hmSensor.id.DISTANCE);") < 0)
                             {
                                 items += TabInString(6) + Environment.NewLine;
                                 items += TabInString(6) + "const distance = hmSensor.createSensor(hmSensor.id.DISTANCE);" + Environment.NewLine;
-                                if (items.IndexOf("distance.addEventListener") < 0 && exist_items.IndexOf("distance.addEventListener") < 0)
+                                if (items.IndexOf("distance.addEventListener") < 0)
                                 {
                                     items += TabInString(6) + "distance.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
                                     items += TabInString(7) + "text_update();" + Environment.NewLine;
                                     items += TabInString(6) + "});" + Environment.NewLine;
                                 }
                             }
-                            if (items.IndexOf("function toDegree (radian) {") < 0 &&
-                                exist_items.IndexOf("function toDegree (radian) {") < 0)
+                            if (items.IndexOf("function toDegree (radian) {") < 0)
                             {
                                 items += TabInString(6) + Environment.NewLine;
                                 items += TabInString(6) + "function toDegree (radian) {" + Environment.NewLine;
@@ -4862,8 +4756,7 @@ namespace Watch_Face_Editor
                             }
                             if (text_circle.imperial_unit != null && text_circle.imperial_unit.Length > 0)
                             {
-                                if (items.IndexOf("const mileageUnit = hmSetting.getMileageUnit();") < 0 &&
-                                    exist_items.IndexOf("const mileageUnit = hmSetting.getMileageUnit();") < 0)
+                                if (items.IndexOf("const mileageUnit = hmSetting.getMileageUnit();") < 0)
                                 {
                                     items += Environment.NewLine + TabInString(6) + "const mileageUnit = hmSetting.getMileageUnit();"; 
                                 }
@@ -4891,20 +4784,18 @@ namespace Watch_Face_Editor
 
                                 variables += TabInString(4) + "let " + variableStartName + "TextCircle_error_img_width = " + dot_width.ToString() + ";" + Environment.NewLine;
                             }
-                            if (items.IndexOf("const distance = hmSensor.createSensor(hmSensor.id.DISTANCE);") < 0 &&
-                                exist_items.IndexOf("const distance = hmSensor.createSensor(hmSensor.id.DISTANCE);") < 0)
+                            if (items.IndexOf("const distance = hmSensor.createSensor(hmSensor.id.DISTANCE);") < 0)
                             {
                                 items += TabInString(6) + Environment.NewLine;
                                 items += TabInString(6) + "const distance = hmSensor.createSensor(hmSensor.id.DISTANCE);" + Environment.NewLine;
-                                if (items.IndexOf("distance.addEventListener") < 0 && exist_items.IndexOf("distance.addEventListener") < 0)
+                                if (items.IndexOf("distance.addEventListener") < 0)
                                 {
                                     items += TabInString(6) + "distance.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
                                     items += TabInString(7) + "text_update();" + Environment.NewLine;
                                     items += TabInString(6) + "});" + Environment.NewLine;
                                 }
                             }
-                            if (items.IndexOf("function toDegree (radian) {") < 0 &&
-                                exist_items.IndexOf("function toDegree (radian) {") < 0)
+                            if (items.IndexOf("function toDegree (radian) {") < 0)
                             {
                                 items += TabInString(6) + Environment.NewLine;
                                 items += TabInString(6) + "function toDegree (radian) {" + Environment.NewLine;
@@ -5092,7 +4983,7 @@ namespace Watch_Face_Editor
                         // Text_Rotate
                         if (index == textRotatePosition && textRotateOptions.Length > 5)
                         {
-                            AddTextRotationJS(Stand.Text_rotation, optionNameStart, "stand_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextRotationJS(Stand.Text_rotation, optionNameStart, "stand_", ref variables, ref items, ref text_update,
                                 textRotateOptions, show_level, "stand", "STAND", "valueStand", "current", 2, ref resume_call, ref pause_call);
 
                         }
@@ -5100,7 +4991,7 @@ namespace Watch_Face_Editor
                         // Text_Circle
                         if (index == textCirclePosition && textCircleOptions.Length > 5)
                         {
-                            AddTextCircleJS(Stand.Text_circle, optionNameStart, "stand_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextCircleJS(Stand.Text_circle, optionNameStart, "stand_", ref variables, ref items, ref text_update,
                                 textCircleOptions, show_level, "stand", "STAND", "valueStand", "current", 2, ref resume_call, ref pause_call);
 
                         }
@@ -5127,7 +5018,7 @@ namespace Watch_Face_Editor
                         // Text_Rotate_Target
                         if (index == textRotateTargetPosition && textRotateTargetOptions.Length > 5)
                         {
-                            AddTextRotationJS(Stand.Text_rotation_Target, optionNameStart, "stand_target_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextRotationJS(Stand.Text_rotation_Target, optionNameStart, "stand_target_", ref variables, ref items, ref text_update,
                                 textRotateTargetOptions, show_level, "stand", "STAND", "targetStand", "target", 2, ref resume_call, ref pause_call);
 
                         }
@@ -5135,7 +5026,7 @@ namespace Watch_Face_Editor
                         // Text_Circle_Target
                         if (index == textCircleTargetPosition && textCircleTargetOptions.Length > 5)
                         {
-                            AddTextCircleJS(Stand.Text_circle_Target, optionNameStart, "stand_target_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextCircleJS(Stand.Text_circle_Target, optionNameStart, "stand_target_", ref variables, ref items, ref text_update,
                                 textCircleTargetOptions, show_level, "stand", "STAND", "targetStand", "target", 2, ref resume_call, ref pause_call);
 
                         }
@@ -5158,8 +5049,7 @@ namespace Watch_Face_Editor
 
                             items += circleScaleOptions;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
 
                             items += Environment.NewLine + TabInString(6) +
@@ -5177,19 +5067,12 @@ namespace Watch_Face_Editor
                             }
 
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales STAND');" + Environment.NewLine;
-                            if (items.IndexOf("const stand = hmSensor.createSensor(hmSensor.id.STAND);") < 0 &&
-                                exist_items.IndexOf("const stand = hmSensor.createSensor(hmSensor.id.STAND);") < 0)
+                            if (items.IndexOf("const stand = hmSensor.createSensor(hmSensor.id.STAND);") < 0)
                             {
                                 items += TabInString(6) + Environment.NewLine;
                                 items += TabInString(6) + "const stand = hmSensor.createSensor(hmSensor.id.STAND);" + Environment.NewLine;
-                                //if (exist_items.IndexOf("stand.addEventListener") < 0)
-                                //{
-                                //    items += TabInString(6) + "stand.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
-                                //    items += TabInString(7) + "scale_call();" + Environment.NewLine;
-                                //    items += TabInString(6) + "});" + Environment.NewLine;
-                                //}
                             }
-                            AddListener(ref variables, ref items, ref exist_items, "stand", "valueStand", "scale_call();", ref resume_call, ref pause_call, optionNameStart);
+                            AddListener(ref variables, ref items, "stand", "valueStand", "scale_call();", ref resume_call, ref pause_call, optionNameStart);
 
                             if (scale_update_function.IndexOf("progressStand") < 0)
                             {
@@ -5241,8 +5124,7 @@ namespace Watch_Face_Editor
                                 variables += TabInString(4) + "let " + optionNameStart +
                                     "stand_linear_scale_pointer_img = ''" + Environment.NewLine;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (optionNameStart == "normal_")
                                 items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
@@ -5269,19 +5151,12 @@ namespace Watch_Face_Editor
 
 
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales STAND');" + Environment.NewLine;
-                            if (items.IndexOf("const stand = hmSensor.createSensor(hmSensor.id.STAND);") < 0 &&
-                                exist_items.IndexOf("const stand = hmSensor.createSensor(hmSensor.id.STAND);") < 0)
+                            if (items.IndexOf("const stand = hmSensor.createSensor(hmSensor.id.STAND);") < 0 )
                             {
                                 items += TabInString(6) + Environment.NewLine;
                                 items += TabInString(6) + "const stand = hmSensor.createSensor(hmSensor.id.STAND);" + Environment.NewLine;
-                                //if (exist_items.IndexOf("stand.addEventListener") < 0)
-                                //{
-                                //    items += TabInString(6) + "stand.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
-                                //    items += TabInString(7) + "scale_call();" + Environment.NewLine;
-                                //    items += TabInString(6) + "});" + Environment.NewLine;
-                                //}
                             }
-                            AddListener(ref variables, ref items, ref exist_items, "stand", "valueStand", "scale_call();", ref resume_call, ref pause_call, optionNameStart);
+                            AddListener(ref variables, ref items, "stand", "valueStand", "scale_call();", ref resume_call, ref pause_call, optionNameStart);
 
                             if (scale_update_function.IndexOf("progressStand") < 0)
                             {
@@ -5475,15 +5350,8 @@ namespace Watch_Face_Editor
 
                             items += circleScaleOptions;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
-                            //if (optionNameStart == "normal_")
-                            //    items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
-                            //else items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type.AOD) {";
-
-                            //items += Environment.NewLine + TabInString(7) +
-                            //    optionNameStart + "activity_circle_scale = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
 
                             items += Environment.NewLine + TabInString(6) +
                                 optionNameStart + "activity_circle_scale = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
@@ -5494,23 +5362,17 @@ namespace Watch_Face_Editor
                                 variables += TabInString(4) + "let " + optionNameStart +
                                 "activity_circle_scale_mirror = ''" + Environment.NewLine;
 
-                                //items += TabInString(7) + optionNameStart +
-                                //    "activity_circle_scale_mirror = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
-
                                 items += Environment.NewLine + TabInString(6) +
                                     optionNameStart + "activity_circle_scale_mirror = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                         circleScaleProgressMirrorOptions + TabInString(6) + "});" + Environment.NewLine;
                             }
 
-                            //items += TabInString(6) + "};" + Environment.NewLine;
-
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales ACTIVITY');" + Environment.NewLine;
-                            if (items.IndexOf("const activity = hmSensor.createSensor(hmSensor.id.ACTIVITY);") < 0 &&
-                                exist_items.IndexOf("const activity = hmSensor.createSensor(hmSensor.id.ACTIVITY);") < 0)
+                            if (items.IndexOf("const activity = hmSensor.createSensor(hmSensor.id.ACTIVITY);") < 0)
                             {
                                 items += TabInString(6) + Environment.NewLine;
                                 items += TabInString(6) + "const activity = hmSensor.createSensor(hmSensor.id.ACTIVITY);" + Environment.NewLine;
-                                if (exist_items.IndexOf("activity.addEventListener") < 0)
+                                if (items.IndexOf("activity.addEventListener") < 0)
                                 {
                                     items += TabInString(6) + "activity.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
                                     items += TabInString(7) + "scale_call();" + Environment.NewLine;
@@ -5568,8 +5430,7 @@ namespace Watch_Face_Editor
                                 variables += TabInString(4) + "let " + optionNameStart +
                                     "activity_linear_scale_pointer_img = ''" + Environment.NewLine;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (optionNameStart == "normal_")
                                 items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
@@ -5596,12 +5457,11 @@ namespace Watch_Face_Editor
 
 
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales ACTIVITY');" + Environment.NewLine;
-                            if (items.IndexOf("const activity = hmSensor.createSensor(hmSensor.id.ACTIVITY);") < 0 &&
-                                exist_items.IndexOf("const activity = hmSensor.createSensor(hmSensor.id.ACTIVITY);") < 0)
+                            if (items.IndexOf("const activity = hmSensor.createSensor(hmSensor.id.ACTIVITY);") < 0 )
                             {
                                 items += TabInString(6) + Environment.NewLine;
                                 items += TabInString(6) + "const activity = hmSensor.createSensor(hmSensor.id.ACTIVITY);" + Environment.NewLine;
-                                if (exist_items.IndexOf("activity.addEventListener") < 0)
+                                if (items.IndexOf("activity.addEventListener") < 0)
                                 {
                                     items += TabInString(6) + "activity.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
                                     items += TabInString(7) + "scale_call();" + Environment.NewLine;
@@ -5723,7 +5583,7 @@ namespace Watch_Face_Editor
                         // Text_Rotate
                         if (index == textRotatePosition && textRotateOptions.Length > 5)
                         {
-                            AddTextRotationJS(SpO2.Text_rotation, optionNameStart, "spo2_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextRotationJS(SpO2.Text_rotation, optionNameStart, "spo2_", ref variables, ref items, ref text_update,
                                 textRotateOptions, show_level, "spo2", "SPO2", "valueSpO2", "current", 3, ref resume_call, ref pause_call);
 
                         }
@@ -5731,7 +5591,7 @@ namespace Watch_Face_Editor
                         // Text_Circle
                         if (index == textCirclePosition && textCircleOptions.Length > 5)
                         {
-                            AddTextCircleJS(SpO2.Text_circle, optionNameStart, "spo2_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextCircleJS(SpO2.Text_circle, optionNameStart, "spo2_", ref variables, ref items, ref text_update,
                                 textCircleOptions, show_level, "spo2", "SPO2", "valueSpO2", "current", 3, ref resume_call, ref pause_call);
                         }
 
@@ -5994,7 +5854,7 @@ namespace Watch_Face_Editor
                         // Text_Rotate
                         if (index == textRotatePosition && textRotateOptions.Length > 5)
                         {
-                            AddTextRotationJS(FatBurning.Text_rotation, optionNameStart, "fat_burning_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextRotationJS(FatBurning.Text_rotation, optionNameStart, "fat_burning_", ref variables, ref items, ref text_update,
                                 textRotateOptions, show_level, "fat_burning", "FAT_BURRING", "valueFatBurning", "current", 3, ref resume_call, ref pause_call);
 
                         }
@@ -6002,7 +5862,7 @@ namespace Watch_Face_Editor
                         // Text_Circle
                         if (index == textCirclePosition && textCircleOptions.Length > 5)
                         {
-                            AddTextCircleJS(FatBurning.Text_circle, optionNameStart, "fat_burning_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextCircleJS(FatBurning.Text_circle, optionNameStart, "fat_burning_", ref variables, ref items, ref text_update,
                                 textCircleOptions, show_level, "fat_burning", "FAT_BURRING", "valueFatBurning", "current", 3, ref resume_call, ref pause_call);
 
                         }
@@ -6029,7 +5889,7 @@ namespace Watch_Face_Editor
                         // Text_Rotate_Target
                         if (index == textRotateTargetPosition && textRotateTargetOptions.Length > 5)
                         {
-                            AddTextRotationJS(FatBurning.Text_rotation_Target, optionNameStart, "fat_burning_target_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextRotationJS(FatBurning.Text_rotation_Target, optionNameStart, "fat_burning_target_", ref variables, ref items, ref text_update,
                                 textRotateTargetOptions, show_level, "fat_burning", "FAT_BURRING", "targetFatBurning", "target", 3, ref resume_call, ref pause_call);
 
                         }
@@ -6037,7 +5897,7 @@ namespace Watch_Face_Editor
                         // Text_Circle_Target
                         if (index == textCircleTargetPosition && textCircleTargetOptions.Length > 5)
                         {
-                            AddTextCircleJS(FatBurning.Text_circle_Target, optionNameStart, "fat_burning_target_fat_burning_target_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextCircleJS(FatBurning.Text_circle_Target, optionNameStart, "fat_burning_target_fat_burning_target_", ref variables, ref items, ref text_update,
                                 textCircleTargetOptions, show_level, "fat_burning", "FAT_BURRING", "targetFatBurning", "target", 3, ref resume_call, ref pause_call);
 
                         }
@@ -6060,8 +5920,7 @@ namespace Watch_Face_Editor
 
                             items += circleScaleOptions;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
 
                             items += Environment.NewLine + TabInString(6) +
@@ -6079,19 +5938,12 @@ namespace Watch_Face_Editor
                             }
 
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales FAT_BURNING');" + Environment.NewLine;
-                            if (items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0 &&
-                                exist_items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0)
+                            if (items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0)
                             {
                                 items += TabInString(6) + Environment.NewLine;
                                 items += TabInString(6) + "const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);" + Environment.NewLine;
-                                //if (exist_items.IndexOf("fat_burning.addEventListener") < 0)
-                                //{
-                                //    items += TabInString(6) + "fat_burning.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
-                                //    items += TabInString(7) + "scale_call();" + Environment.NewLine;
-                                //    items += TabInString(6) + "});" + Environment.NewLine;
-                                //}
                             }
-                            AddListener(ref variables, ref items, ref exist_items, "fat_burning", "valueFatBurning", "scale_call();", ref resume_call, ref pause_call, optionNameStart);
+                            AddListener(ref variables, ref items, "fat_burning", "valueFatBurning", "scale_call();", ref resume_call, ref pause_call, optionNameStart);
 
                             if (scale_update_function.IndexOf("progressFatBurning") < 0)
                             {
@@ -6143,8 +5995,7 @@ namespace Watch_Face_Editor
                                 variables += TabInString(4) + "let " + optionNameStart +
                                     "fat_burning_linear_scale_pointer_img = ''" + Environment.NewLine;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                                 items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (optionNameStart == "normal_")
                                 items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
@@ -6171,19 +6022,12 @@ namespace Watch_Face_Editor
 
 
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update scales FAT_BURNING');" + Environment.NewLine;
-                            if (items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0 &&
-                                exist_items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0)
+                            if (items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0)
                             {
                                 items += TabInString(6) + Environment.NewLine;
                                 items += TabInString(6) + "const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);" + Environment.NewLine;
-                                //if (exist_items.IndexOf("fat_burning.addEventListener") < 0)
-                                //{
-                                //    items += TabInString(6) + "fat_burning.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
-                                //    items += TabInString(7) + "scale_call();" + Environment.NewLine;
-                                //    items += TabInString(6) + "});" + Environment.NewLine;
-                                //}
                             }
-                            AddListener(ref variables, ref items, ref exist_items, "fat_burning", "valueFatBurning", "scale_call();", ref resume_call, ref pause_call, optionNameStart);
+                            AddListener(ref variables, ref items, "fat_burning", "valueFatBurning", "scale_call();", ref resume_call, ref pause_call, optionNameStart);
 
                             if (scale_update_function.IndexOf("progressFatBurning") < 0)
                             {
@@ -6412,28 +6256,28 @@ namespace Watch_Face_Editor
                         // Text_Rotate min
                         if (index == numberMinRotatePosition && numberMinRotateOptions.Length > 5)
                         {
-                            AddTextRotationJS(Weather.Text_Min_rotation, optionNameStart, "low_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextRotationJS(Weather.Text_Min_rotation, optionNameStart, "low_", ref variables, ref items, ref text_update,
                                 numberMinRotateOptions, show_level, "weatherData", "forecastData", "temperatureLow", "low", 4, ref resume_call, ref pause_call);
                         }
 
                         // Text_Circle min
                         if (index == numberMinCirclePosition && numberMinCircleOptions.Length > 5)
                         {
-                            AddTextCircleJS(Weather.Text_Min_circle, optionNameStart, "low_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextCircleJS(Weather.Text_Min_circle, optionNameStart, "low_", ref variables, ref items, ref text_update,
                                 numberMinCircleOptions, show_level, "weatherData", "forecastData", "temperatureLow", "low", 4, ref resume_call, ref pause_call);
                         }
 
                         // Text_Rotate max
                         if (index == numberMinRotatePosition && numberMaxRotateOptions.Length > 5)
                         {
-                            AddTextRotationJS(Weather.Text_Max_rotation, optionNameStart, "high_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextRotationJS(Weather.Text_Max_rotation, optionNameStart, "high_", ref variables, ref items, ref text_update,
                                 numberMaxRotateOptions, show_level, "weatherData", "forecastData", "temperatureHigh", "high", 4, ref resume_call, ref pause_call);
                         }
 
                         // Text_Circle max
                         if (index == numberMaxCirclePosition && numberMaxCircleOptions.Length > 5)
                         {
-                            AddTextCircleJS(Weather.Text_Max_circle, optionNameStart, "high_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextCircleJS(Weather.Text_Max_circle, optionNameStart, "high_", ref variables, ref items, ref text_update,
                                 numberMaxCircleOptions, show_level, "weatherData", "forecastData", "temperatureHigh", "high", 4, ref resume_call, ref pause_call);
                         }
 
@@ -6469,7 +6313,7 @@ namespace Watch_Face_Editor
 
                             scale_update_function += Environment.NewLine + TabInString(7) + "console.log('Weather city name');" + Environment.NewLine;
 
-                            if (scale_update_function.IndexOf("const weatherData = weatherSensor.getForecastWeather();") < 0)
+                            if (scale_update_function.IndexOf("let weatherData = weatherSensor.getForecastWeather();") < 0)
                             {
                                 scale_update_function += TabInString(7) +
                                     "let weatherData = weatherSensor.getForecastWeather();" + Environment.NewLine;
@@ -6828,14 +6672,14 @@ namespace Watch_Face_Editor
                         sunriseRotatePosition = Sunrise.Sunrise_rotation.position;
                         text_rotate = Sunrise.Sunrise_rotation;
 
-                        sunriseRotateOptions = Text_Rotate_Options(text_rotate, "SUNRISE", show_level, true);
+                        sunriseRotateOptions = Text_Rotate_Options(text_rotate, "SUN_RISE", show_level, true);
                     }
                     if (Sunrise.Sunrise_circle != null && Sunrise.Sunrise_circle.visible)
                     {
                         sunriseCirclePosition = Sunrise.Sunrise_circle.position;
                         text_circle = Sunrise.Sunrise_circle;
 
-                        sunriseCircleOptions = Text_Circle_Options(text_circle, "SUNRISE", show_level, true);
+                        sunriseCircleOptions = Text_Circle_Options(text_circle, "SUN_RISE", show_level, true);
                     }
 
                     if (Sunrise.Sunset != null && Sunrise.Sunset.visible)
@@ -6851,14 +6695,14 @@ namespace Watch_Face_Editor
                         sunsetRotatePosition = Sunrise.Sunset_rotation.position;
                         text_rotate = Sunrise.Sunset_rotation;
 
-                        sunsetRotateOptions = Text_Rotate_Options(text_rotate, "SUNSET", show_level, true);
+                        sunsetRotateOptions = Text_Rotate_Options(text_rotate, "SUN_SET", show_level, true);
                     }
                     if (Sunrise.Sunset_circle != null && Sunrise.Sunset_circle.visible)
                     {
                         sunsetCirclePosition = Sunrise.Sunset_circle.position;
                         text_circle = Sunrise.Sunset_circle;
 
-                        sunsetCircleOptions = Text_Circle_Options(text_circle, "SUNSET", show_level, true);
+                        sunsetCircleOptions = Text_Circle_Options(text_circle, "SUN_SET", show_level, true);
                     }
 
                     if (Sunrise.Sunset_Sunrise != null && Sunrise.Sunset_Sunrise.visible)
@@ -6965,28 +6809,28 @@ namespace Watch_Face_Editor
                         // Text_Rotate Sunrise
                         if (index == sunriseRotatePosition && sunriseRotateOptions.Length > 5)
                         {
-                            AddTextRotationJS(Sunrise.Sunrise_rotation, optionNameStart, "sunrise_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextRotationJS(Sunrise.Sunrise_rotation, optionNameStart, "sunrise_", ref variables, ref items, ref text_update,
                                 sunriseRotateOptions, show_level, "weatherData", "tideData", "sunriseTime", "sunrise", 5, ref resume_call, ref pause_call);
                         }
 
                         // Text_Circle Sunrise
                         if (index == sunriseCirclePosition && sunriseCircleOptions.Length > 5)
                         {
-                            AddTextCircleJS(Sunrise.Sunrise_circle, optionNameStart, "sunrise_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextCircleJS(Sunrise.Sunrise_circle, optionNameStart, "sunrise_", ref variables, ref items, ref text_update,
                                 sunriseCircleOptions, show_level, "weatherData", "tideData", "sunriseTime", "sunrise", 5, ref resume_call, ref pause_call);
                         }
 
                         // Text_Rotate Sunset
                         if (index == sunsetRotatePosition && sunsetRotateOptions.Length > 5)
                         {
-                            AddTextRotationJS(Sunrise.Sunset_rotation, optionNameStart, "sunset_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextRotationJS(Sunrise.Sunset_rotation, optionNameStart, "sunset_", ref variables, ref items, ref text_update,
                                 sunsetRotateOptions, show_level, "weatherData", "tideData", "sunsetTime", "sunset", 5, ref resume_call, ref pause_call);
                         }
 
                         // Text_Circle Sunset
                         if (index == sunsetCirclePosition && sunsetCircleOptions.Length > 5)
                         {
-                            AddTextCircleJS(Sunrise.Sunset_circle, optionNameStart, "sunset_", ref variables, ref items, exist_items, ref text_update,
+                            AddTextCircleJS(Sunrise.Sunset_circle, optionNameStart, "sunset_", ref variables, ref items, ref text_update,
                                 sunsetCircleOptions, show_level, "weatherData", "tideData", "sunsetTime", "sunset", 5, ref resume_call, ref pause_call);
                         }
 
@@ -7586,16 +7430,11 @@ namespace Watch_Face_Editor
             }
         }
 
-        private void AddEditableElementToJS(Object element, string show_level, string optionNameStart, out string variables, out string items,
-            out string main_items, ref string scale_update_function, string exist_items,
+        private void AddEditableElementToJS(Object element, string show_level, string optionNameStart, ref string variables, out string outItems,
+            ref string items, ref string scale_update_function, /*string exist_items,*/
             ref string resume_call, ref string pause_call)
         {
-            variables = "";
-            items = "";
-            main_items = "";
-            //scale_update_function = "";
-            //resume_call = "";
-            //pause_call = "";
+            outItems = "";
             string type = element.GetType().Name;
 
             int imagesPosition = 99;
@@ -7653,20 +7492,20 @@ namespace Watch_Face_Editor
                     {
                         if (index == pointerPositionDay && optionsPointerDay.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                "hmUI.createWidget(hmUI.widget.DATE_POINTER, {" +
                                optionsPointerDay + TabInString(8) + "});" + Environment.NewLine;
                         }
 
                         if (index == numberPositionDay && optionsNumberDay.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_DATE, {" + 
                                 optionsNumberDay + TabInString(8) + "});" + Environment.NewLine;
 
                             if (optionsNumberDay_separator.Length > 5)
                             {
-                                items += Environment.NewLine + TabInString(8) +
+                                outItems += Environment.NewLine + TabInString(8) +
                                     "hmUI.createWidget(hmUI.widget.IMG, {" +
                                     optionsNumberDay_separator + TabInString(8) + "});" + Environment.NewLine;
                             }
@@ -7711,20 +7550,20 @@ namespace Watch_Face_Editor
                     {
                         if (index == pointerPositionMonth && optionsPointerMonth.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.DATE_POINTER, {" +
                                     optionsPointerMonth + TabInString(8) + "});" + Environment.NewLine;
                         }
 
                         if (index == numberPositionMonth && optionsNumberMonth.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_DATE, {" +
                                     optionsNumberMonth + TabInString(8) + "});" + Environment.NewLine;
 
                             if (optionsNumberMonth_separator.Length > 5)
                             {
-                                items += Environment.NewLine + TabInString(8) +
+                                outItems += Environment.NewLine + TabInString(8) +
                                     "hmUI.createWidget(hmUI.widget.IMG, {" +
                                         optionsNumberMonth_separator + TabInString(8) + "});" + Environment.NewLine;
                             }
@@ -7732,7 +7571,7 @@ namespace Watch_Face_Editor
 
                         if (index == imagesPositionMonth && optionsImagesMonth.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "date_img_date_month_img = hmUI.createWidget(hmUI.widget.IMG_DATE, {" +
                                     optionsImagesMonth + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -7756,13 +7595,13 @@ namespace Watch_Face_Editor
 
                     if (optionsNumberYear.Length > 5)
                     {
-                        items += Environment.NewLine + TabInString(8) +
+                        outItems += Environment.NewLine + TabInString(8) +
                             "hmUI.createWidget(hmUI.widget.IMG_DATE, {" +
                                 optionsNumberYear + TabInString(8) + "});" + Environment.NewLine;
 
                         if (optionsNumberYear_separator.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG, {" +
                                     optionsNumberYear_separator + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -7795,14 +7634,14 @@ namespace Watch_Face_Editor
                     {
                         if (index == pointerPositionWeek && optionsPointerWeek.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.DATE_POINTER, {" +
                                     optionsPointerWeek + TabInString(8) + "});" + Environment.NewLine;
                         }
 
                         if (index == imagesPositionWeek && optionsImagesWeek.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_WEEK, {" +
                                     optionsImagesWeek + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -7880,7 +7719,7 @@ namespace Watch_Face_Editor
                         // Images
                         if (index == imagesPosition && imagesOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
                                     imagesOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -7888,7 +7727,7 @@ namespace Watch_Face_Editor
                         // Segments
                         if (index == segmentsPosition && segmentsOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_PROGRESS, {" +
                                     segmentsOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -7896,13 +7735,13 @@ namespace Watch_Face_Editor
                         // Number
                         if (index == numberPosition && numberOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(8) + "});" + Environment.NewLine;
 
                             if (numberOptions_separator.Length > 5)
                             {
-                                items += Environment.NewLine + TabInString(8) +
+                                outItems += Environment.NewLine + TabInString(8) +
                                     "hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(8) + "});" + Environment.NewLine;
                             }
@@ -7911,13 +7750,13 @@ namespace Watch_Face_Editor
                         // Number_Target
                         if (index == numberTargetPosition && numberTargetOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberTargetOptions + TabInString(8) + "});" + Environment.NewLine;
 
                             if (numberTargetOptions_separator.Length > 5)
                             {
-                                items += Environment.NewLine + TabInString(8) +
+                                outItems += Environment.NewLine + TabInString(8) +
                                     "hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberTargetOptions_separator + TabInString(8) + "});" + Environment.NewLine;
                             }
@@ -7926,7 +7765,7 @@ namespace Watch_Face_Editor
                         // Pointer
                         if (index == pointerPosition && pointerOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
                                     pointerOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -7939,19 +7778,19 @@ namespace Watch_Face_Editor
                             if (circle_scale.mirror) optionNameMirror = optionNameStart + "step_circle_scale_mirror";
                             variables += TabInString(4) + "let " + variableName +  " = null;" + Environment.NewLine;
 
-                            items += circleScaleOptions;
+                            outItems += circleScaleOptions;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                main_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
-                                main_items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (outItems.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (show_level == "ONLY_NORMAL")
-                                items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
-                            else items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
+                                outItems += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
+                            else outItems += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
 
                             //items += Environment.NewLine + TabInString(9) +
                             //    variableName + " = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
 
-                            items += Environment.NewLine + TabInString(9) + variableName + " = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
+                            outItems += Environment.NewLine + TabInString(9) + variableName + " = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                     circleScaleProgressOptions + TabInString(9) + "});" + Environment.NewLine;
 
                             if (circle_scale.mirror)
@@ -7961,24 +7800,23 @@ namespace Watch_Face_Editor
                                 //items += TabInString(9) + variableName +
                                 //    "_mirror = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
 
-                                items += Environment.NewLine + TabInString(9) + variableName + "_mirror = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
+                                outItems += Environment.NewLine + TabInString(9) + variableName + "_mirror = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                         circleScaleProgressMirrorOptions + TabInString(9) + "});" + Environment.NewLine;
                             }
 
-                            items += TabInString(8) + "};" + Environment.NewLine;
+                            outItems += TabInString(8) + "};" + Environment.NewLine;
 
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update editable circle_scale STEP');" + Environment.NewLine;
-                            if (items.IndexOf("const step = hmSensor.createSensor(hmSensor.id.STEP);") < 0 &&
-                                exist_items.IndexOf("const step = hmSensor.createSensor(hmSensor.id.STEP);") < 0 &&
-                                main_items.IndexOf("const step = hmSensor.createSensor(hmSensor.id.STEP);") < 0)
+                            if (outItems.IndexOf("const step = hmSensor.createSensor(hmSensor.id.STEP);") < 0 &&
+                                items.IndexOf("const step = hmSensor.createSensor(hmSensor.id.STEP);") < 0)
                             {
-                                main_items += TabInString(6) + Environment.NewLine;
-                                main_items += TabInString(6) + "const step = hmSensor.createSensor(hmSensor.id.STEP);" + Environment.NewLine;
-                                if (exist_items.IndexOf("step.addEventListener") < 0)
+                                items += TabInString(6) + Environment.NewLine;
+                                items += TabInString(6) + "const step = hmSensor.createSensor(hmSensor.id.STEP);" + Environment.NewLine;
+                                if (items.IndexOf("step.addEventListener") < 0)
                                 {
-                                    items += TabInString(8) + "step.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
-                                    items += TabInString(9) + "scale_call();" + Environment.NewLine;
-                                    items += TabInString(8) + "});" + Environment.NewLine;
+                                    outItems += TabInString(8) + "step.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
+                                    outItems += TabInString(9) + "scale_call();" + Environment.NewLine;
+                                    outItems += TabInString(8) + "});" + Environment.NewLine;
                                 }
                             }
 
@@ -8023,14 +7861,14 @@ namespace Watch_Face_Editor
                                 variables += TabInString(4) + "let " + variableName +
                                     "_pointer_img = ''" + Environment.NewLine;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                main_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
-                                main_items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (outItems.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (show_level == "ONLY_NORMAL")
-                                items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
-                            else items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
+                                outItems += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
+                            else outItems += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
 
-                            items += Environment.NewLine + TabInString(9) +
+                            outItems += Environment.NewLine + TabInString(9) +
                                 variableName + " = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
 
                             if (linear_scale.mirror)
@@ -8041,27 +7879,26 @@ namespace Watch_Face_Editor
                                     variables += TabInString(4) + "let " + variableName +
                                         "_pointer_img_mirror = ''" + Environment.NewLine;
 
-                                items += TabInString(9) + variableName +
+                                outItems += TabInString(9) + variableName +
                                     "_mirror = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
                             }
 
-                            items += TabInString(8) + "};" + Environment.NewLine;
+                            outItems += TabInString(8) + "};" + Environment.NewLine;
 
-                            items += linearScaleOptions;
+                            outItems += linearScaleOptions;
 
 
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update editable linear_scale STEP');" + Environment.NewLine;
-                            if (items.IndexOf("const step = hmSensor.createSensor(hmSensor.id.STEP);") < 0 &&
-                                exist_items.IndexOf("const step = hmSensor.createSensor(hmSensor.id.STEP);") < 0 &&
-                                main_items.IndexOf("const step = hmSensor.createSensor(hmSensor.id.STEP);") < 0)
+                            if (outItems.IndexOf("const step = hmSensor.createSensor(hmSensor.id.STEP);") < 0 &&
+                                items.IndexOf("const step = hmSensor.createSensor(hmSensor.id.STEP);") < 0)
                             {
-                                main_items += TabInString(6) + Environment.NewLine;
-                                main_items += TabInString(6) + "const step = hmSensor.createSensor(hmSensor.id.STEP);" + Environment.NewLine;
-                                if (exist_items.IndexOf("step.addEventListener") < 0)
+                                items += TabInString(6) + Environment.NewLine;
+                                items += TabInString(6) + "const step = hmSensor.createSensor(hmSensor.id.STEP);" + Environment.NewLine;
+                                if (items.IndexOf("step.addEventListener") < 0)
                                 {
-                                    items += TabInString(8) + "step.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
-                                    items += TabInString(9) + "scale_call();" + Environment.NewLine;
-                                    items += TabInString(8) + "});" + Environment.NewLine;
+                                    outItems += TabInString(8) + "step.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
+                                    outItems += TabInString(9) + "scale_call();" + Environment.NewLine;
+                                    outItems += TabInString(8) + "});" + Environment.NewLine;
                                 }
                             }
 
@@ -8095,7 +7932,7 @@ namespace Watch_Face_Editor
                         // Icon
                         if (index == iconPosition && iconOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -8166,7 +8003,7 @@ namespace Watch_Face_Editor
                         // Images
                         if (index == imagesPosition && imagesOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
                                     imagesOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -8174,7 +8011,7 @@ namespace Watch_Face_Editor
                         // Segments
                         if (index == segmentsPosition && segmentsOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_PROGRESS, {" +
                                     segmentsOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -8182,13 +8019,13 @@ namespace Watch_Face_Editor
                         // Number
                         if (index == numberPosition && numberOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(8) + "});" + Environment.NewLine;
 
                             if (numberOptions_separator.Length > 5)
                             {
-                                items += Environment.NewLine + TabInString(8) +
+                                outItems += Environment.NewLine + TabInString(8) +
                                     "hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(8) + "});" + Environment.NewLine;
                             }
@@ -8197,7 +8034,7 @@ namespace Watch_Face_Editor
                         // Pointer
                         if (index == pointerPosition && pointerOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
                                     pointerOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -8210,19 +8047,19 @@ namespace Watch_Face_Editor
                             if (circle_scale.mirror) optionNameMirror = optionNameStart + "battery_circle_scale_mirror";
                             variables += TabInString(4) + "let " + variableName + " = null;" + Environment.NewLine;
 
-                            items += circleScaleOptions;
+                            outItems += circleScaleOptions;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                main_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
-                                main_items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (outItems.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (show_level == "ONLY_NORMAL")
-                                items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
-                            else items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
+                                outItems += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
+                            else outItems += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
 
                             //items += Environment.NewLine + TabInString(9) +
                             //    variableName + " = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
 
-                            items += Environment.NewLine + TabInString(9) + variableName + " = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
+                            outItems += Environment.NewLine + TabInString(9) + variableName + " = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                     circleScaleProgressOptions + TabInString(9) + "});" + Environment.NewLine;
 
                             if (circle_scale.mirror)
@@ -8232,24 +8069,23 @@ namespace Watch_Face_Editor
                                 //items += TabInString(9) + variableName +
                                 //    "_mirror = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
 
-                                items += Environment.NewLine + TabInString(9) + variableName + "_mirror = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
+                                outItems += Environment.NewLine + TabInString(9) + variableName + "_mirror = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                         circleScaleProgressMirrorOptions + TabInString(9) + "});" + Environment.NewLine;
                             }
 
-                            items += TabInString(8) + "};" + Environment.NewLine;
+                            outItems += TabInString(8) + "};" + Environment.NewLine;
 
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update editable circle_scale BATTERY');" + Environment.NewLine;
-                            if (items.IndexOf("const battery = hmSensor.createSensor(hmSensor.id.BATTERY);") < 0 &&
-                                exist_items.IndexOf("const battery = hmSensor.createSensor(hmSensor.id.BATTERY);") < 0 &&
-                                main_items.IndexOf("const battery = hmSensor.createSensor(hmSensor.id.BATTERY);") < 0)
+                            if (outItems.IndexOf("const battery = hmSensor.createSensor(hmSensor.id.BATTERY);") < 0 &
+                                items.IndexOf("const battery = hmSensor.createSensor(hmSensor.id.BATTERY);") < 0)
                             {
-                                main_items += TabInString(6) + Environment.NewLine;
-                                main_items += TabInString(6) + "const battery = hmSensor.createSensor(hmSensor.id.BATTERY);" + Environment.NewLine;
-                                if (exist_items.IndexOf("battery.addEventListener") < 0)
+                                items += TabInString(6) + Environment.NewLine;
+                                items += TabInString(6) + "const battery = hmSensor.createSensor(hmSensor.id.BATTERY);" + Environment.NewLine;
+                                if (items.IndexOf("battery.addEventListener") < 0)
                                 {
-                                    items += TabInString(8) + "battery.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
-                                    items += TabInString(9) + "scale_call();" + Environment.NewLine;
-                                    items += TabInString(8) + "});" + Environment.NewLine;
+                                    outItems += TabInString(8) + "battery.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
+                                    outItems += TabInString(9) + "scale_call();" + Environment.NewLine;
+                                    outItems += TabInString(8) + "});" + Environment.NewLine;
                                 }
                             }
 
@@ -8291,17 +8127,17 @@ namespace Watch_Face_Editor
                                 variables += TabInString(4) + "let " + variableName +
                                     "_pointer_img = ''" + Environment.NewLine;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                main_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
-                                main_items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (outItems.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             //if (optionNameStart == "normal_")
                             //    items += Environment.NewLine + TabInString(6) + "if (screenType != hmSetting.screen_type.AOD) {";
                             //else items += Environment.NewLine + TabInString(6) + "if (screenType == hmSetting.screen_type.AOD) {";
                             if (show_level == "ONLY_NORMAL")
-                                items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
-                            else items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
+                                outItems += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
+                            else outItems += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
 
-                            items += Environment.NewLine + TabInString(9) +
+                            outItems += Environment.NewLine + TabInString(9) +
                                 variableName + " = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
 
                             if (linear_scale.mirror)
@@ -8312,27 +8148,26 @@ namespace Watch_Face_Editor
                                     variables += TabInString(4) + "let " + variableName +
                                         "_pointer_img_mirror = ''" + Environment.NewLine;
 
-                                items += TabInString(9) + variableName +
+                                outItems += TabInString(9) + variableName +
                                     "_mirror = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
                             }
 
-                            items += TabInString(8) + "};" + Environment.NewLine;
+                            outItems += TabInString(8) + "};" + Environment.NewLine;
 
-                            items += linearScaleOptions;
+                            outItems += linearScaleOptions;
 
 
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update editable linear_scale BATTERY');" + Environment.NewLine;
-                            if (items.IndexOf("const battery = hmSensor.createSensor(hmSensor.id.BATTERY);") < 0 &&
-                                exist_items.IndexOf("const battery = hmSensor.createSensor(hmSensor.id.BATTERY);") < 0 &&
-                                main_items.IndexOf("const battery = hmSensor.createSensor(hmSensor.id.BATTERY);") < 0)
+                            if (outItems.IndexOf("const battery = hmSensor.createSensor(hmSensor.id.BATTERY);") < 0 &&
+                                items.IndexOf("const battery = hmSensor.createSensor(hmSensor.id.BATTERY);") < 0)
                             {
-                                main_items += TabInString(6) + Environment.NewLine;
-                                main_items += TabInString(6) + "const battery = hmSensor.createSensor(hmSensor.id.BATTERY);" + Environment.NewLine;
-                                if (exist_items.IndexOf("battery.addEventListener") < 0)
+                                items += TabInString(6) + Environment.NewLine;
+                                items += TabInString(6) + "const battery = hmSensor.createSensor(hmSensor.id.BATTERY);" + Environment.NewLine;
+                                if (items.IndexOf("battery.addEventListener") < 0)
                                 {
-                                    items += TabInString(8) + "battery.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
-                                    items += TabInString(9) + "scale_call();" + Environment.NewLine;
-                                    items += TabInString(8) + "});" + Environment.NewLine;
+                                    outItems += TabInString(8) + "battery.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
+                                    outItems += TabInString(9) + "scale_call();" + Environment.NewLine;
+                                    outItems += TabInString(8) + "});" + Environment.NewLine;
                                 }
                             }
 
@@ -8366,7 +8201,7 @@ namespace Watch_Face_Editor
                         // Icon
                         if (index == iconPosition && iconOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -8445,7 +8280,7 @@ namespace Watch_Face_Editor
                         // Images
                         if (index == imagesPosition && imagesOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
                                     imagesOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -8453,7 +8288,7 @@ namespace Watch_Face_Editor
                         // Segments
                         if (index == segmentsPosition && segmentsOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_PROGRESS, {" +
                                     segmentsOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -8461,13 +8296,13 @@ namespace Watch_Face_Editor
                         // Number
                         if (index == numberPosition && numberOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(8) + "});" + Environment.NewLine;
 
                             if (numberOptions_separator.Length > 5)
                             {
-                                items += Environment.NewLine + TabInString(8) +
+                                outItems += Environment.NewLine + TabInString(8) +
                                     "hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(8) + "});" + Environment.NewLine;
                             }
@@ -8476,13 +8311,13 @@ namespace Watch_Face_Editor
                         // Number_Target
                         if (index == numberTargetPosition && numberTargetOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberTargetOptions + TabInString(8) + "});" + Environment.NewLine;
 
                             if (numberTargetOptions_separator.Length > 5)
                             {
-                                items += Environment.NewLine + TabInString(8) +
+                                outItems += Environment.NewLine + TabInString(8) +
                                     "hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberTargetOptions_separator + TabInString(8) + "});" + Environment.NewLine;
                             }
@@ -8491,7 +8326,7 @@ namespace Watch_Face_Editor
                         // Pointer
                         if (index == pointerPosition && pointerOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
                                     pointerOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -8504,19 +8339,19 @@ namespace Watch_Face_Editor
                             if (circle_scale.mirror) optionNameMirror = optionNameStart + "calorie_circle_scale_mirror";
                             variables += TabInString(4) + "let " + variableName + " = null;" + Environment.NewLine;
 
-                            items += circleScaleOptions;
+                            outItems += circleScaleOptions;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                main_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
-                                main_items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (outItems.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (show_level == "ONLY_NORMAL")
-                                items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
-                            else items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
+                                outItems += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
+                            else outItems += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
 
                             //items += Environment.NewLine + TabInString(9) +
                             //    variableName + " = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
 
-                            items += Environment.NewLine + TabInString(9) + variableName + " = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
+                            outItems += Environment.NewLine + TabInString(9) + variableName + " = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                     circleScaleProgressOptions + TabInString(9) + "});" + Environment.NewLine;
 
                             if (circle_scale.mirror)
@@ -8526,24 +8361,23 @@ namespace Watch_Face_Editor
                                 //items += TabInString(9) + variableName +
                                 //    "_mirror = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
 
-                                items += Environment.NewLine + TabInString(9) + variableName + "_mirror = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
+                                outItems += Environment.NewLine + TabInString(9) + variableName + "_mirror = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                         circleScaleProgressMirrorOptions + TabInString(9) + "});" + Environment.NewLine;
                             }
 
-                            items += TabInString(8) + "};" + Environment.NewLine;
+                            outItems += TabInString(8) + "};" + Environment.NewLine;
 
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update editable circle_scale CALORIE');" + Environment.NewLine;
-                            if (items.IndexOf("const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);") < 0 &&
-                                exist_items.IndexOf("const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);") < 0 &&
-                                main_items.IndexOf("const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);") < 0)
+                            if (outItems.IndexOf("const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);") < 0 &&
+                                items.IndexOf("const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);") < 0)
                             {
-                                main_items += TabInString(6) + Environment.NewLine;
-                                main_items += TabInString(6) + "const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);" + Environment.NewLine;
-                                if (exist_items.IndexOf("calorie.addEventListener") < 0)
+                                items += TabInString(6) + Environment.NewLine;
+                                items += TabInString(6) + "const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);" + Environment.NewLine;
+                                if (items.IndexOf("calorie.addEventListener") < 0)
                                 {
-                                    items += TabInString(8) + "calorie.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
-                                    items += TabInString(9) + "scale_call();" + Environment.NewLine;
-                                    items += TabInString(8) + "});" + Environment.NewLine;
+                                    outItems += TabInString(8) + "calorie.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
+                                    outItems += TabInString(9) + "scale_call();" + Environment.NewLine;
+                                    outItems += TabInString(8) + "});" + Environment.NewLine;
                                 }
                             }
 
@@ -8585,14 +8419,14 @@ namespace Watch_Face_Editor
                                 variables += TabInString(4) + "let " + variableName +
                                     "_pointer_img = ''" + Environment.NewLine;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                main_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
-                                main_items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (outItems.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (show_level == "ONLY_NORMAL")
-                                items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
-                            else items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
+                                outItems += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
+                            else outItems += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
 
-                            items += Environment.NewLine + TabInString(9) +
+                            outItems += Environment.NewLine + TabInString(9) +
                                 variableName + " = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
 
                             if (linear_scale.mirror)
@@ -8603,27 +8437,26 @@ namespace Watch_Face_Editor
                                     variables += TabInString(4) + "let " + variableName +
                                         "_pointer_img_mirror = ''" + Environment.NewLine;
 
-                                items += TabInString(9) + variableName +
+                                outItems += TabInString(9) + variableName +
                                     "_mirror = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
                             }
 
-                            items += TabInString(8) + "};" + Environment.NewLine;
+                            outItems += TabInString(8) + "};" + Environment.NewLine;
 
-                            items += linearScaleOptions;
+                            outItems += linearScaleOptions;
 
 
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update editable linear_scale CALORIE');" + Environment.NewLine;
-                            if (items.IndexOf("const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);") < 0 &&
-                                exist_items.IndexOf("const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);") < 0 &&
-                                main_items.IndexOf("const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);") < 0)
+                            if (outItems.IndexOf("const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);") < 0 &&
+                                items.IndexOf("const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);") < 0)
                             {
-                                main_items += TabInString(6) + Environment.NewLine;
-                                main_items += TabInString(6) + "const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);" + Environment.NewLine;
-                                if (exist_items.IndexOf("calorie.addEventListener") < 0)
+                                items += TabInString(6) + Environment.NewLine;
+                                items += TabInString(6) + "const calorie = hmSensor.createSensor(hmSensor.id.CALORIE);" + Environment.NewLine;
+                                if (items.IndexOf("calorie.addEventListener") < 0)
                                 {
-                                    items += TabInString(8) + "calorie.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
-                                    items += TabInString(9) + "scale_call();" + Environment.NewLine;
-                                    items += TabInString(8) + "});" + Environment.NewLine;
+                                    outItems += TabInString(8) + "calorie.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
+                                    outItems += TabInString(9) + "scale_call();" + Environment.NewLine;
+                                    outItems += TabInString(8) + "});" + Environment.NewLine;
                                 }
                             }
 
@@ -8657,7 +8490,7 @@ namespace Watch_Face_Editor
                         // Icon
                         if (index == iconPosition && iconOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -8728,7 +8561,7 @@ namespace Watch_Face_Editor
                         // Images
                         if (index == imagesPosition && imagesOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
                                     imagesOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -8736,7 +8569,7 @@ namespace Watch_Face_Editor
                         // Segments
                         if (index == segmentsPosition && segmentsOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_PROGRESS, {" +
                                     segmentsOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -8744,13 +8577,13 @@ namespace Watch_Face_Editor
                         // Number
                         if (index == numberPosition && numberOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(8) + "});" + Environment.NewLine;
 
                             if (numberOptions_separator.Length > 5)
                             {
-                                items += Environment.NewLine + TabInString(8) +
+                                outItems += Environment.NewLine + TabInString(8) +
                                     "hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(8) + "});" + Environment.NewLine;
                             }
@@ -8759,7 +8592,7 @@ namespace Watch_Face_Editor
                         // Pointer
                         if (index == pointerPosition && pointerOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
                                     pointerOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -8772,19 +8605,19 @@ namespace Watch_Face_Editor
                             if (circle_scale.mirror) optionNameMirror = optionNameStart + "heart_rate_circle_scale_mirror";
                             variables += TabInString(4) + "let " + variableName + " = null;" + Environment.NewLine;
 
-                            items += circleScaleOptions;
+                            outItems += circleScaleOptions;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                main_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
-                                main_items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (outItems.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (show_level == "ONLY_NORMAL")
-                                items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
-                            else items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
+                                outItems += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
+                            else outItems += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
 
                             //items += Environment.NewLine + TabInString(9) +
                             //    variableName + " = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
 
-                            items += Environment.NewLine + TabInString(9) + variableName + " = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
+                            outItems += Environment.NewLine + TabInString(9) + variableName + " = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                     circleScaleProgressOptions + TabInString(9) + "});" + Environment.NewLine;
 
                             if (circle_scale.mirror)
@@ -8794,24 +8627,23 @@ namespace Watch_Face_Editor
                                 //items += TabInString(9) + variableName +
                                 //    "_mirror = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
 
-                                items += Environment.NewLine + TabInString(9) + variableName + "_mirror = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
+                                outItems += Environment.NewLine + TabInString(9) + variableName + "_mirror = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                         circleScaleProgressMirrorOptions + TabInString(9) + "});" + Environment.NewLine;
                             }
 
-                            items += TabInString(8) + "};" + Environment.NewLine;
+                            outItems += TabInString(8) + "};" + Environment.NewLine;
 
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update editable circle_scale HEART');" + Environment.NewLine;
-                            if (items.IndexOf("const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);") < 0 &&
-                                exist_items.IndexOf("const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);") < 0 &&
-                                main_items.IndexOf("const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);") < 0)
+                            if (outItems.IndexOf("const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);") < 0 &&
+                                items.IndexOf("const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);") < 0)
                             {
-                                main_items += TabInString(6) + Environment.NewLine;
-                                main_items += TabInString(6) + "const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);" + Environment.NewLine;
-                                if (exist_items.IndexOf("heart_rate.addEventListener") < 0)
+                                items += TabInString(6) + Environment.NewLine;
+                                items += TabInString(6) + "const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);" + Environment.NewLine;
+                                if (items.IndexOf("heart_rate.addEventListener") < 0)
                                 {
-                                    items += TabInString(8) + "heart_rate.addEventListener(hmSensor.event.LAST, function() {" + Environment.NewLine;
-                                    items += TabInString(9) + "scale_call();" + Environment.NewLine;
-                                    items += TabInString(8) + "});" + Environment.NewLine;
+                                    outItems += TabInString(8) + "heart_rate.addEventListener(hmSensor.event.LAST, function() {" + Environment.NewLine;
+                                    outItems += TabInString(9) + "scale_call();" + Environment.NewLine;
+                                    outItems += TabInString(8) + "});" + Environment.NewLine;
                                 }
                             }
 
@@ -8856,14 +8688,14 @@ namespace Watch_Face_Editor
                                 variables += TabInString(4) + "let " + variableName +
                                     "_pointer_img = ''" + Environment.NewLine;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                main_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
-                                main_items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (outItems.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (show_level == "ONLY_NORMAL")
-                                items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
-                            else items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
+                                outItems += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
+                            else outItems += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
 
-                            items += Environment.NewLine + TabInString(9) +
+                            outItems += Environment.NewLine + TabInString(9) +
                                 variableName + " = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
 
                             if (linear_scale.mirror)
@@ -8874,27 +8706,26 @@ namespace Watch_Face_Editor
                                     variables += TabInString(4) + "let " + variableName +
                                         "_pointer_img_mirror = ''" + Environment.NewLine;
 
-                                items += TabInString(9) + variableName +
+                                outItems += TabInString(9) + variableName +
                                     "_mirror = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
                             }
 
-                            items += TabInString(8) + "};" + Environment.NewLine;
+                            outItems += TabInString(8) + "};" + Environment.NewLine;
 
-                            items += linearScaleOptions;
+                            outItems += linearScaleOptions;
 
 
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update editable linear_scale HEART');" + Environment.NewLine;
-                            if (items.IndexOf("const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);") < 0 &&
-                                exist_items.IndexOf("const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);") < 0 &&
-                                main_items.IndexOf("const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);") < 0)
+                            if (outItems.IndexOf("const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);") < 0 &&
+                                items.IndexOf("const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);") < 0)
                             {
-                                main_items += TabInString(6) + Environment.NewLine;
-                                main_items += TabInString(6) + "const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);" + Environment.NewLine;
-                                if (exist_items.IndexOf("heart_rate.addEventListener") < 0)
+                                items += TabInString(6) + Environment.NewLine;
+                                items += TabInString(6) + "const heart_rate = hmSensor.createSensor(hmSensor.id.HEART);" + Environment.NewLine;
+                                if (items.IndexOf("heart_rate.addEventListener") < 0)
                                 {
-                                    items += TabInString(8) + "heart_rate.addEventListener(hmSensor.event.LAST, function() {" + Environment.NewLine;
-                                    items += TabInString(9) + "scale_call();" + Environment.NewLine;
-                                    items += TabInString(8) + "});" + Environment.NewLine;
+                                    outItems += TabInString(8) + "heart_rate.addEventListener(hmSensor.event.LAST, function() {" + Environment.NewLine;
+                                    outItems += TabInString(9) + "scale_call();" + Environment.NewLine;
+                                    outItems += TabInString(8) + "});" + Environment.NewLine;
                                 }
                             }
 
@@ -8929,7 +8760,7 @@ namespace Watch_Face_Editor
                         // Icon
                         if (index == iconPosition && iconOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -9009,7 +8840,7 @@ namespace Watch_Face_Editor
                         // Images
                         if (index == imagesPosition && imagesOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
                                     imagesOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -9017,7 +8848,7 @@ namespace Watch_Face_Editor
                         // Segments
                         if (index == segmentsPosition && segmentsOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_PROGRESS, {" +
                                     segmentsOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -9025,13 +8856,13 @@ namespace Watch_Face_Editor
                         // Number
                         if (index == numberPosition && numberOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(8) + "});" + Environment.NewLine;
 
                             if (numberOptions_separator.Length > 5)
                             {
-                                items += Environment.NewLine + TabInString(8) +
+                                outItems += Environment.NewLine + TabInString(8) +
                                     "hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(8) + "});" + Environment.NewLine;
                             }
@@ -9040,13 +8871,13 @@ namespace Watch_Face_Editor
                         // Number_Target
                         if (index == numberTargetPosition && numberTargetOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberTargetOptions + TabInString(8) + "});" + Environment.NewLine;
 
                             if (numberTargetOptions_separator.Length > 5)
                             {
-                                items += Environment.NewLine + TabInString(8) +
+                                outItems += Environment.NewLine + TabInString(8) +
                                     "hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberTargetOptions_separator + TabInString(8) + "});" + Environment.NewLine;
                             }
@@ -9055,7 +8886,7 @@ namespace Watch_Face_Editor
                         // Pointer
                         if (index == pointerPosition && pointerOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
                                     pointerOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -9068,19 +8899,19 @@ namespace Watch_Face_Editor
                             if (circle_scale.mirror) optionNameMirror = optionNameStart + "pai_circle_scale_mirror";
                             variables += TabInString(4) + "let " + variableName + " = null;" + Environment.NewLine;
 
-                            items += circleScaleOptions;
+                            outItems += circleScaleOptions;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                main_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
-                                main_items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (outItems.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (show_level == "ONLY_NORMAL")
-                                items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
-                            else items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
+                                outItems += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
+                            else outItems += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
 
                             //items += Environment.NewLine + TabInString(9) +
                             //    variableName + " = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
 
-                            items += Environment.NewLine + TabInString(9) + variableName + " = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
+                            outItems += Environment.NewLine + TabInString(9) + variableName + " = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                     circleScaleProgressOptions + TabInString(9) + "});" + Environment.NewLine;
 
                             if (circle_scale.mirror)
@@ -9090,24 +8921,23 @@ namespace Watch_Face_Editor
                                 //items += TabInString(9) + variableName +
                                 //    "_mirror = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
 
-                                items += Environment.NewLine + TabInString(9) + variableName + "_mirror = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
+                                outItems += Environment.NewLine + TabInString(9) + variableName + "_mirror = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                         circleScaleProgressMirrorOptions + TabInString(9) + "});" + Environment.NewLine;
                             }
 
-                            items += TabInString(8) + "};" + Environment.NewLine;
+                            outItems += TabInString(8) + "};" + Environment.NewLine;
 
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update editable circle_scale PAI');" + Environment.NewLine;
-                            if (items.IndexOf("const pai = hmSensor.createSensor(hmSensor.id.PAI);") < 0 &&
-                                exist_items.IndexOf("const pai = hmSensor.createSensor(hmSensor.id.PAI);") < 0 &&
-                                main_items.IndexOf("const pai = hmSensor.createSensor(hmSensor.id.PAI);") < 0)
+                            if (outItems.IndexOf("const pai = hmSensor.createSensor(hmSensor.id.PAI);") < 0 &&
+                                items.IndexOf("const pai = hmSensor.createSensor(hmSensor.id.PAI);") < 0)
                             {
-                                main_items += TabInString(6) + Environment.NewLine;
-                                main_items += TabInString(6) + "const pai = hmSensor.createSensor(hmSensor.id.PAI);" + Environment.NewLine;
-                                if (exist_items.IndexOf("pai.addEventListener") < 0)
+                                items += TabInString(6) + Environment.NewLine;
+                                items += TabInString(6) + "const pai = hmSensor.createSensor(hmSensor.id.PAI);" + Environment.NewLine;
+                                if (items.IndexOf("pai.addEventListener") < 0)
                                 {
-                                    items += TabInString(8) + "pai.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
-                                    items += TabInString(9) + "scale_call();" + Environment.NewLine;
-                                    items += TabInString(8) + "});" + Environment.NewLine;
+                                    outItems += TabInString(8) + "pai.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
+                                    outItems += TabInString(9) + "scale_call();" + Environment.NewLine;
+                                    outItems += TabInString(8) + "});" + Environment.NewLine;
                                 }
                             }
 
@@ -9149,14 +8979,14 @@ namespace Watch_Face_Editor
                                 variables += TabInString(4) + "let " + variableName +
                                     "_pointer_img = ''" + Environment.NewLine;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                main_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
-                                main_items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (outItems.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (show_level == "ONLY_NORMAL")
-                                items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
-                            else items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
+                                outItems += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
+                            else outItems += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
 
-                            items += Environment.NewLine + TabInString(9) +
+                            outItems += Environment.NewLine + TabInString(9) +
                                 variableName + " = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
 
                             if (linear_scale.mirror)
@@ -9167,27 +8997,26 @@ namespace Watch_Face_Editor
                                     variables += TabInString(4) + "let " + variableName +
                                         "_pointer_img_mirror = ''" + Environment.NewLine;
 
-                                items += TabInString(9) + variableName +
+                                outItems += TabInString(9) + variableName +
                                     "_mirror = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
                             }
 
-                            items += TabInString(8) + "};" + Environment.NewLine;
+                            outItems += TabInString(8) + "};" + Environment.NewLine;
 
-                            items += linearScaleOptions;
+                            outItems += linearScaleOptions;
 
 
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update editable linear_scale PAI');" + Environment.NewLine;
-                            if (items.IndexOf("const pai = hmSensor.createSensor(hmSensor.id.PAI);") < 0 &&
-                                exist_items.IndexOf("const pai = hmSensor.createSensor(hmSensor.id.PAI);") < 0 &&
-                                main_items.IndexOf("const pai = hmSensor.createSensor(hmSensor.id.PAI);") < 0)
+                            if (outItems.IndexOf("const pai = hmSensor.createSensor(hmSensor.id.PAI);") < 0 &
+                                items.IndexOf("const pai = hmSensor.createSensor(hmSensor.id.PAI);") < 0)
                             {
-                                main_items += TabInString(6) + Environment.NewLine;
-                                main_items += TabInString(6) + "const pai = hmSensor.createSensor(hmSensor.id.PAI);" + Environment.NewLine;
-                                if (exist_items.IndexOf("pai.addEventListener") < 0)
+                                items += TabInString(6) + Environment.NewLine;
+                                items += TabInString(6) + "const pai = hmSensor.createSensor(hmSensor.id.PAI);" + Environment.NewLine;
+                                if (items.IndexOf("pai.addEventListener") < 0)
                                 {
-                                    items += TabInString(8) + "pai.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
-                                    items += TabInString(9) + "scale_call();" + Environment.NewLine;
-                                    items += TabInString(8) + "});" + Environment.NewLine;
+                                    outItems += TabInString(8) + "pai.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
+                                    outItems += TabInString(9) + "scale_call();" + Environment.NewLine;
+                                    outItems += TabInString(8) + "});" + Environment.NewLine;
                                 }
                             }
 
@@ -9221,7 +9050,7 @@ namespace Watch_Face_Editor
                         // Icon
                         if (index == iconPosition && iconOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -9248,13 +9077,13 @@ namespace Watch_Face_Editor
                     // Number
                     if (numberOptions.Length > 5)
                     {
-                        items += Environment.NewLine + TabInString(8) +
+                        outItems += Environment.NewLine + TabInString(8) +
                             "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                 numberOptions + TabInString(8) + "});" + Environment.NewLine;
 
                         if (numberOptions_separator.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG, {" +
                                     numberOptions_separator + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -9331,7 +9160,7 @@ namespace Watch_Face_Editor
                         // Images
                         if (index == imagesPosition && imagesOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
                                     imagesOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -9339,7 +9168,7 @@ namespace Watch_Face_Editor
                         // Segments
                         if (index == segmentsPosition && segmentsOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_PROGRESS, {" +
                                     segmentsOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -9347,13 +9176,13 @@ namespace Watch_Face_Editor
                         // Number
                         if (index == numberPosition && numberOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(8) + "});" + Environment.NewLine;
 
                             if (numberOptions_separator.Length > 5)
                             {
-                                items += Environment.NewLine + TabInString(8) +
+                                outItems += Environment.NewLine + TabInString(8) +
                                     optionNameStart + "stand_current_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(8) + "});" + Environment.NewLine;
                             }
@@ -9362,13 +9191,13 @@ namespace Watch_Face_Editor
                         // Number_Target
                         if (index == numberTargetPosition && numberTargetOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberTargetOptions + TabInString(8) + "});" + Environment.NewLine;
 
                             if (numberTargetOptions_separator.Length > 5)
                             {
-                                items += Environment.NewLine + TabInString(8) +
+                                outItems += Environment.NewLine + TabInString(8) +
                                     optionNameStart + "stand_target_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberTargetOptions_separator + TabInString(8) + "});" + Environment.NewLine;
                             }
@@ -9377,7 +9206,7 @@ namespace Watch_Face_Editor
                         // Pointer
                         if (index == pointerPosition && pointerOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
                                     pointerOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -9390,19 +9219,19 @@ namespace Watch_Face_Editor
                             if (circle_scale.mirror) optionNameMirror = optionNameStart + "stand_circle_scale_mirror";
                             variables += TabInString(4) + "let " + variableName + " = null;" + Environment.NewLine;
 
-                            items += circleScaleOptions;
+                            outItems += circleScaleOptions;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                main_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
-                                main_items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (outItems.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (show_level == "ONLY_NORMAL")
-                                items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
-                            else items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
+                                outItems += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
+                            else outItems += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
 
                             //items += Environment.NewLine + TabInString(9) +
                             //    variableName + " = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
 
-                            items += Environment.NewLine + TabInString(9) + variableName + " = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
+                            outItems += Environment.NewLine + TabInString(9) + variableName + " = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                     circleScaleProgressOptions + TabInString(9) + "});" + Environment.NewLine;
 
                             if (circle_scale.mirror)
@@ -9412,24 +9241,23 @@ namespace Watch_Face_Editor
                                 //items += TabInString(9) + variableName +
                                 //    "_mirror = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
 
-                                items += Environment.NewLine + TabInString(9) + variableName + "_mirror = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
+                                outItems += Environment.NewLine + TabInString(9) + variableName + "_mirror = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                         circleScaleProgressMirrorOptions + TabInString(9) + "});" + Environment.NewLine;
                             }
 
-                            items += TabInString(8) + "};" + Environment.NewLine;
+                            outItems += TabInString(8) + "};" + Environment.NewLine;
 
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update editable circle_scale STAND');" + Environment.NewLine;
-                            if (items.IndexOf("const stand = hmSensor.createSensor(hmSensor.id.STAND);") < 0 &&
-                                exist_items.IndexOf("const stand = hmSensor.createSensor(hmSensor.id.STAND);") < 0 &&
-                                main_items.IndexOf("const stand = hmSensor.createSensor(hmSensor.id.STAND);") < 0)
+                            if (outItems.IndexOf("const stand = hmSensor.createSensor(hmSensor.id.STAND);") < 0 &&
+                                items.IndexOf("const stand = hmSensor.createSensor(hmSensor.id.STAND);") < 0)
                             {
-                                main_items += TabInString(6) + Environment.NewLine;
-                                main_items += TabInString(6) + "const stand = hmSensor.createSensor(hmSensor.id.STAND);" + Environment.NewLine;
-                                if (exist_items.IndexOf("stand.addEventListener") < 0)
+                                items += TabInString(6) + Environment.NewLine;
+                                items += TabInString(6) + "const stand = hmSensor.createSensor(hmSensor.id.STAND);" + Environment.NewLine;
+                                if (items.IndexOf("stand.addEventListener") < 0)
                                 {
-                                    items += TabInString(8) + "stand.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
-                                    items += TabInString(9) + "scale_call();" + Environment.NewLine;
-                                    items += TabInString(8) + "});" + Environment.NewLine;
+                                    outItems += TabInString(8) + "stand.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
+                                    outItems += TabInString(9) + "scale_call();" + Environment.NewLine;
+                                    outItems += TabInString(8) + "});" + Environment.NewLine;
                                 }
                             }
 
@@ -9471,14 +9299,14 @@ namespace Watch_Face_Editor
                                 variables += TabInString(4) + "let " + variableName +
                                     "_pointer_img = ''" + Environment.NewLine;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                main_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
-                                main_items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (outItems.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (show_level == "ONLY_NORMAL")
-                                items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
-                            else items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
+                                outItems += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
+                            else outItems += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
 
-                            items += Environment.NewLine + TabInString(9) +
+                            outItems += Environment.NewLine + TabInString(9) +
                                 variableName + " = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
 
                             if (linear_scale.mirror)
@@ -9489,27 +9317,26 @@ namespace Watch_Face_Editor
                                     variables += TabInString(4) + "let " + variableName +
                                         "_pointer_img_mirror = ''" + Environment.NewLine;
 
-                                items += TabInString(9) + variableName +
+                                outItems += TabInString(9) + variableName +
                                     "_mirror = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
                             }
 
-                            items += TabInString(8) + "};" + Environment.NewLine;
+                            outItems += TabInString(8) + "};" + Environment.NewLine;
 
-                            items += linearScaleOptions;
+                            outItems += linearScaleOptions;
 
 
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update editable linear_scale STAND');" + Environment.NewLine;
-                            if (items.IndexOf("const stand = hmSensor.createSensor(hmSensor.id.STAND);") < 0 &&
-                                exist_items.IndexOf("const stand = hmSensor.createSensor(hmSensor.id.STAND);") < 0 &&
-                                main_items.IndexOf("const stand = hmSensor.createSensor(hmSensor.id.STAND);") < 0)
+                            if (outItems.IndexOf("const stand = hmSensor.createSensor(hmSensor.id.STAND);") < 0 &&
+                                items.IndexOf("const stand = hmSensor.createSensor(hmSensor.id.STAND);") < 0)
                             {
-                                main_items += TabInString(6) + Environment.NewLine;
-                                main_items += TabInString(6) + "const stand = hmSensor.createSensor(hmSensor.id.STAND);" + Environment.NewLine;
-                                if (exist_items.IndexOf("stand.addEventListener") < 0)
+                                items += TabInString(6) + Environment.NewLine;
+                                items += TabInString(6) + "const stand = hmSensor.createSensor(hmSensor.id.STAND);" + Environment.NewLine;
+                                if (items.IndexOf("stand.addEventListener") < 0)
                                 {
-                                    items += TabInString(8) + "stand.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
-                                    items += TabInString(9) + "scale_call();" + Environment.NewLine;
-                                    items += TabInString(8) + "});" + Environment.NewLine;
+                                    outItems += TabInString(8) + "stand.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
+                                    outItems += TabInString(9) + "scale_call();" + Environment.NewLine;
+                                    outItems += TabInString(8) + "});" + Environment.NewLine;
                                 }
                             }
 
@@ -9543,7 +9370,7 @@ namespace Watch_Face_Editor
                         // Icon
                         if (index == iconPosition && iconOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -9570,13 +9397,13 @@ namespace Watch_Face_Editor
                     // Number
                     if (numberOptions.Length > 5)
                     {
-                        items += Environment.NewLine + TabInString(8) +
+                        outItems += Environment.NewLine + TabInString(8) +
                             "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                 numberOptions + TabInString(8) + "});" + Environment.NewLine;
 
                         if (numberOptions_separator.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG, {" +
                                     numberOptions_separator + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -9629,7 +9456,7 @@ namespace Watch_Face_Editor
                         // Images
                         if (index == imagesPosition && imagesOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
                                     imagesOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -9637,7 +9464,7 @@ namespace Watch_Face_Editor
                         // Segments
                         if (index == segmentsPosition && segmentsOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_PROGRESS, {" +
                                     segmentsOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -9645,13 +9472,13 @@ namespace Watch_Face_Editor
                         // Number
                         if (index == numberPosition && numberOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(8) + "});" + Environment.NewLine;
 
                             if (numberOptions_separator.Length > 5)
                             {
-                                items += Environment.NewLine + TabInString(8) +
+                                outItems += Environment.NewLine + TabInString(8) +
                                     "hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(8) + "});" + Environment.NewLine;
                             }
@@ -9660,7 +9487,7 @@ namespace Watch_Face_Editor
                         // Pointer
                         if (index == pointerPosition && pointerOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
                                     pointerOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -9668,7 +9495,7 @@ namespace Watch_Face_Editor
                         // Icon
                         if (index == iconPosition && iconOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -9747,7 +9574,7 @@ namespace Watch_Face_Editor
                         // Images
                         if (index == imagesPosition && imagesOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
                                     imagesOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -9755,7 +9582,7 @@ namespace Watch_Face_Editor
                         // Segments
                         if (index == segmentsPosition && segmentsOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_PROGRESS, {" +
                                     segmentsOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -9763,13 +9590,13 @@ namespace Watch_Face_Editor
                         // Number
                         if (index == numberPosition && numberOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(8) + "});" + Environment.NewLine;
 
                             if (numberOptions_separator.Length > 5)
                             {
-                                items += Environment.NewLine + TabInString(8) +
+                                outItems += Environment.NewLine + TabInString(8) +
                                     "hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(8) + "});" + Environment.NewLine;
                             }
@@ -9778,13 +9605,13 @@ namespace Watch_Face_Editor
                         // Number_Target
                         if (index == numberTargetPosition && numberTargetOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberTargetOptions + TabInString(8) + "});" + Environment.NewLine;
 
                             if (numberTargetOptions_separator.Length > 5)
                             {
-                                items += Environment.NewLine + TabInString(8) +
+                                outItems += Environment.NewLine + TabInString(8) +
                                     "hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberTargetOptions_separator + TabInString(8) + "});" + Environment.NewLine;
                             }
@@ -9793,7 +9620,7 @@ namespace Watch_Face_Editor
                         // Pointer
                         if (index == pointerPosition && pointerOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
                                     pointerOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -9806,19 +9633,19 @@ namespace Watch_Face_Editor
                             if (circle_scale.mirror) optionNameMirror = optionNameStart + "fat_burning_scale_mirror";
                             variables += TabInString(4) + "let " + variableName + " = null;" + Environment.NewLine;
 
-                            items += circleScaleOptions;
+                            outItems += circleScaleOptions;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                main_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
-                                main_items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (outItems.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (show_level == "ONLY_NORMAL")
-                                items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
-                            else items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
+                                outItems += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
+                            else outItems += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
 
                             //items += Environment.NewLine + TabInString(9) +
                             //    variableName + " = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
 
-                            items += Environment.NewLine + TabInString(9) + variableName + " = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
+                            outItems += Environment.NewLine + TabInString(9) + variableName + " = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                     circleScaleProgressOptions + TabInString(9) + "});" + Environment.NewLine;
 
                             if (circle_scale.mirror)
@@ -9828,24 +9655,23 @@ namespace Watch_Face_Editor
                                 //items += TabInString(9) + variableName +
                                 //    "_mirror = hmUI.createWidget(hmUI.widget.ARC);" + Environment.NewLine;
 
-                                items += Environment.NewLine + TabInString(9) + variableName + "_mirror = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
+                                outItems += Environment.NewLine + TabInString(9) + variableName + "_mirror = hmUI.createWidget(hmUI.widget.ARC_PROGRESS, {" +
                                         circleScaleProgressMirrorOptions + TabInString(9) + "});" + Environment.NewLine;
                             }
 
-                            items += TabInString(8) + "};" + Environment.NewLine;
+                            outItems += TabInString(8) + "};" + Environment.NewLine;
 
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update editable circle_scale FAT_BURNING');" + Environment.NewLine;
-                            if (items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0 &&
-                                exist_items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0 &&
-                                main_items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0)
+                            if (outItems.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0 &&
+                                items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0)
                             {
-                                main_items += TabInString(6) + Environment.NewLine;
-                                main_items += TabInString(6) + "const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);" + Environment.NewLine;
-                                if (exist_items.IndexOf("fat_burning.addEventListener") < 0)
+                                items += TabInString(6) + Environment.NewLine;
+                                items += TabInString(6) + "const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);" + Environment.NewLine;
+                                if (items.IndexOf("fat_burning.addEventListener") < 0)
                                 {
-                                    items += TabInString(8) + "fat_burning.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
-                                    items += TabInString(9) + "scale_call();" + Environment.NewLine;
-                                    items += TabInString(8) + "});" + Environment.NewLine;
+                                    outItems += TabInString(8) + "fat_burning.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
+                                    outItems += TabInString(9) + "scale_call();" + Environment.NewLine;
+                                    outItems += TabInString(8) + "});" + Environment.NewLine;
                                 }
                             }
 
@@ -9887,14 +9713,14 @@ namespace Watch_Face_Editor
                                 variables += TabInString(4) + "let " + variableName +
                                     "_pointer_img = ''" + Environment.NewLine;
 
-                            if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                main_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
-                                main_items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
+                            if (outItems.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
+                                items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                                items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                             if (show_level == "ONLY_NORMAL")
-                                items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
-                            else items += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
+                                outItems += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE) {";
+                            else outItems += Environment.NewLine + TabInString(8) + "if (screenType == hmSetting.screen_type.WATCHFACE || screenType == hmSetting.screen_type.AOD) {";
 
-                            items += Environment.NewLine + TabInString(9) +
+                            outItems += Environment.NewLine + TabInString(9) +
                                 variableName + " = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
 
                             if (linear_scale.mirror)
@@ -9905,27 +9731,26 @@ namespace Watch_Face_Editor
                                     variables += TabInString(4) + "let " + variableName +
                                         "_pointer_img_mirror = ''" + Environment.NewLine;
 
-                                items += TabInString(9) + variableName +
+                                outItems += TabInString(9) + variableName +
                                     "_mirror = hmUI.createWidget(hmUI.widget.FILL_RECT);" + Environment.NewLine;
                             }
 
-                            items += TabInString(8) + "};" + Environment.NewLine;
+                            outItems += TabInString(8) + "};" + Environment.NewLine;
 
-                            items += linearScaleOptions;
+                            outItems += linearScaleOptions;
 
 
                             scale_update_function += Environment.NewLine + TabInString(8) + "console.log('update editable linear_scale FAT_BURNING');" + Environment.NewLine;
-                            if (items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0 &&
-                                exist_items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0 &&
-                                main_items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0)
+                            if (outItems.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0 &&
+                                items.IndexOf("const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);") < 0)
                             {
-                                main_items += TabInString(6) + Environment.NewLine;
-                                main_items += TabInString(6) + "const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);" + Environment.NewLine;
-                                if (exist_items.IndexOf("fat_burning.addEventListener") < 0)
+                                items += TabInString(6) + Environment.NewLine;
+                                items += TabInString(6) + "const fat_burning = hmSensor.createSensor(hmSensor.id.FAT_BURRING);" + Environment.NewLine;
+                                if (items.IndexOf("fat_burning.addEventListener") < 0)
                                 {
-                                    items += TabInString(8) + "fat_burning.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
-                                    items += TabInString(9) + "scale_call();" + Environment.NewLine;
-                                    items += TabInString(8) + "});" + Environment.NewLine;
+                                    outItems += TabInString(8) + "fat_burning.addEventListener(hmSensor.event.CHANGE, function() {" + Environment.NewLine;
+                                    outItems += TabInString(9) + "scale_call();" + Environment.NewLine;
+                                    outItems += TabInString(8) + "});" + Environment.NewLine;
                                 }
                             }
 
@@ -9959,7 +9784,7 @@ namespace Watch_Face_Editor
                         // Icon
                         if (index == iconPosition && iconOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -10035,7 +9860,7 @@ namespace Watch_Face_Editor
                         // Images
                         if (index == imagesPosition && imagesOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
                                     imagesOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -10043,13 +9868,13 @@ namespace Watch_Face_Editor
                         // Number
                         if (index == numberPosition && numberOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(8) + "});" + Environment.NewLine;
 
                             if (numberOptions_separator.Length > 5)
                             {;
-                                items += Environment.NewLine + TabInString(8) +
+                                outItems += Environment.NewLine + TabInString(8) +
                                     "hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(8) + "});" + Environment.NewLine;
                             }
@@ -10058,13 +9883,13 @@ namespace Watch_Face_Editor
                         // Number min
                         if (index == numberMinPosition && numberMinOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberMinOptions + TabInString(8) + "});" + Environment.NewLine;
 
                             if (numberMinOptions_separator.Length > 5)
                             {
-                                items += Environment.NewLine + TabInString(8) +
+                                outItems += Environment.NewLine + TabInString(8) +
                                     "hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberMinOptions_separator + TabInString(8) + "});" + Environment.NewLine;
                             }
@@ -10073,13 +9898,13 @@ namespace Watch_Face_Editor
                         // Number max
                         if (index == numberMaxPosition && numberMaxOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberMaxOptions + TabInString(8) + "});" + Environment.NewLine;
 
                             if (numberMaxOptions_separator.Length > 5)
                             {
-                                items += Environment.NewLine + TabInString(8) +
+                                outItems += Environment.NewLine + TabInString(8) +
                                     "hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberMaxOptions_separator + TabInString(8) + "});" + Environment.NewLine;
                             }
@@ -10090,7 +9915,7 @@ namespace Watch_Face_Editor
                         {
                             variables += TabInString(4) + "let " + optionNameStart +
                                 "city_name_text = null;" + Environment.NewLine;
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 optionNameStart + "city_name_text = hmUI.createWidget(hmUI.widget.TEXT, {" +
                                     cityNameOptions + TabInString(8) + "});" + Environment.NewLine;
 
@@ -10114,7 +9939,7 @@ namespace Watch_Face_Editor
                         // Icon
                         if (index == iconPosition && iconOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -10168,7 +9993,7 @@ namespace Watch_Face_Editor
                         // Images
                         if (index == imagesPosition && imagesOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
                                     imagesOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -10176,7 +10001,7 @@ namespace Watch_Face_Editor
                         // Segments
                         if (index == segmentsPosition && segmentsOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_PROGRESS, {" +
                                     segmentsOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -10184,13 +10009,13 @@ namespace Watch_Face_Editor
                         // Number
                         if (index == numberPosition && numberOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(8) + "});" + Environment.NewLine;
 
                             if (numberOptions_separator.Length > 5)
                             {
-                                items += Environment.NewLine + TabInString(8) +
+                                outItems += Environment.NewLine + TabInString(8) +
                                     "hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(8) + "});" + Environment.NewLine;
                             }
@@ -10199,7 +10024,7 @@ namespace Watch_Face_Editor
                         // Pointer
                         if (index == pointerPosition && pointerOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
                                     pointerOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -10207,7 +10032,7 @@ namespace Watch_Face_Editor
                         // Icon
                         if (index == iconPosition && iconOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 " hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -10261,7 +10086,7 @@ namespace Watch_Face_Editor
                         // Images
                         if (index == imagesPosition && imagesOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
                                     imagesOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -10269,7 +10094,7 @@ namespace Watch_Face_Editor
                         // Segments
                         if (index == segmentsPosition && segmentsOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_PROGRESS, {" +
                                     segmentsOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -10277,13 +10102,13 @@ namespace Watch_Face_Editor
                         // Number
                         if (index == numberPosition && numberOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(8) + "});" + Environment.NewLine;
 
                             if (numberOptions_separator.Length > 5)
                             {
-                                items += Environment.NewLine + TabInString(8) +
+                                outItems += Environment.NewLine + TabInString(8) +
                                     "hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(8) + "});" + Environment.NewLine;
                             }
@@ -10292,7 +10117,7 @@ namespace Watch_Face_Editor
                         // Pointer
                         if (index == pointerPosition && pointerOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
                                     pointerOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -10300,7 +10125,7 @@ namespace Watch_Face_Editor
                         // Icon
                         if (index == iconPosition && iconOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -10342,13 +10167,13 @@ namespace Watch_Face_Editor
                         // Number
                         if (index == numberPosition && numberOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(8) + "});" + Environment.NewLine;
 
                             if (numberOptions_separator.Length > 5)
                             {
-                                items += Environment.NewLine + TabInString(8) +
+                                outItems += Environment.NewLine + TabInString(8) +
                                     "hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(8) + "});" + Environment.NewLine;
                             }
@@ -10357,7 +10182,7 @@ namespace Watch_Face_Editor
                         // Pointer
                         if (index == pointerPosition && pointerOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
                                     pointerOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -10365,7 +10190,7 @@ namespace Watch_Face_Editor
                         // Icon
                         if (index == iconPosition && iconOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -10438,7 +10263,7 @@ namespace Watch_Face_Editor
                         // Images
                         if (index == imagesPosition && imagesOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
                                     imagesOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -10446,7 +10271,7 @@ namespace Watch_Face_Editor
                         // Segments
                         if (index == segmentsPosition && segmentsOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_PROGRESS, {" +
                                     segmentsOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -10454,13 +10279,13 @@ namespace Watch_Face_Editor
                         // Number
                         if (index == numberPosition && numberOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(8) + "});" + Environment.NewLine;
 
                             if (numberOptions_separator.Length > 5)
                             {
-                                items += Environment.NewLine + TabInString(8) +
+                                outItems += Environment.NewLine + TabInString(8) +
                                     "hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(8) + "});" + Environment.NewLine;
                             }
@@ -10469,13 +10294,13 @@ namespace Watch_Face_Editor
                         // Number_Target
                         if (index == numberTargetPosition && numberTargetOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberTargetOptions + TabInString(8) + "});" + Environment.NewLine;
 
                             if (numberTargetOptions_separator.Length > 5)
                             {
-                                items += Environment.NewLine + TabInString(8) +
+                                outItems += Environment.NewLine + TabInString(8) +
                                     "hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberTargetOptions_separator + TabInString(8) + "});" + Environment.NewLine;
                             }
@@ -10484,13 +10309,13 @@ namespace Watch_Face_Editor
                         // Number_SunCurrent
                         if (index == numberSunCurrentPosition && numberSunCurrentOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberSunCurrentOptions + TabInString(8) + "});" + Environment.NewLine;
 
                             if (numberSunCurrentOptions_separator.Length > 5)
                             {
-                                items += Environment.NewLine + TabInString(8) +
+                                outItems += Environment.NewLine + TabInString(8) +
                                     "hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberSunCurrentOptions_separator + TabInString(8) + "});" + Environment.NewLine;
                             }
@@ -10499,7 +10324,7 @@ namespace Watch_Face_Editor
                         // Pointer
                         if (index == pointerPosition && pointerOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
                                     pointerOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -10507,7 +10332,7 @@ namespace Watch_Face_Editor
                         // Icon
                         if (index == iconPosition && iconOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -10569,7 +10394,7 @@ namespace Watch_Face_Editor
                         // Images
                         if (index == imagesPosition && imagesOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
                                     imagesOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -10577,7 +10402,7 @@ namespace Watch_Face_Editor
                         // Segments
                         if (index == segmentsPosition && segmentsOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_PROGRESS, {" +
                                     segmentsOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -10585,13 +10410,13 @@ namespace Watch_Face_Editor
                         // Number
                         if (index == numberPosition && numberOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
                                     numberOptions + TabInString(8) + "});" + Environment.NewLine;
 
                             if (numberOptions_separator.Length > 5)
                             {
-                                items += Environment.NewLine + TabInString(8) +
+                                outItems += Environment.NewLine + TabInString(8) +
                                     "hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(8) + "});" + Environment.NewLine;
                             }
@@ -10600,7 +10425,7 @@ namespace Watch_Face_Editor
                         // Pointer
                         if (index == pointerPosition && pointerOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
                                     pointerOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -10608,7 +10433,7 @@ namespace Watch_Face_Editor
                         // Wind direction
                         if (index == directionPosition && directionOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
                                     directionOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -10617,7 +10442,7 @@ namespace Watch_Face_Editor
                         // Icon
                         if (index == iconPosition && iconOptions.Length > 5)
                         {
-                            items += Environment.NewLine + TabInString(8) +
+                            outItems += Environment.NewLine + TabInString(8) +
                                 "hmUI.createWidget(hmUI.widget.IMG, {" +
                                     iconOptions + TabInString(8) + "});" + Environment.NewLine;
                         }
@@ -10642,7 +10467,7 @@ namespace Watch_Face_Editor
                     // Images
                     if (imagesOptions.Length > 5)
                     {
-                        items += Environment.NewLine + TabInString(8) +
+                        outItems += Environment.NewLine + TabInString(8) +
                             "hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
                                 imagesOptions + TabInString(8) + "});" + Environment.NewLine;
                     }
@@ -16374,6 +16199,10 @@ namespace Watch_Face_Editor
                                 if (weather.Number != null) offset++;
                                 if (weather.Number_Min != null) offset++;
                                 if (weather.Number_Max != null) offset++;
+                                if (weather.Text_Min_rotation != null) offset++;
+                                if (weather.Text_Min_circle != null) offset++;
+                                if (weather.Text_Max_rotation != null) offset++;
+                                if (weather.Text_Max_circle != null) offset++;
                                 if (weather.City_Name != null) offset++;
 
                                 if (weather.Icon == null)
@@ -16612,6 +16441,10 @@ namespace Watch_Face_Editor
                                 if (sunrise.Sunrise != null) offset++;
                                 if (sunrise.Sunset != null) offset++;
                                 if (sunrise.Sunset_Sunrise != null) offset++;
+                                if (sunrise.Sunrise_rotation != null) offset++;
+                                if (sunrise.Sunset_rotation != null) offset++;
+                                if (sunrise.Sunrise_circle != null) offset++;
+                                if (sunrise.Sunset_circle != null) offset++;
                                 if (sunrise.Pointer != null) offset++;
 
                                 if (sunrise.Icon == null)
@@ -17401,6 +17234,10 @@ namespace Watch_Face_Editor
                                 if (weather.Number != null) offset++;
                                 if (weather.Number_Min != null) offset++;
                                 if (weather.Number_Max != null) offset++;
+                                if (weather.Text_Min_rotation != null) offset++;
+                                if (weather.Text_Min_circle != null) offset++;
+                                if (weather.Text_Max_rotation != null) offset++;
+                                if (weather.Text_Max_circle != null) offset++;
                                 if (weather.City_Name != null) offset++;
                                 if (weather.Icon != null) offset++;
 
@@ -17484,6 +17321,10 @@ namespace Watch_Face_Editor
                                 if (sunrise.Sunrise != null) offset++;
                                 if (sunrise.Sunset != null) offset++;
                                 if (sunrise.Sunset_Sunrise != null) offset++;
+                                if (sunrise.Sunrise_rotation != null) offset++;
+                                if (sunrise.Sunset_rotation != null) offset++;
+                                if (sunrise.Sunrise_circle != null) offset++;
+                                if (sunrise.Sunset_circle != null) offset++;
                                 if (sunrise.Pointer != null) offset++;
                                 if (sunrise.Icon != null) offset++;
 
@@ -17954,6 +17795,10 @@ namespace Watch_Face_Editor
                                 if (sunrise.Sunrise != null) offset++;
                                 if (sunrise.Sunset != null) offset++;
                                 if (sunrise.Sunset_Sunrise != null) offset++;
+                                if (sunrise.Sunrise_rotation != null) offset++;
+                                if (sunrise.Sunset_rotation != null) offset++;
+                                if (sunrise.Sunrise_circle != null) offset++;
+                                if (sunrise.Sunset_circle != null) offset++;
                                 if (sunrise.Pointer != null) offset++;
                                 if (sunrise.Icon != null) offset++;
 
@@ -18693,6 +18538,10 @@ namespace Watch_Face_Editor
                                 //if (weather.Number != null) offset++;
                                 if (weather.Number_Min != null) offset++;
                                 if (weather.Number_Max != null) offset++;
+                                if (weather.Text_Min_rotation != null) offset++;
+                                if (weather.Text_Min_circle != null) offset++;
+                                if (weather.Text_Max_rotation != null) offset++;
+                                if (weather.Text_Max_circle != null) offset++;
                                 if (weather.City_Name != null) offset++;
                                 if (weather.Icon != null) offset++;
 
@@ -18729,6 +18578,10 @@ namespace Watch_Face_Editor
                                 if (weather.Number != null) offset++;
                                 //if (weather.Number_Min != null) offset++;
                                 if (weather.Number_Max != null) offset++;
+                                if (weather.Text_Min_rotation != null) offset++;
+                                if (weather.Text_Min_circle != null) offset++;
+                                if (weather.Text_Max_rotation != null) offset++;
+                                if (weather.Text_Max_circle != null) offset++;
                                 if (weather.City_Name != null) offset++;
                                 if (weather.Icon != null) offset++;
 
@@ -18765,6 +18618,10 @@ namespace Watch_Face_Editor
                                 if (weather.Number != null) offset++;
                                 if (weather.Number_Min != null) offset++;
                                 //if (weather.Number_Max != null) offset++;
+                                if (weather.Text_Min_rotation != null) offset++;
+                                if (weather.Text_Min_circle != null) offset++;
+                                if (weather.Text_Max_rotation != null) offset++;
+                                if (weather.Text_Max_circle != null) offset++;
                                 if (weather.City_Name != null) offset++;
                                 if (weather.Icon != null) offset++;
 
@@ -18905,6 +18762,10 @@ namespace Watch_Face_Editor
                                 //if (sunrise.Sunrise != null) offset++;
                                 if (sunrise.Sunset != null) offset++;
                                 if (sunrise.Sunset_Sunrise != null) offset++;
+                                if (sunrise.Sunrise_rotation != null) offset++;
+                                if (sunrise.Sunset_rotation != null) offset++;
+                                if (sunrise.Sunrise_circle != null) offset++;
+                                if (sunrise.Sunset_circle != null) offset++;
                                 if (sunrise.Pointer != null) offset++;
                                 if (sunrise.Icon != null) offset++;
 
@@ -18942,6 +18803,10 @@ namespace Watch_Face_Editor
                                 if (sunrise.Sunrise != null) offset++;
                                 //if (sunrise.Sunset != null) offset++;
                                 if (sunrise.Sunset_Sunrise != null) offset++;
+                                if (sunrise.Sunrise_rotation != null) offset++;
+                                if (sunrise.Sunset_rotation != null) offset++;
+                                if (sunrise.Sunrise_circle != null) offset++;
+                                if (sunrise.Sunset_circle != null) offset++;
                                 if (sunrise.Pointer != null) offset++;
                                 if (sunrise.Icon != null) offset++;
 
@@ -18977,8 +18842,12 @@ namespace Watch_Face_Editor
                                 if (sunrise.Images != null) offset++;
                                 if (sunrise.Segments != null) offset++;
                                 if (sunrise.Sunrise != null) offset++;
-                                //if (sunrise.Sunset_Sunrise != null) offset++;
                                 if (sunrise.Sunset != null) offset++;
+                                //if (sunrise.Sunset_Sunrise != null) offset++;
+                                if (sunrise.Sunrise_rotation != null) offset++;
+                                if (sunrise.Sunset_rotation != null) offset++;
+                                if (sunrise.Sunrise_circle != null) offset++;
+                                if (sunrise.Sunset_circle != null) offset++;
                                 if (sunrise.Pointer != null) offset++;
                                 if (sunrise.Icon != null) offset++;
 
@@ -19898,27 +19767,31 @@ namespace Watch_Face_Editor
                                 int offset = 1;
                                 if (weather.Images != null) offset++;
                                 if (weather.Number != null) offset++;
-                                //if (weather.Number_Min != null) offset++;
+                                if (weather.Number_Min != null) offset++;
                                 if (weather.Number_Max != null) offset++;
+                                //if (weather.Text_Min_rotation != null) offset++;
+                                if (weather.Text_Min_circle != null) offset++;
+                                if (weather.Text_Max_rotation != null) offset++;
+                                if (weather.Text_Max_circle != null) offset++;
                                 if (weather.City_Name != null) offset++;
                                 if (weather.Icon != null) offset++;
 
-                                //weather.Text_rotation_Min = new hmUI_widget_IMG_NUMBER();
-                                //weather.Text_rotation_Min.img_First = textRotate.img_First;
-                                //weather.Text_rotation_Min.imageX = textRotate.imageX;
-                                //weather.Text_rotation_Min.imageY = textRotate.imageY;
-                                //weather.Text_rotation_Min.space = textRotate.space;
-                                //weather.Text_rotation_Min.angle = textRotate.angle;
-                                //weather.Text_rotation_Min.zero = textRotate.zero;
-                                //weather.Text_rotation_Min.unit = textRotate.unit;
-                                //weather.Text_rotation_Min.unit_in_alignment = textRotate.unit_in_alignment;
-                                //weather.Text_rotation_Min.imperial_unit = textRotate.imperial_unit;
-                                //weather.Text_rotation_Min.negative_image = textRotate.negative_image;
-                                //weather.Text_rotation_Min.invalid_image = textRotate.invalid_image;
-                                //weather.Text_rotation_Min.dot_image = textRotate.dot_image;
-                                //weather.Text_rotation_Min.align = textRotate.align;
-                                //weather.Text_rotation_Min.visible = true;
-                                //weather.Text_rotation_Min.position = offset;
+                                weather.Text_Min_rotation = new hmUI_widget_IMG_NUMBER();
+                                weather.Text_Min_rotation.img_First = textRotate.img_First;
+                                weather.Text_Min_rotation.imageX = textRotate.imageX;
+                                weather.Text_Min_rotation.imageY = textRotate.imageY;
+                                weather.Text_Min_rotation.space = textRotate.space;
+                                weather.Text_Min_rotation.angle = textRotate.angle;
+                                weather.Text_Min_rotation.zero = textRotate.zero;
+                                weather.Text_Min_rotation.unit = textRotate.unit;
+                                weather.Text_Min_rotation.unit_in_alignment = textRotate.unit_in_alignment;
+                                weather.Text_Min_rotation.imperial_unit = textRotate.imperial_unit;
+                                weather.Text_Min_rotation.negative_image = textRotate.negative_image;
+                                weather.Text_Min_rotation.invalid_image = textRotate.invalid_image;
+                                weather.Text_Min_rotation.dot_image = textRotate.dot_image;
+                                weather.Text_Min_rotation.align = textRotate.align;
+                                weather.Text_Min_rotation.visible = true;
+                                weather.Text_Min_rotation.position = offset;
                             }
                         }
 
@@ -19936,26 +19809,30 @@ namespace Watch_Face_Editor
                                 if (weather.Images != null) offset++;
                                 if (weather.Number != null) offset++;
                                 if (weather.Number_Min != null) offset++;
-                                //if (weather.Text_rotation_Max != null) offset++;
+                                if (weather.Number_Max != null) offset++;
+                                if (weather.Text_Min_rotation != null) offset++;
+                                if (weather.Text_Min_circle != null) offset++;
+                                //if (weather.Text_Max_rotation != null) offset++;
+                                if (weather.Text_Max_circle != null) offset++;
                                 if (weather.City_Name != null) offset++;
                                 if (weather.Icon != null) offset++;
 
-                                //weather.Text_rotation_Max = new hmUI_widget_IMG_NUMBER();
-                                //weather.Text_rotation_Max.img_First = textRotate.img_First;
-                                //weather.Text_rotation_Max.imageX = textRotate.imageX;
-                                //weather.Text_rotation_Max.imageY = textRotate.imageY;
-                                //weather.Text_rotation_Max.space = textRotate.space;
-                                //weather.Text_rotation_Max.angle = textRotate.angle;
-                                //weather.Text_rotation_Max.zero = textRotate.zero;
-                                //weather.Text_rotation_Max.unit = textRotate.unit;
-                                //weather.Text_rotation_Max.unit_in_alignment = textRotate.unit_in_alignment;
-                                //weather.Text_rotation_Max.imperial_unit = textRotate.imperial_unit;
-                                //weather.Text_rotation_Max.negative_image = textRotate.negative_image;
-                                //weather.Text_rotation_Max.invalid_image = textRotate.invalid_image;
-                                //weather.Text_rotation_Max.dot_image = textRotate.dot_image;
-                                //weather.Text_rotation_Max.align = textRotate.align;
-                                //weather.Text_rotation_Max.visible = true;
-                                //weather.Text_rotation_Max.position = offset;
+                                weather.Text_Max_rotation = new hmUI_widget_IMG_NUMBER();
+                                weather.Text_Max_rotation.img_First = textRotate.img_First;
+                                weather.Text_Max_rotation.imageX = textRotate.imageX;
+                                weather.Text_Max_rotation.imageY = textRotate.imageY;
+                                weather.Text_Max_rotation.space = textRotate.space;
+                                weather.Text_Max_rotation.angle = textRotate.angle;
+                                weather.Text_Max_rotation.zero = textRotate.zero;
+                                weather.Text_Max_rotation.unit = textRotate.unit;
+                                weather.Text_Max_rotation.unit_in_alignment = textRotate.unit_in_alignment;
+                                weather.Text_Max_rotation.imperial_unit = textRotate.imperial_unit;
+                                weather.Text_Max_rotation.negative_image = textRotate.negative_image;
+                                weather.Text_Max_rotation.invalid_image = textRotate.invalid_image;
+                                weather.Text_Max_rotation.dot_image = textRotate.dot_image;
+                                weather.Text_Max_rotation.align = textRotate.align;
+                                weather.Text_Max_rotation.visible = true;
+                                weather.Text_Max_rotation.position = offset;
                             }
                         }
 
@@ -20006,28 +19883,32 @@ namespace Watch_Face_Editor
                                 int offset = 1;
                                 if (sunrise.Images != null) offset++;
                                 if (sunrise.Segments != null) offset++;
-                                //if (sunrise.Sunrise != null) offset++;
+                                if (sunrise.Sunrise != null) offset++;
                                 if (sunrise.Sunset != null) offset++;
                                 if (sunrise.Sunset_Sunrise != null) offset++;
+                                //if (sunrise.Sunrise_rotation != null) offset++;
+                                if (sunrise.Sunset_rotation != null) offset++;
+                                if (sunrise.Sunrise_circle != null) offset++;
+                                if (sunrise.Sunset_circle != null) offset++;
                                 if (sunrise.Pointer != null) offset++;
                                 if (sunrise.Icon != null) offset++;
 
-                                sunrise.Sunrise = new hmUI_widget_IMG_NUMBER();
-                                sunrise.Sunrise.img_First = textRotate.img_First;
-                                sunrise.Sunrise.imageX = textRotate.imageX;
-                                sunrise.Sunrise.imageY = textRotate.imageY;
-                                sunrise.Sunrise.space = textRotate.space;
-                                sunrise.Sunrise.angle = textRotate.angle;
-                                sunrise.Sunrise.zero = textRotate.zero;
-                                sunrise.Sunrise.unit = textRotate.unit;
-                                sunrise.Sunrise.unit_in_alignment = textRotate.unit_in_alignment;
-                                sunrise.Sunrise.imperial_unit = textRotate.imperial_unit;
-                                sunrise.Sunrise.negative_image = textRotate.negative_image;
-                                sunrise.Sunrise.invalid_image = textRotate.invalid_image;
-                                sunrise.Sunrise.dot_image = textRotate.dot_image;
-                                sunrise.Sunrise.align = textRotate.align;
-                                sunrise.Sunrise.visible = true;
-                                sunrise.Sunrise.position = offset;
+                                sunrise.Sunrise_rotation = new hmUI_widget_IMG_NUMBER();
+                                sunrise.Sunrise_rotation.img_First = textRotate.img_First;
+                                sunrise.Sunrise_rotation.imageX = textRotate.imageX;
+                                sunrise.Sunrise_rotation.imageY = textRotate.imageY;
+                                sunrise.Sunrise_rotation.space = textRotate.space;
+                                sunrise.Sunrise_rotation.angle = textRotate.angle;
+                                sunrise.Sunrise_rotation.zero = textRotate.zero;
+                                sunrise.Sunrise_rotation.unit = textRotate.unit;
+                                sunrise.Sunrise_rotation.unit_in_alignment = textRotate.unit_in_alignment;
+                                sunrise.Sunrise_rotation.imperial_unit = textRotate.imperial_unit;
+                                sunrise.Sunrise_rotation.negative_image = textRotate.negative_image;
+                                sunrise.Sunrise_rotation.invalid_image = textRotate.invalid_image;
+                                sunrise.Sunrise_rotation.dot_image = textRotate.dot_image;
+                                sunrise.Sunrise_rotation.align = textRotate.align;
+                                sunrise.Sunrise_rotation.visible = true;
+                                sunrise.Sunrise_rotation.position = offset;
                             }
                         }
 
@@ -20045,27 +19926,31 @@ namespace Watch_Face_Editor
                                 if (sunrise.Images != null) offset++;
                                 if (sunrise.Segments != null) offset++;
                                 if (sunrise.Sunrise != null) offset++;
-                                //if (sunrise.Sunset != null) offset++;
+                                if (sunrise.Sunset != null) offset++;
                                 if (sunrise.Sunset_Sunrise != null) offset++;
+                                if (sunrise.Sunrise_rotation != null) offset++;
+                                //if (sunrise.Sunset_rotation != null) offset++;
+                                if (sunrise.Sunrise_circle != null) offset++;
+                                if (sunrise.Sunset_circle != null) offset++;
                                 if (sunrise.Pointer != null) offset++;
                                 if (sunrise.Icon != null) offset++;
 
-                                sunrise.Sunset = new hmUI_widget_IMG_NUMBER();
-                                sunrise.Sunset.img_First = textRotate.img_First;
-                                sunrise.Sunset.imageX = textRotate.imageX;
-                                sunrise.Sunset.imageY = textRotate.imageY;
-                                sunrise.Sunset.space = textRotate.space;
-                                sunrise.Sunset.angle = textRotate.angle;
-                                sunrise.Sunset.zero = textRotate.zero;
-                                sunrise.Sunset.unit = textRotate.unit;
-                                sunrise.Sunset.unit_in_alignment = textRotate.unit_in_alignment;
-                                sunrise.Sunset.imperial_unit = textRotate.imperial_unit;
-                                sunrise.Sunset.negative_image = textRotate.negative_image;
-                                sunrise.Sunset.invalid_image = textRotate.invalid_image;
-                                sunrise.Sunset.dot_image = textRotate.dot_image;
-                                sunrise.Sunset.align = textRotate.align;
-                                sunrise.Sunset.visible = true;
-                                sunrise.Sunset.position = offset;
+                                sunrise.Sunset_rotation = new hmUI_widget_IMG_NUMBER();
+                                sunrise.Sunset_rotation.img_First = textRotate.img_First;
+                                sunrise.Sunset_rotation.imageX = textRotate.imageX;
+                                sunrise.Sunset_rotation.imageY = textRotate.imageY;
+                                sunrise.Sunset_rotation.space = textRotate.space;
+                                sunrise.Sunset_rotation.angle = textRotate.angle;
+                                sunrise.Sunset_rotation.zero = textRotate.zero;
+                                sunrise.Sunset_rotation.unit = textRotate.unit;
+                                sunrise.Sunset_rotation.unit_in_alignment = textRotate.unit_in_alignment;
+                                sunrise.Sunset_rotation.imperial_unit = textRotate.imperial_unit;
+                                sunrise.Sunset_rotation.negative_image = textRotate.negative_image;
+                                sunrise.Sunset_rotation.invalid_image = textRotate.invalid_image;
+                                sunrise.Sunset_rotation.dot_image = textRotate.dot_image;
+                                sunrise.Sunset_rotation.align = textRotate.align;
+                                sunrise.Sunset_rotation.visible = true;
+                                sunrise.Sunset_rotation.position = offset;
                             }
                         }
 
@@ -20919,6 +20804,182 @@ namespace Watch_Face_Editor
                             }
                         }
 
+
+
+                        if (textCircle.type == "WEATHER_LOW")
+                        {
+                            ElementWeather weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
+                            if (weather == null)
+                            {
+                                elementsList.Add(new ElementWeather());
+                                weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
+                            }
+                            if (weather != null)
+                            {
+                                int offset = 1;
+                                if (weather.Images != null) offset++;
+                                if (weather.Number != null) offset++;
+                                if (weather.Number_Min != null) offset++;
+                                if (weather.Number_Max != null) offset++;
+                                if (weather.Text_Min_rotation != null) offset++;
+                                //if (weather.Text_Min_circle != null) offset++;
+                                if (weather.Text_Max_rotation != null) offset++;
+                                if (weather.Text_Max_circle != null) offset++;
+                                if (weather.City_Name != null) offset++;
+                                if (weather.Icon != null) offset++;
+
+                                weather.Text_Min_circle = new Text_Circle();
+                                weather.Text_Min_circle.img_First = textCircle.img_First;
+                                weather.Text_Min_circle.circle_center_X = textCircle.circle_center_X;
+                                weather.Text_Min_circle.circle_center_Y = textCircle.circle_center_Y;
+                                weather.Text_Min_circle.char_space_angle = textCircle.char_space_angle;
+                                weather.Text_Min_circle.angle = textCircle.angle;
+                                weather.Text_Min_circle.radius = textCircle.radius;
+                                weather.Text_Min_circle.zero = textCircle.zero;
+                                weather.Text_Min_circle.unit = textCircle.unit;
+                                weather.Text_Min_circle.unit_in_alignment = textCircle.unit_in_alignment;
+                                weather.Text_Min_circle.imperial_unit = textCircle.imperial_unit;
+                                weather.Text_Min_circle.error_image = textCircle.error_image;
+                                weather.Text_Min_circle.dot_image = textCircle.dot_image;
+                                weather.Text_Min_circle.reverse_direction = textCircle.reverse_direction;
+                                weather.Text_Min_circle.horizontal_alignment = textCircle.horizontal_alignment;
+                                weather.Text_Min_circle.vertical_alignment = textCircle.vertical_alignment;
+                                weather.Text_Min_circle.visible = true;
+                                weather.Text_Min_circle.position = offset;
+                            }
+                        }
+
+                        if (textCircle.type == "WEATHER_HIGH")
+                        {
+                            ElementWeather weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
+                            if (weather == null)
+                            {
+                                elementsList.Add(new ElementWeather());
+                                weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
+                            }
+                            if (weather != null)
+                            {
+                                int offset = 1;
+                                if (weather.Images != null) offset++;
+                                if (weather.Number != null) offset++;
+                                if (weather.Number_Min != null) offset++;
+                                if (weather.Number_Max != null) offset++;
+                                if (weather.Text_Min_rotation != null) offset++;
+                                if (weather.Text_Min_circle != null) offset++;
+                                if (weather.Text_Max_rotation != null) offset++;
+                                //if (weather.Text_Max_circle != null) offset++;
+                                if (weather.City_Name != null) offset++;
+                                if (weather.Icon != null) offset++;
+
+                                weather.Text_Max_circle = new Text_Circle();
+                                weather.Text_Max_circle.img_First = textCircle.img_First;
+                                weather.Text_Max_circle.circle_center_X = textCircle.circle_center_X;
+                                weather.Text_Max_circle.circle_center_Y = textCircle.circle_center_Y;
+                                weather.Text_Max_circle.char_space_angle = textCircle.char_space_angle;
+                                weather.Text_Max_circle.angle = textCircle.angle;
+                                weather.Text_Max_circle.radius = textCircle.radius;
+                                weather.Text_Max_circle.zero = textCircle.zero;
+                                weather.Text_Max_circle.unit = textCircle.unit;
+                                weather.Text_Max_circle.unit_in_alignment = textCircle.unit_in_alignment;
+                                weather.Text_Max_circle.imperial_unit = textCircle.imperial_unit;
+                                weather.Text_Max_circle.error_image = textCircle.error_image;
+                                weather.Text_Max_circle.dot_image = textCircle.dot_image;
+                                weather.Text_Max_circle.reverse_direction = textCircle.reverse_direction;
+                                weather.Text_Max_circle.horizontal_alignment = textCircle.horizontal_alignment;
+                                weather.Text_Max_circle.vertical_alignment = textCircle.vertical_alignment;
+                                weather.Text_Max_circle.visible = true;
+                                weather.Text_Max_circle.position = offset;
+                            }
+                        }
+
+                        if (textCircle.type == "SUN_RISE")
+                        {
+                            ElementSunrise sunrise = (ElementSunrise)elementsList.Find(e => e.GetType().Name == "ElementSunrise");
+                            if (sunrise == null)
+                            {
+                                elementsList.Add(new ElementSunrise());
+                                sunrise = (ElementSunrise)elementsList.Find(e => e.GetType().Name == "ElementSunrise");
+                            }
+                            if (sunrise != null)
+                            {
+                                int offset = 1;
+                                if (sunrise.Images != null) offset++;
+                                if (sunrise.Segments != null) offset++;
+                                if (sunrise.Sunrise != null) offset++;
+                                if (sunrise.Sunset != null) offset++;
+                                if (sunrise.Sunset_Sunrise != null) offset++;
+                                if (sunrise.Sunrise_rotation != null) offset++;
+                                if (sunrise.Sunset_rotation != null) offset++;
+                                //if (sunrise.Sunrise_circle != null) offset++;
+                                if (sunrise.Sunset_circle != null) offset++;
+                                if (sunrise.Pointer != null) offset++;
+                                if (sunrise.Icon != null) offset++;
+
+                                sunrise.Sunrise_circle = new Text_Circle();
+                                sunrise.Sunrise_circle.img_First = textCircle.img_First;
+                                sunrise.Sunrise_circle.circle_center_X = textCircle.circle_center_X;
+                                sunrise.Sunrise_circle.circle_center_Y = textCircle.circle_center_Y;
+                                sunrise.Sunrise_circle.char_space_angle = textCircle.char_space_angle;
+                                sunrise.Sunrise_circle.angle = textCircle.angle;
+                                sunrise.Sunrise_circle.radius = textCircle.radius;
+                                sunrise.Sunrise_circle.zero = textCircle.zero;
+                                sunrise.Sunrise_circle.unit = textCircle.unit;
+                                sunrise.Sunrise_circle.unit_in_alignment = textCircle.unit_in_alignment;
+                                sunrise.Sunrise_circle.imperial_unit = textCircle.imperial_unit;
+                                sunrise.Sunrise_circle.error_image = textCircle.error_image;
+                                sunrise.Sunrise_circle.dot_image = textCircle.dot_image;
+                                sunrise.Sunrise_circle.reverse_direction = textCircle.reverse_direction;
+                                sunrise.Sunrise_circle.horizontal_alignment = textCircle.horizontal_alignment;
+                                sunrise.Sunrise_circle.vertical_alignment = textCircle.vertical_alignment;
+                                sunrise.Sunrise_circle.visible = true;
+                                sunrise.Sunrise_circle.position = offset;
+                            }
+                        }
+
+                        if (textCircle.type == "SUN_SET")
+                        {
+                            ElementSunrise sunrise = (ElementSunrise)elementsList.Find(e => e.GetType().Name == "ElementSunrise");
+                            if (sunrise == null)
+                            {
+                                elementsList.Add(new ElementSunrise());
+                                sunrise = (ElementSunrise)elementsList.Find(e => e.GetType().Name == "ElementSunrise");
+                            }
+                            if (sunrise != null)
+                            {
+                                int offset = 1;
+                                if (sunrise.Images != null) offset++;
+                                if (sunrise.Segments != null) offset++;
+                                if (sunrise.Sunrise != null) offset++;
+                                if (sunrise.Sunset != null) offset++;
+                                if (sunrise.Sunset_Sunrise != null) offset++;
+                                if (sunrise.Sunrise_rotation != null) offset++;
+                                if (sunrise.Sunset_rotation != null) offset++;
+                                if (sunrise.Sunrise_circle != null) offset++;
+                                //if (sunrise.Sunset_circle != null) offset++;
+                                if (sunrise.Pointer != null) offset++;
+                                if (sunrise.Icon != null) offset++;
+
+                                sunrise.Sunset_circle = new Text_Circle();
+                                sunrise.Sunset_circle.img_First = textCircle.img_First;
+                                sunrise.Sunset_circle.circle_center_X = textCircle.circle_center_X;
+                                sunrise.Sunset_circle.circle_center_Y = textCircle.circle_center_Y;
+                                sunrise.Sunset_circle.char_space_angle = textCircle.char_space_angle;
+                                sunrise.Sunset_circle.angle = textCircle.angle;
+                                sunrise.Sunset_circle.radius = textCircle.radius;
+                                sunrise.Sunset_circle.zero = textCircle.zero;
+                                sunrise.Sunset_circle.unit = textCircle.unit;
+                                sunrise.Sunset_circle.unit_in_alignment = textCircle.unit_in_alignment;
+                                sunrise.Sunset_circle.imperial_unit = textCircle.imperial_unit;
+                                sunrise.Sunset_circle.error_image = textCircle.error_image;
+                                sunrise.Sunset_circle.dot_image = textCircle.dot_image;
+                                sunrise.Sunset_circle.reverse_direction = textCircle.reverse_direction;
+                                sunrise.Sunset_circle.horizontal_alignment = textCircle.horizontal_alignment;
+                                sunrise.Sunset_circle.vertical_alignment = textCircle.vertical_alignment;
+                                sunrise.Sunset_circle.visible = true;
+                                sunrise.Sunset_circle.position = offset;
+                            }
+                        }
+
                         break;
                     #endregion
 
@@ -21418,6 +21479,10 @@ namespace Watch_Face_Editor
                                 if (sunrise.Sunrise != null) offset++;
                                 if (sunrise.Sunset != null) offset++;
                                 if (sunrise.Sunset_Sunrise != null) offset++;
+                                if (sunrise.Sunrise_rotation != null) offset++;
+                                if (sunrise.Sunset_rotation != null) offset++;
+                                if (sunrise.Sunrise_circle != null) offset++;
+                                if (sunrise.Sunset_circle != null) offset++;
                                 //if (sunrise.Pointer != null) offset++;
                                 if (sunrise.Icon != null) offset++;
 
@@ -22465,6 +22530,10 @@ namespace Watch_Face_Editor
                                 if (weather.Number != null) offset++;
                                 if (weather.Number_Min != null) offset++;
                                 if (weather.Number_Max != null) offset++;
+                                if (weather.Text_Min_rotation != null) offset++;
+                                if (weather.Text_Min_circle != null) offset++;
+                                if (weather.Text_Max_rotation != null) offset++;
+                                if (weather.Text_Max_circle != null) offset++;
                                 //if (weather.City_Name != null) offset++;
                                 if (weather.Icon != null) offset++;
 
@@ -24757,14 +24826,13 @@ namespace Watch_Face_Editor
             return returnValue;
         }
 
-        private void AddListener(ref string variables, ref string items, ref string exist_items, string sensorName, string valueName, string newFunction, 
+        private void AddListener(ref string variables, ref string items, /*ref string exist_items,*/ string sensorName, string valueName, string newFunction, 
             ref string resume_call, ref string pause_call, string optionNameStart)
         {
             if (valueName == "hour" || valueName == "minute" || valueName == "second" ||
                 valueName == "year" || valueName == "month" || valueName == "day")
             {
-                if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0 &&
-                                    exist_items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
+                if (items.IndexOf("let screenType = hmSetting.getScreenType();") < 0)
                     items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
                 string timerName = optionNameStart + "timerTextUpdate";
                 if (resume_call.IndexOf(timerName + " = timer.createTimer") < 0)
@@ -24813,7 +24881,7 @@ namespace Watch_Face_Editor
                 {
                     sensorStr = sensorName + ".addEventListener(hmSensor.event.CHANGE, function() {";
                 }*/
-                if (items.IndexOf(sensorStr) < 0 && exist_items.IndexOf(sensorStr) < 0)
+                if (items.IndexOf(sensorStr) < 0)
                 {
                     items += TabInString(6) + sensorStr + Environment.NewLine;
                     items += TabInString(7) + newFunction + Environment.NewLine;
@@ -24831,23 +24899,13 @@ namespace Watch_Face_Editor
                         }
 
                     }
-                    else if (exist_items.IndexOf(sensorStr) > 0)
-                    {
-                        int startSensorPos = exist_items.IndexOf(sensorStr);
-                        int endSensorPos = exist_items.IndexOf("});", startSensorPos);
-                        if (exist_items.IndexOf(newFunction, startSensorPos, endSensorPos - startSensorPos) < 0)
-                        {
-                            exist_items = exist_items.Insert(startSensorPos + sensorStr.Length, Environment.NewLine + TabInString(7) + newFunction);
-                        }
-
-                    }
                 } 
             }
         }
 
         /// <summary>Добавляем код для наклоненного текста</summary>
         private void AddTextRotationJS(hmUI_widget_IMG_NUMBER text_rotate,string optionNameStart, string variableName, ref string variables, ref string items, 
-            string exist_items, ref string text_update, string textRotateOptions, string show_level, string sensorName, string sensorID,
+            /*string exist_items,*/ ref string text_update, string textRotateOptions, string show_level, string sensorName, string sensorID,
             string valueName, string sensorTargetValue, int valueLenght, ref string resume_call, ref string pause_call)
         {
             string variableStartName = optionNameStart + variableName;
@@ -24975,6 +25033,21 @@ namespace Watch_Face_Editor
                 }
                 items += Environment.NewLine + TabInString(6) + "});";
                 items += Environment.NewLine + TabInString(6) + variableStartName + "TextRotate_unit.setProperty(hmUI.prop.VISIBLE, false);" + Environment.NewLine;
+
+                if (text_rotate.imperial_unit != null && text_rotate.imperial_unit.Length > 0)
+                {
+                    if (sensorID == "forecastData" && SelectedModel.versionOS > 2)
+                    {
+                        if (items.IndexOf("const temperatureUnit = hmSetting.getTemperatureUnit();") < 0)
+                        {
+                            items += Environment.NewLine + TabInString(6) + "const temperatureUnit = hmSetting.getTemperatureUnit();";
+                        }
+                        items += Environment.NewLine + TabInString(6) + "if (temperatureUnit == 1) {";
+                        items += Environment.NewLine + TabInString(7) + variableStartName +
+                            "TextRotate_unit.setProperty(hmUI.prop.SRC, '" + text_rotate.imperial_unit + ".png');";
+                        items += Environment.NewLine + TabInString(6) + "};" + Environment.NewLine; 
+                    }
+                }
             }
             items += TabInString(6) + "//end of ignored block" + Environment.NewLine;
 
@@ -25042,24 +25115,13 @@ namespace Watch_Face_Editor
             }
             else
             {
-                if (items.IndexOf("const " + sensorName + " = hmSensor.createSensor(hmSensor.id." + sensorID + ");") < 0 &&
-                    exist_items.IndexOf("const " + sensorName + " = hmSensor.createSensor(hmSensor.id." + sensorID + ");") < 0)
+                if (items.IndexOf("const " + sensorName + " = hmSensor.createSensor(hmSensor.id." + sensorID + ");") < 0 )
                 {
                     items += TabInString(6) + Environment.NewLine;
                     items += TabInString(6) + "const " + sensorName + " = hmSensor.createSensor(hmSensor.id." + sensorID + ");" + Environment.NewLine;
                 }
-                AddListener(ref variables, ref items, ref exist_items, sensorName, sensorTargetValue, "text_update();", ref resume_call, ref pause_call, optionNameStart);
-
+                AddListener(ref variables, ref items, sensorName, sensorTargetValue, "text_update();", ref resume_call, ref pause_call, optionNameStart);
             }
-            //if (items.IndexOf("function toDegree (radian) {") < 0 &&
-            //    exist_items.IndexOf("function toDegree (radian) {") < 0)
-            //{
-            //    items += TabInString(6) + Environment.NewLine;
-            //    items += TabInString(6) + "function toDegree (radian) {" + Environment.NewLine;
-            //    items += TabInString(7) + "return radian * (180 / Math.PI);" + Environment.NewLine;
-            //    items += TabInString(6) + "};" + Environment.NewLine;
-            //}
-
 
             text_update += Environment.NewLine + TabInString(7) + "console.log('update text rotate " + variableName + sensorID + "');" + Environment.NewLine;
             if (sensorID == "forecastData" || sensorID == "tideData" )
@@ -25153,7 +25215,7 @@ namespace Watch_Face_Editor
 
         /// <summary>Добавляем код для текста по окружности</summary>
         private void AddTextCircleJS(Text_Circle text_circle, string optionNameStart, string variableName, ref string variables, ref string items,
-            string exist_items, ref string text_update, string textCircleOptions, string show_level, string sensorName, string sensorID,
+            /*string exist_items,*/ ref string text_update, string textCircleOptions, string show_level, string sensorName, string sensorID,
             string valueName, string sensorTargetValue, int valueLenght, ref string resume_call, ref string pause_call)
         {
             string variableStartName = optionNameStart + variableName;
@@ -25306,6 +25368,21 @@ namespace Watch_Face_Editor
                 }
                 items += Environment.NewLine + TabInString(6) + "});";
                 items += Environment.NewLine + TabInString(6) + variableStartName + "TextCircle_unit.setProperty(hmUI.prop.VISIBLE, false);" + Environment.NewLine;
+
+                if (text_circle.imperial_unit != null && text_circle.imperial_unit.Length > 0)
+                {
+                    if (sensorID == "forecastData" && SelectedModel.versionOS > 2)
+                    {
+                        if (items.IndexOf("const temperatureUnit = hmSetting.getTemperatureUnit();") < 0)
+                        {
+                            items += Environment.NewLine + TabInString(6) + "const temperatureUnit = hmSetting.getTemperatureUnit();";
+                        }
+                        items += Environment.NewLine + TabInString(6) + "if (temperatureUnit == 1) {";
+                        items += Environment.NewLine + TabInString(7) + variableStartName +
+                            "TextCircle_unit.setProperty(hmUI.prop.SRC, '" + text_circle.imperial_unit + ".png');";
+                        items += Environment.NewLine + TabInString(6) + "};" + Environment.NewLine;
+                    }
+                }
             }
             items += TabInString(6) + "//end of ignored block" + Environment.NewLine;
 
@@ -25337,8 +25414,6 @@ namespace Watch_Face_Editor
                 if (text_update.IndexOf("let weatherData = weatherSensor.getForecastWeather();") < 0)
                 {
                     text_update += TabInString(7) + "let weatherData = weatherSensor.getForecastWeather();" + Environment.NewLine;
-                    //text_update += TabInString(7) + "let forecastData = weatherData.forecastData;" + Environment.NewLine;
-                    //text_update += TabInString(7) + "let tideData = weatherData.tideData;" + Environment.NewLine;
                 }
 
                 if (sensorID == "forecastData")
@@ -25373,17 +25448,15 @@ namespace Watch_Face_Editor
             }
             else
             {
-                if (items.IndexOf("const " + sensorName + " = hmSensor.createSensor(hmSensor.id." + sensorID + ");") < 0 &&
-                    exist_items.IndexOf("const " + sensorName + " = hmSensor.createSensor(hmSensor.id." + sensorID + ");") < 0)
+                if (items.IndexOf("const " + sensorName + " = hmSensor.createSensor(hmSensor.id." + sensorID + ");") < 0)
                 {
                     items += TabInString(6) + Environment.NewLine;
                     items += TabInString(6) + "const " + sensorName + " = hmSensor.createSensor(hmSensor.id." + sensorID + ");" + Environment.NewLine;
                 }
-                AddListener(ref variables, ref items, ref exist_items, sensorName, sensorTargetValue, "text_update();", ref resume_call, ref pause_call, optionNameStart); 
+                AddListener(ref variables, ref items, sensorName, sensorTargetValue, "text_update();", ref resume_call, ref pause_call, optionNameStart); 
             }
 
-            if (items.IndexOf("function toDegree (radian) {") < 0 &&
-                exist_items.IndexOf("function toDegree (radian) {") < 0)
+            if (items.IndexOf("function toDegree (radian) {") < 0)
             {
                 items += TabInString(6) + Environment.NewLine;
                 items += TabInString(6) + "function toDegree (radian) {" + Environment.NewLine;

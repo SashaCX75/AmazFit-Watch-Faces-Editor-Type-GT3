@@ -873,6 +873,7 @@ namespace Watch_Face_Editor
             uCtrl_Text_Rotate_Opt.Distance = _dastance;
             uCtrl_Text_Rotate_Opt.Sunrise = _sunrise;
             uCtrl_Text_Rotate_Opt.Weather = _weather;
+            uCtrl_Text_Rotate_Opt.Imperial_unit = SelectedModel.versionOS > 2;
             uCtrl_Text_Rotate_Opt.Year = _year;
             uCtrl_Text_Rotate_Opt.ImageError = true;
             uCtrl_Text_Rotate_Opt.OptionalSymbol = _optionalSymbol;
@@ -910,65 +911,6 @@ namespace Watch_Face_Editor
         }
 
         /// <summary>Читаем настройки для отображения числа картинками</summary>
-        /// <param name="text_rotation">Элемент Text_Rotation для отображения настроек</param>
-        /// <param name="_dastance">Режим отображения для дистанции</param>
-        /// <param name="_optionalSymbol">Отображение настроек дополнительного символа</param>
-        /// <param name="_padingZero">Отображение настроек ведущих нулей</param>
-        /// <param name="_sunrise">Режим отображения для восхода/заката</param>
-        /// <param name="_angleVisible">Видимость настроек угла</param>
-        private void Read_TextRotation_Options(Text_Rotation text_rotation, bool _dastance, bool _sunrise, bool _year, bool _optionalSymbol, bool _padingZero)
-        {
-            //PreviewView = false;
-
-            //uCtrl_Text_Rotation_Opt.SettingsClear();
-
-            //uCtrl_Text_Rotation_Opt.Distance = _dastance;
-            //uCtrl_Text_Rotation_Opt.Sunrise = _sunrise;
-            ////uCtrl_Text_Rotation_Opt.ImageError = _imageError;
-            //uCtrl_Text_Rotation_Opt.Year = _year;
-            //uCtrl_Text_Rotation_Opt.OptionalSymbol = _optionalSymbol;
-            //uCtrl_Text_Rotation_Opt.PaddingZero = _padingZero;
-            //uCtrl_Text_Rotation_Opt.Visible = true;
-            ////if (!_optionalSymbol)
-            ////{
-            ////    if (text_circle.dot_image != null)
-            ////    {
-            ////        JSON_Modified = true;
-            ////        text_circle.dot_image = null;
-            ////    }
-            ////}
-
-
-            //uCtrl_Text_Rotation_Opt._ElementWithText = text_rotation;
-
-            //if (text_rotation == null)
-            //{
-            //    PreviewView = true;
-            //    return;
-            //}
-            //if (text_rotation.img_First != null)
-            //    uCtrl_Text_Rotation_Opt.SetImage(text_rotation.img_First);
-            //uCtrl_Text_Rotation_Opt.numericUpDown_centr_X.Value = text_rotation.rotation_point_X;
-            //uCtrl_Text_Rotation_Opt.numericUpDown_centr_Y.Value = text_rotation.rotation_point_Y;
-
-            //uCtrl_Text_Rotation_Opt.numericUpDown_angle.Value = text_rotation.angle;
-            //uCtrl_Text_Rotation_Opt.numericUpDown_spacing.Value = text_rotation.space;
-
-            //uCtrl_Text_Rotation_Opt.SetUnit(text_rotation.unit);
-            //uCtrl_Text_Rotation_Opt.SetUnitImperial(text_rotation.imperial_unit);
-            //uCtrl_Text_Rotation_Opt.SetImageError(text_rotation.error_image);
-            //uCtrl_Text_Rotation_Opt.SetImageDecimalPointOrMinus(text_rotation.dot_image);
-
-            //uCtrl_Text_Rotation_Opt.SetHorizontalAlignment(text_rotation.horizontal_alignment);
-            //uCtrl_Text_Rotation_Opt.SetHorizontalAlignment(text_rotation.horizontal_alignment);
-
-            //uCtrl_Text_Rotation_Opt.checkBox_addZero.Checked = text_rotation.zero;
-
-
-            //PreviewView = true;
-        }
-
-        /// <summary>Читаем настройки для отображения числа картинками</summary>
         /// <param name="text_circle">Элемент Text_Circle для отображения настроек</param>
         /// <param name="_dastance">Режим отображения для дистанции</param>
         /// <param name="_optionalSymbol">Отображение настроек дополнительного символа</param>
@@ -984,6 +926,7 @@ namespace Watch_Face_Editor
             uCtrl_Text_Circle_Opt.Distance = _dastance;
             uCtrl_Text_Circle_Opt.Weather = _weather;
             uCtrl_Text_Circle_Opt.Sunrise = _sunrise;
+            uCtrl_Text_Circle_Opt.Imperial_unit = SelectedModel.versionOS > 2;
             //uCtrl_Text_Circle_Opt.ImageError = _imageError;
             uCtrl_Text_Circle_Opt.Year = _year;
             uCtrl_Text_Circle_Opt.OptionalSymbol = _optionalSymbol;

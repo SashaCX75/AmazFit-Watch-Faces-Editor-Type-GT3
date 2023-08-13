@@ -4120,7 +4120,7 @@ namespace Watch_Face_Editor
                     if (cityName.font != null && cityName.font.Length > 3)
                     {
                         string font_fileName = FullFileDir + @"\assets\fonts\" + cityName.font;
-                        if (File.Exists(font_fileName))
+                        if (SelectedModel.versionOS >= 2 && File.Exists(font_fileName))
                         {
                             Font drawFont = null;
                             using (System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection())

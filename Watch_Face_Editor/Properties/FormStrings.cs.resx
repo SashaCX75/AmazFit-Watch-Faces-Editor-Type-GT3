@@ -258,6 +258,12 @@
   <data name="Message_LoadPreviewStates_Text" xml:space="preserve">
     <value>Stáhnout existující soubor se sadou nastavení náhledu PreviewStates.json?</value>
   </data>
+  <data name="Message_ModelConfig_Error" xml:space="preserve">
+    <value>Konfigurace modelu nenalezena:</value>
+  </data>
+  <data name="Message_ModelConfig_ReadError" xml:space="preserve">
+    <value>Při čtení konfigurace modelu došlo k chybě</value>
+  </data>
   <data name="Message_Restart_Caption" xml:space="preserve">
     <value>Restartujte</value>
   </data>

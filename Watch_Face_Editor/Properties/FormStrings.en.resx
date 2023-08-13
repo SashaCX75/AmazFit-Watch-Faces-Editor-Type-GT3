@@ -262,7 +262,7 @@
     <value>Model configuration not found: </value>
   </data>
   <data name="Message_ModelConfig_ReadError" xml:space="preserve">
-    <value>Ошибка чтения конфигурации моделей</value>
+    <value>Error reading model configuration</value>
   </data>
   <data name="Message_Restart_Caption" xml:space="preserve">
     <value>Reboot</value>

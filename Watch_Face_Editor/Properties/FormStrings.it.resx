@@ -258,6 +258,12 @@
   <data name="Message_LoadPreviewStates_Text" xml:space="preserve">
     <value>Caricare un file PreviewStates.json esistente con una serie di valori di anteprima?</value>
   </data>
+  <data name="Message_ModelConfig_Error" xml:space="preserve">
+    <value>Modello di configurazione non trovato:</value>
+  </data>
+  <data name="Message_ModelConfig_ReadError" xml:space="preserve">
+    <value>Errore durante la lettura della configurazione del modello</value>
+  </data>
   <data name="Message_Restart_Caption" xml:space="preserve">
     <value>Riavvio</value>
   </data>

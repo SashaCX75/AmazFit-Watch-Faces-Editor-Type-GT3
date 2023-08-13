@@ -171,20 +171,20 @@ fluido della lancetta dei secondi (non ha senso
 impostare fps sopra 6)</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>253, 75</value>
+    <value>260, 75</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
-    <value>Tipo 3: funziona in modo più fluido rispetto al tipo 2, 
+    <value>   Tipo 3: funziona in modo più fluido rispetto al tipo 2, 
 solo su modelli con ZeppOS 2. Non funziona su 
 AOD. L'angolo iniziale deve essere 0, l'angolo finale 
 360. Se abilitato, ci sono problemi con 
 l'aggiornamento altri elementi temporali.</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>233, 36</value>
+    <value>242, 36</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
-    <value>Tipo 4: funziona solo su modelli con ZeppOS 2. 
+    <value>   Tipo 4: funziona solo su modelli con ZeppOS 2. 
 Non funziona in modo AOD </value>
   </data>
 </root>

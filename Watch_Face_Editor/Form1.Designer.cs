@@ -1483,6 +1483,7 @@ namespace Watch_Face_Editor
             this.uCtrl_Text_Rotate_Opt.Distance = false;
             resources.ApplyResources(this.uCtrl_Text_Rotate_Opt, "uCtrl_Text_Rotate_Opt");
             this.uCtrl_Text_Rotate_Opt.ImageError = false;
+            this.uCtrl_Text_Rotate_Opt.Imperial_unit = false;
             this.uCtrl_Text_Rotate_Opt.Name = "uCtrl_Text_Rotate_Opt";
             this.uCtrl_Text_Rotate_Opt.OptionalSymbol = false;
             this.uCtrl_Text_Rotate_Opt.PaddingZero = false;
@@ -1495,6 +1496,7 @@ namespace Watch_Face_Editor
             // 
             this.uCtrl_Text_Circle_Opt.Distance = false;
             resources.ApplyResources(this.uCtrl_Text_Circle_Opt, "uCtrl_Text_Circle_Opt");
+            this.uCtrl_Text_Circle_Opt.Imperial_unit = false;
             this.uCtrl_Text_Circle_Opt.Name = "uCtrl_Text_Circle_Opt";
             this.uCtrl_Text_Circle_Opt.OptionalSymbol = false;
             this.uCtrl_Text_Circle_Opt.PaddingZero = false;
@@ -1971,7 +1973,9 @@ namespace Watch_Face_Editor
             resources.GetString("comboBox_ConvertingOutput_Model.Items7"),
             resources.GetString("comboBox_ConvertingOutput_Model.Items8"),
             resources.GetString("comboBox_ConvertingOutput_Model.Items9"),
-            resources.GetString("comboBox_ConvertingOutput_Model.Items10")});
+            resources.GetString("comboBox_ConvertingOutput_Model.Items10"),
+            resources.GetString("comboBox_ConvertingOutput_Model.Items11"),
+            resources.GetString("comboBox_ConvertingOutput_Model.Items12")});
             resources.ApplyResources(this.comboBox_ConvertingOutput_Model, "comboBox_ConvertingOutput_Model");
             this.comboBox_ConvertingOutput_Model.Name = "comboBox_ConvertingOutput_Model";
             this.comboBox_ConvertingOutput_Model.SelectedIndexChanged += new System.EventHandler(this.comboBox_ConvertingOutput_Model_SelectedIndexChanged);
@@ -2020,7 +2024,9 @@ namespace Watch_Face_Editor
             resources.GetString("comboBox_ConvertingInput_Model.Items7"),
             resources.GetString("comboBox_ConvertingInput_Model.Items8"),
             resources.GetString("comboBox_ConvertingInput_Model.Items9"),
-            resources.GetString("comboBox_ConvertingInput_Model.Items10")});
+            resources.GetString("comboBox_ConvertingInput_Model.Items10"),
+            resources.GetString("comboBox_ConvertingInput_Model.Items11"),
+            resources.GetString("comboBox_ConvertingInput_Model.Items12")});
             resources.ApplyResources(this.comboBox_ConvertingInput_Model, "comboBox_ConvertingInput_Model");
             this.comboBox_ConvertingInput_Model.Name = "comboBox_ConvertingInput_Model";
             this.comboBox_ConvertingInput_Model.SelectedIndexChanged += new System.EventHandler(this.comboBox_ConvertingInput_Model_SelectedIndexChanged);

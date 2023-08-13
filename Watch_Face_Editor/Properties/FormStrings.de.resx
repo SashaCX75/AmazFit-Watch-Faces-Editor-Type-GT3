@@ -258,6 +258,12 @@
   <data name="Message_LoadPreviewStates_Text" xml:space="preserve">
     <value>Eine vorhandene Datei mit einer Reihe von Vorschaueinstellungen herunterladen?</value>
   </data>
+  <data name="Message_ModelConfig_Error" xml:space="preserve">
+    <value>Modellkonfiguration nicht gefunden: </value>
+  </data>
+  <data name="Message_ModelConfig_ReadError" xml:space="preserve">
+    <value>Fehler beim Lesen der Modellkonfiguration</value>
+  </data>
   <data name="Message_Restart_Caption" xml:space="preserve">
     <value>Neustart</value>
   </data>
