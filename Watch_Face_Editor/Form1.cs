@@ -18179,10 +18179,16 @@ namespace Watch_Face_Editor
                 case "454 (T-Rex Ultra)":
                     numericUpDown_ConvertingInput_Custom.Value = 454;
                     break;
+                case "454 (Cheetah)":
+                    numericUpDown_ConvertingInput_Custom.Value = 454;
+                    break;
                 case "466 (GTR 4)":
                     numericUpDown_ConvertingInput_Custom.Value = 466;
                     break;
                 case "480 (GTR 3 Pro)":
+                    numericUpDown_ConvertingInput_Custom.Value = 480;
+                    break;
+                case "480 (Cheetah Pro)":
                     numericUpDown_ConvertingInput_Custom.Value = 480;
                     break;
                 case "390 (GTS 4)":
@@ -18218,10 +18224,16 @@ namespace Watch_Face_Editor
                 case "454 (T-Rex Ultra)":
                     numericUpDown_ConvertingOutput_Custom.Value = 454;
                     break;
+                case "454 (Cheetah)":
+                    numericUpDown_ConvertingOutput_Custom.Value = 454;
+                    break;
                 case "466 (GTR 4)":
                     numericUpDown_ConvertingOutput_Custom.Value = 466;
                     break;
                 case "480 (GTR 3 Pro)":
+                    numericUpDown_ConvertingOutput_Custom.Value = 480;
+                    break;
+                case "480 (Cheetah Pro)":
                     numericUpDown_ConvertingOutput_Custom.Value = 480;
                     break;
                 case "390 (GTS 4)":
@@ -18244,11 +18256,15 @@ namespace Watch_Face_Editor
                 {
                     case "336 (GTS 4 mini)":
                         suffix = "_GTS_4_mini";
-                        DeviceName = "GTS4_mini";
+                        DeviceName = "GTS 4 mini";
                         break;
                     case "390 (GTS 3)":
                         suffix = "_GTS_3";
-                        DeviceName = "GTS3";
+                        DeviceName = "GTS 3";
+                        break;
+                    case "390 (GTS 4)":
+                        suffix = "_GTS_4";
+                        DeviceName = "GTS 4";
                         break;
                     case "416 (Falcon)":
                         suffix = "_Falcon";
@@ -18256,31 +18272,35 @@ namespace Watch_Face_Editor
                         break;
                     case "416 (GTR mini)":
                         suffix = "_GTR_mini";
-                        DeviceName = "GTR_mini";
+                        DeviceName = "GTR mini";
                         break;
                     case "454 (GTR 3)":
                         suffix = "_GTR_3";
-                        DeviceName = "GTR3";
+                        DeviceName = "GTR 3";
                         break;
                     case "454 (T-Rex 2)":
                         suffix = "_T_Rex_2";
-                        DeviceName = "T_Rex_2";
+                        DeviceName = "T-Rex 2";
                         break;
                     case "454 (T-Rex Ultra)":
                         suffix = "_T_Rex_Ultra";
-                        DeviceName = "T_Rex_Ultra";
+                        DeviceName = "T-Rex Ultra";
+                        break;
+                    case "454 (Cheetah)":
+                        suffix = "_Cheetah";
+                        DeviceName = "Cheetah";
                         break;
                     case "466 (GTR 4)":
                         suffix = "_GTR_4";
-                        DeviceName = "GTR4";
+                        DeviceName = "GTR 4";
                         break;
                     case "480 (GTR 3 Pro)":
                         suffix = "_GTR_3_Pro";
-                        DeviceName = "GTR3_Pro";
+                        DeviceName = "GTR 3 Pro";
                         break;
-                    case "390 (GTS 4)":
-                        suffix = "_GTS_4";
-                        DeviceName = "GTS4";
+                    case "480 (Cheetah Pro)":
+                        suffix = "_Cheetah_Pro";
+                        DeviceName = "Cheetah Pro";
                         break;
                     default:
                         suffix = "_Custom_" + numericUpDown_ConvertingOutput_Custom.Value.ToString();

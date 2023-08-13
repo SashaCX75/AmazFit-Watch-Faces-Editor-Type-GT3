@@ -4724,6 +4724,7 @@ namespace Watch_Face_Editor
                     text_style = this.City_Name.text_style,
                     line_space = this.City_Name.line_space,
                     char_space = this.City_Name.char_space,
+                    font = this.City_Name.font,
 
                     position = this.City_Name.position,
                     visible = this.City_Name.visible,

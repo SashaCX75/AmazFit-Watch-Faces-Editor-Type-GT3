@@ -169,6 +169,18 @@
   <data name="button_Text_CityName.Text" xml:space="preserve">
     <value>Nombre de la ciudad</value>
   </data>
+  <data name="button_Text_Max_circle.Text" xml:space="preserve">
+    <value>Valor en un círculo (máx.)</value>
+  </data>
+  <data name="button_Text_Max_rotation.Text" xml:space="preserve">
+    <value>Valor en ángulo (máx.)</value>
+  </data>
+  <data name="button_Text_Min_circle.Text" xml:space="preserve">
+    <value>Valor en un círculo (min)</value>
+  </data>
+  <data name="button_Text_Min_rotation.Text" xml:space="preserve">
+    <value>Valor en ángulo (min)</value>
+  </data>
   <data name="panel_Images.ToolTip" xml:space="preserve">
     <value>1. Nublado
 2. Probabilidad de lluvia
