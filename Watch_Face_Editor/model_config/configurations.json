@@ -497,5 +497,43 @@
     "colorScheme": 1,
     "fixSize": true,
     "versionOS": 2.1
+  },
+  "Bip 5": {
+    "name": "Amazfit Bip 5",
+    "designWidth": 320,
+    "deviceSource_ids": [
+      8454400,
+      8454401
+    ],
+    "background": {
+      "w": 320,
+      "h": 380
+    },
+    "scaling_0_5": {
+      "w": 163,
+      "h": 193
+    },
+    "scaling_1_0": {
+      "w": 322,
+      "h": 392
+    },
+    "scaling_1_5": {
+      "w": 482,
+      "h": 572
+    },
+    "scaling_2_0": {
+      "w": 641,
+      "h": 761
+    },
+    "scaling_2_5": {
+      "w": 801,
+      "h": 951
+    },
+    "maskImage": "mask_bip_5.png",
+    "watchSkin": "WatchSkin_Bip_5.json",
+    "previewHeight": 238,
+    "colorScheme": 3,
+    "fixSize": false,
+    "versionOS": 2.1
   }
 }

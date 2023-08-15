@@ -14487,7 +14487,7 @@ namespace Watch_Face_Editor
                                     if ((img.w == 454 && img.h == 454) || (img.w == 480 && img.h == 480) ||  // gtr 3; gtr 3 pro
                                         (img.w == 390 && img.h == 450) || (img.w == 466 && img.h == 466) ||  // gts 3; gtr 4
                                         (img.w == 194 && img.h == 368) || (img.w == 336 && img.h == 384) ||  // band 7; gts 4 mini
-                                        (img.w == 416 && img.h == 416))  // falcon
+                                        (img.w == 416 && img.h == 416) || (img.w == 320 && img.h == 380))  // falcon; bip5
                                     {
                                         if (Watch_Face.ScreenNormal.Background == null)
                                             Watch_Face.ScreenNormal.Background = new Background();
@@ -14500,7 +14500,7 @@ namespace Watch_Face_Editor
                                     if ((img.w == 454 && img.h == 454) || (img.w == 480 && img.h == 480) ||
                                         (img.w == 390 && img.h == 450) || (img.w == 466 && img.h == 466) ||
                                         (img.w == 194 && img.h == 368) || (img.w == 336 && img.h == 384) ||
-                                        (img.w == 416 && img.h == 416))
+                                        (img.w == 416 && img.h == 416) || (img.w == 320 && img.h == 380))
                                     {
                                         if (Watch_Face.ScreenAOD.Background == null)
                                             Watch_Face.ScreenAOD.Background = new Background();

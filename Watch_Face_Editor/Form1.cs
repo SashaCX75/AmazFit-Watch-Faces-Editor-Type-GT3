@@ -374,6 +374,10 @@ namespace Watch_Face_Editor
             textBox_WatchSkin_Path.Text = @"\Skin\"  + currPlatform.watchSkin ;
             // EndBlock :: Kartun*/
             textBox_WatchSkin_Path.Text = @"\Skin\" + SelectedModel.watchSkin; // времмено оставить
+            if(SelectedModel.watchSkin == null || SelectedModel.watchSkin.Length == 0)
+            {
+                textBox_WatchSkin_Path.Text = "";
+            }
 
             textBox_PreviewStates_Path.Text = ProgramSettings.PreviewStates_Path;
 
@@ -8636,7 +8640,10 @@ namespace Watch_Face_Editor
             // Startblock :: Kartun
             // TODO :: Это надо доделать
             //textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_3;
-            textBox_WatchSkin_Path.Text = @"\Skin\" + SelectedModel.watchSkin;
+            textBox_WatchSkin_Path.Text = @"\Skin\" + SelectedModel.watchSkin; if (SelectedModel.watchSkin == null || SelectedModel.watchSkin.Length == 0)
+            {
+                textBox_WatchSkin_Path.Text = "";
+            }
 
             if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
             //Watch_Face.WatchFace_Info.DeviceName = SelectedModel.int_id;  // Отказываемся от int_id
@@ -9606,32 +9613,34 @@ namespace Watch_Face_Editor
 
                                 switch (width)
                                 {
-                                    case 454:
-                                        Watch_Face.WatchFace_Info.DeviceName = "GTR 3";
-                                        //Watch_Face.WatchFace_Info.DeviceName = "GTR3";
-                                        break;
                                     case 480:
                                         Watch_Face.WatchFace_Info.DeviceName = "GTR 3 Pro";
                                         //Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
-                                        break;
-                                    case 390:
-                                        Watch_Face.WatchFace_Info.DeviceName = "GTS 3";
-                                        //Watch_Face.WatchFace_Info.DeviceName = "GTS3";
                                         break;
                                     case 466:
                                         Watch_Face.WatchFace_Info.DeviceName = "GTR 4";
                                         //Watch_Face.WatchFace_Info.DeviceName = "GTR4";
                                         break;
-                                    case 194:
-                                        Watch_Face.WatchFace_Info.DeviceName = "Amazfit Band 7";
-                                        //Watch_Face.WatchFace_Info.DeviceName = "Amazfit_Band_7";
+                                    case 454:
+                                        Watch_Face.WatchFace_Info.DeviceName = "GTR 3";
+                                        //Watch_Face.WatchFace_Info.DeviceName = "GTR3";
+                                        break;
+                                    case 416:
+                                        Watch_Face.WatchFace_Info.DeviceName = "Falcon";
+                                        break;
+                                    case 390:
+                                        Watch_Face.WatchFace_Info.DeviceName = "GTS 3";
+                                        //Watch_Face.WatchFace_Info.DeviceName = "GTS3";
                                         break;
                                     case 336:
                                         Watch_Face.WatchFace_Info.DeviceName = "GTS 4 mini";
                                         //Watch_Face.WatchFace_Info.DeviceName = "GTS4_mini";
                                         break;
-                                    case 416:
-                                        Watch_Face.WatchFace_Info.DeviceName = "Falcon";
+                                    case 320:
+                                        Watch_Face.WatchFace_Info.DeviceName = "Bip 5";
+                                        break;
+                                    case 194:
+                                        Watch_Face.WatchFace_Info.DeviceName = "Amazfit Band 7";
                                         break;
 
                                     default:
@@ -9874,7 +9883,7 @@ namespace Watch_Face_Editor
                                         break;
                                 }
 
-                                // есло всетаки не определили фон и модель
+                                // если всетаки не определили фон и модель
                                 Background backgroundEmpty = Watch_Face.ScreenNormal.Background;
                                 if (backgroundEmpty == null ||
                                     (backgroundEmpty.BackgroundImage == null && backgroundEmpty.BackgroundColor == null &&
@@ -18130,6 +18139,10 @@ namespace Watch_Face_Editor
                         comboBox_ConvertingInput_Model.Text = "416 (GTR mini)";
                         comboBox_ConvertingOutput_Model.Text = "454 (GTR 3)";
                         break;
+                    case "Bip 5":
+                        comboBox_ConvertingInput_Model.Text = "320 (Bip 5)";
+                        comboBox_ConvertingOutput_Model.Text = "390 (GTS 4)";
+                        break;
                     case "GTS 4":
                         comboBox_ConvertingInput_Model.Text = "390 (GTS 4)";
                         comboBox_ConvertingOutput_Model.Text = "336 (GTS 4 mini)";
@@ -18158,6 +18171,9 @@ namespace Watch_Face_Editor
             else numericUpDown_ConvertingInput_Custom.Enabled = false;
             switch (comboBox_ConvertingInput_Model.Text)
             {
+                case "320 (Bip 5)":
+                    numericUpDown_ConvertingInput_Custom.Value = 320;
+                    break;
                 case "336 (GTS 4 mini)":
                     numericUpDown_ConvertingInput_Custom.Value = 336;
                     break;
@@ -18203,6 +18219,9 @@ namespace Watch_Face_Editor
             else numericUpDown_ConvertingOutput_Custom.Enabled = false;
             switch (comboBox_ConvertingOutput_Model.Text)
             {
+                case "320 (Bip 5)":
+                    numericUpDown_ConvertingOutput_Custom.Value = 320;
+                    break;
                 case "336 (GTS 4 mini)":
                     numericUpDown_ConvertingOutput_Custom.Value = 336;
                     break;
@@ -18254,6 +18273,10 @@ namespace Watch_Face_Editor
                 string DeviceName = "GTR3";
                 switch (comboBox_ConvertingOutput_Model.Text)
                 {
+                    case "320 (Bip 5)":
+                        suffix = "_Bip_5";
+                        DeviceName = "Bip 5";
+                        break;
                     case "336 (GTS 4 mini)":
                         suffix = "_GTS_4_mini";
                         DeviceName = "GTS 4 mini";
