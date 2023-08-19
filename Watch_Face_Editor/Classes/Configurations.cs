@@ -67,7 +67,7 @@ namespace Watch_Face_Editor.Classes
         public float versionOS;
 
         public override string ToString() =>
-        $"Name: {name}; designWidth: {designWidth}; Background: w: {background.w}, h: {background.h};";
+        $"Name: {name}; designWidth: {designWidth}; Background: w: {background.w}, h: {background.h}; versionOS: {versionOS};";
 
         public AmazfitPlatform(string iName, string iIintId, int iDesignWidth, int[] iIds, PlatformBackground iBackground, 
                                PlatformBackground iScaling_0_5, PlatformBackground iScaling_1_0, PlatformBackground iScaling_1_5, PlatformBackground iScaling_2_0,

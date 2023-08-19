@@ -34,8 +34,8 @@ namespace Watch_Face_Editor
 
             if (!(_header[1] == 0 && _header[2] == 2) && !(_header[1] == 1 && _header[2] == 1)) 
             {
-                if (MessageBox.Show("Ошибка обработки изображения \"" + Path.GetFileName(fileNameFull) + "\"." + Environment.NewLine +
-                                "Попытаться сохранить изображение?", Properties.FormStrings.Message_Error_Caption,
+                if (MessageBox.Show(Properties.FormStrings.Img_Convert_Error_ReadErr + " \"" + Path.GetFileName(fileNameFull) + "\"." + Environment.NewLine +
+                                Properties.FormStrings.Img_Convert_Error_SaveImg, Properties.FormStrings.Message_Error_Caption,
                                 MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 { 
                     if((_header[1] == (int)'P' && _header[2] == (int)'N' && _header[3] == (int)'G') || 
@@ -49,7 +49,7 @@ namespace Watch_Face_Editor
                 }
                 else 
                 { 
-                    throw new Exception("Отсутствует карта цветов"); 
+                    throw new Exception(Properties.FormStrings.Img_Convert_Error_NoPalette); 
                 }
             }
         }

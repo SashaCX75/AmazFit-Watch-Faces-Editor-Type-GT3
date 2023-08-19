@@ -183,6 +183,27 @@
   <data name="Form_PreviewX" xml:space="preserve">
     <value>Предпросмотр [X =</value>
   </data>
+  <data name="Img_Convert_Error_NoPalette" xml:space="preserve">
+    <value>Отсутствует карта цветов</value>
+  </data>
+  <data name="Img_Convert_Error_Not32bit" xml:space="preserve">
+    <value>Изображение не должно быть монохромным и должно быть в формате 32bit</value>
+  </data>
+  <data name="Img_Convert_Error_NotSave1" xml:space="preserve">
+    <value>Файл</value>
+  </data>
+  <data name="Img_Convert_Error_NotSave2" xml:space="preserve">
+    <value>не был сохранен.</value>
+  </data>
+  <data name="Img_Convert_Error_ReadErr" xml:space="preserve">
+    <value>Ошибка обработки изображения</value>
+  </data>
+  <data name="Img_Convert_Error_SaveImg" xml:space="preserve">
+    <value>Попытаться сохранить изображение?</value>
+  </data>
+  <data name="Img_Convert_Error_WrongImg" xml:space="preserve">
+    <value>Не верный формат исходного файла.</value>
+  </data>
   <data name="Message_AnimationAOD_Text" xml:space="preserve">
     <value>Вы не можете добавлять анимацию на экран AOD.</value>
   </data>

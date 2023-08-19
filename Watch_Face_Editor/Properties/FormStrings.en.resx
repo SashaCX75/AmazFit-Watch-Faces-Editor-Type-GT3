@@ -183,6 +183,27 @@
   <data name="Form_PreviewX" xml:space="preserve">
     <value>Preview [X =</value>
   </data>
+  <data name="Img_Convert_Error_NoPalette" xml:space="preserve">
+    <value>Missing colour map</value>
+  </data>
+  <data name="Img_Convert_Error_Not32bit" xml:space="preserve">
+    <value>The image must not be monochrome and must be in 32bit format</value>
+  </data>
+  <data name="Img_Convert_Error_NotSave1" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="Img_Convert_Error_NotSave2" xml:space="preserve">
+    <value>has not been saved.</value>
+  </data>
+  <data name="Img_Convert_Error_ReadErr" xml:space="preserve">
+    <value>Image processing error</value>
+  </data>
+  <data name="Img_Convert_Error_SaveImg" xml:space="preserve">
+    <value>Trying to save the image?</value>
+  </data>
+  <data name="Img_Convert_Error_WrongImg" xml:space="preserve">
+    <value>Incorrect source file format.</value>
+  </data>
   <data name="Message_AnimationAOD_Text" xml:space="preserve">
     <value>You cannot add animation to the AOD screen.</value>
   </data>
