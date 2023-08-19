@@ -259,6 +259,69 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Отсутствует карта цветов.
+        /// </summary>
+        internal static string Img_Convert_Error_NoPalette {
+            get {
+                return ResourceManager.GetString("Img_Convert_Error_NoPalette", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Изображение не должно быть монохромным и должно быть в формате 32bit.
+        /// </summary>
+        internal static string Img_Convert_Error_Not32bit {
+            get {
+                return ResourceManager.GetString("Img_Convert_Error_Not32bit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Файл.
+        /// </summary>
+        internal static string Img_Convert_Error_NotSave1 {
+            get {
+                return ResourceManager.GetString("Img_Convert_Error_NotSave1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на не был сохранен..
+        /// </summary>
+        internal static string Img_Convert_Error_NotSave2 {
+            get {
+                return ResourceManager.GetString("Img_Convert_Error_NotSave2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ошибка обработки изображения.
+        /// </summary>
+        internal static string Img_Convert_Error_ReadErr {
+            get {
+                return ResourceManager.GetString("Img_Convert_Error_ReadErr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Попытаться сохранить изображение?.
+        /// </summary>
+        internal static string Img_Convert_Error_SaveImg {
+            get {
+                return ResourceManager.GetString("Img_Convert_Error_SaveImg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Не верный формат исходного файла..
+        /// </summary>
+        internal static string Img_Convert_Error_WrongImg {
+            get {
+                return ResourceManager.GetString("Img_Convert_Error_WrongImg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Вы не можете добавлять анимацию на экран AOD..
         /// </summary>
         internal static string Message_AnimationAOD_Text {

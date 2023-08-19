@@ -41,7 +41,7 @@ namespace Watch_Face_Editor
                 }
                 catch (Exception exp)
                 {
-                    MessageBox.Show("Не верный формат исходного файла" + Environment.NewLine +
+                    MessageBox.Show(Properties.FormStrings.Img_Convert_Error_WrongImg + Environment.NewLine +
                         exp);
                 }
             }
@@ -98,11 +98,11 @@ namespace Watch_Face_Editor
                 }
                 catch (Exception exp)
                 {
-                    if (exp.Message != "Отсутствует карта цветов")
+                    if (exp.Message != Properties.FormStrings.Img_Convert_Error_NoPalette)
                     {
-                        MessageBox.Show("Не верный формат исходного файла." + Environment.NewLine +
-                                        "Файл \"" + Path.GetFileName(targetFile) + "\" не был сохранен." +
-                                        Environment.NewLine + exp);
+                        MessageBox.Show(Properties.FormStrings.Img_Convert_Error_WrongImg + Environment.NewLine +
+                                        Properties.FormStrings.Img_Convert_Error_NotSave1 + " \"" + Path.GetFileName(targetFile) + "\" " +
+                                        Properties.FormStrings.Img_Convert_Error_NotSave2 + Environment.NewLine + exp);
                     }
                 }
             }
@@ -231,11 +231,11 @@ namespace Watch_Face_Editor
                 }
                 catch (Exception exp)
                 {
-                    if (exp.Message != "Отсутствует карта цветов")
+                    if (exp.Message != Properties.FormStrings.Img_Convert_Error_NoPalette)
                     {
-                        MessageBox.Show("Не верный формат исходного файла." + Environment.NewLine +
-                                        "Файл \"" + Path.GetFileName(targetFile) + "\" не был сохранен." +
-                                        Environment.NewLine + exp);
+                        MessageBox.Show(Properties.FormStrings.Img_Convert_Error_WrongImg + Environment.NewLine +
+                                        Properties.FormStrings.Img_Convert_Error_NotSave1 + " \"" + Path.GetFileName(targetFile) + "\" " + 
+                                        Properties.FormStrings.Img_Convert_Error_NotSave2 + Environment.NewLine + exp);
                     }
                 }
             }
@@ -288,6 +288,30 @@ namespace Watch_Face_Editor
                             image_temp = new ImageMagick.MagickImage(ImgConvert.CopyImageToByteArray(bitmapNew));
                         }
                     }
+                    if (fix_color == 3)
+                    {
+                        newWidth = image.Width;
+                        newHeight = image.Height + 1;
+
+                        Bitmap bitmap = image.ToBitmap();
+                        Color pixel1 = bitmap.GetPixel(0, 0);
+                        Color pixel2 = bitmap.GetPixel(image.Width - 1, 0);
+                        Color pixel3 = bitmap.GetPixel(0, image.Height - 1);
+                        Color pixel4 = bitmap.GetPixel(image.Width - 1, image.Height - 1);
+                        if(pixel1.A == 255 && pixel2.A == 255 && pixel3.A == 255 && pixel4.A == 255)
+                        {
+                            //if (pixel1.R < 5 && pixel1.G < 5 && pixel4.G < 5) bitmap.SetPixel(0, 0, Color.FromArgb(250, 5, 5, 5));
+                            //else bitmap.SetPixel(image.Width - 1, image.Height - 1, Color.FromArgb(250, pixel4.R, pixel4.G, pixel4.B));
+                            //image = new MagickImage(ImgConvert.CopyImageToByteArray(bitmap));
+                            //image_temp = new ImageMagick.MagickImage(ImgConvert.CopyImageToByteArray(bitmap));
+
+                            Bitmap bitmapNew = new Bitmap(newWidth, newHeight);
+                            Graphics gfx = Graphics.FromImage(bitmapNew);
+                            gfx.DrawImage(bitmap, 0, 0, bitmap.Width, bitmap.Height);
+                            image = new MagickImage(ImgConvert.CopyImageToByteArray(bitmapNew));
+                            image_temp = new ImageMagick.MagickImage(ImgConvert.CopyImageToByteArray(bitmapNew));
+                        }
+                    }
                     // TODO :: Kartun, check
                     ImageMagick.Pixel pixel = image.GetPixels().GetPixel(0, 0);
                     //IPixel<ushort> pixel = image.GetPixels().GetPixel(0, 0);
@@ -300,31 +324,42 @@ namespace Watch_Face_Editor
                     image.ColorType = ImageMagick.ColorType.Palette;
                     if (image.ColorSpace != ImageMagick.ColorSpace.sRGB)
                     {
+                        //image = image_temp;
+                        //ushort[] p;
+                        //if (pixel[2] > 256)
+                        //{
+                        //    if (pixel.Channels == 4) p = new ushort[] { pixel[0], pixel[1], (ushort)(pixel[2] - 256), pixel[3] };
+                        //    else p = new ushort[] { pixel[0], pixel[1], (ushort)(pixel[2] - 256) };
+                        //}
+                        //else
+                        //{
+                        //    if (pixel.Channels == 4) p = new ushort[] { pixel[0], pixel[1], (ushort)(pixel[2] + 256), pixel[3] };
+                        //    else
+                        //    {
+                        //        p = new ushort[] { pixel[0], pixel[1], (ushort)(pixel[2] + 256) };
+                        //        transparent = true;
+                        //    }
+                        //}
+
                         image = image_temp;
                         ushort[] p;
-                        if (pixel[2] > 256)
-                        {
-                            if (pixel.Channels == 4) p = new ushort[] { pixel[0], pixel[1], (ushort)(pixel[2] - 256), pixel[3] };
-                            else p = new ushort[] { pixel[0], pixel[1], (ushort)(pixel[2] - 256) };
-                        }
+                        int pixel_offset = 256;
+                        if (pixel[2] > 256) pixel_offset = -256;
+                        if (pixel.Channels == 5) p = new ushort[] { pixel[0], pixel[1], (ushort)(pixel[2] + pixel_offset), pixel[3], pixel[4] };
+                        else if(pixel.Channels == 4) p = new ushort[] { pixel[0], pixel[1], (ushort)(pixel[2] + pixel_offset), pixel[3] };
                         else
                         {
-                            if (pixel.Channels == 4) p = new ushort[] { pixel[0], pixel[1], (ushort)(pixel[2] + 256), pixel[3] };
-                            else
-                            {
-                                p = new ushort[] { pixel[0], pixel[1], (ushort)(pixel[2] + 256) };
-                                transparent = true;
-                            }
+                            p = new ushort[] { pixel[0], pixel[1], (ushort)(pixel[2] + pixel_offset) };
+                            if (pixel_offset == 256) transparent = true;
                         }
                         image.GetPixels().SetPixel(0, 0, p);
-                        // TODO :: Kartun, check
-                        pixel = image.GetPixels().GetPixel(0, 0);
+
                         image.ColorType = ImageMagick.ColorType.Palette;
                         // TODO :: Kartun, check
-                        pixel = image.GetPixels().GetPixel(0, 0);
+                        //pixel = image.GetPixels().GetPixel(0, 0);
                         if (image.ColorSpace != ImageMagick.ColorSpace.sRGB)
                         {
-                            MessageBox.Show("Изображение не должно быть монохромным и должно быть в формате 32bit" +
+                            MessageBox.Show(Properties.FormStrings.Img_Convert_Error_Not32bit +
                                 Environment.NewLine + fileNameFull);
                             return null;
                         }
@@ -358,7 +393,7 @@ namespace Watch_Face_Editor
                 }
                 catch (Exception exp)
                 {
-                    MessageBox.Show("Не верный формат исходного файла" + Environment.NewLine +
+                    MessageBox.Show(Properties.FormStrings.Img_Convert_Error_WrongImg + Environment.NewLine +
                             exp);
                 }
             }
