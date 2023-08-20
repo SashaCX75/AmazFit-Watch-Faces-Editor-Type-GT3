@@ -257,22 +257,6 @@ namespace Watch_Face_Editor
                     Scale_IMG_STATUS(elementStatuses.DND, scale);
                     Scale_IMG_STATUS(elementStatuses.Lock, scale);
                     break;
-                //case "ElementShortcuts":
-                //    ElementShortcuts elementShortcuts = (ElementShortcuts)elements;
-                //    Scale_IMG_CLICK(elementShortcuts.Step, scale);
-                //    Scale_IMG_CLICK(elementShortcuts.Heart, scale);
-                //    Scale_IMG_CLICK(elementShortcuts.SPO2, scale);
-                //    Scale_IMG_CLICK(elementShortcuts.PAI, scale);
-                //    Scale_IMG_CLICK(elementShortcuts.Stress, scale);
-                //    Scale_IMG_CLICK(elementShortcuts.Weather, scale);
-                //    Scale_IMG_CLICK(elementShortcuts.Altimeter, scale);
-                //    Scale_IMG_CLICK(elementShortcuts.Sunrise, scale);
-                //    Scale_IMG_CLICK(elementShortcuts.Alarm, scale);
-                //    Scale_IMG_CLICK(elementShortcuts.Sleep, scale);
-                //    Scale_IMG_CLICK(elementShortcuts.Countdown, scale);
-                //    Scale_IMG_CLICK(elementShortcuts.Stopwatch, scale);
-                //    break;
-
                 case "ElementSteps":
                     ElementSteps elementSteps = (ElementSteps)elements;
                     Scale_IMG_LEVEL(elementSteps.Images, scale);

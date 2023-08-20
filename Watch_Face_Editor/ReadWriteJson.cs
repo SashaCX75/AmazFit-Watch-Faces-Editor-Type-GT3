@@ -6727,7 +6727,7 @@ namespace Watch_Face_Editor
                         iconOptions = IMG_Options(img_icon, show_level);
                     }
 
-                    for (int index = 1; index <= 10; index++)
+                    for (int index = 1; index <= 15; index++)
                     {
                         // Images
                         if (index == imagesPosition && imagesOptions.Length > 5)
@@ -11381,6 +11381,11 @@ namespace Watch_Face_Editor
                 options += TabInString(7 + tabOffset) + "y: " + img_level.Y.ToString() + "," + Environment.NewLine;
                 options += TabInString(7 + tabOffset) + "image_array: " + img_array + "," + Environment.NewLine;
                 options += TabInString(7 + tabOffset) + "image_length: " + img_level.image_length.ToString() + "," + Environment.NewLine;
+
+                if (img_level.shortcut)
+                {
+                    options += TabInString(7 + tabOffset) + "shortcut: true," + Environment.NewLine;
+                }
 
                 if (type.Length > 0)
                 {
@@ -16955,6 +16960,7 @@ namespace Watch_Face_Editor
                                 steps.Images.image_length = imgLevel.image_length;
                                 steps.Images.X = imgLevel.X;
                                 steps.Images.Y = imgLevel.Y;
+                                steps.Images.shortcut = imgLevel.shortcut;
                                 steps.Images.visible = true;
                                 steps.Images.position = offset;
                             }
@@ -17020,6 +17026,7 @@ namespace Watch_Face_Editor
                                 calorie.Images.image_length = imgLevel.image_length;
                                 calorie.Images.X = imgLevel.X;
                                 calorie.Images.Y = imgLevel.Y;
+                                calorie.Images.shortcut = imgLevel.shortcut;
                                 calorie.Images.visible = true;
                                 calorie.Images.position = offset;
                             }
@@ -17052,6 +17059,7 @@ namespace Watch_Face_Editor
                                 heart.Images.image_length = 6;
                                 heart.Images.X = imgLevel.X;
                                 heart.Images.Y = imgLevel.Y;
+                                heart.Images.shortcut = imgLevel.shortcut;
                                 heart.Images.visible = true;
                                 heart.Images.position = offset;
                                 if (imgLevel.image_length != 6)
@@ -17087,6 +17095,7 @@ namespace Watch_Face_Editor
                                 pai.Images.image_length = imgLevel.image_length;
                                 pai.Images.X = imgLevel.X;
                                 pai.Images.Y = imgLevel.Y;
+                                pai.Images.shortcut = imgLevel.shortcut;
                                 pai.Images.visible = true;
                                 pai.Images.position = offset;
                             }
@@ -17121,6 +17130,7 @@ namespace Watch_Face_Editor
                                 stand.Images.image_length = imgLevel.image_length;
                                 stand.Images.X = imgLevel.X;
                                 stand.Images.Y = imgLevel.Y;
+                                stand.Images.shortcut = imgLevel.shortcut;
                                 stand.Images.visible = true;
                                 stand.Images.position = offset;
                             }
@@ -17151,6 +17161,7 @@ namespace Watch_Face_Editor
                                 activity.Images.image_length = imgLevel.image_length;
                                 activity.Images.X = imgLevel.X;
                                 activity.Images.Y = imgLevel.Y;
+                                activity.Images.shortcut = imgLevel.shortcut;
                                 activity.Images.visible = true;
                                 activity.Images.position = offset;
                             }
@@ -17178,6 +17189,7 @@ namespace Watch_Face_Editor
                                 stress.Images.image_length = imgLevel.image_length;
                                 stress.Images.X = imgLevel.X;
                                 stress.Images.Y = imgLevel.Y;
+                                stress.Images.shortcut = imgLevel.shortcut;
                                 stress.Images.visible = true;
                                 stress.Images.position = offset;
                             }
@@ -17212,6 +17224,7 @@ namespace Watch_Face_Editor
                                 fat_burning.Images.image_length = imgLevel.image_length;
                                 fat_burning.Images.X = imgLevel.X;
                                 fat_burning.Images.Y = imgLevel.Y;
+                                fat_burning.Images.shortcut = imgLevel.shortcut;
                                 fat_burning.Images.visible = true;
                                 fat_burning.Images.position = offset;
                             }
@@ -17246,6 +17259,7 @@ namespace Watch_Face_Editor
                                 weather.Images.image_length = imgLevel.image_length;
                                 weather.Images.X = imgLevel.X;
                                 weather.Images.Y = imgLevel.Y;
+                                weather.Images.shortcut = imgLevel.shortcut;
                                 weather.Images.visible = true;
                                 weather.Images.position = offset;
                             }
@@ -17273,6 +17287,7 @@ namespace Watch_Face_Editor
                                 uv_index.Images.image_length = imgLevel.image_length;
                                 uv_index.Images.X = imgLevel.X;
                                 uv_index.Images.Y = imgLevel.Y;
+                                uv_index.Images.shortcut = imgLevel.shortcut;
                                 uv_index.Images.visible = true;
                                 uv_index.Images.position = offset;
                             }
@@ -17300,6 +17315,7 @@ namespace Watch_Face_Editor
                                 humidity.Images.image_length = imgLevel.image_length;
                                 humidity.Images.X = imgLevel.X;
                                 humidity.Images.Y = imgLevel.Y;
+                                humidity.Images.shortcut = imgLevel.shortcut;
                                 humidity.Images.visible = true;
                                 humidity.Images.position = offset;
                             }
@@ -17333,6 +17349,7 @@ namespace Watch_Face_Editor
                                 sunrise.Images.image_length = imgLevel.image_length;
                                 sunrise.Images.X = imgLevel.X;
                                 sunrise.Images.Y = imgLevel.Y;
+                                sunrise.Images.shortcut = imgLevel.shortcut;
                                 sunrise.Images.visible = true;
                                 sunrise.Images.position = offset;
                             }
@@ -17361,6 +17378,7 @@ namespace Watch_Face_Editor
                                 wind.Images.image_length = imgLevel.image_length;
                                 wind.Images.X = imgLevel.X;
                                 wind.Images.Y = imgLevel.Y;
+                                wind.Images.shortcut = imgLevel.shortcut;
                                 wind.Images.visible = true;
                                 wind.Images.position = offset;
                             }
@@ -17389,6 +17407,7 @@ namespace Watch_Face_Editor
                                 wind.Direction.image_length = imgLevel.image_length;
                                 wind.Direction.X = imgLevel.X;
                                 wind.Direction.Y = imgLevel.Y;
+                                wind.Images.shortcut = imgLevel.shortcut;
                                 wind.Direction.visible = true;
                                 wind.Direction.position = offset;
                             }
@@ -17419,6 +17438,7 @@ namespace Watch_Face_Editor
                                 moon.Images.image_length = imgLevel.image_length;
                                 moon.Images.X = imgLevel.X;
                                 moon.Images.Y = imgLevel.Y;
+                                moon.Images.shortcut = imgLevel.shortcut;
                                 moon.Images.visible = true;
                                 moon.Images.position = 1;
                             }
@@ -24133,6 +24153,7 @@ namespace Watch_Face_Editor
                 if (parametrs.ContainsKey("x") && Int32.TryParse(parametrs["x"], out value)) imgLevel.X = value;
                 if (parametrs.ContainsKey("y") && Int32.TryParse(parametrs["y"], out value)) imgLevel.Y = value;
                 if (parametrs.ContainsKey("image_length") && Int32.TryParse(parametrs["image_length"], out value)) imgLevel.image_length = value;
+                if (parametrs.ContainsKey("shortcut")) imgLevel.shortcut = StringToBool(parametrs["shortcut"]);
 
                 if (parametrs.ContainsKey("type"))
                 {

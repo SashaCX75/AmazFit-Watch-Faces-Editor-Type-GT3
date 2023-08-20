@@ -1678,6 +1678,7 @@ namespace Watch_Face_Editor
                     Y = this.Images.Y,
                     img_First = this.Images.img_First,
                     image_length = this.Images.image_length,
+                    shortcut = this.Images.shortcut,
 
                     position = this.Images.position,
                     visible = this.Images.visible,
@@ -2270,6 +2271,7 @@ namespace Watch_Face_Editor
                     Y = this.Images.Y,
                     img_First = this.Images.img_First,
                     image_length = this.Images.image_length,
+                    shortcut = this.Images.shortcut,
 
                     position = this.Images.position,
                     visible = this.Images.visible,
@@ -2609,6 +2611,7 @@ namespace Watch_Face_Editor
                     Y = this.Images.Y,
                     img_First = this.Images.img_First,
                     image_length = this.Images.image_length,
+                    shortcut = this.Images.shortcut,
 
                     position = this.Images.position,
                     visible = this.Images.visible,
@@ -2860,6 +2863,7 @@ namespace Watch_Face_Editor
                     Y = this.Images.Y,
                     img_First = this.Images.img_First,
                     image_length = this.Images.image_length,
+                    shortcut = this.Images.shortcut,
 
                     position = this.Images.position,
                     visible = this.Images.visible,
@@ -3309,6 +3313,7 @@ namespace Watch_Face_Editor
                     Y = this.Images.Y,
                     img_First = this.Images.img_First,
                     image_length = this.Images.image_length,
+                    shortcut = this.Images.shortcut,
 
                     position = this.Images.position,
                     visible = this.Images.visible,
@@ -3650,6 +3655,7 @@ namespace Watch_Face_Editor
                     Y = this.Images.Y,
                     img_First = this.Images.img_First,
                     image_length = this.Images.image_length,
+                    shortcut = this.Images.shortcut,
 
                     position = this.Images.position,
                     visible = this.Images.visible,
@@ -4001,6 +4007,7 @@ namespace Watch_Face_Editor
                     Y = this.Images.Y,
                     img_First = this.Images.img_First,
                     image_length = this.Images.image_length,
+                    shortcut = this.Images.shortcut,
 
                     position = this.Images.position,
                     visible = this.Images.visible,
@@ -4147,6 +4154,7 @@ namespace Watch_Face_Editor
                     Y = this.Images.Y,
                     img_First = this.Images.img_First,
                     image_length = this.Images.image_length,
+                    shortcut = this.Images.shortcut,
 
                     position = this.Images.position,
                     visible = this.Images.visible,
@@ -4489,6 +4497,7 @@ namespace Watch_Face_Editor
                     Y = this.Images.Y,
                     img_First = this.Images.img_First,
                     image_length = this.Images.image_length,
+                    shortcut = this.Images.shortcut,
 
                     position = this.Images.position,
                     visible = this.Images.visible,
@@ -4799,6 +4808,7 @@ namespace Watch_Face_Editor
                     Y = this.Images.Y,
                     img_First = this.Images.img_First,
                     image_length = this.Images.image_length,
+                    shortcut = this.Images.shortcut,
 
                     position = this.Images.position,
                     visible = this.Images.visible,
@@ -4986,6 +4996,7 @@ namespace Watch_Face_Editor
                     Y = this.Images.Y,
                     img_First = this.Images.img_First,
                     image_length = this.Images.image_length,
+                    shortcut = this.Images.shortcut,
 
                     position = this.Images.position,
                     visible = this.Images.visible,
@@ -5277,6 +5288,7 @@ namespace Watch_Face_Editor
                     Y = this.Images.Y,
                     img_First = this.Images.img_First,
                     image_length = this.Images.image_length,
+                    shortcut = this.Images.shortcut,
 
                     position = this.Images.position,
                     visible = this.Images.visible,
@@ -5605,6 +5617,7 @@ namespace Watch_Face_Editor
                     Y = this.Images.Y,
                     img_First = this.Images.img_First,
                     image_length = this.Images.image_length,
+                    shortcut = this.Images.shortcut,
 
                     position = this.Images.position,
                     visible = this.Images.visible,
@@ -5694,6 +5707,7 @@ namespace Watch_Face_Editor
                     Y = this.Direction.Y,
                     img_First = this.Direction.img_First,
                     image_length = this.Direction.image_length,
+                    shortcut = this.Images.shortcut,
 
                     position = this.Direction.position,
                     visible = this.Direction.visible,
@@ -5758,6 +5772,7 @@ namespace Watch_Face_Editor
                     Y = this.Images.Y,
                     img_First = this.Images.img_First,
                     image_length = this.Images.image_length,
+                    shortcut = this.Images.shortcut,
 
                     position = this.Images.position,
                     visible = this.Images.visible,

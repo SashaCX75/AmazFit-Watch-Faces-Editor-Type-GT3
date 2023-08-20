@@ -1582,7 +1582,7 @@ namespace Watch_Face_Editor
         }
 
         /// <summary>Читаем настройки для отображения набора картинок</summary>
-        private void Read_ImgLevel_Options(hmUI_widget_IMG_LEVEL img_level, int imagesCount, bool imagesCountEnable)
+        private void Read_ImgLevel_Options(hmUI_widget_IMG_LEVEL img_level, int imagesCount, bool imagesCountEnable, bool shortcut = false)
         {
             PreviewView = false;
 
@@ -1590,6 +1590,7 @@ namespace Watch_Face_Editor
 
             uCtrl_Images_Opt.ImagesCount = imagesCount;
             uCtrl_Images_Opt.ImagesCountEnable = imagesCountEnable;
+            uCtrl_Images_Opt.Shortcut = shortcut;
 
             uCtrl_Images_Opt._ElementWithImages = img_level;
 
@@ -1609,6 +1610,8 @@ namespace Watch_Face_Editor
             if (img_level.image_length > 0)
                 uCtrl_Images_Opt.numericUpDown_pictures_count.Value = img_level.image_length;
             if (!imagesCountEnable) uCtrl_Images_Opt.numericUpDown_pictures_count.Value = imagesCount;
+
+            uCtrl_Images_Opt.checkBox_shortcut.Checked = img_level.shortcut;
 
             PreviewView = true;
         }
@@ -2239,6 +2242,7 @@ namespace Watch_Face_Editor
             img_level.X = (int)uCtrl_Images_Opt.numericUpDown_imageX.Value;
             img_level.Y = (int)uCtrl_Images_Opt.numericUpDown_imageY.Value;
             img_level.image_length = (int)uCtrl_Images_Opt.numericUpDown_pictures_count.Value;
+            img_level.shortcut = uCtrl_Images_Opt.checkBox_shortcut.Checked;
 
             JSON_Modified = true;
             PreviewImage();

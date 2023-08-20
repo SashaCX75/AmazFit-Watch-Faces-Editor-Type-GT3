@@ -286,6 +286,9 @@ namespace Watch_Face_Editor
         /// <summary>Тип активности</summary>
         public string type { get; set; }
 
+        /// <summary>Использовать как ярлык</summary>
+        public bool shortcut = false;
+
 
         /// <summary>Основной экран или AOD</summary>
         public string show_level = "";

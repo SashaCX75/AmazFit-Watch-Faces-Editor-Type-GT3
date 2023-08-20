@@ -11229,7 +11229,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Steps_Elm.checkBox_Images.Checked)
                         {
                             img_level = steps.Images;
-                            Read_ImgLevel_Options(img_level, 10, true);
+                            Read_ImgLevel_Options(img_level, 10, true, true);
                             ShowElemenrOptions("Images");
                         }
                         else HideAllElemenrOptions();
@@ -11504,7 +11504,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Heart_Elm.checkBox_Images.Checked)
                         {
                             img_level = heart.Images;
-                            Read_ImgLevel_Options(img_level, 6, false);
+                            Read_ImgLevel_Options(img_level, 6, false, true);
                             ShowElemenrOptions("Images");
                         }
                         else HideAllElemenrOptions();
@@ -11629,7 +11629,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Calories_Elm.checkBox_Images.Checked)
                         {
                             img_level = calories.Images;
-                            Read_ImgLevel_Options(img_level, 10, true);
+                            Read_ImgLevel_Options(img_level, 10, true, true);
                             ShowElemenrOptions("Images");
                         }
                         else HideAllElemenrOptions();
@@ -11780,7 +11780,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_PAI_Elm.checkBox_Images.Checked)
                         {
                             img_level = pai.Images;
-                            Read_ImgLevel_Options(img_level, 10, true);
+                            Read_ImgLevel_Options(img_level, 10, true, true);
                             ShowElemenrOptions("Images");
                         }
                         else HideAllElemenrOptions();
@@ -11987,7 +11987,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Stand_Elm.checkBox_Images.Checked)
                         {
                             img_level = stand.Images;
-                            Read_ImgLevel_Options(img_level, 10, true);
+                            Read_ImgLevel_Options(img_level, 10, true, true);
                             ShowElemenrOptions("Images");
                         }
                         else HideAllElemenrOptions();
@@ -12136,7 +12136,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Activity_Elm.checkBox_Images.Checked)
                         {
                             img_level = activity.Images;
-                            Read_ImgLevel_Options(img_level, 10, true);
+                            Read_ImgLevel_Options(img_level, 10, true, true);
                             ShowElemenrOptions("Images");
                         }
                         else HideAllElemenrOptions();
@@ -12321,7 +12321,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Stress_Elm.checkBox_Images.Checked)
                         {
                             img_level = stress.Images;
-                            Read_ImgLevel_Options(img_level, 10, true);
+                            Read_ImgLevel_Options(img_level, 10, true, true);
                             ShowElemenrOptions("Images");
                         }
                         else HideAllElemenrOptions();
@@ -12409,7 +12409,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_FatBurning_Elm.checkBox_Images.Checked)
                         {
                             img_level = fat_burning.Images;
-                            Read_ImgLevel_Options(img_level, 10, true);
+                            Read_ImgLevel_Options(img_level, 10, true, true);
                             ShowElemenrOptions("Images");
                         }
                         else HideAllElemenrOptions();
@@ -12559,7 +12559,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Weather_Elm.checkBox_Images.Checked)
                         {
                             img_level = weather.Images;
-                            Read_ImgLevel_Options(img_level, 29, false);
+                            Read_ImgLevel_Options(img_level, 29, false, true);
                             ShowElemenrOptions("Images");
                         }
                         else HideAllElemenrOptions();
@@ -12688,7 +12688,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_UVIndex_Elm.checkBox_Images.Checked)
                         {
                             img_level = uv_index.Images;
-                            Read_ImgLevel_Options(img_level, 5, false);
+                            Read_ImgLevel_Options(img_level, 5, false, true);
                             ShowElemenrOptions("Images");
                         }
                         else HideAllElemenrOptions();
@@ -12772,7 +12772,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Humidity_Elm.checkBox_Images.Checked)
                         {
                             img_level = humidity.Images;
-                            Read_ImgLevel_Options(img_level, 10, true);
+                            Read_ImgLevel_Options(img_level, 10, true, true);
                             ShowElemenrOptions("Images");
                         }
                         else HideAllElemenrOptions();
@@ -12922,7 +12922,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Sunrise_Elm.checkBox_Images.Checked)
                         {
                             img_level = sunrise.Images;
-                            Read_ImgLevel_Options(img_level, 2, true);
+                            Read_ImgLevel_Options(img_level, 2, true, true);
                             ShowElemenrOptions("Images");
                         }
                         else HideAllElemenrOptions();
@@ -13060,7 +13060,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Wind_Elm.checkBox_Images.Checked)
                         {
                             img_level = wind.Images;
-                            Read_ImgLevel_Options(img_level, 10, true);
+                            Read_ImgLevel_Options(img_level, 10, true, true);
                             ShowElemenrOptions("Images");
                         }
                         else HideAllElemenrOptions();
@@ -13096,7 +13096,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Wind_Elm.checkBox_Direction.Checked)
                         {
                             img_level = wind.Direction;
-                            Read_ImgLevel_Options(img_level, 8, false);
+                            Read_ImgLevel_Options(img_level, 8, false, true);
                             ShowElemenrOptions("Images");
                         }
                         else HideAllElemenrOptions();
@@ -13143,7 +13143,7 @@ namespace Watch_Face_Editor
 
                 if (moon.Images == null) moon.Images = new hmUI_widget_IMG_LEVEL();
                 img_level = moon.Images;
-                Read_ImgLevel_Options(img_level, 30, true);
+                Read_ImgLevel_Options(img_level, 30, true, true);
                 ShowElemenrOptions("Images");
 
             }
