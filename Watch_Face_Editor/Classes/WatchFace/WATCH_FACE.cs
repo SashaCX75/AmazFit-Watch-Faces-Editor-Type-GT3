@@ -30,6 +30,8 @@ namespace Watch_Face_Editor
         public TopImage TopImage { get; set; }
 
         public ElementShortcuts Shortcuts { get; set; }
+
+        public ElementButtons Buttons { get; set; }
     }
 
     public class WatchFace_Info
@@ -5935,6 +5937,14 @@ namespace Watch_Face_Editor
 
         /// <summary>Отображать изображение на эеране АОД</summary>
         public bool showInAOD = false;
+    }
+
+    public class ElementButtons
+    {
+        public List<Button> Button { get; set; }
+
+        /// <summary>Использование элемента</summary>
+        public bool enable = true;
     }
 }
 

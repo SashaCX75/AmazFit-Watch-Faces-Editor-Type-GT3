@@ -196,11 +196,6 @@ namespace ControlLibrary
             0,
             0,
             0});
-            this.numericUpDown_width.Minimum = new decimal(new int[] {
-            999,
-            0,
-            0,
-            -2147483648});
             this.numericUpDown_width.Name = "numericUpDown_width";
             this.numericUpDown_width.Value = new decimal(new int[] {
             100,
@@ -219,11 +214,6 @@ namespace ControlLibrary
             0,
             0,
             0});
-            this.numericUpDown_height.Minimum = new decimal(new int[] {
-            999,
-            0,
-            0,
-            -2147483648});
             this.numericUpDown_height.Name = "numericUpDown_height";
             this.numericUpDown_height.Value = new decimal(new int[] {
             100,

@@ -99,6 +99,9 @@ namespace Watch_Face_Editor
             if (Watch_Face_temp.TopImage != null)
                 Watch_Face_return.TopImage = Watch_Face_temp.TopImage;
 
+            if (Watch_Face_temp.Buttons != null)
+                Watch_Face_return.Buttons = Watch_Face_temp.Buttons;
+
             return Watch_Face_return;
         }
 
@@ -1814,6 +1817,22 @@ namespace Watch_Face_Editor
             PreviewView = true;
         }
 
+        /// <summary>Читаем перечень кнопок</summary>
+        private void Read_Button_Options(List<Button> buttonsList)
+        {
+            PreviewView = false;
+
+            uCtrl_Button_Opt.SettingsClear(SelectedModel.versionOS);
+            uCtrl_Button_Opt.Visible = true;
+
+            //List<Button> buttonsList = Watch_Face.Buttons.Button;
+            List<String> scriptClickList = ButtonClickScriptToString(buttonsList);
+            List<String> scriptLongPressList = ButtonLongPressScriptToString(buttonsList);
+            uCtrl_Button_Opt.UpdateButtonsList(scriptClickList, scriptLongPressList);
+
+            PreviewView = true;
+        }
+
         /// <summary>Меняем настройки фона</summary>
         private void userCtrl_Background_Options_ValueChanged(object sender, EventArgs eventArgs)
         {
@@ -3426,6 +3445,83 @@ namespace Watch_Face_Editor
             FormText();
         }
 
+        private void uCtrl_Button_Opt_ValueChanged(object sender, EventArgs eventArgs, int rowIndex)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            List<Button> buttonsList = Watch_Face.Buttons.Button;
+            if (rowIndex >= 0 && rowIndex < buttonsList.Count)
+            {
+                Button button = buttonsList[rowIndex];
+
+                button.x = (int)uCtrl_Button_Opt.numericUpDown_buttonX.Value;
+                button.y = (int)uCtrl_Button_Opt.numericUpDown_buttonY.Value;
+                button.w = (int)uCtrl_Button_Opt.numericUpDown_width.Value;
+                button.h = (int)uCtrl_Button_Opt.numericUpDown_height.Value;
+                button.radius = (int)uCtrl_Button_Opt.numericUpDown_radius.Value;
+                button.text_size = (int)uCtrl_Button_Opt.numericUpDown_textSize.Value;
+                button.color = ColorToString(uCtrl_Button_Opt.GetColorText());
+                button.text = uCtrl_Button_Opt.GetText();
+                button.press_src = uCtrl_Button_Opt.GetPressImage();
+                button.normal_src = uCtrl_Button_Opt.GetNormalImage();
+                button.normal_color = ColorToString(uCtrl_Button_Opt.GetColorNormal());
+                button.press_color = ColorToString(uCtrl_Button_Opt.GetColorPress());
+
+                JSON_Modified = true;
+                PreviewImage();
+                FormText();
+            }
+        }
+
+        private void uCtrl_Button_Opt_ScriptChanged(int rowIndex, string clickFunc, string longPressFunc)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            List<Button> buttonsList = Watch_Face.Buttons.Button;
+            if (rowIndex >= 0 && rowIndex < buttonsList.Count)
+            {
+                Button button = buttonsList[rowIndex];
+
+                button.click_func = clickFunc;
+                button.longpress_func = longPressFunc;
+
+                List<String> scriptClickList = ButtonClickScriptToString(buttonsList);
+                List<String> scriptLongPressList = ButtonLongPressScriptToString(buttonsList);
+                uCtrl_Button_Opt.UpdateButtonsList(scriptClickList, scriptLongPressList, rowIndex);
+
+                JSON_Modified = true;
+                PreviewImage();
+                FormText();
+            }
+        }
+
+        /// <summary>Читаем настройки для отображения выбранной кнопки</summary>
+        private void uCtrl_Button_Opt_SelectButton(int rowIndex)
+        {
+            PreviewView = false;
+            List<Button> buttonsList = Watch_Face.Buttons.Button;
+            if (rowIndex >= 0 && rowIndex < buttonsList.Count)
+            {
+                Button button = buttonsList[rowIndex];
+
+                uCtrl_Button_Opt.numericUpDown_buttonX.Value = button.x;
+                uCtrl_Button_Opt.numericUpDown_buttonY.Value = button.y;
+                uCtrl_Button_Opt.numericUpDown_width.Value = button.w;
+                uCtrl_Button_Opt.numericUpDown_height.Value = button.h;
+                uCtrl_Button_Opt.numericUpDown_radius.Value = button.radius;
+                uCtrl_Button_Opt.numericUpDown_textSize.Value = button.text_size;
+                uCtrl_Button_Opt.SetColorText(StringToColor(button.color));
+                uCtrl_Button_Opt.SetText(button.text);
+                uCtrl_Button_Opt.SetPressImage(button.press_src);
+                uCtrl_Button_Opt.SetNormalImage(button.normal_src);
+                uCtrl_Button_Opt.SetColorNormal(StringToColor(button.normal_color));
+                uCtrl_Button_Opt.SetColorPress(StringToColor(button.press_color));
+            }
+            PreviewView = true;
+        }
+
         private Color StringToColor(string color)
         {
             Color new_color = Color.Black;
@@ -3591,6 +3687,79 @@ namespace Watch_Face_Editor
                 }
             }
             return elementName;
+        }
+
+        private void uCtrl_Button_Opt_AddButton(int rowIndex)
+        {
+            if (Watch_Face.Buttons.Button == null) Watch_Face.Buttons.Button = new List<Button>();
+            List<Button> buttonsList = Watch_Face.Buttons.Button;
+            Button button = new Button();
+
+            button.x = (int)uCtrl_Button_Opt.numericUpDown_buttonX.Value;
+            button.y = (int)uCtrl_Button_Opt.numericUpDown_buttonY.Value;
+            button.w = (int)uCtrl_Button_Opt.numericUpDown_width.Value;
+            button.h = (int)uCtrl_Button_Opt.numericUpDown_height.Value;
+            button.radius = (int)uCtrl_Button_Opt.numericUpDown_radius.Value;
+            button.text_size = (int)uCtrl_Button_Opt.numericUpDown_textSize.Value;
+            button.color = ColorToString(uCtrl_Button_Opt.GetColorText());
+            button.text = uCtrl_Button_Opt.GetText();
+            button.press_src = uCtrl_Button_Opt.GetPressImage();
+            button.normal_src = uCtrl_Button_Opt.GetNormalImage();
+            button.normal_color = ColorToString(uCtrl_Button_Opt.GetColorNormal());
+            button.press_color = ColorToString(uCtrl_Button_Opt.GetColorPress());
+
+            if (rowIndex < 0 || rowIndex >= buttonsList.Count) buttonsList.Add(button);
+            else buttonsList.Insert(rowIndex, button);
+
+            //if (rowIndex < 0 || rowIndex == buttonsList.Count - 1) buttonsList.Add(button);
+            //else buttonsList.Insert(rowIndex, button);
+            //rowIndex++;
+
+            List<String> scriptClickList = ButtonClickScriptToString(buttonsList);
+            List<String> scriptLongPressList = ButtonLongPressScriptToString(buttonsList);
+            uCtrl_Button_Opt.UpdateButtonsList(scriptClickList, scriptLongPressList, rowIndex);
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Button_Opt_DelButton(int rowIndex)
+        {
+            if (Watch_Face.Buttons.Button == null) Watch_Face.Buttons.Button = new List<Button>();
+            List<Button> buttonsList = Watch_Face.Buttons.Button;
+
+            if (rowIndex >= 0 || rowIndex < buttonsList.Count) buttonsList.RemoveAt(rowIndex);
+
+            List<String> scriptClickList = ButtonClickScriptToString(buttonsList);
+            List<String> scriptLongPressList = ButtonLongPressScriptToString(buttonsList);
+            uCtrl_Button_Opt.UpdateButtonsList(scriptClickList, scriptLongPressList);
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private List<String> ButtonClickScriptToString(List<Button> buttonsList)
+        {
+            List<String> scriptList = new List<String>();
+            if (buttonsList == null || buttonsList.Count == 0) return scriptList;
+            foreach (Button button in buttonsList)
+            {
+                scriptList.Add(button.click_func);
+            }
+            return scriptList;
+        }
+
+        private List<String> ButtonLongPressScriptToString(List<Button> buttonsList)
+        {
+            List<String> scriptList = new List<String>();
+            if (buttonsList == null || buttonsList.Count == 0) return scriptList;
+            foreach (Button button in buttonsList)
+            {
+                scriptList.Add(button.longpress_func);
+            }
+            return scriptList;
         }
 
     }

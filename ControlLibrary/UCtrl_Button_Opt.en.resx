@@ -117,6 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Index.HeaderText" xml:space="preserve">
+    <value>#</value>
+  </data>
+  <data name="Button.HeaderText" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="button_add.Text" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="button_del.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="label06.Text" xml:space="preserve">
+    <value>Button height</value>
+  </data>
+  <data name="label07.Text" xml:space="preserve">
+    <value>Button width</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -133,10 +151,10 @@
 </value>
   </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 26</value>
+    <value>176, 26</value>
   </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Text" xml:space="preserve">
-    <value>Вставити координату X</value>
+    <value>Paste coordinate X</value>
   </data>
   <data name="копироватьToolStripMenuItemX.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -155,10 +173,10 @@
 </value>
   </data>
   <data name="копироватьToolStripMenuItemX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 26</value>
+    <value>176, 26</value>
   </data>
   <data name="копироватьToolStripMenuItemX.Text" xml:space="preserve">
-    <value>Копіювати</value>
+    <value>Copy</value>
   </data>
   <data name="вставитьToolStripMenuItemX.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -178,13 +196,13 @@
 </value>
   </data>
   <data name="вставитьToolStripMenuItemX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 26</value>
+    <value>176, 26</value>
   </data>
   <data name="вставитьToolStripMenuItemX.Text" xml:space="preserve">
-    <value>Вставити</value>
+    <value>Paste</value>
   </data>
   <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 82</value>
+    <value>177, 82</value>
   </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -201,10 +219,10 @@
 </value>
   </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 26</value>
+    <value>176, 26</value>
   </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Text" xml:space="preserve">
-    <value>Вставити координату Y</value>
+    <value>Paste coordinate Y</value>
   </data>
   <data name="копироватьToolStripMenuItemY.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -223,10 +241,10 @@
 </value>
   </data>
   <data name="копироватьToolStripMenuItemY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 26</value>
+    <value>176, 26</value>
   </data>
   <data name="копироватьToolStripMenuItemY.Text" xml:space="preserve">
-    <value>Копіювати</value>
+    <value>Copy</value>
   </data>
   <data name="вставитьToolStripMenuItemY.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -246,30 +264,54 @@
 </value>
   </data>
   <data name="вставитьToolStripMenuItemY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>204, 26</value>
+    <value>176, 26</value>
   </data>
   <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
-    <value>Вставити</value>
+    <value>Paste</value>
   </data>
   <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 82</value>
-  </data>
-  <data name="label01.Text" xml:space="preserve">
-    <value>Стартове зображення</value>
+    <value>177, 82</value>
   </data>
   <data name="label02.Size" type="System.Drawing.Size, System.Drawing">
-    <value>67, 13</value>
+    <value>63, 13</value>
   </data>
   <data name="label02.Text" xml:space="preserve">
-    <value>Координати</value>
+    <value>Coordinates</value>
   </data>
-  <data name="label03.Text" xml:space="preserve">
-    <value>Кількість зображень</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Pressed state</value>
   </data>
-  <data name="checkBox_shortcut.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 17</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Normal state</value>
   </data>
-  <data name="checkBox_shortcut.Text" xml:space="preserve">
-    <value>Ярлик</value>
+  <data name="groupBox_image.Text" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Pressed state</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Radius</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Normal state</value>
+  </data>
+  <data name="groupBox_color.Text" xml:space="preserve">
+    <value>Colour</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Text size</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Text colour</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>213, 26</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>* To add functions when pressing a button, double-click on the line with the button</value>
   </data>
 </root>

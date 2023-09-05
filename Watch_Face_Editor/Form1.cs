@@ -509,6 +509,7 @@ namespace Watch_Face_Editor
             uCtrl_DisconnectAlert_Opt.AutoSize = true;
             uCtrl_RepeatingAlert_Opt.AutoSize = true;
             uCtrl_SmoothSeconds_Opt.AutoSize = true;
+            uCtrl_Button_Opt.AutoSize = true;
 
             button_CreatePreview.Location = button_RefreshPreview.Location;
 
@@ -1649,6 +1650,14 @@ namespace Watch_Face_Editor
                         draggedUCtrl_Elm = (UCtrl_TopImage_Elm)e.Data.GetData(typeof(UCtrl_TopImage_Elm));
                         if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
                         break;
+
+                    case "ControlLibrary.uCtrl_Buttons_Elm":
+                        //EditableElements editableElements =
+                        //    (EditableElements)Elements.Find(e1 => e1.GetType().Name == "ElementEditablePointers");
+                        //index = Elements.IndexOf(editablePointers);
+                        draggedUCtrl_Elm = (UCtrl_TopImage_Elm)e.Data.GetData(typeof(UCtrl_TopImage_Elm));
+                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                        break;
                 }
 
                 if (draggedPanel == null) return;
@@ -1669,6 +1678,8 @@ namespace Watch_Face_Editor
                     if (control.Name == "panel_UC_EditableElements") return;
                     if (control.Name == "panel_UC_DisconnectAlert") return;
                     if (control.Name == "panel_UC_RepeatingAlert") return;
+                    if (control.Name == "panel_UC_TopImage") return;
+                    if (control.Name == "panel_UC_Buttons") return;
                     var pos = tableLayoutPanel_ElemetsWatchFace.GetPositionFromControl(control);
                     var posOld = tableLayoutPanel_ElemetsWatchFace.GetPositionFromControl(draggedPanel);
                     int indexNew = tableLayoutPanel_ElemetsWatchFace.RowCount - 2 - pos.Row;
@@ -1790,6 +1801,9 @@ namespace Watch_Face_Editor
                 case "SmoothSecond":
                     uCtrl_SmoothSeconds_Opt.Visible = true;
                     break;
+                case "Buttons":
+                    uCtrl_Button_Opt.Visible = true;
+                    break;
             }
 
             if (optionsName == "EditableTimePointer" || optionsName == "EditableElements" ||
@@ -1823,6 +1837,7 @@ namespace Watch_Face_Editor
             uCtrl_DisconnectAlert_Opt.Visible = false;
             uCtrl_RepeatingAlert_Opt.Visible = false;
             uCtrl_SmoothSeconds_Opt.Visible = false;
+            uCtrl_Button_Opt.Visible = false;
         }
 
         private void ResetHighlightState(string selectElementName)
@@ -1865,6 +1880,7 @@ namespace Watch_Face_Editor
             if (selectElementName != "DisconnectAlert") uCtrl_DisconnectAlert_Elm.ResetHighlightState();
             if (selectElementName != "RepeatingAlert") uCtrl_RepeatingAlert_Elm.ResetHighlightState();
             if (selectElementName != "TopImage") uCtrl_TopImage_Elm.ResetHighlightState();
+            if (selectElementName != "Buttons") uCtrl_Buttons_Elm.ResetHighlightState();
 
 
             if (selectElementName != "Animation") 
@@ -1931,6 +1947,7 @@ namespace Watch_Face_Editor
             uCtrl_DisconnectAlert_Elm.SettingsClear();
             uCtrl_RepeatingAlert_Elm.SettingsClear();
             uCtrl_TopImage_Elm.SettingsClear();
+            uCtrl_Buttons_Elm.SettingsClear();
         }
 
         private void uCtrl_Background_Elm_SelectChanged(object sender, EventArgs eventArgs)
@@ -2517,7 +2534,7 @@ namespace Watch_Face_Editor
                         loadedImage = Image.FromStream(stream);
                     }
 
-                    var RowNew = new DataGridViewRow();
+                    DataGridViewRow RowNew = new DataGridViewRow();
                     DataGridViewImageCellLayout ZoomType = DataGridViewImageCellLayout.Zoom;
                     if ((loadedImage.Height < 45) && (loadedImage.Width < 110))
                         ZoomType = DataGridViewImageCellLayout.Normal;
@@ -2566,6 +2583,7 @@ namespace Watch_Face_Editor
             uCtrl_Shortcut_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
             uCtrl_EditableElements_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
             uCtrl_EditableTimePointer_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
+            uCtrl_Button_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
             //uCtrl_Animation_Frame_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
             //uCtrl_Animation_Motion_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
             //uCtrl_Animation_Rotate_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
@@ -3914,6 +3932,22 @@ namespace Watch_Face_Editor
                 //    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
                 //    panel_WatchfaceElements.VerticalScroll.Maximum);
             }
+            if (comboBox_AddSystem.SelectedIndex == 9)
+            {
+                if (radioButton_ScreenNormal.Checked)
+                {
+                    AddButtons();
+                    ShowElemetsWatchFace();
+                    JSON_Modified = true;
+                    FormText();
+                }
+                else MessageBox.Show(Properties.FormStrings.Message_ElementAOD_Text, Properties.FormStrings.Message_Warning_Caption,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                //panel_WatchfaceElements.AutoScrollPosition = new Point(
+                //    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                //    panel_WatchfaceElements.VerticalScroll.Maximum);
+            }
 
             PreviewView = false;
             //if (comboBox_AddTime.SelectedIndex >= 0) MessageBox.Show(comboBox_AddTime.Text);
@@ -4314,6 +4348,20 @@ namespace Watch_Face_Editor
                 Watch_Face.TopImage.Icon = new hmUI_widget_IMG();
             }
             Watch_Face.TopImage.visible = true;
+        }
+
+        /// <summary>Добавляем кнопки</summary>
+        private void AddButtons()
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) Watch_Face = new WATCH_FACE();
+
+            if (Watch_Face.Buttons == null)
+            {
+                Watch_Face.Buttons = new ElementButtons();
+                Watch_Face.Buttons.Button = new List<Button>();
+            }
+            Watch_Face.Buttons.enable = true;
         }
 
         /// <summary>Добавляем дату в циферблат</summary>
@@ -5138,6 +5186,7 @@ namespace Watch_Face_Editor
             uCtrl_DisconnectAlert_Elm.Visible = false;
             uCtrl_RepeatingAlert_Elm.Visible = false;
             uCtrl_TopImage_Elm.Visible = false;
+            uCtrl_Buttons_Elm.Visible = false;
 
 
             int count = tableLayoutPanel_ElemetsWatchFace.RowCount;
@@ -6707,6 +6756,17 @@ namespace Watch_Face_Editor
 
                 uCtrl_Shortcuts_Elm.Visible = true;
                 SetElementPositionInGUI("ElementShortcuts", count - elementsCount - 2);
+                elementsCount++;
+            }
+
+            if (Watch_Face.Buttons != null && radioButton_ScreenNormal.Checked)
+            {
+                ElementButtons Buttons = Watch_Face.Buttons;
+                uCtrl_Buttons_Elm.SetVisibilityElementStatus(Buttons.enable);
+
+                uCtrl_Buttons_Elm.Visible = true;
+                SetElementPositionInGUI("Buttons", count - elementsCount - 2);
+                elementsCount++;
             }
 
             PreviewView = true;
@@ -6825,6 +6885,9 @@ namespace Watch_Face_Editor
                     break;
                 case "TopImage":
                     panel = panel_UC_TopImage;
+                    break;
+                case "Buttons":
+                    panel = panel_UC_Buttons;
                     break;
             }
             if (panel == null) return;
@@ -7458,6 +7521,22 @@ namespace Watch_Face_Editor
             if (Watch_Face != null && Watch_Face.TopImage != null)
             {
                 Watch_Face.TopImage = null;
+
+                PreviewView = false;
+                ShowElemetsWatchFace();
+                PreviewView = true;
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Buttons_Elm_DelElement(object sender, EventArgs eventArgs)
+        {
+            if (Watch_Face != null && Watch_Face.Buttons != null)
+            {
+                Watch_Face.Buttons = null;
 
                 PreviewView = false;
                 ShowElemetsWatchFace();
@@ -13229,6 +13308,24 @@ namespace Watch_Face_Editor
             }
         }
 
+        private void uCtrl_Buttons_Elm_SelectChanged(object sender, EventArgs eventArgs)
+        {
+            ResetHighlightState("Buttons");
+
+            ElementButtons buttons = null;
+            if (Watch_Face != null && Watch_Face.Buttons != null) buttons = Watch_Face.Buttons;
+
+            if (buttons != null)
+            {
+                List<Button> buttonsList = null;
+
+                buttonsList = buttons.Button;
+                Read_Button_Options(buttonsList);
+                ShowElemenrOptions("Buttons");
+
+            }
+        }
+
         #endregion
 
         private void uCtrl_DateDay_Elm_VisibleOptionsChanged(object sender, EventArgs eventArgs)
@@ -15873,6 +15970,22 @@ namespace Watch_Face_Editor
             FormText();
         }
 
+        private void uCtrl_Buttons_Elm_VisibleElementChanged(object sender, EventArgs eventArgs, bool visible)
+        {
+            ElementButtons buttons = null;
+            if (Watch_Face != null && Watch_Face.Buttons != null) buttons = Watch_Face.Buttons;
+
+            if (buttons != null)
+            {
+                //topImage.showInAOD = uCtrl_TopImage_Elm.checkBox_ShowInAOD.Checked;
+                buttons.enable = visible;
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
         private void uCtrl_Statuses_Elm_VisibleOptionsChanged(object sender, EventArgs eventArgs)
         {
             if (!PreviewView) return;
@@ -17795,11 +17908,33 @@ namespace Watch_Face_Editor
                         collection[collection.Count - 1].AnimationDelay = (int)(100 * numericUpDown_Gif_Speed.Value);
                     }
 
+                    // Buttons
+                    Logger.WriteLine("SaveGIF Buttons");
+                    if (Shortcuts_In_Gif && Watch_Face.Buttons != null && Watch_Face.Buttons.enable &&
+                        Watch_Face.Buttons.Button != null && Watch_Face.Buttons.Button.Count > 0)
+                    {
+                        bitmap = bitmapTemp;
+                        gPanel = Graphics.FromImage(bitmap);
+                        //int link = radioButton_ScreenNormal.Checked ? 0 : 1;
+                        int link_AOD = 0;
+                        Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true,
+                            false, false, false, link_AOD, Shortcuts_In_Gif, -1, false, 0);
+
+                        if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
+                        else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
+                        // Add first image and set the animation delay to 100ms
+                        MagickImage item_AOD = new MagickImage(ImgConvert.CopyImageToByteArray(bitmap));
+                        //ExifProfile profile = item.GetExifProfile();
+                        collection.Add(item_AOD);
+                        //collection[collection.Count - 1].AnimationDelay = 100;
+                        collection[collection.Count - 1].AnimationDelay = (int)(100 * numericUpDown_Gif_Speed.Value);
+                    }
+
                     //WidgetDrawIndex = -1;
                     Logger.WriteLine("SaveGIF_AOD");
                     // AOD
                     if (Watch_Face.ScreenAOD != null && 
-                        (Watch_Face.ScreenAOD.Background != null || Watch_Face.ScreenAOD.Elements != null))
+                        (Watch_Face.ScreenAOD.Background != null || (Watch_Face.ScreenAOD.Elements != null && Watch_Face.ScreenAOD.Elements.Count > 0)))
                     {
 
                         bitmap = bitmapTemp;
@@ -18858,6 +18993,7 @@ namespace Watch_Face_Editor
             }
         }
 
+        
     }
 }
 

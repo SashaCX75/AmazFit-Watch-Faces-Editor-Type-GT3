@@ -1095,4 +1095,51 @@ namespace Watch_Face_Editor
         public string toastText = "";
         public int repeatPeriod = 60;
     }
+
+    /// <summary>Кнопки</summary>
+    public class Button
+    {
+        /// <summary>Координаты элемента</summary>
+        public int x = 0;
+
+        /// <summary>Координаты элемента</summary>
+        public int y = 0;
+
+        /// <summary>Размер элемента</summary>
+        public int h = 40;
+
+        /// <summary>Размер элемента</summary>
+        public int w = 100;
+
+        /// <summary>Отображаемый текст</summary>
+        public string text = "";
+
+        /// <summary>Цвет текста</summary>
+        public string color = "0xFFFFFFFF";
+
+        /// <summary>Размер текста</summary>
+        public int text_size = 25;
+
+        /// <summary>Изображение при нажатии кнопки</summary>
+        public string press_src = "";
+
+        /// <summary>Изображение при нажатии кнопки</summary>
+        public string normal_src = "";
+
+        /// <summary>Цвет кнопки при нажатии</summary>
+        public string press_color = "0xFF000000";
+
+        /// <summary>Цвет кнопки в нормальном состоянии</summary>
+        public string normal_color = "0xFF000000";
+
+        /// <summary>Радиус углов</summary>
+        public int radius = 12;
+
+        /// <summary>Функция при нажатии кнопки</summary>
+        public string click_func = "";
+
+        /// <summary>Функция при долгом нажатии кнопки</summary>
+        public string longpress_func = "";
+
+    }
 }

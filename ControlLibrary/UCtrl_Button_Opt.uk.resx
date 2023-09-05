@@ -117,7 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Button.HeaderText" xml:space="preserve">
+    <value>Ім'я</value>
+  </data>
+  <data name="button_add.Text" xml:space="preserve">
+    <value>Додати</value>
+  </data>
+  <data name="button_del.Text" xml:space="preserve">
+    <value>Видалити</value>
+  </data>
+  <data name="label06.Text" xml:space="preserve">
+    <value>Висота кнопки</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 82</value>
+  </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
@@ -183,7 +198,7 @@
   <data name="вставитьToolStripMenuItemX.Text" xml:space="preserve">
     <value>Вставити</value>
   </data>
-  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
     <value>205, 82</value>
   </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -251,25 +266,46 @@
   <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
     <value>Вставити</value>
   </data>
-  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
-    <value>205, 82</value>
-  </data>
-  <data name="label01.Text" xml:space="preserve">
-    <value>Стартове зображення</value>
-  </data>
   <data name="label02.Size" type="System.Drawing.Size, System.Drawing">
     <value>67, 13</value>
   </data>
   <data name="label02.Text" xml:space="preserve">
     <value>Координати</value>
   </data>
-  <data name="label03.Text" xml:space="preserve">
-    <value>Кількість зображень</value>
+  <data name="groupBox_image.Text" xml:space="preserve">
+    <value>Зображення</value>
   </data>
-  <data name="checkBox_shortcut.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 17</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Натиснутий стан</value>
   </data>
-  <data name="checkBox_shortcut.Text" xml:space="preserve">
-    <value>Ярлик</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Нормальний стан</value>
+  </data>
+  <data name="groupBox_color.Text" xml:space="preserve">
+    <value>Колір</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Натиснутий стан</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Радіус</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Нормальний стан</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Розмір тексту</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Напис</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Колір тексту</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>255, 26</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>* Для додавання функцій при натисканні кнопки двічі клікніть на рядок із кнопкою</value>
   </data>
 </root>

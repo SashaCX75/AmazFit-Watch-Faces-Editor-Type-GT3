@@ -117,40 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Dialog_FontFilter" xml:space="preserve">
-    <value>Файл шрифта (*.ttf) | *.ttf</value>
-  </data>
-  <data name="Dialog_Title_Font_Add" xml:space="preserve">
-    <value>Выберите файл шрифта</value>
-  </data>
-  <data name="Message_Error_Caption" xml:space="preserve">
-    <value>Ошибка</value>
-  </data>
-  <data name="Message_ReadScript_Error" xml:space="preserve">
-    <value>Ошибка чтения пользовательских скриптов</value>
-  </data>
-  <data name="Message_Warning_Caption" xml:space="preserve">
-    <value>Предупреждение</value>
-  </data>
-  <data name="Message_Warning_Font_Exist1" xml:space="preserve">
-    <value>В проекте уже существует шрифт: </value>
-  </data>
-  <data name="Message_Warning_Font_Exist2" xml:space="preserve">
-    <value>Заменить его новым шрифтом?</value>
-  </data>
-  <data name="SystemFont" xml:space="preserve">
-    <value>Системный шрифт</value>
-  </data>
-  <data name="UCtrl_Text_Opt_Sunrise_false" xml:space="preserve">
-    <value>Десятичный разделитель</value>
-  </data>
-  <data name="UCtrl_Text_Opt_Sunrise_true" xml:space="preserve">
-    <value>Разделитель</value>
-  </data>
-  <data name="UCtrl_Text_Opt_Year_false" xml:space="preserve">
-    <value>Добавлять нули в начале</value>
-  </data>
-  <data name="UCtrl_Text_Opt_Year_true" xml:space="preserve">
-    <value>Полное написание года</value>
+  <data name="button_ElementName.Text" xml:space="preserve">
+    <value>Buttons</value>
   </data>
 </root>

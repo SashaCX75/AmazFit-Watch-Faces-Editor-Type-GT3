@@ -117,40 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Dialog_FontFilter" xml:space="preserve">
-    <value>Файл шрифта (*.ttf) | *.ttf</value>
+  <data name="Button" xml:space="preserve">
+    <value>Кнопка</value>
   </data>
-  <data name="Dialog_Title_Font_Add" xml:space="preserve">
-    <value>Выберите файл шрифта</value>
+  <data name="comboBox_Activity" xml:space="preserve">
+    <value>Здоровье</value>
   </data>
-  <data name="Message_Error_Caption" xml:space="preserve">
-    <value>Ошибка</value>
+  <data name="comboBox_App" xml:space="preserve">
+    <value>Программы</value>
   </data>
-  <data name="Message_ReadScript_Error" xml:space="preserve">
-    <value>Ошибка чтения пользовательских скриптов</value>
+  <data name="comboBox_System" xml:space="preserve">
+    <value>Настройки</value>
   </data>
-  <data name="Message_Warning_Caption" xml:space="preserve">
-    <value>Предупреждение</value>
+  <data name="comboBox_UserScript" xml:space="preserve">
+    <value>Набор функций</value>
   </data>
-  <data name="Message_Warning_Font_Exist1" xml:space="preserve">
-    <value>В проекте уже существует шрифт: </value>
+  <data name="Empty" xml:space="preserve">
+    <value>пусто</value>
   </data>
-  <data name="Message_Warning_Font_Exist2" xml:space="preserve">
-    <value>Заменить его новым шрифтом?</value>
-  </data>
-  <data name="SystemFont" xml:space="preserve">
-    <value>Системный шрифт</value>
-  </data>
-  <data name="UCtrl_Text_Opt_Sunrise_false" xml:space="preserve">
-    <value>Десятичный разделитель</value>
-  </data>
-  <data name="UCtrl_Text_Opt_Sunrise_true" xml:space="preserve">
-    <value>Разделитель</value>
-  </data>
-  <data name="UCtrl_Text_Opt_Year_false" xml:space="preserve">
-    <value>Добавлять нули в начале</value>
-  </data>
-  <data name="UCtrl_Text_Opt_Year_true" xml:space="preserve">
-    <value>Полное написание года</value>
+  <data name="User_script" xml:space="preserve">
+    <value>скрипт</value>
   </data>
 </root>
