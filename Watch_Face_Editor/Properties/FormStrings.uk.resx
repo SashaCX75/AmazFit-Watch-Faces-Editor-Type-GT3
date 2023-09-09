@@ -345,6 +345,9 @@
   <data name="Message_Warning_Information" xml:space="preserve">
     <value>Інформація</value>
   </data>
+  <data name="Message_Wrong_ColorScheme" xml:space="preserve">
+    <value>Зазначено невідому колірну схему для моделі:</value>
+  </data>
   <data name="Message_Wrong_Original_Image" xml:space="preserve">
     <value>Невірний формат вихідного зображення</value>
   </data>

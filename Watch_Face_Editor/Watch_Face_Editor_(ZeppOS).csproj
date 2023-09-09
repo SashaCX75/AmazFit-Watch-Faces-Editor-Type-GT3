@@ -566,6 +566,8 @@
     <Content Include="Mask\mask_gts_4_mini.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\bmc_qr.png" />
+    <None Include="Resources\Ionic-Qr-code.png" />
     <Content Include="Skin\Skin_Amazfit_Band_7.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

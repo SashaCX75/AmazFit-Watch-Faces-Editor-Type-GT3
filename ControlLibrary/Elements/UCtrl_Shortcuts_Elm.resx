@@ -1388,6 +1388,7 @@
   </data>
   <data name="button_PAI.Text" xml:space="preserve">
     <value>PAI</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="pictureBox_Del.Location" type="System.Drawing.Point, System.Drawing">
     <value>192, 2</value>
@@ -1443,7 +1444,7 @@
   <data name="panel_Heart.Size" type="System.Drawing.Size, System.Drawing">
     <value>218, 24</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
 </root>

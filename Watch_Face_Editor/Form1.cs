@@ -18576,6 +18576,11 @@ namespace Watch_Face_Editor
             System.Diagnostics.Process.Start("https://github.com/SashaCX75/ImageToGTR3/releases/tag/v1.1");
         }
 
+        private void linkLabel_buymeacoffee_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.buymeacoffee.com/sashacx75");
+        }
+
         private void удалитьИзображениеToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ToolStripItem menuItem = sender as ToolStripItem;
@@ -18993,7 +18998,16 @@ namespace Watch_Face_Editor
             }
         }
 
-        
+        private void pictureBox_qr_MouseHover(object sender, EventArgs e)
+        {
+            pictureBoxpictureBox_buymeacoff.Size = new Size((int)(390 * currentDPI), (int)(390 * currentDPI));
+            pictureBoxpictureBox_buymeacoff.Visible = true;
+        }
+
+        private void pictureBoxpictureBox_buymeacoff_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBoxpictureBox_buymeacoff.Visible = false;
+        }
     }
 }
 

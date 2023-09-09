@@ -345,6 +345,9 @@
   <data name="Message_Warning_Information" xml:space="preserve">
     <value>Information</value>
   </data>
+  <data name="Message_Wrong_ColorScheme" xml:space="preserve">
+    <value>An unknown colour scheme for the model is specified:</value>
+  </data>
   <data name="Message_Wrong_Original_Image" xml:space="preserve">
     <value>Invalid source image format</value>
   </data>

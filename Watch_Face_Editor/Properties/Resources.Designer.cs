@@ -73,6 +73,16 @@ namespace Watch_Face_Editor.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bmc_qr {
+            get {
+                object obj = ResourceManager.GetObject("bmc_qr", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap clock_icon {
             get {
                 object obj = ResourceManager.GetObject("clock-icon", resourceCulture);
@@ -96,6 +106,16 @@ namespace Watch_Face_Editor.Properties {
         internal static System.Drawing.Bitmap image_remove_icon {
             get {
                 object obj = ResourceManager.GetObject("image-remove-icon", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Ionic_Qr_code {
+            get {
+                object obj = ResourceManager.GetObject("Ionic-Qr-code", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

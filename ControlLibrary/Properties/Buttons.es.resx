@@ -117,40 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Dialog_FontFilter" xml:space="preserve">
-    <value>Archivo de fuentes (*.ttf) | *.ttf</value>
+  <data name="Button" xml:space="preserve">
+    <value>Botón</value>
   </data>
-  <data name="Dialog_Title_Font_Add" xml:space="preserve">
-    <value>Seleccionar archivo de fuente</value>
+  <data name="comboBox_Activity" xml:space="preserve">
+    <value>Actividades</value>
   </data>
-  <data name="Message_Error_Caption" xml:space="preserve">
-    <value>Error</value>
+  <data name="comboBox_App" xml:space="preserve">
+    <value>Aplicación</value>
   </data>
-  <data name="Message_ReadScript_Error" xml:space="preserve">
-    <value>Error al leer scripts de usuario</value>
+  <data name="comboBox_System" xml:space="preserve">
+    <value>Ajustes</value>
   </data>
-  <data name="Message_Warning_Caption" xml:space="preserve">
-    <value>Advertencia</value>
+  <data name="comboBox_UserScript" xml:space="preserve">
+    <value>Conjunto de funciones</value>
   </data>
-  <data name="Message_Warning_Font_Exist1" xml:space="preserve">
-    <value>El proyecto ya tiene una fuente:</value>
+  <data name="Empty" xml:space="preserve">
+    <value>Vacío</value>
   </data>
-  <data name="Message_Warning_Font_Exist2" xml:space="preserve">
-    <value>¿Reemplazarlo con una nueva fuente?</value>
-  </data>
-  <data name="SystemFont" xml:space="preserve">
-    <value>Fuente del sistema</value>
-  </data>
-  <data name="UCtrl_Text_Opt_Sunrise_false" xml:space="preserve">
-    <value>Separador decimal</value>
-  </data>
-  <data name="UCtrl_Text_Opt_Sunrise_true" xml:space="preserve">
-    <value>Separador</value>
-  </data>
-  <data name="UCtrl_Text_Opt_Year_false" xml:space="preserve">
-    <value>Añadir ceros a la izquierda</value>
-  </data>
-  <data name="UCtrl_Text_Opt_Year_true" xml:space="preserve">
-    <value>Año completo</value>
+  <data name="User_script" xml:space="preserve">
+    <value>Guión de usuario</value>
   </data>
 </root>

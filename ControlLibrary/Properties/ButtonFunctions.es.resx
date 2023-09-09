@@ -117,40 +117,166 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Dialog_FontFilter" xml:space="preserve">
-    <value>Archivo de fuentes (*.ttf) | *.ttf</value>
+  <data name="Alarm" xml:space="preserve">
+    <value>Alarma</value>
   </data>
-  <data name="Dialog_Title_Font_Add" xml:space="preserve">
-    <value>Seleccionar archivo de fuente</value>
+  <data name="AOD" xml:space="preserve">
+    <value>Configuración de hora AOD</value>
   </data>
-  <data name="Message_Error_Caption" xml:space="preserve">
-    <value>Error</value>
+  <data name="AODStyle" xml:space="preserve">
+    <value>Configuración de estilo AOD</value>
   </data>
-  <data name="Message_ReadScript_Error" xml:space="preserve">
-    <value>Error al leer scripts de usuario</value>
+  <data name="AppList" xml:space="preserve">
+    <value>Lista de aplicaciones</value>
   </data>
-  <data name="Message_Warning_Caption" xml:space="preserve">
-    <value>Advertencia</value>
+  <data name="Baro" xml:space="preserve">
+    <value>Barómetro</value>
   </data>
-  <data name="Message_Warning_Font_Exist1" xml:space="preserve">
-    <value>El proyecto ya tiene una fuente:</value>
+  <data name="BatteryManager" xml:space="preserve">
+    <value>Estadísticas de uso *</value>
   </data>
-  <data name="Message_Warning_Font_Exist2" xml:space="preserve">
-    <value>¿Reemplazarlo con una nueva fuente?</value>
+  <data name="Camera" xml:space="preserve">
+    <value>Control de cámara</value>
   </data>
-  <data name="SystemFont" xml:space="preserve">
-    <value>Fuente del sistema</value>
+  <data name="ClubCards" xml:space="preserve">
+    <value>Tarjeta de miembro</value>
   </data>
-  <data name="UCtrl_Text_Opt_Sunrise_false" xml:space="preserve">
-    <value>Separador decimal</value>
+  <data name="Compass" xml:space="preserve">
+    <value>Brújula</value>
   </data>
-  <data name="UCtrl_Text_Opt_Sunrise_true" xml:space="preserve">
-    <value>Separador</value>
+  <data name="Contacts" xml:space="preserve">
+    <value>Contactos *</value>
   </data>
-  <data name="UCtrl_Text_Opt_Year_false" xml:space="preserve">
-    <value>Añadir ceros a la izquierda</value>
+  <data name="CountDown" xml:space="preserve">
+    <value>Cuenta regresiva</value>
   </data>
-  <data name="UCtrl_Text_Opt_Year_true" xml:space="preserve">
-    <value>Año completo</value>
+  <data name="DialCall" xml:space="preserve">
+    <value>Marcador *</value>
+  </data>
+  <data name="Display" xml:space="preserve">
+    <value>Mostrar</value>
+  </data>
+  <data name="DND" xml:space="preserve">
+    <value>No molestar</value>
+  </data>
+  <data name="DragList" xml:space="preserve">
+    <value>Iconos de aplicaciones</value>
+  </data>
+  <data name="FindPhone" xml:space="preserve">
+    <value>Búsqueda de teléfono</value>
+  </data>
+  <data name="HeartRete" xml:space="preserve">
+    <value>Ritmo cardiaco</value>
+  </data>
+  <data name="Light" xml:space="preserve">
+    <value>Brillo</value>
+  </data>
+  <data name="LocalMusic" xml:space="preserve">
+    <value>Música (de servicio) *</value>
+  </data>
+  <data name="LowBattery" xml:space="preserve">
+    <value>Ahorro de carga</value>
+  </data>
+  <data name="Menstrual" xml:space="preserve">
+    <value>Calendario Femenino</value>
+  </data>
+  <data name="MoreList" xml:space="preserve">
+    <value>Menú "Más" *</value>
+  </data>
+  <data name="MorningNews" xml:space="preserve">
+    <value>Saludo matutino *</value>
+  </data>
+  <data name="OneKey" xml:space="preserve">
+    <value>Medición con un solo toque</value>
+  </data>
+  <data name="PAI" xml:space="preserve">
+    <value>Pai</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Teléfono *</value>
+  </data>
+  <data name="PhoneMusic" xml:space="preserve">
+    <value>Música (en el teléfono)</value>
+  </data>
+  <data name="PowerHint" xml:space="preserve">
+    <value>Consumo de energía</value>
+  </data>
+  <data name="RecentCall" xml:space="preserve">
+    <value>Últimas llamadas *</value>
+  </data>
+  <data name="Respiration" xml:space="preserve">
+    <value>Respiración</value>
+  </data>
+  <data name="ReStart" xml:space="preserve">
+    <value>Apagado</value>
+  </data>
+  <data name="SaveMode" xml:space="preserve">
+    <value>Esfera de reloj sencilla</value>
+  </data>
+  <data name="Schedule" xml:space="preserve">
+    <value>Calendario</value>
+  </data>
+  <data name="ScheduleList" xml:space="preserve">
+    <value>Programa</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Ajustes</value>
+  </data>
+  <data name="Sleep" xml:space="preserve">
+    <value>Dormir</value>
+  </data>
+  <data name="SPO2" xml:space="preserve">
+    <value>SpO2 (oxígeno)</value>
+  </data>
+  <data name="Sport" xml:space="preserve">
+    <value>Último entrenamiento</value>
+  </data>
+  <data name="SportList" xml:space="preserve">
+    <value>Comenzando un entrenamiento</value>
+  </data>
+  <data name="SportRecord" xml:space="preserve">
+    <value>Registros de entrenamiento</value>
+  </data>
+  <data name="SportStatus" xml:space="preserve">
+    <value>Carga de entrenamiento</value>
+  </data>
+  <data name="Steps" xml:space="preserve">
+    <value>Pasos</value>
+  </data>
+  <data name="StopWatch" xml:space="preserve">
+    <value>Cronometro</value>
+  </data>
+  <data name="Stress" xml:space="preserve">
+    <value>Estrés</value>
+  </data>
+  <data name="Sunset" xml:space="preserve">
+    <value>Salida del sol / Puesta de sol</value>
+  </data>
+  <data name="System" xml:space="preserve">
+    <value>Sección "Sistema"</value>
+  </data>
+  <data name="Test1" xml:space="preserve">
+    <value>Prueba</value>
+  </data>
+  <data name="Test2" xml:space="preserve">
+    <value>Prueba (sencilla)</value>
+  </data>
+  <data name="Timer" xml:space="preserve">
+    <value>Temporizador</value>
+  </data>
+  <data name="ToDoList" xml:space="preserve">
+    <value>Lista de tareas</value>
+  </data>
+  <data name="VoiceMemo" xml:space="preserve">
+    <value>Nota de voz</value>
+  </data>
+  <data name="WatchFace" xml:space="preserve">
+    <value>Seleccionar esfera del reloj</value>
+  </data>
+  <data name="Weather" xml:space="preserve">
+    <value>Clima</value>
+  </data>
+  <data name="WorldClock" xml:space="preserve">
+    <value>Hora mundial</value>
   </data>
 </root>

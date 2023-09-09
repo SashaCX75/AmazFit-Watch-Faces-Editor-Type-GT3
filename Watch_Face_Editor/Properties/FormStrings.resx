@@ -350,7 +350,7 @@
     <value>Информация</value>
   </data>
   <data name="Message_Wrong_ColorScheme" xml:space="preserve">
-    <value>Указана незвестная цветовая схема для модели: </value>
+    <value>Указана неизвестная цветовая схема для модели:</value>
   </data>
   <data name="Message_Wrong_Original_Image" xml:space="preserve">
     <value>Неверный формат исходного изображения</value>

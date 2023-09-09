@@ -1173,6 +1173,7 @@
   </data>
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>PAI</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;checkBox_Number_Target.Parent" xml:space="preserve">
     <value>panel_Number_Target</value>
@@ -1330,7 +1331,7 @@
   <data name="panel_Linear_Scale.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
 </root>

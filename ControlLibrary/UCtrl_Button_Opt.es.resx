@@ -117,6 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Index.HeaderText" xml:space="preserve">
+    <value>#</value>
+  </data>
+  <data name="Button.HeaderText" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="button_add.Text" xml:space="preserve">
+    <value>Agregar</value>
+  </data>
+  <data name="button_del.Text" xml:space="preserve">
+    <value>Borrar</value>
+  </data>
+  <data name="label06.Text" xml:space="preserve">
+    <value>Altura del botón</value>
+  </data>
+  <data name="label07.Text" xml:space="preserve">
+    <value>Ancho del botón</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -131,6 +149,12 @@
         v//mQ5XiBhMmTGD7+fNn7t+/f/dp9cj+t1mkBvTC7wO/f//OX7hoIQdUGWHw7v27LLcZxv8dZtkCw+Mf
         YZvRQX9/PxvQkJx3797lIWxmYAAA7pt3k8xS7ogAAAAASUVORK5CYII=
 </value>
+  </data>
+  <data name="вставитьКоординатуХToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 26</value>
+  </data>
+  <data name="вставитьКоординатуХToolStripMenuItem.Text" xml:space="preserve">
+    <value>Pegar coordenada X</value>
   </data>
   <data name="копироватьToolStripMenuItemX.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -147,6 +171,12 @@
         aTd35+adAzmrI4ijA3Amk+lat7fXT4Snqp0uA/VkLJcUmL06e4e4fy2j0XjJYn28trhoXjWbLasWi/UT
         gfobN285p6dNt5F2ps/+r+K4P4wyYm9nlNBiAAAAAElFTkSuQmCC
 </value>
+  </data>
+  <data name="копироватьToolStripMenuItemX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 26</value>
+  </data>
+  <data name="копироватьToolStripMenuItemX.Text" xml:space="preserve">
+    <value>Copiar</value>
   </data>
   <data name="вставитьToolStripMenuItemX.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -165,6 +195,15 @@
         zqO/TnAxx2CuMF/jKtTrXEWk1Wk1ZkEQhL+gXkz+KXzH3gAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="вставитьToolStripMenuItemX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 26</value>
+  </data>
+  <data name="вставитьToolStripMenuItemX.Text" xml:space="preserve">
+    <value>Pegar</value>
+  </data>
+  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 82</value>
+  </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
@@ -178,6 +217,12 @@
         v//mQ5XiBhMmTGD7+fNn7t+/f/dp9cj+t1mkBvTC7wO/f//OX7hoIQdUGWHw7v27LLcZxv8dZtkCw+Mf
         YZvRQX9/PxvQkJx3797lIWxmYAAA7pt3k8xS7ogAAAAASUVORK5CYII=
 </value>
+  </data>
+  <data name="вставитьКоординатуYToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 26</value>
+  </data>
+  <data name="вставитьКоординатуYToolStripMenuItem.Text" xml:space="preserve">
+    <value>Pegar coordenada Y</value>
   </data>
   <data name="копироватьToolStripMenuItemY.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -194,6 +239,12 @@
         aTd35+adAzmrI4ijA3Amk+lat7fXT4Snqp0uA/VkLJcUmL06e4e4fy2j0XjJYn28trhoXjWbLasWi/UT
         gfobN285p6dNt5F2ps/+r+K4P4wyYm9nlNBiAAAAAElFTkSuQmCC
 </value>
+  </data>
+  <data name="копироватьToolStripMenuItemY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 26</value>
+  </data>
+  <data name="копироватьToolStripMenuItemY.Text" xml:space="preserve">
+    <value>Copiar</value>
   </data>
   <data name="вставитьToolStripMenuItemY.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -212,37 +263,55 @@
         zqO/TnAxx2CuMF/jKtTrXEWk1Wk1ZkEQhL+gXkz+KXzH3gAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="label02.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 13</value>
-  </data>
-  <data name="label01.Text" xml:space="preserve">
-    <value>Primera imagen</value>
-  </data>
-  <data name="label02.Text" xml:space="preserve">
-    <value>Coordenadas</value>
-  </data>
-  <data name="label03.Text" xml:space="preserve">
-    <value>Numero de imágenes</value>
-  </data>
-  <data name="вставитьToolStripMenuItemX.Text" xml:space="preserve">
-    <value>Pegar</value>
+  <data name="вставитьToolStripMenuItemY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 26</value>
   </data>
   <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
     <value>Pegar</value>
   </data>
-  <data name="вставитьКоординатуYToolStripMenuItem.Text" xml:space="preserve">
-    <value>Pegar coordenada y</value>
+  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 82</value>
   </data>
-  <data name="вставитьКоординатуХToolStripMenuItem.Text" xml:space="preserve">
-    <value>Pegar coordenada X</value>
+  <data name="label02.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 13</value>
   </data>
-  <data name="копироватьToolStripMenuItemX.Text" xml:space="preserve">
-    <value>Copiar</value>
+  <data name="label02.Text" xml:space="preserve">
+    <value>Coordenadas</value>
   </data>
-  <data name="копироватьToolStripMenuItemY.Text" xml:space="preserve">
-    <value>Copiar</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Estado presionado</value>
   </data>
-  <data name="checkBox_shortcut.Text" xml:space="preserve">
-    <value>Atajo</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Estado normal</value>
+  </data>
+  <data name="groupBox_image.Text" xml:space="preserve">
+    <value>Imagen</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Estado presionado</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Radio</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Estado normal</value>
+  </data>
+  <data name="groupBox_color.Text" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Tamano del texto</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Texto</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Color del texto</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>232, 26</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>* Para agregar funciones al presionar un botón, haga doble clic en la línea con el botón</value>
   </data>
 </root>

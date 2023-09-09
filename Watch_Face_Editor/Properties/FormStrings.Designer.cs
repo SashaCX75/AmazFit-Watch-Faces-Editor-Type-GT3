@@ -754,7 +754,7 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Указана незвестная цветовая схема для модели: .
+        ///   Ищет локализованную строку, похожую на Указана неизвестная цветовая схема для модели:.
         /// </summary>
         internal static string Message_Wrong_ColorScheme {
             get {

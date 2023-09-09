@@ -121,62 +121,77 @@
   <data name="gtr_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\gtr_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="tips_en" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tips_en.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="Weather-Partly-Cloudy-Rain_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Weather-Partly-Cloudy-Rain_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tips_fr" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tips_fr.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="Sidebar-Search_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sidebar-Search_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Sports-Walking_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Sports-Walking_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Very-Basic-Calendar_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Very-Basic-Calendar_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Background-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Background-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="tips_cs" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tips_cs.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
-  <data name="OpenSans_Regular" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\OpenSans-Regular.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="clock-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\clock-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="image-remove-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\image-remove-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Sidebar-Search_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Sidebar-Search_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Very-Basic-Calendar_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Very-Basic-Calendar_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Weather-Partly-Cloudy-Rain_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Weather-Partly-Cloudy-Rain_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Sidebar-Search_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Sidebar-Search_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Roboto_Regular" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Roboto-Regular.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="Weather-Partly-Cloudy-Rain_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Weather-Partly-Cloudy-Rain_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="tips_it" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tips_it.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
   <data name="unpacking" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\unpacking.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Logos-Administrative-Tools_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Logos-Administrative-Tools_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="image-remove-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\image-remove-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Sports-Walking_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Sports-Walking_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Very-Basic-Calendar_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Very-Basic-Calendar_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Logos-Administrative-Tools_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Logos-Administrative-Tools_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Roboto_Regular" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Roboto-Regular.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Sidebar-Search_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sidebar-Search_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tips_es" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tips_es.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="Weather-Partly-Cloudy-Rain_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Weather-Partly-Cloudy-Rain_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="packaging" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\packaging.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Background-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Background-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="pictures-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pictures-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="tips_en" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\tips_en.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  <data name="tips_de" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tips_de.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  </data>
+  <data name="Logos-Administrative-Tools_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Logos-Administrative-Tools_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bmc_qr" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bmc_qr.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="clock-icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\clock-icon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Logos-Administrative-Tools_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Logos-Administrative-Tools_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tips_zh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tips_zh.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
   <data name="tips_ru" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tips_ru.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
@@ -184,22 +199,13 @@
   <data name="tips_uk" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tips_uk.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
   </data>
-  <data name="tips_zh" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\tips_zh.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  <data name="Sports-Walking_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Sports-Walking_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="tips_es" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\tips_es.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  <data name="OpenSans_Regular" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OpenSans-Regular.ttf;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="tips_de" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\tips_de.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
-  </data>
-  <data name="tips_cs" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\tips_cs.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
-  </data>
-  <data name="tips_fr" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\tips_fr.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
-  </data>
-  <data name="tips_it" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\tips_it.rtf;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;windows-1251</value>
+  <data name="Ionic-Qr-code" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Ionic-Qr-code.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
