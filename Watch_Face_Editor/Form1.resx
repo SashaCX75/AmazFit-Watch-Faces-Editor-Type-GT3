@@ -147,33 +147,33 @@
   <data name="&gt;&gt;button_SaveAs.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="Number.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="Number.UserAddedColumn" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="Number.HeaderText" xml:space="preserve">
     <value>№</value>
   </data>
-  <metadata name="NameFile.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="NameFile.UserAddedColumn" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="NameFile.HeaderText" xml:space="preserve">
     <value>Имя файла</value>
   </data>
-  <metadata name="ColumnImage.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="ColumnImage.UserAddedColumn" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="ColumnImage.HeaderText" xml:space="preserve">
     <value>Картинка</value>
   </data>
-  <metadata name="Column1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="Column1.UserAddedColumn" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="Column1.HeaderText" xml:space="preserve">
     <value>Картинка</value>
   </data>
-  <metadata name="contextMenuStrip_RemoveImage.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="contextMenuStrip_RemoveImage.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>127, 17</value>
-  </metadata>
+  </data>
   <data name="удалитьИзображениеToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>248, 22</value>
   </data>
@@ -219,27 +219,27 @@
   <data name="&gt;&gt;dataGridView_ImagesList.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="dataGridViewTextBoxColumn1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="dataGridViewTextBoxColumn1.UserAddedColumn" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
     <value>№</value>
   </data>
-  <metadata name="dataGridViewTextBoxColumn2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="dataGridViewTextBoxColumn2.UserAddedColumn" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="dataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
     <value>Имя файла</value>
   </data>
-  <metadata name="dataGridViewImageColumn1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="dataGridViewImageColumn1.UserAddedColumn" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="dataGridViewImageColumn1.HeaderText" xml:space="preserve">
     <value>Картинка</value>
   </data>
-  <metadata name="dataGridViewImageColumn2.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="dataGridViewImageColumn2.UserAddedColumn" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="dataGridViewImageColumn2.HeaderText" xml:space="preserve">
     <value>Картинка</value>
   </data>
@@ -4856,42 +4856,55 @@
   </data>
   <data name="comboBox_ConvertingOutput_Model.Items1" xml:space="preserve">
     <value>320 (Bip 5)</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_ConvertingOutput_Model.Items2" xml:space="preserve">
     <value>336 (GTS 4 mini)</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_ConvertingOutput_Model.Items3" xml:space="preserve">
     <value>390 (GTS 3)</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_ConvertingOutput_Model.Items4" xml:space="preserve">
     <value>390 (GTS 4)</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_ConvertingOutput_Model.Items5" xml:space="preserve">
     <value>416 (Falcon)</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_ConvertingOutput_Model.Items6" xml:space="preserve">
     <value>416 (GTR mini)</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_ConvertingOutput_Model.Items7" xml:space="preserve">
     <value>454 (T-Rex Ultra)</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_ConvertingOutput_Model.Items8" xml:space="preserve">
     <value>454 (T-Rex 2)</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_ConvertingOutput_Model.Items9" xml:space="preserve">
     <value>454 (Cheetah)</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_ConvertingOutput_Model.Items10" xml:space="preserve">
     <value>454 (GTR 3)</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_ConvertingOutput_Model.Items11" xml:space="preserve">
     <value>466 (GTR 4)</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_ConvertingOutput_Model.Items12" xml:space="preserve">
     <value>480 (GTR 3 Pro)</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_ConvertingOutput_Model.Items13" xml:space="preserve">
     <value>480 (Cheetah Pro)</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_ConvertingOutput_Model.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 18</value>
@@ -4967,42 +4980,55 @@
   </data>
   <data name="comboBox_ConvertingInput_Model.Items1" xml:space="preserve">
     <value>320 (Bip 5)</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_ConvertingInput_Model.Items2" xml:space="preserve">
     <value>336 (GTS 4 mini)</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_ConvertingInput_Model.Items3" xml:space="preserve">
     <value>390 (GTS 3)</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_ConvertingInput_Model.Items4" xml:space="preserve">
     <value>390 (GTS 4)</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_ConvertingInput_Model.Items5" xml:space="preserve">
     <value>416 (Falcon)</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_ConvertingInput_Model.Items6" xml:space="preserve">
     <value>416 (GTR mini)</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_ConvertingInput_Model.Items7" xml:space="preserve">
     <value>454 (T-Rex Ultra)</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_ConvertingInput_Model.Items8" xml:space="preserve">
     <value>454 (T-Rex 2)</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_ConvertingInput_Model.Items9" xml:space="preserve">
     <value>454 (Cheetah)</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_ConvertingInput_Model.Items10" xml:space="preserve">
     <value>454 (GTR 3)</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_ConvertingInput_Model.Items11" xml:space="preserve">
     <value>466 (GTR 4)</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_ConvertingInput_Model.Items12" xml:space="preserve">
     <value>480 (GTR 3 Pro)</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_ConvertingInput_Model.Items13" xml:space="preserve">
     <value>480 (Cheetah Pro)</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_ConvertingInput_Model.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 18</value>
@@ -6312,6 +6338,7 @@ The file names for frame animation must be in the format Prefix_X. Prefix is any
 
 
 </value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;richTextBox_Tips.Name" xml:space="preserve">
     <value>richTextBox_Tips</value>
@@ -7079,6 +7106,7 @@ PayPal: sashacx75@gmail.com</value>
   </data>
   <data name="label_preview_Y.Text" xml:space="preserve">
     <value>Y=</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="label_preview_Y.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -7112,6 +7140,7 @@ PayPal: sashacx75@gmail.com</value>
   </data>
   <data name="label_preview_X.Text" xml:space="preserve">
     <value>X=</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="label_preview_X.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -7292,6 +7321,7 @@ PayPal: sashacx75@gmail.com</value>
   </data>
   <data name="label_version.Text" xml:space="preserve">
     <value>v 0.0</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;label_version.Name" xml:space="preserve">
     <value>label_version</value>
@@ -7305,15 +7335,15 @@ PayPal: sashacx75@gmail.com</value>
   <data name="&gt;&gt;label_version.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <metadata name="imageList1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <data name="imageList1.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>17, 17</value>
-  </metadata>
+  </data>
   <data name="imageList1.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
-        DQAAAk1TRnQBSQFMAgEBBgEAAfABOAHwATgBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACm
+        DQAAAk1TRnQBSQFMAgEBBgEAAVgBOQFkATkBEAEAARABAAT/AQkBEAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -7371,7 +7401,7 @@ PayPal: sashacx75@gmail.com</value>
         AX4B4QEPAQ0BhgGAAQEBPgF+AfABDwEGAcICAAI+AfgBHwFDAWABAAEgAT8BPgH4AT8BYQGwAQABQAE/
         AR4B4AEnATAB2AEAAYABPAEeAeEBAwFYAWwBAQEAATwBHgHhAQcBbAE2AQEBAAE/Af4B4QEfATYBGgEB
         AwAB8AEfAQsBDAQAAfgBPwFNAYYBgAEBAgAB/AE/AQIBwgGAAQEBBAEAAf4BHwFDAWABwAEDAYQBAAH+
-        AZ8CAAHwAQ8B9wHnAf4BHws=
+        AZ8CAAHwAQ8B9wHnAf4BHxYACw==
 </value>
   </data>
   <data name="button_pack_zip.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
@@ -7472,12 +7502,15 @@ PayPal: sashacx75@gmail.com</value>
   </data>
   <data name="comboBox_watch_model.Items" xml:space="preserve">
     <value>GTR 3</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_watch_model.Items1" xml:space="preserve">
     <value>GTR 3 Pro</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_watch_model.Items2" xml:space="preserve">
     <value>GTS 3</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_watch_model.Items3" xml:space="preserve">
     <value>T-Rex 2</value>
@@ -7487,18 +7520,22 @@ PayPal: sashacx75@gmail.com</value>
   </data>
   <data name="comboBox_watch_model.Items5" xml:space="preserve">
     <value>GTR mini</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_watch_model.Items6" xml:space="preserve">
     <value>Falcon</value>
   </data>
   <data name="comboBox_watch_model.Items7" xml:space="preserve">
     <value>GTR 4</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_watch_model.Items8" xml:space="preserve">
     <value>GTS 4</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_watch_model.Items9" xml:space="preserve">
     <value>GTS 4 mini</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="comboBox_watch_model.Items10" xml:space="preserve">
     <value>Amazfit Band 7</value>
@@ -7554,9 +7591,9 @@ PayPal: sashacx75@gmail.com</value>
   <data name="&gt;&gt;label_watch_model.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
+  </data>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 13</value>
   </data>
@@ -8819,6 +8856,7 @@ PayPal: sashacx75@gmail.com</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>GTR 3 watch face editor</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;Number.Name" xml:space="preserve">
     <value>Number</value>

@@ -138,11 +138,67 @@
     <value>hmApp.startApp({url: 'Settings_standbyModelScreen', native: true });</value>
     <comment>Do not translate</comment>
   </data>
+  <data name="AppList" xml:space="preserve">
+    <value>Список программ</value>
+  </data>
+  <data name="AppList_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'AppListScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="Baro" xml:space="preserve">
+    <value>Барометр</value>
+  </data>
+  <data name="Baro_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'BaroAltimeterScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
   <data name="BatteryManager" xml:space="preserve">
-    <value>Статистика заряда *</value>
+    <value>Статистика использования *</value>
   </data>
   <data name="BatteryManager_function" xml:space="preserve">
     <value>hmApp.startApp({url: 'Settings_batteryManagerScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="Camera" xml:space="preserve">
+    <value>Управление камерой</value>
+  </data>
+  <data name="Camera_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'HidcameraScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="ClubCards" xml:space="preserve">
+    <value>Карточка участника</value>
+  </data>
+  <data name="ClubCards_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'ClubCardsScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="Compass" xml:space="preserve">
+    <value>Компас</value>
+  </data>
+  <data name="Compass_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'CompassScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="Contacts" xml:space="preserve">
+    <value>Контакты *</value>
+  </data>
+  <data name="Contacts_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'PhoneContactsScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="CountDown" xml:space="preserve">
+    <value>Обратный отсчет</value>
+  </data>
+  <data name="CountDown_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'CountdownAppScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="DialCall" xml:space="preserve">
+    <value>Номеронабиратель *</value>
+  </data>
+  <data name="DialCall_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'DialCallScreen', native: true });</value>
     <comment>Do not translate</comment>
   </data>
   <data name="Display" xml:space="preserve">
@@ -157,6 +213,13 @@
   </data>
   <data name="DND_function" xml:space="preserve">
     <value>hmApp.startApp({url: 'Settings_dndScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="DragList" xml:space="preserve">
+    <value>Иконки программ</value>
+  </data>
+  <data name="DragList_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'DragListScreen', native: true });</value>
     <comment>Do not translate</comment>
   </data>
   <data name="FindPhone" xml:space="preserve">
@@ -180,6 +243,13 @@
     <value>hmApp.startApp({url: 'Settings_lightAdjustScreen', native: true });</value>
     <comment>Do not translate</comment>
   </data>
+  <data name="LocalMusic" xml:space="preserve">
+    <value>Музыка (на часах) *</value>
+  </data>
+  <data name="LocalMusic_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'LocalMusicScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
   <data name="LowBattery" xml:space="preserve">
     <value>Экономия заряда</value>
   </data>
@@ -192,6 +262,20 @@
   </data>
   <data name="Menstrual_function" xml:space="preserve">
     <value>hmApp.startApp({url: 'menstrualAppScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="MoreList" xml:space="preserve">
+    <value>Меню "Ещё" *</value>
+  </data>
+  <data name="MoreList_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'MoreListScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="MorningNews" xml:space="preserve">
+    <value>Утренее приветствие *</value>
+  </data>
+  <data name="MorningNews_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'MorningGreetingNewsScreen', native: true });</value>
     <comment>Do not translate</comment>
   </data>
   <data name="OneKey" xml:space="preserve">
@@ -208,11 +292,32 @@
     <value>hmApp.startApp({url: 'PAI_app_Screen', native: true });</value>
     <comment>Do not translate</comment>
   </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Телефон *</value>
+  </data>
+  <data name="PhoneMusic" xml:space="preserve">
+    <value>Музыка (на телефоне)</value>
+  </data>
+  <data name="PhoneMusic_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'PhoneMusicCtrlScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="Phone_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'PhoneHomeScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
   <data name="PowerHint" xml:space="preserve">
     <value>Энергопотребление</value>
   </data>
   <data name="PowerHint_function" xml:space="preserve">
     <value>hmApp.startApp({url: 'PowerSaveHintScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="RecentCall" xml:space="preserve">
+    <value>Последние вызовы *</value>
+  </data>
+  <data name="RecentCall_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'PhoneRecentCallScreen', native: true });</value>
     <comment>Do not translate</comment>
   </data>
   <data name="Respiration" xml:space="preserve">
@@ -239,6 +344,13 @@
   <data name="Schedule" xml:space="preserve">
     <value>Календарь</value>
   </data>
+  <data name="ScheduleList" xml:space="preserve">
+    <value>Расписание</value>
+  </data>
+  <data name="ScheduleList_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'ScheduleListScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
   <data name="Schedule_function" xml:space="preserve">
     <value>hmApp.startApp({url: 'ScheduleCalScreen', native: true });</value>
     <comment>Do not translate</comment>
@@ -258,7 +370,7 @@
     <comment>Do not translate</comment>
   </data>
   <data name="SPO2" xml:space="preserve">
-    <value>Кислород</value>
+    <value>SpO2 (Кислород)</value>
   </data>
   <data name="SPO2_function" xml:space="preserve">
     <value>hmApp.startApp({url: 'spo_HomeScreen', native: true });</value>
@@ -299,11 +411,25 @@
     <value>hmApp.startApp({url: 'activityAppScreen', native: true });</value>
     <comment>Do not translate</comment>
   </data>
+  <data name="StopWatch" xml:space="preserve">
+    <value>Секундомер</value>
+  </data>
+  <data name="StopWatch_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'StopWatchScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
   <data name="Stress" xml:space="preserve">
     <value>Стресс</value>
   </data>
   <data name="Stress_function" xml:space="preserve">
     <value>hmApp.startApp({url: 'StressHomeScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="Sunset" xml:space="preserve">
+    <value>Восход/закат</value>
+  </data>
+  <data name="Sunset_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'TideScreen', native: true });</value>
     <comment>Do not translate</comment>
   </data>
   <data name="System" xml:space="preserve">
@@ -327,11 +453,39 @@
     <value>hmApp.startApp({url: 'Test2Screen', native: true });</value>
     <comment>Do not translate</comment>
   </data>
+  <data name="Timer" xml:space="preserve">
+    <value>Таймер</value>
+  </data>
+  <data name="Timer_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'TomatoMainScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="ToDoList" xml:space="preserve">
+    <value>Список дел</value>
+  </data>
+  <data name="ToDoList_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'todoListScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="VoiceMemo" xml:space="preserve">
+    <value>Голосовая заметка</value>
+  </data>
+  <data name="VoiceMemo_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'VoiceMemoScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
   <data name="WatchFace" xml:space="preserve">
     <value>Выбрать циферблат</value>
   </data>
   <data name="WatchFace_function" xml:space="preserve">
     <value>hmApp.startApp({url: 'WatchFaceScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="Weather" xml:space="preserve">
+    <value>Погода</value>
+  </data>
+  <data name="Weather_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'WeatherScreen', native: true });</value>
     <comment>Do not translate</comment>
   </data>
   <data name="WorldClock" xml:space="preserve">

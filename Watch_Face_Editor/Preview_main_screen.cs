@@ -7161,7 +7161,8 @@ namespace Watch_Face_Editor
         private void DrawButton(Graphics graphics, Button button,  bool showPressButton,
              bool showShortcutsArea, bool showShortcutsBorder, bool Shortcuts_In_Gif)
         {
-            if (button == null) return;
+            if (button == null) return; 
+            if (!button.visible) return;
             int x = button.x;
             int y = button.y;
             int width = button.w;

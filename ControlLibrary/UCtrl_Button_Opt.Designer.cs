@@ -28,13 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrl_Button_Opt));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridView_buttons = new System.Windows.Forms.DataGridView();
-            this.Index = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Button = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button_add = new System.Windows.Forms.Button();
             this.button_del = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -43,12 +40,12 @@
             this.label06 = new System.Windows.Forms.Label();
             this.label07 = new System.Windows.Forms.Label();
             this.numericUpDown_buttonX = new System.Windows.Forms.NumericUpDown();
-            this.contextMenuStrip_X = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip_X = new System.Windows.Forms.ContextMenuStrip();
             this.вставитьКоординатуХToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.копироватьToolStripMenuItemX = new System.Windows.Forms.ToolStripMenuItem();
             this.вставитьToolStripMenuItemX = new System.Windows.Forms.ToolStripMenuItem();
             this.numericUpDown_buttonY = new System.Windows.Forms.NumericUpDown();
-            this.contextMenuStrip_Y = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.contextMenuStrip_Y = new System.Windows.Forms.ContextMenuStrip();
             this.вставитьКоординатуYToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.копироватьToolStripMenuItemY = new System.Windows.Forms.ToolStripMenuItem();
             this.вставитьToolStripMenuItemY = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,6 +71,9 @@
             this.comboBox_Text_color = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.Index = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Button = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VisibleButton = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_buttons)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_width)).BeginInit();
@@ -90,44 +90,24 @@
             // 
             // dataGridView_buttons
             // 
-            resources.ApplyResources(this.dataGridView_buttons, "dataGridView_buttons");
             this.dataGridView_buttons.AllowUserToAddRows = false;
             this.dataGridView_buttons.AllowUserToDeleteRows = false;
             this.dataGridView_buttons.AllowUserToResizeRows = false;
             this.dataGridView_buttons.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView_buttons.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Index,
-            this.Button});
+            this.Button,
+            this.VisibleButton});
+            resources.ApplyResources(this.dataGridView_buttons, "dataGridView_buttons");
             this.dataGridView_buttons.MultiSelect = false;
             this.dataGridView_buttons.Name = "dataGridView_buttons";
             this.dataGridView_buttons.ReadOnly = true;
             this.dataGridView_buttons.RowHeadersVisible = false;
             this.dataGridView_buttons.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView_buttons.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_buttons_CellContentClick);
             this.dataGridView_buttons.RowEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_bottons_RowEnter);
             this.dataGridView_buttons.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView_buttons_KeyDown);
             this.dataGridView_buttons.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView_buttons_MouseDoubleClick);
-            // 
-            // Index
-            // 
-            this.Index.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.Index.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Index.FillWeight = 15F;
-            resources.ApplyResources(this.Index, "Index");
-            this.Index.Name = "Index";
-            this.Index.ReadOnly = true;
-            this.Index.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Button
-            // 
-            this.Button.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomRight;
-            this.Button.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Button.FillWeight = 120F;
-            resources.ApplyResources(this.Button, "Button");
-            this.Button.Name = "Button";
-            this.Button.ReadOnly = true;
-            this.Button.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // button_add
             // 
@@ -208,8 +188,8 @@
             // 
             // numericUpDown_buttonX
             // 
-            resources.ApplyResources(this.numericUpDown_buttonX, "numericUpDown_buttonX");
             this.numericUpDown_buttonX.ContextMenuStrip = this.contextMenuStrip_X;
+            resources.ApplyResources(this.numericUpDown_buttonX, "numericUpDown_buttonX");
             this.numericUpDown_buttonX.Maximum = new decimal(new int[] {
             999,
             0,
@@ -227,13 +207,13 @@
             // 
             // contextMenuStrip_X
             // 
-            resources.ApplyResources(this.contextMenuStrip_X, "contextMenuStrip_X");
             this.contextMenuStrip_X.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip_X.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вставитьКоординатуХToolStripMenuItem,
             this.копироватьToolStripMenuItemX,
             this.вставитьToolStripMenuItemX});
             this.contextMenuStrip_X.Name = "contextMenuStrip_X";
+            resources.ApplyResources(this.contextMenuStrip_X, "contextMenuStrip_X");
             this.contextMenuStrip_X.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_X_Opening);
             // 
             // вставитьКоординатуХToolStripMenuItem
@@ -256,8 +236,8 @@
             // 
             // numericUpDown_buttonY
             // 
-            resources.ApplyResources(this.numericUpDown_buttonY, "numericUpDown_buttonY");
             this.numericUpDown_buttonY.ContextMenuStrip = this.contextMenuStrip_Y;
+            resources.ApplyResources(this.numericUpDown_buttonY, "numericUpDown_buttonY");
             this.numericUpDown_buttonY.Maximum = new decimal(new int[] {
             999,
             0,
@@ -275,13 +255,13 @@
             // 
             // contextMenuStrip_Y
             // 
-            resources.ApplyResources(this.contextMenuStrip_Y, "contextMenuStrip_Y");
             this.contextMenuStrip_Y.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip_Y.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.вставитьКоординатуYToolStripMenuItem,
             this.копироватьToolStripMenuItemY,
             this.вставитьToolStripMenuItemY});
             this.contextMenuStrip_Y.Name = "contextMenuStrip_X";
+            resources.ApplyResources(this.contextMenuStrip_Y, "contextMenuStrip_Y");
             this.contextMenuStrip_Y.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Y_Opening);
             // 
             // вставитьКоординатуYToolStripMenuItem
@@ -319,21 +299,21 @@
             // 
             // groupBox_image
             // 
-            resources.ApplyResources(this.groupBox_image, "groupBox_image");
             this.groupBox_image.Controls.Add(this.comboBox_press_image);
             this.groupBox_image.Controls.Add(this.label2);
             this.groupBox_image.Controls.Add(this.comboBox_normal_image);
             this.groupBox_image.Controls.Add(this.label1);
+            resources.ApplyResources(this.groupBox_image, "groupBox_image");
             this.groupBox_image.Name = "groupBox_image";
             this.groupBox_image.TabStop = false;
             this.groupBox_image.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox_Paint);
             // 
             // comboBox_press_image
             // 
-            resources.ApplyResources(this.comboBox_press_image, "comboBox_press_image");
             this.comboBox_press_image.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_press_image.DropDownWidth = 135;
             this.comboBox_press_image.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_press_image, "comboBox_press_image");
             this.comboBox_press_image.Name = "comboBox_press_image";
             this.comboBox_press_image.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
             this.comboBox_press_image.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
@@ -348,10 +328,10 @@
             // 
             // comboBox_normal_image
             // 
-            resources.ApplyResources(this.comboBox_normal_image, "comboBox_normal_image");
             this.comboBox_normal_image.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.comboBox_normal_image.DropDownWidth = 135;
             this.comboBox_normal_image.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_normal_image, "comboBox_normal_image");
             this.comboBox_normal_image.Name = "comboBox_normal_image";
             this.comboBox_normal_image.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBox_DrawItem);
             this.comboBox_normal_image.MeasureItem += new System.Windows.Forms.MeasureItemEventHandler(this.comboBox_MeasureItem);
@@ -366,13 +346,13 @@
             // 
             // groupBox_color
             // 
-            resources.ApplyResources(this.groupBox_color, "groupBox_color");
             this.groupBox_color.Controls.Add(this.label5);
             this.groupBox_color.Controls.Add(this.comboBox_press_color);
             this.groupBox_color.Controls.Add(this.numericUpDown_radius);
             this.groupBox_color.Controls.Add(this.label4);
             this.groupBox_color.Controls.Add(this.label3);
             this.groupBox_color.Controls.Add(this.comboBox_normal_color);
+            resources.ApplyResources(this.groupBox_color, "groupBox_color");
             this.groupBox_color.Name = "groupBox_color";
             this.groupBox_color.TabStop = false;
             this.groupBox_color.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox_Paint);
@@ -384,10 +364,10 @@
             // 
             // comboBox_press_color
             // 
-            resources.ApplyResources(this.comboBox_press_color, "comboBox_press_color");
             this.comboBox_press_color.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.comboBox_press_color.DropDownHeight = 1;
             this.comboBox_press_color.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_press_color, "comboBox_press_color");
             this.comboBox_press_color.Name = "comboBox_press_color";
             this.comboBox_press_color.Click += new System.EventHandler(this.comboBox_color_Click);
             this.comboBox_press_color.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_KeyPress);
@@ -410,8 +390,8 @@
             // 
             // label4
             // 
-            resources.ApplyResources(this.label4, "label4");
             this.label4.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
             // 
             // label3
@@ -421,10 +401,10 @@
             // 
             // comboBox_normal_color
             // 
-            resources.ApplyResources(this.comboBox_normal_color, "comboBox_normal_color");
             this.comboBox_normal_color.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.comboBox_normal_color.DropDownHeight = 1;
             this.comboBox_normal_color.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_normal_color, "comboBox_normal_color");
             this.comboBox_normal_color.Name = "comboBox_normal_color";
             this.comboBox_normal_color.Click += new System.EventHandler(this.comboBox_color_Click);
             this.comboBox_normal_color.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_KeyPress);
@@ -463,10 +443,10 @@
             // 
             // comboBox_Text_color
             // 
-            resources.ApplyResources(this.comboBox_Text_color, "comboBox_Text_color");
             this.comboBox_Text_color.BackColor = System.Drawing.Color.DarkOrange;
             this.comboBox_Text_color.DropDownHeight = 1;
             this.comboBox_Text_color.FormattingEnabled = true;
+            resources.ApplyResources(this.comboBox_Text_color, "comboBox_Text_color");
             this.comboBox_Text_color.Name = "comboBox_Text_color";
             this.comboBox_Text_color.Click += new System.EventHandler(this.comboBox_color_Click);
             this.comboBox_Text_color.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.comboBox_KeyPress);
@@ -480,6 +460,37 @@
             // 
             resources.ApplyResources(this.label9, "label9");
             this.label9.Name = "label9";
+            // 
+            // Index
+            // 
+            this.Index.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.Index.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Index.FillWeight = 13F;
+            resources.ApplyResources(this.Index, "Index");
+            this.Index.Name = "Index";
+            this.Index.ReadOnly = true;
+            this.Index.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Button
+            // 
+            this.Button.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.BottomRight;
+            this.Button.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Button.FillWeight = 120F;
+            resources.ApplyResources(this.Button, "Button");
+            this.Button.Name = "Button";
+            this.Button.ReadOnly = true;
+            this.Button.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // VisibleButton
+            // 
+            this.VisibleButton.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.VisibleButton.FillWeight = 10F;
+            resources.ApplyResources(this.VisibleButton, "VisibleButton");
+            this.VisibleButton.Name = "VisibleButton";
+            this.VisibleButton.ReadOnly = true;
+            this.VisibleButton.TrueValue = "true";
             // 
             // UCtrl_Button_Opt
             // 
@@ -564,8 +575,9 @@
         private System.Windows.Forms.ToolStripMenuItem вставитьКоординатуХToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem копироватьToolStripMenuItemX;
         private System.Windows.Forms.ToolStripMenuItem вставитьToolStripMenuItemX;
+        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DataGridViewTextBoxColumn Index;
         private System.Windows.Forms.DataGridViewTextBoxColumn Button;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn VisibleButton;
     }
 }

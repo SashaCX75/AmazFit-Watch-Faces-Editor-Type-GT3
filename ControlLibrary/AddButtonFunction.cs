@@ -62,7 +62,7 @@ namespace ControlLibrary
             comboBox_Activity.Items.Add(Properties.ButtonFunctions.SPO2);
             comboBox_Activity.Items.Add(Properties.ButtonFunctions.OneKey);
             comboBox_Activity.Items.Add(Properties.ButtonFunctions.Respiration);
-            comboBox_Activity.Items.Add(Properties.ButtonFunctions.Menstrual);
+            //comboBox_Activity.Items.Add(Properties.ButtonFunctions.Menstrual);
             comboBox_Activity.Items.Add(Properties.ButtonFunctions.SportList);
             comboBox_Activity.Items.Add(Properties.ButtonFunctions.Sport);
             comboBox_Activity.Items.Add(Properties.ButtonFunctions.SportRecord);
@@ -72,6 +72,29 @@ namespace ControlLibrary
             comboBox_App.Items.Add(Properties.ButtonFunctions.Alarm);
             comboBox_App.Items.Add(Properties.ButtonFunctions.Schedule);
             comboBox_App.Items.Add(Properties.ButtonFunctions.WorldClock);
+            comboBox_App.Items.Add(Properties.ButtonFunctions.ScheduleList);
+            comboBox_App.Items.Add(Properties.ButtonFunctions.ToDoList);
+            comboBox_App.Items.Add(Properties.ButtonFunctions.PhoneMusic);
+            comboBox_App.Items.Add(Properties.ButtonFunctions.LocalMusic);
+            comboBox_App.Items.Add(Properties.ButtonFunctions.Weather);
+            comboBox_App.Items.Add(Properties.ButtonFunctions.Sunset);
+            comboBox_App.Items.Add(Properties.ButtonFunctions.Compass);
+            comboBox_App.Items.Add(Properties.ButtonFunctions.Baro);
+            comboBox_App.Items.Add(Properties.ButtonFunctions.ClubCards);
+            comboBox_App.Items.Add(Properties.ButtonFunctions.StopWatch);
+            comboBox_App.Items.Add(Properties.ButtonFunctions.CountDown);
+            comboBox_App.Items.Add(Properties.ButtonFunctions.Timer);
+            comboBox_App.Items.Add(Properties.ButtonFunctions.AppList);
+            comboBox_App.Items.Add(Properties.ButtonFunctions.DragList);
+            comboBox_App.Items.Add(Properties.ButtonFunctions.MoreList);
+            comboBox_App.Items.Add(Properties.ButtonFunctions.MorningNews);
+            comboBox_App.Items.Add(Properties.ButtonFunctions.VoiceMemo);
+            comboBox_App.Items.Add(Properties.ButtonFunctions.Camera);
+            comboBox_App.Items.Add(Properties.ButtonFunctions.Menstrual);
+            comboBox_App.Items.Add(Properties.ButtonFunctions.Phone);
+            comboBox_App.Items.Add(Properties.ButtonFunctions.Contacts);
+            comboBox_App.Items.Add(Properties.ButtonFunctions.RecentCall);
+            comboBox_App.Items.Add(Properties.ButtonFunctions.DialCall);
 
             comboBox_System.Items.Add(Properties.Buttons.comboBox_System);
             comboBox_System.Items.Add(Properties.ButtonFunctions.Settings);
@@ -126,12 +149,6 @@ namespace ControlLibrary
                 }
             }
 
-
-
-            //string json = "[{ key: \"value1\"}, {key: \"value2\"}]";
-            string json = "[{ \"name\": \"test 1\", \"function\": \"console.log('test 1');\"}, { \"name\": \"test 2\", \"function\": \"console.log('test 2');\"}]";
-
-            var dict = JsonConvert.DeserializeObject<List<Dictionary<string, string>>>(json);
             #endregion
 
             comboBox_Activity.SelectedIndex = 0;
@@ -200,11 +217,11 @@ namespace ControlLibrary
             if (comboBox_Activity.SelectedIndex == 5) script = Properties.ButtonFunctions.SPO2_function;
             if (comboBox_Activity.SelectedIndex == 6) script = Properties.ButtonFunctions.OneKey_function;
             if (comboBox_Activity.SelectedIndex == 7) script = Properties.ButtonFunctions.Respiration_function;
-            if (comboBox_Activity.SelectedIndex == 8) script = Properties.ButtonFunctions.Menstrual_function;
-            if (comboBox_Activity.SelectedIndex == 9) script = Properties.ButtonFunctions.SportList_function;
-            if (comboBox_Activity.SelectedIndex == 10) script = Properties.ButtonFunctions.Sport_function;
-            if (comboBox_Activity.SelectedIndex == 11) script = Properties.ButtonFunctions.SportRecord_function;
-            if (comboBox_Activity.SelectedIndex == 12) script = Properties.ButtonFunctions.SportStatus_function;
+            //if (comboBox_Activity.SelectedIndex == 8) script = Properties.ButtonFunctions.Menstrual_function;
+            if (comboBox_Activity.SelectedIndex == 8) script = Properties.ButtonFunctions.SportList_function;
+            if (comboBox_Activity.SelectedIndex == 9) script = Properties.ButtonFunctions.Sport_function;
+            if (comboBox_Activity.SelectedIndex == 10) script = Properties.ButtonFunctions.SportRecord_function;
+            if (comboBox_Activity.SelectedIndex == 11) script = Properties.ButtonFunctions.SportStatus_function;
 
             comboBox_Activity.Items.Insert(0, Properties.Buttons.comboBox_Activity);
             comboBox_Activity.SelectedIndex = 0;
@@ -222,6 +239,29 @@ namespace ControlLibrary
             if (comboBox_App.SelectedIndex == 0) script = Properties.ButtonFunctions.Alarm_function;
             if (comboBox_App.SelectedIndex == 1) script = Properties.ButtonFunctions.Schedule_function;
             if (comboBox_App.SelectedIndex == 2) script = Properties.ButtonFunctions.WorldClock_function;
+            if (comboBox_App.SelectedIndex == 3) script = Properties.ButtonFunctions.ScheduleList_function;
+            if (comboBox_App.SelectedIndex == 4) script = Properties.ButtonFunctions.ToDoList_function;
+            if (comboBox_App.SelectedIndex == 5) script = Properties.ButtonFunctions.PhoneMusic_function;
+            if (comboBox_App.SelectedIndex == 6) script = Properties.ButtonFunctions.LocalMusic_function;
+            if (comboBox_App.SelectedIndex == 7) script = Properties.ButtonFunctions.Weather_function;
+            if (comboBox_App.SelectedIndex == 8) script = Properties.ButtonFunctions.Sunset_function;
+            if (comboBox_App.SelectedIndex == 9) script = Properties.ButtonFunctions.Compass_function;
+            if (comboBox_App.SelectedIndex == 10) script = Properties.ButtonFunctions.Baro_function;
+            if (comboBox_App.SelectedIndex == 11) script = Properties.ButtonFunctions.ClubCards_function;
+            if (comboBox_App.SelectedIndex == 12) script = Properties.ButtonFunctions.StopWatch_function;
+            if (comboBox_App.SelectedIndex == 13) script = Properties.ButtonFunctions.CountDown_function;
+            if (comboBox_App.SelectedIndex == 14) script = Properties.ButtonFunctions.Timer_function;
+            if (comboBox_App.SelectedIndex == 15) script = Properties.ButtonFunctions.AppList_function;
+            if (comboBox_App.SelectedIndex == 16) script = Properties.ButtonFunctions.DragList_function;
+            if (comboBox_App.SelectedIndex == 17) script = Properties.ButtonFunctions.MoreList_function;
+            if (comboBox_App.SelectedIndex == 18) script = Properties.ButtonFunctions.MorningNews_function;
+            if (comboBox_App.SelectedIndex == 19) script = Properties.ButtonFunctions.VoiceMemo_function;
+            if (comboBox_App.SelectedIndex == 20) script = Properties.ButtonFunctions.Camera_function;
+            if (comboBox_App.SelectedIndex == 21) script = Properties.ButtonFunctions.Menstrual_function;
+            if (comboBox_App.SelectedIndex == 22) script = Properties.ButtonFunctions.Phone_function;
+            if (comboBox_App.SelectedIndex == 23) script = Properties.ButtonFunctions.Contacts_function;
+            if (comboBox_App.SelectedIndex == 24) script = Properties.ButtonFunctions.RecentCall_function;
+            if (comboBox_App.SelectedIndex == 25) script = Properties.ButtonFunctions.DialCall_function;
 
             comboBox_App.Items.Insert(0, Properties.Buttons.comboBox_App);
             comboBox_App.SelectedIndex = 0;

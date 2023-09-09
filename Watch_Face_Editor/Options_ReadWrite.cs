@@ -1828,7 +1828,8 @@ namespace Watch_Face_Editor
             //List<Button> buttonsList = Watch_Face.Buttons.Button;
             List<String> scriptClickList = ButtonClickScriptToString(buttonsList);
             List<String> scriptLongPressList = ButtonLongPressScriptToString(buttonsList);
-            uCtrl_Button_Opt.UpdateButtonsList(scriptClickList, scriptLongPressList);
+            List<bool> visibleList = ButtonVisibleList(buttonsList);
+            uCtrl_Button_Opt.UpdateButtonsList(scriptClickList, scriptLongPressList, visibleList);
 
             PreviewView = true;
         }
@@ -3489,7 +3490,24 @@ namespace Watch_Face_Editor
 
                 List<String> scriptClickList = ButtonClickScriptToString(buttonsList);
                 List<String> scriptLongPressList = ButtonLongPressScriptToString(buttonsList);
-                uCtrl_Button_Opt.UpdateButtonsList(scriptClickList, scriptLongPressList, rowIndex);
+                List<bool> visibleList = ButtonVisibleList(buttonsList);
+                uCtrl_Button_Opt.UpdateButtonsList(scriptClickList, scriptLongPressList, visibleList, rowIndex);
+
+                JSON_Modified = true;
+                PreviewImage();
+                FormText();
+            }
+        }
+
+        private void uCtrl_Button_Opt_VisibleButtonChanged(int rowIndex, bool visible)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            List<Button> buttonsList = Watch_Face.Buttons.Button;
+            if (rowIndex >= 0 && rowIndex < buttonsList.Count)
+            {
+                buttonsList[rowIndex].visible = visible;
 
                 JSON_Modified = true;
                 PreviewImage();
@@ -3707,6 +3725,7 @@ namespace Watch_Face_Editor
             button.normal_src = uCtrl_Button_Opt.GetNormalImage();
             button.normal_color = ColorToString(uCtrl_Button_Opt.GetColorNormal());
             button.press_color = ColorToString(uCtrl_Button_Opt.GetColorPress());
+            button.visible = true;
 
             if (rowIndex < 0 || rowIndex >= buttonsList.Count) buttonsList.Add(button);
             else buttonsList.Insert(rowIndex, button);
@@ -3717,7 +3736,8 @@ namespace Watch_Face_Editor
 
             List<String> scriptClickList = ButtonClickScriptToString(buttonsList);
             List<String> scriptLongPressList = ButtonLongPressScriptToString(buttonsList);
-            uCtrl_Button_Opt.UpdateButtonsList(scriptClickList, scriptLongPressList, rowIndex);
+            List<bool> visibleList = ButtonVisibleList(buttonsList);
+            uCtrl_Button_Opt.UpdateButtonsList(scriptClickList, scriptLongPressList, visibleList, rowIndex);
 
             JSON_Modified = true;
             PreviewImage();
@@ -3733,7 +3753,8 @@ namespace Watch_Face_Editor
 
             List<String> scriptClickList = ButtonClickScriptToString(buttonsList);
             List<String> scriptLongPressList = ButtonLongPressScriptToString(buttonsList);
-            uCtrl_Button_Opt.UpdateButtonsList(scriptClickList, scriptLongPressList);
+            List<bool> visibleList = ButtonVisibleList(buttonsList);
+            uCtrl_Button_Opt.UpdateButtonsList(scriptClickList, scriptLongPressList, visibleList);
 
             JSON_Modified = true;
             PreviewImage();
@@ -3760,6 +3781,17 @@ namespace Watch_Face_Editor
                 scriptList.Add(button.longpress_func);
             }
             return scriptList;
+        }
+
+        private List<bool> ButtonVisibleList(List<Button> buttonsList)
+        {
+            List<bool> visibleList = new List<bool>();
+            if (buttonsList == null || buttonsList.Count == 0) return visibleList;
+            foreach (Button button in buttonsList)
+            {
+                visibleList.Add(button.visible);
+            }
+            return visibleList;
         }
 
     }

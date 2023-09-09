@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -95,6 +96,11 @@ namespace ControlLibrary
         public event ScriptChangedHandler ScriptChanged;
         public delegate void ScriptChangedHandler(int rowIndex, string clickFunc, string longPressFunc);
 
+        [Browsable(true)]
+        [Description("Происходит при изменении видимости кнопки")]
+        public event VisibleButtonChangedHandler VisibleButtonChanged;
+        public delegate void VisibleButtonChangedHandler(int rowIndex, bool visible);
+
         public void SetNormalImage(string value)
         {
             comboBox_normal_image.Text = value;
@@ -173,8 +179,11 @@ namespace ControlLibrary
             return textBox_script.Text;
         }
 
-        public void UpdateButtonsList (List<String> buttonsClickFuncList, List<String> buttonsLongPressFuncList, int rowIndex = -1)
+        public void UpdateButtonsList (List<String> buttonsClickFuncList, List<String> buttonsLongPressFuncList, 
+            List<bool> buttonsVisibleList, int rowIndex = -1)
         {
+            setValue = true;
+
             ListUserScriptClick = buttonsClickFuncList;
             ListUserScriptLongPress = buttonsLongPressFuncList;
             dataGridView_buttons.Rows.Clear();
@@ -185,216 +194,22 @@ namespace ControlLibrary
                 //string scriptTypeLongPress = Properties.Buttons.Empty;
                 string func = buttonsClickFuncList[index];
                 string scriptTypeClick = GetFunctionName(func);
-                /*if(func.Length > 3) scriptTypeClick = Properties.Buttons.User_script;
-                switch (func)
-                {
-                    case "hmApp.startApp({url: 'activityAppScreen', native: true });":
-                        scriptTypeClick = Properties.ButtonFunctions.Steps;
-                        break;
-                    case "hmApp.startApp({url: 'heart_app_Screen', native: true });":
-                        scriptTypeClick = Properties.ButtonFunctions.HeartRete;
-                        break;
-                    case "hmApp.startApp({url: 'PAI_app_Screen', native: true });":
-                        scriptTypeClick = Properties.ButtonFunctions.PAI;
-                        break;
-                    case "hmApp.startApp({url: 'Sleep_HomeScreen', native: true });":
-                        scriptTypeClick = Properties.ButtonFunctions.Sleep;
-                        break;
-                    case "hmApp.startApp({url: 'StressHomeScreen', native: true });":
-                        scriptTypeClick = Properties.ButtonFunctions.Stress;
-                        break;
-                    case "hmApp.startApp({url: 'spo_HomeScreen', native: true });":
-                        scriptTypeClick = Properties.ButtonFunctions.SPO2;
-                        break;
-                    case "hmApp.startApp({url: 'oneKeyAppScreen', native: true });":
-                        scriptTypeClick = Properties.ButtonFunctions.OneKey;
-                        break;
-                    case "hmApp.startApp({url: 'RespirationwidgetScreen', native: true });":
-                        scriptTypeClick = Properties.ButtonFunctions.Respiration;
-                        break;
-                    case "hmApp.startApp({url: 'menstrualAppScreen', native: true });":
-                        scriptTypeClick = Properties.ButtonFunctions.Menstrual;
-                        break;
-                    case "hmApp.startApp({url: 'SportListScreen', native: true });":
-                        scriptTypeClick = Properties.ButtonFunctions.SportList;
-                        break;
-                    case "hmApp.startApp({url: 'SportScreen', native: true });":
-                        scriptTypeClick = Properties.ButtonFunctions.Sport;
-                        break;
-                    case "hmApp.startApp({url: 'SportRecordListScreen', native: true });":
-                        scriptTypeClick = Properties.ButtonFunctions.SportRecord;
-                        break;
-                    case "hmApp.startApp({url: 'SportStatusScreen', native: true });":
-                        scriptTypeClick = Properties.ButtonFunctions.SportStatus;
-                        break;
-
-                    //////////////////////
-                    case "hmApp.startApp({url: 'AlarmInfoScreen', native: true });":
-                        scriptTypeClick = Properties.ButtonFunctions.Alarm;
-                        break;
-                    case "hmApp.startApp({url: 'ScheduleCalScreen', native: true });":
-                        scriptTypeClick = Properties.ButtonFunctions.Schedule;
-                        break;
-                    case "hmApp.startApp({url: 'WorldClockScreen', native: true });":
-                        scriptTypeClick = Properties.ButtonFunctions.WorldClock;
-                        break;
-
-                    //////////////////////
-                    case "hmApp.startApp({url: 'Settings_homeScreen', native: true });":
-                        scriptTypeClick = Properties.ButtonFunctions.Settings;
-                        break;
-                    case "hmApp.startApp({url: 'LowBatteryScreen', native: true });":
-                        scriptTypeClick = Properties.ButtonFunctions.LowBattery;
-                        break;
-                    case "hmApp.startApp({url: 'PowerSaveHintScreen', native: true });":
-                        scriptTypeClick = Properties.ButtonFunctions.PowerHint;
-                        break;
-                    case "hmApp.startApp({url: 'Settings_batteryManagerScreen', native: true });":
-                        scriptTypeClick = Properties.ButtonFunctions.BatteryManager;
-                        break;
-                    case "hmApp.startApp({url: 'PowerSaveModeScreen', native: true });":
-                        scriptTypeClick = Properties.ButtonFunctions.SaveMode;
-                        break;
-                    case "hmApp.startApp({url: 'Settings_lightAdjustScreen', native: true });":
-                        scriptTypeClick = Properties.ButtonFunctions.Light;
-                        break;
-                    case "hmApp.startApp({url: 'Settings_displayBrightScreen', native: true });":
-                        scriptTypeClick = Properties.ButtonFunctions.Display;
-                        break;
-                    case "hmApp.startApp({url: 'Settings_standbyModelScreen', native: true });":
-                        scriptTypeClick = Properties.ButtonFunctions.AOD;
-                        break;
-                    case "hmApp.startApp({url: 'Settings_dndModelScreen', native: true });":
-                        scriptTypeClick = Properties.ButtonFunctions.DND;
-                        break;
-                    case "hmApp.startApp({url: 'Settings_standbyHomeScreen', native: true });":
-                        scriptTypeClick = Properties.ButtonFunctions.AODStyle;
-                        break;
-                    case "hmApp.startApp({url: 'WatchFaceScreen', native: true });":
-                        scriptTypeClick = Properties.ButtonFunctions.WatchFace;
-                        break;
-                    case "hmApp.startApp({url: 'Settings_systemScreen', native: true });":
-                        scriptTypeClick = Properties.ButtonFunctions.System;
-                        break;
-                    case "hmApp.startApp({url: 'HmReStartScreen', native: true });":
-                        scriptTypeClick = Properties.ButtonFunctions.ReStart;
-                        break;
-                    case "hmApp.startApp({url: 'FindPhoneScreen', native: true });":
-                        scriptTypeClick = Properties.ButtonFunctions.FindPhone;
-                        break;
-                }*/
 
                 string scriptTypeLongPress = Properties.Buttons.Empty;
                 if (index < buttonsLongPressFuncList.Count)
                 {
                     func = buttonsLongPressFuncList[index];
                     scriptTypeLongPress = GetFunctionName(func);
-                    /*if (func.Length > 3) scriptTypeLongPress = Properties.Buttons.User_script;
-                    switch (func)
-                    {
-                        case "hmApp.startApp({url: 'activityAppScreen', native: true });":
-                            scriptTypeLongPress = Properties.ButtonFunctions.Steps;
-                            break;
-                        case "hmApp.startApp({url: 'heart_app_Screen', native: true });":
-                            scriptTypeLongPress = Properties.ButtonFunctions.HeartRete;
-                            break;
-                        case "hmApp.startApp({url: 'PAI_app_Screen', native: true });":
-                            scriptTypeLongPress = Properties.ButtonFunctions.PAI;
-                            break;
-                        case "hmApp.startApp({url: 'Sleep_HomeScreen', native: true });":
-                            scriptTypeLongPress = Properties.ButtonFunctions.Sleep;
-                            break;
-                        case "hmApp.startApp({url: 'StressHomeScreen', native: true });":
-                            scriptTypeLongPress = Properties.ButtonFunctions.Stress;
-                            break;
-                        case "hmApp.startApp({url: 'spo_HomeScreen', native: true });":
-                            scriptTypeLongPress = Properties.ButtonFunctions.SPO2;
-                            break;
-                        case "hmApp.startApp({url: 'oneKeyAppScreen', native: true });":
-                            scriptTypeLongPress = Properties.ButtonFunctions.OneKey;
-                            break;
-                        case "hmApp.startApp({url: 'RespirationwidgetScreen', native: true });":
-                            scriptTypeLongPress = Properties.ButtonFunctions.Respiration;
-                            break;
-                        case "hmApp.startApp({url: 'menstrualAppScreen', native: true });":
-                            scriptTypeLongPress = Properties.ButtonFunctions.Menstrual;
-                            break;
-                        case "hmApp.startApp({url: 'SportListScreen', native: true });":
-                            scriptTypeLongPress = Properties.ButtonFunctions.SportList;
-                            break;
-                        case "hmApp.startApp({url: 'SportScreen', native: true });":
-                            scriptTypeLongPress = Properties.ButtonFunctions.Sport;
-                            break;
-                        case "hmApp.startApp({url: 'SportRecordListScreen', native: true });":
-                            scriptTypeLongPress = Properties.ButtonFunctions.SportRecord;
-                            break;
-                        case "hmApp.startApp({url: 'SportStatusScreen', native: true });":
-                            scriptTypeLongPress = Properties.ButtonFunctions.SportStatus;
-                            break;
-
-                        //////////////////////
-                        case "hmApp.startApp({url: 'AlarmInfoScreen', native: true });":
-                            scriptTypeLongPress = Properties.ButtonFunctions.Alarm;
-                            break;
-                        case "hmApp.startApp({url: 'ScheduleCalScreen', native: true });":
-                            scriptTypeLongPress = Properties.ButtonFunctions.Schedule;
-                            break;
-                        case "hmApp.startApp({url: 'WorldClockScreen', native: true });":
-                            scriptTypeLongPress = Properties.ButtonFunctions.WorldClock;
-                            break;
-
-                        //////////////////////
-                        case "hmApp.startApp({url: 'Settings_homeScreen', native: true });":
-                            scriptTypeLongPress = Properties.ButtonFunctions.Settings;
-                            break;
-                        case "hmApp.startApp({url: 'LowBatteryScreen', native: true });":
-                            scriptTypeLongPress = Properties.ButtonFunctions.LowBattery;
-                            break;
-                        case "hmApp.startApp({url: 'PowerSaveHintScreen', native: true });":
-                            scriptTypeLongPress = Properties.ButtonFunctions.PowerHint;
-                            break;
-                        case "hmApp.startApp({url: 'Settings_batteryManagerScreen', native: true });":
-                            scriptTypeLongPress = Properties.ButtonFunctions.BatteryManager;
-                            break;
-                        case "hmApp.startApp({url: 'PowerSaveModeScreen', native: true });":
-                            scriptTypeLongPress = Properties.ButtonFunctions.SaveMode;
-                            break;
-                        case "hmApp.startApp({url: 'Settings_lightAdjustScreen', native: true });":
-                            scriptTypeLongPress = Properties.ButtonFunctions.Light;
-                            break;
-                        case "hmApp.startApp({url: 'Settings_displayBrightScreen', native: true });":
-                            scriptTypeLongPress = Properties.ButtonFunctions.Display;
-                            break;
-                        case "hmApp.startApp({url: 'Settings_standbyModelScreen', native: true });":
-                            scriptTypeLongPress = Properties.ButtonFunctions.AOD;
-                            break;
-                        case "hmApp.startApp({url: 'Settings_dndModelScreen', native: true });":
-                            scriptTypeLongPress = Properties.ButtonFunctions.DND;
-                            break;
-                        case "hmApp.startApp({url: 'Settings_standbyHomeScreen', native: true });":
-                            scriptTypeLongPress = Properties.ButtonFunctions.AODStyle;
-                            break;
-                        case "hmApp.startApp({url: 'WatchFaceScreen', native: true });":
-                            scriptTypeLongPress = Properties.ButtonFunctions.WatchFace;
-                            break;
-                        case "hmApp.startApp({url: 'Settings_systemScreen', native: true });":
-                            scriptTypeLongPress = Properties.ButtonFunctions.System;
-                            break;
-                        case "hmApp.startApp({url: 'HmReStartScreen', native: true });":
-                            scriptTypeLongPress = Properties.ButtonFunctions.ReStart;
-                            break;
-                        case "hmApp.startApp({url: 'FindPhoneScreen', native: true });":
-                            scriptTypeLongPress = Properties.ButtonFunctions.FindPhone;
-                            break;
-                    } */
                 }
 
                 string scriptType = Properties.Buttons.Button + " <" + scriptTypeClick + "; " + scriptTypeLongPress + ">";
                 DataGridViewRow RowNew = new DataGridViewRow();
                 RowNew.Cells.Add(new DataGridViewTextBoxCell() { Value = (index + 1).ToString() });
                 RowNew.Cells.Add(new DataGridViewTextBoxCell() { Value = scriptType });
+                RowNew.Cells.Add(new DataGridViewCheckBoxCell() { Value = buttonsVisibleList[index] });
                 RowNew.Cells[0].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 RowNew.Cells[1].Style.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                RowNew.Cells[2].Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGridView_buttons.Rows.Add(RowNew);
             }
             
@@ -408,6 +223,7 @@ namespace ControlLibrary
                 dataGridView_buttons.Rows[rowIndex].Selected = true;
                 dataGridView_buttons.CurrentCell = dataGridView_buttons.Rows[rowIndex].Cells[0];
             }
+            setValue = false;
         }
 
         private string GetFunctionName(string func)
@@ -416,6 +232,7 @@ namespace ControlLibrary
             if (func.Length > 3) functinName = Properties.Buttons.User_script;
             switch (func)
             {
+                #region Активности 
                 case "hmApp.startApp({url: 'activityAppScreen', native: true });":
                     functinName = Properties.ButtonFunctions.Steps;
                     break;
@@ -440,9 +257,6 @@ namespace ControlLibrary
                 case "hmApp.startApp({url: 'RespirationwidgetScreen', native: true });":
                     functinName = Properties.ButtonFunctions.Respiration;
                     break;
-                case "hmApp.startApp({url: 'menstrualAppScreen', native: true });":
-                    functinName = Properties.ButtonFunctions.Menstrual;
-                    break;
                 case "hmApp.startApp({url: 'SportListScreen', native: true });":
                     functinName = Properties.ButtonFunctions.SportList;
                     break;
@@ -455,8 +269,9 @@ namespace ControlLibrary
                 case "hmApp.startApp({url: 'SportStatusScreen', native: true });":
                     functinName = Properties.ButtonFunctions.SportStatus;
                     break;
+                #endregion
 
-                //////////////////////
+                #region программы
                 case "hmApp.startApp({url: 'AlarmInfoScreen', native: true });":
                     functinName = Properties.ButtonFunctions.Alarm;
                     break;
@@ -466,8 +281,79 @@ namespace ControlLibrary
                 case "hmApp.startApp({url: 'WorldClockScreen', native: true });":
                     functinName = Properties.ButtonFunctions.WorldClock;
                     break;
+                case "hmApp.startApp({url: 'ScheduleListScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.ScheduleList;
+                    break;
+                case "hmApp.startApp({url: 'todoListScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.ToDoList;
+                    break;
+                case "hmApp.startApp({url: 'LocalMusicScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.LocalMusic;
+                    break;
+                case "hmApp.startApp({url: 'PhoneMusicCtrlScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.PhoneMusic;
+                    break;
+                case "hmApp.startApp({url: 'WeatherScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.Weather;
+                    break;
+                case "hmApp.startApp({url: 'TideScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.Sunset;
+                    break;
+                case "hmApp.startApp({url: 'CompassScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.Compass;
+                    break;
+                case "hmApp.startApp({url: 'BaroAltimeterScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.Baro;
+                    break;
+                case "hmApp.startApp({url: 'ClubCardsScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.ClubCards;
+                    break;
+                case "hmApp.startApp({url: 'StopWatchScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.StopWatch;
+                    break;
+                case "hmApp.startApp({url: 'CountdownAppScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.CountDown;
+                    break;
+                case "hmApp.startApp({url: 'TomatoMainScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.Timer;
+                    break;
+                case "hmApp.startApp({url: 'AppListScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.AppList;
+                    break;
+                case "hmApp.startApp({url: 'DragListScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.DragList;
+                    break;
+                case "hmApp.startApp({url: 'MoreListScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.MoreList;
+                    break;
+                case "hmApp.startApp({url: 'MorningGreetingNewsScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.MorningNews;
+                    break;
+                case "hmApp.startApp({url: 'VoiceMemoScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.VoiceMemo;
+                    break;
+                case "hmApp.startApp({url: 'HidcameraScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.Camera;
+                    break;
+                case "hmApp.startApp({url: 'menstrualAppScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.Menstrual;
+                    break;
+                case "hmApp.startApp({url: 'PhoneHomeScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.Phone;
+                    break;
+                case "hmApp.startApp({url: 'PhoneContactsScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.Contacts;
+                    break;
+                case "hmApp.startApp({url: 'PhoneRecentCallScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.RecentCall;
+                    break;
+                case "hmApp.startApp({url: 'DialCallScreen', native: true });":
+                    functinName = Properties.ButtonFunctions.DialCall;
+                    break;
 
-                //////////////////////
+                #endregion
+
+                #region настройки
                 case "hmApp.startApp({url: 'Settings_homeScreen', native: true });":
                     functinName = Properties.ButtonFunctions.Settings;
                     break;
@@ -516,6 +402,7 @@ namespace ControlLibrary
                 case "hmApp.startApp({url: 'Test2Screen', native: true });":
                     functinName = Properties.ButtonFunctions.Test2;
                     break;
+                    #endregion
             }
             return functinName;
         }
@@ -1169,6 +1056,31 @@ namespace ControlLibrary
                         ScriptChanged(rowIndex, clickFunc, longPressFunc);
                     }
                 }
+            }
+        }
+
+        private void dataGridView_buttons_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView senderGrid = (DataGridView)sender;
+            senderGrid.EndEdit();
+            int rowIndex = e.RowIndex;
+
+            if (senderGrid.Columns[e.ColumnIndex] is DataGridViewCheckBoxColumn && e.RowIndex >= 0)
+            {
+
+                DataGridViewCheckBoxCell cbxCell = (DataGridViewCheckBoxCell)senderGrid.Rows[e.RowIndex].Cells[e.ColumnIndex];
+                bool value = !(bool)cbxCell.Value;
+                cbxCell.Value = value;
+                //if (value)
+                //{
+                //    // Criar registo na base de dados
+                //}
+                //else
+                //{
+                //    // Remover registo da base de dados
+                //}
+
+                if (VisibleButtonChanged != null && !setValue && rowIndex >= 0) VisibleButtonChanged(rowIndex, value);
             }
         }
     }

@@ -121,7 +121,7 @@
     <value>Button</value>
   </data>
   <data name="comboBox_Activity" xml:space="preserve">
-    <value>Health</value>
+    <value>Activities</value>
   </data>
   <data name="comboBox_App" xml:space="preserve">
     <value>App</value>

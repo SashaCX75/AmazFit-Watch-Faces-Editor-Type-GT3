@@ -70,7 +70,7 @@ namespace ControlLibrary.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Здоровье.
+        ///   Ищет локализованную строку, похожую на Активности.
         /// </summary>
         internal static string comboBox_Activity {
             get {

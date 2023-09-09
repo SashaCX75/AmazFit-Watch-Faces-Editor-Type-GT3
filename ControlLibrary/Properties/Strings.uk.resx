@@ -123,6 +123,12 @@
   <data name="Dialog_Title_Font_Add" xml:space="preserve">
     <value>Виберіть файл шрифту</value>
   </data>
+  <data name="Message_Error_Caption" xml:space="preserve">
+    <value>Помилка</value>
+  </data>
+  <data name="Message_ReadScript_Error" xml:space="preserve">
+    <value>Помилка читання користувацьких скриптів</value>
+  </data>
   <data name="Message_Warning_Caption" xml:space="preserve">
     <value>Попередження</value>
   </data>

@@ -91,6 +91,14 @@ namespace Watch_Face_Editor
             {
                 Scale_IMG(Watch_Face.TopImage.Icon, scale);
             }
+            if (Watch_Face.Buttons != null && Watch_Face.Buttons.Button != null && Watch_Face.Buttons.Button.Count > 0)
+            {
+                for (int index = 0; index < Watch_Face.Buttons.Button.Count; index++)
+                {
+                    Button button = Watch_Face.Buttons.Button[index];
+                    Scale_Button(button, scale);
+                }
+            }
         }
 
         private void Scale_FILL_RECT(hmUI_widget_FILL_RECT fill_rect, float scale)
@@ -570,6 +578,17 @@ namespace Watch_Face_Editor
             am_pm.am_y = (int)Math.Round(am_pm.am_y * scale, MidpointRounding.AwayFromZero);
             am_pm.pm_x = (int)Math.Round((am_pm.pm_x * scale), MidpointRounding.AwayFromZero);
             am_pm.pm_y = (int)Math.Round((am_pm.pm_y * scale), MidpointRounding.AwayFromZero);
+        }
+
+        private void Scale_Button(Button button, float scale)
+        {
+            if (button == null) return;
+            button.x = (int)Math.Round(button.x * scale, MidpointRounding.AwayFromZero);
+            button.y = (int)Math.Round(button.y * scale, MidpointRounding.AwayFromZero);
+            if (button.w != -1) button.w = (int)Math.Round((double)(button.w * scale), MidpointRounding.AwayFromZero);
+            if (button.h != -1) button.h = (int)Math.Round((double)(button.h * scale), MidpointRounding.AwayFromZero);
+            button.text_size = (int)Math.Round((double)(button.text_size * scale), MidpointRounding.AwayFromZero);
+            button.radius = (int)Math.Round((double)(button.radius * scale), MidpointRounding.AwayFromZero);
         }
     }
 }

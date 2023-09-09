@@ -245,6 +245,7 @@
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>H:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="tableLayoutPanel_element.TabIndex" type="System.Int32, mscorlib">
     <value>39</value>
@@ -553,6 +554,7 @@
   </data>
   <data name="label19.Text" xml:space="preserve">
     <value>Y:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;panel_Images.Name" xml:space="preserve">
     <value>panel_Images</value>
@@ -809,6 +811,7 @@
   </data>
   <data name="label04.Text" xml:space="preserve">
     <value>X:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;checkBox_Circle_Scale.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -1575,6 +1578,7 @@
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>W:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;button_Number_Max.Parent" xml:space="preserve">
     <value>panel_Number_Max</value>
@@ -2972,6 +2976,7 @@
   </data>
   <data name="label05.Text" xml:space="preserve">
     <value>Y:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 30</value>
@@ -3360,17 +3365,18 @@
   </data>
   <data name="label17.Text" xml:space="preserve">
     <value>X:</value>
+    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;checkBox_Icon.Parent" xml:space="preserve">
     <value>panel_Icon</value>
   </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="$this.Localizable" type="System.Boolean, mscorlib">
     <value>True</value>
-  </metadata>
-  <metadata name="contextMenuStrip_Y.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  </data>
+  <data name="contextMenuStrip_Y.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>173, 20</value>
-  </metadata>
-  <metadata name="contextMenuStrip_X.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  </data>
+  <data name="contextMenuStrip_X.TrayLocation" type="System.Drawing.Point, System.Drawing">
     <value>23, 23</value>
-  </metadata>
+  </data>
 </root>

@@ -115,7 +115,43 @@ namespace ControlLibrary.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Статистика заряда *.
+        ///   Ищет локализованную строку, похожую на Список программ.
+        /// </summary>
+        internal static string AppList {
+            get {
+                return ResourceManager.GetString("AppList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;AppListScreen&apos;, native: true });.
+        /// </summary>
+        internal static string AppList_function {
+            get {
+                return ResourceManager.GetString("AppList_function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Барометр.
+        /// </summary>
+        internal static string Baro {
+            get {
+                return ResourceManager.GetString("Baro", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;BaroAltimeterScreen&apos;, native: true });.
+        /// </summary>
+        internal static string Baro_function {
+            get {
+                return ResourceManager.GetString("Baro_function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Статистика использования *.
         /// </summary>
         internal static string BatteryManager {
             get {
@@ -129,6 +165,114 @@ namespace ControlLibrary.Properties {
         internal static string BatteryManager_function {
             get {
                 return ResourceManager.GetString("BatteryManager_function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Управление камерой.
+        /// </summary>
+        internal static string Camera {
+            get {
+                return ResourceManager.GetString("Camera", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;HidcameraScreen&apos;, native: true });.
+        /// </summary>
+        internal static string Camera_function {
+            get {
+                return ResourceManager.GetString("Camera_function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Карточка участника.
+        /// </summary>
+        internal static string ClubCards {
+            get {
+                return ResourceManager.GetString("ClubCards", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;ClubCardsScreen&apos;, native: true });.
+        /// </summary>
+        internal static string ClubCards_function {
+            get {
+                return ResourceManager.GetString("ClubCards_function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Компас.
+        /// </summary>
+        internal static string Compass {
+            get {
+                return ResourceManager.GetString("Compass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;CompassScreen&apos;, native: true });.
+        /// </summary>
+        internal static string Compass_function {
+            get {
+                return ResourceManager.GetString("Compass_function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Контакты *.
+        /// </summary>
+        internal static string Contacts {
+            get {
+                return ResourceManager.GetString("Contacts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;PhoneContactsScreen&apos;, native: true });.
+        /// </summary>
+        internal static string Contacts_function {
+            get {
+                return ResourceManager.GetString("Contacts_function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Обратный отсчет.
+        /// </summary>
+        internal static string CountDown {
+            get {
+                return ResourceManager.GetString("CountDown", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;CountdownAppScreen&apos;, native: true });.
+        /// </summary>
+        internal static string CountDown_function {
+            get {
+                return ResourceManager.GetString("CountDown_function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Номеронабиратель *.
+        /// </summary>
+        internal static string DialCall {
+            get {
+                return ResourceManager.GetString("DialCall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;DialCallScreen&apos;, native: true });.
+        /// </summary>
+        internal static string DialCall_function {
+            get {
+                return ResourceManager.GetString("DialCall_function", resourceCulture);
             }
         }
         
@@ -165,6 +309,24 @@ namespace ControlLibrary.Properties {
         internal static string DND_function {
             get {
                 return ResourceManager.GetString("DND_function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Иконки программ.
+        /// </summary>
+        internal static string DragList {
+            get {
+                return ResourceManager.GetString("DragList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;DragListScreen&apos;, native: true });.
+        /// </summary>
+        internal static string DragList_function {
+            get {
+                return ResourceManager.GetString("DragList_function", resourceCulture);
             }
         }
         
@@ -223,6 +385,24 @@ namespace ControlLibrary.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Музыка (на часах) *.
+        /// </summary>
+        internal static string LocalMusic {
+            get {
+                return ResourceManager.GetString("LocalMusic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;LocalMusicScreen&apos;, native: true });.
+        /// </summary>
+        internal static string LocalMusic_function {
+            get {
+                return ResourceManager.GetString("LocalMusic_function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Экономия заряда.
         /// </summary>
         internal static string LowBattery {
@@ -255,6 +435,42 @@ namespace ControlLibrary.Properties {
         internal static string Menstrual_function {
             get {
                 return ResourceManager.GetString("Menstrual_function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Меню &quot;Ещё&quot; *.
+        /// </summary>
+        internal static string MoreList {
+            get {
+                return ResourceManager.GetString("MoreList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;MoreListScreen&apos;, native: true });.
+        /// </summary>
+        internal static string MoreList_function {
+            get {
+                return ResourceManager.GetString("MoreList_function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Утренее приветствие *.
+        /// </summary>
+        internal static string MorningNews {
+            get {
+                return ResourceManager.GetString("MorningNews", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;MorningGreetingNewsScreen&apos;, native: true });.
+        /// </summary>
+        internal static string MorningNews_function {
+            get {
+                return ResourceManager.GetString("MorningNews_function", resourceCulture);
             }
         }
         
@@ -295,6 +511,42 @@ namespace ControlLibrary.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Телефон *.
+        /// </summary>
+        internal static string Phone {
+            get {
+                return ResourceManager.GetString("Phone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;PhoneHomeScreen&apos;, native: true });.
+        /// </summary>
+        internal static string Phone_function {
+            get {
+                return ResourceManager.GetString("Phone_function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Музыка (на телефоне).
+        /// </summary>
+        internal static string PhoneMusic {
+            get {
+                return ResourceManager.GetString("PhoneMusic", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;PhoneMusicCtrlScreen&apos;, native: true });.
+        /// </summary>
+        internal static string PhoneMusic_function {
+            get {
+                return ResourceManager.GetString("PhoneMusic_function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Энергопотребление.
         /// </summary>
         internal static string PowerHint {
@@ -309,6 +561,24 @@ namespace ControlLibrary.Properties {
         internal static string PowerHint_function {
             get {
                 return ResourceManager.GetString("PowerHint_function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Последние вызовы *.
+        /// </summary>
+        internal static string RecentCall {
+            get {
+                return ResourceManager.GetString("RecentCall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;PhoneRecentCallScreen&apos;, native: true });.
+        /// </summary>
+        internal static string RecentCall_function {
+            get {
+                return ResourceManager.GetString("RecentCall_function", resourceCulture);
             }
         }
         
@@ -385,6 +655,24 @@ namespace ControlLibrary.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Расписание.
+        /// </summary>
+        internal static string ScheduleList {
+            get {
+                return ResourceManager.GetString("ScheduleList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;ScheduleListScreen&apos;, native: true });.
+        /// </summary>
+        internal static string ScheduleList_function {
+            get {
+                return ResourceManager.GetString("ScheduleList_function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Настройки.
         /// </summary>
         internal static string Settings {
@@ -421,7 +709,7 @@ namespace ControlLibrary.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Кислород.
+        ///   Ищет локализованную строку, похожую на SpO2 (Кислород).
         /// </summary>
         internal static string SPO2 {
             get {
@@ -529,6 +817,24 @@ namespace ControlLibrary.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Секундомер.
+        /// </summary>
+        internal static string StopWatch {
+            get {
+                return ResourceManager.GetString("StopWatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;StopWatchScreen&apos;, native: true });.
+        /// </summary>
+        internal static string StopWatch_function {
+            get {
+                return ResourceManager.GetString("StopWatch_function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Стресс.
         /// </summary>
         internal static string Stress {
@@ -543,6 +849,24 @@ namespace ControlLibrary.Properties {
         internal static string Stress_function {
             get {
                 return ResourceManager.GetString("Stress_function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Восход/закат.
+        /// </summary>
+        internal static string Sunset {
+            get {
+                return ResourceManager.GetString("Sunset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;TideScreen&apos;, native: true });.
+        /// </summary>
+        internal static string Sunset_function {
+            get {
+                return ResourceManager.GetString("Sunset_function", resourceCulture);
             }
         }
         
@@ -601,6 +925,60 @@ namespace ControlLibrary.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Таймер.
+        /// </summary>
+        internal static string Timer {
+            get {
+                return ResourceManager.GetString("Timer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;TomatoMainScreen&apos;, native: true });.
+        /// </summary>
+        internal static string Timer_function {
+            get {
+                return ResourceManager.GetString("Timer_function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Список дел.
+        /// </summary>
+        internal static string ToDoList {
+            get {
+                return ResourceManager.GetString("ToDoList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;todoListScreen&apos;, native: true });.
+        /// </summary>
+        internal static string ToDoList_function {
+            get {
+                return ResourceManager.GetString("ToDoList_function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Голосовая заметка.
+        /// </summary>
+        internal static string VoiceMemo {
+            get {
+                return ResourceManager.GetString("VoiceMemo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;VoiceMemoScreen&apos;, native: true });.
+        /// </summary>
+        internal static string VoiceMemo_function {
+            get {
+                return ResourceManager.GetString("VoiceMemo_function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Выбрать циферблат.
         /// </summary>
         internal static string WatchFace {
@@ -615,6 +993,24 @@ namespace ControlLibrary.Properties {
         internal static string WatchFace_function {
             get {
                 return ResourceManager.GetString("WatchFace_function", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Погода.
+        /// </summary>
+        internal static string Weather {
+            get {
+                return ResourceManager.GetString("Weather", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на hmApp.startApp({url: &apos;WeatherScreen&apos;, native: true });.
+        /// </summary>
+        internal static string Weather_function {
+            get {
+                return ResourceManager.GetString("Weather_function", resourceCulture);
             }
         }
         

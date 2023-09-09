@@ -121,7 +121,7 @@
     <value>Кнопка</value>
   </data>
   <data name="comboBox_Activity" xml:space="preserve">
-    <value>Здоров'я</value>
+    <value>Активності</value>
   </data>
   <data name="comboBox_App" xml:space="preserve">
     <value>Програми</value>

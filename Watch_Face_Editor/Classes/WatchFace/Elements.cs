@@ -1141,5 +1141,8 @@ namespace Watch_Face_Editor
         /// <summary>Функция при долгом нажатии кнопки</summary>
         public string longpress_func = "";
 
+        /// <summary>Видимость кнопки</summary>
+        public bool visible = true;
+
     }
 }

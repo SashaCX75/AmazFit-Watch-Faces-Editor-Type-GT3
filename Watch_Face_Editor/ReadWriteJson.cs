@@ -7449,14 +7449,18 @@ namespace Watch_Face_Editor
                     int number = 1;
                     foreach (Button button in buttons.Button)
                     {
-                        string optionsButton = Buttons_Options(button, show_level);
-                        if(optionsButton.Length > 5)
+                        if (button != null && button.visible)
                         {
-                            string name = "Button_" + (number++).ToString();
-                            variables += TabInString(4) + "let " + name + " = ''" + Environment.NewLine;
-                            items += Environment.NewLine + TabInString(6) + name +
-                                " = hmUI.createWidget(hmUI.widget.BUTTON, {" + optionsButton + TabInString(6) + "}); // end button" + Environment.NewLine;
+                            string optionsButton = Buttons_Options(button, show_level);
+                            if (optionsButton.Length > 5)
+                            {
+                                string name = "Button_" + (number).ToString();
+                                variables += TabInString(4) + "let " + name + " = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) + name +
+                                    " = hmUI.createWidget(hmUI.widget.BUTTON, {" + optionsButton + TabInString(6) + "}); // end button" + Environment.NewLine;
+                            } 
                         }
+                        number++;
                     }
                     break;
                     #endregion
@@ -25010,6 +25014,7 @@ namespace Watch_Face_Editor
                 string func = parametrs["longpress_func"];
                 button.longpress_func = RemoveTabOfString(func, 8);
             }
+            button.visible = true;
 
             return button;
         }

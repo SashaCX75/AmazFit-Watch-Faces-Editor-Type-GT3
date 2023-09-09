@@ -123,6 +123,12 @@
   <data name="Dialog_Title_Font_Add" xml:space="preserve">
     <value>Select font file</value>
   </data>
+  <data name="Message_Error_Caption" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Message_ReadScript_Error" xml:space="preserve">
+    <value>Error reading user scripts</value>
+  </data>
   <data name="Message_Warning_Caption" xml:space="preserve">
     <value>Warning</value>
   </data>
