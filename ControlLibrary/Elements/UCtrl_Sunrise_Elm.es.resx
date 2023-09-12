@@ -176,7 +176,7 @@
     <value>200, 24</value>
   </data>
   <data name="button_Sunset_circle.Text" xml:space="preserve">
-    <value>Valor en un círculo (puesta de sol)</value>
+    <value>Valor en un círculo (atardecer)</value>
   </data>
   <data name="button_Sunset_rotation.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -195,7 +195,7 @@
 </value>
   </data>
   <data name="button_Sunset_rotation.Text" xml:space="preserve">
-    <value>Valor en ángulo (puesta del sol)</value>
+    <value>Valor en ángulo (atardecer)</value>
   </data>
   <data name="button_Sunset_Sunrise.Text" xml:space="preserve">
     <value>Valores numéricos (hora día/noche)</value>
@@ -204,7 +204,7 @@
     <value>Imágenes</value>
   </data>
   <data name="button_Sunset.Text" xml:space="preserve">
-    <value>Valores numéricos (puesta sol)</value>
+    <value>Valores numéricos (atardecer)</value>
   </data>
   <data name="button_Segments.Text" xml:space="preserve">
     <value>Imágenes independientes</value>
@@ -219,6 +219,6 @@
     <value>Valores numéricos (amanecer)</value>
   </data>
   <data name="button_ElementName.Text" xml:space="preserve">
-    <value>Salida del sol/Puesta de sol</value>
+    <value>Amanecer/Atardecer</value>
   </data>
 </root>

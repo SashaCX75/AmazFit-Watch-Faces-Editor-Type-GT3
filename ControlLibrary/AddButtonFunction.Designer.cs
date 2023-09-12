@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddButtonFunction));
             this.radioButton_click = new System.Windows.Forms.RadioButton();
             this.radioButton_londPress = new System.Windows.Forms.RadioButton();
@@ -48,7 +49,7 @@
             this.richTextBox_click = new System.Windows.Forms.RichTextBox();
             this.groupBox_longPress = new System.Windows.Forms.GroupBox();
             this.richTextBox_longPress = new System.Windows.Forms.RichTextBox();
-            this.toolTip_help = new System.Windows.Forms.ToolTip();
+            this.toolTip_help = new System.Windows.Forms.ToolTip(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox_selectScript.SuspendLayout();

@@ -117,20 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="button_Alarm.Text" xml:space="preserve">
-    <value>Relojes de alarma</value>
-  </data>
-  <data name="button_Altimeter.Text" xml:space="preserve">
-    <value>Presión atmosférica</value>
+  <data name="button_Stopwatch.Text" xml:space="preserve">
+    <value>Para reloj</value>
   </data>
   <data name="button_Countdown.Text" xml:space="preserve">
     <value>cuenta regresiva</value>
-  </data>
-  <data name="button_ElementName.Text" xml:space="preserve">
-    <value>Atajos</value>
-  </data>
-  <data name="button_Heart.Text" xml:space="preserve">
-    <value>Ritmo cardiaco</value>
   </data>
   <data name="button_Sleep.Text" xml:space="preserve">
     <value>Dormir</value>
@@ -138,19 +129,32 @@
   <data name="button_SPO2.Text" xml:space="preserve">
     <value>Oxígeno en sangre (SpO2)</value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="button_Sunrise.Size" type="System.Drawing.Size, System.Drawing">
+    <value>185, 24</value>
+  </data>
+  <data name="button_Sunrise.Text" xml:space="preserve">
+    <value>Amanecer/Atardecer</value>
+  </data>
   <data name="button_Step.Text" xml:space="preserve">
     <value>Pasos</value>
   </data>
-  <data name="button_Stopwatch.Text" xml:space="preserve">
-    <value>Para reloj</value>
+  <data name="button_Heart.Text" xml:space="preserve">
+    <value>Ritmo cardiaco</value>
   </data>
   <data name="button_Stress.Text" xml:space="preserve">
     <value>Nivel de estrés</value>
   </data>
-  <data name="button_Sunrise.Text" xml:space="preserve">
-    <value>Salida del sol/Puesta de sol</value>
-  </data>
   <data name="button_Weather.Text" xml:space="preserve">
     <value>Temperatura del aire</value>
+  </data>
+  <data name="button_Altimeter.Text" xml:space="preserve">
+    <value>Presión atmosférica</value>
+  </data>
+  <data name="button_Alarm.Text" xml:space="preserve">
+    <value>Relojes de alarma</value>
+  </data>
+  <data name="button_ElementName.Text" xml:space="preserve">
+    <value>Atajos</value>
   </data>
 </root>

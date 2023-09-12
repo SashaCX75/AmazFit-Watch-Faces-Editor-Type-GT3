@@ -266,4 +266,7 @@
   <data name="label03.Text" xml:space="preserve">
     <value>Anzahl der Bilder</value>
   </data>
+  <data name="checkBox_shortcut.Text" xml:space="preserve">
+    <value>Verknüpfung</value>
+  </data>
 </root>

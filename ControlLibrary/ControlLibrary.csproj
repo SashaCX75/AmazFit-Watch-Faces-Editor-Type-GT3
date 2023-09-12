@@ -55,6 +55,16 @@
     <Compile Include="AddButtonFunction.Designer.cs">
       <DependentUpon>AddButtonFunction.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\ButtonFunctions.de.Designer.cs">
+      <DependentUpon>ButtonFunctions.de.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\ButtonFunctions.it.Designer.cs">
+      <DependentUpon>ButtonFunctions.it.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Properties\ButtonFunctions.es.Designer.cs">
       <DependentUpon>ButtonFunctions.es.resx</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -74,6 +84,16 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ButtonFunctions.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Buttons.de.Designer.cs">
+      <DependentUpon>Buttons.de.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\Buttons.it.Designer.cs">
+      <DependentUpon>Buttons.it.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Properties\Buttons.es.Designer.cs">
       <DependentUpon>Buttons.es.resx</DependentUpon>
@@ -515,10 +535,16 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AddButtonFunction.de.resx">
+      <DependentUpon>AddButtonFunction.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AddButtonFunction.en.resx">
       <DependentUpon>AddButtonFunction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddButtonFunction.es.resx">
+      <DependentUpon>AddButtonFunction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddButtonFunction.it.resx">
       <DependentUpon>AddButtonFunction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AddButtonFunction.resx">
@@ -691,10 +717,16 @@
     <EmbeddedResource Include="Elements\UCtrl_Battery_Elm.zh.resx">
       <DependentUpon>UCtrl_Battery_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Buttons_Elm.de.resx">
+      <DependentUpon>UCtrl_Buttons_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Buttons_Elm.en.resx">
       <DependentUpon>UCtrl_Buttons_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Buttons_Elm.es.resx">
+      <DependentUpon>UCtrl_Buttons_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Buttons_Elm.it.resx">
       <DependentUpon>UCtrl_Buttons_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Calories_Elm.cs.resx">
@@ -1352,6 +1384,14 @@
     <EmbeddedResource Include="Elements\UCtrl_Wind_Elm.zh.resx">
       <DependentUpon>UCtrl_Wind_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\ButtonFunctions.de.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ButtonFunctions.de.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\ButtonFunctions.it.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ButtonFunctions.it.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\ButtonFunctions.es.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ButtonFunctions.es.Designer.cs</LastGenOutput>
@@ -1367,6 +1407,14 @@
     <EmbeddedResource Include="Properties\ButtonFunctions.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ButtonFunctions.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Buttons.de.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Buttons.de.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Buttons.it.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Buttons.it.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Buttons.es.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -1620,10 +1668,16 @@
     <EmbeddedResource Include="Elements\UCtrl_Buttons_Elm.resx">
       <DependentUpon>UCtrl_Buttons_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Button_Opt.de.resx">
+      <DependentUpon>UCtrl_Button_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Button_Opt.en.resx">
       <DependentUpon>UCtrl_Button_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Button_Opt.es.resx">
+      <DependentUpon>UCtrl_Button_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Button_Opt.it.resx">
       <DependentUpon>UCtrl_Button_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Button_Opt.resx">

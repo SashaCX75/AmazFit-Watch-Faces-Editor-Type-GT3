@@ -22913,7 +22913,7 @@ namespace Watch_Face_Editor
                         valueStr = valueStr.Remove(0, stringStartIndex);
                         GetParametrsList.Add(valueStr);
                     }
-                    if (valueStr.IndexOf("hmUI.createWidget(hmUI.widget.BUTTON") > 0)
+                    else if (valueStr.IndexOf("hmUI.createWidget(hmUI.widget.BUTTON") > 0)
                     {
                         //int stringStartIndex = valueStr.IndexOf("hmUI.createWidget(hmUI.widget.BUTTON");
                         //valueStr = valueStr.Remove(0, stringStartIndex);
@@ -22931,14 +22931,15 @@ namespace Watch_Face_Editor
                     }
                 }
                 str = str.Remove(0, valueLenght + 1);
-                valueLenght = str.IndexOf("});");
+                valueLenght = str.IndexOf("});") + 2;
                 int posIf = str.IndexOf("if (screenType");
                 if (posIf >= 0 && posIf < valueLenght) valueLenght = str.IndexOf("};") - 1;
 
+                int posFunction = str.IndexOf("function ");
                 int posSwitch = str.IndexOf("switch (editType");
-                if (posSwitch >= 0 && posSwitch < valueLenght) 
-                    valueLenght = str.IndexOf("}; // end switch") - 1;
-                if (valueLenght >= 0) valueLenght = valueLenght + 2;
+                //if (posSwitch >= 0 && posSwitch < valueLenght) 
+                //    valueLenght = str.IndexOf("}; // end switch") - 1;
+                //if (valueLenght >= 0) valueLenght = valueLenght + 2;
 
                 int posButton = str.IndexOf("hmUI.createWidget(hmUI.widget.BUTTON");
                 if (posButton >= 0 && posButton < valueLenght)
@@ -22946,9 +22947,12 @@ namespace Watch_Face_Editor
                     valueLenght = str.IndexOf("}); // end button") - 1;
                     if (valueLenght >= 0) valueLenght = valueLenght + "}); // end button".Length + 1;
                 }
-
-                int posFunction = str.IndexOf("function ");
-                if (posFunction >= 0 && posFunction < valueLenght)
+                else if (posSwitch >= 0 && posSwitch < valueLenght)
+                {
+                    valueLenght = str.IndexOf("}; // end switch") - 1;
+                    if (valueLenght >= 0) valueLenght = valueLenght + 2;
+                }
+                else if (posFunction >= 0 && posFunction < valueLenght)
                 {
                     string functionName = "";
                     string functionText = GetFunction(str, out functionName);
@@ -22957,6 +22961,17 @@ namespace Watch_Face_Editor
                     sartIndex += functionText.Length;
                     valueLenght = str.IndexOf("}", sartIndex) + 1;
                 }
+
+                //int posFunction = str.IndexOf("function ");
+                //if (posFunction >= 0 && posFunction < valueLenght)
+                //{
+                //    string functionName = "";
+                //    string functionText = GetFunction(str, out functionName);
+                //    int sartIndex = str.IndexOf("{");
+                //    if (sartIndex < 0) sartIndex = 0;
+                //    sartIndex += functionText.Length;
+                //    valueLenght = str.IndexOf("}", sartIndex) + 1;
+                //}
             }
 
             return GetParametrsList; ;
