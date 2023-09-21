@@ -1320,7 +1320,7 @@ namespace Watch_Face_Editor
                                 optionsMinute_rotation, show_level, "timeNaw", "TIME", "valueMinute", "minute", 2, ref resume_call, ref pause_call);
                         }
                         // Second_Rotate
-                        if (index == hourPosition_rotation && optionsSecond_rotation.Length > 5)
+                        if (index == secondPosition_rotation && optionsSecond_rotation.Length > 5)
                         {
                             AddTextRotationJS(DigitalTime.Second_rotation, optionNameStart, "second_", ref variables, ref items, ref text_update,
                                 optionsSecond_rotation, show_level, "timeNaw", "TIME", "valueSecond", "second", 2, ref resume_call, ref pause_call);
