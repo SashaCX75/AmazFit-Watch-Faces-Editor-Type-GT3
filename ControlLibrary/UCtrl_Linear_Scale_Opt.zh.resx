@@ -313,4 +313,13 @@
     <value>*启用反转后，增加读数
 将减少进度。</value>
   </data>
+  <data name="comboBox_scaleLinear_lineCap.Items" xml:space="preserve">
+    <value>圆</value>
+  </data>
+  <data name="comboBox_scaleLinear_lineCap.Items1" xml:space="preserve">
+    <value>平坦</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>行尾</value>
+  </data>
 </root>

@@ -153,4 +153,16 @@
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>距离</value>
   </data>
+  <data name="button_Icon.Text" xml:space="preserve">
+    <value>图标</value>
+  </data>
+  <data name="button_Number.Text" xml:space="preserve">
+    <value>数值</value>
+  </data>
+  <data name="button_Text_circle.Text" xml:space="preserve">
+    <value>圆上值</value>
+  </data>
+  <data name="button_Text_rotation.Text" xml:space="preserve">
+    <value>角度值</value>
+  </data>
 </root>

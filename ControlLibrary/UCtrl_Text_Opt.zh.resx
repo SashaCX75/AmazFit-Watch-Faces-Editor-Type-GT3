@@ -314,4 +314,7 @@
   <data name="checkBox_follow.Text" xml:space="preserve">
     <value>跟随</value>
   </data>
+  <data name="label_angle.Text" xml:space="preserve">
+    <value>角度</value>
+  </data>
 </root>

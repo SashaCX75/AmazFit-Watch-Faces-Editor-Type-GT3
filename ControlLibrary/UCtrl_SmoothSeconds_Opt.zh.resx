@@ -166,4 +166,29 @@
   <data name="$this.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="radioButton_type3.Text" xml:space="preserve">
+    <value>类型3</value>
+  </data>
+  <data name="radioButton_type3.ToolTip" xml:space="preserve">
+    <value>仅在带有ZeppOS 2的机型上运行，比类型2更流畅。不适用于AOD。
+起始角度必须为0，结束角度必须为360。启用时，会出现问题
+同时更新其他时间元素。</value>
+  </data>
+  <data name="radioButton_type4.Text" xml:space="preserve">
+    <value>类型4</value>
+  </data>
+  <data name="radioButton_type4.ToolTip" xml:space="preserve">
+    <value>仅适用于带有ZeppOS 2的机型。在AOD模式下不工作。</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>类型3-仅在
+带有ZeppOS 2的型号。不适用于AOD。
+起始角度必须为0，结束角度必须为360。
+启用后，更新会出现问题
+其他时间元素。</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>类型4-仅适用于带有ZeppOS 2的机型。
+在AOD模式下不工作。</value>
+  </data>
 </root>
