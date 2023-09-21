@@ -180,4 +180,10 @@
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>PAI</value>
   </data>
+  <data name="button_Text_circle_Target.Text" xml:space="preserve">
+    <value>圆上值（周）</value>
+  </data>
+  <data name="button_Text_rotation_Target.Text" xml:space="preserve">
+    <value>角度值（周）</value>
+  </data>
 </root>

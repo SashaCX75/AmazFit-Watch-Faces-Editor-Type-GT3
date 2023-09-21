@@ -117,114 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="button_Text_CityName.Text" xml:space="preserve">
-    <value>城市名称</value>
-  </data>
-  <data name="button_Number_Min.Text" xml:space="preserve">
-    <value>数值（最小值）</value>
-  </data>
-  <data name="panel_Images.ToolTip" xml:space="preserve">
-    <value>1. 多云
-2. 阵雨
-3. 阵雪
-4. 晴
-5. 阴
-6. 小雨
-7. 小雪
-8. 中雨
-9. 中雪
-10. 大雪
-11. 大雨
-12. 沙尘暴
-13. 雨夹雪
-14. 雾
-15. 霾
-16. 雷阵雨
-17. 暴雪
-18. 浮尘
-19. 特大暴雨
-20. 雨加冰雹
-21. 雷阵雨伴有冰雹
-22. 大暴雨
-23. 扬沙
-24. 强沙尘暴
-25. 暴雨
-26. 未知天气
-27. 夜间多云
-28. 夜间阵雨
-29. 夜间阵雨</value>
-  </data>
-  <data name="button_Images.Text" xml:space="preserve">
-    <value>图像</value>
-  </data>
-  <data name="button_Images.ToolTip" xml:space="preserve">
-    <value>1. 多云
-2. 阵雨
-3. 阵雪
-4. 晴
-5. 阴
-6. 小雨
-7. 小雪
-8. 中雨
-9. 中雪
-10. 大雪
-11. 大雨
-12. 沙尘暴
-13. 雨夹雪
-14. 雾
-15. 霾
-16. 雷阵雨
-17. 暴雪
-18. 浮尘
-19. 特大暴雨
-20. 雨加冰雹
-21. 雷阵雨伴有冰雹
-22. 大暴雨
-23. 扬沙
-24. 强沙尘暴
-25. 暴雨
-26. 未知天气
-27. 夜间多云
-28. 夜间阵雨
-29. 夜间阵雨</value>
-  </data>
-  <data name="button_Number.Text" xml:space="preserve">
-    <value>数值</value>
-  </data>
-  <data name="button_Number_Max.Text" xml:space="preserve">
-    <value>数值（最大值）</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="button_Pointer.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
-        EAAAjBIAAP1NAACBPgAAWesAARIPAAA85gAAGc66ySIyAAABJmlDQ1BBZG9iZSBSR0IgKDE5OTgpAAAo
-        z2NgYDJwdHFyZRJgYMjNKykKcndSiIiMUmA/z8DGwMwABonJxQWOAQE+IHZefl4qAwb4do2BEURf1gWZ
-        xUAa4EouKCoB0n+A2CgltTiZgYHRAMjOLi8pAIozzgGyRZKywewNIHZRSJAzkH0EyOZLh7CvgNhJEPYT
-        ELsI6Akg+wtIfTqYzcQBNgfClgGxS1IrQPYyOOcXVBZlpmeUKBhaWloqOKbkJ6UqBFcWl6TmFit45iXn
-        FxXkFyWWpKYA1ULcBwaCEIWgENMAarTQZKAyAMUDhPU5EBy+jGJnEGIIkFxaVAZlMjIZE+YjzJgjwcDg
-        v5SBgeUPQsykl4FhgQ4DA/9UhJiaIQODgD4Dw745AMDGT/0ZOjZcAAAACXBIWXMAAAsMAAALDAE/QCLI
-        AAAAiklEQVQ4T9WSwQ3DIBAE3QItpCe3kBZSXGpxC2kB33AgInn8Ip+MtNLeasE2Zqu1XvTFu6uhXQ0n
-        R1dDuxpO/nyDR4gB4b2rYVJC4w3w3tVwwsK2GLSrYfIKfbrw3tUwn8pCBoQv2tXwBxvA0icMlg5xD43f
-        iPeuhskzxIDw3tUw4faNM7i5iXU7AR+D/8oPVDlNAAAAAElFTkSuQmCC
-</value>
+  <data name="checkBox_ShowInAOD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 17</value>
   </data>
-  <data name="button_Icon.Text" xml:space="preserve">
-    <value>图标</value>
+  <data name="checkBox_ShowInAOD.Text" xml:space="preserve">
+    <value>AOD模式下的显示</value>
   </data>
   <data name="button_ElementName.Text" xml:space="preserve">
-    <value>天气</value>
-  </data>
-  <data name="button_Text_Max_circle.Text" xml:space="preserve">
-    <value>圆上值（最大值）</value>
-  </data>
-  <data name="button_Text_Max_rotation.Text" xml:space="preserve">
-    <value>角度值（最大值）</value>
-  </data>
-  <data name="button_Text_Min_circle.Text" xml:space="preserve">
-    <value>圆上值（最小值）</value>
-  </data>
-  <data name="button_Text_Min_rotation.Text" xml:space="preserve">
-    <value>角度值（最小值）</value>
+    <value>顶部图像</value>
   </data>
 </root>

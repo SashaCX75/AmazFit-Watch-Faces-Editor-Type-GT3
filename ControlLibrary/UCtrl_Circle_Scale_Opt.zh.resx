@@ -304,4 +304,13 @@
   <data name="label1.Text" xml:space="preserve">
     <value>颜色</value>
   </data>
+  <data name="comboBox_scaleCircle_lineCap.Items" xml:space="preserve">
+    <value>圆</value>
+  </data>
+  <data name="comboBox_scaleCircle_lineCap.Items1" xml:space="preserve">
+    <value>平坦</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>行尾</value>
+  </data>
 </root>

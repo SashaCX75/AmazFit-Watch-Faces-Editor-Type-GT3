@@ -310,4 +310,31 @@
   <data name="label09.Text" xml:space="preserve">
     <value>PAI</value>
   </data>
+  <data name="comboBox_WindDirection.Items" xml:space="preserve">
+    <value>N-北</value>
+  </data>
+  <data name="comboBox_WindDirection.Items1" xml:space="preserve">
+    <value>NE-东北</value>
+  </data>
+  <data name="comboBox_WindDirection.Items2" xml:space="preserve">
+    <value>E-东</value>
+  </data>
+  <data name="comboBox_WindDirection.Items3" xml:space="preserve">
+    <value>SE-东南</value>
+  </data>
+  <data name="comboBox_WindDirection.Items4" xml:space="preserve">
+    <value>S-南</value>
+  </data>
+  <data name="comboBox_WindDirection.Items5" xml:space="preserve">
+    <value>SW-西南</value>
+  </data>
+  <data name="comboBox_WindDirection.Items6" xml:space="preserve">
+    <value>W-西</value>
+  </data>
+  <data name="comboBox_WindDirection.Items7" xml:space="preserve">
+    <value>NW-西北</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>风向</value>
+  </data>
 </root>

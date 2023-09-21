@@ -338,4 +338,10 @@
   <data name="tabPage_second.Text" xml:space="preserve">
     <value>秒针</value>
   </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>前景图像</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>前景图像坐标</value>
+  </data>
 </root>

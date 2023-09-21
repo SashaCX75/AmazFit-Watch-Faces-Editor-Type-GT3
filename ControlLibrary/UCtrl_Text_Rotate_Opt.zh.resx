@@ -117,15 +117,45 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="checkBox_show_in_startPos.Text" xml:space="preserve">
-    <value>预览时在开始位置显示元素</value>
+  <data name="label_angle.Text" xml:space="preserve">
+    <value>角度</value>
+  </data>
+  <data name="checkBox_addZero.Text" xml:space="preserve">
+    <value>前面加0</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="checkBox_anim_two_sides.Size" type="System.Drawing.Size, System.Drawing">
-    <value>159, 17</value>
+  <data name="label03.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 13</value>
   </data>
-  <data name="checkBox_anim_two_sides.Text" xml:space="preserve">
-    <value>双向移动</value>
+  <data name="label03.Text" xml:space="preserve">
+    <value>间隔</value>
+  </data>
+  <data name="label_imageError.Text" xml:space="preserve">
+    <value>错误图像</value>
+  </data>
+  <data name="label_imageDecimalPoint.Text" xml:space="preserve">
+    <value>小数分隔符</value>
+  </data>
+  <data name="label_unit_miles.Text" xml:space="preserve">
+    <value>单位（毫升）</value>
+  </data>
+  <data name="comboBox_alignment.Items" xml:space="preserve">
+    <value>左对齐</value>
+  </data>
+  <data name="comboBox_alignment.Items1" xml:space="preserve">
+    <value>居中对齐</value>
+  </data>
+  <data name="comboBox_alignment.Items2" xml:space="preserve">
+    <value>右对齐</value>
+  </data>
+  <data name="label_unit.Text" xml:space="preserve">
+    <value>单位</value>
+  </data>
+  <data name="label09.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 13</value>
+  </data>
+  <data name="label09.Text" xml:space="preserve">
+    <value>对齐</value>
   </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -140,6 +170,12 @@
         v//mQ5XiBhMmTGD7+fNn7t+/f/dp9cj+t1mkBvTC7wO/f//OX7hoIQdUGWHw7v27LLcZxv8dZtkCw+Mf
         YZvRQX9/PxvQkJx3797lIWxmYAAA7pt3k8xS7ogAAAAASUVORK5CYII=
 </value>
+  </data>
+  <data name="вставитьКоординатуХToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 26</value>
+  </data>
+  <data name="вставитьКоординатуХToolStripMenuItem.Text" xml:space="preserve">
+    <value>粘贴X坐标</value>
   </data>
   <data name="копироватьToolStripMenuItemX.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -156,6 +192,12 @@
         aTd35+adAzmrI4ijA3Amk+lat7fXT4Snqp0uA/VkLJcUmL06e4e4fy2j0XjJYn28trhoXjWbLasWi/UT
         gfobN285p6dNt5F2ps/+r+K4P4wyYm9nlNBiAAAAAElFTkSuQmCC
 </value>
+  </data>
+  <data name="копироватьToolStripMenuItemX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 26</value>
+  </data>
+  <data name="копироватьToolStripMenuItemX.Text" xml:space="preserve">
+    <value>复制</value>
   </data>
   <data name="вставитьToolStripMenuItemX.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -174,6 +216,15 @@
         zqO/TnAxx2CuMF/jKtTrXEWk1Wk1ZkEQhL+gXkz+KXzH3gAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="вставитьToolStripMenuItemX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 26</value>
+  </data>
+  <data name="вставитьToolStripMenuItemX.Text" xml:space="preserve">
+    <value>粘贴</value>
+  </data>
+  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 82</value>
+  </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
@@ -187,6 +238,12 @@
         v//mQ5XiBhMmTGD7+fNn7t+/f/dp9cj+t1mkBvTC7wO/f//OX7hoIQdUGWHw7v27LLcZxv8dZtkCw+Mf
         YZvRQX9/PxvQkJx3797lIWxmYAAA7pt3k8xS7ogAAAAASUVORK5CYII=
 </value>
+  </data>
+  <data name="вставитьКоординатуYToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 26</value>
+  </data>
+  <data name="вставитьКоординатуYToolStripMenuItem.Text" xml:space="preserve">
+    <value>粘贴Y坐标</value>
   </data>
   <data name="копироватьToolStripMenuItemY.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -203,6 +260,12 @@
         aTd35+adAzmrI4ijA3Amk+lat7fXT4Snqp0uA/VkLJcUmL06e4e4fy2j0XjJYn28trhoXjWbLasWi/UT
         gfobN285p6dNt5F2ps/+r+K4P4wyYm9nlNBiAAAAAElFTkSuQmCC
 </value>
+  </data>
+  <data name="копироватьToolStripMenuItemY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 26</value>
+  </data>
+  <data name="копироватьToolStripMenuItemY.Text" xml:space="preserve">
+    <value>复制</value>
   </data>
   <data name="вставитьToolStripMenuItemY.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -221,65 +284,31 @@
         zqO/TnAxx2CuMF/jKtTrXEWk1Wk1ZkEQhL+gXkz+KXzH3gAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="label01.Text" xml:space="preserve">
-    <value>起始位置坐标</value>
-  </data>
-  <data name="label05.Text" xml:space="preserve">
-    <value>帧速率，fps</value>
-  </data>
-  <data name="label02.Text" xml:space="preserve">
-    <value>图像</value>
-  </data>
-  <data name="label06.Text" xml:space="preserve">
-    <value>终点位置坐标</value>
-  </data>
-  <data name="label09.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 13</value>
-  </data>
-  <data name="label09.Text" xml:space="preserve">
-    <value>动画循环持续时间</value>
-  </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>141, 13</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>动画循环数*</value>
-  </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value>*要无限重复，请将动画循环数设置为0。
-退出AOD模式后，动画循环计数被重置。</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>选择动画</value>
-  </data>
-  <data name="button_del.Text" xml:space="preserve">
-    <value>移除动画</value>
-  </data>
-  <data name="button_add.Text" xml:space="preserve">
-    <value>添加动画</value>
-  </data>
-  <data name="checkBox_visible.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 17</value>
-  </data>
-  <data name="checkBox_visible.Text" xml:space="preserve">
-    <value>显示动画</value>
-  </data>
-  <data name="вставитьToolStripMenuItemX.Text" xml:space="preserve">
-    <value>粘贴</value>
+  <data name="вставитьToolStripMenuItemY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 26</value>
   </data>
   <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
     <value>粘贴</value>
   </data>
-  <data name="вставитьКоординатуYToolStripMenuItem.Text" xml:space="preserve">
-    <value>粘贴Y坐标</value>
+  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
+    <value>136, 82</value>
   </data>
-  <data name="вставитьКоординатуХToolStripMenuItem.Text" xml:space="preserve">
-    <value>粘贴X坐标</value>
+  <data name="label01.Text" xml:space="preserve">
+    <value>起始图像</value>
   </data>
-  <data name="копироватьToolStripMenuItemX.Text" xml:space="preserve">
-    <value>复制</value>
+  <data name="label02.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 13</value>
   </data>
-  <data name="копироватьToolStripMenuItemY.Text" xml:space="preserve">
-    <value>复制</value>
+  <data name="label02.Text" xml:space="preserve">
+    <value>坐标</value>
+  </data>
+  <data name="checkBox_unit_in_alignment.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 30</value>
+  </data>
+  <data name="checkBox_unit_in_alignment.Text" xml:space="preserve">
+    <value>对齐时考虑度量单位</value>
+  </data>
+  <data name="label_minus_image.Text" xml:space="preserve">
+    <value>符号 "-"</value>
   </data>
 </root>
