@@ -49,6 +49,72 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddButtonFunction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddButtonFunction.Designer.cs">
+      <DependentUpon>AddButtonFunction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\ButtonFunctions.de.Designer.cs">
+      <DependentUpon>ButtonFunctions.de.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\ButtonFunctions.it.Designer.cs">
+      <DependentUpon>ButtonFunctions.it.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\ButtonFunctions.es.Designer.cs">
+      <DependentUpon>ButtonFunctions.es.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\ButtonFunctions.uk.Designer.cs">
+      <DependentUpon>ButtonFunctions.uk.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\ButtonFunctions.en.Designer.cs">
+      <DependentUpon>ButtonFunctions.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\ButtonFunctions.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ButtonFunctions.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Buttons.de.Designer.cs">
+      <DependentUpon>Buttons.de.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\Buttons.it.Designer.cs">
+      <DependentUpon>Buttons.it.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\Buttons.es.Designer.cs">
+      <DependentUpon>Buttons.es.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\Buttons.uk.Designer.cs">
+      <DependentUpon>Buttons.uk.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\Buttons.en.Designer.cs">
+      <DependentUpon>Buttons.en.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Properties\Buttons.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Buttons.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -200,6 +266,18 @@
     </Compile>
     <Compile Include="Elements\UCtrl_Altimeter_Elm.Designer.cs">
       <DependentUpon>UCtrl_Altimeter_Elm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Elements\UCtrl_Buttons_Elm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Elements\UCtrl_Buttons_Elm.Designer.cs">
+      <DependentUpon>UCtrl_Buttons_Elm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCtrl_Button_Opt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCtrl_Button_Opt.Designer.cs">
+      <DependentUpon>UCtrl_Button_Opt.cs</DependentUpon>
     </Compile>
     <Compile Include="UCtrl_Circle_Scale_Opt.cs">
       <SubType>UserControl</SubType>
@@ -457,6 +535,24 @@
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AddButtonFunction.de.resx">
+      <DependentUpon>AddButtonFunction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddButtonFunction.en.resx">
+      <DependentUpon>AddButtonFunction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddButtonFunction.es.resx">
+      <DependentUpon>AddButtonFunction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddButtonFunction.it.resx">
+      <DependentUpon>AddButtonFunction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddButtonFunction.resx">
+      <DependentUpon>AddButtonFunction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddButtonFunction.uk.resx">
+      <DependentUpon>AddButtonFunction.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Activity_Elm.cs.resx">
       <DependentUpon>UCtrl_Activity_Elm.cs</DependentUpon>
     </EmbeddedResource>
@@ -620,6 +716,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Battery_Elm.zh.resx">
       <DependentUpon>UCtrl_Battery_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Buttons_Elm.de.resx">
+      <DependentUpon>UCtrl_Buttons_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Buttons_Elm.en.resx">
+      <DependentUpon>UCtrl_Buttons_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Buttons_Elm.es.resx">
+      <DependentUpon>UCtrl_Buttons_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Buttons_Elm.it.resx">
+      <DependentUpon>UCtrl_Buttons_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Calories_Elm.cs.resx">
       <DependentUpon>UCtrl_Calories_Elm.cs</DependentUpon>
@@ -1276,6 +1384,54 @@
     <EmbeddedResource Include="Elements\UCtrl_Wind_Elm.zh.resx">
       <DependentUpon>UCtrl_Wind_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\ButtonFunctions.de.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ButtonFunctions.de.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\ButtonFunctions.it.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ButtonFunctions.it.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\ButtonFunctions.es.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ButtonFunctions.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\ButtonFunctions.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ButtonFunctions.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\ButtonFunctions.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ButtonFunctions.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\ButtonFunctions.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ButtonFunctions.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Buttons.de.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Buttons.de.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Buttons.it.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Buttons.it.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Buttons.es.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Buttons.es.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Buttons.uk.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Buttons.uk.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Buttons.en.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Buttons.en.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Buttons.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Buttons.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -1508,6 +1664,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Altimeter_Elm.resx">
       <DependentUpon>UCtrl_Altimeter_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Buttons_Elm.resx">
+      <DependentUpon>UCtrl_Buttons_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Button_Opt.de.resx">
+      <DependentUpon>UCtrl_Button_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Button_Opt.en.resx">
+      <DependentUpon>UCtrl_Button_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Button_Opt.es.resx">
+      <DependentUpon>UCtrl_Button_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Button_Opt.it.resx">
+      <DependentUpon>UCtrl_Button_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Button_Opt.resx">
+      <DependentUpon>UCtrl_Button_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Button_Opt.uk.resx">
+      <DependentUpon>UCtrl_Button_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Circle_Scale_Opt.cs.resx">
       <DependentUpon>UCtrl_Circle_Scale_Opt.cs</DependentUpon>
@@ -2281,6 +2458,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\direction.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Sports.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tools.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\App.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Script.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\help.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

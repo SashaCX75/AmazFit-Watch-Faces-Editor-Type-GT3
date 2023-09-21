@@ -16,6 +16,7 @@ namespace ControlLibrary
         private bool setValue; // режим задания параметров
         private int imagesCount = 10;
         private bool imagesCountEnable = true;
+        private bool shortcutEnable;
 
         private List<string> ListImagesFullName = new List<string>(); // перечень путей к файлам с картинками
         public Object _ElementWithImages;
@@ -48,6 +49,21 @@ namespace ControlLibrary
                 numericUpDown_pictures_count.Enabled = imagesCountEnable;
                 label03.Enabled = imagesCountEnable;
                 setValue = false;
+            }
+        }
+
+        /// <summary>Отображение чекбокса "Ярлык"</summary>
+        [Description("Отображение чекбокса \"Ярлык\"")]
+        public virtual bool Shortcut
+        {
+            get
+            {
+                return shortcutEnable;
+            }
+            set
+            {
+                shortcutEnable = value;
+                checkBox_shortcut.Enabled = shortcutEnable;
             }
         }
 
@@ -394,6 +410,15 @@ namespace ControlLibrary
                     numericUpDown_imageX.UpButton();
 
                 e.Handled = true;
+            }
+        }
+
+        private void checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ValueChanged != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                ValueChanged(this, eventArgs);
             }
         }
     }

@@ -484,6 +484,15 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Количество изображений для отображения пульса должно быть равным 6..
+        /// </summary>
+        internal static string Message_HR_Image_Count_Error {
+            get {
+                return ResourceManager.GetString("Message_HR_Image_Count_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Изображение не должно быть монохромным и должно быть в формате 32bit.
         /// </summary>
         internal static string Message_Image32bit {
@@ -745,7 +754,7 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Указана незвестная цветовая схема для модели: .
+        ///   Ищет локализованную строку, похожую на Указана неизвестная цветовая схема для модели:.
         /// </summary>
         internal static string Message_Wrong_ColorScheme {
             get {

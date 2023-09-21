@@ -123,6 +123,12 @@
   <data name="Dialog_Title_Font_Add" xml:space="preserve">
     <value>Seleziona il file dei Caratteri</value>
   </data>
+  <data name="Message_Error_Caption" xml:space="preserve">
+    <value>Errore</value>
+  </data>
+  <data name="Message_ReadScript_Error" xml:space="preserve">
+    <value>Errore nella lettura dello script utente</value>
+  </data>
   <data name="Message_Warning_Caption" xml:space="preserve">
     <value>Attenzione</value>
   </data>

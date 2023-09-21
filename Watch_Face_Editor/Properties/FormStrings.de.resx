@@ -183,6 +183,27 @@
   <data name="Form_PreviewX" xml:space="preserve">
     <value>Vorschau [X =</value>
   </data>
+  <data name="Img_Convert_Error_NoPalette" xml:space="preserve">
+    <value>Fehlende Farbkarte</value>
+  </data>
+  <data name="Img_Convert_Error_Not32bit" xml:space="preserve">
+    <value>Das Bild darf nicht monochrom sein und muss im 32-Bit-Format vorliegen.</value>
+  </data>
+  <data name="Img_Convert_Error_NotSave1" xml:space="preserve">
+    <value>Datei</value>
+  </data>
+  <data name="Img_Convert_Error_NotSave2" xml:space="preserve">
+    <value>wurde noch nicht gespeichert.</value>
+  </data>
+  <data name="Img_Convert_Error_ReadErr" xml:space="preserve">
+    <value>Fehler bei der Bildverarbeitung</value>
+  </data>
+  <data name="Img_Convert_Error_SaveImg" xml:space="preserve">
+    <value>Versucht, das Abbild zu speichern?</value>
+  </data>
+  <data name="Img_Convert_Error_WrongImg" xml:space="preserve">
+    <value>Falsches Format der Quelldatei.</value>
+  </data>
   <data name="Message_AnimationAOD_Text" xml:space="preserve">
     <value>Sie können dem AOD-Bildschirm keine Animation hinzufügen.</value>
   </data>
@@ -236,6 +257,9 @@
   </data>
   <data name="Message_GoToFile_Text" xml:space="preserve">
     <value>Zur Datei gehen?</value>
+  </data>
+  <data name="Message_HR_Image_Count_Error" xml:space="preserve">
+    <value>Die Anzahl der Bilder für die Herzfrequenz sollte 6 betragen.</value>
   </data>
   <data name="Message_Image32bit" xml:space="preserve">
     <value>Das Bild darf nicht monochrom sein und muss im 32-Bit-Format vorliegen.</value>
@@ -320,6 +344,9 @@
   </data>
   <data name="Message_Warning_Information" xml:space="preserve">
     <value>Information</value>
+  </data>
+  <data name="Message_Wrong_ColorScheme" xml:space="preserve">
+    <value>Es wurde ein unbekanntes Farbschema für das Modell festgelegt:</value>
   </data>
   <data name="Message_Wrong_Original_Image" xml:space="preserve">
     <value>Ungültiges Bildformat</value>

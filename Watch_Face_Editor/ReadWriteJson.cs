@@ -12,6 +12,7 @@ using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Drawing;
 using System.Windows.Forms.VisualStyles;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Watch_Face_Editor
 {
@@ -851,6 +852,14 @@ namespace Watch_Face_Editor
                 //pause_call += out_pause_call;
             }
 
+            // кнопки
+            if (Watch_Face.Buttons != null && Watch_Face.Buttons.enable)
+            {
+                AddElementToJS(Watch_Face.Buttons, "ONLY_NORMAL", ref variables, ref items, ref scale_update_function,
+                    ref resume_call, ref pause_call, ref time_update,
+                    ref text_update, ref fonts_cache);
+            }
+
             if (items.IndexOf("timeSensor =") >= 0) variables += TabInString(4) + "let timeSensor = ''" + Environment.NewLine;
 
             // добавляем пользовательские скрипты
@@ -1311,7 +1320,7 @@ namespace Watch_Face_Editor
                                 optionsMinute_rotation, show_level, "timeNaw", "TIME", "valueMinute", "minute", 2, ref resume_call, ref pause_call);
                         }
                         // Second_Rotate
-                        if (index == hourPosition_rotation && optionsSecond_rotation.Length > 5)
+                        if (index == secondPosition_rotation && optionsSecond_rotation.Length > 5)
                         {
                             AddTextRotationJS(DigitalTime.Second_rotation, optionNameStart, "second_", ref variables, ref items, ref text_update,
                                 optionsSecond_rotation, show_level, "timeNaw", "TIME", "valueSecond", "second", 2, ref resume_call, ref pause_call);
@@ -6727,7 +6736,7 @@ namespace Watch_Face_Editor
                         iconOptions = IMG_Options(img_icon, show_level);
                     }
 
-                    for (int index = 1; index <= 10; index++)
+                    for (int index = 1; index <= 15; index++)
                     {
                         // Images
                         if (index == imagesPosition && imagesOptions.Length > 5)
@@ -7424,6 +7433,34 @@ namespace Watch_Face_Editor
                                 anim_rotate_index++;
                             }
                         }
+                    }
+                    break;
+                #endregion
+
+
+
+                #region ElementButtons
+                case "ElementButtons":
+                    ElementButtons buttons = (ElementButtons)element;
+
+                    if (!buttons.enable) return;
+                    if (buttons.Button == null || buttons.Button.Count == 0) return;
+
+                    int number = 1;
+                    foreach (Button button in buttons.Button)
+                    {
+                        if (button != null && button.visible)
+                        {
+                            string optionsButton = Buttons_Options(button, show_level);
+                            if (optionsButton.Length > 5)
+                            {
+                                string name = "Button_" + (number).ToString();
+                                variables += TabInString(4) + "let " + name + " = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) + name +
+                                    " = hmUI.createWidget(hmUI.widget.BUTTON, {" + optionsButton + TabInString(6) + "}); // end button" + Environment.NewLine;
+                            } 
+                        }
+                        number++;
                     }
                     break;
                     #endregion
@@ -11382,6 +11419,11 @@ namespace Watch_Face_Editor
                 options += TabInString(7 + tabOffset) + "image_array: " + img_array + "," + Environment.NewLine;
                 options += TabInString(7 + tabOffset) + "image_length: " + img_level.image_length.ToString() + "," + Environment.NewLine;
 
+                if (img_level.shortcut)
+                {
+                    options += TabInString(7 + tabOffset) + "shortcut: true," + Environment.NewLine;
+                }
+
                 if (type.Length > 0)
                 {
                     options += TabInString(7 + tabOffset) + "type: hmUI.data_type." + type + "," + Environment.NewLine;
@@ -12602,6 +12644,61 @@ namespace Watch_Face_Editor
             }
                 options += TabInString(7) + "type: hmUI.data_type." + type + "," + Environment.NewLine;
                 options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+            //}
+            return options;
+        }
+
+        private string Buttons_Options(Button button, string show_level)
+        {
+            string options = Environment.NewLine;
+            if (button == null) return options;
+            options += TabInString(7) + "x: " + button.x.ToString() + "," + Environment.NewLine;
+            options += TabInString(7) + "y: " + button.y.ToString() + "," + Environment.NewLine;
+            options += TabInString(7) + "w: " + button.w.ToString() + "," + Environment.NewLine;
+            options += TabInString(7) + "h: " + button.h.ToString() + "," + Environment.NewLine;
+            options += TabInString(7) + "text: '" + button.text + "'," + Environment.NewLine;
+            options += TabInString(7) + "color: " + button.color + "," + Environment.NewLine;
+            options += TabInString(7) + "text_size: " + button.text_size.ToString() + "," + Environment.NewLine;
+
+            if (button.press_src != null && button.press_src.Length > 0 && button.normal_src != null && button.normal_src.Length > 0)
+            {
+                if (button.press_src != null && button.press_src.Length > 0)
+                    options += TabInString(7) + "press_src: '" + button.press_src + ".png'," + Environment.NewLine;
+                if (button.normal_src != null && button.normal_src.Length > 0)
+                    options += TabInString(7) + "normal_src: '" + button.normal_src + ".png'," + Environment.NewLine;
+            }
+            else
+            {
+                if (button.radius > 0) options += TabInString(7) + "radius: " + button.radius.ToString() + "," + Environment.NewLine;
+                options += TabInString(7) + "press_color: " + button.press_color + "," + Environment.NewLine;
+                options += TabInString(7) + "normal_color: " + button.normal_color + "," + Environment.NewLine;
+            }
+
+            if (button.click_func.Length > 0)
+            {
+                options += TabInString(7) + "click_func: (button_widget) => {" + Environment.NewLine;
+                string[] subString = button.click_func.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (string str in subString)
+                {
+                    options += TabInString(8) + str + Environment.NewLine;
+                }
+                //options += TabInString(8) + button.click_func + Environment.NewLine;
+                options += TabInString(7) + "}, // end func" + Environment.NewLine;
+            }
+
+            if (button.longpress_func.Length > 0)
+            {
+                options += TabInString(7) + "longpress_func: (button_widget) => {" + Environment.NewLine;
+                string[] subString = button.longpress_func.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (string str in subString)
+                {
+                    options += TabInString(8) + str + Environment.NewLine;
+                }
+                //options += TabInString(8) + button.click_func + Environment.NewLine;
+                options += TabInString(7) + "}, // end func" + Environment.NewLine;
+            }
+
+            options += TabInString(7) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
             //}
             return options;
         }
@@ -15368,6 +15465,16 @@ namespace Watch_Face_Editor
                             if (repeatAlert != null) Watch_Face.RepeatAlert = repeatAlert;
                             break;
                         #endregion
+
+                        #region BUTTON
+                        case "BUTTON":
+                            Button button = Object_BUTTON(parametrs);
+
+                            if (Watch_Face.Buttons == null) Watch_Face.Buttons = new ElementButtons();
+                            if (Watch_Face.Buttons.Button == null) Watch_Face.Buttons.Button = new List<Button>();
+                            Watch_Face.Buttons.Button.Add(button);
+                            break;
+                            #endregion
                     }
                 }
 
@@ -16955,6 +17062,7 @@ namespace Watch_Face_Editor
                                 steps.Images.image_length = imgLevel.image_length;
                                 steps.Images.X = imgLevel.X;
                                 steps.Images.Y = imgLevel.Y;
+                                steps.Images.shortcut = imgLevel.shortcut;
                                 steps.Images.visible = true;
                                 steps.Images.position = offset;
                             }
@@ -17020,6 +17128,7 @@ namespace Watch_Face_Editor
                                 calorie.Images.image_length = imgLevel.image_length;
                                 calorie.Images.X = imgLevel.X;
                                 calorie.Images.Y = imgLevel.Y;
+                                calorie.Images.shortcut = imgLevel.shortcut;
                                 calorie.Images.visible = true;
                                 calorie.Images.position = offset;
                             }
@@ -17052,6 +17161,7 @@ namespace Watch_Face_Editor
                                 heart.Images.image_length = 6;
                                 heart.Images.X = imgLevel.X;
                                 heart.Images.Y = imgLevel.Y;
+                                heart.Images.shortcut = imgLevel.shortcut;
                                 heart.Images.visible = true;
                                 heart.Images.position = offset;
                                 if (imgLevel.image_length != 6)
@@ -17087,6 +17197,7 @@ namespace Watch_Face_Editor
                                 pai.Images.image_length = imgLevel.image_length;
                                 pai.Images.X = imgLevel.X;
                                 pai.Images.Y = imgLevel.Y;
+                                pai.Images.shortcut = imgLevel.shortcut;
                                 pai.Images.visible = true;
                                 pai.Images.position = offset;
                             }
@@ -17121,6 +17232,7 @@ namespace Watch_Face_Editor
                                 stand.Images.image_length = imgLevel.image_length;
                                 stand.Images.X = imgLevel.X;
                                 stand.Images.Y = imgLevel.Y;
+                                stand.Images.shortcut = imgLevel.shortcut;
                                 stand.Images.visible = true;
                                 stand.Images.position = offset;
                             }
@@ -17151,6 +17263,7 @@ namespace Watch_Face_Editor
                                 activity.Images.image_length = imgLevel.image_length;
                                 activity.Images.X = imgLevel.X;
                                 activity.Images.Y = imgLevel.Y;
+                                activity.Images.shortcut = imgLevel.shortcut;
                                 activity.Images.visible = true;
                                 activity.Images.position = offset;
                             }
@@ -17178,6 +17291,7 @@ namespace Watch_Face_Editor
                                 stress.Images.image_length = imgLevel.image_length;
                                 stress.Images.X = imgLevel.X;
                                 stress.Images.Y = imgLevel.Y;
+                                stress.Images.shortcut = imgLevel.shortcut;
                                 stress.Images.visible = true;
                                 stress.Images.position = offset;
                             }
@@ -17212,6 +17326,7 @@ namespace Watch_Face_Editor
                                 fat_burning.Images.image_length = imgLevel.image_length;
                                 fat_burning.Images.X = imgLevel.X;
                                 fat_burning.Images.Y = imgLevel.Y;
+                                fat_burning.Images.shortcut = imgLevel.shortcut;
                                 fat_burning.Images.visible = true;
                                 fat_burning.Images.position = offset;
                             }
@@ -17246,6 +17361,7 @@ namespace Watch_Face_Editor
                                 weather.Images.image_length = imgLevel.image_length;
                                 weather.Images.X = imgLevel.X;
                                 weather.Images.Y = imgLevel.Y;
+                                weather.Images.shortcut = imgLevel.shortcut;
                                 weather.Images.visible = true;
                                 weather.Images.position = offset;
                             }
@@ -17273,6 +17389,7 @@ namespace Watch_Face_Editor
                                 uv_index.Images.image_length = imgLevel.image_length;
                                 uv_index.Images.X = imgLevel.X;
                                 uv_index.Images.Y = imgLevel.Y;
+                                uv_index.Images.shortcut = imgLevel.shortcut;
                                 uv_index.Images.visible = true;
                                 uv_index.Images.position = offset;
                             }
@@ -17300,6 +17417,7 @@ namespace Watch_Face_Editor
                                 humidity.Images.image_length = imgLevel.image_length;
                                 humidity.Images.X = imgLevel.X;
                                 humidity.Images.Y = imgLevel.Y;
+                                humidity.Images.shortcut = imgLevel.shortcut;
                                 humidity.Images.visible = true;
                                 humidity.Images.position = offset;
                             }
@@ -17333,6 +17451,7 @@ namespace Watch_Face_Editor
                                 sunrise.Images.image_length = imgLevel.image_length;
                                 sunrise.Images.X = imgLevel.X;
                                 sunrise.Images.Y = imgLevel.Y;
+                                sunrise.Images.shortcut = imgLevel.shortcut;
                                 sunrise.Images.visible = true;
                                 sunrise.Images.position = offset;
                             }
@@ -17361,6 +17480,7 @@ namespace Watch_Face_Editor
                                 wind.Images.image_length = imgLevel.image_length;
                                 wind.Images.X = imgLevel.X;
                                 wind.Images.Y = imgLevel.Y;
+                                wind.Images.shortcut = imgLevel.shortcut;
                                 wind.Images.visible = true;
                                 wind.Images.position = offset;
                             }
@@ -17389,6 +17509,7 @@ namespace Watch_Face_Editor
                                 wind.Direction.image_length = imgLevel.image_length;
                                 wind.Direction.X = imgLevel.X;
                                 wind.Direction.Y = imgLevel.Y;
+                                wind.Direction.shortcut = imgLevel.shortcut;
                                 wind.Direction.visible = true;
                                 wind.Direction.position = offset;
                             }
@@ -17419,6 +17540,7 @@ namespace Watch_Face_Editor
                                 moon.Images.image_length = imgLevel.image_length;
                                 moon.Images.X = imgLevel.X;
                                 moon.Images.Y = imgLevel.Y;
+                                moon.Images.shortcut = imgLevel.shortcut;
                                 moon.Images.visible = true;
                                 moon.Images.position = 1;
                             }
@@ -17561,7 +17683,7 @@ namespace Watch_Face_Editor
                                 heart.Segments.visible = true;
                                 heart.Segments.position = offset;
                                 if (imgProgress.image_length != 6)
-                                    MessageBox.Show("Количество изображений для отображения пульса должно быть равным 6.",
+                                    MessageBox.Show(Properties.FormStrings.Message_HR_Image_Count_Error,
                                         Properties.FormStrings.Message_Warning_Caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }
@@ -22763,7 +22885,7 @@ namespace Watch_Face_Editor
                 //str = str.Remove(0, valueLenght + 1);
 
 
-                if (valueStr.IndexOf("switch (editType_") < 0)
+                if (valueStr.IndexOf("switch (editType_") < 0 && valueStr.IndexOf("hmUI.createWidget(hmUI.widget.BUTTON") < 0)
                 {
                     //int firstIndex = valueStr.IndexOf("(");
                     int breackLineIndex = valueStr.IndexOf(";");
@@ -22785,22 +22907,52 @@ namespace Watch_Face_Editor
                 }
                 else
                 {
-                    int stringStartIndex = valueStr.IndexOf("switch (editType_");
-                    valueStr = valueStr.Remove(0, stringStartIndex);
-                    GetParametrsList.Add(valueStr);
+                    if (valueStr.IndexOf("switch (editType_") > 0)
+                    {
+                        int stringStartIndex = valueStr.IndexOf("switch (editType_");
+                        valueStr = valueStr.Remove(0, stringStartIndex);
+                        GetParametrsList.Add(valueStr);
+                    }
+                    else if (valueStr.IndexOf("hmUI.createWidget(hmUI.widget.BUTTON") > 0)
+                    {
+                        //int stringStartIndex = valueStr.IndexOf("hmUI.createWidget(hmUI.widget.BUTTON");
+                        //valueStr = valueStr.Remove(0, stringStartIndex);
+                        //GetParametrsList.Add(valueStr);
+
+                        int firstIndex = valueStr.IndexOf("(");
+                        if (firstIndex >= 0)
+                        {
+                            int stringStartIndex = valueStr.Remove(firstIndex).LastIndexOf("\n");
+                            if (stringStartIndex > 0 && stringStartIndex < valueStr.Length) valueStr = valueStr.Remove(0, stringStartIndex);
+                            valueStr = valueStr.TrimStart();
+
+                            GetParametrsList.Add(valueStr);
+                        }
+                    }
                 }
                 str = str.Remove(0, valueLenght + 1);
-                valueLenght = str.IndexOf("});");
+                valueLenght = str.IndexOf("});") + 2;
                 int posIf = str.IndexOf("if (screenType");
                 if (posIf >= 0 && posIf < valueLenght) valueLenght = str.IndexOf("};") - 1;
 
-                int posSwitch = str.IndexOf("switch (editType");
-                if (posSwitch >= 0 && posSwitch < valueLenght) 
-                    valueLenght = str.IndexOf("}; // end switch") - 1;
-                if (valueLenght >= 0) valueLenght = valueLenght + 2;
-
                 int posFunction = str.IndexOf("function ");
-                if (posFunction >= 0 && posFunction < valueLenght)
+                int posSwitch = str.IndexOf("switch (editType");
+                //if (posSwitch >= 0 && posSwitch < valueLenght) 
+                //    valueLenght = str.IndexOf("}; // end switch") - 1;
+                //if (valueLenght >= 0) valueLenght = valueLenght + 2;
+
+                int posButton = str.IndexOf("hmUI.createWidget(hmUI.widget.BUTTON");
+                if (posButton >= 0 && posButton < valueLenght)
+                {
+                    valueLenght = str.IndexOf("}); // end button") - 1;
+                    if (valueLenght >= 0) valueLenght = valueLenght + "}); // end button".Length + 1;
+                }
+                else if (posSwitch >= 0 && posSwitch < valueLenght)
+                {
+                    valueLenght = str.IndexOf("}; // end switch") - 1;
+                    if (valueLenght >= 0) valueLenght = valueLenght + 2;
+                }
+                else if (posFunction >= 0 && posFunction < valueLenght)
                 {
                     string functionName = "";
                     string functionText = GetFunction(str, out functionName);
@@ -22809,6 +22961,17 @@ namespace Watch_Face_Editor
                     sartIndex += functionText.Length;
                     valueLenght = str.IndexOf("}", sartIndex) + 1;
                 }
+
+                //int posFunction = str.IndexOf("function ");
+                //if (posFunction >= 0 && posFunction < valueLenght)
+                //{
+                //    string functionName = "";
+                //    string functionText = GetFunction(str, out functionName);
+                //    int sartIndex = str.IndexOf("{");
+                //    if (sartIndex < 0) sartIndex = 0;
+                //    sartIndex += functionText.Length;
+                //    valueLenght = str.IndexOf("}", sartIndex) + 1;
+                //}
             }
 
             return GetParametrsList; ;
@@ -22868,6 +23031,7 @@ namespace Watch_Face_Editor
                 }
                 else endIndex = str.IndexOf("}", str.IndexOf("]"));
             }
+            if (str.IndexOf("hmUI.createWidget(hmUI.widget.BUTTON") > 0) endIndex = str.IndexOf("}); // end button");
 
             str = str.Substring(startIndex, endIndex - startIndex);
             str = str.Trim();
@@ -22899,7 +23063,14 @@ namespace Watch_Face_Editor
                     if (valueName == "bg_config") valueStr = str.Substring(1, str.IndexOf("]"));
                     if (valueName == "optional_types") valueStr = str.Substring(1, str.IndexOf("]"));
                     if (valueName == "select_list") valueStr = str.Substring(1, str.IndexOf("}"));
-                    valueStr = valueStr.Remove(0, startIndex + 1);
+                    if (valueName == "click_func" || valueName == "longpress_func") 
+                    {
+                        valueStr = str.Remove(0, str.IndexOf("\n", str.IndexOf("=>")));
+                        valueStr = valueStr.Substring(1, valueStr.IndexOf("}, // end func") - 1);
+                        if(valueStr.IndexOf("\n") > 0) valueStr = valueStr.Substring(0, valueStr.LastIndexOf("\n"));
+                        startIndex = -1;
+                    }
+                    if (startIndex > 0) valueStr = valueStr.Remove(0, startIndex + 1);
                     valueStr = valueStr.Trim();
 
                     if (returnParametrs.ContainsKey(valueName)) returnParametrs.Remove(valueName);
@@ -22913,6 +23084,8 @@ namespace Watch_Face_Editor
                 endIndex = str.IndexOf(Environment.NewLine);
                 if (str.StartsWith("bg_config")) endIndex = str.IndexOf(Environment.NewLine, str.IndexOf("]"));
                 if (str.StartsWith("select_list")) endIndex = str.IndexOf(Environment.NewLine, str.IndexOf("}"));
+                if (str.StartsWith("click_func")) endIndex = str.IndexOf(Environment.NewLine, str.IndexOf("}, // end func"));
+                if (str.StartsWith("longpress_func")) endIndex = str.IndexOf(Environment.NewLine, str.IndexOf("}, // end func"));
             }
 
             return returnParametrs;
@@ -24133,6 +24306,7 @@ namespace Watch_Face_Editor
                 if (parametrs.ContainsKey("x") && Int32.TryParse(parametrs["x"], out value)) imgLevel.X = value;
                 if (parametrs.ContainsKey("y") && Int32.TryParse(parametrs["y"], out value)) imgLevel.Y = value;
                 if (parametrs.ContainsKey("image_length") && Int32.TryParse(parametrs["image_length"], out value)) imgLevel.image_length = value;
+                if (parametrs.ContainsKey("shortcut")) imgLevel.shortcut = StringToBool(parametrs["shortcut"]);
 
                 if (parametrs.ContainsKey("type"))
                 {
@@ -24814,6 +24988,67 @@ namespace Watch_Face_Editor
 
 
             return repeatAlert;
+        }
+
+        private Button Object_BUTTON(Dictionary<string, string> parametrs)
+        {
+            Button button = new Button();
+            int value;
+            if (parametrs.ContainsKey("normal_src"))
+            {
+                string imgName = parametrs["normal_src"].Replace("'", "").Replace("\"", "");
+                imgName = Path.GetFileNameWithoutExtension(imgName);
+                button.normal_src = imgName;
+            }
+            if (parametrs.ContainsKey("press_src"))
+            {
+                string imgName = parametrs["press_src"].Replace("'", "").Replace("\"", "");
+                imgName = Path.GetFileNameWithoutExtension(imgName);
+                button.press_src = imgName;
+            }
+            if (parametrs.ContainsKey("x") && Int32.TryParse(parametrs["x"], out value)) button.x = value;
+            if (parametrs.ContainsKey("y") && Int32.TryParse(parametrs["y"], out value)) button.y = value;
+            if (parametrs.ContainsKey("w") && Int32.TryParse(parametrs["w"], out value)) button.w = value;
+            if (parametrs.ContainsKey("h") && Int32.TryParse(parametrs["h"], out value)) button.h = value;
+            if (parametrs.ContainsKey("text_size") && Int32.TryParse(parametrs["text_size"], out value)) button.text_size = value;
+            if (parametrs.ContainsKey("radius") && Int32.TryParse(parametrs["radius"], out value)) button.radius = value;
+            if (parametrs.ContainsKey("text")) button.text = parametrs["text"].Replace("'", "").Replace("\"", "");
+
+            if (parametrs.ContainsKey("color") && parametrs["color"].Length > 3) button.color = parametrs["color"];
+            if (parametrs.ContainsKey("normal_color") && parametrs["normal_color"].Length > 3) button.normal_color = parametrs["normal_color"];
+            if (parametrs.ContainsKey("press_color") && parametrs["press_color"].Length > 3) button.press_color = parametrs["press_color"];
+
+            if (parametrs.ContainsKey("click_func"))
+            {
+                string func = parametrs["click_func"];
+                button.click_func = RemoveTabOfString(func, 8);
+            }
+
+            if (parametrs.ContainsKey("longpress_func"))
+            {
+                string func = parametrs["longpress_func"];
+                button.longpress_func = RemoveTabOfString(func, 8);
+            }
+            button.visible = true;
+
+            return button;
+        }
+
+        private string RemoveTabOfString(string str, int count)
+        {
+            string newStr = str;
+            string tabStr = TabInString(count);
+            string[] strings = str.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
+            if (strings.Length > 1)
+            {
+                for (int index = 0; index < strings.Length; index++)
+                {
+                    if (strings[index].StartsWith(tabStr)) strings[index] = strings[index].Remove(0, tabStr.Length);
+                }
+                newStr = string.Join(Environment.NewLine, strings); 
+            }
+
+            return newStr;
         }
 
         private bool StringToBool(string str)

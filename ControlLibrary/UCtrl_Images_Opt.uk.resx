@@ -266,4 +266,10 @@
   <data name="label03.Text" xml:space="preserve">
     <value>Кількість зображень</value>
   </data>
+  <data name="checkBox_shortcut.Size" type="System.Drawing.Size, System.Drawing">
+    <value>58, 17</value>
+  </data>
+  <data name="checkBox_shortcut.Text" xml:space="preserve">
+    <value>Ярлик</value>
+  </data>
 </root>

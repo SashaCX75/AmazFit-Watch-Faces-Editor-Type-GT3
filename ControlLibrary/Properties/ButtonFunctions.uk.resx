@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Alarm" xml:space="preserve">
+    <value>Будильник</value>
+  </data>
+  <data name="AOD" xml:space="preserve">
+    <value>Налаштування часу AOD</value>
+  </data>
+  <data name="AODStyle" xml:space="preserve">
+    <value>Налаштування стилю AOD</value>
+  </data>
+  <data name="AppList" xml:space="preserve">
+    <value>Список програм</value>
+  </data>
+  <data name="Baro" xml:space="preserve">
+    <value>Барометр</value>
+  </data>
+  <data name="BatteryManager" xml:space="preserve">
+    <value>Статистика використання *</value>
+  </data>
+  <data name="Camera" xml:space="preserve">
+    <value>Керування камерою</value>
+  </data>
+  <data name="ClubCards" xml:space="preserve">
+    <value>Картка учасника</value>
+  </data>
+  <data name="Compass" xml:space="preserve">
+    <value>Компас</value>
+  </data>
+  <data name="Contacts" xml:space="preserve">
+    <value>Контакти *</value>
+  </data>
+  <data name="CountDown" xml:space="preserve">
+    <value>Зворотний відлік</value>
+  </data>
+  <data name="DialCall" xml:space="preserve">
+    <value>Номеронабирач *</value>
+  </data>
+  <data name="Display" xml:space="preserve">
+    <value>Дисплей</value>
+  </data>
+  <data name="DND" xml:space="preserve">
+    <value>Не турбувати</value>
+  </data>
+  <data name="DragList" xml:space="preserve">
+    <value>Іконки програм</value>
+  </data>
+  <data name="FindPhone" xml:space="preserve">
+    <value>Пошук телефону</value>
+  </data>
+  <data name="HeartRete" xml:space="preserve">
+    <value>Пульс</value>
+  </data>
+  <data name="Light" xml:space="preserve">
+    <value>Яскравість</value>
+  </data>
+  <data name="LocalMusic" xml:space="preserve">
+    <value>Музика (на годиннику) *</value>
+  </data>
+  <data name="LowBattery" xml:space="preserve">
+    <value>Економія заряду</value>
+  </data>
+  <data name="Menstrual" xml:space="preserve">
+    <value>Жіночий календар</value>
+  </data>
+  <data name="MoreList" xml:space="preserve">
+    <value>Меню "Ще" *</value>
+  </data>
+  <data name="MorningNews" xml:space="preserve">
+    <value>Ранкове привітання *</value>
+  </data>
+  <data name="OneKey" xml:space="preserve">
+    <value>Вимірювання одним дотиком</value>
+  </data>
+  <data name="PAI" xml:space="preserve">
+    <value>PAI</value>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Телефон *</value>
+  </data>
+  <data name="PhoneMusic" xml:space="preserve">
+    <value>Музика (на телефоні)</value>
+  </data>
+  <data name="PowerHint" xml:space="preserve">
+    <value>Енергоспоживання</value>
+  </data>
+  <data name="RecentCall" xml:space="preserve">
+    <value>Останні виклики *</value>
+  </data>
+  <data name="Respiration" xml:space="preserve">
+    <value>Дихання</value>
+  </data>
+  <data name="ReStart" xml:space="preserve">
+    <value>Вимкнути</value>
+  </data>
+  <data name="SaveMode" xml:space="preserve">
+    <value>Простий циферблат</value>
+  </data>
+  <data name="Schedule" xml:space="preserve">
+    <value>Календар</value>
+  </data>
+  <data name="ScheduleList" xml:space="preserve">
+    <value>Розклад</value>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Налаштування</value>
+  </data>
+  <data name="Sleep" xml:space="preserve">
+    <value>Сон</value>
+  </data>
+  <data name="SPO2" xml:space="preserve">
+    <value>SpO2 (Кисень)</value>
+  </data>
+  <data name="Sport" xml:space="preserve">
+    <value>Останнє тренування</value>
+  </data>
+  <data name="SportList" xml:space="preserve">
+    <value>Запуск тренування</value>
+  </data>
+  <data name="SportRecord" xml:space="preserve">
+    <value>Записи тренувань</value>
+  </data>
+  <data name="SportStatus" xml:space="preserve">
+    <value>Тренувальне навантаження</value>
+  </data>
+  <data name="Steps" xml:space="preserve">
+    <value>Кроки</value>
+  </data>
+  <data name="StopWatch" xml:space="preserve">
+    <value>Секундомір</value>
+  </data>
+  <data name="Stress" xml:space="preserve">
+    <value>Стрес</value>
+  </data>
+  <data name="Sunset" xml:space="preserve">
+    <value>Схід/захід сонця</value>
+  </data>
+  <data name="System" xml:space="preserve">
+    <value>Розділ "Система"</value>
+  </data>
+  <data name="Test1" xml:space="preserve">
+    <value>Тест</value>
+  </data>
+  <data name="Test2" xml:space="preserve">
+    <value>Тест (простий)</value>
+  </data>
+  <data name="Timer" xml:space="preserve">
+    <value>Таймер</value>
+  </data>
+  <data name="ToDoList" xml:space="preserve">
+    <value>Список справ</value>
+  </data>
+  <data name="VoiceMemo" xml:space="preserve">
+    <value>Голосова замітка</value>
+  </data>
+  <data name="WatchFace" xml:space="preserve">
+    <value>Вибрати циферблат</value>
+  </data>
+  <data name="Weather" xml:space="preserve">
+    <value>Погода</value>
+  </data>
+  <data name="WorldClock" xml:space="preserve">
+    <value>Світовий час</value>
+  </data>
+</root>

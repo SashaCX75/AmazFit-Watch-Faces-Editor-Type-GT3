@@ -31,10 +31,10 @@ namespace Watch_Face_Editor
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage_Edit = new System.Windows.Forms.TabPage();
             this.button_SaveAs = new System.Windows.Forms.Button();
@@ -143,7 +143,10 @@ namespace Watch_Face_Editor
             this.uCtrl_Image_Elm = new ControlLibrary.UCtrl_Image_Elm();
             this.panel_UC_TopImage = new System.Windows.Forms.Panel();
             this.uCtrl_TopImage_Elm = new ControlLibrary.UCtrl_TopImage_Elm();
+            this.panel_UC_Buttons = new System.Windows.Forms.Panel();
+            this.uCtrl_Buttons_Elm = new ControlLibrary.UCtrl_Buttons_Elm();
             this.panel_ElementsOpt = new System.Windows.Forms.Panel();
+            this.uCtrl_Button_Opt = new ControlLibrary.UCtrl_Button_Opt();
             this.uCtrl_Text_Rotate_Opt = new ControlLibrary.UCtrl_Text_Rotate_Opt();
             this.uCtrl_Text_Circle_Opt = new ControlLibrary.UCtrl_Text_Circle_Opt();
             this.uCtrl_RepeatingAlert_Opt = new ControlLibrary.UCtrl_RepeatingAlert_Opt();
@@ -248,13 +251,17 @@ namespace Watch_Face_Editor
             this.tabPage_Tips = new System.Windows.Forms.TabPage();
             this.richTextBox_Tips = new System.Windows.Forms.RichTextBox();
             this.tabPage_About = new System.Windows.Forms.TabPage();
+            this.pictureBoxpictureBox_buymeacoff = new System.Windows.Forms.PictureBox();
+            this.label_donate = new System.Windows.Forms.Label();
+            this.panel_buymeacoffee = new System.Windows.Forms.Panel();
+            this.linkLabel_buymeacoffee = new System.Windows.Forms.LinkLabel();
+            this.pictureBox_qr = new System.Windows.Forms.PictureBox();
             this.label_TranslateHelp = new System.Windows.Forms.Label();
             this.label415 = new System.Windows.Forms.Label();
             this.label414 = new System.Windows.Forms.Label();
             this.label412 = new System.Windows.Forms.Label();
             this.label413 = new System.Windows.Forms.Label();
             this.linkLabel_py_amazfit_tools = new System.Windows.Forms.LinkLabel();
-            this.label_donate = new System.Windows.Forms.Label();
             this.label409 = new System.Windows.Forms.Label();
             this.label408 = new System.Windows.Forms.Label();
             this.label407 = new System.Windows.Forms.Label();
@@ -336,6 +343,7 @@ namespace Watch_Face_Editor
             this.panel_UC_AnalogTimePro.SuspendLayout();
             this.panel_UC_Image.SuspendLayout();
             this.panel_UC_TopImage.SuspendLayout();
+            this.panel_UC_Buttons.SuspendLayout();
             this.panel_ElementsOpt.SuspendLayout();
             this.panel_MainScreen_AOD.SuspendLayout();
             this.tabPage_Show_Set.SuspendLayout();
@@ -356,6 +364,9 @@ namespace Watch_Face_Editor
             this.groupBox1.SuspendLayout();
             this.tabPage_Tips.SuspendLayout();
             this.tabPage_About.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxpictureBox_buymeacoff)).BeginInit();
+            this.panel_buymeacoffee.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_qr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Preview)).BeginInit();
             this.SuspendLayout();
@@ -422,8 +433,8 @@ namespace Watch_Face_Editor
             // Number
             // 
             this.Number.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Number.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Number.DefaultCellStyle = dataGridViewCellStyle5;
             this.Number.FillWeight = 25F;
             resources.ApplyResources(this.Number, "Number");
             this.Number.Name = "Number";
@@ -448,11 +459,11 @@ namespace Watch_Face_Editor
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.NullValue = null;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.NullValue = null;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle6;
             this.Column1.FillWeight = 70F;
             resources.ApplyResources(this.Column1, "Column1");
             this.Column1.Name = "Column1";
@@ -501,8 +512,8 @@ namespace Watch_Face_Editor
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewTextBoxColumn1.FillWeight = 25F;
             resources.ApplyResources(this.dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
@@ -527,11 +538,11 @@ namespace Watch_Face_Editor
             // dataGridViewImageColumn2
             // 
             this.dataGridViewImageColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.NullValue = null;
-            this.dataGridViewImageColumn2.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.NullValue = null;
+            this.dataGridViewImageColumn2.DefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewImageColumn2.FillWeight = 70F;
             resources.ApplyResources(this.dataGridViewImageColumn2, "dataGridViewImageColumn2");
             this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
@@ -670,7 +681,8 @@ namespace Watch_Face_Editor
             resources.GetString("comboBox_AddSystem.Items6"),
             resources.GetString("comboBox_AddSystem.Items7"),
             resources.GetString("comboBox_AddSystem.Items8"),
-            resources.GetString("comboBox_AddSystem.Items9")});
+            resources.GetString("comboBox_AddSystem.Items9"),
+            resources.GetString("comboBox_AddSystem.Items10")});
             this.comboBox_AddSystem.Name = "comboBox_AddSystem";
             this.comboBox_AddSystem.DropDownClosed += new System.EventHandler(this.comboBox_AddSystem_DropDownClosed);
             this.comboBox_AddSystem.Click += new System.EventHandler(this.comboBox_AddElements_Click);
@@ -756,41 +768,42 @@ namespace Watch_Face_Editor
             // 
             resources.ApplyResources(this.tableLayoutPanel_ElemetsWatchFace, "tableLayoutPanel_ElemetsWatchFace");
             this.tableLayoutPanel_ElemetsWatchFace.AllowDrop = true;
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_EditableElements, 0, 7);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DigitalTime, 0, 6);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_AnalogTime, 0, 5);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateDay, 0, 8);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_RepeatingAlert, 0, 1);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateMonth, 0, 9);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateYear, 0, 10);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Background, 0, 34);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateWeek, 0, 11);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Steps, 0, 14);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Statuses, 0, 13);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Shortcuts, 0, 12);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Battery, 0, 15);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Heart, 0, 16);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Calories, 0, 17);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_PAI, 0, 18);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Distance, 0, 19);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Weather, 0, 23);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Stand, 0, 20);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Activity, 0, 21);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_SpO2, 0, 22);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_UVIndex, 0, 24);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Humidity, 0, 25);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Stress, 0, 26);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_FatBurning, 0, 27);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Altimeter, 0, 28);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_EditableTimePointer, 0, 3);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Sunrise, 0, 29);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Wind, 0, 30);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Moon, 0, 32);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Animation, 0, 33);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DisconnectAlert, 0, 0);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_AnalogTimePro, 0, 4);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Image, 0, 31);
-            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_TopImage, 0, 2);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_EditableElements, 0, 8);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DigitalTime, 0, 7);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_AnalogTime, 0, 6);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateDay, 0, 9);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_RepeatingAlert, 0, 2);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateMonth, 0, 10);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateYear, 0, 11);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Background, 0, 35);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DateWeek, 0, 12);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Steps, 0, 15);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Statuses, 0, 14);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Shortcuts, 0, 13);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Battery, 0, 16);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Heart, 0, 17);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Calories, 0, 18);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_PAI, 0, 19);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Distance, 0, 20);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Weather, 0, 24);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Stand, 0, 21);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Activity, 0, 22);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_SpO2, 0, 23);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_UVIndex, 0, 25);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Humidity, 0, 26);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Stress, 0, 27);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_FatBurning, 0, 28);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Altimeter, 0, 29);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_EditableTimePointer, 0, 4);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Sunrise, 0, 30);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Wind, 0, 31);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Moon, 0, 33);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Animation, 0, 34);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_DisconnectAlert, 0, 1);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_AnalogTimePro, 0, 5);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Image, 0, 32);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_TopImage, 0, 3);
+            this.tableLayoutPanel_ElemetsWatchFace.Controls.Add(this.panel_UC_Buttons, 0, 0);
             this.tableLayoutPanel_ElemetsWatchFace.Name = "tableLayoutPanel_ElemetsWatchFace";
             this.tableLayoutPanel_ElemetsWatchFace.DragOver += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragOver);
             // 
@@ -1449,10 +1462,28 @@ namespace Watch_Face_Editor
             this.uCtrl_TopImage_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
             this.uCtrl_TopImage_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
             // 
+            // panel_UC_Buttons
+            // 
+            resources.ApplyResources(this.panel_UC_Buttons, "panel_UC_Buttons");
+            this.panel_UC_Buttons.Controls.Add(this.uCtrl_Buttons_Elm);
+            this.panel_UC_Buttons.Name = "panel_UC_Buttons";
+            // 
+            // uCtrl_Buttons_Elm
+            // 
+            resources.ApplyResources(this.uCtrl_Buttons_Elm, "uCtrl_Buttons_Elm");
+            this.uCtrl_Buttons_Elm.Name = "uCtrl_Buttons_Elm";
+            this.uCtrl_Buttons_Elm.SelectChanged += new ControlLibrary.UCtrl_Buttons_Elm.SelectChangedHandler(this.uCtrl_Buttons_Elm_SelectChanged);
+            this.uCtrl_Buttons_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_Buttons_Elm.VisibleElementChangedHandler(this.uCtrl_Buttons_Elm_VisibleElementChanged);
+            this.uCtrl_Buttons_Elm.DelElement += new ControlLibrary.UCtrl_Buttons_Elm.DelElementHandler(this.uCtrl_Buttons_Elm_DelElement);
+            this.uCtrl_Buttons_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.uCtrl_Buttons_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.uCtrl_Buttons_Elm.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
             // panel_ElementsOpt
             // 
             resources.ApplyResources(this.panel_ElementsOpt, "panel_ElementsOpt");
             this.panel_ElementsOpt.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_ElementsOpt.Controls.Add(this.uCtrl_Button_Opt);
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_Text_Rotate_Opt);
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_Text_Circle_Opt);
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_RepeatingAlert_Opt);
@@ -1477,6 +1508,17 @@ namespace Watch_Face_Editor
             this.panel_ElementsOpt.Controls.Add(this.userCtrl_Background_Options);
             this.panel_ElementsOpt.Controls.Add(this.uCtrl_EditableElements_Opt);
             this.panel_ElementsOpt.Name = "panel_ElementsOpt";
+            // 
+            // uCtrl_Button_Opt
+            // 
+            resources.ApplyResources(this.uCtrl_Button_Opt, "uCtrl_Button_Opt");
+            this.uCtrl_Button_Opt.Name = "uCtrl_Button_Opt";
+            this.uCtrl_Button_Opt.ValueChanged += new ControlLibrary.UCtrl_Button_Opt.ValueChangedHandler(this.uCtrl_Button_Opt_ValueChanged);
+            this.uCtrl_Button_Opt.AddButton += new ControlLibrary.UCtrl_Button_Opt.AddButtonHandler(this.uCtrl_Button_Opt_AddButton);
+            this.uCtrl_Button_Opt.DelButton += new ControlLibrary.UCtrl_Button_Opt.DelButtonHandler(this.uCtrl_Button_Opt_DelButton);
+            this.uCtrl_Button_Opt.SelectButton += new ControlLibrary.UCtrl_Button_Opt.SelectButtonHandler(this.uCtrl_Button_Opt_SelectButton);
+            this.uCtrl_Button_Opt.ScriptChanged += new ControlLibrary.UCtrl_Button_Opt.ScriptChangedHandler(this.uCtrl_Button_Opt_ScriptChanged);
+            this.uCtrl_Button_Opt.VisibleButtonChanged += new ControlLibrary.UCtrl_Button_Opt.VisibleButtonChangedHandler(this.uCtrl_Button_Opt_VisibleButtonChanged);
             // 
             // uCtrl_Text_Rotate_Opt
             // 
@@ -1618,6 +1660,7 @@ namespace Watch_Face_Editor
             this.uCtrl_Images_Opt.ImagesCount = 10;
             this.uCtrl_Images_Opt.ImagesCountEnable = true;
             this.uCtrl_Images_Opt.Name = "uCtrl_Images_Opt";
+            this.uCtrl_Images_Opt.Shortcut = false;
             this.uCtrl_Images_Opt.ValueChanged += new ControlLibrary.UCtrl_Images_Opt.ValueChangedHandler(this.uCtrl_Images_Opt_ValueChanged);
             // 
             // uCtrl_Pointer_Opt
@@ -2438,13 +2481,15 @@ namespace Watch_Face_Editor
             // 
             resources.ApplyResources(this.tabPage_About, "tabPage_About");
             this.tabPage_About.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage_About.Controls.Add(this.pictureBoxpictureBox_buymeacoff);
+            this.tabPage_About.Controls.Add(this.label_donate);
+            this.tabPage_About.Controls.Add(this.panel_buymeacoffee);
             this.tabPage_About.Controls.Add(this.label_TranslateHelp);
             this.tabPage_About.Controls.Add(this.label415);
             this.tabPage_About.Controls.Add(this.label414);
             this.tabPage_About.Controls.Add(this.label412);
             this.tabPage_About.Controls.Add(this.label413);
             this.tabPage_About.Controls.Add(this.linkLabel_py_amazfit_tools);
-            this.tabPage_About.Controls.Add(this.label_donate);
             this.tabPage_About.Controls.Add(this.label409);
             this.tabPage_About.Controls.Add(this.label408);
             this.tabPage_About.Controls.Add(this.label407);
@@ -2452,6 +2497,41 @@ namespace Watch_Face_Editor
             this.tabPage_About.Controls.Add(this.label406);
             this.tabPage_About.Controls.Add(this.pictureBox2);
             this.tabPage_About.Name = "tabPage_About";
+            // 
+            // pictureBoxpictureBox_buymeacoff
+            // 
+            resources.ApplyResources(this.pictureBoxpictureBox_buymeacoff, "pictureBoxpictureBox_buymeacoff");
+            this.pictureBoxpictureBox_buymeacoff.BackgroundImage = global::Watch_Face_Editor.Properties.Resources.bmc_qr;
+            this.pictureBoxpictureBox_buymeacoff.Name = "pictureBoxpictureBox_buymeacoff";
+            this.pictureBoxpictureBox_buymeacoff.TabStop = false;
+            this.pictureBoxpictureBox_buymeacoff.MouseLeave += new System.EventHandler(this.pictureBoxpictureBox_buymeacoff_MouseLeave);
+            // 
+            // label_donate
+            // 
+            resources.ApplyResources(this.label_donate, "label_donate");
+            this.label_donate.Name = "label_donate";
+            // 
+            // panel_buymeacoffee
+            // 
+            resources.ApplyResources(this.panel_buymeacoffee, "panel_buymeacoffee");
+            this.panel_buymeacoffee.Controls.Add(this.linkLabel_buymeacoffee);
+            this.panel_buymeacoffee.Controls.Add(this.pictureBox_qr);
+            this.panel_buymeacoffee.Name = "panel_buymeacoffee";
+            // 
+            // linkLabel_buymeacoffee
+            // 
+            resources.ApplyResources(this.linkLabel_buymeacoffee, "linkLabel_buymeacoffee");
+            this.linkLabel_buymeacoffee.Name = "linkLabel_buymeacoffee";
+            this.linkLabel_buymeacoffee.TabStop = true;
+            this.linkLabel_buymeacoffee.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel_buymeacoffee_LinkClicked);
+            // 
+            // pictureBox_qr
+            // 
+            resources.ApplyResources(this.pictureBox_qr, "pictureBox_qr");
+            this.pictureBox_qr.BackgroundImage = global::Watch_Face_Editor.Properties.Resources.Ionic_Qr_code;
+            this.pictureBox_qr.Name = "pictureBox_qr";
+            this.pictureBox_qr.TabStop = false;
+            this.pictureBox_qr.MouseHover += new System.EventHandler(this.pictureBox_qr_MouseHover);
             // 
             // label_TranslateHelp
             // 
@@ -2484,11 +2564,6 @@ namespace Watch_Face_Editor
             this.linkLabel_py_amazfit_tools.Name = "linkLabel_py_amazfit_tools";
             this.linkLabel_py_amazfit_tools.TabStop = true;
             this.linkLabel_py_amazfit_tools.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel_py_amazfit_tools_LinkClicked);
-            // 
-            // label_donate
-            // 
-            resources.ApplyResources(this.label_donate, "label_donate");
-            this.label_donate.Name = "label_donate";
             // 
             // label409
             // 
@@ -2828,6 +2903,8 @@ namespace Watch_Face_Editor
             this.panel_UC_Image.PerformLayout();
             this.panel_UC_TopImage.ResumeLayout(false);
             this.panel_UC_TopImage.PerformLayout();
+            this.panel_UC_Buttons.ResumeLayout(false);
+            this.panel_UC_Buttons.PerformLayout();
             this.panel_ElementsOpt.ResumeLayout(false);
             this.panel_MainScreen_AOD.ResumeLayout(false);
             this.panel_MainScreen_AOD.PerformLayout();
@@ -2859,6 +2936,10 @@ namespace Watch_Face_Editor
             this.tabPage_Tips.ResumeLayout(false);
             this.tabPage_About.ResumeLayout(false);
             this.tabPage_About.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxpictureBox_buymeacoff)).EndInit();
+            this.panel_buymeacoffee.ResumeLayout(false);
+            this.panel_buymeacoffee.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_qr)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Preview)).EndInit();
             this.ResumeLayout(false);
@@ -3117,6 +3198,13 @@ namespace Watch_Face_Editor
         private System.Windows.Forms.Button button_SavePNG_shortcut;
         private ControlLibrary.UCtrl_Text_Circle_Opt uCtrl_Text_Circle_Opt;
         private ControlLibrary.UCtrl_Text_Rotate_Opt uCtrl_Text_Rotate_Opt;
+        private ControlLibrary.UCtrl_Button_Opt uCtrl_Button_Opt;
+        private System.Windows.Forms.Panel panel_UC_Buttons;
+        private ControlLibrary.UCtrl_Buttons_Elm uCtrl_Buttons_Elm;
+        private System.Windows.Forms.LinkLabel linkLabel_buymeacoffee;
+        private System.Windows.Forms.PictureBox pictureBox_qr;
+        private System.Windows.Forms.Panel panel_buymeacoffee;
+        private System.Windows.Forms.PictureBox pictureBoxpictureBox_buymeacoff;
     }
 }
 

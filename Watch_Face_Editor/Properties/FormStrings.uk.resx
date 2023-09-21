@@ -258,6 +258,9 @@
   <data name="Message_GoToFile_Text" xml:space="preserve">
     <value>Перейти до файлу?</value>
   </data>
+  <data name="Message_HR_Image_Count_Error" xml:space="preserve">
+    <value>Кількість зображень для відображення пульсу має дорівнювати 6.</value>
+  </data>
   <data name="Message_Image32bit" xml:space="preserve">
     <value>Зображення не повинно бути монохромним і має бути у форматі 32bit</value>
   </data>
@@ -341,6 +344,9 @@
   </data>
   <data name="Message_Warning_Information" xml:space="preserve">
     <value>Інформація</value>
+  </data>
+  <data name="Message_Wrong_ColorScheme" xml:space="preserve">
+    <value>Зазначено невідому колірну схему для моделі:</value>
   </data>
   <data name="Message_Wrong_Original_Image" xml:space="preserve">
     <value>Невірний формат вихідного зображення</value>

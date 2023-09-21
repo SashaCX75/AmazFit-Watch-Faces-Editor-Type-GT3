@@ -183,6 +183,28 @@
   <data name="Form_PreviewX" xml:space="preserve">
     <value>Anteprima [X =</value>
   </data>
+  <data name="Img_Convert_Error_NoPalette" xml:space="preserve">
+    <value>Mappa colori mancante</value>
+  </data>
+  <data name="Img_Convert_Error_Not32bit" xml:space="preserve">
+    <value>
+L'immagine non deve essere monocromatica e deve essere in formato 32bit</value>
+  </data>
+  <data name="Img_Convert_Error_NotSave1" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="Img_Convert_Error_NotSave2" xml:space="preserve">
+    <value>Non è stato salvato</value>
+  </data>
+  <data name="Img_Convert_Error_ReadErr" xml:space="preserve">
+    <value>Errore nel processamento dell'immagine</value>
+  </data>
+  <data name="Img_Convert_Error_SaveImg" xml:space="preserve">
+    <value>Provo a salvare l'immagine?</value>
+  </data>
+  <data name="Img_Convert_Error_WrongImg" xml:space="preserve">
+    <value>Formato del file sorgente non corretto</value>
+  </data>
   <data name="Message_AnimationAOD_Text" xml:space="preserve">
     <value>Non è possibile aggiungere animazioni alla schermata AOD.</value>
   </data>
@@ -236,6 +258,10 @@
   </data>
   <data name="Message_GoToFile_Text" xml:space="preserve">
     <value>Vai al file?</value>
+  </data>
+  <data name="Message_HR_Image_Count_Error" xml:space="preserve">
+    <value>
+Il numero di immagini per la frequenza cardiaca dovrebbe essere 6.</value>
   </data>
   <data name="Message_Image32bit" xml:space="preserve">
     <value>L'immagine non deve essere monocromatica e deve essere in formato a 32 bit</value>
@@ -320,6 +346,9 @@
   </data>
   <data name="Message_Warning_Information" xml:space="preserve">
     <value>Informazione</value>
+  </data>
+  <data name="Message_Wrong_ColorScheme" xml:space="preserve">
+    <value>E' specificato per il  modello uno di  schema di colori non conosciuto:</value>
   </data>
   <data name="Message_Wrong_Original_Image" xml:space="preserve">
     <value>Formato immagine originale non valido</value>

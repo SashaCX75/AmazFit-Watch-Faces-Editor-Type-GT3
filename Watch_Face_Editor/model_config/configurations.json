@@ -535,5 +535,44 @@
     "colorScheme": 3,
     "fixSize": false,
     "versionOS": 2.1
+  },
+  "Balance": {
+    "name": "Amazfit Balance",
+    "designWidth": 480,
+    "deviceSource_ids": [
+      8519936,
+      8519937,
+      8519939
+    ],
+    "background": {
+      "w": 480,
+      "h": 480
+    },
+    "scaling_0_5": {
+      "w": 230,
+      "h": 230
+    },
+    "scaling_1_0": {
+      "w": 482,
+      "h": 482
+    },
+    "scaling_1_5": {
+      "w": 722,
+      "h": 722
+    },
+    "scaling_2_0": {
+      "w": 961,
+      "h": 961
+    },
+    "scaling_2_5": {
+      "w": 1201,
+      "h": 1201
+    },
+    "maskImage": "mask_gtr_3_pro.png",
+    "watchSkin": "WatchSkin_Balance.json",
+    "previewHeight": 324,
+    "colorScheme": 1,
+    "fixSize": true,
+    "versionOS": 1
   }
 }

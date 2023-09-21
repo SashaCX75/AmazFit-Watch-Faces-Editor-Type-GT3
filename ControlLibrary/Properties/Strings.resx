@@ -123,6 +123,12 @@
   <data name="Dialog_Title_Font_Add" xml:space="preserve">
     <value>Выберите файл шрифта</value>
   </data>
+  <data name="Message_Error_Caption" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="Message_ReadScript_Error" xml:space="preserve">
+    <value>Ошибка чтения пользовательских скриптов</value>
+  </data>
   <data name="Message_Warning_Caption" xml:space="preserve">
     <value>Предупреждение</value>
   </data>

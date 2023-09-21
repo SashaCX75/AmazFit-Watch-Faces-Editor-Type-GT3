@@ -449,6 +449,19 @@ namespace Watch_Face_Editor
             }
             #endregion
 
+            #region ElementButtons
+            if (radioButton_ScreenNormal.Checked && Watch_Face != null && Watch_Face.Buttons != null && Watch_Face.Buttons.enable)
+            {
+                if (Watch_Face.Buttons.Button != null && Watch_Face.Buttons.Button.Count > 0)
+                {
+                    foreach (Button button in Watch_Face.Buttons.Button)
+                    {
+                        DrawButton(gPanel, button, false, showShortcutsArea, showShortcutsBorder, Shortcuts_In_Gif);
+                    } 
+                }
+            }
+            #endregion
+
             #region Mesh
             Logger.WriteLine("PreviewToBitmap (Mesh)");
 
@@ -7039,7 +7052,7 @@ namespace Watch_Face_Editor
 
         }
 
-        /// <summary>формируем изображение на панедли Graphics</summary>
+        /// <summary>отображаем ярлыки</summary>
         /// <param name="graphics">Поверхность для рисования</param>
         /// <param name="shortcut">Элемент с отображаемым ярлыклм</param>
         /// <param name="showShortcuts">Отображать ярлыки</param>
@@ -7135,6 +7148,139 @@ namespace Watch_Face_Editor
                     int pos_y = y + height / 2 - 11;
                     graphics.DrawImage(src, pos_x, pos_y);
                 }
+            }
+        }
+
+        /// <summary>отображаем кнопки</summary>
+        /// <param name="graphics">Поверхность для рисования</param>
+        /// <param name="button">Элемент с отображаемой кнопкой</param>
+        /// <param name="showPressButton">Отображать изображение, отображаемое при нажатии кнопки</param>
+        /// <param name="showShortcutsArea">Подсвечивать область кнопки рамкой</param>
+        /// <param name="showShortcutsBorder">Подсвечивать область кнопки заливкой</param>
+        /// <param name="Shortcuts_In_Gif">Подсвечивать область с кнопками (для gif файла)</param>
+        private void DrawButton(Graphics graphics, Button button,  bool showPressButton,
+             bool showShortcutsArea, bool showShortcutsBorder, bool Shortcuts_In_Gif)
+        {
+            if (button == null) return; 
+            if (!button.visible) return;
+            int x = button.x;
+            int y = button.y;
+            int width = button.w;
+            int height = button.h;
+
+            if (button.normal_src != null && button.normal_src.Length > 0 && button.press_src != null && button.press_src.Length > 0)
+            {
+                int imageIndex = ListImages.IndexOf(button.normal_src);
+                if (width < 0 || height < 0)
+                {
+                    if (imageIndex >= 0 && imageIndex < ListImagesFullName.Count)
+                    {
+                        Bitmap src = OpenFileStream(ListImagesFullName[imageIndex]);
+                        if (width < 0) width = src.Width;
+                        if (height < 0) height = src.Height;
+                        src.Dispose();
+                    } 
+                }
+
+                if (showPressButton && button.press_src != null && button.press_src.Length > 0)
+                    imageIndex = ListImages.IndexOf(button.press_src);
+                if (imageIndex >= 0 && imageIndex < ListImagesFullName.Count)
+                {
+                    Bitmap src = OpenFileStream(ListImagesFullName[imageIndex]);
+                    int pos_x = x + width / 2 - src.Width / 2;
+                    int pos_y = y + height / 2 - src.Height / 2;
+                    if (pos_x >= x && pos_y >= y)
+                    {
+                        graphics.DrawImage(src, pos_x, pos_y);
+                    }
+                    else if (width > 0 && height > 0)
+                    {
+                        Rectangle cropRect = new Rectangle(x - pos_x, y - pos_y, width, height);
+                        Bitmap target = new Bitmap(cropRect.Width, cropRect.Height);
+
+                        using (Graphics g = Graphics.FromImage(target))
+                        {
+                            g.DrawImage(src, new Rectangle(0, 0, target.Width, target.Height),
+                                             cropRect, GraphicsUnit.Pixel);
+                        }
+                        graphics.DrawImage(target, x, y);
+                    }
+                    src.Dispose();
+                }
+            }
+            else
+            {
+                if (width < 0) width = 100;
+                if (height < 0) height = 40;
+
+                string colorStr = button.normal_color;
+                if (showPressButton) colorStr = button.press_color;
+                Color color = StringToColor(colorStr);
+                if (button.radius == 0) graphics.FillRectangle(new SolidBrush(color), new Rectangle(x, y, width, height));
+                else
+                {
+                    // Задаем прямоугольник с закругленными углами
+                    int radius = button.radius;
+                    if (radius > width / 2) radius = width / 2;
+                    if (radius > height / 2) radius = height / 2;
+                    GraphicsPath path = new GraphicsPath();
+                    path.AddArc(x, y, radius * 2, radius * 2, 180, 90);  // Левый верхний угол
+                    path.AddArc(x + width - radius * 2, y, radius * 2, radius * 2, 270, 90);  // Правый верхний угол
+                    path.AddArc(x + width - radius * 2, y + height - radius * 2, radius * 2, radius * 2, 0, 90);  // Правый нижний угол
+                    path.AddArc(x, y + height - radius * 2, radius * 2, radius * 2, 90, 90);  // Левый нижний угол
+                    path.CloseFigure();  // Закрываем фигуру
+                    graphics.FillPath(new SolidBrush(color), path);
+                }
+            }
+
+            if (button.text.Length > 0) Draw_text(graphics, x, y, width, height, button.text_size, 0, 0, StringToColor(button.color),
+                button.text, "CENTER_H", "CENTER_V", "ELLIPSIS", false);
+
+            if (showShortcutsArea)
+            {
+                HatchBrush myHatchBrush = new HatchBrush(HatchStyle.Percent10, Color.White, Color.Transparent);
+                Rectangle rect = new Rectangle(x, y, width, height);
+                graphics.FillRectangle(myHatchBrush, rect);
+                myHatchBrush = new HatchBrush(HatchStyle.Percent05, Color.Black, Color.Transparent);
+                graphics.FillRectangle(myHatchBrush, rect);
+            }
+            if (showShortcutsBorder)
+            {
+                Rectangle rect = new Rectangle(x, y, width - 1, height - 1);
+                using (Pen pen1 = new Pen(Color.White, 1))
+                {
+                    graphics.DrawRectangle(pen1, rect);
+                }
+                using (Pen pen2 = new Pen(Color.Black, 1))
+                {
+                    pen2.DashStyle = DashStyle.Dot;
+                    graphics.DrawRectangle(pen2, rect);
+                }
+            }
+
+            if (Shortcuts_In_Gif)
+            {
+                HatchBrush myHatchBrush = new HatchBrush(HatchStyle.Percent10, Color.White, Color.Transparent);
+                Rectangle rect = new Rectangle(x, y, width, height);
+                graphics.FillRectangle(myHatchBrush, rect);
+                myHatchBrush = new HatchBrush(HatchStyle.Percent05, Color.Black, Color.Transparent);
+                graphics.FillRectangle(myHatchBrush, rect);
+
+                rect = new Rectangle(x, y, width - 1, height - 1);
+                using (Pen pen1 = new Pen(Color.White, 1))
+                {
+                    graphics.DrawRectangle(pen1, rect);
+                }
+                using (Pen pen2 = new Pen(Color.Black, 1))
+                {
+                    pen2.DashStyle = DashStyle.Dot;
+                    graphics.DrawRectangle(pen2, rect);
+                }
+
+                Bitmap src = new Bitmap(Application.StartupPath + @"\Mask\shortcut_pointer.png");
+                int pos_x = x + width / 2 - 16;
+                int pos_y = y + height / 2 - 11;
+                graphics.DrawImage(src, pos_x, pos_y);
             }
         }
 

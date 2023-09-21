@@ -226,7 +226,7 @@
     <value>Estrés</value>
   </data>
   <data name="TypeSunrise" xml:space="preserve">
-    <value>Salida del sol/Puesta de sol</value>
+    <value>Amanecer/Atardecer</value>
   </data>
   <data name="TypeUVIndex" xml:space="preserve">
     <value>ïndice UV</value>

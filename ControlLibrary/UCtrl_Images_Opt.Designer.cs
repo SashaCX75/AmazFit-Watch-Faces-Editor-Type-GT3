@@ -48,6 +48,7 @@ namespace ControlLibrary
             this.label1085 = new System.Windows.Forms.Label();
             this.numericUpDown_pictures_count = new System.Windows.Forms.NumericUpDown();
             this.label03 = new System.Windows.Forms.Label();
+            this.checkBox_shortcut = new System.Windows.Forms.CheckBox();
             this.contextMenuStrip_X.SuspendLayout();
             this.contextMenuStrip_Y.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_imageX)).BeginInit();
@@ -210,10 +211,18 @@ namespace ControlLibrary
             resources.ApplyResources(this.label03, "label03");
             this.label03.Name = "label03";
             // 
+            // checkBox_shortcut
+            // 
+            resources.ApplyResources(this.checkBox_shortcut, "checkBox_shortcut");
+            this.checkBox_shortcut.Name = "checkBox_shortcut";
+            this.checkBox_shortcut.UseVisualStyleBackColor = true;
+            this.checkBox_shortcut.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
+            // 
             // UCtrl_Images_Opt
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.checkBox_shortcut);
             this.Controls.Add(this.numericUpDown_pictures_count);
             this.Controls.Add(this.label03);
             this.Controls.Add(this.comboBox_image);
@@ -253,5 +262,6 @@ namespace ControlLibrary
         protected System.Windows.Forms.Label label1085;
         public System.Windows.Forms.NumericUpDown numericUpDown_pictures_count;
         public System.Windows.Forms.Label label03;
+        public System.Windows.Forms.CheckBox checkBox_shortcut;
     }
 }

@@ -151,6 +151,9 @@
   <data name="groupBox_date.Text" xml:space="preserve">
     <value>Fecha</value>
   </data>
+  <data name="groupBox_activity.Text" xml:space="preserve">
+    <value>Actividad</value>
+  </data>
   <data name="radioButton_stress.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 17</value>
   </data>
@@ -193,14 +196,20 @@
   <data name="radioButton_steps.Text" xml:space="preserve">
     <value>Pasos</value>
   </data>
-  <data name="groupBox_activity.Text" xml:space="preserve">
-    <value>Actividad</value>
+  <data name="groupBox_air.Text" xml:space="preserve">
+    <value>Tiempo</value>
+  </data>
+  <data name="radioButton_moon.Location" type="System.Drawing.Point, System.Drawing">
+    <value>191, 42</value>
   </data>
   <data name="radioButton_moon.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 17</value>
   </data>
   <data name="radioButton_moon.Text" xml:space="preserve">
     <value>Fases de la luna</value>
+  </data>
+  <data name="radioButton_altimeter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>111, 42</value>
   </data>
   <data name="radioButton_altimeter.Size" type="System.Drawing.Size, System.Drawing">
     <value>73, 17</value>
@@ -214,17 +223,26 @@
   <data name="radioButton_wind.Text" xml:space="preserve">
     <value>Fuerza del viento</value>
   </data>
+  <data name="radioButton_sunrise.Location" type="System.Drawing.Point, System.Drawing">
+    <value>271, 19</value>
+  </data>
   <data name="radioButton_sunrise.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 17</value>
+    <value>124, 17</value>
   </data>
   <data name="radioButton_sunrise.Text" xml:space="preserve">
-    <value>Salida del sol/Puesta de sol</value>
+    <value>Amanecer/Atardecer</value>
+  </data>
+  <data name="radioButton_humidity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>191, 19</value>
   </data>
   <data name="radioButton_humidity.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 17</value>
   </data>
   <data name="radioButton_humidity.Text" xml:space="preserve">
     <value>Humedad</value>
+  </data>
+  <data name="radioButton_UVI.Location" type="System.Drawing.Point, System.Drawing">
+    <value>111, 19</value>
   </data>
   <data name="radioButton_UVI.Size" type="System.Drawing.Size, System.Drawing">
     <value>73, 17</value>
@@ -238,20 +256,17 @@
   <data name="radioButton_weather.Text" xml:space="preserve">
     <value>Clima</value>
   </data>
-  <data name="groupBox_air.Text" xml:space="preserve">
-    <value>Tiempo</value>
-  </data>
   <data name="button_cancel.Text" xml:space="preserve">
     <value>Cancelar</value>
+  </data>
+  <data name="groupBox_system.Text" xml:space="preserve">
+    <value>Sistema</value>
   </data>
   <data name="radioButton_battery.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 17</value>
   </data>
   <data name="radioButton_battery.Text" xml:space="preserve">
     <value>Bateria</value>
-  </data>
-  <data name="groupBox_system.Text" xml:space="preserve">
-    <value>Sistema</value>
   </data>
   <data name="button_add.Text" xml:space="preserve">
     <value>Agregar</value>

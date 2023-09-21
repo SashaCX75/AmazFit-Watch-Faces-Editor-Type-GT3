@@ -79,6 +79,24 @@ namespace ControlLibrary.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Ошибка.
+        /// </summary>
+        internal static string Message_Error_Caption {
+            get {
+                return ResourceManager.GetString("Message_Error_Caption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ошибка чтения пользовательских скриптов.
+        /// </summary>
+        internal static string Message_ReadScript_Error {
+            get {
+                return ResourceManager.GetString("Message_ReadScript_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Предупреждение.
         /// </summary>
         internal static string Message_Warning_Caption {

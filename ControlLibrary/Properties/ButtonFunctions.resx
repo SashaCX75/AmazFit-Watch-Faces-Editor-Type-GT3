@@ -1,0 +1,498 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Alarm" xml:space="preserve">
+    <value>Будильник</value>
+  </data>
+  <data name="Alarm_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'AlarmInfoScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="AOD" xml:space="preserve">
+    <value>Настройки времени AOD</value>
+  </data>
+  <data name="AODStyle" xml:space="preserve">
+    <value>Настройки стиля AOD</value>
+  </data>
+  <data name="AODStyle_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'Settings_standbyHomeScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="AOD_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'Settings_standbyModelScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="AppList" xml:space="preserve">
+    <value>Список программ</value>
+  </data>
+  <data name="AppList_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'AppListScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="Baro" xml:space="preserve">
+    <value>Барометр</value>
+  </data>
+  <data name="Baro_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'BaroAltimeterScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="BatteryManager" xml:space="preserve">
+    <value>Статистика использования *</value>
+  </data>
+  <data name="BatteryManager_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'Settings_batteryManagerScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="Camera" xml:space="preserve">
+    <value>Управление камерой</value>
+  </data>
+  <data name="Camera_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'HidcameraScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="ClubCards" xml:space="preserve">
+    <value>Карточка участника</value>
+  </data>
+  <data name="ClubCards_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'ClubCardsScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="Compass" xml:space="preserve">
+    <value>Компас</value>
+  </data>
+  <data name="Compass_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'CompassScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="Contacts" xml:space="preserve">
+    <value>Контакты *</value>
+  </data>
+  <data name="Contacts_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'PhoneContactsScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="CountDown" xml:space="preserve">
+    <value>Обратный отсчет</value>
+  </data>
+  <data name="CountDown_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'CountdownAppScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="DialCall" xml:space="preserve">
+    <value>Номеронабиратель *</value>
+  </data>
+  <data name="DialCall_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'DialCallScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="Display" xml:space="preserve">
+    <value>Дисплей</value>
+  </data>
+  <data name="Display_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'Settings_displayBrightScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="DND" xml:space="preserve">
+    <value>Не беспокоить</value>
+  </data>
+  <data name="DND_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'Settings_dndScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="DragList" xml:space="preserve">
+    <value>Иконки программ</value>
+  </data>
+  <data name="DragList_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'DragListScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="FindPhone" xml:space="preserve">
+    <value>Поиск телефона</value>
+  </data>
+  <data name="FindPhone_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'FindPhoneScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="HeartRete" xml:space="preserve">
+    <value>Пульс</value>
+  </data>
+  <data name="HeartRete_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'heart_app_Screen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="Light" xml:space="preserve">
+    <value>Яркость</value>
+  </data>
+  <data name="Light_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'Settings_lightAdjustScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="LocalMusic" xml:space="preserve">
+    <value>Музыка (на часах) *</value>
+  </data>
+  <data name="LocalMusic_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'LocalMusicScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="LowBattery" xml:space="preserve">
+    <value>Экономия заряда</value>
+  </data>
+  <data name="LowBattery_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'LowBatteryScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="Menstrual" xml:space="preserve">
+    <value>Женский календарь</value>
+  </data>
+  <data name="Menstrual_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'menstrualAppScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="MoreList" xml:space="preserve">
+    <value>Меню "Ещё" *</value>
+  </data>
+  <data name="MoreList_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'MoreListScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="MorningNews" xml:space="preserve">
+    <value>Утренее приветствие *</value>
+  </data>
+  <data name="MorningNews_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'MorningGreetingNewsScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="OneKey" xml:space="preserve">
+    <value>Измерение одним касанием</value>
+  </data>
+  <data name="OneKey_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'oneKeyAppScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="PAI" xml:space="preserve">
+    <value>PAI</value>
+  </data>
+  <data name="PAI_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'PAI_app_Screen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="Phone" xml:space="preserve">
+    <value>Телефон *</value>
+  </data>
+  <data name="PhoneMusic" xml:space="preserve">
+    <value>Музыка (на телефоне)</value>
+  </data>
+  <data name="PhoneMusic_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'PhoneMusicCtrlScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="Phone_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'PhoneHomeScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="PowerHint" xml:space="preserve">
+    <value>Энергопотребление</value>
+  </data>
+  <data name="PowerHint_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'PowerSaveHintScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="RecentCall" xml:space="preserve">
+    <value>Последние вызовы *</value>
+  </data>
+  <data name="RecentCall_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'PhoneRecentCallScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="Respiration" xml:space="preserve">
+    <value>Дыхание</value>
+  </data>
+  <data name="Respiration_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'RespirationwidgetScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="ReStart" xml:space="preserve">
+    <value>Выключить</value>
+  </data>
+  <data name="ReStart_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'HmReStartScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="SaveMode" xml:space="preserve">
+    <value>Простой циферблат</value>
+  </data>
+  <data name="SaveMode_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'PowerSaveModeScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="Schedule" xml:space="preserve">
+    <value>Календарь</value>
+  </data>
+  <data name="ScheduleList" xml:space="preserve">
+    <value>Расписание</value>
+  </data>
+  <data name="ScheduleList_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'ScheduleListScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="Schedule_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'ScheduleCalScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="Settings" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="Settings_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'Settings_homeScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="Sleep" xml:space="preserve">
+    <value>Сон</value>
+  </data>
+  <data name="Sleep_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'Sleep_HomeScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="SPO2" xml:space="preserve">
+    <value>SpO2 (Кислород)</value>
+  </data>
+  <data name="SPO2_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'spo_HomeScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="Sport" xml:space="preserve">
+    <value>Последняя тренировка</value>
+  </data>
+  <data name="SportList" xml:space="preserve">
+    <value>Запуск тренировки</value>
+  </data>
+  <data name="SportList_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'SportListScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="SportRecord" xml:space="preserve">
+    <value>Записи треноровок</value>
+  </data>
+  <data name="SportRecord_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'SportRecordListScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="SportStatus" xml:space="preserve">
+    <value>Тренировочная нагрузка</value>
+  </data>
+  <data name="SportStatus_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'SportStatusScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="Sport_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'SportScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="Steps" xml:space="preserve">
+    <value>Шаги</value>
+  </data>
+  <data name="Steps_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'activityAppScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="StopWatch" xml:space="preserve">
+    <value>Секундомер</value>
+  </data>
+  <data name="StopWatch_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'StopWatchScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="Stress" xml:space="preserve">
+    <value>Стресс</value>
+  </data>
+  <data name="Stress_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'StressHomeScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="Sunset" xml:space="preserve">
+    <value>Восход/закат</value>
+  </data>
+  <data name="Sunset_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'TideScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="System" xml:space="preserve">
+    <value>Раздел "Система"</value>
+  </data>
+  <data name="System_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'Settings_systemScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="Test1" xml:space="preserve">
+    <value>Тест</value>
+  </data>
+  <data name="Test1_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'Test1Screen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="Test2" xml:space="preserve">
+    <value>Тест (простой)</value>
+  </data>
+  <data name="Test2_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'Test2Screen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="Timer" xml:space="preserve">
+    <value>Таймер</value>
+  </data>
+  <data name="Timer_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'TomatoMainScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="ToDoList" xml:space="preserve">
+    <value>Список дел</value>
+  </data>
+  <data name="ToDoList_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'todoListScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="VoiceMemo" xml:space="preserve">
+    <value>Голосовая заметка</value>
+  </data>
+  <data name="VoiceMemo_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'VoiceMemoScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="WatchFace" xml:space="preserve">
+    <value>Выбрать циферблат</value>
+  </data>
+  <data name="WatchFace_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'WatchFaceScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="Weather" xml:space="preserve">
+    <value>Погода</value>
+  </data>
+  <data name="Weather_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'WeatherScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+  <data name="WorldClock" xml:space="preserve">
+    <value>Мировое время</value>
+  </data>
+  <data name="WorldClock_function" xml:space="preserve">
+    <value>hmApp.startApp({url: 'WorldClockScreen', native: true });</value>
+    <comment>Do not translate</comment>
+  </data>
+</root>
