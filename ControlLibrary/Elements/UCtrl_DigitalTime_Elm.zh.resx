@@ -175,4 +175,22 @@
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>数字时间</value>
   </data>
+  <data name="button_Hours_circle.Text" xml:space="preserve">
+    <value>圆圈上的小时数</value>
+  </data>
+  <data name="button_Hours_rotation.Text" xml:space="preserve">
+    <value>角度下的小时数</value>
+  </data>
+  <data name="button_Minutes_circle.Text" xml:space="preserve">
+    <value>圆圈上的分钟数</value>
+  </data>
+  <data name="button_Minutes_rotation.Text" xml:space="preserve">
+    <value>角度下的分钟数</value>
+  </data>
+  <data name="button_Seconds_circle.Text" xml:space="preserve">
+    <value>圆圈上的秒钟数</value>
+  </data>
+  <data name="button_Seconds_rotation.Text" xml:space="preserve">
+    <value>角度下的秒钟数</value>
+  </data>
 </root>

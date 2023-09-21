@@ -1047,6 +1047,9 @@
     <EmbeddedResource Include="Elements\UCtrl_Image_Elm.uk.resx">
       <DependentUpon>UCtrl_Image_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Image_Elm.zh.resx">
+      <DependentUpon>UCtrl_Image_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Moon_Elm.cs.resx">
       <DependentUpon>UCtrl_Moon_Elm.cs</DependentUpon>
     </EmbeddedResource>
@@ -2153,6 +2156,9 @@
     <EmbeddedResource Include="UCtrl_Text_Circle_Opt.uk.resx">
       <DependentUpon>UCtrl_Text_Circle_Opt.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Text_Circle_Opt.zh.resx">
+      <DependentUpon>UCtrl_Text_Circle_Opt.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Text_Opt.cs.resx">
       <DependentUpon>UCtrl_Text_Opt.cs</DependentUpon>
     </EmbeddedResource>
@@ -2206,6 +2212,9 @@
       <DependentUpon>UCtrl_Text_Rotate_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Text_Rotate_Opt.uk.resx">
+      <DependentUpon>UCtrl_Text_Rotate_Opt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCtrl_Text_Rotate_Opt.zh.resx">
       <DependentUpon>UCtrl_Text_Rotate_Opt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UCtrl_Text_SystemFont_Opt.cs.resx">

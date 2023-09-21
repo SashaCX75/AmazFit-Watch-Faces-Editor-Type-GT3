@@ -166,6 +166,9 @@
   <data name="label10.Text" xml:space="preserve">
     <value>单位(°F)</value>
   </data>
+  <data name="label_angle.Text" xml:space="preserve">
+    <value>角度</value>
+  </data>
   <data name="вставитьToolStripMenuItemX.Text" xml:space="preserve">
     <value>粘贴</value>
   </data>

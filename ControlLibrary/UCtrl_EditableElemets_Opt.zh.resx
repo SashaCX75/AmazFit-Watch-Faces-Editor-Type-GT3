@@ -539,4 +539,10 @@
         QzsKo8r55YdW91fxFUYnjE4YnTA6YfSJdgPSvLhM8DVkIAAAAABJRU5ErkJggg==
 </value>
   </data>
+  <data name="button_Direction.Text" xml:space="preserve">
+    <value>风向</value>
+  </data>
+  <data name="checkBox_display_first.Text" xml:space="preserve">
+    <value>显示在其他元素下方</value>
+  </data>
 </root>

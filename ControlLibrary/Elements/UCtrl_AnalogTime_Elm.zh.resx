@@ -179,6 +179,6 @@
     <value>NoControl</value>
   </data>
   <data name="button_ElementName.Text" xml:space="preserve">
-    <value>模拟时间</value>
+    <value>模拟指针</value>
   </data>
 </root>

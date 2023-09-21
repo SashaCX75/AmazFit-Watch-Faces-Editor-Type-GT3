@@ -159,4 +159,16 @@
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>步数</value>
   </data>
+  <data name="button_Text_circle.Text" xml:space="preserve">
+    <value>圆上值</value>
+  </data>
+  <data name="button_Text_circle_Target.Text" xml:space="preserve">
+    <value>圆上值（目标）</value>
+  </data>
+  <data name="button_Text_rotation.Text" xml:space="preserve">
+    <value>角度值</value>
+  </data>
+  <data name="button_Text_rotation_Target.Text" xml:space="preserve">
+    <value>角度值（目标）</value>
+  </data>
 </root>
