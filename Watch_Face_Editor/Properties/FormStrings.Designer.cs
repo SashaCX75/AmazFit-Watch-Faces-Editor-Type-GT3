@@ -331,6 +331,24 @@ namespace Watch_Face_Editor.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Конвертация изображений в формат ARGB занимает больше времени..
+        /// </summary>
+        internal static string Message_ARGB_Line1 {
+            get {
+                return ResourceManager.GetString("Message_ARGB_Line1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Вы точно хотите конвертировать изображения в формат ARGB?.
+        /// </summary>
+        internal static string Message_ARGB_Line2 {
+            get {
+                return ResourceManager.GetString("Message_ARGB_Line2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Новый циферблат создан..
         /// </summary>
         internal static string Message_ConvertingCompleted_Text {

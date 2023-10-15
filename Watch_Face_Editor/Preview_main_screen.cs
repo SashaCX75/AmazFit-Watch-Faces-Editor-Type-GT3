@@ -31,12 +31,16 @@ namespace Watch_Face_Editor
         /// <param name="showShortcutsArea">Подсвечивать область ярлыков рамкой</param>
         /// <param name="showShortcutsBorder">Подсвечивать область ярлыков заливкой</param>
         /// <param name="showShortcutsImage">Подсвечивать изображение, отображаемое при нажатии ярлыка</param>
+        /// <param name="showButtons">Подсвечивать область кнопок</param>
+        /// <param name="showButtonsArea">Подсвечивать область кнопок рамкой</param>
+        /// <param name="showButtonsBorder">Подсвечивать область кнопок заливкой</param>
         /// <param name="showAnimation">Показывать анимацию при предпросмотре</param>
         /// <param name="showProgressArea">Подсвечивать круговую шкалу при наличии фонового изображения</param>
         /// <param name="showCentrHend">Подсвечивать центр стрелки</param>
         /// <param name="showWidgetsArea">Подсвечивать область виджетов</param>
         /// <param name="link">0 - основной экран; 1 - AOD</param>
         /// <param name="Shortcuts_In_Gif">Подсвечивать область с ярлыками (для gif файла)</param>
+        /// <param name="Buttons_In_Gif">Подсвечивать область с ярлыками (для gif файла)</param>
         /// <param name="time_value_sec">Время от начала анимации, сек</param>
         /// <param name="showEeditMode">Отображение в режиме редактирования</param>
         /// <param name="edit_mode">Выбор отображаемого режима редактирования. 
@@ -44,9 +48,10 @@ namespace Watch_Face_Editor
         /// 2 - редактируемые элементы
         /// 3 - редактируемые стрелки</param>
         public void Preview_screen(Graphics gPanel, float scale, bool crop, bool WMesh, bool BMesh, bool BBorder,
-            bool showShortcuts, bool showShortcutsArea, bool showShortcutsBorder, bool showShortcutsImage, 
+            bool showShortcuts, bool showShortcutsArea, bool showShortcutsBorder, bool showShortcutsImage,
+            bool showButtons, bool showButtonsArea, bool showButtonsBorder, 
             bool showAnimation, bool showProgressArea, bool showCentrHend, 
-            bool showWidgetsArea, int link, bool Shortcuts_In_Gif, float time_value_sec, bool showEeditMode, int edit_mode)
+            bool showWidgetsArea, int link, bool Shortcuts_In_Gif, bool Buttons_In_Gif, float time_value_sec, bool showEeditMode, int edit_mode)
         {
             if (showEeditMode && edit_mode > 0) 
             {
@@ -456,7 +461,7 @@ namespace Watch_Face_Editor
                 {
                     foreach (Button button in Watch_Face.Buttons.Button)
                     {
-                        DrawButton(gPanel, button, false, showShortcutsArea, showShortcutsBorder, Shortcuts_In_Gif);
+                        DrawButton(gPanel, button, false, showButtons, showButtonsArea, showButtonsBorder, Buttons_In_Gif);
                     } 
                 }
             }
@@ -7155,11 +7160,12 @@ namespace Watch_Face_Editor
         /// <param name="graphics">Поверхность для рисования</param>
         /// <param name="button">Элемент с отображаемой кнопкой</param>
         /// <param name="showPressButton">Отображать изображение, отображаемое при нажатии кнопки</param>
-        /// <param name="showShortcutsArea">Подсвечивать область кнопки рамкой</param>
-        /// <param name="showShortcutsBorder">Подсвечивать область кнопки заливкой</param>
-        /// <param name="Shortcuts_In_Gif">Подсвечивать область с кнопками (для gif файла)</param>
-        private void DrawButton(Graphics graphics, Button button,  bool showPressButton,
-             bool showShortcutsArea, bool showShortcutsBorder, bool Shortcuts_In_Gif)
+        /// <param name="showButtons">Отображать кнопки</param>
+        /// <param name="showButtonsArea">Подсвечивать область кнопки рамкой</param>
+        /// <param name="showButtonsBorder">Подсвечивать область кнопки заливкой</param>
+        /// <param name="Buttons_In_Gif">Подсвечивать область с кнопками (для gif файла)</param>
+        private void DrawButton(Graphics graphics, Button button,  bool showPressButton, bool showButtons,
+             bool showButtonsArea, bool showButtonsBorder, bool Buttons_In_Gif)
         {
             if (button == null) return; 
             if (!button.visible) return;
@@ -7236,29 +7242,32 @@ namespace Watch_Face_Editor
             if (button.text.Length > 0) Draw_text(graphics, x, y, width, height, button.text_size, 0, 0, StringToColor(button.color),
                 button.text, "CENTER_H", "CENTER_V", "ELLIPSIS", false);
 
-            if (showShortcutsArea)
+            if (showButtons)
             {
-                HatchBrush myHatchBrush = new HatchBrush(HatchStyle.Percent10, Color.White, Color.Transparent);
-                Rectangle rect = new Rectangle(x, y, width, height);
-                graphics.FillRectangle(myHatchBrush, rect);
-                myHatchBrush = new HatchBrush(HatchStyle.Percent05, Color.Black, Color.Transparent);
-                graphics.FillRectangle(myHatchBrush, rect);
-            }
-            if (showShortcutsBorder)
-            {
-                Rectangle rect = new Rectangle(x, y, width - 1, height - 1);
-                using (Pen pen1 = new Pen(Color.White, 1))
+                if (showButtonsArea)
                 {
-                    graphics.DrawRectangle(pen1, rect);
+                    HatchBrush myHatchBrush = new HatchBrush(HatchStyle.Percent10, Color.White, Color.Transparent);
+                    Rectangle rect = new Rectangle(x, y, width, height);
+                    graphics.FillRectangle(myHatchBrush, rect);
+                    myHatchBrush = new HatchBrush(HatchStyle.Percent05, Color.Black, Color.Transparent);
+                    graphics.FillRectangle(myHatchBrush, rect);
                 }
-                using (Pen pen2 = new Pen(Color.Black, 1))
+                if (showButtonsBorder)
                 {
-                    pen2.DashStyle = DashStyle.Dot;
-                    graphics.DrawRectangle(pen2, rect);
-                }
+                    Rectangle rect = new Rectangle(x, y, width - 1, height - 1);
+                    using (Pen pen1 = new Pen(Color.White, 1))
+                    {
+                        graphics.DrawRectangle(pen1, rect);
+                    }
+                    using (Pen pen2 = new Pen(Color.Black, 1))
+                    {
+                        pen2.DashStyle = DashStyle.Dot;
+                        graphics.DrawRectangle(pen2, rect);
+                    }
+                } 
             }
 
-            if (Shortcuts_In_Gif)
+            if (Buttons_In_Gif)
             {
                 HatchBrush myHatchBrush = new HatchBrush(HatchStyle.Percent10, Color.White, Color.Transparent);
                 Rectangle rect = new Rectangle(x, y, width, height);

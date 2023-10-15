@@ -66,8 +66,8 @@ namespace Watch_Face_Editor
                         this.Size = new Size((int)(211 + 20 * currentDPI), (int)(211 + 100 * currentDPI));
                         break;
                 }*/
-                pictureBox_Preview.Size = new Size(selectedModel.scaling_0_5.w, selectedModel.scaling_0_5.h);
-                this.Size = new Size(selectedModel.scaling_0_5.w + (int)(22 * currentDPI), selectedModel.scaling_0_5.h + (int)(66 * currentDPI));
+                pictureBox_Preview.Size = new Size(selectedModel.scaling.scaling_0_5.w, selectedModel.scaling.scaling_0_5.h);
+                this.Size = new Size(selectedModel.scaling.scaling_0_5.w + (int)(22 * currentDPI), selectedModel.scaling.scaling_0_5.h + (int)(66 * currentDPI));
                 scale = 0.5f;
             }
 
@@ -107,8 +107,8 @@ namespace Watch_Face_Editor
                         this.Size = new Size((int)(418 + 20 * currentDPI), (int)(418 + 100 * currentDPI));
                         break;
                 }*/
-                pictureBox_Preview.Size = new Size(selectedModel.scaling_1_0.w, selectedModel.scaling_1_0.h);
-                this.Size = new Size(selectedModel.scaling_1_0.w + (int)(22 * currentDPI), selectedModel.scaling_1_0.h + (int)(66 * currentDPI));
+                pictureBox_Preview.Size = new Size(selectedModel.scaling.scaling_1_0.w, selectedModel.scaling.scaling_1_0.h);
+                this.Size = new Size(selectedModel.scaling.scaling_1_0.w + (int)(22 * currentDPI), selectedModel.scaling.scaling_1_0.h + (int)(66 * currentDPI));
                 scale = 1f;
             }
 
@@ -148,8 +148,8 @@ namespace Watch_Face_Editor
                         this.Size = new Size((int)(626 + 20 * currentDPI), (int)(626 + 100 * currentDPI));
                         break;
                 }*/
-                pictureBox_Preview.Size = new Size(selectedModel.scaling_1_5.w, selectedModel.scaling_1_5.h);
-                this.Size = new Size(selectedModel.scaling_1_5.w + (int)(22 * currentDPI), selectedModel.scaling_1_5.h + (int)(66 * currentDPI));
+                pictureBox_Preview.Size = new Size(selectedModel.scaling.scaling_1_5.w, selectedModel.scaling.scaling_1_5.h);
+                this.Size = new Size(selectedModel.scaling.scaling_1_5.w + (int)(22 * currentDPI), selectedModel.scaling.scaling_1_5.h + (int)(66 * currentDPI));
                 scale = 1.5f;
             }
 
@@ -189,8 +189,8 @@ namespace Watch_Face_Editor
                         this.Size = new Size((int)(833 + 20 * currentDPI), (int)(833 + 100 * currentDPI));
                         break;
                 }*/
-                pictureBox_Preview.Size = new Size(selectedModel.scaling_2_0.w, selectedModel.scaling_2_0.h);
-                this.Size = new Size(selectedModel.scaling_2_0.w + (int)(22 * currentDPI), selectedModel.scaling_2_0.h + (int)(66 * currentDPI));
+                pictureBox_Preview.Size = new Size(selectedModel.scaling.scaling_2_0.w, selectedModel.scaling.scaling_2_0.h);
+                this.Size = new Size(selectedModel.scaling.scaling_2_0.w + (int)(22 * currentDPI), selectedModel.scaling.scaling_2_0.h + (int)(66 * currentDPI));
                 scale = 2f;
             }
 
@@ -230,8 +230,8 @@ namespace Watch_Face_Editor
                         this.Size = new Size((int)(1041 + 20 * currentDPI), (int)(1041 + 100 * currentDPI));
                         break;
                 }*/
-                pictureBox_Preview.Size = new Size(selectedModel.scaling_2_5.w, selectedModel.scaling_2_5.h);
-                this.Size = new Size(selectedModel.scaling_2_5.w + (int)(22 * currentDPI), selectedModel.scaling_2_5.h + (int)(66 * currentDPI));
+                pictureBox_Preview.Size = new Size(selectedModel.scaling.scaling_2_5.w, selectedModel.scaling.scaling_2_5.h);
+                this.Size = new Size(selectedModel.scaling.scaling_2_5.w + (int)(22 * currentDPI), selectedModel.scaling.scaling_2_5.h + (int)(66 * currentDPI));
                 scale = 2.5f;
             }
         }

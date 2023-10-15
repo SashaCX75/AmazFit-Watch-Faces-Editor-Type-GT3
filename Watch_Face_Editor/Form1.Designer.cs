@@ -209,6 +209,16 @@ namespace Watch_Face_Editor
             this.comboBox_ConvertingInput_Model = new System.Windows.Forms.ComboBox();
             this.numericUpDown_ConvertingInput_Custom = new System.Windows.Forms.NumericUpDown();
             this.tabPage_Settings = new System.Windows.Forms.TabPage();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.numericUpDown_ARGB_color_count = new System.Windows.Forms.NumericUpDown();
+            this.checkBox_Use_ARGB = new System.Windows.Forms.CheckBox();
+            this.radioButton_ARGB_forced = new System.Windows.Forms.RadioButton();
+            this.radioButton_ARGB_color = new System.Windows.Forms.RadioButton();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button_SavePNG_button = new System.Windows.Forms.Button();
+            this.checkBox_Buttons_In_Gif = new System.Windows.Forms.CheckBox();
+            this.checkBox_Buttons_Border = new System.Windows.Forms.CheckBox();
+            this.checkBox_Buttons_Area = new System.Windows.Forms.CheckBox();
             this.comboBox_Animation_Preview_Speed = new System.Windows.Forms.ComboBox();
             this.button_Reset = new System.Windows.Forms.Button();
             this.numericUpDown_Gif_Speed = new System.Windows.Forms.NumericUpDown();
@@ -291,6 +301,7 @@ namespace Watch_Face_Editor
             this.pictureBox_Preview = new System.Windows.Forms.PictureBox();
             this.comboBox_watch_model = new System.Windows.Forms.ComboBox();
             this.label_watch_model = new System.Windows.Forms.Label();
+            this.checkBox_Show_Buttons = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.tabPage_Edit.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -355,6 +366,9 @@ namespace Watch_Face_Editor
             this.groupBox9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_ConvertingInput_Custom)).BeginInit();
             this.tabPage_Settings.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_ARGB_color_count)).BeginInit();
+            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Gif_Speed)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -2020,7 +2034,9 @@ namespace Watch_Face_Editor
             resources.GetString("comboBox_ConvertingOutput_Model.Items10"),
             resources.GetString("comboBox_ConvertingOutput_Model.Items11"),
             resources.GetString("comboBox_ConvertingOutput_Model.Items12"),
-            resources.GetString("comboBox_ConvertingOutput_Model.Items13")});
+            resources.GetString("comboBox_ConvertingOutput_Model.Items13"),
+            resources.GetString("comboBox_ConvertingOutput_Model.Items14"),
+            resources.GetString("comboBox_ConvertingOutput_Model.Items15")});
             this.comboBox_ConvertingOutput_Model.Name = "comboBox_ConvertingOutput_Model";
             this.comboBox_ConvertingOutput_Model.SelectedIndexChanged += new System.EventHandler(this.comboBox_ConvertingOutput_Model_SelectedIndexChanged);
             // 
@@ -2072,7 +2088,9 @@ namespace Watch_Face_Editor
             resources.GetString("comboBox_ConvertingInput_Model.Items10"),
             resources.GetString("comboBox_ConvertingInput_Model.Items11"),
             resources.GetString("comboBox_ConvertingInput_Model.Items12"),
-            resources.GetString("comboBox_ConvertingInput_Model.Items13")});
+            resources.GetString("comboBox_ConvertingInput_Model.Items13"),
+            resources.GetString("comboBox_ConvertingInput_Model.Items14"),
+            resources.GetString("comboBox_ConvertingInput_Model.Items15")});
             this.comboBox_ConvertingInput_Model.Name = "comboBox_ConvertingInput_Model";
             this.comboBox_ConvertingInput_Model.SelectedIndexChanged += new System.EventHandler(this.comboBox_ConvertingInput_Model_SelectedIndexChanged);
             // 
@@ -2100,6 +2118,8 @@ namespace Watch_Face_Editor
             // 
             resources.ApplyResources(this.tabPage_Settings, "tabPage_Settings");
             this.tabPage_Settings.BackColor = System.Drawing.SystemColors.Control;
+            this.tabPage_Settings.Controls.Add(this.groupBox4);
+            this.tabPage_Settings.Controls.Add(this.groupBox3);
             this.tabPage_Settings.Controls.Add(this.comboBox_Animation_Preview_Speed);
             this.tabPage_Settings.Controls.Add(this.button_Reset);
             this.tabPage_Settings.Controls.Add(this.numericUpDown_Gif_Speed);
@@ -2117,6 +2137,105 @@ namespace Watch_Face_Editor
             this.tabPage_Settings.Controls.Add(this.groupBox1);
             this.tabPage_Settings.Controls.Add(this.label483);
             this.tabPage_Settings.Name = "tabPage_Settings";
+            // 
+            // groupBox4
+            // 
+            resources.ApplyResources(this.groupBox4, "groupBox4");
+            this.groupBox4.Controls.Add(this.numericUpDown_ARGB_color_count);
+            this.groupBox4.Controls.Add(this.checkBox_Use_ARGB);
+            this.groupBox4.Controls.Add(this.radioButton_ARGB_forced);
+            this.groupBox4.Controls.Add(this.radioButton_ARGB_color);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.TabStop = false;
+            // 
+            // numericUpDown_ARGB_color_count
+            // 
+            resources.ApplyResources(this.numericUpDown_ARGB_color_count, "numericUpDown_ARGB_color_count");
+            this.numericUpDown_ARGB_color_count.Maximum = new decimal(new int[] {
+            512,
+            0,
+            0,
+            0});
+            this.numericUpDown_ARGB_color_count.Minimum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            this.numericUpDown_ARGB_color_count.Name = "numericUpDown_ARGB_color_count";
+            this.numericUpDown_ARGB_color_count.Value = new decimal(new int[] {
+            255,
+            0,
+            0,
+            0});
+            this.numericUpDown_ARGB_color_count.ValueChanged += new System.EventHandler(this.numericUpDown_ARGB_color_count_ValueChanged);
+            // 
+            // checkBox_Use_ARGB
+            // 
+            resources.ApplyResources(this.checkBox_Use_ARGB, "checkBox_Use_ARGB");
+            this.checkBox_Use_ARGB.Name = "checkBox_Use_ARGB";
+            this.checkBox_Use_ARGB.UseVisualStyleBackColor = true;
+            this.checkBox_Use_ARGB.CheckedChanged += new System.EventHandler(this.checkBox_Use_ARGB_CheckedChanged);
+            // 
+            // radioButton_ARGB_forced
+            // 
+            resources.ApplyResources(this.radioButton_ARGB_forced, "radioButton_ARGB_forced");
+            this.radioButton_ARGB_forced.Checked = true;
+            this.radioButton_ARGB_forced.Name = "radioButton_ARGB_forced";
+            this.radioButton_ARGB_forced.TabStop = true;
+            this.radioButton_ARGB_forced.UseVisualStyleBackColor = true;
+            this.radioButton_ARGB_forced.CheckedChanged += new System.EventHandler(this.radioButton_Settings_CheckedChanged);
+            // 
+            // radioButton_ARGB_color
+            // 
+            resources.ApplyResources(this.radioButton_ARGB_color, "radioButton_ARGB_color");
+            this.radioButton_ARGB_color.Name = "radioButton_ARGB_color";
+            this.radioButton_ARGB_color.UseVisualStyleBackColor = true;
+            this.radioButton_ARGB_color.CheckedChanged += new System.EventHandler(this.radioButton_Settings_CheckedChanged);
+            // 
+            // groupBox3
+            // 
+            resources.ApplyResources(this.groupBox3, "groupBox3");
+            this.groupBox3.Controls.Add(this.button_SavePNG_button);
+            this.groupBox3.Controls.Add(this.checkBox_Buttons_In_Gif);
+            this.groupBox3.Controls.Add(this.checkBox_Buttons_Border);
+            this.groupBox3.Controls.Add(this.checkBox_Buttons_Area);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Paint += new System.Windows.Forms.PaintEventHandler(this.groupBox_Paint);
+            // 
+            // button_SavePNG_button
+            // 
+            resources.ApplyResources(this.button_SavePNG_button, "button_SavePNG_button");
+            this.button_SavePNG_button.Name = "button_SavePNG_button";
+            this.button_SavePNG_button.UseVisualStyleBackColor = true;
+            this.button_SavePNG_button.Click += new System.EventHandler(this.button_SavePNG_button_Click);
+            // 
+            // checkBox_Buttons_In_Gif
+            // 
+            resources.ApplyResources(this.checkBox_Buttons_In_Gif, "checkBox_Buttons_In_Gif");
+            this.checkBox_Buttons_In_Gif.Checked = true;
+            this.checkBox_Buttons_In_Gif.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_Buttons_In_Gif.Name = "checkBox_Buttons_In_Gif";
+            this.checkBox_Buttons_In_Gif.UseVisualStyleBackColor = true;
+            this.checkBox_Buttons_In_Gif.CheckedChanged += new System.EventHandler(this.checkBox_UnvisibleSettings_CheckedChanged);
+            // 
+            // checkBox_Buttons_Border
+            // 
+            resources.ApplyResources(this.checkBox_Buttons_Border, "checkBox_Buttons_Border");
+            this.checkBox_Buttons_Border.Checked = true;
+            this.checkBox_Buttons_Border.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_Buttons_Border.Name = "checkBox_Buttons_Border";
+            this.checkBox_Buttons_Border.UseVisualStyleBackColor = true;
+            this.checkBox_Buttons_Border.CheckedChanged += new System.EventHandler(this.checkBox_VisibleSettings_CheckedChanged);
+            // 
+            // checkBox_Buttons_Area
+            // 
+            resources.ApplyResources(this.checkBox_Buttons_Area, "checkBox_Buttons_Area");
+            this.checkBox_Buttons_Area.Checked = true;
+            this.checkBox_Buttons_Area.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_Buttons_Area.Name = "checkBox_Buttons_Area";
+            this.checkBox_Buttons_Area.UseVisualStyleBackColor = true;
+            this.checkBox_Buttons_Area.CheckedChanged += new System.EventHandler(this.checkBox_VisibleSettings_CheckedChanged);
             // 
             // comboBox_Animation_Preview_Speed
             // 
@@ -2240,6 +2359,8 @@ namespace Watch_Face_Editor
             // checkBox_Shortcuts_In_Gif
             // 
             resources.ApplyResources(this.checkBox_Shortcuts_In_Gif, "checkBox_Shortcuts_In_Gif");
+            this.checkBox_Shortcuts_In_Gif.Checked = true;
+            this.checkBox_Shortcuts_In_Gif.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBox_Shortcuts_In_Gif.Name = "checkBox_Shortcuts_In_Gif";
             this.checkBox_Shortcuts_In_Gif.UseVisualStyleBackColor = true;
             this.checkBox_Shortcuts_In_Gif.CheckedChanged += new System.EventHandler(this.checkBox_UnvisibleSettings_CheckedChanged);
@@ -2777,10 +2898,20 @@ namespace Watch_Face_Editor
             resources.ApplyResources(this.label_watch_model, "label_watch_model");
             this.label_watch_model.Name = "label_watch_model";
             // 
+            // checkBox_Show_Buttons
+            // 
+            resources.ApplyResources(this.checkBox_Show_Buttons, "checkBox_Show_Buttons");
+            this.checkBox_Show_Buttons.Checked = true;
+            this.checkBox_Show_Buttons.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox_Show_Buttons.Name = "checkBox_Show_Buttons";
+            this.checkBox_Show_Buttons.UseVisualStyleBackColor = true;
+            this.checkBox_Show_Buttons.CheckedChanged += new System.EventHandler(this.checkBox_VisibleSettings_CheckedChanged);
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.checkBox_Show_Buttons);
             this.Controls.Add(this.label_watch_model);
             this.Controls.Add(this.comboBox_watch_model);
             this.Controls.Add(this.progressBar1);
@@ -2920,6 +3051,11 @@ namespace Watch_Face_Editor
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_ConvertingInput_Custom)).EndInit();
             this.tabPage_Settings.ResumeLayout(false);
             this.tabPage_Settings.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_ARGB_color_count)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Gif_Speed)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -3205,6 +3341,17 @@ namespace Watch_Face_Editor
         private System.Windows.Forms.PictureBox pictureBox_qr;
         private System.Windows.Forms.Panel panel_buymeacoffee;
         private System.Windows.Forms.PictureBox pictureBoxpictureBox_buymeacoff;
+        private System.Windows.Forms.CheckBox checkBox_Show_Buttons;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button button_SavePNG_button;
+        private System.Windows.Forms.CheckBox checkBox_Buttons_In_Gif;
+        private System.Windows.Forms.CheckBox checkBox_Buttons_Border;
+        private System.Windows.Forms.CheckBox checkBox_Buttons_Area;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.CheckBox checkBox_Use_ARGB;
+        private System.Windows.Forms.RadioButton radioButton_ARGB_forced;
+        private System.Windows.Forms.RadioButton radioButton_ARGB_color;
+        public System.Windows.Forms.NumericUpDown numericUpDown_ARGB_color_count;
     }
 }
 

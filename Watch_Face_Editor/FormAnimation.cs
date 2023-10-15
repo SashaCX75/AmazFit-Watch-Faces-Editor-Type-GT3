@@ -36,8 +36,8 @@ namespace Watch_Face_Editor
 
             Form1 form1 = this.Owner as Form1;//Получаем ссылку на первую форму
             int link = form1.radioButton_ScreenNormal.Checked ? 0 : 1;
-            form1.Preview_screen(gPanel, 1, false, false, false, false, false, false, false, false, true, false,
-                false, false, link, false, time_value_sec, false, 0);
+            form1.Preview_screen(gPanel, 1, false, false, false, false, false, false, false, false, false, false, false, true, false,
+                false, false, link, false, false, time_value_sec, false, 0);
 
             pictureBox_AnimatiomPreview.Image = SrcImg;
             time_value_sec = time_value_sec + timer1.Interval / 1000f;
@@ -95,8 +95,8 @@ namespace Watch_Face_Editor
                         this.Size = new Size((int)(418 + 20 * currentDPI), (int)(418 + 100 * currentDPI));
                         break;
                 }*/
-                pictureBox_AnimatiomPreview.Size = new Size(selectedModel.scaling_1_0.w, selectedModel.scaling_1_0.h);
-                this.Size = new Size((int)(selectedModel.scaling_1_0.w + 20 * currentDPI), (int)(selectedModel.scaling_1_0.h + 100 * currentDPI));
+                pictureBox_AnimatiomPreview.Size = new Size(selectedModel.scaling.scaling_1_0.w, selectedModel.scaling.scaling_1_0.h);
+                this.Size = new Size((int)(selectedModel.scaling.scaling_1_0.w + 20 * currentDPI), (int)(selectedModel.scaling.scaling_1_0.h + 100 * currentDPI));
                 scalePreview = 1f;
             }
 
@@ -142,8 +142,8 @@ namespace Watch_Face_Editor
                         this.Size = new Size((int)(626 + 20 * currentDPI), (int)(626 + 100 * currentDPI));
                         break;
                 }*/
-                pictureBox_AnimatiomPreview.Size = new Size(selectedModel.scaling_1_5.w, selectedModel.scaling_1_5.h);
-                this.Size = new Size((int)(selectedModel.scaling_1_5.w + 20 * currentDPI), (int)(selectedModel.scaling_1_5.h + 100 * currentDPI));
+                pictureBox_AnimatiomPreview.Size = new Size(selectedModel.scaling.scaling_1_5.w, selectedModel.scaling.scaling_1_5.h);
+                this.Size = new Size((int)(selectedModel.scaling.scaling_1_5.w + 20 * currentDPI), (int)(selectedModel.scaling.scaling_1_5.h + 100 * currentDPI));
                 scalePreview = 1.5f;
             }
 
@@ -189,8 +189,8 @@ namespace Watch_Face_Editor
                           this.Size = new Size((int)(833 + 20 * currentDPI), (int)(833 + 100 * currentDPI));
                           break;
                   }*/
-                pictureBox_AnimatiomPreview.Size = new Size(selectedModel.scaling_2_0.w, selectedModel.scaling_2_0.h);
-                this.Size = new Size((int)(selectedModel.scaling_2_0.w + 20 * currentDPI), (int)(selectedModel.scaling_2_0.h + 100 * currentDPI));
+                pictureBox_AnimatiomPreview.Size = new Size(selectedModel.scaling.scaling_2_0.w, selectedModel.scaling.scaling_2_0.h);
+                this.Size = new Size((int)(selectedModel.scaling.scaling_2_0.w + 20 * currentDPI), (int)(selectedModel.scaling.scaling_2_0.h + 100 * currentDPI));
                 scalePreview = 2f;
             }
             int width = button_SaveAnimation.Left + button_SaveAnimation.Width;
@@ -366,8 +366,8 @@ namespace Watch_Face_Editor
                             bitmap = bitmapTemp;
                             gPanel = Graphics.FromImage(bitmap);
 
-                            form1.Preview_screen(gPanel, 1, false, false, false, false, false, false, false, false, true, false,
-                                false, false, 0, false, time_value_sec, false, 0);
+                            form1.Preview_screen(gPanel, 1, false, false, false, false, false, false, false, false, false, false, false, true, false,
+                                false, false, 0, false, false, time_value_sec, false, 0);
 
                             if (form1.checkBox_WatchSkin_Use.Checked) bitmap = form1.ApplyWatchSkin(bitmap);
                             else if (form1.checkBox_crop.Checked) bitmap = form1.ApplyMask(bitmap, mask);

@@ -183,6 +183,27 @@
   <data name="Form_PreviewX" xml:space="preserve">
     <value>Náhled [X=</value>
   </data>
+  <data name="Img_Convert_Error_NoPalette" xml:space="preserve">
+    <value>Chybí barevná mapa</value>
+  </data>
+  <data name="Img_Convert_Error_Not32bit" xml:space="preserve">
+    <value>Obrázek nesmí být monochromatický a musí být v 32bitovém formátu</value>
+  </data>
+  <data name="Img_Convert_Error_NotSave1" xml:space="preserve">
+    <value>Soubor</value>
+  </data>
+  <data name="Img_Convert_Error_NotSave2" xml:space="preserve">
+    <value>nebyla uložena.</value>
+  </data>
+  <data name="Img_Convert_Error_ReadErr" xml:space="preserve">
+    <value>Chyba při zpracování obrázku</value>
+  </data>
+  <data name="Img_Convert_Error_SaveImg" xml:space="preserve">
+    <value>Pokoušíte se uložit obrázek?</value>
+  </data>
+  <data name="Img_Convert_Error_WrongImg" xml:space="preserve">
+    <value>Nesprávný formát zdrojového souboru.</value>
+  </data>
   <data name="Message_AnimationAOD_Text" xml:space="preserve">
     <value>Na obrazovku AOD nelze přidat animaci.</value>
   </data>
@@ -236,6 +257,9 @@
   </data>
   <data name="Message_GoToFile_Text" xml:space="preserve">
     <value>Přejít na soubor</value>
+  </data>
+  <data name="Message_HR_Image_Count_Error" xml:space="preserve">
+    <value>Počet snímků pro zobrazení tepové frekvence musí být 6.</value>
   </data>
   <data name="Message_Image32bit" xml:space="preserve">
     <value>Obrázek nesmí být monochromatický a musí být v 32bitovém formátu</value>
@@ -320,6 +344,9 @@
   </data>
   <data name="Message_Warning_Information" xml:space="preserve">
     <value>Informace</value>
+  </data>
+  <data name="Message_Wrong_ColorScheme" xml:space="preserve">
+    <value>Pro model je zadáno neznámé barevné schéma:</value>
   </data>
   <data name="Message_Wrong_Original_Image" xml:space="preserve">
     <value>Neplatný zdrojový formát obrázku</value>

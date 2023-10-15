@@ -25169,55 +25169,6 @@ namespace Watch_Face_Editor
             //items += Environment.NewLine + TabInString(6) + "};";
             items += Environment.NewLine;
 
-            /*img_height = 454;
-            img_width = 454;
-            switch (ProgramSettings.Watch_Model)
-            {
-                case "GTR 3":
-                    img_height = 454;
-                    img_width = 454;
-                    break;
-                case "GTR 3 Pro":
-                    img_height = 480;
-                    img_width = 480;
-                    break;
-                case "GTS 3":
-                    img_height = 450;
-                    img_width = 390;
-                    break;
-                case "T-Rex 2":
-                    img_height = 454;
-                    img_width = 454;
-                    break;
-                case "T-Rex Ultra":
-                    img_height = 454;
-                    img_width = 454;
-                    break;
-                case "GTR 4":
-                    img_height = 466;
-                    img_width = 466;
-                    break;
-                case "Amazfit Band 7":
-                    img_height = 368;
-                    img_width = 194;
-                    break;
-                case "GTS 4 mini":
-                    img_height = 384;
-                    img_width = 336;
-                    break;
-                case "Falcon":
-                    img_height = 416;
-                    img_width = 416;
-                    break;
-                case "GTR mini":
-                    img_height = 416;
-                    img_width = 416;
-                    break;
-                case "GTS 4":
-                    img_height = 450;
-                    img_width = 390;
-                    break;
-            }*/
             img_height = SelectedModel.background.h;
             img_width = SelectedModel.background.w;
 
@@ -25338,12 +25289,12 @@ namespace Watch_Face_Editor
                         text_update += TabInString(7) + "let tideData = weatherData.tideData;" + Environment.NewLine;
                     if (text_update.IndexOf("let " + variableName + "hour = 0;") < 0)
                     {
-                        text_update += TabInString(7) + "let " + valueName + "_hour = 0;" + Environment.NewLine;
-                        text_update += TabInString(7) + "let " + valueName + "_minute = 0;" + Environment.NewLine;
+                        text_update += TabInString(7) + "let " + variableName + "hour = 0;" + Environment.NewLine;
+                        text_update += TabInString(7) + "let " + variableName + "minute = 0;" + Environment.NewLine;
 
                         text_update += TabInString(7) + "if (tideData.count > 0) {" + Environment.NewLine;
-                        text_update += TabInString(8) + valueName + "_hour = tideData.data[0]." + sensorTargetValue + ".hour;" + Environment.NewLine;
-                        text_update += TabInString(8) + valueName + "_minute = tideData.data[0]." + sensorTargetValue + ".minute;" + Environment.NewLine;
+                        text_update += TabInString(8) + variableName + "hour = tideData.data[0]." + sensorTargetValue + ".hour;" + Environment.NewLine;
+                        text_update += TabInString(8) + variableName + "minute = tideData.data[0]." + sensorTargetValue + ".minute;" + Environment.NewLine;
                         text_update += TabInString(7) + "}; // end tideData;" + Environment.NewLine; 
                     }
                 }
@@ -25492,55 +25443,6 @@ namespace Watch_Face_Editor
             //items += Environment.NewLine + TabInString(6) + "};";
             items += Environment.NewLine;
 
-            /*img_height = 454;
-            img_width = 454;
-            switch (ProgramSettings.Watch_Model)
-            {
-                case "GTR 3":
-                    img_height = 454;
-                    img_width = 454;
-                    break;
-                case "GTR 3 Pro":
-                    img_height = 480;
-                    img_width = 480;
-                    break;
-                case "GTS 3":
-                    img_height = 450;
-                    img_width = 390;
-                    break;
-                case "T-Rex 2":
-                    img_height = 454;
-                    img_width = 454;
-                    break;
-                case "T-Rex Ultra":
-                    img_height = 454;
-                    img_width = 454;
-                    break;
-                case "GTR 4":
-                    img_height = 466;
-                    img_width = 466;
-                    break;
-                case "Amazfit Band 7":
-                    img_height = 368;
-                    img_width = 194;
-                    break;
-                case "GTS 4 mini":
-                    img_height = 384;
-                    img_width = 336;
-                    break;
-                case "Falcon":
-                    img_height = 416;
-                    img_width = 416;
-                    break;
-                case "GTR mini":
-                    img_height = 416;
-                    img_width = 416;
-                    break;
-                case "GTS 4":
-                    img_height = 450;
-                    img_width = 390;
-                    break;
-            }*/
             img_height = SelectedModel.background.h;
             img_width = SelectedModel.background.w;
 
