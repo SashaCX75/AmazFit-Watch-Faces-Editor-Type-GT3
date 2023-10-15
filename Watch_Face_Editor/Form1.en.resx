@@ -409,14 +409,65 @@
   <data name="tabPageConverting.Text" xml:space="preserve">
     <value>Converting</value>
   </data>
+  <data name="checkBox_Use_ARGB.Size" type="System.Drawing.Size, System.Drawing">
+    <value>176, 17</value>
+  </data>
+  <data name="checkBox_Use_ARGB.Text" xml:space="preserve">
+    <value>Convert images to ARGB format</value>
+  </data>
+  <data name="radioButton_ARGB_forced.Size" type="System.Drawing.Size, System.Drawing">
+    <value>167, 17</value>
+  </data>
+  <data name="radioButton_ARGB_forced.Text" xml:space="preserve">
+    <value>Force to use the ARGB format</value>
+  </data>
+  <data name="radioButton_ARGB_color.Size" type="System.Drawing.Size, System.Drawing">
+    <value>212, 17</value>
+  </data>
+  <data name="radioButton_ARGB_color.Text" xml:space="preserve">
+    <value>Only with the specified number of colors</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>Convert images without loss of quality</value>
+  </data>
+  <data name="button_SavePNG_button.Location" type="System.Drawing.Point, System.Drawing">
+    <value>240, 14</value>
+  </data>
+  <data name="button_SavePNG_button.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 23</value>
+  </data>
+  <data name="button_SavePNG_button.Text" xml:space="preserve">
+    <value>Save buttons preview</value>
+  </data>
+  <data name="checkBox_Buttons_In_Gif.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 17</value>
+  </data>
+  <data name="checkBox_Buttons_In_Gif.Text" xml:space="preserve">
+    <value>Highlight buttons when saving gif file</value>
+  </data>
+  <data name="checkBox_Buttons_Border.Size" type="System.Drawing.Size, System.Drawing">
+    <value>169, 17</value>
+  </data>
+  <data name="checkBox_Buttons_Border.Text" xml:space="preserve">
+    <value>Show frame around the button</value>
+  </data>
+  <data name="checkBox_Buttons_Area.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 17</value>
+  </data>
+  <data name="checkBox_Buttons_Area.Text" xml:space="preserve">
+    <value>Dotted grid</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Button highlight type</value>
+  </data>
   <data name="comboBox_Animation_Preview_Speed.Location" type="System.Drawing.Point, System.Drawing">
-    <value>600, 310</value>
+    <value>600, 420</value>
   </data>
   <data name="button_Reset.Text" xml:space="preserve">
     <value>Reset</value>
   </data>
   <data name="numericUpDown_Gif_Speed.Location" type="System.Drawing.Point, System.Drawing">
-    <value>518, 253</value>
+    <value>518, 363</value>
   </data>
   <data name="checkBox_AllWidgetsInGif.Size" type="System.Drawing.Size, System.Drawing">
     <value>288, 17</value>
@@ -470,10 +521,10 @@
     <value>Show image displayed when clicked</value>
   </data>
   <data name="checkBox_Shortcuts_Border.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 17</value>
+    <value>177, 17</value>
   </data>
   <data name="checkBox_Shortcuts_Border.Text" xml:space="preserve">
-    <value>Frame around area</value>
+    <value>Show frame around the shortcut</value>
   </data>
   <data name="checkBox_Shortcuts_Area.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 17</value>
@@ -482,7 +533,7 @@
     <value>Dotted grid</value>
   </data>
   <data name="groupBox8.Text" xml:space="preserve">
-    <value>Highlighting type of the shortcut area</value>
+    <value>Shortcuts highlight type</value>
   </data>
   <data name="checkBox_JsonWarnings.Size" type="System.Drawing.Size, System.Drawing">
     <value>203, 17</value>
@@ -491,10 +542,10 @@
     <value>Show warning when saving JSON file</value>
   </data>
   <data name="comboBox_Language.Location" type="System.Drawing.Point, System.Drawing">
-    <value>465, 367</value>
+    <value>465, 477</value>
   </data>
   <data name="label356.Location" type="System.Drawing.Point, System.Drawing">
-    <value>409, 371</value>
+    <value>409, 481</value>
   </data>
   <data name="label356.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 13</value>
@@ -661,7 +712,7 @@ more system load)</value>
     <value>Highlight the entire space occupied by circle and line progress</value>
   </data>
   <data name="checkBox_Show_Shortcuts.Text" xml:space="preserve">
-    <value>Show shortcut area</value>
+    <value>Highlight shortcut area</value>
   </data>
   <data name="checkBox_crop.Text" xml:space="preserve">
     <value>Crop image to fit the screen (may work slowly)</value>
@@ -695,7 +746,7 @@ more system load)</value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
-        DQAAAk1TRnQBSQFMAgEBBgEAASABKQEgASkBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAAUgBKQFIASkBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -767,6 +818,9 @@ more system load)</value>
   </data>
   <data name="label_watch_model.Text" xml:space="preserve">
     <value>Watch model</value>
+  </data>
+  <data name="checkBox_Show_Buttons.Text" xml:space="preserve">
+    <value>Highlight button areas</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

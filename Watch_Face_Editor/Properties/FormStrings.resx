@@ -207,6 +207,12 @@
   <data name="Message_AnimationAOD_Text" xml:space="preserve">
     <value>Вы не можете добавлять анимацию на экран AOD.</value>
   </data>
+  <data name="Message_ARGB_Line1" xml:space="preserve">
+    <value>Конвертация изображений в формат ARGB занимает больше времени.</value>
+  </data>
+  <data name="Message_ARGB_Line2" xml:space="preserve">
+    <value>Вы точно хотите конвертировать изображения в формат ARGB?</value>
+  </data>
   <data name="Message_ConvertingCompleted_Text" xml:space="preserve">
     <value>Новый циферблат создан.</value>
   </data>

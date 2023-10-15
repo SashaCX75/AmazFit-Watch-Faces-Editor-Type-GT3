@@ -409,7 +409,15 @@ namespace ControlLibrary
                 }
                 else
                 {
-                    label_unit.Text = unit_label_text;
+                    if (Distance_mode)
+                    {
+                        label_unit.Text = unit_label_text + " (km)";
+                        label_unit_miles.Text = unit_label_text + " (ml)";
+                    }
+                    else
+                    {
+                        label_unit.Text = unit_label_text;
+                    }
                     label_minus_image.Visible = false;
                 }
 

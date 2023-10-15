@@ -25,7 +25,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrayNotify;
 
 namespace Watch_Face_Editor
 {
@@ -330,49 +329,6 @@ namespace Watch_Face_Editor
 
             checkBox_WatchSkin_Use.Checked = ProgramSettings.WatchSkin_Use;
             textBox_WatchSkin_Path.Enabled = ProgramSettings.WatchSkin_Use;
-            //switch (ProgramSettings.Watch_Model)
-            //{
-            //    case "GTR 3":
-            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_3;
-            //        break;
-            //    case "GTR 3 Pro":
-            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_3_Pro;
-            //        break;
-            //    case "GTS 3":
-            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_3;
-            //        break;
-            //    case "T-Rex 2":
-            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_T_Rex_2;
-            //        break;
-            //    case "T-Rex Ultra":
-            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_T_Rex_Ultra;
-            //        break;
-            //    case "GTR 4":
-            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_4;
-            //        break;
-            //    case "Amazfit Band 7":
-            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_Amazfit_Band_7;
-            //        break;
-            //    case "GTS 4 mini":
-            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_4_mini;
-            //        break;
-            //    case "Falcon":
-            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_Falcon;
-            //        break;
-            //    case "GTR mini":
-            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_mini;
-            //        break;
-            //    case "GTS 4":
-            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_3;
-            //        break;
-            //}
-
-            /*// StartBlock :: Kartun
-            Logger.WriteLine($"* Form1_Load {ProgramSettings.Watch_Model}");
-            Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
-            Logger.WriteLine($"Loaded configuration: {currPlatform}");
-            textBox_WatchSkin_Path.Text = @"\Skin\"  + currPlatform.watchSkin ;
-            // EndBlock :: Kartun*/
             textBox_WatchSkin_Path.Text = @"\Skin\" + SelectedModel.watchSkin; // времмено оставить
             if(SelectedModel.watchSkin == null || SelectedModel.watchSkin.Length == 0)
             {
@@ -386,7 +342,7 @@ namespace Watch_Face_Editor
             checkBox_crop.Checked = ProgramSettings.Crop;
             checkBox_Show_Shortcuts.Checked = ProgramSettings.Show_Shortcuts;
             checkBox_CircleScaleImage.Checked = ProgramSettings.Show_CircleScale_Area;
-            checkBox_center_marker.Checked = ProgramSettings.Shortcuts_Center_marker;
+            checkBox_center_marker.Checked = ProgramSettings.Pointer_Center_marker;
             checkBox_WidgetsArea.Checked = ProgramSettings.Show_Widgets_Area;
 
             label_version.Text = "v " +
@@ -419,11 +375,20 @@ namespace Watch_Face_Editor
 
             checkBox_Shortcuts_Area.Checked = ProgramSettings.Shortcuts_Area;
             checkBox_Shortcuts_Border.Checked = ProgramSettings.Shortcuts_Border;
-            checkBox_Shortcuts_Image.Checked = ProgramSettings.Shortcuts_Image;
+            //checkBox_Shortcuts_Image.Checked = ProgramSettings.Shortcuts_Image;
             checkBox_Shortcuts_In_Gif.Checked = ProgramSettings.Shortcuts_In_Gif;
+
+            checkBox_Buttons_Area.Checked = ProgramSettings.Buttons_Area;
+            checkBox_Buttons_Border.Checked = ProgramSettings.Buttons_Border;
+            checkBox_Buttons_In_Gif.Checked = ProgramSettings.Buttons_In_Gif;
+
+            checkBox_Use_ARGB.Checked = ProgramSettings.Use_ARGB_encoding;
+            radioButton_ARGB_color.Checked = ProgramSettings.ARGB_encoding_color;
 
             checkBox_ShowIn12hourFormat.Checked = ProgramSettings.ShowIn12hourFormat;
             checkBox_AllWidgetsInGif.Checked = ProgramSettings.DrawAllWidgets;
+            numericUpDown_ARGB_color_count.Value = ProgramSettings.ARGB_encoding_color_count;
+            radioButton_ARGB_forced.Checked = ProgramSettings.ARGB_encoding_forced;
 
             if (ProgramSettings.language.Length > 1) comboBox_Language.Text = ProgramSettings.language;
 
@@ -667,36 +632,30 @@ namespace Watch_Face_Editor
             ProgramSettings.ShowIn12hourFormat = checkBox_ShowIn12hourFormat.Checked;
             ProgramSettings.WatchSkin_Use = checkBox_WatchSkin_Use.Checked;
             ProgramSettings.DrawAllWidgets = checkBox_AllWidgetsInGif.Checked;
+
+            ProgramSettings.Use_ARGB_encoding = checkBox_Use_ARGB.Checked;
+            ProgramSettings.ARGB_encoding_color = radioButton_ARGB_color.Checked;
+            ProgramSettings.ARGB_encoding_forced = radioButton_ARGB_forced.Checked;
+            ProgramSettings.ARGB_encoding_color_count = (int)numericUpDown_ARGB_color_count.Value;
+
             ProgramSettings.Shortcuts_Area = checkBox_Shortcuts_Area.Checked;
             ProgramSettings.Shortcuts_Border = checkBox_Shortcuts_Border.Checked;
-            ProgramSettings.Shortcuts_Image = checkBox_Shortcuts_Image.Checked;
+            //ProgramSettings.Shortcuts_Image = checkBox_Shortcuts_Image.Checked;
+            ProgramSettings.Show_Shortcuts = checkBox_Show_Shortcuts.Checked;
+
+            ProgramSettings.Buttons_Area = checkBox_Buttons_Area.Checked;
+            ProgramSettings.Buttons_Border = checkBox_Buttons_Border.Checked;
+            ProgramSettings.Show_Buttons = checkBox_Show_Buttons.Checked;
 
             ProgramSettings.ShowBorder = checkBox_border.Checked;
             ProgramSettings.Crop = checkBox_crop.Checked;
             ProgramSettings.Show_CircleScale_Area = checkBox_CircleScaleImage.Checked;
-            ProgramSettings.Shortcuts_Center_marker = checkBox_center_marker.Checked;
+            ProgramSettings.Pointer_Center_marker = checkBox_center_marker.Checked;
             ProgramSettings.Show_Widgets_Area = checkBox_WidgetsArea.Checked;
-            ProgramSettings.Show_Shortcuts = checkBox_Show_Shortcuts.Checked;
 
             //ProgramSettings.language = comboBox_Language.Text;
 
-            if (comboBox_watch_model.SelectedIndex != -1)
-            {
-                ProgramSettings.Watch_Model = comboBox_watch_model.Text;
-
-                // TODO :: Исправить ... Перенести в конфигурации модели
-                //if (comboBox_watch_model.Text == "GTR 3") ProgramSettings.WatchSkin_GTR_3 = textBox_WatchSkin_Path.Text;
-                //if (comboBox_watch_model.Text == "GTR 3 Pro") ProgramSettings.WatchSkin_GTR_3_Pro = textBox_WatchSkin_Path.Text;
-                //if (comboBox_watch_model.Text == "GTS 3") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
-                //if (comboBox_watch_model.Text == "T-Rex 2") ProgramSettings.WatchSkin_T_Rex_2 = textBox_WatchSkin_Path.Text;
-                //if (comboBox_watch_model.Text == "T-Rex Ultra") ProgramSettings.WatchSkin_T_Rex_Ultra = textBox_WatchSkin_Path.Text;
-                //if (comboBox_watch_model.Text == "GTR 4") ProgramSettings.WatchSkin_GTR_4 = textBox_WatchSkin_Path.Text;
-                //if (comboBox_watch_model.Text == "Amazfit Band 7") ProgramSettings.WatchSkin_Amazfit_Band_7 = textBox_WatchSkin_Path.Text;
-                //if (comboBox_watch_model.Text == "GTS 4 mini") ProgramSettings.WatchSkin_GTS_4_mini = textBox_WatchSkin_Path.Text;
-                //if (comboBox_watch_model.Text == "Falcon") ProgramSettings.WatchSkin_Falcon = textBox_WatchSkin_Path.Text;
-                //if (comboBox_watch_model.Text == "GTR mini") ProgramSettings.WatchSkin_GTR_mini = textBox_WatchSkin_Path.Text;
-                //if (comboBox_watch_model.Text == "GTS 4") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
-            }
+            if (comboBox_watch_model.SelectedIndex != -1) ProgramSettings.Watch_Model = comboBox_watch_model.Text;
 
             string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
             {
@@ -2393,45 +2352,6 @@ namespace Watch_Face_Editor
             if (Watch_Face != null && Watch_Face.WatchFace_Info != null && Watch_Face.WatchFace_Info.DeviceName != null)
             {
                 comboBox_watch_model.Text = GetNewFormatDeviceName(Watch_Face.WatchFace_Info.DeviceName);
-                /*switch (Watch_Face.WatchFace_Info.DeviceName)
-                {
-                    case "GTR3":
-                        comboBox_watch_model.Text = "GTR 3";
-                        break;
-                    case "GTR3_Pro":
-                        comboBox_watch_model.Text = "GTR 3 Pro";
-                        break;
-                    case "GTS3":
-                        comboBox_watch_model.Text = "GTS 3";
-                        break;
-                    case "T_Rex_2":
-                        comboBox_watch_model.Text = "T-Rex 2";
-                        break;
-                    case "T_Rex_Ultra":
-                        comboBox_watch_model.Text = "T-Rex Ultra";
-                        break;
-                    case "GTR4":
-                        comboBox_watch_model.Text = "GTR 4";
-                        break;
-                    case "Amazfit_Band_7":
-                        comboBox_watch_model.Text = "Amazfit Band 7";
-                        break;
-                    case "GTS4_mini":
-                        comboBox_watch_model.Text = "GTS 4 mini";
-                        break;
-                    case "GTR_mini":
-                        comboBox_watch_model.Text = "GTR mini";
-                        break;
-                    case "Falcon":
-                        comboBox_watch_model.Text = "Falcon";
-                        break;
-                    case "GTS4":
-                        comboBox_watch_model.Text = "GTS 4";
-                        break;
-                    default:
-                        comboBox_watch_model.Text = "GTR 3";
-                        break;
-                }*/
             }
             PreviewView = true;
 
@@ -3208,8 +3128,9 @@ namespace Watch_Face_Editor
             int link = radioButton_ScreenNormal.Checked ? 0 : 1;
             Preview_screen(gPanel, scale, checkBox_crop.Checked, checkBox_WebW.Checked, checkBox_WebB.Checked,
                 checkBox_border.Checked, checkBox_Show_Shortcuts.Checked, checkBox_Shortcuts_Area.Checked,
-                checkBox_Shortcuts_Border.Checked, checkBox_Shortcuts_Image.Checked, true, checkBox_CircleScaleImage.Checked,
-                checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link, false, -1, showEeditMode, edit_mode);
+                checkBox_Shortcuts_Border.Checked, checkBox_Shortcuts_Image.Checked, checkBox_Show_Buttons.Checked,
+                checkBox_Buttons_Area.Checked, checkBox_Buttons_Border.Checked, true, checkBox_CircleScaleImage.Checked,
+                checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link, false, false, -1, showEeditMode, edit_mode);
             pictureBox_Preview.BackgroundImage = bitmap;
             gPanel.Dispose();
 
@@ -3328,8 +3249,9 @@ namespace Watch_Face_Editor
                     Preview_screen(gPanelPreviewResize, 1, checkBox_crop.Checked,
                         checkBox_WebW.Checked, checkBox_WebB.Checked, checkBox_border.Checked,
                         checkBox_Show_Shortcuts.Checked, checkBox_Shortcuts_Area.Checked, checkBox_Shortcuts_Border.Checked,
-                        checkBox_Shortcuts_Image.Checked, true,checkBox_CircleScaleImage.Checked, 
-                        checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link_aod, false, -1, showEeditMode, edit_mode);
+                        checkBox_Shortcuts_Image.Checked, checkBox_Show_Buttons.Checked, checkBox_Buttons_Area.Checked,
+                        checkBox_Buttons_Border.Checked, true,checkBox_CircleScaleImage.Checked, 
+                        checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link_aod, false, false, -1, showEeditMode, edit_mode);
                     formPreview.pictureBox_Preview.BackgroundImage = bitmapPreviewResize;
                     gPanelPreviewResize.Dispose();
                 };
@@ -3417,8 +3339,9 @@ namespace Watch_Face_Editor
             }
             Preview_screen(gPanel, scale, checkBox_crop.Checked, checkBox_WebW.Checked, checkBox_WebB.Checked,
                 checkBox_border.Checked, checkBox_Show_Shortcuts.Checked, checkBox_Shortcuts_Area.Checked,
-                checkBox_Shortcuts_Border.Checked, checkBox_Shortcuts_Image.Checked, true, checkBox_CircleScaleImage.Checked,
-                checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link, false, -1, showEeditMode, edit_mode);
+                checkBox_Shortcuts_Border.Checked, checkBox_Shortcuts_Image.Checked, checkBox_Show_Buttons.Checked,
+                checkBox_Buttons_Area.Checked, checkBox_Buttons_Border.Checked, true, checkBox_CircleScaleImage.Checked,
+                checkBox_center_marker.Checked, checkBox_WidgetsArea.Checked, link, false, false, -1, showEeditMode, edit_mode);
             formPreview.pictureBox_Preview.BackgroundImage = bitmap;
             gPanel.Dispose();
 
@@ -6950,17 +6873,33 @@ namespace Watch_Face_Editor
             ProgramSettings.ShowIn12hourFormat = checkBox_ShowIn12hourFormat.Checked;
             ProgramSettings.WatchSkin_Use = checkBox_WatchSkin_Use.Checked;
             ProgramSettings.DrawAllWidgets = checkBox_AllWidgetsInGif.Checked;
+
+            ProgramSettings.Use_ARGB_encoding = checkBox_Use_ARGB.Checked;
+            ProgramSettings.ARGB_encoding_color = radioButton_ARGB_color.Checked;
+            ProgramSettings.ARGB_encoding_forced = radioButton_ARGB_forced.Checked;
+            ProgramSettings.ARGB_encoding_color_count = (int)numericUpDown_ARGB_color_count.Value;
+
             ProgramSettings.Shortcuts_Area = checkBox_Shortcuts_Area.Checked;
             ProgramSettings.Shortcuts_Border = checkBox_Shortcuts_Border.Checked;
-            ProgramSettings.Shortcuts_Image = checkBox_Shortcuts_Image.Checked;
+            //ProgramSettings.Shortcuts_Image = checkBox_Shortcuts_Image.Checked;
+            ProgramSettings.Show_Shortcuts = checkBox_Show_Shortcuts.Checked;
+            ProgramSettings.Shortcuts_In_Gif = checkBox_Shortcuts_In_Gif.Checked;
+
+            ProgramSettings.Buttons_Area = checkBox_Buttons_Area.Checked;
+            ProgramSettings.Buttons_Border = checkBox_Buttons_Border.Checked;
+            ProgramSettings.Show_Buttons = checkBox_Show_Buttons.Checked;
+            ProgramSettings.Buttons_In_Gif = checkBox_Buttons_In_Gif.Checked;
+
+            ProgramSettings.Buttons_Area = checkBox_Buttons_Area.Checked;
+            ProgramSettings.Buttons_Border = checkBox_Buttons_Border.Checked;
+            ProgramSettings.Show_Buttons = checkBox_Show_Buttons.Checked;
+            ProgramSettings.Buttons_In_Gif = checkBox_Buttons_In_Gif.Checked;
 
             ProgramSettings.ShowBorder = checkBox_border.Checked;
             ProgramSettings.Crop = checkBox_crop.Checked;
             ProgramSettings.Show_CircleScale_Area = checkBox_CircleScaleImage.Checked;
-            ProgramSettings.Shortcuts_Center_marker = checkBox_center_marker.Checked;
+            ProgramSettings.Pointer_Center_marker = checkBox_center_marker.Checked;
             ProgramSettings.Show_Widgets_Area = checkBox_WidgetsArea.Checked;
-            ProgramSettings.Show_Shortcuts = checkBox_Show_Shortcuts.Checked;
-            ProgramSettings.Shortcuts_In_Gif = checkBox_Shortcuts_In_Gif.Checked;
 
             //ProgramSettings.language = comboBox_Language.Text;
             if (comboBox_watch_model.SelectedIndex != -1)
@@ -7011,39 +6950,33 @@ namespace Watch_Face_Editor
             ProgramSettings.Settings_Unpack_Replace = radioButton_Settings_Unpack_Replace.Checked;
             ProgramSettings.Settings_Unpack_Save = radioButton_Settings_Unpack_Save.Checked;
 
+            ProgramSettings.Use_ARGB_encoding = checkBox_Use_ARGB.Checked;
+            ProgramSettings.ARGB_encoding_color = radioButton_ARGB_color.Checked;
+            ProgramSettings.ARGB_encoding_forced = radioButton_ARGB_forced.Checked;
+            ProgramSettings.ARGB_encoding_color_count = (int)numericUpDown_ARGB_color_count.Value;
+
             ProgramSettings.ShowIn12hourFormat = checkBox_ShowIn12hourFormat.Checked;
             ProgramSettings.WatchSkin_Use = checkBox_WatchSkin_Use.Checked;
             ProgramSettings.DrawAllWidgets = checkBox_AllWidgetsInGif.Checked;
             ProgramSettings.Shortcuts_Area = checkBox_Shortcuts_Area.Checked;
             ProgramSettings.Shortcuts_Border = checkBox_Shortcuts_Border.Checked;
-            ProgramSettings.Shortcuts_Image = checkBox_Shortcuts_Image.Checked;
+            //ProgramSettings.Shortcuts_Image = checkBox_Shortcuts_Image.Checked;
             ProgramSettings.Shortcuts_In_Gif = checkBox_Shortcuts_In_Gif.Checked;
+            ProgramSettings.Show_Shortcuts = checkBox_Show_Shortcuts.Checked;
+
+            ProgramSettings.Buttons_Area = checkBox_Buttons_Area.Checked;
+            ProgramSettings.Buttons_Border = checkBox_Buttons_Border.Checked;
+            ProgramSettings.Show_Buttons = checkBox_Show_Buttons.Checked;
+            ProgramSettings.Buttons_In_Gif = checkBox_Buttons_In_Gif.Checked;
 
             ProgramSettings.ShowBorder = checkBox_border.Checked;
             ProgramSettings.Crop = checkBox_crop.Checked;
             ProgramSettings.Show_CircleScale_Area = checkBox_CircleScaleImage.Checked;
-            ProgramSettings.Shortcuts_Center_marker = checkBox_center_marker.Checked;
+            ProgramSettings.Pointer_Center_marker = checkBox_center_marker.Checked;
             ProgramSettings.Show_Widgets_Area = checkBox_WidgetsArea.Checked;
-            ProgramSettings.Show_Shortcuts = checkBox_Show_Shortcuts.Checked;
 
             //ProgramSettings.language = comboBox_Language.Text;
-            if (comboBox_watch_model.SelectedIndex != -1)
-            {
-                ProgramSettings.Watch_Model = comboBox_watch_model.Text;
-
-                // TODO :: Понять зачем ... Перенесли в конфигурацию модели
-                //if (comboBox_watch_model.Text == "GTR 3") ProgramSettings.WatchSkin_GTR_3 = textBox_WatchSkin_Path.Text;
-                //if (comboBox_watch_model.Text == "GTR 3 Pro") ProgramSettings.WatchSkin_GTR_3_Pro = textBox_WatchSkin_Path.Text;
-                //if (comboBox_watch_model.Text == "GTS 3") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
-                //if (comboBox_watch_model.Text == "T-Rex 2") ProgramSettings.WatchSkin_T_Rex_2 = textBox_WatchSkin_Path.Text;
-                //if (comboBox_watch_model.Text == "T-Rex Ultra") ProgramSettings.WatchSkin_T_Rex_Ultra = textBox_WatchSkin_Path.Text;
-                //if (comboBox_watch_model.Text == "GTR 4") ProgramSettings.WatchSkin_GTR_4 = textBox_WatchSkin_Path.Text;
-                //if (comboBox_watch_model.Text == "Amazfit Band 7") ProgramSettings.WatchSkin_Amazfit_Band_7 = textBox_WatchSkin_Path.Text;
-                //if (comboBox_watch_model.Text == "GTS 4 mini") ProgramSettings.WatchSkin_GTS_4_mini = textBox_WatchSkin_Path.Text;
-                //if (comboBox_watch_model.Text == "Falcon") ProgramSettings.WatchSkin_Falcon = textBox_WatchSkin_Path.Text;
-                //if (comboBox_watch_model.Text == "GTR mini") ProgramSettings.WatchSkin_GTR_mini = textBox_WatchSkin_Path.Text;
-                //if (comboBox_watch_model.Text == "GTS 4") ProgramSettings.WatchSkin_GTS_3 = textBox_WatchSkin_Path.Text;
-            }
+            if (comboBox_watch_model.SelectedIndex != -1) ProgramSettings.Watch_Model = comboBox_watch_model.Text;
 
             string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
             {
@@ -8281,46 +8214,11 @@ namespace Watch_Face_Editor
         {
             if (comboBox_watch_model.SelectedIndex == -1) return;
             ProgramSettings.Watch_Model = comboBox_watch_model.Text;
-            //switch (ProgramSettings.Watch_Model)
-            //{
-            //    case "GTR 3":
-            //    case "T-Rex 2":
-            //    case "T-Rex Ultra":
-            //        pictureBox_Preview.Size = new Size((int)(230 * currentDPI), (int)(230 * currentDPI));
-            //        break;
-            //    case "GTR 3 Pro":
-            //        pictureBox_Preview.Size = new Size((int)(230 * currentDPI), (int)(230 * currentDPI));
-            //        break;
-            //    case "GTS 3":
-            //    case "GTS 4":
-            //        pictureBox_Preview.Size = new Size((int)(198 * currentDPI), (int)(228 * currentDPI));
-            //        break;
-            //    case "GTR 4":
-            //        pictureBox_Preview.Size = new Size((int)(230 * currentDPI), (int)(230 * currentDPI));
-            //        break;
-            //    case "Amazfit Band 7":
-            //        pictureBox_Preview.Size = new Size((int)(100 * currentDPI), (int)(187 * currentDPI));
-            //        break;
-            //    case "GTS 4 mini":
-            //        pictureBox_Preview.Size = new Size((int)(171 * currentDPI), (int)(195 * currentDPI));
-            //        break;
-            //    case "Falcon":
-            //    case "GTR mini":
-            //        pictureBox_Preview.Size = new Size((int)(211 * currentDPI), (int)(211 * currentDPI));
-            //        break;
-            //}
-
-            //// StartBlock :: Kartun
-            //Logger.WriteLine($"* comboBox_watch_model_SelectedIndexChanged : {ProgramSettings.Watch_Model}");
-            //Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
-            //Logger.WriteLine($"Loaded configuration: {currPlatform}");
-            //pictureBox_Preview.Size = new Size((int)(currPlatform.scaling.w * currentDPI), (int)(currPlatform.scaling.h * currentDPI));
-            //// EndBlock :: Kartun
 
             Logger.WriteLine($"* comboBox_watch_model_SelectedIndexChanged : {ProgramSettings.Watch_Model}");
             SelectedModel = AvailableConfigurations[ProgramSettings.Watch_Model]; // глобальная переменная чтобы каждый раз не считывать
             Logger.WriteLine($"Loaded configuration: {SelectedModel}");
-            pictureBox_Preview.Size = new Size((int)(SelectedModel.scaling_0_5.w * currentDPI), (int)(SelectedModel.scaling_0_5.h * currentDPI));
+            pictureBox_Preview.Size = new Size((int)(SelectedModel.scaling.scaling_0_5.w * currentDPI), (int)(SelectedModel.scaling.scaling_0_5.h * currentDPI));
 
             // изменяем размер панели для предпросмотра если она не влазит
             if (pictureBox_Preview.Top + pictureBox_Preview.Height > label_watch_model.Top)
@@ -8345,380 +8243,6 @@ namespace Watch_Face_Editor
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
             if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
 
-            // TODO :: Finish !!!
-            //switch (ProgramSettings.Watch_Model)
-            //{
-            //    case "GTR 3":
-            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_3;
-
-            ////        Watch_Face.WatchFace_Info.DeviceName = "GTR3";
-            ////        if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
-            ////        {
-            ////            if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
-            ////            {
-            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
-            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
-            ////            }
-            ////            if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
-            ////            {
-            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.w = 454;
-            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.h = 454;
-            ////            }
-            ////        }
-
-            ////        if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
-            ////        {
-            ////            if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
-            ////            {
-            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.w = 454;
-            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.h = 454;
-            ////            }
-            ////            if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
-            ////            {
-            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.w = 454;
-            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.h = 454;
-            ////            }
-            ////        }
-            //        break;
-            //    case "GTR 3 Pro":
-            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_3_Pro;
-
-            ////        if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
-            ////        Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
-
-            ////        if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
-            ////        {
-            ////            if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
-            ////            {
-            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.w = 480;
-            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.h = 480;
-            ////            }
-            ////            if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
-            ////            {
-            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.w = 480;
-            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.h = 480;
-            ////            }
-            ////        }
-
-            ////        if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
-            ////        {
-            ////            if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
-            ////            {
-            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.w = 480;
-            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.h = 480;
-            ////            }
-            ////            if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
-            ////            {
-            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.w = 480;
-            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.h = 480;
-            ////            }
-            ////        }
-            //        break;
-            //    case "GTS 3":
-            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_3;
-
-            ////        if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
-            ////        Watch_Face.WatchFace_Info.DeviceName = "GTS3";
-
-            ////        if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
-            ////        {
-            ////            if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
-            ////            {
-            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
-            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
-            ////            }
-            ////            if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
-            ////            {
-            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.w = 390;
-            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.h = 450;
-            ////            }
-            ////        }
-
-            ////        if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
-            ////        {
-            ////            if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
-            ////            {
-            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.w = 390;
-            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.h = 450;
-            ////            }
-            ////            if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
-            ////            {
-            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.w = 390;
-            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.h = 450;
-            ////            }
-            ////        }
-            //        break;
-            //    case "T-Rex 2":
-            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_T_Rex_2;
-
-            ////        Watch_Face.WatchFace_Info.DeviceName = "T_Rex_2";
-            ////        if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
-            ////        {
-            ////            if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
-            ////            {
-            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
-            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
-            ////            }
-            ////            if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
-            ////            {
-            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.w = 454;
-            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.h = 454;
-            ////            }
-            ////        }
-
-            ////        if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
-            ////        {
-            ////            if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
-            ////            {
-            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.w = 454;
-            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.h = 454;
-            ////            }
-            ////            if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
-            ////            {
-            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.w = 454;
-            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.h = 454;
-            ////            }
-            ////        }
-            //        break;
-            //    case "T-Rex Ultra":
-            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_T_Rex_Ultra;
-
-            ////        Watch_Face.WatchFace_Info.DeviceName = "T_Rex_Ultra";
-            ////        if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
-            ////        {
-            ////            if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
-            ////            {
-            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
-            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
-            ////            }
-            ////            if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
-            ////            {
-            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.w = 454;
-            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.h = 454;
-            ////            }
-            ////        }
-
-            ////        if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
-            ////        {
-            ////            if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
-            ////            {
-            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.w = 454;
-            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.h = 454;
-            ////            }
-            ////            if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
-            ////            {
-            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.w = 454;
-            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.h = 454;
-            ////            }
-            ////        }
-            //        break;
-            //    case "GTR 4":
-            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_4;
-
-            ////        Watch_Face.WatchFace_Info.DeviceName = "GTR4";
-            ////        if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
-            ////        {
-            ////            if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
-            ////            {
-            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.w = 466;
-            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.h = 466;
-            ////            }
-            ////            if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
-            ////            {
-            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.w = 466;
-            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.h = 466;
-            ////            }
-            ////        }
-
-            ////        if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
-            ////        {
-            ////            if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
-            ////            {
-            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.w = 466;
-            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.h = 466;
-            ////            }
-            ////            if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
-            ////            {
-            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.w = 466;
-            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.h = 466;
-            ////            }
-            ////        }
-            //        break;
-            //    case "Amazfit Band 7":
-            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_Amazfit_Band_7;
-
-            ////        if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
-            ////        Watch_Face.WatchFace_Info.DeviceName = "Amazfit_Band_7";
-
-            ////        if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
-            ////        {
-            ////            if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
-            ////            {
-            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.w = 194;
-            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.h = 368;
-            ////            }
-            ////            if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
-            ////            {
-            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.w = 194;
-            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.h = 368;
-            ////            }
-            ////        }
-
-            ////        if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
-            ////        {
-            ////            if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
-            ////            {
-            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.w = 194;
-            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.h = 368;
-            ////            }
-            ////            if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
-            ////            {
-            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.w = 194;
-            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.h = 368;
-            ////            }
-            ////        }
-            //        break;
-            //    case "GTS 4 mini":
-            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_4_mini;
-
-            ////        if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
-            ////        Watch_Face.WatchFace_Info.DeviceName = "GTS4_mini";
-
-            ////        if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
-            ////        {
-            ////            if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
-            ////            {
-            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.w = 336;
-            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.h = 384;
-            ////            }
-            ////            if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
-            ////            {
-            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.w = 336;
-            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.h = 384;
-            ////            }
-            ////        }
-
-            ////        if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
-            ////        {
-            ////            if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
-            ////            {
-            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.w = 336;
-            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.h = 384;
-            ////            }
-            ////            if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
-            ////            {
-            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.w = 336;
-            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.h = 384;
-            ////            }
-            ////        }
-            //        break;
-            //    case "Falcon":
-            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_Falcon;
-
-            ////        if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
-            ////        Watch_Face.WatchFace_Info.DeviceName = "Falcon";
-
-            ////        if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
-            ////        {
-            ////            if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
-            ////            {
-            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.w = 416;
-            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.h = 416;
-            ////            }
-            ////            if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
-            ////            {
-            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.w = 416;
-            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.h = 416;
-            ////            }
-            ////        }
-
-            ////        if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
-            ////        {
-            ////            if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
-            ////            {
-            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.w = 416;
-            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.h = 416;
-            ////            }
-            ////            if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
-            ////            {
-            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.w = 416;
-            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.h = 416;
-            ////            }
-            ////        }
-            //        break;
-            //    case "GTR mini":
-            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTR_mini;
-
-            ////        if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
-            ////        Watch_Face.WatchFace_Info.DeviceName = "GTR_mini";
-
-            ////        if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
-            ////        {
-            ////            if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
-            ////            {
-            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.w = 416;
-            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.h = 416;
-            ////            }
-            ////            if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
-            ////            {
-            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.w = 416;
-            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.h = 416;
-            ////            }
-            ////        }
-
-            ////        if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
-            ////        {
-            ////            if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
-            ////            {
-            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.w = 416;
-            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.h = 416;
-            ////            }
-            ////            if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
-            ////            {
-            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.w = 416;
-            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.h = 416;
-            ////            }
-            ////        }
-            //        break;
-            //    case "GTS 4":
-            //        textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_3;
-
-            ////        if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
-            ////        Watch_Face.WatchFace_Info.DeviceName = "GTS4";
-
-            ////        if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Background != null)
-            ////        {
-            ////            if (Watch_Face.ScreenNormal.Background.BackgroundColor != null)
-            ////            {
-            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
-            ////                Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
-            ////            }
-            ////            if (Watch_Face.ScreenNormal.Background.BackgroundImage != null)
-            ////            {
-            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.w = 390;
-            ////                Watch_Face.ScreenNormal.Background.BackgroundImage.h = 450;
-            ////            }
-            ////        }
-
-            ////        if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
-            ////        {
-            ////            if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
-            ////            {
-            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.w = 390;
-            ////                Watch_Face.ScreenAOD.Background.BackgroundColor.h = 450;
-            ////            }
-            ////            if (Watch_Face.ScreenAOD.Background.BackgroundImage != null)
-            ////            {
-            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.w = 390;
-            ////                Watch_Face.ScreenAOD.Background.BackgroundImage.h = 450;
-            ////            }
-            ////        }
-            //        break;
-            //}
-
-            // Startblock :: Kartun
-            // TODO :: Это надо доделать
-            //textBox_WatchSkin_Path.Text = ProgramSettings.WatchSkin_GTS_3;
             textBox_WatchSkin_Path.Text = @"\Skin\" + SelectedModel.watchSkin; if (SelectedModel.watchSkin == null || SelectedModel.watchSkin.Length == 0)
             {
                 textBox_WatchSkin_Path.Text = "";
@@ -8755,7 +8279,6 @@ namespace Watch_Face_Editor
                     Watch_Face.ScreenAOD.Background.BackgroundImage.h = SelectedModel.background.h;
                 }
             }
-            // Endblock :: Kartun
 
             string JSON_String = JsonConvert.SerializeObject(ProgramSettings, Formatting.Indented, new JsonSerializerSettings
             {
@@ -8797,81 +8320,11 @@ namespace Watch_Face_Editor
             {
                 background.BackgroundColor.w = SelectedModel.background.w;
                 background.BackgroundColor.h = SelectedModel.background.h;
-                //switch (ProgramSettings.Watch_Model)
-                //{
-                //    case "GTR 3":
-                //    case "T-Rex 2":
-                //    case "T-Rex Ultra":
-                //        background.BackgroundColor.h = 454;
-                //        background.BackgroundColor.w = 454;
-                //        break;
-                //    case "GTR 3 Pro":
-                //        background.BackgroundColor.h = 480;
-                //        background.BackgroundColor.w = 480;
-                //        break;
-                //    case "GTS 3":
-                //    case "GTS 4":
-                //        background.BackgroundColor.h = 450;
-                //        background.BackgroundColor.w = 390;
-                //        break;
-                //    case "GTR 4":
-                //        background.BackgroundColor.h = 466;
-                //        background.BackgroundColor.w = 466;
-                //        break;
-                //    case "Amazfit Band 7":
-                //        background.BackgroundColor.h = 368;
-                //        background.BackgroundColor.w = 194;
-                //        break;
-                //    case "GTS 4 mini":
-                //        background.BackgroundColor.h = 384;
-                //        background.BackgroundColor.w = 336;
-                //        break;
-                //    case "Falcon":
-                //    case "GTR mini":
-                //        background.BackgroundColor.h = 416;
-                //        background.BackgroundColor.w = 416;
-                //        break;
-                //}
             }
             if (background.BackgroundImage != null)
             {
                 background.BackgroundImage.w = SelectedModel.background.w;
                 background.BackgroundImage.h = SelectedModel.background.h;
-                //switch (ProgramSettings.Watch_Model)
-                //{
-                //    case "GTR 3":
-                //    case "T-Rex 2":
-                //    case "T-Rex Ultra":
-                //        background.BackgroundImage.h = 454;
-                //        background.BackgroundImage.w = 454;
-                //        break;
-                //    case "GTR 3 Pro":
-                //        background.BackgroundImage.h = 480;
-                //        background.BackgroundImage.w = 480;
-                //        break;
-                //    case "GTS 3":
-                //    case "GTS 4":
-                //        background.BackgroundImage.h = 450;
-                //        background.BackgroundImage.w = 390;
-                //        break;
-                //    case "GTR 4":
-                //        background.BackgroundImage.h = 466;
-                //        background.BackgroundImage.w = 466;
-                //        break;
-                //    case "Amazfit Band 7":
-                //        background.BackgroundImage.h = 368;
-                //        background.BackgroundImage.w = 194;
-                //        break;
-                //    case "GTS 4 mini":
-                //        background.BackgroundImage.h = 384;
-                //        background.BackgroundImage.w = 336;
-                //        break;
-                //    case "Falcon":
-                //    case "GTR mini":
-                //        background.BackgroundImage.h = 416;
-                //        background.BackgroundImage.w = 416;
-                //        break;
-                //}
             }
         }
 
@@ -8911,18 +8364,6 @@ namespace Watch_Face_Editor
             progressBar1.Value = 0;
             progressBar1.Maximum = Images.Length;
             progressBar1.Visible = true;
-            //bool fix_size = true;
-            //int fix_color = 1;
-            //if (comboBox_watch_model.Text == "Amazfit Band 7" || comboBox_watch_model.Text == "GTS 4 mini")
-            //{
-            //    fix_size = false;
-            //    fix_color = 2;
-            //}
-            //if (comboBox_watch_model.Text == "GTR mini")
-            //{
-            //    fix_size = false;
-            //    fix_color = 3;
-            //}
             int fix_color = SelectedModel.colorScheme;
             bool fix_size = SelectedModel.fixSize;
             if (fix_color < 1 || fix_color > 3)
@@ -8931,11 +8372,23 @@ namespace Watch_Face_Editor
                 MessageBox.Show(Properties.FormStrings.Message_Wrong_ColorScheme + SelectedModel.name, Properties.FormStrings.Message_Warning_Caption,
                             MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+            if (ProgramSettings.Use_ARGB_encoding)
+            {
+                DialogResult result = MessageBox.Show(Properties.FormStrings.Message_ARGB_Line1 + Environment.NewLine + Properties.FormStrings.Message_ARGB_Line2,
+                    Properties.FormStrings.Message_Warning_Caption, MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+                if (result != DialogResult.Yes) 
+                {
+                    ProgramSettings.Use_ARGB_encoding = false;
+                    checkBox_Use_ARGB.Checked = false;
+                }
+            }
+
             foreach (FileInfo file in Images)
             {
                 progressBar1.Value++;
-                string fileNameFull = PngToTga(file.FullName, tempDir + @"\assets", fix_color, fix_size);
-                if (fileNameFull != null) ImageFix(fileNameFull, fix_color);
+                //string fileNameFull = PngToTga(file.FullName, tempDir + @"\assets", fix_color, fix_size);
+                //if (fileNameFull != null) ImageFix(fileNameFull, fix_color);
+                ImageAutoDetectWriteFormat(file.FullName, tempDir + @"\assets", fix_size, fix_color);
             }
 
             imagesFolder = FullFileDir + @"\assets\animation";
@@ -8947,8 +8400,9 @@ namespace Watch_Face_Editor
                 foreach (FileInfo file in Images)
                 {
                     progressBar1.Value++;
-                    string fileNameFull = PngToTga(file.FullName, tempDir + @"\assets\animation", fix_color, fix_size);
-                    if (fileNameFull != null) ImageFix(fileNameFull, fix_color);
+                    //string fileNameFull = PngToTga(file.FullName, tempDir + @"\assets\animation", fix_color, fix_size);
+                    //if (fileNameFull != null) ImageFix(fileNameFull, fix_color);
+                    ImageAutoDetectWriteFormat(file.FullName, tempDir + @"\assets\animation", fix_size, fix_color);
                 }
             }
 
@@ -8997,85 +8451,7 @@ namespace Watch_Face_Editor
             if (Watch_Face.Editable_Elements != null && Watch_Face.Editable_Elements.visible) app.module.watchface.editable = 1;
             if (Watch_Face.ElementEditablePointers != null && Watch_Face.ElementEditablePointers.visible && 
                 Watch_Face.ElementEditablePointers.config != null && Watch_Face.ElementEditablePointers.config.Count > 0) app.module.watchface.editable = 1;
-            //switch (ProgramSettings.Watch_Model)
-            //{
-            //    case "GTR 3 Pro":
-            //        app.platforms.Add(new Platform() { name = "Amazfit GTR 3 Pro", deviceSource = 229 });
-            //        app.platforms.Add(new Platform() { name = "Amazfit GTR 3 Pro", deviceSource = 230 });
-            //        app.platforms.Add(new Platform() { name = "Amazfit GTR 3 Pro", deviceSource = 6095106 });
 
-            //        app.designWidth = 480;
-            //        break;
-            //    case "GTS 3":
-            //    case "GTS 4":
-            //        app.platforms.Add(new Platform() { name = "Amazfit GTS 3", deviceSource = 224 });
-            //        app.platforms.Add(new Platform() { name = "Amazfit GTS 3", deviceSource = 225 });
-            //        app.platforms.Add(new Platform() { name = "Amazfit GTS 4", deviceSource = 7995648 });
-            //        app.platforms.Add(new Platform() { name = "Amazfit GTS 4", deviceSource = 7995649 });
-
-            //        app.designWidth = 390;
-            //        break;
-            //    case "GTR 4":
-            //        app.platforms.Add(new Platform() { name = "Amazfit GTR 4", deviceSource = 7930112 });
-            //        app.platforms.Add(new Platform() { name = "Amazfit GTR 4", deviceSource = 7930113 });
-            //        app.platforms.Add(new Platform() { name = "Amazfit GTR 4 Limited Edition", deviceSource = 7864576 });
-            //        app.platforms.Add(new Platform() { name = "Amazfit GTR 4 Limited Edition", deviceSource = 7864577 });
-
-            //        app.designWidth = 466;
-            //        break;
-            //    case "Amazfit Band 7":
-            //        app.platforms.Add(new Platform() { name = "Amazfit Band 7", deviceSource = 252 });
-            //        app.platforms.Add(new Platform() { name = "Amazfit Band 7", deviceSource = 253 });
-            //        app.platforms.Add(new Platform() { name = "Amazfit Band 7", deviceSource = 254 });
-
-            //        app.designWidth = 194;
-            //        break;
-            //    case "GTS 4 mini":
-            //        app.platforms.Add(new Platform() { name = "Amazfit GTS 4 Mini", deviceSource = 246 });
-            //        app.platforms.Add(new Platform() { name = "Amazfit GTS 4 Mini", deviceSource = 247 });
-
-            //        app.designWidth = 336;
-            //        break;
-            //    case "Falcon":
-            //        app.platforms.Add(new Platform() { name = "Amazfit Falcon", deviceSource = 414 });
-            //        app.platforms.Add(new Platform() { name = "Amazfit Falcon", deviceSource = 415 });
-
-            //        app.designWidth = 416;
-            //        break;
-            //    case "GTR mini":
-            //        app.platforms.Add(new Platform() { name = "Amazfit GTR Mini", deviceSource = 250 });
-            //        app.platforms.Add(new Platform() { name = "Amazfit GTR Mini", deviceSource = 251 });
-
-            //        app.designWidth = 416;
-            //        break;
-
-            //    default:
-            //        app.platforms.Add(new Platform() { name = "Amazfit GTR 3", deviceSource = 226 });
-            //        app.platforms.Add(new Platform() { name = "Amazfit GTR 3", deviceSource = 227 });
-            //        app.platforms.Add(new Platform() { name = "Amazfit T-Rex 2", deviceSource = 418 });
-            //        app.platforms.Add(new Platform() { name = "Amazfit T-Rex 2", deviceSource = 419 });
-            //        app.platforms.Add(new Platform() { name = "Amazfit T-Rex Ultra", deviceSource = 6553856 });
-            //        app.platforms.Add(new Platform() { name = "Amazfit T-Rex Ultra", deviceSource = 6553857 });
-
-            //        app.designWidth = 454;
-            //        break;
-            //}
-
-            /*// StartBlock :: Kartun
-            Logger.WriteLine($"* button_pack_zip_Click for {ProgramSettings.Watch_Model}");
-            Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
-            Logger.WriteLine($"Loaded configuration: {currPlatform}");
-            app.designWidth = currPlatform.designWidth;
-            foreach(int id in currPlatform.ids)
-            {
-                app.platforms.Add(new Platform() { name = currPlatform.name, deviceSource = id });
-            }
-
-            //app.platforms.Add(new Platform() { name = "Amazfit GTR Mini", deviceSource = 251 });
-
-           
-            //bitmap = new Bitmap(Convert.ToInt32(currPlatform.background.w), Convert.ToInt32(currPlatform.background.h), PixelFormat.Format32bppArgb);
-            // EndBlock :: Kartun*/
             app.designWidth = SelectedModel.designWidth;
             foreach (int id in SelectedModel.deviceSource_ids)
             {
@@ -9166,105 +8542,29 @@ namespace Watch_Face_Editor
             progressBar1.Visible = false;
         }
 
-        private void ImageFix(string fileNameFull, int fix_color)
+        private async void RunImageAutoDetect(FileInfo[] Images, string targetFolder, bool fix_size, int fix_color)
         {
-            if (File.Exists(fileNameFull))
+            Task[] tasks = new Task[Images.Length];
+            int taskIndex = 0;
+            foreach (FileInfo file in Images)
             {
-                try
+                progressBar1.Value++;
+                //string fileNameFull = PngToTga(file.FullName, tempDir + @"\assets", fix_color, fix_size);
+                //if (fileNameFull != null) ImageFix(fileNameFull, fix_color);
+                //ImageAutoDetectWriteFormat(file.FullName, tempDir + @"\assets", fix_size, fix_color);
+
+                //new Thread(() => {
+                //    ImageAutoDetectWriteFormat(file.FullName, tempDir + @"\assets", fix_size, fix_color);
+                //}).Start();
+
+                tasks[taskIndex++] = Task.Run(() =>
                 {
-                    byte[] _streamBuffer;
-                    string fileName = Path.GetFileNameWithoutExtension(fileNameFull);
-                    string path = Path.GetDirectoryName(fileNameFull);
-                    //fileName = Path.Combine(path, fileName);
-
-                    //ImageMagick.MagickImage image = new ImageMagick.MagickImage(fileNameFull, ImageMagick.MagickFormat.Tga);
-
-                    // читаем картинку в массив
-                    using (var fileStream = File.OpenRead(fileNameFull))
-                    {
-                        _streamBuffer = new byte[fileStream.Length];
-                        fileStream.Read(_streamBuffer, 0, (int)fileStream.Length);
-
-                        Header header = new Header(_streamBuffer);
-                        ImageDescription imageDescription = new ImageDescription(_streamBuffer, header.GetImageIDLength());
-
-                        int ColorMapCount = header.GetColorMapCount(); // количество цветов в карте
-                        byte ColorMapEntrySize = header.GetColorMapEntrySize(); // битность цвета
-                        byte ImageIDLength = header.GetImageIDLength(); // длина описания
-                        ColorMap ColorMap = new ColorMap(_streamBuffer, ColorMapCount, ColorMapEntrySize, 18 + ImageIDLength);
-
-                        int ColorMapLength = ColorMap._colorMap.Length;
-                        Image_data imageData = new Image_data(_streamBuffer, 18 + ImageIDLength + ColorMapLength);
-
-                        Footer footer = new Footer();
-
-                        #region fix
-                        header.SetImageIDLength(46);
-                        imageDescription.SetSize(46, ImageWidth);
-                        //imageDescription.SetSize(46, header.Width);
-
-                        int colorMapCount = ColorMap.ColorMapCount;
-                        //if (checkBox_Color256.Checked && !checkBox_32bit.Checked)
-                        //{
-                        //    colorMapCount = 256;
-                        //    header.SetColorMapCount(colorMapCount);
-                        //    if (!checkBox_32bit.Checked) ColorMap.SetColorCount(colorMapCount);
-                        //}
-                        bool argb_brga = true;
-                        colorMapCount = 256;
-                        header.SetColorMapCount(colorMapCount);
-                        byte colorMapEntrySize = 32;
-
-                        ColorMap.RestoreColor(colorMapList);
-                        ColorMap.ColorsFix(argb_brga, colorMapCount, colorMapEntrySize, fix_color);
-                        header.SetColorMapEntrySize(32);
-                        #endregion
-
-                        int newLength = 18 + header.GetImageIDLength() + ColorMap._colorMap.Length + imageData._imageData.Length;
-                        //if (checkBox_Footer.Checked) newLength = newLength + footer._footer.Length;
-                        byte[] newTGA = new byte[newLength];
-
-                        header._header.CopyTo(newTGA, 0);
-                        int offset = header._header.Length;
-
-                        imageDescription._imageDescription.CopyTo(newTGA, offset);
-                        offset = offset + imageDescription._imageDescription.Length;
-
-                        ColorMap._colorMap.CopyTo(newTGA, offset);
-                        offset = offset + ColorMap._colorMap.Length;
-
-                        imageData._imageData.CopyTo(newTGA, offset);
-                        offset = offset + imageData._imageData.Length;
-
-                        //if (checkBox_Footer.Checked) footer._footer.CopyTo(newTGA, offset);
-
-                        if (newTGA != null && newTGA.Length > 0)
-                        {
-                            string newFileName = Path.Combine(path, fileName + ".png");
-
-                            using (var fileStreamTGA = File.OpenWrite(newFileName))
-                            {
-                                fileStreamTGA.Write(newTGA, 0, newTGA.Length);
-                                fileStreamTGA.Flush();
-                            }
-                        }
-                    }
-
-                    try
-                    {
-                        File.Delete(fileNameFull);
-                    }
-                    catch (Exception)
-                    {
-                    }
-
-                }
-                catch (Exception exp)
-                {
-                    MessageBox.Show(Properties.FormStrings.Message_ImageFix_Error + Environment.NewLine + exp, 
-                        Properties.FormStrings.Message_Warning_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
+                    // Ваш код для выполнения в задаче
+                    ImageAutoDetectWriteFormat(file.FullName, targetFolder, fix_size, fix_color);
+                });
             }
+            // Дождитесь завершения всех задач
+            await Task.WhenAll(tasks);
         }
 
         private void button_RefreshPreview_Click(object sender, EventArgs e)
@@ -9327,8 +8627,8 @@ namespace Watch_Face_Editor
                 }*/
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
-                Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false, 
-                    false, false, link, false, -1, false, 0);
+                Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, false, false, false, true, false, 
+                    false, false, link, false, false, -1, false, 0);
                 if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
 
 ;
@@ -9416,8 +8716,8 @@ namespace Watch_Face_Editor
 
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
-                Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false, 
-                    false, false, link, false, -1, false, 0);
+                Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, false, false, false, true, false, 
+                    false, false, link, false, false, -1, false, 0);
                 if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
 
                 float scale = (float)PreviewHeight / bitmap.Height;
@@ -9559,9 +8859,46 @@ namespace Watch_Face_Editor
 
             if (Directory.Exists(tempDir + @"\assets"))
             {
+                PreviewView = false;
+                // читаем данные из текста и преобразуем их в json
+                string index_js = @"\watchface\index.js";
+                App_WatchFace appJson = null;
+                if (File.Exists(tempDir + @"\app.json"))  // читаем путь к файлу с кодом циферблата
+                {
+                    string appText = File.ReadAllText(tempDir + @"\app.json");
+                    try
+                    {
+                        appJson = JsonConvert.DeserializeObject<App_WatchFace>(appText, new JsonSerializerSettings
+                        {
+                            DefaultValueHandling = DefaultValueHandling.Ignore,
+                            NullValueHandling = NullValueHandling.Ignore
+                        });
+                        if (appJson != null)
+                        {
+                            if (appJson.module != null)
+                            {
+                                if (appJson.module.watchface != null && appJson.module.watchface.path != null &&
+                                                        appJson.module.watchface.path.Length > 2) index_js = @"\" + appJson.module.watchface.path + ".js";
+                                index_js = index_js.Replace("/", @"\");
+                            }
+                            if (appJson.platforms != null && appJson.platforms.Count > 0)
+                            {
+                                int id = appJson.platforms[0].deviceSource;
+                                SetModelByID(id);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+
+                // подготовка к чтению файлов assets
                 progressBar1.Value = 0;
                 progressBar1.Visible = true;
 
+                // читаем шрифты в папках
                 List<string> allDirs = GetRecursDirectories(tempDir + @"\assets", 5, tempDir + @"\assets");
                 Directory.CreateDirectory(projectPath);
                 Directory.CreateDirectory(projectPath + @"\assets");
@@ -9576,6 +8913,7 @@ namespace Watch_Face_Editor
                     File.Copy(tempDir + @"\assets" + fileNames, projectPath + @"\assets" + fileNames);
                 }
 
+                // читаем изображения
                 List<string> allFiles = GetRecursFiles(tempDir + @"\assets", "*.png", 5, tempDir + @"\assets");
 
                 progressBar1.Maximum = allFiles.Count;
@@ -9601,31 +8939,32 @@ namespace Watch_Face_Editor
                     progressBar1.Value = progress;
                 }
 
-                // читаем данные из текста и преобразуем их в json
-                string index_js = @"\watchface\index.js";
-                if (File.Exists(tempDir + @"\app.json"))  // читаем путь к файлу с кодом циферблата
-                {
-                    string appText = File.ReadAllText(tempDir + @"\app.json");
-                    try
-                    {
-                        App_WatchFace appJson = JsonConvert.DeserializeObject<App_WatchFace>(appText, new JsonSerializerSettings
-                        {
-                            DefaultValueHandling = DefaultValueHandling.Ignore,
-                            NullValueHandling = NullValueHandling.Ignore
-                        });
-                        if (appJson != null && appJson.module != null)
-                        {
-                            if (appJson.module.watchface != null && appJson.module.watchface.path != null &&
-                                appJson.module.watchface.path.Length > 2) index_js = @"\" + appJson.module.watchface.path + ".js";
-                            index_js = index_js.Replace("/", @"\");
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
-                }
+                //// читаем данные из текста и преобразуем их в json
+                //string index_js = @"\watchface\index.js";
+                //if (File.Exists(tempDir + @"\app.json"))  // читаем путь к файлу с кодом циферблата
+                //{
+                //    string appText = File.ReadAllText(tempDir + @"\app.json");
+                //    try
+                //    {
+                //        App_WatchFace appJson = JsonConvert.DeserializeObject<App_WatchFace>(appText, new JsonSerializerSettings
+                //        {
+                //            DefaultValueHandling = DefaultValueHandling.Ignore,
+                //            NullValueHandling = NullValueHandling.Ignore
+                //        });
+                //        if (appJson != null && appJson.module != null)
+                //        {
+                //            if (appJson.module.watchface != null && appJson.module.watchface.path != null &&
+                //                appJson.module.watchface.path.Length > 2) index_js = @"\" + appJson.module.watchface.path + ".js";
+                //            index_js = index_js.Replace("/", @"\");
+                //        }
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //        MessageBox.Show(ex.Message);
+                //    }
+                //}
                 ///////////////////////////
+                PreviewView = true;
                 string user_functions = "";
                 string user_script_start = "";
                 string user_script_end = "";
@@ -9635,7 +8974,7 @@ namespace Watch_Face_Editor
                 JSToJson(tempDir + index_js, out user_functions, out user_script_start, out user_script_end, out resume_call, out pause_call); // создаем новый json файл циферблата
                 if (Watch_Face != null && Watch_Face.ScreenNormal != null)
                 {
-                    if (File.Exists(tempDir + @"\app.json"))
+                    /*if (File.Exists(tempDir + @"\app.json"))
                     {
                         string appText = File.ReadAllText(tempDir + @"\app.json");
                         try
@@ -9733,7 +9072,7 @@ namespace Watch_Face_Editor
                                             background.BackgroundColor.color = ColorToString(Color.Black);
                                             background.BackgroundColor.x = 0;
                                             background.BackgroundColor.y = 0;
-                                            /*switch (ProgramSettings.Watch_Model)
+                                            *//*switch (ProgramSettings.Watch_Model)
                                             {
                                                 case "GTR 3":
                                                     background.BackgroundColor.h = 454;
@@ -9795,7 +9134,7 @@ namespace Watch_Face_Editor
                                                     background.BackgroundColor.w = 454;
                                                     //Watch_Face.WatchFace_Info.DeviceName = "GTR3";
                                                     break;
-                                            }*/
+                                            }*//*
                                             Watch_Face.WatchFace_Info.DeviceName = ProgramSettings.Watch_Model;
                                             Logger.WriteLine($"Unpack Zip for {ProgramSettings.Watch_Model}");
                                             Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
@@ -9812,7 +9151,7 @@ namespace Watch_Face_Editor
                                                 background.Editable_Background.BackgroundList != null &&
                                                 background.Editable_Background.BackgroundList.Count > 0)
                                             {
-                                                /*int h = 454;
+                                                *//*int h = 454;
                                                 int w = 454;
                                                 switch (ProgramSettings.Watch_Model)
                                                 {
@@ -9878,7 +9217,7 @@ namespace Watch_Face_Editor
                                                         break;
                                                 }
                                                 background.Editable_Background.h = h;
-                                                background.Editable_Background.w = w;*/
+                                                background.Editable_Background.w = w;*//*
                                                 Watch_Face.WatchFace_Info.DeviceName = ProgramSettings.Watch_Model;
                                                 Logger.WriteLine($"Unpack Zip for {ProgramSettings.Watch_Model}");
                                                 Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
@@ -9888,7 +9227,7 @@ namespace Watch_Face_Editor
                                             }
                                             else if (background.BackgroundImage != null)
                                             {
-                                                /*switch (ProgramSettings.Watch_Model)
+                                                *//*switch (ProgramSettings.Watch_Model)
                                                 {
                                                     case "GTR 3":
                                                         background.BackgroundImage.h = 454;
@@ -9950,7 +9289,7 @@ namespace Watch_Face_Editor
                                                         background.BackgroundImage.w = 454;
                                                         Watch_Face.WatchFace_Info.DeviceName = "GTR3";
                                                         break;
-                                                }*/
+                                                }*//*
                                                 Watch_Face.WatchFace_Info.DeviceName = ProgramSettings.Watch_Model;
                                                 Logger.WriteLine($"Unpack Zip for {ProgramSettings.Watch_Model}");
                                                 Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
@@ -9974,7 +9313,7 @@ namespace Watch_Face_Editor
                                     backgroundEmpty.BackgroundColor.color = ColorToString(Color.Black);
                                     backgroundEmpty.BackgroundColor.x = 0;
                                     backgroundEmpty.BackgroundColor.y = 0;
-                                    /*switch (ProgramSettings.Watch_Model)
+                                    *//*switch (ProgramSettings.Watch_Model)
                                     {
                                         case "GTR 3":
                                             backgroundEmpty.BackgroundColor.h = 454;
@@ -10036,7 +9375,7 @@ namespace Watch_Face_Editor
                                             backgroundEmpty.BackgroundColor.w = 454;
                                             Watch_Face.WatchFace_Info.DeviceName = "GTR3";
                                             break;
-                                    }*/
+                                    }*//*
                                     Watch_Face.WatchFace_Info.DeviceName = ProgramSettings.Watch_Model;
                                     Logger.WriteLine($"Unpack Zip for {ProgramSettings.Watch_Model}");
                                     Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
@@ -10052,6 +9391,23 @@ namespace Watch_Face_Editor
                         {
                             MessageBox.Show(ex.Message);
                         }
+                    }*/
+
+                    if (appJson != null && appJson.app != null)
+                    {
+                        if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
+                        if (appJson.app.appId > 1000) Watch_Face.WatchFace_Info.WatchFaceId = appJson.app.appId;
+                        else
+                        {
+                            Random rnd = new Random();
+                            int ID = rnd.Next(1000, 10000000);
+                            Watch_Face.WatchFace_Info.WatchFaceId = ID;
+                        }
+                        if (appJson.app.icon != null && appJson.app.icon.Length > 3)
+                            Watch_Face.WatchFace_Info.Preview = Path.GetFileNameWithoutExtension(appJson.app.icon);
+
+                        if (appJson.app.appName != null && appJson.app.appName.Length > 0)
+                            projectName = appJson.app.appName;
                     }
 
                     string Watch_Face_String = JsonConvert.SerializeObject(Watch_Face, Formatting.Indented, new JsonSerializerSettings
@@ -10113,56 +9469,27 @@ namespace Watch_Face_Editor
 #endif
         }
 
-        /*private void TgaToPng(string file)
+        private void SetModelByID (int id)
         {
-            try
+            foreach (KeyValuePair<string, Classes.AmazfitPlatform> config in AvailableConfigurations)
             {
-                //string fileNameFull = openFileDialog.FileName;
-                string fileNameFull = file;
-                string fileName = Path.GetFileNameWithoutExtension(fileNameFull);
-                string path = Path.GetDirectoryName(fileNameFull);
-                //fileName = Path.Combine(path, fileName);
-                //using (FileStream stream = new FileStream(fileNameFull, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
-                //{
-                //    Image tempImg = Image.FromStream(stream);
-                //}
-                int RealWidth = -1;
-                using (var fileStream = File.OpenRead(fileNameFull))
+                Classes.AmazfitPlatform model = config.Value;
+                if(model.deviceSource_ids != null && model.deviceSource_ids.Length > 0)
                 {
-                    byte[] _streamBuffer;
-                    _streamBuffer = new byte[fileStream.Length];
-                    fileStream.Read(_streamBuffer, 0, (int)fileStream.Length);
-
-                    Header header = new Header(_streamBuffer);
-                    ImageDescription imageDescription = new ImageDescription(_streamBuffer, header.GetImageIDLength());
-                    RealWidth = imageDescription.GetRealWidth();
+                    for (int i = 0; i < model.deviceSource_ids.Length; i++)
+                    {
+                        if(id == model.deviceSource_ids[i])
+                        {
+                            ProgramSettings.Watch_Model = config.Key;
+                            if (AvailableConfigurations.ContainsKey(ProgramSettings.Watch_Model))
+                            {
+                                comboBox_watch_model.Text = ProgramSettings.Watch_Model;
+                            }
+                        }
+                    }
                 }
-
-                ImageMagick.MagickImage image = new ImageMagick.MagickImage(fileNameFull, ImageMagick.MagickFormat.Tga);
-                image.Format = ImageMagick.MagickFormat.Png32;
-                if (RealWidth > 0 && RealWidth != image.Width)
-                {
-                    int height = image.Height;
-                    image = (ImageMagick.MagickImage)image.Clone(RealWidth, height);
-                }
-
-                ImageMagick.IMagickImage Blue = image.Separate(ImageMagick.Channels.Blue).First();
-                ImageMagick.IMagickImage Red = image.Separate(ImageMagick.Channels.Red).First();
-                image.Composite(Red, ImageMagick.CompositeOperator.Replace, ImageMagick.Channels.Blue);
-                image.Composite(Blue, ImageMagick.CompositeOperator.Replace, ImageMagick.Channels.Red);
-
-                //image.ColorType = ImageMagick.ColorType.Palette;
-                //string newFileName = Path.Combine(path, fileName + ".png");
-                //image.Write(targetFile);
-                //Bitmap bitmap = image.ToBitmap();
-                //panel1.BackgroundImage = bitmap;
             }
-            catch (Exception exp)
-            {
-                MessageBox.Show("Не верный формат исходного файла" + Environment.NewLine +
-                    exp);
-            }
-        }*/
+        }
 
         /// <summary>Получаем список файлов в папке</summary>
         /// <param name="start_path">Начальная папка для просмотра</param>
@@ -17694,8 +17021,8 @@ namespace Watch_Face_Editor
 
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
-                Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false, 
-                    false, false, link, false, -1, false, 0);
+                Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, false, false, false, true, false, 
+                    false, false, link, false, false, -1, false, 0);
                 if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
                 else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
                 bitmap.Save(saveFileDialog.FileName, ImageFormat.Png);
@@ -17715,44 +17042,6 @@ namespace Watch_Face_Editor
             saveFileDialog.Title = Properties.FormStrings.Dialog_Title_SaveGIF;
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                //Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
-                //Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
-                //switch (ProgramSettings.Watch_Model)
-                //{
-                //    case "GTR 3 Pro":
-                //        bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
-                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
-                //        break;
-                //    case "GTS 3":
-                //    case "GTS 4":
-                //        bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
-                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
-                //        break;
-                //    case "GTR 4":
-                //        bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
-                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_4.png");
-                //        break;
-                //    case "Amazfit Band 7":
-                //        bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
-                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_band_7.png");
-                //        break;
-                //    case "GTS 4 mini":
-                //        bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
-                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
-                //        break;
-                //    case "Falcon":
-                //    case "GTR mini":
-                //        bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
-                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
-                //        break;
-                //}
-                /*// StartBlock :: Kartun
-                Logger.WriteLine($"* button_SavePNG_Click for {ProgramSettings.Watch_Model}");
-                Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
-                Logger.WriteLine($"Loaded configuration: {currPlatform}");
-                bitmap = new Bitmap(Convert.ToInt32(currPlatform.background.w), Convert.ToInt32(currPlatform.background.h), PixelFormat.Format32bppArgb);
-                mask = new Bitmap(Application.StartupPath + @"\Mask\" + currPlatform.maskImage);
-                // EndBlock :: Kartun*/
                 Bitmap bitmap = new Bitmap(SelectedModel.background.w, SelectedModel.background.h, PixelFormat.Format32bppArgb);
                 Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\" + SelectedModel.maskImage);
 
@@ -17864,8 +17153,8 @@ namespace Watch_Face_Editor
 
                             //int link = radioButton_ScreenNormal.Checked ? 0 : 1;
                             int link = 0;
-                            Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true,
-                                false, false, false, link, false, -1, false, 0);
+                            Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, false, false, false, true,
+                                false, false, false, link, false, false, -1, false, 0);
                             //if (checkBox_crop.Checked) {
                             //    bitmap = ApplyMask(bitmap, mask);
                             //    gPanel = Graphics.FromImage(bitmap);
@@ -17884,6 +17173,7 @@ namespace Watch_Face_Editor
 
                     Logger.WriteLine("SaveGIF_Shortcuts");
                     bool Shortcuts_In_Gif = checkBox_Shortcuts_In_Gif.Checked;
+                    bool Buttons_In_Gif = checkBox_Buttons_In_Gif.Checked;
                     //bool exists = false;
                     //if (Watch_Face != null && Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Elements != null) 
                     //exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementShortcuts"); // проверяем что такого элемента нет
@@ -17895,8 +17185,8 @@ namespace Watch_Face_Editor
                         gPanel = Graphics.FromImage(bitmap);
                         //int link = radioButton_ScreenNormal.Checked ? 0 : 1;
                         int link_AOD = 0;
-                        Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true,
-                            false, false, false, link_AOD, Shortcuts_In_Gif, -1, false, 0);
+                        Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, false, false, false, true,
+                            false, false, false, link_AOD, Shortcuts_In_Gif, Buttons_In_Gif, -1, false, 0);
 
                         if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
                         else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
@@ -17910,15 +17200,15 @@ namespace Watch_Face_Editor
 
                     // Buttons
                     Logger.WriteLine("SaveGIF Buttons");
-                    if (Shortcuts_In_Gif && Watch_Face.Buttons != null && Watch_Face.Buttons.enable &&
+                    if (Buttons_In_Gif && Watch_Face.Buttons != null && Watch_Face.Buttons.enable &&
                         Watch_Face.Buttons.Button != null && Watch_Face.Buttons.Button.Count > 0)
                     {
                         bitmap = bitmapTemp;
                         gPanel = Graphics.FromImage(bitmap);
                         //int link = radioButton_ScreenNormal.Checked ? 0 : 1;
                         int link_AOD = 0;
-                        Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true,
-                            false, false, false, link_AOD, Shortcuts_In_Gif, -1, false, 0);
+                        Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, false, false, false, true,
+                            false, false, false, link_AOD, Shortcuts_In_Gif, Buttons_In_Gif, -1, false, 0);
 
                         if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
                         else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
@@ -17941,8 +17231,8 @@ namespace Watch_Face_Editor
                         gPanel = Graphics.FromImage(bitmap);
                         //int link = radioButton_ScreenNormal.Checked ? 0 : 1;
                         int link_AOD = 1;
-                        Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true,
-                            false, false, false, link_AOD, false, -1, false, 0);
+                        Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, false, false, false, true,
+                            false, false, false, link_AOD, false, false, -1, false, 0);
                         //if (checkBox_crop.Checked)
                         //{
                         //    bitmap = ApplyMask(bitmap, mask);
@@ -17961,8 +17251,8 @@ namespace Watch_Face_Editor
                         SetPreferences(userCtrl_Set1);
                         bitmap = bitmapTemp;
                         gPanel = Graphics.FromImage(bitmap);
-                        Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true,
-                            false, false, false, link_AOD, false, -1, false, 0);
+                        Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, false, false, false, true,
+                            false, false, false, link_AOD, false, false, -1, false, 0);
                         //if (checkBox_crop.Checked)
                         //{
                         //    bitmap = ApplyMask(bitmap, mask);
@@ -17993,8 +17283,8 @@ namespace Watch_Face_Editor
                             bitmap = bitmapTemp;
                             gPanel = Graphics.FromImage(bitmap);
                             Watch_Face.ScreenNormal.Background.Editable_Background.selected_background = index;
-                            Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true,
-                                            false, false, false, link_AOD, false, -1, true, 1);
+                            Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, false, false, false, true,
+                                            false, false, false, link_AOD, false, false, -1, true, 1);
                             if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
                             else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
                             // Add first image and set the animation delay to 100ms
@@ -18023,8 +17313,8 @@ namespace Watch_Face_Editor
                             bitmap = bitmapTemp;
                             gPanel = Graphics.FromImage(bitmap);
                             Watch_Face.ElementEditablePointers.selected_pointers = index;
-                            Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true,
-                                            false, false, false, link_AOD, false, -1, true, 3);
+                            Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, false, false, false, true,
+                                            false, false, false, link_AOD, false, false, -1, true, 3);
                             if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
                             else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
                             // Add first image and set the animation delay to 100ms
@@ -18072,8 +17362,8 @@ namespace Watch_Face_Editor
                                     edit_group.selected_element = element_index;
                                 }
                             }
-                            Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true,
-                                            false, false, false, link_AOD, false, -1, true, 2);
+                            Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, false, false, false, true,
+                                            false, false, false, link_AOD, false, false, -1, true, 2);
                             if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
                             else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
                             // Add first image and set the animation delay to 100ms
@@ -18165,57 +17455,46 @@ namespace Watch_Face_Editor
             saveFileDialog.Title = Properties.FormStrings.Dialog_Title_SavePNG;
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                //Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
-                //Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3.png");
-                //switch (ProgramSettings.Watch_Model)
-                //{
-                //    case "GTR 3 Pro":
-                //        bitmap = new Bitmap(Convert.ToInt32(480), Convert.ToInt32(480), PixelFormat.Format32bppArgb);
-                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_3_pro.png");
-                //        break;
-                //    case "GTS 3":
-                //    case "GTS 4":
-                //        bitmap = new Bitmap(Convert.ToInt32(390), Convert.ToInt32(450), PixelFormat.Format32bppArgb);
-                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_3.png");
-                //        break;
-                //    case "GTR 4":
-                //        bitmap = new Bitmap(Convert.ToInt32(466), Convert.ToInt32(466), PixelFormat.Format32bppArgb);
-                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gtr_4.png");
-                //        break;
-                //    case "Amazfit Band 7":
-                //        bitmap = new Bitmap(Convert.ToInt32(194), Convert.ToInt32(368), PixelFormat.Format32bppArgb);
-                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_band_7.png");
-                //        break;
-                //    case "GTS 4 mini":
-                //        bitmap = new Bitmap(Convert.ToInt32(336), Convert.ToInt32(384), PixelFormat.Format32bppArgb);
-                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_gts_4_mini.png");
-                //        break;
-                //    case "Falcon":
-                //    case "GTR mini":
-                //        bitmap = new Bitmap(Convert.ToInt32(416), Convert.ToInt32(416), PixelFormat.Format32bppArgb);
-                //        mask = new Bitmap(Application.StartupPath + @"\Mask\mask_falcon.png");
-                //        break;
-                //}
-                /*// StartBlock :: Kartun
-                Logger.WriteLine($"* button_SavePNG_shortcut_Click for {ProgramSettings.Watch_Model}");
-                Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
-                Logger.WriteLine($"Loaded configuration: {currPlatform}");
-                bitmap = new Bitmap(Convert.ToInt32(currPlatform.background.w), Convert.ToInt32(currPlatform.background.h), PixelFormat.Format32bppArgb);
-                mask = new Bitmap(Application.StartupPath + @"\Mask\" + currPlatform.maskImage);
-                // EndBlock :: Kartun*/
                 Bitmap bitmap = new Bitmap(SelectedModel.background.w, SelectedModel.background.h, PixelFormat.Format32bppArgb);
                 Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\" + SelectedModel.maskImage);
 
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 //int link = radioButton_ScreenNormal.Checked ? 0 : 1;
                 int link_AOD = 0;
-                Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true,
-                    false, false, false, link_AOD, true, -1, false, 0);
+                Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, false, false, false, true,
+                    false, false, false, link_AOD, true, false, -1, false, 0);
                 if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
                 else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
                 bitmap.Save(saveFileDialog.FileName, ImageFormat.Png);
             }
             Logger.WriteLine("* SavePNG_shortcut(end)");
+        }
+
+        private void button_SavePNG_button_Click(object sender, EventArgs e)
+        {
+            Logger.WriteLine("* SavePNG_button");
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.InitialDirectory = FullFileDir;
+            saveFileDialog.Filter = Properties.FormStrings.FilterPng;
+            saveFileDialog.FileName = "Preview.png";
+            //openFileDialog.Filter = "PNG Files: (*.png)|*.png";
+            saveFileDialog.RestoreDirectory = true;
+            saveFileDialog.Title = Properties.FormStrings.Dialog_Title_SavePNG;
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                Bitmap bitmap = new Bitmap(SelectedModel.background.w, SelectedModel.background.h, PixelFormat.Format32bppArgb);
+                Bitmap mask = new Bitmap(Application.StartupPath + @"\Mask\" + SelectedModel.maskImage);
+
+                Graphics gPanel = Graphics.FromImage(bitmap);
+                //int link = radioButton_ScreenNormal.Checked ? 0 : 1;
+                int link_AOD = 0;
+                Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, false, false, false, true,
+                    false, false, false, link_AOD, false, true, -1, false, 0);
+                if (checkBox_WatchSkin_Use.Checked) bitmap = ApplyWatchSkin(bitmap);
+                else if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
+                bitmap.Save(saveFileDialog.FileName, ImageFormat.Png);
+            }
+            Logger.WriteLine("* SavePNG_button(end)");
         }
 
         private void button_Reset_Click(object sender, EventArgs e)
@@ -18254,6 +17533,10 @@ namespace Watch_Face_Editor
                         comboBox_ConvertingInput_Model.Text = "480 (GTR 3 Pro)";
                         comboBox_ConvertingOutput_Model.Text = "454 (GTR 3)";
                         break;
+                    case "Balance":
+                        comboBox_ConvertingInput_Model.Text = "480 (Balance)";
+                        comboBox_ConvertingOutput_Model.Text = "454 (GTR 3)";
+                        break;
                     case "GTS 3":
                         comboBox_ConvertingInput_Model.Text = "390 (GTS 3)";
                         comboBox_ConvertingOutput_Model.Text = "336 (GTS 4 mini)";
@@ -18280,6 +17563,10 @@ namespace Watch_Face_Editor
                         break;
                     case "GTS 4":
                         comboBox_ConvertingInput_Model.Text = "390 (GTS 4)";
+                        comboBox_ConvertingOutput_Model.Text = "336 (GTS 4 mini)";
+                        break;
+                    case "Cheetah (Square)":
+                        comboBox_ConvertingInput_Model.Text = "390 (Cheetah (Square))";
                         comboBox_ConvertingOutput_Model.Text = "336 (GTS 4 mini)";
                         break;
                     default:
@@ -18345,6 +17632,12 @@ namespace Watch_Face_Editor
                 case "390 (GTS 4)":
                     numericUpDown_ConvertingInput_Custom.Value = 390;
                     break;
+                case "390 (Cheetah (Square))":
+                    numericUpDown_ConvertingInput_Custom.Value = 390;
+                    break;
+                case "480 (Balance)":
+                    numericUpDown_ConvertingInput_Custom.Value = 480;
+                    break;
             }
         }
 
@@ -18393,6 +17686,12 @@ namespace Watch_Face_Editor
                 case "390 (GTS 4)":
                     numericUpDown_ConvertingOutput_Custom.Value = 390;
                     break;
+                case "390 (Cheetah (Square))":
+                    numericUpDown_ConvertingOutput_Custom.Value = 390;
+                    break;
+                case "480 (Balance)":
+                    numericUpDown_ConvertingOutput_Custom.Value = 480;
+                    break;
             }
         }
 
@@ -18423,6 +17722,10 @@ namespace Watch_Face_Editor
                     case "390 (GTS 4)":
                         suffix = "_GTS_4";
                         DeviceName = "GTS 4";
+                        break;
+                    case "390 (Cheetah (Square))":
+                        suffix = "_Cheetah_(Square)";
+                        DeviceName = "Cheetah (Square)";
                         break;
                     case "416 (Falcon)":
                         suffix = "_Falcon";
@@ -18459,6 +17762,10 @@ namespace Watch_Face_Editor
                     case "480 (Cheetah Pro)":
                         suffix = "_Cheetah_Pro";
                         DeviceName = "Cheetah Pro";
+                        break;
+                    case "480 (Balance)":
+                        suffix = "_Balance";
+                        DeviceName = "Balance";
                         break;
                     default:
                         suffix = "_Custom_" + numericUpDown_ConvertingOutput_Custom.Value.ToString();
@@ -18539,6 +17846,18 @@ namespace Watch_Face_Editor
                 if (File.Exists(scriptFileName))
                 {
                     string scriptFileNameNew = Path.Combine(newFullDirName, "user_script.js");
+                    File.Copy(scriptFileName, scriptFileNameNew);
+                }
+                scriptFileName = Path.Combine(FullFileDir, "user_script_start.js");
+                if (File.Exists(scriptFileName))
+                {
+                    string scriptFileNameNew = Path.Combine(newFullDirName, "user_script_start.js");
+                    File.Copy(scriptFileName, scriptFileNameNew);
+                }
+                scriptFileName = Path.Combine(FullFileDir, "user_script_end.js");
+                if (File.Exists(scriptFileName))
+                {
+                    string scriptFileNameNew = Path.Combine(newFullDirName, "user_script_end.js");
                     File.Copy(scriptFileName, scriptFileNameNew);
                 }
                 scriptFileName = Path.Combine(FullFileDir, "resume_call.js");
@@ -19007,6 +18326,21 @@ namespace Watch_Face_Editor
         private void pictureBoxpictureBox_buymeacoff_MouseLeave(object sender, EventArgs e)
         {
             pictureBoxpictureBox_buymeacoff.Visible = false;
+        }
+
+        private void checkBox_Use_ARGB_CheckedChanged(object sender, EventArgs e)
+        {
+            bool check = checkBox_Use_ARGB.Checked;
+            radioButton_ARGB_color.Enabled = check;
+            radioButton_ARGB_forced.Enabled = check;
+            numericUpDown_ARGB_color_count.Enabled = check;
+
+            checkBox_UnvisibleSettings_CheckedChanged(sender, e);
+        }
+
+        private void numericUpDown_ARGB_color_count_ValueChanged(object sender, EventArgs e)
+        {
+            radioButton_Settings_CheckedChanged(sender, e);
         }
     }
 }

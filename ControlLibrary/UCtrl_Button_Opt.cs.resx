@@ -117,6 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Index.HeaderText" xml:space="preserve">
+    <value>#</value>
+  </data>
+  <data name="Button.HeaderText" xml:space="preserve">
+    <value>jméno</value>
+  </data>
+  <data name="button_add.Text" xml:space="preserve">
+    <value>Přidat</value>
+  </data>
+  <data name="button_del.Text" xml:space="preserve">
+    <value>Smazat</value>
+  </data>
+  <data name="label06.Text" xml:space="preserve">
+    <value>Výška tlačítek</value>
+  </data>
+  <data name="label07.Text" xml:space="preserve">
+    <value>šířka tlačítka</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -158,7 +176,7 @@
     <value>178, 26</value>
   </data>
   <data name="копироватьToolStripMenuItemX.Text" xml:space="preserve">
-    <value>Kopírovat</value>
+    <value>kopírovat</value>
   </data>
   <data name="вставитьToolStripMenuItemX.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -226,7 +244,7 @@
     <value>178, 26</value>
   </data>
   <data name="копироватьToolStripMenuItemY.Text" xml:space="preserve">
-    <value>Kopírovat</value>
+    <value>kopírovat</value>
   </data>
   <data name="вставитьToolStripMenuItemY.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -254,22 +272,46 @@
   <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
     <value>179, 82</value>
   </data>
-  <data name="label01.Text" xml:space="preserve">
-    <value>První obrázek</value>
-  </data>
   <data name="label02.Size" type="System.Drawing.Size, System.Drawing">
     <value>62, 13</value>
   </data>
   <data name="label02.Text" xml:space="preserve">
     <value>Souřadnice</value>
   </data>
-  <data name="label03.Text" xml:space="preserve">
-    <value>Počet obrázků</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Stlačený stav</value>
   </data>
-  <data name="checkBox_shortcut.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 17</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Normální stav</value>
   </data>
-  <data name="checkBox_shortcut.Text" xml:space="preserve">
-    <value>Zkratka</value>
+  <data name="groupBox_image.Text" xml:space="preserve">
+    <value>Obrázek</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Stlačený stav</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Poloměr</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Normální stav</value>
+  </data>
+  <data name="groupBox_color.Text" xml:space="preserve">
+    <value>Barva</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Velikost textu</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Text</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Barva textu</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>224, 26</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>* Chcete-li přidat funkce při stisknutí tlačítka, poklepejte na řádek s tlačítkem</value>
   </data>
 </root>

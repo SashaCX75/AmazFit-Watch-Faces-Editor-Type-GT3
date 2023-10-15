@@ -117,40 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Dialog_FontFilter" xml:space="preserve">
-    <value>Soubor je ve fontu (*.ttf) | *.ttf</value>
+  <data name="Button" xml:space="preserve">
+    <value>Tlačítko</value>
   </data>
-  <data name="Dialog_Title_Font_Add" xml:space="preserve">
-    <value>Vyberte soubor písma</value>
+  <data name="comboBox_Activity" xml:space="preserve">
+    <value>Aktivity</value>
   </data>
-  <data name="Message_Error_Caption" xml:space="preserve">
-    <value>Chyba</value>
+  <data name="comboBox_App" xml:space="preserve">
+    <value>Programy</value>
   </data>
-  <data name="Message_ReadScript_Error" xml:space="preserve">
-    <value>Při čtení uživatelských skriptů došlo k chybě</value>
+  <data name="comboBox_System" xml:space="preserve">
+    <value>Nastavení</value>
   </data>
-  <data name="Message_Warning_Caption" xml:space="preserve">
-    <value>Varování</value>
+  <data name="comboBox_UserScript" xml:space="preserve">
+    <value>Sada funkcí</value>
   </data>
-  <data name="Message_Warning_Font_Exist1" xml:space="preserve">
-    <value>Projekt již má písmo:</value>
+  <data name="Empty" xml:space="preserve">
+    <value>prázdný</value>
   </data>
-  <data name="Message_Warning_Font_Exist2" xml:space="preserve">
-    <value>Nahradit ho novým písmem?</value>
-  </data>
-  <data name="SystemFont" xml:space="preserve">
-    <value>Systémové písmo</value>
-  </data>
-  <data name="UCtrl_Text_Opt_Sunrise_false" xml:space="preserve">
-    <value>Oddělovač desetinných míst</value>
-  </data>
-  <data name="UCtrl_Text_Opt_Sunrise_true" xml:space="preserve">
-    <value>Oddělovač</value>
-  </data>
-  <data name="UCtrl_Text_Opt_Year_false" xml:space="preserve">
-    <value>Přidejte úvodní nuly</value>
-  </data>
-  <data name="UCtrl_Text_Opt_Year_true" xml:space="preserve">
-    <value>Úplný rok</value>
+  <data name="User_script" xml:space="preserve">
+    <value>uživatelský skript</value>
   </data>
 </root>

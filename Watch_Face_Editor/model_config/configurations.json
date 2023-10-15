@@ -12,25 +12,27 @@
       "w": 480,
       "h": 480
     },
-    "scaling_0_5": {
-      "w": 230,
-      "h": 230
-    },
-    "scaling_1_0": {
-      "w": 482,
-      "h": 482
-    },
-    "scaling_1_5": {
-      "w": 722,
-      "h": 722
-    },
-    "scaling_2_0": {
-      "w": 961,
-      "h": 961
-    },
-    "scaling_2_5": {
-      "w": 1201,
-      "h": 1201
+    "scaling": {
+      "scaling_0_5": {
+        "w": 230,
+        "h": 230
+      },
+      "scaling_1_0": {
+        "w": 482,
+        "h": 482
+      },
+      "scaling_1_5": {
+        "w": 722,
+        "h": 722
+      },
+      "scaling_2_0": {
+        "w": 961,
+        "h": 961
+      },
+      "scaling_2_5": {
+        "w": 1201,
+        "h": 1201
+      }
     },
     "maskImage": "mask_gtr_3_pro.png",
     "watchSkin": "WatchSkin_GTR_3_Pro.json",
@@ -50,25 +52,27 @@
       "w": 454,
       "h": 454
     },
-    "scaling_0_5": {
-      "w": 230,
-      "h": 230
-    },
-    "scaling_1_0": {
-      "w": 456,
-      "h": 456
-    },
-    "scaling_1_5": {
-      "w": 683,
-      "h": 683
-    },
-    "scaling_2_0": {
-      "w": 909,
-      "h": 909
-    },
-    "scaling_2_5": {
-      "w": 1136,
-      "h": 1136
+    "scaling": {
+      "scaling_0_5": {
+        "w": 230,
+        "h": 230
+      },
+      "scaling_1_0": {
+        "w": 456,
+        "h": 456
+      },
+      "scaling_1_5": {
+        "w": 683,
+        "h": 683
+      },
+      "scaling_2_0": {
+        "w": 909,
+        "h": 909
+      },
+      "scaling_2_5": {
+        "w": 1136,
+        "h": 1136
+      }
     },
     "maskImage": "mask_gtr_3.png",
     "watchSkin": "WatchSkin_GTR_3.json",
@@ -88,25 +92,27 @@
       "w": 454,
       "h": 454
     },
-    "scaling_0_5": {
-      "w": 230,
-      "h": 230
-    },
-    "scaling_1_0": {
-      "w": 456,
-      "h": 456
-    },
-    "scaling_1_5": {
-      "w": 683,
-      "h": 683
-    },
-    "scaling_2_0": {
-      "w": 909,
-      "h": 909
-    },
-    "scaling_2_5": {
-      "w": 1136,
-      "h": 1136
+    "scaling": {
+      "scaling_0_5": {
+        "w": 230,
+        "h": 230
+      },
+      "scaling_1_0": {
+        "w": 456,
+        "h": 456
+      },
+      "scaling_1_5": {
+        "w": 683,
+        "h": 683
+      },
+      "scaling_2_0": {
+        "w": 909,
+        "h": 909
+      },
+      "scaling_2_5": {
+        "w": 1136,
+        "h": 1136
+      }
     },
     "maskImage": "mask_gtr_3.png",
     "watchSkin": "WatchSkin_T_Rex_2.json",
@@ -126,25 +132,27 @@
       "w": 416,
       "h": 416
     },
-    "scaling_0_5": {
-      "w": 211,
-      "h": 211
-    },
-    "scaling_1_0": {
-      "w": 418,
-      "h": 418
-    },
-    "scaling_1_5": {
-      "w": 626,
-      "h": 626
-    },
-    "scaling_2_0": {
-      "w": 833,
-      "h": 833
-    },
-    "scaling_2_5": {
-      "w": 1041,
-      "h": 1041
+    "scaling": {
+      "scaling_0_5": {
+        "w": 211,
+        "h": 211
+      },
+      "scaling_1_0": {
+        "w": 418,
+        "h": 418
+      },
+      "scaling_1_5": {
+        "w": 626,
+        "h": 626
+      },
+      "scaling_2_0": {
+        "w": 833,
+        "h": 833
+      },
+      "scaling_2_5": {
+        "w": 1041,
+        "h": 1041
+      }
     },
     "maskImage": "mask_falcon.png",
     "watchSkin": "WatchSkin_Falcon.json",
@@ -164,25 +172,27 @@
       "w": 390,
       "h": 450
     },
-    "scaling_0_5": {
-      "w": 198,
-      "h": 228
-    },
-    "scaling_1_0": {
-      "w": 392,
-      "h": 452
-    },
-    "scaling_1_5": {
-      "w": 587,
-      "h": 677
-    },
-    "scaling_2_0": {
-      "w": 781,
-      "h": 901
-    },
-    "scaling_2_5": {
-      "w": 976,
-      "h": 1126
+    "scaling": {
+      "scaling_0_5": {
+        "w": 198,
+        "h": 228
+      },
+      "scaling_1_0": {
+        "w": 392,
+        "h": 452
+      },
+      "scaling_1_5": {
+        "w": 587,
+        "h": 677
+      },
+      "scaling_2_0": {
+        "w": 781,
+        "h": 901
+      },
+      "scaling_2_5": {
+        "w": 976,
+        "h": 1126
+      }
     },
     "maskImage": "mask_gts_3.png",
     "watchSkin": "WatchSkin_GTS_3.json",
@@ -202,25 +212,27 @@
       "w": 336,
       "h": 384
     },
-    "scaling_0_5": {
-      "w": 171,
-      "h": 195
-    },
-    "scaling_1_0": {
-      "w": 338,
-      "h": 386
-    },
-    "scaling_1_5": {
-      "w": 506,
-      "h": 578
-    },
-    "scaling_2_0": {
-      "w": 673,
-      "h": 769
-    },
-    "scaling_2_5": {
-      "w": 841,
-      "h": 961
+    "scaling": {
+      "scaling_0_5": {
+        "w": 171,
+        "h": 195
+      },
+      "scaling_1_0": {
+        "w": 338,
+        "h": 386
+      },
+      "scaling_1_5": {
+        "w": 506,
+        "h": 578
+      },
+      "scaling_2_0": {
+        "w": 673,
+        "h": 769
+      },
+      "scaling_2_5": {
+        "w": 841,
+        "h": 961
+      }
     },
     "maskImage": "mask_gts_4_mini.png",
     "watchSkin": "WatchSkin_GTS_4_mini.json",
@@ -241,25 +253,27 @@
       "w": 194,
       "h": 368
     },
-    "scaling_0_5": {
-      "w": 100,
-      "h": 187
-    },
-    "scaling_1_0": {
-      "w": 196,
-      "h": 370
-    },
-    "scaling_1_5": {
-      "w": 293,
-      "h": 554
-    },
-    "scaling_2_0": {
-      "w": 389,
-      "h": 737
-    },
-    "scaling_2_5": {
-      "w": 486,
-      "h": 921
+    "scaling": {
+      "scaling_0_5": {
+        "w": 100,
+        "h": 187
+      },
+      "scaling_1_0": {
+        "w": 196,
+        "h": 370
+      },
+      "scaling_1_5": {
+        "w": 293,
+        "h": 554
+      },
+      "scaling_2_0": {
+        "w": 389,
+        "h": 737
+      },
+      "scaling_2_5": {
+        "w": 486,
+        "h": 921
+      }
     },
     "maskImage": "mask_band_7.png",
     "watchSkin": "WatchSkin_Amazfit_Band_7.json",
@@ -279,25 +293,27 @@
       "w": 480,
       "h": 480
     },
-    "scaling_0_5": {
-      "w": 230,
-      "h": 230
-    },
-    "scaling_1_0": {
-      "w": 482,
-      "h": 482
-    },
-    "scaling_1_5": {
-      "w": 722,
-      "h": 722
-    },
-    "scaling_2_0": {
-      "w": 961,
-      "h": 961
-    },
-    "scaling_2_5": {
-      "w": 1201,
-      "h": 1201
+    "scaling": {
+      "scaling_0_5": {
+        "w": 230,
+        "h": 230
+      },
+      "scaling_1_0": {
+        "w": 482,
+        "h": 482
+      },
+      "scaling_1_5": {
+        "w": 722,
+        "h": 722
+      },
+      "scaling_2_0": {
+        "w": 961,
+        "h": 961
+      },
+      "scaling_2_5": {
+        "w": 1201,
+        "h": 1201
+      }
     },
     "maskImage": "mask_gtr_3_pro.png",
     "watchSkin": "WatchSkin_Cheetah.json",
@@ -319,25 +335,27 @@
       "w": 466,
       "h": 466
     },
-    "scaling_0_5": {
-      "w": 230,
-      "h": 230
-    },
-    "scaling_1_0": {
-      "w": 468,
-      "h": 468
-    },
-    "scaling_1_5": {
-      "w": 701,
-      "h": 701
-    },
-    "scaling_2_0": {
-      "w": 933,
-      "h": 933
-    },
-    "scaling_2_5": {
-      "w": 976,
-      "h": 1126
+    "scaling": {
+      "scaling_0_5": {
+        "w": 230,
+        "h": 230
+      },
+      "scaling_1_0": {
+        "w": 468,
+        "h": 468
+      },
+      "scaling_1_5": {
+        "w": 701,
+        "h": 701
+      },
+      "scaling_2_0": {
+        "w": 933,
+        "h": 933
+      },
+      "scaling_2_5": {
+        "w": 976,
+        "h": 1126
+      }
     },
     "maskImage": "mask_gtr_4.png",
     "watchSkin": "WatchSkin_GTR_4.json",
@@ -357,25 +375,27 @@
       "w": 454,
       "h": 454
     },
-    "scaling_0_5": {
-      "w": 230,
-      "h": 230
-    },
-    "scaling_1_0": {
-      "w": 456,
-      "h": 456
-    },
-    "scaling_1_5": {
-      "w": 683,
-      "h": 683
-    },
-    "scaling_2_0": {
-      "w": 909,
-      "h": 909
-    },
-    "scaling_2_5": {
-      "w": 1136,
-      "h": 1136
+    "scaling": {
+      "scaling_0_5": {
+        "w": 230,
+        "h": 230
+      },
+      "scaling_1_0": {
+        "w": 456,
+        "h": 456
+      },
+      "scaling_1_5": {
+        "w": 683,
+        "h": 683
+      },
+      "scaling_2_0": {
+        "w": 909,
+        "h": 909
+      },
+      "scaling_2_5": {
+        "w": 1136,
+        "h": 1136
+      }
     },
     "maskImage": "mask_gtr_3.png",
     "watchSkin": "WatchSkin_Cheetah.json",
@@ -395,25 +415,27 @@
       "w": 454,
       "h": 454
     },
-    "scaling_0_5": {
-      "w": 230,
-      "h": 230
-    },
-    "scaling_1_0": {
-      "w": 456,
-      "h": 456
-    },
-    "scaling_1_5": {
-      "w": 683,
-      "h": 683
-    },
-    "scaling_2_0": {
-      "w": 909,
-      "h": 909
-    },
-    "scaling_2_5": {
-      "w": 1136,
-      "h": 1136
+    "scaling": {
+      "scaling_0_5": {
+        "w": 230,
+        "h": 230
+      },
+      "scaling_1_0": {
+        "w": 456,
+        "h": 456
+      },
+      "scaling_1_5": {
+        "w": 683,
+        "h": 683
+      },
+      "scaling_2_0": {
+        "w": 909,
+        "h": 909
+      },
+      "scaling_2_5": {
+        "w": 1136,
+        "h": 1136
+      }
     },
     "maskImage": "mask_gtr_3.png",
     "watchSkin": "WatchSkin_T_Rex_2.json",
@@ -433,25 +455,27 @@
       "w": 416,
       "h": 416
     },
-    "scaling_0_5": {
-      "w": 211,
-      "h": 211
-    },
-    "scaling_1_0": {
-      "w": 418,
-      "h": 418
-    },
-    "scaling_1_5": {
-      "w": 626,
-      "h": 626
-    },
-    "scaling_2_0": {
-      "w": 833,
-      "h": 833
-    },
-    "scaling_2_5": {
-      "w": 1041,
-      "h": 1041
+    "scaling": {
+      "scaling_0_5": {
+        "w": 211,
+        "h": 211
+      },
+      "scaling_1_0": {
+        "w": 418,
+        "h": 418
+      },
+      "scaling_1_5": {
+        "w": 626,
+        "h": 626
+      },
+      "scaling_2_0": {
+        "w": 833,
+        "h": 833
+      },
+      "scaling_2_5": {
+        "w": 1041,
+        "h": 1041
+      }
     },
     "maskImage": "mask_falcon.png",
     "watchSkin": "",
@@ -459,6 +483,45 @@
     "colorScheme": 3,
     "fixSize": false,
     "versionOS": 2
+  },
+  "Cheetah (Square)": {
+    "name": "Amazfit Cheetah (Square)",
+    "designWidth": 390,
+    "deviceSource_ids": [
+      8257793
+    ],
+    "background": {
+      "w": 390,
+      "h": 450
+    },
+    "scaling": {
+      "scaling_0_5": {
+        "w": 198,
+        "h": 228
+      },
+      "scaling_1_0": {
+        "w": 392,
+        "h": 452
+      },
+      "scaling_1_5": {
+        "w": 587,
+        "h": 677
+      },
+      "scaling_2_0": {
+        "w": 781,
+        "h": 901
+      },
+      "scaling_2_5": {
+        "w": 841,
+        "h": 961
+      }
+    },
+    "maskImage": "mask_gts_3.png",
+    "watchSkin": "WatchSkin_GTS_3.json",
+    "previewHeight": 306,
+    "colorScheme": 1,
+    "fixSize": true,
+    "versionOS": 2.1
   },
   "GTS 4": {
     "name": "Amazfit GTS 4",
@@ -471,25 +534,27 @@
       "w": 390,
       "h": 450
     },
-    "scaling_0_5": {
-      "w": 198,
-      "h": 228
-    },
-    "scaling_1_0": {
-      "w": 392,
-      "h": 452
-    },
-    "scaling_1_5": {
-      "w": 587,
-      "h": 677
-    },
-    "scaling_2_0": {
-      "w": 781,
-      "h": 901
-    },
-    "scaling_2_5": {
-      "w": 841,
-      "h": 961
+    "scaling": {
+      "scaling_0_5": {
+        "w": 198,
+        "h": 228
+      },
+      "scaling_1_0": {
+        "w": 392,
+        "h": 452
+      },
+      "scaling_1_5": {
+        "w": 587,
+        "h": 677
+      },
+      "scaling_2_0": {
+        "w": 781,
+        "h": 901
+      },
+      "scaling_2_5": {
+        "w": 841,
+        "h": 961
+      }
     },
     "maskImage": "mask_gts_3.png",
     "watchSkin": "WatchSkin_GTS_3.json",
@@ -509,25 +574,27 @@
       "w": 320,
       "h": 380
     },
-    "scaling_0_5": {
-      "w": 163,
-      "h": 193
-    },
-    "scaling_1_0": {
-      "w": 322,
-      "h": 392
-    },
-    "scaling_1_5": {
-      "w": 482,
-      "h": 572
-    },
-    "scaling_2_0": {
-      "w": 641,
-      "h": 761
-    },
-    "scaling_2_5": {
-      "w": 801,
-      "h": 951
+    "scaling": {
+      "scaling_0_5": {
+        "w": 163,
+        "h": 193
+      },
+      "scaling_1_0": {
+        "w": 322,
+        "h": 392
+      },
+      "scaling_1_5": {
+        "w": 482,
+        "h": 572
+      },
+      "scaling_2_0": {
+        "w": 641,
+        "h": 761
+      },
+      "scaling_2_5": {
+        "w": 801,
+        "h": 951
+      }
     },
     "maskImage": "mask_bip_5.png",
     "watchSkin": "WatchSkin_Bip_5.json",
@@ -548,31 +615,33 @@
       "w": 480,
       "h": 480
     },
-    "scaling_0_5": {
-      "w": 230,
-      "h": 230
-    },
-    "scaling_1_0": {
-      "w": 482,
-      "h": 482
-    },
-    "scaling_1_5": {
-      "w": 722,
-      "h": 722
-    },
-    "scaling_2_0": {
-      "w": 961,
-      "h": 961
-    },
-    "scaling_2_5": {
-      "w": 1201,
-      "h": 1201
+    "scaling": {
+      "scaling_0_5": {
+        "w": 230,
+        "h": 230
+      },
+      "scaling_1_0": {
+        "w": 482,
+        "h": 482
+      },
+      "scaling_1_5": {
+        "w": 722,
+        "h": 722
+      },
+      "scaling_2_0": {
+        "w": 961,
+        "h": 961
+      },
+      "scaling_2_5": {
+        "w": 1201,
+        "h": 1201
+      }
     },
     "maskImage": "mask_gtr_3_pro.png",
     "watchSkin": "WatchSkin_Balance.json",
     "previewHeight": 324,
     "colorScheme": 1,
     "fixSize": true,
-    "versionOS": 1
+    "versionOS": 3
   }
 }

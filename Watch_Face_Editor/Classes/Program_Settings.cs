@@ -33,16 +33,27 @@ namespace Watch_Face_Editor
 
         public bool ShowBorder = false;
         public bool Crop = true;
-        public bool Shortcuts_Center_marker = true;
+        public bool Pointer_Center_marker = true;
         public bool Show_Warnings = true;
         public bool Show_Shortcuts = true;
+        public bool Show_Buttons = true;
         public bool Show_CircleScale_Area = false;
         public bool Show_Widgets_Area = true;
 
         public bool Shortcuts_Area = true;
         public bool Shortcuts_Border = true;
-        public bool Shortcuts_Image = false;
-        public bool Shortcuts_In_Gif = false;
+        //public bool Shortcuts_Image = false;
+        public bool Shortcuts_In_Gif = true;
+
+        public bool Buttons_Area = true;
+        public bool Buttons_Border = true;
+        //public bool Buttons_Image = false;
+        public bool Buttons_In_Gif = true;
+
+        public bool Use_ARGB_encoding = false;
+        public bool ARGB_encoding_color = false;
+        public bool ARGB_encoding_forced = true;
+        public int ARGB_encoding_color_count = 255;
 
         public float Scale = 1f;
         public float Gif_Speed = 1f;

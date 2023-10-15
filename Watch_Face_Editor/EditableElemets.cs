@@ -2923,8 +2923,8 @@ namespace Watch_Face_Editor
                 }
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
-                Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false,
-                    false, false, link, false, -1, false, 0);
+                Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, false, false, false, true, false,
+                    false, false, link, false, false, -1, false, 0);
                 if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
 
                 // обрезаем по маске
@@ -3058,8 +3058,8 @@ namespace Watch_Face_Editor
                 }
                 Graphics gPanel = Graphics.FromImage(bitmap);
                 int link = radioButton_ScreenNormal.Checked ? 0 : 1;
-                Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, true, false,
-                    false, false, link, false, -1, false, 0);
+                Preview_screen(gPanel, 1.0f, false, false, false, false, false, false, false, false, false, false, false, true, false,
+                    false, false, link, false, false, -1, false, 0);
                 if (checkBox_crop.Checked) bitmap = ApplyMask(bitmap, mask);
 
                 // обрезаем по маске
