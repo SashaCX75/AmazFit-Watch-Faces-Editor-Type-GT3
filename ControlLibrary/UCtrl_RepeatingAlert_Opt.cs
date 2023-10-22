@@ -39,6 +39,7 @@ namespace ControlLibrary
                 case 9:
                     result = 2;
                     break;
+                case 1:
                 case 27:
                     result = 3;
                     break;
@@ -67,7 +68,8 @@ namespace ControlLibrary
                     result = 9;
                     break;
                 case 3:
-                    result = 27;
+                    result = 1;
+                    //result = 27;
                     break;
 
                 default:
@@ -93,6 +95,7 @@ namespace ControlLibrary
                 case 9:
                     result = 2;
                     break;
+                case 1:
                 case 27:
                     result = 3;
                     break;
@@ -121,7 +124,8 @@ namespace ControlLibrary
                     result = 9;
                     break;
                 case 3:
-                    result = 27;
+                    result = 1;
+                    //result = 27;
                     break;
 
                 default:

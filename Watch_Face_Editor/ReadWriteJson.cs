@@ -34,6 +34,7 @@ namespace Watch_Face_Editor
             // элементы основного экрана
             if (Watch_Face.ScreenNormal != null)
             {
+                items += TabInString(6) + "console.log('Watch_Face.ScreenNormal');" + Environment.NewLine;
                 if (Watch_Face.ScreenNormal.Background != null && Watch_Face.ScreenNormal.Background.visible)
                 {
                     string show_level = "ONLY_NORMAL";
@@ -86,6 +87,7 @@ namespace Watch_Face_Editor
                 if (Watch_Face.Editable_Elements != null && Watch_Face.Editable_Elements.display_first && Watch_Face.Editable_Elements.Watchface_edit_group != null &&
                     Watch_Face.Editable_Elements.Watchface_edit_group.Count > 0 && Watch_Face.Editable_Elements.visible)
                 {
+                    items += TabInString(6) + "console.log('Watch_Face.Editable_Elements before AOD');" + Environment.NewLine;
 
                     for (int i = 1; i <= Watch_Face.Editable_Elements.Watchface_edit_group.Count; i++)
                     {
@@ -313,6 +315,7 @@ namespace Watch_Face_Editor
             items = items + Environment.NewLine + Environment.NewLine; 
             if (Watch_Face.ScreenAOD != null)
             {
+                items += TabInString(6) + "console.log('Watch_Face.ScreenAOD');" + Environment.NewLine;
                 if (Watch_Face.ScreenAOD.Background != null && Watch_Face.ScreenAOD.Background.visible)
                 {
                     if (Watch_Face.ScreenAOD.Background.BackgroundColor != null)
@@ -363,6 +366,7 @@ namespace Watch_Face_Editor
             if (Watch_Face.Editable_Elements != null && !Watch_Face.Editable_Elements.display_first && Watch_Face.Editable_Elements.Watchface_edit_group != null &&
                 Watch_Face.Editable_Elements.Watchface_edit_group.Count > 0 && Watch_Face.Editable_Elements.visible)
             {
+                items += TabInString(6) + "console.log('Watch_Face.Editable_Elements');" + Environment.NewLine;
 
                 for (int i = 1; i <= Watch_Face.Editable_Elements.Watchface_edit_group.Count; i++)
                 {
@@ -563,6 +567,8 @@ namespace Watch_Face_Editor
             // редактируемые стрелки
             if (Watch_Face.ElementEditablePointers != null && Watch_Face.ElementEditablePointers.visible)
             {
+                items += TabInString(6) + "console.log('Watch_Face.ElementEditablePointers');" + Environment.NewLine;
+
                 ElementEditablePointers EditablePointers = Watch_Face.ElementEditablePointers;
 
                 string editablePointersOptions = Editable_Pointers_Options(EditablePointers);
@@ -625,6 +631,7 @@ namespace Watch_Face_Editor
 
                             items +=TabInString(6) + "// vibration when connecting or disconnecting" + Environment.NewLine;
                             items += Environment.NewLine + TabInString(6) + "function checkConnection() {" + Environment.NewLine;
+                            items += TabInString(7) + "console.log('checkConnection()');" + Environment.NewLine;
                             items += TabInString(7) + "hmBle.removeListener;" + Environment.NewLine;
                             items += TabInString(7) + "hmBle.addListener(function (status) {" + Environment.NewLine;
 
@@ -684,7 +691,7 @@ namespace Watch_Face_Editor
                                 items += TabInString(7) + "vibrate.scene = scene;" + Environment.NewLine;
                                 items += TabInString(7) + "if(scene < 23 || scene > 25) stopDelay = 1300;" + Environment.NewLine;
                                 items += TabInString(7) + "vibrate.start();" + Environment.NewLine;
-                                items += TabInString(7) + "timer_StopVibrate = timer.createTimer(stopDelay, 3000, stopVibro, {});" + Environment.NewLine;
+                                items += TabInString(7) + "if (scene != 1) timer_StopVibrate = timer.createTimer(stopDelay, 3000, stopVibro, {});" + Environment.NewLine;
                                 items += TabInString(6) + "}" + Environment.NewLine;
                                 items += Environment.NewLine + TabInString(6) + "function stopVibro(){" + Environment.NewLine;
                                 items += TabInString(7) + "vibrate.stop();" + Environment.NewLine;
@@ -835,6 +842,7 @@ namespace Watch_Face_Editor
             // ярлыки
             if (Watch_Face.Shortcuts != null && Watch_Face.Shortcuts.visible)
             {
+                items += TabInString(6) + "console.log('Watch_Face.Shortcuts');" + Environment.NewLine;
                 //string outVariables = "";
                 //string outItems = "";
                 //string out_scale_update_function = "";
@@ -853,8 +861,9 @@ namespace Watch_Face_Editor
             }
 
             // кнопки
-            if (Watch_Face.Buttons != null && Watch_Face.Buttons.enable)
+            if (Watch_Face.Buttons != null && Watch_Face.Buttons.enable && Watch_Face.Buttons.Button != null && Watch_Face.Buttons.Button.Count > 0)
             {
+                items += Environment.NewLine + TabInString(6) + "console.log('Watch_Face.Buttons');";
                 AddElementToJS(Watch_Face.Buttons, "ONLY_NORMAL", ref variables, ref items, ref scale_update_function,
                     ref resume_call, ref pause_call, ref time_update,
                     ref text_update, ref fonts_cache);
@@ -875,6 +884,7 @@ namespace Watch_Face_Editor
                         script_text = Environment.NewLine + TabInString(4) + "// start user_functions.js" + Environment.NewLine + 
                             script_text + Environment.NewLine;
                         script_text = script_text + TabInString(4) + "// end user_functions.js" + Environment.NewLine;
+                        script_text = Environment.NewLine + TabInString(4) + "console.log('user_functions.js');" + script_text;
                         variables = script_text + variables;
                     }
                 }
@@ -891,9 +901,11 @@ namespace Watch_Face_Editor
                     string script_text = File.ReadAllText(fileName);
                     if (script_text.Length > 5)
                     {
-                        script_text = Environment.NewLine + TabInString(8) + "// start resume_call.js" + Environment.NewLine +
+                        resume_call += Environment.NewLine + TabInString(8) + "console.log('resume_call.js');" + Environment.NewLine;
+                        script_text = TabInString(8) + "// start resume_call.js" + Environment.NewLine +
                             script_text + Environment.NewLine;
                         script_text = script_text + TabInString(8) + "// end resume_call.js" + Environment.NewLine;
+
                         resume_call = resume_call + script_text;
                     }
                 }
@@ -910,7 +922,8 @@ namespace Watch_Face_Editor
                     string script_text = File.ReadAllText(fileName);
                     if (script_text.Length > 5)
                     {
-                        script_text = Environment.NewLine + TabInString(8) + "// start pause_call.js" + Environment.NewLine +
+                        pause_call += Environment.NewLine + TabInString(8) + "console.log('pause_call.js');" + Environment.NewLine;
+                        script_text = TabInString(8) + "// start pause_call.js" + Environment.NewLine +
                             script_text + Environment.NewLine;
                         script_text = script_text + TabInString(8) + "// end pause_call.js" + Environment.NewLine;
                         pause_call = pause_call + script_text;
@@ -932,6 +945,7 @@ namespace Watch_Face_Editor
                         script_text = Environment.NewLine + TabInString(6) + "// start user_script_start.js" + Environment.NewLine +
                             script_text + Environment.NewLine;
                         script_text = script_text + TabInString(6) + "// end user_script_start.js" + Environment.NewLine;
+                        script_text = Environment.NewLine + TabInString(6) + "console.log('user_script_start.js');" + script_text;
                         items = script_text + items;
                     }
                 }
@@ -948,7 +962,8 @@ namespace Watch_Face_Editor
                     string script_text = File.ReadAllText(fileName);
                     if (script_text.Length > 5)
                     {
-                        script_text = Environment.NewLine + TabInString(6) + "// start user_script_end.js" + Environment.NewLine +
+                        items += Environment.NewLine + TabInString(6) + "console.log('user_script_end.js');" + Environment.NewLine;
+                        script_text = TabInString(6) + "// start user_script_end.js" + Environment.NewLine +
                             script_text + Environment.NewLine;
                         script_text = script_text + TabInString(6) + "// end user_script_end.js" + Environment.NewLine;
                         items = items + script_text;
@@ -969,6 +984,7 @@ namespace Watch_Face_Editor
                 //if (items.IndexOf("timeSensor =") >= 0) variables += TabInString(4) + "let timeSensor = ''" + Environment.NewLine;
 
                 items += Environment.NewLine + TabInString(6) + "function time_update(updateHour = false, updateMinute = false) {";
+                items += Environment.NewLine + TabInString(7) + "console.log('time_update()');";
                 items += Environment.NewLine + TabInString(7) + "let hour = timeSensor.hour;";
                 items += Environment.NewLine + TabInString(7) + "let minute = timeSensor.minute;";
                 items += Environment.NewLine + TabInString(7) + "let second = timeSensor.second;";
@@ -982,6 +998,7 @@ namespace Watch_Face_Editor
                     items += Environment.NewLine + TabInString(6) + "let screenType = hmSetting.getScreenType();";
 
                 items += Environment.NewLine + TabInString(6) + "function text_update() {";
+                items += Environment.NewLine + TabInString(7) + "console.log('text_update()');";
                 items += Environment.NewLine + text_update;
                 items += Environment.NewLine + TabInString(6) + "};" + Environment.NewLine;
             }
@@ -991,12 +1008,14 @@ namespace Watch_Face_Editor
                 if (scale_update_function.Length > 5)
                 {
                     items += Environment.NewLine + TabInString(6) + "function scale_call() {";
+                    items += Environment.NewLine + TabInString(7) + "console.log('scale_call()');";
                     items += Environment.NewLine + scale_update_function;
                     items += Environment.NewLine + TabInString(6) + "};" + Environment.NewLine; 
                 }
                 items += Environment.NewLine + TabInString(6) +
                     "const widgetDelegate = hmUI.createWidget(hmUI.widget.WIDGET_DELEGATE, {";
                 items += Environment.NewLine + TabInString(7) + "resume_call: (function () {";
+                items += Environment.NewLine + TabInString(8) + "console.log('resume_call()');";
                 if (scale_update_function.Length > 5) items += Environment.NewLine + TabInString(8) + "scale_call();";
                 if (time_update.Length > 5) items += Environment.NewLine + TabInString(8) + "time_update(true, true);";
                 if (text_update.Length > 5) items += Environment.NewLine + TabInString(8) + "text_update();";
@@ -1005,6 +1024,7 @@ namespace Watch_Face_Editor
                 if (pause_call.Length > 0)
                 {
                     items += Environment.NewLine + TabInString(7) + "pause_call: (function () {";
+                    items += Environment.NewLine + TabInString(8) + "console.log('pause_call()');";
                     if (pause_call.Length > 0) items += Environment.NewLine + pause_call;
                     items += Environment.NewLine + TabInString(7) + "}),";
                 }
@@ -11399,7 +11419,7 @@ namespace Watch_Face_Editor
             if (img.Length > 0)
             {
                 int imgPosition = ListImages.IndexOf(img);
-                if (imgPosition + count - 1 > ListImages.Count)
+                if (imgPosition + count - 1 > ListImages.Count || imgPosition < 0)
                 {
                     MessageBox.Show(Properties.FormStrings.Message_ImageCount_Error + Environment.NewLine + 
                         "type: hmUI.data_type." + type, Properties.FormStrings.Message_Warning_Caption,

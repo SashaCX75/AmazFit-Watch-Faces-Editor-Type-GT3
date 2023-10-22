@@ -2641,110 +2641,6 @@ namespace Watch_Face_Editor
                 Watch_Face.ScreenNormal.Background = new Background();
                 Watch_Face.ScreenNormal.Background.BackgroundColor = new hmUI_widget_FILL_RECT();
 
-                // TODO :: Check
-                //switch (ProgramSettings.Watch_Model)
-                //{
-                //    case "GTR 3":
-                //        Watch_Face.WatchFace_Info.DeviceName = "GTR3";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
-                //        break;
-                //    case "GTR 3 Pro":
-                //        Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 480;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 480;
-                //        break;
-                //    case "GTS 3":
-                //        Watch_Face.WatchFace_Info.DeviceName = "GTS3";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
-                //        break;
-                //    case "T-Rex 2":
-                //        Watch_Face.WatchFace_Info.DeviceName = "T_Rex_2";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
-                //        break;
-                //    case "T-Rex Ultra":
-                //        Watch_Face.WatchFace_Info.DeviceName = "T_Rex_Ultra";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
-                //        break;
-                //    case "GTR 4":
-                //        Watch_Face.WatchFace_Info.DeviceName = "GTR4";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 466;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 466;
-                //        break;
-                //    case "Amazfit Band 7":
-                //        Watch_Face.WatchFace_Info.DeviceName = "Amazfit_Band_7";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 368;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 194;
-                //        break;
-                //    case "GTS 4 mini":
-                //        Watch_Face.WatchFace_Info.DeviceName = "GTS4_mini";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 384;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 336;
-                //        break;
-                //    case "Falcon":
-                //        Watch_Face.WatchFace_Info.DeviceName = "Falcon";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 416;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 416;
-                //        break;
-                //    case "GTR mini":
-                //        Watch_Face.WatchFace_Info.DeviceName = "GTR_mini";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 416;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 416;
-                //        break;
-                //    case "GTS 4":
-                //        Watch_Face.WatchFace_Info.DeviceName = "GTS4";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
-                //        break;
-                //}
-
-                /* // Startblock : Kartun
-                 Logger.WriteLine($"Starting new project for {ProgramSettings.Watch_Model}");
-                 Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
-                 Logger.WriteLine($"Loaded configuration: {currPlatform}");
-                 Watch_Face.WatchFace_Info.DeviceName = currPlatform.int_id;
-                 Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                 Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                 Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                 Watch_Face.ScreenNormal.Background.BackgroundColor.h = currPlatform.background.h;
-                 Watch_Face.ScreenNormal.Background.BackgroundColor.w = currPlatform.background.w;
-                 // Endblock : Kartun*/
                 Watch_Face.WatchFace_Info.DeviceName = ProgramSettings.Watch_Model; // отказываемся от int_id
                 Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
                 Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
@@ -8458,6 +8354,9 @@ namespace Watch_Face_Editor
                 app.platforms.Add(new Platform() { name = SelectedModel.name, deviceSource = id });
             }
 
+#if DEBUG
+            app.packageInfo.mode = "development";
+#endif
 
             string appText = JsonConvert.SerializeObject(app, Formatting.Indented, new JsonSerializerSettings
             {
@@ -8863,6 +8762,7 @@ namespace Watch_Face_Editor
                 // читаем данные из текста и преобразуем их в json
                 string index_js = @"\watchface\index.js";
                 App_WatchFace appJson = null;
+                bool getID = false;
                 if (File.Exists(tempDir + @"\app.json"))  // читаем путь к файлу с кодом циферблата
                 {
                     string appText = File.ReadAllText(tempDir + @"\app.json");
@@ -8884,7 +8784,7 @@ namespace Watch_Face_Editor
                             if (appJson.platforms != null && appJson.platforms.Count > 0)
                             {
                                 int id = appJson.platforms[0].deviceSource;
-                                SetModelByID(id);
+                                getID = SetModelByID(id);
                             }
                         }
                     }
@@ -8893,6 +8793,15 @@ namespace Watch_Face_Editor
                         MessageBox.Show(ex.Message);
                     }
                 }
+
+                ///////////////
+                string user_functions = "";
+                string user_script_start = "";
+                string user_script_end = "";
+                string resume_call = "";
+                string pause_call = "";
+
+                JSToJson(tempDir + index_js, out user_functions, out user_script_start, out user_script_end, out resume_call, out pause_call); // создаем новый json файл циферблата
 
                 // подготовка к чтению файлов assets
                 progressBar1.Value = 0;
@@ -8965,41 +8874,43 @@ namespace Watch_Face_Editor
                 //}
                 ///////////////////////////
                 PreviewView = true;
-                string user_functions = "";
-                string user_script_start = "";
-                string user_script_end = "";
-                string resume_call = "";
-                string pause_call = "";
+                //string user_functions = "";
+                //string user_script_start = "";
+                //string user_script_end = "";
+                //string resume_call = "";
+                //string pause_call = "";
 
-                JSToJson(tempDir + index_js, out user_functions, out user_script_start, out user_script_end, out resume_call, out pause_call); // создаем новый json файл циферблата
+                //JSToJson(tempDir + index_js, out user_functions, out user_script_start, out user_script_end, out resume_call, out pause_call); // создаем новый json файл циферблата
                 if (Watch_Face != null && Watch_Face.ScreenNormal != null)
                 {
-                    /*if (File.Exists(tempDir + @"\app.json"))
+                    //if (File.Exists(tempDir + @"\app.json"))
+                    //{
+                    //    string appText = File.ReadAllText(tempDir + @"\app.json");
+                    try
                     {
-                        string appText = File.ReadAllText(tempDir + @"\app.json");
-                        try
+                        //App_WatchFace appJson = JsonConvert.DeserializeObject<App_WatchFace>(appText, new JsonSerializerSettings
+                        //{
+                        //    DefaultValueHandling = DefaultValueHandling.Ignore,
+                        //    NullValueHandling = NullValueHandling.Ignore
+                        //});
+                        if (appJson != null && appJson.app != null)
                         {
-                            App_WatchFace appJson = JsonConvert.DeserializeObject<App_WatchFace>(appText, new JsonSerializerSettings
+                            if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
+                            if (appJson.app.appId > 1000) Watch_Face.WatchFace_Info.WatchFaceId = appJson.app.appId;
+                            else
                             {
-                                DefaultValueHandling = DefaultValueHandling.Ignore,
-                                NullValueHandling = NullValueHandling.Ignore
-                            });
-                            if(appJson != null && appJson.app != null)
+                                Random rnd = new Random();
+                                int ID = rnd.Next(1000, 10000000);
+                                Watch_Face.WatchFace_Info.WatchFaceId = ID;
+                            }
+                            if (appJson.app.icon != null && appJson.app.icon.Length > 3)
+                                Watch_Face.WatchFace_Info.Preview = Path.GetFileNameWithoutExtension(appJson.app.icon);
+
+                            if (appJson.app.appName != null && appJson.app.appName.Length > 0)
+                                projectName = appJson.app.appName;
+
+                            if (!getID)
                             {
-                                if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
-                                if (appJson.app.appId > 1000) Watch_Face.WatchFace_Info.WatchFaceId = appJson.app.appId;
-                                else
-                                {
-                                    Random rnd = new Random();
-                                    int ID = rnd.Next(1000, 10000000);
-                                    Watch_Face.WatchFace_Info.WatchFaceId = ID;
-                                }
-                                if (appJson.app.icon != null && appJson.app.icon.Length > 3)
-                                    Watch_Face.WatchFace_Info.Preview = Path.GetFileNameWithoutExtension(appJson.app.icon);
-
-                                if (appJson.app.appName != null && appJson.app.appName.Length > 0)
-                                    projectName = appJson.app.appName;
-
                                 int width = 0;
 
                                 if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
@@ -9063,7 +8974,7 @@ namespace Watch_Face_Editor
 
                                     default:
                                         Background background = Watch_Face.ScreenNormal.Background;
-                                        if (background == null || 
+                                        if (background == null ||
                                             (background.BackgroundImage == null && background.Editable_Background == null))
                                         {
                                             if (background == null) background = new Background();
@@ -9072,7 +8983,7 @@ namespace Watch_Face_Editor
                                             background.BackgroundColor.color = ColorToString(Color.Black);
                                             background.BackgroundColor.x = 0;
                                             background.BackgroundColor.y = 0;
-                                            *//*switch (ProgramSettings.Watch_Model)
+                                            switch (ProgramSettings.Watch_Model)
                                             {
                                                 case "GTR 3":
                                                     background.BackgroundColor.h = 454;
@@ -9134,7 +9045,7 @@ namespace Watch_Face_Editor
                                                     background.BackgroundColor.w = 454;
                                                     //Watch_Face.WatchFace_Info.DeviceName = "GTR3";
                                                     break;
-                                            }*//*
+                                            }
                                             Watch_Face.WatchFace_Info.DeviceName = ProgramSettings.Watch_Model;
                                             Logger.WriteLine($"Unpack Zip for {ProgramSettings.Watch_Model}");
                                             Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
@@ -9143,15 +9054,15 @@ namespace Watch_Face_Editor
                                             background.BackgroundColor.w = currPlatform.background.w;
 
                                             background.BackgroundImage = null;
-                                            Watch_Face.ScreenNormal.Background = background; 
+                                            Watch_Face.ScreenNormal.Background = background;
                                         }
                                         else
                                         {
-                                            if(background.Editable_Background != null && 
+                                            if (background.Editable_Background != null &&
                                                 background.Editable_Background.BackgroundList != null &&
                                                 background.Editable_Background.BackgroundList.Count > 0)
                                             {
-                                                *//*int h = 454;
+                                                int h = 454;
                                                 int w = 454;
                                                 switch (ProgramSettings.Watch_Model)
                                                 {
@@ -9217,7 +9128,7 @@ namespace Watch_Face_Editor
                                                         break;
                                                 }
                                                 background.Editable_Background.h = h;
-                                                background.Editable_Background.w = w;*//*
+                                                background.Editable_Background.w = w;
                                                 Watch_Face.WatchFace_Info.DeviceName = ProgramSettings.Watch_Model;
                                                 Logger.WriteLine($"Unpack Zip for {ProgramSettings.Watch_Model}");
                                                 Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
@@ -9227,7 +9138,7 @@ namespace Watch_Face_Editor
                                             }
                                             else if (background.BackgroundImage != null)
                                             {
-                                                *//*switch (ProgramSettings.Watch_Model)
+                                                switch (ProgramSettings.Watch_Model)
                                                 {
                                                     case "GTR 3":
                                                         background.BackgroundImage.h = 454;
@@ -9289,7 +9200,7 @@ namespace Watch_Face_Editor
                                                         background.BackgroundImage.w = 454;
                                                         Watch_Face.WatchFace_Info.DeviceName = "GTR3";
                                                         break;
-                                                }*//*
+                                                }
                                                 Watch_Face.WatchFace_Info.DeviceName = ProgramSettings.Watch_Model;
                                                 Logger.WriteLine($"Unpack Zip for {ProgramSettings.Watch_Model}");
                                                 Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
@@ -9313,7 +9224,7 @@ namespace Watch_Face_Editor
                                     backgroundEmpty.BackgroundColor.color = ColorToString(Color.Black);
                                     backgroundEmpty.BackgroundColor.x = 0;
                                     backgroundEmpty.BackgroundColor.y = 0;
-                                    *//*switch (ProgramSettings.Watch_Model)
+                                    switch (ProgramSettings.Watch_Model)
                                     {
                                         case "GTR 3":
                                             backgroundEmpty.BackgroundColor.h = 454;
@@ -9375,7 +9286,7 @@ namespace Watch_Face_Editor
                                             backgroundEmpty.BackgroundColor.w = 454;
                                             Watch_Face.WatchFace_Info.DeviceName = "GTR3";
                                             break;
-                                    }*//*
+                                    }
                                     Watch_Face.WatchFace_Info.DeviceName = ProgramSettings.Watch_Model;
                                     Logger.WriteLine($"Unpack Zip for {ProgramSettings.Watch_Model}");
                                     Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
@@ -9386,12 +9297,18 @@ namespace Watch_Face_Editor
                                     Watch_Face.ScreenNormal.Background = backgroundEmpty;
                                 }
                             }
+                            else
+                            {
+                                if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
+                                Watch_Face.WatchFace_Info.DeviceName = ProgramSettings.Watch_Model;
+                            }
                         }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show(ex.Message);
-                        }
-                    }*/
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                    //}
 
                     if (appJson != null && appJson.app != null)
                     {
@@ -9469,7 +9386,7 @@ namespace Watch_Face_Editor
 #endif
         }
 
-        private void SetModelByID (int id)
+        private bool SetModelByID (int id)
         {
             foreach (KeyValuePair<string, Classes.AmazfitPlatform> config in AvailableConfigurations)
             {
@@ -9484,11 +9401,14 @@ namespace Watch_Face_Editor
                             if (AvailableConfigurations.ContainsKey(ProgramSettings.Watch_Model))
                             {
                                 comboBox_watch_model.Text = ProgramSettings.Watch_Model;
+                                //Watch_Face.WatchFace_Info.DeviceName = ProgramSettings.Watch_Model;
+                                return true;
                             }
                         }
                     }
                 }
             }
+            return false;
         }
 
         /// <summary>Получаем список файлов в папке</summary>
@@ -17569,6 +17489,14 @@ namespace Watch_Face_Editor
                         comboBox_ConvertingInput_Model.Text = "390 (Cheetah (Square))";
                         comboBox_ConvertingOutput_Model.Text = "336 (GTS 4 mini)";
                         break;
+                    case "Active":
+                        comboBox_ConvertingInput_Model.Text = "390 (Active)";
+                        comboBox_ConvertingOutput_Model.Text = "336 (GTS 4 mini)";
+                        break;
+                    case "Active Edge":
+                        comboBox_ConvertingInput_Model.Text = "360 (Active Edge)";
+                        comboBox_ConvertingOutput_Model.Text = "480 (GTR 3 Pro)";
+                        break;
                     default:
                         comboBox_ConvertingInput_Model.SelectedIndex = 0;
                         comboBox_ConvertingOutput_Model.SelectedIndex = 0;
@@ -17599,24 +17527,22 @@ namespace Watch_Face_Editor
                 case "336 (GTS 4 mini)":
                     numericUpDown_ConvertingInput_Custom.Value = 336;
                     break;
+                case "360 (Active Edge)":
+                    numericUpDown_ConvertingInput_Custom.Value = 360;
+                    break;
                 case "390 (GTS 3)":
+                case "390 (GTS 4)":
+                case "390 (Cheetah (Square))":
+                case "390 (Active)":
                     numericUpDown_ConvertingInput_Custom.Value = 390;
                     break;
                 case "416 (Falcon)":
-                    numericUpDown_ConvertingInput_Custom.Value = 416;
-                    break;
                 case "416 (GTR mini)":
                     numericUpDown_ConvertingInput_Custom.Value = 416;
                     break;
                 case "454 (GTR 3)":
-                    numericUpDown_ConvertingInput_Custom.Value = 454;
-                    break;
                 case "454 (T-Rex 2)":
-                    numericUpDown_ConvertingInput_Custom.Value = 454;
-                    break;
                 case "454 (T-Rex Ultra)":
-                    numericUpDown_ConvertingInput_Custom.Value = 454;
-                    break;
                 case "454 (Cheetah)":
                     numericUpDown_ConvertingInput_Custom.Value = 454;
                     break;
@@ -17624,17 +17550,7 @@ namespace Watch_Face_Editor
                     numericUpDown_ConvertingInput_Custom.Value = 466;
                     break;
                 case "480 (GTR 3 Pro)":
-                    numericUpDown_ConvertingInput_Custom.Value = 480;
-                    break;
                 case "480 (Cheetah Pro)":
-                    numericUpDown_ConvertingInput_Custom.Value = 480;
-                    break;
-                case "390 (GTS 4)":
-                    numericUpDown_ConvertingInput_Custom.Value = 390;
-                    break;
-                case "390 (Cheetah (Square))":
-                    numericUpDown_ConvertingInput_Custom.Value = 390;
-                    break;
                 case "480 (Balance)":
                     numericUpDown_ConvertingInput_Custom.Value = 480;
                     break;
@@ -17653,24 +17569,22 @@ namespace Watch_Face_Editor
                 case "336 (GTS 4 mini)":
                     numericUpDown_ConvertingOutput_Custom.Value = 336;
                     break;
+                case "360 (Active Edge)":
+                    numericUpDown_ConvertingOutput_Custom.Value = 360;
+                    break;
                 case "390 (GTS 3)":
+                case "390 (GTS 4)":
+                case "390 (Cheetah (Square))":
+                case "390 (Active)":
                     numericUpDown_ConvertingOutput_Custom.Value = 390;
                     break;
                 case "416 (Falcon)":
-                    numericUpDown_ConvertingOutput_Custom.Value = 416;
-                    break;
                 case "416 (GTR mini)":
                     numericUpDown_ConvertingOutput_Custom.Value = 416;
                     break;
                 case "454 (GTR 3)":
-                    numericUpDown_ConvertingOutput_Custom.Value = 454;
-                    break;
                 case "454 (T-Rex 2)":
-                    numericUpDown_ConvertingOutput_Custom.Value = 454;
-                    break;
                 case "454 (T-Rex Ultra)":
-                    numericUpDown_ConvertingOutput_Custom.Value = 454;
-                    break;
                 case "454 (Cheetah)":
                     numericUpDown_ConvertingOutput_Custom.Value = 454;
                     break;
@@ -17678,17 +17592,7 @@ namespace Watch_Face_Editor
                     numericUpDown_ConvertingOutput_Custom.Value = 466;
                     break;
                 case "480 (GTR 3 Pro)":
-                    numericUpDown_ConvertingOutput_Custom.Value = 480;
-                    break;
                 case "480 (Cheetah Pro)":
-                    numericUpDown_ConvertingOutput_Custom.Value = 480;
-                    break;
-                case "390 (GTS 4)":
-                    numericUpDown_ConvertingOutput_Custom.Value = 390;
-                    break;
-                case "390 (Cheetah (Square))":
-                    numericUpDown_ConvertingOutput_Custom.Value = 390;
-                    break;
                 case "480 (Balance)":
                     numericUpDown_ConvertingOutput_Custom.Value = 480;
                     break;
@@ -17715,6 +17619,10 @@ namespace Watch_Face_Editor
                         suffix = "_GTS_4_mini";
                         DeviceName = "GTS 4 mini";
                         break;
+                    case "360 (Active Edge)":
+                        suffix = "_Active_Edge";
+                        DeviceName = "Active Edge";
+                        break;
                     case "390 (GTS 3)":
                         suffix = "_GTS_3";
                         DeviceName = "GTS 3";
@@ -17722,6 +17630,10 @@ namespace Watch_Face_Editor
                     case "390 (GTS 4)":
                         suffix = "_GTS_4";
                         DeviceName = "GTS 4";
+                        break;
+                    case "390 (Active))":
+                        suffix = "_Active";
+                        DeviceName = "Active";
                         break;
                     case "390 (Cheetah (Square))":
                         suffix = "_Cheetah_(Square)";
