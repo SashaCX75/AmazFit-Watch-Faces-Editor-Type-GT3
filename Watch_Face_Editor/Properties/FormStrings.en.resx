@@ -207,6 +207,12 @@
   <data name="Message_AnimationAOD_Text" xml:space="preserve">
     <value>You cannot add animation to the AOD screen.</value>
   </data>
+  <data name="Message_ARGB_Line1" xml:space="preserve">
+    <value>Converting images to ARGB format takes longer.</value>
+  </data>
+  <data name="Message_ARGB_Line2" xml:space="preserve">
+    <value>Are you sure you want to convert your images to ARGB format?</value>
+  </data>
   <data name="Message_ConvertingCompleted_Text" xml:space="preserve">
     <value>A new watch face has been created.</value>
   </data>

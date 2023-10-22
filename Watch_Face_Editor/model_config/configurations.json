@@ -484,6 +484,46 @@
     "fixSize": false,
     "versionOS": 2
   },
+  "Active Edge": {
+    "name": "Amazfit Active Edge",
+    "designWidth": 360,
+    "deviceSource_ids": [
+      8388864,
+      8388865
+    ],
+    "background": {
+      "w": 360,
+      "h": 360
+    },
+    "scaling": {
+      "scaling_0_5": {
+        "w": 182,
+        "h": 182
+      },
+      "scaling_1_0": {
+        "w": 362,
+        "h": 362
+      },
+      "scaling_1_5": {
+        "w": 542,
+        "h": 542
+      },
+      "scaling_2_0": {
+        "w": 722,
+        "h": 722
+      },
+      "scaling_2_5": {
+        "w": 901,
+        "h": 901
+      }
+    },
+    "maskImage": "mask_active_edge.png",
+    "watchSkin": "",
+    "previewHeight": 243,
+    "colorScheme": 3,
+    "fixSize": false,
+    "versionOS": 2
+  },
   "Cheetah (Square)": {
     "name": "Amazfit Cheetah (Square)",
     "designWidth": 390,
@@ -561,6 +601,46 @@
     "previewHeight": 306,
     "colorScheme": 1,
     "fixSize": true,
+    "versionOS": 2.1
+  },
+  "Active": {
+    "name": "Amazfit Active",
+    "designWidth": 390,
+    "deviceSource_ids": [
+      8323328,
+      8323329
+    ],
+    "background": {
+      "w": 390,
+      "h": 450
+    },
+    "scaling": {
+      "scaling_0_5": {
+        "w": 198,
+        "h": 228
+      },
+      "scaling_1_0": {
+        "w": 392,
+        "h": 452
+      },
+      "scaling_1_5": {
+        "w": 587,
+        "h": 677
+      },
+      "scaling_2_0": {
+        "w": 781,
+        "h": 901
+      },
+      "scaling_2_5": {
+        "w": 841,
+        "h": 961
+      }
+    },
+    "maskImage": "mask_gts_3.png",
+    "watchSkin": "WatchSkin_GTS_3.json",
+    "previewHeight": 306,
+    "colorScheme": 3,
+    "fixSize": false,
     "versionOS": 2.1
   },
   "Bip 5": {
