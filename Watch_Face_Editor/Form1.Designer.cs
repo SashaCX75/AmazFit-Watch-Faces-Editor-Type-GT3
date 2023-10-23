@@ -37,7 +37,6 @@ namespace Watch_Face_Editor
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage_Edit = new System.Windows.Forms.TabPage();
-            this.button_SaveAs = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView_ImagesList = new System.Windows.Forms.DataGridView();
             this.Number = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,10 +51,16 @@ namespace Watch_Face_Editor
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.panel_imageButton = new System.Windows.Forms.Panel();
             this.button_Add_Anim_Images = new System.Windows.Forms.Button();
             this.button_Add_Images = new System.Windows.Forms.Button();
-            this.button_SaveJson = new System.Windows.Forms.Button();
+            this.panel_projectButton = new System.Windows.Forms.Panel();
+            this.button_New_Project = new System.Windows.Forms.Button();
+            this.button_JSON = new System.Windows.Forms.Button();
+            this.button_SaveAs = new System.Windows.Forms.Button();
+            this.panel_open_saveJson = new System.Windows.Forms.Panel();
             this.button_OpenDir = new System.Windows.Forms.Button();
+            this.button_SaveJson = new System.Windows.Forms.Button();
             this.tabControl_Edit_SetShow = new System.Windows.Forms.TabControl();
             this.tabPage_Edit_Elements = new System.Windows.Forms.TabPage();
             this.groupBox_AddElemets = new System.Windows.Forms.GroupBox();
@@ -193,8 +198,6 @@ namespace Watch_Face_Editor
             this.button_JsonPreview_Random = new System.Windows.Forms.Button();
             this.button_JsonPreview_Read = new System.Windows.Forms.Button();
             this.button_JsonPreview_Write = new System.Windows.Forms.Button();
-            this.button_New_Project = new System.Windows.Forms.Button();
-            this.button_JSON = new System.Windows.Forms.Button();
             this.tabPageConverting = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
             this.label_ConvertingHelp03 = new System.Windows.Forms.Label();
@@ -302,15 +305,15 @@ namespace Watch_Face_Editor
             this.comboBox_watch_model = new System.Windows.Forms.ComboBox();
             this.label_watch_model = new System.Windows.Forms.Label();
             this.checkBox_Show_Buttons = new System.Windows.Forms.CheckBox();
-            this.panel_open_saveJson = new System.Windows.Forms.Panel();
-            this.panel_projectButton = new System.Windows.Forms.Panel();
-            this.panel_imageButton = new System.Windows.Forms.Panel();
             this.tabControl1.SuspendLayout();
             this.tabPage_Edit.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_ImagesList)).BeginInit();
             this.contextMenuStrip_RemoveImage.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_AnimImagesList)).BeginInit();
+            this.panel_imageButton.SuspendLayout();
+            this.panel_projectButton.SuspendLayout();
+            this.panel_open_saveJson.SuspendLayout();
             this.tabControl_Edit_SetShow.SuspendLayout();
             this.tabPage_Edit_Elements.SuspendLayout();
             this.groupBox_AddElemets.SuspendLayout();
@@ -386,9 +389,6 @@ namespace Watch_Face_Editor
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_qr)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Preview)).BeginInit();
-            this.panel_open_saveJson.SuspendLayout();
-            this.panel_projectButton.SuspendLayout();
-            this.panel_imageButton.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -410,13 +410,6 @@ namespace Watch_Face_Editor
             this.tabPage_Edit.Controls.Add(this.tabControl_Edit_SetShow);
             resources.ApplyResources(this.tabPage_Edit, "tabPage_Edit");
             this.tabPage_Edit.Name = "tabPage_Edit";
-            // 
-            // button_SaveAs
-            // 
-            resources.ApplyResources(this.button_SaveAs, "button_SaveAs");
-            this.button_SaveAs.Name = "button_SaveAs";
-            this.button_SaveAs.UseVisualStyleBackColor = true;
-            this.button_SaveAs.Click += new System.EventHandler(this.button_SaveAs_Click);
             // 
             // panel1
             // 
@@ -564,6 +557,13 @@ namespace Watch_Face_Editor
             this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
             this.dataGridViewImageColumn2.ReadOnly = true;
             // 
+            // panel_imageButton
+            // 
+            resources.ApplyResources(this.panel_imageButton, "panel_imageButton");
+            this.panel_imageButton.Controls.Add(this.button_Add_Anim_Images);
+            this.panel_imageButton.Controls.Add(this.button_Add_Images);
+            this.panel_imageButton.Name = "panel_imageButton";
+            // 
             // button_Add_Anim_Images
             // 
             resources.ApplyResources(this.button_Add_Anim_Images, "button_Add_Anim_Images");
@@ -578,12 +578,41 @@ namespace Watch_Face_Editor
             this.button_Add_Images.UseVisualStyleBackColor = true;
             this.button_Add_Images.Click += new System.EventHandler(this.button_Add_Images_Click);
             // 
-            // button_SaveJson
+            // panel_projectButton
             // 
-            resources.ApplyResources(this.button_SaveJson, "button_SaveJson");
-            this.button_SaveJson.Name = "button_SaveJson";
-            this.button_SaveJson.UseVisualStyleBackColor = true;
-            this.button_SaveJson.Click += new System.EventHandler(this.button_SaveJson_Click);
+            resources.ApplyResources(this.panel_projectButton, "panel_projectButton");
+            this.panel_projectButton.Controls.Add(this.button_New_Project);
+            this.panel_projectButton.Controls.Add(this.button_JSON);
+            this.panel_projectButton.Controls.Add(this.button_SaveAs);
+            this.panel_projectButton.Name = "panel_projectButton";
+            // 
+            // button_New_Project
+            // 
+            resources.ApplyResources(this.button_New_Project, "button_New_Project");
+            this.button_New_Project.Name = "button_New_Project";
+            this.button_New_Project.UseVisualStyleBackColor = true;
+            this.button_New_Project.Click += new System.EventHandler(this.button_New_Project_Click_New);
+            // 
+            // button_JSON
+            // 
+            resources.ApplyResources(this.button_JSON, "button_JSON");
+            this.button_JSON.Name = "button_JSON";
+            this.button_JSON.UseVisualStyleBackColor = true;
+            this.button_JSON.Click += new System.EventHandler(this.button_JSON_Click);
+            // 
+            // button_SaveAs
+            // 
+            resources.ApplyResources(this.button_SaveAs, "button_SaveAs");
+            this.button_SaveAs.Name = "button_SaveAs";
+            this.button_SaveAs.UseVisualStyleBackColor = true;
+            this.button_SaveAs.Click += new System.EventHandler(this.button_SaveAs_Click);
+            // 
+            // panel_open_saveJson
+            // 
+            this.panel_open_saveJson.Controls.Add(this.button_OpenDir);
+            this.panel_open_saveJson.Controls.Add(this.button_SaveJson);
+            resources.ApplyResources(this.panel_open_saveJson, "panel_open_saveJson");
+            this.panel_open_saveJson.Name = "panel_open_saveJson";
             // 
             // button_OpenDir
             // 
@@ -591,6 +620,13 @@ namespace Watch_Face_Editor
             this.button_OpenDir.Name = "button_OpenDir";
             this.button_OpenDir.UseVisualStyleBackColor = true;
             this.button_OpenDir.Click += new System.EventHandler(this.button_OpenDir_Click);
+            // 
+            // button_SaveJson
+            // 
+            resources.ApplyResources(this.button_SaveJson, "button_SaveJson");
+            this.button_SaveJson.Name = "button_SaveJson";
+            this.button_SaveJson.UseVisualStyleBackColor = true;
+            this.button_SaveJson.Click += new System.EventHandler(this.button_SaveJson_Click);
             // 
             // tabControl_Edit_SetShow
             // 
@@ -1948,20 +1984,6 @@ namespace Watch_Face_Editor
             this.button_JsonPreview_Write.UseVisualStyleBackColor = true;
             this.button_JsonPreview_Write.Click += new System.EventHandler(this.button_JsonPreview_Write_Click_1);
             // 
-            // button_New_Project
-            // 
-            resources.ApplyResources(this.button_New_Project, "button_New_Project");
-            this.button_New_Project.Name = "button_New_Project";
-            this.button_New_Project.UseVisualStyleBackColor = true;
-            this.button_New_Project.Click += new System.EventHandler(this.button_New_Project_Click_New);
-            // 
-            // button_JSON
-            // 
-            resources.ApplyResources(this.button_JSON, "button_JSON");
-            this.button_JSON.Name = "button_JSON";
-            this.button_JSON.UseVisualStyleBackColor = true;
-            this.button_JSON.Click += new System.EventHandler(this.button_JSON_Click);
-            // 
             // tabPageConverting
             // 
             this.tabPageConverting.BackColor = System.Drawing.SystemColors.Control;
@@ -2913,28 +2935,6 @@ namespace Watch_Face_Editor
             this.checkBox_Show_Buttons.UseVisualStyleBackColor = true;
             this.checkBox_Show_Buttons.CheckedChanged += new System.EventHandler(this.checkBox_VisibleSettings_CheckedChanged);
             // 
-            // panel_open_saveJson
-            // 
-            this.panel_open_saveJson.Controls.Add(this.button_OpenDir);
-            this.panel_open_saveJson.Controls.Add(this.button_SaveJson);
-            resources.ApplyResources(this.panel_open_saveJson, "panel_open_saveJson");
-            this.panel_open_saveJson.Name = "panel_open_saveJson";
-            // 
-            // panel_projectButton
-            // 
-            resources.ApplyResources(this.panel_projectButton, "panel_projectButton");
-            this.panel_projectButton.Controls.Add(this.button_New_Project);
-            this.panel_projectButton.Controls.Add(this.button_JSON);
-            this.panel_projectButton.Controls.Add(this.button_SaveAs);
-            this.panel_projectButton.Name = "panel_projectButton";
-            // 
-            // panel_imageButton
-            // 
-            resources.ApplyResources(this.panel_imageButton, "panel_imageButton");
-            this.panel_imageButton.Controls.Add(this.button_Add_Anim_Images);
-            this.panel_imageButton.Controls.Add(this.button_Add_Images);
-            this.panel_imageButton.Name = "panel_imageButton";
-            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
@@ -2978,6 +2978,9 @@ namespace Watch_Face_Editor
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_ImagesList)).EndInit();
             this.contextMenuStrip_RemoveImage.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_AnimImagesList)).EndInit();
+            this.panel_imageButton.ResumeLayout(false);
+            this.panel_projectButton.ResumeLayout(false);
+            this.panel_open_saveJson.ResumeLayout(false);
             this.tabControl_Edit_SetShow.ResumeLayout(false);
             this.tabPage_Edit_Elements.ResumeLayout(false);
             this.groupBox_AddElemets.ResumeLayout(false);
@@ -3105,9 +3108,6 @@ namespace Watch_Face_Editor
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_qr)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Preview)).EndInit();
-            this.panel_open_saveJson.ResumeLayout(false);
-            this.panel_projectButton.ResumeLayout(false);
-            this.panel_imageButton.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

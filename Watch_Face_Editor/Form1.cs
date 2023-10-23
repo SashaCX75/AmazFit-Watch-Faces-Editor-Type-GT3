@@ -17804,7 +17804,7 @@ namespace Watch_Face_Editor
 
         private void linkLabel_py_amazfit_tools_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/SashaCX75/ImageToGTR3/releases/tag/v1.1");
+            System.Diagnostics.Process.Start("https://github.com/SashaCX75/ImageToGTR3_v2/releases/tag/ImageToZeppOS");
         }
 
         private void linkLabel_buymeacoffee_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
