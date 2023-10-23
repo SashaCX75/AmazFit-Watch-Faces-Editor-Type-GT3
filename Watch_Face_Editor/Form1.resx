@@ -7095,13 +7095,13 @@ Ukrainian - kartoris82</value>
     <value>235, 165</value>
   </data>
   <data name="linkLabel_py_amazfit_tools.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 13</value>
+    <value>102, 13</value>
   </data>
   <data name="linkLabel_py_amazfit_tools.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
   </data>
   <data name="linkLabel_py_amazfit_tools.Text" xml:space="preserve">
-    <value>ImageToGTR3</value>
+    <value>ImageToZeppOS</value>
   </data>
   <data name="&gt;&gt;linkLabel_py_amazfit_tools.Name" xml:space="preserve">
     <value>linkLabel_py_amazfit_tools</value>
@@ -7844,7 +7844,7 @@ Ukrainian - kartoris82</value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
-        DQAAAk1TRnQBSQFMAgEBBgEAAZQBOgGUAToBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAAZwBOgGcAToBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
