@@ -16,6 +16,7 @@ using System.Globalization;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Runtime.InteropServices.ComTypes;
@@ -40,7 +41,7 @@ namespace Watch_Face_Editor
         bool Settings_Load; // включать при обновлении настроек для выключения перерисовки
         bool JSON_Modified = false; // JSON файл был изменен
         string FileName; // Запоминает имя для диалогов
-        string FullFileDir; // Запоминает папку проекта
+        string ProjectDir; // Запоминает папку проекта
         public static Program_Settings ProgramSettings;
         string StartFileNameJson; // имя файла из параметров запуска
         string StartFileNameZip; // имя файла из параметров запуска
@@ -48,6 +49,7 @@ namespace Watch_Face_Editor
         Point cursorPos = new Point(0, 0); // положение курсора при начале перетягивания элементов
         List<Color> colorMapList = new List<Color>(); // карта цветов для конвертации изображений
         int ImageWidth; // ширина изображения для конвертации изображений
+        Dictionary<string, string> FontsList = new Dictionary<string, string>();  // список имен шрифтов во временной папке
 
         // Доступные конфигурации
         Dictionary<string, Classes.AmazfitPlatform> AvailableConfigurations = new Dictionary<string, Classes.AmazfitPlatform>();
@@ -106,6 +108,7 @@ namespace Watch_Face_Editor
                     File.WriteAllText(Application.StartupPath + @"\Settings.json", JSON_String, Encoding.UTF8);
                 }
                 Logger.WriteLine("FormLocation = " + Properties.Settings.Default.FormLocation.ToString());
+                Logger.WriteLine("PreviewLocation = " + Properties.Settings.Default.PreviewLocation.ToString());
 
                 // Основные настройки прочитались, можно читать таргеты
                 if (File.Exists(Application.StartupPath + ProgramSettings.model_config))
@@ -215,6 +218,16 @@ namespace Watch_Face_Editor
             AddFontMemResourceEx(fontPtr, (uint)Properties.Resources.Roboto_Regular.Length, IntPtr.Zero, ref dummy);
             System.Runtime.InteropServices.Marshal.FreeCoTaskMem(fontPtr);
             #endregion
+
+            try
+            {
+                if (Directory.Exists(Application.StartupPath + @"\Watch_face\tempFonts")) 
+                    DeleteDirectory(Application.StartupPath + @"\Watch_face\tempFonts");
+            }
+            catch (Exception)
+            {
+            }
+
             Logger.WriteLine("Создали переменные");
 
             if (args.Length == 1)
@@ -500,7 +513,7 @@ namespace Watch_Face_Editor
             {
                 Logger.WriteLine("Загружаем Json файл из значения аргумента " + StartFileNameJson);
                 FileName = Path.GetFileName(StartFileNameJson);
-                FullFileDir = Path.GetDirectoryName(StartFileNameJson);
+                ProjectDir = Path.GetDirectoryName(StartFileNameJson);
                 LoadJson(StartFileNameJson);
                 StartFileNameJson = "";
             }
@@ -814,7 +827,7 @@ namespace Watch_Face_Editor
         private void button_WatchSkin_PathGet_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = FullFileDir;
+            openFileDialog.InitialDirectory = ProjectDir;
             openFileDialog.FileName = FileName;
             openFileDialog.Filter = Properties.FormStrings.FilterJson;
             //openFileDialog.Filter = "Json files (*.json) | *.json";
@@ -2271,7 +2284,7 @@ namespace Watch_Face_Editor
             //if (!Directory.Exists(subPath)) Directory.CreateDirectory(subPath);
 
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = FullFileDir;
+            openFileDialog.InitialDirectory = ProjectDir;
             openFileDialog.FileName = FileName;
             openFileDialog.Filter = Properties.FormStrings.FilterJson;
             //openFileDialog.Filter = "Json files (*.json) | *.json";
@@ -2281,7 +2294,7 @@ namespace Watch_Face_Editor
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 FileName = Path.GetFileName(openFileDialog.FileName);
-                FullFileDir = Path.GetDirectoryName(openFileDialog.FileName);
+                ProjectDir = Path.GetDirectoryName(openFileDialog.FileName);
 
                 Logger.WriteLine("* JSON_Click");
                 string newFullName = openFileDialog.FileName;
@@ -2307,7 +2320,7 @@ namespace Watch_Face_Editor
             else
             {
                 button_RefreshPreview.Visible = false;
-                if (FileName != null && FullFileDir != null)
+                if (FileName != null && ProjectDir != null)
                 {
                     button_CreatePreview.Visible = true;
                 }
@@ -2346,6 +2359,8 @@ namespace Watch_Face_Editor
             else StartJsonPreview(); 
 
             LoadImage(dirName);
+            LoadFonts(dirName);
+
             button_Add_Images.Enabled = true;
             button_Add_Anim_Images.Enabled = true;
             ShowElemetsWatchFace();
@@ -2510,6 +2525,8 @@ namespace Watch_Face_Editor
 
             //progressBar1.Visible = false;
             LoadAnimImage(dirName + @"animation\");
+
+            Logger.WriteLine("* LoadImage End");
         }
 
         /// <summary>Загружаем файлы изображений для анимации в проект и в выпадающие списки</summary>
@@ -2583,6 +2600,61 @@ namespace Watch_Face_Editor
             uCtrl_Animation_Rotate_Opt.ComboBoxAddItems(ListAnimImages, ListAnimImagesFullName);
 
             //progressBar1.Visible = false;
+
+            Logger.WriteLine("* LoadAnimImage End");
+        }
+
+        /// <summary>Загружаем файлы изображений в проект и в выпадающие списки</summary>
+        /// <param name="dirName">Папка с assets проекта циферблата</param>
+        private void LoadFonts(string dirName)
+        {
+            Logger.WriteLine("* LoadFonts");
+
+            if (!Directory.Exists(dirName + @"\fonts")) return;
+            DirectoryInfo Folder = new DirectoryInfo(dirName + @"\fonts");
+            FileInfo[] Fonts = Folder.GetFiles("*.ttf");
+            Fonts = FileInfoSort(Fonts);
+            string tempFontsDir = Application.StartupPath + @"\Watch_face\tempFonts";
+            try
+            {
+                FontsList.Clear();
+                // Создаем папку
+                if (!Directory.Exists(Application.StartupPath + @"\Watch_face"))
+                    Directory.CreateDirectory(Application.StartupPath + @"\Watch_face");
+                if (!Directory.Exists(tempFontsDir)) Directory.CreateDirectory(tempFontsDir);
+
+                // Устанавливаем атрибут скрытой папки
+                DirectoryInfo directoryInfo = new DirectoryInfo(tempFontsDir);
+                directoryInfo.Attributes |= FileAttributes.Hidden;
+#if !DEBUG
+                directoryInfo.Attributes |= FileAttributes.System;
+#endif
+                Console.WriteLine("Папка создана и сделана скрытой системой.");
+
+                foreach (FileInfo font in Fonts)
+                {
+                    if (!FontsList.ContainsKey(font.Name))
+                    {
+                        string newFontName = Path.GetRandomFileName() + ".ttf";
+                        while (File.Exists(Path.Combine(tempFontsDir, newFontName)))
+                        {
+                            newFontName = Path.GetRandomFileName() + ".ttf";
+                        }
+                        File.Copy(font.FullName, Path.Combine(tempFontsDir, newFontName));
+                        FontsList.Add(font.Name, Path.Combine(tempFontsDir, newFontName));
+
+                        Logger.WriteLine("FontsList.Add " + font.Name);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Ошибка: {ex.Message}");
+            }
+
+            uCtrl_Text_SystemFont_Opt.AddFonts(FontsList);
+
+            Logger.WriteLine("* LoadFonts End");
         }
 
         private void comboBox_AddElements_Click(object sender, EventArgs e)
@@ -2594,7 +2666,7 @@ namespace Watch_Face_Editor
         private void button_New_Project_Click(object sender, EventArgs e)
         {
             // TODO :: Delete if not used !
-            Logger.WriteLine("* New_Project");
+            Logger.WriteLine(" * New_Project");
             // сохранение если файл не сохранен
             if (SaveRequest() == DialogResult.Cancel) return;
 
@@ -2629,7 +2701,7 @@ namespace Watch_Face_Editor
                 }
                 if (Path.GetExtension(fullfilename) != ".json") fullfilename = fullfilename + ".json";
                 FileName = Path.GetFileName(fullfilename);
-                FullFileDir = Path.GetDirectoryName(fullfilename);
+                ProjectDir = Path.GetDirectoryName(fullfilename);
 
                 Watch_Face = new WATCH_FACE();
                 Watch_Face.WatchFace_Info = new WatchFace_Info();
@@ -2710,7 +2782,7 @@ namespace Watch_Face_Editor
                 }
                 if (Path.GetExtension(fullfilename) != ".json") fullfilename = fullfilename + ".json";
                 FileName = Path.GetFileName(fullfilename);
-                FullFileDir = Path.GetDirectoryName(fullfilename);
+                ProjectDir = Path.GetDirectoryName(fullfilename);
 
                 Watch_Face = new WATCH_FACE();
                 Watch_Face.WatchFace_Info = new WatchFace_Info();
@@ -2856,10 +2928,10 @@ namespace Watch_Face_Editor
         private void button_Add_Images_Click(object sender, EventArgs e)
         {
             Logger.WriteLine("* Add_Images");
-            if (FullFileDir == null) return;
+            if (ProjectDir == null) return;
 
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            //openFileDialog.InitialDirectory = FullFileDir;
+            //openFileDialog.InitialDirectory = ProjectDir;
             openFileDialog.FileName = FileName;
             openFileDialog.Filter = Properties.FormStrings.FilterPng;
             //openFileDialog.Filter = "Json files (*.json) | *.json";
@@ -2869,10 +2941,10 @@ namespace Watch_Face_Editor
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 //FileName = Path.GetFileName(openFileDialog.FileName);
-                //FullFileDir = Path.GetDirectoryName(openFileDialog.FileName);
+                //ProjectDir = Path.GetDirectoryName(openFileDialog.FileName);
 
                 Logger.WriteLine("* Add_Images_Click");
-                string dirName = FullFileDir + @"\assets\";
+                string dirName = ProjectDir + @"\assets\";
                 foreach(string fileFullName in openFileDialog.FileNames)
                 {
                     string fileName = Path.GetFileName(fileFullName);
@@ -2900,7 +2972,7 @@ namespace Watch_Face_Editor
                 // Do what you want here
                 if (FileName != null)
                 {
-                    string fullfilename = Path.Combine(FullFileDir, FileName);
+                    string fullfilename = Path.Combine(ProjectDir, FileName);
                     if (File.Exists(fullfilename))
                     {
                         save_JSON_File(fullfilename);
@@ -2913,12 +2985,12 @@ namespace Watch_Face_Editor
                 else
                 {
                     SaveFileDialog saveFileDialog = new SaveFileDialog();
-                    saveFileDialog.InitialDirectory = FullFileDir;
+                    saveFileDialog.InitialDirectory = ProjectDir;
                     saveFileDialog.FileName = FileName; if (FileName == null || FileName.Length == 0)
                     {
-                        if (FullFileDir != null && FullFileDir.Length > 3)
+                        if (ProjectDir != null && ProjectDir.Length > 3)
                         {
-                            saveFileDialog.FileName = Path.GetFileName(FullFileDir);
+                            saveFileDialog.FileName = Path.GetFileName(ProjectDir);
                         }
                     }
                     saveFileDialog.Filter = Properties.FormStrings.FilterJson;
@@ -2932,7 +3004,7 @@ namespace Watch_Face_Editor
                         save_JSON_File(fullfilename);
 
                         FileName = Path.GetFileName(fullfilename);
-                        FullFileDir = Path.GetDirectoryName(fullfilename);
+                        ProjectDir = Path.GetDirectoryName(fullfilename);
                         JSON_Modified = false;
                         FormText();
                         //if (checkBox_JsonWarnings.Checked) jsonWarnings(fullfilename);
@@ -3246,23 +3318,23 @@ namespace Watch_Face_Editor
 
         private void button_OpenDir_Click(object sender, EventArgs e)
         {
-            if (FullFileDir != null)
+            if (ProjectDir != null)
             {
-                Process.Start(new ProcessStartInfo(FullFileDir));
-                //Process.Start(new ProcessStartInfo("explorer.exe", " /select, " + FullFileDir));
+                Process.Start(new ProcessStartInfo(ProjectDir));
+                //Process.Start(new ProcessStartInfo("explorer.exe", " /select, " + ProjectDir));
             }
         }
 
         private void button_SaveJson_Click(object sender, EventArgs e)
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = FullFileDir;
+            saveFileDialog.InitialDirectory = ProjectDir;
             saveFileDialog.FileName = FileName;
             if (FileName == null || FileName.Length == 0)
             {
-                if (FullFileDir != null && FullFileDir.Length > 3)
+                if (ProjectDir != null && ProjectDir.Length > 3)
                 {
-                    saveFileDialog.FileName = Path.GetFileName(FullFileDir);
+                    saveFileDialog.FileName = Path.GetFileName(ProjectDir);
                 }
             }
             saveFileDialog.Filter = Properties.FormStrings.FilterJson;
@@ -3276,7 +3348,7 @@ namespace Watch_Face_Editor
                 save_JSON_File(fullfilename);
 
                 FileName = Path.GetFileName(fullfilename);
-                FullFileDir = Path.GetDirectoryName(fullfilename);
+                ProjectDir = Path.GetDirectoryName(fullfilename);
                 JSON_Modified = false;
                 FormText();
 
@@ -3288,7 +3360,7 @@ namespace Watch_Face_Editor
                 else
                 {
                     button_RefreshPreview.Visible = false;
-                    if (FileName != null && FullFileDir != null)
+                    if (FileName != null && ProjectDir != null)
                     {
                         button_CreatePreview.Visible = true;
                     }
@@ -3787,7 +3859,7 @@ namespace Watch_Face_Editor
                         Properties.FormStrings.Message_Save_JSON_Modified_Caption, MessageBoxButtons.YesNoCancel, MessageBoxIcon.Information);
                     if (dr == DialogResult.Yes)
                     {
-                        string fullfilename = Path.Combine(FullFileDir, FileName);
+                        string fullfilename = Path.Combine(ProjectDir, FileName);
                         save_JSON_File(fullfilename);
                         JSON_Modified = false;
                         FormText();
@@ -5211,7 +5283,7 @@ namespace Watch_Face_Editor
                             SetElementPositionInGUI(type, count - i - 2);
                             //SetElementPositionInGUI(type, i + 1);
                             break;
-                        #endregion*/
+#endregion*/
 
                         #region ElementDateDay
                         case "ElementDateDay":
@@ -5456,7 +5528,7 @@ namespace Watch_Face_Editor
                             SetElementPositionInGUI(type, count - i - 2);
                             //SetElementPositionInGUI(type, i + 1);
                             break;
-                        #endregion*/
+#endregion*/
 
                         #region ElementAnimation
                         case "ElementAnimation":
@@ -5511,6 +5583,11 @@ namespace Watch_Face_Editor
                                 uCtrl_Steps_Elm.checkBox_Number.Checked = Steps.Number.visible;
                                 elementOptions.Add(Steps.Number.position, "Number");
                             }
+                            if (Steps.Number_Font != null)
+                            {
+                                uCtrl_Steps_Elm.checkBox_Number_Font.Checked = Steps.Number_Font.visible;
+                                elementOptions.Add(Steps.Number_Font.position, "Number_Font");
+                            }
                             if (Steps.Text_rotation != null)
                             {
                                 uCtrl_Steps_Elm.checkBox_Text_rotation.Checked = Steps.Text_rotation.visible;
@@ -5525,6 +5602,11 @@ namespace Watch_Face_Editor
                             {
                                 uCtrl_Steps_Elm.checkBox_Number_Target.Checked = Steps.Number_Target.visible;
                                 elementOptions.Add(Steps.Number_Target.position, "Number_Target");
+                            }
+                            if (Steps.Number_Target_Font != null)
+                            {
+                                uCtrl_Steps_Elm.checkBox_Number_Target_Font.Checked = Steps.Number_Target_Font.visible;
+                                elementOptions.Add(Steps.Number_Target_Font.position, "Number_Target_Font");
                             }
                             if (Steps.Text_rotation_Target != null)
                             {
@@ -7917,7 +7999,7 @@ namespace Watch_Face_Editor
         private void button_JsonPreview_Read_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = FullFileDir;
+            openFileDialog.InitialDirectory = ProjectDir;
             //openFileDialog.Filter = Properties.FormStrings.FilterJson;
             openFileDialog.FileName = "Preview.States";
             openFileDialog.Filter = "PreviewStates file | *.States";
@@ -8115,6 +8197,7 @@ namespace Watch_Face_Editor
             SelectedModel = AvailableConfigurations[ProgramSettings.Watch_Model]; // глобальная переменная чтобы каждый раз не считывать
             Logger.WriteLine($"Loaded configuration: {SelectedModel}");
             pictureBox_Preview.Size = new Size((int)(SelectedModel.scaling.scaling_0_5.w * currentDPI), (int)(SelectedModel.scaling.scaling_0_5.h * currentDPI));
+            //uCtrl_Text_SystemFont_Opt.SetScreenSize(SelectedModel.background.w, SelectedModel.background.h);
 
             // изменяем размер панели для предпросмотра если она не влазит
             if (pictureBox_Preview.Top + pictureBox_Preview.Height > label_watch_model.Top)
@@ -8229,11 +8312,11 @@ namespace Watch_Face_Editor
             // сохранение если файл не сохранен
             if (SaveRequest() == DialogResult.Cancel) return;
 
-            if (FullFileDir == null) return;
+            if (ProjectDir == null) return;
             string tempDir = Application.StartupPath + @"\Temp";
             string templatesFileDir = Application.StartupPath + @"\File_templates";
 
-            string zipPath = FullFileDir + @"\" + Path.GetFileNameWithoutExtension(FileName) + ".zip";
+            string zipPath = ProjectDir + @"\" + Path.GetFileNameWithoutExtension(FileName) + ".zip";
             try
             {
                 if (File.Exists(zipPath)) File.Delete(zipPath);
@@ -8251,14 +8334,23 @@ namespace Watch_Face_Editor
             Directory.CreateDirectory(tempDir + @"\assets");
             Directory.CreateDirectory(tempDir + @"\watchface");
 
-            string imagesFolder = FullFileDir + @"\assets";
+            string imagesFolder = ProjectDir + @"\assets";
             DirectoryInfo Folder;
             Folder = new DirectoryInfo(imagesFolder);
             //FileInfo[] Images;
-            FileInfo[] Images = Folder.GetFiles("*.png");
+            //FileInfo[] Images = Folder.GetFiles("*.png");
 
+            // читаем подпапки в папках
+            List<string> allDirs = GetRecursDirectories(ProjectDir + @"\assets", 5, ProjectDir + @"\assets");
+            foreach (string dirNames in allDirs)
+            {
+                //Console.WriteLine(dirNames);
+                if(!Directory.Exists(tempDir + @"\assets" + dirNames)) Directory.CreateDirectory(tempDir + @"\assets" + dirNames);
+            }
+            List<string> allImagesFiles = GetRecursFiles(ProjectDir + @"\assets", "*.png", 5, ProjectDir + @"\assets");
+      
             progressBar1.Value = 0;
-            progressBar1.Maximum = Images.Length;
+            progressBar1.Maximum = allImagesFiles.Count;
             progressBar1.Visible = true;
             int fix_color = SelectedModel.colorScheme;
             bool fix_size = SelectedModel.fixSize;
@@ -8279,28 +8371,36 @@ namespace Watch_Face_Editor
                 }
             }
 
-            foreach (FileInfo file in Images)
+            //foreach (FileInfo file in Images)
+            //{
+            //    progressBar1.Value++;
+            //    //string fileNameFull = PngToTga(file.FullName, tempDir + @"\assets", fix_color, fix_size);
+            //    //if (fileNameFull != null) ImageFix(fileNameFull, fix_color);
+            //    ImageAutoDetectWriteFormat(file.FullName, tempDir + @"\assets", fix_size, fix_color);
+            //}
+
+            foreach (string imgFileName in allImagesFiles)
             {
+                //File.Copy(tempDir + @"\assets" + fileNames, projectPath + @"\assets" + fileNames);
                 progressBar1.Value++;
-                //string fileNameFull = PngToTga(file.FullName, tempDir + @"\assets", fix_color, fix_size);
-                //if (fileNameFull != null) ImageFix(fileNameFull, fix_color);
-                ImageAutoDetectWriteFormat(file.FullName, tempDir + @"\assets", fix_size, fix_color);
+                string newDir = Path.GetDirectoryName(tempDir + @"\assets" + imgFileName);
+                ImageAutoDetectWriteFormat(ProjectDir + @"\assets" + imgFileName, newDir, fix_size, fix_color);
             }
 
-            imagesFolder = FullFileDir + @"\assets\animation";
-            if (Directory.Exists(imagesFolder))
-            {
-                Folder = new DirectoryInfo(imagesFolder);
-                Images = Folder.GetFiles("*.png");
-                progressBar1.Maximum = progressBar1.Maximum + Images.Length;
-                foreach (FileInfo file in Images)
-                {
-                    progressBar1.Value++;
-                    //string fileNameFull = PngToTga(file.FullName, tempDir + @"\assets\animation", fix_color, fix_size);
-                    //if (fileNameFull != null) ImageFix(fileNameFull, fix_color);
-                    ImageAutoDetectWriteFormat(file.FullName, tempDir + @"\assets\animation", fix_size, fix_color);
-                }
-            }
+            //imagesFolder = ProjectDir + @"\assets\animation";
+            //if (Directory.Exists(imagesFolder))
+            //{
+            //    Folder = new DirectoryInfo(imagesFolder);
+            //    Images = Folder.GetFiles("*.png");
+            //    progressBar1.Maximum = progressBar1.Maximum + Images.Length;
+            //    foreach (FileInfo file in Images)
+            //    {
+            //        progressBar1.Value++;
+            //        //string fileNameFull = PngToTga(file.FullName, tempDir + @"\assets\animation", fix_color, fix_size);
+            //        //if (fileNameFull != null) ImageFix(fileNameFull, fix_color);
+            //        ImageAutoDetectWriteFormat(file.FullName, tempDir + @"\assets\animation", fix_size, fix_color);
+            //    }
+            //}
 
             App_WatchFace app = new App_WatchFace();
             app.app.appName = Path.GetFileNameWithoutExtension(FileName);
@@ -8366,9 +8466,9 @@ namespace Watch_Face_Editor
 
             File.WriteAllText(tempDir + @"\app.json", appText, Encoding.UTF8);
             File.Copy(templatesFileDir + @"\app.js", tempDir + @"\app.js");
-            if (Directory.Exists(FullFileDir + @"\assets\fonts"))
+            if (Directory.Exists(ProjectDir + @"\assets\fonts"))
             {
-                CopyDirectory(FullFileDir + @"\assets\fonts", tempDir + @"\assets\fonts", false);
+                CopyDirectory(ProjectDir + @"\assets\fonts", tempDir + @"\assets\fonts", false);
             }
 
             // преобразуем настройки в текстовый файл
@@ -8407,7 +8507,7 @@ namespace Watch_Face_Editor
             //link:
             // объединяем все в архив
             string startPath = tempDir;
-            //string zipPath = FullFileDir + @"\" + Path.GetFileNameWithoutExtension(FileName) + ".zip";
+            //string zipPath = ProjectDir + @"\" + Path.GetFileNameWithoutExtension(FileName) + ".zip";
             //if (File.Exists(zipPath)) File.Delete(zipPath);
             using (Ionic.Zip.ZipFile zip = new Ionic.Zip.ZipFile())
             {
@@ -8468,7 +8568,7 @@ namespace Watch_Face_Editor
 
         private void button_RefreshPreview_Click(object sender, EventArgs e)
         {
-            if (FileName == null || FullFileDir == null) return;
+            if (FileName == null || ProjectDir == null) return;
             if (Watch_Face == null || Watch_Face.WatchFace_Info == null || Watch_Face.WatchFace_Info.Preview == null)
             {
                 button_CreatePreview_Click(null, null);
@@ -8476,7 +8576,7 @@ namespace Watch_Face_Editor
             }
             if (Watch_Face.WatchFace_Info.Preview != null && Watch_Face.WatchFace_Info.Preview.Length > 0)
             {
-                string preview = FullFileDir + @"\assets\" + Watch_Face.WatchFace_Info.Preview + ".png";
+                string preview = ProjectDir + @"\assets\" + Watch_Face.WatchFace_Info.Preview + ".png";
                 if (!File.Exists(preview))
                 {
                     Watch_Face.WatchFace_Info.Preview = null;
@@ -8559,7 +8659,7 @@ namespace Watch_Face_Editor
         private void button_CreatePreview_Click(object sender, EventArgs e)
         {
             if (Watch_Face != null && Watch_Face.WatchFace_Info != null && Watch_Face.WatchFace_Info.Preview != null) return;
-            if (FileName != null && FullFileDir != null) // проект уже сохранен
+            if (FileName != null && ProjectDir != null) // проект уже сохранен
             {
                 // формируем картинку для предпросмотра
                 //Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
@@ -8626,11 +8726,11 @@ namespace Watch_Face_Editor
                 // определяем имя файла для сохранения и сохраняем файл
                 int i = 1;
                 string NamePreview = "Preview.png";
-                string PathPreview = FullFileDir + @"\assets\" + NamePreview;
+                string PathPreview = ProjectDir + @"\assets\" + NamePreview;
                 while (File.Exists(PathPreview) && i < 10)
                 {
                     NamePreview = "Preview" + i.ToString() + ".png";
-                    PathPreview = FullFileDir + @"\assets\" + NamePreview;
+                    PathPreview = ProjectDir + @"\assets\" + NamePreview;
                     i ++;
                     if (i > 9)
                     {
@@ -8807,7 +8907,7 @@ namespace Watch_Face_Editor
                 progressBar1.Value = 0;
                 progressBar1.Visible = true;
 
-                // читаем шрифты в папках
+                // читаем подпапки в папках
                 List<string> allDirs = GetRecursDirectories(tempDir + @"\assets", 5, tempDir + @"\assets");
                 Directory.CreateDirectory(projectPath);
                 Directory.CreateDirectory(projectPath + @"\assets");
@@ -9370,7 +9470,7 @@ namespace Watch_Face_Editor
                     }
 
                     FileName = Path.GetFileName(fullProjectName);
-                    FullFileDir = Path.GetDirectoryName(fullProjectName);
+                    ProjectDir = Path.GetDirectoryName(fullProjectName);
                     LoadJson(fullProjectName);
                 }
                 else MessageBox.Show(Properties.FormStrings.Message_ErrorReadJS, Properties.FormStrings.Message_Error_Caption,
@@ -9379,7 +9479,7 @@ namespace Watch_Face_Editor
                 progressBar1.Visible = false;
 
                 //FileName = Path.GetFileName(openFileDialog.FileName);
-                FullFileDir = projectPath;
+                ProjectDir = projectPath;
             }
 #if !DEBUG
             if (Directory.Exists(tempDir)) DeleteDirectory(tempDir);
@@ -10548,6 +10648,7 @@ namespace Watch_Face_Editor
                 Circle_Scale circle_scale = null;
                 Linear_Scale linear_scale = null;
                 hmUI_widget_IMG icon = null;
+                hmUI_widget_TEXT text = null;
 
                 switch (selectElement)
                 {
@@ -10578,6 +10679,15 @@ namespace Watch_Face_Editor
                         }
                         else HideAllElemenrOptions();
                         break;
+                    case "Number_Font":
+                        if (uCtrl_Steps_Elm.checkBox_Number_Font.Checked)
+                        {
+                            text = steps.Number_Font;
+                            Read_Text_Options(text);
+                            ShowElemenrOptions("SystemFont");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
                     case "Text_rotation":
                         if (uCtrl_Steps_Elm.checkBox_Text_rotation.Checked)
                         {
@@ -10602,6 +10712,15 @@ namespace Watch_Face_Editor
                             img_number = steps.Number_Target;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number_Target_Font":
+                        if (uCtrl_Steps_Elm.checkBox_Number_Target_Font.Checked)
+                        {
+                            text = steps.Number_Target_Font;
+                            Read_Text_Options(text);
+                            ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -10699,6 +10818,7 @@ namespace Watch_Face_Editor
                 Circle_Scale circle_scale = null;
                 Linear_Scale linear_scale = null;
                 hmUI_widget_IMG icon = null;
+                hmUI_widget_TEXT text = null;
 
                 switch (selectElement)
                 {
@@ -10726,6 +10846,15 @@ namespace Watch_Face_Editor
                             img_number = battery.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number_Font":
+                        if (uCtrl_Battery_Elm.checkBox_Number_Font.Checked)
+                        {
+                            text = battery.Number_Font;
+                            Read_Text_Options(text);
+                            ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -10823,6 +10952,7 @@ namespace Watch_Face_Editor
                 Circle_Scale circle_scale = null;
                 Linear_Scale linear_scale = null;
                 hmUI_widget_IMG icon = null;
+                hmUI_widget_TEXT text = null;
 
                 switch (selectElement)
                 {
@@ -10851,6 +10981,15 @@ namespace Watch_Face_Editor
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             uCtrl_Text_Opt.ImageError = true;
                             ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number_Font":
+                        if (uCtrl_Heart_Elm.checkBox_Number_Font.Checked)
+                        {
+                            text = heart.Number_Font;
+                            Read_Text_Options(text);
+                            ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -10948,6 +11087,7 @@ namespace Watch_Face_Editor
                 Circle_Scale circle_scale = null;
                 Linear_Scale linear_scale = null;
                 hmUI_widget_IMG icon = null;
+                hmUI_widget_TEXT text = null;
 
                 switch (selectElement)
                 {
@@ -10978,6 +11118,15 @@ namespace Watch_Face_Editor
                         }
                         else HideAllElemenrOptions();
                         break;
+                    case "Number_Font":
+                        if (uCtrl_Calories_Elm.checkBox_Number_Font.Checked)
+                        {
+                            text = calories.Number_Font;
+                            Read_Text_Options(text);
+                            ShowElemenrOptions("SystemFont");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
                     case "Text_rotation":
                         if (uCtrl_Calories_Elm.checkBox_Text_rotation.Checked)
                         {
@@ -11002,6 +11151,15 @@ namespace Watch_Face_Editor
                             img_number = calories.Number_Target;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number_Target_Font":
+                        if (uCtrl_Calories_Elm.checkBox_Number_Target_Font.Checked)
+                        {
+                            text = calories.Number_Target_Font;
+                            Read_Text_Options(text);
+                            ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -11099,6 +11257,7 @@ namespace Watch_Face_Editor
                 Circle_Scale circle_scale = null;
                 Linear_Scale linear_scale = null;
                 hmUI_widget_IMG icon = null;
+                hmUI_widget_TEXT text = null;
 
                 switch (selectElement)
                 {
@@ -11129,12 +11288,30 @@ namespace Watch_Face_Editor
                         }
                         else HideAllElemenrOptions();
                         break;
+                    //case "Number_Font":
+                    //    if (uCtrl_PAI_Elm.checkBox_Number_Font.Checked)
+                    //    {
+                    //        text = pai.Number_Font;
+                    //        Read_Text_Options(text);
+                    //        ShowElemenrOptions("SystemFont");
+                    //    }
+                    //    else HideAllElemenrOptions();
+                    //    break;
                     case "Number_Target":
                         if (uCtrl_PAI_Elm.checkBox_Number_Target.Checked)
                         {
                             img_number = pai.Number_Target;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number_Target_Font":
+                        if (uCtrl_PAI_Elm.checkBox_Number_Target_Font.Checked)
+                        {
+                            text = pai.Number_Target_Font;
+                            Read_Text_Options(text);
+                            ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -13461,9 +13638,11 @@ namespace Watch_Face_Editor
                 if (steps.Images == null) steps.Images = new hmUI_widget_IMG_LEVEL();
                 if (steps.Segments == null) steps.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (steps.Number == null) steps.Number = new hmUI_widget_IMG_NUMBER();
+                if (steps.Number_Font == null) steps.Number_Font = new hmUI_widget_TEXT();
                 if (steps.Text_rotation == null) steps.Text_rotation = new hmUI_widget_IMG_NUMBER();
                 if (steps.Text_circle == null) steps.Text_circle = new Text_Circle();
                 if (steps.Number_Target == null) steps.Number_Target = new hmUI_widget_IMG_NUMBER();
+                if (steps.Number_Target_Font == null) steps.Number_Target_Font = new hmUI_widget_TEXT();
                 if (steps.Text_rotation_Target == null) steps.Text_rotation_Target = new hmUI_widget_IMG_NUMBER();
                 if (steps.Text_circle_Target == null) steps.Text_circle_Target = new Text_Circle();
                 if (steps.Pointer == null) steps.Pointer = new hmUI_widget_IMG_POINTER();
@@ -13474,9 +13653,11 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) steps.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) steps.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) steps.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) steps.Number_Font.position = elementOptions["Number_Font"];
                 if (elementOptions.ContainsKey("Text_rotation")) steps.Text_rotation.position = elementOptions["Text_rotation"];
                 if (elementOptions.ContainsKey("Text_circle")) steps.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Number_Target")) steps.Number_Target.position = elementOptions["Number_Target"];
+                if (elementOptions.ContainsKey("Number_Target_Font")) steps.Number_Target_Font.position = elementOptions["Number_Target_Font"];
                 if (elementOptions.ContainsKey("Text_rotation_Target")) steps.Text_rotation_Target.position = elementOptions["Text_rotation_Target"];
                 if (elementOptions.ContainsKey("Text_circle_Target")) steps.Text_circle_Target.position = elementOptions["Text_circle_Target"];
                 if (elementOptions.ContainsKey("Pointer")) steps.Pointer.position = elementOptions["Pointer"];
@@ -13525,6 +13706,7 @@ namespace Watch_Face_Editor
                 if (battery.Images == null) battery.Images = new hmUI_widget_IMG_LEVEL();
                 if (battery.Segments == null) battery.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (battery.Number == null) battery.Number = new hmUI_widget_IMG_NUMBER();
+                if (battery.Number_Font == null) battery.Number_Font = new hmUI_widget_TEXT();
                 if (battery.Text_rotation == null) battery.Text_rotation = new hmUI_widget_IMG_NUMBER();
                 if (battery.Text_circle == null) battery.Text_circle = new Text_Circle();
                 if (battery.Pointer == null) battery.Pointer = new hmUI_widget_IMG_POINTER();
@@ -13535,6 +13717,7 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) battery.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) battery.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) battery.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) battery.Number_Font.position = elementOptions["Number_Font"];
                 if (elementOptions.ContainsKey("Text_rotation")) battery.Text_rotation.position = elementOptions["Text_rotation"];
                 if (elementOptions.ContainsKey("Text_circle")) battery.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Pointer")) battery.Pointer.position = elementOptions["Pointer"];
@@ -13583,6 +13766,7 @@ namespace Watch_Face_Editor
                 if (heart.Images == null) heart.Images = new hmUI_widget_IMG_LEVEL();
                 if (heart.Segments == null) heart.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (heart.Number == null) heart.Number = new hmUI_widget_IMG_NUMBER();
+                if (heart.Number_Font == null) heart.Number_Font = new hmUI_widget_TEXT();
                 if (heart.Text_rotation == null) heart.Text_rotation = new hmUI_widget_IMG_NUMBER();
                 if (heart.Text_circle == null) heart.Text_circle = new Text_Circle();
                 if (heart.Pointer == null) heart.Pointer = new hmUI_widget_IMG_POINTER();
@@ -13593,6 +13777,7 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) heart.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) heart.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) heart.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) heart.Number_Font.position = elementOptions["Number_Font"];
                 if (elementOptions.ContainsKey("Text_rotation")) heart.Text_rotation.position = elementOptions["Text_rotation"];
                 if (elementOptions.ContainsKey("Text_circle")) heart.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Pointer")) heart.Pointer.position = elementOptions["Pointer"];
@@ -13641,9 +13826,11 @@ namespace Watch_Face_Editor
                 if (calories.Images == null) calories.Images = new hmUI_widget_IMG_LEVEL();
                 if (calories.Segments == null) calories.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (calories.Number == null) calories.Number = new hmUI_widget_IMG_NUMBER();
+                if (calories.Number_Font == null) calories.Number_Font = new hmUI_widget_TEXT();
                 if (calories.Text_rotation == null) calories.Text_rotation = new hmUI_widget_IMG_NUMBER();
                 if (calories.Text_circle == null) calories.Text_circle = new Text_Circle();
                 if (calories.Number_Target == null) calories.Number_Target = new hmUI_widget_IMG_NUMBER();
+                if (calories.Number_Target_Font == null) calories.Number_Target_Font = new hmUI_widget_TEXT();
                 if (calories.Text_rotation_Target == null) calories.Text_rotation_Target = new hmUI_widget_IMG_NUMBER();
                 if (calories.Text_circle_Target == null) calories.Text_circle_Target = new Text_Circle();
                 if (calories.Pointer == null) calories.Pointer = new hmUI_widget_IMG_POINTER();
@@ -13654,9 +13841,11 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) calories.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) calories.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) calories.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) calories.Number_Font.position = elementOptions["Number_Font"];
                 if (elementOptions.ContainsKey("Text_rotation")) calories.Text_rotation.position = elementOptions["Text_rotation"];
                 if (elementOptions.ContainsKey("Text_circle")) calories.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Number_Target")) calories.Number_Target.position = elementOptions["Number_Target"];
+                if (elementOptions.ContainsKey("Number_Target_Font")) calories.Number_Target_Font.position = elementOptions["Number_Target_Font"];
                 if (elementOptions.ContainsKey("Text_rotation_Target")) calories.Text_rotation_Target.position = elementOptions["Text_rotation_Target"];
                 if (elementOptions.ContainsKey("Text_circle_Target")) calories.Text_circle_Target.position = elementOptions["Text_circle_Target"];
                 if (elementOptions.ContainsKey("Pointer")) calories.Pointer.position = elementOptions["Pointer"];
@@ -13705,7 +13894,9 @@ namespace Watch_Face_Editor
                 if (pai.Images == null) pai.Images = new hmUI_widget_IMG_LEVEL();
                 if (pai.Segments == null) pai.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (pai.Number == null) pai.Number = new hmUI_widget_IMG_NUMBER();
+                if (pai.Number_Font == null) pai.Number_Font = new hmUI_widget_TEXT();
                 if (pai.Number_Target == null) pai.Number_Target = new hmUI_widget_IMG_NUMBER();
+                if (pai.Number_Target_Font == null) pai.Number_Target_Font = new hmUI_widget_TEXT();
                 if (pai.Text_rotation_Target == null) pai.Text_rotation_Target = new hmUI_widget_IMG_NUMBER();
                 if (pai.Text_circle_Target == null) pai.Text_circle_Target = new Text_Circle();
                 if (pai.Pointer == null) pai.Pointer = new hmUI_widget_IMG_POINTER();
@@ -13716,7 +13907,9 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) pai.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) pai.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) pai.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) pai.Number_Font.position = elementOptions["Number_Font"];
                 if (elementOptions.ContainsKey("Number_Target")) pai.Number_Target.position = elementOptions["Number_Target"];
+                if (elementOptions.ContainsKey("Number_Target_Font")) pai.Number_Target_Font.position = elementOptions["Number_Target_Font"];
                 if (elementOptions.ContainsKey("Text_rotation_Target")) pai.Text_rotation_Target.position = elementOptions["Text_rotation_Target"];
                 if (elementOptions.ContainsKey("Text_circle_Target")) pai.Text_circle_Target.position = elementOptions["Text_circle_Target"];
                 if (elementOptions.ContainsKey("Pointer")) pai.Pointer.position = elementOptions["Pointer"];
@@ -15402,9 +15595,11 @@ namespace Watch_Face_Editor
                 if (steps.Images == null) steps.Images = new hmUI_widget_IMG_LEVEL();
                 if (steps.Segments == null) steps.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (steps.Number == null) steps.Number = new hmUI_widget_IMG_NUMBER();
+                if (steps.Number_Font == null) steps.Number_Font = new hmUI_widget_TEXT();
                 if (steps.Text_rotation == null) steps.Text_rotation = new hmUI_widget_IMG_NUMBER();
                 if (steps.Text_circle == null) steps.Text_circle = new Text_Circle();
                 if (steps.Number_Target == null) steps.Number_Target = new hmUI_widget_IMG_NUMBER();
+                if (steps.Number_Target_Font == null) steps.Number_Target_Font = new hmUI_widget_TEXT();
                 if (steps.Text_rotation_Target == null) steps.Text_rotation_Target = new hmUI_widget_IMG_NUMBER();
                 if (steps.Text_circle_Target == null) steps.Text_circle_Target = new Text_Circle();
                 if (steps.Pointer == null) steps.Pointer = new hmUI_widget_IMG_POINTER();
@@ -15416,9 +15611,11 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) steps.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) steps.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) steps.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) steps.Number_Font.position = elementOptions["Number_Font"];
                 if (elementOptions.ContainsKey("Text_rotation")) steps.Text_rotation.position = elementOptions["Text_rotation"];
                 if (elementOptions.ContainsKey("Text_circle")) steps.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Number_Target")) steps.Number_Target.position = elementOptions["Number_Target"];
+                if (elementOptions.ContainsKey("Number_Target_Font")) steps.Number_Target_Font.position = elementOptions["Number_Target_Font"];
                 if (elementOptions.ContainsKey("Text_rotation_Target")) steps.Text_rotation_Target.position = elementOptions["Text_rotation_Target"];
                 if (elementOptions.ContainsKey("Text_circle_Target")) steps.Text_circle_Target.position = elementOptions["Text_circle_Target"];
                 if (elementOptions.ContainsKey("Pointer")) steps.Pointer.position = elementOptions["Pointer"];
@@ -15439,6 +15636,9 @@ namespace Watch_Face_Editor
                     case "checkBox_Number":
                         steps.Number.visible = checkBox.Checked;
                         break;
+                    case "checkBox_Number_Font":
+                        steps.Number_Font.visible = checkBox.Checked;
+                        break;
                     case "checkBox_Text_rotation":
                         steps.Text_rotation.visible = checkBox.Checked;
                         break;
@@ -15447,6 +15647,9 @@ namespace Watch_Face_Editor
                         break;
                     case "checkBox_Number_Target":
                         steps.Number_Target.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Target_Font":
+                        steps.Number_Target_Font.visible = checkBox.Checked;
                         break;
                     case "checkBox_Text_rotation_Target":
                         steps.Text_rotation_Target.visible = checkBox.Checked;
@@ -15511,6 +15714,7 @@ namespace Watch_Face_Editor
                 if (battery.Images == null) battery.Images = new hmUI_widget_IMG_LEVEL();
                 if (battery.Segments == null) battery.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (battery.Number == null) battery.Number = new hmUI_widget_IMG_NUMBER();
+                if (battery.Number_Font == null) battery.Number_Font = new hmUI_widget_TEXT();
                 if (battery.Text_rotation == null) battery.Text_rotation = new hmUI_widget_IMG_NUMBER();
                 if (battery.Text_circle == null) battery.Text_circle = new Text_Circle();
                 if (battery.Pointer == null) battery.Pointer = new hmUI_widget_IMG_POINTER();
@@ -15522,6 +15726,7 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) battery.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) battery.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) battery.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) battery.Number_Font.position = elementOptions["Number_Font"];
                 if (elementOptions.ContainsKey("Text_rotation")) battery.Text_rotation.position = elementOptions["Text_rotation"];
                 if (elementOptions.ContainsKey("Text_circle")) battery.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Pointer")) battery.Pointer.position = elementOptions["Pointer"];
@@ -15541,6 +15746,9 @@ namespace Watch_Face_Editor
                         break;
                     case "checkBox_Number":
                         battery.Number.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Font":
+                        battery.Number_Font.visible = checkBox.Checked;
                         break;
                     case "checkBox_Text_rotation":
                         battery.Text_rotation.visible = checkBox.Checked;
@@ -15605,6 +15813,7 @@ namespace Watch_Face_Editor
                 if (heart.Images == null) heart.Images = new hmUI_widget_IMG_LEVEL();
                 if (heart.Segments == null) heart.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (heart.Number == null) heart.Number = new hmUI_widget_IMG_NUMBER();
+                if (heart.Number_Font == null) heart.Number_Font = new hmUI_widget_TEXT();
                 if (heart.Text_rotation == null) heart.Text_rotation = new hmUI_widget_IMG_NUMBER();
                 if (heart.Text_circle == null) heart.Text_circle = new Text_Circle();
                 if (heart.Pointer == null) heart.Pointer = new hmUI_widget_IMG_POINTER();
@@ -15616,6 +15825,7 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) heart.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) heart.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) heart.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) heart.Number_Font.position = elementOptions["Number_Font"];
                 if (elementOptions.ContainsKey("Text_rotation")) heart.Text_rotation.position = elementOptions["Text_rotation"];
                 if (elementOptions.ContainsKey("Text_circle")) heart.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Pointer")) heart.Pointer.position = elementOptions["Pointer"];
@@ -15635,6 +15845,9 @@ namespace Watch_Face_Editor
                         break;
                     case "checkBox_Number":
                         heart.Number.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Font":
+                        heart.Number_Font.visible = checkBox.Checked;
                         break;
                     case "checkBox_Text_rotation":
                         heart.Text_rotation.visible = checkBox.Checked;
@@ -15699,9 +15912,11 @@ namespace Watch_Face_Editor
                 if (calories.Images == null) calories.Images = new hmUI_widget_IMG_LEVEL();
                 if (calories.Segments == null) calories.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (calories.Number == null) calories.Number = new hmUI_widget_IMG_NUMBER();
+                if (calories.Number_Font == null) calories.Number_Font = new hmUI_widget_TEXT();
                 if (calories.Text_rotation == null) calories.Text_rotation = new hmUI_widget_IMG_NUMBER();
                 if (calories.Text_circle == null) calories.Text_circle = new Text_Circle();
                 if (calories.Number_Target == null) calories.Number_Target = new hmUI_widget_IMG_NUMBER();
+                if (calories.Number_Target_Font == null) calories.Number_Target_Font = new hmUI_widget_TEXT();
                 if (calories.Text_rotation_Target == null) calories.Text_rotation_Target = new hmUI_widget_IMG_NUMBER();
                 if (calories.Text_circle_Target == null) calories.Text_circle_Target = new Text_Circle();
                 if (calories.Pointer == null) calories.Pointer = new hmUI_widget_IMG_POINTER();
@@ -15713,9 +15928,11 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) calories.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) calories.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) calories.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) calories.Number_Font.position = elementOptions["Number_Font"];
                 if (elementOptions.ContainsKey("Text_rotation")) calories.Text_rotation.position = elementOptions["Text_rotation"];
                 if (elementOptions.ContainsKey("Text_circle")) calories.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Number_Target")) calories.Number_Target.position = elementOptions["Number_Target"];
+                if (elementOptions.ContainsKey("Number_Target_Font")) calories.Number_Target_Font.position = elementOptions["Number_Target_Font"];
                 if (elementOptions.ContainsKey("Text_rotation_Target")) calories.Text_rotation_Target.position = elementOptions["Text_rotation_Target"];
                 if (elementOptions.ContainsKey("Text_circle_Target")) calories.Text_circle_Target.position = elementOptions["Text_circle_Target"];
                 if (elementOptions.ContainsKey("Pointer")) calories.Pointer.position = elementOptions["Pointer"];
@@ -15736,6 +15953,9 @@ namespace Watch_Face_Editor
                     case "checkBox_Number":
                         calories.Number.visible = checkBox.Checked;
                         break;
+                    case "checkBox_Number_Font":
+                        calories.Number_Font.visible = checkBox.Checked;
+                        break;
                     case "checkBox_Text_rotation":
                         calories.Text_rotation.visible = checkBox.Checked;
                         break;
@@ -15744,6 +15964,9 @@ namespace Watch_Face_Editor
                         break;
                     case "checkBox_Number_Target":
                         calories.Number_Target.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Target_Font":
+                        calories.Number_Target_Font.visible = checkBox.Checked;
                         break;
                     case "checkBox_Text_rotation_Target":
                         calories.Text_rotation_Target.visible = checkBox.Checked;
@@ -15808,7 +16031,9 @@ namespace Watch_Face_Editor
                 if (pai.Images == null) pai.Images = new hmUI_widget_IMG_LEVEL();
                 if (pai.Segments == null) pai.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (pai.Number == null) pai.Number = new hmUI_widget_IMG_NUMBER();
+                if (pai.Number_Font == null) pai.Number_Font = new hmUI_widget_TEXT();
                 if (pai.Number_Target == null) pai.Number_Target = new hmUI_widget_IMG_NUMBER();
+                if (pai.Number_Target_Font == null) pai.Number_Target_Font = new hmUI_widget_TEXT();
                 if (pai.Text_rotation_Target == null) pai.Text_rotation_Target = new hmUI_widget_IMG_NUMBER();
                 if (pai.Text_circle_Target == null) pai.Text_circle_Target = new Text_Circle();
                 if (pai.Pointer == null) pai.Pointer = new hmUI_widget_IMG_POINTER();
@@ -15820,7 +16045,9 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) pai.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) pai.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) pai.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) pai.Number_Font.position = elementOptions["Number_Font"];
                 if (elementOptions.ContainsKey("Number_Target")) pai.Number_Target.position = elementOptions["Number_Target"];
+                if (elementOptions.ContainsKey("Number_Target_Font")) pai.Number_Target_Font.position = elementOptions["Number_Target_Font"];
                 if (elementOptions.ContainsKey("Text_rotation_Target")) pai.Text_rotation_Target.position = elementOptions["Text_rotation_Target"];
                 if (elementOptions.ContainsKey("Text_circle_Target")) pai.Text_circle_Target.position = elementOptions["Text_circle_Target"];
                 if (elementOptions.ContainsKey("Pointer")) pai.Pointer.position = elementOptions["Pointer"];
@@ -15841,8 +16068,14 @@ namespace Watch_Face_Editor
                     case "checkBox_Number":
                         pai.Number.visible = checkBox.Checked;
                         break;
+                    case "checkBox_Number_Font":
+                        pai.Number_Font.visible = checkBox.Checked;
+                        break;
                     case "checkBox_Number_Target":
                         pai.Number_Target.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Target_Font":
+                        pai.Number_Target_Font.visible = checkBox.Checked;
                         break;
                     case "checkBox_Text_rotation_Target":
                         pai.Text_rotation_Target.visible = checkBox.Checked;
@@ -16890,7 +17123,7 @@ namespace Watch_Face_Editor
         {
             Logger.WriteLine("* SavePNG");
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = FullFileDir;
+            saveFileDialog.InitialDirectory = ProjectDir;
             saveFileDialog.Filter = Properties.FormStrings.FilterPng;
             saveFileDialog.FileName = "Preview.png";
             //openFileDialog.Filter = "PNG Files: (*.png)|*.png";
@@ -16954,7 +17187,7 @@ namespace Watch_Face_Editor
         {
             Logger.WriteLine("* SaveGIF");
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = FullFileDir;
+            saveFileDialog.InitialDirectory = ProjectDir;
             saveFileDialog.Filter = Properties.FormStrings.FilterGif;
             saveFileDialog.FileName = "Preview.gif";
             //openFileDialog.Filter = "GIF Files: (*.gif)|*.gif";
@@ -17367,7 +17600,7 @@ namespace Watch_Face_Editor
         {
             Logger.WriteLine("* SavePNG_shortcut");
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = FullFileDir;
+            saveFileDialog.InitialDirectory = ProjectDir;
             saveFileDialog.Filter = Properties.FormStrings.FilterPng;
             saveFileDialog.FileName = "Preview.png";
             //openFileDialog.Filter = "PNG Files: (*.png)|*.png";
@@ -17394,7 +17627,7 @@ namespace Watch_Face_Editor
         {
             Logger.WriteLine("* SavePNG_button");
             SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = FullFileDir;
+            saveFileDialog.InitialDirectory = ProjectDir;
             saveFileDialog.Filter = Properties.FormStrings.FilterPng;
             saveFileDialog.FileName = "Preview.png";
             //openFileDialog.Filter = "PNG Files: (*.png)|*.png";
@@ -17503,7 +17736,7 @@ namespace Watch_Face_Editor
                         break;
                 }
             }
-            if (FileName != null && FullFileDir != null)
+            if (FileName != null && ProjectDir != null)
             {
                 button_Converting.Enabled = true;
                 label_ConvertingHelp.Visible = false;
@@ -17601,7 +17834,7 @@ namespace Watch_Face_Editor
 
         private void button_Converting_Click(object sender, EventArgs e)
         {
-            if (FileName != null && FullFileDir != null)
+            if (FileName != null && ProjectDir != null)
             {
                 // сохранение если файл не сохранен
                 if (SaveRequest() == DialogResult.Cancel) return;
@@ -17631,7 +17864,7 @@ namespace Watch_Face_Editor
                         suffix = "_GTS_4";
                         DeviceName = "GTS 4";
                         break;
-                    case "390 (Active))":
+                    case "390 (Active)":
                         suffix = "_Active";
                         DeviceName = "Active";
                         break;
@@ -17686,7 +17919,7 @@ namespace Watch_Face_Editor
 
                 scale = (float)(numericUpDown_ConvertingOutput_Custom.Value / numericUpDown_ConvertingInput_Custom.Value);
 
-                string newFullDirName = FullFileDir + suffix;
+                string newFullDirName = ProjectDir + suffix;
                 string newDirName = Path.GetFileName(newFullDirName);
                 if (Directory.Exists(newFullDirName))
                 {
@@ -17748,43 +17981,43 @@ namespace Watch_Face_Editor
                 });
                 File.WriteAllText(newFullFileNameJson, newJson, Encoding.UTF8);
 
-                string scriptFileName = Path.Combine(FullFileDir, "user_functions.js");
+                string scriptFileName = Path.Combine(ProjectDir, "user_functions.js");
                 if (File.Exists(scriptFileName))
                 {
                     string scriptFileNameNew = Path.Combine(newFullDirName, "user_functions.js");
                     File.Copy(scriptFileName, scriptFileNameNew);
                 }
-                scriptFileName = Path.Combine(FullFileDir, "user_script.js");
+                scriptFileName = Path.Combine(ProjectDir, "user_script.js");
                 if (File.Exists(scriptFileName))
                 {
                     string scriptFileNameNew = Path.Combine(newFullDirName, "user_script.js");
                     File.Copy(scriptFileName, scriptFileNameNew);
                 }
-                scriptFileName = Path.Combine(FullFileDir, "user_script_start.js");
+                scriptFileName = Path.Combine(ProjectDir, "user_script_start.js");
                 if (File.Exists(scriptFileName))
                 {
                     string scriptFileNameNew = Path.Combine(newFullDirName, "user_script_start.js");
                     File.Copy(scriptFileName, scriptFileNameNew);
                 }
-                scriptFileName = Path.Combine(FullFileDir, "user_script_end.js");
+                scriptFileName = Path.Combine(ProjectDir, "user_script_end.js");
                 if (File.Exists(scriptFileName))
                 {
                     string scriptFileNameNew = Path.Combine(newFullDirName, "user_script_end.js");
                     File.Copy(scriptFileName, scriptFileNameNew);
                 }
-                scriptFileName = Path.Combine(FullFileDir, "resume_call.js");
+                scriptFileName = Path.Combine(ProjectDir, "resume_call.js");
                 if (File.Exists(scriptFileName))
                 {
                     string scriptFileNameNew = Path.Combine(newFullDirName, "resume_call.js");
                     File.Copy(scriptFileName, scriptFileNameNew);
                 }
-                scriptFileName = Path.Combine(FullFileDir, "pause_call.js");
+                scriptFileName = Path.Combine(ProjectDir, "pause_call.js");
                 if (File.Exists(scriptFileName))
                 {
                     string scriptFileNameNew = Path.Combine(newFullDirName, "pause_call.js");
                     File.Copy(scriptFileName, scriptFileNameNew);
                 }
-                scriptFileName = Path.Combine(FullFileDir, "Preview.States");
+                scriptFileName = Path.Combine(ProjectDir, "Preview.States");
                 if (File.Exists(scriptFileName))
                 {
                     string scriptFileNameNew = Path.Combine(newFullDirName, "Preview.States");
@@ -17792,7 +18025,7 @@ namespace Watch_Face_Editor
                 }
 
                 FileName = Path.GetFileName(newFullFileNameJson);
-                FullFileDir = Path.GetDirectoryName(newFullFileNameJson);
+                ProjectDir = Path.GetDirectoryName(newFullFileNameJson);
 
                 LoadJson(newFullFileNameJson);
 
@@ -17886,7 +18119,7 @@ namespace Watch_Face_Editor
                     DataGridView dataGridView = sourceControl as DataGridView;
 
                     if (dataGridView.CurrentCell == null) e.Cancel = true;
-                    if (FullFileDir != null && Directory.Exists(FullFileDir + @"\assets\"))
+                    if (ProjectDir != null && Directory.Exists(ProjectDir + @"\assets\"))
                     {
                         contextMenuStrip_RemoveImage.Items[1].Enabled = true;
                     }
@@ -17929,7 +18162,7 @@ namespace Watch_Face_Editor
         private void button_PreviewStates_PathGet_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = FullFileDir;
+            openFileDialog.InitialDirectory = ProjectDir;
             openFileDialog.FileName = "Preview.States";
             openFileDialog.Filter = "PreviewStates file | *.States";
             //openFileDialog.Filter = "Json files (*.json) | *.json";
@@ -17958,7 +18191,7 @@ namespace Watch_Face_Editor
 
         private void обновитьСписокИзображенийToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(FullFileDir != null && Directory.Exists(FullFileDir + @"\assets\")) LoadImage(FullFileDir + @"\assets\");
+            if(ProjectDir != null && Directory.Exists(ProjectDir + @"\assets\")) LoadImage(ProjectDir + @"\assets\");
             HideAllElemenrOptions();
             ResetHighlightState("");
         }
@@ -17966,10 +18199,10 @@ namespace Watch_Face_Editor
         private void button_Add_Anim_Images_Click(object sender, EventArgs e)
         {
             Logger.WriteLine("* Add_Anim_Images");
-            if (FullFileDir == null) return;
+            if (ProjectDir == null) return;
 
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            //openFileDialog.InitialDirectory = FullFileDir;
+            //openFileDialog.InitialDirectory = ProjectDir;
             openFileDialog.FileName = FileName;
             openFileDialog.Filter = Properties.FormStrings.FilterPng;
             //openFileDialog.Filter = "Json files (*.json) | *.json";
@@ -17979,11 +18212,11 @@ namespace Watch_Face_Editor
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 //FileName = Path.GetFileName(openFileDialog.FileName);
-                //FullFileDir = Path.GetDirectoryName(openFileDialog.FileName);
+                //ProjectDir = Path.GetDirectoryName(openFileDialog.FileName);
 
                 Logger.WriteLine("* Add_Images_Click");
-                string dirImgName = FullFileDir + @"\assets\";
-                string dirName = FullFileDir + @"\assets\animation\";
+                string dirImgName = ProjectDir + @"\assets\";
+                string dirName = ProjectDir + @"\assets\animation\";
                 if (!Directory.Exists(dirName)) Directory.CreateDirectory(dirName);
                 foreach (string fileFullName in openFileDialog.FileNames)
                 {
@@ -18112,7 +18345,7 @@ namespace Watch_Face_Editor
             if (SaveRequest() == DialogResult.Cancel) return;
 
             //string subPath = Application.StartupPath + @"\Watch_face\";
-            string subPath = Path.GetDirectoryName(FullFileDir);
+            string subPath = Path.GetDirectoryName(ProjectDir);
             if (!Directory.Exists(subPath)) Directory.CreateDirectory(subPath);
             CommonOpenFileDialog dialog = new CommonOpenFileDialog();
             dialog.IsFolderPicker = true;
@@ -18120,11 +18353,11 @@ namespace Watch_Face_Editor
             dialog.InitialDirectory = subPath;
             dialog.EnsureValidNames = false;
             dialog.Title = Properties.FormStrings.Dialog_Title_Save_As;
-            if (dialog.ShowDialog() == CommonFileDialogResult.Ok && FullFileDir != null)
+            if (dialog.ShowDialog() == CommonFileDialogResult.Ok && ProjectDir != null)
             {
                 Logger.WriteLine("* Project_SaveAs_Click");
                 string fullfilename = Path.GetFileNameWithoutExtension(dialog.FileName);
-                string assetsDir = Path.Combine(FullFileDir, "assets");
+                string assetsDir = Path.Combine(ProjectDir, "assets");
                 fullfilename = Path.Combine(dialog.FileName, fullfilename) + ".json";
                 string dirName = Path.GetDirectoryName(fullfilename) + @"\assets\";
                 if (Directory.Exists(dirName))
@@ -18137,10 +18370,10 @@ namespace Watch_Face_Editor
                 }      
                 if (Path.GetExtension(fullfilename) != ".json") fullfilename = fullfilename + ".json";
                 FileName = Path.GetFileName(fullfilename);
-                FullFileDir = Path.GetDirectoryName(fullfilename);
+                ProjectDir = Path.GetDirectoryName(fullfilename);
                 if (Directory.Exists(assetsDir))
                 {
-                    string newAssetsDir = Path.Combine(FullFileDir, "assets");
+                    string newAssetsDir = Path.Combine(ProjectDir, "assets");
                     if (!Directory.Exists(newAssetsDir)) Directory.CreateDirectory(newAssetsDir);
 
                     //Создать идентичное дерево каталогов
@@ -18253,6 +18486,67 @@ namespace Watch_Face_Editor
         private void numericUpDown_ARGB_color_count_ValueChanged(object sender, EventArgs e)
         {
             radioButton_Settings_CheckedChanged(sender, e);
+        }
+
+        private void uCtrl_Text_SystemFont_Opt_AddFont_Click(object sender, EventArgs eventArgs)
+        {
+            string fonts_path = Path.Combine(ProjectDir, "assets", "fonts");
+            if (!Directory.Exists(fonts_path)) Directory.CreateDirectory(fonts_path);
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Fonts files (*.ttf) | *.ttf";
+            openFileDialog.Filter = Properties.FormStrings.Dialog_FontFilter;
+            openFileDialog.RestoreDirectory = true;
+            openFileDialog.Multiselect = false;
+            openFileDialog.Title = Properties.FormStrings.Dialog_Title_Font_Add;
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    string fileFullName = openFileDialog.FileName;
+                    string fileName = Path.GetFileName(fileFullName);
+                    string newFileName = Path.Combine(fonts_path, fileName);
+                    if (File.Exists(newFileName))
+                    {
+                        DialogResult dialogResult = MessageBox.Show(Properties.FormStrings.Message_Warning_Font_Exist1
+                            + fileName + Environment.NewLine + Properties.FormStrings.Message_Warning_Font_Exist2,
+                            Properties.FormStrings.Message_Warning_Caption,
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+                        if (dialogResult == DialogResult.Yes) 
+                        { 
+                            File.Copy(fileFullName, newFileName, true);
+                            PreviewImage();
+                        }
+                    }
+                    else
+                    {
+                        File.Copy(fileFullName, newFileName, true);
+                        LoadFonts(Path.Combine(ProjectDir, "assets"));
+                        string fontFileName = Path.GetFileName(newFileName);
+                        uCtrl_Text_SystemFont_Opt.SetFont(fontFileName);
+                    }
+
+                }
+                catch
+                {
+                    MessageBox.Show("Ошибка добавления шрифта ");
+                }
+            }
+
+        }
+
+        private void uCtrl_Text_SystemFont_Opt_DelFont_Click(object sender, EventArgs eventArgs, string fontName)
+        {
+            if(File.Exists(Path.Combine(ProjectDir, "assets", "fonts", fontName)))
+            {
+                try
+                {
+                    File.Delete(Path.Combine(ProjectDir, "assets", "fonts", fontName));
+                    LoadFonts(Path.Combine(ProjectDir, "assets"));
+                }
+                catch (Exception)
+                {
+                }
+            }
         }
     }
 }

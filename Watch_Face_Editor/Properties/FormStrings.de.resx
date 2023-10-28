@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Dialog_FontFilter" xml:space="preserve">
+    <value>Schriftart (*.ttf) | *.ttf</value>
+  </data>
   <data name="Dialog_Title_Dial_Settings" xml:space="preserve">
     <value>Auswählen einer Einstellungsdatei für das Zifferblatt</value>
+  </data>
+  <data name="Dialog_Title_Font_Add" xml:space="preserve">
+    <value>Wähle Schriftart</value>
   </data>
   <data name="Dialog_Title_Image" xml:space="preserve">
     <value>Bilddateien auswählen</value>
@@ -335,6 +341,12 @@
   </data>
   <data name="Message_Warning_Caption" xml:space="preserve">
     <value>Warnung</value>
+  </data>
+  <data name="Message_Warning_Font_Exist1" xml:space="preserve">
+    <value>Das Projekt hat bereits eine Schriftart:</value>
+  </data>
+  <data name="Message_Warning_Font_Exist2" xml:space="preserve">
+    <value>Mit der neuen Schriftart ersetzen?</value>
   </data>
   <data name="Message_Warning_Image_Exist1" xml:space="preserve">
     <value>Das Projekt hat bereits ein Bild:</value>

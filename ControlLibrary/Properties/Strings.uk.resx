@@ -117,12 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Dialog_FontFilter" xml:space="preserve">
-    <value>Файл шрифту (*.ttf) | *.ttf</value>
-  </data>
-  <data name="Dialog_Title_Font_Add" xml:space="preserve">
-    <value>Виберіть файл шрифту</value>
-  </data>
   <data name="Message_Error_Caption" xml:space="preserve">
     <value>Помилка</value>
   </data>
@@ -131,12 +125,6 @@
   </data>
   <data name="Message_Warning_Caption" xml:space="preserve">
     <value>Попередження</value>
-  </data>
-  <data name="Message_Warning_Font_Exist1" xml:space="preserve">
-    <value>У проєкті вже існує шрифт: </value>
-  </data>
-  <data name="Message_Warning_Font_Exist2" xml:space="preserve">
-    <value>Замінити його новим шрифтом?</value>
   </data>
   <data name="SystemFont" xml:space="preserve">
     <value>Системний шрифт</value>

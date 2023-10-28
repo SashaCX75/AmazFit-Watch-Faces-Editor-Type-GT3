@@ -117,6 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Index.HeaderText" xml:space="preserve">
+    <value>N°</value>
+  </data>
+  <data name="Button.HeaderText" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="button_add.Text" xml:space="preserve">
+    <value>Ajouter</value>
+  </data>
+  <data name="button_del.Text" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="label06.Text" xml:space="preserve">
+    <value>Hauteur du bouton</value>
+  </data>
+  <data name="label07.Text" xml:space="preserve">
+    <value>Largeur du bouton</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -254,19 +272,46 @@
   <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
     <value>203, 82</value>
   </data>
-  <data name="label01.Text" xml:space="preserve">
-    <value>Première image</value>
-  </data>
   <data name="label02.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 13</value>
   </data>
   <data name="label02.Text" xml:space="preserve">
     <value>Coordonnées</value>
   </data>
-  <data name="label03.Text" xml:space="preserve">
-    <value>Nombre d'images</value>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Bouton appuyé</value>
   </data>
-  <data name="checkBox_shortcut.Text" xml:space="preserve">
-    <value>Raccourcis</value>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Condition normale</value>
+  </data>
+  <data name="groupBox_image.Text" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Bouton appuyé</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Rayon</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Condition normale</value>
+  </data>
+  <data name="groupBox_color.Text" xml:space="preserve">
+    <value>Couleur</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Taille du texte</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Texte</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Couleur du texte</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>241, 26</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>* Pour ajouter des fonctions en appuyant sur un bouton, double-cliquez sur la ligne avec le bouton</value>
   </data>
 </root>

@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="button_SaveAs.Text" xml:space="preserve">
-    <value>Salva il Progetto come..</value>
-  </data>
   <data name="Number.HeaderText" xml:space="preserve">
     <value>N°</value>
   </data>
@@ -166,11 +163,20 @@
   <data name="button_Add_Images.Text" xml:space="preserve">
     <value>Aggiungi immagini</value>
   </data>
-  <data name="button_SaveJson.Text" xml:space="preserve">
-    <value>Salva Json</value>
+  <data name="button_New_Project.Text" xml:space="preserve">
+    <value>Crea un nuovo progetto</value>
+  </data>
+  <data name="button_JSON.Text" xml:space="preserve">
+    <value>Apri il Progetto</value>
+  </data>
+  <data name="button_SaveAs.Text" xml:space="preserve">
+    <value>Salva il Progetto come..</value>
   </data>
   <data name="button_OpenDir.Text" xml:space="preserve">
     <value>Apri la Directory</value>
+  </data>
+  <data name="button_SaveJson.Text" xml:space="preserve">
+    <value>Salva Json</value>
   </data>
   <data name="comboBox_AddBackground.Items" xml:space="preserve">
     <value>Sfondo</value>
@@ -204,6 +210,9 @@
   </data>
   <data name="comboBox_AddSystem.Items9" xml:space="preserve">
     <value>Immagine in alto</value>
+  </data>
+  <data name="comboBox_AddSystem.Items10" xml:space="preserve">
+    <value>Tasti</value>
   </data>
   <data name="comboBox_AddAir.Items" xml:space="preserve">
     <value>Ambiente</value>
@@ -352,12 +361,6 @@
   <data name="tabPage_Show_Set.Text" xml:space="preserve">
     <value>Valori per l'anteprima</value>
   </data>
-  <data name="button_New_Project.Text" xml:space="preserve">
-    <value>Crea un nuovo progetto</value>
-  </data>
-  <data name="button_JSON.Text" xml:space="preserve">
-    <value>Apri il Progetto</value>
-  </data>
   <data name="tabPage_Edit.Text" xml:space="preserve">
     <value>Modifica</value>
   </data>
@@ -410,7 +413,7 @@
     <value>Ripristina</value>
   </data>
   <data name="numericUpDown_Gif_Speed.Location" type="System.Drawing.Point, System.Drawing">
-    <value>550, 253</value>
+    <value>569, 362</value>
   </data>
   <data name="checkBox_AllWidgetsInGif.Size" type="System.Drawing.Size, System.Drawing">
     <value>417, 17</value>
@@ -594,6 +597,11 @@ più carico di sistema)</value>
   <data name="tabPage_Tips.Text" xml:space="preserve">
     <value>Consigli per l'uso</value>
   </data>
+  <data name="label_donate.Text" xml:space="preserve">
+    <value>
+Dona all'autore
+PayPal: sashacx75@gmail.com</value>
+  </data>
   <data name="label415.Size" type="System.Drawing.Size, System.Drawing">
     <value>125, 13</value>
   </data>
@@ -611,11 +619,6 @@ più carico di sistema)</value>
   </data>
   <data name="label413.Text" xml:space="preserve">
     <value>Utilità per convertire le immagini dai quadranti orologio al normale formato PNG:</value>
-  </data>
-  <data name="label_donate.Text" xml:space="preserve">
-    <value>
-Dona all'autore
-PayPal: sashacx75@gmail.com</value>
   </data>
   <data name="label409.Text" xml:space="preserve">
     <value>Questo programma è un editor per le watch faces per GTR 3, GTS 3. Poiché le watch faces sono programmi quasi a tutti gli effetti, è impossibile implementare tutte le funzionalità disponibili in questo editor. L'editor dovrebbe riconoscere la maggior parte delle watch faces create al suo interno o su dev.huami.com. Ma non è in grado di riconoscere i quadranti dall'app Zepp.</value>
@@ -684,8 +687,8 @@ PayPal: sashacx75@gmail.com</value>
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACm
-        DQAAAk1TRnQBSQFMAgEBBgEAARgBLgEcAS4BEAEAARABAAT/AQkBEAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
+        DQAAAk1TRnQBSQFMAgEBBgEAASQBLgEkAS4BEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -743,7 +746,7 @@ PayPal: sashacx75@gmail.com</value>
         AX4B4QEPAQ0BhgGAAQEBPgF+AfABDwEGAcICAAI+AfgBHwFDAWABAAEgAT8BPgH4AT8BYQGwAQABQAE/
         AR4B4AEnATAB2AEAAYABPAEeAeEBAwFYAWwBAQEAATwBHgHhAQcBbAE2AQEBAAE/Af4B4QEfATYBGgEB
         AwAB8AEfAQsBDAQAAfgBPwFNAYYBgAEBAgAB/AE/AQIBwgGAAQEBBAEAAf4BHwFDAWABwAEDAYQBAAH+
-        AZ8CAAHwAQ8B9wHnAf4BHxYACw==
+        AZ8CAAHwAQ8B9wHnAf4BHws=
 </value>
   </data>
   <data name="button_pack_zip.Text" xml:space="preserve">
@@ -2008,8 +2011,5 @@ PayPal: sashacx75@gmail.com</value>
         AAAAAAAAAAAAAO+BPCbvgT1I74I+SO+BPSYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8PwAA4AcAAMAD
         AACAAQAAgAEAAIABAAAAAAAAAAAAAAAAAAAAAAAAgAEAAIABAACAAQAAwAMAAOAHAAD8PwAA
 </value>
-  </data>
-  <data name="comboBox_AddSystem.Items10" xml:space="preserve">
-    <value>Tasti</value>
   </data>
 </root>

@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Dialog_FontFilter" xml:space="preserve">
+    <value>File Caratteri (.ttf) *.ttf</value>
+  </data>
   <data name="Dialog_Title_Dial_Settings" xml:space="preserve">
     <value>Seleziona il file delle impostazioni della watch face</value>
+  </data>
+  <data name="Dialog_Title_Font_Add" xml:space="preserve">
+    <value>Seleziona il file dei Caratteri</value>
   </data>
   <data name="Dialog_Title_Image" xml:space="preserve">
     <value>Seleziona i files delle immagini</value>
@@ -337,6 +343,12 @@ Il numero di immagini per la frequenza cardiaca dovrebbe essere 6.</value>
   </data>
   <data name="Message_Warning_Caption" xml:space="preserve">
     <value>Avvertimento</value>
+  </data>
+  <data name="Message_Warning_Font_Exist1" xml:space="preserve">
+    <value>Il progetto ha già un font:</value>
+  </data>
+  <data name="Message_Warning_Font_Exist2" xml:space="preserve">
+    <value>Sostituire con un nuovo font?</value>
   </data>
   <data name="Message_Warning_Image_Exist1" xml:space="preserve">
     <value>Esiste già un'immagine nel progetto:</value>

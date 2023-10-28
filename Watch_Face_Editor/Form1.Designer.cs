@@ -1662,6 +1662,8 @@ namespace Watch_Face_Editor
             this.uCtrl_Text_SystemFont_Opt.Name = "uCtrl_Text_SystemFont_Opt";
             this.uCtrl_Text_SystemFont_Opt.UserFont = false;
             this.uCtrl_Text_SystemFont_Opt.ValueChanged += new ControlLibrary.UCtrl_Text_SystemFont_Opt.ValueChangedHandler(this.uCtrl_Text_SystemFont_Opt_ValueChanged);
+            this.uCtrl_Text_SystemFont_Opt.AddFont_Click += new ControlLibrary.UCtrl_Text_SystemFont_Opt.AddFont_ClickHandler(this.uCtrl_Text_SystemFont_Opt_AddFont_Click);
+            this.uCtrl_Text_SystemFont_Opt.DelFont_Click += new ControlLibrary.UCtrl_Text_SystemFont_Opt.DelFont_ClickHandler(this.uCtrl_Text_SystemFont_Opt_DelFont_Click);
             // 
             // uCtrl_Text_Weather_Opt
             // 
@@ -2963,8 +2965,10 @@ namespace Watch_Face_Editor
             this.Controls.Add(this.checkBox_WebB);
             this.Controls.Add(this.checkBox_WebW);
             this.Controls.Add(this.button_PreviewBig);
+            this.DataBindings.Add(new System.Windows.Forms.Binding("Location", global::Watch_Face_Editor.Properties.Settings.Default, "FormLocation", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.KeyPreview = true;
+            this.Location = global::Watch_Face_Editor.Properties.Settings.Default.FormLocation;
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);

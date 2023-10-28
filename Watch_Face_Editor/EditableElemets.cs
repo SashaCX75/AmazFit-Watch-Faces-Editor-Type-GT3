@@ -2888,7 +2888,7 @@ namespace Watch_Face_Editor
             }
 
             Optional_Types_List optional_types_list = Watch_Face.Editable_Elements.Watchface_edit_group[selected_zone].optional_types_list[index];
-            if (FileName != null && FullFileDir != null) // проект уже сохранен
+            if (FileName != null && ProjectDir != null) // проект уже сохранен
             {
                 // формируем картинку для предпросмотра
                 Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
@@ -2957,11 +2957,11 @@ namespace Watch_Face_Editor
                 int i = 1;
                 string tempName = "ez(" + (selected_zone + 1).ToString() + ")_" + optional_types_list.type;
                 string NamePreview = tempName + ".png";
-                string PathPreview = FullFileDir + @"\assets\" + NamePreview;
+                string PathPreview = ProjectDir + @"\assets\" + NamePreview;
                 while (File.Exists(PathPreview) && i < 10)
                 {
                     NamePreview = tempName + "_" + i.ToString() + ".png";
-                    PathPreview = FullFileDir + @"\assets\" + NamePreview;
+                    PathPreview = ProjectDir + @"\assets\" + NamePreview;
                     i++;
                     if (i > 9)
                     {
@@ -3017,7 +3017,7 @@ namespace Watch_Face_Editor
 
             if (optional_types_list.preview.Length > 0)
             {
-                string preview = FullFileDir + @"\assets\" +
+                string preview = ProjectDir + @"\assets\" +
                     optional_types_list.preview + ".png";
                 if (!File.Exists(preview))
                 {

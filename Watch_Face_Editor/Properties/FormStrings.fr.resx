@@ -117,8 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Dialog_Title_Dial_Settings" xml:space="preserve">
-    <value>Sélectionnez le fichier de paramètres de cadran de montre</value>
+  <data name="Dialog_FontFilter" xml:space="preserve">
+    <value>Fichier de police (*.ttf) | *.ttf</value>
+  </data>
+  <data name="Dialog_Title_Font_Add" xml:space="preserve">
+    <value>Selectionner le fichier de police</value>
   </data>
   <data name="Dialog_Title_Image" xml:space="preserve">
     <value>Sélectionnez les fichiers d'image</value>
@@ -183,8 +186,35 @@
   <data name="Form_PreviewX" xml:space="preserve">
     <value>Aperçu [X =</value>
   </data>
+  <data name="Img_Convert_Error_NoPalette" xml:space="preserve">
+    <value>Carte des couleurs manquante</value>
+  </data>
+  <data name="Img_Convert_Error_Not32bit" xml:space="preserve">
+    <value>L'image ne doit pas être monochrome et doit être au format 32 bits</value>
+  </data>
+  <data name="Img_Convert_Error_NotSave1" xml:space="preserve">
+    <value>Fichier</value>
+  </data>
+  <data name="Img_Convert_Error_NotSave2" xml:space="preserve">
+    <value>n'a pas été sauvegardé.</value>
+  </data>
+  <data name="Img_Convert_Error_ReadErr" xml:space="preserve">
+    <value>Erreur de traitement d'image</value>
+  </data>
+  <data name="Img_Convert_Error_SaveImg" xml:space="preserve">
+    <value>Essayez de sauvegarder l'image ?</value>
+  </data>
+  <data name="Img_Convert_Error_WrongImg" xml:space="preserve">
+    <value>Format de fichier source non valide.</value>
+  </data>
   <data name="Message_AnimationAOD_Text" xml:space="preserve">
     <value>Vous ne pouvez pas ajouter d'animation à l'écran AOD.</value>
+  </data>
+  <data name="Message_ARGB_Line1" xml:space="preserve">
+    <value>La conversion d'images au format ARGB prend plus de temps.</value>
+  </data>
+  <data name="Message_ARGB_Line2" xml:space="preserve">
+    <value>Êtes-vous sûr de vouloir convertir les images au format ARGB ?</value>
   </data>
   <data name="Message_ConvertingCompleted_Text" xml:space="preserve">
     <value>Un nouveau cadran a été créé</value>
@@ -200,6 +230,9 @@
   </data>
   <data name="Message_Delet_Text11" xml:space="preserve">
     <value>Êtes-vous sûr de vouloir supprimer définitivement les fichiers :</value>
+  </data>
+  <data name="Message_Delet_Text2" xml:space="preserve">
+    <value>Sélectionnez le fichier de paramètres de cadran de montre</value>
   </data>
   <data name="Message_Delet_Text21" xml:space="preserve">
     <value>?</value>
@@ -233,6 +266,9 @@
   </data>
   <data name="Message_GoToFile_Text" xml:space="preserve">
     <value>Aller au dossier ?</value>
+  </data>
+  <data name="Message_HR_Image_Count_Error" xml:space="preserve">
+    <value>Le nombre d'images pour afficher la fréquence cardiaque doit être de 6.</value>
   </data>
   <data name="Message_Image32bit" xml:space="preserve">
     <value>L'image ne doit pas être monochrome et doit être au format 32 bits</value>
@@ -309,6 +345,12 @@
   <data name="Message_Warning_Caption" xml:space="preserve">
     <value>Avertissement</value>
   </data>
+  <data name="Message_Warning_Font_Exist1" xml:space="preserve">
+    <value>Le projet a déjà une police :</value>
+  </data>
+  <data name="Message_Warning_Font_Exist2" xml:space="preserve">
+    <value>Remplacer par une nouvelle police ?</value>
+  </data>
   <data name="Message_Warning_Image_Exist1" xml:space="preserve">
     <value>Une image existe déjà dans le projet :</value>
   </data>
@@ -318,11 +360,17 @@
   <data name="Message_Warning_Information" xml:space="preserve">
     <value>Informations</value>
   </data>
+  <data name="Message_Wrong_ColorScheme" xml:space="preserve">
+    <value>Une palette de couleurs inconnue est spécifiée pour le modèle :</value>
+  </data>
   <data name="Message_Wrong_Original_Image" xml:space="preserve">
     <value>Format d'image d'origine non valide</value>
   </data>
   <data name="Message_Wrong_Preview_Exists" xml:space="preserve">
     <value>Échec de la création de l'image d'aperçu. Peut-être qu'une telle image existe déjà.</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value>"?</value>
   </data>
   <data name="Tip_Background" xml:space="preserve">
     <value>Fond</value>

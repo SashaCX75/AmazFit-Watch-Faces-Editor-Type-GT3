@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="button_SaveAs.Text" xml:space="preserve">
-    <value>Save project as...</value>
-  </data>
   <data name="Number.HeaderText" xml:space="preserve">
     <value>#</value>
   </data>
@@ -163,11 +160,20 @@
   <data name="button_Add_Images.Text" xml:space="preserve">
     <value>Add images</value>
   </data>
-  <data name="button_SaveJson.Text" xml:space="preserve">
-    <value>Save Json</value>
+  <data name="button_New_Project.Text" xml:space="preserve">
+    <value>Create a new project</value>
+  </data>
+  <data name="button_JSON.Text" xml:space="preserve">
+    <value>Open project</value>
+  </data>
+  <data name="button_SaveAs.Text" xml:space="preserve">
+    <value>Save project as...</value>
   </data>
   <data name="button_OpenDir.Text" xml:space="preserve">
     <value>Open Folder</value>
+  </data>
+  <data name="button_SaveJson.Text" xml:space="preserve">
+    <value>Save Json</value>
   </data>
   <data name="comboBox_AddBackground.Items" xml:space="preserve">
     <value>Background</value>
@@ -352,12 +358,6 @@
   <data name="tabPage_Show_Set.Text" xml:space="preserve">
     <value>Data for preview</value>
   </data>
-  <data name="button_New_Project.Text" xml:space="preserve">
-    <value>Create a new project</value>
-  </data>
-  <data name="button_JSON.Text" xml:space="preserve">
-    <value>Open project</value>
-  </data>
   <data name="tabPage_Edit.Text" xml:space="preserve">
     <value>Edit</value>
   </data>
@@ -431,7 +431,7 @@
     <value>Convert images without loss of quality</value>
   </data>
   <data name="button_SavePNG_button.Location" type="System.Drawing.Point, System.Drawing">
-    <value>240, 14</value>
+    <value>255, 14</value>
   </data>
   <data name="button_SavePNG_button.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 23</value>
@@ -500,7 +500,7 @@
     <value>If possible, display time in 12-hour format</value>
   </data>
   <data name="button_SavePNG_shortcut.Location" type="System.Drawing.Point, System.Drawing">
-    <value>240, 14</value>
+    <value>255, 14</value>
   </data>
   <data name="button_SavePNG_shortcut.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 23</value>
@@ -746,7 +746,7 @@ more system load)</value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
-        DQAAAk1TRnQBSQFMAgEBBgEAAUgBKQFIASkBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAAVABKQFQASkBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA

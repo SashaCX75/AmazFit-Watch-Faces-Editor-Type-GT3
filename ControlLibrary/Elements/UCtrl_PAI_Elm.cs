@@ -17,6 +17,7 @@ namespace ControlLibrary
         bool highlight_segments = false;
         bool highlight_number = false;
         bool highlight_number_target = false;
+        bool highlight_number_target_font = false;
         bool highlight_text_rotation_target = false;
         bool highlight_text_circle_target = false;
         bool highlight_pointer = false;
@@ -98,6 +99,7 @@ namespace ControlLibrary
             highlight_segments = false;
             highlight_number = false;
             highlight_number_target = false;
+            highlight_number_target_font = false;
             highlight_text_rotation_target = false;
             highlight_text_circle_target = false;
             highlight_pointer = false;
@@ -160,6 +162,19 @@ namespace ControlLibrary
                 panel_Number_Target.BackColor = SystemColors.Control;
                 button_Number_Target.FlatAppearance.MouseOverBackColor = SystemColors.Control;
                 button_Number_Target.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_number_target_font)
+            {
+                panel_Number_Target_Font.BackColor = SystemColors.ActiveCaption;
+                button_Number_Target_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Number_Target_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Number_Target_Font.BackColor = SystemColors.Control;
+                button_Number_Target_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Number_Target_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
             if (highlight_text_rotation_target)
@@ -249,6 +264,9 @@ namespace ControlLibrary
             highlight_segments = false;
             highlight_number = false;
             highlight_number_target = false;
+            highlight_number_target_font = false;
+            highlight_text_rotation_target = false;
+            highlight_text_circle_target = true;
             highlight_pointer = false;
             highlight_circle_scale = false;
             highlight_linear_scale = false;
@@ -271,6 +289,9 @@ namespace ControlLibrary
             highlight_segments = true;
             highlight_number = false;
             highlight_number_target = false;
+            highlight_number_target_font = false;
+            highlight_text_rotation_target = false;
+            highlight_text_circle_target = true;
             highlight_pointer = false;
             highlight_circle_scale = false;
             highlight_linear_scale = false;
@@ -293,6 +314,9 @@ namespace ControlLibrary
             highlight_segments = false;
             highlight_number = true;
             highlight_number_target = false;
+            highlight_number_target_font = false;
+            highlight_text_rotation_target = false;
+            highlight_text_circle_target = true;
             highlight_pointer = false;
             highlight_circle_scale = false;
             highlight_linear_scale = false;
@@ -315,6 +339,34 @@ namespace ControlLibrary
             highlight_segments = false;
             highlight_number = false;
             highlight_number_target = true;
+            highlight_number_target_font = false;
+            highlight_text_rotation_target = false;
+            highlight_text_circle_target = true;
+            highlight_pointer = false;
+            highlight_circle_scale = false;
+            highlight_linear_scale = false;
+            highlight_icon = false;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Number_Target_Font_Click(object sender, EventArgs e)
+        {
+            selectedElement = "Number_Target_Font";
+
+            highlight_images = false;
+            highlight_segments = false;
+            highlight_number = false;
+            highlight_number_target = false;
+            highlight_number_target_font = true;
+            highlight_text_rotation_target = false;
+            highlight_text_circle_target = false;
             highlight_pointer = false;
             highlight_circle_scale = false;
             highlight_linear_scale = false;
@@ -337,6 +389,7 @@ namespace ControlLibrary
             highlight_segments = false;
             highlight_number = false;
             highlight_number_target = false;
+            highlight_number_target_font = false;
             highlight_text_rotation_target = true;
             highlight_text_circle_target = false;
             highlight_pointer = false;
@@ -361,6 +414,7 @@ namespace ControlLibrary
             highlight_segments = false;
             highlight_number = false;
             highlight_number_target = false;
+            highlight_number_target_font = false;
             highlight_text_rotation_target = false;
             highlight_text_circle_target = true;
             highlight_pointer = false;
@@ -385,6 +439,9 @@ namespace ControlLibrary
             highlight_segments = false;
             highlight_number = false;
             highlight_number_target = false;
+            highlight_number_target_font = false;
+            highlight_text_rotation_target = false;
+            highlight_text_circle_target = true;
             highlight_pointer = true;
             highlight_circle_scale = false;
             highlight_linear_scale = false;
@@ -407,6 +464,9 @@ namespace ControlLibrary
             highlight_segments = false;
             highlight_number = false;
             highlight_number_target = false;
+            highlight_number_target_font = false;
+            highlight_text_rotation_target = false;
+            highlight_text_circle_target = true;
             highlight_pointer = false;
             highlight_circle_scale = true;
             highlight_linear_scale = false;
@@ -429,6 +489,9 @@ namespace ControlLibrary
             highlight_segments = false;
             highlight_number = false;
             highlight_number_target = false;
+            highlight_number_target_font = false;
+            highlight_text_rotation_target = false;
+            highlight_text_circle_target = true;
             highlight_pointer = false;
             highlight_circle_scale = false;
             highlight_linear_scale = true;
@@ -451,6 +514,9 @@ namespace ControlLibrary
             highlight_segments = false;
             highlight_number = false;
             highlight_number_target = false;
+            highlight_number_target_font = false;
+            highlight_text_rotation_target = false;
+            highlight_text_circle_target = true;
             highlight_pointer = false;
             highlight_circle_scale = false;
             highlight_linear_scale = false;
@@ -706,6 +772,9 @@ namespace ControlLibrary
                 case "Number_Target":
                     checkBox_Number_Target.Checked = status;
                     break;
+                case "Number_Target_Font":
+                    checkBox_Number_Target_Font.Checked = status;
+                    break;
                 case "Text_rotation_Target":
                     checkBox_Text_rotation_Target.Checked = status;
                     break;
@@ -751,6 +820,9 @@ namespace ControlLibrary
                             break;
                         case "Number_Target":
                             panel = panel_Number_Target;
+                            break;
+                        case "Number_Target_Font":
+                            panel = panel_Number_Target_Font;
                             break;
                         case "Text_rotation_Target":
                             panel = panel_Text_rotation_Target;
@@ -824,6 +896,9 @@ namespace ControlLibrary
                     case "panel_Number_Target":
                         elementOptions.Add("Number_Target", count - i);
                         break;
+                    case "panel_Number_Target_Font":
+                        elementOptions.Add("Number_Target_Font", count - i);
+                        break;
                     case "panel_Text_rotation_Target":
                         elementOptions.Add("Text_rotation_Target", count - i);
                         break;
@@ -852,22 +927,24 @@ namespace ControlLibrary
             setValue = true;
 
             Dictionary<int, string> elementOptions = new Dictionary<int, string>();
-            elementOptions.Add(1, "Icon");
-            elementOptions.Add(2, "Linear_Scale");
-            elementOptions.Add(3, "Circle_Scale");
-            elementOptions.Add(4, "Pointer");
-            elementOptions.Add(5, "Text_circle_Target");
-            elementOptions.Add(6, "Text_rotation_Target");
-            elementOptions.Add(7, "Number_Target");
-            elementOptions.Add(8, "Number");
-            elementOptions.Add(9, "Segments");
-            elementOptions.Add(10, "Images");
+            int index = 1;
+            elementOptions.Add(index++, "Icon");
+            elementOptions.Add(index++, "Linear_Scale");
+            elementOptions.Add(index++, "Circle_Scale");
+            elementOptions.Add(index++, "Pointer");
+            elementOptions.Add(index++, "Text_circle_Target");
+            elementOptions.Add(index++, "Text_rotation_Target");
+            elementOptions.Add(index++, "Number_Target");
+            elementOptions.Add(index++, "Number");
+            elementOptions.Add(index++, "Segments");
+            elementOptions.Add(index++, "Images");
             SetOptionsPosition(elementOptions);
 
             checkBox_Images.Checked = false;
             checkBox_Segments.Checked = false;
             checkBox_Number.Checked = false;
             checkBox_Number_Target.Checked = false;
+            checkBox_Number_Target_Font.Checked = false;
             checkBox_Text_rotation_Target.Checked = false;
             checkBox_Text_circle_Target.Checked = false;
             checkBox_Pointer.Checked = false;

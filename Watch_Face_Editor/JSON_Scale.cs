@@ -270,9 +270,11 @@ namespace Watch_Face_Editor
                     Scale_IMG_LEVEL(elementSteps.Images, scale);
                     Scale_IMG_PROGRESS(elementSteps.Segments, scale);
                     Scale_IMG_NUMBER(elementSteps.Number, scale);
+                    Scale_TEXT(elementSteps.Number_Font, scale);
                     Scale_IMG_NUMBER(elementSteps.Text_rotation, scale);
                     Scale_Text_Circle(elementSteps.Text_circle, scale);
                     Scale_IMG_NUMBER(elementSteps.Number_Target, scale);
+                    Scale_TEXT(elementSteps.Number_Target_Font, scale);
                     Scale_IMG_NUMBER(elementSteps.Text_rotation_Target, scale);
                     Scale_Text_Circle(elementSteps.Text_circle_Target, scale);
                     Scale_IMG_POINTER(elementSteps.Pointer, scale);
@@ -285,6 +287,7 @@ namespace Watch_Face_Editor
                     Scale_IMG_LEVEL(elementBattery.Images, scale);
                     Scale_IMG_PROGRESS(elementBattery.Segments, scale);
                     Scale_IMG_NUMBER(elementBattery.Number, scale);
+                    Scale_TEXT(elementBattery.Number_Font, scale);
                     Scale_IMG_NUMBER(elementBattery.Text_rotation, scale);
                     Scale_Text_Circle(elementBattery.Text_circle, scale);
                     Scale_IMG_POINTER(elementBattery.Pointer, scale);
@@ -297,9 +300,11 @@ namespace Watch_Face_Editor
                     Scale_IMG_LEVEL(elementCalories.Images, scale);
                     Scale_IMG_PROGRESS(elementCalories.Segments, scale);
                     Scale_IMG_NUMBER(elementCalories.Number, scale);
+                    Scale_TEXT(elementCalories.Number_Font, scale);
                     Scale_IMG_NUMBER(elementCalories.Text_rotation, scale);
                     Scale_Text_Circle(elementCalories.Text_circle, scale);
                     Scale_IMG_NUMBER(elementCalories.Number_Target, scale);
+                    Scale_TEXT(elementCalories.Number_Target_Font, scale);
                     Scale_IMG_NUMBER(elementCalories.Text_rotation_Target, scale);
                     Scale_Text_Circle(elementCalories.Text_circle_Target, scale);
                     Scale_IMG_POINTER(elementCalories.Pointer, scale);
@@ -312,6 +317,7 @@ namespace Watch_Face_Editor
                     Scale_IMG_LEVEL(elementHeart.Images, scale);
                     Scale_IMG_PROGRESS(elementHeart.Segments, scale);
                     Scale_IMG_NUMBER(elementHeart.Number, scale);
+                    Scale_TEXT(elementHeart.Number_Font, scale);
                     Scale_IMG_NUMBER(elementHeart.Text_rotation, scale);
                     Scale_Text_Circle(elementHeart.Text_circle, scale);
                     Scale_IMG_POINTER(elementHeart.Pointer, scale);
@@ -324,7 +330,9 @@ namespace Watch_Face_Editor
                     Scale_IMG_LEVEL(elementPAI.Images, scale);
                     Scale_IMG_PROGRESS(elementPAI.Segments, scale);
                     Scale_IMG_NUMBER(elementPAI.Number, scale);
+                    Scale_TEXT(elementPAI.Number_Font, scale);
                     Scale_IMG_NUMBER(elementPAI.Number_Target, scale);
+                    Scale_TEXT(elementPAI.Number_Target_Font, scale);
                     Scale_IMG_NUMBER(elementPAI.Text_rotation_Target, scale);
                     Scale_Text_Circle(elementPAI.Text_circle_Target, scale);
                     Scale_IMG_POINTER(elementPAI.Pointer, scale);

@@ -713,6 +713,12 @@ namespace Watch_Face_Editor
         /// <summary>Шрифт</summary>
         public string font { get; set; } = "";
 
+        /// <summary>Центрировать горизонтально</summary>
+        public bool centreHorizontally { get; set; } = false;
+
+        /// <summary>Центрировать вертикально</summary>
+        public bool centreVertically { get; set; } = false;
+
         /// <summary>Основной экран или AOD</summary>
         public string show_level = "";
 
