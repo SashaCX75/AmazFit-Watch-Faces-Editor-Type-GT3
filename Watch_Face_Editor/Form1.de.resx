@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="button_SaveAs.Text" xml:space="preserve">
-    <value>Projekt speichern unter…</value>
-  </data>
   <data name="Number.HeaderText" xml:space="preserve">
     <value>#</value>
   </data>
@@ -166,11 +163,20 @@
   <data name="button_Add_Images.Text" xml:space="preserve">
     <value>Bilder hinzufügen</value>
   </data>
-  <data name="button_SaveJson.Text" xml:space="preserve">
-    <value>Json speichern</value>
+  <data name="button_New_Project.Text" xml:space="preserve">
+    <value>Ein neues Projekt erstellen</value>
+  </data>
+  <data name="button_JSON.Text" xml:space="preserve">
+    <value>Öffne Projekt</value>
+  </data>
+  <data name="button_SaveAs.Text" xml:space="preserve">
+    <value>Projekt speichern unter…</value>
   </data>
   <data name="button_OpenDir.Text" xml:space="preserve">
     <value>Öffne Ordner</value>
+  </data>
+  <data name="button_SaveJson.Text" xml:space="preserve">
+    <value>Json speichern</value>
   </data>
   <data name="comboBox_AddBackground.Items" xml:space="preserve">
     <value>Hintergrund</value>
@@ -204,6 +210,9 @@
   </data>
   <data name="comboBox_AddSystem.Items9" xml:space="preserve">
     <value>Oberes Bild</value>
+  </data>
+  <data name="comboBox_AddSystem.Items10" xml:space="preserve">
+    <value>Buttons</value>
   </data>
   <data name="comboBox_AddAir.Items" xml:space="preserve">
     <value>Luft</value>
@@ -352,12 +361,6 @@
   <data name="tabPage_Show_Set.Text" xml:space="preserve">
     <value>Daten für Vorschau</value>
   </data>
-  <data name="button_New_Project.Text" xml:space="preserve">
-    <value>Ein neues Projekt erstellen</value>
-  </data>
-  <data name="button_JSON.Text" xml:space="preserve">
-    <value>Öffne Projekt</value>
-  </data>
   <data name="tabPage_Edit.Text" xml:space="preserve">
     <value>Bearbeiten</value>
   </data>
@@ -476,7 +479,7 @@
     <value>Warnung beim Speichern einer JSON-Datei anzeigen</value>
   </data>
   <data name="comboBox_Language.Location" type="System.Drawing.Point, System.Drawing">
-    <value>457, 399</value>
+    <value>472, 509</value>
   </data>
   <data name="label356.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 13</value>
@@ -591,6 +594,10 @@ mehr Systembelastung)</value>
   <data name="tabPage_Tips.Text" xml:space="preserve">
     <value>Tipps für die Verwendung</value>
   </data>
+  <data name="label_donate.Text" xml:space="preserve">
+    <value>Spende an den Autor:
+PayPal: sashacx75@gmail.com</value>
+  </data>
   <data name="label415.Size" type="System.Drawing.Size, System.Drawing">
     <value>169, 13</value>
   </data>
@@ -608,10 +615,6 @@ mehr Systembelastung)</value>
   </data>
   <data name="label413.Text" xml:space="preserve">
     <value>Dienstprogramm zum Konvertieren von Bildern aus Zifferblättern in das normale PNG-Format:</value>
-  </data>
-  <data name="label_donate.Text" xml:space="preserve">
-    <value>Spende an den Autor:
-PayPal: sashacx75@gmail.com</value>
   </data>
   <data name="label409.Text" xml:space="preserve">
     <value>Das Programm ist ein Editor für Zifferblätter GTR 3, GTS 3. Da Zifferblätter fast vollwertige Programme sind, ist es unmöglich, alle für Zifferblätter verfügbaren Funktionen in diesem Editor zu implementieren. Der Editor sollte in der Lage sein, die meisten der in ihm oder auf dev.huami.com erstellten Zifferblätter zu erkennen. Aber er kann keine Zifferblätter aus der Zepp-App erkennen.</value>
@@ -680,8 +683,8 @@ PayPal: sashacx75@gmail.com</value>
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACm
-        DQAAAk1TRnQBSQFMAgEBBgEAAWgBNAFsATQBEAEAARABAAT/AQkBEAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
+        DQAAAk1TRnQBSQFMAgEBBgEAAXQBNAF0ATQBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -739,7 +742,7 @@ PayPal: sashacx75@gmail.com</value>
         AX4B4QEPAQ0BhgGAAQEBPgF+AfABDwEGAcICAAI+AfgBHwFDAWABAAEgAT8BPgH4AT8BYQGwAQABQAE/
         AR4B4AEnATAB2AEAAYABPAEeAeEBAwFYAWwBAQEAATwBHgHhAQcBbAE2AQEBAAE/Af4B4QEfATYBGgEB
         AwAB8AEfAQsBDAQAAfgBPwFNAYYBgAEBAgAB/AE/AQIBwgGAAQEBBAEAAf4BHwFDAWABwAEDAYQBAAH+
-        AZ8CAAHwAQ8B9wHnAf4BHxYACw==
+        AZ8CAAHwAQ8B9wHnAf4BHws=
 </value>
   </data>
   <data name="button_pack_zip.Text" xml:space="preserve">
@@ -2004,8 +2007,5 @@ PayPal: sashacx75@gmail.com</value>
         AAAAAAAAAAAAAO+BPCbvgT1I74I+SO+BPSYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8PwAA4AcAAMAD
         AACAAQAAgAEAAIABAAAAAAAAAAAAAAAAAAAAAAAAgAEAAIABAACAAQAAwAMAAOAHAAD8PwAA
 </value>
-  </data>
-  <data name="comboBox_AddSystem.Items10" xml:space="preserve">
-    <value>Buttons</value>
   </data>
 </root>

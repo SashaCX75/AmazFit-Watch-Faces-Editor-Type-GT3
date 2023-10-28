@@ -16,7 +16,7 @@ namespace ControlLibrary
     {
         private bool setValue; // режим задания параметров
         public Object _ElementWithSystemFont;
-        public string fonts_path; // папка со шрифтами
+        //public string fonts_path; // папка со шрифтами
 
         private bool Font_mode;
 
@@ -33,40 +33,67 @@ namespace ControlLibrary
             setValue = false;
         }
 
-        public void AddFonts(string fontsPath)
+        public void AddFonts(Dictionary<string,string> fontsList)
         {
-            fonts_path = fontsPath;
-            //comboBox_fonts.Text = string.Empty;
+            //fonts_path = fontsPath;
+            ////comboBox_fonts.Text = string.Empty;
+            //comboBox_fonts.Items.Clear();
+            //comboBox_fonts.Items.Add(Properties.Strings.SystemFont);
+            //if (fonts_path != null && Directory.Exists(fonts_path))
+            //{
+            //    DirectoryInfo Folder;
+            //    Folder = new DirectoryInfo(fonts_path);
+            //    FileInfo[] Fonts;
+            //    Fonts = Folder.GetFiles("*.ttf").OrderBy(p => Path.GetFileNameWithoutExtension(p.Name)).ToArray();
+            //    foreach (FileInfo font_file in Fonts)
+            //    {
+            //        string fileName = font_file.Name;
+            //        try
+            //        {
+            //            System.Drawing.Text.PrivateFontCollection f = new System.Drawing.Text.PrivateFontCollection();
+            //            f.AddFontFile(font_file.FullName);
+            //            Font addFont = new Font(f.Families[0], 18);
+            //            string fontName = addFont.Name;
+            //            string item = fileName;
+            //            if (fontName.Length > 3) item += " (" + fontName + ")";
+            //            comboBox_fonts.Items.Add(item);
+
+            //        }
+            //        catch
+            //        {
+            //            MessageBox.Show("Ошибка добавления шрифта " + fileName);
+            //        }
+            //    }
+            //}
+
             comboBox_fonts.Items.Clear();
             comboBox_fonts.Items.Add(Properties.Strings.SystemFont);
-            if (fonts_path != null && Directory.Exists(fonts_path))
+            comboBox_fonts.SelectedIndex = 0;
+            foreach (KeyValuePair<string, string> fontNames in fontsList)
             {
-                DirectoryInfo Folder;
-                Folder = new DirectoryInfo(fonts_path);
-                FileInfo[] Fonts;
-                Fonts = Folder.GetFiles("*.ttf").OrderBy(p => Path.GetFileNameWithoutExtension(p.Name)).ToArray();
-                foreach (FileInfo font_file in Fonts)
+                //string fileName = Path.Combine(relativePath, fontNames.Value);
+                try
                 {
-                    string fileName = font_file.Name;
-                    try
+                    if (File.Exists(fontNames.Value))
                     {
-                        System.Drawing.Text.PrivateFontCollection f = new System.Drawing.Text.PrivateFontCollection();
-                        f.AddFontFile(font_file.FullName);
-                        Font addFont = new Font(f.Families[0], 18);
+                        System.Drawing.Text.PrivateFontCollection fontCollection = new System.Drawing.Text.PrivateFontCollection();
+                        fontCollection.AddFontFile(fontNames.Value);
+                        Font addFont = new Font(fontCollection.Families[0], 18);
                         string fontName = addFont.Name;
-                        string item = fileName;
+                        string item = fontNames.Key;
                         if (fontName.Length > 3) item += " (" + fontName + ")";
-                        comboBox_fonts.Items.Add(item);
+                        comboBox_fonts.Items.Add(item); 
+                    }
 
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Ошибка добавления шрифта " + fileName);
-                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Ошибка добавления шрифта " + fontNames.Key);
                 }
             }
-
+            setValue = true;
             comboBox_fonts.SelectedIndex = 0;
+            setValue = false;
         }
 
         public void SetHorizontalAlignment(string alignment)
@@ -234,14 +261,20 @@ namespace ControlLibrary
         public string GetFont()
         {
             string font = "";
-            if (fonts_path != null && fonts_path.Length > 5)
+            //if (fonts_path != null && fonts_path.Length > 5)
+            //{
+            //    if (comboBox_fonts.SelectedIndex > 0)
+            //    {
+            //        string font_fileName = comboBox_fonts.Text;
+            //        if (font_fileName.IndexOf(".ttf") > 0) font_fileName = font_fileName.Substring(0, font_fileName.IndexOf(".ttf") + ".ttf".Length);
+            //        if (File.Exists(Path.Combine(fonts_path, font_fileName))) font = font_fileName;
+            //    } 
+            //}
+            if (comboBox_fonts.SelectedIndex > 0)
             {
-                if (comboBox_fonts.SelectedIndex > 0)
-                {
-                    string font_fileName = comboBox_fonts.Text;
-                    if (font_fileName.IndexOf(".ttf") > 0) font_fileName = font_fileName.Substring(0, font_fileName.IndexOf(".ttf") + ".ttf".Length);
-                    if (File.Exists(Path.Combine(fonts_path, font_fileName))) font = font_fileName;
-                } 
+                string font_fileName = comboBox_fonts.Text;
+                if (font_fileName.IndexOf(".ttf") > 0) font_fileName = font_fileName.Substring(0, font_fileName.IndexOf(".ttf") + ".ttf".Length);
+                font = font_fileName;
             }
             return font;
         }
@@ -260,8 +293,8 @@ namespace ControlLibrary
             }
         }
 
-        /// <summary>Отображение чекбокса добавления нулей в начале</summary>
-        [Description("Отображение чекбокса добавления нулей в начале")]
+        /// <summary>Отображение возможности выбора пользовательского шрифта</summary>
+        [Description("Отображение возможности выбора пользовательского шрифта")]
         public virtual bool UserFont
         {
             get
@@ -274,6 +307,7 @@ namespace ControlLibrary
                 label6.Enabled = Font_mode;
                 comboBox_fonts.Enabled = Font_mode;
                 button_AddFont.Enabled = Font_mode;
+                button_AddFont.Enabled = Font_mode;
             }
         }
 
@@ -281,6 +315,16 @@ namespace ControlLibrary
         [Description("Происходит при изменении выбора элемента")]
         public event ValueChangedHandler ValueChanged;
         public delegate void ValueChangedHandler(object sender, EventArgs eventArgs);
+
+        [Browsable(true)]
+        [Description("Происходит при нажатии кнопки добавления шрифта")]
+        public event AddFont_ClickHandler AddFont_Click;
+        public delegate void AddFont_ClickHandler(object sender, EventArgs eventArgs);
+
+        [Browsable(true)]
+        [Description("Происходит при нажатии кнопки удаления шрифта")]
+        public event DelFont_ClickHandler DelFont_Click;
+        public delegate void DelFont_ClickHandler(object sender, EventArgs eventArgs, string fontName);
 
         private void checkBox_Click(object sender, EventArgs e)
         {
@@ -577,9 +621,14 @@ namespace ControlLibrary
             comboBox_alignmentVertical.SelectedIndex = 0;
             comboBox_textStyle.SelectedIndex = 0;
 
-            comboBox_fonts.Items.Clear();
-            comboBox_fonts.Items.Add(Properties.Strings.SystemFont);
+            //comboBox_fonts.Items.Clear();
+            //comboBox_fonts.Items.Add(Properties.Strings.SystemFont);
             comboBox_fonts.SelectedIndex = 0;
+
+            numericUpDown_X.Enabled = true;
+            comboBox_alignmentHorizontal.Enabled = true;
+            numericUpDown_Y.Enabled = true;
+            comboBox_alignmentVertical.Enabled = true;
 
             UserFont = false;
 
@@ -661,48 +710,113 @@ namespace ControlLibrary
 
         private void button_AddFont_Click(object sender, EventArgs e)
         {
-            if (fonts_path == null || fonts_path.Length < 5) return;
-            if (!Directory.Exists(fonts_path)) Directory.CreateDirectory(fonts_path);
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Fonts files (*.ttf) | *.ttf";
-            openFileDialog.Filter = Properties.Strings.Dialog_FontFilter;
-            openFileDialog.RestoreDirectory = true;
-            openFileDialog.Multiselect = false; 
-            openFileDialog.Title = Properties.Strings.Dialog_Title_Font_Add;
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            if (AddFont_Click != null && !setValue)
             {
-                try
-                {
-                    string fileFullName = openFileDialog.FileName;
-                    string fileName = Path.GetFileNameWithoutExtension(fileFullName);
-                    string newFileName = Path.Combine(fonts_path, fileName + ".ttf");
-                    if (File.Exists(newFileName))
-                    {
-                        DialogResult dialogResult = MessageBox.Show(Properties.Strings.Message_Warning_Font_Exist1
-                            + fileName + Environment.NewLine + Properties.Strings.Message_Warning_Font_Exist2,
-                            Properties.Strings.Message_Warning_Caption,
-                        MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
-                        if (dialogResult == DialogResult.Yes) File.Copy(fileFullName, newFileName, true); ;
-                    }
-                    else
-                    {
-                        File.Copy(fileFullName, newFileName, true);
+                AddFont_Click(this, e);
+            }
+            //if (fonts_path == null || fonts_path.Length < 5) return;
+            //if (!Directory.Exists(fonts_path)) Directory.CreateDirectory(fonts_path);
+            //OpenFileDialog openFileDialog = new OpenFileDialog();
+            //openFileDialog.Filter = "Fonts files (*.ttf) | *.ttf";
+            //openFileDialog.Filter = Properties.Strings.Dialog_FontFilter;
+            //openFileDialog.RestoreDirectory = true;
+            //openFileDialog.Multiselect = false; 
+            //openFileDialog.Title = Properties.Strings.Dialog_Title_Font_Add;
+            //if (openFileDialog.ShowDialog() == DialogResult.OK)
+            //{
+            //    try
+            //    {
+            //        string fileFullName = openFileDialog.FileName;
+            //        string fileName = Path.GetFileNameWithoutExtension(fileFullName);
+            //        string newFileName = Path.Combine(fonts_path, fileName + ".ttf");
+            //        if (File.Exists(newFileName))
+            //        {
+            //            DialogResult dialogResult = MessageBox.Show(Properties.Strings.Message_Warning_Font_Exist1
+            //                + fileName + Environment.NewLine + Properties.Strings.Message_Warning_Font_Exist2,
+            //                Properties.Strings.Message_Warning_Caption,
+            //            MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+            //            if (dialogResult == DialogResult.Yes) File.Copy(fileFullName, newFileName, true); ;
+            //        }
+            //        else
+            //        {
+            //            File.Copy(fileFullName, newFileName, true);
 
-                        System.Drawing.Text.PrivateFontCollection f = new System.Drawing.Text.PrivateFontCollection();
-                        f.AddFontFile(openFileDialog.FileName);
-                        Font addFont = new Font(f.Families[0], 18);
-                        string fontName = addFont.Name;
-                        string item = Path.GetFileName(openFileDialog.FileName);
-                        if (fontName.Length > 3) item += " (" + fontName + ")";
-                        comboBox_fonts.Items.Add(item);
-                    }
+            //            System.Drawing.Text.PrivateFontCollection f = new System.Drawing.Text.PrivateFontCollection();
+            //            f.AddFontFile(openFileDialog.FileName);
+            //            Font addFont = new Font(f.Families[0], 18);
+            //            string fontName = addFont.Name;
+            //            string item = Path.GetFileName(openFileDialog.FileName);
+            //            if (fontName.Length > 3) item += " (" + fontName + ")";
+            //            comboBox_fonts.Items.Add(item);
+            //        }
 
-                }
-                catch
+            //    }
+            //    catch
+            //    {
+            //        MessageBox.Show("Ошибка добавления шрифта ");
+            //    }
+            //}
+        }
+
+        private void button_DelFont_Click(object sender, EventArgs e)
+        {
+            if (DelFont_Click != null)
+            {
+                string font = "";
+                if (comboBox_fonts.SelectedIndex > 0)
                 {
-                    MessageBox.Show("Ошибка добавления шрифта ");
+                    string font_fileName = comboBox_fonts.Text;
+                    if (font_fileName.IndexOf(".ttf") > 0) font_fileName = font_fileName.Substring(0, font_fileName.IndexOf(".ttf") + ".ttf".Length);
+                    font = font_fileName;
                 }
+                DelFont_Click(this, e, font);
             }
         }
+
+        private void comboBox_fonts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ValueChanged != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                ValueChanged(this, eventArgs);
+            }
+            if(comboBox_fonts.SelectedIndex < 1) button_DelFont.Visible = false;
+            else button_DelFont.Visible = true;
+        }
+
+        //public void SetScreenSize(int width, int height)
+        //{
+        //    ScreenSize.Width = width;
+        //    ScreenSize.Height = height;
+        //}
+
+        private void checkBox_CentreHorizontally_CheckedChanged(object sender, EventArgs e)
+        {
+            numericUpDown_X.Enabled = !checkBox_CentreHorizontally.Checked;
+            comboBox_alignmentHorizontal.Enabled = !checkBox_CentreHorizontally.Checked;
+            if (ValueChanged != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                ValueChanged(this, eventArgs);
+            }
+        }
+
+        private void checkBox_CentreVertically_CheckedChanged(object sender, EventArgs e)
+        {
+            numericUpDown_Y.Enabled = !checkBox_CentreVertically.Checked;
+            comboBox_alignmentVertical.Enabled = !checkBox_CentreVertically.Checked;
+            if (ValueChanged != null && !setValue)
+            {
+                EventArgs eventArgs = new EventArgs();
+                ValueChanged(this, eventArgs);
+            }
+        }
+
     }
 }
+
+//public class ScreenSize
+//{
+//    public static int Width = -1;
+//    public static int Height = -1;
+//}

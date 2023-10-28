@@ -302,10 +302,36 @@
   <data name="label4.Text" xml:space="preserve">
     <value>Перенесення тексту</value>
   </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>248, 39</value>
+  </data>
   <data name="label5.Text" xml:space="preserve">
     <value>* Розмір і положення напису може відрізнятись від відображення на годиннику.Перевіряйте положення напису на реальному пристрої.</value>
   </data>
   <data name="button_AddFont.Text" xml:space="preserve">
     <value>Додати</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 39</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>** У разі використання стороннього шрифту після встановлення циферблата годинник бажано перезавантажити.</value>
+  </data>
+  <data name="button_DelFont.Text" xml:space="preserve">
+    <value>Видалити</value>
+  </data>
+  <data name="checkBox_CentreHorizontally.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 30</value>
+  </data>
+  <data name="checkBox_CentreHorizontally.Text" xml:space="preserve">
+    <value>Центрувати 
+по горизонталі</value>
+  </data>
+  <data name="checkBox_CentreVertically.Size" type="System.Drawing.Size, System.Drawing">
+    <value>90, 30</value>
+  </data>
+  <data name="checkBox_CentreVertically.Text" xml:space="preserve">
+    <value>Центрувати 
+по вертикалі</value>
   </data>
 </root>

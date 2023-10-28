@@ -117,28 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Message_Error_Caption" xml:space="preserve">
-    <value>Fehler</value>
+  <data name="Button" xml:space="preserve">
+    <value>Bouton</value>
   </data>
-  <data name="Message_ReadScript_Error" xml:space="preserve">
-    <value>Fehler beim Lesen der Benutzerskripte</value>
+  <data name="comboBox_Activity" xml:space="preserve">
+    <value>Activités</value>
   </data>
-  <data name="Message_Warning_Caption" xml:space="preserve">
-    <value>Warnung</value>
+  <data name="comboBox_App" xml:space="preserve">
+    <value>Applications</value>
   </data>
-  <data name="SystemFont" xml:space="preserve">
-    <value>System Schriftart</value>
+  <data name="comboBox_System" xml:space="preserve">
+    <value>Paramètres</value>
   </data>
-  <data name="UCtrl_Text_Opt_Sunrise_false" xml:space="preserve">
-    <value>Dezimaltrennzeichen</value>
+  <data name="comboBox_UserScript" xml:space="preserve">
+    <value>Ensemble de fonctions</value>
   </data>
-  <data name="UCtrl_Text_Opt_Sunrise_true" xml:space="preserve">
-    <value>Trennzeichen</value>
+  <data name="Empty" xml:space="preserve">
+    <value>vide</value>
   </data>
-  <data name="UCtrl_Text_Opt_Year_false" xml:space="preserve">
-    <value>Führende Nullen hinzufügen</value>
-  </data>
-  <data name="UCtrl_Text_Opt_Year_true" xml:space="preserve">
-    <value>Vollständige Schreibweise des Jahres</value>
+  <data name="User_script" xml:space="preserve">
+    <value>script de l'utilisateur</value>
   </data>
 </root>

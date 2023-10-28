@@ -5359,7 +5359,7 @@
     <value>3, 480</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>385, 95</value>
+    <value>400, 95</value>
   </data>
   <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
@@ -5383,7 +5383,7 @@
     <value>NoControl</value>
   </data>
   <data name="button_SavePNG_button.Location" type="System.Drawing.Point, System.Drawing">
-    <value>225, 14</value>
+    <value>240, 14</value>
   </data>
   <data name="button_SavePNG_button.Size" type="System.Drawing.Size, System.Drawing">
     <value>153, 36</value>
@@ -5497,10 +5497,10 @@
     <value>3</value>
   </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>405, 115</value>
+    <value>420, 115</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>385, 95</value>
+    <value>400, 95</value>
   </data>
   <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>50</value>
@@ -5539,7 +5539,7 @@
     <value>30</value>
   </data>
   <data name="comboBox_Animation_Preview_Speed.Location" type="System.Drawing.Point, System.Drawing">
-    <value>643, 428</value>
+    <value>658, 428</value>
   </data>
   <data name="comboBox_Animation_Preview_Speed.Size" type="System.Drawing.Size, System.Drawing">
     <value>92, 21</value>
@@ -5587,7 +5587,7 @@
     <value>3</value>
   </data>
   <data name="numericUpDown_Gif_Speed.Location" type="System.Drawing.Point, System.Drawing">
-    <value>580, 363</value>
+    <value>595, 363</value>
   </data>
   <data name="numericUpDown_Gif_Speed.Size" type="System.Drawing.Size, System.Drawing">
     <value>47, 20</value>
@@ -5614,7 +5614,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBox_AllWidgetsInGif.Location" type="System.Drawing.Point, System.Drawing">
-    <value>412, 388</value>
+    <value>427, 388</value>
   </data>
   <data name="checkBox_AllWidgetsInGif.Size" type="System.Drawing.Size, System.Drawing">
     <value>398, 17</value>
@@ -5647,7 +5647,7 @@
     <value>NoControl</value>
   </data>
   <data name="button_WatchSkin_PathGet.Location" type="System.Drawing.Point, System.Drawing">
-    <value>304, 40</value>
+    <value>319, 40</value>
   </data>
   <data name="button_WatchSkin_PathGet.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 23</value>
@@ -5677,7 +5677,7 @@
     <value>7, 42</value>
   </data>
   <data name="textBox_WatchSkin_Path.Size" type="System.Drawing.Size, System.Drawing">
-    <value>291, 20</value>
+    <value>305, 20</value>
   </data>
   <data name="textBox_WatchSkin_Path.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -5725,10 +5725,10 @@
     <value>2</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>405, 220</value>
+    <value>420, 220</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>385, 95</value>
+    <value>400, 95</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>52</value>
@@ -5755,7 +5755,7 @@
     <value>NoControl</value>
   </data>
   <data name="label355.Location" type="System.Drawing.Point, System.Drawing">
-    <value>409, 364</value>
+    <value>424, 364</value>
   </data>
   <data name="label355.Size" type="System.Drawing.Size, System.Drawing">
     <value>172, 13</value>
@@ -5785,7 +5785,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBox_ShowIn12hourFormat.Location" type="System.Drawing.Point, System.Drawing">
-    <value>412, 340</value>
+    <value>427, 340</value>
   </data>
   <data name="checkBox_ShowIn12hourFormat.Size" type="System.Drawing.Size, System.Drawing">
     <value>328, 17</value>
@@ -5812,7 +5812,7 @@
     <value>NoControl</value>
   </data>
   <data name="button_SavePNG_shortcut.Location" type="System.Drawing.Point, System.Drawing">
-    <value>225, 14</value>
+    <value>240, 14</value>
   </data>
   <data name="button_SavePNG_shortcut.Size" type="System.Drawing.Size, System.Drawing">
     <value>153, 36</value>
@@ -5959,10 +5959,10 @@
     <value>4</value>
   </data>
   <data name="groupBox8.Location" type="System.Drawing.Point, System.Drawing">
-    <value>405, 10</value>
+    <value>420, 10</value>
   </data>
   <data name="groupBox8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>385, 95</value>
+    <value>400, 95</value>
   </data>
   <data name="groupBox8.TabIndex" type="System.Int32, mscorlib">
     <value>49</value>
@@ -5989,7 +5989,7 @@
     <value>NoControl</value>
   </data>
   <data name="checkBox_JsonWarnings.Location" type="System.Drawing.Point, System.Drawing">
-    <value>412, 544</value>
+    <value>427, 544</value>
   </data>
   <data name="checkBox_JsonWarnings.Size" type="System.Drawing.Size, System.Drawing">
     <value>323, 17</value>
@@ -6043,7 +6043,7 @@
     <value>Українська</value>
   </data>
   <data name="comboBox_Language.Location" type="System.Drawing.Point, System.Drawing">
-    <value>450, 509</value>
+    <value>465, 509</value>
   </data>
   <data name="comboBox_Language.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 21</value>
@@ -6070,7 +6070,7 @@
     <value>NoControl</value>
   </data>
   <data name="label356.Location" type="System.Drawing.Point, System.Drawing">
-    <value>409, 512</value>
+    <value>424, 512</value>
   </data>
   <data name="label356.Size" type="System.Drawing.Size, System.Drawing">
     <value>35, 13</value>
@@ -6187,7 +6187,7 @@
     <value>3, 115</value>
   </data>
   <data name="groupBox7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>385, 95</value>
+    <value>400, 95</value>
   </data>
   <data name="groupBox7.TabIndex" type="System.Int32, mscorlib">
     <value>45</value>
@@ -6385,7 +6385,7 @@
     <value>3, 325</value>
   </data>
   <data name="groupBox6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>385, 145</value>
+    <value>400, 145</value>
   </data>
   <data name="groupBox6.TabIndex" type="System.Int32, mscorlib">
     <value>43</value>
@@ -6499,7 +6499,7 @@
     <value>3, 220</value>
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>385, 95</value>
+    <value>400, 95</value>
   </data>
   <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
@@ -6613,7 +6613,7 @@
     <value>3, 10</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>385, 95</value>
+    <value>400, 95</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>41</value>
@@ -6640,7 +6640,7 @@
     <value>NoControl</value>
   </data>
   <data name="label483.Location" type="System.Drawing.Point, System.Drawing">
-    <value>409, 408</value>
+    <value>424, 408</value>
   </data>
   <data name="label483.Size" type="System.Drawing.Size, System.Drawing">
     <value>264, 39</value>
@@ -7844,7 +7844,7 @@ Ukrainian - kartoris82</value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
-        DQAAAk1TRnQBSQFMAgEBBgEAAZwBOgGcAToBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAARwBOwEcATsBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA

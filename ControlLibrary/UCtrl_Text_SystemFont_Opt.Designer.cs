@@ -66,6 +66,10 @@ namespace ControlLibrary
             this.comboBox_fonts = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.button_AddFont = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.button_DelFont = new System.Windows.Forms.Button();
+            this.checkBox_CentreHorizontally = new System.Windows.Forms.CheckBox();
+            this.checkBox_CentreVertically = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Width)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Height)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_X)).BeginInit();
@@ -233,15 +237,15 @@ namespace ControlLibrary
             // 
             resources.ApplyResources(this.numericUpDown_Size, "numericUpDown_Size");
             this.numericUpDown_Size.Maximum = new decimal(new int[] {
-            999,
+            155,
             0,
             0,
             0});
             this.numericUpDown_Size.Minimum = new decimal(new int[] {
-            999,
+            1,
             0,
             0,
-            -2147483648});
+            0});
             this.numericUpDown_Size.Name = "numericUpDown_Size";
             this.numericUpDown_Size.Value = new decimal(new int[] {
             25,
@@ -386,9 +390,10 @@ namespace ControlLibrary
             // 
             resources.ApplyResources(this.comboBox_fonts, "comboBox_fonts");
             this.comboBox_fonts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_fonts.DropDownWidth = 160;
             this.comboBox_fonts.FormattingEnabled = true;
             this.comboBox_fonts.Name = "comboBox_fonts";
-            this.comboBox_fonts.SelectedIndexChanged += new System.EventHandler(this.comboBox_SelectedIndexChanged);
+            this.comboBox_fonts.SelectedIndexChanged += new System.EventHandler(this.comboBox_fonts_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -402,10 +407,40 @@ namespace ControlLibrary
             this.button_AddFont.UseVisualStyleBackColor = true;
             this.button_AddFont.Click += new System.EventHandler(this.button_AddFont_Click);
             // 
+            // label7
+            // 
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            // 
+            // button_DelFont
+            // 
+            resources.ApplyResources(this.button_DelFont, "button_DelFont");
+            this.button_DelFont.Name = "button_DelFont";
+            this.button_DelFont.UseVisualStyleBackColor = true;
+            this.button_DelFont.Click += new System.EventHandler(this.button_DelFont_Click);
+            // 
+            // checkBox_CentreHorizontally
+            // 
+            resources.ApplyResources(this.checkBox_CentreHorizontally, "checkBox_CentreHorizontally");
+            this.checkBox_CentreHorizontally.Name = "checkBox_CentreHorizontally";
+            this.checkBox_CentreHorizontally.UseVisualStyleBackColor = true;
+            this.checkBox_CentreHorizontally.CheckedChanged += new System.EventHandler(this.checkBox_CentreHorizontally_CheckedChanged);
+            // 
+            // checkBox_CentreVertically
+            // 
+            resources.ApplyResources(this.checkBox_CentreVertically, "checkBox_CentreVertically");
+            this.checkBox_CentreVertically.Name = "checkBox_CentreVertically";
+            this.checkBox_CentreVertically.UseVisualStyleBackColor = true;
+            this.checkBox_CentreVertically.CheckedChanged += new System.EventHandler(this.checkBox_CentreVertically_CheckedChanged);
+            // 
             // UCtrl_Text_SystemFont_Opt
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.checkBox_CentreVertically);
+            this.Controls.Add(this.checkBox_CentreHorizontally);
+            this.Controls.Add(this.button_DelFont);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.button_AddFont);
             this.Controls.Add(this.comboBox_fonts);
             this.Controls.Add(this.label6);
@@ -485,5 +520,9 @@ namespace ControlLibrary
         private System.Windows.Forms.ComboBox comboBox_fonts;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button_AddFont;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button_DelFont;
+        public System.Windows.Forms.CheckBox checkBox_CentreHorizontally;
+        public System.Windows.Forms.CheckBox checkBox_CentreVertically;
     }
 }

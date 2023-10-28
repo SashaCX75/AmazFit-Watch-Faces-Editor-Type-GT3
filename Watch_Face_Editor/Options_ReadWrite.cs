@@ -1687,8 +1687,8 @@ namespace Watch_Face_Editor
             if (SelectedModel.versionOS >= 2) uCtrl_Text_SystemFont_Opt.UserFont = true;
 
             uCtrl_Text_SystemFont_Opt._ElementWithSystemFont = system_font;
-            //uCtrl_Text_SystemFont_Opt.fonts_path = FullFileDir + @"\assets\fonts\";
-            uCtrl_Text_SystemFont_Opt.AddFonts(FullFileDir + @"\assets\fonts\");
+            //uCtrl_Text_SystemFont_Opt.fonts_path = ProjectDir + @"\assets\fonts\";
+            //uCtrl_Text_SystemFont_Opt.AddFonts(ProjectDir + @"\assets\fonts\");
 
             uCtrl_Text_SystemFont_Opt.numericUpDown_X.Value = system_font.x;
             uCtrl_Text_SystemFont_Opt.numericUpDown_Y.Value = system_font.y;
@@ -1704,6 +1704,9 @@ namespace Watch_Face_Editor
             uCtrl_Text_SystemFont_Opt.SetHorizontalAlignment(system_font.align_h);
             uCtrl_Text_SystemFont_Opt.SetVerticalAlignment(system_font.align_v);
             uCtrl_Text_SystemFont_Opt.SetTextStyle(system_font.text_style);
+
+            uCtrl_Text_SystemFont_Opt.checkBox_CentreHorizontally.Checked = system_font.centreHorizontally;
+            uCtrl_Text_SystemFont_Opt.checkBox_CentreVertically.Checked = system_font.centreVertically;
 
             uCtrl_Text_SystemFont_Opt.SetFont(system_font.font);
 
@@ -2132,7 +2135,7 @@ namespace Watch_Face_Editor
             else
             {
                 button_RefreshPreview.Visible = false;
-                if (FileName != null && FullFileDir != null)
+                if (FileName != null && ProjectDir != null)
                 {
                     button_CreatePreview.Visible = true;
                 }
@@ -2415,6 +2418,9 @@ namespace Watch_Face_Editor
             systemFont.align_h = uCtrl_Text_SystemFont_Opt.GetHorizontalAlignment();
             systemFont.align_v = uCtrl_Text_SystemFont_Opt.GetVerticalAlignment();
             systemFont.text_style = uCtrl_Text_SystemFont_Opt.GetTextStyle();
+
+            systemFont.centreHorizontally = uCtrl_Text_SystemFont_Opt.checkBox_CentreHorizontally.Checked;
+            systemFont.centreVertically = uCtrl_Text_SystemFont_Opt.checkBox_CentreVertically.Checked;
 
             systemFont.font = uCtrl_Text_SystemFont_Opt.GetFont();
 
@@ -2823,7 +2829,7 @@ namespace Watch_Face_Editor
             {
                 return;
             }
-            if (FileName != null && FullFileDir != null) // проект уже сохранен
+            if (FileName != null && ProjectDir != null) // проект уже сохранен
             {
                 // формируем картинку для предпросмотра
                 /* Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
@@ -2869,11 +2875,11 @@ namespace Watch_Face_Editor
                 int i = 1;
                 string tempName = "bg_edit_" + (index + 1).ToString() + "_preview";
                 string NamePreview = tempName + ".png";
-                string PathPreview = FullFileDir + @"\assets\" + NamePreview;
+                string PathPreview = ProjectDir + @"\assets\" + NamePreview;
                 while (File.Exists(PathPreview) && i < 10)
                 {
                     NamePreview = tempName + i.ToString() + ".png";
-                    PathPreview = FullFileDir + @"\assets\" + NamePreview;
+                    PathPreview = ProjectDir + @"\assets\" + NamePreview;
                     i++;
                     if (i > 9)
                     {
@@ -2905,7 +2911,7 @@ namespace Watch_Face_Editor
 
         private void uCtrl_EditableBackground_Opt_PreviewRefresh(object sender, EventArgs eventArgs, int index)
         {
-            if (FileName == null || FullFileDir == null) return;
+            if (FileName == null || ProjectDir == null) return;
             if (index < 0) return;
             if (Watch_Face == null || Watch_Face.ScreenNormal == null || Watch_Face.ScreenNormal.Background == null ||
                 Watch_Face.ScreenNormal.Background.Editable_Background == null ||
@@ -2920,7 +2926,7 @@ namespace Watch_Face_Editor
             if (index < Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundList.Count &&
                 Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundList[index].preview.Length > 0)
             {
-                string preview = FullFileDir + @"\assets\" + 
+                string preview = ProjectDir + @"\assets\" + 
                     Watch_Face.ScreenNormal.Background.Editable_Background.BackgroundList[index].preview + ".png";
                 if (!File.Exists(preview))
                 {
@@ -3108,7 +3114,7 @@ namespace Watch_Face_Editor
             {
                 return;
             }
-            if (FileName != null && FullFileDir != null) // проект уже сохранен
+            if (FileName != null && ProjectDir != null) // проект уже сохранен
             {
                 // формируем картинку для предпросмотра
                 /* Bitmap bitmap = new Bitmap(Convert.ToInt32(454), Convert.ToInt32(454), PixelFormat.Format32bppArgb);
@@ -3152,11 +3158,11 @@ namespace Watch_Face_Editor
                 int i = 1;
                 string tempName = "pointer_edit_" + (index + 1).ToString() + "_preview";
                 string NamePreview = tempName + ".png";
-                string PathPreview = FullFileDir + @"\assets\" + NamePreview;
+                string PathPreview = ProjectDir + @"\assets\" + NamePreview;
                 while (File.Exists(PathPreview) && i < 10)
                 {
                     NamePreview = tempName + i.ToString() + ".png";
-                    PathPreview = FullFileDir + @"\assets\" + NamePreview;
+                    PathPreview = ProjectDir + @"\assets\" + NamePreview;
                     i++;
                     if (i > 9)
                     {
@@ -3188,7 +3194,7 @@ namespace Watch_Face_Editor
 
         private void uCtrl_EditableTimePointer_Opt_PreviewRefresh(object sender, EventArgs eventArgs, int index)
         {
-            if (FileName == null || FullFileDir == null) return;
+            if (FileName == null || ProjectDir == null) return;
             if (index < 0) return;
             if (Watch_Face == null || Watch_Face.ElementEditablePointers == null ||
                 Watch_Face.ElementEditablePointers.config == null) return;
@@ -3202,7 +3208,7 @@ namespace Watch_Face_Editor
             if (index < Watch_Face.ElementEditablePointers.config.Count &&
                 Watch_Face.ElementEditablePointers.config[index].preview.Length > 0)
             {
-                string preview = FullFileDir + @"\assets\" +
+                string preview = ProjectDir + @"\assets\" +
                     Watch_Face.ElementEditablePointers.config[index].preview + ".png";
                 if (!File.Exists(preview))
                 {

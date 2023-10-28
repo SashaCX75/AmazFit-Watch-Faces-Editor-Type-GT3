@@ -314,6 +314,9 @@
   <data name="label4.Text" xml:space="preserve">
     <value>Text wrap</value>
   </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>245, 39</value>
+  </data>
   <data name="label5.Text" xml:space="preserve">
     <value>* The size and position of the text may differ from the image on the watch. Check the position of the text on the real device.</value>
   </data>
@@ -322,5 +325,25 @@
   </data>
   <data name="button_AddFont.Text" xml:space="preserve">
     <value>Add</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>** When using a third-party font, it is recommended that you reboot the watch after installing the watch face.</value>
+  </data>
+  <data name="button_DelFont.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="checkBox_CentreHorizontally.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 30</value>
+  </data>
+  <data name="checkBox_CentreHorizontally.Text" xml:space="preserve">
+    <value>Center 
+horizontally</value>
+  </data>
+  <data name="checkBox_CentreVertically.Size" type="System.Drawing.Size, System.Drawing">
+    <value>67, 30</value>
+  </data>
+  <data name="checkBox_CentreVertically.Text" xml:space="preserve">
+    <value>Center 
+vertically</value>
   </data>
 </root>

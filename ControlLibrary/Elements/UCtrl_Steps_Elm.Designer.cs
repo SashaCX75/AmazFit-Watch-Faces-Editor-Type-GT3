@@ -31,6 +31,12 @@ namespace ControlLibrary
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrl_Steps_Elm));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.panel_Number_Target_Font = new System.Windows.Forms.Panel();
+            this.button_Number_Target_Font = new System.Windows.Forms.Button();
+            this.checkBox_Number_Target_Font = new System.Windows.Forms.CheckBox();
+            this.panel_Number_Font = new System.Windows.Forms.Panel();
+            this.button_Number_Font = new System.Windows.Forms.Button();
+            this.checkBox_Number_Font = new System.Windows.Forms.CheckBox();
             this.panel_Text_rotation_Target = new System.Windows.Forms.Panel();
             this.button_Text_rotation_Target = new System.Windows.Forms.Button();
             this.checkBox_Text_rotation_Target = new System.Windows.Forms.CheckBox();
@@ -74,6 +80,8 @@ namespace ControlLibrary
             this.pictureBox_Del = new System.Windows.Forms.PictureBox();
             this.button_ElementName = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
+            this.panel_Number_Target_Font.SuspendLayout();
+            this.panel_Number_Font.SuspendLayout();
             this.panel_Text_rotation_Target.SuspendLayout();
             this.panel_Text_circle_Target.SuspendLayout();
             this.panel_Text_circle.SuspendLayout();
@@ -97,21 +105,89 @@ namespace ControlLibrary
             // 
             resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.AllowDrop = true;
-            this.tableLayoutPanel1.Controls.Add(this.panel_Text_rotation_Target, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.panel_Text_circle_Target, 0, 7);
-            this.tableLayoutPanel1.Controls.Add(this.panel_Text_circle, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.panel_Text_rotation, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.panel_Linear_Scale, 0, 10);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Number_Target_Font, 0, 7);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Number_Font, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Text_rotation_Target, 0, 8);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Text_circle_Target, 0, 9);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Text_circle, 0, 5);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Text_rotation, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Linear_Scale, 0, 12);
             this.tableLayoutPanel1.Controls.Add(this.panel_Images, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel_Segments, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel_Number, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.panel_Number_Target, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.panel_Pointer, 0, 8);
-            this.tableLayoutPanel1.Controls.Add(this.panel_Circle_Scale, 0, 9);
-            this.tableLayoutPanel1.Controls.Add(this.panel_Icon, 0, 11);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Number_Target, 0, 6);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Pointer, 0, 10);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Circle_Scale, 0, 11);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Icon, 0, 13);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.DragDrop += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragDrop);
             this.tableLayoutPanel1.DragOver += new System.Windows.Forms.DragEventHandler(this.tableLayoutPanel1_DragOver);
+            // 
+            // panel_Number_Target_Font
+            // 
+            resources.ApplyResources(this.panel_Number_Target_Font, "panel_Number_Target_Font");
+            this.panel_Number_Target_Font.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_Number_Target_Font.Controls.Add(this.button_Number_Target_Font);
+            this.panel_Number_Target_Font.Controls.Add(this.checkBox_Number_Target_Font);
+            this.panel_Number_Target_Font.Name = "panel_Number_Target_Font";
+            this.panel_Number_Target_Font.Click += new System.EventHandler(this.button_Number_Target_Font_Click);
+            this.panel_Number_Target_Font.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.panel_Number_Target_Font.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.panel_Number_Target_Font.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // button_Number_Target_Font
+            // 
+            resources.ApplyResources(this.button_Number_Target_Font, "button_Number_Target_Font");
+            this.button_Number_Target_Font.FlatAppearance.BorderSize = 0;
+            this.button_Number_Target_Font.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.button_Number_Target_Font.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.button_Number_Target_Font.Image = global::ControlLibrary.Properties.Resources.text_fields;
+            this.button_Number_Target_Font.Name = "button_Number_Target_Font";
+            this.button_Number_Target_Font.UseVisualStyleBackColor = true;
+            this.button_Number_Target_Font.Click += new System.EventHandler(this.button_Number_Target_Font_Click);
+            this.button_Number_Target_Font.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.button_Number_Target_Font.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.button_Number_Target_Font.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // checkBox_Number_Target_Font
+            // 
+            resources.ApplyResources(this.checkBox_Number_Target_Font, "checkBox_Number_Target_Font");
+            this.checkBox_Number_Target_Font.Name = "checkBox_Number_Target_Font";
+            this.checkBox_Number_Target_Font.UseVisualStyleBackColor = true;
+            this.checkBox_Number_Target_Font.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
+            // 
+            // panel_Number_Font
+            // 
+            resources.ApplyResources(this.panel_Number_Font, "panel_Number_Font");
+            this.panel_Number_Font.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_Number_Font.Controls.Add(this.button_Number_Font);
+            this.panel_Number_Font.Controls.Add(this.checkBox_Number_Font);
+            this.panel_Number_Font.Name = "panel_Number_Font";
+            this.panel_Number_Font.Click += new System.EventHandler(this.button_Number_Font_Click);
+            this.panel_Number_Font.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.panel_Number_Font.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.panel_Number_Font.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // button_Number_Font
+            // 
+            resources.ApplyResources(this.button_Number_Font, "button_Number_Font");
+            this.button_Number_Font.FlatAppearance.BorderSize = 0;
+            this.button_Number_Font.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.button_Number_Font.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            this.button_Number_Font.Image = global::ControlLibrary.Properties.Resources.text_fields;
+            this.button_Number_Font.Name = "button_Number_Font";
+            this.button_Number_Font.UseVisualStyleBackColor = true;
+            this.button_Number_Font.Click += new System.EventHandler(this.button_Number_Font_Click);
+            this.button_Number_Font.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.button_Number_Font.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.button_Number_Font.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // checkBox_Number_Font
+            // 
+            resources.ApplyResources(this.checkBox_Number_Font, "checkBox_Number_Font");
+            this.checkBox_Number_Font.Name = "checkBox_Number_Font";
+            this.checkBox_Number_Font.UseVisualStyleBackColor = true;
+            this.checkBox_Number_Font.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
             // 
             // panel_Text_rotation_Target
             // 
@@ -570,6 +646,10 @@ namespace ControlLibrary
             this.Controls.Add(this.button_ElementName);
             this.Name = "UCtrl_Steps_Elm";
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.panel_Number_Target_Font.ResumeLayout(false);
+            this.panel_Number_Target_Font.PerformLayout();
+            this.panel_Number_Font.ResumeLayout(false);
+            this.panel_Number_Font.PerformLayout();
             this.panel_Text_rotation_Target.ResumeLayout(false);
             this.panel_Text_rotation_Target.PerformLayout();
             this.panel_Text_circle_Target.ResumeLayout(false);
@@ -649,5 +729,11 @@ namespace ControlLibrary
         private System.Windows.Forms.Panel panel_Text_circle;
         private System.Windows.Forms.Button button_Text_circle;
         public System.Windows.Forms.CheckBox checkBox_Text_circle;
+        private System.Windows.Forms.Panel panel_Number_Font;
+        private System.Windows.Forms.Button button_Number_Font;
+        public System.Windows.Forms.CheckBox checkBox_Number_Font;
+        private System.Windows.Forms.Panel panel_Number_Target_Font;
+        private System.Windows.Forms.Button button_Number_Target_Font;
+        public System.Windows.Forms.CheckBox checkBox_Number_Target_Font;
     }
 }

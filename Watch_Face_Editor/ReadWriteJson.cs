@@ -872,7 +872,7 @@ namespace Watch_Face_Editor
             if (items.IndexOf("timeSensor =") >= 0) variables += TabInString(4) + "let timeSensor = ''" + Environment.NewLine;
 
             // добавляем пользовательские скрипты
-            string fileName = Path.Combine(FullFileDir, "user_functions.js");
+            string fileName = Path.Combine(ProjectDir, "user_functions.js");
             if (File.Exists(fileName))
             {
                 Logger.WriteLine("Load user_functions.js");
@@ -892,7 +892,7 @@ namespace Watch_Face_Editor
                 {
                 }
             }
-            fileName = Path.Combine(FullFileDir, "resume_call.js");
+            fileName = Path.Combine(ProjectDir, "resume_call.js");
             if (File.Exists(fileName))
             {
                 Logger.WriteLine("Load resume_call.js");
@@ -913,7 +913,7 @@ namespace Watch_Face_Editor
                 {
                 }
             }
-            fileName = Path.Combine(FullFileDir, "pause_call.js");
+            fileName = Path.Combine(ProjectDir, "pause_call.js");
             if (File.Exists(fileName))
             {
                 Logger.WriteLine("Load pause_call.js");
@@ -933,7 +933,7 @@ namespace Watch_Face_Editor
                 {
                 }
             }
-            fileName = Path.Combine(FullFileDir, "user_script_start.js");
+            fileName = Path.Combine(ProjectDir, "user_script_start.js");
             if (File.Exists(fileName))
             {
                 Logger.WriteLine("Load user_script_start.js");
@@ -953,7 +953,7 @@ namespace Watch_Face_Editor
                 {
                 }
             }
-            fileName = Path.Combine(FullFileDir, "user_script_end.js");
+            fileName = Path.Combine(ProjectDir, "user_script_end.js");
             if (File.Exists(fileName))
             {
                 Logger.WriteLine("Load user_script_end.js");
@@ -1073,9 +1073,11 @@ namespace Watch_Face_Editor
             int imagesPosition = 99;
             int segmentsPosition = 99;
             int numberPosition = 99;
+            int numberFontPosition = 99;
             int textRotatePosition = 99;
             int textCirclePosition = 99;
             int numberTargetPosition = 99;
+            int numberTargetFontPosition = 99;
             int textRotateTargetPosition = 99;
             int textCircleTargetPosition = 99;
             int pointerPosition= 99;
@@ -1086,9 +1088,11 @@ namespace Watch_Face_Editor
             string imagesOptions = "";
             string segmentsOptions = "";
             string numberOptions = "";
+            string numberFontOptions = "";
             string textRotateOptions = "";
             string textCircleOptions = "";
             string numberTargetOptions = "";
+            string numberTargetFontOptions = "";
             string textRotateTargetOptions = "";
             string textCircleTargetOptions = "";
             string pointerOptions = "";
@@ -2592,6 +2596,7 @@ namespace Watch_Face_Editor
                     break;
                 #endregion
 
+
                 #region ElementSteps
                 case "ElementSteps":
                     ElementSteps Steps = (ElementSteps)element;
@@ -2609,6 +2614,7 @@ namespace Watch_Face_Editor
                         hmUI_widget_IMG_PROGRESS img_progress = Steps.Segments;
                         segmentsOptions = IMG_PROGRESS_Options(img_progress, "STEP", show_level);
                     }
+
                     if (Steps.Number != null && Steps.Number.visible)
                     {
                         numberPosition = Steps.Number.position;
@@ -2617,7 +2623,12 @@ namespace Watch_Face_Editor
 
                         numberOptions_separator = IMG_Separator_Options(img_number, show_level);
                     }
-
+                    if (Steps.Number_Font != null && Steps.Number_Font.visible)
+                    {
+                        numberFontPosition = Steps.Number_Font.position;
+                        hmUI_widget_TEXT text = Steps.Number_Font;
+                        numberFontOptions = TEXT_FONT_Options(text, "STEP", show_level);
+                    }
                     if (Steps.Text_rotation != null && Steps.Text_rotation.visible)
                     {
                         textRotatePosition = Steps.Text_rotation.position;
@@ -2641,7 +2652,12 @@ namespace Watch_Face_Editor
 
                         numberTargetOptions_separator = IMG_Separator_Options(img_number, show_level);
                     }
-
+                    if (Steps.Number_Target_Font != null && Steps.Number_Target_Font.visible)
+                    {
+                        numberTargetFontPosition = Steps.Number_Target_Font.position;
+                        hmUI_widget_TEXT text = Steps.Number_Target_Font;
+                        numberTargetFontOptions = TEXT_FONT_Options(text, "STEP_TARGET", show_level);
+                    }
                     if (Steps.Text_rotation_Target != null && Steps.Text_rotation_Target.visible)
                     {
                         textRotateTargetPosition = Steps.Text_rotation_Target.position;
@@ -2729,6 +2745,31 @@ namespace Watch_Face_Editor
                             }
                         }
 
+                        // Number_Font
+                        if (index == numberFontPosition && numberFontOptions.Length > 5)
+                        {
+                            if (Steps.Number_Font.font != null && Steps.Number_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + Steps.Number_Font.font + "; FontSize: " + Steps.Number_Font.text_size.ToString();
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    string fontCacheOptions = TEXT_Cache_Options(Steps.Number_Font, false);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "step_current_text_font = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "step_current_text_font = hmUI.createWidget(hmUI.widget.TEXT_FONT, {" +
+                                    numberFontOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
                         // Text_Rotate
                         if (index == textRotatePosition && textRotateOptions.Length > 5)
                         {
@@ -2762,6 +2803,31 @@ namespace Watch_Face_Editor
                                     optionNameStart + "step_target_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberTargetOptions_separator + TabInString(6) + "});" + Environment.NewLine;
                             }
+                        }
+
+                        // Number_Target_Font
+                        if (index == numberTargetFontPosition && numberTargetFontOptions.Length > 5)
+                        {
+                            if (Steps.Number_Target_Font.font != null && Steps.Number_Target_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + Steps.Number_Target_Font.font + "; FontSize: " + Steps.Number_Target_Font.text_size.ToString();
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    string fontCacheOptions = TEXT_Cache_Options(Steps.Number_Font, false);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "step_target_text_font = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "step_target_text_font = hmUI.createWidget(hmUI.widget.TEXT_FONT, {" +
+                                    numberTargetFontOptions + TabInString(6) + "});" + Environment.NewLine;
                         }
 
                         // Text_Rotate_Target
@@ -2985,6 +3051,7 @@ namespace Watch_Face_Editor
                         hmUI_widget_IMG_PROGRESS img_progress = Battery.Segments;
                         segmentsOptions = IMG_PROGRESS_Options(img_progress, "BATTERY", show_level);
                     }
+
                     if (Battery.Number != null && Battery.Number.visible)
                     {
                         numberPosition = Battery.Number.position;
@@ -2993,7 +3060,12 @@ namespace Watch_Face_Editor
 
                         numberOptions_separator = IMG_Separator_Options(img_number, show_level);
                     }
-
+                    if (Battery.Number_Font != null && Battery.Number_Font.visible)
+                    {
+                        numberFontPosition = Battery.Number_Font.position;
+                        hmUI_widget_TEXT text = Battery.Number_Font;
+                        numberFontOptions = TEXT_FONT_Options(text, "BATTERY", show_level);
+                    }
                     if (Battery.Text_rotation != null && Battery.Text_rotation.visible)
                     {
                         textRotatePosition = Battery.Text_rotation.position;
@@ -3079,6 +3151,31 @@ namespace Watch_Face_Editor
                                     optionNameStart + "battery_text_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
                             }
+                        }
+
+                        // Number_Font
+                        if (index == numberFontPosition && numberFontOptions.Length > 5)
+                        {
+                            if (Battery.Number_Font.font != null && Battery.Number_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + Battery.Number_Font.font + "; FontSize: " + Battery.Number_Font.text_size.ToString();
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    string fontCacheOptions = TEXT_Cache_Options(Battery.Number_Font, false);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "battery_current_text_font = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "battery_current_text_font = hmUI.createWidget(hmUI.widget.TEXT_FONT, {" +
+                                    numberFontOptions + TabInString(6) + "});" + Environment.NewLine;
                         }
 
                         // Text_Rotate
@@ -3320,6 +3417,7 @@ namespace Watch_Face_Editor
                         hmUI_widget_IMG_PROGRESS img_progress = Calories.Segments;
                         segmentsOptions = IMG_PROGRESS_Options(img_progress, "CAL", show_level);
                     }
+
                     if (Calories.Number != null && Calories.Number.visible)
                     {
                         numberPosition = Calories.Number.position;
@@ -3328,7 +3426,12 @@ namespace Watch_Face_Editor
 
                         numberOptions_separator = IMG_Separator_Options(img_number, show_level);
                     }
-
+                    if (Calories.Number_Font != null && Calories.Number_Font.visible)
+                    {
+                        numberFontPosition = Calories.Number_Font.position;
+                        hmUI_widget_TEXT text = Calories.Number_Font;
+                        numberFontOptions = TEXT_FONT_Options(text, "CAL", show_level);
+                    }
                     if (Calories.Text_rotation != null && Calories.Text_rotation.visible)
                     {
                         textRotatePosition = Calories.Text_rotation.position;
@@ -3352,7 +3455,12 @@ namespace Watch_Face_Editor
 
                         numberTargetOptions_separator = IMG_Separator_Options(img_number, show_level);
                     }
-
+                    if (Calories.Number_Target_Font != null && Calories.Number_Target_Font.visible)
+                    {
+                        numberTargetFontPosition = Calories.Number_Target_Font.position;
+                        hmUI_widget_TEXT text = Calories.Number_Target_Font;
+                        numberTargetFontOptions = TEXT_FONT_Options(text, "CAL_TARGET", show_level);
+                    }
                     if (Calories.Text_rotation_Target != null && Calories.Text_rotation_Target.visible)
                     {
                         textRotateTargetPosition = Calories.Text_rotation_Target.position;
@@ -3440,6 +3548,31 @@ namespace Watch_Face_Editor
                             }
                         }
 
+                        // Number_Font
+                        if (index == numberFontPosition && numberFontOptions.Length > 5)
+                        {
+                            if (Calories.Number_Font.font != null && Calories.Number_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + Calories.Number_Font.font + "; FontSize: " + Calories.Number_Font.text_size.ToString();
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    string fontCacheOptions = TEXT_Cache_Options(Calories.Number_Font, false);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "calorie_current_text_font = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "calorie_current_text_font = hmUI.createWidget(hmUI.widget.TEXT_FONT, {" +
+                                    numberFontOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
                         // Text_Rotate
                         if (index == textRotatePosition && textRotateOptions.Length > 5)
                         {
@@ -3471,6 +3604,31 @@ namespace Watch_Face_Editor
                                     optionNameStart + "calorie_target_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberTargetOptions_separator + TabInString(6) + "});" + Environment.NewLine;
                             }
+                        }
+
+                        // Number_Target_Font
+                        if (index == numberTargetFontPosition && numberTargetFontOptions.Length > 5)
+                        {
+                            if (Calories.Number_Target_Font.font != null && Calories.Number_Target_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + Calories.Number_Target_Font.font + "; FontSize: " + Calories.Number_Target_Font.text_size.ToString();
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    string fontCacheOptions = TEXT_Cache_Options(Calories.Number_Font, false);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "calorie_target_text_font = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "calorie_target_text_font = hmUI.createWidget(hmUI.widget.TEXT_FONT, {" +
+                                    numberTargetFontOptions + TabInString(6) + "});" + Environment.NewLine;
                         }
 
                         // Text_Rotate_Target
@@ -3710,6 +3868,7 @@ namespace Watch_Face_Editor
                         hmUI_widget_IMG_PROGRESS img_progress = Heart.Segments;
                         segmentsOptions = IMG_PROGRESS_Options(img_progress, "HEART", show_level);
                     }
+
                     if (Heart.Number != null && Heart.Number.visible)
                     {
                         numberPosition = Heart.Number.position;
@@ -3718,7 +3877,12 @@ namespace Watch_Face_Editor
 
                         numberOptions_separator = IMG_Separator_Options(img_number, show_level);
                     }
-
+                    if (Heart.Number_Font != null && Heart.Number_Font.visible)
+                    {
+                        numberFontPosition = Heart.Number_Font.position;
+                        hmUI_widget_TEXT text = Heart.Number_Font;
+                        numberFontOptions = TEXT_FONT_Options(text, "HEART", show_level);
+                    }
                     if (Heart.Text_rotation != null && Heart.Text_rotation.visible)
                     {
                         textRotatePosition = Heart.Text_rotation.position;
@@ -3804,6 +3968,31 @@ namespace Watch_Face_Editor
                                     optionNameStart + "heart_rate_text_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
                             }
+                        }
+
+                        // Number_Font
+                        if (index == numberFontPosition && numberFontOptions.Length > 5)
+                        {
+                            if (Heart.Number_Font.font != null && Heart.Number_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + Heart.Number_Font.font + "; FontSize: " + Heart.Number_Font.text_size.ToString();
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    string fontCacheOptions = TEXT_Cache_Options(Heart.Number_Font, false);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "heart_rate_text_font = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "heart_rate_text_font = hmUI.createWidget(hmUI.widget.TEXT_FONT, {" +
+                                    numberFontOptions + TabInString(6) + "});" + Environment.NewLine;
                         }
 
                         // Text_Rotate
@@ -4035,6 +4224,7 @@ namespace Watch_Face_Editor
                         hmUI_widget_IMG_PROGRESS img_progress = PAI.Segments;
                         segmentsOptions = IMG_PROGRESS_Options(img_progress, "PAI_WEEKLY", show_level);
                     }
+
                     if (PAI.Number != null && PAI.Number.visible)
                     {
                         numberPosition = PAI.Number.position;
@@ -4043,6 +4233,13 @@ namespace Watch_Face_Editor
 
                         numberOptions_separator = IMG_Separator_Options(img_number, show_level);
                     }
+                    if (PAI.Number_Font != null && PAI.Number_Font.visible)
+                    {
+                        numberFontPosition = PAI.Number_Font.position;
+                        hmUI_widget_TEXT text = PAI.Number_Font;
+                        numberFontOptions = TEXT_FONT_Options(text, "PAI_DAILY", show_level);
+                    }
+
                     if (PAI.Number_Target != null && PAI.Number_Target.visible)
                     {
                         numberTargetPosition = PAI.Number_Target.position;
@@ -4051,7 +4248,12 @@ namespace Watch_Face_Editor
 
                         numberTargetOptions_separator = IMG_Separator_Options(img_number, show_level);
                     }
-
+                    if (PAI.Number_Target_Font != null && PAI.Number_Target_Font.visible)
+                    {
+                        numberTargetFontPosition = PAI.Number_Target_Font.position;
+                        hmUI_widget_TEXT text = PAI.Number_Target_Font;
+                        numberTargetFontOptions = TEXT_FONT_Options(text, "PAI_WEEKLY", show_level);
+                    }
                     if (PAI.Text_rotation_Target != null && PAI.Text_rotation_Target.visible)
                     {
                         textRotateTargetPosition = PAI.Text_rotation_Target.position;
@@ -4139,6 +4341,31 @@ namespace Watch_Face_Editor
                             }
                         }
 
+                        // Number_Font
+                        if (index == numberFontPosition && numberFontOptions.Length > 5)
+                        {
+                            if (PAI.Number_Font.font != null && PAI.Number_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + PAI.Number_Font.font + "; FontSize: " + PAI.Number_Font.text_size.ToString();
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    string fontCacheOptions = TEXT_Cache_Options(PAI.Number_Font, false);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "pai_day_text_font = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "pai_day_text_font = hmUI.createWidget(hmUI.widget.TEXT_FONT, {" +
+                                    numberFontOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
                         // Number_Target
                         if (index == numberTargetPosition && numberTargetOptions.Length > 5)
                         {
@@ -4156,6 +4383,31 @@ namespace Watch_Face_Editor
                                     optionNameStart + "pai_weekly_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberTargetOptions_separator + TabInString(6) + "});" + Environment.NewLine;
                             }
+                        }
+
+                        // Number_Target_Font
+                        if (index == numberTargetFontPosition && numberTargetFontOptions.Length > 5)
+                        {
+                            if (PAI.Number_Target_Font.font != null && PAI.Number_Target_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + PAI.Number_Target_Font.font + "; FontSize: " + PAI.Number_Target_Font.text_size.ToString();
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    string fontCacheOptions = TEXT_Cache_Options(PAI.Number_Font, false);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "pai_weekly_text_font = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "pai_weekly_text_font = hmUI.createWidget(hmUI.widget.TEXT_FONT, {" +
+                                    numberTargetFontOptions + TabInString(6) + "});" + Environment.NewLine;
                         }
 
                         // Text_Rotate_Target
@@ -6315,14 +6567,14 @@ namespace Watch_Face_Editor
                         {
                             if (Weather.City_Name.font != null && Weather.City_Name.font.Length > 3)
                             {
-                                string cacheName = "let " + optionNameStart + "city_name_text_cache";
+                                string cacheName = "// FontName: " + Weather.City_Name.font + "; FontSize: " + Weather.City_Name.text_size.ToString() + "; Cache: full";
                                 if (fonts_cache.IndexOf(cacheName) < 0)
                                 {
-                                    string cityNameCacheOptions = TEXT_Cache_Options(Weather.City_Name);
-                                    if (cityNameCacheOptions.Length > 5)
+                                    string fontCacheOptions = TEXT_Cache_Options(Weather.City_Name, true);
+                                    if (fontCacheOptions.Length > 5)
                                     {
-                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName +
-                                            " = hmUI.createWidget(hmUI.widget.TEXT, {" + cityNameCacheOptions +
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
                                             TabInString(6) + "});" + Environment.NewLine;
                                     }
                                 }
@@ -12759,60 +13011,86 @@ namespace Watch_Face_Editor
             return options;
         }
 
-        private string TEXT_Cache_Options(hmUI_widget_TEXT text, int tabOffset = 0)
+        private string TEXT_FONT_Options(hmUI_widget_TEXT text, string type, string show_level, int tabOffset = 0)
+        {
+            string options = Environment.NewLine;
+            if (text == null) return options;
+
+            int x = text.x;
+            int y = text.y;
+            int w = text.w;
+            int h = text.h;
+
+            string align_h = text.align_h;
+            string align_v = text.align_v;
+
+            if (text.centreHorizontally)
+            {
+                x = (SelectedModel.background.w - w) / 2;
+                align_h = "CENTER_H";
+            }
+            if (text.centreVertically)
+            {
+                y = (SelectedModel.background.h - h) / 2;
+                align_v = "CENTER_V";
+            }
+
+            options += TabInString(7 + tabOffset) + "x: " + x.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "y: " + y.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "w: " + w.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "h: " + h.ToString() + "," + Environment.NewLine;
+
+            options += TabInString(7 + tabOffset) + "text_size: " + text.text_size.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "char_space: " + text.char_space.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "line_space: " + text.line_space.ToString() + "," + Environment.NewLine;
+
+            if (text.font != null && text.font.Length > 3)
+            {
+                options += TabInString(7 + tabOffset) + "font: 'fonts/" + text.font + "'," + Environment.NewLine;
+            }
+
+            options += TabInString(7 + tabOffset) + "color: " + text.color + "," + Environment.NewLine;
+
+            options += TabInString(7 + tabOffset) + "align_h: hmUI.align." + align_h + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "align_v: hmUI.align." + align_v + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "text_style: hmUI.text_style." + text.text_style + "," + Environment.NewLine;
+
+            if (type.Length > 0)
+            {
+                options += TabInString(7 + tabOffset) + "type: hmUI.data_type." + type + "," + Environment.NewLine;
+            }
+
+            if (show_level.Length > 0)
+            {
+                options += TabInString(7 + tabOffset) + "show_level: hmUI.show_level." + show_level + "," + Environment.NewLine;
+            }
+
+            return options;
+        }
+
+        private string TEXT_Cache_Options(hmUI_widget_TEXT text, bool fullCache, int tabOffset = 0)
         {
             string options = Environment.NewLine;
             if (text == null) return options;
             if (text.font == null || text.font.Length < 3) return options;
-            /*int x = 0;
-            int y = 0;
-            switch (ProgramSettings.Watch_Model)
-            {
-                case "GTS 4 mini":
-                    x = 336 - 2;
-                    y = 384 - 2;
-                    break;
-                case "GTS 3":
-                case "GTS 4":
-                    x = 390 - 2;
-                    y = 450 - 2;
-                    break;
-                case "GTR mini":
-                case "Falcon":
-                    x = 416 - 2;
-                    y = 416 - 2;
-                    break;
-                case "T-Rex Ultra":
-                case "T-Rex 2":
-                case "GTR 3":
-                    x = 454 - 2;
-                    y = 454 - 2;
-                    break;
-                case "GTR 4":
-                    x = 466 - 2;
-                    y = 466 - 2;
-                    break;
-                case "GTR 3 Pro":
-                    x = 480 - 2;
-                    y = 480 - 2;
-                    break;
-                case "Amazfit Band 7":
-                    x = 194 - 2;
-                    y = 368 - 2;
-                    break;
-
-                default:
-                    x = 454 - 2;
-                    y = 454 - 2;
-                    break;
-            }*/
             int x = SelectedModel.background.w - 2;
             int y = SelectedModel.background.h - 2;
+            int w = (int)(text.text_size * 1.2);
+            int h = (int)(text.text_size * 1.2);
+            string stringCache = ProgramSettings.CacheFonts_light;
+            if(fullCache) stringCache = ProgramSettings.CacheFonts_full;
+            if (!fullCache)
+            {
+                string fontPath = ProjectDir + @"\assets\fonts\" + text.font;
+                Size size = GetStringSize(fontPath, text.text_size, stringCache);
+                if (size.Width > 0) w = (int)(size.Width * 1.2 + text.char_space * stringCache.Length * 1.2);
+                if (size.Height > 0) h = (int)(size.Height * 1.2); 
+            }
 
             options += TabInString(7 + tabOffset) + "x: " + x.ToString() + "," + Environment.NewLine;
             options += TabInString(7 + tabOffset) + "y: " + y.ToString() + "," + Environment.NewLine;
-            options += TabInString(7 + tabOffset) + "w: " + ((int)(text.text_size * 1.2)).ToString() + "," + Environment.NewLine;
-            options += TabInString(7 + tabOffset) + "h: " + ((int)(text.text_size * 1.2)).ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "w: " + w.ToString() + "," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "h: " + h.ToString() + "," + Environment.NewLine;
 
             options += TabInString(7 + tabOffset) + "text_size: " + text.text_size.ToString() + "," + Environment.NewLine;
             options += TabInString(7 + tabOffset) + "char_space: " + text.char_space.ToString() + "," + Environment.NewLine;
@@ -12824,9 +13102,16 @@ namespace Watch_Face_Editor
 
             options += TabInString(7 + tabOffset) + "align_h: hmUI.align." + text.align_h + "," + Environment.NewLine;
             options += TabInString(7 + tabOffset) + "align_v: hmUI.align." + text.align_v + "," + Environment.NewLine;
-            options += TabInString(7 + tabOffset) + "text_style: hmUI.text_style.NONE," + Environment.NewLine;
+            if (fullCache)
+            {
+                options += TabInString(7 + tabOffset) + "text_style: hmUI.text_style.NONE," + Environment.NewLine; 
+            }
+            else
+            {
+                options += TabInString(7 + tabOffset) + "text_style: hmUI.text_style.ELLIPSIS," + Environment.NewLine;
+            }
 
-            options += TabInString(7 + tabOffset) + "text: \"" + ProgramSettings.CacheFonts + "\"," + Environment.NewLine;
+            options += TabInString(7 + tabOffset) + "text: \"" + stringCache + "\"," + Environment.NewLine;
 
             options += TabInString(7 + tabOffset) + "show_level: hmUI.show_level.ONLY_NORMAL," + Environment.NewLine;
 
@@ -15086,6 +15371,7 @@ namespace Watch_Face_Editor
                             break;
                         #endregion
 
+
                         #region IMG_STATUS
                         case "IMG_STATUS":
                             hmUI_widget_IMG_STATUS imgStatus = Object_IMG_STATUS(parametrs);
@@ -15409,6 +15695,27 @@ namespace Watch_Face_Editor
                             if (!objectName.EndsWith("_cache")) ParametrsToObject(elementsList, parametrs);
                             break;
                         #endregion
+
+                        #region TEXT_FONT
+                        case "TEXT_FONT":
+                            hmUI_widget_TEXT text_font = Object_TEXT(parametrs);
+                            elementsList = null;
+                            if (text_font.show_level == "ONLY_NORMAL" || objectName.StartsWith("normal"))
+                            {
+                                if (Watch_Face.ScreenNormal.Elements == null)
+                                    Watch_Face.ScreenNormal.Elements = new List<object>();
+                                elementsList = Watch_Face.ScreenNormal.Elements;
+                            }
+                            else if (text_font.show_level == "ONLY_AOD" || text_font.show_level == "ONAL_AOD" || objectName.StartsWith("idle"))
+                            {
+                                if (Watch_Face.ScreenAOD.Elements == null)
+                                    Watch_Face.ScreenAOD.Elements = new List<object>();
+                                elementsList = Watch_Face.ScreenAOD.Elements;
+                            }
+                            if (!objectName.EndsWith("_cache")) ParametrsToObject(elementsList, parametrs);
+                            break;
+                        #endregion
+
 
                         #region IMG_ANIM
                         case "IMG_ANIM":
@@ -15802,6 +16109,7 @@ namespace Watch_Face_Editor
                                 if (battery.Images != null) offset++;
                                 if (battery.Segments != null) offset++;
                                 if (battery.Number != null) offset++;
+                                if (battery.Number_Font != null) offset++;
                                 if (battery.Text_rotation != null) offset++;
                                 if (battery.Text_circle != null) offset++;
                                 if (battery.Pointer != null) offset++;
@@ -15855,9 +16163,11 @@ namespace Watch_Face_Editor
                                 if (steps.Images != null) offset++;
                                 if (steps.Segments != null) offset++;
                                 if (steps.Number != null) offset++;
+                                if (steps.Number_Font != null) offset++;
                                 if (steps.Text_rotation != null) offset++;
                                 if (steps.Text_circle != null) offset++;
                                 if (steps.Number_Target != null) offset++;
+                                if (steps.Number_Target_Font != null) offset++;
                                 if (steps.Text_rotation_Target != null) offset++;
                                 if (steps.Text_circle_Target != null) offset++;
                                 if (steps.Pointer != null) offset++;
@@ -15911,9 +16221,11 @@ namespace Watch_Face_Editor
                                 if (calorie.Images != null) offset++;
                                 if (calorie.Segments != null) offset++;
                                 if (calorie.Number != null) offset++;
+                                if (calorie.Number_Font != null) offset++;
                                 if (calorie.Text_rotation != null) offset++;
                                 if (calorie.Text_circle != null) offset++;
                                 if (calorie.Number_Target != null) offset++;
+                                if (calorie.Number_Target_Font != null) offset++;
                                 if (calorie.Text_rotation_Target != null) offset++;
                                 if (calorie.Text_circle_Target != null) offset++;
                                 if (calorie.Pointer != null) offset++;
@@ -15967,6 +16279,7 @@ namespace Watch_Face_Editor
                                 if (heart.Images != null) offset++;
                                 if (heart.Segments != null) offset++;
                                 if (heart.Number != null) offset++;
+                                if (heart.Number_Font != null) offset++;
                                 if (heart.Text_rotation != null) offset++;
                                 if (heart.Text_circle != null) offset++;
                                 if (heart.Pointer != null) offset++;
@@ -16021,6 +16334,7 @@ namespace Watch_Face_Editor
                                 if (pai.Segments != null) offset++;
                                 if (pai.Number != null) offset++;
                                 if (pai.Number_Target != null) offset++;
+                                if (pai.Number_Target_Font != null) offset++;
                                 if (pai.Text_rotation_Target != null) offset++;
                                 if (pai.Text_circle_Target != null) offset++;
                                 if (pai.Pointer != null) offset++;
@@ -17067,9 +17381,11 @@ namespace Watch_Face_Editor
                                 //if (steps.Images != null) offset++;
                                 if (steps.Segments != null) offset++;
                                 if (steps.Number != null) offset++;
+                                if (steps.Number_Font != null) offset++;
                                 if (steps.Text_rotation != null) offset++;
                                 if (steps.Text_circle != null) offset++;
                                 if (steps.Number_Target != null) offset++;
+                                if (steps.Number_Target_Font != null) offset++;
                                 if (steps.Text_rotation_Target != null) offset++;
                                 if (steps.Text_circle_Target != null) offset++;
                                 if (steps.Pointer != null) offset++;
@@ -17102,6 +17418,7 @@ namespace Watch_Face_Editor
                                 //if (steps.Images != null) offset++;
                                 if (battery.Segments != null) offset++;
                                 if (battery.Number != null) offset++;
+                                if (battery.Number_Font != null) offset++;
                                 if (battery.Text_rotation != null) offset++;
                                 if (battery.Text_circle != null) offset++;
                                 if (battery.Pointer != null) offset++;
@@ -17133,9 +17450,11 @@ namespace Watch_Face_Editor
                                 //if (steps.Images != null) offset++;
                                 if (calorie.Segments != null) offset++;
                                 if (calorie.Number != null) offset++;
+                                if (calorie.Number_Font != null) offset++;
                                 if (calorie.Text_rotation != null) offset++;
                                 if (calorie.Text_circle != null) offset++;
                                 if (calorie.Number_Target != null) offset++;
+                                if (calorie.Number_Target_Font != null) offset++;
                                 if (calorie.Text_rotation_Target != null) offset++;
                                 if (calorie.Text_circle_Target != null) offset++;
                                 if (calorie.Pointer != null) offset++;
@@ -17168,6 +17487,7 @@ namespace Watch_Face_Editor
                                 //if (steps.Images != null) offset++;
                                 if (heart.Segments != null) offset++;
                                 if (heart.Number != null) offset++;
+                                if (heart.Number_Font != null) offset++;
                                 if (heart.Text_rotation != null) offset++;
                                 if (heart.Text_circle != null) offset++;
                                 if (heart.Pointer != null) offset++;
@@ -17205,6 +17525,7 @@ namespace Watch_Face_Editor
                                 if (pai.Segments != null) offset++;
                                 if (pai.Number != null) offset++;
                                 if (pai.Number_Target != null) offset++;
+                                if (pai.Number_Target_Font != null) offset++;
                                 if (pai.Text_rotation_Target != null) offset++;
                                 if (pai.Text_circle_Target != null) offset++;
                                 if (pai.Pointer != null) offset++;
@@ -17588,9 +17909,11 @@ namespace Watch_Face_Editor
                                 if (steps.Images != null) offset++;
                                 //if (steps.Segments != null) offset++;
                                 if (steps.Number != null) offset++;
+                                if (steps.Number_Font != null) offset++;
                                 if (steps.Text_rotation != null) offset++;
                                 if (steps.Text_circle != null) offset++;
                                 if (steps.Number_Target != null) offset++;
+                                if (steps.Number_Target_Font != null) offset++;
                                 if (steps.Text_rotation_Target != null) offset++;
                                 if (steps.Text_circle_Target != null) offset++;
                                 if (steps.Pointer != null) offset++;
@@ -17622,6 +17945,7 @@ namespace Watch_Face_Editor
                                 if (battery.Images != null) offset++;
                                 //if (steps.Segments != null) offset++;
                                 if (battery.Number != null) offset++;
+                                if (battery.Number_Font != null) offset++;
                                 if (battery.Text_rotation != null) offset++;
                                 if (battery.Text_circle != null) offset++;
                                 if (battery.Pointer != null) offset++;
@@ -17653,9 +17977,11 @@ namespace Watch_Face_Editor
                                 if (calorie.Images != null) offset++;
                                 //if (steps.Segments != null) offset++;
                                 if (calorie.Number != null) offset++;
+                                if (calorie.Number_Font != null) offset++;
                                 if (calorie.Text_rotation != null) offset++;
                                 if (calorie.Text_circle != null) offset++;
                                 if (calorie.Number_Target != null) offset++;
+                                if (calorie.Number_Target_Font != null) offset++;
                                 if (calorie.Text_rotation_Target != null) offset++;
                                 if (calorie.Text_circle_Target != null) offset++;
                                 if (calorie.Pointer != null) offset++;
@@ -17687,6 +18013,7 @@ namespace Watch_Face_Editor
                                 if (heart.Images != null) offset++;
                                 //if (steps.Segments != null) offset++;
                                 if (heart.Number != null) offset++;
+                                if (heart.Number_Font != null) offset++;
                                 if (heart.Text_rotation != null) offset++;
                                 if (heart.Text_circle != null) offset++;
                                 if (heart.Pointer != null) offset++;
@@ -17723,6 +18050,7 @@ namespace Watch_Face_Editor
                                 //if (steps.Segments != null) offset++;
                                 if (pai.Number != null) offset++;
                                 if (pai.Number_Target != null) offset++;
+                                if (pai.Number_Target_Font != null) offset++;
                                 if (pai.Text_rotation_Target != null) offset++;
                                 if (pai.Text_circle_Target != null) offset++;
                                 if (pai.Pointer != null) offset++;
@@ -18004,9 +18332,11 @@ namespace Watch_Face_Editor
                                 if (steps.Images != null) offset++;
                                 if (steps.Segments != null) offset++;
                                 //if (steps.Number != null) offset++;
+                                if (steps.Number_Font != null) offset++;
                                 if (steps.Text_rotation != null) offset++;
                                 if (steps.Text_circle != null) offset++;
                                 if (steps.Number_Target != null) offset++;
+                                if (steps.Number_Target_Font != null) offset++;
                                 if (steps.Text_rotation_Target != null) offset++;
                                 if (steps.Text_circle_Target != null) offset++;
                                 if (steps.Pointer != null) offset++;
@@ -18046,9 +18376,11 @@ namespace Watch_Face_Editor
                                 if (steps.Images != null) offset++;
                                 if (steps.Segments != null) offset++;
                                 if (steps.Number != null) offset++;
+                                if (steps.Number_Font != null) offset++;
                                 if (steps.Text_rotation != null) offset++;
                                 if (steps.Text_circle != null) offset++;
                                 //if (steps.Number_Target != null) offset++;
+                                if (steps.Number_Target_Font != null) offset++;
                                 if (steps.Text_rotation_Target != null) offset++;
                                 if (steps.Text_circle_Target != null) offset++;
                                 if (steps.Pointer != null) offset++;
@@ -18088,6 +18420,7 @@ namespace Watch_Face_Editor
                                 if (battery.Images != null) offset++;
                                 if (battery.Segments != null) offset++;
                                 //if (steps.Number != null) offset++;
+                                if (battery.Number_Font != null) offset++;
                                 if (battery.Text_rotation != null) offset++;
                                 if (battery.Text_circle != null) offset++;
                                 if (battery.Pointer != null) offset++;
@@ -18127,9 +18460,11 @@ namespace Watch_Face_Editor
                                 if (calorie.Images != null) offset++;
                                 if (calorie.Segments != null) offset++;
                                 //if (steps.Number != null) offset++;
+                                if (calorie.Number_Font != null) offset++;
                                 if (calorie.Text_rotation != null) offset++;
                                 if (calorie.Text_circle != null) offset++;
                                 if (calorie.Number_Target != null) offset++;
+                                if (calorie.Number_Target_Font != null) offset++;
                                 if (calorie.Text_rotation_Target != null) offset++;
                                 if (calorie.Text_circle_Target != null) offset++;
                                 if (calorie.Pointer != null) offset++;
@@ -18169,9 +18504,11 @@ namespace Watch_Face_Editor
                                 if (calorie.Images != null) offset++;
                                 if (calorie.Segments != null) offset++;
                                 if (calorie.Number != null) offset++;
+                                if (calorie.Number_Font != null) offset++;
                                 if (calorie.Text_rotation != null) offset++;
                                 if (calorie.Text_circle != null) offset++;
                                 //if (calorie.Number_Target != null) offset++;
+                                if (calorie.Number_Target_Font != null) offset++;
                                 if (calorie.Text_rotation_Target != null) offset++;
                                 if (calorie.Text_circle_Target != null) offset++;
                                 if (calorie.Pointer != null) offset++;
@@ -18211,6 +18548,7 @@ namespace Watch_Face_Editor
                                 if (heart.Images != null) offset++;
                                 if (heart.Segments != null) offset++;
                                 //if (steps.Number != null) offset++;
+                                if (heart.Number_Font != null) offset++;
                                 if (heart.Text_rotation != null) offset++;
                                 if (heart.Text_circle != null) offset++;
                                 if (heart.Pointer != null) offset++;
@@ -18251,6 +18589,7 @@ namespace Watch_Face_Editor
                                 if (pai.Segments != null) offset++;
                                 //if (steps.Number != null) offset++;
                                 if (pai.Number_Target != null) offset++;
+                                if (pai.Number_Target_Font != null) offset++;
                                 if (pai.Text_rotation_Target != null) offset++;
                                 if (pai.Text_circle_Target != null) offset++;
                                 if (pai.Pointer != null) offset++;
@@ -18291,6 +18630,7 @@ namespace Watch_Face_Editor
                                 if (pai.Segments != null) offset++;
                                 if (pai.Number != null) offset++;
                                 //if (steps.Number_Target != null) offset++;
+                                if (pai.Number_Target_Font != null) offset++;
                                 if (pai.Text_rotation_Target != null) offset++;
                                 if (pai.Text_circle_Target != null) offset++;
                                 if (pai.Pointer != null) offset++;
@@ -19298,9 +19638,11 @@ namespace Watch_Face_Editor
                                 if (steps.Images != null) offset++;
                                 if (steps.Segments != null) offset++;
                                 if (steps.Number != null) offset++;
+                                if (steps.Number_Font != null) offset++;
                                 //if (steps.Text_rotation != null) offset++;
                                 if (steps.Text_circle != null) offset++;
                                 if (steps.Number_Target != null) offset++;
+                                if (steps.Number_Target_Font != null) offset++;
                                 if (steps.Text_rotation_Target != null) offset++;
                                 if (steps.Text_circle_Target != null) offset++;
                                 if (steps.Pointer != null) offset++;
@@ -19341,9 +19683,11 @@ namespace Watch_Face_Editor
                                 if (steps.Images != null) offset++;
                                 if (steps.Segments != null) offset++;
                                 if (steps.Number != null) offset++;
+                                if (steps.Number_Font != null) offset++;
                                 if (steps.Text_rotation != null) offset++;
                                 if (steps.Text_circle != null) offset++;
                                 if (steps.Number_Target != null) offset++;
+                                if (steps.Number_Target_Font != null) offset++;
                                 //if (steps.Text_rotation_Target != null) offset++;
                                 if (steps.Text_circle_Target != null) offset++;
                                 if (steps.Pointer != null) offset++;
@@ -19384,6 +19728,7 @@ namespace Watch_Face_Editor
                                 if (battery.Images != null) offset++;
                                 if (battery.Segments != null) offset++;
                                 if (battery.Number != null) offset++;
+                                if (battery.Number_Font != null) offset++;
                                 //if (battery.Text_rotation != null) offset++;
                                 if (battery.Text_circle != null) offset++;
                                 if (battery.Pointer != null) offset++;
@@ -19424,9 +19769,11 @@ namespace Watch_Face_Editor
                                 if (calorie.Images != null) offset++;
                                 if (calorie.Segments != null) offset++;
                                 if (calorie.Number != null) offset++;
+                                if (calorie.Number_Font != null) offset++;
                                 //if (calorie.Text_rotation != null) offset++;
                                 if (calorie.Text_circle != null) offset++;
                                 if (calorie.Number_Target != null) offset++;
+                                if (calorie.Number_Target_Font != null) offset++;
                                 if (calorie.Text_rotation_Target != null) offset++;
                                 if (calorie.Text_circle_Target != null) offset++;
                                 if (calorie.Number_Target != null) offset++;
@@ -19468,9 +19815,11 @@ namespace Watch_Face_Editor
                                 if (calorie.Images != null) offset++;
                                 if (calorie.Segments != null) offset++;
                                 if (calorie.Number != null) offset++;
+                                if (calorie.Number_Font != null) offset++;
                                 if (calorie.Text_rotation != null) offset++;
                                 if (calorie.Text_circle != null) offset++;
                                 if (calorie.Number_Target != null) offset++;
+                                if (calorie.Number_Target_Font != null) offset++;
                                 //if (calorie.Text_rotation_Target != null) offset++;
                                 if (calorie.Text_circle_Target != null) offset++;
                                 if (calorie.Number_Target != null) offset++;
@@ -19512,6 +19861,7 @@ namespace Watch_Face_Editor
                                 if (heart.Images != null) offset++;
                                 if (heart.Segments != null) offset++;
                                 if (heart.Number != null) offset++;
+                                if (heart.Number_Font != null) offset++;
                                 //if (heart.Text_rotation != null) offset++;
                                 if (heart.Text_circle != null) offset++;
                                 if (heart.Pointer != null) offset++;
@@ -19553,6 +19903,7 @@ namespace Watch_Face_Editor
                                 if (pai.Segments != null) offset++;
                                 if (pai.Number != null) offset++;
                                 if (pai.Number_Target != null) offset++;
+                                if (pai.Number_Target_Font != null) offset++;
                                 //if (pai.Text_rotation_Target != null) offset++;
                                 if (pai.Text_circle_Target != null) offset++;
                                 if (pai.Pointer != null) offset++;
@@ -20398,8 +20749,10 @@ namespace Watch_Face_Editor
                                 if (steps.Segments != null) offset++;
                                 if (steps.Number != null) offset++;
                                 if (steps.Text_rotation != null) offset++;
+                                if (steps.Number_Font != null) offset++;
                                 //if (steps.Text_circle != null) offset++;
                                 if (steps.Number_Target != null) offset++;
+                                if (steps.Number_Target_Font != null) offset++;
                                 if (steps.Text_rotation_Target != null) offset++;
                                 if (steps.Text_circle_Target != null) offset++;
                                 if (steps.Pointer != null) offset++;
@@ -20442,9 +20795,11 @@ namespace Watch_Face_Editor
                                 if (steps.Images != null) offset++;
                                 if (steps.Segments != null) offset++;
                                 if (steps.Number != null) offset++;
+                                if (steps.Number_Font != null) offset++;
                                 if (steps.Text_rotation != null) offset++;
                                 if (steps.Text_circle != null) offset++;
                                 if (steps.Number_Target != null) offset++;
+                                if (steps.Number_Target_Font != null) offset++;
                                 if (steps.Text_rotation_Target != null) offset++;
                                 //if (steps.Text_circle_Target != null) offset++;
                                 if (steps.Pointer != null) offset++;
@@ -20487,6 +20842,7 @@ namespace Watch_Face_Editor
                                 if (battery.Images != null) offset++;
                                 if (battery.Segments != null) offset++;
                                 if (battery.Number != null) offset++;
+                                if (battery.Number_Font != null) offset++;
                                 if (battery.Text_rotation != null) offset++;
                                 //if (battery.Text_circle != null) offset++;
                                 if (battery.Pointer != null) offset++;
@@ -20529,9 +20885,11 @@ namespace Watch_Face_Editor
                                 if (calorie.Images != null) offset++;
                                 if (calorie.Segments != null) offset++;
                                 if (calorie.Number != null) offset++;
+                                if (calorie.Number_Font != null) offset++;
                                 if (calorie.Text_rotation != null) offset++;
                                 //if (calorie.Text_circle != null) offset++;
                                 if (calorie.Number_Target != null) offset++;
+                                if (calorie.Number_Target_Font != null) offset++;
                                 if (calorie.Text_rotation_Target != null) offset++;
                                 if (calorie.Text_circle_Target != null) offset++;
                                 if (calorie.Number_Target != null) offset++;
@@ -20575,9 +20933,11 @@ namespace Watch_Face_Editor
                                 if (calorie.Images != null) offset++;
                                 if (calorie.Segments != null) offset++;
                                 if (calorie.Number != null) offset++;
+                                if (calorie.Number_Font != null) offset++;
                                 if (calorie.Text_rotation != null) offset++;
                                 if (calorie.Text_circle != null) offset++;
                                 if (calorie.Number_Target != null) offset++;
+                                if (calorie.Number_Target_Font != null) offset++;
                                 if (calorie.Text_rotation_Target != null) offset++;
                                 //if (calorie.Text_circle_Target != null) offset++;
                                 if (calorie.Number_Target != null) offset++;
@@ -20621,6 +20981,7 @@ namespace Watch_Face_Editor
                                 if (heart.Images != null) offset++;
                                 if (heart.Segments != null) offset++;
                                 if (heart.Number != null) offset++;
+                                if (heart.Number_Font != null) offset++;
                                 if (heart.Text_rotation != null) offset++;
                                 //if (heart.Text_circle != null) offset++;
                                 if (heart.Pointer != null) offset++;
@@ -20664,6 +21025,7 @@ namespace Watch_Face_Editor
                                 if (pai.Segments != null) offset++;
                                 if (pai.Number != null) offset++;
                                 if (pai.Number_Target != null) offset++;
+                                if (pai.Number_Target_Font != null) offset++;
                                 if (pai.Text_rotation_Target != null) offset++;
                                 //if (pai.Text_circle_Target != null) offset++;
                                 if (pai.Pointer != null) offset++;
@@ -21143,9 +21505,11 @@ namespace Watch_Face_Editor
                                 if (steps.Images != null) offset++;
                                 if (steps.Segments != null) offset++;
                                 if (steps.Number != null) offset++;
+                                if (steps.Number_Font != null) offset++;
                                 if (steps.Text_rotation != null) offset++;
                                 if (steps.Text_circle != null) offset++;
                                 if (steps.Number_Target != null) offset++;
+                                if (steps.Number_Target_Font != null) offset++;
                                 if (steps.Text_rotation_Target != null) offset++;
                                 if (steps.Text_circle_Target != null) offset++;
                                 //if (steps.Pointer != null) offset++;
@@ -21186,6 +21550,7 @@ namespace Watch_Face_Editor
                                 if (battery.Images != null) offset++;
                                 if (battery.Segments != null) offset++;
                                 if (battery.Number != null) offset++;
+                                if (battery.Number_Font != null) offset++;
                                 if (battery.Text_rotation != null) offset++;
                                 if (battery.Text_circle != null) offset++;
                                 //if (steps.Pointer != null) offset++;
@@ -21226,9 +21591,11 @@ namespace Watch_Face_Editor
                                 if (calorie.Images != null) offset++;
                                 if (calorie.Segments != null) offset++;
                                 if (calorie.Number != null) offset++;
+                                if (calorie.Number_Font != null) offset++;
                                 if (calorie.Text_rotation != null) offset++;
                                 if (calorie.Text_circle != null) offset++;
                                 if (calorie.Number_Target != null) offset++;
+                                if (calorie.Number_Target_Font != null) offset++;
                                 if (calorie.Text_rotation_Target != null) offset++;
                                 if (calorie.Text_circle_Target != null) offset++;
                                 //if (steps.Pointer != null) offset++;
@@ -21269,6 +21636,7 @@ namespace Watch_Face_Editor
                                 if (heart.Images != null) offset++;
                                 if (heart.Segments != null) offset++;
                                 if (heart.Number != null) offset++;
+                                if (heart.Number_Font != null) offset++;
                                 if (heart.Text_rotation != null) offset++;
                                 if (heart.Text_circle != null) offset++;
                                 //if (steps.Pointer != null) offset++;
@@ -21310,6 +21678,7 @@ namespace Watch_Face_Editor
                                 if (pai.Segments != null) offset++;
                                 if (pai.Number != null) offset++;
                                 if (pai.Number_Target != null) offset++;
+                                if (pai.Number_Target_Font != null) offset++;
                                 if (pai.Text_rotation_Target != null) offset++;
                                 if (pai.Text_circle_Target != null) offset++;
                                 //if (steps.Pointer != null) offset++;
@@ -21705,9 +22074,11 @@ namespace Watch_Face_Editor
                                 if (steps.Images != null) offset++;
                                 if (steps.Segments != null) offset++;
                                 if (steps.Number != null) offset++;
+                                if (steps.Number_Font != null) offset++;
                                 if (steps.Text_rotation != null) offset++;
                                 if (steps.Text_circle != null) offset++;
                                 if (steps.Number_Target != null) offset++;
+                                if (steps.Number_Target_Font != null) offset++;
                                 if (steps.Text_rotation_Target != null) offset++;
                                 if (steps.Text_circle_Target != null) offset++;
                                 if (steps.Pointer != null) offset++;
@@ -21745,6 +22116,7 @@ namespace Watch_Face_Editor
                                 if (battery.Images != null) offset++;
                                 if (battery.Segments != null) offset++;
                                 if (battery.Number != null) offset++;
+                                if (battery.Number_Font != null) offset++;
                                 if (battery.Text_rotation != null) offset++;
                                 if (battery.Text_circle != null) offset++;
                                 if (battery.Pointer != null) offset++;
@@ -21782,9 +22154,11 @@ namespace Watch_Face_Editor
                                 if (calorie.Images != null) offset++;
                                 if (calorie.Segments != null) offset++;
                                 if (calorie.Number != null) offset++;
+                                if (calorie.Number_Font != null) offset++;
                                 if (calorie.Text_rotation != null) offset++;
                                 if (calorie.Text_circle != null) offset++;
                                 if (calorie.Number_Target != null) offset++;
+                                if (calorie.Number_Target_Font != null) offset++;
                                 if (calorie.Text_rotation_Target != null) offset++;
                                 if (calorie.Text_circle_Target != null) offset++;
                                 if (calorie.Pointer != null) offset++;
@@ -21822,6 +22196,7 @@ namespace Watch_Face_Editor
                                 if (heart.Images != null) offset++;
                                 if (heart.Segments != null) offset++;
                                 if (heart.Number != null) offset++;
+                                if (heart.Number_Font != null) offset++;
                                 if (heart.Text_rotation != null) offset++;
                                 if (heart.Text_circle != null) offset++;
                                 if (heart.Pointer != null) offset++;
@@ -21860,6 +22235,7 @@ namespace Watch_Face_Editor
                                 if (pai.Segments != null) offset++;
                                 if (pai.Number != null) offset++;
                                 if (pai.Number_Target != null) offset++;
+                                if (pai.Number_Target_Font != null) offset++;
                                 if (pai.Text_rotation_Target != null) offset++;
                                 if (pai.Text_circle_Target != null) offset++;
                                 if (pai.Pointer != null) offset++;
@@ -22020,9 +22396,11 @@ namespace Watch_Face_Editor
                                 if (steps.Images != null) offset++;
                                 if (steps.Segments != null) offset++;
                                 if (steps.Number != null) offset++;
+                                if (steps.Number_Font != null) offset++;
                                 if (steps.Text_rotation != null) offset++;
                                 if (steps.Text_circle != null) offset++;
                                 if (steps.Number_Target != null) offset++;
+                                if (steps.Number_Target_Font != null) offset++;
                                 if (steps.Text_rotation_Target != null) offset++;
                                 if (steps.Text_circle_Target != null) offset++;
                                 if (steps.Pointer != null) offset++;
@@ -22060,6 +22438,7 @@ namespace Watch_Face_Editor
                                 if (battery.Images != null) offset++;
                                 if (battery.Segments != null) offset++;
                                 if (battery.Number != null) offset++;
+                                if (battery.Number_Font != null) offset++;
                                 if (battery.Text_rotation != null) offset++;
                                 if (battery.Text_circle != null) offset++;
                                 if (battery.Pointer != null) offset++;
@@ -22097,9 +22476,11 @@ namespace Watch_Face_Editor
                                 if (calorie.Images != null) offset++;
                                 if (calorie.Segments != null) offset++;
                                 if (calorie.Number != null) offset++;
+                                if (calorie.Number_Font != null) offset++;
                                 if (calorie.Text_rotation != null) offset++;
                                 if (calorie.Text_circle != null) offset++;
                                 if (calorie.Number_Target != null) offset++;
+                                if (calorie.Number_Target_Font != null) offset++;
                                 if (calorie.Text_rotation_Target != null) offset++;
                                 if (calorie.Text_circle_Target != null) offset++;
                                 if (calorie.Pointer != null) offset++;
@@ -22137,6 +22518,7 @@ namespace Watch_Face_Editor
                                 if (heart.Images != null) offset++;
                                 if (heart.Segments != null) offset++;
                                 if (heart.Number != null) offset++;
+                                if (heart.Number_Font != null) offset++;
                                 if (heart.Text_rotation != null) offset++;
                                 if (heart.Text_circle != null) offset++;
                                 if (heart.Pointer != null) offset++;
@@ -22175,6 +22557,7 @@ namespace Watch_Face_Editor
                                 if (pai.Segments != null) offset++;
                                 if (pai.Number != null) offset++;
                                 if (pai.Number_Target != null) offset++;
+                                if (pai.Number_Target_Font != null) offset++;
                                 if (pai.Text_rotation_Target != null) offset++;
                                 if (pai.Text_circle_Target != null) offset++;
                                 if (pai.Pointer != null) offset++;
@@ -22317,6 +22700,7 @@ namespace Watch_Face_Editor
                         break;
                     #endregion
 
+
                     #region IMG_STATUS
                     case "IMG_STATUS":
                         hmUI_widget_IMG_STATUS imgStatus = Object_IMG_STATUS(parametrs);
@@ -22380,279 +22764,6 @@ namespace Watch_Face_Editor
                         break;
                     #endregion
 
-                   /* #region IMG_CLICK
-                    case "IMG_CLICK":
-                        hmUI_widget_IMG_CLICK imgShortcut = Object_IMG_CLICK(parametrs);
-
-                        ElementShortcuts elementShortcuts = (ElementShortcuts)elementsList.Find(e => e.GetType().Name == "ElementShortcuts");
-                        if (elementShortcuts == null)
-                        {
-                            elementsList.Add(new ElementShortcuts());
-                            elementShortcuts = (ElementShortcuts)elementsList.Find(e => e.GetType().Name == "ElementShortcuts");
-                        }
-                        if (elementShortcuts != null)
-                        {
-                            int index = 1;
-                            switch (imgShortcut.type)
-                            {
-                                case "STEP":
-                                    if (elementShortcuts.Step == null)
-                                    {
-                                        //if (elementShortcuts.Step != null) index++;
-                                        if (elementShortcuts.Heart != null) index++;
-                                        if (elementShortcuts.SPO2 != null) index++;
-                                        if (elementShortcuts.PAI != null) index++;
-                                        if (elementShortcuts.Stress != null) index++;
-                                        if (elementShortcuts.Weather != null) index++;
-                                        if (elementShortcuts.Altimeter != null) index++;
-                                        if (elementShortcuts.Sunrise != null) index++;
-                                        if (elementShortcuts.Alarm != null) index++;
-                                        if (elementShortcuts.Sleep != null) index++;
-                                        if (elementShortcuts.Countdown != null) index++;
-                                        if (elementShortcuts.Stopwatch != null) index++;
-
-                                        imgShortcut.position = index;
-                                        elementShortcuts.Step = imgShortcut;
-                                    }
-                                    break;
-
-                                case "HEART":
-                                    if (elementShortcuts.Heart == null)
-                                    {
-                                        if (elementShortcuts.Step != null) index++;
-                                        //if (elementShortcuts.Heart != null) index++;
-                                        if (elementShortcuts.SPO2 != null) index++;
-                                        if (elementShortcuts.PAI != null) index++;
-                                        if (elementShortcuts.Stress != null) index++;
-                                        if (elementShortcuts.Weather != null) index++;
-                                        if (elementShortcuts.Altimeter != null) index++;
-                                        if (elementShortcuts.Sunrise != null) index++;
-                                        if (elementShortcuts.Alarm != null) index++;
-                                        if (elementShortcuts.Sleep != null) index++;
-                                        if (elementShortcuts.Countdown != null) index++;
-                                        if (elementShortcuts.Stopwatch != null) index++;
-
-                                        imgShortcut.position = index;
-                                        elementShortcuts.Heart = imgShortcut;
-                                    }
-                                    break;
-
-                                case "SPO2":
-                                    if (elementShortcuts.SPO2 == null)
-                                    {
-                                        if (elementShortcuts.Step != null) index++;
-                                        if (elementShortcuts.Heart != null) index++;
-                                        //if (elementShortcuts.SPO2 != null) index++;
-                                        if (elementShortcuts.PAI != null) index++;
-                                        if (elementShortcuts.Stress != null) index++;
-                                        if (elementShortcuts.Weather != null) index++;
-                                        if (elementShortcuts.Altimeter != null) index++;
-                                        if (elementShortcuts.Sunrise != null) index++;
-                                        if (elementShortcuts.Alarm != null) index++;
-                                        if (elementShortcuts.Sleep != null) index++;
-                                        if (elementShortcuts.Countdown != null) index++;
-                                        if (elementShortcuts.Stopwatch != null) index++;
-
-                                        imgShortcut.position = index;
-                                        elementShortcuts.SPO2 = imgShortcut;
-                                    }
-                                    break;
-
-                                case "PAI":
-                                case "PAI_WEEKLY":
-                                    if (elementShortcuts.PAI == null)
-                                    {
-                                        if (elementShortcuts.Step != null) index++;
-                                        if (elementShortcuts.Heart != null) index++;
-                                        if (elementShortcuts.SPO2 != null) index++;
-                                        //if (elementShortcuts.PAI != null) index++;
-                                        if (elementShortcuts.Stress != null) index++;
-                                        if (elementShortcuts.Weather != null) index++;
-                                        if (elementShortcuts.Altimeter != null) index++;
-                                        if (elementShortcuts.Sunrise != null) index++;
-                                        if (elementShortcuts.Alarm != null) index++;
-                                        if (elementShortcuts.Sleep != null) index++;
-                                        if (elementShortcuts.Countdown != null) index++;
-                                        if (elementShortcuts.Stopwatch != null) index++;
-
-                                        imgShortcut.position = index;
-                                        elementShortcuts.PAI = imgShortcut;
-                                    }
-                                    break;
-
-                                case "STRESS":
-                                    if (elementShortcuts.Stress == null)
-                                    {
-                                        if (elementShortcuts.Step != null) index++;
-                                        if (elementShortcuts.Heart != null) index++;
-                                        if (elementShortcuts.SPO2 != null) index++;
-                                        if (elementShortcuts.PAI != null) index++;
-                                        //if (elementShortcuts.Stress != null) index++;
-                                        if (elementShortcuts.Weather != null) index++;
-                                        if (elementShortcuts.Altimeter != null) index++;
-                                        if (elementShortcuts.Sunrise != null) index++;
-                                        if (elementShortcuts.Alarm != null) index++;
-                                        if (elementShortcuts.Sleep != null) index++;
-                                        if (elementShortcuts.Countdown != null) index++;
-                                        if (elementShortcuts.Stopwatch != null) index++;
-
-                                        imgShortcut.position = index;
-                                        elementShortcuts.Stress = imgShortcut;
-                                    }
-                                    break;
-
-                                case "WEATHER_CURRENT":
-                                    if (elementShortcuts.Weather == null)
-                                    {
-                                        if (elementShortcuts.Step != null) index++;
-                                        if (elementShortcuts.Heart != null) index++;
-                                        if (elementShortcuts.SPO2 != null) index++;
-                                        if (elementShortcuts.PAI != null) index++;
-                                        if (elementShortcuts.Stress != null) index++;
-                                        //if (elementShortcuts.Weather != null) index++;
-                                        if (elementShortcuts.Altimeter != null) index++;
-                                        if (elementShortcuts.Sunrise != null) index++;
-                                        if (elementShortcuts.Alarm != null) index++;
-                                        if (elementShortcuts.Sleep != null) index++;
-                                        if (elementShortcuts.Countdown != null) index++;
-                                        if (elementShortcuts.Stopwatch != null) index++;
-
-                                        imgShortcut.position = index;
-                                        elementShortcuts.Weather = imgShortcut;
-                                    }
-                                    break;
-
-                                case "ALTIMETER":
-                                    if (elementShortcuts.Altimeter == null)
-                                    {
-                                        if (elementShortcuts.Step != null) index++;
-                                        if (elementShortcuts.Heart != null) index++;
-                                        if (elementShortcuts.SPO2 != null) index++;
-                                        if (elementShortcuts.PAI != null) index++;
-                                        if (elementShortcuts.Stress != null) index++;
-                                        if (elementShortcuts.Weather != null) index++;
-                                        //if (elementShortcuts.Altimeter != null) index++;
-                                        if (elementShortcuts.Sunrise != null) index++;
-                                        if (elementShortcuts.Alarm != null) index++;
-                                        if (elementShortcuts.Sleep != null) index++;
-                                        if (elementShortcuts.Countdown != null) index++;
-                                        if (elementShortcuts.Stopwatch != null) index++;
-
-                                        imgShortcut.position = index;
-                                        elementShortcuts.Altimeter = imgShortcut;
-                                    }
-                                    break;
-
-                                case "SUN_CURRENT":
-                                    if (elementShortcuts.Sunrise == null)
-                                    {
-                                        if (elementShortcuts.Step != null) index++;
-                                        if (elementShortcuts.Heart != null) index++;
-                                        if (elementShortcuts.SPO2 != null) index++;
-                                        if (elementShortcuts.PAI != null) index++;
-                                        if (elementShortcuts.Stress != null) index++;
-                                        if (elementShortcuts.Weather != null) index++;
-                                        if (elementShortcuts.Altimeter != null) index++;
-                                        //if (elementShortcuts.Sunrise != null) index++;
-                                        if (elementShortcuts.Alarm != null) index++;
-                                        if (elementShortcuts.Sleep != null) index++;
-                                        if (elementShortcuts.Countdown != null) index++;
-                                        if (elementShortcuts.Stopwatch != null) index++;
-
-                                        imgShortcut.position = index;
-                                        elementShortcuts.Sunrise = imgShortcut;
-                                    }
-                                    break;
-
-                                case "ALARM_CLOCK":
-                                    if (elementShortcuts.Alarm == null)
-                                    {
-                                        if (elementShortcuts.Step != null) index++;
-                                        if (elementShortcuts.Heart != null) index++;
-                                        if (elementShortcuts.SPO2 != null) index++;
-                                        if (elementShortcuts.PAI != null) index++;
-                                        if (elementShortcuts.Stress != null) index++;
-                                        if (elementShortcuts.Weather != null) index++;
-                                        if (elementShortcuts.Altimeter != null) index++;
-                                        if (elementShortcuts.Sunrise != null) index++;
-                                        //if (elementShortcuts.Alarm != null) index++;
-                                        if (elementShortcuts.Sleep != null) index++;
-                                        if (elementShortcuts.Countdown != null) index++;
-                                        if (elementShortcuts.Stopwatch != null) index++;
-
-                                        imgShortcut.position = index;
-                                        elementShortcuts.Alarm = imgShortcut;
-                                    }
-                                    break;
-
-                                case "SLEEP":
-                                    if (elementShortcuts.Sleep == null)
-                                    {
-                                        if (elementShortcuts.Step != null) index++;
-                                        if (elementShortcuts.Heart != null) index++;
-                                        if (elementShortcuts.SPO2 != null) index++;
-                                        if (elementShortcuts.PAI != null) index++;
-                                        if (elementShortcuts.Stress != null) index++;
-                                        if (elementShortcuts.Weather != null) index++;
-                                        if (elementShortcuts.Altimeter != null) index++;
-                                        if (elementShortcuts.Sunrise != null) index++;
-                                        if (elementShortcuts.Alarm != null) index++;
-                                        //if (elementShortcuts.Sleep != null) index++;
-                                        if (elementShortcuts.Countdown != null) index++;
-                                        if (elementShortcuts.Stopwatch != null) index++;
-
-                                        imgShortcut.position = index;
-                                        elementShortcuts.Sleep = imgShortcut;
-                                    }
-                                    break;
-
-                                case "COUNT_DOWN":
-                                    if (elementShortcuts.Countdown == null)
-                                    {
-                                        if (elementShortcuts.Step != null) index++;
-                                        if (elementShortcuts.Heart != null) index++;
-                                        if (elementShortcuts.SPO2 != null) index++;
-                                        if (elementShortcuts.PAI != null) index++;
-                                        if (elementShortcuts.Stress != null) index++;
-                                        if (elementShortcuts.Weather != null) index++;
-                                        if (elementShortcuts.Altimeter != null) index++;
-                                        if (elementShortcuts.Sunrise != null) index++;
-                                        if (elementShortcuts.Alarm != null) index++;
-                                        if (elementShortcuts.Sleep != null) index++;
-                                        //if (elementShortcuts.Countdown != null) index++;
-                                        if (elementShortcuts.Stopwatch != null) index++;
-
-                                        imgShortcut.position = index;
-                                        elementShortcuts.Countdown = imgShortcut;
-                                    }
-                                    break;
-
-                                case "STOP_WATCH":
-                                    if (elementShortcuts.Stopwatch == null)
-                                    {
-                                        if (elementShortcuts.Step != null) index++;
-                                        if (elementShortcuts.Heart != null) index++;
-                                        if (elementShortcuts.SPO2 != null) index++;
-                                        if (elementShortcuts.PAI != null) index++;
-                                        if (elementShortcuts.Stress != null) index++;
-                                        if (elementShortcuts.Weather != null) index++;
-                                        if (elementShortcuts.Altimeter != null) index++;
-                                        if (elementShortcuts.Sunrise != null) index++;
-                                        if (elementShortcuts.Alarm != null) index++;
-                                        if (elementShortcuts.Sleep != null) index++;
-                                        if (elementShortcuts.Countdown != null) index++;
-                                        //if (elementShortcuts.Stopwatch != null) index++;
-
-                                        imgShortcut.position = index;
-                                        elementShortcuts.Stopwatch = imgShortcut;
-                                    }
-                                    break;
-
-                            }
-                        }
-                        break;
-                    #endregion*/
-
                     #region TEXT
                     case "TEXT":
                         hmUI_widget_TEXT text = Object_TEXT(parametrs);
@@ -22704,6 +22815,355 @@ namespace Watch_Face_Editor
 
                         break;
                     #endregion
+
+                    #region TEXT_FONT
+                    case "TEXT_FONT":
+                        hmUI_widget_TEXT text_font = Object_TEXT(parametrs);
+
+                        if (text_font.type == "STEP")
+                        {
+                            ElementSteps steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
+                            if (steps == null)
+                            {
+                                elementsList.Add(new ElementSteps());
+                                steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
+                            }
+                            if (steps != null)
+                            {
+                                int offset = 1;
+                                if (steps.Images != null) offset++;
+                                if (steps.Segments != null) offset++;
+                                if (steps.Number != null) offset++;
+                                //if (steps.Number_Font != null) offset++;
+                                if (steps.Text_rotation != null) offset++;
+                                if (steps.Text_circle != null) offset++;
+                                if (steps.Number_Target != null) offset++;
+                                if (steps.Number_Target_Font != null) offset++;
+                                if (steps.Text_rotation_Target != null) offset++;
+                                if (steps.Text_circle_Target != null) offset++;
+                                if (steps.Pointer != null) offset++;
+                                if (steps.Circle_Scale != null) offset++;
+                                if (steps.Linear_Scale != null) offset++;
+                                if (steps.Icon != null) offset++;
+
+                                steps.Number_Font = new hmUI_widget_TEXT();
+                                steps.Number_Font.x = text_font.x;
+                                steps.Number_Font.y = text_font.y;
+                                steps.Number_Font.w = text_font.w;
+                                steps.Number_Font.h = text_font.h;
+
+                                steps.Number_Font.color = text_font.color;
+                                steps.Number_Font.font = text_font.font;
+                                steps.Number_Font.text_size = text_font.text_size;
+
+                                steps.Number_Font.char_space = text_font.char_space;
+                                steps.Number_Font.line_space = text_font.line_space;
+
+                                steps.Number_Font.align_h = text_font.align_h;
+                                steps.Number_Font.align_v = text_font.align_v;
+                                steps.Number_Font.text_style = text_font.text_style;
+
+                                steps.Number_Font.type = text_font.type;
+
+                                steps.Number_Font.visible = true;
+                                steps.Number_Font.position = offset;
+                            }
+                        }
+
+                        if (text_font.type == "STEP_TARGET")
+                        {
+                            ElementSteps steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
+                            if (steps == null)
+                            {
+                                elementsList.Add(new ElementSteps());
+                                steps = (ElementSteps)elementsList.Find(e => e.GetType().Name == "ElementSteps");
+                            }
+                            if (steps != null)
+                            {
+                                int offset = 1;
+                                if (steps.Images != null) offset++;
+                                if (steps.Segments != null) offset++;
+                                if (steps.Number != null) offset++;
+                                if (steps.Number_Font != null) offset++;
+                                if (steps.Text_rotation != null) offset++;
+                                if (steps.Text_circle != null) offset++;
+                                if (steps.Number_Target != null) offset++;
+                                //if (steps.Number_Target_Font != null) offset++;
+                                if (steps.Text_rotation_Target != null) offset++;
+                                if (steps.Text_circle_Target != null) offset++;
+                                if (steps.Pointer != null) offset++;
+                                if (steps.Circle_Scale != null) offset++;
+                                if (steps.Linear_Scale != null) offset++;
+                                if (steps.Icon != null) offset++;
+
+                                steps.Number_Target_Font = new hmUI_widget_TEXT();
+                                steps.Number_Target_Font.x = text_font.x;
+                                steps.Number_Target_Font.y = text_font.y;
+                                steps.Number_Target_Font.w = text_font.w;
+                                steps.Number_Target_Font.h = text_font.h;
+
+                                steps.Number_Target_Font.color = text_font.color;
+                                steps.Number_Target_Font.font = text_font.font;
+                                steps.Number_Target_Font.text_size = text_font.text_size;
+
+                                steps.Number_Target_Font.char_space = text_font.char_space;
+                                steps.Number_Target_Font.line_space = text_font.line_space;
+
+                                steps.Number_Target_Font.align_h = text_font.align_h;
+                                steps.Number_Target_Font.align_v = text_font.align_v;
+                                steps.Number_Target_Font.text_style = text_font.text_style;
+
+                                steps.Number_Target_Font.type = text_font.type;
+
+                                steps.Number_Target_Font.visible = true;
+                                steps.Number_Target_Font.position = offset;
+                            }
+                        }
+
+                        if (text_font.type == "BATTERY")
+                        {
+                            ElementBattery battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
+                            if (battery == null)
+                            {
+                                elementsList.Add(new ElementBattery());
+                                battery = (ElementBattery)elementsList.Find(e => e.GetType().Name == "ElementBattery");
+                            }
+                            if (battery != null)
+                            {
+                                int offset = 1;
+                                if (battery.Images != null) offset++;
+                                if (battery.Segments != null) offset++;
+                                if (battery.Number != null) offset++;
+                                //if (battery.Number_Font != null) offset++;
+                                if (battery.Text_rotation != null) offset++;
+                                if (battery.Text_circle != null) offset++;
+                                if (battery.Pointer != null) offset++;
+                                if (battery.Circle_Scale != null) offset++;
+                                if (battery.Linear_Scale != null) offset++;
+                                if (battery.Icon != null) offset++;
+
+                                battery.Number_Font = new hmUI_widget_TEXT();
+                                battery.Number_Font.x = text_font.x;
+                                battery.Number_Font.y = text_font.y;
+                                battery.Number_Font.w = text_font.w;
+                                battery.Number_Font.h = text_font.h;
+
+                                battery.Number_Font.color = text_font.color;
+                                battery.Number_Font.font = text_font.font;
+                                battery.Number_Font.text_size = text_font.text_size;
+
+                                battery.Number_Font.char_space = text_font.char_space;
+                                battery.Number_Font.line_space = text_font.line_space;
+
+                                battery.Number_Font.align_h = text_font.align_h;
+                                battery.Number_Font.align_v = text_font.align_v;
+                                battery.Number_Font.text_style = text_font.text_style;
+
+                                battery.Number_Font.type = text_font.type;
+
+                                battery.Number_Font.visible = true;
+                                battery.Number_Font.position = offset;
+                            }
+                        }
+
+                        if (text_font.type == "CAL")
+                        {
+                            ElementCalories calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
+                            if (calorie == null)
+                            {
+                                elementsList.Add(new ElementCalories());
+                                calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
+                            }
+                            if (calorie != null)
+                            {
+                                int offset = 1;
+                                if (calorie.Images != null) offset++;
+                                if (calorie.Segments != null) offset++;
+                                if (calorie.Number != null) offset++;
+                                //if (calorie.Number_Font != null) offset++;
+                                if (calorie.Text_rotation != null) offset++;
+                                if (calorie.Text_circle != null) offset++;
+                                if (calorie.Number_Target != null) offset++;
+                                if (calorie.Number_Target_Font != null) offset++;
+                                if (calorie.Text_rotation_Target != null) offset++;
+                                if (calorie.Text_circle_Target != null) offset++;
+                                if (calorie.Pointer != null) offset++;
+                                if (calorie.Circle_Scale != null) offset++;
+                                if (calorie.Linear_Scale != null) offset++;
+                                if (calorie.Icon != null) offset++;
+
+                                calorie.Number_Font = new hmUI_widget_TEXT();
+                                calorie.Number_Font.x = text_font.x;
+                                calorie.Number_Font.y = text_font.y;
+                                calorie.Number_Font.w = text_font.w;
+                                calorie.Number_Font.h = text_font.h;
+
+                                calorie.Number_Font.color = text_font.color;
+                                calorie.Number_Font.font = text_font.font;
+                                calorie.Number_Font.text_size = text_font.text_size;
+
+                                calorie.Number_Font.char_space = text_font.char_space;
+                                calorie.Number_Font.line_space = text_font.line_space;
+
+                                calorie.Number_Font.align_h = text_font.align_h;
+                                calorie.Number_Font.align_v = text_font.align_v;
+                                calorie.Number_Font.text_style = text_font.text_style;
+
+                                calorie.Number_Font.type = text_font.type;
+
+                                calorie.Number_Font.visible = true;
+                                calorie.Number_Font.position = offset;
+                            }
+                        }
+
+                        if (text_font.type == "CAL_TARGET")
+                        {
+                            ElementCalories calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
+                            if (calorie == null)
+                            {
+                                elementsList.Add(new ElementCalories());
+                                calorie = (ElementCalories)elementsList.Find(e => e.GetType().Name == "ElementCalories");
+                            }
+                            if (calorie != null)
+                            {
+                                int offset = 1;
+                                if (calorie.Images != null) offset++;
+                                if (calorie.Segments != null) offset++;
+                                if (calorie.Number != null) offset++;
+                                if (calorie.Number_Font != null) offset++;
+                                if (calorie.Text_rotation != null) offset++;
+                                if (calorie.Text_circle != null) offset++;
+                                if (calorie.Number_Target != null) offset++;
+                                //if (calorie.Number_Target_Font != null) offset++;
+                                if (calorie.Text_rotation_Target != null) offset++;
+                                if (calorie.Text_circle_Target != null) offset++;
+                                if (calorie.Pointer != null) offset++;
+                                if (calorie.Circle_Scale != null) offset++;
+                                if (calorie.Linear_Scale != null) offset++;
+                                if (calorie.Icon != null) offset++;
+
+                                calorie.Number_Target_Font = new hmUI_widget_TEXT();
+                                calorie.Number_Target_Font.x = text_font.x;
+                                calorie.Number_Target_Font.y = text_font.y;
+                                calorie.Number_Target_Font.w = text_font.w;
+                                calorie.Number_Target_Font.h = text_font.h;
+
+                                calorie.Number_Target_Font.color = text_font.color;
+                                calorie.Number_Target_Font.font = text_font.font;
+                                calorie.Number_Target_Font.text_size = text_font.text_size;
+
+                                calorie.Number_Target_Font.char_space = text_font.char_space;
+                                calorie.Number_Target_Font.line_space = text_font.line_space;
+
+                                calorie.Number_Target_Font.align_h = text_font.align_h;
+                                calorie.Number_Target_Font.align_v = text_font.align_v;
+                                calorie.Number_Target_Font.text_style = text_font.text_style;
+
+                                calorie.Number_Target_Font.type = text_font.type;
+
+                                calorie.Number_Target_Font.visible = true;
+                                calorie.Number_Target_Font.position = offset;
+                            }
+                        }
+
+                        if (text_font.type == "HEART")
+                        {
+                            ElementHeart heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
+                            if (heart == null)
+                            {
+                                elementsList.Add(new ElementHeart());
+                                heart = (ElementHeart)elementsList.Find(e => e.GetType().Name == "ElementHeart");
+                            }
+                            if (heart != null)
+                            {
+                                int offset = 1;
+                                if (heart.Images != null) offset++;
+                                if (heart.Segments != null) offset++;
+                                if (heart.Number != null) offset++;
+                                //if (heart.Number_Font != null) offset++;
+                                if (heart.Text_rotation != null) offset++;
+                                if (heart.Text_circle != null) offset++;
+                                if (heart.Pointer != null) offset++;
+                                if (heart.Circle_Scale != null) offset++;
+                                if (heart.Linear_Scale != null) offset++;
+                                if (heart.Icon != null) offset++;
+
+                                heart.Number_Font = new hmUI_widget_TEXT();
+                                heart.Number_Font.x = text_font.x;
+                                heart.Number_Font.y = text_font.y;
+                                heart.Number_Font.w = text_font.w;
+                                heart.Number_Font.h = text_font.h;
+
+                                heart.Number_Font.color = text_font.color;
+                                heart.Number_Font.font = text_font.font;
+                                heart.Number_Font.text_size = text_font.text_size;
+
+                                heart.Number_Font.char_space = text_font.char_space;
+                                heart.Number_Font.line_space = text_font.line_space;
+
+                                heart.Number_Font.align_h = text_font.align_h;
+                                heart.Number_Font.align_v = text_font.align_v;
+                                heart.Number_Font.text_style = text_font.text_style;
+
+                                heart.Number_Font.type = text_font.type;
+
+                                heart.Number_Font.visible = true;
+                                heart.Number_Font.position = offset;
+                            }
+                        }
+
+                        if (text_font.type == "PAI_WEEKLY")
+                        {
+                            ElementPAI pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
+                            if (pai == null)
+                            {
+                                elementsList.Add(new ElementPAI());
+                                pai = (ElementPAI)elementsList.Find(e => e.GetType().Name == "ElementPAI");
+                            }
+                            if (pai != null)
+                            {
+                                int offset = 1;
+                                if (pai.Images != null) offset++;
+                                if (pai.Segments != null) offset++;
+                                if (pai.Number != null) offset++;
+                                if (pai.Number_Target != null) offset++;
+                                //if (pai.Number_Target_Font != null) offset++;
+                                if (pai.Text_rotation_Target != null) offset++;
+                                if (pai.Text_circle_Target != null) offset++;
+                                if (pai.Pointer != null) offset++;
+                                if (pai.Circle_Scale != null) offset++;
+                                if (pai.Linear_Scale != null) offset++;
+                                if (pai.Icon != null) offset++;
+
+                                pai.Number_Target_Font = new hmUI_widget_TEXT();
+                                pai.Number_Target_Font.x = text_font.x;
+                                pai.Number_Target_Font.y = text_font.y;
+                                pai.Number_Target_Font.w = text_font.w;
+                                pai.Number_Target_Font.h = text_font.h;
+
+                                pai.Number_Target_Font.color = text_font.color;
+                                pai.Number_Target_Font.font = text_font.font;
+                                pai.Number_Target_Font.text_size = text_font.text_size;
+
+                                pai.Number_Target_Font.char_space = text_font.char_space;
+                                pai.Number_Target_Font.line_space = text_font.line_space;
+
+                                pai.Number_Target_Font.align_h = text_font.align_h;
+                                pai.Number_Target_Font.align_v = text_font.align_v;
+                                pai.Number_Target_Font.text_style = text_font.text_style;
+
+                                pai.Number_Target_Font.type = text_font.type;
+
+                                pai.Number_Target_Font.visible = true;
+                                pai.Number_Target_Font.position = offset;
+                            }
+                        }
+
+
+
+                        break;
+                    #endregion
+
 
                     #region IMG_ANIM
                     case "IMG_ANIM":
@@ -24822,6 +25282,12 @@ namespace Watch_Face_Editor
             {
                 paramName = parametrs["text_style"].Replace("hmUI.text_style.", "");
                 text.text_style = paramName;
+            }
+
+            if (parametrs.ContainsKey("type"))
+            {
+                string typeName = parametrs["type"].Replace("hmUI.data_type.", "");
+                text.type = typeName;
             }
 
             if (parametrs.ContainsKey("show_level"))
