@@ -2751,9 +2751,12 @@ namespace Watch_Face_Editor
                             if (Steps.Number_Font.font != null && Steps.Number_Font.font.Length > 3)
                             {
                                 string cacheName = "// FontName: " + Steps.Number_Font.font + "; FontSize: " + Steps.Number_Font.text_size.ToString();
+                                if (Steps.Number_Font.unit_type > 0) 
+                                    cacheName = "// FontName: " + Steps.Number_Font.font + "; FontSize: " + Steps.Number_Font.text_size.ToString() + "; Cache: full";
                                 if (fonts_cache.IndexOf(cacheName) < 0)
                                 {
-                                    string fontCacheOptions = TEXT_Cache_Options(Steps.Number_Font, false);
+                                    bool fullCache = Steps.Number_Font.unit_type > 0;
+                                    string fontCacheOptions = TEXT_Cache_Options(Steps.Number_Font, fullCache);
                                     if (fontCacheOptions.Length > 5)
                                     {
                                         fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
@@ -2811,9 +2814,12 @@ namespace Watch_Face_Editor
                             if (Steps.Number_Target_Font.font != null && Steps.Number_Target_Font.font.Length > 3)
                             {
                                 string cacheName = "// FontName: " + Steps.Number_Target_Font.font + "; FontSize: " + Steps.Number_Target_Font.text_size.ToString();
+                                if (Steps.Number_Target_Font.unit_type > 0)
+                                    cacheName = "// FontName: " + Steps.Number_Target_Font.font + "; FontSize: " + Steps.Number_Target_Font.text_size.ToString() + "; Cache: full";
                                 if (fonts_cache.IndexOf(cacheName) < 0)
                                 {
-                                    string fontCacheOptions = TEXT_Cache_Options(Steps.Number_Font, false);
+                                    bool fullCache = Steps.Number_Target_Font.unit_type > 0;
+                                    string fontCacheOptions = TEXT_Cache_Options(Steps.Number_Target_Font, fullCache);
                                     if (fontCacheOptions.Length > 5)
                                     {
                                         fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
@@ -3159,9 +3165,12 @@ namespace Watch_Face_Editor
                             if (Battery.Number_Font.font != null && Battery.Number_Font.font.Length > 3)
                             {
                                 string cacheName = "// FontName: " + Battery.Number_Font.font + "; FontSize: " + Battery.Number_Font.text_size.ToString();
+                                if (Battery.Number_Font.unit_type > 0)
+                                    cacheName = "// FontName: " + Battery.Number_Font.font + "; FontSize: " + Battery.Number_Font.text_size.ToString() + "; Cache: full";
                                 if (fonts_cache.IndexOf(cacheName) < 0)
                                 {
-                                    string fontCacheOptions = TEXT_Cache_Options(Battery.Number_Font, false);
+                                    bool fullCache = Battery.Number_Font.unit_type > 0;
+                                    string fontCacheOptions = TEXT_Cache_Options(Battery.Number_Font, fullCache);
                                     if (fontCacheOptions.Length > 5)
                                     {
                                         fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
@@ -3554,9 +3563,12 @@ namespace Watch_Face_Editor
                             if (Calories.Number_Font.font != null && Calories.Number_Font.font.Length > 3)
                             {
                                 string cacheName = "// FontName: " + Calories.Number_Font.font + "; FontSize: " + Calories.Number_Font.text_size.ToString();
+                                if (Calories.Number_Font.unit_type > 0)
+                                    cacheName = "// FontName: " + Calories.Number_Font.font + "; FontSize: " + Calories.Number_Font.text_size.ToString() + "; Cache: full";
                                 if (fonts_cache.IndexOf(cacheName) < 0)
                                 {
-                                    string fontCacheOptions = TEXT_Cache_Options(Calories.Number_Font, false);
+                                    bool fullCache = Calories.Number_Font.unit_type > 0;
+                                    string fontCacheOptions = TEXT_Cache_Options(Calories.Number_Font, fullCache);
                                     if (fontCacheOptions.Length > 5)
                                     {
                                         fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
@@ -3612,9 +3624,12 @@ namespace Watch_Face_Editor
                             if (Calories.Number_Target_Font.font != null && Calories.Number_Target_Font.font.Length > 3)
                             {
                                 string cacheName = "// FontName: " + Calories.Number_Target_Font.font + "; FontSize: " + Calories.Number_Target_Font.text_size.ToString();
+                                if (Calories.Number_Target_Font.unit_type > 0)
+                                    cacheName = "// FontName: " + Calories.Number_Target_Font.font + "; FontSize: " + Calories.Number_Target_Font.text_size.ToString() + "; Cache: full";
                                 if (fonts_cache.IndexOf(cacheName) < 0)
                                 {
-                                    string fontCacheOptions = TEXT_Cache_Options(Calories.Number_Font, false);
+                                    bool fullCache = Calories.Number_Target_Font.unit_type > 0;
+                                    string fontCacheOptions = TEXT_Cache_Options(Calories.Number_Target_Font, fullCache);
                                     if (fontCacheOptions.Length > 5)
                                     {
                                         fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
@@ -3976,9 +3991,12 @@ namespace Watch_Face_Editor
                             if (Heart.Number_Font.font != null && Heart.Number_Font.font.Length > 3)
                             {
                                 string cacheName = "// FontName: " + Heart.Number_Font.font + "; FontSize: " + Heart.Number_Font.text_size.ToString();
+                                if (Heart.Number_Font.unit_type > 0)
+                                    cacheName = "// FontName: " + Heart.Number_Font.font + "; FontSize: " + Heart.Number_Font.text_size.ToString() + "; Cache: full";
                                 if (fonts_cache.IndexOf(cacheName) < 0)
                                 {
-                                    string fontCacheOptions = TEXT_Cache_Options(Heart.Number_Font, false);
+                                    bool fullCache = Heart.Number_Font.unit_type > 0;
+                                    string fontCacheOptions = TEXT_Cache_Options(Heart.Number_Font, fullCache);
                                     if (fontCacheOptions.Length > 5)
                                     {
                                         fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
@@ -4391,9 +4409,12 @@ namespace Watch_Face_Editor
                             if (PAI.Number_Target_Font.font != null && PAI.Number_Target_Font.font.Length > 3)
                             {
                                 string cacheName = "// FontName: " + PAI.Number_Target_Font.font + "; FontSize: " + PAI.Number_Target_Font.text_size.ToString();
+                                if (PAI.Number_Target_Font.unit_type > 0)
+                                    cacheName = "// FontName: " + PAI.Number_Target_Font.font + "; FontSize: " + PAI.Number_Target_Font.text_size.ToString() + "; Cache: full";
                                 if (fonts_cache.IndexOf(cacheName) < 0)
                                 {
-                                    string fontCacheOptions = TEXT_Cache_Options(PAI.Number_Font, false);
+                                    bool fullCache = PAI.Number_Target_Font.unit_type > 0;
+                                    string fontCacheOptions = TEXT_Cache_Options(PAI.Number_Target_Font, fullCache);
                                     if (fontCacheOptions.Length > 5)
                                     {
                                         fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
@@ -13053,6 +13074,10 @@ namespace Watch_Face_Editor
 
             options += TabInString(7 + tabOffset) + "align_h: hmUI.align." + align_h + "," + Environment.NewLine;
             options += TabInString(7 + tabOffset) + "align_v: hmUI.align." + align_v + "," + Environment.NewLine;
+
+            if (text.padding) options += TabInString(7 + tabOffset) + "padding: true," + Environment.NewLine;
+            if (text.unit_type > 0) options += TabInString(7 + tabOffset) + "unit_type: " + text.unit_type.ToString() + "," + Environment.NewLine;
+
             options += TabInString(7 + tabOffset) + "text_style: hmUI.text_style." + text.text_style + "," + Environment.NewLine;
 
             if (type.Length > 0)
@@ -22863,6 +22888,9 @@ namespace Watch_Face_Editor
                                 steps.Number_Font.align_v = text_font.align_v;
                                 steps.Number_Font.text_style = text_font.text_style;
 
+                                steps.Number_Font.padding = text_font.padding;
+                                steps.Number_Font.unit_type = text_font.unit_type;
+
                                 steps.Number_Font.type = text_font.type;
 
                                 steps.Number_Font.visible = true;
@@ -22913,6 +22941,9 @@ namespace Watch_Face_Editor
                                 steps.Number_Target_Font.align_v = text_font.align_v;
                                 steps.Number_Target_Font.text_style = text_font.text_style;
 
+                                steps.Number_Target_Font.padding = text_font.padding;
+                                steps.Number_Target_Font.unit_type = text_font.unit_type;
+
                                 steps.Number_Target_Font.type = text_font.type;
 
                                 steps.Number_Target_Font.visible = true;
@@ -22958,6 +22989,9 @@ namespace Watch_Face_Editor
                                 battery.Number_Font.align_h = text_font.align_h;
                                 battery.Number_Font.align_v = text_font.align_v;
                                 battery.Number_Font.text_style = text_font.text_style;
+
+                                battery.Number_Font.padding = text_font.padding;
+                                battery.Number_Font.unit_type = text_font.unit_type;
 
                                 battery.Number_Font.type = text_font.type;
 
@@ -23009,6 +23043,9 @@ namespace Watch_Face_Editor
                                 calorie.Number_Font.align_v = text_font.align_v;
                                 calorie.Number_Font.text_style = text_font.text_style;
 
+                                calorie.Number_Font.padding = text_font.padding;
+                                calorie.Number_Font.unit_type = text_font.unit_type;
+
                                 calorie.Number_Font.type = text_font.type;
 
                                 calorie.Number_Font.visible = true;
@@ -23059,6 +23096,9 @@ namespace Watch_Face_Editor
                                 calorie.Number_Target_Font.align_v = text_font.align_v;
                                 calorie.Number_Target_Font.text_style = text_font.text_style;
 
+                                calorie.Number_Target_Font.padding = text_font.padding;
+                                calorie.Number_Target_Font.unit_type = text_font.unit_type;
+
                                 calorie.Number_Target_Font.type = text_font.type;
 
                                 calorie.Number_Target_Font.visible = true;
@@ -23104,6 +23144,9 @@ namespace Watch_Face_Editor
                                 heart.Number_Font.align_h = text_font.align_h;
                                 heart.Number_Font.align_v = text_font.align_v;
                                 heart.Number_Font.text_style = text_font.text_style;
+
+                                heart.Number_Font.padding = text_font.padding;
+                                heart.Number_Font.unit_type = text_font.unit_type;
 
                                 heart.Number_Font.type = text_font.type;
 
@@ -23151,6 +23194,9 @@ namespace Watch_Face_Editor
                                 pai.Number_Target_Font.align_h = text_font.align_h;
                                 pai.Number_Target_Font.align_v = text_font.align_v;
                                 pai.Number_Target_Font.text_style = text_font.text_style;
+
+                                pai.Number_Target_Font.padding = text_font.padding;
+                                pai.Number_Target_Font.unit_type = text_font.unit_type;
 
                                 pai.Number_Target_Font.type = text_font.type;
 
@@ -25283,6 +25329,9 @@ namespace Watch_Face_Editor
                 paramName = parametrs["text_style"].Replace("hmUI.text_style.", "");
                 text.text_style = paramName;
             }
+
+            if (parametrs.ContainsKey("padding")) text.padding = StringToBool(parametrs["padding"]);
+            if (parametrs.ContainsKey("unit_type") && Int32.TryParse(parametrs["unit_type"], out value)) text.unit_type = value;
 
             if (parametrs.ContainsKey("type"))
             {

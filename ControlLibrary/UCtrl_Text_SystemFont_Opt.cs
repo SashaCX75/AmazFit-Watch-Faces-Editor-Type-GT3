@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -19,6 +20,7 @@ namespace ControlLibrary
         //public string fonts_path; // папка со шрифтами
 
         private bool Font_mode;
+        private bool Number_mode = true;
 
         public UCtrl_Text_SystemFont_Opt()
         {
@@ -258,6 +260,47 @@ namespace ControlLibrary
             return comboBox_textStyle.SelectedIndex;
         }
 
+        /// <summary>Устанавливаем тип отображения единиц измерения</summary>
+        public void SetUnitType(int unit_type)
+        {
+            switch (unit_type)
+            {
+                case 0:
+                    checkBox_unit.CheckState= CheckState.Unchecked;
+                    break;
+                case 1:
+                    checkBox_unit.CheckState = CheckState.Checked;
+                    break;
+                case 2:
+                    checkBox_unit.CheckState = CheckState.Indeterminate;
+                    break;
+
+                default:
+                    checkBox_unit.CheckState = CheckState.Indeterminate;
+                    break;
+            }
+        }
+
+        /// <summary>Возвращает тип отображения единиц измерения</summary>
+        public int GetUnitType()
+        {
+            int unit_type = 0;
+            switch (checkBox_unit.CheckState)
+            {
+                case CheckState.Unchecked:
+                    unit_type = 0; 
+                    break;
+                case CheckState.Checked:
+                    unit_type = 1;
+                    break;
+                case CheckState.Indeterminate:
+                    unit_type = 2;
+                    break;
+            }
+            return unit_type;
+        }
+
+        /// <summary>Возвращает имя файла выбраного шрифта</summary>
         public string GetFont()
         {
             string font = "";
@@ -278,6 +321,8 @@ namespace ControlLibrary
             }
             return font;
         }
+
+        /// <summary>Устанавливает выбраный шрифт</summary>
         public void SetFont(string font_fileName)
         {
             if (font_fileName == null || font_fileName.Length == 0) return;
@@ -311,6 +356,22 @@ namespace ControlLibrary
             }
         }
 
+        /// <summary>Отображение настроек доступных для числовых данных</summary>
+        [Description("Отображение настроек доступных для числовых данных")]
+        public virtual bool NumberValue
+        {
+            get
+            {
+                return Number_mode;
+            }
+            set
+            {
+                Number_mode = value;
+                checkBox_addZero.Enabled = Number_mode;
+                checkBox_unit.Enabled = Number_mode;
+            }
+        }
+
         [Browsable(true)]
         [Description("Происходит при изменении выбора элемента")]
         public event ValueChangedHandler ValueChanged;
@@ -326,14 +387,6 @@ namespace ControlLibrary
         public event DelFont_ClickHandler DelFont_Click;
         public delegate void DelFont_ClickHandler(object sender, EventArgs eventArgs, string fontName);
 
-        private void checkBox_Click(object sender, EventArgs e)
-        {
-            if (ValueChanged != null && !setValue)
-            {
-                EventArgs eventArgs = new EventArgs();
-                ValueChanged(this, eventArgs);
-            }
-        }
 
         #region Standard events
 
@@ -630,6 +683,9 @@ namespace ControlLibrary
             numericUpDown_Y.Enabled = true;
             comboBox_alignmentVertical.Enabled = true;
 
+            checkBox_unit.CheckState = CheckState.Unchecked;
+            checkBox_addZero.Checked = false;
+
             UserFont = false;
 
             setValue = false;
@@ -714,48 +770,6 @@ namespace ControlLibrary
             {
                 AddFont_Click(this, e);
             }
-            //if (fonts_path == null || fonts_path.Length < 5) return;
-            //if (!Directory.Exists(fonts_path)) Directory.CreateDirectory(fonts_path);
-            //OpenFileDialog openFileDialog = new OpenFileDialog();
-            //openFileDialog.Filter = "Fonts files (*.ttf) | *.ttf";
-            //openFileDialog.Filter = Properties.Strings.Dialog_FontFilter;
-            //openFileDialog.RestoreDirectory = true;
-            //openFileDialog.Multiselect = false; 
-            //openFileDialog.Title = Properties.Strings.Dialog_Title_Font_Add;
-            //if (openFileDialog.ShowDialog() == DialogResult.OK)
-            //{
-            //    try
-            //    {
-            //        string fileFullName = openFileDialog.FileName;
-            //        string fileName = Path.GetFileNameWithoutExtension(fileFullName);
-            //        string newFileName = Path.Combine(fonts_path, fileName + ".ttf");
-            //        if (File.Exists(newFileName))
-            //        {
-            //            DialogResult dialogResult = MessageBox.Show(Properties.Strings.Message_Warning_Font_Exist1
-            //                + fileName + Environment.NewLine + Properties.Strings.Message_Warning_Font_Exist2,
-            //                Properties.Strings.Message_Warning_Caption,
-            //            MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
-            //            if (dialogResult == DialogResult.Yes) File.Copy(fileFullName, newFileName, true); ;
-            //        }
-            //        else
-            //        {
-            //            File.Copy(fileFullName, newFileName, true);
-
-            //            System.Drawing.Text.PrivateFontCollection f = new System.Drawing.Text.PrivateFontCollection();
-            //            f.AddFontFile(openFileDialog.FileName);
-            //            Font addFont = new Font(f.Families[0], 18);
-            //            string fontName = addFont.Name;
-            //            string item = Path.GetFileName(openFileDialog.FileName);
-            //            if (fontName.Length > 3) item += " (" + fontName + ")";
-            //            comboBox_fonts.Items.Add(item);
-            //        }
-
-            //    }
-            //    catch
-            //    {
-            //        MessageBox.Show("Ошибка добавления шрифта ");
-            //    }
-            //}
         }
 
         private void button_DelFont_Click(object sender, EventArgs e)
@@ -811,7 +825,6 @@ namespace ControlLibrary
                 ValueChanged(this, eventArgs);
             }
         }
-
     }
 }
 

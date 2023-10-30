@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Watch_Face_Editor
 {
@@ -1754,6 +1755,8 @@ namespace Watch_Face_Editor
                     line_space = this.Number_Font.line_space,
                     char_space = this.Number_Font.char_space,
                     font = this.Number_Font.font,
+                    padding=this.Number_Font.padding,
+                    unit_type = this.Number_Font.unit_type,
 
                     position = this.Number_Font.position,
                     visible = this.Number_Font.visible,
@@ -1866,6 +1869,8 @@ namespace Watch_Face_Editor
                     line_space = this.Number_Target_Font.line_space,
                     char_space = this.Number_Target_Font.char_space,
                     font = this.Number_Target_Font.font,
+                    padding = this.Number_Font.padding,
+                    unit_type = this.Number_Font.unit_type,
 
                     position = this.Number_Target_Font.position,
                     visible = this.Number_Target_Font.visible,
@@ -2146,6 +2151,8 @@ namespace Watch_Face_Editor
                     line_space = this.Number_Font.line_space,
                     char_space = this.Number_Font.char_space,
                     font = this.Number_Font.font,
+                    padding = this.Number_Font.padding,
+                    unit_type = this.Number_Font.unit_type,
 
                     position = this.Number_Font.position,
                     visible = this.Number_Font.visible,
@@ -2428,6 +2435,8 @@ namespace Watch_Face_Editor
                     line_space = this.Number_Font.line_space,
                     char_space = this.Number_Font.char_space,
                     font = this.Number_Font.font,
+                    padding = this.Number_Font.padding,
+                    unit_type = this.Number_Font.unit_type,
 
                     position = this.Number_Font.position,
                     visible = this.Number_Font.visible,
@@ -2540,6 +2549,8 @@ namespace Watch_Face_Editor
                     line_space = this.Number_Target_Font.line_space,
                     char_space = this.Number_Target_Font.char_space,
                     font = this.Number_Target_Font.font,
+                    padding = this.Number_Font.padding,
+                    unit_type = this.Number_Font.unit_type,
 
                     position = this.Number_Target_Font.position,
                     visible = this.Number_Target_Font.visible,
@@ -2821,6 +2832,8 @@ namespace Watch_Face_Editor
                     line_space = this.Number_Font.line_space,
                     char_space = this.Number_Font.char_space,
                     font = this.Number_Font.font,
+                    padding = this.Number_Font.padding,
+                    unit_type = this.Number_Font.unit_type,
 
                     position = this.Number_Font.position,
                     visible = this.Number_Font.visible,
@@ -3101,6 +3114,8 @@ namespace Watch_Face_Editor
                     line_space = this.Number_Font.line_space,
                     char_space = this.Number_Font.char_space,
                     font = this.Number_Font.font,
+                    padding = this.Number_Font.padding,
+                    unit_type = this.Number_Font.unit_type,
 
                     position = this.Number_Font.position,
                     visible = this.Number_Font.visible,
@@ -3154,6 +3169,8 @@ namespace Watch_Face_Editor
                     line_space = this.Number_Target_Font.line_space,
                     char_space = this.Number_Target_Font.char_space,
                     font = this.Number_Target_Font.font,
+                    padding = this.Number_Font.padding,
+                    unit_type = this.Number_Font.unit_type,
 
                     position = this.Number_Target_Font.position,
                     visible = this.Number_Target_Font.visible,
