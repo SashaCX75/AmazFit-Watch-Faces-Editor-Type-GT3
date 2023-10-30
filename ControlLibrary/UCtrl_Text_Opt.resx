@@ -409,7 +409,6 @@
   </data>
   <data name="label1085.Text" xml:space="preserve">
     <value>X:</value>
-    <comment>Do not translate</comment>
   </data>
   <data name="label_unit_miles.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>BottomCenter</value>
@@ -634,7 +633,6 @@
   </data>
   <data name="label1083.Text" xml:space="preserve">
     <value>Y:</value>
-    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;label_unit.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -780,7 +778,6 @@
   </data>
   <data name="label1086.Text" xml:space="preserve">
     <value>X:</value>
-    <comment>Do not translate</comment>
   </data>
   <data name="numericUpDown_angle.Location" type="System.Drawing.Point, System.Drawing">
     <value>193, 298</value>
@@ -997,7 +994,6 @@
   </data>
   <data name="label1084.Text" xml:space="preserve">
     <value>Y:</value>
-    <comment>Do not translate</comment>
   </data>
   <data name="&gt;&gt;label04.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1163,13 +1159,13 @@
   <data name="label05.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
   </data>
-  <data name="$this.Localizable" type="System.Boolean, mscorlib">
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
-  <data name="contextMenuStrip_Y.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  </metadata>
+  <metadata name="contextMenuStrip_Y.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>175, 10</value>
-  </data>
-  <data name="contextMenuStrip_X.TrayLocation" type="System.Drawing.Point, System.Drawing">
+  </metadata>
+  <metadata name="contextMenuStrip_X.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>14, 10</value>
-  </data>
+  </metadata>
 </root>

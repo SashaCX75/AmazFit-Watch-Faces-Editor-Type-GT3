@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -712,6 +713,12 @@ namespace Watch_Face_Editor
 
         /// <summary>Шрифт</summary>
         public string font { get; set; } = "";
+        
+        /// <summary>Отображение ведущих нулей</summary>
+        public bool padding { get; set; }
+
+        /// <summary>Отображение единиц измерения: 0 - не отобрадать; 1 - отображать строчными буквами; 2 - отображать прописными буквами</summary>
+        public int unit_type { get; set; }
 
         /// <summary>Центрировать горизонтально</summary>
         public bool centreHorizontally { get; set; } = false;

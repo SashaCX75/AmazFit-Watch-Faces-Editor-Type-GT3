@@ -5457,79 +5457,7 @@ namespace Watch_Face_Editor
                             break;
                         #endregion
 
-                        /*#region ElementShortcuts
-                        case "ElementShortcuts":
-                            ElementShortcuts Shortcuts = (ElementShortcuts)element;
-                            uCtrl_Shortcuts_Elm.SetVisibilityElementStatus(Shortcuts.enable);
-                            elementOptions = new Dictionary<int, string>();
-                            if (Shortcuts.Step != null)
-                            {
-                                uCtrl_Shortcuts_Elm.checkBox_Step.Checked = Shortcuts.Step.enable;
-                                elementOptions.Add(Shortcuts.Step.position, "Step");
-                            }
-                            if (Shortcuts.Heart != null)
-                            {
-                                uCtrl_Shortcuts_Elm.checkBox_Heart.Checked = Shortcuts.Heart.enable;
-                                elementOptions.Add(Shortcuts.Heart.position, "Heart");
-                            }
-                            if (Shortcuts.SPO2 != null)
-                            {
-                                uCtrl_Shortcuts_Elm.checkBox_SPO2.Checked = Shortcuts.SPO2.enable;
-                                elementOptions.Add(Shortcuts.SPO2.position, "SPO2");
-                            }
-                            if (Shortcuts.PAI != null)
-                            {
-                                uCtrl_Shortcuts_Elm.checkBox_PAI.Checked = Shortcuts.PAI.enable;
-                                elementOptions.Add(Shortcuts.PAI.position, "PAI");
-                            }
-                            if (Shortcuts.Stress != null)
-                            {
-                                uCtrl_Shortcuts_Elm.checkBox_Stress.Checked = Shortcuts.Stress.enable;
-                                elementOptions.Add(Shortcuts.Stress.position, "Stress");
-                            }
-                            if (Shortcuts.Weather != null)
-                            {
-                                uCtrl_Shortcuts_Elm.checkBox_Weather.Checked = Shortcuts.Weather.enable;
-                                elementOptions.Add(Shortcuts.Weather.position, "Weather");
-                            }
-                            if (Shortcuts.Altimeter != null)
-                            {
-                                uCtrl_Shortcuts_Elm.checkBox_Altimeter.Checked = Shortcuts.Altimeter.enable;
-                                elementOptions.Add(Shortcuts.Altimeter.position, "Altimeter");
-                            }
-                            if (Shortcuts.Sunrise != null)
-                            {
-                                uCtrl_Shortcuts_Elm.checkBox_Sunrise.Checked = Shortcuts.Sunrise.enable;
-                                elementOptions.Add(Shortcuts.Sunrise.position, "Sunrise");
-                            }
-                            if (Shortcuts.Alarm != null)
-                            {
-                                uCtrl_Shortcuts_Elm.checkBox_Alarm.Checked = Shortcuts.Alarm.enable;
-                                elementOptions.Add(Shortcuts.Alarm.position, "Alarm");
-                            }
-                            if (Shortcuts.Sleep != null)
-                            {
-                                uCtrl_Shortcuts_Elm.checkBox_Sleep.Checked = Shortcuts.Sleep.enable;
-                                elementOptions.Add(Shortcuts.Sleep.position, "Sleep");
-                            }
-                            if (Shortcuts.Countdown != null)
-                            {
-                                uCtrl_Shortcuts_Elm.checkBox_Countdown.Checked = Shortcuts.Countdown.enable;
-                                elementOptions.Add(Shortcuts.Countdown.position, "Countdown");
-                            }
-                            if (Shortcuts.Stopwatch != null)
-                            {
-                                uCtrl_Shortcuts_Elm.checkBox_Stopwatch.Checked = Shortcuts.Stopwatch.enable;
-                                elementOptions.Add(Shortcuts.Stopwatch.position, "Stopwatch");
-                            }
-                            uCtrl_Shortcuts_Elm.SetOptionsPosition(elementOptions);
-
-                            uCtrl_Shortcuts_Elm.Visible = true;
-                            SetElementPositionInGUI(type, count - i - 2);
-                            //SetElementPositionInGUI(type, i + 1);
-                            break;
-#endregion*/
-
+                        
                         #region ElementAnimation
                         case "ElementAnimation":
                             ElementAnimation Animation = (ElementAnimation)element;
@@ -5667,6 +5595,11 @@ namespace Watch_Face_Editor
                                 uCtrl_Battery_Elm.checkBox_Number.Checked = Battery.Number.visible;
                                 elementOptions.Add(Battery.Number.position, "Number");
                             }
+                            if (Battery.Number_Font != null)
+                            {
+                                uCtrl_Battery_Elm.checkBox_Number_Font.Checked = Battery.Number_Font.visible;
+                                elementOptions.Add(Battery.Number_Font.position, "Number_Font");
+                            }
                             if (Battery.Text_rotation != null)
                             {
                                 uCtrl_Battery_Elm.checkBox_Text_rotation.Checked = Battery.Text_rotation.visible;
@@ -5726,6 +5659,11 @@ namespace Watch_Face_Editor
                                 uCtrl_Calories_Elm.checkBox_Number.Checked = Calories.Number.visible;
                                 elementOptions.Add(Calories.Number.position, "Number");
                             }
+                            if (Calories.Number_Font != null)
+                            {
+                                uCtrl_Calories_Elm.checkBox_Number_Font.Checked = Calories.Number_Font.visible;
+                                elementOptions.Add(Calories.Number_Font.position, "Number_Font");
+                            }
                             if (Calories.Text_rotation != null)
                             {
                                 uCtrl_Calories_Elm.checkBox_Text_rotation.Checked = Calories.Text_rotation.visible;
@@ -5740,6 +5678,11 @@ namespace Watch_Face_Editor
                             {
                                 uCtrl_Calories_Elm.checkBox_Number_Target.Checked = Calories.Number_Target.visible;
                                 elementOptions.Add(Calories.Number_Target.position, "Number_Target");
+                            }
+                            if (Calories.Number_Target_Font != null)
+                            {
+                                uCtrl_Calories_Elm.checkBox_Number_Target_Font.Checked = Calories.Number_Target_Font.visible;
+                                elementOptions.Add(Calories.Number_Target_Font.position, "Number_Target_Font");
                             }
                             if (Calories.Text_rotation_Target != null)
                             {
@@ -5799,6 +5742,11 @@ namespace Watch_Face_Editor
                             {
                                 uCtrl_Heart_Elm.checkBox_Number.Checked = Heart.Number.visible;
                                 elementOptions.Add(Heart.Number.position, "Number");
+                            }
+                            if (Heart.Number_Font != null)
+                            {
+                                uCtrl_Heart_Elm.checkBox_Number_Font.Checked = Heart.Number_Font.visible;
+                                elementOptions.Add(Heart.Number_Font.position, "Number_Font");
                             }
                             if (Heart.Text_rotation != null)
                             {
@@ -5863,6 +5811,11 @@ namespace Watch_Face_Editor
                             {
                                 uCtrl_PAI_Elm.checkBox_Number_Target.Checked = PAI.Number_Target.visible;
                                 elementOptions.Add(PAI.Number_Target.position, "Number_Target");
+                            }
+                            if (PAI.Number_Target_Font != null)
+                            {
+                                uCtrl_PAI_Elm.checkBox_Number_Target_Font.Checked = PAI.Number_Target_Font.visible;
+                                elementOptions.Add(PAI.Number_Target_Font.position, "Number_Target_Font");
                             }
                             if (PAI.Text_rotation_Target != null)
                             {
@@ -10683,7 +10636,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Steps_Elm.checkBox_Number_Font.Checked)
                         {
                             text = steps.Number_Font;
-                            Read_Text_Options(text);
+                            Read_Text_Options(text, true);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
@@ -10719,7 +10672,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Steps_Elm.checkBox_Number_Target_Font.Checked)
                         {
                             text = steps.Number_Target_Font;
-                            Read_Text_Options(text);
+                            Read_Text_Options(text, true);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
@@ -10853,7 +10806,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Battery_Elm.checkBox_Number_Font.Checked)
                         {
                             text = battery.Number_Font;
-                            Read_Text_Options(text);
+                            Read_Text_Options(text, true);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
@@ -10988,7 +10941,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Heart_Elm.checkBox_Number_Font.Checked)
                         {
                             text = heart.Number_Font;
-                            Read_Text_Options(text);
+                            Read_Text_Options(text, true);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
@@ -11122,7 +11075,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Calories_Elm.checkBox_Number_Font.Checked)
                         {
                             text = calories.Number_Font;
-                            Read_Text_Options(text);
+                            Read_Text_Options(text, true);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
@@ -11158,7 +11111,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Calories_Elm.checkBox_Number_Target_Font.Checked)
                         {
                             text = calories.Number_Target_Font;
-                            Read_Text_Options(text);
+                            Read_Text_Options(text, true);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
@@ -11310,7 +11263,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_PAI_Elm.checkBox_Number_Target_Font.Checked)
                         {
                             text = pai.Number_Target_Font;
-                            Read_Text_Options(text);
+                            Read_Text_Options(text, true);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
@@ -12134,7 +12087,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Weather_Elm.checkBox_Text_CityName.Checked)
                         {
                             text = weather.City_Name;
-                            Read_Text_Options(text);
+                            Read_Text_Options(text, false);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();

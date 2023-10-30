@@ -70,6 +70,8 @@ namespace ControlLibrary
             this.button_DelFont = new System.Windows.Forms.Button();
             this.checkBox_CentreHorizontally = new System.Windows.Forms.CheckBox();
             this.checkBox_CentreVertically = new System.Windows.Forms.CheckBox();
+            this.checkBox_addZero = new System.Windows.Forms.CheckBox();
+            this.checkBox_unit = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Width)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Height)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_X)).BeginInit();
@@ -433,10 +435,27 @@ namespace ControlLibrary
             this.checkBox_CentreVertically.UseVisualStyleBackColor = true;
             this.checkBox_CentreVertically.CheckedChanged += new System.EventHandler(this.checkBox_CentreVertically_CheckedChanged);
             // 
+            // checkBox_addZero
+            // 
+            resources.ApplyResources(this.checkBox_addZero, "checkBox_addZero");
+            this.checkBox_addZero.Name = "checkBox_addZero";
+            this.checkBox_addZero.UseVisualStyleBackColor = true;
+            this.checkBox_addZero.CheckedChanged += new System.EventHandler(this.checkBox_CheckedChanged);
+            // 
+            // checkBox_unit
+            // 
+            resources.ApplyResources(this.checkBox_unit, "checkBox_unit");
+            this.checkBox_unit.Name = "checkBox_unit";
+            this.checkBox_unit.ThreeState = true;
+            this.checkBox_unit.UseVisualStyleBackColor = true;
+            this.checkBox_unit.CheckStateChanged += new System.EventHandler(this.checkBox_CheckedChanged);
+            // 
             // UCtrl_Text_SystemFont_Opt
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.checkBox_unit);
+            this.Controls.Add(this.checkBox_addZero);
             this.Controls.Add(this.checkBox_CentreVertically);
             this.Controls.Add(this.checkBox_CentreHorizontally);
             this.Controls.Add(this.button_DelFont);
@@ -524,5 +543,7 @@ namespace ControlLibrary
         private System.Windows.Forms.Button button_DelFont;
         public System.Windows.Forms.CheckBox checkBox_CentreHorizontally;
         public System.Windows.Forms.CheckBox checkBox_CentreVertically;
+        public System.Windows.Forms.CheckBox checkBox_addZero;
+        private System.Windows.Forms.CheckBox checkBox_unit;
     }
 }

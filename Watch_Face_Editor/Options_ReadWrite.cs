@@ -1676,7 +1676,7 @@ namespace Watch_Face_Editor
             PreviewView = true;
         }
 
-        private void Read_Text_Options(hmUI_widget_TEXT system_font)
+        private void Read_Text_Options(hmUI_widget_TEXT system_font, bool numberValue)
         {
             PreviewView = false;
 
@@ -1685,6 +1685,7 @@ namespace Watch_Face_Editor
             //if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || 
             //    ProgramSettings.Watch_Model == "GTR mini" || ProgramSettings.Watch_Model == "T-Rex Ultra")
             if (SelectedModel.versionOS >= 2) uCtrl_Text_SystemFont_Opt.UserFont = true;
+            uCtrl_Text_SystemFont_Opt.NumberValue = numberValue;
 
             uCtrl_Text_SystemFont_Opt._ElementWithSystemFont = system_font;
             //uCtrl_Text_SystemFont_Opt.fonts_path = ProjectDir + @"\assets\fonts\";
@@ -1709,6 +1710,9 @@ namespace Watch_Face_Editor
             uCtrl_Text_SystemFont_Opt.checkBox_CentreVertically.Checked = system_font.centreVertically;
 
             uCtrl_Text_SystemFont_Opt.SetFont(system_font.font);
+
+            uCtrl_Text_SystemFont_Opt.checkBox_addZero.Checked = system_font.padding;
+            uCtrl_Text_SystemFont_Opt.SetUnitType(system_font.unit_type);
 
             PreviewView = true;
         }
@@ -2423,6 +2427,9 @@ namespace Watch_Face_Editor
             systemFont.centreVertically = uCtrl_Text_SystemFont_Opt.checkBox_CentreVertically.Checked;
 
             systemFont.font = uCtrl_Text_SystemFont_Opt.GetFont();
+
+            systemFont.padding = uCtrl_Text_SystemFont_Opt.checkBox_addZero.Checked;
+            systemFont.unit_type = uCtrl_Text_SystemFont_Opt.GetUnitType();
 
             JSON_Modified = true;
             PreviewImage();

@@ -3350,6 +3350,25 @@ namespace Watch_Face_Editor
             if (progress < 0) progress = 0;
             if (progress > 1) progress = 1;
             Bitmap src = new Bitmap(1, 1);
+            string unit = "";
+            switch (elementName)
+            {
+                case "ElementSteps":
+                    unit = "steps";
+                    break;
+                case "ElementBattery":
+                    unit = "%";
+                    break;
+                case "ElementCalories":
+                    unit = "kcal";
+                    break;
+                case "ElementHeart":
+                    unit = "bmp";
+                    break;
+                case "ElementPAI":
+                    unit = "pai";
+                    break;
+            }
 
             for (int index = 1; index <= 25; index++)
             {
@@ -3463,6 +3482,13 @@ namespace Watch_Face_Editor
                     string align_v = number_font.align_v;
                     string text_style = number_font.text_style;
                     string valueStr = value.ToString();
+                    string unitStr = unit;
+                    if (number_font.padding) valueStr = valueStr.PadLeft(value_lenght, '0');
+                    if (number_font.unit_type > 0)
+                    {
+                        if (number_font.unit_type == 2) unitStr = unitStr.ToUpper();
+                        valueStr += unitStr; 
+                    }
 
                     if (number_font.centreHorizontally) 
                     {
@@ -3598,6 +3624,13 @@ namespace Watch_Face_Editor
                     string align_v = numberTarget_font.align_v;
                     string text_style = numberTarget_font.text_style;
                     string valueStr = goal.ToString();
+                    string unitStr = unit;
+                    if (numberTarget_font.padding) valueStr = valueStr.PadLeft(value_lenght, '0');
+                    if (numberTarget_font.unit_type > 0)
+                    {
+                        if (numberTarget_font.unit_type == 2) unitStr = unitStr.ToUpper();
+                        valueStr += unitStr;
+                    }
 
                     if (numberTarget_font.centreHorizontally)
                     {
@@ -5653,6 +5686,7 @@ namespace Watch_Face_Editor
         /// <param name="spacing_h">Величина отступа</param>
         /// <param name="spacing_v">Межстрочный интервал</param>
         /// <param name="color">Цвет шрифта</param>
+        /// <param name="value">Отображаемые данные</param>
         /// <param name="align_h">Горизонтальное выравнивание</param>
         /// <param name="align_v">Вертикальное выравнивание</param>
         /// <param name="text_style">Стиль вписывания текста</param>
@@ -5836,6 +5870,7 @@ namespace Watch_Face_Editor
         /// <param name="spacing_h">Величина отступа</param>
         /// <param name="spacing_v">Межстрочный интервал</param>
         /// <param name="color">Цвет шрифта</param>
+        /// <param name="value">Отображаемые данные</param>
         /// <param name="align_h">Горизонтальное выравнивание</param>
         /// <param name="align_v">Вертикальное выравнивание</param>
         /// <param name="text_style">Стиль вписывания текста</param>

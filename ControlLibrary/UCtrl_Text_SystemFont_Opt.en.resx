@@ -315,7 +315,7 @@
     <value>Text wrap</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>245, 39</value>
+    <value>238, 39</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>* The size and position of the text may differ from the image on the watch. Check the position of the text on the real device.</value>
@@ -345,5 +345,17 @@ horizontally</value>
   <data name="checkBox_CentreVertically.Text" xml:space="preserve">
     <value>Center 
 vertically</value>
+  </data>
+  <data name="checkBox_addZero.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 17</value>
+  </data>
+  <data name="checkBox_addZero.Text" xml:space="preserve">
+    <value>Add leading zeros</value>
+  </data>
+  <data name="checkBox_unit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>50, 17</value>
+  </data>
+  <data name="checkBox_unit.Text" xml:space="preserve">
+    <value>Units</value>
   </data>
 </root>
