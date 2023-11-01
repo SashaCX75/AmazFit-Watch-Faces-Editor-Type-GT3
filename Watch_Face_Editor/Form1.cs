@@ -5866,6 +5866,11 @@ namespace Watch_Face_Editor
                                 uCtrl_Distance_Elm.checkBox_Number.Checked = Distance.Number.visible;
                                 elementOptions.Add(Distance.Number.position, "Number");
                             }
+                            if (Distance.Number_Font != null)
+                            {
+                                uCtrl_Distance_Elm.checkBox_Number_Font.Checked = Distance.Number_Font.visible;
+                                elementOptions.Add(Distance.Number_Font.position, "Number_Font");
+                            }
                             if (Distance.Text_rotation != null)
                             {
                                 uCtrl_Distance_Elm.checkBox_Text_rotation.Checked = Distance.Text_rotation.visible;
@@ -5910,6 +5915,11 @@ namespace Watch_Face_Editor
                                 uCtrl_Stand_Elm.checkBox_Number.Checked = Stand.Number.visible;
                                 elementOptions.Add(Stand.Number.position, "Number");
                             }
+                            if (Stand.Number_Font != null)
+                            {
+                                uCtrl_Stand_Elm.checkBox_Number_Font.Checked = Stand.Number_Font.visible;
+                                elementOptions.Add(Stand.Number_Font.position, "Number_Font");
+                            }
                             if (Stand.Text_rotation != null)
                             {
                                 uCtrl_Stand_Elm.checkBox_Text_rotation.Checked = Stand.Text_rotation.visible;
@@ -5924,6 +5934,11 @@ namespace Watch_Face_Editor
                             {
                                 uCtrl_Stand_Elm.checkBox_Number_Target.Checked = Stand.Number_Target.visible;
                                 elementOptions.Add(Stand.Number_Target.position, "Number_Target");
+                            }
+                            if (Stand.Number_Target_Font != null)
+                            {
+                                uCtrl_Stand_Elm.checkBox_Number_Target_Font.Checked = Stand.Number_Target_Font.visible;
+                                elementOptions.Add(Stand.Number_Target_Font.position, "Number_Target_Font");
                             }
                             if (Stand.Text_rotation_Target != null)
                             {
@@ -5984,11 +5999,21 @@ namespace Watch_Face_Editor
                                 uCtrl_Activity_Elm.checkBox_Number.Checked = Activity.Number.visible;
                                 elementOptions.Add(Activity.Number.position, "Number");
                             }
+                            //if (Activity.Number_Font != null)
+                            //{
+                            //    uCtrl_Activity_Elm.checkBox_Number_Font.Checked = Activity.Number_Font.visible;
+                            //    elementOptions.Add(Activity.Number_Font.position, "Number_Font");
+                            //}
                             if (Activity.Number_Target != null)
                             {
                                 uCtrl_Activity_Elm.checkBox_Number_Target.Checked = Activity.Number_Target.visible;
                                 elementOptions.Add(Activity.Number_Target.position, "Number_Target");
                             }
+                            //if (Activity.Number_Target_Font != null)
+                            //{
+                            //    uCtrl_Activity_Elm.checkBox_Number_Target_Font.Checked = StActivityeps.Number_Target_Font.visible;
+                            //    elementOptions.Add(Activity.Number_Target_Font.position, "Number_Target_Font");
+                            //}
                             if (Activity.Pointer != null)
                             {
                                 uCtrl_Activity_Elm.checkBox_Pointer.Checked = Activity.Pointer.visible;
@@ -6027,6 +6052,11 @@ namespace Watch_Face_Editor
                             {
                                 uCtrl_SpO2_Elm.checkBox_Number.Checked = SpO2.Number.visible;
                                 elementOptions.Add(SpO2.Number.position, "Number");
+                            }
+                            if (SpO2.Number_Font != null)
+                            {
+                                uCtrl_SpO2_Elm.checkBox_Number_Font.Checked = SpO2.Number_Font.visible;
+                                elementOptions.Add(SpO2.Number_Font.position, "Number_Font");
                             }
                             if (SpO2.Text_rotation != null)
                             {
@@ -6074,6 +6104,11 @@ namespace Watch_Face_Editor
                                 uCtrl_Stress_Elm.checkBox_Number.Checked = Stress.Number.visible;
                                 elementOptions.Add(Stress.Number.position, "Number");
                             }
+                            if (Stress.Number_Font != null)
+                            {
+                                uCtrl_Stress_Elm.checkBox_Number_Font.Checked = Stress.Number_Font.visible;
+                                elementOptions.Add(Stress.Number_Font.position, "Number_Font");
+                            }
                             if (Stress.Pointer != null)
                             {
                                 uCtrl_Stress_Elm.checkBox_Pointer.Checked = Stress.Pointer.visible;
@@ -6113,6 +6148,11 @@ namespace Watch_Face_Editor
                                 uCtrl_FatBurning_Elm.checkBox_Number.Checked = FatBurning.Number.visible;
                                 elementOptions.Add(FatBurning.Number.position, "Number");
                             }
+                            if (FatBurning.Number_Font != null)
+                            {
+                                uCtrl_FatBurning_Elm.checkBox_Number_Font.Checked = FatBurning.Number_Font.visible;
+                                elementOptions.Add(FatBurning.Number_Font.position, "Number_Font");
+                            }
                             if (FatBurning.Text_rotation != null)
                             {
                                 uCtrl_FatBurning_Elm.checkBox_Text_rotation.Checked = FatBurning.Text_rotation.visible;
@@ -6127,6 +6167,11 @@ namespace Watch_Face_Editor
                             {
                                 uCtrl_FatBurning_Elm.checkBox_Number_Target.Checked = FatBurning.Number_Target.visible;
                                 elementOptions.Add(FatBurning.Number_Target.position, "Number_Target");
+                            }
+                            if (FatBurning.Number_Target_Font != null)
+                            {
+                                uCtrl_FatBurning_Elm.checkBox_Number_Target_Font.Checked = FatBurning.Number_Target_Font.visible;
+                                elementOptions.Add(FatBurning.Number_Target_Font.position, "Number_Target_Font");
                             }
                             if (FatBurning.Text_rotation_Target != null)
                             {
@@ -11357,6 +11402,7 @@ namespace Watch_Face_Editor
                 hmUI_widget_IMG_NUMBER text_rotation = null;
                 Text_Circle text_circle = null;
                 hmUI_widget_IMG icon = null;
+                hmUI_widget_TEXT text = null;
 
                 switch (selectElement)
                 {
@@ -11366,6 +11412,15 @@ namespace Watch_Face_Editor
                             img_number = distance.Number;
                             Read_ImgNumber_Options(img_number, true, false, "", false, true, true, true);
                             ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number_Font":
+                        if (uCtrl_Distance_Elm.checkBox_Number_Font.Checked)
+                        {
+                            text = distance.Number_Font;
+                            Read_Text_Options(text, true);
+                            ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -11436,6 +11491,7 @@ namespace Watch_Face_Editor
                 Circle_Scale circle_scale = null;
                 Linear_Scale linear_scale = null;
                 hmUI_widget_IMG icon = null;
+                hmUI_widget_TEXT text = null;
 
                 switch (selectElement)
                 {
@@ -11466,6 +11522,15 @@ namespace Watch_Face_Editor
                         }
                         else HideAllElemenrOptions();
                         break;
+                    case "Number_Font":
+                        if (uCtrl_Stand_Elm.checkBox_Number_Font.Checked)
+                        {
+                            text = stand.Number_Font;
+                            Read_Text_Options(text, true);
+                            ShowElemenrOptions("SystemFont");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
                     case "Text_rotation":
                         if (uCtrl_Stand_Elm.checkBox_Text_rotation.Checked)
                         {
@@ -11490,6 +11555,15 @@ namespace Watch_Face_Editor
                             img_number = stand.Number_Target;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number_Target_Font":
+                        if (uCtrl_Stand_Elm.checkBox_Number_Target_Font.Checked)
+                        {
+                            text = stand.Number_Target_Font;
+                            Read_Text_Options(text, true);
+                            ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -11585,6 +11659,7 @@ namespace Watch_Face_Editor
                 Circle_Scale circle_scale = null;
                 Linear_Scale linear_scale = null;
                 hmUI_widget_IMG icon = null;
+                //hmUI_widget_TEXT text = null;
 
                 switch (selectElement)
                 {
@@ -11615,6 +11690,15 @@ namespace Watch_Face_Editor
                         }
                         else HideAllElemenrOptions();
                         break;
+                    //case "Number_Font":
+                    //    if (uCtrl_Activity_Elm.checkBox_Number_Font.Checked)
+                    //    {
+                    //        text = activity.Number_Target_Font;
+                    //        Read_Text_Options(text, true);
+                    //        ShowElemenrOptions("SystemFont");
+                    //    }
+                    //    else HideAllElemenrOptions();
+                    //    break;
                     case "Number_Target":
                         if (uCtrl_Activity_Elm.checkBox_Number_Target.Checked)
                         {
@@ -11624,6 +11708,15 @@ namespace Watch_Face_Editor
                         }
                         else HideAllElemenrOptions();
                         break;
+                    //case "Number_Target_Font":
+                    //    if (uCtrl_Activity_Elm.checkBox_Number_Target_Font.Checked)
+                    //    {
+                    //        text = activity.Number_Target_Font;
+                    //        Read_Text_Options(text, true);
+                    //        ShowElemenrOptions("SystemFont");
+                    //    }
+                    //    else HideAllElemenrOptions();
+                    //    break;
                     case "Pointer":
                         if (uCtrl_Activity_Elm.checkBox_Pointer.Checked)
                         {
@@ -11695,6 +11788,7 @@ namespace Watch_Face_Editor
                 hmUI_widget_IMG_NUMBER text_rotation = null;
                 Text_Circle text_circle = null;
                 hmUI_widget_IMG icon = null;
+                hmUI_widget_TEXT text = null;
 
                 switch (selectElement)
                 {
@@ -11704,6 +11798,15 @@ namespace Watch_Face_Editor
                             img_number = SpO2.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number_Font":
+                        if (uCtrl_SpO2_Elm.checkBox_Number_Font.Checked)
+                        {
+                            text = SpO2.Number_Font;
+                            Read_Text_Options(text, true);
+                            ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -11770,6 +11873,7 @@ namespace Watch_Face_Editor
                 hmUI_widget_IMG_NUMBER img_number = null;
                 hmUI_widget_IMG_POINTER img_pointer = null;
                 hmUI_widget_IMG icon = null;
+                hmUI_widget_TEXT text = null;
 
                 switch (selectElement)
                 {
@@ -11797,6 +11901,15 @@ namespace Watch_Face_Editor
                             img_number = stress.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number_Font":
+                        if (uCtrl_Stress_Elm.checkBox_Number_Font.Checked)
+                        {
+                            text = stress.Number_Font;
+                            Read_Text_Options(text, true);
+                            ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -11858,6 +11971,7 @@ namespace Watch_Face_Editor
                 Circle_Scale circle_scale = null;
                 Linear_Scale linear_scale = null;
                 hmUI_widget_IMG icon = null;
+                hmUI_widget_TEXT text = null;
 
                 switch (selectElement)
                 {
@@ -11888,6 +12002,15 @@ namespace Watch_Face_Editor
                         }
                         else HideAllElemenrOptions();
                         break;
+                    case "Number_Font":
+                        if (uCtrl_FatBurning_Elm.checkBox_Number_Font.Checked)
+                        {
+                            text = fat_burning.Number_Font;
+                            Read_Text_Options(text, true);
+                            ShowElemenrOptions("SystemFont");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
                     case "Text_rotation":
                         if (uCtrl_FatBurning_Elm.checkBox_Text_rotation.Checked)
                         {
@@ -11912,6 +12035,15 @@ namespace Watch_Face_Editor
                             img_number = fat_burning.Number_Target;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number_Target_Font":
+                        if (uCtrl_FatBurning_Elm.checkBox_Number_Target_Font.Checked)
+                        {
+                            text = fat_burning.Number_Target_Font;
+                            Read_Text_Options(text, true);
+                            ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -13907,11 +14039,13 @@ namespace Watch_Face_Editor
             if (distance != null)
             {
                 if (distance.Number == null) distance.Number = new hmUI_widget_IMG_NUMBER();
+                if (distance.Number_Font == null) distance.Number_Font = new hmUI_widget_TEXT();
                 if (distance.Text_rotation == null) distance.Text_rotation = new hmUI_widget_IMG_NUMBER();
                 if (distance.Text_circle == null) distance.Text_circle = new Text_Circle();
                 if (distance.Icon == null) distance.Icon = new hmUI_widget_IMG();
 
                 if (elementOptions.ContainsKey("Number")) distance.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) distance.Number_Font.position = elementOptions["Number_Font"];
                 if (elementOptions.ContainsKey("Text_rotation")) distance.Text_rotation.position = elementOptions["Text_rotation"];
                 if (elementOptions.ContainsKey("Text_circle")) distance.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Icon")) distance.Icon.position = elementOptions["Icon"];
@@ -13957,9 +14091,11 @@ namespace Watch_Face_Editor
                 if (stand.Images == null) stand.Images = new hmUI_widget_IMG_LEVEL();
                 if (stand.Segments == null) stand.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (stand.Number == null) stand.Number = new hmUI_widget_IMG_NUMBER();
+                if (stand.Number_Font == null) stand.Number_Font = new hmUI_widget_TEXT();
                 if (stand.Text_rotation == null) stand.Text_rotation = new hmUI_widget_IMG_NUMBER();
                 if (stand.Text_circle == null) stand.Text_circle = new Text_Circle();
                 if (stand.Number_Target == null) stand.Number_Target = new hmUI_widget_IMG_NUMBER();
+                if (stand.Number_Target_Font == null) stand.Number_Target_Font = new hmUI_widget_TEXT();
                 if (stand.Text_rotation_Target == null) stand.Text_rotation_Target = new hmUI_widget_IMG_NUMBER();
                 if (stand.Text_circle_Target == null) stand.Text_circle_Target = new Text_Circle();
                 if (stand.Pointer == null) stand.Pointer = new hmUI_widget_IMG_POINTER();
@@ -13970,9 +14106,11 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) stand.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) stand.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) stand.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) stand.Number_Font.position = elementOptions["Number_Font"];
                 if (elementOptions.ContainsKey("Text_rotation")) stand.Text_rotation.position = elementOptions["Text_rotation"];
                 if (elementOptions.ContainsKey("Text_circle")) stand.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Number_Target")) stand.Number_Target.position = elementOptions["Number_Target"];
+                if (elementOptions.ContainsKey("Number_Target_Font")) stand.Number_Target_Font.position = elementOptions["Number_Target_Font"];
                 if (elementOptions.ContainsKey("Text_rotation_Target")) stand.Text_rotation_Target.position = elementOptions["Text_rotation_Target"];
                 if (elementOptions.ContainsKey("Text_circle_Target")) stand.Text_circle_Target.position = elementOptions["Text_circle_Target"];
                 if (elementOptions.ContainsKey("Pointer")) stand.Pointer.position = elementOptions["Pointer"];
@@ -14021,7 +14159,9 @@ namespace Watch_Face_Editor
                 if (activity.Images == null) activity.Images = new hmUI_widget_IMG_LEVEL();
                 if (activity.Segments == null) activity.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (activity.Number == null) activity.Number = new hmUI_widget_IMG_NUMBER();
+                if (activity.Number_Font == null) activity.Number_Font = new hmUI_widget_TEXT();
                 if (activity.Number_Target == null) activity.Number_Target = new hmUI_widget_IMG_NUMBER();
+                if (activity.Number_Target_Font == null) activity.Number_Target_Font = new hmUI_widget_TEXT();
                 if (activity.Pointer == null) activity.Pointer = new hmUI_widget_IMG_POINTER();
                 if (activity.Circle_Scale == null) activity.Circle_Scale = new Circle_Scale();
                 if (activity.Linear_Scale == null) activity.Linear_Scale = new Linear_Scale();
@@ -14030,7 +14170,9 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) activity.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) activity.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) activity.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) activity.Number_Font.position = elementOptions["Number_Font"];
                 if (elementOptions.ContainsKey("Number_Target")) activity.Number_Target.position = elementOptions["Number_Target"];
+                if (elementOptions.ContainsKey("Number_Target_Font")) activity.Number_Target_Font.position = elementOptions["Number_Target_Font"];
                 if (elementOptions.ContainsKey("Pointer")) activity.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Circle_Scale")) activity.Circle_Scale.position = elementOptions["Circle_Scale"];
                 if (elementOptions.ContainsKey("Linear_Scale")) activity.Linear_Scale.position = elementOptions["Linear_Scale"];
@@ -14073,11 +14215,13 @@ namespace Watch_Face_Editor
             if (SpO2 != null)
             {
                 if (SpO2.Number == null) SpO2.Number = new hmUI_widget_IMG_NUMBER();
+                if (SpO2.Number_Font == null) SpO2.Number_Font = new hmUI_widget_TEXT();
                 if (SpO2.Text_rotation == null) SpO2.Text_rotation = new hmUI_widget_IMG_NUMBER();
                 if (SpO2.Text_circle == null) SpO2.Text_circle = new Text_Circle();
                 if (SpO2.Icon == null) SpO2.Icon = new hmUI_widget_IMG();
 
                 if (elementOptions.ContainsKey("Number")) SpO2.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) SpO2.Number_Font.position = elementOptions["Number_Font"];
                 if (elementOptions.ContainsKey("Text_rotation")) SpO2.Text_rotation.position = elementOptions["Text_rotation"];
                 if (elementOptions.ContainsKey("Text_circle")) SpO2.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Icon")) SpO2.Icon.position = elementOptions["Icon"];
@@ -14123,12 +14267,14 @@ namespace Watch_Face_Editor
                 if (stress.Images == null) stress.Images = new hmUI_widget_IMG_LEVEL();
                 if (stress.Segments == null) stress.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (stress.Number == null) stress.Number = new hmUI_widget_IMG_NUMBER();
+                if (stress.Number_Font == null) stress.Number_Font = new hmUI_widget_TEXT();
                 if (stress.Pointer == null) stress.Pointer = new hmUI_widget_IMG_POINTER();
                 if (stress.Icon == null) stress.Icon = new hmUI_widget_IMG();
 
                 if (elementOptions.ContainsKey("Images")) stress.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) stress.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) stress.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) stress.Number_Font.position = elementOptions["Number_Font"];
                 if (elementOptions.ContainsKey("Pointer")) stress.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Icon")) stress.Icon.position = elementOptions["Icon"];
 
@@ -14173,9 +14319,11 @@ namespace Watch_Face_Editor
                 if (fat_burning.Images == null) fat_burning.Images = new hmUI_widget_IMG_LEVEL();
                 if (fat_burning.Segments == null) fat_burning.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (fat_burning.Number == null) fat_burning.Number = new hmUI_widget_IMG_NUMBER();
+                if (fat_burning.Number_Font == null) fat_burning.Number_Font = new hmUI_widget_TEXT();
                 if (fat_burning.Text_rotation == null) fat_burning.Text_rotation = new hmUI_widget_IMG_NUMBER();
                 if (fat_burning.Text_circle == null) fat_burning.Text_circle = new Text_Circle();
                 if (fat_burning.Number_Target == null) fat_burning.Number_Target = new hmUI_widget_IMG_NUMBER();
+                if (fat_burning.Number_Target_Font == null) fat_burning.Number_Target_Font = new hmUI_widget_TEXT();
                 if (fat_burning.Text_rotation_Target == null) fat_burning.Text_rotation_Target = new hmUI_widget_IMG_NUMBER();
                 if (fat_burning.Text_circle_Target == null) fat_burning.Text_circle_Target = new Text_Circle();
                 if (fat_burning.Pointer == null) fat_burning.Pointer = new hmUI_widget_IMG_POINTER();
@@ -14186,9 +14334,11 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) fat_burning.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) fat_burning.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) fat_burning.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) fat_burning.Number_Font.position = elementOptions["Number_Font"];
                 if (elementOptions.ContainsKey("Text_rotation")) fat_burning.Text_rotation.position = elementOptions["Text_rotation"];
                 if (elementOptions.ContainsKey("Text_circle")) fat_burning.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Number_Target")) fat_burning.Number_Target.position = elementOptions["Number_Target"];
+                if (elementOptions.ContainsKey("Number_Target_Font")) fat_burning.Number_Target_Font.position = elementOptions["Number_Target_Font"];
                 if (elementOptions.ContainsKey("Text_rotation_Target")) fat_burning.Text_rotation_Target.position = elementOptions["Text_rotation_Target"];
                 if (elementOptions.ContainsKey("Text_circle_Target")) fat_burning.Text_circle_Target.position = elementOptions["Text_circle_Target"];
                 if (elementOptions.ContainsKey("Pointer")) fat_burning.Pointer.position = elementOptions["Pointer"];
@@ -16089,12 +16239,14 @@ namespace Watch_Face_Editor
             if (distance != null)
             {
                 if (distance.Number == null) distance.Number = new hmUI_widget_IMG_NUMBER();
+                if (distance.Number_Font == null) distance.Number_Font = new hmUI_widget_TEXT();
                 if (distance.Text_rotation == null) distance.Text_rotation = new hmUI_widget_IMG_NUMBER();
                 if (distance.Text_circle == null) distance.Text_circle = new Text_Circle();
                 if (distance.Icon == null) distance.Icon = new hmUI_widget_IMG();
 
                 Dictionary<string, int> elementOptions = uCtrl_Distance_Elm.GetOptionsPosition();
                 if (elementOptions.ContainsKey("Number")) distance.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) distance.Number_Font.position = elementOptions["Number_Font"];
                 if (elementOptions.ContainsKey("Text_rotation")) distance.Text_rotation.position = elementOptions["Text_rotation"];
                 if (elementOptions.ContainsKey("Text_circle")) distance.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Icon")) distance.Icon.position = elementOptions["Icon"];
@@ -16105,6 +16257,9 @@ namespace Watch_Face_Editor
                 {
                     case "checkBox_Number":
                         distance.Number.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Font":
+                        distance.Number_Font.visible = checkBox.Checked;
                         break;
                     case "checkBox_Text_rotation":
                         distance.Text_rotation.visible = checkBox.Checked;
@@ -16160,9 +16315,11 @@ namespace Watch_Face_Editor
                 if (stand.Images == null) stand.Images = new hmUI_widget_IMG_LEVEL();
                 if (stand.Segments == null) stand.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (stand.Number == null) stand.Number = new hmUI_widget_IMG_NUMBER();
+                if (stand.Number_Font == null) stand.Number_Font = new hmUI_widget_TEXT();
                 if (stand.Text_rotation == null) stand.Text_rotation = new hmUI_widget_IMG_NUMBER();
                 if (stand.Text_circle == null) stand.Text_circle = new Text_Circle();
                 if (stand.Number_Target == null) stand.Number_Target = new hmUI_widget_IMG_NUMBER();
+                if (stand.Number_Target_Font == null) stand.Number_Target_Font = new hmUI_widget_TEXT();
                 if (stand.Text_rotation_Target == null) stand.Text_rotation_Target = new hmUI_widget_IMG_NUMBER();
                 if (stand.Text_circle_Target == null) stand.Text_circle_Target = new Text_Circle();
                 if (stand.Pointer == null) stand.Pointer = new hmUI_widget_IMG_POINTER();
@@ -16174,9 +16331,11 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) stand.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) stand.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) stand.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) stand.Number_Font.position = elementOptions["Number_Font"];
                 if (elementOptions.ContainsKey("Text_rotation")) stand.Text_rotation.position = elementOptions["Text_rotation"];
                 if (elementOptions.ContainsKey("Text_circle")) stand.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Number_Target")) stand.Number_Target.position = elementOptions["Number_Target"];
+                if (elementOptions.ContainsKey("Number_Target_Font")) stand.Number_Target_Font.position = elementOptions["Number_Target_Font"];
                 if (elementOptions.ContainsKey("Text_rotation_Target")) stand.Text_rotation_Target.position = elementOptions["Text_rotation_Target"];
                 if (elementOptions.ContainsKey("Text_circle_Target")) stand.Text_circle_Target.position = elementOptions["Text_circle_Target"];
                 if (elementOptions.ContainsKey("Pointer")) stand.Pointer.position = elementOptions["Pointer"];
@@ -16197,6 +16356,9 @@ namespace Watch_Face_Editor
                     case "checkBox_Number":
                         stand.Number.visible = checkBox.Checked;
                         break;
+                    case "checkBox_Number_Font":
+                        stand.Number_Font.visible = checkBox.Checked;
+                        break;
                     case "checkBox_Text_rotation":
                         stand.Text_rotation.visible = checkBox.Checked;
                         break;
@@ -16205,6 +16367,9 @@ namespace Watch_Face_Editor
                         break;
                     case "checkBox_Number_Target":
                         stand.Number_Target.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Target_Font":
+                        stand.Number_Target_Font.visible = checkBox.Checked;
                         break;
                     case "checkBox_Text_rotation_Target":
                         stand.Text_rotation_Target.visible = checkBox.Checked;
@@ -16269,7 +16434,9 @@ namespace Watch_Face_Editor
                 if (activity.Images == null) activity.Images = new hmUI_widget_IMG_LEVEL();
                 if (activity.Segments == null) activity.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (activity.Number == null) activity.Number = new hmUI_widget_IMG_NUMBER();
+                if (activity.Number_Font == null) activity.Number_Font = new hmUI_widget_TEXT();
                 if (activity.Number_Target == null) activity.Number_Target = new hmUI_widget_IMG_NUMBER();
+                if (activity.Number_Target_Font == null) activity.Number_Target_Font = new hmUI_widget_TEXT();
                 if (activity.Pointer == null) activity.Pointer = new hmUI_widget_IMG_POINTER();
                 if (activity.Circle_Scale == null) activity.Circle_Scale = new Circle_Scale();
                 if (activity.Linear_Scale == null) activity.Linear_Scale = new Linear_Scale();
@@ -16279,7 +16446,9 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) activity.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) activity.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) activity.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) activity.Number_Font.position = elementOptions["Number_Font"];
                 if (elementOptions.ContainsKey("Number_Target")) activity.Number_Target.position = elementOptions["Number_Target"];
+                if (elementOptions.ContainsKey("Number_Target_Font")) activity.Number_Target_Font.position = elementOptions["Number_Target_Font"];
                 if (elementOptions.ContainsKey("Pointer")) activity.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Circle_Scale")) activity.Circle_Scale.position = elementOptions["Circle_Scale"];
                 if (elementOptions.ContainsKey("Linear_Scale")) activity.Linear_Scale.position = elementOptions["Linear_Scale"];
@@ -16298,8 +16467,14 @@ namespace Watch_Face_Editor
                     case "checkBox_Number":
                         activity.Number.visible = checkBox.Checked;
                         break;
+                    case "checkBox_Number_Font":
+                        activity.Number_Font.visible = checkBox.Checked;
+                        break;
                     case "checkBox_Number_Target":
                         activity.Number_Target.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Target_Font":
+                        activity.Number_Target_Font.visible = checkBox.Checked;
                         break;
                     case "checkBox_Pointer":
                         activity.Pointer.visible = checkBox.Checked;
@@ -16354,12 +16529,14 @@ namespace Watch_Face_Editor
             if (SpO2 != null)
             {
                 if (SpO2.Number == null) SpO2.Number = new hmUI_widget_IMG_NUMBER();
+                if (SpO2.Number_Font == null) SpO2.Number_Font = new hmUI_widget_TEXT();
                 if (SpO2.Text_rotation == null) SpO2.Text_rotation = new hmUI_widget_IMG_NUMBER();
                 if (SpO2.Text_circle == null) SpO2.Text_circle = new Text_Circle();
                 if (SpO2.Icon == null) SpO2.Icon = new hmUI_widget_IMG();
 
                 Dictionary<string, int> elementOptions = uCtrl_SpO2_Elm.GetOptionsPosition();
                 if (elementOptions.ContainsKey("Number")) SpO2.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) SpO2.Number_Font.position = elementOptions["Number_Font"];
                 if (elementOptions.ContainsKey("Text_rotation")) SpO2.Text_rotation.position = elementOptions["Text_rotation"];
                 if (elementOptions.ContainsKey("Text_circle")) SpO2.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Icon")) SpO2.Icon.position = elementOptions["Icon"];
@@ -16370,6 +16547,9 @@ namespace Watch_Face_Editor
                 {
                     case "checkBox_Number":
                         SpO2.Number.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Font":
+                        SpO2.Number_Font.visible = checkBox.Checked;
                         break;
                     case "checkBox_Text_rotation":
                         SpO2.Text_rotation.visible = checkBox.Checked;
@@ -16425,6 +16605,7 @@ namespace Watch_Face_Editor
                 if (stress.Images == null) stress.Images = new hmUI_widget_IMG_LEVEL();
                 if (stress.Segments == null) stress.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (stress.Number == null) stress.Number = new hmUI_widget_IMG_NUMBER();
+                if (stress.Number_Font == null) stress.Number_Font = new hmUI_widget_TEXT();
                 if (stress.Pointer == null) stress.Pointer = new hmUI_widget_IMG_POINTER();
                 if (stress.Icon == null) stress.Icon = new hmUI_widget_IMG();
 
@@ -16432,6 +16613,7 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) stress.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) stress.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) stress.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) stress.Number_Font.position = elementOptions["Number_Font"];
                 if (elementOptions.ContainsKey("Pointer")) stress.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Icon")) stress.Icon.position = elementOptions["Icon"];
 
@@ -16447,6 +16629,9 @@ namespace Watch_Face_Editor
                         break;
                     case "checkBox_Number":
                         stress.Number.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Font":
+                        stress.Number_Font.visible = checkBox.Checked;
                         break;
                     case "checkBox_Pointer":
                         stress.Pointer.visible = checkBox.Checked;
@@ -16499,9 +16684,11 @@ namespace Watch_Face_Editor
                 if (fat_burning.Images == null) fat_burning.Images = new hmUI_widget_IMG_LEVEL();
                 if (fat_burning.Segments == null) fat_burning.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (fat_burning.Number == null) fat_burning.Number = new hmUI_widget_IMG_NUMBER();
+                if (fat_burning.Number_Font == null) fat_burning.Number_Font = new hmUI_widget_TEXT();
                 if (fat_burning.Text_rotation == null) fat_burning.Text_rotation = new hmUI_widget_IMG_NUMBER();
                 if (fat_burning.Text_circle == null) fat_burning.Text_circle = new Text_Circle();
                 if (fat_burning.Number_Target == null) fat_burning.Number_Target = new hmUI_widget_IMG_NUMBER();
+                if (fat_burning.Number_Target_Font == null) fat_burning.Number_Target_Font = new hmUI_widget_TEXT();
                 if (fat_burning.Text_rotation_Target == null) fat_burning.Text_rotation_Target = new hmUI_widget_IMG_NUMBER();
                 if (fat_burning.Text_circle_Target == null) fat_burning.Text_circle_Target = new Text_Circle();
                 if (fat_burning.Pointer == null) fat_burning.Pointer = new hmUI_widget_IMG_POINTER();
@@ -16513,9 +16700,11 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) fat_burning.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) fat_burning.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) fat_burning.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) fat_burning.Number_Font.position = elementOptions["Number_Font"];
                 if (elementOptions.ContainsKey("Text_rotation")) fat_burning.Text_rotation.position = elementOptions["Text_rotation"];
                 if (elementOptions.ContainsKey("Text_circle")) fat_burning.Text_circle.position = elementOptions["Text_circle"];
                 if (elementOptions.ContainsKey("Number_Target")) fat_burning.Number_Target.position = elementOptions["Number_Target"];
+                if (elementOptions.ContainsKey("Number_Target_Font")) fat_burning.Number_Target_Font.position = elementOptions["Number_Target_Font"];
                 if (elementOptions.ContainsKey("Text_rotation_Target")) fat_burning.Text_rotation_Target.position = elementOptions["Text_rotation_Target"];
                 if (elementOptions.ContainsKey("Text_circle_Target")) fat_burning.Text_circle_Target.position = elementOptions["Text_circle_Target"];
                 if (elementOptions.ContainsKey("Pointer")) fat_burning.Pointer.position = elementOptions["Pointer"];
@@ -16536,6 +16725,9 @@ namespace Watch_Face_Editor
                     case "checkBox_Number":
                         fat_burning.Number.visible = checkBox.Checked;
                         break;
+                    case "checkBox_Number_Font":
+                        fat_burning.Number_Font.visible = checkBox.Checked;
+                        break;
                     case "checkBox_Text_rotation":
                         fat_burning.Text_rotation.visible = checkBox.Checked;
                         break;
@@ -16544,6 +16736,9 @@ namespace Watch_Face_Editor
                         break;
                     case "checkBox_Number_Target":
                         fat_burning.Number_Target.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Target_Font":
+                        fat_burning.Number_Target_Font.visible = checkBox.Checked;
                         break;
                     case "checkBox_Text_rotation_Target":
                         fat_burning.Text_rotation_Target.visible = checkBox.Checked;

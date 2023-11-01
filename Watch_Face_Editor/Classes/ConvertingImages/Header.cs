@@ -32,7 +32,7 @@ namespace Watch_Face_Editor
             Width = BitConverter.ToUInt16(_header, 12);
             Height = BitConverter.ToUInt16(_header, 14);
 
-            if (!(_header[1] == 0 && _header[2] == 2) && !(_header[1] == 1 && _header[2] == 1)) 
+            if (!(_header[1] == 0 && _header[2] == 2) && !(_header[1] == 1 && _header[2] == 1) && !(_header[1] == 1 && _header[2] == 9)) 
             {
                 if (MessageBox.Show(Properties.FormStrings.Img_Convert_Error_ReadErr + " \"" + Path.GetFileName(fileNameFull) + "\"." + Environment.NewLine +
                                 Properties.FormStrings.Img_Convert_Error_SaveImg, Properties.FormStrings.Message_Error_Caption,
