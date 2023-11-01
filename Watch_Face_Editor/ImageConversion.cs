@@ -36,6 +36,7 @@ namespace Watch_Face_Editor
                         Header header = new Header(_streamBuffer, fileNameFull, targetFileName);
                         if (header.GetExistsColorMap() == 1 && header.GetImageType() == 1) path = TgaToPng(fileNameFull, targetFileName, fix_color);
                         if (header.GetExistsColorMap() == 0 && header.GetImageType() == 2) path = TgaARGBToPng(fileNameFull, targetFileName, fix_color);
+                        if (header.GetExistsColorMap() == 1 && header.GetImageType() == 9) path = TgaToPng(fileNameFull, targetFileName, fix_color);
                     }
                 }
                 catch (Exception exp)

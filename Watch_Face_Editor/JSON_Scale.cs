@@ -343,6 +343,7 @@ namespace Watch_Face_Editor
                 case "ElementDistance":
                     ElementDistance elementDistance = (ElementDistance)elements;
                     Scale_IMG_NUMBER(elementDistance.Number, scale);
+                    Scale_TEXT(elementDistance.Number_Font, scale);
                     Scale_IMG_NUMBER(elementDistance.Text_rotation, scale);
                     Scale_Text_Circle(elementDistance.Text_circle, scale);
                     Scale_IMG(elementDistance.Icon, scale);
@@ -352,9 +353,11 @@ namespace Watch_Face_Editor
                     Scale_IMG_LEVEL(elementStand.Images, scale);
                     Scale_IMG_PROGRESS(elementStand.Segments, scale);
                     Scale_IMG_NUMBER(elementStand.Number, scale);
+                    Scale_TEXT(elementStand.Number_Font, scale);
                     Scale_IMG_NUMBER(elementStand.Text_rotation, scale);
                     Scale_Text_Circle(elementStand.Text_circle, scale);
                     Scale_IMG_NUMBER(elementStand.Number_Target, scale);
+                    Scale_TEXT(elementStand.Number_Target_Font, scale);
                     Scale_IMG_NUMBER(elementStand.Text_rotation_Target, scale);
                     Scale_Text_Circle(elementStand.Text_circle_Target, scale);
                     Scale_IMG_POINTER(elementStand.Pointer, scale);
@@ -367,7 +370,9 @@ namespace Watch_Face_Editor
                     Scale_IMG_LEVEL(elementActivity.Images, scale);
                     Scale_IMG_PROGRESS(elementActivity.Segments, scale);
                     Scale_IMG_NUMBER(elementActivity.Number, scale);
+                    Scale_TEXT(elementActivity.Number_Font, scale);
                     Scale_IMG_NUMBER(elementActivity.Number_Target, scale);
+                    Scale_TEXT(elementActivity.Number_Target_Font, scale);
                     Scale_IMG_POINTER(elementActivity.Pointer, scale);
                     Scale_Circle_Scale(elementActivity.Circle_Scale, scale);
                     Scale_Linear_Scale(elementActivity.Linear_Scale, scale);
@@ -376,6 +381,7 @@ namespace Watch_Face_Editor
                 case "ElementSpO2":
                     ElementSpO2 elementSpO2 = (ElementSpO2)elements;
                     Scale_IMG_NUMBER(elementSpO2.Number, scale);
+                    Scale_TEXT(elementSpO2.Number_Font, scale);
                     Scale_IMG_NUMBER(elementSpO2.Text_rotation, scale);
                     Scale_Text_Circle(elementSpO2.Text_circle, scale);
                     break;
@@ -384,6 +390,7 @@ namespace Watch_Face_Editor
                     Scale_IMG_LEVEL(elementStress.Images, scale);
                     Scale_IMG_PROGRESS(elementStress.Segments, scale);
                     Scale_IMG_NUMBER(elementStress.Number, scale);
+                    Scale_TEXT(elementStress.Number_Font, scale);
                     Scale_IMG_POINTER(elementStress.Pointer, scale);
                     Scale_IMG(elementStress.Icon, scale);
                     break;
@@ -392,9 +399,11 @@ namespace Watch_Face_Editor
                     Scale_IMG_LEVEL(elementFatBurning.Images, scale);
                     Scale_IMG_PROGRESS(elementFatBurning.Segments, scale);
                     Scale_IMG_NUMBER(elementFatBurning.Number, scale);
+                    Scale_TEXT(elementFatBurning.Number_Font, scale);
                     Scale_IMG_NUMBER(elementFatBurning.Text_rotation, scale);
                     Scale_Text_Circle(elementFatBurning.Text_circle, scale);
                     Scale_IMG_NUMBER(elementFatBurning.Number_Target, scale);
+                    Scale_TEXT(elementFatBurning.Number_Target_Font, scale);
                     Scale_IMG_NUMBER(elementFatBurning.Text_rotation_Target, scale);
                     Scale_Text_Circle(elementFatBurning.Text_circle_Target, scale);
                     Scale_IMG_POINTER(elementFatBurning.Pointer, scale);

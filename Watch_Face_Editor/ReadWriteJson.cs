@@ -4651,6 +4651,12 @@ namespace Watch_Face_Editor
 
                         numberOptions_separator = IMG_Separator_Options(img_number, show_level);
                     }
+                    if (Distance.Number_Font != null && Distance.Number_Font.visible)
+                    {
+                        numberFontPosition = Distance.Number_Font.position;
+                        hmUI_widget_TEXT text = Distance.Number_Font;
+                        numberFontOptions = TEXT_FONT_Options(text, "DISTANCE", show_level);
+                    }
 
                     if (Distance.Text_rotation != null && Distance.Text_rotation.visible)
                     {
@@ -4659,7 +4665,6 @@ namespace Watch_Face_Editor
 
                         textRotateOptions = Text_Rotate_Options(text_rotate, "DISTANCE", show_level, true);
                     }
-
                     if (Distance.Text_circle != null && Distance.Text_circle.visible)
                     {
                         textCirclePosition = Distance.Text_circle.position;
@@ -4695,6 +4700,34 @@ namespace Watch_Face_Editor
                                     optionNameStart + "distance_text_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
                             }
+                        }
+
+                        // Number_Font
+                        if (index == numberFontPosition && numberFontOptions.Length > 5)
+                        {
+                            if (Distance.Number_Font.font != null && Distance.Number_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + Distance.Number_Font.font + "; FontSize: " + Distance.Number_Font.text_size.ToString();
+                                if (Distance.Number_Font.unit_type > 0)
+                                    cacheName = "// FontName: " + Distance.Number_Font.font + "; FontSize: " + Distance.Number_Font.text_size.ToString() + "; Cache: full";
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    bool fullCache = Distance.Number_Font.unit_type > 0;
+                                    string fontCacheOptions = TEXT_Cache_Options(Distance.Number_Font, fullCache);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "distance_current_text_font = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "distance_current_text_font = hmUI.createWidget(hmUI.widget.TEXT_FONT, {" +
+                                    numberFontOptions + TabInString(6) + "});" + Environment.NewLine;
                         }
 
                         // Text_Rotate
@@ -5162,6 +5195,7 @@ namespace Watch_Face_Editor
                         hmUI_widget_IMG_PROGRESS img_progress = Stand.Segments;
                         segmentsOptions = IMG_PROGRESS_Options(img_progress, "STAND", show_level);
                     }
+
                     if (Stand.Number != null && Stand.Number.visible)
                     {
                         numberPosition = Stand.Number.position;
@@ -5170,7 +5204,12 @@ namespace Watch_Face_Editor
 
                         numberOptions_separator = IMG_Separator_Options(img_number, show_level);
                     }
-
+                    if (Stand.Number_Font != null && Stand.Number_Font.visible)
+                    {
+                        numberFontPosition = Stand.Number_Font.position;
+                        hmUI_widget_TEXT text = Stand.Number_Font;
+                        numberFontOptions = TEXT_FONT_Options(text, "STAND", show_level);
+                    }
                     if (Stand.Text_rotation != null && Stand.Text_rotation.visible)
                     {
                         textRotatePosition = Stand.Text_rotation.position;
@@ -5194,7 +5233,12 @@ namespace Watch_Face_Editor
 
                         numberTargetOptions_separator = IMG_Separator_Options(img_number, show_level);
                     }
-
+                    if (Stand.Number_Target_Font != null && Stand.Number_Target_Font.visible)
+                    {
+                        numberTargetFontPosition = Stand.Number_Target_Font.position;
+                        hmUI_widget_TEXT text = Stand.Number_Target_Font;
+                        numberTargetFontOptions = TEXT_FONT_Options(text, "STAND_TARGET", show_level);
+                    }
                     if (Stand.Text_rotation_Target != null && Stand.Text_rotation_Target.visible)
                     {
                         textRotateTargetPosition = Stand.Text_rotation_Target.position;
@@ -5282,6 +5326,34 @@ namespace Watch_Face_Editor
                             }
                         }
 
+                        // Number_Font
+                        if (index == numberFontPosition && numberFontOptions.Length > 5)
+                        {
+                            if (Stand.Number_Font.font != null && Stand.Number_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + Stand.Number_Font.font + "; FontSize: " + Stand.Number_Font.text_size.ToString();
+                                if (Stand.Number_Font.unit_type > 0)
+                                    cacheName = "// FontName: " + Stand.Number_Font.font + "; FontSize: " + Stand.Number_Font.text_size.ToString() + "; Cache: full";
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    bool fullCache = Stand.Number_Font.unit_type > 0;
+                                    string fontCacheOptions = TEXT_Cache_Options(Stand.Number_Font, fullCache);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "stand_current_text_font = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "stand_current_text_font = hmUI.createWidget(hmUI.widget.TEXT_FONT, {" +
+                                    numberFontOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
                         // Text_Rotate
                         if (index == textRotatePosition && textRotateOptions.Length > 5)
                         {
@@ -5315,6 +5387,34 @@ namespace Watch_Face_Editor
                                     optionNameStart + "stand_target_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberTargetOptions_separator + TabInString(6) + "});" + Environment.NewLine;
                             }
+                        }
+
+                        // Number_Target_Font
+                        if (index == numberTargetFontPosition && numberTargetFontOptions.Length > 5)
+                        {
+                            if (Stand.Number_Target_Font.font != null && Stand.Number_Target_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + Stand.Number_Target_Font.font + "; FontSize: " + Stand.Number_Target_Font.text_size.ToString();
+                                if (Stand.Number_Target_Font.unit_type > 0)
+                                    cacheName = "// FontName: " + Stand.Number_Target_Font.font + "; FontSize: " + Stand.Number_Target_Font.text_size.ToString() + "; Cache: full";
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    bool fullCache = Stand.Number_Target_Font.unit_type > 0;
+                                    string fontCacheOptions = TEXT_Cache_Options(Stand.Number_Target_Font, fullCache);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "stand_target_text_font = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "stand_target_text_font = hmUI.createWidget(hmUI.widget.TEXT_FONT, {" +
+                                    numberTargetFontOptions + TabInString(6) + "});" + Environment.NewLine;
                         }
 
                         // Text_Rotate_Target
@@ -5527,6 +5627,7 @@ namespace Watch_Face_Editor
                         hmUI_widget_IMG_PROGRESS img_progress = Activity.Segments;
                         segmentsOptions = IMG_PROGRESS_Options(img_progress, "ACTIVITY", show_level);
                     }
+
                     if (Activity.Number != null && Activity.Number.visible)
                     {
                         numberPosition = Activity.Number.position;
@@ -5535,6 +5636,13 @@ namespace Watch_Face_Editor
 
                         numberOptions_separator = IMG_Separator_Options(img_number, show_level);
                     }
+                    if (Activity.Number_Font != null && Activity.Number_Font.visible)
+                    {
+                        numberFontPosition = Activity.Number_Font.position;
+                        hmUI_widget_TEXT text = Activity.Number_Font;
+                        numberFontOptions = TEXT_FONT_Options(text, "ACTIVITY", show_level);
+                    }
+
                     if (Activity.Number_Target != null && Activity.Number_Target.visible)
                     {
                         numberTargetPosition = Activity.Number_Target.position;
@@ -5543,13 +5651,19 @@ namespace Watch_Face_Editor
 
                         numberTargetOptions_separator = IMG_Separator_Options(img_number, show_level);
                     }
+                    if (Activity.Number_Target_Font != null && Activity.Number_Target_Font.visible)
+                    {
+                        numberTargetFontPosition = Activity.Number_Target_Font.position;
+                        hmUI_widget_TEXT text = Activity.Number_Target_Font;
+                        numberTargetFontOptions = TEXT_FONT_Options(text, "ACTIVITY_TARGET", show_level);
+                    }
+
                     if (Activity.Pointer != null && Activity.Pointer.visible)
                     {
                         pointerPosition = Activity.Pointer.position;
                         hmUI_widget_IMG_POINTER img_pointer = Activity.Pointer;
                         pointerOptions = IMG_POINTER_Options(img_pointer, "ACTIVITY", show_level);
                     }
-
                     if (Activity.Circle_Scale != null && Activity.Circle_Scale.visible)
                     {
                         circleScalePosition = Activity.Circle_Scale.position;
@@ -5566,7 +5680,6 @@ namespace Watch_Face_Editor
 
                         linearScaleOptions = Linear_Scale_Options(linear_scale, optionNameStart, "ACTIVITY", "activity", show_level);
                     }
-
                     if (Activity.Icon != null && Activity.Icon.visible)
                     {
                         iconPosition = Activity.Icon.position;
@@ -5615,6 +5728,34 @@ namespace Watch_Face_Editor
                             }
                         }
 
+                        // Number_Font
+                        if (index == numberFontPosition && numberFontOptions.Length > 5)
+                        {
+                            if (Activity.Number_Font.font != null && Activity.Number_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + Activity.Number_Font.font + "; FontSize: " + Activity.Number_Font.text_size.ToString();
+                                if (Activity.Number_Font.unit_type > 0)
+                                    cacheName = "// FontName: " + Activity.Number_Font.font + "; FontSize: " + Activity.Number_Font.text_size.ToString() + "; Cache: full";
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    bool fullCache = Activity.Number_Font.unit_type > 0;
+                                    string fontCacheOptions = TEXT_Cache_Options(Activity.Number_Font, fullCache);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "activity_current_text_font = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "activity_current_text_font = hmUI.createWidget(hmUI.widget.TEXT_FONT, {" +
+                                    numberFontOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
                         // Number_Target
                         if (index == numberTargetPosition && numberTargetOptions.Length > 5)
                         {
@@ -5632,6 +5773,34 @@ namespace Watch_Face_Editor
                                     optionNameStart + "activity_target_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberTargetOptions_separator + TabInString(6) + "});" + Environment.NewLine;
                             }
+                        }
+
+                        // Number_Target_Font
+                        if (index == numberTargetFontPosition && numberTargetFontOptions.Length > 5)
+                        {
+                            if (Activity.Number_Target_Font.font != null && Activity.Number_Target_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + Activity.Number_Target_Font.font + "; FontSize: " + Activity.Number_Target_Font.text_size.ToString();
+                                if (Activity.Number_Target_Font.unit_type > 0)
+                                    cacheName = "// FontName: " + Activity.Number_Target_Font.font + "; FontSize: " + Activity.Number_Target_Font.text_size.ToString() + "; Cache: full";
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    bool fullCache = Activity.Number_Target_Font.unit_type > 0;
+                                    string fontCacheOptions = TEXT_Cache_Options(Activity.Number_Target_Font, fullCache);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "activity_target_text_font = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "activity_target_text_font = hmUI.createWidget(hmUI.widget.TEXT_FONT, {" +
+                                    numberTargetFontOptions + TabInString(6) + "});" + Environment.NewLine;
                         }
 
                         // Pointer
@@ -5837,6 +6006,12 @@ namespace Watch_Face_Editor
 
                         numberOptions_separator = IMG_Separator_Options(img_number, show_level);
                     }
+                    if (SpO2.Number_Font != null && SpO2.Number_Font.visible)
+                    {
+                        numberFontPosition = SpO2.Number_Font.position;
+                        hmUI_widget_TEXT text = SpO2.Number_Font;
+                        numberFontOptions = TEXT_FONT_Options(text, "SPO2", show_level);
+                    }
 
                     if (SpO2.Text_rotation != null && SpO2.Text_rotation.visible)
                     {
@@ -5845,7 +6020,6 @@ namespace Watch_Face_Editor
 
                         textRotateOptions = Text_Rotate_Options(text_rotate, "SPO2", show_level, false);
                     }
-
                     if (SpO2.Text_circle != null && SpO2.Text_circle.visible)
                     {
                         textCirclePosition = SpO2.Text_circle.position;
@@ -5880,6 +6054,34 @@ namespace Watch_Face_Editor
                                     optionNameStart + "spo2_text_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
                             }
+                        }
+
+                        // Number_Font
+                        if (index == numberFontPosition && numberFontOptions.Length > 5)
+                        {
+                            if (SpO2.Number_Font.font != null && SpO2.Number_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + SpO2.Number_Font.font + "; FontSize: " + SpO2.Number_Font.text_size.ToString();
+                                if (SpO2.Number_Font.unit_type > 0)
+                                    cacheName = "// FontName: " + SpO2.Number_Font.font + "; FontSize: " + SpO2.Number_Font.text_size.ToString() + "; Cache: full";
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    bool fullCache = SpO2.Number_Font.unit_type > 0;
+                                    string fontCacheOptions = TEXT_Cache_Options(SpO2.Number_Font, fullCache);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "spo2_current_text_font = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "spo2_current_text_font = hmUI.createWidget(hmUI.widget.TEXT_FONT, {" +
+                                    numberFontOptions + TabInString(6) + "});" + Environment.NewLine;
                         }
 
                         // Text_Rotate
@@ -5927,6 +6129,7 @@ namespace Watch_Face_Editor
                         hmUI_widget_IMG_PROGRESS img_progress = Stress.Segments;
                         segmentsOptions = IMG_PROGRESS_Options(img_progress, "STRESS", show_level);
                     }
+
                     if (Stress.Number != null && Stress.Number.visible)
                     {
                         numberPosition = Stress.Number.position;
@@ -5935,6 +6138,13 @@ namespace Watch_Face_Editor
 
                         numberOptions_separator = IMG_Separator_Options(img_number, show_level);
                     }
+                    if (Stress.Number_Font != null && Stress.Number_Font.visible)
+                    {
+                        numberFontPosition = Stress.Number_Font.position;
+                        hmUI_widget_TEXT text = Stress.Number_Font;
+                        numberFontOptions = TEXT_FONT_Options(text, "STRESS", show_level);
+                    }
+
                     if (Stress.Pointer != null && Stress.Pointer.visible)
                     {
                         pointerPosition = Stress.Pointer.position;
@@ -5991,6 +6201,34 @@ namespace Watch_Face_Editor
                             }
                         }
 
+                        // Number_Font
+                        if (index == numberFontPosition && numberFontOptions.Length > 5)
+                        {
+                            if (Stress.Number_Font.font != null && Stress.Number_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + Stress.Number_Font.font + "; FontSize: " + Stress.Number_Font.text_size.ToString();
+                                if (Stress.Number_Font.unit_type > 0)
+                                    cacheName = "// FontName: " + Stress.Number_Font.font + "; FontSize: " + Stress.Number_Font.text_size.ToString() + "; Cache: full";
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    bool fullCache = Stress.Number_Font.unit_type > 0;
+                                    string fontCacheOptions = TEXT_Cache_Options(Stress.Number_Font, fullCache);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "stress_current_text_font = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "stress_current_text_font = hmUI.createWidget(hmUI.widget.TEXT_FONT, {" +
+                                    numberFontOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
                         // Pointer
                         if (index == pointerPosition && pointerOptions.Length > 5)
                         {
@@ -6033,6 +6271,7 @@ namespace Watch_Face_Editor
                         hmUI_widget_IMG_PROGRESS img_progress = FatBurning.Segments;
                         segmentsOptions = IMG_PROGRESS_Options(img_progress, "FAT_BURNING", show_level);
                     }
+
                     if (FatBurning.Number != null && FatBurning.Number.visible)
                     {
                         numberPosition = FatBurning.Number.position;
@@ -6041,7 +6280,12 @@ namespace Watch_Face_Editor
 
                         numberOptions_separator = IMG_Separator_Options(img_number, show_level);
                     }
-
+                    if (FatBurning.Number_Font != null && FatBurning.Number_Font.visible)
+                    {
+                        numberFontPosition = FatBurning.Number_Font.position;
+                        hmUI_widget_TEXT text = FatBurning.Number_Font;
+                        numberFontOptions = TEXT_FONT_Options(text, "FAT_BURNING", show_level);
+                    }
                     if (FatBurning.Text_rotation != null && FatBurning.Text_rotation.visible)
                     {
                         textRotatePosition = FatBurning.Text_rotation.position;
@@ -6065,7 +6309,12 @@ namespace Watch_Face_Editor
 
                         numberTargetOptions_separator = IMG_Separator_Options(img_number, show_level);
                     }
-
+                    if (FatBurning.Number_Target_Font != null && FatBurning.Number_Target_Font.visible)
+                    {
+                        numberTargetFontPosition = FatBurning.Number_Target_Font.position;
+                        hmUI_widget_TEXT text = FatBurning.Number_Target_Font;
+                        numberTargetFontOptions = TEXT_FONT_Options(text, "FAT_BURNING_TARGET", show_level);
+                    }
                     if (FatBurning.Text_rotation_Target != null && FatBurning.Text_rotation_Target.visible)
                     {
                         textRotateTargetPosition = FatBurning.Text_rotation_Target.position;
@@ -6153,6 +6402,34 @@ namespace Watch_Face_Editor
                             }
                         }
 
+                        // Number_Font
+                        if (index == numberFontPosition && numberFontOptions.Length > 5)
+                        {
+                            if (FatBurning.Number_Font.font != null && FatBurning.Number_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + FatBurning.Number_Font.font + "; FontSize: " + FatBurning.Number_Font.text_size.ToString();
+                                if (FatBurning.Number_Font.unit_type > 0)
+                                    cacheName = "// FontName: " + FatBurning.Number_Font.font + "; FontSize: " + FatBurning.Number_Font.text_size.ToString() + "; Cache: full";
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    bool fullCache = FatBurning.Number_Font.unit_type > 0;
+                                    string fontCacheOptions = TEXT_Cache_Options(FatBurning.Number_Font, fullCache);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "fat_burning_current_text_font = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "fat_burning_current_text_font = hmUI.createWidget(hmUI.widget.TEXT_FONT, {" +
+                                    numberFontOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
                         // Text_Rotate
                         if (index == textRotatePosition && textRotateOptions.Length > 5)
                         {
@@ -6186,6 +6463,34 @@ namespace Watch_Face_Editor
                                     optionNameStart + "fat_burning_target_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberTargetOptions_separator + TabInString(6) + "});" + Environment.NewLine;
                             }
+                        }
+
+                        // Number_Target_Font
+                        if (index == numberTargetFontPosition && numberTargetFontOptions.Length > 5)
+                        {
+                            if (FatBurning.Number_Target_Font.font != null && FatBurning.Number_Target_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + FatBurning.Number_Target_Font.font + "; FontSize: " + FatBurning.Number_Target_Font.text_size.ToString();
+                                if (FatBurning.Number_Target_Font.unit_type > 0)
+                                    cacheName = "// FontName: " + FatBurning.Number_Target_Font.font + "; FontSize: " + FatBurning.Number_Target_Font.text_size.ToString() + "; Cache: full";
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    bool fullCache = FatBurning.Number_Target_Font.unit_type > 0;
+                                    string fontCacheOptions = TEXT_Cache_Options(FatBurning.Number_Target_Font, fullCache);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "fat_burning_target_text_font = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "fat_burning_target_text_font = hmUI.createWidget(hmUI.widget.TEXT_FONT, {" +
+                                    numberTargetFontOptions + TabInString(6) + "});" + Environment.NewLine;
                         }
 
                         // Text_Rotate_Target
@@ -16406,6 +16711,7 @@ namespace Watch_Face_Editor
                             {
                                 int offset = 1;
                                 if (distance.Number != null) offset++;
+                                if (distance.Number_Font != null) offset++;
                                 if (distance.Text_rotation != null) offset++;
                                 if (distance.Text_circle != null) offset++;
 
@@ -16457,9 +16763,11 @@ namespace Watch_Face_Editor
                                 if (stand.Images != null) offset++;
                                 if (stand.Segments != null) offset++;
                                 if (stand.Number != null) offset++;
+                                if (stand.Number_Font != null) offset++;
                                 if (stand.Text_rotation != null) offset++;
                                 if (stand.Text_circle != null) offset++;
                                 if (stand.Number_Target != null) offset++;
+                                if (stand.Number_Target_Font != null) offset++;
                                 if (stand.Text_rotation_Target != null) offset++;
                                 if (stand.Text_circle_Target != null) offset++;
                                 if (stand.Pointer != null) offset++;
@@ -16513,6 +16821,7 @@ namespace Watch_Face_Editor
                                 if (stress.Images != null) offset++;
                                 if (stress.Segments != null) offset++;
                                 if (stress.Number != null) offset++;
+                                if (stress.Number_Font != null) offset++;
                                 if (stress.Pointer != null) offset++;
 
                                 if (stress.Icon == null)
@@ -16562,9 +16871,11 @@ namespace Watch_Face_Editor
                                 if (fat_burning.Images != null) offset++;
                                 if (fat_burning.Segments != null) offset++;
                                 if (fat_burning.Number != null) offset++;
+                                if (fat_burning.Number_Font != null) offset++;
                                 if (fat_burning.Text_rotation != null) offset++;
                                 if (fat_burning.Text_circle != null) offset++;
                                 if (fat_burning.Number_Target != null) offset++;
+                                if (fat_burning.Number_Target_Font != null) offset++;
                                 if (fat_burning.Text_rotation_Target != null) offset++;
                                 if (fat_burning.Text_circle_Target != null) offset++;
                                 if (fat_burning.Pointer != null) offset++;
@@ -16611,6 +16922,7 @@ namespace Watch_Face_Editor
                             {
                                 int offset = 1;
                                 if (spo2.Number != null) offset++;
+                                if (spo2.Number_Font != null) offset++;
                                 if (spo2.Text_rotation != null) offset++;
                                 if (spo2.Text_circle != null) offset++;
 
@@ -17583,9 +17895,11 @@ namespace Watch_Face_Editor
                                 //if (stand.Images != null) offset++;
                                 if (stand.Segments != null) offset++;
                                 if (stand.Number != null) offset++;
+                                if (stand.Number_Font != null) offset++;
                                 if (stand.Text_rotation != null) offset++;
                                 if (stand.Text_circle != null) offset++;
                                 if (stand.Number_Target != null) offset++;
+                                if (stand.Number_Target_Font != null) offset++;
                                 if (stand.Text_rotation_Target != null) offset++;
                                 if (stand.Text_circle_Target != null) offset++;
                                 if (stand.Pointer != null) offset++;
@@ -17618,7 +17932,9 @@ namespace Watch_Face_Editor
                                 //if (activity.Images != null) offset++;
                                 if (activity.Segments != null) offset++;
                                 if (activity.Number != null) offset++;
+                                if (activity.Number_Font != null) offset++;
                                 if (activity.Number_Target != null) offset++;
+                                if (activity.Number_Target_Font != null) offset++;
                                 if (activity.Pointer != null) offset++;
                                 if (activity.Circle_Scale != null) offset++;
                                 if (activity.Linear_Scale != null) offset++;
@@ -17649,6 +17965,7 @@ namespace Watch_Face_Editor
                                 //if (stress.Images != null) offset++;
                                 if (stress.Segments != null) offset++;
                                 if (stress.Number != null) offset++;
+                                if (stress.Number_Font != null) offset++;
                                 if (stress.Pointer != null) offset++;
                                 if (stress.Icon != null) offset++;
 
@@ -17677,9 +17994,11 @@ namespace Watch_Face_Editor
                                 //if (fat_burning.Images != null) offset++;
                                 if (fat_burning.Segments != null) offset++;
                                 if (fat_burning.Number != null) offset++;
+                                if (fat_burning.Number_Font != null) offset++;
                                 if (fat_burning.Text_rotation != null) offset++;
                                 if (fat_burning.Text_circle != null) offset++;
                                 if (fat_burning.Number_Target != null) offset++;
+                                if (fat_burning.Number_Target_Font != null) offset++;
                                 if (fat_burning.Text_rotation_Target != null) offset++;
                                 if (fat_burning.Text_circle_Target != null) offset++;
                                 if (fat_burning.Pointer != null) offset++;
@@ -18107,9 +18426,11 @@ namespace Watch_Face_Editor
                                 if (stand.Images != null) offset++;
                                 //if (stand.Segments != null) offset++;
                                 if (stand.Number != null) offset++;
+                                if (stand.Number_Font != null) offset++;
                                 if (stand.Text_rotation != null) offset++;
                                 if (stand.Text_circle != null) offset++;
                                 if (stand.Number_Target != null) offset++;
+                                if (stand.Number_Target_Font != null) offset++;
                                 if (stand.Text_rotation_Target != null) offset++;
                                 if (stand.Text_circle_Target != null) offset++;
                                 if (stand.Pointer != null) offset++;
@@ -18141,7 +18462,9 @@ namespace Watch_Face_Editor
                                 if (activity.Images != null) offset++;
                                 //if (activity.Segments != null) offset++;
                                 if (activity.Number != null) offset++;
+                                if (activity.Number_Font != null) offset++;
                                 if (activity.Number_Target != null) offset++;
+                                if (activity.Number_Target_Font != null) offset++;
                                 if (activity.Pointer != null) offset++;
                                 if (activity.Circle_Scale != null) offset++;
                                 if (activity.Linear_Scale != null) offset++;
@@ -18171,6 +18494,7 @@ namespace Watch_Face_Editor
                                 if (stress.Images != null) offset++;
                                 //if (stress.Segments != null) offset++;
                                 if (stress.Number != null) offset++;
+                                if (stress.Number_Font != null) offset++;
                                 if (stress.Pointer != null) offset++;
                                 if (stress.Icon != null) offset++;
 
@@ -18198,9 +18522,11 @@ namespace Watch_Face_Editor
                                 if (fat_burning.Images != null) offset++;
                                 //if (fat_burning.Segments != null) offset++;
                                 if (fat_burning.Number != null) offset++;
+                                if (fat_burning.Number_Font != null) offset++;
                                 if (fat_burning.Text_rotation != null) offset++;
                                 if (fat_burning.Text_circle != null) offset++;
                                 if (fat_burning.Number_Target != null) offset++;
+                                if (fat_burning.Number_Target_Font != null) offset++;
                                 if (fat_burning.Text_rotation_Target != null) offset++;
                                 if (fat_burning.Text_circle_Target != null) offset++;
                                 if (fat_burning.Pointer != null) offset++;
@@ -18693,6 +19019,7 @@ namespace Watch_Face_Editor
                             {
                                 int offset = 1;
                                 //if (distance.Number != null) offset++;
+                                if (distance.Number_Font != null) offset++;
                                 if (distance.Text_rotation != null) offset++;
                                 if (distance.Text_circle != null) offset++;
                                 if (distance.Icon != null) offset++;
@@ -18729,9 +19056,11 @@ namespace Watch_Face_Editor
                                 if (stand.Images != null) offset++;
                                 if (stand.Segments != null) offset++;
                                 //if (stand.Number != null) offset++;
+                                if (stand.Number_Font != null) offset++;
                                 if (stand.Text_rotation != null) offset++;
                                 if (stand.Text_circle != null) offset++;
                                 if (stand.Number_Target != null) offset++;
+                                if (stand.Number_Target_Font != null) offset++;
                                 if (stand.Text_rotation_Target != null) offset++;
                                 if (stand.Text_circle_Target != null) offset++;
                                 if (stand.Pointer != null) offset++;
@@ -18771,9 +19100,11 @@ namespace Watch_Face_Editor
                                 if (stand.Images != null) offset++;
                                 if (stand.Segments != null) offset++;
                                 if (stand.Number != null) offset++;
+                                if (stand.Number_Font != null) offset++;
                                 if (stand.Text_rotation != null) offset++;
                                 if (stand.Text_circle != null) offset++;
                                 //if (stend,Number_Target != null) offset++;
+                                if (stand.Number_Target_Font != null) offset++;
                                 if (stand.Text_rotation_Target != null) offset++;
                                 if (stand.Text_circle_Target != null) offset++;
                                 if (stand.Pointer != null) offset++;
@@ -18813,7 +19144,9 @@ namespace Watch_Face_Editor
                                 if (activity.Images != null) offset++;
                                 if (activity.Segments != null) offset++;
                                 //if (activity.Number != null) offset++;
+                                if (activity.Number_Font != null) offset++;
                                 if (activity.Number_Target != null) offset++;
+                                if (activity.Number_Target_Font != null) offset++;
                                 if (activity.Pointer != null) offset++;
                                 if (activity.Circle_Scale != null) offset++;
                                 if (activity.Linear_Scale != null) offset++;
@@ -18851,7 +19184,9 @@ namespace Watch_Face_Editor
                                 if (activity.Images != null) offset++;
                                 if (activity.Segments != null) offset++;
                                 if (activity.Number != null) offset++;
+                                if (activity.Number_Font != null) offset++;
                                 //if (activity.Number_Target != null) offset++;
+                                if (activity.Number_Target_Font != null) offset++;
                                 if (activity.Pointer != null) offset++;
                                 if (activity.Circle_Scale != null) offset++;
                                 if (activity.Linear_Scale != null) offset++;
@@ -18887,6 +19222,7 @@ namespace Watch_Face_Editor
                             {
                                 int offset = 1;
                                 //if (spo2.Number != null) offset++;
+                                if (spo2.Number_Font != null) offset++;
                                 if (spo2.Text_rotation != null) offset++;
                                 if (spo2.Text_circle != null) offset++;
                                 if (spo2.Icon != null) offset++;
@@ -18923,6 +19259,7 @@ namespace Watch_Face_Editor
                                 if (stress.Images != null) offset++;
                                 if (stress.Segments != null) offset++;
                                 //if (stress.Number != null) offset++;
+                                if (stress.Number_Font != null) offset++;
                                 if (stress.Pointer != null) offset++;
                                 if (stress.Icon != null) offset++;
 
@@ -18958,9 +19295,11 @@ namespace Watch_Face_Editor
                                 if (fat_burning.Images != null) offset++;
                                 if (fat_burning.Segments != null) offset++;
                                 //if (fat_burning.Number != null) offset++;
+                                if (fat_burning.Number_Font != null) offset++;
                                 if (fat_burning.Text_rotation != null) offset++;
                                 if (fat_burning.Text_circle != null) offset++;
                                 if (fat_burning.Number_Target != null) offset++;
+                                if (fat_burning.Number_Target_Font != null) offset++;
                                 if (fat_burning.Text_rotation_Target != null) offset++;
                                 if (fat_burning.Text_circle_Target != null) offset++;
                                 if (fat_burning.Pointer != null) offset++;
@@ -19000,9 +19339,11 @@ namespace Watch_Face_Editor
                                 if (fat_burning.Images != null) offset++;
                                 if (fat_burning.Segments != null) offset++;
                                 if (fat_burning.Number != null) offset++;
+                                if (fat_burning.Number_Font != null) offset++;
                                 if (fat_burning.Text_rotation != null) offset++;
                                 if (fat_burning.Text_circle != null) offset++;
                                 //if (fat_burning.Number_Target != null) offset++;
+                                if (fat_burning.Number_Target_Font != null) offset++;
                                 if (fat_burning.Text_rotation_Target != null) offset++;
                                 if (fat_burning.Text_circle_Target != null) offset++;
                                 if (fat_burning.Pointer != null) offset++;
@@ -19967,6 +20308,7 @@ namespace Watch_Face_Editor
                             {
                                 int offset = 1;
                                 if (distance.Number != null) offset++;
+                                if (distance.Number_Font != null) offset++;
                                 //if (distance.Text_rotation != null) offset++;
                                 if (distance.Text_circle != null) offset++;
                                 if (distance.Icon != null) offset++;
@@ -20004,9 +20346,11 @@ namespace Watch_Face_Editor
                                 if (stand.Images != null) offset++;
                                 if (stand.Segments != null) offset++;
                                 if (stand.Number != null) offset++;
+                                if (stand.Number_Font != null) offset++;
                                 //if (stand.Text_rotation != null) offset++;
                                 if (stand.Text_circle != null) offset++;
                                 if (stand.Number_Target != null) offset++;
+                                if (stand.Number_Target_Font != null) offset++;
                                 if (stand.Text_rotation_Target != null) offset++;
                                 if (stand.Text_circle_Target != null) offset++;
                                 if (stand.Pointer != null) offset++;
@@ -20047,9 +20391,11 @@ namespace Watch_Face_Editor
                                 if (stand.Images != null) offset++;
                                 if (stand.Segments != null) offset++;
                                 if (stand.Number != null) offset++;
+                                if (stand.Number_Font != null) offset++;
                                 if (stand.Text_rotation != null) offset++;
                                 if (stand.Text_circle != null) offset++;
                                 if (stand.Number_Target != null) offset++;
+                                if (stand.Number_Target_Font != null) offset++;
                                 //if (stand.Text_rotation_Target != null) offset++;
                                 if (stand.Text_circle_Target != null) offset++;
                                 if (stand.Pointer != null) offset++;
@@ -20076,42 +20422,6 @@ namespace Watch_Face_Editor
                             }
                         }
 
-                        if (textRotate.type == "STRESS")
-                        {
-                            ElementStress stress = (ElementStress)elementsList.Find(e => e.GetType().Name == "ElementStress");
-                            if (stress == null)
-                            {
-                                elementsList.Add(new ElementStress());
-                                stress = (ElementStress)elementsList.Find(e => e.GetType().Name == "ElementStress");
-                            }
-                            if (stress != null)
-                            {
-                                int offset = 1;
-                                if (stress.Images != null) offset++;
-                                if (stress.Segments != null) offset++;
-                                //if (stress.Number != null) offset++;
-                                if (stress.Pointer != null) offset++;
-                                if (stress.Icon != null) offset++;
-
-                                //stress.Text_rotation = new hmUI_widget_IMG_NUMBER();
-                                //stress.Text_rotation.img_First = textRotate.img_First;
-                                //stress.Text_rotation.imageX = textRotate.imageX;
-                                //stress.Text_rotation.imageY = textRotate.imageY;
-                                //stress.Text_rotation.space = textRotate.space;
-                                //stress.Text_rotation.angle = textRotate.angle;
-                                //stress.Text_rotation.zero = textRotate.zero;
-                                //stress.Text_rotation.unit = textRotate.unit;
-                                //stress.Text_rotation.unit_in_alignment = textRotate.unit_in_alignment;
-                                //stress.Text_rotation.imperial_unit = textRotate.imperial_unit;
-                                //stress.Text_rotation.negative_image = textRotate.negative_image;
-                                //stress.Text_rotation.invalid_image = textRotate.invalid_image;
-                                //stress.Text_rotation.dot_image = textRotate.dot_image;
-                                //stress.Text_rotation.align = textRotate.align;
-                                //stress.Text_rotation.visible = true;
-                                //stress.Text_rotation.position = offset;
-                            }
-                        }
-
                         if (textRotate.type == "SPO2")
                         {
                             ElementSpO2 spo2 = (ElementSpO2)elementsList.Find(e => e.GetType().Name == "ElementSpO2");
@@ -20124,6 +20434,7 @@ namespace Watch_Face_Editor
                             {
                                 int offset = 1;
                                 if (spo2.Number != null) offset++;
+                                if (spo2.Number_Font != null) offset++;
                                 //if (spo2.Text_rotation != null) offset++;
                                 if (spo2.Text_circle != null) offset++;
                                 if (spo2.Icon != null) offset++;
@@ -20161,9 +20472,11 @@ namespace Watch_Face_Editor
                                 if (fat_burning.Images != null) offset++;
                                 if (fat_burning.Segments != null) offset++;
                                 if (fat_burning.Number != null) offset++;
+                                if (fat_burning.Number_Font != null) offset++;
                                 //if (fat_burning.Text_rotation != null) offset++;
                                 if (fat_burning.Text_circle != null) offset++;
                                 if (fat_burning.Number_Target != null) offset++;
+                                if (fat_burning.Number_Target_Font != null) offset++;
                                 if (fat_burning.Text_rotation_Target != null) offset++;
                                 if (fat_burning.Text_circle_Target != null) offset++;
                                 if (fat_burning.Pointer != null) offset++;
@@ -20204,9 +20517,11 @@ namespace Watch_Face_Editor
                                 if (fat_burning.Images != null) offset++;
                                 if (fat_burning.Segments != null) offset++;
                                 if (fat_burning.Number != null) offset++;
+                                if (fat_burning.Number_Font != null) offset++;
                                 if (fat_burning.Text_rotation != null) offset++;
                                 if (fat_burning.Text_circle != null) offset++;
                                 if (fat_burning.Number_Target != null) offset++;
+                                if (fat_burning.Number_Target_Font != null) offset++;
                                 //if (fat_burning.Text_rotation_Target != null) offset++;
                                 if (fat_burning.Text_circle_Target != null) offset++;
                                 if (fat_burning.Pointer != null) offset++;
@@ -21091,6 +21406,7 @@ namespace Watch_Face_Editor
                             {
                                 int offset = 1;
                                 if (distance.Number != null) offset++;
+                                if (distance.Number_Font != null) offset++;
                                 if (distance.Text_rotation != null) offset++;
                                 //if (distance.Text_circle != null) offset++;
                                 if (distance.Icon != null) offset++;
@@ -21130,9 +21446,11 @@ namespace Watch_Face_Editor
                                 if (stand.Images != null) offset++;
                                 if (stand.Segments != null) offset++;
                                 if (stand.Number != null) offset++;
+                                if (stand.Number_Font != null) offset++;
                                 if (stand.Text_rotation != null) offset++;
                                 //if (stand.Text_circle != null) offset++;
                                 if (stand.Number_Target != null) offset++;
+                                if (stand.Number_Target_Font != null) offset++;
                                 if (stand.Text_rotation_Target != null) offset++;
                                 if (stand.Text_circle_Target != null) offset++;
                                 if (stand.Pointer != null) offset++;
@@ -21175,9 +21493,11 @@ namespace Watch_Face_Editor
                                 if (stand.Images != null) offset++;
                                 if (stand.Segments != null) offset++;
                                 if (stand.Number != null) offset++;
+                                if (stand.Number_Target_Font != null) offset++;
                                 if (stand.Text_rotation != null) offset++;
                                 if (stand.Text_circle != null) offset++;
                                 if (stand.Number_Target != null) offset++;
+                                if (stand.Number_Target_Font != null) offset++;
                                 if (stand.Text_rotation_Target != null) offset++;
                                 //if (stand.Text_circle_Target != null) offset++;
                                 if (stand.Pointer != null) offset++;
@@ -21218,6 +21538,7 @@ namespace Watch_Face_Editor
                             {
                                 int offset = 1;
                                 if (spo2.Number != null) offset++;
+                                if (spo2.Number_Font != null) offset++;
                                 if (spo2.Text_rotation != null) offset++;
                                 //if (spo2.Text_circle != null) offset++;
                                 if (spo2.Icon != null) offset++;
@@ -21257,9 +21578,11 @@ namespace Watch_Face_Editor
                                 if (fat_burning.Images != null) offset++;
                                 if (fat_burning.Segments != null) offset++;
                                 if (fat_burning.Number != null) offset++;
+                                if (fat_burning.Number_Font != null) offset++;
                                 if (fat_burning.Text_rotation != null) offset++;
                                 //if (fat_burning.Text_circle != null) offset++;
                                 if (fat_burning.Number_Target != null) offset++;
+                                if (fat_burning.Number_Target_Font != null) offset++;
                                 if (fat_burning.Text_rotation_Target != null) offset++;
                                 if (fat_burning.Text_circle_Target != null) offset++;
                                 if (fat_burning.Pointer != null) offset++;
@@ -21302,9 +21625,11 @@ namespace Watch_Face_Editor
                                 if (fat_burning.Images != null) offset++;
                                 if (fat_burning.Segments != null) offset++;
                                 if (fat_burning.Number != null) offset++;
+                                if (fat_burning.Number_Font != null) offset++;
                                 if (fat_burning.Text_rotation != null) offset++;
                                 if (fat_burning.Text_circle != null) offset++;
                                 if (fat_burning.Number_Target != null) offset++;
+                                if (fat_burning.Number_Target_Font != null) offset++;
                                 if (fat_burning.Text_rotation_Target != null) offset++;
                                 //if (fat_burning.Text_circle_Target != null) offset++;
                                 if (fat_burning.Pointer != null) offset++;
@@ -21744,6 +22069,7 @@ namespace Watch_Face_Editor
                                 if (stand.Images != null) offset++;
                                 if (stand.Segments != null) offset++;
                                 if (stand.Number != null) offset++;
+                                if (stand.Number_Font != null) offset++;
                                 if (stand.Text_rotation != null) offset++;
                                 if (stand.Text_circle != null) offset++;
                                 if (stand.Number_Target != null) offset++;
@@ -21787,7 +22113,9 @@ namespace Watch_Face_Editor
                                 if (activity.Images != null) offset++;
                                 if (activity.Segments != null) offset++;
                                 if (activity.Number != null) offset++;
+                                if (activity.Number_Font != null) offset++;
                                 if (activity.Number_Target != null) offset++;
+                                if (activity.Number_Target_Font != null) offset++;
                                 //if (activity.Pointer != null) offset++;
                                 if (activity.Circle_Scale != null) offset++;
                                 if (activity.Linear_Scale != null) offset++;
@@ -21826,6 +22154,7 @@ namespace Watch_Face_Editor
                                 if (stress.Images != null) offset++;
                                 if (stress.Segments != null) offset++;
                                 if (stress.Number != null) offset++;
+                                if (stress.Number_Font != null) offset++;
                                 //if (stress.Pointer != null) offset++;
                                 if (stress.Icon != null) offset++;
 
@@ -21862,9 +22191,11 @@ namespace Watch_Face_Editor
                                 if (fat_burning.Images != null) offset++;
                                 if (fat_burning.Segments != null) offset++;
                                 if (fat_burning.Number != null) offset++;
+                                if (fat_burning.Number_Font != null) offset++;
                                 if (fat_burning.Text_rotation != null) offset++;
                                 if (fat_burning.Text_circle != null) offset++;
                                 if (fat_burning.Number_Target != null) offset++;
+                                if (fat_burning.Number_Target_Font != null) offset++;
                                 if (fat_burning.Text_rotation_Target != null) offset++;
                                 if (fat_burning.Text_circle_Target != null) offset++;
                                 //if (fat_burning.Pointer != null) offset++;
@@ -22298,9 +22629,11 @@ namespace Watch_Face_Editor
                                 if (stand.Images != null) offset++;
                                 if (stand.Segments != null) offset++;
                                 if (stand.Number != null) offset++;
+                                if (stand.Number_Font != null) offset++;
                                 if (stand.Text_rotation != null) offset++;
                                 if (stand.Text_circle != null) offset++;
                                 if (stand.Number_Target != null) offset++;
+                                if (stand.Number_Target_Font != null) offset++;
                                 if (stand.Text_rotation_Target != null) offset++;
                                 if (stand.Text_circle_Target != null) offset++;
                                 if (stand.Pointer != null) offset++;
@@ -22338,7 +22671,9 @@ namespace Watch_Face_Editor
                                 if (activity.Images != null) offset++;
                                 if (activity.Segments != null) offset++;
                                 if (activity.Number != null) offset++;
+                                if (activity.Number_Font != null) offset++;
                                 if (activity.Number_Target != null) offset++;
+                                if (activity.Number_Target_Font != null) offset++;
                                 if (activity.Pointer != null) offset++;
                                 //if (activity.Circle_Scale != null) offset++;
                                 if (activity.Linear_Scale != null) offset++;
@@ -22374,9 +22709,11 @@ namespace Watch_Face_Editor
                                 if (fat_burning.Images != null) offset++;
                                 if (fat_burning.Segments != null) offset++;
                                 if (fat_burning.Number != null) offset++;
+                                if (fat_burning.Number_Font != null) offset++;
                                 if (fat_burning.Text_rotation != null) offset++;
                                 if (fat_burning.Text_circle != null) offset++;
                                 if (fat_burning.Number_Target != null) offset++;
+                                if (fat_burning.Number_Target_Font != null) offset++;
                                 if (fat_burning.Text_rotation_Target != null) offset++;
                                 if (fat_burning.Text_circle_Target != null) offset++;
                                 if (fat_burning.Pointer != null) offset++;
@@ -22620,9 +22957,11 @@ namespace Watch_Face_Editor
                                 if (stand.Images != null) offset++;
                                 if (stand.Segments != null) offset++;
                                 if (stand.Number != null) offset++;
+                                if (stand.Number_Font != null) offset++;
                                 if (stand.Text_rotation != null) offset++;
                                 if (stand.Text_circle != null) offset++;
                                 if (stand.Number_Target != null) offset++;
+                                if (stand.Number_Target_Font != null) offset++;
                                 if (stand.Text_rotation_Target != null) offset++;
                                 if (stand.Text_circle_Target != null) offset++;
                                 if (stand.Pointer != null) offset++;
@@ -22660,7 +22999,9 @@ namespace Watch_Face_Editor
                                 if (activity.Images != null) offset++;
                                 if (activity.Segments != null) offset++;
                                 if (activity.Number != null) offset++;
+                                if (activity.Number_Font != null) offset++;
                                 if (activity.Number_Target != null) offset++;
+                                if (activity.Number_Target_Font != null) offset++;
                                 if (activity.Pointer != null) offset++;
                                 if (activity.Circle_Scale != null) offset++;
                                 //if (activity.Linear_Scale != null) offset++;
@@ -22696,9 +23037,11 @@ namespace Watch_Face_Editor
                                 if (fat_burning.Images != null) offset++;
                                 if (fat_burning.Segments != null) offset++;
                                 if (fat_burning.Number != null) offset++;
+                                if (fat_burning.Number_Font != null) offset++;
                                 if (fat_burning.Text_rotation != null) offset++;
                                 if (fat_burning.Text_circle != null) offset++;
                                 if (fat_burning.Number_Target != null) offset++;
+                                if (fat_burning.Number_Target_Font != null) offset++;
                                 if (fat_burning.Text_rotation_Target != null) offset++;
                                 if (fat_burning.Text_circle_Target != null) offset++;
                                 if (fat_burning.Pointer != null) offset++;
@@ -23202,6 +23545,449 @@ namespace Watch_Face_Editor
 
                                 pai.Number_Target_Font.visible = true;
                                 pai.Number_Target_Font.position = offset;
+                            }
+                        }
+
+                        if (text_font.type == "DISTANCE")
+                        {
+                            ElementDistance distance = (ElementDistance)elementsList.Find(e => e.GetType().Name == "ElementDistance");
+                            if (distance == null)
+                            {
+                                elementsList.Add(new ElementDistance());
+                                distance = (ElementDistance)elementsList.Find(e => e.GetType().Name == "ElementDistance");
+                            }
+                            if (distance != null)
+                            {
+                                int offset = 1;
+                                if (distance.Number != null) offset++;
+                                //if (distance.Number_Font != null) offset++;
+                                if (distance.Text_rotation != null) offset++;
+                                if (distance.Text_circle != null) offset++;
+                                if (distance.Icon != null) offset++;
+
+                                distance.Number_Font = new hmUI_widget_TEXT();
+                                distance.Number_Font.x = text_font.x;
+                                distance.Number_Font.y = text_font.y;
+                                distance.Number_Font.w = text_font.w;
+                                distance.Number_Font.h = text_font.h;
+
+                                distance.Number_Font.color = text_font.color;
+                                distance.Number_Font.font = text_font.font;
+                                distance.Number_Font.text_size = text_font.text_size;
+
+                                distance.Number_Font.char_space = text_font.char_space;
+                                distance.Number_Font.line_space = text_font.line_space;
+
+                                distance.Number_Font.align_h = text_font.align_h;
+                                distance.Number_Font.align_v = text_font.align_v;
+                                distance.Number_Font.text_style = text_font.text_style;
+
+                                distance.Number_Font.padding = text_font.padding;
+                                distance.Number_Font.unit_type = text_font.unit_type;
+
+                                distance.Number_Font.type = text_font.type;
+
+                                distance.Number_Font.visible = true;
+                                distance.Number_Font.position = offset;
+                            }
+                        }
+
+                        if (text_font.type == "STAND")
+                        {
+                            ElementStand stand = (ElementStand)elementsList.Find(e => e.GetType().Name == "ElementStand");
+                            if (stand == null)
+                            {
+                                elementsList.Add(new ElementStand());
+                                stand = (ElementStand)elementsList.Find(e => e.GetType().Name == "ElementStand");
+                            }
+                            if (stand != null)
+                            {
+                                int offset = 1;
+                                if (stand.Images != null) offset++;
+                                if (stand.Segments != null) offset++;
+                                if (stand.Number != null) offset++;
+                                //if (stand.Number_Font != null) offset++;
+                                if (stand.Text_rotation != null) offset++;
+                                if (stand.Text_circle != null) offset++;
+                                if (stand.Number_Target != null) offset++;
+                                if (stand.Number_Target_Font != null) offset++;
+                                if (stand.Text_rotation_Target != null) offset++;
+                                if (stand.Text_circle_Target != null) offset++;
+                                if (stand.Pointer != null) offset++;
+                                if (stand.Circle_Scale != null) offset++;
+                                if (stand.Linear_Scale != null) offset++;
+                                if (stand.Icon != null) offset++;
+
+                                stand.Number_Font = new hmUI_widget_TEXT();
+                                stand.Number_Font.x = text_font.x;
+                                stand.Number_Font.y = text_font.y;
+                                stand.Number_Font.w = text_font.w;
+                                stand.Number_Font.h = text_font.h;
+
+                                stand.Number_Font.color = text_font.color;
+                                stand.Number_Font.font = text_font.font;
+                                stand.Number_Font.text_size = text_font.text_size;
+
+                                stand.Number_Font.char_space = text_font.char_space;
+                                stand.Number_Font.line_space = text_font.line_space;
+
+                                stand.Number_Font.align_h = text_font.align_h;
+                                stand.Number_Font.align_v = text_font.align_v;
+                                stand.Number_Font.text_style = text_font.text_style;
+
+                                stand.Number_Font.padding = text_font.padding;
+                                stand.Number_Font.unit_type = text_font.unit_type;
+
+                                stand.Number_Font.type = text_font.type;
+
+                                stand.Number_Font.visible = true;
+                                stand.Number_Font.position = offset;
+                            }
+                        }
+
+                        if (text_font.type == "STAND_TARGET")
+                        {
+                            ElementStand stand = (ElementStand)elementsList.Find(e => e.GetType().Name == "ElementStand");
+                            if (stand == null)
+                            {
+                                elementsList.Add(new ElementStand());
+                                stand = (ElementStand)elementsList.Find(e => e.GetType().Name == "ElementStand");
+                            }
+                            if (stand != null)
+                            {
+                                int offset = 1;
+                                if (stand.Images != null) offset++;
+                                if (stand.Segments != null) offset++;
+                                if (stand.Number != null) offset++;
+                                if (stand.Number_Font != null) offset++;
+                                if (stand.Text_rotation != null) offset++;
+                                if (stand.Text_circle != null) offset++;
+                                if (stand.Number_Target != null) offset++;
+                                //if (stand.Number_Target_Font != null) offset++;
+                                if (stand.Text_rotation_Target != null) offset++;
+                                if (stand.Text_circle_Target != null) offset++;
+                                if (stand.Pointer != null) offset++;
+                                if (stand.Circle_Scale != null) offset++;
+                                if (stand.Linear_Scale != null) offset++;
+                                if (stand.Icon != null) offset++;
+
+                                stand.Number_Target_Font = new hmUI_widget_TEXT();
+                                stand.Number_Target_Font.x = text_font.x;
+                                stand.Number_Target_Font.y = text_font.y;
+                                stand.Number_Target_Font.w = text_font.w;
+                                stand.Number_Target_Font.h = text_font.h;
+
+                                stand.Number_Target_Font.color = text_font.color;
+                                stand.Number_Target_Font.font = text_font.font;
+                                stand.Number_Target_Font.text_size = text_font.text_size;
+
+                                stand.Number_Target_Font.char_space = text_font.char_space;
+                                stand.Number_Target_Font.line_space = text_font.line_space;
+
+                                stand.Number_Target_Font.align_h = text_font.align_h;
+                                stand.Number_Target_Font.align_v = text_font.align_v;
+                                stand.Number_Target_Font.text_style = text_font.text_style;
+
+                                stand.Number_Target_Font.padding = text_font.padding;
+                                stand.Number_Target_Font.unit_type = text_font.unit_type;
+
+                                stand.Number_Target_Font.type = text_font.type;
+
+                                stand.Number_Target_Font.visible = true;
+                                stand.Number_Target_Font.position = offset;
+                            }
+                        }
+
+                        if (text_font.type == "ACTIVITY")
+                        {
+                            ElementActivity activity = (ElementActivity)elementsList.Find(e => e.GetType().Name == "ElementActivity");
+                            if (activity == null)
+                            {
+                                elementsList.Add(new ElementActivity());
+                                activity = (ElementActivity)elementsList.Find(e => e.GetType().Name == "ElementActivity");
+                            }
+                            if (activity != null)
+                            {
+                                int offset = 1;
+                                if (activity.Images != null) offset++;
+                                if (activity.Segments != null) offset++;
+                                if (activity.Number != null) offset++;
+                                //if (activity.Number_Font != null) offset++;
+                                if (activity.Number_Target != null) offset++;
+                                if (activity.Number_Target_Font != null) offset++;
+                                if (activity.Pointer != null) offset++;
+                                if (activity.Circle_Scale != null) offset++;
+                                if (activity.Linear_Scale != null) offset++;
+                                if (activity.Icon != null) offset++;
+
+                                activity.Number_Font = new hmUI_widget_TEXT();
+                                activity.Number_Font.x = text_font.x;
+                                activity.Number_Font.y = text_font.y;
+                                activity.Number_Font.w = text_font.w;
+                                activity.Number_Font.h = text_font.h;
+
+                                activity.Number_Font.color = text_font.color;
+                                activity.Number_Font.font = text_font.font;
+                                activity.Number_Font.text_size = text_font.text_size;
+
+                                activity.Number_Font.char_space = text_font.char_space;
+                                activity.Number_Font.line_space = text_font.line_space;
+
+                                activity.Number_Font.align_h = text_font.align_h;
+                                activity.Number_Font.align_v = text_font.align_v;
+                                activity.Number_Font.text_style = text_font.text_style;
+
+                                activity.Number_Font.padding = text_font.padding;
+                                activity.Number_Font.unit_type = text_font.unit_type;
+
+                                activity.Number_Font.type = text_font.type;
+
+                                activity.Number_Font.visible = true;
+                                activity.Number_Font.position = offset;
+                            }
+                        }
+
+                        if (text_font.type == "ACTIVITY_TARGET")
+                        {
+                            ElementActivity activity = (ElementActivity)elementsList.Find(e => e.GetType().Name == "ElementActivity");
+                            if (activity == null)
+                            {
+                                elementsList.Add(new ElementActivity());
+                                activity = (ElementActivity)elementsList.Find(e => e.GetType().Name == "ElementActivity");
+                            }
+                            if (activity != null)
+                            {
+                                int offset = 1;
+                                if (activity.Images != null) offset++;
+                                if (activity.Segments != null) offset++;
+                                if (activity.Number != null) offset++;
+                                if (activity.Number_Font != null) offset++;
+                                if (activity.Number_Target != null) offset++;
+                                //if (activity.Number_Target_Font != null) offset++;
+                                if (activity.Pointer != null) offset++;
+                                if (activity.Circle_Scale != null) offset++;
+                                if (activity.Linear_Scale != null) offset++;
+                                if (activity.Icon != null) offset++;
+
+                                activity.Number_Target_Font = new hmUI_widget_TEXT();
+                                activity.Number_Target_Font.x = text_font.x;
+                                activity.Number_Target_Font.y = text_font.y;
+                                activity.Number_Target_Font.w = text_font.w;
+                                activity.Number_Target_Font.h = text_font.h;
+
+                                activity.Number_Target_Font.color = text_font.color;
+                                activity.Number_Target_Font.font = text_font.font;
+                                activity.Number_Target_Font.text_size = text_font.text_size;
+
+                                activity.Number_Target_Font.char_space = text_font.char_space;
+                                activity.Number_Target_Font.line_space = text_font.line_space;
+
+                                activity.Number_Target_Font.align_h = text_font.align_h;
+                                activity.Number_Target_Font.align_v = text_font.align_v;
+                                activity.Number_Target_Font.text_style = text_font.text_style;
+
+                                activity.Number_Target_Font.padding = text_font.padding;
+                                activity.Number_Target_Font.unit_type = text_font.unit_type;
+
+                                activity.Number_Target_Font.type = text_font.type;
+
+                                activity.Number_Target_Font.visible = true;
+                                activity.Number_Target_Font.position = offset;
+                            }
+                        }
+
+                        if (text_font.type == "SPO2")
+                        {
+                            ElementSpO2 spo2 = (ElementSpO2)elementsList.Find(e => e.GetType().Name == "ElementSpO2");
+                            if (spo2 == null)
+                            {
+                                elementsList.Add(new ElementSpO2());
+                                spo2 = (ElementSpO2)elementsList.Find(e => e.GetType().Name == "ElementSpO2");
+                            }
+                            if (spo2 != null)
+                            {
+                                int offset = 1;
+                                if (spo2.Number != null) offset++;
+                                //if (spo2.Number_Font != null) offset++;
+                                if (spo2.Text_rotation != null) offset++;
+                                if (spo2.Text_circle != null) offset++;
+                                if (spo2.Icon != null) offset++;
+
+                                spo2.Number_Font = new hmUI_widget_TEXT();
+                                spo2.Number_Font.x = text_font.x;
+                                spo2.Number_Font.y = text_font.y;
+                                spo2.Number_Font.w = text_font.w;
+                                spo2.Number_Font.h = text_font.h;
+
+                                spo2.Number_Font.color = text_font.color;
+                                spo2.Number_Font.font = text_font.font;
+                                spo2.Number_Font.text_size = text_font.text_size;
+
+                                spo2.Number_Font.char_space = text_font.char_space;
+                                spo2.Number_Font.line_space = text_font.line_space;
+
+                                spo2.Number_Font.align_h = text_font.align_h;
+                                spo2.Number_Font.align_v = text_font.align_v;
+                                spo2.Number_Font.text_style = text_font.text_style;
+
+                                spo2.Number_Font.padding = text_font.padding;
+                                spo2.Number_Font.unit_type = text_font.unit_type;
+
+                                spo2.Number_Font.type = text_font.type;
+
+                                spo2.Number_Font.visible = true;
+                                spo2.Number_Font.position = offset;
+                            }
+                        }
+
+                        if (text_font.type == "STRESS")
+                        {
+                            ElementStress stress = (ElementStress)elementsList.Find(e => e.GetType().Name == "ElementStress");
+                            if (stress == null)
+                            {
+                                elementsList.Add(new ElementStress());
+                                stress = (ElementStress)elementsList.Find(e => e.GetType().Name == "ElementStress");
+                            }
+                            if (stress != null)
+                            {
+                                int offset = 1;
+                                if (stress.Images != null) offset++;
+                                if (stress.Segments != null) offset++;
+                                if (stress.Number != null) offset++;
+                                //if (stress.Number_Font != null) offset++;
+                                if (stress.Pointer != null) offset++;
+                                if (stress.Icon != null) offset++;
+
+                                stress.Number_Font = new hmUI_widget_TEXT();
+                                stress.Number_Font.x = text_font.x;
+                                stress.Number_Font.y = text_font.y;
+                                stress.Number_Font.w = text_font.w;
+                                stress.Number_Font.h = text_font.h;
+
+                                stress.Number_Font.color = text_font.color;
+                                stress.Number_Font.font = text_font.font;
+                                stress.Number_Font.text_size = text_font.text_size;
+
+                                stress.Number_Font.char_space = text_font.char_space;
+                                stress.Number_Font.line_space = text_font.line_space;
+
+                                stress.Number_Font.align_h = text_font.align_h;
+                                stress.Number_Font.align_v = text_font.align_v;
+                                stress.Number_Font.text_style = text_font.text_style;
+
+                                stress.Number_Font.padding = text_font.padding;
+                                stress.Number_Font.unit_type = text_font.unit_type;
+
+                                stress.Number_Font.type = text_font.type;
+
+                                stress.Number_Font.visible = true;
+                                stress.Number_Font.position = offset;
+                            }
+                        }
+
+                        if (text_font.type == "FAT_BURNING")
+                        {
+                            ElementFatBurning fat_burning = (ElementFatBurning)elementsList.Find(e => e.GetType().Name == "ElementFatBurning");
+                            if (fat_burning == null)
+                            {
+                                elementsList.Add(new ElementFatBurning());
+                                fat_burning = (ElementFatBurning)elementsList.Find(e => e.GetType().Name == "ElementFatBurning");
+                            }
+                            if (fat_burning != null)
+                            {
+                                int offset = 1;
+                                if (fat_burning.Images != null) offset++;
+                                if (fat_burning.Segments != null) offset++;
+                                if (fat_burning.Number != null) offset++;
+                                //if (fat_burning.Number_Font != null) offset++;
+                                if (fat_burning.Text_rotation != null) offset++;
+                                if (fat_burning.Text_circle != null) offset++;
+                                if (fat_burning.Number_Target != null) offset++;
+                                if (fat_burning.Number_Target_Font != null) offset++;
+                                if (fat_burning.Text_rotation_Target != null) offset++;
+                                if (fat_burning.Text_circle_Target != null) offset++;
+                                if (fat_burning.Pointer != null) offset++;
+                                if (fat_burning.Circle_Scale != null) offset++;
+                                if (fat_burning.Linear_Scale != null) offset++;
+                                if (fat_burning.Icon != null) offset++;
+
+                                fat_burning.Number_Font = new hmUI_widget_TEXT();
+                                fat_burning.Number_Font.x = text_font.x;
+                                fat_burning.Number_Font.y = text_font.y;
+                                fat_burning.Number_Font.w = text_font.w;
+                                fat_burning.Number_Font.h = text_font.h;
+
+                                fat_burning.Number_Font.color = text_font.color;
+                                fat_burning.Number_Font.font = text_font.font;
+                                fat_burning.Number_Font.text_size = text_font.text_size;
+
+                                fat_burning.Number_Font.char_space = text_font.char_space;
+                                fat_burning.Number_Font.line_space = text_font.line_space;
+
+                                fat_burning.Number_Font.align_h = text_font.align_h;
+                                fat_burning.Number_Font.align_v = text_font.align_v;
+                                fat_burning.Number_Font.text_style = text_font.text_style;
+
+                                fat_burning.Number_Font.padding = text_font.padding;
+                                fat_burning.Number_Font.unit_type = text_font.unit_type;
+
+                                fat_burning.Number_Font.type = text_font.type;
+
+                                fat_burning.Number_Font.visible = true;
+                                fat_burning.Number_Font.position = offset;
+                            }
+                        }
+
+                        if (text_font.type == "FAT_BURNING_TARGET")
+                        {
+                            ElementFatBurning fat_burning = (ElementFatBurning)elementsList.Find(e => e.GetType().Name == "ElementFatBurning");
+                            if (fat_burning == null)
+                            {
+                                elementsList.Add(new ElementFatBurning());
+                                fat_burning = (ElementFatBurning)elementsList.Find(e => e.GetType().Name == "ElementFatBurning");
+                            }
+                            if (fat_burning != null)
+                            {
+                                int offset = 1;
+                                if (fat_burning.Images != null) offset++;
+                                if (fat_burning.Segments != null) offset++;
+                                if (fat_burning.Number != null) offset++;
+                                if (fat_burning.Number_Font != null) offset++;
+                                if (fat_burning.Text_rotation != null) offset++;
+                                if (fat_burning.Text_circle != null) offset++;
+                                if (fat_burning.Number_Target != null) offset++;
+                                //if (fat_burning.Number_Target_Font != null) offset++;
+                                if (fat_burning.Text_rotation_Target != null) offset++;
+                                if (fat_burning.Text_circle_Target != null) offset++;
+                                if (fat_burning.Pointer != null) offset++;
+                                if (fat_burning.Circle_Scale != null) offset++;
+                                if (fat_burning.Linear_Scale != null) offset++;
+                                if (fat_burning.Icon != null) offset++;
+
+                                fat_burning.Number_Target_Font = new hmUI_widget_TEXT();
+                                fat_burning.Number_Target_Font.x = text_font.x;
+                                fat_burning.Number_Target_Font.y = text_font.y;
+                                fat_burning.Number_Target_Font.w = text_font.w;
+                                fat_burning.Number_Target_Font.h = text_font.h;
+
+                                fat_burning.Number_Target_Font.color = text_font.color;
+                                fat_burning.Number_Target_Font.font = text_font.font;
+                                fat_burning.Number_Target_Font.text_size = text_font.text_size;
+
+                                fat_burning.Number_Target_Font.char_space = text_font.char_space;
+                                fat_burning.Number_Target_Font.line_space = text_font.line_space;
+
+                                fat_burning.Number_Target_Font.align_h = text_font.align_h;
+                                fat_burning.Number_Target_Font.align_v = text_font.align_v;
+                                fat_burning.Number_Target_Font.text_style = text_font.text_style;
+
+                                fat_burning.Number_Target_Font.padding = text_font.padding;
+                                fat_burning.Number_Target_Font.unit_type = text_font.unit_type;
+
+                                fat_burning.Number_Target_Font.type = text_font.type;
+
+                                fat_burning.Number_Target_Font.visible = true;
+                                fat_burning.Number_Target_Font.position = offset;
                             }
                         }
 
