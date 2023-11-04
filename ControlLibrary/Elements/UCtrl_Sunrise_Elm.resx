@@ -174,9 +174,6 @@
   <data name="&gt;&gt;pictureBox_NotShow.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="button_Images.Size" type="System.Drawing.Size, System.Drawing">
-    <value>145, 24</value>
-  </data>
   <data name="&gt;&gt;checkBox_Sunset_Sunrise.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -287,6 +284,9 @@
   <data name="&gt;&gt;checkBox_Pointer.Name" xml:space="preserve">
     <value>checkBox_Pointer</value>
   </data>
+  <data name="&gt;&gt;button_Sunrise_rotation.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>UCtrl_Sunrise_Elm</value>
   </data>
@@ -335,6 +335,9 @@
   <data name="button_Sunrise_rotation.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
   </data>
+  <data name="&gt;&gt;pictureBox_Arrow_Down.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="&gt;&gt;pictureBox_Show.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
@@ -356,8 +359,11 @@
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="panel_Sunrise_circle" Row="9" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Sunrise_rotation" Row="8" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Sunset_circle" Row="7" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Sunset_rotation" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Sunset_Sunrise" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Images" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Sunset" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Segments" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Pointer" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Icon" Row="10" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="panel_Sunrise" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
-  <data name="&gt;&gt;button_Sunset_rotation.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="button_Sunset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 24</value>
+  </data>
+  <data name="pictureBox_Arrow_Right.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 2</value>
   </data>
   <data name="checkBox_Sunset.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -365,8 +371,8 @@
   <data name="button_Segments.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="button_Sunset.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 24</value>
+  <data name="&gt;&gt;button_Pointer.Name" xml:space="preserve">
+    <value>button_Pointer</value>
   </data>
   <data name="button_Sunset_circle.Size" type="System.Drawing.Size, System.Drawing">
     <value>190, 24</value>
@@ -398,6 +404,9 @@
   <data name="&gt;&gt;button_Icon.Name" xml:space="preserve">
     <value>button_Icon</value>
   </data>
+  <data name="&gt;&gt;checkBox_Pointer.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="button_Segments.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 24</value>
   </data>
@@ -422,8 +431,8 @@
   <data name="&gt;&gt;panel_Pointer.Type" xml:space="preserve">
     <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;button_Sunrise_rotation.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;panel_Segments.Name" xml:space="preserve">
+    <value>panel_Segments</value>
   </data>
   <data name="pictureBox_Arrow_Right.TabIndex" type="System.Int32, mscorlib">
     <value>41</value>
@@ -440,8 +449,8 @@
   <data name="pictureBox_Show.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;pictureBox_Arrow_Down.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="button_Sunset_rotation.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>MiddleLeft</value>
   </data>
   <data name="checkBox_Sunrise_rotation.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -520,9 +529,6 @@
   </data>
   <data name="&gt;&gt;checkBox_Icon.Name" xml:space="preserve">
     <value>checkBox_Icon</value>
-  </data>
-  <data name="&gt;&gt;button_Sunrise_circle.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="panel_Sunset_Sunrise.Location" type="System.Drawing.Point, System.Drawing">
     <value>1, 126</value>
@@ -761,6 +767,9 @@
   <data name="&gt;&gt;checkBox_Sunset.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="panel_Sunset_rotation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
   <data name="button_Sunrise_rotation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -806,9 +815,6 @@
   <data name="&gt;&gt;panel_Images.Name" xml:space="preserve">
     <value>panel_Images</value>
   </data>
-  <data name="&gt;&gt;panel_Segments.Name" xml:space="preserve">
-    <value>panel_Segments</value>
-  </data>
   <data name="checkBox_Sunrise_rotation.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -821,8 +827,8 @@
   <data name="panel_Pointer.Size" type="System.Drawing.Size, System.Drawing">
     <value>228, 24</value>
   </data>
-  <data name="button_Sunset_rotation.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>MiddleLeft</value>
+  <data name="button_Images.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 24</value>
   </data>
   <data name="button_Segments.TextImageRelation" type="System.Windows.Forms.TextImageRelation, System.Windows.Forms">
     <value>ImageBeforeText</value>
@@ -881,8 +887,8 @@
   <data name="&gt;&gt;button_ElementName.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="panel_Sunset_rotation.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+  <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
   </data>
   <data name="&gt;&gt;panel_Pointer.Parent" xml:space="preserve">
     <value>tableLayoutPanel1</value>
@@ -954,8 +960,8 @@
   <data name="&gt;&gt;pictureBox_NotShow.Name" xml:space="preserve">
     <value>pictureBox_NotShow</value>
   </data>
-  <data name="pictureBox_Arrow_Right.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 2</value>
+  <data name="&gt;&gt;button_Sunset_rotation.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;panel_Icon.ZOrder" xml:space="preserve">
     <value>9</value>
@@ -1093,9 +1099,6 @@
   <data name="button_Sunset.Location" type="System.Drawing.Point, System.Drawing">
     <value>33, 0</value>
   </data>
-  <data name="&gt;&gt;tableLayoutPanel1.Name" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
   <data name="panel_Icon.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
@@ -1125,9 +1128,6 @@
   </data>
   <data name="button_Sunrise.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
-  </data>
-  <data name="&gt;&gt;button_Pointer.Name" xml:space="preserve">
-    <value>button_Pointer</value>
   </data>
   <data name="panel_Images.TabIndex" type="System.Int32, mscorlib">
     <value>37</value>
@@ -1390,8 +1390,8 @@
   <data name="&gt;&gt;panel_Sunrise.Name" xml:space="preserve">
     <value>panel_Sunrise</value>
   </data>
-  <data name="&gt;&gt;checkBox_Pointer.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;button_Sunrise_circle.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;pictureBox_Del.Parent" xml:space="preserve">
     <value>$this</value>

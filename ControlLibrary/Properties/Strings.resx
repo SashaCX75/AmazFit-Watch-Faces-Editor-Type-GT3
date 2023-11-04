@@ -129,6 +129,9 @@
   <data name="SystemFont" xml:space="preserve">
     <value>Системный шрифт</value>
   </data>
+  <data name="UCtrl_Text_Opt_Altitude_true" xml:space="preserve">
+    <value>Символ "-"</value>
+  </data>
   <data name="UCtrl_Text_Opt_Sunrise_false" xml:space="preserve">
     <value>Десятичный разделитель</value>
   </data>

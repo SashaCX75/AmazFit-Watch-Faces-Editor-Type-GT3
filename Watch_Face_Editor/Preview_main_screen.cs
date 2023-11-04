@@ -2351,12 +2351,15 @@ namespace Watch_Face_Editor
                     value_lenght = 3;
                     img_level = activityElementWeather.Images;
                     img_number = activityElementWeather.Number;
+                    font_number = activityElementWeather.Number_Font;
 
                     hmUI_widget_IMG_NUMBER img_number_min = activityElementWeather.Number_Min;
+                    hmUI_widget_TEXT font_number_min = activityElementWeather.Number_Min_Font;
                     hmUI_widget_IMG_NUMBER text_Min_rotation = activityElementWeather.Text_Min_rotation;
                     Text_Circle text_Min_circle = activityElementWeather.Text_Min_circle;
 
                     hmUI_widget_IMG_NUMBER img_number_max = activityElementWeather.Number_Max;
+                    hmUI_widget_TEXT font_number_max = activityElementWeather.Number_Max_Font;
                     hmUI_widget_IMG_NUMBER text_Max_rotation = activityElementWeather.Text_Max_rotation;
                     Text_Circle text_Max_circle = activityElementWeather.Text_Max_circle;
 
@@ -2369,8 +2372,8 @@ namespace Watch_Face_Editor
                     int icon_index = WatchFacePreviewSet.Weather.Icon;
                     bool showTemperature = WatchFacePreviewSet.Weather.showTemperature;
 
-                    DrawWeather(gPanel, img_level, img_number, img_number_min, text_Min_rotation, text_Min_circle,
-                        img_number_max, text_Max_rotation, text_Max_circle, city_name, icon, value_current, value_min, value_max, value_lenght, icon_index,
+                    DrawWeather(gPanel, img_level, img_number, font_number, img_number_min, font_number_min, text_Min_rotation, text_Min_circle,
+                        img_number_max, font_number_max, text_Max_rotation, text_Max_circle, city_name, icon, value_current, value_min, value_max, value_lenght, icon_index,
                         BBorder, showTemperature, showCentrHend);
 
 
@@ -2385,7 +2388,7 @@ namespace Watch_Face_Editor
                     img_level = activityElementUVIndex.Images;
                     img_prorgess = activityElementUVIndex.Segments;
                     img_number = activityElementUVIndex.Number;
-                    //img_number_target = activityElementBattery.Number_Target;
+                    font_number = activityElementUVIndex.Number_Font;
                     img_pointer = activityElementUVIndex.Pointer;
                     icon = activityElementUVIndex.Icon;
 
@@ -2484,7 +2487,7 @@ namespace Watch_Face_Editor
                     img_level = activityElementHumidity.Images;
                     img_prorgess = activityElementHumidity.Segments;
                     img_number = activityElementHumidity.Number;
-                    //img_number_target = activityElementBattery.Number_Target;
+                    font_number = activityElementHumidity.Number_Font;
                     img_pointer = activityElementHumidity.Pointer;
                     icon = activityElementHumidity.Icon;
 
@@ -2525,6 +2528,9 @@ namespace Watch_Face_Editor
                     if (!activityElementAltimeter.visible) return;
 
                     img_number = activityElementAltimeter.Number;
+                    font_number = activityElementAltimeter.Number_Font;
+                    img_number_target = activityElementAltimeter.Number_Target;
+                    font_number_target = activityElementAltimeter.Number_Target_Font;
                     img_pointer = activityElementAltimeter.Pointer;
                     icon = activityElementAltimeter.Icon;
 
@@ -2536,6 +2542,7 @@ namespace Watch_Face_Editor
                     progress = WatchFacePreviewSet.Weather.AirPressure / 1200f;
                     progress = (int)(progress * 100);
                     progress = progress / 100f;
+                    goal = WatchFacePreviewSet.Weather.Altitude;
 
                     if (img_level != null && img_level.image_length > 0)
                     {
@@ -2597,6 +2604,7 @@ namespace Watch_Face_Editor
                     img_level = activityElementWind.Images;
                     img_prorgess = activityElementWind.Segments;
                     img_number = activityElementWind.Number;
+                    font_number = activityElementWind.Number_Font;
                     img_pointer = activityElementWind.Pointer;
                     hmUI_widget_IMG_LEVEL img_direction = activityElementWind.Direction;
                     icon = activityElementWind.Icon;
@@ -2624,7 +2632,7 @@ namespace Watch_Face_Editor
                         if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
                     }
 
-                    DrawWind(gPanel, img_level, img_prorgess, img_number, img_pointer, img_direction, icon, elementValue, value_lenght, goal,
+                    DrawWind(gPanel, img_level, img_prorgess, img_number, font_number, img_pointer, img_direction, icon, elementValue, value_lenght, goal,
                         progress, valueImgIndex, valueSegmentIndex, valueImgDirectionIndex, BBorder, showProgressArea, showCentrHend);
 
 
@@ -3386,6 +3394,12 @@ namespace Watch_Face_Editor
                 case "ElementFatBurning":
                     unit = "min";
                     break;
+                case "ElementHumidity":
+                    unit = "%";
+                    break;
+                case "ElementAltimeter":
+                    unit = "hpa";
+                    break;
             }
 
             for (int index = 1; index <= 25; index++)
@@ -3609,8 +3623,10 @@ namespace Watch_Face_Editor
                     if (numberTarget.unit != null && numberTarget.unit.Length > 0)
                         separator_index = ListImages.IndexOf(numberTarget.unit);
 
-                    Draw_dagital_text(gPanel, imageIndex, x, y,
+                    if (elementName != "ElementAltimeter") Draw_dagital_text(gPanel, imageIndex, x, y,
                         spasing, alignment, (int)goal, addZero, value_lenght, separator_index, angle, BBorder);
+                    else Draw_dagital_text(gPanel, imageIndex, x, y,
+                        spasing, alignment, (int)goal, addZero, 5, separator_index, angle, BBorder);
 
                     if (numberTarget.icon != null && numberTarget.icon.Length > 0)
                     {
@@ -3643,7 +3659,19 @@ namespace Watch_Face_Editor
                     string text_style = numberTarget_font.text_style;
                     string valueStr = goal.ToString();
                     string unitStr = unit;
-                    if (numberTarget_font.padding) valueStr = valueStr.PadLeft(value_lenght, '0');
+                    if (elementName == "ElementAltimeter") 
+                    {
+                        unitStr = "meter";
+                        if (goal >= 0) valueStr = valueStr.PadLeft(5, '0');
+                        else
+                        {
+                            int tempGoal = Math.Abs(goal);
+                            valueStr = tempGoal.ToString();
+                            valueStr = valueStr.PadLeft(5, '0');
+                            valueStr = "-" + valueStr;
+                        }
+                    }
+                    if (numberTarget_font.padding && elementName != "ElementAltimeter") valueStr = valueStr.PadLeft(value_lenght, '0');
                     if (numberTarget_font.unit_type > 0)
                     {
                         if (numberTarget_font.unit_type == 2) unitStr = unitStr.ToUpper();
@@ -4078,15 +4106,16 @@ namespace Watch_Face_Editor
         /// <param name="icon_index">Номер иконки погоды</param>
         /// <param name="BBorder">Рисовать рамку по координатам, вокруг элементов с выравниванием</param>
         /// <param name="showTemperature">Показывать температуру</param>
-        private void DrawWeather(Graphics gPanel, hmUI_widget_IMG_LEVEL images, 
-            hmUI_widget_IMG_NUMBER number, hmUI_widget_IMG_NUMBER numberMin, hmUI_widget_IMG_NUMBER textMin_rotation, Text_Circle textMin_circle, 
-            hmUI_widget_IMG_NUMBER numberMax, hmUI_widget_IMG_NUMBER textMax_rotation, Text_Circle textMax_circle, hmUI_widget_TEXT cityName, 
-            hmUI_widget_IMG icon, int value, int valueMin, int valueMax, int value_lenght,
+        private void DrawWeather(Graphics gPanel, hmUI_widget_IMG_LEVEL images, hmUI_widget_IMG_NUMBER number, hmUI_widget_TEXT number_font, 
+            hmUI_widget_IMG_NUMBER numberMin, hmUI_widget_TEXT numberMin_font, hmUI_widget_IMG_NUMBER textMin_rotation, Text_Circle textMin_circle, 
+            hmUI_widget_IMG_NUMBER numberMax, hmUI_widget_TEXT numberMax_font, hmUI_widget_IMG_NUMBER textMax_rotation, Text_Circle textMax_circle, 
+            hmUI_widget_TEXT cityName, hmUI_widget_IMG icon, int value, int valueMin, int valueMax, int value_lenght,
             int icon_index, bool BBorder, bool showTemperature, bool showCentrHend)
         {
             Bitmap src = new Bitmap(1, 1);
+            string unit = "°";
 
-            for (int index = 1; index <= 15; index++)
+            for (int index = 1; index <= 25; index++)
             {
                 if (images != null && images.img_First != null && images.img_First.Length > 0 &&
                     index == images.position && images.visible)
@@ -4151,6 +4180,72 @@ namespace Watch_Face_Editor
                     }
                 }
 
+                if (number_font != null && index == number_font.position && number_font.visible)
+                {
+                    int x = number_font.x;
+                    int y = number_font.y;
+                    int h = number_font.h;
+                    int w = number_font.w;
+
+                    int size = number_font.text_size;
+                    int space_h = number_font.char_space;
+                    int space_v = number_font.line_space;
+
+                    Color color = StringToColor(number_font.color);
+                    //int align_h = AlignmentToInt(number_font.align_h);
+                    //int align_v = AlignmentVerticalToInt(number_font.align_v);
+                    string align_h = number_font.align_h;
+                    string align_v = number_font.align_v;
+                    string text_style = number_font.text_style;
+                    string valueStr = value.ToString();
+                    string unitStr = unit;
+                    //if (number_font.padding) valueStr = valueStr.PadLeft(value_lenght, '0');
+                    if (number_font.unit_type > 0)
+                    {
+                        if (number_font.unit_type == 2) unitStr = unitStr.ToUpper();
+                        valueStr += unitStr;
+                    }
+                    if (!showTemperature) valueStr = "--";
+
+                    if (number_font.centreHorizontally)
+                    {
+                        x = (SelectedModel.background.w - w) / 2;
+                        align_h = "CENTER_H";
+                    }
+                    if (number_font.centreVertically)
+                    {
+                        y = (SelectedModel.background.h - h) / 2;
+                        align_v = "CENTER_V";
+                    }
+
+                    if (number_font.font != null && number_font.font.Length > 3 && FontsList.ContainsKey(number_font.font))
+                    {
+                        string font_fileName = FontsList[number_font.font];
+                        //string font_fileName = ProjectDir + @"\assets\fonts\" + number_font.font;
+                        if (SelectedModel.versionOS >= 2 && File.Exists(font_fileName))
+                        {
+                            Font drawFont = null;
+                            using (System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection())
+                            {
+                                fonts.AddFontFile(font_fileName);
+                                drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+                            }
+
+                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                            align_h, align_v, text_style, BBorder);
+                        }
+                        else
+                        {
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                        }
+
+                    }
+                    else
+                    {
+                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                    }
+                }
+
                 if (numberMin != null && numberMin.img_First != null && numberMin.img_First.Length > 0 &&
                     index == numberMin.position && numberMin.visible)
                 {
@@ -4192,6 +4287,72 @@ namespace Watch_Face_Editor
                         src = OpenFileStream(ListImagesFullName[imageIndex]);
                         gPanel.DrawImage(src, x, y);
                         //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                    }
+                }
+
+                if (numberMin_font != null && index == numberMin_font.position && numberMin_font.visible)
+                {
+                    int x = numberMin_font.x;
+                    int y = numberMin_font.y;
+                    int h = numberMin_font.h;
+                    int w = numberMin_font.w;
+
+                    int size = numberMin_font.text_size;
+                    int space_h = numberMin_font.char_space;
+                    int space_v = numberMin_font.line_space;
+
+                    Color color = StringToColor(numberMin_font.color);
+                    //int align_h = AlignmentToInt(numberMin_font.align_h);
+                    //int align_v = AlignmentVerticalToInt(numberMin_font.align_v);
+                    string align_h = numberMin_font.align_h;
+                    string align_v = numberMin_font.align_v;
+                    string text_style = numberMin_font.text_style;
+                    string valueStr = valueMin.ToString();
+                    string unitStr = unit;
+                    //if (numberMin_font.padding) valueStr = valueStr.PadLeft(value_lenght, '0');
+                    if (numberMin_font.unit_type > 0)
+                    {
+                        if (numberMin_font.unit_type == 2) unitStr = unitStr.ToUpper();
+                        valueStr += unitStr;
+                    }
+                    if (!showTemperature) valueStr = "--";
+
+                    if (numberMin_font.centreHorizontally)
+                    {
+                        x = (SelectedModel.background.w - w) / 2;
+                        align_h = "CENTER_H";
+                    }
+                    if (numberMin_font.centreVertically)
+                    {
+                        y = (SelectedModel.background.h - h) / 2;
+                        align_v = "CENTER_V";
+                    }
+
+                    if (numberMin_font.font != null && numberMin_font.font.Length > 3 && FontsList.ContainsKey(numberMin_font.font))
+                    {
+                        string font_fileName = FontsList[numberMin_font.font];
+                        //string font_fileName = ProjectDir + @"\assets\fonts\" + numberMin_font.font;
+                        if (SelectedModel.versionOS >= 2 && File.Exists(font_fileName))
+                        {
+                            Font drawFont = null;
+                            using (System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection())
+                            {
+                                fonts.AddFontFile(font_fileName);
+                                drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+                            }
+
+                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                            align_h, align_v, text_style, BBorder);
+                        }
+                        else
+                        {
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                        }
+
+                    }
+                    else
+                    {
+                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
                     }
                 }
 
@@ -4294,6 +4455,72 @@ namespace Watch_Face_Editor
                         src = OpenFileStream(ListImagesFullName[imageIndex]);
                         gPanel.DrawImage(src, x, y);
                         //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                    }
+                }
+
+                if (numberMax_font != null && index == numberMax_font.position && numberMax_font.visible)
+                {
+                    int x = numberMax_font.x;
+                    int y = numberMax_font.y;
+                    int h = numberMax_font.h;
+                    int w = numberMax_font.w;
+
+                    int size = numberMax_font.text_size;
+                    int space_h = numberMax_font.char_space;
+                    int space_v = numberMax_font.line_space;
+
+                    Color color = StringToColor(numberMax_font.color);
+                    //int align_h = AlignmentToInt(numberMax_font.align_h);
+                    //int align_v = AlignmentVerticalToInt(numberMax_font.align_v);
+                    string align_h = numberMax_font.align_h;
+                    string align_v = numberMax_font.align_v;
+                    string text_style = numberMax_font.text_style;
+                    string valueStr = valueMax.ToString();
+                    string unitStr = unit;
+                    //if (numberMax_font.padding) valueStr = valueStr.PadLeft(value_lenght, '0');
+                    if (numberMax_font.unit_type > 0)
+                    {
+                        if (numberMax_font.unit_type == 2) unitStr = unitStr.ToUpper();
+                        valueStr += unitStr;
+                    }
+                    if (!showTemperature) valueStr = "--";
+
+                    if (numberMax_font.centreHorizontally)
+                    {
+                        x = (SelectedModel.background.w - w) / 2;
+                        align_h = "CENTER_H";
+                    }
+                    if (numberMax_font.centreVertically)
+                    {
+                        y = (SelectedModel.background.h - h) / 2;
+                        align_v = "CENTER_V";
+                    }
+
+                    if (numberMax_font.font != null && numberMax_font.font.Length > 3 && FontsList.ContainsKey(numberMax_font.font))
+                    {
+                        string font_fileName = FontsList[numberMax_font.font];
+                        //string font_fileName = ProjectDir + @"\assets\fonts\" + numberMax_font.font;
+                        if (SelectedModel.versionOS >= 2 && File.Exists(font_fileName))
+                        {
+                            Font drawFont = null;
+                            using (System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection())
+                            {
+                                fonts.AddFontFile(font_fileName);
+                                drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+                            }
+
+                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                            align_h, align_v, text_style, BBorder);
+                        }
+                        else
+                        {
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                        }
+
+                    }
+                    else
+                    {
+                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
                     }
                 }
 
@@ -4804,6 +5031,7 @@ namespace Watch_Face_Editor
         /// <param name="images">Параметры для изображения</param>
         /// <param name="segments">Параметры для сегментов</param>
         /// <param name="number">Параметры цифрового значения</param>
+        /// <param name="number_font">Параметры отображения данных шрифтом</param>
         /// <param name="pointer">Параметры для стрелочного указателя</param>
         /// <param name="icon">Параметры для иконки</param>
         /// <param name="value">Значение показателя</param>
@@ -4817,7 +5045,7 @@ namespace Watch_Face_Editor
         /// <param name="showProgressArea">Подсвечивать круговую шкалу при наличии фонового изображения</param>
         /// <param name="showCentrHend">Подсвечивать центр стрелки</param>
         private void DrawWind(Graphics gPanel, hmUI_widget_IMG_LEVEL images, hmUI_widget_IMG_PROGRESS segments,
-            hmUI_widget_IMG_NUMBER number, hmUI_widget_IMG_POINTER pointer, hmUI_widget_IMG_LEVEL img_direction,
+            hmUI_widget_IMG_NUMBER number, hmUI_widget_TEXT number_font, hmUI_widget_IMG_POINTER pointer, hmUI_widget_IMG_LEVEL img_direction,
             hmUI_widget_IMG icon, float value, int value_lenght, int goal, float progress, int valueImgIndex, 
             int valueSegmentIndex, int valueImgDirectionIndex, bool BBorder, bool showProgressArea, bool showCentrHend)
         {
@@ -4916,6 +5144,71 @@ namespace Watch_Face_Editor
                         src = OpenFileStream(ListImagesFullName[imageIndex]);
                         gPanel.DrawImage(src, x, y);
                         //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                    }
+                }
+
+                if (number_font != null && index == number_font.position && number_font.visible)
+                {
+                    int x = number_font.x;
+                    int y = number_font.y;
+                    int h = number_font.h;
+                    int w = number_font.w;
+
+                    int size = number_font.text_size;
+                    int space_h = number_font.char_space;
+                    int space_v = number_font.line_space;
+
+                    Color color = StringToColor(number_font.color);
+                    //int align_h = AlignmentToInt(number_font.align_h);
+                    //int align_v = AlignmentVerticalToInt(number_font.align_v);
+                    string align_h = number_font.align_h;
+                    string align_v = number_font.align_v;
+                    string text_style = number_font.text_style;
+                    string valueStr = value.ToString();
+                    //string unitStr = "";
+                    //if (number_font.padding) valueStr = valueStr.PadLeft(value_lenght, '0');
+                    //if (number_font.unit_type > 0)
+                    //{
+                    //    if (number_font.unit_type == 2) unitStr = unitStr.ToUpper();
+                    //    valueStr += unitStr;
+                    //}
+
+                    if (number_font.centreHorizontally)
+                    {
+                        x = (SelectedModel.background.w - w) / 2;
+                        align_h = "CENTER_H";
+                    }
+                    if (number_font.centreVertically)
+                    {
+                        y = (SelectedModel.background.h - h) / 2;
+                        align_v = "CENTER_V";
+                    }
+
+                    if (number_font.font != null && number_font.font.Length > 3 && FontsList.ContainsKey(number_font.font))
+                    {
+                        string font_fileName = FontsList[number_font.font];
+                        //string font_fileName = ProjectDir + @"\assets\fonts\" + number_font.font;
+                        if (SelectedModel.versionOS >= 2 && File.Exists(font_fileName))
+                        {
+                            Font drawFont = null;
+                            using (System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection())
+                            {
+                                fonts.AddFontFile(font_fileName);
+                                drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+                            }
+
+                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                            align_h, align_v, text_style, BBorder);
+                        }
+                        else
+                        {
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                        }
+
+                    }
+                    else
+                    {
+                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
                     }
                 }
 

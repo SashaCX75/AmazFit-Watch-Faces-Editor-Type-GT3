@@ -3165,11 +3165,12 @@ namespace Watch_Face_Editor
                             if (Battery.Number_Font.font != null && Battery.Number_Font.font.Length > 3)
                             {
                                 string cacheName = "// FontName: " + Battery.Number_Font.font + "; FontSize: " + Battery.Number_Font.text_size.ToString();
-                                if (Battery.Number_Font.unit_type > 0)
-                                    cacheName = "// FontName: " + Battery.Number_Font.font + "; FontSize: " + Battery.Number_Font.text_size.ToString() + "; Cache: full";
+                                //if (Battery.Number_Font.unit_type > 0)
+                                //    cacheName = "// FontName: " + Battery.Number_Font.font + "; FontSize: " + Battery.Number_Font.text_size.ToString() + "; Cache: full";
                                 if (fonts_cache.IndexOf(cacheName) < 0)
                                 {
-                                    bool fullCache = Battery.Number_Font.unit_type > 0;
+                                    //bool fullCache = Battery.Number_Font.unit_type > 0;
+                                    bool fullCache = false;
                                     string fontCacheOptions = TEXT_Cache_Options(Battery.Number_Font, fullCache);
                                     if (fontCacheOptions.Length > 5)
                                     {
@@ -5332,11 +5333,12 @@ namespace Watch_Face_Editor
                             if (Stand.Number_Font.font != null && Stand.Number_Font.font.Length > 3)
                             {
                                 string cacheName = "// FontName: " + Stand.Number_Font.font + "; FontSize: " + Stand.Number_Font.text_size.ToString();
-                                if (Stand.Number_Font.unit_type > 0)
-                                    cacheName = "// FontName: " + Stand.Number_Font.font + "; FontSize: " + Stand.Number_Font.text_size.ToString() + "; Cache: full";
+                                //if (Stand.Number_Font.unit_type > 0)
+                                //    cacheName = "// FontName: " + Stand.Number_Font.font + "; FontSize: " + Stand.Number_Font.text_size.ToString() + "; Cache: full";
                                 if (fonts_cache.IndexOf(cacheName) < 0)
                                 {
-                                    bool fullCache = Stand.Number_Font.unit_type > 0;
+                                    //bool fullCache = Stand.Number_Font.unit_type > 0;
+                                    bool fullCache = false;
                                     string fontCacheOptions = TEXT_Cache_Options(Stand.Number_Font, fullCache);
                                     if (fontCacheOptions.Length > 5)
                                     {
@@ -5395,11 +5397,12 @@ namespace Watch_Face_Editor
                             if (Stand.Number_Target_Font.font != null && Stand.Number_Target_Font.font.Length > 3)
                             {
                                 string cacheName = "// FontName: " + Stand.Number_Target_Font.font + "; FontSize: " + Stand.Number_Target_Font.text_size.ToString();
-                                if (Stand.Number_Target_Font.unit_type > 0)
-                                    cacheName = "// FontName: " + Stand.Number_Target_Font.font + "; FontSize: " + Stand.Number_Target_Font.text_size.ToString() + "; Cache: full";
+                                //if (Stand.Number_Target_Font.unit_type > 0)
+                                //    cacheName = "// FontName: " + Stand.Number_Target_Font.font + "; FontSize: " + Stand.Number_Target_Font.text_size.ToString() + "; Cache: full";
                                 if (fonts_cache.IndexOf(cacheName) < 0)
                                 {
-                                    bool fullCache = Stand.Number_Target_Font.unit_type > 0;
+                                    //bool fullCache = Stand.Number_Target_Font.unit_type > 0;
+                                    bool fullCache = false;
                                     string fontCacheOptions = TEXT_Cache_Options(Stand.Number_Target_Font, fullCache);
                                     if (fontCacheOptions.Length > 5)
                                     {
@@ -6062,11 +6065,12 @@ namespace Watch_Face_Editor
                             if (SpO2.Number_Font.font != null && SpO2.Number_Font.font.Length > 3)
                             {
                                 string cacheName = "// FontName: " + SpO2.Number_Font.font + "; FontSize: " + SpO2.Number_Font.text_size.ToString();
-                                if (SpO2.Number_Font.unit_type > 0)
-                                    cacheName = "// FontName: " + SpO2.Number_Font.font + "; FontSize: " + SpO2.Number_Font.text_size.ToString() + "; Cache: full";
+                                //if (SpO2.Number_Font.unit_type > 0)
+                                //    cacheName = "// FontName: " + SpO2.Number_Font.font + "; FontSize: " + SpO2.Number_Font.text_size.ToString() + "; Cache: full";
                                 if (fonts_cache.IndexOf(cacheName) < 0)
                                 {
-                                    bool fullCache = SpO2.Number_Font.unit_type > 0;
+                                    //bool fullCache = SpO2.Number_Font.unit_type > 0;
+                                    bool fullCache = false;
                                     string fontCacheOptions = TEXT_Cache_Options(SpO2.Number_Font, fullCache);
                                     if (fontCacheOptions.Length > 5)
                                     {
@@ -6207,11 +6211,12 @@ namespace Watch_Face_Editor
                             if (Stress.Number_Font.font != null && Stress.Number_Font.font.Length > 3)
                             {
                                 string cacheName = "// FontName: " + Stress.Number_Font.font + "; FontSize: " + Stress.Number_Font.text_size.ToString();
-                                if (Stress.Number_Font.unit_type > 0)
-                                    cacheName = "// FontName: " + Stress.Number_Font.font + "; FontSize: " + Stress.Number_Font.text_size.ToString() + "; Cache: full";
+                                //if (Stress.Number_Font.unit_type > 0)
+                                //    cacheName = "// FontName: " + Stress.Number_Font.font + "; FontSize: " + Stress.Number_Font.text_size.ToString() + "; Cache: full";
                                 if (fonts_cache.IndexOf(cacheName) < 0)
                                 {
-                                    bool fullCache = Stress.Number_Font.unit_type > 0;
+                                    //bool fullCache = Stress.Number_Font.unit_type > 0;
+                                    bool fullCache = false;
                                     string fontCacheOptions = TEXT_Cache_Options(Stress.Number_Font, fullCache);
                                     if (fontCacheOptions.Length > 5)
                                     {
@@ -6696,11 +6701,15 @@ namespace Watch_Face_Editor
                     ElementWeather Weather = (ElementWeather)element;
                     int numberMinPosition = 99;
                     int numberMaxPosition = 99;
-                    int cityNamePosition = 99;
+                    int cityNamePosition = 99; 
+                    int numberMinFontPosition = 99;
+                    int numberMaxFontPosition = 99;
 
                     string numberMinOptions = "";
                     string numberMaxOptions = "";
                     string cityNameOptions = "";
+                    string numberMinFontOptions = "";
+                    string numberMaxFontOptions = "";
 
                     string numberMinOptions_separator = "";
                     string numberMaxOptions_separator = "";
@@ -6722,6 +6731,7 @@ namespace Watch_Face_Editor
                         hmUI_widget_IMG_LEVEL img_images = Weather.Images;
                         imagesOptions = IMG_IMAGES_Options(img_images, "WEATHER_CURRENT", show_level);
                     }
+
                     if (Weather.Number != null && Weather.Number.visible)
                     {
                         numberPosition = Weather.Number.position;
@@ -6729,6 +6739,12 @@ namespace Watch_Face_Editor
                         numberOptions = IMG_NUMBER_Options(img_number, "WEATHER_CURRENT", show_level);
 
                         numberOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (Weather.Number_Font != null && Weather.Number_Font.visible)
+                    {
+                        numberFontPosition = Weather.Number_Font.position;
+                        hmUI_widget_TEXT text = Weather.Number_Font;
+                        numberFontOptions = TEXT_FONT_Options(text, "WEATHER_CURRENT", show_level);
                     }
 
                     if (Weather.Number_Min != null && Weather.Number_Min.visible)
@@ -6738,6 +6754,12 @@ namespace Watch_Face_Editor
                         numberMinOptions = IMG_NUMBER_Options(img_number, "WEATHER_LOW", show_level);
 
                         numberMinOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (Weather.Number_Min_Font != null && Weather.Number_Min_Font.visible)
+                    {
+                        numberMinFontPosition = Weather.Number_Min_Font.position;
+                        hmUI_widget_TEXT text = Weather.Number_Min_Font;
+                        numberMinFontOptions = TEXT_FONT_Options(text, "WEATHER_LOW", show_level);
                     }
                     if (Weather.Text_Min_rotation != null && Weather.Text_Min_rotation.visible)
                     {
@@ -6761,6 +6783,12 @@ namespace Watch_Face_Editor
                         numberMaxOptions = IMG_NUMBER_Options(img_number, "WEATHER_HIGH", show_level);
 
                         numberMaxOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (Weather.Number_Max_Font != null && Weather.Number_Max_Font.visible)
+                    {
+                        numberMaxFontPosition = Weather.Number_Max_Font.position;
+                        hmUI_widget_TEXT text = Weather.Number_Max_Font;
+                        numberMaxFontOptions = TEXT_FONT_Options(text, "WEATHER_HIGH", show_level);
                     }
                     if (Weather.Text_Max_rotation != null && Weather.Text_Max_rotation.visible)
                     {
@@ -6791,7 +6819,7 @@ namespace Watch_Face_Editor
                         iconOptions = IMG_Options(img_icon, show_level);
                     }
 
-                    for (int index = 1; index <= 10; index++)
+                    for (int index = 1; index <= 25; index++)
                     {
                         // Images
                         if (index == imagesPosition && imagesOptions.Length > 5)
@@ -6822,6 +6850,35 @@ namespace Watch_Face_Editor
                             }
                         }
 
+                        // Number_Font
+                        if (index == numberFontPosition && numberFontOptions.Length > 5)
+                        {
+                            if (Weather.Number_Font.font != null && Weather.Number_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + Weather.Number_Font.font + "; FontSize: " + Weather.Number_Font.text_size.ToString();
+                                //if (Weather.Number_Font.unit_type > 0)
+                                //    cacheName = "// FontName: " + Weather.Number_Font.font + "; FontSize: " + Weather.Number_Font.text_size.ToString() + "; Cache: full";
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    //bool fullCache = Weather.Number_Font.unit_type > 0;
+                                    bool fullCache = false;
+                                    string fontCacheOptions = TEXT_Cache_Options(Weather.Number_Font, fullCache);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "temperature_current_text_font = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "temperature_current_text_font = hmUI.createWidget(hmUI.widget.TEXT_FONT, {" +
+                                    numberFontOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
                         // Number min
                         if (index == numberMinPosition && numberMinOptions.Length > 5)
                         {
@@ -6841,6 +6898,35 @@ namespace Watch_Face_Editor
                             }
                         }
 
+                        // Number_Min_Font
+                        if (index == numberMinFontPosition && numberMinFontOptions.Length > 5)
+                        {
+                            if (Weather.Number_Min_Font.font != null && Weather.Number_Min_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + Weather.Number_Min_Font.font + "; FontSize: " + Weather.Number_Min_Font.text_size.ToString();
+                                //if (Weather.Number_Min_Font.unit_type > 0)
+                                //    cacheName = "// FontName: " + Weather.Number_Min_Font.font + "; FontSize: " + Weather.Number_Min_Font.text_size.ToString() + "; Cache: full";
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    //bool fullCache = Weather.Number_Min_Font.unit_type > 0;
+                                    bool fullCache = false;
+                                    string fontCacheOptions = TEXT_Cache_Options(Weather.Number_Min_Font, fullCache);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "temperature_low_text_font = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "temperature_low_text_font = hmUI.createWidget(hmUI.widget.TEXT_FONT, {" +
+                                    numberMinFontOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
                         // Number max
                         if (index == numberMaxPosition && numberMaxOptions.Length > 5)
                         {
@@ -6858,6 +6944,35 @@ namespace Watch_Face_Editor
                                     optionNameStart + "temperature_high_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberMaxOptions_separator + TabInString(6) + "});" + Environment.NewLine;
                             }
+                        }
+
+                        // Number_Max_Font
+                        if (index == numberMaxFontPosition && numberMaxFontOptions.Length > 5)
+                        {
+                            if (Weather.Number_Max_Font.font != null && Weather.Number_Max_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + Weather.Number_Max_Font.font + "; FontSize: " + Weather.Number_Max_Font.text_size.ToString();
+                                //if (Weather.Number_Max_Font.unit_type > 0)
+                                //    cacheName = "// FontName: " + Weather.Number_Max_Font.font + "; FontSize: " + Weather.Number_Max_Font.text_size.ToString() + "; Cache: full";
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    //bool fullCache = Weather.Number_Max_Font.unit_type > 0;
+                                    bool fullCache = false;
+                                    string fontCacheOptions = TEXT_Cache_Options(Weather.Number_Max_Font, fullCache);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "temperature_high_text_font = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "temperature_high_text_font = hmUI.createWidget(hmUI.widget.TEXT_FONT, {" +
+                                    numberMaxFontOptions + TabInString(6) + "});" + Environment.NewLine;
                         }
 
                         // Text_Rotate min
@@ -6977,6 +7092,12 @@ namespace Watch_Face_Editor
 
                         numberOptions_separator = IMG_Separator_Options(img_number, show_level);
                     }
+                    if (UVIndex.Number_Font != null && UVIndex.Number_Font.visible)
+                    {
+                        numberFontPosition = UVIndex.Number_Font.position;
+                        hmUI_widget_TEXT text = UVIndex.Number_Font;
+                        numberFontOptions = TEXT_FONT_Options(text, "UVI", show_level);
+                    }
                     if (UVIndex.Pointer != null && UVIndex.Pointer.visible)
                     {
                         pointerPosition = UVIndex.Pointer.position;
@@ -6991,7 +7112,7 @@ namespace Watch_Face_Editor
                         iconOptions = IMG_Options(img_icon, show_level);
                     }
 
-                    for (int index = 1; index <= 10; index++)
+                    for (int index = 1; index <= 20; index++)
                     {
                         // Images
                         if (index == imagesPosition && imagesOptions.Length > 5)
@@ -7030,6 +7151,35 @@ namespace Watch_Face_Editor
                                     optionNameStart + "uvi_text_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
                             }
+                        }
+
+                        // Number_Font
+                        if (index == numberFontPosition && numberFontOptions.Length > 5)
+                        {
+                            if (UVIndex.Number_Font.font != null && UVIndex.Number_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + UVIndex.Number_Font.font + "; FontSize: " + UVIndex.Number_Font.text_size.ToString();
+                                //if (UVIndex.Number_Font.unit_type > 0)
+                                //    cacheName = "// FontName: " + UVIndex.Number_Font.font + "; FontSize: " + UVIndex.Number_Font.text_size.ToString() + "; Cache: full";
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    //bool fullCache = UVIndex.Number_Font.unit_type > 0;
+                                    bool fullCache = false;
+                                    string fontCacheOptions = TEXT_Cache_Options(UVIndex.Number_Font, fullCache);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "uvi_current_text_font = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "uvi_current_text_font = hmUI.createWidget(hmUI.widget.TEXT_FONT, {" +
+                                    numberFontOptions + TabInString(6) + "});" + Environment.NewLine;
                         }
 
                         // Pointer
@@ -7082,6 +7232,12 @@ namespace Watch_Face_Editor
 
                         numberOptions_separator = IMG_Separator_Options(img_number, show_level);
                     }
+                    if (Humidity.Number_Font != null && Humidity.Number_Font.visible)
+                    {
+                        numberFontPosition = Humidity.Number_Font.position;
+                        hmUI_widget_TEXT text = Humidity.Number_Font;
+                        numberFontOptions = TEXT_FONT_Options(text, "HUMIDITY", show_level);
+                    }
                     if (Humidity.Pointer != null && Humidity.Pointer.visible)
                     {
                         pointerPosition = Humidity.Pointer.position;
@@ -7096,7 +7252,7 @@ namespace Watch_Face_Editor
                         iconOptions = IMG_Options(img_icon, show_level);
                     }
 
-                    for (int index = 1; index <= 10; index++)
+                    for (int index = 1; index <= 20; index++)
                     {
                         // Images
                         if (index == imagesPosition && imagesOptions.Length > 5)
@@ -7137,6 +7293,35 @@ namespace Watch_Face_Editor
                             }
                         }
 
+                        // Number_Font
+                        if (index == numberFontPosition && numberFontOptions.Length > 5)
+                        {
+                            if (Humidity.Number_Font.font != null && Humidity.Number_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + Humidity.Number_Font.font + "; FontSize: " + Humidity.Number_Font.text_size.ToString();
+                                //if (Humidity.Number_Font.unit_type > 0)
+                                //    cacheName = "// FontName: " + Humidity.Number_Font.font + "; FontSize: " + Humidity.Number_Font.text_size.ToString() + "; Cache: full";
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    //bool fullCache = Humidity.Number_Font.unit_type > 0;
+                                    bool fullCache = false;
+                                    string fontCacheOptions = TEXT_Cache_Options(Humidity.Number_Font, fullCache);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "humidity_current_text_font = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "humidity_current_text_font = hmUI.createWidget(hmUI.widget.TEXT_FONT, {" +
+                                    numberFontOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
                         // Pointer
                         if (index == pointerPosition && pointerOptions.Length > 5)
                         {
@@ -7175,6 +7360,28 @@ namespace Watch_Face_Editor
 
                         numberOptions_separator = IMG_Separator_Options(img_number, show_level);
                     }
+                    if (Altimeter.Number_Font != null && Altimeter.Number_Font.visible)
+                    {
+                        numberFontPosition = Altimeter.Number_Font.position;
+                        hmUI_widget_TEXT text = Altimeter.Number_Font;
+                        numberFontOptions = TEXT_FONT_Options(text, "ALTIMETER", show_level);
+                    }
+
+                    if (Altimeter.Number_Target != null && Altimeter.Number_Target.visible)
+                    {
+                        numberTargetPosition = Altimeter.Number_Target.position;
+                        hmUI_widget_IMG_NUMBER img_number = Altimeter.Number_Target;
+                        numberTargetOptions = IMG_NUMBER_Options(img_number, "ALTITUDE", show_level);
+
+                        numberTargetOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (Altimeter.Number_Target_Font != null && Altimeter.Number_Target_Font.visible)
+                    {
+                        numberTargetFontPosition = Altimeter.Number_Target_Font.position;
+                        hmUI_widget_TEXT text = Altimeter.Number_Target_Font;
+                        numberTargetFontOptions = TEXT_FONT_Options(text, "ALTITUDE", show_level);
+                    }
+
                     if (Altimeter.Pointer != null && Altimeter.Pointer.visible)
                     {
                         pointerPosition = Altimeter.Pointer.position;
@@ -7208,6 +7415,81 @@ namespace Watch_Face_Editor
                                     optionNameStart + "altimeter_text_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
                             }
+                        }
+
+                        // Number_Font
+                        if (index == numberFontPosition && numberFontOptions.Length > 5)
+                        {
+                            if (Altimeter.Number_Font.font != null && Altimeter.Number_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + Altimeter.Number_Font.font + "; FontSize: " + Altimeter.Number_Font.text_size.ToString();
+                                if (Altimeter.Number_Font.unit_type > 0)
+                                    cacheName = "// FontName: " + Altimeter.Number_Font.font + "; FontSize: " + Altimeter.Number_Font.text_size.ToString() + "; Cache: full";
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    bool fullCache = Altimeter.Number_Font.unit_type > 0;
+                                    string fontCacheOptions = TEXT_Cache_Options(Altimeter.Number_Font, fullCache);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "altimeter_current_text_font = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "altimeter_current_text_font = hmUI.createWidget(hmUI.widget.TEXT_FONT, {" +
+                                    numberFontOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Number_Target
+                        if (index == numberTargetPosition && numberTargetOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "altitude_target_text_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "altitude_target_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberTargetOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberTargetOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "altitude_target_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "altitude_target_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberTargetOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Number_Target_Font
+                        if (index == numberTargetFontPosition && numberTargetFontOptions.Length > 5)
+                        {
+                            if (Altimeter.Number_Target_Font.font != null && Altimeter.Number_Target_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + Altimeter.Number_Target_Font.font + "; FontSize: " + Altimeter.Number_Target_Font.text_size.ToString();
+                                if (Altimeter.Number_Target_Font.unit_type > 0)
+                                    cacheName = "// FontName: " + Altimeter.Number_Target_Font.font + "; FontSize: " + Altimeter.Number_Target_Font.text_size.ToString() + "; Cache: full";
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    bool fullCache = Altimeter.Number_Target_Font.unit_type > 0;
+                                    string fontCacheOptions = TEXT_Cache_Options(Altimeter.Number_Target_Font, fullCache);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "altitude_target_text_font = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "altitude_target_text_font = hmUI.createWidget(hmUI.widget.TEXT_FONT, {" +
+                                    numberTargetFontOptions + TabInString(6) + "});" + Environment.NewLine;
                         }
 
                         // Pointer
@@ -7493,6 +7775,12 @@ namespace Watch_Face_Editor
 
                         numberOptions_separator = IMG_Separator_Options(img_number, show_level);
                     }
+                    if (Wind.Number_Font != null && Wind.Number_Font.visible)
+                    {
+                        numberFontPosition = Wind.Number_Font.position;
+                        hmUI_widget_TEXT text = Wind.Number_Font;
+                        numberFontOptions = TEXT_FONT_Options(text, "WIND", show_level);
+                    }
                     if (Wind.Pointer != null && Wind.Pointer.visible)
                     {
                         pointerPosition = Wind.Pointer.position;
@@ -7514,7 +7802,7 @@ namespace Watch_Face_Editor
                         iconOptions = IMG_Options(img_icon, show_level);
                     }
 
-                    for (int index = 1; index <= 10; index++)
+                    for (int index = 1; index <= 20; index++)
                     {
                         // Images
                         if (index == imagesPosition && imagesOptions.Length > 5)
@@ -7553,6 +7841,35 @@ namespace Watch_Face_Editor
                                     optionNameStart + "wind_text_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
                             }
+                        }
+
+                        // Number_Font
+                        if (index == numberFontPosition && numberFontOptions.Length > 5)
+                        {
+                            if (Wind.Number_Font.font != null && Wind.Number_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + Wind.Number_Font.font + "; FontSize: " + Wind.Number_Font.text_size.ToString();
+                                //if (Wind.Number_Font.unit_type > 0)
+                                //    cacheName = "// FontName: " + Wind.Number_Font.font + "; FontSize: " + Wind.Number_Font.text_size.ToString() + "; Cache: full";
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    //bool fullCache = Wind.Number_Font.unit_type > 0;
+                                    bool fullCache = false;
+                                    string fontCacheOptions = TEXT_Cache_Options(Wind.Number_Font, fullCache);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "wind_current_text_font = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "wind_current_text_font = hmUI.createWidget(hmUI.widget.TEXT_FONT, {" +
+                                    numberFontOptions + TabInString(6) + "});" + Environment.NewLine;
                         }
 
                         // Pointer
@@ -11630,6 +11947,7 @@ namespace Watch_Face_Editor
                 options += TabInString(7 + tabOffset) + "y: " + img_pointer.pos_y.ToString() + "," + Environment.NewLine;
                 options += TabInString(7 + tabOffset) + "start_angle: " + img_pointer.start_angle.ToString() + "," + Environment.NewLine;
                 options += TabInString(7 + tabOffset) + "end_angle: " + img_pointer.end_angle.ToString() + "," + Environment.NewLine;
+                options += TabInString(7 + tabOffset) + "invalid_visible: false," + Environment.NewLine;
 
                 if (img_pointer.scale != null && img_pointer.scale.Length > 0)
                 {
@@ -16707,6 +17025,11 @@ namespace Watch_Face_Editor
                         if (type == "DISTANCE")
                         {
                             ElementDistance distance = (ElementDistance)elementsList.Find(e => e.GetType().Name == "ElementDistance");
+                            if (distance == null)
+                            {
+                                elementsList.Add(new ElementDistance());
+                                distance = (ElementDistance)elementsList.Find(e => e.GetType().Name == "ElementDistance");
+                            }
                             if (distance != null && distance.Number != null)
                             {
                                 int offset = 1;
@@ -16975,8 +17298,11 @@ namespace Watch_Face_Editor
                                 int offset = 1;
                                 if (weather.Images != null) offset++;
                                 if (weather.Number != null) offset++;
+                                if (weather.Number_Font != null) offset++;
                                 if (weather.Number_Min != null) offset++;
+                                if (weather.Number_Min_Font != null) offset++;
                                 if (weather.Number_Max != null) offset++;
+                                if (weather.Number_Max_Font != null) offset++;
                                 if (weather.Text_Min_rotation != null) offset++;
                                 if (weather.Text_Min_circle != null) offset++;
                                 if (weather.Text_Max_rotation != null) offset++;
@@ -17072,6 +17398,7 @@ namespace Watch_Face_Editor
                                 if (uv_index.Images != null) offset++;
                                 if (uv_index.Segments != null) offset++;
                                 if (uv_index.Number != null) offset++;
+                                if (uv_index.Number_Font != null) offset++;
                                 if (uv_index.Pointer != null) offset++;
 
                                 if (uv_index.Icon == null)
@@ -17121,6 +17448,7 @@ namespace Watch_Face_Editor
                                 if (humidity.Images != null) offset++;
                                 if (humidity.Segments != null) offset++;
                                 if (humidity.Number != null) offset++;
+                                if (humidity.Number_Font != null) offset++;
                                 if (humidity.Pointer != null) offset++;
 
                                 if (humidity.Icon == null)
@@ -17314,6 +17642,7 @@ namespace Watch_Face_Editor
                                 if (wind.Images != null) offset++;
                                 if (wind.Segments != null) offset++;
                                 if (wind.Number != null) offset++;
+                                if (wind.Number_Font != null) offset++;
                                 if (wind.Pointer != null) offset++;
                                 if (wind.Direction != null) offset++;
 
@@ -18032,8 +18361,11 @@ namespace Watch_Face_Editor
                                 int offset = 1;
                                 //if (weather.Images != null) offset++;
                                 if (weather.Number != null) offset++;
+                                if (weather.Number_Font != null) offset++;
                                 if (weather.Number_Min != null) offset++;
+                                if (weather.Number_Min_Font != null) offset++;
                                 if (weather.Number_Max != null) offset++;
+                                if (weather.Number_Max_Font != null) offset++;
                                 if (weather.Text_Min_rotation != null) offset++;
                                 if (weather.Text_Min_circle != null) offset++;
                                 if (weather.Text_Max_rotation != null) offset++;
@@ -18066,6 +18398,7 @@ namespace Watch_Face_Editor
                                 //if (uv_index.Images != null) offset++;
                                 if (uv_index.Segments != null) offset++;
                                 if (uv_index.Number != null) offset++;
+                                if (uv_index.Number_Font != null) offset++;
                                 if (uv_index.Pointer != null) offset++;
                                 if (uv_index.Icon != null) offset++;
 
@@ -18094,6 +18427,7 @@ namespace Watch_Face_Editor
                                 //if (humidity.Images != null) offset++;
                                 if (humidity.Segments != null) offset++;
                                 if (humidity.Number != null) offset++;
+                                if (humidity.Number_Font != null) offset++;
                                 if (humidity.Pointer != null) offset++;
                                 if (humidity.Icon != null) offset++;
 
@@ -18156,6 +18490,7 @@ namespace Watch_Face_Editor
                                 //if (wind.Images != null) offset++;
                                 if (wind.Segments != null) offset++;
                                 if (wind.Number != null) offset++;
+                                if (wind.Number_Font != null) offset++;
                                 if (wind.Pointer != null) offset++;
                                 if (wind.Direction != null) offset++;
                                 if (wind.Icon != null) offset++;
@@ -18185,6 +18520,7 @@ namespace Watch_Face_Editor
                                 if (wind.Images != null) offset++;
                                 if (wind.Segments != null) offset++;
                                 if (wind.Number != null) offset++;
+                                if (wind.Number_Font != null) offset++;
                                 if (wind.Pointer != null) offset++;
                                 //if (wind.Direction != null) offset++;
                                 if (wind.Icon != null) offset++;
@@ -18560,6 +18896,7 @@ namespace Watch_Face_Editor
                                 if (uv_index.Images != null) offset++;
                                 //if (uv_index.Segments != null) offset++;
                                 if (uv_index.Number != null) offset++;
+                                if (uv_index.Number_Font != null) offset++;
                                 if (uv_index.Pointer != null) offset++;
                                 if (uv_index.Icon != null) offset++;
 
@@ -18587,6 +18924,7 @@ namespace Watch_Face_Editor
                                 if (humidity.Images != null) offset++;
                                 //if (humidity.Segments != null) offset++;
                                 if (humidity.Number != null) offset++;
+                                if (humidity.Number_Font != null) offset++;
                                 if (humidity.Pointer != null) offset++;
                                 if (humidity.Icon != null) offset++;
 
@@ -18647,6 +18985,7 @@ namespace Watch_Face_Editor
                                 if (wind.Images != null) offset++;
                                 //if (wind.Segments != null) offset++;
                                 if (wind.Number != null) offset++;
+                                if (wind.Number_Font != null) offset++;
                                 if (wind.Pointer != null) offset++;
                                 if (wind.Direction != null) offset++;
                                 if (wind.Icon != null) offset++;
@@ -19384,8 +19723,11 @@ namespace Watch_Face_Editor
                                 int offset = 1;
                                 if (weather.Images != null) offset++;
                                 //if (weather.Number != null) offset++;
+                                if (weather.Number_Font != null) offset++;
                                 if (weather.Number_Min != null) offset++;
+                                if (weather.Number_Min_Font != null) offset++;
                                 if (weather.Number_Max != null) offset++;
+                                if (weather.Number_Max_Font != null) offset++;
                                 if (weather.Text_Min_rotation != null) offset++;
                                 if (weather.Text_Min_circle != null) offset++;
                                 if (weather.Text_Max_rotation != null) offset++;
@@ -19424,8 +19766,11 @@ namespace Watch_Face_Editor
                                 int offset = 1;
                                 if (weather.Images != null) offset++;
                                 if (weather.Number != null) offset++;
+                                if (weather.Number_Font != null) offset++;
                                 //if (weather.Number_Min != null) offset++;
+                                if (weather.Number_Min_Font != null) offset++;
                                 if (weather.Number_Max != null) offset++;
+                                if (weather.Number_Max_Font != null) offset++;
                                 if (weather.Text_Min_rotation != null) offset++;
                                 if (weather.Text_Min_circle != null) offset++;
                                 if (weather.Text_Max_rotation != null) offset++;
@@ -19464,8 +19809,11 @@ namespace Watch_Face_Editor
                                 int offset = 1;
                                 if (weather.Images != null) offset++;
                                 if (weather.Number != null) offset++;
+                                if (weather.Number_Font != null) offset++;
                                 if (weather.Number_Min != null) offset++;
+                                if (weather.Number_Min_Font != null) offset++;
                                 //if (weather.Number_Max != null) offset++;
+                                if (weather.Number_Max_Font != null) offset++;
                                 if (weather.Text_Min_rotation != null) offset++;
                                 if (weather.Text_Min_circle != null) offset++;
                                 if (weather.Text_Max_rotation != null) offset++;
@@ -19505,6 +19853,7 @@ namespace Watch_Face_Editor
                                 if (uv_index.Images != null) offset++;
                                 if (uv_index.Segments != null) offset++;
                                 //if (uv_index.Number != null) offset++;
+                                if (uv_index.Number_Font != null) offset++;
                                 if (uv_index.Pointer != null) offset++;
                                 if (uv_index.Icon != null) offset++;
 
@@ -19540,6 +19889,7 @@ namespace Watch_Face_Editor
                                 if (humidity.Images != null) offset++;
                                 if (humidity.Segments != null) offset++;
                                 //if (humidity.Number != null) offset++;
+                                if (humidity.Number_Font != null) offset++;
                                 if (humidity.Pointer != null) offset++;
                                 if (humidity.Icon != null) offset++;
 
@@ -19731,6 +20081,7 @@ namespace Watch_Face_Editor
                                 if (wind.Images != null) offset++;
                                 if (wind.Segments != null) offset++;
                                 //if (wind.Number != null) offset++;
+                                if (wind.Number_Font != null) offset++;
                                 if (wind.Pointer != null) offset++;
                                 if (wind.Direction != null) offset++;
                                 if (wind.Icon != null) offset++;
@@ -20550,43 +20901,6 @@ namespace Watch_Face_Editor
 
 
 
-                        if (textRotate.type == "WEATHER_CURRENT")
-                        {
-                            ElementWeather weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
-                            if (weather == null)
-                            {
-                                elementsList.Add(new ElementWeather());
-                                weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
-                            }
-                            if (weather != null)
-                            {
-                                int offset = 1;
-                                if (weather.Images != null) offset++;
-                                //if (weather.Number != null) offset++;
-                                if (weather.Number_Min != null) offset++;
-                                if (weather.Number_Max != null) offset++;
-                                if (weather.City_Name != null) offset++;
-                                if (weather.Icon != null) offset++;
-
-                                //weather.Text_rotation = new hmUI_widget_IMG_NUMBER();
-                                //weather.Text_rotation.img_First = textRotate.img_First;
-                                //weather.Text_rotation.imageX = textRotate.imageX;
-                                //weather.Text_rotation.imageY = textRotate.imageY;
-                                //weather.Text_rotation.space = textRotate.space;
-                                //weather.Text_rotation.angle = textRotate.angle;
-                                //weather.Text_rotation.zero = textRotate.zero;
-                                //weather.Text_rotation.unit = textRotate.unit;
-                                //weather.Text_rotation.unit_in_alignment = textRotate.unit_in_alignment;
-                                //weather.Text_rotation.imperial_unit = textRotate.imperial_unit;
-                                //weather.Text_rotation.negative_image = textRotate.negative_image;
-                                //weather.Text_rotation.invalid_image = textRotate.invalid_image;
-                                //weather.Text_rotation.dot_image = textRotate.dot_image;
-                                //weather.Text_rotation.align = textRotate.align;
-                                //weather.Text_rotation.visible = true;
-                                //weather.Text_rotation.position = offset;
-                            }
-                        }
-
                         if (textRotate.type == "WEATHER_LOW")
                         {
                             ElementWeather weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
@@ -20600,8 +20914,11 @@ namespace Watch_Face_Editor
                                 int offset = 1;
                                 if (weather.Images != null) offset++;
                                 if (weather.Number != null) offset++;
+                                if (weather.Number_Font != null) offset++;
                                 if (weather.Number_Min != null) offset++;
+                                if (weather.Number_Min_Font != null) offset++;
                                 if (weather.Number_Max != null) offset++;
+                                if (weather.Number_Max_Font != null) offset++;
                                 //if (weather.Text_Min_rotation != null) offset++;
                                 if (weather.Text_Min_circle != null) offset++;
                                 if (weather.Text_Max_rotation != null) offset++;
@@ -20641,8 +20958,11 @@ namespace Watch_Face_Editor
                                 int offset = 1;
                                 if (weather.Images != null) offset++;
                                 if (weather.Number != null) offset++;
+                                if (weather.Number_Font != null) offset++;
                                 if (weather.Number_Min != null) offset++;
+                                if (weather.Number_Min_Font != null) offset++;
                                 if (weather.Number_Max != null) offset++;
+                                if (weather.Number_Max_Font != null) offset++;
                                 if (weather.Text_Min_rotation != null) offset++;
                                 if (weather.Text_Min_circle != null) offset++;
                                 //if (weather.Text_Max_rotation != null) offset++;
@@ -21673,8 +21993,11 @@ namespace Watch_Face_Editor
                                 int offset = 1;
                                 if (weather.Images != null) offset++;
                                 if (weather.Number != null) offset++;
+                                if (weather.Number_Font != null) offset++;
                                 if (weather.Number_Min != null) offset++;
+                                if (weather.Number_Min_Font != null) offset++;
                                 if (weather.Number_Max != null) offset++;
+                                if (weather.Number_Max_Font != null) offset++;
                                 if (weather.Text_Min_rotation != null) offset++;
                                 //if (weather.Text_Min_circle != null) offset++;
                                 if (weather.Text_Max_rotation != null) offset++;
@@ -21716,8 +22039,11 @@ namespace Watch_Face_Editor
                                 int offset = 1;
                                 if (weather.Images != null) offset++;
                                 if (weather.Number != null) offset++;
+                                if (weather.Number_Font != null) offset++;
                                 if (weather.Number_Min != null) offset++;
+                                if (weather.Number_Min_Font != null) offset++;
                                 if (weather.Number_Max != null) offset++;
+                                if (weather.Number_Max_Font != null) offset++;
                                 if (weather.Text_Min_rotation != null) offset++;
                                 if (weather.Text_Min_circle != null) offset++;
                                 if (weather.Text_Max_rotation != null) offset++;
@@ -22238,6 +22564,7 @@ namespace Watch_Face_Editor
                                 if (uv_index.Images != null) offset++;
                                 if (uv_index.Segments != null) offset++;
                                 if (uv_index.Number != null) offset++;
+                                if (uv_index.Number_Font != null) offset++;
                                 //if (uv_index.Pointer != null) offset++;
                                 if (uv_index.Icon != null) offset++;
 
@@ -22274,6 +22601,7 @@ namespace Watch_Face_Editor
                                 if (humidity.Images != null) offset++;
                                 if (humidity.Segments != null) offset++;
                                 if (humidity.Number != null) offset++;
+                                if (humidity.Number_Font != null) offset++;
                                 //if (humidity.Pointer != null) offset++;
                                 if (humidity.Icon != null) offset++;
 
@@ -22386,6 +22714,7 @@ namespace Watch_Face_Editor
                                 if (wind.Images != null) offset++;
                                 if (wind.Segments != null) offset++;
                                 if (wind.Number != null) offset++;
+                                if (wind.Number_Font != null) offset++;
                                 //if (wind.Pointer != null) offset++;
                                 if (wind.Direction != null) offset++;
                                 if (wind.Icon != null) offset++;
@@ -23149,8 +23478,11 @@ namespace Watch_Face_Editor
                                 int offset = 1;
                                 if (weather.Images != null) offset++;
                                 if (weather.Number != null) offset++;
+                                if (weather.Number_Font != null) offset++;
                                 if (weather.Number_Min != null) offset++;
+                                if (weather.Number_Min_Font != null) offset++;
                                 if (weather.Number_Max != null) offset++;
+                                if (weather.Number_Max_Font != null) offset++;
                                 if (weather.Text_Min_rotation != null) offset++;
                                 if (weather.Text_Min_circle != null) offset++;
                                 if (weather.Text_Max_rotation != null) offset++;
@@ -23988,6 +24320,300 @@ namespace Watch_Face_Editor
 
                                 fat_burning.Number_Target_Font.visible = true;
                                 fat_burning.Number_Target_Font.position = offset;
+                            }
+                        }
+
+
+
+                        if (text_font.type == "WEATHER_CURRENT")
+                        {
+                            ElementWeather weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
+                            if (weather == null)
+                            {
+                                elementsList.Add(new ElementWeather());
+                                weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
+                            }
+                            if (weather != null)
+                            {
+                                int offset = 1;
+                                if (weather.Images != null) offset++;
+                                if (weather.Number != null) offset++;
+                                //if (weather.Number_Font != null) offset++;
+                                if (weather.Number_Min != null) offset++;
+                                if (weather.Number_Min_Font != null) offset++;
+                                if (weather.Number_Max != null) offset++;
+                                if (weather.Number_Max_Font != null) offset++;
+                                if (weather.Text_Min_rotation != null) offset++;
+                                if (weather.Text_Min_circle != null) offset++;
+                                if (weather.Text_Max_rotation != null) offset++;
+                                if (weather.Text_Max_circle != null) offset++;
+                                if (weather.City_Name != null) offset++;
+                                if (weather.Icon != null) offset++;
+
+                                weather.Number_Font = new hmUI_widget_TEXT();
+                                weather.Number_Font.x = text_font.x;
+                                weather.Number_Font.y = text_font.y;
+                                weather.Number_Font.w = text_font.w;
+                                weather.Number_Font.h = text_font.h;
+
+                                weather.Number_Font.color = text_font.color;
+                                weather.Number_Font.font = text_font.font;
+                                weather.Number_Font.text_size = text_font.text_size;
+
+                                weather.Number_Font.char_space = text_font.char_space;
+                                weather.Number_Font.line_space = text_font.line_space;
+
+                                weather.Number_Font.align_h = text_font.align_h;
+                                weather.Number_Font.align_v = text_font.align_v;
+                                weather.Number_Font.text_style = text_font.text_style;
+
+                                weather.Number_Font.padding = text_font.padding;
+                                weather.Number_Font.unit_type = text_font.unit_type;
+
+                                weather.Number_Font.type = text_font.type;
+
+                                weather.Number_Font.visible = true;
+                                weather.Number_Font.position = offset;
+                            }
+                        }
+
+                        if (text_font.type == "WEATHER_LOW")
+                        {
+                            ElementWeather weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
+                            if (weather == null)
+                            {
+                                elementsList.Add(new ElementWeather());
+                                weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
+                            }
+                            if (weather != null)
+                            {
+                                int offset = 1;
+                                if (weather.Images != null) offset++;
+                                if (weather.Number != null) offset++;
+                                if (weather.Number_Font != null) offset++;
+                                if (weather.Number_Min != null) offset++;
+                                //if (weather.Number_Min_Font != null) offset++;
+                                if (weather.Number_Max != null) offset++;
+                                if (weather.Number_Max_Font != null) offset++;
+                                if (weather.Text_Min_rotation != null) offset++;
+                                if (weather.Text_Min_circle != null) offset++;
+                                if (weather.Text_Max_rotation != null) offset++;
+                                if (weather.Text_Max_circle != null) offset++;
+                                if (weather.City_Name != null) offset++;
+                                if (weather.Icon != null) offset++;
+
+                                weather.Number_Min_Font = new hmUI_widget_TEXT();
+                                weather.Number_Min_Font.x = text_font.x;
+                                weather.Number_Min_Font.y = text_font.y;
+                                weather.Number_Min_Font.w = text_font.w;
+                                weather.Number_Min_Font.h = text_font.h;
+
+                                weather.Number_Min_Font.color = text_font.color;
+                                weather.Number_Min_Font.font = text_font.font;
+                                weather.Number_Min_Font.text_size = text_font.text_size;
+
+                                weather.Number_Min_Font.char_space = text_font.char_space;
+                                weather.Number_Min_Font.line_space = text_font.line_space;
+
+                                weather.Number_Min_Font.align_h = text_font.align_h;
+                                weather.Number_Min_Font.align_v = text_font.align_v;
+                                weather.Number_Min_Font.text_style = text_font.text_style;
+
+                                weather.Number_Min_Font.padding = text_font.padding;
+                                weather.Number_Min_Font.unit_type = text_font.unit_type;
+
+                                weather.Number_Min_Font.type = text_font.type;
+
+                                weather.Number_Min_Font.visible = true;
+                                weather.Number_Min_Font.position = offset;
+                            }
+                        }
+
+                        if (text_font.type == "WEATHER_HIGH")
+                        {
+                            ElementWeather weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
+                            if (weather == null)
+                            {
+                                elementsList.Add(new ElementWeather());
+                                weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
+                            }
+                            if (weather != null)
+                            {
+                                int offset = 1;
+                                if (weather.Images != null) offset++;
+                                if (weather.Number != null) offset++;
+                                if (weather.Number_Font != null) offset++;
+                                if (weather.Number_Min != null) offset++;
+                                if (weather.Number_Min_Font != null) offset++;
+                                if (weather.Number_Max != null) offset++;
+                                //if (weather.Number_Max_Font != null) offset++;
+                                if (weather.Text_Min_rotation != null) offset++;
+                                if (weather.Text_Min_circle != null) offset++;
+                                if (weather.Text_Max_rotation != null) offset++;
+                                if (weather.Text_Max_circle != null) offset++;
+                                if (weather.City_Name != null) offset++;
+                                if (weather.Icon != null) offset++;
+
+                                weather.Number_Max_Font = new hmUI_widget_TEXT();
+                                weather.Number_Max_Font.x = text_font.x;
+                                weather.Number_Max_Font.y = text_font.y;
+                                weather.Number_Max_Font.w = text_font.w;
+                                weather.Number_Max_Font.h = text_font.h;
+
+                                weather.Number_Max_Font.color = text_font.color;
+                                weather.Number_Max_Font.font = text_font.font;
+                                weather.Number_Max_Font.text_size = text_font.text_size;
+
+                                weather.Number_Max_Font.char_space = text_font.char_space;
+                                weather.Number_Max_Font.line_space = text_font.line_space;
+
+                                weather.Number_Max_Font.align_h = text_font.align_h;
+                                weather.Number_Max_Font.align_v = text_font.align_v;
+                                weather.Number_Max_Font.text_style = text_font.text_style;
+
+                                weather.Number_Max_Font.padding = text_font.padding;
+                                weather.Number_Max_Font.unit_type = text_font.unit_type;
+
+                                weather.Number_Max_Font.type = text_font.type;
+
+                                weather.Number_Max_Font.visible = true;
+                                weather.Number_Max_Font.position = offset;
+                            }
+                        }
+
+                        if (text_font.type == "UVI")
+                        {
+                            ElementUVIndex uv_index = (ElementUVIndex)elementsList.Find(e => e.GetType().Name == "ElementUVIndex");
+                            if (uv_index == null)
+                            {
+                                elementsList.Add(new ElementUVIndex());
+                                uv_index = (ElementUVIndex)elementsList.Find(e => e.GetType().Name == "ElementUVIndex");
+                            }
+                            if (uv_index != null)
+                            {
+                                int offset = 1;
+                                if (uv_index.Images != null) offset++;
+                                if (uv_index.Segments != null) offset++;
+                                if (uv_index.Number != null) offset++;
+                                //if (uv_index.Number_Font != null) offset++;
+                                if (uv_index.Pointer != null) offset++;
+                                if (uv_index.Icon != null) offset++;
+
+                                uv_index.Number_Font = new hmUI_widget_TEXT();
+                                uv_index.Number_Font.x = text_font.x;
+                                uv_index.Number_Font.y = text_font.y;
+                                uv_index.Number_Font.w = text_font.w;
+                                uv_index.Number_Font.h = text_font.h;
+
+                                uv_index.Number_Font.color = text_font.color;
+                                uv_index.Number_Font.font = text_font.font;
+                                uv_index.Number_Font.text_size = text_font.text_size;
+
+                                uv_index.Number_Font.char_space = text_font.char_space;
+                                uv_index.Number_Font.line_space = text_font.line_space;
+
+                                uv_index.Number_Font.align_h = text_font.align_h;
+                                uv_index.Number_Font.align_v = text_font.align_v;
+                                uv_index.Number_Font.text_style = text_font.text_style;
+
+                                uv_index.Number_Font.padding = text_font.padding;
+                                uv_index.Number_Font.unit_type = text_font.unit_type;
+
+                                uv_index.Number_Font.type = text_font.type;
+
+                                uv_index.Number_Font.visible = true;
+                                uv_index.Number_Font.position = offset;
+                            }
+                        }
+
+                        if (text_font.type == "HUMIDITY")
+                        {
+                            ElementHumidity humidity = (ElementHumidity)elementsList.Find(e => e.GetType().Name == "ElementHumidity");
+                            if (humidity == null)
+                            {
+                                elementsList.Add(new ElementHumidity());
+                                humidity = (ElementHumidity)elementsList.Find(e => e.GetType().Name == "ElementHumidity");
+                            }
+                            if (humidity != null)
+                            {
+                                int offset = 1;
+                                if (humidity.Images != null) offset++;
+                                if (humidity.Segments != null) offset++;
+                                if (humidity.Number != null) offset++;
+                                //if (humidity.Number_Font != null) offset++;
+                                if (humidity.Pointer != null) offset++;
+                                if (humidity.Icon != null) offset++;
+
+                                humidity.Number_Font = new hmUI_widget_TEXT();
+                                humidity.Number_Font.x = text_font.x;
+                                humidity.Number_Font.y = text_font.y;
+                                humidity.Number_Font.w = text_font.w;
+                                humidity.Number_Font.h = text_font.h;
+
+                                humidity.Number_Font.color = text_font.color;
+                                humidity.Number_Font.font = text_font.font;
+                                humidity.Number_Font.text_size = text_font.text_size;
+
+                                humidity.Number_Font.char_space = text_font.char_space;
+                                humidity.Number_Font.line_space = text_font.line_space;
+
+                                humidity.Number_Font.align_h = text_font.align_h;
+                                humidity.Number_Font.align_v = text_font.align_v;
+                                humidity.Number_Font.text_style = text_font.text_style;
+
+                                humidity.Number_Font.padding = text_font.padding;
+                                humidity.Number_Font.unit_type = text_font.unit_type;
+
+                                humidity.Number_Font.type = text_font.type;
+
+                                humidity.Number_Font.visible = true;
+                                humidity.Number_Font.position = offset;
+                            }
+                        }
+
+                        if (text_font.type == "WIND")
+                        {
+                            ElementWind wind = (ElementWind)elementsList.Find(e => e.GetType().Name == "ElementWind");
+                            if (wind == null)
+                            {
+                                elementsList.Add(new ElementWind());
+                                wind = (ElementWind)elementsList.Find(e => e.GetType().Name == "ElementWind");
+                            }
+                            if (wind != null)
+                            {
+                                int offset = 1;
+                                if (wind.Images != null) offset++;
+                                if (wind.Segments != null) offset++;
+                                if (wind.Number != null) offset++;
+                                //if (wind.Number_Font != null) offset++;
+                                if (wind.Pointer != null) offset++;
+                                if (wind.Direction != null) offset++;
+                                if (wind.Icon != null) offset++;
+
+                                wind.Number_Font = new hmUI_widget_TEXT();
+                                wind.Number_Font.x = text_font.x;
+                                wind.Number_Font.y = text_font.y;
+                                wind.Number_Font.w = text_font.w;
+                                wind.Number_Font.h = text_font.h;
+
+                                wind.Number_Font.color = text_font.color;
+                                wind.Number_Font.font = text_font.font;
+                                wind.Number_Font.text_size = text_font.text_size;
+
+                                wind.Number_Font.char_space = text_font.char_space;
+                                wind.Number_Font.line_space = text_font.line_space;
+
+                                wind.Number_Font.align_h = text_font.align_h;
+                                wind.Number_Font.align_v = text_font.align_v;
+                                wind.Number_Font.text_style = text_font.text_style;
+
+                                wind.Number_Font.padding = text_font.padding;
+                                wind.Number_Font.unit_type = text_font.unit_type;
+
+                                wind.Number_Font.type = text_font.type;
+
+                                wind.Number_Font.visible = true;
+                                wind.Number_Font.position = offset;
                             }
                         }
 

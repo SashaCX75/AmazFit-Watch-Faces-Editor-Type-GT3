@@ -6229,10 +6229,20 @@ namespace Watch_Face_Editor
                                 uCtrl_Weather_Elm.checkBox_Number.Checked = Weather.Number.visible;
                                 elementOptions.Add(Weather.Number.position, "Number");
                             }
+                            if (Weather.Number_Font != null)
+                            {
+                                uCtrl_Weather_Elm.checkBox_Number_Font.Checked = Weather.Number_Font.visible;
+                                elementOptions.Add(Weather.Number_Font.position, "Number_Font");
+                            }
                             if (Weather.Number_Min != null)
                             {
                                 uCtrl_Weather_Elm.checkBox_Number_Min.Checked = Weather.Number_Min.visible;
                                 elementOptions.Add(Weather.Number_Min.position, "Number_Min");
+                            }
+                            if (Weather.Number_Min_Font != null)
+                            {
+                                uCtrl_Weather_Elm.checkBox_Number_Min_Font.Checked = Weather.Number_Min_Font.visible;
+                                elementOptions.Add(Weather.Number_Min_Font.position, "Number_Min_Font");
                             }
                             if (Weather.Text_Min_rotation != null)
                             {
@@ -6248,6 +6258,11 @@ namespace Watch_Face_Editor
                             {
                                 uCtrl_Weather_Elm.checkBox_Number_Max.Checked = Weather.Number_Max.visible;
                                 elementOptions.Add(Weather.Number_Max.position, "Number_Max");
+                            }
+                            if (Weather.Number_Max_Font != null)
+                            {
+                                uCtrl_Weather_Elm.checkBox_Number_Max_Font.Checked = Weather.Number_Max_Font.visible;
+                                elementOptions.Add(Weather.Number_Max_Font.position, "Number_Max_Font");
                             }
                             if (Weather.Text_Max_rotation != null)
                             {
@@ -6298,6 +6313,11 @@ namespace Watch_Face_Editor
                                 uCtrl_UVIndex_Elm.checkBox_Number.Checked = UVIndex.Number.visible;
                                 elementOptions.Add(UVIndex.Number.position, "Number");
                             }
+                            if (UVIndex.Number_Font != null)
+                            {
+                                uCtrl_UVIndex_Elm.checkBox_Number_Font.Checked = UVIndex.Number_Font.visible;
+                                elementOptions.Add(UVIndex.Number_Font.position, "Number_Font");
+                            }
                             if (UVIndex.Pointer != null)
                             {
                                 uCtrl_UVIndex_Elm.checkBox_Pointer.Checked = UVIndex.Pointer.visible;
@@ -6337,6 +6357,11 @@ namespace Watch_Face_Editor
                                 uCtrl_Humidity_Elm.checkBox_Number.Checked = Humidity.Number.visible;
                                 elementOptions.Add(Humidity.Number.position, "Number");
                             }
+                            if (Humidity.Number_Font != null)
+                            {
+                                uCtrl_Humidity_Elm.checkBox_Number_Font.Checked = Humidity.Number_Font.visible;
+                                elementOptions.Add(Humidity.Number_Font.position, "Number_Font");
+                            }
                             if (Humidity.Pointer != null)
                             {
                                 uCtrl_Humidity_Elm.checkBox_Pointer.Checked = Humidity.Pointer.visible;
@@ -6365,6 +6390,21 @@ namespace Watch_Face_Editor
                             {
                                 uCtrl_Altimeter_Elm.checkBox_Number.Checked = Altimeter.Number.visible;
                                 elementOptions.Add(Altimeter.Number.position, "Number");
+                            }
+                            if (Altimeter.Number_Font != null)
+                            {
+                                uCtrl_Altimeter_Elm.checkBox_Number_Font.Checked = Altimeter.Number_Font.visible;
+                                elementOptions.Add(Altimeter.Number_Font.position, "Number_Font");
+                            }
+                            if (Altimeter.Number_Target != null)
+                            {
+                                uCtrl_Altimeter_Elm.checkBox_Number_Target.Checked = Altimeter.Number_Target.visible;
+                                elementOptions.Add(Altimeter.Number_Target.position, "Number_Target");
+                            }
+                            if (Altimeter.Number_Target_Font != null)
+                            {
+                                uCtrl_Altimeter_Elm.checkBox_Number_Target_Font.Checked = Altimeter.Number_Target_Font.visible;
+                                elementOptions.Add(Altimeter.Number_Target_Font.position, "Number_Target_Font");
                             }
                             if (Altimeter.Pointer != null)
                             {
@@ -6473,6 +6513,11 @@ namespace Watch_Face_Editor
                             {
                                 uCtrl_Wind_Elm.checkBox_Number.Checked = Wind.Number.visible;
                                 elementOptions.Add(Wind.Number.position, "Number");
+                            }
+                            if (Wind.Number_Font != null)
+                            {
+                                uCtrl_Wind_Elm.checkBox_Number_Font.Checked = Wind.Number_Font.visible;
+                                elementOptions.Add(Wind.Number_Font.position, "Number_Font");
                             }
                             if (Wind.Pointer != null)
                             {
@@ -12161,12 +12206,30 @@ namespace Watch_Face_Editor
                         }
                         else HideAllElemenrOptions();
                         break;
+                    case "Number_Font":
+                        if (uCtrl_Weather_Elm.checkBox_Number_Font.Checked)
+                        {
+                            text = weather.Number_Font;
+                            Read_Text_Options(text, true);
+                            ShowElemenrOptions("SystemFont");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
                     case "Number_Min":
                         if (uCtrl_Weather_Elm.checkBox_Number_Min.Checked)
                         {
                             img_number = weather.Number_Min;
                             Read_ImgNumberWeather_Options(img_number, false, "", true, false);
                             ShowElemenrOptions("Text_Weather");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number_Min_Font":
+                        if (uCtrl_Weather_Elm.checkBox_Number_Min_Font.Checked)
+                        {
+                            text = weather.Number_Min_Font;
+                            Read_Text_Options(text, true);
+                            ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -12194,6 +12257,15 @@ namespace Watch_Face_Editor
                             img_number = weather.Number_Max;
                             Read_ImgNumberWeather_Options(img_number, false, "", true, false);
                             ShowElemenrOptions("Text_Weather");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number_Max_Font":
+                        if (uCtrl_Weather_Elm.checkBox_Number_Max_Font.Checked)
+                        {
+                            text = weather.Number_Max_Font;
+                            Read_Text_Options(text, true);
+                            ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -12269,6 +12341,7 @@ namespace Watch_Face_Editor
                 hmUI_widget_IMG_NUMBER img_number = null;
                 hmUI_widget_IMG_POINTER img_pointer = null;
                 hmUI_widget_IMG icon = null;
+                hmUI_widget_TEXT text = null;
 
                 switch (selectElement)
                 {
@@ -12296,6 +12369,15 @@ namespace Watch_Face_Editor
                             img_number = uv_index.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", true, false, false, true);
                             ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number_Font":
+                        if (uCtrl_UVIndex_Elm.checkBox_Number_Font.Checked)
+                        {
+                            text = uv_index.Number_Font;
+                            Read_Text_Options(text, true);
+                            ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -12353,6 +12435,7 @@ namespace Watch_Face_Editor
                 hmUI_widget_IMG_NUMBER img_number = null;
                 hmUI_widget_IMG_POINTER img_pointer = null;
                 hmUI_widget_IMG icon = null;
+                hmUI_widget_TEXT text = null;
 
                 switch (selectElement)
                 {
@@ -12380,6 +12463,15 @@ namespace Watch_Face_Editor
                             img_number = humidity.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, false, true);
                             ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number_Font":
+                        if (uCtrl_Humidity_Elm.checkBox_Number_Font.Checked)
+                        {
+                            text = humidity.Number_Font;
+                            Read_Text_Options(text, true);
+                            ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -12435,6 +12527,7 @@ namespace Watch_Face_Editor
                 hmUI_widget_IMG_NUMBER img_number = null;
                 hmUI_widget_IMG_POINTER img_pointer = null;
                 hmUI_widget_IMG icon = null;
+                hmUI_widget_TEXT text = null;
 
                 switch (selectElement)
                 {
@@ -12444,6 +12537,33 @@ namespace Watch_Face_Editor
                             img_number = altimeter.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, true, true);
                             ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number_Font":
+                        if (uCtrl_Altimeter_Elm.checkBox_Number_Font.Checked)
+                        {
+                            text = altimeter.Number_Font;
+                            Read_Text_Options(text, true);
+                            ShowElemenrOptions("SystemFont");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number_Target":
+                        if (uCtrl_Altimeter_Elm.checkBox_Number_Target.Checked)
+                        {
+                            img_number = altimeter.Number_Target;
+                            Read_ImgNumber_Options(img_number, false, false, "", false, true, true, true, false, true);
+                            ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number_Target_Font":
+                        if (uCtrl_Altimeter_Elm.checkBox_Number_Target_Font.Checked)
+                        {
+                            text = altimeter.Number_Target_Font;
+                            Read_Text_Options(text, true);
+                            ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -12641,6 +12761,7 @@ namespace Watch_Face_Editor
                 hmUI_widget_IMG_NUMBER img_number = null;
                 hmUI_widget_IMG_POINTER img_pointer = null;
                 hmUI_widget_IMG icon = null;
+                hmUI_widget_TEXT text = null;
 
                 switch (selectElement)
                 {
@@ -12668,6 +12789,15 @@ namespace Watch_Face_Editor
                             img_number = wind.Number;
                             Read_ImgNumber_Options(img_number, false, false, "", false, false, false, true);
                             ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Number_Font":
+                        if (uCtrl_Wind_Elm.checkBox_Number_Font.Checked)
+                        {
+                            text = wind.Number_Font;
+                            Read_Text_Options(text, true);
+                            ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -14388,10 +14518,13 @@ namespace Watch_Face_Editor
             {
                 if (weather.Images == null) weather.Images = new hmUI_widget_IMG_LEVEL();
                 if (weather.Number == null) weather.Number = new hmUI_widget_IMG_NUMBER();
+                if (weather.Number_Font == null) weather.Number_Font = new hmUI_widget_TEXT();
                 if (weather.Number_Min == null) weather.Number_Min = new hmUI_widget_IMG_NUMBER();
+                if (weather.Number_Min_Font == null) weather.Number_Min_Font = new hmUI_widget_TEXT();
                 if (weather.Text_Min_rotation == null) weather.Text_Min_rotation = new hmUI_widget_IMG_NUMBER();
                 if (weather.Text_Min_circle == null) weather.Text_Min_circle = new Text_Circle();
                 if (weather.Number_Max == null) weather.Number_Max = new hmUI_widget_IMG_NUMBER();
+                if (weather.Number_Max_Font == null) weather.Number_Max_Font = new hmUI_widget_TEXT();
                 if (weather.Text_Max_rotation == null) weather.Text_Max_rotation = new hmUI_widget_IMG_NUMBER();
                 if (weather.Text_Max_circle == null) weather.Text_Max_circle = new Text_Circle();
                 if (weather.City_Name == null) weather.City_Name = new hmUI_widget_TEXT();
@@ -14399,10 +14532,13 @@ namespace Watch_Face_Editor
 
                 if (elementOptions.ContainsKey("Images")) weather.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Number")) weather.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) weather.Number_Font.position = elementOptions["Number_Font"];
                 if (elementOptions.ContainsKey("Number_Min")) weather.Number_Min.position = elementOptions["Number_Min"];
+                if (elementOptions.ContainsKey("Number_Min_Font")) weather.Number_Min_Font.position = elementOptions["Number_Min_Font"];
                 if (elementOptions.ContainsKey("Text_Min_rotation")) weather.Text_Min_rotation.position = elementOptions["Text_Min_rotation"];
                 if (elementOptions.ContainsKey("Text_Min_circle")) weather.Text_Min_circle.position = elementOptions["Text_Min_circle"];
                 if (elementOptions.ContainsKey("Number_Max")) weather.Number_Max.position = elementOptions["Number_Max"];
+                if (elementOptions.ContainsKey("Number_Max_Font")) weather.Number_Max_Font.position = elementOptions["Number_Max_Font"];
                 if (elementOptions.ContainsKey("Text_Max_rotation")) weather.Text_Max_rotation.position = elementOptions["Text_Max_rotation"];
                 if (elementOptions.ContainsKey("Text_Max_circle")) weather.Text_Max_circle.position = elementOptions["Text_Max_circle"];
                 if (elementOptions.ContainsKey("CityName")) weather.City_Name.position = elementOptions["CityName"];
@@ -14449,12 +14585,14 @@ namespace Watch_Face_Editor
                 if (uv_index.Images == null) uv_index.Images = new hmUI_widget_IMG_LEVEL();
                 if (uv_index.Segments == null) uv_index.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (uv_index.Number == null) uv_index.Number = new hmUI_widget_IMG_NUMBER();
+                if (uv_index.Number_Font == null) uv_index.Number_Font = new hmUI_widget_TEXT();
                 if (uv_index.Pointer == null) uv_index.Pointer = new hmUI_widget_IMG_POINTER();
                 if (uv_index.Icon == null) uv_index.Icon = new hmUI_widget_IMG();
 
                 if (elementOptions.ContainsKey("Images")) uv_index.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) uv_index.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) uv_index.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) uv_index.Number_Font.position = elementOptions["Number_Font"];
                 if (elementOptions.ContainsKey("Pointer")) uv_index.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Icon")) uv_index.Icon.position = elementOptions["Icon"];
 
@@ -14499,12 +14637,14 @@ namespace Watch_Face_Editor
                 if (humidity.Images == null) humidity.Images = new hmUI_widget_IMG_LEVEL();
                 if (humidity.Segments == null) humidity.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (humidity.Number == null) humidity.Number = new hmUI_widget_IMG_NUMBER();
+                if (humidity.Number_Font == null) humidity.Number_Font = new hmUI_widget_TEXT();
                 if (humidity.Pointer == null) humidity.Pointer = new hmUI_widget_IMG_POINTER();
                 if (humidity.Icon == null) humidity.Icon = new hmUI_widget_IMG();
 
                 if (elementOptions.ContainsKey("Images")) humidity.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) humidity.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) humidity.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) humidity.Number_Font.position = elementOptions["Number_Font"];
                 if (elementOptions.ContainsKey("Pointer")) humidity.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Icon")) humidity.Icon.position = elementOptions["Icon"];
 
@@ -14547,10 +14687,16 @@ namespace Watch_Face_Editor
             if (altimeter != null)
             {
                 if (altimeter.Number == null) altimeter.Number = new hmUI_widget_IMG_NUMBER();
+                if (altimeter.Number_Font == null) altimeter.Number_Font = new hmUI_widget_TEXT();
+                if (altimeter.Number_Target == null) altimeter.Number_Target = new hmUI_widget_IMG_NUMBER();
+                if (altimeter.Number_Target_Font == null) altimeter.Number_Target_Font = new hmUI_widget_TEXT();
                 if (altimeter.Pointer == null) altimeter.Pointer = new hmUI_widget_IMG_POINTER();
                 if (altimeter.Icon == null) altimeter.Icon = new hmUI_widget_IMG();
 
                 if (elementOptions.ContainsKey("Number")) altimeter.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) altimeter.Number_Font.position = elementOptions["Number_Font"];
+                if (elementOptions.ContainsKey("Number_Target")) altimeter.Number_Target.position = elementOptions["Number_Target"];
+                if (elementOptions.ContainsKey("Number_Target_Font")) altimeter.Number_Target_Font.position = elementOptions["Number_Target_Font"];
                 if (elementOptions.ContainsKey("Pointer")) altimeter.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Icon")) altimeter.Icon.position = elementOptions["Icon"];
 
@@ -14656,6 +14802,7 @@ namespace Watch_Face_Editor
                 if (wind.Images == null) wind.Images = new hmUI_widget_IMG_LEVEL();
                 if (wind.Segments == null) wind.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (wind.Number == null) wind.Number = new hmUI_widget_IMG_NUMBER();
+                if (wind.Number_Font == null) wind.Number_Font = new hmUI_widget_TEXT();
                 if (wind.Pointer == null) wind.Pointer = new hmUI_widget_IMG_POINTER();
                 if (wind.Direction == null) wind.Direction = new hmUI_widget_IMG_LEVEL();
                 if (wind.Icon == null) wind.Icon = new hmUI_widget_IMG();
@@ -14663,6 +14810,7 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) wind.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) wind.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) wind.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) wind.Number_Font.position = elementOptions["Number_Font"];
                 if (elementOptions.ContainsKey("Pointer")) wind.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Direction")) wind.Direction.position = elementOptions["Direction"];
                 if (elementOptions.ContainsKey("Icon")) wind.Icon.position = elementOptions["Icon"];
@@ -16804,10 +16952,13 @@ namespace Watch_Face_Editor
             {
                 if (weather.Images == null) weather.Images = new hmUI_widget_IMG_LEVEL();
                 if (weather.Number == null) weather.Number = new hmUI_widget_IMG_NUMBER();
+                if (weather.Number_Font == null) weather.Number_Font = new hmUI_widget_TEXT();
                 if (weather.Number_Min == null) weather.Number_Min = new hmUI_widget_IMG_NUMBER();
+                if (weather.Number_Min_Font == null) weather.Number_Min_Font = new hmUI_widget_TEXT();
                 if (weather.Text_Min_rotation == null) weather.Text_Min_rotation = new hmUI_widget_IMG_NUMBER();
                 if (weather.Text_Min_circle == null) weather.Text_Min_circle = new Text_Circle();
                 if (weather.Number_Max == null) weather.Number_Max = new hmUI_widget_IMG_NUMBER();
+                if (weather.Number_Max_Font == null) weather.Number_Max_Font = new hmUI_widget_TEXT();
                 if (weather.Text_Max_rotation == null) weather.Text_Max_rotation = new hmUI_widget_IMG_NUMBER();
                 if (weather.Text_Max_circle == null) weather.Text_Max_circle = new Text_Circle();
                 if (weather.City_Name == null) weather.City_Name = new hmUI_widget_TEXT();
@@ -16816,10 +16967,13 @@ namespace Watch_Face_Editor
                 Dictionary<string, int> elementOptions = uCtrl_Weather_Elm.GetOptionsPosition();
                 if (elementOptions.ContainsKey("Images")) weather.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Number")) weather.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) weather.Number_Font.position = elementOptions["Number_Font"];
                 if (elementOptions.ContainsKey("Number_Min")) weather.Number_Min.position = elementOptions["Number_Min"];
+                if (elementOptions.ContainsKey("Number_Min_Font")) weather.Number_Min_Font.position = elementOptions["Number_Min_Font"];
                 if (elementOptions.ContainsKey("Text_Min_rotation")) weather.Text_Min_rotation.position = elementOptions["Text_Min_rotation"];
                 if (elementOptions.ContainsKey("Text_Min_circle")) weather.Text_Min_circle.position = elementOptions["Text_Min_circle"];
                 if (elementOptions.ContainsKey("Number_Max")) weather.Number_Max.position = elementOptions["Number_Max"];
+                if (elementOptions.ContainsKey("Number_Max_Font")) weather.Number_Max_Font.position = elementOptions["Number_Max_Font"];
                 if (elementOptions.ContainsKey("Text_Max_rotation")) weather.Text_Max_rotation.position = elementOptions["Text_Max_rotation"];
                 if (elementOptions.ContainsKey("Text_Max_circle")) weather.Text_Max_circle.position = elementOptions["Text_Max_circle"];
                 if (elementOptions.ContainsKey("CityName")) weather.City_Name.position = elementOptions["CityName"];
@@ -16835,8 +16989,14 @@ namespace Watch_Face_Editor
                     case "checkBox_Number":
                         weather.Number.visible = checkBox.Checked;
                         break;
+                    case "checkBox_Number_Font":
+                        weather.Number_Font.visible = checkBox.Checked;
+                        break;
                     case "checkBox_Number_Min":
                         weather.Number_Min.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Min_Font":
+                        weather.Number_Min_Font.visible = checkBox.Checked;
                         break;
                     case "checkBox_Text_Min_rotation":
                         weather.Text_Min_rotation.visible = checkBox.Checked;
@@ -16846,6 +17006,9 @@ namespace Watch_Face_Editor
                         break;
                     case "checkBox_Number_Max":
                         weather.Number_Max.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Max_Font":
+                        weather.Number_Max_Font.visible = checkBox.Checked;
                         break;
                     case "checkBox_Text_Max_rotation":
                         weather.Text_Max_rotation.visible = checkBox.Checked;
@@ -16904,6 +17067,7 @@ namespace Watch_Face_Editor
                 if (uv_index.Images == null) uv_index.Images = new hmUI_widget_IMG_LEVEL();
                 if (uv_index.Segments == null) uv_index.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (uv_index.Number == null) uv_index.Number = new hmUI_widget_IMG_NUMBER();
+                if (uv_index.Number_Font == null) uv_index.Number_Font = new hmUI_widget_TEXT();
                 if (uv_index.Pointer == null) uv_index.Pointer = new hmUI_widget_IMG_POINTER();
                 if (uv_index.Icon == null) uv_index.Icon = new hmUI_widget_IMG();
 
@@ -16911,6 +17075,7 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) uv_index.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) uv_index.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) uv_index.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) uv_index.Number_Font.position = elementOptions["Number_Font"];
                 if (elementOptions.ContainsKey("Pointer")) uv_index.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Icon")) uv_index.Icon.position = elementOptions["Icon"];
 
@@ -16926,6 +17091,9 @@ namespace Watch_Face_Editor
                         break;
                     case "checkBox_Number":
                         uv_index.Number.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Font":
+                        uv_index.Number_Font.visible = checkBox.Checked;
                         break;
                     case "checkBox_Pointer":
                         uv_index.Pointer.visible = checkBox.Checked;
@@ -16978,6 +17146,7 @@ namespace Watch_Face_Editor
                 if (humidity.Images == null) humidity.Images = new hmUI_widget_IMG_LEVEL();
                 if (humidity.Segments == null) humidity.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (humidity.Number == null) humidity.Number = new hmUI_widget_IMG_NUMBER();
+                if (humidity.Number_Font == null) humidity.Number_Font = new hmUI_widget_TEXT();
                 if (humidity.Pointer == null) humidity.Pointer = new hmUI_widget_IMG_POINTER();
                 if (humidity.Icon == null) humidity.Icon = new hmUI_widget_IMG();
 
@@ -16985,6 +17154,7 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) humidity.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) humidity.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) humidity.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) humidity.Number_Font.position = elementOptions["Number_Font"];
                 if (elementOptions.ContainsKey("Pointer")) humidity.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Icon")) humidity.Icon.position = elementOptions["Icon"];
 
@@ -17000,6 +17170,9 @@ namespace Watch_Face_Editor
                         break;
                     case "checkBox_Number":
                         humidity.Number.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Font":
+                        humidity.Number_Font.visible = checkBox.Checked;
                         break;
                     case "checkBox_Pointer":
                         humidity.Pointer.visible = checkBox.Checked;
@@ -17050,11 +17223,17 @@ namespace Watch_Face_Editor
             if (altimeter != null)
             {
                 if (altimeter.Number == null) altimeter.Number = new hmUI_widget_IMG_NUMBER();
+                if (altimeter.Number_Font == null) altimeter.Number_Font = new hmUI_widget_TEXT();
+                if (altimeter.Number_Target == null) altimeter.Number_Target = new hmUI_widget_IMG_NUMBER();
+                if (altimeter.Number_Target_Font == null) altimeter.Number_Target_Font = new hmUI_widget_TEXT();
                 if (altimeter.Pointer == null) altimeter.Pointer = new hmUI_widget_IMG_POINTER();
                 if (altimeter.Icon == null) altimeter.Icon = new hmUI_widget_IMG();
 
                 Dictionary<string, int> elementOptions = uCtrl_Altimeter_Elm.GetOptionsPosition();
                 if (elementOptions.ContainsKey("Number")) altimeter.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) altimeter.Number_Font.position = elementOptions["Number_Font"];
+                if (elementOptions.ContainsKey("Number_Target")) altimeter.Number_Target.position = elementOptions["Number_Target"];
+                if (elementOptions.ContainsKey("Number_Target_Font")) altimeter.Number_Target_Font.position = elementOptions["Number_Target_Font"];
                 if (elementOptions.ContainsKey("Pointer")) altimeter.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Icon")) altimeter.Icon.position = elementOptions["Icon"];
 
@@ -17064,6 +17243,15 @@ namespace Watch_Face_Editor
                 {
                     case "checkBox_Number":
                         altimeter.Number.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Font":
+                        altimeter.Number_Font.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Target":
+                        altimeter.Number_Target.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Target_Font":
+                        altimeter.Number_Target_Font.visible = checkBox.Checked;
                         break;
                     case "checkBox_Pointer":
                         altimeter.Pointer.visible = checkBox.Checked;
@@ -17220,6 +17408,7 @@ namespace Watch_Face_Editor
                 if (wind.Images == null) wind.Images = new hmUI_widget_IMG_LEVEL();
                 if (wind.Segments == null) wind.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (wind.Number == null) wind.Number = new hmUI_widget_IMG_NUMBER();
+                if (wind.Number_Font == null) wind.Number_Font = new hmUI_widget_TEXT();
                 if (wind.Pointer == null) wind.Pointer = new hmUI_widget_IMG_POINTER();
                 if (wind.Direction == null) wind.Direction = new hmUI_widget_IMG_LEVEL();
                 if (wind.Icon == null) wind.Icon = new hmUI_widget_IMG();
@@ -17228,6 +17417,7 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) wind.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) wind.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) wind.Number.position = elementOptions["Number"];
+                if (elementOptions.ContainsKey("Number_Font")) wind.Number_Font.position = elementOptions["Number_Font"];
                 if (elementOptions.ContainsKey("Pointer")) wind.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Direction")) wind.Direction.position = elementOptions["Direction"];
                 if (elementOptions.ContainsKey("Icon")) wind.Icon.position = elementOptions["Icon"];
@@ -17244,6 +17434,9 @@ namespace Watch_Face_Editor
                         break;
                     case "checkBox_Number":
                         wind.Number.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Font":
+                        wind.Number_Font.visible = checkBox.Checked;
                         break;
                     case "checkBox_Pointer":
                         wind.Pointer.visible = checkBox.Checked;

@@ -72,6 +72,7 @@ namespace ControlLibrary
             this.checkBox_CentreVertically = new System.Windows.Forms.CheckBox();
             this.checkBox_addZero = new System.Windows.Forms.CheckBox();
             this.checkBox_unit = new System.Windows.Forms.CheckBox();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Width)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Height)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_X)).BeginInit();
@@ -450,10 +451,16 @@ namespace ControlLibrary
             this.checkBox_unit.UseVisualStyleBackColor = true;
             this.checkBox_unit.CheckStateChanged += new System.EventHandler(this.checkBox_CheckedChanged);
             // 
+            // label8
+            // 
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
+            // 
             // UCtrl_Text_SystemFont_Opt
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.checkBox_unit);
             this.Controls.Add(this.checkBox_addZero);
             this.Controls.Add(this.checkBox_CentreVertically);
@@ -545,5 +552,6 @@ namespace ControlLibrary
         public System.Windows.Forms.CheckBox checkBox_CentreVertically;
         public System.Windows.Forms.CheckBox checkBox_addZero;
         private System.Windows.Forms.CheckBox checkBox_unit;
+        private System.Windows.Forms.Label label8;
     }
 }

@@ -22,6 +22,7 @@ namespace ControlLibrary
         private bool Distance_mode;
         private bool Year_mode = false;
         private bool Sunrise_mode = false;
+        private bool Altitude_mode = false;
         private bool Angle_mode = false;
         private bool Angle_visible_mode = true;
 
@@ -243,7 +244,7 @@ namespace ControlLibrary
                 comboBox_imageDecimalPoint.Visible = OptionalSymbol_mode;
                 label_imageDecimalPoint.Visible = OptionalSymbol_mode;
 
-                if (OptionalSymbol_mode)
+                if (OptionalSymbol_mode && !Altitude_mode)
                 {
                     Point location = new Point(numericUpDown_angle.Location.X, location_unit_miles.Y);
                     numericUpDown_angle.Location = location;
@@ -297,7 +298,7 @@ namespace ControlLibrary
 
                 comboBox_unit_miles.Visible = false;
                 label_unit_miles.Visible = false;
-                if (Sunrise_mode)
+                if (Sunrise_mode || Altitude_mode)
                 {
                     comboBox_imageDecimalPoint.Location = location_imageError;
                     comboBox_imageError.Location = location_imageDecimalPoint;
@@ -366,8 +367,14 @@ namespace ControlLibrary
             set
             {
                 Sunrise_mode = value;
-                if (Sunrise_mode)
+                if (Altitude_mode)
                 {
+                    label_imageDecimalPoint.Text = Properties.Strings.UCtrl_Text_Opt_Altitude_true;
+                    //label_imageDecimalPoint.Text = Properties.Strings.UCtrl_Text_Opt_Sunrise_true;
+                }
+                else if (Sunrise_mode)
+                {
+                    //label_imageDecimalPoint.Text = Properties.Strings.UCtrl_Text_Opt_Altitude_true;
                     label_imageDecimalPoint.Text = Properties.Strings.UCtrl_Text_Opt_Sunrise_true;
                 }
                 else
@@ -377,7 +384,71 @@ namespace ControlLibrary
 
                 comboBox_unit_miles.Visible = false;
                 label_unit_miles.Visible = false;
-                if (Sunrise_mode)
+                if (Sunrise_mode || Altitude_mode)
+                {
+                    comboBox_imageDecimalPoint.Location = location_imageError;
+                    comboBox_imageError.Location = location_imageDecimalPoint;
+                    comboBox_unit_miles.Location = location_unit_miles;
+
+                    label_imageDecimalPoint.Location = location_imageError_label;
+                    label_imageError.Location = location_imageDecimalPoint_label;
+                    label_unit_miles.Location = location_unit_miles_label;
+                }
+                else if (Distance_mode)
+                {
+                    comboBox_imageDecimalPoint.Location = location_imageDecimalPoint;
+                    comboBox_imageError.Location = location_unit_miles;
+                    comboBox_unit_miles.Location = location_imageError;
+
+                    label_imageDecimalPoint.Location = location_imageDecimalPoint_label;
+                    label_unit_miles.Location = location_imageError_label;
+                    label_imageError.Location = location_unit_miles_label;
+
+                    comboBox_unit_miles.Visible = true;
+                    label_unit_miles.Visible = true;
+                }
+                else
+                {
+                    comboBox_imageDecimalPoint.Location = location_imageDecimalPoint;
+                    comboBox_imageError.Location = location_imageError;
+                    comboBox_unit_miles.Location = location_unit_miles;
+
+                    label_imageDecimalPoint.Location = location_imageDecimalPoint_label;
+                    label_imageError.Location = location_imageError_label;
+                    label_unit_miles.Location = location_unit_miles_label;
+                }
+            }
+        }
+
+        /// <summary>Режим отображения высоты</summary>
+        [Description("Режим отображения высоты")]
+        public virtual bool Altitude
+        {
+            get
+            {
+                return Altitude_mode;
+            }
+            set
+            {
+                Altitude_mode = value;
+                if (Altitude_mode)
+                {
+                    label_imageDecimalPoint.Text = Properties.Strings.UCtrl_Text_Opt_Altitude_true;
+                    //label_imageDecimalPoint.Text = Properties.Strings.UCtrl_Text_Opt_Sunrise_true;
+                }
+                else if(Sunrise_mode)
+                {
+                    //label_imageDecimalPoint.Text = Properties.Strings.UCtrl_Text_Opt_Altitude_true;
+                    label_imageDecimalPoint.Text = Properties.Strings.UCtrl_Text_Opt_Sunrise_true;
+                }
+                else
+                {
+                    label_imageDecimalPoint.Text = Properties.Strings.UCtrl_Text_Opt_Sunrise_false;
+                }
+
+                comboBox_unit_miles.Visible = false;
+                label_unit_miles.Visible = false;
+                if (Sunrise_mode || Altitude_mode)
                 {
                     comboBox_imageDecimalPoint.Location = location_imageError;
                     comboBox_imageError.Location = location_imageDecimalPoint;
@@ -629,6 +700,7 @@ namespace ControlLibrary
             Distance = false;
             Year = false;
             Sunrise = false;
+            Altitude = false;
             Angle = false;
             AngleVisible = true;
 

@@ -97,6 +97,15 @@ namespace ControlLibrary.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Символ &quot;-&quot;.
+        /// </summary>
+        internal static string UCtrl_Text_Opt_Altitude_true {
+            get {
+                return ResourceManager.GetString("UCtrl_Text_Opt_Altitude_true", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Десятичный разделитель.
         /// </summary>
         internal static string UCtrl_Text_Opt_Sunrise_false {

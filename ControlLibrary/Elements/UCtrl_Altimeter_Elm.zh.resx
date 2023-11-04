@@ -155,9 +155,6 @@
   <data name="button_Icon.Text" xml:space="preserve">
     <value>图标</value>
   </data>
-  <data name="button_Number.Text" xml:space="preserve">
-    <value>数值</value>
-  </data>
   <data name="button_Pointer.Text" xml:space="preserve">
     <value>指针</value>
   </data>

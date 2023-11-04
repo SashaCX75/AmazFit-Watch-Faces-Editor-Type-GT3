@@ -823,9 +823,9 @@ namespace ControlLibrary
 
             pictureBox_Del.Location = new Point(button_ElementName.Width - pictureBox_Del.Width - 4, 2);
 
-            if (tableLayoutPanel1.Height > 380)
+            if (tableLayoutPanel1.Height > 435)
             {
-                float currentDPI = tableLayoutPanel1.Height / 301f;
+                float currentDPI = tableLayoutPanel1.Height / 351f;
                 button_ElementName.Image = (Image)(new Bitmap(button_ElementName.Image, 
                     new Size((int)(16 * currentDPI), (int)(16 * currentDPI))));
 
