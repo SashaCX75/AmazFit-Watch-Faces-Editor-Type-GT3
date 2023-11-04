@@ -4942,10 +4942,13 @@ namespace Watch_Face_Editor
 
         public hmUI_widget_IMG_LEVEL Images { get; set; }
         public hmUI_widget_IMG_NUMBER Number { get; set; }
+        public hmUI_widget_TEXT Number_Font { get; set; }
         public hmUI_widget_IMG_NUMBER Number_Min { get; set; }
+        public hmUI_widget_TEXT Number_Min_Font { get; set; }
         public hmUI_widget_IMG_NUMBER Text_Min_rotation { get; set; }
         public Text_Circle Text_Min_circle { get; set; }
         public hmUI_widget_IMG_NUMBER Number_Max { get; set; }
+        public hmUI_widget_TEXT Number_Max_Font { get; set; }
         public hmUI_widget_IMG_NUMBER Text_Max_rotation { get; set; }
         public Text_Circle Text_Max_circle { get; set; }
         public hmUI_widget_TEXT City_Name { get; set; }
@@ -5001,6 +5004,33 @@ namespace Watch_Face_Editor
                 };
             }
 
+            hmUI_widget_TEXT Number_Font = null;
+            if (this.Number_Font != null)
+            {
+                Number_Font = new hmUI_widget_TEXT
+                {
+                    x = this.Number_Font.x,
+                    y = this.Number_Font.y,
+                    w = this.Number_Font.w,
+                    h = this.Number_Font.h,
+                    color = this.Number_Font.color,
+                    align_h = this.Number_Font.align_h,
+                    align_v = this.Number_Font.align_v,
+                    text_size = this.Number_Font.text_size,
+                    text_style = this.Number_Font.text_style,
+                    line_space = this.Number_Font.line_space,
+                    char_space = this.Number_Font.char_space,
+                    font = this.Number_Font.font,
+                    padding = this.Number_Font.padding,
+                    unit_type = this.Number_Font.unit_type,
+
+                    position = this.Number_Font.position,
+                    visible = this.Number_Font.visible,
+                    show_level = this.Number_Font.show_level,
+                    type = this.Number_Font.type,
+                };
+            }
+
             hmUI_widget_IMG_NUMBER Number_Min = null;
             if (this.Number_Min != null)
             {
@@ -5027,6 +5057,33 @@ namespace Watch_Face_Editor
                     visible = this.Number_Min.visible,
                     show_level = this.Number_Min.show_level,
                     type = this.Number_Min.type,
+                };
+            }
+
+            hmUI_widget_TEXT Number_Min_Font = null;
+            if (this.Number_Min_Font != null)
+            {
+                Number_Min_Font = new hmUI_widget_TEXT
+                {
+                    x = this.Number_Min_Font.x,
+                    y = this.Number_Min_Font.y,
+                    w = this.Number_Min_Font.w,
+                    h = this.Number_Min_Font.h,
+                    color = this.Number_Min_Font.color,
+                    align_h = this.Number_Min_Font.align_h,
+                    align_v = this.Number_Min_Font.align_v,
+                    text_size = this.Number_Min_Font.text_size,
+                    text_style = this.Number_Min_Font.text_style,
+                    line_space = this.Number_Min_Font.line_space,
+                    char_space = this.Number_Min_Font.char_space,
+                    font = this.Number_Min_Font.font,
+                    padding = this.Number_Min_Font.padding,
+                    unit_type = this.Number_Min_Font.unit_type,
+
+                    position = this.Number_Min_Font.position,
+                    visible = this.Number_Min_Font.visible,
+                    show_level = this.Number_Min_Font.show_level,
+                    type = this.Number_Min_Font.type,
                 };
             }
 
@@ -5118,6 +5175,33 @@ namespace Watch_Face_Editor
                     visible = this.Number_Max.visible,
                     show_level = this.Number_Max.show_level,
                     type = this.Number_Max.type,
+                };
+            }
+
+            hmUI_widget_TEXT Number_Max_Font = null;
+            if (this.Number_Max_Font != null)
+            {
+                Number_Max_Font = new hmUI_widget_TEXT
+                {
+                    x = this.Number_Max_Font.x,
+                    y = this.Number_Max_Font.y,
+                    w = this.Number_Max_Font.w,
+                    h = this.Number_Max_Font.h,
+                    color = this.Number_Max_Font.color,
+                    align_h = this.Number_Max_Font.align_h,
+                    align_v = this.Number_Max_Font.align_v,
+                    text_size = this.Number_Max_Font.text_size,
+                    text_style = this.Number_Max_Font.text_style,
+                    line_space = this.Number_Max_Font.line_space,
+                    char_space = this.Number_Max_Font.char_space,
+                    font = this.Number_Max_Font.font,
+                    padding = this.Number_Max_Font.padding,
+                    unit_type = this.Number_Max_Font.unit_type,
+
+                    position = this.Number_Max_Font.position,
+                    visible = this.Number_Max_Font.visible,
+                    show_level = this.Number_Max_Font.show_level,
+                    type = this.Number_Max_Font.type,
                 };
             }
 
@@ -5232,10 +5316,13 @@ namespace Watch_Face_Editor
 
                 Images = Images,
                 Number = Number,
+                Number_Font = Number_Font,
                 Number_Min = Number_Min,
+                Number_Min_Font = Number_Min_Font,
                 Text_Min_rotation = Text_Min_rotation,
                 Text_Min_circle = Text_Min_circle,
                 Number_Max = Number_Max,
+                Number_Max_Font = Number_Max_Font,
                 Text_Max_rotation = Text_Max_rotation,
                 Text_Max_circle = Text_Max_circle,
                 City_Name = City_Name,
@@ -5257,6 +5344,7 @@ namespace Watch_Face_Editor
         public hmUI_widget_IMG_LEVEL Images { get; set; }
         public hmUI_widget_IMG_PROGRESS Segments { get; set; }
         public hmUI_widget_IMG_NUMBER Number { get; set; }
+        public hmUI_widget_TEXT Number_Font { get; set; }
         public hmUI_widget_IMG_POINTER Pointer { get; set; }
         //public Circle_Scale Circle_Scale { get; set; }
         //public Linear_Scale Linear_Scale { get; set; }
@@ -5329,6 +5417,33 @@ namespace Watch_Face_Editor
                 };
             }
 
+            hmUI_widget_TEXT Number_Font = null;
+            if (this.Number_Font != null)
+            {
+                Number_Font = new hmUI_widget_TEXT
+                {
+                    x = this.Number_Font.x,
+                    y = this.Number_Font.y,
+                    w = this.Number_Font.w,
+                    h = this.Number_Font.h,
+                    color = this.Number_Font.color,
+                    align_h = this.Number_Font.align_h,
+                    align_v = this.Number_Font.align_v,
+                    text_size = this.Number_Font.text_size,
+                    text_style = this.Number_Font.text_style,
+                    line_space = this.Number_Font.line_space,
+                    char_space = this.Number_Font.char_space,
+                    font = this.Number_Font.font,
+                    padding = this.Number_Font.padding,
+                    unit_type = this.Number_Font.unit_type,
+
+                    position = this.Number_Font.position,
+                    visible = this.Number_Font.visible,
+                    show_level = this.Number_Font.show_level,
+                    type = this.Number_Font.type,
+                };
+            }
+
             hmUI_widget_IMG_POINTER Pointer = null;
             if (this.Pointer != null)
             {
@@ -5354,50 +5469,6 @@ namespace Watch_Face_Editor
                     type = this.Pointer.type,
                 };
             }
-
-/*            Circle_Scale Circle_Scale = null;
-            if (this.Circle_Scale != null)
-            {
-                Circle_Scale = new Circle_Scale
-                {
-                    center_x = this.Circle_Scale.center_x,
-                    center_y = this.Circle_Scale.center_y,
-                    start_angle = this.Circle_Scale.start_angle,
-                    end_angle = this.Circle_Scale.end_angle,
-                    color = this.Circle_Scale.color,
-                    radius = this.Circle_Scale.radius,
-                    line_width = this.Circle_Scale.line_width,
-                    mirror = this.Circle_Scale.mirror,
-                    inversion = this.Circle_Scale.inversion,
-
-                    position = this.Circle_Scale.position,
-                    enable = this.Circle_Scale.enable,
-                    show_level = this.Circle_Scale.show_level,
-                    type = this.Circle_Scale.type,
-                };
-            }
-
-            Linear_Scale Linear_Scale = null;
-            if (this.Linear_Scale != null)
-            {
-                Linear_Scale = new Linear_Scale
-                {
-                    start_x = this.Linear_Scale.start_x,
-                    start_y = this.Linear_Scale.start_y,
-                    color = this.Linear_Scale.color,
-                    pointer = this.Linear_Scale.pointer,
-                    lenght = this.Linear_Scale.lenght,
-                    line_width = this.Linear_Scale.line_width,
-                    mirror = this.Linear_Scale.mirror,
-                    inversion = this.Linear_Scale.inversion,
-                    vertical = this.Linear_Scale.vertical,
-
-                    position = this.Linear_Scale.position,
-                    enable = this.Linear_Scale.enable,
-                    show_level = this.Linear_Scale.show_level,
-                    type = this.Linear_Scale.type,
-                };
-            }*/
 
             hmUI_widget_IMG Icon = null;
             if (this.Icon != null)
@@ -5424,6 +5495,7 @@ namespace Watch_Face_Editor
                 Images = Images,
                 Segments = Segments,
                 Number = Number,
+                Number_Font = Number_Font,
                 Pointer = Pointer,
                 //Circle_Scale = Circle_Scale,
                 //Linear_Scale = Linear_Scale,
@@ -5445,6 +5517,7 @@ namespace Watch_Face_Editor
         public hmUI_widget_IMG_LEVEL Images { get; set; }
         public hmUI_widget_IMG_PROGRESS Segments { get; set; }
         public hmUI_widget_IMG_NUMBER Number { get; set; }
+        public hmUI_widget_TEXT Number_Font { get; set; }
         public hmUI_widget_IMG_POINTER Pointer { get; set; }
         //public Circle_Scale Circle_Scale { get; set; }
         //public Linear_Scale Linear_Scale { get; set; }
@@ -5517,6 +5590,33 @@ namespace Watch_Face_Editor
                 };
             }
 
+            hmUI_widget_TEXT Number_Font = null;
+            if (this.Number_Font != null)
+            {
+                Number_Font = new hmUI_widget_TEXT
+                {
+                    x = this.Number_Font.x,
+                    y = this.Number_Font.y,
+                    w = this.Number_Font.w,
+                    h = this.Number_Font.h,
+                    color = this.Number_Font.color,
+                    align_h = this.Number_Font.align_h,
+                    align_v = this.Number_Font.align_v,
+                    text_size = this.Number_Font.text_size,
+                    text_style = this.Number_Font.text_style,
+                    line_space = this.Number_Font.line_space,
+                    char_space = this.Number_Font.char_space,
+                    font = this.Number_Font.font,
+                    padding = this.Number_Font.padding,
+                    unit_type = this.Number_Font.unit_type,
+
+                    position = this.Number_Font.position,
+                    visible = this.Number_Font.visible,
+                    show_level = this.Number_Font.show_level,
+                    type = this.Number_Font.type,
+                };
+            }
+
             hmUI_widget_IMG_POINTER Pointer = null;
             if (this.Pointer != null)
             {
@@ -5543,50 +5643,6 @@ namespace Watch_Face_Editor
                 };
             }
 
-            /*Circle_Scale Circle_Scale = null;
-            if (this.Circle_Scale != null)
-            {
-                Circle_Scale = new Circle_Scale
-                {
-                    center_x = this.Circle_Scale.center_x,
-                    center_y = this.Circle_Scale.center_y,
-                    start_angle = this.Circle_Scale.start_angle,
-                    end_angle = this.Circle_Scale.end_angle,
-                    color = this.Circle_Scale.color,
-                    radius = this.Circle_Scale.radius,
-                    line_width = this.Circle_Scale.line_width,
-                    mirror = this.Circle_Scale.mirror,
-                    inversion = this.Circle_Scale.inversion,
-
-                    position = this.Circle_Scale.position,
-                    enable = this.Circle_Scale.enable,
-                    show_level = this.Circle_Scale.show_level,
-                    type = this.Circle_Scale.type,
-                };
-            }
-
-            Linear_Scale Linear_Scale = null;
-            if (this.Linear_Scale != null)
-            {
-                Linear_Scale = new Linear_Scale
-                {
-                    start_x = this.Linear_Scale.start_x,
-                    start_y = this.Linear_Scale.start_y,
-                    color = this.Linear_Scale.color,
-                    pointer = this.Linear_Scale.pointer,
-                    lenght = this.Linear_Scale.lenght,
-                    line_width = this.Linear_Scale.line_width,
-                    mirror = this.Linear_Scale.mirror,
-                    inversion = this.Linear_Scale.inversion,
-                    vertical = this.Linear_Scale.vertical,
-
-                    position = this.Linear_Scale.position,
-                    enable = this.Linear_Scale.enable,
-                    show_level = this.Linear_Scale.show_level,
-                    type = this.Linear_Scale.type,
-                };
-            }*/
-
             hmUI_widget_IMG Icon = null;
             if (this.Icon != null)
             {
@@ -5612,6 +5668,7 @@ namespace Watch_Face_Editor
                 Images = Images,
                 Segments = Segments,
                 Number = Number,
+                Number_Font = Number_Font,
                 Pointer = Pointer,
                 //Circle_Scale = Circle_Scale,
                 //Linear_Scale = Linear_Scale,
@@ -5631,6 +5688,9 @@ namespace Watch_Face_Editor
         public bool visible = true;
 
         public hmUI_widget_IMG_NUMBER Number { get; set; }
+        public hmUI_widget_TEXT Number_Font { get; set; }
+        public hmUI_widget_IMG_NUMBER Number_Target { get; set; }
+        public hmUI_widget_TEXT Number_Target_Font { get; set; }
         public hmUI_widget_IMG_POINTER Pointer { get; set; }
         public hmUI_widget_IMG Icon { get; set; }
 
@@ -5662,6 +5722,89 @@ namespace Watch_Face_Editor
                     visible = this.Number.visible,
                     show_level = this.Number.show_level,
                     type = this.Number.type,
+                };
+            }
+
+            hmUI_widget_TEXT Number_Font = null;
+            if (this.Number_Font != null)
+            {
+                Number_Font = new hmUI_widget_TEXT
+                {
+                    x = this.Number_Font.x,
+                    y = this.Number_Font.y,
+                    w = this.Number_Font.w,
+                    h = this.Number_Font.h,
+                    color = this.Number_Font.color,
+                    align_h = this.Number_Font.align_h,
+                    align_v = this.Number_Font.align_v,
+                    text_size = this.Number_Font.text_size,
+                    text_style = this.Number_Font.text_style,
+                    line_space = this.Number_Font.line_space,
+                    char_space = this.Number_Font.char_space,
+                    font = this.Number_Font.font,
+                    padding = this.Number_Font.padding,
+                    unit_type = this.Number_Font.unit_type,
+
+                    position = this.Number_Font.position,
+                    visible = this.Number_Font.visible,
+                    show_level = this.Number_Font.show_level,
+                    type = this.Number_Font.type,
+                };
+            }
+
+            hmUI_widget_IMG_NUMBER Number_Target = null;
+            if (this.Number_Target != null)
+            {
+                Number_Target = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Number_Target.imageX,
+                    imageY = this.Number_Target.imageY,
+                    space = this.Number_Target.space,
+                    angle = this.Number_Target.angle,
+                    zero = this.Number_Target.zero,
+                    align = this.Number_Target.align,
+                    img_First = this.Number_Target.img_First,
+                    unit = this.Number_Target.unit,
+                    imperial_unit = this.Number_Target.imperial_unit,
+                    icon = this.Number_Target.icon,
+                    iconPosX = this.Number_Target.iconPosX,
+                    iconPosY = this.Number_Target.iconPosY,
+                    negative_image = this.Number_Target.negative_image,
+                    invalid_image = this.Number_Target.invalid_image,
+                    dot_image = this.Number_Target.dot_image,
+                    follow = this.Number_Target.follow,
+
+                    position = this.Number_Target.position,
+                    visible = this.Number_Target.visible,
+                    show_level = this.Number_Target.show_level,
+                    type = this.Number_Target.type,
+                };
+            }
+
+            hmUI_widget_TEXT Number_Target_Font = null;
+            if (this.Number_Target_Font != null)
+            {
+                Number_Target_Font = new hmUI_widget_TEXT
+                {
+                    x = this.Number_Target_Font.x,
+                    y = this.Number_Target_Font.y,
+                    w = this.Number_Target_Font.w,
+                    h = this.Number_Target_Font.h,
+                    color = this.Number_Target_Font.color,
+                    align_h = this.Number_Target_Font.align_h,
+                    align_v = this.Number_Target_Font.align_v,
+                    text_size = this.Number_Target_Font.text_size,
+                    text_style = this.Number_Target_Font.text_style,
+                    line_space = this.Number_Target_Font.line_space,
+                    char_space = this.Number_Target_Font.char_space,
+                    font = this.Number_Target_Font.font,
+                    padding = this.Number_Font.padding,
+                    unit_type = this.Number_Font.unit_type,
+
+                    position = this.Number_Target_Font.position,
+                    visible = this.Number_Target_Font.visible,
+                    show_level = this.Number_Target_Font.show_level,
+                    type = this.Number_Target_Font.type,
                 };
             }
 
@@ -5714,6 +5857,9 @@ namespace Watch_Face_Editor
                 visible = this.visible,
 
                 Number = Number,
+                Number_Font = Number_Font,
+                Number_Target = Number_Target,
+                Number_Target_Font = Number_Target_Font,
                 Pointer = Pointer,
                 Icon = Icon,
             };
@@ -5733,9 +5879,11 @@ namespace Watch_Face_Editor
         public hmUI_widget_IMG_LEVEL Images { get; set; }
         public hmUI_widget_IMG_PROGRESS Segments { get; set; }
         public hmUI_widget_IMG_NUMBER Sunrise { get; set; }
+        public hmUI_widget_TEXT Sunrise_Font { get; set; }
         public hmUI_widget_IMG_NUMBER Sunrise_rotation { get; set; }
         public Text_Circle Sunrise_circle { get; set; }
         public hmUI_widget_IMG_NUMBER Sunset { get; set; }
+        public hmUI_widget_TEXT Sunset_Font { get; set; }
         public hmUI_widget_IMG_NUMBER Sunset_rotation { get; set; }
         public Text_Circle Sunset_circle { get; set; }
         public hmUI_widget_IMG_NUMBER Sunset_Sunrise { get; set; }
@@ -5806,6 +5954,33 @@ namespace Watch_Face_Editor
                     visible = this.Sunrise.visible,
                     show_level = this.Sunrise.show_level,
                     type = this.Sunrise.type,
+                };
+            }
+
+            hmUI_widget_TEXT Sunrise_Font = null;
+            if (this.Sunrise_Font != null)
+            {
+                Sunrise_Font = new hmUI_widget_TEXT
+                {
+                    x = this.Sunrise_Font.x,
+                    y = this.Sunrise_Font.y,
+                    w = this.Sunrise_Font.w,
+                    h = this.Sunrise_Font.h,
+                    color = this.Sunrise_Font.color,
+                    align_h = this.Sunrise_Font.align_h,
+                    align_v = this.Sunrise_Font.align_v,
+                    text_size = this.Sunrise_Font.text_size,
+                    text_style = this.Sunrise_Font.text_style,
+                    line_space = this.Sunrise_Font.line_space,
+                    char_space = this.Sunrise_Font.char_space,
+                    font = this.Sunrise_Font.font,
+                    padding = this.Sunrise_Font.padding,
+                    unit_type = this.Sunrise_Font.unit_type,
+
+                    position = this.Sunrise_Font.position,
+                    visible = this.Sunrise_Font.visible,
+                    show_level = this.Sunrise_Font.show_level,
+                    type = this.Sunrise_Font.type,
                 };
             }
 
@@ -5897,6 +6072,33 @@ namespace Watch_Face_Editor
                     visible = this.Sunset.visible,
                     show_level = this.Sunset.show_level,
                     type = this.Sunset.type,
+                };
+            }
+
+            hmUI_widget_TEXT Sunset_Font = null;
+            if (this.Sunset_Font != null)
+            {
+                Sunset_Font = new hmUI_widget_TEXT
+                {
+                    x = this.Sunset_Font.x,
+                    y = this.Sunset_Font.y,
+                    w = this.Sunset_Font.w,
+                    h = this.Sunset_Font.h,
+                    color = this.Sunset_Font.color,
+                    align_h = this.Sunset_Font.align_h,
+                    align_v = this.Sunset_Font.align_v,
+                    text_size = this.Sunset_Font.text_size,
+                    text_style = this.Sunset_Font.text_style,
+                    line_space = this.Sunset_Font.line_space,
+                    char_space = this.Sunset_Font.char_space,
+                    font = this.Sunset_Font.font,
+                    padding = this.Sunset_Font.padding,
+                    unit_type = this.Sunset_Font.unit_type,
+
+                    position = this.Sunset_Font.position,
+                    visible = this.Sunset_Font.visible,
+                    show_level = this.Sunset_Font.show_level,
+                    type = this.Sunset_Font.type,
                 };
             }
 
@@ -6042,9 +6244,11 @@ namespace Watch_Face_Editor
                 Images = Images,
                 Segments = Segments,
                 Sunrise = Sunrise,
+                Sunrise_Font = Sunrise_Font,
                 Sunrise_rotation = Sunrise_rotation,
                 Sunrise_circle = Sunrise_circle,
                 Sunset = Sunset,
+                Sunset_Font = Sunset_Font,
                 Sunset_rotation = Sunset_rotation,
                 Sunset_circle = Sunset_circle,
                 Sunset_Sunrise = Sunset_Sunrise,
@@ -6067,6 +6271,7 @@ namespace Watch_Face_Editor
         public hmUI_widget_IMG_LEVEL Images { get; set; }
         public hmUI_widget_IMG_PROGRESS Segments { get; set; }
         public hmUI_widget_IMG_NUMBER Number { get; set; }
+        public hmUI_widget_TEXT Number_Font { get; set; }
         public hmUI_widget_IMG_POINTER Pointer { get; set; }
         public hmUI_widget_IMG_LEVEL Direction { get; set; }
         public hmUI_widget_IMG Icon { get; set; }
@@ -6135,6 +6340,33 @@ namespace Watch_Face_Editor
                     visible = this.Number.visible,
                     show_level = this.Number.show_level,
                     type = this.Number.type,
+                };
+            }
+
+            hmUI_widget_TEXT Number_Font = null;
+            if (this.Number_Font != null)
+            {
+                Number_Font = new hmUI_widget_TEXT
+                {
+                    x = this.Number_Font.x,
+                    y = this.Number_Font.y,
+                    w = this.Number_Font.w,
+                    h = this.Number_Font.h,
+                    color = this.Number_Font.color,
+                    align_h = this.Number_Font.align_h,
+                    align_v = this.Number_Font.align_v,
+                    text_size = this.Number_Font.text_size,
+                    text_style = this.Number_Font.text_style,
+                    line_space = this.Number_Font.line_space,
+                    char_space = this.Number_Font.char_space,
+                    font = this.Number_Font.font,
+                    padding = this.Number_Font.padding,
+                    unit_type = this.Number_Font.unit_type,
+
+                    position = this.Number_Font.position,
+                    visible = this.Number_Font.visible,
+                    show_level = this.Number_Font.show_level,
+                    type = this.Number_Font.type,
                 };
             }
 
@@ -6207,6 +6439,7 @@ namespace Watch_Face_Editor
                 Images = Images,
                 Segments = Segments,
                 Number = Number,
+                Number_Font = Number_Font,
                 Pointer = Pointer,
                 Direction = Direction,
                 Icon = Icon,

@@ -655,6 +655,7 @@ namespace ControlLibrary
             int index = 1;
             elementOptions.Add(index++, "Icon");
             elementOptions.Add(index++, "Pointer");
+            elementOptions.Add(index++, "Number_Font");
             elementOptions.Add(index++, "Number");
             elementOptions.Add(index++, "Segments");
             elementOptions.Add(index++, "Images");

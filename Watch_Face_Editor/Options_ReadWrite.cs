@@ -795,7 +795,7 @@ namespace Watch_Face_Editor
         /// <param name="_sunrise">Режим отображения для восхода/заката</param>
         /// <param name="_angleVisible">Видимость настроек угла</param>
         private void Read_ImgNumber_Options(hmUI_widget_IMG_NUMBER img_number, bool _dastance, bool _follow, string _followText,
-            bool _imageError, bool _optionalSymbol, bool _padingZero, bool _angleVisible, bool _sunrise = false)
+            bool _imageError, bool _optionalSymbol, bool _padingZero, bool _angleVisible, bool _sunrise = false, bool _altitude = false)
         {
             PreviewView = false;
 
@@ -803,6 +803,7 @@ namespace Watch_Face_Editor
 
             uCtrl_Text_Opt.Distance = _dastance;
             uCtrl_Text_Opt.Sunrise = _sunrise;
+            uCtrl_Text_Opt.Altitude = _altitude;
             uCtrl_Text_Opt.Follow = _follow;
             uCtrl_Text_Opt.FollowText = _followText;
             uCtrl_Text_Opt.ImageError = _imageError;

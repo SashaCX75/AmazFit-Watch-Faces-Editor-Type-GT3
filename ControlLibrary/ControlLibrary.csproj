@@ -1311,6 +1311,9 @@
     <EmbeddedResource Include="Elements\UCtrl_Sunrise_Elm.fr.resx">
       <DependentUpon>UCtrl_Sunrise_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Sunrise_Elm.is-IS.resx">
+      <DependentUpon>UCtrl_Sunrise_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Sunrise_Elm.it.resx">
       <DependentUpon>UCtrl_Sunrise_Elm.cs</DependentUpon>
     </EmbeddedResource>

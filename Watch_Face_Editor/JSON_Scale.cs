@@ -416,8 +416,11 @@ namespace Watch_Face_Editor
                     ElementWeather elementWeather = (ElementWeather)elements;
                     Scale_IMG_LEVEL(elementWeather.Images, scale);
                     Scale_IMG_NUMBER(elementWeather.Number, scale);
+                    Scale_TEXT(elementWeather.Number_Font, scale);
                     Scale_IMG_NUMBER(elementWeather.Number_Min, scale);
+                    Scale_TEXT(elementWeather.Number_Min_Font, scale);
                     Scale_IMG_NUMBER(elementWeather.Number_Max, scale);
+                    Scale_TEXT(elementWeather.Number_Max_Font, scale);
                     Scale_IMG_NUMBER(elementWeather.Text_Min_rotation, scale);
                     Scale_Text_Circle(elementWeather.Text_Min_circle, scale);
                     Scale_IMG_NUMBER(elementWeather.Text_Max_rotation, scale);
@@ -430,6 +433,7 @@ namespace Watch_Face_Editor
                     Scale_IMG_LEVEL(elementUVIndex.Images, scale);
                     Scale_IMG_PROGRESS(elementUVIndex.Segments, scale);
                     Scale_IMG_NUMBER(elementUVIndex.Number, scale);
+                    Scale_TEXT(elementUVIndex.Number_Font, scale);
                     Scale_IMG_POINTER(elementUVIndex.Pointer, scale);
                     Scale_IMG(elementUVIndex.Icon, scale);
                     break;
@@ -438,26 +442,36 @@ namespace Watch_Face_Editor
                     Scale_IMG_LEVEL(elementHumidity.Images, scale);
                     Scale_IMG_PROGRESS(elementHumidity.Segments, scale);
                     Scale_IMG_NUMBER(elementHumidity.Number, scale);
+                    Scale_TEXT(elementHumidity.Number_Font, scale);
                     Scale_IMG_POINTER(elementHumidity.Pointer, scale);
                     Scale_IMG(elementHumidity.Icon, scale);
                     break;
                 case "ElementAltimeter":
-                    ElementAltimeter Altimeter = (ElementAltimeter)elements;
-                    Scale_IMG_NUMBER(Altimeter.Number, scale);
-                    Scale_IMG_POINTER(Altimeter.Pointer, scale);
-                    Scale_IMG(Altimeter.Icon, scale);
+                    ElementAltimeter elementAltimeter = (ElementAltimeter)elements;
+                    Scale_IMG_NUMBER(elementAltimeter.Number, scale);
+                    Scale_TEXT(elementAltimeter.Number_Font, scale);
+                    Scale_IMG_NUMBER(elementAltimeter.Number_Target, scale);
+                    Scale_TEXT(elementAltimeter.Number_Target_Font, scale);
+                    Scale_IMG_POINTER(elementAltimeter.Pointer, scale);
+                    Scale_IMG(elementAltimeter.Icon, scale);
                     break;
                 case "ElementSunrise":
                     ElementSunrise elementSunrise = (ElementSunrise)elements;
                     Scale_IMG_LEVEL(elementSunrise.Images, scale);
                     Scale_IMG_PROGRESS(elementSunrise.Segments, scale);
+
                     Scale_IMG_NUMBER(elementSunrise.Sunrise, scale);
-                    Scale_IMG_NUMBER(elementSunrise.Sunset, scale);
-                    Scale_IMG_NUMBER(elementSunrise.Sunset_Sunrise, scale);
+                    Scale_TEXT(elementSunrise.Sunrise_Font, scale);
                     Scale_IMG_NUMBER(elementSunrise.Sunrise_rotation, scale);
                     Scale_Text_Circle(elementSunrise.Sunrise_circle, scale);
+
+                    Scale_IMG_NUMBER(elementSunrise.Sunset, scale);
+                    Scale_TEXT(elementSunrise.Sunset_Font, scale);
                     Scale_IMG_NUMBER(elementSunrise.Sunset_rotation, scale);
                     Scale_Text_Circle(elementSunrise.Sunset_circle, scale);
+
+                    Scale_IMG_NUMBER(elementSunrise.Sunset_Sunrise, scale);
+
                     Scale_IMG_POINTER(elementSunrise.Pointer, scale);
                     Scale_IMG(elementSunrise.Icon, scale);
                     break;
@@ -466,6 +480,7 @@ namespace Watch_Face_Editor
                     Scale_IMG_LEVEL(elementWind.Images, scale);
                     Scale_IMG_PROGRESS(elementWind.Segments, scale);
                     Scale_IMG_NUMBER(elementWind.Number, scale);
+                    Scale_TEXT(elementWind.Number_Font, scale);
                     Scale_IMG_POINTER(elementWind.Pointer, scale);
                     Scale_IMG(elementWind.Icon, scale);
                     break;

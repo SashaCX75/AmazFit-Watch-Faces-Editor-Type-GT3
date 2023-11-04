@@ -395,7 +395,7 @@ namespace ControlLibrary
             numericUpDown_Humidity_Set.Value = rnd.Next(30, 100);
             numericUpDown_WindForce.Value = rnd.Next(0, 13);
             comboBox_WindDirection.SelectedIndex = rnd.Next(0, 8);
-            numericUpDown_Altitude_Set.Value = rnd.Next(0, 100);
+            numericUpDown_Altitude_Set.Value = rnd.Next(-100, 1000);
             numericUpDown_AirPressure_Set.Value = rnd.Next(800, 1200);
 
             checkBox_Bluetooth_Set.Checked = rnd.Next(2) == 0 ? false : true;

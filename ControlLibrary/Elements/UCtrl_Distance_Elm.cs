@@ -392,9 +392,9 @@ namespace ControlLibrary
 
             pictureBox_Del.Location = new Point(button_ElementName.Width - pictureBox_Del.Width - 4, 2);
 
-            if (tableLayoutPanel1.Height > 130)
+            if (tableLayoutPanel1.Height > 155)
             {
-                float currentDPI = tableLayoutPanel1.Height / 101f;
+                float currentDPI = tableLayoutPanel1.Height / 126f;
                 button_ElementName.Image = (Image)(new Bitmap(button_ElementName.Image,
                     new Size((int)(16 * currentDPI), (int)(16 * currentDPI))));
 
@@ -608,6 +608,7 @@ namespace ControlLibrary
             elementOptions.Add(index++, "Icon");
             elementOptions.Add(index++, "Text_circle");
             elementOptions.Add(index++, "Text_rotation");
+            elementOptions.Add(index++, "Number_Font");
             elementOptions.Add(index++, "Number");
             SetOptionsPosition(elementOptions);
 
