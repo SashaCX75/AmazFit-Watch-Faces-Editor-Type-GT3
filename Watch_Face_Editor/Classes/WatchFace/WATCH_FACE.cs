@@ -1869,8 +1869,8 @@ namespace Watch_Face_Editor
                     line_space = this.Number_Target_Font.line_space,
                     char_space = this.Number_Target_Font.char_space,
                     font = this.Number_Target_Font.font,
-                    padding = this.Number_Font.padding,
-                    unit_type = this.Number_Font.unit_type,
+                    padding = this.Number_Target_Font.padding,
+                    unit_type = this.Number_Target_Font.unit_type,
 
                     position = this.Number_Target_Font.position,
                     visible = this.Number_Target_Font.visible,
@@ -2549,8 +2549,8 @@ namespace Watch_Face_Editor
                     line_space = this.Number_Target_Font.line_space,
                     char_space = this.Number_Target_Font.char_space,
                     font = this.Number_Target_Font.font,
-                    padding = this.Number_Font.padding,
-                    unit_type = this.Number_Font.unit_type,
+                    padding = this.Number_Target_Font.padding,
+                    unit_type = this.Number_Target_Font.unit_type,
 
                     position = this.Number_Target_Font.position,
                     visible = this.Number_Target_Font.visible,
@@ -3020,7 +3020,7 @@ namespace Watch_Face_Editor
         public hmUI_widget_IMG_LEVEL Images { get; set; }
         public hmUI_widget_IMG_PROGRESS Segments { get; set; }
         public hmUI_widget_IMG_NUMBER Number { get; set; }
-        public hmUI_widget_TEXT Number_Font { get; set; }
+        //public hmUI_widget_TEXT Number_Font { get; set; }
         public hmUI_widget_IMG_NUMBER Number_Target { get; set; }
         public hmUI_widget_TEXT Number_Target_Font { get; set; }
         public hmUI_widget_IMG_NUMBER Text_rotation_Target { get; set; }
@@ -3097,32 +3097,32 @@ namespace Watch_Face_Editor
                 };
             }
 
-            hmUI_widget_TEXT Number_Font = null;
-            if (this.Number_Font != null)
-            {
-                Number_Font = new hmUI_widget_TEXT
-                {
-                    x = this.Number_Font.x,
-                    y = this.Number_Font.y,
-                    w = this.Number_Font.w,
-                    h = this.Number_Font.h,
-                    color = this.Number_Font.color,
-                    align_h = this.Number_Font.align_h,
-                    align_v = this.Number_Font.align_v,
-                    text_size = this.Number_Font.text_size,
-                    text_style = this.Number_Font.text_style,
-                    line_space = this.Number_Font.line_space,
-                    char_space = this.Number_Font.char_space,
-                    font = this.Number_Font.font,
-                    padding = this.Number_Font.padding,
-                    unit_type = this.Number_Font.unit_type,
+            //hmUI_widget_TEXT Number_Font = null;
+            //if (this.Number_Font != null)
+            //{
+            //    Number_Font = new hmUI_widget_TEXT
+            //    {
+            //        x = this.Number_Font.x,
+            //        y = this.Number_Font.y,
+            //        w = this.Number_Font.w,
+            //        h = this.Number_Font.h,
+            //        color = this.Number_Font.color,
+            //        align_h = this.Number_Font.align_h,
+            //        align_v = this.Number_Font.align_v,
+            //        text_size = this.Number_Font.text_size,
+            //        text_style = this.Number_Font.text_style,
+            //        line_space = this.Number_Font.line_space,
+            //        char_space = this.Number_Font.char_space,
+            //        font = this.Number_Font.font,
+            //        padding = this.Number_Font.padding,
+            //        unit_type = this.Number_Font.unit_type,
 
-                    position = this.Number_Font.position,
-                    visible = this.Number_Font.visible,
-                    show_level = this.Number_Font.show_level,
-                    type = this.Number_Font.type,
-                };
-            }
+            //        position = this.Number_Font.position,
+            //        visible = this.Number_Font.visible,
+            //        show_level = this.Number_Font.show_level,
+            //        type = this.Number_Font.type,
+            //    };
+            //}
 
             hmUI_widget_IMG_NUMBER Number_Target = null;
             if (this.Number_Target != null)
@@ -3169,8 +3169,8 @@ namespace Watch_Face_Editor
                     line_space = this.Number_Target_Font.line_space,
                     char_space = this.Number_Target_Font.char_space,
                     font = this.Number_Target_Font.font,
-                    padding = this.Number_Font.padding,
-                    unit_type = this.Number_Font.unit_type,
+                    padding = this.Number_Target_Font.padding,
+                    unit_type = this.Number_Target_Font.unit_type,
 
                     position = this.Number_Target_Font.position,
                     visible = this.Number_Target_Font.visible,
@@ -3332,7 +3332,7 @@ namespace Watch_Face_Editor
                 Images = Images,
                 Segments = Segments,
                 Number = Number,
-                Number_Font = Number_Font,
+                //Number_Font = Number_Font,
                 Number_Target = Number_Target,
                 Number_Target_Font = Number_Target_Font,
                 Text_rotation_Target = Text_rotation_Target,
@@ -3735,8 +3735,8 @@ namespace Watch_Face_Editor
                     line_space = this.Number_Target_Font.line_space,
                     char_space = this.Number_Target_Font.char_space,
                     font = this.Number_Target_Font.font,
-                    padding = this.Number_Font.padding,
-                    unit_type = this.Number_Font.unit_type,
+                    padding = this.Number_Target_Font.padding,
+                    unit_type = this.Number_Target_Font.unit_type,
 
                     position = this.Number_Target_Font.position,
                     visible = this.Number_Target_Font.visible,
@@ -4077,8 +4077,8 @@ namespace Watch_Face_Editor
                     line_space = this.Number_Target_Font.line_space,
                     char_space = this.Number_Target_Font.char_space,
                     font = this.Number_Target_Font.font,
-                    padding = this.Number_Font.padding,
-                    unit_type = this.Number_Font.unit_type,
+                    padding = this.Number_Target_Font.padding,
+                    unit_type = this.Number_Target_Font.unit_type,
 
                     position = this.Number_Target_Font.position,
                     visible = this.Number_Target_Font.visible,
@@ -4750,8 +4750,8 @@ namespace Watch_Face_Editor
                     line_space = this.Number_Target_Font.line_space,
                     char_space = this.Number_Target_Font.char_space,
                     font = this.Number_Target_Font.font,
-                    padding = this.Number_Font.padding,
-                    unit_type = this.Number_Font.unit_type,
+                    padding = this.Number_Target_Font.padding,
+                    unit_type = this.Number_Target_Font.unit_type,
 
                     position = this.Number_Target_Font.position,
                     visible = this.Number_Target_Font.visible,
@@ -4951,6 +4951,7 @@ namespace Watch_Face_Editor
         public hmUI_widget_TEXT Number_Max_Font { get; set; }
         public hmUI_widget_IMG_NUMBER Text_Max_rotation { get; set; }
         public Text_Circle Text_Max_circle { get; set; }
+        public hmUI_widget_TEXT Number_Min_Max_Font { get; set; }
         public hmUI_widget_TEXT City_Name { get; set; }
         public hmUI_widget_IMG Icon { get; set; }
 
@@ -5267,6 +5268,33 @@ namespace Watch_Face_Editor
                 };
             }
 
+            hmUI_widget_TEXT Number_Min_Max_Font = null;
+            if (this.Number_Min_Max_Font != null)
+            {
+                Number_Min_Max_Font = new hmUI_widget_TEXT
+                {
+                    x = this.Number_Min_Max_Font.x,
+                    y = this.Number_Min_Max_Font.y,
+                    w = this.Number_Min_Max_Font.w,
+                    h = this.Number_Min_Max_Font.h,
+                    color = this.Number_Min_Max_Font.color,
+                    align_h = this.Number_Min_Max_Font.align_h,
+                    align_v = this.Number_Min_Max_Font.align_v,
+                    text_size = this.Number_Min_Max_Font.text_size,
+                    text_style = this.Number_Min_Max_Font.text_style,
+                    line_space = this.Number_Min_Max_Font.line_space,
+                    char_space = this.Number_Min_Max_Font.char_space,
+                    font = this.Number_Min_Max_Font.font,
+                    padding = this.Number_Min_Max_Font.padding,
+                    unit_type = this.Number_Min_Max_Font.unit_type,
+
+                    position = this.Number_Min_Max_Font.position,
+                    visible = this.Number_Min_Max_Font.visible,
+                    show_level = this.Number_Min_Max_Font.show_level,
+                    type = this.Number_Min_Max_Font.type,
+                };
+            }
+
             hmUI_widget_TEXT City_Name = null;
             if (this.City_Name != null)
             {
@@ -5325,6 +5353,7 @@ namespace Watch_Face_Editor
                 Number_Max_Font = Number_Max_Font,
                 Text_Max_rotation = Text_Max_rotation,
                 Text_Max_circle = Text_Max_circle,
+                Number_Min_Max_Font = Number_Min_Max_Font,
                 City_Name = City_Name,
                 Icon = Icon,
             };
@@ -5798,8 +5827,8 @@ namespace Watch_Face_Editor
                     line_space = this.Number_Target_Font.line_space,
                     char_space = this.Number_Target_Font.char_space,
                     font = this.Number_Target_Font.font,
-                    padding = this.Number_Font.padding,
-                    unit_type = this.Number_Font.unit_type,
+                    padding = this.Number_Target_Font.padding,
+                    unit_type = this.Number_Target_Font.unit_type,
 
                     position = this.Number_Target_Font.position,
                     visible = this.Number_Target_Font.visible,
@@ -6447,6 +6476,49 @@ namespace Watch_Face_Editor
         }
     }
 
+    //public class ElementMoon : ICloneable
+    //{
+    //    public string elementName = "ElementMoon";
+
+    //    ///// <summary>Позиция в наборе элементов</summary>
+    //    //public int position = -1;
+
+    //    /// <summary>Видимость элемента</summary>
+    //    public bool visible = true;
+
+    //    public hmUI_widget_IMG_LEVEL Images { get; set; }
+
+    //    public object Clone()
+    //    {
+
+    //        hmUI_widget_IMG_LEVEL Images = null;
+    //        if (this.Images != null)
+    //        {
+    //            Images = new hmUI_widget_IMG_LEVEL
+    //            {
+    //                X = this.Images.X,
+    //                Y = this.Images.Y,
+    //                img_First = this.Images.img_First,
+    //                image_length = this.Images.image_length,
+    //                shortcut = this.Images.shortcut,
+
+    //                position = this.Images.position,
+    //                visible = this.Images.visible,
+    //                show_level = this.Images.show_level,
+    //                type = this.Images.type,
+    //            };
+    //        }
+
+    //        return new ElementMoon
+    //        {
+    //            elementName = this.elementName,
+    //            visible = this.visible,
+
+    //            Images = Images,
+    //        };
+    //    }
+    //}
+
     public class ElementMoon : ICloneable
     {
         public string elementName = "ElementMoon";
@@ -6458,6 +6530,18 @@ namespace Watch_Face_Editor
         public bool visible = true;
 
         public hmUI_widget_IMG_LEVEL Images { get; set; }
+        //public hmUI_widget_IMG_PROGRESS Segments { get; set; }
+        public hmUI_widget_IMG_NUMBER Sunrise { get; set; }
+        public hmUI_widget_TEXT Sunrise_Font { get; set; }
+        //public hmUI_widget_IMG_NUMBER Sunrise_rotation { get; set; }
+        //public Text_Circle Sunrise_circle { get; set; }
+        public hmUI_widget_IMG_NUMBER Sunset { get; set; }
+        public hmUI_widget_TEXT Sunset_Font { get; set; }
+        //public hmUI_widget_IMG_NUMBER Sunset_rotation { get; set; }
+        //public Text_Circle Sunset_circle { get; set; }
+        public hmUI_widget_IMG_NUMBER Sunset_Sunrise { get; set; }
+        public hmUI_widget_IMG_POINTER Pointer { get; set; }
+        public hmUI_widget_IMG Icon { get; set; }
 
         public object Clone()
         {
@@ -6480,12 +6564,349 @@ namespace Watch_Face_Editor
                 };
             }
 
+            //hmUI_widget_IMG_PROGRESS Segments = null;
+            //if (this.Segments != null)
+            //{
+            //    Segments = new hmUI_widget_IMG_PROGRESS
+            //    {
+            //        X = this.Segments.X,
+            //        Y = this.Segments.Y,
+            //        img_First = this.Segments.img_First,
+            //        image_length = this.Segments.image_length,
+
+            //        position = this.Segments.position,
+            //        visible = this.Segments.visible,
+            //        show_level = this.Segments.show_level,
+            //        type = this.Segments.type,
+            //    };
+            //}
+
+            hmUI_widget_IMG_NUMBER Sunrise = null;
+            if (this.Sunrise != null)
+            {
+                Sunrise = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Sunrise.imageX,
+                    imageY = this.Sunrise.imageY,
+                    space = this.Sunrise.space,
+                    angle = this.Sunrise.angle,
+                    zero = this.Sunrise.zero,
+                    align = this.Sunrise.align,
+                    img_First = this.Sunrise.img_First,
+                    unit = this.Sunrise.unit,
+                    imperial_unit = this.Sunrise.imperial_unit,
+                    icon = this.Sunrise.icon,
+                    iconPosX = this.Sunrise.iconPosX,
+                    iconPosY = this.Sunrise.iconPosY,
+                    negative_image = this.Sunrise.negative_image,
+                    invalid_image = this.Sunrise.invalid_image,
+                    dot_image = this.Sunrise.dot_image,
+                    follow = this.Sunrise.follow,
+
+                    position = this.Sunrise.position,
+                    visible = this.Sunrise.visible,
+                    show_level = this.Sunrise.show_level,
+                    type = this.Sunrise.type,
+                };
+            }
+
+            hmUI_widget_TEXT Sunrise_Font = null;
+            if (this.Sunrise_Font != null)
+            {
+                Sunrise_Font = new hmUI_widget_TEXT
+                {
+                    x = this.Sunrise_Font.x,
+                    y = this.Sunrise_Font.y,
+                    w = this.Sunrise_Font.w,
+                    h = this.Sunrise_Font.h,
+                    color = this.Sunrise_Font.color,
+                    align_h = this.Sunrise_Font.align_h,
+                    align_v = this.Sunrise_Font.align_v,
+                    text_size = this.Sunrise_Font.text_size,
+                    text_style = this.Sunrise_Font.text_style,
+                    line_space = this.Sunrise_Font.line_space,
+                    char_space = this.Sunrise_Font.char_space,
+                    font = this.Sunrise_Font.font,
+                    padding = this.Sunrise_Font.padding,
+                    unit_type = this.Sunrise_Font.unit_type,
+
+                    position = this.Sunrise_Font.position,
+                    visible = this.Sunrise_Font.visible,
+                    show_level = this.Sunrise_Font.show_level,
+                    type = this.Sunrise_Font.type,
+                };
+            }
+
+            //hmUI_widget_IMG_NUMBER Sunrise_rotation = null;
+            //if (this.Sunrise_rotation != null)
+            //{
+            //    Sunrise_rotation = new hmUI_widget_IMG_NUMBER
+            //    {
+            //        imageX = this.Sunrise_rotation.imageX,
+            //        imageY = this.Sunrise_rotation.imageY,
+            //        space = this.Sunrise_rotation.space,
+            //        angle = this.Sunrise_rotation.angle,
+            //        zero = this.Sunrise_rotation.zero,
+            //        align = this.Sunrise_rotation.align,
+            //        img_First = this.Sunrise_rotation.img_First,
+            //        unit = this.Sunrise_rotation.unit,
+            //        imperial_unit = this.Sunrise_rotation.imperial_unit,
+            //        icon = this.Sunrise_rotation.icon,
+            //        iconPosX = this.Sunrise_rotation.iconPosX,
+            //        iconPosY = this.Sunrise_rotation.iconPosY,
+            //        negative_image = this.Sunrise_rotation.negative_image,
+            //        invalid_image = this.Sunrise_rotation.invalid_image,
+            //        dot_image = this.Sunrise_rotation.dot_image,
+            //        unit_in_alignment = this.Sunrise_rotation.unit_in_alignment,
+
+            //        position = this.Sunrise_rotation.position,
+            //        visible = this.Sunrise_rotation.visible,
+            //        show_level = this.Sunrise_rotation.show_level,
+            //        type = this.Sunrise_rotation.type,
+            //    };
+            //}
+
+            //Text_Circle Sunrise_circle = null;
+            //if (this.Sunrise_circle != null)
+            //{
+            //    Sunrise_circle = new Text_Circle
+            //    {
+            //        circle_center_X = this.Sunrise_circle.circle_center_X,
+            //        circle_center_Y = this.Sunrise_circle.circle_center_Y,
+            //        radius = this.Sunrise_circle.radius,
+            //        angle = this.Sunrise_circle.angle,
+            //        char_space_angle = this.Sunrise_circle.char_space_angle,
+            //        zero = this.Sunrise_circle.zero,
+            //        img_First = this.Sunrise_circle.img_First,
+            //        //image_width = this.Sunrise_circle.image_width,
+            //        //image_height = this.Sunrise_circle.image_height,
+            //        unit = this.Sunrise_circle.unit,
+            //        //unit_width = this.Sunrise_circle.unit_width,
+            //        imperial_unit = this.Sunrise_circle.imperial_unit,
+            //        dot_image = this.Sunrise_circle.dot_image,
+            //        //dot_image_width = this.Sunrise_circle.dot_image_width,
+            //        error_image = this.Sunrise_circle.error_image,
+            //        //error_width = this.Sunrise_circle.error_width,
+            //        vertical_alignment = this.Sunrise_circle.vertical_alignment,
+            //        horizontal_alignment = this.Sunrise_circle.horizontal_alignment,
+            //        reverse_direction = this.Sunrise_circle.reverse_direction,
+            //        unit_in_alignment = this.Sunrise_circle.unit_in_alignment,
+
+            //        position = this.Sunrise_circle.position,
+            //        visible = this.Sunrise_circle.visible,
+            //        show_level = this.Sunrise_circle.show_level,
+            //        type = this.Sunrise_circle.type,
+            //    };
+            //}
+
+            hmUI_widget_IMG_NUMBER Sunset = null;
+            if (this.Sunset != null)
+            {
+                Sunset = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Sunset.imageX,
+                    imageY = this.Sunset.imageY,
+                    space = this.Sunset.space,
+                    angle = this.Sunset.angle,
+                    zero = this.Sunset.zero,
+                    align = this.Sunset.align,
+                    img_First = this.Sunset.img_First,
+                    unit = this.Sunset.unit,
+                    imperial_unit = this.Sunset.imperial_unit,
+                    icon = this.Sunset.icon,
+                    iconPosX = this.Sunset.iconPosX,
+                    iconPosY = this.Sunset.iconPosY,
+                    negative_image = this.Sunset.negative_image,
+                    invalid_image = this.Sunset.invalid_image,
+                    dot_image = this.Sunset.dot_image,
+                    follow = this.Sunset.follow,
+
+                    position = this.Sunset.position,
+                    visible = this.Sunset.visible,
+                    show_level = this.Sunset.show_level,
+                    type = this.Sunset.type,
+                };
+            }
+
+            hmUI_widget_TEXT Sunset_Font = null;
+            if (this.Sunset_Font != null)
+            {
+                Sunset_Font = new hmUI_widget_TEXT
+                {
+                    x = this.Sunset_Font.x,
+                    y = this.Sunset_Font.y,
+                    w = this.Sunset_Font.w,
+                    h = this.Sunset_Font.h,
+                    color = this.Sunset_Font.color,
+                    align_h = this.Sunset_Font.align_h,
+                    align_v = this.Sunset_Font.align_v,
+                    text_size = this.Sunset_Font.text_size,
+                    text_style = this.Sunset_Font.text_style,
+                    line_space = this.Sunset_Font.line_space,
+                    char_space = this.Sunset_Font.char_space,
+                    font = this.Sunset_Font.font,
+                    padding = this.Sunset_Font.padding,
+                    unit_type = this.Sunset_Font.unit_type,
+
+                    position = this.Sunset_Font.position,
+                    visible = this.Sunset_Font.visible,
+                    show_level = this.Sunset_Font.show_level,
+                    type = this.Sunset_Font.type,
+                };
+            }
+
+            //hmUI_widget_IMG_NUMBER Sunset_rotation = null;
+            //if (this.Sunset_rotation != null)
+            //{
+            //    Sunset_rotation = new hmUI_widget_IMG_NUMBER
+            //    {
+            //        imageX = this.Sunset_rotation.imageX,
+            //        imageY = this.Sunset_rotation.imageY,
+            //        space = this.Sunset_rotation.space,
+            //        angle = this.Sunset_rotation.angle,
+            //        zero = this.Sunset_rotation.zero,
+            //        align = this.Sunset_rotation.align,
+            //        img_First = this.Sunset_rotation.img_First,
+            //        unit = this.Sunset_rotation.unit,
+            //        imperial_unit = this.Sunset_rotation.imperial_unit,
+            //        icon = this.Sunset_rotation.icon,
+            //        iconPosX = this.Sunset_rotation.iconPosX,
+            //        iconPosY = this.Sunset_rotation.iconPosY,
+            //        negative_image = this.Sunset_rotation.negative_image,
+            //        invalid_image = this.Sunset_rotation.invalid_image,
+            //        dot_image = this.Sunset_rotation.dot_image,
+            //        unit_in_alignment = this.Sunset_rotation.unit_in_alignment,
+
+            //        position = this.Sunset_rotation.position,
+            //        visible = this.Sunset_rotation.visible,
+            //        show_level = this.Sunset_rotation.show_level,
+            //        type = this.Sunset_rotation.type,
+            //    };
+            //}
+
+            //Text_Circle Sunset_circle = null;
+            //if (this.Sunset_circle != null)
+            //{
+            //    Sunset_circle = new Text_Circle
+            //    {
+            //        circle_center_X = this.Sunset_circle.circle_center_X,
+            //        circle_center_Y = this.Sunset_circle.circle_center_Y,
+            //        radius = this.Sunset_circle.radius,
+            //        angle = this.Sunset_circle.angle,
+            //        char_space_angle = this.Sunset_circle.char_space_angle,
+            //        zero = this.Sunset_circle.zero,
+            //        img_First = this.Sunset_circle.img_First,
+            //        //image_width = this.Sunset_circle.image_width,
+            //        //image_height = this.Sunset_circle.image_height,
+            //        unit = this.Sunset_circle.unit,
+            //        //unit_width = this.Sunset_circle.unit_width,
+            //        imperial_unit = this.Sunset_circle.imperial_unit,
+            //        dot_image = this.Sunset_circle.dot_image,
+            //        //dot_image_width = this.Sunset_circle.dot_image_width,
+            //        error_image = this.Sunset_circle.error_image,
+            //        //error_width = this.Sunset_circle.error_width,
+            //        vertical_alignment = this.Sunset_circle.vertical_alignment,
+            //        horizontal_alignment = this.Sunset_circle.horizontal_alignment,
+            //        reverse_direction = this.Sunset_circle.reverse_direction,
+            //        unit_in_alignment = this.Sunset_circle.unit_in_alignment,
+
+            //        position = this.Sunset_circle.position,
+            //        visible = this.Sunset_circle.visible,
+            //        show_level = this.Sunset_circle.show_level,
+            //        type = this.Sunset_circle.type,
+            //    };
+            //}
+
+            hmUI_widget_IMG_NUMBER Sunset_Sunrise = null;
+            if (this.Sunset_Sunrise != null)
+            {
+                Sunset_Sunrise = new hmUI_widget_IMG_NUMBER
+                {
+                    imageX = this.Sunset_Sunrise.imageX,
+                    imageY = this.Sunset_Sunrise.imageY,
+                    space = this.Sunset_Sunrise.space,
+                    angle = this.Sunset_Sunrise.angle,
+                    zero = this.Sunset_Sunrise.zero,
+                    align = this.Sunset_Sunrise.align,
+                    img_First = this.Sunset_Sunrise.img_First,
+                    unit = this.Sunset_Sunrise.unit,
+                    imperial_unit = this.Sunset_Sunrise.imperial_unit,
+                    icon = this.Sunset_Sunrise.icon,
+                    iconPosX = this.Sunset_Sunrise.iconPosX,
+                    iconPosY = this.Sunset_Sunrise.iconPosY,
+                    negative_image = this.Sunset_Sunrise.negative_image,
+                    invalid_image = this.Sunset_Sunrise.invalid_image,
+                    dot_image = this.Sunset_Sunrise.dot_image,
+                    follow = this.Sunset_Sunrise.follow,
+
+                    position = this.Sunset_Sunrise.position,
+                    visible = this.Sunset_Sunrise.visible,
+                    show_level = this.Sunset_Sunrise.show_level,
+                    type = this.Sunset_Sunrise.type,
+                };
+            }
+
+            hmUI_widget_IMG_POINTER Pointer = null;
+            if (this.Pointer != null)
+            {
+                Pointer = new hmUI_widget_IMG_POINTER
+                {
+                    src = this.Pointer.src,
+                    center_x = this.Pointer.center_x,
+                    center_y = this.Pointer.center_y,
+                    pos_x = this.Pointer.pos_x,
+                    pos_y = this.Pointer.pos_y,
+                    start_angle = this.Pointer.start_angle,
+                    end_angle = this.Pointer.end_angle,
+                    cover_path = this.Pointer.cover_path,
+                    cover_x = this.Pointer.cover_x,
+                    cover_y = this.Pointer.cover_y,
+                    scale = this.Pointer.scale,
+                    scale_x = this.Pointer.scale_x,
+                    scale_y = this.Pointer.scale_y,
+
+                    position = this.Pointer.position,
+                    visible = this.Pointer.visible,
+                    show_level = this.Pointer.show_level,
+                    type = this.Pointer.type,
+                };
+            }
+
+            hmUI_widget_IMG Icon = null;
+            if (this.Icon != null)
+            {
+                Icon = new hmUI_widget_IMG
+                {
+                    x = this.Icon.x,
+                    y = this.Icon.y,
+                    w = this.Icon.w,
+                    h = this.Icon.h,
+                    src = this.Icon.src,
+
+                    position = this.Icon.position,
+                    visible = this.Icon.visible,
+                    show_level = this.Icon.show_level,
+                };
+            }
+
             return new ElementMoon
             {
                 elementName = this.elementName,
                 visible = this.visible,
 
                 Images = Images,
+                //Segments = Segments,
+                Sunrise = Sunrise,
+                Sunrise_Font = Sunrise_Font,
+                //Sunrise_rotation = Sunrise_rotation,
+                //Sunrise_circle = Sunrise_circle,
+                Sunset = Sunset,
+                Sunset_Font = Sunset_Font,
+                //Sunset_rotation = Sunset_rotation,
+                //Sunset_circle = Sunset_circle,
+                Sunset_Sunrise = Sunset_Sunrise,
+                Pointer = Pointer,
+                Icon = Icon,
             };
         }
     }

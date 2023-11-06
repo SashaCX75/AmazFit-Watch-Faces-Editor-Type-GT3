@@ -1677,16 +1677,16 @@ namespace Watch_Face_Editor
             PreviewView = true;
         }
 
-        private void Read_Text_Options(hmUI_widget_TEXT system_font, bool numberValue)
+        private void Read_Text_Options(hmUI_widget_TEXT system_font, bool unitMode, bool zeroMode)
         {
             PreviewView = false;
 
             uCtrl_Text_SystemFont_Opt.SettingsClear();
             uCtrl_Text_SystemFont_Opt.Visible = true;
-            //if (ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4" || 
-            //    ProgramSettings.Watch_Model == "GTR mini" || ProgramSettings.Watch_Model == "T-Rex Ultra")
             if (SelectedModel.versionOS >= 2) uCtrl_Text_SystemFont_Opt.UserFont = true;
-            uCtrl_Text_SystemFont_Opt.NumberValue = numberValue;
+            //uCtrl_Text_SystemFont_Opt.NumberValue = numberValue;
+            uCtrl_Text_SystemFont_Opt.UnitMode = unitMode;
+            uCtrl_Text_SystemFont_Opt.ZeroMode = zeroMode;
 
             uCtrl_Text_SystemFont_Opt._ElementWithSystemFont = system_font;
             //uCtrl_Text_SystemFont_Opt.fonts_path = ProjectDir + @"\assets\fonts\";

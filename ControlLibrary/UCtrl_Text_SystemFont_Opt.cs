@@ -20,7 +20,9 @@ namespace ControlLibrary
         //public string fonts_path; // папка со шрифтами
 
         private bool Font_mode;
-        private bool Number_mode = true;
+        //private bool Number_mode = true;
+        private bool Unit_mode = true;
+        private bool Zero_mode = true;
 
         public UCtrl_Text_SystemFont_Opt()
         {
@@ -37,37 +39,6 @@ namespace ControlLibrary
 
         public void AddFonts(Dictionary<string,string> fontsList)
         {
-            //fonts_path = fontsPath;
-            ////comboBox_fonts.Text = string.Empty;
-            //comboBox_fonts.Items.Clear();
-            //comboBox_fonts.Items.Add(Properties.Strings.SystemFont);
-            //if (fonts_path != null && Directory.Exists(fonts_path))
-            //{
-            //    DirectoryInfo Folder;
-            //    Folder = new DirectoryInfo(fonts_path);
-            //    FileInfo[] Fonts;
-            //    Fonts = Folder.GetFiles("*.ttf").OrderBy(p => Path.GetFileNameWithoutExtension(p.Name)).ToArray();
-            //    foreach (FileInfo font_file in Fonts)
-            //    {
-            //        string fileName = font_file.Name;
-            //        try
-            //        {
-            //            System.Drawing.Text.PrivateFontCollection f = new System.Drawing.Text.PrivateFontCollection();
-            //            f.AddFontFile(font_file.FullName);
-            //            Font addFont = new Font(f.Families[0], 18);
-            //            string fontName = addFont.Name;
-            //            string item = fileName;
-            //            if (fontName.Length > 3) item += " (" + fontName + ")";
-            //            comboBox_fonts.Items.Add(item);
-
-            //        }
-            //        catch
-            //        {
-            //            MessageBox.Show("Ошибка добавления шрифта " + fileName);
-            //        }
-            //    }
-            //}
-
             comboBox_fonts.Items.Clear();
             comboBox_fonts.Items.Add(Properties.Strings.SystemFont);
             comboBox_fonts.SelectedIndex = 0;
@@ -356,19 +327,49 @@ namespace ControlLibrary
             }
         }
 
-        /// <summary>Отображение настроек доступных для числовых данных</summary>
-        [Description("Отображение настроек доступных для числовых данных")]
-        public virtual bool NumberValue
+        ///// <summary>Отображение настроек доступных для числовых данных</summary>
+        //[Description("Отображение настроек доступных для числовых данных")]
+        //public virtual bool NumberValue
+        //{
+        //    get
+        //    {
+        //        return Number_mode;
+        //    }
+        //    set
+        //    {
+        //        Number_mode = value;
+        //        checkBox_addZero.Enabled = Number_mode;
+        //        checkBox_unit.Enabled = Number_mode;
+        //    }
+        //}
+
+        /// <summary>Отображение настроек единиц измерения</summary>
+        [Description("Отображение настроек единиц измерения")]
+        public virtual bool UnitMode
         {
             get
             {
-                return Number_mode;
+                return Unit_mode;
             }
             set
             {
-                Number_mode = value;
-                checkBox_addZero.Enabled = Number_mode;
-                checkBox_unit.Enabled = Number_mode;
+                Unit_mode = value;
+                checkBox_unit.Enabled = Unit_mode;
+            }
+        }
+
+        /// <summary>Отображение настроек ведущих нулей</summary>
+        [Description("Отображение настроек ведущих нулей")]
+        public virtual bool ZeroMode
+        {
+            get
+            {
+                return Zero_mode;
+            }
+            set
+            {
+                Zero_mode = value;
+                checkBox_addZero.Enabled = Zero_mode;
             }
         }
 
@@ -687,6 +688,8 @@ namespace ControlLibrary
             checkBox_addZero.Checked = false;
 
             UserFont = false;
+            UnitMode = true;
+            ZeroMode = true;
 
             setValue = false;
         }

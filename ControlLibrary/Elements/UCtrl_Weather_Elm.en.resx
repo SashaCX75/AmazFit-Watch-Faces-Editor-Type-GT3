@@ -132,6 +132,18 @@
   <data name="pictureBox_Del.ToolTip" xml:space="preserve">
     <value />
   </data>
+  <data name="button_Number_Min_Max_Font.Text" xml:space="preserve">
+    <value>Value by font (min/max)</value>
+  </data>
+  <data name="button_Number_Min_Max_Font.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="checkBox_Number_Min_Max_Font.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="panel_Number_Min_Max_Font.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="button_Number_Max_Font.Text" xml:space="preserve">
     <value>Value by font (max)</value>
   </data>

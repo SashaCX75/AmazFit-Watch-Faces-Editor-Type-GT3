@@ -2047,7 +2047,8 @@ namespace Watch_Face_Editor
                     img_level = activityElementPAI.Images;
                     img_prorgess = activityElementPAI.Segments;
                     img_number = activityElementPAI.Number;
-                    font_number = activityElementPAI.Number_Font;
+                    //font_number = activityElementPA-*21Й  Ё
+                    //-I.Number_Font;
                     img_number_target = activityElementPAI.Number_Target;
                     font_number_target = activityElementPAI.Number_Target_Font;
                     text_rotation_target = activityElementPAI.Text_rotation_Target;
@@ -2363,6 +2364,8 @@ namespace Watch_Face_Editor
                     hmUI_widget_IMG_NUMBER text_Max_rotation = activityElementWeather.Text_Max_rotation;
                     Text_Circle text_Max_circle = activityElementWeather.Text_Max_circle;
 
+                    hmUI_widget_TEXT font_number_min_max = activityElementWeather.Number_Min_Max_Font;
+
                     hmUI_widget_TEXT city_name = activityElementWeather.City_Name;
                     icon = activityElementWeather.Icon;
 
@@ -2373,7 +2376,7 @@ namespace Watch_Face_Editor
                     bool showTemperature = WatchFacePreviewSet.Weather.showTemperature;
 
                     DrawWeather(gPanel, img_level, img_number, font_number, img_number_min, font_number_min, text_Min_rotation, text_Min_circle,
-                        img_number_max, font_number_max, text_Max_rotation, text_Max_circle, city_name, icon, value_current, value_min, value_max, value_lenght, icon_index,
+                        img_number_max, font_number_max, text_Max_rotation, text_Max_circle, font_number_min_max, city_name, icon, value_current, value_min, value_max, value_lenght, icon_index,
                         BBorder, showTemperature, showCentrHend);
 
 
@@ -2573,11 +2576,14 @@ namespace Watch_Face_Editor
 
                     img_level = activityElementSunrise.Images;
                     img_prorgess = activityElementSunrise.Segments;
+
                     img_number = activityElementSunrise.Sunrise;
+                    font_number = activityElementSunrise.Sunrise_Font;
                     hmUI_widget_IMG_NUMBER sunrise_rotation = activityElementSunrise.Sunrise_rotation;
                     Text_Circle sunrise_circle = activityElementSunrise.Sunrise_circle;
 
                     img_number_target = activityElementSunrise.Sunset;
+                    font_number_target = activityElementSunrise.Sunset_Font;
                     hmUI_widget_IMG_NUMBER sunset_rotation = activityElementSunrise.Sunset_rotation;
                     Text_Circle sunset_circle = activityElementSunrise.Sunset_circle;
 
@@ -2587,8 +2593,8 @@ namespace Watch_Face_Editor
                     int minSunrise = WatchFacePreviewSet.Time.Minutes;
                     int hourSunrise = WatchFacePreviewSet.Time.Hours;
 
-                    DrawSunrise(gPanel, img_level, img_prorgess, img_number, sunrise_rotation, sunrise_circle,
-                        img_number_target, sunset_rotation, sunset_circle,
+                    DrawSunrise(gPanel, img_level, img_prorgess, img_number, font_number, sunrise_rotation, sunrise_circle,
+                        img_number_target, font_number_target, sunset_rotation, sunset_circle,
                         activityElementSunrise.Sunset_Sunrise,
                         img_pointer, icon, hourSunrise, minSunrise, BBorder, showProgressArea, showCentrHend);
 
@@ -2641,37 +2647,64 @@ namespace Watch_Face_Editor
 
                 #region ElementMoon
                 case "ElementMoon":
+                    //ElementMoon activityElementMoon = (ElementMoon)element;
+                    //if (!activityElementMoon.visible) return;
+
+                    //img_level = activityElementMoon.Images;
+
+                    //if (img_level != null)
+                    //{
+                    //    elementValue = 100;
+                    //    value_lenght = 3;
+                    //    goal = 100;
+                    //    //progress = 0;
+
+                    //    int year = WatchFacePreviewSet.Date.Year;
+                    //    int month = WatchFacePreviewSet.Date.Month;
+                    //    int day = WatchFacePreviewSet.Date.Day;
+                    //    double moon_age = MoonAge(day, month, year);
+                    //    //int moonPhase = (int)(8 * moon_age / 29);
+
+                    //    imgCount = img_level.image_length;
+                    //    valueImgIndex = (int)Math.Round((imgCount - 1) * moon_age / 29);
+                    //    //valueImgIndex = (int)Math.Round((imgCount - 1) * moon_age / 29.53f);
+                    //    //valueImgIndex = moonPhase - 1;
+                    //    if (valueImgIndex < 0) valueImgIndex = (int)(imgCount - 1);
+                    //    if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+
+
+                    //    DrawActivity(gPanel, img_level, img_prorgess, img_number, font_number, text_rotation, text_circle, img_number_target, font_number_target,
+                    //    text_rotation_target, text_circle_target, img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                    //        progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                    //        showCentrHend, "ElementMoon");
+                    //}
+
                     ElementMoon activityElementMoon = (ElementMoon)element;
                     if (!activityElementMoon.visible) return;
 
                     img_level = activityElementMoon.Images;
+                    //img_prorgess = activityElementMoon.Segments;
 
-                    if (img_level != null)
-                    {
-                        elementValue = 100;
-                        value_lenght = 3;
-                        goal = 100;
-                        //progress = 0;
+                    img_number = activityElementMoon.Sunrise;
+                    font_number = activityElementMoon.Sunrise_Font;
+                    //hmUI_widget_IMG_NUMBER sunrise_rotation = activityElementMoon.Sunrise_rotation;
+                    //Text_Circle sunrise_circle = activityElementMoon.Sunrise_circle;
 
-                        int year = WatchFacePreviewSet.Date.Year;
-                        int month = WatchFacePreviewSet.Date.Month;
-                        int day = WatchFacePreviewSet.Date.Day;
-                        double moon_age = MoonAge(day, month, year);
-                        //int moonPhase = (int)(8 * moon_age / 29);
+                    img_number_target = activityElementMoon.Sunset;
+                    font_number_target = activityElementMoon.Sunset_Font;
+                    //hmUI_widget_IMG_NUMBER sunset_rotation = activityElementMoon.Sunset_rotation;
+                    //Text_Circle sunset_circle = activityElementMoon.Sunset_circle;
 
-                        imgCount = img_level.image_length;
-                        valueImgIndex = (int)Math.Round((imgCount - 1) * moon_age / 29);
-                        //valueImgIndex = (int)Math.Round((imgCount - 1) * moon_age / 29.53f);
-                        //valueImgIndex = moonPhase - 1;
-                        if (valueImgIndex < 0) valueImgIndex = (int)(imgCount - 1);
-                        if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+                    img_pointer = activityElementMoon.Pointer;
+                    icon = activityElementMoon.Icon;
 
+                    int minSunriseMoon = WatchFacePreviewSet.Time.Minutes;
+                    int hourSunriseMoon = WatchFacePreviewSet.Time.Hours;
 
-                        DrawActivity(gPanel, img_level, img_prorgess, img_number, font_number, text_rotation, text_circle, img_number_target, font_number_target,
-                        text_rotation_target, text_circle_target, img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
-                            progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
-                            showCentrHend, "ElementMoon"); 
-                    }
+                    DrawMoon(gPanel, img_level, /*img_prorgess,*/ img_number, font_number, null, null,
+                        img_number_target, font_number_target, null, null,
+                        activityElementMoon.Sunset_Sunrise,
+                        img_pointer, icon, hourSunriseMoon, minSunriseMoon, BBorder, showProgressArea, showCentrHend);
 
 
                     break;
@@ -4095,8 +4128,12 @@ namespace Watch_Face_Editor
         /// <param name="gPanel">Поверхность для рисования</param>
         /// <param name="images">Параметры для изображения</param>
         /// <param name="number">Параметры для текущей температуры</param>
+        /// <param name="number_font">Параметры отображения текущей температуры шрифтом</param>
         /// <param name="numberMin">Параметры для минимальной температуры</param>
+        /// <param name="numberMin_font">Параметры отображения минимальной температуры шрифтом</param>
         /// <param name="numberMax">Параметры для максимальной температуры</param>
+        /// <param name="numberMax_font">Параметры отображения максимальной температуры шрифтом</param>
+        /// <param name="numberMinMax_font">Параметры отображения минимальной и максимальной температуры шрифтом</param>
         /// <param name="cityName">Параметры для названия города</param>
         /// <param name="icon">Параметры для иконки</param>
         /// <param name="value">Текущая температура</param>
@@ -4108,8 +4145,8 @@ namespace Watch_Face_Editor
         /// <param name="showTemperature">Показывать температуру</param>
         private void DrawWeather(Graphics gPanel, hmUI_widget_IMG_LEVEL images, hmUI_widget_IMG_NUMBER number, hmUI_widget_TEXT number_font, 
             hmUI_widget_IMG_NUMBER numberMin, hmUI_widget_TEXT numberMin_font, hmUI_widget_IMG_NUMBER textMin_rotation, Text_Circle textMin_circle, 
-            hmUI_widget_IMG_NUMBER numberMax, hmUI_widget_TEXT numberMax_font, hmUI_widget_IMG_NUMBER textMax_rotation, Text_Circle textMax_circle, 
-            hmUI_widget_TEXT cityName, hmUI_widget_IMG icon, int value, int valueMin, int valueMax, int value_lenght,
+            hmUI_widget_IMG_NUMBER numberMax, hmUI_widget_TEXT numberMax_font, hmUI_widget_IMG_NUMBER textMax_rotation, Text_Circle textMax_circle,
+            hmUI_widget_TEXT numberMinMax_font, hmUI_widget_TEXT cityName, hmUI_widget_IMG icon, int value, int valueMin, int valueMax, int value_lenght,
             int icon_index, bool BBorder, bool showTemperature, bool showCentrHend)
         {
             Bitmap src = new Bitmap(1, 1);
@@ -4582,6 +4619,72 @@ namespace Watch_Face_Editor
                         valueStr, 3, BBorder, showCentrHend, "ElementWeather");
                 }
 
+                if (numberMinMax_font != null && index == numberMinMax_font.position && numberMinMax_font.visible)
+                {
+                    int x = numberMinMax_font.x;
+                    int y = numberMinMax_font.y;
+                    int h = numberMinMax_font.h;
+                    int w = numberMinMax_font.w;
+
+                    int size = numberMinMax_font.text_size;
+                    int space_h = numberMinMax_font.char_space;
+                    int space_v = numberMinMax_font.line_space;
+
+                    Color color = StringToColor(numberMinMax_font.color);
+                    //int align_h = AlignmentToInt(numberMinMax_font.align_h);
+                    //int align_v = AlignmentVerticalToInt(numberMinMax_font.align_v);
+                    string align_h = numberMinMax_font.align_h;
+                    string align_v = numberMinMax_font.align_v;
+                    string text_style = numberMinMax_font.text_style;
+                    string valueStr = valueMin.ToString() + "/" + valueMax.ToString();
+                    string unitStr = unit;
+                    //if (numberMinMax_font.padding) valueStr = valueStr.PadLeft(value_lenght, '0');
+                    if (numberMinMax_font.unit_type > 0)
+                    {
+                        if (numberMinMax_font.unit_type == 2) unitStr = unitStr.ToUpper();
+                        valueStr += unitStr;
+                    }
+                    if (!showTemperature) valueStr = "--";
+
+                    if (numberMinMax_font.centreHorizontally)
+                    {
+                        x = (SelectedModel.background.w - w) / 2;
+                        align_h = "CENTER_H";
+                    }
+                    if (numberMinMax_font.centreVertically)
+                    {
+                        y = (SelectedModel.background.h - h) / 2;
+                        align_v = "CENTER_V";
+                    }
+
+                    if (numberMinMax_font.font != null && numberMinMax_font.font.Length > 3 && FontsList.ContainsKey(numberMinMax_font.font))
+                    {
+                        string font_fileName = FontsList[numberMinMax_font.font];
+                        //string font_fileName = ProjectDir + @"\assets\fonts\" + numberMinMax_font.font;
+                        if (SelectedModel.versionOS >= 2 && File.Exists(font_fileName))
+                        {
+                            Font drawFont = null;
+                            using (System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection())
+                            {
+                                fonts.AddFontFile(font_fileName);
+                                drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+                            }
+
+                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                            align_h, align_v, text_style, BBorder);
+                        }
+                        else
+                        {
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                        }
+
+                    }
+                    else
+                    {
+                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                    }
+                }
+
                 if (icon != null && icon.src != null && icon.src.Length > 0 &&
                     index == icon.position && icon.visible)
                 {
@@ -4662,8 +4765,8 @@ namespace Watch_Face_Editor
 
         /// <summary>Рисуем восход, звкат</summary>
         private void DrawSunrise(Graphics gPanel, hmUI_widget_IMG_LEVEL images, hmUI_widget_IMG_PROGRESS segments,
-            hmUI_widget_IMG_NUMBER sunrise, hmUI_widget_IMG_NUMBER sunrise_rotation, Text_Circle sunrise_circle,
-            hmUI_widget_IMG_NUMBER sunset, hmUI_widget_IMG_NUMBER sunset_rotation, Text_Circle sunset_circle, 
+            hmUI_widget_IMG_NUMBER sunrise, hmUI_widget_TEXT sunrise_font, hmUI_widget_IMG_NUMBER sunrise_rotation, Text_Circle sunrise_circle,
+            hmUI_widget_IMG_NUMBER sunset, hmUI_widget_TEXT sunset_font, hmUI_widget_IMG_NUMBER sunset_rotation, Text_Circle sunset_circle, 
             hmUI_widget_IMG_NUMBER sunset_sunrise, hmUI_widget_IMG_POINTER pointer,
             hmUI_widget_IMG icon, int hour, int minute, bool BBorder, bool showProgressArea, bool showCentrHend)
         {
@@ -4768,6 +4871,72 @@ namespace Watch_Face_Editor
                     }
                 }
 
+                if (sunrise_font != null && index == sunrise_font.position && sunrise_font.visible)
+                {
+                    int x = sunrise_font.x;
+                    int y = sunrise_font.y;
+                    int h = sunrise_font.h;
+                    int w = sunrise_font.w;
+
+                    int size = sunrise_font.text_size;
+                    int space_h = sunrise_font.char_space;
+                    int space_v = sunrise_font.line_space;
+
+                    Color color = StringToColor(sunrise_font.color);
+                    //int align_h = AlignmentToInt(sunrise_font.align_h);
+                    //int align_v = AlignmentVerticalToInt(sunrise_font.align_v);
+                    string align_h = sunrise_font.align_h;
+                    string align_v = sunrise_font.align_v;
+                    string text_style = sunrise_font.text_style;
+                    //string valueStr = value.ToString();
+                    string valueStr = "03:30";
+                    //string unitStr = "";
+                    //if (sunrise_font.padding) valueStr = valueStr.PadLeft(value_lenght, '0');
+                    //if (sunrise_font.unit_type > 0)
+                    //{
+                    //    if (sunrise_font.unit_type == 2) unitStr = unitStr.ToUpper();
+                    //    valueStr += unitStr;
+                    //}
+
+                    if (sunrise_font.centreHorizontally)
+                    {
+                        x = (SelectedModel.background.w - w) / 2;
+                        align_h = "CENTER_H";
+                    }
+                    if (sunrise_font.centreVertically)
+                    {
+                        y = (SelectedModel.background.h - h) / 2;
+                        align_v = "CENTER_V";
+                    }
+
+                    if (sunrise_font.font != null && sunrise_font.font.Length > 3 && FontsList.ContainsKey(sunrise_font.font))
+                    {
+                        string font_fileName = FontsList[sunrise_font.font];
+                        //string font_fileName = ProjectDir + @"\assets\fonts\" + sunrise_font.font;
+                        if (SelectedModel.versionOS >= 2 && File.Exists(font_fileName))
+                        {
+                            Font drawFont = null;
+                            using (System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection())
+                            {
+                                fonts.AddFontFile(font_fileName);
+                                drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+                            }
+
+                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                            align_h, align_v, text_style, BBorder);
+                        }
+                        else
+                        {
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                        }
+
+                    }
+                    else
+                    {
+                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                    }
+                }
+
                 if (sunrise_rotation != null && sunrise_rotation.img_First != null && sunrise_rotation.img_First.Length > 0 &&
                     sunrise_rotation.dot_image != null && sunrise_rotation.dot_image.Length > 0 && index == sunrise_rotation.position && sunrise_rotation.visible)
                 {
@@ -4865,6 +5034,72 @@ namespace Watch_Face_Editor
                         src = OpenFileStream(ListImagesFullName[image_Index]);
                         gPanel.DrawImage(src, pos_x, pos_y);
                         //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                    }
+                }
+
+                if (sunset_font != null && index == sunset_font.position && sunset_font.visible)
+                {
+                    int x = sunset_font.x;
+                    int y = sunset_font.y;
+                    int h = sunset_font.h;
+                    int w = sunset_font.w;
+
+                    int size = sunset_font.text_size;
+                    int space_h = sunset_font.char_space;
+                    int space_v = sunset_font.line_space;
+
+                    Color color = StringToColor(sunset_font.color);
+                    //int align_h = AlignmentToInt(sunset_font.align_h);
+                    //int align_v = AlignmentVerticalToInt(sunset_font.align_v);
+                    string align_h = sunset_font.align_h;
+                    string align_v = sunset_font.align_v;
+                    string text_style = sunset_font.text_style;
+                    //string valueStr = value.ToString();
+                    string valueStr = "20:30";
+                    //string unitStr = "";
+                    //if (sunset_font.padding) valueStr = valueStr.PadLeft(value_lenght, '0');
+                    //if (sunset_font.unit_type > 0)
+                    //{
+                    //    if (sunset_font.unit_type == 2) unitStr = unitStr.ToUpper();
+                    //    valueStr += unitStr;
+                    //}
+
+                    if (sunset_font.centreHorizontally)
+                    {
+                        x = (SelectedModel.background.w - w) / 2;
+                        align_h = "CENTER_H";
+                    }
+                    if (sunset_font.centreVertically)
+                    {
+                        y = (SelectedModel.background.h - h) / 2;
+                        align_v = "CENTER_V";
+                    }
+
+                    if (sunset_font.font != null && sunset_font.font.Length > 3 && FontsList.ContainsKey(sunset_font.font))
+                    {
+                        string font_fileName = FontsList[sunset_font.font];
+                        //string font_fileName = ProjectDir + @"\assets\fonts\" + sunset_font.font;
+                        if (SelectedModel.versionOS >= 2 && File.Exists(font_fileName))
+                        {
+                            Font drawFont = null;
+                            using (System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection())
+                            {
+                                fonts.AddFontFile(font_fileName);
+                                drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+                            }
+
+                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                            align_h, align_v, text_style, BBorder);
+                        }
+                        else
+                        {
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                        }
+
+                    }
+                    else
+                    {
+                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
                     }
                 }
 
@@ -5019,6 +5254,522 @@ namespace Watch_Face_Editor
                     }
                 }
 
+
+
+            }
+
+            src.Dispose();
+        }
+
+        /// <summary>Рисуем восход, звкат</summary>
+        private void DrawMoon(Graphics gPanel, hmUI_widget_IMG_LEVEL images, /*hmUI_widget_IMG_PROGRESS segments,*/
+            hmUI_widget_IMG_NUMBER sunrise, hmUI_widget_TEXT sunrise_font, hmUI_widget_IMG_NUMBER sunrise_rotation, Text_Circle sunrise_circle,
+            hmUI_widget_IMG_NUMBER sunset, hmUI_widget_TEXT sunset_font, hmUI_widget_IMG_NUMBER sunset_rotation, Text_Circle sunset_circle,
+            hmUI_widget_IMG_NUMBER sunset_sunrise, hmUI_widget_IMG_POINTER pointer,
+            hmUI_widget_IMG icon, int hour, int minute, bool BBorder, bool showProgressArea, bool showCentrHend)
+        {
+            TimeSpan time_now = new TimeSpan(hour, minute, 0);
+            TimeSpan time_sunrise = new TimeSpan(21, 30, 0);
+            TimeSpan time_sunset = new TimeSpan(24 + 2, 30, 0);
+            TimeSpan time_sunset_forVisible = new TimeSpan(2, 30, 0);
+            TimeSpan day_lenght = time_sunset - time_sunrise;
+            TimeSpan day_progress = time_now - time_sunrise;
+
+            bool moon = false;
+            if (time_now >= time_sunrise || time_now <= time_sunset_forVisible) moon = true;
+
+            float progress = (float)(day_progress.TotalSeconds / day_lenght.TotalSeconds);
+            if (progress > 1) progress = 1;
+            if (progress < 0) progress = 0;
+            Bitmap src = new Bitmap(1, 1);
+
+            for (int index = 1; index <= 15; index++)
+            {
+                if (images != null && images.img_First != null && images.img_First.Length > 0 &&
+                    index == images.position && images.visible)
+                {
+                    int year = WatchFacePreviewSet.Date.Year;
+                    int month = WatchFacePreviewSet.Date.Month;
+                    int day = WatchFacePreviewSet.Date.Day;
+                    double moon_age = MoonAge(day, month, year);
+                    //int moonPhase = (int)(8 * moon_age / 29);
+
+                    int imgCount = images.image_length;
+                    int valueImgIndex = (int)Math.Round((imgCount - 1) * moon_age / 29);
+                    //valueImgIndex = (int)Math.Round((imgCount - 1) * moon_age / 29.53f);
+                    //valueImgIndex = moonPhase - 1;
+                    if (valueImgIndex < 0) valueImgIndex = (int)(imgCount - 1);
+                    if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
+
+                    if (valueImgIndex >= 0)
+                    {
+                        int imageIndex = ListImages.IndexOf(images.img_First);
+                        int x = images.X;
+                        int y = images.Y;
+                        imageIndex = imageIndex + valueImgIndex;
+
+                        if (imageIndex < ListImagesFullName.Count)
+                        {
+                            src = OpenFileStream(ListImagesFullName[imageIndex]);
+                            gPanel.DrawImage(src, x, y);
+                            //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                        }
+                    }
+                }
+
+                //if (segments != null && segments.img_First != null && segments.img_First.Length > 0 &&
+                //    index == segments.position && segments.visible)
+                //{
+                //    int year = WatchFacePreviewSet.Date.Year;
+                //    int month = WatchFacePreviewSet.Date.Month;
+                //    int day = WatchFacePreviewSet.Date.Day;
+                //    double moon_age = MoonAge(day, month, year);
+                //    //int moonPhase = (int)(8 * moon_age / 29);
+
+                //    int segmentCount = segments.image_length;
+                //    int valueSegmentIndex = (int)Math.Round((segmentCount - 1) * moon_age / 29);
+                //    //valueImgIndex = (int)Math.Round((imgCount - 1) * moon_age / 29.53f);
+                //    //valueImgIndex = moonPhase - 1;
+                //    if (valueSegmentIndex < 0) valueSegmentIndex = (int)(segmentCount - 1);
+                //    if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
+
+                //    if (valueSegmentIndex >= 0)
+                //    {
+                //        int imageIndex = ListImages.IndexOf(segments.img_First);
+                //        for (int i = 0; i <= valueSegmentIndex; i++)
+                //        {
+                //            int imgIndex = imageIndex + i;
+
+                //            if (imgIndex < ListImagesFullName.Count && i < segments.X.Count)
+                //            {
+                //                int x = segments.X[i];
+                //                int y = segments.Y[i];
+                //                src = OpenFileStream(ListImagesFullName[imgIndex]);
+                //                gPanel.DrawImage(src, x, y);
+                //                //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                //            }
+                //        }
+                //    }
+                //}
+
+                if (sunrise != null && sunrise.img_First != null && sunrise.img_First.Length > 0 &&
+                    index == sunrise.position && sunrise.visible)
+                {
+                    //float sunrise_value = 5.30f;
+                    float sunrise_value = (float)Math.Round(time_sunrise.Hours + time_sunrise.Minutes / 100f, 2);
+                    int image_Index = ListImages.IndexOf(sunrise.img_First);
+                    int pos_x = sunrise.imageX;
+                    int pos_y = sunrise.imageY;
+                    int sunrise_spasing = sunrise.space;
+                    int angl = sunrise.angle;
+                    int sunrise_alignment = AlignmentToInt(sunrise.align);
+                    //bool distance_addZero = img_number.zero;
+                    bool sunrise_addZero = true;
+                    int sunrise_separator_index = -1;
+                    if (sunrise.unit != null && sunrise.unit.Length > 0)
+                        sunrise_separator_index = ListImages.IndexOf(sunrise.unit);
+                    int decumalPoint_index = -1;
+                    if (sunrise.dot_image != null && sunrise.dot_image.Length > 0)
+                        decumalPoint_index = ListImages.IndexOf(sunrise.dot_image);
+
+                    Draw_dagital_text_decimal(gPanel, image_Index, pos_x, pos_y,
+                        sunrise_spasing, sunrise_alignment, sunrise_value, sunrise_addZero, 4,
+                        sunrise_separator_index, decumalPoint_index, 2, angl, BBorder, "ElementSunrise");
+
+                    if (sunrise.icon != null && sunrise.icon.Length > 0)
+                    {
+                        image_Index = ListImages.IndexOf(sunrise.icon);
+                        pos_x = sunrise.iconPosX;
+                        pos_y = sunrise.iconPosY;
+
+                        src = OpenFileStream(ListImagesFullName[image_Index]);
+                        gPanel.DrawImage(src, pos_x, pos_y);
+                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                    }
+                }
+
+                if (sunrise_font != null && index == sunrise_font.position && sunrise_font.visible)
+                {
+                    int x = sunrise_font.x;
+                    int y = sunrise_font.y;
+                    int h = sunrise_font.h;
+                    int w = sunrise_font.w;
+
+                    int size = sunrise_font.text_size;
+                    int space_h = sunrise_font.char_space;
+                    int space_v = sunrise_font.line_space;
+
+                    Color color = StringToColor(sunrise_font.color);
+                    //int align_h = AlignmentToInt(sunrise_font.align_h);
+                    //int align_v = AlignmentVerticalToInt(sunrise_font.align_v);
+                    string align_h = sunrise_font.align_h;
+                    string align_v = sunrise_font.align_v;
+                    string text_style = sunrise_font.text_style;
+                    //string valueStr = value.ToString();
+                    string valueStr = "21:30";
+                    //string unitStr = "";
+                    //if (sunrise_font.padding) valueStr = valueStr.PadLeft(value_lenght, '0');
+                    //if (sunrise_font.unit_type > 0)
+                    //{
+                    //    if (sunrise_font.unit_type == 2) unitStr = unitStr.ToUpper();
+                    //    valueStr += unitStr;
+                    //}
+
+                    if (sunrise_font.centreHorizontally)
+                    {
+                        x = (SelectedModel.background.w - w) / 2;
+                        align_h = "CENTER_H";
+                    }
+                    if (sunrise_font.centreVertically)
+                    {
+                        y = (SelectedModel.background.h - h) / 2;
+                        align_v = "CENTER_V";
+                    }
+
+                    if (sunrise_font.font != null && sunrise_font.font.Length > 3 && FontsList.ContainsKey(sunrise_font.font))
+                    {
+                        string font_fileName = FontsList[sunrise_font.font];
+                        //string font_fileName = ProjectDir + @"\assets\fonts\" + sunrise_font.font;
+                        if (SelectedModel.versionOS >= 2 && File.Exists(font_fileName))
+                        {
+                            Font drawFont = null;
+                            using (System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection())
+                            {
+                                fonts.AddFontFile(font_fileName);
+                                drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+                            }
+
+                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                            align_h, align_v, text_style, BBorder);
+                        }
+                        else
+                        {
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                        }
+
+                    }
+                    else
+                    {
+                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                    }
+                }
+
+                if (sunrise_rotation != null && sunrise_rotation.img_First != null && sunrise_rotation.img_First.Length > 0 &&
+                    sunrise_rotation.dot_image != null && sunrise_rotation.dot_image.Length > 0 && index == sunrise_rotation.position && sunrise_rotation.visible)
+                {
+                    int pos_x = sunrise_rotation.imageX;
+                    int pos_y = sunrise_rotation.imageY;
+                    int spacing = sunrise_rotation.space;
+                    float angle = sunrise_rotation.angle;
+                    bool addZero = sunrise_rotation.zero;
+                    int image_index = ListImages.IndexOf(sunrise_rotation.img_First);
+                    int unit_index = ListImages.IndexOf(sunrise_rotation.unit);
+                    int dot_image_index = ListImages.IndexOf(sunrise_rotation.dot_image);
+                    string horizontal_alignment = sunrise_rotation.align;
+                    bool unit_in_alignment = sunrise_rotation.unit_in_alignment;
+
+                    float sunrise_value = (float)Math.Round(time_sunrise.Hours + time_sunrise.Minutes / 100f, 2);
+                    string value = sunrise_value.ToString();
+                    //string value = 5.30f.ToString();
+                    string decimalSeparator = Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+                    if (value.IndexOf(decimalSeparator) < 0) value = value + decimalSeparator;
+                    while (value.IndexOf(decimalSeparator) > value.Length - 2 - 1)
+                    {
+                        value = value + "0";
+                    }
+                    if (sunrise_rotation.zero) value = value.PadLeft(5, '0');
+
+                    Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
+                        image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
+                        value, 4, BBorder, "ElementSunrise");
+                }
+
+                if (sunrise_circle != null && sunrise_circle.img_First != null && sunrise_circle.img_First.Length > 0 &&
+                    sunrise_circle.dot_image != null && sunrise_circle.dot_image.Length > 0 && index == sunrise_circle.position && sunrise_circle.visible)
+                {
+                    int centr_x = sunrise_circle.circle_center_X;
+                    int centr_y = sunrise_circle.circle_center_Y;
+                    int radius = sunrise_circle.radius;
+                    int spacing = sunrise_circle.char_space_angle;
+                    float angle = sunrise_circle.angle;
+                    bool addZero = sunrise_circle.zero;
+                    int image_index = ListImages.IndexOf(sunrise_circle.img_First);
+                    int unit_index = ListImages.IndexOf(sunrise_circle.unit);
+                    int dot_image_index = ListImages.IndexOf(sunrise_circle.dot_image);
+                    string vertical_alignment = sunrise_circle.vertical_alignment;
+                    string horizontal_alignment = sunrise_circle.horizontal_alignment;
+                    bool reverse_direction = sunrise_circle.reverse_direction;
+                    bool unit_in_alignment = sunrise_circle.unit_in_alignment;
+
+                    float sunrise_value = (float)Math.Round(time_sunrise.Hours + time_sunrise.Minutes / 100f, 2);
+                    string value = sunrise_value.ToString();
+                    //string value = 5.30f.ToString();
+                    string decimalSeparator = Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+                    if (value.IndexOf(decimalSeparator) < 0) value = value + decimalSeparator;
+                    while (value.IndexOf(decimalSeparator) > value.Length - 2 - 1)
+                    {
+                        value = value + "0";
+                    }
+                    if (sunrise_circle.zero) value = value.PadLeft(5, '0');
+
+                    Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
+                        image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
+                        vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
+                        value, 4, BBorder, showCentrHend, "ElementSunrise");
+                }
+
+                if (sunset != null && sunset.img_First != null && sunset.img_First.Length > 0 &&
+                    index == sunset.position && sunset.visible)
+                {
+                    float sunset_value = (float)Math.Round(time_sunset.Hours + time_sunset.Minutes / 100f, 2);
+                    //float sunset_value = 19.30f;
+                    int image_Index = ListImages.IndexOf(sunset.img_First);
+                    int pos_x = sunset.imageX;
+                    int pos_y = sunset.imageY;
+                    int sunset_spasing = sunset.space;
+                    int angl = sunset.angle;
+                    int sunset_alignment = AlignmentToInt(sunset.align);
+                    //bool distance_addZero = img_number.zero;
+                    bool sunset_addZero = true;
+                    int sunset_separator_index = -1;
+                    if (sunset.unit != null && sunset.unit.Length > 0)
+                        sunset_separator_index = ListImages.IndexOf(sunset.unit);
+                    int decumalPoint_index = -1;
+                    if (sunset.dot_image != null && sunset.dot_image.Length > 0)
+                        decumalPoint_index = ListImages.IndexOf(sunset.dot_image);
+
+                    Draw_dagital_text_decimal(gPanel, image_Index, pos_x, pos_y,
+                        sunset_spasing, sunset_alignment, sunset_value, sunset_addZero, 4,
+                        sunset_separator_index, decumalPoint_index, 2, angl, BBorder, "ElementSunrise");
+
+                    if (sunset.icon != null && sunset.icon.Length > 0)
+                    {
+                        image_Index = ListImages.IndexOf(sunset.icon);
+                        pos_x = sunset.iconPosX;
+                        pos_y = sunset.iconPosY;
+
+                        src = OpenFileStream(ListImagesFullName[image_Index]);
+                        gPanel.DrawImage(src, pos_x, pos_y);
+                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                    }
+                }
+
+                if (sunset_font != null && index == sunset_font.position && sunset_font.visible)
+                {
+                    int x = sunset_font.x;
+                    int y = sunset_font.y;
+                    int h = sunset_font.h;
+                    int w = sunset_font.w;
+
+                    int size = sunset_font.text_size;
+                    int space_h = sunset_font.char_space;
+                    int space_v = sunset_font.line_space;
+
+                    Color color = StringToColor(sunset_font.color);
+                    //int align_h = AlignmentToInt(sunset_font.align_h);
+                    //int align_v = AlignmentVerticalToInt(sunset_font.align_v);
+                    string align_h = sunset_font.align_h;
+                    string align_v = sunset_font.align_v;
+                    string text_style = sunset_font.text_style;
+                    //string valueStr = value.ToString();
+                    string valueStr = "02:30";
+                    //string unitStr = "";
+                    //if (sunset_font.padding) valueStr = valueStr.PadLeft(value_lenght, '0');
+                    //if (sunset_font.unit_type > 0)
+                    //{
+                    //    if (sunset_font.unit_type == 2) unitStr = unitStr.ToUpper();
+                    //    valueStr += unitStr;
+                    //}
+
+                    if (sunset_font.centreHorizontally)
+                    {
+                        x = (SelectedModel.background.w - w) / 2;
+                        align_h = "CENTER_H";
+                    }
+                    if (sunset_font.centreVertically)
+                    {
+                        y = (SelectedModel.background.h - h) / 2;
+                        align_v = "CENTER_V";
+                    }
+
+                    if (sunset_font.font != null && sunset_font.font.Length > 3 && FontsList.ContainsKey(sunset_font.font))
+                    {
+                        string font_fileName = FontsList[sunset_font.font];
+                        //string font_fileName = ProjectDir + @"\assets\fonts\" + sunset_font.font;
+                        if (SelectedModel.versionOS >= 2 && File.Exists(font_fileName))
+                        {
+                            Font drawFont = null;
+                            using (System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection())
+                            {
+                                fonts.AddFontFile(font_fileName);
+                                drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+                            }
+
+                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                            align_h, align_v, text_style, BBorder);
+                        }
+                        else
+                        {
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                        }
+
+                    }
+                    else
+                    {
+                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                    }
+                }
+
+                if (sunset_rotation != null && sunset_rotation.img_First != null && sunset_rotation.img_First.Length > 0 &&
+                    sunset_rotation.dot_image != null && sunset_rotation.dot_image.Length > 0 && index == sunset_rotation.position && sunset_rotation.visible)
+                {
+                    int pos_x = sunset_rotation.imageX;
+                    int pos_y = sunset_rotation.imageY;
+                    int spacing = sunset_rotation.space;
+                    float angle = sunset_rotation.angle;
+                    bool addZero = sunset_rotation.zero;
+                    int image_index = ListImages.IndexOf(sunset_rotation.img_First);
+                    int unit_index = ListImages.IndexOf(sunset_rotation.unit);
+                    int dot_image_index = ListImages.IndexOf(sunset_rotation.dot_image);
+                    string horizontal_alignment = sunset_rotation.align;
+                    bool unit_in_alignment = sunset_rotation.unit_in_alignment;
+
+                    float sunset_value = (float)Math.Round(time_sunset.Hours + time_sunset.Minutes / 100f, 2);
+                    string value = sunset_value.ToString();
+                    //string value = 19.30f.ToString();
+                    string decimalSeparator = Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+                    if (value.IndexOf(decimalSeparator) < 0) value = value + decimalSeparator;
+                    while (value.IndexOf(decimalSeparator) > value.Length - 2 - 1)
+                    {
+                        value = value + "0";
+                    }
+                    if (sunset_rotation.zero) value = value.PadLeft(5, '0');
+
+                    Draw_dagital_text_rotate(gPanel, pos_x, pos_y, spacing, angle, addZero,
+                        image_index, unit_index, dot_image_index, horizontal_alignment, unit_in_alignment,
+                        value, 4, BBorder, "ElementSunrise");
+                }
+
+                if (sunset_circle != null && sunset_circle.img_First != null && sunset_circle.img_First.Length > 0 &&
+                    sunset_circle.dot_image != null && sunset_circle.dot_image.Length > 0 && index == sunset_circle.position && sunset_circle.visible)
+                {
+                    int centr_x = sunset_circle.circle_center_X;
+                    int centr_y = sunset_circle.circle_center_Y;
+                    int radius = sunset_circle.radius;
+                    int spacing = sunset_circle.char_space_angle;
+                    float angle = sunset_circle.angle;
+                    bool addZero = sunset_circle.zero;
+                    int image_index = ListImages.IndexOf(sunset_circle.img_First);
+                    int unit_index = ListImages.IndexOf(sunset_circle.unit);
+                    int dot_image_index = ListImages.IndexOf(sunset_circle.dot_image);
+                    string vertical_alignment = sunset_circle.vertical_alignment;
+                    string horizontal_alignment = sunset_circle.horizontal_alignment;
+                    bool reverse_direction = sunset_circle.reverse_direction;
+                    bool unit_in_alignment = sunset_circle.unit_in_alignment;
+
+                    float sunset_value = (float)Math.Round(time_sunset.Hours + time_sunset.Minutes / 100f, 2);
+                    string value = sunset_value.ToString();
+                    //string value = 19.30f.ToString();
+                    string decimalSeparator = Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+                    if (value.IndexOf(decimalSeparator) < 0) value = value + decimalSeparator;
+                    while (value.IndexOf(decimalSeparator) > value.Length - 2 - 1)
+                    {
+                        value = value + "0";
+                    }
+                    if (sunset_circle.zero) value = value.PadLeft(5, '0');
+
+                    Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
+                        image_index, /*int image_width, int image_height,*/ unit_index, /*int unit_width,*/ dot_image_index, /*int dot_image_width,*/
+                        vertical_alignment, horizontal_alignment, reverse_direction, unit_in_alignment,
+                        value, 4, BBorder, showCentrHend, "ElementSunrise");
+                }
+
+                if (sunset_sunrise != null && sunset_sunrise.img_First != null && sunset_sunrise.img_First.Length > 0 &&
+                    index == sunset_sunrise.position && sunset_sunrise.visible)
+                {
+                    float sunset_sunrise_value = 5.30f;
+                    if (time_now > time_sunrise && time_now < time_sunset) sunset_sunrise_value = 19.30f;
+                    int image_Index = ListImages.IndexOf(sunset_sunrise.img_First);
+                    int pos_x = sunset_sunrise.imageX;
+                    int pos_y = sunset_sunrise.imageY;
+                    int sunset_sunrise_spasing = sunset_sunrise.space;
+                    int angl = sunset_sunrise.angle;
+                    int sunset_sunrise_alignment = AlignmentToInt(sunset_sunrise.align);
+                    //bool distance_addZero = img_number.zero;
+                    bool sunset_sunrise_addZero = true;
+                    int sunset_sunrise_separator_index = -1;
+                    if (sunset_sunrise.unit != null && sunset_sunrise.unit.Length > 0)
+                        sunset_sunrise_separator_index = ListImages.IndexOf(sunset_sunrise.unit);
+                    int decumalPoint_index = -1;
+                    if (sunset_sunrise.dot_image != null && sunset_sunrise.dot_image.Length > 0)
+                        decumalPoint_index = ListImages.IndexOf(sunset_sunrise.dot_image);
+
+                    Draw_dagital_text_decimal(gPanel, image_Index, pos_x, pos_y,
+                        sunset_sunrise_spasing, sunset_sunrise_alignment, sunset_sunrise_value, sunset_sunrise_addZero, 4,
+                        sunset_sunrise_separator_index, decumalPoint_index, 2, angl, BBorder, "ElementSunrise");
+
+                    if (sunset_sunrise.icon != null && sunset_sunrise.icon.Length > 0)
+                    {
+                        image_Index = ListImages.IndexOf(sunset_sunrise.icon);
+                        pos_x = sunset_sunrise.iconPosX;
+                        pos_y = sunset_sunrise.iconPosY;
+
+                        src = OpenFileStream(ListImagesFullName[image_Index]);
+                        gPanel.DrawImage(src, pos_x, pos_y);
+                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                    }
+                }
+
+                if (moon && pointer != null && pointer.src != null && pointer.src.Length > 0 &&
+                    index == pointer.position && pointer.visible)
+                {
+                    int x = pointer.center_x;
+                    int y = pointer.center_y;
+                    int offsetX = pointer.pos_x;
+                    int offsetY = pointer.pos_y;
+                    int startAngle = pointer.start_angle;
+                    int endAngle = pointer.end_angle;
+                    int image_index = ListImages.IndexOf(pointer.src);
+
+                    float angle = startAngle + progress * (endAngle - startAngle);
+
+                    if (pointer.scale != null && pointer.scale.Length > 0)
+                    {
+                        int image_index_scale = ListImages.IndexOf(pointer.scale);
+                        int x_scale = pointer.scale_x;
+                        int y_scale = pointer.scale_y;
+
+                        src = OpenFileStream(ListImagesFullName[image_index_scale]);
+                        gPanel.DrawImage(src, x_scale, y_scale);
+                    }
+
+                    DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+
+                    if (pointer.cover_path != null && pointer.cover_path.Length > 0)
+                    {
+                        image_index = ListImages.IndexOf(pointer.cover_path);
+                        x = pointer.cover_x;
+                        y = pointer.cover_y;
+
+                        src = OpenFileStream(ListImagesFullName[image_index]);
+                        gPanel.DrawImage(src, x, y);
+                    }
+                }
+
+                if (icon != null && icon.src != null && icon.src.Length > 0 &&
+                    index == icon.position && icon.visible)
+                {
+                    int imageIndex = ListImages.IndexOf(icon.src);
+                    int x = icon.x;
+                    int y = icon.y;
+
+                    if (imageIndex < ListImagesFullName.Count)
+                    {
+                        src = OpenFileStream(ListImagesFullName[imageIndex]);
+                        gPanel.DrawImage(src, x, y);
+                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                    }
+                }
 
 
             }

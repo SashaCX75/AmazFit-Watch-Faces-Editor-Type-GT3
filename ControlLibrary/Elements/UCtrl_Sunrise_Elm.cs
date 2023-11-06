@@ -19,8 +19,10 @@ namespace ControlLibrary
         bool highlight_sunset = false;
         bool highlight_sunrise = false;
         bool highlight_sunset_sunrise = false;
+        bool highlight_sunset_font = false;
         bool highlight_sunset_rotation = false;
         bool highlight_sunset_circle = false;
+        bool highlight_sunrise_font = false;
         bool highlight_sunrise_rotation = false;
         bool highlight_sunrise_circle = false;
         bool highlight_icon = false;
@@ -101,8 +103,10 @@ namespace ControlLibrary
             highlight_sunset = false;
             highlight_sunrise = false;
             highlight_sunset_sunrise = false;
+            highlight_sunset_font = false;
             highlight_sunset_rotation = false;
             highlight_sunset_circle = false;
+            highlight_sunrise_font = false;
             highlight_sunrise_rotation = false;
             highlight_sunrise_circle = false;
             highlight_icon = false;
@@ -190,6 +194,19 @@ namespace ControlLibrary
                 button_Sunset_Sunrise.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
+            if (highlight_sunset_font)
+            {
+                panel_Sunset_Font.BackColor = SystemColors.ActiveCaption;
+                button_Sunset_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Sunset_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Sunset_Font.BackColor = SystemColors.Control;
+                button_Sunset_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Sunset_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
             if (highlight_sunset_rotation)
             {
                 panel_Sunset_rotation.BackColor = SystemColors.ActiveCaption;
@@ -214,6 +231,19 @@ namespace ControlLibrary
                 panel_Sunrise_rotation.BackColor = SystemColors.Control;
                 button_Sunrise_rotation.FlatAppearance.MouseOverBackColor = SystemColors.Control;
                 button_Sunrise_rotation.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_sunrise_font)
+            {
+                panel_Sunrise_Font.BackColor = SystemColors.ActiveCaption;
+                button_Sunrise_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Sunrise_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Sunrise_Font.BackColor = SystemColors.Control;
+                button_Sunrise_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Sunrise_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
             if (highlight_sunset_circle)
@@ -266,8 +296,10 @@ namespace ControlLibrary
             highlight_sunset = false;
             highlight_sunrise = false;
             highlight_sunset_sunrise = false;
+            highlight_sunset_font = false;
             highlight_sunset_rotation = false;
             highlight_sunset_circle = false;
+            highlight_sunrise_font = false;
             highlight_sunrise_rotation = false;
             highlight_sunrise_circle = false;
             highlight_icon = false;
@@ -291,8 +323,10 @@ namespace ControlLibrary
             highlight_sunset = false;
             highlight_sunrise = false;
             highlight_sunset_sunrise = false;
+            highlight_sunset_font = false;
             highlight_sunset_rotation = false;
             highlight_sunset_circle = false;
+            highlight_sunrise_font = false;
             highlight_sunrise_rotation = false;
             highlight_sunrise_circle = false;
             highlight_icon = false;
@@ -316,8 +350,10 @@ namespace ControlLibrary
             highlight_sunset = false;
             highlight_sunrise = false;
             highlight_sunset_sunrise = false;
+            highlight_sunset_font = false;
             highlight_sunset_rotation = false;
             highlight_sunset_circle = false;
+            highlight_sunrise_font = false;
             highlight_sunrise_rotation = false;
             highlight_sunrise_circle = false;
             highlight_icon = false;
@@ -341,8 +377,10 @@ namespace ControlLibrary
             highlight_sunset = true;
             highlight_sunrise = false;
             highlight_sunset_sunrise = false;
+            highlight_sunset_font = false;
             highlight_sunset_rotation = false;
             highlight_sunset_circle = false;
+            highlight_sunrise_font = false;
             highlight_sunrise_rotation = false;
             highlight_sunrise_circle = false;
             highlight_icon = false;
@@ -366,8 +404,10 @@ namespace ControlLibrary
             highlight_sunset = false;
             highlight_sunrise = true;
             highlight_sunset_sunrise = false;
+            highlight_sunset_font = false;
             highlight_sunset_rotation = false;
             highlight_sunset_circle = false;
+            highlight_sunrise_font = false;
             highlight_sunrise_rotation = false;
             highlight_sunrise_circle = false;
             highlight_icon = false;
@@ -391,8 +431,37 @@ namespace ControlLibrary
             highlight_sunset = false;
             highlight_sunrise = false;
             highlight_sunset_sunrise = true;
+            highlight_sunset_font = false;
             highlight_sunset_rotation = false;
             highlight_sunset_circle = false;
+            highlight_sunrise_font = false;
+            highlight_sunrise_rotation = false;
+            highlight_sunrise_circle = false;
+            highlight_icon = false;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Sunset_Font_Click(object sender, EventArgs e)
+        {
+            selectedElement = "Sunset_Font";
+
+            highlight_images = false;
+            highlight_segments = false;
+            highlight_pointer = false;
+            highlight_sunset = false;
+            highlight_sunrise = false;
+            highlight_sunset_sunrise = false;
+            highlight_sunset_font = true;
+            highlight_sunset_rotation = false;
+            highlight_sunset_circle = false;
+            highlight_sunrise_font = false;
             highlight_sunrise_rotation = false;
             highlight_sunrise_circle = false;
             highlight_icon = false;
@@ -416,8 +485,10 @@ namespace ControlLibrary
             highlight_sunset = false;
             highlight_sunrise = false;
             highlight_sunset_sunrise = false;
+            highlight_sunset_font = false;
             highlight_sunset_rotation = true;
             highlight_sunset_circle = false;
+            highlight_sunrise_font = false;
             highlight_sunrise_rotation = false;
             highlight_sunrise_circle = false;
             highlight_icon = false;
@@ -441,8 +512,37 @@ namespace ControlLibrary
             highlight_sunset = false;
             highlight_sunrise = false;
             highlight_sunset_sunrise = false;
+            highlight_sunset_font = false;
             highlight_sunset_rotation = false;
             highlight_sunset_circle = true;
+            highlight_sunrise_font = false;
+            highlight_sunrise_rotation = false;
+            highlight_sunrise_circle = false;
+            highlight_icon = false;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Sunrise_Font_Click(object sender, EventArgs e)
+        {
+            selectedElement = "Sunrise_Font";
+
+            highlight_images = false;
+            highlight_segments = false;
+            highlight_pointer = false;
+            highlight_sunset = false;
+            highlight_sunrise = false;
+            highlight_sunset_sunrise = false;
+            highlight_sunset_font = false;
+            highlight_sunset_rotation = false;
+            highlight_sunset_circle = false;
+            highlight_sunrise_font = true;
             highlight_sunrise_rotation = false;
             highlight_sunrise_circle = false;
             highlight_icon = false;
@@ -466,8 +566,10 @@ namespace ControlLibrary
             highlight_sunset = false;
             highlight_sunrise = false;
             highlight_sunset_sunrise = false;
+            highlight_sunset_font = false;
             highlight_sunset_rotation = false;
             highlight_sunset_circle = false;
+            highlight_sunrise_font = false;
             highlight_sunrise_rotation = true;
             highlight_sunrise_circle = false;
             highlight_icon = false;
@@ -491,8 +593,10 @@ namespace ControlLibrary
             highlight_sunset = false;
             highlight_sunrise = false;
             highlight_sunset_sunrise = false;
+            highlight_sunset_font = false;
             highlight_sunset_rotation = false;
             highlight_sunset_circle = false;
+            highlight_sunrise_font = false;
             highlight_sunrise_rotation = false;
             highlight_sunrise_circle = true;
             highlight_icon = false;
@@ -516,8 +620,10 @@ namespace ControlLibrary
             highlight_sunset = false;
             highlight_sunrise = false;
             highlight_sunset_sunrise = false;
+            highlight_sunset_font = false;
             highlight_sunset_rotation = false;
             highlight_sunset_circle = false;
+            highlight_sunrise_font = false;
             highlight_sunrise_rotation = false;
             highlight_sunrise_circle = false;
             highlight_icon = true;
@@ -577,18 +683,7 @@ namespace ControlLibrary
 
         private void tableLayoutPanel1_DragDrop(object sender, DragEventArgs e)
         {
-            int cursorX = Cursor.Position.X;
-            int cursorY = Cursor.Position.Y;
-            int dX = Math.Abs(cursorX - cursorPos.X);
-            int dY = Math.Abs(cursorY - cursorPos.Y);
-            if (dX > 5 || dY > 5)
-            {
-                if (OptionsMoved != null)
-                {
-                    EventArgs eventArgs = new EventArgs();
-                    OptionsMoved(this, eventArgs, GetOptionsPosition());
-                }
-            }
+
         }
 
         private void tableLayoutPanel1_DragOver(object sender, DragEventArgs e)
@@ -661,9 +756,9 @@ namespace ControlLibrary
 
             pictureBox_Del.Location = new Point(button_ElementName.Width - pictureBox_Del.Width - 4, 2);
 
-            if (tableLayoutPanel1.Height > 350)
+            if (tableLayoutPanel1.Height > 405)
             {
-                float currentDPI = tableLayoutPanel1.Height / 276f;
+                float currentDPI = tableLayoutPanel1.Height / 326f;
                 button_ElementName.Image = (Image)(new Bitmap(button_ElementName.Image,
                     new Size((int)(16 * currentDPI), (int)(16 * currentDPI))));
 
@@ -778,6 +873,12 @@ namespace ControlLibrary
                 case "Sunset_Sunrise":
                     checkBox_Sunset_Sunrise.Checked = status;
                     break;
+                case "Sunset_Font":
+                    checkBox_Sunset_Font.Checked = status;
+                    break;
+                case "Sunrise_Font":
+                    checkBox_Sunrise_Font.Checked = status;
+                    break;
                 case "Sunset_rotation":
                     checkBox_Sunset_rotation.Checked = status;
                     break;
@@ -826,6 +927,12 @@ namespace ControlLibrary
                             break;
                         case "Sunset_Sunrise":
                             panel = panel_Sunset_Sunrise;
+                            break;
+                        case "Sunset_Font":
+                            panel = panel_Sunset_Font;
+                            break;
+                        case "Sunrise_Font":
+                            panel = panel_Sunrise_Font;
                             break;
                         case "Sunset_rotation":
                             panel = panel_Sunset_rotation;
@@ -902,6 +1009,12 @@ namespace ControlLibrary
                     case "panel_Sunset_Sunrise":
                         elementOptions.Add("Sunset_Sunrise", count - i);
                         break;
+                    case "panel_Sunset_Font":
+                        elementOptions.Add("Sunset_Font", count - i);
+                        break;
+                    case "panel_Sunrise_Font":
+                        elementOptions.Add("Sunrise_Font", count - i);
+                        break;
                     case "panel_Sunset_rotation":
                         elementOptions.Add("Sunset_rotation", count - i);
                         break;
@@ -927,26 +1040,31 @@ namespace ControlLibrary
             setValue = true;
 
             Dictionary<int, string> elementOptions = new Dictionary<int, string>();
-            elementOptions.Add(1, "Icon");
-            elementOptions.Add(2, "Sunset_Sunrise");
-            elementOptions.Add(3, "Sunrise_circle");
-            elementOptions.Add(4, "Sunrise_rotation");
-            elementOptions.Add(5, "Sunrise");
-            elementOptions.Add(6, "Sunset_circle");
-            elementOptions.Add(7, "Sunset_rotation");
-            elementOptions.Add(8, "Sunset");
-            elementOptions.Add(9, "Pointer");
-            elementOptions.Add(10, "Segments");
-            elementOptions.Add(11, "Images");
+            int index = 1;
+            elementOptions.Add(index++, "Icon");
+            elementOptions.Add(index++, "Sunset_Sunrise");
+            elementOptions.Add(index++, "Sunrise_circle");
+            elementOptions.Add(index++, "Sunrise_rotation");
+            elementOptions.Add(index++, "Sunrise_Font");
+            elementOptions.Add(index++, "Sunrise");
+            elementOptions.Add(index++, "Sunset_circle");
+            elementOptions.Add(index++, "Sunset_rotation");
+            elementOptions.Add(index++, "Sunset_Font");
+            elementOptions.Add(index++, "Sunset");
+            elementOptions.Add(index++, "Pointer");
+            elementOptions.Add(index++, "Segments");
+            elementOptions.Add(index++, "Images");
             SetOptionsPosition(elementOptions);
 
             checkBox_Images.Checked = false;
             checkBox_Segments.Checked = false;
             checkBox_Pointer.Checked = false;
             checkBox_Sunset.Checked = false;
+            checkBox_Sunset_Font.Checked = false;
             checkBox_Sunset_rotation.Checked = false;
             checkBox_Sunset_circle.Checked = false;
             checkBox_Sunrise.Checked = false;
+            checkBox_Sunrise_Font.Checked = false;
             checkBox_Sunrise_rotation.Checked = false;
             checkBox_Sunrise_circle.Checked = false;
             checkBox_Sunset_Sunrise.Checked = false;

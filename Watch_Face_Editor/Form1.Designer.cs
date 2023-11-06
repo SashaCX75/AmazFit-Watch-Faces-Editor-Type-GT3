@@ -1414,8 +1414,10 @@ namespace Watch_Face_Editor
             // 
             resources.ApplyResources(this.uCtrl_Moon_Elm, "uCtrl_Moon_Elm");
             this.uCtrl_Moon_Elm.Name = "uCtrl_Moon_Elm";
-            this.uCtrl_Moon_Elm.SelectChanged += new ControlLibrary.UCtrl_Moon_Elm.SelectChangedHandler(this.uCtrl_Moon_Elm_SelectChanged);
             this.uCtrl_Moon_Elm.VisibleElementChanged += new ControlLibrary.UCtrl_Moon_Elm.VisibleElementChangedHandler(this.uCtrl_Moon_Elm_VisibleElementChanged);
+            this.uCtrl_Moon_Elm.VisibleOptionsChanged += new ControlLibrary.UCtrl_Moon_Elm.VisibleOptionsChangedHandler(this.uCtrl_Moon_Elm_VisibleOptionsChanged);
+            this.uCtrl_Moon_Elm.OptionsMoved += new ControlLibrary.UCtrl_Moon_Elm.OptionsMovedHandler(this.uCtrl_Moon_Elm_OptionsMoved);
+            this.uCtrl_Moon_Elm.SelectChanged += new ControlLibrary.UCtrl_Moon_Elm.SelectChangedHandler(this.uCtrl_Moon_Elm_SelectChanged);
             this.uCtrl_Moon_Elm.DelElement += new ControlLibrary.UCtrl_Moon_Elm.DelElementHandler(this.uCtrl_Elm_DelElement);
             this.uCtrl_Moon_Elm.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
             this.uCtrl_Moon_Elm.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
@@ -1660,7 +1662,9 @@ namespace Watch_Face_Editor
             // 
             resources.ApplyResources(this.uCtrl_Text_SystemFont_Opt, "uCtrl_Text_SystemFont_Opt");
             this.uCtrl_Text_SystemFont_Opt.Name = "uCtrl_Text_SystemFont_Opt";
+            this.uCtrl_Text_SystemFont_Opt.UnitMode = true;
             this.uCtrl_Text_SystemFont_Opt.UserFont = false;
+            this.uCtrl_Text_SystemFont_Opt.ZeroMode = true;
             this.uCtrl_Text_SystemFont_Opt.ValueChanged += new ControlLibrary.UCtrl_Text_SystemFont_Opt.ValueChangedHandler(this.uCtrl_Text_SystemFont_Opt_ValueChanged);
             this.uCtrl_Text_SystemFont_Opt.AddFont_Click += new ControlLibrary.UCtrl_Text_SystemFont_Opt.AddFont_ClickHandler(this.uCtrl_Text_SystemFont_Opt_AddFont_Click);
             this.uCtrl_Text_SystemFont_Opt.DelFont_Click += new ControlLibrary.UCtrl_Text_SystemFont_Opt.DelFont_ClickHandler(this.uCtrl_Text_SystemFont_Opt_DelFont_Click);
@@ -1733,6 +1737,7 @@ namespace Watch_Face_Editor
             // 
             // uCtrl_Text_Opt
             // 
+            this.uCtrl_Text_Opt.Altitude = false;
             this.uCtrl_Text_Opt.Angle = false;
             this.uCtrl_Text_Opt.AngleVisible = true;
             this.uCtrl_Text_Opt.Distance = false;
