@@ -1747,7 +1747,7 @@ namespace Watch_Face_Editor
                             if (uCtrl_EditableElements_Opt.checkBox_Text_CityName.Checked)
                             {
                                 hmUI_widget_TEXT text = weather.City_Name;
-                                Read_Text_Options(text, false);
+                                Read_Text_Options(text, false, false);
                                 //ShowElemenrOptions("SystemFont");
                                 uCtrl_EditableElements_Opt.Collapse = true;
                             }

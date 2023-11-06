@@ -330,7 +330,7 @@ namespace Watch_Face_Editor
                     Scale_IMG_LEVEL(elementPAI.Images, scale);
                     Scale_IMG_PROGRESS(elementPAI.Segments, scale);
                     Scale_IMG_NUMBER(elementPAI.Number, scale);
-                    Scale_TEXT(elementPAI.Number_Font, scale);
+                    //Scale_TEXT(elementPAI.Number_Font, scale);
                     Scale_IMG_NUMBER(elementPAI.Number_Target, scale);
                     Scale_TEXT(elementPAI.Number_Target_Font, scale);
                     Scale_IMG_NUMBER(elementPAI.Text_rotation_Target, scale);
@@ -425,6 +425,7 @@ namespace Watch_Face_Editor
                     Scale_Text_Circle(elementWeather.Text_Min_circle, scale);
                     Scale_IMG_NUMBER(elementWeather.Text_Max_rotation, scale);
                     Scale_Text_Circle(elementWeather.Text_Max_circle, scale);
+                    Scale_TEXT(elementWeather.Number_Min_Max_Font, scale);
                     Scale_TEXT(elementWeather.City_Name, scale);
                     Scale_IMG(elementWeather.Icon, scale);
                     break;
@@ -487,6 +488,22 @@ namespace Watch_Face_Editor
                 case "ElementMoon":
                     ElementMoon elementMoon = (ElementMoon)elements;
                     Scale_IMG_LEVEL(elementMoon.Images, scale);
+                    //Scale_IMG_PROGRESS(elementMoon.Segments, scale);
+
+                    Scale_IMG_NUMBER(elementMoon.Sunrise, scale);
+                    Scale_TEXT(elementMoon.Sunrise_Font, scale);
+                    //Scale_IMG_NUMBER(elementMoon.Sunrise_rotation, scale);
+                    //Scale_Text_Circle(elementMoon.Sunrise_circle, scale);
+
+                    Scale_IMG_NUMBER(elementMoon.Sunset, scale);
+                    Scale_TEXT(elementMoon.Sunset_Font, scale);
+                    //Scale_IMG_NUMBER(elementMoon.Sunset_rotation, scale);
+                    //Scale_Text_Circle(elementMoon.Sunset_circle, scale);
+
+                    Scale_IMG_NUMBER(elementMoon.Sunset_Sunrise, scale);
+
+                    Scale_IMG_POINTER(elementMoon.Pointer, scale);
+                    Scale_IMG(elementMoon.Icon, scale);
                     break;
                 case "ElementAnimation":
                     ElementAnimation elementAnimation = (ElementAnimation)elements;

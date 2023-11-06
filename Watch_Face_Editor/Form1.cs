@@ -4964,6 +4964,35 @@ namespace Watch_Face_Editor
         /// <summary>Добавляем луна в циферблат</summary>
         private void AddMoon()
         {
+            //if (!PreviewView) return;
+            //List<object> Elements = new List<object>();
+            //if (Watch_Face == null) Watch_Face = new WATCH_FACE();
+            //if (radioButton_ScreenNormal.Checked)
+            //{
+            //    if (Watch_Face.ScreenNormal == null) Watch_Face.ScreenNormal = new ScreenNormal();
+            //    if (Watch_Face.ScreenNormal.Elements == null) Watch_Face.ScreenNormal.Elements = new List<object>();
+            //    Elements = Watch_Face.ScreenNormal.Elements;
+            //}
+            //else
+            //{
+            //    if (Watch_Face.ScreenAOD == null) Watch_Face.ScreenAOD = new ScreenAOD();
+            //    if (Watch_Face.ScreenAOD.Elements == null) Watch_Face.ScreenAOD.Elements = new List<object>();
+            //    Elements = Watch_Face.ScreenAOD.Elements;
+
+            //    if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+            //        Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
+            //}
+
+            //ElementMoon moon = new ElementMoon();
+            //moon.visible = true;
+            //moon.Images = new hmUI_widget_IMG_LEVEL();
+            //moon.Images.position = 1;
+            //moon.Images.visible = true;
+
+            //bool exists = Elements.Exists(e => e.GetType().Name == "ElementMoon"); // проверяем что такого элемента нет
+            //if (!exists) Elements.Insert(0, moon);
+            //uCtrl_Moon_Elm.SettingsClear();
+
             if (!PreviewView) return;
             List<object> Elements = new List<object>();
             if (Watch_Face == null) Watch_Face = new WATCH_FACE();
@@ -4985,10 +5014,7 @@ namespace Watch_Face_Editor
 
             ElementMoon moon = new ElementMoon();
             moon.visible = true;
-            moon.Images = new hmUI_widget_IMG_LEVEL();
-            moon.Images.position = 1;
-            moon.Images.visible = true;
-
+            //digitalTime.position = Elements.Count;
             bool exists = Elements.Exists(e => e.GetType().Name == "ElementMoon"); // проверяем что такого элемента нет
             if (!exists) Elements.Insert(0, moon);
             uCtrl_Moon_Elm.SettingsClear();
@@ -6274,6 +6300,11 @@ namespace Watch_Face_Editor
                                 uCtrl_Weather_Elm.checkBox_Text_Max_circle.Checked = Weather.Text_Max_circle.visible;
                                 elementOptions.Add(Weather.Text_Max_circle.position, "Text_Max_circle");
                             }
+                            if (Weather.Number_Min_Max_Font != null)
+                            {
+                                uCtrl_Weather_Elm.checkBox_Number_Min_Max_Font.Checked = Weather.Number_Min_Max_Font.visible;
+                                elementOptions.Add(Weather.Number_Min_Max_Font.position, "Number_Min_Max_Font");
+                            }
                             if (Weather.City_Name != null)
                             {
                                 uCtrl_Weather_Elm.checkBox_Text_CityName.Checked = Weather.City_Name.visible;
@@ -6445,6 +6476,11 @@ namespace Watch_Face_Editor
                                 uCtrl_Sunrise_Elm.checkBox_Sunrise.Checked = Sunrise.Sunrise.visible;
                                 elementOptions.Add(Sunrise.Sunrise.position, "Sunrise");
                             }
+                            if (Sunrise.Sunrise_Font != null)
+                            {
+                                uCtrl_Sunrise_Elm.checkBox_Sunrise_Font.Checked = Sunrise.Sunrise_Font.visible;
+                                elementOptions.Add(Sunrise.Sunrise_Font.position, "Sunrise_Font");
+                            }
                             if (Sunrise.Sunrise_rotation != null)
                             {
                                 uCtrl_Sunrise_Elm.checkBox_Sunrise_rotation.Checked = Sunrise.Sunrise_rotation.visible;
@@ -6459,6 +6495,11 @@ namespace Watch_Face_Editor
                             {
                                 uCtrl_Sunrise_Elm.checkBox_Sunset.Checked = Sunrise.Sunset.visible;
                                 elementOptions.Add(Sunrise.Sunset.position, "Sunset");
+                            }
+                            if (Sunrise.Sunset_Font != null)
+                            {
+                                uCtrl_Sunrise_Elm.checkBox_Sunset_Font.Checked = Sunrise.Sunset_Font.visible;
+                                elementOptions.Add(Sunrise.Sunset_Font.position, "Sunset_Font");
                             }
                             if (Sunrise.Sunset_rotation != null)
                             {
@@ -6547,6 +6588,74 @@ namespace Watch_Face_Editor
                         case "ElementMoon":
                             ElementMoon Moon = (ElementMoon)element;
                             uCtrl_Moon_Elm.SetVisibilityElementStatus(Moon.visible);
+                            elementOptions = new Dictionary<int, string>();
+                            if (Moon.Images != null)
+                            {
+                                uCtrl_Moon_Elm.checkBox_Images.Checked = Moon.Images.visible;
+                                elementOptions.Add(Moon.Images.position, "Images");
+                            }
+                            //if (Moon.Segments != null)
+                            //{
+                            //    uCtrl_Moon_Elm.checkBox_Segments.Checked = Moon.Segments.visible;
+                            //    elementOptions.Add(Moon.Segments.position, "Segments");
+                            //}
+                            if (Moon.Sunrise != null)
+                            {
+                                uCtrl_Moon_Elm.checkBox_Sunrise.Checked = Moon.Sunrise.visible;
+                                elementOptions.Add(Moon.Sunrise.position, "Sunrise");
+                            }
+                            if (Moon.Sunrise_Font != null)
+                            {
+                                uCtrl_Moon_Elm.checkBox_Sunrise_Font.Checked = Moon.Sunrise_Font.visible;
+                                elementOptions.Add(Moon.Sunrise_Font.position, "Sunrise_Font");
+                            }
+                            //if (Moon.Sunrise_rotation != null)
+                            //{
+                            //    uCtrl_Moon_Elm.checkBox_Sunrise_rotation.Checked = Moon.Sunrise_rotation.visible;
+                            //    elementOptions.Add(Moon.Sunrise_rotation.position, "Sunrise_rotation");
+                            //}
+                            //if (Moon.Sunrise_circle != null)
+                            //{
+                            //    uCtrl_Moon_Elm.checkBox_Sunrise_circle.Checked = Moon.Sunrise_circle.visible;
+                            //    elementOptions.Add(Moon.Sunrise_circle.position, "Sunrise_circle");
+                            //}
+                            if (Moon.Sunset_Font != null)
+                            {
+                                uCtrl_Moon_Elm.checkBox_Sunset_Font.Checked = Moon.Sunset_Font.visible;
+                                elementOptions.Add(Moon.Sunset_Font.position, "Sunset_Font");
+                            }
+                            if (Moon.Sunset != null)
+                            {
+                                uCtrl_Moon_Elm.checkBox_Sunset.Checked = Moon.Sunset.visible;
+                                elementOptions.Add(Moon.Sunset.position, "Sunset");
+                            }
+                            //if (Moon.Sunset_rotation != null)
+                            //{
+                            //    uCtrl_Moon_Elm.checkBox_Sunset_rotation.Checked = Moon.Sunset_rotation.visible;
+                            //    elementOptions.Add(Moon.Sunset_rotation.position, "Sunset_rotation");
+                            //}
+                            //if (Moon.Sunset_circle != null)
+                            //{
+                            //    uCtrl_Moon_Elm.checkBox_Sunset_circle.Checked = Moon.Sunset_circle.visible;
+                            //    elementOptions.Add(Moon.Sunset_circle.position, "Sunset_circle");
+                            //}
+                            if (Moon.Sunset_Sunrise != null)
+                            {
+                                uCtrl_Moon_Elm.checkBox_Sunset_Sunrise.Checked = Moon.Sunset_Sunrise.visible;
+                                elementOptions.Add(Moon.Sunset_Sunrise.position, "Sunset_Sunrise");
+                            }
+                            if (Moon.Pointer != null)
+                            {
+                                uCtrl_Moon_Elm.checkBox_Pointer.Checked = Moon.Pointer.visible;
+                                elementOptions.Add(Moon.Pointer.position, "Pointer");
+                            }
+                            if (Moon.Icon != null)
+                            {
+                                uCtrl_Moon_Elm.checkBox_Icon.Checked = Moon.Icon.visible;
+                                elementOptions.Add(Moon.Icon.position, "Icon");
+                            }
+
+                            uCtrl_Moon_Elm.SetOptionsPosition(elementOptions);
 
                             uCtrl_Moon_Elm.Visible = true;
                             SetElementPositionInGUI(type, count - i - 2);
@@ -10726,7 +10835,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Steps_Elm.checkBox_Number_Font.Checked)
                         {
                             text = steps.Number_Font;
-                            Read_Text_Options(text, true);
+                            Read_Text_Options(text, true, true);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
@@ -10762,7 +10871,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Steps_Elm.checkBox_Number_Target_Font.Checked)
                         {
                             text = steps.Number_Target_Font;
-                            Read_Text_Options(text, true);
+                            Read_Text_Options(text, true, true);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
@@ -10896,7 +11005,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Battery_Elm.checkBox_Number_Font.Checked)
                         {
                             text = battery.Number_Font;
-                            Read_Text_Options(text, true);
+                            Read_Text_Options(text, true, true);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
@@ -11031,7 +11140,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Heart_Elm.checkBox_Number_Font.Checked)
                         {
                             text = heart.Number_Font;
-                            Read_Text_Options(text, true);
+                            Read_Text_Options(text, true, true);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
@@ -11165,7 +11274,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Calories_Elm.checkBox_Number_Font.Checked)
                         {
                             text = calories.Number_Font;
-                            Read_Text_Options(text, true);
+                            Read_Text_Options(text, true, true);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
@@ -11201,7 +11310,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Calories_Elm.checkBox_Number_Target_Font.Checked)
                         {
                             text = calories.Number_Target_Font;
-                            Read_Text_Options(text, true);
+                            Read_Text_Options(text, true, true);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
@@ -11353,7 +11462,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_PAI_Elm.checkBox_Number_Target_Font.Checked)
                         {
                             text = pai.Number_Target_Font;
-                            Read_Text_Options(text, true);
+                            Read_Text_Options(text, true, true);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
@@ -11464,7 +11573,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Distance_Elm.checkBox_Number_Font.Checked)
                         {
                             text = distance.Number_Font;
-                            Read_Text_Options(text, true);
+                            Read_Text_Options(text, true, true);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
@@ -11571,7 +11680,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Stand_Elm.checkBox_Number_Font.Checked)
                         {
                             text = stand.Number_Font;
-                            Read_Text_Options(text, true);
+                            Read_Text_Options(text, false, true);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
@@ -11607,7 +11716,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Stand_Elm.checkBox_Number_Target_Font.Checked)
                         {
                             text = stand.Number_Target_Font;
-                            Read_Text_Options(text, true);
+                            Read_Text_Options(text, false, true);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
@@ -11850,7 +11959,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_SpO2_Elm.checkBox_Number_Font.Checked)
                         {
                             text = SpO2.Number_Font;
-                            Read_Text_Options(text, true);
+                            Read_Text_Options(text, true, true);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
@@ -11953,7 +12062,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Stress_Elm.checkBox_Number_Font.Checked)
                         {
                             text = stress.Number_Font;
-                            Read_Text_Options(text, true);
+                            Read_Text_Options(text, false, true);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
@@ -12051,7 +12160,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_FatBurning_Elm.checkBox_Number_Font.Checked)
                         {
                             text = fat_burning.Number_Font;
-                            Read_Text_Options(text, true);
+                            Read_Text_Options(text, true, true);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
@@ -12087,7 +12196,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_FatBurning_Elm.checkBox_Number_Target_Font.Checked)
                         {
                             text = fat_burning.Number_Target_Font;
-                            Read_Text_Options(text, true);
+                            Read_Text_Options(text, true, true);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
@@ -12210,7 +12319,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Weather_Elm.checkBox_Number_Font.Checked)
                         {
                             text = weather.Number_Font;
-                            Read_Text_Options(text, true);
+                            Read_Text_Options(text, true, false);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
@@ -12228,7 +12337,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Weather_Elm.checkBox_Number_Min_Font.Checked)
                         {
                             text = weather.Number_Min_Font;
-                            Read_Text_Options(text, true);
+                            Read_Text_Options(text, true, false);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
@@ -12264,7 +12373,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Weather_Elm.checkBox_Number_Max_Font.Checked)
                         {
                             text = weather.Number_Max_Font;
-                            Read_Text_Options(text, true);
+                            Read_Text_Options(text, true, false);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
@@ -12287,11 +12396,20 @@ namespace Watch_Face_Editor
                         }
                         else HideAllElemenrOptions();
                         break;
+                    case "Number_Min_Max_Font":
+                        if (uCtrl_Weather_Elm.checkBox_Number_Min_Max_Font.Checked)
+                        {
+                            text = weather.Number_Min_Max_Font;
+                            Read_Text_Options(text, true, false);
+                            ShowElemenrOptions("SystemFont");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
                     case "CityName":
                         if (uCtrl_Weather_Elm.checkBox_Text_CityName.Checked)
                         {
                             text = weather.City_Name;
-                            Read_Text_Options(text, false);
+                            Read_Text_Options(text, false, false);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
@@ -12376,7 +12494,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_UVIndex_Elm.checkBox_Number_Font.Checked)
                         {
                             text = uv_index.Number_Font;
-                            Read_Text_Options(text, true);
+                            Read_Text_Options(text, false, false);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
@@ -12470,7 +12588,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Humidity_Elm.checkBox_Number_Font.Checked)
                         {
                             text = humidity.Number_Font;
-                            Read_Text_Options(text, true);
+                            Read_Text_Options(text, true, false);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
@@ -12544,7 +12662,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Altimeter_Elm.checkBox_Number_Font.Checked)
                         {
                             text = altimeter.Number_Font;
-                            Read_Text_Options(text, true);
+                            Read_Text_Options(text, true, true);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
@@ -12562,7 +12680,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Altimeter_Elm.checkBox_Number_Target_Font.Checked)
                         {
                             text = altimeter.Number_Target_Font;
-                            Read_Text_Options(text, true);
+                            Read_Text_Options(text, true, true);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
@@ -12623,6 +12741,7 @@ namespace Watch_Face_Editor
                 Text_Circle text_circle = null;
                 hmUI_widget_IMG_POINTER img_pointer = null;
                 hmUI_widget_IMG icon = null;
+                hmUI_widget_TEXT text = null;
 
                 switch (selectElement)
                 {
@@ -12653,6 +12772,15 @@ namespace Watch_Face_Editor
                         }
                         else HideAllElemenrOptions();
                         break;
+                    case "Sunrise_Font":
+                        if (uCtrl_Sunrise_Elm.checkBox_Sunrise_Font.Checked)
+                        {
+                            text = sunrise.Sunrise_Font;
+                            Read_Text_Options(text, false, false);
+                            ShowElemenrOptions("SystemFont");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
                     case "Sunrise_rotation":
                         if (uCtrl_Sunrise_Elm.checkBox_Sunrise_rotation.Checked)
                         {
@@ -12677,6 +12805,15 @@ namespace Watch_Face_Editor
                             img_number = sunrise.Sunset;
                             Read_ImgNumber_Options(img_number, false, false, "", true, true, false, true, true);
                             ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Sunset_Font":
+                        if (uCtrl_Sunrise_Elm.checkBox_Sunset_Font.Checked)
+                        {
+                            text = sunrise.Sunset_Font;
+                            Read_Text_Options(text, false, false);
+                            ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -12796,7 +12933,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Wind_Elm.checkBox_Number_Font.Checked)
                         {
                             text = wind.Number_Font;
-                            Read_Text_Options(text, true);
+                            Read_Text_Options(text, false, false);
                             ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
@@ -12835,6 +12972,8 @@ namespace Watch_Face_Editor
 
         private void uCtrl_Moon_Elm_SelectChanged(object sender, EventArgs eventArgs)
         {
+            string selectElement = uCtrl_Moon_Elm.selectedElement;
+            if (selectElement.Length == 0) HideAllElemenrOptions();
             ResetHighlightState("Moon");
 
             ElementMoon moon = null;
@@ -12858,11 +12997,134 @@ namespace Watch_Face_Editor
             if (moon != null)
             {
                 hmUI_widget_IMG_LEVEL img_level = null;
+                //hmUI_widget_IMG_PROGRESS img_prorgess = null;
+                hmUI_widget_IMG_NUMBER img_number = null;
+                //hmUI_widget_IMG_NUMBER text_rotation = null;
+                //Text_Circle text_circle = null;
+                hmUI_widget_IMG_POINTER img_pointer = null;
+                hmUI_widget_IMG icon = null;
+                hmUI_widget_TEXT text = null;
 
-                if (moon.Images == null) moon.Images = new hmUI_widget_IMG_LEVEL();
-                img_level = moon.Images;
-                Read_ImgLevel_Options(img_level, 30, true, true);
-                ShowElemenrOptions("Images");
+                switch (selectElement)
+                {
+                    case "Images":
+                        if (uCtrl_Moon_Elm.checkBox_Images.Checked)
+                        {
+                            img_level = moon.Images;
+                            Read_ImgLevel_Options(img_level, 30, true, true);
+                            ShowElemenrOptions("Images");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    //case "Segments":
+                    //    if (uCtrl_Moon_Elm.checkBox_Segments.Checked)
+                    //    {
+                    //        img_prorgess = moon.Segments;
+                    //        Read_ImgProrgess_Options(img_prorgess, 30, true);
+                    //        ShowElemenrOptions("Segments");
+                    //    }
+                    //    else HideAllElemenrOptions();
+                    //    break;
+                    case "Sunrise":
+                        if (uCtrl_Moon_Elm.checkBox_Sunrise.Checked)
+                        {
+                            img_number = moon.Sunrise;
+                            Read_ImgNumber_Options(img_number, false, false, "", true, true, false, true, true);
+                            ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Sunrise_Font":
+                        if (uCtrl_Moon_Elm.checkBox_Sunrise_Font.Checked)
+                        {
+                            text = moon.Sunrise_Font;
+                            Read_Text_Options(text, false, false);
+                            ShowElemenrOptions("SystemFont");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    //case "Sunrise_rotation":
+                    //    if (uCtrl_Moon_Elm.checkBox_Sunrise_rotation.Checked)
+                    //    {
+                    //        text_rotation = moon.Sunrise_rotation;
+                    //        Read_ImgNumber_Rotate_Options(text_rotation, false, false, true, false, true, true);
+                    //        ShowElemenrOptions("Text_rotation");
+                    //    }
+                    //    else HideAllElemenrOptions();
+                    //    break;
+                    //case "Sunrise_circle":
+                        //if (uCtrl_Moon_Elm.checkBox_Sunrise_circle.Checked)
+                        //{
+                        //    text_circle = moon.Sunrise_circle;
+                        //    Read_TextCircle_Options(text_circle, false, false, true, false, true, true);
+                        //    ShowElemenrOptions("Text_circle");
+                        //}
+                        //else HideAllElemenrOptions();
+                        //break;
+                    case "Sunset":
+                        if (uCtrl_Moon_Elm.checkBox_Sunset.Checked)
+                        {
+                            img_number = moon.Sunset;
+                            Read_ImgNumber_Options(img_number, false, false, "", true, true, false, true, true);
+                            ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Sunset_Font":
+                        if (uCtrl_Moon_Elm.checkBox_Sunset_Font.Checked)
+                        {
+                            text = moon.Sunset_Font;
+                            Read_Text_Options(text, false, false);
+                            ShowElemenrOptions("SystemFont");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    //case "Sunset_rotation":
+                    //    if (uCtrl_Moon_Elm.checkBox_Sunset_rotation.Checked)
+                    //    {
+                    //        text_rotation = moon.Sunset_rotation;
+                    //        Read_ImgNumber_Rotate_Options(text_rotation, false, false, true, false, true, true);
+                    //        ShowElemenrOptions("Text_rotation");
+                    //    }
+                    //    else HideAllElemenrOptions();
+                    //    break;
+                    //case "Sunset_circle":
+                    //    if (uCtrl_Moon_Elm.checkBox_Sunset_circle.Checked)
+                    //    {
+                    //        text_circle = moon.Sunset_circle;
+                    //        Read_TextCircle_Options(text_circle, false, false, true, false, true, true);
+                    //        ShowElemenrOptions("Text_circle");
+                    //    }
+                    //    else HideAllElemenrOptions();
+                    //    break;
+                    case "Sunset_Sunrise":
+                        if (uCtrl_Moon_Elm.checkBox_Sunset_Sunrise.Checked)
+                        {
+                            img_number = moon.Sunset_Sunrise;
+                            Read_ImgNumber_Options(img_number, false, false, "", true, true, false, true, true);
+                            ShowElemenrOptions("Text");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Pointer":
+                        if (uCtrl_Moon_Elm.checkBox_Pointer.Checked)
+                        {
+                            img_pointer = moon.Pointer;
+                            Read_ImgPointer_Options(img_pointer, false);
+                            ShowElemenrOptions("Pointer");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Icon":
+                        if (uCtrl_Moon_Elm.checkBox_Icon.Checked)
+                        {
+                            icon = moon.Icon;
+                            Read_Icon_Options(icon);
+                            ShowElemenrOptions("Icon");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                }
 
             }
         }
@@ -14109,7 +14371,7 @@ namespace Watch_Face_Editor
                 if (pai.Images == null) pai.Images = new hmUI_widget_IMG_LEVEL();
                 if (pai.Segments == null) pai.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (pai.Number == null) pai.Number = new hmUI_widget_IMG_NUMBER();
-                if (pai.Number_Font == null) pai.Number_Font = new hmUI_widget_TEXT();
+                //if (pai.Number_Font == null) pai.Number_Font = new hmUI_widget_TEXT();
                 if (pai.Number_Target == null) pai.Number_Target = new hmUI_widget_IMG_NUMBER();
                 if (pai.Number_Target_Font == null) pai.Number_Target_Font = new hmUI_widget_TEXT();
                 if (pai.Text_rotation_Target == null) pai.Text_rotation_Target = new hmUI_widget_IMG_NUMBER();
@@ -14122,7 +14384,7 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) pai.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) pai.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) pai.Number.position = elementOptions["Number"];
-                if (elementOptions.ContainsKey("Number_Font")) pai.Number_Font.position = elementOptions["Number_Font"];
+                //if (elementOptions.ContainsKey("Number_Font")) pai.Number_Font.position = elementOptions["Number_Font"];
                 if (elementOptions.ContainsKey("Number_Target")) pai.Number_Target.position = elementOptions["Number_Target"];
                 if (elementOptions.ContainsKey("Number_Target_Font")) pai.Number_Target_Font.position = elementOptions["Number_Target_Font"];
                 if (elementOptions.ContainsKey("Text_rotation_Target")) pai.Text_rotation_Target.position = elementOptions["Text_rotation_Target"];
@@ -14527,6 +14789,7 @@ namespace Watch_Face_Editor
                 if (weather.Number_Max_Font == null) weather.Number_Max_Font = new hmUI_widget_TEXT();
                 if (weather.Text_Max_rotation == null) weather.Text_Max_rotation = new hmUI_widget_IMG_NUMBER();
                 if (weather.Text_Max_circle == null) weather.Text_Max_circle = new Text_Circle();
+                if (weather.Number_Min_Max_Font == null) weather.Number_Min_Max_Font = new hmUI_widget_TEXT();
                 if (weather.City_Name == null) weather.City_Name = new hmUI_widget_TEXT();
                 if (weather.Icon == null) weather.Icon = new hmUI_widget_IMG();
 
@@ -14541,6 +14804,7 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Number_Max_Font")) weather.Number_Max_Font.position = elementOptions["Number_Max_Font"];
                 if (elementOptions.ContainsKey("Text_Max_rotation")) weather.Text_Max_rotation.position = elementOptions["Text_Max_rotation"];
                 if (elementOptions.ContainsKey("Text_Max_circle")) weather.Text_Max_circle.position = elementOptions["Text_Max_circle"];
+                if (elementOptions.ContainsKey("Number_Min_Max_Font")) weather.Number_Min_Max_Font.position = elementOptions["Number_Min_Max_Font"];
                 if (elementOptions.ContainsKey("CityName")) weather.City_Name.position = elementOptions["CityName"];
                 if (elementOptions.ContainsKey("Icon")) weather.Icon.position = elementOptions["Icon"];
 
@@ -14741,22 +15005,28 @@ namespace Watch_Face_Editor
                 if (sunrise.Images == null) sunrise.Images = new hmUI_widget_IMG_LEVEL();
                 if (sunrise.Segments == null) sunrise.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (sunrise.Sunrise == null) sunrise.Sunrise = new hmUI_widget_IMG_NUMBER();
+                if (sunrise.Sunrise_Font == null) sunrise.Sunrise_Font = new hmUI_widget_TEXT();
                 if (sunrise.Sunrise_rotation == null) sunrise.Sunrise_rotation = new hmUI_widget_IMG_NUMBER();
                 if (sunrise.Sunrise_circle == null) sunrise.Sunrise_circle = new Text_Circle();
                 if (sunrise.Sunset == null) sunrise.Sunset = new hmUI_widget_IMG_NUMBER();
+                if (sunrise.Sunset_Font == null) sunrise.Sunset_Font = new hmUI_widget_TEXT();
                 if (sunrise.Sunset_rotation == null) sunrise.Sunset_rotation = new hmUI_widget_IMG_NUMBER();
                 if (sunrise.Sunset_circle == null) sunrise.Sunset_circle = new Text_Circle();
+                if (sunrise.Sunset_Sunrise == null) sunrise.Sunset_Sunrise = new hmUI_widget_IMG_NUMBER();
                 if (sunrise.Pointer == null) sunrise.Pointer = new hmUI_widget_IMG_POINTER();
                 if (sunrise.Icon == null) sunrise.Icon = new hmUI_widget_IMG();
 
                 if (elementOptions.ContainsKey("Images")) sunrise.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) sunrise.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Sunrise")) sunrise.Sunrise.position = elementOptions["Sunrise"];
+                if (elementOptions.ContainsKey("Sunrise_Font")) sunrise.Sunrise_Font.position = elementOptions["Sunrise_Font"];
                 if (elementOptions.ContainsKey("Sunrise_rotation")) sunrise.Sunrise_rotation.position = elementOptions["Sunrise_rotation"];
                 if (elementOptions.ContainsKey("Sunrise_circle")) sunrise.Sunrise_circle.position = elementOptions["Sunrise_circle"];
                 if (elementOptions.ContainsKey("Sunset")) sunrise.Sunset.position = elementOptions["Sunset"];
+                if (elementOptions.ContainsKey("Sunset_Font")) sunrise.Sunset_Font.position = elementOptions["Sunset_Font"];
                 if (elementOptions.ContainsKey("Sunset_rotation")) sunrise.Sunset_rotation.position = elementOptions["Sunset_rotation"];
                 if (elementOptions.ContainsKey("Sunset_circle")) sunrise.Sunset_circle.position = elementOptions["Sunset_circle"];
+                if (elementOptions.ContainsKey("Sunset_Sunrise")) sunrise.Sunset_Sunrise.position = elementOptions["Sunset_Sunrise"];
                 if (elementOptions.ContainsKey("Pointer")) sunrise.Pointer.position = elementOptions["Pointer"];
                 if (elementOptions.ContainsKey("Icon")) sunrise.Icon.position = elementOptions["Icon"];
 
@@ -14766,6 +15036,71 @@ namespace Watch_Face_Editor
             PreviewImage();
             FormText();
 
+        }
+
+        private void uCtrl_Moon_Elm_OptionsMoved(object sender, EventArgs eventArgs, Dictionary<string, int> elementOptions)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementMoon moon = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementMoon");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementMoon());
+                    moon = (ElementMoon)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementMoon");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementMoon");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementMoon());
+                    moon = (ElementMoon)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementMoon");
+                }
+            }
+
+            if (moon != null)
+            {
+                if (moon.Images == null) moon.Images = new hmUI_widget_IMG_LEVEL();
+                //if (moon.Segments == null) moon.Segments = new hmUI_widget_IMG_PROGRESS();
+                if (moon.Sunrise == null) moon.Sunrise = new hmUI_widget_IMG_NUMBER();
+                if (moon.Sunrise_Font == null) moon.Sunrise_Font = new hmUI_widget_TEXT();
+                //if (moon.Sunrise_rotation == null) moon.Sunrise_rotation = new hmUI_widget_IMG_NUMBER();
+                //if (moon.Sunrise_circle == null) moon.Sunrise_circle = new Text_Circle();
+                if (moon.Sunset == null) moon.Sunset = new hmUI_widget_IMG_NUMBER();
+                if (moon.Sunset_Font == null) moon.Sunset_Font = new hmUI_widget_TEXT();
+                //if (moon.Sunset_rotation == null) moon.Sunset_rotation = new hmUI_widget_IMG_NUMBER();
+                //if (moon.Sunset_circle == null) moon.Sunset_circle = new Text_Circle();
+                if (moon.Sunset_Sunrise == null) moon.Sunset_Sunrise = new hmUI_widget_IMG_NUMBER();
+                if (moon.Pointer == null) moon.Pointer = new hmUI_widget_IMG_POINTER();
+                if (moon.Icon == null) moon.Icon = new hmUI_widget_IMG();
+
+                if (elementOptions.ContainsKey("Images")) moon.Images.position = elementOptions["Images"];
+                //if (elementOptions.ContainsKey("Segments")) moon.Segments.position = elementOptions["Segments"];
+                if (elementOptions.ContainsKey("Sunrise")) moon.Sunrise.position = elementOptions["Sunrise"];
+                if (elementOptions.ContainsKey("Sunrise_Font")) moon.Sunrise_Font.position = elementOptions["Sunrise_Font"];
+                //if (elementOptions.ContainsKey("Sunrise_rotation")) moon.Sunrise_rotation.position = elementOptions["Sunrise_rotation"];
+                //if (elementOptions.ContainsKey("Sunrise_circle")) moon.Sunrise_circle.position = elementOptions["Sunrise_circle"];
+                if (elementOptions.ContainsKey("Sunset")) moon.Sunset.position = elementOptions["Sunset"];
+                if (elementOptions.ContainsKey("Sunset_Font")) moon.Sunset_Font.position = elementOptions["Sunset_Font"];
+                //if (elementOptions.ContainsKey("Sunset_rotation")) moon.Sunset_rotation.position = elementOptions["Sunset_rotation"];
+                //if (elementOptions.ContainsKey("Sunset_circle")) moon.Sunset_circle.position = elementOptions["Sunset_circle"];
+                if (elementOptions.ContainsKey("Sunset_Sunrise")) moon.Sunset_Sunrise.position = elementOptions["Sunset_Sunrise"];
+                if (elementOptions.ContainsKey("Pointer")) moon.Pointer.position = elementOptions["Pointer"];
+                if (elementOptions.ContainsKey("Icon")) moon.Icon.position = elementOptions["Icon"];
+
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
         }
 
         private void uCtrl_Wind_Elm_OptionsMoved(object sender, EventArgs eventArgs, Dictionary<string, int> elementOptions)
@@ -16282,7 +16617,7 @@ namespace Watch_Face_Editor
                 if (pai.Images == null) pai.Images = new hmUI_widget_IMG_LEVEL();
                 if (pai.Segments == null) pai.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (pai.Number == null) pai.Number = new hmUI_widget_IMG_NUMBER();
-                if (pai.Number_Font == null) pai.Number_Font = new hmUI_widget_TEXT();
+                //if (pai.Number_Font == null) pai.Number_Font = new hmUI_widget_TEXT();
                 if (pai.Number_Target == null) pai.Number_Target = new hmUI_widget_IMG_NUMBER();
                 if (pai.Number_Target_Font == null) pai.Number_Target_Font = new hmUI_widget_TEXT();
                 if (pai.Text_rotation_Target == null) pai.Text_rotation_Target = new hmUI_widget_IMG_NUMBER();
@@ -16296,7 +16631,7 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) pai.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) pai.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Number")) pai.Number.position = elementOptions["Number"];
-                if (elementOptions.ContainsKey("Number_Font")) pai.Number_Font.position = elementOptions["Number_Font"];
+                //if (elementOptions.ContainsKey("Number_Font")) pai.Number_Font.position = elementOptions["Number_Font"];
                 if (elementOptions.ContainsKey("Number_Target")) pai.Number_Target.position = elementOptions["Number_Target"];
                 if (elementOptions.ContainsKey("Number_Target_Font")) pai.Number_Target_Font.position = elementOptions["Number_Target_Font"];
                 if (elementOptions.ContainsKey("Text_rotation_Target")) pai.Text_rotation_Target.position = elementOptions["Text_rotation_Target"];
@@ -16319,9 +16654,9 @@ namespace Watch_Face_Editor
                     case "checkBox_Number":
                         pai.Number.visible = checkBox.Checked;
                         break;
-                    case "checkBox_Number_Font":
-                        pai.Number_Font.visible = checkBox.Checked;
-                        break;
+                    //case "checkBox_Number_Font":
+                    //    pai.Number_Font.visible = checkBox.Checked;
+                    //    break;
                     case "checkBox_Number_Target":
                         pai.Number_Target.visible = checkBox.Checked;
                         break;
@@ -16961,6 +17296,7 @@ namespace Watch_Face_Editor
                 if (weather.Number_Max_Font == null) weather.Number_Max_Font = new hmUI_widget_TEXT();
                 if (weather.Text_Max_rotation == null) weather.Text_Max_rotation = new hmUI_widget_IMG_NUMBER();
                 if (weather.Text_Max_circle == null) weather.Text_Max_circle = new Text_Circle();
+                if (weather.Number_Min_Max_Font == null) weather.Number_Min_Max_Font = new hmUI_widget_TEXT();
                 if (weather.City_Name == null) weather.City_Name = new hmUI_widget_TEXT();
                 if (weather.Icon == null) weather.Icon = new hmUI_widget_IMG();
 
@@ -16976,6 +17312,7 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Number_Max_Font")) weather.Number_Max_Font.position = elementOptions["Number_Max_Font"];
                 if (elementOptions.ContainsKey("Text_Max_rotation")) weather.Text_Max_rotation.position = elementOptions["Text_Max_rotation"];
                 if (elementOptions.ContainsKey("Text_Max_circle")) weather.Text_Max_circle.position = elementOptions["Text_Max_circle"];
+                if (elementOptions.ContainsKey("Number_Min_Max_Font")) weather.Number_Min_Max_Font.position = elementOptions["Number_Min_Max_Font"];
                 if (elementOptions.ContainsKey("CityName")) weather.City_Name.position = elementOptions["CityName"];
                 if (elementOptions.ContainsKey("Icon")) weather.Icon.position = elementOptions["Icon"];
 
@@ -17015,6 +17352,9 @@ namespace Watch_Face_Editor
                         break;
                     case "checkBox_Text_Max_circle":
                         weather.Text_Max_circle.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Number_Min_Max_Font":
+                        weather.Number_Min_Max_Font.visible = checkBox.Checked;
                         break;
                     case "checkBox_Text_CityName":
                         weather.City_Name.visible = checkBox.Checked;
@@ -17304,9 +17644,11 @@ namespace Watch_Face_Editor
                 if (sunrise.Images == null) sunrise.Images = new hmUI_widget_IMG_LEVEL();
                 if (sunrise.Segments == null) sunrise.Segments = new hmUI_widget_IMG_PROGRESS();
                 if (sunrise.Sunrise == null) sunrise.Sunrise = new hmUI_widget_IMG_NUMBER();
+                if (sunrise.Sunrise_Font == null) sunrise.Sunrise_Font = new hmUI_widget_TEXT();
                 if (sunrise.Sunrise_rotation == null) sunrise.Sunrise_rotation = new hmUI_widget_IMG_NUMBER();
                 if (sunrise.Sunrise_circle == null) sunrise.Sunrise_circle = new Text_Circle();
                 if (sunrise.Sunset == null) sunrise.Sunset = new hmUI_widget_IMG_NUMBER();
+                if (sunrise.Sunset_Font == null) sunrise.Sunset_Font = new hmUI_widget_TEXT();
                 if (sunrise.Sunset_rotation == null) sunrise.Sunset_rotation = new hmUI_widget_IMG_NUMBER();
                 if (sunrise.Sunset_circle == null) sunrise.Sunset_circle = new Text_Circle();
                 if (sunrise.Sunset_Sunrise == null) sunrise.Sunset_Sunrise = new hmUI_widget_IMG_NUMBER();
@@ -17317,9 +17659,11 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Images")) sunrise.Images.position = elementOptions["Images"];
                 if (elementOptions.ContainsKey("Segments")) sunrise.Segments.position = elementOptions["Segments"];
                 if (elementOptions.ContainsKey("Sunrise")) sunrise.Sunrise.position = elementOptions["Sunrise"];
+                if (elementOptions.ContainsKey("Sunrise_Font")) sunrise.Sunrise_Font.position = elementOptions["Sunrise_Font"];
                 if (elementOptions.ContainsKey("Sunrise_rotation")) sunrise.Sunrise_rotation.position = elementOptions["Sunrise_rotation"];
                 if (elementOptions.ContainsKey("Sunrise_circle")) sunrise.Sunrise_circle.position = elementOptions["Sunrise_circle"];
                 if (elementOptions.ContainsKey("Sunset")) sunrise.Sunset.position = elementOptions["Sunset"];
+                if (elementOptions.ContainsKey("Sunset_Font")) sunrise.Sunset_Font.position = elementOptions["Sunset_Font"];
                 if (elementOptions.ContainsKey("Sunset_rotation")) sunrise.Sunset_rotation.position = elementOptions["Sunset_rotation"];
                 if (elementOptions.ContainsKey("Sunset_circle")) sunrise.Sunset_circle.position = elementOptions["Sunset_circle"];
                 if (elementOptions.ContainsKey("Sunset_Sunrise")) sunrise.Sunset_Sunrise.position = elementOptions["Sunset_Sunrise"];
@@ -17339,6 +17683,9 @@ namespace Watch_Face_Editor
                     case "checkBox_Sunrise":
                         sunrise.Sunrise.visible = checkBox.Checked;
                         break;
+                    case "checkBox_Sunrise_Font":
+                        sunrise.Sunrise_Font.visible = checkBox.Checked;
+                        break;
                     case "checkBox_Sunrise_rotation":
                         sunrise.Sunrise_rotation.visible = checkBox.Checked;
                         break;
@@ -17347,6 +17694,9 @@ namespace Watch_Face_Editor
                         break;
                     case "checkBox_Sunset":
                         sunrise.Sunset.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Sunset_Font":
+                        sunrise.Sunset_Font.visible = checkBox.Checked;
                         break;
                     case "checkBox_Sunset_rotation":
                         sunrise.Sunset_rotation.visible = checkBox.Checked;
@@ -17368,6 +17718,120 @@ namespace Watch_Face_Editor
             }
 
             uCtrl_Sunrise_Elm_SelectChanged(sender, eventArgs);
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_Moon_Elm_VisibleOptionsChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+
+            ElementMoon moon = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenNormal.Elements.Exists(e => e.GetType().Name == "ElementMoon");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenNormal.Elements.Add(new ElementMoon());
+                    moon = (ElementMoon)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementMoon");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    bool exists = Watch_Face.ScreenAOD.Elements.Exists(e => e.GetType().Name == "ElementMoon");
+                    //digitalTime = (ElementAnalogTime)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementAnalogTime");
+                    if (!exists) Watch_Face.ScreenAOD.Elements.Add(new ElementMoon());
+                    moon = (ElementMoon)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementMoon");
+                }
+            }
+
+            if (moon != null)
+            {
+                if (moon.Images == null) moon.Images = new hmUI_widget_IMG_LEVEL();
+                //if (moon.Segments == null) moon.Segments = new hmUI_widget_IMG_PROGRESS();
+                if (moon.Sunrise == null) moon.Sunrise = new hmUI_widget_IMG_NUMBER();
+                if (moon.Sunrise_Font == null) moon.Sunrise_Font = new hmUI_widget_TEXT();
+                //if (moon.Sunrise_rotation == null) moon.Sunrise_rotation = new hmUI_widget_IMG_NUMBER();
+                //if (moon.Sunrise_circle == null) moon.Sunrise_circle = new Text_Circle();
+                if (moon.Sunset == null) moon.Sunset = new hmUI_widget_IMG_NUMBER();
+                if (moon.Sunset_Font == null) moon.Sunset_Font = new hmUI_widget_TEXT();
+                //if (moon.Sunset_rotation == null) moon.Sunset_rotation = new hmUI_widget_IMG_NUMBER();
+                //if (moon.Sunset_circle == null) moon.Sunset_circle = new Text_Circle();
+                if (moon.Sunset_Sunrise == null) moon.Sunset_Sunrise = new hmUI_widget_IMG_NUMBER();
+                if (moon.Pointer == null) moon.Pointer = new hmUI_widget_IMG_POINTER();
+                if (moon.Icon == null) moon.Icon = new hmUI_widget_IMG();
+
+                Dictionary<string, int> elementOptions = uCtrl_Sunrise_Elm.GetOptionsPosition();
+                if (elementOptions.ContainsKey("Images")) moon.Images.position = elementOptions["Images"];
+                //if (elementOptions.ContainsKey("Segments")) moon.Segments.position = elementOptions["Segments"];
+                if (elementOptions.ContainsKey("Sunrise")) moon.Sunrise.position = elementOptions["Sunrise"];
+                if (elementOptions.ContainsKey("Sunrise_Font")) moon.Sunrise_Font.position = elementOptions["Sunrise_Font"];
+                //if (elementOptions.ContainsKey("Sunrise_rotation")) moon.Sunrise_rotation.position = elementOptions["Sunrise_rotation"];
+                //if (elementOptions.ContainsKey("Sunrise_circle")) moon.Sunrise_circle.position = elementOptions["Sunrise_circle"];
+                if (elementOptions.ContainsKey("Sunset")) moon.Sunset.position = elementOptions["Sunset"];
+                if (elementOptions.ContainsKey("Sunset_Font")) moon.Sunset_Font.position = elementOptions["Sunset_Font"];
+                //if (elementOptions.ContainsKey("Sunset_rotation")) moon.Sunset_rotation.position = elementOptions["Sunset_rotation"];
+                //if (elementOptions.ContainsKey("Sunset_circle")) moon.Sunset_circle.position = elementOptions["Sunset_circle"];
+                if (elementOptions.ContainsKey("Sunset_Sunrise")) moon.Sunset_Sunrise.position = elementOptions["Sunset_Sunrise"];
+                if (elementOptions.ContainsKey("Pointer")) moon.Pointer.position = elementOptions["Pointer"];
+                if (elementOptions.ContainsKey("Icon")) moon.Icon.position = elementOptions["Icon"];
+
+                CheckBox checkBox = (CheckBox)sender;
+                string name = checkBox.Name;
+                switch (name)
+                {
+                    case "checkBox_Images":
+                        moon.Images.visible = checkBox.Checked;
+                        break;
+                    //case "checkBox_Segments":
+                    //    moon.Segments.visible = checkBox.Checked;
+                    //    break;
+                    case "checkBox_Sunrise":
+                        moon.Sunrise.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Sunrise_Font":
+                        moon.Sunrise_Font.visible = checkBox.Checked;
+                        break;
+                    //case "checkBox_Sunrise_rotation":
+                    //    moon.Sunrise_rotation.visible = checkBox.Checked;
+                    //    break;
+                    //case "checkBox_Sunrise_circle":
+                    //    moon.Sunrise_circle.visible = checkBox.Checked;
+                    //    break;
+                    case "checkBox_Sunset":
+                        moon.Sunset.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Sunset_Font":
+                        moon.Sunset_Font.visible = checkBox.Checked;
+                        break;
+                    //case "checkBox_Sunset_rotation":
+                    //    moon.Sunset_rotation.visible = checkBox.Checked;
+                    //    break;
+                    //case "checkBox_Sunset_circle":
+                    //    moon.Sunset_circle.visible = checkBox.Checked;
+                    //    break;
+                    case "checkBox_Sunset_Sunrise":
+                        moon.Sunset_Sunrise.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Pointer":
+                        moon.Pointer.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Icon":
+                        moon.Icon.visible = checkBox.Checked;
+                        break;
+                }
+
+            }
+
+            uCtrl_Moon_Elm_SelectChanged(sender, eventArgs);
 
             JSON_Modified = true;
             PreviewImage();

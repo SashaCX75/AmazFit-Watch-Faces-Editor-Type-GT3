@@ -4252,12 +4252,12 @@ namespace Watch_Face_Editor
 
                         numberOptions_separator = IMG_Separator_Options(img_number, show_level);
                     }
-                    if (PAI.Number_Font != null && PAI.Number_Font.visible)
-                    {
-                        numberFontPosition = PAI.Number_Font.position;
-                        hmUI_widget_TEXT text = PAI.Number_Font;
-                        numberFontOptions = TEXT_FONT_Options(text, "PAI_DAILY", show_level);
-                    }
+                    //if (PAI.Number_Font != null && PAI.Number_Font.visible)
+                    //{
+                    //    numberFontPosition = PAI.Number_Font.position;
+                    //    hmUI_widget_TEXT text = PAI.Number_Font;
+                    //    numberFontOptions = TEXT_FONT_Options(text, "PAI_DAILY", show_level);
+                    //}
 
                     if (PAI.Number_Target != null && PAI.Number_Target.visible)
                     {
@@ -4360,30 +4360,30 @@ namespace Watch_Face_Editor
                             }
                         }
 
-                        // Number_Font
-                        if (index == numberFontPosition && numberFontOptions.Length > 5)
-                        {
-                            if (PAI.Number_Font.font != null && PAI.Number_Font.font.Length > 3)
-                            {
-                                string cacheName = "// FontName: " + PAI.Number_Font.font + "; FontSize: " + PAI.Number_Font.text_size.ToString();
-                                if (fonts_cache.IndexOf(cacheName) < 0)
-                                {
-                                    string fontCacheOptions = TEXT_Cache_Options(PAI.Number_Font, false);
-                                    if (fontCacheOptions.Length > 5)
-                                    {
-                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
-                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
-                                            TabInString(6) + "});" + Environment.NewLine;
-                                    }
-                                }
-                            }
+                        //// Number_Font
+                        //if (index == numberFontPosition && numberFontOptions.Length > 5)
+                        //{
+                        //    if (PAI.Number_Font.font != null && PAI.Number_Font.font.Length > 3)
+                        //    {
+                        //        string cacheName = "// FontName: " + PAI.Number_Font.font + "; FontSize: " + PAI.Number_Font.text_size.ToString();
+                        //        if (fonts_cache.IndexOf(cacheName) < 0)
+                        //        {
+                        //            string fontCacheOptions = TEXT_Cache_Options(PAI.Number_Font, false);
+                        //            if (fontCacheOptions.Length > 5)
+                        //            {
+                        //                fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                        //                fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                        //                    TabInString(6) + "});" + Environment.NewLine;
+                        //            }
+                        //        }
+                        //    }
 
-                            variables += TabInString(4) + "let " + optionNameStart +
-                                "pai_day_text_font = ''" + Environment.NewLine;
-                            items += Environment.NewLine + TabInString(6) +
-                                optionNameStart + "pai_day_text_font = hmUI.createWidget(hmUI.widget.TEXT_FONT, {" +
-                                    numberFontOptions + TabInString(6) + "});" + Environment.NewLine;
-                        }
+                        //    variables += TabInString(4) + "let " + optionNameStart +
+                        //        "pai_day_text_font = ''" + Environment.NewLine;
+                        //    items += Environment.NewLine + TabInString(6) +
+                        //        optionNameStart + "pai_day_text_font = hmUI.createWidget(hmUI.widget.TEXT_FONT, {" +
+                        //            numberFontOptions + TabInString(6) + "});" + Environment.NewLine;
+                        //}
 
                         // Number_Target
                         if (index == numberTargetPosition && numberTargetOptions.Length > 5)
@@ -6704,12 +6704,14 @@ namespace Watch_Face_Editor
                     int cityNamePosition = 99; 
                     int numberMinFontPosition = 99;
                     int numberMaxFontPosition = 99;
+                    int numberMinMaxFontPosition = 99;
 
                     string numberMinOptions = "";
                     string numberMaxOptions = "";
                     string cityNameOptions = "";
                     string numberMinFontOptions = "";
                     string numberMaxFontOptions = "";
+                    string numberMinMaxFontOptions = "";
 
                     string numberMinOptions_separator = "";
                     string numberMaxOptions_separator = "";
@@ -6803,6 +6805,13 @@ namespace Watch_Face_Editor
                         text_circle = Weather.Text_Max_circle;
 
                         numberMaxCircleOptions = Text_Circle_Options(text_circle, "WEATHER_HIGH", show_level, true);
+                    }
+
+                    if (Weather.Number_Min_Max_Font != null && Weather.Number_Min_Max_Font.visible)
+                    {
+                        numberMinMaxFontPosition = Weather.Number_Min_Max_Font.position;
+                        hmUI_widget_TEXT text = Weather.Number_Min_Max_Font;
+                        numberMinMaxFontOptions = TEXT_FONT_Options(text, "WEATHER_HIGH_LOW", show_level);
                     }
 
                     if (Weather.City_Name != null && Weather.City_Name.visible)
@@ -7001,6 +7010,35 @@ namespace Watch_Face_Editor
                         {
                             AddTextCircleJS(Weather.Text_Max_circle, optionNameStart, "high_", ref variables, ref items, ref text_update,
                                 numberMaxCircleOptions, show_level, "weatherData", "forecastData", "temperatureHigh", "high", 4, ref resume_call, ref pause_call);
+                        }
+
+                        // Number_Min_Max_Font
+                        if (index == numberMinMaxFontPosition && numberMinMaxFontOptions.Length > 5)
+                        {
+                            if (Weather.Number_Min_Max_Font.font != null && Weather.Number_Min_Max_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + Weather.Number_Min_Max_Font.font + "; FontSize: " + Weather.Number_Min_Max_Font.text_size.ToString();
+                                //if (Weather.Number_Min_Max_Font.unit_type > 0)
+                                //    cacheName = "// FontName: " + Weather.Number_Min_Max_Font.font + "; FontSize: " + Weather.Number_Min_Max_Font.text_size.ToString() + "; Cache: full";
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    //bool fullCache = Weather.Number_Min_Max_Font.unit_type > 0;
+                                    bool fullCache = false;
+                                    string fontCacheOptions = TEXT_Cache_Options(Weather.Number_Min_Max_Font, fullCache);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "temperature_min_max_text_font = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "temperature_min_max_text_font = hmUI.createWidget(hmUI.widget.TEXT_FONT, {" +
+                                    numberMinMaxFontOptions + TabInString(6) + "});" + Environment.NewLine;
                         }
 
                         // City Name
@@ -7556,6 +7594,12 @@ namespace Watch_Face_Editor
 
                         numberOptions_separator = IMG_Separator_Options(img_number, show_level);
                     }
+                    if (Sunrise.Sunrise_Font != null && Sunrise.Sunrise_Font.visible)
+                    {
+                        numberFontPosition = Sunrise.Sunrise_Font.position;
+                        hmUI_widget_TEXT text = Sunrise.Sunrise_Font;
+                        numberFontOptions = TEXT_FONT_Options(text, "SUN_RISE", show_level);
+                    }
                     if (Sunrise.Sunrise_rotation != null && Sunrise.Sunrise_rotation.visible)
                     {
                         sunriseRotatePosition = Sunrise.Sunrise_rotation.position;
@@ -7578,6 +7622,12 @@ namespace Watch_Face_Editor
                         numberTargetOptions = IMG_NUMBER_Options(img_number, "SUN_SET", show_level);
 
                         numberTargetOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (Sunrise.Sunset_Font != null && Sunrise.Sunset_Font.visible)
+                    {
+                        numberTargetFontPosition = Sunrise.Sunset_Font.position;
+                        hmUI_widget_TEXT text = Sunrise.Sunset_Font;
+                        numberTargetFontOptions = TEXT_FONT_Options(text, "SUN_SET", show_level);
                     }
                     if (Sunrise.Sunset_rotation != null && Sunrise.Sunset_rotation.visible)
                     {
@@ -7657,6 +7707,35 @@ namespace Watch_Face_Editor
                             }
                         }
 
+                        // Number_Font
+                        if (index == numberFontPosition && numberFontOptions.Length > 5)
+                        {
+                            if (Sunrise.Sunrise_Font.font != null && Sunrise.Sunrise_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + Sunrise.Sunrise_Font.font + "; FontSize: " + Sunrise.Sunrise_Font.text_size.ToString();
+                                //if (Sunrise.Sunrise_Font.unit_type > 0)
+                                //    cacheName = "// FontName: " + Sunrise.Sunrise_Font.font + "; FontSize: " + Sunrise.Sunrise_Font.text_size.ToString() + "; Cache: full";
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    //bool fullCache = Sunrise.Sunrise_Font.unit_type > 0;
+                                    bool fullCache = false;
+                                    string fontCacheOptions = TEXT_Cache_Options(Sunrise.Sunrise_Font, fullCache);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "sun_high_text_font = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "sun_high_text_font = hmUI.createWidget(hmUI.widget.TEXT_FONT, {" +
+                                    numberFontOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
                         // Number_Target
                         if (index == numberTargetPosition && numberTargetOptions.Length > 5)
                         {
@@ -7674,6 +7753,35 @@ namespace Watch_Face_Editor
                                     optionNameStart + "sun_low_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
                                         numberTargetOptions_separator + TabInString(6) + "});" + Environment.NewLine;
                             }
+                        }
+
+                        // Number_Target_Font
+                        if (index == numberTargetFontPosition && numberTargetFontOptions.Length > 5)
+                        {
+                            if (Sunrise.Sunset_Font.font != null && Sunrise.Sunset_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + Sunrise.Sunset_Font.font + "; FontSize: " + Sunrise.Sunset_Font.text_size.ToString();
+                                //if (Sunrise.Sunset_Font.unit_type > 0)
+                                //    cacheName = "// FontName: " + Sunrise.Sunset_Font.font + "; FontSize: " + Sunrise.Sunset_Font.text_size.ToString() + "; Cache: full";
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    //bool fullCache = Sunrise.Sunset_Font.unit_type > 0;
+                                    bool fullCache = false;
+                                    string fontCacheOptions = TEXT_Cache_Options(Sunrise.Sunset_Font, fullCache);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "sun_low_text_font = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "sun_low_text_font = hmUI.createWidget(hmUI.widget.TEXT_FONT, {" +
+                                    numberTargetFontOptions + TabInString(6) + "});" + Environment.NewLine;
                         }
 
                         // Number_SunCurrent
@@ -7910,26 +8018,327 @@ namespace Watch_Face_Editor
                 #region ElementMoon
                 case "ElementMoon":
                     ElementMoon Moon = (ElementMoon)element;
+                    string numberMoonCurrentOptions = "";
+                    string numberMoonCurrentOptions_separator = "";
+                    int numberMoonCurrentPosition = 99;
+
+                    //int sunriseRotatePosition = 99;
+                    //int sunriseCirclePosition = 99;
+                    //string sunriseRotateOptions = "";
+                    //string sunriseCircleOptions = "";
+
+                    //int sunsetRotatePosition = 99;
+                    //int sunsetCirclePosition = 99;
+                    //string sunsetRotateOptions = "";
+                    //string sunsetCircleOptions = "";
 
                     if (!Moon.visible) return;
-                    if (Moon.Images != null)
+                    if (Moon.Images != null && Moon.Images.visible)
                     {
                         imagesPosition = Moon.Images.position;
                         hmUI_widget_IMG_LEVEL img_images = Moon.Images;
                         imagesOptions = IMG_IMAGES_Options(img_images, "MOON", show_level);
                     }
+                    //if (Moon.Segments != null && Moon.Segments.visible)
+                    //{
+                    //    segmentsPosition = Moon.Segments.position;
+                    //    hmUI_widget_IMG_PROGRESS img_progress = Moon.Segments;
+                    //    segmentsOptions = IMG_PROGRESS_Options(img_progress, "MOON", show_level);
+                    //}
 
-                    // Images
-                    if (imagesOptions.Length > 5)
+                    if (Moon.Sunrise != null && Moon.Sunrise.visible)
                     {
-                        variables += TabInString(4) + "let " + optionNameStart +
-                            "moon_image_progress_img_level = ''" + Environment.NewLine;
-                        items += Environment.NewLine + TabInString(6) +
-                            optionNameStart + "moon_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
-                                imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+                        numberPosition = Moon.Sunrise.position;
+                        hmUI_widget_IMG_NUMBER img_number = Moon.Sunrise;
+                        numberOptions = IMG_NUMBER_Options(img_number, "MOON_RISE", show_level);
+
+                        numberOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (Moon.Sunrise_Font != null && Moon.Sunrise_Font.visible)
+                    {
+                        numberFontPosition = Moon.Sunrise_Font.position;
+                        hmUI_widget_TEXT text = Moon.Sunrise_Font;
+                        numberFontOptions = TEXT_FONT_Options(text, "MOON_RISE", show_level);
+                    }
+                    //if (Moon.Sunrise_rotation != null && Moon.Sunrise_rotation.visible)
+                    //{
+                    //    sunriseRotatePosition = Moon.Sunrise_rotation.position;
+                    //    text_rotate = Moon.Sunrise_rotation;
+
+                    //    sunriseRotateOptions = Text_Rotate_Options(text_rotate, "MOON_RISE", show_level, true);
+                    //}
+                    //if (Moon.Sunrise_circle != null && Moon.Sunrise_circle.visible)
+                    //{
+                    //    sunriseCirclePosition = Moon.Sunrise_circle.position;
+                    //    text_circle = Moon.Sunrise_circle;
+
+                    //    sunriseCircleOptions = Text_Circle_Options(text_circle, "MOON_RISE", show_level, true);
+                    //}
+
+                    if (Moon.Sunset != null && Moon.Sunset.visible)
+                    {
+                        numberTargetPosition = Moon.Sunset.position;
+                        hmUI_widget_IMG_NUMBER img_number = Moon.Sunset;
+                        numberTargetOptions = IMG_NUMBER_Options(img_number, "MOON_SET", show_level);
+
+                        numberTargetOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (Moon.Sunset_Font != null && Moon.Sunset_Font.visible)
+                    {
+                        numberTargetFontPosition = Moon.Sunset_Font.position;
+                        hmUI_widget_TEXT text = Moon.Sunset_Font;
+                        numberTargetFontOptions = TEXT_FONT_Options(text, "MOON_SET", show_level);
+                    }
+                    //if (Moon.Sunset_rotation != null && Moon.Sunset_rotation.visible)
+                    //{
+                    //    sunsetRotatePosition = Moon.Sunset_rotation.position;
+                    //    text_rotate = Moon.Sunset_rotation;
+
+                    //    sunsetRotateOptions = Text_Rotate_Options(text_rotate, "MOON_SET", show_level, true);
+                    //}
+                    //if (Moon.Sunset_circle != null && Moon.Sunset_circle.visible)
+                    //{
+                    //    sunsetCirclePosition = Moon.Sunset_circle.position;
+                    //    text_circle = Moon.Sunset_circle;
+
+                    //    sunsetCircleOptions = Text_Circle_Options(text_circle, "MOON_SET", show_level, true);
+                    //}
+
+                    if (Moon.Sunset_Sunrise != null && Moon.Sunset_Sunrise.visible)
+                    {
+                        numberMoonCurrentPosition = Moon.Sunset_Sunrise.position;
+                        hmUI_widget_IMG_NUMBER img_number = Moon.Sunset_Sunrise;
+                        numberMoonCurrentOptions = IMG_NUMBER_Options(img_number, "MOON_CURRENT", show_level);
+
+                        numberMoonCurrentOptions_separator = IMG_Separator_Options(img_number, show_level);
+                    }
+                    if (Moon.Pointer != null && Moon.Pointer.visible)
+                    {
+                        pointerPosition = Moon.Pointer.position;
+                        hmUI_widget_IMG_POINTER img_pointer = Moon.Pointer;
+                        pointerOptions = IMG_POINTER_Options(img_pointer, "MOON_CURRENT", show_level);
+                    }
+
+                    if (Moon.Icon != null && Moon.Icon.visible)
+                    {
+                        iconPosition = Moon.Icon.position;
+                        hmUI_widget_IMG img_icon = Moon.Icon;
+                        iconOptions = IMG_Options(img_icon, show_level);
+                    }
+
+                    for (int index = 1; index <= 15; index++)
+                    {
+                        // Images
+                        if (index == imagesPosition && imagesOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "moon_image_progress_img_level = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "moon_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
+                                    imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        //// Segments
+                        //if (index == segmentsPosition && segmentsOptions.Length > 5)
+                        //{
+                        //    variables += TabInString(4) + "let " + optionNameStart +
+                        //        "moon_image_progress_img_progress = ''" + Environment.NewLine;
+                        //    items += Environment.NewLine + TabInString(6) +
+                        //        optionNameStart + "moon_image_progress_img_progress = hmUI.createWidget(hmUI.widget.IMG_PROGRESS, {" +
+                        //            segmentsOptions + TabInString(6) + "});" + Environment.NewLine;
+                        //}
+
+                        // Number
+                        if (index == numberPosition && numberOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "moon_high_text_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "moon_high_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "moon_high_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "moon_high_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Number_Font
+                        if (index == numberFontPosition && numberFontOptions.Length > 5)
+                        {
+                            if (Moon.Sunrise_Font.font != null && Moon.Sunrise_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + Moon.Sunrise_Font.font + "; FontSize: " + Moon.Sunrise_Font.text_size.ToString();
+                                //if (Moon.Sunrise_Font.unit_type > 0)
+                                //    cacheName = "// FontName: " + Moon.Sunrise_Font.font + "; FontSize: " + Moon.Sunrise_Font.text_size.ToString() + "; Cache: full";
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    //bool fullCache = Moon.Sunrise_Font.unit_type > 0;
+                                    bool fullCache = false;
+                                    string fontCacheOptions = TEXT_Cache_Options(Moon.Sunrise_Font, fullCache);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "moon_high_text_font = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "moon_high_text_font = hmUI.createWidget(hmUI.widget.TEXT_FONT, {" +
+                                    numberFontOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Number_Target
+                        if (index == numberTargetPosition && numberTargetOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "moon_low_text_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "moon_low_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberTargetOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberTargetOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "moon_low_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "moon_low_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberTargetOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        // Number_Target_Font
+                        if (index == numberTargetFontPosition && numberTargetFontOptions.Length > 5)
+                        {
+                            if (Moon.Sunset_Font.font != null && Moon.Sunset_Font.font.Length > 3)
+                            {
+                                string cacheName = "// FontName: " + Moon.Sunset_Font.font + "; FontSize: " + Moon.Sunset_Font.text_size.ToString();
+                                //if (Moon.Sunset_Font.unit_type > 0)
+                                //    cacheName = "// FontName: " + Moon.Sunset_Font.font + "; FontSize: " + Moon.Sunset_Font.text_size.ToString() + "; Cache: full";
+                                if (fonts_cache.IndexOf(cacheName) < 0)
+                                {
+                                    //bool fullCache = Moon.Sunset_Font.unit_type > 0;
+                                    bool fullCache = false;
+                                    string fontCacheOptions = TEXT_Cache_Options(Moon.Sunset_Font, fullCache);
+                                    if (fontCacheOptions.Length > 5)
+                                    {
+                                        fonts_cache += Environment.NewLine + TabInString(6) + cacheName + Environment.NewLine;
+                                        fonts_cache += TabInString(6) + "hmUI.createWidget(hmUI.widget.TEXT, {" + fontCacheOptions +
+                                            TabInString(6) + "});" + Environment.NewLine;
+                                    }
+                                }
+                            }
+
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "moon_low_text_font = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "moon_low_text_font = hmUI.createWidget(hmUI.widget.TEXT_FONT, {" +
+                                    numberTargetFontOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Number_SunCurrent
+                        if (index == numberMoonCurrentPosition && numberMoonCurrentOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "moon_current_text_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "moon_current_text_img = hmUI.createWidget(hmUI.widget.TEXT_IMG, {" +
+                                    numberMoonCurrentOptions + TabInString(6) + "});" + Environment.NewLine;
+
+                            if (numberMoonCurrentOptions_separator.Length > 5)
+                            {
+                                variables += TabInString(4) + "let " + optionNameStart +
+                                    "moon_current_separator_img = ''" + Environment.NewLine;
+                                items += Environment.NewLine + TabInString(6) +
+                                    optionNameStart + "moon_current_separator_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                        numberMoonCurrentOptions_separator + TabInString(6) + "});" + Environment.NewLine;
+                            }
+                        }
+
+                        //// Text_Rotate Sunrise
+                        //if (index == sunriseRotatePosition && sunriseRotateOptions.Length > 5)
+                        //{
+                        //    AddTextRotationJS(Sunrise.Sunrise_rotation, optionNameStart, "sunrise_", ref variables, ref items, ref text_update,
+                        //        sunriseRotateOptions, show_level, "weatherData", "tideData", "sunriseTime", "sunrise", 5, ref resume_call, ref pause_call);
+                        //}
+
+                        //// Text_Circle Sunrise
+                        //if (index == sunriseCirclePosition && sunriseCircleOptions.Length > 5)
+                        //{
+                        //    AddTextCircleJS(Sunrise.Sunrise_circle, optionNameStart, "sunrise_", ref variables, ref items, ref text_update,
+                        //        sunriseCircleOptions, show_level, "weatherData", "tideData", "sunriseTime", "sunrise", 5, ref resume_call, ref pause_call);
+                        //}
+
+                        //// Text_Rotate Sunset
+                        //if (index == sunsetRotatePosition && sunsetRotateOptions.Length > 5)
+                        //{
+                        //    AddTextRotationJS(Sunrise.Sunset_rotation, optionNameStart, "sunset_", ref variables, ref items, ref text_update,
+                        //        sunsetRotateOptions, show_level, "weatherData", "tideData", "sunsetTime", "sunset", 5, ref resume_call, ref pause_call);
+                        //}
+
+                        //// Text_Circle Sunset
+                        //if (index == sunsetCirclePosition && sunsetCircleOptions.Length > 5)
+                        //{
+                        //    AddTextCircleJS(Sunrise.Sunset_circle, optionNameStart, "sunset_", ref variables, ref items, ref text_update,
+                        //        sunsetCircleOptions, show_level, "weatherData", "tideData", "sunsetTime", "sunset", 5, ref resume_call, ref pause_call);
+                        //}
+
+                        // Pointer
+                        if (index == pointerPosition && pointerOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "moon_pointer_progress_img_pointer = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "moon_pointer_progress_img_pointer = hmUI.createWidget(hmUI.widget.IMG_POINTER, {" +
+                                    pointerOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+                        // Icon
+                        if (index == iconPosition && iconOptions.Length > 5)
+                        {
+                            variables += TabInString(4) + "let " + optionNameStart +
+                                "moon_icon_img = ''" + Environment.NewLine;
+                            items += Environment.NewLine + TabInString(6) +
+                                optionNameStart + "moon_icon_img = hmUI.createWidget(hmUI.widget.IMG, {" +
+                                    iconOptions + TabInString(6) + "});" + Environment.NewLine;
+                        }
+
+
                     }
                     break;
                 #endregion
+
+                //#region ElementMoon
+                //case "ElementMoon":
+                //    ElementMoon Moon = (ElementMoon)element;
+
+                //    if (!Moon.visible) return;
+                //    if (Moon.Images != null)
+                //    {
+                //        imagesPosition = Moon.Images.position;
+                //        hmUI_widget_IMG_LEVEL img_images = Moon.Images;
+                //        imagesOptions = IMG_IMAGES_Options(img_images, "MOON", show_level);
+                //    }
+
+                //    // Images
+                //    if (imagesOptions.Length > 5)
+                //    {
+                //        variables += TabInString(4) + "let " + optionNameStart +
+                //            "moon_image_progress_img_level = ''" + Environment.NewLine;
+                //        items += Environment.NewLine + TabInString(6) +
+                //            optionNameStart + "moon_image_progress_img_level = hmUI.createWidget(hmUI.widget.IMG_LEVEL, {" +
+                //                imagesOptions + TabInString(6) + "});" + Environment.NewLine;
+                //    }
+                //    break;
+                //#endregion
 
                 #region ElementImage
                 case "ElementImage":
@@ -14988,6 +15397,42 @@ namespace Watch_Face_Editor
                                     }
                                 }
 
+                                if (objectName.EndsWith("moon_high_separator_img"))
+                                {
+                                    ElementMoon moon = null;
+                                    moon = (ElementMoon)elementsList.Find(e => e.GetType().Name == "ElementMoon");
+                                    if (moon != null && moon.Sunrise != null)
+                                    {
+                                        moon.Sunrise.icon = img.src;
+                                        moon.Sunrise.iconPosX = img.x;
+                                        moon.Sunrise.iconPosY = img.y;
+                                    }
+                                }
+
+                                if (objectName.EndsWith("moon_low_separator_img"))
+                                {
+                                    ElementMoon moon = null;
+                                    moon = (ElementMoon)elementsList.Find(e => e.GetType().Name == "ElementMoon");
+                                    if (moon != null && moon.Sunset != null)
+                                    {
+                                        moon.Sunset.icon = img.src;
+                                        moon.Sunset.iconPosX = img.x;
+                                        moon.Sunset.iconPosY = img.y;
+                                    }
+                                }
+
+                                if (objectName.EndsWith("moon_current_separator_img"))
+                                {
+                                    ElementMoon moon = null;
+                                    moon = (ElementMoon)elementsList.Find(e => e.GetType().Name == "ElementMoon");
+                                    if (moon != null && moon.Sunset_Sunrise != null)
+                                    {
+                                        moon.Sunset_Sunrise.icon = img.src;
+                                        moon.Sunset_Sunrise.iconPosX = img.x;
+                                        moon.Sunset_Sunrise.iconPosY = img.y;
+                                    }
+                                }
+
 
                                 if (objectName.EndsWith("wind_text_separator_img"))
                                 {
@@ -15043,7 +15488,13 @@ namespace Watch_Face_Editor
                                         if (steps.Images != null) offset++;
                                         if (steps.Segments != null) offset++;
                                         if (steps.Number != null) offset++;
+                                        if (steps.Number_Font != null) offset++;
+                                        if (steps.Text_rotation != null) offset++;
+                                        if (steps.Text_circle != null) offset++;
                                         if (steps.Number_Target != null) offset++;
+                                        if (steps.Number_Target_Font != null) offset++;
+                                        if (steps.Text_rotation_Target != null) offset++;
+                                        if (steps.Text_circle_Target != null) offset++;
                                         if (steps.Pointer != null) offset++;
                                         if (steps.Circle_Scale != null) offset++;
                                         if (steps.Linear_Scale != null) offset++;
@@ -15071,6 +15522,9 @@ namespace Watch_Face_Editor
                                         if (battery.Images != null) offset++;
                                         if (battery.Segments != null) offset++;
                                         if (battery.Number != null) offset++;
+                                        if (battery.Number_Font != null) offset++;
+                                        if (battery.Text_rotation != null) offset++;
+                                        if (battery.Text_circle != null) offset++;
                                         if (battery.Pointer != null) offset++;
                                         if (battery.Circle_Scale != null) offset++;
                                         if (battery.Linear_Scale != null) offset++;
@@ -15098,7 +15552,13 @@ namespace Watch_Face_Editor
                                         if (calorie.Images != null) offset++;
                                         if (calorie.Segments != null) offset++;
                                         if (calorie.Number != null) offset++;
+                                        if (calorie.Number_Font != null) offset++;
+                                        if (calorie.Text_rotation != null) offset++;
+                                        if (calorie.Text_circle != null) offset++;
                                         if (calorie.Number_Target != null) offset++;
+                                        if (calorie.Number_Target_Font != null) offset++;
+                                        if (calorie.Text_rotation_Target != null) offset++;
+                                        if (calorie.Text_circle_Target != null) offset++;
                                         if (calorie.Pointer != null) offset++;
                                         if (calorie.Circle_Scale != null) offset++;
                                         if (calorie.Linear_Scale != null) offset++;
@@ -15126,6 +15586,9 @@ namespace Watch_Face_Editor
                                         if (heart.Images != null) offset++;
                                         if (heart.Segments != null) offset++;
                                         if (heart.Number != null) offset++;
+                                        if (heart.Number_Font != null) offset++;
+                                        if (heart.Text_rotation != null) offset++;
+                                        if (heart.Text_circle != null) offset++;
                                         if (heart.Pointer != null) offset++;
                                         if (heart.Circle_Scale != null) offset++;
                                         if (heart.Linear_Scale != null) offset++;
@@ -15153,7 +15616,11 @@ namespace Watch_Face_Editor
                                         if (pai.Images != null) offset++;
                                         if (pai.Segments != null) offset++;
                                         if (pai.Number != null) offset++;
+                                        //if (pai.Number_Font != null) offset++;
                                         if (pai.Number_Target != null) offset++;
+                                        if (pai.Number_Target_Font != null) offset++;
+                                        if (pai.Text_rotation_Target != null) offset++;
+                                        if (pai.Text_circle_Target != null) offset++;
                                         if (pai.Pointer != null) offset++;
                                         if (pai.Circle_Scale != null) offset++;
                                         if (pai.Linear_Scale != null) offset++;
@@ -15179,6 +15646,7 @@ namespace Watch_Face_Editor
                                     {
                                         int offset = 1;
                                         if (distance.Number != null) offset++;
+                                        if (distance.Number_Font != null) offset++;
                                         if (distance.Text_rotation != null) offset++;
                                         if (distance.Text_circle != null) offset++;
 
@@ -15205,7 +15673,13 @@ namespace Watch_Face_Editor
                                         if (stand.Images != null) offset++;
                                         if (stand.Segments != null) offset++;
                                         if (stand.Number != null) offset++;
-                                        if (stand.Number_Target != null) offset++;
+                                        if (stand.Number_Font != null) offset++;
+                                        if (stand.Number != null) offset++;
+                                        if (stand.Text_rotation != null) offset++;
+                                        if (stand.Text_circle != null) offset++;
+                                        if (stand.Number_Target_Font != null) offset++;
+                                        if (stand.Text_rotation_Target != null) offset++;
+                                        if (stand.Text_circle_Target != null) offset++;
                                         if (stand.Pointer != null) offset++;
                                         if (stand.Circle_Scale != null) offset++;
                                         if (stand.Linear_Scale != null) offset++;
@@ -15233,7 +15707,9 @@ namespace Watch_Face_Editor
                                         if (activity.Images != null) offset++;
                                         if (activity.Segments != null) offset++;
                                         if (activity.Number != null) offset++;
+                                        if (activity.Number_Font != null) offset++;
                                         if (activity.Number_Target != null) offset++;
+                                        if (activity.Number_Target_Font != null) offset++;
                                         if (activity.Pointer != null) offset++;
                                         if (activity.Circle_Scale != null) offset++;
                                         if (activity.Linear_Scale != null) offset++;
@@ -15259,6 +15735,7 @@ namespace Watch_Face_Editor
                                     {
                                         int offset = 1;
                                         if (spo2.Number != null) offset++;
+                                        if (spo2.Number_Font != null) offset++;
                                         if (spo2.Text_rotation != null) offset++;
                                         if (spo2.Text_circle != null) offset++;
 
@@ -15285,6 +15762,7 @@ namespace Watch_Face_Editor
                                         if (stress.Images != null) offset++;
                                         if (stress.Segments != null) offset++;
                                         if (stress.Number != null) offset++;
+                                        if (stress.Number_Font != null) offset++;
                                         if (stress.Pointer != null) offset++;
 
                                         stress.Icon = new hmUI_widget_IMG();
@@ -15310,7 +15788,13 @@ namespace Watch_Face_Editor
                                         if (fat_burning.Images != null) offset++;
                                         if (fat_burning.Segments != null) offset++;
                                         if (fat_burning.Number != null) offset++;
+                                        if (fat_burning.Number_Font != null) offset++;
+                                        if (fat_burning.Text_rotation != null) offset++;
+                                        if (fat_burning.Text_circle != null) offset++;
                                         if (fat_burning.Number_Target != null) offset++;
+                                        if (fat_burning.Number_Target_Font != null) offset++;
+                                        if (fat_burning.Text_rotation_Target != null) offset++;
+                                        if (fat_burning.Text_circle_Target != null) offset++;
                                         if (fat_burning.Pointer != null) offset++;
                                         if (fat_burning.Circle_Scale != null) offset++;
                                         if (fat_burning.Linear_Scale != null) offset++;
@@ -15339,8 +15823,15 @@ namespace Watch_Face_Editor
                                         int offset = 1;
                                         if (weather.Images != null) offset++;
                                         if (weather.Number != null) offset++;
+                                        if (weather.Number_Font != null) offset++;
                                         if (weather.Number_Min != null) offset++;
+                                        if (weather.Text_Min_rotation != null) offset++;
+                                        if (weather.Text_Min_circle != null) offset++;
+                                        if (weather.Number_Min_Font != null) offset++;
                                         if (weather.Number_Max != null) offset++;
+                                        if (weather.Number_Max_Font != null) offset++;
+                                        if (weather.Text_Max_rotation != null) offset++;
+                                        if (weather.Text_Max_circle != null) offset++;
                                         if (weather.City_Name != null) offset++;
 
                                         weather.Icon = new hmUI_widget_IMG();
@@ -15366,6 +15857,7 @@ namespace Watch_Face_Editor
                                         if (uv_index.Images != null) offset++;
                                         if (uv_index.Segments != null) offset++;
                                         if (uv_index.Number != null) offset++;
+                                        if (uv_index.Number_Font != null) offset++;
                                         if (uv_index.Pointer != null) offset++;
 
                                         uv_index.Icon = new hmUI_widget_IMG();
@@ -15391,6 +15883,7 @@ namespace Watch_Face_Editor
                                         if (humidity.Images != null) offset++;
                                         if (humidity.Segments != null) offset++;
                                         if (humidity.Number != null) offset++;
+                                        if (humidity.Number_Font != null) offset++;
                                         if (humidity.Pointer != null) offset++;
 
                                         humidity.Icon = new hmUI_widget_IMG();
@@ -15414,6 +15907,9 @@ namespace Watch_Face_Editor
                                     {
                                         int offset = 1;
                                         if (altimeter.Number != null) offset++;
+                                        if (altimeter.Number_Font != null) offset++;
+                                        if (altimeter.Number_Target != null) offset++;
+                                        if (altimeter.Number_Target_Font != null) offset++;
                                         if (altimeter.Pointer != null) offset++;
 
                                         altimeter.Icon = new hmUI_widget_IMG();
@@ -15439,7 +15935,13 @@ namespace Watch_Face_Editor
                                         if (sunrise.Images != null) offset++;
                                         if (sunrise.Segments != null) offset++;
                                         if (sunrise.Sunrise != null) offset++;
+                                        if (sunrise.Sunrise_Font != null) offset++;
+                                        if (sunrise.Sunrise_rotation != null) offset++;
+                                        if (sunrise.Sunrise_circle != null) offset++;
                                         if (sunrise.Sunset != null) offset++;
+                                        if (sunrise.Sunset_Font != null) offset++;
+                                        if (sunrise.Sunset_rotation != null) offset++;
+                                        if (sunrise.Sunset_circle != null) offset++;
                                         if (sunrise.Sunset_Sunrise != null) offset++;
                                         if (sunrise.Pointer != null) offset++;
 
@@ -15449,6 +15951,34 @@ namespace Watch_Face_Editor
                                         sunrise.Icon.y = img.y;
                                         sunrise.Icon.visible = true;
                                         sunrise.Icon.position = offset;
+                                    }
+                                }
+
+                                if (objectName.EndsWith("moon_icon_img"))
+                                {
+                                    ElementMoon moon = (ElementMoon)elementsList.Find(e => e.GetType().Name == "ElementMoon");
+                                    if (moon == null)
+                                    {
+                                        elementsList.Add(new ElementMoon());
+                                        moon = (ElementMoon)elementsList.Find(e => e.GetType().Name == "ElementMoon");
+                                    }
+                                    if (moon != null)
+                                    {
+                                        int offset = 1;
+                                        if (moon.Images != null) offset++;
+                                        if (moon.Sunrise != null) offset++;
+                                        if (moon.Sunrise_Font != null) offset++;
+                                        if (moon.Sunset != null) offset++;
+                                        if (moon.Sunset_Font != null) offset++;
+                                        if (moon.Sunset_Sunrise != null) offset++;
+                                        if (moon.Pointer != null) offset++;
+
+                                        moon.Icon = new hmUI_widget_IMG();
+                                        moon.Icon.src = img.src;
+                                        moon.Icon.x = img.x;
+                                        moon.Icon.y = img.y;
+                                        moon.Icon.visible = true;
+                                        moon.Icon.position = offset;
                                     }
                                 }
 
@@ -15466,6 +15996,7 @@ namespace Watch_Face_Editor
                                         if (wind.Images != null) offset++;
                                         if (wind.Segments != null) offset++;
                                         if (wind.Number != null) offset++;
+                                        if (wind.Number_Font != null) offset++;
                                         if (wind.Pointer != null) offset++;
                                         if (wind.Direction != null) offset++;
 
@@ -17307,6 +17838,7 @@ namespace Watch_Face_Editor
                                 if (weather.Text_Min_circle != null) offset++;
                                 if (weather.Text_Max_rotation != null) offset++;
                                 if (weather.Text_Max_circle != null) offset++;
+                                if (weather.Number_Min_Max_Font != null) offset++;
                                 if (weather.City_Name != null) offset++;
 
                                 if (weather.Icon == null)
@@ -17496,7 +18028,11 @@ namespace Watch_Face_Editor
                             {
                                 int offset = 1;
                                 if (altimeter.Number != null) offset++;
+                                if (altimeter.Number_Font != null) offset++;
+                                if (altimeter.Number_Target != null) offset++;
+                                if (altimeter.Number_Target_Font != null) offset++;
                                 if (altimeter.Pointer != null) offset++;
+                                //if (altimeter.Icon != null) offset++;
 
                                 if (altimeter.Icon == null)
                                 {
@@ -17547,6 +18083,8 @@ namespace Watch_Face_Editor
                                 if (sunrise.Sunrise != null) offset++;
                                 if (sunrise.Sunset != null) offset++;
                                 if (sunrise.Sunset_Sunrise != null) offset++;
+                                if (sunrise.Sunrise_Font != null) offset++;
+                                if (sunrise.Sunset_Font != null) offset++;
                                 if (sunrise.Sunrise_rotation != null) offset++;
                                 if (sunrise.Sunset_rotation != null) offset++;
                                 if (sunrise.Sunrise_circle != null) offset++;
@@ -18370,6 +18908,7 @@ namespace Watch_Face_Editor
                                 if (weather.Text_Min_circle != null) offset++;
                                 if (weather.Text_Max_rotation != null) offset++;
                                 if (weather.Text_Max_circle != null) offset++;
+                                if (weather.Number_Min_Max_Font != null) offset++;
                                 if (weather.City_Name != null) offset++;
                                 if (weather.Icon != null) offset++;
 
@@ -18458,6 +18997,8 @@ namespace Watch_Face_Editor
                                 if (sunrise.Sunrise != null) offset++;
                                 if (sunrise.Sunset != null) offset++;
                                 if (sunrise.Sunset_Sunrise != null) offset++;
+                                if (sunrise.Sunrise_Font != null) offset++;
+                                if (sunrise.Sunset_Font != null) offset++;
                                 if (sunrise.Sunrise_rotation != null) offset++;
                                 if (sunrise.Sunset_rotation != null) offset++;
                                 if (sunrise.Sunrise_circle != null) offset++;
@@ -18546,15 +19087,15 @@ namespace Watch_Face_Editor
                             }
                             if (moon != null)
                             {
-                                //int offset = 1;
-                                ////if (moon.Images != null) offset++;
-                                //if (moon.Segments != null) offset++;
-                                //if (moon.Number != null) offset++;
-                                //if (moon.Number_Target != null) offset++;
-                                //if (moon.Pointer != null) offset++;
-                                //if (moon.Circle_Scale != null) offset++;
-                                //if (moon.Linear_Scale != null) offset++;
-                                //if (moon.Icon != null) offset++;
+                                int offset = 1;
+                                //if (moon.Images != null) offset++;
+                                if (moon.Sunrise != null) offset++;
+                                if (moon.Sunrise_Font != null) offset++;
+                                if (moon.Sunset != null) offset++;
+                                if (moon.Sunset_Font != null) offset++;
+                                if (moon.Sunset_Sunrise != null) offset++;
+                                if (moon.Pointer != null) offset++;
+                                if (moon.Icon != null) offset++;
 
                                 moon.Images = new hmUI_widget_IMG_LEVEL();
                                 moon.Images.img_First = imgLevel.img_First;
@@ -18563,7 +19104,7 @@ namespace Watch_Face_Editor
                                 moon.Images.Y = imgLevel.Y;
                                 moon.Images.shortcut = imgLevel.shortcut;
                                 moon.Images.visible = true;
-                                moon.Images.position = 1;
+                                moon.Images.position = offset;
                             }
                         }
 
@@ -18954,6 +19495,8 @@ namespace Watch_Face_Editor
                                 if (sunrise.Sunrise != null) offset++;
                                 if (sunrise.Sunset != null) offset++;
                                 if (sunrise.Sunset_Sunrise != null) offset++;
+                                if (sunrise.Sunrise_Font != null) offset++;
+                                if (sunrise.Sunset_Font != null) offset++;
                                 if (sunrise.Sunrise_rotation != null) offset++;
                                 if (sunrise.Sunset_rotation != null) offset++;
                                 if (sunrise.Sunrise_circle != null) offset++;
@@ -19732,6 +20275,7 @@ namespace Watch_Face_Editor
                                 if (weather.Text_Min_circle != null) offset++;
                                 if (weather.Text_Max_rotation != null) offset++;
                                 if (weather.Text_Max_circle != null) offset++;
+                                if (weather.Number_Min_Max_Font != null) offset++;
                                 if (weather.City_Name != null) offset++;
                                 if (weather.Icon != null) offset++;
 
@@ -19775,6 +20319,7 @@ namespace Watch_Face_Editor
                                 if (weather.Text_Min_circle != null) offset++;
                                 if (weather.Text_Max_rotation != null) offset++;
                                 if (weather.Text_Max_circle != null) offset++;
+                                if (weather.Number_Min_Max_Font != null) offset++;
                                 if (weather.City_Name != null) offset++;
                                 if (weather.Icon != null) offset++;
 
@@ -19818,6 +20363,7 @@ namespace Watch_Face_Editor
                                 if (weather.Text_Min_circle != null) offset++;
                                 if (weather.Text_Max_rotation != null) offset++;
                                 if (weather.Text_Max_circle != null) offset++;
+                                if (weather.Number_Min_Max_Font != null) offset++;
                                 if (weather.City_Name != null) offset++;
                                 if (weather.Icon != null) offset++;
 
@@ -19923,6 +20469,9 @@ namespace Watch_Face_Editor
                             {
                                 int offset = 1;
                                 //if (altimeter.Number != null) offset++;
+                                if (altimeter.Number_Font != null) offset++;
+                                if (altimeter.Number_Target != null) offset++;
+                                if (altimeter.Number_Target_Font != null) offset++;
                                 if (altimeter.Pointer != null) offset++;
                                 if (altimeter.Icon != null) offset++;
 
@@ -19944,6 +20493,42 @@ namespace Watch_Face_Editor
                             }
                         }
 
+                        if (imgNumber.type == "ALTITUDE")
+                        {
+                            ElementAltimeter altimeter = (ElementAltimeter)elementsList.Find(e => e.GetType().Name == "ElementAltimeter");
+                            if (altimeter == null)
+                            {
+                                elementsList.Add(new ElementAltimeter());
+                                altimeter = (ElementAltimeter)elementsList.Find(e => e.GetType().Name == "ElementAltimeter");
+                            }
+                            if (altimeter != null)
+                            {
+                                int offset = 1;
+                                if (altimeter.Number != null) offset++;
+                                if (altimeter.Number_Font != null) offset++;
+                                //if (altimeter.Number_Target != null) offset++;
+                                if (altimeter.Number_Target_Font != null) offset++;
+                                if (altimeter.Pointer != null) offset++;
+                                if (altimeter.Icon != null) offset++;
+
+                                altimeter.Number_Target = new hmUI_widget_IMG_NUMBER();
+                                altimeter.Number_Target.img_First = imgNumber.img_First;
+                                altimeter.Number_Target.imageX = imgNumber.imageX;
+                                altimeter.Number_Target.imageY = imgNumber.imageY;
+                                altimeter.Number_Target.space = imgNumber.space;
+                                altimeter.Number_Target.angle = imgNumber.angle;
+                                altimeter.Number_Target.zero = imgNumber.zero;
+                                altimeter.Number_Target.unit = imgNumber.unit;
+                                altimeter.Number_Target.imperial_unit = imgNumber.imperial_unit;
+                                altimeter.Number_Target.negative_image = imgNumber.negative_image;
+                                altimeter.Number_Target.invalid_image = imgNumber.invalid_image;
+                                altimeter.Number_Target.dot_image = imgNumber.dot_image;
+                                altimeter.Number_Target.align = imgNumber.align;
+                                altimeter.Number_Target.visible = true;
+                                altimeter.Number_Target.position = offset;
+                            }
+                        }
+
                         if (imgNumber.type == "SUN_RISE")
                         {
                             ElementSunrise sunrise = (ElementSunrise)elementsList.Find(e => e.GetType().Name == "ElementSunrise");
@@ -19960,6 +20545,8 @@ namespace Watch_Face_Editor
                                 //if (sunrise.Sunrise != null) offset++;
                                 if (sunrise.Sunset != null) offset++;
                                 if (sunrise.Sunset_Sunrise != null) offset++;
+                                if (sunrise.Sunrise_Font != null) offset++;
+                                if (sunrise.Sunset_Font != null) offset++;
                                 if (sunrise.Sunrise_rotation != null) offset++;
                                 if (sunrise.Sunset_rotation != null) offset++;
                                 if (sunrise.Sunrise_circle != null) offset++;
@@ -20001,6 +20588,8 @@ namespace Watch_Face_Editor
                                 if (sunrise.Sunrise != null) offset++;
                                 //if (sunrise.Sunset != null) offset++;
                                 if (sunrise.Sunset_Sunrise != null) offset++;
+                                if (sunrise.Sunrise_Font != null) offset++;
+                                if (sunrise.Sunset_Font != null) offset++;
                                 if (sunrise.Sunrise_rotation != null) offset++;
                                 if (sunrise.Sunset_rotation != null) offset++;
                                 if (sunrise.Sunrise_circle != null) offset++;
@@ -20042,6 +20631,8 @@ namespace Watch_Face_Editor
                                 if (sunrise.Sunrise != null) offset++;
                                 if (sunrise.Sunset != null) offset++;
                                 //if (sunrise.Sunset_Sunrise != null) offset++;
+                                if (sunrise.Sunrise_Font != null) offset++;
+                                if (sunrise.Sunset_Font != null) offset++;
                                 if (sunrise.Sunrise_rotation != null) offset++;
                                 if (sunrise.Sunset_rotation != null) offset++;
                                 if (sunrise.Sunrise_circle != null) offset++;
@@ -20064,6 +20655,120 @@ namespace Watch_Face_Editor
                                 sunrise.Sunset_Sunrise.align = imgNumber.align;
                                 sunrise.Sunset_Sunrise.visible = true;
                                 sunrise.Sunset_Sunrise.position = offset;
+                            }
+                        }
+
+                        if (imgNumber.type == "MOON_RISE")
+                        {
+                            ElementMoon moon = (ElementMoon)elementsList.Find(e => e.GetType().Name == "ElementMoon");
+                            if (moon == null)
+                            {
+                                elementsList.Add(new ElementMoon());
+                                moon = (ElementMoon)elementsList.Find(e => e.GetType().Name == "ElementMoon");
+                            }
+                            if (moon != null)
+                            {
+                                int offset = 1;
+                                if (moon.Images != null) offset++;
+                                //if (moon.Sunrise != null) offset++;
+                                if (moon.Sunset != null) offset++;
+                                if (moon.Sunset_Sunrise != null) offset++;
+                                if (moon.Sunrise_Font != null) offset++;
+                                if (moon.Sunset_Font != null) offset++;
+                                if (moon.Pointer != null) offset++;
+                                if (moon.Icon != null) offset++;
+
+                                moon.Sunrise = new hmUI_widget_IMG_NUMBER();
+                                moon.Sunrise.img_First = imgNumber.img_First;
+                                moon.Sunrise.imageX = imgNumber.imageX;
+                                moon.Sunrise.imageY = imgNumber.imageY;
+                                moon.Sunrise.space = imgNumber.space;
+                                moon.Sunrise.angle = imgNumber.angle;
+                                moon.Sunrise.zero = imgNumber.zero;
+                                moon.Sunrise.unit = imgNumber.unit;
+                                moon.Sunrise.imperial_unit = imgNumber.imperial_unit;
+                                moon.Sunrise.negative_image = imgNumber.negative_image;
+                                moon.Sunrise.invalid_image = imgNumber.invalid_image;
+                                moon.Sunrise.dot_image = imgNumber.dot_image;
+                                moon.Sunrise.align = imgNumber.align;
+                                moon.Sunrise.visible = true;
+                                moon.Sunrise.position = offset;
+                            }
+                        }
+
+                        if (imgNumber.type == "MOON_SET")
+                        {
+                            ElementMoon moon = (ElementMoon)elementsList.Find(e => e.GetType().Name == "ElementMoon");
+                            if (moon == null)
+                            {
+                                elementsList.Add(new ElementMoon());
+                                moon = (ElementMoon)elementsList.Find(e => e.GetType().Name == "ElementMoon");
+                            }
+                            if (moon != null)
+                            {
+                                int offset = 1;
+                                if (moon.Images != null) offset++;
+                                if (moon.Sunrise != null) offset++;
+                                //if (moon.Sunset != null) offset++;
+                                if (moon.Sunset_Sunrise != null) offset++;
+                                if (moon.Sunrise_Font != null) offset++;
+                                if (moon.Sunset_Font != null) offset++;
+                                if (moon.Pointer != null) offset++;
+                                if (moon.Icon != null) offset++;
+
+                                moon.Sunset = new hmUI_widget_IMG_NUMBER();
+                                moon.Sunset.img_First = imgNumber.img_First;
+                                moon.Sunset.imageX = imgNumber.imageX;
+                                moon.Sunset.imageY = imgNumber.imageY;
+                                moon.Sunset.space = imgNumber.space;
+                                moon.Sunset.angle = imgNumber.angle;
+                                moon.Sunset.zero = imgNumber.zero;
+                                moon.Sunset.unit = imgNumber.unit;
+                                moon.Sunset.imperial_unit = imgNumber.imperial_unit;
+                                moon.Sunset.negative_image = imgNumber.negative_image;
+                                moon.Sunset.invalid_image = imgNumber.invalid_image;
+                                moon.Sunset.dot_image = imgNumber.dot_image;
+                                moon.Sunset.align = imgNumber.align;
+                                moon.Sunset.visible = true;
+                                moon.Sunset.position = offset;
+                            }
+                        }
+
+                        if (imgNumber.type == "MOON_CURRENT")
+                        {
+                            ElementMoon moon = (ElementMoon)elementsList.Find(e => e.GetType().Name == "ElementMoon");
+                            if (moon == null)
+                            {
+                                elementsList.Add(new ElementMoon());
+                                moon = (ElementMoon)elementsList.Find(e => e.GetType().Name == "ElementMoon");
+                            }
+                            if (moon != null)
+                            {
+                                int offset = 1;
+                                if (moon.Images != null) offset++;
+                                if (moon.Sunrise != null) offset++;
+                                if (moon.Sunset != null) offset++;
+                                //if (moon.Sunset_Sunrise != null) offset++;
+                                if (moon.Sunrise_Font != null) offset++;
+                                if (moon.Sunset_Font != null) offset++;
+                                if (moon.Pointer != null) offset++;
+                                if (moon.Icon != null) offset++;
+
+                                moon.Sunset_Sunrise = new hmUI_widget_IMG_NUMBER();
+                                moon.Sunset_Sunrise.img_First = imgNumber.img_First;
+                                moon.Sunset_Sunrise.imageX = imgNumber.imageX;
+                                moon.Sunset_Sunrise.imageY = imgNumber.imageY;
+                                moon.Sunset_Sunrise.space = imgNumber.space;
+                                moon.Sunset_Sunrise.angle = imgNumber.angle;
+                                moon.Sunset_Sunrise.zero = imgNumber.zero;
+                                moon.Sunset_Sunrise.unit = imgNumber.unit;
+                                moon.Sunset_Sunrise.imperial_unit = imgNumber.imperial_unit;
+                                moon.Sunset_Sunrise.negative_image = imgNumber.negative_image;
+                                moon.Sunset_Sunrise.invalid_image = imgNumber.invalid_image;
+                                moon.Sunset_Sunrise.dot_image = imgNumber.dot_image;
+                                moon.Sunset_Sunrise.align = imgNumber.align;
+                                moon.Sunset_Sunrise.visible = true;
+                                moon.Sunset_Sunrise.position = offset;
                             }
                         }
 
@@ -20923,6 +21628,7 @@ namespace Watch_Face_Editor
                                 if (weather.Text_Min_circle != null) offset++;
                                 if (weather.Text_Max_rotation != null) offset++;
                                 if (weather.Text_Max_circle != null) offset++;
+                                if (weather.Number_Min_Max_Font != null) offset++;
                                 if (weather.City_Name != null) offset++;
                                 if (weather.Icon != null) offset++;
 
@@ -20967,6 +21673,7 @@ namespace Watch_Face_Editor
                                 if (weather.Text_Min_circle != null) offset++;
                                 //if (weather.Text_Max_rotation != null) offset++;
                                 if (weather.Text_Max_circle != null) offset++;
+                                if (weather.Number_Min_Max_Font != null) offset++;
                                 if (weather.City_Name != null) offset++;
                                 if (weather.Icon != null) offset++;
 
@@ -20989,40 +21696,6 @@ namespace Watch_Face_Editor
                             }
                         }
 
-                        if (textRotate.type == "ALTIMETER")
-                        {
-                            ElementAltimeter altimeter = (ElementAltimeter)elementsList.Find(e => e.GetType().Name == "ElementAltimeter");
-                            if (altimeter == null)
-                            {
-                                elementsList.Add(new ElementAltimeter());
-                                altimeter = (ElementAltimeter)elementsList.Find(e => e.GetType().Name == "ElementAltimeter");
-                            }
-                            if (altimeter != null)
-                            {
-                                int offset = 1;
-                                //if (altimeter.Text_rotation != null) offset++;
-                                if (altimeter.Pointer != null) offset++;
-                                if (altimeter.Icon != null) offset++;
-
-                                //altimeter.Text_rotation = new hmUI_widget_IMG_NUMBER();
-                                //altimeter.Text_rotation.img_First = textRotate.img_First;
-                                //altimeter.Text_rotation.imageX = textRotate.imageX;
-                                //altimeter.Text_rotation.imageY = textRotate.imageY;
-                                //altimeter.Text_rotation.space = textRotate.space;
-                                //altimeter.Text_rotation.angle = textRotate.angle;
-                                //altimeter.Text_rotation.zero = textRotate.zero;
-                                //altimeter.Text_rotation.unit = textRotate.unit;
-                                //altimeter.Text_rotation.unit_in_alignment = textRotate.unit_in_alignment;
-                                //altimeter.Text_rotation.imperial_unit = textRotate.imperial_unit;
-                                //altimeter.Text_rotation.negative_image = textRotate.negative_image;
-                                //altimeter.Text_rotation.invalid_image = textRotate.invalid_image;
-                                //altimeter.Text_rotation.dot_image = textRotate.dot_image;
-                                //altimeter.Text_rotation.align = textRotate.align;
-                                //altimeter.Text_rotation.visible = true;
-                                //altimeter.Text_rotation.position = offset;
-                            }
-                        }
-
                         if (textRotate.type == "SUN_RISE")
                         {
                             ElementSunrise sunrise = (ElementSunrise)elementsList.Find(e => e.GetType().Name == "ElementSunrise");
@@ -21039,6 +21712,8 @@ namespace Watch_Face_Editor
                                 if (sunrise.Sunrise != null) offset++;
                                 if (sunrise.Sunset != null) offset++;
                                 if (sunrise.Sunset_Sunrise != null) offset++;
+                                if (sunrise.Sunrise_Font != null) offset++;
+                                if (sunrise.Sunset_Font != null) offset++;
                                 //if (sunrise.Sunrise_rotation != null) offset++;
                                 if (sunrise.Sunset_rotation != null) offset++;
                                 if (sunrise.Sunrise_circle != null) offset++;
@@ -21081,6 +21756,8 @@ namespace Watch_Face_Editor
                                 if (sunrise.Sunrise != null) offset++;
                                 if (sunrise.Sunset != null) offset++;
                                 if (sunrise.Sunset_Sunrise != null) offset++;
+                                if (sunrise.Sunrise_Font != null) offset++;
+                                if (sunrise.Sunset_Font != null) offset++;
                                 if (sunrise.Sunrise_rotation != null) offset++;
                                 //if (sunrise.Sunset_rotation != null) offset++;
                                 if (sunrise.Sunrise_circle != null) offset++;
@@ -21104,44 +21781,6 @@ namespace Watch_Face_Editor
                                 sunrise.Sunset_rotation.align = textRotate.align;
                                 sunrise.Sunset_rotation.visible = true;
                                 sunrise.Sunset_rotation.position = offset;
-                            }
-                        }
-
-                        if (textRotate.type == "SUN_CURRENT")
-                        {
-                            ElementSunrise sunrise = (ElementSunrise)elementsList.Find(e => e.GetType().Name == "ElementSunrise");
-                            if (sunrise == null)
-                            {
-                                elementsList.Add(new ElementSunrise());
-                                sunrise = (ElementSunrise)elementsList.Find(e => e.GetType().Name == "ElementSunrise");
-                            }
-                            if (sunrise != null)
-                            {
-                                int offset = 1;
-                                if (sunrise.Images != null) offset++;
-                                if (sunrise.Segments != null) offset++;
-                                if (sunrise.Sunrise != null) offset++;
-                                //if (sunrise.Sunset_Sunrise != null) offset++;
-                                if (sunrise.Sunset != null) offset++;
-                                if (sunrise.Pointer != null) offset++;
-                                if (sunrise.Icon != null) offset++;
-
-                                sunrise.Sunset_Sunrise = new hmUI_widget_IMG_NUMBER();
-                                sunrise.Sunset_Sunrise.img_First = textRotate.img_First;
-                                sunrise.Sunset_Sunrise.imageX = textRotate.imageX;
-                                sunrise.Sunset_Sunrise.imageY = textRotate.imageY;
-                                sunrise.Sunset_Sunrise.space = textRotate.space;
-                                sunrise.Sunset_Sunrise.angle = textRotate.angle;
-                                sunrise.Sunset_Sunrise.zero = textRotate.zero;
-                                sunrise.Sunset_Sunrise.unit = textRotate.unit;
-                                sunrise.Sunset_Sunrise.unit_in_alignment = textRotate.unit_in_alignment;
-                                sunrise.Sunset_Sunrise.imperial_unit = textRotate.imperial_unit;
-                                sunrise.Sunset_Sunrise.negative_image = textRotate.negative_image;
-                                sunrise.Sunset_Sunrise.invalid_image = textRotate.invalid_image;
-                                sunrise.Sunset_Sunrise.dot_image = textRotate.dot_image;
-                                sunrise.Sunset_Sunrise.align = textRotate.align;
-                                sunrise.Sunset_Sunrise.visible = true;
-                                sunrise.Sunset_Sunrise.position = offset;
                             }
                         }
 
@@ -22002,6 +22641,7 @@ namespace Watch_Face_Editor
                                 //if (weather.Text_Min_circle != null) offset++;
                                 if (weather.Text_Max_rotation != null) offset++;
                                 if (weather.Text_Max_circle != null) offset++;
+                                if (weather.Number_Min_Max_Font != null) offset++;
                                 if (weather.City_Name != null) offset++;
                                 if (weather.Icon != null) offset++;
 
@@ -22048,6 +22688,7 @@ namespace Watch_Face_Editor
                                 if (weather.Text_Min_circle != null) offset++;
                                 if (weather.Text_Max_rotation != null) offset++;
                                 //if (weather.Text_Max_circle != null) offset++;
+                                if (weather.Number_Min_Max_Font != null) offset++;
                                 if (weather.City_Name != null) offset++;
                                 if (weather.Icon != null) offset++;
 
@@ -22088,6 +22729,8 @@ namespace Watch_Face_Editor
                                 if (sunrise.Sunrise != null) offset++;
                                 if (sunrise.Sunset != null) offset++;
                                 if (sunrise.Sunset_Sunrise != null) offset++;
+                                if (sunrise.Sunrise_Font != null) offset++;
+                                if (sunrise.Sunset_Font != null) offset++;
                                 if (sunrise.Sunrise_rotation != null) offset++;
                                 if (sunrise.Sunset_rotation != null) offset++;
                                 //if (sunrise.Sunrise_circle != null) offset++;
@@ -22132,6 +22775,8 @@ namespace Watch_Face_Editor
                                 if (sunrise.Sunrise != null) offset++;
                                 if (sunrise.Sunset != null) offset++;
                                 if (sunrise.Sunset_Sunrise != null) offset++;
+                                if (sunrise.Sunrise_Font != null) offset++;
+                                if (sunrise.Sunset_Font != null) offset++;
                                 if (sunrise.Sunrise_rotation != null) offset++;
                                 if (sunrise.Sunset_rotation != null) offset++;
                                 if (sunrise.Sunrise_circle != null) offset++;
@@ -22674,6 +23319,8 @@ namespace Watch_Face_Editor
                                 if (sunrise.Sunrise != null) offset++;
                                 if (sunrise.Sunset != null) offset++;
                                 if (sunrise.Sunset_Sunrise != null) offset++;
+                                if (sunrise.Sunrise_Font != null) offset++;
+                                if (sunrise.Sunset_Font != null) offset++;
                                 if (sunrise.Sunrise_rotation != null) offset++;
                                 if (sunrise.Sunset_rotation != null) offset++;
                                 if (sunrise.Sunrise_circle != null) offset++;
@@ -22697,6 +23344,45 @@ namespace Watch_Face_Editor
                                 sunrise.Pointer.scale_y = imgPointer.scale_y;
                                 sunrise.Pointer.visible = true;
                                 sunrise.Pointer.position = offset;
+                            }
+                        }
+
+                        if (imgPointer.type == "MOON_CURRENT")
+                        {
+                            ElementMoon moon = (ElementMoon)elementsList.Find(e => e.GetType().Name == "ElementMoon");
+                            if (moon == null)
+                            {
+                                elementsList.Add(new ElementMoon());
+                                moon = (ElementMoon)elementsList.Find(e => e.GetType().Name == "ElementMoon");
+                            }
+                            if (moon != null)
+                            {
+                                int offset = 1;
+                                if (moon.Images != null) offset++;
+                                if (moon.Sunrise != null) offset++;
+                                if (moon.Sunset != null) offset++;
+                                if (moon.Sunset_Sunrise != null) offset++;
+                                if (moon.Sunrise_Font != null) offset++;
+                                if (moon.Sunset_Font != null) offset++;
+                                //if (moon.Pointer != null) offset++;
+                                if (moon.Icon != null) offset++;
+
+                                moon.Pointer = new hmUI_widget_IMG_POINTER();
+                                moon.Pointer.src = imgPointer.src;
+                                moon.Pointer.center_x = imgPointer.center_x;
+                                moon.Pointer.center_y = imgPointer.center_y;
+                                moon.Pointer.pos_x = imgPointer.pos_x;
+                                moon.Pointer.pos_y = imgPointer.pos_y;
+                                moon.Pointer.start_angle = imgPointer.start_angle;
+                                moon.Pointer.end_angle = imgPointer.end_angle;
+                                moon.Pointer.cover_path = imgPointer.cover_path;
+                                moon.Pointer.cover_x = imgPointer.cover_x;
+                                moon.Pointer.cover_y = imgPointer.cover_y;
+                                moon.Pointer.scale = imgPointer.scale;
+                                moon.Pointer.scale_x = imgPointer.scale_x;
+                                moon.Pointer.scale_y = imgPointer.scale_y;
+                                moon.Pointer.visible = true;
+                                moon.Pointer.position = offset;
                             }
                         }
 
@@ -24347,6 +25033,7 @@ namespace Watch_Face_Editor
                                 if (weather.Text_Min_circle != null) offset++;
                                 if (weather.Text_Max_rotation != null) offset++;
                                 if (weather.Text_Max_circle != null) offset++;
+                                if (weather.Number_Min_Max_Font != null) offset++;
                                 if (weather.City_Name != null) offset++;
                                 if (weather.Icon != null) offset++;
 
@@ -24399,6 +25086,7 @@ namespace Watch_Face_Editor
                                 if (weather.Text_Min_circle != null) offset++;
                                 if (weather.Text_Max_rotation != null) offset++;
                                 if (weather.Text_Max_circle != null) offset++;
+                                if (weather.Number_Min_Max_Font != null) offset++;
                                 if (weather.City_Name != null) offset++;
                                 if (weather.Icon != null) offset++;
 
@@ -24451,6 +25139,7 @@ namespace Watch_Face_Editor
                                 if (weather.Text_Min_circle != null) offset++;
                                 if (weather.Text_Max_rotation != null) offset++;
                                 if (weather.Text_Max_circle != null) offset++;
+                                if (weather.Number_Min_Max_Font != null) offset++;
                                 if (weather.City_Name != null) offset++;
                                 if (weather.Icon != null) offset++;
 
@@ -24478,6 +25167,59 @@ namespace Watch_Face_Editor
 
                                 weather.Number_Max_Font.visible = true;
                                 weather.Number_Max_Font.position = offset;
+                            }
+                        }
+
+                        if (text_font.type == "WEATHER_HIGH_LOW")
+                        {
+                            ElementWeather weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
+                            if (weather == null)
+                            {
+                                elementsList.Add(new ElementWeather());
+                                weather = (ElementWeather)elementsList.Find(e => e.GetType().Name == "ElementWeather");
+                            }
+                            if (weather != null)
+                            {
+                                int offset = 1;
+                                if (weather.Images != null) offset++;
+                                if (weather.Number != null) offset++;
+                                if (weather.Number_Font != null) offset++;
+                                if (weather.Number_Min != null) offset++;
+                                if (weather.Number_Min_Font != null) offset++;
+                                if (weather.Number_Max != null) offset++;
+                                if (weather.Number_Max_Font != null) offset++;
+                                if (weather.Text_Min_rotation != null) offset++;
+                                if (weather.Text_Min_circle != null) offset++;
+                                if (weather.Text_Max_rotation != null) offset++;
+                                if (weather.Text_Max_circle != null) offset++;
+                                //if (weather.Number_Min_Max_Font != null) offset++;
+                                if (weather.City_Name != null) offset++;
+                                if (weather.Icon != null) offset++;
+
+                                weather.Number_Min_Max_Font = new hmUI_widget_TEXT();
+                                weather.Number_Min_Max_Font.x = text_font.x;
+                                weather.Number_Min_Max_Font.y = text_font.y;
+                                weather.Number_Min_Max_Font.w = text_font.w;
+                                weather.Number_Min_Max_Font.h = text_font.h;
+
+                                weather.Number_Min_Max_Font.color = text_font.color;
+                                weather.Number_Min_Max_Font.font = text_font.font;
+                                weather.Number_Min_Max_Font.text_size = text_font.text_size;
+
+                                weather.Number_Min_Max_Font.char_space = text_font.char_space;
+                                weather.Number_Min_Max_Font.line_space = text_font.line_space;
+
+                                weather.Number_Min_Max_Font.align_h = text_font.align_h;
+                                weather.Number_Min_Max_Font.align_v = text_font.align_v;
+                                weather.Number_Min_Max_Font.text_style = text_font.text_style;
+
+                                weather.Number_Min_Max_Font.padding = text_font.padding;
+                                weather.Number_Min_Max_Font.unit_type = text_font.unit_type;
+
+                                weather.Number_Min_Max_Font.type = text_font.type;
+
+                                weather.Number_Min_Max_Font.visible = true;
+                                weather.Number_Min_Max_Font.position = offset;
                             }
                         }
 
@@ -24568,6 +25310,294 @@ namespace Watch_Face_Editor
 
                                 humidity.Number_Font.visible = true;
                                 humidity.Number_Font.position = offset;
+                            }
+                        }
+
+                        if (text_font.type == "ALTIMETER")
+                        {
+                            ElementAltimeter altimeter = (ElementAltimeter)elementsList.Find(e => e.GetType().Name == "ElementAltimeter");
+                            if (altimeter == null)
+                            {
+                                elementsList.Add(new ElementAltimeter());
+                                altimeter = (ElementAltimeter)elementsList.Find(e => e.GetType().Name == "ElementAltimeter");
+                            }
+                            if (altimeter != null)
+                            {
+                                int offset = 1;
+                                if (altimeter.Number != null) offset++;
+                                //if (altimeter.Number_Font != null) offset++;
+                                if (altimeter.Number_Target != null) offset++;
+                                if (altimeter.Number_Target_Font != null) offset++;
+                                if (altimeter.Pointer != null) offset++;
+                                if (altimeter.Icon != null) offset++;
+
+                                altimeter.Number_Font = new hmUI_widget_TEXT();
+                                altimeter.Number_Font.x = text_font.x;
+                                altimeter.Number_Font.y = text_font.y;
+                                altimeter.Number_Font.w = text_font.w;
+                                altimeter.Number_Font.h = text_font.h;
+
+                                altimeter.Number_Font.color = text_font.color;
+                                altimeter.Number_Font.font = text_font.font;
+                                altimeter.Number_Font.text_size = text_font.text_size;
+
+                                altimeter.Number_Font.char_space = text_font.char_space;
+                                altimeter.Number_Font.line_space = text_font.line_space;
+
+                                altimeter.Number_Font.align_h = text_font.align_h;
+                                altimeter.Number_Font.align_v = text_font.align_v;
+                                altimeter.Number_Font.text_style = text_font.text_style;
+
+                                altimeter.Number_Font.padding = text_font.padding;
+                                altimeter.Number_Font.unit_type = text_font.unit_type;
+
+                                altimeter.Number_Font.type = text_font.type;
+
+                                altimeter.Number_Font.visible = true;
+                                altimeter.Number_Font.position = offset;
+                            }
+                        }
+
+                        if (text_font.type == "ALTITUDE")
+                        {
+                            ElementAltimeter altimeter = (ElementAltimeter)elementsList.Find(e => e.GetType().Name == "ElementAltimeter");
+                            if (altimeter == null)
+                            {
+                                elementsList.Add(new ElementAltimeter());
+                                altimeter = (ElementAltimeter)elementsList.Find(e => e.GetType().Name == "ElementAltimeter");
+                            }
+                            if (altimeter != null)
+                            {
+                                int offset = 1;
+                                if (altimeter.Number != null) offset++;
+                                if (altimeter.Number_Font != null) offset++;
+                                if (altimeter.Number_Target != null) offset++;
+                                //if (altimeter.Number_Target_Font != null) offset++;
+                                if (altimeter.Pointer != null) offset++;
+                                if (altimeter.Icon != null) offset++;
+
+                                altimeter.Number_Target_Font = new hmUI_widget_TEXT();
+                                altimeter.Number_Target_Font.x = text_font.x;
+                                altimeter.Number_Target_Font.y = text_font.y;
+                                altimeter.Number_Target_Font.w = text_font.w;
+                                altimeter.Number_Target_Font.h = text_font.h;
+
+                                altimeter.Number_Target_Font.color = text_font.color;
+                                altimeter.Number_Target_Font.font = text_font.font;
+                                altimeter.Number_Target_Font.text_size = text_font.text_size;
+
+                                altimeter.Number_Target_Font.char_space = text_font.char_space;
+                                altimeter.Number_Target_Font.line_space = text_font.line_space;
+
+                                altimeter.Number_Target_Font.align_h = text_font.align_h;
+                                altimeter.Number_Target_Font.align_v = text_font.align_v;
+                                altimeter.Number_Target_Font.text_style = text_font.text_style;
+
+                                altimeter.Number_Target_Font.padding = text_font.padding;
+                                altimeter.Number_Target_Font.unit_type = text_font.unit_type;
+
+                                altimeter.Number_Target_Font.type = text_font.type;
+
+                                altimeter.Number_Target_Font.visible = true;
+                                altimeter.Number_Target_Font.position = offset;
+                            }
+                        }
+
+                        if (text_font.type == "SUN_RISE")
+                        {
+                            ElementSunrise sunrise = (ElementSunrise)elementsList.Find(e => e.GetType().Name == "ElementSunrise");
+                            if (sunrise == null)
+                            {
+                                elementsList.Add(new ElementSunrise());
+                                sunrise = (ElementSunrise)elementsList.Find(e => e.GetType().Name == "ElementSunrise");
+                            }
+                            if (sunrise != null)
+                            {
+                                int offset = 1;
+                                if (sunrise.Images != null) offset++;
+                                if (sunrise.Segments != null) offset++;
+                                if (sunrise.Sunrise != null) offset++;
+                                if (sunrise.Sunset != null) offset++;
+                                if (sunrise.Sunset_Sunrise != null) offset++;
+                                //if (sunrise.Sunrise_Font != null) offset++;
+                                if (sunrise.Sunset_Font != null) offset++;
+                                if (sunrise.Sunrise_rotation != null) offset++;
+                                if (sunrise.Sunset_rotation != null) offset++;
+                                if (sunrise.Sunrise_circle != null) offset++;
+                                if (sunrise.Sunset_circle != null) offset++;
+                                if (sunrise.Pointer != null) offset++;
+                                if (sunrise.Icon != null) offset++;
+
+                                sunrise.Sunrise_Font = new hmUI_widget_TEXT();
+                                sunrise.Sunrise_Font.x = text_font.x;
+                                sunrise.Sunrise_Font.y = text_font.y;
+                                sunrise.Sunrise_Font.w = text_font.w;
+                                sunrise.Sunrise_Font.h = text_font.h;
+
+                                sunrise.Sunrise_Font.color = text_font.color;
+                                sunrise.Sunrise_Font.font = text_font.font;
+                                sunrise.Sunrise_Font.text_size = text_font.text_size;
+
+                                sunrise.Sunrise_Font.char_space = text_font.char_space;
+                                sunrise.Sunrise_Font.line_space = text_font.line_space;
+
+                                sunrise.Sunrise_Font.align_h = text_font.align_h;
+                                sunrise.Sunrise_Font.align_v = text_font.align_v;
+                                sunrise.Sunrise_Font.text_style = text_font.text_style;
+
+                                sunrise.Sunrise_Font.padding = text_font.padding;
+                                sunrise.Sunrise_Font.unit_type = text_font.unit_type;
+
+                                sunrise.Sunrise_Font.type = text_font.type;
+
+                                sunrise.Sunrise_Font.visible = true;
+                                sunrise.Sunrise_Font.position = offset;
+                            }
+                        }
+
+                        if (text_font.type == "SUN_SET")
+                        {
+                            ElementSunrise sunrise = (ElementSunrise)elementsList.Find(e => e.GetType().Name == "ElementSunrise");
+                            if (sunrise == null)
+                            {
+                                elementsList.Add(new ElementSunrise());
+                                sunrise = (ElementSunrise)elementsList.Find(e => e.GetType().Name == "ElementSunrise");
+                            }
+                            if (sunrise != null)
+                            {
+                                int offset = 1;
+                                if (sunrise.Images != null) offset++;
+                                if (sunrise.Segments != null) offset++;
+                                if (sunrise.Sunrise != null) offset++;
+                                if (sunrise.Sunset != null) offset++;
+                                if (sunrise.Sunset_Sunrise != null) offset++;
+                                if (sunrise.Sunrise_Font != null) offset++;
+                                //if (sunrise.Sunset_Font != null) offset++;
+                                if (sunrise.Sunrise_rotation != null) offset++;
+                                if (sunrise.Sunset_rotation != null) offset++;
+                                if (sunrise.Sunrise_circle != null) offset++;
+                                if (sunrise.Sunset_circle != null) offset++;
+                                if (sunrise.Pointer != null) offset++;
+                                if (sunrise.Icon != null) offset++;
+
+                                sunrise.Sunset_Font = new hmUI_widget_TEXT();
+                                sunrise.Sunset_Font.x = text_font.x;
+                                sunrise.Sunset_Font.y = text_font.y;
+                                sunrise.Sunset_Font.w = text_font.w;
+                                sunrise.Sunset_Font.h = text_font.h;
+
+                                sunrise.Sunset_Font.color = text_font.color;
+                                sunrise.Sunset_Font.font = text_font.font;
+                                sunrise.Sunset_Font.text_size = text_font.text_size;
+
+                                sunrise.Sunset_Font.char_space = text_font.char_space;
+                                sunrise.Sunset_Font.line_space = text_font.line_space;
+
+                                sunrise.Sunset_Font.align_h = text_font.align_h;
+                                sunrise.Sunset_Font.align_v = text_font.align_v;
+                                sunrise.Sunset_Font.text_style = text_font.text_style;
+
+                                sunrise.Sunset_Font.padding = text_font.padding;
+                                sunrise.Sunset_Font.unit_type = text_font.unit_type;
+
+                                sunrise.Sunset_Font.type = text_font.type;
+
+                                sunrise.Sunset_Font.visible = true;
+                                sunrise.Sunset_Font.position = offset;
+                            }
+                        }
+
+                        if (text_font.type == "MOON_RISE")
+                        {
+                            ElementMoon moon = (ElementMoon)elementsList.Find(e => e.GetType().Name == "ElementMoon");
+                            if (moon == null)
+                            {
+                                elementsList.Add(new ElementMoon());
+                                moon = (ElementMoon)elementsList.Find(e => e.GetType().Name == "ElementMoon");
+                            }
+                            if (moon != null)
+                            {
+                                int offset = 1;
+                                if (moon.Images != null) offset++;
+                                if (moon.Sunrise != null) offset++;
+                                if (moon.Sunset != null) offset++;
+                                if (moon.Sunset_Sunrise != null) offset++;
+                                //if (moon.Sunrise_Font != null) offset++;
+                                if (moon.Sunset_Font != null) offset++;
+                                if (moon.Pointer != null) offset++;
+                                if (moon.Icon != null) offset++;
+
+                                moon.Sunrise_Font = new hmUI_widget_TEXT();
+                                moon.Sunrise_Font.x = text_font.x;
+                                moon.Sunrise_Font.y = text_font.y;
+                                moon.Sunrise_Font.w = text_font.w;
+                                moon.Sunrise_Font.h = text_font.h;
+
+                                moon.Sunrise_Font.color = text_font.color;
+                                moon.Sunrise_Font.font = text_font.font;
+                                moon.Sunrise_Font.text_size = text_font.text_size;
+
+                                moon.Sunrise_Font.char_space = text_font.char_space;
+                                moon.Sunrise_Font.line_space = text_font.line_space;
+
+                                moon.Sunrise_Font.align_h = text_font.align_h;
+                                moon.Sunrise_Font.align_v = text_font.align_v;
+                                moon.Sunrise_Font.text_style = text_font.text_style;
+
+                                moon.Sunrise_Font.padding = text_font.padding;
+                                moon.Sunrise_Font.unit_type = text_font.unit_type;
+
+                                moon.Sunrise_Font.type = text_font.type;
+
+                                moon.Sunrise_Font.visible = true;
+                                moon.Sunrise_Font.position = offset;
+                            }
+                        }
+
+                        if (text_font.type == "MOON_SET")
+                        {
+                            ElementMoon moon = (ElementMoon)elementsList.Find(e => e.GetType().Name == "ElementMoon");
+                            if (moon == null)
+                            {
+                                elementsList.Add(new ElementMoon());
+                                moon = (ElementMoon)elementsList.Find(e => e.GetType().Name == "ElementMoon");
+                            }
+                            if (moon != null)
+                            {
+                                int offset = 1;
+                                if (moon.Images != null) offset++;
+                                if (moon.Sunrise != null) offset++;
+                                if (moon.Sunset != null) offset++;
+                                if (moon.Sunset_Sunrise != null) offset++;
+                                if (moon.Sunrise_Font != null) offset++;
+                                //if (moon.Sunset_Font != null) offset++;
+                                if (moon.Pointer != null) offset++;
+                                if (moon.Icon != null) offset++;
+
+                                moon.Sunset_Font = new hmUI_widget_TEXT();
+                                moon.Sunset_Font.x = text_font.x;
+                                moon.Sunset_Font.y = text_font.y;
+                                moon.Sunset_Font.w = text_font.w;
+                                moon.Sunset_Font.h = text_font.h;
+
+                                moon.Sunset_Font.color = text_font.color;
+                                moon.Sunset_Font.font = text_font.font;
+                                moon.Sunset_Font.text_size = text_font.text_size;
+
+                                moon.Sunset_Font.char_space = text_font.char_space;
+                                moon.Sunset_Font.line_space = text_font.line_space;
+
+                                moon.Sunset_Font.align_h = text_font.align_h;
+                                moon.Sunset_Font.align_v = text_font.align_v;
+                                moon.Sunset_Font.text_style = text_font.text_style;
+
+                                moon.Sunset_Font.padding = text_font.padding;
+                                moon.Sunset_Font.unit_type = text_font.unit_type;
+
+                                moon.Sunset_Font.type = text_font.type;
+
+                                moon.Sunset_Font.visible = true;
+                                moon.Sunset_Font.position = offset;
                             }
                         }
 
