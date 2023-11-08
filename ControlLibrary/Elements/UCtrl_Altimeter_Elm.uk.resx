@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="button_Number_Target_Font.Text" xml:space="preserve">
+    <value>Данные шрифтом (висота)</value>
+  </data>
+  <data name="button_Number_Target.Text" xml:space="preserve">
+    <value>Цифрові значення (висота)</value>
+  </data>
+  <data name="button_Number_Font.Text" xml:space="preserve">
+    <value>Данные шрифтом (тиск)</value>
+  </data>
+  <data name="button_Number.Text" xml:space="preserve">
+    <value>Цифрові значення (тиск)</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="button_Pointer.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -154,8 +166,5 @@
         rd3HMNyxbAlu2wJ8mYocwa3zy/Yi7v8inLudlRnBXbD/Ke2hOnme/0vTYevy7Bvrc4YB1SFAjwAAAABJ
         RU5ErkJggg==
 </value>
-  </data>
-  <data name="button_ElementName.Text" xml:space="preserve">
-    <value>Барометр</value>
   </data>
 </root>

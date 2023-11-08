@@ -69,6 +69,30 @@ namespace ControlLibrary
             resources.ApplyResources(this.button_ElementName, "button_ElementName");
             this.button_ElementName.Image = global::ControlLibrary.Properties.Resources.fat_burning;
             // 
+            // checkBox_Text_rotation
+            // 
+            resources.ApplyResources(this.checkBox_Text_rotation, "checkBox_Text_rotation");
+            // 
+            // checkBox_Text_rotation_Target
+            // 
+            resources.ApplyResources(this.checkBox_Text_rotation_Target, "checkBox_Text_rotation_Target");
+            // 
+            // checkBox_Text_circle_Target
+            // 
+            resources.ApplyResources(this.checkBox_Text_circle_Target, "checkBox_Text_circle_Target");
+            // 
+            // checkBox_Text_circle
+            // 
+            resources.ApplyResources(this.checkBox_Text_circle, "checkBox_Text_circle");
+            // 
+            // checkBox_Number_Font
+            // 
+            resources.ApplyResources(this.checkBox_Number_Font, "checkBox_Number_Font");
+            // 
+            // checkBox_Number_Target_Font
+            // 
+            resources.ApplyResources(this.checkBox_Number_Target_Font, "checkBox_Number_Target_Font");
+            // 
             // UCtrl_FatBurning_Elm
             // 
             resources.ApplyResources(this, "$this");

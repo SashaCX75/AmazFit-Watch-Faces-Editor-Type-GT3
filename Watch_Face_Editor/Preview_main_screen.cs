@@ -2062,7 +2062,7 @@ namespace Watch_Face_Editor
                     value_lenght = 3;
                     goal = WatchFacePreviewSet.Activity.PAI;
                     elementValue = goal / 7;
-                    //goal = 100;
+                    //value_altitude = 100;
                     progress = (float)WatchFacePreviewSet.Activity.PAI / 100f;
 
                     if (img_level != null && img_level.image_length > 0)
@@ -2538,32 +2538,22 @@ namespace Watch_Face_Editor
                     icon = activityElementAltimeter.Icon;
 
                     elementValue = WatchFacePreviewSet.Weather.AirPressure;
-                    value_lenght = 4;
+                    //value_lenght = 4;
                     goal = 1200;
-                    //goal = 1170 - 195;
+                    //value_altitude = 1170 - 195;
                     //progress = (WatchFacePreviewSet.Weather.AirPressure - 195) / 975f;
                     progress = WatchFacePreviewSet.Weather.AirPressure / 1200f;
                     progress = (int)(progress * 100);
                     progress = progress / 100f;
-                    goal = WatchFacePreviewSet.Weather.Altitude;
+                    int value_altitude = WatchFacePreviewSet.Weather.Altitude;
 
-                    if (img_level != null && img_level.image_length > 0)
-                    {
-                        imgCount = img_level.image_length;
-                        valueImgIndex = (int)((imgCount - 1) * progress);
-                        if (valueImgIndex >= imgCount) valueImgIndex = (int)(imgCount - 1);
-                    }
-                    if (img_prorgess != null && img_prorgess.image_length > 0)
-                    {
-                        segmentCount = img_prorgess.image_length;
-                        valueSegmentIndex = (int)((segmentCount - 1) * progress);
-                        if (valueSegmentIndex >= segmentCount) valueSegmentIndex = (int)(segmentCount - 1);
-                    }
+                    //DrawActivity(gPanel, img_level, img_prorgess, img_number, font_number, text_rotation, text_circle, img_number_target, font_number_target,
+                    //    text_rotation_target, text_circle_target, img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                    //    progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
+                    //    showCentrHend, "ElementAltimeter");
 
-                    DrawActivity(gPanel, img_level, img_prorgess, img_number, font_number, text_rotation, text_circle, img_number_target, font_number_target,
-                        text_rotation_target, text_circle_target, img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
-                        progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
-                        showCentrHend, "ElementAltimeter");
+                    DrawAltimeter(gPanel, img_number, font_number, img_number_target, font_number_target,
+                        img_pointer, icon, elementValue, value_altitude, progress, BBorder, showProgressArea, showCentrHend);
 
 
                     break;
@@ -2656,7 +2646,7 @@ namespace Watch_Face_Editor
                     //{
                     //    elementValue = 100;
                     //    value_lenght = 3;
-                    //    goal = 100;
+                    //    value_altitude = 100;
                     //    //progress = 0;
 
                     //    int year = WatchFacePreviewSet.Date.Year;
@@ -2674,7 +2664,7 @@ namespace Watch_Face_Editor
 
 
                     //    DrawActivity(gPanel, img_level, img_prorgess, img_number, font_number, text_rotation, text_circle, img_number_target, font_number_target,
-                    //    text_rotation_target, text_circle_target, img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, goal,
+                    //    text_rotation_target, text_circle_target, img_pointer, circle_scale, linear_scale, icon, elementValue, value_lenght, value_altitude,
                     //        progress, valueImgIndex, valueSegmentIndex, BBorder, showProgressArea,
                     //        showCentrHend, "ElementMoon");
                     //}
@@ -3685,26 +3675,29 @@ namespace Watch_Face_Editor
                     int space_v = numberTarget_font.line_space;
 
                     Color color = StringToColor(numberTarget_font.color);
-                    //int align_h = AlignmentToInt(numberTarget_font.align_h);
-                    //int align_v = AlignmentVerticalToInt(numberTarget_font.align_v);
+                    //int align_h = AlignmentToInt(numberAltitude_font.align_h);
+                    //int align_v = AlignmentVerticalToInt(numberAltitude_font.align_v);
                     string align_h = numberTarget_font.align_h;
                     string align_v = numberTarget_font.align_v;
                     string text_style = numberTarget_font.text_style;
                     string valueStr = goal.ToString();
                     string unitStr = unit;
-                    if (elementName == "ElementAltimeter") 
+                    if (elementName == "ElementAltimeter") unitStr = "meter";
+                    if (numberTarget_font.padding)
                     {
-                        unitStr = "meter";
-                        if (goal >= 0) valueStr = valueStr.PadLeft(5, '0');
-                        else
+                        if (elementName == "ElementAltimeter")
                         {
-                            int tempGoal = Math.Abs(goal);
-                            valueStr = tempGoal.ToString();
-                            valueStr = valueStr.PadLeft(5, '0');
-                            valueStr = "-" + valueStr;
+                            if (goal >= 0) valueStr = valueStr.PadLeft(5, '0');
+                            else
+                            {
+                                int tempGoal = Math.Abs(goal);
+                                valueStr = tempGoal.ToString();
+                                valueStr = valueStr.PadLeft(4, '0');
+                                valueStr = "-" + valueStr;
+                            }
                         }
+                        else valueStr = valueStr.PadLeft(value_lenght, '0'); 
                     }
-                    if (numberTarget_font.padding && elementName != "ElementAltimeter") valueStr = valueStr.PadLeft(value_lenght, '0');
                     if (numberTarget_font.unit_type > 0)
                     {
                         if (numberTarget_font.unit_type == 2) unitStr = unitStr.ToUpper();
@@ -3725,7 +3718,7 @@ namespace Watch_Face_Editor
                     if (numberTarget_font.font != null && numberTarget_font.font.Length > 3 && FontsList.ContainsKey(numberTarget_font.font))
                     {
                         string font_fileName = FontsList[numberTarget_font.font];
-                        //string font_fileName = ProjectDir + @"\assets\fonts\" + numberTarget_font.font;
+                        //string font_fileName = ProjectDir + @"\assets\fonts\" + numberAltitude_font.font;
                         if (SelectedModel.versionOS >= 2 && File.Exists(font_fileName))
                         {
                             Font drawFont = null;
@@ -4195,13 +4188,13 @@ namespace Watch_Face_Editor
 
                     if (showTemperature)
                     {
-                        Draw_weather_text(gPanel, imageIndex, x, y, spasing, alignment, value, addZero, 
+                        Draw_weather_text(gPanel, imageIndex, x, y, spasing, alignment, value, 2, addZero, 
                             imageMinus_index, separator_index, angle, BBorder, -1, false);
                     }
                     else if (imageError_index >= 0)
                     {
                         Draw_weather_text(gPanel, imageIndex, x, y,
-                                        spasing, alignment, value, addZero, imageMinus_index, separator_index, angle,
+                                        spasing, alignment, value, 2, addZero, imageMinus_index, separator_index, angle,
                                         BBorder, imageError_index, true);
                     }
 
@@ -4305,13 +4298,13 @@ namespace Watch_Face_Editor
 
                     if (showTemperature)
                     {
-                        Draw_weather_text(gPanel, imageIndex, x, y, spasing, alignment, valueMin, addZero,
+                        Draw_weather_text(gPanel, imageIndex, x, y, spasing, alignment, valueMin, 2, addZero,
                             imageMinus_index, separator_index, angle, BBorder, -1, false);
                     }
                     else if (imageError_index >= 0)
                     {
                         Draw_weather_text(gPanel, imageIndex, x, y,
-                                        spasing, alignment, valueMin, addZero, imageMinus_index, separator_index, angle,
+                                        spasing, alignment, valueMin, 2, addZero, imageMinus_index, separator_index, angle,
                                         BBorder, imageError_index, true);
                     }
 
@@ -4473,13 +4466,13 @@ namespace Watch_Face_Editor
 
                     if (showTemperature)
                     {
-                        Draw_weather_text(gPanel, imageIndex, x, y, spasing, alignment, valueMax, addZero,
+                        Draw_weather_text(gPanel, imageIndex, x, y, spasing, alignment, valueMax, 2, addZero,
                             imageMinus_index, separator_index, angle, BBorder, -1, false);
                     }
                     else if (imageError_index >= 0)
                     {
                         Draw_weather_text(gPanel, imageIndex, x, y,
-                                        spasing, alignment, valueMax, addZero, imageMinus_index, separator_index, angle,
+                                        spasing, alignment, valueMax, 2, addZero, imageMinus_index, separator_index, angle,
                                         BBorder, imageError_index, true);
                     }
 
@@ -5261,7 +5254,7 @@ namespace Watch_Face_Editor
             src.Dispose();
         }
 
-        /// <summary>Рисуем восход, звкат</summary>
+        /// <summary>Рисуем восход, звкат луны</summary>
         private void DrawMoon(Graphics gPanel, hmUI_widget_IMG_LEVEL images, /*hmUI_widget_IMG_PROGRESS segments,*/
             hmUI_widget_IMG_NUMBER sunrise, hmUI_widget_TEXT sunrise_font, hmUI_widget_IMG_NUMBER sunrise_rotation, Text_Circle sunrise_circle,
             hmUI_widget_IMG_NUMBER sunset, hmUI_widget_TEXT sunset_font, hmUI_widget_IMG_NUMBER sunset_rotation, Text_Circle sunset_circle,
@@ -5269,14 +5262,15 @@ namespace Watch_Face_Editor
             hmUI_widget_IMG icon, int hour, int minute, bool BBorder, bool showProgressArea, bool showCentrHend)
         {
             TimeSpan time_now = new TimeSpan(hour, minute, 0);
+            if (time_now <= new TimeSpan(2, 30, 0)) time_now = new TimeSpan(hour + 24, minute, 0);
             TimeSpan time_sunrise = new TimeSpan(21, 30, 0);
             TimeSpan time_sunset = new TimeSpan(24 + 2, 30, 0);
-            TimeSpan time_sunset_forVisible = new TimeSpan(2, 30, 0);
+            //TimeSpan time_sunset_forVisible = new TimeSpan(2, 30, 0);
             TimeSpan day_lenght = time_sunset - time_sunrise;
             TimeSpan day_progress = time_now - time_sunrise;
 
             bool moon = false;
-            if (time_now >= time_sunrise || time_now <= time_sunset_forVisible) moon = true;
+            if (time_now >= time_sunrise && time_now <= time_sunset) moon = true;
 
             float progress = (float)(day_progress.TotalSeconds / day_lenght.TotalSeconds);
             if (progress > 1) progress = 1;
@@ -5771,6 +5765,289 @@ namespace Watch_Face_Editor
                     }
                 }
 
+
+            }
+
+            src.Dispose();
+        }
+
+        /// <summary>Рисуем все параметры элемента барометра</summary>
+        /// <param name="gPanel">Поверхность для рисования</param>
+        /// <param name="number">Параметры цифрового значения</param>
+        /// <param name="number_font">Параметры отображения данных шрифтом</param>
+        /// <param name="numberAltitude">Параметры цифрового значения цели</param>
+        /// <param name="numberAltitude_font">Параметры отображения цели шрифтом</param>
+        /// <param name="pointer">Параметры для стрелочного указателя</param>
+        /// <param name="icon">Параметры для иконки</param>
+        /// <param name="value">Значение показателя</param>
+        /// <param name="value_altitude">Значение цели для показателя</param>
+        /// <param name="progress">Прогресс показателя</param>
+        /// <param name="BBorder">Рисовать рамку по координатам, вокруг элементов с выравниванием</param>
+        /// <param name="showProgressArea">Подсвечивать круговую шкалу при наличии фонового изображения</param>
+        /// <param name="showCentrHend">Подсвечивать центр стрелки</param>
+        /// <param name="elementName">Имя отображаемого элемента</param>
+        private void DrawAltimeter(Graphics gPanel, hmUI_widget_IMG_NUMBER number, hmUI_widget_TEXT number_font, hmUI_widget_IMG_NUMBER numberAltitude,
+            hmUI_widget_TEXT numberAltitude_font, hmUI_widget_IMG_POINTER pointer, hmUI_widget_IMG icon, float value, int value_altitude, float progress,
+            bool BBorder, bool showProgressArea, bool showCentrHend)
+        {
+            if (progress < 0) progress = 0;
+            if (progress > 1) progress = 1;
+            Bitmap src = new Bitmap(1, 1);
+            //string unit = "hpa";
+
+            for (int index = 1; index <= 25; index++)
+            {
+                if (number != null && number.img_First != null && number.img_First.Length > 0 &&
+                    index == number.position && number.visible)
+                {
+                    int imageIndex = ListImages.IndexOf(number.img_First);
+                    int x = number.imageX;
+                    int y = number.imageY;
+                    int spasing = number.space;
+                    int angle = number.angle;
+                    int alignment = AlignmentToInt(number.align);
+                    bool addZero = number.zero;
+                    int separator_index = -1;
+                    if (number.unit != null && number.unit.Length > 0)
+                        separator_index = ListImages.IndexOf(number.unit);
+
+                    Draw_dagital_text(gPanel, imageIndex, x, y,
+                        spasing, alignment, (int)value, addZero, 4, separator_index, angle, BBorder, "ElementAltimeter");
+
+                    if (number.icon != null && number.icon.Length > 0)
+                    {
+                        imageIndex = ListImages.IndexOf(number.icon);
+                        x = number.iconPosX;
+                        y = number.iconPosY;
+
+                        src = OpenFileStream(ListImagesFullName[imageIndex]);
+                        gPanel.DrawImage(src, x, y);
+                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                    }
+                }
+
+                if (number_font != null && index == number_font.position && number_font.visible)
+                {
+                    int x = number_font.x;
+                    int y = number_font.y;
+                    int h = number_font.h;
+                    int w = number_font.w;
+
+                    int size = number_font.text_size;
+                    int space_h = number_font.char_space;
+                    int space_v = number_font.line_space;
+
+                    Color color = StringToColor(number_font.color);
+                    //int align_h = AlignmentToInt(number_font.align_h);
+                    //int align_v = AlignmentVerticalToInt(number_font.align_v);
+                    string align_h = number_font.align_h;
+                    string align_v = number_font.align_v;
+                    string text_style = number_font.text_style;
+                    string valueStr = value.ToString();
+                    string unitStr = "hpa";
+                    if (number_font.padding) valueStr = valueStr.PadLeft(4, '0');
+                    if (number_font.unit_type > 0)
+                    {
+                        if (number_font.unit_type == 2) unitStr = unitStr.ToUpper();
+                        valueStr += unitStr;
+                    }
+
+                    if (number_font.centreHorizontally)
+                    {
+                        x = (SelectedModel.background.w - w) / 2;
+                        align_h = "CENTER_H";
+                    }
+                    if (number_font.centreVertically)
+                    {
+                        y = (SelectedModel.background.h - h) / 2;
+                        align_v = "CENTER_V";
+                    }
+
+                    if (number_font.font != null && number_font.font.Length > 3 && FontsList.ContainsKey(number_font.font))
+                    {
+                        string font_fileName = FontsList[number_font.font];
+                        //string font_fileName = ProjectDir + @"\assets\fonts\" + number_font.font;
+                        if (SelectedModel.versionOS >= 2 && File.Exists(font_fileName))
+                        {
+                            Font drawFont = null;
+                            using (System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection())
+                            {
+                                fonts.AddFontFile(font_fileName);
+                                drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+                            }
+
+                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                            align_h, align_v, text_style, BBorder);
+                        }
+                        else
+                        {
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                        }
+
+                    }
+                    else
+                    {
+                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                    }
+                }
+
+                if (numberAltitude != null && numberAltitude.img_First != null && numberAltitude.img_First.Length > 0 &&
+                    index == numberAltitude.position && numberAltitude.visible)
+                {
+                    int imageIndex = ListImages.IndexOf(numberAltitude.img_First);
+                    int x = numberAltitude.imageX;
+                    int y = numberAltitude.imageY;
+                    int spasing = numberAltitude.space;
+                    int angle = numberAltitude.angle;
+                    int alignment = AlignmentToInt(numberAltitude.align);
+                    bool addZero = numberAltitude.zero;
+                    int separator_index = -1;
+                    if (numberAltitude.unit != null && numberAltitude.unit.Length > 0)
+                        separator_index = ListImages.IndexOf(numberAltitude.unit);
+                    int imageMinus_index = -1;
+                    if (numberAltitude.dot_image != null && numberAltitude.dot_image.Length > 0)
+                        imageMinus_index = ListImages.IndexOf(numberAltitude.dot_image);
+
+                    //Draw_dagital_text(gPanel, imageIndex, x, y, spasing, alignment, value_altitude, addZero, 5, separator_index, angle, BBorder);
+                    Draw_weather_text(gPanel, imageIndex, x, y, spasing, alignment, value_altitude, 5, addZero, imageMinus_index, separator_index, angle, BBorder, -1, false);
+
+                    if (numberAltitude.icon != null && numberAltitude.icon.Length > 0)
+                    {
+                        imageIndex = ListImages.IndexOf(numberAltitude.icon);
+                        x = numberAltitude.iconPosX;
+                        y = numberAltitude.iconPosY;
+
+                        src = OpenFileStream(ListImagesFullName[imageIndex]);
+                        gPanel.DrawImage(src, x, y);
+                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                    }
+                }
+
+                if (numberAltitude_font != null && index == numberAltitude_font.position && numberAltitude_font.visible)
+                {
+                    int x = numberAltitude_font.x;
+                    int y = numberAltitude_font.y;
+                    int h = numberAltitude_font.h;
+                    int w = numberAltitude_font.w;
+
+                    int size = numberAltitude_font.text_size;
+                    int space_h = numberAltitude_font.char_space;
+                    int space_v = numberAltitude_font.line_space;
+
+                    Color color = StringToColor(numberAltitude_font.color);
+                    //int align_h = AlignmentToInt(numberAltitude_font.align_h);
+                    //int align_v = AlignmentVerticalToInt(numberAltitude_font.align_v);
+                    string align_h = numberAltitude_font.align_h;
+                    string align_v = numberAltitude_font.align_v;
+                    string text_style = numberAltitude_font.text_style;
+                    string valueStr = value_altitude.ToString();
+                    string unitStr = "meter";
+                    if (numberAltitude_font.padding)
+                    {
+                        if (value_altitude >= 0) valueStr = valueStr.PadLeft(5, '0');
+                        else
+                        {
+                            int tempGoal = Math.Abs(value_altitude);
+                            valueStr = tempGoal.ToString();
+                            valueStr = valueStr.PadLeft(4, '0');
+                            valueStr = "-" + valueStr;
+                        }
+                    }
+                    if (numberAltitude_font.unit_type > 0)
+                    {
+                        if (numberAltitude_font.unit_type == 2) unitStr = unitStr.ToUpper();
+                        valueStr += unitStr;
+                    }
+
+                    if (numberAltitude_font.centreHorizontally)
+                    {
+                        x = (SelectedModel.background.w - w) / 2;
+                        align_h = "CENTER_H";
+                    }
+                    if (numberAltitude_font.centreVertically)
+                    {
+                        y = (SelectedModel.background.h - h) / 2;
+                        align_v = "CENTER_V";
+                    }
+
+                    if (numberAltitude_font.font != null && numberAltitude_font.font.Length > 3 && FontsList.ContainsKey(numberAltitude_font.font))
+                    {
+                        string font_fileName = FontsList[numberAltitude_font.font];
+                        //string font_fileName = ProjectDir + @"\assets\fonts\" + numberAltitude_font.font;
+                        if (SelectedModel.versionOS >= 2 && File.Exists(font_fileName))
+                        {
+                            Font drawFont = null;
+                            using (System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection())
+                            {
+                                fonts.AddFontFile(font_fileName);
+                                drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+                            }
+
+                            Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                            align_h, align_v, text_style, BBorder);
+                        }
+                        else
+                        {
+                            Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                        }
+
+                    }
+                    else
+                    {
+                        Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                    }
+                }
+
+                if (pointer != null && pointer.src != null && pointer.src.Length > 0 &&
+                    index == pointer.position && pointer.visible)
+                {
+                    int x = pointer.center_x;
+                    int y = pointer.center_y;
+                    int offsetX = pointer.pos_x;
+                    int offsetY = pointer.pos_y;
+                    int startAngle = pointer.start_angle;
+                    int endAngle = pointer.end_angle;
+                    int image_index = ListImages.IndexOf(pointer.src);
+
+                    float angle = startAngle + progress * (endAngle - startAngle);
+
+                    if (pointer.scale != null && pointer.scale.Length > 0)
+                    {
+                        int image_index_scale = ListImages.IndexOf(pointer.scale);
+                        int x_scale = pointer.scale_x;
+                        int y_scale = pointer.scale_y;
+
+                        src = OpenFileStream(ListImagesFullName[image_index_scale]);
+                        gPanel.DrawImage(src, x_scale, y_scale);
+                    }
+
+                    DrawPointer(gPanel, x, y, offsetX, offsetY, image_index, angle, showCentrHend);
+
+                    if (pointer.cover_path != null && pointer.cover_path.Length > 0)
+                    {
+                        image_index = ListImages.IndexOf(pointer.cover_path);
+                        x = pointer.cover_x;
+                        y = pointer.cover_y;
+
+                        src = OpenFileStream(ListImagesFullName[image_index]);
+                        gPanel.DrawImage(src, x, y);
+                    }
+                }
+
+                if (icon != null && icon.src != null && icon.src.Length > 0 &&
+                    index == icon.position && icon.visible)
+                {
+                    int imageIndex = ListImages.IndexOf(icon.src);
+                    int x = icon.x;
+                    int y = icon.y;
+
+                    if (imageIndex < ListImagesFullName.Count)
+                    {
+                        src = OpenFileStream(ListImagesFullName[imageIndex]);
+                        gPanel.DrawImage(src, x, y);
+                        //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                    }
+                }
 
             }
 
@@ -6577,7 +6854,7 @@ namespace Watch_Face_Editor
         /// <param name="imageError_index">Иконка ошибки данны</param>
         /// <param name="errorData">отображать ошибку данный</param>
         private int Draw_weather_text(Graphics graphics, int image_index, int x, int y, int spacing,
-            int alignment, int value, bool addZero, int image_minus_index, int unit_index, int angle, bool BBorder,
+            int alignment, int value, int value_lenght, bool addZero, int image_minus_index, int unit_index, int angle, bool BBorder,
             int imageError_index = -1, bool errorData = false)
         {
             int result = 0;
@@ -6591,10 +6868,17 @@ namespace Watch_Face_Editor
             string value_S = value.ToString();
             if (addZero)
             {
-                //while (value_S.Length < value_lenght)
-                while (value_S.Length < 2)
+                //while (value_S.Length < 2)
+                //{
+                //    value_S = "0" + value_S;
+                //}
+                if (value >= 0) value_S = value_S.PadLeft(value_lenght, '0');
+                else
                 {
-                    value_S = "0" + value_S;
+                    int tempGoal = Math.Abs(value);
+                    value_S = tempGoal.ToString();
+                    value_S = value_S.PadLeft(value_lenght - 1, '0');
+                    value_S = "-" + value_S;
                 }
             }
             char[] CH = value_S.ToCharArray();
