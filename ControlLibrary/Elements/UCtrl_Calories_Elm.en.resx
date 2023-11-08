@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="button_Number_Target_Font.Text" xml:space="preserve">
+    <value>Value by font (target)</value>
+  </data>
+  <data name="button_Number_Font.Text" xml:space="preserve">
+    <value>Value by font</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="button_Text_circle_Target.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -240,7 +246,7 @@
         xUAa4EouKCoB0n+A2CgltTiZgYHRAMjOLi8pAIozzgGyRZKywewNIHZRSJAzkH0EyOZLh7CvgNhJEPYT
         ELsI6Akg+wtIfTqYzcQBNgfClgGxS1IrQPYyOOcXVBZlpmeUKBhaWloqOKbkJ6UqBFcWl6TmFit45iXn
         FxXkFyWWpKYA1ULcBwaCEIWgENMAarTQZKAyAMUDhPU5EBy+jGJnEGIIkFxaVAZlMjIZE+YjzJgjwcDg
-        v5SBgeUPQsykl4FhgQ4DA/9UhJiaIQODgD4Dw745AMDGT/0ZOjZcAAAACXBIWXMAAAsNAAALDQHtB8As
+        v5SBgeUPQsykl4FhgQ4DA/9UhJiaIQODgD4Dw745AMDGT/0ZOjZcAAAACXBIWXMAAAsMAAALDAE/QCLI
         AAAA2UlEQVQ4T52TARGDMAxFwQESJmESkDAJSKiESZiESZgEJEwCEnDQ/d9LemlIx265e3fwm/w2oQw5
         54KPcRxX8AaTSE3UusgARReQhVXkJs4MXsaALLJUo2uA5OSKCQ0nImmxARKuYAfegHAedSY9AyZExZZ7
         aICFxSX22HsGfnDfmCMDfnebxFk8nKakXww4UE7eakpoYFt4sk+G05WwBTvEJPXUeYrNrG3UDwaSrG2U

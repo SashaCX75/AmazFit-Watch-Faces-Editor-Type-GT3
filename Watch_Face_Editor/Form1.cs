@@ -7781,7 +7781,7 @@ namespace Watch_Face_Editor
 
             int airPressure = rnd.Next(800, 1200);
             int airQuality = rnd.Next(0, 650);
-            int altitude = rnd.Next(0, 100);
+            int altitude = rnd.Next(-100, 300);
             int humidity = rnd.Next(30, 100);
             int UVindex = rnd.Next(0, 13);
             int windForce = rnd.Next(0, 13);
@@ -12671,7 +12671,7 @@ namespace Watch_Face_Editor
                         if (uCtrl_Altimeter_Elm.checkBox_Number_Target.Checked)
                         {
                             img_number = altimeter.Number_Target;
-                            Read_ImgNumber_Options(img_number, false, false, "", false, true, true, true, false, true);
+                            Read_ImgNumber_Options(img_number, false, false, "", false, true, false, true, false, true);
                             ShowElemenrOptions("Text");
                         }
                         else HideAllElemenrOptions();

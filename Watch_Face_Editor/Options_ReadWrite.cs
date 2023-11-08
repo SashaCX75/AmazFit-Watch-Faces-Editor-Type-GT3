@@ -843,7 +843,8 @@ namespace Watch_Face_Editor
             uCtrl_Text_Opt.SetUnit(img_number.unit);
             uCtrl_Text_Opt.SetUnitMile(img_number.imperial_unit);
             uCtrl_Text_Opt.SetImageError(img_number.invalid_image);
-            uCtrl_Text_Opt.SetImageDecimalPoint(img_number.dot_image);
+            if (!_altitude) uCtrl_Text_Opt.SetImageDecimalPoint(img_number.dot_image);
+            else uCtrl_Text_Opt.SetImageDecimalPoint(img_number.negative_image);
             //uCtrl_Text_Opt.SetImageDecimalPointOrMinus
             uCtrl_Text_Opt.numericUpDown_spacing.Value = img_number.space;
             uCtrl_Text_Opt.numericUpDown_angle.Value = img_number.angle;
@@ -2168,9 +2169,10 @@ namespace Watch_Face_Editor
             img_number.imageY = (int)uCtrl_Text_Opt.numericUpDown_imageY.Value;
             img_number.space = (int)uCtrl_Text_Opt.numericUpDown_spacing.Value;
             img_number.angle = (int)uCtrl_Text_Opt.numericUpDown_angle.Value;
+            if (!uCtrl_Text_Opt.Altitude) img_number.dot_image = uCtrl_Text_Opt.GetImageDecimalPoint();
+            else img_number.negative_image = uCtrl_Text_Opt.GetImageDecimalPoint();
             img_number.unit = uCtrl_Text_Opt.GetUnit();
             img_number.imperial_unit = uCtrl_Text_Opt.GetUnitMile();
-            img_number.dot_image = uCtrl_Text_Opt.GetImageDecimalPoint();
             img_number.invalid_image = uCtrl_Text_Opt.GetImageError();
             img_number.zero = uCtrl_Text_Opt.checkBox_addZero.Checked;
 
