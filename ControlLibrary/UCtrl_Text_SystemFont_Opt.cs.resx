@@ -124,6 +124,9 @@
     <value>Šířka</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
+    <value>179, 82</value>
+  </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
@@ -189,7 +192,7 @@
   <data name="вставитьToolStripMenuItemX.Text" xml:space="preserve">
     <value>Vložit</value>
   </data>
-  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
     <value>179, 82</value>
   </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -257,9 +260,6 @@
   <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
     <value>Vložit</value>
   </data>
-  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
-    <value>179, 82</value>
-  </data>
   <data name="label01.Size" type="System.Drawing.Size, System.Drawing">
     <value>62, 13</value>
   </data>
@@ -314,13 +314,57 @@
   <data name="label4.Text" xml:space="preserve">
     <value>Obtékání textu</value>
   </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>239, 39</value>
+  </data>
   <data name="label5.Text" xml:space="preserve">
     <value>* Velikost a umístění textu se může lišit od obrázku na hodinkách. Zkontrolujte polohu textu na skutečném zařízení.</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Písmo</value>
   </data>
   <data name="button_AddFont.Text" xml:space="preserve">
     <value>Přidat</value>
   </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Písmo</value>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>205, 26</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>** Při použití písma třetí strany je vhodné restartovat hodinky po instalaci ciferníku.</value>
+  </data>
+  <data name="button_DelFont.Text" xml:space="preserve">
+    <value>Vymazat</value>
+  </data>
+  <data name="checkBox_CentreHorizontally.Size" type="System.Drawing.Size, System.Drawing">
+    <value>83, 30</value>
+  </data>
+  <data name="checkBox_CentreHorizontally.Text" xml:space="preserve">
+    <value>Střed 
+horizontálně</value>
+  </data>
+  <data name="checkBox_CentreVertically.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 30</value>
+  </data>
+  <data name="checkBox_CentreVertically.Text" xml:space="preserve">
+    <value>Střed
+vertikálně</value>
+  </data>
+  <data name="checkBox_addZero.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 17</value>
+  </data>
+  <data name="checkBox_addZero.Text" xml:space="preserve">
+    <value>Přidejte nuly na začátku</value>
+  </data>
+  <data name="checkBox_unit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 17</value>
+  </data>
+  <data name="checkBox_unit.Text" xml:space="preserve">
+    <value>Jednotky</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>232, 39</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>!!! Některá data se nemusí zobrazit (v závislosti na modelu hodinek). Zkontrolujte možnost zobrazení dat na reálném zařízení.</value>
   </data>
 </root>

@@ -314,13 +314,57 @@
   <data name="label4.Text" xml:space="preserve">
     <value>Textumbruch</value>
   </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 52</value>
+  </data>
   <data name="label5.Text" xml:space="preserve">
     <value>* Die Größe und Position des Textes kann von der Abbildung auf der Uhr abweichen. Überprüfen Sie die Position des Textes auf dem echten Gerät.</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Schrift</value>
   </data>
   <data name="button_AddFont.Text" xml:space="preserve">
     <value>Hinzufügen</value>
   </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Schrift</value>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>235, 39</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>** Wenn du eine Schriftart eines Drittanbieters verwendest, wird empfohlen, dass du die Uhr nach der Installation des Zifferblatts neu startest.</value>
+  </data>
+  <data name="button_DelFont.Text" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="checkBox_CentreHorizontally.Size" type="System.Drawing.Size, System.Drawing">
+    <value>76, 30</value>
+  </data>
+  <data name="checkBox_CentreHorizontally.Text" xml:space="preserve">
+    <value>Horizontal 
+zentrieren</value>
+  </data>
+  <data name="checkBox_CentreVertically.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 30</value>
+  </data>
+  <data name="checkBox_CentreVertically.Text" xml:space="preserve">
+    <value>Vertikal 
+zentrieren</value>
+  </data>
+  <data name="checkBox_addZero.Size" type="System.Drawing.Size, System.Drawing">
+    <value>146, 17</value>
+  </data>
+  <data name="checkBox_addZero.Text" xml:space="preserve">
+    <value>Führende Nullen anfügen</value>
+  </data>
+  <data name="checkBox_unit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 17</value>
+  </data>
+  <data name="checkBox_unit.Text" xml:space="preserve">
+    <value>Einheiten</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 52</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>!!! Einige Daten werden möglicherweise nicht angezeigt (abhängig vom Uhrenmodell). Überprüfe, ob die Daten auf dem aktuellen Gerät angezeigt werden können.</value>
   </data>
 </root>

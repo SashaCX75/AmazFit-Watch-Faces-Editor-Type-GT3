@@ -165,4 +165,7 @@
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Vzdálenost</value>
   </data>
+  <data name="button_Number_Font.Text" xml:space="preserve">
+    <value>Data ve fontu</value>
+  </data>
 </root>

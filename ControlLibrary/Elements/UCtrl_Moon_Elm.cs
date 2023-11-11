@@ -1092,6 +1092,5 @@ namespace ControlLibrary
 
             setValue = false;
         }
-
     }
 }

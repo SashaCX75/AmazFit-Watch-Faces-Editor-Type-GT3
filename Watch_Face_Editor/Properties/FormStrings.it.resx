@@ -214,6 +214,12 @@ L'immagine non deve essere monocromatica e deve essere in formato 32bit</value>
   <data name="Message_AnimationAOD_Text" xml:space="preserve">
     <value>Non è possibile aggiungere animazioni alla schermata AOD.</value>
   </data>
+  <data name="Message_ARGB_Line1" xml:space="preserve">
+    <value>La conversione delle immagini nel formato ARGB richiede più tempo.</value>
+  </data>
+  <data name="Message_ARGB_Line2" xml:space="preserve">
+    <value>Sei sicuro di voler convertire le tue immagini nel formato ARGB?</value>
+  </data>
   <data name="Message_ConvertingCompleted_Text" xml:space="preserve">
     <value>Una nuova watch face è stata creata</value>
   </data>

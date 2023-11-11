@@ -1082,7 +1082,19 @@
     <EmbeddedResource Include="Elements\UCtrl_Image_Elm.zh.resx">
       <DependentUpon>UCtrl_Image_Elm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Moon_Elm.cs.resx">
+      <DependentUpon>UCtrl_Moon_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Moon_Elm.de.resx">
+      <DependentUpon>UCtrl_Moon_Elm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Moon_Elm.en.resx">
+      <DependentUpon>UCtrl_Moon_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Moon_Elm.es.resx">
+      <DependentUpon>UCtrl_Moon_Elm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Elements\UCtrl_Moon_Elm.it.resx">
       <DependentUpon>UCtrl_Moon_Elm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Elements\UCtrl_Moon_Elm.uk.resx">

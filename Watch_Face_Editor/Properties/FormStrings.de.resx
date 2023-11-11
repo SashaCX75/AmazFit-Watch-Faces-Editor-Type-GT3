@@ -213,6 +213,12 @@
   <data name="Message_AnimationAOD_Text" xml:space="preserve">
     <value>Sie können dem AOD-Bildschirm keine Animation hinzufügen.</value>
   </data>
+  <data name="Message_ARGB_Line1" xml:space="preserve">
+    <value>Die Konvertierung von Bildern in das ARGB-Format dauert länger.</value>
+  </data>
+  <data name="Message_ARGB_Line2" xml:space="preserve">
+    <value>Bist du sicher, dass du deine Bilder in das ARGB-Format konvertieren willst?</value>
+  </data>
   <data name="Message_ConvertingCompleted_Text" xml:space="preserve">
     <value>Es wurde ein neues Zifferblatt erstellt.</value>
   </data>

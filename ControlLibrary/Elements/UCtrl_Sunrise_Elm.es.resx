@@ -221,4 +221,10 @@
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Amanecer/Atardecer</value>
   </data>
+  <data name="button_Sunrise_Font.Text" xml:space="preserve">
+    <value>Valor por fuente (amanecer)</value>
+  </data>
+  <data name="button_Sunset_Font.Text" xml:space="preserve">
+    <value>Valor por fuente (atardecer)</value>
+  </data>
 </root>

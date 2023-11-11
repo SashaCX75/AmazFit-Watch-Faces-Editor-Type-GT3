@@ -369,9 +369,6 @@
   <data name="Message_Wrong_Preview_Exists" xml:space="preserve">
     <value>Échec de la création de l'image d'aperçu. Peut-être qu'une telle image existe déjà.</value>
   </data>
-  <data name="String1" xml:space="preserve">
-    <value>"?</value>
-  </data>
   <data name="Tip_Background" xml:space="preserve">
     <value>Fond</value>
   </data>

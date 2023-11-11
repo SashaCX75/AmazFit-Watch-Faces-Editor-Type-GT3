@@ -157,4 +157,10 @@
   <data name="button_Sunset_rotation.Text" xml:space="preserve">
     <value>Hodnota úhlu (západ slunce)</value>
   </data>
+  <data name="button_Sunrise_Font.Text" xml:space="preserve">
+    <value>Data ve fontu (východ slunce)</value>
+  </data>
+  <data name="button_Sunset_Font.Text" xml:space="preserve">
+    <value>Data ve fontu (západ slunce)</value>
+  </data>
 </root>

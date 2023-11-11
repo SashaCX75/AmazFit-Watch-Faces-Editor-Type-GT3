@@ -124,9 +124,6 @@
     <value>Larghezza</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
-    <value>184, 82</value>
-  </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAfxJREFUOE9j
@@ -192,7 +189,7 @@
   <data name="вставитьToolStripMenuItemX.Text" xml:space="preserve">
     <value>Incolla</value>
   </data>
-  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 82</value>
   </data>
   <data name="вставитьКоординатуYToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -260,6 +257,9 @@
   <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
     <value>Incolla</value>
   </data>
+  <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
+    <value>184, 82</value>
+  </data>
   <data name="label01.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 13</value>
   </data>
@@ -314,13 +314,61 @@
   <data name="label4.Text" xml:space="preserve">
     <value>Disposizione del testo</value>
   </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 488</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>238, 39</value>
+  </data>
   <data name="label5.Text" xml:space="preserve">
     <value>* La dimensione e la posizione del testo possono differire dalla realtà. Controlla il testo sul dispositivo.</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Font</value>
   </data>
   <data name="button_AddFont.Text" xml:space="preserve">
     <value>Aggiungere</value>
   </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Font</value>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>236, 39</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>** Quando si utilizza un carattere di terze parti, si consiglia di riavviare l'orologio dopo aver installato il quadrante.</value>
+  </data>
+  <data name="button_DelFont.Text" xml:space="preserve">
+    <value>Eliminare</value>
+  </data>
+  <data name="checkBox_CentreHorizontally.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 30</value>
+  </data>
+  <data name="checkBox_CentreHorizontally.Text" xml:space="preserve">
+    <value>Centrare 
+orizzontalmente</value>
+  </data>
+  <data name="checkBox_CentreVertically.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 30</value>
+  </data>
+  <data name="checkBox_CentreVertically.Text" xml:space="preserve">
+    <value>Centrare 
+verticalmente</value>
+  </data>
+  <data name="checkBox_addZero.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 17</value>
+  </data>
+  <data name="checkBox_addZero.Text" xml:space="preserve">
+    <value>Aggiungi zeri iniziali</value>
+  </data>
+  <data name="checkBox_unit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 17</value>
+  </data>
+  <data name="checkBox_unit.Text" xml:space="preserve">
+    <value>Unità</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>239, 65</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>
+!!! Alcuni dati potrebbero non essere visualizzati (a seconda del modello di orologio). Verificare se i dati possono essere visualizzati sul dispositivo reale.</value>
   </data>
 </root>

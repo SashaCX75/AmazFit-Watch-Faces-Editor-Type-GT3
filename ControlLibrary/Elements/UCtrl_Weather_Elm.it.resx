@@ -212,4 +212,16 @@
   <data name="button_Text_Min_rotation.Text" xml:space="preserve">
     <value>Valore angolare (min)</value>
   </data>
+  <data name="button_Number_Font.Text" xml:space="preserve">
+    <value>Valore per carattere</value>
+  </data>
+  <data name="button_Number_Max_Font.Text" xml:space="preserve">
+    <value>Valore per carattere (max)</value>
+  </data>
+  <data name="button_Number_Min_Font.Text" xml:space="preserve">
+    <value>Valore per carattere (min)</value>
+  </data>
+  <data name="button_Number_Min_Max_Font.Text" xml:space="preserve">
+    <value>Valore per carattere (min/max)</value>
+  </data>
 </root>

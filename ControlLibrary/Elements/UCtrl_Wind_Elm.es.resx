@@ -173,4 +173,7 @@ SO - suroeste
 W - oeste
 NW - noroeste</value>
   </data>
+  <data name="button_Number_Font.Text" xml:space="preserve">
+    <value>Valor por fuente</value>
+  </data>
 </root>
