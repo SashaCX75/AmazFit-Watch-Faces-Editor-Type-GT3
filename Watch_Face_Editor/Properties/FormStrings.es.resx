@@ -213,6 +213,12 @@
   <data name="Message_AnimationAOD_Text" xml:space="preserve">
     <value>No puede agregar animación a la pantalla AOD.</value>
   </data>
+  <data name="Message_ARGB_Line1" xml:space="preserve">
+    <value>Convertir imágenes al formato ARGB lleva más tiempo.</value>
+  </data>
+  <data name="Message_ARGB_Line2" xml:space="preserve">
+    <value>¿Estás seguro de que quieres convertir tus imágenes al formato ARGB?</value>
+  </data>
   <data name="Message_ConvertingCompleted_Text" xml:space="preserve">
     <value>Se ha creado una nueva esfera de reloj.</value>
   </data>

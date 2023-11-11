@@ -173,4 +173,7 @@ SW - Südwesten
 W - Westen
 NW - Nordwesten</value>
   </data>
+  <data name="button_Number_Font.Text" xml:space="preserve">
+    <value>Wert mit Schriftart</value>
+  </data>
 </root>

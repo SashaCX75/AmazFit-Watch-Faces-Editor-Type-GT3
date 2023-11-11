@@ -158,4 +158,16 @@
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Barometr</value>
   </data>
+  <data name="button_Number.Text" xml:space="preserve">
+    <value>Digitální hodnoty (tlak)</value>
+  </data>
+  <data name="button_Number_Font.Text" xml:space="preserve">
+    <value>Data ve fontu (tlak)</value>
+  </data>
+  <data name="button_Number_Target.Text" xml:space="preserve">
+    <value>Digitální hodnoty (výška)</value>
+  </data>
+  <data name="button_Number_Target_Font.Text" xml:space="preserve">
+    <value>Data ve fontu (výška)</value>
+  </data>
 </root>

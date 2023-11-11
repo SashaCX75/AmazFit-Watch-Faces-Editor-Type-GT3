@@ -228,4 +228,10 @@
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Sonne</value>
   </data>
+  <data name="button_Sunrise_Font.Text" xml:space="preserve">
+    <value>Wert mit Schriftart (Aufgang)</value>
+  </data>
+  <data name="button_Sunset_Font.Text" xml:space="preserve">
+    <value>Wert mit Schriftart (Untergang)</value>
+  </data>
 </root>

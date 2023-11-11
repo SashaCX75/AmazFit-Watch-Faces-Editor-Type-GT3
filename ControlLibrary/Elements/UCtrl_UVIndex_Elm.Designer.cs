@@ -57,6 +57,10 @@ namespace ControlLibrary
             resources.ApplyResources(this.button_ElementName, "button_ElementName");
             this.button_ElementName.Image = global::ControlLibrary.Properties.Resources.UVIndex;
             // 
+            // checkBox_Number_Font
+            // 
+            resources.ApplyResources(this.checkBox_Number_Font, "checkBox_Number_Font");
+            // 
             // UCtrl_UVIndex_Elm
             // 
             resources.ApplyResources(this, "$this");

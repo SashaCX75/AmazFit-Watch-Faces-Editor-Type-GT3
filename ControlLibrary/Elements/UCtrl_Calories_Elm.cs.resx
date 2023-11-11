@@ -187,4 +187,10 @@
   <data name="button_Text_rotation_Target.Text" xml:space="preserve">
     <value>Data úhlu (cíl)</value>
   </data>
+  <data name="button_Number_Font.Text" xml:space="preserve">
+    <value>Data ve fontu</value>
+  </data>
+  <data name="button_Number_Target_Font.Text" xml:space="preserve">
+    <value>Data ve fontu (cíl)</value>
+  </data>
 </root>

@@ -681,7 +681,7 @@ Paypal: sashacx75@gmail.com</value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACm
-        DQAAAk1TRnQBSQFMAgEBBgEAAeABLQHkAS0BEAEAARABAAT/AQkBEAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        DQAAAk1TRnQBSQFMAgEBBgEAAeABLQHoAS0BEAEAARABAAT/AQkBEAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -2004,5 +2004,38 @@ Paypal: sashacx75@gmail.com</value>
         AAAAAAAAAAAAAO+BPCbvgT1I74I+SO+BPSYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD8PwAA4AcAAMAD
         AACAAQAAgAEAAIABAAAAAAAAAAAAAAAAAAAAAAAAgAEAAIABAACAAQAAwAMAAOAHAAD8PwAA
 </value>
+  </data>
+  <data name="button_SavePNG_button.Text" xml:space="preserve">
+    <value>Guardar vista previa de los botones</value>
+  </data>
+  <data name="checkBox_Buttons_Area.Text" xml:space="preserve">
+    <value>Cuadrícula de puntos</value>
+  </data>
+  <data name="checkBox_Buttons_Border.Text" xml:space="preserve">
+    <value>Mostrar marco alrededor del botón</value>
+  </data>
+  <data name="checkBox_Buttons_In_Gif.Text" xml:space="preserve">
+    <value>Resaltar botones al guardar un archivo gif</value>
+  </data>
+  <data name="checkBox_Show_Buttons.Text" xml:space="preserve">
+    <value>Resaltar áreas de botones</value>
+  </data>
+  <data name="checkBox_Use_ARGB.Text" xml:space="preserve">
+    <value>Convertir imágenes al formato ARGB</value>
+  </data>
+  <data name="comboBox_AddAir.Items7" xml:space="preserve">
+    <value>Luna</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Tipo de resaltado de botón</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>Convierte imágenes sin pérdida de calidad</value>
+  </data>
+  <data name="radioButton_ARGB_color.Text" xml:space="preserve">
+    <value>Sólo con el número de colores especificado</value>
+  </data>
+  <data name="radioButton_ARGB_forced.Text" xml:space="preserve">
+    <value>Forzar el uso del formato ARGB</value>
   </data>
 </root>

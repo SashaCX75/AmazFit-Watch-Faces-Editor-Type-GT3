@@ -161,4 +161,7 @@
   <data name="button_Segments.Text" xml:space="preserve">
     <value>Imágenes independientes</value>
   </data>
+  <data name="button_Number_Font.Text" xml:space="preserve">
+    <value>Valor por fuente</value>
+  </data>
 </root>

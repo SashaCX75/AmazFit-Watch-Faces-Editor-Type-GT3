@@ -161,4 +161,7 @@
   <data name="button_Segments.Text" xml:space="preserve">
     <value>Eigenständige Bilder</value>
   </data>
+  <data name="button_Number_Font.Text" xml:space="preserve">
+    <value>Wert mit Schriftart</value>
+  </data>
 </root>

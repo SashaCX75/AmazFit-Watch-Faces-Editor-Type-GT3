@@ -183,4 +183,7 @@
   <data name="button_Text_rotation_Target.Text" xml:space="preserve">
     <value>Valor en ángulo (semana)</value>
   </data>
+  <data name="button_Number_Target_Font.Text" xml:space="preserve">
+    <value>Valor por fuente (semana)</value>
+  </data>
 </root>

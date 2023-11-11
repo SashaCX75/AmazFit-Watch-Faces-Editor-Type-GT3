@@ -189,4 +189,7 @@
   <data name="button_Text_rotation_Target.Text" xml:space="preserve">
     <value>Dati angolari (settimana)</value>
   </data>
+  <data name="button_Number_Target_Font.Text" xml:space="preserve">
+    <value>Valore per carattere (settimana)</value>
+  </data>
 </root>

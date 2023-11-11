@@ -213,6 +213,12 @@
   <data name="Message_AnimationAOD_Text" xml:space="preserve">
     <value>Na obrazovku AOD nelze přidat animaci.</value>
   </data>
+  <data name="Message_ARGB_Line1" xml:space="preserve">
+    <value>Převod obrázků do formátu ARGB trvá déle.</value>
+  </data>
+  <data name="Message_ARGB_Line2" xml:space="preserve">
+    <value>Opravdu chcete převést obrázky do formátu ARGB?</value>
+  </data>
   <data name="Message_ConvertingCompleted_Text" xml:space="preserve">
     <value>Byl vytvořen nový ciferník.</value>
   </data>

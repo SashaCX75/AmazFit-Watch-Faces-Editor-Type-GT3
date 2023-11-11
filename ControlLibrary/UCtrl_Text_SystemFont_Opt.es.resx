@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label08.Text" xml:space="preserve">
+    <value>Altura</value>
+  </data>
+  <data name="label07.Text" xml:space="preserve">
+    <value>Ancho</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="вставитьКоординатуХToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -134,6 +140,9 @@
   </data>
   <data name="вставитьКоординатуХToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 26</value>
+  </data>
+  <data name="вставитьКоординатуХToolStripMenuItem.Text" xml:space="preserve">
+    <value>Pegar coordenada X</value>
   </data>
   <data name="копироватьToolStripMenuItemX.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -153,6 +162,9 @@
   </data>
   <data name="копироватьToolStripMenuItemX.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 26</value>
+  </data>
+  <data name="копироватьToolStripMenuItemX.Text" xml:space="preserve">
+    <value>Copiar</value>
   </data>
   <data name="вставитьToolStripMenuItemX.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -174,6 +186,9 @@
   <data name="вставитьToolStripMenuItemX.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 26</value>
   </data>
+  <data name="вставитьToolStripMenuItemX.Text" xml:space="preserve">
+    <value>Pegar</value>
+  </data>
   <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
     <value>185, 82</value>
   </data>
@@ -194,6 +209,9 @@
   <data name="вставитьКоординатуYToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 26</value>
   </data>
+  <data name="вставитьКоординатуYToolStripMenuItem.Text" xml:space="preserve">
+    <value>Pegar coordenada Y</value>
+  </data>
   <data name="копироватьToolStripMenuItemY.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAnJJREFUOE+l
@@ -212,6 +230,9 @@
   </data>
   <data name="копироватьToolStripMenuItemY.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 26</value>
+  </data>
+  <data name="копироватьToolStripMenuItemY.Text" xml:space="preserve">
+    <value>Copiar</value>
   </data>
   <data name="вставитьToolStripMenuItemY.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -233,11 +254,23 @@
   <data name="вставитьToolStripMenuItemY.Size" type="System.Drawing.Size, System.Drawing">
     <value>184, 26</value>
   </data>
+  <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
+    <value>Pegar</value>
+  </data>
   <data name="contextMenuStrip_Y.Size" type="System.Drawing.Size, System.Drawing">
     <value>185, 82</value>
   </data>
   <data name="label01.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 13</value>
+  </data>
+  <data name="label01.Text" xml:space="preserve">
+    <value>Coordenadas</value>
+  </data>
+  <data name="label06.Text" xml:space="preserve">
+    <value>Espaciado</value>
+  </data>
+  <data name="label05.Text" xml:space="preserve">
+    <value>Tamaño</value>
   </data>
   <data name="comboBox_alignmentHorizontal.Items" xml:space="preserve">
     <value>Izquierda</value>
@@ -248,6 +281,9 @@
   <data name="comboBox_alignmentHorizontal.Items2" xml:space="preserve">
     <value>Derecho</value>
   </data>
+  <data name="label09.Text" xml:space="preserve">
+    <value>Alineamiento horizontal</value>
+  </data>
   <data name="comboBox_alignmentVertical.Items" xml:space="preserve">
     <value>Top</value>
   </data>
@@ -256,33 +292,6 @@
   </data>
   <data name="comboBox_alignmentVertical.Items2" xml:space="preserve">
     <value>Fondo</value>
-  </data>
-  <data name="comboBox_textStyle.Items" xml:space="preserve">
-    <value>Desplazamiento de texto</value>
-  </data>
-  <data name="comboBox_textStyle.Items1" xml:space="preserve">
-    <value>Ajuste de línea</value>
-  </data>
-  <data name="comboBox_textStyle.Items2" xml:space="preserve">
-    <value>Linea sola</value>
-  </data>
-  <data name="label01.Text" xml:space="preserve">
-    <value>Coordenadas</value>
-  </data>
-  <data name="label05.Text" xml:space="preserve">
-    <value>Tamaño</value>
-  </data>
-  <data name="label06.Text" xml:space="preserve">
-    <value>Espaciado</value>
-  </data>
-  <data name="label07.Text" xml:space="preserve">
-    <value>Ancho</value>
-  </data>
-  <data name="label08.Text" xml:space="preserve">
-    <value>Altura</value>
-  </data>
-  <data name="label09.Text" xml:space="preserve">
-    <value>Alineamiento horizontal</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>Alineamiento vertical</value>
@@ -293,34 +302,69 @@
   <data name="label3.Text" xml:space="preserve">
     <value>Espaciado entre líneas</value>
   </data>
+  <data name="comboBox_textStyle.Items" xml:space="preserve">
+    <value>Desplazamiento de texto</value>
+  </data>
+  <data name="comboBox_textStyle.Items1" xml:space="preserve">
+    <value>Ajuste de línea</value>
+  </data>
+  <data name="comboBox_textStyle.Items2" xml:space="preserve">
+    <value>Linea sola</value>
+  </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Ajuste de texto</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>239, 39</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>* El tamaño y la posición del texto pueden diferir de la imagen del reloj. Comprueba la posición del texto en el dispositivo real.</value>
   </data>
-  <data name="вставитьToolStripMenuItemX.Text" xml:space="preserve">
-    <value>Pegar</value>
-  </data>
-  <data name="вставитьToolStripMenuItemY.Text" xml:space="preserve">
-    <value>Pegar</value>
-  </data>
-  <data name="вставитьКоординатуYToolStripMenuItem.Text" xml:space="preserve">
-    <value>Pegar coordenada Y</value>
-  </data>
-  <data name="вставитьКоординатуХToolStripMenuItem.Text" xml:space="preserve">
-    <value>Pegar coordenada X</value>
-  </data>
-  <data name="копироватьToolStripMenuItemX.Text" xml:space="preserve">
-    <value>Copiar</value>
-  </data>
-  <data name="копироватьToolStripMenuItemY.Text" xml:space="preserve">
-    <value>Copiar</value>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Fuente</value>
   </data>
   <data name="button_AddFont.Text" xml:space="preserve">
     <value>Agregar</value>
   </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Fuente</value>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>239, 39</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>** Cuando utilice una fuente de terceros, se recomienda reiniciar el reloj después de instalar la esfera.</value>
+  </data>
+  <data name="button_DelFont.Text" xml:space="preserve">
+    <value>Borrar   </value>
+  </data>
+  <data name="checkBox_CentreHorizontally.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 30</value>
+  </data>
+  <data name="checkBox_CentreHorizontally.Text" xml:space="preserve">
+    <value>Centrar 
+horizontalmente</value>
+  </data>
+  <data name="checkBox_CentreVertically.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 30</value>
+  </data>
+  <data name="checkBox_CentreVertically.Text" xml:space="preserve">
+    <value>Centrar 
+verticalmente</value>
+  </data>
+  <data name="checkBox_addZero.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 17</value>
+  </data>
+  <data name="checkBox_addZero.Text" xml:space="preserve">
+    <value>Añadir ceros a la izquierda</value>
+  </data>
+  <data name="checkBox_unit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 17</value>
+  </data>
+  <data name="checkBox_unit.Text" xml:space="preserve">
+    <value>Unidades</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>235, 39</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>!!! Es posible que algunos datos no se muestren (según el modelo de reloj). Compruebe si los datos se pueden mostrar en el dispositivo real.</value>
   </data>
 </root>

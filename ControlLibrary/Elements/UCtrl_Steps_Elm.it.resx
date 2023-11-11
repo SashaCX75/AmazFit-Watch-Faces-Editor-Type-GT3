@@ -177,4 +177,10 @@
   <data name="button_Text_rotation_Target.Text" xml:space="preserve">
     <value>Dati angolari (target)</value>
   </data>
+  <data name="button_Number_Font.Text" xml:space="preserve">
+    <value>Valore per carattere</value>
+  </data>
+  <data name="button_Number_Target_Font.Text" xml:space="preserve">
+    <value>Valore per carattere (target)</value>
+  </data>
 </root>

@@ -212,4 +212,16 @@
   <data name="button_Text_Min_rotation.Text" xml:space="preserve">
     <value>Daten im Winkel (min)</value>
   </data>
+  <data name="button_Number_Font.Text" xml:space="preserve">
+    <value>Wert mit Schriftart</value>
+  </data>
+  <data name="button_Number_Max_Font.Text" xml:space="preserve">
+    <value>Wert mit Schriftart (max)</value>
+  </data>
+  <data name="button_Number_Min_Font.Text" xml:space="preserve">
+    <value>Wert mit Schriftart (min)</value>
+  </data>
+  <data name="button_Number_Min_Max_Font.Text" xml:space="preserve">
+    <value>Wert mit Schriftart (min/max)</value>
+  </data>
 </root>

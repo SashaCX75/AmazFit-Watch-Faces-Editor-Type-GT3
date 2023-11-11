@@ -130,6 +130,9 @@
   <data name="numericUpDown_LineSpace.Size" type="System.Drawing.Size, System.Drawing">
     <value>40, 20</value>
   </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Межстрочный интервал</value>
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label04.TabIndex" type="System.Int32, mscorlib">
     <value>150</value>
@@ -192,9 +195,6 @@
   <data name="checkBox_CentreHorizontally.TabIndex" type="System.Int32, mscorlib">
     <value>178</value>
   </data>
-  <data name="checkBox_CentreVertically.TabIndex" type="System.Int32, mscorlib">
-    <value>179</value>
-  </data>
   <data name="&gt;&gt;label09.Name" xml:space="preserve">
     <value>label09</value>
   </data>
@@ -231,8 +231,8 @@
   <data name="label03.Text" xml:space="preserve">
     <value>X:</value>
   </data>
-  <data name="checkBox_addZero.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 17</value>
+  <data name="checkBox_CentreVertically.TabIndex" type="System.Int32, mscorlib">
+    <value>179</value>
   </data>
   <data name="numericUpDown_Y.Location" type="System.Drawing.Point, System.Drawing">
     <value>93, 23</value>
@@ -323,6 +323,9 @@
   <data name="&gt;&gt;button_DelFont.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
+  <data name="checkBox_addZero.Size" type="System.Drawing.Size, System.Drawing">
+    <value>155, 17</value>
+  </data>
   <data name="label03.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 25</value>
   </data>
@@ -358,9 +361,6 @@
   </data>
   <data name="label01.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
-  </data>
-  <data name="numericUpDown_Size.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 20</value>
   </data>
   <data name="&gt;&gt;label06.Parent" xml:space="preserve">
     <value>$this</value>
@@ -904,8 +904,8 @@
   <data name="contextMenuStrip_X.Size" type="System.Drawing.Size, System.Drawing">
     <value>204, 82</value>
   </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Межстрочный интервал</value>
+  <data name="numericUpDown_Size.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 20</value>
   </data>
   <data name="label08.Text" xml:space="preserve">
     <value>Высота</value>
