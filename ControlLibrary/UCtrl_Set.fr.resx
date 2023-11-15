@@ -248,25 +248,27 @@
     <value>Température minimale</value>
   </data>
   <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
-    <value>158, 73</value>
+    <value>136, 73</value>
   </data>
   <data name="label20.Size" type="System.Drawing.Size, System.Drawing">
     <value>90, 28</value>
   </data>
   <data name="label20.Text" xml:space="preserve">
-    <value>pression atmosphérique</value>
+    <value>Pression atmosphérique</value>
   </data>
   <data name="label19.Text" xml:space="preserve">
     <value>Altitude</value>
   </data>
   <data name="label18.Text" xml:space="preserve">
-    <value>Force du vent</value>
+    <value>Force 
+du vent</value>
   </data>
   <data name="label17.Text" xml:space="preserve">
     <value>Humidité</value>
   </data>
   <data name="label16.Text" xml:space="preserve">
-    <value>Qualité de l'air</value>
+    <value>Qualité 
+de l'air</value>
   </data>
   <data name="label15.Text" xml:space="preserve">
     <value>Indice UV</value>
@@ -305,7 +307,8 @@
     <value>Échauffement</value>
   </data>
   <data name="label08.Text" xml:space="preserve">
-    <value>Objectif de pas</value>
+    <value>Objectif 
+de pas</value>
   </data>
   <data name="label07.Text" xml:space="preserve">
     <value>Pas</value>

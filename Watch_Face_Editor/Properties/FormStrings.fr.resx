@@ -120,6 +120,9 @@
   <data name="Dialog_FontFilter" xml:space="preserve">
     <value>Fichier de police (*.ttf) | *.ttf</value>
   </data>
+  <data name="Dialog_Title_Dial_Settings" xml:space="preserve">
+    <value>Sélectionnez le fichier de paramètres du cadran</value>
+  </data>
   <data name="Dialog_Title_Font_Add" xml:space="preserve">
     <value>Selectionner le fichier de police</value>
   </data>

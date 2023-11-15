@@ -129,6 +129,9 @@
   <data name="SystemFont" xml:space="preserve">
     <value>Police système</value>
   </data>
+  <data name="UCtrl_Text_Opt_Altitude_true" xml:space="preserve">
+    <value>Symbole "-"</value>
+  </data>
   <data name="UCtrl_Text_Opt_Sunrise_false" xml:space="preserve">
     <value>Séparateur décimal</value>
   </data>

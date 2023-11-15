@@ -201,15 +201,27 @@
     <value>Météo</value>
   </data>
   <data name="button_Text_Max_circle.Text" xml:space="preserve">
-    <value>Valeur en cercle (Max)</value>
+    <value>Valeur en cercle (max)</value>
   </data>
   <data name="button_Text_Max_rotation.Text" xml:space="preserve">
-    <value>Valeur de l'angle (Max)</value>
+    <value>Valeur de l'angle (max)</value>
   </data>
   <data name="button_Text_Min_circle.Text" xml:space="preserve">
-    <value>Valeur en cercle (Min)</value>
+    <value>Valeur en cercle (min)</value>
   </data>
   <data name="button_Text_Min_rotation.Text" xml:space="preserve">
-    <value>Valeur de l'angle (Min)</value>
+    <value>Valeur de l'angle (min)</value>
+  </data>
+  <data name="button_Number_Font.Text" xml:space="preserve">
+    <value>Valeur en police</value>
+  </data>
+  <data name="button_Number_Max_Font.Text" xml:space="preserve">
+    <value>Valeur en police (max)</value>
+  </data>
+  <data name="button_Number_Min_Font.Text" xml:space="preserve">
+    <value>Valeur en police (min)</value>
+  </data>
+  <data name="button_Number_Min_Max_Font.Text" xml:space="preserve">
+    <value>Valeur en police (min/max)</value>
   </data>
 </root>

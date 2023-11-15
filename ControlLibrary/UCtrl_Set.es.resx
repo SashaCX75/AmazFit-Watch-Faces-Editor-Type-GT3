@@ -118,7 +118,8 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="label1.Text" xml:space="preserve">
-    <value>Dirección del viento</value>
+    <value>Dirección 
+del viento</value>
   </data>
   <data name="comboBox_WindDirection.Items" xml:space="preserve">
     <value>N - norte</value>
@@ -245,13 +246,15 @@
     <value>Temperatura mínima</value>
   </data>
   <data name="label20.Text" xml:space="preserve">
-    <value>Presión del aire</value>
+    <value>Presión 
+del aire</value>
   </data>
   <data name="label19.Text" xml:space="preserve">
     <value>Altitud</value>
   </data>
   <data name="label18.Text" xml:space="preserve">
-    <value>Fuerza del viento</value>
+    <value>Fuerza 
+del viento</value>
   </data>
   <data name="label17.Text" xml:space="preserve">
     <value>Humedad</value>
@@ -272,7 +275,7 @@
     <value>No molestar</value>
   </data>
   <data name="checkBox_Lock_Set.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 18</value>
+    <value>71, 18</value>
   </data>
   <data name="checkBox_Lock_Set.Text" xml:space="preserve">
     <value>Bloqueo</value>
@@ -284,7 +287,8 @@
     <value>Alarma</value>
   </data>
   <data name="label13.Text" xml:space="preserve">
-    <value>La quema de grasa</value>
+    <value>La quema 
+de grasa</value>
   </data>
   <data name="label11.Text" xml:space="preserve">
     <value>Estrés</value>
@@ -293,7 +297,8 @@
     <value>Levantarse</value>
   </data>
   <data name="label08.Text" xml:space="preserve">
-    <value>Objetivo de pasos</value>
+    <value>Objetivo 
+de pasos</value>
   </data>
   <data name="label07.Text" xml:space="preserve">
     <value>Pasos</value>

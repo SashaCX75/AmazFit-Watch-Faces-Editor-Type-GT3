@@ -158,4 +158,16 @@
   <data name="button_ElementName.Text" xml:space="preserve">
     <value>Baromètre</value>
   </data>
+  <data name="button_Number.Text" xml:space="preserve">
+    <value>Valeurs numériques (pression)</value>
+  </data>
+  <data name="button_Number_Font.Text" xml:space="preserve">
+    <value>Données en police (pression)</value>
+  </data>
+  <data name="button_Number_Target.Text" xml:space="preserve">
+    <value>Valeurs numériques (altitude)</value>
+  </data>
+  <data name="button_Number_Target_Font.Text" xml:space="preserve">
+    <value>Valeur en police (altitude)</value>
+  </data>
 </root>
