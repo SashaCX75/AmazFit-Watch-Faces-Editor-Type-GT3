@@ -190,6 +190,6 @@
     <value>Dati angolari (settimana)</value>
   </data>
   <data name="button_Number_Target_Font.Text" xml:space="preserve">
-    <value>Valore per carattere (settimana)</value>
+    <value>Valore per font (settimana)</value>
   </data>
 </root>

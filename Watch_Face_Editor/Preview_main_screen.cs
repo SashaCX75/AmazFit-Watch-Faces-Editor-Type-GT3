@@ -615,11 +615,10 @@ namespace Watch_Face_Editor
                     int time_spasing = 0;
                     bool am_pm = false;
 
-                    // определяем формат времени fm/pm
-                    if (DigitalTime.AmPm != null && DigitalTime.AmPm.am_img != null
-                            && DigitalTime.AmPm.am_img.Length > 0 && DigitalTime.AmPm.pm_img != null
-                            && DigitalTime.AmPm.pm_img.Length > 0 &&
-                            DigitalTime.AmPm.visible && checkBox_ShowIn12hourFormat.Checked) am_pm = true;
+                    // определяем формат времени m/pm
+                    if (DigitalTime.AmPm != null && DigitalTime.AmPm.visible && checkBox_ShowIn12hourFormat.Checked && 
+                        DigitalTime.AmPm.am_img != null && DigitalTime.AmPm.am_img.Length > 0 && 
+                        DigitalTime.AmPm.pm_img != null && DigitalTime.AmPm.pm_img.Length > 0) am_pm = true;
 
                     for (int index = 1; index <= 15; index++)
                     {
@@ -791,6 +790,14 @@ namespace Watch_Face_Editor
                             bool unit_in_alignment = DigitalTime.Hour_rotation.unit_in_alignment;
 
                             int value = WatchFacePreviewSet.Time.Hours;
+                            if (ProgramSettings.ShowIn12hourFormat && DigitalTime.AmPm != null)
+                            {
+                                if (am_pm)
+                                {
+                                    if (value > 11) value -= 12;
+                                    if (value == 0) value = 12;
+                                }
+                            }
                             string valueStr = value.ToString();
                             if (addZero) valueStr = valueStr.PadLeft(2, '0');
 
@@ -863,6 +870,14 @@ namespace Watch_Face_Editor
                             bool unit_in_alignment = DigitalTime.Hour_circle.unit_in_alignment;
 
                             int value = WatchFacePreviewSet.Time.Hours;
+                            if (ProgramSettings.ShowIn12hourFormat && DigitalTime.AmPm != null)
+                            {
+                                if (am_pm)
+                                {
+                                    if (value > 11) value -= 12;
+                                    if (value == 0) value = 12;
+                                }
+                            }
                             string valueStr = value.ToString();
                             if (addZero) valueStr = valueStr.PadLeft(2, '0');
 

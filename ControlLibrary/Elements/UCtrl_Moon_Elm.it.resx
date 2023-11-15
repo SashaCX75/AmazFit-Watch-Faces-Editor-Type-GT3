@@ -122,13 +122,13 @@
     <value>200, 24</value>
   </data>
   <data name="button_Sunrise_Font.Text" xml:space="preserve">
-    <value>Valore per carattere (sorgere della luna)</value>
+    <value>Valore per font (sorgere)</value>
   </data>
   <data name="button_Sunset_Font.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 24</value>
   </data>
   <data name="button_Sunset_Font.Text" xml:space="preserve">
-    <value>Valore per carattere (tramonto della luna)</value>
+    <value>Valore per font (tramonto)</value>
   </data>
   <data name="button_Images.Text" xml:space="preserve">
     <value>Immagini</value>
@@ -140,16 +140,20 @@
     <value>200, 24</value>
   </data>
   <data name="button_Sunset.Text" xml:space="preserve">
-    <value>Valori numerici (tramonto della luna)</value>
+    <value>Valori numerici (tramonto)</value>
   </data>
   <data name="button_Sunrise.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 24</value>
   </data>
   <data name="button_Sunrise.Text" xml:space="preserve">
-    <value>Valori numerici (sorgere della luna)</value>
+    <value>Valori numerici (sorgere)</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="button_Sunset_Sunrise.Font" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
   <data name="button_Sunset_Sunrise.Text" xml:space="preserve">
-    <value>Valori numerici (sorgere/tramonto della luna)</value>
+    <value>Valori numerici (sorg./tram.)</value>
   </data>
   <data name="button_Icon.Text" xml:space="preserve">
     <value>Icona</value>

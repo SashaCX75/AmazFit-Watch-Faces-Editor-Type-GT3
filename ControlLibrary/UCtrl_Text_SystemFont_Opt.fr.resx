@@ -314,13 +314,57 @@
   <data name="label4.Text" xml:space="preserve">
     <value>Format du texte</value>
   </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>233, 39</value>
+  </data>
   <data name="label5.Text" xml:space="preserve">
     <value>* La taille et la position du texte peuvent différer de l'image sur la montre. Vérifiez la position du texte sur l'appareil réel.</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>Police</value>
   </data>
   <data name="button_AddFont.Text" xml:space="preserve">
     <value>Ajouter</value>
   </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Police</value>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 39</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>** Lors de l'utilisation d'une police tierce, il est conseillé de redémarrer la montre après avoir installé le cadran de la montre.</value>
+  </data>
+  <data name="button_DelFont.Text" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="checkBox_CentreHorizontally.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 30</value>
+  </data>
+  <data name="checkBox_CentreHorizontally.Text" xml:space="preserve">
+    <value>Centre
+horizontalement</value>
+  </data>
+  <data name="checkBox_CentreVertically.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 30</value>
+  </data>
+  <data name="checkBox_CentreVertically.Text" xml:space="preserve">
+    <value>Centre
+verticalement</value>
+  </data>
+  <data name="checkBox_addZero.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 17</value>
+  </data>
+  <data name="checkBox_addZero.Text" xml:space="preserve">
+    <value>Ajouter des zéros non significatifs</value>
+  </data>
+  <data name="checkBox_unit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 17</value>
+  </data>
+  <data name="checkBox_unit.Text" xml:space="preserve">
+    <value>Unités</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>236, 52</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>!!! Certaines données peuvent ne pas être affichées (selon le modèle de montre). Vérifiez la possibilité d'afficher les données sur un appareil réel.</value>
   </data>
 </root>

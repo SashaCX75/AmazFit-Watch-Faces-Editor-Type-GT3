@@ -130,7 +130,7 @@
     <value>Valeurs numériques</value>
   </data>
   <data name="button_Number_Target.Text" xml:space="preserve">
-    <value>Valeurs numériques (cible)</value>
+    <value>Valeurs numériques (objectif)</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="button_Pointer.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
@@ -170,5 +170,11 @@
   </data>
   <data name="button_Text_rotation_Target.Text" xml:space="preserve">
     <value>Valeur de l'angle (objectif)</value>
+  </data>
+  <data name="button_Number_Font.Text" xml:space="preserve">
+    <value>Valeur en police</value>
+  </data>
+  <data name="button_Number_Target_Font.Text" xml:space="preserve">
+    <value>Valeur en police (objectif)</value>
   </data>
 </root>

@@ -165,4 +165,7 @@
   <data name="button_Text_rotation.Text" xml:space="preserve">
     <value>Valeur de l'angle</value>
   </data>
+  <data name="button_Number_Font.Text" xml:space="preserve">
+    <value>Valeur en police</value>
+  </data>
 </root>

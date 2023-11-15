@@ -117,63 +117,41 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="button_Sunrise_Font.Text" xml:space="preserve">
+    <value>Valeur en police (lever de Lune)</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="button_Sunset_Font.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 24</value>
+  </data>
+  <data name="button_Sunset_Font.Text" xml:space="preserve">
+    <value>Valeur en police (coucher de Lune)</value>
+  </data>
   <data name="button_Images.Text" xml:space="preserve">
     <value>Images</value>
   </data>
-  <data name="button_Segments.Text" xml:space="preserve">
-    <value>Images indépendantes</value>
-  </data>
-  <data name="button_Number.Text" xml:space="preserve">
-    <value>Valeurs numériques</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="button_Pointer.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGeYUxB9wAAACBjSFJNAACH
-        EAAAjBIAAP1NAACBPgAAWesAARIPAAA85gAAGc66ySIyAAABJmlDQ1BBZG9iZSBSR0IgKDE5OTgpAAAo
-        z2NgYDJwdHFyZRJgYMjNKykKcndSiIiMUmA/z8DGwMwABonJxQWOAQE+IHZefl4qAwb4do2BEURf1gWZ
-        xUAa4EouKCoB0n+A2CgltTiZgYHRAMjOLi8pAIozzgGyRZKywewNIHZRSJAzkH0EyOZLh7CvgNhJEPYT
-        ELsI6Akg+wtIfTqYzcQBNgfClgGxS1IrQPYyOOcXVBZlpmeUKBhaWloqOKbkJ6UqBFcWl6TmFit45iXn
-        FxXkFyWWpKYA1ULcBwaCEIWgENMAarTQZKAyAMUDhPU5EBy+jGJnEGIIkFxaVAZlMjIZE+YjzJgjwcDg
-        v5SBgeUPQsykl4FhgQ4DA/9UhJiaIQODgD4Dw745AMDGT/0ZOjZcAAAACXBIWXMAAAsMAAALDAE/QCLI
-        AAAAiklEQVQ4T9WSwQ3DIBAE3QItpCe3kBZSXGpxC2kB33AgInn8Ip+MtNLeasE2Zqu1XvTFu6uhXQ0n
-        R1dDuxpO/nyDR4gB4b2rYVJC4w3w3tVwwsK2GLSrYfIKfbrw3tUwn8pCBoQv2tXwBxvA0icMlg5xD43f
-        iPeuhskzxIDw3tUw4faNM7i5iXU7AR+D/8oPVDlNAAAAAElFTkSuQmCC
-</value>
-  </data>
   <data name="button_Pointer.Text" xml:space="preserve">
-    <value>Pointeur</value>
+    <value>Pointeur de flèche</value>
+  </data>
+  <data name="button_Sunset.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 24</value>
+  </data>
+  <data name="button_Sunset.Text" xml:space="preserve">
+    <value>Valeurs num. (coucher de Lune)</value>
+  </data>
+  <data name="button_Sunrise.Size" type="System.Drawing.Size, System.Drawing">
+    <value>210, 24</value>
+  </data>
+  <data name="button_Sunrise.Text" xml:space="preserve">
+    <value>Valeurs num. (lever de Lune)</value>
+  </data>
+  <data name="button_Sunset_Sunrise.Text" xml:space="preserve">
+    <value>Valeurs num. (lever/coucher de Lune)</value>
   </data>
   <data name="button_Icon.Text" xml:space="preserve">
     <value>Icône</value>
   </data>
   <data name="button_ElementName.Text" xml:space="preserve">
-    <value>Force du vent</value>
-  </data>
-  <data name="button_Direction.Text" xml:space="preserve">
-    <value>Direction du vent</value>
-  </data>
-  <data name="button_Direction.ToolTip" xml:space="preserve">
-    <value>N - nord
-NE - nord-est
-E - est
-SE - sud-est
-S - sud
-SW - sud-ouest
-W - ouest
-NW - nord-ouest</value>
-  </data>
-  <data name="panel_Direction.ToolTip" xml:space="preserve">
-    <value>N - nord
-NE - nord-est
-E - est
-SE - sud-est
-S - sud
-SW - sud-ouest
-W - ouest
-NW - nord-ouest</value>
-  </data>
-  <data name="button_Number_Font.Text" xml:space="preserve">
-    <value>Valeur en police</value>
+    <value>Lune</value>
   </data>
 </root>

@@ -166,6 +166,6 @@
     <value>Distanza</value>
   </data>
   <data name="button_Number_Font.Text" xml:space="preserve">
-    <value>Valore per carattere</value>
+    <value>Valore per font</value>
   </data>
 </root>

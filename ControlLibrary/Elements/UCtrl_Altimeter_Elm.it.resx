@@ -162,12 +162,12 @@
     <value>Valori numerici (pressione)</value>
   </data>
   <data name="button_Number_Font.Text" xml:space="preserve">
-    <value>Valore per carattere (pressione)</value>
+    <value>Valore per font (pressione)</value>
   </data>
   <data name="button_Number_Target.Text" xml:space="preserve">
     <value>Valori numerici (pressione)</value>
   </data>
   <data name="button_Number_Target_Font.Text" xml:space="preserve">
-    <value>Valore per carattere (altitudine)</value>
+    <value>Valore per font (altitudine)</value>
   </data>
 </root>
