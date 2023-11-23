@@ -2503,6 +2503,7 @@ namespace Watch_Face_Editor
                 }
             }
 
+            PreviewView = false;
             userCtrl_Background_Options.ComboBoxAddItems(ListImages, ListImagesFullName);
             uCtrl_EditableBackground_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
             uCtrl_Text_Opt.ComboBoxAddItems(ListImages, ListImagesFullName);
@@ -2525,6 +2526,7 @@ namespace Watch_Face_Editor
 
             //progressBar1.Visible = false;
             LoadAnimImage(dirName + @"animation\");
+            PreviewView = true;
 
             Logger.WriteLine("* LoadImage End");
         }
@@ -8424,17 +8426,17 @@ namespace Watch_Face_Editor
             if (Watch_Face != null && Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Background != null)
                 ChangSizeBackground(Watch_Face.ScreenAOD.Background);
 
-            // отключаем анимацию для моделей где она не работает
-            if (ProgramSettings.Watch_Model == "T-Rex 2" /*ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4"*/)
-            {
-                uCtrl_Animation_Elm.MotionAnimation = false;
-                uCtrl_Animation_Elm.RotateAnimation = false;
-            }
-            else
-            {
-                uCtrl_Animation_Elm.MotionAnimation = true;
-                uCtrl_Animation_Elm.RotateAnimation = true;
-            }
+            //// отключаем анимацию для моделей где она не работает
+            //if (ProgramSettings.Watch_Model == "T-Rex 2" /*ProgramSettings.Watch_Model == "GTR 4" || ProgramSettings.Watch_Model == "GTS 4"*/)
+            //{
+            //    uCtrl_Animation_Elm.MotionAnimation = false;
+            //    uCtrl_Animation_Elm.RotateAnimation = false;
+            //}
+            //else
+            //{
+            //    uCtrl_Animation_Elm.MotionAnimation = true;
+            //    uCtrl_Animation_Elm.RotateAnimation = true;
+            //}
 
             PreviewImage();
             JSON_Modified = true;
@@ -9049,11 +9051,12 @@ namespace Watch_Face_Editor
                 ///////////////
                 string user_functions = "";
                 string user_script_start = "";
+                string user_script_beforeShortcuts = "";
                 string user_script_end = "";
                 string resume_call = "";
                 string pause_call = "";
 
-                JSToJson(tempDir + index_js, out user_functions, out user_script_start, out user_script_end, out resume_call, out pause_call); // создаем новый json файл циферблата
+                JSToJson(tempDir + index_js, out user_functions, out user_script_start, out user_script_beforeShortcuts, out user_script_end, out resume_call, out pause_call); // создаем новый json файл циферблата
 
                 // подготовка к чтению файлов assets
                 progressBar1.Value = 0;
@@ -9604,6 +9607,11 @@ namespace Watch_Face_Editor
                     {
                         string user_script_fileName = Path.Combine(projectPath, "user_script_start.js");
                         File.WriteAllText(user_script_fileName, user_script_start, Encoding.UTF8);
+                    }
+                    if (user_script_beforeShortcuts.Length > 5)
+                    {
+                        string user_script_fileName = Path.Combine(projectPath, "user_script_beforeShortcuts.js");
+                        File.WriteAllText(user_script_fileName, user_script_beforeShortcuts, Encoding.UTF8);
                     }
                     if (user_script_end.Length > 5)
                     {
@@ -18741,39 +18749,66 @@ namespace Watch_Face_Editor
                     else return;
                 }
 
-                // Масштабируем изображения
+                #region Масштабируем изображения
                 Image loadedImage = null;
                 Directory.CreateDirectory(newFullDirName);
                 Directory.CreateDirectory(Path.Combine(newFullDirName, "assets"));
-                foreach (string ImageFullName in ListImagesFullName)
+                //foreach (string ImageFullName in ListImagesFullName)
+                //{
+                //    using (FileStream stream = new FileStream(ImageFullName, FileMode.Open, FileAccess.Read))
+                //    {
+                //        loadedImage = Image.FromStream(stream);
+                //    }
+                //    string fileName = Path.GetFileName(ImageFullName);
+                //    string newFullFileName = Path.Combine(newFullDirName, "assets", fileName);
+                //    Bitmap bitmap = ResizeImage(loadedImage, scale);
+
+                //    bitmap.Save(newFullFileName, ImageFormat.Png);
+                //}
+                //if (ListAnimImagesFullName.Count > 0)
+                //{
+                //    Directory.CreateDirectory(Path.Combine(newFullDirName, "assets", "animation"));
+                //    foreach (string ImageFullName in ListAnimImagesFullName)
+                //    {
+                //        using (FileStream stream = new FileStream(ImageFullName, FileMode.Open, FileAccess.Read))
+                //        {
+                //            loadedImage = Image.FromStream(stream);
+                //        }
+                //        string fileName = Path.GetFileName(ImageFullName);
+                //        string newFullFileName = Path.Combine(newFullDirName, "assets", "animation", fileName);
+                //        Bitmap bitmap = ResizeImage(loadedImage, scale);
+
+                //        bitmap.Save(newFullFileName, ImageFormat.Png);
+                //    } 
+                //}
+
+                // читаем подпапки в папках
+                List<string> allDirs = GetRecursDirectories(ProjectDir + @"\assets", 5, ProjectDir + @"\assets");
+                foreach (string dirNames in allDirs)
                 {
-                    using (FileStream stream = new FileStream(ImageFullName, FileMode.Open, FileAccess.Read))
+                    //Console.WriteLine(dirNames);
+                    if (!Directory.Exists(newFullDirName + @"\assets" + dirNames)) Directory.CreateDirectory(newFullDirName + @"\assets" + dirNames);
+                }
+                List<string> allImagesFiles = GetRecursFiles(ProjectDir + @"\assets", "*.png", 5, ProjectDir + @"\assets");
+
+                foreach (string imgFileName in allImagesFiles)
+                {
+                    using (FileStream stream = new FileStream(ProjectDir + @"\assets" + imgFileName, FileMode.Open, FileAccess.Read))
                     {
                         loadedImage = Image.FromStream(stream);
                     }
-                    string fileName = Path.GetFileName(ImageFullName);
-                    string newFullFileName = Path.Combine(newFullDirName, "assets", fileName);
+                    string newFullFileName = newFullDirName + @"\assets" + imgFileName;
                     Bitmap bitmap = ResizeImage(loadedImage, scale);
 
                     bitmap.Save(newFullFileName, ImageFormat.Png);
                 }
-                if (ListAnimImagesFullName.Count > 0)
-                {
-                    Directory.CreateDirectory(Path.Combine(newFullDirName, "assets", "animation"));
-                    foreach (string ImageFullName in ListAnimImagesFullName)
-                    {
-                        using (FileStream stream = new FileStream(ImageFullName, FileMode.Open, FileAccess.Read))
-                        {
-                            loadedImage = Image.FromStream(stream);
-                        }
-                        string fileName = Path.GetFileName(ImageFullName);
-                        string newFullFileName = Path.Combine(newFullDirName, "assets", "animation", fileName);
-                        Bitmap bitmap = ResizeImage(loadedImage, scale);
-
-                        bitmap.Save(newFullFileName, ImageFormat.Png);
-                    } 
-                }
                 loadedImage = null;
+                #endregion
+
+                if (Directory.Exists(ProjectDir + @"\assets\fonts"))
+                {
+                    CopyDirectory(ProjectDir + @"\assets\fonts", newFullDirName + @"\assets\fonts", false);
+                }
 
                 JSON_Scale(scale, DeviceName);
 
@@ -18786,6 +18821,7 @@ namespace Watch_Face_Editor
                 });
                 File.WriteAllText(newFullFileNameJson, newJson, Encoding.UTF8);
 
+                #region копирование пользовательских функций
                 string scriptFileName = Path.Combine(ProjectDir, "user_functions.js");
                 if (File.Exists(scriptFileName))
                 {
@@ -18802,6 +18838,12 @@ namespace Watch_Face_Editor
                 if (File.Exists(scriptFileName))
                 {
                     string scriptFileNameNew = Path.Combine(newFullDirName, "user_script_start.js");
+                    File.Copy(scriptFileName, scriptFileNameNew);
+                }
+                scriptFileName = Path.Combine(ProjectDir, "user_script_beforeShortcuts.js");
+                if (File.Exists(scriptFileName))
+                {
+                    string scriptFileNameNew = Path.Combine(newFullDirName, "user_script_beforeShortcuts.js");
                     File.Copy(scriptFileName, scriptFileNameNew);
                 }
                 scriptFileName = Path.Combine(ProjectDir, "user_script_end.js");
@@ -18822,6 +18864,8 @@ namespace Watch_Face_Editor
                     string scriptFileNameNew = Path.Combine(newFullDirName, "pause_call.js");
                     File.Copy(scriptFileName, scriptFileNameNew);
                 }
+                #endregion
+
                 scriptFileName = Path.Combine(ProjectDir, "Preview.States");
                 if (File.Exists(scriptFileName))
                 {

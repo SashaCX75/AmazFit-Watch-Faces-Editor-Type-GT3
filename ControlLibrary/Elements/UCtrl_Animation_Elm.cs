@@ -581,6 +581,9 @@ namespace ControlLibrary
             pictureBox_Show.Visible = visibilityElement;
             pictureBox_NotShow.Visible = !visibilityElement;
 
+            MotionAnimation = true;
+            RotateAnimation = true;
+
             setValue = false;
         }
     }

@@ -8606,25 +8606,25 @@ namespace Watch_Face_Editor
                     if (Math.Abs(realLenght) > width)
                     {
                         int radius = width / 2;
-                        rc = new Rectangle(x, y, width, realLenght);
+                        rc = new Rectangle(x, y + radius, width, realLenght - width);
                         Rectangle rcStart = new Rectangle(x, y, width, width);
                         Rectangle rcEnd = new Rectangle(x, y + realLenght - width, width, width);
                         if (realLenght < 0)
                         {
-                            rc = new Rectangle(x, y + realLenght, width, -realLenght);
+                            rc = new Rectangle(x, y + realLenght + radius, width, -realLenght - width);
                             rcStart = new Rectangle(x, y + realLenght, width, width);
                             rcEnd = new Rectangle(x, y - width, width, width);
                         }
                         graphics.FillRectangle(br, rc);
-                        br = new SolidBrush(Color.Red);
+                        //br = new SolidBrush(Color.Red);
                         graphics.FillEllipse(br, rcStart);
-                        br = new SolidBrush(Color.Blue);
+                        //br = new SolidBrush(Color.Blue);
                         graphics.FillEllipse(br, rcEnd);
                     }
                     else
                     {
                         rc = new Rectangle(x, y, width, realLenght);
-                        br = new SolidBrush(Color.Green);
+                        //br = new SolidBrush(Color.Green);
                         graphics.FillEllipse(br, rc);
                     }
 
