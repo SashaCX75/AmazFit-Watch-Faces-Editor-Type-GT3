@@ -839,6 +839,27 @@ namespace Watch_Face_Editor
                 }
             }
 
+            string fileName = Path.Combine(ProjectDir, "user_script_beforeShortcuts.js");
+            if (File.Exists(fileName))
+            {
+                Logger.WriteLine("Load user_script_beforeShortcuts.js");
+                try
+                {
+                    string script_text = File.ReadAllText(fileName);
+                    if (script_text.Length > 5)
+                    {
+                        items += Environment.NewLine + TabInString(6) + "console.log('user_script_beforeShortcuts.js');" + Environment.NewLine;
+                        script_text = TabInString(6) + "// start user_script_beforeShortcuts.js" + Environment.NewLine +
+                            script_text + Environment.NewLine;
+                        script_text = script_text + TabInString(6) + "// end user_script_beforeShortcuts.js" + Environment.NewLine;
+                        items = items + script_text;
+                    }
+                }
+                catch (Exception)
+                {
+                }
+            }
+
             // ярлыки
             if (Watch_Face.Shortcuts != null && Watch_Face.Shortcuts.visible)
             {
@@ -872,7 +893,7 @@ namespace Watch_Face_Editor
             if (items.IndexOf("timeSensor =") >= 0) variables += TabInString(4) + "let timeSensor = ''" + Environment.NewLine;
 
             // добавляем пользовательские скрипты
-            string fileName = Path.Combine(ProjectDir, "user_functions.js");
+            fileName = Path.Combine(ProjectDir, "user_functions.js");
             if (File.Exists(fileName))
             {
                 Logger.WriteLine("Load user_functions.js");
@@ -14821,10 +14842,11 @@ namespace Watch_Face_Editor
         }
 
         /// <summary>Распознаем текст и преобразуем JS в Json</summary>
-        private void JSToJson(string fileName, out string user_functions, out string user_script_start, out string user_script_end, out string resume_call, out string pause_call)
+        private void JSToJson(string fileName, out string user_functions, out string user_script_start, out string user_script_beforeShortcuts, out string user_script_end, out string resume_call, out string pause_call)
         {
             user_functions = "";
             user_script_start = "";
+            user_script_beforeShortcuts = "";
             user_script_end = "";
             resume_call = "";
             pause_call = "";
@@ -14946,6 +14968,22 @@ namespace Watch_Face_Editor
                 lenght = user_script_endPos + end_user_script.Length - user_script_startPos;
                 functionText = functionText.Remove(user_script_startPos, lenght);
             }
+
+            start_user_script = "// start user_script_beforeShortcuts.js";
+            end_user_script = "// end user_script_beforeShortcuts.js";
+            user_script_startPos = functionText.IndexOf(start_user_script);
+            user_script_endPos = functionText.IndexOf(end_user_script);
+            if (user_script_startPos > 0 && user_script_startPos < user_script_endPos)
+            {
+                int lenght = user_script_endPos - user_script_startPos - start_user_script.Length;
+                string user_script_text = functionText.Substring(user_script_startPos + start_user_script.Length, lenght);
+                user_script_text = user_script_text.Trim();
+                user_script_beforeShortcuts = user_script_text;
+
+                lenght = user_script_endPos + end_user_script.Length - user_script_startPos;
+                functionText = functionText.Remove(user_script_startPos, lenght);
+            }
+
             #endregion
 
             string functionName = "";
