@@ -49,6 +49,9 @@ namespace ControlLibrary
             this.pictureBox_Del = new System.Windows.Forms.PictureBox();
             this.pictureBox_Arrow_Down = new System.Windows.Forms.PictureBox();
             this.button_ElementName = new System.Windows.Forms.Button();
+            this.panel_Number_Font = new System.Windows.Forms.Panel();
+            this.button_Number_Font = new System.Windows.Forms.Button();
+            this.checkBox_Number_Font = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel_Text_circle.SuspendLayout();
             this.panel_Text_rotation.SuspendLayout();
@@ -59,14 +62,16 @@ namespace ControlLibrary
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Show)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Del)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Arrow_Down)).BeginInit();
+            this.panel_Number_Font.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
-            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
             this.tableLayoutPanel1.AllowDrop = true;
-            this.tableLayoutPanel1.Controls.Add(this.panel_Text_circle, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.panel_Text_rotation, 0, 2);
+            resources.ApplyResources(this.tableLayoutPanel1, "tableLayoutPanel1");
+            this.tableLayoutPanel1.Controls.Add(this.panel_Number_Font, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Text_circle, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.panel_Text_rotation, 0, 3);
             this.tableLayoutPanel1.Controls.Add(this.panel_Number, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel_Pointer, 0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -75,10 +80,10 @@ namespace ControlLibrary
             // 
             // panel_Text_circle
             // 
-            resources.ApplyResources(this.panel_Text_circle, "panel_Text_circle");
             this.panel_Text_circle.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Text_circle.Controls.Add(this.button_Text_circle);
             this.panel_Text_circle.Controls.Add(this.checkBox_Text_circle);
+            resources.ApplyResources(this.panel_Text_circle, "panel_Text_circle");
             this.panel_Text_circle.Name = "panel_Text_circle";
             this.panel_Text_circle.Click += new System.EventHandler(this.panel_Text_circle_Click);
             this.panel_Text_circle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -87,10 +92,10 @@ namespace ControlLibrary
             // 
             // button_Text_circle
             // 
-            resources.ApplyResources(this.button_Text_circle, "button_Text_circle");
             this.button_Text_circle.FlatAppearance.BorderSize = 0;
             this.button_Text_circle.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Text_circle.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Text_circle, "button_Text_circle");
             this.button_Text_circle.Name = "button_Text_circle";
             this.button_Text_circle.UseVisualStyleBackColor = true;
             this.button_Text_circle.Click += new System.EventHandler(this.panel_Text_circle_Click);
@@ -107,10 +112,10 @@ namespace ControlLibrary
             // 
             // panel_Text_rotation
             // 
-            resources.ApplyResources(this.panel_Text_rotation, "panel_Text_rotation");
             this.panel_Text_rotation.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Text_rotation.Controls.Add(this.button_Text_rotation);
             this.panel_Text_rotation.Controls.Add(this.checkBox_Text_rotation);
+            resources.ApplyResources(this.panel_Text_rotation, "panel_Text_rotation");
             this.panel_Text_rotation.Name = "panel_Text_rotation";
             this.panel_Text_rotation.Click += new System.EventHandler(this.panel_Text_rotation_Click);
             this.panel_Text_rotation.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -119,10 +124,10 @@ namespace ControlLibrary
             // 
             // button_Text_rotation
             // 
-            resources.ApplyResources(this.button_Text_rotation, "button_Text_rotation");
             this.button_Text_rotation.FlatAppearance.BorderSize = 0;
             this.button_Text_rotation.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Text_rotation.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Text_rotation, "button_Text_rotation");
             this.button_Text_rotation.Name = "button_Text_rotation";
             this.button_Text_rotation.UseVisualStyleBackColor = true;
             this.button_Text_rotation.Click += new System.EventHandler(this.panel_Text_rotation_Click);
@@ -139,10 +144,10 @@ namespace ControlLibrary
             // 
             // panel_Number
             // 
-            resources.ApplyResources(this.panel_Number, "panel_Number");
             this.panel_Number.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Number.Controls.Add(this.button_Number);
             this.panel_Number.Controls.Add(this.checkBox_Number);
+            resources.ApplyResources(this.panel_Number, "panel_Number");
             this.panel_Number.Name = "panel_Number";
             this.panel_Number.Click += new System.EventHandler(this.panel_Number_Click);
             this.panel_Number.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -151,10 +156,10 @@ namespace ControlLibrary
             // 
             // button_Number
             // 
-            resources.ApplyResources(this.button_Number, "button_Number");
             this.button_Number.FlatAppearance.BorderSize = 0;
             this.button_Number.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Number.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Number, "button_Number");
             this.button_Number.Image = global::ControlLibrary.Properties.Resources.text_icon;
             this.button_Number.Name = "button_Number";
             this.button_Number.UseVisualStyleBackColor = true;
@@ -172,10 +177,10 @@ namespace ControlLibrary
             // 
             // panel_Pointer
             // 
-            resources.ApplyResources(this.panel_Pointer, "panel_Pointer");
             this.panel_Pointer.BackColor = System.Drawing.SystemColors.Control;
             this.panel_Pointer.Controls.Add(this.button_Pointer);
             this.panel_Pointer.Controls.Add(this.checkBox_Pointer);
+            resources.ApplyResources(this.panel_Pointer, "panel_Pointer");
             this.panel_Pointer.Name = "panel_Pointer";
             this.panel_Pointer.Click += new System.EventHandler(this.panel_Pointer_Click);
             this.panel_Pointer.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
@@ -184,10 +189,10 @@ namespace ControlLibrary
             // 
             // button_Pointer
             // 
-            resources.ApplyResources(this.button_Pointer, "button_Pointer");
             this.button_Pointer.FlatAppearance.BorderSize = 0;
             this.button_Pointer.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
             this.button_Pointer.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Pointer, "button_Pointer");
             this.button_Pointer.Image = global::ControlLibrary.Properties.Resources.pointer;
             this.button_Pointer.Name = "button_Pointer";
             this.button_Pointer.UseVisualStyleBackColor = true;
@@ -213,8 +218,8 @@ namespace ControlLibrary
             // 
             // pictureBox_Arrow_Right
             // 
-            resources.ApplyResources(this.pictureBox_Arrow_Right, "pictureBox_Arrow_Right");
             this.pictureBox_Arrow_Right.BackgroundImage = global::ControlLibrary.Properties.Resources.arrow_right;
+            resources.ApplyResources(this.pictureBox_Arrow_Right, "pictureBox_Arrow_Right");
             this.pictureBox_Arrow_Right.Name = "pictureBox_Arrow_Right";
             this.pictureBox_Arrow_Right.TabStop = false;
             this.pictureBox_Arrow_Right.Click += new System.EventHandler(this.button_ElementName_Click);
@@ -229,24 +234,24 @@ namespace ControlLibrary
             // 
             // pictureBox_Del
             // 
-            resources.ApplyResources(this.pictureBox_Del, "pictureBox_Del");
             this.pictureBox_Del.BackgroundImage = global::ControlLibrary.Properties.Resources.outline_delete_forever_black_24;
+            resources.ApplyResources(this.pictureBox_Del, "pictureBox_Del");
             this.pictureBox_Del.Name = "pictureBox_Del";
             this.pictureBox_Del.TabStop = false;
             this.pictureBox_Del.Click += new System.EventHandler(this.pictureBox_Del_Click);
             // 
             // pictureBox_Arrow_Down
             // 
-            resources.ApplyResources(this.pictureBox_Arrow_Down, "pictureBox_Arrow_Down");
             this.pictureBox_Arrow_Down.BackgroundImage = global::ControlLibrary.Properties.Resources.arrow_down;
+            resources.ApplyResources(this.pictureBox_Arrow_Down, "pictureBox_Arrow_Down");
             this.pictureBox_Arrow_Down.Name = "pictureBox_Arrow_Down";
             this.pictureBox_Arrow_Down.TabStop = false;
             this.pictureBox_Arrow_Down.Click += new System.EventHandler(this.button_ElementName_Click);
             // 
             // button_ElementName
             // 
-            resources.ApplyResources(this.button_ElementName, "button_ElementName");
             this.button_ElementName.BackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_ElementName, "button_ElementName");
             this.button_ElementName.Image = global::ControlLibrary.Properties.Resources.Very_Basic_Calendar_16;
             this.button_ElementName.Name = "button_ElementName";
             this.button_ElementName.UseVisualStyleBackColor = false;
@@ -255,6 +260,39 @@ namespace ControlLibrary
             this.button_ElementName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button_ElementName_MouseDown);
             this.button_ElementName.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button_ElementName_MouseMove);
             this.button_ElementName.MouseUp += new System.Windows.Forms.MouseEventHandler(this.button_ElementName_MouseUp);
+            // 
+            // panel_Number_Font
+            // 
+            this.panel_Number_Font.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_Number_Font.Controls.Add(this.button_Number_Font);
+            this.panel_Number_Font.Controls.Add(this.checkBox_Number_Font);
+            resources.ApplyResources(this.panel_Number_Font, "panel_Number_Font");
+            this.panel_Number_Font.Name = "panel_Number_Font";
+            this.panel_Number_Font.Click += new System.EventHandler(this.panel_Number_Font_Click);
+            this.panel_Number_Font.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.panel_Number_Font.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.panel_Number_Font.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // button_Number_Font
+            // 
+            this.button_Number_Font.FlatAppearance.BorderSize = 0;
+            this.button_Number_Font.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Control;
+            this.button_Number_Font.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Control;
+            resources.ApplyResources(this.button_Number_Font, "button_Number_Font");
+            this.button_Number_Font.Image = global::ControlLibrary.Properties.Resources.text_fields;
+            this.button_Number_Font.Name = "button_Number_Font";
+            this.button_Number_Font.UseVisualStyleBackColor = true;
+            this.button_Number_Font.Click += new System.EventHandler(this.panel_Number_Font_Click);
+            this.button_Number_Font.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
+            this.button_Number_Font.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
+            this.button_Number_Font.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
+            // 
+            // checkBox_Number_Font
+            // 
+            resources.ApplyResources(this.checkBox_Number_Font, "checkBox_Number_Font");
+            this.checkBox_Number_Font.Name = "checkBox_Number_Font";
+            this.checkBox_Number_Font.UseVisualStyleBackColor = true;
+            this.checkBox_Number_Font.CheckedChanged += new System.EventHandler(this.checkBox_Elements_CheckedChanged);
             // 
             // UCtrl_DateDay_Elm
             // 
@@ -282,6 +320,8 @@ namespace ControlLibrary
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Show)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Del)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Arrow_Down)).EndInit();
+            this.panel_Number_Font.ResumeLayout(false);
+            this.panel_Number_Font.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -308,5 +348,8 @@ namespace ControlLibrary
         private System.Windows.Forms.Panel panel_Text_circle;
         private System.Windows.Forms.Button button_Text_circle;
         public System.Windows.Forms.CheckBox checkBox_Text_circle;
+        private System.Windows.Forms.Panel panel_Number_Font;
+        private System.Windows.Forms.Button button_Number_Font;
+        public System.Windows.Forms.CheckBox checkBox_Number_Font;
     }
 }

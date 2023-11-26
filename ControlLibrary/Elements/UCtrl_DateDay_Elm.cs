@@ -14,6 +14,7 @@ namespace ControlLibrary
     {
         private bool setValue; // режим задания параметров
         bool highlight_number = false;
+        bool highlight_number_font = false;
         bool highlight_pointer = false;
         bool highlight_text_rotation = false;
         bool highlight_text_circle = false;
@@ -89,6 +90,7 @@ namespace ControlLibrary
             selectedElement = "";
 
             highlight_number = false;
+            highlight_number_font = false;
             highlight_pointer = false;
             highlight_text_rotation = false;
             highlight_text_circle = false;
@@ -109,6 +111,19 @@ namespace ControlLibrary
                 panel_Number.BackColor = SystemColors.Control;
                 button_Number.FlatAppearance.MouseOverBackColor = SystemColors.Control;
                 button_Number.FlatAppearance.MouseDownBackColor = SystemColors.Control;
+            }
+
+            if (highlight_number_font)
+            {
+                panel_Number_Font.BackColor = SystemColors.ActiveCaption;
+                button_Number_Font.FlatAppearance.MouseOverBackColor = SystemColors.ActiveCaption;
+                button_Number_Font.FlatAppearance.MouseDownBackColor = SystemColors.ActiveCaption;
+            }
+            else
+            {
+                panel_Number_Font.BackColor = SystemColors.Control;
+                button_Number_Font.FlatAppearance.MouseOverBackColor = SystemColors.Control;
+                button_Number_Font.FlatAppearance.MouseDownBackColor = SystemColors.Control;
             }
 
             if (highlight_text_rotation)
@@ -156,6 +171,26 @@ namespace ControlLibrary
             selectedElement = "Number";
 
             highlight_number = true;
+            highlight_number_font = false;
+            highlight_text_rotation = false;
+            highlight_text_circle = false;
+            highlight_pointer = false;
+
+            SelectElement();
+
+            if (SelectChanged != null)
+            {
+                EventArgs eventArgs = new EventArgs();
+                SelectChanged(this, eventArgs);
+            }
+        }
+
+        private void panel_Number_Font_Click(object sender, EventArgs e)
+        {
+            selectedElement = "Number_Font";
+
+            highlight_number = false;
+            highlight_number_font = true;
             highlight_text_rotation = false;
             highlight_text_circle = false;
             highlight_pointer = false;
@@ -174,6 +209,7 @@ namespace ControlLibrary
             selectedElement = "Text_rotation";
 
             highlight_number = false;
+            highlight_number_font = false;
             highlight_text_rotation = true;
             highlight_text_circle = false;
             highlight_pointer = false;
@@ -192,6 +228,7 @@ namespace ControlLibrary
             selectedElement = "Text_circle";
 
             highlight_number = false;
+            highlight_number_font = false;
             highlight_text_rotation = false;
             highlight_text_circle = true;
             highlight_pointer = false;
@@ -210,6 +247,7 @@ namespace ControlLibrary
             selectedElement = "Pointer";
 
             highlight_number = false;
+            highlight_number_font = false;
             highlight_text_rotation = false;
             highlight_text_circle = false;
             highlight_pointer = true;
@@ -353,9 +391,9 @@ namespace ControlLibrary
 
             pictureBox_Del.Location = new Point(button_ElementName.Width - pictureBox_Del.Width - 4, 2);
 
-            if (tableLayoutPanel1.Height > 130)
+            if (tableLayoutPanel1.Height > 160)
             {
-                float currentDPI = tableLayoutPanel1.Height / 101f;
+                float currentDPI = tableLayoutPanel1.Height / 126f;
                 button_ElementName.Image = (Image)(new Bitmap(button_ElementName.Image,
                     new Size((int)(16 * currentDPI), (int)(16 * currentDPI))));
 
@@ -455,6 +493,9 @@ namespace ControlLibrary
                 case "Number":
                     checkBox_Number.Checked = status;
                     break;
+                case "Number_Font":
+                    checkBox_Number_Font.Checked = status;
+                    break;
                 case "Text_rotation":
                     checkBox_Text_rotation.Checked = status;
                     break;
@@ -482,6 +523,9 @@ namespace ControlLibrary
                     {
                         case "Number":
                             panel = panel_Number;
+                            break;
+                        case "Number_Font":
+                            panel = panel_Number_Font;
                             break;
                         case "Text_rotation":
                             panel = panel_Text_rotation;
@@ -537,6 +581,9 @@ namespace ControlLibrary
                     case "panel_Number":
                         elementOptions.Add("Number", count - i);
                         break;
+                    case "panel_Number_Font":
+                        elementOptions.Add("Number_Font", count - i);
+                        break;
                     case "panel_Text_rotation":
                         elementOptions.Add("Text_rotation", count - i);
                         break;
@@ -556,13 +603,16 @@ namespace ControlLibrary
             setValue = true;
 
             Dictionary<int, string> elementOptions = new Dictionary<int, string>();
-            elementOptions.Add(1, "Pointer");
-            elementOptions.Add(2, "Text_circle");
-            elementOptions.Add(3, "Text_rotation");
-            elementOptions.Add(4, "Number");
+            int index = 1;
+            elementOptions.Add(index++, "Pointer");
+            elementOptions.Add(index++, "Text_circle");
+            elementOptions.Add(index++, "Text_rotation");
+            elementOptions.Add(index++, "Number_Font");
+            elementOptions.Add(index++, "Number");
             SetOptionsPosition(elementOptions);
 
             checkBox_Number.Checked = false;
+            checkBox_Number_Font.Checked = false;
             checkBox_Text_rotation.Checked = false;
             checkBox_Text_circle.Checked = false;
             checkBox_Pointer.Checked = false;

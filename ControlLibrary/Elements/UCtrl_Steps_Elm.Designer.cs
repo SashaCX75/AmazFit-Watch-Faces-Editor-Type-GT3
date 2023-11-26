@@ -130,7 +130,7 @@ namespace ControlLibrary
             this.panel_Number_Target_Font.Controls.Add(this.button_Number_Target_Font);
             this.panel_Number_Target_Font.Controls.Add(this.checkBox_Number_Target_Font);
             this.panel_Number_Target_Font.Name = "panel_Number_Target_Font";
-            this.panel_Number_Target_Font.Click += new System.EventHandler(this.button_Number_Target_Font_Click);
+            this.panel_Number_Target_Font.Click += new System.EventHandler(this.panel_Number_Target_Font_Click);
             this.panel_Number_Target_Font.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
             this.panel_Number_Target_Font.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
             this.panel_Number_Target_Font.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
@@ -144,7 +144,7 @@ namespace ControlLibrary
             this.button_Number_Target_Font.Image = global::ControlLibrary.Properties.Resources.text_fields;
             this.button_Number_Target_Font.Name = "button_Number_Target_Font";
             this.button_Number_Target_Font.UseVisualStyleBackColor = true;
-            this.button_Number_Target_Font.Click += new System.EventHandler(this.button_Number_Target_Font_Click);
+            this.button_Number_Target_Font.Click += new System.EventHandler(this.panel_Number_Target_Font_Click);
             this.button_Number_Target_Font.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
             this.button_Number_Target_Font.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
             this.button_Number_Target_Font.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
@@ -163,7 +163,7 @@ namespace ControlLibrary
             this.panel_Number_Font.Controls.Add(this.button_Number_Font);
             this.panel_Number_Font.Controls.Add(this.checkBox_Number_Font);
             this.panel_Number_Font.Name = "panel_Number_Font";
-            this.panel_Number_Font.Click += new System.EventHandler(this.button_Number_Font_Click);
+            this.panel_Number_Font.Click += new System.EventHandler(this.panel_Number_Font_Click);
             this.panel_Number_Font.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
             this.panel_Number_Font.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
             this.panel_Number_Font.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);
@@ -177,7 +177,7 @@ namespace ControlLibrary
             this.button_Number_Font.Image = global::ControlLibrary.Properties.Resources.text_fields;
             this.button_Number_Font.Name = "button_Number_Font";
             this.button_Number_Font.UseVisualStyleBackColor = true;
-            this.button_Number_Font.Click += new System.EventHandler(this.button_Number_Font_Click);
+            this.button_Number_Font.Click += new System.EventHandler(this.panel_Number_Font_Click);
             this.button_Number_Font.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Control_MouseDown);
             this.button_Number_Font.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Control_MouseMove);
             this.button_Number_Font.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Control_MouseUp);

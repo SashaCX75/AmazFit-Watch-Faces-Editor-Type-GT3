@@ -23,6 +23,7 @@ namespace ControlLibrary
         //private bool Number_mode = true;
         private bool Unit_mode = true;
         private bool Zero_mode = true;
+        private bool Year_mode = false;
 
         public UCtrl_Text_SystemFont_Opt()
         {
@@ -373,6 +374,28 @@ namespace ControlLibrary
             }
         }
 
+        /// <summary>Режим отображения года</summary>
+        [Description("Режим отображения года")]
+        public virtual bool Year
+        {
+            get
+            {
+                return Year_mode;
+            }
+            set
+            {
+                Year_mode = value;
+                if (Year_mode)
+                {
+                    checkBox_addZero.Text = Properties.Strings.UCtrl_Text_Opt_Year_true;
+                }
+                else
+                {
+                    checkBox_addZero.Text = Properties.Strings.UCtrl_Text_Opt_Year_false;
+                }
+            }
+        }
+
         [Browsable(true)]
         [Description("Происходит при изменении выбора элемента")]
         public event ValueChangedHandler ValueChanged;
@@ -690,6 +713,7 @@ namespace ControlLibrary
             UserFont = false;
             UnitMode = true;
             ZeroMode = true;
+            Year = false;
 
             setValue = false;
         }

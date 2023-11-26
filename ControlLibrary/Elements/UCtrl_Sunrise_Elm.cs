@@ -683,7 +683,18 @@ namespace ControlLibrary
 
         private void tableLayoutPanel1_DragDrop(object sender, DragEventArgs e)
         {
-
+            int cursorX = Cursor.Position.X;
+            int cursorY = Cursor.Position.Y;
+            int dX = Math.Abs(cursorX - cursorPos.X);
+            int dY = Math.Abs(cursorY - cursorPos.Y);
+            if (dX > 5 || dY > 5)
+            {
+                if (OptionsMoved != null)
+                {
+                    EventArgs eventArgs = new EventArgs();
+                    OptionsMoved(this, eventArgs, GetOptionsPosition());
+                }
+            }
         }
 
         private void tableLayoutPanel1_DragOver(object sender, DragEventArgs e)

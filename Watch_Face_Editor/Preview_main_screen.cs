@@ -1256,6 +1256,72 @@ namespace Watch_Face_Editor
                             }
                         }
 
+                        if (DateDay.Number_Font != null && index == DateDay.Number_Font.position && DateDay.Number_Font.visible)
+                        {
+                            hmUI_widget_TEXT number_font = DateDay.Number_Font;
+                            int x = number_font.x;
+                            int y = number_font.y;
+                            int h = number_font.h;
+                            int w = number_font.w;
+
+                            int size = number_font.text_size;
+                            int space_h = number_font.char_space;
+                            int space_v = number_font.line_space;
+
+                            Color color = StringToColor(number_font.color);
+                            //int align_h = AlignmentToInt(number_font.align_h);
+                            //int align_v = AlignmentVerticalToInt(number_font.align_v);
+                            string align_h = number_font.align_h;
+                            string align_v = number_font.align_v;
+                            string text_style = number_font.text_style;
+                            string valueStr = WatchFacePreviewSet.Date.Day.ToString();
+                            string unitStr = "day";
+                            if (number_font.padding) valueStr = valueStr.PadLeft(2, '0');
+                            if (number_font.unit_type > 0)
+                            {
+                                if (number_font.unit_type == 2) unitStr = unitStr.ToUpper();
+                                valueStr += unitStr;
+                            }
+
+                            if (number_font.centreHorizontally)
+                            {
+                                x = (SelectedModel.background.w - w) / 2;
+                                align_h = "CENTER_H";
+                            }
+                            if (number_font.centreVertically)
+                            {
+                                y = (SelectedModel.background.h - h) / 2;
+                                align_v = "CENTER_V";
+                            }
+
+                            if (number_font.font != null && number_font.font.Length > 3 && FontsList.ContainsKey(number_font.font))
+                            {
+                                string font_fileName = FontsList[number_font.font];
+                                //string font_fileName = ProjectDir + @"\assets\fonts\" + number_font.font;
+                                if (SelectedModel.versionOS >= 2 && File.Exists(font_fileName))
+                                {
+                                    Font drawFont = null;
+                                    using (System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection())
+                                    {
+                                        fonts.AddFontFile(font_fileName);
+                                        drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+                                    }
+
+                                    Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                                    align_h, align_v, text_style, BBorder);
+                                }
+                                else
+                                {
+                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                }
+
+                            }
+                            else
+                            {
+                                Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                            }
+                        }
+
                         if (DateDay.Text_rotation != null && DateDay.Text_rotation.img_First != null && DateDay.Text_rotation.img_First.Length > 0 &&
                             index == DateDay.Text_rotation.position && DateDay.Text_rotation.visible)
                         {
@@ -1385,6 +1451,72 @@ namespace Watch_Face_Editor
                             }
                         }
 
+                        if (DateMonth.Number_Font != null && index == DateMonth.Number_Font.position && DateMonth.Number_Font.visible)
+                        {
+                            hmUI_widget_TEXT number_font = DateMonth.Number_Font;
+                            int x = number_font.x;
+                            int y = number_font.y;
+                            int h = number_font.h;
+                            int w = number_font.w;
+
+                            int size = number_font.text_size;
+                            int space_h = number_font.char_space;
+                            int space_v = number_font.line_space;
+
+                            Color color = StringToColor(number_font.color);
+                            //int align_h = AlignmentToInt(number_font.align_h);
+                            //int align_v = AlignmentVerticalToInt(number_font.align_v);
+                            string align_h = number_font.align_h;
+                            string align_v = number_font.align_v;
+                            string text_style = number_font.text_style;
+                            string valueStr = WatchFacePreviewSet.Date.Month.ToString();
+                            string unitStr = "month";
+                            if (number_font.padding) valueStr = valueStr.PadLeft(2, '0');
+                            if (number_font.unit_type > 0)
+                            {
+                                if (number_font.unit_type == 2) unitStr = unitStr.ToUpper();
+                                valueStr += unitStr;
+                            }
+
+                            if (number_font.centreHorizontally)
+                            {
+                                x = (SelectedModel.background.w - w) / 2;
+                                align_h = "CENTER_H";
+                            }
+                            if (number_font.centreVertically)
+                            {
+                                y = (SelectedModel.background.h - h) / 2;
+                                align_v = "CENTER_V";
+                            }
+
+                            if (number_font.font != null && number_font.font.Length > 3 && FontsList.ContainsKey(number_font.font))
+                            {
+                                string font_fileName = FontsList[number_font.font];
+                                //string font_fileName = ProjectDir + @"\assets\fonts\" + number_font.font;
+                                if (SelectedModel.versionOS >= 2 && File.Exists(font_fileName))
+                                {
+                                    Font drawFont = null;
+                                    using (System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection())
+                                    {
+                                        fonts.AddFontFile(font_fileName);
+                                        drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+                                    }
+
+                                    Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                                    align_h, align_v, text_style, BBorder);
+                                }
+                                else
+                                {
+                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                }
+
+                            }
+                            else
+                            {
+                                Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                            }
+                        }
+
                         if (DateMonth.Text_rotation != null && DateMonth.Text_rotation.img_First != null && DateMonth.Text_rotation.img_First.Length > 0 &&
                             index == DateMonth.Text_rotation.position && DateMonth.Text_rotation.visible)
                         {
@@ -1499,6 +1631,8 @@ namespace Watch_Face_Editor
                     ElementDateYear DateYear = (ElementDateYear)element;
                     if (!DateYear.visible) return;
 
+                    icon = DateYear.Icon;
+
                     for (int index = 1; index <= 15; index++)
                     {
                         if (DateYear.Number != null && DateYear.Number.img_First != null
@@ -1531,7 +1665,75 @@ namespace Watch_Face_Editor
                             if (src != null) gPanel.DrawImage(src, x, y);
                             //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
                         }
-                    }
+                        }
+
+                        if (DateYear.Number_Font != null && index == DateYear.Number_Font.position && DateYear.Number_Font.visible)
+                        {
+                            hmUI_widget_TEXT number_font = DateYear.Number_Font;
+                            int x = number_font.x;
+                            int y = number_font.y;
+                            int h = number_font.h;
+                            int w = number_font.w;
+
+                            int size = number_font.text_size;
+                            int space_h = number_font.char_space;
+                            int space_v = number_font.line_space;
+
+                            Color color = StringToColor(number_font.color);
+                            //int align_h = AlignmentToInt(number_font.align_h);
+                            //int align_v = AlignmentVerticalToInt(number_font.align_v);
+                            string align_h = number_font.align_h;
+                            string align_v = number_font.align_v;
+                            string text_style = number_font.text_style; 
+                            int value = WatchFacePreviewSet.Date.Year;
+                            if (!number_font.padding) value = value % 100;
+                            string valueStr = value.ToString().PadLeft(2, '0');
+                            string unitStr = "year";
+                            //if (number_font.padding) valueStr = valueStr.PadLeft(2, '0');
+                            if (number_font.unit_type > 0)
+                            {
+                                if (number_font.unit_type == 2) unitStr = unitStr.ToUpper();
+                                valueStr += unitStr;
+                            }
+
+                            if (number_font.centreHorizontally)
+                            {
+                                x = (SelectedModel.background.w - w) / 2;
+                                align_h = "CENTER_H";
+                            }
+                            if (number_font.centreVertically)
+                            {
+                                y = (SelectedModel.background.h - h) / 2;
+                                align_v = "CENTER_V";
+                            }
+
+                            if (number_font.font != null && number_font.font.Length > 3 && FontsList.ContainsKey(number_font.font))
+                            {
+                                string font_fileName = FontsList[number_font.font];
+                                //string font_fileName = ProjectDir + @"\assets\fonts\" + number_font.font;
+                                if (SelectedModel.versionOS >= 2 && File.Exists(font_fileName))
+                                {
+                                    Font drawFont = null;
+                                    using (System.Drawing.Text.PrivateFontCollection fonts = new System.Drawing.Text.PrivateFontCollection())
+                                    {
+                                        fonts.AddFontFile(font_fileName);
+                                        drawFont = new Font(fonts.Families[0], size, GraphicsUnit.World);
+                                    }
+
+                                    Draw_text_userFont(gPanel, x, y, w, h, drawFont, size, space_h, space_v, color, valueStr,
+                                                    align_h, align_v, text_style, BBorder);
+                                }
+                                else
+                                {
+                                    Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                                }
+
+                            }
+                            else
+                            {
+                                Draw_text(gPanel, x, y, w, h, size, space_h, space_v, color, valueStr, align_h, align_v, text_style, BBorder);
+                            }
+                        }
 
                         if (DateYear.Text_rotation != null && DateYear.Text_rotation.img_First != null && DateYear.Text_rotation.img_First.Length > 0 &&
                                     index == DateYear.Text_rotation.position && DateYear.Text_rotation.visible)
@@ -1582,7 +1784,22 @@ namespace Watch_Face_Editor
                             Draw_dagital_text_on_circle(gPanel, centr_x, centr_y, radius, spacing, angle, addZero,
                                 image_index, unit_index, dot_image_index, vertical_alignment, horizontal_alignment,
                                 reverse_direction, unit_in_alignment, valueStr, value_lenght, BBorder, showCentrHend, "ElementDateYear");
-                        } 
+                        }
+
+                        if (icon != null && icon.src != null && icon.src.Length > 0 &&
+                            index == icon.position && icon.visible)
+                        {
+                            int imageIndex = ListImages.IndexOf(icon.src);
+                            int x = icon.x;
+                            int y = icon.y;
+
+                            if (imageIndex < ListImagesFullName.Count)
+                            {
+                                src = OpenFileStream(ListImagesFullName[imageIndex]);
+                                gPanel.DrawImage(src, x, y);
+                                //gPanel.DrawImage(src, new Rectangle(x, y, src.Width, src.Height));
+                            }
+                        }
                     }
 
                     break;
@@ -1746,90 +1963,6 @@ namespace Watch_Face_Editor
                     }
                     break;
                 #endregion
-
-               /* #region ElementShortcuts
-                case "ElementShortcuts":
-                    ElementShortcuts shortcutsElement = (ElementShortcuts)element;
-                    if (!shortcutsElement.enable && !Shortcuts_In_Gif) return;
-
-                    hmUI_widget_IMG_CLICK img_click_step = shortcutsElement.Step;
-                    hmUI_widget_IMG_CLICK img_click_heart = shortcutsElement.Heart;
-                    hmUI_widget_IMG_CLICK img_click_spo2 = shortcutsElement.SPO2;
-                    hmUI_widget_IMG_CLICK img_click_pai = shortcutsElement.PAI;
-                    hmUI_widget_IMG_CLICK img_click_stress = shortcutsElement.Stress;
-                    hmUI_widget_IMG_CLICK img_click_weather = shortcutsElement.Weather;
-                    hmUI_widget_IMG_CLICK img_click_altimeter = shortcutsElement.Altimeter;
-                    hmUI_widget_IMG_CLICK img_click_sunrise = shortcutsElement.Sunrise;
-                    hmUI_widget_IMG_CLICK img_click_alarm = shortcutsElement.Alarm;
-                    hmUI_widget_IMG_CLICK img_click_sleep = shortcutsElement.Sleep;
-                    hmUI_widget_IMG_CLICK img_click_countdown = shortcutsElement.Countdown;
-                    hmUI_widget_IMG_CLICK img_click_stopwatch = shortcutsElement.Stopwatch;
-
-                    for (int index = 1; index <= 15; index++)
-                    {
-                        if (img_click_step != null && index == img_click_step.position)
-                        {
-                            DrawShortcuts(gPanel, img_click_step, showShortcuts,
-                                showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
-                        }
-                        if (img_click_heart != null && index == img_click_heart.position)
-                        {
-                            DrawShortcuts(gPanel, img_click_heart, showShortcuts,
-                                showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
-                        }
-                        if (img_click_spo2 != null && index == img_click_spo2.position)
-                        {
-                            DrawShortcuts(gPanel, img_click_spo2, showShortcuts,
-                                showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
-                        }
-                        if (img_click_pai != null && index == img_click_pai.position)
-                        {
-                            DrawShortcuts(gPanel, img_click_pai, showShortcuts,
-                                showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
-                        }
-                        if (img_click_stress != null && index == img_click_stress.position)
-                        {
-                            DrawShortcuts(gPanel, img_click_stress, showShortcuts,
-                                showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
-                        }
-                        if (img_click_weather != null && index == img_click_weather.position)
-                        {
-                            DrawShortcuts(gPanel, img_click_weather, showShortcuts,
-                                showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
-                        }
-                        if (img_click_altimeter != null && index == img_click_altimeter.position)
-                        {
-                            DrawShortcuts(gPanel, img_click_altimeter, showShortcuts,
-                                showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
-                        }
-                        if (img_click_sunrise != null && index == img_click_sunrise.position)
-                        {
-                            DrawShortcuts(gPanel, img_click_sunrise, showShortcuts,
-                                showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
-                        }
-                        if (img_click_alarm != null && index == img_click_alarm.position)
-                        {
-                            DrawShortcuts(gPanel, img_click_alarm, showShortcuts,
-                                showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
-                        }
-                        if (img_click_sleep != null && index == img_click_sleep.position)
-                        {
-                            DrawShortcuts(gPanel, img_click_sleep, showShortcuts,
-                                showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
-                        }
-                        if (img_click_countdown != null && index == img_click_countdown.position)
-                        {
-                            DrawShortcuts(gPanel, img_click_countdown, showShortcuts,
-                                showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
-                        }
-                        if (img_click_stopwatch != null && index == img_click_stopwatch.position)
-                        {
-                            DrawShortcuts(gPanel, img_click_stopwatch, showShortcuts,
-                                showShortcutsArea, showShortcutsBorder, showShortcutsImage, Shortcuts_In_Gif);
-                        }
-                    }
-                    break;
-                #endregion*/
 
 
 
@@ -7323,11 +7456,14 @@ namespace Watch_Face_Editor
             strFormat.FormatFlags = StringFormatFlags.FitBlackBox;
             strFormat.Alignment = StringAlignment.Near;
             strFormat.LineAlignment = StringAlignment.Near;
-            Size strSize1 = TextRenderer.MeasureText(graphics, "0", drawFont);
-            Size strSize2 = TextRenderer.MeasureText(graphics, "00" + Environment.NewLine + "0", drawFont);
-            int chWidth = strSize2.Width - strSize1.Width;
-            int offsetX = strSize1.Width - chWidth;
-            int chHeight = strSize2.Height - strSize1.Height;
+            //Size strSize1 = TextRenderer.MeasureText(graphics, "0", drawFont);
+            //Size strSize2 = TextRenderer.MeasureText(graphics, "00" + Environment.NewLine + "0", drawFont);
+            SizeF strSize1 = graphics.MeasureString("0", drawFont);
+            SizeF strSize2 = graphics.MeasureString("00" + Environment.NewLine + "0", drawFont);
+            
+            float chWidth = strSize2.Width - strSize1.Width;
+            float offsetX = strSize1.Width - chWidth;
+            float chHeight = strSize2.Height - strSize1.Height;
             //float offsetY = strSize2.Height - strSize1.Height;
             //float offsetY = strSize1.Height - size;
             //offsetY = 0;
@@ -7344,7 +7480,7 @@ namespace Watch_Face_Editor
                     {
                         string draw_string = words[i];
                         Size strSize = TextRenderer.MeasureText(graphics, draw_string, drawFont);
-                        int strLenght = strSize.Width + (draw_string.Length - 1) * spacing_h - offsetX;
+                        float strLenght = strSize.Width + (draw_string.Length - 1) * spacing_h - offsetX;
                         //strLenght += (draw_string.Length - 1) * spacing_h;
                         if (strLenght <= w) // слово помещается в рамку
                         {
@@ -7406,7 +7542,7 @@ namespace Watch_Face_Editor
 
             Logger.WriteLine("* Draw_text");
 
-            float PointX = (float)(-0.3 * offsetX);
+            float PointX = (float)(-0.5 * offsetX);
             //float PointY = (float)(1.2 * offsetY);
             float PointY = 0;
 
@@ -7434,24 +7570,37 @@ namespace Watch_Face_Editor
 
                     if (align_h == "RIGHT")
                     {
-                        Size strSize = TextRenderer.MeasureText(graphics, draw_string, drawFont);
+                        SizeF strSize = graphics.MeasureString(draw_string, drawFont);
                         float textLenght = strSize.Width + (draw_string.Length - 1) * spacing_h - offsetX;
-                        posX = (float)(w - 0.3 * offsetX - textLenght);
+                        posX = (float)(w - 0.5 * offsetX - textLenght);
                     }
                     if (align_h == "CENTER_H")
                     {
-                        Size strSize = TextRenderer.MeasureText(graphics, draw_string, drawFont);
+                        SizeF strSize = graphics.MeasureString(draw_string, drawFont);
                         float textLenght = strSize.Width + (draw_string.Length - 1) * spacing_h - offsetX;
-                        posX = (float)(w / 2 - 0.3 * offsetX - textLenght / 2);
+                        posX = (float)(w / 2 - 0.5 * offsetX - textLenght / 2);
                     }
 
+                    string lastChar = "0";
                     foreach (char ch in draw_string)
                     {
                         string str = ch.ToString();
+                        string drawStr = lastChar + str;
                         Size strSize = TextRenderer.MeasureText(graphics, str, drawFont);
-                        gPanel.DrawString(str, drawFont, drawBrush, posX, posY, strFormat);
 
-                        posX = posX + strSize.Width + spacing_h - offsetX;
+                        Size chSize1 = TextRenderer.MeasureText(lastChar, drawFont);
+                        Size chSize2 = TextRenderer.MeasureText(drawStr, drawFont);
+                        chWidth = chSize2.Width - chSize1.Width;
+
+                        SizeF textSize1 = graphics.MeasureString(lastChar, drawFont);
+                        SizeF textSize2 = graphics.MeasureString(drawStr, drawFont);
+                        float chWidth2 = (textSize2.Width - textSize1.Width) * 0.98f;
+
+                        gPanel.DrawString(str, drawFont, drawBrush, posX, posY, strFormat);
+                        lastChar = str;
+
+                        posX = posX + chWidth2 + spacing_h;
+                        //posX = posX + strSize.Width + spacing_h - offsetX;
                     }
                     PointY += (float)(chHeight + 0.46 * spacing_v);
                 }

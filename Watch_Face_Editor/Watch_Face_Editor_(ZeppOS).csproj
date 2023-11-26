@@ -644,6 +644,10 @@
       <Project>{c9c98c7a-c2ff-4af3-ba1c-b2e303062420}</Project>
       <Name>SplashScreen</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ZeppOS_Converter%28VB%29\ZeppOS_Converter%28VB%29.vbproj">
+      <Project>{cc433204-d5e8-4108-b389-b47a79b22dac}</Project>
+      <Name>ZeppOS_Converter%28VB%29</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
