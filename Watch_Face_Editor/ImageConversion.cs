@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ZeppOS_Converter_VB_;
 
 namespace Watch_Face_Editor
 {
@@ -34,9 +35,24 @@ namespace Watch_Face_Editor
                         fileStream.Read(_streamBuffer, 0, (int)fileStream.Length);
 
                         Header header = new Header(_streamBuffer, fileNameFull, targetFileName);
-                        if (header.GetExistsColorMap() == 1 && header.GetImageType() == 1) path = TgaToPng(fileNameFull, targetFileName, fix_color);
-                        if (header.GetExistsColorMap() == 0 && header.GetImageType() == 2) path = TgaARGBToPng(fileNameFull, targetFileName, fix_color);
-                        if (header.GetExistsColorMap() == 1 && header.GetImageType() == 9) path = TgaToPng(fileNameFull, targetFileName, fix_color);
+                        int colorMap = header.GetExistsColorMap();
+                        int imageType = header.GetImageType();
+                        int bitsPerPixel = header.GetBitsPerPixel();
+                        if (colorMap == 1 && imageType == 1) path = TgaToPng(fileNameFull, targetFileName, fix_color);
+                        if (colorMap == 0 && imageType == 2) 
+                        {
+                            if (bitsPerPixel != 32 && fix_color == 1)
+                            {
+                                ZeppOSConverter_VB myLibrary = new ZeppOSConverter_VB();
+                                bool result = myLibrary.MyMethod(fileNameFull, targetFileName);
+                                if(result) path = Path.GetDirectoryName(targetFileName);
+                            }
+                            else
+                            {
+                                path = TgaARGBToPng(fileNameFull, targetFileName, fix_color);
+                            }
+                        }
+                        if (colorMap == 1 && imageType == 9) path = TgaToPng(fileNameFull, targetFileName, fix_color);
                     }
                 }
                 catch (Exception exp)

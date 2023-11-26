@@ -385,7 +385,7 @@ namespace ControlLibrary
             }
         }
 
-        private void button_Number_Font_Click(object sender, EventArgs e)
+        private void panel_Number_Font_Click(object sender, EventArgs e)
         {
             selectedElement = "Number_Font";
 
@@ -497,7 +497,7 @@ namespace ControlLibrary
             }
         }
 
-        private void button_Number_Target_Font_Click(object sender, EventArgs e)
+        private void panel_Number_Target_Font_Click(object sender, EventArgs e)
         {
             selectedElement = "Number_Target_Font";
 

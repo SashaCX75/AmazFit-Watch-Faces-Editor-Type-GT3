@@ -17,6 +17,7 @@ namespace Watch_Face_Editor
         byte ColorMapEntrySize;
         byte ExistsColorMap;
         byte ImageType;
+        byte BitsPerPixel;
         public int Width { get; }
         public int Height { get; }
 
@@ -31,6 +32,7 @@ namespace Watch_Face_Editor
             ColorMapEntrySize = _header[7];
             Width = BitConverter.ToUInt16(_header, 12);
             Height = BitConverter.ToUInt16(_header, 14);
+            BitsPerPixel = _header[16];
 
             if (!(_header[1] == 0 && _header[2] == 2) && !(_header[1] == 1 && _header[2] == 1) && !(_header[1] == 1 && _header[2] == 9)) 
             {
@@ -77,6 +79,10 @@ namespace Watch_Face_Editor
         public int GetImageType()
         {
             return ImageType;
+        }
+        public int GetBitsPerPixel()
+        {
+            return BitsPerPixel;
         }
 
         public void SetColorMapCount(int value)
