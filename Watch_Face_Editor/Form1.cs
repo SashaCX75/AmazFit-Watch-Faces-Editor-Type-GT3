@@ -488,6 +488,7 @@ namespace Watch_Face_Editor
             uCtrl_RepeatingAlert_Opt.AutoSize = true;
             uCtrl_SmoothSeconds_Opt.AutoSize = true;
             uCtrl_Button_Opt.AutoSize = true;
+            uCtrl_JS_script_Opt.AutoSize = true;
 
             button_CreatePreview.Location = button_RefreshPreview.Location;
 
@@ -1311,6 +1312,7 @@ namespace Watch_Face_Editor
             if (e.Data.GetDataPresent(typeof(UCtrl_Wind_Elm))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(UCtrl_Moon_Elm))) typeReturn = false;
             if (e.Data.GetDataPresent(typeof(UCtrl_Image_Elm))) typeReturn = false;
+            if (e.Data.GetDataPresent(typeof(UCtrl_JSscript_Elm))) typeReturn = false;
             //if (typeReturn) return;
             int dY = tableLayoutPanel_ElemetsWatchFace.PointToScreen(Point.Empty).Y;
             int posY = e.Y - dY;
@@ -1583,6 +1585,14 @@ namespace Watch_Face_Editor
                         if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
                         break;
 
+                    case "ControlLibrary.UCtrl_JSscript_Elm":
+                        ElementScript script =
+                            (ElementScript)Elements.Find(e1 => e1.GetType().Name == "ElementScript");
+                        index = Elements.IndexOf(script);
+                        draggedUCtrl_Elm = (UCtrl_JSscript_Elm)e.Data.GetData(typeof(UCtrl_JSscript_Elm));
+                        if (draggedUCtrl_Elm != null) draggedPanel = (Panel)draggedUCtrl_Elm.Parent;
+                        break;
+
                     case "ControlLibrary.UCtrl_EditableElements_Elm":
                         //EditableElements editableElements =
                         //    (EditableElements)Elements.Find(e1 => e1.GetType().Name == "ElementEditablePointers");
@@ -1776,6 +1786,9 @@ namespace Watch_Face_Editor
                 case "Buttons":
                     uCtrl_Button_Opt.Visible = true;
                     break;
+                case "Script":
+                    uCtrl_JS_script_Opt.Visible = true;
+                    break;
             }
 
             if (optionsName == "EditableTimePointer" || optionsName == "EditableElements" ||
@@ -1810,6 +1823,7 @@ namespace Watch_Face_Editor
             uCtrl_RepeatingAlert_Opt.Visible = false;
             uCtrl_SmoothSeconds_Opt.Visible = false;
             uCtrl_Button_Opt.Visible = false;
+            uCtrl_JS_script_Opt.Visible = false;
         }
 
         private void ResetHighlightState(string selectElementName)
@@ -1848,6 +1862,7 @@ namespace Watch_Face_Editor
             if (selectElementName != "Wind") uCtrl_Wind_Elm.ResetHighlightState();
             if (selectElementName != "Moon") uCtrl_Moon_Elm.ResetHighlightState();
             if (selectElementName != "Image") uCtrl_Image_Elm.ResetHighlightState();
+            if (selectElementName != "Script") uCtrl_JSscript_Elm.ResetHighlightState();
 
             if (selectElementName != "DisconnectAlert") uCtrl_DisconnectAlert_Elm.ResetHighlightState();
             if (selectElementName != "RepeatingAlert") uCtrl_RepeatingAlert_Elm.ResetHighlightState();
@@ -1988,6 +2003,7 @@ namespace Watch_Face_Editor
                 hmUI_widget_IMG_NUMBER img_number = null;
                 hmUI_widget_IMG_NUMBER text_rotation = null;
                 Text_Circle text_circle = null;
+                hmUI_widget_TEXT text = null;
 
                 switch (selectElement)
                 {
@@ -2024,6 +2040,34 @@ namespace Watch_Face_Editor
                             hmUI_widget_IMG_TIME_am_pm am_pm = digitalTime.AmPm;
                             Read_AM_PM_Options(am_pm);
                             ShowElemenrOptions("AmPm");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+
+                    case "Hour_Font":
+                        if (uCtrl_DigitalTime_Elm.checkBox_Hours_Font.Checked)
+                        {
+                            text = digitalTime.Hour_Font;
+                            Read_Text_Options(text, true, true);
+                            ShowElemenrOptions("SystemFont");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Minute_Font":
+                        if (uCtrl_DigitalTime_Elm.checkBox_Minutes_Font.Checked)
+                        {
+                            text = digitalTime.Minute_Font;
+                            Read_Text_Options(text, true, true);
+                            ShowElemenrOptions("SystemFont");
+                        }
+                        else HideAllElemenrOptions();
+                        break;
+                    case "Second_Font":
+                        if (uCtrl_DigitalTime_Elm.checkBox_Seconds_Font.Checked)
+                        {
+                            text = digitalTime.Second_Font;
+                            Read_Text_Options(text, true, true);
+                            ShowElemenrOptions("SystemFont");
                         }
                         else HideAllElemenrOptions();
                         break;
@@ -2796,109 +2840,6 @@ namespace Watch_Face_Editor
                 Watch_Face.ScreenNormal.Background = new Background();
                 Watch_Face.ScreenNormal.Background.BackgroundColor = new hmUI_widget_FILL_RECT();
 
-                //switch (ProgramSettings.Watch_Model)
-                //{
-                //    case "GTR 3":
-                //        Watch_Face.WatchFace_Info.DeviceName = "GTR3";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
-                //        break;
-                //    case "GTR 3 Pro":
-                //        Watch_Face.WatchFace_Info.DeviceName = "GTR3_Pro";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 480;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 480;
-                //        break;
-                //    case "GTS 3":
-                //        Watch_Face.WatchFace_Info.DeviceName = "GTS3";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
-                //        break;
-                //    case "T-Rex 2":
-                //        Watch_Face.WatchFace_Info.DeviceName = "T_Rex_2";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
-                //        break;
-                //    case "T-Rex Ultra":
-                //        Watch_Face.WatchFace_Info.DeviceName = "T_Rex_Ultra";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 454;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 454;
-                //        break;
-                //    case "GTR 4":
-                //        Watch_Face.WatchFace_Info.DeviceName = "GTR4";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 466;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 466;
-                //        break;
-                //    case "Amazfit Band 7":
-                //        Watch_Face.WatchFace_Info.DeviceName = "Amazfit_Band_7";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 368;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 194;
-                //        break;
-                //    case "GTS 4 mini":
-                //        Watch_Face.WatchFace_Info.DeviceName = "GTS4_mini";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 384;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 336;
-                //        break;
-                //    case "Falcon":
-                //        Watch_Face.WatchFace_Info.DeviceName = "Falcon";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 416;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 416;
-                //        break;
-                //    case "GTR mini":
-                //        Watch_Face.WatchFace_Info.DeviceName = "GTR_mini";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 416;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 416;
-                //        break;
-                //    case "GTS 4":
-                //        Watch_Face.WatchFace_Info.DeviceName = "GTS4";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.h = 450;
-                //        Watch_Face.ScreenNormal.Background.BackgroundColor.w = 390;
-                //        break;
-                //}
-
-                /*// StartBlock :: Kartun
-                Logger.WriteLine($"Starting new project for {ProgramSettings.Watch_Model}");
-                Classes.AmazfitPlatform currPlatform = AvailableConfigurations[ProgramSettings.Watch_Model];
-                Logger.WriteLine($"Loaded configuration: {currPlatform}");
-                Watch_Face.WatchFace_Info.DeviceName = currPlatform.int_id;
-                Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
-                Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
-                Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
-                Watch_Face.ScreenNormal.Background.BackgroundColor.h = currPlatform.background.h;
-                Watch_Face.ScreenNormal.Background.BackgroundColor.w = currPlatform.background.w;
-                // EndBlock :: Kartun*/
                 Watch_Face.WatchFace_Info.DeviceName = ProgramSettings.Watch_Model; // отказываеися от int_id
                 Watch_Face.ScreenNormal.Background.BackgroundColor.color = "0xFF000000";
                 Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
@@ -3729,10 +3670,6 @@ namespace Watch_Face_Editor
                 }
                 else MessageBox.Show(Properties.FormStrings.Message_ShortcutsAOD_Text, Properties.FormStrings.Message_Warning_Caption,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                //panel_WatchfaceElements.AutoScrollPosition = new Point(
-                //    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                //    panel_WatchfaceElements.VerticalScroll.Maximum);
             }
             if (comboBox_AddSystem.SelectedIndex == 3)
             {
@@ -3745,10 +3682,6 @@ namespace Watch_Face_Editor
                 }
                 else MessageBox.Show(Properties.FormStrings.Message_AnimationAOD_Text, Properties.FormStrings.Message_Warning_Caption,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                //panel_WatchfaceElements.AutoScrollPosition = new Point(
-                //    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                //    panel_WatchfaceElements.VerticalScroll.Maximum);
             }
             if (comboBox_AddSystem.SelectedIndex == 4)
             {
@@ -3761,10 +3694,6 @@ namespace Watch_Face_Editor
                 }
                 else MessageBox.Show(Properties.FormStrings.Message_EditableElementsAOD_Text, Properties.FormStrings.Message_Warning_Caption,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                //panel_WatchfaceElements.AutoScrollPosition = new Point(
-                //    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                //    panel_WatchfaceElements.VerticalScroll.Maximum);
             }
             if (comboBox_AddSystem.SelectedIndex == 5)
             {
@@ -3777,10 +3706,6 @@ namespace Watch_Face_Editor
                 }
                 else MessageBox.Show(Properties.FormStrings.Message_ElementAOD_Text, Properties.FormStrings.Message_Warning_Caption,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                //panel_WatchfaceElements.AutoScrollPosition = new Point(
-                //    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                //    panel_WatchfaceElements.VerticalScroll.Maximum);
             }
             if (comboBox_AddSystem.SelectedIndex == 6)
             {
@@ -3793,10 +3718,6 @@ namespace Watch_Face_Editor
                 }
                 else MessageBox.Show(Properties.FormStrings.Message_ElementAOD_Text, Properties.FormStrings.Message_Warning_Caption,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                //panel_WatchfaceElements.AutoScrollPosition = new Point(
-                //    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                //    panel_WatchfaceElements.VerticalScroll.Maximum);
             }
             if (comboBox_AddSystem.SelectedIndex == 7)
             {
@@ -3820,10 +3741,6 @@ namespace Watch_Face_Editor
                 }
                 else MessageBox.Show(Properties.FormStrings.Message_ElementAOD_Text, Properties.FormStrings.Message_Warning_Caption,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                //panel_WatchfaceElements.AutoScrollPosition = new Point(
-                //    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                //    panel_WatchfaceElements.VerticalScroll.Maximum);
             }
             if (comboBox_AddSystem.SelectedIndex == 9)
             {
@@ -3836,10 +3753,17 @@ namespace Watch_Face_Editor
                 }
                 else MessageBox.Show(Properties.FormStrings.Message_ElementAOD_Text, Properties.FormStrings.Message_Warning_Caption,
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            if (comboBox_AddSystem.SelectedIndex == 10)
+            {
+                AddScript();
+                ShowElemetsWatchFace();
+                JSON_Modified = true;
+                FormText();
 
-                //panel_WatchfaceElements.AutoScrollPosition = new Point(
-                //    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
-                //    panel_WatchfaceElements.VerticalScroll.Maximum);
+                panel_WatchfaceElements.AutoScrollPosition = new Point(
+                    Math.Abs(panel_WatchfaceElements.AutoScrollPosition.X),
+                    panel_WatchfaceElements.VerticalScroll.Maximum);
             }
 
             PreviewView = false;
@@ -5055,6 +4979,36 @@ namespace Watch_Face_Editor
             uCtrl_Icon_Opt.SettingsClear();
         }
 
+        /// <summary>Добавляем JS скрипт в циферблат</summary>
+        private void AddScript()
+        {
+            if (!PreviewView) return;
+            List<object> Elements = new List<object>();
+            if (Watch_Face == null) Watch_Face = new WATCH_FACE();
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face.ScreenNormal == null) Watch_Face.ScreenNormal = new ScreenNormal();
+                if (Watch_Face.ScreenNormal.Elements == null) Watch_Face.ScreenNormal.Elements = new List<object>();
+                Elements = Watch_Face.ScreenNormal.Elements;
+            }
+            else
+            {
+                if (Watch_Face.ScreenAOD == null) Watch_Face.ScreenAOD = new ScreenAOD();
+                if (Watch_Face.ScreenAOD.Elements == null) Watch_Face.ScreenAOD.Elements = new List<object>();
+                Elements = Watch_Face.ScreenAOD.Elements;
+
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null) Elements = Watch_Face.ScreenAOD.Elements;
+            }
+
+            ElementScript script = new ElementScript();
+            script.enable = true;
+
+            bool exists = Elements.Exists(e => e.GetType().Name == "ElementScript"); // проверяем что такого элемента нет
+            if (!exists) Elements.Insert(0, script);
+            uCtrl_JS_script_Opt.SettingsClear(ProjectDir);
+        }
+
 
 
         /// <summary>Отображаем элемынты в соответствии с json файлом</summary>
@@ -5106,6 +5060,7 @@ namespace Watch_Face_Editor
             uCtrl_RepeatingAlert_Elm.Visible = false;
             uCtrl_TopImage_Elm.Visible = false;
             uCtrl_Buttons_Elm.Visible = false;
+            uCtrl_JSscript_Elm.Visible = false;
 
 
             int count = tableLayoutPanel_ElemetsWatchFace.RowCount;
@@ -5188,6 +5143,25 @@ namespace Watch_Face_Editor
                             {
                                 uCtrl_DigitalTime_Elm.checkBox_AmPm.Checked = DigitalTime.AmPm.visible;
                                 elementOptions.Add(DigitalTime.AmPm.position, "AmPm");
+                            }
+
+                            if (DigitalTime.Second_Font != null && !elementOptions.ContainsKey(DigitalTime.Second_Font.position) &&
+                                !elementOptions.ContainsValue("Second_Font"))
+                            {
+                                uCtrl_DigitalTime_Elm.checkBox_Seconds_Font.Checked = DigitalTime.Second_Font.visible;
+                                elementOptions.Add(DigitalTime.Second_Font.position, "Second_Font");
+                            }
+                            if (DigitalTime.Minute_Font != null && !elementOptions.ContainsKey(DigitalTime.Minute_Font.position) &&
+                                !elementOptions.ContainsValue("Minute_Font"))
+                            {
+                                uCtrl_DigitalTime_Elm.checkBox_Minutes_Font.Checked = DigitalTime.Minute_Font.visible;
+                                elementOptions.Add(DigitalTime.Minute_Font.position, "Minute_Font");
+                            }
+                            if (DigitalTime.Hour_Font != null && !elementOptions.ContainsKey(DigitalTime.Hour_Font.position) &&
+                                !elementOptions.ContainsValue("Hour_Font"))
+                            {
+                                uCtrl_DigitalTime_Elm.checkBox_Hours_Font.Checked = DigitalTime.Hour_Font.visible;
+                                elementOptions.Add(DigitalTime.Hour_Font.position, "Hour_Font");
                             }
 
                             if (DigitalTime.Second_rotation != null && !elementOptions.ContainsKey(DigitalTime.Second_rotation.position) &&
@@ -6690,6 +6664,17 @@ namespace Watch_Face_Editor
                             //SetElementPositionInGUI(type, i + 1);
                             break;
                         #endregion
+
+                        #region ElementScript
+                        case "ElementScript":
+                            ElementScript Script = (ElementScript)element;
+                            uCtrl_JSscript_Elm.SetVisibilityElementStatus(Script.enable);
+
+                            uCtrl_JSscript_Elm.Visible = true;
+                            SetElementPositionInGUI(type, count - i - 2);
+                            //SetElementPositionInGUI(type, i + 1);
+                            break;
+                            #endregion
                     }
                 }
             }
@@ -6946,6 +6931,9 @@ namespace Watch_Face_Editor
                 case "ElementImage":
                     panel = panel_UC_Image;
                     break;
+                case "Buttons":
+                    panel = panel_UC_Buttons;
+                    break;
 
                 case "DisconnectAlert":
                     panel = panel_UC_DisconnectAlert;
@@ -6956,8 +6944,8 @@ namespace Watch_Face_Editor
                 case "TopImage":
                     panel = panel_UC_TopImage;
                     break;
-                case "Buttons":
-                    panel = panel_UC_Buttons;
+                case "ElementScript":
+                    panel = panel_UC_JS;
                     break;
             }
             if (panel == null) return;
@@ -7215,6 +7203,10 @@ namespace Watch_Face_Editor
                 if (digitalTime.Second == null) digitalTime.Second = new hmUI_widget_IMG_NUMBER();
                 if (digitalTime.AmPm == null) digitalTime.AmPm = new hmUI_widget_IMG_TIME_am_pm();
 
+                if (digitalTime.Hour_Font == null) digitalTime.Hour_Font = new hmUI_widget_TEXT();
+                if (digitalTime.Minute_Font == null) digitalTime.Minute_Font = new hmUI_widget_TEXT();
+                if (digitalTime.Second_Font == null) digitalTime.Second_Font = new hmUI_widget_TEXT();
+
                 if (digitalTime.Hour_rotation == null) digitalTime.Hour_rotation = new hmUI_widget_IMG_NUMBER();
                 if (digitalTime.Minute_rotation == null) digitalTime.Minute_rotation = new hmUI_widget_IMG_NUMBER();
                 if (digitalTime.Second_rotation == null) digitalTime.Second_rotation = new hmUI_widget_IMG_NUMBER();
@@ -7228,6 +7220,10 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Minute")) digitalTime.Minute.position = elementOptions["Minute"];
                 if (elementOptions.ContainsKey("Second")) digitalTime.Second.position = elementOptions["Second"];
                 if (elementOptions.ContainsKey("AmPm")) digitalTime.AmPm.position = elementOptions["AmPm"];
+
+                if (elementOptions.ContainsKey("Hour_Font")) digitalTime.Hour_Font.position = elementOptions["Hour_Font"];
+                if (elementOptions.ContainsKey("Minute_Font")) digitalTime.Minute_Font.position = elementOptions["Minute_Font"];
+                if (elementOptions.ContainsKey("Second_Font")) digitalTime.Second_Font.position = elementOptions["Second_Font"];
 
                 if (elementOptions.ContainsKey("Hour_rotation")) digitalTime.Hour_rotation.position = elementOptions["Hour_rotation"];
                 if (elementOptions.ContainsKey("Minute_rotation")) digitalTime.Minute_rotation.position = elementOptions["Minute_rotation"];
@@ -7252,6 +7248,16 @@ namespace Watch_Face_Editor
                         break;
                     case "checkBox_AmPm":
                         digitalTime.AmPm.visible = checkBox.Checked;
+                        break;
+
+                    case "checkBox_Hours_Font":
+                        digitalTime.Hour_Font.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Minutes_Font":
+                        digitalTime.Minute_Font.visible = checkBox.Checked;
+                        break;
+                    case "checkBox_Seconds_Font":
+                        digitalTime.Second_Font.visible = checkBox.Checked;
                         break;
 
                     case "checkBox_Hours_rotation":
@@ -7320,6 +7326,10 @@ namespace Watch_Face_Editor
                 if (digitalTime.Second == null) digitalTime.Second = new hmUI_widget_IMG_NUMBER();
                 if (digitalTime.AmPm == null) digitalTime.AmPm = new hmUI_widget_IMG_TIME_am_pm();
 
+                if (digitalTime.Hour_Font == null) digitalTime.Hour_Font = new hmUI_widget_TEXT();
+                if (digitalTime.Minute_Font == null) digitalTime.Minute_Font = new hmUI_widget_TEXT();
+                if (digitalTime.Second_Font == null) digitalTime.Second_Font = new hmUI_widget_TEXT();
+
                 if (digitalTime.Hour_rotation == null) digitalTime.Hour_rotation = new hmUI_widget_IMG_NUMBER();
                 if (digitalTime.Minute_rotation == null) digitalTime.Minute_rotation = new hmUI_widget_IMG_NUMBER();
                 if (digitalTime.Second_rotation == null) digitalTime.Second_rotation = new hmUI_widget_IMG_NUMBER();
@@ -7333,6 +7343,10 @@ namespace Watch_Face_Editor
                 if (elementOptions.ContainsKey("Minute")) digitalTime.Minute.position = elementOptions["Minute"];
                 if (elementOptions.ContainsKey("Second")) digitalTime.Second.position = elementOptions["Second"];
                 if (elementOptions.ContainsKey("AmPm")) digitalTime.AmPm.position = elementOptions["AmPm"];
+
+                if (elementOptions.ContainsKey("Hour_Font")) digitalTime.Hour_Font.position = elementOptions["Hour_Font"];
+                if (elementOptions.ContainsKey("Minute_Font")) digitalTime.Minute_Font.position = elementOptions["Minute_Font"];
+                if (elementOptions.ContainsKey("Second_Font")) digitalTime.Second_Font.position = elementOptions["Second_Font"];
 
                 if (elementOptions.ContainsKey("Hour_rotation")) digitalTime.Hour_rotation.position = elementOptions["Hour_rotation"];
                 if (elementOptions.ContainsKey("Minute_rotation")) digitalTime.Minute_rotation.position = elementOptions["Minute_rotation"];
@@ -7476,10 +7490,11 @@ namespace Watch_Face_Editor
                 case "UCtrl_Moon_Elm":
                     objectName = "ElementMoon";
                     break;
-                case "UCtrl_Image_Elm":
-                    objectName = "ElementImage";
+                case "UCtrl_JSscript_Elm":
+                    objectName = "ElementScript";
                     break;
             }
+
             if (objectName.Length > 0)
             {
                 if (radioButton_ScreenNormal.Checked)
@@ -13191,6 +13206,35 @@ namespace Watch_Face_Editor
             }
         }
 
+        private void uCtrl_JSscript_Elm_SelectChanged(object sender, EventArgs eventArgs)
+        {
+            ResetHighlightState("Script");
+
+            ElementScript script = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    script = (ElementScript)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementScript");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    script = (ElementScript)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementScript");
+                }
+            }
+            if (script != null)
+            {
+                Read_Script_Options(script);
+                ShowElemenrOptions("Script");
+
+            }
+        }
+
         private void uCtrl_DisconnectAlert_Elm_SelectChanged(object sender, EventArgs eventArgs)
         {
             ResetHighlightState("DisconnectAlert");
@@ -15871,6 +15915,35 @@ namespace Watch_Face_Editor
             if (image != null)
             {
                 image.visible = visible;
+            }
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_JSscript_Elm_VisibleElementChanged(object sender, EventArgs eventArgs, bool visible)
+        {
+            ElementScript script = null;
+            if (radioButton_ScreenNormal.Checked)
+            {
+                if (Watch_Face != null && Watch_Face.ScreenNormal != null &&
+                    Watch_Face.ScreenNormal.Elements != null)
+                {
+                    script = (ElementScript)Watch_Face.ScreenNormal.Elements.Find(e => e.GetType().Name == "ElementScript");
+                }
+            }
+            else
+            {
+                if (Watch_Face != null && Watch_Face.ScreenAOD != null &&
+                    Watch_Face.ScreenAOD.Elements != null)
+                {
+                    script = (ElementScript)Watch_Face.ScreenAOD.Elements.Find(e => e.GetType().Name == "ElementScript");
+                }
+            }
+            if (script != null)
+            {
+                script.enable = visible;
             }
 
             JSON_Modified = true;
@@ -18929,9 +19002,14 @@ namespace Watch_Face_Editor
             }
         }
 
-        private void linkLabel_py_amazfit_tools_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void linkLabel_ImageToZeppOS_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/SashaCX75/ImageToGTR3_v2/releases/tag/ImageToZeppOS");
+        }
+
+        private void linkLabel_TBUI_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://4pda.to/forum/index.php?showtopic=1066226");
         }
 
         private void linkLabel_buymeacoffee_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -19442,6 +19520,7 @@ namespace Watch_Face_Editor
                 }
             }
         }
+
     }
 }
 

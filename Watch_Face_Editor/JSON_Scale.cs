@@ -211,6 +211,10 @@ namespace Watch_Face_Editor
                     Scale_IMG_NUMBER(elementDigitalTime.Minute, scale);
                     Scale_IMG_NUMBER(elementDigitalTime.Second, scale);
 
+                    Scale_TEXT(elementDigitalTime.Hour_Font, scale);
+                    Scale_TEXT(elementDigitalTime.Minute_Font, scale);
+                    Scale_TEXT(elementDigitalTime.Second_Font, scale);
+
                     Scale_IMG_NUMBER(elementDigitalTime.Hour_rotation, scale);
                     Scale_IMG_NUMBER(elementDigitalTime.Minute_rotation, scale);
                     Scale_IMG_NUMBER(elementDigitalTime.Second_rotation, scale);

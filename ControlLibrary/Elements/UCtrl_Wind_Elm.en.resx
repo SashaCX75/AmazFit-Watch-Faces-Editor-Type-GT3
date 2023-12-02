@@ -128,7 +128,7 @@ W - west
 NW - north-west</value>
   </data>
   <data name="button_Number_Font.Text" xml:space="preserve">
-    <value>Value by font</value>
+    <value>Value in font</value>
   </data>
   <data name="button_Direction.Text" xml:space="preserve">
     <value>Wind direction</value>

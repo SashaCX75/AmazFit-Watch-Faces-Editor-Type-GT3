@@ -118,13 +118,13 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="button_Number_Target_Font.Text" xml:space="preserve">
-    <value>Value by font (altitude)</value>
+    <value>Value in font (altitude)</value>
   </data>
   <data name="button_Number_Target.Text" xml:space="preserve">
     <value>Numerical values (altitude)</value>
   </data>
   <data name="button_Number_Font.Text" xml:space="preserve">
-    <value>Value by font (pressure)</value>
+    <value>Value in font (pressure)</value>
   </data>
   <data name="button_Number.Text" xml:space="preserve">
     <value>Numerical values (pressure)</value>

@@ -651,7 +651,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>rmdir /s /q "$(TargetDir)\Language\de"
+    <PostBuildEvent>del /q $(TargetDir)*.pdb"
+rmdir /s /q "$(TargetDir)\Language\de"
 rmdir /s /q "$(TargetDir)\Language\en"
 rmdir /s /q "$(TargetDir)\Language\es"
 rmdir /s /q "$(TargetDir)\Language\it"
@@ -671,8 +672,7 @@ move /y "$(TargetDir)\cs" "$(TargetDir)\Language"
 move /y "$(TargetDir)\fr" "$(TargetDir)\Language"
 move "$(TargetDir)*.dll" "$(TargetDir)\Libs"
 move "$(TargetDir)SplashScreen.*" "$(TargetDir)\Libs"
-move "$(TargetDir)*.xml" "$(TargetDir)\Libs"
-del /q $(TargetDir)*.pdb"</PostBuildEvent>
+move "$(TargetDir)*.xml" "$(TargetDir)\Libs"</PostBuildEvent>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>

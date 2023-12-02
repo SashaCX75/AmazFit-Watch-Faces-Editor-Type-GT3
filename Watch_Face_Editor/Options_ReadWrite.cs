@@ -697,6 +697,26 @@ namespace Watch_Face_Editor
                         break;
                     #endregion
 
+                    #region ElementScript
+                    case "ElementScript":
+                        ElementScript Script = null;
+                        try
+                        {
+                            Script = JsonConvert.DeserializeObject<ElementScript>(elementStr, new JsonSerializerSettings
+                            {
+                                //DefaultValueHandling = DefaultValueHandling.Ignore,
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(Properties.FormStrings.Message_JsonError_Text + Environment.NewLine + ex,
+                                Properties.FormStrings.Message_Error_Caption, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        if (Script != null) NewElements.Add(Script);
+                        break;
+                    #endregion
+
 
                     #region ElementAnimation
                     case "ElementAnimation":
@@ -1719,6 +1739,27 @@ namespace Watch_Face_Editor
             PreviewView = true;
         }
 
+        /// <summary>Читаем настройки для отображения иконки</summary>
+        private void Read_Script_Options(ElementScript script)
+        {
+            PreviewView = false;
+
+            uCtrl_JS_script_Opt.SettingsClear(ProjectDir);
+            uCtrl_JS_script_Opt.AOD = !radioButton_ScreenNormal.Checked;
+            uCtrl_JS_script_Opt.Visible = true;
+            uCtrl_JS_script_Opt._ElementScript = script;
+
+            uCtrl_JS_script_Opt.checkBox_user_functions.Checked = script.user_functions;
+            uCtrl_JS_script_Opt.checkBox_user_script_start.Checked = script.user_script_start;
+            uCtrl_JS_script_Opt.checkBox_user_script.Checked = script.user_script;
+            uCtrl_JS_script_Opt.checkBox_user_script_beforeShortcuts.Checked = script.user_script_beforeShortcuts;
+            uCtrl_JS_script_Opt.checkBox_user_script_end.Checked = script.user_script_end;
+            uCtrl_JS_script_Opt.checkBox_resume_call.Checked = script.resume_call;
+            uCtrl_JS_script_Opt.checkBox_pause_call.Checked = script.pause_call;
+
+            PreviewView = true;
+        }
+
         /// <summary>Читаем настройки для отображения оповещения об обрыве связи</summary>
         private void Read_DisconnectAlert_Options(DisconnectAlert disconnectAlert)
         {
@@ -1859,94 +1900,44 @@ namespace Watch_Face_Editor
             // картинка для фона
             if (userCtrl_Background_Options.radioButton_Background_image.Checked)
             {
-                if (backgroundImg.Length > 0)
+                if (background == null)
                 {
-                    if (background == null) 
+                    if (radioButton_ScreenNormal.Checked)
                     {
-                        if (radioButton_ScreenNormal.Checked)
-                        {
-                            if (Watch_Face.ScreenNormal == null) Watch_Face.ScreenNormal = new ScreenNormal();
-                            if (Watch_Face.ScreenNormal.Background == null)
-                                Watch_Face.ScreenNormal.Background = new Background();
-                            background = Watch_Face.ScreenNormal.Background;
-                        }
-                        else
-                        {
-                            if (Watch_Face.ScreenAOD == null) Watch_Face.ScreenAOD = new ScreenAOD();
-                            if (Watch_Face.ScreenAOD.Background == null)
-                                Watch_Face.ScreenAOD.Background = new Background();
-                            background = Watch_Face.ScreenAOD.Background;
-                        }
+                        if (Watch_Face.ScreenNormal == null) Watch_Face.ScreenNormal = new ScreenNormal();
+                        if (Watch_Face.ScreenNormal.Background == null)
+                            Watch_Face.ScreenNormal.Background = new Background();
+                        background = Watch_Face.ScreenNormal.Background;
                     }
-
-                    //background = new Background();
-                    if (background.BackgroundImage == null)
-                        background.BackgroundImage = new hmUI_widget_IMG();
-                    background.BackgroundImage.src = backgroundImg;
-                    background.BackgroundImage.x = 0;
-                    background.BackgroundImage.y = 0;
-                    /*switch (ProgramSettings.Watch_Model)
+                    else
                     {
-                        case "GTR 3":
-                            background.BackgroundImage.h = 454;
-                            background.BackgroundImage.w = 454;
-                            break;
-                        case "GTR 3 Pro":
-                            background.BackgroundImage.h = 480;
-                            background.BackgroundImage.w = 480;
-                            break;
-                        case "GTS 3":
-                            background.BackgroundImage.h = 450;
-                            background.BackgroundImage.w = 390;
-                            break;
-                        case "T-Rex 2":
-                            background.BackgroundImage.h = 454;
-                            background.BackgroundImage.w = 454;
-                            break;
-                        case "T-Rex Ultra":
-                            background.BackgroundImage.h = 454;
-                            background.BackgroundImage.w = 454;
-                            break;
-                        case "GTR 4":
-                            background.BackgroundImage.h = 466;
-                            background.BackgroundImage.w = 466;
-                            break;
-                        case "Amazfit Band 7":
-                            background.BackgroundImage.h = 368;
-                            background.BackgroundImage.w = 194;
-                            break;
-                        case "GTS 4 mini":
-                            background.BackgroundImage.h = 384;
-                            background.BackgroundImage.w = 336;
-                            break;
-                        case "Falcon":
-                            background.BackgroundImage.h = 416;
-                            background.BackgroundImage.w = 416;
-                            break;
-                        case "GTR mini":
-                            background.BackgroundImage.h = 416;
-                            background.BackgroundImage.w = 416;
-                            break;
-                        case "GTS 4":
-                            background.BackgroundImage.h = 450;
-                            background.BackgroundImage.w = 390;
-                            break;
-                    }*/
-                    background.BackgroundImage.h = SelectedModel.background.h;
-                    background.BackgroundImage.w = SelectedModel.background.w;
-                    //background.BackgroundImage.show_level = "ONLY_NORMAL";
-                    background.BackgroundColor = null;
-                    if (background.Editable_Background != null) background.Editable_Background.enable_edit_bg = false;
-                    uCtrl_EditableBackground_Opt.Visible = false;
-
-                    if (radioButton_ScreenIdle.Checked)
-                    {
-                        if (Watch_Face.ScreenNormal.Background != null && Watch_Face.ScreenNormal.Background.Editable_Background != null)
-                        {
-                            Watch_Face.ScreenNormal.Background.Editable_Background.AOD_show = false;
-                        }
+                        if (Watch_Face.ScreenAOD == null) Watch_Face.ScreenAOD = new ScreenAOD();
+                        if (Watch_Face.ScreenAOD.Background == null)
+                            Watch_Face.ScreenAOD.Background = new Background();
+                        background = Watch_Face.ScreenAOD.Background;
                     }
                 }
+
+                //background = new Background();
+                if (background.BackgroundImage == null)
+                    background.BackgroundImage = new hmUI_widget_IMG();
+                if(backgroundImg.Length > 0) background.BackgroundImage.src = backgroundImg;
+                background.BackgroundImage.x = 0;
+                background.BackgroundImage.y = 0;
+                background.BackgroundImage.h = SelectedModel.background.h;
+                background.BackgroundImage.w = SelectedModel.background.w;
+                //background.BackgroundImage.show_level = "ONLY_NORMAL";
+                background.BackgroundColor = null;
+                if (background.Editable_Background != null) background.Editable_Background.enable_edit_bg = false;
+
+                if (radioButton_ScreenIdle.Checked)
+                {
+                    if (Watch_Face.ScreenNormal.Background != null && Watch_Face.ScreenNormal.Background.Editable_Background != null)
+                    {
+                        Watch_Face.ScreenNormal.Background.Editable_Background.AOD_show = false;
+                    }
+                }
+                uCtrl_EditableBackground_Opt.Visible = false;
             }
             // цвет для фона
             else if (userCtrl_Background_Options.radioButton_Background_color.Checked)
@@ -1974,53 +1965,6 @@ namespace Watch_Face_Editor
                 background.BackgroundColor.color = ColorToString(userCtrl_Background_Options.GetColorBackground());
                 background.BackgroundColor.x = 0;
                 background.BackgroundColor.y = 0;
-                /*switch (ProgramSettings.Watch_Model)
-                {
-                    case "GTR 3":
-                        background.BackgroundColor.h = 454;
-                        background.BackgroundColor.w = 454;
-                        break;
-                    case "GTR 3 Pro":
-                        background.BackgroundColor.h = 480;
-                        background.BackgroundColor.w = 480;
-                        break;
-                    case "GTS 3":
-                        background.BackgroundColor.h = 450;
-                        background.BackgroundColor.w = 390;
-                        break;
-                    case "T-Rex 2":
-                        background.BackgroundColor.h = 454;
-                        background.BackgroundColor.w = 454;
-                        break;
-                    case "T-Rex Ultra":
-                        background.BackgroundColor.h = 454;
-                        background.BackgroundColor.w = 454;
-                        break;
-                    case "GTR 4":
-                        background.BackgroundColor.h = 466;
-                        background.BackgroundColor.w = 466;
-                        break;
-                    case "Amazfit Band 7":
-                        background.BackgroundColor.h = 368;
-                        background.BackgroundColor.w = 194;
-                        break;
-                    case "GTS 4 mini":
-                        background.BackgroundColor.h = 384;
-                        background.BackgroundColor.w = 336;
-                        break;
-                    case "Falcon":
-                        background.BackgroundColor.h = 416;
-                        background.BackgroundColor.w = 416;
-                        break;
-                    case "GTR mini":
-                        background.BackgroundColor.h = 416;
-                        background.BackgroundColor.w = 416;
-                        break;
-                    case "GTS 4":
-                        background.BackgroundColor.h = 450;
-                        background.BackgroundColor.w = 390;
-                        break;
-                }*/
                 background.BackgroundColor.h = SelectedModel.background.h;
                 background.BackgroundColor.w = SelectedModel.background.w;
                 background.BackgroundImage = null;
@@ -3455,6 +3399,27 @@ namespace Watch_Face_Editor
             img_number.dot_image = uCtrl_Text_Rotate_Opt.GetImageDecimalPointOrMinus();
             img_number.invalid_image = uCtrl_Text_Rotate_Opt.GetImageError();
             img_number.zero = uCtrl_Text_Rotate_Opt.checkBox_addZero.Checked;
+
+
+            JSON_Modified = true;
+            PreviewImage();
+            FormText();
+        }
+
+        private void uCtrl_JS_script_Opt_ValueChanged(object sender, EventArgs eventArgs)
+        {
+            if (!PreviewView) return;
+            if (Watch_Face == null) return;
+            ElementScript script = (ElementScript)uCtrl_JS_script_Opt._ElementScript;
+            if (script == null) return;
+
+            script.user_functions = uCtrl_JS_script_Opt.checkBox_user_functions.Checked;
+            script.user_script_start = uCtrl_JS_script_Opt.checkBox_user_script_start.Checked;
+            script.user_script = uCtrl_JS_script_Opt.checkBox_user_script.Checked;
+            script.user_script_beforeShortcuts = uCtrl_JS_script_Opt.checkBox_user_script_beforeShortcuts.Checked;
+            script.user_script_end = uCtrl_JS_script_Opt.checkBox_user_script_end.Checked;
+            script.resume_call = uCtrl_JS_script_Opt.checkBox_resume_call.Checked;
+            script.pause_call = uCtrl_JS_script_Opt.checkBox_pause_call.Checked;
 
 
             JSON_Modified = true;
