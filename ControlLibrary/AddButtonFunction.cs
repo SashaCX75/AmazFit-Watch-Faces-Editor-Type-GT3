@@ -144,7 +144,7 @@ namespace ControlLibrary
                     catch
                     {
                         // Could not load the image - probably related to Windows file system permissions.
-                        MessageBox.Show(Properties.Strings.Message_ReadScript_Error, Properties.Strings.Message_Error_Caption);
+                        MessageBox.Show(Properties.Strings.Message_ReadScript_Error, Properties.Strings.Dialog_Title_JS_Open);
                     } 
                 }
             }

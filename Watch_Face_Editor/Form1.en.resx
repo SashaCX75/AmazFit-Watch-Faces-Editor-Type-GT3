@@ -660,6 +660,12 @@ more system load)</value>
   <data name="tabPage_Tips.Text" xml:space="preserve">
     <value>Tips for use</value>
   </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>290, 13</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>The programme uses code to convert images from the utility:</value>
+  </data>
   <data name="label415.Size" type="System.Drawing.Size, System.Drawing">
     <value>140, 13</value>
   </data>
@@ -745,8 +751,8 @@ more system load)</value>
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
-        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACm
-        DQAAAk1TRnQBSQFMAgEBBgEAAVABKQFUASkBEAEAARABAAT/AQkBEAj/AUIBTQE2AQQGAAE2AQQCAAEo
+        ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAACk
+        DQAAAk1TRnQBSQFMAgEBBgEAAVwBKQFcASkBEAEAARABAAT/AQkBAAj/AUIBTQE2AQQGAAE2AQQCAAEo
         AwABQAMAASADAAEBAQABCAYAAQgYAAGAAgABgAMAAoABAAGAAwABgAEAAYABAAKAAgADwAEAAcAB3AHA
         AQAB8AHKAaYBAAEzBQABMwEAATMBAAEzAQACMwIAAxYBAAMcAQADIgEAAykBAANVAQADTQEAA0IBAAM5
         AQABgAF8Af8BAAJQAf8BAAGTAQAB1gEAAf8B7AHMAQABxgHWAe8BAAHWAucBAAGQAakBrQIAAf8BMwMA
@@ -804,7 +810,7 @@ more system load)</value>
         AX4B4QEPAQ0BhgGAAQEBPgF+AfABDwEGAcICAAI+AfgBHwFDAWABAAEgAT8BPgH4AT8BYQGwAQABQAE/
         AR4B4AEnATAB2AEAAYABPAEeAeEBAwFYAWwBAQEAATwBHgHhAQcBbAE2AQEBAAE/Af4B4QEfATYBGgEB
         AwAB8AEfAQsBDAQAAfgBPwFNAYYBgAEBAgAB/AE/AQIBwgGAAQEBBAEAAf4BHwFDAWABwAEDAYQBAAH+
-        AZ8CAAHwAQ8B9wHnAf4BHxYACw==
+        AZ8CAAHwAQ8B9wHnAf4BHws=
 </value>
   </data>
   <data name="button_pack_zip.Text" xml:space="preserve">

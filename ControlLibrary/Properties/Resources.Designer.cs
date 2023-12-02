@@ -333,6 +333,26 @@ namespace ControlLibrary.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap javascript {
+            get {
+                object obj = ResourceManager.GetObject("javascript", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap JavaScript_16 {
+            get {
+                object obj = ResourceManager.GetObject("JavaScript.16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap launch {
             get {
                 object obj = ResourceManager.GetObject("launch", resourceCulture);

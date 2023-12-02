@@ -180,8 +180,11 @@ namespace Watch_Face_Editor
         public bool visible = true;
 
         public hmUI_widget_IMG_NUMBER Second { get; set; }
+        public hmUI_widget_TEXT Second_Font { get; set; }
         public hmUI_widget_IMG_NUMBER Minute { get; set; }
+        public hmUI_widget_TEXT Minute_Font { get; set; }
         public hmUI_widget_IMG_NUMBER Hour { get; set; }
+        public hmUI_widget_TEXT Hour_Font { get; set; }
         public hmUI_widget_IMG_TIME_am_pm AmPm { get; set; }
         public hmUI_widget_IMG_NUMBER Second_rotation { get; set; }
         public hmUI_widget_IMG_NUMBER Minute_rotation { get; set; }
@@ -221,6 +224,33 @@ namespace Watch_Face_Editor
                 };
             }
 
+            hmUI_widget_TEXT Second_Font = null;
+            if (this.Second_Font != null)
+            {
+                Second_Font = new hmUI_widget_TEXT
+                {
+                    x = this.Second_Font.x,
+                    y = this.Second_Font.y,
+                    w = this.Second_Font.w,
+                    h = this.Second_Font.h,
+                    color = this.Second_Font.color,
+                    align_h = this.Second_Font.align_h,
+                    align_v = this.Second_Font.align_v,
+                    text_size = this.Second_Font.text_size,
+                    text_style = this.Second_Font.text_style,
+                    line_space = this.Second_Font.line_space,
+                    char_space = this.Second_Font.char_space,
+                    font = this.Second_Font.font,
+                    padding = this.Second_Font.padding,
+                    unit_type = this.Second_Font.unit_type,
+
+                    position = this.Second_Font.position,
+                    visible = this.Second_Font.visible,
+                    show_level = this.Second_Font.show_level,
+                    type = this.Second_Font.type,
+                };
+            }
+
             hmUI_widget_IMG_NUMBER Minute = null;
             if (this.Minute != null)
             {
@@ -250,6 +280,33 @@ namespace Watch_Face_Editor
                 };
             }
 
+            hmUI_widget_TEXT Minute_Font = null;
+            if (this.Minute_Font != null)
+            {
+                Minute_Font = new hmUI_widget_TEXT
+                {
+                    x = this.Minute_Font.x,
+                    y = this.Minute_Font.y,
+                    w = this.Minute_Font.w,
+                    h = this.Minute_Font.h,
+                    color = this.Minute_Font.color,
+                    align_h = this.Minute_Font.align_h,
+                    align_v = this.Minute_Font.align_v,
+                    text_size = this.Minute_Font.text_size,
+                    text_style = this.Minute_Font.text_style,
+                    line_space = this.Minute_Font.line_space,
+                    char_space = this.Minute_Font.char_space,
+                    font = this.Minute_Font.font,
+                    padding = this.Minute_Font.padding,
+                    unit_type = this.Minute_Font.unit_type,
+
+                    position = this.Minute_Font.position,
+                    visible = this.Minute_Font.visible,
+                    show_level = this.Minute_Font.show_level,
+                    type = this.Minute_Font.type,
+                };
+            }
+
             hmUI_widget_IMG_NUMBER Hour = null;
             if (this.Hour != null)
             {
@@ -276,6 +333,33 @@ namespace Watch_Face_Editor
                     visible = this.Hour.visible,
                     show_level = this.Hour.show_level,
                     type = this.Hour.type,
+                };
+            }
+
+            hmUI_widget_TEXT Hour_Font = null;
+            if (this.Hour_Font != null)
+            {
+                Hour_Font = new hmUI_widget_TEXT
+                {
+                    x = this.Hour_Font.x,
+                    y = this.Hour_Font.y,
+                    w = this.Hour_Font.w,
+                    h = this.Hour_Font.h,
+                    color = this.Hour_Font.color,
+                    align_h = this.Hour_Font.align_h,
+                    align_v = this.Hour_Font.align_v,
+                    text_size = this.Hour_Font.text_size,
+                    text_style = this.Hour_Font.text_style,
+                    line_space = this.Hour_Font.line_space,
+                    char_space = this.Hour_Font.char_space,
+                    font = this.Hour_Font.font,
+                    padding = this.Hour_Font.padding,
+                    unit_type = this.Hour_Font.unit_type,
+
+                    position = this.Hour_Font.position,
+                    visible = this.Hour_Font.visible,
+                    show_level = this.Hour_Font.show_level,
+                    type = this.Hour_Font.type,
                 };
             }
 
@@ -480,6 +564,10 @@ namespace Watch_Face_Editor
                 Minute = Minute,
                 Hour = Hour,
                 AmPm = AmPm,
+
+                Second_Font = Second_Font,
+                Minute_Font = Minute_Font,
+                Hour_Font = Hour_Font,
 
                 Second_rotation = Second_rotation,
                 Minute_rotation = Minute_rotation,
@@ -7038,6 +7126,26 @@ namespace Watch_Face_Editor
                 Icon = Icon,
             };
         }
+    }
+
+    public class ElementScript
+    {
+        public string elementName = "ElementScript";
+
+        ///// <summary>Позиция в наборе элементов</summary>
+        //public int position = -1;
+
+        /// <summary>Видимость элемента</summary>
+        public bool enable = true;
+
+        public bool user_functions;
+        public bool user_script_start;
+        public bool user_script;
+        public bool user_script_beforeShortcuts;
+        public bool user_script_end;
+        public bool resume_call;
+        public bool pause_call;
+
     }
 
 

@@ -61,11 +61,47 @@ namespace ControlLibrary.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Добавить JS файл.
+        /// </summary>
+        internal static string Dialog_Title_JS_Open {
+            get {
+                return ResourceManager.GetString("Dialog_Title_JS_Open", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на JS файлы (*.js) | *.js.
+        /// </summary>
+        internal static string FilterJS {
+            get {
+                return ResourceManager.GetString("FilterJS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Удалить файл.
+        /// </summary>
+        internal static string Message_Del_Caption {
+            get {
+                return ResourceManager.GetString("Message_Del_Caption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Ошибка.
         /// </summary>
         internal static string Message_Error_Caption {
             get {
                 return ResourceManager.GetString("Message_Error_Caption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Вы действительно хотите удалить JS файл?.
+        /// </summary>
+        internal static string Message_JS_Del {
+            get {
+                return ResourceManager.GetString("Message_JS_Del", resourceCulture);
             }
         }
         

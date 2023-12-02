@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="button_Sunrise_Font.Text" xml:space="preserve">
-    <value>Value by font (sunrise)</value>
+    <value>Value in font (sunrise)</value>
   </data>
   <data name="button_Sunset_Font.Text" xml:space="preserve">
-    <value>Value by font (sunset)</value>
+    <value>Value in font (sunset)</value>
   </data>
   <data name="button_Images.Text" xml:space="preserve">
     <value>Images</value>
