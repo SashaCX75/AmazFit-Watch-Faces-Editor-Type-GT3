@@ -7489,7 +7489,10 @@ namespace Watch_Face_Editor
                     break;
                 case "UCtrl_Moon_Elm":
                     objectName = "ElementMoon";
-                    break;
+                    break; 
+                case "UCtrl_Image_Elm":
+                    objectName = "ElementImage";
+                    break; 
                 case "UCtrl_JSscript_Elm":
                     objectName = "ElementScript";
                     break;
@@ -7523,11 +7526,11 @@ namespace Watch_Face_Editor
                     PreviewView = false;
                     ShowElemetsWatchFace();
                     PreviewView = true;
-                }
 
-                JSON_Modified = true;
-                PreviewImage();
-                FormText(); 
+                    JSON_Modified = true;
+                    PreviewImage();
+                    FormText();
+                }
             }
         }
 
@@ -9081,12 +9084,14 @@ namespace Watch_Face_Editor
                 ///////////////
                 string user_functions = "";
                 string user_script_start = "";
+                string user_script = "";
+                string user_script_AOD = "";
                 string user_script_beforeShortcuts = "";
                 string user_script_end = "";
                 string resume_call = "";
                 string pause_call = "";
 
-                JSToJson(tempDir + index_js, out user_functions, out user_script_start, out user_script_beforeShortcuts, out user_script_end, out resume_call, out pause_call); // создаем новый json файл циферблата
+                JSToJson(tempDir + index_js, out user_functions, out user_script_start, out user_script, out user_script_AOD, out user_script_beforeShortcuts, out user_script_end, out resume_call, out pause_call); // создаем новый json файл циферблата
 
                 // подготовка к чтению файлов assets
                 progressBar1.Value = 0;
@@ -9112,10 +9117,6 @@ namespace Watch_Face_Editor
 
                 progressBar1.Maximum = allFiles.Count;
                 int progress = 0;
-                //bool fix_color = true;
-                //int fix_color = 1;
-                //if (comboBox_watch_model.Text == "Amazfit Band 7" || comboBox_watch_model.Text == "GTS 4 mini") fix_color = 2;
-                //if (comboBox_watch_model.Text == "GTR mini") fix_color = 3;
                 int fix_color = SelectedModel.colorScheme;
                 if (fix_color < 1 || fix_color > 3)
                 {
@@ -9123,54 +9124,17 @@ namespace Watch_Face_Editor
                     MessageBox.Show(Properties.FormStrings.Message_Wrong_ColorScheme + SelectedModel.name, Properties.FormStrings.Message_Warning_Caption,
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                //if (comboBox_watch_model.Text == "Amazfit Band 7" || comboBox_watch_model.Text == "GTS 4 mini") fix_color = false;
                 foreach (string fileNames in allFiles)
                 {
-                    //Console.WriteLine(fileNames);
-                    //TgaToPng(tempDir + @"\assets" + fileNames, projectPath + @"\assets" + fileNames, comboBox_watch_model.Text);
                     ImageAutoDetectReadFormat(tempDir + @"\assets" + fileNames, projectPath + @"\assets" + fileNames, fix_color);
                     progress++;
                     progressBar1.Value = progress;
                 }
 
-                //// читаем данные из текста и преобразуем их в json
-                //string index_js = @"\watchface\index.js";
-                //if (File.Exists(tempDir + @"\app.json"))  // читаем путь к файлу с кодом циферблата
-                //{
-                //    string appText = File.ReadAllText(tempDir + @"\app.json");
-                //    try
-                //    {
-                //        App_WatchFace appJson = JsonConvert.DeserializeObject<App_WatchFace>(appText, new JsonSerializerSettings
-                //        {
-                //            DefaultValueHandling = DefaultValueHandling.Ignore,
-                //            NullValueHandling = NullValueHandling.Ignore
-                //        });
-                //        if (appJson != null && appJson.module != null)
-                //        {
-                //            if (appJson.module.watchface != null && appJson.module.watchface.path != null &&
-                //                appJson.module.watchface.path.Length > 2) index_js = @"\" + appJson.module.watchface.path + ".js";
-                //            index_js = index_js.Replace("/", @"\");
-                //        }
-                //    }
-                //    catch (Exception ex)
-                //    {
-                //        MessageBox.Show(ex.Message);
-                //    }
-                //}
-                ///////////////////////////
                 PreviewView = true;
-                //string user_functions = "";
-                //string user_script_start = "";
-                //string user_script_end = "";
-                //string resume_call = "";
-                //string pause_call = "";
 
-                //JSToJson(tempDir + index_js, out user_functions, out user_script_start, out user_script_end, out resume_call, out pause_call); // создаем новый json файл циферблата
                 if (Watch_Face != null && Watch_Face.ScreenNormal != null)
                 {
-                    //if (File.Exists(tempDir + @"\app.json"))
-                    //{
-                    //    string appText = File.ReadAllText(tempDir + @"\app.json");
                     try
                     {
                         //App_WatchFace appJson = JsonConvert.DeserializeObject<App_WatchFace>(appText, new JsonSerializerSettings
@@ -9593,24 +9557,123 @@ namespace Watch_Face_Editor
                     {
                         MessageBox.Show(ex.Message);
                     }
+
+                    if (Watch_Face.ScreenNormal.Background == null) Watch_Face.ScreenNormal.Background = new Background();
+                    if (Watch_Face.ScreenNormal.Background.BackgroundImage == null && Watch_Face.ScreenNormal.Background.BackgroundColor == null &&
+                        Watch_Face.ScreenNormal.Background.Editable_Background == null)
+                    {
+                        Watch_Face.ScreenNormal.Background.BackgroundColor = new hmUI_widget_FILL_RECT();
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.color = ColorToString(Color.Black);
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.x = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.y = 0;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.h = SelectedModel.background.h;
+                        Watch_Face.ScreenNormal.Background.BackgroundColor.w = SelectedModel.background.w;
+
+
+                    }
+
+                    //if (appJson != null && appJson.app != null)
+                    //{
+                    //    if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
+                    //    if (appJson.app.appId > 1000) Watch_Face.WatchFace_Info.WatchFaceId = appJson.app.appId;
+                    //    else
+                    //    {
+                    //        Random rnd = new Random();
+                    //        int ID = rnd.Next(1000, 10000000);
+                    //        Watch_Face.WatchFace_Info.WatchFaceId = ID;
+                    //    }
+                    //    if (appJson.app.icon != null && appJson.app.icon.Length > 3)
+                    //        Watch_Face.WatchFace_Info.Preview = Path.GetFileNameWithoutExtension(appJson.app.icon);
+
+                    //    if (appJson.app.appName != null && appJson.app.appName.Length > 0)
+                    //        projectName = appJson.app.appName;
                     //}
 
-                    if (appJson != null && appJson.app != null)
-                    {
-                        if (Watch_Face.WatchFace_Info == null) Watch_Face.WatchFace_Info = new WatchFace_Info();
-                        if (appJson.app.appId > 1000) Watch_Face.WatchFace_Info.WatchFaceId = appJson.app.appId;
-                        else
-                        {
-                            Random rnd = new Random();
-                            int ID = rnd.Next(1000, 10000000);
-                            Watch_Face.WatchFace_Info.WatchFaceId = ID;
-                        }
-                        if (appJson.app.icon != null && appJson.app.icon.Length > 3)
-                            Watch_Face.WatchFace_Info.Preview = Path.GetFileNameWithoutExtension(appJson.app.icon);
 
-                        if (appJson.app.appName != null && appJson.app.appName.Length > 0)
-                            projectName = appJson.app.appName;
+                    #region JS script
+                    if (user_functions.Length > 5 || user_script_start.Length > 5 || user_script.Length > 5 || user_script_AOD.Length > 5 || user_script_beforeShortcuts.Length > 5 ||
+                        user_script_end.Length > 5 || resume_call.Length > 5 || pause_call.Length > 5)
+                    {
+                        ElementScript script = null;
+                        ElementScript script_AOD = null;
+                        if (Watch_Face.ScreenNormal != null && Watch_Face.ScreenNormal.Elements != null && Watch_Face.ScreenNormal.Elements.Count > 0)
+                        {
+                            List<object> Elements = Watch_Face.ScreenNormal.Elements;
+
+                            bool existsScript = Elements.Exists(e => e.GetType().Name == "ElementScript"); // проверяем что такого элемента нет
+                            if (!existsScript)
+                            {
+                                if (user_functions.Length > 5 || user_script_start.Length > 5 || user_script.Length > 5 || user_script_beforeShortcuts.Length > 5 ||
+                                    user_script_end.Length > 5 || resume_call.Length > 5 || pause_call.Length > 5)
+                                    Elements.Add(new ElementScript());
+                            }
+                            script = (ElementScript)Elements.Find(e => e.GetType().Name == "ElementScript");
+                        }
+                        if (Watch_Face.ScreenAOD != null && Watch_Face.ScreenAOD.Elements != null && Watch_Face.ScreenAOD.Elements.Count > 0)
+                        {
+                            List<object> Elements = Watch_Face.ScreenAOD.Elements;
+
+                            bool existsScript = Elements.Exists(e => e.GetType().Name == "ElementScript"); // проверяем что такого элемента нет
+                            if (!existsScript)
+                            {
+                                if (user_script_AOD.Length > 5) Elements.Add(new ElementScript());
+                            }
+                            script_AOD = (ElementScript)Elements.Find(e => e.GetType().Name == "ElementScript");
+                        }
+
+                        string jsDir = Path.Combine(projectPath, "JS");
+                        if (!Directory.Exists(jsDir)) Directory.CreateDirectory(jsDir);
+
+                        if (user_functions.Length > 5)
+                        {
+                            string user_script_fileName = Path.Combine(projectPath, "JS", "user_functions.js");
+                            File.WriteAllText(user_script_fileName, user_functions, Encoding.UTF8);
+                            script.user_functions = true;
+                        }
+                        if (user_script_start.Length > 5)
+                        {
+                            string user_script_fileName = Path.Combine(projectPath, "JS", "user_script_start.js");
+                            File.WriteAllText(user_script_fileName, user_script_start, Encoding.UTF8);
+                            script.user_script_start = true;
+                        }
+                        if (user_script.Length > 5)
+                        {
+                            string user_script_fileName = Path.Combine(projectPath, "JS", "user_script.js");
+                            File.WriteAllText(user_script_fileName, user_script, Encoding.UTF8);
+                            script.user_script = true;
+                        }
+                        if (user_script_AOD.Length > 5)
+                        {
+                            string user_script_fileName = Path.Combine(projectPath, "JS", "AOD_user_script.js");
+                            File.WriteAllText(user_script_fileName, user_script_AOD, Encoding.UTF8);
+                            script_AOD.user_script = true;
+                        }
+                        if (user_script_beforeShortcuts.Length > 5)
+                        {
+                            string user_script_fileName = Path.Combine(projectPath, "JS", "user_script_beforeShortcuts.js");
+                            File.WriteAllText(user_script_fileName, user_script_beforeShortcuts, Encoding.UTF8);
+                            script.user_script_beforeShortcuts = true;
+                        }
+                        if (user_script_end.Length > 5)
+                        {
+                            string user_script_fileName = Path.Combine(projectPath, "JS", "user_script_end.js");
+                            File.WriteAllText(user_script_fileName, user_script_end, Encoding.UTF8);
+                            script.user_script_end = true;
+                        }
+                        if (resume_call.Length > 5)
+                        {
+                            string user_script_fileName = Path.Combine(projectPath, "JS", "resume_call.js");
+                            File.WriteAllText(user_script_fileName, resume_call, Encoding.UTF8);
+                            script.resume_call = true;
+                        }
+                        if (pause_call.Length > 5)
+                        {
+                            string user_script_fileName = Path.Combine(projectPath, "JS", "pause_call.js");
+                            File.WriteAllText(user_script_fileName, pause_call, Encoding.UTF8);
+                            script.pause_call = true;
+                        }
                     }
+                    #endregion
 
                     string Watch_Face_String = JsonConvert.SerializeObject(Watch_Face, Formatting.Indented, new JsonSerializerSettings
                     {
@@ -9627,37 +9690,6 @@ namespace Watch_Face_Editor
                     }
                     string fullProjectName = Path.Combine(projectPath, projectName + ".json");
                     File.WriteAllText(fullProjectName, Watch_Face_String, Encoding.UTF8);
-
-                    if(user_functions.Length > 5)
-                    {
-                        string user_script_fileName = Path.Combine(projectPath, "user_functions.js");
-                        File.WriteAllText(user_script_fileName, user_functions, Encoding.UTF8);
-                    }
-                    if (user_script_start.Length > 5)
-                    {
-                        string user_script_fileName = Path.Combine(projectPath, "user_script_start.js");
-                        File.WriteAllText(user_script_fileName, user_script_start, Encoding.UTF8);
-                    }
-                    if (user_script_beforeShortcuts.Length > 5)
-                    {
-                        string user_script_fileName = Path.Combine(projectPath, "user_script_beforeShortcuts.js");
-                        File.WriteAllText(user_script_fileName, user_script_beforeShortcuts, Encoding.UTF8);
-                    }
-                    if (user_script_end.Length > 5)
-                    {
-                        string user_script_fileName = Path.Combine(projectPath, "user_script_end.js");
-                        File.WriteAllText(user_script_fileName, user_script_end, Encoding.UTF8);
-                    }
-                    if (resume_call.Length > 5)
-                    {
-                        string user_script_fileName = Path.Combine(projectPath, "resume_call.js");
-                        File.WriteAllText(user_script_fileName, resume_call, Encoding.UTF8);
-                    }
-                    if (pause_call.Length > 5)
-                    {
-                        string user_script_fileName = Path.Combine(projectPath, "pause_call.js");
-                        File.WriteAllText(user_script_fileName, pause_call, Encoding.UTF8);
-                    }
 
                     FileName = Path.GetFileName(fullProjectName);
                     ProjectDir = Path.GetDirectoryName(fullProjectName);
@@ -18981,6 +19013,11 @@ namespace Watch_Face_Editor
                 {
                     string scriptFileNameNew = Path.Combine(newFullDirName, "pause_call.js");
                     File.Copy(scriptFileName, scriptFileNameNew);
+                }
+
+                if (Directory.Exists(ProjectDir + @"\JS"))
+                {
+                    CopyDirectory(ProjectDir + @"\JS", newFullDirName + @"\JS", false);
                 }
                 #endregion
 

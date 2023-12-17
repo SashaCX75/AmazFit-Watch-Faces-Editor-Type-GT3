@@ -147,4 +147,13 @@
   <data name="button_Seconds_rotation.Text" xml:space="preserve">
     <value>Secondes en angle</value>
   </data>
+  <data name="button_Hours_Font.Text" xml:space="preserve">
+    <value>Heures en police</value>
+  </data>
+  <data name="button_Minutes_Font.Text" xml:space="preserve">
+    <value>Minutes en police</value>
+  </data>
+  <data name="button_Seconds_Font.Text" xml:space="preserve">
+    <value>Secondes en police</value>
+  </data>
 </root>

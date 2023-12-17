@@ -117,8 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Dialog_Title_JS_Open" xml:space="preserve">
+    <value>Eine *.js-Datei hinzufügen</value>
+  </data>
+  <data name="FilterJS" xml:space="preserve">
+    <value>JS Dateien (*.js) | *.js</value>
+  </data>
+  <data name="Message_Del_Caption" xml:space="preserve">
+    <value>Datei löschen</value>
+  </data>
   <data name="Message_Error_Caption" xml:space="preserve">
     <value>Fehler</value>
+  </data>
+  <data name="Message_JS_Del" xml:space="preserve">
+    <value>Möchtest du die JS-Datei wirklich löschen?</value>
   </data>
   <data name="Message_ReadScript_Error" xml:space="preserve">
     <value>Fehler beim Lesen der Benutzerskripte</value>

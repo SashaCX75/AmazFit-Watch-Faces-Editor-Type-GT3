@@ -30,27 +30,19 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UCtrl_JS_script_Opt));
-            this.splitContainer_user_functions = new System.Windows.Forms.SplitContainer();
-            this.button_user_functions_Add = new System.Windows.Forms.Button();
-            this.button_user_functions_Del = new System.Windows.Forms.Button();
-            this.splitContainer_user_script_start = new System.Windows.Forms.SplitContainer();
+            this.button_pause_call_Del = new System.Windows.Forms.Button();
+            this.button_resume_call_Del = new System.Windows.Forms.Button();
+            this.button_pause_call_Add = new System.Windows.Forms.Button();
             this.button_user_script_start_Add = new System.Windows.Forms.Button();
             this.button_user_script_start_Del = new System.Windows.Forms.Button();
-            this.splitContainer_user_script = new System.Windows.Forms.SplitContainer();
             this.button_user_script_Add = new System.Windows.Forms.Button();
             this.button_user_script_Del = new System.Windows.Forms.Button();
-            this.splitContainer_user_script_end = new System.Windows.Forms.SplitContainer();
             this.button_user_script_end_Add = new System.Windows.Forms.Button();
             this.button_user_script_end_Del = new System.Windows.Forms.Button();
-            this.splitContainer_user_script_beforeShortcuts = new System.Windows.Forms.SplitContainer();
             this.button_user_script_beforeShortcuts_Add = new System.Windows.Forms.Button();
             this.button_user_script_beforeShortcuts_Del = new System.Windows.Forms.Button();
-            this.splitContainer_resume_call = new System.Windows.Forms.SplitContainer();
-            this.button_resume_call_Add = new System.Windows.Forms.Button();
-            this.button_resume_call_Del = new System.Windows.Forms.Button();
-            this.splitContainer_pause_call = new System.Windows.Forms.SplitContainer();
-            this.button_pause_call_Add = new System.Windows.Forms.Button();
-            this.button_pause_call_Del = new System.Windows.Forms.Button();
+            this.button_user_functions_Add = new System.Windows.Forms.Button();
+            this.button_user_functions_Del = new System.Windows.Forms.Button();
             this.checkBox_user_functions = new System.Windows.Forms.CheckBox();
             this.contextMenuStrip_Edit_JS = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem_Edit_JS = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,239 +53,169 @@
             this.checkBox_resume_call = new System.Windows.Forms.CheckBox();
             this.checkBox_pause_call = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer_user_functions)).BeginInit();
-            this.splitContainer_user_functions.Panel1.SuspendLayout();
-            this.splitContainer_user_functions.Panel2.SuspendLayout();
-            this.splitContainer_user_functions.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer_user_script_start)).BeginInit();
-            this.splitContainer_user_script_start.Panel1.SuspendLayout();
-            this.splitContainer_user_script_start.Panel2.SuspendLayout();
-            this.splitContainer_user_script_start.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer_user_script)).BeginInit();
-            this.splitContainer_user_script.Panel1.SuspendLayout();
-            this.splitContainer_user_script.Panel2.SuspendLayout();
-            this.splitContainer_user_script.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer_user_script_end)).BeginInit();
-            this.splitContainer_user_script_end.Panel1.SuspendLayout();
-            this.splitContainer_user_script_end.Panel2.SuspendLayout();
-            this.splitContainer_user_script_end.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer_user_script_beforeShortcuts)).BeginInit();
-            this.splitContainer_user_script_beforeShortcuts.Panel1.SuspendLayout();
-            this.splitContainer_user_script_beforeShortcuts.Panel2.SuspendLayout();
-            this.splitContainer_user_script_beforeShortcuts.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer_resume_call)).BeginInit();
-            this.splitContainer_resume_call.Panel1.SuspendLayout();
-            this.splitContainer_resume_call.Panel2.SuspendLayout();
-            this.splitContainer_resume_call.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer_pause_call)).BeginInit();
-            this.splitContainer_pause_call.Panel1.SuspendLayout();
-            this.splitContainer_pause_call.Panel2.SuspendLayout();
-            this.splitContainer_pause_call.SuspendLayout();
+            this.panel_user_functions_draw = new System.Windows.Forms.Panel();
+            this.panel_user_functions_buttons = new System.Windows.Forms.Panel();
+            this.panel_user_functions = new System.Windows.Forms.Panel();
+            this.panel_user_script_start = new System.Windows.Forms.Panel();
+            this.panel_user_script_start_draw = new System.Windows.Forms.Panel();
+            this.panel_user_script_start_buttons = new System.Windows.Forms.Panel();
+            this.panel_user_script = new System.Windows.Forms.Panel();
+            this.panel_user_script_draw = new System.Windows.Forms.Panel();
+            this.panel_user_script_buttons = new System.Windows.Forms.Panel();
+            this.panel_user_script_beforeShortcuts = new System.Windows.Forms.Panel();
+            this.panel_user_script_beforeShortcuts_draw = new System.Windows.Forms.Panel();
+            this.panel_user_script_beforeShortcuts_buttons = new System.Windows.Forms.Panel();
+            this.panel_user_script_end = new System.Windows.Forms.Panel();
+            this.panel_user_script_end_draw = new System.Windows.Forms.Panel();
+            this.panel_user_script_end_buttons = new System.Windows.Forms.Panel();
+            this.panel_resume_call = new System.Windows.Forms.Panel();
+            this.panel_resume_call_draw = new System.Windows.Forms.Panel();
+            this.panel_resume_call_buttons = new System.Windows.Forms.Panel();
+            this.button_resume_call_Add = new System.Windows.Forms.Button();
+            this.panel_pause_call = new System.Windows.Forms.Panel();
+            this.panel_pause_call_draw = new System.Windows.Forms.Panel();
+            this.panel_pause_call_buttons = new System.Windows.Forms.Panel();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.contextMenuStrip_Edit_JS.SuspendLayout();
+            this.panel_user_functions_draw.SuspendLayout();
+            this.panel_user_functions_buttons.SuspendLayout();
+            this.panel_user_functions.SuspendLayout();
+            this.panel_user_script_start.SuspendLayout();
+            this.panel_user_script_start_draw.SuspendLayout();
+            this.panel_user_script_start_buttons.SuspendLayout();
+            this.panel_user_script.SuspendLayout();
+            this.panel_user_script_draw.SuspendLayout();
+            this.panel_user_script_buttons.SuspendLayout();
+            this.panel_user_script_beforeShortcuts.SuspendLayout();
+            this.panel_user_script_beforeShortcuts_draw.SuspendLayout();
+            this.panel_user_script_beforeShortcuts_buttons.SuspendLayout();
+            this.panel_user_script_end.SuspendLayout();
+            this.panel_user_script_end_draw.SuspendLayout();
+            this.panel_user_script_end_buttons.SuspendLayout();
+            this.panel_resume_call.SuspendLayout();
+            this.panel_resume_call_draw.SuspendLayout();
+            this.panel_resume_call_buttons.SuspendLayout();
+            this.panel_pause_call.SuspendLayout();
+            this.panel_pause_call_draw.SuspendLayout();
+            this.panel_pause_call_buttons.SuspendLayout();
             this.SuspendLayout();
             // 
-            // splitContainer_user_functions
+            // button_pause_call_Del
             // 
-            resources.ApplyResources(this.splitContainer_user_functions, "splitContainer_user_functions");
-            this.splitContainer_user_functions.Name = "splitContainer_user_functions";
+            resources.ApplyResources(this.button_pause_call_Del, "button_pause_call_Del");
+            this.button_pause_call_Del.Image = global::ControlLibrary.Properties.Resources.note_delete;
+            this.button_pause_call_Del.Name = "button_pause_call_Del";
+            this.toolTip1.SetToolTip(this.button_pause_call_Del, resources.GetString("button_pause_call_Del.ToolTip"));
+            this.button_pause_call_Del.UseVisualStyleBackColor = true;
+            this.button_pause_call_Del.Click += new System.EventHandler(this.button_Del_Click);
             // 
-            // splitContainer_user_functions.Panel1
+            // button_resume_call_Del
             // 
-            this.splitContainer_user_functions.Panel1.Controls.Add(this.button_user_functions_Add);
-            resources.ApplyResources(this.splitContainer_user_functions.Panel1, "splitContainer_user_functions.Panel1");
+            resources.ApplyResources(this.button_resume_call_Del, "button_resume_call_Del");
+            this.button_resume_call_Del.Image = global::ControlLibrary.Properties.Resources.note_delete;
+            this.button_resume_call_Del.Name = "button_resume_call_Del";
+            this.toolTip1.SetToolTip(this.button_resume_call_Del, resources.GetString("button_resume_call_Del.ToolTip"));
+            this.button_resume_call_Del.UseVisualStyleBackColor = true;
+            this.button_resume_call_Del.Click += new System.EventHandler(this.button_Del_Click);
             // 
-            // splitContainer_user_functions.Panel2
+            // button_pause_call_Add
             // 
-            this.splitContainer_user_functions.Panel2.Controls.Add(this.button_user_functions_Del);
-            resources.ApplyResources(this.splitContainer_user_functions.Panel2, "splitContainer_user_functions.Panel2");
-            // 
-            // button_user_functions_Add
-            // 
-            resources.ApplyResources(this.button_user_functions_Add, "button_user_functions_Add");
-            this.button_user_functions_Add.Name = "button_user_functions_Add";
-            this.button_user_functions_Add.UseVisualStyleBackColor = true;
-            this.button_user_functions_Add.Click += new System.EventHandler(this.button_Add_Click);
-            // 
-            // button_user_functions_Del
-            // 
-            resources.ApplyResources(this.button_user_functions_Del, "button_user_functions_Del");
-            this.button_user_functions_Del.Name = "button_user_functions_Del";
-            this.button_user_functions_Del.UseVisualStyleBackColor = true;
-            this.button_user_functions_Del.Click += new System.EventHandler(this.button_Del_Click);
-            // 
-            // splitContainer_user_script_start
-            // 
-            resources.ApplyResources(this.splitContainer_user_script_start, "splitContainer_user_script_start");
-            this.splitContainer_user_script_start.Name = "splitContainer_user_script_start";
-            // 
-            // splitContainer_user_script_start.Panel1
-            // 
-            this.splitContainer_user_script_start.Panel1.Controls.Add(this.button_user_script_start_Add);
-            resources.ApplyResources(this.splitContainer_user_script_start.Panel1, "splitContainer_user_script_start.Panel1");
-            // 
-            // splitContainer_user_script_start.Panel2
-            // 
-            this.splitContainer_user_script_start.Panel2.Controls.Add(this.button_user_script_start_Del);
-            resources.ApplyResources(this.splitContainer_user_script_start.Panel2, "splitContainer_user_script_start.Panel2");
+            resources.ApplyResources(this.button_pause_call_Add, "button_pause_call_Add");
+            this.button_pause_call_Add.Image = global::ControlLibrary.Properties.Resources.note_plus;
+            this.button_pause_call_Add.Name = "button_pause_call_Add";
+            this.toolTip1.SetToolTip(this.button_pause_call_Add, resources.GetString("button_pause_call_Add.ToolTip"));
+            this.button_pause_call_Add.UseVisualStyleBackColor = true;
+            this.button_pause_call_Add.Click += new System.EventHandler(this.button_Add_Click);
             // 
             // button_user_script_start_Add
             // 
             resources.ApplyResources(this.button_user_script_start_Add, "button_user_script_start_Add");
+            this.button_user_script_start_Add.Image = global::ControlLibrary.Properties.Resources.note_plus;
             this.button_user_script_start_Add.Name = "button_user_script_start_Add";
+            this.toolTip1.SetToolTip(this.button_user_script_start_Add, resources.GetString("button_user_script_start_Add.ToolTip"));
             this.button_user_script_start_Add.UseVisualStyleBackColor = true;
             this.button_user_script_start_Add.Click += new System.EventHandler(this.button_Add_Click);
             // 
             // button_user_script_start_Del
             // 
             resources.ApplyResources(this.button_user_script_start_Del, "button_user_script_start_Del");
+            this.button_user_script_start_Del.Image = global::ControlLibrary.Properties.Resources.note_delete;
             this.button_user_script_start_Del.Name = "button_user_script_start_Del";
+            this.toolTip1.SetToolTip(this.button_user_script_start_Del, resources.GetString("button_user_script_start_Del.ToolTip"));
             this.button_user_script_start_Del.UseVisualStyleBackColor = true;
             this.button_user_script_start_Del.Click += new System.EventHandler(this.button_Del_Click);
-            // 
-            // splitContainer_user_script
-            // 
-            resources.ApplyResources(this.splitContainer_user_script, "splitContainer_user_script");
-            this.splitContainer_user_script.Name = "splitContainer_user_script";
-            // 
-            // splitContainer_user_script.Panel1
-            // 
-            this.splitContainer_user_script.Panel1.Controls.Add(this.button_user_script_Add);
-            resources.ApplyResources(this.splitContainer_user_script.Panel1, "splitContainer_user_script.Panel1");
-            // 
-            // splitContainer_user_script.Panel2
-            // 
-            this.splitContainer_user_script.Panel2.Controls.Add(this.button_user_script_Del);
-            resources.ApplyResources(this.splitContainer_user_script.Panel2, "splitContainer_user_script.Panel2");
             // 
             // button_user_script_Add
             // 
             resources.ApplyResources(this.button_user_script_Add, "button_user_script_Add");
+            this.button_user_script_Add.Image = global::ControlLibrary.Properties.Resources.note_plus;
             this.button_user_script_Add.Name = "button_user_script_Add";
+            this.toolTip1.SetToolTip(this.button_user_script_Add, resources.GetString("button_user_script_Add.ToolTip"));
             this.button_user_script_Add.UseVisualStyleBackColor = true;
             this.button_user_script_Add.Click += new System.EventHandler(this.button_Add_Click);
             // 
             // button_user_script_Del
             // 
             resources.ApplyResources(this.button_user_script_Del, "button_user_script_Del");
+            this.button_user_script_Del.Image = global::ControlLibrary.Properties.Resources.note_delete;
             this.button_user_script_Del.Name = "button_user_script_Del";
+            this.toolTip1.SetToolTip(this.button_user_script_Del, resources.GetString("button_user_script_Del.ToolTip"));
             this.button_user_script_Del.UseVisualStyleBackColor = true;
             this.button_user_script_Del.Click += new System.EventHandler(this.button_Del_Click);
-            // 
-            // splitContainer_user_script_end
-            // 
-            resources.ApplyResources(this.splitContainer_user_script_end, "splitContainer_user_script_end");
-            this.splitContainer_user_script_end.Name = "splitContainer_user_script_end";
-            // 
-            // splitContainer_user_script_end.Panel1
-            // 
-            this.splitContainer_user_script_end.Panel1.Controls.Add(this.button_user_script_end_Add);
-            resources.ApplyResources(this.splitContainer_user_script_end.Panel1, "splitContainer_user_script_end.Panel1");
-            // 
-            // splitContainer_user_script_end.Panel2
-            // 
-            this.splitContainer_user_script_end.Panel2.Controls.Add(this.button_user_script_end_Del);
-            resources.ApplyResources(this.splitContainer_user_script_end.Panel2, "splitContainer_user_script_end.Panel2");
             // 
             // button_user_script_end_Add
             // 
             resources.ApplyResources(this.button_user_script_end_Add, "button_user_script_end_Add");
+            this.button_user_script_end_Add.Image = global::ControlLibrary.Properties.Resources.note_plus;
             this.button_user_script_end_Add.Name = "button_user_script_end_Add";
+            this.toolTip1.SetToolTip(this.button_user_script_end_Add, resources.GetString("button_user_script_end_Add.ToolTip"));
             this.button_user_script_end_Add.UseVisualStyleBackColor = true;
             this.button_user_script_end_Add.Click += new System.EventHandler(this.button_Add_Click);
             // 
             // button_user_script_end_Del
             // 
             resources.ApplyResources(this.button_user_script_end_Del, "button_user_script_end_Del");
+            this.button_user_script_end_Del.Image = global::ControlLibrary.Properties.Resources.note_delete;
             this.button_user_script_end_Del.Name = "button_user_script_end_Del";
+            this.toolTip1.SetToolTip(this.button_user_script_end_Del, resources.GetString("button_user_script_end_Del.ToolTip"));
             this.button_user_script_end_Del.UseVisualStyleBackColor = true;
             this.button_user_script_end_Del.Click += new System.EventHandler(this.button_Del_Click);
-            // 
-            // splitContainer_user_script_beforeShortcuts
-            // 
-            resources.ApplyResources(this.splitContainer_user_script_beforeShortcuts, "splitContainer_user_script_beforeShortcuts");
-            this.splitContainer_user_script_beforeShortcuts.Name = "splitContainer_user_script_beforeShortcuts";
-            // 
-            // splitContainer_user_script_beforeShortcuts.Panel1
-            // 
-            this.splitContainer_user_script_beforeShortcuts.Panel1.Controls.Add(this.button_user_script_beforeShortcuts_Add);
-            resources.ApplyResources(this.splitContainer_user_script_beforeShortcuts.Panel1, "splitContainer_user_script_beforeShortcuts.Panel1");
-            // 
-            // splitContainer_user_script_beforeShortcuts.Panel2
-            // 
-            this.splitContainer_user_script_beforeShortcuts.Panel2.Controls.Add(this.button_user_script_beforeShortcuts_Del);
-            resources.ApplyResources(this.splitContainer_user_script_beforeShortcuts.Panel2, "splitContainer_user_script_beforeShortcuts.Panel2");
             // 
             // button_user_script_beforeShortcuts_Add
             // 
             resources.ApplyResources(this.button_user_script_beforeShortcuts_Add, "button_user_script_beforeShortcuts_Add");
+            this.button_user_script_beforeShortcuts_Add.Image = global::ControlLibrary.Properties.Resources.note_plus;
             this.button_user_script_beforeShortcuts_Add.Name = "button_user_script_beforeShortcuts_Add";
+            this.toolTip1.SetToolTip(this.button_user_script_beforeShortcuts_Add, resources.GetString("button_user_script_beforeShortcuts_Add.ToolTip"));
             this.button_user_script_beforeShortcuts_Add.UseVisualStyleBackColor = true;
             this.button_user_script_beforeShortcuts_Add.Click += new System.EventHandler(this.button_Add_Click);
             // 
             // button_user_script_beforeShortcuts_Del
             // 
             resources.ApplyResources(this.button_user_script_beforeShortcuts_Del, "button_user_script_beforeShortcuts_Del");
+            this.button_user_script_beforeShortcuts_Del.Image = global::ControlLibrary.Properties.Resources.note_delete;
             this.button_user_script_beforeShortcuts_Del.Name = "button_user_script_beforeShortcuts_Del";
+            this.toolTip1.SetToolTip(this.button_user_script_beforeShortcuts_Del, resources.GetString("button_user_script_beforeShortcuts_Del.ToolTip"));
             this.button_user_script_beforeShortcuts_Del.UseVisualStyleBackColor = true;
             this.button_user_script_beforeShortcuts_Del.Click += new System.EventHandler(this.button_Del_Click);
             // 
-            // splitContainer_resume_call
+            // button_user_functions_Add
             // 
-            resources.ApplyResources(this.splitContainer_resume_call, "splitContainer_resume_call");
-            this.splitContainer_resume_call.Name = "splitContainer_resume_call";
+            resources.ApplyResources(this.button_user_functions_Add, "button_user_functions_Add");
+            this.button_user_functions_Add.Image = global::ControlLibrary.Properties.Resources.note_plus;
+            this.button_user_functions_Add.Name = "button_user_functions_Add";
+            this.toolTip1.SetToolTip(this.button_user_functions_Add, resources.GetString("button_user_functions_Add.ToolTip"));
+            this.button_user_functions_Add.UseVisualStyleBackColor = true;
+            this.button_user_functions_Add.Click += new System.EventHandler(this.button_Add_Click);
             // 
-            // splitContainer_resume_call.Panel1
+            // button_user_functions_Del
             // 
-            this.splitContainer_resume_call.Panel1.Controls.Add(this.button_resume_call_Add);
-            resources.ApplyResources(this.splitContainer_resume_call.Panel1, "splitContainer_resume_call.Panel1");
-            // 
-            // splitContainer_resume_call.Panel2
-            // 
-            this.splitContainer_resume_call.Panel2.Controls.Add(this.button_resume_call_Del);
-            resources.ApplyResources(this.splitContainer_resume_call.Panel2, "splitContainer_resume_call.Panel2");
-            // 
-            // button_resume_call_Add
-            // 
-            resources.ApplyResources(this.button_resume_call_Add, "button_resume_call_Add");
-            this.button_resume_call_Add.Name = "button_resume_call_Add";
-            this.button_resume_call_Add.UseVisualStyleBackColor = true;
-            this.button_resume_call_Add.Click += new System.EventHandler(this.button_Add_Click);
-            // 
-            // button_resume_call_Del
-            // 
-            resources.ApplyResources(this.button_resume_call_Del, "button_resume_call_Del");
-            this.button_resume_call_Del.Name = "button_resume_call_Del";
-            this.button_resume_call_Del.UseVisualStyleBackColor = true;
-            this.button_resume_call_Del.Click += new System.EventHandler(this.button_Del_Click);
-            // 
-            // splitContainer_pause_call
-            // 
-            resources.ApplyResources(this.splitContainer_pause_call, "splitContainer_pause_call");
-            this.splitContainer_pause_call.Name = "splitContainer_pause_call";
-            // 
-            // splitContainer_pause_call.Panel1
-            // 
-            this.splitContainer_pause_call.Panel1.Controls.Add(this.button_pause_call_Add);
-            resources.ApplyResources(this.splitContainer_pause_call.Panel1, "splitContainer_pause_call.Panel1");
-            // 
-            // splitContainer_pause_call.Panel2
-            // 
-            this.splitContainer_pause_call.Panel2.Controls.Add(this.button_pause_call_Del);
-            resources.ApplyResources(this.splitContainer_pause_call.Panel2, "splitContainer_pause_call.Panel2");
-            // 
-            // button_pause_call_Add
-            // 
-            resources.ApplyResources(this.button_pause_call_Add, "button_pause_call_Add");
-            this.button_pause_call_Add.Name = "button_pause_call_Add";
-            this.button_pause_call_Add.UseVisualStyleBackColor = true;
-            this.button_pause_call_Add.Click += new System.EventHandler(this.button_Add_Click);
-            // 
-            // button_pause_call_Del
-            // 
-            resources.ApplyResources(this.button_pause_call_Del, "button_pause_call_Del");
-            this.button_pause_call_Del.Name = "button_pause_call_Del";
-            this.button_pause_call_Del.UseVisualStyleBackColor = true;
-            this.button_pause_call_Del.Click += new System.EventHandler(this.button_Del_Click);
+            resources.ApplyResources(this.button_user_functions_Del, "button_user_functions_Del");
+            this.button_user_functions_Del.Image = global::ControlLibrary.Properties.Resources.note_delete;
+            this.button_user_functions_Del.Name = "button_user_functions_Del";
+            this.toolTip1.SetToolTip(this.button_user_functions_Del, resources.GetString("button_user_functions_Del.ToolTip"));
+            this.button_user_functions_Del.UseVisualStyleBackColor = true;
+            this.button_user_functions_Del.Click += new System.EventHandler(this.button_Del_Click);
             // 
             // checkBox_user_functions
             // 
@@ -371,55 +293,204 @@
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             // 
+            // panel_user_functions_draw
+            // 
+            this.panel_user_functions_draw.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_user_functions_draw.Controls.Add(this.panel_user_functions_buttons);
+            this.panel_user_functions_draw.Controls.Add(this.checkBox_user_functions);
+            resources.ApplyResources(this.panel_user_functions_draw, "panel_user_functions_draw");
+            this.panel_user_functions_draw.Name = "panel_user_functions_draw";
+            // 
+            // panel_user_functions_buttons
+            // 
+            this.panel_user_functions_buttons.Controls.Add(this.button_user_functions_Del);
+            this.panel_user_functions_buttons.Controls.Add(this.button_user_functions_Add);
+            resources.ApplyResources(this.panel_user_functions_buttons, "panel_user_functions_buttons");
+            this.panel_user_functions_buttons.Name = "panel_user_functions_buttons";
+            // 
+            // panel_user_functions
+            // 
+            this.panel_user_functions.Controls.Add(this.panel_user_functions_draw);
+            resources.ApplyResources(this.panel_user_functions, "panel_user_functions");
+            this.panel_user_functions.Name = "panel_user_functions";
+            // 
+            // panel_user_script_start
+            // 
+            this.panel_user_script_start.Controls.Add(this.panel_user_script_start_draw);
+            resources.ApplyResources(this.panel_user_script_start, "panel_user_script_start");
+            this.panel_user_script_start.Name = "panel_user_script_start";
+            // 
+            // panel_user_script_start_draw
+            // 
+            this.panel_user_script_start_draw.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_user_script_start_draw.Controls.Add(this.panel_user_script_start_buttons);
+            this.panel_user_script_start_draw.Controls.Add(this.checkBox_user_script_start);
+            resources.ApplyResources(this.panel_user_script_start_draw, "panel_user_script_start_draw");
+            this.panel_user_script_start_draw.Name = "panel_user_script_start_draw";
+            // 
+            // panel_user_script_start_buttons
+            // 
+            this.panel_user_script_start_buttons.Controls.Add(this.button_user_script_start_Del);
+            this.panel_user_script_start_buttons.Controls.Add(this.button_user_script_start_Add);
+            resources.ApplyResources(this.panel_user_script_start_buttons, "panel_user_script_start_buttons");
+            this.panel_user_script_start_buttons.Name = "panel_user_script_start_buttons";
+            // 
+            // panel_user_script
+            // 
+            this.panel_user_script.Controls.Add(this.panel_user_script_draw);
+            resources.ApplyResources(this.panel_user_script, "panel_user_script");
+            this.panel_user_script.Name = "panel_user_script";
+            // 
+            // panel_user_script_draw
+            // 
+            this.panel_user_script_draw.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_user_script_draw.Controls.Add(this.panel_user_script_buttons);
+            this.panel_user_script_draw.Controls.Add(this.checkBox_user_script);
+            resources.ApplyResources(this.panel_user_script_draw, "panel_user_script_draw");
+            this.panel_user_script_draw.Name = "panel_user_script_draw";
+            // 
+            // panel_user_script_buttons
+            // 
+            this.panel_user_script_buttons.Controls.Add(this.button_user_script_Del);
+            this.panel_user_script_buttons.Controls.Add(this.button_user_script_Add);
+            resources.ApplyResources(this.panel_user_script_buttons, "panel_user_script_buttons");
+            this.panel_user_script_buttons.Name = "panel_user_script_buttons";
+            // 
+            // panel_user_script_beforeShortcuts
+            // 
+            this.panel_user_script_beforeShortcuts.Controls.Add(this.panel_user_script_beforeShortcuts_draw);
+            resources.ApplyResources(this.panel_user_script_beforeShortcuts, "panel_user_script_beforeShortcuts");
+            this.panel_user_script_beforeShortcuts.Name = "panel_user_script_beforeShortcuts";
+            // 
+            // panel_user_script_beforeShortcuts_draw
+            // 
+            this.panel_user_script_beforeShortcuts_draw.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_user_script_beforeShortcuts_draw.Controls.Add(this.panel_user_script_beforeShortcuts_buttons);
+            this.panel_user_script_beforeShortcuts_draw.Controls.Add(this.checkBox_user_script_beforeShortcuts);
+            resources.ApplyResources(this.panel_user_script_beforeShortcuts_draw, "panel_user_script_beforeShortcuts_draw");
+            this.panel_user_script_beforeShortcuts_draw.Name = "panel_user_script_beforeShortcuts_draw";
+            // 
+            // panel_user_script_beforeShortcuts_buttons
+            // 
+            this.panel_user_script_beforeShortcuts_buttons.Controls.Add(this.button_user_script_beforeShortcuts_Del);
+            this.panel_user_script_beforeShortcuts_buttons.Controls.Add(this.button_user_script_beforeShortcuts_Add);
+            resources.ApplyResources(this.panel_user_script_beforeShortcuts_buttons, "panel_user_script_beforeShortcuts_buttons");
+            this.panel_user_script_beforeShortcuts_buttons.Name = "panel_user_script_beforeShortcuts_buttons";
+            // 
+            // panel_user_script_end
+            // 
+            this.panel_user_script_end.Controls.Add(this.panel_user_script_end_draw);
+            resources.ApplyResources(this.panel_user_script_end, "panel_user_script_end");
+            this.panel_user_script_end.Name = "panel_user_script_end";
+            // 
+            // panel_user_script_end_draw
+            // 
+            this.panel_user_script_end_draw.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_user_script_end_draw.Controls.Add(this.panel_user_script_end_buttons);
+            this.panel_user_script_end_draw.Controls.Add(this.checkBox_user_script_end);
+            resources.ApplyResources(this.panel_user_script_end_draw, "panel_user_script_end_draw");
+            this.panel_user_script_end_draw.Name = "panel_user_script_end_draw";
+            // 
+            // panel_user_script_end_buttons
+            // 
+            this.panel_user_script_end_buttons.Controls.Add(this.button_user_script_end_Del);
+            this.panel_user_script_end_buttons.Controls.Add(this.button_user_script_end_Add);
+            resources.ApplyResources(this.panel_user_script_end_buttons, "panel_user_script_end_buttons");
+            this.panel_user_script_end_buttons.Name = "panel_user_script_end_buttons";
+            // 
+            // panel_resume_call
+            // 
+            this.panel_resume_call.Controls.Add(this.panel_resume_call_draw);
+            resources.ApplyResources(this.panel_resume_call, "panel_resume_call");
+            this.panel_resume_call.Name = "panel_resume_call";
+            // 
+            // panel_resume_call_draw
+            // 
+            this.panel_resume_call_draw.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_resume_call_draw.Controls.Add(this.panel_resume_call_buttons);
+            this.panel_resume_call_draw.Controls.Add(this.checkBox_resume_call);
+            resources.ApplyResources(this.panel_resume_call_draw, "panel_resume_call_draw");
+            this.panel_resume_call_draw.Name = "panel_resume_call_draw";
+            // 
+            // panel_resume_call_buttons
+            // 
+            this.panel_resume_call_buttons.Controls.Add(this.button_resume_call_Del);
+            this.panel_resume_call_buttons.Controls.Add(this.button_resume_call_Add);
+            resources.ApplyResources(this.panel_resume_call_buttons, "panel_resume_call_buttons");
+            this.panel_resume_call_buttons.Name = "panel_resume_call_buttons";
+            // 
+            // button_resume_call_Add
+            // 
+            resources.ApplyResources(this.button_resume_call_Add, "button_resume_call_Add");
+            this.button_resume_call_Add.Image = global::ControlLibrary.Properties.Resources.note_plus;
+            this.button_resume_call_Add.Name = "button_resume_call_Add";
+            this.toolTip1.SetToolTip(this.button_resume_call_Add, resources.GetString("button_resume_call_Add.ToolTip"));
+            this.button_resume_call_Add.UseVisualStyleBackColor = true;
+            this.button_resume_call_Add.Click += new System.EventHandler(this.button_Add_Click);
+            // 
+            // panel_pause_call
+            // 
+            this.panel_pause_call.Controls.Add(this.panel_pause_call_draw);
+            resources.ApplyResources(this.panel_pause_call, "panel_pause_call");
+            this.panel_pause_call.Name = "panel_pause_call";
+            // 
+            // panel_pause_call_draw
+            // 
+            this.panel_pause_call_draw.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_pause_call_draw.Controls.Add(this.panel_pause_call_buttons);
+            this.panel_pause_call_draw.Controls.Add(this.checkBox_pause_call);
+            resources.ApplyResources(this.panel_pause_call_draw, "panel_pause_call_draw");
+            this.panel_pause_call_draw.Name = "panel_pause_call_draw";
+            // 
+            // panel_pause_call_buttons
+            // 
+            this.panel_pause_call_buttons.Controls.Add(this.button_pause_call_Del);
+            this.panel_pause_call_buttons.Controls.Add(this.button_pause_call_Add);
+            resources.ApplyResources(this.panel_pause_call_buttons, "panel_pause_call_buttons");
+            this.panel_pause_call_buttons.Name = "panel_pause_call_buttons";
+            // 
             // UCtrl_JS_script_Opt
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.splitContainer_pause_call);
-            this.Controls.Add(this.checkBox_pause_call);
-            this.Controls.Add(this.splitContainer_resume_call);
-            this.Controls.Add(this.checkBox_resume_call);
-            this.Controls.Add(this.splitContainer_user_script_end);
-            this.Controls.Add(this.checkBox_user_script_end);
-            this.Controls.Add(this.splitContainer_user_script_beforeShortcuts);
-            this.Controls.Add(this.checkBox_user_script_beforeShortcuts);
-            this.Controls.Add(this.splitContainer_user_script);
-            this.Controls.Add(this.checkBox_user_script);
-            this.Controls.Add(this.splitContainer_user_script_start);
-            this.Controls.Add(this.checkBox_user_script_start);
-            this.Controls.Add(this.splitContainer_user_functions);
-            this.Controls.Add(this.checkBox_user_functions);
+            this.Controls.Add(this.panel_pause_call);
+            this.Controls.Add(this.panel_resume_call);
+            this.Controls.Add(this.panel_user_script_end);
+            this.Controls.Add(this.panel_user_script_beforeShortcuts);
+            this.Controls.Add(this.panel_user_script);
+            this.Controls.Add(this.panel_user_script_start);
+            this.Controls.Add(this.panel_user_functions);
             this.Name = "UCtrl_JS_script_Opt";
-            this.splitContainer_user_functions.Panel1.ResumeLayout(false);
-            this.splitContainer_user_functions.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer_user_functions)).EndInit();
-            this.splitContainer_user_functions.ResumeLayout(false);
-            this.splitContainer_user_script_start.Panel1.ResumeLayout(false);
-            this.splitContainer_user_script_start.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer_user_script_start)).EndInit();
-            this.splitContainer_user_script_start.ResumeLayout(false);
-            this.splitContainer_user_script.Panel1.ResumeLayout(false);
-            this.splitContainer_user_script.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer_user_script)).EndInit();
-            this.splitContainer_user_script.ResumeLayout(false);
-            this.splitContainer_user_script_end.Panel1.ResumeLayout(false);
-            this.splitContainer_user_script_end.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer_user_script_end)).EndInit();
-            this.splitContainer_user_script_end.ResumeLayout(false);
-            this.splitContainer_user_script_beforeShortcuts.Panel1.ResumeLayout(false);
-            this.splitContainer_user_script_beforeShortcuts.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer_user_script_beforeShortcuts)).EndInit();
-            this.splitContainer_user_script_beforeShortcuts.ResumeLayout(false);
-            this.splitContainer_resume_call.Panel1.ResumeLayout(false);
-            this.splitContainer_resume_call.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer_resume_call)).EndInit();
-            this.splitContainer_resume_call.ResumeLayout(false);
-            this.splitContainer_pause_call.Panel1.ResumeLayout(false);
-            this.splitContainer_pause_call.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer_pause_call)).EndInit();
-            this.splitContainer_pause_call.ResumeLayout(false);
             this.contextMenuStrip_Edit_JS.ResumeLayout(false);
+            this.panel_user_functions_draw.ResumeLayout(false);
+            this.panel_user_functions_draw.PerformLayout();
+            this.panel_user_functions_buttons.ResumeLayout(false);
+            this.panel_user_functions.ResumeLayout(false);
+            this.panel_user_script_start.ResumeLayout(false);
+            this.panel_user_script_start_draw.ResumeLayout(false);
+            this.panel_user_script_start_draw.PerformLayout();
+            this.panel_user_script_start_buttons.ResumeLayout(false);
+            this.panel_user_script.ResumeLayout(false);
+            this.panel_user_script_draw.ResumeLayout(false);
+            this.panel_user_script_draw.PerformLayout();
+            this.panel_user_script_buttons.ResumeLayout(false);
+            this.panel_user_script_beforeShortcuts.ResumeLayout(false);
+            this.panel_user_script_beforeShortcuts_draw.ResumeLayout(false);
+            this.panel_user_script_beforeShortcuts_draw.PerformLayout();
+            this.panel_user_script_beforeShortcuts_buttons.ResumeLayout(false);
+            this.panel_user_script_end.ResumeLayout(false);
+            this.panel_user_script_end_draw.ResumeLayout(false);
+            this.panel_user_script_end_draw.PerformLayout();
+            this.panel_user_script_end_buttons.ResumeLayout(false);
+            this.panel_resume_call.ResumeLayout(false);
+            this.panel_resume_call_draw.ResumeLayout(false);
+            this.panel_resume_call_draw.PerformLayout();
+            this.panel_resume_call_buttons.ResumeLayout(false);
+            this.panel_pause_call.ResumeLayout(false);
+            this.panel_pause_call_draw.ResumeLayout(false);
+            this.panel_pause_call_draw.PerformLayout();
+            this.panel_pause_call_buttons.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -430,33 +501,48 @@
         public System.Windows.Forms.CheckBox checkBox_user_functions;
         private System.Windows.Forms.Button button_user_functions_Add;
         private System.Windows.Forms.Button button_user_functions_Del;
-        private System.Windows.Forms.SplitContainer splitContainer_user_functions;
-        private System.Windows.Forms.SplitContainer splitContainer_user_script_start;
         public System.Windows.Forms.CheckBox checkBox_user_script_start;
-        private System.Windows.Forms.SplitContainer splitContainer_user_script;
         private System.Windows.Forms.Button button_user_script_Add;
         private System.Windows.Forms.Button button_user_script_Del;
         public System.Windows.Forms.CheckBox checkBox_user_script;
-        private System.Windows.Forms.SplitContainer splitContainer_user_script_end;
         private System.Windows.Forms.Button button_user_script_end_Add;
         private System.Windows.Forms.Button button_user_script_end_Del;
         public System.Windows.Forms.CheckBox checkBox_user_script_end;
         private System.Windows.Forms.Button button_user_script_start_Add;
         private System.Windows.Forms.Button button_user_script_start_Del;
-        private System.Windows.Forms.SplitContainer splitContainer_user_script_beforeShortcuts;
         private System.Windows.Forms.Button button_user_script_beforeShortcuts_Add;
         private System.Windows.Forms.Button button_user_script_beforeShortcuts_Del;
         public System.Windows.Forms.CheckBox checkBox_user_script_beforeShortcuts;
-        private System.Windows.Forms.SplitContainer splitContainer_pause_call;
         private System.Windows.Forms.Button button_pause_call_Add;
         private System.Windows.Forms.Button button_pause_call_Del;
-        private System.Windows.Forms.SplitContainer splitContainer_resume_call;
-        private System.Windows.Forms.Button button_resume_call_Add;
         private System.Windows.Forms.Button button_resume_call_Del;
         public System.Windows.Forms.CheckBox checkBox_resume_call;
         public System.Windows.Forms.CheckBox checkBox_pause_call;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip_Edit_JS;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_Edit_JS;
+        private System.Windows.Forms.Panel panel_user_functions_draw;
+        private System.Windows.Forms.Panel panel_user_functions_buttons;
+        private System.Windows.Forms.Panel panel_user_functions;
+        private System.Windows.Forms.Panel panel_user_script_start;
+        private System.Windows.Forms.Panel panel_user_script_start_draw;
+        private System.Windows.Forms.Panel panel_user_script_start_buttons;
+        private System.Windows.Forms.Panel panel_user_script;
+        private System.Windows.Forms.Panel panel_user_script_draw;
+        private System.Windows.Forms.Panel panel_user_script_buttons;
+        private System.Windows.Forms.Panel panel_user_script_beforeShortcuts;
+        private System.Windows.Forms.Panel panel_user_script_beforeShortcuts_draw;
+        private System.Windows.Forms.Panel panel_user_script_beforeShortcuts_buttons;
+        private System.Windows.Forms.Panel panel_user_script_end;
+        private System.Windows.Forms.Panel panel_user_script_end_draw;
+        private System.Windows.Forms.Panel panel_user_script_end_buttons;
+        private System.Windows.Forms.Panel panel_resume_call;
+        private System.Windows.Forms.Panel panel_resume_call_draw;
+        private System.Windows.Forms.Panel panel_resume_call_buttons;
+        private System.Windows.Forms.Panel panel_pause_call;
+        private System.Windows.Forms.Panel panel_pause_call_draw;
+        private System.Windows.Forms.Panel panel_pause_call_buttons;
+        private System.Windows.Forms.Button button_resume_call_Add;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

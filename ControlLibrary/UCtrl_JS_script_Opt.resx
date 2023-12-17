@@ -118,736 +118,28 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="splitContainer_user_functions.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+  <data name="button_pause_call_Del.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="button_pause_call_Del.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="splitContainer_user_functions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 33</value>
-  </data>
-  <data name="button_user_functions_Add.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="button_user_functions_Add.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
-  </data>
-  <data name="button_user_functions_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 23</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="button_user_functions_Add.TabIndex" type="System.Int32, mscorlib">
-    <value>166</value>
-  </data>
-  <data name="button_user_functions_Add.Text" xml:space="preserve">
-    <value>Добавить</value>
-  </data>
-  <data name="&gt;&gt;button_user_functions_Add.Name" xml:space="preserve">
-    <value>button_user_functions_Add</value>
-  </data>
-  <data name="&gt;&gt;button_user_functions_Add.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_user_functions_Add.Parent" xml:space="preserve">
-    <value>splitContainer_user_functions.Panel1</value>
-  </data>
-  <data name="&gt;&gt;button_user_functions_Add.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="splitContainer_user_functions.Panel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 3</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_functions.Panel1.Name" xml:space="preserve">
-    <value>splitContainer_user_functions.Panel1</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_functions.Panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_functions.Panel1.Parent" xml:space="preserve">
-    <value>splitContainer_user_functions</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_functions.Panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="button_user_functions_Del.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="button_user_functions_Del.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
-  </data>
-  <data name="button_user_functions_Del.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 23</value>
-  </data>
-  <data name="button_user_functions_Del.TabIndex" type="System.Int32, mscorlib">
-    <value>167</value>
-  </data>
-  <data name="button_user_functions_Del.Text" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="&gt;&gt;button_user_functions_Del.Name" xml:space="preserve">
-    <value>button_user_functions_Del</value>
-  </data>
-  <data name="&gt;&gt;button_user_functions_Del.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_user_functions_Del.Parent" xml:space="preserve">
-    <value>splitContainer_user_functions.Panel2</value>
-  </data>
-  <data name="&gt;&gt;button_user_functions_Del.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="splitContainer_user_functions.Panel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 3</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_functions.Panel2.Name" xml:space="preserve">
-    <value>splitContainer_user_functions.Panel2</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_functions.Panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_functions.Panel2.Parent" xml:space="preserve">
-    <value>splitContainer_user_functions</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_functions.Panel2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="splitContainer_user_functions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 30</value>
-  </data>
-  <data name="splitContainer_user_functions.SplitterDistance" type="System.Int32, mscorlib">
-    <value>122</value>
-  </data>
-  <data name="splitContainer_user_functions.TabIndex" type="System.Int32, mscorlib">
-    <value>168</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_functions.Name" xml:space="preserve">
-    <value>splitContainer_user_functions</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_functions.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_functions.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_functions.ZOrder" xml:space="preserve">
-    <value>14</value>
-  </data>
-  <data name="splitContainer_user_script_start.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="splitContainer_user_script_start.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 93</value>
-  </data>
-  <data name="button_user_script_start_Add.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="button_user_script_start_Add.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
-  </data>
-  <data name="button_user_script_start_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 23</value>
-  </data>
-  <data name="button_user_script_start_Add.TabIndex" type="System.Int32, mscorlib">
-    <value>167</value>
-  </data>
-  <data name="button_user_script_start_Add.Text" xml:space="preserve">
-    <value>Добавить</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_start_Add.Name" xml:space="preserve">
-    <value>button_user_script_start_Add</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_start_Add.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_start_Add.Parent" xml:space="preserve">
-    <value>splitContainer_user_script_start.Panel1</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_start_Add.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="splitContainer_user_script_start.Panel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 3</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_start.Panel1.Name" xml:space="preserve">
-    <value>splitContainer_user_script_start.Panel1</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_start.Panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_start.Panel1.Parent" xml:space="preserve">
-    <value>splitContainer_user_script_start</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_start.Panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="button_user_script_start_Del.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="button_user_script_start_Del.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
-  </data>
-  <data name="button_user_script_start_Del.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 23</value>
-  </data>
-  <data name="button_user_script_start_Del.TabIndex" type="System.Int32, mscorlib">
-    <value>168</value>
-  </data>
-  <data name="button_user_script_start_Del.Text" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_start_Del.Name" xml:space="preserve">
-    <value>button_user_script_start_Del</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_start_Del.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_start_Del.Parent" xml:space="preserve">
-    <value>splitContainer_user_script_start.Panel2</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_start_Del.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="splitContainer_user_script_start.Panel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 3</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_start.Panel2.Name" xml:space="preserve">
-    <value>splitContainer_user_script_start.Panel2</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_start.Panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_start.Panel2.Parent" xml:space="preserve">
-    <value>splitContainer_user_script_start</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_start.Panel2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="splitContainer_user_script_start.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 30</value>
-  </data>
-  <data name="splitContainer_user_script_start.SplitterDistance" type="System.Int32, mscorlib">
-    <value>122</value>
-  </data>
-  <data name="splitContainer_user_script_start.TabIndex" type="System.Int32, mscorlib">
-    <value>170</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_start.Name" xml:space="preserve">
-    <value>splitContainer_user_script_start</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_start.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_start.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_start.ZOrder" xml:space="preserve">
-    <value>12</value>
-  </data>
-  <data name="splitContainer_user_script.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="splitContainer_user_script.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 153</value>
-  </data>
-  <data name="button_user_script_Add.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="button_user_script_Add.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
-  </data>
-  <data name="button_user_script_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 23</value>
-  </data>
-  <data name="button_user_script_Add.TabIndex" type="System.Int32, mscorlib">
-    <value>166</value>
-  </data>
-  <data name="button_user_script_Add.Text" xml:space="preserve">
-    <value>Добавить</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_Add.Name" xml:space="preserve">
-    <value>button_user_script_Add</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_Add.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_Add.Parent" xml:space="preserve">
-    <value>splitContainer_user_script.Panel1</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_Add.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="splitContainer_user_script.Panel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 3</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script.Panel1.Name" xml:space="preserve">
-    <value>splitContainer_user_script.Panel1</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script.Panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script.Panel1.Parent" xml:space="preserve">
-    <value>splitContainer_user_script</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script.Panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="button_user_script_Del.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="button_user_script_Del.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
-  </data>
-  <data name="button_user_script_Del.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 23</value>
-  </data>
-  <data name="button_user_script_Del.TabIndex" type="System.Int32, mscorlib">
-    <value>167</value>
-  </data>
-  <data name="button_user_script_Del.Text" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_Del.Name" xml:space="preserve">
-    <value>button_user_script_Del</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_Del.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_Del.Parent" xml:space="preserve">
-    <value>splitContainer_user_script.Panel2</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_Del.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="splitContainer_user_script.Panel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 3</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script.Panel2.Name" xml:space="preserve">
-    <value>splitContainer_user_script.Panel2</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script.Panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script.Panel2.Parent" xml:space="preserve">
-    <value>splitContainer_user_script</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script.Panel2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="splitContainer_user_script.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 30</value>
-  </data>
-  <data name="splitContainer_user_script.SplitterDistance" type="System.Int32, mscorlib">
-    <value>122</value>
-  </data>
-  <data name="splitContainer_user_script.TabIndex" type="System.Int32, mscorlib">
-    <value>172</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script.Name" xml:space="preserve">
-    <value>splitContainer_user_script</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="splitContainer_user_script_end.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="splitContainer_user_script_end.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 286</value>
-  </data>
-  <data name="button_user_script_end_Add.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="button_user_script_end_Add.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
-  </data>
-  <data name="button_user_script_end_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 23</value>
-  </data>
-  <data name="button_user_script_end_Add.TabIndex" type="System.Int32, mscorlib">
-    <value>166</value>
-  </data>
-  <data name="button_user_script_end_Add.Text" xml:space="preserve">
-    <value>Добавить</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_end_Add.Name" xml:space="preserve">
-    <value>button_user_script_end_Add</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_end_Add.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_end_Add.Parent" xml:space="preserve">
-    <value>splitContainer_user_script_end.Panel1</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_end_Add.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="splitContainer_user_script_end.Panel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 3</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_end.Panel1.Name" xml:space="preserve">
-    <value>splitContainer_user_script_end.Panel1</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_end.Panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_end.Panel1.Parent" xml:space="preserve">
-    <value>splitContainer_user_script_end</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_end.Panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="button_user_script_end_Del.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="button_user_script_end_Del.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
-  </data>
-  <data name="button_user_script_end_Del.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 23</value>
-  </data>
-  <data name="button_user_script_end_Del.TabIndex" type="System.Int32, mscorlib">
-    <value>167</value>
-  </data>
-  <data name="button_user_script_end_Del.Text" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_end_Del.Name" xml:space="preserve">
-    <value>button_user_script_end_Del</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_end_Del.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_end_Del.Parent" xml:space="preserve">
-    <value>splitContainer_user_script_end.Panel2</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_end_Del.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="splitContainer_user_script_end.Panel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 3</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_end.Panel2.Name" xml:space="preserve">
-    <value>splitContainer_user_script_end.Panel2</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_end.Panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_end.Panel2.Parent" xml:space="preserve">
-    <value>splitContainer_user_script_end</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_end.Panel2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="splitContainer_user_script_end.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 30</value>
-  </data>
-  <data name="splitContainer_user_script_end.SplitterDistance" type="System.Int32, mscorlib">
-    <value>122</value>
-  </data>
-  <data name="splitContainer_user_script_end.TabIndex" type="System.Int32, mscorlib">
-    <value>174</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_end.Name" xml:space="preserve">
-    <value>splitContainer_user_script_end</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_end.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_end.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_end.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="splitContainer_user_script_beforeShortcuts.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="splitContainer_user_script_beforeShortcuts.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 213</value>
-  </data>
-  <data name="button_user_script_beforeShortcuts_Add.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="button_user_script_beforeShortcuts_Add.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
-  </data>
-  <data name="button_user_script_beforeShortcuts_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 23</value>
-  </data>
-  <data name="button_user_script_beforeShortcuts_Add.TabIndex" type="System.Int32, mscorlib">
-    <value>166</value>
-  </data>
-  <data name="button_user_script_beforeShortcuts_Add.Text" xml:space="preserve">
-    <value>Добавить</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_beforeShortcuts_Add.Name" xml:space="preserve">
-    <value>button_user_script_beforeShortcuts_Add</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_beforeShortcuts_Add.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_beforeShortcuts_Add.Parent" xml:space="preserve">
-    <value>splitContainer_user_script_beforeShortcuts.Panel1</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_beforeShortcuts_Add.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="splitContainer_user_script_beforeShortcuts.Panel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 3</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_beforeShortcuts.Panel1.Name" xml:space="preserve">
-    <value>splitContainer_user_script_beforeShortcuts.Panel1</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_beforeShortcuts.Panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_beforeShortcuts.Panel1.Parent" xml:space="preserve">
-    <value>splitContainer_user_script_beforeShortcuts</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_beforeShortcuts.Panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="button_user_script_beforeShortcuts_Del.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="button_user_script_beforeShortcuts_Del.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
-  </data>
-  <data name="button_user_script_beforeShortcuts_Del.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 23</value>
-  </data>
-  <data name="button_user_script_beforeShortcuts_Del.TabIndex" type="System.Int32, mscorlib">
-    <value>167</value>
-  </data>
-  <data name="button_user_script_beforeShortcuts_Del.Text" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_beforeShortcuts_Del.Name" xml:space="preserve">
-    <value>button_user_script_beforeShortcuts_Del</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_beforeShortcuts_Del.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_beforeShortcuts_Del.Parent" xml:space="preserve">
-    <value>splitContainer_user_script_beforeShortcuts.Panel2</value>
-  </data>
-  <data name="&gt;&gt;button_user_script_beforeShortcuts_Del.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="splitContainer_user_script_beforeShortcuts.Panel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 3</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_beforeShortcuts.Panel2.Name" xml:space="preserve">
-    <value>splitContainer_user_script_beforeShortcuts.Panel2</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_beforeShortcuts.Panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_beforeShortcuts.Panel2.Parent" xml:space="preserve">
-    <value>splitContainer_user_script_beforeShortcuts</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_beforeShortcuts.Panel2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="splitContainer_user_script_beforeShortcuts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 30</value>
-  </data>
-  <data name="splitContainer_user_script_beforeShortcuts.SplitterDistance" type="System.Int32, mscorlib">
-    <value>122</value>
-  </data>
-  <data name="splitContainer_user_script_beforeShortcuts.TabIndex" type="System.Int32, mscorlib">
-    <value>176</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_beforeShortcuts.Name" xml:space="preserve">
-    <value>splitContainer_user_script_beforeShortcuts</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_beforeShortcuts.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_beforeShortcuts.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_user_script_beforeShortcuts.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="splitContainer_resume_call.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="splitContainer_resume_call.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 346</value>
-  </data>
-  <data name="button_resume_call_Add.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="button_resume_call_Add.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
-  </data>
-  <data name="button_resume_call_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 23</value>
-  </data>
-  <data name="button_resume_call_Add.TabIndex" type="System.Int32, mscorlib">
-    <value>166</value>
-  </data>
-  <data name="button_resume_call_Add.Text" xml:space="preserve">
-    <value>Добавить</value>
-  </data>
-  <data name="&gt;&gt;button_resume_call_Add.Name" xml:space="preserve">
-    <value>button_resume_call_Add</value>
-  </data>
-  <data name="&gt;&gt;button_resume_call_Add.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_resume_call_Add.Parent" xml:space="preserve">
-    <value>splitContainer_resume_call.Panel1</value>
-  </data>
-  <data name="&gt;&gt;button_resume_call_Add.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="splitContainer_resume_call.Panel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 3</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_resume_call.Panel1.Name" xml:space="preserve">
-    <value>splitContainer_resume_call.Panel1</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_resume_call.Panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_resume_call.Panel1.Parent" xml:space="preserve">
-    <value>splitContainer_resume_call</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_resume_call.Panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="button_resume_call_Del.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="button_resume_call_Del.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
-  </data>
-  <data name="button_resume_call_Del.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 23</value>
-  </data>
-  <data name="button_resume_call_Del.TabIndex" type="System.Int32, mscorlib">
-    <value>167</value>
-  </data>
-  <data name="button_resume_call_Del.Text" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="&gt;&gt;button_resume_call_Del.Name" xml:space="preserve">
-    <value>button_resume_call_Del</value>
-  </data>
-  <data name="&gt;&gt;button_resume_call_Del.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_resume_call_Del.Parent" xml:space="preserve">
-    <value>splitContainer_resume_call.Panel2</value>
-  </data>
-  <data name="&gt;&gt;button_resume_call_Del.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="splitContainer_resume_call.Panel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 3</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_resume_call.Panel2.Name" xml:space="preserve">
-    <value>splitContainer_resume_call.Panel2</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_resume_call.Panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_resume_call.Panel2.Parent" xml:space="preserve">
-    <value>splitContainer_resume_call</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_resume_call.Panel2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="splitContainer_resume_call.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 30</value>
-  </data>
-  <data name="splitContainer_resume_call.SplitterDistance" type="System.Int32, mscorlib">
-    <value>122</value>
-  </data>
-  <data name="splitContainer_resume_call.TabIndex" type="System.Int32, mscorlib">
-    <value>178</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_resume_call.Name" xml:space="preserve">
-    <value>splitContainer_resume_call</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_resume_call.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_resume_call.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_resume_call.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="splitContainer_pause_call.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="splitContainer_pause_call.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 406</value>
-  </data>
-  <data name="button_pause_call_Add.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="button_pause_call_Add.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
-  </data>
-  <data name="button_pause_call_Add.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 23</value>
-  </data>
-  <data name="button_pause_call_Add.TabIndex" type="System.Int32, mscorlib">
-    <value>166</value>
-  </data>
-  <data name="button_pause_call_Add.Text" xml:space="preserve">
-    <value>Добавить</value>
-  </data>
-  <data name="&gt;&gt;button_pause_call_Add.Name" xml:space="preserve">
-    <value>button_pause_call_Add</value>
-  </data>
-  <data name="&gt;&gt;button_pause_call_Add.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;button_pause_call_Add.Parent" xml:space="preserve">
-    <value>splitContainer_pause_call.Panel1</value>
-  </data>
-  <data name="&gt;&gt;button_pause_call_Add.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="splitContainer_pause_call.Panel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 3</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_pause_call.Panel1.Name" xml:space="preserve">
-    <value>splitContainer_pause_call.Panel1</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_pause_call.Panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_pause_call.Panel1.Parent" xml:space="preserve">
-    <value>splitContainer_pause_call</value>
-  </data>
-  <data name="&gt;&gt;splitContainer_pause_call.Panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="button_pause_call_Del.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
   <data name="button_pause_call_Del.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 0</value>
+    <value>0, 26</value>
   </data>
   <data name="button_pause_call_Del.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 23</value>
+    <value>22, 22</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="button_pause_call_Del.TabIndex" type="System.Int32, mscorlib">
     <value>167</value>
   </data>
-  <data name="button_pause_call_Del.Text" xml:space="preserve">
-    <value>Удалить</value>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>206, 17</value>
+  </metadata>
+  <data name="button_pause_call_Del.ToolTip" xml:space="preserve">
+    <value>Удалить *.js файл</value>
   </data>
   <data name="&gt;&gt;button_pause_call_Del.Name" xml:space="preserve">
     <value>button_pause_call_Del</value>
@@ -856,46 +148,370 @@
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;button_pause_call_Del.Parent" xml:space="preserve">
-    <value>splitContainer_pause_call.Panel2</value>
+    <value>panel_pause_call_buttons</value>
   </data>
   <data name="&gt;&gt;button_pause_call_Del.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="splitContainer_pause_call.Panel2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 3</value>
+  <data name="button_resume_call_Del.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
   </data>
-  <data name="&gt;&gt;splitContainer_pause_call.Panel2.Name" xml:space="preserve">
-    <value>splitContainer_pause_call.Panel2</value>
+  <data name="button_resume_call_Del.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;splitContainer_pause_call.Panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="button_resume_call_Del.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 26</value>
   </data>
-  <data name="&gt;&gt;splitContainer_pause_call.Panel2.Parent" xml:space="preserve">
-    <value>splitContainer_pause_call</value>
+  <data name="button_resume_call_Del.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
   </data>
-  <data name="&gt;&gt;splitContainer_pause_call.Panel2.ZOrder" xml:space="preserve">
+  <data name="button_resume_call_Del.TabIndex" type="System.Int32, mscorlib">
+    <value>167</value>
+  </data>
+  <data name="button_resume_call_Del.ToolTip" xml:space="preserve">
+    <value>Удалить *.js файл</value>
+  </data>
+  <data name="&gt;&gt;button_resume_call_Del.Name" xml:space="preserve">
+    <value>button_resume_call_Del</value>
+  </data>
+  <data name="&gt;&gt;button_resume_call_Del.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_resume_call_Del.Parent" xml:space="preserve">
+    <value>panel_resume_call_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_resume_call_Del.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="button_pause_call_Add.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="button_pause_call_Add.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_pause_call_Add.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="button_pause_call_Add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="button_pause_call_Add.TabIndex" type="System.Int32, mscorlib">
+    <value>166</value>
+  </data>
+  <data name="button_pause_call_Add.ToolTip" xml:space="preserve">
+    <value>Добавить *.js файл</value>
+  </data>
+  <data name="&gt;&gt;button_pause_call_Add.Name" xml:space="preserve">
+    <value>button_pause_call_Add</value>
+  </data>
+  <data name="&gt;&gt;button_pause_call_Add.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_pause_call_Add.Parent" xml:space="preserve">
+    <value>panel_pause_call_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_pause_call_Add.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="splitContainer_pause_call.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 30</value>
+  <data name="button_user_script_start_Add.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
   </data>
-  <data name="splitContainer_pause_call.SplitterDistance" type="System.Int32, mscorlib">
-    <value>122</value>
+  <data name="button_user_script_start_Add.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="splitContainer_pause_call.TabIndex" type="System.Int32, mscorlib">
-    <value>180</value>
+  <data name="button_user_script_start_Add.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="&gt;&gt;splitContainer_pause_call.Name" xml:space="preserve">
-    <value>splitContainer_pause_call</value>
+  <data name="button_user_script_start_Add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
   </data>
-  <data name="&gt;&gt;splitContainer_pause_call.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="button_user_script_start_Add.TabIndex" type="System.Int32, mscorlib">
+    <value>167</value>
   </data>
-  <data name="&gt;&gt;splitContainer_pause_call.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="button_user_script_start_Add.ToolTip" xml:space="preserve">
+    <value>Добавить *.js файл</value>
   </data>
-  <data name="&gt;&gt;splitContainer_pause_call.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;button_user_script_start_Add.Name" xml:space="preserve">
+    <value>button_user_script_start_Add</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_start_Add.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_start_Add.Parent" xml:space="preserve">
+    <value>panel_user_script_start_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_start_Add.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="button_user_script_start_Del.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="button_user_script_start_Del.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_user_script_start_Del.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 26</value>
+  </data>
+  <data name="button_user_script_start_Del.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="button_user_script_start_Del.TabIndex" type="System.Int32, mscorlib">
+    <value>168</value>
+  </data>
+  <data name="button_user_script_start_Del.ToolTip" xml:space="preserve">
+    <value>Удалить *.js файл</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_start_Del.Name" xml:space="preserve">
+    <value>button_user_script_start_Del</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_start_Del.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_start_Del.Parent" xml:space="preserve">
+    <value>panel_user_script_start_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_start_Del.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="button_user_script_Add.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="button_user_script_Add.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_user_script_Add.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="button_user_script_Add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="button_user_script_Add.TabIndex" type="System.Int32, mscorlib">
+    <value>166</value>
+  </data>
+  <data name="button_user_script_Add.ToolTip" xml:space="preserve">
+    <value>Добавить *.js файл</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_Add.Name" xml:space="preserve">
+    <value>button_user_script_Add</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_Add.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_Add.Parent" xml:space="preserve">
+    <value>panel_user_script_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_Add.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="button_user_script_Del.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="button_user_script_Del.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_user_script_Del.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 26</value>
+  </data>
+  <data name="button_user_script_Del.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="button_user_script_Del.TabIndex" type="System.Int32, mscorlib">
+    <value>167</value>
+  </data>
+  <data name="button_user_script_Del.ToolTip" xml:space="preserve">
+    <value>Удалить *.js файл</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_Del.Name" xml:space="preserve">
+    <value>button_user_script_Del</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_Del.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_Del.Parent" xml:space="preserve">
+    <value>panel_user_script_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_Del.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="button_user_script_end_Add.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="button_user_script_end_Add.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_user_script_end_Add.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="button_user_script_end_Add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="button_user_script_end_Add.TabIndex" type="System.Int32, mscorlib">
+    <value>166</value>
+  </data>
+  <data name="button_user_script_end_Add.ToolTip" xml:space="preserve">
+    <value>Добавить *.js файл</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_end_Add.Name" xml:space="preserve">
+    <value>button_user_script_end_Add</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_end_Add.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_end_Add.Parent" xml:space="preserve">
+    <value>panel_user_script_end_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_end_Add.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="button_user_script_end_Del.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="button_user_script_end_Del.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_user_script_end_Del.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 26</value>
+  </data>
+  <data name="button_user_script_end_Del.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="button_user_script_end_Del.TabIndex" type="System.Int32, mscorlib">
+    <value>167</value>
+  </data>
+  <data name="button_user_script_end_Del.ToolTip" xml:space="preserve">
+    <value>Удалить *.js файл</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_end_Del.Name" xml:space="preserve">
+    <value>button_user_script_end_Del</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_end_Del.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_end_Del.Parent" xml:space="preserve">
+    <value>panel_user_script_end_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_end_Del.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Add.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Add.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Add.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Add.TabIndex" type="System.Int32, mscorlib">
+    <value>166</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Add.ToolTip" xml:space="preserve">
+    <value>Добавить *.js файл</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_beforeShortcuts_Add.Name" xml:space="preserve">
+    <value>button_user_script_beforeShortcuts_Add</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_beforeShortcuts_Add.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_beforeShortcuts_Add.Parent" xml:space="preserve">
+    <value>panel_user_script_beforeShortcuts_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_beforeShortcuts_Add.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Del.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Del.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Del.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 26</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Del.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Del.TabIndex" type="System.Int32, mscorlib">
+    <value>167</value>
+  </data>
+  <data name="button_user_script_beforeShortcuts_Del.ToolTip" xml:space="preserve">
+    <value>Удалить *.js файл</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_beforeShortcuts_Del.Name" xml:space="preserve">
+    <value>button_user_script_beforeShortcuts_Del</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_beforeShortcuts_Del.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_beforeShortcuts_Del.Parent" xml:space="preserve">
+    <value>panel_user_script_beforeShortcuts_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_user_script_beforeShortcuts_Del.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="button_user_functions_Add.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="button_user_functions_Add.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_user_functions_Add.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="button_user_functions_Add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="button_user_functions_Add.TabIndex" type="System.Int32, mscorlib">
+    <value>166</value>
+  </data>
+  <data name="button_user_functions_Add.ToolTip" xml:space="preserve">
+    <value>Добавить *.js файл</value>
+  </data>
+  <data name="&gt;&gt;button_user_functions_Add.Name" xml:space="preserve">
+    <value>button_user_functions_Add</value>
+  </data>
+  <data name="&gt;&gt;button_user_functions_Add.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_user_functions_Add.Parent" xml:space="preserve">
+    <value>panel_user_functions_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_user_functions_Add.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="button_user_functions_Del.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="button_user_functions_Del.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_user_functions_Del.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 26</value>
+  </data>
+  <data name="button_user_functions_Del.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="button_user_functions_Del.TabIndex" type="System.Int32, mscorlib">
+    <value>167</value>
+  </data>
+  <data name="button_user_functions_Del.ToolTip" xml:space="preserve">
+    <value>Удалить *.js файл</value>
+  </data>
+  <data name="&gt;&gt;button_user_functions_Del.Name" xml:space="preserve">
+    <value>button_user_functions_Del</value>
+  </data>
+  <data name="&gt;&gt;button_user_functions_Del.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_user_functions_Del.Parent" xml:space="preserve">
+    <value>panel_user_functions_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_user_functions_Del.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="checkBox_user_functions.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -919,26 +535,27 @@
     <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="checkBox_user_functions.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+    <value>Left</value>
   </data>
   <data name="checkBox_user_functions.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="checkBox_user_functions.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
+    <value>3, 0</value>
   </data>
   <data name="checkBox_user_functions.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 0, 0</value>
   </data>
   <data name="checkBox_user_functions.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 33</value>
+    <value>175, 48</value>
   </data>
   <data name="checkBox_user_functions.TabIndex" type="System.Int32, mscorlib">
     <value>165</value>
   </data>
   <data name="checkBox_user_functions.Text" xml:space="preserve">
-    <value>Пользовательские функции (вставляются 
-перед объявлением переменных)</value>
+    <value>Пользовательские функции 
+(вставляются перед 
+объявлением переменных)</value>
   </data>
   <data name="&gt;&gt;checkBox_user_functions.Name" xml:space="preserve">
     <value>checkBox_user_functions</value>
@@ -947,35 +564,36 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBox_user_functions.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>panel_user_functions_draw</value>
   </data>
   <data name="&gt;&gt;checkBox_user_functions.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>1</value>
   </data>
   <data name="checkBox_user_script_start.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="checkBox_user_script_start.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+    <value>Left</value>
   </data>
   <data name="checkBox_user_script_start.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="checkBox_user_script_start.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 63</value>
+    <value>3, 0</value>
   </data>
   <data name="checkBox_user_script_start.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 0, 0</value>
   </data>
   <data name="checkBox_user_script_start.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 30</value>
+    <value>214, 48</value>
   </data>
   <data name="checkBox_user_script_start.TabIndex" type="System.Int32, mscorlib">
     <value>169</value>
   </data>
   <data name="checkBox_user_script_start.Text" xml:space="preserve">
     <value>Пользовательский скрипт в начале 
-(вставляются перед созданием виджетов)</value>
+(вставляются перед созданием 
+виджетов)</value>
   </data>
   <data name="&gt;&gt;checkBox_user_script_start.Name" xml:space="preserve">
     <value>checkBox_user_script_start</value>
@@ -984,35 +602,36 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBox_user_script_start.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>panel_user_script_start_draw</value>
   </data>
   <data name="&gt;&gt;checkBox_user_script_start.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>1</value>
   </data>
   <data name="checkBox_user_script.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="checkBox_user_script.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+    <value>Left</value>
   </data>
   <data name="checkBox_user_script.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="checkBox_user_script.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 123</value>
+    <value>3, 0</value>
   </data>
   <data name="checkBox_user_script.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 0, 0</value>
   </data>
   <data name="checkBox_user_script.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 30</value>
+    <value>199, 48</value>
   </data>
   <data name="checkBox_user_script.TabIndex" type="System.Int32, mscorlib">
     <value>171</value>
   </data>
   <data name="checkBox_user_script.Text" xml:space="preserve">
     <value>Пользовательский скрипт 
-(вставляются в выбранное место)</value>
+(положение виджета определяет 
+положение скрипта в коде)</value>
   </data>
   <data name="&gt;&gt;checkBox_user_script.Name" xml:space="preserve">
     <value>checkBox_user_script</value>
@@ -1021,36 +640,36 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBox_user_script.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>panel_user_script_draw</value>
   </data>
   <data name="&gt;&gt;checkBox_user_script.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>1</value>
   </data>
   <data name="checkBox_user_script_end.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="checkBox_user_script_end.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+    <value>Left</value>
   </data>
   <data name="checkBox_user_script_end.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="checkBox_user_script_end.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 243</value>
+    <value>3, 0</value>
   </data>
   <data name="checkBox_user_script_end.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 0, 0</value>
   </data>
   <data name="checkBox_user_script_end.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 43</value>
+    <value>227, 48</value>
   </data>
   <data name="checkBox_user_script_end.TabIndex" type="System.Int32, mscorlib">
     <value>173</value>
   </data>
   <data name="checkBox_user_script_end.Text" xml:space="preserve">
     <value>Пользовательский скрипт в конце 
-(вставляются после создания виджетов, 
-перед WIDGET_DELEGATE)</value>
+(вставляются после создания 
+виджетов, перед WIDGET_DELEGATE)</value>
   </data>
   <data name="&gt;&gt;checkBox_user_script_end.Name" xml:space="preserve">
     <value>checkBox_user_script_end</value>
@@ -1059,35 +678,36 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBox_user_script_end.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>panel_user_script_end_draw</value>
   </data>
   <data name="&gt;&gt;checkBox_user_script_end.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>1</value>
   </data>
   <data name="checkBox_user_script_beforeShortcuts.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="checkBox_user_script_beforeShortcuts.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+    <value>Left</value>
   </data>
   <data name="checkBox_user_script_beforeShortcuts.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="checkBox_user_script_beforeShortcuts.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 183</value>
+    <value>3, 0</value>
   </data>
   <data name="checkBox_user_script_beforeShortcuts.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 0, 0</value>
   </data>
   <data name="checkBox_user_script_beforeShortcuts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 30</value>
+    <value>200, 48</value>
   </data>
   <data name="checkBox_user_script_beforeShortcuts.TabIndex" type="System.Int32, mscorlib">
     <value>175</value>
   </data>
   <data name="checkBox_user_script_beforeShortcuts.Text" xml:space="preserve">
-    <value>Пользовательский скрипт перед ярлыками
-(вставляются перед виджетами ярлыков)</value>
+    <value>Пользовательский скрипт перед 
+ярлыками (вставляются перед 
+виджетами ярлыков)</value>
   </data>
   <data name="&gt;&gt;checkBox_user_script_beforeShortcuts.Name" xml:space="preserve">
     <value>checkBox_user_script_beforeShortcuts</value>
@@ -1096,35 +716,36 @@
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBox_user_script_beforeShortcuts.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>panel_user_script_beforeShortcuts_draw</value>
   </data>
   <data name="&gt;&gt;checkBox_user_script_beforeShortcuts.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>1</value>
   </data>
   <data name="checkBox_resume_call.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="checkBox_resume_call.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+    <value>Left</value>
   </data>
   <data name="checkBox_resume_call.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="checkBox_resume_call.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 316</value>
+    <value>3, 0</value>
   </data>
   <data name="checkBox_resume_call.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 0, 0</value>
   </data>
   <data name="checkBox_resume_call.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 30</value>
+    <value>209, 48</value>
   </data>
   <data name="checkBox_resume_call.TabIndex" type="System.Int32, mscorlib">
     <value>177</value>
   </data>
   <data name="checkBox_resume_call.Text" xml:space="preserve">
-    <value>Функция resume_call (вставляются в 
-resume_call виджета WIDGET_DELEGATE)</value>
+    <value>Функция resume_call (вставляются 
+в resume_call виджета 
+WIDGET_DELEGATE)</value>
   </data>
   <data name="&gt;&gt;checkBox_resume_call.Name" xml:space="preserve">
     <value>checkBox_resume_call</value>
@@ -1133,35 +754,36 @@ resume_call виджета WIDGET_DELEGATE)</value>
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBox_resume_call.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>panel_resume_call_draw</value>
   </data>
   <data name="&gt;&gt;checkBox_resume_call.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>1</value>
   </data>
   <data name="checkBox_pause_call.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="checkBox_pause_call.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
+    <value>Left</value>
   </data>
   <data name="checkBox_pause_call.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="checkBox_pause_call.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 376</value>
+    <value>3, 0</value>
   </data>
   <data name="checkBox_pause_call.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 0, 0</value>
   </data>
   <data name="checkBox_pause_call.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 30</value>
+    <value>204, 48</value>
   </data>
   <data name="checkBox_pause_call.TabIndex" type="System.Int32, mscorlib">
     <value>179</value>
   </data>
   <data name="checkBox_pause_call.Text" xml:space="preserve">
-    <value>Функция pause_call (вставляются в 
-pause_call виджета WIDGET_DELEGATE)
+    <value>Функция pause_call (вставляются 
+в pause_call виджета 
+WIDGET_DELEGATE)
 </value>
   </data>
   <data name="&gt;&gt;checkBox_pause_call.Name" xml:space="preserve">
@@ -1171,10 +793,10 @@ pause_call виджета WIDGET_DELEGATE)
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;checkBox_pause_call.Parent" xml:space="preserve">
-    <value>$this</value>
+    <value>panel_pause_call_draw</value>
   </data>
   <data name="&gt;&gt;checkBox_pause_call.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1182,14 +804,17 @@ pause_call виджета WIDGET_DELEGATE)
   <data name="label1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 436</value>
+    <value>0, 385</value>
   </data>
   <data name="label1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 0, 0</value>
+    <value>3, 5, 0, 0</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>222, 26</value>
+    <value>222, 31</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>181</value>
@@ -1210,6 +835,582 @@ pause_call виджета WIDGET_DELEGATE)
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="panel_user_functions_buttons.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="panel_user_functions_buttons.Location" type="System.Drawing.Point, System.Drawing">
+    <value>216, 0</value>
+  </data>
+  <data name="panel_user_functions_buttons.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 48</value>
+  </data>
+  <data name="panel_user_functions_buttons.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;panel_user_functions_buttons.Name" xml:space="preserve">
+    <value>panel_user_functions_buttons</value>
+  </data>
+  <data name="&gt;&gt;panel_user_functions_buttons.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_user_functions_buttons.Parent" xml:space="preserve">
+    <value>panel_user_functions_draw</value>
+  </data>
+  <data name="&gt;&gt;panel_user_functions_buttons.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel_user_functions_draw.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panel_user_functions_draw.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 5</value>
+  </data>
+  <data name="panel_user_functions_draw.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 0, 0</value>
+  </data>
+  <data name="panel_user_functions_draw.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 50</value>
+  </data>
+  <data name="panel_user_functions_draw.TabIndex" type="System.Int32, mscorlib">
+    <value>183</value>
+  </data>
+  <data name="&gt;&gt;panel_user_functions_draw.Name" xml:space="preserve">
+    <value>panel_user_functions_draw</value>
+  </data>
+  <data name="&gt;&gt;panel_user_functions_draw.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_user_functions_draw.Parent" xml:space="preserve">
+    <value>panel_user_functions</value>
+  </data>
+  <data name="&gt;&gt;panel_user_functions_draw.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel_user_functions.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panel_user_functions.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="panel_user_functions.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 0</value>
+  </data>
+  <data name="panel_user_functions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 55</value>
+  </data>
+  <data name="panel_user_functions.TabIndex" type="System.Int32, mscorlib">
+    <value>184</value>
+  </data>
+  <data name="&gt;&gt;panel_user_functions.Name" xml:space="preserve">
+    <value>panel_user_functions</value>
+  </data>
+  <data name="&gt;&gt;panel_user_functions.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_user_functions.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel_user_functions.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="panel_user_script_start_buttons.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="panel_user_script_start_buttons.Location" type="System.Drawing.Point, System.Drawing">
+    <value>216, 0</value>
+  </data>
+  <data name="panel_user_script_start_buttons.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 48</value>
+  </data>
+  <data name="panel_user_script_start_buttons.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_start_buttons.Name" xml:space="preserve">
+    <value>panel_user_script_start_buttons</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_start_buttons.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_start_buttons.Parent" xml:space="preserve">
+    <value>panel_user_script_start_draw</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_start_buttons.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel_user_script_start_draw.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panel_user_script_start_draw.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 5</value>
+  </data>
+  <data name="panel_user_script_start_draw.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 0, 0</value>
+  </data>
+  <data name="panel_user_script_start_draw.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 50</value>
+  </data>
+  <data name="panel_user_script_start_draw.TabIndex" type="System.Int32, mscorlib">
+    <value>183</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_start_draw.Name" xml:space="preserve">
+    <value>panel_user_script_start_draw</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_start_draw.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_start_draw.Parent" xml:space="preserve">
+    <value>panel_user_script_start</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_start_draw.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel_user_script_start.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panel_user_script_start.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 55</value>
+  </data>
+  <data name="panel_user_script_start.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 0</value>
+  </data>
+  <data name="panel_user_script_start.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 55</value>
+  </data>
+  <data name="panel_user_script_start.TabIndex" type="System.Int32, mscorlib">
+    <value>185</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_start.Name" xml:space="preserve">
+    <value>panel_user_script_start</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_start.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_start.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_start.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="panel_user_script_buttons.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="panel_user_script_buttons.Location" type="System.Drawing.Point, System.Drawing">
+    <value>216, 0</value>
+  </data>
+  <data name="panel_user_script_buttons.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 48</value>
+  </data>
+  <data name="panel_user_script_buttons.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_buttons.Name" xml:space="preserve">
+    <value>panel_user_script_buttons</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_buttons.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_buttons.Parent" xml:space="preserve">
+    <value>panel_user_script_draw</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_buttons.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel_user_script_draw.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panel_user_script_draw.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 5</value>
+  </data>
+  <data name="panel_user_script_draw.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 0, 0</value>
+  </data>
+  <data name="panel_user_script_draw.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 50</value>
+  </data>
+  <data name="panel_user_script_draw.TabIndex" type="System.Int32, mscorlib">
+    <value>183</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_draw.Name" xml:space="preserve">
+    <value>panel_user_script_draw</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_draw.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_draw.Parent" xml:space="preserve">
+    <value>panel_user_script</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_draw.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel_user_script.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panel_user_script.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 110</value>
+  </data>
+  <data name="panel_user_script.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 0</value>
+  </data>
+  <data name="panel_user_script.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 55</value>
+  </data>
+  <data name="panel_user_script.TabIndex" type="System.Int32, mscorlib">
+    <value>186</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script.Name" xml:space="preserve">
+    <value>panel_user_script</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="panel_user_script_beforeShortcuts_buttons.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="panel_user_script_beforeShortcuts_buttons.Location" type="System.Drawing.Point, System.Drawing">
+    <value>216, 0</value>
+  </data>
+  <data name="panel_user_script_beforeShortcuts_buttons.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 48</value>
+  </data>
+  <data name="panel_user_script_beforeShortcuts_buttons.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_beforeShortcuts_buttons.Name" xml:space="preserve">
+    <value>panel_user_script_beforeShortcuts_buttons</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_beforeShortcuts_buttons.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_beforeShortcuts_buttons.Parent" xml:space="preserve">
+    <value>panel_user_script_beforeShortcuts_draw</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_beforeShortcuts_buttons.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel_user_script_beforeShortcuts_draw.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panel_user_script_beforeShortcuts_draw.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 5</value>
+  </data>
+  <data name="panel_user_script_beforeShortcuts_draw.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 0, 0</value>
+  </data>
+  <data name="panel_user_script_beforeShortcuts_draw.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 50</value>
+  </data>
+  <data name="panel_user_script_beforeShortcuts_draw.TabIndex" type="System.Int32, mscorlib">
+    <value>183</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_beforeShortcuts_draw.Name" xml:space="preserve">
+    <value>panel_user_script_beforeShortcuts_draw</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_beforeShortcuts_draw.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_beforeShortcuts_draw.Parent" xml:space="preserve">
+    <value>panel_user_script_beforeShortcuts</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_beforeShortcuts_draw.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel_user_script_beforeShortcuts.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panel_user_script_beforeShortcuts.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 165</value>
+  </data>
+  <data name="panel_user_script_beforeShortcuts.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 0</value>
+  </data>
+  <data name="panel_user_script_beforeShortcuts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 55</value>
+  </data>
+  <data name="panel_user_script_beforeShortcuts.TabIndex" type="System.Int32, mscorlib">
+    <value>187</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_beforeShortcuts.Name" xml:space="preserve">
+    <value>panel_user_script_beforeShortcuts</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_beforeShortcuts.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_beforeShortcuts.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_beforeShortcuts.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="panel_user_script_end_buttons.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="panel_user_script_end_buttons.Location" type="System.Drawing.Point, System.Drawing">
+    <value>216, 0</value>
+  </data>
+  <data name="panel_user_script_end_buttons.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 48</value>
+  </data>
+  <data name="panel_user_script_end_buttons.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_end_buttons.Name" xml:space="preserve">
+    <value>panel_user_script_end_buttons</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_end_buttons.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_end_buttons.Parent" xml:space="preserve">
+    <value>panel_user_script_end_draw</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_end_buttons.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel_user_script_end_draw.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panel_user_script_end_draw.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 5</value>
+  </data>
+  <data name="panel_user_script_end_draw.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 0, 0</value>
+  </data>
+  <data name="panel_user_script_end_draw.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 50</value>
+  </data>
+  <data name="panel_user_script_end_draw.TabIndex" type="System.Int32, mscorlib">
+    <value>183</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_end_draw.Name" xml:space="preserve">
+    <value>panel_user_script_end_draw</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_end_draw.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_end_draw.Parent" xml:space="preserve">
+    <value>panel_user_script_end</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_end_draw.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel_user_script_end.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panel_user_script_end.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 220</value>
+  </data>
+  <data name="panel_user_script_end.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 0</value>
+  </data>
+  <data name="panel_user_script_end.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 55</value>
+  </data>
+  <data name="panel_user_script_end.TabIndex" type="System.Int32, mscorlib">
+    <value>188</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_end.Name" xml:space="preserve">
+    <value>panel_user_script_end</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_end.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_end.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel_user_script_end.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="button_resume_call_Add.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="button_resume_call_Add.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="button_resume_call_Add.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="button_resume_call_Add.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 22</value>
+  </data>
+  <data name="button_resume_call_Add.TabIndex" type="System.Int32, mscorlib">
+    <value>166</value>
+  </data>
+  <data name="button_resume_call_Add.ToolTip" xml:space="preserve">
+    <value>Добавить *.js файл</value>
+  </data>
+  <data name="&gt;&gt;button_resume_call_Add.Name" xml:space="preserve">
+    <value>button_resume_call_Add</value>
+  </data>
+  <data name="&gt;&gt;button_resume_call_Add.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;button_resume_call_Add.Parent" xml:space="preserve">
+    <value>panel_resume_call_buttons</value>
+  </data>
+  <data name="&gt;&gt;button_resume_call_Add.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panel_resume_call_buttons.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="panel_resume_call_buttons.Location" type="System.Drawing.Point, System.Drawing">
+    <value>216, 0</value>
+  </data>
+  <data name="panel_resume_call_buttons.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 48</value>
+  </data>
+  <data name="panel_resume_call_buttons.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;panel_resume_call_buttons.Name" xml:space="preserve">
+    <value>panel_resume_call_buttons</value>
+  </data>
+  <data name="&gt;&gt;panel_resume_call_buttons.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_resume_call_buttons.Parent" xml:space="preserve">
+    <value>panel_resume_call_draw</value>
+  </data>
+  <data name="&gt;&gt;panel_resume_call_buttons.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel_resume_call_draw.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panel_resume_call_draw.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 5</value>
+  </data>
+  <data name="panel_resume_call_draw.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 0, 0</value>
+  </data>
+  <data name="panel_resume_call_draw.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 50</value>
+  </data>
+  <data name="panel_resume_call_draw.TabIndex" type="System.Int32, mscorlib">
+    <value>183</value>
+  </data>
+  <data name="&gt;&gt;panel_resume_call_draw.Name" xml:space="preserve">
+    <value>panel_resume_call_draw</value>
+  </data>
+  <data name="&gt;&gt;panel_resume_call_draw.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_resume_call_draw.Parent" xml:space="preserve">
+    <value>panel_resume_call</value>
+  </data>
+  <data name="&gt;&gt;panel_resume_call_draw.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel_resume_call.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panel_resume_call.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 275</value>
+  </data>
+  <data name="panel_resume_call.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 0</value>
+  </data>
+  <data name="panel_resume_call.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 55</value>
+  </data>
+  <data name="panel_resume_call.TabIndex" type="System.Int32, mscorlib">
+    <value>189</value>
+  </data>
+  <data name="&gt;&gt;panel_resume_call.Name" xml:space="preserve">
+    <value>panel_resume_call</value>
+  </data>
+  <data name="&gt;&gt;panel_resume_call.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_resume_call.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel_resume_call.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="panel_pause_call_buttons.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="panel_pause_call_buttons.Location" type="System.Drawing.Point, System.Drawing">
+    <value>216, 0</value>
+  </data>
+  <data name="panel_pause_call_buttons.Size" type="System.Drawing.Size, System.Drawing">
+    <value>22, 48</value>
+  </data>
+  <data name="panel_pause_call_buttons.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;panel_pause_call_buttons.Name" xml:space="preserve">
+    <value>panel_pause_call_buttons</value>
+  </data>
+  <data name="&gt;&gt;panel_pause_call_buttons.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_pause_call_buttons.Parent" xml:space="preserve">
+    <value>panel_pause_call_draw</value>
+  </data>
+  <data name="&gt;&gt;panel_pause_call_buttons.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel_pause_call_draw.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="panel_pause_call_draw.Location" type="System.Drawing.Point, System.Drawing">
+    <value>5, 5</value>
+  </data>
+  <data name="panel_pause_call_draw.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 0, 0</value>
+  </data>
+  <data name="panel_pause_call_draw.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 50</value>
+  </data>
+  <data name="panel_pause_call_draw.TabIndex" type="System.Int32, mscorlib">
+    <value>183</value>
+  </data>
+  <data name="&gt;&gt;panel_pause_call_draw.Name" xml:space="preserve">
+    <value>panel_pause_call_draw</value>
+  </data>
+  <data name="&gt;&gt;panel_pause_call_draw.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_pause_call_draw.Parent" xml:space="preserve">
+    <value>panel_pause_call</value>
+  </data>
+  <data name="&gt;&gt;panel_pause_call_draw.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel_pause_call.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panel_pause_call.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 330</value>
+  </data>
+  <data name="panel_pause_call.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 5, 5, 0</value>
+  </data>
+  <data name="panel_pause_call.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 55</value>
+  </data>
+  <data name="panel_pause_call.TabIndex" type="System.Int32, mscorlib">
+    <value>190</value>
+  </data>
+  <data name="&gt;&gt;panel_pause_call.Name" xml:space="preserve">
+    <value>panel_pause_call</value>
+  </data>
+  <data name="&gt;&gt;panel_pause_call.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel_pause_call.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;panel_pause_call.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -1217,13 +1418,19 @@ pause_call виджета WIDGET_DELEGATE)
     <value>6, 13</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 644</value>
+    <value>250, 466</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Edit_JS.Name" xml:space="preserve">
     <value>toolStripMenuItem_Edit_JS</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItem_Edit_JS.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolTip1.Name" xml:space="preserve">
+    <value>toolTip1</value>
+  </data>
+  <data name="&gt;&gt;toolTip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>UCtrl_JS_script_Opt</value>

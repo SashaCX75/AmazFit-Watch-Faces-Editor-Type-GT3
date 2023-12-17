@@ -123,6 +123,9 @@
   <data name="button_Number.Text" xml:space="preserve">
     <value>Numerische Werte</value>
   </data>
+  <data name="button_Number_Font.Text" xml:space="preserve">
+    <value>Wert mit Schriftart</value>
+  </data>
   <data name="button_Pointer.Text" xml:space="preserve">
     <value>Zeiger</value>
   </data>

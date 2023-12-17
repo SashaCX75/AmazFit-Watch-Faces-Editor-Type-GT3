@@ -150,4 +150,7 @@
   <data name="button_Text_rotation.Text" xml:space="preserve">
     <value>Údaje v úhlu</value>
   </data>
+  <data name="button_Number_Font.Text" xml:space="preserve">
+    <value>Data ve fontu</value>
+  </data>
 </root>

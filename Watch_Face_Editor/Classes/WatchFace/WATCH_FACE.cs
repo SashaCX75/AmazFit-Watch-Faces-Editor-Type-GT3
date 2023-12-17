@@ -7135,7 +7135,7 @@ namespace Watch_Face_Editor
         ///// <summary>Позиция в наборе элементов</summary>
         //public int position = -1;
 
-        /// <summary>Видимость элемента</summary>
+        /// <summary>Использование скриптов</summary>
         public bool enable = true;
 
         public bool user_functions;

@@ -150,4 +150,13 @@
   <data name="button_Seconds_rotation.Text" xml:space="preserve">
     <value>Secondi nell'angolo</value>
   </data>
+  <data name="button_Hours_Font.Text" xml:space="preserve">
+    <value>Ore in Font</value>
+  </data>
+  <data name="button_Minutes_Font.Text" xml:space="preserve">
+    <value>Minuti in font</value>
+  </data>
+  <data name="button_Seconds_Font.Text" xml:space="preserve">
+    <value>Secondi in font</value>
+  </data>
 </root>

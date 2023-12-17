@@ -807,7 +807,7 @@ namespace Watch_Face_Editor
                 }
             }
             fileScriptName = Path.Combine(ProjectDir, "JS", fileName);
-            if (File.Exists(fileScriptName) && script != null && script.user_script_beforeShortcuts)
+            if (File.Exists(fileScriptName) && script != null && script.enable && script.user_script_beforeShortcuts)
             {
                 Logger.WriteLine("Load JS/user_script_beforeShortcuts.js");
                 try
@@ -863,7 +863,7 @@ namespace Watch_Face_Editor
                 }
             }
             fileScriptName = Path.Combine(ProjectDir, "JS", fileName);
-            if (File.Exists(fileScriptName) && script != null && script.user_functions)
+            if (File.Exists(fileScriptName) && script != null && script.enable && script.user_functions)
             {
                 Logger.WriteLine("Load JS/user_functions.js");
                 try
@@ -898,7 +898,7 @@ namespace Watch_Face_Editor
                 }
             }
             fileScriptName = Path.Combine(ProjectDir, "JS", fileName);
-            if (File.Exists(fileScriptName) && script != null && script.user_script_start)
+            if (File.Exists(fileScriptName) && script != null && script.enable && script.user_script_start)
             {
                 Logger.WriteLine("Load JS/user_script_start.js");
                 try
@@ -933,7 +933,7 @@ namespace Watch_Face_Editor
                 }
             }
             fileScriptName = Path.Combine(ProjectDir, "JS", fileName);
-            if (File.Exists(fileScriptName) && script != null && script.user_script_end)
+            if (File.Exists(fileScriptName) && script != null && script.enable && script.user_script_end)
             {
                 Logger.WriteLine("Load JS/user_script_end.js");
                 try
@@ -968,7 +968,7 @@ namespace Watch_Face_Editor
                 }
             }
             fileScriptName = Path.Combine(ProjectDir, "JS", fileName);
-            if (File.Exists(fileScriptName) && script != null && script.resume_call)
+            if (File.Exists(fileScriptName) && script != null && script.enable && script.resume_call)
             {
                 Logger.WriteLine("Load JS/resume_call.js");
                 try
@@ -1004,7 +1004,7 @@ namespace Watch_Face_Editor
                 }
             }
             fileScriptName = Path.Combine(ProjectDir, "JS", fileName);
-            if (File.Exists(fileScriptName) && script != null && script.pause_call)
+            if (File.Exists(fileScriptName) && script != null && script.enable && script.pause_call)
             {
                 Logger.WriteLine("Load JS/pause_call.js");
                 try
@@ -1476,7 +1476,14 @@ namespace Watch_Face_Editor
 
                             time_update += Environment.NewLine + TabInString(7) + "if (updateHour) {";
                             string hourStr = optionNameStart + "hourStr";
-                            time_update += Environment.NewLine + TabInString(8) + "let " + hourStr + " = hour.toString();";
+                            time_update += Environment.NewLine + TabInString(8) + "let " + optionNameStart + "valueHour = hour;";
+                            time_update += Environment.NewLine + TabInString(8) + "if (!timeSensor.is24Hour) {";
+                            time_update += Environment.NewLine + TabInString(9) + optionNameStart + "valueHour -= 12;";
+                            time_update += Environment.NewLine + TabInString(9) + "if (" + optionNameStart + "valueHour < 1) " + optionNameStart + "valueHour += 12;";
+                            time_update += Environment.NewLine + TabInString(8) + "};";
+
+
+                            time_update += Environment.NewLine + TabInString(8) + "let " + hourStr + " = " + optionNameStart + "valueHour.toString();";
                             if (DigitalTime.Hour_Font.padding) time_update += Environment.NewLine + TabInString(8) + hourStr + " = " + hourStr + ".padStart(2, '0');";
                             if (DigitalTime.Hour_Font.unit_type > 0)
                             {
@@ -5280,55 +5287,6 @@ namespace Watch_Face_Editor
                             //items += Environment.NewLine + TabInString(6) + "};";
                             items += Environment.NewLine;
 
-                            /*img_height = 454;
-                            img_width = 454;
-                            switch (ProgramSettings.Watch_Model)
-                            {
-                                case "GTR 3":
-                                    img_height = 454;
-                                    img_width = 454;
-                                    break;
-                                case "GTR 3 Pro":
-                                    img_height = 480;
-                                    img_width = 480;
-                                    break;
-                                case "GTS 3":
-                                    img_height = 450;
-                                    img_width = 390;
-                                    break;
-                                case "T-Rex 2":
-                                    img_height = 454;
-                                    img_width = 454;
-                                    break;
-                                case "T-Rex Ultra":
-                                    img_height = 454;
-                                    img_width = 454;
-                                    break;
-                                case "GTR 4":
-                                    img_height = 466;
-                                    img_width = 466;
-                                    break;
-                                case "Amazfit Band 7":
-                                    img_height = 368;
-                                    img_width = 194;
-                                    break;
-                                case "GTS 4 mini":
-                                    img_height = 384;
-                                    img_width = 336;
-                                    break;
-                                case "Falcon":
-                                    img_height = 416;
-                                    img_width = 416;
-                                    break;
-                                case "GTR mini":
-                                    img_height = 416;
-                                    img_width = 416;
-                                    break;
-                                case "GTS 4":
-                                    img_height = 450;
-                                    img_width = 390;
-                                    break;
-                            }*/
                             img_height = SelectedModel.background.h;
                             img_width = SelectedModel.background.w;
 
@@ -9257,29 +9215,30 @@ namespace Watch_Face_Editor
                 case "ElementScript":
                     ElementScript script = (ElementScript)element;
 
-                    if (!script.enable) return;
-
-                    string fileName = "user_script.js";
-                    if (show_level == "ONLY_AOD") fileName = "AOD_" + fileName;
-                    string fileScriptName = Path.Combine(ProjectDir, "JS", fileName);
-                    if (File.Exists(fileScriptName) && script != null && script.user_script)
+                    if (script.enable && script.user_script)
                     {
-                        Logger.WriteLine("Load JS/user_script.js");
-                        try
+                        string fileName = "user_script.js";
+                        if (show_level == "ONLY_AOD") fileName = "AOD_" + fileName;
+                        string fileScriptName = Path.Combine(ProjectDir, "JS", fileName);
+                        if (File.Exists(fileScriptName))
                         {
-                            string script_text = File.ReadAllText(fileScriptName);
-                            if (script_text.Length > 5)
+                            Logger.WriteLine("Load JS/user_script.js");
+                            try
                             {
-                                items += Environment.NewLine + TabInString(6) + "console.log('" + fileName + "');" + Environment.NewLine;
-                                script_text = TabInString(6) + "// start " + fileName + Environment.NewLine +
-                                    script_text + Environment.NewLine;
-                                script_text = script_text + TabInString(6) + "// end " + fileName + Environment.NewLine;
-                                items = items + script_text;
+                                string script_text = File.ReadAllText(fileScriptName);
+                                if (script_text.Length > 5)
+                                {
+                                    items += Environment.NewLine + TabInString(6) + "console.log('" + fileName + "');" + Environment.NewLine;
+                                    script_text = TabInString(6) + "// start " + fileName + Environment.NewLine +
+                                        script_text + Environment.NewLine;
+                                    script_text = script_text + TabInString(6) + "// end " + fileName + Environment.NewLine;
+                                    items = items + script_text;
+                                }
                             }
-                        }
-                        catch (Exception)
-                        {
-                        }
+                            catch (Exception)
+                            {
+                            }
+                        } 
                     }
                     break;
                     #endregion
@@ -15319,10 +15278,13 @@ namespace Watch_Face_Editor
         }
 
         /// <summary>Распознаем текст и преобразуем JS в Json</summary>
-        private void JSToJson(string fileName, out string user_functions, out string user_script_start, out string user_script_beforeShortcuts, out string user_script_end, out string resume_call, out string pause_call)
+        private void JSToJson(string fileName, out string user_functions, out string user_script_start, out string user_script, out string user_script_AOD, out string user_script_beforeShortcuts, 
+            out string user_script_end, out string resume_call, out string pause_call)
         {
             user_functions = "";
             user_script_start = "";
+            user_script = "";
+            user_script_AOD = "";
             user_script_beforeShortcuts = "";
             user_script_end = "";
             resume_call = "";
@@ -15396,6 +15358,36 @@ namespace Watch_Face_Editor
                 string user_script_text = functionText.Substring(user_script_startPos + start_user_script.Length, lenght);
                 user_script_text = user_script_text.Trim();
                 user_script_start = user_script_text;
+
+                lenght = user_script_endPos + end_user_script.Length - user_script_startPos;
+                functionText = functionText.Remove(user_script_startPos, lenght);
+            }
+
+            start_user_script = "// start user_script.js";
+            end_user_script = "// end user_script.js";
+            user_script_startPos = functionText.IndexOf(start_user_script);
+            user_script_endPos = functionText.IndexOf(end_user_script);
+            if (user_script_startPos > 0 && user_script_startPos < user_script_endPos)
+            {
+                int lenght = user_script_endPos - user_script_startPos - start_user_script.Length;
+                string user_script_text = functionText.Substring(user_script_startPos + start_user_script.Length, lenght);
+                user_script_text = user_script_text.Trim();
+                user_script = user_script_text;
+
+                lenght = user_script_endPos + end_user_script.Length - user_script_startPos;
+                functionText = functionText.Remove(user_script_startPos, lenght);
+            }
+
+            start_user_script = "// start AOD_user_script.js";
+            end_user_script = "// end AOD_user_script.js";
+            user_script_startPos = functionText.IndexOf(start_user_script);
+            user_script_endPos = functionText.IndexOf(end_user_script);
+            if (user_script_startPos > 0 && user_script_startPos < user_script_endPos)
+            {
+                int lenght = user_script_endPos - user_script_startPos - start_user_script.Length;
+                string user_script_text = functionText.Substring(user_script_startPos + start_user_script.Length, lenght);
+                user_script_text = user_script_text.Trim();
+                user_script_AOD = user_script_text;
 
                 lenght = user_script_endPos + end_user_script.Length - user_script_startPos;
                 functionText = functionText.Remove(user_script_startPos, lenght);
@@ -17494,6 +17486,27 @@ namespace Watch_Face_Editor
                             if (Watch_Face.Buttons.Button == null) Watch_Face.Buttons.Button = new List<Button>();
                             Watch_Face.Buttons.Button.Add(button);
                             break;
+                        #endregion
+
+                        #region Script
+                        case "Script":
+                            ElementScript script = new ElementScript();
+                            script.user_script = true;
+                            elementsList = null;
+                            if (objectName == "normal")
+                            {
+                                if (Watch_Face.ScreenNormal.Elements == null)
+                                    Watch_Face.ScreenNormal.Elements = new List<object>();
+                                elementsList = Watch_Face.ScreenNormal.Elements;
+                            }
+                            else if (objectName == "AOD")
+                            {
+                                if (Watch_Face.ScreenAOD.Elements == null)
+                                    Watch_Face.ScreenAOD.Elements = new List<object>();
+                                elementsList = Watch_Face.ScreenAOD.Elements;
+                            }
+                            if (elementsList != null) elementsList.Add(script);
+                            break;
                             #endregion
                     }
                 }
@@ -18751,6 +18764,10 @@ namespace Watch_Face_Editor
                             if (digitalTime.Minute != null) offset++;
                             if (digitalTime.Second != null) offset++;
                             if (digitalTime.AmPm != null) offset++;
+
+                            if (digitalTime.Hour_Font != null) offset++;
+                            if (digitalTime.Minute_Font != null) offset++;
+                            if (digitalTime.Second_Font != null) offset++;
 
                             if (digitalTime.Hour_rotation != null) offset++;
                             if (digitalTime.Minute_rotation != null) offset++;
@@ -21352,9 +21369,15 @@ namespace Watch_Face_Editor
                                 if (hour.Minute != null) offset++;
                                 if (hour.Second != null) offset++;
                                 if (hour.AmPm != null) offset++;
+
+                                if (hour.Hour_Font != null) offset++;
+                                if (hour.Minute_Font != null) offset++;
+                                if (hour.Second_Font != null) offset++;
+
                                 //if (hour.Hour_rotation != null) offset++;
                                 if (hour.Minute_rotation != null) offset++;
                                 if (hour.Second_rotation != null) offset++;
+
                                 if (hour.Hour_circle != null) offset++;
                                 if (hour.Minute_circle != null) offset++;
                                 if (hour.Second_circle != null) offset++;
@@ -21393,9 +21416,15 @@ namespace Watch_Face_Editor
                                 if (minute.Minute != null) offset++;
                                 if (minute.Second != null) offset++;
                                 if (minute.AmPm != null) offset++;
+
+                                if (minute.Hour_Font != null) offset++;
+                                if (minute.Minute_Font != null) offset++;
+                                if (minute.Second_Font != null) offset++;
+
                                 if (minute.Hour_rotation != null) offset++;
                                 //if (minute.Minute_rotation != null) offset++;
                                 if (minute.Second_rotation != null) offset++;
+
                                 if (minute.Hour_circle != null) offset++;
                                 if (minute.Minute_circle != null) offset++;
                                 if (minute.Second_circle != null) offset++;
@@ -21434,9 +21463,15 @@ namespace Watch_Face_Editor
                                 if (second.Minute != null) offset++;
                                 if (second.Second != null) offset++;
                                 if (second.AmPm != null) offset++;
+
+                                if (second.Hour_Font != null) offset++;
+                                if (second.Minute_Font != null) offset++;
+                                if (second.Second_Font != null) offset++;
+
                                 if (second.Hour_rotation != null) offset++;
                                 if (second.Minute_rotation != null) offset++;
                                 //if (second.Second_rotation != null) offset++;
+
                                 if (second.Hour_circle != null) offset++;
                                 if (second.Minute_circle != null) offset++;
                                 if (second.Second_circle != null) offset++;
@@ -24855,6 +24890,168 @@ namespace Watch_Face_Editor
                             }
                         }
 
+                        if (objectName.EndsWith("time_hour_text_font"))
+                        {
+                            ElementDigitalTime time_hour_text = (ElementDigitalTime)elementsList.Find(e => e.GetType().Name == "ElementDigitalTime");
+                            if (time_hour_text == null)
+                            {
+                                elementsList.Add(new ElementDigitalTime());
+                                time_hour_text = (ElementDigitalTime)elementsList.Find(e => e.GetType().Name == "ElementDigitalTime");
+                            }
+                            if (time_hour_text != null)
+                            {
+                                int offset = 1;
+                                if (time_hour_text.Hour != null) offset++;
+                                if (time_hour_text.Minute != null) offset++;
+                                if (time_hour_text.Second != null) offset++;
+                                if (time_hour_text.AmPm != null) offset++;
+
+                                //if (time_hour_text.Hour_Font != null) offset++;
+                                if (time_hour_text.Minute_Font != null) offset++;
+                                if (time_hour_text.Second_Font != null) offset++;
+
+                                if (time_hour_text.Hour_rotation != null) offset++;
+                                if (time_hour_text.Minute_rotation != null) offset++;
+                                if (time_hour_text.Second_rotation != null) offset++;
+
+                                if (time_hour_text.Hour_circle != null) offset++;
+                                if (time_hour_text.Minute_circle != null) offset++;
+                                if (time_hour_text.Second_circle != null) offset++;
+
+                                time_hour_text.Hour_Font = new hmUI_widget_TEXT();
+                                time_hour_text.Hour_Font.x = text.x;
+                                time_hour_text.Hour_Font.y = text.y;
+                                time_hour_text.Hour_Font.w = text.w;
+                                time_hour_text.Hour_Font.h = text.h;
+
+                                time_hour_text.Hour_Font.color = text.color;
+
+                                time_hour_text.Hour_Font.font = text.font;
+
+                                time_hour_text.Hour_Font.text_size = text.text_size;
+                                time_hour_text.Hour_Font.char_space = text.char_space;
+                                time_hour_text.Hour_Font.line_space = text.line_space;
+
+                                time_hour_text.Hour_Font.align_h = text.align_h;
+                                time_hour_text.Hour_Font.align_v = text.align_v;
+                                time_hour_text.Hour_Font.text_style = text.text_style;
+
+                                time_hour_text.Hour_Font.padding = text.padding;
+                                time_hour_text.Hour_Font.unit_type = text.unit_type;
+
+                                time_hour_text.Hour_Font.visible = true;
+                                time_hour_text.Hour_Font.position = offset;
+                            }
+                        }
+
+                        if (objectName.EndsWith("time_minute_text_font"))
+                        {
+                            ElementDigitalTime time_minute_text = (ElementDigitalTime)elementsList.Find(e => e.GetType().Name == "ElementDigitalTime");
+                            if (time_minute_text == null)
+                            {
+                                elementsList.Add(new ElementDigitalTime());
+                                time_minute_text = (ElementDigitalTime)elementsList.Find(e => e.GetType().Name == "ElementDigitalTime");
+                            }
+                            if (time_minute_text != null)
+                            {
+                                int offset = 1;
+                                if (time_minute_text.Hour != null) offset++;
+                                if (time_minute_text.Minute != null) offset++;
+                                if (time_minute_text.Second != null) offset++;
+                                if (time_minute_text.AmPm != null) offset++;
+
+                                if (time_minute_text.Hour_Font != null) offset++;
+                                //if (time_minute_text.Minute_Font != null) offset++;
+                                if (time_minute_text.Second_Font != null) offset++;
+
+                                if (time_minute_text.Hour_rotation != null) offset++;
+                                if (time_minute_text.Minute_rotation != null) offset++;
+                                if (time_minute_text.Second_rotation != null) offset++;
+
+                                if (time_minute_text.Hour_circle != null) offset++;
+                                if (time_minute_text.Minute_circle != null) offset++;
+                                if (time_minute_text.Second_circle != null) offset++;
+
+                                time_minute_text.Minute_Font = new hmUI_widget_TEXT();
+                                time_minute_text.Minute_Font.x = text.x;
+                                time_minute_text.Minute_Font.y = text.y;
+                                time_minute_text.Minute_Font.w = text.w;
+                                time_minute_text.Minute_Font.h = text.h;
+
+                                time_minute_text.Minute_Font.color = text.color;
+
+                                time_minute_text.Minute_Font.font = text.font;
+
+                                time_minute_text.Minute_Font.text_size = text.text_size;
+                                time_minute_text.Minute_Font.char_space = text.char_space;
+                                time_minute_text.Minute_Font.line_space = text.line_space;
+
+                                time_minute_text.Minute_Font.align_h = text.align_h;
+                                time_minute_text.Minute_Font.align_v = text.align_v;
+                                time_minute_text.Minute_Font.text_style = text.text_style;
+
+                                time_minute_text.Minute_Font.padding = text.padding;
+                                time_minute_text.Minute_Font.unit_type = text.unit_type;
+
+                                time_minute_text.Minute_Font.visible = true;
+                                time_minute_text.Minute_Font.position = offset;
+                            }
+                        }
+
+                        if (objectName.EndsWith("time_second_text_font"))
+                        {
+                            ElementDigitalTime second_text_font = (ElementDigitalTime)elementsList.Find(e => e.GetType().Name == "ElementDigitalTime");
+                            if (second_text_font == null)
+                            {
+                                elementsList.Add(new ElementDigitalTime());
+                                second_text_font = (ElementDigitalTime)elementsList.Find(e => e.GetType().Name == "ElementDigitalTime");
+                            }
+                            if (second_text_font != null)
+                            {
+                                int offset = 1;
+                                if (second_text_font.Hour != null) offset++;
+                                if (second_text_font.Minute != null) offset++;
+                                if (second_text_font.Second != null) offset++;
+                                if (second_text_font.AmPm != null) offset++;
+
+                                if (second_text_font.Hour_Font != null) offset++;
+                                if (second_text_font.Minute_Font != null) offset++;
+                                //if (second_text_font.Second_Font != null) offset++;
+
+                                if (second_text_font.Hour_rotation != null) offset++;
+                                if (second_text_font.Minute_rotation != null) offset++;
+                                if (second_text_font.Second_rotation != null) offset++;
+
+                                if (second_text_font.Hour_circle != null) offset++;
+                                if (second_text_font.Minute_circle != null) offset++;
+                                if (second_text_font.Second_circle != null) offset++;
+
+                                second_text_font.Second_Font = new hmUI_widget_TEXT();
+                                second_text_font.Second_Font.x = text.x;
+                                second_text_font.Second_Font.y = text.y;
+                                second_text_font.Second_Font.w = text.w;
+                                second_text_font.Second_Font.h = text.h;
+
+                                second_text_font.Second_Font.color = text.color;
+
+                                second_text_font.Second_Font.font = text.font;
+
+                                second_text_font.Second_Font.text_size = text.text_size;
+                                second_text_font.Second_Font.char_space = text.char_space;
+                                second_text_font.Second_Font.line_space = text.line_space;
+
+                                second_text_font.Second_Font.align_h = text.align_h;
+                                second_text_font.Second_Font.align_v = text.align_v;
+                                second_text_font.Second_Font.text_style = text.text_style;
+
+                                second_text_font.Second_Font.padding = text.padding;
+                                second_text_font.Second_Font.unit_type = text.unit_type;
+
+                                second_text_font.Second_Font.visible = true;
+                                second_text_font.Second_Font.position = offset;
+                            }
+                        }
+
                         break;
                     #endregion
 
@@ -26497,9 +26694,8 @@ namespace Watch_Face_Editor
 
             int valueLenght = str.IndexOf("});") + 2;
             int strCount = str.Split(new string[] { "\n" }, StringSplitOptions.None).Count() - 1;
-            int i1 = str.IndexOf("hmUI.createWidget");
+            //int i1 = str.IndexOf("hmUI.createWidget");
             if (valueLenght == 1 || strCount<5)
-            //if (valueLenght == 1 || valueLenght>1000)
             {
                 return GetFunctionsList_v2(str);
             }
@@ -26511,6 +26707,19 @@ namespace Watch_Face_Editor
 
                 if (valueStr.IndexOf("switch (editType_") < 0 && valueStr.IndexOf("hmUI.createWidget(hmUI.widget.BUTTON") < 0)
                 {
+                    if(valueStr.IndexOf("console.log('user_script.js');") > 0)
+                    {
+                        int scriptIndex = valueStr.IndexOf("console.log('user_script.js');") + "console.log('user_script.js');".Length;
+                        valueStr = valueStr.Remove(0, scriptIndex);
+                        GetParametrsList.Add("JS_script insert here normal");
+                    }
+                    if (valueStr.IndexOf("console.log('AOD_user_script.js');") > 0)
+                    {
+                        int scriptIndex = valueStr.IndexOf("console.log('AOD_user_script.js');") + "console.log('AOD_user_script.js');".Length;
+                        valueStr = valueStr.Remove(0, scriptIndex);
+                        GetParametrsList.Add("JS_script insert here AOD");
+                    }
+
                     //int firstIndex = valueStr.IndexOf("(");
                     int breackLineIndex = valueStr.IndexOf(";");
                     while (breackLineIndex > 0)
@@ -26557,7 +26766,12 @@ namespace Watch_Face_Editor
                 str = str.Remove(0, valueLenght + 1);
                 valueLenght = str.IndexOf("});") + 2;
                 int posIf = str.IndexOf("if (screenType");
-                if (posIf >= 0 && posIf < valueLenght) valueLenght = str.IndexOf("};") - 1;
+                //if (posIf >= 0 && posIf < valueLenght) valueLenght = str.IndexOf("};") - 1; 
+                if (posIf >= 0 && posIf < valueLenght)
+                {
+                    valueLenght = FindMinLengthBalancedString(str, '{', '}');
+                    if (valueLenght < 0) valueLenght = str.IndexOf("};") - 1;
+                }
 
                 int posFunction = str.IndexOf("function ");
                 int posSwitch = str.IndexOf("switch (editType");
@@ -26609,6 +26823,15 @@ namespace Watch_Face_Editor
             if (str.StartsWith("switch"))
             {
                 returnParametrs = ParseParametrsInSwitch(str);
+                return returnParametrs;
+            }
+
+            if (str.StartsWith("JS_script insert here"))
+            {
+                string scriptNameStr = "normal";
+                if(str == "JS_script insert here AOD") scriptNameStr = "AOD";
+                returnParametrs.Add("ObjectName", scriptNameStr);
+                returnParametrs.Add("ObjectType", "Script");
                 return returnParametrs;
             }
 
@@ -28920,10 +29143,10 @@ namespace Watch_Face_Editor
                 {
                     if (text_update.IndexOf("let tideData = weatherData.tideData;") < 0) 
                         text_update += TabInString(7) + "let tideData = weatherData.tideData;" + Environment.NewLine;
-                    if (text_update.IndexOf("let " + variableName + "hour = 0;") < 0)
+                    if (text_update.IndexOf("let " + variableName + "hour = -1;") < 0)
                     {
-                        text_update += TabInString(7) + "let " + variableName + "hour = 0;" + Environment.NewLine;
-                        text_update += TabInString(7) + "let " + variableName + "minute = 0;" + Environment.NewLine;
+                        text_update += TabInString(7) + "let " + variableName + "hour = -1;" + Environment.NewLine;
+                        text_update += TabInString(7) + "let " + variableName + "minute = -1;" + Environment.NewLine;
 
                         text_update += TabInString(7) + "if (tideData.count > 0) {" + Environment.NewLine;
                         text_update += TabInString(8) + variableName + "hour = tideData.data[0]." + sensorTargetValue + ".hour;" + Environment.NewLine;
@@ -28994,7 +29217,7 @@ namespace Watch_Face_Editor
             else if (valueName == "sunriseTime" || valueName == "sunsetTime")
             {
                 text_update += TabInString(7) + "let " + variableStartName + "rotate_string = undefined;" + Environment.NewLine;
-                text_update += TabInString(7) + "if (" + variableName + "hour != 0 && " + variableName + "minute != 0) {" + Environment.NewLine;
+                text_update += TabInString(7) + "if (" + variableName + "hour >= 0 && " + variableName + "minute >= 0) {" + Environment.NewLine;
                 text_update += TabInString(8) + valueName + " = 0;" + Environment.NewLine;
                 if (text_rotate.zero)
                 {
@@ -29204,10 +29427,10 @@ namespace Watch_Face_Editor
                 {
                     if (text_update.IndexOf("let tideData = weatherData.tideData;") < 0)
                         text_update += TabInString(7) + "let tideData = weatherData.tideData;" + Environment.NewLine;
-                    if (text_update.IndexOf("let " + variableName + "hour = 0;") < 0)
+                    if (text_update.IndexOf("let " + variableName + "hour = -1;") < 0)
                     {
-                        text_update += TabInString(7) + "let " + variableName + "hour = 0;" + Environment.NewLine;
-                        text_update += TabInString(7) + "let " + variableName + "minute = 0;" + Environment.NewLine;
+                        text_update += TabInString(7) + "let " + variableName + "hour = -1;" + Environment.NewLine;
+                        text_update += TabInString(7) + "let " + variableName + "minute = -1;" + Environment.NewLine;
 
                         text_update += TabInString(7) + "if (tideData.count > 0) {" + Environment.NewLine;
                         text_update += TabInString(8) + variableName + "hour = tideData.data[0]." + sensorTargetValue + ".hour;" + Environment.NewLine;
@@ -29287,7 +29510,7 @@ namespace Watch_Face_Editor
             else if (valueName == "sunriseTime" || valueName == "sunsetTime")
             {
                 text_update += TabInString(7) + "let " + variableStartName + "circle_string = undefined;" + Environment.NewLine;
-                text_update += TabInString(7) + "if (" + variableName + "hour != 0 && " + variableName + "minute != 0) {" + Environment.NewLine;
+                text_update += TabInString(7) + "if (" + variableName + "hour >= 0 && " + variableName + "minute >= 0) {" + Environment.NewLine;
                 text_update += TabInString(8) + valueName + " = 0;" + Environment.NewLine;
                 if (text_circle.zero)
                 {
@@ -29325,5 +29548,36 @@ namespace Watch_Face_Editor
             }
         }
 
+        /// <summary>Определяем длину строки с равным количеством открывающих и закрывающих скобок</summary>
+        /// <param name="str">Строка для поиска</param>
+        /// <param name="opening_bracket">Первый символ (открывающая скобка)</param>
+        /// <param name="closing_bracket">Первый символ (закрывающая скобка)</param>
+        static int FindMinLengthBalancedString(string str, char opening_bracket, char closing_bracket)
+        {
+            int minLen = int.MaxValue;
+            int openCount = 0;
+            int closeCount = 0;
+
+            for (int i = 0; i < str.Length; i++)
+            {
+                if (str[i] == opening_bracket)
+                {
+                    openCount++;
+                }
+                else if (str[i] == closing_bracket)
+                {
+                    closeCount++;
+                }
+
+                if (openCount == closeCount && openCount > 0)
+                {
+                    int currentLen = i + 1;
+                    minLen = Math.Min(minLen, currentLen);
+                    break;
+                }
+            }
+
+            return minLen == int.MaxValue ? -1 : minLen;
+        }
     }
 }

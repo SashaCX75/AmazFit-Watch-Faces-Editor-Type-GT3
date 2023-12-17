@@ -117,43 +117,118 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Dialog_Title_JS_Open" xml:space="preserve">
-    <value>Přidat soubor JS</value>
+  <data name="button_pause_call_Del.ToolTip" xml:space="preserve">
+    <value>*.js-Datei löschen</value>
   </data>
-  <data name="FilterJS" xml:space="preserve">
-    <value>JS soubor (*.js) | *.js</value>
+  <data name="button_resume_call_Del.ToolTip" xml:space="preserve">
+    <value>*.js-Datei löschen</value>
   </data>
-  <data name="Message_Del_Caption" xml:space="preserve">
-    <value>Smazat soubor</value>
+  <data name="button_pause_call_Add.ToolTip" xml:space="preserve">
+    <value>*.js-Datei hinzufügen</value>
   </data>
-  <data name="Message_Error_Caption" xml:space="preserve">
-    <value>Chyba</value>
+  <data name="button_user_script_start_Add.ToolTip" xml:space="preserve">
+    <value>*.js-Datei hinzufügen</value>
   </data>
-  <data name="Message_JS_Del" xml:space="preserve">
-    <value>Opravdu chcete smazat soubor JS?</value>
+  <data name="button_user_script_start_Del.ToolTip" xml:space="preserve">
+    <value>*.js-Datei löschen</value>
   </data>
-  <data name="Message_ReadScript_Error" xml:space="preserve">
-    <value>Při čtení uživatelských skriptů došlo k chybě</value>
+  <data name="button_user_script_Add.ToolTip" xml:space="preserve">
+    <value>*.js-Datei hinzufügen</value>
   </data>
-  <data name="Message_Warning_Caption" xml:space="preserve">
-    <value>Varování</value>
+  <data name="button_user_script_Del.ToolTip" xml:space="preserve">
+    <value>*.js-Datei löschen</value>
   </data>
-  <data name="SystemFont" xml:space="preserve">
-    <value>Systémové písmo</value>
+  <data name="button_user_script_end_Add.ToolTip" xml:space="preserve">
+    <value>*.js-Datei hinzufügen</value>
   </data>
-  <data name="UCtrl_Text_Opt_Altitude_true" xml:space="preserve">
-    <value>Symbol "-"</value>
+  <data name="button_user_script_end_Del.ToolTip" xml:space="preserve">
+    <value>*.js-Datei löschen</value>
   </data>
-  <data name="UCtrl_Text_Opt_Sunrise_false" xml:space="preserve">
-    <value>Oddělovač desetinných míst</value>
+  <data name="button_user_script_beforeShortcuts_Add.ToolTip" xml:space="preserve">
+    <value>*.js-Datei hinzufügen</value>
   </data>
-  <data name="UCtrl_Text_Opt_Sunrise_true" xml:space="preserve">
-    <value>Oddělovač</value>
+  <data name="button_user_script_beforeShortcuts_Del.ToolTip" xml:space="preserve">
+    <value>*.js-Datei löschen</value>
   </data>
-  <data name="UCtrl_Text_Opt_Year_false" xml:space="preserve">
-    <value>Přidejte úvodní nuly</value>
+  <data name="button_user_functions_Add.ToolTip" xml:space="preserve">
+    <value>*.js-Datei hinzufügen</value>
   </data>
-  <data name="UCtrl_Text_Opt_Year_true" xml:space="preserve">
-    <value>Úplný rok</value>
+  <data name="button_user_functions_Del.ToolTip" xml:space="preserve">
+    <value>*.js-Datei löschen</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="contextMenuStrip_Edit_JS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>148, 26</value>
+  </data>
+  <data name="checkBox_user_functions.Size" type="System.Drawing.Size, System.Drawing">
+    <value>173, 48</value>
+  </data>
+  <data name="checkBox_user_functions.Text" xml:space="preserve">
+    <value>Benutzerdefinierte Funktionen 
+(eingefügt vor der Deklaration 
+von Variablen)</value>
+  </data>
+  <data name="toolStripMenuItem_Edit_JS.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 22</value>
+  </data>
+  <data name="toolStripMenuItem_Edit_JS.Text" xml:space="preserve">
+    <value>Öffne JS Datei</value>
+  </data>
+  <data name="checkBox_user_script_start.Size" type="System.Drawing.Size, System.Drawing">
+    <value>203, 48</value>
+  </data>
+  <data name="checkBox_user_script_start.Text" xml:space="preserve">
+    <value>Benutzerskript am Anfang (eingefügt 
+vor der Erstellung von Widgets)</value>
+  </data>
+  <data name="checkBox_user_script.Size" type="System.Drawing.Size, System.Drawing">
+    <value>192, 48</value>
+  </data>
+  <data name="checkBox_user_script.Text" xml:space="preserve">
+    <value>Benutzerskript (die Position dieses 
+Widgets bestimmt die Position 
+des Skripts im Code)</value>
+  </data>
+  <data name="checkBox_user_script_end.Size" type="System.Drawing.Size, System.Drawing">
+    <value>221, 48</value>
+  </data>
+  <data name="checkBox_user_script_end.Text" xml:space="preserve">
+    <value>Benutzerskript am Ende (eingefügt nach 
+Widgets erstellt werden, vor 
+WIDGET_DELEGATE)</value>
+  </data>
+  <data name="checkBox_user_script_beforeShortcuts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 48</value>
+  </data>
+  <data name="checkBox_user_script_beforeShortcuts.Text" xml:space="preserve">
+    <value>Benutzerskript vor Verknüpfungen
+(eingefügt vor Shortcut-Widgets)</value>
+  </data>
+  <data name="checkBox_resume_call.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 48</value>
+  </data>
+  <data name="checkBox_resume_call.Text" xml:space="preserve">
+    <value>Funktion resume_call (eingefügt in 
+resume_call des Widgets 
+WIDGET_DELEGATE-Widgets)</value>
+  </data>
+  <data name="checkBox_pause_call.Size" type="System.Drawing.Size, System.Drawing">
+    <value>198, 48</value>
+  </data>
+  <data name="checkBox_pause_call.Text" xml:space="preserve">
+    <value>Funktion "pause_call" (eingefügt in 
+pause_call des Widgets 
+WIDGET_DELEGATE-Widgets)
+</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 31</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Ein Rechtsklick auf den Button öffnet 
+die Datei im Standardprogramm</value>
+  </data>
+  <data name="button_resume_call_Add.ToolTip" xml:space="preserve">
+    <value>*.js-Datei hinzufügen</value>
   </data>
 </root>
